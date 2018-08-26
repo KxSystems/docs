@@ -1,0 +1,738 @@
+<?xml version="1.0"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:db="http://docbook.org/ns/docbook" xmlns:rx="http://www.renderx.com/XSL/Extensions" xmlns:xlink="http://www.w3.org/1999/xlink"><rx:meta-info><rx:meta-field name="author" value="&#10;        James&#10;        Corcoran&#10;      "/><rx:meta-field name="creator" value="Kx Systems"/><rx:meta-field name="title" value="Market Fragmentation &#x2013; A kdb+ framework for multiple liquidity sources"/><rx:meta-field name="keywords" value="Kx, Kx Systems, kdb+, analytics, fragmentation, kdb+, market"/></rx:meta-info><rx:outline><rx:bookmark internal-destination="motivation"><rx:bookmark-label>Motivation</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="the-data"><rx:bookmark-label>The data</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="the-building-blocks"><rx:bookmark-label>The building blocks</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="reference-data"><rx:bookmark-label>Reference data</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="consolidating-the-data"><rx:bookmark-label>Consolidating the data</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="conclusion"><rx:bookmark-label>Conclusion</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="appendix"><rx:bookmark-label>Appendix</rx:bookmark-label></rx:bookmark></rx:outline><fo:layout-master-set><fo:simple-page-master master-name="cover-page" page-width="210mm" page-height="297mm"><fo:region-body margin-top="0" margin-bottom="0" margin-left="0" margin-right="0" background-color="#eeeded"/></fo:simple-page-master><fo:simple-page-master master-name="toc" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="60pt" margin-right="60pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master><fo:simple-page-master master-name="standard-page" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="40pt" margin-right="40pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master></fo:layout-master-set><fo:page-sequence master-reference="cover-page" font-family="STIX2" initial-page-number="1" language="en" country="gb"><fo:flow flow-name="xsl-region-body"><fo:block-container absolute-position="absolute" top="0mm" right="0mm" width="2in" height="2in"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-white.png)" content-width="40mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" left="0mm" width="2.5in" height="30mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-bottom-left-white.png)" content-width="50mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" right="0mm" width="4in" height="50mm"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/kx-cover.png)" content-width="75mm"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="35mm" left="15mm"><fo:block color="#0070cd" font-family="Proxima Nova" font-size="60pt" font-weight="bold" letter-spacing="-4pt">kx</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="40mm" left="40mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/its-about-time.png)"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="80mm" left="35mm"><fo:block font-family="Proxima Nova" color="#0070cd" font-size="18pt" font-weight="400">
+							Technical Whitepaper
+						</fo:block><fo:block margin-top="9pt" margin-right="30mm" line-height="1.4" font-size="24pt" font-weight="400">Market Fragmentation – A kdb+ framework for multiple liquidity sources</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Date</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left">Jan 2013</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Author</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left"><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      James Corcoran has worked as a kdb+ consultant in some of the
+      world’s largest financial institutions and has experience in
+      implementing global software and data solutions in all major asset
+      classes. He has delivered talks and presentations on various
+      aspects of kdb+ and most recently spoke at the annual Kx user
+      conference in London. As a qualified professional risk manager he
+      is also involved in various ongoing risk-management projects at
+      Kx.
+    </fo:block></fo:block></fo:block-container><fo:block> </fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="toc" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Market Fragmentation – A kdb+ framework for multiple liquidity sources</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block break-before="page"><fo:block font-size="14pt" text-align="center" margin-top="36pt" margin-bottom="36pt">Contents</fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480931030528">Motivation <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480931030528"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480931025136">The data <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480931025136"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480931022944">The building blocks <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480931022944"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480930995232">Reference data <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480930995232"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480930989632">Consolidating the data <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480930989632"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480930954032">Conclusion <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480930954032"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm480930950256">Appendix <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm480930950256"/></fo:basic-link></fo:block></fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="standard-page" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Market Fragmentation – A kdb+ framework for multiple liquidity sources</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-footnote-separator"><fo:block><fo:leader leader-pattern="rule" rule-thickness=".5pt" leader-length="50%"/></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block id="market-fragmentation-a-kdb-framework-for-multiple-liquidity-sources">
+  <fo:block id="idm480931035200" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Market Fragmentation:A kdb+ framework for multiple
+  liquidity sources</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Kdb+ plays a large part in the trading and risk management
+    activities of many financial institutions around the world. For a
+    large-scale kdb+ system to be effective, it must be designed
+    efficiently so that it can capture and store colossal amounts of
+    data. However, it is equally important that the system provides
+    intelligent and useful functionality to end-users. In the financial
+    world, increasing participation and advances in technology are
+    resulting in a progressively more fragmented market with liquidity
+    being spread across many trading venues. It is therefore crucial
+    that a kdb+ system can store and analyze information for a financial
+    security from all available sources. This paper presents an approach
+    to the challenge of consolidating share price information for
+    equities that trade on multiple venues.
+  </fo:block>
+  
+  <fo:block id="motivation">
+    <fo:block id="idm480931030528" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Motivation</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Since the inception of the Markets in Financial Instruments
+      Directive (MiFID), Multilateral Trading Facilities (MTFs) have
+      sprung up across Europe. Alternative Trading Systems are the US
+      equivalent. Prior to the MiFID, trading typically took place on
+      national exchanges. Other types of trading venues in existence
+      today include crossing networks and dark pools. All of these
+      venues compete with each other for trading activity.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For market participants, the increased fragmentation forces more
+      sophisticated trading strategies in the form of smart order
+      routing. A number of additional factors add to the argument that
+      the ability to consolidate real-time market data in-house can add
+      real value to the trading strategies of an organization, including
+      technical glitches at exchanges which can lead to suboptimal
+      pricing and order matching.
+    </fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/figure1.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Breakdown of the traded volume that occurred on the main trading venues for all EMEA equities in December 2012</fo:inline></fo:inline></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Bearing in mind that the data output by a kdb+ system can often be
+      the input into a trading decision or algorithm, the timely and
+      accurate provision of consolidated real-time information for a
+      security is vital.
+    </fo:block>
+  </fo:block>
+  <fo:block id="the-data">
+    <fo:block id="idm480931025136" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">The data</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The goal for kdb+ financial engineers is to analyze various
+      aspects of a stock’s trading activity at each of the venues where
+      it trades. In the equities world, real-time market data vendors
+      provide trade, level-1 and level-2 quote feeds for these venues.
+      Securities trading on different venues will use a different
+      suffix, enabling data consumers to differentiate between venues –
+      for example, Vodafone shares traded on the LSE are reported by
+      Reuters on the Reuters Instrument Code (RIC) VOD.L, whereas shares
+      of the same company traded on Chi-X are recorded on VODl.CHI. In
+      the FX world, we might have feed handlers connecting directly to
+      each ECN. The symbol column in our table would generally be a
+      currency pair and we might use a venue column to differentiate
+      between venues. Regardless of the asset class, in order to get a
+      complete picture of a security’s trading activity the kdb+ system
+      must collect and store data for all venues for a given security.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For the purposes of this paper, we will assume standard equity
+      trade and quote tables. We will use Reuters cash equities market
+      data in the examples and assume that our feed handler subscribes
+      to the RICs we require and that it publishes the data to our
+      tickerplant.
+    </fo:block>
+  </fo:block>
+  <fo:block id="the-building-blocks">
+    <fo:block id="idm480931022944" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">The building blocks</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In order to be able to effectively analyze and consolidate data
+      for securities from multiple venues, we must first have in place
+      an efficient mechanism for retrieving data for securities from a
+      single venue. Here we introduce the concept of a gateway: a kdb+
+      process that acts as a connection point for end- users. The
+      gateway’s purpose is to:
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          accept client queries and/or calls made to analytic functions;
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          to dispatch appropriate requests for data to the RDB or HDB,
+          or both; and
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          to return the data to the client.
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Data retrieval, data filtering, computation and aggregation, as a
+      general rule, should all be done on the database. The gateway,
+      once it has retrieved this data, can enrich it. Examples of
+      enrichment are time zone conversion, currency conversion and
+      adjustment for corporate actions. We make the case below that
+      consolidation at the security level is also best done in the
+      gateway.
+    </fo:block>
+    <fo:block id="analytic-setup">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Analytic setup</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        A typical analytic that end-users might wish kdb+ to provide is
+        an interval function, which gives a range of different analytic
+        aggregations for a stock or list of stocks based on data between
+        a given start time and end time on a given date, or for a range
+        of dates. For simplicity, we will focus on analytics which span
+        just one date. Let us call this function
+        <fo:inline font-family="Pragmata Pro">getIntervalData</fo:inline>. Examples of the analytics
+        the function could provide are <fo:inline font-family="Pragmata Pro">open</fo:inline>,
+        <fo:inline font-family="Pragmata Pro">high</fo:inline>, <fo:inline font-family="Pragmata Pro">low</fo:inline>,
+        <fo:inline font-family="Pragmata Pro">close</fo:inline>, <fo:inline font-family="Pragmata Pro">volume</fo:inline>,
+        <fo:inline font-family="Pragmata Pro">avgprice</fo:inline>, <fo:inline font-family="Pragmata Pro">vwap</fo:inline>,
+        <fo:inline font-family="Pragmata Pro">twap</fo:inline>, <fo:inline font-family="Pragmata Pro">meanspread</fo:inline>,
+        <fo:inline font-family="Pragmata Pro">spreadvolatility</fo:inline>, <fo:inline font-family="Pragmata Pro">range</fo:inline>,
+        and <fo:inline font-family="Pragmata Pro">lastmidprice</fo:inline>. We would like the ability
+        to pass many different parameters into this function, and
+        potentially more than the maximum number allowed in q, which is
+        8. We may also decide that some parameters are optional and need
+        not be specified by the user. For these reasons we will use a
+        dictionary as the single parameter, rather than defining a
+        function signature with a specific number of arguments. A
+        typical parameter dictionary looks like the following:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)params
+symList  | `VOD.L
+date     | 2013.01.15
+startTime| 08:30
+endTime  | 09:30
+columns  | `vwap`volume
+</fo:block>
+    </fo:block>
+    <fo:block id="data-filtering">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Data filtering</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        It is important at this stage that we introduce the notion of
+        data filtering. Trading venues have a regulatory requirement to
+        report all trades whether they have been executed electronically
+        or over the counter. Not all trades, particularly in the
+        equities world, should be included in all calculations. For
+        example, one user may want only lit order book trades to be
+        included in his/her VWAP calculation, but another user may
+        prefer that all order book trades appear in the VWAP figure.
+      </fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/figure2.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Monthly breakdown of on-and-off order book traded volume across all EMEA equity markets for the year to December 2012</fo:inline></fo:inline></fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Market data vendors break trade data into different categories
+        including auction, lit, hidden and dark order book, off order
+        book and OTC trades, and use data qualifier flags to indicate
+        which category each trade falls into. Data should be filtered
+        based on these qualifiers, and according to the end-user’s
+        requirements, prior to aggregation. This specification should be
+        configurable within the parameter dictionary passed to the
+        <fo:inline font-family="Pragmata Pro">getIntervalData</fo:inline> function.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The various qualifier flags used to filter the raw data for each
+        category can be held in configuration files on a per-venue basis
+        and loaded into memory in the database so that filtering can be
+        done during execution of the query by the use of a simple
+        utility function. An approach to storing this configuration is
+        outlined as follows:
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Define a dictionary, <fo:inline font-family="Pragmata Pro">.cfg.filterrules</fo:inline>, keyed
+        by filtering rule, e.g. Order Book, Total Market, Dark Trades,
+        where the corresponding values are tables holding the valid
+        qualifier flags for each venue for that rule.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).cfg.filterrules
+TM | (+(,`venue)!,`LSE`BAT`CHI`TOR)!+(,`qualifier)!,(`A`Auc`B`C`X`DARKTRADE`m..
+OB | (+(,`venue)!,`LSE`BAT`CHI`TOR)!+(,`qualifier)!,(`A`Auc`B`C`m;`A`AUC`OB`C..
+DRK| (+(,`venue)!,`LSE`BAT`CHI`TOR)!+(,`qualifier)!,(,`DARKTRADE;,`DARK;,`DRK..
+
+q).cfg.filterrules[`OB]
+venue| qualifier
+---- | --------------
+LSE  | `A`Auc`B`C`m
+BAT  | `A`AUC`OB`C
+CHI  | `a`b`auc`ob
+TOR  | `A`Auc`X`Y`OB
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Assuming we have access to a params dictionary, we could then
+        construct our query as follows.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+select vwap:wavg[size;price], volume:sum[size] by sym from trade 
+       where date=params[`date],
+             sym in params[`symList],
+             time within (params`startTime;params`endTime), 
+             .util.validTrade[sym;qualifier;params`filterRule]
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Pragmata Pro">.util.validTrade</fo:inline> makes use of the above
+        config data, returning a Boolean indicating whether the
+        qualifier flag for a given record is valid for that record’s sym
+        according to the given filter rule. Due to the fact that we have
+        defined valid qualifiers on a per-rule per-venue basis, we will
+        of course require a method for retrieving a venue for a given
+        sym. This is best done through the use of a simple dictionary
+        lookup.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).cfg.symVenue
+BARCl.BS | BAT
+BARCl.CHI| CHI
+BARC.L   | LSE
+BARC.TQ  | TOR
+VODl.BS  | BAT
+VODl.CHI | CHI
+VOD.L    | LSE
+VODl.TQ  | TOR
+
+q).util.getVenue[`VOD.L`BARC.BS] 
+`LSE`BAT
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This data processing takes place on the RDB and/or HDB. The
+        query will have been dispatched, with parameters, by the
+        gateway. We will now demonstrate a mechanism for consolidating
+        data from multiple venues by passing an additional
+        <fo:inline font-family="Pragmata Pro">multiMarketRule</fo:inline> parameter in our call to the
+        gateway.
+      </fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="reference-data">
+    <fo:block id="idm480930995232" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Reference data</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Having already briefly touched on it, we introduce the role of
+      reference data more formally here. With the above analytic setup,
+      we retrieve data only for the given symbol/s passed to the
+      function. When a multimarket parameter is included however, we
+      need to retrieve and aggregate data for all instrument codes
+      associated with the entity mapped to the sym parameter.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      With that in mind, the first thing we need to have is the ability
+      to look up the venues on which a given stock trades. We also need
+      to know the instrument codes used for the stock in question on
+      each venue. As described above (<fo:inline font-style="italic">The data</fo:inline>),
+      these will differ. This information is usually located in a
+      reference data system. The reference data system could be a
+      component of the kdb+ system or it could be an external
+      application within the bank. Regardless of where the reference
+      data is sourced, it should be processed and loaded into memory at
+      least once per day. The databases (RDB and HDB) require access to
+      the reference data, as does the gateway. In terms of size,
+      reference data should be a very small fraction of the size of
+      market data, so memory overhead will be minimal.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The most effective layout is to have a table keyed on sym, mapping
+      each sym in our stock universe to its primary sym. By primary sym,
+      we mean the instrument code of the company for the primary venue
+      on which it trades. For example, VOD.L’s is simply VOD.L since
+      Vodafone’s primary venue is the LSE whereas VODl.CHI’s is also
+      VOD.L.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).cfg.multiMarketMap
+sym      | primarysym venue
+---------| ----------------
+BARCl.BS | BARC.L     BAT
+BARCl.CHI| BARC.L     CHI
+BARC.L   | BARC.L     LSE
+BARC.TQ  | BARC.L     TOR
+VODl.BS  | VOD.L      BAT
+VODl.CHI | VOD.L      CHI
+VOD.L    | VOD.L      LSE
+VODl.TQ  | VOD.L      TOR
+</fo:block>
+  </fo:block>
+  <fo:block id="consolidating-the-data">
+    <fo:block id="idm480930989632" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Consolidating the data</fo:block>
+    <fo:block id="extending-parameters">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Extending parameters</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Providing a consolidated analytic for a stock requires that we
+        query the database for all syms associated with an entity. With
+        the above reference data at our disposal, we can now write a
+        utility function,
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Pragmata Pro">.util.extendSymsForMultiMarket</fo:inline>, which will
+        expand the list of syms passed into the params dictionary. This
+        function should be called if and only if a
+        <fo:inline font-family="Pragmata Pro">multiMarketRule</fo:inline> parameter is passed. We
+        should also be careful to preserve the original sym list passed
+        to us, as we will aggregate back up to it during the final
+        consolidation step. The following is an implementation of such a
+        utility function:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+.util.extendSymsForMultiMarket:{[symList] 
+    distinct raze {update origSymList:x from
+                   select symList:sym from .cfg.multiMarketMap
+                   where primarysym in .cfg.multiMarketMap[x]`primarysym 
+                   } each (),symList
+    }
+</fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).util.extendSymsForMultiMarket[`BARC.L`VOD.L] 
+symList   origSymList
+---------------------
+BARCl.BS  BARC.L
+BARCl.CHI BARC.L
+BARC.L    BARC.L
+BARC.TQ   BARC.L
+VODl.BS   VOD.L
+VODl.CHI  VOD.L
+VOD.L     VOD.L
+VODl.TQ   VOD.L
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        We can now use this utility in the
+        <fo:inline font-family="Pragmata Pro">getIntervalData</fo:inline> function defined on the
+        gateway so that we dispatch our query to the database with an
+        extended <fo:inline font-family="Pragmata Pro">symList</fo:inline>, as follows:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+if[params[`multiMarketRule]~`multi; 
+    extended_syms:.util.extendSymsForMultiMarket[params`symList]; 
+    params:@[params;`symList;:;extended_syms`symList];
+  ];
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Once we have adjusted the parameters appropriately, we can
+        dispatch the query to the database/s in the exact same manner as
+        before. The only thing that happens differently is that we are
+        querying for additional syms in our <fo:inline font-family="Pragmata Pro">symList</fo:inline>.
+        This will naturally result in a slightly more expensive query.
+      </fo:block>
+    </fo:block>
+    <fo:block id="multi-market-aggregation">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Multi-market aggregation</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The final, and arguably the most critical step in consolidating
+        the data is to aggregate our analytics at the entity level as
+        opposed to the sym level.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Having dispatched the query to the database/s, we now have our
+        data held in memory in the gateway, aggregated on a per-sym
+        basis. Assuming that all venues are trading in the same
+        currency, all that remains is for us to aggregate this data
+        further up to primary sym level. We will use configuration data
+        to define multi-market aggregation rules.
+      </fo:block>
+      <fo:block background-color="#EEE" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Multiple currencies </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          If the various venues trade in different currencies, we would
+          invoke a function in the gateway to convert all data to a
+          common currency prior to aggregation. This method assumes that
+          FX risk is hedged during the lifetime of the trade.
+        </fo:block></fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The method of aggregation is dependent on the analytic in
+        question. Therefore it is necessary for us to define these rules
+        in a q file. For a volume analytic, the consolidated volume is
+        simply the sum of the volume on all venues. The consolidated
+        figure for a maximum or minimum analytic will be the maximum or
+        minimum of all data points. We need to do a little more work
+        however for a weighted-average analytic such as a VWAP. Given a
+        set of VWAPs and volumes for a stock from different venues, the
+        consolidated VWAP is given by the formula:
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        ( Σ <fo:inline font-style="italic">vwap</fo:inline> × <fo:inline font-style="italic">volume</fo:inline> ) ÷
+        ( Σ <fo:inline font-style="italic">volume</fo:inline> )
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        It is evident that we need access to the venue volumes as well
+        as the individually-calculated VWAPs in order to weight the
+        consolidated analytic correctly. This means that when a
+        consolidated VWAP is requested, we need the query to return a
+        <fo:inline font-family="Pragmata Pro">volume</fo:inline> column as well as a
+        <fo:inline font-family="Pragmata Pro">vwap</fo:inline> column to our gateway.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Similarly, for a consolidated real-time snapshot of the midprice
+        (let’s call it <fo:inline font-family="Pragmata Pro">lastmidprice</fo:inline>), rather than
+        working out the mid price for a stock on each venue, we need to
+        return the last bid price and the last ask price on each venue.
+        We then take the maximum of the bid prices and the minimum of
+        the ask prices. This represents the tightest spread available
+        and from there we can work out a meaningful consolidated mid
+        price.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The knowledge required for additional column retrieval could be
+        implemented in a utility function,
+        <fo:inline font-family="Pragmata Pro">.util.extendExtraColParams</fo:inline>, prior to the
+        query dispatch.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Here we present a list of consolidation rules for a few common
+        analytics.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+.cfg.multiMarketAgg:()!();
+.cfg.multiMarketAgg[`volume]:"sum volume" 
+.cfg.multiMarketAgg[`vwap]:"wavg[volume;vwap]" 
+.cfg.multiMarketAgg[`range]: "(max maxprice)-(min minprice)" 
+.cfg.multiMarketAgg[`tickcount]:"sum tickcount" 
+.cfg.multiMarketAgg[`maxbid]:"max maxbid" 
+.cfg.multiMarketAgg[`minask]:"min minask" 
+.cfg.multiMarketAgg[`lastmidprice]:"((max lastbid)+(min lastask))%2"
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        With the consolidation rules defined, we can use them in the
+        final aggregation before presenting the data. The un-aggregated
+        data is presented as follows.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)res
+sym       volume    vwap    maxprice minprice lastbid lastask 
+--------------------------------------------------------------
+BARCl.BS  5202383   244.05  244.25   243.85   244      244.1
+BARCl.CHI 5847878   244.1   244.3    243.9    244.05   244.15
+BARC.L    30283638  244.1   244.3    243.9    244.05   244.15
+BARC.TQ   3928294   244.15  244.35   243.95   244.1    244.2
+VODl.BS   10342910  160.9   161.245  159.85   160.895  160.9
+VODl.CHI  10383645  160.9   161.5    159.85   160.89   160.895
+VOD.L     108378262 160.895 161.245  159.9    160.895  160.9
+VODl.TQ   10252838  160.895 161.245  159.89   160.895  160.9
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        We can now aggregate it through the use of a clever functional
+        select, utilizing q’s parse feature to bring our configured
+        aggregation rules into play. First, left-join the original
+        user-passed <fo:inline font-family="Pragmata Pro">symList</fo:inline> back to the results
+        table. This is the entity that we want to roll up to.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+res:lj[res;`sym xkey select sym:symList, origSymList from extended_syms]
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The result of this gives us the following table.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+sym       volume    vwap    maxprice minprice lastbid  lastask origSymList 
+--------------------------------------------------------------------------
+BARCl.BS  5202383   244.05  244.25   243.85   244      244.15  BARC.L
+BARCl.CHI 5847878   244.1   244.3    243.9    244.05   244.15  BARC.L
+BARC.L    30283638  244.1   244.3    243.9    244.05   244.15  BARC.L
+BARC.TQ   3928294   244.15  244.35   243.95   244.1    244.2   BARC.L
+VODl.BS   10342910  161.195 161.245  159.85   161.195  161.205 VOD.L
+VODl.CHI  10383645  161.19  161.25   159.85   161.195  161.21  VOD.L
+VOD.L     108378262 161.195 161.245  159.9    161.195  161.205 VOD.L
+VODl.TQ   10252838  161.195 161.245  159.9    161.195  161.205 VOD.L
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The final step is to aggregate by the originally supplied user
+        <fo:inline font-family="Pragmata Pro">symList</fo:inline>.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+/ aggregate by origSymList and rename this column to sym
+byClause:(enlist`sym)!enlist`origSymList;
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        We then look up the multimarket rules for the columns we are
+        interested in, use <fo:inline font-family="Pragmata Pro">-5!</fo:inline> to parse each string,
+        and create a dictionary mapping each column name to its
+        corresponding aggregation. This dictionary is required for the
+        final parameter into the functional select.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+aggClause:columns!-5!'.cfg.multiMarketAgg[columns:params`columns]
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Pragmata Pro">aggClause</fo:inline> is thus defined as:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+volume      | (sum;`volume)
+vwap        | (wavg;`volume;`vwap)
+range       | (-;(max;`maxprice);(min;`minprice))
+lastmidprice| (%;(+;(max;`lastbid);(min;`lastask));2)
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        And our functional select is constructed as follows:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+res:0!?[res;();byClause;aggClause];
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Giving the final result-set, the consolidated analytics, ready
+        to be passed back to the user:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+sym    volume    vwap     range  lastmidprice 
+---------------------------------------------
+BARC.L 45262193  244.0986 0.5.   244.125 
+VOD.L  139357655 161.1946 1.4    161.2
+</fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="conclusion">
+    <fo:block id="idm480930954032" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Conclusion</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This paper has described a methodology for analyzing data across
+      multiple liquidity sources in kdb+. The goal was to show how we
+      could aggregate tick data for a financial security from multiple
+      data sources or trading venues. The main features of a simple
+      analytics system were briefly outlined and we described how to
+      dispatch vanilla analytic requests from the gateway. The concept
+      of data filtering was then introduced and its importance when
+      aggregating time series data was outlined. After this, we
+      explained the role of reference data in a kdb+ system and how it
+      fits into the analytic framework. Armed with the appropriate
+      reference data and consolidation rules, we were then able to
+      dispatch relevant requests to our databases and aggregate the
+      results in the gateway in order to return consolidated analytics
+      to the user.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The framework was provided in the context of an equities analytics
+      system, but is extendable to other major asset classes as well as
+      electronically traded derivatives. In FX, the ECNs provided by
+      brokerages and banks act as the trading venues, and instead of
+      using the symbol suffix to differentiate between venues, one can
+      use a combination of the currency pair and the venue. Similarly in
+      commodities, provided there is enough liquidity in the instrument,
+      the same rules and framework can be applied. Other use cases, such
+      as aggregating positions, risk and P&amp;L from the desk or
+      regional level to the department level, could be implemented using
+      the same principles described in this paper.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      A script is provided in the Appendix below so that users can work
+      through the implementation described in this paper.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      All tests were performed with kdb+ 3.0 (2012.09.26)
+    </fo:block>
+  </fo:block>
+  <fo:block id="appendix">
+    <fo:block id="idm480930950256" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Appendix</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The code in this appendix can be found on Github at
+      
+      <fo:basic-link external-destination="url('https://github.com/kxcontrib/market-fragmentation')"><fo:inline color="#0070cd">kxcontrib/market-fragmentation</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">1</fo:inline><fo:footnote-body><fo:block font-size="8pt">1.
+									https://github.com/kxcontrib/market-fragmentation</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+////////////////////////////////
+// Set up configuration data
+////////////////////////////////
+
+.cfg.filterrules:()!();
+ .cfg.filterrules[`TM]:([venue:`LSE`BAT`CHI`TOR]
+                       qualifier:(
+                          `A`Auc`B`C`X`DARKTRADE`m;
+                          `A`AUC`B`c`x`D ARK;
+                          `a`auc`b`c`x`DRK;
+                          `A`Auc`B`C`X`DARKTRADE`m)
+                        );
+.cfg.filterrules[`OB]:([venue:`LSE`BAT`CHI`TOR]
+                       qualifier:(`A`Auc`B`C`m;`A`AUC`B`c;`a`auc`b`c;`A`A uc`B`C`m));
+.cfg.filterrules[`DRK]:([venue:`LSE`BAT`CHI`TOR]
+                         qualifier:`DARKTRADE`DARK`DRK`DARKTRADE);
+
+.cfg.symVenue:()!();
+.cfg.symVenue[`BARCl.BS]:`BAT;
+.cfg.symVenue[`BARCl.CHI]:`CHI;
+.cfg.symVenue[`BARC.L]:`LSE;
+.cfg.symVenue[`BARC.TQ]:`TOR;
+.cfg.symVenue[`VODl.BS]:`BAT;
+.cfg.symVenue[`VODl.CHI]:`CHI;
+.cfg.symVenue[`VOD.L]:`LSE;
+.cfg.symVenue[`VODl.TQ]:`TOR;
+
+.cfg.multiMarketMap:(
+  [sym:`BARCl.BS`BARCl.CHI`BARC.L`BARC.TQ`VODl.BS`VODl.CHI`VOD.L`VODl.TQ] 
+  primarysym:`BARC.L`BARC.L`BARC.L`BARC.L`VOD.L`VOD.L`VOD.L`VOD.L;
+  venue:`BAT`CHI`LSE`TOR`BAT`CHI`LSE`TOR);
+
+.cfg.multiMarketAgg:()!();
+.cfg.multiMarketAgg[`volume]:"sum volume"
+.cfg.multiMarketAgg[`vwap]:"wavg[volume;vwap]"
+.cfg.multiMarketAgg[`range]: "(max maxprice)-(min minprice)"
+.cfg.multiMarketAgg[`tickcount]:"sum tickcount"
+.cfg.multiMarketAgg[`maxbid]:"max maxbid"
+.cfg.multiMarketAgg[`minask]:"min minask"
+.cfg.multiMarketAgg[`lastmidprice]:"((max lastbid)+(min lastask))%2"
+
+.cfg.defaultParams:`startTime`endTime`filterRule`multiMarketRule!
+                   (08:30;16:30;`OB;`none);
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+////////////////////////////////
+// Analytic functions
+////////////////////////////////
+
+getIntervalData:{[params]
+    -1"Running getIntervalData for params: ",-3!params;
+    params:.util.applyDefaultParams[params]; 
+    if[params[`multiMarketRule]~`multi;
+        extended_syms:.util.extendSymsForMultiMarket[params`symList]; 
+        params:@[params;`symList;:;extended\_syms`symList];
+    ];
+
+res:select volume:sum[size], vwap:wavg[size;price], range:max[price]-min[price], 
+           maxprice:max price, minprice:min price,
+           maxbid:max bid, minask:min ask,
+           lastbid:last bid, lastask:last ask, lastmidprice:(last[bid]+last[ask])%2 
+    by sym from trade
+    where date=params[`date],
+          sym in params[`symList],
+          time within (params`startTime;params`endTime),
+          .util.validTrade[sym;qualifier;params`filterRule];
+
+if[params[`multiMarketRule]~`multi;
+    res:lj[res;`sym xkey select sym:symList, origSymList from extended_syms]; 
+    byClause:(enlist`sym)!enlist`origSymList;
+    aggClause:columns!-5!'.cfg.multiMarketAgg[columns:params`columns]; 
+    res:0!?[res;();byClause;aggClause];
+  ];
+  :(`sym,params[`columns])\#0!res
+};
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+////////////////////////////////
+// Utilities
+////////////////////////////////
+
+.util.applyDefaultParams:{[params]
+    .cfg.defaultParams,params
+    };
+
+.util.validTrade:{[sym;qualifier;rule] 
+    venue:.cfg.symVenue[sym];
+    validqualifiers:(.cfg.filterrules[rule]each venue)`qualifier; 
+    first each qualifier in' validqualifiers
+    };
+
+.util.extendSymsForMultiMarket:{[symList] 
+    distinct raze {update origSymList:x from
+                   select symList:sym from .cfg.multiMarketMap
+                   where primarysym in .cfg.multiMarketMap[x]`primarysym
+                   } each (),symList
+    }
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+////////////////////////////////
+// Generate trade data
+////////////////////////////////
+\P 6
+
+trade:([]date:`date$();sym:`$();time:`time$();price:`float$();size:`int$());
+
+pi:acos -1;
+/ Box-muller from kx.com/q/stat.q
+nor:{$[x=2*n:x div 2;raze sqrt[-2*log n?1f]*/:(sin;cos)@\:(2*pi)*n?1f;-1_.z.s 1+x]} 
+
+generateRandomPrices:{[s0;n] 
+    dt:1%365*1000;
+    timesteps:n; 
+    vol:.2; 
+    mu:.01;
+    randomnumbers:sums(timesteps;1)#(nor timesteps); 
+    s:s0*exp[(dt*mu-xexp[vol;2]%2) + randomnumbers*vol*sqrt[dt]]; 
+    raze s}
+
+n:1000;
+`trade insert (n#2013.01.15;
+               n?`BARCl.BS`BARCl.CHI`BARC.L`BARC.TQ; 
+               08:00:00.000+28800*til n;
+               generateRandomPrices[244;n]; 10*n?100000);
+
+`trade insert (n#2013.01.15;
+               n?`VODl.BS`VODl.CHI`VOD.L`VODl.TQ; 
+               08:00:00.000+28800*til n;
+               generateRandomPrices[161;n]; 
+               10*n?100000);
+
+/ add dummy qualifiers
+trade:{
+  update qualifier:1?.cfg.filterrules[`TM;.cfg.symVenue[sym]]`qualifier from x
+  } each trade;
+
+/ add dummy prevailing quotes 
+spread:0.01;
+update bid:price-0.5*spread, ask:price+0.5*spread from `trade;
+
+`time xasc `trade;
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+////////////////////////////////
+// Usage
+////////////////////////////////
+
+params:`symList`date`startTime`endTime`columns!(
+    `VOD.L`BARC.L; 
+    2013.01.15;
+    08:30;
+    09:30;
+    `volume`vwap`range`maxbid`minask`lastmidprice);
+
+/ default, filterRule=orderbook &amp; multiMarketRule=none 
+a:getIntervalData params;
+
+/ change filterRule from 'orderbook' to 'total market' 
+b:getIntervalData @[params;`filterRule;:;`TM];
+
+/ change multiMarketRule from 'none' to 'multi' to get consolidated analytics 
+c:getIntervalData @[params;`multiMarketRule;:;`multi];
+</fo:block>
+  </fo:block>
+</fo:block></fo:flow></fo:page-sequence></fo:root>

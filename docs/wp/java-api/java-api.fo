@@ -1,0 +1,1622 @@
+<?xml version="1.0"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:db="http://docbook.org/ns/docbook" xmlns:rx="http://www.renderx.com/XSL/Extensions" xmlns:xlink="http://www.w3.org/1999/xlink"><rx:meta-info><rx:meta-field name="author" value="&#10;        Peter&#10;        Lyness&#10;      "/><rx:meta-field name="creator" value="Kx Systems"/><rx:meta-field name="title" value="Java API for kdb+"/><rx:meta-field name="keywords" value="Kx, Kx Systems, kdb+, API, Java, interface, connection"/></rx:meta-info><rx:outline><rx:bookmark internal-destination="java-api-for-kdb"><rx:bookmark-label>Java API for kdb+</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="api-overview"><rx:bookmark-label>API overview</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="models-and-type-mapping"><rx:bookmark-label>Models and type mapping</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="practical-use-case-examples"><rx:bookmark-label>Practical use-case examples</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="connecting-to-a-kdb-process"><rx:bookmark-label>Connecting to a kdb+ process</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="extracting-data-from-returned-objects"><rx:bookmark-label>Extracting data from returned objects</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="creating-and-passing-data-objects"><rx:bookmark-label>Creating and passing data objects</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="reconnecting-to-a-q-process-automatically"><rx:bookmark-label>Reconnecting to a q process automatically</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="kdb-tickerplant-overview"><rx:bookmark-label>Kdb+ tickerplant overview</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="tickerplant-subscription"><rx:bookmark-label>Tickerplant subscription</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="tickerplant-publishing"><rx:bookmark-label>Tickerplant publishing</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="connecting-from-kdb-to-a-java-process"><rx:bookmark-label>Connecting from kdb+ to a Java process</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="conclusion"><rx:bookmark-label>Conclusion</rx:bookmark-label></rx:bookmark></rx:outline><fo:layout-master-set><fo:simple-page-master master-name="cover-page" page-width="210mm" page-height="297mm"><fo:region-body margin-top="0" margin-bottom="0" margin-left="0" margin-right="0" background-color="#eeeded"/></fo:simple-page-master><fo:simple-page-master master-name="toc" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="60pt" margin-right="60pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master><fo:simple-page-master master-name="standard-page" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="40pt" margin-right="40pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master></fo:layout-master-set><fo:page-sequence master-reference="cover-page" font-family="STIX2" initial-page-number="1" language="en" country="gb"><fo:flow flow-name="xsl-region-body"><fo:block-container absolute-position="absolute" top="0mm" right="0mm" width="2in" height="2in"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-white.png)" content-width="40mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" left="0mm" width="2.5in" height="30mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-bottom-left-white.png)" content-width="50mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" right="0mm" width="4in" height="50mm"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/kx-cover.png)" content-width="75mm"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="35mm" left="15mm"><fo:block color="#0070cd" font-family="Proxima Nova" font-size="60pt" font-weight="bold" letter-spacing="-4pt">kx</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="40mm" left="40mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/its-about-time.png)"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="80mm" left="35mm"><fo:block font-family="Proxima Nova" color="#0070cd" font-size="18pt" font-weight="400">
+							Technical Whitepaper
+						</fo:block><fo:block margin-top="9pt" font-size="24pt" font-weight="400">Java API for kdb+</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Date</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left">May 2018</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Author</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left"><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Peter Lyness
+    </fo:block></fo:block></fo:block-container><fo:block> </fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="toc" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Java API for kdb+</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block break-before="page"><fo:block font-size="14pt" text-align="center" margin-top="36pt" margin-bottom="36pt">Contents</fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661709280">Java API for kdb+ <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661709280"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661702704">API overview <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661702704"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661670784">Models and type mapping <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661670784"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661587840">Practical use-case examples <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661587840"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661584688">Connecting to a kdb+ process <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661584688"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661555968">Extracting data from returned objects <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661555968"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661527760">Creating and passing data objects <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661527760"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661497888">Reconnecting to a q process automatically <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661497888"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661490688">Kdb+ tickerplant overview <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661490688"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661475872">Tickerplant subscription <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661475872"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661452624">Tickerplant publishing <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661452624"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661427376">Connecting from kdb+ to a Java process <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661427376"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm6661410576">Conclusion <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm6661410576"/></fo:basic-link></fo:block></fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="standard-page" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Java API for kdb+</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-footnote-separator"><fo:block><fo:leader leader-pattern="rule" rule-thickness=".5pt" leader-length="50%"/></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block id="java-api-for-kdb">
+  <fo:block id="idm6661709280" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Java API for kdb+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The Java programming language has been consistently popular for two
+    decades, and is important in many development environments. Its
+    longevity, and the compatibility of code between versions and
+    operating systems, leaves the landscape of Java applications in many
+    industries very much divided between new offerings and
+    long-established legacy code.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Financial technology is no exception. Competition in this
+    risk-averse domain drives it to push against boundaries. Production
+    systems inevitably mix contemporary and legacy code. Because of
+    this, developers need tools for communication and integration.
+    Implementation risks must be kept to a strict minimum. Kx technology
+    is well-equipped for this issue. By design kdb+’s communication with
+    external processes is kept simple, and reinforced with interface
+    libraries for other languages.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The Java API for kdb+ is a Java library. It fits easily in any Java
+    application as an interface to kdb+ processes. As with any API,
+    potential use cases are many. To introduce kdb+ gradually into a
+    wider system, such an interface is essential for any interaction
+    with Java processes, upstream or downstream. The straightforward
+    implementation keeps changes to legacy code lightweight, reducing
+    the risk of wider system issues arising as kdb+ processes are
+    introduced.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This paper illustrates how the Java API for kdb+ can be used to
+    enable a Java program to interact with a kdb+ process. It first
+    explores the API itself: how it is structured, and how it might be
+    included in a development project. Examples are then provided for
+    core use cases for the API in a standard setup. Particular
+    consideration is given to how the API facilitates subscription and
+    publication to a kdb+ tickerplant process, a core component of any
+    kdb+ tick-capture system.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The examples presented here form a set of practical templates
+    complementary to the
+    <fo:basic-link external-destination="url('http://code.kx.com/q/interfaces/java-client-for-q')"><fo:inline color="#0070cd">primary source of
+    information</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">1</fo:inline><fo:footnote-body><fo:block font-size="8pt">1.
+									http://code.kx.com/q/interfaces/java-client-for-q</fo:block></fo:footnote-body></fo:footnote> on code.kx.com. These templates can be combined
+    and adapted to apply kdb+ across a broad range of problem domains.
+    They are available on 
+    <fo:basic-link external-destination="url('https://github.com/kxcontrib/javaapi')"><fo:inline color="#0070cd">GitHub</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">2</fo:inline><fo:footnote-body><fo:block font-size="8pt">2.
+									https://github.com/kxcontrib/javaapi</fo:block></fo:footnote-body></fo:footnote>.
+  </fo:block>
+</fo:block><fo:block id="api-overview">
+  <fo:block id="idm6661702704" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">API overview</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The API is contained in a 
+    <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java')"><fo:inline color="#0070cd">single
+    source file</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">3</fo:inline><fo:footnote-body><fo:block font-size="8pt">3.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java</fo:block></fo:footnote-body></fo:footnote> on GitHub. Inclusion in a development project is,
+    therefore, a straightforward matter of including the file with other
+    source code under the package <fo:inline font-family="Pragmata Pro">kx</fo:inline>, and ensuring it
+    is properly imported and referenced by other classes. If preferred,
+    it can be compiled separately into a class or JAR file to be
+    included in the classpath for use as an external library or uploaded
+    to a local repository for build integration.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    As the API is provided as source, it is perfectly possible to
+    customize code to meet specific requirements. However, without prior
+    knowledge of how the interactions work, this is not advised unless
+    the solution to these requirements or issues are known. It is also
+    possible, and in some contexts encouraged, to wrap the functionality
+    of this class within a model suitable for your framework. An example
+    might be the open-source 
+    <fo:basic-link external-destination="url('https://github.com/exxeleron/qJava')"><fo:inline color="#0070cd">qJava
+    library</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">4</fo:inline><fo:footnote-body><fo:block font-size="8pt">4.
+									https://github.com/exxeleron/qJava</fo:block></fo:footnote-body></fo:footnote>. Although it is not compatible with the most recent
+    kdb+ version at the time of writing, it shows how to use
+    <fo:inline font-family="Pragmata Pro">c.java</fo:inline> as a core over which an object-oriented
+    framework of q types and functionality has been applied.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The source file is structured as a single outer class,
+    <fo:inline font-family="Pragmata Pro">c</fo:inline>. Within it, a number of constants and inner
+    classes together model an environment for sending and receiving data
+    from a kdb+ process. This section explores the fundamentals of the
+    class to provide context and understanding of practical use-cases
+    for the API.
+  </fo:block>
+  <fo:block id="connection-and-interface-logic">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Connection and interface logic</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The highly-recommended means of connecting to a kdb+ process using
+      the API is through instantiation of the <fo:inline font-family="Pragmata Pro">c</fo:inline>
+      object itself. Three constructors provide for this purpose:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public c(String host,int port,String usernamepassword) 
+public c(String host,int port,String usernamepassword,boolean useTLS)
+public c(String host,int port)
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      These constructors are straightforward to use. The host and port
+      specify a socket-object connection, with the username/password
+      string serialized and passed to the remote instance for
+      authorization. The core logic is the same for all; the
+      host/port-only constructor attempts to retrieve the user string
+      from the Java properties, and the constructor with the
+      <fo:inline font-family="Pragmata Pro">useTLS</fo:inline> boolean will, when flagged true, attempt
+      to use an SSL socket instead of an ordinary socket.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      It is also possible to set up the object to accept incoming
+      connections from kdb+ processes rather than just making them.
+      There are two constructors which, when passed a server socket
+      reference, will allow a q session to establish a handle against
+      the <fo:inline font-family="Pragmata Pro">c</fo:inline> object:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public c(ServerSocket s)
+public c(ServerSocket s,IAuthenticate a)
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-family="Pragmata Pro">IAuthenticate</fo:inline> is an interface within the
+      <fo:inline font-family="Pragmata Pro">c</fo:inline> class that can be implemented to emulate kdb+
+      server-side authentication, allowing the establishment of
+      authentication rules similar to that which might be done through
+      the kdb+ function
+      <fo:basic-link external-destination="url('http://code.kx.com/q/ref/dotz/#zpw-validate-user')"><fo:inline color="#0070cd">.z.pw</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">5</fo:inline><fo:footnote-body><fo:block font-size="8pt">5.
+									http://code.kx.com/q/ref/dotz/#zpw-validate-user</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Both of these constructor families represent two
+      
+		‘modes’
+	 in which the <fo:inline font-family="Pragmata Pro">c</fo:inline> object can
+      be instantiated. The first, and ultimately most widely used, is
+      for making connections to kdb+ processes, which naturally would be
+      used for queries, subscriptions and any task that requires the
+      reception of or sending of data to said processes. The second,
+      which sees Java act as the server, would see utility in management
+      and aggregation of kdb+ clients, perhaps as a data sink or an
+      intermediary interface for another technology.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Interactions between Java and kdb+ through these connections are
+      largely handled by what might be called the 
+		‘k’
+	
+      family of methods in the <fo:inline font-family="Pragmata Pro">c</fo:inline> class. There are
+      thirteen combined methods and overloads that fall under this
+      group. They can be divided roughly into four groups:
+    </fo:block>
+  </fo:block>
+  <fo:block id="synchronous-query-methods">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Synchronous query methods</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public Object k(String expr)
+public Object k(String s,Object x)
+public Object k(String s,Object x,Object y)
+public void k(String s,Object x,Object y,Object z)
+public synchronized Object k(Object x)
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      These methods are responsible for handling synchronous queries to
+      a kdb+ process. The String parameter will represent either the
+      entire q expression or the function name; in the case of the
+      latter, the Object parameters may be used to pass values into that
+      function. In all instances, the String/Object combinations are
+      merged into a single object to be passed to the synchronized
+      <fo:inline font-family="Pragmata Pro">k(Object)</fo:inline> method.
+    </fo:block>
+  </fo:block>
+  <fo:block id="asynchronous-query-methods">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Asynchronous query methods</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public void ks(String expr)
+public void ks(String s,Object x)
+public void ks(String s,Object x,Object y)
+public void ks(String s,Object x,Object y,Object z)
+public void ks(Object obj)
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      These methods are responsible for handling asynchronous queries to
+      a kdb+ process. They operate logically in a similar manner to the
+      synchronous query method, with the exception that they are, of
+      course, void methods in that they neither wait for nor return any
+      response from the process.
+    </fo:block>
+  </fo:block>
+  <fo:block id="incoming-message-method">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Incoming message method</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public Object k()
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This method waits on the class input stream and will deserialize
+      the next incoming kdb+ message. It is used by the
+      <fo:inline font-family="Pragmata Pro">c</fo:inline> synchronous methods in order to capture and
+      return response objects, and is also used in server-oriented
+      applications in order to capture incoming messages from client
+      processes.
+    </fo:block>
+  </fo:block>
+  <fo:block id="response-message-methods">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Response message methods</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public void kr(Object obj)
+public void ke(String text)
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      These methods are typically used in server-oriented applications
+      to serialize and write response messages to the class output
+      stream. <fo:inline font-family="Pragmata Pro">kr(Object)</fo:inline> will act much like any
+      synchronous response, while <fo:inline font-family="Pragmata Pro">ke(String)</fo:inline> will
+      format and output an error message.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The use of these constructors and methods will be treated in more
+      practical detail through the use-case examples below.
+    </fo:block>
+  </fo:block>
+</fo:block><fo:block id="models-and-type-mapping">
+  <fo:block id="idm6661670784" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Models and type mapping</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The majority of q data types are represented in the API through
+    mapping to standard Java objects. This is best seen in the method
+    <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L709')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">c.r()</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">6</fo:inline><fo:footnote-body><fo:block font-size="8pt">6.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L709</fo:block></fo:footnote-body></fo:footnote>,
+    which reads bytes from an incoming message and converts those bytes
+    into representative Java types.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    A
+    <fo:basic-link external-destination="url('http://code.kx.com/q/interfaces/java-client-for-q/#type-mapping')"><fo:inline color="#0070cd">full
+    list of Java type mappings</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">7</fo:inline><fo:footnote-body><fo:block font-size="8pt">7.
+									http://code.kx.com/q/interfaces/java-client-for-q/#type-mapping</fo:block></fo:footnote-body></fo:footnote> is on code.kx.com.
+  </fo:block>
+  <fo:block id="basic-types">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Basic types</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The method <fo:inline font-family="Pragmata Pro">c.r()</fo:inline> deserializes a stream of bytes
+      within a certain range to point to further methods which return
+      the appropriate typed object. These are largely self-explanatory,
+      such as booleans and integer primitives mapping directly to one
+      another, or q UUIDs mapping to <fo:inline font-family="Pragmata Pro">java.util.UUID</fo:inline>.
+      There are some types with caveats, however:
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          The kdb+ float type (9) corresponds to
+          <fo:inline font-family="Pragmata Pro">java.lang.Double</fo:inline> and
+          <fo:inline font-style="italic">not</fo:inline> <fo:inline font-family="Pragmata Pro">java.lang.Float</fo:inline>,
+          which corresponds to the kdb+ real type (8).
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Java strings map to the kdb+ symbol type (11). In terms of
+          reading or passing in data, this means that passing
+          <fo:inline font-family="Pragmata Pro">"String"</fo:inline> from Java to kdb would
+          result in <fo:inline font-family="Pragmata Pro">`String</fo:inline>. Conversely, passing
+          <fo:inline font-family="Pragmata Pro">"String"</fo:inline> (type 10 list) from kdb
+          to Java would result in a six-index character array.
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+  </fo:block>
+  <fo:block id="time-based-types">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Time-based types</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Of particular interest is how the mapping handles temporal types,
+      of which there are eight:
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              q type
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              id
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              Java type
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              note
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              datetime
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              15
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">java.util.Date</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              This Java class stores times as milliseconds passed since
+              the Unix epoch. Therefore, like the q datetime, it can
+              represent time information accurate to the millisecond.
+              (This despite the default output format of the class).
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              date
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              14
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              java.sql.Date
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              While this Java class extends the
+              <fo:inline font-family="Pragmata Pro">java.util</fo:inline> date object it is used
+              specifically for the date type as it restricts usage and
+              output of time data.
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              time
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              19
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">java.sql.Time</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              This also extends <fo:inline font-family="Pragmata Pro">java.util.Date</fo:inline>,
+              restricting usage and output of date data this time.
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              timestamp
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              12
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">java.sql.Timestamp</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              This comes yet again from the base date class, extended
+              this time to include nanoseconds storage (which is done
+              separately from the underlying date object, which only has
+              millisecond accuracy). This makes it directly compatible
+              with the q timestamp type.
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              month
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              13
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              inner class
+              <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L300')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">c.Month</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">8</fo:inline><fo:footnote-body><fo:block font-size="8pt">8.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L300</fo:block></fo:footnote-body></fo:footnote>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              timespan
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              16
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              inner class
+              <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L376')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">c.Timespan</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">9</fo:inline><fo:footnote-body><fo:block font-size="8pt">9.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L376</fo:block></fo:footnote-body></fo:footnote>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              minute
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              17
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              inner class
+              <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L326')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">c.Minute</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">10</fo:inline><fo:footnote-body><fo:block font-size="8pt">10.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L326</fo:block></fo:footnote-body></fo:footnote>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              second
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              18
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              inner class
+              <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L351')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">c.Second</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">11</fo:inline><fo:footnote-body><fo:block font-size="8pt">11.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L351</fo:block></fo:footnote-body></fo:footnote>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      When manipulating date, time and datetime data from kdb+ it is
+      important to note that while <fo:inline font-family="Pragmata Pro">java.sql.Date</fo:inline> and
+      <fo:inline font-family="Pragmata Pro">Time</fo:inline> extend <fo:inline font-family="Pragmata Pro">java.util.Date</fo:inline>,
+      and can be assigned to a <fo:inline font-family="Pragmata Pro">java.util</fo:inline> reference,
+      that many of the methods from the original date class are
+      overridden in these to throw exceptions if invoked. For example,
+      in order to create a single date object for two separate SQL Date
+      and Time objects, a <fo:inline font-family="Pragmata Pro">java.util.Date</fo:inline> object
+      should be instantiated by adding the <fo:inline font-family="Pragmata Pro">getTime()</fo:inline>
+      values from both SQL objects:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Date value = datetime - time
+java.sql.Date sqlDate = (java.sql.Date)qconn.k(".z.d"); 
+// Time value - datetime - date
+java.sql.Time sqlTime = (java.sql.Time)qconn.k(".z.t"); 
+java.util.Date utilDate= new java.util.Date(sqlDate.getTime()+sqlTime.getTime());
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The four time types represented by inner classes are somewhat less
+      prevalent than those modeled by Date and its subclasses. These
+      classes exist as comparable models due to a lack of a clear
+      representative counterpart in the standard Java library, although
+      their modeling is for the large part fairly simple and the values
+      can be easily implemented or extracted.
+    </fo:block>
+  </fo:block>
+  <fo:block id="dictionaries-and-tables">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Dictionaries and tables</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Kdb+ dictionaries (type 99) and tables (type 98) are represented
+      by the internal classes Dict and Flip respectively. The makeup of
+      these models is simple but effective, and useful in determining
+      how best to manipulate them.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L427')"><fo:inline color="#0070cd">The
+      Dict class</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">12</fo:inline><fo:footnote-body><fo:block font-size="8pt">12.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L427</fo:block></fo:footnote-body></fo:footnote> consists of two public
+      <fo:inline font-family="Pragmata Pro">java.lang.Object</fo:inline> fields (<fo:inline font-family="Pragmata Pro">x</fo:inline>
+      for keys, <fo:inline font-family="Pragmata Pro">y</fo:inline> for values) and a basic
+      constructor, which allows any of the represented data types to be
+      used. However, while from a Java perspective any object could be
+      passed to the constructor, dictionaries in q are always structured
+      as two lists. This means that if the object is being created to
+      pass to a q session directly, the Object fields in a Dict object
+      should be assigned arrays of a given representative type, as
+      passing in an atomic object will result in an error.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For example, the first of the following dictionary instantiation
+      is legal with regards to the Java object, but because the pairs
+      being passed in are atomic, it would signal a type error in q.
+      Instead, the second example should be used, and can be seen as
+      mirroring the practice of enlisting single values in q:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+new c.Dict("Key","Value"); // not q-compatible
+new c.Dict(new String[] {"Key"}, new String[] {"Value"}); // q-compatible
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      As the logical extension of that, in order to represent a list as
+      a single key or pair, multi-dimensional arrays should be used:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+new c.Dict(new String[] {"Key"}, new String[][] {{"Value1","Value2","Value3"}});
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L440')"><fo:inline color="#0070cd">Flip
+      (table) objects</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">13</fo:inline><fo:footnote-body><fo:block font-size="8pt">13.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L440</fo:block></fo:footnote-body></fo:footnote> consist of a String array for columns, an
+      Object array for values, a constructor and a method for returning
+      the Object array for a given column. The constructor takes a
+      dictionary as its parameter, which is useful for the conversion of
+      one to the other should the dictionary in question consist of
+      single symbol keys. Of course, with the fields of the class being
+      public, the columns and values can be assigned manually.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Keyed tables in q are dictionaries in terms of type, and therefore
+      will be represented as a Dict object in Java. The method
+      <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L1396')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">td(Object)</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">14</fo:inline><fo:footnote-body><fo:block font-size="8pt">14.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L1396</fo:block></fo:footnote-body></fo:footnote>
+      will create a Flip object from a keyed table Dict, but will remove
+      its keyed nature in the process.
+    </fo:block>
+  </fo:block>
+  <fo:block id="guid">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">GUID</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The globally unique identifier (GUID) type was introduced into
+      kdb+ with version 3.0 for the purpose of storing arbitrary 16-byte
+      values, such as transaction IDs. Storing such values in this form
+      allows for savings in tasks such as memory and storage usage, as
+      well as improved performance in certain operations such as table
+      lookups when compared with standard types such as Strings.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Java has its own unique identifier type:
+      <fo:inline font-family="Pragmata Pro">java.util.UUID</fo:inline> (universally unique identifier).
+      In the API the kdb+ GUID type maps directly to this object through
+      the extraction and provision of its most and least significant
+      long values. Otherwise, the only high-level difference in how this
+      type can be used when compared to other types handled by the API
+      is that a <fo:inline font-family="Pragmata Pro">RuntimeException</fo:inline> will be thrown if an
+      attempt is made to serialize and pass a UUID object to a kdb+
+      instance with a version lower than 3.0.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      More information on these identifier types can be found in the
+      <fo:basic-link external-destination="url('http://code.kx.com/q/ref/datatypes/#guid')"><fo:inline color="#0070cd">Kx documentation</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">15</fo:inline><fo:footnote-body><fo:block font-size="8pt">15.
+									http://code.kx.com/q/ref/datatypes/#guid</fo:block></fo:footnote-body></fo:footnote> as
+      well as the
+      <fo:basic-link external-destination="url('https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html')"><fo:inline color="#0070cd">core
+      Java documentation</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">16</fo:inline><fo:footnote-body><fo:block font-size="8pt">16.
+									https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+  </fo:block>
+  <fo:block id="null-types">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Null types</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Definitions for q null type representations in Java are held in
+      the static Object array <fo:inline font-family="Pragmata Pro">NULL</fo:inline>, with index
+      positions representing the q type.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public static Object[] NULL={
+    null,
+    new Boolean(false),
+    new UUID(0,0),
+    null,
+    new Byte((byte)0),
+    new Short(Short.MIN_VALUE),
+    new Integer(ni),
+    new Long(nj),
+    new Float(nf),
+    new Double(nf),
+    new Character(' '),
+    "",
+    new Timestamp(nj),
+    new Month(ni)
+    ,new Date(nj),
+    new java.util.Date(nj),
+    new Timespan(nj),
+    new Minute(ni),
+    new Second(ni),
+    new Time(nj)
+};
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Of note are the integer types, as the null values for these are
+      represented by the minimum possible value of each of the Java
+      primitives. Shorts, for example, have a minimum value of -372768
+      in Java, but a minimum value of -372767 in q. The extra negative
+      value in Java can therefore be used to signal a null value to the
+      q connection logic in the <fo:inline font-family="Pragmata Pro">c</fo:inline> class.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Float and real nulls are both represented in Java by the
+      <fo:inline font-family="Pragmata Pro">java.lang.Double.NaN</fo:inline> constant. Time values,
+      essentially being longs under the bonnet, are represented by the
+      same null value as longs in Java. Month, minute, second and
+      timespan, each with custom model classes, use the same null value
+      as ints.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The method
+      <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L1355')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">c.qn(Object)</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">17</fo:inline><fo:footnote-body><fo:block font-size="8pt">17.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L1355</fo:block></fo:footnote-body></fo:footnote>
+      can assist with checking and identifying null value
+      representations, as it will check both the
+      <fo:inline font-family="Pragmata Pro">Object</fo:inline> type and value against the
+      <fo:inline font-family="Pragmata Pro">NULL</fo:inline> list.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      It is worth noting that infinity types are not explicitly mapped
+      in Java, although kdb+ float and real infinities will correspond
+      with the infinity constants in <fo:inline font-family="Pragmata Pro">java.lang.Double</fo:inline>
+      and <fo:inline font-family="Pragmata Pro">java.lang.Float</fo:inline> respectively.
+    </fo:block>
+  </fo:block>
+  <fo:block id="exceptions">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Exceptions</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L457')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">KException</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">18</fo:inline><fo:footnote-body><fo:block font-size="8pt">18.
+									https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L457</fo:block></fo:footnote-body></fo:footnote>
+      is the single custom exception defined and thrown by the API. It
+      is fairly safe to assume that a thrown
+      <fo:inline font-family="Pragmata Pro">KException</fo:inline> denotes a q error signal, which will
+      be included in the exception message when thrown.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Other common exceptions thrown in the API logic include:
+    </fo:block>
+    <fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+          IOException
+        </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            Denotes issues with connecting to the kdb+ process. It is
+            also thrown by <fo:inline font-family="Pragmata Pro">c.java</fo:inline> itself for such
+            issues as authentication.
+          </fo:block>
+        </fo:block><fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+          RuntimeException
+        </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            Thrown when certain type implementations are attempted on
+            kdb+ versions prior to their introduction (such as the GUIDs
+            prior to kdb+ 3.0)
+          </fo:block>
+        </fo:block><fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+          UnsupportedEncodingException
+        </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            It is possible, through the method
+            <fo:inline font-family="Pragmata Pro">setEncoding</fo:inline>, to specify character
+            encoding different to the default
+            (<fo:inline font-family="Pragmata Pro">ISO-859-1</fo:inline>). This exception will be
+            thrown commonly if the default is changed to a charset
+            format not implemented on the target Java platform.
+          </fo:block>
+        </fo:block>
+  </fo:block>
+</fo:block><fo:block id="practical-use-case-examples">
+  <fo:block id="idm6661587840" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Practical use-case examples</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The examples that follow consist of common practical tasks that a
+    Java developer might be expected to carry out when interfacing with
+    kdb+. The inline examples take the form of extracted sections of key
+    logic and output, and are available as example classes from the
+    <fo:basic-link external-destination="url('https://github.com/KxSystems/javakdb/tree/master/src/kx/examples')"><fo:inline color="#0070cd">KxSystems/javakdb</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">19</fo:inline><fo:footnote-body><fo:block font-size="8pt">19.
+									https://github.com/KxSystems/javakdb/tree/master/src/kx/examples</fo:block></fo:footnote-body></fo:footnote>
+    repository for use as starting points or templates.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    These examples assume, at minimum, a standard installation of 32-bit
+    kdb+ on the local system, and a suitable Java development
+    environment.
+  </fo:block>
+</fo:block><fo:block id="connecting-to-a-kdb-process">
+  <fo:block id="idm6661584688" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Connecting to a kdb+ process</fo:block>
+  <fo:block id="starting-a-local-q-server">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Starting a local q server</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      During development, it can be helpful to start a basic q server to
+      which a Java process can connect. This requires the opening of a
+      port, for which there are two basic methods:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: Starting q with <fo:inline font-family="Pragmata Pro">–p</fo:inline> parameter
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+$ q -p 10000
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+q)\p // command to show the port that q is listening on
+10000i
+</fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: Using the <fo:inline font-family="Pragmata Pro">\p</fo:inline> system command
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+$ q
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+q)\p 10000 // set the listening port to 10000
+q)\p
+10000i
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      To close the port, it should be set to its default value of 0 i.e.
+      <fo:inline font-family="Pragmata Pro">\p 0</fo:inline>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Setting up a q session in this manner will allow other processes
+      to open handles to it on the specified port. The remainder of the
+      examples in this paper assume an opened q session listening on
+      port 10000, with no further configuration unless otherwise
+      specified.
+    </fo:block>
+  </fo:block>
+  <fo:block id="opening-a-socket-connection">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Opening a socket connection</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      As discussed in the previous section, the <fo:inline font-family="Pragmata Pro">c</fo:inline>
+      class establishes connections via its constructors.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For connecting to a listening q process, one useful mechanism
+      might be to create a factory class with a method that returns a
+      connected <fo:inline font-family="Pragmata Pro">c</fo:inline> object based on what is passed to
+      it. This way, any number of credential combinations can be set
+      whilst allowing the creation of multiple connections, say for
+      reconnection purposes:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">QConnectionFactory.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public QConnectionFactory(String host, int port, 
+    String username, String password, boolean useTLS) {
+  this.host=host;
+  this.port=port;
+  this.username=username;
+  this.password=password;
+  this.useTLS=useTLS;
+}
+
+//[…]
+
+public c getQConnection() throws KException, IOException {
+  return new c(host,port,username+":"+password,useTLS);
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      These constructors will always return a <fo:inline font-family="Pragmata Pro">c</fo:inline>
+      object connected to the target session, and failure to do so will
+      result in a thrown exception; <fo:inline font-family="Pragmata Pro">IOException</fo:inline> will
+      denote the port not being open or available, and a
+      <fo:inline font-family="Pragmata Pro">KException</fo:inline> will denote something wrong with the
+      q process itself (such as <fo:inline font-family="Pragmata Pro">'access</fo:inline> for incorrect
+      or incomplete credentials).
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For the remaining examples, connections will be made using a
+      custom <fo:inline font-family="Pragmata Pro">QConnectionFactory</fo:inline> object returned from
+      a static method <fo:inline font-family="Pragmata Pro">getDefault()</fo:inline>, which will
+      instantiate the object with the host <fo:inline font-family="Pragmata Pro">localhost</fo:inline>
+      and the port 10000:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">QConnectionFactory.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+public static QConnectionFactory getDefault() {
+  return new QConnectionFactory("localhost", 10000);
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Connection objects created using this will be given the variable
+      name <fo:inline font-family="Pragmata Pro">qConnection</fo:inline> unless otherwise stated.
+    </fo:block>
+  </fo:block>
+  <fo:block id="running-queries-using-k-methods">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Running queries using k methods</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Queries can be made using the 
+		‘k’
+	 family of methods
+      in the <fo:inline font-family="Pragmata Pro">c</fo:inline> class. For synchronous queries, that
+      might be used to retrieve data (or, more generally, to halt
+      execution of the java process until a response is received), the k
+      methods with parameter combinations of strings and objects might
+      be used. For asynchronous queries, as might be used in a
+      feed-handler process to push data to a tickerplant, the
+      <fo:inline font-family="Pragmata Pro">ks</fo:inline> methods would be used.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The methods <fo:inline font-family="Pragmata Pro">k()</fo:inline>, <fo:inline font-family="Pragmata Pro">kr()</fo:inline> and
+      <fo:inline font-family="Pragmata Pro">ke()</fo:inline> would not see explicit use in the querying
+      of a server q process, but are more significant when the Java
+      process acts as the server, as will be touched upon below.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The following examples demonstrate some of the means by which
+      these synchronous and asynchronous queries may be called:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">SimpleQueryExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Object for storing the results of these queries
+Object result = null;
+
+//Basic synchronous q expression
+result = qConnection.k("{x+y}\[4;3\]");
+System.out.println(result.toString());
+
+//parameterised synchronous query
+result = qConnection.k("{x+y}",4,3); //Note autoboxing!
+System.out.println(result.toString());
+
+//asynchronous assignment of function
+qConnection.ks("jFunc:{x-y+z}");
+
+//synchronous calling of that function
+result = qConnection.k("jFunc",10,4,3);
+System.out.println(result);
+
+//asynchronous error - note no exception can be returned, so be careful!
+qConnection.ks("{x+y}\[4;3;2\]");
+
+//Always close resources\!
+qConnection.close(); 
+</fo:block>
+  </fo:block>
+</fo:block><fo:block id="extracting-data-from-returned-objects">
+  <fo:block id="idm6661555968" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Extracting data from returned objects</fo:block>
+  <fo:block id="note-on-internal-variables-and-casting">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Note on internal variables and casting</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The relationship between the kdb+ types and their Java
+      counterparts has been discussed in the previous section. From a
+      practical perspective, it is important to note that almost all
+      objects and fields that might return from a given synchronous
+      query will be of type Object, and will therefore more often than
+      not require casting in order to be manipulated properly. Care must
+      be taken, therefore, to ensure that the types that can be returned
+      from a given query are known and handled appropriately so as to
+      avoid unwanted exceptions.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The exception to this might be the column names of a
+      <fo:inline font-family="Pragmata Pro">flip</fo:inline> object (once cast itself) held in the
+      field <fo:inline font-family="Pragmata Pro">flip.x</fo:inline>. This field is already typed as
+      <fo:inline font-family="Pragmata Pro">String[]</fo:inline>, as column names must always be
+      symbols in q.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Kdb+ types that map to primitives (such as int) can be passed in
+      Java to a <fo:inline font-family="Pragmata Pro">k</fo:inline> method as a primitive thanks to
+      <fo:basic-link external-destination="url('https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html')"><fo:inline color="#0070cd">autoboxing</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">20</fo:inline><fo:footnote-body><fo:block font-size="8pt">20.
+									https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html</fo:block></fo:footnote-body></fo:footnote>,
+      but will always be returned as the corresponding wrapper object
+      (such as Integer).
+    </fo:block>
+  </fo:block>
+  <fo:block id="extracting-atoms-from-a-list">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Extracting atoms from a list</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Lists will always be returned as an array of the given list type,
+      or as <fo:inline font-family="Pragmata Pro">Object[]</fo:inline> if the list is generic.
+      Extraction of atomic values from a list, therefore, is as simple
+      as casting the return object to the appropriate array type and
+      accessing the desired index:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">ExtractionExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Get a list from the q session
+Object result = qConnection.k("(1 2 3 4)");
+
+//Cast the returned Object into long[], and retrieve the desired result.
+long[] castList = ((long[]) result);
+long extractedAtom = castList[0];
+System.out.println(extractedAtom);
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      If the type of list is unknown, the method
+      <fo:inline font-family="Pragmata Pro">c.t(Object)</fo:inline> can be used to derive the q type of
+      the object, and theoretically could be useful in further casting
+      efforts.
+    </fo:block>
+  </fo:block>
+  <fo:block id="extracting-lists-from-a-nested-list">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Extracting lists from a nested list</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Accessing a list from a nested list is similar to accessing a
+      value from any list. Here there are two casts required: a cast to
+      <fo:inline font-family="Pragmata Pro">Object[]</fo:inline> for the parent list and then again to
+      the appropriate typed array for the extracted list:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">ExtractionExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+// Start by casting the returned Object into Object[]
+Object[] resultArray = (Object[]) qConnection.k("((1 2 3 4); (1 2))");
+
+//Iterate through the Object array
+for (Object resultElement : resultArray) {
+
+  //Retrieve each list and cast to appropriate type
+  long[] elementArray = (long[]) resultElement;
+
+  //Iterate through these arrays to access values.
+  for(long elementAtom : elementArray) {
+    System.out.println(elementAtom);
+  }
+}
+</fo:block>
+  </fo:block>
+  <fo:block id="working-with-dictionaries">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Working with dictionaries</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The Dict inner class is used for all returned objects of q type
+      dictionary (and therefore, by extension, keyed tables). Key values
+      are stored in the field <fo:inline font-family="Pragmata Pro">Dict.x</fo:inline>, and values in
+      <fo:inline font-family="Pragmata Pro">Dict.y</fo:inline>, both of which will generally be
+      castable as an array.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Aside from matching the index positions of <fo:inline font-family="Pragmata Pro">x</fo:inline>
+      and <fo:inline font-family="Pragmata Pro">y</fo:inline>, there is no intrinsic key-value pairing
+      between the two, meaning that alteration of either of the array
+      structures can compromise the key-value relationship. The
+      following example illustrates operations that might be performed
+      on a returned dictionary object:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">ExtractionExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Retrieve Dictionary
+c.Dict dict = (c.Dict) qConnection.k("`a`b`c!((1 2 3);\"Second\"; (`x`y`z))");
+//Retrieve keys from dictionary
+String[] keys = (String[]) dict.x;
+System.out.println(Arrays.toString(keys));
+//Retrieve values
+Object[] values = (Object[]) dict.y;
+//These can then be worked with similarly to nested lists
+long[] valuesLong = (long[]) values[0];
+//[…]
+</fo:block>
+  </fo:block>
+  <fo:block id="working-with-tables">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Working with tables</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The inner class <fo:inline font-family="Pragmata Pro">c.Flip</fo:inline> used to represent tables
+      operates in a similar manner to <fo:inline font-family="Pragmata Pro">c.Dict</fo:inline>. The
+      primary difference, as previously mentioned, is that
+      <fo:inline font-family="Pragmata Pro">Flip.x</fo:inline> is already typed as
+      <fo:inline font-family="Pragmata Pro">String[]</fo:inline>, while <fo:inline font-family="Pragmata Pro">Flip.y</fo:inline> will
+      still require casting. The following example shows how the data
+      from a returned <fo:inline font-family="Pragmata Pro">Flip</fo:inline> object might be used to
+      print the table to console:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">ExtractionExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+// (try to load trade.q first for this (create a table manually if not possible)
+qConnection.ks("system \"l trade.q\"");
+//Retrieve table
+c.Flip flip = (c.Flip) qConnection.k("select from trade where sym = `a");
+
+//Retrieve columns and data
+String[] columnNames = flip.x;
+Object[] columnData = flip.y;
+//Extract row data into typed arrays
+java.sql.Timestamp[] time = (java.sql.Timestamp[]) columnData[0];
+String[] sym = (String[]) columnData[1];
+double[] price = (double[]) columnData[2];
+int[] size = (int[]) columnData[3];
+int rows = time.length;
+
+//Print the table now - columns first:
+for (String columnName : columnNames)
+{
+  System.out.print(columnName + "\t\t\t");
+}
+System.out.println("\n-----------------------------------------------------");
+//Then rows:
+for (int i = 0; i &lt; rows; i++)
+{
+  System.out.print(time[i]+"\t"+sym[i]+"\t\t\t"+price[i]+"\t\t\t"+size[i]+"\n");
+}
+</fo:block>
+  </fo:block>
+</fo:block><fo:block id="creating-and-passing-data-objects">
+  <fo:block id="idm6661527760" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Creating and passing data objects</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    When passing objects to q via the <fo:inline font-family="Pragmata Pro">c</fo:inline> class, there
+    is less emphasis on how a given object is created. Rather, such an
+    operation is subject to the common pitfalls associated with passing
+    values to a q expression; those of type and rank.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The k family of methods, regardless of its return protocol, will
+    take either the String of a q expression or the String of a q
+    operator or function, complemented by Object parameters. Given the
+    nature of q as an interpreted language, all of these are serialized
+    and sent to the q session with little regard for logical
+    correctness.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    It is important, therefore, that any expressions passed to a query
+    method are syntactically accurate and refer to variables that
+    actually exist in the target session. It is also important that any
+    passed objects are mapped to a relevant q type, and function within
+    the context that they are sent. <fo:inline font-family="Pragmata Pro">KException</fo:inline>
+    messages to look out for while implementing these operations are
+    <fo:inline font-family="Pragmata Pro">'type</fo:inline> and <fo:inline font-family="Pragmata Pro">'rank</fo:inline>, as these will
+    generally denote basic type and rank issues respectively.
+  </fo:block>
+  <fo:block id="creating-and-passing-a-simple-list">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Creating and passing a simple list</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The following method might be applied to all direct type mappings
+      in the API; for simple lists (lists in which all elements are of
+      the same type), it is enough to pass a Java array of the
+      appropriate type.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The following example invokes the q <fo:inline font-family="Pragmata Pro">set</fo:inline>
+      function, which allows for the passing of a variable name as well
+      as an object with which the variable might be set:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">CreateAndSendExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Create typed array
+int[] simpleList = {10, 20, 30};
+//Pass array to q using set function.
+qConnection.k("set", "simpleList", simpleList)
+</fo:block>
+    <fo:block id="creating-and-passing-a-mixed-list">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Creating and passing a mixed list</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Mixed lists should always be passed to kdb+ through an Object
+        array, <fo:inline font-family="Pragmata Pro">Object[]</fo:inline>. This array may then hold any
+        number of mapped types, including, if appropriate, other typed
+        or Object arrays:
+      </fo:block>
+      <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+        Example: <fo:inline font-family="Pragmata Pro">CreateAndSendExamples.java</fo:inline>
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Create generic Object array.
+Object[] mixedList = {new String[] {"first", "second"}, new double[] {1.0, 2.0}};
+//Pass to q in the same way as a simple list.
+qConnection.k("set", "mixedList", mixedList);
+</fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="creating-and-passing-dictionaries">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Creating and passing dictionaries</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-family="Pragmata Pro">c.Dict</fo:inline> objects are instantiated by setting its
+      <fo:inline font-family="Pragmata Pro">x</fo:inline> and <fo:inline font-family="Pragmata Pro">y</fo:inline> objects in the
+      constructor, and these objects should always be arrays. Once
+      created, the Dict can be passed to kdb+ like any other object:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">CreateAndSendExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Create keys and values
+Object[] keys = {"a", "b", "c"};
+int[] values = {100, 200, 300};
+//Set in dict constructor
+c.Dict dict = new c.Dict(keys, values);
+//Set in q session
+qConnection.k("set","dict",dict);
+</fo:block>
+  </fo:block>
+  <fo:block id="creating-and-passing-tables">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Creating and passing tables</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-family="Pragmata Pro">c.Flip</fo:inline> objects are created slightly
+      differently; it is best to instantiate these by passing a
+      <fo:inline font-family="Pragmata Pro">c.Dict</fo:inline> object into the constructor. This is
+      because tables are essentially collections of dictionaries in
+      kdb+, and therefore using this constructor helps ensure that the
+      Flip object is set up correctly.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      It is worth noting that for this method to work correctly, the
+      passed Dict object must use String keys, as these will map into
+      the Flip object’s typed <fo:inline font-family="Pragmata Pro">String[]</fo:inline> columns:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">CreateAndSendExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Create rows and columns
+int[] values = {1, 2, 3};
+Object[] data = new Object[] {values};
+String[] columnNames = new String[] {"column"};
+//Wrap values in dictionary
+c.Dict dict = new c.Dict(columnNames, data);
+//Create table using dict
+c.Flip table = new c.Flip(dict);
+//Send to q using 'insert' method
+qConnection.ks("insert", "t1", table);
+</fo:block>
+  </fo:block>
+  <fo:block id="creating-and-passing-guid-objects">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Creating and passing GUID objects</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Globally universal identifier objects are represented in Java by
+      <fo:inline font-family="Pragmata Pro">java.util.UUID</fo:inline> objects, and are passed to kdb+
+      in an identical manner as other basic types. The Java object has a
+      useful static method for generating random identifiers, which
+      further streamlines this process and can see utility in some use
+      cases where only a certain number of arbitrary identifiers are
+      required:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">CreateAndSendExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Generate random UUID object
+java.util.UUID uuid = java.util.UUID.randomUUID();
+System.out.println(uuid.toString());
+
+//Pass object to q using set function
+qConnection.k("set","randomGUID",uuidj);
+System.out.println(qConnection.k("randomGUID").toString());
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Of course, it should be remembered that kdb+ version 3.0 or higher
+      is required to work with GUIDs, and running the above code
+      connected to an older version will cause a
+      <fo:inline font-family="Pragmata Pro">RuntimeException</fo:inline> to be thrown.
+    </fo:block>
+  </fo:block>
+</fo:block><fo:block id="reconnecting-to-a-q-process-automatically">
+  <fo:block id="idm6661497888" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Reconnecting to a q process automatically</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Requirements will often dictate that while q processes will need to
+    be bounced (such as for End-of-Day processing), that a Java process
+    will need to be able to handle loss and reacquisition of said
+    processes without being restarted itself. A simple example might be
+    a graphical user interface, where the forced shutdown of the entire
+    application due to a dropped connection, or the lack of ability to
+    reconnect, would be very poor design indeed.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Use of patterns such as factories can help with the task of setting
+    up a reconnection mechanism, as it allows for the simple creation of
+    a preconfigured object. For <fo:inline font-family="Pragmata Pro">c</fo:inline> Objects, given that
+    they connect on instantiation, means that a connection can be
+    re-established simply by calling the relevant factory method.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    In order to handle longer periods of potential downtime, either
+    loops or recursion should be used. The danger with recursive
+    methodology here is that, given an extended without a timeout
+    limitation, there is a risk of overflowing the method-call stack, as
+    each failed attempt will invoke a new method onto the stack.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    For mechanisms that may need to wait indefinitely, it might be
+    considered safer to use an indefinite while-loop that makes use of
+    catch blocks, continue and break statements. This averts the danger
+    of <fo:inline font-family="Pragmata Pro">StackOverflowError</fo:inline> occurring and is easily
+    modified to implement a maximum number of tries:
+  </fo:block>
+  <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+    Example: <fo:inline font-family="Pragmata Pro">ReconnectionExample.java</fo:inline>
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//initiate reconnect loop (possibly within a catch block).
+while (true) {
+  try {
+    System.err.println("Connection failed - retrying..");
+    //Wait a bit before trying to reconnect
+    Thread.sleep(5000);
+    qConnection = qConnFactory.getQConnection();
+    System.out.println("Connection re-established! Resuming..");
+    //Exit loop
+    break;
+  } catch (IOException | KException e1) {
+    //resume loop if it fails
+    continue;
+  }
+  …
+}
+</fo:block>
+</fo:block><fo:block id="kdb-tickerplant-overview">
+  <fo:block id="idm6661490688" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Kdb+ tickerplant overview</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    A kdb+ tickerplant is a q process specifically designed to handle
+    incoming high-frequency data feeds from publishing process. Its
+    primary responsibility is the management of subscription requests
+    and the fast publication of data to subscribers. The following
+    diagram illustrates a simple dataflow of a potential kdb+ tick
+    system:
+  </fo:block>
+  <fo:block page-break-after="avoid" text-align="center"><fo:external-graphic content-width="scale-down-to-fit" src="url(media/image2.png)" width="100%"/></fo:block><fo:block font-size="9pt" font-style="italic" margin-bottom="15pt">Simple dataflow of a potential kdb+ tick
+      system</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    <fo:inline font-family="Material Icons" font-size="14pt"></fo:inline>
+    <fo:basic-link external-destination="url('http://code.kx.com/q/wp/building_real_time_tick_subscribers.pdf')"><fo:inline color="#0070cd"><fo:inline font-style="italic">Building
+    Real-time Tick Subscribers</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">21</fo:inline><fo:footnote-body><fo:block font-size="8pt">21.
+									http://code.kx.com/q/wp/building_real_time_tick_subscribers.pdf</fo:block></fo:footnote-body></fo:footnote> regarding the above
+    vanilla setup
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Of interest in this whitepaper are the Java publisher and subscriber
+    processes. As the kdb+ tick system is very widely used, both of
+    these kinds of processes are highly likely to come up in development
+    tasks involving kdb+ interfacing.
+  </fo:block>
+  <fo:block id="test-tickerplant-and-feedhandler-setup">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Test tickerplant and feedhandler setup</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      To facilitate the testing of Java subscriber processes we can
+      implement example q processes freely available in the Kx
+      repository. Simulation of a tickerplant can be achieved with
+      <fo:basic-link external-destination="url('https://github.com/KxSystems/kdb-tick/blob/master/tick.q')"><fo:inline color="#0070cd"><fo:inline font-family="Pragmata Pro">tick.q</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">22</fo:inline><fo:footnote-body><fo:block font-size="8pt">22.
+									https://github.com/KxSystems/kdb-tick/blob/master/tick.q</fo:block></fo:footnote-body></fo:footnote>;
+      Trade data, using the trade schema defined in
+      <fo:inline font-family="Pragmata Pro">sym.q</fo:inline>, can then be published to this
+      tickerplant using the definition for the file
+      <fo:inline font-family="Pragmata Pro">feed.q</fo:inline> given here:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+// q feed.q / with a default port of 5010 and default timer of 1000
+// q feed.q -port 10000 / with a default timer of 1000
+// q feed.q -port 10000 -t 2000
+
+tph:hopen $[0=count .z.x;5010;"J"$first .Q.opt\[.z.x]`port]
+if[not system"t";system"t 1000"]
+
+publishTradeToTickerPlant:{
+  nRows:first 1?1+til 3;
+  tph(".u.upd";`trade;(nRows#.z.N;nRows?`IBM`FB`GS`JPM;nRows?150.35;nRows?1000));
+  }
+
+.z.ts:{
+  publishTradeToTickerPlant[];
+  }
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The tickerplant and feed handlers can then be started by executing
+      the following commands consecutively:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+$ q tick.q sym -t 2000
+$ q feed.q
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Once the feedhandler is publishing to the tickerplant, processes
+      can connect to it in order either to publish or subscribe to it.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      It should be noted that in this example and below we are using a
+      Java process to subscribe to a tickerplant being fed directly by a
+      simulated feed. While we are doing this here in order to
+      facilitate a simple example setup, in production this is not
+      usually encouraged. Processes such as Java subscribers would
+      generally connect to derivative kdb+ processes such as chained
+      tickerplants (as in the above diagram), for which standard
+      publishing and subscription logic should be the same as that
+      covered here.
+    </fo:block>
+  </fo:block>
+</fo:block><fo:block id="tickerplant-subscription">
+  <fo:block id="idm6661475872" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Tickerplant subscription</fo:block>
+  <fo:block id="extracting-the-table-schema">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Extracting the table schema</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Typical subscriber processes are required to make an initial
+      subscription request to the tickerplant in order to receive data.
+      See the <fo:basic-link external-destination="url('http://code.kx.com/q/cookbook/publish-subscribe')"><fo:inline color="#0070cd">publish and
+      subscribe</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">23</fo:inline><fo:footnote-body><fo:block font-size="8pt">23.
+									http://code.kx.com/q/cookbook/publish-subscribe</fo:block></fo:footnote-body></fo:footnote> cookbook article for details. This request
+      involves calling the <fo:inline font-family="Pragmata Pro">.u.sub</fo:inline> function with two
+      parameters. The first parameter is the table name and the second
+      is a list of symbols for subscription. (Specifying a backtick in
+      any of the parameters means all tables and/or all symbols).
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickSubscriberExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+// Run sub function and store result
+Object[] response = (Object[]) qConnection.k(".u.sub[`trade;`]");
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      If the <fo:inline font-family="Pragmata Pro">.u.sub</fo:inline> function is called synchronously,
+      the tickerplant will return the table schema. If subscribing to
+      one table, the returned object will be a generic Object array,
+      with the table name in <fo:inline font-family="Pragmata Pro">object[0]</fo:inline> and a
+      <fo:inline font-family="Pragmata Pro">c.Flip</fo:inline> representation of the schema in
+      <fo:inline font-family="Pragmata Pro">object[1]</fo:inline>:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickSubscriberExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+// first index is table name
+System.out.println("table name: " + response[0]);
+
+// second index is flip object
+c.Flip table = (c.Flip) response[1];
+
+// Retrieve column names
+String[] columnNames = table.x;
+for (int i = 0; i &lt; columnNames.length; i++) {
+  System.out.printf("Column %d is named %s\n", i, columnNames[i]);
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      If more than one table is being subscribed to, the returned object
+      will be an Object array consisting of the above object arrays;
+      therefore, in order to retrieve each individual Flip object, this
+      should be iterated against:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickSubscriberExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+// Run sub function and store result
+Object[] response = (Object[]) qConnection.k(".u.sub[`;`]");
+
+// iterate through Object array
+for (Object tableObjectElement : response) {
+
+  // From here, it is similar to the one-table schema extraction
+  Object[] tableData = (Object[]) tableObjectElement;
+  System.out.println("table name: " + tableData[0]);
+  c.Flip table = (c.Flip) tableData[1];
+  String[] columnNames = table.x;
+  for (int i = 0; i &lt; columnNames.length; i++) {
+    System.out.printf("Column %d is named %s\n", i, columnNames[i]);
+  }
+}
+</fo:block>
+  </fo:block>
+  <fo:block id="subscribing-to-a-tickerplant-data-feed">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Subscribing to a tickerplant data feed</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Upon calling <fo:inline font-family="Pragmata Pro">.u.sub</fo:inline> and retrieving the schema,
+      the tickerplant process will start to publish data to the Java
+      process. The data it sends can be retrieved through the
+      parameter-free <fo:inline font-family="Pragmata Pro">k()</fo:inline> method, which will wait for
+      a response and return an Object (a <fo:inline font-family="Pragmata Pro">c.Flip</fo:inline> of
+      the passed data) on publication:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickSubscriberExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+while (true) {
+
+  //wait on k()
+  Object response = qConnection.k();
+
+  if(response != null) {
+    Object[] data = (Object[]) response;
+
+    //Slightly different.. table is in data[2]\!
+    c.Flip table = (c.Flip) data[2];
+    //[…]
+  }
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      With the data in this form, it can be manipulated in a number of
+      meaningful ways. To iterate through the columns,
+      <fo:inline font-family="Pragmata Pro">c.n</fo:inline> can be called on individual
+      <fo:inline font-family="Pragmata Pro">flip.y</fo:inline> columns in order to provide a row count:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickSubscriberExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+String[] columnNames = table.x;
+Object[] columnData = table.y;
+
+//Get row count for looping
+int rowCount = c.n(columnData[0]);
+
+//Print out the table!
+System.out.printf("%s\t\t\t%s\t%s\t%s\n", 
+    columnNames[0], columnNames[1], columnNames[2], columnNames[3]);
+System.out.println("--------------------------------------------");
+for (int i = 0; i &lt; rowCount; i++) {
+
+  //[Printing logic]
+
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This mechanism might be then enveloped in an indefinite loop, such
+      as a <fo:inline font-family="Pragmata Pro">while(true)</fo:inline> loop. Each iteration waits on
+      the <fo:inline font-family="Pragmata Pro">k()</fo:inline> method returning published data, which
+      will continue until one of the contributing processes fails (at
+      which point an exception is caught and handled appropriately).
+    </fo:block>
+  </fo:block>
+</fo:block><fo:block id="tickerplant-publishing">
+  <fo:block id="idm6661452624" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Tickerplant publishing</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Publishing data to a tickerplant is almost always a necessity for a
+    kdb+ feed-handler process. Java, as a common language of choice for
+    third-party API development (e.g. Reuters, Bloomberg, MarkIT), is a
+    popular language for feedhandler development, within which
+    <fo:inline font-family="Pragmata Pro">c.java</fo:inline> is used to handle the asynchronous
+    invocation of a publishing function.
+  </fo:block>
+  <fo:block id="publishing-rows">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Publishing rows</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In general, publishing values to a tickerplant will require an
+      asynchronous query much like the following:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+qConnection.ks(".u.upd", "trade", data); //Where data is an Object[]
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The parameters for this can be defined as follows:
+    </fo:block>
+    <fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+          The update function name (<fo:inline font-family="Pragmata Pro">.u.upd</fo:inline>)
+        </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            This is the function executed on the tickerplant which
+            enables the data insertion. As per the norm with this API,
+            this is passed as a string.
+          </fo:block>
+        </fo:block><fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+          Table name
+        </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            A String representation of the name of the table that
+            receives the data.
+          </fo:block>
+        </fo:block><fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+          Data
+        </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            An Object that will form the row(s) to be appended to the
+            table. This parameter is typically passed as an object
+            array, each index representing a table column.
+          </fo:block>
+        </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In order to publish a single row to a tickerplant, typed arrays
+      consisting of single values might be instantiated. These are then
+      encapsulated in an Object array and passed to the
+      <fo:inline font-family="Pragmata Pro">ks</fo:inline> method:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickPublisherExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Create typed arrays for holding data
+String[] sym = new String[] {"IBM"};
+double[] bid = new double[] {100.25};
+double[] ask = new double[] {100.26};
+int[] bSize = new int[]{1000};
+int[] aSize = new int[]{1000};
+//Create Object[] for holding typed arrays
+Object[] data = new Object[] {sym, bid, ask, bSize, aSize};
+//Call .u.upd asynchronously
+qConnection.ks(".u.upd", "quote", data);
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Publishing multiple rows is then just a case of increased length
+      of each of the typed arrays:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickPublisherExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+String[] sym = new String[] {"IBM", "GE"};
+double[] bid = new double[] {100.25, 120.25};
+double[] ask = new double[] {100.26, 120.26};
+int[] bSize = new int[]{1000, 2000};
+int[] aSize = new int[]{1000, 2000};
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In order to maximize tickerplant throughput and efficiency, it is
+      generally recommended to publish multiple rows in one go.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-family="Material Icons" font-size="14pt"></fo:inline> whitepaper
+      <fo:basic-link external-destination="url('http://code.kx.com/q/wp/kdbtick_profiling_for_throughput_optimization.pdf')"><fo:inline color="#0070cd"><fo:inline font-style="italic">Kdb+tick
+      Profiling for Throughput Optimization</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">24</fo:inline><fo:footnote-body><fo:block font-size="8pt">24.
+									http://code.kx.com/q/wp/kdbtick_profiling_for_throughput_optimization.pdf</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Care has to be taken here to ensure that all typed arrays maintain
+      the same length, as failure to do so will likely result in a kdb+
+      type error. Such errors are especially troublesome when using
+      asynchronous methods, which will not return
+      <fo:inline font-family="Pragmata Pro">KExceptions</fo:inline> in the same manner as sync methods!
+      It is also worth noting that the order of the typed arrays within
+      the object array should match that of the table schema.
+    </fo:block>
+  </fo:block>
+  <fo:block id="adding-a-timespan-column">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Adding a timespan column</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      It is standard tickerplant functionality to append a timespan
+      column to each row received from a feed handler if not included
+      with the data passed, which is used to record when the data was
+      received by the tickerplant. It’s possible for the publisher to
+      create the timespan column to prevent the tickerplant from adding
+      one:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">TickPublisherExamples.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Timespan can be added here
+c.Timespan[] time = new c.Timespan[] {new c.Timespan()};
+String[] sym = new String[] {"GS"};
+double[] bid = new double[] {100.25};
+double[] ask = new double[] {100.26};
+int[] bSize = new int[]{1000};
+int[] aSize = new int[]{1000};
+//Timespan array is then added at beginning of Object array
+Object[] data = new Object[] {time, sym, bid, ask, bSize, aSize};
+qConnection.ks(".u.upd", "quote", data);
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This might be done, for example, to allow the feedhandler to
+      define the time differently than simply logging the time at which
+      the tickerplant receives the data.
+    </fo:block>
+  </fo:block>
+</fo:block><fo:block id="connecting-from-kdb-to-a-java-process">
+  <fo:block id="idm6661427376" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Connecting from kdb+ to a Java process</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The examples thus far have emphasized interfacing between Java and
+    kdb+ very much from the perspective of a Java client connecting to a
+    kdb+ server, using the constructors relevant to this purpose. It is
+    very much possible to reverse these roles using the
+    <fo:inline font-family="Pragmata Pro">c(Serversocket)</fo:inline> constructor, which enables a Java
+    process to listen for incoming kdb+ messages on the specified port.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    While the use cases for this 
+		‘server’
+	 mode of operation
+    are not as common as they might be for 
+		‘client’
+	-mode
+    connections, it is nevertheless available to developers as a means
+    of implementing communication between Java and kdb+ processes. The
+    following examples demonstrate the basic mechanisms by which this
+    can be done.
+  </fo:block>
+  <fo:block id="handling-a-single-connection">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Handling a single connection</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      To set this up, a <fo:inline font-family="Pragmata Pro">c</fo:inline> object is instantiated
+      using the 
+		‘server’
+	 mode constructor. This will listen
+      to the incoming connection of a single kdb+ process:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">IncomingConnectionExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Wait for incoming connection
+System.out.println("Waiting for incoming connection on port 5001..");
+c incomingConnection = new c(new ServerSocket(5001));
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In a manner similar to tickerplant subscription, the method
+      <fo:inline font-family="Pragmata Pro">k()</fo:inline> (without parameters) can be used to wait on
+      and listen to any connecting q session. In this example, the
+      object is retrieved in this fashion and deciphered, either to
+      return an error when passed the symbol
+      <fo:inline font-family="Pragmata Pro">`returnError</fo:inline> or to return a message describing
+      what was sent:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">IncomingConnectionExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+while(true) {
+  //k() method will wait until the kdb+ process sends an object.
+  Object incoming = incomingConnection.k();
+  try {
+    // check the incoming object and return something based on what it is
+    if (incoming instanceof String &amp;&amp; ((String)incoming).equals("returnError")) {
+      incomingConnection.ke("ReturningError!");
+    } else if(incoming.getClass().isArray()) {
+      // if list, use Arrays toString method
+      incomingConnection.kr("The incoming list values are: " + Arrays.toString((Object[])incoming));
+    } else {
+      incomingConnection.kr(("The incoming message was: " + incoming.toString()).toCharArray());
+    }
+  } catch(IOException | KException e) {
+    //return error responses too
+      incomingConnection.ke(e.getMessage());
+  }
+}
+</fo:block>
+  </fo:block>
+  <fo:block id="handling-multiple-connections">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Handling multiple connections</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In the above example, the server <fo:inline font-family="Pragmata Pro">c</fo:inline> object is
+      instantiated with a new ServerSocket being created in its
+      constructor. This is acceptable in this instance because we cared
+      only about the handling of one connection.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In general, ServerSocket objects should not be used in this
+      manner, as they are designed to handle more than a single incoming
+      connection. Instead, the ServerSocket should be passed as a
+      reference. With the addition of some simple threading, an
+      application capable of handling messages from multiple q sessions
+      can be created:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="0pt" text-align="justify" page-break-after="avoid">
+      Example: <fo:inline font-family="Pragmata Pro">IncomingConnectionsExample.java</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" white-space="pre">
+//Create server socket reference beforehand..
+ServerSocket serverSocket = new ServerSocket(5001);
+
+//Set up connection loop
+while(true) {   
+  //Create c object with reference to server socket
+  final c incomingConnection = new c(serverSocket);
+
+  //Create thread for handling this connection
+  new Thread(new Runnable() {   
+    @Override
+    public void run() {
+      while(true) {
+        //Logic in this loop is similar to single connection 
+        //[...]     
+      } 
+    }
+  //Run thread and restart loop.
+  }).start();
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This will allow any number of connections to be established, with
+      factors such as connection limitation and load balancing left up
+      to how the process is implemented. As in any case where threading
+      is used, take care that such a method does not enable race
+      conditions or concurrency issues; if necessary, steps can be taken
+      to reduce the risk of such operations, such as synchronized blocks
+      and methods.
+    </fo:block>
+  </fo:block>
+</fo:block><fo:block id="conclusion">
+  <fo:block id="idm6661410576" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Conclusion</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This document has covered a variety of topics concerning the
+    mechanics and application of the <fo:inline font-family="Pragmata Pro">c.java</fo:inline> interface
+    for kdb+. Of the workings and examples shown, the most common use
+    case for this interface will be connecting to a q process, executing
+    queries and functions and managing any result objects. However, this
+    document has also displayed the versatile nature of
+    <fo:inline font-family="Pragmata Pro">c.java</fo:inline> as a tool, providing a handful of
+    solutions to a given problem and able to fulfill server as well as
+    client functions.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The practical examples should also help demonstrate that tasks
+    required as part of a standard kdb+ toolset can be handled easily
+    from the perspective of both Java developers interfacing with kdb+
+    for the first time, or kdb+ developers who are required to venture
+    into Java development, for example, to help complete development of
+    a feed handler. The benefit of such interfaces is felt keenly
+    through the common role of these developers in helping to reconcile
+    longstanding applications with contemporary technologies, often to
+    the benefit of both.
+  </fo:block>
+  
+</fo:block></fo:flow></fo:page-sequence></fo:root>

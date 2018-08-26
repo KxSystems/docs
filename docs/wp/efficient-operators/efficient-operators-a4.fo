@@ -1,0 +1,1595 @@
+<?xml version="1.0"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:db="http://docbook.org/ns/docbook" xmlns:rx="http://www.renderx.com/XSL/Extensions" xmlns:xlink="http://www.w3.org/1999/xlink"><rx:meta-info><rx:meta-field name="author" value="et al."/><rx:meta-field name="creator" value="Kx Systems"/><rx:meta-field name="title" value="Efficient use of unary operators"/><rx:meta-field name="keywords" value="Kx, Kx Systems, kdb+, efficiency, kdb+, operator, q, unary"/></rx:meta-info><rx:outline><rx:bookmark internal-destination="efficient-use-of-unary-operators"><rx:bookmark-label>Efficient use of unary operators</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="distribution-operators"><rx:bookmark-label>Distribution operators</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="progression-operators"><rx:bookmark-label>Progression operators</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="combining-operators"><rx:bookmark-label>Combining operators</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="iterating-with-operators"><rx:bookmark-label>Iterating with operators</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="nested-columns"><rx:bookmark-label>Nested columns</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="conclusion"><rx:bookmark-label>Conclusion</rx:bookmark-label></rx:bookmark></rx:outline><fo:layout-master-set><fo:simple-page-master master-name="cover-page" page-width="210mm" page-height="297mm"><fo:region-body margin-top="0" margin-bottom="0" margin-left="0" margin-right="0" background-color="#eeeded"/></fo:simple-page-master><fo:simple-page-master master-name="toc" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="60pt" margin-right="60pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master><fo:simple-page-master master-name="standard-page" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="40pt" margin-right="40pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master></fo:layout-master-set><fo:page-sequence master-reference="cover-page" font-family="STIX2" initial-page-number="1" language="en" country="gb"><fo:flow flow-name="xsl-region-body"><fo:block-container absolute-position="absolute" top="0mm" right="0mm" width="2in" height="2in"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-white.png)" content-width="40mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" left="0mm" width="2.5in" height="30mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-bottom-left-white.png)" content-width="50mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" right="0mm" width="4in" height="50mm"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/kx-cover.png)" content-width="75mm"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="35mm" left="15mm"><fo:block color="#0070cd" font-family="Proxima Nova" font-size="60pt" font-weight="bold" letter-spacing="-4pt">kx</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="40mm" left="40mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/its-about-time.png)"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="80mm" left="35mm"><fo:block font-family="Proxima Nova" color="#0070cd" font-size="18pt" font-weight="400">
+							Technical Whitepaper
+						</fo:block><fo:block margin-top="9pt" margin-right="30mm" line-height="1.4" font-size="24pt" font-weight="400">Efficient use of unary operators</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Date</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left">August 2018</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Authors</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left"><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Conor Slattery is a Financial Engineer who has designed kdb+
+      applications for a range of asset classes. Conor is currently
+      working with a New York-based investment firm, developing kdb+
+      trading platforms for the US equity markets.
+    </fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Stephen Taylor is the Kx Librarian and the editor of the
+      code.kx.com site.
+    </fo:block></fo:block></fo:block-container><fo:block> </fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="toc" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Efficient use of unary operators</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block break-before="page"><fo:block font-size="14pt" text-align="center" margin-top="36pt" margin-bottom="36pt">Contents</fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864866656">Efficient use of unary operators <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864866656"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864787744">Distribution operators <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864787744"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864724864">Progression operators <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864724864"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864597680">Combining operators <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864597680"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864577664">Iterating with operators <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864577664"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864532336">Nested columns <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864532336"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm290864505072">Conclusion <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm290864505072"/></fo:basic-link></fo:block></fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="standard-page" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Efficient use of unary operators</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-footnote-separator"><fo:block><fo:leader leader-pattern="rule" rule-thickness=".5pt" leader-length="50%"/></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block id="efficient-use-of-unary-operators">
+  <fo:block id="idm290864866656" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Efficient use of unary operators</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    In addition to the large number of built-in functions, and the
+    ability to create your own functions quickly and easily, kdb+
+    provides unary operators, which can alter function behavior to
+    improve efficiency and keep code concise. Employing unary operators
+    correctly can bypass the need for multiple loops and conditionals,
+    with significant performance enhancements.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This whitepaper provides an introduction to the basic use of the
+    different unary operators in q, with examples of how they differ
+    when applied to unary, binary and higher-rank functions.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    It also covers how unary operators can be combined to extend the
+    built-in functions. Common use cases, such as using operators for
+    recursion and to modify nested columns in a table, are looked at in
+    more detail. These examples provide solutions to common problems
+    encountered when building systems in kdb+ and demonstrate the range
+    of situations where unary operators can be used to achieve the
+    desired result.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    All tests were run using kdb+ version 3.1 (2013.08.09)
+  </fo:block>
+  <fo:block background-color="#EEF" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Maps </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Unary operators take maps as their arguments. A function is a map:
+      it maps its domain/s to its range. But so too are lists and
+      dictionaries.
+    </fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This introductory paper addresses only the use of functions with
+      unary operators.
+    </fo:block></fo:block>
+  <fo:block id="function-types">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Function types</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Functions in q can be one of several basic types, each associated
+      with a range of type numbers.
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              range
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              type
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              100
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              lambda
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              101
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              unary keyword
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              102
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              binary operator
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              103
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              unary operator
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              104
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              projection
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              105
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              composition
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              106-111
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              derivative
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In general, how a unary operator applies a function
+      <fo:inline font-family="Pragmata Pro">f</fo:inline> depends only on the number 
+      of the parameters passed to the function they derive, not on the
+      type of <fo:inline font-family="Pragmata Pro">f</fo:inline>. So we will not distinguish between
+      function types when talking about unary operators.
+    </fo:block>
+  </fo:block>
+  <fo:block id="basic-use-of-unary-operators-with-functions">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Basic use of unary operators with functions</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      There are eight unary operators. This paper addresses the seven
+      that take function arguments. (The eighth,
+      <fo:basic-link external-destination="url('http://code.kx.com/q/ref/case')"><fo:inline color="#0070cd">Case</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">1</fo:inline><fo:footnote-body><fo:block font-size="8pt">1.
+									http://code.kx.com/q/ref/case</fo:block></fo:footnote-body></fo:footnote>, takes an integer list as
+      argument.)
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The operator takes a function argument and derives a new function,
+      the <fo:inline font-style="italic">derivative</fo:inline>, based on the argument. The
+      derivative applies the original function in a new way.
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Some unary operators take only argument functions of certain
+          rank. E.g. Each Right and Each Left take only binary
+          functions.
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          In some cases the derivative is
+          <fo:basic-link external-destination="url('http://code.kx.com/q/ref/ambivalence')"><fo:inline color="#0070cd">ambivalent</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">2</fo:inline><fo:footnote-body><fo:block font-size="8pt">2.
+									http://code.kx.com/q/ref/ambivalence</fo:block></fo:footnote-body></fo:footnote>: it can
+          be applied as a unary function or as a binary.
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Some operators derive functions with more than one way to
+          apply the original function. How the original function is
+          applied depends on whether the derivative is applied as a
+          unary, a binary, or a higher-rank function.
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Understanding the basic behavior of each unary operator and how
+      this behavior varies is key to both writing and debugging q code.
+      This understanding is grounded in rank and syntax.
+    </fo:block>
+  </fo:block>
+  <fo:block id="types-of-operator">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Types of operator</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      There are two groups of unary operators: the
+      <fo:inline font-style="italic">distribution</fo:inline> and the
+      <fo:inline font-style="italic">progression</fo:inline> operators.
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              group
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="center">
+              glyph
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              operator
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              argument rank
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              distribution
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">'</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Each
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              any
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              distribution
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">\:</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Each Left
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              2
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              distribution
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">/:</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Each Right
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              2
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              distribution
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">':</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Each Parallel
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              1
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              distribution
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">':</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Each Prior
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              2
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              progression
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">/</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Over
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              any
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              progression
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              <fo:inline font-family="Pragmata Pro">\</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Scan
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              any
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Each Parallel and Each Prior have the same glyph. They are
+      distinguished by the rank of the argument function.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The distribution operators evaluate their functions
+      <fo:inline font-style="italic">itemwise</fo:inline> across their
+      arguments. The evaluations are independent of each other.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The progression operators evaluate their functions
+      <fo:inline font-style="italic">successively</fo:inline>. The result of
+      each evaluation becomes the first argument of the next.
+    </fo:block>
+  </fo:block>
+  <fo:block id="syntax">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Syntax</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The unary operators are themselves a type of function and can be
+      applied with bracket notation.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)/[+]2 3 4
+9
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Here the unary Over operator <fo:inline font-family="Pragmata Pro">/</fo:inline> takes the binary
+      Add operator <fo:inline font-family="Pragmata Pro">+</fo:inline> as its argument, deriving the
+      sum function <fo:inline font-family="Pragmata Pro">/[+]</fo:inline>, which is applied prefix to
+      the vector <fo:inline font-family="Pragmata Pro">2 3 4</fo:inline>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Unlike any other q function, the unary operators can also be
+      applied postfix, and usually are. For example, the sum function
+      above is more usually derived <fo:inline font-family="Pragmata Pro">+/</fo:inline> with the Over
+      operator <fo:inline font-family="Pragmata Pro">/</fo:inline> taking <fo:inline font-family="Pragmata Pro">+</fo:inline>
+      <fo:inline font-style="italic">on its left</fo:inline> as the sole argument.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)+/[2 3 4]
+9
+</fo:block>
+    <fo:block background-color="#EEE" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">A function derived postfix has infix syntax regardless of its rank. </fo:inline></fo:block></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The sum function is in fact
+      <fo:basic-link external-destination="url('http://code.kx.com/q/ref/ambivalence')"><fo:inline color="#0070cd">ambivalent</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">3</fo:inline><fo:footnote-body><fo:block font-size="8pt">3.
+									http://code.kx.com/q/ref/ambivalence</fo:block></fo:footnote-body></fo:footnote>. It can be
+      applied as rank 1 or 2. It can take one or two arguments.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)+/[2 3 4]               / unary application
+9
+q)+/[1000 2000;2 3 4]     / binary application
+1009 2009
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Because postfix derivation yields an infix, <fo:inline font-family="Pragmata Pro">+/</fo:inline>
+      can be applied infix.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)1000 2000+/2 3 4        / binary application, infix
+1009 2009
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Whether unary or ambivalent, an infix derivative can be applied
+      prefix only when parenthesized.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)(+/)2 3 4
+9
+q)(count')("the";"quick";"brown";"fox")
+3 5 5 3
+</fo:block>
+    <fo:block background-color="#EEE" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Deriving with bracket notation </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Deriving with bracket notation (unusual) can also produce an
+        ambivalent function, but never an infix.
+      </fo:block></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      A named derivative retains any ambivalence, but not infix syntax.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)tot:+/
+q)tot[1000;2 3 4]     / binary application
+1009
+q)tot[2 3 4]          / unary application - still ambivalent
+9
+q)1000 tot 2 3 4      / not infix
+'Cannot write to handle 1000. OS reports: Bad file descriptor
+q)tot 2 3 4           / not infix, so prefix without parens
+9
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      While operators and derivatives are functions and so can always be
+      applied with bracket notation, this paper follows common practice
+      and prefers to apply
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          unary operators postfix, e.g <fo:inline font-family="Pragmata Pro">+/</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          binary derivatives infix, e.g. <fo:inline font-family="Pragmata Pro">x f\:y</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          unary derivatives prefix, e.g. <fo:inline font-family="Pragmata Pro">(+\)x</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+  </fo:block>
+</fo:block><fo:block id="distribution-operators">
+  <fo:block id="idm290864787744" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Distribution operators</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The distribution operators are Each and its variants.
+  </fo:block>
+  <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Each Left and Each Right are syntactic sugar for
+        <fo:inline font-family="Pragmata Pro">f[x;]'</fo:inline> and <fo:inline font-family="Pragmata Pro">f[;y]'</fo:inline>.
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Each Parallel has the same semantics as Each but distributes
+        processing across slave tasks.
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Each Prior applies a binary function between adjacent items of a
+        list or dictionary.
+      </fo:block>
+    </fo:list-item-body></fo:list-item></fo:list-block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The derivatives are all uniform functions. Arguments of non-unary
+    derivatives must conform: they can be either atoms or same-count
+    lists.
+  </fo:block>
+  <fo:block id="each">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Each</fo:block>
+    <fo:block id="unary-argument">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Unary argument</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The derivative applies the function to each element of a list or
+        dictionary.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)(type')(1;2h;3.2)
+-7 -5 -9h
+q)(ssr[;"an";"in"]')("thank";"prance";"pants")
+"think"
+"prince"
+"pints"
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        If the function is atomic, Each has no effect. In fact, this is
+        the definition of atomic.
+      </fo:block>
+      <fo:block background-color="#EEE" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">A function f is atomic if f[x;y;z;…]~f'[x;y;z;…]. </fo:inline></fo:block></fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The keyword <fo:inline font-family="Pragmata Pro">each</fo:inline> can be used to avoid
+        parentheses.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)type each (1;2h;3.2)
+-7 -5 -9h
+</fo:block>
+    </fo:block>
+    <fo:block id="binary-argument">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Binary argument</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Each applies a binary function to corresponding items of two
+        list or dictionary arguments.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        If both arguments are lists, they must be of the same length.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) 1 2 3 in' (1 2 3;3 4 5;5 6 7)
+100b
+q) 1 2 3 in' (1 2 3;3 4 5)
+'length
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Either or both arguments may be atoms. If both, the operator has
+        no effect.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)1 ~' 1
+1b
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        If one of the arguments is an atom, it is treated as a list of
+        the same length as the other argument.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)1 ~' 1 2 3
+100b
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Each with a binary argument is sometimes called <fo:inline font-style="italic">Each
+        Both</fo:inline>.
+      </fo:block>
+    </fo:block>
+    <fo:block id="higher-rank-argument">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Higher-rank argument</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        With a function of higher rank, the same rules apply by
+        extension. As above, the derivative’s arguments must be
+        conformable: atoms or same-count lists.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)ssr'[("thank";"prance";"pants");"a";"iiu"]
+"think"
+"prince"
+"punts"
+</fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="each-right-and-each-left">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Each Right and Each Left</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Each Right <fo:inline font-family="Pragmata Pro">/:</fo:inline> and Each Left
+      <fo:inline font-family="Pragmata Pro">\:</fo:inline> take a
+      <fo:inline font-style="italic">binary</fo:inline> function
+      <fo:inline font-family="Pragmata Pro">f</fo:inline>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Syntax: <fo:inline font-family="Pragmata Pro">x f/:y</fo:inline>, <fo:inline font-family="Pragmata Pro">x f\:y</fo:inline>
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The derivative <fo:inline font-family="Pragmata Pro">f/:</fo:inline> applies
+      <fo:inline font-family="Pragmata Pro">f[x;]</fo:inline> to every item in <fo:inline font-family="Pragmata Pro">y</fo:inline>.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)d:`a`b`c!("cow";"sheep";"dog")
+q)"a ",/:d
+a| "a cow"
+b| "a sheep"
+c| "a dog"
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Correspondingly, Each Left applies <fo:inline font-family="Pragmata Pro">f[;y]</fo:inline> to
+      each item of <fo:inline font-family="Pragmata Pro">x</fo:inline>.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)d,\:" in a field"
+a| "cow in a field"
+b| "sheep in a field"
+c| "dog in a field"
+</fo:block>
+    <fo:block background-color="#EFF" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">See how they lean </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        You can remember which glyph denotes Each Right and which Each
+        Left: the characters 
+		‘lean’
+	 towards the list
+        argument.
+      </fo:block></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Ponder the following identities.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+x f/:y      &lt;==&gt;   (f[x;]')y           Each Right
+x f\:y      &lt;==&gt;   (f[;y]')x           Each Left
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      And for atoms <fo:inline font-family="Pragmata Pro">a</fo:inline> and <fo:inline font-family="Pragmata Pro">b</fo:inline>
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+a f/:y      &lt;==&gt;   a f'y
+x f\:b      &lt;==&gt;   x f'b
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Find the file handle of each column of a table.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)`:/mydb/2013.05.01/trade,/:key[`:/mydb/2013.05.01/trade]except `.d
+`:/mydb/2013.05.01/trade`sym
+`:/mydb/2013.05.01/trade`time
+`:/mydb/2013.05.01/trade`price
+`:/mydb/2013.05.01/trade`size
+`:/mydb/2013.05.01/trade`ex
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The above statement joins the file handle of the table to each
+      element in the list of columns, creating five 2-lists. Each Right
+      can then be used with <fo:inline font-family="Pragmata Pro">sv</fo:inline> to create the file
+      handles of each column.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)` sv/: `:/mydb/2013.05.01/trade,/:key[`:/mydb/2013.05.01/trade]except`.d
+`:/mydb/2013.05.01/trade/sym
+`:/mydb/2013.05.01/trade/time
+`:/mydb/2013.05.01/trade/price
+`:/mydb/2013.05.01/trade/size
+`:/mydb/2013.05.01/trade/ex
+</fo:block>
+  </fo:block>
+  <fo:block id="each-parallel">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Each Parallel</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Each Parallel applies a <fo:inline font-style="italic">unary</fo:inline>
+      function <fo:inline font-family="Pragmata Pro">f</fo:inline> to each element of a list or
+      dictionary, using slave threads when available.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Syntax: <fo:inline font-family="Pragmata Pro">(f':)x</fo:inline>
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The result is the same as it would be for <fo:inline font-family="Pragmata Pro">f'</fo:inline>.
+      That is, <fo:inline font-family="Pragmata Pro">f'[x]~f':[x]</fo:inline>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Slave threads can be set using the <fo:inline font-family="Pragmata Pro">–s</fo:inline>
+      command-line parameter. If no slave threads are available, Each
+      Parallel is indistinguishable from Each.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The keyword <fo:inline font-family="Pragmata Pro">peach</fo:inline> can be used to avoid
+      parentheses.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)count peach d
+a| 3
+b| 5
+c| 3
+</fo:block>
+  </fo:block>
+  <fo:block id="each-prior">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Each Prior</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Each Prior applies a <fo:inline font-style="italic">binary</fo:inline>
+      function to each item of a list or dictionary and to the previous
+      item. For the i-th item of argument list <fo:inline font-family="Pragmata Pro">x</fo:inline>, the
+      corresponding item of <fo:inline font-family="Pragmata Pro">(f':)x</fo:inline> is
+      <fo:inline font-family="Pragmata Pro">f[x[i];x[i-1]]</fo:inline>.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      A common use of this is in the <fo:inline font-family="Pragmata Pro">deltas</fo:inline> keyword.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)deltas
+-':
+q)deltas 4 8 3 2 2
+4 4 -5 -1 0
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      It can also be useful in tracking down errors within lists which
+      should be identical, e.g. the <fo:inline font-family="Pragmata Pro">.d</fo:inline> files for a
+      table in a partitioned database. The below example uses the
+      <fo:inline font-family="Pragmata Pro">differ</fo:inline> keyword to check for inconsistencies in
+      <fo:inline font-family="Pragmata Pro">.d</fo:inline> files. (<fo:inline font-family="Pragmata Pro">differ</fo:inline> uses Each
+      Prior and is equivalent to <fo:inline font-family="Pragmata Pro">not ~':</fo:inline>.)
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q){1_date where differ get hsym `$"/mydb/",string[x],"/trade/.d"} each date
+2013.05.03 2013.05.04
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In this case the values of the <fo:inline font-family="Pragmata Pro">.d</fo:inline> files are
+      extracted from each partition. The <fo:inline font-family="Pragmata Pro">differ</fo:inline>
+      keyword, which uses Each Prior, is then used to compare each item
+      in the list with the item before it. If a <fo:inline font-family="Pragmata Pro">.d</fo:inline>
+      file is different to the previous <fo:inline font-family="Pragmata Pro">.d</fo:inline> file in
+      the list, then that date will be returned by the above statement.
+      The first date returned is dropped, as the first element of the
+      list will be compared to -1-th element of the list, which is
+      always null, and so they will never match. For the above example,
+      the <fo:inline font-family="Pragmata Pro">.d</fo:inline> files for the 2013.05.03 and 2013.05.04
+      partitions are different, and should be investigated further.
+    </fo:block>
+    <fo:block background-color="#EEE" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Each Prior derivatives are ambivalent </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Functions derived by Each Prior are ambivalent. They can be
+        applied to one or two arguments, e.g.
+      </fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        See the
+        <fo:basic-link external-destination="url('http://code.kx.com/q/basics/distribution-operators/#each-prior')"><fo:inline color="#0070cd">Each
+        Prior reference</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">4</fo:inline><fo:footnote-body><fo:block font-size="8pt">4.
+									http://code.kx.com/q/basics/distribution-operators/#each-prior</fo:block></fo:footnote-body></fo:footnote> for more on this.
+      </fo:block></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The keyword <fo:inline font-family="Pragmata Pro">prior</fo:inline> can be used to avoid
+      parentheses. The example below returns all adjacent pairs of the
+      argument list. Note that the first element of the first item of
+      the result is null.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q){y,x}prior til 5
+  0
+0 1
+1 2
+2 3
+3 4
+</fo:block>
+  </fo:block>
+</fo:block><fo:block id="progression-operators">
+  <fo:block id="idm290864724864" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Progression operators</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The <fo:basic-link external-destination="url('http://code.kx.com/q/basics/progression-operators')"><fo:inline color="#0070cd">progression
+    operators</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">5</fo:inline><fo:footnote-body><fo:block font-size="8pt">5.
+									http://code.kx.com/q/basics/progression-operators</fo:block></fo:footnote-body></fo:footnote> are Scan <fo:inline font-family="Pragmata Pro">\</fo:inline> and Over
+    <fo:inline font-family="Pragmata Pro">/</fo:inline>.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Scan and Over derivatives apply their function arguments
+    <fo:inline font-style="italic">successively</fo:inline>: the result of each evaluation
+    becomes the (first) argument of the next.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Scan and Over have the same syntax and perform the same
+    computations. They differ in that Scan derivatives return the result
+    of each evaluation, while Over derivatives return only the last.
+    That is:
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+(f/)x    &lt;==&gt;    last (f\)x
+x f/y    &lt;==&gt;    last x f\y
+</fo:block>
+  <fo:block background-color="#EFF" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Map reduce </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Derivatives of Over with non-unary functions correspond to
+      <fo:inline font-style="italic">map reduce</fo:inline> in some other programming
+      languages.
+    </fo:block></fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The number of evaluations the derivative performs is determined
+    according to the rank of the argument function:
+  </fo:block>
+  <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        for a <fo:inline font-style="italic">unary</fo:inline> argument, by the
+        derivative’s left argument – or its absence
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        otherwise, by the count of the derivative’s argument/s
+      </fo:block>
+    </fo:list-item-body></fo:list-item></fo:list-block>
+  <fo:block background-color="#EEE" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Memory usage: Scan vs Over </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For any given argument function, Scan and Over derivatives perform
+      the same computation. But Over, in general, requires less memory,
+      as it discards intermediate results.
+    </fo:block></fo:block>
+  <fo:block id="unary-argument-1">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Unary argument</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The function derived by a progression operator from a unary
+      argument is ambivalent: it can be applied to one or two arguments.
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              
+Scan
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              
+Over
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="center">
+              application
+rank
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              
+iteration
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">(f\)x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">(f/)x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              1
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Converge
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">n f\x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">n f/x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              2
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              Repeat
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">t f\x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">t f/x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="center">
+              2
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              While
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+Key:
+f:  unary function      n: non-negative integer     t: truth map
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The left argument of the derivative – or its absence – determines
+      how many evaluations are performed.
+    </fo:block>
+    <fo:block id="converge">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Converge</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Syntax: <fo:inline font-family="Pragmata Pro">(f\)x</fo:inline>, <fo:inline font-family="Pragmata Pro">(f/)x</fo:inline>
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        When the derivative is applied as a
+        <fo:inline font-style="italic">unary</fo:inline>, <fo:inline font-family="Pragmata Pro">f</fo:inline>
+        is applied until either
+      </fo:block>
+      <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            two successive evaluations match
+          </fo:block>
+        </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            an evaluation matches <fo:inline font-family="Pragmata Pro">x</fo:inline>
+          </fo:block>
+        </fo:list-item-body></fo:list-item></fo:list-block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)(raze/)(1 2;(3 4;5 6);7;8)
+1 2 3 4 5 6 7 8
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Matching is governed by
+        <fo:basic-link external-destination="url('http://code.kx.com/q/cookbook/precision/#comparison-tolerance')"><fo:inline color="#0070cd">comparison
+        tolerance</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">6</fo:inline><fo:footnote-body><fo:block font-size="8pt">6.
+									http://code.kx.com/q/cookbook/precision/#comparison-tolerance</fo:block></fo:footnote-body></fo:footnote>.
+      </fo:block>
+    </fo:block>
+    <fo:block id="repeat">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Repeat</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Syntax: <fo:inline font-family="Pragmata Pro">n f\x</fo:inline>, <fo:inline font-family="Pragmata Pro">n f/x</fo:inline>
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        When the derivative is applied as a
+        <fo:inline font-style="italic">binary</fo:inline>, with a
+        <fo:inline font-style="italic">non-negative integer</fo:inline> left
+        argument, <fo:inline font-family="Pragmata Pro">f</fo:inline> is evaluated <fo:inline font-family="Pragmata Pro">n</fo:inline>
+        times. The result has count <fo:inline font-family="Pragmata Pro">n+1</fo:inline>; its first
+        item is <fo:inline font-family="Pragmata Pro">x</fo:inline>.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)10{2*x}\2
+2 4 8 16 32 64 128 256 512 1024 2048
+</fo:block>
+    </fo:block>
+    <fo:block id="while">
+      <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">While</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Syntax: <fo:inline font-family="Pragmata Pro">t f\x</fo:inline>, <fo:inline font-family="Pragmata Pro">t f/x</fo:inline>
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        When the derivative is applied as a
+        <fo:inline font-style="italic">binary</fo:inline>, with a
+        <fo:inline font-style="italic">truth map</fo:inline> as left argument,
+        <fo:inline font-family="Pragmata Pro">f</fo:inline> is evaluated until <fo:inline font-family="Pragmata Pro">t</fo:inline>
+        evaluated on the result returns zero. (The truth map
+        <fo:inline font-family="Pragmata Pro">t</fo:inline> can be a function, list or dictionary.)
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)(10&gt;){2*x}\2
+2 4 8 16
+</fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="binary-argument-1">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Binary argument</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The function derived by a progression operator from a binary
+      argument <fo:inline font-family="Pragmata Pro">f</fo:inline> is ambivalent: it can be applied to
+      one or two arguments.
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              application
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              Scan
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              Over
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              unary
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">(f\)x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">(f/)x</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              binary
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">x f\y</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">x f/y</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The Scan derivative <fo:inline font-family="Pragmata Pro">f\</fo:inline> is a uniform function:
+      <fo:inline font-family="Pragmata Pro">(f\)x</fo:inline> has the same count as
+      <fo:inline font-family="Pragmata Pro">x</fo:inline>, and <fo:inline font-family="Pragmata Pro">x f\y</fo:inline> has the same
+      count as <fo:inline font-family="Pragmata Pro">y</fo:inline>.
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              application
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              Scan
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">count r</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">r 0</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">r i</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              unary
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">r:(f\)x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">count x</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">x 0</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[r i-1;x i]</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              binary
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">r:x f\y</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">count y</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[x;y 0]</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[r i-1;y i]</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The i-th item of result <fo:inline font-family="Pragmata Pro">r</fo:inline> is
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          for <fo:inline font-style="italic">unary</fo:inline> application,
+          <fo:inline font-family="Pragmata Pro">f[r i-1;x i]</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          for <fo:inline font-style="italic">binary</fo:inline> application,
+          <fo:inline font-family="Pragmata Pro">f[r i-1;y i]</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Unary and binary applications differ in the evaluation of
+      <fo:inline font-family="Pragmata Pro">r[0]</fo:inline>:
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          for <fo:inline font-style="italic">unary</fo:inline> application
+          <fo:inline font-family="Pragmata Pro">r[0]</fo:inline> is <fo:inline font-family="Pragmata Pro">x[0]</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          for <fo:inline font-style="italic">binary</fo:inline> application,
+          <fo:inline font-family="Pragmata Pro">r[0]</fo:inline> is <fo:inline font-family="Pragmata Pro">f[x;y[0]]</fo:inline>
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The Over derivatives perform the same computation but return only
+      the result of the last evaluation.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)(+\)12 10 1 90 73
+12 22 23 113 186
+q)100+\12 10 1 90 73
+112 122 123 213 286
+q)(+/)12 10 1 90 73
+186
+q)100+/12 10 1 90 73
+286
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The keywords <fo:inline font-family="Pragmata Pro">scan</fo:inline> and <fo:inline font-family="Pragmata Pro">over</fo:inline>
+      can be used to avoid parenthesizing binaries that are not also
+      infixes.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q){x+y} scan 12 10 1 90 73    / lambda is not an infix
+12 22 23 113 186
+q)(+) over 12 10 1 90 73      / + is an infix
+186
+</fo:block>
+  </fo:block>
+  <fo:block id="higher-rank-arguments">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Higher-rank arguments</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Syntax: <fo:inline font-family="Pragmata Pro">f\[x;y;z…]</fo:inline>,
+      <fo:inline font-family="Pragmata Pro">f/[x;y;z…]</fo:inline>
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Derivatives of higher-rank argument functions are not ambivalent:
+      they have the same rank as their functions.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      They follow the derivatives of binary arguments applied as binary
+      functions. This may appear more clearly using bracket notation.
+    </fo:block>
+    <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">f</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">r:</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">r 0</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+              <fo:inline font-family="Pragmata Pro">r i</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              binary
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f\[x;y]</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[x;y 0]</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[r i-1;y i]</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              ternary
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f\[x;y;z]</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[x;y 0;z 0]</fo:inline>
+            </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+              <fo:inline font-family="Pragmata Pro">f[r i-1;y i;z i]</fo:inline>
+            </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      And so on for higher ranks of <fo:inline font-family="Pragmata Pro">f</fo:inline>.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)ssr\["hello word." ;("h";".";"rd");("H";"!";"rld")]
+"Hello word."
+"Hello word!"
+"Hello world!"
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In the above example the successive evaluations are
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+ssr["hello word.";"h";"H"]
+ssr["Hello word.";".";"!"]
+ssr["Hello word!";"rd";"rld"]
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The right arguments of the derivative must conform: they must be
+      lists or dictionaries of the same count, or atoms. The following
+      two statements are equivalent.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q){x+y+z}\[1;2 3 4;5]
+8 16 25
+q){x+y+z}\[1;2 3 4;5 5 5]
+8 16 25
+</fo:block>
+  </fo:block>
+  <fo:block id="empty-lists">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Empty lists</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The derivatives of non-unary functions are
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          <fo:inline font-style="italic">uniform</fo:inline> with Scan
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          <fo:inline font-style="italic">aggregates</fo:inline> with Over
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Applied to empty lists, the Scan derivatives return empty lists
+      without evaluating the function. The result is not always of the
+      same type as the argument list/s.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Applied to empty lists, the Over derivatives return an atom
+      without evaluating the function.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      See
+      <fo:basic-link external-destination="url('http://code.kx.com/q/basics/progression-operators/#empty-lists')"><fo:inline color="#0070cd">Progression
+      operators</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">7</fo:inline><fo:footnote-body><fo:block font-size="8pt">7.
+									http://code.kx.com/q/basics/progression-operators/#empty-lists</fo:block></fo:footnote-body></fo:footnote> for details.
+    </fo:block>
+  </fo:block>
+  <fo:block id="exponential-moving-average">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Exponential moving average</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Since V3.1 (2013.07.07), the exponential moving average of a list
+      can be calculated using Scan. While it was previously possible to
+      define an exponential moving average function, the new syntax
+      shortens execution times.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+//Function defined using the old syntax
+q) ema_old: {{z+x*y}\[first y;1-x;x*y]}
+//Function defined using the new syntax
+//Requires V3.1 2013.07.07 or later 
+q) ema_new:{first[y](1-x)\x*y}
+q) t:til 10
+q) ema_new[0.1;t]
+0
+0.1
+0.29
+0.561
+0.9049
+1.31441
+1.782959
+2.304672
+2.874205
+3.486784
+//Functions produce the same results but ema_new is significantly faster
+q) ema_old[0.1;t]~ema_new[0.1;t]
+1b
+q) t2:til 1000000
+q) \t ema_old[0.1;t2]
+421
+q) \t ema_new[0.1;t2]
+31
+</fo:block>
+  </fo:block>
+</fo:block><fo:block id="combining-operators">
+  <fo:block id="idm290864597680" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Combining operators</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Multiple operators can be used within the same expression, or even
+    applied to the same function, to achieve a result which cannot be
+    obtained using only one.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    In this section, we will look at some common and useful examples.
+    While the results produced by these examples might seem confusing
+    initially, by taking each operator in turn and applying it to its
+    unary, binary or higher-rank argument we can see the rules already
+    described are still being followed.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The example below uses both Each Prior and Scan to return the first
+    rows of Pascal’s Triangle.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) pascal:{[numRows] fn:{(+':)x,0} ; numRows fn\1};
+q) pascal 7
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+1 5 10 10 5 1
+1 6 15 20 15 6 1
+1 7 21 35 35 21 7 1
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    To understand what is happening here first look at the definition of
+    <fo:inline font-family="Pragmata Pro">fn</fo:inline>. Here, Each Prior is applied to the Add
+    operator. The derivative returns the sum of all adjacent pairs in
+    its argument. Zero is appended to the argument to retain the final 1
+    in each evaluation.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The Scan operator applied to the unary function
+    <fo:inline font-family="Pragmata Pro">fn</fo:inline> derives a function that uses the results of
+    one iteration as the argument of the next. After
+    <fo:inline font-family="Pragmata Pro">numRows</fo:inline> iterations the result of each iteration,
+    along with the initial argument, is returned.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    A commonly used example of applying multiple operators to a function
+    is illustrated in the following piece of code
+    <fo:inline font-family="Pragmata Pro">,/:\:</fo:inline>, which returns all possible combinations of
+    two lists by applying Each Left and Each Right to the Join function
+    <fo:inline font-family="Pragmata Pro">,</fo:inline>. The order of the operators affects the result.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) raze 1 2 3 ,/:\: 4 5 6
+1 4
+1 5
+1 6
+2 4
+2 5
+2 6
+3 4
+3 5
+3 6
+q) raze 1 2 3 ,\:/: 4 5 6
+1 4
+2 4
+3 4
+1 5
+2 5
+3 5
+1 6
+2 6
+3 6
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    To grasp how q interprets the above, note the following
+    equivalences.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+1 2 3 ,/:\: 4 5 6     &lt;==&gt;     ((1,/:4 5 6);(2,/:4 5 6);(3,/:4 5 6))
+1 2 3 ,\:/: 4 5 6     &lt;==&gt;     ((1 2 3,\:4);(1 2 3,\:5);(1 2 3,\:6))
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Another example of combining operators is <fo:inline font-family="Pragmata Pro">,//</fo:inline>.
+    This repeatedly flattens a nested list until it cannot be flattened
+    any more.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The two Over operators in this example do different things. The
+    left-hand Over is applied to the Join operator, deriving
+    <fo:inline font-family="Pragmata Pro">,/</fo:inline>, which joins the first item of its argument to
+    the second, the result to the third item, and so on through the rest
+    of the list. (The aggregate <fo:inline font-family="Pragmata Pro">,/</fo:inline> is in fact the
+    <fo:inline font-family="Pragmata Pro">raze</fo:inline> function.)
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)l:(1 2 3;(4 5;6);(7;8;(9;10;11)))        / mixed list
+q)(,/)l
+1
+2
+3
+4 5
+6
+7
+8
+9 10 11
+q)raze[l]~(,/)l
+1b
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The derivative <fo:inline font-family="Pragmata Pro">,/</fo:inline> is ambivalent. We shall pass it
+    to the second Over as a unary argument: <fo:inline font-family="Pragmata Pro">(,/)/</fo:inline>.
+    This form is Converge. The derivative <fo:inline font-family="Pragmata Pro">,/</fo:inline> is
+    applied until it has no further effect.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)((,/)/)l
+1 2 3 4 5 6 7 8 9 10 11
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    But the inner parentheses are unnecessary.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)(,//)l
+1 2 3 4 5 6 7 8 9 10 11
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    In <fo:inline font-family="Pragmata Pro">,//</fo:inline> the argument of the second
+    <fo:inline font-family="Pragmata Pro">/</fo:inline> is <fo:inline font-family="Pragmata Pro">,/</fo:inline>.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The Each operator can also be combined with itself in order to apply
+    a function to the required level of depth in nested lists.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) lst:(3 2 8;(3.2;6h);("AS";4))
+q) type lst
+0h
+q) (type')lst
+7 0 0h
+q) (type'')lst
+-7 -7 -7h
+-9 -5h
+10 -7h
+q) (type''')lst
+-7 -7 -7h
+-9 -5h
+(-10 -10h;-7h)
+</fo:block>
+</fo:block><fo:block id="iterating-with-operators">
+  <fo:block id="idm290864577664" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Iterating with operators</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    With unary functions, Scan and Over control iteration. Evaluation is
+    <fo:inline font-style="italic">successive</fo:inline>: the first evaluation is of the
+    argument. Subsequent evaluations are of the result of the previous
+    evaluation.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    There are three forms.
+  </fo:block>
+  <fo:table-and-caption margin-right="36pt" margin-bottom="9pt"><fo:table font-size="9pt"><fo:table-header border-bottom-style="solid" border-bottom-width=".5pt" page-break-after="avoid"><fo:table-row><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+            Scan
+          </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+            Over
+          </fo:block></fo:table-cell><fo:table-cell font-style="italic" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block linefeed-treatment="preserve" text-align="left">
+            form
+          </fo:block></fo:table-cell></fo:table-row></fo:table-header><fo:table-body><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            <fo:inline font-family="Pragmata Pro">(f\)x</fo:inline>
+          </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            <fo:inline font-family="Pragmata Pro">(f/)x</fo:inline>
+          </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            Converge
+          </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            <fo:inline font-family="Pragmata Pro">n f\x</fo:inline>
+          </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            <fo:inline font-family="Pragmata Pro">n f/x</fo:inline>
+          </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            Repeat
+          </fo:block></fo:table-cell></fo:table-row><fo:table-row page-break-inside="avoid"><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            <fo:inline font-family="Pragmata Pro">t f\x</fo:inline>
+          </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            <fo:inline font-family="Pragmata Pro">t f/x</fo:inline>
+          </fo:block></fo:table-cell><fo:table-cell padding-top="3pt" padding-bottom="3pt" padding-left="5pt" padding-right="5pt"><fo:block text-align="left">
+            While
+          </fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:table-and-caption>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+Key:
+f: unary function   n: non-negative integer   t: truth map
+</fo:block>
+  <fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+        Converge
+      </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Apply <fo:inline font-family="Pragmata Pro">f</fo:inline> until the result matches either the
+          previous evaluation or <fo:inline font-family="Pragmata Pro">x</fo:inline>.
+        </fo:block>
+      </fo:block><fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+        Repeat
+      </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Apply <fo:inline font-family="Pragmata Pro">f</fo:inline> <fo:inline font-family="Pragmata Pro">n</fo:inline> times. If
+          <fo:inline font-family="Pragmata Pro">n</fo:inline> is 0, return <fo:inline font-family="Pragmata Pro">x</fo:inline>.
+        </fo:block>
+      </fo:block><fo:block><fo:block page-break-after="avoid" margin-bottom="6pt">
+        While
+      </fo:block></fo:block><fo:block margin-left="10mm" page-break-inside="avoid" margin-bottom="3pt">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Apply <fo:inline font-family="Pragmata Pro">f</fo:inline> until truth map
+          <fo:inline font-family="Pragmata Pro">t</fo:inline> applied to the result is 0. A truth map
+          may be a function, list or dictionary.
+        </fo:block>
+      </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) //Calculate a Fibonacci sequence using Over
+q) fib: {x,sum -2#x}/
+q) //Call the function with an integer as the first parameter
+q) fib[10;1 1]
+1 1 2 3 5 8 13 21 34 55 89 144
+q) //Call the function with a function as the first parameter
+q) fib[{last[x]&lt;200};1 1]
+1 1 2 3 5 8 13 21 34 55 89 144 233
+</fo:block>
+  <fo:block id="infinite-loops">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Infinite loops</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Certain expressions result in infinite loops. Consider the
+      function defined and illustrated below.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)30{3.2*x*(1-x)}\.4      / 30 iterations
+0.4 0.768 0.5701632 0.7842468 0.541452 0.7945015 0.5224603 0.7983857 0.515091..
+q)({3.2*x*(1-x)}\)0.4     / does not return!
+</fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image35.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Infinite looping function example</fo:inline></fo:inline></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      From the chart it is evident this results in a loop with period 2
+      (at least within floating-point tolerance). If no exit condition
+      is supplied the function will not terminate.
+    </fo:block>
+    <fo:block background-color="#EFF" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">Set a timeout </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        When using Converge, it may be a good idea to set the timeout in
+        your session via the <fo:inline font-family="Pragmata Pro">\T</fo:inline> command. This will
+        terminate evaluation after a set number of seconds; infinite
+        loops will not lock your instance indefinitely.
+      </fo:block></fo:block>
+  </fo:block>
+  <fo:block id="recursion">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Recursion</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The self function <fo:inline font-family="Pragmata Pro">.z.s</fo:inline> can be used in
+      recursion, allowing more flexibility than Over or Scan.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)l:(`a`n;(1 2;"efd");3;("a";("fes";3.4)))
+q){}0N!{$[0h=type x;.z.s'[x];10h=abs type x;upper x;x]}l
+(`a`n;(1 2;"EFD");3;("A";("FES";3.4)))
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The above function will operate on a list of any structure and
+      data types, changing strings and characters to upper case and
+      leaving all other elements unaltered. Note that when using
+      <fo:inline font-family="Pragmata Pro">.z.s</fo:inline> the function will error out with a
+      <fo:inline font-family="Pragmata Pro">'stack</fo:inline> error message after 2000 loops. This can
+      be seen in the example below:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+{.z.s[0N!x+1]}0
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      No such restriction exists when using Scan or Over. Use
+      <fo:inline font-family="Pragmata Pro">.z.s</fo:inline> only where it is not possible to use Scan
+      or Over.
+    </fo:block>
+  </fo:block>
+  <fo:block id="operators-vs-loops">
+    <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Operators vs loops</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Many native q operators are overloaded to work with atoms, lists,
+      dictionaries or a combination of them. For example, the Add
+      operator <fo:inline font-family="Pragmata Pro">+</fo:inline> can take two atoms, an atom and a
+      list or dictionary or two lists or dictionaries as arguments.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      For more control over execution, or to work with user-defined
+      functions, either loops or unary operators can be used. In almost
+      all cases, unary operators allow shorter code with lower latency,
+      and avoid creating unnecessary global variables.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Often the implementation is relatively easy, using Each, Each Left
+      and Each Right to cycle through a list and amend items. As an
+      example, we can check if either of the integers 2 or 3 are present
+      in a list, using a <fo:inline font-family="Pragmata Pro">while</fo:inline> loop:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) chk:{i:0;a:();while[i&lt;count x;a,:enlist any 2 3 in x[i];i+:1];a}
+q) chk (1 2 3;3 4 5;4 5 6)
+110b
+q)\t:100000 chk (1 2 3;3 4 5;4 5 6)
+515
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      However, operators allow neater, more efficient code.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) any each 2 3 in/: (1 2 3;3 4 5;4 5 6)
+110b
+q)\t:10000 any each 2 3 in/: (1 2 3;3 4 5;4 5 6)
+374
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Similarly we can use Over to deal with tasks which would be
+      handled by loops in C-like languages. Suppose you want to join a
+      variable number of tables.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+//Create a list of tables, of random length
+q)tl:{1!flip(`sym;`$"pr",x;`$"vol",x)!(`a`b`c;3?50.0;3?100)}each string til 2+rand 10
+
+//Join the tables using a while loop
+q) {a:([]sym:`a`b`c);i:0;while[i&lt;count[x];0N!a:a lj x[i];i+:1];a}tl
+sym pr0      vol0 pr1      vol1 pr2      vol2
+---------------------------------------------
+a   35.2666  53   38.08624 95   1.445859 57
+b   19.28851 39   6.41355  50   12.97504 24
+c   23.24556 84   13.62839 19   6.89369  46
+
+q)\t:100 {a:([]sym:`a`b`c);i:0;while[i&lt;count[x];0N!a:a lj x[i];i+:1];a}tl
+101
+
+//Join the tables using Over
+q) 0!(lj/)tl
+sym pr0      vol0 pr1      vol1 pr2      vol2
+---------------------------------------------
+a   35.2666  53   38.08624 95   1.445859 57
+b   19.28851 39   6.41355  50   12.97504 24
+c   23.24556 84   13.62839 19   6.89369  46
+q)\t:100 0!(lj/)tl
+82
+</fo:block>
+  </fo:block>
+</fo:block><fo:block id="nested-columns">
+  <fo:block id="idm290864532336" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Nested columns</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    While it is usually best to avoid nested columns, there are
+    situations where operating on nested data is necessary or may result
+    in lower execution time for certain queries.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The main reason for this is that the function
+    <fo:inline font-family="Pragmata Pro">ungroup</fo:inline>, which flattens a table containing nested
+    columns, is computationally expensive, especially when you are only
+    dealing with a subset of the entire table. There are also other
+    situations where storing the data in a nested structure makes more
+    sense. For example you may want to use strings, which are lists of
+    characters, instead of symbols, which are atoms, in order to avoid a
+    bloated sym file. For this reason we will now look at using unary
+    operators to apply functions to a table as a whole, and to apply
+    functions within a select statement.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Unary operators can be used to examine and modify tables. To do
+    this, an understanding of how tables are structured is necessary. In
+    kdb+, a table is a list of dictionaries.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This means we can apply functions to individual items, just like any
+    other nested list or dictionary.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)show a:([]a:`a`b`c`d;b:1 2 3 4;c:(1 2;2 3;3 4;4 5))
+a b c
+-------
+a 1 1 2
+b 2 2 3
+c 3 3 4
+d 4 4 5
+q)type a
+98h
+q)(type')a
+99 99 99 99h
+q)(type'')a
+a   b  c
+--------
+-11 -7 7
+-11 -7 7
+-11 -7 7
+-11 -7 7
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    We see here that
+  </fo:block>
+  <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Pragmata Pro">type a</fo:inline> returns 98, the type of a table
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Pragmata Pro">(type')a</fo:inline> returns the type of each item of the
+        list <fo:inline font-family="Pragmata Pro">a</fo:inline>: the type of ictionaries
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Pragmata Pro">(type'')a</fo:inline> finds the type of each item in the
+        range of each dictionary in <fo:inline font-family="Pragmata Pro">a</fo:inline>: a list of
+        dictionaries, which collapses back to a table showing the type
+        of each field in the table <fo:inline font-family="Pragmata Pro">a</fo:inline>
+      </fo:block>
+    </fo:list-item-body></fo:list-item></fo:list-block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)distinct (type'')a
+a   b  c
+--------
+-11 -7 7
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    In this way, the statement can be used to ensure all rows of the
+    table are the same type. This is useful if your table contains
+    nested columns, as the <fo:inline font-family="Pragmata Pro">meta</fo:inline> function only looks
+    at the first row of nested columns. If the table is keyed then the
+    function will only be applied to the non-key columns in this case.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)a:([]a:`a`b`c`d;b:1 2 3 4;c:(1 2;2 3;3 4.;4 5))
+q)meta a
+c| t f a
+-| -----
+a| s
+b| j
+c| J
+q)distinct (type'')a
+a   b  c
+--------
+-11 -7 7
+-11 -7 9
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Looking only at the results of <fo:inline font-family="Pragmata Pro">meta</fo:inline>, we might
+    conclude the column <fo:inline font-family="Pragmata Pro">c</fo:inline> contains only integer
+    lists. However <fo:inline font-family="Pragmata Pro">distinct (type'')a</fo:inline> clearly shows
+    column <fo:inline font-family="Pragmata Pro">c</fo:inline> contains lists of different types, and
+    thus is not mappable. This is a common cause of error when writing
+    to a splayed table.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Dealing with nested data in a table via a select or update statement
+    often requires the use of unary operators. To illustrate this, let
+    us define a table with three columns, two of which are nested.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)tab:([]sym:`AA`BB`CC;time:3#enlist 09:30+til 30;price:{30?100.0}each til 3)
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Suppose we want to find the range of each row. This can be done
+    easily by defining a range function as:
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)rng:{max[x]-min[x]}
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    We can then make use of this function within a select statement,
+    with Each to apply the function to each row of the table.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)select sym, (rng')price from tab
+sym price
+------------
+AA  96.3872
+BB  95.79704
+CC  98.31252
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Suppose instead we want to find the range of a subset of the data in
+    the table. One way would be to ungroup the table and then find the
+    range as follows.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)select rng price by sym from ungroup tab where time within 09:40 09:49
+sym| price
+---| --------
+AA | 77.67457
+BB | 80.14611
+CC | 67.48254
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    However, it is faster to index into the nested list, as this avoids
+    the costly <fo:inline font-family="Pragmata Pro">ungroup</fo:inline> function. First find the index
+    of the prices which fall within our time range.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)inx:where (exec first time from tab) within 09:40 09:49
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Then use this to index into each price list and apply
+    <fo:inline font-family="Pragmata Pro">rng</fo:inline> to the resulting prices.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)select sym, (rng')price@\:inx from tab
+sym inx
+------------
+AA  77.67457
+BB  80.14611
+CC  67.48254
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This offers a significant improvement in latency over using
+    <fo:inline font-family="Pragmata Pro">ungroup</fo:inline>.
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)\t:10000 select rng price by sym from ungroup tab where time within 09:40 09:49
+198
+q)\t:10000 inx:where (exec first time from tab) within 09:40
+09:49;select sym, (rng')price@\:inx from tab
+65
+</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    If the nested lists are not uniform the code needs to be changed to
+    the following:
+  </fo:block>
+  <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)inx:where each (exec time from tab) within 09:40 09:49
+q)select sym, (rng')price@'inx from tab
+sym inx
+------------
+AA  77.67457
+BB  80.14611
+CC  67.48254
+</fo:block>
+</fo:block><fo:block id="conclusion">
+  <fo:block id="idm290864505072" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Conclusion</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This whitepaper provides a summary of the unary operators available
+    in q, showing how they modify the behavior of different types of
+    functions.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    It showed, through the use of examples, that the operation of the
+    derived function is determined by
+  </fo:block>
+  <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        the unary operator
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        the rank of the argument function (for Each, Scan and Over)
+      </fo:block>
+    </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        the rank at the derivative is applied (for binary functions with
+        Each Prior, Scan, and Over)
+      </fo:block>
+    </fo:list-item-body></fo:list-item></fo:list-block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    More elaborate examples with multiple operators can be analyzed wih
+    these rules.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Certain applications of unary operators (creating iterating
+    functions, applying operators to functions within select statements)
+    were examined in more detail, as these are useful for many tasks,
+    but often poorly understood. Some common uses were examined to show
+    the ability of unary operators to reduce execution times.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This whitepaper illustrates how unary operators can extend the
+    functionality of built-in and user-defined functions, allowing code
+    to take full advantage of kdb+’s ability to process large volumes of
+    data quickly. Correctly using adverbs on data minimizes
+    manipulation, and allows more concise code, which is easier to
+    maintain.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    All tests were run using kdb+ V3.1 (2013.08.09)
+  </fo:block>
+  
+</fo:block></fo:flow></fo:page-sequence></fo:root>

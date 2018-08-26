@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article>
+<article
+  xmlns="http://docbook.org/ns/docbook" version="5.0"
+  xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <info>
+    <title>Data visualization with kdb+ using ODBC</title>
+    <authorgroup>
+      <author>
+        <firstname>Michaela</firstname>
+        <surname>Woods</surname>
+      </author>
+    </authorgroup>
+    <date>July 2018</date>
+    <keywords>data, kdb+, ODBC, Tableau, visualization</keywords>
+  </info>
+<section xml:id="data-visualization-with-kdb-using-odbc-a-tableau-case-study">
+  <title>Data visualization with kdb+ using ODBC: <br/>a Tableau case
+  study</title>
+  <para>
+    Business intelligence (BI) tools are widely used across many
+    industries for their interactive nature, which enables users to
+    create and customize dynamic data visualizations easily. Kx provides
+    its own visualization tool,
+    <link xlink:href="http://code.kx.com/q/platform"><emphasis>Dashboards
+    for Kx</emphasis></link>, but clients might have incumbent solutions
+    they wish to connect to kdb+.
+  </para>
+  <para>
+    Alternatively, many organizations might wish to migrate their
+    back-end database to kdb+ for increased efficiency and scalability,
+    while retaining their current visualization front end. This paper
+    offers guidance.
+  </para>
+  <para>
+    <link xlink:href="https://tableau.com/">Tableau</link> is an example
+    of a widely-used BI tool. This paper outlines how it can be used to
+    access kdb+ via ODBC (Open Database Connectivity), a standard
+    application-programming interface used to connect different database
+    management systems, specifically designed to be independent of
+    databases and operating systems. Version 3.4 of kdb+ included an
+    updated version of its Windows ODBC driver (ODBCv3) to support wider
+    access to kdb+ data.
+  </para>
+  <para>
+    This paper illustrates the flexibility with which kdb+ data can be
+    accessed by Tableau using ODBC. It explains further how kdb+’s
+    caching feature may be used to improve performance by optimizing
+    repeated queries.
+  </para>
+  <para>
+    Keep in mind that there will always be limitations on third-party
+    solutions not designed from the outset for processing real-time
+    streaming data. Kx’s own visualization tool <emphasis>Dashboards for
+    Kx</emphasis> is optimized for streaming queries and inherits
+    functionality such as user management, load balancing, access
+    control, caching and queuing from the underlying platform as well as
+    direct access to q for comprehensive querying capabilities. Such
+    features and their ability to support high-volume, low-latency
+    access to streaming data cannot be assumed in third-party products.
+  </para>
+  <para>
+    Guidelines on connection, setup, queries and advice on how to
+    maximize performance are discussed. For both new and existing users,
+    this paper aims to reduce the learning curve, boost efficiency and
+    increase usability when combining these two technologies.
+  </para>
+  <para>
+    All tests were run using kdb+ version 3.5 and Tableau 10.3.
+  </para>
+  <section xml:id="author">
+    <title>Author</title>
+    <para>
+      Michaela Woods is a kdb+ consultant for Kx. Based in London for
+      the past three years, she is now an industry leader in combining
+      kdb+ with Tableau through her development of a data visualization
+      platform currently used at one of the world’s leading investment
+      banks.
+    </para>
+  </section>
+  <section xml:id="connecting-to-kdb-using-odbc">
+    <title>Connecting to kdb+ using ODBC</title>
+    <para>
+      Instructions on how to connect kdb+ from Tableau Desktop for both
+      Windows and Linux can be found at
+      <link xlink:href="/interfaces/q-server-for-odbc3">Interfaces/Kdb+
+      server for ODBC3</link>.
+    </para>
+    <para>
+      For an ODBC driver to connect to an application, it needs a DSN
+      (Data Source Name). A DSN contains the name, directory and driver
+      of the database, and (depending on the type of DSN) the access
+      credentials of the user.
+    </para>
+    <para>
+      With administrator rights, adding a new DSN is relatively
+      straightforward. See the instructions linked to above.
+    </para>
+    <para>
+      A second way to add a DSN does not require administrator access,
+      and might be useful for some users. This defines the DSN
+      connection details in a Registry file rather than adding new DSNs
+      directly in the ODBC Data Source Administrator. This is an
+      alternative to steps 3, 4 and 5 in the instructions linked to
+      above.
+    </para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+          Copy <literal>qodbc.dll</literal> to the correct location.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Define the Registry file and save it to
+          <literal>C:\Users\&lt;username&gt;</literal> with a
+          <literal>.reg</literal> extension. Here is an example of what
+          the file might look like.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Double-click on the file when saved. This will create the
+          correct driver entries, which for this example will be a new
+          kdb+ DSN called <literal>DEV</literal>.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      This second method makes it easier to maintain and share
+      connection details with multiple users, as the DSN details reside
+      in a separate text file rather than in the Windows Registry.
+    </para>
+    <section xml:id="connecting-to-tableau-desktop">
+      <title>Connecting to Tableau Desktop</title>
+      <para>
+        Once a kdb+ DSN has been added, and the rest of the set-up
+        instructions are followed, you are ready to connect to kdb+ from
+        Tableau. On opening Tableau, you will be prompted to select the
+        type of database you wish to connect to, select the option
+        <emphasis>Other Databases (ODBC)</emphasis>.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image1.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        Next, select the correct DSN from the dropdown list and click
+        <emphasis>Connect</emphasis>. This will automatically populate
+        the Connection Attributes in the bottom half of the window using
+        the details defined earlier in the Registry file. The final step
+        is to click the <emphasis>Sign In</emphasis> button, which
+        creates a connection to the kdb+ process, enabling the database
+        to be queried via Tableau’s Custom SQL, as demonstrated in the
+        following section.
+      </para>
+    </section>
+    <section xml:id="connecting-to-tableau-server">
+      <title>Connecting to Tableau Server</title>
+      <para>
+        The set-up instructions above, both explicit and linked, are
+        specifically for a user connecting from Tableau Desktop. This is
+        the local version of Tableau installed on a desktop or laptop.
+        Tableau Server, on the other hand, is installed on a Windows
+        server and is accessible to users via a browser. Tableau Server
+        brings additional collaboration, security and scalability
+        capabilities not available using only Tableau Desktop.
+      </para>
+      <para>
+        Tableau workbooks can be shared between both by publishing from
+        Tableau Desktop to Tableau Server. This procedure is detailed in
+        the section <emphasis>Publishing to Tableau Server</emphasis>.
+      </para>
+      <para>
+        To connect via Tableau Server, the Registry file that was
+        presented in the previous section needs to be configured. This
+        process may be handled by an organization’s support team,
+        depending on the installation setup. The driver also needs to be
+        installed, and then the connection can be initialized much as
+        for Tableau Desktop.
+      </para>
+    </section>
+    <section xml:id="other-considerations">
+      <title>Other considerations</title>
+      <para>
+        Since a
+        <link xlink:href="https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip">release
+        on 2017.09.11</link>, qodbc3 allows specification of connection
+        details without a DSN. This means all details, except the
+        password, will be saved by Tableau in a workbook or saved data
+        source. However, this change only affects desktop users. Because
+        the password is not embedded, the DSN is still required to be
+        defined on the server as this is the only way the password will
+        be picked up for published reports.
+      </para>
+      <para>
+        It is also important to note that connection details are
+        embedded in both the Tableau workbook and the DSN definition.
+        For version management, when sharing workbooks between
+        developers or when publishing them to Tableau Server, this can
+        become problematic. One workaround solution to manage this is to
+        wipe these details from the workbook with a script before
+        sharing or publishing workbooks. This concept is explored below
+        in <emphasis>Publishing to Tableau Server</emphasis>.
+      </para>
+    </section>
+  </section>
+  <section xml:id="tableau-functionality-for-kdb">
+    <title>Tableau functionality for kdb+</title>
+    <section xml:id="calling-q-from-tableau">
+      <title>Calling q from Tableau</title>
+      <para>
+        Once a successful connection has been made, the next step is to
+        begin by running some sample queries. Tableau’s Custom SQL is
+        the method by which q queries can be run from Tableau. In
+        particular, the <literal>q()</literal> function can be used to
+        send synchronous queries to kdb+, as shown below.
+      </para>
+      <para>
+        To demonstrate this, define a table <literal>tab</literal> in
+        the kdb+ process you are connecting to.
+      </para>
+      <programlisting language="r script">
+q)N:8
+q)dates:2018.03.28 + til 3
+q)tab:([] date:N?dates;category:N?`CORP`EQ`GOV;volume:N?til 10000)
+</programlisting>
+      <para>
+        Then, in Tableau run the following in the <emphasis>Custom
+        SQL</emphasis>.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image2.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        Now the data in the table <literal>tab</literal> is available
+        for use in Tableau. Note that if <literal>tab</literal> is a not
+        a partitioned table (and is small enough to be handled via SQL),
+        you can just type its name into the table selector, there is no
+        need to use <literal>q('select from tab')</literal>. Other
+        acceptable syntaxes are:
+      </para>
+      <programlisting>
+q('tablename')
+q('select from table where date in 2018.07.02')
+q('function',&lt;Parameters.Date&gt;)
+q('{[mydate] func[…]}',&lt;Parameters.Date&gt;)
+</programlisting>
+      <para>
+        Queries can be a simple select statement or can become much more
+        complex and flexible using inbuilt parameters supplied by
+        Tableau, which will be demonstrated in the next section.
+      </para>
+      <blockquote>
+        <para>
+          !!! warning <quote>Known SQL compatibility issues</quote>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              SQL string literals are trimmed like q symbols
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>MIN()</literal> and <literal>MAX()</literal>
+              don’t work on strings
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              q strings and booleans lack nulls, therefore SQL
+              operations on null data resulting in these types
+              <quote>erase</quote> nulls
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>COUNT</literal> and
+              <literal>COUNT DISTINCT</literal> don’t ignore nulls
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SQL selects from partitioned tables are not supported –
+              one should pre-select from a partitioned table using the
+              <literal>q()</literal> function instead
+            </para>
+          </listitem>
+        </itemizedlist>
+      </blockquote>
+    </section>
+    <section xml:id="datatypes">
+      <title>Datatypes</title>
+      <para>
+        Tableau caters for multiple q datatypes.
+      </para>
+      <informaltable>
+        <tgroup cols="2">
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+                Tableau
+              </entry>
+              <entry>
+                q
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                String
+              </entry>
+              <entry>
+                Symbol, String
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Date
+              </entry>
+              <entry>
+                Date
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Date &amp; Time
+              </entry>
+              <entry>
+                Timestamp
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Numerical
+              </entry>
+              <entry>
+                Int, float
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Boolean
+              </entry>
+              <entry>
+                Boolean
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        On loading data, Tableau automatically interprets the datatype
+        of a field. It is recommended that the user checks these have
+        been interpreted correctly after the data is loaded. If it is
+        incorrect, the datatype can then be easily changed on the
+        <emphasis>Data Source</emphasis> page or in the
+        <emphasis>Data</emphasis> pane as shown below.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image3.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image4.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+    </section>
+    <section xml:id="simple-parameters">
+      <title>Simple parameters</title>
+      <para>
+        Tableau parameters provide further flexibility when working with
+        q functions. To demonstrate, define a function
+        <literal>func</literal> that selects from the table
+        <literal>tab</literal> defined above. This function can be
+        called from Tableau using Tableau-defined parameters.
+      </para>
+      <programlisting language="r script">
+func:{[mydate;mycategory]
+  select from tab where date in mydate, category in mycategory
+  };
+</programlisting>
+      <para>
+        Take the parameter <literal>mycategory</literal>: in this
+        example, a list of allowable symbols that are acceptable for the
+        parameter <literal>mycategory</literal> can be defined in
+        Tableau.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image5.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image6.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        This can be done in the Custom SQL stage when you are writing
+        your query. These parameters can then be shown and made
+        available for users as a dropdown list on worksheets and
+        dashboards as can be seen below.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image7.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        Tableau parameters are limited to static values, and a single
+        select option when placed in a view. However, there are ways to
+        make them more dynamic and flexible. This will be explored below
+        in <emphasis>Dynamic Parameters</emphasis>.
+      </para>
+    </section>
+    <section xml:id="tableau-filters">
+      <title>Tableau filters</title>
+      <para>
+        As shown above, parameters are a useful tool for creating
+        user-defined inputs to visualizations. However, there are cases
+        where the user may want to return the entire data set first and
+        only afterwards reduce the data set. This can be achieved using
+        Tableau’s filters.
+      </para>
+<literallayout><inlinemediaobject>
+<imageobject>
+<imagedata fileref="img/image7.png" />
+</imageobject>
+</inlinemediaobject>
+<small><emphasis>Tableau Category Parameter as defined in the previous section</emphasis></small></literallayout>
+<literallayout><inlinemediaobject>
+<imageobject>
+<imagedata fileref="img/image8.png" />
+</imageobject>
+</inlinemediaobject>
+<small><emphasis>Tableau Category Filter</emphasis></small></literallayout>
+      <para>
+        Filters are the standard way to reduce the set of data displayed
+        on a worksheet. Note from the above screenshots that filters are
+        not limited to a single select option as parameters are.
+      </para>
+      <para>
+        Filters are most effective with fast queries on small datasets.
+        For longer queries and/or larger datasets, filters become
+        challenging from a performance point of view. This is because
+        every time a filter selection is changed, the Custom SQL query
+        runs the same query multiple times per view to build dimensions.
+        Therefore the more filters and dimensions you add to a view, the
+        slower performance becomes.
+      </para>
+    </section>
+    <section xml:id="caching">
+      <title>Caching</title>
+      <para>
+        One way to get around this inefficiency is to introduce caching
+        in kdb+. Caching is storing results from previous queries or
+        calculations in an internal lookup table (or cache) for faster
+        data retrieval on subsequent queries. Caching here is being used
+        to address the problem of filters causing queries to be re-run.
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image9.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <para>
+        The following example demonstrates the performance improvement
+        of caching when incorporated into a simple q function,
+        <literal>getTotalVolume</literal> (below), which extracts the
+        total volume by symbol from a table <literal>t</literal>.
+      </para>
+      <para>
+        The demonstration table <literal>t</literal> contains
+        randomly-generated mock data of symbol and volume values.
+      </para>
+      <programlisting language="r script">
+N:100000000;
+t:([] sym:N?`3;volume:N?10.0);
+// Function used to compute the total volume by symbol from the table t
+getTotalVolume:{[syms]
+  select totalVolume:sum volume by sym from t where sym in syms
+  };
+</programlisting>
+      <para>
+        Below is sample output of this function when called from
+        Tableau. Query response times for an increasing number of
+        symbols runs from hundreds of milliseconds to seconds:
+      </para>
+      <para>
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="img/image10.png" />
+          </imageobject>
+        </inlinemediaobject>
+      </para>
+      <informaltable>
+        <tgroup cols="2">
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+                number of symbols
+              </entry>
+              <entry>
+                time
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                1,000,000
+              </entry>
+              <entry>
+                13 ms
+              </entry>
+            </row>
+            <row>
+              <entry>
+                10,000,000
+              </entry>
+              <entry>
+                120 ms
+              </entry>
+            </row>
+            <row>
+              <entry>
+                100,000,000
+              </entry>
+              <entry>
+                1038 ms
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        To incorporate caching, the existing function can be modified to
+        store the total volume result for each queried symbol in a keyed
+        table, called <literal>volumeCache</literal>. Whenever the
+        function is called from Tableau, an internal lookup is performed
+        on the <literal>volumeCache</literal> table to determine if the
+        calculation for the requested symbol has already been performed.
+        If so, the result can be immediately returned, otherwise a
+        calculation against the table <literal>t</literal> is performed.
+      </para>
+      <programlisting language="r script">
+volumeCache:([sym:`u#`symbol$()];totalVolume:`float$())
+getTotalVolume:{[syms]
+  if[-11h~type syms;syms:enlist syms];
+  // Get the list of syms which contain entries in the volumeCache
+  // Extract the totalVolume values for those symbols
+  if[count preCalculated:([]sym:syms) inter key[volumeCache];
+     result:select from volumeCache where ([]sym) in preCalculated
+  ];
+  // If all syms are contained in the volumeCache then return result
+  if[not count notPreCalculated:([]sym:syms) except key[volumeCache];
+    :result
+  ];
+  // For syms not present in volumeCache, perform lookup
+  result,:newEntries:select totalVolume:sum volume by sym from t where
+    ([]sym) in notPreCalculated;
+  // upsert new results to volumeCache
+  upsert[`volumeCache;newEntries];
+  result 
+  };
+</programlisting>
+      <para>
+        Tableau queries against this modified function are significantly
+        faster and become sub-millisecond when symbols are already
+        present within the <literal>volumeCache</literal>. This approach
+        greatly reduces the effect of filtering previously highlighted:
+      </para>
+      <informaltable>
+        <tgroup cols="3">
+          <colspec align="left" />
+          <colspec align="left" />
+          <colspec align="left" />
+          <thead>
+            <row>
+              <entry>
+                number of symbols
+              </entry>
+              <entry>
+                time (1st query)
+              </entry>
+              <entry>
+                time (2nd query)
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                1,000,000
+              </entry>
+              <entry>
+                3 ms
+              </entry>
+              <entry>
+                &lt;0ms
+              </entry>
+            </row>
+            <row>
+              <entry>
+                10,000,000
+              </entry>
+              <entry>
+                96 ms
+              </entry>
+              <entry>
+                &lt;0ms
+              </entry>
+            </row>
+            <row>
+              <entry>
+                100,000,000
+              </entry>
+              <entry>
+                1021 ms
+              </entry>
+              <entry>
+                &lt;0ms
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section xml:id="dynamic-parameters">
+      <title>Dynamic parameters</title>
+      <para>
+        As mentioned above in <emphasis>Simple parameters</emphasis>,
+        Tableau parameters are limited to static values, and a single
+        select option when placed in a view. However, there are a number
+        of ways to make parameters smarter, and can increase their
+        usability and flexibility. Below, two such methods are
+        described.
+      </para>
+      <section xml:id="predefining-parameter-options-in-a-q-function">
+        <title>Predefining parameter options in a q function</title>
+        <para>
+          From the previous example, the input parameter Category is
+          limited to single values. This can be made more flexible by
+          defining in the function a range of acceptable values. In the
+          example below, the argument <literal>`all</literal> leads to a
+          select with no restriction on <literal>category</literal>.
+        </para>
+        <programlisting language="r script">
+func:{[mydate;mycategory]
+  $[mycategory=`all;
+    select from tab where date in mydate;
+    select from tab where date in mydate, category in mycategory]
+  };
+</programlisting>
+        <para>
+          Then <literal>all</literal> can be added to the list of
+          predefined values in Tableau’s definition of Category:
+        </para>
+        <para>
+          <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="img/image11.png" />
+            </imageobject>
+          </inlinemediaobject>
+        </para>
+      </section>
+      <section xml:id="using-parameters-with-calculated-fields">
+        <title>Using parameters with calculated fields</title>
+        <para>
+          Using parameters in conjunction with Tableau’s
+          calculated-field functionality can be a convenient and
+          flexible tool in calculations as well as graphical
+          representation. This is useful when the output the user wants
+          to see is dependent on an input parameter, and a field needs
+          to be adjusted accordingly.
+        </para>
+        <para>
+          For example, in the user-defined
+          <literal>Calculation1</literal> logic below, the quantity
+          field will be divided by a different amount depending on the
+          chosen Category value. 
+        </para>
+        <para>
+          <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="img/image12.png" />
+            </imageobject>
+          </inlinemediaobject>
+        </para>
+        <para>
+          Below is sample output from when the user selects a
+          <emphasis>Category</emphasis> value of <literal>EQ</literal>.
+        </para>
+        <para>
+          <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="img/image13.png" />
+            </imageobject>
+          </inlinemediaobject>
+        </para>
+        <para>
+          In contrast, when the user selects <literal>CORP</literal> the
+          calculated field will be divided by 50.
+        </para>
+        <para>
+          <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="img/image14.png" />
+            </imageobject>
+          </inlinemediaobject>
+        </para>
+      </section>
+    </section>
+    <section xml:id="multiple-data-sources">
+      <title>Multiple data sources</title>
+      <para>
+        Kdb+ is efficient at joining data sets, and can easily do so in
+        memory at the gateway level. However, it is also worth noting
+        that it is possible to join two or more different datasets in
+        Tableau if they share a common dimension or key. This can be
+        useful when it is desirable to join certain datasets for
+        reporting purposes only.
+      </para>
+      <para>
+        Tableau maintains connections to multiple data sources via a
+        number of open live connections to a q instance. This
+        functionality makes it possible to use the results from one data
+        source to filter another. So far, in this paper, the examples
+        have described functionality using only one data source. For the
+        rest of this section, working with multiple data sources and
+        joining them in Tableau will be explored.
+      </para>
+      <para>
+        One of the first things to note is that fields from different
+        data sources can be included on the same worksheet, provided the
+        sources are mapped to each other. In Tableau, fields from
+        different data sources can be mapped to each other even if they
+        have a different name, so long as they are the same datatype.
+        This can be controlled and edited in <emphasis>Data &gt; Edit
+        Relationships</emphasis>.
+      </para>
+      <section xml:id="actions">
+        <title>Actions</title>
+        <para>
+          Once a dashboard is created, the filters are controlled in
+          <emphasis>Dashboard &gt; Actions</emphasis>. When setting up
+          actions for kdb+ data sources, it is important to note how the
+          selection is cleared. For large datasets, it is recommended
+          that you select the action <emphasis>Exclude all
+          values</emphasis>. This feature prevents data from being
+          displayed in <literal>Sheet 2</literal> until data is first
+          selected in <literal>Sheet 1</literal>. This has a very
+          significant effect on performance as it means Tableau only
+          builds dimensions for views within the dataset that has been
+          filtered.
+        </para>
+        <figure>
+          <title>Target Sheets</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="img/image15.png" />
+            </imageobject>
+            <textobject><phrase>Target Sheets</phrase></textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          The following example demonstrates how much of an improvement
+          on performance this feature can have. Once a table
+          <literal>t</literal> is defined and subsequently called from
+          Tableau, the next step is to create a dashboard.
+        </para>
+        <programlisting language="r script">
+q) N:10000000
+q) t:([] sym:N?`3;volume:N?10.0)
+</programlisting>
+        <para>
+          <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="img/image16.png" />
+            </imageobject>
+          </inlinemediaobject>
+        </para>
+        <para>
+          Step-by-step instructions on how to build the dashboard shown
+          below and performance tests can be found in Appendix A.
+        </para>
+        <para>
+          <inlinemediaobject>
+            <imageobject>
+              <imagedata fileref="img/image17.png" />
+            </imageobject>
+          </inlinemediaobject>
+        </para>
+<literallayout><inlinemediaobject>
+<imageobject>
+<imagedata fileref="img/image18.png" />
+</imageobject>
+</inlinemediaobject>
+<small><emphasis>Action Selection: Show all values</emphasis></small></literallayout>
+<literallayout><inlinemediaobject>
+<imageobject>
+<imagedata fileref="img/image19.png" />
+</imageobject>
+</inlinemediaobject>
+<small><emphasis>Action Selection: Exclude all values</emphasis></small></literallayout>
+        <para>
+          Using the <emphasis>Exclude all values</emphasis> option
+          yields a clear performance improvement. Computing time reduces
+          from ~45secs per select/deselect down to ~0.3ms. Also, when
+          using <emphasis>Exclude all values</emphasis> there is no
+          Executing Query time.
+        </para>
+        <para>
+          Exploiting this feature can be hugely useful when working with
+          kdb+ and Tableau where the volume of datasets can be very
+          large.
+        </para>
+      </section>
+    </section>
+  </section>
+  <section xml:id="publishing-to-tableau-server">
+    <title>Publishing to Tableau Server</title>
+    <para>
+      As mentioned above, to share workbooks between Tableau Desktop and
+      Tableau Server you can publish the former to the latter. Tableau
+      provides
+      <link xlink:href="https://onlinehelp.tableau.com/current/pro/desktop/en-us/publish_workbooks_howto.html">detailed
+      documentation and instructions</link> on the general publishing
+      procedure, which involves publishing from within an already-open
+      workbook.
+    </para>
+    <para>
+      <inlinemediaobject>
+        <imageobject>
+          <imagedata fileref="img/image20.png" />
+        </imageobject>
+      </inlinemediaobject>
+    </para>
+    <para>
+      This is not an ideal way to publish workbooks that are connected
+      to a kdb+ database, because connection details are stored within
+      the workbook itself. Take the following scenario:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          A workbook has been developed in Tableau Desktop and is ready
+          to share to the <literal>Testing</literal> partition in
+          Tableau Server.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Throughout development, a development DSN has been used. But
+          the workbook needs to be published to a UAT DSN.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          So the DSN details need to be changed to the UAT DSN before
+          publication.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The workbook again needs to be promoted, this time to the
+          <literal>Production</literal> partition.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The workbook must be reopened, and the DSN details changed to
+          the production DSN, before final promotion to
+          <literal>Production</literal>.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      This process is manual and prone to errors. For kdb+ connections,
+      it is recommended to use the <literal>tabcmd</literal>
+      command-line utility which, among other things, enables the user
+      to publish to Tableau Server from the command line. This utility
+      allows the user to deploy sheets programmatically, streamlining
+      the process hugely. It also means that as part of the deploy
+      procedure, the workbook can be edited by a script before
+      publishing via <literal>tabcmd</literal>. This means you can do
+      some efficient things like:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Wipe out the connection details that are automatically
+          embedded in the workbook
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Pick which DSN to point to, e.g. <literal>DEV</literal>,
+          <literal>UAT</literal>, <literal>QA</literal>,
+          <literal>Prod</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Pick which Tableau server to publish e.g.
+          <literal>tableau.net</literal> or
+          <literal>tableau-uat.net</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Pick which Tableau environment to publish to e.g.
+          <literal>Development</literal>, <literal>Testing</literal> or
+          <literal>Production</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Edit the Tableau project name
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Using <literal>tabcmd</literal> and a script to edit the workbook
+      can be an effective way to make the publishing process smoother
+      when connecting to kdb+, especially when scaling use cases and
+      looking to publish across multiple environments and DSNs.
+    </para>
+  </section>
+  <section xml:id="conclusion">
+    <title>Conclusion</title>
+    <para>
+      Kdb+ is well known as the world’s fastest time-series database.
+      Kx’s own visualization tool, <emphasis>Dashboards for
+      Kx</emphasis>, is optimized for this technology. However, kdb+ is
+      flexible enough to connect with a range of different visualization
+      tools. This whitepaper demonstrates how to connect to one such
+      visualization tool, Tableau, by means of the Kx ODBC driver.
+    </para>
+    <para>
+      You have seen how to set up a connection between kdb+ and Tableau
+      using ODBC, with detailed instructions on how best to use
+      Tableau’s query functionality, datatypes, parameters and filters
+      with the q language.
+    </para>
+    <para>
+      The key takeaways include how kdb+’s caching feature may be used
+      to improve performance by optimizing repeated queries from
+      Tableau. Further to this, improving performance when using filters
+      with multiple data sources was explored. The methods provided in
+      this paper demonstrate that kdb+ and Tableau can be combined in an
+      efficient way despite limitations that occur when combining the
+      two technologies.
+    </para>
+    <para>
+      If the question is <quote>Is Tableau the best, and best performing
+      visualization tool when combining with kdb+?</quote>, the answer
+      is <quote>No. There are other visualization tools better tailored
+      to the kdb+ technology, for example Kx’s visualization solution
+      <emphasis>Dashboards for Kx</emphasis>.</quote> But if the
+      question is <quote>Can you combine these two technologies in an
+      effective way?</quote> the answer is <quote>Yes</quote>, and by
+      applying the functionality described in this paper to work around
+      limitations, to connect a Tableau visualization front-end to a
+      kdb+ back end.
+    </para>
+  </section>
+  <section xml:id="appendix-a">
+    <title>Appendix A</title>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+          Create <literal>Sheet 1</literal>
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem>
+            <para>
+              Drag and drop <literal>sym</literal> to
+              <emphasis>Columns</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Drag and drop <literal>Number of Records</literal> to
+              <emphasis>Rows</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Drag and drop <literal>volume</literal> to the
+              <emphasis>Marks</emphasis> pane on color. Right-click and
+              pick <emphasis>Discrete</emphasis>.
+            </para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Create <literal>Sheet 2</literal>
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem override="4">
+            <para>
+              Drag and drop <literal>sym</literal> to
+              <emphasis>Rows</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Drag and drop <literal>volume</literal> to
+              <emphasis>Rows</emphasis>. Right-click and pick both
+              <emphasis>Dimension</emphasis> and
+              <emphasis>Discrete</emphasis>. This means every row will
+              be displayed and not just the summed value.
+            </para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Create <literal>Dashboard 1</literal>
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem override="6">
+            <para>
+              Drag <literal>Sheet 1</literal> onto the top of the
+              dashboard.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Drag <literal>Sheet 2</literal> onto the bottom of the
+              dashboard.
+            </para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Make <literal>Sheet 1</literal> a filter for
+          <literal>Sheet 2</literal> on the dashboard.
+        </para>
+        <orderedlist numeration="arabic" spacing="compact">
+          <listitem override="8">
+            <para>
+              Hover over <literal>Sheet 1</literal> and on the top
+              right-hand side select the middle icon that looks like a
+              filter.
+            </para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+      <listitem>
+        <para>
+          Testing performance with default filter selection
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem override="9">
+            <para>
+              Pick <emphasis>Help &gt; Settings and Performance &gt;
+              Start Performance Recording</emphasis>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Select and deselect some of the bars in the top graph. You
+              should notice much slower performance on deselect.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Pick <emphasis>Help &gt; Settings and Performance &gt;
+              Stop Performance Recording</emphasis>
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          A performance workbook will then pop up, and you can analyze
+          the performance.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Testing performance with selection <emphasis>Exclude all
+          values</emphasis>
+        </para>
+        <orderedlist numeration="arabic">
+          <listitem override="12">
+            <para>
+              Pick <emphasis>Dashboard &gt; Actions &gt; Edit &gt;
+              Select <quote>Exclude all values</quote></emphasis>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Repeat step 5
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          A second performance workbook will pop up and can be compared
+          with the previous one to analyze performance.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+</section>
+</article>

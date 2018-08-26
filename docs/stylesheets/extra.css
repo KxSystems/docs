@@ -1,0 +1,15 @@
+/*
+	Title: Extra CSS for code.kx.com in MkDocs
+	Author: stephen@kx.com
+ */
+.fusion {
+    background-color: #c6c9ff; 
+    border: 1px solid #0070cd; 
+    border-radius: 10px; 
+    display: inline-block;
+    font-size: .8em; 
+    padding: 0 1em;
+}
+.fusion a {
+	font-weight: bold;
+}

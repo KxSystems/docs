@@ -1,0 +1,1322 @@
+<?xml version="1.0"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:db="http://docbook.org/ns/docbook" xmlns:rx="http://www.renderx.com/XSL/Extensions" xmlns:xlink="http://www.w3.org/1999/xlink"><rx:meta-info><rx:meta-field name="author" value="&#10;        Chris&#10;        Scott&#10;      &#10;    &#9;&#9;&#9;&amp;&#10;    &#9;&#9;&#9;&#10;        Michael&#10;        Gracey&#10;      "/><rx:meta-field name="creator" value="Kx Systems"/><rx:meta-field name="title" value="Kdb+ and WebSockets"/><rx:meta-field name="keywords" value="Kx, Kx Systems, kdb+, AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSockets"/></rx:meta-info><rx:outline><rx:bookmark internal-destination="what-are-websockets"><rx:bookmark-label>What are WebSockets?</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="connecting-to-kdb-using-websockets"><rx:bookmark-label>Connecting to kdb+ using WebSockets</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="converting-kdb-to-json"><rx:bookmark-label>Converting kdb+ to JSON</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="viewing-traffic-over-a-websocket-connection"><rx:bookmark-label>Viewing traffic over a WebSocket connection</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="websocket-security"><rx:bookmark-label>WebSocket security</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="a-simple-example-real-time-data"><rx:bookmark-label>A simple example – real-time data</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="conclusion"><rx:bookmark-label>Conclusion</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="appendices"><rx:bookmark-label>Appendices</rx:bookmark-label></rx:bookmark></rx:outline><fo:layout-master-set><fo:simple-page-master master-name="cover-page" page-width="210mm" page-height="297mm"><fo:region-body margin-top="0" margin-bottom="0" margin-left="0" margin-right="0" background-color="#eeeded"/></fo:simple-page-master><fo:simple-page-master master-name="toc" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="60pt" margin-right="60pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master><fo:simple-page-master master-name="standard-page" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="40pt" margin-right="40pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master></fo:layout-master-set><fo:page-sequence master-reference="cover-page" font-family="STIX2" initial-page-number="1" language="en" country="gb"><fo:flow flow-name="xsl-region-body"><fo:block-container absolute-position="absolute" top="0mm" right="0mm" width="2in" height="2in"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-white.png)" content-width="40mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" left="0mm" width="2.5in" height="30mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-bottom-left-white.png)" content-width="50mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" right="0mm" width="4in" height="50mm"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/kx-cover.png)" content-width="75mm"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="35mm" left="15mm"><fo:block color="#0070cd" font-family="Proxima Nova" font-size="60pt" font-weight="bold" letter-spacing="-4pt">kx</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="40mm" left="40mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/its-about-time.png)"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="80mm" left="35mm"><fo:block font-family="Proxima Nova" color="#0070cd" font-size="18pt" font-weight="400">
+							Technical Whitepaper
+						</fo:block><fo:block margin-top="9pt" margin-right="30mm" line-height="1.4" font-size="24pt" font-weight="400">Kdb+ and WebSockets</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Date</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left">May 2018</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Authors</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left"><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-style="italic">Version 1.0</fo:inline> Chris Scott worked
+      for First Derivatives from 2013 as a kdb+ consultant at one of the
+      world’s largest financial institutions, developing a range of kdb+
+      applications which use WebSockets as a form of communication.
+    </fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-style="italic">Version 1.1 (March 2018)</fo:inline>
+      Michael Gracey also joined First Derivatives in 2013 and works as
+      a front-end developer for one of the world’s largest financial
+      institutions developing a performant Web interface for visualising
+      real-time data via the use of WebSocket connections. Michael is
+      also involved in designing HTML5 training courses and building
+      HTML5 mobile and desktop applications for the Kx platform.
+    </fo:block></fo:block></fo:block-container><fo:block> </fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="toc" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Kdb+ and WebSockets</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block break-before="page"><fo:block font-size="14pt" text-align="center" margin-top="36pt" margin-bottom="36pt">Contents</fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504849152">What are WebSockets? <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504849152"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504832464">Connecting to kdb+ using WebSockets <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504832464"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504787648">Converting kdb+ to JSON <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504787648"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504743744">Viewing traffic over a WebSocket connection <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504743744"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504734208">WebSocket security <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504734208"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504717984">A simple example – real-time data <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504717984"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504697040">Conclusion <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504697040"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idm91504684000">Appendices <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idm91504684000"/></fo:basic-link></fo:block></fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="standard-page" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">Kdb+ and WebSockets</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-footnote-separator"><fo:block><fo:leader leader-pattern="rule" rule-thickness=".5pt" leader-length="50%"/></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block id="kdb-and-websockets">
+  <fo:block id="idm91504860688" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Kdb+ and WebSockets</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Since the release of kdb+ 3.0, it has been possible to make use of
+    <fo:basic-link external-destination="url('https://en.wikipedia.org/wiki/WebSocket')"><fo:inline color="#0070cd">WebSockets</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">1</fo:inline><fo:footnote-body><fo:block font-size="8pt">1.
+									https://en.wikipedia.org/wiki/WebSocket</fo:block></fo:footnote-body></fo:footnote>
+    when connecting to a kdb+ process. This has significant implications
+    for how we can build front-end applications that use a kdb+
+    back-end, in particular for applications wanting to display
+    real-time information.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    WebSockets are supported by most modern browsers and thus make it
+    possible to hook a web application up directly to a kdb+ process to
+    allow real-time communication over a persistent connection. This
+    gives us the ability to build a pure HTML5 real-time web application
+    which can connect to kdb+ through JavaScript, which is native to web
+    browsers.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Using web applications to build GUIs for kdb+ applications is
+    becoming increasingly popular. Only a web browser is required to run
+    the GUI, so it is OS independent. This means that when developing
+    the GUI, only one codebase is required for all platforms and
+    maintenance and upgrades are much easier and efficient to perform.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    This paper introduces what WebSockets are and what benefits they
+    hold over standard HTTP. It takes the reader through the set-up of a
+    simple web page that uses WebSockets to connect to a kdb+ process,
+    the steps involved in passing data through the connection, and the
+    various methods for converting data between kdb+ and JavaScript.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    An earlier version of this paper was published in October 2014. Kdb+
+    has been enhanced since then to support the growing popularity of
+    WebSockets and JSON. As part of this revision, the paper now also
+    documents new message handlers for opening and closing WebSocket
+    connections in section 3.3, and debugging techniques that can be
+    used to view traffic over these connections in section 5.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The paper finishes with a full working example (including code) of a
+    simple Web application which uses kdb+ to provide real-time updating
+    of tables based on user queries.
+  </fo:block>
+  <fo:block background-color="#EFF" font-size="10.5pt" line-height="13pt" margin-bottom="9pt" margin-left="0mm" margin-right="0mm" page-break-inside="avoid" padding-left="3mm" padding-right="3mm" padding-top="3mm"><fo:block margin-bottom="6pt"><fo:inline vertical-align="sub"><fo:inline font-family="Material Icons" font-size="14pt"></fo:inline></fo:inline> <fo:inline font-weight="bold">HTML, CSS and JavaScript </fo:inline></fo:block><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      As well as q, this paper makes significant use of HTML, CSS and
+      JavaScript. A basic understanding of these will be necessary to
+      take full advantage of this paper, though any complex structures
+      will be examined here in detail. For a crash course on the above
+      languages, please refer to the following resources:
+    </fo:block><fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          <fo:basic-link external-destination="url('http://www.w3schools.com/')"><fo:inline color="#0070cd">w3schools.com</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">2</fo:inline><fo:footnote-body><fo:block font-size="8pt">2.
+									http://www.w3schools.com/</fo:block></fo:footnote-body></fo:footnote>
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          <fo:basic-link external-destination="url('http://www.codecademy.com/')"><fo:inline color="#0070cd">codecademy.com</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">3</fo:inline><fo:footnote-body><fo:block font-size="8pt">3.
+									http://www.codecademy.com/</fo:block></fo:footnote-body></fo:footnote>
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block></fo:block>
+  <fo:block id="what-are-websockets">
+    <fo:block id="idm91504849152" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">What are WebSockets?</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      WebSockets were a long-awaited evolution in client and web server
+      communication technology. They provide a protocol between a client
+      and server which runs over a persistent TCP connection. The
+      client-server connection can be kept open as long as needed and
+      can be closed by either the client or the server. This open
+      connection allows bi-directional, full-duplex messages to be sent
+      over the single TCP socket connection – the connection allows data
+      transfer in both directions, and both client and server can send
+      messages simultaneously. All messages sent across a WebSocket
+      connection are asynchronous.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Without WebSockets, bi-directional messaging can be forced by
+      having distinct HTTP calls for both the client sending requests
+      and the server publishing the responses and updates. This requires
+      either the client to keep a mapping between outgoing and incoming
+      messages, or the use of a proxy server in between the client and
+      server (known as HTTP tunneling). WebSockets simplify this
+      communication by providing a single connection which both client
+      and server can send messages across.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      WebSockets were designed to be implemented in web browsers and web
+      servers, but they can be used by any client or server application.
+      The ability for bi-directional real-time functionality means it
+      provides a basis for creating real-time applications on both web
+      and mobile platforms. The WebSocket API and Protocol have both
+      been standardized by W3C and the IEFT respectively.
+    </fo:block>
+    <fo:block id="why-not-just-use-.z.ph">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Why not just use .z.ph?</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        It has previously been possible to connect to a kdb+ process
+        using HTTP. HTTP requests could be processed using the
+        <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> and <fo:inline font-family="Pragmata Pro">.z.pp</fo:inline> handlers.
+        To illustrate this, simply start up a q process with an open
+        port and then type the hostname:port into your web browser. This
+        will give a very basic view of the q process.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Straight out of the box, this is very simple and provides a
+        useful interface for viewing data and running basic queries
+        without being limited to the character limits of a q console.
+        If, however, you want to do more than just simple analysis on
+        the q process, this method presents a few drawbacks:
+      </fo:block>
+      <fo:list-block provisional-distance-between-starts=".7cm" provisional-label-separation="0.3cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">1.</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            Customization is quite a complicated process that requires
+            you to manipulate the functions in the <fo:inline font-family="Pragmata Pro">.h</fo:inline>
+            namespace which form the basis of the in-built HTTP server
+            code. The HTML markup is generated entirely by the q
+            process.
+          </fo:block>
+        </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">2.</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            Data must be requested by the browser, so some form of
+            polling must occur in order to update the webpage. This
+            makes the viewing of real-time data impossible without the
+            continuous polling of the kdb+ server.
+          </fo:block>
+        </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">3.</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> uses synchronous messaging, and the
+            webpage is effectively refreshed every time a query is sent.
+          </fo:block>
+        </fo:list-item-body></fo:list-item></fo:list-block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Instead of relying on <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> to serve the
+        entire web page, an application could make use of AJAX
+        techniques to send asynchronous GET and POST requests to a kdb+
+        server. <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> and <fo:inline font-family="Pragmata Pro">.z.pp</fo:inline>
+        can be modified to handle these requests. AJAX (Asynchronous
+        JavaScript And XML) is a descriptive name that covers a range of
+        web development techniques that can be used to provide
+        asynchronous messaging between a web application and server.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This allows requests to be made by the client in the background
+        without having to reload the web page, and as there is no
+        reliance on <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> to generate the HTML
+        markup, the application can be fully customized independently of
+        the kdb+ process. In order to receive updates, the application
+        will still have to poll the server, which is not ideal for
+        real-time data. The full implementation of this method is beyond
+        the scope of this whitepaper.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As WebSocket connections are persistent, the server is able to
+        push updates to the client rather than relying on the client to
+        poll for the information. Additionally, while each HTTP request
+        and response must include a TCP header, WebSockets only require
+        this header to be sent during the initial handshake.
+      </fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="connecting-to-kdb-using-websockets">
+    <fo:block id="idm91504832464" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Connecting to kdb+ using WebSockets</fo:block>
+    <fo:block id="the-handshake">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">The handshake</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        In order to initialise a WebSocket connection, a WebSocket
+        
+		‘handshake’
+	 must be successfully made between the
+        client and server processes. First, the client sends a HTTP
+        request to the server to upgrade from the HTTP protocol to the
+        WebSocket protocol:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+// Client WebSocket request header&lt;/p&gt;
+GET /text HTTP/1.1
+Host: localhost:5001
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: xc0DPEL132mlMtGdbWJPGQ==
+Sec-WebSocket-Version: 13
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The server then sends a HTTP response indicating that the
+        protocol upgrade was successful:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+// Server WebSocket response header
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: 1thgMROs9ylOWOMkc2WUWGRzWdY=
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The above handshake request and response details can be found
+        within a browser’s dev tools. Google Chrome’s developer tools
+        can be opened with the F12 key and any information on a pages
+        network operations can found within its
+        <fo:inline font-style="italic">Network</fo:inline> tab. Here you can click on
+        <fo:inline font-style="italic">WS</fo:inline> to filter out just the WebSocket
+        connections and then select a specific WebSocket connection to
+        see a headers section detailing its request and response headers
+        and perhaps, more importantly, see a <fo:inline font-style="italic">Frames</fo:inline>
+        section which can be used to monitor traffic sent over the
+        connection in real time. We will revisit the
+        <fo:inline font-style="italic">Frames</fo:inline> section later.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        
+          <fo:external-graphic content-width="scale-down-to-fit" src="url(img/image2.png)" width="100%"/>
+        
+ <fo:inline font-size="10pt"><fo:inline font-style="italic">The Network tab in
+        Chrome Developer Tools</fo:inline></fo:inline>
+      </fo:block>
+    </fo:block>
+    <fo:block id="z.ws-message-handler">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">.z.ws message handler</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Like the <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> HTTP GET handler, kdb+ has a
+        separate message handler for WebSockets called
+        <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline>, meaning all incoming WebSocket
+        messages will be processed by this function. There is no default
+        definition of <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline>; it should be customized
+        by the developer to handle the incoming messages as required.
+        Later, several examples of a customized <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline>
+        handler will be shown, but initially, we will look at a very
+        basic definition:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).z.ws:{neg[.z.w].Q.s value x;}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        For now, let’s assume that <fo:inline font-family="Pragmata Pro">x</fo:inline> (the query from
+        the client) is being passed in as a string.
+        <fo:inline font-family="Pragmata Pro">value x</fo:inline> simply evaluates the query, and
+        passing this into <fo:inline font-family="Pragmata Pro">.Q.s</fo:inline> will present the
+        result in console output format (i.e. plain text).
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As mentioned before, all messages passed through a WebSocket
+        connection are asynchronous. This means that we must handle the
+        server response within the <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline> message
+        handler. <fo:inline font-family="Pragmata Pro">neg[.z.w]</fo:inline> does this by
+        asynchronously pushing the results back to the handle which
+        raised the request.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        From the server side, using <fo:inline font-family="Pragmata Pro">neg[.z.w]</fo:inline> within
+        the handler will push the result back to the client once it has
+        been evaluated. The client does not wait for a response and
+        instead the open WebSocket connection will receive the response
+        some time later, so we must handle this on the client side as
+        well.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Fortunately, JavaScript has a native WebSocket API which allows
+        us to handle this relatively easily. The main parts of the
+        JavaScript API are explained below.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+&lt;script type="text/javascript"&gt;
+    function connect(){
+        if ("WebSocket" in window){ // check if WebSockets supported
+            // open a WebSocket
+            var ws = new WebSocket("ws://host:port");
+            ws.onopen = function(){
+                // called upon successful WebSocket connection
+            };
+            ws.onmessage = function(msg){
+                // called when the client receives a message
+            };
+            ws.onclose = function(){
+                // called when WebSocket is closed
+            };
+        }
+        else {
+            // the browser doesn't support WebSockets
+        }
+    }
+    ws.send(msg) // function to handle sending a message
+&lt;/script&gt;
+</fo:block>
+    </fo:block>
+    <fo:block id="z.wo-and-.z.wc-message-handlers">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">.z.wo and .z.wc
+      message handlers</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The <fo:inline font-family="Pragmata Pro">.z.wo</fo:inline> and <fo:inline font-family="Pragmata Pro">.z.wc</fo:inline>
+        message handlers were introduced in kdb+ version 3.3
+        (2014.11.26) to be evaluated whenever a WebSocket connection is
+        opened (<fo:inline font-family="Pragmata Pro">.z.wo</fo:inline>) or closed
+        (<fo:inline font-family="Pragmata Pro">.z.wc</fo:inline>). Prior to this version,
+        <fo:inline font-family="Pragmata Pro">.z.pc</fo:inline> and <fo:inline font-family="Pragmata Pro">.z.po</fo:inline> provide an
+        alternative solution however, these handle the opening and
+        closing of all connections over a port and don’t distinguish
+        WebSocket connections.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The <fo:inline font-family="Pragmata Pro">.z.wo</fo:inline> handler, much like its
+        <fo:inline font-family="Pragmata Pro">.z.po</fo:inline> counterpart, is called when the
+        connection is initialized and after it has been validated
+        against any <fo:inline font-family="Pragmata Pro">-u</fo:inline>/<fo:inline font-family="Pragmata Pro">-U</fo:inline> and/or
+        <fo:inline font-family="Pragmata Pro">.z.pw</fo:inline> checks in place. Neither
+        <fo:inline font-family="Pragmata Pro">.z.wo</fo:inline> nor <fo:inline font-family="Pragmata Pro">.z.wc</fo:inline> has a
+        default definition, so they should be customized by the
+        developer accordingly. Typical usage of these handlers is to
+        maintain information on active WebSocket connections as
+        demonstrated below:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)\p 5001
+q)activeWSConnections: ([] handle:(); connectTime:())
+
+//x argument supplied to .z.wc &amp; .z.wo is the connection handle
+q).z.wo:{`activeWSConnections upsert (x;.z.t)}
+q).z.wc:{ delete from `activeWSConnections where handle =x}
+
+//websocket connects
+q)activeWSConnections
+handle connectTime
+-------------------
+548 13:15:24.737
+
+//websocket disconnects
+q)activeWSConnections
+handle connectTime
+------------------
+</fo:block>
+    </fo:block>
+    <fo:block id="simple-example">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Simple example</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Here is an example of a simple client application connecting to
+        a kdb+ server using a WebSocket. This is a slightly modified
+        version of the example in the Cookbook
+        <fo:basic-link external-destination="url('http://code.kx.com/q/cookbook/websockets')"><fo:inline color="#0070cd">WebSocket
+        article</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">4</fo:inline><fo:footnote-body><fo:block font-size="8pt">4.
+									http://code.kx.com/q/cookbook/websockets</fo:block></fo:footnote-body></fo:footnote>.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        First, start up a kdb+ server and set our
+        <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline> handler. Here we will also add some
+        error trapping to the handler to send any error message to the
+        client.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)\p 5001
+q).z.ws:{neg[.z.w].Q.s @[value;x;{`$ "'",x}]}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Next, we create an HTML document that we will use to connect to
+        our kdb+ server. The code for creating this is given in Appendix
+        A and should be copied into a text editor and saved as an HTML
+        file, which can then be read in any modern web browser.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        In our HTML code, we define the elements that will capture input
+        and display output, apply some basic stylings to those elements
+        and supply the JavaScript that will send our input to the server
+        and handle the response it gets back. This web application will
+        function like a q console in that we can write some q commands
+        in its input box, send that input as a string to the server by
+        clicking a button and then see the returned result produced by
+        the server evaluating those input commands.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        
+          <fo:external-graphic content-width="scale-down-to-fit" src="url(img/image3.jpg)" width="100%"/>
+        
+ <fo:inline font-size="10pt"><fo:inline font-style="italic">A web console
+        application which allows q commands to be executed from the
+        browser</fo:inline></fo:inline>
+      </fo:block>
+    </fo:block>
+    <fo:block id="pushing-data-to-the-client-using-negh">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Pushing data to the client using
+      neg[h]</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Above, we have used <fo:inline font-family="Pragmata Pro">neg[.z.w]</fo:inline> within the
+        <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline> handler to return the result to the
+        client immediately after it is received and evaluated. But in
+        some situations, we don’t want to just provide a response, but
+        rather set up a subscription that continually pushes data
+        through our WebSocket connection.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As the WebSocket is persistent and obeys normal IPC protocol, we
+        can push data through it asynchronously at any time using
+        <fo:inline font-family="Pragmata Pro">neg[h]</fo:inline>, where <fo:inline font-family="Pragmata Pro">h</fo:inline> is the
+        WebSocket handle. To see this, in the input box of the example
+        application above, type the following code and click
+        <fo:inline font-style="italic">Go</fo:inline>.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).z.ts:{[x;y]neg[x].Q.s .z.T}[.z.w]; system"t 1000"
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        You should now see the current time being output every second,
+        without the browser having to poll for the data.
+      </fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="converting-kdb-to-json">
+    <fo:block id="idm91504787648" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Converting kdb+ to JSON</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Converting kdb+ into string format using <fo:inline font-family="Pragmata Pro">.Q.s</fo:inline>
+      means that not only is the message limited by the console size,
+      but also that, as the client is receiving plain text, the data
+      will be unstructured and very difficult to parse into something
+      that can be manipulated by the client.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      JavaScript has a built-in technology called JSON (JavaScript
+      Object Notation) which can be used to create JavaScript objects in
+      memory to store data. These objects are collections of name/value
+      pairs which can be easily accessed by JavaScript and used to build
+      the data structures displayed on the web page.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      We want to make use of JSON to hold our data so that we can easily
+      display and manipulate our data on the client. There is a very
+      important relationship between kdb+ and JSON – kdb+ dictionaries
+      and JSON objects are comparable. This means that we can parse our
+      kdb+ data into JSON structures very easily, with tables just
+      becoming arrays of JSON objects.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Depending on the application, it may be of benefit to do this
+      conversion on the server side within the q process, or on the
+      client-side in the JavaScript code. We will explore the two
+      options along with an example to show both in action.
+    </fo:block>
+    <fo:block id="using-.j-functions-within-a-q-process-server-side-parsing">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Using .j functions within a q process
+      (server-side parsing)</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Kdb+ 3.3 introduced native functions for translating between
+        kdb+ and JSON format. This resulted in a 50-100× speedup
+        compared to previous functionality, and the new versions can
+        also process Unicode.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        There are two main functions that we will make use of:
+      </fo:block>
+      <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            <fo:inline font-family="Pragmata Pro">.j.j</fo:inline> parses kdb+ into a JSON string
+          </fo:block>
+        </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+          <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+            <fo:inline font-family="Pragmata Pro">.j.k</fo:inline> parses a JSON string into kdb+
+          </fo:block>
+        </fo:list-item-body></fo:list-item></fo:list-block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)tab:([]col1:`a`b`c`d;col2:1 2 3 4)
+q)tab 
+col1 col2 
+--------- 
+a    1
+b    2
+c    3
+d    4
+q).j.j tab
+"[{\"col1\":\"a\",\"col2\":1},{\"col1\":\"b\",\"col2\":2},{\"col1\":\"c\",\"c..
+q).j.k "{\"a\":1,\"b\":2,\"c\":3,\"d\":4}"
+a| 1
+b| 2
+c| 3
+d| 4
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Here is an example of how we can use this to manipulate data in
+        our web app. First set up our server and use
+        <fo:inline font-family="Pragmata Pro">.j.j</fo:inline> to convert the kdb+ output to JSON:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)\p 5001
+q).z.ws:{neg[.z.w].j.j @[value;x;{`$ "'",x}];}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        
+						‘Above’
+					 we used the
+        <fo:inline font-family="Pragmata Pro">SimpleDemo.html</fo:inline> file given in
+        
+						‘Appendix A’
+					, which
+        includes some code to handle a plain-text response and append it
+        to the screen:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+/* 
+    when a message is received, prepend the message to the display area 
+    along with the input command 
+*/
+ws.onmessage=function(e){
+    /* 
+        the message is in plain text, so we need to convert ' ' to '&amp;nbsp;' 
+        and '\n' to '&lt;br /&gt;' in order to display spaces and newlines correctly 
+        within the HTML markup
+    */
+    var formattedResponse = e.data.replace(/ /g, '&amp;nbsp').replace(/\n/g, '&lt;br /&gt;');
+    output.innerHTML = cmd + formattedResponse + output.innerHTML;
+    cmd="";
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        We can now rewrite the <fo:inline font-family="Pragmata Pro">ws.onmessage</fo:inline>
+        JavaScript function from this example to handle the messages
+        coming through as JSON strings rather than just plain text.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+ws.onmessage=function(e){
+    /*parse the JSON string into a JSON object using JSON.parse */
+    var outputHTML,data = JSON.parse(e.data);
+    if (typeof data == "object") {
+        /* if an object, then message must be a table or a dictionary */
+        if (data.length) {
+            /*if object has a length then it is a table*/
+            outputHTML = generateTableHTML(data);
+        } else {
+            /* 
+                if object has no length, it is a dictionary, 
+                in this case we will iterate over the keys to print 
+                the key|value pairs as would be displayed in a q console
+            */
+            for (var x in data)
+                outputHTML += x + " | " + data[x] + "&lt;br /&gt;";
+        }
+    } else {
+        /* if not an object, then message must have simple data structure*/
+        outputHTML = data;
+    };
+    output.innerHTML = cmd + outputHTML + "&lt;br /&gt;" + output.innerHTML;
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Whenever we handle a table in this example you will notice we
+        call a function named <fo:inline font-family="Pragmata Pro">generateHTML</fo:inline>. This is a
+        simple function we wrote to loop over each object in the array
+        of objects that we now know represents a table and wrap each
+        inner value in HTML table markup. This is in a separate function
+        because we will reuse this functionality later and having it in
+        a separate function makes it easier to copy and reuse in other
+        applications.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+function generateTableHTML(data){
+    /* we will iterate through the object wrapping it in the HTML table tags */
+    var tableHTML = '&lt;table border="1"&gt;&lt;tr&gt;';
+    for (var x in data[0]) {
+        /* loop through the keys to create the table headers */
+        tableHTML += '&lt;th&gt;' + x + '&lt;/th&gt;';
+    }
+    tableHTML += '&lt;/tr&gt;';
+    for (var i = 0 i &lt; data.length; i++) {
+        /* loop through the rows, putting tags around each col value */
+        tableHTML += '&lt;tr&gt;';
+        for (var x in data[0]) {
+            tableHTML += '&lt;td&gt;' + data[i][x] + '&lt;/td&gt;';
+        }
+        tableHTML += '&lt;/tr&gt;';
+    }
+    tableHTML += '&lt;/table&gt;';
+    return tableHTML;
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        With our improvements in place, you can see that it gives the
+        same web console application as before. The distinction,
+        however, is that we are now handling JSON objects which are
+        easier to manipulate than strings of plain text. The JavaScript
+        code will now be aware of data type information which is not the
+        case with plain strings and could use that information to
+        perform more complex operations like filtering data or
+        populating charts.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Using the <fo:inline font-family="Pragmata Pro">.j</fo:inline> functions within the q process
+        is very straightforward, and if it is suitable for the
+        application to transfer messages across the WebSocket as
+        strings, this can be a good solution. However, in some cases, it
+        may be preferable to serialize the data into binary format
+        before transmitting it across the connection.
+      </fo:block>
+    </fo:block>
+    <fo:block id="using-c.js-within-javascript-client-side-parsing">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Using c.js within JavaScript
+      (client-side parsing)</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Instead of parsing the data within the kdb+ server using
+        <fo:inline font-family="Pragmata Pro">.j</fo:inline> functions, we could instead use
+        <fo:inline font-family="Pragmata Pro">-8!</fo:inline> to serialize the data into kdb+ binary
+        form and then deserialize it on the client side directly into a
+        JSON object. With client machines generally being a lot more
+        powerful than in the past, it is reasonable to provide the
+        client-side JavaScript code with some extra workload.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This approach requires a little more understanding of
+        JavaScript. However, Kx provides the script
+        <fo:inline font-family="Pragmata Pro">c.js</fo:inline> which contains the functionality to
+        serialize and deserialize data on the client side. The
+        deserialize function converts kdb+ binary data into JSON, while
+        the serialize function will convert our message into kdb+ binary
+        format before sending it to the server. <fo:inline font-family="Pragmata Pro">c.js</fo:inline>
+        can be found on GitHub at: 
+        <fo:basic-link external-destination="url('https://github.com/KxSystems/kdb/blob/master/c/c.js')"><fo:inline color="#0070cd">KxSystems/kdb/c/c.js</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">7</fo:inline><fo:footnote-body><fo:block font-size="8pt">7.
+									https://github.com/KxSystems/kdb/blob/master/c/c.js</fo:block></fo:footnote-body></fo:footnote>
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The previous section showed how we can parse q structures into
+        JSON strings and send them to our client. In this example, we
+        will instead do all of the parsing on the client side to produce
+        the same result. The client will send strings to the server, but
+        the server will send serialized data back to the client.
+        Outgoing messages are serialized using the
+        <fo:inline font-family="Pragmata Pro">-8!</fo:inline> operator:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)\p 5001
+q).z.ws:{neg[.z.w] -8! @[value;x;{`$"'",x}]}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        We need to make a few adjustments to our JavaScript code in
+        order to handle the serialized responses. Firstly, we need to
+        load the <fo:inline font-family="Pragmata Pro">c.js</fo:inline> script into our web page by
+        downloading the <fo:inline font-family="Pragmata Pro">c.js</fo:inline> file to the same
+        directory as our HTML document, and include the below import
+        just before our main set of <fo:inline font-family="Pragmata Pro">&lt;script&gt;</fo:inline>
+        tags.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+&lt;script src="c.js"&gt;&lt;/script&gt;
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        When we define our WebSocket connection, we need to tell the
+        JavaScript code to expect the messages to be coming through in
+        binary. For this we set <fo:inline font-family="Pragmata Pro">ws.binaryType</fo:inline> to
+        <fo:inline font-family="Pragmata Pro">'arraybuffer'</fo:inline>. Place this line on the line
+        after we have set up the new WebSocket connection.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+ws = new WebSocket("ws://localhost:5001/");
+ws.binaryType = 'arraybuffer';
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Next, we need to edit the <fo:inline font-family="Pragmata Pro">ws.onmessage</fo:inline>
+        function. As we are deserializing the message straight into
+        JSON, we do not need to use the <fo:inline font-family="Pragmata Pro">JSON.parse</fo:inline>
+        function. Instead, we simply replace it with the deserialize
+        function provided in <fo:inline font-family="Pragmata Pro">c.js</fo:inline>.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+var outputHTML,data = deserialize(e.data);
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The rest of <fo:inline font-family="Pragmata Pro">ws.onmessage</fo:inline> should be identical
+        to the example in the previous section and should work exactly
+        as it did before. We could also decide we want to serialize the
+        message that we send to the server from the client using the
+        serialize function.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+ws.send(serialize(input.value)); 
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This would then require that we update <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline>
+        to deserialize the message back into a string using
+        <fo:inline font-family="Pragmata Pro">-9!</fo:inline> so that it can then be evaluated.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).z.ws:{neg[.z.w] -8! @[value;-9!x;{`$ "'",x}]} 
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Material Icons" font-size="14pt"></fo:inline> Reference:
+        <fo:basic-link external-destination="url('http://code.kx.com/q/ref/ipc')"><fo:inline color="#0070cd">IPC</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">8</fo:inline><fo:footnote-body><fo:block font-size="8pt">8.
+									http://code.kx.com/q/ref/ipc</fo:block></fo:footnote-body></fo:footnote> for more on serialization
+      </fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="viewing-traffic-over-a-websocket-connection">
+    <fo:block id="idm91504743744" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Viewing traffic over a WebSocket connection</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      When working with WebSockets sometimes we may need to view the
+      messages that are being sent over a WebSocket connection for
+      debugging purposes. We can do this by inspecting the
+      <fo:inline font-style="italic">Network</fo:inline> tab in our browser’s developer tools.
+      We are going to use Google Chrome for the demonstration of this,
+      but most modern browsers will also implement similar
+      network-monitoring tools.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In 
+						‘The handshake’
+					, we looked
+      at the headers associated with a WebSocket connection. Beside the
+      <fo:inline font-style="italic">Headers</fo:inline> section, there is a
+      <fo:inline font-style="italic">Frames</fo:inline> tab that displays what messages have
+      been sent and received, the time they happened, and how many
+      characters long those messages were. The figure below shows us the
+      traffic conducted while using our earlier web console application.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      
+        <fo:external-graphic content-width="scale-down-to-fit" src="url(img/image4.png)" width="100%"/>
+      
+ <fo:inline font-size="10pt"><fo:inline font-style="italic">The sent and received
+      messages over a connection as displayed in Google Chrome’s Network
+      tab</fo:inline></fo:inline>
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      You can see above that the messages in green are query strings
+      that we are sending to the server and the messages in white are
+      the JSON strings we are getting back. The last line shows us a
+      different response from the server. At this point, the
+      <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline> message handler was modified slightly.
+      Instead of using <fo:inline font-family="Pragmata Pro">.j.j</fo:inline> before sending back the
+      data, it was changed to serialize it using <fo:inline font-family="Pragmata Pro">-8!</fo:inline>
+      instead. The binary frame that we see is simply the serialized
+      response we are getting back. It is important to note when sending
+      serialized data we cannot view the message again until it has been
+      received and deserialized.
+    </fo:block>
+  </fo:block>
+  <fo:block id="websocket-security">
+    <fo:block id="idm91504734208" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">WebSocket security</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Security is one of the biggest concerns in any system. It is of
+      the utmost importance that, especially when dealing with sensitive
+      financial information, users only have access to view and edit
+      data they are allowed to see.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The methods used to protect kdb+ processes can be extended to
+      cover WebSockets. There is one caveat in terms of
+      username/password authentication which we will discuss below. A
+      full discussion on kdb+ permissioning is beyond the scope of this
+      whitepaper; instead, please refer to the
+      <fo:basic-link external-destination="url('http://code.kx.com/q/wp/permissions_with_kdb.pdf')"><fo:inline color="#0070cd">July 2013
+      whitepaper</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">10</fo:inline><fo:footnote-body><fo:block font-size="8pt">10.
+									http://code.kx.com/q/wp/permissions_with_kdb.pdf</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+    <fo:block id="username-and-password">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Username and password</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Client authentication is not defined in the WebSocket protocol,
+        and in most cases, it is up to the developer to implement an
+        authentication method of their choice. This means that being
+        prompted for a username and password by the browser when the
+        WebSocket makes a request cannot be guaranteed across all
+        browsers, Chrome and Firefox do support this, however.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        First, create our user/password file and start the server using
+        the <fo:inline font-family="Pragmata Pro">–u</fo:inline> argument.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+C:\Users\mgrac&amp;gt;type users.txt chris:password
+michael:password2
+C:\Users\mgrac&amp;gt;q -p 5001 –u users.txt
+KDB+ 3.5 2017.11.30 Copyright (C) 1993-2017 Kx Systems
+w32/ 4()core 4095MB mgrac desktop-u7p1jte 192.168.1.64 NONEXPIRE
+</fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).z.ws:{neg[.z.w] -8! @[value;-9!x;{`$ "'",x}]}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        If we try to connect to the process using Chrome or Firefox,
+        they will prompt for a username and password and, upon correct
+        entry, successfully create the connection. Not all browsers will
+        currently ask for authentication details, and if so their
+        connection attempt will not be successful. When the connection
+        is not successful due to authentication, a response code of 401
+        (unauthorized) will be returned to the client.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Behind the scenes, Chrome/Firefox are actually sending two
+        requests. When they each receive the first 401 response code,
+        they prompt for a username and password and then send a new
+        WebSocket request with an additional
+        
+		‘Authorization’
+	 option in the header.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As mentioned 
+						‘above’
+					,
+        all WebSocket messages will be processed by the
+        <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline> handler. To fully secure a kdb+ system,
+        this handler should be locked down in the same manner as the
+        <fo:inline font-family="Pragmata Pro">.z.pg</fo:inline>, <fo:inline font-family="Pragmata Pro">.z.ps</fo:inline>,
+        <fo:inline font-family="Pragmata Pro">.z.ph</fo:inline> and <fo:inline font-family="Pragmata Pro">.z.pp</fo:inline> handlers.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As of kdb+ 3.4 we can use Secure Sockets Layer (SSL)/Transport
+        Layer Security (TLS) to encrypt connections using OpenSSL. This
+        process will secure any WebSocket server and upgrade its
+        connection protocols to <fo:inline font-family="Pragmata Pro">wss://</fo:inline> and
+        <fo:inline font-family="Pragmata Pro">https://</fo:inline> respectively.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Material Icons" font-size="14pt"></fo:inline> Cookbook:
+        <fo:basic-link external-destination="url('http://code.kx.com/q/cookbook/websockets/#secure-sockets-stunnel')"><fo:inline color="#0070cd">Secure
+        sockets stunnel</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">12</fo:inline><fo:footnote-body><fo:block font-size="8pt">12.
+									http://code.kx.com/q/cookbook/websockets/#secure-sockets-stunnel</fo:block></fo:footnote-body></fo:footnote>
+      </fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="a-simple-example-real-time-data">
+    <fo:block id="idm91504717984" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">A simple example – real-time data</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This section will present a simple example in which some tables
+      will be updated in the browser in real-time.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The full code can be found in Appendix A along with start-up
+      instructions in order to get the example working. Some of the key
+      features will be explained here. Once the example is successfully
+      running you should be able to see the following tables in your
+      browser continuously updating:
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      
+        <fo:external-graphic content-width="scale-down-to-fit" src="url(img/image5.jpg)" width="100%"/>
+      
+ <fo:inline font-size="10pt"><fo:inline font-style="italic">The web page shows the
+      last quote and trade values for each symbol, and gives the user
+      the ability to filter the syms in view</fo:inline></fo:inline>
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The idea behind the pubsub mechanism here is that a client will
+      make subscriptions to specific functions and provide parameters
+      that they should be executed with. The subscription messages we
+      send to the server will be sent as query strings so our
+      <fo:inline font-family="Pragmata Pro">.z.ws</fo:inline> message handler is defined to simply
+      evaluate them.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q).z.ws:{value x}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Next, we initialize the trade and quote tables and
+      <fo:inline font-family="Pragmata Pro">upd</fo:inline> function to mimic a simple Real-Time
+      Subscriber, along with a further table called
+      <fo:inline font-family="Pragmata Pro">subs</fo:inline>, which we will use to keep track of
+      subscriptions.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+// subs table to keep track of current subscriptions
+q)subs:2!flip `handle`func`params`curData!"is**"$\:()
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The <fo:inline font-family="Pragmata Pro">subs</fo:inline> table will store the handle, function
+      name and function parameters for each client. As we only want to
+      send updates to a subscriber when something has changed, we store
+      the current data held by each subscriber so that we can compare
+      against it later.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The functions that can be called and subscribed to by clients
+      through the WebSocket should be defined as necessary. In this
+      example, we have defined a simple function that will return a list
+      of distinct syms that will be used to generate the filter
+      checkboxes on the client and additional functions to display the
+      last record for each sym in both the trade and quote tables. The
+      aforementioned trade and quote table functions will also accept an
+      argument by which to filter the data if it is present.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+//subscribe to something
+sub:{`subs upsert(.z.w;x;enlist y)}
+//publish data according to subs table
+pub:{
+  row:(0!subs)[x];
+  (neg row[`handle]) .j.j (value row[`func])[row[`params]]
+  }
+// trigger refresh every 1000ms
+.z.ts:{pub each til count subs}
+\t 1000
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The subfunction will handle new subscriptions by upserting the
+      handle, function name and function parameters into the
+      <fo:inline font-family="Pragmata Pro">subs</fo:inline> table. <fo:inline font-family="Pragmata Pro">.z.wc</fo:inline> will
+      handle removing subscriptions from the table whenever a connection
+      is dropped.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The <fo:inline font-family="Pragmata Pro">pub</fo:inline> function is responsible for publishing
+      data to the client. It takes an argument that refers to a row
+      index in the <fo:inline font-family="Pragmata Pro">subs</fo:inline> table and uses it to get the
+      subscriptions function, the parameters to use when calling that
+      function and the handle that it will use in sending the result to
+      the client. Before doing so, it will also use
+      <fo:inline font-family="Pragmata Pro">.j.j</fo:inline> to parse the result into a JSON string.
+      The client can then parse the JSON into a JavaScript object upon
+      arrival as it did in the earlier example. The
+      <fo:inline font-family="Pragmata Pro">pub</fo:inline> function itself will be called on a timer
+      every second for each row in the <fo:inline font-family="Pragmata Pro">subs</fo:inline> table.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      One thing that is important to be consider whenever using
+      WebSockets is that the JavaScript <fo:inline font-family="Pragmata Pro">onmessage</fo:inline>
+      function needs a way in which to identify different responses from
+      one another. Each different response could have a different data
+      structure that will need to be handled differently. Perhaps some
+      data should be used in populating charts while other data for
+      updating a table. If an identifier is present, it can be used to
+      ensure each response is handled accordingly. In this example, the
+      responses <fo:inline font-family="Pragmata Pro">func</fo:inline> value acts as our identifier. We
+      can look at the <fo:inline font-family="Pragmata Pro">func</fo:inline> value and from that
+      determine which function should be called in order to handle the
+      associated data.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+ws.onmessage = function(e) {
+    /*parse message from JSON String into Object*/
+    var d = JSON.parse(e.data);
+    /*
+        depending on the messages func value, 
+        pass the result to the appropriate handler function
+    */
+    switch(d.func){
+        case 'getSyms'   : setSyms(d.result);   break;
+        case 'getQuotes' : setQuotes(d.result); break;
+        case 'getTrades' : setTrades(d.result);
+    }
+};
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The rest of the JavaScript code for the client has been seen in
+      previous examples. The tables that update in the browser are
+      simply being redrawn every time the client receives a new response
+      for the appropriate table.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The end result is a simplistic, interactive, real-time web
+      application showing the latest trade and quote data for a range of
+      symbols. Its intention is to help readers understand the basic
+      concepts of kdb+ and WebSocket integration.
+    </fo:block>
+  </fo:block>
+  <fo:block id="conclusion">
+    <fo:block id="idm91504697040" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Conclusion</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This whitepaper has shown how WebSockets can be used as part of a
+      HTML5 GUI to connect to a q process and allow persistent,
+      real-time communication between kdb+ and a web browser.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      There are different methods for sending messages over the
+      connection, and we have seen how to parse kdb+ data into JSON
+      objects using both server-side and client-side methods. Both of
+      these methods have their benefits and drawbacks so it is important
+      to consider the application infrastructure when deciding which
+      method will be most suitable. Serialising data across the
+      connection is easy to achieve using the <fo:inline font-family="Pragmata Pro">-8!</fo:inline> and
+      <fo:inline font-family="Pragmata Pro">-9!</fo:inline> functions on the kdb+ server and the
+      <fo:inline font-family="Pragmata Pro">c.js</fo:inline> code provided by Kx on the JavaScript
+      client. Alternatively, the kdb+ <fo:inline font-family="Pragmata Pro">.j.j</fo:inline> and
+      <fo:inline font-family="Pragmata Pro">.j.k</fo:inline> functions can be used in conjunction with
+      a browser’s native JSON parser to achieve the same result.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-style="italic">Dashboards for Kx</fo:inline> provide a range of great
+      ways to visualize and analyze both real-time streaming data and
+      highly-optimized polled queries on intra-day and historical data.
+      Completely configurable, <fo:inline font-style="italic">Dashboards for Kx</fo:inline>
+      enable clients to quickly build powerful grids and charts of the
+      underlying data stored within Kx and other databases.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      <fo:inline font-family="Material Icons" font-size="14pt"></fo:inline>
+      <fo:basic-link external-destination="url('http://kx.com/media/2016/07/Dashboards-for-Kx-Product-Overview.pdf')"><fo:inline color="#0070cd">Dashboards
+      for Kx</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">13</fo:inline><fo:footnote-body><fo:block font-size="8pt">13.
+									http://kx.com/media/2016/07/Dashboards-for-Kx-Product-Overview.pdf</fo:block></fo:footnote-body></fo:footnote>
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      All tests were run using kdb+ version 3.5 (2017.11.30)
+    </fo:block>
+  </fo:block>
+  
+  <fo:block id="appendices">
+    <fo:block id="idm91504684000" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Appendices</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The following code is also available on GitHub at
+      
+      <fo:basic-link external-destination="url('https://github.com/kxcontrib/websocket')"><fo:inline color="#0070cd">kxcontrib/websocket</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">14</fo:inline><fo:footnote-body><fo:block font-size="8pt">14.
+									https://github.com/kxcontrib/websocket</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+    <fo:block id="a.-simpledemo.html">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">A. SimpleDemo.html</fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;WebSocket Demo&lt;/title&gt;
+    &lt;style&gt;
+        /* define some CSS styling on page elements */
+        #txtInput {width: 85%; height: 60px; float:left; padding: 10px;}
+        #cmdInput {margin-left: 10px; width:10%; height:80px; font-weight: bold;}
+        #txtOutput {
+            width: 96%; height: 300px; font-family: "Courier New"; padding: 10px; 
+            border: 1px solid gray; margin-top: 10px; overflow:auto;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;textarea id="txtInput" placeholder="q)"&gt;&lt;/textarea&gt;
+    &lt;button id="cmdInput" onclick="send();"&gt;Go&lt;/button&gt;
+    &lt;div id="txtOutput"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    var ws, cmd = "";
+    var input=document.getElementById("txtInput");
+    var output=document.getElementById("txtOutput");
+    function connect(){
+        if ("WebSocket" in window) {
+            ws = new WebSocket("ws://localhost:5001/");
+            output.value="connecting...";
+            ws.onopen=function(e){output.innerHTML="connected"};
+            ws.onclose=function(e){output.innerHTML="disconnected"};
+            ws.onerror=function(e){output.value=e.data};
+            /* 
+                when a message is received, 
+                prepend the message to the display area 
+                along with the input command 
+            */
+            ws.onmessage=function(e){
+                /* 
+                    the message is in plain text, so we need to convert 
+                    ' ' to '&amp;nbsp;'and '\n' to '&lt;br /&gt;' in order to display 
+                    spaces and newlines correctly within the HTML markup
+                */
+                var formattedResponse = e.data.replace(/ /g, '&amp;nbsp;')
+                                        .replace(/\n/g, '&lt;br /&gt;');
+                output.innerHTML = cmd + formattedResponse + output.innerHTML;
+                cmd="";
+            }
+        } else alert("WebSockets not supported on your browser.");
+    }
+    function send(){
+        /* 
+            store the input command so that we can access it later 
+            to print in with the response 
+        */
+        cmd = "q)" + input.value + "&lt;br /&gt;";
+        /* send the input command across the WebSocket connection */
+        ws.send(input.value);
+        /* 
+            reset the input test box to empty, and 
+            focus the cursor back on it ready for the next input 
+        */
+        input.value="";
+        input.focus();
+    }
+    connect(); //call the connect function
+&lt;/script&gt;
+&lt;/html&gt;
+</fo:block>
+    </fo:block>
+    <fo:block id="b.-publish-and-subscribe">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">B. Publish and subscribe</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Below are four separate scripts which can be copied into a text
+        editor and saved with the respective names in the same
+        directory. Start the q processes up first, and then open the
+        HTML file in a web browser.
+      </fo:block>
+      <fo:block id="b.1-pubsub.q">
+        <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">B.1 pubsub.q</fo:block>
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Start this process first. It will create the q interface for
+          the WebSocket connections and contains a simple pubsub
+          mechanism to push data to clients when there are updates.
+        </fo:block>
+        <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+\p 5001
+.z.ws:{value x};
+.z.wc: {delete from `subs where handle=x};
+
+/* table definitions */
+trade:flip `time`sym`price`size!"nsfi"$\:();
+quote:flip `time`sym`bid`ask!"nsff"$\:();
+upd:insert;
+
+/* subs table to keep track of current subscriptions */
+subs:2!flip `handle`func`params!"is*"$\:();
+
+/* functions to be called through WebSocket */
+loadPage:{ getSyms[.z.w]; sub[`getQuotes;enlist `]; sub[`getTrades;enlist `]};
+filterSyms:{ sub[`getQuotes;x];sub[`getTrades;x]};
+
+getSyms:{ (neg[x]) .j.j `func`result!(`getSyms;distinct (quote`sym),trade`sym)};
+
+getQuotes:{
+  filter:$[all raze null x;distinct quote`sym;raze x];
+  res: 0!select last bid,last ask by sym,last time from quote where sym in filter;
+  `func`result!(`getQuotes;res)};
+
+getTrades:{
+  filter:$[all raze null x;distinct trade`sym;raze x];
+  res: 0!select last price,last size by sym,last time from trade where sym in filter;
+  `func`result!(`getTrades;res)};
+
+/*subscribe to something */
+sub:{`subs upsert(.z.w;x;enlist y)};
+
+/*publish data according to subs table */
+pub:{
+  row:(0!subs)[x];
+  (neg row[`handle]) .j.j (value row[`func])[row[`params]]
+  };
+
+/* trigger refresh every 100ms */
+.z.ts:{pub each til count subs};
+\t 1000
+</fo:block>
+      </fo:block>
+      <fo:block id="b.2-fh.q">
+        <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">B.2 fh.q</fo:block>
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          This will generate dummy trade and quote data and push it to
+          the pubsub process. The script can be edited to change the
+          number of symbols and frequency of updates.
+        </fo:block>
+        <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+/* q fh.q */
+h:neg hopen `:localhost:5001; /* connect to rdb */
+syms:`MSFT.O`IBM.N`GS.N`BA.N`VOD.L; /* stocks */
+prices:syms!45.15 191.10 178.50 128.04 341.30 ; /* starting prices */
+n:2; /* number of rows per update */
+flag:1; /* generate 10% of updates for trade and 90% for quote */
+getmovement:{[s] rand[0.001]*prices[s]}; /* get a random price movement */
+
+/* generate trade price */
+getprice:{[s] prices[s]+:rand[1 -1]*getmovement[s]; prices[s]};
+getbid:{[s] prices[s]-getmovement[s]}; /* generate bid price */
+getask:{[s] prices[s]+getmovement[s]}; /* generate ask price */
+
+/* timer function */
+.z.ts:{
+  s:n?syms;
+  $[0&lt;flag mod 10;
+  h(`upd;`quote;(n#.z.N;s;getbid'[s];getask'[s]));
+  h(`upd;`trade;(n#.z.N;s;getprice'[s];n?1000))
+  ];
+  flag+:1;
+  };
+
+/* trigger timer every 100ms */
+\t 100
+</fo:block>
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          This code is from the August 2014 whitepaper
+          <fo:basic-link external-destination="url('http://code.kx.com/q/wp/building_real_time_tick_subscribers.pdf')"><fo:inline color="#0070cd"><fo:inline font-style="italic">Building
+          Real-time Tick Subscribers</fo:inline></fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">15</fo:inline><fo:footnote-body><fo:block font-size="8pt">15.
+									http://code.kx.com/q/wp/building_real_time_tick_subscribers.pdf</fo:block></fo:footnote-body></fo:footnote>.
+        </fo:block>
+      </fo:block>
+      <fo:block id="b.3-websockets.html">
+        <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">B.3 websockets.html</fo:block>
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Due to the length of code required for this example, the
+          JavaScript and HTML code have been split into separate files
+        </fo:block>
+        <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;WebSocket PubSub Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body onload="connect();"&gt;
+    &lt;!-- Create a section to filter on syms --&gt;
+    &lt;section class="select"&gt;
+        &lt;h3&gt;Select Syms: &lt;/h3&gt;
+        &lt;div id="selectSyms"&gt;&lt;/div&gt;
+        &lt;button type="submit" onclick="filterSyms();"&gt;Filter&lt;/button&gt;
+    &lt;/section&gt;
+    &lt;!-- Set up placeholders to display the trade and quote outputs --&gt;
+    &lt;section id="quotes" class="display"&gt;
+        &lt;div class="split"&gt;
+            &lt;h3&gt;Quotes&lt;/h3&gt;
+            &lt;table id="tblQuote"&gt;&lt;/table&gt;
+        &lt;/div&gt;
+        &lt;div class="split"&gt;
+            &lt;h3&gt;Trades&lt;/h3&gt;
+            &lt;table id="tblTrade"&gt;&lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;!-- Load JavaScript file --&gt;
+    &lt;script src="websockets.js"&gt;&lt;/script&gt;
+    &lt;!-- Define some CSS styling on page elements --&gt;
+    &lt;style&gt;
+        section {margin:10px;padding:20px;width:95%;}
+        button {margin:10px;}
+        h3 {margin:5px;}
+        table {border-collapse:collapse;text-align:center;width:100%;} 
+        td,th {border:1px solid black;padding:5px 20px;width:25%}
+        .split {float:left;width:45%;margin-right:20px;display:table;}
+        #selectSyms {padding:10px;min-height:30px;}
+    &lt;/style&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</fo:block>
+      </fo:block>
+      <fo:block id="b.4-websockets.js">
+        <fo:block font-size="12pt" font-weight="bold" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">B.4 websockets.js</fo:block>
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          This script will be loaded into the web page by the HTML. Make
+          sure this is saved as a JS file in the same directory as the
+          above HTML file.
+        </fo:block>
+        <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+/* initialise variable */
+var ws, syms = document.getElementById("selectSyms"),
+    quotes = document.getElementById("tblQuote"),
+    trades = document.getElementById("tblTrade");
+
+function connect() {
+    if ("WebSocket" in window) {
+        ws = new WebSocket("ws://localhost:5001");
+        ws.onopen = function(e) {
+            /* on successful connection, we want to create an
+            initial subscription to load all the data into the page*/
+            ws.send("loadPage[]");
+        };
+
+        ws.onmessage = function(e) {
+            /*parse message from JSON String into Object*/
+            var d = JSON.parse(e.data);
+            /*depending on the messages func value, pass the result
+            to the appropriate handler function*/
+            switch(d.func){
+                case 'getSyms' : setSyms(d.result); break;
+                case 'getQuotes' : setQuotes(d.result); break;
+                case 'getTrades' : setTrades(d.result);
+            }
+        };
+        ws.onclose = function(e){ console.log("disconnected")};
+        ws.onerror = function(e){ console.log(e.data)};
+    } else alert("WebSockets not supported on your browser.");
+}
+
+function filterSyms() {
+    /* get the values of checkboxes that are ticked and
+    convert into an array of strings */
+    var t = [], s = syms.children;
+    for (var i = 0; i &lt; s.length; i++) {
+        if (s[i].checked) {
+            t.push(s[i].value);
+        };
+    };
+    t = t.join("`");
+    /*call the filterSyms function over the WebSocket*/
+    ws.send('filterSyms[`'+ t +']');
+}
+
+function setSyms(data) {
+    /* parse an array of strings into checkboxes */
+    syms.innerHTML = '';
+    for (var i = 0; i &lt; data.length; i++) {
+        syms.innerHTML += '&lt;input type="checkbox" name="sym" value="' +
+        data[i] + '"&gt;' + data[i] + '&lt;/input&gt;';
+    };
+}
+
+function setQuotes(data) { quotes.innerHTML = generateTableHTML(data) }
+function setTrades(data) { trades.innerHTML = generateTableHTML(data) }
+
+function generateTableHTML(data){
+    /* we will iterate through the object wrapping it in the HTML table tags */
+    var tableHTML = '&lt;table border="1"&gt;&lt;tr&gt;';
+    for (var x in data[0]) {
+        /* loop through the keys to create the table headers */
+        tableHTML += '&lt;th&gt;' + x + '&lt;/th&gt;';
+    }
+    tableHTML += '&lt;/tr&gt;';
+    for (var i = 0; i &lt; data.length; i++) {
+        /* loop through the rows, putting tags around each col value */
+        tableHTML += '&lt;tr&gt;';
+        for (var x in data[0]) {
+            /* Instead of pumping out the raw data to the table, let's
+            format it according to its type*/
+            var cellData;
+            if("time" === x)
+                cellData = data[i][x].substring(2,10);
+            else if("number" == typeof data[i][x])
+                cellData = data[i][x].toFixed(2);
+            else cellData = data[i][x];
+            tableHTML += '&lt;td&gt;' + cellData + '&lt;/td&gt;';
+        }
+        tableHTML += '&lt;/tr&gt;';
+    }
+    tableHTML += '&lt;/table&gt;';
+    return tableHTML;
+}
+</fo:block>
+      </fo:block>
+    </fo:block>
+  </fo:block>
+</fo:block></fo:flow></fo:page-sequence></fo:root>

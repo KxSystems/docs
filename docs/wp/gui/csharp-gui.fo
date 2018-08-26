@@ -1,0 +1,986 @@
+<?xml version="1.0"?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:db="http://docbook.org/ns/docbook" xmlns:rx="http://www.renderx.com/XSL/Extensions" xmlns:xlink="http://www.w3.org/1999/xlink"><rx:meta-info><rx:meta-field name="author" value="&#10;        Michael&#10;        Reynolds&#10;      "/><rx:meta-field name="creator" value="Kx Systems"/><rx:meta-field name="title" value="An introduction to graphical interfaces for kdb+ using C#"/><rx:meta-field name="keywords" value="Kx, Kx Systems, kdb+, analytics, connections, csharp, gui, kdb+, queries, validation"/></rx:meta-info><rx:outline><rx:bookmark internal-destination="connecting-kdb-and-c"><rx:bookmark-label>Connecting kdb+ and C</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="queries"><rx:bookmark-label>Queries</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="managing-connections"><rx:bookmark-label>Managing connections</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="running-analytics"><rx:bookmark-label>Running analytics</rx:bookmark-label></rx:bookmark><rx:bookmark internal-destination="conclusion"><rx:bookmark-label>Conclusion</rx:bookmark-label></rx:bookmark></rx:outline><fo:layout-master-set><fo:simple-page-master master-name="cover-page" page-width="210mm" page-height="297mm"><fo:region-body margin-top="0" margin-bottom="0" margin-left="0" margin-right="0" background-color="#eeeded"/></fo:simple-page-master><fo:simple-page-master master-name="toc" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="60pt" margin-right="60pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master><fo:simple-page-master master-name="standard-page" page-width="210mm" page-height="297mm" margin-top="30pt" margin-bottom="30pt" margin-left="45pt" margin-right="45pt"><fo:region-body margin-top="48pt" margin-bottom="32pt" margin-left="40pt" margin-right="40pt"/><fo:region-before extent="30pt"/><fo:region-after extent="30pt"/></fo:simple-page-master></fo:layout-master-set><fo:page-sequence master-reference="cover-page" font-family="STIX2" initial-page-number="1" language="en" country="gb"><fo:flow flow-name="xsl-region-body"><fo:block-container absolute-position="absolute" top="0mm" right="0mm" width="2in" height="2in"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-white.png)" content-width="40mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" left="0mm" width="2.5in" height="30mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/diamond-bottom-left-white.png)" content-width="50mm" scaling="uniform"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" bottom="0mm" right="0mm" width="4in" height="50mm"><fo:block text-align="right"><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/kx-cover.png)" content-width="75mm"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="35mm" left="15mm"><fo:block color="#0070cd" font-family="Proxima Nova" font-size="60pt" font-weight="bold" letter-spacing="-4pt">kx</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="40mm" left="40mm"><fo:block><fo:external-graphic src="url(/Users/sjt/Projects/kx/github/StephenTaylor-Kx/mkdocs2pdf/img/its-about-time.png)"/></fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="80mm" left="35mm"><fo:block font-family="Proxima Nova" color="#0070cd" font-size="18pt" font-weight="400">
+							Technical Whitepaper
+						</fo:block><fo:block margin-top="9pt" margin-right="30mm" line-height="1.4" font-size="24pt" font-weight="400">An introduction to graphical interfaces for kdb+ using C#</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Date</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="170mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left">May 2013</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="35mm"><fo:block line-height="16pt" font-weight="bold">Author</fo:block></fo:block-container><fo:block-container absolute-position="absolute" top="180mm" left="55mm" width="100mm"><fo:block line-height="16pt" text-align="left"><fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Michael Reynolds works as a kdb+ consultant for one of the largest
+      investment banks in the world. As part of his daily job, Michael
+      is responsible for maintaining kdb+ databases as well as a C# APIs
+      and plug-ins.
+    </fo:block></fo:block></fo:block-container><fo:block> </fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="toc" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">An introduction to graphical interfaces for kdb+ using C#</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block break-before="page"><fo:block font-size="14pt" text-align="center" margin-top="36pt" margin-bottom="36pt">Contents</fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idp140605992588520">Connecting kdb+ and C <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idp140605992588520"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idp140605992632424">Queries <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idp140605992632424"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idp140605992654808">Managing connections <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idp140605992654808"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idp140605992670760">Running analytics <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idp140605992670760"/></fo:basic-link></fo:block><fo:block margin-bottom="6pt" text-align-last="justify"><fo:basic-link internal-destination="idp140605992705192">Conclusion <fo:leader leader-pattern="dots"/> <fo:page-number-citation ref-id="idp140605992705192"/></fo:basic-link></fo:block></fo:block></fo:flow></fo:page-sequence><fo:page-sequence master-reference="standard-page" font-family="STIX2" language="en" country="gb"><fo:static-content flow-name="xsl-region-before"><fo:block text-align-last="justify" font-family="Proxima Nova" color="gray"><fo:inline font-size="9pt">An introduction to graphical interfaces for kdb+ using C#</fo:inline><fo:leader leader-pattern="space"/><fo:inline color="#0070cd" font-size="18pt" font-weight="bold" letter-spacing="-2pt">kx</fo:inline></fo:block></fo:static-content><fo:static-content flow-name="xsl-footnote-separator"><fo:block><fo:leader leader-pattern="rule" rule-thickness=".5pt" leader-length="50%"/></fo:block></fo:static-content><fo:static-content flow-name="xsl-region-after"><fo:block color="gray" text-align="right"><fo:inline font-family="Proxima Nova" font-size="9pt" letter-spacing="2pt"><fo:page-number/></fo:inline></fo:block></fo:static-content><fo:flow flow-name="xsl-region-body"><fo:block id="an-introduction-to-graphical-interfaces-for-kdb-using-c">
+  <fo:block id="idp140605992578632" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">An introduction to graphical interfaces for kdb+ using
+  C#</fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    Over the course of fifteen years, C# has become one of the most
+    common programming languages in the world. It has been used in
+    applications ranging from computer games to medical systems to
+    storage systems.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    When deployed in an environment which requires database connections,
+    it is traditional for C# to use a form of SQL for the back end, be
+    it MySQL or SQLite to provide data storage and the ability to
+    execute queries. Though functional, kdb+ offers substantial
+    improvements in performance and processing power over this standard
+    method of operation.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    In this paper, we will explain the basics of using C# to open
+    connections to kdb+ processes running on remote servers as well as
+    setting up a basic API that will allow for authentication, error
+    recovery and basic queries through an interface. In this case, all
+    C# code will be pointing to the same kdb+ process.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    C# is heavily integrated into Windows software. It allows for the
+    implementation of the .NET environment into applications and can be
+    utilised in the creation of websites using PHP and ASP.NET as well
+    as stand-alone Windows applications.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The paper makes use of the standard <fo:inline font-family="Pragmata Pro">c.cs</fo:inline> file
+    offered by Kx to enable connections to C#. This can be found at
+    
+    <fo:basic-link external-destination="url('https://github.com/KxSystems/kdb/blob/master/c/c.cs')"><fo:inline color="#0070cd">KxSystems/kdb</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">1</fo:inline><fo:footnote-body><fo:block font-size="8pt">1.
+									https://github.com/KxSystems/kdb/blob/master/c/c.cs</fo:block></fo:footnote-body></fo:footnote>.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    It is important to note that this paper does not aim to provide a
+    full C# library, but instead give guidance on how to quickly and
+    easily allow a C# application to connect to and run queries against
+    a kdb+ process.
+  </fo:block>
+  <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+    The C# source code for this paper can be found at
+    
+    <fo:basic-link external-destination="url('https://github.com/kxcontrib/csharpgui')"><fo:inline color="#0070cd">kxcontrib/csharpgui</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">2</fo:inline><fo:footnote-body><fo:block font-size="8pt">2.
+									https://github.com/kxcontrib/csharpgui</fo:block></fo:footnote-body></fo:footnote>.
+  </fo:block>
+  
+  <fo:block id="connecting-kdb-and-c">
+    <fo:block id="idp140605992588520" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Connecting kdb+ and C</fo:block>
+    <fo:block id="c-socket-to-enable-client-connection">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">C# socket to enable client connection</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        To connect from C# to a running kdb+ process, it is first
+        necessary to import the <fo:inline font-family="Pragmata Pro">c.cs</fo:inline> file mentioned
+        in the introduction. While it is possible to construct a bespoke
+        plugin for use between kdb+ and C#, and may be required
+        depending on the requirements of the project, for basic
+        connections and queries, the default Kx plug-in will be
+        satisfactory. This must then be called by referencing the
+        namespace provided (in this case, it is <fo:inline font-family="Pragmata Pro">kx</fo:inline>).
+        After importing <fo:inline font-family="Pragmata Pro">c.cs</fo:inline> into a C# project, it
+        can then be called via the <fo:inline font-family="Pragmata Pro">using</fo:inline> directive:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+using kx;
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This will allow all objects, classes and methods within the
+        <fo:inline font-family="Pragmata Pro">kx</fo:inline> namespace provided by the
+        <fo:inline font-family="Pragmata Pro">c.cs</fo:inline> file to be used throughout the project,
+        allowing connections to the kdb+ process via TCP network
+        sockets. It will also permit querying and updates to be
+        performed on the same kdb+ process.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        To open a connection between C# and the kdb+ process, an object
+        of class <fo:inline font-family="Pragmata Pro">c</fo:inline> needs to be called and
+        instantiated. This is a Kx-provided class that will act as an
+        interface between kdb+ and C#. This will be used in a method
+        called <fo:inline font-family="Pragmata Pro">OpenConnection</fo:inline>. In the below example,
+        a server and process will be hard-coded to private variables
+        though these could be modified to accept values from a
+        configuration file. The methods have also been set up to accept
+        a username and password if desired; this will be described in
+        more detail later.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private static String HOST = "localhost";
+private static int PRIMARY_PORT = 5010;
+
+public static c GetConnection(String user, string password)
+{
+    c connection;
+    if ((connPool.Count &gt; 0) &amp;&amp; (counter &lt; MaxPoolSize))
+    {
+        connection = RetrieveFromPool(HOST, PRIMARY_PORT,user,password);
+    }
+    else
+    {
+        connection = OpenConnection(HOST, PRIMARY_PORT, user, password);
+        counter++; 
+    }
+    return connection;
+}
+</fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private static c OpenConnection(String host,int port,string user,string password)
+{
+    try
+    {
+        c conn;
+        if ((user == null) || (password == null))
+        {
+            conn = new c(host, port); //Takes host and port
+        }
+        else
+        {
+            conn = new c(host, port, user, password);
+        }
+        if (conn == null) //Returns null if no connection was made
+        {
+            throw new Exception("Connection could not be established");
+        }
+        else
+        {
+            return conn; //If connection was made, return conn object
+        } 
+    }
+    catch (Exception e)
+    {
+        System.Diagnostics.Debug.Write("An unexpected error occurred: " + e.ToString());
+        //Catch any unexpected errors and fail gracefully.
+        throw e;
+    } 
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The above code shows a simple, generic connection method which
+        can be called when starting a C# application to create a
+        connection to a running kdb+ process. We return the
+        <fo:inline font-family="Pragmata Pro">c</fo:inline> object in this case as we will need it in
+        the main method to execute queries.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Note that a lot of the method consists of error catching. This
+        is to ensure that the application can recover in the event of
+        the connection not being made successfully or another,
+        unexpected error occurring. In this example, we have merely
+        outputted a message to the Visual Studio console to say that we
+        have an error but later, we will see how this error handling can
+        be used to provide error recovery or business continuity.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This method will be used as part of a
+        <fo:inline font-family="Pragmata Pro">ConnectionPool</fo:inline> which will be used to monitor
+        and assign connections to users rather than having a haphazard
+        collection of connections with each process. This will reduce
+        the load and traffic on the kdb+ instance as it cuts down on the
+        number of handles that could be attempting to query
+        simultaneously.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void button1_Click(object sender, EventArgs e)
+{
+    c conn = ConnectionPool.GetConnection();
+    //This pulls an object of type c from the shared connection pool.
+    if (conn != null) {
+        textBox1.Text = "You have connected to localhost:5010 successfully";
+    } else {
+        textBox1.Text = "Error, you have not successfully connected to the server";
+    }
+    ConnectionPool.ReturnConnection(conn);
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This is an example of the <fo:inline font-family="Pragmata Pro">OpenConnection</fo:inline>
+        method in operation (via the <fo:inline font-family="Pragmata Pro">ConnectionPool</fo:inline>)
+        with a simple click event for a button. It will check if the
+        method has returned a <fo:inline font-family="Pragmata Pro">c</fo:inline> object for further
+        use and, if not, it will throw an error.
+      </fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image3.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Successful connection</fo:inline></fo:inline></fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image4.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Unsuccessful connection</fo:inline></fo:inline></fo:block>
+    </fo:block>
+    <fo:block id="validation-with-passwords">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Validation with passwords</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As previously mentioned, a bonus of using kdb+ as the back end
+        for a C# or Java application is that the code on the server side
+        is independent of both languages. This greatly eases the
+        development required to make such a service available and
+        enables platforms operating either language to access the same
+        services. This also enables developers to take advantage of kdb+
+        as a language and move much of the processing to the server
+        side. An example of this is validation to prevent users from
+        connecting to the server without permission.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        In the below process, we have created a simple table with a user
+        and their password. The password could be further encrypted
+        using a hashing algorithm such as MD5 for extra security (this
+        will not be shown in this whitepaper but is highly recommended).
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)user_table:([users:`mreynolds`user1`user2]password:("password";"password2";"password3"))
+q)user_table
+users    | password
+---------| -----------
+mreynolds| "password"
+user1    | "password2"
+user2    | "password3"
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This involves changing the <fo:inline font-family="Pragmata Pro">c.cs</fo:inline> file provided
+        by Kx as this is not set up to accept customised usernames (it
+        instead takes the username stored in
+        <fo:inline font-family="Pragmata Pro">Environment.UserName</fo:inline>) or any passwords at
+        all. We will also need to modify the
+        <fo:inline font-family="Pragmata Pro">OpenConnection</fo:inline> method and define
+        <fo:inline font-family="Pragmata Pro">.z.pw</fo:inline>.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        First of all, the <fo:inline font-family="Pragmata Pro">c</fo:inline> constructor for
+        <fo:inline font-family="Pragmata Pro">c.cs</fo:inline>:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+public c(string h, int p, string u, int maxBufferSize)
+{
+    serverName = h; //This is the hostname
+    serverPort = p; //This is the port number
+    _maxBufferSize = maxBufferSize;
+    Connect(h, p); //This is what makes the connection to kdb+
+    s = this.GetStream();
+    B = new byte[2 + u.Length];
+    //This defines the length of the bytesteam as username + 2
+    // for termination characters
+    J = 0;
+    w(u + "\x3"); //This is as above with termination characters ‘x3’ sent
+    s.Write(B, 0, J); //This line sends data to kdb+ as stream of bytes;
+    if (1 != s.Read(B, 0, 1))
+        throw new KException("access"); vt = Math.Min(B[0], (byte)3);
+        //Throws error if connection is not accepted.
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This works by opening a byte stream to the kdb+ process and then
+        feeding user input as bytes to the handle.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        A byte stream is an open connection that sends a collection of
+        bytes from sender to receiver in a bidirectional format. This
+        connection is reliable and the use of bytes allows the C# query
+        to be sent to a kdb+ process and the kdb+ response to be
+        returned and deserialised.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As defined currently, along with the host <fo:inline font-family="Pragmata Pro">h</fo:inline>
+        and port <fo:inline font-family="Pragmata Pro">p</fo:inline>, it will take a further parameter
+        for the username <fo:inline font-family="Pragmata Pro">u</fo:inline>, but none for the
+        password. To make it accept passwords as well, we need to modify
+        the <fo:inline font-family="Pragmata Pro">c</fo:inline> constructor in the
+        <fo:inline font-family="Pragmata Pro">c.cs</fo:inline> file to the following:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+//We have added pw argument to this to take in our password
+public c(string h, int p, string u, string pw, int maxBufferSize)
+{
+    serverName = h; //This is the hostname
+    serverPort = p; //This is the port number
+    _maxBufferSize = maxBufferSize; //This is what makes the connection to kdb+
+    Connect(h, p);
+    s = this.GetStream();
+    B = new byte[3 + u.Length + pw.Length];
+    //This differs from above as we have added the length of the password as well, 
+    // plus an extra character to take account of the separator between u and pw ':' 
+    J = 0;
+    w(u + ":" + pw + "\x3");
+    //We can now send through both username and password to the kdb+
+    // session for authentication.
+    s.Write(B, 0, J); //This line sends data to kdb+ as stream of bytes;
+    if (1 != s.Read(B, 0, 1)) throw new KException("access"); vt=Math.Min(B[0],(byte)3);
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        We have specified a new variable <fo:inline font-family="Pragmata Pro">pw</fo:inline>, which is
+        now being read into the byte stream along with
+        <fo:inline font-family="Pragmata Pro">u</fo:inline>. In particular, it is
+        <fo:inline font-family="Pragmata Pro">w(u + ":" + pw + "\x3")</fo:inline>
+        that will be interpreted by <fo:inline font-family="Pragmata Pro">.z.pw</fo:inline> or the
+        <fo:inline font-family="Pragmata Pro">-u</fo:inline> argument as a username and password. We
+        can use a simple definition for <fo:inline font-family="Pragmata Pro">.z.pw</fo:inline> to
+        query the users table whenever a connection is made through C#.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This will return <fo:inline font-family="Pragmata Pro">0b</fo:inline> if the user does not have
+        permission to access the process. Within C#, this will throw a
+        KException with the message <fo:inline font-family="Pragmata Pro">access</fo:inline>. This can
+        be used to track if the user has been refused access in the C#
+        API.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        <fo:inline font-family="Material Icons" font-size="14pt"></fo:inline> Tom Martin’s whitepaper
+        <fo:basic-link external-destination="url('http://code.kx.com/q/wp/permissions_with_kdb.pdf')"><fo:inline color="#0070cd">“Permissions
+        with kdb+”</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">3</fo:inline><fo:footnote-body><fo:block font-size="8pt">3.
+									http://code.kx.com/q/wp/permissions_with_kdb.pdf</fo:block></fo:footnote-body></fo:footnote> for more detailed information on validation
+        and authentication
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void button1_Click(object sender, EventArgs e)
+{
+    try
+    {
+        c conn = OpenConnection("localhost",5010,usernameText.Text, pwText.Text);
+        label3.Text = "Hello " + usernameText.Text +
+        ". You are permitted to make this connection";
+    }
+    catch (KException kEx)
+    {
+        if (kEx.Message == "access") //Permission denied
+        {
+            label3.Text = "Sorry "+usernameText.Text+". You may not make this connection";
+        }
+        else
+        {
+            label3.Text = "An unexpected kdb+ error occurred";
+        } 
+    }
+    catch (Exception ex)
+    {
+        label3.Text = ex.Message;
+    }
+}
+</fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image5.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Successful connection</fo:inline></fo:inline></fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image6.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Unsuccessful connection</fo:inline></fo:inline></fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="queries">
+    <fo:block id="idp140605992632424" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Queries</fo:block>
+    <fo:block id="simple-queries">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Simple queries</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        With a connection established between the C# application and the
+        kdb+ process, it is now possible to send queries from the front
+        end and receive data from the back end. This is done through the
+        use of the <fo:inline font-family="Pragmata Pro">c</fo:inline> object which is created after
+        opening the connection. This is why it is important to keep
+        track of the object in methods such as OpenConnection.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The method used to perform operations over the kdb+ connection
+        is simply called <fo:inline font-family="Pragmata Pro">k</fo:inline> and is called as a child
+        method of the <fo:inline font-family="Pragmata Pro">c</fo:inline> class. The same method is
+        used to query, update and delete data from kdb+ and accepts a
+        string as a parameter.
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+conn.k("select from tab");
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This is then fed into a method called <fo:inline font-family="Pragmata Pro">c</fo:inline>,
+        which breaks it into bytes and passes it into kdb+. The result
+        is then received by the C# client as a stream of bytes which is
+        deserialised by the <fo:inline font-family="Pragmata Pro">c</fo:inline> method into C#
+        compatible types. The result itself is a two-dimensional array
+        when used with <fo:inline font-family="Pragmata Pro">select</fo:inline> or a one-dimensional
+        array when used with <fo:inline font-family="Pragmata Pro">exec</fo:inline>. This can then be
+        cast to the type <fo:inline font-family="Pragmata Pro">c.Flip</fo:inline>, which mimics a table
+        with similar functionality and methods available.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        In the below example, an app has been written with a hard-coded
+        query to a simple trade table. This will update the table in the
+        application by use of a <fo:inline font-family="Pragmata Pro">DataGridView</fo:inline> every
+        time the update button is clicked. To push the data to a
+        <fo:inline font-family="Pragmata Pro">DataGridView</fo:inline>, it first needs two loops to
+        copy the data into the correct formats (one loop for rows and
+        one loop for columns).
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void button1_Click(object sender, EventArgs e)
+{
+    if (conn == null)
+    {
+        conn = ConnectionPool.GetConnection();
+    }
+    object result = (object)conn.k("select from trade"); 
+    c.Flip table = (c.Flip)result;
+    
+    QueryView.Columns.Clear();
+    //Clear columns first to allow clean population of table
+    foreach (string colName in table.getColumns())
+    {
+        QueryView.Columns.Add(colName, colName); //Add the columns to the Queryview 
+    }
+    
+    QueryView.Rows.Add(table.getNoRow());
+    
+    for (int row = 0; row &lt; table.getNoRow(); row++) {
+        for (int col = 0; col &lt; (table.getColumns().Length); col++)
+        {
+            QueryView[col, row].Value = c.at(table.y[col], row);
+            //Populate each cell of the Queryview with its associated value
+        } 
+    }
+    ConnectionPool.ReturnConnection(conn);
+}
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This produces the following output:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)select from trade
+symbol price size
+-----------------
+DEN.O  38    13
+ASI.O  36    41
+GOOG.O 94    11
+APL.O  60    2
+ASI.O  47    27
+GOOG.O 40    10
+APL.O  85    27
+DEN.O  71    44
+MSN.O  66    27
+APL.O  33    38
+APL.O  56    21
+GOOG.O 24    30
+</fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image7.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Query output</fo:inline></fo:inline></fo:block>
+    </fo:block>
+    <fo:block id="building-dynamic-queries">
+      <fo:block font-weight="bold" font-size="14pt" line-height="17pt" margin-right="36pt" page-break-after="avoid" space-after="6pt" space-before="18pt" text-align="left">Building dynamic queries</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        As the query consists of only a single string value, it is easy
+        to modify and adjust dynamically based on user inputs, allowing
+        easy creation of GUIs to interact with kdb+.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        It should be noted that while it is possible to build a dynamic
+        query as shown in the below example, it is vulnerable to
+        injection attacks. Production systems should be more robust in
+        dealing with these kinds of attacks, though this is beyond the
+        scope of this whitepaper.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        Below is an example of a class and GUI that has been constructed
+        using simple dropdowns and text boxes yet creates a flexible and
+        powerful editor we can use to query the trade table:
+      </fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image8.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Example GUI</fo:inline></fo:inline></fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        To carry this out, we use a new method called
+        <fo:inline font-family="Pragmata Pro">BuildQuery</fo:inline> (presented below) and replace the
+        hard-coded query with:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+conn.k(BuildQuery());
+</fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        The <fo:inline font-family="Pragmata Pro">BuildQuery</fo:inline> method takes the inputs of
+        each textbox, checkbox and combo box seen above and combines
+        them to build a query to send to kdb+. This allows those without
+        much knowledge of kdb+ queries or optimisation of queries to
+        view data stored on kdb+ processes without exposing them to the
+        qSQL language.
+      </fo:block>
+      <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+        This is the <fo:inline font-family="Pragmata Pro">BuildQuery</fo:inline> method, which takes
+        all the available inputs and creates a query string from them:
+      </fo:block>
+      <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+
+private string BuildQuery()
+{
+    String check1 = "";
+    String check2 = "";
+    String check3 = "";
+    StringBuilder queryString = new StringBuilder();
+
+    if (checkBox1.Checked)
+    {
+        check1 = " not ";
+    }
+    if (checkBox2.Checked)
+    {
+        check2 = " not ";
+    }
+    if (checkBox3.Checked)
+    {
+        check3 = " not ";
+    }
+    
+    if ((selectedCols.Text == null) || (selectedCols.Text == "*"))
+    
+    {
+        queryString.Append("select from ");
+    }
+    else
+    {
+        queryString.Append("select " + selectedCols.Text + " from ");
+    }
+    queryString.Append(tableComboBox.SelectedItem);
+    if (argComboBox1.SelectedItem != null)
+    {
+        queryString.Append(" where (" + check1 + argComboBox1.SelectedItem +
+            signComboBox1.SelectedItem + argInput1.Text + ")");
+        //Append the above strings and the text boxes of the UI into 
+        //a single string query that can be sent to the kdb+ process
+    }
+    if ((argComboBox2.SelectedItem != null) &amp;&amp; (argComboBox1.SelectedItem != null))
+    {
+        queryString.Append(andor1.SelectedItem + " (" + check2 +
+            argComboBox2.SelectedItem + signComboBox2.SelectedItem + 
+            argInput2.Text + ")");
+    }
+    if ((argComboBox2.SelectedItem != null) &amp;&amp; (argComboBox1.SelectedItem != null) &amp;&amp;
+        (argComboBox3.SelectedItem != null))
+    {
+        queryString.Append(andor2.SelectedItem + " (" + check3 +
+            argComboBox3.SelectedItem + signComboBox3.SelectedItem + 
+            argInput3.Text + ")");
+    }
+
+    return queryString.ToString();
+}
+</fo:block>
+    </fo:block>
+  </fo:block>
+  <fo:block id="managing-connections">
+    <fo:block id="idp140605992654808" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Managing connections</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      A key requirement of a business application and particularly a
+      trading-based application is continuity of service. Loss of
+      business continuity can happen for a number of reasons including
+      server crashes due to technical or environmental faults, a failure
+      in the API or a loss of connection between the two components. In
+      this regard, it is important that any C# application that connects
+      to kdb+ be designed to handle these events and fail over if
+      necessary to backup processes or inform the user of the problem
+      and take measures to reconnect as soon as possible if this is
+      desired.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      On the client side, we will utilize the
+      <fo:inline font-family="Pragmata Pro">KException</fo:inline> and use this to fail over to a
+      secondary connection if a query cannot go through successfully.
+      This method will then attempt to run the query again using the
+      backup connection and publish the data as normal. This can ensure
+      continuity of business in the event that the kdb+ process is
+      rendered unable to respond.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+catch (Exception ex)
+{
+    if (ex.Message == "read" || ex.Message == "stop")
+    {
+        try
+        {
+            if (ex.Message == "read")
+            {
+                errorLabel.Text = "ALERT: using secondary connection"; 
+            }
+            else
+            {
+                errorLabel.Text = "ALERT: query timed out, using second connection";
+            }
+            conn = ConnectionPool.GetConnection();
+            c.Flip table = GetData(queryBox.Text);
+            PublishQuery(table);
+        }
+        catch (Exception ee)
+        {
+            errorLabel.Text = "ERROR - unable to connect: " + ee.Message;
+        }
+    }
+    else
+    {
+        errorLabel.Text = "ERROR: " + ex.Message;
+    }
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      In the above example, we are capturing any exception that is
+      thrown with the <fo:inline font-family="Pragmata Pro">read</fo:inline> error. This means the GUI
+      was unable to successfully send the query to the kdb+ back-end. To
+      reconnect to the secondary connection, we call the
+      <fo:inline font-family="Pragmata Pro">ConnectionPool.GetConnection</fo:inline> method again and
+      re-send the query. The <fo:inline font-family="Pragmata Pro">PublishQuery</fo:inline> method
+      simply publishes the result of the query into a
+      <fo:inline font-family="Pragmata Pro">DataGridView</fo:inline> as before. On the kdb+ side we
+      have two processes running the same functions and trade table but
+      on different ports.
+    </fo:block>
+    <fo:block page-break-after="avoid" text-align="center"><fo:external-graphic content-width="scale-down-to-fit" src="url(img/image9.png)" width="100%"/></fo:block><fo:block font-size="9pt" font-style="italic" margin-bottom="15pt"/>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      We can expand this functionality to take account of a process
+      being busy, such as when it is processing a large query or hanging
+      for another reason. In this case, we have artificially increased
+      the amount of time it will take the query to run to test the below
+      code. Timeout errors are supplied on the kdb+ end and will return
+      a stop error, which we can catch.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)\T 1
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The catch statement can then be modified to trap the stop error
+      and rerun the query on another process:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+catch (Exception ex)
+{
+    if (ex.Message == "read" || ex.Message == "stop")
+    {
+        try
+        {
+            if (ex.Message == "read")
+            {
+                errorLabel.Text = "ALERT: using secondary connection";
+            }
+            else
+            {
+                errorLabel.Text = "ALERT: query timed out, using second connection";
+            }
+            conn = ConnectionPool.GetSecondaryConnection();
+            c.Flip table = GetData(query);
+            publishQuery(table);
+        }
+        catch (Exception ee)
+        {
+            errorLabel.Text = "ERROR - unable to connect: " + ee.Message;
+        }
+    } 
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This is used by a method within the connection pool called
+      <fo:inline font-family="Pragmata Pro">GetSecondaryConnection</fo:inline>, which will use a
+      predefined port and the same host to open a new connection. This
+      will add the connection to the same pool, preventing the
+      application from exceeding its maximum number of connections:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+public static c GetSecondaryConnection(String user, string password)
+{
+    c connection;
+    if ((connPool.Count &gt; 0) &amp;&amp; (counter &lt; MaxPoolSize))
+    {
+        connection = RetrieveFromPool(HOST, SECONDARY_PORT, user, password);
+    }
+    else
+    {
+        connection = OpenConnection(HOST, SECONDARY_PORT, user, password);
+        counter++; 
+    }
+    return connection;
+}
+</fo:block>
+    <fo:block page-break-after="avoid" text-align="center"><fo:external-graphic content-width="scale-down-to-fit" src="url(img/image10.png)" width="100%"/></fo:block><fo:block font-size="9pt" font-style="italic" margin-bottom="15pt"/>
+  </fo:block>
+  <fo:block id="running-analytics">
+    <fo:block id="idp140605992670760" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Running analytics</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Until now, we’ve been using kdb+ to deliver raw trade data to our
+      C# front end. While viewing raw data can be useful, many users
+      will want to see an enriched view of each trade. We can take the
+      example from 
+						‘Queries’
+					 above and
+      expand it so that each row in the <fo:inline font-family="Pragmata Pro">DataGridView</fo:inline>
+      will be selectable, allowing us to drill into each trade to
+      provide further analysis on the product being traded. The
+      analytics will include:
+    </fo:block>
+    <fo:list-block provisional-distance-between-starts="0.3cm" provisional-label-separation="0.15cm"><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Minimum daily price
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Maximum daily price
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Daily VWAP price
+        </fo:block>
+      </fo:list-item-body></fo:list-item><fo:list-item><fo:list-item-label end-indent="label-end()"><fo:block line-height="16pt">•</fo:block></fo:list-item-label><fo:list-item-body start-indent="body-start()">
+        <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+          Average price
+        </fo:block>
+      </fo:list-item-body></fo:list-item></fo:list-block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      We will also plot these on a line graph to allow users to better
+      identify patterns and outliers throughout the day.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      To calculate these, we will create a new function called
+      <fo:inline font-family="Pragmata Pro">analyseData</fo:inline> on the kdb+ side, which will then
+      be called from C#.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) analyseData:{[x] 
+    0!select 
+    minPrice:min price, 
+    maxPrice:max price, 
+    vwap:size wavg price, 
+    avgTab:avg price, 
+    cntTab:count i by 15 xbar time.minute 
+    from trade where sym=x}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This will calculate the min, max, average and VWAP prices for a
+      given symbol in 15-minute buckets. We will also write a function
+      called <fo:inline font-family="Pragmata Pro">getSummary</fo:inline> which provides the overall
+      min, max, average, and VWAP for the entire day. Note that we must
+      unkey the table before returning it to C# as
+      <fo:inline font-family="Pragmata Pro">c.Flip</fo:inline> would treat this keyed table (type 99)
+      as a dictionary and cause an error.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q) getSummary: {[x]
+    0!select 
+    distinct sym,
+    minPrice:min price, 
+    maxPrice:max price, 
+    vwap:size wavg price, 
+    avgTab:avg price, 
+    cntTab:count i 
+    from trade where sym=x}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      If we perform these on the table trade for one symbol
+      <fo:inline font-family="Pragmata Pro">`FDP.O</fo:inline> in the kdb+ session, we can see the
+      results:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)4#details
+sym   | fullName
+------| -----------------------
+FDP.O | "First Derivatives PLC"
+BMW.O | "BMW AG"
+MSFT.O| "Microsoft Corporation"
+INTC.O| "Intel Corp"
+</fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+q)getSummary[`FDP.O]
+sym   minPrice maxPrice avgPrice vwap  total 
+-------------------------------------------- 
+FDP.O 1.021    1.109    1.064    1.064 5082
+
+q)10#analyseData[`FDP.O]
+minute minPrice maxPrice vwapPrice avgPrice totalTransactions 
+------------------------------------------------------------- 
+00:00  1.022    1.108    1.063     1.063    93
+00:15  1.022    1.108    1.063     1.064    114
+00:30  1.022    1.108    1.061     1.061    132
+00:45  1.022    1.108    1.065     1.066    139
+01:00  1.021    1.108    1.066     1.068    143
+01:15  1.021    1.108    1.069     1.069    126
+01:30  1.021    1.108    1.061     1.061    137
+01:45  1.022    1.108    1.063     1.062    144
+02:00  1.022    1.108    1.066     1.066    130
+02:15  1.022    1.108    1.067     1.067    129
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The methods to pull this data into a graph in the case of
+      <fo:inline font-family="Pragmata Pro">analyseData</fo:inline>, and text boxes in the case of
+      <fo:inline font-family="Pragmata Pro">getSummary</fo:inline>, are simple to implement, involving
+      query calls to kdb+ to collect the data and then using loops to
+      process it.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+public Form3(String symbol, c conn)
+{
+    InitializeComponent();
+
+    symLabel.Text = symbol;
+    this.conn = conn;
+    c.Flip details = GetData("select details from details where sym=`" + symbol); 
+    compLabel.Text = c.at(details.y[0], 0).ToString();
+    //This will execute the above functions using the symbol taken from the UI
+    details = GetData("getSummary[`" + symbol + "]");
+    GetDaily(details);
+
+    details = GetData("analyseData[`" + symbol + "]");
+    SetAxis(details);
+    PopulateChart(details); //Populates Example Chart
+    PopulateGrid(details);  //Populates Example Grid
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      This calls the methods <fo:inline font-family="Pragmata Pro">GetData</fo:inline> (which was used
+      in the previous section), <fo:inline font-family="Pragmata Pro">GetDaily</fo:inline>,
+      <fo:inline font-family="Pragmata Pro">SetAxis</fo:inline> and <fo:inline font-family="Pragmata Pro">PopulateChart</fo:inline>.
+      Note that the form takes as arguments a string to represent the
+      symbol and the connection object. This is to avoid opening up new
+      connections with each selection. These values are supplied from
+      the parent form in a <fo:inline font-family="Pragmata Pro">CellEvent</fo:inline> for the
+      <fo:inline font-family="Pragmata Pro">DataGrid</fo:inline>, making it selectable:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void QueryView_CellClick(object sender, DataGridViewCellEventArgs e)
+{
+    if (e.RowIndex &gt;= 0) //We need to check that user has not clicked column header
+    {
+        int rowIndex = e.RowIndex;
+        DataGridView senderGrid = (DataGridView)sender; //The cell selected
+        String selSym = senderGrid.Rows[rowIndex].Cells[1].Value.ToString();
+        Form3 frm3 = new Form3(selSym, conn); //Open new window with arguments 
+        frm3.ShowDialog(this);
+    } 
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The <fo:inline font-family="Pragmata Pro">GetDaily</fo:inline> method uses the
+      <fo:inline font-family="Pragmata Pro">getSummary</fo:inline> function on our kdb+ process to
+      query the table and return values for that single symbol over the
+      entire day. We then use these to populate the boxes on the left
+      hand to provide a quick visual summary of the data:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void GetDaily(c.Flip details)
+{
+    min = (double)c.at(details.y[1], 0);
+    max = (double)c.at(details.y[2], 0);
+    dAvg = (double)c.at(details.y[3], 0);
+    dVwap = (double)c.at(details.y[4], 0);
+    transNo = (int)c.at(details.y[5], 0);
+
+    minBox.Text = min.ToString("#.#####");
+    maxBox.Text = max.ToString("#.#####");
+    avgBox.Text = dAvg.ToString("#.#####");
+    dailyVwap.Text = dVwap.ToString("#.#####");
+    transNoBox.Text = transNo.ToString();
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The <fo:inline font-family="Pragmata Pro">SetAxis</fo:inline> method is optional but provides a
+      more pronounced set of peaks and troughs in the data by setting
+      the maximum and minimum values of the Y axis depending on the data
+      itself. This is done by using a simple loop to find the maximum
+      returned value and minimum returned value from the subset of data.
+      This does not include maximum or minimum prices over the period as
+      this would reduce the sensitivity of the chart.
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void SetAxis(c.Flip details)
+{
+    double min = 1000;
+    double max = 0;
+    for (int i = 0; i &lt; details.getNoRow(); i++)
+    {
+        for (int j = 3; j &lt; details.getNoColumns(); j++)
+        {
+            double minVal = (double)c.at(details.y[j], i);
+            double maxVal = (double)c.at(details.y[j], i);
+
+            if (minVal &lt; min)
+            {
+                min = minVal;
+            }
+            if (maxVal &gt; max)
+            {
+                max = maxVal;
+            }
+        }
+    }
+    reportChart.ChartAreas[0].AxisY.Minimum = min - 0.0025; //Add margin
+    reportChart.ChartAreas[0].AxisY.Maximum = max + 0.0025; //Add Margin
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Finally, we need to plot the graph itself. This is done with a
+      <fo:inline font-family="Pragmata Pro">DataVisualization.Charting.Chart</fo:inline> object in the
+      GUI, with the co-ordinates in each series being added via a loop:
+    </fo:block>
+    <fo:block font-family="Pragmata Pro" font-size="10pt" margin-bottom="12pt" margin-left="10pt" page-break-inside="avoid" white-space="pre">
+private void PopulateChart(c.Flip details)
+{
+    for (int i = 0; i &lt; details.getNoRow(); i++)
+    {
+        reportChart.Series["vwap"].Points.AddXY((c.at(details.y[0], i)).ToString(),
+            (double)c.at(details.y[3], i));
+        reportChart.Series["avg"].Points.AddXY((c.at(details.y[0], i)).ToString(),
+            (double)c.at(details.y[4], i));
+        reportChart.Series["dailyAvg"].Points.AddXY((c.at(details.y[0], i)).ToString(),
+            dAvg);
+        reportChart.Series["dailyVwap"].Points.AddXY((c.at(details.y[0], i)).ToString(),
+            dVwap);
+    } 
+}
+</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      As clients may also wish to see the data in its grid form, a grid
+      is populated along with the chart with a button to switch between
+      the two views whenever required:
+    </fo:block>
+    <fo:block page-break-after="avoid" text-align="center"><fo:external-graphic content-width="scale-down-to-fit" src="url(img/image11.png)" width="100%"/></fo:block><fo:block font-size="9pt" font-style="italic" margin-bottom="15pt"/>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image12.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Example Chart</fo:inline></fo:inline></fo:block>
+<fo:block linefeed-treatment="preserve" line-height="16pt" space-after="9pt" text-align="left">
+<fo:external-graphic content-width="scale-down-to-fit" src="url(img/image13.png)" width="100%"/>
+
+<fo:inline font-size="10pt"><fo:inline font-style="italic">Example Grid</fo:inline></fo:inline></fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Though this has only been set up to query the trade table as it
+      currently exists, it would not be difficult to implement a timer
+      to periodically query kdb+ (every minute, for example) and retain
+      up-to-date figures and charts. By the same measure, adding the
+      ability to compare different symbols or different time frames
+      would not take much more effort, nor would giving the user the
+      ability to choose what period time they analyse. Furthermore,
+      WebSockets could be used to deliver streaming data from the kdb+
+      back end to the C# GUI.
+    </fo:block>
+  </fo:block>
+  <fo:block id="conclusion">
+    <fo:block id="idp140605992705192" font-size="18pt" line-height="22pt" margin-right="36pt" page-break-before="always" space-after="60pt" text-align="left">Conclusion</fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      Despite its popularity and the potential opportunities for
+      development, combining C# and kdb+ remains a relatively
+      unexploited area. We have demonstrated a few simple processes and
+      applications which could be useful in developing a trading
+      application using kdb+ and C#.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The applications developed for this example are simple in nature
+      and in implementation but the potential for creating more
+      sophisticated and powerful tools exists. We have shown very
+      limited analytical and GUI elements but these could be expanded
+      upon by the use of Cascading Style Sheets and more extensive
+      configuration.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The paper has also demonstrated the potential versatility of kdb+,
+      not just in the banking and financial sectors but in all sectors
+      where C# is popular and a database is required for back-end data
+      storage and management. These examples could be pushed out to
+      analytical or performance-based sectors or markets inexperienced
+      in kdb+ but requiring tools to help utilise the rapidly growing
+      Big Data environment.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      All examples of kdb+ were run using version 3.2 (2015.01.14). All
+      tests of C# were run using .NET version 4.0. The example
+      applications were built with Visual Studio 2010.
+    </fo:block>
+    <fo:block line-height="16pt" space-after="9pt" text-align="justify">
+      The C# source code for this paper can be found on GitHub at
+      
+      <fo:basic-link external-destination="url('https://github.com/kxcontrib/csharpgui')"><fo:inline color="#0070cd">kxcontrib/csharpgui</fo:inline></fo:basic-link><fo:footnote><fo:inline font-size="8pt" alignment-baseline="hanging">5</fo:inline><fo:footnote-body><fo:block font-size="8pt">5.
+									https://github.com/kxcontrib/csharpgui</fo:block></fo:footnote-body></fo:footnote>.
+    </fo:block>
+  </fo:block>
+</fo:block></fo:flow></fo:page-sequence></fo:root>

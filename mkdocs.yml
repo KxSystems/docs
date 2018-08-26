@@ -1,0 +1,470 @@
+copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Kx® and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
+dev_addr: '0.0.0.0:8000'
+docs_dir: 'docs'
+extra:
+  version: 2.0
+extra_css: 
+  - '//code.kx.com/stylesheets/extra.css'
+  - stylesheets/extra.css
+  - '//code.kx.com/stylesheets/prism.css'
+extra_javascript: 
+  # See /syntax/#projection to see if MathJax is working 
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
+  - 'https://code.jquery.com/jquery-3.1.1.min.js'
+  # - '//code.kx.com/scripts/fdtracker.js'
+  - 'https://tracker.mrpfd.com/tracker.js'
+  - '//code.kx.com/scripts/googleanalytics.js'
+  # - 'http://code.kx.com/scripts/theme.js'
+  # - 'https://use.fontawesome.com/3dbf29ed12.js'
+  - 'https://use.fontawesome.com/releases/v5.2.0/js/all.js'
+  # - 'https://use.fontawesome.com/releases/v5.2.0/js/v4-shims.js'
+  # - 'https://use.fontawesome.com/f4001debe8.js'
+  # - 'scripts/arrive.min.js' # required for theme.js
+  # theme.js modifies HTML to prepare for prism.js
+  - 'scripts/theme.js'
+  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
+  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
+  - '//code.kx.com/scripts/prism.js'
+  # - 'scripts/prism.js'
+markdown_extensions:
+  - admonition
+  # - codehilite(guess_lang=false)
+  - extra
+  # - fenced_code
+  - fontawesome_markdown
+  - pymdownx.arithmatex
+  # - pymdownx.betterem(smart_enable=all)
+  # - pymdownx.caret
+  # - pymdownx.critic
+  # - pymdownx.emoji:
+  # emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  # - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  # - pymdownx.smartsymbols
+  # - pymdownx.superfences
+  # - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
+  - toc(permalink=true)
+plugins: 
+  - search
+site_dir: 'site'
+site_author: 'Kx Systems'
+site_description: Resources for kdb+ programmers
+# config.site_name: 'code.kx.com'
+site_name: 'code.kx.com'
+site_url: 'http://code.kx.com'
+remote_branch: 'master'
+# repo_name: 'GitHub'
+# repo_url: 'https://github.com/kxsystems/docs'
+use_directory_urls: true
+theme: 
+  favicon: './img/favicon.ico'
+  name: 'material'
+  logo: 'img/kx.jpeg'
+  palette: 
+    primary: 'blue'
+    accent: 'deep orange'
+nav:
+  - Home: index.md
+  - Get started: learn.md
+  - Reference card: ref/index.md
+  - Language:
+    - Basics:
+      # - Syntax: basics/syntax.md
+      # - Functions: basics/functions.md
+      - Ambivalence: basics/ambivalence.md
+      - Application: basics/application.md
+      # - Arithmetic (float): basics/arith-float.md
+      # - Arithmetic (integer): basics/arith-integer.md
+      - Casting & encoding: basics/casting.md
+      - Command line: basics/cmdline.md
+      - Comparison: basics/comparison.md
+      - Control: basics/control.md
+      - Datatypes: basics/datatypes.md
+      - Debugging: basics/debug.md
+      - Dictionaries & tables: basics/dictsandtables.md
+      - Elements: basics/elements.md
+      - Enumerations: basics/enumerations.md
+      - Environment: basics/environment.md
+      - Errors: basics/errors.md
+      - Exposed infrastructure: basics/exposed-infrastructure.md
+      - File system: basics/files.md
+      - Functional SQL: basics/funsql.md
+      - Glossary: basics/glossary.md
+      - Internal functions: basics/internal.md
+      - Iteration: basics/iteration.md
+        # - Distribution operators: basics/distribution-operators.md
+        # - Progression operators: basics/progression-operators.md
+      - IPC protocol: basics/ipc.md
+      - Joins: basics/joins.md
+      - Logic: basics/logic.md
+      - Math: basics/math.md
+      - Metadata: basics/metadata.md
+      - Namespaces: basics/namespaces.md
+      - OS: basics/os.md
+      - Parallel processing: basics/peach.md
+      - Parse trees: basics/parsetrees.md
+      - Precision: basics/precision.md
+      - QSQL: basics/qsql.md
+      - Randomness: basics/random.md
+      - Search: basics/search.md
+      - Selection: basics/select.md
+      - Sort: basics/sort.md
+      - Statistics (aggregates): basics/stats-aggregates.md
+      - Statistics (moving): basics/stats-moving.md
+      - Strings: basics/strings.md
+      - Syntax: basics/syntax.md
+      - Syntax (k): basics/syntax_k.md
+      - System commands: basics/syscmds.md
+      - Trigonometry: basics/trig.md
+      - Unclassified: basics/unclassified.md
+    - Operators:
+      - Index: ref/operators.md
+      - Unary operators:
+        - Overview: ref/unary-operators.md
+        - Case: ref/case.md
+        - Distributive operators: ref/distributive-operators.md
+        - Progressive operators: ref/progressive-operators.md
+      - Add: ref/add.md
+      - Amend: ref/amend.md
+      # - Amend At: ref/amend-at.md
+      # - Apply, Index: ref/apply-trap.md
+      # - Index: ref/index-dot.md
+      # - Index At: ref/index-at.md
+      - Apply: ref/apply.md
+      - Cast: ref/cast.md
+      - Coalesce: ref/coalesce.md
+      - Compose: ref/compose.md
+      - Cond: ref/cond.md
+      - Cut: ref/cut.md
+      - Deal: ref/roll-deal.md
+      - Delete: ref/delete.md
+      - Display: ref/display.md 
+      - Dict: ref/dict.md
+      - Divide: ref/divide.md
+      - Display: ref/display.md
+      - Dynamic Load: ref/dynamic-load.md
+      - Drop: ref/drop.md
+      - Enkey, Unkey: ref/enkey.md
+      - Enumerate: ref/enumerate.md
+      - Enumeration: ref/enumeration.md
+      - Enum-extend: ref/enum-extend.md
+      - Equal: ref/equal.md
+      - Exec: ref/exec.md
+      - File Binary: ref/file-binary.md
+      - File Text: ref/file-text.md
+      - Fill: ref/fill.md
+      - Find: ref/find.md
+      - Flip Splayed: ref/flip-splayed.md
+      - Greater Than: ref/greater-than.md
+      - Join: ref/join.md
+      - Less Than: ref/less-than.md
+      - Match: ref/match.md
+      - Maximum: ref/maximum.md
+      - Matrix Multiply: ref/mmu.md
+      - Minimum: ref/minimum.md
+      - Multiply: ref/multiply.md
+      - Not Equal: ref/not-equal.md
+      - Pad: ref/pad.md
+      - Roll: ref/roll-deal.md
+      - Select: ref/select.md
+      - Set Attribute: ref/set-attribute.md
+      - Simple Exec: ref/simple-exec.md
+      - Signal: ref/signal.md
+      - Subtract: ref/subtract.md
+      - Take: ref/take.md
+      - Tok: ref/tok.md
+      - Update: ref/update.md
+      - Vector Conditional: ref/vector-conditional.md
+    - Keywords:
+      - abs: ref/abs.md
+      - and: ref/and.md
+      - any: ref/any.md
+      - aj, aj0: ref/aj.md
+      - all: ref/all.md
+      - asof: ref/asof.md
+      - attr: ref/attr.md
+      - ceiling: ref/ceiling.md
+      - count: ref/count.md
+      - cols: ref/cols.md
+      - cross: ref/cross.md
+      - csv: ref/csv.md
+      - cut: ref/cut.md
+      - delete: ref/delete.md
+      - deltas: ref/deltas.md
+      - differ: ref/differ.md
+      - distinct: ref/distinct.md
+      - div: ref/div.md
+      - dsave: ref/dsave.md
+      - enlist: ref/enlist.md
+      - exec: ref/exec.md
+      - exp: ref/exp.md
+      - exit: ref/exit.md
+      - fby: ref/fby.md
+      - fills: ref/fills.md
+      - fkeys: ref/fkeys.md
+      - flip: ref/flip.md
+      - floor: ref/floor.md
+      - get: ref/get.md
+      - group: ref/group.md
+      - hclose: ref/hclose.md
+      - hcount: ref/hcount.md
+      - hdel: ref/hdel.md
+      - hopen: ref/hopen.md
+      - hsym: ref/hsym.md
+      - ij, ijf: ref/ij.md
+      - insert: ref/insert.md
+      - inv: ref/inv.md
+      - key: ref/key.md
+      - keys: ref/keys.md
+      - like: ref/like.md
+      - lj, ljf: ref/lj.md
+      - load: ref/load.md
+      - log: ref/log.md
+      - lower: ref/lower.md
+      - lsq: ref/lsq.md
+      - ltrim: ref/ltrim.md
+      - md5: ref/md5.md
+      - meta: ref/meta.md
+      - mmu: ref/mmu.md
+      - mod: ref/mod.md
+      - neg: ref/neg.md
+      - not: ref/not.md
+      - null: ref/null.md
+      - or: ref/or.md
+      - pj: ref/pj.md
+      - prd: ref/prd.md
+      - prds: ref/prds.md
+      - ratios: ref/ratios.md
+      - raze: ref/raze.md
+      - read0: ref/read0.md
+      - read1: ref/read1.md
+      - reciprocal: ref/reciprocal.md
+      - reverse: ref/reverse.md
+      - rload: ref/rload.md
+      - rotate: ref/rotate.md
+      - rsave: ref/rsave.md
+      - rtrim: ref/rtrim.md
+      - save: ref/save.md
+      - select: ref/select.md
+      - set: ref/set.md
+      - show: ref/show.md 
+      - signum: ref/signum.md 
+      - sqrt: ref/sqrt.md
+      - ss: ref/ss.md
+      - ssr: ref/ssr.md
+      - string: ref/string.md
+      - sum: ref/sum.md
+      - sums: ref/sums.md
+      - sv: ref/sv.md
+      - system: ref/system.md
+      - tables: ref/tables.md
+      - til: ref/til.md
+      - trim: ref/trim.md
+      - type: ref/type.md
+      - uj, ujf: ref/uj.md
+      - ungroup: ref/ungroup.md
+      - update: ref/update.md
+      - upper: ref/upper.md
+      - upsert: ref/upsert.md
+      - value: ref/value.md
+      - view: ref/view.md
+      - views: ref/views.md
+      - vs: ref/vs.md
+      - wj, wj1: ref/wj.md
+      - xasc: ref/xasc.md
+      - xbar: ref/xbar.md
+      - xcol: ref/xcol.md
+      - xcols: ref/xcols.md
+      - xdesc: ref/xdesc.md
+      - xexp: ref/xexp.md
+      - xgroup: ref/xgroup.md
+      - xkey: ref/xkey.md
+      - xlog: ref/xlog.md
+    - Namespaces:
+      - .h: ref/doth.md
+      - .j: ref/dotj.md
+      - .Q: ref/dotq.md
+      - .z: ref/dotz.md
+    - Terminology: terminology.md
+    - Releases:
+      - Changes in 3.6: releases/ChangesIn3.6.md
+      - Changes in 3.5: releases/ChangesIn3.5.md
+      - Changes in 3.4: releases/ChangesIn3.4.md
+      - Changes in 3.3: releases/ChangesIn3.3.md
+      - Changes in 3.2: releases/ChangesIn3.2.md
+      - Changes in 3.1: releases/ChangesIn3.1.md
+      - Changes in 3.0: releases/ChangesIn3.0.md
+      - Changes in 2.8: releases/ChangesIn2.8.md
+      - Changes in 2.7: releases/ChangesIn2.7.md
+      - Changes in 2.6: releases/ChangesIn2.6.md
+      - Changes in 2.5: releases/ChangesIn2.5.md
+      - Changes in 2.4: releases/ChangesIn2.4.md
+      - Withdrawn: releases/withdrawn.md
+  - Tutorials:
+    - Learning the city: tutorials/index.md   
+    - Installing: tutorials/install.md
+    - Licensing: tutorials/licensing.md
+    # - A brief introduction:
+    #   - First steps: tutorials/first-steps.md
+    #   - In-memory queries: tutorials/in-memory-queries.md
+    #   - On-disk queries: tutorials/on-disk-queries.md
+    # - Dictionaries & tables: tutorials/dictsandtables.md
+    # # - Idioms: tutorials/idioms.md
+    # - Q by examples: tutorials/q-by-examples.md
+    - Q for Mortals 3: q4m3.md
+    # - Shifts & scans: tutorials/shifts-scans.md
+    - A Walking Introduction:
+    # - Starting kdb+:
+      - 1. Introduction: tutorials/startingq/introduction.md
+      - 2. The q language: tutorials/startingq/language.md
+      - 3. IPC: tutorials/startingq/ipc.md
+      - 4. Tables: tutorials/startingq/tables.md
+      - 5. HDB: tutorials/startingq/hdb.md
+      - 6. Kdb+tick: tutorials/startingq/tick.md
+    # - Views: tutorials/views.md
+    - Understanding q:
+      - Introduction: tutorials/uq/index.md
+      - Applying functions: tutorials/uq/functions.md
+      - Maps: tutorials/uq/maps.md
+      - Adverbs: tutorials/uq/adverbs.md
+      - Each adverbs: tutorials/uq/adverbs-each.md
+      - Iteration adverbs: tutorials/uq/adverbs-iteration.md
+      - Reduction adverbs: tutorials/uq/adverbs-reduction.md
+      - TO DO: tutorials/uq/todo.md
+    - A Survey of kdb+: tutorials/survey.md
+  - Interfaces:
+    - Interface summary: interfaces.md
+    - Fusion for kdb+:
+      - Introduction: interfaces/fusion.md
+      - FFI: interfaces/ffi.md
+      - Java: interfaces/java-client-for-q.md
+      - Kafka: interfaces/kafka.md
+      - Python (embedPy): interfaces/embedpy.md
+      - Python (PyQ):
+        - Quick start: interfaces/pyq/index.md
+        - Installation: interfaces/pyq/install.md
+        - User guide: interfaces/pyq/user-guide.md
+        - Reference: interfaces/pyq/reference.md
+        - What’s new: interfaces/pyq/whats-new.md
+        - Version history: interfaces/pyq/history.md
+      - R: interfaces/with-r.md
+    - Interfaces to kdb+ for: 
+      - C: interfaces/c-client-for-q.md
+      - C API reference: interfaces/capiref.md
+      - C#: interfaces/csharp-client-for-q.md
+      - Excel: interfaces/excel-client-for-q.md
+      - J: interfaces/j-client-for-q.md
+      - JDBC: interfaces/jdbc-client-for-kdb.md
+      - Matlab: interfaces/matlab-client-for-q.md
+      - ODBC: interfaces/q-server-for-odbc.md
+      - ODBC3: interfaces/q-server-for-odbc3.md 
+      - Perl: interfaces/perl-client-for-q.md 
+      - Scala: interfaces/scala-client-for-q.md 
+    - Interfaces from q to: 
+      - Bloomberg: interfaces/q-client-for-bloomberg.md
+      - C/C++ functions: interfaces/using-c-functions.md
+      - GPUs: interfaces/gpus.md
+      - J: interfaces/q-client-for-j.md
+      - ODBC: interfaces/q-client-for-odbc.md
+  - Knowledge Base:
+    - Introduction: kb/index.md
+    - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
+    - Authentication and access: kb/authentication.md
+    - Bulk Copy Program: kb/bcp.md
+    - Callbacks: kb/callbacks.md
+    - Chained tickerplant: kb/chained-tickerplant.md
+    - Client-server: kb/client-server.md
+    - Compacting HDB sym: kb/compacting-hdb-sym.md
+    - Corporate actions: kb/corporate-actions.md
+    - CPU affinity: kb/cpu-affinity.md
+    - Custom web server: kb/custom-web.md
+    - Daemon: kb/daemon.md
+    - FAQ: kb/faq.md
+    - FAQ from k4 listbox: kb/faq-listbox.md
+    - File compression: kb/file-compression.md
+    - Firewalling: kb/firewalling.md
+    - Geospatial: kb/geospatial.md
+    - inetd/xinetd: kb/inetd.md
+    - Interprocess communication: kb/ipc.md
+    - Kdb+tick configuration: kb/kdb-tick.md
+    - Linear programming: kb/lp.md
+    - Linking columns: kb/linking-columns.md
+    - Linux production notes: kb/linux-production.md
+    - Load balancing: kb/load-balancing.md
+    - Loading from large files: kb/loading-from-large-files.md
+    - Logging: kb/logging.md
+    - Multithreaded input: kb/multithreaded-input.md
+    - Named pipes: kb/named-pipes.md
+    - ODBC: kb/odbc.md
+    - Performance tips: kb/performance-tips.md
+    - Precision: kb/precision.md
+    - Pivoting tables: kb/pivoting-tables.md
+    - Programming examples: kb/programming-examples.md
+    - Programming idioms: kb/programming-idioms.md
+    - Publish and subscribe: kb/publish-subscribe.md
+    - Regular expressions: kb/regex.md
+    - Server calling client: kb/server-calling-client.md
+    - Splayed schema change: kb/splayed-schema-change.md
+    - Splayed tables: kb/splayed-tables.md
+    - Splaying large files: kb/splaying-large-files.md
+    - SSL/TLS: kb/ssl.md
+    - Temporal data: kb/temporal-data.md
+    - Timezones: kb/timezones.md
+    - Unicode: kb/unicode.md
+    - Unit tests: kb/unit-tests.md
+    - Using .z: kb/using-dotz.md
+    - Write-only RDB: kb/w-q.md
+    - WebSockets: kb/websockets.md
+    - Windows Service: kb/windows-service.md
+  - White papers: 
+    - Index: whitepapers.md
+    - C# GUIs: wp/gui/index.md
+    - Data visualization: wp/data-visualization/index.md
+    - Disaster recovery: wp/disaster-recovery/index.md
+    - Efficient operators: 
+      - Introduction: wp/efficient-operators/index.md
+      - Distribution: wp/efficient-operators/distribution.md
+      - Progression: wp/efficient-operators/progression.md
+      - Combining operators: wp/efficient-operators/combinations.md
+      - Iteration: wp/efficient-operators/iteration.md
+      - Nested columns: wp/efficient-operators/nested-columns.md
+      - Conclusion: wp/efficient-operators/conclusion.md
+    - Java API: 
+      - Introduction: wp/java-api/index.md
+      - API overview: wp/java-api/api.md
+      - Models and type mapping: wp/java-api/models.md
+      - Practical examples: wp/java-api/examples.md
+      - Connecting to kdb+: wp/java-api/connecting.md
+      - Extracting data from returned objects: wp/java-api/extracting-data.md
+      - Creating and passing data objects: wp/java-api/data-objects.md
+      - Reconnecting automatically: wp/java-api/reconnect.md
+      - Kdb+ tickerplant overview: wp/java-api/tickerplant-overview.md
+      - Tickerplant subscriptions: wp/java-api/tickerplant-subscribe.md
+      - Tickerplant publishing: wp/java-api/tickerplant-publish.md
+      - Connecting to Java: wp/java-api/connect-from-kdb.md
+      - Conclusion : wp/java-api/conclusion.md
+    - Market fragmentation: wp/market-fragmentation/index.md
+    - Multi partitions: wp/multi-partitioned-dbs/index.md
+    - Neural networks: wp/neural-networks/index.md
+    - Query Routing: wp/query-routing/index.md
+    - WebSockets: wp/websockets/index.md
+  - GitHub: github.md
+  - Platform for Kx:
+    - Introduction: platform/index.md
+    - Analyst for Kx: platform/analyst.md
+    - Dashboards for Kx: platform/dashboards.md
+  - Support: support.md
+  - About: 
+    - Kx technology: about/kxtechnology.md
+    - Site news: about/site-news.md
+    - This site: about/thissite.md
+    - Style guide:
+      - Introduction: about/sg/index.md
+      - Characters: about/sg/characters.md
+      - Miscellaneous: about/sg/miscellaneous.md
+      - Style: about/sg/style.md
+      - Typography: about/sg/typography.md
+      - Terminology: about/sg/terminology.md
+    - Archive: archive.md

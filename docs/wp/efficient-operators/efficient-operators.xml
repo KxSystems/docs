@@ -1,0 +1,1949 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article>
+<article
+  xmlns="http://docbook.org/ns/docbook" version="5.0"
+  xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <info>
+    <title>Efficient use of unary operators</title>
+    <date>August 2018</date>
+    <keywords>efficiency, kdb+, operator, q, unary</keywords>
+  </info>
+<section xml:id="efficient-use-of-unary-operators">
+  <title>Efficient use of unary operators</title>
+  <para>
+    In addition to the large number of built-in functions, and the
+    ability to create your own functions quickly and easily, kdb+
+    provides unary operators, which can alter function behavior to
+    improve efficiency and keep code concise. Employing unary operators
+    correctly can bypass the need for multiple loops and conditionals,
+    with significant performance enhancements.
+  </para>
+  <para>
+    This whitepaper provides an introduction to the basic use of the
+    different unary operators in q, with examples of how they differ
+    when applied to unary, binary and higher-rank functions.
+  </para>
+  <para>
+    It also covers how unary operators can be combined to extend the
+    built-in functions. Common use cases, such as using operators for
+    recursion and to modify nested columns in a table, are looked at in
+    more detail. These examples provide solutions to common problems
+    encountered when building systems in kdb+ and demonstrate the range
+    of situations where unary operators can be used to achieve the
+    desired result.
+  </para>
+  <para>
+    All tests were run using kdb+ version 3.1 (2013.08.09)
+  </para>
+  <blockquote>
+    <para>
+      !!! note <quote>Maps</quote>
+    </para>
+    <para>
+      Unary operators take maps as their arguments. A function is a map:
+      it maps its domain/s to its range. But so too are lists and
+      dictionaries.
+    </para>
+    <para>
+      This introductory paper addresses only the use of functions with
+      unary operators.
+    </para>
+  </blockquote>
+  <section xml:id="function-types">
+    <title>Function types</title>
+    <para>
+      Functions in q can be one of several basic types, each associated
+      with a range of type numbers.
+    </para>
+    <informaltable>
+      <tgroup cols="2">
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              range
+            </entry>
+            <entry>
+              type
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              100
+            </entry>
+            <entry>
+              lambda
+            </entry>
+          </row>
+          <row>
+            <entry>
+              101
+            </entry>
+            <entry>
+              unary keyword
+            </entry>
+          </row>
+          <row>
+            <entry>
+              102
+            </entry>
+            <entry>
+              binary operator
+            </entry>
+          </row>
+          <row>
+            <entry>
+              103
+            </entry>
+            <entry>
+              unary operator
+            </entry>
+          </row>
+          <row>
+            <entry>
+              104
+            </entry>
+            <entry>
+              projection
+            </entry>
+          </row>
+          <row>
+            <entry>
+              105
+            </entry>
+            <entry>
+              composition
+            </entry>
+          </row>
+          <row>
+            <entry>
+              106-111
+            </entry>
+            <entry>
+              derivative
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      In general, how a unary operator applies a function
+      <literal>f</literal> depends only on the number <!-- and type -->
+      of the parameters passed to the function they derive, not on the
+      type of <literal>f</literal>. So we will not distinguish between
+      function types when talking about unary operators.
+    </para>
+  </section>
+  <section xml:id="basic-use-of-unary-operators-with-functions">
+    <title>Basic use of unary operators with functions</title>
+    <para>
+      There are eight unary operators. This paper addresses the seven
+      that take function arguments. (The eighth,
+      <link xlink:href="/ref/case">Case</link>, takes an integer list as
+      argument.)
+    </para>
+    <para>
+      The operator takes a function argument and derives a new function,
+      the <emphasis>derivative</emphasis>, based on the argument. The
+      derivative applies the original function in a new way.
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Some unary operators take only argument functions of certain
+          rank. E.g. Each Right and Each Left take only binary
+          functions.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          In some cases the derivative is
+          <link xlink:href="/ref/ambivalence">ambivalent</link>: it can
+          be applied as a unary function or as a binary.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Some operators derive functions with more than one way to
+          apply the original function. How the original function is
+          applied depends on whether the derivative is applied as a
+          unary, a binary, or a higher-rank function.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Understanding the basic behavior of each unary operator and how
+      this behavior varies is key to both writing and debugging q code.
+      This understanding is grounded in rank and syntax.
+    </para>
+  </section>
+  <section xml:id="types-of-operator">
+    <title>Types of operator</title>
+    <para>
+      There are two groups of unary operators: the
+      <emphasis>distribution</emphasis> and the
+      <emphasis>progression</emphasis> operators.
+    </para>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="center" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              group
+            </entry>
+            <entry>
+              glyph
+            </entry>
+            <entry>
+              operator
+            </entry>
+            <entry>
+              argument rank
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              distribution
+            </entry>
+            <entry>
+              <literal>'</literal>
+            </entry>
+            <entry>
+              Each
+            </entry>
+            <entry>
+              any
+            </entry>
+          </row>
+          <row>
+            <entry>
+              distribution
+            </entry>
+            <entry>
+              <literal>\:</literal>
+            </entry>
+            <entry>
+              Each Left
+            </entry>
+            <entry>
+              2
+            </entry>
+          </row>
+          <row>
+            <entry>
+              distribution
+            </entry>
+            <entry>
+              <literal>/:</literal>
+            </entry>
+            <entry>
+              Each Right
+            </entry>
+            <entry>
+              2
+            </entry>
+          </row>
+          <row>
+            <entry>
+              distribution
+            </entry>
+            <entry>
+              <literal>':</literal>
+            </entry>
+            <entry>
+              Each Parallel
+            </entry>
+            <entry>
+              1
+            </entry>
+          </row>
+          <row>
+            <entry>
+              distribution
+            </entry>
+            <entry>
+              <literal>':</literal>
+            </entry>
+            <entry>
+              Each Prior
+            </entry>
+            <entry>
+              2
+            </entry>
+          </row>
+          <row>
+            <entry>
+              progression
+            </entry>
+            <entry>
+              <literal>/</literal>
+            </entry>
+            <entry>
+              Over
+            </entry>
+            <entry>
+              any
+            </entry>
+          </row>
+          <row>
+            <entry>
+              progression
+            </entry>
+            <entry>
+              <literal>\</literal>
+            </entry>
+            <entry>
+              Scan
+            </entry>
+            <entry>
+              any
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      Each Parallel and Each Prior have the same glyph. They are
+      distinguished by the rank of the argument function.
+    </para>
+    <para>
+      The distribution operators evaluate their functions
+      <emphasis role="strong">itemwise</emphasis> across their
+      arguments. The evaluations are independent of each other.
+    </para>
+    <para>
+      The progression operators evaluate their functions
+      <emphasis role="strong">successively</emphasis>. The result of
+      each evaluation becomes the first argument of the next.
+    </para>
+  </section>
+  <section xml:id="syntax">
+    <title>Syntax</title>
+    <para>
+      The unary operators are themselves a type of function and can be
+      applied with bracket notation.
+    </para>
+    <programlisting language="r script">
+q)/[+]2 3 4
+9
+</programlisting>
+    <para>
+      Here the unary Over operator <literal>/</literal> takes the binary
+      Add operator <literal>+</literal> as its argument, deriving the
+      sum function <literal>/[+]</literal>, which is applied prefix to
+      the vector <literal>2 3 4</literal>.
+    </para>
+    <para>
+      Unlike any other q function, the unary operators can also be
+      applied postfix, and usually are. For example, the sum function
+      above is more usually derived <literal>+/</literal> with the Over
+      operator <literal>/</literal> taking <literal>+</literal>
+      <emphasis>on its left</emphasis> as the sole argument.
+    </para>
+    <programlisting language="r script">
+q)+/[2 3 4]
+9
+</programlisting>
+    <blockquote>
+      <para>
+        !!! important <quote>A function derived postfix has infix syntax
+        regardless of its rank.</quote>
+      </para>
+    </blockquote>
+    <para>
+      The sum function is in fact
+      <link xlink:href="/ref/ambivalence">ambivalent</link>. It can be
+      applied as rank 1 or 2. It can take one or two arguments.
+    </para>
+    <programlisting language="r script">
+q)+/[2 3 4]               / unary application
+9
+q)+/[1000 2000;2 3 4]     / binary application
+1009 2009
+</programlisting>
+    <para>
+      Because postfix derivation yields an infix, <literal>+/</literal>
+      can be applied infix.
+    </para>
+    <programlisting language="r script">
+q)1000 2000+/2 3 4        / binary application, infix
+1009 2009
+</programlisting>
+    <para>
+      Whether unary or ambivalent, an infix derivative can be applied
+      prefix only when parenthesized.
+    </para>
+    <programlisting language="r script">
+q)(+/)2 3 4
+9
+q)(count')(&quot;the&quot;;&quot;quick&quot;;&quot;brown&quot;;&quot;fox&quot;)
+3 5 5 3
+</programlisting>
+    <blockquote>
+      <para>
+        !!! detail <quote>Deriving with bracket notation</quote>
+      </para>
+      <para>
+        Deriving with bracket notation (unusual) can also produce an
+        ambivalent function, but never an infix.
+      </para>
+    </blockquote>
+    <para>
+      A named derivative retains any ambivalence, but not infix syntax.
+    </para>
+    <programlisting language="r script">
+q)tot:+/
+q)tot[1000;2 3 4]     / binary application
+1009
+q)tot[2 3 4]          / unary application - still ambivalent
+9
+q)1000 tot 2 3 4      / not infix
+'Cannot write to handle 1000. OS reports: Bad file descriptor
+q)tot 2 3 4           / not infix, so prefix without parens
+9
+</programlisting>
+    <para>
+      While operators and derivatives are functions and so can always be
+      applied with bracket notation, this paper follows common practice
+      and prefers to apply
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          unary operators postfix, e.g <literal>+/</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          binary derivatives infix, e.g. <literal>x f\:y</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          unary derivatives prefix, e.g. <literal>(+\)x</literal>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
+<section xml:id="distribution-operators">
+  <title>Distribution operators</title>
+  <para>
+    The distribution operators are Each and its variants.
+  </para>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>
+        Each Left and Each Right are syntactic sugar for
+        <literal>f[x;]'</literal> and <literal>f[;y]'</literal>.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Each Parallel has the same semantics as Each but distributes
+        processing across slave tasks.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Each Prior applies a binary function between adjacent items of a
+        list or dictionary.
+      </para>
+    </listitem>
+  </itemizedlist>
+  <para>
+    The derivatives are all uniform functions. Arguments of non-unary
+    derivatives must conform: they can be either atoms or same-count
+    lists.
+  </para>
+  <section xml:id="each">
+    <title>Each</title>
+    <section xml:id="unary-argument">
+      <title>Unary argument</title>
+      <para>
+        The derivative applies the function to each element of a list or
+        dictionary.
+      </para>
+      <programlisting language="r script">
+q)(type')(1;2h;3.2)
+-7 -5 -9h
+q)(ssr[;&quot;an&quot;;&quot;in&quot;]')(&quot;thank&quot;;&quot;prance&quot;;&quot;pants&quot;)
+&quot;think&quot;
+&quot;prince&quot;
+&quot;pints&quot;
+</programlisting>
+      <para>
+        If the function is atomic, Each has no effect. In fact, this is
+        the definition of atomic.
+      </para>
+      <blockquote>
+        <para>
+          !!! info <quote>A function <literal>f</literal> is atomic if
+          <literal>f[x;y;z;…]~f'[x;y;z;…]</literal>.</quote>
+        </para>
+      </blockquote>
+      <para>
+        The keyword <literal>each</literal> can be used to avoid
+        parentheses.
+      </para>
+      <programlisting language="r script">
+q)type each (1;2h;3.2)
+-7 -5 -9h
+</programlisting>
+    </section>
+    <section xml:id="binary-argument">
+      <title>Binary argument</title>
+      <para>
+        Each applies a binary function to corresponding items of two
+        list or dictionary arguments.
+      </para>
+      <para>
+        If both arguments are lists, they must be of the same length.
+      </para>
+      <programlisting language="r script">
+q) 1 2 3 in' (1 2 3;3 4 5;5 6 7)
+100b
+q) 1 2 3 in' (1 2 3;3 4 5)
+'length
+</programlisting>
+      <para>
+        Either or both arguments may be atoms. If both, the operator has
+        no effect.
+      </para>
+      <programlisting language="r script">
+q)1 ~' 1
+1b
+</programlisting>
+      <para>
+        If one of the arguments is an atom, it is treated as a list of
+        the same length as the other argument.
+      </para>
+      <programlisting language="r script">
+q)1 ~' 1 2 3
+100b
+</programlisting>
+      <para>
+        Each with a binary argument is sometimes called <emphasis>Each
+        Both</emphasis>.
+      </para>
+    </section>
+    <section xml:id="higher-rank-argument">
+      <title>Higher-rank argument</title>
+      <para>
+        With a function of higher rank, the same rules apply by
+        extension. As above, the derivative’s arguments must be
+        conformable: atoms or same-count lists.
+      </para>
+      <programlisting language="r script">
+q)ssr'[(&quot;thank&quot;;&quot;prance&quot;;&quot;pants&quot;);&quot;a&quot;;&quot;iiu&quot;]
+&quot;think&quot;
+&quot;prince&quot;
+&quot;punts&quot;
+</programlisting>
+    </section>
+  </section>
+  <section xml:id="each-right-and-each-left">
+    <title>Each Right and Each Left</title>
+    <para>
+      Each Right <literal>/:</literal> and Each Left
+      <literal>\:</literal> take a
+      <emphasis role="strong">binary</emphasis> function
+      <literal>f</literal>.
+    </para>
+    <para>
+      Syntax: <literal>x f/:y</literal>, <literal>x f\:y</literal>
+    </para>
+    <para>
+      The derivative <literal>f/:</literal> applies
+      <literal>f[x;]</literal> to every item in <literal>y</literal>.
+    </para>
+    <programlisting language="r script">
+q)d:`a`b`c!(&quot;cow&quot;;&quot;sheep&quot;;&quot;dog&quot;)
+q)&quot;a &quot;,/:d
+a| &quot;a cow&quot;
+b| &quot;a sheep&quot;
+c| &quot;a dog&quot;
+</programlisting>
+    <para>
+      Correspondingly, Each Left applies <literal>f[;y]</literal> to
+      each item of <literal>x</literal>.
+    </para>
+    <programlisting language="r script">
+q)d,\:&quot; in a field&quot;
+a| &quot;cow in a field&quot;
+b| &quot;sheep in a field&quot;
+c| &quot;dog in a field&quot;
+</programlisting>
+    <blockquote>
+      <para>
+        !!! tip <quote>See how they lean</quote>
+      </para>
+      <para>
+        You can remember which glyph denotes Each Right and which Each
+        Left: the characters <quote>lean</quote> towards the list
+        argument.
+      </para>
+    </blockquote>
+    <para>
+      Ponder the following identities.
+    </para>
+    <programlisting>
+x f/:y      &lt;==&gt;   (f[x;]')y           Each Right
+x f\:y      &lt;==&gt;   (f[;y]')x           Each Left
+</programlisting>
+    <para>
+      And for atoms <literal>a</literal> and <literal>b</literal>
+    </para>
+    <programlisting>
+a f/:y      &lt;==&gt;   a f'y
+x f\:b      &lt;==&gt;   x f'b
+</programlisting>
+    <para>
+      Find the file handle of each column of a table.
+    </para>
+    <programlisting language="r script">
+q)`:/mydb/2013.05.01/trade,/:key[`:/mydb/2013.05.01/trade]except `.d
+`:/mydb/2013.05.01/trade`sym
+`:/mydb/2013.05.01/trade`time
+`:/mydb/2013.05.01/trade`price
+`:/mydb/2013.05.01/trade`size
+`:/mydb/2013.05.01/trade`ex
+</programlisting>
+    <para>
+      The above statement joins the file handle of the table to each
+      element in the list of columns, creating five 2-lists. Each Right
+      can then be used with <literal>sv</literal> to create the file
+      handles of each column.
+    </para>
+    <programlisting language="r script">
+q)` sv/: `:/mydb/2013.05.01/trade,/:key[`:/mydb/2013.05.01/trade]except`.d
+`:/mydb/2013.05.01/trade/sym
+`:/mydb/2013.05.01/trade/time
+`:/mydb/2013.05.01/trade/price
+`:/mydb/2013.05.01/trade/size
+`:/mydb/2013.05.01/trade/ex
+</programlisting>
+  </section>
+  <section xml:id="each-parallel">
+    <title>Each Parallel</title>
+    <para>
+      Each Parallel applies a <emphasis role="strong">unary</emphasis>
+      function <literal>f</literal> to each element of a list or
+      dictionary, using slave threads when available.
+    </para>
+    <para>
+      Syntax: <literal>(f':)x</literal>
+    </para>
+    <para>
+      The result is the same as it would be for <literal>f'</literal>.
+      That is, <literal>f'[x]~f':[x]</literal>.
+    </para>
+    <para>
+      Slave threads can be set using the <literal>–s</literal>
+      command-line parameter. If no slave threads are available, Each
+      Parallel is indistinguishable from Each.
+    </para>
+    <para>
+      The keyword <literal>peach</literal> can be used to avoid
+      parentheses.
+    </para>
+    <programlisting language="r script">
+q)count peach d
+a| 3
+b| 5
+c| 3
+</programlisting>
+  </section>
+  <section xml:id="each-prior">
+    <title>Each Prior</title>
+    <para>
+      Each Prior applies a <emphasis role="strong">binary</emphasis>
+      function to each item of a list or dictionary and to the previous
+      item. For the i-th item of argument list <literal>x</literal>, the
+      corresponding item of <literal>(f':)x</literal> is
+      <literal>f[x[i];x[i-1]]</literal>.
+    </para>
+    <para>
+      A common use of this is in the <literal>deltas</literal> keyword.
+    </para>
+    <programlisting language="r script">
+q)deltas
+-':
+q)deltas 4 8 3 2 2
+4 4 -5 -1 0
+</programlisting>
+    <para>
+      It can also be useful in tracking down errors within lists which
+      should be identical, e.g. the <literal>.d</literal> files for a
+      table in a partitioned database. The below example uses the
+      <literal>differ</literal> keyword to check for inconsistencies in
+      <literal>.d</literal> files. (<literal>differ</literal> uses Each
+      Prior and is equivalent to <literal>not ~':</literal>.)
+    </para>
+    <programlisting language="r script">
+q){1_date where differ get hsym `$&quot;/mydb/&quot;,string[x],&quot;/trade/.d&quot;} each date
+2013.05.03 2013.05.04
+</programlisting>
+    <para>
+      In this case the values of the <literal>.d</literal> files are
+      extracted from each partition. The <literal>differ</literal>
+      keyword, which uses Each Prior, is then used to compare each item
+      in the list with the item before it. If a <literal>.d</literal>
+      file is different to the previous <literal>.d</literal> file in
+      the list, then that date will be returned by the above statement.
+      The first date returned is dropped, as the first element of the
+      list will be compared to -1-th element of the list, which is
+      always null, and so they will never match. For the above example,
+      the <literal>.d</literal> files for the 2013.05.03 and 2013.05.04
+      partitions are different, and should be investigated further.
+    </para>
+    <blockquote>
+      <para>
+        !!! detail <quote>Each Prior derivatives are ambivalent</quote>
+      </para>
+      <para>
+        Functions derived by Each Prior are ambivalent. They can be
+        applied to one or two arguments, e.g.
+      </para>
+      <para>
+        See the
+        <link xlink:href="/basics/distribution-operators/#each-prior">Each
+        Prior reference</link> for more on this.
+      </para>
+    </blockquote>
+    <para>
+      The keyword <literal>prior</literal> can be used to avoid
+      parentheses. The example below returns all adjacent pairs of the
+      argument list. Note that the first element of the first item of
+      the result is null.
+    </para>
+    <programlisting language="r script">
+q){y,x}prior til 5
+  0
+0 1
+1 2
+2 3
+3 4
+</programlisting>
+  </section>
+</section>
+<section xml:id="progression-operators">
+  <title>Progression operators</title>
+  <para>
+    The <link xlink:href="/basics/progression-operators">progression
+    operators</link> are Scan <literal>\</literal> and Over
+    <literal>/</literal>.
+  </para>
+  <para>
+    Scan and Over derivatives apply their function arguments
+    <emphasis>successively</emphasis>: the result of each evaluation
+    becomes the (first) argument of the next.
+  </para>
+  <para>
+    Scan and Over have the same syntax and perform the same
+    computations. They differ in that Scan derivatives return the result
+    of each evaluation, while Over derivatives return only the last.
+    That is:
+  </para>
+  <programlisting>
+(f/)x    &lt;==&gt;    last (f\)x
+x f/y    &lt;==&gt;    last x f\y
+</programlisting>
+  <blockquote>
+    <para>
+      !!! tip <quote>Map reduce</quote>
+    </para>
+    <para>
+      Derivatives of Over with non-unary functions correspond to
+      <emphasis>map reduce</emphasis> in some other programming
+      languages.
+    </para>
+  </blockquote>
+  <para>
+    The number of evaluations the derivative performs is determined
+    according to the rank of the argument function:
+  </para>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>
+        for a <emphasis role="strong">unary</emphasis> argument, by the
+        derivative’s left argument – or its absence
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        otherwise, by the count of the derivative’s argument/s
+      </para>
+    </listitem>
+  </itemizedlist>
+  <blockquote>
+    <para>
+      !!! detail <quote>Memory usage: Scan vs Over</quote>
+    </para>
+    <para>
+      For any given argument function, Scan and Over derivatives perform
+      the same computation. But Over, in general, requires less memory,
+      as it discards intermediate results.
+    </para>
+  </blockquote>
+  <section xml:id="unary-argument-1">
+    <title>Unary argument</title>
+    <para>
+      The function derived by a progression operator from a unary
+      argument is ambivalent: it can be applied to one or two arguments.
+    </para>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="center" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <br/>Scan
+            </entry>
+            <entry>
+              <br/>Over
+            </entry>
+            <entry>
+              application<br/>rank
+            </entry>
+            <entry>
+              <br/>iteration
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              <literal>(f\)x</literal>
+            </entry>
+            <entry>
+              <literal>(f/)x</literal>
+            </entry>
+            <entry>
+              1
+            </entry>
+            <entry>
+              Converge
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <literal>n f\x</literal>
+            </entry>
+            <entry>
+              <literal>n f/x</literal>
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              Repeat
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <literal>t f\x</literal>
+            </entry>
+            <entry>
+              <literal>t f/x</literal>
+            </entry>
+            <entry>
+              2
+            </entry>
+            <entry>
+              While
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <programlisting>
+Key:
+f:  unary function      n: non-negative integer     t: truth map
+</programlisting>
+    <para>
+      The left argument of the derivative – or its absence – determines
+      how many evaluations are performed.
+    </para>
+    <section xml:id="converge">
+      <title>Converge</title>
+      <para>
+        Syntax: <literal>(f\)x</literal>, <literal>(f/)x</literal>
+      </para>
+      <para>
+        When the derivative is applied as a
+        <emphasis role="strong">unary</emphasis>, <literal>f</literal>
+        is applied until either
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            two successive evaluations match
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            an evaluation matches <literal>x</literal>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <programlisting language="r script">
+q)(raze/)(1 2;(3 4;5 6);7;8)
+1 2 3 4 5 6 7 8
+</programlisting>
+      <para>
+        Matching is governed by
+        <link xlink:href="/cookbook/precision/#comparison-tolerance">comparison
+        tolerance</link>.
+      </para>
+    </section>
+    <section xml:id="repeat">
+      <title>Repeat</title>
+      <para>
+        Syntax: <literal>n f\x</literal>, <literal>n f/x</literal>
+      </para>
+      <para>
+        When the derivative is applied as a
+        <emphasis role="strong">binary</emphasis>, with a
+        <emphasis role="strong">non-negative integer</emphasis> left
+        argument, <literal>f</literal> is evaluated <literal>n</literal>
+        times. The result has count <literal>n+1</literal>; its first
+        item is <literal>x</literal>.
+      </para>
+      <programlisting language="r script">
+q)10{2*x}\2
+2 4 8 16 32 64 128 256 512 1024 2048
+</programlisting>
+    </section>
+    <section xml:id="while">
+      <title>While</title>
+      <para>
+        Syntax: <literal>t f\x</literal>, <literal>t f/x</literal>
+      </para>
+      <para>
+        When the derivative is applied as a
+        <emphasis role="strong">binary</emphasis>, with a
+        <emphasis role="strong">truth map</emphasis> as left argument,
+        <literal>f</literal> is evaluated until <literal>t</literal>
+        evaluated on the result returns zero. (The truth map
+        <literal>t</literal> can be a function, list or dictionary.)
+      </para>
+      <programlisting language="r script">
+q)(10&gt;){2*x}\2
+2 4 8 16
+</programlisting>
+    </section>
+  </section>
+  <section xml:id="binary-argument-1">
+    <title>Binary argument</title>
+    <para>
+      The function derived by a progression operator from a binary
+      argument <literal>f</literal> is ambivalent: it can be applied to
+      one or two arguments.
+    </para>
+    <informaltable>
+      <tgroup cols="3">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              application
+            </entry>
+            <entry>
+              Scan
+            </entry>
+            <entry>
+              Over
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              unary
+            </entry>
+            <entry>
+              <literal>(f\)x</literal>
+            </entry>
+            <entry>
+              <literal>(f/)x</literal>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              binary
+            </entry>
+            <entry>
+              <literal>x f\y</literal>
+            </entry>
+            <entry>
+              <literal>x f/y</literal>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      The Scan derivative <literal>f\</literal> is a uniform function:
+      <literal>(f\)x</literal> has the same count as
+      <literal>x</literal>, and <literal>x f\y</literal> has the same
+      count as <literal>y</literal>.
+    </para>
+    <informaltable>
+      <tgroup cols="5">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              application
+            </entry>
+            <entry>
+              Scan
+            </entry>
+            <entry>
+              <literal>count r</literal>
+            </entry>
+            <entry>
+              <literal>r 0</literal>
+            </entry>
+            <entry>
+              <literal>r i</literal>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              unary
+            </entry>
+            <entry>
+              <literal>r:(f\)x</literal>
+            </entry>
+            <entry>
+              <literal>count x</literal>
+            </entry>
+            <entry>
+              <literal>x 0</literal>
+            </entry>
+            <entry>
+              <literal>f[r i-1;x i]</literal>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              binary
+            </entry>
+            <entry>
+              <literal>r:x f\y</literal>
+            </entry>
+            <entry>
+              <literal>count y</literal>
+            </entry>
+            <entry>
+              <literal>f[x;y 0]</literal>
+            </entry>
+            <entry>
+              <literal>f[r i-1;y i]</literal>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      The i-th item of result <literal>r</literal> is
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          for <emphasis role="strong">unary</emphasis> application,
+          <literal>f[r i-1;x i]</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          for <emphasis role="strong">binary</emphasis> application,
+          <literal>f[r i-1;y i]</literal>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Unary and binary applications differ in the evaluation of
+      <literal>r[0]</literal>:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          for <emphasis role="strong">unary</emphasis> application
+          <literal>r[0]</literal> is <literal>x[0]</literal>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          for <emphasis role="strong">binary</emphasis> application,
+          <literal>r[0]</literal> is <literal>f[x;y[0]]</literal>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      The Over derivatives perform the same computation but return only
+      the result of the last evaluation.
+    </para>
+    <programlisting language="r script">
+q)(+\)12 10 1 90 73
+12 22 23 113 186
+q)100+\12 10 1 90 73
+112 122 123 213 286
+q)(+/)12 10 1 90 73
+186
+q)100+/12 10 1 90 73
+286
+</programlisting>
+    <para>
+      The keywords <literal>scan</literal> and <literal>over</literal>
+      can be used to avoid parenthesizing binaries that are not also
+      infixes.
+    </para>
+    <programlisting language="r script">
+q){x+y} scan 12 10 1 90 73    / lambda is not an infix
+12 22 23 113 186
+q)(+) over 12 10 1 90 73      / + is an infix
+186
+</programlisting>
+  </section>
+  <section xml:id="higher-rank-arguments">
+    <title>Higher-rank arguments</title>
+    <para>
+      Syntax: <literal>f\[x;y;z…]</literal>,
+      <literal>f/[x;y;z…]</literal>
+    </para>
+    <para>
+      Derivatives of higher-rank argument functions are not ambivalent:
+      they have the same rank as their functions.
+    </para>
+    <para>
+      They follow the derivatives of binary arguments applied as binary
+      functions. This may appear more clearly using bracket notation.
+    </para>
+    <informaltable>
+      <tgroup cols="4">
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <colspec align="left" />
+        <thead>
+          <row>
+            <entry>
+              <literal>f</literal>
+            </entry>
+            <entry>
+              <literal>r:</literal>
+            </entry>
+            <entry>
+              <literal>r 0</literal>
+            </entry>
+            <entry>
+              <literal>r i</literal>
+            </entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
+              binary
+            </entry>
+            <entry>
+              <literal>f\[x;y]</literal>
+            </entry>
+            <entry>
+              <literal>f[x;y 0]</literal>
+            </entry>
+            <entry>
+              <literal>f[r i-1;y i]</literal>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              ternary
+            </entry>
+            <entry>
+              <literal>f\[x;y;z]</literal>
+            </entry>
+            <entry>
+              <literal>f[x;y 0;z 0]</literal>
+            </entry>
+            <entry>
+              <literal>f[r i-1;y i;z i]</literal>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>
+      And so on for higher ranks of <literal>f</literal>.
+    </para>
+    <programlisting language="r script">
+q)ssr\[&quot;hello word.&quot; ;(&quot;h&quot;;&quot;.&quot;;&quot;rd&quot;);(&quot;H&quot;;&quot;!&quot;;&quot;rld&quot;)]
+&quot;Hello word.&quot;
+&quot;Hello word!&quot;
+&quot;Hello world!&quot;
+</programlisting>
+    <para>
+      In the above example the successive evaluations are
+    </para>
+    <programlisting language="r script">
+ssr[&quot;hello word.&quot;;&quot;h&quot;;&quot;H&quot;]
+ssr[&quot;Hello word.&quot;;&quot;.&quot;;&quot;!&quot;]
+ssr[&quot;Hello word!&quot;;&quot;rd&quot;;&quot;rld&quot;]
+</programlisting>
+    <para>
+      The right arguments of the derivative must conform: they must be
+      lists or dictionaries of the same count, or atoms. The following
+      two statements are equivalent.
+    </para>
+    <programlisting language="r script">
+q){x+y+z}\[1;2 3 4;5]
+8 16 25
+q){x+y+z}\[1;2 3 4;5 5 5]
+8 16 25
+</programlisting>
+  </section>
+  <section xml:id="empty-lists">
+    <title>Empty lists</title>
+    <para>
+      The derivatives of non-unary functions are
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          <emphasis role="strong">uniform</emphasis> with Scan
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis role="strong">aggregates</emphasis> with Over
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Applied to empty lists, the Scan derivatives return empty lists
+      without evaluating the function. The result is not always of the
+      same type as the argument list/s.
+    </para>
+    <para>
+      Applied to empty lists, the Over derivatives return an atom
+      without evaluating the function.
+    </para>
+    <para>
+      See
+      <link xlink:href="/basics/progression-operators/#empty-lists">Progression
+      operators</link> for details.
+    </para>
+  </section>
+  <section xml:id="exponential-moving-average">
+    <title>Exponential moving average</title>
+    <para>
+      Since V3.1 (2013.07.07), the exponential moving average of a list
+      can be calculated using Scan. While it was previously possible to
+      define an exponential moving average function, the new syntax
+      shortens execution times.
+    </para>
+    <programlisting language="r script">
+//Function defined using the old syntax
+q) ema_old: {{z+x*y}\[first y;1-x;x*y]}
+//Function defined using the new syntax
+//Requires V3.1 2013.07.07 or later 
+q) ema_new:{first[y](1-x)\x*y}
+q) t:til 10
+q) ema_new[0.1;t]
+0
+0.1
+0.29
+0.561
+0.9049
+1.31441
+1.782959
+2.304672
+2.874205
+3.486784
+//Functions produce the same results but ema_new is significantly faster
+q) ema_old[0.1;t]~ema_new[0.1;t]
+1b
+q) t2:til 1000000
+q) \t ema_old[0.1;t2]
+421
+q) \t ema_new[0.1;t2]
+31
+</programlisting>
+  </section>
+</section>
+<section xml:id="combining-operators">
+  <title>Combining operators</title>
+  <para>
+    Multiple operators can be used within the same expression, or even
+    applied to the same function, to achieve a result which cannot be
+    obtained using only one.
+  </para>
+  <para>
+    In this section, we will look at some common and useful examples.
+    While the results produced by these examples might seem confusing
+    initially, by taking each operator in turn and applying it to its
+    unary, binary or higher-rank argument we can see the rules already
+    described are still being followed.
+  </para>
+  <para>
+    The example below uses both Each Prior and Scan to return the first
+    rows of Pascal’s Triangle.
+  </para>
+  <programlisting language="r script">
+q) pascal:{[numRows] fn:{(+':)x,0} ; numRows fn\1};
+q) pascal 7
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+1 5 10 10 5 1
+1 6 15 20 15 6 1
+1 7 21 35 35 21 7 1
+</programlisting>
+  <para>
+    To understand what is happening here first look at the definition of
+    <literal>fn</literal>. Here, Each Prior is applied to the Add
+    operator. The derivative returns the sum of all adjacent pairs in
+    its argument. Zero is appended to the argument to retain the final 1
+    in each evaluation.
+  </para>
+  <para>
+    The Scan operator applied to the unary function
+    <literal>fn</literal> derives a function that uses the results of
+    one iteration as the argument of the next. After
+    <literal>numRows</literal> iterations the result of each iteration,
+    along with the initial argument, is returned.
+  </para>
+  <para>
+    A commonly used example of applying multiple operators to a function
+    is illustrated in the following piece of code
+    <literal>,/:\:</literal>, which returns all possible combinations of
+    two lists by applying Each Left and Each Right to the Join function
+    <literal>,</literal>. The order of the operators affects the result.
+  </para>
+  <programlisting language="r script">
+q) raze 1 2 3 ,/:\: 4 5 6
+1 4
+1 5
+1 6
+2 4
+2 5
+2 6
+3 4
+3 5
+3 6
+q) raze 1 2 3 ,\:/: 4 5 6
+1 4
+2 4
+3 4
+1 5
+2 5
+3 5
+1 6
+2 6
+3 6
+</programlisting>
+  <para>
+    To grasp how q interprets the above, note the following
+    equivalences.
+  </para>
+  <programlisting>
+1 2 3 ,/:\: 4 5 6     &lt;==&gt;     ((1,/:4 5 6);(2,/:4 5 6);(3,/:4 5 6))
+1 2 3 ,\:/: 4 5 6     &lt;==&gt;     ((1 2 3,\:4);(1 2 3,\:5);(1 2 3,\:6))
+</programlisting>
+  <para>
+    Another example of combining operators is <literal>,//</literal>.
+    This repeatedly flattens a nested list until it cannot be flattened
+    any more.
+  </para>
+  <para>
+    The two Over operators in this example do different things. The
+    left-hand Over is applied to the Join operator, deriving
+    <literal>,/</literal>, which joins the first item of its argument to
+    the second, the result to the third item, and so on through the rest
+    of the list. (The aggregate <literal>,/</literal> is in fact the
+    <literal>raze</literal> function.)
+  </para>
+  <programlisting language="r script">
+q)l:(1 2 3;(4 5;6);(7;8;(9;10;11)))        / mixed list
+q)(,/)l
+1
+2
+3
+4 5
+6
+7
+8
+9 10 11
+q)raze[l]~(,/)l
+1b
+</programlisting>
+  <para>
+    The derivative <literal>,/</literal> is ambivalent. We shall pass it
+    to the second Over as a unary argument: <literal>(,/)/</literal>.
+    This form is Converge. The derivative <literal>,/</literal> is
+    applied until it has no further effect.
+  </para>
+  <programlisting language="r script">
+q)((,/)/)l
+1 2 3 4 5 6 7 8 9 10 11
+</programlisting>
+  <para>
+    But the inner parentheses are unnecessary.
+  </para>
+  <programlisting language="r script">
+q)(,//)l
+1 2 3 4 5 6 7 8 9 10 11
+</programlisting>
+  <para>
+    In <literal>,//</literal> the argument of the second
+    <literal>/</literal> is <literal>,/</literal>.
+  </para>
+  <para>
+    The Each operator can also be combined with itself in order to apply
+    a function to the required level of depth in nested lists.
+  </para>
+  <programlisting language="r script">
+q) lst:(3 2 8;(3.2;6h);(&quot;AS&quot;;4))
+q) type lst
+0h
+q) (type')lst
+7 0 0h
+q) (type'')lst
+-7 -7 -7h
+-9 -5h
+10 -7h
+q) (type''')lst
+-7 -7 -7h
+-9 -5h
+(-10 -10h;-7h)
+</programlisting>
+</section>
+<section xml:id="iterating-with-operators">
+  <title>Iterating with operators</title>
+  <para>
+    With unary functions, Scan and Over control iteration. Evaluation is
+    <emphasis>successive</emphasis>: the first evaluation is of the
+    argument. Subsequent evaluations are of the result of the previous
+    evaluation.
+  </para>
+  <para>
+    There are three forms.
+  </para>
+  <informaltable>
+    <tgroup cols="3">
+      <colspec align="left" />
+      <colspec align="left" />
+      <colspec align="left" />
+      <thead>
+        <row>
+          <entry>
+            Scan
+          </entry>
+          <entry>
+            Over
+          </entry>
+          <entry>
+            form
+          </entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>
+            <literal>(f\)x</literal>
+          </entry>
+          <entry>
+            <literal>(f/)x</literal>
+          </entry>
+          <entry>
+            Converge
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <literal>n f\x</literal>
+          </entry>
+          <entry>
+            <literal>n f/x</literal>
+          </entry>
+          <entry>
+            Repeat
+          </entry>
+        </row>
+        <row>
+          <entry>
+            <literal>t f\x</literal>
+          </entry>
+          <entry>
+            <literal>t f/x</literal>
+          </entry>
+          <entry>
+            While
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </informaltable>
+  <programlisting>
+Key:
+f: unary function   n: non-negative integer   t: truth map
+</programlisting>
+  <variablelist>
+    <varlistentry>
+      <term>
+        Converge
+      </term>
+      <listitem>
+        <para>
+          Apply <literal>f</literal> until the result matches either the
+          previous evaluation or <literal>x</literal>.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        Repeat
+      </term>
+      <listitem>
+        <para>
+          Apply <literal>f</literal> <literal>n</literal> times. If
+          <literal>n</literal> is 0, return <literal>x</literal>.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>
+        While
+      </term>
+      <listitem>
+        <para>
+          Apply <literal>f</literal> until truth map
+          <literal>t</literal> applied to the result is 0. A truth map
+          may be a function, list or dictionary.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <programlisting language="r script">
+q) //Calculate a Fibonacci sequence using Over
+q) fib: {x,sum -2#x}/
+q) //Call the function with an integer as the first parameter
+q) fib[10;1 1]
+1 1 2 3 5 8 13 21 34 55 89 144
+q) //Call the function with a function as the first parameter
+q) fib[{last[x]&lt;200};1 1]
+1 1 2 3 5 8 13 21 34 55 89 144 233
+</programlisting>
+  <section xml:id="infinite-loops">
+    <title>Infinite loops</title>
+    <para>
+      Certain expressions result in infinite loops. Consider the
+      function defined and illustrated below.
+    </para>
+    <programlisting language="r script">
+q)30{3.2*x*(1-x)}\.4      / 30 iterations
+0.4 0.768 0.5701632 0.7842468 0.541452 0.7945015 0.5224603 0.7983857 0.515091..
+q)({3.2*x*(1-x)}\)0.4     / does not return!
+</programlisting>
+<literallayout><inlinemediaobject>
+<imageobject>
+<imagedata fileref="img/image35.png" />
+</imageobject>
+</inlinemediaobject>
+<small><emphasis>Infinite looping function example</emphasis></small></literallayout>
+    <para>
+      From the chart it is evident this results in a loop with period 2
+      (at least within floating-point tolerance). If no exit condition
+      is supplied the function will not terminate.
+    </para>
+    <blockquote>
+      <para>
+        !!! tip <quote>Set a timeout</quote>
+      </para>
+      <para>
+        When using Converge, it may be a good idea to set the timeout in
+        your session via the <literal>\T</literal> command. This will
+        terminate evaluation after a set number of seconds; infinite
+        loops will not lock your instance indefinitely.
+      </para>
+    </blockquote>
+  </section>
+  <section xml:id="recursion">
+    <title>Recursion</title>
+    <para>
+      The self function <literal>.z.s</literal> can be used in
+      recursion, allowing more flexibility than Over or Scan.
+    </para>
+    <programlisting language="r script">
+q)l:(`a`n;(1 2;&quot;efd&quot;);3;(&quot;a&quot;;(&quot;fes&quot;;3.4)))
+q){}0N!{$[0h=type x;.z.s'[x];10h=abs type x;upper x;x]}l
+(`a`n;(1 2;&quot;EFD&quot;);3;(&quot;A&quot;;(&quot;FES&quot;;3.4)))
+</programlisting>
+    <para>
+      The above function will operate on a list of any structure and
+      data types, changing strings and characters to upper case and
+      leaving all other elements unaltered. Note that when using
+      <literal>.z.s</literal> the function will error out with a
+      <literal>'stack</literal> error message after 2000 loops. This can
+      be seen in the example below:
+    </para>
+    <programlisting language="r script">
+{.z.s[0N!x+1]}0
+</programlisting>
+    <para>
+      No such restriction exists when using Scan or Over. Use
+      <literal>.z.s</literal> only where it is not possible to use Scan
+      or Over.
+    </para>
+  </section>
+  <section xml:id="operators-vs-loops">
+    <title>Operators vs loops</title>
+    <para>
+      Many native q operators are overloaded to work with atoms, lists,
+      dictionaries or a combination of them. For example, the Add
+      operator <literal>+</literal> can take two atoms, an atom and a
+      list or dictionary or two lists or dictionaries as arguments.
+    </para>
+    <para>
+      For more control over execution, or to work with user-defined
+      functions, either loops or unary operators can be used. In almost
+      all cases, unary operators allow shorter code with lower latency,
+      and avoid creating unnecessary global variables.
+    </para>
+    <para>
+      Often the implementation is relatively easy, using Each, Each Left
+      and Each Right to cycle through a list and amend items. As an
+      example, we can check if either of the integers 2 or 3 are present
+      in a list, using a <literal>while</literal> loop:
+    </para>
+    <programlisting language="r script">
+q) chk:{i:0;a:();while[i&lt;count x;a,:enlist any 2 3 in x[i];i+:1];a}
+q) chk (1 2 3;3 4 5;4 5 6)
+110b
+q)\t:100000 chk (1 2 3;3 4 5;4 5 6)
+515
+</programlisting>
+    <para>
+      However, operators allow neater, more efficient code.
+    </para>
+    <programlisting language="r script">
+q) any each 2 3 in/: (1 2 3;3 4 5;4 5 6)
+110b
+q)\t:10000 any each 2 3 in/: (1 2 3;3 4 5;4 5 6)
+374
+</programlisting>
+    <para>
+      Similarly we can use Over to deal with tasks which would be
+      handled by loops in C-like languages. Suppose you want to join a
+      variable number of tables.
+    </para>
+    <programlisting language="r script">
+//Create a list of tables, of random length
+q)tl:{1!flip(`sym;`$&quot;pr&quot;,x;`$&quot;vol&quot;,x)!(`a`b`c;3?50.0;3?100)}each string til 2+rand 10
+
+//Join the tables using a while loop
+q) {a:([]sym:`a`b`c);i:0;while[i&lt;count[x];0N!a:a lj x[i];i+:1];a}tl
+sym pr0      vol0 pr1      vol1 pr2      vol2
+---------------------------------------------
+a   35.2666  53   38.08624 95   1.445859 57
+b   19.28851 39   6.41355  50   12.97504 24
+c   23.24556 84   13.62839 19   6.89369  46
+
+q)\t:100 {a:([]sym:`a`b`c);i:0;while[i&lt;count[x];0N!a:a lj x[i];i+:1];a}tl
+101
+
+//Join the tables using Over
+q) 0!(lj/)tl
+sym pr0      vol0 pr1      vol1 pr2      vol2
+---------------------------------------------
+a   35.2666  53   38.08624 95   1.445859 57
+b   19.28851 39   6.41355  50   12.97504 24
+c   23.24556 84   13.62839 19   6.89369  46
+q)\t:100 0!(lj/)tl
+82
+</programlisting>
+  </section>
+</section>
+<section xml:id="nested-columns">
+  <title>Nested columns</title>
+  <para>
+    While it is usually best to avoid nested columns, there are
+    situations where operating on nested data is necessary or may result
+    in lower execution time for certain queries.
+  </para>
+  <para>
+    The main reason for this is that the function
+    <literal>ungroup</literal>, which flattens a table containing nested
+    columns, is computationally expensive, especially when you are only
+    dealing with a subset of the entire table. There are also other
+    situations where storing the data in a nested structure makes more
+    sense. For example you may want to use strings, which are lists of
+    characters, instead of symbols, which are atoms, in order to avoid a
+    bloated sym file. For this reason we will now look at using unary
+    operators to apply functions to a table as a whole, and to apply
+    functions within a select statement.
+  </para>
+  <para>
+    Unary operators can be used to examine and modify tables. To do
+    this, an understanding of how tables are structured is necessary. In
+    kdb+, a table is a list of dictionaries.
+  </para>
+  <para>
+    This means we can apply functions to individual items, just like any
+    other nested list or dictionary.
+  </para>
+  <programlisting language="r script">
+q)show a:([]a:`a`b`c`d;b:1 2 3 4;c:(1 2;2 3;3 4;4 5))
+a b c
+-------
+a 1 1 2
+b 2 2 3
+c 3 3 4
+d 4 4 5
+q)type a
+98h
+q)(type')a
+99 99 99 99h
+q)(type'')a
+a   b  c
+--------
+-11 -7 7
+-11 -7 7
+-11 -7 7
+-11 -7 7
+</programlisting>
+  <para>
+    We see here that
+  </para>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>
+        <literal>type a</literal> returns 98, the type of a table
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal>(type')a</literal> returns the type of each item of the
+        list <literal>a</literal>: the type of ictionaries
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <literal>(type'')a</literal> finds the type of each item in the
+        range of each dictionary in <literal>a</literal>: a list of
+        dictionaries, which collapses back to a table showing the type
+        of each field in the table <literal>a</literal>
+      </para>
+    </listitem>
+  </itemizedlist>
+  <programlisting language="r script">
+q)distinct (type'')a
+a   b  c
+--------
+-11 -7 7
+</programlisting>
+  <para>
+    In this way, the statement can be used to ensure all rows of the
+    table are the same type. This is useful if your table contains
+    nested columns, as the <literal>meta</literal> function only looks
+    at the first row of nested columns. If the table is keyed then the
+    function will only be applied to the non-key columns in this case.
+  </para>
+  <programlisting language="r script">
+q)a:([]a:`a`b`c`d;b:1 2 3 4;c:(1 2;2 3;3 4.;4 5))
+q)meta a
+c| t f a
+-| -----
+a| s
+b| j
+c| J
+q)distinct (type'')a
+a   b  c
+--------
+-11 -7 7
+-11 -7 9
+</programlisting>
+  <para>
+    Looking only at the results of <literal>meta</literal>, we might
+    conclude the column <literal>c</literal> contains only integer
+    lists. However <literal>distinct (type'')a</literal> clearly shows
+    column <literal>c</literal> contains lists of different types, and
+    thus is not mappable. This is a common cause of error when writing
+    to a splayed table.
+  </para>
+  <para>
+    Dealing with nested data in a table via a select or update statement
+    often requires the use of unary operators. To illustrate this, let
+    us define a table with three columns, two of which are nested.
+  </para>
+  <programlisting language="r script">
+q)tab:([]sym:`AA`BB`CC;time:3#enlist 09:30+til 30;price:{30?100.0}each til 3)
+</programlisting>
+  <para>
+    Suppose we want to find the range of each row. This can be done
+    easily by defining a range function as:
+  </para>
+  <programlisting language="r script">
+q)rng:{max[x]-min[x]}
+</programlisting>
+  <para>
+    We can then make use of this function within a select statement,
+    with Each to apply the function to each row of the table.
+  </para>
+  <programlisting language="r script">
+q)select sym, (rng')price from tab
+sym price
+------------
+AA  96.3872
+BB  95.79704
+CC  98.31252
+</programlisting>
+  <para>
+    Suppose instead we want to find the range of a subset of the data in
+    the table. One way would be to ungroup the table and then find the
+    range as follows.
+  </para>
+  <programlisting language="r script">
+q)select rng price by sym from ungroup tab where time within 09:40 09:49
+sym| price
+---| --------
+AA | 77.67457
+BB | 80.14611
+CC | 67.48254
+</programlisting>
+  <para>
+    However, it is faster to index into the nested list, as this avoids
+    the costly <literal>ungroup</literal> function. First find the index
+    of the prices which fall within our time range.
+  </para>
+  <programlisting language="r script">
+q)inx:where (exec first time from tab) within 09:40 09:49
+</programlisting>
+  <para>
+    Then use this to index into each price list and apply
+    <literal>rng</literal> to the resulting prices.
+  </para>
+  <programlisting language="r script">
+q)select sym, (rng')price@\:inx from tab
+sym inx
+------------
+AA  77.67457
+BB  80.14611
+CC  67.48254
+</programlisting>
+  <para>
+    This offers a significant improvement in latency over using
+    <literal>ungroup</literal>.
+  </para>
+  <programlisting language="r script">
+q)\t:10000 select rng price by sym from ungroup tab where time within 09:40 09:49
+198
+q)\t:10000 inx:where (exec first time from tab) within 09:40
+09:49;select sym, (rng')price@\:inx from tab
+65
+</programlisting>
+  <para>
+    If the nested lists are not uniform the code needs to be changed to
+    the following:
+  </para>
+  <programlisting language="r script">
+q)inx:where each (exec time from tab) within 09:40 09:49
+q)select sym, (rng')price@'inx from tab
+sym inx
+------------
+AA  77.67457
+BB  80.14611
+CC  67.48254
+</programlisting>
+</section>
+<section xml:id="conclusion">
+  <title>Conclusion</title>
+  <para>
+    This whitepaper provides a summary of the unary operators available
+    in q, showing how they modify the behavior of different types of
+    functions.
+  </para>
+  <para>
+    It showed, through the use of examples, that the operation of the
+    derived function is determined by
+  </para>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>
+        the unary operator
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        the rank of the argument function (for Each, Scan and Over)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        the rank at the derivative is applied (for binary functions with
+        Each Prior, Scan, and Over)
+      </para>
+    </listitem>
+  </itemizedlist>
+  <para>
+    More elaborate examples with multiple operators can be analyzed wih
+    these rules.
+  </para>
+  <para>
+    Certain applications of unary operators (creating iterating
+    functions, applying operators to functions within select statements)
+    were examined in more detail, as these are useful for many tasks,
+    but often poorly understood. Some common uses were examined to show
+    the ability of unary operators to reduce execution times.
+  </para>
+  <para>
+    This whitepaper illustrates how unary operators can extend the
+    functionality of built-in and user-defined functions, allowing code
+    to take full advantage of kdb+’s ability to process large volumes of
+    data quickly. Correctly using adverbs on data minimizes
+    manipulation, and allows more concise code, which is easier to
+    maintain.
+  </para>
+  <para>
+    All tests were run using kdb+ V3.1 (2013.08.09)
+  </para>
+  <section xml:id="authors">
+    <title>Authors</title>
+    <para>
+      Conor Slattery is a Financial Engineer who has designed kdb+
+      applications for a range of asset classes. Conor is currently
+      working with a New York-based investment firm, developing kdb+
+      trading platforms for the US equity markets.
+    </para>
+    <para>
+      Stephen Taylor is the Kx Librarian and the editor of the
+      code.kx.com site.
+    </para>
+  </section>
+</section>
+</article>
