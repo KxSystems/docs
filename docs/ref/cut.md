@@ -1,3 +1,8 @@
+---
+keywords: cut, kdb+, keyword, operator, q
+---
+
+
 # `_` Cut, `cut`
 
 
@@ -74,7 +79,7 @@ q)4 cut til 10
 8 9
 ```
 
-- otherwise `cut` is synonymous with `_` _cut_.
+- otherwise `cut` is synonymous with `_` Cut.
 
 
 

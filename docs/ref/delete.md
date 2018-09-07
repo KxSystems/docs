@@ -1,5 +1,4 @@
 ---
-title: Delete
 keywords: delete, functional kdb+, q, query, qsql, sql
 ---
 

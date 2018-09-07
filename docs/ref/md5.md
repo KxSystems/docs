@@ -1,4 +1,10 @@
+---
+keywords: cryptography, hash, kdb+, md5, q, string
+---
+
 # `md5`
+
+_Message Digest hash_
 
 
 Syntax `md5 x`, `md5[x]` 
@@ -12,4 +18,5 @@ q)md5 "this is a not so secret message"
 ```
 
 
-<i class="far fa-hand-point-right"></i> [Strings](/basics/strings)
+<i class="far fa-hand-point-right"></i> 
+Basics: [Strings](../basics/strings.md)

@@ -24,4 +24,4 @@ b| 0001b
 
 <i class="far fa-hand-point-right"></i>
 [`neg`](neg.md)  
-Basics: [Logic](../basics/loogic.md)
+Basics: [Logic](../basics/logic.md)

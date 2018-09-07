@@ -1,3 +1,7 @@
+---
+keywords: inv, inverse, kdb+, matrix, q
+---
+
 # `inv`
 
 
@@ -26,4 +30,4 @@ q)1=a mmu inv a
 
 
 <i class="far fa-hand-point-right"></i>
-Basics: [Math](../basics/math.md)
+Basics: [Mathematics](../basics/math.md)

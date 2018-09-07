@@ -68,6 +68,6 @@ cast  | item/s of `y` not in `x`
 [Enum Extend](enum-extend.md),
 [Enumeration](enumeration.md),
 _Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations), 
-[`$` Dollar](operators.md#dollar)
+[`$` Dollar](overloads.md#dollar)
 
 

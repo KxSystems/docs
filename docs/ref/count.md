@@ -1,12 +1,17 @@
-# `count`
+---
+keywords: count, kdb+, length, list, q, shape, table
+---
 
-
-
+# `count`, `mcount`
 
 _Count the items of a list or dictionary_
 
+
+
+
+## `count`
+
 Syntax: `count x`, `count[x]`  
-Syntax: `(#)x`, `#[x]` (deprecated)
 
 Where `x` is an atom or list, returns
 
@@ -31,7 +36,7 @@ q)count each ([]city:`London`Paris`Berlin; country:`England`France`Germany)
 2 2 2
 ```
 
-Use with [`each`](progressive-operators.md#each) to count the number of items at each level of a list or dictionary.
+Use with [`each`](progressors.md#each) to count the number of items at each level of a list or dictionary.
 
 ```q
 q)RaggedArray:(1 2 3;4 5;6 7 8 9;0)
@@ -52,3 +57,28 @@ q)count sp
 ```
 
 
+## `mcount`
+
+_Moving counts_
+
+Syntax: `x mcount y`, `mcount[x;y]`
+
+Where
+
+-   `x` is a positive int atom
+-   `y` is a numeric list
+
+returns the `x`-item moving counts of the non-null items of `y`. The first `x` items of the result are the counts so far, and thereafter the result is the moving count.
+
+```q
+q)3 mcount 0 1 2 3 4 5
+1 2 3 3 3 3
+q)3 mcount 0N 1 2 3 0N 5
+0 1 2 3 2 2
+```
+
+`mcount` is a uniform function. 
+
+<i class="far fa-hand-point-right"></i>
+Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+Basics: [Mathematics](../basics/math.md)

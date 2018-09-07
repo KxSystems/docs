@@ -1,7 +1,13 @@
+---
+keywords: kdb+, math, mathematics, modulus, q
+---
+
 # `mod`
 
+_Modulus_
 
-Syntax: `x mod y`, `mod[x;y]` (atomic) 
+
+Syntax: `x mod y`, `mod[x;y]`
 
 Where `x` and `y` are numeric, returns the remainder of `x%y`.
 ```q
@@ -9,9 +15,12 @@ q)-3 -2 -1 0 1 2 3 4 mod 3
 0 1 2 0 1 2 0 1
 ```
 
+`mod` is an atomic function.
+
 
 ## Domain and range
-```
+
+```txt
 mod| b g x h i j e f c s p m d z n u v t
 ---| -----------------------------------
 b  | i . i i i j e f . . p m d z n u v t
@@ -33,6 +42,8 @@ u  | u . u u u u u f u . . . . . . . . .
 v  | v . v v v v v f v . . . . . . . . .
 t  | t . t t t t t f t . . . . . . . . .
 ```
+
 Range: `ijefpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> [Arithmetic](/basics/arithmetic)
+<i class="far fa-hand-point-right"></i> 
+Basics: [Mathematics](../basics/math.md)

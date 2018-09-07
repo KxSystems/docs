@@ -30,7 +30,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr> <td>from</td> <td class="nowrap">`select price trade`</td> <td>Badly formed select statement</td> </tr>
 <tr> <td>glim</td> <td/> <td>`` `g#`` limit (99 prior to V3.2, now unlimited</td> </tr>
 <tr> <td>hop</td><td/><td>Request to `hopen` a handle fails; includes message from OS</td> </tr>
-<tr> <td>hwr</td><td/><td>Handle write error, can't write inside a [Each Parallel](../ref/distributive-operators.md#each-parallel)</td> </tr>
+<tr> <td>hwr</td><td/><td>Handle write error, can't write inside a [Each Parallel](../ref/distributors.md#each-parallel)</td> </tr>
 <tr> <td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to insert a record with an existing key into a keyed table</td> </tr>
 <tr> <td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
 <tr>
@@ -47,7 +47,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr>
 <td>no `` `g#``</td>
 <td class="nowrap">``{`g#x}peach 2#enlist 0 1``</td>
-<td>A thread other than the main q thread has attempted to add a group [attribute](elements/#attributes) to a vector. Seen with [Each Parallel](../ref/distributive-operators.md#each-parallel)+slave threads or multithreaded input queue</td>
+<td>A thread other than the main q thread has attempted to add a group [attribute](elements/#attributes) to a vector. Seen with [Each Parallel](../ref/distributors.md#each-parallel)+slave threads or multithreaded input queue</td>
 </tr>
  <tr>
 <td>noupdate</td>
@@ -55,7 +55,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>
 Updates blocked by the [`-b` cmd line arg](cmdline.md#-b-blocked), 
 or reval code or a thread other than the main thread has attempted to update a global variable 
-when in [Each Parallel](../ref/distributive-operators.md#each-parallel)+slave threads or multithreaded input queue. 
+when in [Each Parallel](../ref/distributors.md#each-parallel)+slave threads or multithreaded input queue. 
 Update not allowed when using [negative port number](syscmds/#p-port).
 </td>
 </tr>
@@ -66,7 +66,7 @@ Update not allowed when using [negative port number](syscmds/#p-port).
 <tr> <td>parse</td> <td/> <td>Invalid [syntax](syntax)</td> </tr>
 <tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB</td> </tr> 
 <tr> <td>path too long</td> <td>`$":",1000#"a") set 1 2 3`</td> <td>File path too long</td> </tr> 
-<tr> <td>pl</td> <td/> <td>[Each Parallel](../ref/distributive-operators.md#each-parallel) can’t handle parallel lambdas (V2.3 only)</td> </tr>
+<tr> <td>pl</td> <td/> <td>[Each Parallel](../ref/distributors.md#each-parallel) can’t handle parallel lambdas (V2.3 only)</td> </tr>
 <tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](/tutorials/install/#32-bit-or-64-bit).)</td> </tr>
 <tr><td>Q7</td><td/><td>nyi op on file nested array</td></tr>
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](syntax/#rank)</td> </tr> 
@@ -79,7 +79,7 @@ Update not allowed when using [negative port number](syscmds/#p-port).
 <td class="nowrap">`{.z.s[]}[]`</td>
 <td>
 Ran out of stack space. Consider using 
-[Converge](../ref/progressive-operators.md#converge) instead of recursion.
+[Converge](../ref/progressors.md#converge) instead of recursion.
 </td>
 </tr>
 <tr> <td>step</td> <td class="nowrap">``d:`s#`a`b!1 2;`d upsert `c`d!3 4``</td> <td>Attempt to upsert a step dictionary in place</td> </tr>

@@ -1,3 +1,11 @@
+---
+keywords: kdb+, mathematics, matrix, multiply, q, tensors
+---
+
+<div markdown="1" style="float:right">
+![Matrix multiplication](../img/matrix-multiplication.png)
+</div>
+
 # `S` Matrix Multiply, `mmu`
 
 
@@ -45,5 +53,6 @@ q)mmu[;b]peach a
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[dollar](operators.md#dollar)  
-Basics: [Math](../basics/math.md)
+[`$` dollar](overloads.md#dollar)  
+Basics: [Mathematics](../basics/math.md)  
+Wikipedia: [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication)

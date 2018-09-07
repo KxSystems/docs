@@ -1,5 +1,14 @@
+---
+title: and
+keywords: and, kdb+, minimum, q
+---
+
 # `and`
 
-<i class="far fa-hand-point-right"></i> [Minimum](minimum)
+
+_Logical AND_
+
+<i class="far fa-hand-point-right"></i> 
+[Minimum](minimum.md)
 
 

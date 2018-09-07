@@ -1,5 +1,4 @@
 ---
-title: fby
 keywords: fby, group, kdb+, q, query, qsql, sql
 ---
 
@@ -12,7 +11,12 @@ _Apply an aggregate to groups_
 
 Syntax: `(aggr;data) fby group`
 
-Where `aggr` is an aggregate function and `data` and `group` are conforming vectors, collects the items of `data` into sublists according to the corresponding items of `group`, applies `aggr` to each sublist, and returns the results as a vector with the same count as `data`.
+Where 
+
+-   `aggr` is an aggregate function
+-   `data` and `group` are conforming vectors
+
+collects the items of `data` into sublists according to the corresponding items of `group`, applies `aggr` to each sublist, and returns the results as a vector with the same count as `data`.
 
 !!! tip "When to use `fby`"
 

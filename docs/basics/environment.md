@@ -7,6 +7,7 @@ keywords: environment, kdb+, q, variable
 
 
 
+## Variables
 
 Kdb+ refers to the following environment variables.
 
@@ -26,7 +27,28 @@ Kdb+ refers to the following environment variables.
 
 : supplied by OS, used to set [`\c`](syscmds.md#c-console-size)
 
+
+## Functions
+
+[`getenv`](../ref/getenv.md)
+
+: Get the value of an environment variable
+
+[`gtime`](../ref/gtime.md)
+
+: UTC equivalent of local timestamp
+
+[`ltime`](../ref/gtime.md#ltime)
+
+: Local equivalent of UTC timestamp
+
+[`setenv`](../ref/getenv.md#setenv)
+
+: Set the value of an environment variable
+
+
+
 <i class="far fa-hand-point-right"></i> 
-[`.Q` namespace](../ref/dotq.md),
-[`.z` namespace](../ref/dotz.md) 
-for other environment values
+environment sections in namespaces
+[`.Q`](../ref/dotq.md),
+[`.z`](../ref/dotz.md) 

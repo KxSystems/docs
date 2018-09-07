@@ -310,11 +310,11 @@ K class | q namespace | q   | function
 <code class="nowrap">K.ema()</code> | <code class="nowrap">q.ema()</code> | [<code class="nowrap">ema</code>](/basics/stats-moving/#ema) | exponentially-weighted moving average
 <code class="nowrap">K.enlist()</code> | <code class="nowrap">q.enlist()</code> | [<code class="nowrap">enlist</code>](/basics/lists/#enlist) | arguments as a list
 <code class="nowrap">K.eval()</code> | <code class="nowrap">q.eval()</code> | [<code class="nowrap">eval</code>](/basics/parsetrees/#eval) | evaluate a parse tree
-<code class="nowrap">K.except_()</code> | <code class="nowrap">q.except_()</code> | [<code class="nowrap">except</code>](/basics/select/#except) | left argument without items in right argument
+<code class="nowrap">K.except_()</code> | <code class="nowrap">q.except_()</code> | [<code class="nowrap">except</code>](/basics/selection/#except) | left argument without items in right argument
 <code class="nowrap">K.exp()</code> | <code class="nowrap">q.exp()</code> | [<code class="nowrap">exp</code>](/basics/arith-float/#exp) | power of e
 <code class="nowrap">K.fby()</code> | <code class="nowrap">q.fby()</code> | [<code class="nowrap">fby</code>](/basics/qsql/#fby) | filter-by
 <code class="nowrap">K.fills()</code> | <code class="nowrap">q.fills()</code> | [<code class="nowrap">fills</code>](/basics/lists/#fills) | forward-fill nulls
-<code class="nowrap">K.first()</code> | <code class="nowrap">q.first()</code> | [<code class="nowrap">first</code>](/basics/select/#first) | first item
+<code class="nowrap">K.first()</code> | <code class="nowrap">q.first()</code> | [<code class="nowrap">first</code>](/basics/selection/#first) | first item
 <code class="nowrap">K.fkeys()</code> | <code class="nowrap">q.fkeys()</code> | [<code class="nowrap">fkeys</code>](/basics/metadata/#fkeys) | foreign-key columns mapped to their tables
 <code class="nowrap">K.flip()</code> | <code class="nowrap">q.flip()</code> | [<code class="nowrap">flip</code>](/basics/lists/#flip) | transpose
 <code class="nowrap">K.floor()</code> | <code class="nowrap">q.floor()</code> | [<code class="nowrap">floor</code>](/basics/arith-integer/#floor) | greatest integer less than argument
@@ -333,11 +333,11 @@ K class | q namespace | q   | function
 <code class="nowrap">K.ijf()</code> | <code class="nowrap">q.ijf()</code> | [<code class="nowrap">ijf</code>](/basics/joins/#ij-ijf-inner-join) | The ijf function.
 <code class="nowrap">K.in_()</code> | <code class="nowrap">q.in_()</code> | [<code class="nowrap">in</code>](/basics/search/#in) | membership
 <code class="nowrap">K.insert()</code> | <code class="nowrap">q.insert()</code> | [<code class="nowrap">insert</code>](/basics/qsql/#insert) | append records to a table
-<code class="nowrap">K.inter()</code> | <code class="nowrap">q.inter()</code> | [<code class="nowrap">inter</code>](/basics/select/#inter) | items common to both arguments
+<code class="nowrap">K.inter()</code> | <code class="nowrap">q.inter()</code> | [<code class="nowrap">inter</code>](/basics/selection/#inter) | items common to both arguments
 <code class="nowrap">K.inv()</code> | <code class="nowrap">q.inv()</code> | [<code class="nowrap">inv</code>](/basics/matrixes/#inv) | matrix inverse
 <code class="nowrap">K.key()</code> | <code class="nowrap">q.key()</code> | [<code class="nowrap">key</code>](/basics/dictsandtables/#key) | key
 <code class="nowrap">K.keys()</code> | <code class="nowrap">q.keys()</code> | [<code class="nowrap">keys</code>](/basics/metadata/#keys) | names of a table’s columns
-<code class="nowrap">K.last()</code> | <code class="nowrap">q.last()</code> | [<code class="nowrap">last</code>](/basics/select/#last) | last item
+<code class="nowrap">K.last()</code> | <code class="nowrap">q.last()</code> | [<code class="nowrap">last</code>](/basics/selection/#last) | last item
 <code class="nowrap">K.like()</code> | <code class="nowrap">q.like()</code> | [<code class="nowrap">like</code>](/basics/strings/#like) | pattern matching
 <code class="nowrap">K.lj()</code> | <code class="nowrap">q.lj()</code> | [<code class="nowrap">lj</code>](/basics/joins/#lj-ljf-left-join) | left join
 <code class="nowrap">K.ljf()</code> | <code class="nowrap">q.ljf()</code> | [<code class="nowrap">ljf</code>](/basics/joins/#lj-ljf-left-join) | left join
@@ -363,7 +363,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.mod()</code> | <code class="nowrap">q.mod()</code> | [<code class="nowrap">mod</code>](/basics/arith-integer/#mod) | remainder
 <code class="nowrap">K.msum()</code> | <code class="nowrap">q.msum()</code> | [<code class="nowrap">msum</code>](/basics/stats-moving/#msum) | moving sum
 <code class="nowrap">K.neg()</code> | <code class="nowrap">q.neg()</code> | [<code class="nowrap">neg</code>](/basics/arith-integer/#neg) | negate
-<code class="nowrap">K.next()</code> | <code class="nowrap">q.next()</code> | [<code class="nowrap">next</code>](/basics/select/#next) | next items
+<code class="nowrap">K.next()</code> | <code class="nowrap">q.next()</code> | [<code class="nowrap">next</code>](/basics/selection/#next) | next items
 <code class="nowrap">K.not_()</code> | <code class="nowrap">q.not_()</code> | [<code class="nowrap">not</code>](/basics/comparison/#six-comparison-operators) | not
 <code class="nowrap">K.null()</code> | <code class="nowrap">q.null()</code> | [<code class="nowrap">null</code>](/basics/unclassified/#null) | null
 <code class="nowrap">K.or_()</code> | <code class="nowrap">q.or_()</code> | [<code class="nowrap">or</code>](/basics/logic/#or-maximum) | or
@@ -372,7 +372,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.pj()</code> | <code class="nowrap">q.pj()</code> | [<code class="nowrap">pj</code>](/basics/joins/#pj-plus-join) | plus join
 <code class="nowrap">K.prd()</code> | <code class="nowrap">q.prd()</code> | [<code class="nowrap">prd</code>](/basics/arith-float/#prd) | product
 <code class="nowrap">K.prds()</code> | <code class="nowrap">q.prds()</code> | [<code class="nowrap">prds</code>](/basics/arith-float/#prds) | cumulative products
-<code class="nowrap">K.prev()</code> | <code class="nowrap">q.prev()</code> | [<code class="nowrap">prev</code>](/basics/select/#prev) | previous items
+<code class="nowrap">K.prev()</code> | <code class="nowrap">q.prev()</code> | [<code class="nowrap">prev</code>](/basics/selection/#prev) | previous items
 <code class="nowrap">K.prior()</code> | <code class="nowrap">q.prior()</code> | [<code class="nowrap">prior</code>](/basics/control/#prior) | prior
 <code class="nowrap">K.rand()</code> | <code class="nowrap">q.rand()</code> | [<code class="nowrap">rand</code>](/basics/random/#rand) | random number
 <code class="nowrap">K.rank()</code> | <code class="nowrap">q.rank()</code> | [<code class="nowrap">rank</code>](/basics/sort/#rank) | grade up
@@ -401,7 +401,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.ss()</code> | <code class="nowrap">q.ss()</code> | [<code class="nowrap">ss</code>](/basics/strings/#ss) | string search
 <code class="nowrap">K.ssr()</code> | <code class="nowrap">q.ssr()</code> | [<code class="nowrap">ssr</code>](/basics/strings/#ssr) | string search and replace
 <code class="nowrap">K.string()</code> | <code class="nowrap">q.string()</code> | [<code class="nowrap">string</code>](/basics/casting/#string) | cast to string
-<code class="nowrap">K.sublist()</code> | <code class="nowrap">q.sublist()</code> | [<code class="nowrap">sublist</code>](/basics/select/#sublist) | sublist of a list
+<code class="nowrap">K.sublist()</code> | <code class="nowrap">q.sublist()</code> | [<code class="nowrap">sublist</code>](/basics/selection/#sublist) | sublist of a list
 <code class="nowrap">K.sum()</code> | <code class="nowrap">q.sum()</code> | [<code class="nowrap">sum</code>](/basics/arith-integer/#sum) | sum of a list
 <code class="nowrap">K.sums()</code> | <code class="nowrap">q.sums()</code> | [<code class="nowrap">sums</code>](/basics/arith-integer/#sums) | cumulative sums of a list
 <code class="nowrap">K.sv()</code> | <code class="nowrap">q.sv()</code> | [<code class="nowrap">sv</code>](/basics/lists/#sv) | consolidate
@@ -416,7 +416,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.uj()</code> | <code class="nowrap">q.uj()</code> | [<code class="nowrap">uj</code>](/basics/joins/#uj-ujf-union-join) | union join
 <code class="nowrap">K.ujf()</code> | <code class="nowrap">q.ujf()</code> | [<code class="nowrap">ujf</code>](/basics/joins/#uj-ujf-union-join) | The ujf function.
 <code class="nowrap">K.ungroup()</code> | <code class="nowrap">q.ungroup()</code> | [<code class="nowrap">ungroup</code>](/basics/dictsandtables/#ungroup) | flattened table
-<code class="nowrap">K.union()</code> | <code class="nowrap">q.union()</code> | [<code class="nowrap">union</code>](/basics/select/#union) | distinct items of combination of two lists
+<code class="nowrap">K.union()</code> | <code class="nowrap">q.union()</code> | [<code class="nowrap">union</code>](/basics/selection/#union) | distinct items of combination of two lists
 <code class="nowrap">K.upper()</code> | <code class="nowrap">q.upper()</code> | [<code class="nowrap">upper</code>](/basics/strings/#upper) | upper-case
 <code class="nowrap">K.upsert()</code> | <code class="nowrap">q.upsert()</code> | [<code class="nowrap">upsert</code>](/basics/qsql/#upsert) | add table records
 <code class="nowrap">K.value()</code> | <code class="nowrap">q.value()</code> | [<code class="nowrap">value</code>](/basics/dotz/#zvs-value-set) | value
@@ -425,7 +425,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.views()</code> | <code class="nowrap">q.views()</code> | [<code class="nowrap">views</code>](/basics/environment/#views) | list of defined views
 <code class="nowrap">K.vs()</code> | <code class="nowrap">q.vs()</code> | [<code class="nowrap">vs</code>](/basics/lists/#vs) | split
 <code class="nowrap">K.wavg()</code> | <code class="nowrap">q.wavg()</code> | [<code class="nowrap">wavg</code>](/basics/stats-aggregates/#wavg-weighted-average) | weighted average
-<code class="nowrap">K.where()</code> | <code class="nowrap">q.where()</code> | [<code class="nowrap">where</code>](/basics/select/#where) | replicated items
+<code class="nowrap">K.where()</code> | <code class="nowrap">q.where()</code> | [<code class="nowrap">where</code>](/basics/selection/#where) | replicated items
 <code class="nowrap">K.within()</code> | <code class="nowrap">q.within()</code> | [<code class="nowrap">within</code>](/basics/search/#within) | flag items within range
 <code class="nowrap">K.wj()</code> | <code class="nowrap">q.wj()</code> | [<code class="nowrap">wj</code>](/basics/joins/#wj-wj1-window-join) | window join
 <code class="nowrap">K.wj1()</code> | <code class="nowrap">q.wj1()</code> | [<code class="nowrap">wj1</code>](/basics/joins/#wj-wj1-window-join) | window join
@@ -440,7 +440,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.xgroup()</code> | <code class="nowrap">q.xgroup()</code> | [<code class="nowrap">xgroup</code>](/basics/dictsandtables/#xgroup) | table grouped by keys
 <code class="nowrap">K.xkey()</code> | <code class="nowrap">q.xkey()</code> | [<code class="nowrap">xkey</code>](/basics/dictsandtables/#xkey) | set primary keys of a table
 <code class="nowrap">K.xlog()</code> | <code class="nowrap">q.xlog()</code> | [<code class="nowrap">xlog</code>](/basics/arith-float/#xlog) | base-x logarithm
-<code class="nowrap">K.xprev()</code> | <code class="nowrap">q.xprev()</code> | [<code class="nowrap">xprev</code>](/basics/select/#xprev) | previous items
+<code class="nowrap">K.xprev()</code> | <code class="nowrap">q.xprev()</code> | [<code class="nowrap">xprev</code>](/basics/selection/#xprev) | previous items
 <code class="nowrap">K.xrank()</code> | <code class="nowrap">q.xrank()</code> | [<code class="nowrap">xrank</code>](/basics/sort/#xrank) | items assigned to buckets
 
 
@@ -483,11 +483,11 @@ K class | q namespace | q   | function
 <code class="nowrap">q.ema()</code> | [<code class="nowrap">ema</code>](/basics/stats-moving#ema) | exponentially-weighted moving average
 <code class="nowrap">q.enlist()</code> | [<code class="nowrap">enlist</code>](/basics/lists#enlist) | arguments as a list
 <code class="nowrap">q.eval()</code> | [<code class="nowrap">eval</code>](/basics/parsetrees#eval) | evaluate a parse tree
-<code class="nowrap">q.except_()</code> | [<code class="nowrap">except</code>](/basics/select#except) | left argument without items in right argument
+<code class="nowrap">q.except_()</code> | [<code class="nowrap">except</code>](/basics/selection#except) | left argument without items in right argument
 <code class="nowrap">q.exp()</code> | [<code class="nowrap">exp</code>](/basics/arith-float#exp) | power of e
 <code class="nowrap">q.fby()</code> | [<code class="nowrap">fby</code>](/basics/qsql#fby) | filter-by
 <code class="nowrap">q.fills()</code> | [<code class="nowrap">fills</code>](/basics/lists#fills) | forward-fill nulls
-<code class="nowrap">q.first()</code> | [<code class="nowrap">first</code>](/basics/select#first) | first item
+<code class="nowrap">q.first()</code> | [<code class="nowrap">first</code>](/basics/selection#first) | first item
 <code class="nowrap">q.fkeys()</code> | [<code class="nowrap">fkeys</code>](/basics/metadata#fkeys) | foreign-key columns mapped to their tables
 <code class="nowrap">q.flip()</code> | [<code class="nowrap">flip</code>](/basics/lists#flip) | transpose
 <code class="nowrap">q.floor()</code> | [<code class="nowrap">floor</code>](/basics/arith-integer#floor) | greatest integer less than argument
@@ -506,11 +506,11 @@ K class | q namespace | q   | function
 <code class="nowrap">q.ijf()</code> | [<code class="nowrap">ijf</code>](/basics/joins#ij-ijf-inner-join) | The ijf function.
 <code class="nowrap">q.in_()</code> | [<code class="nowrap">in</code>](/basics/search#in) | membership
 <code class="nowrap">q.insert()</code> | [<code class="nowrap">insert</code>](/basics/qsql#insert) | append records to a table
-<code class="nowrap">q.inter()</code> | [<code class="nowrap">inter</code>](/basics/select#inter) | items common to both arguments
+<code class="nowrap">q.inter()</code> | [<code class="nowrap">inter</code>](/basics/selection#inter) | items common to both arguments
 <code class="nowrap">q.inv()</code> | [<code class="nowrap">inv</code>](/basics/matrixes#inv) | matrix inverse
 <code class="nowrap">q.key()</code> | [<code class="nowrap">key</code>](/basics/dictsandtables#key) | key
 <code class="nowrap">q.keys()</code> | [<code class="nowrap">keys</code>](/basics/metadata#keys) | names of a table’s columns
-<code class="nowrap">q.last()</code> | [<code class="nowrap">last</code>](/basics/select#last) | last item
+<code class="nowrap">q.last()</code> | [<code class="nowrap">last</code>](/basics/selection#last) | last item
 <code class="nowrap">q.like()</code> | [<code class="nowrap">like</code>](/basics/strings#like) | pattern matching
 <code class="nowrap">q.lj()</code> | [<code class="nowrap">lj</code>](/basics/joins#lj-ljf-left-join) | left join
 <code class="nowrap">q.ljf()</code> | [<code class="nowrap">ljf</code>](/basics/joins#lj-ljf-left-join) | left join
@@ -536,7 +536,7 @@ K class | q namespace | q   | function
 <code class="nowrap">q.mod()</code> | [<code class="nowrap">mod</code>](/basics/arith-integer#mod) | remainder
 <code class="nowrap">q.msum()</code> | [<code class="nowrap">msum</code>](/basics/stats-moving#msum) | moving sum
 <code class="nowrap">q.neg()</code> | [<code class="nowrap">neg</code>](/basics/arith-integer#neg) | negate
-<code class="nowrap">q.next()</code> | [<code class="nowrap">next</code>](/basics/select#next) | next items
+<code class="nowrap">q.next()</code> | [<code class="nowrap">next</code>](/basics/selection#next) | next items
 <code class="nowrap">q.not_()</code> | [<code class="nowrap">not</code>](/basics/comparison#six-comparison-operators) | not
 <code class="nowrap">q.null()</code> | [<code class="nowrap">null</code>](/basics/unclassified#null) | null
 <code class="nowrap">q.or_()</code> | [<code class="nowrap">or</code>](/basics/logic#or-maximum) | or
@@ -545,7 +545,7 @@ K class | q namespace | q   | function
 <code class="nowrap">q.pj()</code> | [<code class="nowrap">pj</code>](/basics/joins#pj-plus-join) | plus join
 <code class="nowrap">q.prd()</code> | [<code class="nowrap">prd</code>](/basics/arith-float#prd) | product
 <code class="nowrap">q.prds()</code> | [<code class="nowrap">prds</code>](/basics/arith-float#prds) | cumulative products
-<code class="nowrap">q.prev()</code> | [<code class="nowrap">prev</code>](/basics/select#prev) | previous items
+<code class="nowrap">q.prev()</code> | [<code class="nowrap">prev</code>](/basics/selection#prev) | previous items
 <code class="nowrap">q.prior()</code> | [<code class="nowrap">prior</code>](/basics/control#prior) | prior
 <code class="nowrap">q.rand()</code> | [<code class="nowrap">rand</code>](/basics/random#rand) | random number
 <code class="nowrap">q.rank()</code> | [<code class="nowrap">rank</code>](/basics/sort#rank) | grade up
@@ -574,7 +574,7 @@ K class | q namespace | q   | function
 <code class="nowrap">q.ss()</code> | [<code class="nowrap">ss</code>](/basics/strings#ss) | string search
 <code class="nowrap">q.ssr()</code> | [<code class="nowrap">ssr</code>](/basics/strings#ssr) | string search and replace
 <code class="nowrap">q.string()</code> | [<code class="nowrap">string</code>](/basics/casting#string) | cast to string
-<code class="nowrap">q.sublist()</code> | [<code class="nowrap">sublist</code>](/basics/select#sublist) | sublist of a list
+<code class="nowrap">q.sublist()</code> | [<code class="nowrap">sublist</code>](/basics/selection#sublist) | sublist of a list
 <code class="nowrap">q.sum()</code> | [<code class="nowrap">sum</code>](/basics/arith-integer#sum) | sum of a list
 <code class="nowrap">q.sums()</code> | [<code class="nowrap">sums</code>](/basics/arith-integer#sums) | cumulative sums of a list
 <code class="nowrap">q.sv()</code> | [<code class="nowrap">sv</code>](/basics/lists#sv) | consolidate
@@ -589,7 +589,7 @@ K class | q namespace | q   | function
 <code class="nowrap">q.uj()</code> | [<code class="nowrap">uj</code>](/basics/joins#uj-ujf-union-join) | union join
 <code class="nowrap">q.ujf()</code> | [<code class="nowrap">ujf</code>](/basics/joins#uj-ujf-union-join) | The ujf function.
 <code class="nowrap">q.ungroup()</code> | [<code class="nowrap">ungroup</code>](/basics/dictsandtables#ungroup) | flattened table
-<code class="nowrap">q.union()</code> | [<code class="nowrap">union</code>](/basics/select#union) | distinct items of combination of two lists
+<code class="nowrap">q.union()</code> | [<code class="nowrap">union</code>](/basics/selection#union) | distinct items of combination of two lists
 <code class="nowrap">q.upper()</code> | [<code class="nowrap">upper</code>](/basics/strings#upper) | upper-case
 <code class="nowrap">q.upsert()</code> | [<code class="nowrap">upsert</code>](/basics/qsql#upsert) | add table records
 <code class="nowrap">q.value()</code> | [<code class="nowrap">value</code>](/basics/dotz#zvs-value-set) | value
@@ -598,7 +598,7 @@ K class | q namespace | q   | function
 <code class="nowrap">q.views()</code> | [<code class="nowrap">views</code>](/basics/environment#views) | list of defined views
 <code class="nowrap">q.vs()</code> | [<code class="nowrap">vs</code>](/basics/lists#vs) | split
 <code class="nowrap">q.wavg()</code> | [<code class="nowrap">wavg</code>](/basics/stats-aggregates#wavg-weighted-average) | weighted average
-<code class="nowrap">q.where()</code> | [<code class="nowrap">where</code>](/basics/select#where) | replicated items
+<code class="nowrap">q.where()</code> | [<code class="nowrap">where</code>](/basics/selection#where) | replicated items
 <code class="nowrap">q.within()</code> | [<code class="nowrap">within</code>](/basics/search#within) | flag items within range
 <code class="nowrap">q.wj()</code> | [<code class="nowrap">wj</code>](/basics/joins#wj-wj1-window-join) | window join
 <code class="nowrap">q.wj1()</code> | [<code class="nowrap">wj1</code>](/basics/joins#wj-wj1-window-join) | window join
@@ -613,7 +613,7 @@ K class | q namespace | q   | function
 <code class="nowrap">q.xgroup()</code> | [<code class="nowrap">xgroup</code>](/basics/dictsandtables#xgroup) | table grouped by keys
 <code class="nowrap">q.xkey()</code> | [<code class="nowrap">xkey</code>](/basics/dictsandtables#xkey) | set primary keys of a table
 <code class="nowrap">q.xlog()</code> | [<code class="nowrap">xlog</code>](/basics/arith-float#xlog) | base-x logarithm
-<code class="nowrap">q.xprev()</code> | [<code class="nowrap">xprev</code>](/basics/select#xprev) | previous items
+<code class="nowrap">q.xprev()</code> | [<code class="nowrap">xprev</code>](/basics/selection#xprev) | previous items
 <code class="nowrap">q.xrank()</code> | [<code class="nowrap">xrank</code>](/basics/sort#xrank) | items assigned to buckets
  <code class="nowrap">pyq.kerr</code> |   | alias of `error`
  -->

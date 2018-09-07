@@ -37,13 +37,13 @@ q)2+(3 4;`a`b`c!5 6 7;(8 9;10;11 12 13);14)
 ```
 
 
-## Unary operators
+## Extendersrs
 
-The distributive and progressive operators are unary. 
+The distributor and progressor extenders are unary. 
 They take maps as arguments and derive functions (_extensions_) that apply the maps repeatedly.
 
-Unary operators can be applied postfix, and almost always are. 
-For example, the Over operator `/` takes the Add operator `+` to derive the extension `+/`, which reduces a list by summing it.
+The extenders (apart from Compose)can be applied postfix, and almost always are. 
+For example, the Over extender `/` takes the Add operator `+` to derive the extension `+/`, which reduces a list by summing it.
 
 ```q
 q)(+/)2 3 4 5
@@ -51,9 +51,9 @@ q)(+/)2 3 4 5
 ```
 
 
-### Distributive operators
+### Distributors
 
-The [distributive operators](/ref/distributive-operators) – Each, Each Left, Each Right, Each Prior, and Each Parallel – apply a map to each item of a list or dictionary.
+The [distributors](/ref/distributors.md) extenders – Each, Each Left, Each Right, Each Prior, and Each Parallel – apply a map to each item of a list or dictionary.
 
 ```q
 q)count "zero"                             / count the chars (items) in a string
@@ -63,14 +63,14 @@ q)(count')("The";"quick";"brown";"fox")    / count each string
 ```
 
 
-### Progressive operators
+### Progressors
 
-The [progressive operators](/ref/progressive-operators) – Scan and Over – apply a map successively, first to the argument, then to the results of successive applications. 
+The [progressors](/ref/progressors.md) extenders – Scan and Over – apply a map successively, first to the argument, then to the results of successive applications. 
 
 
 ## Control words
 
-The control words [`if`](FIXME), [`do`](FIXME), and [`while`](FIXME) also enable iteration, but are rarely required. 
+The control words [`if`, `do`, and `while`](control.md) also enable iteration, but are rarely required. 
 
 
 

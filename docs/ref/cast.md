@@ -6,7 +6,8 @@ _Convert to another datatype._
 
 Syntax: `x$y`, `$[x;y]`
 
-Where `x` is a lower-case letter, symbol or non-negative short atom (or list of such atoms), returns `y` cast according to `x`. A table of `x` values for _cast_:
+Where `x` is a lower-case letter, symbol or non-negative short atom (or list of such atoms), returns `y` cast according to `x`. A table of `x` values for Cast:
+
 ```q
 q)flip{(x;.Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
 1h  "b" `boolean
@@ -28,19 +29,25 @@ q)flip{(x;.Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
 18h "v" `second
 19h "t" `time
 ```
+
 Cast to integer:
+
 ```q
 q)"i"$10
 10i
 q)(`int;"i";6h)$10
 10 10 10i
 ```
+
 Cast to boolean:
+
 ```q
 q)1h$1 0 2
 101b
 ```
+
 Find parts of time:
+
 ```q
 q)`hh`uu`ss$03:55:58.11
 3 55 58i
@@ -49,12 +56,16 @@ q)`year`dd`mm`hh`uu`ss$2015.10.28D03:55:58
 ```
 
 !!! Note "Casting string to symbol"
+
     When converting a string to a symbol, leading and trailing blanks are automatically trimmed:
 
-        q)`$"   IBM   "
-        `IBM
+    <pre><code class="language-q">
+    q)`$"   IBM   "
+    `IBM
+    </code></pre>
 
 Identity:
+
 ```q
 q)("*";0h)$1
 10 10
@@ -76,6 +87,6 @@ q)("*";0h)$\:"2012-02-02"
     Space rangers! The infinity corresponding to numeric `x` is `min 0#x`.
 
 <i class="far fa-hand-point-right"></i> 
-[dollar `$`](operators.md#dollar),
-[Tok](tok.md), 
-[Casting & encoding](../basics/casting.md)
+[dollar `$`](overloads.md#dollar),
+[Tok](tok.md)  
+Basics: [Casting & encoding](../basics/casting.md)

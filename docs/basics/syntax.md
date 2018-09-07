@@ -1,163 +1,180 @@
+---
+title: Syntax
+keywords: kdb+, q, syntax
+---
+
+
+# Syntax
 
 > It is a privilege to learn a language,  
 > a journey into the immediate  
-> — _Marilyn Hacker_, “Learning Distances”
+> – _Marilyn Hacker_, “Learning Distances”
 
 
-## Comments
 
-Line comment
-: Any line that begins with a `/` (slash) is a comment.  
-`q)/Oh what a lovely day`
 
-Trailing comment
-: Anything to the right of ` /` (space slash) is a comment.  
-`q)2+2  /I know this one`
+## Elements
 
-Multiline comment
-: As first and only non-whitespace char on a line:  
-* `/` starts a multiline comment  
-* `\` terminates a multiline comment or, if not in a comment, comments to end of script  
+The elements of q are 
+
+-   functions: operators, keywords, lambdas, and extensions
+-   data structures: atoms, lists, dictionaries, tables, expression lists, and parse trees
+-   attributes of data structures
+-   control words
+-   scripts
+-   environment variables
+
+!!! info "Maps"
+
+    Lists, dictionaries, and functions of all kinds are all _maps_. 
+
+    A function maps its domains to its range. 
+    A list maps its indexes to its items.
+    A dictionary maps its keys to its values.
+
+
+## Tokens
+
+All the ASCII symbols have syntactic significance in q. Some denote functions, that is, actions to be taken; some denote nouns, which are acted on by functions; some denote extenders, which modify nouns and functions to produce new functions; some are grouped to form names and constants; and others are punctuation that bound and separate expressions and expression groups.
+
+The term **token** is used to mean one or more characters that form a syntactic unit. For instance, the tokens in the expression `10.86 +/ LIST` are the constant `10.86`, the name `LIST`, and the symbols `+` and `/`. The only tokens that can have more than one character are constants and names and the following.
+
 ```q
-/
-    Oh what a beautiful morning
-    Oh what a wonderful day
-\
-a:42
-\
-goodbye to all that
-the restroom at the end of the universe
+<=   / less-than-or-equal
+>=   / greater-than-or-equal
+<>   / not-equal
+::   / null, view, set global
+/:   / each-right
+\:   / each-left
+':   / each-prior, each-parallel
 ```
 
-
-## Separation
-
-The semicolon `;` is an all-purpose separator. It separates expressions, [function](elements/#functions) arguments, list items, and so on.
-```q
-q)a:5;b:3   /expressions
-q)a
-5
-q)(1;2;3)   /items of a list
-1 2 3
-q)+[2;3]    /function arguments
-5
-```
-
-!!! tip "Evaluating a sequence of expressions"
-    When a _sequence_ of expressions is evaluated, only the last one returns a result. (They may all have side effects, such as setting a variable.) Evaluating a sequence of expressions is not the same as evaluating a _list_ of expressions.
-    <pre><code class="language-q">
-    q)1+1;b:2+2;3+3
-    6
-    q)b
-    4
-    q)(1+1;b:2+2;3+3)
-    2 4 6
-    </code></pre>
-
-
-## Naming and assignment
-
-Names consist of upper- and lower-case alphabetics. They may contain, but not begin with, underscores and numbers. For example: `a`, `foo`, `foo2_bar`. 
-
-!!! warning "Underscores in names"
-    While q permits the use of underscores in names, this usage is **strongly deprecated** because it is easily confused with _drop_.
-    <pre><code class="language-q">
-    q)foo_bar:42
-    q)foo:3
-    q)bar:til 6
-    </code></pre>
-    Is `foo_bar` now `42` or `3 4 5`?
-
-Values may be named, using single or double colons. The double colon binds the value to a name in the session root; the single colon binds the name in the local context. In a session with no evaluation suspended their effects are the same.
-```q
-q)foo:42
-q)foo
-42
-q)foo::103
-q)foo
-103
-```
-Named values can be _amended_, either entirely or selectively. 
-```q
-q)show foo:42 43 44
-42 43 44
-q)foo[1]:100
-q)foo
-42 100 43
-```
-Amendment through assignment can be modified by any operator. 
-```q
-q)foo*:2
-q)foo
-84 200 86
-q)foo[2]+:4
-q)foo
-84 200 90
-```
-
-!!! warning "Amending vectors"
-    Amending vectors through modified selective assignment requires an operator that returns the same datatype. 
-
-<i class="far fa-hand-point-right"></i> [_amend_ function](lists/#amend)
+When it is necessary to refer to the token to the left or right of another unit, terms like “immediately to the left” and “followed immediately by” mean that there are no spaces between the two tokens.
 
 
 ## Nouns
 
-The syntactic class of [nouns](elements/#nouns) includes all data structures. 
+All data are syntactically **nouns**. Data include 
 
-!!! tip "Noun syntax for functions and adverbs"
-    Operators, functions and adverbs can be given noun syntax by listing or parenthesising them. 
+-   atomic values
+-   collections of atomic values in lists
+-   lists of lists, and so on
+
+Atomic values
+
+: include character, integer, floating-point, and temporal values, as well as symbols, functions, dictionaries, and a special atom `::`, called _null_. All functions are atomic data. 
+
+List constants
+
+: include several forms for the empty list denoting the empty integer list, empty symbol list, and so on. (One-item lists are displayed using the comma to distinguish them from atoms, as in `,2` the one-item list consisting of the single integer item 2.)
+
+Numerical constants
+
+: (integer and floating-point) are denoted in the usual ways, with both decimal and exponential notation for floating-point numbers. 
+A negative numerical constant is denoted by a minus sign immediately to the left of a positive numerical constant.
+Special atoms for numerical and temporal datatypes (e.g. `0W` and `0N`) refer to infinities and “not-a-number” (or “null” in database parlance) concepts. 
+
+Temporal constants
+
+: include timestamps, months, dates, datetimes, timespans, minutes, and seconds. 
+
     <pre><code class="language-q">
-    q)count(+)
-    1
-    q)count(+;within;\)
-    3
+    2017.01              / month   
+    2017.01.18           / date    
+    00:00:00.000000000   / timespan
+    00:00                / minute  
+    00:00:00             / second  
+    00:00:00.000         / time    
     </code></pre>
 
-### Lists
+<i class="far fa-hand-point-right"></i> 
+[Datatypes](datatypes.md)
 
-A [_list_](elements/#lists) is enclosed in parentheses, its items – if any – separated by semicolons. 
+Character constants
+
+: An atomic character constant is denoted by a single character between double quote marks, as in `"a"`; more than one such character, or none, between double quotes denotes a list of characters. 
+
+Symbol constants
+
+: A symbol constant is denoted by a back-quote to the left of a string of characters that form a valid name, as in `` `a.b_2``. The string of characters can be empty; that is, back-quote alone is a valid symbol constant. A symbol constant can also be formed for a string of characters that does not form a valid name by including the string in double-quotes with a back-quote immediately to the left, as in `` `"a-b!"``.
+
+Dictionaries
+
+: are [created](../ref/dict.md) from lists of a special form. 
+
+Tables
+
+: A table is a list of dictionaries, all of which have the same keys. 
+These keys comprise the names of the table columns. 
+
+Functions
+
+: can be denoted in several ways; see below. Any notation for a function without its arguments denotes a **constant function atom**, such as `+` for the Add operator. 
+
+
+## List notation
+
+A sequence of expressions separated by semicolons and surrounded by left and right parentheses denotes a noun called a _list_. The expression for the list is called a _list expression_, and this manner of denoting a list is called _list notation_. 
+For example:
+
 ```q
-q)count(42;`ibm;2012.08.17)    /list of 3 items
-3
+(3 + 4; a _ b; -20.45)
 ```
 
-!!! note "Functions and adverbs in lists"
-    Functions and adverbs in lists are treated as nouns, but juxtaposition becomes [application](#application), not [indexing](#indexing).
-    <pre><code class="language-q">
-    q)(count;+/;/)1          /indexing
-    +/
-    q)(count;+/;/)[1] 2 3 4  /application
-    9
-    </code></pre>
+denotes a list. The empty list is denoted by `()`, but otherwise at least one semicolon is required. When parentheses enclose only one expression they have the common mathematical meaning of bounding a sub-expression within another expression. 
+For example, in
+
+```q
+(a * b) + c
+```
+
+the product `a * b` is formed first and its result is added to `c`; the expression `(a * b)` is not list notation. 
+
+An atom is not a one-item list.
+One-item lists are formed with the `enlist` function, as in `enlist"a"` and `enlist 3.1416`.
+
+```q
+q)3           /atom
+3
+q)enlist 3    / 1-item list
+,3
+```
 
 
-### Vectors
+## Vector notation
 
-A [vector](elements/#vectors) can be represented without parentheses: numeric, boolean, char and symbol vectors all have distinct forms. 
+Lists in which all the items have the same datatype play an important role in kdb+. Q gives vector constants a special notation, which varies by datatype. 
+
+```q
+01110001b                           / boolean
+"abcdefg"                           / character
+`ibm`aapl`msft                      / symbol
+```
+
+Numeric and temporal vectors separate items with spaces and if necessary declare their type with a suffixed lower-case character.
+
+```q
+2018.05 2018.07 2019.01m            / month
+2 3 4 5 6                           / integer
+2 3 4 5 6h                          / short integer
+2 3 4 5 6i                          / xxxxx integer
+2 3 4 5 6j                          / xxxxx integer
+2 3 4 5.6                           / float
+2 3 4 5 6f                          / float
+```
+
+type    | example                
+--------|------------------------
+numeric | `42 43 44`             
+date    | `2012.09.15 2012.07.05`
+char    | `"abc"`                
+boolean | `0101b`                
+symbol  | `` `ibm`att`ora``      
+
+
+### Strings
 
 Char vectors are also known as _strings_.
-
-<div class="kx-compact" markdown="1">
-
-| type    | example                 |
-|---------|-------------------------|
-| numeric | `42 43 44`              |
-| date    | `2012.09.15 2012.07.05` |
-| char    | `"abc"`                 |
-| boolean | `0101b`                 |
-| symbol  | `` `ibm`att`ora``       |
-
-</div>
-
-```q
-q)42 43 44 45~(42;43;44;45)    / 4-item vectors
-1b
-q)("a";"b";"c")~"abc"          / char vectors
-1b
-q)3<til 10                     / boolean vector
-0000111111b
-```
 
 When `\` is used inside character or string displays, it serves as an escape character.
 
@@ -165,28 +182,32 @@ When `\` is used inside character or string displays, it serves as an escape cha
 |        |                                           |
 |--------|-------------------------------------------|
 |`\"`    | double quote                              |
-|`\NNN` | character with octal value NNN (3 digits) |
+|`\NNN`  | character with octal value NNN (3 digits) |
 |`\\`    | backslash                                 |
 |`\n`    | new line                                  |
 |`\r`    | carriage return                           |
 |`\t`    | horizontal tab                            |
 
 
-### Simple tables
-A simple [table](elements/#tables) can be created by flipping a [dictionary](elements/#dictionaries) in which all the values have the same count – or written directly in table syntax:
+## Table notation
+
+A table can be written as a list: an expression list followed by one or more expressions.
+
+An empty expression list indicates a simple table.
+
 ```q
-q)([]names:`bob`carol`ted`alice; ages:42 39 51 44)
-names ages
+q)([]sym:`aapl`msft`goog;price:100 200 300)
+sym  price
 ----------
-bob   42
-carol 39
-ted   51
-alice 44
+aapl 100
+msft 200
+goog 300
 ```
 
+The names assigned become the column names. The values assigned must conform: be lists of the same count, or atoms. The empty brackets indicate that the table is _simple_: it has no key. 
 
-### Keyed tables
-Table syntax can declare one or more columns of a table as a _key_. The values of the key column/s of a table are unique. 
+The initial expression list can declare one or more columns as a _key_. The values of the key column/s of a table should be unique. 
+
 ```q
 q)([names:`bob`carol`bob`alice;city:`NYC`CHI`SFO`SFO]; ages:42 39 51 44)
 names city| ages
@@ -197,375 +218,361 @@ bob   SFO | 51
 alice SFO | 44
 ```
 
-<i class="far fa-hand-point-right"></i> [`!` _key_](dictsandtables/#key)
+<i class="far fa-hand-point-right"></i>
+[`!` Key](dictsandtables.md#key)
 
-### Indexing
 
-Lists, dictionaries and simple tables can be indexed; keyed tables cannot. 
+## Attributes
+
+Attributes are metadata that apply to lists of special form. 
+They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
+
+<i class="far fa-hand-point-right"></i> 
+[`#` Set Attribute](../ref/set-attribute.md)
+
+<!-- 
+FIXME move elsewhere
+
+For 64-bit V3.0+, where `n` is the number of items and `d` is the number of distinct (unique) items, the byte overhead in memory is:
+
+example       |         | byte overhead
+--------------|---------|--------------
+`` `s#2 2 3`` | sorted  | `0`
+`` `u#2 4 5`` | unique  | `32*d`
+`` `p#2 2 1`` | parted  | `(48*d)+8*n`
+`` `g#2 1 2`` | grouped | `(16*d)+8*n`
+
+
+Attribute `u` is for unique lists – where all items are distinct.
+
+!!! tip "Grouped and parted"
+
+    Attributes `p` and `g` are useful for lists in memory with a lot of repetition.
+
+    If the data can be sorted such that `p` can be applied, the `p` attribute effects better speedups than `g`, both on disk and in memory.
+
+    The `g` attribute implies an entry’s data may be dispersed – and possibly slow to retrieve from disk.
+
+Some q functions use attributes to work faster:
+
+-    Where-clauses in [`select` and `exec` templates](qsql) run faster with `where =`, `where in` and `where within`
+-    Searching: [`bin`](search.md#bin-binr), [`distinct`](search.md#distinct), [_find_](search.md#find) and [`in`](search.md#in) (if the right argument has an attribute)
+-    Sorting: [`iasc`](sort.md#iasc) and [`idesc`](sort.md#idesc)
+-    Dictionaries: [`group`](dictsandtables.md#group)
+
+ -->
+
+
+## Bracket notation
+
+A sequence of expressions separated by semicolons and surrounded by left and right brackets (`[` and `]`) denotes either the indexes of a list or the arguments of a function. The expression for the set of indexes or arguments is called an _index expression_ or _argument expression_, and this manner of denoting a set of indexes or arguments is called _bracket notation_. 
+
+For example, `m[0;0]` selects the element in the upper left corner of a matrix `m`, and `f[a;b;c]` evaluates the function `f` with the three arguments `a`, `b`, and `c`. 
+
+Unlike list notation, bracket notation does not require at least one semicolon; one expression between brackets – or none – will do.
+
+Operators can also be evaluated with bracket notation. For example, `+[a;b]`means the same as `a + b`. All operators can be used infix.
+
+Bracket pairs with nothing between them also have meaning; `m[]` selects all items of a list `m` and `f[]` evaluates the no-argument function `f`. 
+
+!!! tip 
+
+    The similarity of index and argument notation is not accidental.
+
+
+## Conditional evaluation and control statements
+
+A sequence of expressions separated by semicolons and surrounded by left and right brackets (`[` and `]`), where the left bracket is preceded immediately by a `$`, denotes [conditional evaluation](../ref/cond.md). 
+
+If the word `do`, `if`, or `while` appears instead of the `$` then that word together with the sequence of expressions denotes a [control statement](control.md). 
+
+The first line below shows conditional evaluation; the next three show control statements:
+
 ```q
-q)l:"abcdef" /list
-q)d:`first`family`date!`John`Doe`1987.09.15 /dict
-q)t:([]name:`Bob`Ted`Carol;city:`SFO`LAX`SEA;age:42 43 45) /simple table
-q)l[1 4 0 3]      /list indexes
-"bead"
-q)d[`date`first]  /dict keys
-1987.09.15
-`John
-q)t[`age`city]    /table columns
-42  43  45
-SFO LAX SEA
-q)t[2 0]          /table rows
-name  city age
---------------
-Carol SEA  45
-Bob   SFO  42
+        $[a;b;c]
+       do[a;b;c]
+       if[a;b;c]
+    while[a;b;c]
 ```
 
+Control words are not functions and do not return results.
 
-### Juxtaposing nouns
 
-In noun syntax, juxtaposition is indexing.
+## Function notation
+
+A sequence of expressions separated by semicolons and surrounded by left and right braces (`{` and `}`) denotes a function. The expression for the function definition is called a _function expression_ or _lambda_, and this manner of defining a function is called _function_ or _lambda notation_. 
+
+The first expression in a function expression can be a _signature_: an argument expression of the form `[name1;name2;…;nameN]` naming the arguments of the function. Like bracket notation, function notation does not require at least one semicolon; one expression (or none) between braces will do.
+
+Within a script, a function may be defined across [multiple lines](#multi-line-expressions).
+
+<i class="far fa-hand-point-right"></i> 
+[Function notation](function-notation.md)
+
+
+## Prefix, infix, postfix
+
+There are various ways to apply a function to its argument/s.
+
 ```q
-q)l 1 4 0 3      /list indexes
-"bead"
-q)d`date`first   /dict keys
-1987.09.15
-`John
-q)t`age`city     /table columns
-42  43  45
-SFO LAX SEA
-q)t 2 0          /table rows
-name  city age
---------------
-Carol SEA  45
-Bob   SFO  42
+f[x]         / bracket notation
+f x          / prefix
+x + y        / infix
+f\           / postfix
 ```
 
+In the last example above, the extender `\` is applied postfix to the function `f`, which appears immediately to the left of the extender. Extenders are the only functions that can be applied postfix.
 
-## Functions
+Bracket and prefix notation are also used to apply a list to its indexes.
 
-### Rank
-
-A the _rank_ of a [function](elements/#functions) is the number of arguments it takes. Functions of rank 1 or 2 are known respectively as _unary_ and _binary_. 
-
-
-### Application
-
-In applying a function, the canonical form of its arguments is a bracketed list separated by semicolons. 
-
-<code>f[a<sub>1</sub>;a<sub>2</sub>;…;a<sub>n</sub>]</code>
-
-The expression in brackets lists parameters to the function, but is _not_ itself a list, i.e. it is not the same as:
-
-<code>(a<sub>1</sub>;a<sub>2</sub>;…;a<sub>n</sub>)</code>
-
-All functions can be applied prefix. 
 ```q
-q)til[5]            /one (atom) argument
-0 1 2 3 4
-q)count[1 4 3]      /one (vector) argument 
-1 16 9
-q)+[2;3 4]          /two arguments
-5 6
-q){x+y+2*z}[2;3;4]  /three (atom) arguments
-13
-```
-[Operators](elements/#operators) and some [derivatives](elements/#adverbs) can also be applied infix. 
-```q
-q)2|3                 /operator
-3
-q)2 rotate 2 3 4 5 6  /operator
-4 5 6 2 3
-q)2+/2 3 4 5 6        /derivative
-22
+q)"abcdef" 1 0 3
+"bad"
 ```
 
-!!! note "Infix is always optional"
+<i class="far fa-hand-point-right"></i> 
+[Application](application.md)
+
+
+### Prefix and vector notation
+
+Index and argument notation (i.e. bracket notation) are similar. 
+Prefix expressions evaluate unary functions as in `til 3`. This form of evaluation is permitted for any unary. 
+
+```q
+q){x - 2} 5 3
+3 1
+```
+
+This form can also be used for item selection.
+
+```q
+q)(1; "a"; 3.5; `xyz) 2
+3.5
+```
+
+Juxtaposition is also used in vector notation.
+
+```q
+3.4 57 1.2e20
+```
+
+The items in vector notation bind more tightly than the tokens in function call and item selection. For example, `{x - 2} 5 6` is the function `{x - 2}` applied to the vector `5 6`, not the function `{x - 2}` applied to 5, followed by 6.
+
+
+## Compound expressions
+
+Function expressions, index expressions, argument expressions and list expressions are collectively referred to as _compound expressions_.
+
+
+## Empty expressions
+
+An empty expression occurs in a compound expression wherever the place of an individual expression is either empty or all blanks. For example, the second and fourth expressions in the list expression `(a+b;;c-d;)` are empty expressions. Empty expressions in both list expressions and function expressions actually represent a special atomic value called _null_.
+
+
+## Colon
+
+The colon has several uses. The principal use is denoting assignment. It can appear with a name to its left and a noun to its right, or a name followed by an index expression to its left and a noun to its right, as in `x:y` and x`[i]:y`. The former assigns the value of `y` to `x`; the latter to `x` at indexes `i`.
+
+The colon can also have a primitive operator immediately to its left, with a name (or name and index expression) to the left of that, as in `x+:y `and `x[i],:y`. This is known as assignment _through_ the operator. For operator `f`, the expressions `x f:y` and `x:x f y` are equivalent.
+
+A pair of colons with a name to its left and an expression on the right
+
+-   within a function expression, denotes global assignment, that is, assignment to a global name (`{… ; x::3 ; …}`)
+-   outside a function expression, defines a [view](FIXME)
+
+The functions associated with I/O and [interprocess communication](ipc.md) are denoted by a colon following a digit, as in `0:` and `1:`.
+
+A colon used as a unary in a function expression, as in `:r` , means return from the function with the result `r`.
+
+The q operators are all binary functions.
+They inherit unary forms from k, denoted by a colon suffix, e.g. (`#:`).
+Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary-forms). 
+
+
+## Extenders
+
+Extenders are higher-order operators. Their arguments are maps (functions, lists, and dictionaries) and their results are derived functions known as _extensions_ that extend the application of the maps. 
+
+Three symbols, and three symbol pairs, denote extenders:
+
+token         | semantics
+--------------|---------------------
+`'`           | Case, Compose, Each 
+`':`          | Each Prior, Each Parallel
+`/:` and `\:` | Each Right and Each Left
+`/` and `\`   | Converge, Do, While, Reduce 
+
+Any of these, apart from Compose, in combination with the noun or function immediately to its left, denotes a new function, an _extension_. 
+
+Compose is a binary extender and can be applied only with bracket notation. 
+(It is the only binary operator that cannot be applied infix.) 
+
+The extension is a variant of the object modified by the adverb. 
+For example, `+` is Add and `+/` is _sum_.
+
+```q
+q)(+/)1 2 3 4       / sum the list 1 2 3 4
+10
+q)16 + 1 2 3 4      / sum the list with starting value 16
+26
+```
+
+Any notation for an extension without its arguments (e.g. `+/`) denotes a constant function atom. 
+
+<i class="far fa-hand-point-right"></i> 
+[Application](application.md) for how to apply extenders and extensions
+
+
+## Names and namespaces
+
+Names consist of the upper- and lower-case alphabetic characters, the numeric characters, dot (`.`) and underscore (`_`). The first character in a name cannot be numeric or the underscore.
+
+!!! warning "Underscores in names"
+
+    While q permits the use of underscores in names, this usage is **strongly deprecated** because it is easily confused with [Drop](../ref/drop.md).
+
     <pre><code class="language-q">
-    q)|[2;3]
-    3
-    q)rotate[2; 2 3 4 5 6]
-    4 5 6 2 3
-    q)+/[2;2 3 4 5 6]
-    22
+    q)foo_bar:42
+    q)foo:3
+    q)bar:til 6
     </code></pre>
-A unary function can be applied by juxtaposition.
-```q
-q)reverse[0 1 2]    /function syntax
-2 1 0
-q)(reverse)(0 1 2)  /juxtaposition is application
-2 1 0
-q)reverse 0 1 2     /the parens are redundant
-2 1 0
-```
-A unary function `g` with argument `d` can be evaluated by `g@d` or `g.enlist d`.
-```q
-q)f:{x*2}
-q)f@42
-84
-```
-<i class="far fa-hand-point-right"></i> [`.` _apply_](unclassified/#apply) 
 
-When applied infix or by juxtaposition, a function’s right argument is the result of the _entire_ expression to its right. When applied infix, its left argument is the noun _immediately_ on its left.
-```q
-q}double:2*
-q)double 1 2 3 4 + 5   /arg of double is 6 7 8 9
-12 14 16 18
-q)double[1 2 3 4] + 5  /left-arg of + is 2 4 6 8
-7 9 11 13
-```
-Parentheses can be used conventionally to modify this order of evaluation.
-```q
-q)2 * 1 2 3 4 + 5
-12 14 16 18
-q)(2 * 1 2 3 4) + 5
-7 9 11 13
-```
+    Is `foo_bar` now `42` or `3 4 5`?
 
-!!! note "No hierarchy"
-    There is no hierarchy of precedence in evaluating functions. 
-    For example, neither `*` nor `%` has precedence over `+` and `-`.
+A name is unique in its namespace. 
+A kdb+ session has a default namespace, and child namespaces, nested arbitrarily deep. 
+This hierarchy is known as the _K-tree_. 
+Namespaces are identified by a leading dot in their names.
 
-**Functions with no arguments** require special handling. For example, if `f:{2+3}` then `f` can be evaluated with `@` and with any argument.
-```q
-q)f:{2+3}
-q)f[]
-5
-q)f@0
-5
-```
-Both `.` and `@` are referred to as _index_ and _apply_ according to use. 
-In most cases, `@` can be replaced more readably with whitespace. 
+Kdb+ includes namespaces `.h`, `.j`, `.q`, `.Q`, and `.z`. 
+(All namespaces with one-character names are reserved for use by Kx.)
 
-!!! note "Function arguments and list indexes"
-    A function is a mapping from its arguments to its result. A list is a mapping from its indexes to its values. They use the same syntax, including – for unary functions – juxtaposition. 
-
-        q){x*x}[3 4 5]
-        9 16 25
-        q)0 1 4 9 16 25 36 49[3 4 5]
-        9 16 25
-        q){x*x} 3 4 5
-        9 16 25
-        q)x:0 1 4 9 16 25 36 49
-        q)x 3 4 5
-        9 16 25
+Names with dots are _compound_ names, and the segments between dots are _simple_ names. All simple names in a compound name have meaning relative to the K-tree, and the dots denote the K-tree relationships among them.
+Two dots cannot occur together in a name. Compound names beginning with a dot are called _absolute_ names, and all others are _relative_ names.
 
 
-### Definition
+## Extender composition
 
-A function is defined explicitly as a _signature_ (a list of up to 8 argument names) followed by a list of expressions enclosed in curly braces and separated by semicolons. This is known as the _lambda notation_, and functions so defined as _lambdas_.
-```q
-q){[a;b] a2:a*a; b2:b*b; a2+b2+2*a*b}[20;4]  / binary function
-576
-```
-Functions with 3 or fewer arguments may omit the signature and instead use default names `x`, `y` and `z`. 
-```q
-q){(x*x)+(y*y)+2*x*y}[20;4]
-576
-```
-The result of the function is the result of the last statement evaluated. If the last statement is empty, the result is the generic null, which is not displayed.
-```q
-q)f:{2*x;}      / last statement is empty
-q)f 10          / no result shown
-q)(::)~f 10     / matches generic null
-1b
-```
-To terminate evaluation successfully and return a value, use an empty assignment, which is `:` with a value to its right and no variable to its left.
-```q
-q)c:0
-q)f:{a:6;b:7;:a*b;c::98}
-q)f 0
-42
-q)c
-0
-```
-To abort evaluation immediately, use _signal_, which is `'` with a value to its right.
-```q
-q)c:0
-q)g:{a:6;b:7;'`TheEnd;c::98}
-q)g 0
-{a:6;b:7;'`TheEnd;c::98}
-'TheEnd
-q)c
-0
-```
-<i class="far fa-hand-point-right"></i> [error handling](errors), [evaluation control](control)
+An extension is _composed_ by any string of extenders with a map to the left and no spaces between any of the extender glyphs or between the map and the leftmost extender glyph. For example, `+\/:\:` composes a well-formed extension. The meaning of such a sequence of symbols is understood from left to right. The leftmost extender (`\`) modifies the map (`+`) to create a new function. The next extender to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the adverb at the right end.
+
+<i class="far fa-hand-point-right"></i>
+[Compose extender](../ref/compose.md)
 
 
-### Name scope
+## Projecting the left argument of an operator
 
-Within the context of a function, name assignments with `:` are _local_ to it and end after evaluation. Assignments with `::` are _global_ (in the session root) and persist after evaluation.
+If the left argument of an operator is present but the right argument is not, the argument and operator symbol together denote a _projection_. For example, `3 +` denotes the unary function “3 plus”, which in the expression `(3 +) 4` is applied to 4 to give 7.
+
+
+## Precedence and order of evaluation
+
+All functions in expressions have the same precedence, and with the exception of certain compound expressions the order of evaluation is strictly right to left. 
+
 ```q
-q)a:b:0                      / set globals a and b to 0
-q)f:{a:10+3*x;b::100+a;}     / f sets local a, global b
-q)f 1 2 3                    / apply f
-q)a                          / global a is unchanged
-0
-q)b                          / global b is updated
-113 116 119
-```
-References to names _not_ assigned locally are resolved in the session root. Local assignments are _strictly local_: invisible to other functions applied during evaluation. 
-```q
-q)a:42           / assigned in root
-q)f:{a+x}
-q)f 1            / f reads a in root
-43
-q){a:1000;f x}1  / f reads a in root
-43
+a * b +c
 ```
 
+is `a*(b+c)`, not `(a*b)+c`.
 
-### Projection
+This rule applies to each expression within a compound expression and, other than the exceptions noted below, to the set of expressions as well. That is, the rightmost expression is evaluated first, then the one to its left, and so on to the leftmost one. 
 
-A function applied to more arguments than its rank signals a rank error. 
-A function applied to fewer arguments than its rank returns a _projection_ of the function on the specified argument/s, in which their value/s are fixed. The projection is a function only of the _unspecified_ argument/s.
+For example, in the following pair of expressions, the first one assigns the value 10 to `x`. In the second one, the rightmost expression uses the value of `x` assigned above; the center expression assigns the value 20 to `x`, and that value is used in the leftmost expression:
+
 ```q
-q)foo:{x+y+2*z}
-q)bar:foo[;;1000]  /bar is a projection of foo on z:1000
-q)bar[2;3]
-2005
+q)x: 10
+q)(x + 5; x: 20; x - 5)
+25 20 5
 ```
-Where `f` is a function of rank $N$, and `g` is a projection of `f` on $m$ arguments (where $N \gt m$) `g` has rank $N-m$.
 
-Operators can be projected in the usual way; but also by eliding the right-argument. 
+The sets of expressions in index expressions and argument expressions are also evaluated from right to left. However, in function expressions, conditional evaluations, and control statements the sets of expressions are evaluated left to right. 
+
 ```q
-q)double:*[2]
-q)halve:%[;2]
-q)treble:3*
-q)total:(+)over
+q)f:{a : 10; : x + a; a : 20}
+q)f[5]
+15
+```
+
+The reason for this order of evaluation is that the function `f` written on one line above is identical to:
+
+```q
+f:{ 
+  a : 10;
+  :x+ a;
+  a : 20 }
+```
+
+It would be neither intuitive nor suitable behavior to have functions executed from the bottom up. (Note that in the context of function expressions, unary colon is Return.)
+
+
+## Multiline expressions
+
+Individual expressions can occupy more than one line in a script. Expressions can be broken after the semicolons that separate the individual expressions within compound expressions; it is necessary only to indent the continuation with one or more spaces.
+For example:
+```q
+(a + b;
+  ;
+  c - d)
+```
+is the 3-item list `(a+b;;c-d)`. 
+
+Note that whenever a set of expressions is evaluated left to right, such as those in a function expression, if those expressions occupy more than one line then the lines are evaluated from top to bottom.
+
+
+## Spaces
+
+Any number of spaces are usually permitted between tokens in expressions, and usually the spaces are not required. The exceptions are:
+
+-   No spaces are permitted between the symbols 
+  -   `'` and `:` when denoting the extender `':`
+  -   `\` and `:` when denoting the extender `\:`
+  -   `/` and `:` when denoting the extender `/:`
+  -   a digit and `:` when denoting a function such as `0:`
+  -   `:` and `:` for assignments of the form `name :: value`
+-   No spaces are permitted between an extender glyph and the map or
+extender symbol to its left.
+-   No spaces are permitted between an operator glyph and a colon to its right whose purpose is to denote assignment.
+-   If a `/` is meant to denote the left end of a comment then it must be preceded by a blank (or newline); otherwise it will be taken to be part of an extender.
+-   Both the underscore character (`_`) and dot character (`.`) denote operators and can also be part of a name. The default choice is part of a name. A space is therefore required between an underscore or dot and a name to its left or right when denoting a function.
+-   At least one space is required between neighboring numeric constants in vector notation.
+-   A minus sign (`-`) denotes both an operator and part of the format of negative constants. A minus sign is part of a negative constant if it is next to a positive constant and there are no spaces between, except that a minus sign is always considered to be the function if the token to the left is a name, a constant, a right parenthesis or a right bracket, and there is no space between that token and the minus sign. The following examples illustrate the various cases:<pre><code class="language-q">
+x-1            / x minus 1
+x -1           / x applied to -1
+3.5-1          / 3.5 minus 1
+3.5 -1         / numeric list with two elements 
+x[1]-1         / x[1] minus 1
+(a+b)- 1       / (a+b) minus 1
+</code></pre>
+
+
+## Comments
+
+Line, trailing and multiline comments are ignored by the interpreter.
+
+```q
+q)/Oh what a lovely day
+q)2+2  /I know this one
+4
+```
+
+As first and only non-whitespace char on a line: 
+
+*   `/` starts a multiline comment  
+*   `\` terminates a multiline comment or, if not in a comment, comments to end of script  
+
+```q
+/
+    Oh what a beautiful morning
+    Oh what a wonderful day
+\
+a:42
+\
+ignore this and what follows
+the restroom at the end of the universe
 ```
 
 
-### Operators as left arguments
+## Special constructs
 
-Some operators take functions as left-arguments. To pass an _operator_ `f` as the left-argument of operator `g`, parenthesise it.
-```q
-q)(+)over til 10
-45
-q)(and)over til 10
-0
-q){x+y}over til 10  / parens required only for operators
-45
-```
+Back-slash, colon and single-quote (`/ \ : '`) all have special meanings outside ordinary expressions, denoting [system commands](syscmds.md) and [debugging controls](debug.md).
 
-
-## Adverbs
-
-[Adverbs](adverbs) are primitive higher-order functions that return _derivatives_ (derived functions). Unary adverbs are applied postfix. 
-```q
-q)double:2*         /unary projection of * 
-q)double/[3;2 3 4]  /repeat: apply double 3 times
-16 24 32
-```
-
-!!! warning "Stay close"
-    A space preceding `/` begins a trailing comment so, for example, `+/`, never `+ /`.
-
-
-### Derivatives
-
-Except for derivatives of _compose_, binary derivatives can also be applied infix. 
-```q
-q)10+/2 3 4
-19
-q)3 double/2 3 4    /repeat: apply double 3 times
-16 24 32
-```
-Some derivatives are _ambivalent_: they can be be applied with different ranks.
-```q
-q)+/[2 3 4]         /+ over: unary 
-9
-q)+/[10;2 3 4]      /+ over: binary 
-19
-```
-
-<div class="kx-compact" markdown="1">
-
-| form       | adverb                                | derivative rank/s |
-|------------|---------------------------------------|-------------------|
-| `int'`     | [case](adverbs/#case)                 | `1+max int`       |
-| `'[fn;g1]` | [compose](adverbs/#compose)           | n                 |
-| `f1'`      | [each-both](adverbs/#each-both)       | 2                 |
-| `f2\:`     | [each-left](adverbs/#each-left)       | 2                 |
-| `f2/:`     | [each-right](adverbs/#each-right)     | 2                 |
-| `f1':`     | [each-parallel](adverbs/#each-right)  | 1                 |
-| `f2':`     | [each-prior](adverbs/#each-prior)     | 1, 2              |
-| `f1/`      | [repeat](adverbs/#converge-repeat)    | 2                 |
-| `f2/`      | [over](adverbs/#over)                 | 1, 2              |
-| `fn/`      | [fold](adverbs/#fold)                 | n                 |
-| `f1\`      | [converge](adverbs/#converge-iterate) | 1                 |
-| `f1\`      | [iterate](adverbs/#converge-iterate)  | 2                 |
-| `f2\`      | [scan](adverbs/#scan)                 | 1, 2, …           |
-
-</div>
-Key: `int`: int vector; `f1`: unary function; `g1`: unary function; `f2`: binary function; `fn`: function of rank n&gt;2.
-
-
-### Ambivalent derivatives
-
-When an ambivalent derivative is applied to a single argument, instead of projecting the function, a default `x` is assumed. 
-```q
-q)+/[0;2 3 4]
-9
-q)+/[2 3 4]          /not a projection
-9
-q)foo:+/[;2 3 4]     /projection
-q)foo 10
-19
-q)+/[10;2 3 4]
-19
-q)tot:+/             /assignment preserves ambivalence
-q)tot[2 3 4]         /unary application
-9
-q)tot[10;2 3 4]      /binary application
-19
-```
-Applying an ambivalent function by juxtaposition (in noun syntax) applies it as a unary function. 
-```q
-q)10+/2 3 4    /infix in function syntax
-19
-q)(+/)2 3 4    /derivative applied by juxtaposition in noun syntax
-9
-q)10(+/)2 3 4  /noun syntax precludes infix
-'Cannot write to handle 10. OS reports: Bad file descriptor
-```
-
-
-## Q-SQL
-
-Expressions beginning with `insert`, `select` or `update` employ [q-SQL template syntax](qsql). 
-
-
-## Control words
-
-The control words `do`, `if`, `while` [govern evaluation](control). 
-A control word is followed by a bracketed list of expressions:
-
-<code>[e<sub>0</sub>;e<sub>1</sub>;e<sub>2</sub>; … ;e<sub>n</sub>]</code>
-
-Expression <code>e<sub>0</sub></code> is always evaluated. Whether any other expression is evaluated is governed by the control word. 
-
-
-## K syntax
-
-!!! warning "K is deprecated"
-    Q is a domain-specific language for finance embedded in the k programming language. Many reserved words in q expose definitions in k. 
-
-        q)show rotate
-        k){$[0h>@y;'`rank;98h<@y;'`type;#y;,/|(0;mod[x;#y])_y;y]}[k){1 .Q.s x;}]
-
-    Because of this, there are k expressions that work in the q interpreter, but which are not defined as part of the q language. 
-    
-    Although q provides a toggle for switching in and out of k, k is currently undocumented and its use in q scripts is deprecated and unsupported.
-    
-    If you find a k expression in a q script, you should be able to replace it with a q expression.
-    <pre><code class="language-q">
-    q)(-)1 2 3       /k - deprecated
-    -1 -2 -3
-    q)neg 1 2 3      /q equivalent
-    -1 -2 -3
-    q)(|)1 2 3       /k - deprecated
-    3 2 1
-    q)reverse 1 2 3  /q equivalent
-    3 2 1
-    </code></pre>

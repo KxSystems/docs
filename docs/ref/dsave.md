@@ -2,22 +2,21 @@
 
 
 
-_Save global tables to disk_
+_Saves global tables to disk as splayed, enumerated, indexed kdb+ tables._
 
 Syntax: `x dsave y`, `dsave[x;y]`
 
-Saves global tables to disk as splayed, enumerated, indexed kdb+ tables. (Since V3.2 2014.05.07.)
-
-Where 
+Where
 
 -   `x` is the save path as a symbol or symbol list
 -   `y` is a list of table names
 
 returns the list of table names, having saved the table/s as a side effect.
+(Since V3.2 2014.05.07.)
 
 The first column of each table saved has the `` `p `` attribute applied to it. If the path is a list, the first item is the HDB root (where the sym file, if any, will be stored), while the remaining ites are a path within the HDB (e.g. a partition).
 
-`dsave` provides roughly the same functionality as the combination of [`.Q.en`](dotq.md#qen-enumerate-varchar-cols) and [`set`](set.md) or [`.Q.dpft`](dotq.md#qdpft-save-table), but in a simpler form.
+`dsave` provides roughly the same functionality as the combination of [`.Q.en`](dotq.md#qen-enumerate-varchar-cols) and [`set`](get.md#set) or [`.Q.dpft`](dotq.md#qdpft-save-table), but in a simpler form.
 
 ```q
 q)t:flip`sym`price`size!100?'(-10?`3;1.0;10)
@@ -127,11 +126,10 @@ asize| j
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[set](set.md), 
+[set](get.md#set), 
 [.Q.en](dotq.md#qen-enumerate-varchar-cols), 
 [.Q.dpft](dotq.md#qdpft-save-table), 
-[.Q.hdpf](dotq.md#qhdpf-save-tables),
-[File system](../basics/files.md),
-
+[.Q.hdpf](dotq.md#qhdpf-save-tables)  
+Basics: [File system](../basics/files.md)
 
 

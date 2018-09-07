@@ -1,3 +1,7 @@
+---
+keywords: group, kdb+, q, qsql, sql, sort
+---
+
 # `group`
 
 
@@ -39,4 +43,5 @@ p| 8
 
 <i class="far fa-hand-point-right"></i> 
 [`ungroup`](ungroup.md), 
-[`xgroup`](xgroup.md)
+[`xgroup`](xgroup.md)  
+Basics: [Sorting](../basics/sort.md) 

@@ -7,7 +7,7 @@ title: Index of whitepapers
 
 ## Programming in q
 
-* [Efficient use of **unary operators**](wp/efficient-operators) &nbsp; <i class="fas fa-print"></i> <small>[A4](wp/efficient-operators/efficient-operators-a4.pdf), [US Letter](wp/efficient-operators/efficient-operators-us.pdf)</small>
+* [Efficient use of **extenders**](wp/efficient-operators) &nbsp; <i class="fas fa-print"></i> <small>[A4](wp/efficient-operators/efficient-operators-a4.pdf), [US Letter](wp/efficient-operators/efficient-operators-us.pdf)</small>
 * **C API** for kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](wp/c_api_for_kdb.pdf)
 * **Compression** in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](wp/compression_in_kdb.pdf)
 * The application of **foreign keys** and linked columns in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](wp/the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)

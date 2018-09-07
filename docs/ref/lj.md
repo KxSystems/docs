@@ -1,6 +1,5 @@
 ---
-title: Left join
-keywords: join, kdb+, left join, lj, ljf, q
+keywords: join, kdb+, left,left join, lj, ljf, q
 ---
 
 # `lj`, `ljf` 

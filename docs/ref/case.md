@@ -2,21 +2,21 @@
 
 
 
-_Pick successive items from multiple list arguments: the left argument of the adverb determines from which of the arguments each item is picked._
+_Pick successive items from multiple list arguments: the left argument of the extender determines from which of the arguments each item is picked._
 
 Syntax: `x'[a;b;c;…]`  
 
 Where 
 
 -   `x` is an integer vector
--   $args$ `[a;b;c;…]` are the arguments to the derivative
+-   $args$ `[a;b;c;…]` are the arguments to the extension
 
-the derivative `x'` returns $r$ such that 
+the extension `x'` returns $r$ such that 
 $r_i$ is ($args_{x_i})_i$
 
 ![case](/img/case.png)
 
-The derivative `x'` has rank `max[x]+1`. 
+The extension `x'` has rank `max[x]+1`. 
 
 Atom arguments are treated as infinitely-repeated values.
 ```q
@@ -53,6 +53,7 @@ home   "(677)-200-5231" "(546)-864-5636" "(677)-200-5231"
 home   "(463)-653-5120" "(636)-437-2336" "(463)-653-5120"
 ```
 
-<i class="far fa-hand-point-right"></i> [Unary operators](unary-operators), [operators](operators)
+<i class="far fa-hand-point-right"></i> 
+[Extenders](extenders.md)
 
 

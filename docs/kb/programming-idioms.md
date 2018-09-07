@@ -314,7 +314,7 @@ q)swin[0N!; 3; til 10]
 3 4 5
 ..
 ```
-A different approach based on [`prev`](/basics/select/#prev), inserting `0N` at the beginning of the window rather than 0:
+A different approach based on [`prev`](/basics/selection/#prev), inserting `0N` at the beginning of the window rather than 0:
 ```q
 q)swin2:fwv:{x/'[flip reverse prev\[y-1;z]]}
 q)swin2[avg;3;til 10]

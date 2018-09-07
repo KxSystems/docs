@@ -1,8 +1,14 @@
-# `view`
+---
+title: view, views
+keywords: kdb+, metadata, q, view, views
+---
+
+# `view`, `views`
 
 
 
 
+## `view`
 
 _Expression defining a view_
 
@@ -19,7 +25,24 @@ q)view `v                         / view the dependency expression
 "2+a*3"
 ```
 
+
+
+## `views`
+
+_Views defined in the default namespace_
+
+Syntax: `views[]`
+
+Returns a sorted list of the views currently defined in the default namespace.
+
+```q
+q)w::b*10
+q)v::2+a*3
+q)views[]
+`s#`v`w
+```
+
+
 <i class="far fa-hand-point-right"></i> 
+Basics: [Metadata](../basics/metadata.md)  
 Tutorials: [Views](../tutorials/views.md)
-
-

@@ -75,7 +75,8 @@ t| t . t t t t t t t . t . . t n t t t
 Range: `bxhijefcpmdznuvt`
 
 <i class="far fa-hand-point-right"></i> 
-[`or` `|` Maximum](maximum.md), [`max`](max.md), [`min`](ref/min.md)  
-Basics: [Logic](/basics/logic.md) 
+[`or` `|` Maximum](maximum.md), 
+[`max`](max.md), [`min`](min.md)  
+Basics: [Logic](../basics/logic.md) 
 
 

@@ -1,4 +1,13 @@
+---
+keywords: diff, difference, item, kdb+, list, q
+---
+
 # `deltas`
+
+_Differences between list items_
+
+
+<!-- FIXME deprecate binary form? -->
 
 
 Syntax: `deltas y`, `deltas[y]`, `deltas[x;y]` 
@@ -14,7 +23,7 @@ Note `deltas` is ambivalent: can be applied as unary or binary.
 Where applied as 
 
 - a **binary** function, the result is
-<pre><code>
+<pre><code class="language-q">
 (-[y 0;x];-[y 1;y 0];-[y 2;y 1];…;-[y n-1;y n-2])
 </code></pre>
 <pre><code class="language-q">
@@ -29,10 +38,13 @@ q)deltas 1 4 9 16
 </code></pre>
 
 In a query to get price movements:
+
 ```q
 q)update diff:deltas price by sym from trade
 ```
-With [`signum`](signum) to count the number of up/down/same ticks:
+
+With [`signum`](signum.md) to count the number of up/down/same ticks:
+
 ```q
 q)select count i by signum deltas price from trade
 price| x
@@ -42,6 +54,7 @@ price| x
 1    | 252
 ```
 
-<i class="far fa-hand-point-right"></i> [_each-prior_](quote-colon/#each-prior), [`differ`](differ), [`ratios`](ratios)
+<i class="far fa-hand-point-right"></i> 
+[Each-prior](distributors.md#each-prior), [`differ`](differ.md), [`ratios`](ratios.md)
 
 

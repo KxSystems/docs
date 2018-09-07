@@ -64,12 +64,12 @@ s4| 600
 
 
 <i class="far fa-hand-point-right"></i>
-_Q for Mortals_: [§9.4 The `exec` Template](http://code.kx.com/q4m3/9_Queries_q-sql/#94-the-exec-template), 
+_Q for Mortals_: [§9.4 The `exec` Template](http://code.kx.com/q4m3/9_Queries_q-sql/#94-the-exec-template)  
 Basics: [q-SQL](../basics/qsql.md)
 
 
 ## `?` Exec
 
 <i class="far fa-hand-point-right"></i>
-Functional SQL: [Exec](../basics/funsql.md#exec)
+Basics: [Functional SQL](../basics/funsql.md#exec)
 

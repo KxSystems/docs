@@ -1,5 +1,4 @@
 ---
-title: Inner join
 keywords: ij, ijf, inner join, join, kdb+, q
 ---
 

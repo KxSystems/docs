@@ -40,13 +40,16 @@ rank<br/>of f | argument<br/>notation | Apply            | Apply At | other     
 \>2   | `f[x;y;z;…]`          | `f . (x;y;z;…)`  |          |             |
 
 Binary operators and many binary keywords can be applied infix.
+
 ```q
 q)2+2                         / binary operator
 4
 q)3 in 0 1 2 3 4              / binary keyword
 1b
 ```
-Unary maps (keywords, lambdas, dictionaries, and lists – but not unary operators) can be applied prefix.
+
+Unary maps (keywords, lambdas, dictionaries, and lists – but not extenders) can be applied prefix.
+
 ```q
 q)count "zero"                / unary keyword
 4
@@ -60,7 +63,9 @@ q)m 1 3                       / is also a list (unary map)
 "def"
 "jkl"
 ```
-Unary operators can be applied postfix, and usually are.
+
+Extenders can be applied postfix, and usually are.
+
 ```q
 q)subtots:sum'                / '[sum]
 q)subtots 3 4#til 12
@@ -92,16 +97,19 @@ q)7 * 2 + 4
     This rule applies without exception. 
 
 
-## Unary operators
+## Extenders
 
-The unary operators are almost invariably applied postfix. 
+The extenders are almost invariably applied postfix. 
+
 ```q
 q)+/[17 13 12]
 42
 ```
-In the above, the Over operator `/` is applied postfix to its single argument `+` to form the [_derivative_](unary-operators) `+/` (sum). 
 
-An operator applied postfix has _short left scope_. That is, its argument is the _object immediately to its left_. For the [Case](/ref/each/#case) operator that object is an int vector; for all other unary operators, a map. But note that a unary operator’s argument may itself be a derivative.
+In the above, the Over extender `/` is applied postfix to its single argument `+` to form the [_extension_](../ref/extenders.md) `+/` (sum). 
+
+An extender applied postfix has _short left scope_. That is, its argument is the _object immediately to its left_. For the [Case](/ref/each/#case) extender that object is an int vector; for all other extenders, a map. But note that an extender’s argument may itself be an extension.
+
 ```q
 q)txt:(("Now";"is";"the";"time");("for";"all";"good";"folk"))
 q)txt
@@ -115,11 +123,13 @@ q)count''[txt]
 3 2 3 4
 3 3 4 4
 ```
-In the last example, the derivative `count'` is the argument of the second `'` (Each). 
 
-Only unary operators can be applied postfix. 
+In the last example, the extension `count'` is the argument of the second `'` (Each). 
 
-<i class="far fa-hand-point-right"></i> [Apply/Index and Apply/Index At](/ref/apply) for how to apply functions and index lists
+Only extenders can be applied postfix. 
+
+<i class="far fa-hand-point-right"></i> 
+[Apply/Index and Apply/Index At](../ref/apply.md) for how to apply functions and index lists
 
 
 ## Rank and syntax

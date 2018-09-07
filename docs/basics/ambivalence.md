@@ -25,9 +25,9 @@ q)t[1;`city]                    / binary
 `Paris
 ```
 
-Some operators are ambivalent, for example [Apply](/ref/apply.md) and [Amend](/ref/amend.md).
+Some operators are ambivalent, for example [Apply](../ref/apply.md) and [Amend](../ref/amend.md).
 
-Each Prior, Over and Scan applied to binary maps produce ambivalent [extensions](..ref/unary-operators.md).
+Each Prior, Over and Scan applied to binary maps produce ambivalent [extensions](../ref/extenders.md).
 
 ```q
 q)+/[2 3 4]                  / unary

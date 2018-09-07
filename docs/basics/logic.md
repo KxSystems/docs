@@ -2,7 +2,7 @@
 
 
 
-[`all`](../ref/all.md)
+[`all`](../ref/all-any.md#all)
 
 : Returns `1b` if all items are non-zero. (Aggregate)
 
@@ -10,7 +10,7 @@
 
 : Logical AND. Also Minimum. (Atomic)
 
-[`any`](../ref/any.md)
+[`any`](../ref/all-any.md#any)
 
 : Returns `1b` if any item is zero. (Aggregate)
 

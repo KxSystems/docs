@@ -18,19 +18,19 @@ keywords: dictionary, group, kdb+, q, sort, table
 
 : Normalize a table of same-length lists
 
-[`xasc`](../ref/xasc.md)
+[`xasc`](../ref/asc.md#xasc)
 
 : Sort a table in ascending order
 
-[`xcol`](../ref/xcol.md)
+[`xcol`](../ref/cols.md#xcol)
 
 : Rename table columns
 
-[`xcols`](../ref/xcols.md)
+[`xcols`](../ref/cols.md#xcols)
 
 : Re-order table columns
 
-[`xdesc`](../ref/xdesc.md)
+[`xdesc`](../ref/desc.md#xdesc)
 
 : Sort a table in descending order
 
@@ -38,7 +38,7 @@ keywords: dictionary, group, kdb+, q, sort, table
 
 : Group a table by values in selected columns
 
-[`xkey`](../ref/xkey.md)
+[`xkey`](../ref/keys.md#xkey)
 
 : Set specified columns as primary keys of a table
 

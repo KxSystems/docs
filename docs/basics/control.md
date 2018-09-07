@@ -10,26 +10,26 @@ keywords: control, control words, distributive, evaluation, iterate, kdb+, opera
 
 Evaluation is controlled by 
 
--   [unary operators](../ref/unary-operators.md) for iteration 
+-   [extenders](../ref/extenders.md) for iteration 
 -   conditional evaluation
 -   explicit return from a lambda
 -   signalling and trapping errors
 -   control words
 
 
-## Unary operators
+## Extenders
 
 These are the primary means of iterating in q.
 
 
-### Distributive operators
+### Distributors
 
-The [distributive operators](../ref/distributive-operators.md) Each, Each Left, Each Right, Each Parallel, and Each Prior apply maps across the items of lists and dictionaries. 
+The [distributors](../ref/distributors.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are extenders that apply maps across the items of lists and dictionaries. 
 
 
-### Progressive operators
+### Progressors
 
-The [progressive operators](../ref/progressive-operators.md) Scan and Over apply maps _successively_: that is, first to argument/s, then successively to the result of each evaluation. 
+The [progressors](../ref/progressors.md) Scan and Over are extenders that apply maps _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
 
 For unary maps, they have three forms, known as Converge, Do, and While. 
 
@@ -124,7 +124,7 @@ q)\t do[100;log til 100000]
 396
 ```
 
-<i class="far fa-hand-point-right"></i> [Progressive operators – Do](../ref/progressive-operators.md#do)
+<i class="far fa-hand-point-right"></i> [Progressors – Do](../ref/progressors.md#do)
 
 
 ### `if` 
@@ -164,4 +164,4 @@ q)r
 1 1 2 3 5 8 13 21 34 55 89
 ```
 
-<i class="far fa-hand-point-right"></i> [Progressive operators – While](../ref/progressive-operators.md#while)
+<i class="far fa-hand-point-right"></i> [Progressors – While](../ref/progressors.md#while)

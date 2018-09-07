@@ -12,7 +12,7 @@ keywords: kdb+, metadata, q
 
 : Attributes of a list
 
-[`cols`](../ref/cols.md)
+[`cols`](../ref/cols.md#cols)
 
 : Columns of a table
 
@@ -34,7 +34,7 @@ keywords: kdb+, metadata, q
     -   name of an enumerating list
     -   a synonym for [`til`](../ref/til.md)
 
-[`keys`](../ref/keys.md)
+[`keys`](../ref/keys.md#keys)
 
 : Primary key column/s of a table
 
@@ -58,23 +58,24 @@ keywords: kdb+, metadata, q
 
 : Variously
 
--   values of a dictionary
--   value of a variable passed by name
--   symbol vector of an [enumeration](enumerations.md)
--   metadata of a function
--   metadata of a view
--   decomposition of a projection or composition
--   internal code of a primitive
--   original map of an extension
--   internal code of a primitive function
--   the result of applying the first item of a list to the rest of it
--   the result of evaluating a string
+    -   values of a dictionary
+    -   value of a variable passed by name
+    -   symbol vector of an [enumeration](enumerations.md)
+    -   metadata of a function
+    -   metadata of a view
+    -   decomposition of a projection or composition
+    -   internal code of a primitive
+    -   original map of an extension
+    -   internal code of a primitive function
+    -   the result of applying the first item of a list to the rest of it
+    -   the result of evaluating a string
+
 
 [`view`](../ref/view.md)
 
 : Expression defining a view
 
-[`views`](../ref/views.md)
+[`views`](../ref/view.md#views)
 
 : List of views in the default namespace
 

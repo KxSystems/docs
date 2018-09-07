@@ -238,7 +238,7 @@ Note that _take_ treats a list as circular if the number of items to take is lon
 q)7#2 3 5
 2 3 5 2 3 5 2
 ```
-An alternative is to use [`sublist`](/basics/select/#sublist), which takes only as many rows as are available.
+An alternative is to use [`sublist`](/basics/selection/#sublist), which takes only as many rows as are available.
 ```
 q)count trade
 10

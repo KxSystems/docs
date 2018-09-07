@@ -1,3 +1,7 @@
+---
+keywords: append, insert, kdb+, q, qsql, query, record, sql, table
+---
+
 # `insert`
 
 
@@ -58,7 +62,7 @@ t| 50
 
 
 <i class="far fa-hand-point-right"></i> 
-[`,` _join_](join.md), 
+[`,` Join](join.md)  
 Basics: [q-SQL](../basics/qsql.md)
 
 

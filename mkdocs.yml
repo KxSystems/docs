@@ -1,4 +1,5 @@
 copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Kx® and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
+# dev_addr: '159.65.88.218:8000'
 dev_addr: '0.0.0.0:8000'
 docs_dir: 'docs'
 extra:
@@ -31,7 +32,7 @@ markdown_extensions:
   # - codehilite(guess_lang=false)
   - extra
   # - fenced_code
-  - fontawesome_markdown
+  # - fontawesome_markdown
   - pymdownx.arithmatex
   # - pymdownx.betterem(smart_enable=all)
   # - pymdownx.caret
@@ -49,6 +50,7 @@ markdown_extensions:
 plugins: 
   - search
 site_dir: 'site'
+# site_dir: '/var/www/html'
 site_author: 'Kx Systems'
 site_description: Resources for kdb+ programmers
 # config.site_name: 'code.kx.com'
@@ -71,61 +73,47 @@ nav:
   - Reference card: ref/index.md
   - Language:
     - Basics:
-      # - Syntax: basics/syntax.md
       # - Functions: basics/functions.md
       - Ambivalence: basics/ambivalence.md
       - Application: basics/application.md
-      # - Arithmetic (float): basics/arith-float.md
-      # - Arithmetic (integer): basics/arith-integer.md
+      - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
       - Command line: basics/cmdline.md
       - Comparison: basics/comparison.md
+      - Conformability: basics/conformable.md
       - Control: basics/control.md
       - Datatypes: basics/datatypes.md
       - Debugging: basics/debug.md
       - Dictionaries & tables: basics/dictsandtables.md
-      - Elements: basics/elements.md
+      # - Elements: basics/elements.md
       - Enumerations: basics/enumerations.md
       - Environment: basics/environment.md
       - Errors: basics/errors.md
       - Exposed infrastructure: basics/exposed-infrastructure.md
       - File system: basics/files.md
+      - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
       - Glossary: basics/glossary.md
       - Internal functions: basics/internal.md
       - Iteration: basics/iteration.md
-        # - Distribution operators: basics/distribution-operators.md
-        # - Progression operators: basics/progression-operators.md
       - IPC protocol: basics/ipc.md
       - Joins: basics/joins.md
       - Logic: basics/logic.md
-      - Math: basics/math.md
+      - Mathematics: basics/math.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
-      - OS: basics/os.md
       - Parallel processing: basics/peach.md
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
       - QSQL: basics/qsql.md
-      - Randomness: basics/random.md
       - Search: basics/search.md
-      - Selection: basics/select.md
-      - Sort: basics/sort.md
-      - Statistics (aggregates): basics/stats-aggregates.md
-      - Statistics (moving): basics/stats-moving.md
+      - Selection: basics/selection.md
+      - Sorting: basics/sort.md
       - Strings: basics/strings.md
-      - Syntax: basics/syntax.md
-      - Syntax (k): basics/syntax_k.md
       - System commands: basics/syscmds.md
-      - Trigonometry: basics/trig.md
-      - Unclassified: basics/unclassified.md
+      - Syntax: basics/syntax.md
     - Operators:
-      - Index: ref/operators.md
-      - Unary operators:
-        - Overview: ref/unary-operators.md
-        - Case: ref/case.md
-        - Distributive operators: ref/distributive-operators.md
-        - Progressive operators: ref/progressive-operators.md
+      - Overloaded glyphs: ref/overloads.md
       - Add: ref/add.md
       - Amend: ref/amend.md
       # - Amend At: ref/amend-at.md
@@ -135,7 +123,6 @@ nav:
       - Apply: ref/apply.md
       - Cast: ref/cast.md
       - Coalesce: ref/coalesce.md
-      - Compose: ref/compose.md
       - Cond: ref/cond.md
       - Cut: ref/cut.md
       - Deal: ref/roll-deal.md
@@ -158,6 +145,7 @@ nav:
       - Find: ref/find.md
       - Flip Splayed: ref/flip-splayed.md
       - Greater Than: ref/greater-than.md
+      - Identity, Null: ref/identity.md
       - Join: ref/join.md
       - Less Than: ref/less-than.md
       - Match: ref/match.md
@@ -179,116 +167,134 @@ nav:
       - Vector Conditional: ref/vector-conditional.md
     - Keywords:
       - abs: ref/abs.md
-      - and: ref/and.md
-      - any: ref/any.md
       - aj, aj0: ref/aj.md
-      - all: ref/all.md
+      - all, any: ref/all-any.md
+      - and: ref/and.md
+      - asc, iasc, xasc: ref/asc.md
       - asof: ref/asof.md
       - attr: ref/attr.md
+      - avg, avgs, mavg, wavg: ref/avg.md
+      - bin, binr: ref/bin.md
       - ceiling: ref/ceiling.md
-      - count: ref/count.md
-      - cols: ref/cols.md
+      - count, mcount: ref/count.md
+      - cols, xcol, xcols: ref/cols.md
+      - cor: ref/cor.md
+      - cos, acos: ref/cos.md
+      - cov, scov: ref/cov.md
       - cross: ref/cross.md
       - csv: ref/csv.md
       - cut: ref/cut.md
       - delete: ref/delete.md
       - deltas: ref/deltas.md
+      - desc, idesc, xdesc: ref/desc.md
+      - dev, mdev, sdev: ref/dev.md
       - differ: ref/differ.md
       - distinct: ref/distinct.md
       - div: ref/div.md
       - dsave: ref/dsave.md
+      - ej: ref/ej.md
+      - ema: ref/ema.md
       - enlist: ref/enlist.md
+      - eval, reval: ref/eval.md
+      - except: ref/except.md
       - exec: ref/exec.md
-      - exp: ref/exp.md
+      - exp, xexp: ref/exp.md
       - exit: ref/exit.md
       - fby: ref/fby.md
-      - fills: ref/fills.md
+      - fills: ref/fill.md
+      - first, last: ref/first.md
       - fkeys: ref/fkeys.md
       - flip: ref/flip.md
       - floor: ref/floor.md
-      - get: ref/get.md
+      - get, set: ref/get.md
+      - getenv, setenv: ref/getenv.md
       - group: ref/group.md
-      - hclose: ref/hclose.md
-      - hcount: ref/hcount.md
-      - hdel: ref/hdel.md
-      - hopen: ref/hopen.md
-      - hsym: ref/hsym.md
+      - gtime, ltime: ref/gtime.md
+      - hcount, hdel, hopen, hclose, hsym: ref/handles.md
       - ij, ijf: ref/ij.md
+      - in: ref/in.md
       - insert: ref/insert.md
+      - inter: ref/inter.md
       - inv: ref/inv.md
       - key: ref/key.md
-      - keys: ref/keys.md
+      - keys, xkey: ref/keys.md
       - like: ref/like.md
       - lj, ljf: ref/lj.md
-      - load: ref/load.md
-      - log: ref/log.md
+      - load, rload: ref/load.md
+      - log, xlog: ref/log.md
       - lower: ref/lower.md
       - lsq: ref/lsq.md
-      - ltrim: ref/ltrim.md
+      - max, maxs, mmax: ref/max.md
       - md5: ref/md5.md
+      - med: ref/med.md
       - meta: ref/meta.md
+      - min, mins, mmin: ref/min.md
       - mmu: ref/mmu.md
       - mod: ref/mod.md
       - neg: ref/neg.md
+      - next, prev, xprev: ref/next.md
       - not: ref/not.md
       - null: ref/null.md
       - or: ref/or.md
+      - parse: ref/parse.md
       - pj: ref/pj.md
-      - prd: ref/prd.md
-      - prds: ref/prds.md
+      - prd, prds: ref/prd.md
+      - rand: ref/rand.md
+      - rank: ref/rank.md
       - ratios: ref/ratios.md
       - raze: ref/raze.md
       - read0: ref/read0.md
       - read1: ref/read1.md
       - reciprocal: ref/reciprocal.md
       - reverse: ref/reverse.md
-      - rload: ref/rload.md
       - rotate: ref/rotate.md
-      - rsave: ref/rsave.md
-      - rtrim: ref/rtrim.md
-      - save: ref/save.md
+      - save, rsave: ref/save.md
       - select: ref/select.md
-      - set: ref/set.md
       - show: ref/show.md 
       - signum: ref/signum.md 
+      - sin, asin: ref/sin.md
       - sqrt: ref/sqrt.md
-      - ss: ref/ss.md
-      - ssr: ref/ssr.md
+      - ss, ssr: ref/ss.md
       - string: ref/string.md
-      - sum: ref/sum.md
-      - sums: ref/sums.md
+      - sublist: ref/sublist.md
+      - sum, sums, msum, wsum: ref/sum.md
       - sv: ref/sv.md
       - system: ref/system.md
       - tables: ref/tables.md
+      - tan, atan: ref/tan.md
       - til: ref/til.md
-      - trim: ref/trim.md
+      - trim, ltrim, rtrim: ref/trim.md
       - type: ref/type.md
       - uj, ujf: ref/uj.md
+      - union: ref/union.md
       - ungroup: ref/ungroup.md
       - update: ref/update.md
-      - upper: ref/upper.md
       - upsert: ref/upsert.md
       - value: ref/value.md
-      - view: ref/view.md
-      - views: ref/views.md
+      - var, svar: ref/var.md
+      - view, views: ref/view.md
       - vs: ref/vs.md
+      - where: ref/where.md
+      - within: ref/within.md
       - wj, wj1: ref/wj.md
-      - xasc: ref/xasc.md
       - xbar: ref/xbar.md
-      - xcol: ref/xcol.md
-      - xcols: ref/xcols.md
-      - xdesc: ref/xdesc.md
-      - xexp: ref/xexp.md
       - xgroup: ref/xgroup.md
-      - xkey: ref/xkey.md
-      - xlog: ref/xlog.md
+      - xrank: ref/xrank.md
+    - Extenders:
+      - Overview: ref/extenders.md
+      - Case: ref/case.md
+      - Compose: ref/compose.md
+      - Distributors: ref/distributors.md
+      - Progressors: ref/progressors.md
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
-    - Terminology: terminology.md
-    - Releases:
+    # - Terminology: terminology.md
+    # - Syntax (k): basics/syntax_k.md
+    # - Syntax (q): syntax.md
+    - Release notes:
       - Changes in 3.6: releases/ChangesIn3.6.md
       - Changes in 3.5: releases/ChangesIn3.5.md
       - Changes in 3.4: releases/ChangesIn3.4.md
@@ -306,33 +312,33 @@ nav:
     - Learning the city: tutorials/index.md   
     - Installing: tutorials/install.md
     - Licensing: tutorials/licensing.md
-    # - A brief introduction:
-    #   - First steps: tutorials/first-steps.md
-    #   - In-memory queries: tutorials/in-memory-queries.md
-    #   - On-disk queries: tutorials/on-disk-queries.md
-    # - Dictionaries & tables: tutorials/dictsandtables.md
-    # # - Idioms: tutorials/idioms.md
-    # - Q by examples: tutorials/q-by-examples.md
+    - A brief introduction:
+      - First steps: tutorials/first-steps.md
+      - In-memory queries: tutorials/in-memory-queries.md
+      - On-disk queries: tutorials/on-disk-queries.md
+    - Dictionaries & tables: tutorials/dictsandtables.md
+    # - Idioms: tutorials/idioms.md
+    - Q by examples: tutorials/q-by-examples.md
     - Q for Mortals 3: q4m3.md
-    # - Shifts & scans: tutorials/shifts-scans.md
-    - A Walking Introduction:
-    # - Starting kdb+:
-      - 1. Introduction: tutorials/startingq/introduction.md
-      - 2. The q language: tutorials/startingq/language.md
-      - 3. IPC: tutorials/startingq/ipc.md
-      - 4. Tables: tutorials/startingq/tables.md
-      - 5. HDB: tutorials/startingq/hdb.md
-      - 6. Kdb+tick: tutorials/startingq/tick.md
-    # - Views: tutorials/views.md
-    - Understanding q:
-      - Introduction: tutorials/uq/index.md
-      - Applying functions: tutorials/uq/functions.md
-      - Maps: tutorials/uq/maps.md
-      - Adverbs: tutorials/uq/adverbs.md
-      - Each adverbs: tutorials/uq/adverbs-each.md
-      - Iteration adverbs: tutorials/uq/adverbs-iteration.md
-      - Reduction adverbs: tutorials/uq/adverbs-reduction.md
-      - TO DO: tutorials/uq/todo.md
+    - Shifts & scans: tutorials/shifts-scans.md
+    # - A Walking Introduction:
+    # # - Starting kdb+:
+    #   - 1. Introduction: tutorials/startingq/introduction.md
+    #   - 2. The q language: tutorials/startingq/language.md
+    #   - 3. IPC: tutorials/startingq/ipc.md
+    #   - 4. Tables: tutorials/startingq/tables.md
+    #   - 5. HDB: tutorials/startingq/hdb.md
+    #   - 6. Kdb+tick: tutorials/startingq/tick.md
+    - Views: tutorials/views.md
+    # - Understanding q:
+    #   - Introduction: tutorials/uq/index.md
+    #   - Applying functions: tutorials/uq/functions.md
+    #   - Maps: tutorials/uq/maps.md
+    #   - Adverbs: tutorials/uq/adverbs.md
+    #   - Each adverbs: tutorials/uq/adverbs-each.md
+    #   - Iteration adverbs: tutorials/uq/adverbs-iteration.md
+    #   - Reduction adverbs: tutorials/uq/adverbs-reduction.md
+    #   - TO DO: tutorials/uq/todo.md
     - A Survey of kdb+: tutorials/survey.md
   - Interfaces:
     - Interface summary: interfaces.md
@@ -398,6 +404,7 @@ nav:
     - Multithreaded input: kb/multithreaded-input.md
     - Named pipes: kb/named-pipes.md
     - ODBC: kb/odbc.md
+    - par.txt: kb/par-txt.md
     - Performance tips: kb/performance-tips.md
     - Precision: kb/precision.md
     - Pivoting tables: kb/pivoting-tables.md

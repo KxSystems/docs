@@ -1,5 +1,11 @@
+---
+keywords: diff, differ, kdb+, item, list, q
+---
+
 # `differ`
 
+_Find where list items change value
+_
 
 
 Syntax: `differ x`, `differ[x]`
@@ -43,10 +49,13 @@ date       sym  price   size
 2009.10.02 CSCO 12.7531 760
 ```
 
-!!! warning "Ambivalent use deprecated"
+!!! warning "Binary use deprecated"
 
     As of V3.6 the keyword is [ambivalent](../basics/ambivalence.md). 
     The ambivalence is deprecated and may disappear in future versions.
     The keyword cannot be applied infix. 
 
-<i class="far fa-hand-point-right"></i> Basics: [Comparison](../basics/comparison.md)
+    For a binary version, use Match Each Prior: `~:'`.
+
+<i class="far fa-hand-point-right"></i> 
+Basics: [Comparison](../basics/comparison.md)

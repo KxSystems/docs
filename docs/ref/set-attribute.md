@@ -1,13 +1,18 @@
+---
+title: Set Attribute
+keywords: attribute, grouped, kdb+, parted, q, sorted, unique, 
+---
+
 # `#` Set Attribute
 
 
 
 
-Syntax: `x # y`
+Syntax: `x#y`, `#[x;y]`
 
 Where `y` is a list and atom `x` is 
 
--   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](../basics/elements.md#/#attributes) set
+-   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](../basics/syntax.md#/#attributes) set
 -   the null symbol `` ` ``, returns `y` with all attributes removed
 
 ```q
@@ -31,8 +36,32 @@ q)t:([1 2 4]y:7 8 9);`s#t;attr each (t;key t)
 ``s
 ```
 
+For 64-bit V3.0+, where `n` is the number of items and `d` is the number of distinct (unique) items, the byte overhead in memory is:
 
-<i class="far fa-hand-point-right"></i> 
-Basics: [Attributes](../basics/elements.md#/#attributes)
+example       |         | byte overhead
+--------------|---------|--------------
+`` `s#2 2 3`` | sorted  | `0`
+`` `u#2 4 5`` | unique  | `32*d`
+`` `p#2 2 1`` | parted  | `(48*d)+8*n`
+`` `g#2 1 2`` | grouped | `(16*d)+8*n`
+
+
+Attribute `u` is for unique lists – where all items are distinct.
+
+!!! tip "Grouped and parted"
+
+    Attributes `p` and `g` are useful for lists in memory with a lot of repetition.
+
+    If the data can be sorted such that `p` can be applied, the `p` attribute effects better speedups than `g`, both on disk and in memory.
+
+    The `g` attribute implies an entry’s data may be dispersed – and possibly slow to retrieve from disk.
+
+Some q functions use attributes to work faster:
+
+-    Where-clauses in [`select` and `exec` templates](../basics/qsql.md) run faster with `where =`, `where in` and `where within`
+-    Searching: [`bin`](bin.md), [`distinct`](distinct.md), [Find](find.md) and [`in`](in.md) (if the right argument has an attribute)
+-    Sorting: [`iasc`](asc.md#iasc) and [`idesc`](asc.md##idesc)
+-    Dictionaries: [`group`](group.md)
+
 
 

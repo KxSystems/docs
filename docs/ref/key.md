@@ -1,19 +1,25 @@
 ---
-title: key
 keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
 ---
+
+<div markdown="1" style="float: right; max-width: 300px">
+[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
+</div>
+
+
 
 # `key`
 
 
 
+
 Syntax `key x`, `key[x]`
 
-Where `x` is a
 
-## Dictionary
 
-(or a handle to one), returns its entries as a symbol vector.
+## Entries of a dictionary
+
+Where `x` is a dictionary (or a handle to one), returns its entries as a symbol vector.
 
 ```q
 q)D:`q`w`e!(1 2;3 4;5 6)
@@ -40,9 +46,9 @@ q)key `           /list namespaces in the root
 ```
 
 
-## Keyed table
+## Keys of a table
 
-(or a handle to one), returns its key column/s.
+Where `x` is a keyed table (or a handle to one), returns its key column/s.
 
 ```q
 q)K:([s:`q`w`e]g:1 2 3;h:4 5 6)
@@ -55,9 +61,9 @@ e
 ```
 
 
-## Directory handle
+## Files in a folder
 
-returns a list of objects in the directory. 
+Where `x` is a directory handle returns a list of objects in the directory.
 
 ```q
 q)key`:c:/q
@@ -73,9 +79,9 @@ q)f where f like "*.q"
 ```
 
 
-## File handle
+## Whether a file exists
 
-returns the descriptor if the file exists, otherwise an empty list.
+Where `x` is a file handle returns the descriptor if the file exists, otherwise an empty list.
 
 ```q
 q)key`:c:/q/sp.q
@@ -98,9 +104,9 @@ q)key`:foo
 ```
 
 
-## Symbol atom
+## Whether a name is defined
 
-that is not a file or directory descriptor, nor the name of a dictionary or table, returns the original symbol if a variable of that name exists, otherwise an empty list. The name is interpreted relative to the current context if not fully qualified.
+Where `x` is a symbol atom that is not a file or directory descriptor, nor the name of a dictionary or table, returns the original symbol if a variable of that name exists, otherwise an empty list. The name is interpreted relative to the current context if not fully qualified.
 
 ```q
 q)()~key`a.       /now you don't see it
@@ -127,9 +133,9 @@ q)key`..a
 ```
 
 
-## Foreign-key column
+## Target of a foreign key
 
-returns the name of the foreign-key table.
+Where `x` is a foreign-key column returns the name of the foreign-key table.
 
 ```q
 q)f:([f:1 2 3]v:`a`b`c)
@@ -139,9 +145,9 @@ q)key x
 ```
 
 
-## Vector
+## Type of a vector
 
-returns the name of its [type](../basics/datatype.md) as a symbol.
+Where `x` is a vector returns the name of its [type](../basics/datatypes.md) as a symbol.
 
 ```q
 q)key each ("abc";101b;1 2 3h;1 2 3;1 2 3j;1 2 3f)
@@ -151,9 +157,9 @@ q)key 0#5
 ```
 
 
-## Enumerated list
+## Enumerator of a list
 
-returns the name of the enumerating list.
+Where `x` is an enumerated list returns the name of the enumerating list.
 
 ```q
 q)ids:`a`b`c
@@ -163,9 +169,9 @@ q)key x
 ```
 
 
-## Positive integer
+## `til`
 
-returns the same result as [til](arith-integer/#til).
+Where `x` is a non-negative integer returns the same result as [`til`](arith-integer/#til).
 
 ```q
 q)key 10

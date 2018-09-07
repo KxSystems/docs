@@ -1082,7 +1082,7 @@ Where `x` is
 - a table, returns a dictionary of its column values. 
 - a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
 
-<i class="far fa-hand-point-right"></i> [`meta`](metadata.md#meta)
+<i class="far fa-hand-point-right"></i> [`meta`](../basics/metadata.md#meta)
 
 
 ## `.Q.view` (subview)

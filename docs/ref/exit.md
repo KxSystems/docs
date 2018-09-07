@@ -1,8 +1,12 @@
+---
+keywords: exit, kdb+, kill, q, return code, terminate
+---
+
 # `exit`
 
 
 
-_Terminate kdb+._
+_Terminate kdb+_
 
 `Syntax`: `exit x`, `exit[x]`
 
@@ -20,6 +24,6 @@ $ echo $?
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Debugging](../basics/debug.md),
-[`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit)
+[`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit)  
+Basics: [Debugging](../basics/debug.md)
 

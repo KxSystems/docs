@@ -1,4 +1,11 @@
+---
+title: Roll and Deal
+keywords: deal, kdb+, q, rand, random, seed
+---
+
 # `?` Roll and Deal
+
+
 
 
 _Random selections, with or without duplicates._
@@ -106,6 +113,26 @@ q)-3?`Arthur`Steve`Dennis
 q)-4?`Arthur`Steve`Dennis
 'length
 ```
+
+
+## Seed
+
+Deal, Roll and `rand` use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and change the value of the seed by using system command ["\S"](../basics/syscmds.md#s-random-seed).)
+
+!!! warning "To use GUIDs as identifiers, ensure `x` is negative." 
+
+    Otherwise, you will get duplicates, given the same seed:
+
+    <pre><code class="language-q">
+    $ q
+    q)1?0Ng
+    ,8c6b8b64-6815-6084-0a3e-178401251b68
+    q)\\
+    $ q
+    q)1?0Ng
+    ,8c6b8b64-6815-6084-0a3e-178401251b68
+    </code></pre>
+
 
 
 ## Errors

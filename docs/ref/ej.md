@@ -1,5 +1,4 @@
 ---
-title: Equi join
 keywords: ej, equi join, join, kdb+, q
 ---
 

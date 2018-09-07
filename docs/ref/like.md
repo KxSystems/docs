@@ -1,3 +1,7 @@
+---
+keywords: like, kdb+, pattern, match, q, regex, regular expression, string
+---
+
 # `like`
 
 
@@ -20,6 +24,9 @@ In pattern `y` certain characters have special meaning:
 
 Special characters can be matched by bracketing them.
 
-<i class="far fa-hand-point-right"></i> [Strings](/basics/strings), [Regular expressions](/kb/regex), [`ss`](/ref/ss), [`ssr`](/ref/ssr)
+<i class="far fa-hand-point-right"></i> 
+[`ss` `ssr`](ss.md)  
+Basics: [Strings](../basics/strings.md)  
+Knowledge Base: [Regular expressions](../kb/regex.md) 
 
 

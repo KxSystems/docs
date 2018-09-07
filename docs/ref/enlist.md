@@ -1,10 +1,14 @@
 # `enlist`
 
+_Make a list._
+
+
+
+
 Syntax: `enlist x`, `enlist[x]`
 
-_Returns its argument/s in a list._
-
 An atom is not a one-item list. `enlist` and `first` convert between the two.
+
 ```q
 q)a:10
 q)b:enlist a
@@ -20,7 +24,9 @@ q)b~c
 q)b~first c
 1b
 ```
+
 With multiple arguments returns a single list.
+
 ```q
 q)show a:enlist[til 5;`ibm`goog;"hello"]
 0 1 2 3 4
@@ -29,7 +35,9 @@ q)show a:enlist[til 5;`ibm`goog;"hello"]
 q)count a
 3
 ```
+
 Where `x` is a dictionary, the result is the corresponding table.
+
 ```q
 q)enlist `a`b`c!(1;2 3; 4)
 a b   c

@@ -1,3 +1,7 @@
+---
+keywords: cross, dot product, kdb+, list, product, q, vector
+---
+
 # `cross`
 
 

@@ -1,0 +1,59 @@
+---
+title: xrank
+keywords: group, kdb+, q, sort
+---
+
+# `xrank`
+
+
+
+
+_Group by value_
+
+Syntax: `x xrank y`, `xrank[x;y]`
+
+Where 
+
+-   `x` is an integer
+-   `y` is of sortable type
+
+returns a list of length `x` containing the items of `y` grouped by value. If the total number of items is evenly divisible by `x`, then each item of the result will have the same length; otherwise the first items of the result are longer.
+
+```q
+q)4 xrank til 8          / equal size buckets
+0 0 1 1 2 2 3 3
+q)4 xrank til 9          / first bucket has extra
+0 0 0 1 1 2 2 3 3
+q)
+q)3 xrank 1 37 5 4 0 3   / outlier 37 does not get its own bucket
+0 2 2 1 0 1
+q)3 xrank 1 7 5 4 0 3    / same as above
+0 2 2 1 0 1
+```
+
+Example using stock data:
+
+```q
+q)show t:flip `val`name!((20?20);(20?(`MSFT`ORCL`CSCO)))
+val name
+--------
+17  MSFT
+1   CSCO
+14  CSCO
+13  ORCL
+13  ORCL
+9   ORCL
+...
+
+q)select Min:min val,Max:max val,Count:count i by bucket:4 xrank val from t
+bucket| Min Max Count
+------| -------------
+0     | 0   7   5
+1     | 9   12  5
+2     | 13  15  5
+3     | 15  17  5
+```
+
+
+<i class="far fa-hand-point-right"></i>
+Basics: [Sorting](../basics/sort.md)

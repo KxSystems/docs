@@ -1,0 +1,69 @@
+---
+title: bin and binr
+keywords: bin, binr, kdb+, q, search_
+---
+
+## `bin`, `binr`
+
+
+
+
+_Binary search_ 
+
+Syntax: `x bin  y`, `bin[x;y]`  
+Syntax: `x binr y`, `binr[x;y]` 
+
+Where 
+
+-   `x` is a sorted list
+-   `y` is a list or atom of the same type
+
+returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`.
+`binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
+
+They use a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?`.
+
+The items of `x` should be sorted ascending although `bin` does not verify that; if the items are not sorted ascending, the result is undefined. `y` can be either an atom or a simple list of the same type as the left argument.
+
+The result `r` can be interpreted as follows: for an atom `y`, `r` is an integer atom whose value is either a valid index of `x` or `-1`. In general:
+
+```txt
+r[i]=-1            iff y[i]<x[0]
+r[i]=i             iff x[i]<=y[i]<x[i+1]
+```
+
+and
+
+```txt
+r[j]=x bin y[j]    for all j in index of y
+```
+
+Essentially `bin` gives a half-open interval on the left. 
+
+`bin` and `binr` are right-atomic: their results have the same count as `y`.
+
+`bin` also operates on tuples and table columns and is the function used in [`aj`](aj.md) and [`lj`](lj.md).
+
+`bin` and `?` on three columns find all equijoins on the first two cols and then do `bin` or `?` respectively on the third column. `bin` assumes the third column is sorted within the equivalence classes of the first two column pairs (but need not be sorted overall).
+
+```q
+q)0 2 4 6 8 10 bin 5
+2
+q)0 2 4 6 8 10 bin -10 0 4 5 6 20
+-1 0 2 2 3 5
+```
+
+If the left argument items are not distinct the result is not the same as would be obtained with `?`:
+
+```q
+q)1 2 3 3 4 bin 2 3
+1 3
+q)1 2 3 3 4 ? 2 3
+1 2
+```
+
+
+<i class="far fa-hand-point-right"></i>
+[`aj`](aj.md), [`lj`](lj.md)  
+Basics: [Search](../basics/search.md)
+

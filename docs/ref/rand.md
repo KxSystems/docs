@@ -1,0 +1,52 @@
+---
+title: rand
+keywords: deal, kdb+, q, rand, random, roll
+---
+
+# `rand` 
+
+
+
+_Pick a number at random_
+
+Syntax: `rand x`, `rand[x]`
+
+Where `x` is a 
+
+
+## Positive numeric atom
+
+returns a numeric atom in the range [0,x).
+
+```q
+q)rand 100
+10
+q)rand each 20#6  /roll twenty 6-sided dice
+2 5 4 5 1 0 5 2 4 5 1 2 0 1 1 2 1 0 0 5
+q)rand 3.14159
+1.277572
+q)rand 2012.09.12
+2008.02.04
+```
+
+
+## List
+
+returns an item chosen randomly from `x`
+
+```q
+q)rand 1 30 45 32
+32
+```
+
+`rand` is exactly equivalent to `{first 1?x}`. If you need a vector result, consider using Roll instead of `rand`. The following expressions all roll 100 six-sided dice.
+
+```q
+rand each 100#6
+{first 1?x} each 6
+100?6
+```
+
+
+<i class="far fa-hand-point-right"></i>
+[Roll and Deal](roll-deal.md)

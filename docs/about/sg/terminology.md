@@ -81,23 +81,23 @@ q)2+3
 The term _verb_ is no longer used. 
 
 
-## Unary operators
+## Extenders
 
-> A _unary operator_ is a primitive higher-order function that is applied (usually postfix) to a single argument map and returns a _derived function_, also known as a _derivative_.
+> An _extender_ is a primitive higher-order function that is applied (usually postfix) to a single argument map and returns a derived function,  known as an _extension_.
 ```
 q)total:+/
 q)total[1 2 3]
 6
 ```
-Operators are distinguished from the overloaded characters and character pairs that denote them. For example, the character `'` is overloaded with the operators Case, Compose, and Each. 
+Extenders are distinguished from the overloaded characters and character pairs that denote them. For example, the character `'` is overloaded with the extenders Case, Compose, and Each. 
 
-!!! note "Refer to an adverb by its name"
+!!! note "Refer to an extender by its name"
 
-    Refer to a unary operator by its name, not the (overloaded) character that denotes it. 
+    Refer to an extender by its name, not the (overloaded) character that denotes it. 
 
-    For example, in `2 +//5 5#til 25` the operator denoted by `/` is Over.
+    For example, in `2 +//5 5#til 25` the extender denoted by `/` is Over.
 
-**Watch out:** `each`, `peach`, `prior`, `over`, and `scan` are keywords that apply their function arguments. They are not unary operators, and do not return derivatives. Where a unary operator applied postfix returns a derivative, a keyword applied infix, but without a right argument, returns a projection. 
+**Watch out:** `each`, `peach`, `prior`, `over`, and `scan` are keywords that apply their function arguments. They are not extenders, and do not return extensions. Where an extender applied postfix returns a derivative, a keyword applied infix, but without a right argument, returns a projection. 
 
 ```q
 q)(+/)1 2 3

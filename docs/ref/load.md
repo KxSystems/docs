@@ -1,8 +1,16 @@
+---
+keywords: directory, file, kdb+, load, q, rload, splayed, table
+---
+
 # `load`
 
+_Load binary data from a file or directory_
 
 
-_Load binary data from the filesystem_
+
+## `load`
+
+_Load binary data from a file_
 
 Syntax: `load x`, `load[x]`
 
@@ -52,9 +60,44 @@ s4| clark 20     london
 s5| adams 30     athens
 ```
 
+
+## `rload`
+
+_Load a splayed table from a directory_
+
+Syntax: `rload x`, `rload[x]`
+
+Where `x` is the table name as a symbol, the table is read from a directory of the same name. `rload` is the converse of [`rsave`](save.md#rsave). 
+
+The usual, and more general, way of doing this is to use [`get`](get.md), which allows a table to be defined with a different name than the source directory.
+
+```q
+q)\l sp.q
+q)rsave `sp           / save splayed table
+`:sp/
+q)delete sp from `.
+`.
+q)sp
+'sp
+q)rload `sp           / load splayed table
+`sp
+q)3#sp
+s  p  qty
+---------
+s1 p1 300
+s1 p2 200
+s1 p3 400
+q)sp:get `:sp/        / equivalent to rload `sp
+```
+
+
 <i class="far fa-hand-point-right"></i> 
+[`save`, `rsave`](save.md)  
 [`.Q.dsftg`](dotq.md#qdsftg-load-process-save) (load process save), 
 [`.Q.fps`](dotq.md#qfps-streaming-algorithm) (streaming algorithm), 
 [`.Q.fs`](dotq.md#qfs-streaming-algorithm) (streaming algorithm), 
 [`.Q.fsn`](dotq.md#qfsn-streaming-algorithm) (streaming algorithm), 
-[File system](../basics/files.md)
+[`.Q.v`](dotq.md#qv-value) (get splayed table)   
+Basics: [File system](../basics/files.md)
+
+
