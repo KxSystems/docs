@@ -2,9 +2,9 @@
 
 
 
-Syntax: `x = y`
+Syntax: `x = y`, `=[x;y]`
 
-This atomic binary operator returns `1b` where (items of) `x` and `y` are equal.
+Returns `1b` where (items of) `x` and `y` are equal.
 
 ```q
 q)(3;"a")=(2 3 4;"abc")
@@ -12,4 +12,7 @@ q)(3;"a")=(2 3 4;"abc")
 100b
 ```
 
-<i class="far fa-hand-point-right"></i> Basics: [Six comparison operators](../basics/comparison.md)
+Equal is an atomic function.
+
+<i class="far fa-hand-point-right"></i> 
+Basics: [Comparison](../basics/comparison.md)

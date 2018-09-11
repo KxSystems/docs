@@ -21,7 +21,7 @@ Syntax: `delete from x`
 Where 
 
 -   `t` is a table
--   `{cond}` a condition
+-   `{cond}` is a condition
 
 deletes from `t` rows matching `{cond}`.
 

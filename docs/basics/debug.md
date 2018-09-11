@@ -1,5 +1,4 @@
 ---
-title: Debugging 
 keywords: debug, errors, kdb+, q, trap
 ---
 
@@ -88,6 +87,9 @@ q)).z.ey
 "he"
 ```
 
+
+## Signal
+
 `'err` will signal err from the deepest frame available, destroying it.
 
 ```q
@@ -97,6 +99,9 @@ q))'myerror
           ^
 q))
 ```
+
+
+## Resume
 
 When execution is suspended, `:e` resumes with `e` as the result of the failed operation. `e` defaults to null `::`. 
 
@@ -120,7 +125,7 @@ q)b
 
 Note that resume does _not_ return from enclosing function
 
-```
+```q
 q){0N!"x+1 is ",string x+1;x}`asd
 'type
   [1]  {0N!"x+1 is ",string x+1;x}
@@ -129,6 +134,9 @@ q)):17
 "x+1 is 17"
 `asd
 ```
+
+
+## Abort
 
 Use `\` to exit the debugger and abort execution.
 
@@ -154,7 +162,7 @@ q)
 
 ## Backtrace
 
-`.Q.bt[]` will dump the backtrace to stdout at any point during execution or debug.
+[`.Q.bt[]`](../ref/dotq.md#qbt-backtrace) will dump the backtrace to stdout at any point during execution or debug.
 
 ```q
 q)f:{{.Q.bt[];x*2}x+1}
@@ -185,7 +193,7 @@ q)).Q.bt[]
 
 !!! note "The debugger itself occupies a stack frame, but its source is hidden."
 
-`.Q.trp[f;x;g]` extends trap (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
+[`.Q.trp[f;x;g]`](../ref/dotq.md#qtrp-extend-trap) extends trap (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
 
 ```q
 q)f:{`hello+x}

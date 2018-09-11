@@ -1,5 +1,4 @@
 ---
-title: Extenders
 keywords: adverb, extender, iteration, kdb+, operator, unary
 ---
 
@@ -7,7 +6,7 @@ keywords: adverb, extender, iteration, kdb+, operator, unary
 # Extenders
 
 
-The extenders (earlier known as _adverbs_) are native higher-order operators: they take maps as arguments and return derived functions, known as [_extensions_](#extensions).
+The extenders (earlier known as _adverbs_) are native higher-order operators: they take maps as arguments and return derived functions, known as _extensions_.
 
 They are the primary means of [iterating](../basics/iteration.md).
 
@@ -111,7 +110,7 @@ The overloads are resolved according to the following table of syntactic forms.
 Any extension, like any function, can be applied by **bracket notation**. 
 Binary extensions can also be applied **infix**. 
 Unary extensions can also be applied **prefix**. 
-Some [extensions](#extensions) are **ambivalent** and can be applied as either unary or binary functions. 
+Some extensions are **ambivalent** and can be applied as either unary or binary functions. 
 
 This gives rise to multiple equivalent forms, tabulated here.
 Because all functions can be applied with bracket notation, to simplify, such forms are omitted here in favour of prefix or infix application. 
@@ -120,19 +119,19 @@ For example, `f'[x]` is valid, but only `(f')x` is shown.
 
 The mnemonic keywords `each`, `over`, `peach`, `prior` and `scan` are also shown.
 
-argument<br>rank | syntax                                                   | name                                            | semantics
-:----------------:|---------------------------------------------------------|-------------------------------------------------|------------------------------------------------------
-1                 | `int'[x;y;…]`                                           | [Case](case.md)                                 | select from `[x;y;…]`
-1<br>2<br>3+      | `(f')x`, `f each x`<br>`x g'y`<br>`ff'[x;y;z;…]`        | [Each](distributors.md#each)                    | apply `f` to each item of `x`<br>apply `g` to corresponding items of `x` and `y`<br>apply `ff` to corresponding items of `x`, `y`, `z` …
-2                 | `x g\:d`                                                | [Each Left](distributors.md#each-left)          | apply `g` to `d` and items of `x`
-2                 | `d g/:y`                                                | [Each Right](distributors.md#each-right)        | apply `g` to `d` and items of `y`
-1                 | `(f':)x`, `f peach x`                                   | [Each Parallel](distributors.md#each-parallel)  | apply `f` to items of `x` in parallel tasks
-2                 | `(g':)y`,<br>`g prior y`,<br>`d g':y`                   | [Each Prior](distributors.md#each-prior)        | apply `g` to (`d` and) successive pairs of items of `y`
-1                 | `(f/)d`, `(f\)d`                                        | [Converge](progressors.md#converge)             | apply `f` to `d` until result converges
-1                 | `n f/d`, `n f\d`                                        | [Do](progressors.md#do)                         | apply `f` to `d`, `n` times
-1                 | `t f/d`, `t f\d`                                        | [While](progressors.md#while)                   | apply `f` to `d` until `t` of result is 0
-1<br>2<br>3+      | `(g/)y`, `g over y`<br>`d g/y`<br>`gg/[d;y;z;…]`        | [Reduce](progressors.md#binary-maps)            | reduce a list or lists 
-1<br>2<br>3+      | `(g\)y`, `g scan y`<br>`d g\y`<br>`gg\[d;y;z;…]`        | [Scan](progressors.md#binary-maps)              | scan a list or lists 
+argument<br>rank | syntax                                                   | name                                                   | semantics
+:----------------:|---------------------------------------------------------|--------------------------------------------------------|------------------------------------------------------
+1                 | `int'[x;y;…]`                                           | [Case](case.md)                                        | select from `[x;y;…]`
+1<br>2<br>3+      | `(f')x`, `f each x`<br>`x g'y`<br>`ff'[x;y;z;…]`        | [Each](distributors.md#each)                           | apply `f` to each item of `x`<br>apply `g` to corresponding items of `x` and `y`<br>apply `ff` to corresponding items of `x`, `y`, `z` …
+2                 | `x g\:d`                                                | [Each Left](distributors.md#each-left-and-each-right)  | apply `g` to `d` and items of `x`
+2                 | `d g/:y`                                                | [Each Right](distributors.md#each-left-and-each-right) | apply `g` to `d` and items of `y`
+1                 | `(f':)x`, `f peach x`                                   | [Each Parallel](distributors.md#each-parallel)         | apply `f` to items of `x` in parallel tasks
+2                 | `(g':)y`,<br>`g prior y`,<br>`d g':y`                   | [Each Prior](distributors.md#each-prior)               | apply `g` to (`d` and) successive pairs of items of `y`
+1                 | `(f/)d`, `(f\)d`                                        | [Converge](progressors.md#converge)                    | apply `f` to `d` until result converges
+1                 | `n f/d`, `n f\d`                                        | [Do](progressors.md#do)                                | apply `f` to `d`, `n` times
+1                 | `t f/d`, `t f\d`                                        | [While](progressors.md#while)                          | apply `f` to `d` until `t` of result is 0
+1<br>2<br>3+      | `(g/)y`, `g over y`<br>`d g/y`<br>`gg/[d;y;z;…]`        | [Reduce](progressors.md#binary-maps)                   | reduce a list or lists 
+1<br>2<br>3+      | `(g\)y`, `g scan y`<br>`d g\y`<br>`gg\[d;y;z;…]`        | [Scan](progressors.md#binary-maps)                     | scan a list or lists 
 
 Key: 
 ```

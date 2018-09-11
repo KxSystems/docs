@@ -9,9 +9,9 @@ keywords: cut, kdb+, keyword, operator, q
 
 ## Cut operator
 
-Syntax: `x _ y`, `_[x;y]`
+_Cut a list or table into sub-arrays_
 
-_Cut a list or table into sub-arrays._
+Syntax: `x _ y`, `_[x;y]`
 
 Where 
 

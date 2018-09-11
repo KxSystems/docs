@@ -1,5 +1,13 @@
+---
+keywords: and, greater, kdb+, logic, or, q
+---
+
 # `or`
 
-<i class="far fa-hand-point-right"></i> [Maximum](maximum)
+_Greater of two values, logical OR_
+
+
+<i class="far fa-hand-point-right"></i> 
+[Greater](greater.md)
 
 

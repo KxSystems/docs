@@ -1,11 +1,12 @@
 ---
-title: prd, prds
 keywords: aggregate, kdb+, multiply, product, products, q, statistics, uniform
 ---
 
 # `prd`, `prds`
 
 _Product/s_
+
+
 
 
 ## `prd`

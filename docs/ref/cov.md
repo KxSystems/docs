@@ -28,11 +28,11 @@ q)select price cov size by sym from trade
 
 # `scov` 
 
-_Statistical covariance_
+_Sample covariance_
 
 Syntax: `x scov y`, `scov[x;y]`
 
-Where `x` and `y` are conforming numeric lists returns their statistical covariance as a float atom.
+Where `x` and `y` are conforming numeric lists returns their [sample covariance](https://en.wikipedia.org/wiki/Covariance#Calculating_the_sample_covariance "Wikipedia") as a float atom.
 
 $$scov(x,y)=\frac{n}{n-1}cov(x,y)$$
 
@@ -50,4 +50,6 @@ q)select price scov size by sym from trade
 
 
 <i class="far fa-hand-point-right"></i>
+[`var, svar`](var.md)  
+Wikipedia: [Covariance](https://en.wikipedia.org/wiki/Covariance)  
 Basics: [Mathematics](../basics/math.md)

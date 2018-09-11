@@ -12,6 +12,11 @@ _Select leading or trailing items from a list or dictionary, named entries from 
 
 Syntax: `x#y`, `#[x;y]`
 
+Where 
+
+-   `x` is an int atom or vector, or a table
+-   `y` is an atom, list, dictionary, table, or keyed table
+
 Returns `y` as a list, dictionary or table described or selected by `x`. 
 
 
@@ -38,7 +43,9 @@ q)3#9
 q)2#`a
 `a`a
 ```
+
 If `x` is 0, an empty list is returned.
+
 ```q 
 q)trade:([]time:();sym:();price:();size:())  /columns can hold anything
 q)trade
@@ -162,7 +169,12 @@ q)4 0N#til 9
 
 ## Dictionary
 
-Where `x` is an **int atom** and `y` is a **dictionary**, `x` entries are returned.
+Where
+
+-   `x` is an **int atom or vector**
+-   `y` is a **dictionary**
+
+returns `x` entries from `y`.
 
 ```q 
 q)d:`a`b`c!1 2 3
@@ -171,7 +183,12 @@ a| 1
 b| 2
 ```
 
-Where `x` is a **symbol vector**, returns entries for `x`.
+Where
+
+-   `x` is a **symbol atom or vector**
+-   `y` is a **dictionary**
+
+returns from `y` entries for `x`.
 
 ```q 
 q)d:`a`b`c!1 2 3
@@ -183,7 +200,12 @@ b| 2
 
 ## Table
 
-Where `x` is an **int atom** and `y` is a **table**, `x` rows are returned.
+Where
+
+-   `x` is an **int atom** 
+-   `y` is a **table**
+
+returns `x` rows from `y`.
 
 ```q 
 q)\l sp.q
@@ -198,7 +220,12 @@ s1 p4 200
 s4 p5 100
 ```
 
-Where `x` is a **symbol vector**, returns columns `x`.
+Where
+
+-   `x` is a **symbol atom or vector**
+-   `y` is a **table**
+
+returns column/s `x` from `y`.
 
 ```q 
 q)`p`qty#sp

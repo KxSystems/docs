@@ -1,5 +1,4 @@
 ---
-title: Progressors
 keywords: dictionary, extension, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary
 ---
 
@@ -8,7 +7,7 @@ keywords: dictionary, extension, fold, kdb+, keyword, map, map reduce, mnemonic,
 `/` `\`
 
 
-A progressor is an extender that takes a map as argument and derives a function that evaluates the map, first on the first item/s of its right argument/s, then on the results of **successive** evaluations.
+A progressor is an extender that takes a map as argument and derives an extension that evaluates the map, first on the first item/s of its right argument/s, then on the results of **successive** evaluations.
 
 There are two progressors, Scan and Over. They have the same syntax and perform the same computation. But where the extensions of Scan return the result of each evaluation, those of Over return only the last result. 
 
@@ -32,17 +31,10 @@ q)+/2 3 4    / Over
 
 The number of successive evaluations is determined differently for unary and for higher-rank maps. 
 
-The domain of the progressors is functions, lists, and dictionaries that represent finite-state machines. 
-
-
-## Finite-state machines
-
-A dictionary or list represents a finite-state machine when its values (dictionary) or items (list) can be used to index it. For example:
+The domain of the progressors is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine). 
 
 ```q
-q)show l:-10?10
-1 8 5 7 0 3 6 4 2 9             / all items are also indexes
-q)yrp                           / a European tour
+q)yrp                               / a European tour
 from   to     wp
 ----------------
 London Paris  0
@@ -51,7 +43,7 @@ Genoa  Milan  1
 Milan  Vienna 1
 Vienna Berlin 1
 Berlin London 0
-q)show route:(!/)yrp`from`to    / finite-state machine
+q)show route:yrp[`from]!yrp[`to]    / finite-state machine
 London| Paris
 Paris | Genoa
 Genoa | Milan

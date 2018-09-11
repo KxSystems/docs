@@ -1,10 +1,16 @@
+---
+keywords: bang, enkey, kdb+, keyed table, q, table, Unkey
+---
+
 # `!` Enkey and Unkey
 
+_Simple to keyed table and vice-versa_
 
-_Make a keyed table from a simple table.
-Remove the key/s from a table._
+
 
 ## `!` Enkey
+
+_Make a keyed table from a simple table._
 
 Syntax: `i!t`, `![i;t]` 
 
@@ -27,6 +33,8 @@ a b | c
 
 ## `!` Unkey
 
+_Remove the key/s from a table._
+
 Syntax: `0!t`, `![0;t]` 
 
 Where `t` is a **keyed table**, or a handle to one, returns `t` as a simple table, with no keys.
@@ -44,6 +52,7 @@ a b  c
 ## Amending in place 
 
 For both Enkey and Unkey, if `t` is a table-name, `!` amends the table and returns the name.
+
 ```q
 q)t:([a:1 2 3]b:10 20 30;c:`x`y`z)
 q)0!`t
@@ -57,8 +66,7 @@ a b  c
 
 
 <i class="far fa-hand-point-right"></i> 
-[Keys](/basics/keys), 
-[`key`](key), 
-[`keys`](keys), 
-[`xkey`](xkey), 
-[`!`](overloads/#bang)
+[`key`](key.md), 
+[`keys`](keys.md), 
+[`xkey`](keys.md#xkey)  
+[`!` bang](overloads.md#bang)

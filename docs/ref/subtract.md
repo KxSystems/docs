@@ -1,21 +1,30 @@
+---
+keywords: difference, kdb+, math, mathematics, minus, subtract
+---
+
 # `-` Subtract
 
 
-Syntax: `x-y`, `-[x;y]` (atomic) 
+Syntax: `x-y`, `-[x;y]`
 
-Where `x` and `y` are numerics or temporals, returns their difference.
+Where `x` and `y` are numerics or temporals, returns their difference/s.
+
 ```q
 q)3 4 5-2
 1 2 3
 q)2000.11.22 - 03:44:55.666
 2000.11.21D20:15:04.334000000
 ```
-[`+`](/ref/add) is generally faster than `-`.
+
+Subtract is an atomic function.
+
+[Add](/ref/add) is generally faster than Subtract.
 <!-- FIXME Examples with dictionaries and tables -->
 
 
 ## Range and domains
-```
+
+```txt
 -| b g x h i j e f c s p m d z n u v t
 -| -----------------------------------
 b| i . i i i j e f i . p m d z n u v t
@@ -37,8 +46,14 @@ u| u . u u u u u f u . p p p z n u v t
 v| v . v v v v v f v . p p p z n v v t
 t| t . t t t t t f t . p p p z n t t t
 ```
+
 Range: `ijefpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> [Arithmetic functions](/basics/arithmetic), [Datatypes](/basics/datatypes), [_add_](/ref/add), [`differ`](/ref/differ), [`.Q.addmonths`](dotq/#qaddmonths)
+<i class="far fa-hand-point-right"></i> 
+[Add](add.md), 
+[`differ`](differ.md)  
+.Q: [`.Q.addmonths`](dotq.md#qaddmonths)  
+Basics: [Datatypes](../basics/datatypes.md), 
+[Mathematics](../basics/math.md)
 
 

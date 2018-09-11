@@ -1,5 +1,4 @@
 ---
-title: Union join
 keywords: join, kdb+, q, uj, ujf, union join
 ---
 

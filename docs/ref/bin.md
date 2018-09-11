@@ -44,6 +44,9 @@ Essentially `bin` gives a half-open interval on the left.
 
 `bin` also operates on tuples and table columns and is the function used in [`aj`](aj.md) and [`lj`](lj.md).
 
+
+## Three-column argument
+
 `bin` and `?` on three columns find all equijoins on the first two cols and then do `bin` or `?` respectively on the third column. `bin` assumes the third column is sorted within the equivalence classes of the first two column pairs (but need not be sorted overall).
 
 ```q
@@ -60,6 +63,20 @@ q)1 2 3 3 4 bin 2 3
 1 3
 q)1 2 3 3 4 ? 2 3
 1 2
+```
+
+
+## Sorted third column
+
+`bin` detects the special case of three columns with the third column having a sorted attribute. The search is initially constrained by the first column, then by the sorted third column, and then by a linear search through the remaining second column. The performance difference is visible in this example:
+
+```q
+q)n:1000000;t:([]a:`p#asc n?`2;b:`#asc n?1000;c:asc n?100000)
+q)\t t bin t
+194
+q)update`#c from`t; / remove the sort attr from column c
+q)\t t bin t
+3699
 ```
 
 

@@ -1,6 +1,5 @@
 ---
-title: next, prev, xprev
-keywords: kdb+, next, prev, previous, prior, q, select, xprev
+keywords: item, kdb+, list, next, prev, previous, prior, q, select, xprev
 ---
 
 # `next`, `prev`, `xprev`

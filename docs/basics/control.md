@@ -1,5 +1,4 @@
 ---
-title: Controlling evaluation
 keywords: control, control words, distributive, evaluation, iterate, kdb+, operator, progressive, q, , unary, word
 ---
 

@@ -1,3 +1,7 @@
+---
+keywords: cut, drop, kdb+, list,q
+---
+
 # `_` Drop
 
 

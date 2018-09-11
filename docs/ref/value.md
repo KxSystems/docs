@@ -1,5 +1,14 @@
+---
+keywords: kdb+, metadata, q, value,
+---
+
+<div style="float: right">
+<i class="fas fa-wrench fa-5x"></i>
+</div>
+
 # `value`
 
+_Various metadata_
 
 
 

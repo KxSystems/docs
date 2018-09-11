@@ -1,3 +1,7 @@
+---
+keywords: kdb+, q, qsql, query, select, sql, table, ungroup
+---
+
 # `ungroup`
 
 

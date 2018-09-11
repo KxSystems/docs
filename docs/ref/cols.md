@@ -1,7 +1,7 @@
 ---
-title: cols, xcol, xcols
 keywords: cols, column, kdb+, q, table, xcol, xcols
 ---
+
 # `cols`, `xcol`, `xcols`
 
 _Table columns_
@@ -83,6 +83,7 @@ q)cols trade
 
 
 <i class="far fa-hand-point-right"></i> 
+[`meta`](meta.md)  
 .Q: [`.Q.V`](dotq.md#qv-table-to-dict) (table to dictionary)  
-Basics: [Dictionaries & tables](../basics/dictsandtables.md)  
+Basics: [Dictionaries & tables](../basics/dictsandtables.md), 
 [Metadata](../basics/metadata.md) 

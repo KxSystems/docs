@@ -1,5 +1,4 @@
 ---
-title: within
 keywords: kdb+, ordered pair, q, search, within
 ---
 
@@ -7,6 +6,8 @@ keywords: kdb+, ordered pair, q, search, within
 
 
 # `within`
+
+_Check bounds_
 
 
 Syntax: `x within y`, `within[x;y]`

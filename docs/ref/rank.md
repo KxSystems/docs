@@ -1,9 +1,8 @@
 ---
-title: rank
 keywords: kdb+, q, sort
 ---
 
-## `rank`
+# `rank`
 
 
 

@@ -1,3 +1,7 @@
+---
+keywords: kdb+, null, q
+---
+
 # `null`
 
 

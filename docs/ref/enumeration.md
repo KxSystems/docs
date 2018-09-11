@@ -1,8 +1,11 @@
+---
+keywords: bang, enumerate, enumeration, list, kdb+, q
+---
 # `!` Enumeration
 
 
 
-_Enumerated symbol list._
+_Enumerated symbol list_
 
 Syntax: `x!y`, `![x;y]`
 
@@ -22,10 +25,10 @@ q)`x!1 2 3
 
 
 <i class="far fa-hand-point-right"></i> 
-[Enumerations](../basics/enumerations.md),
 [Enum Extend](enum-extend.md),
-[Enumeration](enumeration.md),
-_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations), 
-[`!` Bang](overloads.md#bang)
+[Enumeration](enumeration.md)  
+[`!` bang](overloads.md#bang)  
+Basics: [Enumerations](../basics/enumerations.md)  
+_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations)
 
 

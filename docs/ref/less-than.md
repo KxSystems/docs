@@ -1,16 +1,16 @@
 ---
-title: Less Than (or Equal)
-keywords: comparison, kdb+, less-than, less-than-or-equal, q
+title: Less Than, Up To
+keywords: comparison, kdb+, less-than, less-than-or-equal, q, up to
 ---
 
-# `<` `<=` Less Than (or Equal)
+# `<` Less Than<br>`<=` Up To
 
 
 
-Syntax: `x < y`  
-Syntax: `x <= y` 
+Syntax: `x < y`, `<[x;y]`  
+Syntax: `x <= y`, `<=[x;y]`
 
-This atomic binary operator returns `1b` where (items of) `x` are less than (or equal) `y`.
+Returns `1b` where (items of) `x` are less than (or up to) `y`.
 
 ```q
 q)(3;"a")<(2 3 4;"abc")
@@ -21,4 +21,17 @@ q)(3;"a")<=(2 3 4;"abc")
 111b
 ```
 
-<i class-"far fa-hand-point-right"></i> Basics: [Six comparison operators](../basics/comparison.md)
+With booleans:
+
+```q
+q)0 1 </:\: 0 1
+01b
+00b
+q)0 1 <=/:\: 0 1
+11b
+01b
+```
+
+<i class-"far fa-hand-point-right"></i> 
+[Greater Than, At Least](greater-than.md)  
+Basics: [Comparison](../basics/comparison.md)

@@ -1,5 +1,4 @@
 ---
-title: sin, asin
 keywords: asin, arcsine, sin, sine, kdb+, math, mathematics, q, trigonometry
 ---
 

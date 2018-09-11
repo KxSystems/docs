@@ -1,3 +1,7 @@
+---
+keywords: cast, datatype, kdb+, metadata, q, type
+---
+
 # `type`
 
 
@@ -7,7 +11,7 @@ _Datatype of an object_
 
 Syntax: `type x`, `type[x]` 
 
-Where `x` is any object, returns its [datatype](../basics/datatypes.md) of `x`.
+Where `x` is any object, returns its [datatype](../basics/datatypes.md).
 
 The datatype is a short int: negative for atoms, positive for vectors, `0h` for a general list.
 
@@ -25,8 +29,8 @@ q)type (+)                       / function atom
 ```
 
 <i class="far fa-hand-point-right"></i> 
-Basics [Datatypes](../basics/datatypes.md), 
-[Casting and encoding](/basics/casting)  
-[.Q.ty](dotq.md#qty-type)
+[.Q.ty](dotq.md#qty-type)  
+Basics: [Casting and encoding](../basics/casting.md),
+[Datatypes](../basics/datatypes.md)
 
 

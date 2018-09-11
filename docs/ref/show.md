@@ -1,3 +1,7 @@
+---
+keywords: console, debug, develop, display, kdb+, q, tool
+---
+
 # `show`
 
 
@@ -28,5 +32,5 @@ q)a~(::)
 
 
 <i class="far fa-hand-point-right"></i> 
-[Debugging](../basics/debug.md),
-[Display](display.md)
+[Display](display.md)  
+Basics: [Debugging](../basics/debug.md)

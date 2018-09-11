@@ -136,7 +136,7 @@ Rather than the individual cells being executed directly `.z.ps` is called on ea
 
 ## `inetd`
 
-Run a kdb+ server under `inetd`, see Knowledge Base: [inetd/xinetd](/kb/inetd/)
+Run a kdb+ server under `inetd`, see Cookbook: [inetd/xinetd](/cookbook/inetd/)
 
 ## `-b`
 

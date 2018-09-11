@@ -1,5 +1,4 @@
 ---
-title: Roll and Deal
 keywords: deal, kdb+, q, rand, random, seed
 ---
 
@@ -8,7 +7,7 @@ keywords: deal, kdb+, q, rand, random, seed
 
 
 
-_Random selections, with or without duplicates._
+_Random selections, with or without duplicates_
 
 
 ## Roll
@@ -61,16 +60,16 @@ q)2?("a";0101b;`abc;`the`quick;2012.06m)
 
 ## Deal
 
-_Random selections without repetition._
+_Random selections without repetition_
 
 Syntax: `x ? y`, `?[x;y]`
 
 Where `x` is a **negative int atom**, and `y` is a:
 
 
-### Int atom
+### Integers
 
-such that `y>=x`, returns `x` integers chosen randomly and without repetition from the range `til y`.
+Where `y` is an **integer atom** such that `x<=y`, returns `x` integers chosen randomly and without repetition from the range `til y`.
 
 ```q
 q)-20?100  /20 different integers from 0-99
@@ -82,9 +81,9 @@ q)(asc -20?20)~asc -20?20
 ```
 
 
-#### GUIDs
+### GUIDs
 
-To deal a list of distinct GUIDs, use the null GUID for `y`.
+Where `y` is the **null GUID**, returns a list of distinct GUIDs.
 
 ```q
 q)-1?0Ng 
@@ -103,9 +102,9 @@ q)count distinct {-1?0ng}each til 10
 ```
 
 
-### List of unique values
+### Selection from a list
 
-and `count[y]>=neg x`, returns `x` items randomly chosen without repetition from `y`. 
+Where `y` is a **list of unique values** and `count[y]>=neg x`, returns `x` items randomly chosen without repetition from `y`.
 
 ```q
 q)-3?`Arthur`Steve`Dennis
@@ -117,7 +116,7 @@ q)-4?`Arthur`Steve`Dennis
 
 ## Seed
 
-Deal, Roll and `rand` use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and change the value of the seed by using system command ["\S"](../basics/syscmds.md#s-random-seed).)
+Deal, Roll and `rand` use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and change the value of the seed by using system command [`\S`](../basics/syscmds.md#s-random-seed).)
 
 !!! warning "To use GUIDs as identifiers, ensure `x` is negative." 
 
@@ -140,3 +139,7 @@ Deal, Roll and `rand` use a constant seed on kdb+ startup: scripts using them ca
 error  | cause
 -------|-----------------------------
 length | `neg x` exceeds `count y` 
+
+
+<i class="far fa-hand-point-right"></i>
+[`rand`](rand.md)

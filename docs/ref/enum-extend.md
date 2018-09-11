@@ -1,8 +1,12 @@
+---
+keywords: enumeration, enum extend, extend, kdb+, list, q, query
+---
+
 # `?` Enum Extend
 
 
 
-_Extend an enumeration._
+_Extend an enumeration_
 
 Syntax: `x?y`, `?[x;y]` 
 
@@ -52,10 +56,11 @@ q)bar
 Enum Extend is a uniform function. 
 
 <i class="far fa-hand-point-right"></i> 
-[Enumerations](../basics/enumerations.md),
 [Enumerate](enumerate.md),
-[Enumeration](enumeration.md),
-_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations), 
-[`?` Query](overloads.md#query)
+[Enumeration](enumeration.md)  
+Basics: [Enumerations](../basics/enumerations.md),
+[File system](../basics/files.md)  
+_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations)  
+[`?` query](overloads.md#query) 
 
 

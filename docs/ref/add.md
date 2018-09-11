@@ -1,9 +1,13 @@
+---
+keywords: add, kdb+, mathematics, plus, q, sum
+---
+
 # `+` Add
 
 
-Syntax: `x+y`, `+[x;y]` (atomic) 
+Syntax: `x+y`, `+[x;y]` 
 
-Where `x` and `y` are conformable numerics or temporals, returns their sum.
+Where `x` and `y` are conformable numerics or temporals, returns their sum/s.
 
 ```q
 q)2+3 4 5
@@ -22,11 +26,13 @@ goog | 2005 380
 msoft| 3005 103
 ```
 
-`+` is generally faster than [`-`](subtract.md).
+Add is generally faster than [Subtract](subtract.md).
 
+Add is an atomic function. 
 
 ### Range and domains
-```
+
+```txt
 +| b g x h i j e f c s p m d z n u v t
 -| -----------------------------------
 b| i . i i i j e f . . p m d z n u v t
@@ -48,11 +54,12 @@ u| u . u u u u u f u . p p p z n u v t
 v| v . v v v v v f v . p p p z n v v t
 t| t . t t t t t f t . p p p z n t t t
 ```
+
 Range: `ijefpmdznuvt`
 
 <i class="far fa-hand-point-right"></i> 
-[Datatypes](../basics/datatypes.md), 
 [Subtract](subtract.md), 
-[`sum`](sum.md), 
-[`.Q.addmonths`](dotq.md#qaddmonths)
+[`sum`](sum.md)  
+.Q; [`.Q.addmonths`](dotq.md#qaddmonths)  
+Basics: [Datatypes](../basics/datatypes.md)
 

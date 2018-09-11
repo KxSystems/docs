@@ -43,6 +43,8 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 ```
 
 
+
+
 ## `.h.br` (linebreak)
 
 Syntax: `.h.br`
@@ -69,7 +71,6 @@ Returns as a symbol a web color used by the web console.
 Syntax: `.h.cd x`
 
 CSV from data: where `x` is a table or a list of columns returns a matrix of comma-separated values.
-
 ```q
 q).h.cd ([]a:1 2 3;b:`x`y`z)
 "a,b"
@@ -180,7 +181,7 @@ returns as a string an HTTP error response.
 q).h.hn["404";`txt;"Not found: favicon.ico"]
 "HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Len..
 ```
-<i class="far fa-hand-point-right"></i> [Content types](#hty-mime-types)
+<i class="fa fa-hand-o-right"></i> [Content types](#hty-mime-types)
 
 
 ## `.h.hp` (HTTP response)
@@ -216,15 +217,14 @@ where `x` is a symbol atom, reads file `:src/.txt` and writes file `:x.htm`.
 - ``q).h.ht`mydoc``
 - browse mydoc.htm (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
 
-Marqdown is named for its rough similarity to [Markdown](https://daringfireball.net/projects/markdown/).
 Basic Marqdown formatting rules:
 
--   Paragraph text starts at the beginning of the line.
--   Lines beginning with `"."` are treated as section headings.
--   Lines beginning with `"\t"` get wrapped in `<code>`
--   Line data beginning with `" "` get wrapped in `<xmp>`
--   If second line of data starts with `"-"`, draw a horizontal rule to format the header
--   Aligns two-column data if second column starts with `"\t "`
+- Paragraph text starts at the beginning of the line.
+- Lines beginning with `"."` are treated as section headings.
+- Lines beginning with `"\t"` get wrapped in `<code>`
+- Line data beginning with `" "` get wrapped in `<xmp>`
+- If second line of data starts with `"-"`, draw a horizontal rule to format the header
+- Aligns two-column data if 2nd column starts with `"\t "`
 
 
 ## `.h.hta` (start tag)
@@ -348,7 +348,7 @@ q)\head test.txt
 
 Syntax: `.h.iso8601 x`
 
-Where `x` is nanoseconds since 1970.01.01 as an int atom, returns as a string a timestamp in ISO-8601 format. 
+Where `x` is nanoseconds since 2000.01.01 as an int atom, returns as a string a timestamp in ISO-8601 format.
 ```q
 q).h.iso8601 100
 "2000-01-01T00:00:00.000000100"
@@ -458,7 +458,7 @@ Returns as a char vector a list of characters that do not need to be escaped in 
 q).h.sc
 "$-.+!*'(),abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
-<i class="far fa-hand-point-right"></i> [`.h.hu`](#hhu-uri-escape)
+<i class="fa fa-hand-o-right"></i> [`.h.hu`](#hhu-uri-escape)
 
 
 ## `.h.td` (TSV)

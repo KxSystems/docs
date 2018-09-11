@@ -1,3 +1,8 @@
+---
+keywords: dictionary, entry, item, list, kdb+, q, reverse
+---
+
+
 # `reverse`
 
 
@@ -32,4 +37,5 @@ a b
 ```
 
 
-<i class="far fa-hand-point-right"></i> [`rotate`](rotate.md)
+<i class="far fa-hand-point-right"></i> 
+[`rotate`](rotate.md)

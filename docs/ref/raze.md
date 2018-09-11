@@ -1,10 +1,14 @@
+---
+keywords: items, join, kdb+, list, q
+---
+
 # `raze`
 
 
+_Return the items of `x` joined, collapsing one level of nesting_
+
 
 Syntax: `raze x`, `raze[x]`
-
-_Return the items of `x` joined, collapsing one level of nesting._
 
 To collapse all levels, use [Converge](progressors.md#converge) i.e. `raze/[x]`.
 

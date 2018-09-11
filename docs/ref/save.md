@@ -1,14 +1,13 @@
 ---
-title: save, rsave
 keywords: directory, global, kdb+, q, rsave, save, splayed, table
 ---
 
-# `save`,`rsave`
+# `save`, `rsave`
 
 _Save global data to file or splayed to a directory_
 
 
-# `save`
+## `save`
 
 _Save global data to file_
 

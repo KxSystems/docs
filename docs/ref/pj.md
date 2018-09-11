@@ -1,5 +1,4 @@
 ---
-title: Plus join
 keywords: join, kdb+, pj,plus join, q
 ---
 
@@ -10,16 +9,22 @@ keywords: join, kdb+, pj,plus join, q
 
 _Plus join_
 
-Syntax: `t1 pj t2`, `pj[t1;t1]`
+Syntax: `x pj y`, `pj[x;y]`
 
-Where `t1` and `t2` are tables, `t2` is keyed, and the key column/s of `t2` are columns of `t1`, returns `t1` and `t2` joined on the key columns of `t2`.
+Where
 
-`pj` adds matching records in `t2` to those in `t1`, by adding common columns, other than the key columns. These common columns must be of appropriate types for addition.
+-   `x` and `y` are tables
+-   `y` is keyed
+-   the key column/s of `y` are columns of `x`
 
-For each record in `t1`:
+returns `x` and `y` joined on the key columns of `y`.
 
--   if there is a matching record in `t2` it is added to the `t1` record.
--   if there is no matching record in `t2`, common columns are left unchanged, and new columns are zero.
+`pj` adds matching records in `y` to those in `x`, by adding common columns, other than the key columns. These common columns must be of appropriate types for addition.
+
+For each record in `x`:
+
+-   if there is a matching record in `y` it is added to the `x` record.
+-   if there is no matching record in `y`, common columns are left unchanged, and new columns are zero.
 
 ```q
 q)show x:([]a:1 2 3;b:`x`y`z;c:10 20 30)

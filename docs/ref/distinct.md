@@ -37,8 +37,9 @@ q)distinct 2 + 0f,10 xexp -13
 
 
 <i class="far fa-hand-point-right"></i> 
-Basics: [Precision](../basics/precision.md), [Search](../basics/search.md)  
-[`.Q.fu`](dotq.md#qfu-apply-unique) (apply unique)
+[`.Q.fu`](dotq.md#qfu-apply-unique) (apply unique)  
+Basics: [Precision](../basics/precision.md), 
+[Search](../basics/search.md) 
 
 
 ## Errors

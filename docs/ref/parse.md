@@ -1,3 +1,7 @@
+---
+keywords: eval, evaluate, kdb+, parse, q, reval, string
+---
+
 # parse 
 
 

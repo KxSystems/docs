@@ -12,4 +12,6 @@ q)(3;"a")<>(2 3 4;"abc")
 011b
 ```
 
-<i class="far fa-hand-point-right"></i> Basics: [Six comparison operators](../basics/comparison.md)
+<i class="far fa-hand-point-right"></i> 
+[Equal](equal.md)  
+Basics: [Comparison](../basics/comparison.md)

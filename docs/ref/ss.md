@@ -1,7 +1,12 @@
 ---
-title: ss, ssr
 keywords: kdb+, match, pattern, q, regex, regular expression, replace, search, ss, ssr, string
 ---
+
+# `ss`, `ssr`
+
+_String search – and replace_
+
+
 
 ## `ss`
 
@@ -62,7 +67,7 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 
 
 <i class="far fa-hand-point-right"></i> 
-[`like`](/ref/like). 
+[`like`](/ref/like)  
 Basics: [Strings](../basics/strings.md)  
 Knowledge Base: [Regular expressions](../kb/regex.md), 
 

@@ -241,6 +241,32 @@ All the extenders are unary except Compose, which is binary. The unary extenders
 Reference: [Extenders](../ref/extenders.md)
 
 
+## Finite-state machine
+
+A dictionary or list represents a finite-state machine when its values (dictionary) or items (list) can be used to index it. For example:
+
+```q
+q)show l:-10?10
+1 8 5 7 0 3 6 4 2 9             / all items are also indexes
+q)yrp                           / a European tour
+from   to     wp
+----------------
+London Paris  0
+Paris  Genoa  1
+Genoa  Milan  1
+Milan  Vienna 1
+Vienna Berlin 1
+Berlin London 0
+q)show route:(!/)yrp`from`to    / finite-state machine
+London| Paris
+Paris | Genoa
+Genoa | Milan
+Milan | Vienna
+Vienna| Berlin
+Berlin| London
+```
+
+
 ## Function
 
 A map from domain/s to range defined by an algorithm.

@@ -1,14 +1,13 @@
 ---
-title: and
-keywords: and, kdb+, minimum, q
+keywords: and, kdb+, lesser, minimum, q
 ---
 
 # `and`
 
 
-_Logical AND_
+_Lesser of two values, logical AND_
 
 <i class="far fa-hand-point-right"></i> 
-[Minimum](minimum.md)
+[Lesser](lesser.md)
 
 

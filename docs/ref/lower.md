@@ -1,5 +1,5 @@
 ---
-keywords: case, kdb+, lower, q, string, upper
+keywords: case, kdb+, lower, q, string, text, upper
 ---
 
 # `lower`, `upper`

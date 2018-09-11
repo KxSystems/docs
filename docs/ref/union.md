@@ -1,5 +1,4 @@
 ---
-title: union
 keywords: intersection, kdb+, q, select, union
 ---
 

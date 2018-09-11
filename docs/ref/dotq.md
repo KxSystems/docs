@@ -1,5 +1,4 @@
 ---
-title: The .Q namespace
 keywords: database, decode, encode, kdb+, namespace, partitioned, q, segmented, utilities
 ---
 
@@ -56,17 +55,23 @@ Datatype
  .Q.x12      decode base64                    
 ```
 
+In non-partitioned databases the partitioned database state variables remain undefined.
+
+
 
 ## `.Q.addmonths` 
 
 Syntax: `.Q.addmonths[x;y]`
 
 Where `x` is a date and `y` is an int, returns `x` plus `y` months. (Since V2.4.)
+
 ```q
 q).Q.addmonths[2007.10.16;6 7]
 2008.04.16 2008.05.16
 ```
+
 If the date `x` is near the end of the month and (`x.month + y`)’s month has fewer days than `x.month`, the result may spill over to the following month.
+
 ```q
 q).Q.addmonths[2006.10.29;4]
 2007.03.01
@@ -78,6 +83,7 @@ q).Q.addmonths[2006.10.29;4]
 Syntax: `.Q.addr x`
 
 Where `x` is a hostname or IP address as a symbol atom, returns the IP address as an integer (same format as [`.z.a`](dotz.md#za-ip-address))
+
 ```q
 q).Q.addr`localhost
 2130706433i
@@ -88,7 +94,59 @@ q).Q.addr`localhost
 q)256 vs .Q.addr`localhost
 127 0 0 1
 ```
-<i class="far fa-hand-point-right"></i> [`vs`](vs.md), [`.Q.host`](#qhost-hostname) 
+
+<i class="fa fa-hand-o-right"></i> [
+[`.Q.host`](#qhost-hostname)  
+`vs`](vs.md)
+
+
+## `.Q.bt` (backtrace)
+
+Syntax: `.Q.bt[]`
+
+Dumps the backtrace to stdout at any point during execution or debug. 
+
+```q
+q)f:{{.Q.bt[];x*2}x+1}
+q)f 4
+  [2]  f@:{.Q.bt[];x*2}
+           ^
+  [1]  f:{{.Q.bt[];x*2}x+1}
+          ^
+  [0]  f 4
+       ^
+10                   / (4+1)*2
+q)g[3;"hello"]
+'type
+  [2]  g:{a:x*2;a+y}
+                ^
+q)).Q.bt[]
+  [4]  .Q.bt[]
+       ^
+  [3]  (.Q.dbg)      / see note
+
+  [2]  g:{a:x*2;a+y}
+                ^
+  [1]  f:{g[x;2#y]}
+          ^
+  [0]  f[3;"hello"]
+       ^ 
+```
+Since V3.5 2017.03.15.
+
+!!! note "The debugger itself occupies a stack frame, but its source is hidden."
+
+
+## `.Q.btoa` (b64 encode)
+
+Syntax: `.Q.btoa x`
+
+```q
+q).Q.btoa"Hello World!"
+"SGVsbG8gV29ybGQh"
+```
+
+Since V3.6 2018.05.18.
 
 
 ## `.Q.bv` (build vp)
@@ -102,6 +160,7 @@ In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables
 If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. ``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
 
 Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behaviour.
+
 ```q
 q)n:100
 q)t:([]time:.z.T+til n;sym:n?`2;num:n)
@@ -127,13 +186,17 @@ q)@[get;"select from tt";-2@]; / no error
 Syntax: `.Q.chk x`
 
 Where `x` is a HDB as a filepath, fills missing tables.
+
 ```q
 q).Q.chk[`:hdb]
 ```
+
 Note that q must have write permission for the HDB area so that it can create missing tables. If it signals an error similar to
+
 ```q
 './2010.01.05/tablename/.d: No such file or directory
 ```
+
 then check that the process has write permissions for that filesystem.
 
 
@@ -144,6 +207,13 @@ Syntax: `.Q.cn x`
 Where `x` is a partitioned table, passed by value, returns its count. Populates `.Q.pn` cache.
 
 
+## `.Q.Cf` (create empty nested char file)
+
+Syntax: `.Q.Cf x`
+
+A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
+
+
 ## `.Q.D` (partitions)
 
 Syntax: `.Q.D`
@@ -151,6 +221,7 @@ Syntax: `.Q.D`
 In segmented DBs, contains a list of the partitions – conformant to `.Q.P` – that are present in each segment.
 
 `.Q.P!.Q.D` can be used to create a dictionary of partition-to-segment information.
+
 ```q
 q).Q.P
 `:../segments/1`:../segments/2`:../segments/3`:../segments/4
@@ -172,6 +243,7 @@ q).Q.P!.Q.D
 Syntax: `.Q.dd[x;y]`
 
 Shorthand for `` ` sv x,`$string y``. Useful for creating filepaths, suffixed stock symbols, etc.
+
 ```q
 q).Q.dd[`:dir]`file
 `:dir/file
@@ -191,22 +263,36 @@ IBM  N  IBM.N
 
 Syntax: `.Q.def[x;y]`
 
-==FIXME==
+Provides defaults and types for command line arguments parsed with [``.Q.opt``](#qopt-command-parameters).
 
+<i class="fa fa-hand-o-right"></i> 
+[`.z.x`](dotz.md#zx-argv)
 
 
 ## `.Q.dpft` (save table)
+## `.Q.dpfts` (save table with symtable)
 
-Syntax: ``.Q.dpft[directory;partition;`p#field;tablename]``
+Syntax: ``.Q.dpft[d;p;f;t]``  
+Syntax: ``.Q.dpfts[d;p;f;t;s]``
 
-Saves a simple table splayed to a specific `partition` of a database sorted (`` `p#``) on a specified `field`. 
+Where
 
-!!! warning 
-    The table cannot be keyed. This will signal an `'unmappable` error if there are columns which are not vectors or simple nested columns (e.g. char vectors for each row).
+-   `d` is a directory handle
+-   `p` is a partition of a database sorted (``p#´``) on 
+-   `f` a field of the table named by 
+-   `t`, a table handle
+-   `s` is the handle of a symtable
 
-It also rearranges the columns of the table so that the column specified by `field` is second in the table (the first column in the table will be the virtual column determined by the partitioning e.g. date).
+saves `t` splayed to partition `p`.
+
+!!! warning "Simple tables only"
+
+    The table cannot be keyed. This would signal an `'unmappable` error if there are columns which are not vectors or simple nested columns (e.g. char vectors for each row).
+
+It also rearranges the columns of the table so that the column specified by `f` is second in the table (the first column in the table will be the virtual column determined by the partitioning e.g. date).
 
 Returns the table name if successful.
+
 ```q
 q)trade:([]sym:10?`a`b`c;time:.z.T+10*til 10;price:50f+10?50f;size:100*1+10?10)
 q).Q.dpft[`:db;2007.07.23;`sym;`trade]
@@ -230,7 +316,9 @@ date       sym time         price    size
 2007.07.23 c   11:36:27.992 73.05742 600
 2007.07.23 c   11:36:28.032 90.12859 600
 ```
+
 If you are getting an `'unmappable` error, you can identify the offending columns and tables:
+
 ```q
 / create 2 example tables
 q)t:([]a:til 2;b:2#enlist (til 1;10))  / bad table, b is unmappable
@@ -241,6 +329,26 @@ table columns
 -------------
 t     b
 ```
+`.Q.dpfts` allows the enum domain to be specified. Since V3.6 (2018.04.13)
+```q
+q)show t:([]a:10?`a`b`c;b:10?10)
+a b
+---
+c 8
+a 1
+b 9
+b 5
+c 4
+a 6
+b 6
+c 1
+b 8
+c 5
+q).Q.dpfts[`:db;2007.07.23;`a;`t;`mysym]
+`t
+q)mysym
+`c`a`b
+```
 
 
 ## `.Q.dsftg` (load process save)
@@ -249,14 +357,15 @@ Syntax: `.Q.dsftg[d;s;f;t;g]`
 
 Where 
 
-- `d` is `(dst;part;table)`
+- `d` is `(dst;part;table)` where `table` has `M` rows
 - `s` is `(src;offset;length)`
 - `f` is fields as a symbol vector
-- `t` is `(types;widths)
+- `t` is `(types;widths)`
 - `g` is a unary post-processing function
 
-loops M&1000000 rows at a time. 
+loops `M&1000000` rows at a time. 
 For example, loading TAQ DVD:
+
 ```q
 q)d:(`:/dst/taq;2000.10.02;`trade)
 q)s:(`:/src/taq;19;0)  / nonpositive length from end
@@ -266,12 +375,29 @@ q)g:{x[`stop]=:240h;@[x;`price;%;1e4]}
 q).Q.dsftg[d;s;f;t;g]
 ```
 
+<!-- 
+## `.Q.dtps`
+
+==FIXME==
+ -->
 
 ## `.Q.en` (enumerate varchar cols)
 
 Syntax: `.Q.en[x;y]`
 
-<i class="far fa-hand-point-right"></i> [Enumerating varchar columns in a table](/kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+<i class="fa fa-hand-o-right"></i> 
+Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+
+
+## `.Q.ens` (enumerate against domain)
+
+Syntax: `.Q.ens[dir;table;name]` 
+
+allows enumeration against domains (and therefore filename) other than `` `sym``.  E.g. enumerate against contents of `` `:mysym``.
+
+```q
+q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
+```
 
 
 ## `.Q.f` (format)
@@ -281,6 +407,7 @@ Syntax: `.Q.f[x;y]`
 Where `x` is an int atom and `y` is a numeric atom, returns `y` as a string formatted as a float to `x` decimal places.
 
 Because of the limits of precision in a double, for `y` above `1e13` or the limit set by `\P`, formats in scientific notation.
+
 ```q
 q)\P 0
 q).Q.f[2;]each 9.996 34.3445 7817047037.90 781704703567.90 -.02 9.996 -0.0001
@@ -292,17 +419,21 @@ q).Q.f[2;]each 9.996 34.3445 7817047037.90 781704703567.90 -.02 9.996 -0.0001
 "10.00"
 "-0.00"
 ```
+
 The `1e13` limit is dependent on `x`. The maximum then becomes `y*10 xexp x` and that value must be less than `1e17` – otherwise you'll see sci notation or overflow.
-```
+
+```q
 q)10 xlog 0Wj-1
 18.964889726830812
 ```
+
 
 ## `.Q.fc` (parallel on cut)
 
 Syntax: `.Q.fc[x;y]`
 
 Where `x` is is a unary atomic function and `y` is a list, returns the result of evaluating `f vec` – using multiple threads if possible. (Since V2.6)
+
 ```q
 q -s 8
 q)f:{2 xexp x}
@@ -312,7 +443,9 @@ q)\t f vec
 q)\t .Q.fc[f]vec
 6
 ```
-In this case the overhead of creating 100,000 threads in `peach` significantly outweighs the computational benefit of parallel execution.
+
+In this case the overhead of creating threads in `peach` significantly outweighs the computational benefit of parallel execution.
+
 ```q
 q)\t f peach vec
 45
@@ -326,6 +459,7 @@ Syntax: `.Q.ff[x;y]`
 Where `x` is table to modify, and `y` is a table of columns to add to `x` and set to null, returns `x`, with all new columns in `y`, with values in new columns set to null of the appropriate type.
 
 If there is a common column in `x` and `y`, the column from `x` is kept (i.e. it will not null any columns that exist in `x`).
+
 ```q
 q)src:0N!flip`sym`time`price`size!10?'(`3;.z.t;1000f;10000)
  sym time         price    size
@@ -370,14 +504,17 @@ Where `x` is a table column, returns `` ` `` if the column is not a foreign key 
 Syntax: `.q.fmt[x;y;z]`
 
 Where `x` and `y` are integer atoms and `z` is a numeric atom, returns `z` as a string of length `x`, formatted to `y` decimal places. (Since V2.4)
+
 ```q
 q).Q.fmt[6;2]each 1 234
 "  1.00"
 "234.00"
 ```
+
 Q) Is it possible to format the decimal data in a column to 2 decimal places?  
 A) Yes, through changing it to string
-```
+
+```q
 q)fix:{.Q.fmt'[x+1+count each string floor y;x;y]}
 q)fix[2]1.2 123 1.23445 -1234578.5522
 "1.20"
@@ -385,7 +522,9 @@ q)fix[2]1.2 123 1.23445 -1234578.5522
 "1.23"
 "-1234578.55"
 ```
+
 also handy for columns (view in a fixed-width font for proper effect):
+
 ```q
 q)align:{neg[max count each x]$x}
 q)align fix[2]1.2 123 1.23445 -1234578.5522
@@ -394,11 +533,14 @@ q)align fix[2]1.2 123 1.23445 -1234578.5522
 "       1.23"
 "-1234578.55"
 ```
+
 Q) I have a table with float values. Those values have to be persisted to a file as character strings of length 9, e.g. 34.3 --> `"     34.3"`
 I would also like to keep as much precision as possible, i.e. 343434.3576 should be persisted as `"343434.36"`
-What is the best way of doing that?  
+What is the best way of doing that? 
+
 A)
-```
+
+```q
 q)fmt:{.Q.fmt[x;(count 2_string y-i)&x-1+count string i:"i"$y]y}
 q)fmt[9] each 34.4 343434.358
 
@@ -414,7 +556,7 @@ Syntax:
 
 Blah blah blah
 
-<i class="far fa-hand-point-right"></i> [Knowledge Base: Named Pipes](/kb/named-pipes)
+<i class="fa fa-hand-o-right"></i> [Cookbook/Named Pipes](/cookbook/named-pipes)
  -->
 
 ## `.Q.fps` (streaming algorithm)
@@ -422,9 +564,11 @@ Blah blah blah
 Syntax: `.Q.fps[x;y]`
 
 `.Q.fs` for pipes. (Since V3.4)
+
 Reads conveniently sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
 
-<i class="far fa-hand-point-right"></i> [Knowledge Base: Named Pipes](/kb/named-pipes)
+<i class="fa fa-hand-o-right"></i> 
+Knowledge Base: [Named Pipes](../kb/named-pipes.md)
 
 
 ## `.Q.fs` (streaming algorithm)
@@ -434,23 +578,30 @@ Syntax: `.Q.fs[x;y]`
 Where `x` is a unary function and `y` is a filepath, loops through `y` (grabbing conveniently sized lumps of complete `"\n"`-delimited records) and applies function `x` to each record. This enables you to implement a streaming algorithm to load a large CSV file into an on-disk database without holding the data in memory all at once.
 
 For example, assume that the file potamus.csv contains the following:
+
 ```csv
 Take, a,   hippo, to,   lunch, today,        -1, 1941-12-07
 A,    man, a,     plan, a,     hippopotamus, 42, 1952-02-23
 ```
+
 If you call `.Q.fs` on this file with the function `0N!`, you get the following list of rows:
+
 ```q
 q).Q.fs[0N!]`:potamus.csv
 ("Take, a,   hippo, to,   lunch, today,        -1, 1941-12-07";"A,    man, a,..
 120
 ```
+
 `.Q.fs` can also be used to read the contents of the file into a list of columns.
+
 ```q
 q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 (`Take`A;`a`man;`hippo`a;`to`plan;`lunch`a;`today`hippopotamus;-1 42i;1941.12..
 120
 ```
-<i class="far fa-hand-point-right"></i> [Loading large CSV files](/kb/loading-from-large-files/)
+
+<i class="fa fa-hand-o-right"></i> 
+Knowledge base: [Loading large CSV files](../kb/loading-from-large-files.md)
 
 
 ## `.Q.fsn` (streaming algorithm)
@@ -468,11 +619,12 @@ Syntax: `.Q.ft[x;y]`
 
 Where 
 
-- `y` is a keyed table
-- `x` is a unary function `x[t]` in which `t` is a simple table, and the 
+-   `y` is a keyed table
+-   `x` is a unary function `x[t]` in which `t` is a simple table, and the 
 result is a table with at least as many key columns as `t` 
 
 As an example, note that you can index into a simple table with row indices, but not into a keyed table - for that you should use a select statement. However, to illustrate the method, we show an indexing function being applied to a keyed table.
+
 ```q
 q)\l sp.q
 
@@ -485,7 +637,9 @@ s1 p4 200
 q)s 2 3            / index keyed table fails
 'length
 ```
+
 Now create an indexing function, and wrap it in `.Q.ft`. This works on both types of table:
+
 ```q
 q).Q.ft[{x 2 3};s]
 s | name  status city
@@ -493,7 +647,9 @@ s | name  status city
 s3| blake 30     paris
 s4| clark 20     london
 ```
+
 Equivalent select statement:
+
 ```q
 q)select from s where i within 2 3
 s | name  status city
@@ -508,6 +664,7 @@ s4| clark 20     london
 Syntax: `.Q.fu[x;y]`
 
 Where `x` is a unary atomic function and `y` is a list, returns `x[y]` after evaluating `x` only on distinct items of `y`.
+
 ```q
 q)n: 100000; vec: n ? 30 / long vectors with few different values
 q)f:{[x] exp (x*x)} / e raised to x*x
@@ -524,7 +681,8 @@ Syntax: `.Q.gc[]`
 Returns the amount of memory that was returned to the OS. 
 (Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in slave threads since V2.7 2011.09.21)
 
-!!! note "How it works"
+!!! detail "How it works"
+
     Kdb+ uses reference counting and [buddy memory allocation](http://en.wikipedia.org/wiki/Buddy_memory_allocation). 
     The chosen buddy algorithm dices bucket sizes according to powers of 2, and the heap expands in powers of 64MB.
     
@@ -534,6 +692,7 @@ Returns the amount of memory that was returned to the OS.
     Coalescing is always deferred, i.e. can only be triggered by a call to `.Q.gc`.
     When slave threads are used, `.Q.gc` in the main thread also executes `.Q.gc` in the slave threads.
     `.Q.gc` can take several seconds to execute on large memory systems that have a fragmented heap, and hence is not recommended for frequent use in a time-critical path of code. Consider running with the command-line option `-g 1`, which will return larger blocks of memory to the OS without trying to coalesce the smaller blocks.
+
 ```q
 q)a:til 10000000
 q).Q.w[]
@@ -559,7 +718,9 @@ mmap| 0
 syms| 535
 symw| 23956
 ```
+
 Note that memory can become fragmented and therefore difficult to release back to the OS. 
+
 ```q
 q)v:{(10#"a";10000#"b")}each til 10000000;
 q).Q.w[]
@@ -607,6 +768,7 @@ mphy| 270538350592
 syms| 570
 symw| 24964
 ```
+
 So if you have many nested data, e.g. columns of char vectors, or an awful lot of grouping you may be fragmenting memory quite heavily.
 
 
@@ -621,8 +783,9 @@ Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message t
 
 Syntax: `.Q.hg x`
 
-Where `x` is a URL as a symbol atom, returns as a list of strings the result of an HTTP[S] GET query.
+Where `x` is a URL as a symbol atom or (since V3.6) a string, returns as a list of strings the result of an HTTP[S] GET query.
 (Since V3.4)
+
 ```q
 q).Q.hg`:http://www.google.com
 q)count a:.Q.hg`:http:///www.google.com
@@ -631,7 +794,9 @@ q)show a
 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>4..
 q).Q.hg`$“:http://username:password@www.google.com” / cast to include credentials
 ```
+
 If you have configured SSL/TLS, HTTPS can also be used.
+
 ```q
 q).Q.hg`:https://www.google.com
 ```
@@ -645,11 +810,21 @@ environment variable       | use
 N.B. HTTPS is not supported across proxies which require `CONNECT`.
 
 
+<!-- 
+## `.Q.hmb` (FIXME)
+
+Since V3.6 uses built-in btoa for Basic Authentication, e.g.
+```q
+ q).Q.hg`$":http://username:password@www.google.com"
+```
+
+ -->
 ## `.Q.host` (hostname)
 
 Syntax: `.Q.host x`
 
 Where `x` is an IP address as an int atom, returns its hostname as a symbol atom.
+
 ```q
 q).Q.host .Q.addr`localhost
 `localhost
@@ -672,20 +847,23 @@ Syntax: `.Q.id x`
 
 Where `x` is
 
-- a symbol atom, returns `x` purged of non-alphanumeric characters
-```q
-q).Q.id each (`$"a/b";`in)
-`ab`in
-```
-- a table, returns `x` with columns renamed by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in .q namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.) 
-```q
-q).Q.id flip (5#.Q.res)!(5#())
-in1 within1 like1 bin1 binr1
-----------------------------
-q).Q.id flip(`$("a";"a/b"))!2#()
-a ab
-----
-```
+- a **symbol atom**, returns `x` purged of non-alphanumeric characters
+
+    <pre><code class="language-q">
+    q).Q.id each (\`\$"a/b";\`in)
+    \`ab\`in
+    </code></pre>
+
+- a **table**, returns `x` with columns renamed by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in .q namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.) 
+
+    <pre><code class="language-q">
+    q).Q.id flip (5#.Q.res)!(5#())
+    in1 within1 like1 bin1 binr1
+    \----------------------------
+    q).Q.id flip(\`\$("a";"a/b"))!2#()
+    a ab
+    \----
+    </code></pre>
 
 
 ## `.Q.ind` (partitioned index)
@@ -695,15 +873,21 @@ Syntax: `.Q.ind[x;y]`
 Where `x` is a partitioned table, and `y` is a **long** int vector of row indexes into `x`, returns rows `y` from `x`. 
 
 When picking individual records from an in-memory table you can simply use the special virtual field `i`:
+
 ```q
 select from table where i<100
 ```
+
 But you can't do that directly for a partitioned table.
+
 `.Q.ind` comes to the rescue here, it takes a table and (long!) indexes into the table - and returns the appropriate rows.
+
 ```q
 .Q.ind[trade;2 3j]
 ```
+
 A more elaborate example that selects all the rows from a date:
+
 ```q
 q)t:select count i by date from trade
 q)count .Q.ind[trade;(exec first sum x from t where date<2010.01.07)+til first exec x from t where date=2010.01.07]
@@ -714,6 +898,7 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 ```
 
 !!! tip "Continuous row intervals"
+
     If you are selecting a continuous row interval, for example if iterating over all rows in a partition, instead of using `.Q.ind` you might as well use
     <pre><code class="language-q">
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
@@ -732,10 +917,11 @@ Syntax: `.Q.x12 s`
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 
-- `j10` encodes against the alphabet `.Q.b6`, this is a base-64 encoding - see [BinHex](https://en.wikipedia.org/wiki/BinHex) and [Base64](https://en.wikipedia.org/wiki/Base64) for more details than you ever want to know about which characters are where in the encoding. To keep the resulting number an integer the maximum length of `s` is 10.
-- `j12` encodes against `.Q.nA`, a base-36 encoding. As the alphabet is smaller `s` can be longer – maximum length 12.
+-   `j10` encodes against the alphabet `.Q.b6`, this is a base-64 encoding - see [BinHex](https://en.wikipedia.org/wiki/BinHex) and [Base64](https://en.wikipedia.org/wiki/Base64) for more details than you ever want to know about which characters are where in the encoding. To keep the resulting number an integer the maximum length of `s` is 10.
+-   `j12` encodes against `.Q.nA`, a base-36 encoding. As the alphabet is smaller `s` can be longer – maximum length 12.
 
 The main use of these functions is to encode long alphanumeric identifiers (CUSIP, ORDERID..) so they can be quickly searched – but without filling up the symbol table with vast numbers of single-use values.
+
 ```q
 q).Q.x10 12345j
 "AAAAAAADA5"
@@ -750,6 +936,7 @@ q).Q.j12 .Q.x12 12345j
 ```
 
 !!! tip
+
     If you don't need the default alphabets it can be very convenient to change them to have a blank as the first character, allowing the identity `0` <-> `" "`.
     
     If the values are not going to be searched (or will be searched with `like`) then keeping them as nested character is probably going to be simpler.
@@ -776,6 +963,7 @@ Implements [`\l`](../basics/syscmds.md#l-load-file-or-directory).
 Syntax: `.Q.M`
 
 Returns long integer infinity.
+
 ```q
 q)0Wj~.Q.M
 1b
@@ -789,18 +977,67 @@ Syntax: `.Q.MAP[]`
 Added in V3.1, keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
 
 For use with partitioned HDBS, used in tandem with `\l dir`
+
 ```q
 q)\l .
 q).Q.MAP[]
 ```
+
 When using `.Q.MAP[]` you can't access the date column outside of the usual: 
+
 ```q
 select … [by date,…] from … where [date …]
 ```
+
 NOT recommended for use with compressed files, as the decompressed maps will be retained, using physical memory|swap.
 
 !!! note "File handles and maps" 
-    You may need to increase the number of available file handles, and also the number of available file maps. For Linux see vm.max_map_count.
+
+    You may need to increase the number of available file handles, and also the number of available file maps. For Linux see `vm.max_map_count`.
+
+
+## `.Q.opt` (command parameters)
+
+Syntax: `.Q.opt .z.x`
+
+Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
+
+<i class="fa fa-hand-o-right"></i> 
+[`.z.x`](dotz.md#zx-argv)
+
+
+## `.Q.par` (locate partition)
+
+Syntax: `.Q.par[dir;part;table]`
+
+Where `dir` is a directory filepath, `part` is a date, returns the location of `table`. (Sensitive to `par.txt`.)
+
+```q
+q).Q.par[`:.;2010.02.02;`quote]
+`:/data/taq/2010.02.02/quote
+```
+
+Can assist in checking `` `p`` attribute is present on all partitions of a table in an HDB
+
+```
+q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
+1b
+```
+
+
+## `.Q.pd` (modified partition locations)
+
+Syntax: `.Q.pd`
+
+In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
+
+
+## `.Q.pf` (partition type)
+
+Syntax: `.Q.pf`
+
+In partitioned DBs, the partition type. 
+Possible values are `` `date`month`year`int``.
 
 
 ## `.Q.pn` (partition counts)
@@ -811,6 +1048,7 @@ In partitioned DBs, returns a dictionary of cached partition counts – conforma
 Cleared by `.Q.view`.
 
 `.Q.pv!flip .Q.pn` can be used to create a crosstab of table-to-partition-counts once `.Q.pn` is fully populated.
+
 ```q
 q)n:100
 q)t:([]time:.z.T+til n;sym:n?`2;num:n)
@@ -846,13 +1084,18 @@ q).Q.pv!flip .Q.pn
 ```
 
 
-## `.Q.opt` (command parameters)
+## `.Q.pt` (partitioned tables)
 
-Syntax: `.Q.opt .z.x`
+Syntax: `.Q.pt`
 
-Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
+Returns a list of partitioned tables.
 
-<i class="far fa-hand-point-right"></i> [`.z.x`](dotz.md#zx-argv)
+
+## `.Q.pv` (modified partition values)
+
+Syntax: `.Q.pv`
+
+In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
 
 
 ## `.Q.P` (segments)
@@ -860,25 +1103,10 @@ Returns a dictionary, so you can easily see if a key was defined (flag set or no
 Syntax: `Q.P`
 
 In segmented DBs, returns a list of the segments (i.e. the contents of `par.txt`).
+
 ```q
 q).Q.P
 `:../segments/1`:../segments/2`:../segments/3`:../segments/4
-```
-
-
-## `.Q.par` (locate partition)
-
-Syntax: `.Q.par[dir;part;table]`
-
-Where `dir` is a directory filepath, `part` is a date, returns the location of `table`. (Sensitive to `par.txt`.)
-```q
-q).Q.par[`:.;2010.02.02;`quote]
-`:/data/taq/2010.02.02/quote
-```
-Can assist in checking `` `p`` attribute is present on all partitions of a table in an HDB
-```
-q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
-1b
 ```
 
 
@@ -886,9 +1114,10 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 
 Syntax: `.Q.PD`
 
-In partitioned DBs, returns a list of partition locations – conformant to `.Q.PV` – which represents the partition location for each partition.
-(In non-segmented DBs, this will be simply `count[.Q.PV]#`:.`.)
+In partitioned DBs, a list of partition locations – conformant to `.Q.PV` – which represents the partition location for each partition.
+(In non-segmented DBs, this will be simply ``count[.Q.PV]#`:.``.)
 `.Q.PV!.Q.PD` can be used to create a dictionary of partition-to-location information.
+
 ```q
 q).Q.PV
 2010.05.26 2010.05.27 2010.05.28 2010.05.29 2010.05.30 2010.05.30 2010.05.31
@@ -905,34 +1134,13 @@ q).Q.PV!.Q.PD
 ```
 
 
-## `.Q.pd` (modified partition locations)
-
-Syntax: `.Q.pd`
-
-In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
-
-
-## `.Q.pf` (partition type)
-
-Syntax: ==FIXME==
-
-In partitioned DBs, returns the partition type.
-Possible values are `` `date`month`year`int``.
-
-
-## `.Q.pt` (partitioned tables)
-
-Syntax: `.Q.pt`
-
-Returns a list of partitioned tables.
-
-
 ## `.Q.PV` (partition values)
 
 Syntax: `.Q.PV`
 
 In partitioned DBs, returns a list of partition values – conformant to `.Q.PD` – which represents the partition value for each partition.
 (In a date-partitioned DB, unless the date has been modified by `.Q.view`, this will be simply date.)
+
 ```q
 q).Q.PD
 `:../segments/1`:../segments/2`:../segments/3`:../segments/4`:../segments/3`:../segments/4`:../segments/1
@@ -948,22 +1156,15 @@ q).Q.PV
 ```
 
 
-## `.Q.pv` (modified partition values)
-
-Syntax: `.Q.pv`
-
-In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
-
-
 ## `.Q.qp` (is partitioned)
 
 Syntax: `.Q.qp x`
 
 Where `x` 
 
-- is a partitioned table, returns `1b`
-- a splayed table, returns `0b` 
-- anything else, returns 0
+-   is a partitioned table, returns `1b`
+-   a splayed table, returns `0b` 
+-   anything else, returns 0
 
 ```q
 q)\
@@ -993,11 +1194,14 @@ Where `x` is a table, returns `1b`, else `0b`.
 Syntax: `.Q.res`
 
 Returns the k control words and functions as a symbol vector. ``key `.q`` returns the functions defined to extend k to the q language. Hence to get the full list of reserved words for the current version:
+
 ```q
 q).Q.res,key`.q
 `abs`acos`asin`atan`avg`bin`binr`cor`cos`cov`delete`dev`div`do`enlist`exec`ex..
 ```
-<i class="far fa-hand-point-right"></i> `.Q.id`
+
+<i class="fa fa-hand-o-right"></i> 
+[`.Q.id`](#qid-purge)
 
 
 ## `.Q.s` (plain text)
@@ -1005,11 +1209,120 @@ q).Q.res,key`.q
 Syntax: `.Q.s x`
 
 Returns `x` formatted to plain text, as used by the console. Obeys console width and height set by [`\c`](../basics/syscmds.md#c-console-size).
+
 ```q
 q).Q.s ([h:1 2 3] m: 4 5 6)
 "h| m\n-| -\n1| 4\n2| 5\n3| 6\n"
 ```
-Occasionally useful for undoing "Studio for kdb+" tabular formatting.
+
+Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
+
+
+## `.Q.sbt` (string backtrace)
+
+Syntax: `.Q.sbt[y]`
+
+Where `y` is a [backtrace object](#qtrp-extend-trap) returns it as a string formatted for display.
+
+Since V3.5 2017.03.15.
+
+<i class="fa fa-hand-o-right"></i> 
+basics: [Debugging](../basics/debug.md)
+
+
+## `.Q.sha1` (SHA-1 encode)
+
+Syntax: `.Q.sha1 x`
+
+```q
+q).Q.sha1"Hello World!"
+0x2ef7bde608ce5404e97d5f042f95f89f1c232871
+```
+
+Since V3.6 2018.05.18.
+
+
+## `.Q.trp` (extend trap)
+
+Syntax: `.Q.trp[f;x;g]`
+
+Where
+
+-   `f` is a unary function and `x` is its argument
+-   `g` is a binary function
+
+extends [Trap](apply.md#trap) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
+
+1.   the error string
+2.   the backtrace object
+
+You can format the backtrace object with `.Q.sbt`.
+
+```q
+q)f:{`hello+x}
+q)           / print the formatted backtrace and error string to stderr
+q).Q.trp[f;2;{2@"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+error: type
+backtrace:
+  [2]  f:{`hello+x}
+                ^
+  [1]  (.Q.trp)
+
+  [0]  .Q.trp[f;2;{2@"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+       ^
+-1
+q)
+```
+
+`.Q.trp` can be used for remote debugging.
+
+```q
+q)h:hopen`::5001   / f is defined on the remote
+q)h"f `a"           
+'type              / q's IPC protocol can only get the error string back
+  [0]  h"f `a"
+       ^
+q)                 / a made up protocol: (0;result) or (1;backtrace string)
+q)h".z.pg:{.Q.trp[(0;)@value@;x;{(1;.Q.sbt y)}]}"
+q)h"f 3"
+0                  / result
+,9 9 9             
+q)h"f `a"
+1                  / failure
+"  [4]  f@:{x*y}\n            ^\n  [3..
+q)1@(h"f `a")1;    / output the backtrace string to stdout
+  [4]  f@:{x*y}
+            ^
+  [3]  f:{{x*y}[x;3#x]}
+          ^
+  [2]  f `a
+       ^
+  [1]  (.Q.trp)
+
+  [0]  .z.pg:{.Q.trp[(0;)@enlist value@;x;{(1;.Q.sbt y)}]}
+              ^
+```
+
+Since V3.5 2017.03.15.
+
+<i class="fa fa-hand-o-right"></i> 
+Basics: [Debugging](../basics/debug.md)
+
+
+## `.Q.ts` (time and space)
+
+Syntax: `.Q.ts[x;y]`
+
+Where `x` and `y` are valid arguments of _dot-apply_, adds [`\ts`](../basics/syscmds.md#ts-time-and-space) functionality.
+
+```q
+q)\ts .Q.hg `:http://www.google.com
+148 131760
+q).Q.ts(.Q.hg;enlist`:http://www.google.com)
+148 131760
+```
+
+Since V3.6 2018.05.18.
 
 
 ## `.Q.ty` (type)
@@ -1025,32 +1338,11 @@ q).Q.ty 1 2.
 "f"
 ```
 
-Looking up primitive datatypes:
+If the argument is a table column, returns upper case for mappable/uniform lists of vectors. (c.f. [`meta`](meta.md))
 
 ```q
-q)20#.Q.t
-" bg xhijefcspmdznuvt"
-q){key x$()}'[(20#.Q.t)except" "]
-`boolean`guid`byte`short`int`long`real`float`char`symbol`timestamp`month`date`datetime`timespan`minute`second`time
-q)flip{(x;.Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
-1h  "b" `boolean
-2h  "g" `guid
-4h  "x" `byte
-5h  "h" `short
-6h  "i" `int
-7h  "j" `long
-8h  "e" `real
-9h  "f" `float
-10h "c" `char
-11h "s" `symbol
-12h "p" `timestamp
-13h "m" `month
-14h "d" `date
-15h "z" `datetime
-16h "n" `timespan
-17h "u" `minute
-18h "v" `second
-19h "t" `time
+q).Q.ty ("ab";"cd")
+"C"
 ```
 
 
@@ -1068,9 +1360,9 @@ Syntax: `.Q.v x`
 
 Where `x` is
 
-- a filepath, returns the splayed table stored at `x`
-- any other symbol, returns the global named `x`
-- anything else, returns `x`
+-   a filepath, returns the splayed table stored at `x`
+-   any other symbol, returns the global named `x`
+-   anything else, returns `x`
 
 
 ## `.Q.V` (table to dict)
@@ -1079,20 +1371,27 @@ Syntax: `.Q.V x`
 
 Where `x` is 
 
-- a table, returns a dictionary of its column values. 
-- a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
+-   a table, returns a dictionary of its column values. 
+-   a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
 
-<i class="far fa-hand-point-right"></i> [`meta`](../basics/metadata.md#meta)
+<i class="fa fa-hand-o-right"></i> 
+[`meta`](meta.md)
 
 
 ## `.Q.view` (subview)
 
 Syntax: `.Q.view x`
 
-Set a subview
+Where `x` is a list of partition values that serves as a filter for all queries against any partitioned table in the database, `x` is added as a constraint in the first sub-phrase of the where-clause of every query. 
+
+`.Q.view` is handy when you are executing queries against partitioned or segmented tables. Recall that multiple tables can share the partitioning. `Q.view` can guard against runaway queries that ask for all historical data.
+
 ```q
 .Q.view 2#date
 ```
+
+<i class="fa fa-hand-o-right"></i> 
+_Q for Mortals_: [§14.5.8 `Q.view`](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 
 ## `.Q.vp` (missing partitions)
@@ -1101,6 +1400,7 @@ Syntax: `.Q.vp`
 
 In partitioned DBs, returns a dictionary of table schemas for tables with missing partitions, as populated by `.Q.bv`.
 (Since V3.0 2012.01.26.)
+
 ```q
 q)n:100
 q)t:([]time:.z.T+til n;sym:n?`2;num:n)
@@ -1126,6 +1426,7 @@ q)@[get;"select from tt";-2@]; / no error
 Syntax: `.Q.w[]`
 
 Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary.
+
 ```q
 q).Q.w[]
 used| 168304
@@ -1137,7 +1438,10 @@ mphy| 8589934592
 syms| 577
 symw| 25436
 ```
-<i class="far fa-hand-point-right"></i> Command-line parameter [`-w`](../basics/cmdline.md#-w-memory), system command [`\w`](../basics/syscmds.md#w-workspace)
+
+<i class="fa fa-hand-o-right"></i> 
+Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-memory),
+[System command `\w`](../basics/syscmds.md#w-workspace)
 
 
 ## `.Q.x` (non-command parameters)
@@ -1145,9 +1449,11 @@ symw| 25436
 Syntax: `.Q.x`
 
 Set by `.Q.opt`: a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
+
 ```bash
 ~$ q taq.k path/to/source path/to/destn
 ```
+
 ```q
 q)cla:.Q.opt .z.X /command-line arguments
 q).Q.x
@@ -1155,7 +1461,10 @@ q).Q.x
 "path/to/source"
 "path/to/destn"
 ```
-<i class="far fa-hand-point-right"></i> [`.z.x`](dotz.md#zx-argv), [`.z.X`](dotz.md#zx-raw-command-line)
+
+<i class="fa fa-hand-o-right"></i> 
+[`.z.x`](dotz.md#zx-argv), 
+[`.z.X`](dotz.md#zx-raw-command-line)
 
 
 ## `.Q.Xf` (create file)
@@ -1163,14 +1472,11 @@ q).Q.x
 Syntax: `.Q.Xf[x;y]`
 
 Where `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``) and `y` is a filepath, creates an empty nested-vector file at `y`.
+
 ```q
 q).Q.Xf["C";`:emptyNestedCharVector];
 q)type get`:emptyNestedCharVector
 87h 
 ```
-## `.Q.Cf` (create empty nested char file)
-
-Alias for `.Q.Xf[\`char;y]`
-
 
 

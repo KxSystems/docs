@@ -1,5 +1,4 @@
 ---
-title: As-of join
 keywords: asof, join, kdb+, q
 ---
 
@@ -66,5 +65,6 @@ A   2000.08.04| 00846U101 AGILENT TECHNOLOGIES  INC      0  N  100
 
 
 <i class="far fa-hand-point-right"></i> 
+[`aj`, `aj0`, `ajf`, `ajf0`](aj.md)  
 Basics: [Joins](../basics/joins.md)
 

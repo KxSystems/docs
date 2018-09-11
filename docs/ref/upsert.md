@@ -1,5 +1,4 @@
 ---
-title: upsert
 keywords: kdb+, q, query, qsql, records, sql, table, update, upsert
 ---
 

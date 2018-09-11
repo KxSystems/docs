@@ -1,3 +1,7 @@
+---
+keywords: integers, kdb+, math, mathematics, natural numbers, q
+---
+
 # `til`
 
 
@@ -19,4 +23,5 @@ q)til 5f
        ^
 ```
 
-<i class="far fa-hand-point-right"></i> [Mathematics](/basics/math)
+<i class="far fa-hand-point-right"></i> 
+Basics: [Mathematics](../basics/math.md)

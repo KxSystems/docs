@@ -1,9 +1,13 @@
+---
+keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, read, read0, text
+---
+
 # `read0`
 
 
 
 
-_Read text from a file_
+_Read text from a file or process handle_
 
 Syntax: `read0 x`, `read0[x]`
 
@@ -45,10 +49,6 @@ q)a[4+til 4]
 ```
 
 
-
-<i class="far fa-hand-point-right"></i> [File handle](../basics/files.md#file-handles)
-
-
 ## File descriptor
 
 i.e. a list of the form `(file; offset; length)`, returns bytes from `file`.
@@ -71,4 +71,5 @@ q)read0(h;8)
 
 
 <i class="far fa-hand-point-right"></i>
-[File system](../basics/files.md)
+[File and process handles](handles.md)  
+Basics: [File system](../basics/files.md)

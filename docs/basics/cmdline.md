@@ -2,15 +2,18 @@
 
 
 
-The command line for invoking kdb+ has the form:
+The command line for invoking q has the form:
 
 ```bash
+
 q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] [-p N] 
     [-P N] [-q] [-r :H:P] [-s N] [-t N] [-T N] [-u|U F] [-w N] [-W N] 
     [-z 0|1]
 ```
 
-<i class="far fa-hand-point-right"></i> [`.z.x`](dotz/#zx-argv) (argv), [`.z.X`](dotz/#zx-raw-command-line) (raw command line) 
+<i class="far fa-hand-point-right"></i> 
+[`.z.x`](../ref/dotz.md#zx-argv) (argv), 
+[`.z.X`](../ref/dotz.md#zx-raw-command-line) (raw command line) 
 
 ## file
   
@@ -21,6 +24,7 @@ $q sp.q
 KDB+ 3.5t 2017.02.28 Copyright (C) 1993-2017 Kx Systems
 m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
 ```
+
 ```q
 
 +`p`city!(`p$`p1`p2`p3`p4`p5`p6`p1`p2;`london`london`london`london`london`lon..
@@ -39,6 +43,7 @@ Block client write-access to a kdb+ database.
 ```bash
 ~/q$ q -b
 ```
+
 ```q
 q)aa:([]bb:til 4)
 q)\p 5001
@@ -74,7 +79,9 @@ HTTP display maxRows maxCols, default 36 2000
 
 The defaults are 36&times;2000, and values are coerced to the range \[10,2000\].
 
-<i class="far fa-hand-point-right"></i> [`\C`](syscmds/#c-http-size), [Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+<i class="far fa-hand-point-right"></i> 
+[`\C`](syscmds.md#c-http-size), 
+[Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
 
 
 
@@ -93,6 +100,7 @@ These settings determine when q elides output with `..`
 ```bash
 ..$ q -c 10 20
 ```
+
 ```q
 q)til each 20+til 10
 0 1 2 3 4 5 6 7 8..
@@ -105,7 +113,9 @@ q)til each 20+til 10
 ..
 ```
 
-<i class="far fa-hand-point-right"></i> [`\c`](syscmds/#c-console-size), [Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+<i class="far fa-hand-point-right"></i> 
+[`\c`](syscmds.md#c-console-size), 
+[Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
 
 
 ## `-E` (TLS Server Mode)
@@ -118,7 +128,8 @@ x   | mode
 1   | plain & TLS
 2   | TLS only
 
-<i class="far fa-hand-point-right"></i> Knowledge Base: [SSL/TLS](/kb/ssl/#tls-server-mode)
+<i class="far fa-hand-point-right"></i> 
+Knowledge Base: [SSL/TLS](../kb/ssl.md#tls-server-mode)
 
 
 ## `-e` (error traps)
@@ -132,10 +143,10 @@ Enable client error trapping
 
 Syntax: `-g B`
   
-Allows switching of garbage collect to immediate(1) mode instead of deferred(0).
+Allow switching of garbage collect to immediate(1) mode instead of deferred(0).
 
-- Immediate mode will return (certain types of) memory to the OS as soon as no longer referenced and has an associated overhead.
-- Deferred mode will return memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence deferred mode has a performance advantage, but can be more difficult to dimension/manage memory requirements.
+-   Immediate mode will return (certain types of) memory to the OS as soon as no longer referenced and has an associated overhead.
+-   Deferred mode will return memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence deferred mode has a performance advantage, but can be more difficult to dimension/manage memory requirements.
 
 Immediate mode is the V2.5/2.6 default, deferred is the V2.7 default.
 To use immediate mode, invoke as `q -g 1`. (Since V2.7 2011.02.04.)
@@ -146,7 +157,8 @@ To use immediate mode, invoke as `q -g 1`. (Since V2.7 2011.02.04.)
 Syntax: `-L`
   
 As `-l`, but sync logging  
-<i class="far fa-hand-point-right"></i>  [Knowledge Base: Logging](/kb/logging)
+<i class="far fa-hand-point-right"></i> 
+Knowledge Base: [Logging](../kb/logging.md)
 
 
 ## `-l` (log updates)
@@ -154,14 +166,15 @@ As `-l`, but sync logging
 Syntax: `-l`
   
 Log updates to filesystem  
-<i class="far fa-hand-point-right"></i> [Knowledge Base: Logging](/kb/logging)
+<i class="far fa-hand-point-right"></i> 
+Knowledge Base: [Logging](../kb/logging.md)
 
 
 ## `-o` (UTC offset)
 
 Syntax: `-o N`
   
-Offset hours from UTC, or minutes if `abs[N]>23` (Affects [`.z.Z`](dotz/#zz-local-datetime))
+Offset hours from UTC, or minutes if `abs[N]>23` (Affects [`.z.Z`](../ref/dotz.md#zz-local-datetime))
 
 
 ## `-P` (display precision)
@@ -171,9 +184,11 @@ Syntax: `-P N`
 Display precision for floating point numbers, where `N` is the _display_ precision for floats and reals, i.e. `N` is the number of significant digits shown in output.
 The default value is 7 and possible values are in the range \[0,17\]. A precision of 0 means use maximum precision. 
 This is used when exporting to CSV files.
+
 ```bash
-..$ q
+$ q
 ```
+
 ```q
 q)\P                       / default
 7i
@@ -185,17 +200,21 @@ q)123456789f               / floats shown to 7 significant digits
 1.234568e+08
 q)\\
 ```
+
 ```bash
-..$ q -P 3
+$ q -P 3
 ```
+
 ```q
 q)1%3
 0.333
 q)\\
 ```
+
 ```bash
-..$ q -P 10
+$ q -P 10
 ```
+
 ```q
 q)1%3
 0.3333333333
@@ -203,12 +222,15 @@ q)\\
 ```
 
 !!! tip "`.Q.fmt` and `.q.f`"
+
     Use `.Q.fmt` to format numbers to given width and precision.
     <pre><code class="language-q">
     q).Q.fmt[8;6]a            / format to width 8, 6 decimal places
     "0.142857"
     </code></pre>
+
     Use `.Q.f` to format numbers to given precision after the decimal.
+
     <pre><code class="language-q">
     q).Q.f[2;]each 9.996 34.3445 7817047037.90  / format to 2 decimal places
     "10.00"
@@ -216,23 +238,28 @@ q)\\
     "7817047037.90"
     </code></pre>
 
-<i class="far fa-hand-point-right"></i> [`\P`](syscmds/#p-precision), [.Q.f](dotq/#qf-format), [.Q.fmt](dotq/#qfmt-format), [Precision](/kb/precision)
+<i class="far fa-hand-point-right"></i> 
+[`\P`](syscmds.md#p-precision), 
+[`.Q.f`](../ref/dotq.md#qf-format), 
+[`.Q.fmt`](../ref/dotq.md#qfmt-format)  
+Knowledge Base: [Precision](../kb/precision.md)
 
-<i class="far fa-hand-point-right"></i> [What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://docs.sun.com/source/806-3568/ncg_goldberg.html)
+<i class="far fa-hand-point-right"></i> 
+[What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://docs.sun.com/source/806-3568/ncg_goldberg.html)
 
 
 ## `-p` (port)
 
 Syntax: `-p N`
   
-Port on which q server listens. Use for [client/server](/kb/client-server), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
+Port on which q server listens. Use for [client/server](../kb/client-server.md), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
 
 
 ## `-p` (multithread port)
 
 Syntax: `-p -N`
   
-Port for [multithreaded input mode](/kb/multithreaded-input/)
+Port for [multithreaded input mode](../kb/multithreaded-input.md)
 
 
 ## `-q` (quiet mode)
@@ -240,20 +267,25 @@ Port for [multithreaded input mode](/kb/multithreaded-input/)
 Syntax: `-q`
   
 Quiet, i.e. no startup banner text or session prompts. Typically used where no console is required.
+
 ```bash
 ~/q$ q
 KDB+ 3.5t 2017.02.28 Copyright (C) 1993-2017 Kx Systems
 …
 ```
+
 ```q
 q)2+2
 4
 q)
 ```
+
 and with `-q`
+
 ```bash
 ~/q$ q -q
 ```
+
 ```q
 2+2
 4
@@ -280,10 +312,12 @@ negative | processes with handles in `.z.pd`
 
 For processes:
 
--   `peach` or `':` will call [`.z.pd`](dotz/#zpd-peach-handles) for a list of handles to the processes, which must have been started previously
+-   `peach` or `':` will call [`.z.pd`](../ref/dotz.md#zpd-peach-handles) for a list of handles to the processes, which must have been started previously
 -   the absolute value of `-N` in the command line is ignored. 
 
-<i class="far fa-hand-point-right"></i> System command [`\s`](syscmds/#s-number-of-slaves), [Parallel processing](peach)
+<i class="far fa-hand-point-right"></i> 
+[`\s`](syscmds.md#s-number-of-slaves), 
+[Parallel processing](peach.md)
 
 
 ## `-T` (timeout)
@@ -316,9 +350,21 @@ Disables system commands from a remote (signals `'access`). As such, this includ
 
 ## `-u` (usr-pwd local)
 
-Syntax: `-u F`
+Syntax: `-u file`
   
-Sets usr:pwd file, no access above start directory
+Sets a password file; no access above start directory
+
+The password file is a text file with one credential on each line. 
+(No trailing blank line/s.)
+```txt
+user1:password1
+user2:password2
+```
+The password can be plain text, or an MD5 hash of the password.
+```q
+q)raze string md5 "this is my password"
+"210d53992dff432ec1b1a9698af9da16"
+```
 
 
 ## `-W` (start week)
@@ -334,7 +380,7 @@ Syntax: `-w N`
   
 Workspace limit in MB for the heap per thread. Default is 0: no limit. 
 
-As reported by system command [`\w`](syscmds/#w-workspace) and utility [`.Q.w`](dotq/#qw-memory-stats).
+As reported by system command [`\w`](syscmds.md#w-workspace) and utility [`.Q.w`](../ref/dotq.md#qw-memory-stats).
 
 !!! tip "Other ways to limit resources"
     On Linux systems, administrators might prefer [cgroups](https://en.wikipedia.org/wiki/Cgroups) as a way of limiting resources.

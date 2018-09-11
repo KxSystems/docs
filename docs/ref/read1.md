@@ -1,3 +1,8 @@
+---
+keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
+---
+
+
 # `read1`
 
 

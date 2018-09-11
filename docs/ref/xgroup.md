@@ -1,9 +1,14 @@
+---
+keywords: column, group, kdb+, q, xgroup
+---
+
+
 # `xgroup`
 
 
 _Groups a table by values in selected columns_
 
-Syntax: `x xgroup y`
+Syntax: `x xgroup y`,`xgroup[x;y]`
 
 Where 
 
@@ -64,5 +69,5 @@ p3 s1 400
 ```
 
 <i class="far fa-hand-point-right"></i>
-[Dictionaries & tables](../basics/dictsandtables.md),
-[`group`](group.md)
+[`group`](group.md)  
+Basics: [Dictionaries & tables](../basics/dictsandtables.md)

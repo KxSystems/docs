@@ -1,8 +1,12 @@
-# $ Cast
+---
+keywords: cast, datatype, dollar, kdb+,q
+---
+
+# `$` Cast
 
 
 
-_Convert to another datatype._
+_Convert to another datatype_
 
 Syntax: `x$y`, `$[x;y]`
 
@@ -30,6 +34,9 @@ q)flip{(x;.Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
 19h "t" `time
 ```
 
+
+## Integer
+
 Cast to integer:
 
 ```q
@@ -39,12 +46,18 @@ q)(`int;"i";6h)$10
 10 10 10i
 ```
 
+
+## Boolean
+
 Cast to boolean:
 
 ```q
 q)1h$1 0 2
 101b
 ```
+
+
+## Temporal
 
 Find parts of time:
 
@@ -55,16 +68,36 @@ q)`year`dd`mm`hh`uu`ss$2015.10.28D03:55:58
 2015 28 10 3 55 58i
 ```
 
-!!! Note "Casting string to symbol"
+```txt
+          | year | month | mm | week | dd | hh | uu | ss
+--------------------------------------------------------
+timestamp |  x   |   x   | x  |  x   | x  | x  | x  | x
+month     |  x   |   x   | x  |      |    |    |    |
+date      |  x   |   x   | x  |  x   | x  |    |    |
+datetime  |  x   |   x   | x  |  x   | x  | x  | x  | x
+timespan  |      |       |    |      |    | x  | x  | x
+minute    |      |       |    |      |    | x  | x  | x
+second    |      |       |    |      |    | x  | x  | x
+time      |      |       |    |      |    | x  | x  | x
 
-    When converting a string to a symbol, leading and trailing blanks are automatically trimmed:
 
-    <pre><code class="language-q">
-    q)`$"   IBM   "
-    `IBM
-    </code></pre>
+milliseconds: "i"$time mod 1000
+milliseconds: "i"$mod[;1000]"t"$datetime
+nanoseconds: "i"$timestamp mod 1000000000
+```
 
-Identity:
+
+## String to symbol
+
+When converting a string to a symbol, leading and trailing blanks are automatically trimmed:
+
+```q
+q)`$"   IBM   "
+`IBM
+```
+
+
+## Identity
 
 ```q
 q)("*";0h)$1
@@ -74,19 +107,19 @@ q)("*";0h)$\:"2012-02-02"
 "2012-02-02"
 ```
 
-!!! warning "To infinity and beyond!"
 
-    Casting an infinity from a narrower to a wider datatype does not always return another infinity.  
-    <div style="display: block; float: left; padding-right: 1em; width: 130px;" markdown="1">
-    [![Buzz Lightyear](/img/earthrise.jpg)](https://www.nasa.gov/multimedia/imagegallery/image_feature_1400.html "Earthrise: NASA galleries")
-    </div>
-    <pre><code class="language-q">
-    q)\`float$0Wh
-    32767f
-    </code></pre>
-    Space rangers! The infinity corresponding to numeric `x` is `min 0#x`.
+## Infinities and beyond
+
+!!! warning "Casting an infinity from a narrower to a wider datatype does not always return another infinity."
+
+```q
+q)`float$0Wh
+32767f
+```
+
+Space rangers! The infinity corresponding to numeric `x` is `min 0#x`.
 
 <i class="far fa-hand-point-right"></i> 
-[dollar `$`](overloads.md#dollar),
 [Tok](tok.md)  
+[dollar `$`](overloads.md#dollar)  
 Basics: [Casting & encoding](../basics/casting.md)

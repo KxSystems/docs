@@ -1,6 +1,10 @@
+---
+keywords: command, kdb+, q, system, system command
+---
+
 # `system`
 
-
+_Execute a system command_
 
 Syntax: `system x`, `system[x]`
 
@@ -19,4 +23,5 @@ q)count system "a"       / this returns a result
 3
 ```
 
-<i class="far fa-hand-point-right"></i> [System commands](../basics/syscmds.md)
+<i class="far fa-hand-point-right"></i> 
+Basics: [System commands](../basics/syscmds.md)

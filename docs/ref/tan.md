@@ -1,5 +1,4 @@
 ---
-title: tan, atan
 keywords: atan, arctan, tan, tangent, kdb+, math, mathematics, q, trigonometry
 ---
 

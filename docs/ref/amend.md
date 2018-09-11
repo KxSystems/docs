@@ -1,4 +1,8 @@
-# . @ Amend
+---
+keywords: amend, amend at, at, dot, kdb+, q
+---
+
+# `.` `@` Amend, Amend At
 
 
 
@@ -50,9 +54,14 @@ However, if the index `i` is the empty list, i.e. `()`, then Amend is Amend Enti
 ```
 
 
-## Apply At
+## Amend At
 
-Exactly as for [Apply At](apply.md#apply-at-for-unary-functions), `@[d;i;…` is everywhere [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for `.[d;enlist i;…`.
+Exactly as for [Apply At](apply.md#apply-at-index-ats), `@[d;i;…` is everywhere [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for `.[d;enlist i;…`.
+
+In the general case of a one-item list `i`
+
+-   `.[d;i;u;y]` is identical to `@[d;first i;u;y]`
+-   `.[d;i;u]` is identical to `@[d;first i;u]`
 
 Definitions and examples that follow are written for `.` – adapt them for `@`. 
 
@@ -77,6 +86,7 @@ The new value/s of `d . i` are determined by the third argument, and whether `i`
 `:`          | `y`               | `y . i`
 `u`          | `u[d . i]`        | `u'[d . i]`
 `m`          | `m[d . i; y . i]` | `m'[d . i; y . i]`
+
 
 ==FIXME Replace `'` in definition with recursion?==
 
@@ -238,14 +248,6 @@ Note the application of [Over](FIXME) to Amend, which requires that whenever `F`
 ## Accumulate
 
 Cases of Amend with a map `u` or `m` are sometimes called Accumulate because the new items-at-depth are computed in terms of the old, as in `.[x; 2 6; +; 1]`, where item 6 of item 2 is incremented by 1.
-
-
-## Amend At
-
-In the general case of a one-item list `i`
-
--   `.[d;i;u;y]` is identical to `@[d;first i;u;y]`
--   `.[d;i;u]` is identical to `@[d;first i;u]`
 
 
 ## Errors

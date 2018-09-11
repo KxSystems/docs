@@ -112,6 +112,39 @@ s4 p4 300
 s1 p5 400
 ```
 
+To group on multiple columns, tabulate them in `group`.
+
+```q
+q)update x:12?3 from `sp
+`sp
+q)sp
+s  p  qty x
+-----------
+s1 p1 300 0
+s1 p2 200 2
+s1 p3 400 0
+s1 p4 200 1
+s4 p5 100 0
+s1 p6 100 0
+s2 p1 300 0
+s2 p2 400 2
+s3 p2 200 2
+s4 p2 200 2
+s4 p4 300 1
+s1 p5 400 1
+q)select from sp where qty = (max;qty) fby ([]s;x)
+s  p  qty x
+-----------
+s1 p2 200 2
+s1 p3 400 0
+s4 p5 100 0
+s2 p1 300 0
+s2 p2 400 2
+s3 p2 200 2
+s4 p2 200 2
+s4 p4 300 1
+s1 p5 400 1
+```
 
 !!! info "`fby` before V2.7"
 

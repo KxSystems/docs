@@ -1,5 +1,4 @@
 ---
-title: abs
 keywords: abs, absolute, kdb+, math, mathematics, q
 ---
 
@@ -33,4 +32,4 @@ Range: `ihjefpmdznuvt`
 
 <i class="far fa-hand-point-right"></i> 
 [`signum`](signum.md)  
-[Mathematics](../basics/math.md)
+Basics: [Mathematics](../basics/math.md)

@@ -1,5 +1,4 @@
 ---
-title: xrank
 keywords: group, kdb+, q, sort
 ---
 

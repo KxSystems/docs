@@ -1,3 +1,7 @@
+---
+keywords: kdb+, metadata, q, table
+---
+
 # `tables`
 
 

@@ -6,9 +6,9 @@
 
 : Returns `1b` if all items are non-zero. (Aggregate)
 
-[`&` `and`](../ref/minimum.md)
+[`&` `and`](../ref/lesser.md)
 
-: Logical AND. Also Minimum. (Atomic)
+: Logical AND. Lesser of two values. (Atomic)
 
 [`any`](../ref/all-any.md#any)
 
@@ -22,6 +22,6 @@
 
 : Is null. (Atomic)
 
-[`|` `or`](../ref/maximum.md)
+[`|` `or`](../ref/greater.md)
 
-: Logical OR.  And maximum. (Atomic)
+: Logical OR.  Greater of two values. (Atomic)

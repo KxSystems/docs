@@ -14,15 +14,15 @@ function                           | rank | ƒ | semantics
 [`*`](../ref/multiply.md)          | 2    | a | multiply
 [`%`](../ref/divide.md)            | 2    | a | divide
 [`$`](../ref/mmu.md)               | 2    | A | dot product, matrix multiply
-[`&`](../ref/minimum.md)           | 2    | a | lesser
-[`|`](../ref/maximum.md)           | 2    | a | greater
+[`&`](../ref/lesser.md)            | 2    | a | lesser
+[`|`](../ref/greater.md)           | 2    | a | greater
 [`abs`](../ref/abs.md)             | 1    | a | absolute value
 [`acos`](../ref/cos.md#acos)       | 1    | a | arccosine
 [`asin`](../ref/sin.md#asin)       | 1    | a | arcsine
 [`atan`](../ref/tan.md#atan)       | 1    | a | arctangent
 [`avg`](../ref/avg.md#avg)         | 1    | A | arithmetic mean
 [`avgs`](../ref/avg.md#avgs)       | 1    | u | arithmetic means
-[`ceiling`](../ref/ceiling.md)     | 1    | a | ceiling
+[`ceiling`](../ref/ceiling.md)     | 1    | a | round up to integer
 [`cor`](../ref/cor.md)             | 2    | A | correlation
 [`cos`](../ref/cos.md)             | 1    | a | cosine
 [`cov`](../ref/cov.md)             | 2    | A | covariance
@@ -31,7 +31,7 @@ function                           | rank | ƒ | semantics
 [`div`](../ref/div.md)             | 2    | a | integer division
 [`ema`](../ref/ema.md)             | 1    | m | exponential moving average
 [`exp`](../ref/exp.md#exp)         | 1    | a | _e_<sup>x</sup>
-[`floor`](../ref/floor.md)         | 1    | a | floor
+[`floor`](../ref/floor.md)         | 1    | a | round down to integer
 [`inv`](../ref/inv.md)             | 1    | u | matrix inverse
 [`log`](../ref/log.md#log)         | 1    | a | natural logarithm
 [`lsq`](../ref/lsq.md)             | 2    |   | matrix divide
@@ -65,7 +65,7 @@ function                           | rank | ƒ | semantics
 [`var`](../ref/var.md#var)         | 1    | A | variance
 [`wavg`](../ref/avg.md#wavg)       | 2    | A | weighted average
 [`wsum`](../ref/sum.md#wsum)       | 2    | A | weighted sum
-[`xbar`](../ref/xbar.md)           | 2    |   | group at regular intervals
+[`xbar`](../ref/xbar.md)           | 2    |   | round down
 [`xexp`](../ref/exp.md#xexp)       | 2    | a | x<sup>y</sup>
 [`xlog`](../ref/log.md#xlog)       | 2    | a | base-x logarithm of y
 

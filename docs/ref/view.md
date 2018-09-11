@@ -1,5 +1,4 @@
 ---
-title: view, views
 keywords: kdb+, metadata, q, view, views
 ---
 
@@ -29,7 +28,7 @@ q)view `v                         / view the dependency expression
 
 ## `views`
 
-_Views defined in the default namespace_
+_List views defined in the default namespace_
 
 Syntax: `views[]`
 

@@ -1,6 +1,5 @@
 ---
-title: Internal functions
-keywords: functions, internal, kdb+, q
+keywords: bang, functions, internal, kdb+, q
 ---
 
 # Internal functions
@@ -25,7 +24,7 @@ _xkcd.com_
 ## `-1!x` (`hsym`)
 
 <i class="far fa-hand-point-right"></i> 
-[hsym](../ref/hsym.md)
+[hsym](../ref/handles.md#hsym)
 
 
 ## `-2!x` (`attr`)

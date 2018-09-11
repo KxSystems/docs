@@ -1,5 +1,4 @@
 ---
-title: desc, idesc, xdesc
 keywords: asc, desc, descending, grade, idesc, kdb+, q, sort, xdesc
 ---
 

@@ -32,7 +32,7 @@ read_cycles:`cpu 2:(`q_read_cycles_of_this_cpu;1)
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Interfaces/Using C/C++ functions](../interfaces/using-c-functions.md)
-[File system](../basics/files.md)
+Basics: [File system](../basics/files.md)  
+Interfaces: [Using C/C++ functions](../interfaces/using-c-functions.md)
 
 

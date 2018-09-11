@@ -1,9 +1,8 @@
 ---
-title: As-of join
 keywords: as-of, join, kdb+, q
 ---
 
-# `aj`, `aj0` 
+# `aj`, `aj0`, `ajf`, `ajf0`
 
 
 
@@ -11,7 +10,10 @@ keywords: as-of, join, kdb+, q
 
 _As-of join_
 
-Syntax: <code>aj[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
+Syntax: <code>aj[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
+Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
+Syntax: <code>ajf[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
+Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
 
 Where 
 
@@ -53,12 +55,28 @@ time       sym  qty px
 10:01:04 ge   150
 ```
 
+
+## `aj`, `aj0`
+
 `aj` and `aj0` return different times in their results:
 
 join  | time in result
 ------|------------------------
 `aj`  | boundary time from `t1`
 `aj0` | actual time from `t2`
+
+
+## `ajf`, `ajf0`
+
+Since V3.6 2018.05.18 `ajf` and `ajf0` behave as V2.8 `aj` and `aj0`, i.e. they fill from LHS if RHS is null. e.g.
+
+```q
+q)t0:([]time:2#00:00:01;sym:`a`b;p:1 1;n:`r`s)
+q)t1:([]time:2#00:00:01;sym:`a`b;p:0 1)
+q)t2:([]time:2#00:00:00;sym:`a`b;p:1 0N;n:`r`s)
+q)t0~ajf[`sym`time;t1;t2]
+1b
+```
 
 
 ## Performance
@@ -78,7 +96,8 @@ Note that, on disk, the `g#` attribute does not help.
 
     Select the virtual partition column only if you need it. It is fabricated on demand, which can be slow for large partitions.
 
-### `select` from `t2`
+
+## `select` from `t2`
 
 In memory, there is no need to select from `t2`. Irrespective of the number of records, use, e.g.:
 
@@ -118,5 +137,6 @@ In this case you will have to reduce the number of quotes retrieved by applying 
 
 
 <i class="far fa-hand-point-right"></i> 
+[`asof`](asof.md)  
 Basics: [Joins](../basics/joins.md)
 

@@ -1,5 +1,4 @@
 ---
-title: Comparison
 keywords: comparison, differ, equal, greater-than, greater-than-or-equal, kdb+, less-than, less-than-or-equal, match, not-equal, operators
 ---
 
@@ -7,18 +6,29 @@ keywords: comparison, differ, equal, greater-than, greater-than-or-equal, kdb+, 
 
 
 
-<i class="far fa-hand-point-right"></i> [Comparison tolerance](precision.md#comparison-tolerance)
+
+
+## More or less
+
+<table class="kx-compact" markdown="1">
+<tr><td>[`<`](../ref/less-than.md)   </td><td> Less Than        </td><td> [`>`](../ref/greater-than.md)  </td><td> Greater Than</td></tr>
+<tr><td>[`<=`](../ref/less-than.md)  </td><td> Up To            </td><td> [`>=`](../ref/greater-than.md) </td><td> At Least</td></tr>
+<tr><td>[`&`](../ref/lesser.md)      </td><td> Lesser           </td><td> [`|`](../ref/greater.md)       </td><td> Greater</td></tr>
+<tr><td>[`min`](../ref/min.md)       </td><td> least, minimum   </td><td> [`max`](../ref/max.md)         </td><td> greatest, maximum</td></tr>
+<tr><td>[`mins`](../ref/min.md#mins) </td><td> running minimums </td><td> [`maxs`](../ref/max.md#maxs)   </td><td> running maximums</td></tr>
+<tr><td>[`mmin`](../ref/min.md#mmin) </td><td> moving minimums  </td><td> [`mmax`](../ref/max.md#mmax)   </td><td> moving maximums</td></tr>
+</table>
 
 
 ## Six comparison operators
 
 <table class="kx-compact" markdown="1">
-<tr><td>`=`</td><td>[equal](../ref/equal.md)</td><td>`<>`</td><td>[not-equal](../ref/not-equal.md)</td></tr>
-<tr><td>`>`</td><td>[greater-than](../ref/greater-than.md)</td><td>`>=`</td><td>[greater-than-or-equal](../ref/greater-than.md)</td></tr>
-<tr><td>`<`</td><td>[less-than](../ref/less-than.md)</td><td>`<=`</td><td>[less-than-or-equal](../ref/less-than.md)</td></tr>
+<tr><td>`=`</td><td>[Equal](../ref/equal.md)</td><td>`<>`</td><td>[Not Equal](../ref/not-equal.md)</td></tr>
+<tr><td>`>`</td><td>[Greater Than](../ref/greater-than.md)</td><td>`>=`</td><td>[At Least](../ref/greater-than.md)</td></tr>
+<tr><td>`<`</td><td>[Less Than](../ref/less-than.md)</td><td>`<=`</td><td>[Up To](../ref/less-than.md)</td></tr>
 </table>
 
-Syntax: (eg) `x = y`
+Syntax: (e.g.) `x = y`, `=[x;y]`
 
 These binary operators work intuitively on numerical values (converting types when necessary), and apply also to lists, dicts, and tables.
 They are atomic.
@@ -39,7 +49,7 @@ a| 1
 b| 0
 ```
 
-Unlike Match, they are not strict about type.
+Unlike [Match](../ref/match.md), they are not strict about type.
 
 ```q
 q)1~1h
@@ -48,7 +58,7 @@ q)1=1h
 1b
 ```
 
-Comparison tolerance applies when matching floats.
+[Comparison tolerance](precision.md#comparison-tolerance) applies when matching floats.
 
 ```q
 q)(1 + 1e-13) = 1
@@ -98,11 +108,21 @@ q)(spans<t;spans=t;spans>t)
 <i class="far fa-hand-point-right"></i> Knowledge Base: [Temporal data](../kb/temporal-data.md#comparing-temporals)
 
 
-## [`differ`](../ref/differ.md)
+## `deltas`
 
-Uniform unary function that returns a boolean list indicating where consecutive pairs of items in `x` differ. 
+Keyword [`deltas`](../ref/deltas.md) is a uniform unary function that returns the differences between items in its numeric list argument.
 
 
-## [Match](../ref/match.md) 
+## `differ` 
 
-Match (`~`) compares its arguments and returns a boolean atom to say whether they are the same.
+Keyword [`differ`](../ref/differ.md) is a uniform unary function that returns a boolean list indicating where consecutive pairs of items in `x` differ.
+
+
+## Match
+
+[Match](../ref/match.md) (`~`) compares its arguments and returns a boolean atom to say whether they are the same.
+
+
+<i class="far fa-hand-point-right"></i> 
+[Comparison tolerance](precision.md#comparison-tolerance)
+

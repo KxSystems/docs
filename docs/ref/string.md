@@ -1,10 +1,16 @@
+---
+keywords: kdb+, q , string, text
+---
+
 # `string`
 
+_Cast to string_
 
-Syntax: `string x`, `string[x]`  
-Syntax: `($)x`, `$[x]` (deprecated)
+Syntax: `string x`, `string[x]` 
+
 
 Returns each item in list or atom `x` as a string; applies to all data types.
+
 ```q
 q)string `ibm`goog
 "ibm"
@@ -17,7 +23,9 @@ q)string (2 3;"abc")
 (,"2";,"3")
 (,"a";,"b";,"c")
 ```
+
 It applies to the values of a dictionary, and the columns of a table:
+
 ```q
 q)string `a`b`c!2002 2004 2010
 a| "2002"
@@ -33,13 +41,19 @@ a    b
 
 
 ## Domain and range 
-```
+
+```txt
 domain b g x h i j e f c s p m d z n u v t
 range  c c c c c c c c c c c c c c c c c c
 ```
+
 Range: `c`
 
 
-<i class="far fa-hand-point-right"></i> [`.h.iso8601`](doth/#hiso8601-iso-timestamp), [`.Q.addr`](dotq/#qaddr-ip-address) (IP address), [`.Q.f`](dotq/#qf-format) (format), [`.Q.fmt`](dotq/#qfmt-format) (format)
+<i class="far fa-hand-point-right"></i> 
+Namespace [`.h`](doth.md)  
+.Q: [`.Q.addr`](dotq.md#qaddr-ip-address) (IP address), 
+[`.Q.f`](dotq.md#qf-format) (format), 
+[`.Q.fmt`](dotq.md#qfmt-format) (format)
 
 

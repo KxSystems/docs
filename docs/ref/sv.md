@@ -1,6 +1,10 @@
 ---
-keywords: atom, decode, kdb+, keyword, q, scalar, vector
+keywords: atom, decode, kdb+, keyword, q, scalar, sv, vector
 ---
+
+<div style="float: right">
+<i class="fas fa-wrench fa-5x"></i>
+</div>
 
 # `sv`
 

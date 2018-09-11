@@ -14,7 +14,7 @@ _Standard deviation_
 
 Syntax: `dev x` , `dev[x]`
 
-Where `x` is a numeric list, returns its standard deviation (as the square root of the variance). 
+Where `x` is a numeric list, returns its [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia") (as the square root of the variance). 
 Applies to all numeric data types and signals an error with temporal types, char and sym.
 
 ```q
@@ -53,11 +53,11 @@ q)5 mdev 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
 
 ## `sdev` 
 
-_Statistical standard deviation_
+_Sample standard deviation_
 
 Syntax: `sdev x`, `sdev[x]`
 
-Where `x` is a numeric list, returns its statistical standard deviation as the square root of the [statistical variance](var.md#svar).
+Where `x` is a numeric list, returns its sample standard deviation as the square root of the [sample variance](var.md#svar).
 
 $$sdev(x)=\sqrt{\frac{n}{n-1}var(x)}$$
 
@@ -74,8 +74,9 @@ q)select sdev price by sym from trade
 
 
 <i class="far fa-hand-point-right"></i> 
-[`var`](var.md)  
-Wikipedia: [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation)  
+[`var`, `svar`](var.md)  
+Wikipedia: [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation),
+[Variance](https://en.wikipedia.org/wiki/Variance)  
 financereference.com: [Standard deviation](http://financereference.com/learn/standard-deviation)  
 Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)

@@ -1,6 +1,5 @@
 ---
-title: where
-keywords: kdb+, q, select, where
+keywords: kdb+, q, selection, where
 ---
 
 # `where`
@@ -15,7 +14,7 @@ Syntax: `where x`, `where[x]`
 Where `x` is a:
 
 
-## Vector of non-zero integers
+## Vector of non-negative integers
 
 returns a vector containing, for each item of `x`, that number of copies of its index. 
 
@@ -57,6 +56,6 @@ q)where 0 1 2 3 ! 2 3 0 1     / same on dictionary with indices as keys
 
 <i class="far fa-hand-point-right"></i> 
 Basics: [`where` in q-SQL](../basics/qsql.md), 
-[Select](../basics/selection.md)
+[Selection](../basics/selection.md)
 
 

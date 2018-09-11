@@ -1,3 +1,7 @@
+---
+keywords: flip, flip splayed, kdb+, partitioned, q, splayed, table
+---
+
 # `!` Flip Splayed or Partitioned
 
 
@@ -10,3 +14,7 @@ Where `x` is a symbol list and `y` is
 -   a **non-hsym symbol atom** denoting a **partitioned** table
 
 returns the flip of `y`.
+
+
+<i class="far fa-hand-point-right"></i>
+Basics: [Dictionaries & tables](../basics/dictsandtables.md)

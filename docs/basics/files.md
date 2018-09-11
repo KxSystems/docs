@@ -90,24 +90,25 @@ A file descriptor is either
 - a file handle
 - a list `(file handle; offset; length)` to specify that the file is to be read from `offset` (int atom) for `length` (int atom) characters. 
 
-function                           | semantics
------------------------------------|-----------------------
-[`0:`](../ref/file-text.md)        | [File Text](../ref/file-text.md):<br>- Prepare Text<br>- Save Text<br>- Load CSV<br>- Load Fixed<br>- Key-value Pairs
-[`1:`](../ref/file-binary.md)      | [File Binary](../ref/file-binary.md):<br>- Read Binary<br>- Save Binary
-[`2:`](../ref/dynamic-load.md)     | [Dynamic Load](../ref/dynamic-load.md) of C shared objects
-[`dsave`](../ref/dsave.md)         | Save global tables to disk
-[`get`](../ref/get.md#get)         | Read or memory-map a kdb+ data file
-[`hclose`](../ref/hopen.md#hclose) | Close a file or process handle
-[`hcount`](../ref/hcount.md)       | File size
-[`hdel`](../ref/hdel.md)           | Delete a file or folder
-[`hopen`](../ref/hopen.md#hopen)   | Open a file or process handle
-[`hsym`](../ref/hsym.md)           | Convert a symbol to a file handle
-[`load`](../ref/load.md)           | Load binary data from the filesystem
-[`read0`](../ref/read0.md)         | Read text from a file
-[`read1`](../ref/read1.md)         | read bytes from a file or named pipe
-[`rload`](../ref/load.md#rload)    | Load a splayed table
-[`rsave`](../ref/save.md#rsave)    | Save a splayed table to a directory
-[`save`](../ref/save.md#save)      | Save global data to file
-[`set`](../ref/get.md#set)         | Assign a value to a variable or file
+function                             | semantics
+-------------------------------------|-----------------------
+[`0:`](../ref/file-text.md)          | [File Text](../ref/file-text.md):<br>- Prepare Text<br>- Save Text<br>- Load CSV<br>- Load Fixed<br>- Key-value Pairs
+[`1:`](../ref/file-binary.md)        | [File Binary](../ref/file-binary.md):<br>- Read Binary<br>- Save Binary
+[`2:`](../ref/dynamic-load.md)       | [Dynamic Load](../ref/dynamic-load.md) of C shared objects
+[`dsave`](../ref/dsave.md)           | Save global tables to disk
+[Enum Extend](../ref/enum-extend.md#filepath) | Extend and load sym file
+[`get`](../ref/get.md)               | Read or memory-map a kdb+ data file
+[`hclose`](../ref/handles.md#hclose) | Close a file or process handle
+[`hcount`](../ref/handles.md#hcount) | File size
+[`hdel`](../ref/handles.md#hdel)     | Delete a file or folder
+[`hopen`](../ref/handles.md#hopen)   | Open a file or process handle
+[`hsym`](../ref/handles.md#hsym)     | Convert a symbol to a file handle
+[`load`](../ref/load.md)             | Load binary data from the filesystem
+[`read0`](../ref/read0.md)           | Read text from a file
+[`read1`](../ref/read1.md)           | read bytes from a file or named pipe
+[`rload`](../ref/load.md#rload)      | Load a splayed table
+[`rsave`](../ref/save.md#rsave)      | Save a splayed table to a directory
+[`save`](../ref/save.md#save)        | Save global data to file
+[`set`](../ref/get.md#set)           | Assign a value to a variable or file
 
 

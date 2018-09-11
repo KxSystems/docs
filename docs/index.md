@@ -1,6 +1,37 @@
+---
+description: Technical documentation and resources for q and kdb+ developers
+title: V2
+---
+
 # Get going with kdb+
 
-Kdb+, from [Kx Systems](http://kx.com), is a high-performance historical time-series columnar database, an in-memory compute engine, and a real-time streaming processor – unified with an expressive query and programming language called q.
+<div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
+
+<div style="display: inline-flex;" markdown="1">
+Kdb+, from [Kx&nbsp;Systems](http://kx.com), is 
+
+-   a high-performance historical time-series columnar database
+-   an in-memory compute engine
+-   a real-time streaming processor
+-   an expressive query and programming language called q
+</div>
+
+<div style="display: inline-flex; margin-left: 7px;" markdown="1">
+!!! tip "New"
+
+    <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i>[==Version 2==  Reference](ref/index.md)</p>
+    
+    <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i> [embedPy Frequently-asked questions](/ml/embedpy/faq/)</p>
+    
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Data visualization](wp/data-visualization/) whitepaper</p>
+    
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Java API for kdb+](wp/java-api/) whitepaper</p>
+    
+</div>
+
+</div>
+
+<div style="clear: both">&nbsp;</div>
 
 <div class="kx-flex-grid" markdown="1">
 <div>
@@ -12,15 +43,15 @@ Kdb+, from [Kx Systems](http://kx.com), is a high-performance historical time-se
 </div>
 <div>
     [<i class="far fa-fw fa-question-circle fa-border fa-5x"></i><br/>
-    Reference](/ref/ "Reference card for the q language")
+    Reference](ref/index.md "Reference card for the q language")
 </div>
 <div>
     [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
-    Get started](/learn/ "Learn how to install and start using kdb+")
+    ~~Get started~~](FIXME "Learn how to install and start using kdb+")
 </div>
 <div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
-    Whitepapers](/whitepapers "Technical whitepapers on using kdb+")
+    ~~Whitepapers~~](FIXME "Technical whitepapers on using kdb+")
 </div>
 <div>
     [<i class="fas fa-fw fa-glasses fa-border fa-5x"></i><br/>
@@ -28,7 +59,7 @@ Kdb+, from [Kx Systems](http://kx.com), is a high-performance historical time-se
 </div>
 <div>
     [<i class="fas fa-fw fa-life-ring fa-border fa-5x"></i><br/>
-    Support](support "Support contacts")
+    ~~Support~~](FIXME "Support contacts")
 </div>
 <div>
     [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
@@ -40,17 +71,14 @@ Kdb+, from [Kx Systems](http://kx.com), is a high-performance historical time-se
 </div>
 <div>
     [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
-    Fusion<br/>interfaces](interfaces/fusion "Interfaces to other technologies")
+    ~~Fusion<br/>interfaces~~](FIXME "Interfaces to other technologies")
 </div>
 </div>
 
-!!! info "New on code.kx.com"
-    - [JSON](/basics/dotj)
-    - [C API reference](/interfaces/capiref)
-    - [Fusion interfaces](/interfaces/fusion)
-    - Knowledge Base: [Linear programming](/kb/lp)
+!!! info "[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)"
     
-!!! caution "The Kx wiki"
+!!! warning "The Kx wiki"
+
     The documentation from the [Kx wiki](http://code.kx.com/wiki) has moved to this new platform. All source code can now be found on [GitHub](https://kxsystems.github.io). 
     The wiki remains in place for now, but is no longer maintained. 
 

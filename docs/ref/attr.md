@@ -1,8 +1,12 @@
+---
+keywords: attr, attribute, data, kdb+, q
+---
+
 # `attr`
 
 
 
-_Attribures of an object_
+_Attributes of an object_
 
 Syntax: `attr x`, `attr[x]`
 
@@ -24,4 +28,5 @@ q)attr asc 1 3 4
 
 
 <i class="far fa-hand-point-right"></i>
+[Set Attribute](set-attribute.md)  
 Basics: [Metadata](../basics/metadata.md)

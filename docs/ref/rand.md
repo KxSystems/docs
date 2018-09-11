@@ -1,22 +1,19 @@
 ---
-title: rand
 keywords: deal, kdb+, q, rand, random, roll
 ---
 
 # `rand` 
 
+_Pick randomly_
 
-
-_Pick a number at random_
 
 Syntax: `rand x`, `rand[x]`
 
-Where `x` is a 
 
 
-## Positive numeric atom
+## Pick a number at random
 
-returns a numeric atom in the range [0,x).
+Where `x` is a **positive numeric atom** returns a numeric atom in the range [0,x).
 
 ```q
 q)rand 100
@@ -30,9 +27,9 @@ q)rand 2012.09.12
 ```
 
 
-## List
+## Pick from a list
 
-returns an item chosen randomly from `x`
+Where `x` is a **list** returns an item chosen randomly from `x`
 
 ```q
 q)rand 1 30 45 32
@@ -49,4 +46,4 @@ rand each 100#6
 
 
 <i class="far fa-hand-point-right"></i>
-[Roll and Deal](roll-deal.md)
+[Roll and Deal](roll-deal.md) for random seed

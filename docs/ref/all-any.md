@@ -47,8 +47,8 @@ q)if[any x in y;....]   / use in control structure
 
 
 <i class="far fa-hand-point-right"></i>
-[`&` `and`](minimum.md), 
-[`|` `or`](maximum.md), 
+[`&` `and`](lesser.md), 
+[`|` `or`](greater.md), 
 [`max`](max.md), 
 [`min`](min.md)  
 Basics: [Logic](../basics/logic.md)

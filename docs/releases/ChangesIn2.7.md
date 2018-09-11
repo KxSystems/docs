@@ -9,7 +9,7 @@ Below is a summary of changes from V2.6. Commercially licensed users may obtain 
 
 Previous versions of kdb+ were already able to exploit file systems such as ZFS and NTFS that feature compression. Kdb+ V2.7 extends this with built-in file compression with a choice of algorithms and compression levels using a common file format across all supported operating systems.
 
-For further details, please see the file compression FAQ Knowledge Base: [File compression](/kb/file-compression/)
+For further details, please see the file compression FAQ Cookbook: [File compression](/cookbook/file-compression/)
 
 ## Symbol Internalization – enhanced scalability
 

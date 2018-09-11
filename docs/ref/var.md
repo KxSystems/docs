@@ -1,11 +1,10 @@
 ---
-title: var, svar
 keywords: kdb+, math, mathematics, q, statistics, statistical variance, variance
 ---
 
 # `var`, `svar`
 
-_Variance, Statistical variance_
+_Variance, Sample variance_
 
 
 
@@ -31,11 +30,11 @@ q)select var price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 
 ## `svar` 
 
-_Statistical variance_
+_Sample variance_
 
 Syntax: `svar x`, `svar[x]`
 
-Where `x` is a numeric list, returns its statistical variance as a float atom.
+Where `x` is a numeric list, returns its [sample variance](https://en.wikipedia.org/wiki/Variance#Sample_variance "Wikipedia") as a float atom.
 
 $$svar(x)=\frac{n}{n-1}var(x)$$
 
@@ -51,7 +50,9 @@ q)select svar price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 
 
 <i class="far fa-hand-point-right"></i> 
-Variance: [Wikipedia](https://en.wikipedia.org/wiki/Variance), 
-[financereference.com](http://financereference.com/learn/variance)  
+[`cov, scov`](cov.md)  
+Wikipedia: [Covariance](https://en.wikipedia.org/wiki/Covariance),
+[Variance](https://en.wikipedia.org/wiki/Variance)  
+financereference.com: [Variance](http://financereference.com/learn/variance)  
 Basics: [Mathematics](../basics/math.md)
 

@@ -6,8 +6,6 @@ keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, k
 [![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
 </div>
 
-
-
 # `key`
 
 

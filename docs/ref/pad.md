@@ -1,3 +1,7 @@
+---
+keywords: fill, dollar, kdb+, pad, q
+---
+
 # `$` Pad
 
 
@@ -9,6 +13,7 @@ Where
 -   `y` a string
 
 returns `y` padded to length `x`.
+
 ```q
 q)10$"foo"
 "foo       "
@@ -17,5 +22,5 @@ q)-10$"foo"
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Strings](/basics/strings),
-[`$`](ref/overloads/#dollar)
+Basics: [Strings](../basics/strings.md)  
+[`$` dollar](overloads.md#dollar)

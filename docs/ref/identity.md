@@ -1,5 +1,4 @@
 ---
-title: Identity, Null
 keywords: identity, kdb+, null, q
 ---
 

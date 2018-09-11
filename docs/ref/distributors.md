@@ -1,10 +1,14 @@
 ---
-keywords: dictionary, distributive, distributor, each, each both, each left, each parallel, each prior, each right, extension, kdb+, keyword, map, mnemonic, operator, q, unary
+keywords: dictionary, distributive, distributor, each, each both, each left, each parallel, each prior, each right, extender, extension, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
 ---
 
 # Distributors
 
 `'` `\:` `/:` `':` 
+
+
+
+
 
 A distributor is an extender that derives a [**uniform**](../basics/glossary.md) extension that applies the map once to each item of a dictionary, a list, or conforming lists. 
 
@@ -25,7 +29,7 @@ _Apply a map item-wise to a dictionary, list, or conforming lists and/or diction
 
 Syntax: `(m')x`, `x m'y`, `m'[x;y;z]`
 
-The Each extender evaluates its map on each item of a list, dictionary or on corresponding items of conforming lists. The extension has the same rank as the map. 
+An Each extension evaluates its map on each item of a list, dictionary or on corresponding items of conforming lists. The extension has the same rank as the map. 
 
 ```q
 q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 
@@ -33,6 +37,9 @@ a| 3
 b| 2
 c| 4
 ```
+
+
+### `each` keyword
 
 The mnemonic keyword `each` can be used to apply a unary map without parentheses.
 
@@ -66,10 +73,10 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 _Apply a binary map between one argument and each item of the other._
 
 
-&nbsp;      | Each Left | Each Right
-------------|:--------:|:----------:
-syntax:     | `x m\:y`  |  `x m/:y`
-equivalent: | `(m[;y]')x` | `(m[x;]')y`
+&nbsp;      | Each Left                        | Each Right
+------------|:--------------------------------:|:-----------------:
+syntax:     | `x m\:y`                         |  `x m/:y`
+equivalent: | `(m[;y]')x`                      | `(m[x;]')y`
 &nbsp;      | ![Each Left](/img/each-left.png) | ![Each Right](/img/each-right.png)
 
 The extenders Each Left and Each Right take **binary** maps and derive binary functions that apply one argument to each item of the other. Effectively, the extender projects its map on one argument and applies Each.
@@ -140,8 +147,8 @@ Syntax: `(m':)x`
 The Each Parallel extender takes a **unary** map as argument and derives a unary function. The extension `m':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies the map to each item of its sublist. 
 
 <i class="far fa-hand-point-right"></i> 
-[command-line option `-s`](../basics/cmdline.md#-s-slaves), 
-[parallel processing, `peach`](../basics/peach.md)
+Basics: [Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
+[Parallel processing](../basics/peach.md)
 
 ```bash
 $ q -s 2
@@ -158,7 +165,10 @@ q)peach
 k){x':y}
 ```
 
-The mnemonic keyword [`peach`](../basics/peach.md) can be used to apply a unary map `m` with Parallel Each, e.g. `m peach list`.
+
+### `peach` keyword
+
+The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead of  `(m:')` write `m peach list`.
 
 !!! tip "Higher-rank maps"
 
@@ -215,6 +225,20 @@ If the extension is applied as a unary, and the map is not an operator with a kn
 ```q
 q){x+2*y}':[2 3 4]
 0N 7 10
+```
+
+
+### `prior` keyword
+
+The keyword `prior`can be used as a mnemonic alternative to `':`.
+
+```q
+q)(-':) 5 16 42 103
+5 11 26 61
+q)(-) prior 5 16 42 103
+5 11 26 61
+q)deltas 5 16 42 103
+5 11 26 61
 ```
 
 

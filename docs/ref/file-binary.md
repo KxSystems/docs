@@ -59,5 +59,5 @@ writes bytes `y` to file `x`.
 
 
 <i class="far fa-hand-point-right"></i>
-[File Text](file-text.md),
-[File system](../basics/files.md)
+[File Text](file-text.md)  
+Basics: [File system](../basics/files.md)

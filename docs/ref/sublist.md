@@ -1,5 +1,4 @@
 ---
-title: sublist
 keywords: kdb+, q, select, sublist
 ---
 
@@ -19,12 +18,11 @@ Where
 
 returns a sublist of `y`. The result contains no more items than are available in `y`.
 
-Where `x` is an
 
 
-## Integer atom
+## Head or tail 
 
-returns `x` items from the beginning of `y` if positive, or from the end if negative
+Where `x` is an **integer atom** returns `x` items from the beginning of `y` if positive, or from the end if negative
 
 ```q
 q)p:2 3 5 7 11
@@ -44,9 +42,10 @@ s p qty
 ```
 
 
-## Integer pair
 
-returns `x[1]` items from `y`, starting at item `x[0]`.
+## Slice
+
+Where `x` is an **integer pair** returns `x[1]` items from `y`, starting at item `x[0]`.
 
 ```q
 q)1 2 sublist p  / 2 items starting from position 1
@@ -55,5 +54,5 @@ q)1 2 sublist p  / 2 items starting from position 1
 
 
 <i class=" far fa-hand-point-right"></i>
-Basics: [Select](../basics/selection.md)
+Basics: [Selection](../basics/selection.md)
 

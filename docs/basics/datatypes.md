@@ -1,12 +1,16 @@
 ---
-title: Datatypes
 keywords: atom, boolean, character, datatype, date, datetime, double, float, integer, kdb+, list, long, q, scalar, short, string, symbol, temporal, time, timespan, timestamp, type, vector
 ---
 
 # Datatypes
 
 
-The datatype of an object is given as a short int: negative for atoms.
+
+
+
+
+
+The _datatype_ of an object is given as a short int. 
 
 ```q
 q)type 5                      / integer atom
@@ -20,13 +24,19 @@ q)type each (2;3 5f;"hello")
 q)type (+)                    /not just data
 102h
 ```
-<i class="far fa-hand-point-right"></i> [`type`](../ref/type.md), [`.Q.ty`](../ref/dotq.md#qty-type) (type), [Casting](casting.md)
+
+<i class="far fa-hand-point-right"></i> 
+[Casting](casting.md), 
+[`type`](../ref/type.md), 
+[`.Q.ty`](../ref/dotq.md#qty-type) (type)
 
 
 ## Primitive datatypes
 
 Primitive datatypes are in the range ± `1h` to `19h`: positive for a vector, negative for an atom. (A general list has type `0h`.)  
-<i class="far fa-hand-point-right"></i> [`type`](../ref/type.md)
+
+<i class="far fa-hand-point-right"></i> 
+[`type`](../ref/type.md)
 
 <table class="kx-tight" markdown="1" style="font-size:80%">
 <thead>
@@ -53,7 +63,7 @@ Primitive datatypes are in the range ± `1h` to `19h`: positive for a vector, ne
 <tr><td class="nowrap">18</td><td>v</td><td>second</td><td>4</td><td>`00:00:00`</td><td>`0Nv`</td><td>`0Nv`</td><td/><td/><td/></tr>
 <tr><td class="nowrap">19</td><td>t</td><td>time</td><td>4</td><td>`00:00:00.000`</td><td>`0Nt`</td><td>`0Wt`</td><td>time</td><td>Time</td><td>TimeSpan</td></tr>
 <tr><td class="nowrap" colspan="2">20-76</td><td>enums</td><td/><td/><td/><td/><td/><td/></tr>
-<tr><td class="nowrap">77</td><td/><td colspan="7">(unused)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">77</td><td/><td colspan="7">anymap</td><td/><td/><td/></tr>
 <tr><td class="nowrap" colspan="2">78-96</td><td colspan="7">77+t – mapped list of lists of type t</td><td/><td/><td/></tr>
 <tr><td class="nowrap">97</td><td/><td colspan="7">nested sym enum</td><td/><td/><td/></tr>
 <tr><td class="nowrap">98</td><td/><td colspan="7">table</td><td/><td/><td/></tr>
@@ -75,20 +85,21 @@ Primitive datatypes are in the range ± `1h` to `19h`: positive for a vector, ne
 </table>
 
 _n_: short int returned by [`type`](../ref/type.md) and used for [casting](casting.md), e.g. `9h$3`  
-_c_: character used lower-case for [casting](casting.md) and upper-case for [load-csv](files.md#load-csv)  
+_c_: character used lower-case for [casting](casting.md) and upper-case for [Load CSV](../ref/file-text.md#load-csv)  
 _sz_: size in bytes  
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
 RO: read only; RW: read-write
+
 
 !!! note "Strings"
 
     There is no string datatype. The nearest equivalent to a string is a symbol, or a char vector. On this site, _string_ is a synonym for character vector.
 
-
 ### Temporal
 
 The valid date range for parsing is ​1709.01.01 to 2290.12.31.
 Date arithmetic is not checked, so you can go out of this range.
+
 ```q
 q)2290.12.31
 2290.12.31
@@ -126,7 +137,8 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
 
 !!! tip "Cast string to symbol"
 
-    The empty symbol can be used with [Cast](casting.md#cast) to cast a string into a symbol, creating symbols whose names could not otherwise be written, such as symbols containing spaces. `` `$x`` is shorthand for `"S"$x`. 
+    The empty symbol can be used with [Cast](../ref/cast.md) to cast a string into a symbol, creating symbols whose names could not otherwise be written, such as symbols containing spaces. `` `$x`` is shorthand for `"S"$x`. 
+
     <pre><code class="language-q">
     q)s:\`hello world
     'world
@@ -135,12 +147,14 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
     \`hello world
     </code></pre>
 
-<i class="far fa-hand-point-right"></i> _Q for Mortals_: [2.4 Basic Data Types – Atoms](http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
+<i class="far fa-hand-point-right"></i> 
+_Q for Mortals_: [§2.4 Basic Data Types – Atoms](http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
 
 
 ### Filepaths
 
 Filepaths are a special form of symbol. 
+
 ```q
 q)count read0 `:path/to/myfile.txt  / count lines in myfile.txt
 ```
@@ -170,7 +184,8 @@ q)0w + 5
 0w
 ```
 
-<i class="far fa-hand-point-right"></i> [`.Q.M`](../ref/dotq.md#qm-long-infinity) (long infinity)
+<i class="far fa-hand-point-right"></i> 
+[`.Q.M`](../ref/dotq.md#qm-long-infinity) (long infinity)
 
 
 ### Guid
@@ -179,17 +194,16 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
 
 !!! tip "Generation"
 
-    Use [Deal](../ref/roll-deal.md#guid) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
+    Use [Deal](../ref/roll-deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
 
     <pre><code class="language-q">
     q)-2?0Ng
     337714f8-3d76-f283-cdc1-33ca89be59e9 0a369037-75d3-b24d-6721-5a1d44d4bed5
     </code></pre>
-    
+
     If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
     
     Guids can also be created from strings or byte vectors, using `sv` or `"G"$`, e.g.
-    
     <pre><code class="language-q">
     q)0x0 sv 16?0xff
     8c680a01-5a49-5aab-5a65-d4bfddb6a661
@@ -210,6 +224,7 @@ There is no literal entry for a guid, it has no conversions, and the only scalar
 
 
 ## Other types
+
 
 ### Enumerated types
 

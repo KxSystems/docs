@@ -1,3 +1,7 @@
+---
+keywords: false, kdb+, logic, not, q, true
+---
+
 # `not`
 
 
