@@ -81,7 +81,9 @@ c
 "ams"
 "amS"
 ```
-To query for multiple strings you need to use another adverb, then aggregate the results into a single boolean value using `sum` or `any`. Generally the `like` form is easier to understand and more efficient.
+
+To query for multiple strings you need to use another extender, then aggregate the results into a single boolean value using `sum` or `any`. Generally the `like` form is easier to understand and more efficient.
+
 ```q
 q)select from e where any c like/:("lon";"am*")
 c

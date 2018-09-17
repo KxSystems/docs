@@ -1,5 +1,5 @@
 ---
-keywords: dictionary, distributive, distributor, each, each both, each left, each parallel, each prior, each right, extender, extension, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
+keywords: adverb, dictionary, distributive, distributor, each, each both, each left, each parallel, each prior, each right, extender, extension, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
 ---
 
 # Distributors

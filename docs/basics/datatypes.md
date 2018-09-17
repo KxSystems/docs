@@ -71,7 +71,7 @@ Primitive datatypes are in the range ± `1h` to `19h`: positive for a vector, ne
 <tr><td class="nowrap">100</td><td/><td colspan="7">lambda</td><td/><td/><td/></tr>
 <tr><td class="nowrap">101</td><td/><td colspan="7">unary primitive</td><td/><td/><td/></tr>
 <tr><td class="nowrap">102</td><td/><td colspan="7">operator</td><td/><td/><td/></tr>
-<tr><td class="nowrap">103</td><td/><td colspan="7">adverb</td><td/><td/><td/></tr>
+<tr><td class="nowrap">103</td><td/><td colspan="7">extender</td><td/><td/><td/></tr>
 <tr><td class="nowrap">104</td><td/><td colspan="7">projection</td><td/><td/><td/></tr>
 <tr><td class="nowrap">105</td><td/><td colspan="7">composition</td><td/><td/><td/></tr>
 <tr><td class="nowrap">106</td><td/><td colspan="7">f'</td><td/><td/><td/></tr>
@@ -268,9 +268,9 @@ q)type flip d                      / table
 ```
 
 
-### Functions, adverbs, derivatives
+### Functions, extenders, extensions
 
-Functions, lambdas, operators, adverbs, projections, compositions and derivatives have types in the range [100–112].
+Functions, lambdas, operators, extenders, projections, compositions and extensions have types in the range [100–112].
 
 ```q
 q)type each({x+y};neg;-;\;+[;1];<>;,';+/;+\;prev;+/:;+\:;`f 2:`f,1)

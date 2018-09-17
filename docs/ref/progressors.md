@@ -1,10 +1,12 @@
 ---
-keywords: dictionary, extension, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary
+keywords: adverb, converge, dictionary, do, extender, extension, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, while
 ---
 
 # Progressors
 
 `/` `\`
+
+
 
 
 A progressor is an extender that takes a map as argument and derives an extension that evaluates the map, first on the first item/s of its right argument/s, then on the results of **successive** evaluations.

@@ -14,7 +14,7 @@ To start a kdb+ process listening on a port, use the [command `\p port`](../basi
 q)\p 5001
 ```
 
-or start the q process with the [`-p` port command line parameter](../basics/cmdline.md#-p-port):
+or start the q process with the [`-p` port command line parameter](../basics/cmdline.md#-p-listening-port):
 
 ```bash
 $ q -p 5001

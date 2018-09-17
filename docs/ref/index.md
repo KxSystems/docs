@@ -1,5 +1,6 @@
 ---
-title: Reference card
+title: Reference card - code.kx.com
+keywords: card, index, kdb+, keywords, operators, q, reference
 ---
 
 # Reference card
@@ -36,7 +37,7 @@ title: Reference card
 
 <i class="far fa-hand-point-right"></i> 
 [`.Q.id`](dotq.md#qid-purge) (purge), 
-[`.Q.res`](dotq.md#qres-k-words) (reserved words)
+[`.Q.res`](dotq.md#qres-keywords) (reserved words)
 
 
 ## Operators
@@ -48,13 +49,6 @@ title: Reference card
 <td class="kx-glyph">[`!`](overloads.md#bang)</td><td>[Dict](dict.md)<br>[Enkey](enkey.md)<br>[Unkey](enkey.md#unkey)<br>[Enumeration](enumeration.md)<br>[Flip Splayed](flip-splayed.md)<br>[Display](display.md)<br>[internal](../basics/internal.md)<br>[Update](../basics/funsql.md#update)<br>[Delete](../basics/funsql.md#delete)</td>
 <td class="kx-glyph">[`?`](overloads.md#query)</td><td>[Find](find.md)<br>[Roll, Deal](roll-deal.md)<br>[Enum Extend](enum-extend.md)<br>[Select](../basics/funsql.md#select)<br>[Exec](../basics/funsql.md#exec)<br>[Simple Exec](../basics/funsql.md#simple-exec)</td>
 </tr>
-<tr>
-<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](progressors.md)</td>
-<td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](distributors.md#each-left-and-each-right)</td>
-<td class="kx-glyph">[`':`](overloads.md#quote-colon)</td><td>[Each&nbsp;Parallel](distributors.md#each-parallel)<br>[Each Prior](distributors.md##each-prior)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)</td><td>[Case](case.md)<br>[Compose](compose.md)<br>[Each](distributors.md#each)<br>[Signal](signal.md)</td>
-</tr>
-<tr>
 <td class="kx-glyph">`+`</td><td>[Add](add.md)</td>
 <td class="kx-glyph">`-`</td><td>[Subtract](subtract.md)</td>
 <td class="kx-glyph">`*`</td><td>[Multiply](multiply.md)</td>
@@ -82,12 +76,30 @@ title: Reference card
 [Overloaded operator glyphs](overloads.md)
 
 
-## Other glyphs
+## [Extenders](extenders.md)
+
+<table markdown="1">
+<thead>
+<tr><th colspan="2">progressors</th><th colspan="2">distributors</th><th colspan="2">distributors</th><th colspan="2"/></tr>
+</thead>
+<tbody>
+<tr>
+<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](progressors.md)</td>
+<td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](distributors.md#each-left-and-each-right)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](distributors.md#each)<br>[Each&nbsp;Parallel](distributors.md#each-parallel)<br>[Each Prior](distributors.md##each-prior)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](case.md)<br>[Compose](compose.md)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+## Other 
 
 <table markdown="1">
 <tr>
-<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)</td>
-<td class="kx-glyph"><code class="nowrap">::</code></td><td>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
+<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>[`'`](overloads.md#quote)</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[Signal](signal.md)</td>
+<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon), [return](../basics/control.md#explicit-return)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
 <td class="kx-glyph">`0`<br><span class="nowrap">`1`, `-1`</span><br>`2`, `-2`<br>_n_, _-n_</td><td>[console<br>stdout<br>stderr<br>handle](../basics/files.md)</td>
 <td class="kx-glyph"><span class="nowrap">`0:`</span><br>`1:`<br>`2:`</td><td>[File Text](file-text.md)<br>[File Binary](file-binary.md)<br>[Dynamic&nbsp;Load](dynamic-load.md)</td>
 </tr>
@@ -101,15 +113,12 @@ title: Reference card
 
 <!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md/#unary-forms)</td> -->
 
-## Attributes
+## [Attributes](../basics/syntax.md#attributes)
 
-```
+```txt
 `s  sorted     `u  unique
 `p  parted     `g  grouped
 ```
-
-<i class="far fa-hand-point-right"></i> 
-[Attributes](../basics/syntax.md#attributes)
 
 
 ## Command-line options and system commands
@@ -123,7 +132,7 @@ title: Reference card
 <tr><td>[`-E`](../basics/cmdline.md#-e-error-traps)</td><td>TLS Server Mode</td><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td></tr>
 <tr><td>[`\g`](../basics/syscmds.md#g-garbage-collection-mode) [`-g`](../basics/cmdline.md#-g-garbage-collection)</td><td>garbage collection</td><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td></tr>
 <tr><td>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td>log sync</td><td>[`\o`](../basics/syscmds.md#o-offset-from-utc) [`-o`](../basics/cmdline.md#-o-utc-offset)</td><td>UTC offset</td></tr>
-<tr><td>[`\p`](../basics/syscmds.md#p-port) [`-p`](../basics/cmdline.md#-p-port)</td><td>multithread port</td><td>[`\P`](../basics/syscmds.md#p-precision) [`-P`](../basics/cmdline.md#-p-display-precision)</td><td>display precision</td></tr>
+<tr><td>[`\p`](../basics/syscmds.md#p-listening-port) [`-p`](../basics/cmdline.md#-p-listening-port)</td><td>multithread port</td><td>[`\P`](../basics/syscmds.md#p-precision) [`-P`](../basics/cmdline.md#-p-display-precision)</td><td>display precision</td></tr>
 <tr><td>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td>quiet mode</td><td>[`\r`](../basics/syscmds.md#r-replication-master) [`-r`](../basics/cmdline.md#-r-replicate)</td><td>replicate</td></tr>
 <tr><td>[`\r`](../basics/syscmds.md#r-rename)</td><td>rename</td><td>[`\s`](../basics/syscmds.md#s-number-of-slaves) [`-s`](../basics/cmdline.md#-s-slaves)</td><td>slaves</td></tr>
 <tr><td>[`\S`](../basics/syscmds.md#s-random-seed)</td><td>random seed</td><td>[`\t`](../basics/syscmds.md#t-timer) [`-t`](../basics/cmdline.md#-t-timer-ticks)</td><td>timer ticks</td></tr>
@@ -140,7 +149,7 @@ title: Reference card
 [Command-line options](../basics/cmdline.md), 
 [System commands](../basics/syscmds.md), 
 [OS Commands](../basics/syscmds.md#os-commands), 
-[`system`](../basics/syscmds.md#system)
+[`system`](../ref/system.md)
 
 <!-- 
 ## Environment variables
@@ -200,18 +209,18 @@ q)`VARNAME setenv "NEWVALUE"
 <tr><td class="nowrap">97</td><td/><td colspan="7">nested sym enum</td><td/><td/><td/></tr>
 <tr><td class="nowrap">98</td><td/><td colspan="7">table</td><td/><td/><td/></tr>
 <tr><td class="nowrap">99</td><td/><td colspan="7">dictionary</td><td/><td/><td/></tr>
-<tr><td class="nowrap">100</td><td/><td colspan="7">lambda</td><td/><td/><td/></tr>
+<tr><td class="nowrap">100</td><td/><td colspan="7">[lambda](../basics/function-notation.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">101</td><td/><td colspan="7">unary primitive</td><td/><td/><td/></tr>
 <tr><td class="nowrap">102</td><td/><td colspan="7">operator</td><td/><td/><td/></tr>
-<tr><td class="nowrap">103</td><td/><td colspan="7">adverb</td><td/><td/><td/></tr>
+<tr><td class="nowrap">103</td><td/><td colspan="7">[extender](extenders.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">104</td><td/><td colspan="7">projection</td><td/><td/><td/></tr>
-<tr><td class="nowrap">105</td><td/><td colspan="7">composition</td><td/><td/><td/></tr>
-<tr><td class="nowrap">106</td><td/><td colspan="7">f'</td><td/><td/><td/></tr>
-<tr><td class="nowrap">107</td><td/><td colspan="7">f/</td><td/><td/><td/></tr>
-<tr><td class="nowrap">108</td><td/><td colspan="7">f\</td><td/><td/><td/></tr>
-<tr><td class="nowrap">109</td><td/><td colspan="7">f':</td><td/><td/><td/></tr>
-<tr><td class="nowrap">110</td><td/><td colspan="7">f/:</td><td/><td/><td/></tr>
-<tr><td class="nowrap">111</td><td/><td colspan="7">f\:</td><td/><td/><td/></tr>
+<tr><td class="nowrap">105</td><td/><td colspan="7">[composition](compose.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">106</td><td/><td colspan="7">[`m'`](distributors.md#each)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">107</td><td/><td colspan="7">[`m/`](progressors.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">108</td><td/><td colspan="7">[`m\`](progressors.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">109</td><td/><td colspan="7">[`m':`](distributors.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">110</td><td/><td colspan="7">[`m/:`](distributors.md#each-left-and-each-right)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">111</td><td/><td colspan="7">[`m\:`](distributors.md#each-left-and-each-right)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">112</td><td/><td colspan="7">dynamic load</td><td/><td/><td/></tr>
 </tbody>
 </table>
@@ -220,6 +229,7 @@ _n_: short int returned by [`type`](type.md) and used for [casting](../basics/ca
 _c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)  
 _sz_: size in bytes  
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
+`m`: map  
 RO: read only; RW: read-write
 
 
@@ -236,6 +246,14 @@ Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
 
 ## Namespaces
 
+namespace       | contents
+:--------------:|----------------------------------------------
+[`.h`](doth.md) | markup output for HTTP
+[`.j`](dotj.md) | de/serialize as JSON
+[`.Q`](dotq.md) | utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
+[`.z`](dotz.md) | system variables, callbacks
+
+<!-- 
 ### `.z`
 
 <table class="kx-shrunk kx-tight" markdown="1">
@@ -338,5 +356,5 @@ Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
     _All_ single-letter namespaces (upper- and lower-case) are reserved for Kx use. 
     Do not use single-letter namespaces as containers for user-written code or data.
 
-
+ -->
 

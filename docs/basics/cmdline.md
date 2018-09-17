@@ -1,11 +1,14 @@
+---
+keywords: command, file, kdb+, line, option, q
+---
+
 # Command line
 
 
 
-The command line for invoking q has the form:
+The command line for invoking kdb+ has the form:
 
-```bash
-
+```txt
 q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] [-p N] 
     [-P N] [-q] [-r :H:P] [-s N] [-t N] [-T N] [-u|U F] [-w N] [-W N] 
     [-z 0|1]
@@ -14,6 +17,24 @@ q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] [-p
 <i class="far fa-hand-point-right"></i> 
 [`.z.x`](../ref/dotz.md#zx-argv) (argv), 
 [`.z.X`](../ref/dotz.md#zx-raw-command-line) (raw command line) 
+
+
+```txt
+Options:
+ -b blocked                 -q quiet mode
+ -c console size            -r replicate
+ -C HTTP size               -s slaves
+ -e error traps             -t timer ticks
+ -E TLS Server Mode         -T timeout
+ -g garbage collection      -u disable syscmds
+ -l log updates             -u usr-pwd local
+ -L log sync                -U usr-pwd
+ -o UTC offset              -w memory
+ -p listening port          -W start week
+ -p multithread port        -z date format
+ -P display precision        
+```
+
 
 ## file
   
@@ -71,31 +92,17 @@ q)\_
 ```
 
 
-## `-C` (HTTP size)
-
-Syntax: `-C r c`
-  
-HTTP display maxRows maxCols, default 36 2000
-
-The defaults are 36&times;2000, and values are coerced to the range \[10,2000\].
-
-<i class="far fa-hand-point-right"></i> 
-[`\C`](syscmds.md#c-http-size), 
-[Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
-
-
-
 ## `-c` (console size)
 
 Syntax: `-c r c`
   
-Console maxRows maxCols, default 25 80.
+Console maximum rows and columns, default 25 80.
 
 These settings determine when q elides output with `..`
 
 !!! note
 
-    You usually don’t need to set this, if the environment variables `LINES` and `COLUMNS` are found they’ll be taken as the default value. See bash documentation for `shopt` parameter `checkwinsize` to make sure they are reset as needed.
+    You usually don’t need to set this, if the environment variables `LINES` and `COLUMNS` are found they’ll be taken as the default value. See Bash documentation for `shopt` parameter `checkwinsize` to make sure they are reset as needed.
 
 ```bash
 ..$ q -c 10 20
@@ -114,8 +121,29 @@ q)til each 20+til 10
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[`\c`](syscmds.md#c-console-size), 
+[`\c` system command](syscmds.md#c-console-size)  
 [Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+
+
+## `-C` (HTTP size)
+
+Syntax: `-C r c`
+  
+HTTP display maximum rows and columns, default 36 2000
+
+The defaults are 36&times;2000, and values are coerced to the range \[10,2000\].
+
+<i class="far fa-hand-point-right"></i> 
+[`\C` system command](syscmds.md#c-http-size)  
+[Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+
+
+
+## `-e` (error traps)
+
+Syntax: `-e B`
+  
+Enable client error trapping
 
 
 ## `-E` (TLS Server Mode)
@@ -132,13 +160,6 @@ x   | mode
 Knowledge Base: [SSL/TLS](../kb/ssl.md#tls-server-mode)
 
 
-## `-e` (error traps)
-
-Syntax: `-e B`
-  
-Enable client error trapping
-
-
 ## `-g` (garbage collection)
 
 Syntax: `-g B`
@@ -152,15 +173,6 @@ Immediate mode is the V2.5/2.6 default, deferred is the V2.7 default.
 To use immediate mode, invoke as `q -g 1`. (Since V2.7 2011.02.04.)
 
 
-## `-L` (log sync)
-
-Syntax: `-L`
-  
-As `-l`, but sync logging  
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Logging](../kb/logging.md)
-
-
 ## `-l` (log updates)
 
 Syntax: `-l`
@@ -170,11 +182,34 @@ Log updates to filesystem
 Knowledge Base: [Logging](../kb/logging.md)
 
 
+## `-L` (log sync)
+
+Syntax: `-L`
+  
+As `-l`, but sync logging  
+<i class="far fa-hand-point-right"></i> 
+Knowledge Base: [Logging](../kb/logging.md)
+
+
 ## `-o` (UTC offset)
 
 Syntax: `-o N`
   
 Offset hours from UTC, or minutes if `abs[N]>23` (Affects [`.z.Z`](../ref/dotz.md#zz-local-datetime))
+
+
+## `-p` (listening port)
+
+Syntax: `-p N`
+  
+Port on which q server listens. Use for [client/server](../kb/client-server.md), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
+
+
+## `-p` (multithread port)
+
+Syntax: `-p -N`
+  
+Port for [multithreaded input mode](../kb/multithreaded-input.md)
 
 
 ## `-P` (display precision)
@@ -248,20 +283,6 @@ Knowledge Base: [Precision](../kb/precision.md)
 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://docs.sun.com/source/806-3568/ncg_goldberg.html)
 
 
-## `-p` (port)
-
-Syntax: `-p N`
-  
-Port on which q server listens. Use for [client/server](../kb/client-server.md), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
-
-
-## `-p` (multithread port)
-
-Syntax: `-p -N`
-  
-Port for [multithreaded input mode](../kb/multithreaded-input.md)
-
-
 ## `-q` (quiet mode)
 
 Syntax: `-q`
@@ -320,13 +341,6 @@ For processes:
 [Parallel processing](peach.md)
 
 
-## `-T` (timeout)
-
-Syntax: `-T N`
-  
-Timeout in seconds for client queries, i.e. maximum time a client call will execute. Default is 0, for no timeout.
-
-
 ## `-t` (timer ticks)
 
 Syntax: `-t N`
@@ -334,11 +348,11 @@ Syntax: `-t N`
 Timer in milliseconds between timer ticks. Default is 0, for no timer.
 
 
-## `-U` (usr-pwd)
+## `-T` (timeout)
 
-Syntax: `-U F`
+Syntax: `-T N`
   
-As `-u`, but no access restrictions
+Timeout in seconds for client queries, i.e. maximum time a client call will execute. Default is 0, for no timeout.
 
 
 ## `-u` (disable syscmds)
@@ -367,11 +381,11 @@ q)raze string md5 "this is my password"
 ```
 
 
-## `-W` (start week)
+## `-U` (usr-pwd)
 
-Syntax: `-W N`
+Syntax: `-U F`
   
-Start of week as an offset from Saturday. Default is 2, meaning that Monday is the start of week.
+As `-u`, but no access restrictions
 
 
 ## `-w` (memory)
@@ -386,6 +400,13 @@ As reported by system command [`\w`](syscmds.md#w-workspace) and utility [`.Q.w`
     On Linux systems, administrators might prefer [cgroups](https://en.wikipedia.org/wiki/Cgroups) as a way of limiting resources.
 
     On Unix systems, memory usage can be constrained using `ulimit`, e.g.<pre><code class="language-bash">$ ulimit -v 262144</code></pre>limits virtual address space to 256MB.
+
+
+## `-W` (start week)
+
+Syntax: `-W N`
+  
+Start of week as an offset from Saturday. Default is 2, meaning that Monday is the start of week.
 
 
 ## `-z` (date format)

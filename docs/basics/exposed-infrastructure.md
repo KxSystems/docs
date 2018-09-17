@@ -64,10 +64,10 @@ _:   floor
 
 ## Ambivalent keywords
 
-Q keywords, such as `deltas`, that are simple covers of derivatives inherit their [ambivalence](ambivalence.md), though they cannot be applied infix as the derivatives can.
+Q keywords, such as `deltas`, that are simple covers of extensions inherit their [ambivalence](ambivalence.md), though they cannot be applied infix as the extensions can.
 
 ```q
-q)deltas                  / cover for the derivative
+q)deltas                  / cover for the extension
 -':
 q)y:1 1 3 5 8 13
 q)-':[y]                  / unary
@@ -86,7 +86,7 @@ q)10 deltas y             / cannot be applied infix
        ^
 ```
 
-The keywords are intended as covers for the unary application of the derivative. For binary application, use the derivative, as shown above.
+The keywords are intended as covers for the unary application of the extension. For binary application, use the extension, as shown above.
 
 !!! warning "Binary application of ambivalent keywords"
 

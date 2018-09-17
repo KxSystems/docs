@@ -10,27 +10,48 @@ keywords: command, kdb+, q, system
 
 System commands control the q environment. They have the form:
 
-```
+```txt
 \cmd [p]
 ```
 
 for some command `cmd`, and optional parameter list `p`.  
 
 <i class="far fa-hand-point-right"></i> 
-[`.Q.opt`](dotq/#qopt-command-parameters) (command parameters), 
-[`.Q.x`](dotq/#qx-non-command-parameters) (non-command parameters)
+[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters), 
+[`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
 
 Commands with optional parameters that set values, will show the current values if the parameters are elided.
 
 Some system commands have equivalent command-line parameters.
 
-!!! tip "Use [`system`](../ref/system.md) to call a system command in a q expression"
+!!! tip "`system`"
 
+    The [`system`](../ref/system.md) keyword executes a string representation of a system command – and allows its result to be captured.
+
+```txt
+\   abort                       \s       number of slaves
+\a  tables                      \S       random seed
+\b  views                       \t       timer
+\B  pending views               \T       timeout
+\c  console size                \ts      time and space
+\cd change directory            \u       reload user password file
+\C  HTTP size                   \v       variables
+\d  directory                   \w       workspace
+\e  error trap clients          \W       week offset
+\f  functions                   \x       expunge
+\g  garbage collection mode     \z       date parsing
+\l  load file or directory      \1 & \2  redirect
+\o  offset from UTC             \_       hide q code
+\p  listening port              \        terminate
+\P  precision                   \        toggle q/k
+\r  replication master          \\       quit
+\r  rename                      
+```
 
 
 ## `\` (abort)
 
-At the debugger’s `q))` prompt to clear one level from the execution stack and (eventually) return to the interactive session.
+At the debugger’s `q))` prompt clears one level from the execution stack and (eventually) returns to the interactive session.
 
 ```q
 q)f:{g[]}
@@ -45,20 +66,22 @@ q))\
 q)
 ```
 
-<i class="far fa-hand-point-right"></i> [Debugging](../basics/debug.md)
+<i class="far fa-hand-point-right"></i> 
+[Debugging](debug.md)
 
-At the session’s `q)` prompt, toggles in an out of the k interpreter.
 
-!!! warning "Don’t go there."
+!!! warning "At the session’s `q)` prompt"
+
+    toggles in an out of the k interpreter.
+    (Don’t go there.)
 
 
 ## `\a` (tables)
 
-Syntax: `\a`
-
 Syntax: `\a [namespace]`
 
-Lists tables in the given namespace, default current namespace.
+Lists tables in `namespace`; default: current namespace.
+
 ```q
 q)\a
 `symbol$()
@@ -87,11 +110,31 @@ q.nn)
 ```
 
 
+## `\b` (views)
+
+Syntax: `\b [namespace]`
+
+Lists dependencies (views) in `namespace`. 
+Defaults to current namespace.
+
+```q
+q)a::x+y
+q)b::x+1
+q)\b
+`s#`a`b
+```
+
+<i class="far fa-hand-point-right"></i> 
+[`.z.b`](../ref/dotz.md#zb-dependencies).
+
+
 ## `\B` (pending views)
 
 Syntax: `\B [namespace]`
 
-Lists all pending dependencies (views), i.e. dependencies not yet referenced, or not referenced after their referents have changed.
+Lists pending dependencies (views) in `namespace`, i.e. dependencies not yet referenced, or not referenced after their referents have changed. 
+Defaults to current namespace.
+
 ```q
 q)a::x+1          / a depends on x
 q)\B              / the dependency is pending
@@ -106,56 +149,19 @@ q)\B              / no longer pending
 ```
 
 
-## `\b` (views)
-
-Syntax: `\b [namespace]`
-
-Lists all dependencies (views). 
-```q
-q)a::x+y
-q)b::x+1
-q)\b
-`s#`a`b
-```
-<i class="far fa-hand-point-right"></i> [.z.b](dotz/#zb-dependencies).
-
-
-## `\C` (HTTP size)
-
-Syntax: `\C [h,w]`
-
-Sets the HTTP height and width. This is the same as [command-line option `-C`](cmdline/#-c-http-size). 
-
-
-## `\cd` (change directory)
-
-Syntax: `\cd [name]` 
-
-Changes the current directory.
-```q
-~/q$ q
-KDB+ 2.6 2010.05.10 Copyright (C) 1993-2010 Kx Systems
-..
-q)\cd
-"/home/guest/q"
-q)\cd /home/guest/dev
-q)\cd
-"/home/guest/dev"
-```
-
-
 ## `\c` (console size)
 
 Syntax: `\c`
 
 Syntax: `\c [h,w]`
 
-Sets console height and width. This is the same as the [`-c` command line parameter](cmdline/#-c-console-size).
+Sets console height and width. This is the same as the [`-c` command line parameter](cmdline.md#-c-console-size).
 
 These settings determine when q elides output with `..`
 
 !!! note 
-    You usually don't need to set this. If the environment variables `LINES` and `COLUMNS` are found they'll be taken as the default value. See Bash documentation for `shopt` parameter `checkwinsize` to make sure they're reset as needed.
+
+    You usually don’t need to set this. If the environment variables `LINES` and `COLUMNS` are found they’ll be taken as the default value. See Bash documentation for `shopt` parameter `checkwinsize` to make sure they’re reset as needed.
 
 ```q
 q)\c
@@ -175,11 +181,36 @@ q)til each 20+til 10
 ```
 
 
+## `\C` (HTTP size)
+
+Syntax: `\C [h,w]`
+
+Sets the HTTP height and width. This is the same as [command-line option `-C`](cmdline.md#-c-http-size). 
+
+
+## `\cd` (change directory)
+
+Syntax: `\cd [name]` 
+
+Changes the current directory.
+```q
+~/q$ q
+KDB+ 2.6 2010.05.10 Copyright (C) 1993-2010 Kx Systems
+..
+q)\cd
+"/home/guest/q"
+q)\cd /home/guest/dev
+q)\cd
+"/home/guest/dev"
+```
+
+
 ## `\d` (directory)
 
 Syntax: `\d [namespace]`
 
 Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The prompt indicates the current namespace. 
+
 ```q
 q)\d                  / default namespace
 `.
@@ -214,6 +245,7 @@ For development, you can set `\e 1` to enable debugging on the server. In this c
 Syntax: `\f [namespace]`
 
 Lists functions in the given namespace, default current namespace.
+
 ```q
 q)f:g:h:{x+2*y}
 q)\f
@@ -229,8 +261,10 @@ q){x where x like"ht??"}system"f .h"
 
 Syntax: `\g [mode]`
 
-Since V2.7 2011.02.04. Switch garbage collection between immediate (1) and deferred (0) modes.  
-<i class="far fa-hand-point-right"></i> [`-g` command-line option](cmdline/#-g-garbage-collection)
+Since V2.7 2011.02.04. Switch garbage collection between immediate (1) and deferred (0) modes. 
+
+<i class="far fa-hand-point-right"></i> 
+[`-g` command-line option](cmdline.md#-g-garbage-collection)
 
 
 ## `\l` (load file or directory)
@@ -250,13 +284,17 @@ q)\l db/tickdata     / load the data found in db/tickdata
 q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
-<i class="far fa-hand-point-right"></i> [`.Q.l`](dotq/#ql-load) (load)
+
+<i class="far fa-hand-point-right"></i> 
+[`.Q.l`](../ref/dotq.md#ql-load) (load)
+
 
 ## `\o` (offset from UTC)
 
 Syntax: `\o [n]`
 
-Sets the local time offset, as hours from UTC, or as minutes if abs[n]&gt;23. Initially, the value is 0N, meaning that the machine's offset is used.
+Sets the local time offset, as hours from UTC, or as minutes if `abs[n]>23`. Initially, the value is `0N`, meaning that the machine’s offset is used.
+
 ```q
 q)\o
 0N
@@ -271,26 +309,20 @@ q)\o 390                      / set local time as UTC + 6:30
 q).z.P
 2010.06.01D06:16:06.603981000
 ```
+
 This corresponds to the `-o` command line parameter.
 
 
-## `\P` (precision)
-
-Syntax: `\P [n]`
-
-Sets display precision for floating point numbers, i.e. the number of digits shown.  
-<i class="far fa-hand-point-right"></i> [`-P` command-line option](cmdline/#-p-display-precision)
-
-
-## `\p` (port)
+## `\p` (listening port)
 
 Syntax: `\p [i]`
 
 Sets the listening port number. The default is 0 (no listening port). The port must be available and the process must have permission for the port.
 
-A negative parameter sets a [multi-threaded](peach) port and if used it must be the initial and only mode of operation, i.e. do not dynamically switch between positive port and negative port.
+A negative parameter sets a [multi-threaded](../basics/peach.md) port and if used it must be the initial and only mode of operation, i.e. do not dynamically switch between positive port and negative port.
 
 A parameter of `0W` means pick a random available port within the range 32768–60999.
+
 ```q
 q)\p 5010     / set port 5010
 q)\p
@@ -300,15 +332,28 @@ q)\p
 45512
 q)\p 0        / turn off listening port
 ```
-This corresponds to the `-p` command line parameter.
+
+This corresponds to the [`-p` command line parameter](cmdline.md#-p-listening-port).
+
+
+## `\P` (precision)
+
+Syntax: `\P [n]`
+
+Sets display precision for floating point numbers, i.e. the number of digits shown. 
+
+<i class="far fa-hand-point-right"></i> 
+[`-P` command-line option](cmdline.md#-p-display-precision)
 
 
 ## `\r` (replication master)
 
 Syntax: `\r`
 
-This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count.  
-<i class="far fa-hand-point-right"></i> [`-r` command-line option](cmdline/#-r-replicate)
+This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count. 
+
+<i class="far fa-hand-point-right"></i> 
+[`-r` command-line option](cmdline.md#-r-replicate)
 
 
 ## `\r` (rename)
@@ -318,11 +363,30 @@ Syntax: `\r src dst`
 This renames file `src` to `dst`. It is equivalent to the Unix `mv` command, or the windows `move` command (except that it will not rename to a different disk drive).
 
 
+## `\s` (number of slaves)
+
+Syntax: `\s`
+
+This queries or limits the number of slaves, set with the [`-s` command line  option](cmdline.md#-s-slaves).
+
+As of V3.5 2017.05.02, slave threads can be adjusted dynamically up to the maximum specified on the command line. A negative number indicates that processes should be used, instead of threads.
+
+```q
+q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
+("current slave threads";0i)
+("current,max slave threads";4i;8i)
+q)system"s 0" / disable slave threads
+q)system"s 0N" / show max slave threads
+8i
+```
+
+
 ## `\S` (random seed)
 
 Syntax: `\S [n]`
 
 Sets the random number seed. The parameter must be a non-zero integer. Note that `\S` is not updated as the random-number generator is used.
+
 ```q
 q)\S              / default
 -314159
@@ -337,40 +401,15 @@ q)\S              / seed is not updated
 -314159
 ```
 
-!!! note
-    Since V3.1 2013.08.19 the behaviour is as follows.
+!!! note "Since V3.1 2013.08.19"
 
-    Rng is thread-local.
+    Since V3.1 the behavior is as follows.
+
+    Random-number generation (rng) is thread-local.
     `\S 1234` sets the seed for the rng for the main thread only.
     The rng in a slave thread is assigned a seed based on the slave thread number.
     In multithreaded input mode, the seed is based on socket descriptor.
-    Instances started on ports 20000 thru 20099 (slave procs, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
-
-
-## `\s` (number of slaves)
-
-Syntax: `\s`
-
-This queries or limits the number of slaves, set with the [`-s` command line  option](cmdline/#-s-slaves).
-
-As of V3.5 2017.05.02, slave threads can be adjusted dynamically up to the maximum specified on the command line. A negative number indicates that processes should be used, instead of threads.
-```q
-q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
-("current slave threads";0i)
-("current,max slave threads";4i;8i)
-q)system"s 0" / disable slave threads
-q)system"s 0N" / show max slave threads
-8i
-```
-
-
-## `\T` (timeout)
-
-Syntax: `\T [n]`
-
-This sets the client execution timeout, as the integer number of seconds a client call will execute before timing out, default 0 (no timeout). Note this is in seconds, not milliseconds like `\t`.
-
-This corresponds to the `-T` command line parameter.
+    Instances started on ports 20000 through 20099 (slave procs, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
 
 
 ## `\t` (timer)
@@ -379,7 +418,10 @@ Syntax: `\t [p]`
 
 This command has two different uses depending on the parameter given.
 
-An integer parameter is the number of milliseconds between timer ticks. If 0, the timer is turned off, otherwise the timer is turned on and the first tick given. On each tick, the function assigned to `.z.ts` is executed.
+An integer parameter is the number of milliseconds between timer ticks. If 0, the timer is turned off, otherwise the timer is turned on and the first tick given. On each tick, the function assigned to 
+[`.z.ts`](../ref/dotz.md#zts-timer) 
+is executed.
+
 ```q
 q)\t                           / default off
 0
@@ -390,7 +432,9 @@ q)13:12:52
 13:12:54
 \t 0                           / turn off
 ```
+
 A parameter of a q expression other than a single integer is executed and the execution time shown in milliseconds.
+
 ```q
 q)\t log til 100000            / milliseconds for log of first 100000 numbers
 3
@@ -399,8 +443,17 @@ q)\t do[100;log til 100000]    / timing for 100 repetitions
 q)\t:100 log til 100000    / timing for 100 repetitions, new syntax of "\t:n expr" since 3.0 2011.11.22
 186
 ```
-The tick timer usage corresponds to the `-t` command line parameter.  
-<i class="far fa-hand-point-right"></i> [`.z.ts`](dotz/#zts-timer)
+
+The tick timer usage corresponds to the `-t` command line parameter. 
+
+
+## `\T` (timeout)
+
+Syntax: `\T [n]`
+
+This sets the client execution timeout, as the integer number of seconds a client call will execute before timing out, default 0 (no timeout). Note this is in seconds, not milliseconds like `\t`.
+
+This corresponds to the [`-T` command line parameter](cmdline.md#-t-timeout).
 
 
 ## `\ts` (time and space)
@@ -408,11 +461,14 @@ The tick timer usage corresponds to the `-t` command line parameter.
 Syntax: `\ts exp`
 
 Executes the expression and shows the execution time in milliseconds and the space used in bytes.
+
 ```q
 q)\ts log til 100000
 7 2621568j
 ```
+
 Since 3.1 2014.02.07
+
 ```q
 q)\ts:10000 log til 1000           /same as \ts do[10000; log til 1000]
 329 24672
@@ -431,6 +487,7 @@ When q is invoked with the `-u` parameter specifying a user password file, then 
 Syntax: `\v [namespace]`
 
 Lists the variables in the given namespace, default current namespace.
+
 ```q
 q)a:1+b:2
 q)\v
@@ -442,17 +499,9 @@ q){x where x like"????"}system"v .h"
 ```
 
 !!! tip "Expunging variables"
+
     To expunge `a` from the workspace root, ``delete a from `.``  
-    <i class="far fa-hand-point-right"></i> _Q for Mortals_: [12.5 Expunging from a Context](http://code.kx.com/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
-
-
-## `\W` (week offset)
-
-Syntax: `\W [n]`
-
-Specifies the start of week offset, where 0 is Saturday. The default is 2 = Monday.
-
-This corresponds to the `-W` command line parameter.
+    <i class="far fa-hand-point-right"></i> _Q for Mortals_: [§12.5 Expunging from a Context](http://code.kx.com/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
 
 ## `\w` (workspace)
@@ -466,7 +515,7 @@ index | meaning
 0     | number of bytes allocated
 1     | bytes available in heap
 2     | maximum heap size so far
-3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline/#-w-memory)
+3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline.md#-w-memory)
 4     | mapped bytes
 5     | physical memory
 
@@ -483,7 +532,17 @@ q)\w
 q)\w 0
 577 25436j
 ```
-The utility [`.Q.w`](dotq/#qw-memory-stats) formats all this information.
+
+The utility [`.Q.w`](../ref/dotq.md#qw-memory-stats) formats all this information.
+
+
+## `\W` (week offset)
+
+Syntax: `\W [n]`
+
+Specifies the start of week offset, where 0 is Saturday. The default is 2 = Monday.
+
+This corresponds to the `-W` command line parameter.
 
 
 ## `\x` (expunge)
@@ -491,6 +550,7 @@ The utility [`.Q.w`](dotq/#qw-memory-stats) formats all this information.
 Syntax: `\x .z.p\*`
 
 By default, callbacks like `.z.po` are not defined in the session. After they have been assigned, you can restore the default using `\x` to delete the definition that was made.
+
 ```q
 q).z.pi                       / default has no user defined function
 '.z.pi
@@ -499,6 +559,7 @@ q)2+3
 >5
 q)\x .z.pi                    / restore default
 ```
+
 N.B. This works only for `.z.p*` variables defined in k before q.k is loaded. e.g. as `.z.ph` is defined in `q.k`, there is no default for it to be reset to.
 
 
@@ -507,6 +568,7 @@ N.B. This works only for `.z.p*` variables defined in k before q.k is loaded. e.
 Syntax: `\z [0|1]`
 
 Specifies the format for date parsing. 0 is "mm/dd/yyyy" and 1 is "dd/mm/yyyy".
+
 ```q
 q)\z
 0
@@ -524,12 +586,14 @@ Syntax: `\1 filename`
 Syntax: `\2 filename` 
 
 `\1` and `\2` allow redirecting stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary.
+
 ```bash
 ~/q$ rm -f t1.txt t2.txt
 ~/q$ l64/q
 KDB+ 2.6 2010.05.10 Copyright (C) 1993-2010 Kx Systems
 ...
 ```
+
 ```q
 q)\1 t1.txt              / stdout
 q)\2 t2.txt              / stderr
@@ -537,12 +601,14 @@ til 10
 2 + "hello"
 \\
 ```
-<pre><code class="language-bash">
+
+```bash
 ~/q$ cat t1.txt          / entry in stdout
 0 1 2 3 4 5 6 7 8 9
 ~/q$ cat t2.txt          / entry in stderr
 q)q)'type
-</code></pre>
+```
+
 On macOS and Linux `\1 /dev/stdin` returns output to the default. 
 
 
@@ -553,13 +619,17 @@ Syntax: `\_ [scriptname]`
 This command has two different uses depending on whether a parameter is given.
 
 If no parameter, then `\_` checks if client write access is blocked. 
+
 ```q
 q)\_
 0b
 ```
-<i class="far fa-hand-point-right"></i> [`-b` command-line option](cmdline/#-b-blocked)
+
+<i class="far fa-hand-point-right"></i> 
+[`-b` command-line option](cmdline.md#-b-blocked)
 
 If a parameter is given, it should be a scriptname and `\_ f.q` makes a runtime script `f.q_`. The q code cannot be viewed or serialized.
+
 ```q
 q)`:t1.q 0:enlist "a:123;f:{x+2*y}"
 q)\_ t1.q               / create locked script
@@ -586,6 +656,7 @@ q)read0`:t1.q_          / file contents are scrambled
 ## `\` (terminate)
 
 If there is a suspension, this exits one level of the suspension. Otherwise, it toggles between q and k mode. (To switch languages from inside a suspension, type "`\`".)
+
 ```q
 q){1+x}"hello"
 {1+x}
@@ -605,21 +676,28 @@ q)
 ## `\` (toggle q/k) 
 
 In the interactive session `\` toggles between the q and k interpreters.
+
 ```q
 q)\
   \
 q)
 ```
 
+
 ## `\\` (quit)
 
 Syntax: `\\`
 
-- In the interactive session type `\\` at the prompt to quit the session. 
-- Inside a function, use `value"\\\\"` or `exit 0` for the same result.  
-<i class="far fa-hand-point-right"></i> [`exit`](errors/#exit), [`value`](metadata/#value), [`.z.exit`](dotz/#zexit-action-on-exit)
+-   In the interactive session type `\\` at the prompt to quit the session. 
+-   Inside a function, use `value"\\\\"` or `exit 0` for the same result. 
 
-!!! tip 
+<i class="far fa-hand-point-right"></i> 
+[`exit`](../ref/exit.md), 
+[`value`](../ref/value.md), 
+[`.z.exit`](../ref/dotz.md#zexit-action-on-exit)
+
+!!! tip "Final comments"
+
     The text following `\\` and white space is ignored by q. This is often useful in scripts where `\\` can be followed by comments or usage examples.
 
 
@@ -627,6 +705,7 @@ Syntax: `\\`
 ## OS Commands
 
 If an expression begins with `\` but is not recognized as a system command, then it is executed as an OS command.
+
 ```q
 q)\ls                 / usual ls command
 "help.q"
@@ -638,72 +717,9 @@ q)\ls                 / usual ls command
 ..
 ```
 
-!!! warning
-    This means that typos can get passed to the OS.
+!!! warning "Typos can get passed to the OS."
 
 > When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [<i class="fab fa-twitter"></i> DevOps Borat](https://twitter.com/devops_borat)
 
 
-## `system`
-
-Syntax: `system x`
-
-where `x` is a [system command](syscmds), executes it and returns its result.
-
-The following shows that the result of `\w` (workspace information) cannot be assigned, but the result can be obtained using `system`.
-```q
-q)\w
-107728 67108864 67108864 0 0j
-q)a:\w
-'w
-q)a:system "w"
-q)a
-107872 67108864 67108864 0 0j
-```
-As with `\`, if the argument is not a q command, it is executed in the shell:
-```q
-q)system "pwd"
-"/home/guest/q"
-```
-
-!!! tip "Directing output to a file"
-    When redirecting output to a file, for efficiency purposes, avoiding using `/tmp` needlessly, append a semi-colon to the command.
-    <pre><code class="language-q">
-    q)system"cat x"
-    </code></pre>
-    is essentially the same as the shell command
-    <pre><code class="language-bash">
-    $ cat x > tmpout
-    </code></pre>
-    as q tries to capture the output.
-    So if you do
-    <pre><code class="language-q">
-    q)system"cat x > y"
-    </code></pre>
-    under the covers that looks like
-    <pre><code class="language-bash">
-    $ cat x > y > tmpout
-    </code></pre>
-    not good. So if you add the semi colon
-    <pre><code class="language-q">
-    q)system"cat x > y;"
-    </code></pre>
-    the shell interpreter considers it as 2 statements
-    <pre><code class="language-bash">
-    $ cat x > y; > tmpout
-    </code></pre>
-
-!!! tip "Capture stderr output"
-    Can I capture the stderr output from the system call? Not directly, but a workaround is
-
-        / force capture to a file, and cat the file
-        q)system"ls egg > file 2>&amp;1;cat file"
-        "ls: egg: No such file or directory"        
-        / try and fails to capture the text
-        q)@[system;"ls egg";{0N!"error - ",x;}]
-        ls: egg: No such file or directory
-        "error - os"
-
-!!! warning "Changing working directory in Windows"
-    In the event of an unexpected change to the working directory, Windows users please note <http://blogs.msdn.com/b/oldnewthing/archive/2007/11/21/6447771.aspx>
 

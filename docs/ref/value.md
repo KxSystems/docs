@@ -200,7 +200,7 @@ q)value("{x+y}";1;2)
 3
 ```
 
-The string form can be useful as a kind of ‘prepared statement’ from the Java client API since the Java serializer doesn’t support lambdas and verbs.
+The string form can be useful as a kind of ‘prepared statement’ from the Java client API since the Java serializer doesn’t support lambdas and keywords.
 
 !!! note "`value` and `get`"
 

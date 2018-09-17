@@ -20,7 +20,7 @@ q)floor -2.1 0 2.1
 
 ## Comparison tolerance
 
-Prior to V3.0, `floor` used [comparison tolerance](../kb/precision.md#comparison-tolerance).
+Prior to V3.0, `floor` used [comparison tolerance](../basics/precision.md#comparison-tolerance).
 
 ```q
 q)floor 2 - 10 xexp -12 -13
@@ -53,4 +53,4 @@ Range: `ijcs`
 
 <i class="far fa-hand-point-right"></i> 
 [`ceiling`](ceiling.md)  
-Basics: [Mathematics](../basics/math)
+Basics: [Mathematics](../basics/math.md)

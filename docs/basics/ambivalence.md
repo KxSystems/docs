@@ -81,7 +81,7 @@ q)|:[til 5]         / unary: reverse
 
 Binary operators are infixes.
 
-Like an infix derivative, the unary form can be parenthesized and applied prefix.
+Like an infix extension, the unary form can be parenthesized and applied prefix.
 
 ```q
 q)2|til 5            / maximum

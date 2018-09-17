@@ -1,27 +1,33 @@
-# ' Compose
+---
+keywords: adverb, compose, composition, extender, extension, function, kdb+, map, q
+---
 
-_Compose a unary function with another._
+# `'` Compose
+
+
+
+_Compose a unary map with another._
 
 Syntax: `'[f;ff][x;y;z;…]` 
 
 Where 
 
--   `f` is a unary function
--   `ff` is a function rank ≥1
+-   `f` is a unary map
+-   `ff` is a map rank ≥1
 
-the derivative `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`. 
+the extension `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`. 
 
 ```q
 q)ff:{[w;x;y;z]w+x+y+z}
 q)f:{2*x}
 q)d:('[f;fff])              / Use noun syntax to assign a composition
-q)d[1;2;3;4]               / f ff[1;2;3;4]
+q)d[1;2;3;4]                / f ff[1;2;3;4]
 20
 q)'[f;ff][1;2;3;4]
 20
 ```
 
-Extend Compose with [Over `/`](progressive-operators) or [`over`](over) to **compose a list of functions**.
+Extend Compose with [Over `/`](progressors.md) or [`over`](progressors.md#keywords-scan-and-over) to **compose a list of functions**.
 Use 
 
 -   `'[;]` to resolve the overloads on `'`

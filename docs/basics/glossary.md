@@ -449,7 +449,7 @@ A primitive binary function that may be applied infix as well as prefix, e.g. `+
 
 ## Postfix
 
-Applying an adverb to its argument by writing it to the right, e.g. `+/` applies `/` to `+`. (Not to be confused with projecting an operator on its left argument.)
+Applying an extender to its argument by writing it to the right, e.g. `+/` applies `/` to `+`. (Not to be confused with projecting an operator on its left argument.)
 
 
 ## Prefix

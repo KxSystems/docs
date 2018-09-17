@@ -1189,11 +1189,11 @@ Syntax: `.Q.qt x`
 Where `x` is a table, returns `1b`, else `0b`.
 
 
-## `.Q.res` (k words)
+## `.Q.res` (keywords)
 
 Syntax: `.Q.res`
 
-Returns the k control words and functions as a symbol vector. ``key `.q`` returns the functions defined to extend k to the q language. Hence to get the full list of reserved words for the current version:
+Returns the control words and keywords as a symbol vector. ``key `.q`` returns the functions defined to extend k to the q language. Hence to get the full list of reserved words for the current version:
 
 ```q
 q).Q.res,key`.q

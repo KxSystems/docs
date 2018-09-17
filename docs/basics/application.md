@@ -140,7 +140,7 @@ The _rank_ of a map is the number of
 -   indexes required to select an atom, if it is a list
 
 A map is _ambivalent_ if it can be used with more than one rank.
-All matrixes and some derivatives are ambivalent.
+All matrixes and some extensions are ambivalent.
 
 ```q
 q)+/[til 5]           / unary
@@ -151,11 +151,11 @@ q)+/[1000000;til 5]   / binary
 
 _Rank_ is a semantic property, and is independent of syntax. This is a ripe source of confusion.
 
-The syntax of a derivative is determined by the application that produced it.
+The syntax of an extension is determined by the application that produced it.
 
 !!! important "Postfix application produces an infix."
 
-The derivative `+/` has ambivalent rank but infix syntax. 
+The extension `+/` has ambivalent rank but infix syntax. 
 Applying it infix is straightforward.
 
 ```q
@@ -183,7 +183,7 @@ q)(+/)[1000000;til 5] / binary
 1000010
 ```
 
-The potential for confusion is even greater when the argument of a unary operator is a unary function. Here the derivative is unary – but it is still an infix! 
+The potential for confusion is even greater when the argument of a unary operator is a unary function. Here the extension is unary – but it is still an infix! 
 Only parentheses or brackets can save us.
 
 ```q
@@ -200,7 +200,7 @@ q)count each txt
 4 4
 ```
 
-Conversely, if the unary operator is applied, not postfix, but with bracket notation (unusual and not recommended) the ambivalent derivative is _not_ an infix.
+Conversely, if the unary operator is applied, not postfix, but with bracket notation (unusual and not recommended) the ambivalent extension is _not_ an infix.
 
 ```q
 q)/[+]til 5               / oops, a comment

@@ -1,5 +1,5 @@
 ---
-keywords: adverb, extender, iteration, kdb+, operator, unary
+keywords: adverb, ambivalence, extender, extension, infix, iterate, iteration, kdb+, map, operator, postfix, unary
 ---
 
 

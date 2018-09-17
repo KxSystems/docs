@@ -408,7 +408,7 @@ Any of these, apart from Compose, in combination with the noun or function immed
 Compose is a binary extender and can be applied only with bracket notation. 
 (It is the only binary operator that cannot be applied infix.) 
 
-The extension is a variant of the object modified by the adverb. 
+The extension is a variant of the map modified by the extender. 
 For example, `+` is Add and `+/` is _sum_.
 
 ```q
@@ -454,7 +454,7 @@ Two dots cannot occur together in a name. Compound names beginning with a dot ar
 
 ## Extender composition
 
-An extension is _composed_ by any string of extenders with a map to the left and no spaces between any of the extender glyphs or between the map and the leftmost extender glyph. For example, `+\/:\:` composes a well-formed extension. The meaning of such a sequence of symbols is understood from left to right. The leftmost extender (`\`) modifies the map (`+`) to create a new function. The next extender to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the adverb at the right end.
+An extension is _composed_ by any string of extenders with a map to the left and no spaces between any of the extender glyphs or between the map and the leftmost extender glyph. For example, `+\/:\:` composes a well-formed extension. The meaning of such a sequence of symbols is understood from left to right. The leftmost extender (`\`) modifies the map (`+`) to create a new function. The next extender to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the extender at the right end.
 
 <i class="far fa-hand-point-right"></i>
 [Compose extender](../ref/compose.md)
