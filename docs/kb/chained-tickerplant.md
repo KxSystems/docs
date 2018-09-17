@@ -1,3 +1,8 @@
+---
+keywords: chanined, kdb+, q, rdb, tickerplant
+---
+
+
 # Chained tickerplant and RDB for kdb+tick
 
 <source:contrib/simon/tick>
@@ -13,15 +18,18 @@ If the master tickerplant is a zero-latency tickerplant the chained tickerplant 
 Having a second tickerplant allows keeping ordinary users safely away from the master tickerplant – the master tickerplant can be set up to allow only specific connections – and all other subscribers would have to go to the chained tickerplant.
 
 Start a chained tickerplant from port 5010 with bulk updates.
+
 ```bash
-q chainedtick.q :5010 -p 5110 -t 1000
-```
-Start a chained tickerplant which echoes updates immediately.
-```bash
-q chainedtick.q :5010 -p 5110 -t 0
+$ q chainedtick.q :5010 -p 5110 -t 1000
 ```
 
-<i class="fab fa-github"></i> [KxSystems/kdb/tick/chainedtick.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedtick.q)
+Start a chained tickerplant which echoes updates immediately.
+```bash
+$ q chainedtick.q :5010 -p 5110 -t 0
+```
+
+<i class="fab fa-github"></i> 
+[KxSystems/kdb/tick/chainedtick.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedtick.q)
 
 
 ## Chained RDB
@@ -33,7 +41,7 @@ The benefit is similar to that of a chained tickerplant – being able to keep o
 Don’t forget though that a second RDB will double up the memory usage – it's an in-memory database and can’t be sharing any data with the primary RDB.
 
 ```bash
-q chainedr.q :5010 -p 5111 / start a chained RDB from :5010
+$ q chainedr.q :5010 -p 5111 / start a chained RDB from :5010
 ```
 
 <i class="fab fa-github"></i> [KxSystems/kdb/tick/chainedr.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q)

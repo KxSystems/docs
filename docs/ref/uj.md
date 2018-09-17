@@ -59,10 +59,10 @@ As a result a change in the behaviour of `lj` causes a change in the behaviour o
 
 ```q
 q)show x:([a:1 2]b:`x`y;c:10 20)
-a b c
-------
-1 x 10
-2 y 20
+a| b c
+-| ----
+1| x 10
+2| y 20
 q)show y:([a:1 2]b:``z;c:1 0N)
 a| b c
 -| ---

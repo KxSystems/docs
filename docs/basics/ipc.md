@@ -1,5 +1,4 @@
 ---
-title: IPC
 keywords: communication, interprocess, ipc, kdb+, message, process, protocol, q
 ---
 
@@ -7,6 +6,8 @@ keywords: communication, interprocess, ipc, kdb+, message, process, protocol, q
 
 
 
+<i class="far fa-hand-point-right"></i>
+Knowledge Base: [Interprocess communications](../kb/ipc.md)
 
 TCP/IP is used for communicating between processes. The protocol is extremely simple, as is the message format. 
 

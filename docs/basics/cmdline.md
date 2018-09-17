@@ -394,5 +394,5 @@ Syntax: `-z B`
   
 Format used for `"D"$` date parsing. 0 is MM/DD/YYYY (default) and 1 is DD/MM/YYYY.
 
-[![](/img/xkcd.tar.png)](https://xkcd.com/1168/)  
+[![](../img/xkcd.tar.png)](https://xkcd.com/1168/)  
 _xkcd.com_

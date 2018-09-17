@@ -49,7 +49,7 @@ q)count each string `Clash`Fixx`The`Who
 ```
 
 <div markdown="1" style="float: right; margin-left: 1em; text-align: center;">
-![each-both](/img/each-both.png)  
+![each-both](../img/each-both.png)  
 <small>_Each Both_</small>
 </div>
 
@@ -77,7 +77,7 @@ _Apply a binary map between one argument and each item of the other._
 ------------|:--------------------------------:|:-----------------:
 syntax:     | `x m\:y`                         |  `x m/:y`
 equivalent: | `(m[;y]')x`                      | `(m[x;]')y`
-&nbsp;      | ![Each Left](/img/each-left.png) | ![Each Right](/img/each-right.png)
+&nbsp;      | ![Each Left](../img/each-left.png) | ![Each Right](../img/each-right.png)
 
 The extenders Each Left and Each Right take **binary** maps and derive binary functions that apply one argument to each item of the other. Effectively, the extender projects its map on one argument and applies Each.
 
@@ -136,7 +136,7 @@ q)raze[a] ~ b
 ## Each Parallel
 
 <div markdown="1" style="float: right; margin-left: 1em;">
-![Each Parallel](/img/each-parallel.png)
+![Each Parallel](../img/each-parallel.png)
 </div>
 
 _Assign sublists of the argument list to slave tasks, in which the unary map is applied to each item of the sublist._
@@ -180,7 +180,7 @@ The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead
 ## Each Prior
 
 <div markdown="1" style="float: right; margin-left: 1em; z-index: 3">
-![Each Prior](/img/each-prior.png)
+![Each Prior](../img/each-prior.png)
 </div>
 
 _Apply a binary map between each item of a list and its preceding item._

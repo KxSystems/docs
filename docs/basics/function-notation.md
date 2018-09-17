@@ -1,5 +1,4 @@
 ---
-title: Function notation
 keywords: abort, control, expression, function, kdb+, lambda, multiline, notation, q, rank, signal, signed, unsigned
 ---
 
@@ -10,6 +9,14 @@ keywords: abort, control, expression, function, kdb+, lambda, multiline, notatio
 
 Function notation enables the definition of functions.
 Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_.
+
+!!! note "Anonymity"
+
+    Although the term _lambda_ originated elsewhere as a name for an anonymous function, we use it to denote any function defined using the lambda notation.
+
+    In this usage a lambda assigned a name is still a lambda.
+    For example, if `plus:{x+y}`, then `plus` is a lambda.
+
 
 A lambda is defined as a pair of braces (curly brackets) enclosing an optional _signature_ (a list of up to 8 argument names) followed by a zero or more expressions separated by semicolons. 
 
@@ -26,14 +33,16 @@ Functions with 3 or fewer arguments may omit the signature and instead use defau
 A lambda with a signature is _signed_; without, _unsigned_.
 
 ```q
-q){(x*x)+(y*y)+2*x*y}[20;4]
+q){[x;y](x*x)+(y*y)+2*x*y}[20;4]  / signed lambda
+576
+q){(x*x)+(y*y)+2*x*y}[20;4]       / unsigned lambda
 576
 ```
 
 
 ## Rank
 
-The _rank_ of a function is the number of arguments it takes. 
+The [rank](glossary.md#rank) of a function is the number of arguments it takes. 
 
 The rank of a signed lambda is the number of names in its signature.
 
@@ -131,6 +140,22 @@ sqsum:{[a;b]   / square of sum
   }
 ```
 
+
 <i class="far fa-hand-point-right"></i>
 [Multiline expressions](syntax.md#multiline-expressions)
+
+
+## Variables and constants
+
+A lambda definition can include up to: 
+
+&nbsp;    | in use | current     | <V3.5 2019.09.26
+----------|--------|-------------|------------------
+arguments |        | 8           | 8
+locals    | $m$    | 110         | 31
+globals   | $n$    | 110         | 23
+constants |        | $240-(m+n)$ | $95-(m+n)$
+
+<i class="far fa-hand-point-right"></i>
+[Parse errors](errors.md#parse-errors)
 

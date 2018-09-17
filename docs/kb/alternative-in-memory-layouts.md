@@ -1,6 +1,16 @@
-Prior to kdb+, as k veterans will remember, some schemas used nested data per symbol. The `` `g#`` attribute allowed us to move away from those more complicated designs and queries to long flat tables with fast access via the group attribute. 
+---
+keywords: attribute, group, kdb+, memory, nyse, q, taq
+---
+
+# Alternative in-memory layouts
+
+
+
+
+Prior to kdb+, as veterans will remember, some schemas used nested data per symbol. The `` `g#`` attribute allowed us to move away from those more complicated designs and queries to long flat tables with fast access via the group attribute. 
 
 There is however a third layout for in-memory data, using a dictionary of symbols!tables, which might be relevant to your particular use case.
+
 ```q
 q)/Load some dummy data from nyse taq
 q)/and store as symbols!tables to demonstrate in-memory usage
@@ -95,5 +105,6 @@ q)\ts dpfdot[`:db;2014.01.14;`sym;`t] / t is a dict of tables, i.e. syms!tables.
 3444 179274224
 ```
 
-<i class="far fa-hand-point-right"></i> [above transcript](assets/alternative-in-memory-layouts.log) in full window
+<i class="far fa-hand-point-right"></i> 
+[above transcript](assets/alternative-in-memory-layouts.log) in full window
 

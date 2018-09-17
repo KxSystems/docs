@@ -1,17 +1,32 @@
+---
+keywords: callback, kdb+, q
+---
+
+# Callbacks
+
+
+
+
+
 The construct of an asynchronous remote call with callback is not built into interprocess communication (IPC) syntax in q, but it is not difficult to implement. We explain here how to do this with simple examples that are easily generalized.
 
 To begin, we establish the following environment and terminology. A client process wishes to make an async call to a q function `proc` on a separate q process, the server, listening on some port, say 5042. In our examples, we assume that the following utility functions are on both the client and the server:
+
 ```q
 q)echo:{0N!x;}
 q)add:{echo x+y}
 ```
+
 The `echo` utility uses `0N!` to force its argument to the console (i.e., stdout) and then sinks its result to avoid duplicate display in some circumstances.
 
 
 ## Overview
 
-Callback implementation is straightforward if you understand basic IPC in q.  
-<i class="far fa-hand-point-right"></i> [_Q for Mortals_ 11.6 Interprocess Communication](http://code.kx.com/q4m3/11_IO/#116-interprocess-communication)
+Callback implementation is straightforward if you understand basic IPC in kdb+. 
+
+<i class="far fa-hand-point-right"></i> 
+Basics: [Interprocess Communication](../basics/ipc.md)  
+_Q for Mortals_: [§11.6 Interprocess Communication](http://code.kx.com/q4m3/11_IO/#116-interprocess-communication)
 
 Here are some points to keep in mind.
 
@@ -57,16 +72,19 @@ The result is that 42 is displayed on the server and then 43 is displayed on the
 If you need to call a remote function that has more than two data parameters, you cannot use implicit parameters on the server as above. You can either define explicit parameters or encapsulate the arguments in a list. We show the latter here.
 
 Define the following on the server,
+
 ```q
 q)add3:{x+y+z}
 q)proc3:{ echo r:add3 . x; (neg .z.w) (y; r)}
 ```
-Here the data for `proc3` is passed as a list in the implicit parameter `x` , while the callback function name is passed as `y`. Note the use of [`.` (_apply_)](/basics/unclassified/#apply) to evaluate a non-unary function on a list of arguments.
+
+ere the data for `proc3` is passed as a list in the implicit parameter `x` , while the callback function name is passed as `y`. Note the use of [`.` (Apply)](../ref/apply.md) to evaluate a non-unary function on a list of arguments.
 
 Now execute the following on the client.
 ```q
 q)(neg h) (`proc3; 1 2 3; `echo)
 ```
+
 This expression makes an async call to the remote function `proc3`, passing it the list argument `1 2 3` and the symbol `` `echo`` representing the name of the callback function.
 
 The result is that 6 is displayed on the server and then 6 is displayed on the client.

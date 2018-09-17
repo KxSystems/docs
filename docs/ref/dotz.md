@@ -6,6 +6,7 @@ keywords: callbacks, environment, kdb+, q
 
 
 
+
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks. 
 
 !!! warning "Reserved"
@@ -49,7 +50,8 @@ System information                Callbacks
     By default, callbacks are not defined in the session. After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
 <i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Callbacks](../kb/callbacks.md)  
+Knowledge Base: [Callbacks](../kb/callbacks.md), 
+[Using `.z`](../kb/using-dotz.md)  
 _Q for Mortals:_ [§11.6 Interprocess Communication](http://code.kx.com/q4m3/11_IO/#116-interprocess-communication)
 
 

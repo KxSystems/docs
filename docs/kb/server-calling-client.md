@@ -1,40 +1,53 @@
-This demonstrates how to _simulate_ a C client handling a _get_ call from a q server. The [Java interface](/interfaces/java-client-for-q) allows the programmer to emulate a q server. The C interface does not provide a means to respond to a sync call from the server but async responses ([message type 0](/basics/ipc)) can be sent using `k(-c,...)`.
+---
+keywords: client, kdb+, q, server
+---
 
-A _get_ call may be desirable when client functions need to be called by the server – as though the client were an [extension](/interfaces/using-c-functions/#portable-example). This q code shows how a listening q server can call a q client (with handle `h`) using async messaging only:
+# Server calling client
+
+
+This demonstrates how to _simulate_ a C client handling a _get_ call from a kdb+ server. The [Java interface](../interfaces/java-client-for-q.md) allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses ([message type 0](../basics/ipc.md)) can be sent using `k(-c,...)`.
+
+A _get_ call may be desirable when client functions need to be called by the server – as though the client were an [extension](../interfaces/using-c-functions.md#portable-example). This q code shows how a listening kdb+ server can call a kdb+ client (with handle `h`) using async messaging only:
+
 ```q
 q)f:{neg[h]({neg[.z.w]value x};x);h[]} 
 q)f"1+1"
 2
 ```
+
 Generally, async _set_ messages to the client are preferable because the server has many clients and does not want to be blocked by a slow response from any one client. One application of simulated get from the server is where an extension might have been the solution to a problem, but an out-of-process solution was preferred because:
 
 -   only 32-bit or 64-bit libraries were available
--   unreliable external code may stomp on q
+-   unreliable external code may stomp on kdb+
 -   licencing issues
--   system calls in external code conflict with q
+-   system calls in external code conflict with kdb+
 
 
 ## Essential example
 
-These programs work when the q server has only has one client, `sc` in the example below.
+These programs work when the kdb+ server has only has one client, `sc` in the example below.
 
 `sc.c` defines two functions, `home` and `palindrome` that may be called by the server. 
 
 When the server is run as `q sc.q -p 5001` and then `sc` is run, `sc` will connect to `` `::5001 ``.
 
-In q, [`.z.po`](/basics/dotz/#zpo-open) is called when `sc` connects. `.z.po` then saves the socket `h` and calls ``GET` `` to find the list of functions the client provides.
+In q, [`.z.po`](../ref/dotz.md#zpo-open) is called when `sc` connects. `.z.po` then saves the socket `h` and calls ``GET` `` to find the list of functions the client provides.
 
 `fs` is called to eval a new function definition for `home` and `palindrome`. Then in q:
+
 ```bash
 $ q sc.q -p 5001
 ```
+
 ```q
 q)home`
 "/home/jack"
 q)palindrome home`
 "/home/jackkcaj/emoh/"
 ```
-Here is what sc.q defined when it received the list of functions from the client:
+
+Here is what `sc.q` defined when it received the list of functions from the client:
+
 ```q
 q)home
 {GET[(`home;0;x)]}
@@ -43,6 +56,7 @@ q)palindrome
 ```
 
 ### sc.q
+
 ```q
 GET:{(neg h)x;x:h[];x[1]}
 S:string
@@ -52,6 +66,7 @@ fs:{{eval parse s,":{GET[(`",(s:S x[0]y),";",(S y),";",(";"sv S x[1;y]#"xyz"),")
 
 
 ### sc.c
+
 ```c
 //sc.c  server calls client with simulated GET.   gcc sc.c -o sc -DKXVER=3 -pthread l64/c.o
 #include<stdio.h>
@@ -79,7 +94,15 @@ I main(I n,S*v){I c=khp("",5001);while(1)if(c==sel(c,1e-2))A(sr(c));}
 
 ## A TUI
 
-Consider a C client `u` that is nothing but a [TUI](http://en.wikipedia.org/wiki/Text-based_user_interface). It exposes [ncurses](https://en.wikipedia.org/wiki/Ncurses) functionality for a q listener. For fun, [Conway’s game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) will play out on `u` – all drawn by a [q program](http://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
+Consider a C client `u` that is nothing but a 
+[TUI](http://en.wikipedia.org/wiki/Text-based_user_interface). 
+It exposes 
+[ncurses](https://en.wikipedia.org/wiki/Ncurses) 
+functionality for a kdb+ listener. For fun, 
+[Conway’s game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+will play out on `u` – all drawn by a 
+[q program](http://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
+
 ```bash
 $ cat t.c
 #include<curses.h>
@@ -87,5 +110,8 @@ $ cat t.c
 
 TODO...
 ```
-<i class="far fa-hand-point-right"></i> [Interprocess communication](ipc)
+
+<i class="far fa-hand-point-right"></i> 
+[Interprocess communication](ipc.md)  
+Basics: [IPC protocol](../basics/ipc.md)
 

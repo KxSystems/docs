@@ -14,7 +14,7 @@ Where
 the extension `x'` returns $r$ such that 
 $r_i$ is ($args_{x_i})_i$
 
-![case](/img/case.png)
+![case](../img/case.png)
 
 The extension `x'` has rank `max[x]+1`. 
 

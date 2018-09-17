@@ -1,13 +1,23 @@
-Here’s a simple way to daemonize q on Linux. Supports redirecting stderr and stdout. It closes stdin and writes a pid to a pidfile.
+---
+keywords: daemon, kdb+, linux, q
+---
+
+Daemon
+
+
+Here’s a simple way to daemonize kdb+ on Linux. Supports redirecting stderr and stdout. It closes stdin and writes a pid to a pidfile.
 
 !!! tip "Shell features"
+
     Remember shell features, e.g.
+
     <pre><code class="language-bash">
     $ nohup q -p 5000 < /dev/null > /tmp/stdoe 2>&1&
     $ echo $! > /tmp/pidfile
     </code></pre>
 
 Sample use:
+
 ```bash
 saturn:tmp> gcc daemonize.c -o daemonize
 saturn:tmp> ./daemonize -e /tmp/stderr -o /tmp/stdout -p /tmp/pidfile
@@ -16,6 +26,7 @@ saturn:tmp> cat /tmp/pidfile
 32139
 saturn:tmp> q
 ```
+
 ```q
 KDB+ 2.4t 2007.05.04 Copyright (C) 1993-2007 Kx Systems
 l64/ 4(8)core 3943MB niall saturn 127.0.0.1 prod 2012.01.01 niall
@@ -29,7 +40,9 @@ q)\\
 saturn:tmp> cat /tmp/stdout
 `hello
 ```
+
 The code:
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>

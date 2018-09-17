@@ -75,7 +75,7 @@ syntax           | name     | number of successive evaluations
 ### Converge
 
 <div markdown="1" style="float: right; font-style: italic; font-size: 80%; margin-left: 1em; text-align: center; width: 150px">
-[![St Patrick driving the snakes out of Ireland](/img/snakes.jpg)](/img/snakes.jpg)
+[![St Patrick driving the snakes out of Ireland](../img/snakes.jpg)](../img/snakes.jpg)
 Are we there yet?
 </div>
 
@@ -192,7 +192,7 @@ The extension of a progressor and a binary map is an ambivalent function.
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the count of the right argument.
 
-![over](/img/over.png)  
+![over](../img/over.png)  
 <small>_Unary and binary application of f/_</small>
 
 

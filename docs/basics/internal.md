@@ -15,7 +15,7 @@ The operator `!` with a negative integer as left-argument calls an internal func
 !!! warning 
     `-n!` bindings are subject to change. If a cover function is provided in the `.q` or `.Q` namespaces – use that instead!
 
-[![Neal Stephenson thinks it’s cute to name his labels 'dengo'](/img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)  
+[![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)  
 _xkcd.com_
 
 ==These should rarely – if ever – be used==, but in order to recognise them when seen in the wild, here is a partial list.

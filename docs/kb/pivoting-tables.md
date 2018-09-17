@@ -1,30 +1,48 @@
+---
+keywords: kdb+, pivot, q, table
+---
+
+# Pivot tables
+
+
+
 Some notes on the theory and practice of pivoting tables.
+
 
 ## Simple pivot example
 
 Given a source table
+
 ```q
 q)t:([]k:1 2 3 2 3;p:`xx`yy`zz`xx`yy;v:10 20 30 40 50)
 ```
-![pivot table](/img/pivot-1.png)
+
+![pivot table](../img/pivot-1.png)
 
 we want to obtain
+
 ```q
 q)pvt:([k:1 2 3]xx:10 40 0N;yy:0N 20 50;zz:0N 0N 30)
 ```
-![pivot table](/img/pivot-2.png)
 
-As originally suggested by Jeff Borror, we begin by getting the distinct pivot values – these will become our column names in addition to the key column `k`.
+![pivot table](../img/pivot-2.png)
+
+As originally suggested by Jeff Borror, we begin by getting the distinct pivot values – these will become our column names in addition to the key column `k`. Note that `p` must be a column of symbols for this to work.
+
 ```q
 q)P:asc exec distinct p from t;
 ```
+
 And then create the pivot table!
+
 ```q
 q)pvt:exec P#(p!v) by k:k from t;
 ```
-which can be read as: for each key `k`, create a dictionary of the present columns `p` and their values `v`, take the full list of columns from that dict, and finally collapse the list of dicts to a table.
+
+which can be read as: for each key `k`, create a dictionary of the present columns `p` and their values `v`, take the full list of columns from that dict, and finally collapse the list of dicts to a table. 
 
 Another variation on creating the pivot table
+
 ```q
 q)pvt:exec P!(p!v)P by k:k from t;
 ```
@@ -33,25 +51,34 @@ q)pvt:exec P!(p!v)P by k:k from t;
 ## Explanation
 
 A key point to remember is that a table is a list of dictionaries and that is key to how we build the resulting pivot table. A list of conforming dictionaries (same symbol keys, value types) collapses to a table.
+
 ```q
 q)pvt:((`k`xx`yy`zz!1 10 0N 0N);(`k`xx`yy`zz!2 40 20 0N);(`k`xx`yy`zz!3 0N 50 30))
 ```
+
 It’s helpful to play around with these constructs at the q prompt.
+
 ```q
 q)exec p!v from t
 `xx`yy`zz`xx`yy!10 20 30 40 50
 ```
+
 Extract key/value pairs for `p` and `v` grouped by `k`
+
 ```q
 q)exec p!v by k from t
 1 2 3!(enlist `xx!enlist 10;`yy`xx!20 40;`zz`yy!30 50)
 ```
+
 Create a list of dictionaries
+
 ```q
 q)exec p!v by k:k from t
 (flip (enlist `k)!enlist 1 2 3)!(enlist `xx!enlist 10;`yy`xx!20 40;`zz`yy!30 50)
 ```
+
 In the dictionaries create nulls for missing values to allow them to conform with common column names and collapse to a table
+
 ```q
 q)exec P#(p!v) by k:k from t
 (+(,`k)!,1 2 3)!+`s#`xx`yy`zz!(10 40 0N;0N 20 50;0N 0N 30)
@@ -61,9 +88,11 @@ q)exec P#(p!v) by k:k from t
 ## A very general pivot function, and an example 
 
 !!! note "Credit"
+
     The following is derived from a thread on the k4 listbox between Aaron Davies, Attila Vrabecz and Andrey Zholos.
 
 Create sample data set of level-2 data at 4 quotes a minute, two sides, five levels, NSYE day
+
 ```q
 q)qpd:5*2*4*"i"$16:00-09:30
 q)date:raze(100*qpd)#'2009.01.05+til 5
@@ -105,13 +134,16 @@ q)f:{[v;P]`$raze each string raze P[;0],'/:v,/:\:P[;1]}
 q)g:{[k;P;c]k,(raze/)flip flip each 5 cut'10 cut raze reverse 10 cut asc c}
       / `Bpricei`Bsizei`Apricei`Asizei for levels i
 ```
+
 Use a small subset for testing
+
 ```q
 q)q:select from quote where sym=first sym
 q)book:piv[`q;`date`sym`time;`side`level;`price`size;f;g]
 q)![`book;();`date`sym!`date`sym;{x!fills,'x}cols get book];
 q)book
 ```
+
 One user reports:
 
 > This is able to pivot a whole day of real quote data, about 25 million quotes over about 4000 syms and an average of 5 levels per sym, in a little over four minutes.

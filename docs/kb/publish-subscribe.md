@@ -1,11 +1,21 @@
-<i class="fab fa-github"></i> [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) contains functionality to allow processes to publish data and subscribe to it. It is worth highlighting how the publish-and-subscribe code can be used by any process on a standalone basis. The pubsub functionality is supplied in the u.q script of kdb+tick.
+---
+keywords: kdb+, publish, q, subscribe
+---
+
+# Publish and subscribe
+
+
+
+<i class="fab fa-github"></i> 
+[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 
+contains functionality to allow processes to publish data and subscribe to it. It is worth highlighting how the publish-and-subscribe code can be used by any process on a standalone basis. The pubsub functionality is supplied in the `u.q` script of kdb+tick.
 
 To give the ability to publish data to any process, a few things need to be done:
 
-- load u.q
-- declare the tables to be published in the top level namespace. Each table must contain a column called `sym`, which acts as the single key field to which subscribers subscribe
-- initialise by calling `.u.init[]`
-- publish data by calling `.u.pub[table name; table data]`
+-   load `u.q`
+-   declare the tables to be published in the top level namespace. Each table must contain a column called `sym`, which acts as the single key field to which subscribers subscribe
+-   initialise by calling `.u.init[]`
+-   publish data by calling `.u.pub[table name; table data]`
 
 The list of tables that can be published and the processes currently subscribed are held in `.u.w`. When a client process closes a connection, it is removed from `.u.w`.
 
@@ -15,19 +25,21 @@ Subscriber processes must open a connection to the publisher and call `.u.sub[ta
 
 If a subscriber calls `.u.sub` again, the current subscription will be overwritten either for all tables (if a wildcard is used) or the specified table. To add to a subscription (e.g. add more syms to a current subscription) the subscriber can call `.u.add`.
 
-## Example
 
 The example scripts below can be downloaded from GitHub. Each script should be run from the OS command prompt e.g.
+
 ```bash
 $ q publisher.q
 $ q subscriber.q
 ```
- <i class="fab fa-github"></i> [KxSystems/cookbook/pubsub](https://github.com/KxSystems/cookbook/tree/master/pubsub)
+ <i class="fab fa-github"></i> 
+ [KxSystems/cookbook/pubsub](https://github.com/KxSystems/cookbook/tree/master/pubsub)
 
 
-### Publisher 
+## Publisher 
 
 The code below will generate some random data and publish it periodically on a timer.
+
 ```q
 \d .testdata
 
@@ -90,7 +102,8 @@ publishgrid:{.u.pub[`grid; .testdata.getgrid[x]]}
 ```
 
 
-### Subscriber 
+## Subscriber 
+
 ```q
 // define upd function
 // this is the function invoked when the publisher pushes data to it
@@ -117,6 +130,6 @@ h(`.u.add;`meter;20 21 22j)
 ```
 
 
-### Running
+## Running
 
 The subscriber will receive data from the publisher and output it to the screen. You can modify the subscription request and the `upd` function of the subscriber as required. You can run multiple subscribers at once.

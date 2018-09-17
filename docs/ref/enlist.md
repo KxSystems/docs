@@ -14,7 +14,7 @@ q)a:10
 q)b:enlist a
 q)c:enlist b
 q)type each (a;b;c)
--6 6 0h
+-7 7 0h
 q)a~b
 0b
 q)a~first b

@@ -20,10 +20,10 @@ The sort is stable: it preserves order between equals.
 
 Where `x` is a
 
--   **vector**, it is returned sorted, and with the `` `s# `` attribute set
+-   **vector**, it is returned sorted
 -   **mixed list**, the result is sorted within datatype
--   **dictionary** or **table**, the result has the `` `s# `` attribute set on the first key value or column respectively (if possible), and is sorted by that key or column.
--   
+-   **dictionary** or **table**, the result is sorted by the first key value or column (respectively).
+
 ```q
 q)desc 2 1 3 4 2 1 2                    / vector
 4 3 2 2 2 1 1

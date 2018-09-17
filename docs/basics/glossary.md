@@ -488,7 +488,18 @@ intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-d
 
 ## Rank
 
-Of a **function**, the number of arguments it takes. For a lambda, the count of arguments in its signature, or, where the signature is omitted, by the here highest-numbered of the three default argument names `x` (1), `y` (2) and `z` (3) used in the function definition, e.g. `{x+z}` has rank 3. Functions of rank 0, 1, 2 and 3 are called nullary, unary, binary and ternary respectively.
+Of a **function**, the number of arguments it takes. 
+
+rank | adjective  | example
+-----|------------|---------------------------------------------
+0    | nullary    | `{42}`
+1    | unary      | [`til`](../ref/til.md)
+2    | binary     | [`+`](../ref/add.md) Add
+3    | ternary    | [`ssr`](../ref/ss.md#ssr) string search and replace
+4    | quaternary | [`.[d;i;m;my]`](../ref/overloads/amend) Amend
+
+<i class="far fa-hand-point-right"></i>
+[Function notation](function-notation.md#rank)
 
 Of a **list**, the depth to which it is nested. A vector has rank 1.
 

@@ -22,7 +22,7 @@ Kdb+ 3.0 can read 2.7/2.8 kdb+ file formats without conversion. Kdb+ files creat
 IPC messaging is similar to previous versions, and no single message can exceed 2 billion bytes. In general, if you choose to upgrade, to ensure full IPC interop you should first upgrade your current kdb+ version to the latest release of that version (assuming versions 2.6 thru 2.8), then update client applications to use the latest drivers and then update the kdb+ version to V3.0. If you do not upgrade the drivers, you will not be able to send timestamp/timespan types to those applications, nor use IPC compression.
 
 Shared libraries that are loaded into kdb+ must be recompiled using the new k header, and some function signatures have widened some of their types:  
-<i class="fa fa-github"></i> [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h)
+<i class="far fa-github"></i> [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h)
 
 When compiling for V3.0, define `KXVER=3`, e.g. `gcc -D KXVER=3 …`
 

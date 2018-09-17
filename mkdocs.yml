@@ -321,12 +321,13 @@ nav:
     - CPU affinity: kb/cpu-affinity.md
     - Custom web server: kb/custom-web.md
     - Daemon: kb/daemon.md
+    - Deferred response: kb/deferred-response.md
     - FAQ: kb/faq.md
     - FAQ from k4 listbox: kb/faq-listbox.md
     - File compression: kb/file-compression.md
     - Firewalling: kb/firewalling.md
-    - Geospatial: kb/geospatial.md
-    - inetd/xinetd: kb/inetd.md
+    - Geospatial indexing: kb/geospatial.md
+    - inetd, xinetd: kb/inetd.md
     - Interprocess communication: kb/ipc.md
     - Kdb+tick configuration: kb/kdb-tick.md
     - Linear programming: kb/lp.md
@@ -338,10 +339,10 @@ nav:
     - Multithreaded input: kb/multithreaded-input.md
     - Named pipes: kb/named-pipes.md
     - ODBC: kb/odbc.md
-    - par.txt: kb/par-txt.md
+    - Partitioning: kb/partition.md
     - Performance tips: kb/performance-tips.md
-    - Precision: kb/precision.md
     - Pivoting tables: kb/pivoting-tables.md
+    # - Precision: kb/precision.md
     - Programming examples: kb/programming-examples.md
     - Programming idioms: kb/programming-idioms.md
     - Publish and subscribe: kb/publish-subscribe.md

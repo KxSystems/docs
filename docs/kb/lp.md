@@ -4,14 +4,14 @@
 _Linear Programming is a large topic, of which this article reviews just a few applications. More articles on it would be very welcome: please contact librarian@kx.com._
 
 !!! note "Iverson Notation and linear algebra"
-    [![Ken Iverson](/img/kei01.jpg)](https://en.wikipedia.org/wiki/Kenneth_E._Iverson "Wikipedia: Kenneth E. Iverson")
+    [![Ken Iverson](../img/kei01.jpg)](https://en.wikipedia.org/wiki/Kenneth_E._Iverson "Wikipedia: Kenneth E. Iverson")
     Q is a descendant of the notation devised at Harvard by the [Turing Award](https://en.wikipedia.org/wiki/Turing_Award) winner, mathematician [Ken Iverson](https://en.wikipedia.org/wiki/Kenneth_E._Iverson), when he worked with [Howard Aiken](https://en.wikipedia.org/wiki/Howard_H._Aiken) and Nobel Prize winner [Wassily Leontief](https://en.wikipedia.org/wiki/Wassily_Leontief) on the computation of economic input-output tables. At Harvard, Ken Iverson and fellow Turing Award winner [Fred Brooks](https://en.wikipedia.org/wiki/Fred_Brooks) gave the world’s first course in what was then called ‘data processing’.
 
     Like other descendants of Iverson Notation (e.g. [A+](http://www.aplusdev.org/index.html), [APL](https://en.wikipedia.org/wiki/APL_(programming_language)), [J](https://en.wikipedia.org/wiki/J_(programming_language))), q inherits compact and powerful expression of linear algebra. 
 
     Q Math Library: <i class="fab fa-github"></i> [zholos/qml](https://github.com/zholos/qml)
 
-    <i class="fas fa-camera"></i> [Ken Iverson & Arthur Whitney, APL89, New York City](/img/keiandatw89.png "photo courtesy Rob Hodgkinson")
+    <i class="fas fa-camera"></i> [Ken Iverson & Arthur Whitney, APL89, New York City](../img/keiandatw89.png "photo courtesy Rob Hodgkinson")
 
 
 
@@ -31,6 +31,7 @@ The optimal solution (all paths) is found by iterating until no further changes 
 ## Example
 
 Here is a simple case for just 6 nodes and the distances between connected nodes.
+
 ```q
 q)node6:`a`b`c`d`e`f
 q)bgn:`a`a`a`b`b`b`b`d`d`e`e`f`f`f
@@ -54,12 +55,15 @@ f   b   17
 f   c   18
 f   e   22
 ```
+
 First, transform the above table into a connectivity matrix of path lengths. 
 
 !!! note "Symmetry"
+
     In this example a->b can differ from b->a, which is more general than the problem requires, but you could make the matrix symmetric for real distances.
 
 For ‘no connection’ we use infinity, so the inner product of cumulative minimums works properly over the iterations.
+
 ```q
 q)cm[node6;dist6;`inf]
 0  30 80 40 0w 0w
@@ -69,11 +73,13 @@ q)cm[node6;dist6;`inf]
 0w 0w 0w 23 0  25
 0w 17 18 0w 22 0
 ```
+
 `cm` is a simple function to produce the connectivity matrix. 
 
 -   `cm` creates a connectivity matrix from nodes and a distance table.
 -    Result is a square float matrix where a cell contains distance to travel between nodes.
 -    An unreachable node is marked with the infinity value for minimum path distance. (Or 0 for credit matrix – see below).
+
 ```q
 cm:{[n;d;nopath]
   nn:count n;                         / number of nodes
@@ -85,9 +91,10 @@ cm:{[n;d;nopath]
 ```
 
 !!! tip "Assignment with a scattered index"
+
     The last two lines of `cm` both use `./` for assignment with a _scattered index_. The second argument is a list of index pairs – co-ordinates in `res`. The fourth argument is a corresponding list of values. The third argument is the assignment function. 
 
-    <i class="far fa-hand-point-right"></i> [Fold](/basics/adverbs/#fold) for how the adverb `/` specifies the iteration here.
+    <i class="far fa-hand-point-right"></i> [Over](../ref/progressors.md) for how the adverb `/` specifies the iteration here.
 
 
 `tview` adds row and column labels.
@@ -99,7 +106,9 @@ tview:{[mat]
   ((1,1+count nodes)#`,nodes),((count[nodes],1)#nodes),'mat
   }
 ```
+
 To improve the display of the connection matrix:
+
 ```q
 q)tview cm[node6;dist6;`inf]
    a   b   c   d   e   f
@@ -110,8 +119,10 @@ q)tview cm[node6;dist6;`inf]
 `e 0w  0w  0w  23f 0f  25f
 `f 0w  17f 18f 0w  22f 0f
 ```
+
 In the above result note that `[a;e]` is not directly accessible.
 So we use a bridge function to jump through one intermediate node and see new paths.
+
 ```q
 q)tview bridge cm[node6;dist6;`inf]
    a   b   c   d   e   f
@@ -122,15 +133,19 @@ q)tview bridge cm[node6;dist6;`inf]
 `e 35f 42f 43f 23f 0f  25f
 `f 38f 17f 18f 42f 22f 0f
 ```
+
 We now see a path `[a;e]` of 46, \[a->b(30), then b->e(16)\].
 After 1 hop we also see path `[d;c]` of 92, \[d->a(12), then a->c(80)\].
 
 `bridge` applies connectivity over each hop by using a Minimum.Sum inner product cumulatively:
+
 ```q
 q)bridge
 {x & x('[min;+])\: x}
 ```
+
 So for 2 hops:
+
 ```q
 q)tview bridge bridge cm[node6;dist6;`inf]
    a   b   c   d   e   f
@@ -141,9 +156,11 @@ q)tview bridge bridge cm[node6;dist6;`inf]
 `e 35f 42f 43f 23f 0f  25f
 `f 38f 17f 18f 42f 22f 0f
 ```
+
 Note with 2 hops we improve `[d;c]` to 73 [d->e(30), then e->f(25), then f->c(18)]:
 
 For ‘transitive closure’ iterate until no further improvement (i.e. optimal path lengths reached)
+
 ```q
 q)tview (bridge/) cm[node6;dist6;`inf]
    a   b   c   d   e   f
@@ -154,7 +171,9 @@ q)tview (bridge/) cm[node6;dist6;`inf]
 `e 35f 42f 43f 23f 0f  25f
 `f 38f 17f 18f 42f 22f 0f
 ```
+
 A larger example was presented in k4 listbox publicly available here:
+
 ```q
 q)\curl -s https://us-east.manta.joyent.com/edgemesh/public/net_dist -o dist
 q)\l dist
@@ -173,7 +192,9 @@ src dst dist
 q)node:0N!distinct raze dist`src`dst
 2 3 4 7 9 12 13 14 16 17 18 20 21 22 24 26 27 29 31 34 35 37 41 42 43 44 45 4..
 ```
+
 Repeating the above process with this `node` and `dist` for the optimal solution, also showing calculation time and space (using `\ts`):
+
 ```q
 q)\ts opt:(bridge/) cm[node;dist;`inf]
 92 1706512
@@ -187,18 +208,25 @@ q)opt[0;72]         / Cell [0;74] is path length to go from node 2 to node 174
 q)opt . node?2 174  / Or in one simple step using . index notation
 398f
 ```
+
 This does not get the hops, although the hops could be calculated by ‘capturing’ the intermediate results in the optimal case.
 To do this use `bridge\` instead of `bridge/`, then count changes between iterations, or just index in to see the path length converge …
+
 ```q
 q)count iters:(bridge\) cm[node;dist;`inf]  / Calculate all iterations
-5                                            / It took 5 iterations to find the optimal paths
+5                                            
+q)/ It took 5 iterations to find the optimal paths
 ```
+
 Now we can see how the path length changes during the iterations: here we see it “first converges” to 398 after 1 hop for node [2;174].
+
 ```q
 q)iters .\: node?2 174  / Index into each iteration to see iterative path improvement
 0w 398 398 398 398
 ```
+
 Another random path choice for node[2;210] does not converge until after 3 hops, also showing iterative improvement:
+
 ```q
 q)iters .\: node?2 210       / Path improvement for node [2;210]
 0w 0w 638 555 555
@@ -222,6 +250,7 @@ Here is a summary of three related use cases, starting with the above minimum-pa
 For minimum distances in a path table (example above), using an inner product of `Minimum.Sum`, where ‘no path’ is represented by `0w` (float infinity) to determine minimums properly.
 
 This calculates the minimum of the sums of distances between nodes at each pivot. The `bridge` function looks like this:
+
 ```q
 bridge:{x & x('[min;+])\: x}
 ```
@@ -232,9 +261,11 @@ bridge:{x & x('[min;+])\: x}
 For a counterparty credit-matrix solution, using an inner product of `Maximum.Minimum`, where no credit is represented by 0 to determine maximums properly.
 
 This calculates the maximum of the minimum credit between nodes at each pivot, the `bridge` function looks like this;
+
 ```q
 bridge:{x | x('[max;&])\: x}
 ```
+
 This returns the optimal possible credit by allowing credit through intermediate counterparties.
 For example if A only has credit with B, but B has credit with C, then after 1 hop, A actually has credit with C through B, but capped by the credit path in the same way.
 
@@ -247,6 +278,7 @@ Each iteration improves the connections by adding additional 1s into the matrix 
 For generalised matrix multiplication, using an inner product of `Sum.Times`.
 
 This calculates the sum of the product between nodes at each pivot, the bridge function looks like this;
+
 ```q
 bridge:{x + x('[sum;*])\: x}
 ```
@@ -255,6 +287,7 @@ bridge:{x + x('[sum;*])\: x}
 ## Generalisation
 
 The inner product for the above 3 `bridge` use cases could be further generalised as projections of a cumulative inner product function.
+
 ```q
 q)cip:{[f;g;z] f[z;] z('[f/;g])\: z}
 q)bridgeMS:cip[&;+;]  / Minimum.Sum (minimum path)
@@ -269,23 +302,30 @@ The version of `bridge` used above shows the Linear Algebra most clearly.
 It can be further optimised for performance, as shown here for the first case (minimum-path problem).
 
 Although all operations are atomic, flipping the argument seems to improve cache efficiency.
+
 ```q
 bridgef:{x + x('[sum;*])/:\: flip x}
 ```
-The `peach` operator can be used to parallelise evaluation.
+
+The `peach` keyword can be used to parallelise evaluation.
+
 ```q
 / Parallel version (multithreaded run q -s 6)
 bridgep: {x & {min each x +\: y}[flip x;] peach x}
 ```
-The [`.Q.fc` utility](/basics/dotq#qfc-parallel-on-cut) uses multi-threading where possible.
+
+The [`.Q.fc` utility](../ref/dotq.md#qfc-parallel-on-cut) uses multi-threading where possible.
+
 ```q
 / .Q.fc version
 bridgefc:{x & .Q.fc[{{{min x+y}[x] each y}[;y] each x}[;flip x];x]}
 ```
-A colleague, Ryan Sparks, is presently experimenting with further (significant) performance improvements by using [CUDA](/interfaces/gpus) on a graphics coprocessor for the inner-product function `bridge`.
+
+A colleague, Ryan Sparks, is presently experimenting with further (significant) performance improvements by using [CUDA](../interfaces/gpus.md) on a graphics coprocessor for the inner-product function `bridge`.
 This work is evolving and looks very promising.  I look forward to Ryan presenting a paper and/or presentation on his results when complete as perhaps a sequel to this article.
 
-<i class="fas fa-download"></i> [Script with examples from this article](assets/mp.q)
+<i class="fas fa-download"></i> 
+[Script with examples from this article](assets/mp.q)
 
 
 ### Test results
@@ -319,7 +359,8 @@ bridgef2:{x & .Q.fc[{x('[min;+])/:\: y}[;flip x];x]}
 ```
 
 !!! warning "Your mileage may vary"
-    As always, optimisations need to be tested on the hardware and data in use. 
+
+    As always, optimizations need to be tested on the hardware and data in use. 
 
  
 

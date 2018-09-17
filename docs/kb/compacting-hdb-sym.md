@@ -1,3 +1,10 @@
+---
+keywords: compact, hdb, kdb+, q
+---
+
+# Compacting HDB sym
+
+
 Under some scenarios, the sym enum file in a HDB can become bloated – this is the sym file sitting in the root of the HDB folder. This is due to symbols no longer being used as earlier parts of a HDB may have been archived.
 
 Some users have expressed interest in being able to compact this sym enum file. This essentially requires re-enumeration of all enumerated columns against a new empty sym file. It can take some time to execute, and nothing else should try to read or write to the HDB area whilst this is running.
@@ -7,6 +14,7 @@ The code below is for a vanilla HDB, with date partitions, a single enumeration 
 This is an all-or-nothing approach. If you choose to run the code below, it is at your own risk, and you should make sure you understand everything it is doing, and test it against a dev HDB that you are happy to destroy in the event that it goes wrong.
 
 This should really ever only be a one-off process. If you find that your sym file is growing beyond reasonable sizes, you very likely have non-repeating strings which would be better stored as char vectors than symbols. This process is not a fix for a poor choice of schema!
+
 ```q
 /cd hdb
 /q
@@ -38,13 +46,16 @@ dates:files where files like "????.??.??";
 ```
 
 !!! tip
+
     Remember to `rm` the zym file at the end of processing.
 
 
 ## Multi-threaded sym rewrite code
 
-Here's some multi-threaded (can run single threaded) and more memory-intensive but hugely faster sym file rewrite code that handles partitioned and splayed tables and par.txt. 
-Note you lose the `` `g#``, which isn't supported in threads, so you’ll have to apply it later.
+Here’s some multi-threaded (can run single threaded) and more memory-intensive but hugely faster sym file rewrite code that handles partitioned and splayed tables and `par.txt`. 
+
+Note you lose the `` `g#``, which isn’t supported in threads, so you’ll have to apply it later.
+
 ```q
 system"l ." /load the HDB - can change this if you don't start Q from your hdb root
 allpaths:{[dbdir;table] / from dbmaint.q + an extra check for paths that exist (to support .Q.bv)
@@ -73,19 +84,28 @@ system"mv sym zym" /make backup of sym file
   0N!"re-enumerated ", string file;
   } peach symFiles
 ```
-[<i class="fas fa-download"></i> Multi-threaded sym rewrite code](assets/multi-threaded-sym-rewrite-code.q)
+
+[<i class="fa fa-download"></i> 
+Multi-threaded sym rewrite code](assets/multi-threaded-sym-rewrite-code.q)
 
 !!! tip "Take backups!"
 
 !!! warning "Error writing file?"
-    In the multi-threaded script, a `'cast` could happen if this line fails on a file:
-    
-        allsyms:distinct raze{[file] :distinct @[value get@;file;`symbol$()] } peach symFiles; 
-        /symbol files we're dealing with - memory intensive
-    
-    So perhaps check the integrity of your HDB (perhaps change the above line to help debug):
 
-        allsyms:distinct raze{[file] :distinct @[value get@;file;{0N!(x;y);`symbol$()}[file;]] } peach symFiles; 
+    In the multi-threaded script, a `'cast` could happen if this line fails on a file:
+
+    <pre><code class="language-q">
+    allsyms:distinct raze{[file] :distinct @[value get@;file;`symbol$()] } peach symFiles; 
+    /symbol files we're dealing with - memory intensive
+    </code></pre>
+
+    So perhaps check the integrity of your HDB (perhaps change the above to help debug):
+
+    <pre><code class="language-q">
+    allsyms:distinct raze{[file] 
+      :distinct @[value get@; file; {0N!(x;y); `symbol$()}[file;]] 
+      } peach symFiles; 
+    </code></pre>
 
     would print the file and error.
 

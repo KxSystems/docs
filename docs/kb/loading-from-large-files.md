@@ -1,12 +1,23 @@
-[Elsewhere](faq/#how-do-i-import-a-csv-file-into-a-table) we give recipes for loading a CSV file into a table in memory and for saving a table to disk in native format. However, when the data in the CSV file is too large to fit into memory, those recipes fail. 
+---
+keywords: file, large, load, kdb+, q
+---
 
-Instead, we need to break the large CSV file into manageable chunks and process them in sequence. Doing this by hand is quite tiresome. Fortunately, q provides a function (`.Q.fs`) that automates part of this process. `.Q.fs` loops over a file and grabs conveniently-sized lumps of complete records (`"\n"` delimited) and allows you to apply a function to each record. This allows you to implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding the data in memory all at once.
+# Loading from large files
+
+
+
+
+
+[Elsewhere](faq.md#how-do-i-import-a-csv-file-into-a-table) we show how to load a CSV file into a table in memory and save a table to disk in native format. However, when the data in the CSV file is too large to fit into memory, those techniques fail. 
+
+Instead, we need to break the large CSV file into manageable chunks and process them in sequence. Doing this by hand is quite tiresome. Fortunately, q provides a function ([`.Q.fs`]](../ref/dotq.md#qfs-streaming-algorithm)) that automates part of this process. `.Q.fs` loops over a file and grabs conveniently-sized lumps of complete records (`\n` delimited) and allows you to apply a function to each record. This allows you to implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding the data in memory all at once.
 
 
 ## Using `.Q.fs`
 
 Assume that our CSV file contains the following:
-```
+
+```csv
 2006-10-03, 24.5,  24.51, 23.79, 24.13, 19087300, AMD
 2006-10-03, 27.37, 27.48, 27.21, 27.37, 39386200, MSFT
 2006-10-04, 24.1,  25.1,  23.95, 25.03, 17869600, AMD
@@ -16,25 +27,33 @@ Assume that our CSV file contains the following:
 2006-10-06, 24.66, 24.8,  23.96, 24.01, 17299800, AMD
 2006-10-06, 27.76, 28,    27.65, 27.87, 36452200, MSFT
 ```
+
 If you call `.Q.fs` with the function `0N!`, you get a list with the rows as elements:
+
 ```q
 q).Q.fs[0N!]`:file.csv
 ("2006-10-03,24.5,24.51,23.79,24.13,19087300,AMD";"2006-10-03,27.37,27.48,27...
 387j
 ```
+
 You can get a list with the columns as elements like this:
+
 ```q
 q).Q.fs[{0N!("DFFFFIS";",")0:x}]`:file.csv
 (2006.10.03 2006.10.03 2006.10.04 2006.10.04 2006.10.05 2006.10.05 2006.10.06..
 387j
 ```
+
 Having that, the next step is to table it:
+
 ```q
 q).Q.fs[{0N! flip `date`open`high`low`close`volume`sym!("DFFFFIS";",")0:x}]`:file.csv
 +`date`open`high`low`close`volume`sym!(2006.10.03 2006.10.03 2006.10.04 2006...
 387j
 ```
+
 And finally we can insert each row into a table
+
 ```q
 q).Q.fs[{`trade insert flip `date`open`high`low`close`volume`sym!("DFFFFIS";",")0:x}]`:file.csv
 387j
@@ -50,7 +69,9 @@ date       open  high  low   close volume   sym
 2006.10.06 24.66 24.8  23.96 24.01 17299800 AMD
 2006.10.06 27.76 28    27.65 27.87 36452200 MSFT
 ```
+
 The above sequence has created the table in memory. As explained above, sometimes the data is too large to fit in RAM. What we can do is insert the rows directly into a table on disk, like this:
+
 ```q
 q)colnames: `date`open`high`low`close`volume`sym
 q).Q.fs[{`:newfile upsert flip colnames!("DFFFFIS";",")0:x}]`:file.csv
@@ -67,7 +88,9 @@ date       open  high  low   close volume   sym
 2006.10.06 24.66 24.8  23.96 24.01 17299800 AMD
 2006.10.06 27.76 28    27.65 27.87 36452200 MSFT
 ```
-To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](/basics/dotq/#qdpft-save-table) are useful.
+
+To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](../ref/dotq.md#qdpft-save-table) are useful.
+
 ```q
 $ cat fs.q
 \d .Q
@@ -89,9 +112,11 @@ r:flip`date`open`high`low`close`volume`sym!("DFFFFIS";",")0:
 w:.Q.dcfgnt[`:db;`date;`sym;,;`stats]
 .Q.fs[w r@]`:file.csv
 ```
+
 ```bash
 $ q fs.q
 ```
+
 ```q
 KDB+ 2.7 2011.11.22 Copyright (C) 1993-2011 Kx Systems
 l64/
@@ -114,7 +139,7 @@ date       sym  open  high  low   close volume
 
 ## Data-loading example
 
-Q makes it easy to load data from files (CSV, TXT, binary etc.) into a database. The simplest case is to read a file completely into memory and save it to a table on disk using `.Q.dpft` or [`set`](/basics/filewords/#set). However, this is not always possible and different techniques may be required, depending on how the data is presented. 
+Q makes it easy to load data from files (CSV, TXT, binary etc.) into a database. The simplest case is to read a file completely into memory and save it to a table on disk using `.Q.dpft` or [`set`](../ref/get.md#set). However, this is not always possible and different techniques may be required, depending on how the data is presented. 
 
 In an ideal scenario, data should be presented in a way consistent with how it is stored in the database and in file sizes which can be easily read into memory all at once. The loading performance is maximized when the number of different writes to different database partitions is minimized. An example of this in a date-partitioned database with financial data would be a single file per date and per instrument, or a single file per date. A slightly different example might have many small files to be loaded (e.g. minutely bucketed data per date and per instrument), in which case the performance would be maximized by reading many files for the same date at once, and writing in one block to a single date partition.
 
@@ -122,12 +147,18 @@ Unfortunately it is not always possible or is too expensive to structure the inp
 
 The example will require us to
 
-- read data in chunks using `.Q.fsn`
-- append data to splayed tables using manual enumerations and [`upsert`](/basics/qsql/#upsert)
-- re-sort and set attributes on disk when all the data is loaded
-- generate a daily statistics table to be stored as a splayed table at the top level of the database
+-   read data in chunks using [`.Q.fsn`](../ref/dotq.md#fsn-streaming-algorithm)
+-   append data to splayed tables using manual enumerations and [`upsert`](../basics/qsql.md#upsert)
+-   re-sort and set attributes on disk when all the data is loaded
+-   generate a daily statistics table to be stored as a splayed table at the top level of the database
 
-Test data for this example can be generated using the CSV generator <i class="fab fa-github"></i> [KxSystems/cookbook/dataloader/gencsv.q](https://github.com/KxSystems/cookbook/blob/master/dataloader/gencsv.q). The full loader is at <i class="fab fa-github"></i> [KxSystems/cookbook/dataloader/loader.q](https://github.com/KxSystems/cookbook/blob/master/dataloader/loader.q). The loader could be made more generic, though has not been, for reasons of code clarity.
+Test data for this example can be generated using the CSV generator 
+<i class="fab fa-github"></i> 
+[KxSystems/cookbook/dataloader/gencsv.q](https://github.com/KxSystems/cookbook/blob/master/dataloader/gencsv.q). 
+The full loader is at 
+<i class="fab fa-github"></i> 
+[KxSystems/cookbook/dataloader/loader.q](https://github.com/KxSystems/cookbook/blob/master/dataloader/loader.q). 
+The loader could be made more generic, though has not been, for reasons of code clarity.
 
 It should be noted that, unlike other database technologies, you do not have to define the table schema before you load the data (i.e. there is no separate “create” step). The schema is defined by the format of the written data, so in a lot of cases the schema is defined by the data loaders.
 
@@ -136,14 +167,21 @@ It should be noted that, unlike other database technologies, you do not have to 
 
 The example loader essentially falls into three main parts:
 
+
 `loaddata`
+
 : A function to load in a chunk of data and write it out to the correct table structures 
 
+
 `final`
+
 : A function to do the final tasks once the load is complete e.g. to re-sort tables, set attributes, build any view tables required etc. 
 
+
 `loadallfiles`
+
 : A function to get the list of files to load, load each one in chunks using `.Q.fsn`, then finalise the database structures when complete 
+
 
 This is a fairly common structure for loaders.
 
@@ -152,23 +190,31 @@ This is a fairly common structure for loaders.
 
 Data loaders should always have plenty of meaningful debug information. Each step of the dataloader may take considerable time (either reading from disk or writing to disk), so it is good practice to have information on what the loader is doing rather than just a blank console.
 
+
 `loaddata`
+
 : loads data into the table partitions. The main load is done using `0:`, which can take either data or the name of a file as its right argument. `loaddata` builds a list of partitions that it has modified during the load.
 
+
 `final`
+
 : is used to re-sort and re-apply attributes after the main load is done. It will only re-sort each partitioned table if it has to. It uses the list of partitions built by `loaddata` to know which tables to modify. It will create a top-level view table (daily) from each partition it has modified
 
+
 `loadallfiles`
+
 : is the wrapper function which generates the list of files to load, loads them, then invokes `final`. It takes a directory as its argument, to find the files to load. 
 
 
 ### Example
 
-Run gencsv.q to build the raw data files. You can modify the config to change the size, location or number of files generated.
+Run `gencsv.q` to build the raw data files. You can modify the config to change the size, location or number of files generated.
+
 ```bash
-kdb$ q gencsv.q 
+$ q gencsv.q 
 KDB+ 3.1 2014.02.08 Copyright (C) 1993-2014 Kx Systems
 ```
+
 ```q
 2014.02.25T14:21:00.477 writing 1000000 rows to :examplecsv/trades2014_01.csv for date 2014.01.01
 2014.02.25T14:21:02.392 writing 1000000 rows to :examplecsv/trades2014_01.csv for date 2014.01.02
@@ -182,11 +228,14 @@ KDB+ 3.1 2014.02.08 Copyright (C) 1993-2014 Kx Systems
 2014.02.25T14:23:34.404 writing 1000000 rows to :examplecsv/trades2014_03.csv for date 2014.03.30
 2014.02.25T14:23:36.113 writing 1000000 rows to :examplecsv/trades2014_03.csv for date 2014.03.31
 ```
-Run loader.q to load the data. You might want to modify the config at the top of the loader to change the HDB destination, compression options, and the size of the data chunks read at once.
+
+Run `loader.q` to load the data. You might want to modify the config at the top of the loader to change the HDB destination, compression options, and the size of the data chunks read at once.
+
 ```bash
-kdb$ q loader.q 
+$ q loader.q 
 KDB+ 3.1 2014.02.08 Copyright (C) 1993-2014 Kx Systems
 ```
+
 ```q
 2014.02.25T14:24:54.201 **** LOADING :examplecsv/trades2014_01.csv ****
 2014.02.25T14:24:55.116 Reading in data chunk
@@ -228,16 +277,16 @@ KDB+ 3.1 2014.02.08 Copyright (C) 1993-2014 Kx Systems
 
 The example data loader appends data to existing tables. This may cause potential issues with duplicates – partitioned/splayed tables cannot have keys, and any file loaded more than once will cause the data to be inserted multiple times. There are a few approaches to preventing duplicates:
 
-- Maintain a table of files which have already been loaded, and do a pre-load check to see if the file has already been loaded. If not already loaded, load it and update the table. The duplicate detection can be done on the file name and/or by generating a MD5 hash for the supplied file. This gives a basic level of protection
-- For each table, define a key and check for duplicates based on that key. This will probably greatly increase the loading time, and may be prone to error. (It is perfectly valid for some datasets to have duplicate rows.)
-- Depending on how the data is presented, it may be possible to do basic duplicate detection by counting the rows already in the database based on certain key fields and comparing with those present in the file. 
+-   Maintain a table of files which have already been loaded, and do a pre-load check to see if the file has already been loaded. If not already loaded, load it and update the table. The duplicate detection can be done on the file name and/or by generating a MD5 hash for the supplied file. This gives a basic level of protection
+-   For each table, define a key and check for duplicates based on that key. This will probably greatly increase the loading time, and may be prone to error. (It is perfectly valid for some datasets to have duplicate rows.)
+-   Depending on how the data is presented, it may be possible to do basic duplicate detection by counting the rows already in the database based on certain key fields and comparing with those present in the file. 
 
-An example approach to removing duplicates can be seen in the `builddailystats` function in loader.q.
+An example approach to removing duplicates can be seen in the `builddailystats` function in `loader.q`.
 
 
 ## Parallel loading
 
-The key consideration when doing parallel loading is to ensure that separate processes do not touch the same table structures at the same time. The enumeration operation [`.Q.en`](/basics/dotq/#qen-enumerate-varchar-cols) enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage. 
+The key consideration when doing parallel loading is to ensure that separate processes do not touch the same table structures at the same time. The enumeration operation [`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols) enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage. 
 
 In this example we can load different files in parallel as we know that the files do not overlap in terms of the partitioned tables that they will write to, provided that we set the `builddaily` flag in the `loadallfiles` function to false. This will ensure parallel loaders do not write to the daily table concurrently. (The daily table would then have to be built in a separate step). Loaders which may write data to the same tables (in the same partitions) at the same time cannot be run safely in parallel.
 
@@ -250,12 +299,18 @@ Aborting the load (e.g. Ctrl-c, `kill -9`, and errors such as `wsfull`) is gener
 ## In-memory enumeration
 
 With some loader scripts the enumeration step can become a bottleneck. One approach to this is to enumerate in-memory only, write the data to disk, then update the sym file on disk when done. The below function will enumerate in-memory rather than on-disk and can replace the call to `.Q.en.`
+
 ```q
 enm:{@[x;f where 11h=type each x f:key flip 0!x;`sym?]}  
 ```
+
 This may improve performance, but has the side effects that the loading is no longer parallelizable, and if the loader fails before it completes then all the newly loaded data must be deleted (as the enumerations will have been lost).
+
 
 ## Utilities
 
-A utility script <i class="fab fa-github"></i> [github.com/simongarland/csvguess](https://github.com/simongarland/csvguess) allows CSV loader scripts to be generated automatically. This is especially useful for very wide or long CSV files where it is time-consuming to specify the correct types for each column. This also includes an optimized on-disk sorter, and the ability to create a loader to load and enumerate quickly all the symbol columns, allowing parallel loading processes to have only to read the sym file.
+A utility script 
+<i class="fab fa-github"></i> 
+[simongarland/csvguess](https://github.com/simongarland/csvguess) 
+allows CSV loader scripts to be generated automatically. This is especially useful for very wide or long CSV files where it is time-consuming to specify the correct types for each column. This also includes an optimized on-disk sorter, and the ability to create a loader to load and enumerate quickly all the symbol columns, allowing parallel loading processes to have only to read the sym file.
 

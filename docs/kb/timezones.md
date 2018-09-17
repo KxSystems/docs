@@ -1,8 +1,15 @@
+---
+keywords: daylight, kdb+, q, savings, time
+---
+
 # Timezones (TZ) and Daylight Savings Time (DST)
 
-Q has two built-in functions `ltime` and `gtime` which can be used to get the UTC time or localtime according to the TZ shell environment setting.
+
+
+Q has two built-in functions `ltime` and `gtime` which can be used to get the UTC time or local time according to the TZ shell environment setting.
 
 One solution for more comprehensive timezone calculations is to have a table that contains the timezones, their UTC offsets, and the datetime of any DST changes. e.g.
+
 ```q
 timezoneID    gmtDateTime                   gmtOffset            dstOffset
 -------------------------------------------------------------------------------------
@@ -20,27 +27,35 @@ Europe/Zurich 2011.10.30D01:00:00.000000000 0D01:00:00.000000000 0D00:00:00.0000
 Europe/Zurich 2012.03.25D01:00:00.000000000 0D01:00:00.000000000 0D01:00:00.000000000
 Europe/Zurich 2012.10.28D01:00:00.000000000 0D01:00:00.000000000 0D00:00:00.000000000
 ```
+
 and then, using three functions
+
 ```q
 lg:{[tz;z] exec gmtDateTime+adjustment from aj[`timezoneID`gmtDateTime;([]timezoneID:tz;gmtDateTime:z);t]};
 gl:{[tz;z] exec localDateTime-adjustment from aj[`timezoneID`localDateTime;([]timezoneID:tz;localDateTime:z);t]};
 ttz:{[d;s;z]lg[d;gl[s;z]]}
 ```
+
 one can transform between local time and UTC and vice-versa, for any specified timezone.
+
 ```q
 q)lg[enlist `$"Europe/Zurich";enlist 2010.03.28D01:00:00.000]
 ,2010.03.28D03:00:00.000000000
 q)gl[enlist `$"Europe/Zurich";enlist 2010.03.28D03:00:00.000]
 ,2010.03.28D01:00:00.000000000
 ```
+
 and local times between timezones
+
 ```q
 q)show ttz[enlist `$"America/New_York";enlist `$"Europe/Zurich";enlist 2010.03.28D03:00:00.000]
 ,2010.03.27D21:00:00.000000000
 q)show ttz[enlist `$"America/New_York";enlist `$"Europe/Zurich";enlist .z.P]
 ,2010.01.20D07:00:08.088411000
 ```
+
 The timezone information can be generated using a brute-force approach in Java, and written to a CSV file using
+
 ```java
 #!java
 package dst;
@@ -88,7 +103,9 @@ public class Main {
     }
 }
 ```
-and import into q and save to a q binary file using
+
+and import into kdb+ and save to a binary file using
+
 ```q
 q)t:("SPJJ";enlist ",")0:`:tzinfo.csv;
 q)update gmtOffset:`timespan$1000000000*gmtOffset,dstOffset:`timespan$1000000000*dstOffset from `t;
@@ -98,16 +115,22 @@ q)`gmtDateTime xasc `t;
 q)update `g#timezoneID from `t;
 q)`:tzinfo set t; / save file for easy distribution
 ```
+
 and then, for use later, one needs only
+
 ```q
 q)t:get`:tzinfo;
 q)lg:{[tz;z] exec gmtDateTime+adjustment from aj[`timezoneID`gmtDateTime;([]timezoneID:tz;gmtDateTime:z);t]};
 q)gl:{[tz;z] exec localDateTime-adjustment from aj[`timezoneID`localDateTime;([]timezoneID:tz;localDateTime:z);t]};
 q)ttz:{[d;s;z]lg[d;gl[s;z]]}
 ```
+
 Note that the most recent version of Java should be used to ensure that the latest timezone database is being used.
 
-<i class="fab fa-github"></i> [KxSystems/cookbook/timezones/tzinfo.zip](https://github.com/KxSystems/cookbook/blob/master/timezones/tzinfo.zip) 
-– zipped tzinfo.csv 
+<i class="fab fa-github"></i> 
+[KxSystems/cookbook/timezones/tzinfo.zip](https://github.com/KxSystems/cookbook/blob/master/timezones/tzinfo.zip) 
+– zipped `tzinfo.csv` 
 
-Alternatively you can use combination of /usr/share/zoneinfo/zone.tab and the `zdump` Unix command. 
+Alternatively you can use combination of `/usr/share/zoneinfo/zone.tab` and the `zdump` Unix command. 
+
+

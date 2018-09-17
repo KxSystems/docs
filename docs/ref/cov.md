@@ -26,7 +26,8 @@ q)select price cov size by sym from trade
 `cov` is an aggregate function.
 
 
-# `scov` 
+
+## `scov` 
 
 _Sample covariance_
 

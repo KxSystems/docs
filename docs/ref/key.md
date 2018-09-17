@@ -107,19 +107,19 @@ q)key`:foo
 Where `x` is a symbol atom that is not a file or directory descriptor, nor the name of a dictionary or table, returns the original symbol if a variable of that name exists, otherwise an empty list. The name is interpreted relative to the current context if not fully qualified.
 
 ```q
-q)()~key`a.       /now you don't see it
+q)()~key`a        /now you don't see it
 1b
 q)a:1
-q)key`a.          /now you see it
+q)key`a           /now you see it
 `a
 q)\d .foo
-q.foo)key`a.      /now you don't
+q.foo)key`a       /now you don't
 q.foo)a:1 2!3 4
 q.foo)key`a       /this one has keys
 1 2
-q.foo)key`.foo.a. /fully qualified name
+q.foo)key`.foo.a  /fully qualified name
 1 2
-q.foo)key`..a.    /fully qualified name
+q.foo)key`..a     /fully qualified name
 `..a
 q.foo)\d .
 q)key`a
