@@ -308,6 +308,42 @@ nav:
       - Changes in 2.5: releases/ChangesIn2.5.md
       - Changes in 2.4: releases/ChangesIn2.4.md
       - Withdrawn: releases/withdrawn.md
+  - Interfaces:
+    - Index: interfaces/index.md
+    - Fusion for kdb+:
+      - Introduction: interfaces/fusion.md
+      - FFI: interfaces/ffi.md
+      - Java: interfaces/java-client-for-q.md
+      - Jupyter: interfaces/jupyterq.md
+      - Kafka: interfaces/kafka.md
+      - Python (embedPy): interfaces/embedpy.md
+      - Python (PyQ):
+        - Quick start: interfaces/pyq/index.md
+        - Installation: interfaces/pyq/install.md
+        - User guide: interfaces/pyq/user-guide.md
+        - Reference: interfaces/pyq/reference.md
+        - What’s new: interfaces/pyq/whats-new.md
+        - Version history: interfaces/pyq/history.md
+      - R: interfaces/with-r.md
+    - From: 
+      - C: interfaces/c-client-for-q.md
+      - C API reference: interfaces/capiref.md
+      - C#: interfaces/csharp-client-for-q.md
+      - Excel: interfaces/excel-client-for-q.md
+      - J: interfaces/j-client-for-q.md
+      - JDBC: interfaces/jdbc-client-for-kdb.md
+      - Matlab: interfaces/matlab-client-for-q.md
+      - ODBC: interfaces/q-server-for-odbc.md
+      - ODBC3: interfaces/q-server-for-odbc3.md 
+      - Perl: interfaces/perl-client-for-q.md 
+      - Scala: interfaces/scala-client-for-q.md 
+    - To: 
+      - Bloomberg: interfaces/q-client-for-bloomberg.md
+      - C/C++ functions: interfaces/using-c-functions.md
+      - GPUs: interfaces/gpus.md
+      - J: interfaces/q-client-for-j.md
+      - ODBC: interfaces/q-client-for-odbc.md
+  - GitHub: github.md
   - Knowledge Base:
     - Introduction: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
