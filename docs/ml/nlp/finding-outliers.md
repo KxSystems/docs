@@ -5,16 +5,19 @@ keywords: centroid, corpus, document, feature, kdb+, learning, machine, nlp, q, 
 
 # Finding outliers, and representative documents
 
+
+
+
 The _centroid_ of a collection of documents is the average of their feature vectors. As such, documents close to the centroid are representative, while those far away are the outliers. Given a collection of documents, finding outliers can be a quick way to find interesting documents, those that have been mis-clustered, or those not relevant to the collection.
-	
+    
 The emails of former Enron CEO Ken Lay contain 1124 emails with a petition. Nearly all of these use the default text, only changing the name, address and email address. To find those petitions which have been modified, sorting by distance from the centroid gives emails where the default text has been completely replaced, added to, or has had portions removed, with the emails most heavily modified appearing first.
 
 
-### `.nlp.compareDocToCentroid`
+### `.nlp.i.compareDocToCentroid`
 
 _Cosine similarity of a document and a centroid, subtracting the document from the centroid_
 
-Syntax: `.nlp.compareDocToCentroid[centroid;document]`
+Syntax: `.nlp.i.compareDocToCentroid[centroid;document]`
 
 Where 
 
@@ -22,12 +25,13 @@ Where
 -   `document` is a document in a cluster which is a dictionary 
 
 returns the cosine similarity of the two documents as a float.
+
 ```q
 q)petition:laycorpus where laycorpus[`subject] like "Demand Ken*"
 q)centroid:sum petition`keywords
-q).nlp.compareDocToCentroid[centroid]each petition`keywords
+q).nlp.i.compareDocToCentroid[centroid]each petition`keywords
 0.2374891 0.2308969 0.2383573 0.2797052 0.2817323 0.3103245 0.279753 0.2396462 0.3534717 0.369767
-q)outliers:petition iasc .nlp.compareDocToCentroid[centroid]each petition`keywords
+q)outliers:petition iasc .nlp.i.compareDocToCentroid[centroid]each petition`keywords
 ```
 
 
@@ -36,6 +40,7 @@ q)outliers:petition iasc .nlp.compareDocToCentroid[centroid]each petition`keywor
 Searching can be done using words, documents, or collections of documents as the query or dataset. To search for documents similar to a given document, you can represent all documents as feature vectors using TF-IDF, then compare the cosine similarity of the query document to those in the dataset and find the most similar documents, with the cosine similarity giving a relevance score. 
  
 The following example searches using `.nlp.compareDocs` for the document most similar to the below email where former Enron CEO Jeff Skilling is discussing finding a new fire chief.
+
 ```q
 q)queryemail:first jeffcorpus where jeffcorpus[`text] like "Fire Chief Committee*"  
 q)-1 queryemail`text;

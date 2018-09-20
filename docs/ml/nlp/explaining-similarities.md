@@ -5,6 +5,8 @@ keywords: centroid, document, feature, kdb+, learning, machine, nlp, q, similari
 
 # Explaining similarities
 
+
+
 For any pair of documents or centroids, the list of features can be sorted by how much they contribute to the similarity. 
 
 This example compares two of former Enron CEO Jeff Skilling’s emails, both of which have in common the subject of selecting Houston’s next fire chief.

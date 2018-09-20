@@ -7,6 +7,7 @@ keywords: file, kdb+, learning, machine, mbox, message, nlp, q
 
 
 
+
 The MBOX file is the most common format for storing email messages on a hard drive. All the messages for each mailbox are stored as a single, long, text file in a string of concatenated e-mail messages, starting with the _From_ header of the message. The NLP library allows the user to import these files and creates a kdb+ table. 
 
 
@@ -28,8 +29,9 @@ _An MBOX file as a table of parsed metadata_
 Syntax: `.nlp.loadEmails x`
 
 Where `x` is a string of the filepath, returns a table.
+
 ```q
-q)email:.nlp.email.getMbox["/home/kx/nlp/datasets/tdwg.mbox"]
+q)email:.nlp.loadEmails["/home/kx/nlp/datasets/tdwg.mbox"]
 q)cols email
 `sender`to`date`subject`contentType`payload`text
 ```

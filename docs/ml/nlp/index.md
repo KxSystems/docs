@@ -2,7 +2,7 @@
 hero: <i class="fa fa-share-alt"></i> Machine learning
 author: Fionnuala Carr
 title: Natural-language processing toolkit
-date: May 2018
+date: August 2018
 keywords: analysis, machine learning, ml, nlp, sentiment 
 ---
 
@@ -30,11 +30,9 @@ Lemmatization           | converts to a base form e.g. `ran` (verb) to `run` (ve
 
 
 <!-- 
-All function-name headers set as H3 (regardless of level of parent header)
+All function-name headers set as H4 (regardless of level of parent header)
 to ensure uniform typography for these headings.
  -->
-
-
 ### `.nlp.newParser`
 
 _Creates a parser_
@@ -106,7 +104,7 @@ Importing a novel from a plain text file, and finding all the proper nouns in th
 
 ```q
 fields:`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
-q)myparser:.nlp.parser.i.newParser[`en;fields] 
+q)myparser:.nlp.newParser[`en;fields] 
 q)corpus:myparser mobyDick 
 
 q).nlp.findPOSRuns[`pennPOS;`NNP`NNPS;corpus 0][;0]

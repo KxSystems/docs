@@ -88,13 +88,14 @@ Where
 returns a dictionary of the related tokens and their relevances.
 
 ```q
-q).nlp.findRelated[corpus;`captain]
+q).nlp.findRelatedTerms[corpus;`captain]
 peleg | 1.653247
 bildad| 1.326868
 ahab  | 1.232073
 ship  | 1.158671
 cabin | 0.9743517
 ```
+
 
 Phrases can be found by looking for runs of words with an above-average significance to the query term.
 

@@ -7,7 +7,6 @@ keywords: function, kdb+, learning, machine, nlp, q
 
 
 
-
 These are functions that extract elements of the text that can be applied to NLP algorithms, or that can help you with your analysis.
 
 

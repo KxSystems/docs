@@ -5,6 +5,8 @@ keywords: algorithm, bisecting, centroid, cluster, clustering, feature, k-mean, 
 
 # Clustering
 
+
+
 The NLP library contains a variety of clustering algorithms, with different parameters and performance characteristics. Some of these are very fast on large data sets, though they look only at the most salient features of each document, and will create many small clusters. Others, such as bisecting k-means, look at all features present in the document, and allow you to specify the number of clusters. Other parameters can include a threshold for the minimum similarity to consider, or how many iterations the algorithm should take to refine the clusters. Some clustering algorithms are randomized, and will produce different clusters every time they are run. This can be very useful, as a data set will have many possible, equally valid, clusterings. Some algorithms will put every document in a cluster, whereas others will increase cluster cohesion by omitting outliers.  
 
 Clusters can be summarized by their centroids, which are the sum of the feature vectors of all the documents they contain. 
@@ -19,7 +21,7 @@ MCL clustering, which takes document similarity as its only parameter other than
 
 _Cluster a subcorpus using graph clustering_
 
-Syntax: `.nlp.cluster.similarity[document;min;sample]`
+Syntax: `.nlp.cluster.MCL[document;min;sample]`
 
 Where 
 
@@ -106,11 +108,11 @@ q)count each clusters
 Bisecting K-means adopts the K-means algorithm and splits a cluster in two. This algorithm is more efficient when _k_ is large. For the K-means algorithm, the computation involves every data point of the data set and _k_ centroids. On the other hand, in each bisecting step of Bisecting K-means, only the data points of one cluster and two centroids are involved in the computation. Thus the computation time is reduced. Secondly, Bisecting K-means produce clusters of similar sizes, while K-means is known to produce clusters of widely differing sizes. 
  
 
-### `.nlp.cluster.bisectingKmeans` 
+### `.nlp.cluster.bisectingKMeans` 
 
 _The Bisecting K-means algorithm uses K-means repeatedly to split the most cohesive clusters into two clusters_
 
-Syntax: `.nlp.cluster.bisectingKmeans[docs;k;iters]`
+Syntax: `.nlp.cluster.bisectingKMeans[docs;k;iters]`
 
 Where 
 
@@ -141,11 +143,11 @@ At its simplest, Radix clustering just bins on most significant term. A more acc
 Hard Clustering means that each datapoint belongs to a cluster completely or not.
 
 
-### `.nlp.cluster.fastradix`
+### `.nlp.cluster.fastRadix`
 
 _Uses the Radix clustering algorithm and bins by the most significant term_
 
-Syntax: `.nlp.cluster.fastradix[docs;numOfClusters]`
+Syntax: `.nlp.cluster.fastRadix[docs;numOfClusters]`
 
 Where
 
@@ -157,7 +159,7 @@ returns a list of list of longs, the documents’ indexes, grouped into clusters
 Group Jeff Skilling’s emails into 60 clusters: 
 
 ```q
-q)count each .nlp.cluster.radix1[jeffcorpus;60]
+q)count each .nlp.cluster.fastRadix[jeffcorpus;60]
 15 14 10 9 8 13 9 8 8 6 5 6 6 8 5 6 5 4 4 4 4 4 4 8 4 5 4 4 5 4 4 4 3 3 3 3 3..
 ```
 
@@ -183,7 +185,7 @@ returns the documents’ indexes (as a list of longs), grouped into clusters.
 Group Jeff Skilling’s emails into 60 clusters:
 
 ```q
-q)count each .nlp.cluster.radix2[jeffcorpus;60]
+q)count each .nlp.cluster.radix[jeffcorpus;60]
 9 7 6 7 10 12 6 5 5 5 6 8 6 5 8 5 6 5 5 5 6 7 5 5 5 6 9 6 5 5 9 5 5 8 17 7 37.
 ```
 
@@ -219,11 +221,11 @@ q).nlp.cluster.MSE (-10?jeffcorpus)`keywords
 When you have a set of centroids and you would like to find out which centroid is closest to the documents, you can use this function.  
 
 
-### `.nlp.cluster.groupByCentroid`
+### `.nlp.cluster.i.groupByCentroids`
 
 _Documents matched to their nearest centroid_
 
-Syntax: `.nlp.cluster.matchDocswithCentroid[centroid;docs]`
+Syntax: `.nlp.cluster.i.groupByCentroids[centroid;docs]`
 
 Where
 
@@ -235,7 +237,7 @@ returns, as a list of lists of longs, document indexes where each list is a clus
 Matches the first centroid of the clusters with the rest of the corpus:
 
 ```q
-q).nlp.cluster.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
+q).nlp.cluster.i.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
 0 23 65 137
 1 5 14 45 81
 2 6 7 13 15 16 17 19 20 21 26 27 31 40 44 47 48 49 50 54 57 58 62 63 66 67 68..

@@ -5,6 +5,9 @@ keywords: document, kdb+, learning, machine, nlp, parsing, q, sentiment
 
 # Sentiment analysis
 
+
+
+
 Using a pre-built model of the degrees of positive and negative sentiment for English words and emoticons, as well as parsing to account for negation, adverbs and other modifiers, sentences can be scored for their negative, positive and neutral sentiment. The model included has been trained on social-media messages. 
 
 
