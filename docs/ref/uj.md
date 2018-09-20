@@ -2,11 +2,12 @@
 keywords: join, kdb+, q, uj, ujf, union join
 ---
 
+
+<div markdown="1" style="float:right; margin-left: 3em; max-width: 250px;">
+![Union join animation](../img/uj.gif) 
+</div>
+
 # `uj`, `ujf` 
-
-
-
-
 
 _Union join_
 

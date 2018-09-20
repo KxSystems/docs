@@ -274,10 +274,10 @@ q)\\
     </code></pre>
 
 <i class="far fa-hand-point-right"></i> 
+[Precision](precision.md), 
 [`\P`](syscmds.md#p-precision), 
 [`.Q.f`](../ref/dotq.md#qf-format), 
-[`.Q.fmt`](../ref/dotq.md#qfmt-format)  
-Knowledge Base: [Precision](../kb/precision.md)
+[`.Q.fmt`](../ref/dotq.md#qfmt-format) 
 
 <i class="far fa-hand-point-right"></i> 
 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://docs.sun.com/source/806-3568/ncg_goldberg.html)

@@ -343,6 +343,39 @@ nav:
       - GPUs: interfaces/gpus.md
       - J: interfaces/q-client-for-j.md
       - ODBC: interfaces/q-client-for-odbc.md
+  - Machine learning:
+    - Introduction: ml/index.md
+    - Set up: ml/setup.md
+    - Demonstration notebooks: ml/notebooks.md
+    - Natural language processing:
+      - Preparing text: ml/nlp/index.md
+      - Feature vectors: ml/nlp/feature-vectors.md
+      - Comparisons: ml/nlp/comparisons.md
+      - Clustering: ml/nlp/clustering.md
+      - Finding outliers: ml/nlp/finding-outliers.md
+      - Explaining similarities: ml/nlp/explaining-similarities.md
+      - Sentiment analysis: ml/nlp/sentiment-analysis.md
+      - Importing MBOX files: ml/nlp/mbox.md
+      - Parsing emails: ml/nlp/parsing-emails.md
+      - Useful functions: ml/nlp/useful-functions.md
+    - embedPy:
+      - Overview: ml/embedpy/index.md
+      - Running Python code: ml/embedpy/running.md
+      - EmbedPy objects: ml/embedpy/objects.md
+      - Function calls: ml/embedpy/functions.md
+      - Printing and help: ml/embedpy/printing.md
+      - Closures and generators: ml/embedpy/closures.md
+      - FAQ: ml/embedpy/faq.md
+      - Reference: ml/embedpy/reference.md
+    - JupyterQ:
+      - Overview: ml/jupyterq/index.md
+      - Running code: ml/jupyterq/running-code.md
+      - Completion and help: ml/jupyterq/completion-help.md
+      - Errors: ml/jupyterq/errors.md
+      - Load and save code: ml/jupyterq/load-save.md
+      - Python and inline display: ml/jupyterq/inline-display.md
+      - Command-line arguments: ml/jupyterq/command-line.md
+      - FAQ: ml/jupyterq/faq.md
   - GitHub: github.md
   - Knowledge Base:
     - Introduction: kb/index.md

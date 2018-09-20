@@ -4,7 +4,7 @@ keywords: api, c, interface, kdb+, library, q
 
 # ![C](img/c.png) C client for kdb+
 
-<i class="far fa-hand-point-right"></i> [C API reference](capiref)
+<i class="far fa-hand-point-right"></i> [C API reference](capiref.md)
 
 There are three cases in which to to use the C API for kdb+:
 

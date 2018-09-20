@@ -1,6 +1,6 @@
 ---
 keywords: apache, api, consumer, fusion, interface, kafka, learning, library, machine, producer, q
-hero: <i class="fa fa-superpowers"></i> Fusion for Kdb+
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 
 # ![Apache Kafka](img/kafka.png) Using Kafka with kdb+
