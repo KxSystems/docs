@@ -36,14 +36,12 @@ q)t:([1 2 4]y:7 8 9);`s#t;attr each (t;key t)
 ``s
 ```
 
-For 64-bit V3.0+, where `n` is the number of items and `d` is the number of distinct (unique) items, the byte overhead in memory is:
-
-example       |         | byte overhead
---------------|---------|--------------
-`` `s#2 2 3`` | sorted  | `0`
-`` `u#2 4 5`` | unique  | `32*d`
-`` `p#2 2 1`` | parted  | `(48*d)+8*n`
-`` `g#2 1 2`` | grouped | `(16*d)+8*n`
+example       | attribute
+--------------|---------
+`` `s#2 2 3`` | sorted  
+`` `u#2 4 5`` | unique  
+`` `p#2 2 1`` | parted  
+`` `g#2 1 2`` | grouped 
 
 
 Attribute `u` is for unique lists – where all items are distinct.

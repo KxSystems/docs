@@ -54,7 +54,7 @@ site_dir: 'site'
 site_author: 'Kx Systems'
 site_description: Resources for kdb+ programmers
 # config.site_name: 'code.kx.com'
-site_name: 'code.kx.com'
+site_name: 'code.kx.com V2'
 site_url: 'http://code.kx.com'
 remote_branch: 'master'
 # repo_name: 'GitHub'
@@ -343,6 +343,33 @@ nav:
       - GPUs: interfaces/gpus.md
       - J: interfaces/q-client-for-j.md
       - ODBC: interfaces/q-client-for-odbc.md
+  - Cloud: 
+    - Amazon EC2: 
+      - Introduction: cloud/aws/index.md
+      - In-house vs EC2: cloud/aws/in-house-vs-ec2.md
+      - Historical data layouts: cloud/aws/historical-data-layouts.md
+      - Data locality: cloud/aws/data-locality.md
+      - Getting data into EC2: cloud/aws/getting-data-in.md
+      - Security: cloud/aws/security.md
+      - Getting data out of EC2: cloud/aws/getting-data-out.md
+      - Storing HDB in S3: cloud/aws/storing-hdb-in-s3.md
+      - Disaster recovery: cloud/aws/disaster-recovery.md
+      - Licensing: cloud/aws/licensing.md
+      - Encryption: cloud/aws/encryption.md
+      - Benchmarking: cloud/aws/benchmarking.md
+      - Observations: cloud/aws/observations.md
+      - Network configuration: cloud/aws/network-configuration.md
+      - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
+      - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
+      - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
+      - D. MapR-FS: cloud/aws/app-d-mapr.md
+      - E. Goofys: cloud/aws/app-e-goofys.md
+      - F. S3FS: cloud/aws/app-f-s3fs.md
+      - G. S3QL: cloud/aws/app-g-s3ql.md
+      - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
+      - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
+      - J. Quobyte: cloud/aws/app-j-quobyte.md
+    - Google CPM: cloud/gcpm/index.md
   - Machine learning:
     - Introduction: ml/index.md
     - Set up: ml/setup.md
@@ -429,3 +456,18 @@ nav:
     - Write-only RDB: kb/w-q.md
     - WebSockets: kb/websockets.md
     - Windows Service: kb/windows-service.md
+  - Q for Mortals 3: http://code.kx.com/q4m3
+  - Support: support.md
+  - About: 
+    - Kx technology: about/kxtechnology.md
+    - Site news: about/site-news.md
+    - This site: about/thissite.md
+    - Style guide:
+      - Introduction: about/sg/index.md
+      - Characters: about/sg/characters.md
+      - Miscellaneous: about/sg/miscellaneous.md
+      - Style: about/sg/style.md
+      - Typography: about/sg/typography.md
+      - Terminology: about/sg/terminology.md
+    - License agreements:
+      - GCP: license/gcp.md

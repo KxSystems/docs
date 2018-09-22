@@ -924,7 +924,15 @@ Summary
 ```
 
 
+## Troubleshooting: loading a library
+
+In some cases [`2:`](../ref/dynamic-load.md) may fail because of missing dependencies. Sadly, OS error messages are not always helpful. 
+
+You can check dependencies using the methods described at [qt.io](https://wiki.qt.io/Show_library_dependencies).
+
+
 ## Example
 
-<i class="fab fa-github"></i> [KxSystems/cookbook/c/csv.c](https://github.com/KxSystems/cookbook/blob/master/c/csv.c) – CSV export example in C
+<i class="fab fa-github"></i> 
+[KxSystems/cookbook/c/csv.c](https://github.com/KxSystems/cookbook/blob/master/c/csv.c) – CSV export example in C
 

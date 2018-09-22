@@ -23,9 +23,9 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
     
     <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i> [embedPy Frequently-asked questions](/ml/embedpy/faq/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Data visualization](wp/data-visualization/) whitepaper</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [~~Data visualization~~](wp/data-visualization/) whitepaper</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Java API for kdb+](wp/java-api/) whitepaper</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [~~Java API for kdb+~~](wp/java-api/) whitepaper</p>
     
 </div>
 
@@ -59,7 +59,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 </div>
 <div>
     [<i class="fas fa-fw fa-life-ring fa-border fa-5x"></i><br/>
-    ~~Support~~](FIXME "Support contacts")
+    Support](support.md "Support contacts")
 </div>
 <div>
     [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
@@ -71,7 +71,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 </div>
 <div>
     [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
-    ~~Fusion<br/>interfaces~~](FIXME "Interfaces to other technologies")
+    Fusion<br/>interfaces](interfaces/ "Interfaces to other technologies")
 </div>
 </div>
 
