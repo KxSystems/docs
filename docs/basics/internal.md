@@ -13,12 +13,11 @@ The operator `!` with a negative integer as left-argument calls an internal func
 
 
 !!! warning 
+
     `-n!` bindings are subject to change. If a cover function is provided in the `.q` or `.Q` namespaces – use that instead!
 
 [![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)  
 _xkcd.com_
-
-==These should rarely – if ever – be used==, but in order to recognise them when seen in the wild, here is a partial list.
 
 
 ## `-1!x` (`hsym`)
@@ -294,7 +293,10 @@ Where `x` is a list of 5 items:
     + 1: q IPC
     + 2: `gzip`
     + 3: [snappy](http://google.github.io/snappy) (since V3.4)
--   _compression level_: an integer between 0 and 9 (valid only for `gzip`, use 0 for other algorithms)
+-   _compression level_: an integer 
+    +   for `gzip`: between 0 and 9 
+    +   for `lz4hc`: between 1 and 12 (int `x` taken as `12&x`) 
+    +   otherwise: 0
 
 returns the target file as a file symbol. 
 

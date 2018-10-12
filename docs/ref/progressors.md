@@ -16,9 +16,9 @@ There are two progressors, Scan and Over. They have the same syntax and perform 
 Over resembles _map reduce_ and _fold_ in some other programming languages.
 
 ```q
-q)+\2 3 4    / Scan
+q)(+\)2 3 4    / Scan
 2 5 9
-q)+/2 3 4    / Over
+q)(+/)2 3 4    / Over
 9
 ```
 
@@ -84,6 +84,7 @@ Are we there yet?
 ```q
 q)(neg\)1                                 / Converge
 1 -1
+q)l:-10?10
 q)(l\)iasc l
 4 0 8 5 7 2 6 3 1 9
 0 1 2 3 4 5 6 7 8 9
@@ -216,9 +217,9 @@ q)m                       / finite-state machine
 7 8 4 3 0
 4 5 8 0 4
 9 8 0 3 9
-q)cols
+q)c
 4 1 3 3 1 4
-q)7 m\cols
+q)7 m\c
 0 6 6 6 1 5
 ```
 

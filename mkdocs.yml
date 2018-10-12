@@ -374,6 +374,10 @@ nav:
     - Introduction: ml/index.md
     - Set up: ml/setup.md
     - Demonstration notebooks: ml/notebooks.md
+    - Toolkit:
+      - Overview: ml/toolkit/index.md
+      - Utilities: ml/toolkit/utils.md
+      - FRESH: ml/toolkit/fresh.md  
     - Natural language processing:
       - Preparing text: ml/nlp/index.md
       - Feature vectors: ml/nlp/feature-vectors.md
@@ -457,6 +461,42 @@ nav:
     - WebSockets: kb/websockets.md
     - Windows Service: kb/windows-service.md
   - Q for Mortals 3: http://code.kx.com/q4m3
+  - Remarks on Style:
+    - Introduction: style/index.md
+    - Maxims: style/maxims.md
+    - Names: style/names.md
+    - Default arguments: style/default-arguments.md
+    - Braces: style/braces.md
+    - Indentation: style/indentation.md
+    - Whitespace: style/whitespace.md
+    - Parentheses: style/parentheses.md
+    - Line length: style/line-length.md
+    - Internal assignment: style/internal-assignment.md
+    - Function length: style/function-length.md
+    - Function arguments: style/function-arguments.md
+    - Modularity: style/modularity.md
+    - Communication lines: style/communication-lines.md
+    - Comments: style/comments.md
+    - Conditionals: style/conditionals.md
+    - De-looping: style/de-looping.md
+    # - Window scripts and function: 
+    # - Reference error hell: 
+    - Engine design: style/engine-design.md
+    # - Window design:
+    # - Connections: 
+    # - Dependencies:
+    # - Event code
+    # - f and g:
+    # - Fast loads: fast-loads.md
+    - Compose out eaches: style/composition.md
+    - Application: style/application.md
+    - Defaults: style/defaults.md
+    - Projection: style/projection.md
+    - Which each?: style/which-each.md
+    - What’s in a script?: style/whats-in-a-script.md
+    - SAM – A simple application model: style/sam.md
+    - New wine for old bottles: style/new-wine.md
+    - Omitted pages: style/omitted-pages.md
   - Support: support.md
   - About: 
     - Kx technology: about/kxtechnology.md

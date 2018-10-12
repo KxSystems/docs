@@ -1,0 +1,31 @@
+/*
+	Title: Extra CSS for Q: Remarks on Style; in MkDocs
+	Author: stephen@kx.com
+ */
+
+
+ /* palette
+--------------------------------------------- */
+/*Kx blue on the banner*/
+ [data-md-color-primary=blue] .md-header
+ {
+ 	background: #0070cd; 
+ }
+
+/* type
+--------------------------------------------- */
+/* enlarge code within tables */
+ table tbody td code {
+ 	font-size: 14px !important;
+ }
+
+ /* code
+--------------------------------------------- */
+.md-typeset .admonition .codehilite {
+	background: transparent;
+	margin-top: 0;
+}
+.md-typeset a>code {
+	background-color: rgba(0,0,0,0.05);
+	padding: 0 .15em;
+}

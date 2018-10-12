@@ -101,9 +101,9 @@ The result is found in `d` at depth `count i` as follows.
 
 The list `i` is a list of successive indexes into `d`. `i[0]` must be in the domain of `d@`. It selects an item of `d`, which is then indexed by `i[1]`, and so on.
 
-```q
-( (d@i[0]) @ i[1] ) @ i[2] …
-```
+
+`( (d@i[0]) @ i[1] ) @ i[2]` …
+
 
 ```q
 q)d

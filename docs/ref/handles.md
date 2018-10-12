@@ -3,7 +3,7 @@ title: File and process handles
 keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, filehandle, filepath, filesize, filesystem, folder, handle, hclose, hcount, hdel, hopen, hostname, hsym, ip address, ipc, kdb+, named pipe, open, os, pipe, port, process, q, query, request, size, socket, ssl, symbol, timeout, tls
 ---
 
-
+![__![](http://www.metta-taichi.org.uk)__](http://www.metta-taichi.org.uk)
 # `hclose`, `hcount`, `hdel`, `hopen`, `hsym`
 
 _File and process handles_
@@ -83,9 +83,9 @@ Syntax: `hopen x`, `hopen[x]`
 
 Where `x` is one of 
 
--  a process handle
--  a 2-item list of a process handle and a timeout in milliseconds
--  a filename
+-   a process handle
+-   a 2-item list of a process handle and a timeout in milliseconds
+-   a filename: symbol or (since V3.6 2017.09.26) string
 
 opens a file or a process handle, and returns a positive integer handle.
 
@@ -139,14 +139,25 @@ Knowledge Base: [Client-server](../kb/client-server.md)
 
 ### File handles
 
-A file handle is used for writing to a file. The `hopen` argument is a symbol filename:
+A file handle is used for writing to a file. The `hopen` argument is a symbol or (since V3.6 2017.09.26) string filename:
 
 ```q
 q)hdat:hopen `:f.dat             / data file (bytes)
 q)htxt:hopen `:c:/q/test.txt     / text file
-</code></pre>
+```
+
+Passing char vectors instead of symbols avoids interning of such symbols.
+This is useful if embedding frequently-changing tokens in the username or password fields.
+
+For IPC compatibility, it serializes to `{hopen x}`. e.g.
+
+```q
+q)hopen each(`:mysymbol;":mycharvector";`:localhost:5000;":localhost:5000";(`:localhost:5000;1000);(":localhost:5000";1000))
+```
+
 To append to these files, the syntax is the same as for IPC:
-<pre><code class="language-q">
+
+```q
 q)r:hdat 0x2324
 q)r:htxt "some text\n"
 q)r:htxt ` sv("asdf";"qwer")
