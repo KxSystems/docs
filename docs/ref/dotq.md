@@ -783,7 +783,7 @@ Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message t
 
 Syntax: `.Q.hg x`
 
-Where `x` is a URL as a symbol atom or (since V3.6) a string, returns as a list of strings the result of an HTTP[S] GET query.
+Where `x` is a URL as a symbol atom or (since V3.6 2018.02.10) a string, returns as a list of strings the result of an HTTP[S] GET query.
 (Since V3.4)
 
 ```q
@@ -792,14 +792,15 @@ q)count a:.Q.hg`:http:///www.google.com
 212
 q)show a
 "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>4..
-q).Q.hg`$“:http://username:password@www.google.com” / cast to include credentials
+q).Q.hg ":http://username:password@www.google.com"
 ```
 
 If you have configured SSL/TLS, HTTPS can also be used.
 
 ```q
-q).Q.hg`:https://www.google.com
+q).Q.hg ":https://www.google.com"
 ```
+
 `.Q.hg` will utilize proxy settings from the environment, lower-case versions taking precedence:
 
 environment variable       | use
@@ -835,10 +836,21 @@ q).Q.addr`localhost
 
 ## `.Q.hp` (HTTP post)
 
-Syntax: ``.Q.hp[x;y]"payload"``
+Syntax: `.Q.hp[x;y;z]`
 
-Where `x` is a URL as a symbol atom, `y` is a MIME type as a string, and `z` is the POST query as a string, returns as a list of strings the result of an HTTP[S] POST query.
+Where 
+
+-   `x` is a URL as a symbol handle or string (since V3.6 2018.02.10)
+-   `y` is a MIME type as a string
+-   `z` is the POST query as a string
+
+returns as a list of strings the result of an HTTP[S] POST query.
 (Since V3.4)
+
+```q
+q).Q.hp["http://google.com";.h.ty`json]"my question"
+"<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewpo..
+```
 
 
 ## `.Q.id` (purge)
@@ -847,14 +859,14 @@ Syntax: `.Q.id x`
 
 Where `x` is
 
-- a **symbol atom**, returns `x` purged of non-alphanumeric characters
+- a **symbol atom**, returns `x` reformed to valid q names
 
     <pre><code class="language-q">
-    q).Q.id each (\`\$"a/b";\`in)
-    \`ab\`in
+    q).Q.id each \`\$("ab";"a/b";"two words";"2drifters";"2+2")
+    \`ab\`ab\`twowords\`a2drifters\`a22
     </code></pre>
 
-- a **table**, returns `x` with columns renamed by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in .q namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.) 
+- a **table**, returns `x` with columns renamed by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.) 
 
     <pre><code class="language-q">
     q).Q.id flip (5#.Q.res)!(5#())
