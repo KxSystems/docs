@@ -193,6 +193,10 @@ q)h"til 5"
 ': Bad file descriptor
 ```
 
+If the handle refers to 
+
+-   an **IPC socket**, any pending data on that handle is not sent prior to closing
+-   a **websocket handle**, `hclose` blocks until any pending data on the handle has been sent
 
 <i class="far fa-hand-point-right"></i>
 Basics: [File system](../basics/files.md), 
