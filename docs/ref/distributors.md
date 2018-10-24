@@ -132,6 +132,19 @@ q)raze[a] ~ b
 1b
 ```
 
+!!! warning "Atoms and lists in the domains of these extenders"
+
+    The domains of `\:` and `/:` extend beyond binary maps to include certain atoms and lists. 
+
+    <pre><code class="language-q">
+    q)(", "/:)3 5#"quickbrownfoxes"
+    "quick, brown, foxes"
+    q)(0x0\:)3.14156
+    0x400921ea35935fc4
+    </code></pre>
+
+    This is [exposed infrastructure](../basics/exposed-infrastructure.md): use the keywords [`vs`](vs.md) and [`sv`](sv.md) instead.
+
 
 ## Each Parallel
 

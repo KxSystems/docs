@@ -52,7 +52,7 @@ This site is the primary resource for kdb+ developers.
 <i class="fas fa-book"></i> [_Q for Mortals 3_](http://code.kx.com/q4m3/)
 : An online edition of the classic textbook, now in its third edition. 
 
-<i class="far fa-map"></i> [Technical Whitepapers](whitepapers/index.md)
+<i class="far fa-map"></i> [Technical Whitepapers](wp/index.md)
 : An occasional series of whitepapers on developing systems with kdb+.
 
 <i class="fas fa-glasses"></i> [Knowledge Base](kb/index.md)
