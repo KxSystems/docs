@@ -2,7 +2,7 @@
 keywords: compact, hdb, kdb+, q
 ---
 
-# Compacting HDB sym
+# Compacting the HDB sym file
 
 
 Under some scenarios, the sym enum file in a HDB can become bloated – this is the sym file sitting in the root of the HDB folder. This is due to symbols no longer being used as earlier parts of a HDB may have been archived.
@@ -48,6 +48,14 @@ dates:files where files like "????.??.??";
 !!! tip
 
     Remember to `rm` the zym file at the end of processing.
+
+
+## Back up the sym file
+
+The sym file is found in the root of your HDB.
+It is the key to the default enums. 
+
+!!! tip "Regularly back up the sym file _outside_ the HDB."
 
 
 ## Multi-threaded sym rewrite code
