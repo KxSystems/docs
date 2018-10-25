@@ -36,7 +36,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </table>
 
 <i class="far fa-hand-point-right"></i> 
-[`.Q.id`](dotq.md#qid-purge) (purge), 
+[`.Q.id`](dotq.md#qid-sanitize) (sanitize), 
 [`.Q.res`](dotq.md#qres-keywords) (reserved words)
 
 

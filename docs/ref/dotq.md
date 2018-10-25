@@ -27,7 +27,7 @@ General                                      Database
  .Q.ft       apply simple                     .Q.qt      is table
  .Q.fu       apply unique                     .Q.qp      is partitioned
  .Q.gc       garbage collect                      
- .Q.id       purge                           Partitioned database state
+ .Q.id       sanitize                         Partitioned database state
  .Q.s        plain text                       .Q.cn      count partitioned table
  .Q.V        table to dict                    .Q.bv      build vp
  .Q.v        value                            .Q.ind     partitioned index
@@ -854,20 +854,20 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 ```
 
 
-## `.Q.id` (purge)
+## `.Q.id` (sanitize)
 
 Syntax: `.Q.id x`
 
 Where `x` is
 
-- a **symbol atom**, returns `x` reformed to valid q names
+- a **symbol atom**, returns `x` with items sanitized to valid q names
 
     <pre><code class="language-q">
     q).Q.id each \`\$("ab";"a/b";"two words";"2drifters";"2+2")
     \`ab\`ab\`twowords\`a2drifters\`a22
     </code></pre>
 
-- a **table**, returns `x` with columns renamed by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.) 
+- a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.) 
 
     <pre><code class="language-q">
     q).Q.id flip (5#.Q.res)!(5#())
@@ -1214,7 +1214,7 @@ q).Q.res,key`.q
 ```
 
 <i class="fa fa-hand-o-right"></i> 
-[`.Q.id`](#qid-purge)
+[`.Q.id`](#qid-sanitize)
 
 
 ## `.Q.s` (plain text)
