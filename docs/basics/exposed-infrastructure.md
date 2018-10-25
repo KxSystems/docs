@@ -39,26 +39,26 @@ q)count "zero"       / supported
 Instead, use the corresponding q keywords.
 
 ```txt
-&:   where
-@:   type
-!:   til
-!:   key
-^:   null
-::   ::
-,:   enlist
+!:   key/til
+#:   count
 $:   string
+%:   reciprocal
+&:   where
+*:   first
++:   flip
+,:   enlist
+-:   neg
+.:   get
+::   ::
+<:   iasc
 =:   group
 >:   idesc
-#:   count
-<:   iasc
--:   neg
-%:   reciprocal
-+:   flip
 ?:   distinct
-*:   first
+@:   type
+^:   null
+_:   floor
 |:   reverse
 ~:   not
-_:   floor
 ```
 
 

@@ -12,18 +12,5 @@ function  | semantics
 `sv`      | [decode](../ref/sv.md) to integer
 `vs`      | [encode](../ref/vs.md) 
 
-<!-- 
-## `\:` (int to byte)
 
-Syntax: `0x0\:x`
-
-Where `x` is an int.
-```q
-q)0x0\:1234605616436508552
-0x1122334455667788
-```
-
-==FIXME Signals `'\:`==
-
- -->
-
+<!-- \: is ‘exposed infrastructure’ -->

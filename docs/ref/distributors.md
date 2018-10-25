@@ -137,7 +137,7 @@ q)raze[a] ~ b
     The domains of `\:` and `/:` extend beyond binary maps to include certain atoms and lists. 
 
     <pre><code class="language-q">
-    q)(", "/:)3 5#"quickbrownfoxes"
+    q)(", "/:)("quick";"brown";"foxes") 
     "quick, brown, foxes"
     q)(0x0\:)3.14156
     0x400921ea35935fc4
