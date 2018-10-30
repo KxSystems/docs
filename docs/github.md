@@ -507,6 +507,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/robknows/JsonRestApi">JsonRestApi</a> ==new==</td>
+<td>Server–as-a-function interface <span class="author"><a href="https://github.com/robknows?tab=repositories">
+						(Rob Moore)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/kimtang/kdb-euler">kdb-euler</a></td>
 <td>Solutions to [Euler’s problems](https://projecteuler.net/). <span class="author"><a href="https://github.com/kimtang?tab=repositories">
 						(Kim Tang)
@@ -542,7 +549,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/psaris/q4q">q4q</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/psaris/q4q">q4q</a></td>
 <td>Source code for “Q for Quants”. <span class="author"><a href="https://github.com/psaris?tab=repositories">
 						(Nick Psaris)
 					</a></span>
