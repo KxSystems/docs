@@ -14,7 +14,7 @@ extra_javascript:
   - 'https://code.jquery.com/jquery-3.1.1.min.js'
   # - '//code.kx.com/scripts/fdtracker.js'
   - 'https://tracker.mrpfd.com/tracker.js'
-  - '//code.kx.com/scripts/googleanalytics.js'
+  # - '//code.kx.com/scripts/googleanalytics.js'
   # - 'http://code.kx.com/scripts/theme.js'
   # - 'https://use.fontawesome.com/3dbf29ed12.js'
   - 'https://use.fontawesome.com/releases/v5.2.0/js/all.js'
@@ -27,6 +27,9 @@ extra_javascript:
   # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
   - '//code.kx.com/scripts/prism.js'
   # - 'scripts/prism.js'
+google_analytics:
+  - 'UA-3462586-1'
+  - 'auto'
 markdown_extensions:
   - admonition
   # - codehilite(guess_lang=false)
