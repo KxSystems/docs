@@ -28,6 +28,12 @@
  [data-md-color-primary=blue] .md-typeset a {
  	color: #005499; /* hsl(207, 100%, 30%) */
  }
+
+/* suppress nav footer
+--------------------------------------------- */
+.md-footer-nav {
+	display: none;
+}
  
 /* type
 --------------------------------------------- */
