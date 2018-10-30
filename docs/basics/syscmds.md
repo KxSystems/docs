@@ -385,20 +385,31 @@ q)system"s 0N" / show max slave threads
 
 Syntax: `\S [n]`
 
-Sets the random number seed. The parameter must be a non-zero integer. Note that `\S` is not updated as the random-number generator is used.
+Where `n` is
+
+-   omitted: display the last value to which the random seed was initialized
+-   `0N`: display the current value of the random seed (since V3.6)
+-   non-zero integer: re-initialize the seed to `n`
+
+Note that `\S` displays the last value to which the seed was initialized: it is not updated as the random-number generator (rng) is used.
 
 ```q
-q)\S              / default
--314159
-q)5?10
-8 1 9 5 4
-q)5?10
-6 6 1 8 5
-q)\S -314159      / restore default seed
-q)5?10            / same random numbers generated
-8 1 9 5 4
-q)\S              / seed is not updated
--314159
+q)\S                       / default
+-314159i         
+q)5?10         
+8 1 9 5 4         
+q)5?10         
+6 6 1 8 5         
+q)\S -314159               / restore default seed
+q)5?10                     / same random numbers generated
+8 1 9 5 4         
+q)\S                       / seed is not updated
+-314159         
+q)x:system "S 0N"          / current value of seed
+q)r:10?10
+q)system "S ",string x     / re-initialize seed
+q)r~10?10
+1b
 ```
 
 !!! note "Since V3.1 2013.08.19"
