@@ -1,4 +1,4 @@
-copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Kx® and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
+copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx® and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
 # dev_addr: '159.65.88.218:8000'
 dev_addr: '0.0.0.0:8000'
 docs_dir: 'docs'
@@ -52,6 +52,10 @@ markdown_extensions:
   - toc(permalink=true)
 plugins: 
   - search
+  # - markdownextradata
+remote_branch: 'master'
+# repo_name: 'GitHub'
+# repo_url: 'https://github.com/kxsystems/docs'
 site_dir: 'site'
 # site_dir: '/var/www/html'
 site_author: 'Kx Systems'
@@ -59,12 +63,10 @@ site_description: Resources for kdb+ programmers
 # config.site_name: 'code.kx.com'
 site_name: 'code.kx.com V2'
 site_url: 'http://code.kx.com'
-remote_branch: 'master'
-# repo_name: 'GitHub'
-# repo_url: 'https://github.com/kxsystems/docs'
 use_directory_urls: true
 theme: 
-  favicon: './img/favicon.ico'
+  custom_dir: custom_theme/
+  favicon: ./img/favicon.ico
   feature:
     tabs: true
   name: 'material'
@@ -72,6 +74,8 @@ theme:
   palette: 
     primary: 'blue'
     accent: 'deep orange'
+  toc:
+    title: "On this page"
 nav:
   - Home: index.md
   - Learn: 
@@ -123,22 +127,17 @@ nav:
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
-      - Command line: basics/cmdline.md
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
-      - Datatypes: basics/datatypes.md
       - Debugging: basics/debug.md
       - Dictionaries & tables: basics/dictsandtables.md
       # - Elements: basics/elements.md
       - Enumerations: basics/enumerations.md
       - Environment: basics/environment.md
-      - Errors: basics/errors.md
       - Exposed infrastructure: basics/exposed-infrastructure.md
-      - File system: basics/files.md
       - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
-      - Glossary: basics/glossary.md
       - Internal functions: basics/internal.md
       - Iteration: basics/iteration.md
       - IPC protocol: basics/ipc.md
@@ -155,61 +154,18 @@ nav:
       - Selection: basics/selection.md
       - Sorting: basics/sort.md
       - Strings: basics/strings.md
-      - System commands: basics/syscmds.md
       - Syntax: basics/syntax.md
-    - Operators:
-      - Overloaded glyphs: ref/overloads.md
-      - Add: ref/add.md
-      - Amend: ref/amend.md
-      # - Amend At: ref/amend-at.md
-      # - Apply, Index: ref/apply-trap.md
-      # - Index: ref/index-dot.md
-      # - Index At: ref/index-at.md
-      - Apply, Index, Trap: ref/apply.md
-      - Cast: ref/cast.md
-      - Coalesce: ref/coalesce.md
-      - Cond: ref/cond.md
-      - Cut: ref/cut.md
-      - Deal: ref/roll-deal.md
-      - Delete: ref/delete.md
-      - Display: ref/display.md 
-      - Dict: ref/dict.md
-      - Divide: ref/divide.md
-      - Display: ref/display.md
-      - Dynamic Load: ref/dynamic-load.md
-      - Drop: ref/drop.md
-      - Enkey, Unkey: ref/enkey.md
-      - Enumerate: ref/enumerate.md
-      - Enumeration: ref/enumeration.md
-      - Enum-extend: ref/enum-extend.md
-      - Equal: ref/equal.md
-      - Exec: ref/exec.md
-      - File Binary: ref/file-binary.md
-      - File Text: ref/file-text.md
-      - Fill: ref/fill.md
-      - Find: ref/find.md
-      - Flip Splayed: ref/flip-splayed.md
-      - Greater: ref/greater.md
-      - Greater Than: ref/greater-than.md
-      - Identity, Null: ref/identity.md
-      - Join: ref/join.md
-      - Less Than: ref/less-than.md
-      - Lesser: ref/lesser.md
-      - Match: ref/match.md
-      - Matrix Multiply: ref/mmu.md
-      - Multiply: ref/multiply.md
-      - Not Equal: ref/not-equal.md
-      - Pad: ref/pad.md
-      - Roll: ref/roll-deal.md
-      - Select: ref/select.md
-      - Set Attribute: ref/set-attribute.md
-      - Simple Exec: ref/simple-exec.md
-      - Signal: ref/signal.md
-      - Subtract: ref/subtract.md
-      - Take: ref/take.md
-      - Tok: ref/tok.md
-      - Update: ref/update.md
-      - Vector Conditional: ref/vector-conditional.md
+    - Command line: basics/cmdline.md
+    - Datatypes: basics/datatypes.md
+    - Errors: basics/errors.md
+    - Extenders:
+      - Overview: ref/extenders.md
+      - Case: ref/case.md
+      - Compose: ref/compose.md
+      - Distributors: ref/distributors.md
+      - Progressors: ref/progressors.md
+    - File system: basics/files.md
+    - Glossary: basics/glossary.md
     - Keywords:
       - abs: ref/abs.md
       - aj, aj0, ajf, ajf0: ref/aj.md
@@ -325,20 +281,63 @@ nav:
       - xbar: ref/xbar.md
       - xgroup: ref/xgroup.md
       - xrank: ref/xrank.md
-    - Extenders:
-      - Overview: ref/extenders.md
-      - Case: ref/case.md
-      - Compose: ref/compose.md
-      - Distributors: ref/distributors.md
-      - Progressors: ref/progressors.md
+    - Operators:
+      - Overloaded glyphs: ref/overloads.md
+      - Add: ref/add.md
+      - Amend: ref/amend.md
+      # - Amend At: ref/amend-at.md
+      # - Apply, Index: ref/apply-trap.md
+      # - Index: ref/index-dot.md
+      # - Index At: ref/index-at.md
+      - Apply, Index, Trap: ref/apply.md
+      - Cast: ref/cast.md
+      - Coalesce: ref/coalesce.md
+      - Cond: ref/cond.md
+      - Cut: ref/cut.md
+      - Deal, Roll, Permute: ref/roll-deal.md
+      - Delete: ref/delete.md
+      - Display: ref/display.md 
+      - Dict: ref/dict.md
+      - Divide: ref/divide.md
+      - Display: ref/display.md
+      - Dynamic Load: ref/dynamic-load.md
+      - Drop: ref/drop.md
+      - Enkey, Unkey: ref/enkey.md
+      - Enumerate: ref/enumerate.md
+      - Enumeration: ref/enumeration.md
+      - Enum-extend: ref/enum-extend.md
+      - Equal: ref/equal.md
+      - Exec: ref/exec.md
+      - File Binary: ref/file-binary.md
+      - File Text: ref/file-text.md
+      - Fill: ref/fill.md
+      - Find: ref/find.md
+      - Flip Splayed: ref/flip-splayed.md
+      - Greater: ref/greater.md
+      - Greater Than: ref/greater-than.md
+      - Identity, Null: ref/identity.md
+      - Join: ref/join.md
+      - Less Than: ref/less-than.md
+      - Lesser: ref/lesser.md
+      - Match: ref/match.md
+      - Matrix Multiply: ref/mmu.md
+      - Multiply: ref/multiply.md
+      - Not Equal: ref/not-equal.md
+      - Pad: ref/pad.md
+      - Select: ref/select.md
+      - Set Attribute: ref/set-attribute.md
+      - Simple Exec: ref/simple-exec.md
+      - Signal: ref/signal.md
+      - Subtract: ref/subtract.md
+      - Take: ref/take.md
+      - Tok: ref/tok.md
+      - Update: ref/update.md
+      - Vector Conditional: ref/vector-conditional.md
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
-    # - Terminology: terminology.md
-    # - Syntax (k): basics/syntax_k.md
-    # - Syntax (q): syntax.md
     - Release notes:
       - Changes in 3.6: releases/ChangesIn3.6.md
       - Changes in 3.5: releases/ChangesIn3.5.md
@@ -353,6 +352,7 @@ nav:
       - Changes in 2.5: releases/ChangesIn2.5.md
       - Changes in 2.4: releases/ChangesIn2.4.md
       - Withdrawn: releases/withdrawn.md
+    - System commands: basics/syscmds.md
   - Interfaces:
     - Index: interfaces/index.md
     - Fusion for kdb+:
@@ -434,15 +434,15 @@ nav:
       - Importing MBOX files: ml/nlp/mbox.md
       - Parsing emails: ml/nlp/parsing-emails.md
       - Useful functions: ml/nlp/useful-functions.md
-    - embedPy:
-      - Overview: ml/embedpy/index.md
-      - Running Python code: ml/embedpy/running.md
-      - EmbedPy objects: ml/embedpy/objects.md
-      - Function calls: ml/embedpy/functions.md
-      - Printing and help: ml/embedpy/printing.md
-      - Closures and generators: ml/embedpy/closures.md
-      - FAQ: ml/embedpy/faq.md
-      - Reference: ml/embedpy/reference.md
+    - embedPy: ml/embedpy.md
+      # - Overview: ml/embedpy/index.md
+      # - Running Python code: ml/embedpy/running.md
+      # - EmbedPy objects: ml/embedpy/objects.md
+      # - Function calls: ml/embedpy/functions.md
+      # - Printing and help: ml/embedpy/printing.md
+      # - Closures and generators: ml/embedpy/closures.md
+      # - FAQ: ml/embedpy/faq.md
+      # - Reference: ml/embedpy/reference.md
     - JupyterQ:
       - Overview: ml/jupyterq/index.md
       - Running code: ml/jupyterq/running-code.md

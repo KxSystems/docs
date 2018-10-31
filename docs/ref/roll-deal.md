@@ -1,8 +1,8 @@
 ---
-keywords: deal, kdb+, q, rand, random, seed
+keywords: deal, kdb+, permute, q, rand, random, seed
 ---
 
-# `?` Roll and Deal
+# `?` Roll, Deal, Permute
 
 
 
@@ -114,9 +114,34 @@ q)-4?`Arthur`Steve`Dennis
 ```
 
 
+## Permute
+
+Syntax: `0N?x`
+
+Where `x` is
+
+-   a **non-negative int atom**, returns the items of `til x` in random order
+-   a **list**, returns the items of `x` in random order
+
+(Since V3.3.)
+
+```q
+q)0N?10                         / permute til 10
+8 2 4 1 6 0 5 3 7 9
+q)0N?5 4 2                      / permute items
+4 5 2
+q)0N?"abc"                      / permute items
+"bac"
+q)0N?("the";1 2 4;`ibm`goog)    / permute items
+`ibm`goog
+1 2 4
+"the"
+```
+
+
 ## Seed
 
-Deal, Roll and `rand` use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and change the value of the seed by using system command [`\S`](../basics/syscmds.md#s-random-seed).)
+Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and set the value of the seed with system command [`\S`](../basics/syscmds.md#s-random-seed).)
 
 !!! warning "To use GUIDs as identifiers, ensure `x` is negative." 
 
