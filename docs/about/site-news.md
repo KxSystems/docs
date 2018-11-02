@@ -58,7 +58,7 @@ New whitepaper [Socket sharding with kdb+ on Linux](../wp/socket-sharding.pdf)
 
 <small>2018.01.24</small>
 
-New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy.md) library.
+New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy/) library.
 
 
 ## <i class="fas fa-search"></i> Custom search engine

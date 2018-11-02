@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix E - Goofys
 
 
@@ -29,3 +27,8 @@ Operational latency is high. The natural streaming throughput seems to hover aro
 The compressed tests show that the bottleneck is per-thread read speeds, as the data when decompressed rates improve a lot over the uncompressed model.
 
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[D. MapR-FS](app-d-mapr.md)</div><div class="kx-nav-next">[F. S3FS](app-f-s3fs.md)</div>
+</div>

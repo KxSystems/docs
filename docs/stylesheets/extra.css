@@ -34,7 +34,31 @@
 .md-footer-nav {
 	display: none;
 }
- 
+.kx-nav {
+	border-top: .5px solid #ccc;
+	color: #777;
+	padding-top: .2em;
+	margin-top: 2em;
+}
+.kx-nav-prev, 
+.kx-nav-next {
+	width: auto;
+}
+.kx-nav-prev {
+	float: left;
+}
+.kx-nav-prev::before {
+	content: "previous ";
+}
+.kx-nav-next {
+	float: right;
+}
+.kx-nav-next::before {
+	content: "next ";
+}
+.kx-nav a {
+	font-size: 1.4em;
+}
 /* type
 --------------------------------------------- */
 /* Override "Roboto Mono" from theme */

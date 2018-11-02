@@ -2,7 +2,7 @@
 title: Index of whitepapers
 ---
 
-# <i class="far fa-map"></i> Technical whitepapers
+# <i class="far fa-map"></i> Technical white papers
 
 
 ## Programming in q

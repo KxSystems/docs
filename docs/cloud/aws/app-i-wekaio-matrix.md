@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix I – WekaIO Matrix
 
 
@@ -73,3 +71,8 @@ The tool has options for both standard and expert users.
 The tool also provides users with performance and cost information based on the options that have been chosen.
 
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[H. ObjectiveFS](app-h-objectivefs.md)</div><div class="kx-nav-next">[J. Quobyte](app-j-quobyte.md)</div>
+</div>

@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix B – EFS (NFS)
 
 
@@ -55,3 +53,8 @@ function       | latency (mSec) | function   | latency (mSec)
 
 Note the low rate of streaming read performance, combined with very high metadata latencies (1000× that of EBS). The increase in transfer rate for many-threaded compressed data indicates that there is a capped bandwidth number having some influence on the results as well as the operational latency. Consider constraining any use of EFS to temporary store and not for runtime data access.
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[A. Elastic Block Store (EBS)](app-a-ebs.md)</div><div class="kx-nav-next">[C. Amazon Storage Gateway](app-c-asg.md)</div>
+</div>

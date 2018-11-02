@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix D – MapR-FS
 
 
@@ -49,3 +47,8 @@ By way of contrast however, this solution scales very well horizontally and vert
 
 We plan to look at the POSIX MapR client in the future.
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[C. Amazon Storage Gateway](app-c-asg.md)</div><div class="kx-nav-next">[E. Goofys](app-e-goofys.md)</div>
+</div>

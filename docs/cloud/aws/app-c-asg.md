@@ -1,6 +1,6 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix C – Amazon Storage Gateway (File mode)
+
+
 
 Amazon Storage Gateway is a pre-prepared AMI/instance that can be
 provisioned on-demand. It allows you to present an NFS layer to the
@@ -31,3 +31,8 @@ function       | latency (mSec) | function   | latency (mSec)
 The throughput appears to run at about 50% of the line rates available, even when run at scale. 
 The AWS gateway exhibits significantly high operational latency. 
 This manifests as very long wait times when performing an interactive `ls -l` command from the root of the file system, while the file system is under load, sometimes taking several minutes to respond to the directory walk.
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[B. EFS (NFS)](app-b-efs-nfs.md)</div><div class="kx-nav-next">[D. MapR-FS](app-d-mapr.md)</div>
+</div>

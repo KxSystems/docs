@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix H - ObjectiveFS
 
 
@@ -79,3 +77,8 @@ Therefore attention should be paid to the cases where a kdb+ writer (e.g. RDB or
 Reducing the size of the memory cache for ObjectiveFS and use of disk cache would mitigate this.
 
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[G. S3QL](app-g-s3ql.md)</div><div class="kx-nav-next">[I. WekaIO Matrix](app-i-wekaio-matrix.md)</div>
+</div>

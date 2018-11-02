@@ -1,7 +1,6 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
-
 # Appendix G - S3QL
+
+
 
 The code is perhaps the least-referenced open-source S3 gateway package, and from a vanilla RHEL 7.3 build we had to add a significant number of packages to get to the utility compiled and installed. 
 S3QL is written in Python. 
@@ -20,3 +19,8 @@ Although the process exceptions are probably due to a build error, and plainly t
 This may play as a factor in the decision process for selecting solutions.
 
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[F. S3FS](app-f-s3fs.md)</div><div class="kx-nav-next">[H. ObjectiveFS](app-h-objectivefs.md)</div>
+</div>

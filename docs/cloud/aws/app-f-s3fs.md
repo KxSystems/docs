@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix F - S3FS
 
 
@@ -24,3 +22,8 @@ function       | latency (mSec) | function   | latency (mSec)
 <small>_Metadata operational latencies - mSecs (headlines)_</small>
 
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[E. Goofys](app-e-goofys.md)</div><div class="kx-nav-next">[G. S3QL](app-g-s3ql.md)</div>
+</div>

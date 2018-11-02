@@ -1,5 +1,3 @@
-hero: <i class="fa fa-cloud"></i> Cloud
-
 # Appendix A - Elastic Block Store (EBS)
 
 
@@ -180,3 +178,8 @@ EBS for kdb+, take the following into consideration:
 
 
 
+
+
+<div class="kx-nav" markdown="1">
+<div class="kx-nav-prev">[Migrating a kdb+ HDB to Amazon EC2](index.md)</div><div class="kx-nav-next">[B. EFS (NFS)](app-b-efs-nfs.md)</div>
+</div>

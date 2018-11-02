@@ -49,8 +49,8 @@ $:   string
 ,:   enlist
 -:   neg
 .:   get
-0:   read0
-1:   read1
+0::  read0
+1::  read1
 <:   iasc
 =:   group
 >:   idesc
