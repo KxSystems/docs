@@ -629,6 +629,12 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap">[ml.q](https://github.com/jlas/ml.q) ==new==</td>
+<td>Machine-learning examples for q <span class="author"><a href="https://github.com/jlas?tab=repositories">
+						(Juan Lasheras)
+					</a></span>
+</td>
+<tr>
 <td class="nowrap">[mlq](https://github.com/zakoud/mlq)</td>
 <td>Machine Learning for q <span class="author"><a href="https://github.com/zakoud?tab=repositories">
 						(Zak Oudrhiri)
@@ -671,7 +677,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap">[tf](https://github.com/quintanar401/tf) ==new==</td>
+<td class="nowrap">[tf](https://github.com/quintanar401/tf)</td>
 <td>Tensorflow q wrapper <span class="author"><a href="https://github.com/quintanar401?tab=repositories">
 						(Andrey Kozyrev)
 					</a></span>
