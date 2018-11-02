@@ -1,0 +1,40 @@
+#!/bin/sh
+function usageexit(){
+ printf "Run this docker image with\n" >&2
+ printf "\tdocker run -it --rm -v \$(pwd):/docs -p 9000:9000 -e PORT=9000 kxsys/docs-$SITEVERSION\n\n"  >&2
+ exit
+ }
+
+function serve(){
+  if [ -f /docs/mkdocs.yml ]
+  then
+    printf '###############################################################\n'
+    printf 'point your browser at http://127.0.0.1:%s\n' $PORT
+    printf 'you may need to wait a few seconds for mkdocs to initialise\n'
+    printf '###############################################################\n\n'
+    cd /docs && mkdocs serve -a 0.0.0.0:$PORT --dirtyreload
+   else
+     usageexit
+   fi
+}
+
+function build(){
+ if [ -f /docs/mkdocs.yml ]
+ then
+   printf '#########################\n'
+   printf 'Building static HTML site\n'
+   printf '#########################\n\n'
+   user_id=$(stat -c '%u:%g' /docs/mkdocs.yml)
+   cd /docs && mkdocs build --clean -d /docs/site
+   chown -R $user_id /docs/site
+ else
+  usageexit
+ fi
+ }
+
+case "$1" in
+  serve) serve ;;
+  build) build ;;
+  shell) /bin/sh ;;
+  *) usageexit ;;
+esac
