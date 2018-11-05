@@ -444,15 +444,7 @@ nav:
       # - Closures and generators: ml/embedpy/closures.md
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
-    - JupyterQ:
-      - Overview: ml/jupyterq/index.md
-      - Running code: ml/jupyterq/running-code.md
-      - Completion and help: ml/jupyterq/completion-help.md
-      - Errors: ml/jupyterq/errors.md
-      - Load and save code: ml/jupyterq/load-save.md
-      - Python and inline display: ml/jupyterq/inline-display.md
-      - Command-line arguments: ml/jupyterq/command-line.md
-      - FAQ: ml/jupyterq/faq.md
+    - JupyterQ: ml/jupyterq/index.md
   - Knowledge Base:
     - Introduction: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
@@ -510,13 +502,7 @@ nav:
     - C# GUIs: wp/gui/index.md
     - Data visualization: wp/data-visualization/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
-    - EmbedPy and LASSO: 
-      - Introduction: wp/embedpy-lasso/index.md
-      - EmbedPy basics: wp/embedpy-lasso/basics.md
-      - LASSO and house prices: wp/embedpy-lasso/lasso.md
-      - Clean & pre-process: wp/embedpy-lasso/clean.md
-      - Analysis: wp/embedpy-lasso/analysis.md
-      - Conclusion: wp/embedpy-lasso/conclusion.md
+    - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Extenders: wp/extenders.md
     - Java API: 
       - Introduction: wp/java-api/index.md

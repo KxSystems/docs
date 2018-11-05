@@ -1,46 +1,46 @@
 ---
-keywords: embedpy, interface, kdb+, python, q
+keywords: embedpy, interface, kdb+, python
 ---
 
 # <i class="fab fa-python"></i> embedPy
+<!-- # ![Python](/interfaces/img/python.png) embedPy -->
 
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../../interfaces/fusion.md)
+<i class="fab fa-superpowers"></i> [Fusion for kdb+](../interfaces/fusion)
 </div>
 
 Allows the kdb+ interpreter to manipulate Python objects and call Python functions.
 
 
-## Overview
-
-### Requirements
+## Requirements
 
 -   kdb+ ≥3.5 64-bit
 -   Python ≥3.5
 
 
-### Build and install
+## Build and install
 
-<i class="fa fa-download"></i> Download the code from <i class="fab fa-github"></i> [KxSystems/embedPy](https://github.com/kxsystems/embedpy) and follow installation instructions there.
+<i class="fas fa-download"></i> 
+Download the code from 
+<i class="fab fa-github"></i> 
+[KxSystems/embedPy](https://github.com/kxsystems/embedpy) and follow installation instructions there.
 
 
-### Back-incompatible changes
+## Back-incompatible changes
 
-#### V0.2-beta -> V1.0
+### V0.2-beta -> V1.0
 
--   Attribute access from embedPy object 
+- Attribute access from embedPy object 
 <pre><code class="language-q">
-/ old
-q)obj\`ATTRNAME
-/ new
-q)obj\`:ATTRNAME
+q)obj\`ATTRNAME     / old
+q)obj\`:ATTRNAME    / new
 </code></pre>
 
--   embedPy objects can be called directly without explicitly specifying the call return type, the default return type is an embedPy object
+- embedPy objects can be called directly without explicitly specifying the call return type, the default return type is an embedPy object
 
 
-#### V0.1-beta -> V0.2beta in V0.2-beta
+### V0.1-beta -> V0.2beta in V0.2-beta
 
 V0.2-beta features a number of changes back-incompatible with the previous release, V0.1-beta. 
 
@@ -101,15 +101,14 @@ Hello q!
 
 ### Evaluate Python code
 
-To evaluate Python code (as a string) and return results to q, use `.p.qeval`.  
+To evaluate Python code (as a string) and return results to q, use `.p.qeval`.
+
 ```q
 q).p.qeval"1+2"
 3
 ```
 
-**Side effects** Python evaluation (unlike Python _execution_) does not allow side effects. Any attempt at variable assignment or class definition will signal an error. To execute a string performing side effects, use `.p.e`. A more detailed explanation of the difference between `eval` and `exec` in Python can be found on 
-<i class="fab fa-stack-overflow"></i>
-[StackOverflow](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile-in-python).
+**Side effects** Python evaluation (unlike Python _execution_) does not allow side effects. Any attempt at variable assignment or class definition will signal an error. To execute a string performing side effects, use `.p.e`. A more detailed explanation of the difference between `eval` and `exec` in Python can be found [here](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile-in-python).
 
 
 ## EmbedPy objects
@@ -252,9 +251,7 @@ We can set the element at index `i` (to object `x`) using
 lst[=;i;x]  / equivalent to lst[i]=x in Python
 ```
 
-These expressions return embedPy objects.
-
-e.g.
+These expressions return embedPy objects, e.g.
 
 ```q
 q)lst:.p.eval"[True,2,3.0,'four']"
@@ -296,9 +293,7 @@ EmbedPy objects representing callable Python functions or methods are callable b
 -   `.p.pycallable` (declare callable with foreign return)
 
 
-The result of each of these functions represents the same underlying Python function or method, but now callable in q.
-
-e.g.
+The result of each of these functions represents the same underlying Python function or method, but now callable in q, e.g.
 
 ```q
 q)np:.p.import`numpy
@@ -318,7 +313,7 @@ q)arange_q 12
 ```
 
 
-### EmbedPy function API
+### embedPy function API
 
 Using the function API, embedPy objects can be called directly (returning embedPy) or declared callable returning q or `foreign` data.
 
@@ -341,7 +336,7 @@ func[>;arg]            / equivalent
 **Chaining operations** Returning another embedPy object from a function or method call, allows users to chain together sequences of operations.  We can also chain these operations together with calls to `.p.import`, `.p.get` and `.p.eval`.
 
 
-### EmbedPy examples
+### embedPy examples
 
 Some examples
 
@@ -412,6 +407,7 @@ q)np[`:arange;12][`:reshape;3;4][`:T]`
 2 6 10
 3 7 11
 ```
+
 ```q
 q)stdout:.p.import[`sys]`:stdout.write
 q)stdout"hello\n";
@@ -420,6 +416,7 @@ q)stderr:.p.import[`sys;`:stderr.write]
 q)stderr"goodbye\n";
 goodbye
 ```
+
 ```q
 q)oarg:.p.eval"10"
 q)oarg`
@@ -438,7 +435,7 @@ q)add2[1;oarg]
 <!-- 
 ### Further examples 
 
-Further examples can be found in the `examples` folder of the <i class="fab fa-github"></i> [KxSystems/embedPy](https://github.com/kxsystems/embedpy) repository. 
+Further examples can be found in the `examples` folder of the <i class="fa fa-github"></i> [KxSystems/embedPy](https://github.com/kxsystems/embedpy) repository. 
 
 This includes an example of creating simple charts in Matplotlib either by running Python code in a kdb+ process, or importing the `matplotlib.pyplot` module into kdb+ and using functions from it in q code.
  --> 
@@ -452,7 +449,6 @@ q).p.set[`var1;42]
 q).p.qeval"var1"
 42
 ```
-
 
 
 
@@ -471,8 +467,8 @@ Specifically:
 -   Callable embedPy objects are variadic
 -   Default arguments are applied where no explicit arguments are given
 -   Individual keyword arguments are specified using the (infix) `pykw` operator
--   A list of positional arguments can be passed using `pyarglist` (like Python `*args`)
--   A dictionary of keyword arguments can be passed using `pykwargs` (like Python `**kwargs`)
+-   A list of positional arguments can be passed using `pyarglist` (like Python \*args)
+-   A dictionary of keyword arguments can be passed using `pykwargs` (like Python \*\*kwargs)
 
 **Keyword arguments last** We can combine positional arguments, lists of positional arguments, keyword arguments and a dictionary of keyword arguments. However, _all_ keyword arguments must always follow _any_ positional arguments. The dictionary of keyword arguments (if given) must be specified last.
 
@@ -513,7 +509,7 @@ q)qfunc[`a pykw 2;`a pykw 2]       / error if duplicate keyword args
 'dupnames
 ```
 
-A list of positional arguments can be specified using `pyarglist` (similar to Python’s `*args`).  
+A list of positional arguments can be specified using `pyarglist` (similar to Python’s \*args).  
 Again, keyword arguments must follow positional arguments.
 
 ```q
@@ -532,7 +528,7 @@ q)qfunc[`a pykw 1;pyarglist 2 2 2]  / error if positional list after keyword arg
 'keywords last
 ```
 
-A dictionary of keyword arguments can be specified using `pykwargs` (similar to Python’s `**kwargs`).  
+A dictionary of keyword arguments can be specified using `pykwargs` (similar to Python’s \*\*kwargs).  
 If present, this argument must be the _last_ argument specified.
 
 ```q
@@ -582,7 +578,6 @@ python         | form                      | q
 `func()`       | call with no arguments    | `func[]` or `func[::]`
 `func(None)`   | call with argument `None` | `func[.p.eval"None"]`
 
-
 !!! info "Q functions applied to empty argument lists"
 
     The _rank_ (number of arguments) of a q function is determined by its _signature_, 
@@ -629,7 +624,6 @@ q).p.value[qd]`
 ```
 
 
-
 ## Printing and help
 
 
@@ -657,7 +651,7 @@ q).p.help n / interactive help
 
 ### Aliases in the root
 
-For convenience, `p.q` defines `print` and `help` in the default namespace of q, as aliases for `.p.print` and `.p.help`. To prevent this, comment out the relevant code in `p.q` before loading.
+For convenience, `p.q` defines `print` and `help` in the default namespace of q, as aliases for `.p.print` and `.p.help`. To prevent this, comment out the relevant code in p.q before loading.
 
 ```q
 {@[`.;x;:;get x]}each`help`print; / comment to remove from global namespace
@@ -687,13 +681,13 @@ To create a closure in embedPy, we must:
 
 We can define a closure to return incrementing natural numbers, similar to the q `til` function.  
 
-The state `x` is the last value returned.
+The state `x` is the last value returned
 
 ```q
 q)xtil:{[x;dummy]x,x+:1}
 ```
 
-Create the closure with initial state -1, so the first value returned will be.
+Create the closure with initial state -1, so the first value returned will be 0
 
 ```q
 q)ftil:.p.closure[xtil;-1][<]
@@ -785,9 +779,9 @@ To create a generator in embedPy, we must
 
 #### Example 1: Factorials
 
-The _factorial_ ($n!$) of a non-negative integer n, is the product of all positive integers less than or equal to n.  
+The _factorial_ ($n!$) of a non-negative integer $n$, is the product of all positive integers less than or equal to $n$.  
 
-We can create a sequence of factorials (starting with 1), with the sequence  `x(n) = x(n-1)*n`
+We can create a sequence of factorials (starting with 1), with the sequence  `x(n) = x(n-1) * n`
 
 The state `x` will be a 2-item list comprising
 
@@ -880,7 +874,7 @@ q)xsub:{[x;d](@[x;1;+;x 2];sublist[x 1 2]x 0)}
 To create a generator (to run for 6 iterations), extracting sublists of size 6 from `.Q.A` (list of 26 alphabetical chars)
 
 ```q
-q)sub:.p.generator[xsub;(.Q.A;0;6);6]
+ q)sub:.p.generator[xsub;(.Q.A;0;6);6]
 ```
 
 This can be used as an iterator in Python.
@@ -896,4 +890,5 @@ YZ
 
 q)
 ```
+
 
