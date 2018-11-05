@@ -95,7 +95,7 @@ q)256 vs .Q.addr`localhost
 127 0 0 1
 ```
 
-<i class="fa fa-hand-o-right"></i> [
+<i class="far fa-hand-point-right"></i> [
 [`.Q.host`](#qhost-hostname)  
 `vs`](vs.md)
 
@@ -265,7 +265,7 @@ Syntax: `.Q.def[x;y]`
 
 Provides defaults and types for command line arguments parsed with [``.Q.opt``](#qopt-command-parameters).
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 [`.z.x`](dotz.md#zx-argv)
 
 
@@ -385,7 +385,7 @@ q).Q.dsftg[d;s;f;t;g]
 
 Syntax: `.Q.en[x;y]`
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
 
 
@@ -556,7 +556,7 @@ Syntax:
 
 Blah blah blah
 
-<i class="fa fa-hand-o-right"></i> [Cookbook/Named Pipes](/cookbook/named-pipes)
+<i class="far fa-hand-point-right"></i> [Cookbook/Named Pipes](/cookbook/named-pipes)
  -->
 
 ## `.Q.fps` (streaming algorithm)
@@ -567,7 +567,7 @@ Syntax: `.Q.fps[x;y]`
 
 Reads conveniently sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 Knowledge Base: [Named Pipes](../kb/named-pipes.md)
 
 
@@ -600,7 +600,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 120
 ```
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 Knowledge base: [Loading large CSV files](../kb/loading-from-large-files.md)
 
 
@@ -1015,7 +1015,7 @@ Syntax: `.Q.opt .z.x`
 
 Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 [`.z.x`](dotz.md#zx-argv)
 
 
@@ -1213,7 +1213,7 @@ q).Q.res,key`.q
 `abs`acos`asin`atan`avg`bin`binr`cor`cos`cov`delete`dev`div`do`enlist`exec`ex..
 ```
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 [`.Q.id`](#qid-sanitize)
 
 
@@ -1239,7 +1239,7 @@ Where `y` is a [backtrace object](#qtrp-extend-trap) returns it as a string form
 
 Since V3.5 2017.03.15.
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 basics: [Debugging](../basics/debug.md)
 
 
@@ -1318,7 +1318,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 
 Since V3.5 2017.03.15.
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 Basics: [Debugging](../basics/debug.md)
 
 
@@ -1387,7 +1387,7 @@ Where `x` is
 -   a table, returns a dictionary of its column values. 
 -   a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 [`meta`](meta.md)
 
 
@@ -1403,7 +1403,7 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 .Q.view 2#date
 ```
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 _Q for Mortals_: [§14.5.8 `Q.view`](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 
@@ -1452,7 +1452,7 @@ syms| 577
 symw| 25436
 ```
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-memory),
 [System command `\w`](../basics/syscmds.md#w-workspace)
 
@@ -1475,7 +1475,7 @@ q).Q.x
 "path/to/destn"
 ```
 
-<i class="fa fa-hand-o-right"></i> 
+<i class="far fa-hand-point-right"></i> 
 [`.z.x`](dotz.md#zx-argv), 
 [`.z.X`](dotz.md#zx-raw-command-line)
 
