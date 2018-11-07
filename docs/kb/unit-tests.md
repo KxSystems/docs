@@ -86,16 +86,9 @@ before,0,k,aa::22
 before,0,k,aa::22
 ```
 
-
 ### Loading descriptions
 
-Invoke the function `KUltf` (load test file) with a file name as its argument.
-
-```q
-KUltf `:unitExample.csv
-```
-
-When the script `k4unit.q` is loaded, it creates the table `KUT` (KUnit Tests). It is empty initially:
+When the script `k4unit.q` is loaded, it creates the table `KUT` (KUnit Tests). It’s empty initially:
 
 ```q
 q)KUT
@@ -105,25 +98,29 @@ action ms lang code file
 
 and will contain test descriptions after tests are loaded with `KUltf`.
 
+Invoke the function `KUltf` (load test file) with a file name as its argument.
+
 ```q
+q)KUltf `:sample.csv
+15
 q)KUT
-action  ms lang code                 file
------------------------------------------------------
-comment 0  q    this will be ignored :unitExample.csv
-before  0  k    aa::22               :unitExample.csv
-before  0  k    aa::22               :unitExample.csv
-before  0  q    aa::22               :unitExample.csv
-before  0  q    aa::22               :unitExample.csv
-true    0  k    2=+/1 1              :unitExample.csv
-true    0  q    2=sum 1 1            :unitExample.csv
-true    0  k    2=sum 1 1            :unitExample.csv
-true    0  k    (*/2 2)~+/2 2        :unitExample.csv
-true    0  k    (*/2 2)~+/2 3        :unitExample.csv
-run     10 k    do[100;+/1.1+!10000] :unitExample.csv
-fail    0  q    2=`aa                :unitExample.csv
-after   0  k    bb::33               :unitExample.csv
-before  0  k    aa::22               :unitExample.csv
-before  0  k    aa::22               :unitExample.csv
+action  ms bytes  lang code          repeat minver file        comment
+------------------------------------------------------------------------------------------
+comment 0  0      q                  1      0      :sample.csv “this will just be ignored”
+before  0  0      k    aa::22        1      0      :sample.csv “”
+before  0  0      k    aa::22        1      0      :sample.csv “”
+before  0  0      q    aa::22        1      0      :sample.csv “”
+before  0  0      q    aa::22        1      0      :sample.csv “comment ”
+true    0  0      k    2=+/1 1       1      0      :sample.csv “”
+true    0  0      q    2=sum 1 1     1      0      :sample.csv “”
+true    0  0      k    2=sum 1 1     1      0      :sample.csv “”
+true    0  0      k    (*/2 2)~+/2 2 1      0      :sample.csv “”
+true    0  0      k    (*/2 2)~+/2 3 1      0      :sample.csv “”
+run     75 492264 k    +/1.1+!10000  1000   0      :sample.csv “a few times”
+fail    0  0      q    2=`aa         1      0      :sample.csv “”
+after   0  0      k    bb::33        1      0      :sample.csv “”
+before  0  0      k    aa::22        1      0      :sample.csv “”
+before  0  0      k    aa::22        1      0      :sample.csv “”
 ```
 
 It is possible to load multiple description files in the same directory with `KUltd` (load test dir). This
@@ -140,21 +137,19 @@ loads all CSVs in that directory into table `KUT`.
 Invoke `KUrt` (run tests) with an empty argument list
 
 ```q
-q) KUrt[]
 q)KUrt[]
-2006.10.04T13:07:36.328 start
-2006.10.04T13:07:36.328 :unitExample.csv 7 test(s)
-2006.10.04T13:07:36.453 end
+2018.11.06T15:31:06.981 start
+2018.11.06T15:31:06.981 :sample.csv 7 test(s)
+2018.11.06T15:31:07.006 end
 7
 ```
 
 
 ## Test results
 
-
 ### Inspecting results
 
-When k4unit is loaded, it creates the table `KUTR` (KUnit Test Results). It is empty initially:
+When k4unit is loaded, it creates the table `KUTR` (KUnit Test Results). It's empty initially
 
 ```q
 q)KUTR
@@ -167,15 +162,15 @@ and will contain results of unit tests after `KUrt[]` is invoked. Results can be
 ```q
 q)KUT
 q)KUTR
-action ms lang code                 file             msx ok okms valid timest..
------------------------------------------------------------------------------..
-run    10 k    do[100;+/1.1+!10000] :unitExample.csv 124 1  0    1     2006.1..
-true   0  k    2=+/1 1              :unitExample.csv 0   1  1    1     2006.1..
-true   0  q    2=sum 1 1            :unitExample.csv 0   1  1    1     2006.1..
-true   0  k    2=sum 1 1            :unitExample.csv 0   1  1    1     2006.1..
-true   0  k    (*/2 2)~+/2 2        :unitExample.csv 0   1  1    1     2006.1..
-true   0  k    (*/2 2)~+/2 3        :unitExample.csv 0   0  1    1     2006.1..
-fail   0  q    2=`aa                :unitExample.csv 0   1  1    1     2006.1..
+action ms bytes  lang code          repeat file        msx bytesx ok okms okbytes valid timestamp
+---------------------------------------------------------------------------------------------------------------
+true   0  0      k    2=+/1 1       1      :sample.csv 0   0      1  1    1       1     2018.11.06T15:31:06.982
+true   0  0      q    2=sum 1 1     1      :sample.csv 0   0      1  1    1       1     2018.11.06T15:31:06.982
+true   0  0      k    2=sum 1 1     1      :sample.csv 0   0      1  1    1       1     2018.11.06T15:31:06.982
+true   0  0      k    (*/2 2)~+/2 2 1      :sample.csv 0   0      1  1    1       1     2018.11.06T15:31:06.982
+true   0  0      k    (*/2 2)~+/2 3 1      :sample.csv 0   0      0  1    1       1     2018.11.06T15:31:06.982
+run    75 492264 k    +/1.1+!10000  1000   :sample.csv 24  393936 1  1    1       1     2018.11.06T15:31:07.006
+fail   0  0      q    2=`aa         1      :sample.csv 0   0      1  1    1       1     2018.11.06T15:31:07.006
 ```
 
 or by using q queries. For instance:
@@ -192,16 +187,16 @@ The fields `action`, `ms`, `lang`, and `code` are as described above. The rest a
 column    | description                                                 | notes                                
 ----------|-------------------------------------------------------------|--------------------------------------
 file      | name of test descriptions file                              |                                      
-msx       | milliseconds taken to execute code                          |                                      
+msx       | milliseconds taken to eXecute code                          |                                      
 ok        | true if the test completes correctly                        | it is correct for a fail task to fail
-okms      | true if msx is not greater than ms, ie if performance is OK |                                      
-valid     | true if the code is valid (i.e. doesn't crash)              | fail code is valid if it fails       
+okms      | true if msx is not greater than ms, ie if performance is ok |                                      
+valid     | true if the code is valid (ie doesn't crash)                | fail code is valid if it fails       
 timestamp | when test was run                                           |                                      
 
 
 ### Saving results to disk
 
-Invoking the function `KUstr[]` saves the table `KUtr` to a file `KUTR.csv`.
+Invoking the function `KUstr[]` saves the table `KUtr` to a file KUTR.csv.
 
 
 ## Restarting
@@ -212,7 +207,6 @@ The functions `KUit` and `KUitr` initialize the tables `KUT` and `KUTR` to empty
 ## Configuration parameters
 
 When the script `k4unit.q` is loaded, two configuration variables are defined in namespace `.KU`.
-
 ```q
 q).KU
        | ::
@@ -234,6 +228,4 @@ The values allowed for `DEBUG` are
 0 - trap errors, press on regardless
 1 - suspend if errors (except if action=`fail)
 ```
-
-
 
