@@ -1,10 +1,9 @@
 ---
-hero: <i class="fa fa-share-alt"></i> Machine learning
 title: Set up your machine-learning environment
 keywords: Docker, embedPy, Jupyter, ml, machine learning, Python
 ---
 
-# Set up your machine-learning environment
+# <i class="fa fa-share-alt"></i> Set up your machine-learning environment
 
 There are three ways to set up an environment in which to work on Machine Learning.
 

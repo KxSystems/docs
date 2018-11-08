@@ -1,11 +1,10 @@
 ---
-hero: <i class="fas fa-share-alt"></i> Machine learning toolkit
 author: Conor McCarthy
 date: October 2018
 keywords: confusion matrix, machine learning, ml, utilities, interpolation, filling, statistics, kdb+, q
 ---
 
-# Utilities 
+# <i class="fa fa-share-alt"></i> Utilities 
 
 
 

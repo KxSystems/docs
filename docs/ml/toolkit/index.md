@@ -1,11 +1,10 @@
 ---
-hero: <i class="fas fa-share-alt"></i> Machine learning toolkit
 author: Conor McCarthy
 date: October 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
 ---
 
-# Machine-learning toolkit
+# <i class="fa fa-share-alt"></i> Machine-learning toolkit
 
 
 <i class="fab fa-github"></i>
