@@ -424,17 +424,7 @@ nav:
       - Overview: ml/toolkit/index.md
       - Utilities: ml/toolkit/utils.md
       - FRESH: ml/toolkit/fresh.md  
-    - Natural language processing:
-      - Preparing text: ml/nlp/index.md
-      - Feature vectors: ml/nlp/feature-vectors.md
-      - Comparisons: ml/nlp/comparisons.md
-      - Clustering: ml/nlp/clustering.md
-      - Finding outliers: ml/nlp/finding-outliers.md
-      - Explaining similarities: ml/nlp/explaining-similarities.md
-      - Sentiment analysis: ml/nlp/sentiment-analysis.md
-      - Importing MBOX files: ml/nlp/mbox.md
-      - Parsing emails: ml/nlp/parsing-emails.md
-      - Useful functions: ml/nlp/useful-functions.md
+    - Natural language processing: ml/nlp.md
     - embedPy: 
       - User guide: ml/embedpy/index.md
       # - Running Python code: ml/embedpy/running.md
