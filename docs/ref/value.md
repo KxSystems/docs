@@ -214,3 +214,7 @@ The string form can be useful as a kind of ‘prepared statement’ from the Jav
     </code></pre>
 
 
+!!! tip "Local values in suspended functions"
+
+    See changes since V3.5 that support [debugging](../basics/debug.md#debugger).
+
