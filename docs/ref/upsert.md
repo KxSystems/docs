@@ -33,6 +33,15 @@ q)`a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)   / same but updating table in place
 `a
 ```
 
+
+!!! warning "Cond is not supported inside q-SQL expressions"
+
+    Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
+
+    <i class="far fa-hand-point-right"></i>
+    [q-SQL](../basics/qsql.md#cond)
+
+
 <i class="far fa-hand-point-right"></i> 
 [Join](join.md)  
 Basics: [Joins](../basics/joins.md),

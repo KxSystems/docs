@@ -50,3 +50,28 @@ keyword                      | semantics
 
 The q-SQL templates all have [functional forms](funsql.md), which can be used without performance penalty. 
 
+
+## Cond
+
+[Cond](../ref/cond.md) is not supported inside q-SQL expressions.
+
+```q
+q)u:([]a:raze ("ref/";"kb/"),\:/:"abc"; b:til 6)
+q)select from u where a like $[1b;"ref/*";"kb/*"]
+'rank
+  [0]  select from u where a like $[1b;"ref/*";"kb/*"]
+                                  ^
+```
+
+Enclose in a lambda
+
+```q
+q)select from u where a like {$[x;"ref/*";"kb/*"]}1b
+a       b
+---------
+"ref/a" 0
+"ref/b" 2
+"ref/c" 4
+```
+
+or use the [Vector Conditional](../ref/vector-conditional.md) instead.

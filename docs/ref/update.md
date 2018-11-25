@@ -15,6 +15,14 @@ _Add rows or columns to a table_
 Basics: [q-SQL](../basics/qsql.md)
 
 
+!!! warning "Cond is not supported inside q-SQL expressions"
+
+    Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
+
+    <i class="far fa-hand-point-right"></i>
+    [q-SQL](../basics/qsql.md#cond)
+
+
 ## `!` Update
 
 <i class="far fa-hand-point-right"></i>
