@@ -476,10 +476,12 @@ nav:
     - Windows Service: kb/windows-service.md
   - White papers: 
     - Index: wp/index.md
+    - Bitcoin blockchains: wp/blockchain/index.md
     - C# GUIs: wp/gui/index.md
     - Data visualization: wp/data-visualization/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
+    - Exoplanets: wp/exoplanets/index.md
     - Extenders: wp/extenders.md
     - Java API: wp/java-api/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
@@ -487,6 +489,7 @@ nav:
     - Neural networks: wp/neural-networks/index.md
     - Query Routing: wp/query-routing/index.md
     - Signal processing and q: wp/signal-processing/index.md
+    - Space weather: wp/space-weather/index.md
     - WebSockets: wp/websockets/index.md
   - About: 
     - Kx technology: about/kxtechnology.md

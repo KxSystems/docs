@@ -1,7 +1,3 @@
----
-title: Index of whitepapers
----
-
 # <i class="far fa-map"></i> Technical white papers
 
 
@@ -35,6 +31,7 @@ title: Index of whitepapers
 
 * Streaming **analytics**: detecting card counters in Blackjack &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](card-counters-in-blackjack.pdf)
 * Kdb+ in **astronomy** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_in_astronomy.pdf)
+* ==new== [Storing and exploring the **Bitcoin blockchain**](blockchain/) &nbsp; <i class="fa fa-print"></i> <small>[A4](blockchain/blockchain-a4.pdf), [US&nbsp;Letter](blockchain/blockchain-us.pdf)</small>
 * Sample aggregation engine for **market depth** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](sample_aggregation_engine_for_market_depth.pdf)
 * [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/) &nbsp; <i class="fas fa-print"></i> <small>[A4](market-fragmentation/market-fragmentation-a4.pdf), [US&nbsp;Letter](market-fragmentation/market-fragmentation-us.pdf)</small>
 * [**Signal processing and q**](signal-processing/) &nbsp; <i class="fas fa-print"></i> <small>[A4](signal-processing/signal-processing-a4.pdf), [US&nbsp;Letter](signal-processing/signal-processing-us.pdf)</small>
@@ -46,7 +43,9 @@ title: Index of whitepapers
 
 * **K-Nearest Neighbor classification** and pattern recognition with q &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](machine_learning_in_kdb.pdf)
 * [An introduction to **neural networks** with kdb+](neural-networks/) &nbsp; <i class="fas fa-print"></i> <small>[A4](an_introduction_to_neural_networks_with_kdb.pdf)</small>
-* ==new== [**Using embedPy to apply LASSO regression**](embedpy-lasso/) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](embedpy-lasso/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](embedpy-lasso/embedpy-lasso-us.pdf)
+* ==new== [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/) &nbsp; <i class="fa fa-print"></i> [<small>A4</small>](exoplanets/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](exoplanets/exoplanets-us.pdf)
+* ==new== [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/) &nbsp; <i class="fa fa-print"></i> [<small>A4</small>](space-weather/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](space-weather/space-weather-us.pdf)
+* [**Using embedPy to apply LASSO regression**](embedpy-lasso/) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](embedpy-lasso/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](embedpy-lasso/embedpy-lasso-us.pdf)
 
 
 ## Managing data and systems

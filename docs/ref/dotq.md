@@ -95,9 +95,9 @@ q)256 vs .Q.addr`localhost
 127 0 0 1
 ```
 
-<i class="far fa-hand-point-right"></i> [
-[`.Q.host`](#qhost-hostname)  
-`vs`](vs.md)
+<i class="far fa-hand-point-right"></i> 
+[`.Q.host`](#qhost-hostname), 
+[`vs`](vs.md)
 
 
 ## `.Q.bt` (backtrace)
