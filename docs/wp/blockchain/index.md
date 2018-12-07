@@ -367,7 +367,7 @@ the following functions in the qbitcoind library.
 
 Since the block height begins from a value of 0 and increases in
 increments of 1 for each new block, we can repeatedly call the above
-functions starting from and index of 0 and working up to the latest
+functions starting from an index of 0 and working up to the latest
 block. Below is an example script showing how this can be implemented
 using the above functions in combination.
 
