@@ -534,7 +534,7 @@ q)align fix[2]1.2 123 1.23445 -1234578.5522
 "-1234578.55"
 ```
 
-Q) I have a table with float values. Those values have to be persisted to a file as character strings of length 9, e.g. 34.3 --> `"     34.3"`
+Q) I have a table with float values. Those values have to be persisted to a file as character strings of length 9, e.g. 34.3 to `"     34.3"`
 I would also like to keep as much precision as possible, i.e. 343434.3576 should be persisted as `"343434.36"`
 What is the best way of doing that? 
 
