@@ -14,4 +14,4 @@ Inquiries to <librarian@kx.com>.
 
 You can visit a frozen copy of [the archived wiki](http://142.93.42.184/wiki/).
 
-If you still prefer using the wiki to the current documentation, the [librarian](mailto:librarian@kx.com) would be grateful for a note about why that is.
+If you still prefer using the wiki to the current documentation, the [Librarian](mailto:librarian@kx.com) would be grateful for a note about why that is.
