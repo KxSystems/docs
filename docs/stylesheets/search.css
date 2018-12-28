@@ -1,0 +1,144 @@
+/*
+    Title: Style rules for search engine results
+    Author: stephen@kx.com
+    Version: 2018.11.09
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-style: normal;
+    text-decoration: none;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	/*padding: 1em;*/
+}
+h1, h2 {
+ 	color: rgba(0,0,0,.3);
+	font-weight: 400;
+}
+h1 {
+	line-height: 1.3;
+	margin: 0 0 4rem;
+}
+
+h2 {
+	font-family: "Georgia", serif;
+	font-size: 1.8em;
+	margin: 1rem 0 0;
+	line-height: 1.4;
+}
+
+dl {
+	font-size: 0;
+	line-height: 1.6;
+	margin: 1em 1em 0 0;
+}
+dt a {
+	font-weight: 900;
+}
+dd {
+	color: rgba(0,0,0,.5);
+	margin: 0 0 1em 1.875em;
+}
+dd.href {
+	color: #aaa;
+	font-size: 80%;
+	margin: 0 0 0 1.875em;
+}
+p {
+	/* No results */
+	font-size: 1.4em;
+}
+p.colophon {
+        color: gray;
+        font-size: 1em;
+        margin-top: 2em;
+}
+p.extract {
+	color: rgba(0,0,0,.5);
+	margin-top: .5rem;
+}
+p.more {
+	color: rgba(0,0,0.8);
+	margin-top: .5rem;
+}
+p.path {
+	color: rgb(0,128,0);
+}
+ul {
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	box-shadow: 2px 2px rgba(0,0,0,.3);
+	color: #CCC;
+	font-size: 1.6rem;
+	padding: 1em;
+	line-height: 1.6;
+	list-style: none;
+}
+ul::before {
+	content: "Reference";
+}
+ul li {
+	font-weight: bold;
+	padding-top: .3em;	
+}
+
+a {
+	color: #536dfe;
+}
+a:hover {
+	color: #ff6e40;
+}
+ul a {
+	color: #0070cd;
+}
+
+form {
+	background-color: #0070cd;
+	color: white;
+	display: block;
+	font-size: 1.4em;
+	padding: 1em 1em 1em 50px;
+	position: relative;
+}
+label, input {
+	display: inline-block;
+}
+input {
+	font-size: 1.2em;
+	margin: 0 1em;
+}
+
+#kx-logo {
+    position: absolute; top: 12px; left: 12px;
+}
+#kx-logo img {
+    width: 25px;
+}
+
+#kxsearch-colophon {
+	margin: 2em;
+}
+#kxsearch-results-wrapper {
+	margin: 0 auto;
+	max-width: 60rem;
+	padding: 10px;
+}
+/*#kxsearch-results-wrapper {
+        display: flex; 
+	flex-direction: row; 
+	flex-wrap: wrap;
+}
+#kxsearch-results-wrapper div {
+	display: inline-flex; 
+	max-width: 400px;
+	padding: 1em 3em;
+}
+.kdb {
+	color: #0070cd;
+}

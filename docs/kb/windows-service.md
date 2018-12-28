@@ -22,7 +22,7 @@ To create a Windows NT user-defined service:
 
 3.  Prepare the Windows Registry to set up parameters for the `q5010` service:
 
-    <pre><code class="language=ini"> 
+    <pre><code class="language-ini"> 
     Windows Registry Editor Version 5.00
 
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\q5010\Parameters]
@@ -33,25 +33,25 @@ To create a Windows NT user-defined service:
 
 4.  Now you can use the `q5010` service as a normal Windows service:
 
-    <pre><code class="language=dos" 
+    <pre><code class="language-dos"> 
     C:\> sc start q5010
     </code></pre>
 
     or
 
-    <pre><code class="language=dos" 
+    <pre><code class="language-dos"> 
     C:\> net start q5010
     </code></pre>
 
     To stop:
 
-    <pre><code class="language=dos" 
+    <pre><code class="language-dos"> 
     C:\> sc stop q5010
     </code></pre>
 
     or
 
-    <pre><code class="language=dos" 
+    <pre><code class="language-dos"> 
     C:\> net stop q5010
     </code></pre>
 

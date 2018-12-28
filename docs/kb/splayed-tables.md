@@ -72,7 +72,7 @@ q)sym
 
 It also creates the directory `dir` with a file in it, named `sym`, with the same contents:
 
-```
+```q
 q)\ls dir
 "sym"
 q)value `:dir/sym
@@ -96,7 +96,7 @@ q)tr.sym
 
 The enumerated table can now be saved splayed.
 
-```
+```q
 q)`:dir/tr/ set trenum
 `:dir/tr/
 ```

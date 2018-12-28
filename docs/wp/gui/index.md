@@ -62,9 +62,11 @@ basic connections and queries, the default Kx plug-in will be
 satisfactory. This must then be called by referencing the namespace
 provided (in this case, it is `kx`). After importing `c.cs` into a C#
 project, it can then be called via the `using` directive:
+
 ```csharp
 using kx;
 ```
+
 This will allow all objects, classes and methods within the `kx`
 namespace provided by the `c.cs` file to be used throughout the project,
 allowing connections to the kdb+ process via TCP network sockets. It
@@ -79,6 +81,7 @@ server and process will be hard-coded to private variables though these
 could be modified to accept values from a configuration file. The
 methods have also been set up to accept a username and password if
 desired; this will be described in more detail later.
+
 ```csharp
 private static String HOST = "localhost";
 private static int PRIMARY_PORT = 5010;
@@ -98,6 +101,7 @@ public static c GetConnection(String user, string password)
     return connection;
 }
 ```
+
 ```csharp
 private static c OpenConnection(String host,int port,string user,string password)
 {
@@ -129,6 +133,7 @@ private static c OpenConnection(String host,int port,string user,string password
     } 
 }
 ```
+
 The above code shows a simple, generic connection method which can be
 called when starting a C# application to create a connection to a
 running kdb+ process. We return the `c` object in this case as we will need
@@ -148,6 +153,7 @@ haphazard collection of connections with each process. This will
 reduce the load and traffic on the kdb+ instance as it cuts down on
 the number of handles that could be attempting to query
 simultaneously.
+
 ```csharp
 private void button1_Click(object sender, EventArgs e)
 {
@@ -161,6 +167,7 @@ private void button1_Click(object sender, EventArgs e)
     ConnectionPool.ReturnConnection(conn);
 }
 ```
+
 This is an example of the `OpenConnection` method in operation (via the
 `ConnectionPool`) with a simple click event for a button. It will check
 if the method has returned a `c` object for further use and, if not, it
@@ -198,6 +205,7 @@ mreynolds| "password"
 user1    | "password2"
 user2    | "password3"
 ```
+
 This involves changing the `c.cs` file provided by Kx as this is not set
 up to accept customised usernames (it instead takes the username
 stored in `Environment.UserName`) or any passwords at all. We will also
@@ -259,11 +267,7 @@ public c(string h, int p, string u, string pw, int maxBufferSize)
 }
 ```
 
-We have specified a new variable `pw`, which is now being read into the
-byte stream along with `u`. In particular, it is `w(u + ":" + pw +
-"\x3")` that will be interpreted by `.z.pw` or the `-u` argument
-as a username and password. We can use a simple definition for `.z.pw`
-to query the users table whenever a connection is made through C#.
+We have specified a new variable `pw`, which is now being read into the byte stream along with `u`. In particular, it is `w(u + ":" + pw + "\x3")` that will be interpreted by `.z.pw` or the `-u` argument as a username and password. We can use a simple definition for `.z.pw` to query the users table whenever a connection is made through C#.
 
 This will return `0b` if the user does not have permission to access the
 process. Within C#, this will throw a KException with the message
@@ -432,7 +436,6 @@ This is the `BuildQuery` method, which takes all the available inputs and
 creates a query string from them:
 
 ```csharp
-
 private string BuildQuery()
 {
     String check1 = "";

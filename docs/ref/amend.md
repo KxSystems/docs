@@ -280,13 +280,14 @@ returns `x` with its values at indexes `i` changed.
 
 For `ind` in `til count i`, `x[i ind]` becomes
 
-```
+```txt
 expression   x[i ind]
 -----------------------------
 @[x;i;f]     f[x i ind] 
 @[x;i;f;a]   f[x i ind][a]
 @[x;i;f;v]   f[x i ind][v ind]
 ```
+
 ```q
 q)d:("quick";"";"brown";"fox")
 q)@[d;where"b"$count each d;,[;"..."]] / unary f
@@ -298,17 +299,22 @@ q)d:((1 2 3;4 5 6 7);(8 9;10;11 12);(13 14;15 16 17 18;19 20))
 q)@[d;1 1 1;+;3] / binary f
 ((1 2 3;4 5 6 7);(17 18;19;20 21);(13 14;15 16 17 18;19 20))
 ```
+
 Functions of rank higher than 2 can be applied by enlisting their arguments and using [_apply_](unclassified/#apply).
 
 !!! warning "Projections"
+
     For a general list `x`, omitting `a` or `v` when `f` is binary returns projections at the indexes `i`:
+
     <pre><code class="language-q">
     q)0N!@[("ssd";"bsd");0;+];
     (+["ssd"];"bsd")
     </code></pre>
 
 !!! tip "Do it on disk"
+
     Since V3.4 certain vectors can be updated directly on disk without the need to fully rewrite the file. Such vectors must have no attribute, be of a mappable type, not nested, and not compressed. e.g.
+
     <pre><code class="language-q">
     q)\`:data set til 20;
     q)@[\`:data;3 6 8;:;100 200 300]; 

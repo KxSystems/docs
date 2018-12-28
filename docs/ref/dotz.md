@@ -265,7 +265,7 @@ Syntax: `.z.h`
 
 Returns the host name as a symbol
 
-```
+```q
 q).z.h
 `demo.kx.com
 ```
@@ -293,6 +293,7 @@ ip hostname fqdn
 ```
 
 A workaround from within kdb+ is
+
 ```q
 q).Q.host .z.a
 ```
@@ -637,6 +638,7 @@ Where `f` is a unary function, `.z.ps` is evaluated with the object that is pass
 The default behavior is equivalent to setting `.z.ps` to [`value`](value.md).
 
 Note that `.z.ps` is used in preference to `.z.pg` when messages are sent to the local process using handle 0.
+
 ```q
 q).z.ps:{[x]0N!(`zps;x);value x}
 q).z.pg:{[x]0N!(`zpg;x);value x}
@@ -774,6 +776,7 @@ q)sum each .z.W
 Syntax: `.z.w`
 
 Returns the connection handle, 0 for current session console. 
+
 ```q
 q).z.w
 0i
@@ -871,6 +874,7 @@ Command-line options can be converted to a dictionary using the convenient `.Q.o
 ```bash
 $ q -abc 123 -xyz 321
 ```
+
 ```q
 q).Q.opt .z.x
 abc| "123"

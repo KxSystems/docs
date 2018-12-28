@@ -309,7 +309,7 @@ q).ml.mse[asc 100?1f;desc 100?1f]
 
 _Percentile calculation for an array_
 
-Syntax:`.ml.percentile[x;y]
+Syntax: `.ml.percentile[x;y]`
 
 Where
 

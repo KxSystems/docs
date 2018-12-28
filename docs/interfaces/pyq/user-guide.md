@@ -260,6 +260,7 @@ Uniform functions are functions that take a list and return another list of the 
 ### Sorting and searching
 
 Functions `asc()` and `desc()` sort lists in ascending and descending order respectively:
+
 ```python
 >>> a = [9, 5, 7, 3, 1]
 >>> q.asc(a)
@@ -271,11 +272,13 @@ k('9 7 5 3 1')
 !!! note "Sorted attribute"
 
     The `s#` prefix that appears in the display of the output for the `asc()` function indicates that the resulting vector has a _sorted_ attribute set. An attribute can be queried by calling the `attr()` function or accessing the `attr` property of the result:
+
     <pre><code class="language-python">
     &gt;&gt;&gt; s = q.asc(a) >>> q.attr(s) k('s')
     &gt;&gt;&gt; s.attr
     k('s')
     </code></pre>
+
     When the`asc()` function gets a vector with the `s` attribute set, it skips sorting and immediately returns the same vector.
 
 Functions `iasc()` and `idesc()` return the indices indicating the order in which the items of the incoming list should be arranged to be sorted.
@@ -1191,7 +1194,7 @@ No  | kdb+ type | array type      | raw         | description
 
 Kdb+ atoms and vectors of the simple types (booleans, characters, integers and floats) can be viewed as 0- or 1-dimensional NumPy arrays. For example,
 
-```Python
+```python
 >>> x = K.real([10, 20, 30])
 >>> a = numpy.asarray(x)
 >>> a.dtype
@@ -1385,6 +1388,7 @@ a   09:33 300
 b   09:32 200
 b   09:35 100
 ```
+
 ```python
 >>> numpy.array(trades)
 array([('a', datetime.timedelta(0, 34260), 100),
@@ -1407,7 +1411,7 @@ or use the `ipyq` script.
 
 For a better experience, load the `pyq.magic` extension:
 
-```
+```python
 In [1]: %load_ext pyq.magic
 ```
 
@@ -1415,7 +1419,7 @@ This makes K objects display nicely in the output and gives you access to the Py
 
 Line magic `%q`:
 
-```
+```python
 In [2]: %q ([]a:til 3;b:10*til 3)
 Out[2]:
 a b
@@ -1427,7 +1431,7 @@ a b
 
 Cell magic `%%q`:
 
-```
+```python
 In [4]: %%q
    ....: a: exec a from t where b=20
    ....: b: exec b from t where a=2

@@ -593,7 +593,7 @@ Using return as value column. Use the value argument to cast to override this ch
 > system.time(p<-cast(res,time~sym))
   user    system elapsed
   0.950   0.048   0.998 
-```    ￼￼￼￼
+```
 
 We can see that the time to extract the data increases by ~90 ms. 
 The q query time increases by 4 ms, so the majority of the increase is due to shipping the larger dataset from q to R.

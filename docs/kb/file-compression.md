@@ -55,7 +55,7 @@ To reset to not compress new files, use `\x`.
 q)\x .z.zd
 ```
 
-Since V2.8 2011.11.28, the zip params can be a dictionary of `filenames!zipParams`. The null `` ` `` entry in the dict is the default `zipParams`, or if no `` ``` specified, then default will be: do not compress.
+Since V2.8 2011.11.28, the zip params can be a dictionary of `filenames!zipParams`. The null `` ` `` entry in the dict is the default `zipParams`, or if no `` ` `` specified, then default will be: do not compress.
 
 ```q
 q)(`:splay/;``a`b!((17;2;9);(17;2;6);(17;2;6)))set([]a:asc 1000000?10;b:asc 1000000?10;c:asc 1000000?10)
@@ -268,7 +268,7 @@ Installation is very straightforward: unpack and plug in the card, compile and l
 
     If you see the error message
 
-    <pre><code>
+    <pre><code class="language-txt">
     aha367 - ahagz\_api.c: open() call failed with error: 2 on device /dev/aha367\_board
     </code></pre>
 
@@ -278,6 +278,7 @@ Installation is very straightforward: unpack and plug in the card, compile and l
     aha_install_dir$ cd bin
     aha_install_dir$ sudo ./load_module 
     </code></pre>
+    
     and select the 367 card option.
 
 Another accelerator card vendor (untested) – [<http://www.indranetworks.com/SCMX3.html>](http://www.indranetworks.com/SCMX3.html)
@@ -296,7 +297,7 @@ You should only ever need to run `gdb` if you are debugging your own custom shar
 
 `gdb` will intercept SIGSEGV which should be passed to q. To tell it to do so, issue the following command at the gdb prompt
 
-```gdb
+```txt
 (gdb) handle SIGSEGV nostop noprint
 ```
 
@@ -316,7 +317,7 @@ $ echo never >/sys/kernel/mm/redhat_transparent_hugepage/enabled
 
 or more permanently via `grub` at boot time
 
-```bash
+```txt
 transparent_hugepage=never
 ```
 

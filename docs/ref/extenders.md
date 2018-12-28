@@ -134,7 +134,8 @@ argument<br>rank | syntax                                                   | na
 1<br>2<br>3+      | `(g\)y`, `g scan y`<br>`d g\y`<br>`gg\[d;y;z;…]`        | [Scan](progressors.md#binary-maps)                     | scan a list or lists 
 
 Key: 
-```
+
+```txt
 d:   data            gg: map, rank ≥2    
 int: int vector      n: int atom ≥0 
 ff:  map, rank ≥1    t: test map

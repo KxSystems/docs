@@ -3,7 +3,6 @@ title: File and process handles
 keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, filehandle, filepath, filesize, filesystem, folder, handle, hclose, hcount, hdel, hopen, hostname, hsym, ip address, ipc, kdb+, named pipe, open, os, pipe, port, process, q, query, request, size, socket, ssl, symbol, timeout, tls
 ---
 
-![__![](http://www.metta-taichi.org.uk)__](http://www.metta-taichi.org.uk)
 # `hclose`, `hcount`, `hdel`, `hopen`, `hsym`
 
 _File and process handles_

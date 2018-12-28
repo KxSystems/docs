@@ -22,7 +22,7 @@ q)t:([] id:101 102 103 104; v:1.1 2.2 3.3 4.4)
 
 To create the column `parent`, we look up the values in the key column using [`?`](../ref/find.md "Find") and then declare the link using `!` – instead of [`$`](../ref/enumerate.md "Enumerate") as we would for a [foreign key enumeration](http://code.kx.com/q4m3/8_Tables/#852-example-of-simple-foreign-key).
 
-```
+```q
 q)update parent:`t!id?101 101 102 102 from `t
 `t
 q)t

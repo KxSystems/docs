@@ -107,7 +107,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <td class="kx-glyph nowrap">`()`<br>`(;)`<br>`([]…)`</td><td>[precedence](../basics/syntax.md#precedence-and-order-of-evaluation)<br>[list](../basics/syntax.md#list-notation)<br>[table](../basics/syntax.md#table-notation)</td>
 <td class="kx-glyph nowrap">`[;]`</td><td>[expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)<br>[argt list](/basics/syntax.md#bracket-notation)</td>
 <td class="kx-glyph">`{}`<br>`;`</td><td>[lambda](../basics/function-notation.md)<br>separator</td>
-<td class="kx-glyph"><code>\`</code><br><code>\`:</code></td><td>symbol<br>filepath</td>
+<td class="kx-glyph"><code>&#96;</code><br><code>&#96;:</code></td><td>symbol<br>filepath</td>
 </tr>
 </table>
 

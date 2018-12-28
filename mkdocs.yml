@@ -1,6 +1,6 @@
 copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
 # dev_addr: '159.65.88.218:8000'
-dev_addr: '0.0.0.0:8000'
+dev_addr: '0.0.0.0:9000'
 docs_dir: 'docs'
 extra:
   version: 2.0
@@ -79,6 +79,9 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
+  - Support: support.md
+  - GitHub: github.md
+  - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
     - Q for Mortals 3: http://code.kx.com/q4m3
@@ -118,8 +121,6 @@ nav:
       - SAM – A simple application model: style/sam.md
       - New wine for old bottles: style/new-wine.md
       - Omitted pages: style/omitted-pages.md
-  - Support: support.md
-  - GitHub: github.md
   - Reference:
     - Reference card: ref/index.md
     - Basics:

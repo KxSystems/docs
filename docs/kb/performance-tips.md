@@ -200,7 +200,7 @@ q)\t do[1000000; .[`trade; (); ,; row]]
 
 Those two can take the table as a parameter. If the table is known, we can also use the Amend operator, which is faster:
 
-```
+```q
 q)load `:trade
 q)row: first trade
 q)\t do[1000000; trade,: row]

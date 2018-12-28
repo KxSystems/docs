@@ -40,10 +40,13 @@ This saves the result of the query to the file output.csv, which can be loaded i
 !!! tip "Table result"
 
     The result must be a table, so that it can be converted to a CSV file. For instance, the following is invalid:
+
     <pre><code class="language-bash">
     wget -O output.csv "http://localhost:5001/q.csv?first trade"
     </code></pre>
+
     because the result is a dictionary. We need `1 # trade`. Notice that the `#` symbol cannot be written literally in a URL.
+
     <pre><code class="language-bash">
     wget -O output.csv "http://localhost:5001/q.csv?1 %23 trade"
     </code></pre>
@@ -106,13 +109,13 @@ The distribution contains an example Excel file that works with the default sche
 
 The format for requesting data from the RTD Server is
 
-```
+```txt
 =RTD("K4RtdServer",,"plantname","tablename","column","symbol")
 ```
 
 The RTD server can also store the recent history of a cell, and this can be made available by using an index into the history as an additional parameter to the RTD call, e.g.
 
-```
+```txt
 =RTD("K4RtdServer",,"plantname","tablename","column","symbol",1)
 ```
 
@@ -125,6 +128,7 @@ To set the engine to handle a larger volume of updates, in Excel complete the fo
 
 1.  In Excel, go to the Visual Basic Editor, by pressing Alt+F11 or clicking _Tools > Macro > Visual Basic Editor_
 2. In the Immediate window (press Ctrl+G or click _View > Immediate Window_), type:
+
 ```vbnet
 Application.RTD.ThrottleInterval = 1000
 ? Application.RTD.ThrottleInterval

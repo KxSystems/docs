@@ -66,9 +66,11 @@ Some q functions use attributes to work faster:
 
     The `g` attribute is presently unsuitable for cycling through a small window of a domain, due to the retention of keys backing the attribute.
 
-    <pre><code class="language-q">q)v:\`g#1#0
+    <pre><code class="language-q">
+    q)v:\`g#1#0
     q)do[1000000;v[0]+:1];
     q)0N!.Q.w[]\`used; v:\`g#\`#v; .Q.w[]\`used
     74275344
-    332368</code></pre>
+    332368
+    </code></pre>
 

@@ -61,7 +61,7 @@ q)enlist {x}[]
 
 Since `::` has a type for which no vector variant exists, it is useful to prevent a mixed list from being coerced into a vector when all items happen to be of the same type. (This is important when you need to preserve the ability to add non-conforming items later.)
 
-```
+```q
 q)x:(1;2;3)
 q)x,:`a
 'type

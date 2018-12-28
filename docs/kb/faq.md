@@ -316,7 +316,7 @@ q)distinct trade
 
 And the following gives the number of distinct rows
 
-```
+```q
 q)count distinct trade
 ```
 
@@ -325,13 +325,13 @@ q)count distinct trade
 
 `select` expressions have the following general form.
 
-```
+```q
 select [columns] [by columns] from table [where conditions] 
 ```
-T
-he result of a select expression is a table. For instance:
 
-```
+The result of a select expression is a table. For instance:
+
+```q
 q)select stock, amount from trade
 stock amount
 ------------
@@ -341,7 +341,7 @@ ibm   500
 
 In their simplest form, select expressions extract subtables. However, it is also possible for them to compute new columns or rename existing ones.
 
-```
+```q
 q)select stock,newamount:amount+10 from trade where price>100
 stock newamount
 ---------------
@@ -374,6 +374,7 @@ The column `stock` is a key in the result table.
 ## How can I add a column with the row number to a table?
 
 The keyword `i` represents the row index.
+
 ```q
 q)select rowno:i, stock from trade
 rowno stock
@@ -569,7 +570,7 @@ q)table: flip `a`b`c!Cols
 
 !!! warning
 
-    Column names must not be the null symbol `` ```.
+    Column names must not be the null symbol <code>&#96;</code>.
 
 
 ## How do I export a table to a text file?

@@ -95,8 +95,8 @@ function | purpose
 ---------|-------------------------------------------------------------------------------------
 `errno`  | return current `errno` global on \*nix OS
 `kfn`    | bind the function which returns and accepts K objects in current process. Similar to `2:`
-`ext`    | append shared library extension for current platform to library name. On Linux ```.ffi.ext[`libm]~`libm.so```
-`cvar`   | read global variable from the library ```.ffi.cvar`timezone```
+`ext`    | append shared library extension for current platform to library name. On Linux `` .ffi.ext[`libm]~`libm.so ``
+`cvar`   | read global variable from the library `` .ffi.cvar`timezone ``
 `ptrsize`| length of pointer in bytes on current platform
 `nil`    | null value on current platform
 

@@ -509,11 +509,13 @@ It would be neither intuitive nor suitable behavior to have functions executed f
 
 Individual expressions can occupy more than one line in a script. Expressions can be broken after the semicolons that separate the individual expressions within compound expressions; it is necessary only to indent the continuation with one or more spaces.
 For example:
+
 ```q
 (a + b;
   ;
   c - d)
 ```
+
 is the 3-item list `(a+b;;c-d)`. 
 
 Note that whenever a set of expressions is evaluated left to right, such as those in a function expression, if those expressions occupy more than one line then the lines are evaluated from top to bottom.
@@ -535,7 +537,9 @@ extender symbol to its left.
 -   If a `/` is meant to denote the left end of a comment then it must be preceded by a blank (or newline); otherwise it will be taken to be part of an extender.
 -   Both the underscore character (`_`) and dot character (`.`) denote operators and can also be part of a name. The default choice is part of a name. A space is therefore required between an underscore or dot and a name to its left or right when denoting a function.
 -   At least one space is required between neighboring numeric constants in vector notation.
--   A minus sign (`-`) denotes both an operator and part of the format of negative constants. A minus sign is part of a negative constant if it is next to a positive constant and there are no spaces between, except that a minus sign is always considered to be the function if the token to the left is a name, a constant, a right parenthesis or a right bracket, and there is no space between that token and the minus sign. The following examples illustrate the various cases:<pre><code class="language-q">
+-   A minus sign (`-`) denotes both an operator and part of the format of negative constants. A minus sign is part of a negative constant if it is next to a positive constant and there are no spaces between, except that a minus sign is always considered to be the function if the token to the left is a name, a constant, a right parenthesis or a right bracket, and there is no space between that token and the minus sign. The following examples illustrate the various cases:
+
+<pre><code class="language-q">
 x-1            / x minus 1
 x -1           / x applied to -1
 3.5-1          / 3.5 minus 1

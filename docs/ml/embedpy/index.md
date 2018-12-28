@@ -141,7 +141,7 @@ More commonly, embedPy objects are retrieved directly from Python using one of t
 
 function    | argument                                         | example
 ------------|--------------------------------------------------|-----------------------
-<code style="white-space: nowrap">.p.import</code> | symbol: name of a Python module or package, optional second argument is the name of an object within the module or package | <code style="white-space: nowrap">np:.p.import`numpy</code>
+<code style="white-space: nowrap">.p.import</code> | symbol: name of a Python module or package, optional second argument is the name of an object within the module or package | <code style="white-space: nowrap">np:.p.import&#96;numpy</code>
 `.p.get`    | symbol: name of a Python variable in `__main__`  | ``v:.p.get`varName``
 `.p.eval`   | string: Python code to evaluate                  | `x:.p.eval"1+1"`
 

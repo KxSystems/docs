@@ -371,7 +371,7 @@ q)pydates[`:astype;"int64"]`
 
 Adjust for the Unix epoch (as `date`).
 
-```
+```q
 q)(pydates[`:astype;"int64"]`)+1970.01.01
 2000.12.11 2000.01.15 2000.02.02 2003.08.16 2002.04.24 2000.03.22
 ```
@@ -446,6 +446,7 @@ q)(pystamps[`:astype;"int64"]`)+1970.01.01D0
 ### `py2qdts`
 
 The `py2qdts` function converts all three `datetime64` types to the equivalent q date type.
+
 ```q
 py2qdts:{t$(x[`:astype;"int64"]`)+"j"$(t:"pmd" "nMD"?x[`:dtype.name;`]11)$1970.01m}
 ```

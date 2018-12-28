@@ -132,6 +132,7 @@ q)).Q.bt[]
   [0]  f[3;"hello"]
        ^ 
 ```
+
 Since V3.5 2017.03.15.
 
 !!! note "The debugger itself occupies a stack frame, but its source is hidden."
@@ -913,6 +914,7 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 !!! tip "Continuous row intervals"
 
     If you are selecting a continuous row interval, for example if iterating over all rows in a partition, instead of using `.Q.ind` you might as well use
+
     <pre><code class="language-q">
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
     </code></pre>
@@ -1032,7 +1034,7 @@ q).Q.par[`:.;2010.02.02;`quote]
 
 Can assist in checking `` `p`` attribute is present on all partitions of a table in an HDB
 
-```
+```q
 q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 1b
 ```

@@ -1,6 +1,6 @@
 ---
 keywords: fusion, interface, java, kdb+, q
-hero: <i class="fa fa-superpowers"></i> Fusion for Kdb+
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 
 # ![Java](img/java.jpg) Using Java with kdb+
@@ -94,7 +94,7 @@ for(int row=0;row<n(flip.y[0]);row++){
 
 resulting in the following printing at the console
 
-```
+```csv
 sym,time,price,size
 MSFT,15:39:23.746172000,320.2,100
 GOOG,15:39:23.746172001,120.1,300
@@ -129,7 +129,7 @@ Object result=c.k("{x}",flip); // a sync msg, echos the flip back as result
 Kdb+ types are mapped to and from Java types by this driver, and the example `src/kx/examples/TypesMapping.java` demonstrates the construction of atoms, vectors, a dictionary, and a table, sending them to kdb+ for echo back to Java, for comparison with the original type and value. The output is recorded here for clarity:
 
 |            Java type|            kdb+ type|                            value sent|                            kdb+ value|
-|---------------------|---------------------|--------------------------------------|--------------------------------------|
+|--------------------:|--------------------:|-------------------------------------:|-------------------------------------:|
 |   [Ljava.lang.Object|             (0) list|                                      |                                      |
 |    java.lang.Boolean|          (-1)boolean|                                  true|                                    1b|
 |                   [Z|    (1)boolean vector|                                  true|                                   ,1b|
@@ -149,8 +149,8 @@ Kdb+ types are mapped to and from Java types by this driver, and the example `sr
 |                   [D|      (9)float vector|                                 42.42|                                ,42.42|
 |  java.lang.Character|            (-10)char|                                     a|                                   "a"|
 |                   [C|      (10)char vector|                                     a|                                  ,"a"|
-|     java.lang.String|          (-11)symbol|                                    42|                                   `42|
-|   [Ljava.lang.String|    (11)symbol vector|                                    42|                                  ,`42|
+|     java.lang.String|          (-11)symbol|                                    42|                               &#96;42|
+|   [Ljava.lang.String|    (11)symbol vector|                                    42|                              ,&#96;42|
 |   java.sql.Timestamp|       (-12)timestamp|               2017-07-07 15:22:38.976|         2017.07.07D15:22:38.976000000|
 | [Ljava.sql.Timestamp| (12)timestamp vector|               2017-07-07 15:22:38.976|        ,2017.07.07D15:22:38.976000000|
 |           kx.c$Month|           (-13)month|                               2000-12|                              2000.12m|
