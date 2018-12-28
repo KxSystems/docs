@@ -63,7 +63,7 @@ site_author: 'Kx Systems'
 site_description: Resources for kdb+ programmers
 # config.site_name: 'code.kx.com'
 site_name: 'code.kx.com V2'
-site_url: 'http://code.kx.com'
+site_url: 'http://code.kx.com/v2'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
@@ -84,7 +84,7 @@ nav:
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
-    - Q for Mortals 3: http://code.kx.com/q4m3
+    - Q for Mortals 3: /q4m3
     - Remarks on Style:
       - Introduction: style/index.md
       - Maxims: style/maxims.md
