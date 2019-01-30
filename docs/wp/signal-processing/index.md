@@ -700,7 +700,7 @@ of sensors based signal information.
 
 The primary dataset, containing sensor readouts for a single households total power load, that was introduced and then transformed throughout this paper, can be found at [uci.edu](https://archive.ics.uci.edu/ml/datasets/Individual+household+electric+power+consumption).
 
-The code presented in this paper is available at [github.com/callumjbiggs](https://github.com/callumjbiggs/q-signals/blob/master/signal.q).
+The code presented in this paper is available at [github.com/kxcontrib/q-signals](https://github.com/kxcontrib/q-signals).
 
 
 ### Python FFT comparison
