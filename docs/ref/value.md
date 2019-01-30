@@ -60,35 +60,54 @@ q)value x
 ```
 
 
-## Function
+## Lambda
 
-returns a list of metadata:
+!!! warning "Subject to change"
 
--   bytecode
--   parameters
--   locals
--   (context; globals)
--   constants[0]; …; constants[n]
--   definition
+    The structure of the result of `value` on a lambda, e.g. `value {x+y}`, is subject to change.
+
+As of V3.5 the structure is:
+
+```txt
+(bytecode;parameters;locals;(namespace,globals);constants[0];…;constants[n];m;n;f;l;s)
+```
+
+where
+
+this | is
+-----|------
+`m`  | bytecode to source position map; `-1` if position unknown
+`n`  | fully qualified (with namespace) function name as a string, set on first global assignment, with `@` appended for inner lambdas; `()` if not applicable
+`f`  | full path to the file where the function originated from; `""` if not applicable
+`l`  | line number in said file; `-1` if n/a
+`s`  | source code
 
 ```q
 q)f:{[a;b]d::neg c:a*b+5;c+e}
 q)value f
-0xa0794178430316220b048100028276410004
+0xa0624161430309220b048100028269410004
 `a`b
 ,`c
 ``d`e
 5
+21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2
+"..f"
+""
+-1
 "{[a;b]d::neg c:a*b+5;c+e}"
-q)/ Now define in .test context – globals refer to current context of test
+q)/Now define in .test context – globals refer to current context of test
 q)\d .test
 q.test)f:{[a;b]d::neg c:a*b+5;c+e}
 q.test)value f
-0xa0794178430316220b048100028276410004
+0xa0624161430309220b048100028269410004
 `a`b
 ,`c
 `test`d`e
 5
+21 19 20 17 18 0 16 11 0 9 0 9 0 25 23 24 2
+".test.f"
+""
+-1
 "{[a;b]d::neg c:a*b+5;c+e}"
 ```
 

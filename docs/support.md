@@ -19,8 +19,8 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
 
 ## Licensed customers
 
-<i class="far fa-comments"></i> kdb+ Listbox
-: If you work at a company that has licensed kdb+, [submit your company email address](https://www.listbox.com/subscribe/?listname=k4) to join the kdb+ Listbox.
+<i class="far fa-comments"></i> kdb+ Topicbox
+: If you work at a company that has licensed kdb+, you can join the [k4 Topicbox group](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106).
 
 <i class="far fa-handshake"></i> Designated Contacts
 : Licensed customers designate to Kx staff members whom they have authorised to deal with kdb+ licenses, downloads and bug reports. Designated Contacts can reach us at the following addresses:
