@@ -64,7 +64,7 @@ q)value x
 
 !!! warning "Subject to change"
 
-    The structure of the result of `value` on a lambda, e.g. `value {x+y}`, is subject to change.
+    The structure of the result of `value` on a lambda, e.g. `value {x+y}`, is subject to change between versions.
 
 As of V3.5 the structure is:
 
