@@ -358,7 +358,7 @@ jv(&syms,more); // append a vector with two symbols to syms
 Strings and datetimes are special cases and extra utility functions are provided:
 
 
-purpose                            |                          
+purpose                            | function
 -----------------------------------|--------------------------
 Create a char array from string    | `K kp(string);`           
 Create a char array from string of length n | `K kpn(string, n);`
@@ -552,6 +552,44 @@ int main(){
 ```
 
 
+## SSL/TLS
+
+To use this feature, you must link with one of the “e” libs.
+
+-   `e.dll`
+-   `e.lib`
+-   `est.dll`
+-   `est.lib`
+-   `e_static.lib`
+-   `est_static.lib`
+-   `e.o`
+
+Encrypted connections may be requested via the capability parameter of the new `khpunc` function, e.g.
+
+```c
+extern I khpunc(S hostname,I port,S usernamepassword,I timeout,I capability); 
+// capability is a bit field (1 - 1TB limit, 2 - use TLS)
+int handle=khpunc("remote host",5000,"user:password",timeout,2);
+```
+
+There’s an additional return value for TLS connections, `-3`, which indicates the `openssl init` failed. This can be checked via
+
+```c
+extern K sslInfo(K x); // returns an error if init fails, or a dict of settings similar to -26!x
+if(handle==-3){K x=ee(sslInfo((K)0));printf("Init error %s\n",xt==-128?x->s:"unknown");r0(x);}
+```
+
+A restriction for SSL/TLS connections – these can be used from the initialization thread only, i.e. the thread which first calls any `khp` function since the start of the application.
+
+The lib is sensitive to the same environment variables as kdb+, noted at [SSL/TLS](../../kb/ssl)
+
+The OpenSSL libs are loaded dynamically,  the first time a TLS connection is requested. It may be forced on startup with
+
+```c
+int h=khpunc("",-1,"",0,2); // remember to test the return value for -3
+```
+
+
 ## Socket timeouts
 
 There are a number of reasons not to specify or implement timeouts. 
@@ -716,7 +754,7 @@ Callbacks from `sd1` are executed on the main thread of q.
 
 !!! tip
 
-    Windows developers may be interested in <i class="fab fa-github"></i> [github.com/ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)
+    Windows developers may be interested in <i class="fab fa-github"></i> [ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)
 
 
 ## Serialization and deserialization
