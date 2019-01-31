@@ -125,7 +125,6 @@ nav:
     - Reference card: ref/index.md
     - Basics:
       # - Functions: basics/functions.md
-      - Ambivalence: basics/ambivalence.md
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
@@ -157,6 +156,7 @@ nav:
       - Sorting: basics/sort.md
       - Strings: basics/strings.md
       - Syntax: basics/syntax.md
+      - Variadic syntax: basics/variadic.md
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
     - Errors: basics/errors.md

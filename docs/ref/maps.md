@@ -10,18 +10,18 @@ keywords: adverb, case,dictionary, distributive, distributor, each, each both, e
 
 
 
-A map is an iterator that derives a [**uniform**](../basics/glossary.md#uniform-function) function that applies its [iterable](../basics/glossary.md#iterable) once to each item of a dictionary, a list, or conforming lists. 
+The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that applies their [iterables](../basics/glossary.md#iterable) once to each item of a dictionary, a list, or conforming lists. 
 
 There are six maps. 
 
 glyph | operator      | iterable rank | iteration rank
 ------|---------------|---------------|----------------
-`'`   | Each          | any           | same as map
+`'`   | Each          | any           | same as iterable
 `\:`  | Each Left     | binary        | binary
 `/:`  | Each Right    | binary        | binary
 `':`  | Each Parallel | unary         | unary
 `':`  | Each Prior    | binary        | variadic
-`'`   | Case          | 1             | variadic
+`'`   | Case          | unary         | variadic
 
 
 ## Each
@@ -30,7 +30,7 @@ _Apply an iterable item-wise to a dictionary, list, or conforming lists and/or d
 
 Syntax: `(m')x`, `x m'y`, `m'[x;y;z]`
 
-An Each iteration evaluates its iterable on each item of a list, dictionary or on corresponding items of conforming lists. The iteration has the same rank as the iterable. 
+A function derived by Each evaluates its iterable on each item of a list, dictionary or on corresponding items of conforming lists. The iteration has the same rank as the iterable. 
 
 ```q
 q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 
