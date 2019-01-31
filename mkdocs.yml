@@ -160,11 +160,9 @@ nav:
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
     - Errors: basics/errors.md
-    - Extenders:
-      - Overview: ref/extenders.md
-      - Case: ref/case.md
-      - Compose: ref/compose.md
-      - Distributors: ref/distributors.md
+    - Iterators:
+      - Overview: ref/iterators.md
+      - Maps: ref/maps.md
       - Progressors: ref/progressors.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
@@ -294,6 +292,7 @@ nav:
       - Apply, Index, Trap: ref/apply.md
       - Cast: ref/cast.md
       - Coalesce: ref/coalesce.md
+      - Compose: ref/compose.md
       - Cond: ref/cond.md
       - Cut: ref/cut.md
       - Deal, Roll, Permute: ref/roll-deal.md
@@ -483,7 +482,7 @@ nav:
     - Disaster recovery: wp/disaster-recovery/index.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
-    - Extenders: wp/extenders.md
+    - Iterators: wp/iterators.md
     - Java API: wp/java-api/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md

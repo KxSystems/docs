@@ -15,7 +15,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>B</td><td>[`bin` `binr`](bin.md "binary search")</td></tr>
 <tr><td>C</td><td>[`ceiling`](ceiling.md "lowest integer above") [`cols`](cols.md#cols "column names of a table") [`cor`](cor.md "correlation") [`cos`](cos.md "cosine") [`count`](count.md "number of items") [`cov`](cov.md "covariance") [`cross`](cross.md "cross product") [`csv`](csv.md "comma delimiter") [`cut`](cut.md "cut array into pieces")</td></tr>
 <tr><td>D</td><td>[`delete`](delete.md "delete rows or columns from a table") [`deltas`](deltas.md "differences between consecutive pairs") [`desc`](desc.md "descending sort") [`dev`](dev.md "standard deviation") [`differ`](differ.md "flag differences in consecutive pairs") [`distinct`](distinct.md "unique items") [`div`](div.md "integer division") [`do`](../basics/control.md#do "control word") [`dsave`](dsave.md "save global tables to disk")</td></tr>
-<tr><td>E</td><td>[`each`](distributors.md#each-keyword "apply to each item") [`ej`](ej.md "equi-join") [`ema`](ema.md "exponentially-weighted moving average") [`enlist`](enlist.md "arguments as a list") [`eval`](eval.md "evaluate a parse tree") [`except`](except.md "left argument without items in right argument") [`exec`](exec.md) [`exit`](exit.md "terminate q") [`exp`](exp.md "power of e")</td></tr>
+<tr><td>E</td><td>[`each`](maps.md#each-keyword "apply to each item") [`ej`](ej.md "equi-join") [`ema`](ema.md "exponentially-weighted moving average") [`enlist`](enlist.md "arguments as a list") [`eval`](eval.md "evaluate a parse tree") [`except`](except.md "left argument without items in right argument") [`exec`](exec.md) [`exit`](exit.md "terminate q") [`exp`](exp.md "power of e")</td></tr>
 <tr><td>F</td><td>[`fby`](fby.md "filter-by") [`fills`](fill.md#fills "forward-fill nulls") [`first`](first.md "first item") [`fkeys`](fkeys.md "foreign-key columns mapped to their tables") [`flip`](flip.md "transpose") [`floor`](floor.md "greatest integer less than argument")</td></tr>
 <tr><td>G</td><td>[`get`](get.md "get a q data file") [`getenv`](getenv.md "value of an environment variable") [`group`](group.md "dictionary of distinct items") [`gtime`](gtime.md "UTC timestamp")</td></tr>
 <tr><td>H</td><td>[`hclose`](handles.md#hclose "close a file or process") [`hcount`](handles.md#hcount "size of a file") [`hdel`](handles.md#hdel "delete a file") [`hopen`](handles.md#hopen "open a file") [`hsym`](handles.md#hsym "convert symbol to filename or IP address")</td></tr>
@@ -25,7 +25,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>M</td><td>[`mavg`](avg.md#mavg "moving average") [`max`](max.md "maximum") [`maxs`](max.md#maxs "maxima of preceding items") [`mcount`](count.md#mcount "moving count") [`md5`](md5.md "MD5 hash") [`mdev`](dev.md#mdev "moving deviation") [`med`](med.md "median") [`meta`](meta.md "metadata of a table") [`min`](min.md "minimum") [`mins`](min.md#mins "minimum of preceding items") [`mmax`](max.md#mmax "moving maxima") [`mmin`](min.md#mmin "moving minima") [`mmu`](mmu.md "matrix multiplication") [`mod`](mod.md "remainder") [`msum`](sum.md#msum "moving sum")</td></tr>
 <tr><td>N</td><td>[`neg`](neg.md "negate") [`next`](next.md "next items") [`not`](not.md "logical not") [`null`](null.md "is argument a null")</td></tr>
 <tr><td>O</td><td>[`or`](greater.md "greater") [`over`](progressors.md#keywords-scan-and-over "reduce an array with a function")</td></tr>
-<tr><td>P</td><td>[`parse`](parse.md "parse a string") [`peach`](distributors.md#peach-keyword "parallel each") [`pj`](pj.md "plus join") [`prd` `prds`](prd.md "product, unning products") [`prev`](next.md#prev "previous items") [`prior`](distributors.md#prior-keyword "apply function between each item and its predecessor")</td></tr>
+<tr><td>P</td><td>[`parse`](parse.md "parse a string") [`peach`](maps.md#peach-keyword "parallel each") [`pj`](pj.md "plus join") [`prd` `prds`](prd.md "product, unning products") [`prev`](next.md#prev "previous items") [`prior`](maps.md#prior-keyword "apply function between each item and its predecessor")</td></tr>
 <tr><td>R</td><td>[`rand`](rand.md "random number") [`rank`](rank.md "grade up") [`ratios`](ratios.md "ratios of consecutive pairs") [`raze`](raze.md "join items") [`read0`](read0.md "read file as lines") [`read1`](read1.md "read file as bytes") [`reciprocal`](reciprocal.md "reciprocal of a number") [`reval`](eval.md#reval "variation of eval") [`reverse`](reverse.md "reverse the order of items") [`rload`](load.md#rload "load a splayed table") [`rotate`](rotate.md "rotate items") [`rsave`](save.md#rsave) [`rtrim`](trim.md#rtrim "remove trailing spaces")</td></tr>
 <tr><td>S</td><td>[`save`](save.md "save global data to file") [`scan`](progressors.md#keywords-scan-and-over "apply function to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
 <tr><td>T</td><td>[`tables`](tables.md "sorted list of tables") [`tan`](tan.md "tangent") [`til`](til.md "integers up to x") [`trim`](trim.md "remove leading and trailing spaces") [`type`](type.md "data type")</td></tr>
@@ -76,17 +76,17 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 [Overloaded operator glyphs](overloads.md)
 
 
-## [Extenders](extenders.md)
+## [Iterators](iterators.md)
 
 <table markdown="1">
 <thead>
-<tr><th colspan="2">progressors</th><th colspan="2">distributors</th><th colspan="2">distributors</th><th colspan="2"/></tr>
+<tr><th colspan="2">progressors</th><th colspan="2">maps</th><th colspan="2">distributors</th><th colspan="2"/></tr>
 </thead>
 <tbody>
 <tr>
 <td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](progressors.md)</td>
-<td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](distributors.md#each-left-and-each-right)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](distributors.md#each)<br>[Each&nbsp;Parallel](distributors.md#each-parallel)<br>[Each Prior](distributors.md##each-prior)</td>
+<td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](maps.md#each-left-and-each-right)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each)<br>[Each&nbsp;Parallel](maps.md#each-parallel)<br>[Each Prior](maps.md##each-prior)</td>
 <td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](case.md)<br>[Compose](compose.md)</td>
 </tr>
 </tbody>
@@ -212,15 +212,15 @@ q)`VARNAME setenv "NEWVALUE"
 <tr><td class="nowrap">100</td><td/><td colspan="7">[lambda](../basics/function-notation.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">101</td><td/><td colspan="7">unary primitive</td><td/><td/><td/></tr>
 <tr><td class="nowrap">102</td><td/><td colspan="7">operator</td><td/><td/><td/></tr>
-<tr><td class="nowrap">103</td><td/><td colspan="7">[extender](extenders.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">103</td><td/><td colspan="7">[iterator](iterators.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">104</td><td/><td colspan="7">projection</td><td/><td/><td/></tr>
 <tr><td class="nowrap">105</td><td/><td colspan="7">[composition](compose.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">106</td><td/><td colspan="7">[`m'`](distributors.md#each)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">106</td><td/><td colspan="7">[`m'`](maps.md#each)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">107</td><td/><td colspan="7">[`m/`](progressors.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">108</td><td/><td colspan="7">[`m\`](progressors.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">109</td><td/><td colspan="7">[`m':`](distributors.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">110</td><td/><td colspan="7">[`m/:`](distributors.md#each-left-and-each-right)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">111</td><td/><td colspan="7">[`m\:`](distributors.md#each-left-and-each-right)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">109</td><td/><td colspan="7">[`m':`](maps.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">110</td><td/><td colspan="7">[`m/:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">111</td><td/><td colspan="7">[`m\:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">112</td><td/><td colspan="7">dynamic load</td><td/><td/><td/></tr>
 </tbody>
 </table>
@@ -229,7 +229,7 @@ _n_: short int returned by [`type`](type.md) and used for [casting](../basics/ca
 _c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)  
 _sz_: size in bytes  
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
-`m`: map  
+`m`: iterable  
 RO: read only; RW: read-write
 
 

@@ -93,6 +93,6 @@ q)1 xprev "abcde"
 
 
 <i class="far fa-hand-point-right"></i>
-[Each Prior](../ref/distributors.md#each-prior)  
+[Each Prior](../ref/maps.md#each-prior)  
 Basics: [Select](../basics/selection.md)
 

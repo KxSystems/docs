@@ -51,8 +51,8 @@ date       sym  price   size
 
 !!! warning "Binary use deprecated"
 
-    As of V3.6 the keyword is [ambivalent](../basics/ambivalence.md). 
-    The ambivalence is deprecated and may disappear in future versions.
+    As of V3.6 the keyword is [variadic](../basics/variadic.md). 
+    Binary application is deprecated and may disappear in future versions.
     The keyword cannot be applied infix. 
 
     For a binary version, use Match Each Prior: `~:'`.

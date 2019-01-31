@@ -200,7 +200,7 @@ which, since $E$ is less than 1, can hold only if `a` is 0.
 Besides Equal, comparison tolerance is used in the operators 
 
 <!-- Following list from K2 Reference Manual
-Find, Floor, `in`, More, Less, Match, and the extenders Converge, Do and While.
+Find, Floor, `in`, More, Less, Match, and the iterators Converge, Do and While.
  -->  
 
 `=` `<` `<=` `>=` `>` `~`
@@ -211,7 +211,7 @@ And prior to V3.0
   
 `floor` `ceiling`
 
-It is also used by the extenders [Converge, Do and While](../ref/progressors.md).
+It is also used by the iterators [Converge, Do and While](../ref/progressors.md).
 
 It is _not_ used by other keywords that have tests for equality:
   

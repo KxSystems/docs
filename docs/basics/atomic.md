@@ -25,7 +25,7 @@ q)neg (5 2; 3; -8 0 2)
 
 `neg` can be defined recursively for lists in terms of its definition for atoms. To do so we need two language constructs. 
 
--   Any function `f` can be applied independently to the items of a list by modifying the function with the Each extender, as in `f'`. 
+-   Any function `f` can be applied independently to the items of a list by modifying the function with the Each iterator, as in `f'`. 
 -   The function `{0>type x}` has the value 1 when `x` is an atom, and 0 when `x` is a list. 
 
 Using these constructs, `neg` can be defined as follows:

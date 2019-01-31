@@ -12,7 +12,7 @@ keywords: blog, kdb+, news, q, site
 Version 2 of this site has
 
 -   extensive revision of the Reference, including 
--   a completely new description of the _extenders_ (formerly _adverbs_)
+-   a completely new description of the _iterators_ (formerly _adverbs_)
 -   simplified URLs for Reference articles
 
 

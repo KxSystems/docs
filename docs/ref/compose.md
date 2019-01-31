@@ -1,21 +1,21 @@
 ---
-keywords: adverb, compose, composition, extender, extension, function, kdb+, map, q
+keywords: adverb, compose, composition, iterable, function, kdb+, map, q
 ---
 
 # `'` Compose
 
 
 
-_Compose a unary map with another._
+_Compose a unary iterable with another._
 
 Syntax: `'[f;ff][x;y;z;…]` 
 
 Where 
 
--   `f` is a unary map
--   `ff` is a map rank ≥1
+-   `f` is a unary [iterable](glossary.md/#iterable)
+-   `ff` is an iterable rank ≥1
 
-the extension `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`. 
+the derived function `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`. 
 
 ```q
 q)ff:{[w;x;y;z]w+x+y+z}

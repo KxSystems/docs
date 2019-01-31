@@ -10,10 +10,10 @@ _Modify one or more items in a list._
 
 syntax           | rank | semantics
 -----------------|:----:|----------------------------------------
-`.[d; i; m; my]` | 4    | amend items at depth with map rank ≥2
-`@[d; i; m; my]` | 4    | amend items at depth 1 with map rank ≥2
-`.[d; i; u]`     | 3    | amend items at depth with unary map
-`@[d; i; u]`     | 3    | amend items at depth 1  with unary map
+`.[d; i; m; my]` | 4    | amend items at depth with iterable rank ≥2
+`@[d; i; m; my]` | 4    | amend items at depth 1 with iterable rank ≥2
+`.[d; i; u]`     | 3    | amend items at depth with unary iterable
+`@[d; i; u]`     | 3    | amend items at depth 1  with unary iterable
 `.[d; i; :; y]`  | 4    | replace items at depth 
 `@[d; i; :; y]`  | 4    | replace items at depth 1
 
@@ -21,8 +21,8 @@ Where
 
 -   `d` is a list or a handle to a list
 -   `i` is a list of items in the domain of `d`
--   `m` is a map of rank $n$, and `my` an atom, or list conformable to `i`, of rank $n-1$ with items in the right domain/s of `m`
--   `u` is a unary map
+-   `m` is an iterable of rank $n$, and `my` an atom, or list conformable to `i`, of rank $n-1$ with items in the right domain/s of `m`
+-   `u` is a unary iterable
 -   `y` is an atom or list conformable to `i`
 
 if `d` is a 
@@ -44,7 +44,7 @@ If `d` is an **atom** other than a dictionary or a handle and `i` is an empty li
 
 If `d` is a **list** and `i` is **nil**, then all of `d` is amended, but one item at a time, as if `i` were `key d`. ==FIXME Confirm. Example==
 
-In the case of a non-empty list `i`, the map `u` or `m` is evaluated once for every path generated from `i`, just as the above definition indicates. 
+In the case of a non-empty list `i`, the iterable `u` or `m` is evaluated once for every path generated from `i`, just as the above definition indicates. 
 
 However, if the index `i` is the empty list, i.e. `()`, then Amend is Amend Entire. That is, the entire value in `d` is replaced, in the quaternary `.[d;();m;y]` with `m[d;y]`, or in `.[d;();:;y]` with `y`, as in `d:y`, and in the ternary `.[d;();u]` with `u[d]`. 
 
@@ -189,9 +189,9 @@ q)d                           q)r
 Note multiple replacements of some items-at-depth in `d`, corresponding to the multiple updates in the earlier example.
 
 
-## Unary map
+## Unary iterable
 
-The ternary, replaces the selection with the results of applying `u` to them.
+The ternary replaces the selection with the results of applying `u` to them.
 
 ```q
 q)d
@@ -247,7 +247,7 @@ Note the application of [Over](FIXME) to Amend, which requires that whenever `F`
 
 ## Accumulate
 
-Cases of Amend with a map `u` or `m` are sometimes called Accumulate because the new items-at-depth are computed in terms of the old, as in `.[x; 2 6; +; 1]`, where item 6 of item 2 is incremented by 1.
+Cases of Amend with an iterable `u` or `m` are sometimes called Accumulate because the new items-at-depth are computed in terms of the old, as in `.[x; 2 6; +; 1]`, where item 6 of item 2 is incremented by 1.
 
 
 ## Errors

@@ -423,7 +423,7 @@ K class | q namespace | q   | function
 <code class="nowrap">K.prd()</code> | <code class="nowrap">q.prd()</code> | [<code class="nowrap">prd</code>](../../ref/prd.md) | product
 <code class="nowrap">K.prds()</code> | <code class="nowrap">q.prds()</code> | [<code class="nowrap">prds</code>](../../ref/prd.md#prds) | cumulative products
 <code class="nowrap">K.prev()</code> | <code class="nowrap">q.prev()</code> | [<code class="nowrap">prev</code>](../../ref/next.md#prev) | previous items
-<code class="nowrap">K.prior()</code> | <code class="nowrap">q.prior()</code> | [<code class="nowrap">prior</code>](../../ref/distributors.md#prior-keyword) | prior
+<code class="nowrap">K.prior()</code> | <code class="nowrap">q.prior()</code> | [<code class="nowrap">prior</code>](../../ref/maps.md#prior-keyword) | prior
 <code class="nowrap">K.rand()</code> | <code class="nowrap">q.rand()</code> | [<code class="nowrap">rand</code>](../../ref/rand.md) | random number
 <code class="nowrap">K.rank()</code> | <code class="nowrap">q.rank()</code> | [<code class="nowrap">rank</code>](../../ref/rank.md) | grade up
 <code class="nowrap">K.ratios()</code> | <code class="nowrap">q.ratios()</code> | [<code class="nowrap">ratios</code>](../../ref/ratios.md) | ratios of consecutive pairs

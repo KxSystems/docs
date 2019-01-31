@@ -63,7 +63,7 @@ Locals and globals are different: locals don’t have symbols associated with th
 
 ## How do I query a column of strings for multiple values?
 
-If you wish to query a column of strings for a single value either `like` or `~` (Match) with an extender can be used
+If you wish to query a column of strings for a single value either `like` or `~` (Match) with an iterator can be used
 
 ```q
 q)e:([]c:("ams";"lon";"amS";"bar")) 
@@ -82,7 +82,7 @@ c
 "amS"
 ```
 
-To query for multiple strings you need to use another extender, then aggregate the results into a single boolean value using `sum` or `any`. Generally the `like` form is easier to understand and more efficient.
+To query for multiple strings you need to use another iterator, then aggregate the results into a single boolean value using `sum` or `any`. Generally the `like` form is easier to understand and more efficient.
 
 ```q
 q)select from e where any c like/:("lon";"am*")

@@ -63,9 +63,9 @@ _:   floor
 ```
 
 
-## Ambivalent keywords
+## Variadic keywords
 
-Q keywords, such as `deltas`, that are simple covers of extensions inherit their [ambivalence](ambivalence.md), though they cannot be applied infix as the extensions can.
+Q keywords, such as `deltas`, that are simple covers of extensions inherit their [variadic syntax](variadic.md), though they cannot be applied infix as the extensions can.
 
 ```q
 q)deltas                  / cover for the extension
@@ -89,12 +89,12 @@ q)10 deltas y             / cannot be applied infix
 
 The keywords are intended as covers for the unary application of the extension. For binary application, use the extension, as shown above.
 
-!!! warning "Binary application of ambivalent keywords"
+!!! warning "Binary application of variadic keywords"
 
-    The binary application of ambivalent keywords is deprecated. 
+    The binary application of variadic keywords is deprecated. 
     Support for it may be withdrawn in the future. 
 
-The ambivalent keywords are:
+The variadic keywords are:
 
 ```txt
 deltas 

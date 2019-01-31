@@ -18,7 +18,7 @@ Where
 -   `x` is a numeric or temporal atom of the same type as `y`
 
 returns differences between consecutive pairs of items of `y`.
-Note `deltas` is ambivalent: can be applied as unary or binary.
+Note `deltas` is variadic: it can be applied as unary or binary.
 
 Where applied as 
 
@@ -55,6 +55,6 @@ price| x
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Each-prior](distributors.md#each-prior), [`differ`](differ.md), [`ratios`](ratios.md)
+[Each-prior](maps.md#each-prior), [`differ`](differ.md), [`ratios`](ratios.md)
 
 

@@ -71,7 +71,7 @@ select … by sym, … from t where sym in …, …
 
 when `sym` has a `` `g`` or `` `p`` attribute. (Since V3.2 2014.05.02)
 
-It uses [`peach`](../ref/distributors.md#each-parallel) for both in-memory and on-disk tables. For single-threaded, this is approx 6&times; faster in memory, 2&times; faster on disk, and uses less memory than previous releases – but mileage will vary. This is also applicable for partitioned DBs as
+It uses [`peach`](../ref/maps.md#each-parallel) for both in-memory and on-disk tables. For single-threaded, this is approx 6&times; faster in memory, 2&times; faster on disk, and uses less memory than previous releases – but mileage will vary. This is also applicable for partitioned DBs as
 
 ```q
 select … by sym, … from t where date …, sym in …, …

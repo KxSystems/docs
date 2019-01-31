@@ -881,9 +881,9 @@ k('1f')
 ```
 
 
-### Extenders
+### Iterators
 
-Extenders (formerly _adverbs_) in q are somewhat similar to Python decorators. They act on functions and produce new functions. The six extenders are summarized in the table below.
+Iterators (formerly _adverbs_) in q are somewhat similar to Python decorators. They act on functions and produce new functions. The six iterators are summarized in the table below.
 
 PyQ         | q    | description
 ------------|------|--------------------------------
@@ -894,7 +894,7 @@ PyQ         | q    | description
 `K.sv()`    | `/:` | Each Right or scalar from vector
 `K.vs()`    | `\:` | Each Left or vector from scalar
 
-The functionality provided by the first three extenders is similar to functional programming features scattered throughout Python standard library.
+The functionality provided by the first three iterators is similar to functional programming features scattered throughout Python standard library.
 Thus `each` is similar to [`map()`](https://docs.python.org/3.6/library/functions.html#map "in Python V3.6").
 For example, given a list of lists of numbers
 
@@ -918,7 +918,7 @@ or
 
 and get similar results.
 
-The `over` extender is similar to the [`functools.reduce()`](https://docs.python.org/3.6/library/functools.html#functools.reduce "in Python V3.6") function. Compare
+The `over` iterator is similar to the [`functools.reduce()`](https://docs.python.org/3.6/library/functools.html#functools.reduce "in Python V3.6") function. Compare
 
 ```python
 >>> q(',').over(data)
@@ -932,7 +932,7 @@ and
 [1, 2, 1, 2, 3]
 ```
 
-Finally, the `scan` extender is similar to the [`itertools.accumulate()`](https://docs.python.org/3.6/library/itertools.html#itertools.accumulate  "in Python V3.6") function.
+Finally, the `scan` iterator is similar to the [`itertools.accumulate()`](https://docs.python.org/3.6/library/itertools.html#itertools.accumulate  "in Python V3.6") function.
 
 ```python
 >>> q(',').scan(data).show()
@@ -950,7 +950,7 @@ Finally, the `scan` extender is similar to the [`itertools.accumulate()`](https:
 
 #### Each
 
-The Each extender serves double duty in q. When it is applied to a **function**, it returns a new [extension](../../ref/extenders.md) function that expects lists as arguments and maps the original function over those lists. For example, we can write a ‘daily return’ function in q that takes yesterday’s price as the first argument `x`, today’s price as the second `y`, and dividend as the third `z` as follows:
+The Each iterator serves double duty in q. When it is applied to a **function**, it derives a new [function](../../ref/iterators.md) that expects lists as arguments and maps the original function over those lists. For example, we can write a ‘daily return’ function in q that takes yesterday’s price as the first argument `x`, today’s price as the second `y`, and dividend as the third `z` as follows:
 
 ```python
 >>> r = q('{(y+z-x)%x}') # Recall that % is the division operator in q.
@@ -965,7 +965,7 @@ and use it to compute returns from a series of prices and dividends using `r.eac
 k('0n 0.004950495 0.0009852217 -0.01104418')
 ```
 
-When the Each extender is applied to an **integer vector**, it returns a n-ary extension function that for each `i`<sup>th</sup> argument selects its `v[i]`<sup>th</sup> element. For example,
+When the Each iterator is applied to an **integer vector**, it derives a n-ary function that for each `i`<sup>th</sup> argument selects its `v[i]`<sup>th</sup> element. For example,
 
 ```python
 >>> v = q.til(3)
@@ -974,14 +974,14 @@ k('1 100 30')
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Case](../../ref/case.md) extender
+[Case](../../ref/maps.md#case) iterator
 
-Note that scalars passed to `v.each` are treated as infinitely repeated values. Vector arguments must all be of the same length.
+Note that atoms passed to `v.each` are treated as infinitely repeated values. Vector arguments must all be of the same length.
 
 
 #### Over and scan
 
-Given a function `f`, the extensions `f.over` and `f.scan` are similar as both apply `f` repeatedly, but `f.over` only returns the final result, while `f.scan` returns all intermediate values as well.
+Given a function `f`, the derived functions `f.over` and `f.scan` are similar as both apply `f` repeatedly, but `f.over` returns only the final result, while `f.scan` returns all intermediate values as well.
 
 For example, recall that the Golden Ratio can be written as a continued fraction as follows:
 
@@ -1078,7 +1078,7 @@ In the previous section we saw a function `ratios()` that takes a vector and ret
 k('1 2 -1 3')
 ```
 
-These functions are in fact implemented in q by applying the `prior` extender to the division (`%`) and subtraction functions respectively.
+These functions are in fact implemented in q by applying the `prior` iterator to the division (`%`) and subtraction functions respectively.
 
 ```python
 >>> q.ratios == q('%').prior and q.deltas == q('-').prior
@@ -1094,7 +1094,7 @@ $$f.prior(v)=(f(v_1, v_0), f(v_2, v_1), ⋯)$$
 
 !!! note "`vs` and `sv`"
 
-    `K.vs` and `K.sv` correspond to q’s `vs` and `sv` and _also_ behave as the extenders Each Left and Each Right.
+    `K.vs` and `K.sv` correspond to q’s `vs` and `sv` and _also_ behave as the iterators Each Left and Each Right.
 
 Of all the q keywords, these two have the most cryptic names and offer some non-obvious features.
 
@@ -1111,6 +1111,7 @@ Suppose you have a list of file names
 ```
 
 and an extension
+
 ```python
 >>> ext = K.string(".py")
 ```

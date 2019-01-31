@@ -162,6 +162,8 @@ q)value differ
 ~:
 ~':
 ```
+
+
 ## Primitive
 
 returns the internal code for the primitive.
@@ -171,9 +173,10 @@ q)value each (::;+;-;*;%)
 0 1 2 3 4
 ```
 
-## Extension
 
-returns the original map.
+## Derived function
+
+returns the original iterable.
 
 ```q
 q)f:+/

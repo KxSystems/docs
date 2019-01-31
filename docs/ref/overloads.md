@@ -32,13 +32,13 @@ n/a  | `\`                    | abort
 1    | `(f\)`, `f\[d]`        | [Converge](progressors.md#converge)
 2    | `n f\d`, `f\[n;d]`     | [Repeat](progressors.md#do)
 2    | `t f\d`, `f\[t;d]`     | [While](progressors.md#while)
-2    | `x g\y`, `g\[x;y;z;…]` | [map-reduce](progressors.md#binary-maps)
+2    | `x g\y`, `g\[x;y;z;…]` | [map-reduce](progressors.md#binary-iterators)
 
 ```txt
-d: data              n: non-negative integer
-f: unary map         t: test map
-g: map rank>1        x: atom or vector
-                     y, z…: conformable atoms or lists
+d: data                   n: non-negative integer
+f: unary iterable         t: test iterable
+g: iterable rank>1        x: atom or vector
+                          y, z…: conformable atoms or lists
 ```
 
 
@@ -136,14 +136,14 @@ rank | example                     | semantics
 
 rank | syntax                                    | semantics
 :---:|-------------------------------------------|-------------------------------------------
-1    | `(f')x`, `f'[x]`, `x ff'y`,  `ff'[x;y;…]` | [Each](distributors.md#each): iterate `ff` itemwise
+1    | `(f')x`, `f'[x]`, `x ff'y`,  `ff'[x;y;…]` | [Each](maps.md#each): iterate `ff` itemwise
 1    | `'msg`                                    | [Signal](signal.md) an error
 1    | `iv'[x;y;…]`                              | [Case](case.md): successive items from lists
 2    | `'[ff;f]`                                 | [Compose](compose.md) `ff` with `f`
 
 ```txt
-f:  unary map         msg: symbol or string
-ff: map of rank ≥1    x, y: data
+f:  unary iterable         msg: symbol or string
+ff: iterable of rank ≥1    x, y: data
 iv: int vector
 ```
 
@@ -152,8 +152,8 @@ iv: int vector
 
 rank | example  | semantics
 :---:|----------|-------------------------------------------------------
-1    | `f':`    | [Each Parallel](distributors.md#each-parallel) with unary `f`
-1    | `g':`    | [Each Prior](distributors.md#each-prior) with binary `g`
+1    | `f':`    | [Each Parallel](maps.md#each-parallel) with unary `f`
+1    | `g':`    | [Each Prior](maps.md#each-prior) with binary `g`
 
 
 ## `/` slash
@@ -164,11 +164,11 @@ n/a  | `/a comment`        | comment: ignore rest of line
 1    | `(f/)y`, `f/[y]`    | [Converge](progressors.md#converge) 
 1    | `n f/ y`, `f/[n;y]` | [Repeat](progressors.md#do) 
 1    | `t f/ y`, `f/[t;y]` | [While](progressors.md#while) 
-1    | `(ff/)y`, `ff/[y]`  | [map-reduce](progressors.md#binary-maps): reduce a list or lists
+1    | `(ff/)y`, `ff/[y]`  | [map-reduce](progressors.md#binary-iterables): reduce a list or lists
 
 ```txt
-f: unary map       t: test map     
-ff: map rank ≥1    y: list
+f: unary iterable       t: test iterable
+ff: iterable rank ≥1    y: list
 n: int atom ≥0
 ```
 

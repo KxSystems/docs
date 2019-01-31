@@ -1,19 +1,20 @@
 # Application and projection
 
 
-## Maps
+## Iterables
 
-A _map_ is a list, dictionary or function.
+An _iterable_ is a list, dictionary,process handle, or function.
+It is a mapping from its argument/s to its result. 
 
--   A list is a map from its indexes to its items. 
--   A dictionary is a map from its keys to its values.
--   A matrix is a map from its row indexes to its rows; 
-or a map from its row and column indexes to its items. 
--   A table is a map from its row indexes to its tuples; 
-or a map from its column names to its columns;
-or a map from its row indexes and column names to its items.
+-   A list is a mapping from its indexes to its items. 
+-   A dictionary is a mapping from its keys to its values.
+-   A matrix is a mapping from its row indexes to its rows; 
+or a mapping from its row and column indexes to its items. 
+-   A table is a mapping from its row indexes to its tuples; 
+or a mapping from its column names to its columns;
+or a mapping from its row indexes and column names to its items.
 
-A function is a map from its _domain/s_ (all its valid arguments)
+A function is a mapping from its _domain/s_ (all its possible valid arguments)
 to its _range_ – all its possible results.
 
 Operators, keywords and lambdas are all functions.
@@ -21,14 +22,14 @@ Operators, keywords and lambdas are all functions.
 
 ## Application
 
-To _apply a map_ means 
+To _apply an iterable_ means 
 
 -  to evaluate a function on its arguments
--  to select items from a list
+-  to select items from a list or dictionary
 
-There are several ways to apply a map.
+There are several ways to do it.
 
-All maps can be applied using either bracket notation or the [Apply](/ref/apply) operator. 
+All iterables can be applied using either bracket notation or the [Apply](/ref/apply) operator. 
 
 Functions can also be applied prefix, infix, postfix, or using the [Apply At](/ref/apply/#apply-at) operator. 
 
@@ -48,7 +49,7 @@ q)3 in 0 1 2 3 4              / binary keyword
 1b
 ```
 
-Unary maps (keywords, lambdas, dictionaries, and lists – but not extenders) can be applied prefix.
+Unary iterables (keywords, lambdas, dictionaries, and lists – but not iterators) can be applied prefix.
 
 ```q
 q)count "zero"                / unary keyword
@@ -58,13 +59,13 @@ q){x*x}4                      / unary lambda
 q)d:`Tom`Dick`Harry!42 97 35  / dictionary
 q)d `Harry`Tom
 35 42
-q)m:3 4#"abcdefghijkl"        / a matrix (binary map)
-q)m 1 3                       / is also a list (unary map)
+q)m:3 4#"abcdefghijkl"        / a matrix (binary iterable)
+q)m 1 3                       / is also a list (unary iterable)
 "def"
 "jkl"
 ```
 
-Extenders can be applied postfix, and usually are.
+Iterators can be applied postfix, and usually are.
 
 ```q
 q)subtots:sum'                / '[sum]
@@ -76,39 +77,40 @@ q)subtots 3 4#til 12
 
 ## Long right scope
 
-Maps applied prefix or infix, have long right scope. 
+Iterables applied prefix or infix, have long right scope. 
 In other words:
 
-When a unary map is applied prefix, its argument is _everything to its right_.
+When a unary iterable is applied prefix, its argument is _everything to its right_.
 ```q
 q)sqrt count "It's about time!"
 4
 ```
-When a binary map is applied infix, its right argument is _everything to its right_.
+When a binary iterable is applied infix, its right argument is _everything to its right_.
 ```q
 q)7 * 2 + 4
 42
 ```
 
-!!! info "Republic of maps"
-    There is no precedence among maps. 
+!!! info "Republic of iterables"
+
+    There is no precedence among iterables. 
     In `7*2+4` the right argument of `*` is the result of evaluating the expression on its right. 
 
     This rule applies without exception. 
 
 
-## Extenders
+## Iterators
 
-The extenders are almost invariably applied postfix. 
+The iterators are almost invariably applied postfix. 
 
 ```q
 q)+/[17 13 12]
 42
 ```
 
-In the above, the Over extender `/` is applied postfix to its single argument `+` to form the [_extension_](../ref/extenders.md) `+/` (sum). 
+In the above, the Over iterators `/` is applied postfix to its single argument `+` to derive the [_function_](../ref/iterators.md) `+/` (sum). 
 
-An extender applied postfix has _short left scope_. That is, its argument is the _object immediately to its left_. For the [Case](/ref/each/#case) extender that object is an int vector; for all other extenders, a map. But note that an extender’s argument may itself be an extension.
+An iterator applied postfix has _short left scope_. That is, its argument is the _object immediately to its left_. For the [Case](../ref/maps.md#case) iterator that object is an int vector; for all other iterators, an iterable. But note that an iterator’s argument may itself be a deerived function.
 
 ```q
 q)txt:(("Now";"is";"the";"time");("for";"all";"good";"folk"))
@@ -124,9 +126,9 @@ q)count''[txt]
 3 3 4 4
 ```
 
-In the last example, the extension `count'` is the argument of the second `'` (Each). 
+In the last example, the derived function `count'` is the argument of the second `'` (Each). 
 
-Only extenders can be applied postfix. 
+Only iterators can be applied postfix. 
 
 <i class="far fa-hand-point-right"></i> 
 [Apply/Index and Apply/Index At](../ref/apply.md) for how to apply functions and index lists
@@ -134,13 +136,13 @@ Only extenders can be applied postfix.
 
 ## Rank and syntax
 
-The _rank_ of a map is the number of 
+The _rank_ of an iterable is the number of 
 
 -   arguments it evaluates, if it is a function
 -   indexes required to select an atom, if it is a list
 
-A map is _ambivalent_ if it can be used with more than one rank.
-All matrixes and some extensions are ambivalent.
+An iterable is _variadic_ if it can be used with more than one rank.
+All matrixes and some derived functions are variadic.
 
 ```q
 q)+/[til 5]           / unary
@@ -151,11 +153,11 @@ q)+/[1000000;til 5]   / binary
 
 _Rank_ is a semantic property, and is independent of syntax. This is a ripe source of confusion.
 
-The syntax of an extension is determined by the application that produced it.
+The syntax of aderived function is determined by the application that produced it.
 
 !!! important "Postfix application produces an infix."
 
-The extension `+/` has ambivalent rank but infix syntax. 
+The derived function `+/` is variadic buthas infix syntax. 
 Applying it infix is straightforward.
 
 ```q
@@ -174,7 +176,7 @@ q)+/[1000000;til 5]   / binary
 ```
 
 Or isolate it with parentheses.
-Its semantic ambivalence remains.
+It remains variadic.
 
 ```q
 q)(+/)til 5           / unary
@@ -183,7 +185,7 @@ q)(+/)[1000000;til 5] / binary
 1000010
 ```
 
-The potential for confusion is even greater when the argument of a unary operator is a unary function. Here the extension is unary – but it is still an infix! 
+The potential for confusion is even greater when the argument of a unary operator is a unary function. Here the derived function is unary – but it is still an infix! 
 Only parentheses or brackets can save us.
 
 ```q
@@ -200,7 +202,8 @@ q)count each txt
 4 4
 ```
 
-Conversely, if the unary operator is applied, not postfix, but with bracket notation (unusual and not recommended) the ambivalent extension is _not_ an infix.
+Conversely, if the unary operator is applied, not postfix, but with bracket notation (unusual and not recommended) the derived function is _not_ an infix.
+But it is still variadic.
 
 ```q
 q)/[+]til 5               / oops, a comment
@@ -223,11 +226,12 @@ q)'[count]txt             / unary, prefix
 
 ## Projection
 
-When a map of rank $n$ is applied to $m$ arguments and $m<n$, the result is a _projection_ of the map onto the supplied arguments (indexes), now known as the _projected_ arguments or indexes. 
+When an iterable of rank $n$ is applied to $m$ arguments and $m<n$, the result is a _projection_ of the iterable onto the supplied arguments (indexes), now known as the _projected_ arguments or indexes. 
 
 In the projection, the values of projected arguments (or indexes) are fixed.
 
-The rank of a projected map is $n-m$.
+The rank of the projection is $n-m$.
+
 ```q
 q)double:2*
 q)double 5                         / unary
@@ -259,7 +263,7 @@ q)m["quick";"brown"]               / binary
 !!! tip "Make projections explicit"
 
     When projecting a function onto an argument list, make the argument list full-length.
-    This is not always necessary but it is good style, because it makes it clear the map is being projected. 
+    This is not always necessary but it is good style, because it makes it clear the iterable is being projected, not applied. 
 
     <pre><code class="language-q">
     q)foo:{x+y+z}
@@ -278,6 +282,6 @@ q)m["quick";"brown"]               / binary
     1b
     </code></pre>
 
-When projecting an [ambivalent function](ambivalence) the argument list must always be full-length.
+When projecting a [variadic function](variadic.md) the argument list must always be full-length.
 
 

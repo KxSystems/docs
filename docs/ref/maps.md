@@ -1,0 +1,366 @@
+---
+keywords: adverb, case,dictionary, distributive, distributor, each, each both, each left, each parallel, each prior, each right, iterate, iterator, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
+---
+
+# Maps
+
+`'` `\:` `/:` `':` 
+
+
+
+
+
+A map is an iterator that derives a [**uniform**](../basics/glossary.md#uniform-function) function that applies its [iterable](../basics/glossary.md#iterable) once to each item of a dictionary, a list, or conforming lists. 
+
+There are six maps. 
+
+glyph | operator      | iterable rank | iteration rank
+------|---------------|---------------|----------------
+`'`   | Each          | any           | same as map
+`\:`  | Each Left     | binary        | binary
+`/:`  | Each Right    | binary        | binary
+`':`  | Each Parallel | unary         | unary
+`':`  | Each Prior    | binary        | variadic
+`'`   | Case          | 1             | variadic
+
+
+## Each
+
+_Apply an iterable item-wise to a dictionary, list, or conforming lists and/or dictionaries._
+
+Syntax: `(m')x`, `x m'y`, `m'[x;y;z]`
+
+An Each iteration evaluates its iterable on each item of a list, dictionary or on corresponding items of conforming lists. The iteration has the same rank as the iterable. 
+
+```q
+q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 
+a| 3
+b| 2
+c| 4
+```
+
+
+### `each` keyword
+
+The mnemonic keyword `each` can be used to apply a unary iterable without parentheses.
+
+```q
+q)count each string `Clash`Fixx`The`Who
+5 4 3 3
+```
+
+<div markdown="1" style="float: right; margin-left: 1em; text-align: center;">
+![each-both](../img/each-both.png)  
+<small>_Each Both_</small>
+</div>
+
+Each applied to a binary iterable is sometimes called Each Both and can be applied infix.
+
+```q
+q)1 2 3 in'(1 0 1;til 100;5 6 7)            / binary, infix 
+110b
+```
+
+Iterations of ternary and higher-rank iterables are applied with brackets.
+
+```q
+q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
+1005000 1000000 1007000
+```
+
+
+## Each Left and Each Right
+
+_Apply a binary iterable between one argument and each item of the other._
+
+
+&nbsp;      | Each Left                        | Each Right
+------------|:--------------------------------:|:-----------------:
+syntax:     | `x m\:y`                         |  `x m/:y`
+equivalent: | `(m[;y]')x`                      | `(m[x;]')y`
+&nbsp;      | ![Each Left](../img/each-left.png) | ![Each Right](../img/each-right.png)
+
+The maps Each Left and Each Right take **binary** iterables and derive binary functions that apply one argument to each item of the other. Effectively, the map projects its iterable on one argument and applies Each.
+
+```q
+q)"abcde",\:"XY"             / Each Left
+"aXY"
+"bXY"
+"cXY"
+"dXY"
+"eXY"
+q)"abcde",/:"XY"             / Each Right
+"abcdeX"
+"abcdeY"
+q)m                          / binary map
+"abcd"
+"efgh"
+"ijkl"
+q)m[0 1;2 3] ~ 0 1 m\:2 3
+1b
+q)0 1 m/:2 3
+"cg"
+"dh"
+q)(flip m[0 1;2 3]) ~ 0 1 m/:2 3
+1b
+```
+
+
+### Left, right, `cross`
+
+Each Left combined with Each Right resembles the result obtained by [`cross`](cross.md).
+
+```q
+q)show a:{x,/:\:x}til 3
+0 0 0 1 0 2
+1 0 1 1 1 2
+2 0 2 1 2 2
+q)show b:{x cross x}til 3
+0 0
+0 1
+0 2
+1 0
+1 1
+1 2
+2 0
+2 1
+2 2
+q){}0N!a
+((0 0;0 1;0 2);(1 0;1 1;1 2);(2 0;2 1;2 2))
+q){}0N!b
+(0 0;0 1;0 2;1 0;1 1;1 2;2 0;2 1;2 2)
+q)raze[a] ~ b
+1b
+```
+
+!!! warning "Atoms and lists in the domains of these iterators"
+
+    The domains of `\:` and `/:` extend beyond binary iterables to include certain atoms and lists. 
+
+    <pre><code class="language-q">
+    q)(", "/:)("quick";"brown";"foxes") 
+    "quick, brown, foxes"
+    q)(0x0\:)3.14156
+    0x400921ea35935fc4
+    </code></pre>
+
+    This is [exposed infrastructure](../basics/exposed-infrastructure.md): use the keywords [`vs`](vs.md) and [`sv`](sv.md) instead.
+
+
+## Each Parallel
+
+<div markdown="1" style="float: right; margin-left: 1em;">
+![Each Parallel](../img/each-parallel.png)
+</div>
+
+_Assign sublists of the argument list to slave tasks, in which the unary iterable is applied to each item of the sublist._
+
+
+Syntax: `(m':)x`
+
+The Each Parallel map takes a **unary** iterable as argument and derives a unary function. The iteration `m':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies the map to each item of its sublist. 
+
+<i class="far fa-hand-point-right"></i> 
+Basics: [Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
+[Parallel processing](../basics/peach.md)
+
+```bash
+$ q -s 2
+KDB+ 3.4 2016.06.14 Copyright (C) 1993-2016 Kx Systems
+m32/ 2()core 4096MB sjt mark.local 192.168.0.17 NONEXPIRE
+```
+
+```q
+q)\t ({sum exp x?1.0}' )2#1000000  / each
+185
+q)\t ({sum exp x?1.0}':)2#1000000  / peach
+79
+q)peach
+k){x':y}
+```
+
+
+### `peach` keyword
+
+The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead of  `(m:')` write `m peach list`.
+
+!!! tip "Higher-rank iterables"
+
+    To parallelize an iterable of rank >1, use [Apply](/ref/apply) to evaluate it on a list of arguments.
+
+    Alternatively, define the iterable as a function that takes a parameter dictionary as argument, and pass the extension a table of parameters to evaluate.
+
+
+## Each Prior
+
+<div markdown="1" style="float: right; margin-left: 1em; z-index: 3">
+![Each Prior](../img/each-prior.png)
+</div>
+
+_Apply a binary map between each item of a list and its preceding item._
+
+Syntax: `(m':)x`, `x m':y`
+
+The Each Prior map takes a **binary** iterable and derives a variadic function.
+The derived function applies the iterable between each item of a list or dictionary and the item prior to it.
+
+```q
+q)(-':)1 1 2 3 5 8 13
+1 0 1 1 2 3 5
+```
+
+The first item of a list has no prior item. 
+If the derived function is applied as a binary, its left argument is taken as the ‘seed’ – the value preceding the first item. 
+
+```q
+q)1950 -': `S`J`C!1952 1954 1960
+S| 2
+J| 2
+C| 6
+```
+
+If the derived function is applied as a unary, and the iterable is an operator with an identity element $I$ known to q, $I$ will be used as the seed.
+
+```q
+q)(*':)2 3 4                        / 1 is I for *
+2 6 12
+q)(,':)2 3 4                        / () is I for ,
+2
+3 2
+4 3
+q)(-':) `S`J`C!1952 1954 1960       / 0 is I for -
+S| 1952
+J| 2
+C| 6
+```
+
+If the derived function is applied as a unary, and the iterable is not an operator with a known identity element, a null of the same type as the argument (`first 0#x`) is used as the seed.
+
+```q
+q){x+2*y}':[2 3 4]
+0N 7 10
+```
+
+
+### `prior` keyword
+
+The keyword `prior`can be used as a mnemonic alternative to `':`.
+
+```q
+q)(-':) 5 16 42 103
+5 11 26 61
+q)(-) prior 5 16 42 103
+5 11 26 61
+q)deltas 5 16 42 103
+5 11 26 61
+```
+
+
+## Case
+
+_Pick successive items from multiple list arguments: the left argument of the iterator determines from which of the arguments each item is picked._
+
+Syntax: `x'[a;b;c;…]`  
+
+Where 
+
+-   `x` is an integer vector
+-   $args$ `[a;b;c;…]` are the arguments to the derived function
+
+the derived function `x'` returns $r$ such that 
+$r_i$ is ($args_{x_i})_i$
+
+![case](../img/case.png)
+
+The derived function `x'` has rank `max[x]+1`. 
+
+Atom arguments are treated as infinitely-repeated values.
+
+```q
+q)0 1 0'["abc";"xyz"]
+"ayc"
+q)e:`one`two`three`four`five
+q)f:`un`deux`trois`quatre`cinq
+q)g:`eins`zwei`drei`vier`funf
+q)l:`English`French`German
+q)l?`German`English`French`French`German
+2 0 1 1 2
+q)(l?`German`English`French`French`German)'[e;f;g]
+`eins`two`trois`quatre`funf
+
+q)/extra arguments don't signal a rank error
+q)0 2 0'["abc";"xyz";"123";"789"]
+"a2c"
+q)0 1 0'["a";"xyz"]  /atom "a" repeated as needed
+"aya"
+```
+
+You can use Case to select between record fields according to a test on some other field. 
+
+Suppose we have lists `h` and `o` of home and office phone numbers, and a third list `p` indicating at which number the subject prefers to be called. 
+
+```q
+q)([]pref: p;home: h; office: o; call: (`home`office?p)'[h;o])
+pref   home             office           call
+---------------------------------------------------------
+home   "(973)-902-8196" "(431)-158-8403" "(973)-902-8196"
+office "(448)-242-6173" "(123)-993-9804" "(123)-993-9804"
+office "(649)-678-6937" "(577)-671-6744" "(577)-671-6744"
+home   "(677)-200-5231" "(546)-864-5636" "(677)-200-5231"
+home   "(463)-653-5120" "(636)-437-2336" "(463)-653-5120"
+```
+
+<i class="far fa-hand-point-right"></i> 
+[Iterators](iterators.md)
+
+Case is a map. 
+Consider the iteration’s arguments as a matrix, of which each row corresponds to an argument.
+
+```q
+q)a:`Kuh`Hund`Katte`Fisch
+q)b:`vache`chien`chat`poisson
+q)c:`cow`dog`cat`fish
+q)show m:(a;b;c)
+Kuh   Hund  Katte Fisch
+vache chien chat  poisson
+cow   dog   cat   fish
+```
+
+Case iterates the int vector as a mapping from column number to row number.
+It is a simple form of scattered indexing. 
+
+```q
+q)i:0 1 0 2
+q)i,'til count i
+0 0
+1 1
+0 2
+2 3
+q)m ./:i,'til count i
+`Kuh`chien`Katte`fish
+q)i'[a;b;c]
+`Kuh`chien`Katte`fish
+```
+
+
+## Empty lists
+
+A map’s derived function is uniform. Applied to an empty right argument it returns an empty list _without evaluating its iterable_.
+
+```q
+q)()~{x+y*z}'[`foo;mt;mt]    / generic empty list ()
+1b
+```
+
+!!! warning "Watch out for type changes when evaluating lists of unknown length."
+
+```q
+q)type (2*')til 5
+7h
+q)type (2*')til 0
+0h
+q)type (2*)til 0
+7h
+```
+
+

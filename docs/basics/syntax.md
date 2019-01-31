@@ -24,9 +24,9 @@ The elements of q are
 -   scripts
 -   environment variables
 
-!!! info "Maps"
+!!! info "Iterables"
 
-    Lists, dictionaries, and functions of all kinds are all _maps_. 
+    Lists, dictionaries, proces handles, and functions of all kinds are all _iterables_. An iterable is a mapping. 
 
     A function maps its domains to its range. 
     A list maps its indexes to its items.
@@ -35,7 +35,7 @@ The elements of q are
 
 ## Tokens
 
-All the ASCII symbols have syntactic significance in q. Some denote functions, that is, actions to be taken; some denote nouns, which are acted on by functions; some denote extenders, which modify nouns and functions to produce new functions; some are grouped to form names and constants; and others are punctuation that bound and separate expressions and expression groups.
+All the ASCII symbols have syntactic significance in q. Some denote functions, that is, actions to be taken; some denote nouns, which are acted on by functions; some denote iterators, which modify nouns and functions to produce new functions; some are grouped to form names and constants; and others are punctuation that bound and separate expressions and expression groups.
 
 The term **token** is used to mean one or more characters that form a syntactic unit. For instance, the tokens in the expression `10.86 +/ LIST` are the constant `10.86`, the name `LIST`, and the symbols `+` and `/`. The only tokens that can have more than one character are constants and names and the following.
 
@@ -321,7 +321,7 @@ x + y        / infix
 f\           / postfix
 ```
 
-In the last example above, the extender `\` is applied postfix to the function `f`, which appears immediately to the left of the extender. Extenders are the only functions that can be applied postfix.
+In the last example above, the iterator `\` is applied postfix to the function `f`, which appears immediately to the left of the iterator. Iterators are the only functions that can be applied postfix.
 
 Bracket and prefix notation are also used to apply a list to its indexes.
 
@@ -390,25 +390,22 @@ They inherit unary forms from k, denoted by a colon suffix, e.g. (`#:`).
 Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary-forms). 
 
 
-## Extenders
+## Iterators
 
-Extenders are higher-order operators. Their arguments are maps (functions, lists, and dictionaries) and their results are derived functions known as _extensions_ that extend the application of the maps. 
+Iterators are higher-order operators. Their arguments are iterables (functions, process handles, lists, and dictionaries) and their results are derived functions that iterate the application of the iterable. 
 
-Three symbols, and three symbol pairs, denote extenders:
+Three symbols, and three symbol pairs, denote ierators:
 
 token         | semantics
 --------------|---------------------
-`'`           | Case, Compose, Each 
+`'`           | Case and Each 
 `':`          | Each Prior, Each Parallel
 `/:` and `\:` | Each Right and Each Left
 `/` and `\`   | Converge, Do, While, Reduce 
 
-Any of these, apart from Compose, in combination with the noun or function immediately to its left, denotes a new function, an _extension_. 
+Any of these in combination with the iterable immediately to its left, derives a new function. 
 
-Compose is a binary extender and can be applied only with bracket notation. 
-(It is the only binary operator that cannot be applied infix.) 
-
-The extension is a variant of the map modified by the extender. 
+The derived function is a variant of the iterable modified by the iterator. 
 For example, `+` is Add and `+/` is _sum_.
 
 ```q
@@ -418,10 +415,10 @@ q)16 + 1 2 3 4      / sum the list with starting value 16
 26
 ```
 
-Any notation for an extension without its arguments (e.g. `+/`) denotes a constant function atom. 
+Any notation for a derived function without its arguments (e.g. `+/`) denotes a constant function atom. 
 
 <i class="far fa-hand-point-right"></i> 
-[Application](application.md) for how to apply extenders and extensions
+[Application](application.md) for how to apply iterators
 
 
 ## Names and namespaces
@@ -452,12 +449,9 @@ Names with dots are _compound_ names, and the segments between dots are _simple_
 Two dots cannot occur together in a name. Compound names beginning with a dot are called _absolute_ names, and all others are _relative_ names.
 
 
-## Extender composition
+## Iterator composition
 
-An extension is _composed_ by any string of extenders with a map to the left and no spaces between any of the extender glyphs or between the map and the leftmost extender glyph. For example, `+\/:\:` composes a well-formed extension. The meaning of such a sequence of symbols is understood from left to right. The leftmost extender (`\`) modifies the map (`+`) to create a new function. The next extender to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the extender at the right end.
-
-<i class="far fa-hand-point-right"></i>
-[Compose extender](../ref/compose.md)
+A derived function is _composed_ by any string of iterators with an iterable to the left and no spaces between any of the iterator glyphs or between the iterable and the leftmost iterator glyph. For example, `+\/:\:` composes a well-formed function. The meaning of such a sequence of symbols is understood from left to right. The leftmost iterator (`\`) modifies the operator (`+`) to create a new function. The next iterator to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the iterator at the right end.
 
 
 ## Projecting the left argument of an operator
@@ -526,15 +520,15 @@ Note that whenever a set of expressions is evaluated left to right, such as thos
 Any number of spaces are usually permitted between tokens in expressions, and usually the spaces are not required. The exceptions are:
 
 -   No spaces are permitted between the symbols 
-  -   `'` and `:` when denoting the extender `':`
-  -   `\` and `:` when denoting the extender `\:`
-  -   `/` and `:` when denoting the extender `/:`
+  -   `'` and `:` when denoting the iterator `':`
+  -   `\` and `:` when denoting the iterator `\:`
+  -   `/` and `:` when denoting the iterator `/:`
   -   a digit and `:` when denoting a function such as `0:`
   -   `:` and `:` for assignments of the form `name :: value`
--   No spaces are permitted between an extender glyph and the map or
-extender symbol to its left.
+-   No spaces are permitted between an iterator glyph and the iterable or
+iterator symbol to its left.
 -   No spaces are permitted between an operator glyph and a colon to its right whose purpose is to denote assignment.
--   If a `/` is meant to denote the left end of a comment then it must be preceded by a blank (or newline); otherwise it will be taken to be part of an extender.
+-   If a `/` is meant to denote the left end of a comment then it must be preceded by a blank (or newline); otherwise it will be taken to be part of an iterator.
 -   Both the underscore character (`_`) and dot character (`.`) denote operators and can also be part of a name. The default choice is part of a name. A space is therefore required between an underscore or dot and a name to its left or right when denoting a function.
 -   At least one space is required between neighboring numeric constants in vector notation.
 -   A minus sign (`-`) denotes both an operator and part of the format of negative constants. A minus sign is part of a negative constant if it is next to a positive constant and there are no spaces between, except that a minus sign is always considered to be the function if the token to the left is a name, a constant, a right parenthesis or a right bracket, and there is no space between that token and the minus sign. The following examples illustrate the various cases:

@@ -327,9 +327,9 @@ x y
 ```
 
 
-### Redesigned extenders
+### Redesigned iterators
 
-Extenders (formerly _adverbs_) can now be used on functions with different ranks. For example, `scan` and `over` can be used with unary functions. To illustrate, the following code generates a Pascal triangle:
+Iterators (formerly _adverbs_) can now be used on functions with different ranks. For example, `scan` and `over` can be used with unary functions. To illustrate, the following code generates a Pascal triangle:
 
 ```python
 >>> f = q('{(0,x)+x,0}') 

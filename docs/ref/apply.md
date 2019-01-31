@@ -35,14 +35,14 @@ Where
 -   `e` is an expression, typically a function
 -   `f` is a unary function and `fx` in its domain 
 -   `g` is a function of rank $n$ and `gx` an atom or list of count $n$ with items in the domains of `g`
--   `m` is a map of rank $n$ (or a handle to one) and `mx` a list of count $n$ with items in the domains of `m`
--   `u` is a unary map (or a handle to one) and `ux` in its domain
+-   `m` is an iterable of rank $n$ (or a handle to one) and `mx` a list of count $n$ with items in the domains of `m`
+-   `u` is a unary iterable (or a handle to one) and `ux` in its domain
 
 
 
 ## Apply, Index
 
-`m . mx` evaluates map `m` on the $n$ arguments listed in `mx`.
+`m . mx` evaluates iterable `m` on the $n$ arguments listed in `mx`.
 
 ```q
 q)+ . 2 3           / +[2;3] Apply
@@ -247,7 +247,7 @@ Note that if `d` is either a dictionary or handle to a directory then `d . enlis
 
     The brackets of an argument list are also syntactic sugar. Nothing can be expressed with brackets that cannot also be expressed using `.`.
 
-You can use the derived function `@\:` to apply a list of unary maps to the same argument. 
+You can use the derived function `@\:` to apply a list of unary iterables to the same argument. 
 
 ```q
 q){`o`h`l`c!(first;max;min;last)@\:x}1 2 3 4 22  / open, high, low, close
@@ -287,7 +287,7 @@ q).[+;2 3;{"Wrong ",x}]
 
 `@[f;fx;e]` is equivalent to `.[f;enlist fx;e]`. 
 
-Use Trap At as a simpler form of Trap, for unary maps.
+Use Trap At as a simpler form of Trap, for unary iterables.
 
 
 ### Limit of the trap
@@ -340,7 +340,7 @@ error  | cause
 domain | the symbol `d` is not a handle
 index  | an atom in `mx` or `ux` is not an index to an item-at-depth in `d`
 rank   | the count of `mx` is greater than the rank of `m`
-type   | `m` or `u` is a symbol atom, but not a handle to a map
+type   | `m` or `u` is a symbol atom, but not a handle to an iterable
 type   | an atom of `mx` or `ux` is not an integer, symbol or null
 
 

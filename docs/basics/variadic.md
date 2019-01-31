@@ -1,11 +1,11 @@
-# Ambivalence
+# Variadic syntax
 
 
 
 
-A map is _ambivalent_ if its rank is not fixed.
+An [iterable](glossary.md#iterable) is _variadic_ if its rank is not fixed.
 
-Lists and dictionaries of depth ≥2 and tables are ambivalent.
+Lists and dictionaries of depth ≥2 and tables are variadic.
 
 ```q
 q)m:4 5#"abcdefghijklmnopqrst"
@@ -25,9 +25,9 @@ q)t[1;`city]                    / binary
 `Paris
 ```
 
-Some operators are ambivalent, for example [Apply](../ref/apply.md) and [Amend](../ref/amend.md).
+Some operators are variadic, for example [Apply](../ref/apply.md) and [Amend](../ref/amend.md).
 
-Each Prior, Over and Scan applied to binary maps produce ambivalent [extensions](../ref/extenders.md).
+Each Prior, Over and Scan applied to binary iterables derive variadic [functions](../ref/iterators.md).
 
 ```q
 q)+/[2 3 4]                  / unary
@@ -40,7 +40,7 @@ q)-':[1900;1952 1954 1960]   / binary
 52 2 6
 ```
 
-Keywords defined from such extensions are also ambivalent.
+Keywords defined from such extensions are also variadic.
 
 ```q
 q)deltas                     / Subtract Each Prior
@@ -56,9 +56,9 @@ q)-':[10;15 27 93]           / binary - supported
 
 ## Projection
 
-Ambivalent maps do not project unless the omitted argument/s are specified as nulls in the argument list.
+Variadic iterables do not project unless the omitted argument/s are specified as nulls in the argument list.
 
-To project an ambivalent map as a unary, use a 2-item argument list to resolve the binary form.
+To project a variadic iterable as a unary, use a 2-item argument list to resolve the binary form.
 
 ```q
 q)g:+/[100;]       / 2-item argument list resolves the binary form
@@ -69,7 +69,7 @@ q)g 2 3 4 5        / the projection is unary
 
 ## Unary forms of binary operators
 
-Many binary operators are ambivalent: they have unary forms.
+Many binary operators are variadic: they have unary forms.
 The unary form can be selected with a suffixed colon.
 
 ```q

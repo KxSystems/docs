@@ -1,5 +1,5 @@
 ---
-keywords: adverb, converge, dictionary, do, extender, extension, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, while
+keywords: adverb, converge, dictionary, do, iterable, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, while
 ---
 
 # Progressors
@@ -9,9 +9,9 @@ keywords: adverb, converge, dictionary, do, extender, extension, fold, kdb+, key
 
 
 
-A progressor is an extender that takes a map as argument and derives an extension that evaluates the map, first on the first item/s of its right argument/s, then on the results of **successive** evaluations.
+A progressor is an iterator that takes an iterable as argument and derives an function that evaluates the map, first on its entire (first) right argument, then on the results of **successive** evaluations.
 
-There are two progressors, Scan and Over. They have the same syntax and perform the same computation. But where the extensions of Scan return the result of each evaluation, those of Over return only the last result. 
+There are two progressors, Scan and Over. They have the same syntax and perform the same computation. But where the Scan derived functions return the result of each evaluation, those of Over return only the last result. 
 
 Over resembles _map reduce_ and _fold_ in some other programming languages.
 
@@ -31,7 +31,7 @@ q)(+/)2 3 4    / Over
 
     While Scan and Over perform the same computation, in general, Over requires less memory, because it does not store intermediate results.
 
-The number of successive evaluations is determined differently for unary and for higher-rank maps. 
+The number of successive evaluations is determined differently for unary and for higher-rank iterables. 
 
 The domain of the progressors is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine). 
 
@@ -55,15 +55,15 @@ Berlin| London
 ```
 
 
-## Unary maps
+## Unary iterables
 
 Syntax: `(m\)x`, `(m/)x`  unary application  
 Syntax: `x m\y`, `x m/y`  binary application
 
-The extension of a progressor and a unary map is ambivalent. 
+The function derived by a progressor and a unary iterable is variadic. 
 The result of the first evaluation is the right argument.
 
-!!! note "The map is evaluated on the entire right argument, not on items of it." 
+!!! note "The iterable is evaluated on the entire right argument, not on items of it." 
 
 The number of evaluations the extension performs is determined (when applied as a binary) by its left argument, or (when applied as a unary) by convergence.
 
@@ -71,7 +71,7 @@ syntax           | name     | number of successive evaluations
 -----------------|----------|---------------------------------------------
 `(m\)x`, `(m/)x` | Converge | until two successive evaluations match, or an evaluation matches `x`
 `i m\x`, `i m/x` | Do       | `i`, a non-negative integer
-`t m\x`, `t m/x` | While    | until unary map `t`, evaluated on the result, returns 0
+`t m\x`, `t m/x` | While    | until unary iterable `t`, evaluated on the result, returns 0
 
 
 ### Converge
@@ -184,14 +184,14 @@ q)waypoints route\`Paris                   / Paris to the end
 `Paris`Genoa`Milan`Vienna`Berlin
 ```
 
-In the last example, both maps are dictionaries.
+In the last example, both iterables are dictionaries.
 
 
-## Binary maps
+## Binary iterables
 
 Syntax: `x m\y`, `x m/y`
 
-The extension of a progressor and a binary map is an ambivalent function. 
+The function derived by a progressor and a binary iterable is variadic. 
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the count of the right argument.
 
@@ -201,7 +201,7 @@ The number of evaluations is the count of the right argument.
 
 ### Binary application
 
-When the extension is applied as a binary, the first evaluation applies the map to the extension’s left argument and the first item of the extension’s right, i.e. `m[x;first y]`. The result of this becomes the left argument in the next evaluation, for which the right argument is the second item of the extension’s right argument. And so on. 
+When the derived function is applied as a binary, the first evaluation applies the iterable to the function’s left argument and the first item of the its right argument, i.e. `m[x;first y]`. The result of this becomes the left argument in the next evaluation, for which the right argument is the second item of the right argument. And so on. 
 
 ```q
 q)1000+\2 3 4
@@ -223,12 +223,12 @@ q)7 m\c
 0 6 6 6 1 5
 ```
 
-Items of `x` must be in the left domain of the map, and items of `y` in its right domain.
+Items of `x` must be in the left domain of the iterable, and items of `y` in its right domain.
 
 
 ### Unary application
 
-When the extension is applied as a unary, and the map is **a function with a known identity element** $I$, then $I$ is taken as the left argument of the first evaluation.
+When the derived function is applied as a unary, and the iterable is **a function with a known identity element** $I$, then $I$ is taken as the left argument of the first evaluation.
 
 ```q
 q)(,\)2 3 4        / I is ()
@@ -237,7 +237,7 @@ q)(,\)2 3 4        / I is ()
 2 3 4
 ```
 
-In such cases `(I f\x)~(f\)x` and `(I f/x)~(f/)x` and items of `x` must be in the right domain of the map.
+In such cases `(I f\x)~(f\)x` and `(I f/x)~(f/)x` and items of `x` must be in the right domain of the iterable.
 
 Otherwise, the first item of the right argument is taken as the result of the first evaluation.
 
@@ -256,8 +256,8 @@ q)(m\)cols            / cols[0] is the first left argument
 
 In this case, for `(m\)x` and `(m/)x)`
 
--   `x[0]` is in the _left_ domain of the map
--   items `1_x` are in the _right_ domain of the map
+-   `x[0]` is in the _left_ domain of `m`
+-   items `1_x` are in the _right_ domain of `m`
 
 but `x[0]` need not be in the range of `m`.
 
@@ -272,7 +272,7 @@ q)({count x,y}\)("The";"quick";"brown";"fox")
 
 ### Keywords `scan` and `over`
 
-Mnemonic keywords `scan` and `over` can be used to apply a binary map to a list or dictionary. Parenthesize an infix to pass it as a left argument.
+Mnemonic keywords `scan` and `over` can be used to apply a binary iterable to a list or dictionary. Parenthesize an infix to pass it as a left argument.
 
 ```q
 q)(+) over til 5           / (+/)til 5
@@ -284,11 +284,11 @@ q)m scan cols              / (m\)cols
 ```
 
 
-## Ternary maps
+## Ternary iterables
 
 Syntax: `m\[x;y;z]`, `m/[x;y;z]`
 
-The extension of a progressor and a ternary map has the same rank as the map. 
+The function derived by a progressor and an iterable of rank >2 has the same rank as the map. 
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the maximum of the count of the right arguments.
 
@@ -327,7 +327,7 @@ q)ssr\[s;("advance";"reinforcements");("a dance";"three and fourpence")]
 "We are going to a dance. Send three and fourpence."
 ```
 
-The above description of functions derived from ternary maps applies by extension to maps of higher ranks.
+The above description of functions derived from ternary iterables applies by extension to iterables of higher ranks.
 
 
 ### Alternative syntax
@@ -347,7 +347,10 @@ Note that the built-in version is for floats.
 
 ## Empty lists
 
-!!! warning "Progressor extensions can change datatype"
+!!! warning "Progressors can change datatype"
+
+In iterating through an empty list **the iterable is not evaluated.**
+The result might not be in the range of the iterable.
 
 Allow for a possible change of type to `0h` when scanning or reducing lists of unknown length. 
 
@@ -362,22 +365,22 @@ q)type each (mt;*\[mt];{x*y}\[mt])  / so can Scan
 
 ### Scan 
 
-The extension of Scan and a non-unary map is a uniform function: for empty right argument/s it returns the generic empty list.
-It does not evaluate the map.
+The extension of Scan and a non-unary iterable is a uniform function: for empty right argument/s it returns the generic empty list.
+It does not evaluate the iterable.
 
 ```q
-q)()~{x+y*z}\[`foo;mt;mt]           / map is not evaluated
+q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
 1b
 ```
 
 
 ### Over 
 
-The extension of Over and a non-unary map is an aggregate: it reduces lists and dictionaries to atoms.
+The function derived by Over and a non-unary iterable is an aggregate: it reduces lists and dictionaries to atoms.
 
-For empty right argument/s the atom result depends on the map and, if the extension is ambivalent, on how it is applied. 
+For empty right argument/s the atom result depends on the iterable and, if the derived function is variadic, on how it is applied. 
 
-If the map is a **binary function with a known identity element** $I$ and the extension is applied as a unary, the result is $I$.
+If the iterable is a **binary function with a known identity element** $I$, and the derived function is applied as a unary, the result is $I$.
 
 ```q
 q)(+/)mt    / 0 is I for +
@@ -386,14 +389,14 @@ q)(*/)mt    / 1 is I for *
 1
 ```
 
-If the map is a **binary function with no known identity element**, and the extension is applied as a unary, the result is `()`, the generic empty list.
+If the iterable is a **binary function with no known identity element**, and the derived function is applied as a unary, the result is `()`, the generic empty list.
 
 ```q
 q)()~({x+y}/)mt
 1b
 ```
 
-If the map is a **list** and the extension is applied as a unary, the result is an empty list of the same type as the list. 
+If the iterable is a **list** and the derived function is applied as a unary, the result is an empty list of the same type as the list. 
 
 ```q
 q)type 1 0 3h/[til 0]
@@ -413,7 +416,7 @@ q)42 (3 4#til 12)/[0#0]
 42
 ```
 
-The map is not evaluated.
+The iterable is not evaluated.
 
 ```q
 q)`foo+/mt

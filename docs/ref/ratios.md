@@ -48,7 +48,7 @@ q)ratios 1 2 4 6 7 10
     </code></pre>
 
 <i class="far fa-hand-point-right"></i> 
-[Each Prior](distributors.md#each-prior), 
+[Each Prior](maps.md#each-prior), 
 [`differ`](differ.md), 
 [`%` Divide](divide.md)  
 Basics: [Mathematics](../basics/math.md)

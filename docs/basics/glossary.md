@@ -12,11 +12,6 @@
 A function that reduces its argument, typically a list to an atom, e.g. `sum`
 
 
-## Ambivalent 
-
-A map that may be applied to a variable number arguments is ambivalent. For example, a matrix, the operator `@`, or the extension `+/`. 
-
-
 ## Apply
 
 As in _apply a function to its arguments_:  evaluate a function on values corresponding to its arguments.  
@@ -27,28 +22,22 @@ As in _apply a function to its arguments_:  evaluate a function on values corres
 
 In the expression `10%4` the operator `%` is evaluated on the arguments 10 and 4. 10 is the _left argument_ and 4 is the _right argument_.
 
-
 By extension, the first and second arguments of a binary function are called its left argument and right argument regardless of whether it is applied infix.
 In the expression `%[10;4]` 10 and 4 are still referred to as the left and right arguments. 
 
-
 By extension, where a function has rank >2, its left argument is its first argument, and its _right arguments_ are the remaining arguments.
-
 
 Correspondingly, the _left domain_ and _right domain_ of a binary function are the domains of its first and second arguments, regardless of whether or not the function may be applied infix. 
 
-
 By extension, where a function has rank >2, its _left domain_ is the domain of its first argument, and its _right domains_ are the domains of the remaining arguments.
 
-
-The terminology generalises to maps. 
+The terminology generalizes to iterables. 
 
 -   The left domain of a matrix `m` is `til count m`.
 -   The right domain of a matrix is `til count first m`.
 -   The right domains of a list `m` of depth `n` are `1_n{til count first x}\m`. <!-- FIXME Check -->
 
-
-Because unary functions may be applied prefix, the single argument of a unary function is sometimes referred to as its _right argument_. 
+Although unary functions may be applied prefix, the single argument of a unary function is sometimes referred to as its _right argument_. 
 
 
 ## Argument list
@@ -80,13 +69,13 @@ They are often used on a dictionary domain or a table column to reduce storage r
 
 ## Binary  
 
-A map of rank 2, i.e. a function that takes 2 arguments, or a list of depth ≥2.
+An iterable of rank 2, i.e. a function that takes 2 arguments, or a list of depth ≥2.
 (The terms _dyad_ and _dyadic_ are now deprecated.)
 
 
 ## Bracket notation
 
-Applying a map to its argument/s or indexes by writing it to the left of an argument list, e.g. `+[2;3]` or `count["zero"]`.
+Applying an iterable to its argument/s or indexes by writing it to the left of an argument list, e.g. `+[2;3]` or `count["zero"]`.
 
 <i class="far fa-hand-point-right"></i> 
 [Application](application.md)
@@ -175,7 +164,7 @@ q)depth (10 20;30)     / list
 
 ## Dictionary
 
-A dictionary is a map from a list of keys to a list of values. (The keys should be unique, though q does not enforce this.) The values of a dictionary can be any data structure.
+A dictionary is a mapping from a list of keys to a list of values. (The keys should be unique, though q does not enforce this.) The values of a dictionary can be any data structure.
 
 ```q
 q)/4 keys and 4 atomic values
@@ -196,10 +185,41 @@ ages | 42  39    51  44
 
 ## Domain
 
-The domain of a function is the complete set of possible values of its argument.  
+The domain of a function is all the possible values of its argument.  
 <i class="far fa-hand-point-right"></i> 
 intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
+Functions with multiple arguments have multiple domains. 
+A function’s first domain is known as its _left domain_. 
+Its second domain is its _right domain_. 
+For example, the left domain of `rotate` is integer atoms and its right domain is lists. 
+
+```q
+q)3 rotate "abcde"
+"deabc"
+```
+
+If a function has more than two arguments, all but the first domain are its _right arguments_ and their corresponding domains its _right domains_.
+For example, the left domain of `ssr` is char lists, and its right domains are char lists or atoms.
+
+```q
+q)ssr["advance";"adv";"a d"]
+"a dance"
+q)ssr["advance";"a";"-"]
+"-dv-nce"
+q)ssr["a";"a";"-"]   / left domain doesn't include atoms
+'type
+  [0]  ssr["a";"a";"-"]
+```
+
+All iterables have domains. 
+The domain of a dictionary is its keys.
+The domain of a list is its indexes. 
+The left domain of a matrix is its row numbers. Its right domain is its column numbers.
+The left domain of a table is its row numbers. Its right domain is its column names.
+
+All iterables are mappings from their domains to their [ranges](#range].
+)
 
 ## Empty list
 
@@ -231,16 +251,6 @@ An escape sequence is a special sequence of characters representing a character 
 A pair of square brackets enclosing zero or more expressions separated by semicolons. 
 
 
-## Extender, extension
-
-An extender is a higher-order operator. They take maps as arguments and return functions known as _extensions_, which extend the application of the maps.
-
-All the extenders are unary except Compose, which is binary. The unary extenders are the only operators that can be applied postfix, and almost invariably are.
-
-<i class="fa-hand-point-right"></i>
-Reference: [Extenders](../ref/extenders.md)
-
-
 ## Finite-state machine
 
 A dictionary or list represents a finite-state machine when its values (dictionary) or items (list) can be used to index it. For example:
@@ -269,9 +279,9 @@ Berlin| London
 
 ## Function
 
-A map from domain/s to range defined by an algorithm.
+A mapping from input/s to result defined by an algorithm.
 
-Operators, keywords, extensions, compositions, projections and lambdas are all functions. 
+Operators, keywords, compositions, projections and lambdas are all functions. 
 
 <i class="far fa-hand-point-right"></i> 
 [`.Q.res`](../ref/dotq.md#qres-k-words) returns a list of keywords
@@ -301,7 +311,7 @@ x: .[ x; i; f; y]
 
 In the first, referencing `x` as the first argument causes its entire value to be constructed, even though only a small part may be needed. In the second, the symbol `` `x`` is used as the first argument. In this case, only the parts of `x` referred to by the index `i` will be referenced and reassigned. The second case is usually more efficient than the first, sometimes significantly so. 
 
-Where `x` is a directory, referencing the global variable `x` causes the entire dictionary value to be constructed, even though only a small part of it may be needed. Consequently, in the description of Amend, the symbol atoms holding global variable names are referred to as handles.
+Where `x` is a directory, referencing the global variable `x` causes the entire dictionary value to be constructed, even though only a small part of it may be needed. Consequently, in the description of [Amend](amend), the symbol atoms holding global variable names are referred to as handles.
 
 
 ## Identity element
@@ -311,7 +321,7 @@ For function `f` the value `x` such that `y~f[x;y]` for any `y`.
 Q knows the identity elements of some functions, e.g. `+` (zero), but not others, e.g. {x+y} (also zero). 
 
 <i class="far fa-hand-point-right"></i> 
-[Ambivalence](ambivalence.md)
+[Variadic syntax](variadic.md)
 
 
 ## Infix
@@ -323,6 +333,33 @@ Applying an operator by writing it between its arguments, e.g.
 ## Item, list item
 
 A member of a list: can be any function or data structure.
+
+
+## Iterable
+
+A function, handle, list, or dictionary: an object that can be applied to its [argument/s](#argument).
+<!-- <i class="far fa-hand-point-right"></i> 
+[Iterables](../tutorials/uq/iterables.md)
+ -->
+
+
+## Iterator
+
+An iterator is a higher-order operator. It takes an iterable as its argument and returns a derived function that iterates it.
+
+All the iterators are unary operators. They are the only operators that can be applied postfix. They almost invariably are.
+
+<i class="fa-hand-point-right"></i>
+Reference: [Iterators](../ref/iterators.md)  
+Wikipedia: 
+[Iterator pattern](https://en.wikipedia.org/wiki/Iterator_pattern),
+[Iterator](https://en.wikipedia.org/wiki/Iterator)  
+StackOverflow:
+[What exactly are iterator, iterable, and iteration?](https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration)  
+Dictionaries: 
+[Wiktionary](https://en.wiktionary.org/wiki/iterable),
+[Oxford](https://en.oxforddictionaries.com/definition/iterate)
+
 
 
 ## K-tree
@@ -370,13 +407,6 @@ An array, its items indexed by position.
 <i class="far fa-hand-point-right"></i>
 [List notation](syntax.md#list-notation)
 
-
-## Map
-
-A function, list, or dictionary. 
-<!-- <i class="far fa-hand-point-right"></i> 
-[Maps](../tutorials/uq/maps.md)
- -->
 
 ## Matrix
 
@@ -449,12 +479,12 @@ A primitive binary function that may be applied infix as well as prefix, e.g. `+
 
 ## Postfix
 
-Applying an extender to its argument by writing it to the right, e.g. `+/` applies `/` to `+`. (Not to be confused with projecting an operator on its left argument.)
+Applying an iterator to its argument by writing it to the right, e.g. `+/` applies iterator `/` to `+`. (Not to be confused with projecting an operator on its left argument.)
 
 
 ## Prefix
 
-Prefix notation applies a unary map `m` to its argument or indices `x`; i.e. `m x` is equivalent to `m[x]`. 
+Prefix notation applies a unary iterable `m` to its argument or indices `x`; i.e. `m x` is equivalent to `m[x]`. 
 
 <i class="far fa-hand-point-right"></i> 
 [Application](application.md)
@@ -475,12 +505,14 @@ A function passed fewer arguments than its rank projects those arguments and ret
 
 ## Quaternary
 
-A map with rank 4.
+An iterable with rank 4.
 
 
 ## Range 
 
-The range of a function is the complete set of all its possible resulting values. 
+The range of a function is the complete set of all its possible results. 
+
+All [iterables](#iterable) are mappings from their [domains](#domain) to their ranges. 
 
 <i class="far fa-hand-point-right"></i> 
 intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
@@ -501,7 +533,8 @@ rank | adjective  | example
 <i class="far fa-hand-point-right"></i>
 [Function notation](function-notation.md#rank)
 
-Of a **list**, the depth to which it is nested. A vector has rank 1.
+Of a **list**, the depth to which it is nested. 
+A vector has rank 1; a matrix, rank 2.
 
 
 ## Reference, pass by
@@ -527,7 +560,7 @@ See _Argument_
 ## Script
 
 A script is a text file; its lines a list of expressions and/or system commands, to be executed in sequence. 
-By convention, a script files has the extension `q`.
+By convention, a script file has the extension `q`.
 
 Within a script
 
@@ -618,7 +651,7 @@ alice SFO
 
 ## Ternary
 
-A map of rank 3, i.e. a function wiith three arguments; or a list of depth ≥3.
+An iterable of rank 3, i.e. a function wiith three arguments; or a list of depth ≥3.
 
 
 ## Unary form
@@ -631,17 +664,15 @@ Most binary operators have unary forms that take a single argument. Q provides m
 
 ## Unary function
 
-A map of rank 1, i.e. a function with 1 argument, or a list of depth ≥1.
+An iterable of rank 1, i.e. a function with 1 argument, or a list of depth ≥1.
 
 
 ## Unary operator
 
-A primitive unary function that extends the application of its map argument, returning a derived function known as an _extension_. E.g. Over extends Add to return `+/`, an extension.
-
-All the extenders except Compose are unary operators.
+See **Iterator**.
 
 <i class="far fa-hand-point-right"></i>
-Reference: [Extenders](../ref/extenders.md)
+Reference: [Iterators](../ref/iterators.md)
 
 
 ## Uniform function 
@@ -664,9 +695,15 @@ A lambda without a signature, e.g. `{x*x}`.
 _Pass by value_ means passing an object (not its name) as an argument to a function, e.g. `key .q`.
 
 
+## Variadic 
+
+An iterable that may be applied to a variable number arguments is variadic. For example, a matrix, the operator `@`, or the derived function `+/`. 
+
+
 ## Vector
 
 A uniform list of basic types that has a special shorthand notation. A char vector is known as a _string_. 
+
 
 ## `x`
 
@@ -694,7 +731,7 @@ q)viewname::[expression;expression;…]expression
 
 The act of defining a view does not trigger its evaluation.
 
-A view should not have side-effects, i.e. should not update global variables.
+A view should not have side effects, i.e. should not update global variables.
 
 <i class="far fa-hand-point-right"></i> 
 [`view`, `views`](../ref/view.md)  

@@ -8,19 +8,19 @@ keywords: kdb+, parallel, parallel each, peach, q, uniform
 
 
 
-The extender [Each Parallel](../ref/distributors.md#each-parallel) `':` (or its mnemonic keyword `peach`) delegates processing to slave tasks for parallel execution. 
+The iterator [Each Parallel](../ref/maps.md#each-parallel) `':` (or its mnemonic keyword `peach`) delegates processing to slave tasks for parallel execution. 
 This can be useful, for example, for computationally expensive functions, or for accessing several drives at once from a single CPU.
 
 To execute in parallel, start kdb+ with multiple slaves, using [`-s` in the command line](cmdline.md#-s-slaves), and (since V3.5) the [`\s`](syscmds.md#s-number-of-slaves) system command.
 
-Each Parallel extends a unary map: the extension’s argument list is divided between slave process for evaluation. 
+Each Parallel iterates a unary iterable: the argument list of the derived function is divided between slave process for evaluation. 
 
 The result of `m':[x]` is exactly the same as `m'[x]`. 
 If no slave tasks are available, performance is the same as well. 
 
 Syntax: `(f':) x`, `f':[x]`, `f peach x`
 
-where `f` is a unary map and the items of list `x` are in its domain.
+where `f` is a unary iterable and the items of list `x` are in its domain.
 
 ```q
 q)f:{sum exp x?1.0}
@@ -30,7 +30,7 @@ q)\t f peach 2#1000000     / with 2 CPUs
 70
 ```
 
-Use the [Apply](../ref/apply.md) operator to project a higher-rank map over argument pairs (or triples, etc.).
+Use the [Apply](../ref/apply.md) operator to project a higher-rank iterable over argument pairs (or triples, etc.).
 
 For example, `x g'y` <=> `g'[x;y]` <=> `.[g;]'[flip(x;y)]`. 
 Thus

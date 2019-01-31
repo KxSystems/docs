@@ -59,7 +59,7 @@ Reference: [`.z.s`](../ref/dotz.md#zs-self)
 
 Observe that the user of `tree` has to supply an initial value for the counter, always 0. Bit of gunk. 
 
-We can’t avoid making `tree` binary, since q doesn’t let us define ambivalent functions. We’d also like to have ` tree` print the list and return null, and that seems to involve testing the counter to decide whether to return a result (if the call is recursive) or print with no result, if the call is top-level. We are now well beyond gunk. 
+We can’t avoid making `tree` binary, since q doesn’t let us define variadic functions. We’d also like to have ` tree` print the list and return null, and that seems to involve testing the counter to decide whether to return a result (if the call is recursive) or print with no result, if the call is top-level. We are now well beyond gunk. 
 
 In languages without local functions, we would probably settle for having two functions:
 

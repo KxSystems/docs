@@ -13,7 +13,7 @@ Syntax: `first x`, `first[x]`
 
 Where `x` is a list or dictionary, returns its first item, else `x`.
 
-Often used with [Each](distributors.md#each) to get the first item of each item of a list, or of each key in a dictionary.
+Often used with [Each](maps.md#each) to get the first item of each item of a list, or of each key in a dictionary.
 
 ```q
 q)first 1 2 3 4 5

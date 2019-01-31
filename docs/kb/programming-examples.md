@@ -97,7 +97,7 @@ q)select reverse each -5#'time, reverse each -5#'price from q where stock=`GOOG
 
 This one is also constant-time.
 
-!!! note "Those extenders…"
+!!! note "Those iterators…"
 
     Why do we use `each` and Each Both? Because the columns `time` and `price` are lists of lists, not lists of atoms.
 

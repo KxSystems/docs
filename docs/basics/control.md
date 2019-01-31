@@ -9,33 +9,33 @@ keywords: control, control words, distributive, evaluation, iterate, kdb+, opera
 
 Evaluation is controlled by 
 
--   [extenders](../ref/extenders.md) for iteration 
+-   [iterators](../ref/iterators.md) for iteration 
 -   conditional evaluation
 -   explicit return from a lambda
 -   signalling and trapping errors
 -   control words
 
 
-## Extenders
+## Iterators
 
 These are the primary means of iterating in q.
 
 
-### Distributors
+### Maps
 
-The [distributors](../ref/distributors.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are extenders that apply maps across the items of lists and dictionaries. 
+The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [iterables](glossary.md#iterable) across the items of lists and dictionaries. 
 
 
 ### Progressors
 
-The [progressors](../ref/progressors.md) Scan and Over are extenders that apply maps _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
+The [progressors](../ref/progressors.md) Scan and Over are iterators that apply iterables _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
 
-For unary maps, they have three forms, known as Converge, Do, and While. 
+For unary iterables, they have three forms, known as Converge, Do, and While. 
 
 
 ### Case
 
-There is no `case` or `switch` control word in q. Use the [Case](../ref/case.md) operator instead. Or a dictionary.
+There is no `case` or `switch` control word in q. Use the [Case](../ref/maps.md#case) iterator instead. Or a dictionary.
 
 
 ## Conditional evaluation

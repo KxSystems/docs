@@ -341,7 +341,7 @@ bar  | time         price    size
 
 ## How do I apply a function to a sequence sliding window?
 
-Use the [Scan extender](../ref/progressors.md#binary-maps) to build a moving list adding one item at the time from the original table, and the [`_` Drop operator](../ref/drop.md) to discard older values.
+Use the [Scan iterator](../ref/progressors.md#binary-iterables) to build a moving list adding one item at the time from the original table, and the [`_` Drop operator](../ref/drop.md) to discard older values.
 
 This example calculates the moving average for a sliding window of 3 items. 
 Note how the second parameter sets the size of the sliding window.

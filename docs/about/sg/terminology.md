@@ -16,11 +16,11 @@ monad, monadic    | unary
 dyad, dyadic      | binary
 nilad, niladic    | nullary
 verb              | operator or keyword
-adverb            | extender
+adverb            | iterator
 element of a list | item of a list
 scalar            | atom
 
-In contrast, to reflect the key roles played by maps and the [Apply/Index operator](../../ref/apply.md)
+In contrast, to reflect the key roles played by iterables and the [Apply/Index operator](../../ref/apply.md)
 
 deprecated               | current
 -------------------------|--------

@@ -57,7 +57,7 @@ Now after the `-u` or `-U` check has been done (if specified on the command line
 to get the old (2.3 and earlier) display reset `.z.pi`
 
 ```q
-.z.pi:{0N!value` `x;}
+.z.pi:{0N!value x;}
 ```
 
 to return to the default display execute `\x .z.pi`
