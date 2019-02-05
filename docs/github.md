@@ -891,6 +891,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/stevewirts/iver-tree">iver-tree</a> ==new==</td>
+<td>Fast virtual grid renderer. <span class="author"><a href="https://github.com/stevewirts?tab=repositories">
+						(Steve Wirts)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/semitrivial/qdash">qdash</a></td>
 <td>A port to q of the JavaScript [lodash](https://lodash.com/) utilities. <span class="author"><a href="https://github.com/semitrivial?tab=repositories">
 						(Samuel Alexander)
