@@ -15,9 +15,9 @@ Prefer **actual Unicode characters** – which a modern text editor will display
 -   <i class="fab fa-windows"></i> Windows allows many characters to be typed as ASCII codes from the numeric keyboard, eg Alt+0215 for ×. (See the [W3C list of HTML character entity references](http://www.w3.org/TR/html401/sgml/entities.html#h-24.2) for codes.) 
 -   <i class="fab fa-apple"></i> Mac OS X provides a graphical palette of Unicode characters. 
 
-If a character proves particularly difficult to source (for example, the romaji O-micron) try using its character entity, displaying the result in a browser, then copying and pasting the character from the browser back into the source. (A good idea in such cases to leave the character entity embedded as a comment.)
+If a character proves particularly difficult to source (for example, the romaji O-micron) try using its character entity, displaying the result in a browser, then copying and pasting the character from the browser back into the source. (It is a good idea in such cases to leave the character entity embedded as a comment.)
 
-Use real **ellipses** (…) because three periods can be broken across lines or pages. 
+Use **real ellipses** (…) because three periods can be broken across lines or pages. 
 
 -   <i class="fab fa-windows"></i> In Windows Alt+0133 on the numeric keypad 
 -   <i class="fab fa-apple"></i> On Mac, Opt+;
@@ -67,7 +67,7 @@ The **Oxford comma** cannot safely be used without thought.
 
 -   It can resolve ambiguity in a list.
 -   It can introduce ambiguity into a list.
--   Some lists have ambiguities that its use or omission do not resolve. The ambiguity can be resolved only by rephrasing.
+-   Some lists have ambiguities that its use or omission do not resolve; such ambiguity may be resolved only by rephrasing.
 
 <i class="far fa-hand-point-right"></i> _Wikipedia:_ [Serial comma](https://en.wikipedia.org/wiki/Serial_comma)
 
