@@ -68,6 +68,12 @@ p3 s1 400
 ..
 ```
 
+
+!!! warning "Duplicate keys or column names"
+
+    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+
+
 <i class="far fa-hand-point-right"></i>
 [`group`](group.md)  
 Basics: [Dictionaries & tables](../basics/dictsandtables.md)

@@ -117,6 +117,10 @@ city  | s
 
 `xdesc` can sort data on disk directly, without loading the entire table into memory: see [`xasc`](asc.md#sorting-data-on-disk).
 
+!!! warning "Duplicate keys or column names"
+
+    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+
 
 <i class="far fa-hand-point-right"></i>
 [`asc`, `iasc`, `xasc`](asc.md)  

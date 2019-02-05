@@ -54,5 +54,10 @@ bucket| Min Max Count
 ```
 
 
+!!! warning "Duplicate keys or column names"
+
+    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+
+
 <i class="far fa-hand-point-right"></i>
 Basics: [Sorting](../basics/sort.md)

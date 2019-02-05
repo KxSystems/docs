@@ -72,6 +72,11 @@ close| sym
     </code></pre>
 
 
+!!! warning "Duplicate keys or column names"
+
+    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+
+
 ## Domain and range
 
 ```txt

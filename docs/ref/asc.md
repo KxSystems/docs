@@ -210,6 +210,11 @@ a 43 2
 ```
 
 
+!!! warning "Duplicate keys or column names"
+
+    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+
+
 <i class="far fa-hand-point-right"></i>
 [`desc`, `idesc`, `xdesc`](desc.md)  
 Basics: [Dictionaries & tables](../basics/dictsandtables.md), 
