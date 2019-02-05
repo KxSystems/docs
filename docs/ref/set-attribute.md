@@ -74,3 +74,7 @@ Some q functions use attributes to work faster:
     332368
     </code></pre>
 
+
+!!! warning "Compressed data"
+
+    Applying an attribute to compressed data on disk decompresses it. 

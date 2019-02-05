@@ -26,6 +26,11 @@ function                        | semantics
     Duplicate keys in a dictionary or duplicate column names in a table will cause sorts, grades, and groups to return unpredictable results.
 
 
+!!! warning "Compressed columns on disk"
+
+    Re-sorting compressed data on disk decompresses it. 
+
+
 <i class="far fa-hand-point-right"></i> 
 [Dictionaries & tables](dictsandtables.md)
 
