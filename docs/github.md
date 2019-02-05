@@ -507,7 +507,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/robmoore-i/JsonRestApi">JsonRestApi</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/robmoore-i/JsonRestApi">JsonRestApi</a></td>
 <td>Server–as-a-function interface <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
 						(Rob Moore)
 					</a></span>
@@ -570,6 +570,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/robmoore-i/qtest/">qtest</a> ==new==</td>
+<td>Test-driven development <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
+						(Rob Moore)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/psaris/qtips">qtips</a></td>
 <td>Source files for “Q Tips: Fast, Scalable and Maintainable Kdb+”. <span class="author"><a href="https://github.com/psaris?tab=repositories">
 						(Nick Psaris)
@@ -605,6 +612,12 @@ about new repositories.</div>
 <tr>
 <td class="nowrap"><a href="https://github.com/eepgwde/ticker-planto">ticker-planto</a></td>
 <td>Simplified version of kdb+tick. 
+<span class="author"><a href="https://github.com/eepgwde?tab=repositories">(Walter Eaves)</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/eepgwde/vivas">vivas</a> ==new==</td>
+<td>Charting: kdb+ WebSocketdrives JavaScript client
 <span class="author"><a href="https://github.com/eepgwde?tab=repositories">(Walter Eaves)</a></span>
 </td>
 </tr>
