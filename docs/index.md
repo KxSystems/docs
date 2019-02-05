@@ -1,6 +1,5 @@
 ---
 description: Technical documentation and resources for q and kdb+ developers
-title: V2
 ---
 
 # Get going with kdb+
@@ -39,7 +38,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
     Download<br/>
     <i class="fab fa-apple"></i>
     <i class="fab fa-linux"></i>
-    <i class="fab fa-windows"></i>](https://kx.com/download "Download free 32-bit kdb+ for non-commercial use")
+    <i class="fab fa-windows"></i>](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 </div>
 <div>
     [<i class="far fa-fw fa-question-circle fa-border fa-5x"></i><br/>
