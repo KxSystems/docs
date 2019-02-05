@@ -18,7 +18,6 @@ Historically, there have been a number of situations where the choice of NUMA me
 
 One of the performance issues seen by q in this context is the same as the “swap insanity” issue, as linked below. Essentially, when the Linux kernel decides to swap out dirty pages, due to memory exhaustion, it was observed to affect performance of q, significantly more than expected. A relief for this situation was achieved via setting NUMA interleaving options in the kernel.
 
-<i class="fa fa-code fa-2x"></i>
 However, with the introduction of new Linux distributions based on newer kernel versions we now recommend different NUMA settings, depending on the version of the distribution being used. The use of the interleave feature should still be considered for those cases where your code drives the q processes to write to memory pages in excess of the physical memory capacity of the node. For distributions based on kernels
 
 -   **3.x or higher**, please disable `interleave`, and enable `zone_reclaim`; for all situations where memory page demand is constrained to the physical memory space of the node, this should return a better overall performance.  
