@@ -4,8 +4,8 @@
 The primary means of iteration in q are 
 
 -   atomic functions
--   the **map operators**: Each and its variants
--   the **progressive operators** Scan and Over
+-   the **map iterators**: Each and its variants
+-   the **accumulating iterators** Scan and Over
 
 
 ## Atomic functions
@@ -40,7 +40,7 @@ q)2+(3 4;`a`b`c!5 6 7;(8 9;10;11 12 13);14)
 ## Iterators
 
 The [iterators](../ref/iterators.md) are unary operators. 
-They take iterables as arguments and derive functions  that apply them repeatedly.
+They take iterables as arguments and derive functions that apply them repeatedly.
 
 !!! detail "Iterable"
 
@@ -59,7 +59,7 @@ q)(+/)2 3 4 5
 14
 ```
 
-There are two groups of iterators: maps and progressors.
+There are two groups of iterators: maps and accumulators.
 
 
 ### Maps
@@ -74,9 +74,9 @@ q)(count')("The";"quick";"brown";"fox")    / count each string
 ```
 
 
-### Progressors
+### Accumulators
 
-The [progressors](../ref/progressors.md) – Scan and Over – apply an iterable successively, first to the argument, then to the results of successive applications. 
+The [accumulators](../ref/accumulators.md) – Scan and Over – apply an iterable successively, first to the argument, then to the results of successive applications. 
 
 
 ## Control words

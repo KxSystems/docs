@@ -30,7 +30,7 @@ _Apply an iterable item-wise to a dictionary, list, or conforming lists and/or d
 
 Syntax: `(m')x`, `x m'y`, `m'[x;y;z]`
 
-A function derived by Each evaluates its iterable on each item of a list, dictionary or on corresponding items of conforming lists. The iteration has the same rank as the iterable. 
+A function derived by Each evaluates its iterable on each item of a list, dictionary or on corresponding items of conforming lists. The derived function has the same rank as the iterable. 
 
 ```q
 q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 

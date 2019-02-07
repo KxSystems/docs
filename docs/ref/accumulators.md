@@ -2,18 +2,18 @@
 keywords: adverb, converge, dictionary, do, iterable, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, while
 ---
 
-# Progressors
+# Accumulators
 
 `/` `\`
 
 
 
 
-A progressor is an iterator that takes an iterable as argument and derives an function that evaluates the map, first on its entire (first) right argument, then on the results of **successive** evaluations.
+An accumulator is an iterator that takes an iterable as argument and derives a function that evaluates the iterable, first on its entire (first) argument, then on the results of **successive** evaluations.
 
-There are two progressors, Scan and Over. They have the same syntax and perform the same computation. But where the Scan derived functions return the result of each evaluation, those of Over return only the last result. 
+There are two accumulators, Scan and Over. They have the same syntax and perform the same computation. But where the Scan-derived functions return the result of each evaluation, those of Over return only the last result. 
 
-Over resembles _map reduce_ and _fold_ in some other programming languages.
+Over resembles _map reduce_ in some other programming languages.
 
 ```q
 q)(+\)2 3 4    / Scan
@@ -33,7 +33,7 @@ q)(+/)2 3 4    / Over
 
 The number of successive evaluations is determined differently for unary and for higher-rank iterables. 
 
-The domain of the progressors is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine). 
+The domain of the accumulators is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine). 
 
 ```q
 q)yrp                               / a European tour
@@ -60,12 +60,12 @@ Berlin| London
 Syntax: `(m\)x`, `(m/)x`  unary application  
 Syntax: `x m\y`, `x m/y`  binary application
 
-The function derived by a progressor and a unary iterable is variadic. 
-The result of the first evaluation is the right argument.
+The function an accumulator derives from a unary iterable is variadic. 
+The result of the first evaluation is the right argument for the second evaluation. And so on.
 
 !!! note "The iterable is evaluated on the entire right argument, not on items of it." 
 
-The number of evaluations the extension performs is determined (when applied as a binary) by its left argument, or (when applied as a unary) by convergence.
+The number of evaluations the derived function performs is determined (when applied as a binary) by its left argument, or (when applied as a unary) by convergence.
 
 syntax           | name     | number of successive evaluations
 -----------------|----------|---------------------------------------------
@@ -191,7 +191,7 @@ In the last example, both iterables are dictionaries.
 
 Syntax: `x m\y`, `x m/y`
 
-The function derived by a progressor and a binary iterable is variadic. 
+The function an accumulator derived from a binary iterable is variadic. 
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the count of the right argument.
 
@@ -288,7 +288,7 @@ q)m scan cols              / (m\)cols
 
 Syntax: `m\[x;y;z]`, `m/[x;y;z]`
 
-The function derived by a progressor and an iterable of rank >2 has the same rank as the map. 
+The function an accumulator derives from an iterable of rank >2 has the same rank as the iterable. 
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the maximum of the count of the right arguments.
 
@@ -347,7 +347,7 @@ Note that the built-in version is for floats.
 
 ## Empty lists
 
-!!! warning "Progressors can change datatype"
+!!! warning "Accumulators can change datatype"
 
 In iterating through an empty list **the iterable is not evaluated.**
 The result might not be in the range of the iterable.
@@ -365,7 +365,7 @@ q)type each (mt;*\[mt];{x*y}\[mt])  / so can Scan
 
 ### Scan 
 
-The extension of Scan and a non-unary iterable is a uniform function: for empty right argument/s it returns the generic empty list.
+The function Scan derives from a non-unary iterable is a uniform function: for empty right argument/s it returns the generic empty list.
 It does not evaluate the iterable.
 
 ```q
@@ -376,7 +376,7 @@ q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
 
 ### Over 
 
-The function derived by Over and a non-unary iterable is an aggregate: it reduces lists and dictionaries to atoms.
+The function Over derives from a non-unary iterable is an aggregate: it reduces lists and dictionaries to atoms.
 
 For empty right argument/s the atom result depends on the iterable and, if the derived function is variadic, on how it is applied. 
 

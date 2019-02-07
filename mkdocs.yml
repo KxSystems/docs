@@ -163,7 +163,7 @@ nav:
     - Iterators:
       - Overview: ref/iterators.md
       - Maps: ref/maps.md
-      - Progressors: ref/progressors.md
+      - Accumulators: ref/accumulators.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
     - Keywords:
