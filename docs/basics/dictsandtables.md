@@ -6,6 +6,15 @@ keywords: dictionary, group, kdb+, q, sort, table
 # Dictionaries and tables
 
 
+
+
+!!! warning "Duplicate keys or columns"
+
+    Avoid duplicating keys in a dictionary or (column names in a) table.
+    
+    Q does not reject duplicate keys, but operations on dictionaries and tables with duplicate keys are **undefined**. 
+
+
 [`!` Dict](../ref/dict.md)
 
 :  Make a dictionary from two lists
