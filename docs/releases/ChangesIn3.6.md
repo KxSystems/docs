@@ -54,6 +54,16 @@ q)`:file set((`a`b;`b`c);0 1) / symbols cause a 3rd file to be created, file##, 
 
 Hash now considers all bits of the guid. Guids with `u`, `p` or `g` attribute use a new file format, unreadable by previous versions.
 
+
+## File compression
+
+Added `lz4hc` as file-compression algorithm #4. e.g.
+
+```q
+q).z.zd:17 4 16;`:z set z:100000?200;z~get`:z
+```
+
+
 ## NUCs – not upwardly compatible
 
 We have tried to make the process of upgrading seamless, however please pay attention to the following NUCs to consider whether they impact your particular installation.
