@@ -49,8 +49,9 @@ $(function() {
 	});
 	$(btn).click(function() {
 		var host = window.location.host;
-		var dest = "/about/search";
-		dest = (host==="code.kx.com" ? "/q" : "") + dest;
+		var dest = "/v2/about/search";
+		// var dest = "/about/search";
+		// dest = (host==="code.kx.com" ? "/q" : "") + dest;
 		window.location = dest;
 	});
 });
