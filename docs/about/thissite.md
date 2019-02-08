@@ -7,7 +7,7 @@ and continues to evolve.
     For now the wiki remains at [code.kx.com/wiki](http://code.kx.com/wiki), but it is no longer maintained.
 
 
-## <i class="fa fa-github"></i> GitHub
+## <i class="fab fa-github"></i> GitHub
 
 Truncated GitHub URLs are prefixed with the GitHub icon <i class="fa fa-github"></i> and omit the `https://github.com/` prefix. 
 
@@ -25,7 +25,7 @@ The new site reference has three aims:
 - to help _writing_ by categorising the tools by semantic topic 
 
 
-## <i class="fa fa-handshake-o"></i> Contribute
+## <i class="far fa-handshake"></i> Contribute
 
 > A finished work is exactly that, requires resurrection.  
 — _John Cage_, “Lecture on Nothing”, 1949
@@ -51,13 +51,13 @@ We gratefully acknowledge contributions by pull requests from
 -   William Da Silva
 
 
-## <i class="fa fa-balance-scale"></i> License 
+## <i class="fas fa-balance-scale"></i> License 
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 <div style="text-align: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></div>
 
 
-## <i class="fa fa-picture-o"></i> Images
+## <i class="fas fa-camera-retro"></i> Images
 
 This site includes images for which Kx holds neither copyright nor permission. 
 These images serve as links to their original sites. 
@@ -66,7 +66,7 @@ We understand this to be fair use.
 If you are a copyright holder and object to this use, please write to librarian@kx.com. 
 
 
-## <i class="fa fa-envelope-o"></i> Contact
+## <i class="fas fa-envelope"></i> Contact
 
 This site is a project of the [Librarian](mailto:librarian@kx.com).
 

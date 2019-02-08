@@ -493,6 +493,7 @@ nav:
     - WebSockets: wp/websockets/index.md
   - About: 
     - Kx technology: about/kxtechnology.md
+    - Search: about/search.md
     - Site news: about/site-news.md
     - This site: about/thissite.md
     - Style guide:

@@ -1,7 +1,7 @@
 /*
  * Custom script for code.kx.com/v2
  * Author: stephen@kx.com
- * Version: 2018.12.21
+ * Version: 2019.02.08
  * https://gist.github.com/wpscholar/4637176#file-jquery-external-links-new-window-js-L4
  * Open all external links in a new window
  */
@@ -35,4 +35,22 @@ $(function() {
 	$(window).off('keydown');
 	$("[data-md-component=query]").off('focus keyup change');
 	$(".md-search__form").on('keydown', srchHandler); 
+	// replace Close button with link to Search tips
+	var btn = $("button.md-icon.md-search__icon");
+	$(btn).text("?");
+	$(btn).attr("title","Search help");
+	$(btn).css({
+		color:"white",
+		fontFamily:'Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif',
+		fontSize:"1.6rem",
+		opacity:"1",
+		paddingTop:".5rem",
+		transform:"none","-webkit-transform":"none"
+	});
+	$(btn).click(function() {
+		var host = window.location.host;
+		var dest = "/about/search";
+		dest = (host==="code.kx.com" ? "/q" : "") + dest;
+		window.location = dest;
+	});
 });
