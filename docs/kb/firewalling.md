@@ -30,6 +30,7 @@ Restrict input by defining at least:
 .z.pm:{}
 .z.po:{}
 .z.pp:{}
+.z.pq:{}
 .z.ps:{}
 ```
 
