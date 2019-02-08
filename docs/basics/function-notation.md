@@ -149,7 +149,7 @@ sqsum:{[a;b]   / square of sum
 
 A lambda definition can include up to: 
 
-&nbsp;    | in use | current     | <V3.5 2019.09.26
+&nbsp;    | in use | current     | <V3.6 2017.09.26
 ----------|--------|-------------|------------------
 arguments |        | 8           | 8
 locals    | $m$    | 110         | 31
