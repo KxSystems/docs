@@ -16,6 +16,17 @@ Syntax: `select [cols] [by groups] from t [where filters]`
 
 `select` retrieves specified columns from a table. It has many forms; not all are described here. 
 
+A `by` clause with no `cols` specified returns the last row in each group.
+
+```q
+q)tbl:([] id:1 1 2 2 2;val:100 200 300 400 500)
+q)select by id from tbl
+id| val
+--| ---
+1 | 200
+2 | 500
+```
+
 
 ### Limiting results
 
@@ -80,7 +91,7 @@ select … by sym, … from t where date …, sym in …, …
 
 ### Special functions
 
-The following functions (essentially `.Q.a0` in q.k) receive special treatment within `select`:
+The following functions (essentially `.Q.a0` in `q.k`) receive special treatment within `select`:
 
 `count`, `first`, `last`, `sum`, `prd`, `min`, `max`, `med`, `avg`, `wsum`, `wavg`, `var`, `dev`, `cov`, `cor`
 
