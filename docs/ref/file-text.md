@@ -91,7 +91,7 @@ Where `y` is a _file descriptor_, a string, or a list of strings, returns a vect
 
 -   `types` is a list of [types](datatypes/#primitive-datatypes) in upper case,
 -   `delimiter` is a char atom or 1-item list,
--   `flag` (optional, default `0b`, since V3.4) is a boolean atom indicating whether line-returns may be embedded in strings. 
+-   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`. 
 
 If `delimiter` is enlisted, the first row of the content of `y` is read as column names and the result is a table; otherwise the result is a list of values for each column.
 
