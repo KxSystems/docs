@@ -1,5 +1,5 @@
 ---
-keywords: adverb, case,dictionary, distributive, distributor, each, each both, each left, each parallel, each prior, each right, iterate, iterator, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
+keywords: adverb, case, dictionary, each, each both, each left, each parallel, each prior, each right, iterate, iterator, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
 ---
 
 # Maps

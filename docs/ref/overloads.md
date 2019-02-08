@@ -29,10 +29,10 @@ rank | syntax                 | semantics
 :---:|------------------------|---------------------------------------
 n/a  | `\`                    | ends multiline comment
 n/a  | `\`                    | abort
-1    | `(f\)`, `f\[d]`        | [Converge](progressors.md#converge)
-2    | `n f\d`, `f\[n;d]`     | [Repeat](progressors.md#do)
-2    | `t f\d`, `f\[t;d]`     | [While](progressors.md#while)
-2    | `x g\y`, `g\[x;y;z;…]` | [map-reduce](progressors.md#binary-iterators)
+1    | `(f\)`, `f\[d]`        | [Converge](accumulators.md#converge)
+2    | `n f\d`, `f\[n;d]`     | [Do](accumulators.md#do)
+2    | `t f\d`, `f\[t;d]`     | [While](accumulators.md#while)
+2    | `x g\y`, `g\[x;y;z;…]` | [map-reduce](accumulators.md#binary-iterators)
 
 ```txt
 d: data                   n: non-negative integer
@@ -161,10 +161,10 @@ rank | example  | semantics
 rank | syntax              | semantics
 :---:|---------------------|-----------------------------------------
 n/a  | `/a comment`        | comment: ignore rest of line
-1    | `(f/)y`, `f/[y]`    | [Converge](progressors.md#converge) 
-1    | `n f/ y`, `f/[n;y]` | [Repeat](progressors.md#do) 
-1    | `t f/ y`, `f/[t;y]` | [While](progressors.md#while) 
-1    | `(ff/)y`, `ff/[y]`  | [map-reduce](progressors.md#binary-iterables): reduce a list or lists
+1    | `(f/)y`, `f/[y]`    | [Converge](accumulators.md#converge) 
+1    | `n f/ y`, `f/[n;y]` | [Do](accumulators.md#do) 
+1    | `t f/ y`, `f/[t;y]` | [While](accumulators.md#while) 
+1    | `(ff/)y`, `ff/[y]`  | [map-reduce](accumulators.md#binary-iterables): reduce a list or lists
 
 ```txt
 f: unary iterable       t: test iterable

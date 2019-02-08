@@ -147,11 +147,11 @@ argument<br>rank | syntax                                                   | na
 1                 | `(f':)x`, `f peach x`                                   | [Each Parallel](maps.md#each-parallel)         | apply `f` to items of `x` in parallel tasks
 2                 | `(g':)y`,<br>`g prior y`,<br>`d g':y`                   | [Each Prior](maps.md#each-prior)               | apply `g` to (`d` and) successive pairs of items of `y`
 1                 | `int'[x;y;…]`                                           | [Case](maps.md#case)                                        | select from `[x;y;…]`
-1                 | `(f/)d`, `(f\)d`                                        | [Converge](progressors.md#converge)                    | apply `f` to `d` until result converges
-1                 | `n f/d`, `n f\d`                                        | [Do](progressors.md#do)                                | apply `f` to `d`, `n` times
-1                 | `t f/d`, `t f\d`                                        | [While](progressors.md#while)                          | apply `f` to `d` until `t` of result is 0
-1<br>2<br>3+      | `(g/)y`, `g over y`<br>`d g/y`<br>`gg/[d;y;z;…]`        | [Reduce](progressors.md#binary-iterables)                   | reduce a list or lists 
-1<br>2<br>3+      | `(g\)y`, `g scan y`<br>`d g\y`<br>`gg\[d;y;z;…]`        | [Accumulate](progressors.md#binary-iterables)                     | scan a list or lists 
+1                 | `(f/)d`, `(f\)d`                                        | [Converge](accumulators.md#converge)                    | apply `f` to `d` until result converges
+1                 | `n f/d`, `n f\d`                                        | [Do](accumulators.md#do)                                | apply `f` to `d`, `n` times
+1                 | `t f/d`, `t f\d`                                        | [While](accumulators.md#while)                          | apply `f` to `d` until `t` of result is 0
+1<br>2<br>3+      | `(g/)y`, `g over y`<br>`d g/y`<br>`gg/[d;y;z;…]`        | [Reduce](accumulators.md#binary-iterables)                   | reduce a list or lists 
+1<br>2<br>3+      | `(g\)y`, `g scan y`<br>`d g\y`<br>`gg\[d;y;z;…]`        | [Accumulate](accumulators.md#binary-iterables)                     | scan a list or lists 
 
 Key: 
 

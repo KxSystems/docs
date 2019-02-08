@@ -26,9 +26,9 @@ These are the primary means of iterating in q.
 The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [iterables](glossary.md#iterable) across the items of lists and dictionaries. 
 
 
-### Progressors
+### Accumulators
 
-The [progressors](../ref/progressors.md) Scan and Over are iterators that apply iterables _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
+The [accumulators](../ref/accumulators.md) Scan and Over are iterators that apply iterables _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
 
 For unary iterables, they have three forms, known as Converge, Do, and While. 
 
@@ -123,7 +123,7 @@ q)\t do[100;log til 100000]
 396
 ```
 
-<i class="far fa-hand-point-right"></i> [Progressors – Do](../ref/progressors.md#do)
+<i class="far fa-hand-point-right"></i> [Accumulators – Do](../ref/accumulators.md#do)
 
 
 ### `if` 
@@ -163,4 +163,4 @@ q)r
 1 1 2 3 5 8 13 21 34 55 89
 ```
 
-<i class="far fa-hand-point-right"></i> [Progressors – While](../ref/progressors.md#while)
+<i class="far fa-hand-point-right"></i> [Accumulators – While](../ref/accumulators.md#while)

@@ -10,7 +10,7 @@ _Return the items of `x` joined, collapsing one level of nesting_
 
 Syntax: `raze x`, `raze[x]`
 
-To collapse all levels, use [Converge](progressors.md#converge) i.e. `raze/[x]`.
+To collapse all levels, use [Converge](accumulators.md#converge) i.e. `raze/[x]`.
 
 ```q
 q)raze (1 2;3 4 5)

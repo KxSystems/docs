@@ -94,7 +94,7 @@ cm:{[n;d;nopath]
 
     The last two lines of `cm` both use `./` for assignment with a _scattered index_. The second argument is a list of index pairs – co-ordinates in `res`. The fourth argument is a corresponding list of values. The third argument is the assignment function. 
 
-    <i class="far fa-hand-point-right"></i> [Over](../ref/progressors.md) for how the iterator `/` specifies the iteration here.
+    <i class="far fa-hand-point-right"></i> [Over](../ref/accumulators.md) for how the iterator `/` specifies the iteration here.
 
 
 `tview` adds row and column labels.

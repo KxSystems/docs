@@ -36,7 +36,7 @@ q)count each ([]city:`London`Paris`Berlin; country:`England`France`Germany)
 2 2 2
 ```
 
-Use with [`each`](progressors.md#each) to count the number of items at each level of a list or dictionary.
+Use with [`each`](maps.md#each) to count the number of items at each level of a list or dictionary.
 
 ```q
 q)RaggedArray:(1 2 3;4 5;6 7 8 9;0)

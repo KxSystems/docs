@@ -24,10 +24,10 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>L</td><td>[`last`](first.md#last "last item") [`like`](like.md "pattern matching") [`lj` `ljf`](lj.md "left join") [`load`](load.md "load binary data") [`log`](log.md "natural logarithm") [`lower`](lower.md "lower case") [`lsq`](lsq.md "least squares – matrix divide") [`ltime`](gtime.md#ltime "local timestamp") [`ltrim`](trim.md#ltrim "function remove leading spaces")</td></tr>
 <tr><td>M</td><td>[`mavg`](avg.md#mavg "moving average") [`max`](max.md "maximum") [`maxs`](max.md#maxs "maxima of preceding items") [`mcount`](count.md#mcount "moving count") [`md5`](md5.md "MD5 hash") [`mdev`](dev.md#mdev "moving deviation") [`med`](med.md "median") [`meta`](meta.md "metadata of a table") [`min`](min.md "minimum") [`mins`](min.md#mins "minimum of preceding items") [`mmax`](max.md#mmax "moving maxima") [`mmin`](min.md#mmin "moving minima") [`mmu`](mmu.md "matrix multiplication") [`mod`](mod.md "remainder") [`msum`](sum.md#msum "moving sum")</td></tr>
 <tr><td>N</td><td>[`neg`](neg.md "negate") [`next`](next.md "next items") [`not`](not.md "logical not") [`null`](null.md "is argument a null")</td></tr>
-<tr><td>O</td><td>[`or`](greater.md "greater") [`over`](progressors.md#keywords-scan-and-over "reduce an array with a function")</td></tr>
+<tr><td>O</td><td>[`or`](greater.md "greater") [`over`](accumulators.md#keywords-scan-and-over "reduce an array with a function")</td></tr>
 <tr><td>P</td><td>[`parse`](parse.md "parse a string") [`peach`](maps.md#peach-keyword "parallel each") [`pj`](pj.md "plus join") [`prd` `prds`](prd.md "product, unning products") [`prev`](next.md#prev "previous items") [`prior`](maps.md#prior-keyword "apply function between each item and its predecessor")</td></tr>
 <tr><td>R</td><td>[`rand`](rand.md "random number") [`rank`](rank.md "grade up") [`ratios`](ratios.md "ratios of consecutive pairs") [`raze`](raze.md "join items") [`read0`](read0.md "read file as lines") [`read1`](read1.md "read file as bytes") [`reciprocal`](reciprocal.md "reciprocal of a number") [`reval`](eval.md#reval "variation of eval") [`reverse`](reverse.md "reverse the order of items") [`rload`](load.md#rload "load a splayed table") [`rotate`](rotate.md "rotate items") [`rsave`](save.md#rsave) [`rtrim`](trim.md#rtrim "remove trailing spaces")</td></tr>
-<tr><td>S</td><td>[`save`](save.md "save global data to file") [`scan`](progressors.md#keywords-scan-and-over "apply function to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
+<tr><td>S</td><td>[`save`](save.md "save global data to file") [`scan`](accumulators.md#keywords-scan-and-over "apply function to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
 <tr><td>T</td><td>[`tables`](tables.md "sorted list of tables") [`tan`](tan.md "tangent") [`til`](til.md "integers up to x") [`trim`](trim.md "remove leading and trailing spaces") [`type`](type.md "data type")</td></tr>
 <tr><td>U</td><td>[`uj` `ujf`](uj.md "union join") [`ungroup`](ungroup.md "flattened table") [`union`](union.md "distinct items of combination of two lists") [`update`](update.md "insert or replace table records") [`upper`](lower.md#upper "upper-case") [`upsert`](upsert.md "add table records")</td></tr>
 <tr><td>V</td><td>[`value`](value.md "value of a variable or dictionary key; value of an executed sting") [`var`](var.md "variance") [`view`](view.md "definition of a dependency") [`views`](view.md#views "list of defined views") [`vs`](vs.md "encode, split")</td></tr>
@@ -80,11 +80,11 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 <table markdown="1">
 <thead>
-<tr><th colspan="2">progressors</th><th colspan="2">maps</th><th colspan="2">distributors</th><th colspan="2"/></tr>
+<tr><th colspan="2">accumulators</th><th colspan="2">maps</th><th colspan="2">maps</th><th colspan="2"/></tr>
 </thead>
 <tbody>
 <tr>
-<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](progressors.md)</td>
+<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](accumulators.md)</td>
 <td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](maps.md#each-left-and-each-right)</td>
 <td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each)<br>[Each&nbsp;Parallel](maps.md#each-parallel)<br>[Each Prior](maps.md##each-prior)</td>
 <td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](case.md)<br>[Compose](compose.md)</td>
@@ -216,8 +216,8 @@ q)`VARNAME setenv "NEWVALUE"
 <tr><td class="nowrap">104</td><td/><td colspan="7">projection</td><td/><td/><td/></tr>
 <tr><td class="nowrap">105</td><td/><td colspan="7">[composition](compose.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">106</td><td/><td colspan="7">[`m'`](maps.md#each)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">107</td><td/><td colspan="7">[`m/`](progressors.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">108</td><td/><td colspan="7">[`m\`](progressors.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">107</td><td/><td colspan="7">[`m/`](accumulators.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">108</td><td/><td colspan="7">[`m\`](accumulators.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">109</td><td/><td colspan="7">[`m':`](maps.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">110</td><td/><td colspan="7">[`m/:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">111</td><td/><td colspan="7">[`m\:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>

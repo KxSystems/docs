@@ -27,7 +27,7 @@ q)'[f;ff][1;2;3;4]
 20
 ```
 
-Extend Compose with [Over `/`](progressors.md) or [`over`](progressors.md#keywords-scan-and-over) to **compose a list of functions**.
+Extend Compose with [Over `/`](accumulators.md) or [`over`](accumulators.md#keywords-scan-and-over) to **compose a list of functions**.
 Use 
 
 -   `'[;]` to resolve the overloads on `'`

@@ -10,7 +10,7 @@ keywords: adverb, extender, extension, kdb+, map, q
 
 Iterators (formerly known as _adverbs_) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill.
 
-The first part of this paper introduces iterators informally. This provides ready access to the two principal forms of iteration: _maps_ and _progressors_.
+The first part of this paper introduces iterators informally. This provides ready access to the two principal forms of iteration: _maps_ and _accumulators_.
 
 The second part of the paper reviews iterators more formally and with greater attention to syntax. We see how iterators apply not only to functions but also to lists, dictionaries and tables. From their syntax we see when parentheses are required, and why. 
 
@@ -54,7 +54,7 @@ q)a,'b
 
 Above, `a` and `b` are both 2×3 character matrixes. That is to say, they are both 2-lists, and their items are character 3-lists. While `a,b` joins the two lists to make a 4-list, the derived function Join Each `a,'b` joins their corresponding items to make two character 6-lists. 
 
-Scan and Each are the cores of the progressor and map iterators. The other iterators are variants of them. 
+Scan and Each are the cores of the accumulator and map iterators. The other iterators are variants of them. 
 
 
 ## Three kinds of iteration
@@ -208,7 +208,7 @@ q)(+) over 2 3 4
 9
 ```
 
-The progressors:
+The accumulators:
 
 extender | name | mnemonic keyword
 :-------:|------|:---------------:
