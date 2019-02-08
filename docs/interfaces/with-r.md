@@ -95,7 +95,7 @@ and in R:
 ### rkdb: R client for kdb+
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](/interfaces/fusion)
+<i class="fab fa-superpowers"></i> [Fusion for kdb+](../fusion)
 </div>
 
 Connects R to a kdb+ database to extract partially analyzed data into R 
@@ -279,7 +279,7 @@ it can be built from source by following the instructions outlined in the associ
 ### embedR: Embedding R inside q
 
 <div class="fusion" markdown="1">
-<i class="fa fa-superpowers"></i> [Fusion for kdb+](/interfaces/fusion)
+<i class="fa fa-superpowers"></i> [Fusion for kdb+](../fusion)
 </div>
 
 <i class="fab fa-github"></i> 
