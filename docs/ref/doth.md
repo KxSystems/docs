@@ -22,10 +22,10 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 .h.c0    web color                 .h.hu        URI escape
 .h.c1    web color                 .h.hug       URI map
 .h.cd    CSV from data             .h.hy        HTTP response
-.h.code                            .h.iso8601   ISO timestamp
+.h.code  code after Tab            .h.iso8601   ISO timestamp
 .h.data                            .h.jx        table
 .h.ed    Excel from data           .h.logo      Kx logo
-.h.edsn                            .h.nbr       no break
+.h.edsn  Excel from tables         .h.nbr       no break
 .h.fram  frame                     .h.pre       pre
 .h.ha    anchor                    .h.sa        style
 .h.hb    anchor target             .h.sb        style
@@ -85,14 +85,30 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 ```
 
 
-## `.h.code`
+## `.h.code` (code after Tab)
 
-==FIXME==
+Syntax: `.h.code x`
+
+Where `x` is a string with embedded Tab characters, returns the string with alternating segments marked up as 
+
+-   plain text
+-   `code` and `nobr`.
+
+```q
+q).h.code "foo\tbar"
+"foo <code><nobr>bar</nobr></code>"
+q).h.code "foo\tbar\tabc\tdef"
+"foo <code><nobr>bar</nobr></code> abc <code><nobr>def</nobr></code>"
+q).h.code "foo"
+"foo"
+```
 
 
+<!-- 
 ## `.h.data`
 
 ==FIXME==
+ -->
 
 
 ## `.h.ed` (Excel from data)
@@ -108,9 +124,45 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 ```
 
 
-## `.h.edsn`
+## `.h.edsn` (Excel from tables)
 
-TBD
+Syntax: `.h.edsn x!y`
+
+Where 
+
+-   `x` is a symbol vector
+-   `y` is a conformable list of tables
+
+returns as a list of strings an XML document describing an Excel spreadsheet.
+
+```q
+q)show t1:([]sym:`a`b`c`d`e`f;price:36.433 30.327 31.554 29.277 30.965 33.028)
+sym price
+----------
+a   36.433
+b   30.327
+c   31.554
+d   29.277
+e   30.965
+f   33.028
+q)show t2:([]sym:`a`b`c`d`e`f;price:30.0 40.0 50.0 60.0 70.0 80.0)
+sym price
+---------
+a   30
+b   40
+c   50
+d   60
+e   70
+f   80
+q).h.edsn `test1`test2!(t1;t2)
+"<?xml version=\"1.0\"?><?mso-application progid=\"Excel.Sheet\"?>"
+"<Workbook xmlns=\"urn:schemas-microsoft-com:office:spreadsheet\" xmlns:ss=\"..
+q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
+`:/Users/sjt/tmp/excel.xls
+```
+
+![excel.xls](../img/h.edsn.png "Excel spreadsheet")
+
 
 
 ## `.h.fram` (frame)
@@ -186,7 +238,7 @@ returns as a string an HTTP error response.
 q).h.hn["404";`txt;"Not found: favicon.ico"]
 "HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Len..
 ```
-<i class="fa fa-hand-o-right"></i> [Content types](#hty-mime-types)
+<i class="far fa-hand-point-right"></i> [Content types](#hty-mime-types)
 
 
 ## `.h.hp` (HTTP response)
@@ -479,7 +531,7 @@ q).h.sc
 "$-.+!*'(),abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
 
-<i class="fa fa-hand-o-right"></i> [`.h.hu`](#hhu-uri-escape)
+<i class="fa-hand-point-right"></i> [`.h.hu`](#hhu-uri-escape)
 
 
 ## `.h.td` (TSV)
