@@ -57,7 +57,7 @@ q)mins 0N 5 0N 1 3         / initial nulls return infinity
 
 _Moving minimums_
 
-Syntax: `x mdev y`, `mdev[x;y]`
+Syntax: `x mmin y`, `mmin[x;y]`
 
 Where
 
