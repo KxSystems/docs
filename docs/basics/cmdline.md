@@ -361,6 +361,12 @@ Syntax: `-u 1`
   
 Disables system commands from a remote (signals `'access`). As such, this includes disabling exit via `"\\"` from a remote.
 
+!!! warning "Weak protection"
+
+This option offers only a simple protection against “wrong” queries.
+
+For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
+
 
 ## `-u` (usr-pwd local)
 
