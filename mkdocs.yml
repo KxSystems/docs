@@ -79,6 +79,7 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
+  - Platform for Kx: platform.md
   - Support: support.md
   - GitHub: github.md
   - Wiki: wiki.md
