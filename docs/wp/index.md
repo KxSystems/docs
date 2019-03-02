@@ -3,7 +3,7 @@
 
 ## Programming in q
 
-* Efficient use of **adverbs** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](efficient_use_of_adverbs.pdf) ==REDRAFT: [Iterators](iterators.md)==
+* ==new== [**Iterators**](iterators/index.md) (previously _Efficient use of adverbs_)
 * **C API** for kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](c_api_for_kdb.pdf)
 * **Compression** in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](compression_in_kdb.pdf)
 * The application of **foreign keys** and linked columns in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)
