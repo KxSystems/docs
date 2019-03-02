@@ -5,6 +5,53 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 
 # ![PyQ](../img/pyq.png) Version history
 
+## Version 4.2.1
+
+Released on 2019-02-12
+
+- Fixed a bug preventing installation from source tarball.
+- Updated classifiers and supported operating systems.
+
+## Version 4.2.0
+
+Released on 2019-02-11
+
+Deprecations and removals:
+
+- !631 - #993 Delete documentation -- PyQ's documentation available at [code.kx.com](https://code.kx.com/q/interfaces/pyq/).
+- !672 - #1017 Deprecate py2 - Python 2.7 support will end in December 2019. Future versions of PyQ will not support Python 2.7. PyQ 4.2.x will be latest series to support Python 2.7 and will receive bug-fixes until end of December 2019.
+
+Enhancements:
+
+- !609 - #979 Implemented K.dict and K.table constructors.
+- !618, !647, !679 - #985 Integration of embedPy [gh-30](https://github.com/KxSystems/pyq/issues/30)
+- !642 - #650 Convert objects supporting new buffer protocol to K
+- !644 - #1007 Implemented K._knt to call the new knt(J,K) function from k.h.
+- !648 - #784 Pass command line arguments after -- directly to q.
+- !650 - #784 More command-line arguments to be recognized by pyq executable
+- !671 - #1030 Support Python 3.7 [gh-80](https://github.com/KxSystems/pyq/issues/80)
+
+Bug fixes:
+
+- !660 - #1013 K._F accelerator should accept None entries
+- !661, !678 - #1015, #1035 Fixed LGTM alerts
+- !662 - #1021 Use correct ANSI C header errno.h
+- !667 - #1023 cherry-pick GH PRs
+- !668 - #1025 K(None).null must be 1b
+- !669 - #1027: Simplify executable path lookup on Linux
+- !673 - #986 Use sysconfig instead distutils.sysconfig in setup.py
+- !674 - #877 Remove GC support for K iterators
+- !675 - #1034 Fixed numpy warnings in tests
+- !676 - #1024 Check that python lib exists
+- !677 - #826 Block .data on t=0 k lists
+- !680 - #1028 Fixed clang warnings.
+- !682 - #1036 Convert 0N to NaT.
+
+Tests and CI:
+
+- !635 - #985 Use taskset in the run_q.sh script.
+- !664 - #1022 Run pyq executable tests under valgrind
+
 ## Version 4.1.4
 
 

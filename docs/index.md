@@ -18,13 +18,15 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Iterators](wp/iterators/)</p>
+    
     <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i>[==Version 2==  Reference](ref/index.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i> [embedPy Frequently-asked questions](/ml/embedpy/faq/)</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [NASA Exoplanets Challenge](wp/exoplanets/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [~~Data visualization~~](wp/data-visualization/) whitepaper</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Exploring the Bitcoin blockchain](wp/blockchain/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [~~Java API for kdb+~~](wp/java-api/) whitepaper</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [NASA Space Weather Challenge](wp/space-weather/)</p>
     
 </div>
 
@@ -46,11 +48,11 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 </div>
 <div>
     [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
-    ~~Get started~~](FIXME "Learn how to install and start using kdb+")
+    Get started](learn/index.md "Learn how to install and start using kdb+")
 </div>
 <div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
-    ~~Whitepapers~~](FIXME "Technical whitepapers on using kdb+")
+    Whitepapers](wp/index.md "Technical whitepapers on using kdb+")
 </div>
 <div>
     [<i class="fas fa-fw fa-glasses fa-border fa-5x"></i><br/>

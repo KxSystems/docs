@@ -38,7 +38,14 @@ Use numbered lists only
 -   where it is necessary to refer to a list item, e.g. “as in (3) above”
 -   where the order is significant, e.g. in a sequence of instructions 
 
-Where list items do not contain multiple sentences, leave their ends unpunctuated.
+Where 
+
+-   a list has no more than five items; 
+-   the items are short; and
+-   its items are clauses of a single sentence
+
+suffix all but the last item with a semicolon, and use "and" or "or" before the last item if desired, as in this sentence. 
+Otherwise, leave the ends of list items unpunctuated. 
 
 
 ### Admonitions

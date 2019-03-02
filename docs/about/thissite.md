@@ -41,7 +41,12 @@ We gratefully acknowledge contributions by pull requests from
 
 -   Alexander Belopolsky
 -   Aleks Bunin
+-   Andrew in New York
+-   Chris Shucksmith
+-   David Z. Han
+-   Esperanza Lopez Aguilera
 -   Geo Carncross
+-   James Hanna
 -   Sean Keevey
 -   Sean O’Hagan
 -   David Z. Han

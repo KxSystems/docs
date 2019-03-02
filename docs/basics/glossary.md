@@ -12,6 +12,16 @@
 A function that reduces its argument, typically a list to an atom, e.g. `sum`
 
 
+## Ambivalent function
+
+A function that may be _applied_ to either one or two _arguments_; i.e. has both _unary_ and _binary_ applications, 
+e.g. `(+/)2 3 4` and `1000+/2 3 4`.
+
+<i class="far fa-hand-point-right"></i> 
+[Each Prior](../ref/maps.md#each-prior), 
+[Over, Scan](../ref/accumulators.md) 
+
+
 ## Apply
 
 As in _apply a function to its arguments_:  evaluate a function on values corresponding to its arguments.  
@@ -37,7 +47,7 @@ The terminology generalizes to iterables.
 -   The right domain of a matrix is `til count first m`.
 -   The right domains of a list `m` of depth `n` are `1_n{til count first x}\m`. <!-- FIXME Check -->
 
-Although unary functions may be applied prefix, the single argument of a unary function is sometimes referred to as its _right argument_. 
+The single argument of a unary function is sometimes referred to as its _right argument_. 
 
 
 ## Argument list

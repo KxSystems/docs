@@ -87,7 +87,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](accumulators.md)</td>
 <td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](maps.md#each-left-and-each-right)</td>
 <td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each)<br>[Each&nbsp;Parallel](maps.md#each-parallel)<br>[Each Prior](maps.md##each-prior)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](case.md)<br>[Compose](compose.md)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](maps.md#case)<br>[Compose](compose.md)</td>
 </tr>
 </tbody>
 </table>
@@ -246,115 +246,19 @@ Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
 
 ## Namespaces
 
-namespace       | contents
-:--------------:|----------------------------------------------
-[`.h`](doth.md) | markup output for HTTP
-[`.j`](dotj.md) | de/serialize as JSON
-[`.Q`](dotq.md) | utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
-[`.z`](dotz.md) | system variables, callbacks
+### [`.h`](doth.md)
 
-<!-- 
-### `.z`
+Markup output for HTTP
 
-<table class="kx-shrunk kx-tight" markdown="1">
-<tr><td>[`.z.a`](dotz.md#za-ip-address)</td><td>[IP address](dotz.md#za-ip-address)</td><td>[`.z.ac`](dotz.md#zac-http-auth-from-cookie)</td><td>[HTTP auth from cookie](dotz.md#zac-http-auth-from-cookie)</td></tr>
-<tr><td>[`.z.b`](dotz.md#zb-dependencies)</td><td>[dependencies](dotz.md#zb-dependencies)</td><td>[`.z.bm`](dotz.md#zbm-msg-validator)</td><td>[msg validator](dotz.md#zbm-msg-validator)</td></tr>
-<tr><td>[`.z.c`](dotz.md#zc-cores)</td><td>[cores](dotz.md#zc-cores)</td><td>[`.z.e`](dotz.md#ze-tls-connection-status)</td><td>[TLS connection status](dotz.md#ze-tls-connection-status)</td></tr>
-<tr><td>[`.z.exit`](dotz.md#zexit-action-on-exit)</td><td>[action on exit](dotz.md#zexit-action-on-exit)</td><td>[`.z.f`](dotz.md#zf-file)</td><td>[file](dotz.md#zf-file)</td></tr>
-<tr><td>[`.z.h`](dotz.md#zh-host)</td><td>[host](dotz.md#zh-host)</td><td>[`.z.i`](dotz.md#zi-pid)</td><td>[PID](dotz.md#zi-pid)</td></tr>
-<tr><td>[`.z.k`](dotz.md#zk-release-date)</td><td>[release date](dotz.md#zk-release-date)</td><td>[`.z.K`](dotz.md#zk-version)</td><td>[version](dotz.md#zk-version)</td></tr>
-<tr><td>[`.z.l`](dotz.md#zl-license)</td><td>[license](dotz.md#zl-license)</td><td>[`.z.n`](dotz.md#zn-utc-timespan)</td><td>[UTC timespan](dotz.md#zn-utc-timespan)</td></tr>
-<tr><td>[`.z.N`](dotz.md#zn-local-timespan)</td><td>[local timespan](dotz.md#zn-local-timespan)</td><td>[`.z.o`](dotz.md#zo-os-version)</td><td>[OS version](dotz.md#zo-os-version)</td></tr>
-<tr><td>[`.z.p`](dotz.md#zp-utc-timestamp)</td><td>[UTC timestamp](dotz.md#zp-utc-timestamp)</td><td>[`.z.P`](dotz.md#zp-local-timestamp)</td><td>[local timestamp](dotz.md#zp-local-timestamp)</td></tr>
-<tr><td>[`.z.pc`](dotz.md#zpc-close)</td><td>[close](dotz.md#zpc-close)</td><td>[`.z.pd`](dotz.md#zpd-peach-handles)</td><td>[peach handles](dotz.md#zpd-peach-handles)</td></tr>
-<tr><td>[`.z.pg`](dotz.md#zpg-get)</td><td>[get](dotz.md#zpg-get)</td><td>[`.z.ph`](dotz.md#zph-http-get)</td><td>[HTTP get](dotz.md#zph-http-get)</td></tr>
-<tr><td>[`.z.pi`](dotz.md#zpi-input)</td><td>[input](dotz.md#zpi-input)</td><td>[`.z.pm`](dotz.md#zpm-http-options)</td><td>[HTTP options](dotz.md#zpm-http-options)</td></tr>
-<tr><td>[`.z.po`](dotz.md#zpo-open)</td><td>[open](dotz.md#zpo-open)</td><td>[`.z.pp`](dotz.md#zpp-http-post)</td><td>[HTTP post](dotz.md#zpp-http-post)</td></tr>
-<tr><td>[`.z.ps`](dotz.md#zps-set)</td><td>[set](dotz.md#zps-set)</td><td>[`.z.pw`](dotz.md#zpw-validate-user)</td><td>[validate user](dotz.md#zpw-validate-user)</td></tr>
-<tr><td>[`.z.q`](dotz.md#zq-quiet-mode)</td><td>[quiet mode](dotz.md#zq-quiet-mode)</td><td>[`.z.s`](dotz.md#zs-self)</td><td>[self](dotz.md#zs-self)</td></tr>
-<tr><td>[`.z.ts`](dotz.md#zts-timer)</td><td>[timer](dotz.md#zts-timer)</td><td>[`.z.u`](dotz.md#zu-user-id)</td><td>[user ID](dotz.md#zu-user-id)</td></tr>
-<tr><td>[`.z.vs`](dotz.md#zvs-value-set)</td><td>[value set](dotz.md#zvs-value-set)</td><td>[`.z.w`](dotz.md#zw-handle)</td><td>[handle](dotz.md#zw-handle)</td></tr>
-<tr><td>[`.z.W`](dotz.md#zw-handles)</td><td>[handles](dotz.md#zw-handles)</td><td>[`.z.wc`](dotz.md#zwc-websocket-close)</td><td>[websocket close](dotz.md#zwc-websocket-close)</td></tr>
-<tr><td>[`.z.wo`](dotz.md#zwo-websocket-open)</td><td>[websocket open](dotz.md#zwo-websocket-open)</td><td>[`.z.ws`](dotz.md#zws-websockets)</td><td>[websockets](dotz.md#zws-websockets)</td></tr>
-<tr><td>[`.z.x`](dotz.md#zx-argv)</td><td>[argv](dotz.md#zx-argv)</td><td>[`.z.X`](dotz.md#zx-raw-command-line)</td><td>[raw command line](dotz.md#zx-raw-command-line)</td></tr>
-<tr><td>[`.z.z`](dotz.md#zz-utc-datetime)</td><td>[UTC datetime](dotz.md#zz-utc-datetime)</td><td>[`.z.Z`](dotz.md#zz-local-datetime)</td><td>[local datetime](dotz.md#zz-local-datetime)</td></tr>
-<tr><td>[`.z.zd`](dotz.md#zzd-zip-defaults)</td><td>[zip defaults](dotz.md#zzd-zip-defaults)</td></tr> 
-<td colspan="2">[`.z.t`, `.z.T`, `.z.d`, `.z.D`](dotz.md#zt-zt-zd-zd-timedate-shortcuts)</td><td colspan="2">[time/date shortcuts](dotz.md#zt-zt-zd-zd-timedate-shortcuts)</td> </tr> </table>
+### [`.j`](dotj.md)
 
-### `.h`
+De/serialize as JSON
 
-<table class="kx-shrunk kx-tight" markdown="1">
-<tr><td>[`.h.br`](doth.md#hbr-linebreak)</td><td>[linebreak](doth.md#hbr-linebreak)</td><td>[`.h.c0`](doth.md#hc0-web-color)</td><td>[web color](doth.md#hc0-web-color)</td></tr>
-<tr><td>[`.h.c1`](doth.md#hc1-web-color)</td><td>[web color](doth.md#hc1-web-color)</td><td>[`.h.cd`](doth.md#hcd-csv-from-data)</td><td>[CSV from data](doth.md#hcd-csv-from-data)</td></tr>
-<tr><td>[`.h.code`](doth.md#hcode)</td><td></td><td>[`.h.data`](doth.md#hdata)</td><td></td></tr>
-<tr><td>[`.h.ed`](doth.md#hed-excel-from-data)</td><td>[Excel from data](doth.md#hed-excel-from-data)</td><td>[`.h.edsn`](doth.md#hedsn)</td><td></td></tr>
-<tr><td>[`.h.fram`](doth.md#hfram-frame)</td><td>[frame](doth.md#hfram-frame)</td><td>[`.h.ha`](doth.md#hha-anchor)</td><td>[anchor](doth.md#hha-anchor)</td></tr>
-<tr><td>[`.h.hb`](doth.md#hhb-anchor-target)</td><td>[anchor target](doth.md#hhb-anchor-target)</td><td>[`.h.hc`](doth.md#hhc-escape-lt)</td><td>[escape lt](doth.md#hhc-escape-lt)</td></tr>
-<tr><td>[`.h.he`](doth.md#hhe-http-400)</td><td>[HTTP 400](doth.md#hhe-http-400)</td><td>[`.h.hn`](doth.md#hhn-http-error)</td><td>[HTTP error](doth.md#hhn-http-error)</td></tr>
-<tr><td>[`.h.hp`](doth.md#hhp-http-response)</td><td>[HTTP response](doth.md#hhp-http-response)</td><td>[`.h.hr`](doth.md#hhr-horizontal-rule)</td><td>[horizontal rule](doth.md#hhr-horizontal-rule)</td></tr>
-<tr><td>[`.h.ht`](doth.md#hht-marqdown-to-html)</td><td>[Marqdown to HTML ](doth.md#hht-marqdown-to-html)</td><td>[`.h.hta`](doth.md#hhta-start-tag)</td><td>[start tag ](doth.md#hhta-start-tag)</td></tr>
-<tr><td>[`.h.htac`](doth.md#hhtac-element)</td><td>[element](doth.md#hhtac-element)</td><td>[`.h.htc`](doth.md#hhtc-element)</td><td>[element](doth.md#hhtc-element)</td></tr>
-<tr><td>[`.h.html`](doth.md#hhtml-document)</td><td>[document](doth.md#hhtml-document)</td><td>[`.h.http`](doth.md#hhttp-hyperlinks)</td><td>[hyperlinks](doth.md#hhttp-hyperlinks)</td></tr>
-<tr><td>[`.h.hu`](doth.md#hhu-uri-escape)</td><td>[URI escape](doth.md#hhu-uri-escape)</td><td>[`.h.hug`](doth.md#hhug-uri-map)</td><td>[URI map](doth.md#hhug-uri-map)</td></tr>
-<tr><td>[`.h.hy`](doth.md#hhy-http-response)</td><td>[HTTP response](doth.md#hhy-http-response)</td><td>[`.h.iso8601`](doth.md#hiso8601-iso-timestamp)</td><td>[ISO timestamp](doth.md#hiso8601-iso-timestamp)</td></tr>
-<tr><td>[`.h.jx`](doth.md#hjx-table)</td><td>[table](doth.md#hjx-table)</td><td>[`.h.logo`](doth.md#hlogo-kx-logo)</td><td>[Kx logo](doth.md#hlogo-kx-logo)</td></tr>
-<tr><td>[`.h.nbr`](doth.md#hnbr-no-break)</td><td>[no break](doth.md#hnbr-no-break)</td><td>[`.h.pre`](doth.md#hpre-pre)</td><td>[pre](doth.md#hpre-pre)</td></tr>
-<tr><td>[`.h.sa`](doth.md#hsa-style)</td><td>[style](doth.md#hsa-style)</td><td>[`.h.sb`](doth.md#hsb-style)</td><td>[style](doth.md#hsb-style)</td></tr>
-<tr><td>[`.h.sc`](doth.md#hsc-uri-safe)</td><td>[URI-safe](doth.md#hsc-uri-safe)</td><td>[`.h.td`](doth.md#htd-tsv)</td><td>[TSV](doth.md#htd-tsv)</td></tr>
-<tr><td>[`.h.text`](doth.md#htext-paragraphs)</td><td>[paragraphs](doth.md#htext-paragraphs)</td><td>[`.h.tx`](doth.md#htx-filetypes)</td><td>[filetypes](doth.md#htx-filetypes)</td></tr>
-<tr><td>[`.h.ty`](doth.md#hty-mime-types)</td><td>[MIME types](doth.md#hty-mime-types)</td><td>[`.h.uh`](doth.md#huh-uri-unescape)</td><td>[URI unescape](doth.md#huh-uri-unescape)</td></tr>
-<tr><td>[`.h.xd`](doth.md#hxd-xml)</td><td>[XML](doth.md#hxd-xml)</td><td>[`.h.xmp`](doth.md#hxmp-xmp)</td><td>[xmp](doth.md#hxmp-xmp)</td></tr>
-<tr><td>[`.h.xs`](doth.md#hxs-xml-escape)</td><td>[XML escape](doth.md#hxs-xml-escape)</td><td>[`.h.xt`](doth.md#hxt-json)</td><td>[JSON](doth.md#hxt-json)</td></tr>
-</table>
+### [`.Q`](dotq.md) 
 
+Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
-### `.j`
+### [`.z`](dotz.md) 
 
-<table class="kx-shrunk kx-tight" markdown="1">
-<tr><td>[`.j.j`](dotj.md#jj-serialize)</td><td>[serialize](dotj.md#jj-serialize)</td><td>[`.j.k`](dotj.md#jk-deserialize)</td><td>[deserialize](dotj.md#jk-deserialize)</td></tr>
-</table>
-
-
-
-### `.Q`
-
-<table class="kx-shrunk kx-tight" markdown="1">
-<tr><td>[`.Q.addmonths`](dotq.md#qaddmonths)</td><td></td><td>[`.Q.addr`](dotq.md#qaddr-ip-address)</td><td>[IP address](dotq.md#qaddr-ip-address)</td></tr>
-<tr><td>[`.Q.bv`](dotq.md#qbv-build-vp)</td><td>[build vp](dotq.md#qbv-build-vp)</td><td>[`.Q.chk`](dotq.md#qchk-fill-hdb)</td><td>[fill HDB](dotq.md#qchk-fill-hdb)</td></tr>
-<tr><td>[`.Q.cn`](dotq.md#qcn-count-partitioned-table)</td><td>[count partitioned table](dotq.md#qcn-count-partitioned-table)</td><td>[`.Q.D`](dotq.md#qd-partitions)</td><td>[partitions ](dotq.md#qd-partitions)</td></tr>
-<tr><td>[`.Q.dd`](dotq.md#qdd-join-symbols)</td><td>[join symbols](dotq.md#qdd-join-symbols)</td><td>[`.Q.def`](dotq.md#qdef)</td><td></td></tr>
-<tr><td>[`.Q.dpft`](dotq.md#qdpft-save-table)</td><td>[save table](dotq.md#qdpft-save-table)</td><td>[`.Q.dsftg`](dotq.md#qdsftg-load-process-save)</td><td>[load process save](dotq.md#qdsftg-load-process-save)</td></tr>
-<tr><td>[`.Q.en`](dotq.md#qen-enumerate-varchar-cols)</td><td>[enumerate varchar cols](dotq.md#qen-enumerate-varchar-cols)</td><td>[`.Q.f`](dotq.md#qf-format)</td><td>[format](dotq.md#qf-format)</td></tr>
-<tr><td>[`.Q.fc`](dotq.md#qfc-parallel-on-cut)</td><td>[parallel on cut ](dotq.md#qfc-parallel-on-cut)</td><td>[`.Q.ff`](dotq.md#qff-append-columns)</td><td>[append columns](dotq.md#qff-append-columns)</td></tr>
-<tr><td>[`.Q.fk`](dotq.md#qfk-foreign-key)</td><td>[foreign key](dotq.md#qfk-foreign-key)</td><td>[`.Q.fmt`](dotq.md#qfmt-format)</td><td>[format](dotq.md#qfmt-format)</td></tr>
-<tr><td>[`.Q.fps`](dotq.md#qfps-streaming-algorithm)</td><td>[streaming algorithm](dotq.md#qfps-streaming-algorithm)</td><td>[`.Q.fs`](dotq.md#qfs-streaming-algorithm)</td><td>[streaming algorithm](dotq.md#qfs-streaming-algorithm)</td></tr>
-<tr><td>[`.Q.fsn`](dotq.md#qfsn-streaming-algorithm)</td><td>[streaming algorithm](dotq.md#qfsn-streaming-algorithm)</td><td>[`.Q.ft`](dotq.md#qft-apply-simple)</td><td>[apply simple ](dotq.md#qft-apply-simple)</td></tr>
-<tr><td>[`.Q.fu`](dotq.md#qfu-apply-unique)</td><td>[apply unique](dotq.md#qfu-apply-unique)</td><td>[`.Q.gc`](dotq.md#qgc-garbage-collect)</td><td>[garbage collect](dotq.md#qgc-garbage-collect)</td></tr>
-<tr><td>[`.Q.hdpf`](dotq.md#qhdpf-save-tables)</td><td>[save tables](dotq.md#qhdpf-save-tables)</td><td>[`.Q.hg`](dotq.md#qhg-http-get)</td><td>[HTTP get](dotq.md#qhg-http-get)</td></tr>
-<tr><td>[`.Q.host`](dotq.md#qhost-hostname)</td><td>[hostname](dotq.md#qhost-hostname)</td><td>[`.Q.hp`](dotq.md#qhp-http-post)</td><td>[HTTP post](dotq.md#qhp-http-post)</td></tr>
-<tr><td>[`.Q.id`](dotq.md#qid-purge)</td><td>[purge](dotq.md#qid-purge)</td><td>[`.Q.ind`](dotq.md#qind-partitioned-index)</td><td>[partitioned index](dotq.md#qind-partitioned-index)</td></tr>
-<tr><td>[`.Q.j10`](dotq.md#qj10-encode-binhex)</td><td>[encode binhex  ](dotq.md#qj10-encode-binhex)</td><td>[`.Q.j12`](dotq.md#qj12-encode-base64)</td><td>[encode base64  ](dotq.md#qj12-encode-base64)</td></tr>
-<tr><td>[`.Q.k`](dotq.md#qk-version)</td><td>[version ](dotq.md#qk-version)</td><td>[`.Q.l`](dotq.md#ql-load)</td><td>[load](dotq.md#ql-load)</td></tr>
-<tr><td>[`.Q.M`](dotq.md#qm-long-infinity)</td><td>[long infinity](dotq.md#qm-long-infinity)</td><td>[`.Q.MAP`](dotq.md#qmap-maps-partitions)</td><td>[maps partitions](dotq.md#qmap-maps-partitions)</td></tr>
-<tr><td>[`.Q.opt`](dotq.md#qopt-command-parameters)</td><td>[command parameters](dotq.md#qopt-command-parameters)</td><td>[`.Q.P`](dotq.md#qp-segments)</td><td>[segments](dotq.md#qp-segments)</td></tr>
-<tr><td>[`.Q.par`](dotq.md#qpar-locate-partition)</td><td>[locate partition](dotq.md#qpar-locate-partition)</td><td>[`.Q.pd`](dotq.md#qpd-modified-partition-locations)</td><td>[modified partition locations ](dotq.md#qpd-modified-partition-locations)</td></tr>
-<tr><td>[`.Q.PD`](dotq.md#qpd-partition-locations)</td><td>[partition locations](dotq.md#qpd-partition-locations)</td><td>[`.Q.pf`](dotq.md#qpf-partition-type)</td><td>[partition type](dotq.md#qpf-partition-type)</td></tr>
-<tr><td>[`.Q.pn`](dotq.md#qpn-partition-counts)</td><td>[partition counts](dotq.md#qpn-partition-counts)</td><td>[`.Q.pt`](dotq.md#qpt-partitioned-tables)</td><td>[partitioned tables](dotq.md#qpt-partitioned-tables)</td></tr>
-<tr><td>[`.Q.pv`](dotq.md#qpv-modified-partition-values)</td><td>[modified partition values](dotq.md#qpv-modified-partition-values)</td><td>[`.Q.PV`](dotq.md#qpv-partition-values)</td><td>[partition values](dotq.md#qpv-partition-values)</td></tr>
-<tr><td>[`.Q.qp`](dotq.md#qqp-is-partitioned)</td><td>[is partitioned](dotq.md#qqp-is-partitioned)</td><td>[`.Q.qt`](dotq.md#qqt-is-table)</td><td>[is table](dotq.md#qqt-is-table)</td></tr>
-<tr><td>[`.Q.res`](dotq.md#qres-k-words)</td><td>[k words](dotq.md#qres-k-words)</td><td>[`.Q.s`](dotq.md#qs-plain-text)</td><td>[plain text](dotq.md#qs-plain-text)</td></tr>
-<tr><td>[`.Q.ty`](dotq.md#qty-type)</td><td>[type](dotq.md#qty-type)</td><td>[`.Q.u`](dotq.md#qu-date-based)</td><td>[date based](dotq.md#qu-date-based)</td></tr>
-<tr><td>[`.Q.V`](dotq.md#qv-table-to-dict)</td><td>[table to dict](dotq.md#qv-table-to-dict)</td><td>[`.Q.v`](dotq.md#qv-value)</td><td>[value](dotq.md#qv-value)</td></tr>
-<tr><td>[`.Q.view`](dotq.md#qview-subview)</td><td>[subview](dotq.md#qview-subview)</td><td>[`.Q.vp`](dotq.md#qvp-missing-partitions)</td><td>[missing partitions](dotq.md#qvp-missing-partitions)</td></tr>
-<tr><td>[`.Q.w`](dotq.md#qw-memory-stats)</td><td>[memory stats](dotq.md#qw-memory-stats)</td><td>[`.Q.x10`](dotq.md#qx10-decode-binhex)</td><td>[decode binhex  ](dotq.md#qx10-decode-binhex)</td></tr>
-<tr><td>[`.Q.x12`](dotq.md#qx12-decode-base64)</td><td>[decode base64 ](dotq.md#qx12-decode-base64)</td><td>[`.Q.x`](dotq.md#qx-non-command-parameters)</td><td>[non-command parameters](dotq.md#qx-non-command-parameters)</td></tr>
-<tr><td>[`.Q.Xf`](dotq.md#qxf-create-file)</td><td>[create file](dotq.md#qxf-create-file)</td></tr>
-</table>
-
-
-!!! warning "Single-letter namespaces"
-    _All_ single-letter namespaces (upper- and lower-case) are reserved for Kx use. 
-    Do not use single-letter namespaces as containers for user-written code or data.
-
- -->
+System variables, callbacks
 

@@ -138,7 +138,7 @@ rank | syntax                                    | semantics
 :---:|-------------------------------------------|-------------------------------------------
 1    | `(f')x`, `f'[x]`, `x ff'y`,  `ff'[x;y;…]` | [Each](maps.md#each): iterate `ff` itemwise
 1    | `'msg`                                    | [Signal](signal.md) an error
-1    | `iv'[x;y;…]`                              | [Case](case.md): successive items from lists
+1    | `iv'[x;y;…]`                              | [Case](maps.md#case): successive items from lists
 2    | `'[ff;f]`                                 | [Compose](compose.md) `ff` with `f`
 
 ```txt

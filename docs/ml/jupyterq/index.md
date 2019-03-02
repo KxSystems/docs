@@ -5,7 +5,7 @@ keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q
 # ![Jupyter](/interfaces/img/jupyter.png) JupyterQ
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../../interfaces/fusion)
+<i class="fa fa-superpowers"></i> [Fusion for kdb+](/interfaces/fusion)
 </div>
 
 
@@ -29,7 +29,7 @@ Jupyter kernel for kdb+.
 
 ## Build and install
 
-<i class="far fa-download"></i> Download the code from <i class="fab fa-github"></i> [KxSystems/JupyterQ](https://github.com/kxsystems/jupyterq) and follow the instructions there.
+<i class="fa fa-download"></i> Download the code from <i class="fa fa-github"></i> [KxSystems/JupyterQ](https://github.com/kxsystems/jupyterq) and follow the instructions there.
 
 
 ## Using notebooks
@@ -307,7 +307,7 @@ _File > Download as > Q (.q)_.
  
 To save the contents of individual cells as q scripts use `/%savescript` in a cell.
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fa fa-hand-o-right"></i> 
 [Loading and saving scripts](#loading-and-saving-code)
 
 
@@ -315,7 +315,7 @@ To save the contents of individual cells as q scripts use `/%savescript` in a ce
 
 Yes, either with `p)` or `/%python`.
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fa fa-hand-o-right"></i> 
 [Examples](#python-and-inline-display)
 
 
@@ -338,5 +338,5 @@ Further instructions for running headless and building the image are [available]
  
 Yes, you can initialise a notebook which requires other processes to provide a valid *username:password* pair when trying to open a connection with the notebook. 
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fa fa-hand-o-right"></i> 
 [Restrict access](#restrict-access-to-a-notebook-using-passwords)

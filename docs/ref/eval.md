@@ -41,7 +41,7 @@ The `reval` function is similar to [`eval`](eval.md), and behaves as if the [com
 An example usage is inside the message handler [`.z.pg`,](dotz.md#zpg-get) useful for access control, here blocking sync messages from updating:
 
 ```q
-q).z.pg:{reval(value;x)} / define in process listening on port 5000
+q).z.pg:{reval(value;enlist x)} / define in process listening on port 5000
 q)h:hopen 5000 / from another process on same host
 q)h"a:4"
 'noupdate: `. `a

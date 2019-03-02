@@ -6,7 +6,7 @@ The Knowledge Base contains articles about how to get things done with kdb+.
 ## Popular 
 
 -   [Frequently-asked questions](faq.md)         
--   [Get started](../learn.md)                   
+-   [Get started](../learn/index.md)                   
 -   [Programming idioms](programming-idioms.md)  
 -   [WebSockets](websockets.md)                  
 -   [File compression](file-compression.md)      

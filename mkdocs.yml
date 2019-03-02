@@ -161,12 +161,12 @@ nav:
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
     - Errors: basics/errors.md
+    - File system: basics/files.md
+    - Glossary: basics/glossary.md
     - Iterators:
       - Overview: ref/iterators.md
       - Maps: ref/maps.md
       - Accumulators: ref/accumulators.md
-    - File system: basics/files.md
-    - Glossary: basics/glossary.md
     - Keywords:
       - abs: ref/abs.md
       - aj, aj0, ajf, ajf0: ref/aj.md
@@ -483,7 +483,7 @@ nav:
     - Disaster recovery: wp/disaster-recovery/index.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
-    - Iterators: wp/iterators.md
+    - Iterators: wp/iterators/index.md
     - Java API: wp/java-api/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
