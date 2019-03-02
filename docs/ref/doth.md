@@ -651,7 +651,7 @@ q).h.xd ([]a:1 2 3;b:`x`y`z)
 ```
 
 
-## `.h.xmp` (xmp)
+## `.h.xmp` (XMP)
 
 Syntax: `.h.xmp x`
 
