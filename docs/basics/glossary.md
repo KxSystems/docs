@@ -740,7 +740,7 @@ A view should not have side effects, i.e. should not update global variables.
 <i class="far fa-hand-point-right"></i> 
 [`view`, `views`](../ref/view.md)  
 [`.Q.view`](../ref/dotq.md#qview-subview) (subview)
-Tutorial: [Views tutorial](../tutorials/views)
+Tutorial: [Views](../learn/views)
 
 
 

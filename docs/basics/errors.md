@@ -79,7 +79,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB</td> </tr> 
 <tr> <td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
 <tr> <td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
-<tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../tutorials/install.md#32-bit-or-64-bit).)</td> </tr>
+<tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install/linux.md#64-bit-or-32-bit).)</td> </tr>
 <tr><td>Q7</td><td/><td>nyi op on file nested array</td></tr>
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](glossary.md#rank)</td> </tr> 
 <tr><td>rb</td> <td/> <td>Encountered a problem while doing a blocking read</td> </tr> 
@@ -95,7 +95,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr><td>stop</td> <td/> <td>User interrupt (Ctrl-c) or [time limit (`-T`)](cmdline.md#-t-timeout)</td> </tr>
 <tr><td>stype</td> <td class="nowrap">`'42`</td> <td>Invalid [type](datatypes.md) used for [Signal](../ref/signal.md)</td> </tr>
 <tr><td>sys</td> <td>`{system "ls"}peach 0 1`</td> <td>Using system call from thread other than main thread</td> </tr>
-<tr><td>threadview</td> <td/> <td>Trying to calc a [view](../tutorials/views.md) in a thread other than main thread. A view can be calculated in the main thread only. The cached result can be used from other threads.</td> </tr>
+<tr><td>threadview</td> <td/> <td>Trying to calc a [view](../learn/views.md) in a thread other than main thread. A view can be calculated in the main thread only. The cached result can be used from other threads.</td> </tr>
 <tr><td>timeout</td><td/><td>Request to `hopen` a handle fails on a timeout; includes message from OS</td> </tr>
 <tr><td>TLS not enabled</td><td/><td>Received a TLS connection request, but kdb+ not [started with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode)</td></tr>
 <tr><td>too many syms</td><td/><td>Kdb+ currently allows for ~1.4B interned symbols in the pool and will exit with this error when this threshold is reached</td> </tr>
@@ -108,7 +108,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr><td>utf8</td> <td/> <td>The websocket requires that text is UTF-8 encoded</td> </tr>
 <tr><td>value</td> <td/> <td>No value</td> </tr>
 <tr><td>vd1</td> <td/> <td>Attempted multithread update</td> </tr>
-<tr><td>view</td> <td/> <td>Trying to re-assign a [view](../tutorials/views.md) to something else</td> </tr>
+<tr><td>view</td> <td/> <td>Trying to re-assign a [view](../learn/views.md) to something else</td> </tr>
 <tr>
 <td>wsfull</td>
 <td class="nowrap">`999999999#0j`</td>
@@ -193,8 +193,8 @@ which will cause a `'host` error.
 <td>k4.lic</td>
 <td>
 `k4.lic` file not found, check contents of environment variables 
-[`QHOME`../tutorials/install.md#installing-elsewhere) and 
-[`QLIC`](../tutorials/licensing.md#keeping-the-license-key-file-elsewhere)
+[`QHOME`../learn/install.md#installing-elsewhere) and 
+[`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
 </td>
 </tr>
 <tr> <td>os</td><td>Wrong OS or operating-system error (if runtime error)</td> </tr>
@@ -206,7 +206,7 @@ which will cause a `'host` error.
 </table>
 
 <i class="far fa-hand-point-right"></i> 
-Tutorial: [Licensing](../tutorials/licensing.md)
+Tutorial: [Licensing](../learn/licensing.md)
 
 
 ## Handling errors

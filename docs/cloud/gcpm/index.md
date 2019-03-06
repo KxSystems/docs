@@ -28,5 +28,5 @@ Select `kdb+` from the [GCP Marketplace console](http://console.cloud.google.com
 
 ## First steps
 
-Once your instance is up and running you can connect via SSH and take your [first steps](../tutorials/first-steps.md).
+Once your instance is up and running you can connect via SSH and take your [first steps](../../learn/brief-introduction.md).
 

@@ -103,6 +103,6 @@ This in turn sends an email confirmation link to validate the license file.
 
 ## Do it yourself
 
-1.  Install [kdb+](../tutorials/install.md) 
+1.  Install [kdb+](../learn/install/index.md) 
 2.  Install [embedPy](embedpy/)
 3.  Install [JupyterQ](jupyterq/)

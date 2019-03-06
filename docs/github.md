@@ -5,8 +5,8 @@ keywords: code, github, kdb+, q, repo, repository
 # <i class="fab fa-github"></i> Repositories on GitHub
 
 
-<i class="far fa-hand-point-right"></i> [Interfaces](/interfaces) to feeds, services and other languages  
-<i class="far fa-hand-point-right"></i> [Integrations](/interfaces/#editor-integrations) with editors and IDEs
+<i class="far fa-hand-point-right"></i> [Interfaces](interfaces/index.md) to feeds, services and other languages  
+<i class="far fa-hand-point-right"></i> [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
 
 Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx Systems. Other repositories are maintained by their owners. 
 

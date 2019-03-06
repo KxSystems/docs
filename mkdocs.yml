@@ -85,6 +85,17 @@ nav:
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
+    - Install:
+      - Begin here: learn/install/index.md
+      - Linux: learn/install/linux.md
+      - macOS: learn/install/macos.md
+      - Windows: learn/install/windows.md
+      - DigitalOcean: learn/install/digitalocean.md
+    - Licensing: learn/licensing.md
+    - Brief introduction: learn/brief-introduction.md
+    - Dictionaries & tables: learn/dicts-tables.md
+    - Q by Examples: learn/q-by-examples.md
+    - Q for All: learn/q-for-all.md
     - Q for Mortals 3: /q4m3
     - Remarks on Style:
       - Introduction: style/index.md
@@ -122,6 +133,16 @@ nav:
       - SAM – A simple application model: style/sam.md
       - New wine for old bottles: style/new-wine.md
       - Omitted pages: style/omitted-pages.md
+    - Shifts & scans: learn/shifts-scans.md
+    - Starting kdb+: 
+      - Introduction: learn/startingkdb/index.md
+      - The q language: learn/startingkdb/language.md
+      - IPC: learn/startingkdb/ipc.md
+      - Tables: learn/startingkdb/tables.md
+      - Historical database: learn/startingkdb/hdb.md
+      - Realtime database: learn/startingkdb/tick.md
+    - Views: learn/views.md
+    - Archive: learn/archive.md
   - Reference:
     - Reference card: ref/index.md
     - Basics:

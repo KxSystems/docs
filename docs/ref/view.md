@@ -44,4 +44,4 @@ q)views[]
 
 <i class="far fa-hand-point-right"></i> 
 Basics: [Metadata](../basics/metadata.md)  
-Tutorials: [Views](../tutorials/views.md)
+Tutorials: [Views](../learn/views.md)
