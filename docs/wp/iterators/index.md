@@ -272,7 +272,7 @@ Good q style minimises use of both brackets and parentheses.
 (Where they must be used, the less that appears between an opening bracket or parenthesis and its close, the better.) 
 So prefix application is usually better.
 
-!!! info "An ambivalent function can be applied prefix as a unary by parenthesizing it." 
+!!! info "A variadic function can be applied prefix as a unary by parenthesizing it." 
 
 ```q
 q)(+\)3 4 5 6 7
@@ -577,7 +577,7 @@ If `f` is rank 2 or higher, the number of evaluations is determined by the lengt
 
 There are three ways to determine the number of evaluations of `f1` performed by `f1\`. 
 
-A [table in the Reference](../../ref/iterators/#glyphs) tells us `f1\` is ambivalent and can be applied as a unary (Converge) or as a binary (Do or While). 
+A [table in the Reference](../../ref/iterators/#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
 
 
 ### Converge

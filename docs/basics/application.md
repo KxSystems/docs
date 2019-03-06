@@ -139,7 +139,7 @@ q)d`cow`sheep
 
 ## Postfix application
 
-Iterators are unary operators that can be (and almost always are) applied postfix. They derive functions from their value arguments. Some derived functions are ambivalent: they can be applied either unary or binary. 
+Iterators are unary operators that can be (and almost always are) applied postfix. They derive functions from their value arguments. Some derived functions are variadic: they can be applied either unary or binary. 
 
 ```q
 q)+\[2 3 4]                             / derived function applied unary

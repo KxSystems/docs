@@ -12,7 +12,7 @@ Syntax: `'[f;ff][x;y;z;…]`
 
 Where 
 
--   `f` is a unary [value](glossary.md#applicable-value)
+-   `f` is a unary [value](../ref/glossary.md#applicable-value)
 -   `ff` is a value rank ≥1
 
 the derived function `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`. 

@@ -77,7 +77,7 @@ q)count'[txt]             / unary function applied with brackets
 3 5 5 4
 ```
 
-If the derived function is unary or ambivalent, you can also parenthesize it and apply it prefix.
+If the derived function is unary or [variadic](../basics/variadic.md), you can also parenthesize it and apply it prefix.
 
 ```q
 q)(count')txt             / unary function applied prefix
