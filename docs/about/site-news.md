@@ -7,13 +7,19 @@ keywords: blog, kdb+, news, q, site
 
 ## V2
 
-<small>2018.11.15</small>
+<small>2019.03.07</small>
 
 Version 2 of this site has
 
 -   extensive revision of the Reference, including 
 -   a completely new description of the _iterators_ (formerly _adverbs_)
 -   simplified URLs for Reference articles
+-   a new version, [Iterators](../wp/iterators/index.md) of the 2013 white paper “Efficient use of adverbs”
+-   HTTP requests redirected to HTTPS 
+
+The previous version of the site will remain for some time at its former URL <https://code.kx.com/q>, so bookmarks to it will continue to work. 
+
+The Kx wiki, frozen in 2016, has been retired to <https://code.kx.com/oldwiki>.
 
 
 ## <i class="fas fa-birthday-cake"></i>  Kx@25
