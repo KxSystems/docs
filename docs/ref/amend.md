@@ -10,10 +10,10 @@ _Modify one or more items in a list._
 
 syntax           | rank | semantics
 -----------------|:----:|----------------------------------------
-`.[d; i; m; my]` | 4    | amend items at depth with iterable rank ≥2
-`@[d; i; m; my]` | 4    | amend items at depth 1 with iterable rank ≥2
-`.[d; i; u]`     | 3    | amend items at depth with unary iterable
-`@[d; i; u]`     | 3    | amend items at depth 1  with unary iterable
+`.[d; i; v; my]` | 4    | amend items at depth with value `v` rank ≥2
+`@[d; i; v; my]` | 4    | amend items at depth 1 with value `v` rank ≥2
+`.[d; i; u]`     | 3    | amend items at depth with unary value `u`
+`@[d; i; u]`     | 3    | amend items at depth 1  with unary value `u`
 `.[d; i; :; y]`  | 4    | replace items at depth 
 `@[d; i; :; y]`  | 4    | replace items at depth 1
 
@@ -21,8 +21,8 @@ Where
 
 -   `d` is a list or a handle to a list
 -   `i` is a list of items in the domain of `d`
--   `m` is an iterable of rank $n$, and `my` an atom, or list conformable to `i`, of rank $n-1$ with items in the right domain/s of `m`
--   `u` is a unary iterable
+-   `v` is a value of rank $n$, and `my` an atom, or list conformable to `i`, of rank $n-1$ with items in the right domain/s of `m`
+-   `u` is a unary value
 -   `y` is an atom or list conformable to `i`
 
 if `d` is a 
@@ -44,9 +44,9 @@ If `d` is an **atom** other than a dictionary or a handle and `i` is an empty li
 
 If `d` is a **list** and `i` is **nil**, then all of `d` is amended, but one item at a time, as if `i` were `key d`. ==FIXME Confirm. Example==
 
-In the case of a non-empty list `i`, the iterable `u` or `m` is evaluated once for every path generated from `i`, just as the above definition indicates. 
+In the case of a non-empty list `i`, the value `u` or `v` is evaluated once for every path generated from `i`, just as the above definition indicates. 
 
-However, if the index `i` is the empty list, i.e. `()`, then Amend is Amend Entire. That is, the entire value in `d` is replaced, in the quaternary `.[d;();m;y]` with `m[d;y]`, or in `.[d;();:;y]` with `y`, as in `d:y`, and in the ternary `.[d;();u]` with `u[d]`. 
+However, if the index `i` is the empty list, i.e. `()`, then Amend is Amend Entire. That is, the entire value in `d` is replaced, in the quaternary `.[d;();v;y]` with `v[d;y]`, or in `.[d;();:;y]` with `y`, as in `d:y`, and in the ternary `.[d;();u]` with `u[d]`. 
 
 ```q
 .[2 3; (); ,; 4 5 6]
@@ -69,7 +69,7 @@ Definitions and examples that follow are written for `.` – adapt them for `@`.
 
 ## Modification
 
-In the quaternary, each item in the selection is replaced by the result of evaluating `m` on itself as the left argument and the corresponding item in `y` as the right argument.
+In the quaternary, each item in the selection is replaced by the result of evaluating `v` on itself as the left argument and the corresponding item in `y` as the right argument.
 
 In the Replace form (with the colon as third argument) each item in the selection is replaced by the corresponding item in `y`. 
 
@@ -85,7 +85,7 @@ The new value/s of `d . i` are determined by the third argument, and whether `i`
 :-----------:|-------------------|--------------------
 `:`          | `y`               | `y . i`
 `u`          | `u[d . i]`        | `u'[d . i]`
-`m`          | `m[d . i; y . i]` | `m'[d . i; y . i]`
+`v`          | `v[d . i; y . i]` | `v'[d . i; y . i]`
 
 
 ==FIXME Replace `'` in definition with recursion?==
@@ -189,7 +189,7 @@ q)d                           q)r
 Note multiple replacements of some items-at-depth in `d`, corresponding to the multiple updates in the earlier example.
 
 
-## Unary iterable
+## Unary value
 
 The ternary replaces the selection with the results of applying `u` to them.
 
@@ -230,14 +230,14 @@ The function proceeds recursively through `i[0]` and `y` as if they were the arg
 
 And so on, until arriving at an atom in the last item of `i`. At that point a path `p` into `d` has been created and the item at depth `count i` selected by `p`, namely `d . p`, is replaced by `m[d . p;z]` for binary `m`, or `u[d . p]` for unary `u`, where `z` is the item-at-depth in `y` that had been arrived at the same time as the atom in the last item of `i`.
 
-The general case for binary `m` can be defined recursively by partitioning the index list into its first item and the rest:
+The general case for binary `v` can be defined recursively by partitioning the index list into its first item and the rest:
 
 ```q
-Amend:{[d;F;R;m;y] 
-  $[ nil ~ F; Amend[d; key d; R; m; y];
-    0 = count R; @[d; F; m; y];
-        @ F; Amend[d @ F; first R; 1_R; m; y];
-             Amend[;; R;;]/[d; F; m; y]}
+Amend:{[d;F;R;v;y] 
+  $[ nil ~ F; Amend[d; key d; R; v; y];
+    0 = count R; @[d; F; v; y];
+        @ F; Amend[d @ F; first R; 1_R; v; y];
+             Amend[;; R;;]/[d; F; v; y]}
 ```
 
 ==FIXME Revise definition: Atom; nil==
@@ -247,7 +247,7 @@ Note the application of [Over](FIXME) to Amend, which requires that whenever `F`
 
 ## Accumulate
 
-Cases of Amend with an iterable `u` or `m` are sometimes called Accumulate because the new items-at-depth are computed in terms of the old, as in `.[x; 2 6; +; 1]`, where item 6 of item 2 is incremented by 1.
+Cases of Amend with a value `u` or `v` are sometimes called Accumulate because the new items-at-depth are computed in terms of the old, as in `.[x; 2 6; +; 1]`, where item 6 of item 2 is incremented by 1.
 
 
 ## Errors

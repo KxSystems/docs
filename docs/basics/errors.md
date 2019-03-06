@@ -89,7 +89,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr>
 <td>stack</td>
 <td class="nowrap">`{.z.s[]}[]`</td>
-<td>Ran out of stack space. Consider using [Converge `\` `/`](../ref/accumulators.md#unary-iterables) instead of recursion.</td>
+<td>Ran out of stack space. Consider using [Converge `\` `/`](../ref/accumulators.md#unary-values) instead of recursion.</td>
 </tr>
 <tr><td>step</td> <td class="nowrap">``d:`s#`a`b!1 2;`d upsert `c`d!3 4``</td> <td>Attempt to upsert a step dictionary in place</td> </tr>
 <tr><td>stop</td> <td/> <td>User interrupt (Ctrl-c) or [time limit (`-T`)](cmdline.md#-t-timeout)</td> </tr>

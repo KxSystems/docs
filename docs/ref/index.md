@@ -215,12 +215,12 @@ q)`VARNAME setenv "NEWVALUE"
 <tr><td class="nowrap">103</td><td/><td colspan="7">[iterator](iterators.md)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">104</td><td/><td colspan="7">projection</td><td/><td/><td/></tr>
 <tr><td class="nowrap">105</td><td/><td colspan="7">[composition](compose.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">106</td><td/><td colspan="7">[`m'`](maps.md#each)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">107</td><td/><td colspan="7">[`m/`](accumulators.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">108</td><td/><td colspan="7">[`m\`](accumulators.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">109</td><td/><td colspan="7">[`m':`](maps.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">110</td><td/><td colspan="7">[`m/:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">111</td><td/><td colspan="7">[`m\:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">106</td><td/><td colspan="7">[`v'`](maps.md#each)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">107</td><td/><td colspan="7">[`v/`](accumulators.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">108</td><td/><td colspan="7">[`v\`](accumulators.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">109</td><td/><td colspan="7">[`v':`](maps.md)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">110</td><td/><td colspan="7">[`v/:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
+<tr><td class="nowrap">111</td><td/><td colspan="7">[`v\:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
 <tr><td class="nowrap">112</td><td/><td colspan="7">dynamic load</td><td/><td/><td/></tr>
 </tbody>
 </table>
@@ -229,7 +229,7 @@ _n_: short int returned by [`type`](type.md) and used for [casting](../basics/ca
 _c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)  
 _sz_: size in bytes  
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
-`m`: iterable  
+`v`: applicable value  
 RO: read only; RW: read-write
 
 

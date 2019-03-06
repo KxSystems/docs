@@ -20,7 +20,7 @@ adverb            | iterator
 element of a list | item of a list
 scalar            | atom
 
-In contrast, to reflect the key roles played by iterables and the [Apply/Index operator](../../ref/apply.md)
+In contrast, to reflect the key roles played by values, iterators and the [Apply/Index operator](../../ref/apply.md)
 
 deprecated               | current
 -------------------------|--------

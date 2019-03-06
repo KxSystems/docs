@@ -1,5 +1,5 @@
 ---
-keywords: adverb, converge, dictionary, do, iterable, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, while
+keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, value, while
 ---
 
 # Accumulators
@@ -9,7 +9,7 @@ keywords: adverb, converge, dictionary, do, iterable, iterator, fold, kdb+, keyw
 
 
 
-An accumulator is an iterator that takes an iterable as argument and derives a function that evaluates the iterable, first on its entire (first) argument, then on the results of **successive** evaluations.
+An accumulator is an iterator that takes an [applicable value](../basics/glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
 
 There are two accumulators, Scan and Over. They have the same syntax and perform the same computation. But where the Scan-derived functions return the result of each evaluation, those of Over return only the last result. 
 
@@ -31,7 +31,7 @@ q)(+/)2 3 4    / Over
 
     While Scan and Over perform the same computation, in general, Over requires less memory, because it does not store intermediate results.
 
-The number of successive evaluations is determined differently for unary and for higher-rank iterables. 
+The number of successive evaluations is determined differently for unary and for higher-rank values. 
 
 The domain of the accumulators is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine). 
 
@@ -55,23 +55,23 @@ Berlin| London
 ```
 
 
-## Unary iterables
+## Unary values
 
-Syntax: `(m\)x`, `(m/)x`  unary application  
-Syntax: `x m\y`, `x m/y`  binary application
+Syntax: `(v\)x`, `(v/)x`  unary application  
+Syntax: `x v\y`, `x v/y`  binary application
 
-The function an accumulator derives from a unary iterable is variadic. 
+The function an accumulator derives from a unary value is [variadic](../basics/variadic.md). 
 The result of the first evaluation is the right argument for the second evaluation. And so on.
 
-!!! note "The iterable is evaluated on the entire right argument, not on items of it." 
+!!! note "The value is evaluated on the entire right argument, not on items of it." 
 
 The number of evaluations the derived function performs is determined (when applied as a binary) by its left argument, or (when applied as a unary) by convergence.
 
 syntax           | name     | number of successive evaluations
 -----------------|----------|---------------------------------------------
-`(m\)x`, `(m/)x` | Converge | until two successive evaluations match, or an evaluation matches `x`
-`i m\x`, `i m/x` | Do       | `i`, a non-negative integer
-`t m\x`, `t m/x` | While    | until unary iterable `t`, evaluated on the result, returns 0
+`(v\)x`, `(v/)x` | Converge | until two successive evaluations match, or an evaluation matches `x`
+`i v\x`, `i v/x` | Do       | `i`, a non-negative integer
+`t v\x`, `t v/x` | While    | until unary value `t`, evaluated on the result, returns 0
 
 
 ### Converge
@@ -184,14 +184,14 @@ q)waypoints route\`Paris                   / Paris to the end
 `Paris`Genoa`Milan`Vienna`Berlin
 ```
 
-In the last example, both iterables are dictionaries.
+In the last example, both applicable values are dictionaries.
 
 
-## Binary iterables
+## Binary values
 
-Syntax: `x m\y`, `x m/y`
+Syntax: `x v\y`, `x v/y`
 
-The function an accumulator derived from a binary iterable is variadic. 
+The function an accumulator derived from a binary value is [variadic](../basics/variadic.md). 
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the count of the right argument.
 
@@ -201,7 +201,7 @@ The number of evaluations is the count of the right argument.
 
 ### Binary application
 
-When the derived function is applied as a binary, the first evaluation applies the iterable to the function’s left argument and the first item of the its right argument, i.e. `m[x;first y]`. The result of this becomes the left argument in the next evaluation, for which the right argument is the second item of the right argument. And so on. 
+When the derived function is applied as a binary, the first evaluation applies the value to the function’s left argument and the first item of the its right argument, i.e. `m[x;first y]`. The result of this becomes the left argument in the next evaluation, for which the right argument is the second item of the right argument. And so on. 
 
 ```q
 q)1000+\2 3 4
@@ -223,12 +223,12 @@ q)7 m\c
 0 6 6 6 1 5
 ```
 
-Items of `x` must be in the left domain of the iterable, and items of `y` in its right domain.
+Items of `x` must be in the left domain of the value, and items of `y` in its right domain.
 
 
 ### Unary application
 
-When the derived function is applied as a unary, and the iterable is **a function with a known identity element** $I$, then $I$ is taken as the left argument of the first evaluation.
+When the derived function is applied as a unary, and the value is **a function with a known identity element** $I$, then $I$ is taken as the left argument of the first evaluation.
 
 ```q
 q)(,\)2 3 4        / I is ()
@@ -237,7 +237,7 @@ q)(,\)2 3 4        / I is ()
 2 3 4
 ```
 
-In such cases `(I f\x)~(f\)x` and `(I f/x)~(f/)x` and items of `x` must be in the right domain of the iterable.
+In such cases `(I f\x)~(f\)x` and `(I f/x)~(f/)x` and items of `x` must be in the right domain of the value.
 
 Otherwise, the first item of the right argument is taken as the result of the first evaluation.
 
@@ -254,12 +254,12 @@ q)(m\)cols            / cols[0] is the first left argument
 4 3 1 0 6 9
 ```
 
-In this case, for `(m\)x` and `(m/)x)`
+In this case, for `(v\)x` and `(v/)x)`
 
--   `x[0]` is in the _left_ domain of `m`
--   items `1_x` are in the _right_ domain of `m`
+-   `x[0]` is in the _left_ domain of `v`
+-   items `1_x` are in the _right_ domain of `v`
 
-but `x[0]` need not be in the range of `m`.
+but `x[0]` need not be in the range of `v`.
 
 ```q
 q)({count x,y}\)("The";"quick";"brown";"fox")
@@ -272,7 +272,7 @@ q)({count x,y}\)("The";"quick";"brown";"fox")
 
 ### Keywords `scan` and `over`
 
-Mnemonic keywords `scan` and `over` can be used to apply a binary iterable to a list or dictionary. Parenthesize an infix to pass it as a left argument.
+Mnemonic keywords `scan` and `over` can be used to apply a binary value to a list or dictionary. Parenthesize an infix to pass it as a left argument.
 
 ```q
 q)(+) over til 5           / (+/)til 5
@@ -284,33 +284,33 @@ q)m scan cols              / (m\)cols
 ```
 
 
-## Ternary iterables
+## Ternary values
 
-Syntax: `m\[x;y;z]`, `m/[x;y;z]`
+Syntax: `v\[x;y;z]`, `v/[x;y;z]`
 
-The function an accumulator derives from an iterable of rank >2 has the same rank as the iterable. 
+The function an accumulator derives from an value of rank >2 has the same rank as the value. 
 Functions derived by Scan are uniform; functions derived by Over are aggregates. 
 The number of evaluations is the maximum of the count of the right arguments.
 
-For `m\[x;y;z]` and `m/[x;y;z]` 
+For `v\[x;y;z]` and `v/[x;y;z]` 
 
--   `x` is in the left domain of `m`
--   `y` and `z` are atoms or conforming lists or dictionaries in the right domains of `m`
+-   `x` is in the left domain of `v`
+-   `y` and `z` are atoms or conforming lists or dictionaries in the right domains of `v`
 
-The first evaluation is `m[x;first y;first z]`. Its result becomes the left argument of the second evaluation. And so on. For `r:m\[x;y;z]`
+The first evaluation is `v[x;first y;first z]`. Its result becomes the left argument of the second evaluation. And so on. For `r:v\[x;y;z]`
 
 ```txt
-r[0]: m[x  ; y 0; z 0]
-r[1]: m[r 0; y 1; z 1]
-r[2]: m[r 1; y 2; z 2]
+r[0]: v[x  ; y 0; z 0]
+r[1]: v[r 0; y 1; z 1]
+r[2]: v[r 1; y 2; z 2]
 …
 ```
 
-The result of `m/[x;y;z]` is simply the last item of the above.
+The result of `v/[x;y;z]` is simply the last item of the above.
 
-`m/[x;y;z]`
+`v/[x;y;z]`
 
-: <code>m[ m[… m[ m[x;y<sub>0</sub>;z<sub>0</sub>] ;y<sub>1</sub>;z<sub>1</sub>]; … y<sub>n-2</sub>;z<sub>n-2</sub>]; y<sub>n-1</sub>;z<sub>n-1</sub>]</code>
+: <code>v[ v[… v[ v[x;y<sub>0</sub>;z<sub>0</sub>] ;y<sub>1</sub>;z<sub>1</sub>]; … y<sub>n-2</sub>;z<sub>n-2</sub>]; y<sub>n-1</sub>;z<sub>n-1</sub>]</code>
 
 ```q
 q){x+y*z}\[1000;5 10 15 20;2 3 4 5]    
@@ -327,7 +327,7 @@ q)ssr\[s;("advance";"reinforcements");("a dance";"three and fourpence")]
 "We are going to a dance. Send three and fourpence."
 ```
 
-The above description of functions derived from ternary iterables applies by extension to iterables of higher ranks.
+The above description of functions derived from ternary values applies by extension to values of higher ranks.
 
 
 ### Alternative syntax
@@ -349,8 +349,8 @@ Note that the built-in version is for floats.
 
 !!! warning "Accumulators can change datatype"
 
-In iterating through an empty list **the iterable is not evaluated.**
-The result might not be in the range of the iterable.
+In iterating through an empty list **the value is not evaluated.**
+The result might not be in the range of the value.
 
 Allow for a possible change of type to `0h` when scanning or reducing lists of unknown length. 
 
@@ -365,8 +365,8 @@ q)type each (mt;*\[mt];{x*y}\[mt])  / so can Scan
 
 ### Scan 
 
-The function Scan derives from a non-unary iterable is a uniform function: for empty right argument/s it returns the generic empty list.
-It does not evaluate the iterable.
+The function Scan derives from a non-unary value is a uniform function: for empty right argument/s it returns the generic empty list.
+It does not evaluate the value.
 
 ```q
 q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
@@ -376,11 +376,11 @@ q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
 
 ### Over 
 
-The function Over derives from a non-unary iterable is an aggregate: it reduces lists and dictionaries to atoms.
+The function Over derives from a non-unary value is an aggregate: it reduces lists and dictionaries to atoms.
 
-For empty right argument/s the atom result depends on the iterable and, if the derived function is variadic, on how it is applied. 
+For empty right argument/s the atom result depends on the value and, if the derived function is variadic, on how it is applied. 
 
-If the iterable is a **binary function with a known identity element** $I$, and the derived function is applied as a unary, the result is $I$.
+If the value is a **binary function with a known identity element** $I$, and the derived function is applied as a unary, the result is $I$.
 
 ```q
 q)(+/)mt    / 0 is I for +
@@ -389,14 +389,14 @@ q)(*/)mt    / 1 is I for *
 1
 ```
 
-If the iterable is a **binary function with no known identity element**, and the derived function is applied as a unary, the result is `()`, the generic empty list.
+If the value is a **binary function with no known identity element**, and the derived function is applied as a unary, the result is `()`, the generic empty list.
 
 ```q
 q)()~({x+y}/)mt
 1b
 ```
 
-If the iterable is a **list** and the derived function is applied as a unary, the result is an empty list of the same type as the list. 
+If the value is a **list** and the derived function is applied as a unary, the result is an empty list of the same type as the list. 
 
 ```q
 q)type 1 0 3h/[til 0]
@@ -416,7 +416,7 @@ q)42 (3 4#til 12)/[0#0]
 42
 ```
 
-The iterable is not evaluated.
+The value is not evaluated.
 
 ```q
 q)`foo+/mt

@@ -23,14 +23,14 @@ These are the primary means of iterating in q.
 
 ### Maps
 
-The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [iterables](glossary.md#iterable) across the items of lists and dictionaries. 
+The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [values](glossary.md#value) across the items of lists and dictionaries. 
 
 
 ### Accumulators
 
-The [accumulators](../ref/accumulators.md) Scan and Over are iterators that apply iterables _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
+The [accumulators](../ref/accumulators.md) Scan and Over are iterators that apply values _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
 
-For unary iterables, they have three forms, known as Converge, Do, and While. 
+For unary values, they have three forms, known as Converge, Do, and While. 
 
 
 ### Case

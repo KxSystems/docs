@@ -10,7 +10,7 @@ The primary means of iteration in q are
 
 ## Atomic functions
 
-[Atomic functions](FIXME) apply to atoms in their arguments, and preserve structure to arbitrary depth.
+[Atomic functions](atomic.md) apply to atoms in their arguments, and preserve structure to arbitrary depth.
 
 Many of the q operators that take numerical arguments are atomic. 
 
@@ -40,16 +40,16 @@ q)2+(3 4;`a`b`c!5 6 7;(8 9;10;11 12 13);14)
 ## Iterators
 
 The [iterators](../ref/iterators.md) are unary operators. 
-They take iterables as arguments and derive functions that apply them repeatedly.
+They take values as arguments and derive functions that apply them repeatedly.
 
-!!! detail "Iterable"
+!!! detail "Value"
 
-    An [iterable](glossary.md#iterable) is a q object that can be indexed or applied to one or more arguments:
+    A [applicable value](glossary.md#applicable-value) is a q object that can be indexed or applied to one or more arguments:
 
     -   function: operator, keyword, lambda, or derived function
     -   list: vector, mixed list, matrix, or table
     -   dictionary
-    -   process handle
+    -   file- or process handle
 
 The iterators can be applied postfix, and almost always are. 
 For example, the Over iterator `/` applied to the Add operator `+` derives the function `+/`, which reduces a list by summing it.
@@ -76,7 +76,7 @@ q)(count')("The";"quick";"brown";"fox")    / count each string
 
 ### Accumulators
 
-The [accumulators](../ref/accumulators.md) – Scan and Over – apply an iterable successively, first to the argument, then to the results of successive applications. 
+The [accumulators](../ref/accumulators.md) – Scan and Over – apply a value successively, first to the argument, then to the results of successive applications. 
 
 
 ## Control words

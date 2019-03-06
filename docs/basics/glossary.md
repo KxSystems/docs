@@ -12,14 +12,12 @@
 A function that reduces its argument, typically a list to an atom, e.g. `sum`
 
 
-## Ambivalent function
+## Applicable value
 
-A function that may be _applied_ to either one or two _arguments_; i.e. has both _unary_ and _binary_ applications, 
-e.g. `(+/)2 3 4` and `1000+/2 3 4`.
-
-<i class="far fa-hand-point-right"></i> 
-[Each Prior](../ref/maps.md#each-prior), 
-[Over, Scan](../ref/accumulators.md) 
+A function, file- or process-handle, list, or dictionary: an object that can be applied to its [argument/s or index/es](#argument).
+<!-- <i class="far fa-hand-point-right"></i> 
+[Iterables](../tutorials/uq/values.md)
+ -->
 
 
 ## Apply
@@ -41,7 +39,7 @@ Correspondingly, the _left domain_ and _right domain_ of a binary function are t
 
 By extension, where a function has rank >2, its _left domain_ is the domain of its first argument, and its _right domains_ are the domains of the remaining arguments.
 
-The terminology generalizes to iterables. 
+The terminology generalizes to values. 
 
 -   The left domain of a matrix `m` is `til count m`.
 -   The right domain of a matrix is `til count first m`.
@@ -79,13 +77,13 @@ They are often used on a dictionary domain or a table column to reduce storage r
 
 ## Binary  
 
-An iterable of rank 2, i.e. a function that takes 2 arguments, or a list of depth ≥2.
+A value of rank 2, i.e. a function that takes 2 arguments, or a list of depth ≥2.
 (The terms _dyad_ and _dyadic_ are now deprecated.)
 
 
 ## Bracket notation
 
-Applying an iterable to its argument/s or indexes by writing it to the left of an argument list, e.g. `+[2;3]` or `count["zero"]`.
+Applying a value to its argument/s or indexes by writing it to the left of an argument list, e.g. `+[2;3]` or `count["zero"]`.
 
 <i class="far fa-hand-point-right"></i> 
 [Application](application.md)
@@ -222,13 +220,13 @@ q)ssr["a";"a";"-"]   / left domain doesn't include atoms
   [0]  ssr["a";"a";"-"]
 ```
 
-All iterables have domains. 
+All applicable values have domains. 
 The domain of a dictionary is its keys.
 The domain of a list is its indexes. 
 The left domain of a matrix is its row numbers. Its right domain is its column numbers.
 The left domain of a table is its row numbers. Its right domain is its column names.
 
-All iterables are mappings from their domains to their [ranges](#range].
+All applicable values are mappings from their domains to their [ranges](#range].
 )
 
 ## Empty list
@@ -345,17 +343,9 @@ Applying an operator by writing it between its arguments, e.g.
 A member of a list: can be any function or data structure.
 
 
-## Iterable
-
-A function, handle, list, or dictionary: an object that can be applied to its [argument/s](#argument).
-<!-- <i class="far fa-hand-point-right"></i> 
-[Iterables](../tutorials/uq/iterables.md)
- -->
-
-
 ## Iterator
 
-An iterator is a higher-order operator. It takes an iterable as its argument and returns a derived function that iterates it.
+An iterator is a higher-order operator. It takes a value as its argument and returns a derived function that iterates it.
 
 All the iterators are unary operators. They are the only operators that can be applied postfix. They almost invariably are.
 
@@ -494,7 +484,7 @@ Applying an iterator to its argument by writing it to the right, e.g. `+/` appli
 
 ## Prefix
 
-Prefix notation applies a unary iterable `m` to its argument or indices `x`; i.e. `m x` is equivalent to `m[x]`. 
+Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `vx` is equivalent to `v[x]`. 
 
 <i class="far fa-hand-point-right"></i> 
 [Application](application.md)
@@ -515,14 +505,14 @@ A function passed fewer arguments than its rank projects those arguments and ret
 
 ## Quaternary
 
-An iterable with rank 4.
+A value with rank 4.
 
 
 ## Range 
 
 The range of a function is the complete set of all its possible results. 
 
-All [iterables](#iterable) are mappings from their [domains](#domain) to their ranges. 
+All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges. 
 
 <i class="far fa-hand-point-right"></i> 
 intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
@@ -661,7 +651,7 @@ alice SFO
 
 ## Ternary
 
-An iterable of rank 3, i.e. a function wiith three arguments; or a list of depth ≥3.
+A value of rank 3, i.e. a function with three arguments; or a list of depth ≥3.
 
 
 ## Unary form
@@ -674,7 +664,7 @@ Most binary operators have unary forms that take a single argument. Q provides m
 
 ## Unary function
 
-An iterable of rank 1, i.e. a function with 1 argument, or a list of depth ≥1.
+A value of rank 1, i.e. a function with 1 argument, or a list of depth ≥1.
 
 
 ## Unary operator
@@ -707,7 +697,11 @@ _Pass by value_ means passing an object (not its name) as an argument to a funct
 
 ## Variadic 
 
-An iterable that may be applied to a variable number arguments is variadic. For example, a matrix, the operator `@`, or the derived function `+/`. 
+A value that may be applied to a variable number arguments is variadic. For example, a matrix, the operator `@`, or the derived function `+/`. 
+
+<i class="far fa-hand-point-right"></i> 
+[Each Prior](../ref/maps.md#each-prior), 
+[Over, Scan](../ref/accumulators.md) 
 
 
 ## Vector

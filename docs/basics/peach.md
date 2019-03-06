@@ -13,14 +13,14 @@ This can be useful, for example, for computationally expensive functions, or for
 
 To execute in parallel, start kdb+ with multiple slaves, using [`-s` in the command line](cmdline.md#-s-slaves), and (since V3.5) the [`\s`](syscmds.md#s-number-of-slaves) system command.
 
-Each Parallel iterates a unary iterable: the argument list of the derived function is divided between slave process for evaluation. 
+Each Parallel iterates a unary value: the argument list of the derived function is divided between slave process for evaluation. 
 
 The result of `m':[x]` is exactly the same as `m'[x]`. 
 If no slave tasks are available, performance is the same as well. 
 
 Syntax: `(f':) x`, `f':[x]`, `f peach x`
 
-where `f` is a unary iterable and the items of list `x` are in its domain.
+where `f` is a unary value and the items of list `x` are in its domain.
 
 ```q
 q)f:{sum exp x?1.0}
@@ -30,7 +30,7 @@ q)\t f peach 2#1000000     / with 2 CPUs
 70
 ```
 
-Use the [Apply](../ref/apply.md) operator to project a higher-rank iterable over argument pairs (or triples, etc.).
+Use the [Apply](../ref/apply.md) operator to project a higher-rank value over argument pairs (or triples, etc.).
 
 For example, `x g'y` <=> `g'[x;y]` <=> `.[g;]'[flip(x;y)]`. 
 Thus

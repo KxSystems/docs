@@ -1,7 +1,7 @@
 ---
 title: Iterators
 date: March 2019
-keywords: accumulator, adverb, converge, dictionary, do, iterable, iteration, iterator, kdb+, list, loop, map, operator, q, while
+keywords: accumulator, adverb, applicable value, converge, dictionary, do, iteration, iterator, kdb+, list, loop, map, operator, q, value, while
 ---
 
 # Iterators
@@ -21,7 +21,7 @@ We discuss examples of their use.
 
 ## Basics
 
-Iterators are higher-order unary [operators](../../ref/index.md#operators): they take a single argument and return a derived function. The single argument is an _iterable_: a list, dictionary, table, process handle, or function. The derived function iterates its normal application.
+Iterators are higher-order unary [operators](../../ref/index.md#operators): they take a single argument and return a derived function. The single argument is an [_applicable value_](../../basics/glossary.md#applicable-value): a list, dictionary, table, process handle, or function. The derived function iterates its normal application.
 
 Iterators are the only operators that can be applied postfix. They almost always are.
 
@@ -125,7 +125,7 @@ q)"abc",\:"xyz"     / Join Each Left
 
     Remember which is which by the direction in which the slash leans.
 
-[**Each Prior**](../../ref/maps.md#each-prior) takes a binary iterable as its argument. The derived function is unary: it applies the binary between each item of a list (or dictionary) and its preceding item. 
+[**Each Prior**](../../ref/maps.md#each-prior) takes a binary value as its argument. The derived function is unary: it applies the binary between each item of a list (or dictionary) and its preceding item. 
 The differences between items in a numeric or temporal vector:
 
 ```q
@@ -167,11 +167,11 @@ glyph    | name          | mnemonic keyword
 
 ### Accumulation
 
-In accumulator iterations the iterable is evaluated repeatedly, first on the entire (first) argument of the derived function, next on the result of that evaluation, and so on. 
+In accumulator iterations the value is applied repeatedly, first to the entire (first) argument of the derived function, next to the result of that evaluation, and so on. 
 
-The number of evaluations is determined according to the iterable’s rank. 
+The number of evaluations is determined according to the value’s rank. 
 
-For a **unary** iterable, there are three forms:
+For a **unary** value, there are three forms:
 
 -   Converge: iterate until a result matches either the previous result or the original argument
 -   Do: iterate a specified number of times
@@ -186,7 +186,7 @@ q)(1e-6<){x*x}\0.1                   / While
 0.1 0.01 0.0001 1e-08
 ```
 
-For iterables of **higher-rank** the number of evaluations is the count of the right argument/s. For example, the result `r` of applying a ternary extension `f\` to arguments `x`, `y`, and `z`:
+For values of **higher-rank** the number of evaluations is the count of the right argument/s. For example, the result `r` of applying a ternary derived function `f\` to arguments `x`, `y`, and `z`:
 
 ```txt
 r[0]:f[x;   y 0; z 0]
@@ -209,7 +209,7 @@ q)+/[2 3 4]    / Add Over
 9
 ```
 
-With Scan and Over and binary iterables, the mnemonic keywords `scan` and `over` are generally preferred. 
+With Scan and Over and binary values, the mnemonic keywords `scan` and `over` are generally preferred. 
 
 ```q
 q)(+) scan 2 3 4
@@ -229,7 +229,7 @@ glyph    | name | mnemonic keyword
 
 ## Brackets and parentheses
 
-The result of applying an iterator to an iterable is a derived function. 
+The result of applying an iterator to a value is a derived function. 
 Like any other function, a derived function can be applied with brackets. 
 
 ```q
@@ -239,13 +239,13 @@ q)+\[1000;3 4 5]
 1003 1007 1012
 ```
 
-Notice that the derived function here is [_ambivalent_](../../basics/glossary.md#ambivalent-function): it can be applied as a unary or as a binary. 
+Notice that the derived function here is [_varaiadic_](../../basics/variadic.md): it can be applied as a unary or as a binary. 
 
 !!! info "Postfix yields infix"
 
     An iterator applied postfix derives a function with infix syntax.
 
-    This is true regardless of the function’s rank.
+    This is true regardless of the derived function’s rank.
     For example, `count'` is a unary function but has infix syntax.
 
 We can also apply `+\` as a binary using infix syntax.
@@ -287,7 +287,7 @@ q)sums 3 4 5 6 7
 3 7 12 18 25
 ```
 
-The iterator Each is covered by the keyword `each` for unary iterables.
+The iterator Each is covered by the keyword `each` for unary values.
 Good q style prefers it.
 
 ```q
@@ -331,8 +331,8 @@ q)reverse each x
 <small>_Each Both_</small>
 </div>
 
-With a binary iterable, the iterator is sometimes known as _each both_. 
-You can think of it as a zip fastener, applying the iterable between pairs of items from its arguments. 
+With a binary value, the iterator is sometimes known as _each both_. 
+You can think of it as a zip fastener, applying the value between pairs of items from its arguments. 
 
 ```q
 q)2 0 1 -2 rotate' x
@@ -349,7 +349,7 @@ q)1 2 1 1 1 0 0 m' 3 1 2 3 4 2 0        / scattered indexing
 "cricket"
 ```
 
-The Each Parallel iterator takes unary iterables. It derives functions that perform exactly the same computation as functions derived by Each, but delegates computation to slave tasks, if any are available. 
+The Each Parallel iterator takes unary values. It derives functions that perform exactly the same computation as functions derived by Each, but delegates computation to slave tasks, if any are available. 
 
 Good q style prefers use of the `peach` keyword.
 
@@ -358,7 +358,7 @@ q)sum peach 3?'5000#10
 13 12 13 22 3 14 17 14 7 12 13 17 19 15 8 16 17 18 19 10 16 10 9 13 15 8 25 8..
 ```
 
-The Each iterator has three variants that take binary iterables as arguments: Each Left, Each Right and Each Prior.
+The Each iterator has three variants that take binary values as arguments: Each Left, Each Right and Each Prior.
 
 
 ### Each Left, Each Right
@@ -437,7 +437,7 @@ q)deltas 4 8 3 2 2
 As a uniform function `-':` returns a list as long as its argument. 
 The first item of the result corresponds to the first item of the argument. 
 But, by definition, the first item of the argument has no previous item. 
-So, in the expression $4-y$, what is $y$? Above, it is zero. Zero is the [identity element](../../basics/glossary.md#identity-element) for Subtract: when $y$ is zero, $x-y$ is always $x$. (See [Each Prior](../../ref/maps/#each-prior) in the Reference for more on this and what happens with iterables which do not have a known identity element.) 
+So, in the expression $4-y$, what is $y$? Above, it is zero. Zero is the [identity element](../../basics/glossary.md#identity-element) for Subtract: when $y$ is zero, $x-y$ is always $x$. (See [Each Prior](../../ref/maps/#each-prior) in the Reference for more on this and what happens with values which do not have a known identity element.) 
 
 We can use `{x,y}` to display the pairs that Each Prior finds.
 
@@ -457,7 +457,7 @@ q)(0,1#0#x) ~ first {x,y}':[x]
 1b
 ```
 
-A [table in the Reference](../../ref/iterators/#glyphs) tells us that with a binary iterable Each Prior derives an ambivalent function. So Subtract Each Prior can also be applied as a binary. 
+A [table in the Reference](../../ref/iterators/#glyphs) tells us that with a binary value Each Prior derives a variadic function. So Subtract Each Prior can also be applied as a binary. 
 
 ```q
 q)0 -': 4 8 3 2 2
@@ -503,10 +503,10 @@ In the example above, the `.d` files for the `2013.05.03` and `2013.05.04` parti
 
 ### Higher ranks
 
-Each Parallel, `peach`, and `each` apply unary iterables. 
-Each Left, Each Right, Each Prior, and `prior` apply binary iterables.
+Each Parallel, `peach`, and `each` apply unary values. 
+Each Left, Each Right, Each Prior, and `prior` apply binary values.
 
-The Each iterator applies iterables of any rank.
+The Each iterator applies values of any rank.
 
 ```q
 q)1 2 3 in' (1 2 3;3 4 5;5 6 7)
@@ -547,28 +547,28 @@ q)ssr/["hello word."; ("h";".";"rd"); ("H";"!";"rld")]
 "Hello world!"
 ```
 
-It is generally true that for an iterable `f`, `f/[x]` is the same as `last f\[x]`. Otherwise, what is true for Scan is true for Over. (Using Over rather than Scan allows kdb+ to use a little less memory by dropping interim results.) 
+It is generally true that for a value `v`, `v/[x]` is the same as `last v\[x]`. Otherwise, what is true for Scan is true for Over. (Using Over rather than Scan allows kdb+ to use a little less memory by dropping interim results.) 
 
 !!! tip "Debugging"
 
     If puzzled by the result of using Over, replace it with Scan and examine the intermediate results. They are usually illuminating.
 
-Consider the application of the functions Scan derives from iterables of ranks 1, 2, 3…
+Consider the application of the functions Scan derives from values of ranks 1, 2, 3…
 
 ```txt
-f1\[x]          (f1\)x          Converge
-f1\[i;x]       i f1\ x          Do
-f1\[t;x]       t f1\ x          While
-f2\[x;y]       x f2\ y
-f3\[x;y;z]
+v1\[x]          (v1\)x          Converge
+v1\[i;x]       i v1\ x          Do
+v1\[t;x]       t v1\ x          While
+v2\[x;y]       x v2\ y
+v3\[x;y;z]
 …
 ```
 
 And so on, up to `f8\`. In each form, `x` is the (first) argument of the first evaluation. The result of the first evaluation becomes the (first) argument for the next evaluation, if any. And so on. 
 
-For how many evaluations? It depends first on the rank of the iterable.
+For how many evaluations? It depends first on the rank of the value.
 
-iterable rank | number of evaluations
+value rank | number of evaluations
 :-: | ---------------------------------------------------------------------
 2-8 | length of the right argument/s
 1   | depends on the results, and the left argument (if any) of the derived function
@@ -660,7 +660,7 @@ q){last[x]<200} fib/1 1             / exit when result exceeds 200
 
 ## Lists and dictionaries
 
-The arguments of iterators are iterables: functions, lists and dictionaries. 
+The arguments of iterators are [applicable values](../../basics/glossary.md#applicable-value): functions, file- and process handles, lists and dictionaries. 
 Functions are the most familiar as iterator arguments, but lists and dictionaries reward study.
 
 ```q
@@ -696,7 +696,7 @@ q)waypoints route\`Paris                   / Paris to the end
 `Paris`Genoa`Milan`Vienna`Berlin
 ```
 
-In the last expression, both the iterable and the truth function are dictionaries. No functions are involved. 
+In the last expression, both the value and the truth value are dictionaries. No functions are involved. 
 
 
 ## Combining iterators
@@ -724,7 +724,7 @@ q)7 {(+)prior x,0}\ 1
 Notice that the last expression gave us _eight_ rows of the Triangle, not seven.
 The first item of the result was the original argument, followed by the results of seven successive evaluations.
 
-If the left argument of the derived function is zero, there will be no evaluations. The original argument will still be returned as the first (and only) item of the result. It doesn’t even have to be in the domain of the iterable.
+If the left argument of the derived function is zero, there will be no evaluations. The original argument will still be returned as the first (and only) item of the result. It doesn’t even have to be in the domain of the value.
 
 ```q
 q)0 {(+)prior x,0}\ 1
@@ -1008,9 +1008,9 @@ CC  67.48254
 
 ## Conclusion
 
-This white paper summarizes the q iterators, showing how they derive new functions from iterables – functions, lists and dictionaries. 
+This white paper summarizes the q iterators, showing how they derive new functions from values – functions, file- and process handles, lists and dictionaries. 
 
-It showed with examples how the effect of the iterator is determined sometimes by the rank of the iterable, and sometimes also by the rank at which the derived function is applied. Even complicated examples, composing multiple iterators, can be analyzed to understand the behavior.
+It showed with examples how the effect of the iterator is determined sometimes by the rank of the applicable value, and sometimes also by the rank at which the derived function is applied. Even complicated examples, composing multiple iterators, can be analyzed to understand the behavior.
 
 Certain uses of iterators, such as the creation of recursive functions and applying iterators to functions within select statements, were examined in more detail, as these are often poorly understood, but useful in many situations. 
 Some common uses were looked at in to demonstrate the ability of iterators to reduce execution times.

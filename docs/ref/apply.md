@@ -15,9 +15,9 @@ Everything begins with a dot.<br>— W.W. Kandinsky
 
 # `.` Apply, Index, Trap<br>`@` Apply At, Index At, Trap At
 
--   _Apply a function to a list of arguments._ 
--   _Get items at depth in a list._
--   _Trap errors._
+-   _Apply a function to a list of arguments_ 
+-   _Get items at depth in a list_
+-   _Trap errors_
 
 
 
@@ -25,7 +25,7 @@ Everything begins with a dot.<br>— W.W. Kandinsky
 
 rank | syntax               | function semantics                  | list semantics
 -----|----------------------|-------------------------------------|---------------
-2    | `m . mx`<br>`.[m;mx]` | **Apply**<br>Apply `m` to list `mx` of arguments | **Index**<br>Get item/s `mx` at depth from `m`
+2    | `v . vx`<br>`.[v;vx]` | **Apply**<br>Apply `v` to list `vx` of arguments | **Index**<br>Get item/s `vx` at depth from `v`
 2    | `u @ ux`<br>`@[u;ux]` | **Apply At**<br>Apply unary `u` to argument `ux`    | **Index At**<br>Get items `ux` from `u`
 3    | `.[g;gx;e]`          | **Trap**<br>Try `g . gx`; catch with `e`        |
 3    | `@[f;fx;e]`          | **Trap At**<br>Try `f@fx`; catch with `e`          |
@@ -35,14 +35,14 @@ Where
 -   `e` is an expression, typically a function
 -   `f` is a unary function and `fx` in its domain 
 -   `g` is a function of rank $n$ and `gx` an atom or list of count $n$ with items in the domains of `g`
--   `m` is an iterable of rank $n$ (or a handle to one) and `mx` a list of count $n$ with items in the domains of `m`
--   `u` is a unary iterable (or a handle to one) and `ux` in its domain
+-   `v` is a value of rank $n$ (or a handle to one) and `vx` a list of count $n$ with items in the domains of `v`
+-   `u` is a unary value (or a handle to one) and `ux` in its domain
 
 
 
 ## Apply, Index
 
-`m . mx` evaluates iterable `m` on the $n$ arguments listed in `mx`.
+`v . vx` evaluates value `v` on the $n$ arguments listed in `vx`.
 
 ```q
 q)+ . 2 3           / +[2;3] Apply
@@ -60,30 +60,30 @@ q).[add;2 3]
 5
 ```
 
-If `m` has rank $n$, then `mx` has $n$ items and `m` is evaluated as:
+If `v` has rank $n$, then `vx` has $n$ items and `v` is evaluated as:
 
 ```q
-m[mx[0]; mx[1]; …; mx[-1+count mx]]
+v[vx[0]; vx[1]; …; vx[-1+count vx]]
 ```
 
-If `m` has rank 2 then `mx` has 2 items and `m` is applied to the first argument `mx[0]` and the second argument `mx[1]`.
+If `v` has rank 2 then `vx` has 2 items and `v` is applied to the first argument `vx[0]` and the second argument `vx[1]`.
 
 ```q
-m[mx[0];mx[1]]
+v[vx[0];vx[1]]
 ```
 
-If `m` has 1 argument then `mx` has 1 item and `m` is applied to the argument `mx[0]`. 
+If `v` has 1 argument then `vx` has 1 item and `v` is applied to the argument `vx[0]`. 
 
 ```q
-m[mx[0]]
+v[vx[0]]
 ```
 
 
 ## Nullaries
 
-Nullaries (functions of rank 0) are handled differently. The pattern above suggests that the empty list `()` would be the argument list to nullary `m`, but `m . ()` is a case of Index, where empty `mx` always selects `m`. 
+Nullaries (functions of rank 0) are handled differently. The pattern above suggests that the empty list `()` would be the argument list to nullary `v`, but `v . ()` is a case of Index, where empty `vx` always selects `v`. 
 
-Apply for nullary `m` is denoted by `m . enlist[::]`, i.e. the right argument is the enlisted null. 
+Apply for nullary `v` is denoted by `v . enlist[::]`, i.e. the right argument is the enlisted null. 
 For example:
 
 ```q
@@ -125,7 +125,7 @@ q)d . 1 2 0         / select item 0 of item 2 of item 1
 
 The selections at each level are individual applications of Index At: first, item `d@i[0]` is selected, then `(d@i[0])@i[1]`, then `((d@i[0])@ i[1])@ i[2]`, and so on. 
 
-These expressions can be rewritten using [Over](reduce) applied to Index At; the first is `d@/i[0]`, the second is `d@/i[0 1]`, and the third is `d@/i[0 1 2]`. 
+These expressions can be rewritten using [Over](accumulators.md) applied to Index At; the first is `d@/i[0]`, the second is `d@/i[0 1]`, and the third is `d@/i[0 1 2]`. 
 
 In general, for a vector `i` of any count, `d . i` is identical to `d@/i`. 
 
@@ -240,14 +240,14 @@ Note that if `d` is either a dictionary or handle to a directory then `d . enlis
 
 ## Apply At, Index At
 
-`@` is [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar "Wikipedia") for the case where `m` is a unary and `mx` a 1-item list. 
+`@` is [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar "Wikipedia") for the case where `u` is a unary and `ux` a 1-item list. 
 `u@ux` is always equivalent to `u . enlist ux`.
 
 !!! note "Brackets are syntactic sugar"
 
     The brackets of an argument list are also syntactic sugar. Nothing can be expressed with brackets that cannot also be expressed using `.`.
 
-You can use the derived function `@\:` to apply a list of unary iterables to the same argument. 
+You can use the derived function `@\:` to apply a list of unary values to the same argument. 
 
 ```q
 q){`o`h`l`c!(first;max;min;last)@\:x}1 2 3 4 22  / open, high, low, close
@@ -287,7 +287,7 @@ q).[+;2 3;{"Wrong ",x}]
 
 `@[f;fx;e]` is equivalent to `.[f;enlist fx;e]`. 
 
-Use Trap At as a simpler form of Trap, for unary iterables.
+Use Trap At as a simpler form of Trap, for unary values.
 
 
 ### Limit of the trap
@@ -338,9 +338,9 @@ For most purposes, you will want `e` to be a function.
 error  | cause
 -------|-----------------------------------------------------------------------
 domain | the symbol `d` is not a handle
-index  | an atom in `mx` or `ux` is not an index to an item-at-depth in `d`
-rank   | the count of `mx` is greater than the rank of `m`
-type   | `m` or `u` is a symbol atom, but not a handle to an iterable
-type   | an atom of `mx` or `ux` is not an integer, symbol or null
+index  | an atom in `vx` or `ux` is not an index to an item-at-depth in `d`
+rank   | the count of `vx` is greater than the rank of `v`
+type   | `v` or `u` is a symbol atom, but not a handle to an value
+type   | an atom of `vx` or `ux` is not an integer, symbol or null
 
 

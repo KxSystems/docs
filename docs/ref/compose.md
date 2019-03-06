@@ -1,19 +1,19 @@
 ---
-keywords: adverb, compose, composition, iterable, function, kdb+, map, q
+keywords: adverb, compose, composition, function, kdb+, map, q, value
 ---
 
 # `'` Compose
 
 
 
-_Compose a unary iterable with another._
+_Compose a unary value with another._
 
 Syntax: `'[f;ff][x;y;z;…]` 
 
 Where 
 
--   `f` is a unary [iterable](glossary.md/#iterable)
--   `ff` is an iterable rank ≥1
+-   `f` is a unary [value](glossary.md#applicable-value)
+-   `ff` is a value rank ≥1
 
 the derived function `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]`. 
 

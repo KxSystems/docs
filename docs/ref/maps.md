@@ -10,27 +10,27 @@ keywords: adverb, case, dictionary, each, each both, each left, each parallel, e
 
 
 
-The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that applies their [iterables](../basics/glossary.md#iterable) once to each item of a dictionary, a list, or conforming lists. 
+The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that applies their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
 
 There are six maps. 
 
-glyph | operator      | iterable rank | iteration rank
-------|---------------|---------------|----------------
-`'`   | Each          | any           | same as iterable
-`\:`  | Each Left     | binary        | binary
-`/:`  | Each Right    | binary        | binary
-`':`  | Each Parallel | unary         | unary
-`':`  | Each Prior    | binary        | variadic
-`'`   | Case          | unary         | variadic
+glyph | operator      | value rank | iteration rank
+------|---------------|------------|----------------
+`'`   | Each          | any        | same as value
+`\:`  | Each Left     | binary     | binary
+`/:`  | Each Right    | binary     | binary
+`':`  | Each Parallel | unary      | unary
+`':`  | Each Prior    | binary     | variadic
+`'`   | Case          | unary      | variadic
 
 
 ## Each
 
-_Apply an iterable item-wise to a dictionary, list, or conforming lists and/or dictionaries._
+_Apply a value item-wise to a dictionary, list, or conforming lists and/or dictionaries._
 
-Syntax: `(m')x`, `x m'y`, `m'[x;y;z]`
+Syntax: `(v')x`, `x v'y`, `v'[x;y;z]`
 
-A function derived by Each evaluates its iterable on each item of a list, dictionary or on corresponding items of conforming lists. The derived function has the same rank as the iterable. 
+A function derived by Each applies its value to each item of a list, dictionary or on corresponding items of conforming lists. The derived function has the same rank as the value. 
 
 ```q
 q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 
@@ -42,7 +42,7 @@ c| 4
 
 ### `each` keyword
 
-The mnemonic keyword `each` can be used to apply a unary iterable without parentheses.
+The mnemonic keyword `each` can be used to apply a unary value without parentheses or brackets.
 
 ```q
 q)count each string `Clash`Fixx`The`Who
@@ -54,14 +54,14 @@ q)count each string `Clash`Fixx`The`Who
 <small>_Each Both_</small>
 </div>
 
-Each applied to a binary iterable is sometimes called Each Both and can be applied infix.
+Each applied to a binary value is sometimes called _each both_ and can be applied infix.
 
 ```q
 q)1 2 3 in'(1 0 1;til 100;5 6 7)            / binary, infix 
 110b
 ```
 
-Iterations of ternary and higher-rank iterables are applied with brackets.
+Iterations of ternary and higher-rank values are applied with brackets.
 
 ```q
 q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
@@ -71,16 +71,16 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 
 ## Each Left and Each Right
 
-_Apply a binary iterable between one argument and each item of the other._
+_Apply a binary value between one argument and each item of the other._
 
 
 &nbsp;      | Each Left                        | Each Right
 ------------|:--------------------------------:|:-----------------:
-syntax:     | `x m\:y`                         |  `x m/:y`
-equivalent: | `(m[;y]')x`                      | `(m[x;]')y`
+syntax:     | `x b\:y`                         |  `x b/:y`
+equivalent: | `(b[;y]')x`                      | `(b[x;]')y`
 &nbsp;      | ![Each Left](../img/each-left.png) | ![Each Right](../img/each-right.png)
 
-The maps Each Left and Each Right take **binary** iterables and derive binary functions that apply one argument to each item of the other. Effectively, the map projects its iterable on one argument and applies Each.
+The maps Each Left and Each Right take **binary** values and derive binary functions that pair one argument to each item of the other. Effectively, the map projects its value on one argument and applies Each.
 
 ```q
 q)"abcde",\:"XY"             / Each Left
@@ -135,7 +135,7 @@ q)raze[a] ~ b
 
 !!! warning "Atoms and lists in the domains of these iterators"
 
-    The domains of `\:` and `/:` extend beyond binary iterables to include certain atoms and lists. 
+    The domains of `\:` and `/:` extend beyond binary values to include certain atoms and lists. 
 
     <pre><code class="language-q">
     q)(", "/:)("quick";"brown";"foxes") 
@@ -144,7 +144,8 @@ q)raze[a] ~ b
     0x400921ea35935fc4
     </code></pre>
 
-    This is [exposed infrastructure](../basics/exposed-infrastructure.md): use the keywords [`vs`](vs.md) and [`sv`](sv.md) instead.
+    This is [exposed infrastructure](../basics/exposed-infrastructure.md).
+    Use the keywords [`vs`](vs.md) and [`sv`](sv.md) instead.
 
 
 ## Each Parallel
@@ -153,12 +154,12 @@ q)raze[a] ~ b
 ![Each Parallel](../img/each-parallel.png)
 </div>
 
-_Assign sublists of the argument list to slave tasks, in which the unary iterable is applied to each item of the sublist._
+_Assign sublists of the argument list to slave tasks, in which the unary value is applied to each item of the sublist._
 
 
-Syntax: `(m':)x`
+Syntax: `(u':)x`
 
-The Each Parallel map takes a **unary** iterable as argument and derives a unary function. The iteration `m':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies the map to each item of its sublist. 
+The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `u':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies `u` to each item of its sublist. 
 
 <i class="far fa-hand-point-right"></i> 
 Basics: [Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
@@ -182,13 +183,13 @@ k){x':y}
 
 ### `peach` keyword
 
-The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead of  `(m:')` write `m peach list`.
+The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead of  `(u:')` write `u peach list`.
 
-!!! tip "Higher-rank iterables"
+!!! tip "Higher-rank values"
 
-    To parallelize an iterable of rank >1, use [Apply](/ref/apply) to evaluate it on a list of arguments.
+    To parallelize a value of rank >1, use [Apply](/ref/apply.md) to evaluate it on a list of arguments.
 
-    Alternatively, define the iterable as a function that takes a parameter dictionary as argument, and pass the extension a table of parameters to evaluate.
+    Alternatively, define the value as a function that takes a parameter dictionary as argument, and pass the derived function a table of parameters to evaluate.
 
 
 ## Each Prior
@@ -197,19 +198,19 @@ The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead
 ![Each Prior](../img/each-prior.png)
 </div>
 
-_Apply a binary map between each item of a list and its preceding item._
+_Apply a binary value between each item of a list and its preceding item._
 
-Syntax: `(m':)x`, `x m':y`
+Syntax: `(b':)x`, `x b':y`
 
-The Each Prior map takes a **binary** iterable and derives a variadic function.
-The derived function applies the iterable between each item of a list or dictionary and the item prior to it.
+The Each Prior map takes a **binary** value and derives a variadic function.
+The derived function applies the value between each item of a list or dictionary and the item prior to it.
 
 ```q
 q)(-':)1 1 2 3 5 8 13
 1 0 1 1 2 3 5
 ```
 
-The first item of a list has no prior item. 
+The first item of a list has,by definition, no prior item. 
 If the derived function is applied as a binary, its left argument is taken as the ‘seed’ – the value preceding the first item. 
 
 ```q
@@ -219,7 +220,7 @@ J| 2
 C| 6
 ```
 
-If the derived function is applied as a unary, and the iterable is an operator with an identity element $I$ known to q, $I$ will be used as the seed.
+If the derived function is applied as a unary, and the value is an operator with an identity element $I$ known to q, $I$ will be used as the seed.
 
 ```q
 q)(*':)2 3 4                        / 1 is I for *
@@ -234,7 +235,7 @@ J| 2
 C| 6
 ```
 
-If the derived function is applied as a unary, and the iterable is not an operator with a known identity element, a null of the same type as the argument (`first 0#x`) is used as the seed.
+If the derived function is applied as a unary, and the value is not an operator with a known identity element, a null of the same type as the argument (`first 0#x`) is used as the seed.
 
 ```q
 q){x+2*y}':[2 3 4]
@@ -260,19 +261,19 @@ q)deltas 5 16 42 103
 
 _Pick successive items from multiple list arguments: the left argument of the iterator determines from which of the arguments each item is picked._
 
-Syntax: `x'[a;b;c;…]`  
+Syntax: `int'[a;b;c;…]`  
 
 Where 
 
--   `x` is an integer vector
+-   `int` is an integer vector
 -   $args$ `[a;b;c;…]` are the arguments to the derived function
 
-the derived function `x'` returns $r$ such that 
-$r_i$ is ($args_{x_i})_i$
+the derived function `int'` returns $r$ such that 
+$r_i$ is ($args_{int_i})_i$
 
 ![case](../img/case.png)
 
-The derived function `x'` has rank `max[x]+1`. 
+The derived function `int'` has rank `max[int]+1`. 
 
 Atom arguments are treated as infinitely-repeated values.
 
@@ -345,7 +346,7 @@ q)i'[a;b;c]
 
 ## Empty lists
 
-A map’s derived function is uniform. Applied to an empty right argument it returns an empty list _without evaluating its iterable_.
+A map’s derived function is uniform. Applied to an empty right argument it returns an empty list _without an evaluation_.
 
 ```q
 q)()~{x+y*z}'[`foo;mt;mt]    / generic empty list ()

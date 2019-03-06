@@ -24,9 +24,9 @@ The elements of q are
 -   scripts
 -   environment variables
 
-!!! info "Iterables"
+!!! info "Applicable values"
 
-    Lists, dictionaries, proces handles, and functions of all kinds are all _iterables_. An iterable is a mapping. 
+    Lists, dictionaries, file and process handles, and functions of all kinds are all _applicable values_. An applicable value is a mapping. 
 
     A function maps its domains to its range. 
     A list maps its indexes to its items.
@@ -392,9 +392,9 @@ Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary
 
 ## Iterators
 
-Iterators are higher-order operators. Their arguments are iterables (functions, process handles, lists, and dictionaries) and their results are derived functions that iterate the application of the iterable. 
+Iterators are higher-order operators. Their arguments are applicable values (functions, process handles, lists, and dictionaries) and their results are derived functions that iterate the application of the value. 
 
-Three symbols, and three symbol pairs, denote ierators:
+Three symbols, and three symbol pairs, denote iterators:
 
 token         | semantics
 --------------|---------------------
@@ -403,9 +403,9 @@ token         | semantics
 `/:` and `\:` | Each Right and Each Left
 `/` and `\`   | Converge, Do, While, Reduce 
 
-Any of these in combination with the iterable immediately to its left, derives a new function. 
+Any of these in combination with the value immediately to its left, derives a new function. 
 
-The derived function is a variant of the iterable modified by the iterator. 
+The derived function is a variant of the value modified by the iterator. 
 For example, `+` is Add and `+/` is _sum_.
 
 ```q
@@ -451,7 +451,7 @@ Two dots cannot occur together in a name. Compound names beginning with a dot ar
 
 ## Iterator composition
 
-A derived function is _composed_ by any string of iterators with an iterable to the left and no spaces between any of the iterator glyphs or between the iterable and the leftmost iterator glyph. For example, `+\/:\:` composes a well-formed function. The meaning of such a sequence of symbols is understood from left to right. The leftmost iterator (`\`) modifies the operator (`+`) to create a new function. The next iterator to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the iterator at the right end.
+A derived function is _composed_ by any string of iterators with an applicable value to the left and no spaces between any of the iterator glyphs or between the value and the leftmost iterator glyph. For example, `+\/:\:` composes a well-formed function. The meaning of such a sequence of symbols is understood from left to right. The leftmost iterator (`\`) modifies the operator (`+`) to create a new function. The next iterator to the right of that one (`/:`) modifies the new function to create another new function, and so on, all the way to the iterator at the right end.
 
 
 ## Projecting the left argument of an operator
@@ -525,7 +525,7 @@ Any number of spaces are usually permitted between tokens in expressions, and us
   -   `/` and `:` when denoting the iterator `/:`
   -   a digit and `:` when denoting a function such as `0:`
   -   `:` and `:` for assignments of the form `name :: value`
--   No spaces are permitted between an iterator glyph and the iterable or
+-   No spaces are permitted between an iterator glyph and the value or
 iterator symbol to its left.
 -   No spaces are permitted between an operator glyph and a colon to its right whose purpose is to denote assignment.
 -   If a `/` is meant to denote the left end of a comment then it must be preceded by a blank (or newline); otherwise it will be taken to be part of an iterator.

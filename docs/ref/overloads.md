@@ -29,15 +29,15 @@ rank | syntax                 | semantics
 :---:|------------------------|---------------------------------------
 n/a  | `\`                    | ends multiline comment
 n/a  | `\`                    | abort
-1    | `(f\)`, `f\[d]`        | [Converge](accumulators.md#converge)
-2    | `n f\d`, `f\[n;d]`     | [Do](accumulators.md#do)
-2    | `t f\d`, `f\[t;d]`     | [While](accumulators.md#while)
-2    | `x g\y`, `g\[x;y;z;…]` | [map-reduce](accumulators.md#binary-iterators)
+1    | `(u\)`, `u\[d]`        | [Converge](accumulators.md#converge)
+2    | `n u\d`, `u\[n;d]`     | [Do](accumulators.md#do)
+2    | `t u\d`, `u\[t;d]`     | [While](accumulators.md#while)
+2    | `x v\y`, `v\[x;y;z;…]` | [map-reduce](accumulators.md#binary-iterators)
 
 ```txt
 d: data                   n: non-negative integer
-f: unary iterable         t: test iterable
-g: iterable rank>1        x: atom or vector
+u: unary value            t: test value
+v: value rank>1           x: atom or vector
                           y, z…: conformable atoms or lists
 ```
 
@@ -136,15 +136,15 @@ rank | example                     | semantics
 
 rank | syntax                                    | semantics
 :---:|-------------------------------------------|-------------------------------------------
-1    | `(f')x`, `f'[x]`, `x ff'y`,  `ff'[x;y;…]` | [Each](maps.md#each): iterate `ff` itemwise
+1    | `(u')x`, `u'[x]`, `x b'y`,  `v'[x;y;…]` | [Each](maps.md#each): iterate `u`, `b` or `v` itemwise
 1    | `'msg`                                    | [Signal](signal.md) an error
-1    | `iv'[x;y;…]`                              | [Case](maps.md#case): successive items from lists
-2    | `'[ff;f]`                                 | [Compose](compose.md) `ff` with `f`
+1    | `int'[x;y;…]`                              | [Case](maps.md#case): successive items from lists
+2    | `'[u;v]`                                 | [Compose](compose.md) `u` with `v`
 
 ```txt
-f:  unary iterable         msg: symbol or string
-ff: iterable of rank ≥1    x, y: data
-iv: int vector
+u:  unary value         int:  int vector
+b:  binary value        msg:  symbol or string
+vv: value of rank ≥1    x, y: data
 ```
 
 
@@ -152,8 +152,8 @@ iv: int vector
 
 rank | example  | semantics
 :---:|----------|-------------------------------------------------------
-1    | `f':`    | [Each Parallel](maps.md#each-parallel) with unary `f`
-1    | `g':`    | [Each Prior](maps.md#each-prior) with binary `g`
+1    | `u':`    | [Each Parallel](maps.md#each-parallel) with unary `u`
+1    | `b':`    | [Each Prior](maps.md#each-prior) with binary `b`
 
 
 ## `/` slash
@@ -161,14 +161,14 @@ rank | example  | semantics
 rank | syntax              | semantics
 :---:|---------------------|-----------------------------------------
 n/a  | `/a comment`        | comment: ignore rest of line
-1    | `(f/)y`, `f/[y]`    | [Converge](accumulators.md#converge) 
-1    | `n f/ y`, `f/[n;y]` | [Do](accumulators.md#do) 
-1    | `t f/ y`, `f/[t;y]` | [While](accumulators.md#while) 
-1    | `(ff/)y`, `ff/[y]`  | [map-reduce](accumulators.md#binary-iterables): reduce a list or lists
+1    | `(u/)y`, `u/[y]`    | [Converge](accumulators.md#converge) 
+1    | `n u/ y`, `u/[n;y]` | [Do](accumulators.md#do) 
+1    | `t u/ y`, `u/[t;y]` | [While](accumulators.md#while) 
+1    | `(v/)y`, `v/[y]`    | [map-reduce](accumulators.md#binary-values): reduce a list or lists
 
 ```txt
-f: unary iterable       t: test iterable
-ff: iterable rank ≥1    y: list
+u: unary value       t: test value
+v: value rank ≥1     y: list
 n: int atom ≥0
 ```
 
