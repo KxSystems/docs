@@ -15,7 +15,7 @@
 
 ## Interfaces
 
-* [Data visualization with kdb+ using ODBC: a Tableau case study](data-visualization) &nbsp; <i class="fas fa-print"></i> <small>[A4](data-visualization/data-visualization-a4.pdf), [US&nbsp;Letter](data-visualization/data-visualization-us.pdf)</small>
+* ==new== [Data visualization with kdb+ using ODBC: a Tableau case study](data-visualization) &nbsp; <i class="fas fa-print"></i> <small>[A4](data-visualization/data-visualization-a4.pdf), [US&nbsp;Letter](data-visualization/data-visualization-us.pdf)</small>
 * Kdb+ and **FIX** messaging &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_and_fix_messaging.pdf)
 * Common design principles for kdb+ **gateways** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](common_design_principles_for_kdb_gateways.pdf)
 * [An introduction to **graphical interfaces** for kdb+ using C#](gui) &nbsp; <i class="fas fa-print"></i> <small>[A4](gui/csharp-gui-a4.pdf), [US&nbsp;Letter](gui/csharp-gui-us.pdf)</small>

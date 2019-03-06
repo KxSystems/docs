@@ -20,7 +20,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Iterators](wp/iterators/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i>[==Version 2==  Reference](about/site-news/)</p>
+    <p style="text-align: center;" markdown="1"><i class="fas fa-globe"></i> [code.kx.com 2.0](about/site-news/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [NASA Exoplanets Challenge](wp/exoplanets/)</p>
     
