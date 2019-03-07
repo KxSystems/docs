@@ -36,7 +36,7 @@ about new repositories.</div>
 	</td>
 </tr>
 <tr>
-	<td class="nowrap">[help](https://github.com/KxSystems/help)</td>
+	<td class="nowrap">[help](https://github.com/KxSystems/help) ==revised==</td>
 	<td>online help for q</td>
 </tr>
 <tr>
@@ -47,7 +47,7 @@ about new repositories.</div>
 	</td>
 </tr>
 <tr>
-	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq) ==new==</td>
+	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
 	<td>
 		Jupyter kernel for kdb+
 		[<i class="fa fa-share-alt"></i>](ml/index.md "Machine learning")
@@ -74,14 +74,14 @@ about new repositories.</div>
 	<td>ticker plant</td>
 </tr>
 <tr>
-	<td class="nowrap">[nlp](https://github.com/awilson-kx/nlp) ==new==</td>
+	<td class="nowrap">[nlp](https://github.com/awilson-kx/nlp)</td>
 	<td>
 		demonstration notebook for [Natural-language processing](/ml/nlp)
 		[<i class="fas fa-share-alt"></i>](/ml "Machine learning")
 	</td>
 </tr>
 <tr>
-	<td class="nowrap">[notebooks](https://github.com/awilson-kx/notebooks) ==new==</td>
+	<td class="nowrap">[notebooks](https://github.com/awilson-kx/notebooks)</td>
 	<td>
 		demonstration notebooks for [embedPy](/ml/embedpy)
 		[<i class="fa fa-share-alt"></i>](/ml "Machine learning")

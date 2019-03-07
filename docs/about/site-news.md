@@ -12,10 +12,11 @@ keywords: blog, kdb+, news, q, site
 Version 2 of this site has
 
 -   extensive revision of the Reference, including 
--   a completely new description of the _iterators_ (formerly _adverbs_)
+-   a completely new description of the _iterators_ (formerly _adverbs_), completing the terminology review that started in 2016
 -   simplified URLs for Reference articles
 -   a new version, [Iterators](../wp/iterators/index.md) of the 2013 white paper “Efficient use of adverbs”
 -   HTTP requests redirected to HTTPS 
+-   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
 
 The previous version of the site will remain for some time at its former URL <https://code.kx.com/q>, so bookmarks to it will continue to work. 
 
@@ -64,7 +65,7 @@ New whitepaper [Socket sharding with kdb+ on Linux](../wp/socket-sharding.pdf)
 
 <small>2018.01.24</small>
 
-New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy/) library.
+New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy/index.md) library.
 
 
 ## <i class="fas fa-search"></i> Custom search engine
