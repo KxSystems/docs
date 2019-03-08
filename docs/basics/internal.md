@@ -29,7 +29,7 @@ _xkcd.com_
 ## `-2!x` (`attr`)
 
 <i class="far fa-hand-point-right"></i> 
-[attr](metadata/#attr)
+[attr](../basics/metadata.md#attr)
 
 
 ## `-3!x` string
@@ -39,7 +39,7 @@ Covered by `.Q.s1`.
 Use `show`.
 
 <i class="far fa-hand-point-right"></i> 
-[`show`](../ref/show),
+[`show`](../ref/show.md),
 [.Q.s](../ref/dotq.md#qs-plain-text)
 
 
@@ -135,7 +135,7 @@ q)-10!20h
 
 Streaming-execute over file `x`, used for example in kdb+tick to replay logfiles in a memory-efficient manner.
 
-A logfile is just a list of lists, and each list is read in turn and evaluated, either by [`value`](metadata/#value) or by [`.z.ps`](dotz/#zps-set) if it is defined.
+A logfile is just a list of lists, and each list is read in turn and evaluated, either by [`value`](metadata.md#value) or by [`.z.ps`](../ref/dotz.md#zps-set) if it is defined.
 
 Here, for demonstration purposes, we manually create a logfile, and play it back through `-11!`. This is functionally equivalent to doing ``value each get `:logfile`` but uses far less memory.
 
@@ -441,3 +441,17 @@ Knowledge Base: [SSL](../kb/ssl.md)
 Underpins the JSON parser, [`.j.k`](../ref/dotj.md).
 Since V3.3t 2015.02.17.
 
+
+## `-30!x` (deferred response)
+
+Syntax: `-30!(::)`
+Syntax: `-30!(handle;isError;msg)`
+
+Where `handle` is an int, `isError` is a boolean, and `msg` is a string
+
+- `-30!(::)` allows the currently-executing callback to complete without responding
+- `-30!(handle;isError;msg)` responds to the deferred sync call
+
+Since V3.6 2018.05.18. 
+
+<i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)

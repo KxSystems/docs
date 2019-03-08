@@ -161,7 +161,6 @@ nav:
       - Exposed infrastructure: basics/exposed-infrastructure.md
       - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
-      - Internal functions: basics/internal.md
       - Iteration: basics/iteration.md
       - IPC protocol: basics/ipc.md
       - Joins: basics/joins.md
@@ -184,6 +183,7 @@ nav:
     - Errors: basics/errors.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
+    - Internal functions: basics/internal.md
     - Iterators:
       - Overview: ref/iterators.md
       - Maps: ref/maps.md
