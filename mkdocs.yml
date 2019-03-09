@@ -506,6 +506,7 @@ nav:
     - Query Routing: wp/query-routing/index.md
     - Signal processing and q: wp/signal-processing/index.md
     - Space weather: wp/space-weather/index.md
+    - Working with sym files: wp/symfiles/index.md
     - WebSockets: wp/websockets/index.md
   - About: 
     - Kx technology: about/kxtechnology.md
