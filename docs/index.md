@@ -18,6 +18,8 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Working with sym&nbsp;files](wp/symfiles/)</p>
+    
     <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i> [`help.q`](https://github.com/kxsystems/help)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Iterators](wp/iterators/)</p>
@@ -25,8 +27,6 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
     <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i> [Reference 2.0](about/site-news/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [NASA Exoplanets Challenge](wp/exoplanets/)</p>
-    
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Exploring the Bitcoin blockchain](wp/blockchain/)</p>
     
 </div>
 

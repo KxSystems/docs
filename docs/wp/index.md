@@ -50,7 +50,7 @@
 
 ## Managing data and systems
 
-* ==new== [Migrating a kdb+ HDB to **Amazon EC2**](/cloud/aws/) &nbsp; <i class="fas fa-print"></i> <small>[A4](/cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](/cloud/aws/aws-ec2-us.pdf)</small>
+* [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
 * Temporal Data: a kdb+ framework for **corporate actions** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 * Kdb+ **data-management sample customisation** techniques &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
 * **Data recovery** for kdb+tick &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](data_recovery_for_kdb_tick.pdf)
@@ -62,9 +62,11 @@
 * [**Multi-partitioned** kdb+ databases: an equity options case study](multi-partitioned-dbs/) &nbsp; <i class="fas fa-print"></i> <small>[A4](multi-partitioned-dbs/multi-partitioned-dbs-a4.pdf), [US Letter](multi-partitioned-dbs/multi-partitioned-dbs-us.pdf)</small>
 * **Permissions** with kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](permissions_with_kdb.pdf)
 * [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/) &nbsp; <i class="fas fa-print"></i> <small>[A4](query-routing/query-routing-a4.pdf), [US&nbsp;Letter](query-routing/query-routing-us.pdf)</small>
+* ==new== [Working with **sym files**](symfiles/) &nbsp; <i class="fas fa-print"></i> <small>[A4](symfiles/symfiles-a4.pdf), [US&nbsp;Letter](symfiles/symfiles-us.pdf)</small>
 * Kdb+tick profiling for **throughput optimization** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdbtick_profiling_for_throughput_optimization.pdf)
 * **Time-series simplification** in kdb+: a method for dynamically shrinking Big Data &nbsp; <i class="fa fa-print"></i> <small>[A4](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)</small>
 
+* 
 
-Some of these whitepapers originally appeared as the _q for Gods_ series from [First Derivatives](http://firstderivatives.com).
+Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](http://firstderivatives.com).
 
