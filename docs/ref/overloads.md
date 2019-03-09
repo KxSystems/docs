@@ -19,8 +19,8 @@ rank | syntax          | semantics
 2    | `f@y`, `@[f;y]` | [Apply At](apply.md#apply-at-index-at)
 3    | `@[f;y;e]`      | [Trap At](apply.md#trap)
 3    | `@[d;i;u]`      | [Amend At](amend.md)
-4    | `a[d;i;m;my]`   | [Amend At](amend.md)
-4    | `a[d;i;:;y]`    | [Replace At](amend.md)
+4    | `@[d;i;m;my]`   | [Amend At](amend.md)
+4    | `@[d;i;:;y]`    | [Replace At](amend.md)
 
 
 ## `\` backslash
@@ -35,7 +35,7 @@ n/a  | `\`                    | abort
 2    | `x v\y`, `v\[x;y;z;…]` | [map-reduce](accumulators.md#binary-iterators)
 
 ```txt
-d: data                   n: non-negative integer
+d: data                   n: non-negative integer atom
 u: unary value            t: test value
 v: value rank>1           x: atom or vector
                           y, z…: conformable atoms or lists
@@ -61,7 +61,6 @@ b: group-by specifications
 c: where-specifications
 h: handle to a splayed or partitioned table
 i: integer >0
-i0: integer ≥0
 noasv: symbol atom, the name of a symbol vector
 sv: symbol vector
 t: table
@@ -127,7 +126,7 @@ rank | example                     | semantics
 2    | `-10?1000`, ``-1?`yes`no``  | [Deal](roll-deal.md#deal)
 2    | `0N?1000`, ``0N?`yes`no``   | [Permute](roll-deal.md#permute)
 2    | `x?v`                       | extend an enumeration: [Enum Extend](enum-extend.md)
-3    | `?[11011b;"black";"frame"]` | [Vector Conditional](vector-conditional.md)
+3    | ?[11011b;"black";"flock"]   | [Vector Conditional](vector-conditional.md)
 4    | `?[t;b;c;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)
 4    | `?[t;i;x]`                  | [Simple exec](../basics/funsql.md#simple-exec)
 
@@ -167,9 +166,9 @@ n/a  | `/a comment`        | comment: ignore rest of line
 1    | `(v/)y`, `v/[y]`    | [map-reduce](accumulators.md#binary-values): reduce a list or lists
 
 ```txt
-u: unary value       t: test value
-v: value rank ≥1     y: list
-n: int atom ≥0
+u: unary value              t: test value
+v: value rank ≥1            y: list
+n: non-negative int atom
 ```
 
 Syntax: a space followed by `/` begins a **trailing comment**. Everything to the right of `/` is ignored. 
