@@ -143,7 +143,7 @@ rank | syntax                                    | semantics
 ```txt
 u:  unary value         int:  int vector
 b:  binary value        msg:  symbol or string
-vv: value of rank ≥1    x, y: data
+v: value of rank ≥1     x, y: data
 ```
 
 
