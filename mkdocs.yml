@@ -17,6 +17,7 @@ extra_javascript:
   - 'https://use.fontawesome.com/releases/v5.2.0/js/all.js'
   # theme.js modifies HTML to prepare for prism.js
   - 'scripts/theme.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
   # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
   # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
   - 'scripts/prism.js'
