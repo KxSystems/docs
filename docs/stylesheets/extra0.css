@@ -1,6 +1,7 @@
 /*
 	Title: Extra CSS for code.kx.com in MkDocs
 	Author: stephen@kx.com
+	Vern: 2018.10.22
  */
 
 /* countermand MkDocs insertion of href attribute after link anchor
@@ -13,7 +14,9 @@
 
  /* palette
 --------------------------------------------- */
- [data-md-color-primary=blue] .md-header
+ [data-md-color-primary=blue] .md-header,
+ [data-md-color-primary=blue] .md-hero,
+ [data-md-color-primary=blue] .md-tabs
  {
  	background: #0070cd; /* hsl(207, 100%, 40%) */
  }
@@ -25,7 +28,37 @@
  [data-md-color-primary=blue] .md-typeset a {
  	color: #005499; /* hsl(207, 100%, 30%) */
  }
- 
+
+/* suppress nav footer
+--------------------------------------------- */
+.md-footer-nav {
+	display: none;
+}
+.kx-nav {
+	border-top: .5px solid #ccc;
+	color: #777;
+	padding-top: .2em;
+	margin-top: 2em;
+}
+.kx-nav-prev, 
+.kx-nav-next {
+	width: auto;
+}
+.kx-nav-prev {
+	float: left;
+}
+.kx-nav-prev::before {
+	content: "previous ";
+}
+.kx-nav-next {
+	float: right;
+}
+.kx-nav-next::before {
+	content: "next ";
+}
+.kx-nav a {
+	font-size: 1.4em;
+}
 /* type
 --------------------------------------------- */
 /* Override "Roboto Mono" from theme */
@@ -51,6 +84,16 @@ code, kbd, pre {
 	background-color: transparent;
 	margin-top: 0;
 }
+
+
+
+/* code listings
+--------------------------------------------- */
+code[class*="language-"],
+pre[class*="language-"] {
+	padding: 0;
+}
+
 
 /* front page
 --------------------------------------------- */
@@ -129,3 +172,16 @@ code, kbd, pre {
 	white-space: nowrap;
 }
 
+
+
+.fusion {
+    background-color: #c6c9ff; 
+    border: 1px solid #0070cd; 
+    border-radius: 10px; 
+    display: inline-block;
+    font-size: .8em; 
+    padding: 0 1em;
+}
+.fusion a {
+	font-weight: bold;
+}
