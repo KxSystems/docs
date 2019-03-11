@@ -125,24 +125,24 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 <table markdown="1" class="kx-shrunk kx-tight">
 <tr><td>[file](../basics/cmdline.md#file)</td></tr>
-<tr><td>[`\a`](../basics/syscmds.md#a-tables)</td><td>tables</td><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td></tr>
-<tr><td>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td>views</td><td>[`\c`](../basics/syscmds.md#c-console-size)  [`-c`](../basics/cmdline.md#-c-console-size)</td><td>console size</td></tr>
-<tr><td>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td>HTTP size</td><td>[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td>change directory</td></tr>
-<tr><td>[`\d`](../basics/syscmds.md#d-directory)</td><td>directory</td><td>[`\e`](../basics/syscmds.md#e-error-trap-clients) [`-e`](../basics/cmdline.md#-e-error-traps)</td><td>error traps</td></tr>
-<tr><td>[`-E`](../basics/cmdline.md#-e-error-traps)</td><td>TLS Server Mode</td><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td></tr>
-<tr><td>[`\g`](../basics/syscmds.md#g-garbage-collection-mode) [`-g`](../basics/cmdline.md#-g-garbage-collection)</td><td>garbage collection</td><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td></tr>
-<tr><td>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td>log sync</td><td>[`\o`](../basics/syscmds.md#o-offset-from-utc) [`-o`](../basics/cmdline.md#-o-utc-offset)</td><td>UTC offset</td></tr>
-<tr><td>[`\p`](../basics/syscmds.md#p-listening-port) [`-p`](../basics/cmdline.md#-p-listening-port)</td><td>multithread port</td><td>[`\P`](../basics/syscmds.md#p-precision) [`-P`](../basics/cmdline.md#-p-display-precision)</td><td>display precision</td></tr>
-<tr><td>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td>quiet mode</td><td>[`\r`](../basics/syscmds.md#r-replication-master) [`-r`](../basics/cmdline.md#-r-replicate)</td><td>replicate</td></tr>
-<tr><td>[`\r`](../basics/syscmds.md#r-rename)</td><td>rename</td><td>[`\s`](../basics/syscmds.md#s-number-of-slaves) [`-s`](../basics/cmdline.md#-s-slaves)</td><td>slaves</td></tr>
-<tr><td>[`\S`](../basics/syscmds.md#s-random-seed)</td><td>random seed</td><td>[`\t`](../basics/syscmds.md#t-timer) [`-t`](../basics/cmdline.md#-t-timer-ticks)</td><td>timer ticks</td></tr>
-<tr><td>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td>time and space</td><td>[`\T`](../basics/syscmds.md#t-timeout) [`-T`](../basics/cmdline.md#-t-timeout)</td><td>timeout</td></tr>
-<tr><td>[`\u`](../basics/syscmds.md#u-reload-user-password-file)  [`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd)</td><td>usr-pwd</td><td>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td>disable syscmds</td></tr>
-<tr><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td><td>[`\w`](../basics/syscmds.md#w-workspace) [`-w`](../basics/cmdline.md#-w-memory)</td><td>memory</td></tr>
-<tr><td>[`\W`](../basics/syscmds.md#w-week-offset) [`-W`](../basics/cmdline.md#-w-start-week)</td><td>week offset</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
-<tr><td>[`\z`](../basics/syscmds.md#z-date-parsing) [`-z`](../basics/cmdline.md#-z-date-format)</td><td>date format</td><td>[`\1` `\2`](../basics/syscmds.md#1-2-redirect)</td><td>redirect</td></tr>
-<tr><td>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td>hide q code</td><td>[`\`](../basics/syscmds.md#terminate)</td><td>terminate</td></tr>
-<tr><td>[`\`](../basics/syscmds.md#toggle-qk)</td><td>toggle q/k</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
+<tr><td>[`\a`](../basics/syscmds.md#a-tables)</td><td>tables</td><td>[`\r`](../basics/syscmds.md#r-rename)</td><td>rename</td></tr>
+<tr><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td><td>[`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)</td><td>slaves</td></tr>
+<tr><td>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td>views</td><td>[`\S`](../basics/syscmds.md#s-random-seed)</td><td>random seed</td></tr>
+<tr><td>[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td>console size</td><td>[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td>timer ticks</td></tr>
+<tr><td>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td>HTTP size</td><td>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td>time and space</td></tr>
+<tr><td>[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td>change directory</td><td>[`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)</td><td>timeout</td></tr>
+<tr><td>[`\d`](../basics/syscmds.md#d-directory)</td><td>directory</td><td>[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td>usr-pwd</td></tr>
+<tr><td>[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td>error traps</td><td>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td>disable syscmds</td></tr>
+<tr><td>[`-E`](../basics/cmdline.md#-e-error-traps)</td><td>TLS Server Mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
+<tr><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td><td>[`-w`](../basics/cmdline.md#-w-memory) [`\w`](../basics/syscmds.md#w-workspace)</td><td>memory</td></tr>
+<tr><td>[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td>garbage collection</td><td>[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td>week offset</td></tr>
+<tr><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
+<tr><td>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td>log sync</td><td>[`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)</td><td>date format</td></tr>
+<tr><td>[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)</td><td>UTC offset</td><td>[`\1` `\2`](../basics/syscmds.md#1-2-redirect)</td><td>redirect</td></tr>
+<tr><td>[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td>multithread port</td><td>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td>hide q code</td></tr>
+<tr><td>[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)</td><td>display precision</td><td>[`\`](../basics/syscmds.md#terminate)</td><td>terminate</td></tr>
+<tr><td>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td>quiet mode</td><td>[`\`](../basics/syscmds.md#toggle-qk)</td><td>toggle q/k</td></tr>
+<tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
 <i class="far fa-hand-point-right"></i> 
