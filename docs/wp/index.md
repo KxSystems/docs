@@ -50,7 +50,7 @@
 
 ## Managing data and systems
 
-* [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
+* [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
 * Temporal Data: a kdb+ framework for **corporate actions** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 * Kdb+ **data-management sample customisation** techniques &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
 * **Data recovery** for kdb+tick &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](data_recovery_for_kdb_tick.pdf)
