@@ -26,8 +26,6 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
     
     <p style="text-align: center;" markdown="1"><i class="far fa-question-circle"></i> [Reference 2.0](about/site-news/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [NASA Exoplanets Challenge](wp/exoplanets/)</p>
-    
 </div>
 
 </div>
@@ -76,12 +74,13 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 </div>
 </div>
 
+!!! tip "Using this site offline"
+
+    You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use offline.
+
+    The source code for this site is on GitHub at 
+    <i class="fab fa-github"></i>
+    [KxSystems/docs](https://github.com/kxsystems/docs/). 
+
 !!! info "[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)"
     
-!!! warning "The Kx wiki"
-
-    The documentation from the [Kx wiki](http://code.kx.com/wiki) has moved to this new platform. All source code can now be found on [GitHub](https://kxsystems.github.io). 
-    The wiki remains in place for now, but is no longer maintained. 
-
-    **Your old bookmarks work, but please update them.** 
-
