@@ -55,10 +55,10 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <td class="kx-glyph">`%`</td><td>[Divide](divide.md)</td>
 </tr>
 <tr>
-<td class="kx-glyph">`=`<br><code class="nowrap">&lt;&gt;</code></td><td>[Equals](/basics/comparison/#six-comparison-operators)<br>[Not Equals](/basics/comparison/#six-comparison-operators)</td>
-<td class="kx-glyph">`<`<br>`<=`</td><td>[Less Than](/basics/comparison/#six-comparison-operators)<br>[Up To](/basics/comparison/#six-comparison-operators)</td>
-<td class="kx-glyph">`>`<br>`>=`</td><td>[Greater Than](/basics/comparison/#six-comparison-operators)<br>[At Least](/basics/comparison/#six-comparison-operators)</td>
-<td class="kx-glyph">`~`</td><td>[Match](/basics/comparison/#match)</td>
+<td class="kx-glyph">`=`<br><code class="nowrap">&lt;&gt;</code></td><td>[Equals](../basics/comparison/#six-comparison-operators)<br>[Not Equals](../basics/comparison/#six-comparison-operators)</td>
+<td class="kx-glyph">`<`<br>`<=`</td><td>[Less Than](../basics/comparison/#six-comparison-operators)<br>[Up To](../basics/comparison/#six-comparison-operators)</td>
+<td class="kx-glyph">`>`<br>`>=`</td><td>[Greater Than](../basics/comparison/#six-comparison-operators)<br>[At Least](../basics/comparison/#six-comparison-operators)</td>
+<td class="kx-glyph">`~`</td><td>[Match](../basics/comparison/#match)</td>
 </tr>
 <tr>
 <td class="kx-glyph">`|`</td> <td>[Greater, OR](greater.md)</td>
@@ -105,7 +105,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </tr>
 <tr>
 <td class="kx-glyph nowrap">`()`<br>`(;)`<br>`([]…)`</td><td>[precedence](../basics/syntax.md#precedence-and-order-of-evaluation)<br>[list](../basics/syntax.md#list-notation)<br>[table](../basics/syntax.md#table-notation)</td>
-<td class="kx-glyph nowrap">`[;]`</td><td>[expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)<br>[argt list](/basics/syntax.md#bracket-notation)</td>
+<td class="kx-glyph nowrap">`[;]`</td><td>[expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)<br>[argt list](../basics/syntax.md#bracket-notation)</td>
 <td class="kx-glyph">`{}`<br>`;`</td><td>[lambda](../basics/function-notation.md)<br>separator</td>
 <td class="kx-glyph"><code>&#96;</code><br><code>&#96;:</code></td><td>symbol<br>filepath</td>
 </tr>
