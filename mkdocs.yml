@@ -73,9 +73,10 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
-  - Platform for Kx: platform.md
-  - Support: support.md
+  - Reference: https://code.kx.com/v2/ref/
   - GitHub: github.md
+  - Support: support.md
+  - Platform for Kx: platform.md
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -322,7 +323,7 @@ nav:
       - Enkey, Unkey: ref/enkey.md
       - Enumerate: ref/enumerate.md
       - Enumeration: ref/enumeration.md
-      - Enum-extend: ref/enum-extend.md
+      - Enum Extend: ref/enum-extend.md
       - Equal: ref/equal.md
       - Exec: ref/exec.md
       - File Binary: ref/file-binary.md
