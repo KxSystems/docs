@@ -22,7 +22,7 @@ fills in any missing items in `x`, returns `y` as an enumeration of the variable
 
 ```q
 q)foo:`a`b
-q)`foo\`a`b`c`b`a`b`c`c`c`c`c`c`c
+q)`foo?`a`b`c`b`a`b`c`c`c`c`c`c`c
 `foo$`a`b`c`b`a`b`c`c`c`c`c`c`c
 q)foo
 `a`b`c
