@@ -21,7 +21,7 @@ q)\l ml/ml.q
 q).ml.loadfile`:util/init.q
 ```
 
-Functions are divided into two namespaces:
+Functions are divided into three namespaces:
 
 ```txt
 .ml – Statistical analysis and vector creation
@@ -31,34 +31,65 @@ Functions are divided into two namespaces:
   .confmat       Confusion matrix 
   .corrmat       Table-like correlation matrix for a simple table 
   .crossentropy  Categorical cross entropy 
+  .cvm           Covariance matrix
   .describe      Descriptive information about a table
   .eye           Identity matrix
+  .f1score       F1-score on classification results
+  .fbscore       Fbeta-score on classification results
+  .kfshuff       K-fold non repeating indices
+  .kfxval        Basic K-Fold cross-validation
   .linspace      List of evenly-spaced values 
   .logloss       Logarithmic loss 
-  .mse           Mean square 
+  .mae           Mean absolute error
+  .mape          Mean absolute percentage error
+  .matcorr       Matthews correlation coefficient
+  .mse           Mean square error 
   .percentile    Percentile calculation for an array
-  .precision     Precision of a binary classifier 
-  .range         Range of values 
+  .precision     Precision of a binary classifier
+  .r2score       R2-score 
+  .range         Range of values
+  .rmse          Root mean square error
+  .rmsle         Root mean square logarithmic error
   .roc           X- and Y-axis values for an ROC curve 
   .rocaucscore   Area under an ROC curve 
   .sensitivity   Sensitivity of a binary classifier 
-  .shape         Shape of a matrix 
+  .shape         Shape of a matrix
+  .smape         Symmetric mean absolute error
   .specificity   Specificity of a binary classifier 
   .sse           Sum squared error 
   .tscore        One-sample t-test score 
   .tscoreeq      T-test for independent samples with unequal variances 
 
 .ml.util – Manipulation and transformation of data
+  .classreport          Statistical information about classification results
+  .combs                Unique combinations of a vector or matrix
   .df2tab               Table from a pandas dataframe 
   .dropconstant         Columns with zero variance removed
-  .fillfn               Tailored filling of null values for a simple matrix 
+  .filltab              Tailored filling of null values for a simple matrix 
+  .freqencode           Numerically encode frequency of category occurance
+  .infreplace           Replace +/- infinities with max/min of column
+  .lexiencode           Label categories based on lexigraphical order
   .minmaxscaler         Data scaled between 0-1 
-  .onehot               One-hot encoding 
+  .nullencode           Fill null with defined value and flag positions of null values
+  .onehot               One-hot encoding of table or array
   .polytab              Polynomial features of degree n from a table 
-  .stdscaler            Standard scaler transform-based representation o  able 
+  .stdscaler            Standard scaler transform-based representation of a table 
   .tab2df               Pandas dataframe from a q table 
   .traintestsplit       Split into training and test sets 
-  .traintestsplitseed   Split into training and test sets with a seed   
+  .traintestsplitseed   Split into training and test sets with a seed
+
+.ml.xval - Cross validation functions
+  .chainxval            Score from chain-forward cross validation
+  .gridsearch           Grid search returning score and optimal parameters for ML-model 
+  .gridsearchfit        Grid search returning score on test data set for optimal model
+  .kfoldx               K-Fold cross validation
+  .kfshuff              Randomized indiced for data split into k-folds
+  .kfsplit              Sequential sets of indices for data split into k-folds
+  .kfstrat              Stratified choosing of indices for categorical targets
+  .mcxval               Monte-Carlo cross validation
+  .repkfstrat           Repeated stratified K-fold cross validation
+  .repkfval             Repeated randomized K-fold cross validation
+  .rollxval             Roll forward cross validation
 ```
 
 These namespaces will be extended over time.
@@ -191,6 +222,29 @@ q).ml.crossentropy[b;p]
 3.187829
 ```
 
+## `.ml.cvm`
+
+_Covariance of a matrix_
+
+Syntax: `.ml.cvm[x]`
+
+Where
+
+-  `x` is a matrix
+
+Returns the covariance matrix
+
+```q
+q)show mat:(5?10;5?10;5?10)
+3 6 0 8 4
+1 7 4 7 6
+6 9 9 8 7
+q).ml.cvm[mat]
+7.36 4   0.04
+4    5.2 1.6
+0.04 1.6 1.36
+```
+
 
 ## `.ml.describe`
 
@@ -239,6 +293,119 @@ q).ml.eye 5
 ```
 
 
+## `.ml.f1score`
+
+_F-1 score for classification results_
+
+Syntax: `.ml.f1score[x;y;z]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+-   `z` is the positive class
+
+returns the F-1 score between predicted and true values.
+
+```q
+q)xr:1000?5
+q)yr:1000?5
+q).ml.f1score[xr;yr;4]
+0.1980676
+q)xb:1000?0b
+q)yb:1000?0b
+q).ml.f1score[xb;yb;0b]
+0.4655532
+```
+
+
+## `.ml.fbscore`
+
+_F-beta score for classification results_
+
+Syntax: `.ml.fbscore[x;y;z;b]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+-   `z` is the positive class
+-   `b` is the value of beta
+
+returns the F-beta score between predicted and true values.
+
+```q
+q)xr:1000?5
+q)yr:1000?5
+q).ml.fbscore[xr;yr;4;.5]
+0.2254098
+q)xb:1000?0b
+q)yb:1000?0b
+q).ml.fbscore[xb;yb;1b;.5]
+0.5191595
+```
+
+
+## `.ml.kfoldx`
+
+_K-Fold cross validation_
+
+Syntax: `.ml.kfoldx[x;y;i;fn]`
+
+Where
+
+-   `x` is the data matrix
+-   `y` is the target vector
+-   `i` are the indices for the K-fold validation using `.ml.kfsplit`
+-   `fn` is the model which is being passed to the function for cross validation
+
+returns the cross validated score for an applied machine-learning algorithm.
+```q
+n:10000
+q)xg:(n?100f;asc n?100f)        / 'good values' for linear regressor
+q)yg:asc n?100f
+q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
+q)reg1:.p.import[`sklearn.linear_model][`:SGDRegressor][]
+q)reg2:.p.import[`sklearn.linear_model][`:ElasticNet][]
+q)reg3:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
+q)folds:10                      / number of folds for data
+q)i:.ml.kfshuff[yg;folds]
+q).ml.kfoldx[xg;yg;i]each(reg;reg1;reg2;reg3)
+0.9998536 -1.24663e+24 0.9998393 0.9999997
+q)yb:n?100f                     / 'bad values' for linear regression
+q)xb:(n?100f;n?100f)
+q).ml.kfoldx[xb;yb;i]each(reg;reg1;reg2;reg3)
+-0.009119423 -7.726559e+21 -0.009119348 -0.2275681
+```
+!!! note
+        This is an aliased version of the function `.ml.xval.kfoldx` which is contained in the `.ml.xval` namespace.
+
+## `.ml.kfshuff`
+
+_Randomized non repeating indices for K-fold cross validation_
+
+Syntax: `.ml.kfshuff[x;y]`
+
+Where
+
+-   `x` is the target vector
+-   `y` is the number of 'folds' which the data is to be split into
+
+returns randomized non repeating indices associated with each of K folds.
+
+```q
+q)yg:asc 1000?100f
+q).ml.kfshuff[yg;5]
+647 755 790 152 948 434 583 536 156 637 699 159 315 698 41  345 565 680 775 6..
+118 402 34  601 833 877 762 703 129 294 593 634 192 939 545 98  641 266 910 4..
+795 69  664 393 519 722 616 55  132 802 448 140 361 194 977 97  247 74  733 6..
+633 430 346 267 102 201 123 295 487 418 606 108 154 899 398 932 994 643 944 5..
+919 354 119 478 954 567 497 848 665 471 406 541 307 82  984 198 134 622 550 9..
+```
+!!! note
+        This is an aliased version of the function `.ml.xval.kfshuff` which is contained in the `.ml.xval` namespace.
+
+
 ## `.ml.linspace`
 
 _Array of evenly-spaced values_
@@ -281,6 +448,67 @@ q).ml.logloss[v;g]
 0.3005881
 q).ml.logloss[v;b]
 1.032062
+```
+
+
+## `.ml.mae`
+
+_Mean absolute error_
+
+Syntax: `.ml.mae[x;y]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+
+returns the mean absolute error between predicted and true values.
+
+```q
+q).ml.mae[100?0b;100?0b]
+45f
+q).ml.mae[100?5;100?5]
+173f
+```
+
+
+## `.ml.mape`
+
+_Mean absolute percentage error_
+
+Syntax: `.ml.mape[x;y]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+
+returns the mean absolute percentage error between predicted and true values. All values must be floats.
+
+```q
+q)mape[100?5.0;100?5.0]
+660.9362
+```
+
+
+## `.ml.matcorr`
+
+_Matthews-correlation coefficient_
+
+Syntax: `.ml.matcorr[x;y]`
+
+Where
+
+-   `x` is a vector of predicted labels
+-   `y` is a vector of the true labels
+
+returns the Matthews-correlation coefficient between predicted and true values.
+
+```q
+q).ml.matcorr[100?0b;100?0b]
+0.1256775
+q).ml.matcorr[100?5;100?5]
+7.880334e-06
 ```
 
 
@@ -348,6 +576,30 @@ q).ml.precision[1000?"AB";1000?"AB";"B"]
 ```
 
 
+## `.ml.r2score`
+
+_R2-score for regression model validation_
+
+Syntax: `.ml.r2score[x;y]`
+
+Where
+
+-   `x` are predicted continuous values
+-   `y` are true continuous values
+
+returns the R2-score between the true and predicted values. Values close to 1 indicate good prediction, while negative values indicate poor predictors of the system behaviour.
+
+```q
+q)xg:asc 1000?50f           / 'good values'
+q)yg:asc 1000?50f
+q).ml.r2score[xg;yg]
+0.9966209
+q)xb:asc 1000?50f           / 'bad values'
+q)yb:desc 1000?50f
+-2.981791
+```
+
+
 ## `.ml.range`
 
 _Range of values_
@@ -360,6 +612,52 @@ Where `x` is a vector of numeric values, returns the range of its values.
 q).ml.range 1000?100000f
 99742.37
 ```
+
+
+## `.ml.rmse`
+
+_Root mean squared error for a regressor_
+
+Syntax: `.ml.rmse[x;y]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+
+returns the root mean squared error for a regression model between predicted and true values.
+
+```q
+q)n:10000
+q)xg:asc n?100f
+q)yg:asc n?100f
+q).ml.rmse[xg;yg]
+0.5321886
+q)xb:n?100f
+q).ml.rmse[xb;yg]
+41.03232
+```
+
+## `.ml.rmsle`
+
+_Root mean squared log error_
+
+Syntax: `.ml.rmsle[x;y]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+
+returns the root mean squared log error between predicted and true values.
+
+```q
+q).ml.rmsle[100?0b;100?0b]
+0.5187039
+q).ml.rmsle[100?5;100?5]
+0.8465022
+```
+
 
 
 ## `.ml.roc`
@@ -455,6 +753,27 @@ q).ml.shape ([]c1:til 10;c2:0)
 !!! warning "Behavior of `.ml.shape` is undefined for ragged/jagged arrays."
 
 
+## `.ml.smape`
+
+_Symmetric mean absolute percentage error_
+
+Syntax: `.ml.smape[x;y]`
+
+Where
+
+-   `x` is a vector of predicted values
+-   `y` is a vector of true values
+
+returns the symmetric-mean absolute percentage between predicted and true values.
+
+```q
+q)smape[100?0b;100?0b]
+92f
+q)smape[100?5;100?5]
+105.781
+```
+
+
 ## `.ml.specificity`
 
 _Specificity of a binary classifier_
@@ -537,6 +856,92 @@ q)(avg;dev)@\:/:(x;y) / check dist
 19.84484 0.9437789
 q).ml.tscoreeq[x;y]
 50.46957
+```
+
+
+## `.ml.util.classreport`
+
+_Statistical information about classification results_
+
+Syntax: `.ml.util.classreport[x;y]`
+
+Where
+
+* `x` is a vector of predicted values.
+* `y` is a vector of true values.
+
+returns the accuracy, precision and f1 scores and the support (number of occurrences) of each class.
+
+```q
+q)n:1000
+q)xr:n?5
+q)yr:n?5
+q).ml.util.classreport[xr;yr]
+class     precision recall f1_score support
+-------------------------------------------
+0         0.2       0.23   0.22     179
+1         0.22      0.22   0.22     193
+2         0.21      0.21   0.21     192
+3         0.19      0.19   0.19     218
+4         0.21      0.17   0.19     218
+avg/total 0.206     0.204  0.206    1000
+
+q)xb:n?0b
+q)yb:n?0b
+q).ml.util.classreport[xb;yb]
+class     precision recall f1_score support
+-------------------------------------------
+0         0.51      0.51   0.51     496
+1         0.52      0.52   0.52     504
+avg/total 0.515     0.515  0.515    1000
+
+q)xc:n?`A`B`C
+q)yc:n?`A`B`C
+q).ml.util.classreport[xc;yc]
+class     precision recall f1_score support
+-------------------------------------------
+A         0.34      0.33   0.33     336
+B         0.33      0.36   0.35     331
+C         0.32      0.3    0.31     333
+avg/total 0.33      0.33   0.33     1000
+```
+
+## `.ml.util.combs`
+
+_Unique combinations of vector or matrix_
+
+Syntax: `.ml.util.combs[x;y]`
+
+Where
+
+-  `x` is the number of values in unique combinations
+-  `y` is a vector or matrix
+
+Returns the unique combination of values from the data
+
+```q
+q)show l:til 3
+0 1 2
+q).ml.util.combs[2;l]
+1 0
+2 0
+2 1
+q)show k:5?`1
+`o`k`c`d`m
+q)3#.ml.util.combs[2;k]
+c k o
+d k o
+d c o
+q)show m:(0 1 2;2 3 4;4 5 6;6 7 8)
+0 1 2
+2 3 4
+4 5 6
+6 7 8
+q).ml.util.combs[3;m]
+4 5 6 2 3 4 0 1 2
+7 8 9 2 3 4 0 1 2
+7 8 9 4 5 6 0 1 2
+7 8 9 4 5 6 2 3 4
 ```
 
 
@@ -673,6 +1078,48 @@ A   22:58:06.856 -0.1277062 0.2407035  0.04661209
 ```
 
 
+## `.ml.util.freqencode`
+
+_Encoded frequency of individual category occurences_
+
+Syntax:.`.ml.util.frequencode[x]`
+
+Where
+
+-   `x` is a table containing at least one column with categorical features (symbols)
+
+returns table with frequency of occurrance of individual categories.
+
+```q
+q)tab:([]10?`a`b`c;10?10f)
+x x1
+----------
+b 7.667049
+b 2.975384
+b 8.607676
+a 7.35515
+c 3.384913
+c 8.934151
+c 3.731562
+b 6.22616
+c 2.714665
+a 7.288787
+q).ml.util.freqencode[tab]
+x1         freq_x
+-----------------
+9.602129   0.6
+2.256037   0.4
+7.922876   0.6
+0.04380018 0.6
+3.442662   0.6
+7.116088   0.4
+0.9901482  0.4
+8.60422    0.6
+6.491715   0.4
+6.482049   0.6
+```
+
+
 ## `.ml.util.infreplace`
 
 _Replace +/- infinities with data min/max_
@@ -702,13 +1149,59 @@ A B  C
 ```
 
 
+## `.ml.util.lexiencode`
+
+_Categorical labels of features based on their lexigraphical order_
+
+Syntax:`.ml.util.lexiencode[t]`
+
+Where
+
+-  `t` is a table containing at least one column with letters
+
+returns table with lexigraphical order of letters column.
+
+```q
+q)show tab:([]10?10f;10?`a`b`c;10?10f)
+x         x1 x2
+---------------------
+2.652528  b  2.194196
+3.49562   a  3.997433
+6.02218   c  9.08391
+0.5352858 a  3.560436
+2.101436  a  7.084245
+2.812222  b  7.724299
+5.215879  c  8.157121
+2.991163  c  2.096742
+8.250197  a  7.881085
+0.4501006 b  4.31398
+q).ml.util.lexiencode[tab]
+x         x2       lexi_label_x1
+--------------------------------
+2.652528  2.194196 1
+3.49562   3.997433 0
+6.02218   9.08391  2
+0.5352858 3.560436 0
+2.101436  7.084245 0
+2.812222  7.724299 1
+5.215879  8.157121 2
+2.991163  2.096742 2
+8.250197  7.881085 0
+0.4501006 4.31398  1
+```
+
+
 ## `.ml.util.minmaxscaler`
 
 _Scale data between 0-1_
 
 Syntax: `.ml.util.minmaxscaler[x]`
 
-Where `x` is a numerical table, matrix or list and returns a min-max scaled representation with values scaled between 0 and 1.
+Where 
+
+-  `x` is a numerical table, matrix or list 
+
+returns a min-max scaled representation with values scaled between 0 and 1.
 
 ```q
 q)n:5
@@ -720,7 +1213,6 @@ x        x1  x2       x3
 98.8875  860 73.44471 28.72854
 30.70513 599 80.56178 39.70485
 42.17381 187 75.26142 38.26483
-
 q).ml.util.minmaxscaler[tab]
 x         x1        x2        x3
 ---------------------------------------
@@ -729,22 +1221,61 @@ x         x1        x2        x3
 1          1         0.8113701 0.5405182
 0.2109084  0.6121842 1         0.8212801
 0.3436384  0         0.85952   0.7844459
-
 q)show mat:value flip tab
 12.48134 18.019   98.8875  30.70513 42.17381
 837      591      860      599      187     
 42.83142 77.97026 73.44471 80.56178 75.26142
 7.597138 46.69185 28.72854 39.70485 38.26483
-
 q).ml.util.minmaxscaler[mat]
 0         0.06408864 1         0.2109084 0.3436384
 0.9658247 0.6002972  1         0.6121842 0        
 0         0.9313147  0.8113701 1         0.85952  
 0         1          0.5405182 0.8212801 0.7844459
-
 q)list:100?100
 q).ml.util.minmaxscaler[list]
 0.7835052 0.2886598 0.5463918 0.443299 1 0.09278351 0.1030928 0 0.9175258 0.9..
+```
+
+
+## `.ml.util.nullencode`
+
+_Filling of null values and encoding of original positions_
+
+Syntax: `.ml.util.nullencode[t;y]`
+
+Where
+
+-   `t` is a table containing nulls and y is the function to be applied to nulls
+
+returns table with nulls filled and additional columns that encode positions of nulls in the original columns.
+
+```q
+q)show tab:([]@[10?1f;0 1 8 9;:;0n];@[10?1f;4 5;:;0n];@[10?1f;2*til 5;:;0n])
+x         x1        x2
+------------------------------
+          0.3238152
+          0.8616775 0.8640424
+0.2062779 0.032353
+0.7802666 0.3826807 0.8002228
+0.4809723
+0.940638            0.5370027
+0.3497468 0.2885991
+0.3165283 0.2879356 0.5639193
+          0.7708107
+          0.783687  0.08766932
+q).ml.util.nullencode[tab;avg]
+x         x1        x2         null_x null_x1 null_x2
+-----------------------------------------------------
+0.512405  0.3238152 0.5705713  1      0       1
+0.512405  0.8616775 0.8640424  1      0       0
+0.2062779 0.032353  0.5705713  0      0       1
+0.7802666 0.3826807 0.8002228  0      0       0
+0.4809723 0.4664448 0.5705713  0      1       1
+0.940638  0.4664448 0.5370027  0      1       0
+0.3497468 0.2885991 0.5705713  0      0       1
+0.3165283 0.2879356 0.5639193  0      0       0
+0.512405  0.7708107 0.5705713  1      0       1
+0.512405  0.783687  0.08766932 1      0       0
 ```
 
 
@@ -754,7 +1285,7 @@ _One-hot encoding_
 
 Syntax: `.ml.util.onehot[x]`
 
-Where `x` is a list of symbols, returns its one-hot encoded representation.
+Where `x` is a list of symbols or table with symbol column, returns one-hot encoded representation as matrix or table.
 
 ```q
 q)x:`a`a`b`b`c`a
@@ -765,6 +1296,22 @@ q).ml.util.onehot[x]
 0 1 0
 0 0 1
 1 0 0
+q)5#tab:([]10?`a`b`c;10?10f;10?10f)
+x x1        x2        
+----------------------
+a 7.310299  5.697305  
+b 0.8842384 1.714374  
+b 8.203719  0.09300471
+a 8.749888  6.349401  
+b 7.73655   8.607533  
+q).ml.util.onehot[tab]
+x1        x2         x_a x_b x_c
+--------------------------------
+7.310299  5.697305   1   0   0  
+0.8842384 1.714374   0   1   0  
+8.203719  0.09300471 0   1   0  
+8.749888  6.349401   1   0   0  
+7.73655   8.607533   0   1   0  
 ```
 
 
@@ -949,4 +1496,339 @@ xtest | (4.204472 7.137387 1.163132 9.893949 4.504886 5.465625 8.298632 0.049..
 ytest | 000001b
 ```
 
+
+## `.ml.xval.chainxval`
+
+_Score from a chain-forward cross validation_
+
+Syntax: `.ml.xval.chainxval[x;y;n;algo]`
+
+Where
+
+-   `x` is a matrix of data for prediction
+-   `y` is a target vector
+-   `n` is the number of splits performed on the dataset
+-   `algo` is the algorithm being tested
+
+returns the averaged score for the model over all chained iterations.
+
+```q
+q)n:10000
+q)x:flip value flip([]n?100f;asc n?100f)
+q)y:asc n?100f
+q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
+q).ml.xval.chainxval[x;y;10;reg]
+0.972491
+```
+
+!!! note
+        This works as shown in the following image:
+
+        ![Figure 1](img/chainforward.png)
+
+        The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting. It also allows the robustness of the model to increasing data volumes to be probed.
+
+
+## `.ml.xval.gridsearch`
+
+_Optimal parameters for machine-learning model through cross validation_
+
+Syntax: `.ml.xval.gridsearch[x;y;i;algo;dict]`
+
+Where
+
+-   `x` is a matrix of the data being used for prediction
+-   `y` is a target vector
+-   `i` are the indices for each of the K-folds
+-   `algo` is the algorithm on which the search is performed
+-   `dict` is a dictionary of hyperparameters to be searched
+
+returns the score for the best model and the hyper-parameters which led to this score.
+
+```q
+q)n:10000
+q)xg:flip value flip([]n?100f;asc n?100f)
+q)yg:asc n?100f
+q)regr:.p.import[`sklearn.linear_model]`:ElasticNet   / Note there is not following [] here
+q)dict:`max_iter`alpha!(100 200 1000;.01*1+til 100)    / multiple searched hyperparameters
+q)i:.ml.xval.kfsplit[yg;3]
+q).ml.xval.gridsearch[xg;yg;i;regr;dict]
+0.999754
+`max_iter`alpha!(100 200 1000;.04 .04 .04)
+q)dict:enlist[`alpha]!enlist .1*1+til 10               / search completed for 1-hyperparameter
+q).ml.xval.gridsearch[xg;yg;i;regr;dict]
+0.9997538
+(,`alpha)!,0.1
+```
+
+
+## `.ml.xval.gridsearchfit`
+
+_K-Fold validated grid-search with optimal model fit to testing set_
+
+Syntax: `.ml.xval.gridsearchfit[x;y;sz;algo;dict]`
+
+Where
+
+-   `x` is a matrix
+-   `y` is the target vector
+-   `sz` is a numeric atom in range 0-1
+-   `algo` is the model on which the grid search is performed
+-   `dict` is a dictionary of hyper-parameters to be searched
+
+As with `.ml.gridsearch`, this function performs a cross validated grid-search over all combinations of hyperparameters to find the best model. This function splits the data into a train/test sets, performs grid-search on the training set (with 3-fold cross validation), fits the model with the highest score to the testing set and returns the testing score produced.
+
+```q
+q)n:100000
+q)xg:flip value flip([]n?100f;asc n?100f)
+q)yg:asc n?100f
+q)reg:.p.import[`sklearn.linear_model][`:ElasticNet]
+q)dict:enlist[`alpha]!enlist .02*1+til 10
+q).ml.xval.gridsearchfit[xg;yg;.2;reg;dict]
+0.9999818
+q)dict:`alpha`max_iter!(.1*1+til 9;15 30 60 120)
+q).ml.xval.gridsearchfit[xg;yg;.2;reg;dict]
+0.9999759
+```
+
+
+## `.ml.xval.kfoldx`
+
+_K-Fold cross validation_
+
+Syntax: `.ml.xval.kfoldx[x;y;i;fn]`
+
+Where
+
+-   `x` is the data matrix
+-   `y` is the target vector
+-   `i` are the indices for the K-fold validation using `.ml.kfsplit`
+-   `fn` is the model which is being passed to the function for cross validation
+
+returns the cross validated score for an applied machine-learning algorithm.
+
+```q
+q)n:10000
+q)xg:flip value flip([]n?100f;asc n?100f)        / 'good values' for linear regressor
+q)yg:asc n?100f
+q)/ load in regression models to be tested
+q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
+q)reg1:.p.import[`sklearn.linear_model][`:SGDRegressor][]
+q)reg2:.p.import[`sklearn.linear_model][`:ElasticNet][]
+q)reg3:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
+q)folds:10                                      / number of folds for data
+q)i:.ml.xval.kfsplit[yg;folds]
+q).ml.xval.kfoldx[xg;yg;i]each(reg;reg1;reg2;reg3)
+0.9998536 -1.24663e+24 0.9998393 0.9999997
+q)yb:n?100f                                     / 'bad values' for linear regression
+q)xb:flip value flip([]n?100f;n?100f)
+q).ml.xval.kfoldx[xb;yb;i]each(reg;reg1;reg2;reg3)
+-0.009119423 -7.726559e+21 -0.009119348 -0.2275681
+```
+
+
+## `.ml.xval.kfshuff`
+
+_Randomized non-repeating indices for K-fold cross validation_
+
+Syntax: `.ml.xval.kfshuff[x;y]`
+
+Where
+
+-   `x` is the target vector
+-   `y` is the number of 'folds' which the data is to be split into
+
+returns randomized non-repeating indices associated with each of the K-folds.
+
+```q
+q)yg:asc 1000?100f
+q).ml.xval.kfshuff[yg;5]
+647 755 790 152 948 434 583 536 156 637 699 159 315 698 41  345 565 680 775 6..
+118 402 34  601 833 877 762 703 129 294 593 634 192 939 545 98  641 266 910 4..
+795 69  664 393 519 722 616 55  132 802 448 140 361 194 977 97  247 74  733 6..
+633 430 346 267 102 201 123 295 487 418 606 108 154 899 398 932 994 643 944 5..
+919 354 119 478 954 567 497 848 665 471 406 541 307 82  984 198 134 622 550 9..
+```
+
+## `.ml.xval.kfsplit`
+
+_Ascending indices in K-folds_
+
+Syntax: `.ml.xval.kfsplit[x;y]`
+
+Where
+
+-   `x` is the target vector
+-   `y` is the number of 'folds' which the data is to be split into
+
+returns the ascending indices associated with each of the K-fold.
+
+```q
+q)yg:asc 1000?100f                              / this is a proxy for the target vector
+q)folds:10                                      / number of folds for data
+q)show i:.ml.xval.kfsplit[yg;folds]
+0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  1..
+100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 1..
+200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 2..
+300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 3..
+400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 4..
+500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 5..
+600 601 602 603 604 605 606 607 608 609 610 611 612 613 614 615 616 617 618 6..
+700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 7..
+800 801 802 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 8..
+900 901 902 903 904 905 906 907 908 909 910 911 912 913 914 915 916 917 918 9..
+```
+
+## `.ml.xval.kfstrat`
+
+_Distribute data into K-Folds with approx equal distribution of classes_
+
+Syntax: `.ml.xval.kfstrat[x;y]`
+
+Where
+
+-   `x` is the target vector
+-   `y` is the number of 'folds' which the data is to be split into
+
+returns the indices for each of the K-folds with an approximately equal distribution of classes between folds. This is used extensively in cases where the distribution of classes in the data is unbalanced.
+
+```q
+q)yg:(100#0b),10#1b                  / this is a proxy for the target vector
+q).ml.xval.kfstrat[yg;5]             / split the data into 5 stratified folds
+7  69 93 100 15  94 42  27 107 85 62  12 4  53  58 47 29 105 101 56 35 106
+59 26 49 8   20  44 31  6  0   43 30  40 95 54  99 39 98 16  33  52 51 3
+87 48 45 64  109 72 70  68 9   61 81  1  36 104 5  55 91 24  78  76 79 71
+46 28 21 83  25  2  102 34 23  60 108 13 67 86  18 75 90 89  97  22 57 65
+32 63 10 19  74  96 103 66 11  84 41  73 38 77  17 14 92 37  82  88 50 80
+q)p .ml.xval.kfstrat[yg;5]
+0000000000000000000011b
+0000000000000000000011b
+0000000000000000000011b
+0000000000000000000011b
+0000000000000000000011b
+```
+!!! note
+        In the above example `p` has been defined as a global variable within the function `.ml.kfstrat`. This has only been done to allow the distribution of values within the data to be shown as being correct, this is not defined within the code by default.
+
+
+## `.ml.xval.mcxval`
+
+_Score for monte-carlo cross validated model_
+
+Syntax: `.ml.xval.mcxval[x;y;sz;algo;n]`
+
+Where
+
+-   `x` is a matrix of data to be fit
+-   `y` is the target vector
+-   `sz` is a numeric atom in the range 0-1, representing the percentage of data in the testing set
+-   `algo` is the algorithm being tested
+-   `n` is the number of validation iterations to be completed
+
+returns the average score for all iterations of the monte-carlo cross validation.
+
+```q
+q)n:10000
+q)xg:flip value flip([]n?100;asc n?100f)
+q)yg:asc n?5
+q)clf:.p.import[`sklearn.tree][`:DecisionTreeClassifier][]
+q).ml.xval.mcxval[xg;yg;.2;clf;5]
+0.999375
+q)xb:flip value flip([]n?100;n?100f)
+q)yb:n?5
+q).ml.xval.mcxval[xb;yb;.2;clf;5]
+0.20675
+```
+
+!!! note
+        This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
+
+
+## `.ml.xval.repkfstrat`
+
+_Average score for repeated stratified randomized K-fold cross validation_
+
+Syntax: `.ml.xval.repkfstrat[x;y;n;k;algo]`
+
+Where
+
+-   `x` is a matrix of the data to be fit
+-   `y` is the target vector
+-   `n` is the number of repetitions of cross validation
+-   `k` is the number of folds
+-   `algo` is the model applied for validation
+
+returns the averaged accuracy score over all folds for the random stratified dataset.
+
+```q
+q)n:10000
+q)xg:flip value flip([]n?100;asc n?100f)
+q)yg:asc n?5
+q)regr:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
+q).ml.xval.repkfstrat[xg;yg;5;10;regr]
+0.9998566
+```
+
+!!!note
+        The application of repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, K-fold should be run once prior to multiple applications.
+
+
+## `.ml.xval.repkfval`
+
+_Average score for repeated randomized K-fold cross validation_
+
+Syntax: `.ml.xval.repkfval[x;y;n;k;algo]`
+
+Where
+
+-   `x` is a matrix of the data to be fit
+-   `y` is the target vector
+-   `n` is the number of repetitions of cross validation
+-   `k` is the number of folds
+-   `algo` is the model applied for validation
+
+returns the averaged accuracy score over all folds for random shuffled datasets.
+
+```q
+q)n:10000
+q)xg:flip value flip([]n?100;asc n?100f)
+q)yg:asc n?100f
+q)regr:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
+q).ml.xval.repkfval[xg;yg;5;10;regr]
+0.9998566
+```
+
+!!!note
+        The application of repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, K-fold should be run once prior to multiple applications.
+
+
+## `.ml.xval.rollxval`
+
+_Score from a roll-forward cross validation_
+
+Syntax: `.ml.xval.rollxval[x;y;n;algo]`
+
+Where
+
+-   `x` is a matrix of the data to be fit
+-   `y` is the target vector
+-   `n` is the number of validation splits of the data
+-   `algo` is the model to be applied for validation
+
+returns the average score from all n-fits to the validation set.
+
+```q
+q)n:10000
+q)xg:flip value flip ([]n?100;asc n?100f)
+q)yg:asc n?100f
+q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
+q).ml.xval.rollxval[xg;yg;10;reg]
+-11.99615
+```
+!!! note
+        This works as shown in the following image:
+
+        ![Figure 2](img/rollforward.png)
+
+        Successive equi-sized bins are taken as validation and training sets for each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting.
 

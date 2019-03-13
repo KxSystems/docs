@@ -94,13 +94,7 @@ treverseasymstat[x;lag]          | Measure of the asymmetry of the time series b
 vargtstdev[x]                    | If the variance of the dataset is larger than the standard deviation
 
 
-Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded.
-
-!!! warning
-
-    At present this feature-extraction procedure works only on functions which do not take hyper-parameters, accessed via `.ml.fresh.getsingleinputfeatures[]`.
-    Functions with multiple parameters will be added in a future release.
-
+Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded
 
 ## Feature extraction
 
@@ -108,20 +102,20 @@ Feature-extraction involves applying a set of aggregations to subsets of the ini
 
 The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions available in the `.ml.fresh.feat` namespace, though users may select a subset based on requirements.
 
-Syntax: `.ml.fresh.createfeatures[table;aggs;cnames;funcs]`
+Syntax: `.ml.fresh.createfeatures[table;aggs;cnames;dict]`
 
 Where
 
 -   `table` is the input data (table).
 -   `aggs` is the id column name (symbol).
 -   `cnames` are the column names (symbols) on which extracted features will be calculated (these columns should contain only numerical values).
--   `funcs` is the dictionary of functions to be applied to the table (a subset of `.ml.fresh.feat`).
+-   `dict` is a dictionary hyperparameter functions to be applied, if only functions that contain no hyperparameters are to be applied this is to be set as 0b.
 
 This returns a table keyed by id column and containing the features extracted from the subset of the data identified by the id.
 
 ```q 
 q)m:30;n:100
-q)show tab:([]date:raze m#'"d"$til n;time:(m*n)#"t"$til m;col1:50*1+(m*n)?20;col2:(m*n)?1f)
+q)10#tab:([]date:raze m#'"d"$til n;time:(m*n)#"t"$til m;col1:50*1+(m*n)?20;col2:(m*n)?1f)
 date       time         col1 col2      
 ---------------------------------------
 2000.01.01 00:00:00.000 1000 0.3927524 
@@ -134,19 +128,8 @@ date       time         col1 col2
 2000.01.01 00:00:00.007 500  0.5347096 
 2000.01.01 00:00:00.008 600  0.7111716 
 2000.01.01 00:00:00.009 250  0.411597  
-2000.01.01 00:00:00.010 50   0.4931835 
-2000.01.01 00:00:00.011 400  0.5785203 
-2000.01.01 00:00:00.012 800  0.08388858
-2000.01.01 00:00:00.013 950  0.1959907 
-2000.01.01 00:00:00.014 1000 0.375638  
-2000.01.01 00:00:00.015 650  0.6137452 
-2000.01.01 00:00:00.016 50   0.5294808 
-2000.01.01 00:00:00.017 600  0.6916099 
-2000.01.01 00:00:00.018 900  0.2296615 
-2000.01.01 00:00:00.019 300  0.6919531 
-..
-q)featdict:.ml.fresh.getsingleinputfeatures[] / feature functions without hyperparams
-q)show features:.ml.fresh.createfeatures[tab;`date;2_ cols tab;featdict]
+q)featdict:.ml.i.dict / feature functions without hyperparams
+q)5#mulfeatures:.ml.fresh.createfeatures[tab;`date;2_ cols tab;featdict] / multiparameter functional application
 date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
 ----------| -----------------------------------------------------------------..
 2000.01.01| 1.156e+07      9.245956       8700              7.711325         ..
@@ -154,22 +137,18 @@ date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
 2000.01.03| 9910000        10.8401        9800              9.830704         ..
 2000.01.04| 1.0535e+07     7.900601       7350              10.21271         ..
 2000.01.05| 7830000        8.739328       6900              11.02193         ..
-2000.01.06| 9150000        9.530337       8150              11.38859         ..
-2000.01.07| 1.296e+07      11.36589       9500              10.8551          ..
-2000.01.08| 1.11175e+07    12.97225       8800              11.70683         ..
-2000.01.09| 1.183e+07      10.99597       11600             9.372777         ..
-2000.01.10| 1.076e+07      8.8356         11600             9.923837         ..
-2000.01.11| 7640000        11.77406       11400             9.307188         ..
-2000.01.12| 1.13e+07       9.965319       9150              9.232088         ..
-2000.01.13| 1.0195e+07     9.743622       6400              8.435915         ..
-2000.01.14| 1.077e+07      9.934516       10400             8.685272         ..
-2000.01.15| 1.033e+07      12.23959       11750             7.666534         ..
-2000.01.16| 7602500        10.44816       8800              8.319819         ..
-2000.01.17| 1.10275e+07    11.49045       7850              9.464308         ..
-2000.01.18| 8942500        8.282222       9500              6.880915         ..
-2000.01.19| 7775000        12.43864       10200             9.068333         ..
-2000.01.20| 1.20175e+07    14.59714       9400              9.383993         ..
-..
+q)count cols mulfeatures
+257
+q)5#singlefeatures:.ml.fresh.createfeatures[tab;`date;2_cols tab;0b] / non multi-parameter application
+date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
+----------| -----------------------------------------------------------------..
+2000.01.01| 9832500        11.00939       11000             11.80783         ..
+2000.01.02| 1.27825e+07    9.486486       10950             8.803259         ..
+2000.01.03| 1.2725e+07     9.681383       7700              10.7236          ..
+2000.01.04| 1.064e+07      8.266085       10850             10.95157         ..
+2000.01.05| 1.05675e+07    8.085542       9000              8.575972         ..
+q)count cols singlefeatures
+73
 ```
 
 
@@ -184,34 +163,83 @@ Binary             | Binary            | Fisher-Exact
 Real               | Real              | Kendall Tau-b     
 Real               | Binary            | Kolmogorov-Smirnov
 
-Each test returns a p-value, which can be passed to the Benjamini-Hochberg-Yekutieli (BHY) procedure. This determines if the feature meets a defined False Discovery Rate (FDR) level (set at 5% by default).
+Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available are as follows;
 
-Both the calculation of p-values and the completion of the BHY procedure are contained within the `.ml.fresh.significantfeatures` function:
+1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level (set at 5% by default).
+2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to prediction of the target vector.
+3. Percentile based selection: set a percentile threshold for p-values below which features are selected.
 
-Syntax: `.ml.fresh.significantfeatures[table;targets]`
+Each of these procedures can be implemented as below;
+
+## `.ml.fresh.benjhochfeat`
+
+_Benjamini Hochberg Procedure for feature selection_
+
+Syntax: `.ml.fresh.benjhochfeat[t;tgt]`
 
 Where
 
--   `table` is the value section of the table produced by the feature-creation procedure
--   `targets` is a list of target values corresponding to the ids 
+-   `t` is the unkeyed side of a table of created features
+-   `tgt` is a list of targets corresponding to the rows of table `t` 
 
-returns a list of the features deemed statistically significant.
-
-Sample code:
+returns a list of features deemed statistically significant as deemed by the Benjamini-Hochberg procedure.
 
 ```q
 q)target:value exec avg col2+.001*col2 by date from tab / combination of col avgs
-q)show sigfeats:.ml.fresh.significantfeatures[value features;target]
-`absenergy_col2`countabovemean_col2`countbelowmean_col2`mean_col2`med_col2`mi..
+q)show sigfeats:.ml.fresh.benjhochfeat[value mulfeatures;target]  / threshold defaulted to 5%
+`mean_col2`sumval_col2`absenergy_col2`c3_1_col2`c3_2_col2`med_col2`quantile_0..
 q)count 2_cols tab      / number of raw features
 2
-q)count 1_cols features / number of extracted features
-72
+q)count 1_cols mulfeatures / number of extracted features
+260
 q)count sigfeats        / number of selected features
-9
+21
 ```
 
-!!! note "Feature-significance tests may result in *no* significant features being found."
+!!! note 
+	In the previous release this procedure was contained in the function `.ml.fresh.significantfeatures` to maintain consistency for those using FRESH versions `v0.1.x`. It should be noted that `.ml.fresh.benjhochfeat` is an aliased version of this and the base operation of `.ml.fresh.significantfeatures` has not changed.
+
+## `.ml.fresh.ksigfeat`
+
+_Select the K-best features based on p-value_
+
+Syntax: `.ml.fresh.ksigfeat[t;tgt;k]`
+
+Where
+
+-  `t` is the unkeyed side of a table of created features
+-  `tgt` is a list of targets corresponding to the rows of table `t`
+-  `k` is the number of features to be selected as an int
+
+returns a list of the k-best features defined as those with the lowest p-values.
+
+```q
+q)show sigfeats:.ml.fresh.ksigfeat[value features;target;2]  / find the best 2 features
+`mean_col2`sumval_col2
+q)count sigfeats        / number of selected features
+2
+```
+
+## `.ml.fresh.percentilesigfeat`
+
+_Select features within the top N percentile_
+
+Syntax: `.ml.fresh.percentilesigfeat[t;tgt;p]`
+
+Where
+
+-  `t` is the unkeyed side of a table of created features
+-  `tgt` is a list of targets corresponding to the rows of table `t`
+-  `p` is the percentile threshold as a float in range 0-1 
+
+returns a list of features in the top `p` percentile which are deemed most statistically significant based on p-values
+
+```q
+q)show sigfeats:.ml.fresh.percentilesigfeat[value features;target;.05]  / set the percentile to be 5%
+`absenergy_col2`mean_col2`med_col2`sumval_col2`c3_1_col2`c3_2_col2`c3_3_col2`..
+q)count sigfeats        / number of selected features
+8
+```
 
 
 ## Fine tuning
