@@ -101,6 +101,6 @@ There is information that if you were learning by yourself, would take years to 
 
 
 
-See the [Archive](/archive/) for older documents.
+See the [Archive](archive.md) for older documents.
 
 Please send comments on tutorials to <librarian@kx.com>.
