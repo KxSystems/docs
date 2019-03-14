@@ -1566,13 +1566,14 @@ q).ml.xval.gridsearch[xg;yg;i;regr;dict]
 
 _K-Fold validated grid-search with optimal model fit to testing set_
 
-Syntax: `.ml.xval.gridsearchfit[x;y;sz;algo;dict]`
+Syntax: `.ml.xval.gridsearchfit[x;y;sz;n;algo;dict]`
 
 Where
 
 -   `x` is a matrix
 -   `y` is the target vector
 -   `sz` is a numeric atom in range 0-1
+-   `n` is a integer > 0 which gives the number of folds for cross validation
 -   `algo` is the model on which the grid search is performed
 -   `dict` is a dictionary of hyper-parameters to be searched
 
@@ -1584,10 +1585,10 @@ q)xg:flip value flip([]n?100f;asc n?100f)
 q)yg:asc n?100f
 q)reg:.p.import[`sklearn.linear_model][`:ElasticNet]
 q)dict:enlist[`alpha]!enlist .02*1+til 10
-q).ml.xval.gridsearchfit[xg;yg;.2;reg;dict]
+q).ml.xval.gridsearchfit[xg;yg;.2;5;reg;dict]
 0.9999818
 q)dict:`alpha`max_iter!(.1*1+til 9;15 30 60 120)
-q).ml.xval.gridsearchfit[xg;yg;.2;reg;dict]
+q).ml.xval.gridsearchfit[xg;yg;.2;5;reg;dict]
 0.9999759
 ```
 
