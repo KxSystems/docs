@@ -35,8 +35,7 @@ c| 3
 
 ```q
 q)b:"apple: banana: cherry"
-q)/ find the first ":" and remove the prior portion of the sentence.
-q)(b?":") _ b
+q)(b?":") _ b / find the first ":" and remove the prior portion of the sentence
 ": banana: cherry"
 ```
 
