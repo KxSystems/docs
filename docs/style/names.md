@@ -106,7 +106,7 @@ Now, compare the following two lines.
 
 ```q
 newString:deleteLeadinBlanks`oldStrings
-n:dlb`os          / delet leading blanks from old strings
+n:dlb`os          / delete leading blanks from old strings
 ```
 
 Which is easier to type?  
