@@ -8,7 +8,7 @@ keywords: kdb+, q, style
 
 
 
-In q, there are several ways to apply a function and index a variable. Underlying them all is the _ur_-function Apply/Index
+In q, there are several ways to apply a function and index a variable. Underlying them all is the _ur_-function [Apply/Index](../ref/apply.md)
 
 ```q
 .
@@ -21,7 +21,12 @@ f . v
 ```
 
 
-## Where it’s at
+## Where it’s `@`
+
+> The only place you can fall from  
+> is where it’s at; and when you’re down,  
+> you’re not there – that’s why.  
+> — _Alastair Howard Robertson_
 
 Application of the unary function `g` to `w` is expressed:
 
