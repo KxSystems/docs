@@ -545,12 +545,20 @@ x[1]-1         / x[1] minus 1
 
 ## Comments
 
-Line, trailing and multiline comments are ignored by the interpreter.
+Line, trailing and multiline comments are ignored by the interpreter
 
 ```q
 q)/Oh what a lovely day
 q)2+2  /I know this one
 4
+```
+
+unless embedded within a string or preceded by a system command.
+
+```q
+q)count"2/3"
+3
+q)\l /data/files
 ```
 
 As first and only non-whitespace char on a line: 
