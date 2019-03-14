@@ -15,7 +15,7 @@ These have been produced to provide kdb+ users with general-use functions and pr
 
 The toolkit contains:
 
--   [Utility functions](utils.md) relating to important aspects of machine learning including data preprocessing, cross-validation, statistical testing, and includes functions useful in many machine-learning applications. 
+-   Utility functions relating to important aspects of machine learning including [data preprocessing](utilities/.ml.util), [cross-validation](utilities/.ml.xval), [statistical testing and array manipulation](utilities/.ml.xval), and various other functionality useful in many machine-learning applications. 
 
 -   An [implementation of the FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. 
     This lets a q/kdb+ user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
