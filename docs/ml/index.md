@@ -18,10 +18,22 @@ keywords: Python, Jupyter, natyural laguage processing, nlp, machine learning, m
 
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/ML07%20Natural%20Language%20Processing.ipynb)
 
+## Machine Learning Toolkit
+
+The [Machine Learning Toolkit](toolkit/) is at the core of q specific machine learning functionality. This library contains functions that cover the following areas.
+
+-  Pre-processing data prior to the application of machine learning algoithms
+-  Accuracy metrics to test the performance of the models built
+-  Cross validation functions to test the stability of models being produced under various conditions 
+-  An implementation of the [FRESH](toolkit/fresh) algorithm for feature extraction and selection on structured time series data. 
+
+The library is available [here](https://github.com/KxSystems/ml)
+
+<i class="far fa-hand-point-right"></i> [Example notebooks of FRESH and various toolkit functionality](https://github.com/KxSystems/ml/tree/master/fresh/notebooks) 
 
 ## embedPy
 
-[EmbedPy](embedpy) loads Python into kdb+, allowing access to a rich ecosystem of libraries such as scikit-learn, tensorflow and pytorch.
+[EmbedPy](embedpy/) loads Python into kdb+, allowing access to a rich ecosystem of libraries such as scikit-learn, tensorflow and pytorch.
 
 -   Python variables and objects become q variables – and either language can act upon them. 
 -   Python code and files can be embedded within q code.
