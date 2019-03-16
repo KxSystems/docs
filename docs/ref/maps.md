@@ -10,7 +10,7 @@ keywords: adverb, case, dictionary, each, each both, each left, each parallel, e
 
 
 
-The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that applies their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
+The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
 
 There are six maps. 
 

@@ -2,7 +2,7 @@
 keywords: directory, file, kdb+, load, q, rload, splayed, table
 ---
 
-# `load`
+# `load`, `rload`
 
 _Load binary data from a file or directory_
 

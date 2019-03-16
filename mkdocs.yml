@@ -210,6 +210,7 @@ nav:
       - distinct: ref/distinct.md
       - div: ref/div.md
       - dsave: ref/dsave.md
+      - each, peach: ref/each.md
       - ej: ref/ej.md
       - ema: ref/ema.md
       - enlist: ref/enlist.md
@@ -254,9 +255,11 @@ nav:
       - not: ref/not.md
       - null: ref/null.md
       - or: ref/or.md
+      - over, scan: ref/over.md
       - parse: ref/parse.md
       - pj: ref/pj.md
       - prd, prds: ref/prd.md
+      - prior: ref/prior.md
       - rand: ref/rand.md
       - rank: ref/rank.md
       - ratios: ref/ratios.md
@@ -312,7 +315,7 @@ nav:
       - Compose: ref/compose.md
       - Cond: ref/cond.md
       - Cut: ref/cut.md
-      - Deal, Roll, Permute: ref/roll-deal.md
+      - Deal, Roll, Permute: ref/deal.md
       - Delete: ref/delete.md
       - Display: ref/display.md 
       - Dict: ref/dict.md

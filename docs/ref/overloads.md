@@ -122,9 +122,9 @@ rank | example         | semantics
 rank | example                     | semantics
 :---:|-----------------------------|----------------------------------------------------
 2    | `"abcdef"?"cab"`            | [Find](find.md) `y` in `x`
-2    | `10?1000`, `5?01b`          | [Roll](roll-deal.md#roll)
-2    | `-10?1000`, ``-1?`yes`no``  | [Deal](roll-deal.md#deal)
-2    | `0N?1000`, ``0N?`yes`no``   | [Permute](roll-deal.md#permute)
+2    | `10?1000`, `5?01b`          | [Roll](deal.md#roll)
+2    | `-10?1000`, ``-1?`yes`no``  | [Deal](deal.md#deal)
+2    | `0N?1000`, ``0N?`yes`no``   | [Permute](deal.md#permute)
 2    | `x?v`                       | extend an enumeration: [Enum Extend](enum-extend.md)
 3    | ?[11011b;"black";"flock"]   | [Vector Conditional](vector-conditional.md)
 4    | `?[t;b;c;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)

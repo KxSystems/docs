@@ -2,7 +2,7 @@
 keywords: bang, enkey, kdb+, keyed table, q, table, Unkey
 ---
 
-# `!` Enkey and Unkey
+# `!` Enkey, Unkey
 
 _Simple to keyed table and vice-versa_
 

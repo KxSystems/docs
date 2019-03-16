@@ -194,7 +194,7 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
 
 !!! tip "Generation"
 
-    Use [Deal](../ref/roll-deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
+    Use [Deal](../ref/deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
 
     <pre><code class="language-q">
     q)-2?0Ng
