@@ -283,6 +283,9 @@ q)m scan cols              / (m\)cols
 4 3 1 0 6 9
 ```
 
+<i class="far fa-hand-point-right"></i>
+[`over`, `scan`](over.md)
+
 
 ## Ternary values
 
