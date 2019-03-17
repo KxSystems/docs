@@ -321,7 +321,8 @@ x + y        / infix
 f\           / postfix
 ```
 
-In the last example above, the iterator `\` is applied postfix to the function `f`, which appears immediately to the left of the iterator. Iterators are the only functions that can be applied postfix.
+In the last example above, the iterator `\` is applied postfix to the function `f`, which appears immediately to the left of the iterator. 
+[Iterators](../ref/iterators.md) are the only functions that can be applied postfix.
 
 Bracket and prefix notation are also used to apply a list to its indexes.
 
@@ -331,7 +332,22 @@ q)"abcdef" 1 0 3
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Application](application.md)
+[Application](application.md),
+[Iterators](../ref/iterators.md)
+
+
+### Postfix yields infix
+
+An iterator applied to an [applicable value](glossary.md#applicable-value) derives a function. For example, Scan applied to Add derives the function Add Scan: `+\`.
+
+If the iterator is applied postfix, as it almost always is, the derived function has infix syntax.
+
+!!! warning "Holds for all ranks"
+
+    This rule holds **regardless of the rank** of the derived function.
+    For example, `count'` is unary but has infix syntax. 
+
+A common consequence is that many derived functions must be parenthesized to be applied postfix. (See below.)
 
 
 ### Prefix and vector notation
@@ -359,6 +375,49 @@ Juxtaposition is also used in vector notation.
 
 The items in vector notation bind more tightly than the tokens in function call and item selection. For example, `{x - 2} 5 6` is the function `{x - 2}` applied to the vector `5 6`, not the function `{x - 2}` applied to 5, followed by 6.
 
+
+### Parentheses around a function with infix syntax
+
+Parentheses around a function with infix syntax capture it as a value and prevent it being parsed as an infix. 
+
+Add Scan `+\` is variadic and has infix syntax. 
+
+```q
+q)+\[1 2 3 4 5]                 / unary
+1 2 6 24 120
+q)+\[1000;1 2 3 4 5]            / binary
+10001 10002 10006 10024 10120
+q)1000+\1 2 3 4 5               / binary, applied infix
+10001 10002 10006 10024 10120
+```
+
+Captured as a value by parentheses, it remains variadic, but can be applied postfix as a unary.
+
+```q
+q)(+\)[1000;1 2 3 4 5]          / binary
+10001 10002 10006 10024 10120
+q)(+\)1 2 3 4 5                 / unary, applied postfix
+1 2 6 24 120
+```
+
+Captured as a value, a function with infix syntax can be passed as an argument to another function.
+
+```q
+q)(+) scan 1 2 3 4 5            / + is binary and infix
+1 2 6 24 120
+q)n:("the ";("quick ";"brown ";("fox ";"jumps ";"over ");"the ");("lazy ";"dog."))
+q)(,/) over n                   / ,/ is variadic and infix
+"the quick brown fox jumps over the lazy dog."
+```
+
+The parentheses above are not necessary for functions without infix syntax.
+
+```q
+q)raze over n
+"the quick brown fox jumps over the lazy dog."
+q){,/[x]}over n
+"the quick brown fox jumps over the lazy dog."
+```
 
 ## Compound expressions
 
