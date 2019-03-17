@@ -293,6 +293,7 @@ Where `x` is a list of 5 items:
     + 1: q IPC
     + 2: `gzip`
     + 3: [snappy](http://google.github.io/snappy) (since V3.4)
+    + 4: `lz4hc` (since V3.6)
 -   _compression level_: an integer 
     +   for `gzip`: between 0 and 9 
     +   for `lz4hc`: between 1 and 12 (int `x` taken as `12&x`) 
@@ -310,6 +311,16 @@ q) / check the compressed data is the same as the uncompressed data
 q)get[`:test]~get`:ztest 
 1b
 ```
+
+!!! warning "`lz4` compression"
+
+    Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+.
+
+    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process. 
+
+    Kdb+ requires at least `lz4-r129`.
+    `lz4-1.8.3` works. 
+    We recommend using the latest `lz4` release available.
 
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: [File compression](../kb/file-compression.md)

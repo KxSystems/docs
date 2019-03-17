@@ -63,6 +63,17 @@ Added `lz4hc` as file-compression algorithm #4. e.g.
 q).z.zd:17 4 16;`:z set z:100000?200;z~get`:z
 ```
 
+!!! warning "`lz4` compression"
+
+    Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+.
+
+    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process. 
+
+    Kdb+ requires at least `lz4-r129`.
+    `lz4-1.8.3` works. 
+    We recommend using the latest `lz4` release available.
+
+
 
 ## NUCs – not upwardly compatible
 
