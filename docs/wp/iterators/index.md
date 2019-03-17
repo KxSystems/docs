@@ -239,7 +239,7 @@ q)+\[1000;3 4 5]
 1003 1007 1012
 ```
 
-Notice that the derived function here is [_varaiadic_](../../basics/variadic.md): it can be applied as a unary or as a binary. 
+Notice that the derived function here is [_variadic_](../../basics/variadic.md): it can be applied as a unary or as a binary. 
 
 !!! info "Postfix yields infix"
 
@@ -272,7 +272,7 @@ Good q style minimises use of both brackets and parentheses.
 (Where they must be used, the less that appears between an opening bracket or parenthesis and its close, the better.) 
 So prefix application is usually better.
 
-!!! info "A variadic function can be applied prefix as a unary by parenthesizing it." 
+!!! info "An infix function can be applied prefix as a unary by parenthesizing it." 
 
 ```q
 q)(+\)3 4 5 6 7
@@ -297,7 +297,7 @@ q)count each("the";"quick";"brown";"fox")  / better q style
 3 5 5 3
 ```
 
-!!! tip "Parenthesize a binary function to use it as the left argument of a another function."
+!!! tip "Parenthesize an infix function to use it as the left argument of a another function."
 
 ```q
 q)(+) scan 3 4 5 6 7

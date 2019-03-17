@@ -33,28 +33,22 @@ applies the value progressively to `x`, then to `v1[x]` (or `vv[x]`), and so on,
 q)n:("the ";("quick ";"brown ";("fox ";"jumps ";"over ");"the ");("lazy ";"dog."))
 q)raze over n
 "the quick brown fox jumps over the lazy dog."
+q)(,/)over n
+"the quick brown fox jumps over the lazy dog."
 q){x*x} scan .01
 0.01 0.0001 1e-08 1e-16 1e-32 1e-64 1e-128 1e-256 0
 ```
 
 See the [Accumulators](accumulators.md) for more detail, 
-and the related forms Do and While.
+and for the related forms Do and While.
 
 
 
 ## MapReduce, Fold 
 
 Syntax: `v2 over x`, `over[v2;x]`, `v2 scan x`, `scan[v2;x]`  
-Syntax: `(vv)over x`, `over[vv;x]`, `(vv)scan x`, `scan[vv;x]` 
 
-<!-- FIXME Is `vv over x` Converge or MapReduce? -->
-
-Where 
-
--   `v2` is a binary [applicable value](../basics/glossary.md#applicable-value)
--   `vv` is a [variadic](../basics/variadic.md) applicable value 
-
-applies the value progressively between successive items.
+Where `v2` is a binary [applicable value](../basics/glossary.md#applicable-value), applies `v2` progressively between successive items.
 
 `scan[v2;]` is a [uniform function](../basics/glossary.md#uniform-function) and `over[v2;]` is an [aggregate function](../basics/glossary.md#aggregate-function).
 
@@ -73,7 +67,7 @@ See the [Accumulators](accumulators.md) for a more detailed discussion.
 Q has keywords for common projections of `scan` and `over`. 
 For example, `sums` is `scan[+;]` and `prd` is `over[*;]`.
 
-Good q style prefers the keywords; 
+Good q style prefers these keywords; 
 i.e. `prd` rather than `over[*;]` or `*/`. 
 
 ```txt
