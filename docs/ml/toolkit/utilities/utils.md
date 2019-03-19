@@ -7,7 +7,7 @@ keywords: classification, combinations, python, pandas, machine learning, infini
 # <i class="fa fa-share-alt"></i> .ml.util namespace 
 
 
-The `.ml.util` namespace contains functions used in the manipulation and transformation of data. These functions are less fundamental those contained in the `.ml` root namespace and as such are maintained here in a separate namespace.
+The `.ml.util` namespace contains functions used in the manipulation and transformation of data. These functions are less commonly used and more use case specific than those contained in the `.ml` root namespace and as such are maintained here in a separate namespace.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/util/](https://github.com/kxsystems/ml/tree/master/util)
@@ -18,7 +18,7 @@ The following functions are those contained at present within the `.ml.util` nam
 .ml.util – Manipulation and transformation of data
   .classreport          Statistical information about classification results
   .combs                Unique combinations of a vector or matrix
-  .df2tab               Table from a pandas dataframe
+  .df2tab               kdb+ table from a pandas dataframe
   .dropconstant         Columns with zero variance removed
   .filltab              Tailored filling of null values for a simple matrix
   .freqencode           Numerically encode frequency of category occurance
@@ -43,8 +43,8 @@ Syntax: `.ml.util.classreport[x;y]`
 
 Where
 
-* `x` is a vector of predicted values.
-* `y` is a vector of true values.
+* `x` is a vector of predicted labels.
+* `y` is a vector of true labels.
 
 returns the accuracy, precision and f1 scores and the support (number of occurrences) of each class.
 
@@ -61,7 +61,6 @@ class     precision recall f1_score support
 3         0.19      0.19   0.19     218
 4         0.21      0.17   0.19     218
 avg/total 0.206     0.204  0.206    1000
-
 q)xb:n?0b
 q)yb:n?0b
 q).ml.util.classreport[xb;yb]
@@ -70,7 +69,6 @@ class     precision recall f1_score support
 0         0.51      0.51   0.51     496
 1         0.52      0.52   0.52     504
 avg/total 0.515     0.515  0.515    1000
-
 q)xc:n?`A`B`C
 q)yc:n?`A`B`C
 q).ml.util.classreport[xc;yc]
@@ -262,9 +260,9 @@ Syntax:.`.ml.util.frequencode[x]`
 
 Where
 
--   `x` is a table containing at least one column with categorical features (symbols)
+-   `x` is a simple table
 
-returns table with frequency of occurrance of individual categories.
+returns table with frequency of occurrance of individual symbols within a column.
 
 ```q
 q)tab:([]10?`a`b`c;10?10f)
@@ -280,6 +278,7 @@ c 3.731562
 b 6.22616
 c 2.714665
 a 7.288787
+
 q).ml.util.freqencode[tab]
 x1         freq_x
 -----------------
@@ -309,12 +308,15 @@ q)show d:`A`B`C!(5 6 9 0w;10 -0w 0 50;0w 1 2 3)
 A| 5  6   9 0w
 B| 10 -0w 0 50
 C| 0w 1   2 3
+
 q).ml.util.infreplace d`A
 5 6 9 9f
+
 q).ml.util.infreplace d
 A| 5  6 9 9
 B| 10 0 0 50
 C| 3  1 2 3
+
 q).ml.util.infreplace flip d
 A B  C
 ------
@@ -327,13 +329,13 @@ A B  C
 
 ## `.ml.util.lexiencode`
 
-_Categorical labels of features based on their lexigraphical order_
+_Label symbol columns based on lexigraphical order_
 
 Syntax:`.ml.util.lexiencode[t]`
 
 Where
 
--  `t` is a table containing at least one column with letters
+-  `t` is a simple table
 
 returns table with lexigraphical order of letters column.
 
@@ -351,6 +353,7 @@ x         x1 x2
 2.991163  c  2.096742
 8.250197  a  7.881085
 0.4501006 b  4.31398
+
 q).ml.util.lexiencode[tab]
 x         x2       lexi_label_x1
 --------------------------------
@@ -377,7 +380,7 @@ Where
 
 -  `x` is a numerical table, matrix or list
 
-returns a min-max scaled representation with values scaled between 0 and 1.
+returns a min-max scaled representation with values scaled between 0 and 1f.
 
 ```q
 q)n:5
@@ -389,6 +392,7 @@ x        x1  x2       x3
 98.8875  860 73.44471 28.72854
 30.70513 599 80.56178 39.70485
 42.17381 187 75.26142 38.26483
+
 q).ml.util.minmaxscaler[tab]
 x         x1        x2        x3
 ---------------------------------------
@@ -397,16 +401,19 @@ x         x1        x2        x3
 1          1         0.8113701 0.5405182
 0.2109084  0.6121842 1         0.8212801
 0.3436384  0         0.85952   0.7844459
+
 q)show mat:value flip tab
 12.48134 18.019   98.8875  30.70513 42.17381
 837      591      860      599      187
 42.83142 77.97026 73.44471 80.56178 75.26142
 7.597138 46.69185 28.72854 39.70485 38.26483
+
 q).ml.util.minmaxscaler[mat]
 0         0.06408864 1         0.2109084 0.3436384
 0.9658247 0.6002972  1         0.6121842 0
 0         0.9313147  0.8113701 1         0.85952
 0         1          0.5405182 0.8212801 0.7844459
+
 q)list:100?100
 q).ml.util.minmaxscaler[list]
 0.7835052 0.2886598 0.5463918 0.443299 1 0.09278351 0.1030928 0 0.9175258 0.9..
@@ -421,9 +428,10 @@ Syntax: `.ml.util.nullencode[t;y]`
 
 Where
 
--   `t` is a table containing nulls and y is the function to be applied to nulls
+-   `t` is a table containing nulls
+-   `y` is the base q function to be used to fill the null values
 
-returns table with nulls filled and additional columns that encode positions of nulls in the original columns.
+returns table with nulls filled and additional columns to data that encode positions of nulls in the original columns.
 
 ```q
 q)show tab:([]@[10?1f;0 1 8 9;:;0n];@[10?1f;4 5;:;0n];@[10?1f;2*til 5;:;0n])
@@ -439,6 +447,7 @@ x         x1        x2
 0.3165283 0.2879356 0.5639193
           0.7708107
           0.783687  0.08766932
+
 q).ml.util.nullencode[tab;avg]
 x         x1        x2         null_x null_x1 null_x2
 -----------------------------------------------------
@@ -461,7 +470,11 @@ _One-hot encoding_
 
 Syntax: `.ml.util.onehot[x]`
 
-Where `x` is a list of symbols or table with symbol column, returns one-hot encoded representation as matrix or table.
+Where 
+
+-  `x` is a list, simple table or dictionary containing with symbol data 
+
+returns one-hot encoded representation as matrix or table.
 
 ```q
 q)x:`a`a`b`b`c`a
@@ -472,6 +485,7 @@ q).ml.util.onehot[x]
 0 1 0
 0 0 1
 1 0 0
+
 q)5#tab:([]10?`a`b`c;10?10f;10?10f)
 x x1        x2
 ----------------------
@@ -480,7 +494,18 @@ b 0.8842384 1.714374
 b 8.203719  0.09300471
 a 8.749888  6.349401
 b 7.73655   8.607533
+
 q).ml.util.onehot[tab]
+x1        x2         x_a x_b x_c
+--------------------------------
+7.310299  5.697305   1   0   0
+0.8842384 1.714374   0   1   0
+8.203719  0.09300471 0   1   0
+8.749888  6.349401   1   0   0
+7.73655   8.607533   0   1   0
+
+q)dict:flip tab
+q).ml.util.onehot[dict]
 x1        x2         x_a x_b x_c
 --------------------------------
 7.310299  5.697305   1   0   0
@@ -551,7 +576,11 @@ _Standard scaler transform-based representation_
 
 Syntax: `.ml.util.stdscaler[x]`
 
-Where `x` is a numerical table, matrix or list, returns a table where each column has undergone a standard scaling given as `(x-avg x)%dev x`.
+Where 
+
+-  `x` is a simple numerical table, matrix or list
+
+returns a table where each column has undergone a standard scaling given expressed by the formula `(x-avg x)%dev x`.
 
 ```q
 q)n:5
@@ -607,8 +636,10 @@ x        x1 x2 x3
 2631.44  1  4  78.71917
 1118.109 2  3  80.09356
 3250.627 3  2  16.71013
+
 q)show pdf:.ml.util.tab2df[table] / convert to pandas dataframe and show it is an embedPy object
 {[f;x]embedPy[f;x]}[foreign]enlist
+
 q)print pdf / display the python form of the dataframe
              x  x1  x2         x3
 0  2631.439704   1   4  78.719172
@@ -625,20 +656,34 @@ Syntax: `.ml.util.traintestsplit[x;y;sz]`
 
 Where
 
--   `x` is a matrix
+-   `x` is a matrix, table or list
 -   `y` is a boolean vector of the same count as `x`
 -   `sz` is a numeric atom in the range 0-100
 
 returns a dictionary containing the data matrix `x` and target `y`, split into a training and testing set according to the percentage `sz` of the data to be contained in the test set.
 
 ```q
-q)x:(30 20)#1000?10f
+q)mat:(30 20)#1000?10f
 q)y:rand each 30#0b
-q).ml.util.traintestsplit[x;y;0.2] / split the data such that 20% is contained in the test set
+q).ml.util.traintestsplit[mat;y;0.2] / split the data such that 20% is contained in the test set
 xtrain| (2.02852 2.374546 1.083376 2.59378 6.698505 6.675959 4.120228 2.63468..
 ytrain| 110010100101111001110000b
 xtest | (8.379916 8.986609 7.06074 2.067817 5.468488 4.103195 0.1590803 0.259..
 ytest | 000001b
+
+q)t:([]30?1f;30?`1;30?10)
+q).ml.util.traintestsplit[t;y;0.2]
+xtrain| +`x`x1`x2!(0.1659182 0.5316555 0.9658597 0.6659117 0.4921318 0.580703..
+ytrain| 0.4449418 0.6637015 0.77852 0.8229043 0.5678825 0.9534722 0.2448434 0..
+xtest | +`x`x1`x2!(0.6913239 0.3921862 0.2904501 0.6536423 0.6517715 0.961030..
+ytest | 0.9861457 0.752895 0.2695986 0.122979 0.4412847 0.4952119
+
+q)lst:asc 30?1f
+q).ml.util.traintestsplit[lst;y;0.2]
+xtrain| 0.4251052 0.6419072 0.5701215 0.4231011 0.327041 0.1573152 0.3414573 ..
+ytrain| 0.5029018 0.05230331 0.628313 0.5766565 0.6314705 0.3266584 0.9624403..
+xtest | 0.3692275 0.4192985 0.1573064 0.9121564 0.28237 0.07992544
+ytest | 0.3821462 0.9177309 0.3572827 0.1110881 0.9807582 0.5132051
 ```
 
 
@@ -650,7 +695,7 @@ Syntax: `.ml.util.traintestsplitseed[x;y;sz;seed]`
 
 Where
 
--   `x` is a matrix
+-   `x` is a matrix, table or list
 -   `y` is a boolean vector of the same count as `x`
 -   `sz` is a numeric atom in the range 0-1
 -   `seed` is a numeric atom

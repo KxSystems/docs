@@ -13,7 +13,7 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 
 Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 
-Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and provides a more suitable input to machine-learning algorithms.
+Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and often provide a more suitable input to machine-learning algorithms.
 
 Following feature extraction, statistical-significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) above a given threshold.
 
@@ -48,7 +48,7 @@ Null values in the data should be replaced with derived values most appropriate 
 
 Data-types supported by the feature-extraction procedure are boolean, int, real, long, short and float. Other datatypes should not be passed to the extraction procedure.
 
-In particular, data should not contain text (strings or symbols), other than the id column. If a text-based feature is thought to be important, one-hot encoding can be used to convert to numerical values.
+In particular, data should not contain text (strings or symbols), other than the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to numerical values.
 
 !!! note
 
@@ -77,7 +77,7 @@ hasdupmax[x]                     | Boolean value stating if a duplicate of the m
 indexmassquantile[x;q]           | Relative index `i` where `q`% of the time-series `x`’s mass lies left of `i`
 kurtosis[x]                      | Adjusted G2 Fisher-Pearson kurtosis
 lintrend[x]                      | Slope, intercept, r-value, p-value and standard error associated with the time series
-longstrikelmean[x]               | Length of the longest subsequence in `x` less than the mean of `x`
+longstrikeltmean[x]               | Length of the longest subsequence in `x` less than the mean of `x`
 meanchange[x]                    | Mean over the absolute difference between subsequent t-series values
 mean2dercentral[x]               | Mean value of the central approximation of the second derivative of the time series
 numcrossingm[x;m]                | Number of crossings in the dataset over a value `m`: crossing is defined as sequential values either side of `m`, where the first is less than `m` and the second is greater or vice-versa
@@ -93,7 +93,6 @@ symmetriclooking[x]              | If the data ‘appears’ symmetric
 treverseasymstat[x;lag]          | Measure of the asymmetry of the time series based on lags applied to the data
 vargtstdev[x]                    | If the variance of the dataset is larger than the standard deviation
 
-
 Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded
 
 ## Feature extraction
@@ -106,9 +105,9 @@ Syntax: `.ml.fresh.createfeatures[table;aggs;cnames;dict]`
 
 Where
 
--   `table` is the input data (table).
--   `aggs` is the id column name (symbol).
--   `cnames` are the column names (symbols) on which extracted features will be calculated (these columns should contain only numerical values).
+-   `table` is the input data in the form of a simple.
+-   `aggs` is the id column name (syms).
+-   `cnames` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
 -   `dict` is a dictionary hyperparameter functions to be applied, if only functions that contain no hyperparameters are to be applied this is to be set as 0b.
 
 This returns a table keyed by id column and containing the features extracted from the subset of the data identified by the id.
@@ -128,8 +127,8 @@ date       time         col1 col2
 2000.01.01 00:00:00.007 500  0.5347096 
 2000.01.01 00:00:00.008 600  0.7111716 
 2000.01.01 00:00:00.009 250  0.411597  
-q)featdict:.ml.i.dict / feature functions without hyperparams
-q)5#mulfeatures:.ml.fresh.createfeatures[tab;`date;2_ cols tab;featdict] / multiparameter functional application
+q)featdict:.ml.i.dict / feature functions with hyperparams
+q)5#mulfeatures:.ml.fresh.createfeatures[tab;`date;2_ cols tab;featdict] / multiparam fns
 date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
 ----------| -----------------------------------------------------------------..
 2000.01.01| 1.156e+07      9.245956       8700              7.711325         ..
@@ -139,7 +138,7 @@ date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
 2000.01.05| 7830000        8.739328       6900              11.02193         ..
 q)count cols mulfeatures
 257
-q)5#singlefeatures:.ml.fresh.createfeatures[tab;`date;2_cols tab;0b] / non multi-parameter application
+q)5#singlefeatures:.ml.fresh.createfeatures[tab;`date;2_cols tab;0b] / non multiparam fns
 date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
 ----------| -----------------------------------------------------------------..
 2000.01.01| 9832500        11.00939       11000             11.80783         ..
@@ -222,7 +221,7 @@ q)count sigfeats        / number of selected features
 
 ## `.ml.fresh.percentilesigfeat`
 
-_Select features within the top N percentile_
+_Select features within the top p percentile_
 
 Syntax: `.ml.fresh.percentilesigfeat[t;tgt;p]`
 

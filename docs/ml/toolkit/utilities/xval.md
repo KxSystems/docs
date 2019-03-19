@@ -202,18 +202,11 @@ returns the ascending indices associated with each of the K-fold.
 
 ```q
 q)yg:asc 1000?100f                              / this is a proxy for the target vector
-q)folds:10                                      / number of folds for data
+q)folds:3                                       / number of folds for data
 q)show i:.ml.xval.kfsplit[yg;folds]
-0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  1..
-100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 1..
-200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 2..
-300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 3..
-400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 4..
-500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 5..
-600 601 602 603 604 605 606 607 608 609 610 611 612 613 614 615 616 617 618 6..
-700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 7..
-800 801 802 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 8..
-900 901 902 903 904 905 906 907 908 909 910 911 912 913 914 915 916 917 918 9..
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 ..
+333 334 335 336 337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 3..
+666 667 668 669 670 671 672 673 674 675 676 677 678 679 680 681 682 683 684 6..
 ```
 
 
@@ -246,7 +239,7 @@ q)p .ml.xval.kfstrat[yg;5]
 0000000000000000000011b
 ```
 !!! note
-        In the above example `p` was been defined as a global variable within the function `.ml.kfstrat`. This has only been done to allow the distribution of values within the data to be shown as being correct, this is not defined within the definition within github.
+        In the above example `p` was defined as a global variable within the function `.ml.kfstrat`. This has only been done to allow the distribution of values within the data to be shown as being correct, this is not defined within the definition within github.
 
 
 ## `.ml.xval.mcxval`
@@ -259,7 +252,7 @@ Where
 
 -   `x` is a matrix of data to be fit
 -   `y` is the target vector
--   `sz` is a numeric atom in the range 0-1, representing the percentage of data in the testing set
+-   `sz` is an numeric atom in the range 0-1, representing the percentage of data in the testing set
 -   `algo` is the algorithm being tested
 -   `n` is the number of validation iterations to be completed
 
@@ -294,7 +287,7 @@ Where
 -   `y` is the target vector
 -   `n` is the number of repetitions of cross validation
 -   `k` is the number of folds
--   `algo` is the model applied for validation
+-   `algo` is the model to be applied for validation
 
 returns the averaged accuracy score over all folds for the random stratified dataset.
 
@@ -323,7 +316,7 @@ Where
 -   `y` is the target vector
 -   `n` is the number of repetitions of cross validation
 -   `k` is the number of folds
--   `algo` is the model applied for validation
+-   `algo` is the model to be applied for validation
 
 returns the averaged accuracy score over all folds for random shuffled datasets.
 
@@ -337,7 +330,7 @@ q).ml.xval.repkfval[xg;yg;5;10;regr]
 ```
 
 !!!note
-        The application of repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, K-fold should be run once prior to multiple applications.
+        The application of repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, single run K-fold should be run prior to multiple applications.
 
 
 ## `.ml.xval.rollxval`
@@ -368,6 +361,4 @@ q).ml.xval.rollxval[xg;yg;10;reg]
 
         ![Figure 2](img/rollforward.png)
 
-        Successive equi-sized bins are taken as validation and training sets for each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting.
-
-
+        Successive equi-sized bins are taken as validation and training sets for each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting for example.

@@ -20,16 +20,16 @@ keywords: Python, Jupyter, natyural laguage processing, nlp, machine learning, m
 
 ## Machine Learning Toolkit
 
-The [Machine Learning Toolkit](toolkit/) is at the core of q specific machine learning functionality. This library contains functions that cover the following areas.
+The [Machine Learning Toolkit](toolkit/) is at the core of q centered machine learning functionality. This library contains functions that cover the following areas.
 
--  Pre-processing data prior to the application of machine learning algoithms
--  Accuracy metrics to test the performance of the models built
--  Cross validation functions to test the stability of models being produced under various conditions 
--  An implementation of the [FRESH](toolkit/fresh) algorithm for feature extraction and selection on structured time series data. 
+-  Pre-processing data prior to the application of machine learning algoithms.
+-  Accuracy metrics to test the performance of the models built.
+-  Cross validation functions to test the stability of models being produced under various conditions.
+-  An implementation of the FRESH algorithm for feature extraction and selection on structured time series data. 
 
-The library is available [here](https://github.com/KxSystems/ml)
+The library is available [here](https://github.com/KxSystems/ml).
 
-<i class="far fa-hand-point-right"></i> [Example notebooks of FRESH and various toolkit functionality](https://github.com/KxSystems/ml/tree/master/fresh/notebooks) 
+<i class="far fa-hand-point-right"></i> [Example notebooks showing FRESH and various aspects of toolkit functionality](https://github.com/KxSystems/ml/tree/master/fresh/notebooks) 
 
 ## embedPy
 

@@ -7,12 +7,12 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, utilit
 # <i class="fa fa-share-alt"></i> .ml namespace 
 
 
-The .ml namespace at root contains statistical functions used commonly in machine learning along with a number of functions used for array creation and manipulation
+The `.ml` namespace contains statistical functions used commonly in machine learning along with a number of functions used for array creation and manipulation.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
-The following functions are those contained in the `.ml` namespace
+The following functions are those contained at present within the `.ml` namespace
 
 ```txt
 .ml – Statistical analysis and vector creation
@@ -60,8 +60,8 @@ Syntax: `.ml.accuracy[x;y]`
 
 Where
 
--   `x` is a vector of predicted values
--   `y` is a vector of true values
+-   `x` is a vector/matrix of predicted labels
+-   `y` is a vector/matrix of true labels
 
 returns the accuracy of predictions made.
 
@@ -70,6 +70,8 @@ q).ml.accuracy[1000?0b;1000?0b] / binary classifier
 0.482
 q).ml.accuracy[1000?10;1000?10] / non-binary classifier
 0.108
+q).ml.accuracy[10 2#20?10;10 2#20?10] / support for matrices of predictions and true labels
+0.3 0.1
 ```
 
 
@@ -97,8 +99,8 @@ Syntax: `.ml.confdict[x;y]`
 
 Where
 
--   `x` is a vector of (binary) predicted values
--   `y` is a vector of (binary) true values
+-   `x` is a vector of (binary) predicted labels
+-   `y` is a vector of (binary) true labels
 
 returns a dictionary giving the count of true positives (tp), true negatives (tn), false positives (fp) and false negatives (fn).
 
@@ -209,7 +211,7 @@ _Descriptive information_
 
 Syntax: `.ml.describe[x]`
 
-Where `x` is a table, returns a dictionary description of aggregate values (count, mean, standard deviation and quartiles) for each numeric column.
+Where `x` is a simple table, returns a tabular description of aggregate information (count, standard deviation, quartiles etc) for each numeric column.
 
 ```q
 q)n:1000
@@ -258,8 +260,8 @@ Syntax: `.ml.f1score[x;y;z]`
 
 Where
 
--   `x` is a vector of predicted values
--   `y` is a vector of true values
+-   `x` is a vector of predicted labels
+-   `y` is a vector of true labels
 -   `z` is the positive class
 
 returns the F-1 score between predicted and true values.
@@ -284,12 +286,12 @@ Syntax: `.ml.fbscore[x;y;z;b]`
 
 Where
 
--   `x` is a vector of predicted values
--   `y` is a vector of true values
+-   `x` is a vector of predicted labels
+-   `y` is a vector of true labels
 -   `z` is the positive class
 -   `b` is the value of beta
 
-returns the F-beta score between predicted and true values.
+returns the F-beta score between predicted and true labels.
 
 ```q
 q)xr:1000?5
@@ -570,12 +572,17 @@ Where `x` is a vector of numeric values, returns the range of its values.
 ```q
 q).ml.range 1000?100000f
 99742.37
+q)show mat:(2 2#4?1f)
+0.7717648 0.6112608
+0.8042972 0.1703396
+q).ml.range mat
+0.06763422 0.2393768
 ```
 
 
 ## `.ml.rmse`
 
-_Root mean squared error for a regressor_
+_Root mean squared error for regression model validation_
 
 Syntax: `.ml.rmse[x;y]`
 
