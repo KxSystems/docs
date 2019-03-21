@@ -321,11 +321,11 @@ fftrad2:{[vec]
          .[`.res.vec;(0 1;bfInd 1);:;.res.vec[;bfInd 0]-tmp];
          .[`.res.vec;(0 1;bfInd 0);+;tmp]};
     bflyComp each flip `int$(evens;odds;twiddleIndices);
-    res.vec};
+    .res.vec};
 \d .
 ```
 
-Below is a demonstration of how `.fft.rad2` operates on an example
+Below is a demonstration of how `.signal.fftrad2` operates on an example
 signal shown in Table 1.
 
 <table>
@@ -461,8 +461,8 @@ spectral:{[vec;fs]
   vec*:(wndFactor nr;wndFactor nr);
 
   // Compute the fft and get the absolute value of the result
-  fftRes:.fft.fftrad2 vec;
-  mag:.cmplx.mag fftRes;
+  fftRes:.signal.fftrad2 vec;
+  mag:.signal.mag fftRes;
 
   // Scale an x axis
   xAxis:{[Ns;fs] (neg fs*0.5)+(fs%Ns-1)*til Ns}[nr;fs];
