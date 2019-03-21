@@ -48,6 +48,7 @@ accessor | description
 `x->r`   | reference count. Modify only via `r1(x), r0(x)`. (`I`) 
 `x->n`   | number of elements in a list. (`J`)
 
+
 ### Atom accessors for object x
 
 The fields of the variant types which represent an atom (sometimes called a scalar) are:
@@ -158,16 +159,18 @@ wf        | -log(0.0) in Windows or (1/0.0) on Linux | floating point infinity
 
 ### Constructors
 
-function                   | constructs | function                          | constructs  | function                          | constructs 
----------------------------|------------|-----------------------------------|-------------|-----------------------------------|-------------
-[`ka`](#ka-create-atom)    | atom       | [`ki`](#ki-create-int)            | int         | [`ktd`](#ktd-create-simple-table)        | simple table
-[`kb`](#kb-create-boolean) | boolean    | [`kj`](#kj-create-long)           | long        | [`ktj`](#ktj-create-timestamp)    | timestamp  
-[`kc`](#kc-create-char)    | char       | [`knk`](#knk-create-list)         | list        | [`ktj`](#ktj-create-timespan)      | timespan   
-[`kd`](#kd-create-date)    | date       | [`knt`](#knt-create-keyed-table)  | keyed table | [`ktn`](#ktn-create-vector)       | vector 
-[`ke`](#ke-create-real)    | real       | [`kp`](#kp-create-string)         | char array  | [`ku`](#ku-create-guid)           | guid
-[`kf`](#kf-create-float)   | float      | [`kpn`](#kpn-create-fixed-string) | char array  | [`kz`](#kz-create-datetime)       | datetime
-[`kg`](#kg-create-byte)    | byte       | [`ks`](#ks-create-symbol)         | symbol      | [`xD`](#xd-create-dictionary)     | dictionary 
-[`kh`](#kh-create-short)   | short      | [`kt`](#kt-create-time)           | time        | [`xT`](#xt-table-from-dictionary) | table 
+function                   | constructs | function                          | constructs   | function                                        | constructs 
+---------------------------|------------|-----------------------------------|--------------|-------------------------------------------------|-------------
+[`ka`](#ka-create-atom)    | atom       | [`kj`](#kj-create-long)           | long         | [`ktj`](#ktj-create-timespan)                   | timespan   
+[`kb`](#kb-create-boolean) | boolean    | [`knk`](#knk-create-list)         | list         | [`ktn`](#ktn-create-vector)                     | vector 
+[`kc`](#kc-create-char)    | char       | [`knt`](#knt-create-keyed-table)  | keyed table  | [`ku`](#ku-create-guid)                         | guid
+[`kd`](#kd-create-date)    | date       | [`kp`](#kp-create-string)         | char array   | [`kz`](#kz-create-datetime)                     | datetime
+[`ke`](#ke-create-real)    | real       | [`kpn`](#kpn-create-fixed-string) | char array   | [`vaknk`](#vak-vaknk-va_list-versions-of-k-knk) | `va_list` version of `knk`
+[`kf`](#kf-create-float)   | float      | [`ks`](#ks-create-symbol)         | symbol       | [`xD`](#xd-create-dictionary)                   | dictionary 
+[`kg`](#kg-create-byte)    | byte       | [`kt`](#kt-create-time)           | time         | [`xT`](#xt-table-from-dictionary)               | table 
+[`kh`](#kh-create-short)   | short      | [`ktd`](#ktd-create-simple-table) | simple table 
+[`ki`](#ki-create-int)     | int        | [`ktj`](#ktj-create-timestamp)    | timestamp  
+
 
 ### Joins
 
@@ -182,18 +185,22 @@ insufficient to accommodate the new data, the list is reallocated with the conte
 
 ### Other functions
 
-function                         | action              | function                                    | action
----------------------------------|---------------------|---------------------------------------------|-------------
-[`b9`](#b9-serialize)            | serialize           | [`orr`](#orr-signal-system-error)           | signal system error        
-[`d9`](#d9-deserialize)          | deserialize         | [`r0`](#r0-decrement-refcount)              | decrement ref count 
-[`dj`](#dj-date-to-number)       | date to integer     | [`r1`](#r1-increment-refcount)              | increment ref count 
-[`dl`](#dl-dynamic-link)         | dynamic link        | [`sd0`](#sd0-remove-callback)               | remove callback
-[`dot`](#dot-apply)              | apply               | [`sd0x`](#sd0x-remove-callback-conditional) | remove callback
-[`ee`](#ee-error-string)         | capture error       | [`sd1`](#sd1-set-function-on-loop)          | function on event loop
-[`k`](#k-evaluate)               | evaluate            | [`setm`](#setm-toggle-symbol-lock)          | toggle symbol lock
-[`krr`](#krr-signal-c-error)     | signal C error      | [`sn`](#sn-intern-chars)                    | intern chars from string
-[`m9`](#m9-release-memory)       | release memory      | [`ss`](#ss-intern-string)                   | intern null-terminated string
-[`okx`](#okx-verify-ipc-message) | verify IPC message  | [`ymd`](#ymd-numbers-to-date)               | encode q date
+function                          | action              | function                                      | action
+----------------------------------|---------------------|-----------------------------------------------|------------------------------
+[`b9`](#b9-serialize)             | serialize           | [`r0`](#r0-decrement-refcount)                | decrement ref count 
+[`d9`](#d9-deserialize)           | deserialize         | [`r1`](#r1-increment-refcount)                | increment ref count 
+[`dj`](#dj-date-to-number)        | date to integer     | [`sd0`](#sd0-remove-callback)                 | remove callback
+[`dl`](#dl-dynamic-link)          | dynamic link        | [`sd0x`](#sd0x-remove-callback-conditional)   | remove callback
+[`dot`](#dot-apply)               | apply               | [`sd1`](#sd1-set-function-on-loop)            | function on event loop
+[`ee`](#ee-error-string)          | capture error       | [`setm`](#setm-toggle-symbol-lock)            | toggle symbol lock
+[`k`](#k-evaluate)                | evaluate            | [`sn`](#sn-intern-chars)                      | intern chars from string
+[`krr`](#krr-signal-c-error)      | signal C error      | [`ss`](#ss-intern-string)                     | intern null-terminated string
+[`m9`](#m9-release-memory)        | release memory      | [`vak`](#vak-vaknk-va_list-versions-of-k-knk) | `va_list` version of k 
+[`okx`](#okx-verify-ipc-message)  | verify IPC message  | [`ymd`](#ymd-numbers-to-date)                 | encode q date
+[`orr`](#orr-signal-system-error) | signal system error        
+
+
+
 
 
 ### Standalone applications
@@ -776,12 +783,14 @@ if(handle==-3){
 Returns null if there was an error initializing the OpenSSL lib.
 
 
-### `vak`, `vaknk` – argument lists
+### `vak`, `vaknk` – va_list versions of k, knk
 
 Signature: `K vak(I,const S,va_list)`  
 Signature: `K vaknk(I,va_list)`
 
-where `va_list` is defined in `stdarg.h`, included by `k.h`
+where `va_list` is as defined in 
+[`stdarg.h`](https://en.wikipedia.org/wiki/Stdarg.h), 
+included by `k.h`
 
 These are `va_list` versions of the `K k(I,const S,…)` and `K knk(I,…)` functions, useful for writing variadic utility functions that can forward the K objects.
 
