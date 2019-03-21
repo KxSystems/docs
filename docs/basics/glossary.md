@@ -89,6 +89,11 @@ Applying a value to its argument/s or indexes by writing it to the left of an ar
 [Application](application.md)
 
 
+## Chained tickerplant
+
+A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn. 
+
+
 ## Character constant
 
 A character constant is defined by entering the characters between double-quotes, as in `"abcdefg"`. If only one character is entered the constant is an atom, otherwise the constant is a list. For example, `"a"` is an atom. The expression `enlist "a"` is required to indicate a one character list. 
