@@ -253,7 +253,7 @@ nav:
       - neg: ref/neg.md
       - next, prev, xprev: ref/next.md
       - not: ref/not.md
-      - null: ref/null.md
+      - 'null': ref/null.md
       - or: ref/or.md
       - over, scan: ref/over.md
       - parse: ref/parse.md
