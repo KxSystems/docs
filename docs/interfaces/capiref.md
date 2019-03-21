@@ -776,6 +776,19 @@ if(handle==-3){
 Returns null if there was an error initializing the OpenSSL lib.
 
 
+### `vak`, `vaknk` – argument lists
+
+Signature: `K vak(I,const S,va_list)`  
+Signature: `K vaknk(I,va_list)`
+
+where `va_list` is defined in `stdarg.h`, included by `k.h`
+
+These are `va_list` versions of the `K k(I,const S,…)` and `K knk(I,…)` functions, useful for writing variadic utility functions that can forward the K objects.
+
+<i class="far fa-hand-point-right"></i>
+comp.lang.c: [How can I write a function which takes a variable number of arguments and passes them to some other function (which takes a variable number of arguments)?](http://c-faq.com/varargs/handoff.html)
+
+
 ### `ver` – release date
 
 Signature: `I ver()`
