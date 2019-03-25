@@ -8,7 +8,7 @@ keywords: accumulator, adverb, applicable value, converge, dictionary, do, itera
 
 
 
-
+## I hate iterators!
 
 [Iterators](../../ref/iterators.md) (formerly known as _adverbs_) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill.
 

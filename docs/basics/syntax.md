@@ -1,6 +1,6 @@
 ---
 title: Syntax
-keywords: kdb+, q, syntax
+keywords: attribute, bracket, colon, comment, composition, compound, conditional, control, empty, function, infix, iterators, kdb+, multiline, name, namespace, operator, parenthesis, precedence, prefix, projection, postfix, q, space, syntax, token, vector
 ---
 
 
@@ -438,7 +438,7 @@ The colon can also have a primitive operator immediately to its left, with a nam
 A pair of colons with a name to its left and an expression on the right
 
 -   within a function expression, denotes global assignment, that is, assignment to a global name (`{… ; x::3 ; …}`)
--   outside a function expression, defines a [view](FIXME)
+-   outside a function expression, defines a [view](../learn/views.md)
 
 The functions associated with I/O and [interprocess communication](ipc.md) are denoted by a colon following a digit, as in `0:` and `1:`.
 
@@ -604,7 +604,9 @@ x[1]-1         / x[1] minus 1
 
 ## Comments
 
-Line, trailing and multiline comments are ignored by the interpreter
+Line, trailing, and multiline comments are ignored by the interpreter.
+
+`/` will comment out the rest of the line. 
 
 ```q
 q)/Oh what a lovely day
@@ -620,16 +622,17 @@ q)count"2/3"
 q)\l /data/files
 ```
 
-As first and only non-whitespace char on a line: 
-
-*   `/` starts a multiline comment  
-*   `\` terminates a multiline comment or, if not in a comment, comments to end of script  
+Sections of script can be commented out with matching singleton `/` and `\`.
 
 ```q
 /
     Oh what a beautiful morning
     Oh what a wonderful day
 \
+
+When not terminating a multi-line comment, a singleton `\` will exit the script.
+
+```q
 a:42
 \
 ignore this and what follows
