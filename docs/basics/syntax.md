@@ -629,6 +629,7 @@ Sections of script can be commented out with matching singleton `/` and `\`.
     Oh what a beautiful morning
     Oh what a wonderful day
 \
+```
 
 When not terminating a multi-line comment, a singleton `\` will exit the script.
 
