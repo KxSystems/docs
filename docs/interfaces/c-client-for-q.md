@@ -20,6 +20,8 @@ There are three cases in which to to use the C API for kdb+:
 
 To minimize dependencies for existing projects, there are now two sets of files available.
 
+<i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/kxsystems/kdb)
+
 The `e` set of files, those with SSL/TLS support, contain all the functionality of the `c` files.
 
 !!! warning "Do not link with both `c` and `e` files; just choose one set."
