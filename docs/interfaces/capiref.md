@@ -413,6 +413,9 @@ Signature: `V kclose(I)`
 
 With the release of `c.o` with V2.6, `c.o` now tracks the connection type (pre V2.6, or V2.6+). Hence, to close the connection, you must call `kclose` (instead of `close` or `closeSocket`): this will clean up the connection tracking and close the socket.
 
+Standalone apps only. 
+Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
+
 
 ### `kd` – create date
 
@@ -456,12 +459,18 @@ Null: `kh(nh)`
 
 Signature: `I khp(const S h, I p)`
 
+Standalone apps only. 
+Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
+
 <i class="far fa-hand-point-right"></i> `khpu(h, p, "")`
 
 
 ### `khpu` – connect, no timeout
 
 Signature: `I khpu(const S h, I p, const S u)`
+
+Standalone apps only. 
+Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
 <i class="far fa-hand-point-right"></i> `khpun(h, p, u, 0)`
 
@@ -481,6 +490,9 @@ code  error
  -1   Connection error
  -2   Timeout error 
 ```
+
+Standalone apps only. 
+Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
 
 ### `khpunc` – connect with capability
