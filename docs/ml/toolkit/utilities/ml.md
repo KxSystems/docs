@@ -95,21 +95,32 @@ q).ml.arange[6.25;10.5;0.05]
 
 _True/false positives and true/false negatives_
 
-Syntax: `.ml.confdict[x;y]`
+Syntax: `.ml.confdict[x;y;z]`
 
 Where
 
 -   `x` is a vector of (binary) predicted labels
 -   `y` is a vector of (binary) true labels
+-   `z` is an atom denoting the positive class label
 
 returns a dictionary giving the count of true positives (tp), true negatives (tn), false positives (fp) and false negatives (fn).
 
 ```q
-q).ml.confdict[100?"AB";100?"AB"]
+q).ml.confdict[100?"AB";100?"AB";"A"]	/ non-numeric inputs
 tp| 25
 fn| 25
 fp| 21
 tn| 29
+q)confdict[100?0b;100?0b;1b]		/ boolean input
+tn| 25
+fp| 27
+fn| 26
+tp| 22
+confdict[100?5;100?5;4]			/ supports multiclass by converting to boolean representation
+tn| 60
+fp| 18
+fn| 19
+tp| 3
 ```
 
 
@@ -573,10 +584,10 @@ Where `x` is a vector of numeric values, returns the range of its values.
 q).ml.range 1000?100000f
 99742.37
 q)show mat:(2 2#4?1f)
-0.7717648 0.6112608
-0.8042972 0.1703396
+0.04492896 0.1786355
+0.9694828  0.8964098
 q).ml.range mat
-0.06763422 0.2393768
+0.9245539 0.7177742
 ```
 
 
