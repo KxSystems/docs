@@ -71,9 +71,9 @@ This paper will focus on the last three steps listed above, as the first
 topic of data capture has already been covered extensively in previous
 Kx whitepapers, including 
 
--   [Kdb+tick profiling for throughput optimization](/wp/kdbtick_profiling_for_throughput_optimization.pdf),
--   [Disaster recovery for kdb+tick](/wp/disaster-recovery/) 
--   [Query Routing: a kdb+ framework for a scalable load-balanced](/wp/query-routing/)
+-   [Kdb+tick profiling for throughput optimization](../kdbtick_profiling_for_throughput_optimization.pdf),
+-   [Disaster recovery for kdb+tick](../disaster-recovery/index.md) 
+-   [Query Routing: a kdb+ framework for a scalable load-balanced](../query-routing/index.md)
 
 Moreover, the analysis techniques presented will make use of the
 following sensor data set, collected by the University of California
@@ -744,7 +744,7 @@ Fast Fourier Transform, written
 natively in Python 3.6, and also against a well refined, and highly-optimized C based library. The library in question will be the
 [NumPy](http://www.numpy.org/) library, called via the q fusion with
 Python – embedPy (details on setting up this environment are available
-from [Machine Learning section](/ml/embedpy/) on
+from [Machine Learning section](../../ml/embedpy/index.md) on
 code.kx.com.
 
 In order to get an accurate comparison, each method should be tested on

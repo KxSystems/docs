@@ -19,7 +19,7 @@ Whitepapers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
 based heavily on the ideas discussed in another whitepaper:
-[“Common design principles for kdb+ gateways”](https://code.kx.com/q/wp/common_design_principles_for_kdb_gateways.pdf).
+[“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf).
 
 It is recommended the reader understand these concepts before
 progressing with this paper.
@@ -114,7 +114,7 @@ the function `userQuery` with a two-item list parameter: the required
 service and the query to be executed. The user interacts with the
 gateway using deferred synchronous messaging. 
 
-Further information can be found at the Cookbook article on [load balancing](/cookbook/load-balancing/).
+Further information can be found at the Knowledge Base article on [load balancing](../../kb/load-balancing.md).
 
 ```q
 gw:{h:hopen x;{(neg x)(`userQuery;y);x[]}[h]}[`:localhost:5555]
@@ -134,7 +134,7 @@ user query.
 
 Instead of taking a standard round-robin approach to load balancing as
 explained in
-[“Common design principles for kdb+ gateways”](https://code.kx.com/q/wp/common_design_principles_for_kdb_gateways.pdf), 
+[“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf), 
 our Load Balancer will keep track of what resources are free and 
 allocate queries to services only when they are available. After executing
 a query, the service provides a notification to the Load Balancer that
@@ -215,8 +215,8 @@ matching the name passed to `userQuery` and send an error if no such
 resource exists. We are setting outside the scope of this paper any
 further request validation, including access permissioning. 
 
-For further details on access control, please refer to the Technical
-Whitepaper [“Permissions with kdb+”](/wp/permissions_with_kdb.pdf).
+For further details on access control, please refer to the technical
+white paper [“Permissions with kdb+”](../permissions_with_kdb.pdf).
 
 When a user sends her query via the `userQuery` function, we assign
 the query a unique sequence number and publish an asynchronous
@@ -525,7 +525,7 @@ queryService:{
 Note that in the `execRequest` function, `nh` is the asynchronous handle
 to the gateway. Calling `nh[]` after sending the result causes the
 outgoing message queue for this handle to be flushed immediately. For
-more details, see the [Cookbook article on IPC](/cookbook/ipc/).
+more details, see the [Knowledge Base article on IPC](../../kb/ipc.md).
 
 Like our gateway, the `.z.pc` handle is set to reconnect to the Load
 Balancer on disconnect. The `.z.ts` function retries to connect to the

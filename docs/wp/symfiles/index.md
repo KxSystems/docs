@@ -265,7 +265,7 @@ means migrated data must be re-enumerated against the working sym file
 of the destination database.
 
 The inbuilt functions
-[`.Q.dpft` and `.Q.dpfts`](https://code.kx.com/v2/ref/dotq/#qdpft-save-table)
+[`.Q.dpft` and `.Q.dpfts`](../../ref/dotq.md#qdpft-save-table)
 handle this efficiently and can be used programmatically for
 each date. Ensure the sym file is loaded into memory when using either
 function, otherwise a new file will be created.
@@ -275,7 +275,7 @@ Note, when saving data to disk using `.Q.dpft` or `.Q.dpfts`:
 -   The table cannot be keyed.
 -   An unmappable error will be signaled if there are columns that are
     not vectors or simple nested columns (e.g. char vectors for each
-    row) present. A [helper function](https://code.kx.com/v2/ref/dotq/#qdpfts-save-table-with-symtable) can identify the offending table column/s.
+    row) present. A [helper function](../..//ref/dotq.md#qdpfts-save-table-with-symtable) can identify the offending table column/s.
 -   The table name is passed in by reference so the updated data must be
     called the same name but only contain data for that particular date.
 

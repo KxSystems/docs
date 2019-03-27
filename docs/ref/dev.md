@@ -78,5 +78,5 @@ q)select sdev price by sym from trade
 Wikipedia: [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation),
 [Variance](https://en.wikipedia.org/wiki/Variance)  
 financereference.com: [Standard deviation](http://financereference.com/learn/standard-deviation)  
-Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)

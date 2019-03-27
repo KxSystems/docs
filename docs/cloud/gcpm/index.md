@@ -1,5 +1,5 @@
 ---
-hero: <i class="fa fa-cloud"></i> Cloud
+hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Cloud, Google Cloud Platform Marketplace
 title: Kdb+ on GCP Marketplace
 ---

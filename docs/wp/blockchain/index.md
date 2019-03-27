@@ -333,7 +333,7 @@ $ bitcoin-cli getblock \
 }
 ```
 
-Using [`.j.k`](/ref/dotj/) we can easily transform
+Using [`.j.k`](../../ref/dotj.md) we can easily transform
 this JSON message output into a q dictionary. However, using this method
 to interact with the node requires making system calls to `bitcoin-cli`
 within a q session, and becomes very cumbersome when trying to submit
@@ -342,7 +342,7 @@ complex requests.
 Instead, with the [qbitcoind](https://github.com/jlucid/qbitcoind)
 library, we can communicate directly with the node and wallet software
 inside a q session by interfacing with the JSON-RPC server using
-[`.Q.hp`](/ref/dotq/#qhp-http-post) to generate valid
+[`.Q.hp`](../../ref/dotq.md#qhp-http-post) to generate valid
 HTTP POST requests. 
 See the [install instructions](https://github.com/jlucid/qbitcoind/blob/master/README.md).
 
@@ -376,7 +376,7 @@ using the above functions in combination.
 
 To download blocks in an automated and recursive way, we can specify the
 block retrieval logic within a
-[`.z.ts`](https://code.kx.com/q/ref/dotz/#zts-timer) function which will
+[`.z.ts`](../../ref/dotz.md#zts-timer) function which will
 get executed periodically by setting the timer value `\t`.
 
 By initializing the index value to zero and incrementing it each time
@@ -432,7 +432,7 @@ each.
 It was decided to opt for two partitioned databases, named `mainDB` and
 `refDB`, which would contain the tables listed below. All tables, except
 `utxo`, would be stored in
-[splayed](/kb/splayed-tables/) format,
+[splayed](../../kb/splayed-tables.md) format,
 meaning each column is saved as a separate file on disk. This would
 allow for subsequent user queries against the kdb+ database to be
 optimized by only loading required columns as needed.
@@ -476,11 +476,11 @@ The schema definitions for each of these tables can be found on Github within th
 
 All splayed tables mentioned above were further partitioned by using a
 common column to group data together. Such [partitioned
-table](https://code.kx.com/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
+table](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
 structures help to more easily manage large datasets and enable query
 optimization. For more information on the benefits of partitioned
 databases, see whitepaper “[Columnar Database and Query
-Optimization](/wp/columnar_database_and_query_optimization.pdf)”.
+Optimization](../columnar_database_and_query_optimization.pdf)”.
 
 For `mainDB`, each table contains a common column named `height`
 corresponding to the height of the block the data was extracted from.
@@ -690,13 +690,13 @@ heightToPartition:{[Height;Width]
 
 For more information on similar intraday write-down solutions, see the
 whitepaper [Intraday Writedown
-Solutions](/wp/intraday_writedown_solutions.pdf).
+Solutions](../intraday_writedown_solutions.pdf).
 
 
 #### Garbage collection
 
 As part of the download process, the
-[`.Q.gc`](/ref/dotq/#qgc-garbage-collect)
+[`.Q.gc`](../../ref/dotq.md#qgc-garbage-collect)
 function is called periodically to return unreferenced memory to the
 heap.
 
@@ -707,9 +707,9 @@ Even after executing `.Q.gc` at the end of each table write-down
 event, it was noticed that there still persisted a build-up of heap
 memory over time. This was caused by the complex columns `scriptSig` and
 `scriptPubKey` which were nested tables, causing the memory to become
-fragmented and difficult to [release back to the OS](/ref/dotq/#qgc-garbage-collect).
+fragmented and difficult to [release back to the OS](../../ref/dotq.md#qgc-garbage-collect).
 A simple workaround for this was to serialize the values using
-[`-8!`](/basics/internal/) before inserting into the
+[`-8!`](../../basics/internal.md) before inserting into the
 tables.
 
 
@@ -717,7 +717,7 @@ tables.
 
 To minimize on-disk memory, all tables are stored across partitioned
 databases in a compressed format. This was achieved by setting
-[`.z.zd`](/ref/dotz/#zzd-zip-defaults) to a value of
+[`.z.zd`](../../ref/dotz.md#zzd-zip-defaults) to a value of
 `17 2 6` prior to writing.
 
 ```q
@@ -726,7 +726,7 @@ q).z.zd:17 2 6
 
 The above setting resulted in a compression ratio of 2.7 on average. For
 more information on compression settings and performance, see whitepaper
-[Compression in kdb+](/wp/compression_in_kdb.pdf)
+[Compression in kdb+](../compression_in_kdb.pdf)
 
 
 #### Assigning appropriate data types
@@ -790,7 +790,7 @@ a string column, called `txuid`, which is the concatenation of
 `txid` and `n` from the `txOutputs` table. The combination of
 these two values is used to create a unique identifier for each UTXO. To
 this unique key a
-[unique](/ref/set-attribute.md) attribute
+[unique](../../ref/set-attribute.md) attribute
 (`` `u#``) was applied, which greatly accelerates the subsequent left join
 with the `txInputs` table. Below is summarized the join procedure
 followed.

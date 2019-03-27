@@ -26,7 +26,7 @@ Pictures will be taken, at a given frequency, to create a Satellite Image Time S
 
 Light curves are the main subject of study when attempting to detect exoplanets. Variations in brightness of the target stars may indicate the presence of a transiting planet. The preprocessing pipeline searches for signals consistent with transiting planets, in order to identify planet candidates or Threshold Crossing Events (TCEs). However, the list of TCEs will likely contain a large number of false positives, caused by eclipsing binary systems, background eclipsing binaries or simple noise.
 
-At this stage, machine learning (ML) comes into play. In this paper we propose a [Bayesian Neural Network](http://www.inference.org.uk/mackay/ch_learning.pdf "Bayesian Neural Network and Density Networks, accessed 26 November 2018") to try and classify the extracted TCEs as real planets or false positives. We will take advantage of the strength of kdb+/q to manipulate and analyze time-series data, and [embedPy](/ml/embedpy/) to import the necessary python ML libraries.
+At this stage, machine learning (ML) comes into play. In this paper we propose a [Bayesian Neural Network](http://www.inference.org.uk/mackay/ch_learning.pdf "Bayesian Neural Network and Density Networks, accessed 26 November 2018") to try and classify the extracted TCEs as real planets or false positives. We will take advantage of the strength of kdb+/q to manipulate and analyze time-series data, and [embedPy](../../ml/embedpy.md) to import the necessary Python ML libraries.
 
 The technical dependencies required for the below work are as follows:
 

@@ -7,7 +7,7 @@ keywords: kdb+, q, schema, splayed, table
 
 
 
-Some of the q queries described elsewhere in this cookbook do not work with splayed tables, in particular those that change the schema. This recipe explains how to write queries that change the schema.
+Some of the q queries described elsewhere in the Knowledge Base do not work with splayed tables, in particular those that change the schema. This article explains how to write queries that change the schema.
 
 Consider the following table:
 

@@ -277,4 +277,4 @@ q))                 / the server is suspended in a debug session
 <i class="far fa-hand-point-right"></i> 
 [Display](../ref/display.md),
 [`show`](../ref/show.md), 
-_Q for Mortals 3:_ [§10.2 Debugging](http://code.kx.com/q4m3/10_Execution_Control/#102-debugging)
+_Q for Mortals 3:_ [§10.2 Debugging](/q4m3/10_Execution_Control/#102-debugging)

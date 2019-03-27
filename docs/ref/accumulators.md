@@ -106,7 +106,7 @@ q)(route\)`Genoa                          / a circular tour
 q)(not/) 42                               / never returns!
 ```
 
-Matching is governed by [comparison tolerance](/basics/precision/#comparison-tolerance).
+Matching is governed by [comparison tolerance](../basics/precision.md#comparison-tolerance).
 
 
 ### Do

@@ -7,7 +7,7 @@ hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 
 
 
-This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](http://code.kx.com/q4m3), and the wiki [Reference](../../ref/index.md) and consult the [Knowledge base](../../kb/index.md).
+This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](/q4m3), and the wiki [Reference](../../ref/index.md) and consult the [Knowledge base](../../kb/index.md).
 
 One caution: you can learn kdb+ reasonably well by independent study, but for serious deployment of the product you need the help of a consultant. This is because kdb+ is typically used for very demanding applications that require experience to set up properly. Contact Kx for help with such evaluations.
 

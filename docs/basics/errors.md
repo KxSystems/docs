@@ -6,7 +6,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 
 
 
-<!-- <i class="fa fa-hand-o-right"></i> Simon’s list <i class="far fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="far fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 
 ## Runtime errors

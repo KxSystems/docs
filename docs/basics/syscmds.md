@@ -512,7 +512,7 @@ q){x where x like"????"}system"v .h"
 !!! tip "Expunging variables"
 
     To expunge `a` from the workspace root, ``delete a from `.``  
-    <i class="far fa-hand-point-right"></i> _Q for Mortals_: [§12.5 Expunging from a Context](http://code.kx.com/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
+    <i class="far fa-hand-point-right"></i> _Q for Mortals_: [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
 
 ## `\w` (workspace)

@@ -52,7 +52,7 @@ System information                Callbacks
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: [Callbacks](../kb/callbacks.md), 
 [Using `.z`](../kb/using-dotz.md)  
-_Q for Mortals:_ [§11.6 Interprocess Communication](http://code.kx.com/q4m3/11_IO/#116-interprocess-communication)
+_Q for Mortals:_ [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 
 

@@ -9,12 +9,12 @@ and continues to evolve.
 
 ## <i class="fab fa-github"></i> GitHub
 
-Truncated GitHub URLs are prefixed with the GitHub icon <i class="fa fa-github"></i> and omit the `https://github.com/` prefix. 
+Truncated GitHub URLs are prefixed with the GitHub icon <i class="fab fa-github"></i> and omit the `https://github.com/` prefix. 
 
-For example, read <i class="fa fa-github"></i> `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
+For example, read <i class="fab fa-github"></i> `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
 
-## <i class="fa fa-life-ring"></i> Reference
+## <i class="far fa-life-ring"></i> Reference
 
 The wiki’s Reference section, organised by glyphs, was a good tool for _reading_ q. It was easy to find, for example, all the possible meanings of `$`. On the other hand, a writer looking for tools to convert between datatypes and representations would have to explore most of the Reference section to be confident she had found them all. 
 
@@ -30,7 +30,7 @@ The new site reference has three aims:
 > A finished work is exactly that, requires resurrection.  
 — _John Cage_, “Lecture on Nothing”, 1949
 
-The repository for this site is <i class="fa fa-github"></i> [KxSystems/docs](https://github.com/KxSystems/docs). 
+The repository for this site is <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/KxSystems/docs). 
 The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow). 
 
 To contribute, submit a pull request. 

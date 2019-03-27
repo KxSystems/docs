@@ -3,7 +3,7 @@ The functions listed here have been withdrawn from q, and are listed here solely
 
 ## `list`
 
-The `list` function created a list from its arguments. Use [`enlist`](lists/#enlist) instead.
+The `list` function created a list from its arguments. Use [`enlist`](../ref/enlist.md) instead.
 ```q
 q)list[1;`a`b;"abcd"]
 (1;`a`b;"abcd")
@@ -13,7 +13,7 @@ q)list[1;`a`b;"abcd"]
 
 ## `plist`
 
-The `plist` function was a form of [enlist](lists/#enlist) (which creates a list from its arguments). It was removed completely in V3.0.
+The `plist` function was a form of [enlist](../ref/enlist.md) (which creates a list from its arguments). It was removed completely in V3.0.
 ```q
 q)plist[1;`a`b;"abcd"]
 (1;`a`b;"abcd")

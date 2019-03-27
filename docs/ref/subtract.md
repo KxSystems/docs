@@ -18,7 +18,7 @@ q)2000.11.22 - 03:44:55.666
 
 Subtract is an atomic function.
 
-[Add](/ref/add) is generally faster than Subtract.
+[Add](add.md) is generally faster than Subtract.
 <!-- FIXME Examples with dictionaries and tables -->
 
 

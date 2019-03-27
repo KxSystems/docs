@@ -4,7 +4,7 @@ keywords: editor, github, integration, interface, kdb+, q
 
 # Interfaces and editor integrations
 
-<i class="far fa-hand-point-right"></i> [General index](/github) of other kdb+ repositories
+<i class="far fa-hand-point-right"></i> [General index](../github.md) of other kdb+ repositories
 
 Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx Systems. 
 Other repositories are maintained by their owners. 

@@ -62,7 +62,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 </div>
 <div>
     [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
-    _Q for Mortals_](http://code.kx.com/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
+    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
 </div>
 <div>
     [<i class="fab fa-fw fa-github fa-border fa-5x"></i><br/>

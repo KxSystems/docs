@@ -67,7 +67,7 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 
 
 <i class="far fa-hand-point-right"></i> 
-[`like`](/ref/like)  
+[`like`](like.md)  
 Basics: [Strings](../basics/strings.md)  
 Knowledge Base: [Regular expressions](../kb/regex.md), 
 

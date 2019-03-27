@@ -29,6 +29,6 @@ q)`x!1 2 3
 [Enumeration](enumeration.md)  
 [`!` bang](overloads.md#bang)  
 Basics: [Enumerations](../basics/enumerations.md)  
-_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations)
+_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)
 
 

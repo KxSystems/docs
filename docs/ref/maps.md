@@ -185,7 +185,7 @@ The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e
 
 !!! tip "Higher-rank values"
 
-    To parallelize a value of rank >1, use [Apply](/ref/apply.md) to evaluate it on a list of arguments.
+    To parallelize a value of rank >1, use [Apply](apply.md) to evaluate it on a list of arguments.
 
     Alternatively, define the value as a function that takes a parameter dictionary as argument, and pass the derived function a table of parameters to evaluate.
 

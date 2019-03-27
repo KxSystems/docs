@@ -148,7 +148,7 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
     </code></pre>
 
 <i class="far fa-hand-point-right"></i> 
-_Q for Mortals_: [§2.4 Basic Data Types – Atoms](http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
+_Q for Mortals_: [§2.4 Basic Data Types – Atoms](/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
 
 
 ### Filepaths

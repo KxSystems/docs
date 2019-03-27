@@ -21,7 +21,7 @@ _Platform for Kx_ is a suite of products for building kdb+ user interfaces in HT
 
 ## Control for Kx
 
-[![Control for Kx](img/controlkx.png)](/img/controlkx.png "Click to expand")
+[![Control for Kx](img/controlkx.png)](img/controlkx.png "Click to expand")
 
 [_Control for Kx_](https://code.kx.com/platform/control/) is a client-server application that allows you to design, build, deploy and manage data-capture/streaming systems.
 
@@ -47,7 +47,7 @@ gathers and displays information about a server’s status. Each server requires
 [_Stream for Kx_](https://code.kx.com/platform/stream/) 
 is a platform for capturing, storing and enriching large volumes of data. It provides a framework to develop and deploy customized analytics that quickly perform complex calculations on large volumes of real-time and historical market data.
 
-[![Stream for Kx](img/stream.png)](/img/stream.png "Click to expand")  
+[![Stream for Kx](img/stream.png)](img/stream.png "Click to expand")  
 <small>_Stream for Kx deployed in a financial market_</small>
 
 

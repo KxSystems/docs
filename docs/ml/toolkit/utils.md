@@ -4,7 +4,7 @@ date: October 2018
 keywords: confusion matrix, machine learning, ml, utilities, interpolation, filling, statistics, kdb+, q
 ---
 
-# <i class="fa fa-share-alt"></i> Utilities 
+# <i class="fas fa-share-alt"></i> Utilities 
 
 
 

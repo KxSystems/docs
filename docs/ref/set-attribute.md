@@ -12,7 +12,7 @@ Syntax: `x#y`, `#[x;y]`
 
 Where `y` is a list and atom `x` is 
 
--   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](../basics/syntax.md#/#attributes) set
+-   an item from the list `` `s`u`p`g ``, returns `y` with the corresponding [attribute](../basics/syntax.md#attributes) set
 -   the null symbol `` ` ``, returns `y` with all attributes removed
 
 ```q

@@ -7,7 +7,7 @@ hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 
 A basic understanding of the internal structure of tables is needed to work with q. The structure is actually quite simple, but very different from conventional databases.
 
-This section gives a quick overview, followed by an explanation of the sp.q script, and then a typical table for stock data. After completing this, you should read [_Q for Mortals_ 14. Introduction to Kdb+](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/), which has a detailed comparison of q and conventional RDBMS.
+This section gives a quick overview, followed by an explanation of the sp.q script, and then a typical table for stock data. After completing this, you should read [_Q for Mortals_ 14. Introduction to Kdb+](/q4m3/14_Introduction_to_Kdb+/), which has a detailed comparison of q and conventional RDBMS.
 
 Tables are created out of lists. A table with no key columns is essentially a list of column names associated with a list of corresponding column values, each of which is a list. A table with key columns is built internally from a pair of tables – the key columns associated with the non-key columns.
 

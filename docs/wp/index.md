@@ -31,7 +31,7 @@
 
 * Streaming **analytics**: detecting card counters in Blackjack &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](card-counters-in-blackjack.pdf)
 * Kdb+ in **astronomy** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_in_astronomy.pdf)
-* ==new== [Storing and exploring the **Bitcoin blockchain**](blockchain/) &nbsp; <i class="fa fa-print"></i> <small>[A4](blockchain/blockchain-a4.pdf), [US&nbsp;Letter](blockchain/blockchain-us.pdf)</small>
+* ==new== [Storing and exploring the **Bitcoin blockchain**](blockchain/) &nbsp; <i class="fas fa-print"></i> <small>[A4](blockchain/blockchain-a4.pdf), [US&nbsp;Letter](blockchain/blockchain-us.pdf)</small>
 * Sample aggregation engine for **market depth** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](sample_aggregation_engine_for_market_depth.pdf)
 * [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/) &nbsp; <i class="fas fa-print"></i> <small>[A4](market-fragmentation/market-fragmentation-a4.pdf), [US&nbsp;Letter](market-fragmentation/market-fragmentation-us.pdf)</small>
 * [**Signal processing and q**](signal-processing/) &nbsp; <i class="fas fa-print"></i> <small>[A4](signal-processing/signal-processing-a4.pdf), [US&nbsp;Letter](signal-processing/signal-processing-us.pdf)</small>
@@ -43,8 +43,8 @@
 
 * **K-Nearest Neighbor classification** and pattern recognition with q &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](machine_learning_in_kdb.pdf)
 * [An introduction to **neural networks** with kdb+](neural-networks/) &nbsp; <i class="fas fa-print"></i> <small>[A4](an_introduction_to_neural_networks_with_kdb.pdf)</small>
-* ==new== [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/) &nbsp; <i class="fa fa-print"></i> [<small>A4</small>](exoplanets/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](exoplanets/exoplanets-us.pdf)
-* ==new== [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/) &nbsp; <i class="fa fa-print"></i> [<small>A4</small>](space-weather/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](space-weather/space-weather-us.pdf)
+* ==new== [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](exoplanets/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](exoplanets/exoplanets-us.pdf)
+* ==new== [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](space-weather/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](space-weather/space-weather-us.pdf)
 * [**Using embedPy to apply LASSO regression**](embedpy-lasso/) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](embedpy-lasso/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](embedpy-lasso/embedpy-lasso-us.pdf)
 
 
@@ -64,7 +64,7 @@
 * [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/) &nbsp; <i class="fas fa-print"></i> <small>[A4](query-routing/query-routing-a4.pdf), [US&nbsp;Letter](query-routing/query-routing-us.pdf)</small>
 * ==new== [Working with **sym files**](symfiles/) &nbsp; <i class="fas fa-print"></i> <small>[A4](symfiles/symfiles-a4.pdf), [US&nbsp;Letter](symfiles/symfiles-us.pdf)</small>
 * Kdb+tick profiling for **throughput optimization** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdbtick_profiling_for_throughput_optimization.pdf)
-* **Time-series simplification** in kdb+: a method for dynamically shrinking Big Data &nbsp; <i class="fa fa-print"></i> <small>[A4](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)</small>
+* **Time-series simplification** in kdb+: a method for dynamically shrinking Big Data &nbsp; <i class="fas fa-print"></i> <small>[A4](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)</small>
 
 * 
 

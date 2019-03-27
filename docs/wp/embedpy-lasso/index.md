@@ -35,7 +35,7 @@ In this section, we introduce some core elements of embedPy that will be
 used in the LASSO regression problem that follows. 
 
 <i class="far fa-hand-point-right"></i>
-[Full documentation for embedPy](/ml/embedpy)
+[Full documentation for embedPy](../../ml/embedpy.md)
 
 
 ### Installing embedPy in kdb+

@@ -101,5 +101,5 @@ dd/[mm|MMM]/[yy]yy  / \z 1
 [`\z` (date format)](../basics/syscmds.md#z-date-parsing)  
 [`.h.iso8601`](doth.md#hiso8601-iso-timestamp)  
 Basics: [Casting](../basics/casting.md)  
-[`$` dollar](overloads/#dollar)
+[`$` dollar](overloads.md#dollar)
 

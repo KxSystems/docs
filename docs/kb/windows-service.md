@@ -11,7 +11,7 @@ keywords: kdb+, nt, q, service, srvany, windows
 
 SrvAny is a tool from the Windows NT Resource Kit, used for running Windows NT applications as services. 
 
-<i class="fa fa-download"></i> 
+<i class="fas fa-download"></i> 
 [ftp.microsoft.com](ftp://ftp.microsoft.com/bussys/winnt/winnt-public/reskit/nt40/i386/srvany_x86.exe)
 
 To create a Windows NT user-defined service: 

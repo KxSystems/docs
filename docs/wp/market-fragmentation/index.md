@@ -310,7 +310,7 @@ All tests were performed with kdb+ 3.0 (2012.09.26)
 
 ## Appendix
 
-The code in this appendix can be found on Github at <i class="fa fa-github"></i> [kxcontrib/market-fragmentation](https://github.com/kxcontrib/market-fragmentation).
+The code in this appendix can be found on Github at <i class="fab fa-github"></i> [kxcontrib/market-fragmentation](https://github.com/kxcontrib/market-fragmentation).
 
 ```q
 ////////////////////////////////

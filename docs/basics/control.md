@@ -99,7 +99,7 @@ q)goo 3
 
 : evaluate some expression/s if some condition holds 
 
-[`while`](//ref/while.md)
+[`while`](../ref/while.md)
 
 : evaluate some expression/s while some condition holds
 

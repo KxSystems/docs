@@ -58,7 +58,7 @@ The result is always a float.
 [`div`](div.md), 
 [`ratios`](ratios.md)  
 Basics: [Mathematics](../basics/math.md)  
-_Q for Mortals_: [§4.4 Basic Arithmetic](http://code.kx.com/q4m3/4_Operators/#44-basic-arithmetic-)
+_Q for Mortals_: [§4.4 Basic Arithmetic](/q4m3/4_Operators/#44-basic-arithmetic-)
 
 
 ## Errors

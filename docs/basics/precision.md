@@ -160,7 +160,7 @@ q)0=a-(a-1)      / a is not strictly equal to a-1
 To see how this works, first set the print precision so that all digits of floating-point numbers are displayed.  
 
 <i class="far fa-hand-point-right"></i> 
-[`\P` Precision](/basics/syscmds/#p-precision)
+[`\P` Precision](syscmds.md#p-precision)
 
 ```q
 \P 18

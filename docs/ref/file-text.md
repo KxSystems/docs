@@ -89,7 +89,7 @@ Syntax: `(types;delimiter;flag) 0: y`, `0:[(types;delimiter;flag);y]`
 
 Where `y` is a _file descriptor_, a string, or a list of strings, returns a vector or matrix interpreted from the content of `y`, where
 
--   `types` is a list of [types](datatypes/#primitive-datatypes) in upper case,
+-   `types` is a list of [types](../basics/datatypes.md#primitive-datatypes) in upper case,
 -   `delimiter` is a char atom or 1-item list,
 -   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`. 
 
@@ -123,7 +123,7 @@ Syntax: `(types; widths) 0: y`, `0:[(types;widths);y]`
 
 Where `y` is a _file descriptor_ (see above) or a list of strings, returns a vector or matrix interpreted from the content of `y`, where 
 
--   `types` is a list of [types](datatypes/#primitive-datatypes) in upper case
+-   `types` is a list of [types](../basics/datatypes.md#primitive-datatypes) in upper case
 -   `widths` is an int vector of field widths
 
 ```q
@@ -204,5 +204,5 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 [Casting](../basics/casting.md), 
 [Datatypes](../basics/datatypes.md), 
 [File system](../basics/files.md),
-[How do I import a CSV file into a table](..//kb/faq.md/#how-do-i-import-a-csv-file-into-a-table)
+[How do I import a CSV file into a table](../kb/faq.md#how-do-i-import-a-csv-file-into-a-table)
 

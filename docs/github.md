@@ -31,7 +31,7 @@ about new repositories.</div>
 	<td class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
 	<td>
 		calling Python from q 
-		[<i class="fa fa-share-alt"></i>](ml/index.md "Machine learning")
+		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
@@ -50,7 +50,7 @@ about new repositories.</div>
 	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
 	<td>
 		Jupyter kernel for kdb+
-		[<i class="fa fa-share-alt"></i>](ml/index.md "Machine learning")
+		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
@@ -76,34 +76,34 @@ about new repositories.</div>
 <tr>
 	<td class="nowrap">[nlp](https://github.com/awilson-kx/nlp)</td>
 	<td>
-		demonstration notebook for [Natural-language processing](/ml/nlp)
-		[<i class="fas fa-share-alt"></i>](/ml "Machine learning")
+		demonstration notebook for [Natural-language processing](ml/nlp)
+		[<i class="fas fa-share-alt"></i>](ml "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[notebooks](https://github.com/awilson-kx/notebooks)</td>
 	<td>
-		demonstration notebooks for [embedPy](/ml/embedpy)
-		[<i class="fa fa-share-alt"></i>](/ml "Machine learning")
+		demonstration notebooks for [embedPy](ml/embedpy)
+		[<i class="fas fa-share-alt"></i>](ml "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[pyq](https://github.com/KxSystems/pyq)</td>
 	<td>
 		calling Python from q
-		[<i class="fab fa-superpowers"></i>](/interfaces/fusion "Fusion interfaces")
+		[<i class="fab fa-superpowers"></i>](interfaces/fusion "Fusion interfaces")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[rkdb](https://github.com/KxSystems/rkdb)</td>
 	<td>
 		R client for q
-		[<i class="fab fa-superpowers"></i>](/interfaces/fusion "Fusion interfaces")
+		[<i class="fab fa-superpowers"></i>](interfaces/fusion "Fusion interfaces")
 	</td>
 </tr>
 </table>
 
-## <i class="fa fa-star"></i> Featured
+## <i class="fas fa-star"></i> Featured
 
 <small>Repositories by kdb+ users</small>
 
@@ -129,7 +129,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fa fa-industry"></i> Applications
+## <i class="fas fa-industry"></i> Applications
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -224,7 +224,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fa fa-wrench"></i> Development tools
+## <i class="fas fa-wrench"></i> Development tools
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -281,7 +281,7 @@ about new repositories.</div>
 <td>General object display with type and structure <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
-	<i class="fa fa-star" title="Featured repository"></i>
+	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 <tr>
@@ -311,7 +311,7 @@ about new repositories.</div>
 						(Mohammad Noor)
 					</a>
 				</span>
-<i class="fa fa-star" title="Featured repository"></i>
+<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 <tr>
@@ -389,7 +389,7 @@ about new repositories.</div>
 <td>Code profiler <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
-	<i class="fa fa-star" title="Featured repository"></i>
+	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 <tr>
@@ -439,7 +439,7 @@ about new repositories.</div>
 <td>A rapid-development environment for q. <span class="author"><a href="https://github.com/CharlesSkelton/?tab=repositories">
 						(Charles Skelton)
 					</a></span>
-	<i class="fa fa-star" title="Featured repository"></i>
+	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 <tr>
@@ -468,13 +468,13 @@ about new repositories.</div>
 <td>Workspace utilities <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
-	<i class="fa fa-star" title="Featured repository"></i>
+	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 </table>
 
 
-## <i class="fa fa-eye"></i> Examples
+## <i class="fas fa-eye"></i> Examples
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -503,7 +503,7 @@ about new repositories.</div>
 <td>Recursive aggregating treetable and 3-D pivot table for hypergrid. <span class="author"><a href="https://github.com/stevanapter?tab=repositories">
 						(Stevan Apter)
 					</a></span>
-	<i class="fa fa-star" title="Featured repository"></i>
+	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 <tr>
@@ -624,7 +624,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fa fa-share-alt"></i> Machine learning
+## <i class="fas fa-share-alt"></i> Machine learning
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -700,7 +700,7 @@ about new repositories.</div>
 
 
 
-## <i class="fa fa-superscript"></i> Mathematics
+## <i class="fas fa-superscript"></i> Mathematics
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -741,7 +741,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fa fa-cogs"></i> Utilities
+## <i class="fas fa-cogs"></i> Utilities
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -935,7 +935,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fa fa-share-alt-square"></i> kxcontrib
+## <i class="fas fa-share-alt-square"></i> kxcontrib
 
 !!! warning "Salvaged repositories"
 	<i class="fab fa-github"></i> [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 

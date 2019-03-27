@@ -863,7 +863,7 @@ k('0 1 2 3 4 5 5 5 5 5')
 
 ##### The `^` operator
 
-Unlike Python, where caret (`^`) is the binary _xor_ operator, q defines it to denote the [fill](http://code.kx.com/q/ref/lists/#fill) operation that replaces null values in the right argument with the left argument. PyQ follows the q definition:
+Unlike Python, where caret (`^`) is the binary _xor_ operator, q defines it to denote the [fill](../../ref/fill.md) operation that replaces null values in the right argument with the left argument. PyQ follows the q definition:
 
 ```python
 >>> x = q('1 0N 2') >>> 0 ^ x

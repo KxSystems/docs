@@ -11,7 +11,7 @@ _Add rows or columns to a table_
 
 ## `update`
 
-<i class="far fa-hand-point-right"></i> [_Q for Mortals_: The `update` template](http://code.kx.com/q4m3/9_Queries_q-sql/#95-the-update-template),
+<i class="far fa-hand-point-right"></i> [_Q for Mortals_: The `update` template](/q4m3/9_Queries_q-sql/#95-the-update-template),
 Basics: [q-SQL](../basics/qsql.md)
 
 

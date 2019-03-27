@@ -60,6 +60,6 @@ callback:{[clientHandle;result]
 ```
 
 <i class="far fa-hand-point-right"></i> 
-Basics: [Internal `-30!x`](../basics/internal.md/#-30x-deferred-response)  
+Basics: [Internal `-30!x`](../basics/internal.md#-30x-deferred-response)  
 [Namespace `.z`](../ref/dotz.md)
 

@@ -111,7 +111,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </tr>
 </table>
 
-<!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md/#unary-forms)</td> -->
+<!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
 ## [Attributes](../basics/syntax.md#attributes)
 

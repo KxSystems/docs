@@ -151,7 +151,7 @@ q)10 vs(1995;1996 1997)
 
 
 <i class="far fa-hand-point-right"></i> 
-[`sv`](/ref/sv.md#decode) decode  
+[`sv`](sv.md#decode) decode  
 [`.Q.j10`](dotq.md#qj10-encode-binhex) encode binhex   
 [`.Q.x10`](dotq.md#qx10-decode-binhex) decode binhex   
 [`.Q.j12`](dotq.md#qj12-encode-base64) encode base64   

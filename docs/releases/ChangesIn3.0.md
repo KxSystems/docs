@@ -30,7 +30,7 @@ At the moment there's no need to recompile standalone apps, i.e. that do not loa
 
 Kdb+V3.0 has support for WebSockets according to RFC 6455, and has been tested with Chrome and Firefox. It is expected that other browsers will catch up shortly.
 
-A new type has also been added – Guid. See [Datatypes](/ref/datatypes/#guid)
+A new type has also been added – Guid. See [Datatypes](../basics/datatypes.md#guid)
 
 -   `plist` has been removed.
 -   date+time-timestamp, previously this resulted in datetime type which has been deprecated since V2.6.

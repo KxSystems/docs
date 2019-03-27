@@ -169,7 +169,7 @@ q)key x
 
 ## `til`
 
-Where `x` is a non-negative integer returns the same result as [`til`](arith-integer/#til).
+Where `x` is a non-negative integer returns the same result as [`til`](til.md).
 
 ```q
 q)key 10

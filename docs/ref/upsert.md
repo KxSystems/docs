@@ -46,4 +46,4 @@ q)`a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)   / same but updating table in place
 [Join](join.md)  
 Basics: [Joins](../basics/joins.md),
 [q-SQL](../basics/qsql.md)  
-_Q for Mortals_: [§9.2 Upsert](http://code.kx.com/q4m3/9_Queries_q-sql/#92-upsert)
+_Q for Mortals_: [§9.2 Upsert](/q4m3/9_Queries_q-sql/#92-upsert)

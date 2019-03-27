@@ -133,5 +133,5 @@ q)2 wsum 1 2 4       / equivalent to sum 2 * 1 2 4
 
 <i class="far fa-hand-point-right"></i> 
 Wikipedia: [Weighted sum](https://en.wikipedia.org/wiki/Weight_function)  
-Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)

@@ -77,5 +77,7 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 
 
 <i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: [Mathematics](../basics/math.md)
+Knowledge Base: 
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+Basics: 
+[Mathematics](../basics/math.md)

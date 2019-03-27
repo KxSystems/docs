@@ -33,7 +33,7 @@ q)t1~t2
 
 
 <i class="far fa-hand-point-right"></i> 
-_Q for Mortals_: [§9.0 Queries: q-sql](http://code.kx.com/q4m3/9_Queries_q-sql/#90-overview)
+_Q for Mortals_: [§9.0 Queries: q-sql](/q4m3/9_Queries_q-sql/#90-overview)
 
 
 keyword                      | semantics

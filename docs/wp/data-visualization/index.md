@@ -12,7 +12,7 @@ keywords: data, kdb+, ODBC, Tableau, visualization
 Business intelligence (BI) tools are widely used across many industries
 for their interactive nature, which enables users to create and
 customize dynamic data visualizations easily. Kx provides its own
-visualization tool, [_Dashboards for Kx_](http://code.kx.com/q/platform), but clients might have incumbent
+visualization tool, [_Dashboards for Kx_](/platform/dashboards/index.md), but clients might have incumbent
 solutions they wish to connect to kdb+.
 
 Alternatively, many organizations might wish to migrate their back-end
@@ -62,7 +62,7 @@ Michaela Woods is a kdb+ consultant for Kx. Based in London for the past three y
 ## Connecting to kdb+ using ODBC
 
 Instructions on how to connect kdb+ from Tableau Desktop for both
-Windows and Linux can be found at [Interfaces/Kdb+ server for ODBC3](/interfaces/q-server-for-odbc3).
+Windows and Linux can be found at [Interfaces: Kdb+ server for ODBC3](../../interfaces/q-server-for-odbc3.md).
 
 For an ODBC driver to connect to an application, it needs a DSN
 (Data Source Name). 
