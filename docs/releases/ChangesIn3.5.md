@@ -9,7 +9,7 @@ Below is a summary of changes from V3.4. Commercially licensed users may obtain 
 
 ## Enhanced debugger
 
-In V3.5, the debugger has been extended to include the backtrace of the q call stack, including the current line being executed, the filename, line and character offset of code, with a visual indicator (caret) pointing to the operator which failed. The operator and arguments may be captured programmatically for further propagation in error reporting. Backtraces may also be printed at any point by inserting the `.Q.bt[]` command in your code. Please see [here](../ref/debug) for further details.
+In V3.5, the debugger has been extended to include the backtrace of the q call stack, including the current line being executed, the filename, line and character offset of code, with a visual indicator (caret) pointing to the operator which failed. The operator and arguments may be captured programmatically for further propagation in error reporting. Backtraces may also be printed at any point by inserting the `.Q.bt[]` command in your code. Please see [here](../basics/debug.md) for further details.
 
 
 ## Concurrent memory allocator

@@ -103,7 +103,7 @@ q)goo 3
 
 : evaluate some expression/s while some condition holds
 
-!!! warning "Control words are not functions, cannot be arguments or list items, and do not return results."
+!!! warning "Control words are not functions and return as a result only the generic null."
 
 Control words are little used in practice for iteration.
 [Iterators](../ref/iterators.md) are more commonly used.

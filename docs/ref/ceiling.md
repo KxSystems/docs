@@ -23,7 +23,7 @@ q)ceiling 01b
 
 ## Comparison tolerance
 
-Prior to V3.0, `ceiling` used [comparison tolerance](../kb/precision.md#comparison-tolerance).
+Prior to V3.0, `ceiling` used [comparison tolerance](../basics/precision.md#comparison-tolerance).
 
 ```q
 q)ceiling 2 + 10 xexp -12 -13
