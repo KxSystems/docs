@@ -24,7 +24,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>can't </td> <td/> <td>Only commercially licensed kdb+ instances can encrypt code in a script</td> </tr>
 <tr><td>cast</td> <td class="nowrap">``s:`a`b; c:`s$`a`e``</td> <td>Value not in enumeration</td> </tr>
 <tr><td>con</td> <td/> <td>qcon client is not supported when kdb+ is in [multithreaded input mode](../kb/multithreaded-input.md)</td> </tr>
-<tr><td>cond</td> <td/> <td>Even number of arguments to `$`</td> </tr>
+<tr><td>cond</td> <td/> <td>Even number of arguments to `$` (until V3.6 2018.12.06)</td> </tr>
 <tr><td>conn</td> <td/> <td>Too many connections (1022 max)</td> </tr>
 <tr><td>Could not initialize ssl</td><td/><td>[`(-26!)[]`](internal.md#-26x-ssl) found SSL/TLS not enabled</td></tr>
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
