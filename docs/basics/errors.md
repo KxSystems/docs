@@ -109,6 +109,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr><td>value</td> <td/> <td>No value</td> </tr>
 <tr><td>vd1</td> <td/> <td>Attempted multithread update</td> </tr>
 <tr><td>view</td> <td/> <td>Trying to re-assign a [view](../learn/views.md) to something else</td> </tr>
+<tr><td>-w init via cmd line</td> <td/> <td>Trying to allocate memory with [`\w`](syscmds.md#w-workspace) without `-w` on command line</td> </tr>
 <tr>
 <td>wsfull</td>
 <td class="nowrap">`999999999#0j`</td>

@@ -517,10 +517,10 @@ q){x where x like"????"}system"v .h"
 
 ## `\w` (workspace)
 
-Syntax: `\w [0]`
+Syntax: `\w [0|1|n]`
 
-If there is no parameter, lists current memory usage, as a list of 6 long integers:
-  
+If there is no parameter, returns current memory usage, as a list of 6 long integers.
+
 index | meaning
 :----:|--------
 0     | number of bytes allocated
@@ -530,7 +530,12 @@ index | meaning
 4     | mapped bytes
 5     | physical memory
 
-If there is a parameter, returns a pair:
+```q
+q)\w
+168144 67108864 67108864 0 0 8589934592
+```
+  
+`\w 0` or `\w 1` returns a pair.
   
 index | meaning
 :----:|--------
@@ -538,13 +543,39 @@ index | meaning
 1     | corresponding memory usage
 
 ```q
-q)\w
-168144 67108864 67108864 0 0 8589934592j
 q)\w 0
-577 25436j
+577 25436
 ```
 
 The utility [`.Q.w`](../ref/dotq.md#qw-memory-stats) formats all this information.
+
+
+**Run-time increase** 
+Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, if it was initialized via the 
+[`-w` command-line option](cmdline.md#-w-memory). 
+E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it. 
+
+Specifying too large a number will fall back to the same behavior as `\w 0` or `\w 1`.
+
+```q
+q)\w
+339168 67108864 67108864 104857600 0 8589934592
+q)\w 0
+651 28009
+q)\w 128
+134217728
+q)\w 1000000000
+1048576000000000
+q)\w 1000000000000
+651 28009
+```
+
+If the workspace limit has not been set by the command-line option `-w`, an error is signalled.
+
+```q
+q)\w 3
+'-w init via cmd line
+```
 
 
 ## `\W` (week offset)
