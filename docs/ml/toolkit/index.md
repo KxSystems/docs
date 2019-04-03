@@ -15,7 +15,7 @@ These have been produced to provide kdb+ users with general-use functions and pr
 
 The toolkit contains:
 
--   Utility functions relating to important aspects of machine learning including [data preprocessing](utilities/preproc), [statistical metrics](utilities/metrics), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util). 
+-   Utility functions relating to important aspects of machine learning including [data preprocessing](utilities/preproc), [statistical metrics](utilities/metric), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util). 
 
 -   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. 
     This lets a q/kdb+ user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
@@ -51,7 +51,7 @@ conda install --file requirements.txt
 
 !!! warning "Running notebooks"
 
-    Running notebooks within the [Utilities](utils.md) and [FRESH](fresh.md) sections requires [JupyterQ](../jupyterq/) as well as embedPy.
+    Running notebooks within the [FRESH](fresh.md) section requires [JupyterQ](../jupyterq/) as well as embedPy.
     However this is not a requirement for the toolkit itself.
 
 

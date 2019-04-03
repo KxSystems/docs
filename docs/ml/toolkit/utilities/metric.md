@@ -21,6 +21,7 @@ Statistical analysis metrics
   .ml.confmat       Confusion matrix
   .ml.corrmat       Table-like correlation matrix for a simple table
   .ml.crossentropy  Categorical cross entropy
+  .ml.crm           Correlation matrix
   .ml.cvm           Covariance matrix
   .ml.describe      Descriptive information about a table
   .ml.f1score       F1-score on classification results
@@ -80,7 +81,7 @@ Where
 * `x` is a vector of predicted labels.
 * `y` is a vector of true labels.
 
-returns the accuracy, precision and f1 scores and the support (number of occurrences) of each class.
+returns the accuracy, precision, f1 scores and the support (number of occurrences) of each class.
 
 ```q
 q)n:1000

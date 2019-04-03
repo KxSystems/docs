@@ -33,7 +33,11 @@ _Remove columns with zero variance_
 
 Syntax: `.ml.dropconstant[x]`
 
-Where `x` is a numerical table, returns `x` without columns of zero variance.
+Where 
+
+-  `x` is a numerical table
+
+returns `x` without columns of zero variance.
 
 ```q
 q)5#tab:([]1000?100f;1000#10;1000#0N)
@@ -182,7 +186,11 @@ _Replace +/- infinities with data min/max_
 
 Syntax: `.ml.infreplace[x]`
 
-Where `x` is a dictionary/table/list of numeric values. Returns the data with positive/negative infinities replaced by max/min values for the given key.
+Where 
+
+-  `x` is a dictionary/table/list of numeric values
+
+returns the data with positive/negative infinities replaced by max/min values for the given key.
 
 ```q
 q)show d:`A`B`C!(5 6 9 0w;10 -0w 0 50;0w 1 2 3)
@@ -310,7 +318,7 @@ Syntax: `.ml.onehot[t;c]`
 Where
 
 -  `t` simple table
--  `c` is a list of columns as symbols to apply encoding to. Setting as 0b will encode of all symbol columns
+-  `c` is a list of columns as symbols to apply encoding to. Setting as `::` will encode all symbol columns
 
 returns one-hot encoded representation as a table.
 
@@ -406,7 +414,7 @@ Where
 
 -  `x` is a simple numerical table, matrix or list
 
-returns a table where each column has undergone a standard scaling given expressed by the formula `(x-avg x)%dev x`.
+returns a table where each column has undergone a standard scaling given by the formula `(x-avg x)%dev x`.
 
 ```q
 q)n:5

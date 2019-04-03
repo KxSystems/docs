@@ -31,7 +31,11 @@ _Evenly-spaced values_
 
 Syntax: `.ml.arange[x;y;z]`
 
-Where `x`, `y`, and `z` are numeric atoms, returns a vector of evenly-spaced values between `x` (inclusive) and `y` (non-inclusive) in steps of length `z`.
+Where 
+
+-  `x`,`y`&`z` are numeric atoms
+
+returns a vector of evenly-spaced values between `x` (inclusive) and `y` (non-inclusive) in steps of length `z`.
 
 ```q
 q).ml.arange[1;10;1]
@@ -82,11 +86,15 @@ q)m .ml.combs[count m;3]
 
 ## `.ml.df2tab`
 
-_Convert from a Pandas DataFrame to q table_
+_Convert a Pandas DataFrame to q table_
 
 Syntax: `.ml.df2tab[x]`
 
-Where `x` is an embedPy representation of a Pandas DataFrame, returns it as a q table.
+Where 
+
+-  `x` is an embedPy representation of a Pandas DataFrame
+
+returns as a q table.
 
 ```q
 q)p)import pandas as pd
@@ -175,7 +183,11 @@ _Shape of a matrix_
 
 Syntax: `.ml.shape[x]`
 
-Where `x` is an object, returns its shape as a list of dimensions.
+Where 
+
+-  `x` is an object
+
+returns its shape as a list of dimensions.
 
 ```q
 q).ml.shape 10
@@ -203,7 +215,11 @@ _Convert a q table to Pandas dataframe_
 
 Syntax: `.ml.tab2df[x]`
 
-Where `x` is a table, returns it as a Pandas dataframe.
+Where 
+
+-  `x` is a table
+
+returns a Pandas dataframe.
 
 ```q
 q)n:5
