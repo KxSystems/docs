@@ -15,7 +15,7 @@ These have been produced to provide kdb+ users with general-use functions and pr
 
 The toolkit contains:
 
--   Utility functions relating to important aspects of machine learning including [data preprocessing](utilities/util), [cross-validation](utilities/xval), [statistical testing and array manipulation](utilities/ml), and various other functionality useful in many machine-learning applications. 
+-   Utility functions relating to important aspects of machine learning including [data preprocessing](utilities/preproc), [statistical metrics](utilities/metrics), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util). 
 
 -   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. 
     This lets a q/kdb+ user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
@@ -66,4 +66,3 @@ q).ml.loadfile`:init.q
 / This can also be acieved in one line provivded the library is located in `$QHOME`using
 q)\l ml/init.q
 ```
-

@@ -57,7 +57,7 @@ In particular, data should not contain text (strings or symbols), other than the
 
 ## Calculated features
 
-Feature-extraction functions are defined in the script `fresh.q` and found within the `.ml.fresh` namespace.
+Feature-extraction functions are defined in the script `fresh.q` and found within the `.ml.fresh.feat` namespace.
 
 function                         | returns 
 :--------------------------------|:--------------
@@ -77,7 +77,7 @@ hasdupmax[x]                     | Boolean value stating if a duplicate of the m
 indexmassquantile[x;q]           | Relative index `i` where `q`% of the time-series `x`’s mass lies left of `i`
 kurtosis[x]                      | Adjusted G2 Fisher-Pearson kurtosis
 lintrend[x]                      | Slope, intercept, r-value, p-value and standard error associated with the time series
-longstrikeltmean[x]               | Length of the longest subsequence in `x` less than the mean of `x`
+longstrikeltmean[x]              | Length of the longest subsequence in `x` less than the mean of `x`
 meanchange[x]                    | Mean over the absolute difference between subsequent t-series values
 mean2dercentral[x]               | Mean value of the central approximation of the second derivative of the time series
 numcrossingm[x;m]                | Number of crossings in the dataset over a value `m`: crossing is defined as sequential values either side of `m`, where the first is less than `m` and the second is greater or vice-versa
@@ -150,10 +150,9 @@ q)count cols singlefeatures
 73
 ```
 
-
 ## Feature significance
 
-Statistical-significance tests can be applied to the derived features, to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
+Statistical-significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
 
 feature type       | target type       | significance test 
 :------------------|:------------------|:------------------
@@ -215,8 +214,6 @@ returns a list of the k-best features defined as those with the lowest p-values.
 ```q
 q)show sigfeats:.ml.fresh.ksigfeat[value features;target;2]  / find the best 2 features
 `mean_col2`sumval_col2
-q)count sigfeats        / number of selected features
-2
 ```
 
 ## `.ml.fresh.percentilesigfeat`
@@ -234,7 +231,7 @@ Where
 returns a list of features in the top `p` percentile which are deemed most statistically significant based on p-values
 
 ```q
-q)show sigfeats:.ml.fresh.percentilesigfeat[value features;target;.05]  / set the percentile to be 5%
+q)show sigfeats:.ml.fresh.percentilesigfeat[value features;target;.05]  / percentile set at 5%
 `absenergy_col2`mean_col2`med_col2`sumval_col2`c3_1_col2`c3_2_col2`c3_3_col2`..
 q)count sigfeats        / number of selected features
 8

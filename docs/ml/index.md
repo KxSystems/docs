@@ -24,7 +24,6 @@ The [Machine Learning Toolkit](toolkit/) is at the core of q centered machine le
 
 -  Pre-processing data prior to the application of machine learning algoithms.
 -  Accuracy metrics to test the performance of the models built.
--  Cross validation functions to test the stability of models being produced under various conditions.
 -  An implementation of the FRESH algorithm for feature extraction and selection on structured time series data. 
 
 The library is available [here](https://github.com/KxSystems/ml).

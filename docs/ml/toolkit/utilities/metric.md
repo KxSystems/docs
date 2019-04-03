@@ -1,55 +1,49 @@
 ---
 author: Conor McCarthy
-date: March 2019
-keywords: confusion, correlation, accuracy, fscore, machine learning, ml, utilities,statistics, array, kdb+, q
+date: April 2019
+keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statistics, roc, auc, precision, logloss, cross entropy.
 ---
 
-# <i class="fa fa-share-alt"></i> .ml namespace 
+# <i class="fa fa-share-alt"></i> Statistical Metrics 
 
-
-The `.ml` namespace contains statistical functions used commonly in machine learning along with a number of functions used for array creation and manipulation.
+The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine learning algorithms. These cover the testing of both regression and classification results.
 
 <i class="fab fa-github"></i>
-[KxSystems/ml](https://github.com/kxsystems/ml/)
+[KxSystems/ml/util/metrics.q](https://github.com/kxsystems/ml/util/metrics.q)
 
-The following functions are those contained at present within the `.ml` namespace
+The following functions are those at present that are contained within the `metrics.q` file of the machine learning toolkit.
 
 ```txt
-.ml – Statistical analysis and vector creation
-  .accuracy      Accuracy of classification results
-  .arange        Evenly-spaced values within a range
-  .confdict      True/false positives and true/false negatives as dictionary
-  .confmat       Confusion matrix
-  .corrmat       Table-like correlation matrix for a simple table
-  .crossentropy  Categorical cross entropy
-  .cvm           Covariance matrix
-  .describe      Descriptive information about a table
-  .eye           Identity matrix
-  .f1score       F1-score on classification results
-  .fbscore       Fbeta-score on classification results
-  .kfshuff       K-fold non repeating indices
-  .kfxval        Basic K-Fold cross-validation
-  .linspace      List of evenly-spaced values
-  .logloss       Logarithmic loss
-  .mae           Mean absolute error
-  .mape          Mean absolute percentage error
-  .matcorr       Matthews correlation coefficient
-  .mse           Mean square error
-  .percentile    Percentile calculation for an array
-  .precision     Precision of a binary classifier
-  .r2score       R2-score
-  .range         Range of values
-  .rmse          Root mean square error
-  .rmsle         Root mean square logarithmic error
-  .roc           X- and Y-axis values for an ROC curve
-  .rocaucscore   Area under an ROC curve
-  .sensitivity   Sensitivity of a binary classifier
-  .shape         Shape of a matrix
-  .smape         Symmetric mean absolute error
-  .specificity   Specificity of a binary classifier
-  .sse           Sum squared error
-  .tscore        One-sample t-test score
-  .tscoreeq      T-test for independent samples with unequal variances
+Statistical analysis metrics
+  .ml.accuracy      Accuracy of classification results
+  .ml.classreport   Statistical information about classification results
+  .ml.confdict      True/false positives and true/false negatives as dictionary
+  .ml.confmat       Confusion matrix
+  .ml.corrmat       Table-like correlation matrix for a simple table
+  .ml.crossentropy  Categorical cross entropy
+  .ml.cvm           Covariance matrix
+  .ml.describe      Descriptive information about a table
+  .ml.f1score       F1-score on classification results
+  .ml.fbscore       Fbeta-score on classification results
+  .ml.logloss       Logarithmic loss
+  .ml.mae           Mean absolute error
+  .ml.mape          Mean absolute percentage error
+  .ml.matcorr       Matthews correlation coefficient
+  .ml.mse           Mean square error
+  .ml.percentile    Percentile calculation for an array
+  .ml.precision     Precision of a binary classifier
+  .ml.r2score       R2-score
+  .ml.range         Range of values
+  .ml.rmse          Root mean square error
+  .ml.rmsle         Root mean square logarithmic error
+  .ml.roc           X- and Y-axis values for an ROC curve
+  .ml.rocaucscore   Area under an ROC curve
+  .ml.sensitivity   Sensitivity of a binary classifier
+  .ml.smape         Symmetric mean absolute error
+  .ml.specificity   Specificity of a binary classifier
+  .ml.sse           Sum squared error
+  .ml.tscore        One-sample t-test score
+  .ml.tscoreeq      T-test for independent samples with unequal variances
 ```
 
 ## `.ml.accuracy`
@@ -75,19 +69,49 @@ q).ml.accuracy[10 2#20?10;10 2#20?10] / support for matrices of predictions and 
 ```
 
 
-## `.ml.arange`
+## `.ml.classreport`
 
-_Evenly-spaced values_
+_Statistical information about classification results_
 
-Syntax: `.ml.arange[x;y;z]`
+Syntax: `.ml.classreport[x;y]`
 
-Where `x`, `y`, and `z` are numeric atoms, returns a vector of evenly-spaced values between `x` (inclusive) and `y` (non-inclusive) in steps of length `z`.
+Where
+
+* `x` is a vector of predicted labels.
+* `y` is a vector of true labels.
+
+returns the accuracy, precision and f1 scores and the support (number of occurrences) of each class.
 
 ```q
-q).ml.arange[1;10;1]
-1 2 3 4 5 6 7 8 9
-q).ml.arange[6.25;10.5;0.05]
-6.25 6.3 6.35 6.4 6.45 6.5 6.55 6.6 6.65 6.7 6.75 6.8 6.85 6.9 6.95 7 7.05 7...
+q)n:1000
+q)xr:n?5
+q)yr:n?5
+q).ml.classreport[xr;yr]
+class     precision recall f1_score support
+-------------------------------------------
+0         0.2       0.23   0.22     179
+1         0.22      0.22   0.22     193
+2         0.21      0.21   0.21     192
+3         0.19      0.19   0.19     218
+4         0.21      0.17   0.19     218
+avg/total 0.206     0.204  0.206    1000
+q)xb:n?0b
+q)yb:n?0b
+q).ml.classreport[xb;yb]
+class     precision recall f1_score support
+-------------------------------------------
+0         0.51      0.51   0.51     496
+1         0.52      0.52   0.52     504
+avg/total 0.515     0.515  0.515    1000
+q)xc:n?`A`B`C
+q)yc:n?`A`B`C
+q).ml.classreport[xc;yc]
+class     precision recall f1_score support
+-------------------------------------------
+A         0.34      0.33   0.33     336
+B         0.33      0.36   0.35     331
+C         0.32      0.3    0.31     333
+avg/total 0.33      0.33   0.33     1000
 ```
 
 
@@ -106,47 +130,21 @@ Where
 returns a dictionary giving the count of true positives (tp), true negatives (tn), false positives (fp) and false negatives (fn).
 
 ```q
-q).ml.confdict[100?"AB";100?"AB";"A"]	/ non-numeric inputs
-tp| 25
-fn| 25
-fp| 21
-tn| 29
-q)confdict[100?0b;100?0b;1b]		/ boolean input
+q).ml.confdict[100?"AB";100?"AB";"A"]   / non-numeric inputs
+tn| 25
+fp| 25
+fn| 21
+tp| 29
+q).ml.confdict[100?0b;100?0b;1b]        / boolean input
 tn| 25
 fp| 27
 fn| 26
 tp| 22
-confdict[100?5;100?5;4]			/ supports multiclass by converting to boolean representation
+q).ml.confdict[100?5;100?5;4]           / supports multiclass by converting to boolean representation
 tn| 60
 fp| 18
 fn| 19
 tp| 3
-```
-
-
-## `.ml.confmat`
-
-_Confusion matrix_
-
-Syntax: `.ml.confmat[x;y]`
-
-Where
-
--   `x` is a vector of predicted labels
--   `y` is a vector of the true labels
-
-returns a dictionary representing a confusion matrix with counts.
-
-```q
-q).ml.confmat[100?0b;100?0b] / binary classifier
-0| 26 27
-1| 22 25
-q).ml.confmat[100?5;100?5]   / non-binary classifier
-0| 5 3 4 5 2
-1| 6 5 3 5 6
-2| 5 6 5 2 4
-3| 5 3 5 2 1
-4| 3 4 6 2 3
 ```
 
 
@@ -156,7 +154,11 @@ _Table-like correlation matrix for a simple table_
 
 Syntax: `.ml.corrmat[x]`
 
-Where `x` is a table of numeric values, returns a table representing a correlation matrix.
+Where 
+
+-  `x` is a table of numeric values
+
+returns a table representing a correlation matrix.
 
 ```q
 q)tab:([]A:asc 100?1f;B:desc 100?1000f;C:100?100)
@@ -192,6 +194,7 @@ q).ml.crossentropy[b;p]
 3.187829
 ```
 
+
 ## `.ml.cvm`
 
 _Covariance of a matrix_
@@ -202,7 +205,7 @@ Where
 
 -  `x` is a matrix
 
-Returns the covariance matrix
+returns the covariance matrix
 
 ```q
 q)show mat:(5?10;5?10;5?10)
@@ -222,7 +225,11 @@ _Descriptive information_
 
 Syntax: `.ml.describe[x]`
 
-Where `x` is a simple table, returns a tabular description of aggregate information (count, standard deviation, quartiles etc) for each numeric column.
+Where 
+
+-  `x` is a simple table
+
+returns a tabular description of aggregate information (count, standard deviation, quartiles etc) for each numeric column.
 
 ```q
 q)n:1000
@@ -238,28 +245,6 @@ q1   | 2491.828 250.75   249.75   24.38531
 q2   | 5000.222 500.5    499.5    49.96016
 q3   | 7453.287 750.25   749.25   74.98685
 max  | 9994.308 1000     999      99.98165
-```
-
-
-## `.ml.eye`
-
-_Identity matrix_
-
-Syntax: `.ml.eye[x]`
-
-Where
-
--  `x` is an integer atom
-
-returns an identity matrix of height/width `x`.
-
-```q
-q).ml.eye 5
-1 0 0 0 0
-0 1 0 0 0
-0 0 1 0 0
-0 0 0 1 0
-0 0 0 0 1
 ```
 
 
@@ -316,88 +301,6 @@ q).ml.fbscore[xb;yb;1b;.5]
 ```
 
 
-## `.ml.kfoldx`
-
-_K-Fold cross validation_
-
-Syntax: `.ml.kfoldx[x;y;i;fn]`
-
-Where
-
--   `x` is the data matrix
--   `y` is the target vector
--   `i` are the indices for the K-fold validation using `.ml.kfsplit`
--   `fn` is the model which is being passed to the function for cross validation
-
-returns the cross validated score for an applied machine-learning algorithm.
-```q
-n:10000
-q)xg:(n?100f;asc n?100f)        / 'good values' for linear regressor
-q)yg:asc n?100f
-q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
-q)reg1:.p.import[`sklearn.linear_model][`:SGDRegressor][]
-q)reg2:.p.import[`sklearn.linear_model][`:ElasticNet][]
-q)reg3:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
-q)folds:10                      / number of folds for data
-q)i:.ml.kfshuff[yg;folds]
-q).ml.kfoldx[xg;yg;i]each(reg;reg1;reg2;reg3)
-0.9998536 -1.24663e+24 0.9998393 0.9999997
-q)yb:n?100f                     / 'bad values' for linear regression
-q)xb:(n?100f;n?100f)
-q).ml.kfoldx[xb;yb;i]each(reg;reg1;reg2;reg3)
--0.009119423 -7.726559e+21 -0.009119348 -0.2275681
-```
-!!! note
-        This is an aliased version of the function `.ml.xval.kfoldx` which is contained in the `.ml.xval` namespace.
-
-
-## `.ml.kfshuff`
-
-_Randomized non repeating indices for K-fold cross validation_
-
-Syntax: `.ml.kfshuff[x;y]`
-
-Where
-
--   `x` is the target vector
--   `y` is the number of 'folds' which the data is to be split into
-
-returns randomized non repeating indices associated with each of K folds.
-
-```q
-q)yg:asc 1000?100f
-q).ml.kfshuff[yg;5]
-647 755 790 152 948 434 583 536 156 637 699 159 315 698 41  345 565 680 775 6..
-118 402 34  601 833 877 762 703 129 294 593 634 192 939 545 98  641 266 910 4..
-795 69  664 393 519 722 616 55  132 802 448 140 361 194 977 97  247 74  733 6..
-633 430 346 267 102 201 123 295 487 418 606 108 154 899 398 932 994 643 944 5..
-919 354 119 478 954 567 497 848 665 471 406 541 307 82  984 198 134 622 550 9..
-```
-!!! note
-        This is an aliased version of the function `.ml.xval.kfshuff` which is contained in the `.ml.xval` namespace.
-
-
-## `.ml.linspace`
-
-_Array of evenly-spaced values_
-
-Syntax: `.ml.linspace[x;y;z]`
-
-Where
-
--   `x` and `y` are numeric atoms
--   `z` is an int atom
-
-returns a vector of `z` evenly-spaced values between `x` (inclusive) and `y` (inclusive).
-
-```q
-q).ml.linspace[10;20;9]
-10 11.25 12.5 13.75 15 16.25 17.5 18.75 20
-q).ml.linspace[0.5;15.25;12]
-0.5 1.840909 3.181818 4.522727 5.863636 7.204545 8.545455 9.886364 11.22727 1..
-```
-
-
 ## `.ml.logloss`
 
 _Logarithmic loss_
@@ -437,9 +340,9 @@ returns the mean absolute error between predicted and true values.
 
 ```q
 q).ml.mae[100?0b;100?0b]
-45f
+0.44
 q).ml.mae[100?5;100?5]
-173f
+1.73
 ```
 
 
@@ -457,7 +360,7 @@ Where
 returns the mean absolute percentage error between predicted and true values. All values must be floats.
 
 ```q
-q)mape[100?5.0;100?5.0]
+q).ml.mape[100?5.0;100?5.0]
 660.9362
 ```
 
@@ -501,7 +404,6 @@ q).ml.mse[asc 100?1f;asc 100?1f]
 0.0004801384
 q).ml.mse[asc 100?1f;desc 100?1f]
 0.3202164
-```
 ```
 
 
@@ -568,6 +470,7 @@ q).ml.r2score[xg;yg]
 0.9966209
 q)xb:asc 1000?50f           / 'bad values'
 q)yb:desc 1000?50f
+q).ml.r2score[xb;yb]
 -2.981791
 ```
 
@@ -578,7 +481,11 @@ _Range of values_
 
 Syntax: `.ml.range[x]`
 
-Where `x` is a vector of numeric values, returns the range of its values.
+Where 
+
+-  `x` is a vector of numeric values
+
+returns the range of its values.
 
 ```q
 q).ml.range 1000?100000f
@@ -614,6 +521,7 @@ q)xb:n?100f
 q).ml.rmse[xb;yg]
 41.03232
 ```
+
 
 ## `.ml.rmsle`
 
@@ -701,34 +609,6 @@ q).ml.sensitivity[1000?`class1`class2;1000?`class1`class2;`class1]
 ```
 
 
-## `.ml.shape`
-
-_Shape of a matrix_
-
-Syntax: `.ml.shape[x]`
-
-Where `x` is an object, returns its shape as a list of dimensions.
-
-```q
-q).ml.shape 10
-`long$()
-q).ml.shape enlist 10
-,1
-q).ml.shape til 10
-,10
-q).ml.shape enlist til 10
-1 10
-q).ml.shape 2 5#til 10
-2 5
-q).ml.shape 2 3 4#til 24
-2 3 4
-q).ml.shape ([]c1:til 10;c2:0)
-10 2
-```
-
-!!! warning "Behavior of `.ml.shape` is undefined for ragged/jagged arrays."
-
-
 ## `.ml.smape`
 
 _Symmetric mean absolute percentage error_
@@ -743,9 +623,9 @@ Where
 returns the symmetric-mean absolute percentage between predicted and true values.
 
 ```q
-q)smape[100?0b;100?0b]
+q).ml.smape[100?0b;100?0b]
 92f
-q)smape[100?5;100?5]
+q).ml.smape[100?5;100?5]
 105.781
 ```
 
@@ -813,7 +693,8 @@ q).ml.tscore[x;y]
 7.634824
 ```
 
-!!! note "Above 30 samples a one-sample t-score is not statistically significant."
+!!! note 
+	"Above 30 samples a one-sample t-score is not statistically significant."
 
 
 ## `.ml.tscoreeq`
@@ -822,7 +703,11 @@ _T-test for independent samples with equal variances and equal sample size_
 
 Syntax: `.ml.tscoreeq[x;y]`
 
-Where `x` and `y` are independent sample sets with equal variance and sample size, returns their t-test score.
+Where 
+
+- `x` & `y` are independent sample sets with equal variance and sample size
+
+returns their t-test score.
 
 ```q
 q)x:10+(-.5+avg each 0N 20#1000?1f)*sqrt 20*12 / ~N(10,1)

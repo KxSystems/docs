@@ -425,11 +425,10 @@ nav:
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
       - Overview: ml/toolkit/index.md
-      - Utilities: ml/toolkit/utils.md
       - Utilities:
-        - .ml: ml/toolkit/utilities/ml.md
-        - .ml.util: ml/toolkit/utilities/utils.md
-        - .ml.xval: ml/toolkit/utilities/xval.md
+        - Metrics: ml/toolkit/utilities/metric.md
+        - Preprocessing: ml/toolkit/utilities/preproc.md
+        - Utils: ml/toolkit/utilities/util.md
       - FRESH: ml/toolkit/fresh.md  
     - Natural language processing: ml/nlp.md
     - embedPy: 
