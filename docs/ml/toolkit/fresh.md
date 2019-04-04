@@ -188,7 +188,7 @@ q)count 1_cols cfeatsnew     / 74 columns now being produced with subset of func
 !!!note
 	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning of the number and variety of calculations being completed to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the fresh.q file and provided their associated hyper-parameters are defined in `hyperparam.txt` they will execute via the above syntax.
 !!!warning
-	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter 4 had been a dictionary of the functions to be applied to the table was supplied. This worked well for producing features from functions that only took the data as input. To account for multi-parameter functions the structure outlined above has been used.
+	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
 
 ## Feature significance
