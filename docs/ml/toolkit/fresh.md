@@ -32,7 +32,7 @@ Notebooks showing examples of the FRESH algorithm used in different applications
 
 ## Loading
 
-Load the FRESH library using
+Load the FRESH library in isolation from the utilities section of the toolkit using
 
 ```q
 q)\l ml/ml.q
@@ -52,7 +52,7 @@ In particular, data should not contain text (strings or symbols), other than the
 
 !!! note
 
-    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [Utilities section](utilities/util.md) of the toolkit.
+    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [Preprocessing section](utilities/preproc.md) of the toolkit.
 
 
 ## Calculated features
@@ -131,7 +131,7 @@ date       time         col1 col2
 2000.01.01 00:00:00.007 500  0.5347096 
 2000.01.01 00:00:00.008 600  0.7111716 
 2000.01.01 00:00:00.009 250  0.411597  
-q)show ptab:.ml.fresh.params
+q)show ptab:.ml.fresh.params		/ for documentation purposes this table has been truncated
 f                       | pnum pnames         pvals                        valid
 ------------------------| ------------------------------------------------------
 absenergy               | 0    ()             ()                               1    
@@ -190,7 +190,7 @@ q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of init
 ```
 
 !!!note
-	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyper-parameters defined in `hyperparam.txt` matches the number of function parameters the function will execute as above.
+	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyperparameters defined in `hyperparam.txt` matches the number of function parameters the function will execute as above.
 !!!warning
 	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
@@ -229,12 +229,12 @@ returns a list of features deemed statistically significant as deemed by the Ben
 
 ```q
 q)target:value exec avg col2+.001*col2 by date from tab / combination of col avgs
-q)show sigfeats:.ml.fresh.benjhochfeat[value mulfeatures;target]  / threshold defaulted to 5%
+q)show sigfeats:.ml.fresh.benjhochfeat[value cfeats;target]  / threshold defaulted to 5%
 `mean_col2`sumval_col2`absenergy_col2`c3_1_col2`c3_2_col2`med_col2`quantile_0..
 q)count 2_cols tab      / number of raw features
 2
-q)count 1_cols mulfeatures / number of extracted features
-260
+q)count 1_cols cfeats / number of extracted features
+595
 q)count sigfeats        / number of selected features
 21
 ```
@@ -257,7 +257,7 @@ Where
 returns a list of the k-best features defined as those with the lowest p-values.
 
 ```q
-q)show sigfeats:.ml.fresh.ksigfeat[value features;target;2]  / find the best 2 features
+q)show sigfeats:.ml.fresh.ksigfeat[value cfeats;target;2]  / find the best 2 features
 `mean_col2`sumval_col2
 ```
 
@@ -276,7 +276,7 @@ Where
 returns a list of features in the top `p` percentile which are deemed most statistically significant based on p-values
 
 ```q
-q)show sigfeats:.ml.fresh.percentilesigfeat[value features;target;.05]  / percentile set at 5%
+q)show sigfeats:.ml.fresh.percentilesigfeat[value cfeats;target;.05]  / percentile set at 5%
 `absenergy_col2`mean_col2`med_col2`sumval_col2`c3_1_col2`c3_2_col2`c3_3_col2`..
 q)count sigfeats        / number of selected features
 8

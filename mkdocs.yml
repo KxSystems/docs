@@ -430,6 +430,12 @@ nav:
   - Machine learning:
     - Introduction: ml/index.md
     - Set up: ml/setup.md
+    - embedPy: 
+      - User guide: ml/embedpy/index.md
+      # - Running Python code: ml/embedpy/running.md
+      # - EmbedPy objects: ml/embedpy/objects.md
+      # - Function calls: ml/embedpy/functions.md
+    - JupyterQ: ml/jupyterq/index.md
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
       - Overview: ml/toolkit/index.md
@@ -439,16 +445,6 @@ nav:
         - Utils: ml/toolkit/utilities/util.md
       - FRESH: ml/toolkit/fresh.md  
     - Natural language processing: ml/nlp.md
-    - embedPy: 
-      - User guide: ml/embedpy/index.md
-      # - Running Python code: ml/embedpy/running.md
-      # - EmbedPy objects: ml/embedpy/objects.md
-      # - Function calls: ml/embedpy/functions.md
-      # - Printing and help: ml/embedpy/printing.md
-      # - Closures and generators: ml/embedpy/closures.md
-      - FAQ: ml/embedpy/faq.md
-      - Reference: ml/embedpy/reference.md
-    - JupyterQ: ml/jupyterq/index.md
   - Knowledge Base:
     - Introduction: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
