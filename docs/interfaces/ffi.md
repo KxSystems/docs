@@ -67,7 +67,7 @@ returns a q function, bound to the specifed C function for future calls. Useful 
 
 ### Passing data and getting results
 
-Throughout the library, characters are used to encode the types of data provided and expected as a result. These are based on the `c` column of [primitive data types](http://code.kx.com/q/ref/datatypes/#primitive-datatypes) and the corresponding upper case for vectors of the same type. The `sz` column is useful to work out what type can hold enough data passing to/from C.
+Throughout the library, characters are used to encode the types of data provided and expected as a result. These are based on the `c` column of [primitive data types](../basics/datatypes.md#primitive-datatypes) and the corresponding upper case for vectors of the same type. The `sz` column is useful to work out what type can hold enough data passing to/from C.
 
 The argument types are derived from data passed to the function (in case of `cf`) or explicitly specified (in case of `bind`). The number of character types provided must match the number of arguments expected by the C function.
 The return type is specified as a single character and can be `" "` (space), which means to discard the result (i.e. `void`). If not provided, defaults to `int`.

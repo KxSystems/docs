@@ -1,7 +1,7 @@
 # Installing kdb+
 
 
-## <i class="fa fa-download"></i> Download
+## <i class="fas fa-download"></i> Download
 
 ### Personal, non-commercial
 
@@ -15,7 +15,7 @@ Use the link below to obtain the 64-bit or 32-bit Personal Edition of kdb+.
 
 <button style="background: #0088ff; padding: 10px;" type="button">
   <a href="https://kx.com/connect-with-us/download/" style="color: white">
-    <span style="font-size: 2em"><i class="fa fa-download"></i> Get kdb+</span><br/>Personal, non-commercial
+    <span style="font-size: 2em"><i class="fas fa-download"></i> Get kdb+</span><br/>Personal, non-commercial
       <i class="fab fa-linux"></i>
       <i class="fab fa-apple"></i>
       <i class="fab fa-windows"></i>

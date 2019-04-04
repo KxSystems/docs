@@ -8,7 +8,7 @@ keywords: accumulator, adverb, applicable value, converge, dictionary, do, itera
 
 
 
-
+## I hate iterators!
 
 [Iterators](../../ref/iterators.md) (formerly known as _adverbs_) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill.
 
@@ -239,7 +239,7 @@ q)+\[1000;3 4 5]
 1003 1007 1012
 ```
 
-Notice that the derived function here is [_varaiadic_](../../basics/variadic.md): it can be applied as a unary or as a binary. 
+Notice that the derived function here is [_variadic_](../../basics/variadic.md): it can be applied as a unary or as a binary. 
 
 !!! info "Postfix yields infix"
 
@@ -272,7 +272,7 @@ Good q style minimises use of both brackets and parentheses.
 (Where they must be used, the less that appears between an opening bracket or parenthesis and its close, the better.) 
 So prefix application is usually better.
 
-!!! info "A variadic function can be applied prefix as a unary by parenthesizing it." 
+!!! info "An infix function can be applied prefix as a unary by parenthesizing it." 
 
 ```q
 q)(+\)3 4 5 6 7
@@ -297,7 +297,7 @@ q)count each("the";"quick";"brown";"fox")  / better q style
 3 5 5 3
 ```
 
-!!! tip "Parenthesize a binary function to use it as the left argument of a another function."
+!!! tip "Parenthesize an infix function to use it as the left argument of a another function."
 
 ```q
 q)(+) scan 3 4 5 6 7
@@ -437,7 +437,7 @@ q)deltas 4 8 3 2 2
 As a uniform function `-':` returns a list as long as its argument. 
 The first item of the result corresponds to the first item of the argument. 
 But, by definition, the first item of the argument has no previous item. 
-So, in the expression $4-y$, what is $y$? Above, it is zero. Zero is the [identity element](../../basics/glossary.md#identity-element) for Subtract: when $y$ is zero, $x-y$ is always $x$. (See [Each Prior](../../ref/maps/#each-prior) in the Reference for more on this and what happens with values which do not have a known identity element.) 
+So, in the expression $4-y$, what is $y$? Above, it is zero. Zero is the [identity element](../../basics/glossary.md#identity-element) for Subtract: when $y$ is zero, $x-y$ is always $x$. (See [Each Prior](../../ref/maps.md#each-prior) in the Reference for more on this and what happens with values which do not have a known identity element.) 
 
 We can use `{x,y}` to display the pairs that Each Prior finds.
 
@@ -457,7 +457,7 @@ q)(0,1#0#x) ~ first {x,y}':[x]
 1b
 ```
 
-A [table in the Reference](../../ref/iterators/#glyphs) tells us that with a binary value Each Prior derives a variadic function. So Subtract Each Prior can also be applied as a binary. 
+A [table in the Reference](../../ref/iterators.md#glyphs) tells us that with a binary value Each Prior derives a variadic function. So Subtract Each Prior can also be applied as a binary. 
 
 ```q
 q)0 -': 4 8 3 2 2
@@ -577,7 +577,7 @@ If `f` is rank 2 or higher, the number of evaluations is determined by the lengt
 
 There are three ways to determine the number of evaluations of `f1` performed by `f1\`. 
 
-A [table in the Reference](../../ref/iterators/#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
+A [table in the Reference](../../ref/iterators.md/#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
 
 
 ### Converge

@@ -19,7 +19,7 @@ This tutorial supposes you
 -   install 32-bit kdb+ on a 32-bit Ubuntu droplet, e.g. `16.04.5 x32`
 -   intend on the server to run one or more scripts, rather than interactive sessions
 
-To run 32-bit kdb+ on a 64-bit server, see the [notes for running 32-bit kdb+ on 64-bit Linux](linux/#64-bit-or-32-bit).
+To run 32-bit kdb+ on a 64-bit server, see the [notes for running 32-bit kdb+ on 64-bit Linux](linux.md#64-bit-or-32-bit).
 
 
 ## :fa-download: Download

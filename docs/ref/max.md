@@ -78,5 +78,8 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 
 <i class="far fa-hand-point-right"></i> 
 [Greater Than](greater-than.md)  
-Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: [Comparison](../basics/comparison.md), [Mathematics](../basics/math.md)
+Knowledge Base: 
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+Basics: 
+[Comparison](../basics/comparison.md), 
+[Mathematics](../basics/math.md)

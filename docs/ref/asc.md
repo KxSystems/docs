@@ -102,8 +102,7 @@ q)iasc `a`c`b!1 2 3
 ## `xasc`
 
 
-_Sorts a table in ascending order of specified columns. 
-The sort is by the first column specified, then by the second column within the first, and so on._
+_Sort a table in ascending order of specified columns._ 
 
 <div markdown="1" style="float: right; margin: 0 0 0 1em; padding: 0;">
 ![xasc](../img/xasc.png) 
@@ -117,6 +116,7 @@ Where `x` is a symbol vector of column names defined in table `y`, which is pass
 -    reference, updates
 
 `y` sorted in ascending order by `x`. 
+The sort is by the first column specified, then by the second column within the first, and so on.
 
 The `` `s# `` attribute is set on the first column given (if possible).
 The sort is stable, i.e. it preserves order amongst equals.

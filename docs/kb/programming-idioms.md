@@ -269,7 +269,7 @@ minute| vwap
 ..
 ```
 
-<i class="far fa-hand-point-right"></i> _Q for Mortals_ [§9.13.4 Meaty Queries](http://code.kx.com/q4m3/9_Queries_q-sql/#9134-meaty-queries)
+<i class="far fa-hand-point-right"></i> _Q for Mortals_ [§9.13.4 Meaty Queries](/q4m3/9_Queries_q-sql/#9134-meaty-queries)
 
 
 ## How do I extract regular-size vwap series?

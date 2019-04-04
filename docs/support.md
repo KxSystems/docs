@@ -49,7 +49,7 @@ This site is the primary resource for kdb+ developers.
 <i class="fas fa-question-circle"></i> Reference
 : The complete reference for q and kdb+, with a [reference card](ref/index.md), and formal definitions of q primitives, grouped by semantic topic.
 
-<i class="fas fa-book"></i> [_Q for Mortals 3_](http://code.kx.com/q4m3/)
+<i class="fas fa-book"></i> [_Q for Mortals 3_](/q4m3/)
 : An online edition of the classic textbook, now in its third edition. 
 
 <i class="far fa-map"></i> [Technical Whitepapers](wp/index.md)

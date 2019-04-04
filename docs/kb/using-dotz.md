@@ -62,7 +62,7 @@ The “tools” you have to work with are the `p`? functions from `.z`: [`.z.po`
 By default, execution is done using [`value`](../ref/value.md) so strings or symbol argument lists can be tested in a console. 
 
 <i class="far fa-hand-point-right"></i> 
-_Q for Mortals_: [§11.6 Interprocess Communication](http://code.kx.com/q4m3/11_IO/#116-interprocess-communication)
+_Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 
 ### `saveorig.q`
@@ -426,5 +426,5 @@ q)
 
 -   [Namespace `.z`](../ref/dotz.md ".z namespace")
 -   [Changes in V2.4](../releases/ChangesIn2.4.md)
--   _Q for Mortals_: [§11.6 Interprocess Communication](http://code.kx.com/q4m3/11_IO/#116-interprocess-communication)
+-   _Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 -   [Authentication and access](authentication.md)

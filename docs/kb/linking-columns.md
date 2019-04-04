@@ -7,7 +7,7 @@ keywords: column, foreign, kdb+, key, link, linking, q
 
 
 
-The concept of a link column is closely related to a [foreign-key](http://code.kx.com/q4m3/8_Tables/#85-foreign-keys-and-virtual-columns) column, in that it provides linkage between the values of a column in a table to the values in a column in a second table. The difference is that whereas a foreign-key column is an enumeration over the key column of a keyed table, a link column comprises indices into an arbitrary column of an arbitrary table.
+The concept of a link column is closely related to a [foreign-key](/q4m3/8_Tables/#85-foreign-keys-and-virtual-columns) column, in that it provides linkage between the values of a column in a table to the values in a column in a second table. The difference is that whereas a foreign-key column is an enumeration over the key column of a keyed table, a link column comprises indices into an arbitrary column of an arbitrary table.
 
 A link column is useful in situations where a key column is not available. For example, a table can contain a link to itself in order to create a parent-child relationship. You can also use links to create ‘foreign-key’ relationships between splayed tables, where foreign keys are not possible since a keyed table cannot be splayed.
 
@@ -20,7 +20,7 @@ We begin with the situation in which both tables reside in memory. In our first 
 q)t:([] id:101 102 103 104; v:1.1 2.2 3.3 4.4)
 ```
 
-To create the column `parent`, we look up the values in the key column using [`?`](../ref/find.md "Find") and then declare the link using `!` – instead of [`$`](../ref/enumerate.md "Enumerate") as we would for a [foreign key enumeration](http://code.kx.com/q4m3/8_Tables/#852-example-of-simple-foreign-key).
+To create the column `parent`, we look up the values in the key column using [`?`](../ref/find.md "Find") and then declare the link using `!` – instead of [`$`](../ref/enumerate.md "Enumerate") as we would for a [foreign key enumeration](/q4m3/8_Tables/#852-example-of-simple-foreign-key).
 
 ```q
 q)update parent:`t!id?101 101 102 102 from `t

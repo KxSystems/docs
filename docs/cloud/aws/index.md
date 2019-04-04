@@ -601,7 +601,7 @@ lightweight test script developed by Kx, called `nano`, based on
 the script `io.q` written by Kx’s Chief Customer Officer, Simon Garland. 
 The scripts used for this benchmarking are freely available
 for use and are published on Github at
-<i class="fa fa-github"></i> [KxSystems/nano](https://github.com/KxSystems/nano)
+<i class="fab fa-github"></i> [KxSystems/nano](https://github.com/KxSystems/nano)
 
 These sets of scripts are designed to focus on the relative performance of distinct I/O functions typically expected by a HDB. The measurements are taken from the perspective of the primitive IO operations, namely:
 

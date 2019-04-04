@@ -21,7 +21,7 @@ Where
 returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`.
 `binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
 
-They use a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?`.
+They use a binary-search algorithm, which is generally more efficient on large data than the linear-search algorithm used by `?` ([Find](find.md)).
 
 The items of `x` should be sorted ascending although `bin` does not verify that; if the items are not sorted ascending, the result is undefined. `y` can be either an atom or a simple list of the same type as the left argument.
 

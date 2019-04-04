@@ -8,7 +8,7 @@ keywords: at, backslash, bang, dash, dot, dollar, hash, kdb+, operator, overload
 
 
 Many non-alphabetic keyboard characters are overloaded.
-Operator overloads are resolved by **rank**, and sometimes by the **type** of argument/s. 
+Operator overloads are resolved by **rank**, and sometimes by the **type** of argument/s.
 
 
 ## `@` at
@@ -102,8 +102,8 @@ rank | syntax              | semantics
 rank | example                               | semantics
 :---:|---------------------------------------|---------------------------------------
 3    | `$[x>10;y;z]`                         | [Cond](cond.md): conditional evaluation
-2    | `"h"$y`, `` `short$y``, `11$y`        | [Cast](cast.md): cast datatype
-2    | `"H"$y`, `-11$y`                      | [Tok](tok.md): interpret string as data
+2    | `"h"$y`, `` `short$y``, `11h$y`       | [Cast](cast.md): cast datatype
+2    | `"H"$y`, `-11h$y`                     | [Tok](tok.md): interpret string as data
 2    | `x$y`                                 | [Enumerate](enumerate.md): enumerate `y` from `x`
 2    | `10$"abc"`                            | [Pad](pad.md): pad string
 2    | `(1 2 3f;4 5 6f)$(7 8f;9 10f;11 12f)` | dot product, matrix multiply, [`mmu`](mmu.md)
@@ -122,9 +122,9 @@ rank | example         | semantics
 rank | example                     | semantics
 :---:|-----------------------------|----------------------------------------------------
 2    | `"abcdef"?"cab"`            | [Find](find.md) `y` in `x`
-2    | `10?1000`, `5?01b`          | [Roll](roll-deal.md#roll)
-2    | `-10?1000`, ``-1?`yes`no``  | [Deal](roll-deal.md#deal)
-2    | `0N?1000`, ``0N?`yes`no``   | [Permute](roll-deal.md#permute)
+2    | `10?1000`, `5?01b`          | [Roll](deal.md#roll)
+2    | `-10?1000`, ``-1?`yes`no``  | [Deal](deal.md#deal)
+2    | `0N?1000`, ``0N?`yes`no``   | [Permute](deal.md#permute)
 2    | `x?v`                       | extend an enumeration: [Enum Extend](enum-extend.md)
 3    | ?[11011b;"black";"flock"]   | [Vector Conditional](vector-conditional.md)
 4    | `?[t;b;c;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)
@@ -160,9 +160,9 @@ rank | example  | semantics
 rank | syntax              | semantics
 :---:|---------------------|-----------------------------------------
 n/a  | `/a comment`        | comment: ignore rest of line
-1    | `(u/)y`, `u/[y]`    | [Converge](accumulators.md#converge) 
-1    | `n u/ y`, `u/[n;y]` | [Do](accumulators.md#do) 
-1    | `t u/ y`, `u/[t;y]` | [While](accumulators.md#while) 
+1    | `(u/)y`, `u/[y]`    | [Converge](accumulators.md#converge)
+1    | `n u/ y`, `u/[n;y]` | [Do](accumulators.md#do)
+1    | `t u/ y`, `u/[t;y]` | [While](accumulators.md#while)
 1    | `(v/)y`, `v/[y]`    | [map-reduce](accumulators.md#binary-values): reduce a list or lists
 
 ```txt
@@ -171,14 +171,14 @@ v: value rank ≥1            y: list
 n: non-negative int atom
 ```
 
-Syntax: a space followed by `/` begins a **trailing comment**. Everything to the right of `/` is ignored. 
+Syntax: a space followed by `/` begins a **trailing comment**. Everything to the right of `/` is ignored.
 
 ```q
 q)2+2 / we know this one
 4
 ```
 
-A `/` at the beginning of a line marks a **comment line**. The entire line is ignored. 
+A `/` at the beginning of a line marks a **comment line**. The entire line is ignored.
 
 ```q
 q)/nothing in this line is evaluated
@@ -210,7 +210,7 @@ rank | example      | semantics
 
 ## Unary forms
 
-Many of the operators tabulated above have unary forms in k. 
+Many of the operators tabulated above have unary forms in k.
 
 <i class="far fa-hand-point-right"></i> [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
 

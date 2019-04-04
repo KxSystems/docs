@@ -4,19 +4,60 @@ keywords: api, c, interface, kdb+, library, q
 
 # ![C](img/c.png) C client for kdb+
 
-<i class="far fa-hand-point-right"></i> [C API reference](capiref.md)
+<i class="far fa-hand-point-right"></i> 
+[C API reference](capiref.md)
 
 There are three cases in which to to use the C API for kdb+:
 
 1.   Dynamically-loaded library called by q, e.g. OS, math, analytics.  
 <i class="far fa-hand-point-right"></i> [Using C functions](using-c-functions.md)
 2.  Dynamically-loaded library doing callbacks into q, e.g. feedhandlers ([Bloomberg client](q-client-for-bloomberg.md))
-3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`. From <i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/KxSystems/kdb):
+3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`. 
 
-    architecture | Linux       | macOS     | Windows
-    -------------|-------------|-----------|--------------
-    32-bit       | [`l32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`w32/c.dll`](https://github.com/KxSystems/kdb/blob/master/w32/c.dll)
-    64-bit       | [`l64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o) | [`w64/c.dll`](https://github.com/KxSystems/kdb/blob/master/w64/c.dll)
+
+
+## Two sets of files
+
+To minimize dependencies for existing projects, there are now two sets of files available.
+
+<i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/kxsystems/kdb)
+
+The `e` set of files, those with SSL/TLS support, contain all the functionality of the `c` files.
+
+!!! warning "Do not link with both `c` and `e` files; just choose one set."
+
+
+### <i class="fab fa-linux"></i> Linux
+
+capability | dependencies | 32-bit | 64-bit 
+-----------|--------------|-----------|-----
+no SSL/TLS |              | [`l32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`l64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o) 
+SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`l64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)
+
+
+### <i class="fab fa-apple"></i> macOS
+
+capability | dependencies | 32-bit | 64-bit 
+-----------|--------------|-----------|-----
+no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o) 
+SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)
+
+
+### <i class="fab fa-windows"></i> Windows
+
+capability | dependencies | 32-bit | 64-bit 
+-----------|--------------|-----------|-----
+no SSL/TLS |              | [`w32/c.dll`](https://github.com/kxsystems/kdb/blob/master/w32/c.dll)<br>[`w32/c.lib`](https://github.com/kxsystems/kdb/blob/master/w32/c.lib)<br>[`w32/cst.dll`](https://github.com/kxsystems/kdb/blob/master/w32/cst.dll)<br>[`w32/cst.lib`](https://github.com/kxsystems/kdb/blob/master/w32/cst.lib)<br>[`w32/c_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/c_static.lib)<br>[`w32/cst_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/cst_static.lib) | [`w64/c.dll`](https://github.com/kxsystems/kdb/blob/master/w64/c.dll)<br>[`w64/c.lib`](https://github.com/kxsystems/kdb/blob/master/w64/c.lib)<br>[`w64/cst.dll`](https://github.com/kxsystems/kdb/blob/master/w64/cst.dll)<br>[`w64/cst.lib`](https://github.com/kxsystems/kdb/blob/master/w64/cst.lib)<br>[`w64/c_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/c_static.lib)<br>[`w64/cst_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/cst_static.lib)
+SSL/TLS    | OpenSSL      | [`w32/e.dll`](https://github.com/kxsystems/kdb/blob/master/w32/e.dll)<br>[`w32/e.lib`](https://github.com/kxsystems/kdb/blob/master/w32/e.lib)<br>[`w32/est.dll`](https://github.com/kxsystems/kdb/blob/master/w32/est.dll)<br>[`w32/est.lib`](https://github.com/kxsystems/kdb/blob/master/w32/est.lib)<br>[`w32/e_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/e_static.lib)<br>[`w32/est_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/est_static.lib) | [`w64/e.dll`](https://github.com/kxsystems/kdb/blob/master/w64/e.dll)<br>[`w64/e.lib`](https://github.com/kxsystems/kdb/blob/master/w64/e.lib)<br>[`w64/est.dll`](https://github.com/kxsystems/kdb/blob/master/w64/est.dll)<br>[`w64/est.lib`](https://github.com/kxsystems/kdb/blob/master/w64/est.lib)<br>[`w64/e_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/e_static.lib)<br>[`w64/est_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/est_static.lib)
+
+`c.lib` is a stub library which loads `c.dll` and resolves the functions dynamically; `e.lib` does the same for `e.dll`. 
+
+We no longer ship `c.obj` or `cst.obj`; they have been replaced by `c_static.lib` and `cst_static.lib`, and are complemented by `e_static.lib` and `est_static.lib` – these static libraries have no dependency on the aforementioned DLLs.
+
+`cst` continues to represent ‘single-threaded’ apps, those which on Windows have [issues due to the `LoadLibrary` API](#windows-and-the-loadlibrary-api).
+
+
+## Overview
 
 The best way to understand the underpinnings of q, and to interact with it from C, is to start with the header file available from 
 <i class="fab fa-github"></i> [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) .
@@ -554,15 +595,7 @@ int main(){
 
 ## SSL/TLS
 
-To use this feature, you must link with one of the “e” libs.
-
--   `e.dll`
--   `e.lib`
--   `est.dll`
--   `est.lib`
--   `e_static.lib`
--   `est_static.lib`
--   `e.o`
+To use this feature, you must link with one of [the `e` libs](#two-sets-of-files).
 
 Encrypted connections may be requested via the capability parameter of the new `khpunc` function, e.g.
 

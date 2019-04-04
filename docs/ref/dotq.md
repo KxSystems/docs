@@ -557,7 +557,8 @@ Syntax:
 
 Blah blah blah
 
-<i class="far fa-hand-point-right"></i> [Cookbook/Named Pipes](/cookbook/named-pipes)
+<i class="far fa-hand-point-right"></i> 
+Knowledge Base: [Named Pipes](../kb/named-pipes.md)
  -->
 
 ## `.Q.fps` (streaming algorithm)
@@ -1406,7 +1407,7 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 ```
 
 <i class="far fa-hand-point-right"></i> 
-_Q for Mortals_: [§14.5.8 `Q.view`](http://code.kx.com/q4m3/14_Introduction_to_Kdb+/#1458-qview)
+_Q for Mortals_: [§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 
 ## `.Q.vp` (missing partitions)

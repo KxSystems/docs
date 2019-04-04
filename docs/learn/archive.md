@@ -3,7 +3,7 @@
 
 
 
-## <i class="fa fa-book"></i> Articles
+## <i class="fas fa-book"></i> Articles
 
 * [A conversation with Arthur Whitney](http://queue.acm.org/detail.cfm?id=1531242) 2009
 * [An interview with Arthur Whitney](http://kx.com/media-coverage-arthur-2004.php) 2004
@@ -12,14 +12,14 @@
 * [Vector processing languages: the future of Big Data analytics and real-time business intelligence](http://conceptualorigami.blogspot.com/2010/12/vector-processing-languages-future-of.html) Conceptual Origami
 
 
-## <i class="fa fa-laptop"></i> Websites
+## <i class="fas fa-laptop"></i> Websites
 
 * [Jsoftware wiki](http://code.jsoftware.com/)
 * [no stinking loops](http://www.nsl.com) Stevan Apter
 
 
 
-## <i class="fa fa-book"></i> Older documents
+## <i class="fas fa-book"></i> Older documents
 
 
 * [Abridged q language manual](https://legaldocumentation.kx.com/q/d/q.htm), Arthur Whitney, 2009

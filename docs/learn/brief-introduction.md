@@ -594,7 +594,7 @@ To access the UI, start the smart-meter demo database on port 5600 and point you
 
     It is not hard to exceed the 32-bit memory limits of the free version of q when working on large datasets.
 
-![Smart Meter demo UI](/img/smartmeterui.png)
+![Smart Meter demo UI](../img/smartmeterui.png)
 
 
 ## What next?

@@ -21,8 +21,8 @@ To install, download
 
 | q        | q/l32 | q/l64 | q/w32 | q/w64 |
 |----------|-------|-------|-------|-------|
-| &ge;V3.0 | [`odbc.so` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/l32/odbc.so) | [odbc.so <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/l64/odbc.so) |  [`odbc.dll` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/w32/odbc.dll) | [`odbc.dll` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/w64/odbc.dll) |
-| &le;V2.8 | [`odbc.so` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/l32/odbc.so) | [`odbc.so` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/l64/odbc.so) | [`odbc.dll` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/w32/odbc.dll) | [`odbc.dll` <i class="fa fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/w64/odbc.dll) |
+| &ge;V3.0 | [`odbc.so` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/l32/odbc.so) | [odbc.so <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/l64/odbc.so) |  [`odbc.dll` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/w32/odbc.dll) | [`odbc.dll` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/master/w64/odbc.dll) |
+| &le;V2.8 | [`odbc.so` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/l32/odbc.so) | [`odbc.so` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/l64/odbc.so) | [`odbc.dll` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/w32/odbc.dll) | [`odbc.dll` <i class="fas fa-download"></i>](https://github.com/KxSystems/kdb/blob/fe18dbf88816e8b09f081493ee3ea099acce1af3/w64/odbc.dll) |
 
 !!! warning "Mixed versions"
 

@@ -39,12 +39,30 @@ q){$[x>0;1;x<0;-1;0]}'[0 3 -9]
 
 `$[q;$[r;a;b];c]` is not the same as `$[q;r;a;b;c]`.
 
-Cond with many arguments can be translated to triads by repeatedly replacing the last three arguments with the triad: `$[q;a;r;b;s;c;d]` is `$[q;a;$[r;b;$[s;c;d]]]`. So Cond always has an odd number of arguments.
+Cond with many arguments can be translated to triads by repeatedly replacing the last three arguments with the triad: `$[q;a;r;b;s;c;d]` is `$[q;a;$[r;b;$[s;c;d]]]`. 
+So Cond always has an odd number of arguments.
+(Until V3.6 2018.12.06 – see below.)
 
 These two expressions are equivalent:
+
 ```q
 q)$[0;a;r;b;c]
 q)    $[r;b;c]
+```
+
+
+## Even numbers of arguments
+
+Since V3.6 2018.12.06 an even number of arguments does not signal `'cond` but will return either a result or the generic null.
+
+```q
+q)$[1b;`true;1b;`foo]
+`true
+q)$[0b;`true;1b;`foo]
+`foo
+q)$[0b;`true;0b;`foo]           / return generic null
+q)$[0b;`true;0b;`foo]~(::)
+1b
 ```
 
 <i class="far fa-hand-point-right"></i> 

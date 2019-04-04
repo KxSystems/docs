@@ -161,7 +161,7 @@ a b
 ```
 
 <i class="far fa-hand-point-right"></i>
-_Q for Mortals_: [§9.3 The `select` Template](http://code.kx.com/q4m3/9_Queries_q-sql/#93-the-select-template)  
+_Q for Mortals_: [§9.3 The `select` Template](/q4m3/9_Queries_q-sql/#93-the-select-template)  
 Basics: [qSQL](../basics/qsql.md)
 
 

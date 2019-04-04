@@ -31,14 +31,16 @@ be included in a development project.
 Examples are then provided for core use cases for the API in a standard setup. 
 Particular consideration is given to how the API facilitates subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system.
 
-The examples presented here form a set of practical templates complementary to the [primary source of information](/interfaces/java-client-for-q) on code.kx.com.
+The examples presented here form a set of practical templates complementary to the [primary source of information](../../interfaces/java-client-for-q.md) on code.kx.com.
 These templates can be combined and adapted to apply kdb+ across a
-broad range of problem domains. They are available on <i class="fa fa-github"></i> [GitHub](https://github.com/kxcontrib/java-for-kdb-examples).
+broad range of problem domains. They are available on 
+<i class="fab fa-github"></i> 
+[GitHub](https://github.com/kxcontrib/java-for-kdb-examples).
 
 
 ## API overview  
 
-The API is contained in a <i class="fa fa-github"></i> [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
+The API is contained in a <i class="fab fa-github"></i> [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
 Inclusion in a development project is, therefore, a straightforward matter
 of including the file with other source code under the package `kx`, and
 ensuring it is properly imported and referenced by other classes. If
@@ -50,7 +52,7 @@ As the API is provided as source, it is perfectly possible to customize code to 
 However, without prior knowledge of how the interactions work, this is not advised unless the solution to these requirements or issues are known.
 It is also possible, and in some contexts encouraged, to wrap the
 functionality of this class within a model suitable for your framework.
-An example might be the open-source <i class="fa fa-github"></i> [qJava library](https://github.com/exxeleron/qJava). 
+An example might be the open-source <i class="fab fa-github"></i> [qJava library](https://github.com/exxeleron/qJava). 
 Although it is not compatible with the most recent kdb+ version at the time of writing, it shows how to use `c.java` as a core over which an object-oriented framework of q types and functionality has been applied.
 
 The source file is structured as a single outer class, `c`. 
@@ -83,7 +85,7 @@ public c(ServerSocket s,IAuthenticate a)
 `IAuthenticate` is an interface within the `c` class that can be
 implemented to emulate kdb+ server-side authentication, allowing the
 establishment of authentication rules similar to that which might be
-done through the kdb+ function [.z.pw](/ref/dotz/#zpw-validate-user).
+done through the kdb+ function [.z.pw](../../ref/dotz.md#zpw-validate-user).
 
 Both of these constructor families represent two ‘modes’ in which
 the `c` object can be instantiated. The first, and ultimately most
@@ -167,8 +169,7 @@ to standard Java objects. This is best seen in the method
 [`c.r()`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L709),
 which reads bytes from an incoming message and converts those bytes into
 representative Java types.
-
-A [full list of Java type mappings](/interfaces/java-client-for-q/#type-mapping) is on code.kx.com.
+../../interfaces/java-client-for-q.md#type-mapping) is on code.kx.com.
 
 
 ### Basic types  
@@ -289,7 +290,7 @@ API is that a `RuntimeException` will be thrown if an attempt is made to
 serialize and pass a UUID object to a kdb+ instance with a version lower
 than 3.0.
 
-More information on these identifier types can be found in the [Kx documentation](/ref/datatypes/#guid) as well as the
+More information on these identifier types can be found in the [Kx documentation](../../basics/datatypes.md#guid) as well as the
 [core Java documentation](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html).
 
 
@@ -839,7 +840,8 @@ simple dataflow of a potential kdb+ tick system:
 
 ![Simple dataflow of a potential kdb+ tick system](media/image2.png)
 
-<i class="fa fa-hand-o-right"></i> [_Building Real-time Tick Subscribers_](/wp/building_real_time_tick_subscribers.pdf) regarding the above vanilla setup
+<i class="far fa-hand-point-right"></i> 
+[_Building Real-time Tick Subscribers_](../building_real_time_tick_subscribers.pdf) regarding the above vanilla setup
 
 Of interest in this whitepaper are the Java publisher and subscriber processes. As the kdb+ tick system is very widely used, both of these kinds of processes are highly likely to come up in development tasks involving kdb+ interfacing.
 
@@ -895,7 +897,7 @@ the same as that covered here.
 ### Extracting the table schema
 
 Typical subscriber processes are required to make an initial subscription request to the tickerplant in order to receive data. 
-See the [publish and subscribe](/cookbook/publish-subscribe) cookbook article for details. 
+See the [publish and subscribe](../../kb/publish-subscribe) Knowledge Base article for details. 
 This request involves calling the `.u.sub` function with two
 parameters. The first parameter is the table name and the second is a
 list of symbols for subscription. (Specifying a backtick in any of the
@@ -1070,7 +1072,8 @@ int[] aSize = new int[]{1000, 2000};
 In order to maximize tickerplant throughput and efficiency, it is
 generally recommended to publish multiple rows in one go. 
 
-<i class="fa fa-hand-o-right"></i> whitepaper [_Kdb+tick Profiling for Throughput Optimization_](/wp/kdbtick_profiling_for_throughput_optimization.pdf).
+<i class="far fa-hand-point-right"></i> 
+White paper [_Kdb+tick Profiling for Throughput Optimization_](../kdbtick_profiling_for_throughput_optimization.pdf).
 
 Care has to be taken here to ensure that all typed arrays maintain
 the same length, as failure to do so will likely result in a kdb+

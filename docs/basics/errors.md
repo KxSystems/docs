@@ -6,7 +6,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 
 
 
-<!-- <i class="fa fa-hand-o-right"></i> Simon’s list <i class="far fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="far fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 
 ## Runtime errors
@@ -24,7 +24,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>can't </td> <td/> <td>Only commercially licensed kdb+ instances can encrypt code in a script</td> </tr>
 <tr><td>cast</td> <td class="nowrap">``s:`a`b; c:`s$`a`e``</td> <td>Value not in enumeration</td> </tr>
 <tr><td>con</td> <td/> <td>qcon client is not supported when kdb+ is in [multithreaded input mode](../kb/multithreaded-input.md)</td> </tr>
-<tr><td>cond</td> <td/> <td>Even number of arguments to `$`</td> </tr>
+<tr><td>cond</td> <td/> <td>Even number of arguments to `$` (until V3.6 2018.12.06)</td> </tr>
 <tr><td>conn</td> <td/> <td>Too many connections (1022 max)</td> </tr>
 <tr><td>Could not initialize ssl</td><td/><td>[`(-26!)[]`](internal.md#-26x-ssl) found SSL/TLS not enabled</td></tr>
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
@@ -109,6 +109,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr><td>value</td> <td/> <td>No value</td> </tr>
 <tr><td>vd1</td> <td/> <td>Attempted multithread update</td> </tr>
 <tr><td>view</td> <td/> <td>Trying to re-assign a [view](../learn/views.md) to something else</td> </tr>
+<tr><td>-w init via cmd line</td> <td/> <td>Trying to allocate memory with [`\w`](syscmds.md#w-workspace) without `-w` on command line</td> </tr>
 <tr>
 <td>wsfull</td>
 <td class="nowrap">`999999999#0j`</td>

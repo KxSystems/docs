@@ -48,11 +48,11 @@ q)"|" vs "red|green||blue"
 Where `x` is the empty symbol `` ` ``, and `y` is a string, returns as a list of strings `y` partitioned on embedded line terminators into lines. (Recognizes both Unix `\n` and Windows `\r\n` terminators).
 
 ```q
-q)\` vs "abc\ndef\nghi"
+q)` vs "abc\ndef\nghi"
 "abc"
 "def"
 "ghi"
-q)\` vs "abc\r\ndef\r\nghi"
+q)` vs "abc\r\ndef\r\nghi"
 "abc"
 "def"
 "ghi"
@@ -64,8 +64,8 @@ q)\` vs "abc\r\ndef\r\nghi"
 Where `x` is the empty symbol `` ` ``, and `y` is a symbol, returns as a symbol vector `y` split on `` `.` ``.
 
 ```q
-q)\` vs \`mywork.dat 
-\`mywork\`dat
+q)` vs `mywork.dat 
+`mywork`dat
 ```
 
 
@@ -74,8 +74,8 @@ q)\` vs \`mywork.dat
 Where `x` is the empty symbol `` ` ``, and `y` is a file handle, returns as a symbol vector `y` split into directory and  file parts.
 
 ```q
-q)\` vs \`:/home/kdb/data/mywork.dat
-\`:/home/kdb/data\`mywork.dat
+q)` vs `:/home/kdb/data/mywork.dat
+`:/home/kdb/data`mywork.dat
 ```
 
 <i class="far fa-hand-point-right"></i>
@@ -151,7 +151,7 @@ q)10 vs(1995;1996 1997)
 
 
 <i class="far fa-hand-point-right"></i> 
-[`sv`](/ref/sv.md#decode) decode  
+[`sv`](sv.md#decode) decode  
 [`.Q.j10`](dotq.md#qj10-encode-binhex) encode binhex   
 [`.Q.x10`](dotq.md#qx10-decode-binhex) decode binhex   
 [`.Q.j12`](dotq.md#qj12-encode-base64) encode base64   

@@ -148,7 +148,7 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
     </code></pre>
 
 <i class="far fa-hand-point-right"></i> 
-_Q for Mortals_: [§2.4 Basic Data Types – Atoms](http://code.kx.com/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
+_Q for Mortals_: [§2.4 Basic Data Types – Atoms](/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
 
 
 ### Filepaths
@@ -194,7 +194,7 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
 
 !!! tip "Generation"
 
-    Use [Deal](../ref/roll-deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
+    Use [Deal](../ref/deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
 
     <pre><code class="language-q">
     q)-2?0Ng

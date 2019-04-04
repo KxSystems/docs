@@ -300,7 +300,7 @@ q)@[d;1 1 1;+;3] / binary f
 ((1 2 3;4 5 6 7);(17 18;19;20 21);(13 14;15 16 17 18;19 20))
 ```
 
-Functions of rank higher than 2 can be applied by enlisting their arguments and using [_apply_](unclassified/#apply).
+Functions of rank higher than 2 can be applied by enlisting their arguments and using [Apply](apply.md).
 
 !!! warning "Projections"
 

@@ -7,15 +7,15 @@ For Markdown source files use only UTF-8 encoding with no BOM (byte-order mark).
 
 Prefer **actual Unicode characters** – which a modern text editor will display correctly – to both character entities and HTML character entities, which degrade the readability of the source. (HTML character entities are more readable than character entities, but different browsers support different subsets of them.) Thus, use π rather than &#928; or &pi;. 
 
--   <i class="fa fa-windows"></i> Windows allows many characters to be typed as ASCII codes from the numeric keyboard, eg Alt+0215 for ×. (See the [W3C list of HTML character entity references](http://www.w3.org/TR/html401/sgml/entities.html#h-24.2) for codes.) 
--   <i class="fa fa-apple"></i> Mac OS X provides a graphical palette of Unicode characters. 
+-   <i class="fab fa-windows"></i> Windows allows many characters to be typed as ASCII codes from the numeric keyboard, eg Alt+0215 for ×. (See the [W3C list of HTML character entity references](http://www.w3.org/TR/html401/sgml/entities.html#h-24.2) for codes.) 
+-   <i class="fab fa-apple"></i> Mac OS X provides a graphical palette of Unicode characters. 
 
 If a character proves particularly difficult to source (for example, the romaji O-micron), try using its character entity, displaying the result in a browser, then copying and pasting the character from the browser back into the source. (It is a good idea in such cases to leave the character entity embedded as a comment.)
 
 Use **real ellipses** (…) because three periods can be broken across lines or pages. 
 
--   <i class="fa fa-windows"></i> In Windows Alt+0133 on the numeric keypad 
--   <i class="fa fa-apple"></i> On Mac, Opt+;
+-   <i class="fab fa-windows"></i> In Windows Alt+0133 on the numeric keypad 
+-   <i class="fab fa-apple"></i> On Mac, Opt+;
 
 [Ligatures](https://en.wikipedia.org/wiki/Glyph) are typesetters’ tools for setting two letters together. Reserve _æ_ for languages, such as Danish and Norwegian, in which it is a distinct character, not for words such as _mediaeval_.
 
@@ -64,7 +64,7 @@ The **Oxford comma** cannot safely be used without thought.
 -   It can introduce ambiguity into a list.
 -   Some lists have ambiguities that its use or omission do not resolve; such ambiguity may be resolved only by rephrasing.
 
-<i class="fa fa-hand-o-right"></i> _Wikipedia:_ [Serial comma](https://en.wikipedia.org/wiki/Serial_comma)
+<i class="far fa-hand-point-right"></i> _Wikipedia:_ [Serial comma](https://en.wikipedia.org/wiki/Serial_comma)
 
 Commas can have semantic force outside lists, e.g. _Let’s eat, Grandma!_
 

@@ -87,8 +87,8 @@ split into date partitions. A q process can read this data and
 memory-map it, allowing for fast queries across a large volume of
 data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 
-<i class="fa fa-hand-o-right"></i> Whitepaper:
-[Data Recovery for kdb+ tick](/wp/data_recovery_for_kdb_tick.pdf)
+<i class="far fa-hand-point-right"></i> Whitepaper:
+[Data Recovery for kdb+ tick](../data_recovery_for_kdb_tick.pdf)
 
 
 ## What does a kdb+ database look like on disk?
@@ -267,15 +267,15 @@ carefully manage any querying of the database.
 
 ![](img/image12.jpeg)
 
-<i class="fa fa-hand-o-right"></i> Whitepaper –
-[Query Routing: a kdb+ framework for a scalable load-balanced system](/wp/query_routing_a_kdb_framework_for_a_scalable_load_balanced_system.pdf)
+<i class="far fa-hand-point-right"></i> Whitepaper –
+[Query Routing: a kdb+ framework for a scalable load-balanced system](../query_routing_a_kdb_framework_for_a_scalable_load_balanced_system.pdf)
 
 As mentioned above, the usual strategy for failover is to have a
 complete mirror of the production system (feedhandler, tickerplant,
 and real-time subscriber), and when any critical process goes down,
 the secondary is able to take over. Switching from production to
 disaster recovery systems can be implemented seamlessly using kdb+
-[interprocess communication](/cookbook/ipc/) (via `.z.pc`).
+[interprocess communication](../../kb/ipc.md) (via `.z.pc`).
 
 An alternative method is to have a parent control process monitoring
 everything within the system with heart-beating: a simple message sent
@@ -362,8 +362,8 @@ gateway queries should continue to be routed to the secondary until
 recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
-<i class="fa fa-hand-o-right"></i> Whitepaper 
-[Data recovery for kdb+tick](/wp/data_recovery_for_kdb_tick.pdf)
+<i class="far fa-hand-point-right"></i> Whitepaper 
+[Data recovery for kdb+tick](../data_recovery_for_kdb_tick.pdf)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
 
@@ -675,7 +675,8 @@ subscribes to the primary, and all state changes on the master
 are logged to disk as well, to allow for recovery in the event that
 the process fails.
 
-<i class="fa fa-hand-o-right"></i> Cookbook: [Logging](/cookbook/logging/)
+<i class="far fa-hand-point-right"></i> 
+Knowledge Base: [Logging](../../kb/logging.md)
 for full details on these options
 
 
@@ -689,7 +690,7 @@ development of custom kdb+ applications. Tried-and-tested failover
 solutions provide the flexibility and scalability needed to meet any
 resilience or availability requirements.
 
-<i class="fa fa-hand-o-right"></i>
+<i class="far fa-hand-point-right"></i>
 [kx.com/solutions](https://kx.com/solutions/#EnterpriseFeatures)
 
 
@@ -768,7 +769,7 @@ handles are opened on startup.
 .z.pc:{.tp.handles:.tp.handles except x;(first .tp.handles)".u.sub[`;`]";}
 ```
 
-Full details on GitHub at <i class="fa fa-github"></i>
+Full details on GitHub at <i class="fab fa-github"></i>
 [KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q)
 
 

@@ -18,7 +18,7 @@ q)hclose h             / Close the file to clean up
 ```
 
 [`.Q.fps`](../ref/dotq.md#qfps-streaming-algorithm "streaming algorithm") is [`.Q.fs`](../ref/dotq.md#qfs-streaming-algorithm "streaming algorithm") for pipes. 
-(`.Q.fpn` corresponds to [`.Q.fsn`](../ref/dotq.md#qfsn-streaming-algorithm "streaming algorithm").) <!-- FIXME link to /ref/dotq/#qfsn-streaming-algorithm -->
+(`.Q.fpn` corresponds to [`.Q.fsn`](../ref/dotq.md#qfsn-streaming-algorithm "streaming algorithm").) 
 
 The following example loads a CSV via FIFO, avoiding decompressing to disk:
 

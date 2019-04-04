@@ -435,7 +435,7 @@ q)add2[1;oarg]
 <!-- 
 ### Further examples 
 
-Further examples can be found in the `examples` folder of the <i class="fa fa-github"></i> [KxSystems/embedPy](https://github.com/kxsystems/embedpy) repository. 
+Further examples can be found in the `examples` folder of the <i class="fab fa-github"></i> [KxSystems/embedPy](https://github.com/kxsystems/embedpy) repository. 
 
 This includes an example of creating simple charts in Matplotlib either by running Python code in a kdb+ process, or importing the `matplotlib.pyplot` module into kdb+ and using functions from it in q code.
  --> 

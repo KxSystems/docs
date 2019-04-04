@@ -167,7 +167,7 @@ The local and remote q servers must be started manually.
 
 ## Performance of different versions of insert
 
-There are several syntactic forms to insert rows into tables, with different costs. We demonstrate the differences in this recipe.
+There are several syntactic forms to insert rows into tables, with different costs. We demonstrate the differences.
 
 In the examples, we use a non-keyed table.
 

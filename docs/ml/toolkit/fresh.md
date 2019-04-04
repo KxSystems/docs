@@ -4,7 +4,7 @@ date: August 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, interpolation
 ---
 
-# <i class="fa fa-share-alt"></i> FRESH: a feature-extraction and feature-significance toolkit
+# <i class="fas fa-share-alt"></i> FRESH: a feature-extraction and feature-significance toolkit
 
 
 

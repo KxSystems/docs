@@ -57,7 +57,7 @@ m32/ 2()core 4096MB sjt mark.local 192.168.0.17 NONEXPIRE
 
 Welcome to kdb+ 32bit edition
 For support please see https://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/q/tutorials/install
+Tutorials can be found at http://code.kx.com/v2/tutorials/install
 To exit type \\
 To remove this startup msg, edit q.q
 q)til 6
@@ -132,7 +132,7 @@ m32/ 2()core 4096MB sjt mark.local 192.168.0.17 NONEXPIRE
 
 Welcome to kdb+ 32bit edition
 For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/q/tutorials/install
+Tutorials can be found at http://code.kx.com/v2/tutorials/install
 To exit type \\
 To remove this startup msg, edit q.q
 ```

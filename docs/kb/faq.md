@@ -40,7 +40,7 @@ This creates a table in memory.
 Tables can also be created functionally with q primitive functions. 
 
 <i class="far fa-hand-point-right"></i> 
-Basics: [Dictionaries and tables](/../basics/dictsandtables.md), 
+Basics: [Dictionaries and tables](../basics/dictsandtables.md), 
 [Q-SQL](../basics/qsql.md), 
 [Functional SQL](../basics/funsql.md)
 
@@ -625,5 +625,5 @@ l64/ ...
 5
 ```
 
-<i class="fa fa-external-link"></i> 
+<i class="fas fa-external-link-alt"></i> 
 [Shebang (Unix)](http://en.wikipedia.org/wiki/Shebang_(Unix))

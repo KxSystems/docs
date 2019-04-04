@@ -22,7 +22,7 @@ fills in any missing items in `x`, returns `y` as an enumeration of the variable
 
 ```q
 q)foo:`a`b
-q)`foo\`a`b`c`b`a`b`c`c`c`c`c`c`c
+q)`foo?`a`b`c`b`a`b`c`c`c`c`c`c`c
 `foo$`a`b`c`b`a`b`c`c`c`c`c`c`c
 q)foo
 `a`b`c
@@ -60,7 +60,7 @@ Enum Extend is a uniform function.
 [Enumeration](enumeration.md)  
 Basics: [Enumerations](../basics/enumerations.md),
 [File system](../basics/files.md)  
-_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations)  
+_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
 [`?` query](overloads.md#query) 
 
 

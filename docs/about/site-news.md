@@ -44,7 +44,7 @@ Announcements to mark our 25th birthday:
 
 Listed on [GitHub](../github.md#development-tools): three new development tools  by legendary developer [Leslie Goldsmith](https://github.com/LeslieGoldsmith).
 
-<i class="fa fa-hand-o-right"></i> [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
+<i class="far fa-hand-point-right"></i> [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
 
 
 ## <i class="fab fa-github"></i> Jupyter kernel for kdb+
@@ -124,13 +124,13 @@ The site content is now licensed under a <a rel="license" href="http://creativec
         — <i>Bob Dylan</i> “When the ship comes in” 
     </p>
     <p style="display: inline-block; padding: 0 1em;">
-        <a href="//bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/q/img/dylan.png" style="height: 70px"/></a>
+        <a href="//bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/v2/img/dylan.png" style="height: 70px"/></a>
     </p>
 </blockquote>
 
 We have revised the terms in which we talk about q, to align them with common usage. You will find _operators_ and _unary_ and _binary_ _functions_ applied _prefix_, _infix_ and _postfix_. Q’s _adverbs_ still need their distinctive name, but you will no longer find references to _verbs_, _monads_ or _dyads_. 
 
-We also now distinguish consistently between glyphs and what they denote. In some cases we’ve had to coin new names for what was previously conflated. So, for example, `/` denotes three adverbs: _over_, _fold_ and _converge-repeat_. 
+We also now distinguish consistently between glyphs and what they denote. In some cases we’ve coined new names to distinguish what was previously conflated. So, for example, `/` denotes Over, Converge, Do, and While. 
 
 Overloads such as these are distinguished in use by syntax and arguments. Every operator, function and adverb now has its syntax and arguments consistently and clearly described. 
 

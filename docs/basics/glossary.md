@@ -89,6 +89,11 @@ Applying a value to its argument/s or indexes by writing it to the left of an ar
 [Application](application.md)
 
 
+## Chained tickerplant
+
+A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn. 
+
+
 ## Character constant
 
 A character constant is defined by entering the characters between double-quotes, as in `"abcdefg"`. If only one character is entered the constant is an atom, otherwise the constant is a list. For example, `"a"` is an atom. The expression `enlist "a"` is required to indicate a one character list. 
@@ -259,6 +264,11 @@ An escape sequence is a special sequence of characters representing a character 
 A pair of square brackets enclosing zero or more expressions separated by semicolons. 
 
 
+## Feedhandler
+
+A process that receives and processes, typically high volumes of, messages from a source such as a financial excchange. 
+
+
 ## Finite-state machine
 
 A dictionary or list represents a finite-state machine when its values (dictionary) or items (list) can be used to index it. For example:
@@ -320,6 +330,11 @@ x: .[ x; i; f; y]
 In the first, referencing `x` as the first argument causes its entire value to be constructed, even though only a small part may be needed. In the second, the symbol `` `x`` is used as the first argument. In this case, only the parts of `x` referred to by the index `i` will be referenced and reassigned. The second case is usually more efficient than the first, sometimes significantly so. 
 
 Where `x` is a directory, referencing the global variable `x` causes the entire dictionary value to be constructed, even though only a small part of it may be needed. Consequently, in the description of [Amend](amend), the symbol atoms holding global variable names are referred to as handles.
+
+
+## HDB
+
+Historical database: a database that represents past states of affairs. 
 
 
 ## Identity element
@@ -477,6 +492,15 @@ A primitive binary function that may be applied infix as well as prefix, e.g. `+
 [Application](application.md)
 
 
+## Partitioned file
+
+To limit the size of files in an HDB it is common to partition them by time period, for example, calendar day. 
+
+The partitioning scheme is described to kdb+ in the `par.txt` file.
+
+Files representing a [splayed table](#splayed-table) may also be partitioned.
+
+
 ## Postfix
 
 Applying an iterator to its argument by writing it to the right, e.g. `+/` applies iterator `/` to `+`. (Not to be confused with projecting an operator on its left argument.)
@@ -537,6 +561,11 @@ Of a **list**, the depth to which it is nested.
 A vector has rank 1; a matrix, rank 2.
 
 
+## RDB
+
+Real-time database: a database that aims to represent a state of affairs in real time. 
+
+
 ## Reference, pass by
 
 _Pass by reference_ means passing the name of an object (as a symbol atom) as an argument to a function, e.g. ``key `.q``.
@@ -576,6 +605,13 @@ The argument list that (optionally) begins a lambda, e.g. in `{[a;b](a*a)+(b*b)+
 ## Simple table 
 
 See [Table](#table).
+
+
+## Splayed table
+
+To limit the size of individual files, and to speed searches, it is common to _splay_ a large table by storing its columns as separate files. 
+
+The files may also be [partitioned](#partitioned-file).
 
 
 ## String
@@ -652,6 +688,11 @@ alice SFO
 ## Ternary
 
 A value of rank 3, i.e. a function with three arguments; or a list of depth ≥3.
+
+
+## Ticker plant
+
+A source of messages. 
 
 
 ## Unary form

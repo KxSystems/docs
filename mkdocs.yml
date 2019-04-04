@@ -73,9 +73,10 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
-  - Platform for Kx: platform.md
-  - Support: support.md
+  - Reference: https://code.kx.com/v2/ref/
   - GitHub: github.md
+  - Support: support.md
+  - Platform for Kx: platform.md
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -209,6 +210,7 @@ nav:
       - distinct: ref/distinct.md
       - div: ref/div.md
       - dsave: ref/dsave.md
+      - each, peach: ref/each.md
       - ej: ref/ej.md
       - ema: ref/ema.md
       - enlist: ref/enlist.md
@@ -251,11 +253,13 @@ nav:
       - neg: ref/neg.md
       - next, prev, xprev: ref/next.md
       - not: ref/not.md
-      - null: ref/null.md
+      - 'null': ref/null.md
       - or: ref/or.md
+      - over, scan: ref/over.md
       - parse: ref/parse.md
       - pj: ref/pj.md
       - prd, prds: ref/prd.md
+      - prior: ref/prior.md
       - rand: ref/rand.md
       - rank: ref/rank.md
       - ratios: ref/ratios.md
@@ -311,7 +315,7 @@ nav:
       - Compose: ref/compose.md
       - Cond: ref/cond.md
       - Cut: ref/cut.md
-      - Deal, Roll, Permute: ref/roll-deal.md
+      - Deal, Roll, Permute: ref/deal.md
       - Delete: ref/delete.md
       - Display: ref/display.md 
       - Dict: ref/dict.md
@@ -322,7 +326,7 @@ nav:
       - Enkey, Unkey: ref/enkey.md
       - Enumerate: ref/enumerate.md
       - Enumeration: ref/enumeration.md
-      - Enum-extend: ref/enum-extend.md
+      - Enum Extend: ref/enum-extend.md
       - Equal: ref/equal.md
       - Exec: ref/exec.md
       - File Binary: ref/file-binary.md
@@ -350,6 +354,10 @@ nav:
       - Tok: ref/tok.md
       - Update: ref/update.md
       - Vector Conditional: ref/vector-conditional.md
+    - Control words:
+      - do: ref/do.md
+      - if: ref/if.md
+      - while: ref/while.md
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md

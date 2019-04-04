@@ -13,4 +13,4 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 The embedPy library opens [Python](https://python.org) to q programmers. It allows q to call Python functions. 
 
 <i class="far fa-hand-point-right"></i>
-Machine learning: [embedPy](../ml/embedpy/)
+Machine learning: [embedPy](../../ml/embedpy/)

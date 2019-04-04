@@ -1,5 +1,5 @@
 ---
-keywords: control, control words, distributive, evaluation, iterate, kdb+, operator, progressive, q, , unary, word
+keywords: control, control words, distributive, evaluation, iterate, kdb+, operator, progressive, q, unary, word
 ---
 
 # Controlling evaluation
@@ -18,12 +18,12 @@ Evaluation is controlled by
 
 ## Iterators
 
-These are the primary means of iterating in q.
+[Iterators](../ref/iterators.md) are the primary means of iterating in q.
 
 
 ### Maps
 
-The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [values](glossary.md#value) across the items of lists and dictionaries. 
+The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [values](glossary.md#applicable-value) across the items of lists and dictionaries. 
 
 
 ### Accumulators
@@ -90,77 +90,23 @@ q)goo 3
 
 ## Control words
 
-Control words are rarely used in practice. 
 
-!!! note "Control words are not functions, cannot be arguments or list items, and do not return results."
+[`do`](../ref/do.md)
 
+: evaluate some expression/s some number of times
 
-### `do`
+[`if`](../ref/if.md)
 
-Syntax: `do[count;e1;e2;e3;…;en]`
+: evaluate some expression/s if some condition holds 
 
-Where 
+[`while`](../ref/while.md)
 
--   `count` is a positive integer
--   `e1`, `e2`, … `en` are expressions
+: evaluate some expression/s while some condition holds
 
-the expressions `e1` to `en` are evaluated, in order, `count` times.
+!!! warning "Control words are not functions and return as a result only the generic null."
 
-Continued fraction for $\pi$, for 7 steps:
+Control words are little used in practice for iteration.
+[Iterators](../ref/iterators.md) are more commonly used.
 
-```q
-q)r:()
-q)t:2*asin 1
-q)do[7;r,:q:floor t;t:reciprocal t-q]
-q)r
-3 7 15 1 292 1 1
-```
-
-`do` can be used for accurate timing of expressions, e.g. time log of first 100,000 numbers, over 100 trials:
-
-```q
-q)\t do[100;log til 100000]
-396
-```
-
-<i class="far fa-hand-point-right"></i> [Accumulators – Do](../ref/accumulators.md#do)
-
-
-### `if` 
-
-Syntax: `if[test;e1;e2;e3;…;en]` 
-
--   `test` is an expression that evaluates to an atom
--   `e1`, `e2`, … `en` are expressions
-
-unless `test` evaluates to zero, the expressions `e1` to `en` are evaluated, in order
-
-```q
-q)a:100
-q)r:""
-q)if[a>10;a:20;r:"true"]
-q)a
-20
-q)r
-"true"
-```
-
-
-### `while` 
-
-Syntax: `while[test;e1;e2;e3;…;en]` 
-
--   `test` is an expression that evaluates to an atom
--   `e1`, `e2`, … `en` are expressions
-
-Unless `test` evaluates to zero, the expressions `e1` to `en` are evaluated, in order. The cycle – evaluate `test`, then the expressions – continues until `test` evaluates to zero. 
-
-```q
-q)r:1 1
-q)x:10
-q)while[x-:1;r,:sum -2#r]
-q)r
-1 1 2 3 5 8 13 21 34 55 89
-```
-
-<i class="far fa-hand-point-right"></i> [Accumulators – While](../ref/accumulators.md#while)
+<i class="far fa-hand-point-right"></i> 
+[Accumulators – Converge, Do, While](../ref/accumulators.md)

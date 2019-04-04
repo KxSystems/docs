@@ -106,7 +106,7 @@ q)(route\)`Genoa                          / a circular tour
 q)(not/) 42                               / never returns!
 ```
 
-Matching is governed by [comparison tolerance](/basics/precision/#comparison-tolerance).
+Matching is governed by [comparison tolerance](../basics/precision.md#comparison-tolerance).
 
 
 ### Do
@@ -282,6 +282,9 @@ q)(+) scan til 5           / (+\)til 5
 q)m scan cols              / (m\)cols
 4 3 1 0 6 9
 ```
+
+<i class="far fa-hand-point-right"></i>
+[`over`, `scan`](over.md)
 
 
 ## Ternary values

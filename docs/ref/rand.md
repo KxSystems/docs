@@ -46,4 +46,4 @@ rand each 100#6
 
 
 <i class="far fa-hand-point-right"></i>
-[Roll and Deal](roll-deal.md) for random seed
+[Roll and Deal](deal.md) for random seed

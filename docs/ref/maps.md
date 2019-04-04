@@ -10,7 +10,7 @@ keywords: adverb, case, dictionary, each, each both, each left, each parallel, e
 
 
 
-The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that applies their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
+The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
 
 There are six maps. 
 
@@ -42,7 +42,7 @@ c| 4
 
 ### `each` keyword
 
-The mnemonic keyword `each` can be used to apply a unary value without parentheses or brackets.
+The mnemonic keyword [`each`](each.md) can be used to apply a unary value without parentheses or brackets.
 
 ```q
 q)count each string `Clash`Fixx`The`Who
@@ -176,18 +176,16 @@ q)\t ({sum exp x?1.0}' )2#1000000  / each
 185
 q)\t ({sum exp x?1.0}':)2#1000000  / peach
 79
-q)peach
-k){x':y}
 ```
 
 
 ### `peach` keyword
 
-The mnemonic keyword `peach` can be used as a mnemonic alternative: e.g. instead of  `(u:')` write `u peach list`.
+The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e.g. instead of  `(u:')` write `u peach list`.
 
 !!! tip "Higher-rank values"
 
-    To parallelize a value of rank >1, use [Apply](/ref/apply.md) to evaluate it on a list of arguments.
+    To parallelize a value of rank >1, use [Apply](apply.md) to evaluate it on a list of arguments.
 
     Alternatively, define the value as a function that takes a parameter dictionary as argument, and pass the derived function a table of parameters to evaluate.
 
@@ -210,7 +208,7 @@ q)(-':)1 1 2 3 5 8 13
 1 0 1 1 2 3 5
 ```
 
-The first item of a list has,by definition, no prior item. 
+The first item of a list has, by definition, no prior item. 
 If the derived function is applied as a binary, its left argument is taken as the ‘seed’ – the value preceding the first item. 
 
 ```q
@@ -245,7 +243,7 @@ q){x+2*y}':[2 3 4]
 
 ### `prior` keyword
 
-The keyword `prior`can be used as a mnemonic alternative to `':`.
+The mnemonic keyword [`prior`](prior.md) can be used as an alternative to `':`.
 
 ```q
 q)(-':) 5 16 42 103

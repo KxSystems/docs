@@ -8,7 +8,7 @@ Below is a summary of changes from V3.5. Commercially licensed users may obtain 
 
 ## Deferred response
 
-More efficient gateways: a server process can now use [`-30!x`](/ref/internal/#-30x-deferred-response) to defer responding to a sync query until, for example, worker process have completed their tasks. 
+More efficient gateways: a server process can now use [`-30!x`](../basics/internal.md#-30x-deferred-response) to defer responding to a sync query until, for example, worker process have completed their tasks. 
 
 ## 64-bit enumerations
 
@@ -36,7 +36,7 @@ Mapped lists' elements can be of any type, including lists, dictionaries, tables
 q)a:get`:a set ((1 2;3 4);`time`price`vol!(.z.p;1.;100i);([]a:1 2;b:("ab";"cd")))
 q)77 0h~(type a;type first a)
 ```
-A new write primitive alternative to [`set`](/ref/filewords/#set), `` `:a 1: x ``, allows mapped lists to nest within other mapped lists. For files written with `1:`, vectors within all structures remain mapped, no matter the depth, and can be used without being copied to the heap. e.g.
+A new write primitive alternative to [`set`](../ref/get.md#set), `` `:a 1: x ``, allows mapped lists to nest within other mapped lists. For files written with `1:`, vectors within all structures remain mapped, no matter the depth, and can be used without being copied to the heap. e.g.
 ```q
 q)a:get`:a 1: ((1 2;3 4);([]time:1000?.z.p;price:1000?100.);([]time:1000?.z.p;price:1000?200))
 q)77 77h~(type a;type first a)
@@ -62,6 +62,17 @@ Added `lz4hc` as file-compression algorithm #4. e.g.
 ```q
 q).z.zd:17 4 16;`:z set z:100000?200;z~get`:z
 ```
+
+!!! warning "`lz4` compression"
+
+    Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+.
+
+    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process. 
+
+    Kdb+ requires at least `lz4-r129`.
+    `lz4-1.8.3` works. 
+    We recommend using the latest `lz4` release available.
+
 
 
 ## NUCs – not upwardly compatible

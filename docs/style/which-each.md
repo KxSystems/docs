@@ -8,7 +8,9 @@ keywords: kdb+, q, style
 
 
 
-Projection and Each are more general than Each Right and Each Left.
+[Projection](../basics/application.md#projection) and 
+[Each](../ref/maps.md#each) are more general than 
+[Each Right and Each Left](../ref/maps.md#each-left-and-each-right).
 A function can be projected on any of its arguments, and a function can be applied to each item of many lists. 
 Each Right and Each Left apply binary functions only, itemwise right, or itemwise left. 
 

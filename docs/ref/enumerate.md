@@ -71,7 +71,7 @@ cast  | item/s of `y` not in `x`
 [Enum Extend](enum-extend.md),
 [Enumeration](enumeration.md)  
 Basics: [Enumerations](../basics/enumerations.md)  
-_Q for Mortals:_ [§7.5 Enumerations](http://code.kx.com/q4m3/7_Transforming_Data/#75-enumerations)  
+_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
 [`$` dollar](overloads.md#dollar)  
 
 

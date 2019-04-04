@@ -80,5 +80,5 @@ q)3 mcount 0N 1 2 3 0N 5
 `mcount` is a uniform function. 
 
 <i class="far fa-hand-point-right"></i>
-Knowledge Base: [Sliding windows](/kb/programming-idioms/#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
+Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)

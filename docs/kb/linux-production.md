@@ -8,7 +8,7 @@ keywords: kdb+, linux, production, q
 !!! important "Linux kernels"
 
     Kx recommendations for NUMA hardware, Transparent Huge Pages and Huge Pages are different for different Linux kernels. 
-    Details below. Look for the <i class="fa fa-code"></i> icon. 
+    Details below. Look for the <i class="fas fa-code"></i> icon. 
 
 
 
@@ -68,7 +68,7 @@ $ numactl -s
 
 A number of customers have been impacted by bugs in the Linux kernel with respect to Transparent Huge Pages. These issues manifest themselves as process crashes, stalls at 100% CPU usage, and sporadic performance degradation. 
 
-<i class="fa fa-code fa-2x"></i>
+<i class="fas fa-code fa-2x"></i>
 Our recommendation for THP is similar to the recommendation for memory interleaving. 
 
 Linux kernel   | THP
@@ -124,9 +124,10 @@ In addition to monitoring free disk space for the usual partitions you write to,
 
 ## Back up the sym file
 
-The sym file is the key to the default enums. 
+The sym file is found in the root of your HDB.
+It is the key to the default enums. 
 
-!!! tip "We recommend you back up your sym file in the root of your HDB."
+!!! tip "Regularly back up the sym file _outside_ the HDB."
 
 
 ## Compression
@@ -159,6 +160,16 @@ Set `ulimit` to the higher of 4096 and 1024 plus the number of compressed column
 ```bash
 $ ulimit -n 4096
 ```
+
+!!! warning "`lz4` compression"
+
+    Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+.
+
+    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process. 
+
+    Kdb+ requires at least `lz4-r129`.
+    `lz4-1.8.3` works. 
+    We recommend using the latest `lz4` release available.
 
 
 ## Timekeeping

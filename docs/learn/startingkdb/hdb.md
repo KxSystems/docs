@@ -17,7 +17,7 @@ hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
         padding: 0 1em;
     }
 </style>
-![database tree](/img/wstree.png){.foo}
+![database tree](../../img/wstree.png){.foo}
 
 A historical database (HDB) holds data before today, and its tables would be stored on disk, being much too large to fit in memory. Each new day’s records would be added to the HDB at the end of day.
 

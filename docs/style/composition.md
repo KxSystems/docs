@@ -21,7 +21,7 @@ and replace them with function compositions like this:
 '[first;reverse] each v          / last of each v
 ```
 
-Combine [Compose](/ref/compose) with [`over`](/ref/accumulators) to join longer sequences of functions:
+Combine [Compose](../ref/compose.md) with [`over`](../ref/accumulators.md) to join longer sequences of functions:
 
 ```q
 ('[;] over (upper;first;reverse)) each v

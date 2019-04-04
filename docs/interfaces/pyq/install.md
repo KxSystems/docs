@@ -39,14 +39,14 @@ Solaris is supported, but has not been tested recently.
 
 V2.8+
 
--   <i class="fa fa-download"></i> [Download](https://kx.com/download)
--   <i class="far fa-hand-point-right"></i> [Install](http://code.kx.com/q/learn/install/)
+-   <i class="fas fa-download"></i> [Download](https://kx.com/download)
+-   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/)
 
 ### Python
 
 2.7, or 3.5+
 
--    <i class="fa fa-download"></i> [Download](https://www.python.org/downloads/)
+-    <i class="fas fa-download"></i> [Download](https://www.python.org/downloads/)
 
 ### Compiler
 

@@ -33,7 +33,7 @@ utilised in the creation of websites using PHP and ASP.NET as well as
 stand-alone Windows applications.
 
 The paper makes use of the standard `c.cs` file offered by Kx to enable
-connections to C#. This can be found at <i class="fa fa-github"></i>
+connections to C#. This can be found at <i class="fab fa-github"></i>
 [KxSystems/kdb](https://github.com/KxSystems/kdb/blob/master/c/c.cs).
 
 It is important to note that this paper does not aim to provide a full
@@ -41,7 +41,7 @@ C# library, but instead give guidance on how to quickly and easily
 allow a C# application to connect to and run queries against a kdb+
 process.
 
-The C# source code for this paper can be found at <i class="fa fa-github"></i> [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
+The C# source code for this paper can be found at <i class="fab fa-github"></i> [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
 
 ### Author
@@ -274,8 +274,8 @@ process. Within C#, this will throw a KException with the message
 `access`. This can be used to track if the user has been refused
 access in the C# API.
 
-<i class="fa fa-hand-o-right"></i> 
-Tom Martin’s whitepaper [“Permissions with kdb+”](/wp/permissions_with_kdb.pdf)
+<i class="far fa-hand-point-right"></i> 
+Tom Martin’s whitepaper [“Permissions with kdb+”](../permissions_with_kdb.pdf)
 for more detailed information on validation and authentication
 
 ```csharp
@@ -872,6 +872,6 @@ tests of C# were run using .NET version 4.0. The example applications
 were built with Visual Studio 2010. 
 
 The C# source code for this paper
-can be found on GitHub at <i class="fa fa-github"></i>
+can be found on GitHub at <i class="fab fa-github"></i>
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
