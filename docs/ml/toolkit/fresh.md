@@ -13,9 +13,9 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 
 Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 
-Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and often provide a more suitable input to machine-learning algorithms.
+Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and often provides a more suitable input to machine-learning algorithms.
 
-Following feature extraction, statistical-significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) above a given threshold.
+Following feature extraction, statistical-significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) as defined by the user.
 
 Feature selection can improve the accuracy of a machine-learning algorithm by
 
@@ -48,11 +48,11 @@ Null values in the data should be replaced with derived values most appropriate 
 
 Data-types supported by the feature-extraction procedure are boolean, int, real, long, short and float. Other datatypes should not be passed to the extraction procedure.
 
-In particular, data should not contain text (strings or symbols), other than the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to numerical values.
+In particular, data should not contain text (strings or symbols), other than the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
 
 !!! note
 
-    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [Utilities section](utils.md) of the toolkit.
+    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [Utilities section](utilities/util.md) of the toolkit.
 
 
 ## Calculated features
@@ -97,9 +97,13 @@ Feature-extraction functions are not, typically, called individually. A detailed
 
 ## Feature extraction
 
-Feature-extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative than the raw time series. 
+Feature-extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target data than the raw time series. 
 
-The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions available in the `.ml.fresh.feat` namespace, though users may select a subset based on requirements.
+The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 55 such functions callable within the `.ml.fresh.feat` namespace, though users may select a subset of these based on requirement.
+
+### `.ml.fresh.createfeatures`
+
+_Applies functions to subsets of initial data to create features_
 
 Syntax: `.ml.fresh.createfeatures[t;aggs;cnames;ptab]`
 
@@ -181,12 +185,12 @@ date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1
 2000.01.03| 7805000        9200              30         13                  17         ..
 2000.01.04| 8817500        9950              30         17                  13         ..
 2000.01.05| 7597500        7300              30         12                  18         ..
-q)count 1_cols cfeatsnew     / 74 columns now being produced with subset of functions
+q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of initial functions
 74
 ```
 
 !!!note
-	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning of the number and variety of calculations being completed to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the fresh.q file and provided their associated hyper-parameters are defined in `hyperparam.txt` they will execute via the above syntax.
+	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyper-parameters defined in `hyperparam.txt` matches the number of function parameters the function will execute as above.
 !!!warning
 	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
@@ -210,7 +214,7 @@ Each test returns a p-value, which can then be passed to a selection procedure c
 
 Each of these procedures can be implemented as below;
 
-## `.ml.fresh.benjhochfeat`
+### `.ml.fresh.benjhochfeat`
 
 _Benjamini Hochberg Procedure for feature selection_
 
@@ -238,7 +242,7 @@ q)count sigfeats        / number of selected features
 !!! note 
 	In the previous release this procedure was contained in the function `.ml.fresh.significantfeatures` to maintain consistency for those using FRESH versions `v0.1.x`. It should be noted that `.ml.fresh.benjhochfeat` is an aliased version of this and the base operation of `.ml.fresh.significantfeatures` has not changed.
 
-## `.ml.fresh.ksigfeat`
+### `.ml.fresh.ksigfeat`
 
 _Select the K-best features based on p-value_
 
@@ -257,7 +261,7 @@ q)show sigfeats:.ml.fresh.ksigfeat[value features;target;2]  / find the best 2 f
 `mean_col2`sumval_col2
 ```
 
-## `.ml.fresh.percentilesigfeat`
+### `.ml.fresh.percentilesigfeat`
 
 _Select features within the top p percentile_
 
