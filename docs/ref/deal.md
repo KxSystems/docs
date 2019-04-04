@@ -74,7 +74,7 @@ Where `y` is an **integer atom** such that `x<=y`, returns `x` integers chosen r
 ```q
 q)-20?100  /20 different integers from 0-99
 2 40 66 52 86 45 94 84 38 26 33 23 78 49 51 59 44 37 48 53
-q)-20?20.  /first 20 integers in random order
+q)-20?20   /first 20 integers in random order
 10 19 2 6 17 16 14 8 3 12 13 1 5 11 4 9 18 15 0 7
 q)(asc -20?20)~asc -20?20
 1b
