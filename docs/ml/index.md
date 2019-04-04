@@ -22,8 +22,8 @@ keywords: Python, Jupyter, natyural laguage processing, nlp, machine learning, m
 
 The [Machine Learning Toolkit](toolkit/) is at the core of q centered machine learning functionality. This library contains functions that cover the following areas.
 
--  Pre-processing data prior to the application of machine learning algoithms.
 -  Accuracy metrics to test the performance of the models built.
+-  Pre-processing data prior to the application of machine learning algorithms.
 -  An implementation of the FRESH algorithm for feature extraction and selection on structured time series data. 
 
 The library is available [here](https://github.com/KxSystems/ml).
@@ -63,4 +63,3 @@ All machine-learning libraries are:
 -   **free** for all use cases, including 64-bit and commercial use
 
 Commercial support is available if required: please email sales@kx.com.
-

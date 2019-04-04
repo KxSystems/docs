@@ -19,10 +19,10 @@ Following feature extraction, statistical-significance tests between feature and
 
 Feature selection can improve the accuracy of a machine-learning algorithm by
 
--   Simplifying the models used.
--   Shortening the training time needed.
--   Avoiding the curse of dimensionality.
--   Reducing variance in the dataset to reduce overfitting.
+-  Simplifying the models used.
+-  Shortening the training time needed.
+-  Avoiding the curse of dimensionality.
+-  Reducing variance in the dataset to reduce overfitting.
 
 
 Notebooks showing examples of the FRESH algorithm used in different applications can be found at 
@@ -101,14 +101,14 @@ Feature-extraction involves applying a set of aggregations to subsets of the ini
 
 The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions available in the `.ml.fresh.feat` namespace, though users may select a subset based on requirements.
 
-Syntax: `.ml.fresh.createfeatures[table;aggs;cnames;dict]`
+Syntax: `.ml.fresh.createfeatures[t;aggs;cnames;ptab]`
 
 Where
 
--   `table` is the input data in the form of a simple.
+-   `t` is the input data in the form of a simple table.
 -   `aggs` is the id column name (syms).
 -   `cnames` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
--   `dict` is a dictionary hyperparameter functions to be applied, if only functions that contain no hyperparameters are to be applied this is to be set as 0b.
+-   `ptab` is a table containing the functions and parameters to be applied to the `cnames` columns. This should be a modified version of `.ml.fresh.params`
 
 This returns a table keyed by id column and containing the features extracted from the subset of the data identified by the id.
 
@@ -127,28 +127,69 @@ date       time         col1 col2
 2000.01.01 00:00:00.007 500  0.5347096 
 2000.01.01 00:00:00.008 600  0.7111716 
 2000.01.01 00:00:00.009 250  0.411597  
-q)featdict:.ml.i.dict / feature functions with hyperparams
-q)5#mulfeatures:.ml.fresh.createfeatures[tab;`date;2_ cols tab;featdict] / multiparam fns
-date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
-----------| -----------------------------------------------------------------..
-2000.01.01| 1.156e+07      9.245956       8700              7.711325         ..
-2000.01.02| 1.1225e+07     8.645625       11350             9.036386         ..
-2000.01.03| 9910000        10.8401        9800              9.830704         ..
-2000.01.04| 1.0535e+07     7.900601       7350              10.21271         ..
-2000.01.05| 7830000        8.739328       6900              11.02193         ..
-q)count cols mulfeatures
-257
-q)5#singlefeatures:.ml.fresh.createfeatures[tab;`date;2_cols tab;0b] / non multiparam fns
-date      | absenergy_col1 absenergy_col2 abssumchange_col1 abssumchange_col2..
-----------| -----------------------------------------------------------------..
-2000.01.01| 9832500        11.00939       11000             11.80783         ..
-2000.01.02| 1.27825e+07    9.486486       10950             8.803259         ..
-2000.01.03| 1.2725e+07     9.681383       7700              10.7236          ..
-2000.01.04| 1.064e+07      8.266085       10850             10.95157         ..
-2000.01.05| 1.05675e+07    8.085542       9000              8.575972         ..
-q)count cols singlefeatures
-73
+q)show ptab:.ml.fresh.params
+f                       | pnum pnames         pvals                        valid
+------------------------| ------------------------------------------------------
+absenergy               | 0    ()             ()                               1    
+abssumchange            | 0    ()             ()                               1    
+count                   | 0    ()             ()                               1    
+countabovemean          | 0    ()             ()                               1    
+countbelowmean          | 0    ()             ()                               1    
+firstmax                | 0    ()             ()                               1    
+firstmin                | 0    ()             ()                               1    
+autocorr                | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9             1    
+binnedentropy           | 1    ,`lag          ,2 5 10                          1    
+c3                      | 1    ,`lag          ,1 2 3                           1    
+cidce                   | 1    ,`boolean      ,01b                             1    
+eratiobychunk           | 1    ,`numsegments  ,3                               1    
+rangecount              | 2    `minval`maxval -1 1                             1    
+changequant             | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)            1    
+q)5#cfeats:.ml.fresh.createfeatures[tab;`date;2_ cols tab;ptab]
+date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1_countb..
+----------| ---------------------------------------------------------------------------..
+2000.01.01| 1.33e+07       10100             30         13                  17         ..
+2000.01.02| 1.023e+07      11450             30         14                  16         ..
+2000.01.03| 7805000        9200              30         13                  17         ..
+2000.01.04| 8817500        9950              30         17                  13         ..
+2000.01.05| 7597500        7300              30         12                  18         ..
+q)count 1_cols cfeats	/ 595 features have been produced from 2 columns
+595
+
+/ update ptab to not include hyperparameter dependant functions 
+q)show ptabnew:update valid:0b from ptab where pnum>0
+f                       | pnum pnames         pvals                        valid
+------------------------| ------------------------------------------------------
+absenergy               | 0    ()             ()                               1
+abssumchange            | 0    ()             ()                               1
+count                   | 0    ()             ()                               1
+countabovemean          | 0    ()             ()                               1
+countbelowmean          | 0    ()             ()                               1
+firstmax                | 0    ()             ()                               1
+firstmin                | 0    ()             ()                               1
+autocorr                | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9             0
+binnedentropy           | 1    ,`lag          ,2 5 10                          0
+c3                      | 1    ,`lag          ,1 2 3                           0
+cidce                   | 1    ,`boolean      ,01b                             0
+eratiobychunk           | 1    ,`numsegments  ,3                               0
+rangecount              | 2    `minval`maxval -1 1                             0
+changequant             | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)            0
+q)5#cfeatsnew:.ml.fresh.createfeatures[tab;`date;2_ cols tab;ptabnew]
+date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1_countb..
+----------| ---------------------------------------------------------------------------..
+2000.01.01| 1.33e+07       10100             30         13                  17         ..
+2000.01.02| 1.023e+07      11450             30         14                  16         ..
+2000.01.03| 7805000        9200              30         13                  17         ..
+2000.01.04| 8817500        9950              30         17                  13         ..
+2000.01.05| 7597500        7300              30         12                  18         ..
+q)count 1_cols cfeatsnew     / 74 columns now being produced with subset of functions
+74
 ```
+
+!!!note
+	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning of the number and variety of calculations being completed to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the fresh.q file and provided their associated hyper-parameters are defined in `hyperparam.txt` they will execute via the above syntax.
+!!!warning
+	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter 4 had been a dictionary of the functions to be applied to the table was supplied. This worked well for producing features from functions that only took the data as input. To account for multi-parameter functions the structure outlined above has been used.
+
 
 ## Feature significance
 
@@ -236,16 +277,3 @@ q)show sigfeats:.ml.fresh.percentilesigfeat[value features;target;.05]  / percen
 q)count sigfeats        / number of selected features
 8
 ```
-
-
-## Fine tuning
-
-### Parameter dictionary
-
-Hyperparameters for a number of the functions are contained in the dictionary `.ml.fresh.paramdict` (defined in the script `paramdict.q`). The default dictionary can be modified by users to suit their use cases better.
-
-
-### User-defined functions
-
-The aggregation functions contained in this library are a small subset of the functions that could be applied in a feature-extraction pipeline. Users can add their own functions by following the template outlined within `fresh.q`.
-

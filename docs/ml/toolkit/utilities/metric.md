@@ -206,7 +206,7 @@ Where
 
 -  `x` is a matrix
 
-returns the covariance matrix
+returns the covariance matrix.
 
 ```q
 q)show mat:(5?10;5?10;5?10)

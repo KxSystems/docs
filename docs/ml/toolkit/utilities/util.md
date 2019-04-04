@@ -56,7 +56,7 @@ Where
 -  `x` is the integer number of values required for combinations
 -  `y` is the degree of the combinations to be produced
 
-Returns the unique combination of values from the data
+returns the unique combinations of values from the data.
 
 ```q
 q).ml.combs[3;2]
@@ -278,4 +278,3 @@ ytrain| 0.5029018 0.05230331 0.628313 0.5766565 0.6314705 0.3266584 0.9624403..
 xtest | 0.3692275 0.4192985 0.1573064 0.9121564 0.28237 0.07992544
 ytest | 0.3821462 0.9177309 0.3572827 0.1110881 0.9807582 0.5132051
 ```
-
