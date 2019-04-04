@@ -67,28 +67,6 @@ Considering the potential size of the data, it is probably more likely that the 
 -   interfaces (2) and (3) both require variables to be copied from kdb+ to R for processing, meaning that at some point in time two copies of the variable will exist, increasing total memory requirements
 
 
-### Performance testing
-
-Generally speaking, running analysis in q will be faster than R either by virtue of the implementation or due to the data being local to q. Both languages have similar facilities for testing the performance of code. The below code samples calculate the time taken to do matrix multiplication on identical 100×100 matrices, 1000 times. Q timings are in milliseconds, R timings are in seconds. For this operation, q is more than 5 times faster than R (238ms against 1240ms). In q:
-
-```q
-q)a:100 100#`float$til 100000
-q)b:100 100#`float$til 100000
-q)\t do[1000;a mmu b]￼￼￼￼￼￼
-238
-```
-
-and in R:
-
-```r
-> a<-matrix(0:99999,ncol=100,nrow=100)
-> b<-matrix(0:99999,ncol=100,nrow=100)
-> system.time(replicate(1000,a%*%b))
-   user  system elapsed 
-  0.252   0.554   1.240
-```
-
-
 ## Calling q from R
 
 
