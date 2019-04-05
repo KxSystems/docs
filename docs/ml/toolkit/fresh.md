@@ -93,7 +93,7 @@ symmetriclooking[x]              | If the data ‘appears’ symmetric
 treverseasymstat[x;lag]          | Measure of the asymmetry of the time series based on lags applied to the data
 vargtstdev[x]                    | If the variance of the dataset is larger than the standard deviation
 
-Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded
+Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded.
 
 ## Feature extraction
 
@@ -190,7 +190,7 @@ q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of init
 ```
 
 !!!note
-	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyperparameters defined in `hyperparam.txt` matches the number of function parameters the function will execute using the above steps.
+	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyperparameters defined in `hyperparam.txt` matches the number of function parameters the function will execute using the above steps.
 !!!warning
 	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
