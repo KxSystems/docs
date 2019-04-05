@@ -14,7 +14,7 @@ keywords: Python, Jupyter, natyural laguage processing, nlp, machine learning, m
 
 ## Natural Language Processing 
 
-[NLP](nlp) is the first module in our machine-learning suite, and manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included, the library is available [here](https://github.com/KxSystems/nlp).
+[NLP](nlp) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included, the library is available [here](https://github.com/KxSystems/nlp).
 
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/ML07%20Natural%20Language%20Processing.ipynb)
 
@@ -22,9 +22,10 @@ keywords: Python, Jupyter, natyural laguage processing, nlp, machine learning, m
 
 The [Machine Learning Toolkit](toolkit/) is at the core of q centered machine learning functionality. This library contains functions that cover the following areas.
 
--  Accuracy metrics to test the performance of the models built.
--  Pre-processing data prior to the application of machine learning algorithms.
--  An implementation of the FRESH algorithm for feature extraction and selection on structured time series data. 
+-  Accuracy [metrics](toolkit/utilities/metric.md) to test the performance of constructed machine learning models.
+-  [Pre-processing](toolkit/utilities/preproc.md) data prior to the application of machine learning algorithms.
+-  An implementation of the [FRESH](toolkit/fresh.md) algorithm for feature extraction and selection on structured time series data. 
+-  [Utility](toolkit/utilities/util.md) functions which are useful in many machine learning applications but do not fall within the other sections of the toolkit.
 
 The library is available [here](https://github.com/KxSystems/ml).
 
