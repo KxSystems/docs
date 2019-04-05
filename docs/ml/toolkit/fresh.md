@@ -11,13 +11,13 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml)
 
-Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
+Feature extraction and selection are vital components of many machine learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 
-Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and often provides a more suitable input to machine-learning algorithms.
+Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and often provides a more suitable input to machine learning algorithms.
 
 Following feature extraction, statistical-significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) as defined by the user.
 
-Feature selection can improve the accuracy of a machine-learning algorithm by
+Feature selection can improve the accuracy of a machine learning algorithm by
 
 -  Simplifying the models used.
 -  Shortening the training time needed.
@@ -48,11 +48,11 @@ Null values in the data should be replaced with derived values most appropriate 
 
 Data-types supported by the feature-extraction procedure are boolean, int, real, long, short and float. Other datatypes should not be passed to the extraction procedure.
 
-In particular, data should not contain text (strings or symbols), other than the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
+In particular, data should not contain text (strings or symbols), other than within the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
 
 !!! note
 
-    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [Preprocessing section](utilities/preproc.md) of the toolkit.
+    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [preprocessing section](utilities/preproc.md) of the toolkit.
 
 
 ## Calculated features
@@ -97,9 +97,9 @@ Feature-extraction functions are not, typically, called individually. A detailed
 
 ## Feature extraction
 
-Feature-extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target data than the raw time series. 
+Feature-extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target vector than the raw time series. 
 
-The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 55 such functions callable within the `.ml.fresh.feat` namespace, though users may select a subset of these based on requirement.
+The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 55 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
 
 ### `.ml.fresh.createfeatures`
 
@@ -114,7 +114,7 @@ Where
 -   `cnames` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
 -   `ptab` is a table containing the functions and parameters to be applied to the `cnames` columns. This should be a modified version of `.ml.fresh.params`
 
-This returns a table keyed by id column and containing the features extracted from the subset of the data identified by the id.
+This returns a table keyed by id column and containing the features extracted from the subset of the data identified by the `id` column.
 
 ```q 
 q)m:30;n:100
@@ -190,7 +190,7 @@ q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of init
 ```
 
 !!!note
-	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyperparameters defined in `hyperparam.txt` matches the number of function parameters the function will execute as above.
+	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyperparameters defined in `hyperparam.txt` matches the number of function parameters the function will execute using the above steps.
 !!!warning
 	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
@@ -206,7 +206,7 @@ Binary             | Binary            | Fisher-Exact
 Real               | Real              | Kendall Tau-b     
 Real               | Binary            | Kolmogorov-Smirnov
 
-Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available are as follows;
+Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
 
 1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level (set at 5% by default).
 2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to prediction of the target vector.
@@ -216,7 +216,7 @@ Each of these procedures can be implemented as below;
 
 ### `.ml.fresh.benjhochfeat`
 
-_Benjamini Hochberg Procedure for feature selection_
+_Benjamini Hochberg procedure for feature selection_
 
 Syntax: `.ml.fresh.benjhochfeat[t;tgt]`
 
