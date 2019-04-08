@@ -103,11 +103,14 @@ q)goo 3
 
 : evaluate some expression/s while some condition holds
 
-Control words are little used in practice for iteration.
-[Iterators](../ref/iterators.md) are more commonly used.
+!!! tip "iteration"
 
-<i class="far fa-hand-point-right"></i> 
-[Accumulators – Converge, Do, While](../ref/accumulators.md)
+    Control words are little used in practice for iteration.
+    [Iterators](../ref/iterators.md) are more commonly used.
+
+<i class="far fa-hand-point-right"></i> Iterators:  
+[Maps](../ref/maps.md) – Each, Each Left, Each Right, Each Parallel, Each Prior<br>
+[Accumulators](../ref/accumulators.md) – Converge, Do, While
 
 
 ### Common errors
