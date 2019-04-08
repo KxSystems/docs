@@ -40,7 +40,7 @@ q)rand 1 30 45 32
 
 ```q
 rand each 100#6
-{first 1?x} each 6
+{first 1?x} each 100#6
 100?6
 ```
 

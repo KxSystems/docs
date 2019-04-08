@@ -1,6 +1,7 @@
 ---
 hero: Site style guide
 keywords: bold, code, italic, kdb+, markdown, q, style
+author: stephen@kx.com
 ---
 
 # <i class="fas fa-pen-nib"></i> Style
@@ -14,8 +15,7 @@ Use italics for:
 
 -   emphasis, e.g. “the _best_ way to do this is…”
 -   reference to, rather than use of, a word, e.g. “the word _short_ is itself short“
--   the name of a q function or adverb denoted by a character, e.g. “the adverb _over_ is denoted by `/`”
--   for definitions, e.g. “An adverb takes a function argument and returns a function: the  _derivative_.” 
+-   for definitions, e.g. “An iterator takes a function argument and returns a function: the  _derived function_.” 
 -   citations of books or periodicals (but use double typographers’ quotes for the title of an article) e.g. “see “Functions and shadows” in _Vector_ 23:4” 
 -   the names of GUI controls, using `>` to show descent through menus, e.g. “Click _File > New_ to…”
 
