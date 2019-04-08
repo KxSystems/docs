@@ -48,11 +48,14 @@ The simplest case is running some code and getting a result. Note here:
 ![runningcode](img/running_code.png "Running code")
 
 
-### System commands
+## System commands
 
 System commands can be used with the `\` escape character at the start of a line in a code cell.
 
-!!! warning "`\d` does not currently work."# Code completion and getting help
+!!! warning "`\d` does not currently work."
+
+
+## Code completion and getting help
 
 The notebook supports code completion of q keywords and anything in the `.h`, `.Q`, `.z` and `.j` directories of q. 
 
@@ -60,8 +63,6 @@ Completion also works on user-defined variables, provided they exist on the serv
 
 Code completion in notebooks is accessed via the Tab key.
 
-
-### Completion
 
 ![completion](img/completion.gif "Completion")
 
