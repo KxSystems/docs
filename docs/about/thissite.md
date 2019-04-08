@@ -49,7 +49,7 @@ We gratefully acknowledge contributions by pull requests from
 -   James Hanna
 -   Sean Keevey
 -   Sean O’Hagan
--   David Z. Han
+-   Rian O’Cuinneagain
 -   Rikesh
 -   Thomas Smyth
 -   Sergey Vidyuk
