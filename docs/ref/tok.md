@@ -1,3 +1,7 @@
+---
+keywords: cast, datatype, kdb+, operator, q, string, tok
+---
+
 # `$` Tok
 
 
@@ -35,6 +39,7 @@ q)flip{(neg x;upper .Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
 ```
 
 !!! Tip "String to symbol"
+
     Use `` `$y`` as shorthand for `"S"$y`.
     <pre><code class="language-q">
     q)"S"$"hello"
@@ -58,6 +63,9 @@ q)"P"$"2015-10-28D03:55:58.6542"
 2015.10.28D03:55:58.654200000
 q)"I"$"192.168.1.34" /an IP address as an int
 -1062731486i
+q)"NT"$\:"123456123987654"  / since V3.4
+0D12:34:56.123987654
+12:34:56.123
 ```
 
 !!! tip "Truthy characters"
