@@ -35,7 +35,7 @@ q)\t do[100;log til 100000]
 
     `do` is not a keyword (function) but a control word.
 
-    It returns a [generic null](identity.md) `(::)`.
+    It returns [Identity](identity.md) `(::)`.
 
 
 <i class="far fa-hand-point-right"></i> 

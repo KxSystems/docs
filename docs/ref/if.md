@@ -28,7 +28,7 @@ q)r
 
     `if` is not a keyword (function) but a control word.
 
-    It returns a [generic null](identity.md) `(::)`.
+    It returns [Identity](identity.md) `(::)`.
 
 
 <i class="far fa-hand-point-right"></i>
