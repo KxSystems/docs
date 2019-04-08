@@ -27,7 +27,7 @@ q)r
 
     `while` is not a keyword (function) but a control word.
 
-    It returns no result and cannot be a list item or function argument.
+    It returns a [generic null](identity.md) `(::)`.
 
 
 <i class="far fa-hand-point-right"></i> 

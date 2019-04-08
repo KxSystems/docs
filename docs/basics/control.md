@@ -103,10 +103,19 @@ q)goo 3
 
 : evaluate some expression/s while some condition holds
 
-!!! warning "Control words are not functions and return as a result only the generic null."
-
 Control words are little used in practice for iteration.
 [Iterators](../ref/iterators.md) are more commonly used.
 
 <i class="far fa-hand-point-right"></i> 
 [Accumulators – Converge, Do, While](../ref/accumulators.md)
+
+
+### Common errors
+
+!!! warning "Control words are not functions, and return as a result only Identity."
+
+A common error is forgetting to terminate with a semi-colon. 
+
+The result of `if`, `do`, and `while` is [Identity](../ref/identity.md), `(::)`, which allows one mistakenly to write code such as `a:if[1b;42]43` (instead use [Cond](../ref/cond.md)), or `a:0b;if[a;0N!42]a:1b` – the sequence is not as intended!
+
+
