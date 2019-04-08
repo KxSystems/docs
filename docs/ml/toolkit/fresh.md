@@ -228,12 +228,12 @@ Where
 returns a list of features deemed statistically significant as deemed by the Benjamini-Hochberg procedure.
 
 ```q
-q)target:value exec avg col2+.001*col2 by date from tab / combination of col avgs
+q)target:value exec avg col2+.001*col2 by date from tab      / combination of col avgs
 q)show sigfeats:.ml.fresh.benjhochfeat[value cfeats;target]  / threshold defaulted to 5%
 `mean_col2`sumval_col2`absenergy_col2`c3_1_col2`c3_2_col2`med_col2`quantile_0..
 q)count 2_cols tab      / number of raw features
 2
-q)count 1_cols cfeats / number of extracted features
+q)count 1_cols cfeats   / number of extracted features
 595
 q)count sigfeats        / number of selected features
 21
