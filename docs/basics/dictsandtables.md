@@ -51,3 +51,6 @@ keywords: dictionary, group, kdb+, q, sort, table
 
 : Set specified columns as primary keys of a table
 
+
+<i class="far fa-hand-point-right"></i>
+Reference: Apply, Index, Trap: [Step dictionaries](../ref/apply.md#step-dictionaries)

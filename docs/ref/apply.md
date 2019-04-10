@@ -96,7 +96,7 @@ q){a + b} . enlist[::]
 
 ## Index
 
-`d . i` returns an item from list `d` as specified by successive items in list `i`.
+`d . i` returns an item from list or dictionary `d` as specified by successive items in list `i`.
 The result is found in `d` at depth `count i` as follows. 
 
 The list `i` is a list of successive indexes into `d`. `i[0]` must be in the domain of `d@`. It selects an item of `d`, which is then indexed by `i[1]`, and so on.
@@ -231,11 +231,65 @@ q)(1;`a`b!(2 3 4;10 20 30 40)) . (1; `b; 2)
 ```
 
 As we have seen above for the general case, every atom in the `k`th item of `i` must be a valid index of all items at depth `k` selected by `d . k # i`. Moreover, symbols can only select from dictionaries and directories, and integers cannot. 
-Consequently, if the kth item of i contains a symbol atom, then all items selected by `d . k # i` must be dictionaries or handles of directories, and therefore all atoms in the `k`th item of `i` must be symbols.
+Consequently, if the `k`th item of `i` contains a symbol atom, then all items selected by `d . k # i` must be dictionaries or handles of directories, and therefore all atoms in the `k`th item of `i` must be symbols.
 
 It follows that each item of `i` must be made up entirely of non-negative integer atoms, or entirely of symbol atoms, and if the `k`th item of `i` is made up of symbols, then all items at depth `k` in `d` selected by the first `k` items of `i` must be dictionaries.
 
 Note that if `d` is either a dictionary or handle to a directory then `d . enlist key d` is a list of values of all the entries.
+
+
+### Step dictionaries
+
+Where `d` is a dictionary, `d@i` or `d[i]` or `d i` returns for each item of `i` that is _outside_ the domain of `d` a null of the same type as the keys. 
+
+```q
+q)d:`cat`cow`dog`sheep!`chat`vache`chien`mouton
+q)d
+cat  | chat
+cow  | vache
+dog  | chien
+sheep| mouton
+q)d `sheep`snake`cat`ant
+`mouton``chat`
+q)
+q)e:(10*til 10)!til 10
+q)e
+0 | 0
+10| 1
+20| 2
+30| 3
+40| 4
+50| 5
+60| 6
+70| 7
+80| 8
+90| 9
+q)e 80 35 20 -10
+8 0N 2 0N
+```
+
+A _step dictionary_ has the _sorted_ attribute set. 
+Its keys are a sorted vector.
+Where `s` is a step dictionary, and `i[k]` are the items of `i` that are _outside_ the domain of `d`, the value/s for `d@i@k` are the values for the highest keys that are lower than `i k`.
+
+```q
+q)d:`cat`cow`dog`sheep!`chat`vache`chien`mouton
+q)ds:`s#d
+q)ds~d
+1b
+q)ds `sheep`snake`cat`ant
+`mouton`mouton`chat`
+q)
+q)es:`s#e
+q)es~e
+1b
+q)es 80 35 20 -10
+8 3 2 0N
+```
+
+<i class="far fa-hand-point-right"></i>
+[Set Attribute](set-attribute.md)  
+q-rious kdb+: [Step Dictionaries](https://qriouskdb.wordpress.com/2019/01/01/step-dictionaries/)
 
 
 ## Apply At, Index At

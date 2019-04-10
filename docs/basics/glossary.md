@@ -72,7 +72,8 @@ Attributes are metadata that apply to lists of special form.
 They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
 
 <i class="far fa-hand-point-right"></i> 
-[`#` Set Attribute](../ref/set-attribute.md)
+Reference: [Set Attribute](../ref/set-attribute.md), 
+[Step dictionaries](../ref/apply.md#step-dictionaries)
 
 
 ## Binary  
