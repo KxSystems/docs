@@ -157,7 +157,7 @@ date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1
 2000.01.04| 8817500        9950              30         17                  13         ..
 2000.01.05| 7597500        7300              30         12                  18         ..
 q)count 1_cols cfeats	/ 595 features have been produced from 2 columns
-595
+568
 
 / update ptab to not include hyperparameter dependant functions 
 q)show ptabnew:update valid:0b from ptab where pnum>0
@@ -186,7 +186,7 @@ date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1
 2000.01.04| 8817500        9950              30         17                  13         ..
 2000.01.05| 7597500        7300              30         12                  18         ..
 q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of initial functions
-74
+92
 ```
 
 !!!note
@@ -208,76 +208,45 @@ Real               | Binary            | Kolmogorov-Smirnov
 
 Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
 
-1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level (set at 5% by default).
+1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level recommended input is 5% (0.05).
 2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to prediction of the target vector.
 3. Percentile based selection: set a percentile threshold for p-values below which features are selected.
 
-Each of these procedures can be implemented as below;
+Each of these procedures can be implemented by modifying parameter input to the following function;
 
-### `.ml.fresh.benjhochfeat`
+### `.ml.fresh.significantfeatures`
 
-_Benjamini Hochberg procedure for feature selection_
+_Return statistically significant features based on defined selection procedure_
 
-Syntax: `.ml.fresh.benjhochfeat[t;tgt]`
+Syntax: `.ml.fresh.significantfeatures[t;tgt;f]`
 
 Where
 
 -   `t` is the unkeyed side of a table of created features
 -   `tgt` is a list of targets corresponding to the rows of table `t` 
+-   `f` is a projection with example syntax `.ml.fresh.ksigfeat 10`
 
-returns a list of features deemed statistically significant as deemed by the Benjamini-Hochberg procedure.
+returns a list of features deemed statistically significant as deemed by the user defined procedure within parameter `f`.
 
 ```q
-q)target:value exec avg col2+.001*col2 by date from tab      / combination of col avgs
-q)show sigfeats:.ml.fresh.benjhochfeat[value cfeats;target]  / threshold defaulted to 5%
+q)tgt:value exec avg col2+.001*col2 by date from tab      / combination of col avgs
+
+q)/ BHY procedure with a FDR level of 0.05
+q)show sigBH:.ml.fresh.significantfeatures[value cfeats;tgt;.ml.fresh.benjhoch 0.05]
+`col2_mean`col2_sumval`col2_fftcoeff_maxcoeff_10_coeff_0_real`col2_fftcoeff_m..
+
+q)/ Extract the top 20 best features
+q)show sigK:.ml.fresh.significantfeatures[value cfeats;tgt;.ml.fresh.ksigfeat 20]
 `mean_col2`sumval_col2`absenergy_col2`c3_1_col2`c3_2_col2`med_col2`quantile_0..
-q)count 2_cols tab      / number of raw features
-2
-q)count 1_cols cfeats   / number of extracted features
-595
-q)count sigfeats        / number of selected features
-21
+
+q)/ Extract the top 5th percentile of created features
+q)show sigP:.ml.fresh.significantfeatures[value cfeats;tgt;.ml.fresh.percentile 0.05]
+`col2_absenergy`col2_mean`col2_med`col2_skewness`col2_sumval`col2_c3_lag_1`co..
+
+q)/ Check the count of each method to show differences in outputs
+q)count each (sigBH;sigK;sigP)
+30 20 22
 ```
 
-!!! note 
-	In the previous release this procedure was contained in the function `.ml.fresh.significantfeatures` to maintain consistency for those using FRESH versions `v0.1.x`. It should be noted that `.ml.fresh.benjhochfeat` is an aliased version of this and the base operation of `.ml.fresh.significantfeatures` has not changed.
-
-### `.ml.fresh.ksigfeat`
-
-_Select the K-best features based on p-value_
-
-Syntax: `.ml.fresh.ksigfeat[t;tgt;k]`
-
-Where
-
--  `t` is the unkeyed side of a table of created features
--  `tgt` is a list of targets corresponding to the rows of table `t`
--  `k` is the number of features to be selected as an int
-
-returns a list of the k-best features defined as those with the lowest p-values.
-
-```q
-q)show sigfeats:.ml.fresh.ksigfeat[value cfeats;target;2]  / find the best 2 features
-`mean_col2`sumval_col2
-```
-
-### `.ml.fresh.percentilesigfeat`
-
-_Select features within the top p percentile_
-
-Syntax: `.ml.fresh.percentilesigfeat[t;tgt;p]`
-
-Where
-
--  `t` is the unkeyed side of a table of created features
--  `tgt` is a list of targets corresponding to the rows of table `t`
--  `p` is the percentile threshold as a float in range 0-1 
-
-returns a list of features in the top `p` percentile which are deemed most statistically significant based on p-values
-
-```q
-q)show sigfeats:.ml.fresh.percentilesigfeat[value cfeats;target;.05]  / percentile set at 5%
-`absenergy_col2`mean_col2`med_col2`sumval_col2`c3_1_col2`c3_2_col2`c3_3_col2`..
-q)count sigfeats        / number of selected features
-8
-```
+!!! warning
+	The v0.1.x input behaviour of `.ml.fresh.significantfeatures` has been changed to accommodate an increased number of feature selection methods.
