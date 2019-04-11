@@ -404,6 +404,7 @@ nav:
       - JDBC: interfaces/jdbc-client-for-kdb.md
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC: interfaces/q-server-for-odbc.md
+      - ODBC/Simba: interfaces/odbc-simba.md
       - ODBC3: interfaces/q-server-for-odbc3.md 
       - Perl: interfaces/perl-client-for-q.md 
       - Scala: interfaces/scala-client-for-q.md 
