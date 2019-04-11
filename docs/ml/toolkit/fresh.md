@@ -46,7 +46,7 @@ Data passed to the feature extraction procedure should contain an identifying (i
 
 Null values in the data should be replaced with derived values most appropriate to the column.
 
-Data-types supported by the feature-extraction procedure are boolean, int, real, long, short and float. Other datatypes should not be passed to the extraction procedure.
+Data-types supported by the feature-extraction procedure are boolean, all real and float types . Other datatypes should not be passed to the extraction procedure.
 
 In particular, data should not contain text (strings or symbols), other than within the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
 
@@ -61,36 +61,62 @@ Feature-extraction functions are defined in the script `fresh.q` and found withi
 
 function                         | returns 
 :--------------------------------|:--------------
-absenergy[x]                     | Absolute sum of the differences between successive datapoints
+absenergy[x]                     | Sum of squares
+abssumchange[x]                  | Absolute sum of the differences between successive datapoints
 aggautocorr[x]                   | Aggregation (mean/var etc.) of an autocorrelation over all possible lags 1 - length data 
+agglintrend[x;y]                 | Slope, intercept and rvalue for the the series over aggregated max, min, variance or average for each of y chunks of the series
 augfuller[x]                     | Hypothesis test to check for a unit root in time series dataset
 autocorr[x;lag]                  | Autocorrelation over specified lags
 binnedentropy [x;n bins]         | System entropy of data binned into equidistant bins
-c3[x;lag]                        | Measure of the non-linearity of the time series
-changequant[x;ql;qh;isabs]       | Aggregated value of successive changes within corridor specified by `ql `(lower quantile) and `qh` (upper quantile)
+c3[x;lag]                        | Measure of the non-linearity of the time series across different lagged values
+changequant[x;ql;qh;isabs]       | Aggregated value of successive changes within corridor specified by `ql `(lower quantile) and `qh` (upper quantile), isabs defines if the absolute difference is taken.
 cidce[x;isabs]                   | Measure of time series complexity based on peaks and troughs in the dataset
+count[x]                         | Number of values within the id
 countabovemean[x]                | Number of points in the dataset with a value greater than the time series mean
+countbelowmean[x]                | Number of points in the dataset with a value less than the time series mean
+eratiobychunk[x;N]               | Sum of squares of each region of the time series split into N section divided by the entire series
+firstmax[x]                      | Position of the first occcurance of the maximum value in the time series relative to the time series length 
+firstmin[x]                      | Position of the first occcurance of the minimum value in the time series relative to the time series length
 fftaggreg[x]                     | Spectral centroid (mean), variance, skew, and kurtosis of the absolute Fourier-transform spectrum
 fftcoeff[x;coeff]                | Fast-Fourier transform coefficients given real inputs and extract real, imaginary, absolute and angular components
 hasdup[x]                        | If the time-series contains any duplicate values
 hasdupmax[x]                     | Boolean value stating if a duplicate of the maximum value exists in the dataset
+hasdupmin[x]                     | Boolean value stating if a duplicate of the minimum value exists in the dataset
 indexmassquantile[x;q]           | Relative index `i` where `q`% of the time-series `x`’s mass lies left of `i`
 kurtosis[x]                      | Adjusted G2 Fisher-Pearson kurtosis
-lintrend[x]                      | Slope, intercept, r-value, p-value and standard error associated with the time series
+largestdev[x;y]                  | Boolean value stating if the standard deviation is y times larger than the max - min values of the series
+lastmax[x]                       | Position of the last occcurance of the maximum value in the time series relative to the time series length
+lastmin[x]                       | Position of the last occcurance of the minimum value in the time series relative to the time series length
+lintrend[x]                      | Slope, intercept and r-value associated with the time series
+longstrikegtmean[x]              | Length of the longest subsequence in `x` greater than the mean of `x`
 longstrikeltmean[x]              | Length of the longest subsequence in `x` less than the mean of `x`
-meanchange[x]                    | Mean over the absolute difference between subsequent t-series values
+max[x]                           | Maximum value in the time series
+mean[x]                          | Average value across the time series
+meanabschange[x]                 | Mean over the absolute difference between subsequent t-series values
+meanchange[x]                    | Mean over the difference between subsequent time series values
 mean2dercentral[x]               | Mean value of the central approximation of the second derivative of the time series
+med[x]                           | Median value within the time series
+min[x]                           | Minimum value contained within the time series
 numcrossingm[x;m]                | Number of crossings in the dataset over a value `m`: crossing is defined as sequential values either side of `m`, where the first is less than `m` and the second is greater or vice-versa
-numcwtpeaks[x;width]             | Peaks in the time-series following data smoothing via application of a Ricker wavelet
+numcwtpeaks[x;width]             | Peaks in the time-series following data smoothing via application of a Ricker wavelet of defined width
 numpeaks[x;support]              | Number of peaks with a specified support in a time series `x`
 partautocorrelation[x;lag]       | Partial autocorrelation of the time series at a specified lag
 perrecurtoalldata[x]             | (Count of values occurring more than once)÷(count different values)
 perrecurtoallval[x]              | (Count of values occurring more than once)÷(count data)
+quantile[x;q]                    | The value of `x` greater than the `q` percent of the ordered time series
+rangecount[x;y;z]                | The number of values in `x` greater than or equal to `y` and less than `z`
 ratiobeyondrsigma[x;r]           | Ratio of values more than `r*dev[x]` from the mean of `x`
 ratiovalnumtserieslength[x]      | (Number of unique values)÷(count values)
-spktwelch[x;coeff]               | Cross power spectral density of the time series at different tunable frequencies
+skewness[x]                      | Returns the skew of the time series indicating asymmetry within the series
+spktwelch[x;coeff]               | Cross power spectral density of the time series at different tunable coefficients
+stddev[x]                        | Standard deviation of `x`
+sumrecurringdatapoint[x]         | Sum of all points present in the `x` more than once.
+sumrecurringval[x]               | Sum of all the values present within `x` more than once
+sumval[x]                        | Sum of values within `x`
 symmetriclooking[x]              | If the data ‘appears’ symmetric
 treverseasymstat[x;lag]          | Measure of the asymmetry of the time series based on lags applied to the data
+valcount[x;y]                    | Number of occurrances of `y` within the series `x`
+var[x]                           | Variance of `x`
 vargtstdev[x]                    | If the variance of the dataset is larger than the standard deviation
 
 Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded.
@@ -99,7 +125,7 @@ Feature-extraction functions are not, typically, called individually. A detailed
 
 Feature-extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target vector than the raw time series. 
 
-The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 55 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
+The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
 
 ### `.ml.fresh.createfeatures`
 
