@@ -13,22 +13,20 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 
 Feature extraction and selection are vital components of many machine learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 
-Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time-series in a way that is easier to interpret and often provides a more suitable input to machine learning algorithms.
+Feature extraction is the process of building derived, aggregate features from a time series dataset. The features created are designed to characterize the underlying time series in a way that is easier to interpret and often provides a more suitable input to machine learning algorithms.
 
-Following feature extraction, statistical-significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) as defined by the user.
+Following feature extraction, statistical significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) as defined by the user.
 
 Feature selection can improve the accuracy of a machine learning algorithm by
 
 -  Simplifying the models used.
 -  Shortening the training time needed.
--  Avoiding the curse of dimensionality.
+-  Mitigating the curse of dimensionality.
 -  Reducing variance in the dataset to reduce overfitting.
-
 
 Notebooks showing examples of the FRESH algorithm used in different applications can be found at 
 <i class="fab fa-github"></i>
 [KxSystems/ml/fresh/notebooks](https://github.com/kxsystems/ml/tree/master/fresh/notebooks).
-
 
 ## Loading
 
@@ -39,14 +37,13 @@ q)\l ml/ml.q
 q).ml.loadfile`:fresh/init.q
 ```
 
-
 ## Data formatting
 
 Data passed to the feature extraction procedure should contain an identifying (id) column, which groups the time-series into subsets from which features can be extracted. The id column can be inherent to the data or derived for a specific use-case (e.g. applying a sliding window onto the dataset).
 
 Null values in the data should be replaced with derived values most appropriate to the column.
 
-Data-types supported by the feature-extraction procedure are boolean, all real and float types . Other datatypes should not be passed to the extraction procedure.
+The feature extraction procedure supports columns of boolean, integer and floating-point types. Other datatypes should not be passed to the extraction procedure.
 
 In particular, data should not contain text (strings or symbols), other than within the id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
 
@@ -54,76 +51,77 @@ In particular, data should not contain text (strings or symbols), other than wit
 
     A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [preprocessing section](utilities/preproc.md) of the toolkit.
 
-
 ## Calculated features
 
-Feature-extraction functions are defined in the script `fresh.q` and found within the `.ml.fresh.feat` namespace.
+Feature extraction functions are defined in the script `fresh.q` and found within the `.ml.fresh.feat` namespace.
 
 function                         | returns 
 :--------------------------------|:--------------
 absenergy[x]                     | Sum of squares
 abssumchange[x]                  | Absolute sum of the differences between successive datapoints
-aggautocorr[x]                   | Aggregation (mean/var etc.) of an autocorrelation over all possible lags 1 - length data 
-agglintrend[x;y]                 | Slope, intercept and rvalue for the the series over aggregated max, min, variance or average for each of y chunks of the series
-augfuller[x]                     | Hypothesis test to check for a unit root in time series dataset
-autocorr[x;lag]                  | Autocorrelation over specified lags
-binnedentropy [x;n bins]         | System entropy of data binned into equidistant bins
-c3[x;lag]                        | Measure of the non-linearity of the time series across different lagged values
-changequant[x;ql;qh;isabs]       | Aggregated value of successive changes within corridor specified by `ql `(lower quantile) and `qh` (upper quantile), isabs defines if the absolute difference is taken.
-cidce[x;isabs]                   | Measure of time series complexity based on peaks and troughs in the dataset
-count[x]                         | Number of values within the id
-countabovemean[x]                | Number of points in the dataset with a value greater than the time series mean
-countbelowmean[x]                | Number of points in the dataset with a value less than the time series mean
-eratiobychunk[x;N]               | Sum of squares of each region of the time series split into N section divided by the entire series
-firstmax[x]                      | Position of the first occcurance of the maximum value in the time series relative to the time series length 
-firstmin[x]                      | Position of the first occcurance of the minimum value in the time series relative to the time series length
+aggautocorr[x]                   | Aggregation (mean, median, variance and standard deviation) of an autocorrelation over all possible lags (1 - count[x]) 
+agglintrend[x;chunklen]          | Slope, intercept and rvalue for the series over aggregated max, min, variance or average for chunks of size `chunklen`
+augfuller[x]                     | Hypothesis test to check for a unit root in series
+autocorr[x;lag]                  | Autocorrelation over specified `lag`
+binnedentropy[x;nbins]           | Entropy of the series binned into `nbins` equidistant bins
+c3[x;lag]                        | Measure of the non-linearity of the series lagged by `lag`
+changequant[x;ql;qh;isabs]       | Aggregated value of successive changes within corridor specified by lower quantile `ql` and upper quantile `qh` (boolean `isabs` defines whether absolute values are considered)
+cidce[x;isabs]                   | Measure of series complexity based on peaks and troughs in the dataset (boolean `isabs` defines whether absolute values are considered)
+count[x]                         | Number of values within the series
+countabovemean[x]                | Number of values in the series with a value greater than the mean
+countbelowmean[x]                | Number of values in the series with a value less than the mean
+eratiobychunk[x;numsegments]     | Sum of squares of each region of the series split into `numsegments` segments, divided by the sum of squares for the entire series
+firstmax[x]                      | Position of the first occcurance of the maximum value in the series relative to the series length 
+firstmin[x]                      | Position of the first occcurance of the minimum value in the series relative to the series length
 fftaggreg[x]                     | Spectral centroid (mean), variance, skew, and kurtosis of the absolute Fourier-transform spectrum
-fftcoeff[x;coeff]                | Fast-Fourier transform coefficients given real inputs and extract real, imaginary, absolute and angular components
-hasdup[x]                        | If the time-series contains any duplicate values
-hasdupmax[x]                     | Boolean value stating if a duplicate of the maximum value exists in the dataset
-hasdupmin[x]                     | Boolean value stating if a duplicate of the minimum value exists in the dataset
-indexmassquantile[x;q]           | Relative index `i` where `q`% of the time-series `x`’s mass lies left of `i`
-kurtosis[x]                      | Adjusted G2 Fisher-Pearson kurtosis
-largestdev[x;y]                  | Boolean value stating if the standard deviation is y times larger than the max - min values of the series
-lastmax[x]                       | Position of the last occcurance of the maximum value in the time series relative to the time series length
-lastmin[x]                       | Position of the last occcurance of the minimum value in the time series relative to the time series length
-lintrend[x]                      | Slope, intercept and r-value associated with the time series
-longstrikegtmean[x]              | Length of the longest subsequence in `x` greater than the mean of `x`
-longstrikeltmean[x]              | Length of the longest subsequence in `x` less than the mean of `x`
-max[x]                           | Maximum value in the time series
-mean[x]                          | Average value across the time series
-meanabschange[x]                 | Mean over the absolute difference between subsequent t-series values
-meanchange[x]                    | Mean over the difference between subsequent time series values
-mean2dercentral[x]               | Mean value of the central approximation of the second derivative of the time series
-med[x]                           | Median value within the time series
-min[x]                           | Minimum value contained within the time series
-numcrossingm[x;m]                | Number of crossings in the dataset over a value `m`: crossing is defined as sequential values either side of `m`, where the first is less than `m` and the second is greater or vice-versa
-numcwtpeaks[x;width]             | Peaks in the time-series following data smoothing via application of a Ricker wavelet of defined width
-numpeaks[x;support]              | Number of peaks with a specified support in a time series `x`
-partautocorrelation[x;lag]       | Partial autocorrelation of the time series at a specified lag
-perrecurtoalldata[x]             | (Count of values occurring more than once)÷(count different values)
-perrecurtoallval[x]              | (Count of values occurring more than once)÷(count data)
-quantile[x;q]                    | The value of `x` greater than the `q` percent of the ordered time series
-rangecount[x;y;z]                | The number of values in `x` greater than or equal to `y` and less than `z`
-ratiobeyondrsigma[x;r]           | Ratio of values more than `r*dev[x]` from the mean of `x`
-ratiovalnumtserieslength[x]      | (Number of unique values)÷(count values)
-skewness[x]                      | Returns the skew of the time series indicating asymmetry within the series
-spktwelch[x;coeff]               | Cross power spectral density of the time series at different tunable coefficients
-stddev[x]                        | Standard deviation of `x`
-sumrecurringdatapoint[x]         | Sum of all points present in the `x` more than once.
-sumrecurringval[x]               | Sum of all the values present within `x` more than once
-sumval[x]                        | Sum of values within `x`
-symmetriclooking[x]              | If the data ‘appears’ symmetric
-treverseasymstat[x;lag]          | Measure of the asymmetry of the time series based on lags applied to the data
-valcount[x;y]                    | Number of occurrances of `y` within the series `x`
-var[x]                           | Variance of `x`
-vargtstdev[x]                    | If the variance of the dataset is larger than the standard deviation
+fftcoeff[x;coeff]                | Fast-Fourier transform `coeff` coefficient, given real inputs and extracting real, imaginary, absolute and angular components
+hasdup[x]                        | Boolean value stating if the series contains any duplicate values
+hasdupmax[x]                     | Boolean value stating if a duplicate of the maximum value exists in the series
+hasdupmin[x]                     | Boolean value stating if a duplicate of the minimum value exists in the series
+indexmassquantile[x;q]           | Relative index such that `q`% of the series' mass lies to the left
+kurtosis[x]                      | Adjusted G2 Fisher-Pearson kurtosis of the series
+largestdev[x;ratio]              | Boolean value stating if the standard deviation is `ratio` times larger than the max - min values of the series
+lastmax[x]                       | Position of the last occcurance of the maximum value in the series relative to the series length
+lastmin[x]                       | Position of the last occcurance of the minimum value in the series relative to the series length
+lintrend[x]                      | Slope, intercept and r-value associated with the series
+longstrikegtmean[x]              | Length of the longest subsequence in the series greater than the series mean
+longstrikeltmean[x]              | Length of the longest subsequence in the series less than the series mean
+max[x]                           | Maximum value of the series
+mean[x]                          | Mean value of the series
+meanabschange[x]                 | Mean over the absolute difference between subsequent series values
+meanchange[x]                    | Mean over the difference between subsequent series values
+mean2dercentral[x]               | Mean value of the central approximation of the second derivative of the series
+med[x]                           | Median value of the series
+min[x]                           | Minimum value of the series
+numcrossingm[x;crossval]         | Number of crossings in the series over the value `crossval`
+numcwtpeaks[x;width]             | Number of peaks in the series following data smoothing via application of a Ricker wavelet of defined `width`
+numpeaks[x;support]              | Number of peaks in the series with a specified `support`
+partautocorrelation[x;lag]       | Partial autocorrelation of the series with a specified `lag`
+perrecurtoalldata[x]             | Ratio of count of values occurring more than once to count of different values
+perrecurtoallval[x]              | Ratio of count of values occurring more than once to count of data
+quantile[x;quantile]             | The value of series greater than the `quantile` percent of the ordered series
+rangecount[x;minval;maxval]      | The number of values greater than or equal to `minval` and less than `maxval`
+ratiobeyondrsigma[x;r]           | Ratio of values more than `r*dev[x]` from the mean
+ratiovalnumtserieslength[x]      | Ratio of number of unique values to total number of values
+skewness[x]                      | Skew of the series indicating asymmetry within the series
+spktwelch[x;coeff]               | Cross power spectral density of the series at given `coeff`
+stddev[x]                        | Standard deviation of series
+sumrecurringdatapoint[x]         | Sum of all points present in the series more than once
+sumrecurringval[x]               | Sum of all the values present within the series more than once
+sumval[x]                        | Sum of values within the series
+symmetriclooking[x]              | Measure of symmetry in the series
+treverseasymstat[x;lag]          | Measure of asymmetry of the series based on `lag`
+valcount[x;val]                  | Number of occurrances of `val` within the series
+var[x]                           | Variance of the series
+vargtstdev[x]                    | Boolean value stating if the variance of the dataset is larger than the standard deviation
 
-Feature-extraction functions are not, typically, called individually. A detailed explanation of each operation is therefore excluded.
+!!! note
+
+    Feature extraction functions are not, typically, called individually.
 
 ## Feature extraction
 
-Feature-extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target vector than the raw time series. 
+Feature extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target vector than the raw time series. 
 
 The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
 
@@ -185,7 +183,7 @@ date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1
 q)count 1_cols cfeats	/ 595 features have been produced from 2 columns
 568
 
-/ update ptab to not include hyperparameter dependant functions 
+/ update ptab to exclude hyperparameter-dependent functions 
 q)show ptabnew:update valid:0b from ptab where pnum>0
 f                       | pnum pnames         pvals                        valid
 ------------------------| ------------------------------------------------------
@@ -216,14 +214,13 @@ q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of init
 ```
 
 !!!note
-	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Functions can be user defined within the `.ml.fresh.feat` namespace in the file `fresh.q` and provided the number of hyperparameters defined in `hyperparam.txt` matches the number of function parameters the function will execute using the above steps.
+	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Users can create their own features by defining a function within the `.ml.fresh.feat` namespace and, if necessary, providing relevant hyperparameters in .ml.fresh.params.
 !!!warning
 	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
-
 ## Feature significance
 
-Statistical-significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
+Statistical significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
 
 feature type       | target type       | significance test 
 :------------------|:------------------|:------------------
@@ -248,7 +245,7 @@ Syntax: `.ml.fresh.significantfeatures[t;tgt;f]`
 
 Where
 
--   `t` is the unkeyed side of a table of created features
+-   `t` is the value side of a table of created features
 -   `tgt` is a list of targets corresponding to the rows of table `t` 
 -   `f` is a projection with example syntax `.ml.fresh.ksigfeat 10`
 
