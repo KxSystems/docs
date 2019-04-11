@@ -16,7 +16,7 @@ Allows the kdb+ interpreter to manipulate Python objects and call Python functio
 ## Requirements
 
 -   kdb+ ≥3.5 64-bit
--   Python ≥3.5
+-   Python ≥ 3.5 (macOS/Linux) ≥ 3.6.0 Windows
 
 
 ## Build and install
