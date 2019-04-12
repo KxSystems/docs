@@ -12,7 +12,7 @@ ODBC is one of the best established and widely supported APIs for connecting to 
 
 <i class="far fa-hand-point-right"></i>
 simba.com: [Data Access Standards](https://www.simba.com/resources/data-access-standards-glossary)  
-microsoft.com: [ODBC API Reference](https://docs.microsoft.com/en- us/sql/odbc/reference/syntax/odbc-api-reference)
+microsoft.com: [ODBC API Reference](https://docs.microsoft.com/en-us/sql/odbc/reference/syntax/odbc-api-reference)
 
 
 ## Clients
