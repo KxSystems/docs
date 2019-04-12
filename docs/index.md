@@ -18,9 +18,9 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
-    <p style="text-align: center;" markdown="1"><i class="fas fa-code"></i> [Kx&nbsp;Analyst](/analyst/)</p>
+    <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Analyst](/analyst/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="fas fa-code"></i> [Kx&nbsp;Developer](/developer/)</p>
+    <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Developer](/developer/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC drivers](interfaces/odbc-simba.md)</p>
     
