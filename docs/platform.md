@@ -1,3 +1,7 @@
+---
+keywords: analyst, control, dashboards, kdb+, monitoring, platform, product, q, stream
+---
+
 # Platform for Kx
 
 
@@ -11,11 +15,11 @@ _Platform for Kx_ is a suite of products for building kdb+ user interfaces in HT
     (Kx Systems provides credentials to follow the links.) 
 
 
-## Analyst for Kx
+## Kx Analyst
 
-![Analyst for Kx](img/analyst.png)
+![Kx Analyst](img/analyst.png)
 
-[_Analyst for Kx_](https://code.kx.com/platform/analyst/)
+[_Kx Analyst_](https://code.kx.com/analyst/)
 (Analyst) is an interactive development environment used to manage, manipulate, and explore massive datasets in real time by exploiting kdb+’s server-based analytics technology. Analyst is designed to support a wide range of users from non-technical analysts to experienced q programmers.
 
 
@@ -26,12 +30,19 @@ _Platform for Kx_ is a suite of products for building kdb+ user interfaces in HT
 [_Control for Kx_](https://code.kx.com/platform/control/) is a client-server application that allows you to design, build, deploy and manage data-capture/streaming systems.
 
 
-## Dashboards for Kx
+## Kx Dashboards
 
 <iframe src="https://player.vimeo.com/video/135580263" style="border: 1px solid #ccc; box-shadow: 0 2px 2px rgba(0,0,0,.14); height: 450px; width: 100%;"webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-[_Dashboards for Kx_](https://code.kx.com/platform/dashboards/)
+[_Kx Dashboards_](https://code.kx.com/platform/dashboards/)
 offers an easy-to-use, yet powerful drag-and-drop interface to allow creators to build dashboards without the need for programming experience. 
+
+
+## Kx Developer
+
+![Kx Developer](img/kxdeveloper.png)
+
+[_Kx Developer_](/developer/) is a visual environment used to manage, manipulate and explore massive datasets in real-time by exploiting kdb+’s server-based analytics technology.
 
 
 ## Monitoring for Kx
