@@ -6,12 +6,12 @@ keywords: pandas manipulation, dataframe, train test split, .
 
 # <i class="fa fa-share-alt"></i> Utility functions 
 
-Within the toolkit there are a number of functions which are true utils. These functions are used within many machine learning applications but do not fit with under sections such as statistics or preprocessing.
+Within the toolkit there are a number of functions which are true utils. These functions are used within many machine-learning applications but do not fit with under sections such as statistics or preprocessing.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/util/util.q)
 
-The following functions are those at present that contained within the `util.q` file of the machine learning toolkit.
+The following functions are those at present that contained within the `util.q` file of the Machine Learning Toolkit.
 
 ```txt
 Utility functions

@@ -1,11 +1,12 @@
 ---
-title: Demonstration notebooks for machine learning
 keywords: embedPy, Jupyter, ml, machine learning, notebook, Python
 ---
 
-# <i class="fas fa-share-alt"></i> Demonstration notebooks
+# <i class="fas fa-share-alt"></i> Demonstration notebooks for machine learning
 
-EmbedPy and JupyterQ can be used to solve all kind of machine learning problems, from feature engineering to the training and testing of models. They also allow users to display results in a range of ways, giving a better understanding of the data and results.
+
+
+EmbedPy and JupyterQ can be used to solve all kind of machine-learning problems, from feature engineering to the training and testing of models. They also allow users to display results in a range of ways, giving a better understanding of the data and results.
 
 The notebooks at 
 <i class="fab fa-github"></i> 
@@ -27,7 +28,7 @@ Several plots are also employed to visualize the obtained reduced features and i
 
 ## ML03 K-nearest neighbors
 
-The basic steps to follow in a standard machine learning problem previous to final model training are performed: features are scaled, data is split into training and test datasets and parameter tuning is done by measuring accuracy of a K-Nearest Neighbors (KNN) model for different values of parameter K.
+The basic steps to follow in a standard machine-learning problem previous to final model training are performed: features are scaled, data is split into training and test datasets and parameter tuning is done by measuring accuracy of a K-Nearest Neighbors (KNN) model for different values of parameter K.
 
 
 ## ML04 Feature engineering

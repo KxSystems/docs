@@ -8,7 +8,7 @@ keywords: Python, Jupyter, natural language processing, nlp, machine learning, m
 ![Machine learning](../img/ml.png)
 
 
-**Machine learning** capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
+**Machine-learning** capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 
 <i class="far fa-hand-point-right"></i> [How to set up](setup) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build.
 
@@ -40,12 +40,12 @@ Users can now install kdb+/q along with our supported Python and Machine Learnin
 
 ## Machine Learning Toolkit
 
-The [Machine Learning Toolkit](toolkit/) is at the core of kdb+/q centered machine learning functionality. This library contains functions that cover the following areas.
+The [Machine Learning Toolkit](toolkit/) is at the core of kdb+/q centered machine-learning functionality. This library contains functions that cover the following areas.
 
--  Accuracy [metrics](toolkit/utilities/metric.md) to test the performance of constructed machine learning models.
--  [Pre-processing](toolkit/utilities/preproc.md) data prior to the application of machine learning algorithms.
+-  Accuracy [metrics](toolkit/utilities/metric.md) to test the performance of constructed machine-learning models.
+-  [Pre-processing](toolkit/utilities/preproc.md) data prior to the application of machine-learning algorithms.
 -  An implementation of the [FRESH](toolkit/fresh.md) algorithm for feature extraction and selection on structured time series data. 
--  [Utility](toolkit/utilities/util.md) functions which are useful in many machine learning applications but do not fall within the other sections of the toolkit.
+-  [Utility](toolkit/utilities/util.md) functions which are useful in many machine-learning applications but do not fall within the other sections of the toolkit.
 
 The library is available [here](https://github.com/KxSystems/ml).
 
@@ -59,7 +59,7 @@ The library is available [here](https://github.com/KxSystems/ml).
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/ML07%20Natural%20Language%20Processing.ipynb)
 
 
-All machine learning libraries are:
+All machine-learning libraries are:
 
 -   well **documented**, with understandable and useful examples
 -   maintained and **supported** by Kx on a best-efforts basis, at no cost to customers

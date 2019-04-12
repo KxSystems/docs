@@ -11,13 +11,13 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml)
 
-Feature extraction and selection are vital components of many machine learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
+Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 
-Feature extraction is the process of building derived, aggregate features from a time series dataset. The features created are designed to characterize the underlying time series in a way that is easier to interpret and often provides a more suitable input to machine learning algorithms.
+Feature extraction is the process of building derived, aggregate features from a time series dataset. The features created are designed to characterize the underlying time series in a way that is easier to interpret and often provides a more suitable input to machine-learning algorithms.
 
 Following feature extraction, statistical significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) as defined by the user.
 
-Feature selection can improve the accuracy of a machine learning algorithm by
+Feature selection can improve the accuracy of a machine-learning algorithm by
 
 -  Simplifying the models used.
 -  Shortening the training time needed.
