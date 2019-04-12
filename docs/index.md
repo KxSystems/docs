@@ -22,7 +22,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
     
     <p style="text-align: center;" markdown="1"><i class="fas fa-code"></i> [Kx&nbsp;Developer](/developer/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC drivers](interfaces/osdbc-simba.md)</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC drivers](interfaces/odbc-simba.md)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Working with sym&nbsp;files](wp/symfiles/)</p>
     
