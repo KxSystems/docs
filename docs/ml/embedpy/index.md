@@ -16,7 +16,7 @@ Allows the kdb+ interpreter to manipulate Python objects and call Python functio
 ## Requirements
 
 -   kdb+ ≥3.5 64-bit
--   Python ≥3.5
+-   Python ≥ 3.5 (macOS/Linux) ≥ 3.6.0 Windows
 
 
 ## Build and install
@@ -551,6 +551,8 @@ q)qfunc[4;pyarglist enlist 3;`c pykw 2;pykwargs enlist[`d]!enlist 1]
 4 3 2 1 24
 ```
 
+!!! warning
+	Prior to defining fuctions containing `pykw / pykwargs / pyarglist` within a script, the file `p.q` must be loaded explicitly. Failure to do so will result in an error `'pykw/'pykwargs/'pyarglist`.
 
 ### Zero-argument calls
 
