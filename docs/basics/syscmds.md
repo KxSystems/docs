@@ -1,5 +1,4 @@
 ---
-title: System commands
 keywords: command, kdb+, q, system
 ---
 
@@ -180,12 +179,19 @@ q)til each 20+til 10
 ..
 ```
 
+<i class="far fa-hand-point-right"></i>
+[`-c`](cmdline.md#-c-console-size)
+
+
 
 ## `\C` (HTTP size)
 
 Syntax: `\C [h,w]`
 
 Sets the HTTP height and width. This is the same as [command-line option `-C`](cmdline.md#-c-http-size). 
+
+<i class="far fa-hand-point-right"></i>
+[`-C`](cmdline.md#-c-http-size)
 
 
 ## `\cd` (change directory)
@@ -238,6 +244,9 @@ This enables error trapping for client requests. The default is 0 (off).
 When a client request has an error, by default the server clears the stack. This is appropriate for production use as it enables the server to continue processing other client requests.
 
 For development, you can set `\e 1` to enable debugging on the server. In this case, the server suspends on an error, and does not process other requests until the stack is cleared.
+
+<i class="far fa-hand-point-right"></i>
+[`-e`](cmdline.md#-e-error-traps)
 
 
 ## `\f` (functions)
@@ -312,28 +321,25 @@ q).z.P
 
 This corresponds to the `-o` command line parameter.
 
+<i class="far fa-hand-point-right"></i>
+[`-o`](cmdline.md#-o-utc-offset)
+
 
 ## `\p` (listening port)
 
-Syntax: `\p [i]`
+Syntax: `\p [hostname:][portnumber|servicename]`
 
-Sets the listening port number. The default is 0 (no listening port). The port must be available and the process must have permission for the port.
+kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified. 
+The port must be available and the process must have permission for the port.
 
-A negative parameter sets a [multi-threaded](../basics/peach.md) port and if used it must be the initial and only mode of operation, i.e. do not dynamically switch between positive port and negative port.
+The default is 0 (no listening port). 
 
-A parameter of `0W` means pick a random available port within the range 32768–60999.
-
-```q
-q)\p 5010     / set port 5010
-q)\p
-5010
-q)\p 0W       / pick a random available port within the range 32768 - 60999
-q)\p
-45512
-q)\p 0        / turn off listening port
-```
-
-This corresponds to the [`-p` command line parameter](cmdline.md#-p-listening-port).
+<i class="far fa-hand-point-right"></i>
+[Listening port](listening-port.md) for details  
+Reference: [`hopen`](../ref/handles.md#hopen)  
+Command-line options: [`-e`](cmdline.md#-e-tls-server-mode), 
+[`-p`](cmdline.md#-p-listening-port)  
+Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)
 
 
 ## `\P` (precision)
@@ -379,6 +385,9 @@ q)system"s 0" / disable slave threads
 q)system"s 0N" / show max slave threads
 8i
 ```
+
+<i class="far fa-hand-point-right"></i>
+[`-s`](cmdline.md#-s-slaves)
 
 
 ## `\S` (random seed)
@@ -457,6 +466,9 @@ q)\t:100 log til 100000    / timing for 100 repetitions, new syntax of "\t:n exp
 
 The tick timer usage corresponds to the `-t` command line parameter. 
 
+<i class="far fa-hand-point-right"></i>
+[`-t`](cmdline.md#-t-timer-ticks)
+
 
 ## `\T` (timeout)
 
@@ -464,7 +476,11 @@ Syntax: `\T [n]`
 
 This sets the client execution timeout, as the integer number of seconds a client call will execute before timing out, default 0 (no timeout). Note this is in seconds, not milliseconds like `\t`.
 
-This corresponds to the [`-T` command line parameter](cmdline.md#-t-timeout).
+This corresponds to the `-T` command line parameter.
+
+<i class="far fa-hand-point-right"></i>
+[`-T`]](cmdline.md#-t-timeout)
+
 
 
 ## `\ts` (time and space)
@@ -491,6 +507,9 @@ q)\ts:10000 log til 1000           /same as \ts do[10000; log til 1000]
 Syntax: `\u`
 
 When q is invoked with the `-u` parameter specifying a user password file, then `\u` will reload the password file. This allows updates to the password file while the server is running.
+
+<i class="far fa-hand-point-right"></i>
+[`-u`](cmdline.md#-u-usr-pwd-local)
 
 
 ## `\v` (variables)
@@ -577,6 +596,9 @@ q)\w 3
 '-w init via cmd line
 ```
 
+<i class="far fa-hand-point-right"></i>
+[`-w`](cmdline.md#-w-memory)
+
 
 ## `\W` (week offset)
 
@@ -585,6 +607,9 @@ Syntax: `\W [n]`
 Specifies the start of week offset, where 0 is Saturday. The default is 2 = Monday.
 
 This corresponds to the `-W` command line parameter.
+
+<i class="far fa-hand-point-right"></i>
+[`-W`](cmdline.md#-w-start-week)
 
 
 ## `\x` (expunge)
@@ -620,6 +645,9 @@ q)\z 1
 q)"D"$"06/01/2010"
 2010.01.06
 ```
+
+<i class="far fa-hand-point-right"></i>
+[`-z`](cmdline.md#-z-date-format)
 
 
 ## `\1` & `\2` (redirect)

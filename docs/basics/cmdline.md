@@ -9,7 +9,8 @@ keywords: command, file, kdb+, line, option, q
 The command line for invoking kdb+ has the form:
 
 ```txt
-q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] [-p N] 
+q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] 
+    [-p port|servicename|host:port|host:servicename] 
     [-P N] [-q] [-r :H:P] [-s N] [-t N] [-T N] [-u|U F] [-w N] [-W N] 
     [-z 0|1]
 ```
@@ -47,7 +48,6 @@ m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
 ```
 
 ```q
-
 +`p`city!(`p$`p1`p2`p3`p4`p5`p6`p1`p2;`london`london`london`london`london`lon..
 (`s#+(,`color)!,`s#`blue`green`red)!+(,`qty)!,900 1000 1200
 +`s`p`qty!(`s$`s1`s1`s1`s2`s3`s4;`p$`p1`p4`p6`p2`p2`p4;300 200 100 400 200 300)
@@ -90,6 +90,7 @@ Use `\_` to check if client write-access is blocked:
 q)\_
 1
 ```
+
 
 
 ## `-c` (console size)
@@ -200,16 +201,20 @@ Offset hours from UTC, or minutes if `abs[N]>23` (Affects [`.z.Z`](../ref/dotz.m
 
 ## `-p` (listening port)
 
-Syntax: `-p N`
-  
-Port on which q server listens. Use for [client/server](../kb/client-server.md), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
+Syntax: `-p [hostname:][portnumber|servicename]`
 
+kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified. 
+The port must be available and the process must have permission for the port.
 
-## `-p` (multithread port)
+The default is 0 (no listening port). 
 
-Syntax: `-p -N`
-  
-Port for [multithreaded input mode](../kb/multithreaded-input.md)
+<i class="far fa-hand-point-right"></i>
+[Listening port](listening-port.md) for details  
+Reference: [`hopen`](../ref/handles.md#hopen)  
+Command-line option: [`-e`](cmdline.md#-e-tls-server-mode)  
+System command: [`\p`](syscmds.md#p-listening-port)  
+Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)
+
 
 
 ## `-P` (display precision)

@@ -159,6 +159,7 @@ nav:
       - Iteration: basics/iteration.md
       - IPC protocol: basics/ipc.md
       - Joins: basics/joins.md
+      - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
       - Mathematics: basics/math.md
       - Metadata: basics/metadata.md
