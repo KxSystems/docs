@@ -231,8 +231,8 @@ Real               | Binary            | Kolmogorov-Smirnov
 
 Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
 
-1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level recommended input is 5% (0.05).
-2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to prediction of the target vector.
+1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level. The recommended input is 5% (0.05).
+2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to allow us to predict the target vector.
 3. Percentile based selection: set a percentile threshold for p-values below which features are selected.
 
 Each of these procedures can be implemented by modifying parameter input to the following function;
