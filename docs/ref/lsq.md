@@ -55,6 +55,11 @@ q)a - (a lsq b) mmu b     / minimum squared difference
 1.549206  -2.130159  -0.5809524 2.130159
 ```
 
+`lsq` solves a normal equations matrix via Cholesky decomposition – solving systems is more robust than matrix inversion and multiplication.
+
+Since V3.6 2017.09.26 `inv` uses LU decomposition. 
+Previously it used Cholesky decomposition as well.
+
 
 ## Polynomial fitting
 
@@ -72,6 +77,12 @@ lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
 ```
 
 
+
 <i class="far fa-hand-point-right"></i>
+[`inv`](inv.md), 
 [`mmu`](mmu.md)  
-Basics: [Math](../basics/math.md)
+Basics: [Mathematics](../basics/math.md)  
+Wikipedia: [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition),
+[Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion)
+
+

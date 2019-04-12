@@ -29,5 +29,14 @@ q)1=a mmu inv a
 ```
 
 
+`lsq` solves a normal equations matrix via Cholesky decomposition – solving systems is more robust than matrix inversion and multiplication.
+
+Since V3.6 2017.09.26 `inv` uses LU decomposition. 
+Previously it used Cholesky decomposition as well.
+
+
 <i class="far fa-hand-point-right"></i>
-Basics: [Mathematics](../basics/math.md)
+[`lsq`](lsq.md)  
+Basics: [Mathematics](../basics/math.md)  
+Wikipedia: [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition),
+[Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion)
