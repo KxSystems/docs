@@ -35,7 +35,7 @@ General                                      Database
                                               .Q.par     locate partition
 Environment                                   .Q.PD      partition locations
  .Q.k        version                          .Q.pd      modified partition locations
- .Q.opt      command parameters               .Q.pf      partition type
+ .Q.opt      command parameters               .Q.pf      partition field
  .Q.res      k words                          .Q.pn      partition counts
  .Q.w        memory stats                     .Q.pt      partitioned tables
  .Q.x        non-command parameters           .Q.PV      partition values
@@ -1048,11 +1048,11 @@ Syntax: `.Q.pd`
 In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
 
 
-## `.Q.pf` (partition type)
+## `.Q.pf` (partition field)
 
 Syntax: `.Q.pf`
 
-In partitioned DBs, the partition type. 
+In partitioned DBs, the partition field. 
 Possible values are `` `date`month`year`int``.
 
 
