@@ -11,7 +11,7 @@ keywords: api, interface, kdb+, library, odbc, q, server
     This interface is no longer supported.
 
     See instead [ODBC3](q-server-for-odbc3.md) and 
-    [Simba/Magnitude ODBC drivers](odbc-simba.md).
+    [Simba/Magnitude ODBC drivers](odbc-simba.md)
 
 
 
