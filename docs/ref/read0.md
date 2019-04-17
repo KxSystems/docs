@@ -11,11 +11,14 @@ _Read text from a file or process handle_
 
 Syntax: `read0 x`, `read0[x]`
 
-Returns data from text file or handle. Where `x` is a
+where `x` is a filename, file or process handle, or a file descriptor,
+returns data from a text file or handle. 
+
 
 
 ## Filename
 
+Where `x` is a filename,
 returns the lines of the file as a list of strings. Lines are assumed delimited by either LF or CRLF, and the delimiters are removed.
 
 ```q
@@ -28,8 +31,9 @@ q)d:raze{read0(`:/tmp/data;x;100000)}each 100000*til 5
 ```
 
 
-## File handle
+## File or process handle
 
+Where `x` is a file or process handle
 returns a line of text from it.
 
 ```q
@@ -51,6 +55,7 @@ q)a[4+til 4]
 
 ## File descriptor
 
+Where `x` is a file descriptor,
 i.e. a list of the form `(file; offset; length)`, returns bytes from `file`.
 
 ```q
