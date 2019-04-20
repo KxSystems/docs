@@ -2,7 +2,7 @@
 keywords: api, interface, kdb+, library, odbc, odbc3, q, SQL
 ---
 
-# ![ODBC](img/odbc.png) Kdb+ server for ODBC3
+# <i class="fas fa-database"></i> Kdb+ server for ODBC3
 
 
 <i class="far fa-hand-point-right"></i> 

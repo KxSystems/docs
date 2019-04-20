@@ -2,7 +2,15 @@
 keywords: api, interface, kdb+, library, odbc, q, server
 ---
 
-# ![ODBC](img/odbc.png) Kdb+ server for ODBC
+# <i class="fas fa-database"></i> Kdb+ server for ODBC
+
+
+
+!!! warning "No longer supported"
+
+    See [ODBC/Simba](odbc-simba.md) and [ODBC3](q-server-for-odbc3.md).
+
+
 
 In Windows only, you can use ODBC to connect to a q database from a non-q client.  
 <i class="far fa-hand-point-right"></i> 
