@@ -6,9 +6,14 @@ keywords: api, interface, kdb+, library, odbc, q, server
 
 
 
-!!! warning "No longer supported"
+!!! warning "Deprecated"
 
-    See [ODBC/Simba](odbc-simba.md) and [ODBC3](q-server-for-odbc3.md).
+    This interface is no longer supported.
+
+    See instead [ODBC3](q-server-for-odbc3.md) and 
+    [Simba/Magnitude ODBC drivers](odbc-simba.md)
+
+
 
 
 

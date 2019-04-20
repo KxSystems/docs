@@ -5,6 +5,7 @@ keywords: api, interface, kdb+, library, odbc, q
 # <i class="fas fa-database"></i> Q client for ODBC
 
 
+
 In Windows and Linux, you can use ODBC to connect to a non-kdb+ database from q. 
 
 <i class="far fa-hand-point-right"></i> 
