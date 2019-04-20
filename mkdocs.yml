@@ -436,6 +436,8 @@ nav:
       # - Running Python code: ml/embedpy/running.md
       # - EmbedPy objects: ml/embedpy/objects.md
       # - Function calls: ml/embedpy/functions.md
+      - FAQ: ml/embedpy/faq.md
+      - Reference: ml/embedpy/reference.md
     - JupyterQ: ml/jupyterq/index.md
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
