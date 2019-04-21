@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>404 - Not found</h1>
+  <p>
+  	Google Search has been indexing the old wiki for over 20 years.
+  	It’s taking a while to catch on that the up-to-date documentation 
+  	is now here. 301 redirects, <code>robots.txt</code> and a sitemap
+  	haven’t persuaded it yet. 
+  	Apparently, GS just sees itself successfully directing 
+  	queries to the old URLs. In desperation, we took away the wiki 
+  	(and V1 of this site). And here you are. 
+  </p>
+
+  <p>
+  	Happily, GS now directs the top kdb+ queries correctly.
+  	Here are links to the most popular queries it gets wrong.
+  </p>
+
+  <table>
+    <tr>
+      <td>
+        <ol>
+        	<li><a href="https://code.kx.com/v2/ref/handles/"><code>hopen</code></a></li>
+        	<li><a href="https://code.kx.com/v2/basics/datatypes/">datatype</a></li>
+        	<li><a href="https://code.kx.com/v2/ref/type/"><code>type</code></a></li>
+        	<li><a href="https://code.kx.com/v2/ref/dotq/#qdpft-save-table"><code>.q.dpft</code></a></li>
+        	<li><a href="https://code.kx.com/v2/ref/file-text/#load-csv">read csv</a></li>
+        </ol>
+      </td>
+      <td>
+        <ol>
+          <li value="6"><a href="https://code.kx.com/v2/ref/vs/"><code>vs</code></a></li>
+          <li><a href="https://code.kx.com/v2/ref/if/"><code>if</code></a></li>
+          <li><a href="https://code.kx.com/v2/ref/get/#set"><code>set</code></a></li>
+          <li><a href="https://code.kx.com/v2/ref/sv/"><code>sv</code></a></li>
+          <li><a href="https://code.kx.com/developer/">Kx Developer</a></li>
+        </ol>
+      </td>
+      <td>
+        <ol>
+          <li value="11"><a href="https://code.kx.com/v2/ref/asof/"><code>asof</code></a></li>
+          <li><a href="https://code.kx.com/v2/basics/control/#conditional-evaluation">if else</a></li>
+          <li><a href="https://code.kx.com/v2/ref/like/"><code>like</code></a></li>
+          <li><a href="https://code.kx.com/v2/ref/maps/#each"><code>each</code></a></li>
+          <li><a href="https://code.kx.com/v2/ref/dict/">dictionary</a></li>
+        </ol>
+      </td>
+      <td>
+        <ol>
+          <li value="16"><a href="https://code.kx.com/v2/wp/java-api/#kdb-tickerplant-overview">tickerplant</a></li>
+          <li><a href="https://code.kx.com/v2/ref/lj/">left join</a></li>
+          <li><a href="https://code.kx.com/v2/basics/precision/">round</a></li>
+          <li><a href="https://code.kx.com/v2/ref/wj/">window join</a></li>
+        </ol>
+      </td>
+    </tr>
+  </table>
+
+{% endblock %}
