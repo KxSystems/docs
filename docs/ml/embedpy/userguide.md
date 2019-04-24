@@ -81,7 +81,7 @@ Foreign objects can be stored in variables just like any other q datatype, or as
 
 ### EmbedPy objects
 
-Foreign objects cannot be directly operated on in q. Instead, Python objects are typically represented as `embedPy` objects, which wrap the underlying `foreign` objects. This provides the ability to get and set attributes, index, call or convert the underlying `foreign` object to a q.
+Foreign objects cannot be directly operated on in q. Instead, Python objects are typically represented as `embedPy` objects, which wrap the underlying `foreign` objects. This provides the ability to get and set attributes, index, call or convert the underlying `foreign` object to a q object.
 
 Use `.p.wrap` to create an embedPy object from a foreign object.
 

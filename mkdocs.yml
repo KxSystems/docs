@@ -451,11 +451,11 @@ nav:
     - Natural language processing:
       - Overview: ml/nlp/index.md
       - User Guide:
-        - Text manipulation: ml/nlp/preproc.md
-        - Text Comparison: ml/nlp/comparisons.md
-        - Clustering: ml/nlp/clustering.md
-        - Data Interrogation: ml/nlp/analysis.md
-        - Utilities: ml/nlp/utils.md
+        - Text manipulation: ml/nlp/userguide/preproc.md
+        - Text Comparison: ml/nlp/userguide/comparisons.md
+        - Clustering: ml/nlp/userguide/clustering.md
+        - Data Interrogation: ml/nlp/userguide/analysis.md
+        - Utilities: ml/nlp/userguide/utils.md
   - Knowledge Base:
     - Introduction: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md

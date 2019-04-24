@@ -39,10 +39,10 @@ This download will install kdb+ if not previously installed within the conda env
 ### V0.2-beta -> V1.0
 
 - Attribute access from embedPy object
-<pre><code class="language-q">
+```q
 q)obj\`ATTRNAME     / old
 q)obj\`:ATTRNAME    / new
-</code></pre>
+```
 
 - embedPy objects can be called directly without explicitly specifying the call return type, the default return type is an embedPy object
 
@@ -51,5 +51,5 @@ q)obj\`:ATTRNAME    / new
 
 V0.2-beta features a number of changes back-incompatible with the previous release, V0.1-beta.
 
-Most notably, the default _type_ used in many operations is now the embedPy type, rather than the foreign type. Differences between these types (and the associated APIs) are set out below.
+Most notably, the default _type_ used in many operations is now the embedPy type, rather than the foreign type.
 

@@ -57,6 +57,8 @@ field         | type                   | content
 
 The resulting function is applied to a list of strings.
 
+Spell check can also be performed on the text by passing in `spell as in input field. This updates any misspelt words to their most likely alternative. This is performed on text prior to parsing. 
+
 Parsing the novel _Moby Dick_:
 
 ```q

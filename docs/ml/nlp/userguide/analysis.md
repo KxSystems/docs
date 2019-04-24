@@ -13,11 +13,11 @@ A number of functions are supplied to allow users to perform interrogations on t
 When you have a set of centroids and you would like to find out which centroid is closest to the documents, you can use this function.
 
 
-### `.nlp.cluster.i.groupByCentroids`
+### `.nlp.cluster.groupByCentroids`
 
 _Documents matched to their nearest centroid_
 
-Syntax: `.nlp.cluster.i.groupByCentroids[centroid;docs]`
+Syntax: `.nlp.cluster.groupByCentroids[centroid;docs]`
 
 Where
 
@@ -29,7 +29,7 @@ returns, as a list of lists of longs, document indexes where each list is a clus
 Matches the first centroid of the clusters with the rest of the corpus:
 
 ```q
-q).nlp.cluster.i.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
+q).nlp.cluster.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
 0 23 65 137
 1 5 14 45 81
 2 6 7 13 15 16 17 19 20 21 26 27 31 40 44 47 48 49 50 54 57 58 62 63 66 67 68..
@@ -57,11 +57,11 @@ The _centroid_ of a collection of documents is the average of their feature vect
 The emails of former Enron CEO Ken Lay contain 1124 emails with a petition. Nearly all of these use the default text, only changing the name, address and email address. To find those petitions which have been modified, sorting by distance from the centroid gives emails where the default text has been completely replaced, added to, or has had portions removed, with the emails most heavily modified appearing first.
 
 
-### `.nlp.i.compareDocToCentroid`
+### `.nlp.compareDocToCentroid`
 
 _Cosine similarity of a document and a centroid, subtracting the document from the centroid_
 
-Syntax: `.nlp.i.compareDocToCentroid[centroid;document]`
+Syntax: `.nlp.compareDocToCentroid[centroid;document]`
 
 Where
 
@@ -73,7 +73,7 @@ returns the cosine similarity of the two documents as a float.
 ```q
 q)petition:laycorpus where laycorpus[`subject] like "Demand Ken*"
 q)centroid:sum petition`keywords
-q).nlp.i.compareDocToCentroid[centroid]each petition`keywords
+q).nlp.compareDocToCentroid[centroid]each petition`keywords
 0.2374891 0.2308969 0.2383573 0.2797052 0.2817323 0.3103245 0.279753 0.2396462 0.3534717 0.369767
 q)outliers:petition iasc .nlp.i.compareDocToCentroid[centroid]each petition`keywords
 ```

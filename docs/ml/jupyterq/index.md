@@ -15,7 +15,7 @@ Jupyter kernel for kdb+.
 -   Code completion for q keywords, `.z`, `.h`, `.Q`, `.j` namespace functions, and user-defined variables
 -   Code help for q keywords and basic help (display and type information) for user-defined objects
 -   Script-like execution of code (multiline input)
--   Inline display of charts created using embedPy and matplotlib
+-   Inline display of charts created using embedPy, matplotlib, seaborn etc.
 -   Console stdout/stderr capture and display in notebooks
 -   Inline loading and saving of scripts into and from notebook cells
 

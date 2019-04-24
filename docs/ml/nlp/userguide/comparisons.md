@@ -4,7 +4,7 @@ date: August 2018
 keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, comparison, corpora, corpus, document, email, feature, file, k-mean, kdbplus, learning, machine, machine learning, mbox, message, ml, nlp, parse, parsing, q, sentiment, similarity, string function, vector
 ---
 
-# <i class="fas fa-share-alt"></i> Data Interrogation
+# <i class="fas fa-share-alt"></i> Text Comparison
 
 Following the application of data processing procedures as outlined [here](preproc.md), it is possible to compare feature vectors,corpora and documents.
 
@@ -74,11 +74,11 @@ q).nlp.compareDocs[queryemail`keywords;email2`keywords]
 ### Comparing documents to corpus
 
 
-#### `.nlp.i.compareDocToCorpus`
+#### `.nlp.compareDocToCorpus`
 
 _Cosine similarity between a document and other documents in the corpus_
 
-Syntax: `.nlp.i.compareDocToCorpus[keywords;idx]`
+Syntax: `.nlp.compareDocToCorpus[keywords;idx]`
 
 Where
 
@@ -90,8 +90,8 @@ returns as a float the document’s significance to the rest of the corpus.
 Comparing the first chapter with the rest of the book:
 
 ```q
-q).nlp.i.compareDocToCorpus[corpus`keywords;0]
-0.03592943 0.04720108 0.03166343 0.02691693 0.03363885 0.02942622 0.03097797 0.04085023 0.04321152 0.02024251 0.02312604 0.03604447 0.02903568 0.02761553 0.04809854 0.03634777 0.02755392 0.02300291
+q).nlp.compareDocToCorpus[corpus`keywords;0]
+0.03592943 0.04720108 0.03166343 0.02691693 0.03363885 0.02942622 0.03097797 0.0408502..
 ```
 
 
