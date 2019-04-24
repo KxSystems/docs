@@ -5,6 +5,21 @@ keywords: blog, kdb+, news, q, site
 # <i class="far fa-newspaper"></i> Site news
 
 
+## V1
+
+<small>2019.04.15</small>
+
+Version 1 – with URLs beginning `/q` – has been removed. 
+Most URLs beginning `code.kx.com/q` now return 404s. 
+URLs beginning `code.kx.com/wiki` do the same.
+We apologise for the undoubted inconvenience. 
+
+We have taken this drastic step after a failed campaign to dissuade Google Search from returning wiki and V1 pages in its top results. 
+It appeared that its own history of referrals to the old material outweighed sitemaps and X-Robots metatags.
+
+We expect Google Search to catch up soon.
+
+
 ## V2
 
 <small>2019.03.07</small>
@@ -17,8 +32,6 @@ Version 2 of this site has
 -   a new version, [Iterators](../wp/iterators/index.md) of the 2013 white paper “Efficient use of adverbs”
 -   HTTP requests redirected to HTTPS 
 -   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
-
-The previous version of the site will remain for some time at its former URL <https://code.kx.com/q>, so bookmarks to it will continue to work. 
 
 The Kx wiki, frozen in 2016, has been retired to <https://code.kx.com/oldwiki>.
 

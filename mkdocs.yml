@@ -404,7 +404,6 @@ nav:
       - J: interfaces/j-client-for-q.md
       - JDBC: interfaces/jdbc-client-for-kdb.md
       - Matlab: interfaces/matlab-client-for-q.md
-      - ODBC: interfaces/q-server-for-odbc.md
       - ODBC/Simba: interfaces/odbc-simba.md
       - ODBC3: interfaces/q-server-for-odbc3.md 
       - Perl: interfaces/perl-client-for-q.md 
@@ -436,7 +435,8 @@ nav:
       - Overview: ml/embedpy/index.md
       - User Guide: ml/embedpy/userguide.md
       - FAQ: ml/embedpy/faq.md
-    - JupyterQ: 
+      - Reference: ml/embedpy/reference.md
+     - JupyterQ: 
       - Overview: ml/jupyterq/index.md
       - User Guide: ml/jupyterq/notebooks.md
       - FAQ: ml/jupyterq/faq.md

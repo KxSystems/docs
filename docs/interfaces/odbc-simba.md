@@ -1,4 +1,8 @@
-# Simba/Magnitude ODBC
+---
+keywords: interface, kdb+, library, magnitude, odbc, odbc3, q, simba, sql
+---
+
+# <i class="fas fa-database"></i> Simba/Magnitude ODBC
 
 
 

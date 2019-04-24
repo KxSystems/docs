@@ -2,7 +2,7 @@
 keywords: api, interface, kdb+, library, odbc, q
 ---
 
-# ![ODBC](img/odbc.png) Q client for ODBC
+# <i class="fas fa-database"></i> Q client for ODBC
 
 
 
