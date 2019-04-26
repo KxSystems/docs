@@ -530,7 +530,7 @@ q).p.eval["print";pynone];
 None
 ```
 
-python         | form                      | q
+Python         | form                      | q
 ---------------|---------------------------|-----------------------
 `func()`       | call with no arguments    | `func[]` or `func[::]`
 `func(None)`   | call with argument `None` | `func[.p.eval"None"]`

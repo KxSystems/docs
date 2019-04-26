@@ -17,7 +17,7 @@ The following requirements cover those needed to initialize running of the nlp l
 
 -   [embedPy](../embedpy/)
 
-A number of python dependencies also exist for this library. These can be installed as outlined at
+A number of Python dependencies also exist for this library. These can be installed as outlined at
 
 <i class="fab fa-github"></i>
 [KxSystems/nlp](https://github.com/kxsystems/nlp)

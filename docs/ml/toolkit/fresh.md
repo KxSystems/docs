@@ -211,7 +211,7 @@ q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of init
 ```
 
 !!!notes
-        1) The following list of functions contain some python dependancy,
+        1) The following list of functions contain some Python dependancy,
         
         ``fns:`aggautocorr`augfuller`fftaggreg`fftcoeff`numcwtpeaks`partautocorrelation`spktwelch``
 

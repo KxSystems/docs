@@ -23,6 +23,7 @@ Utility functions
   .ml.shape              Shape of a matrix
   .ml.tab2df             Pandas dataframe from a q table
   .ml.traintestsplit     Split into training and test sets
+  .ml.mproc.init         Initialise multi process procedures
 ```
 
 ## `.ml.arange`
@@ -233,7 +234,7 @@ x        x1 x2 x3
 q)show pdf:.ml.tab2df[table] / convert to pandas dataframe and show it is an embedPy object
 {[f;x]embedPy[f;x]}[foreign]enlist
 
-q)print pdf / display the python form of the dataframe
+q)print pdf / display the Python form of the dataframe
              x  x1  x2         x3
 0  2631.439704   1   4  78.719172
 1  1118.109056   2   3  80.093563
@@ -323,4 +324,4 @@ q).z.pd
 ```
 
 !!! note
-	This forms the basis for the procedure used within the toolkit for the multi processing of functions containing python code, namely `.ml.fresh.createfeatures` and a number of those contained within the `.ml.xval` namespace. The reasons for this and code execution procedures to be followed to access this functionality are outlined [here](link to the blog)
+	This forms the basis for the procedure used within the toolkit for the multi processing of functions containing Python code, namely `.ml.fresh.createfeatures` and a number of those contained within the `.ml.xval` namespace. The reasons for this and code execution procedures to be followed to access this functionality are outlined [here](link to the blog)

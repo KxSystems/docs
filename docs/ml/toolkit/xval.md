@@ -4,7 +4,7 @@ date: March 2019
 keywords: time-series, cross validation, grid search, roll-forward, chain-forward, grid search fit, data splitting, stratified splitting, kdb+, q
 ---
 
-# <i class="fa fa-share-alt"></i> .ml.xval namespace 
+# <i class="fa fa-share-alt"></i> Cross Validation Procedures 
 
 
 The `.ml.xval` namespace contains functions used for the application of various cross-validation procedures, these offer the ability to test how robust/stable a model is to changes in the volume of data being interrogated or the subsets of data being used in validation procedures.
@@ -138,14 +138,14 @@ Where
 
 -   `x` is the data matrix
 -   `y` is the target vector
--   `i` are the indices for the K-fold validation using `.ml.kfsplit`
+-   `i` are the indices for the K-fold validation
 -   `fn` is the model which is being passed to the function for cross validation
 
 returns the cross validated score for an applied machine-learning algorithm.
 
 ```q
 q)n:10000
-q)xg:flip value flip([]n?100f;asc n?100f)        / 'good values' for linear regressor
+q)xg:flip value flip([]n?100f;asc n?100f)       / 'good values' for linear regressor
 q)yg:asc n?100f
 q)/ load in regression models to be tested
 q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
@@ -234,15 +234,13 @@ q).ml.xval.kfstrat[yg;5]             / split the data into 5 stratified folds
 87 48 45 64  109 72 70  68 9   61 81  1  36 104 5  55 91 24  78  76 79 71
 46 28 21 83  25  2  102 34 23  60 108 13 67 86  18 75 90 89  97  22 57 65
 32 63 10 19  74  96 103 66 11  84 41  73 38 77  17 14 92 37  82  88 50 80
-q)p .ml.xval.kfstrat[yg;5]
+q)yg .ml.xval.kfstrat[yg;5]
 0000000000000000000011b
 0000000000000000000011b
 0000000000000000000011b
 0000000000000000000011b
 0000000000000000000011b
 ```
-!!! note
-        In the above example `p` was defined as a global variable within the function `.ml.kfstrat`. This has only been done to allow the distribution of values within the data to be shown as being correct, this is not defined within the definition within github.
 
 
 ## `.ml.xval.mcxval`
@@ -304,7 +302,7 @@ q).ml.xval.repkfstrat[xg;yg;5;10;regr]
 ```
 
 !!!note
-        The application of repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, K-fold should be run once prior to multiple applications.
+        Repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, K-fold should be run once prior to multiple applications.
 
 
 ## `.ml.xval.repkfval`
@@ -333,7 +331,7 @@ q).ml.xval.repkfval[xg;yg;5;10;regr]
 ```
 
 !!!note
-        The application of repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, single run K-fold should be run prior to multiple applications.
+        Repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, single run K-fold should be run prior to multiple applications.
 
 
 ## `.ml.xval.rollxval`
