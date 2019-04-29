@@ -5,7 +5,7 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 
 # <i class="fab fa-python"></i> Calling Python from q (embedPy)
 
-The embedPy library opens [Python](https://python.org) to q programmers. This is achieved by loading Python into kdb+ via a C api.
+The embedPy library opens [Python](https://python.org) to q programmers. This is achieved by loading Python into kdb+ via a C shared object file.
 
 As a result Python variables or objects become q variables or objects and both languages can interact with them. Python code can be embeded within q code, and Python functions can be called as q functions acting on q data. 
 

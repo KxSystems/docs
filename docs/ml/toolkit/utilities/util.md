@@ -132,7 +132,8 @@ jcol| fcol
 50  | 0.5
 ```
 
-!!! note "DataFrame indices are mapped to q key columns."
+!!! note 
+ When converting from python to q this function operates on the assumption that a single unnamed python index column is to be removed (return an unkeyed table). All other varients of python index columns will map to q key columns. For example any instance with two or more indices will map to two or more python keys while any named single index python column be associated with a q key in a keyed table
 
 
 ## `.ml.eye`
