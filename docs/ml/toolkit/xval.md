@@ -16,49 +16,15 @@ The following functions are those contained at present within the `.ml.xval` nam
 
 ```txt
 .ml.xval - Cross validation functions
-  .chainxval            Score from chain-forward cross validation
-  .gridsearch           Grid search returning score and optimal parameters for ML-model
-  .gridsearchfit        Grid search returning score on test data set for optimal model
-  .kfoldx               K-Fold cross validation
-  .kfshuff              Randomized indiced for data split into k-folds
-  .kfsplit              Sequential sets of indices for data split into k-folds
-  .kfstrat              Stratified choosing of indices for categorical targets
-  .mcxval               Monte-Carlo cross validation
-  .repkfstrat           Repeated stratified K-fold cross validation
-  .repkfval             Repeated randomized K-fold cross validation
-  .rollxval             Roll forward cross validation
+  .gridsearch         Grid search returns scores associated with ML-model params
+  .gridsearchfit      Grid search returns score/params on test data set for optimal model
+  .kfshuff            K-Fold cross validation, randomized indiced
+  .kfsplit            K-Fold cross validation, sequential split indices
+  .kfstrat            K-Fold cross validation, indices stratified based on target categories
+  .mcsplit            Monte-Carlo cross validation with random split indices
+  .tschain            Score from chain-forward cross validation
+  .tsroll             Roll forward cross validation
 ```
-
-## `.ml.xval.chainxval`
-
-_Score from a chain-forward cross validation_
-
-Syntax: `.ml.xval.chainxval[x;y;n;algo]`
-
-Where
-
--   `x` is a matrix of data for prediction
--   `y` is a target vector
--   `n` is the number of splits performed on the dataset
--   `algo` is the algorithm being tested
-
-returns the averaged score for the model over all chained iterations.
-
-```q
-q)n:10000
-q)x:flip value flip([]n?100f;asc n?100f)
-q)y:asc n?100f
-q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
-q).ml.xval.chainxval[x;y;10;reg]
-0.972491
-```
-
-!!! note
-        This works as shown in the following image:
-
-        ![Figure 1](img/chainforward.png)
-
-        The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting. It also allows the robustness of the model to increasing data volumes to be probed.
 
 
 ## `.ml.xval.gridsearch`
@@ -78,19 +44,34 @@ Where
 returns the score for the best model and the hyper-parameters which led to this score.
 
 ```q
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q)dcm:.p.import[`sklearn.tree]`:DecisionTreeClassifier
 q)n:10000
-q)xg:flip value flip([]n?100f;asc n?100f)
-q)yg:asc n?100f
-q)regr:.p.import[`sklearn.linear_model]`:ElasticNet   / Note absence of following []
-q)dict:`max_iter`alpha!(100 200 1000;.01*1+til 100)   / multiple searched hyperparameters
-q)i:.ml.xval.kfsplit[yg;3]
-q).ml.xval.gridsearch[xg;yg;i;regr;dict]
-0.999754
-`max_iter`alpha!(100 200 1000;.04 .04 .04)
-q)dict:enlist[`alpha]!enlist .1*1+til 10              / search completed for 1-hyperparameter
-q).ml.xval.gridsearch[xg;yg;i;regr;dict]
-0.9997538
-(,`alpha)!,0.1
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f    / regression
+q)yc:n?0 1         / classification
+q)xval_func:.ml.xval.kfshuff[5;1]    / 5 fold shuffled xval 1 repetition
+q)algo_func:.ml.xval.fitscore lrm    / fit & score linear regressor
+q)param_dict:`fit_intercept`normalize!(01b;01b)
+q).ml.xval.gridsearch[xval_func;x;yr;algo_func;param_dict]
+fit_intercept normalize|                                                  
+-----------------------| -------------------------------------------------
+0             0        | 0.9999225 0.9999263 0.9999261 0.9999235 0.9999241
+0             1        | 0.9999234 0.9999245 0.9999248 0.9999245 0.9999255
+1             0        | 0.9999363 0.9999361 0.9999331 0.9999337 0.9999359
+1             1        | 0.9999351 0.9999389 0.9999299 0.9999357 0.9999357
+q)xval_func:.ml.xval.kfstrat[5;1]
+q)algo_func:.ml.xval.fitscore dcm
+q)param_dict:enlist[`max_depth]!enlist(::;1;2;3;4;5)
+q).ml.xval.gridsearch[xval_func;x;yc;algo_func;param_dict]
+max_depth|                                  
+---------| ---------------------------------
+::       | 0.5215 0.51   0.508  0.48  0.507 
+1        | 0.493  0.5265 0.49   0.504 0.5065
+2        | 0.503  0.5125 0.5035 0.532 0.5005
+3        | 0.5135 0.5155 0.4995 0.511 0.5015
+4        | 0.5165 0.5095 0.5125 0.493 0.507 
+5        | 0.5185 0.504  0.5045 0.503 0.5175
 ```
 
 
@@ -115,55 +96,26 @@ returns the score on the testing set for the best model.
 	As with `.ml.gridsearch`, this function performs a cross validated grid-search over all combinations of hyperparameters to find the best model. This function splits the data into a train/test sets, performs grid-search on the training set (with n-fold cross validation), fits the model with the highest score to the testing set.
 
 ```q
-q)n:100000
-q)xg:flip value flip([]n?100f;asc n?100f)
-q)yg:asc n?100f
-q)reg:.p.import[`sklearn.linear_model][`:ElasticNet]
-q)dict:enlist[`alpha]!enlist .02*1+til 10
-q).ml.xval.gridsearchfit[xg;yg;.2;5;reg;dict]
-0.9999818
-q)dict:`alpha`max_iter!(.1*1+til 9;15 30 60 120)
-q).ml.xval.gridsearchfit[xg;yg;.2;5;reg;dict]
-0.9999759
-```
-
-
-## `.ml.xval.kfoldx`
-
-_K-Fold cross validation_
-
-Syntax: `.ml.xval.kfoldx[x;y;i;fn]`
-
-Where
-
--   `x` is the data matrix
--   `y` is the target vector
--   `i` are the indices for the K-fold validation
--   `fn` is the model which is being passed to the function for cross validation
-
-returns the cross validated score for an applied machine-learning algorithm.
-
-```q
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q)dcm:.p.import[`sklearn.tree]`:DecisionTreeClassifier
 q)n:10000
-q)xg:flip value flip([]n?100f;asc n?100f)       / 'good values' for linear regressor
-q)yg:asc n?100f
-q)/ load in regression models to be tested
-q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
-q)reg1:.p.import[`sklearn.linear_model][`:SGDRegressor][]
-q)reg2:.p.import[`sklearn.linear_model][`:ElasticNet][]
-q)reg3:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
-q)folds:10                                      / number of folds for data
-q)i:.ml.xval.kfsplit[yg;folds]
-q).ml.xval.kfoldx[xg;yg;i]each(reg;reg1;reg2;reg3)
-0.9998536 -1.24663e+24 0.9998393 0.9999997
-q)yb:n?100f                                     / 'bad values' for linear regression
-q)xb:flip value flip([]n?100f;n?100f)
-q).ml.xval.kfoldx[xb;yb;i]each(reg;reg1;reg2;reg3)
--0.009119423 -7.726559e+21 -0.009119348 -0.2275681
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f / regression
+q)yc:n?0 1      / classification
+q)xval_func:.ml.xval.kfshuff[5;1]
+q)algo_func:.ml.xval.fitscore lrm
+q)param_dict:`fit_intercept`normalize!(01b;01b)
+q).ml.xval.gridsearchfit[xval_func;x;yc;algo_func;param_dict;0.2]
+`fit_intercept`normalize!11b
+-0.0006069159
+q)algo_func:.ml.xval.fitscore dcm
+q)param_dict:enlist[`max_depth]!enlist(::;1;2;3;4;5)
+q).ml.xval.gridsearchfit[xval_func;x;yc;algo_func;param_dict;0.2]
+(,`max_depth)!,::
+0.4925
 ```
 
-!!! note
-	An aliased version of this function exists in the root `.ml` namespace this makes it easier to implement the K-fold cross validation but is primarily in place based on how fundamental this procedure is in general machine learning pipelines.
+
 ## `.ml.xval.kfshuff`
 
 _Randomized non-repeating indices for K-fold cross validation_
@@ -243,6 +195,39 @@ q)yg .ml.xval.kfstrat[yg;5]
 ```
 
 
+## `.ml.xval.tschain`
+
+_Score from a chain-forward cross validation_
+
+Syntax: `.ml.xval.tschain[x;y;n;algo]`
+
+Where
+
+-   `x` is a matrix of data for prediction
+-   `y` is a target vector
+-   `n` is the number of splits performed on the dataset
+-   `algo` is the algorithm being tested
+
+returns the averaged score for the model over all chained iterations.
+
+```q
+q)n:10000
+q)x:flip value flip([]n?100f;asc n?100f)
+q)y:asc n?100f
+q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
+q).ml.xval.tschain[x;y;10;reg]
+0.972491
+```
+
+!!! note
+        This works as shown in the following image:
+
+        ![Figure 1](img/chainforward.png)
+
+        The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting. It also allows the robustness of the model to increasing data volumes to be probed.
+
+
+
 ## `.ml.xval.mcxval`
 
 _Score for monte-carlo cross validated model_
@@ -276,69 +261,11 @@ q).ml.xval.mcxval[xb;yb;.2;clf;5]
         This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
 
 
-## `.ml.xval.repkfstrat`
-
-_Average score for repeated stratified randomized K-fold cross validation_
-
-Syntax: `.ml.xval.repkfstrat[x;y;n;k;algo]`
-
-Where
-
--   `x` is a matrix of the data to be fit
--   `y` is the target vector
--   `n` is the number of repetitions of cross validation
--   `k` is the number of folds
--   `algo` is the model to be applied for validation
-
-returns the averaged accuracy score over all folds for the random stratified dataset.
-
-```q
-q)n:10000
-q)xg:flip value flip([]n?100;asc n?100f)
-q)yg:asc n?5
-q)regr:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
-q).ml.xval.repkfstrat[xg;yg;5;10;regr]
-0.9998566
-```
-
-!!!note
-        Repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, K-fold should be run once prior to multiple applications.
-
-
-## `.ml.xval.repkfval`
-
-_Average score for repeated randomized K-fold cross validation_
-
-Syntax: `.ml.xval.repkfval[x;y;n;k;algo]`
-
-Where
-
--   `x` is a matrix of the data to be fit
--   `y` is the target vector
--   `n` is the number of repetitions of cross validation
--   `k` is the number of folds
--   `algo` is the model to be applied for validation
-
-returns the averaged accuracy score over all folds for random shuffled datasets.
-
-```q
-q)n:10000
-q)xg:flip value flip([]n?100;asc n?100f)
-q)yg:asc n?100f
-q)regr:.p.import[`sklearn.neighbors][`:KNeighborsRegressor][]
-q).ml.xval.repkfval[xg;yg;5;10;regr]
-0.9998566
-```
-
-!!!note
-        Repeated K-fold cross validation procedures should be applied with caution - cross validation procedures often tend to be slow. As such, single run K-fold should be run prior to multiple applications.
-
-
-## `.ml.xval.rollxval`
+## `.ml.xval.tsroll`
 
 _Score from a roll-forward cross validation_
 
-Syntax: `.ml.xval.rollxval[x;y;n;algo]`
+Syntax: `.ml.xval.tsroll[x;y;n;algo]`
 
 Where
 
@@ -354,7 +281,7 @@ q)n:10000
 q)xg:flip value flip ([]n?100;asc n?100f)
 q)yg:asc n?100f
 q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
-q).ml.xval.rollxval[xg;yg;10;reg]
+q).ml.xval.tsroll[xg;yg;10;reg]
 -11.99615
 ```
 !!! note
