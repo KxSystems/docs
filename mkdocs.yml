@@ -57,7 +57,7 @@ site_author: 'Kx Systems'
 site_description: "Kx reference for kdb+"
 # config.site_name: 'code.kx.com'
 site_name: 'Kx kdb+ q documentation'
-site_url: 'http://code.kx.com/v2'
+site_url: 'https://code.kx.com/v2'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
