@@ -31,15 +31,16 @@ The following functions are those contained at present within the `.ml.xval` nam
 
 _Find optimal parameters for machine-learning model through cross validation_
 
-Syntax: `.ml.xval.gridsearch[x;y;i;algo;dict]`
+Syntax: `.ml.xval.gridsearch[xv;x;y;mdl;mthds;pd]`
 
 Where
 
--   `x` is a matrix of the data being used for prediction
+-   `xv` is a projection of the type of cross validation to be completed for the gridsearch
+-   `x` is a matrix
 -   `y` is a target vector
--   `i` are the indices for each of the K-folds
--   `algo` is the algorithm on which the search is performed
--   `dict` is a dictionary of hyperparameters to be searched
+-   `mdl` is the model being tested in the gridsearch
+-   `mthds` is a function indicating the behaviour to be applied during search (fit-score etc)
+-   `pd` is a dictionary of hyperparameters to be searched
 
 returns the score for the best model and the hyper-parameters which led to this score.
 
@@ -79,21 +80,22 @@ max_depth|
 
 _K-Fold validated grid-search with optimal model fit to testing set_
 
-Syntax: `.ml.xval.gridsearchfit[x;y;sz;n;algo;dict]`
+Syntax: `.ml.xval.gridsearchfit[xv;x;y;mdl;mthds;pd;pc]`
 
 Where
 
+-   `xv` is a projection of the type of cross validation to be completed for the gridsearch
 -   `x` is a matrix
--   `y` is the target vector
--   `sz` is a numeric atom in range 0-1
--   `n` is a integer > 0 which gives the number of folds for cross validation
--   `algo` is the model on which the grid search is performed
--   `dict` is a dictionary of hyper-parameters to be searched
+-   `y` is a target vector
+-   `mdl` is the model being tested in the gridsearch
+-   `mthds` is a function indicating the behaviour to be applied during search (fit-score etc)
+-   `pd` is a dictionary of hyperparameters to be searched
+-   `pc` is the percentage of data comprising the testing set
 
 returns the score on the testing set for the best model.
 
 !!!note
-	As with `.ml.gridsearch`, this function performs a cross validated grid-search over all combinations of hyperparameters to find the best model. This function splits the data into a train/test sets, performs grid-search on the training set (with n-fold cross validation), fits the model with the highest score to the testing set.
+	As with `.ml.gridsearch`, this function performs a cross validated grid-search over all combinations of hyperparameters to find the best model. This function splits the data into a train/test sets, performs grid-search on the training set (with k-fold cross validation defined within `xv`), fits the model with the highest score to the testing set.
 
 ```q
 q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
