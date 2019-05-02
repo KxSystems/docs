@@ -344,7 +344,7 @@ System variables, callbacks
 <tr><td><a href="dotz/#zh-host">`.z.h`</a></td><td><a href="dotz/#zh-host">host</a></td><td><a href="dotz/#zts-timer-">`.z.ts`</a></td><td><a href="dotz/#zts-timer-">timer </a></td></tr>
 <tr><td><a href="dotz/#zi-pid">`.z.i`</a></td><td><a href="dotz/#zi-pid">PID</a></td><td><a href="dotz/#zu-user-id">`.z.u`</a></td><td><a href="dotz/#zu-user-id">user ID</a></td></tr>
 <tr><td><a href="dotz/#zK-version">`.z.K`</a></td><td><a href="dotz/#zK-version">version</a></td><td><a href="dotz/#zvs-value-set">`.z.vs`</a></td><td><a href="dotz/#zvs-value-set">value set</a></td></tr>
-<tr><td><a href="dotz/#zk-release-date">`.z.k`</a></td><td><a href="dotz/#zk-release-date">release date</a></td><td><a href="dotz/#zW-handles">`.z.W`</a></td><td><a href="dotz/#zW-handles">handles</a></td></tr>
+<tr><td><a href="dotz/#zk-release-date">`.z.k`</a></td><td><a href="dotz/#zk-release-date">release date</a></td><td><a href="dotz/#zW-handles">`.z.W`</a></td><td><a href="dotz/#zw-handles">handles</a></td></tr>
 <tr><td><a href="dotz/#zl-license">`.z.l`</a></td><td><a href="dotz/#zl-license">license</a></td><td><a href="dotz/#zw-handle">`.z.w`</a></td><td><a href="dotz/#zw-handle">handle</a></td></tr>
 <tr><td><a href="dotz/#zN-local-timespan">`.z.N`</a></td><td><a href="dotz/#zN-local-timespan">local timespan</a></td><td><a href="dotz/#zwc-websocket-close">`.z.wc`</a></td><td><a href="dotz/#zwc-websocket-close">websocket close</a></td></tr>
 <tr><td><a href="dotz/#zn-utc-timespan">`.z.n`</a></td><td><a href="dotz/#zn-utc-timespan">UTC timespan</a></td><td><a href="dotz/#zwo-websocket-open">`.z.wo`</a></td><td><a href="dotz/#zwo-websocket-open">websocket open</a></td></tr>
