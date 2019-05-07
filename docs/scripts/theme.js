@@ -27,7 +27,6 @@ $(function() {
 		};
 	};
 	$(window).off('keydown');
-	// $("[data-md-component=query]").off('focus keyup change');
 	// disable MkDocs keypress listener/s on Search form
 	$('.md-search__form').replaceWith($('.md-search__form').clone());
 	$(".md-search__form").on('keydown', srchHandler); 
