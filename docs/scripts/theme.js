@@ -13,7 +13,6 @@ $(function() {
 		}
 	});
     // Search engine call from Search box
-	// var serviceRoot = 'https://code.kx.com/v2/search'; // >>> reverse-proxy on Nginx at code.kx.com
 	var kxSearch = 'https://code.kx.com/v2/search?query='; // >>> reverse-proxy on Nginx at code.kx.com
 	var gsSearch = "https://www.google.com/search?q=site%3Acode.kx.com+";
 	var srchHandler =function( evt ) {
@@ -28,7 +27,9 @@ $(function() {
 		};
 	};
 	$(window).off('keydown');
-	$("[data-md-component=query]").off('focus keyup change');
+	// $("[data-md-component=query]").off('focus keyup change');
+	// disable MkDocs keypress listener/s on Search form
+	$('.md-search__form').replaceWith($('.md-search__form').clone());
 	$(".md-search__form").on('keydown', srchHandler); 
 	// replace Close button with link to Search tips
 	var btn = $("button.md-icon.md-search__icon");
