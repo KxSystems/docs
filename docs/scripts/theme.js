@@ -13,13 +13,17 @@ $(function() {
 		}
 	});
     // Search engine call from Search box
-	var serviceRoot = 'https://code.kx.com/v2/search'; // >>> reverse-proxy on Nginx at code.kx.com
+	// var serviceRoot = 'https://code.kx.com/v2/search'; // >>> reverse-proxy on Nginx at code.kx.com
+	var kxSearch = 'https://code.kx.com/v2/search?query='; // >>> reverse-proxy on Nginx at code.kx.com
+	var gsSearch = "https://www.google.com/search?q=site%3Acode.kx.com+";
 	var srchHandler =function( evt ) {
-		// console.log(evt.which);
 		if( evt.which===13 ) {
-			var url = serviceRoot + "?query=" + encodeURIComponent($("[data-md-component=query]").val());
-			console.log(url);
-			window.location = url;
+			var qry = $("[data-md-component=query]").val().trim();
+			if( qry !== "" ) {
+				var url = ( qry.indexOf(' ') >= 0 ? gsSearch : kxSearch ) + encodeURIComponent(qry);
+				console.log(url);
+				window.location = url;
+			};
 			return false;
 		};
 	};
