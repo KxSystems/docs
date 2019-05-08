@@ -76,29 +76,29 @@ about new repositories.</div>
 <tr>
 	<td class="nowrap">[nlp](https://github.com/awilson-kx/nlp)</td>
 	<td>
-		demonstration notebook for [Natural-language processing](ml/nlp)
-		[<i class="fas fa-share-alt"></i>](ml "Machine learning")
+		demonstration notebook for [Natural-language processing](../ml/nlp/)
+		[<i class="fas fa-share-alt"></i>](../ml/ "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[notebooks](https://github.com/awilson-kx/notebooks)</td>
 	<td>
-		demonstration notebooks for [embedPy](ml/embedpy)
-		[<i class="fas fa-share-alt"></i>](ml "Machine learning")
+		demonstration notebooks for [embedPy](../ml/embedpy/)
+		[<i class="fas fa-share-alt"></i>](../ml/ "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[pyq](https://github.com/KxSystems/pyq)</td>
 	<td>
 		calling Python from q
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion "Fusion interfaces")
+		[<i class="fab fa-superpowers"></i>](../interfaces/fusion/ "Fusion interfaces")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[rkdb](https://github.com/KxSystems/rkdb)</td>
 	<td>
 		R client for q
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion "Fusion interfaces")
+		[<i class="fab fa-superpowers"></i>](../interfaces/fusion/ "Fusion interfaces")
 	</td>
 </tr>
 </table>
@@ -654,12 +654,6 @@ about new repositories.</div>
 					</a></span>
 </td>
 </tr>
-<tr>
-<td class="nowrap">[pyq-market-prediction](https://github.com/t4joel/machine-learning/tree/master/kdb/pyq-market-prediction)</td>
-<td>Predict the three-month price for Apple stock from 37 years of history (AAPL). <span class="author"><a href="https://github.com/t4joel?tab=repositories">
-						(Joel Oliveira)
-					</a></span>
-</td>
 </tr>
 <tr>
 <td class="nowrap">[qAutomatedTrading](https://github.com/shahrzl/qAutomatedTrading)</td>
@@ -679,13 +673,6 @@ about new repositories.</div>
 <td class="nowrap">[qPoliticalSentimentAnalysis](https://github.com/shahrzl/qPoliticalSentimentAnalysis)</td>
 <td>Political Sentiment Analysis of Facebook comments using Boosting Algorithm. <span class="author"><a href="https://github.com/shahrzl?tab=repositories">
 						(Sharizal Shaari)
-					</a></span>
-</td>
-</tr>
-<tr>
-<td class="nowrap">[ridge-regression-price-prediction](https://github.com/t4joel/machine-learning/tree/master/kdb/ridge-regression-price-prediction)</td>
-<td>Predict Boston house prices using Ridge Regression. <span class="author"><a href="https://github.com/t4joel?tab=repositories">
-						(Joel Oliveira)
 					</a></span>
 </td>
 </tr>
@@ -836,6 +823,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/jlucid/qhandle">qhandle ==new==</a></td>
+<td>Manage open handles and backup switchover. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
+						(Jeremy Lucid)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/nugend/qjson">qjson</a></td>
 <td>[JSON](http://www.json.org/) output. <span class="author"><a href="https://github.com/nugend?tab=repositories">
 						(Daniel Nugent)
@@ -864,7 +858,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/aa1024/strQ">strQ</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/aa1024/strQ">strQ</a></td>
 <td>String helper functions. <span class="author"><a href="https://github.com/aa1024?tab=repositories">
 						(Ali Kapadiya)
 					</a></span>
