@@ -15,11 +15,12 @@
 
 ## Interfaces
 
-* ==new== [Data visualization with kdb+ using ODBC: a Tableau case study](data-visualization) &nbsp; <i class="fas fa-print"></i> <small>[A4](data-visualization/data-visualization-a4.pdf), [US&nbsp;Letter](data-visualization/data-visualization-us.pdf)</small>
+* [Data visualization with kdb+ using ODBC: a Tableau case study](data-visualization) &nbsp; <i class="fas fa-print"></i> <small>[A4](data-visualization/data-visualization-a4.pdf), [US&nbsp;Letter](data-visualization/data-visualization-us.pdf)</small>
 * Kdb+ and **FIX** messaging &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_and_fix_messaging.pdf)
 * Common design principles for kdb+ **gateways** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](common_design_principles_for_kdb_gateways.pdf)
 * [An introduction to **graphical interfaces** for kdb+ using C#](gui) &nbsp; <i class="fas fa-print"></i> <small>[A4](gui/csharp-gui-a4.pdf), [US&nbsp;Letter](gui/csharp-gui-us.pdf)</small>
 * [**Java API** for kdb+](java-api) &nbsp; <i class="fas fa-print"></i> <small>[A4](java-api/java-api-a4.pdf), [US&nbsp;Letter](java-api/java-api-us.pdf)</small>
+* ==new== [**Lightning tickerplants**: Pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/) &nbsp; <i class="fas fa-print"></i> <small>[A4](lightning-tickerplants/lightning-a4.pdf), [US&nbsp;Letter](lightning-tickerplants/lightning-us.pdf)</small>
 * Building **real-time tick subscribers** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](building_real_time_tick_subscribers.pdf)
 * **Socket sharding** with kdb+ and Linux &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](socket-sharding.pdf)
 <!-- * [Kdb+ and **WebSockets**](kdb_and_websockets.pdf)

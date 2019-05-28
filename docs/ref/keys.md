@@ -2,7 +2,7 @@
 keyword: kdb+, key, key columns, keyed table, q
 ---
 
-# `keys`, `xkeys`
+# `keys`, `xkey`
 
 _Get or set key column/s of a table_
 

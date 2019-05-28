@@ -1,7 +1,7 @@
 /*
  * Custom script for code.kx.com/v2
  * Author: stephen@kx.com
- * Version: 2019.03.09
+ * Version: 2019.05.07
  * https://gist.github.com/wpscholar/4637176#file-jquery-external-links-new-window-js-L4
  */
 $(function() {
@@ -33,9 +33,7 @@ $(function() {
 	$(btn).css({
 		color:"white",
 		fontFamily:'Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif',
-		fontSize:"1.6rem",
 		opacity:"1",
-		paddingTop:".5rem",
 		transform:"none","-webkit-transform":"none"
 	});
 	$(btn).click(function() {

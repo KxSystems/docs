@@ -235,14 +235,15 @@ RO: read only; RW: read-write
 
 Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
 
-[Cast](cast.md): `char$data:CHAR$string`
+[Cast `$`](cast.md): where `char` is from the `c` column above `char$data:CHAR$string`
 
-`date.(year month week mm dd)`  
-``dict:`a`b!…``  
-`table:([]x:…;y:…)` or ``+`x`y!…``  
-`time.(minute second mm ss)`  
-`milliseconds: time mod 1000`
-
+```txt
+dict:`a`b!…
+table:([]x:…;y:…)
+date.(year month week mm dd)
+time.(minute second mm ss)  
+milliseconds: time mod 1000
+```
 
 ## Namespaces
 
@@ -290,23 +291,23 @@ De/serialize as JSON
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
 <table class="kx-shrunk kx-tight" markdown="1">
-<tr><td><a href="dotq/#qaddmonths-">`.Q.addmonths`</a></td><td><a href="dotq/#qaddmonths-"></a></td><td><a href="dotq/#qx10-decode-binhex">`.Q.x10`</a></td><td><a href="dotq/#qx10-decode-binhex">decode binhex</a></td></tr>
+<tr><td><a href="dotq/#qaddmonths">`.Q.addmonths`</a></td><td><a href="dotq/#qaddmonths"></a></td><td><a href="dotq/#qx10-decode-binhex">`.Q.x10`</a></td><td><a href="dotq/#qx10-decode-binhex">decode binhex</a></td></tr>
 <tr><td><a href="dotq/#qaddr-ip-address">`.Q.addr`</a></td><td><a href="dotq/#qaddr-ip-address">IP address</a></td><td><a href="dotq/#qj12-encode-base64">`.Q.j12`</a></td><td><a href="dotq/#qj12-encode-base64">encode base64</a></td></tr>
 <tr><td><a href="dotq/#qbt-backtrace">`.Q.bt`</a></td><td><a href="dotq/#qbt-backtrace">backtrace</a></td><td><a href="dotq/#qx12-decode-base64">`.Q.x12`</a></td><td><a href="dotq/#qx12-decode-base64">decode base64</a></td></tr>
 <tr><td><a href="dotq/#qbtoa-b64-encode">`.Q.btoa`</a></td><td><a href="dotq/#qbtoa-b64-encode">b64 encode</a></td><td><a href="dotq/#qk-version">`.Q.k`</a></td><td><a href="dotq/#qk-version">version</a></td></tr>
 <tr><td><a href="dotq/#qbv-build-vp">`.Q.bv`</a></td><td><a href="dotq/#qbv-build-vp">build vp</a></td><td><a href="dotq/#ql-load">`.Q.l`</a></td><td><a href="dotq/#ql-load">load</a></td></tr>
-<tr><td><a href="dotq/#qchk-fill-hdb">`.Q.chk`</a></td><td><a href="dotq/#qchk-fill-hdb">fill HDB</a></td><td><a href="dotq/#qM-long-infinity">`.Q.M`</a></td><td><a href="dotq/#qM-long-infinity">long infinity</a></td></tr>
-<tr><td><a href="dotq/#qcn-count-partitioned-table">`.Q.cn`</a></td><td><a href="dotq/#qcn-count-partitioned-table">count partitioned table</a></td><td><a href="dotq/#qMAP-maps-partitions">`.Q.MAP`</a></td><td><a href="dotq/#qMAP-maps-partitions">maps partitions</a></td></tr>
-<tr><td><a href="dotq/#qCf-create-empty-nested-char-file">`.Q.Cf`</a></td><td><a href="dotq/#qCf-create-empty-nested-char-file">create empty nested char file</a></td><td><a href="dotq/#qopt-command-parameters">`.Q.opt`</a></td><td><a href="dotq/#qopt-command-parameters">command parameters</a></td></tr>
-<tr><td><a href="dotq/#qD-partitions">`.Q.D`</a></td><td><a href="dotq/#qD-partitions">partitions</a></td><td><a href="dotq/#qpar-locate-partition">`.Q.par`</a></td><td><a href="dotq/#qpar-locate-partition">locate partition</a></td></tr>
+<tr><td><a href="dotq/#qchk-fill-hdb">`.Q.chk`</a></td><td><a href="dotq/#qchk-fill-hdb">fill HDB</a></td><td><a href="dotq/#qm-long-infinity">`.Q.M`</a></td><td><a href="dotq/#qm-long-infinity">long infinity</a></td></tr>
+<tr><td><a href="dotq/#qcn-count-partitioned-table">`.Q.cn`</a></td><td><a href="dotq/#qcn-count-partitioned-table">count partitioned table</a></td><td><a href="dotq/#qmap-maps-partitions">`.Q.MAP`</a></td><td><a href="dotq/#qmap-maps-partitions">maps partitions</a></td></tr>
+<tr><td><a href="dotq/#qcf-create-empty-nested-char-file">`.Q.Cf`</a></td><td><a href="dotq/#qcf-create-empty-nested-char-file">create empty nested char file</a></td><td><a href="dotq/#qopt-command-parameters">`.Q.opt`</a></td><td><a href="dotq/#qopt-command-parameters">command parameters</a></td></tr>
+<tr><td><a href="dotq/#qd-partitions">`.Q.D`</a></td><td><a href="dotq/#qd-partitions">partitions</a></td><td><a href="dotq/#qpar-locate-partition">`.Q.par`</a></td><td><a href="dotq/#qpar-locate-partition">locate partition</a></td></tr>
 <tr><td><a href="dotq/#qdd-join-symbols">`.Q.dd`</a></td><td><a href="dotq/#qdd-join-symbols">join symbols</a></td><td><a href="dotq/#qpd-modified-partition-locations">`.Q.pd`</a></td><td><a href="dotq/#qpd-modified-partition-locations">modified partition locations</a></td></tr>
-<tr><td><a href="dotq/#qdef-">`.Q.def`</a></td><td><a href="dotq/#qdef-"></a></td><td><a href="dotq/#qpf-partition-type">`.Q.pf`</a></td><td><a href="dotq/#qpf-partition-type">partition type</a></td></tr>
+<tr><td><a href="dotq/#qdef">`.Q.def`</a></td><td><a href="dotq/#qdef"></a></td><td><a href="dotq/#qpf-partition-field">`.Q.pf`</a></td><td><a href="dotq/#qpf-partition-field">partition field</a></td></tr>
 <tr><td><a href="dotq/#qdpft-save-table">`.Q.dpft`</a></td><td><a href="dotq/#qdpft-save-table">save table</a></td><td><a href="dotq/#qpn-partition-counts">`.Q.pn`</a></td><td><a href="dotq/#qpn-partition-counts">partition counts</a></td></tr>
 <tr><td><a href="dotq/#qdpfts-save-table-with-symtable">`.Q.dpfts`</a></td><td><a href="dotq/#qdpfts-save-table-with-symtable">save table with symtable</a></td><td><a href="dotq/#qpt-partitioned-tables">`.Q.pt`</a></td><td><a href="dotq/#qpt-partitioned-tables">partitioned tables</a></td></tr>
 <tr><td><a href="dotq/#qdsftg-load-process-save">`.Q.dsftg`</a></td><td><a href="dotq/#qdsftg-load-process-save">load process save</a></td><td><a href="dotq/#qpv-modified-partition-values">`.Q.pv`</a></td><td><a href="dotq/#qpv-modified-partition-values">modified partition values</a></td></tr>
-<tr><td><a href="dotq/#qen-enumerate-varchar-cols">`.Q.en`</a></td><td><a href="dotq/#qen-enumerate-varchar-cols">enumerate varchar cols</a></td><td><a href="dotq/#qP-segments">`.Q.P`</a></td><td><a href="dotq/#qP-segments">segments</a></td></tr>
-<tr><td><a href="dotq/#qens-enumerate-against-domain">`.Q.ens`</a></td><td><a href="dotq/#qens-enumerate-against-domain">enumerate against domain</a></td><td><a href="dotq/#qPD-partition-locations">`.Q.PD`</a></td><td><a href="dotq/#qPD-partition-locations">partition locations</a></td></tr>
-<tr><td><a href="dotq/#qf-format">`.Q.f`</a></td><td><a href="dotq/#qf-format">format</a></td><td><a href="dotq/#qPV-partition-values">`.Q.PV`</a></td><td><a href="dotq/#qPV-partition-values">partition values</a></td></tr>
+<tr><td><a href="dotq/#qen-enumerate-varchar-cols">`.Q.en`</a></td><td><a href="dotq/#qen-enumerate-varchar-cols">enumerate varchar cols</a></td><td><a href="dotq/#qp-segments">`.Q.P`</a></td><td><a href="dotq/#qp-segments">segments</a></td></tr>
+<tr><td><a href="dotq/#qens-enumerate-against-domain">`.Q.ens`</a></td><td><a href="dotq/#qens-enumerate-against-domain">enumerate against domain</a></td><td><a href="dotq/#qpd-partition-locations">`.Q.PD`</a></td><td><a href="dotq/#qpd-partition-locations">partition locations</a></td></tr>
+<tr><td><a href="dotq/#qf-format">`.Q.f`</a></td><td><a href="dotq/#qf-format">format</a></td><td><a href="dotq/#qpv-partition-values">`.Q.PV`</a></td><td><a href="dotq/#qpv-partition-values">partition values</a></td></tr>
 <tr><td><a href="dotq/#qfc-parallel-on-cut">`.Q.fc`</a></td><td><a href="dotq/#qfc-parallel-on-cut">parallel on cut</a></td><td><a href="dotq/#qqp-is-partitioned">`.Q.qp`</a></td><td><a href="dotq/#qqp-is-partitioned">is partitioned</a></td></tr>
 <tr><td><a href="dotq/#qff-append-columns">`.Q.ff`</a></td><td><a href="dotq/#qff-append-columns">append columns</a></td><td><a href="dotq/#qqt-is-table">`.Q.qt`</a></td><td><a href="dotq/#qqt-is-table">is table</a></td></tr>
 <tr><td><a href="dotq/#qfk-foreign-key">`.Q.fk`</a></td><td><a href="dotq/#qfk-foreign-key">foreign key</a></td><td><a href="dotq/#qres-keywords">`.Q.res`</a></td><td><a href="dotq/#qres-keywords">keywords</a></td></tr>
@@ -318,12 +319,12 @@ Utilities: general, environment, IPC, datatype, database, partitioned database s
 <tr><td><a href="dotq/#qfu-apply-unique">`.Q.fu`</a></td><td><a href="dotq/#qfu-apply-unique">apply unique</a></td><td><a href="dotq/#qty-type">`.Q.ty`</a></td><td><a href="dotq/#qty-type">type</a></td></tr>
 <tr><td><a href="dotq/#qgc-garbage-collect">`.Q.gc`</a></td><td><a href="dotq/#qgc-garbage-collect">garbage collect</a></td><td><a href="dotq/#qu-date-based">`.Q.u`</a></td><td><a href="dotq/#qu-date-based">date based</a></td></tr>
 <tr><td><a href="dotq/#qhdpf-save-tables">`.Q.hdpf`</a></td><td><a href="dotq/#qhdpf-save-tables">save tables</a></td><td><a href="dotq/#qv-value">`.Q.v`</a></td><td><a href="dotq/#qv-value">value</a></td></tr>
-<tr><td><a href="dotq/#qhg-http-get">`.Q.hg`</a></td><td><a href="dotq/#qhg-http-get">HTTP get</a></td><td><a href="dotq/#qV-table-to-dict">`.Q.V`</a></td><td><a href="dotq/#qV-table-to-dict">table to dict</a></td></tr>
+<tr><td><a href="dotq/#qhg-http-get">`.Q.hg`</a></td><td><a href="dotq/#qhg-http-get">HTTP get</a></td><td><a href="dotq/#qv-table-to-dict">`.Q.V`</a></td><td><a href="dotq/#qv-table-to-dict">table to dict</a></td></tr>
 <tr><td><a href="dotq/#qhost-hostname">`.Q.host`</a></td><td><a href="dotq/#qhost-hostname">hostname</a></td><td><a href="dotq/#qview-subview">`.Q.view`</a></td><td><a href="dotq/#qview-subview">subview</a></td></tr>
 <tr><td><a href="dotq/#qhp-http-post">`.Q.hp`</a></td><td><a href="dotq/#qhp-http-post">HTTP post</a></td><td><a href="dotq/#qvp-missing-partitions">`.Q.vp`</a></td><td><a href="dotq/#qvp-missing-partitions">missing partitions</a></td></tr>
 <tr><td><a href="dotq/#qid-sanitize">`.Q.id`</a></td><td><a href="dotq/#qid-sanitize">sanitize</a></td><td><a href="dotq/#qw-memory-stats">`.Q.w`</a></td><td><a href="dotq/#qw-memory-stats">memory stats</a></td></tr>
 <tr><td><a href="dotq/#qind-partitioned-index">`.Q.ind`</a></td><td><a href="dotq/#qind-partitioned-index">partitioned index</a></td><td><a href="dotq/#qx-non-command-parameters">`.Q.x`</a></td><td><a href="dotq/#qx-non-command-parameters">non-command parameters</a></td></tr>
-<tr><td><a href="dotq/#qj10-encode-binhex">`.Q.j10`</a></td><td><a href="dotq/#qj10-encode-binhex">encode binhex</a></td><td><a href="dotq/#qXf-create-file">`.Q.Xf`</a></td><td><a href="dotq/#qXf-create-file">create file</a></td></tr>
+<tr><td><a href="dotq/#qj10-encode-binhex">`.Q.j10`</a></td><td><a href="dotq/#qj10-encode-binhex">encode binhex</a></td><td><a href="dotq/#qxf-create-file">`.Q.Xf`</a></td><td><a href="dotq/#qxf-create-file">create file</a></td></tr>
 </table>
 
 
@@ -332,27 +333,28 @@ Utilities: general, environment, IPC, datatype, database, partitioned database s
 System variables, callbacks
 
 <table class="kx-shrunk kx-tight" markdown="1">
-<tr><td><a href="dotz/#zac-http-auth-from-cookie">`.z.ac`</a></td><td><a href="dotz/#zac-http-auth-from-cookie">HTTP auth from cookie</a></td><td><a href="dotz/#zpi-input">`.z.pi`</a></td><td><a href="dotz/#zpi-input">input</a></td></tr>
-<tr><td><a href="dotz/#zb-dependencies">`.z.b`</a></td><td><a href="dotz/#zb-dependencies">dependencies</a></td><td><a href="dotz/#zpm-http-options">`.z.pm`</a></td><td><a href="dotz/#zpm-http-options">HTTP options</a></td></tr>
-<tr><td><a href="dotz/#zbm-msg-validator">`.z.bm`</a></td><td><a href="dotz/#zbm-msg-validator">msg validator</a></td><td><a href="dotz/#zpo-open">`.z.po`</a></td><td><a href="dotz/#zpo-open">open</a></td></tr>
-<tr><td><a href="dotz/#zc-cores">`.z.c`</a></td><td><a href="dotz/#zc-cores">cores</a></td><td><a href="dotz/#zpp-http-post">`.z.pp`</a></td><td><a href="dotz/#zpp-http-post">HTTP post</a></td></tr>
-<tr><td><a href="dotz/#ze-tls-connection-status">`.z.e`</a></td><td><a href="dotz/#ze-tls-connection-status">TLS connection status</a></td><td><a href="dotz/#zpq-qcon">`.z.pq`</a></td><td><a href="dotz/#zpq-qcon">qcon</a></td></tr>
-<tr><td><a href="dotz/#zex-failed-primitive">`.z.ex`</a></td><td><a href="dotz/#zex-failed-primitive">failed primitive</a></td><td><a href="dotz/#zps-set">`.z.ps`</a></td><td><a href="dotz/#zps-set">set</a></td></tr>
-<tr><td><a href="dotz/#zexit-action-on-exit">`.z.exit`</a></td><td><a href="dotz/#zexit-action-on-exit">action on exit</a></td><td><a href="dotz/#zpw-validate-user">`.z.pw`</a></td><td><a href="dotz/#zpw-validate-user">validate user</a></td></tr>
-<tr><td><a href="dotz/#zey-argument-to-failed-primitive">`.z.ey`</a></td><td><a href="dotz/#zey-argument-to-failed-primitive">argument to failed primitive</a></td><td><a href="dotz/#zq-quiet-mode">`.z.q`</a></td><td><a href="dotz/#zq-quiet-mode">quiet mode</a></td></tr>
-<tr><td><a href="dotz/#zf-file">`.z.f`</a></td><td><a href="dotz/#zf-file">file</a></td><td><a href="dotz/#zs-self">`.z.s`</a></td><td><a href="dotz/#zs-self">self</a></td></tr>
-<tr><td><a href="dotz/#zh-host">`.z.h`</a></td><td><a href="dotz/#zh-host">host</a></td><td><a href="dotz/#zts-timer-">`.z.ts`</a></td><td><a href="dotz/#zts-timer-">timer </a></td></tr>
-<tr><td><a href="dotz/#zi-pid">`.z.i`</a></td><td><a href="dotz/#zi-pid">PID</a></td><td><a href="dotz/#zu-user-id">`.z.u`</a></td><td><a href="dotz/#zu-user-id">user ID</a></td></tr>
-<tr><td><a href="dotz/#zK-version">`.z.K`</a></td><td><a href="dotz/#zK-version">version</a></td><td><a href="dotz/#zvs-value-set">`.z.vs`</a></td><td><a href="dotz/#zvs-value-set">value set</a></td></tr>
-<tr><td><a href="dotz/#zk-release-date">`.z.k`</a></td><td><a href="dotz/#zk-release-date">release date</a></td><td><a href="dotz/#zW-handles">`.z.W`</a></td><td><a href="dotz/#zW-handles">handles</a></td></tr>
-<tr><td><a href="dotz/#zl-license">`.z.l`</a></td><td><a href="dotz/#zl-license">license</a></td><td><a href="dotz/#zw-handle">`.z.w`</a></td><td><a href="dotz/#zw-handle">handle</a></td></tr>
-<tr><td><a href="dotz/#zN-local-timespan">`.z.N`</a></td><td><a href="dotz/#zN-local-timespan">local timespan</a></td><td><a href="dotz/#zwc-websocket-close">`.z.wc`</a></td><td><a href="dotz/#zwc-websocket-close">websocket close</a></td></tr>
-<tr><td><a href="dotz/#zn-utc-timespan">`.z.n`</a></td><td><a href="dotz/#zn-utc-timespan">UTC timespan</a></td><td><a href="dotz/#zwo-websocket-open">`.z.wo`</a></td><td><a href="dotz/#zwo-websocket-open">websocket open</a></td></tr>
-<tr><td><a href="dotz/#zo-os-version">`.z.o`</a></td><td><a href="dotz/#zo-os-version">OS version</a></td><td><a href="dotz/#zws-websockets">`.z.ws`</a></td><td><a href="dotz/#zws-websockets">websockets</a></td></tr>
-<tr><td><a href="dotz/#zP-local-timestamp">`.z.P`</a></td><td><a href="dotz/#zP-local-timestamp">local timestamp</a></td><td><a href="dotz/#zX-raw-command-line">`.z.X`</a></td><td><a href="dotz/#zX-raw-command-line">raw command line</a></td></tr>
-<tr><td><a href="dotz/#zp-utc-timestamp">`.z.p`</a></td><td><a href="dotz/#zp-utc-timestamp">UTC timestamp</a></td><td><a href="dotz/#zx-argv">`.z.x`</a></td><td><a href="dotz/#zx-argv">argv</a></td></tr>
-<tr><td><a href="dotz/#zpc-close">`.z.pc`</a></td><td><a href="dotz/#zpc-close">close</a></td><td><a href="dotz/#zZ-local-datetime">`.z.Z`</a></td><td><a href="dotz/#zZ-local-datetime">local datetime</a></td></tr>
-<tr><td><a href="dotz/#zpd-peach-handles">`.z.pd`</a></td><td><a href="dotz/#zpd-peach-handles">peach handles</a></td><td><a href="dotz/#zz-utc-datetime">`.z.z`</a></td><td><a href="dotz/#zz-utc-datetime">UTC datetime</a></td></tr>
-<tr><td><a href="dotz/#zpg-get">`.z.pg`</a></td><td><a href="dotz/#zpg-get">get</a></td><td><a href="dotz/#zzd-zip-defaults">`.z.zd`</a></td><td><a href="dotz/#zzd-zip-defaults">zip defaults</a></td></tr>
-<tr><td><a href="dotz/#zph-http-get">`.z.ph`</a></td><td><a href="dotz/#zph-http-get">HTTP get</a></td><td><a href="dotz/#zT-z.t-.z.d-.z.d-(time/date-shortcuts">`.z.T`</a></td><td><a href="dotz/#zT-z.t-.z.d-.z.d-(time/date-shortcuts">z.t .z.D .z.d (time/date shortcuts</a></td></tr>
+<tr><td><a href="dotz/#za-ip-address">`.z.a`</a></td><td><a href="dotz/#za-ip-address">IP address</a></td>                                          <td><a href="dotz/#zpi-input">`.z.pi`</a></td><td><a href="dotz/#zpi-input">input</a></td></tr>
+<tr><td><a href="dotz/#zac-http-auth-from-cookie">`.z.ac`</a></td><td><a href="dotz/#zac-http-auth-from-cookie">HTTP auth from cookie</a></td>      <td><a href="dotz/#zpm-http-options">`.z.pm`</a></td><td><a href="dotz/#zpm-http-options">HTTP options</a></td></tr>
+<tr><td><a href="dotz/#zb-dependencies">`.z.b`</a></td><td><a href="dotz/#zb-dependencies">dependencies</a></td>                                    <td><a href="dotz/#zpo-open">`.z.po`</a></td><td><a href="dotz/#zpo-open">open</a></td></tr>
+<tr><td><a href="dotz/#zbm-msg-validator">`.z.bm`</a></td><td><a href="dotz/#zbm-msg-validator">msg validator</a></td>                              <td><a href="dotz/#zpp-http-post">`.z.pp`</a></td><td><a href="dotz/#zpp-http-post">HTTP post</a></td></tr>
+<tr><td><a href="dotz/#zc-cores">`.z.c`</a></td><td><a href="dotz/#zc-cores">cores</a></td>                                                         <td><a href="dotz/#zpq-qcon">`.z.pq`</a></td><td><a href="dotz/#zpq-qcon">qcon</a></td></tr>
+<tr><td><a href="dotz/#ze-tls-connection-status">`.z.e`</a></td><td><a href="dotz/#ze-tls-connection-status">TLS connection status</a></td>         <td><a href="dotz/#zps-set">`.z.ps`</a></td><td><a href="dotz/#zps-set">set</a></td></tr>
+<tr><td><a href="dotz/#zex-failed-primitive">`.z.ex`</a></td><td><a href="dotz/#zex-failed-primitive">failed primitive</a></td>                     <td><a href="dotz/#zpw-validate-user">`.z.pw`</a></td><td><a href="dotz/#zpw-validate-user">validate user</a></td></tr>
+<tr><td><a href="dotz/#zexit-action-on-exit">`.z.exit`</a></td><td><a href="dotz/#zexit-action-on-exit">action on exit</a></td>                     <td><a href="dotz/#zq-quiet-mode">`.z.q`</a></td><td><a href="dotz/#zq-quiet-mode">quiet mode</a></td></tr>
+<tr><td><a href="dotz/#zey-argument-to-failed-primitive">`.z.ey`</a></td><td><a href="dotz/#zey-argument-to-failed-primitive">argument to failed primitive</a></td><td><a href="dotz/#zs-self">`.z.s`</a></td><td><a href="dotz/#zs-self">self</a></td></tr>
+<tr><td><a href="dotz/#zf-file">`.z.f`</a></td><td><a href="dotz/#zf-file">file</a></td>                                                            <td><a href="dotz/#zts-timer">`.z.ts`</a></td><td><a href="dotz/#zts-timer">timer </a></td></tr>
+<tr><td><a href="dotz/#zh-host">`.z.h`</a></td><td><a href="dotz/#zh-host">host</a></td>                                                            <td><a href="dotz/#zu-user-id">`.z.u`</a></td><td><a href="dotz/#zu-user-id">user ID</a></td></tr>
+<tr><td><a href="dotz/#zi-pid">`.z.i`</a></td><td><a href="dotz/#zi-pid">PID</a></td>                                                               <td><a href="dotz/#zvs-value-set">`.z.vs`</a></td><td><a href="dotz/#zvs-value-set">value set</a></td></tr>
+<tr><td><a href="dotz/#zk-version">`.z.K`</a></td><td><a href="dotz/#zk-version">version</a></td>                                                   <td><a href="dotz/#zw-handles">`.z.W`</a></td><td><a href="dotz/#zw-handles">handles</a></td></tr>
+<tr><td><a href="dotz/#zk-release-date">`.z.k`</a></td><td><a href="dotz/#zk-release-date">release date</a></td>                                    <td><a href="dotz/#zw-handle">`.z.w`</a></td><td><a href="dotz/#zw-handle">handle</a></td></tr>
+<tr><td><a href="dotz/#zl-license">`.z.l`</a></td><td><a href="dotz/#zl-license">license</a></td>                                                   <td><a href="dotz/#zwc-websocket-close">`.z.wc`</a></td><td><a href="dotz/#zwc-websocket-close">websocket close</a></td></tr>
+<tr><td><a href="dotz/#zn-local-timespan">`.z.N`</a></td><td><a href="dotz/#zn-local-timespan">local timespan</a></td>                              <td><a href="dotz/#zwo-websocket-open">`.z.wo`</a></td><td><a href="dotz/#zwo-websocket-open">websocket open</a></td></tr>
+<tr><td><a href="dotz/#zn-utc-timespan">`.z.n`</a></td><td><a href="dotz/#zn-utc-timespan">UTC timespan</a></td>                                    <td><a href="dotz/#zws-websockets">`.z.ws`</a></td><td><a href="dotz/#zws-websockets">websockets</a></td></tr>
+<tr><td><a href="dotz/#zo-os-version">`.z.o`</a></td><td><a href="dotz/#zo-os-version">OS version</a></td>                                          <td><a href="dotz/#zx-raw-command-line">`.z.X`</a></td><td><a href="dotz/#zx-raw-command-line">raw command line</a></td></tr>
+<tr><td><a href="dotz/#zp-local-timestamp">`.z.P`</a></td><td><a href="dotz/#zp-local-timestamp">local timestamp</a></td>                           <td><a href="dotz/#zx-argv">`.z.x`</a></td><td><a href="dotz/#zx-argv">argv</a></td></tr>
+<tr><td><a href="dotz/#zp-utc-timestamp">`.z.p`</a></td><td><a href="dotz/#zp-utc-timestamp">UTC timestamp</a></td>                                 <td><a href="dotz/#zz-local-datetime">`.z.Z`</a></td><td><a href="dotz/#zz-local-datetime">local datetime</a></td></tr>
+<tr><td><a href="dotz/#zpc-close">`.z.pc`</a></td><td><a href="dotz/#zpc-close">close</a></td>                                                      <td><a href="dotz/#zz-utc-datetime">`.z.z`</a></td><td><a href="dotz/#zz-utc-datetime">UTC datetime</a></td></tr>
+<tr><td><a href="dotz/#zpd-peach-handles">`.z.pd`</a></td><td><a href="dotz/#zpd-peach-handles">peach handles</a></td>                              <td><a href="dotz/#zzd-zip-defaults">`.z.zd`</a></td><td><a href="dotz/#zzd-zip-defaults">zip defaults</a></td></tr>
+<tr><td><a href="dotz/#zpg-get">`.z.pg`</a></td><td><a href="dotz/#zpg-get">get</a></td>                                                            <td><a href="dotz/#zt-zt-zd-zd-timedate-shortcuts">`.z.T|t|D|d`</a></td><td><a href="dotz/#zt-zt-zd-zd-timedate-shortcuts">time/date shortcuts</a></td></tr>
+<tr><td><a href="dotz/#zph-http-get">`.z.ph`</a></td><td><a href="dotz/#zph-http-get">HTTP get</a></td>                                             <td/>
 </table>

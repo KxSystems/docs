@@ -75,6 +75,10 @@ q)"i"$0x0 vs .z.a
 127 0 0 1
 ```
 
+!!! warning "Callbacks" 
+
+    When called inside a `.z.p?` callback it is the IP address of the client session, not the current session.
+
 
 ## `.z.ac` (HTTP auth from cookie)
 
@@ -795,7 +799,7 @@ q).z.w
 0i
 ```
 
-!!! note 
+!!! warning "Callbacks" 
 
     When called inside a `.z.p?` callback it is the handle of the client session, not the current session.
 

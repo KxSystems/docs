@@ -169,18 +169,32 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>Betfair</td><td><i class="fab fa-github"></i> [picoDoc/betfair-data-capture](https://github.com/picoDoc/betfair-data-capture)</td></tr>
-<tr><td><i class="fab fa-bitcoin"></i> Bitcoin</td><td><i class="fab fa-github"></i> [bitmx/btceQ](https://github.com/bitmx/btceQ)</td></tr>
+<tr>
+    <td><i class="fab fa-bitcoin"></i> Bitcoin</td>
+    <td>
+        <i class="fab fa-github"></i> [bitmx/btceQ](https://github.com/bitmx/btceQ)<br/>
+        <i class="fab fa-github"></i> [jlucid/qbitcoind](https://github.com/jlucid/qbitcoind) ==new==<br/>
+        <i class="fab fa-github"></i> [jlucid/qexplorer](https://github.com/jlucid/qexplorer) ==new==
+    </td>
+</tr>
 <tr><td>Bloomberg</td><td>[Q client for Bloomberg](q-client-for-bloomberg)</td></tr>
 <tr><td>[BosonNLP](http://bosonnlp.com/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
 <tr><td>CUDA</td><td>[GPUs](gpus.md)</td></tr>
 <tr><td>Expat XML parser</td><td><i class="fab fa-github"></i> [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
-<tr><td>[Factom](https://www.factom.com/) blockchain</td><td><i class="fab fa-github"></i> [jlucid/qfactom](https://github.com/jlucid/qfactom)</td></tr>
+<tr>
+    <td>[Factom](https://www.factom.com/) blockchain</td>
+    <td>
+        <i class="fab fa-github"></i> [jlucid/qfactom](https://github.com/jlucid/qfactom)<br/>
+        <i class="fab fa-github"></i> [jlucid/qfactomconnect](https://github.com/jlucid/qfactomconnect) ==new==
+    </td>
+</tr>
 <tr><td>ForexConnect</td><td><i class="fab fa-github"></i> [mortensorensen/qfxcm](https://github.com/mortensorensen/qfxcm)</td></tr>
 <tr><td>Interactive Brokers</td><td><i class="fab fa-github"></i> [mortensorensen/QInteractiveBrokers](https://github.com/mortensorensen/QInteractiveBrokers)</td></tr>
 <tr><td>[IEX](https://iextrading.com)</td><td><i class="fab fa-github"></i> [himoacs/iex_q](https://github.com/himoacs/iex_q)</td></tr>
 <tr><td>J</td><td>[Q client for J](q-client-for-j.md)</td></tr>
 <tr><td>JDBC</td><td><i class="fab fa-github"></i> [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
-<tr><td>MQTT</td><td><i class="fab fa-github"></i> [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q) ==new==</td></tr>
+<tr><td>Lightning</td><td><i class="fab fa-github"></i> [jlucid/qlnd](https://github.com/jlucid/qlnd) ==new==</td></tr>
+<tr><td>MQTT</td><td><i class="fab fa-github"></i> [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
 <tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc)<br/>
 <i class="fab fa-github"></i> [johnanthonyludlow/kdb/docs/odbc.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/odbc.pdf)</td></tr>
 <tr><td>Philips Hue</td><td><i class="fab fa-github"></i> [jparmstrong/qphue](https://github.com/jparmstrong/qphue)</td></tr>

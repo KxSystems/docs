@@ -8,7 +8,6 @@ keywords: accumulator, adverb, applicable value, converge, dictionary, do, itera
 
 
 
-## I hate iterators!
 
 [Iterators](../../ref/iterators.md) (formerly known as _adverbs_) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill.
 
@@ -490,7 +489,7 @@ Let’s use the `differ` keyword to check for inconsistencies in `.d` files.
 It uses the Each Prior iterator and is equivalent to `{not(~':)x}`.
 
 ```q
-q){1_date where differ get hsym `$"/mydb/",string[x],"/trade/.d"} each date
+q)1_ date where differ {get hsym `$"/mydb/",x,"/trade/.d"} each string date
 2013.05.03 2013.05.04
 ```
 
