@@ -549,38 +549,6 @@ Python         | form                      | q
     So `func[::]` is equivalent to `func[]` – and in Python to `func()`, not `func[None]`.
 
 
-### Dictionary keys and values
-
-Python dictionaries convert to q dictionaries, and vice versa.
-
-```q
-q)p)pyd={'one':1,'two':2,'three':3}
-q)qd:.p.get`pyd
-q)qd`
-one  | 1
-two  | 2
-three| 3
-q).p.eval["print"]qd;
-{'one': 1, 'two': 2, 'three': 3}
-```
-
-Functions are also provided to retrieve the keys and values directly from an embedPy dictionary, without performing the conversion to a q dictionary.
-
--   `.p.key` returns the keys
--   `.p.value` returns the values
-
-In each case, the result is an embedPy object.
-
-```q
-q).p.key[qd]`
-"one"
-"two"
-"three"
-q).p.value[qd]`
-1 2 3
-```
-
-
 ## Printing and help
 
 

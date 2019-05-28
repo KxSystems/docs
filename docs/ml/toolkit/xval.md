@@ -16,13 +16,13 @@ The following functions are those contained at present within the `.ml.xval` nam
 
 ```txt
 .ml.xval - Cross validation functions
-  .gridsearch         Grid search returns scores associated with ML-model params
-  .gridsearchfit      Grid search returns score/params on test data set for optimal model
+  .gridsearch         Grid search returning scores associated with ML-model params
+  .gridsearchfit      Grid search returning score/params on test data set for optimal model
   .kfshuff            K-Fold cross validation, randomized indiced
   .kfsplit            K-Fold cross validation, sequential split indices
   .kfstrat            K-Fold cross validation, indices stratified based on target categories
   .mcsplit            Monte-Carlo cross validation with random split indices
-  .tschain            Score from chain-forward cross validation
+  .tschain            Chain forward cross validation
   .tsroll             Roll forward cross validation
 ```
 
@@ -31,15 +31,15 @@ The following functions are those contained at present within the `.ml.xval` nam
 
 _Find optimal parameters for machine-learning model through cross validation_
 
-Syntax: `.ml.xval.gridsearch[xv;x;y;mdl;mthds;pd]`
+Syntax: `.ml.xval.gridsearch[xv;x;y;mdl;mthd;pd]`
 
 Where
 
--   `xv` is a projection of the type of cross validation to be completed for the gridsearch
+-   `xv` is a projection outlining the form of cross validation to be completed for the gridsearch
 -   `x` is a matrix
 -   `y` is a target vector
--   `mdl` is the model being tested in the gridsearch
--   `mthds` is a function indicating the behaviour to be applied during search (fit-score etc)
+-   `mdl` is the model being tested
+-   `mthd` is a function indicating the behaviour to be applied during search (fit-score etc)
 -   `pd` is a dictionary of hyperparameters to be searched
 
 returns the score for the best model and the hyper-parameters which led to this score.
@@ -80,19 +80,19 @@ max_depth|
 
 _K-Fold validated grid-search with optimal model fit to testing set_
 
-Syntax: `.ml.xval.gridsearchfit[xv;x;y;mdl;mthds;pd;pc]`
+Syntax: `.ml.xval.gridsearchfit[xv;x;y;mdl;mthd;pd;pc]`
 
 Where
 
--   `xv` is a projection of the type of cross validation to be completed for the gridsearch
+-   `xv` is a projection outlining the form of cross validation to be completed for the gridsearch
 -   `x` is a matrix
 -   `y` is a target vector
--   `mdl` is the model being tested in the gridsearch
--   `mthds` is a function indicating the behaviour to be applied during search (fit-score etc)
+-   `mdl` is the model being tested
+-   `mthd` is a function indicating the behaviour to be applied during search (fit-score etc)
 -   `pd` is a dictionary of hyperparameters to be searched
 -   `pc` is the percentage of data comprising the testing set
 
-returns the score on the testing set for the best model.
+returns the best score and parameter set based on the score on the testing set for the best model.
 
 !!!note
 	As with `.ml.gridsearch`, this function performs a cross validated grid-search over all combinations of hyperparameters to find the best model. This function splits the data into a train/test sets, performs grid-search on the training set (with k-fold cross validation defined within `xv`), fits the model with the highest score to the testing set.
@@ -120,105 +120,140 @@ q).ml.xval.gridsearchfit[xval_func;x;yc;algo_func;param_dict;0.2]
 
 ## `.ml.xval.kfshuff`
 
-_Randomized non-repeating indices for K-fold cross validation_
+_K-Fold cross validation for randomized non-repeating indices_
 
-Syntax: `.ml.xval.kfshuff[x;y]`
+Syntax: `.ml.xval.kfshuff[k;n;x;y;mdl;mthd]`
 
 Where
 
--   `x` is the target vector
--   `y` is the number of 'folds' which the data is to be split into
+-   `k` is the number of folds into which the data is split.
+-   `n` is the number of repetitions of this cross validation procedure.
+-   `x` is a matrix
+-   `y` is the target vector
+-   `mdl` is the model being applied
+-   `mthd` is a function indicating the behaviour to be applied during search
 
-returns randomized non-repeating indices associated with each of the K-folds.
+returns scores for a model applied to each of the possible K-folds splits.
 
 ```q
-q)yg:asc 1000?100f
-q).ml.xval.kfshuff[yg;5]
-647 755 790 152 948 434 583 536 156 637 699 159 315 698 41  345 565 680 775 6..
-118 402 34  601 833 877 762 703 129 294 593 634 192 939 545 98  641 266 910 4..
-795 69  664 393 519 722 616 55  132 802 448 140 361 194 977 97  247 74  733 6..
-633 430 346 267 102 201 123 295 487 418 606 108 154 899 398 932 994 643 944 5..
-919 354 119 478 954 567 497 848 665 471 406 541 307 82  984 198 134 622 550 9..
+q)n:200000
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f / regression
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q).ml.xval.kfshuff[5;1;x;yr;lrm;.ml.xval.fitscore[]]
+0.9999935 0.9999934 0.9999935 0.9999935 0.9999935
 ```
-
-!!! note
-	An aliased version of this function is contained in the root namespace and defined as `.ml.kfshuff`. This coincides with the existance of the aliased function `.ml.kfoldx` in the root namespace. Thus makes it easier to create indices to be passed to the cross validation function.
 
 ## `.ml.xval.kfsplit`
 
-_Ascending indices in K-folds_
+_Cross validation for ascending indices in split into K-folds_
 
-Syntax: `.ml.xval.kfsplit[x;y]`
+Syntax: `.ml.xval.kfsplit[k;n;x;y;mdl;mthd]`
 
 Where
 
--   `x` is the target vector
--   `y` is the number of 'folds' which the data is to be split into
+-   `k` is the number of folds into which the data is split.
+-   `n` is the number of repetitions of this cross validation procedure.
+-   `x` is a matrix
+-   `y` is the target vector
+-   `mdl` is the model being applied
+-   `mthd` is a function indicating the behaviour to be applied during search
 
-returns the ascending indices associated with each of the K-fold.
+returns scores for a model applied to each of the possible K-folds splits.
 
 ```q
-q)yg:asc 1000?100f                              / this is a proxy for the target vector
-q)folds:3                                       / number of folds for data
-q)show i:.ml.xval.kfsplit[yg;folds]
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 ..
-333 334 335 336 337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 3..
-666 667 668 669 670 671 672 673 674 675 676 677 678 679 680 681 682 683 684 6..
+q)n:200000
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f 
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q).ml.xval.kfsplit[5;1;x;yr;lrm;.ml.xval.fitscore[]]
+0.9997031 0.9999821 0.9999359 0.9996741 0.9988422
 ```
 
 
 ## `.ml.xval.kfstrat`
 
-_Distribute data into K-Folds with approx equal distribution of classes_
+_Stratified K-Fold cross validation with approx equal distribution of classes per fold_
 
-Syntax: `.ml.xval.kfstrat[x;y]`
+Syntax: `.ml.xval.kfstrat[k;n;x;y;mdl;mthd]`
 
 Where
 
--   `x` is the target vector
--   `y` is the number of 'folds' which the data is to be split into
+-   `k` is the number of folds into which the data is split.
+-   `n` is the number of repetitions of this cross validation procedure.
+-   `x` is a matrix
+-   `y` is the target vector
+-   `mdl` is the model being applied            
+-   `mthd` is a function indicating the behaviour to be applied during search
 
-returns the indices for each of the K-folds with an approximately equal distribution of classes between folds. This is used extensively in cases where the distribution of classes in the data is unbalanced.
+returns the indices for each of the K-folds where the folds have approximately equal distribution of target classes.
 
 ```q
-q)yg:(100#0b),10#1b                  / this is a proxy for the target vector
-q).ml.xval.kfstrat[yg;5]             / split the data into 5 stratified folds
-7  69 93 100 15  94 42  27 107 85 62  12 4  53  58 47 29 105 101 56 35 106
-59 26 49 8   20  44 31  6  0   43 30  40 95 54  99 39 98 16  33  52 51 3
-87 48 45 64  109 72 70  68 9   61 81  1  36 104 5  55 91 24  78  76 79 71
-46 28 21 83  25  2  102 34 23  60 108 13 67 86  18 75 90 89  97  22 57 65
-32 63 10 19  74  96 103 66 11  84 41  73 38 77  17 14 92 37  82  88 50 80
-q)yg .ml.xval.kfstrat[yg;5]
-0000000000000000000011b
-0000000000000000000011b
-0000000000000000000011b
-0000000000000000000011b
-0000000000000000000011b
+q)n:200000
+q)x:flip(n?100f;asc n?100f)
+q)yc:asc n?100f 
+q)dcm:.p.import[`sklearn.tree]`:DecisionTreeClassifier
+q).ml.xval.kfsplit[5;1;x;yc;dcm;.ml.xval.fitscore[]]
+0.4973126 0.50425 0.497675 0.498725 0.5004125
 ```
+
+!!!note
+	This is used extensively in cases where the distribution of classes in the data is unbalanced.
+
+## `.ml.xval.mcsplit`
+
+_Scores for monte-carlo cross validated model_
+
+Syntax: `.ml.xval.mcsplit[p;n;y;sz;algo;n]`
+
+Where
+
+-   `p` is a float between 0 and 1, which is the percentage of data within the validation set.
+-   `n` is the number of repetitions of this cross validation procedure.
+-   `x` is a matrix.
+-   `y` is the target vector.
+-   `mdl` is the model being applied.
+-   `mthd` is a function indicating the behaviour to be applied during search.
+
+returns the average score for all iterations of the monte-carlo cross validation.
+
+```q
+q)n:200000
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q).ml.xval.mcsplit[0.2;5;10;x;yr;lrm;.ml.xval.fitscore[]]
+0.9999935 0.9999935 0.9999935 0.9999935 0.9999934
+```
+
+!!! note
+        This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
 
 
 ## `.ml.xval.tschain`
 
-_Score from a chain-forward cross validation_
+_Scores from a chain-forward cross validation_
 
-Syntax: `.ml.xval.tschain[x;y;n;algo]`
+Syntax: `.ml.xval.tschain[k;n;x;y;mdl;mthd]`
 
 Where
 
--   `x` is a matrix of data for prediction
--   `y` is a target vector
--   `n` is the number of splits performed on the dataset
--   `algo` is the algorithm being tested
+-   `k` is the number of folds into which the data is split.
+-   `n` is the number of repetitions of this cross validation procedure.
+-   `x` is a matrix
+-   `y` is the target vector
+-   `mdl` is the model being applied            
+-   `mthd` is a function indicating the behaviour to be applied during search
 
-returns the averaged score for the model over all chained iterations.
+returns the k-1 scores for the applied model over chained iterations.
 
 ```q
-q)n:10000
-q)x:flip value flip([]n?100f;asc n?100f)
-q)y:asc n?100f
-q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
-q).ml.xval.tschain[x;y;10;reg]
-0.972491
+q)n:200000
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q).ml.xval.tschain[5;1;x;yr;lrm;.ml.xval.fitscore[]]
+0.9973771 0.9992741 0.9996898 0.9997031
 ```
 
 !!! note
@@ -229,40 +264,6 @@ q).ml.xval.tschain[x;y;10;reg]
         The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting. It also allows the robustness of the model to increasing data volumes to be probed.
 
 
-
-## `.ml.xval.mcxval`
-
-_Score for monte-carlo cross validated model_
-
-Syntax: `.ml.xval.mcxval[x;y;sz;algo;n]`
-
-Where
-
--   `x` is a matrix of data to be fit
--   `y` is the target vector
--   `sz` is an numeric atom in the range 0-1, representing the percentage of data in the testing set
--   `algo` is the algorithm being tested
--   `n` is the number of validation iterations to be completed
-
-returns the average score for all iterations of the monte-carlo cross validation.
-
-```q
-q)n:10000
-q)xg:flip value flip([]n?100;asc n?100f)
-q)yg:asc n?5
-q)clf:.p.import[`sklearn.tree][`:DecisionTreeClassifier][]
-q).ml.xval.mcxval[xg;yg;.2;clf;5]
-0.999375
-q)xb:flip value flip([]n?100;n?100f)
-q)yb:n?5
-q).ml.xval.mcxval[xb;yb;.2;clf;5]
-0.20675
-```
-
-!!! note
-        This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
-
-
 ## `.ml.xval.tsroll`
 
 _Score from a roll-forward cross validation_
@@ -271,20 +272,22 @@ Syntax: `.ml.xval.tsroll[x;y;n;algo]`
 
 Where
 
--   `x` is a matrix of the data to be fit
+-   `k` is the number of folds into which the data is split.
+-   `n` is the number of repetitions of this cross validation procedure.
+-   `x` is a matrix
 -   `y` is the target vector
--   `n` is the number of validation splits of the data
--   `algo` is the model to be applied for validation
+-   `mdl` is the model being applied
+-   `mthd` is a function indicating the behaviour to be applied during search
 
-returns the average score from all n-fits to the validation set.
+returns the scores for each (k-1) rolled fits to the validation set.
 
 ```q
-q)n:10000
-q)xg:flip value flip ([]n?100;asc n?100f)
-q)yg:asc n?100f
-q)reg:.p.import[`sklearn.linear_model][`:LinearRegression][]
-q).ml.xval.tsroll[xg;yg;10;reg]
--11.99615
+q)n:200000
+q)x:flip(n?100f;asc n?100f)
+q)yr:asc n?100f
+q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
+q).ml.xval.tsroll[5;1;x;yr;lrm;.ml.xval.fitscore[]]
+0.9973771 0.9995615 0.9999869 0.999965
 ```
 !!! note
         This works as shown in the following image:
