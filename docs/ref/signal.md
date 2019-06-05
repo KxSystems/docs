@@ -8,7 +8,7 @@ keywords: error, exception, kdb+, message, q, signal
 
 _Signal an error_
 
-Syntax: `'x`, `'[x]`
+Syntax: `'x`
 
 where `x` is a symbol atom or string, aborts evaluation and passes `x` to the interpreter as a string.
 
@@ -27,6 +27,12 @@ q)f`err
 ```
 
 Trap always receives a string regardless of the type of `x`.
+
+!!! warning "Bracket notation"
+
+    The quote glyph is [overloaded](overloads.md#quote). 
+    This makes Signal an exception to the rule that all functions can be applied with bracket notation. 
+    The form `'[x]` returns a projection of the iterator [Each](maps.md#each).
 
 
 ## Restrictions
