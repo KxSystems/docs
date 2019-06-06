@@ -466,3 +466,8 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 Since V3.6 2018.05.18. 
 
 <i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)
+
+
+## `-31!x` (parse JSON)
+
+Underpins the JSON encoder, [`.j.j`](../ref/dotj.md).
