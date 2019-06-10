@@ -18,7 +18,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
-    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](https://github.com/kxcontrib/phrases/)</p>
+    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](/phrases/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Lightning&nbsp;tickerplants](wp/lightning-tickerplants/)</p>
     
