@@ -103,6 +103,7 @@ about new repositories.</div>
 </tr>
 </table>
 
+
 ## <i class="fas fa-star"></i> Featured
 
 <small>Repositories by kdb+ users</small>
@@ -115,11 +116,19 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/LeslieGoldsmith/qprof">qprof</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/kxcontrib/phrases">phrases</a> ==new==</td>
+<td>The Q Phrasebook <span class="author"><a href="https://github.com/kxcontrib?tab=repositories">
+						(kxcontrib)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/LeslieGoldsmith/qprof">qprof</a></td>
 <td>Code profiler <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
 </td>
+</tr>
 <tr>
 <td class="nowrap"><a href="https://github.com/CharlesSkelton//studio">studio</a></td>
 <td>A rapid-development environment for q. 
@@ -535,6 +544,14 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/kxcontrib/phrases">phrases ==new==</a></td>
+<td>The Q Phrasebook <span class="author"><a href="https://github.com/kxcontrib?tab=repositories">
+						(kxcontrib)
+					</a></span>
+	<i class="fas fa-star" title="Featured repository"></i>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/mortensorensen/projecteuler">projecteuler</a></td>
 <td>Solutions to [Project Euler](https://projecteuler.net/) problems. <span class="author"><a href="https://github.com/mortensorensen?tab=repositories">
 						(Morten Sorensen)
@@ -570,7 +587,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/robmoore-i/qtest/">qtest</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/robmoore-i/qtest/">qtest</a></td>
 <td>Test-driven development <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
 						(Rob Moore)
 					</a></span>
@@ -616,7 +633,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/eepgwde/vivas">vivas</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/eepgwde/vivas">vivas</a></td>
 <td>Charting: kdb+ WebSocketdrives JavaScript client
 <span class="author"><a href="https://github.com/eepgwde?tab=repositories">(Walter Eaves)</a></span>
 </td>
