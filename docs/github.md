@@ -36,8 +36,8 @@ about new repositories.</div>
 	</td>
 </tr>
 <tr>
-	<td class="nowrap">[help](https://github.com/KxSystems/help) ==revised==</td>
-	<td>online help for q</td>
+	<td class="nowrap">[help](https://github.com/KxSystems/help)</td>
+	<td>online help for q ==new version==</td>
 </tr>
 <tr>
 	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
@@ -331,7 +331,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/aa1024/nexusQ">nexusQ ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/aa1024/nexusQ">nexusQ</a></td>
 <td>Visualizer for q process network. <span class="author"><a href="https://github.com/aa1024/?tab=repositories">
 						(Ali Kapadiya)
 					</a></span>
@@ -430,6 +430,20 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/timeseries/qstudioopen">qstudioopen ==new==</a></td>
+<td>JDBC driver and authenticator. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+						(TimeStored)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/timeseries/kdb/tree/master/qunit">QUnit ==new==</a></td>
+<td>Unit testing framework. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+						(TimeStored)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/simongarland/reservedwords">reservedwords</a></td>
 <td>Lists q’s reserved words. <span class="author"><a href="https://github.com/simongarland?tab=repositories">
 						(Simon Garland)
@@ -437,7 +451,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/aa1024/sphinxQ">sphinxQ ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/aa1024/sphinxQ">sphinxQ</a></td>
 <td>A [Sphinx](http://www.sphinx-doc.org/en/master/) documentation tool for q. <span class="author"><a href="https://github.com/aa1024/?tab=repositories">
 						(Ali Kapadiya)
 					</a></span>
@@ -519,6 +533,13 @@ about new repositories.</div>
 <td class="nowrap"><a href="https://github.com/robmoore-i/JsonRestApi">JsonRestApi</a></td>
 <td>Server–as-a-function interface <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
 						(Rob Moore)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/timeseries/kdb">kdb ==new==</a></td>
+<td>Kdb+ database examples. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+						(TimeStored)
 					</a></span>
 </td>
 </tr>
@@ -840,7 +861,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/jlucid/qhandle">qhandle ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/jlucid/qhandle">qhandle</a></td>
 <td>Manage open handles and backup switchover. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
 						(Jeremy Lucid)
 					</a></span>
