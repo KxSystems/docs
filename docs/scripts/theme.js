@@ -1,7 +1,7 @@
 /*
  * Custom script for code.kx.com/v2
  * Author: stephen@kx.com
- * Version: 2019.05.07
+ * Version: 2019.06.12
  * https://gist.github.com/wpscholar/4637176#file-jquery-external-links-new-window-js-L4
  */
 $(function() {
@@ -42,7 +42,7 @@ $(function() {
 	});
 	$(btn).click(function() {
 		var host = window.location.host;
-		var dest = "/v2/about/search";
+		var dest = "/v2/about/search/";
 		window.location = dest;
 	});
 });
