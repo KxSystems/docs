@@ -2,7 +2,7 @@
 keywords: cygwin, inetd, kdb+, linux, microsoft, q, sfu, xinetd, unix, windows
 ---
 
-# indetd, xinetd
+# inetd, xinetd
 
 
 
