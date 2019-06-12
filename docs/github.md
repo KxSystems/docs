@@ -494,6 +494,13 @@ about new repositories.</div>
 	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q</a> ==new==</td>
+<td>CI and test runners <span class="author"><a href="https://github.com/prodrive11?tab=repositories">
+						(Patryk Bukowinski)
+					</a></span>
+</td>
+</tr>
 </table>
 
 

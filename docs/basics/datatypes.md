@@ -242,7 +242,7 @@ q)type `city$10?city:`london`paris`rome
 
 ### Nested types
 
-These types are used for mapped lists of lists of the same type. The numbering is 77 + primitive type (e.g. 78 is boolean, 96 is time and 97 is `` `sym$`` enumeration.)
+These types are used for mapped lists of lists of the same type. The numbering is 77 + primitive type (e.g. 77 is [anymap](../releases/ChangesIn3.6.md#anymap), 78 is boolean, 96 is time and 97 is `` `sym$`` enumeration.)
 
 ```q
 q)`:t1.dat set 2 3#til 6
