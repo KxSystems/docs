@@ -53,6 +53,8 @@ This would return the three best prices for symbol `s` with a size greater than 
 
 This construct works on in-memory tables but not on memory-mapped tables loaded from splayed or partitioned files. 
 
+Where no sort order is specified, and where the table is keyed, the result is sorted ascending by the key. 
+
 !!! tip "Performance characteristic"
 
     `select[n]` applies the where-clause on all rows of the table, and takes the first `n` rows, before applying the select-clause. So if you are paging it is better to store the result of the query somewhere and `select[n,m]` from there, rather than run the filter again.
