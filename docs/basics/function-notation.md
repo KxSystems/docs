@@ -152,8 +152,8 @@ A lambda definition can include up to:
 &nbsp;    | in use | current     | <V3.6 2017.09.26
 ----------|--------|-------------|------------------
 arguments |        | 8           | 8
-locals    | $m$    | 110         | 31
-globals   | $n$    | 110         | 23
+locals    | $m$    | 110         | 23
+globals   | $n$    | 110         | 31
 constants |        | $240-(m+n)$ | $95-(m+n)$
 
 <i class="far fa-hand-point-right"></i>

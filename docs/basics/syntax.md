@@ -155,12 +155,12 @@ Numeric and temporal vectors separate items with spaces and if necessary declare
 
 ```q
 2018.05 2018.07 2019.01m            / month
-2 3 4 5 6                           / integer
-2 3 4 5 6h                          / short integer
-2 3 4 5 6i                          / xxxxx integer
-2 3 4 5 6j                          / xxxxx integer
-2 3 4 5.6                           / float
-2 3 4 5 6f                          / float
+2 3 4 5 6                           / long  integer (8 bytes)
+2 3 4 5 6h                          / short integer (2 bytes)
+2 3 4 5 6i                          / xxxxx integer (4 bytes)
+2 3 4 5 6j                          / long  integer (8 bytes)
+2 3 4 5.6                           / float         (8 bytes)
+2 3 4 5 6f                          / float         (8 bytes)
 ```
 
 type    | example                
@@ -580,11 +580,11 @@ Note that whenever a set of expressions is evaluated left to right, such as thos
 Any number of spaces are usually permitted between tokens in expressions, and usually the spaces are not required. The exceptions are:
 
 -   No spaces are permitted between the symbols 
-  -   `'` and `:` when denoting the iterator `':`
-  -   `\` and `:` when denoting the iterator `\:`
-  -   `/` and `:` when denoting the iterator `/:`
-  -   a digit and `:` when denoting a function such as `0:`
-  -   `:` and `:` for assignments of the form `name :: value`
+    -   `'` and `:` when denoting the iterator `':`
+    -   `\` and `:` when denoting the iterator `\:`
+    -   `/` and `:` when denoting the iterator `/:`
+    -   a digit and `:` when denoting a function such as `0:`
+    -   `:` and `:` for assignments of the form `name :: value`
 -   No spaces are permitted between an iterator glyph and the value or
 iterator symbol to its left.
 -   No spaces are permitted between an operator glyph and a colon to its right whose purpose is to denote assignment.

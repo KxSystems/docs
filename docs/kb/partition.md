@@ -10,7 +10,7 @@ File `par.txt` defines a top-level partitioning of a database into directories. 
 
 `par.txt` is used to unify partitions of a database, presenting them as a single database for querying.
 
-This is particularly useful in combination with multithreading. Starting the kdb+ process with slave threads (see [command line option `-s](../basics/cmdline.md#-s-slaves`), and where each partition in `par.txt` is on a separate local disk:
+This is particularly useful in combination with multithreading. Starting the kdb+ process with slave threads (see [command line option `-s`](../basics/cmdline.md#-s-slaves)), and where each partition in `par.txt` is on a separate local disk:
 
 -   when the q process is started with slave threads, the partitions in `par.txt` are allocated to slaves on a round-robin basis, i.e. if kdb+ is started with `n` slaves, then partition `p` is given to slave `p mod n`. This gives maximum parallelization for queries over date ranges.
 

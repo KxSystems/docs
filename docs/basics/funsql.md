@@ -17,7 +17,7 @@ The functional forms are
 ```q
 ![t;c;b;a]    /update and delete
 ?[t;c;b;a]    /select and exec
-?[t;i;x]      /simple exec
+?[t;i;p]      /simple exec
 ```
 
 where: 

@@ -60,12 +60,12 @@ q)d[`cow`sheep]
 `vache`mouton
 q)ssr["Hello word!";"rd";"rld"]
 "Hello world!"
-q)m:("abcd";"efgh";"ijkl")          / a matrix
+q)m:("abc";"def";"ghi";"jkl")       / a matrix
 q)m[3 1]                            / m is a list (unary)
 "jkl"
 "def"
-q)m[0;1 0 3]                        / and also a matrix (binary)
-"bad"
+q)m[0;2 0 1]                        / and also a matrix (binary)
+"cab"
 ```
 
 

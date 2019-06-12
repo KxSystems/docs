@@ -201,8 +201,9 @@ which will cause a `'host` error.
 <tr> <td>os</td><td>Wrong OS or operating-system error (if runtime error)</td> </tr>
 <tr> <td>srv</td><td>Client-only license in server mode</td> </tr>
 <tr> <td>upd</td><td>Version of kdb+ more recent than update date, _or_ the function `upd` is undefined (sometimes encountered during ``-11!`:logfile``)</td> </tr>
-<tr> <td>user</td><td>Unlicenced user</td> </tr>
+<tr> <td>user</td><td>Unlicensed user</td> </tr>
 <tr> <td>wha</td><td>System date is prior to kdb+ version date</td> </tr>
+<tr> <td>wrong q.k version</td><td>`q` and `q.k` versions do not match</td> </tr>
 </tbody>
 </table>
 
