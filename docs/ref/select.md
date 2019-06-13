@@ -53,7 +53,13 @@ This would return the three best prices for symbol `s` with a size greater than 
 
 This construct works on in-memory tables but not on memory-mapped tables loaded from splayed or partitioned files. 
 
-Where no sort order is specified, and where the table is keyed, the result is sorted ascending by the key. 
+Default sort order: where 
+
+-   the table is keyed,
+-   there is a by-clause, and
+-   no sort order is specified
+
+the result is sorted ascending by the key. 
 
 !!! tip "Performance characteristic"
 
