@@ -13,7 +13,7 @@ $(function() {
 		}
 	});
     // Search engine call from Search box
-	var kxSearch = 'https://code.kx.com/v2/search?query='; // >>> reverse-proxy on Nginx at code.kx.com
+	var kxSearch = 'https://code.kx.com/v2/search2?query='; // >>> reverse-proxy on Nginx at code.kx.com
 	var gsSearch = "https://www.google.com/search?q=site%3Acode.kx.com+";
 	var srchHandler =function( evt ) {
 		if( evt.which===13 ) {
