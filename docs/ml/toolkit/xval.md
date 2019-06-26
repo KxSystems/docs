@@ -7,7 +7,7 @@ keywords: time-series, cross validation, grid search, roll-forward, chain-forwar
 # <i class="fa fa-share-alt"></i> Cross Validation Procedures 
 
 
-The `.ml.xval` namespace contains functions used for the application of various cross-validation procedures, these offer the ability to test how robust/stable a model is to changes in the volume of data being interrogated or the subsets of data being used in validation procedures.
+The `.ml.xval` namespace contains functions used for the application of various cross-validation procedures through embedPy and kdb+. These offer the ability to test how robust/stable a model is to changes in the volume of data being interrogated or the subsets of data being used in validation procedures.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/xval/](https://github.com/kxsystems/ml/tree/master/xval)
@@ -26,10 +26,12 @@ The following functions are those contained at present within the `.ml.xval` nam
   .tsroll             Roll forward cross validation
 ```
 
+!!!note
+	Within the following examples `.ml.xval.fitscore` is used extensively, this function allows users to fit a model and return the score on the test/holdout data. This function can be replaced by a user defined alternative for tailored applications, for example a function to fit on training and predict validation
 
 ## `.ml.xval.gridsearch`
 
-_Find optimal parameters for machine-learning model through cross validation_
+_Find optimal parameters for a machine-learning model through an extensive parameter gridsearch_
 
 Syntax: `.ml.xval.gridsearch[xv;x;y;mdl;mthd;pd]`
 
@@ -42,19 +44,19 @@ Where
 -   `mthd` is a function indicating the behaviour to be applied during search (fit-score etc)
 -   `pd` is a dictionary of hyperparameters to be searched
 
-returns the score for the best model and the hyper-parameters which led to this score.
+returns the scores in tabular form associated with each of the split for each of the hyperparameter sets
 
 ```q
 q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
 q)dcm:.p.import[`sklearn.tree]`:DecisionTreeClassifier
 q)n:10000
 q)x:flip(n?100f;asc n?100f)
-q)yr:asc n?100f    / regression
-q)yc:n?0 1         / classification
-q)xval_func:.ml.xval.kfshuff[5;1]    / 5 fold shuffled xval 1 repetition
-q)algo_func:.ml.xval.fitscore lrm    / fit & score linear regressor
+q)yr:asc n?100f                      / regression
+q)yc:n?0 1                           / classification
+q)xval_func:.ml.xval.kfsplit[5;1]    / 5 fold shuffled xval 1 repetition
+q)score_func:.ml.xval.fitscore       / fit & score linear regressor
 q)param_dict:`fit_intercept`normalize!(01b;01b)
-q).ml.xval.gridsearch[xval_func;x;yr;algo_func;param_dict]
+q).ml.xval.gridsearch[xval_func;x;yr;lrm;score_func;param_dict]
 fit_intercept normalize|                                                  
 -----------------------| -------------------------------------------------
 0             0        | 0.9999225 0.9999263 0.9999261 0.9999235 0.9999241
@@ -62,9 +64,9 @@ fit_intercept normalize|
 1             0        | 0.9999363 0.9999361 0.9999331 0.9999337 0.9999359
 1             1        | 0.9999351 0.9999389 0.9999299 0.9999357 0.9999357
 q)xval_func:.ml.xval.kfstrat[5;1]
-q)algo_func:.ml.xval.fitscore dcm
+q)score_func:.ml.xval.fitscore
 q)param_dict:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-q).ml.xval.gridsearch[xval_func;x;yc;algo_func;param_dict]
+q).ml.xval.gridsearch[xval_func;x;yc;dcm;score_func;param_dict]
 max_depth|                                  
 ---------| ---------------------------------
 ::       | 0.5215 0.51   0.508  0.48  0.507 
@@ -92,7 +94,7 @@ Where
 -   `pd` is a dictionary of hyperparameters to be searched
 -   `pc` is the percentage of data comprising the testing set
 
-returns the best score and parameter set based on the score on the testing set for the best model.
+returns the best score achieved and the associated parameter set based for fitting on scores achieved on the holdout set.
 
 !!!note
 	As with `.ml.gridsearch`, this function performs a cross validated grid-search over all combinations of hyperparameters to find the best model. This function splits the data into a train/test sets, performs grid-search on the training set (with k-fold cross validation defined within `xv`), fits the model with the highest score to the testing set.
@@ -102,17 +104,17 @@ q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
 q)dcm:.p.import[`sklearn.tree]`:DecisionTreeClassifier
 q)n:10000
 q)x:flip(n?100f;asc n?100f)
-q)yr:asc n?100f / regression
-q)yc:n?0 1      / classification
+q)yr:asc n?100f
+q)yc:n?0 1
 q)xval_func:.ml.xval.kfshuff[5;1]
-q)algo_func:.ml.xval.fitscore lrm
+q)score_func:.ml.xval.fitscore
 q)param_dict:`fit_intercept`normalize!(01b;01b)
-q).ml.xval.gridsearchfit[xval_func;x;yc;algo_func;param_dict;0.2]
+q).ml.xval.gridsearchfit[xval_func;x;yc;lrm;score_func;param_dict;0.2]
 `fit_intercept`normalize!11b
 -0.0006069159
-q)algo_func:.ml.xval.fitscore dcm
+q)score_func:.ml.xval.fitscore
 q)param_dict:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-q).ml.xval.gridsearchfit[xval_func;x;yc;algo_func;param_dict;0.2]
+q).ml.xval.gridsearchfit[xval_func;x;yc;dcm;score_func;param_dict;0.2]
 (,`max_depth)!,::
 0.4925
 ```
@@ -146,7 +148,7 @@ q).ml.xval.kfshuff[5;1;x;yr;lrm;.ml.xval.fitscore[]]
 
 ## `.ml.xval.kfsplit`
 
-_Cross validation for ascending indices in split into K-folds_
+_Cross validation for ascending indices split into K-folds_
 
 Syntax: `.ml.xval.kfsplit[k;n;x;y;mdl;mthd]`
 
@@ -173,7 +175,7 @@ q).ml.xval.kfsplit[5;1;x;yr;lrm;.ml.xval.fitscore[]]
 
 ## `.ml.xval.kfstrat`
 
-_Stratified K-Fold cross validation with approx equal distribution of classes per fold_
+_Stratified K-Fold cross validation with an approximately equal distribution of classes per fold_
 
 Syntax: `.ml.xval.kfstrat[k;n;x;y;mdl;mthd]`
 
@@ -186,12 +188,12 @@ Where
 -   `mdl` is the model being applied            
 -   `mthd` is a function indicating the behaviour to be applied during search
 
-returns the indices for each of the K-folds where the folds have approximately equal distribution of target classes.
+returns the indices for each of the K-folds where the folds have approximately equal distributions of target classes within each fold.
 
 ```q
 q)n:200000
 q)x:flip(n?100f;asc n?100f)
-q)yc:asc n?100f 
+q)yc:asc n?100 
 q)dcm:.p.import[`sklearn.tree]`:DecisionTreeClassifier
 q).ml.xval.kfsplit[5;1;x;yc;dcm;.ml.xval.fitscore[]]
 0.4973126 0.50425 0.497675 0.498725 0.5004125
@@ -202,7 +204,7 @@ q).ml.xval.kfsplit[5;1;x;yc;dcm;.ml.xval.fitscore[]]
 
 ## `.ml.xval.mcsplit`
 
-_Scores for monte-carlo cross validated model_
+_Scores for a monte-carlo cross validated machine learning model_
 
 Syntax: `.ml.xval.mcsplit[p;n;y;sz;algo;n]`
 
@@ -222,7 +224,7 @@ q)n:200000
 q)x:flip(n?100f;asc n?100f)
 q)yr:asc n?100f
 q)lrm:.p.import[`sklearn.linear_model]`:LinearRegression
-q).ml.xval.mcsplit[0.2;5;10;x;yr;lrm;.ml.xval.fitscore[]]
+q).ml.xval.mcsplit[0.2;10;x;yr;lrm;.ml.xval.fitscore[]]
 0.9999935 0.9999935 0.9999935 0.9999935 0.9999934
 ```
 
@@ -232,7 +234,7 @@ q).ml.xval.mcsplit[0.2;5;10;x;yr;lrm;.ml.xval.fitscore[]]
 
 ## `.ml.xval.tschain`
 
-_Scores from a chain-forward cross validation_
+_Scores from a chain-forward cross validation procedure_
 
 Syntax: `.ml.xval.tschain[k;n;x;y;mdl;mthd]`
 
@@ -266,7 +268,7 @@ q).ml.xval.tschain[5;1;x;yr;lrm;.ml.xval.fitscore[]]
 
 ## `.ml.xval.tsroll`
 
-_Score from a roll-forward cross validation_
+_Scores from a roll-forward cross validation procedure_
 
 Syntax: `.ml.xval.tsroll[x;y;n;algo]`
 
