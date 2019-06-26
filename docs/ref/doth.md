@@ -269,18 +269,19 @@ q).h.hr "foo"
 Syntax: `.h.ht x`
 
 HTML documentation generator: <!-- for <http://kx.com/q/d/> --> 
-where `x` is a symbol atom, reads file `:src/.txt` and writes file `:x.htm`.
+where `x` is a symbol atom, reads file `:src/x.txt` and writes file `:x.htm`.
+(Marqdown is a rudimentary form of Markdown.)
 
 - edit `src/mydoc.txt`
 - ``q).h.ht`mydoc``
-- browse mydoc.htm (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
+- browse `mydoc.htm` (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
 
 Basic Marqdown formatting rules:
 
 - Paragraph text starts at the beginning of the line.
 - Lines beginning with `"."` are treated as section headings.
-- Lines beginning with `"\t"` get wrapped in `<code>`
-- Line data beginning with `" "` get wrapped in `<xmp>`
+- Lines beginning with `"\t"` get wrapped in `code` tags
+- Line data beginning with `" "` get wrapped in `xmp` tags
 - If second line of data starts with `"-"`, draw a horizontal rule to format the header
 - Aligns two-column data if 2nd column starts with `"\t "`
 

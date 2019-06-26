@@ -1,5 +1,5 @@
 ---
-keywords: bang, dict, dictionary, kdb+, q
+keywords: bang, dict, dictionaries, dictionary, kdb+, q
 ---
 
 # `!` Dict

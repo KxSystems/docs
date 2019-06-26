@@ -176,7 +176,7 @@ q)value each (::;+;-;*;%)
 
 ## Derived function
 
-returns the original [applicable value](../basics/glossary.md#applicable-value.
+returns the original [applicable value](../basics/glossary.md#applicable-value).
 
 ```q
 q)f:+/

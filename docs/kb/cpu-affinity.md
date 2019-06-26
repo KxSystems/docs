@@ -56,7 +56,7 @@ When activating NUMA, substitute parameter settings according to the [recommenda
 When NUMA is 
 
 -   **not active**, use the `taskset` command, e.g.<pre><code class="language-bash">$ taskset -c 0,1,2 q</code></pre>will run q on cores 0, 1 and 2. Or<pre><code class="language-bash">$ taskset -c 0,1,2 bash</code></pre>and then all processes started from within that new shell will automatically be restricted to those cores.
--   **active**, use `numactl` instead of `taskset`<pre><code class="language-bash">$ numactl --interleave=all --physcpubind=0,1,2 q</pre></code> and set<pre><code class="language-bash">$ echo 0 > /proc/sys/vm/zone_reclaim_mode</code></pre>
+-   **active**, use `numactl` instead of `taskset`<pre><code class="language-bash">$ numactl --interleave=all --physcpubind=0,1,2 q</code></pre> and set<pre><code class="language-bash">$ echo 0 > /proc/sys/vm/zone_reclaim_mode</code></pre>
 
 You can change `zone_reclaim_mode` without restarting q.
 

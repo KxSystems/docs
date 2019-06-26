@@ -337,7 +337,7 @@ remapping the address to another instance in your estate. That is handy
 for things such as GUIs and dashboards, though you should be aware of
 this capability and use it. You are charged for the elastic IP address
 if you close down the instance associated with it, otherwise one IP
-address is free when associated. As of January 2018 the cost is, $0.12
+address is free when associated. As of January 2018 the cost is, \$0.12
 per Elastic IP address/day when not associated with a running instance.
 Additional IP addresses per instance are charged.
 
@@ -400,7 +400,7 @@ Or you may be replicating data from one region or availability zone, to another.
 
 ### Network Direct
 
-If you use the Network Direct option from EC2, you get a dedicated network with guaranteed bandwidth. You then pay for the dedicated link, plus the same outbound data transfer rates. For example, as of January 2018 the standard charge for a dedicated 1&nbsp;GB/sec link to EC2 would cost $220/month plus $90/month for a transfer fee per TB.
+If you use the Network Direct option from EC2, you get a dedicated network with guaranteed bandwidth. You then pay for the dedicated link, plus the same outbound data transfer rates. For example, as of January 2018 the standard charge for a dedicated 1&nbsp;GB/sec link to EC2 would cost \$220/month plus \$90/month for a transfer fee per TB.
 
 Consider these costs when planning to replicate HDB data between regions, and when exporting your data continually back to your own data center for visualization or other purposes. Consider the migration of these tools to coexist with kdb+ in the AWS estate, and if you do not, consider the time to export the data. 
 

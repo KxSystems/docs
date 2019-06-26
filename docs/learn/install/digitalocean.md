@@ -1,4 +1,4 @@
-# :fa-linux: Installing at DigitalOcean on Ubuntu
+# <i class="fab fa-linux"></i> Installing at DigitalOcean on Ubuntu
 
 
 
@@ -22,7 +22,7 @@ This tutorial supposes you
 To run 32-bit kdb+ on a 64-bit server, see the [notes for running 32-bit kdb+ on 64-bit Linux](linux.md#64-bit-or-32-bit).
 
 
-## :fa-download: Download
+## <i class="fas fa-download"></i> Download
 
 [Download 32-bit kdb+](https://kx.com/connect-with-us/download/) to your local machine and unzip it. 
 You will want the `l32.zip` download. 
@@ -40,7 +40,7 @@ $
 ```
 
 
-## :fa-upload: Upload
+## <i class="fas fa-upload"></i> Upload
 
 Upload the kdb+ files to your droplet. 
 
@@ -59,7 +59,7 @@ q
 ```
 
 
-## :fa-code: Define q alias
+##<i class="fas fa-code"></i> Define q alias
 
 SSH from your local machine to your droplet. 
 Edit the Bash profile for non-login (i.e. non-interactive) sessions. 
@@ -81,7 +81,7 @@ alias q='QHOME=~/q ~/q/l32/q'
 The Bash profile `.bashrc` sets the environment used for non-login sessions, for example, any script that you set up as a daemon under Systemctl. 
 
 
-## :fa-check: Confirm successful installation
+## <i class="fas fa-check"></i> Confirm successful installation
 
 Run `.bashrc` now for your current (login) session.
 
@@ -124,7 +124,7 @@ boss@droplet:~$
 ```
 
 
-## :fa-hand-o-right: What’s next?
+## <i class="far fa-hand-point-right"></i> What’s next?
 
 Set up a script to run as a service on your droplet:
 

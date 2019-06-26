@@ -244,7 +244,7 @@ You may not access the Kdb+ Software if you are a direct competitor of Kx.
     representatives total liability for direct damages under or in
     connection with this Agreement, whether in an action in contract
     or tort (including negligence) or any other form of action will
-    in no event exceed $10,000.
+    in no event exceed \$10,000.
 
 24. **Entire Financial Liability.** For the avoidance of doubt this section 8 sets out the entire financial liability of each party and their respective affiliates, officers, directors, employees, agents and representatives and their successors and assigns under or in connection with this Agreement.
 

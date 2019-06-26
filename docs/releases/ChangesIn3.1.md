@@ -14,5 +14,5 @@ Below is a summary of changes from V3.0. Commercially licensed users may obtain 
 ## Not upwardly compatible
 
 - distributed `each` (i.e. `q -s -N`) no longer opens connections to slave processes automatically on ports `20000+til N`.
-- result type of E arithmetic for `+-*` changes from F to E. (`avg` and `wavg` still always go to F. `mdev` promotes to F.)`
+- result type of E arithmetic for `+-*` changes from F to E. (`avg` and `wavg` still always go to F. `mdev` promotes to F.)
 

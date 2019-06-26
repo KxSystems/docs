@@ -271,7 +271,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     representatives total liability for direct damages under or in
     connection with this agreement, whether in an action in contract
     or tort (including negligence) or any other form of action will
-    in no event exceed $10,000.
+    in no event exceed \$10,000.
 
 24. _Entire Financial Liability._ For the
     avoidance of doubt this section 8 sets out the entire financial

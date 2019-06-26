@@ -80,19 +80,19 @@ q)
 ## `-5!x` (`parse`)
 
 <i class="far fa-hand-point-right"></i> 
-[parse](../ref/parse.md)
+[`parse`](../ref/parse.md)
 
 
 ## `-6!x` (`eval`)
 
 <i class="far fa-hand-point-right"></i> 
-[eval](../ref/eval.md)
+[`eval`](../ref/eval.md)
 
 
 ## `-7!x` (`hcount`)
 
 <i class="far fa-hand-point-right"></i> 
-hcount](../ref/hcount.md)
+[`hcount`](../ref/hcount.md)
 
 
 ## `-8!x` (to bytes)

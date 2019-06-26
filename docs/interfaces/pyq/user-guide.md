@@ -106,23 +106,23 @@ The result in this case is a `K` vector whose elements are obtained by applying 
 
 As you can see in the table below, most of the mathematical functions provided by q are similar to the Python standard library functions in the `math` module.
 
-q              | Python           | Return
----------------|------------------|---------------------------------------
-[`neg()`](../../ref/neg.md) | [`operator.neg()`](https://docs.python.org/3.6/library/operator.html#operator.neg) | the negative of the argument
-[`abs()`](../../ref/abs.md) | [`abs()`](https://docs.python.org/3.6/library/functions.html#abs) | the absolute value
-[`signum()`](../../ref/signum.md) |   | ±1 or 0 depending on the sign of the argument
-[`sqrt()`](../../ref/sqrt.md) | [`math.sqrt()`](https://docs.python.org/3.6/library/math.html#math.sqrt) | the square root of the argument
-[`exp()`](../../ref/exp.md) | [`math.exp()`](https://docs.python.org/3.6/library/math.html#math.exp) | _e_ raised to the power of the argument
-[`log()`](../../ref/log.md)) | [`math.log()`](https://docs.python.org/3.6/library/math.html#math.log)     | the natural logarithm (base e) of the argument
-[`cos()`](../../ref/cos.md) | [`math.cos()`](https://docs.python.org/3.6/library/math.html#math.cos) | the cosine of the argument
-[`sin()`](../../ref/sin.md) | [`math.sin()`](https://docs.python.org/3.6/library/math.html#math.sin) | the sine of the argument
-[`tan()`](../../ref/tan.md) | [`math.tan()`](https://docs.python.org/3.6/library/math.html#math.tan) | the tangent of the argument
-[`acos()`](../../ref/cos.md#acos) | [`math.acos()`](https://docs.python.org/3.6/library/math.html#math.acos) | the arc cosine of the argument
-[`asin()`](../../ref/sin.md#asin) | [`math.asin()`](https://docs.python.org/3.6/library/math.html#math.asin) | the arc sine of the argument
-[`atan()`](../../ref/tan.md#atan) | [`math.atan()`](https://docs.python.org/3.6/library/math.html#math.atan) | the arc tangent of the argument
-[`ceiling()`](../../ref/ceiling.md) | [`math.ceil()`](https://docs.python.org/3.6/library/math.html#math.ceil) | the smallest integer &ge; the argument
-[`floor()`](../../ref/floor.md) | [`math.floor()`](https://docs.python.org/3.6/library/math.html#math.floor) | the largest integer &le; the argument
-[`reciprocal()`](https://pyq.enlnt.com/reference/pyq-auto.html#pyq.q.reciprocal) |  | 1 divided by the argument
+q                                   | Python           | Return
+------------------------------------|------------------|---------------------------------------
+[`neg()`](../../ref/neg.md)         | [`operator.neg()`](https://docs.python.org/3.6/library/operator.html#operator.neg)  | the negative of the argument
+[`abs()`](../../ref/abs.md)         | [`abs()`](https://docs.python.org/3.6/library/functions.html#abs)                   | the absolute value
+[`signum()`](../../ref/signum.md)   |                                                                                     | ±1 or 0 depending on the sign of the argument
+[`sqrt()`](../../ref/sqrt.md)       | [`math.sqrt()`](https://docs.python.org/3.6/library/math.html#math.sqrt)            | the square root of the argument
+[`exp()`](../../ref/exp.md)         | [`math.exp()`](https://docs.python.org/3.6/library/math.html#math.exp)              | _e_ raised to the power of the argument
+[`log()`](../../ref/log.md))        | [`math.log()`](https://docs.python.org/3.6/library/math.html#math.log)              | the natural logarithm (base e) of the argument
+[`cos()`](../../ref/cos.md)         | [`math.cos()`](https://docs.python.org/3.6/library/math.html#math.cos)              | the cosine of the argument
+[`sin()`](../../ref/sin.md)         | [`math.sin()`](https://docs.python.org/3.6/library/math.html#math.sin)              | the sine of the argument
+[`tan()`](../../ref/tan.md)         | [`math.tan()`](https://docs.python.org/3.6/library/math.html#math.tan)              | the tangent of the argument
+[`acos()`](../../ref/cos.md#acos)   | [`math.acos()`](https://docs.python.org/3.6/library/math.html#math.acos)            | the arc cosine of the argument
+[`asin()`](../../ref/sin.md#asin)   | [`math.asin()`](https://docs.python.org/3.6/library/math.html#math.asin)            | the arc sine of the argument
+[`atan()`](../../ref/tan.md#atan)   | [`math.atan()`](https://docs.python.org/3.6/library/math.html#math.atan)            | the arc tangent of the argument
+[`ceiling()`](../../ref/ceiling.md) | [`math.ceil()`](https://docs.python.org/3.6/library/math.html#math.ceil)            | the smallest integer &ge; the argument
+[`floor()`](../../ref/floor.md)     | [`math.floor()`](https://docs.python.org/3.6/library/math.html#math.floor)          | the largest integer &le; the argument
+[`reciprocal()`](https://pyq.enlnt.com/reference/pyq-auto.html#pyq.q.reciprocal) |                                        | 1 divided by the argument
 
 Other than being able to operate on lists of numbers, q functions differ from Python functions in the way they treat out-of-domain errors.
 
@@ -581,20 +581,20 @@ code | kdb+ type   | Python type
 -----|-------------|-------------------
 1    | `boolean`   | [`bool`](https://docs.python.org/3.6/library/functions.html#bool)
 2    | `guid`      | [`uuid.UUID`](https://docs.python.org/3.6/library/uuid.html#uuid.UUID)
-4    | `byte`     
-5    | `short`    
-6    | `int`  
+4    | `byte`      |
+5    | `short`     |
+6    | `int`       |
 7    | `long`      | [`int`](https://docs.python.org/3.6/library/functions.html#int)
-8    | `real`     
+8    | `real`      |
 9    | `float`     | [`float`](https://docs.python.org/3.6/library/functions.html#float)
 10   | `char`      | [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes) (*)
 11   | `symbol`    | [`str`](https://docs.python.org/3.6/library/stdtypes.html#str)
-12   | `timestamp`    
-13   | `month`    
+12   | `timestamp` | 
+13   | `month`     |
 14   | `date`      | [`datetime.date`](https://docs.python.org/3.6/library/datetime.html#datetime.date)
 16   | `timespan`  | [`datetime.timedelta`](https://docs.python.org/3.6/library/datetime.html#datetime.timedelta)
-17   | `minute`   
-18   | `second`   
+17   | `minute`    |
+18   | `second`    |
 19   | `time`      | [`datetime.time`](https://docs.python.org/3.6/library/datetime.html#datetime.time)
 
 
@@ -646,23 +646,23 @@ k('`time$()')
 
 constructor   | accepts                          | description
 --------------|----------------------------------|-----------------------------------------------
-`K.boolean()` | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6" "in Python V3.6"), [`bool`](https://docs.python.org/3.6/library/functions.html#bool "in Python V3.6")                    | logical type `0b` is false and `1b` is true
-`byte()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6"), [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes "in Python V3.6")                   | 8-bit bytes
-`short()`     | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6")                            | 16-bit integers
-`int()`       | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6")                            | 32-bit integers
-`long()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6")                            | 64-bit integers
-`real()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6"), [`float`](https://docs.python.org/3.6/library/functions.html#float "in Python V3.6")                   | 32-bit floating point numbers
-`float()`     | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6"), [`float`](https://docs.python.org/3.6/library/functions.html#float "in Python V3.6")                   | 32-bit floating point numbers
-`char()`      | [`str`](https://docs.python.org/3.6/library/stdtypes.html#str "in Python V3.6"), [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes "in Python V3.6")                   | 8-bit characters
-`symbol()`    | [`str`](https://docs.python.org/3.6/library/stdtypes.html#str "in Python V3.6"), [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes "in Python V3.6")                   | interned strings
+`K.boolean()` | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6" "in Python V3.6"), [`bool`](https://docs.python.org/3.6/library/functions.html#bool "in Python V3.6")               | logical type `0b` is false and `1b` is true
+`byte()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6"), [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes "in Python V3.6")                              | 8-bit bytes
+`short()`     | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6")                                                                                                                    | 16-bit integers
+`int()`       | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6")                                                                                                                    | 32-bit integers
+`long()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6")                                                                                                                    | 64-bit integers
+`real()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6"), [`float`](https://docs.python.org/3.6/library/functions.html#float "in Python V3.6")                              | 32-bit floating point numbers
+`float()`     | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6"), [`float`](https://docs.python.org/3.6/library/functions.html#float "in Python V3.6")                              | 32-bit floating point numbers
+`char()`      | [`str`](https://docs.python.org/3.6/library/stdtypes.html#str "in Python V3.6"), [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes "in Python V3.6")                               | 8-bit characters
+`symbol()`    | [`str`](https://docs.python.org/3.6/library/stdtypes.html#str "in Python V3.6"), [`bytes`](https://docs.python.org/3.6/library/functions.html#bytes "in Python V3.6")                               | interned strings
 `timestamp()` | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (nanoseconds), [`datetime`](https://docs.python.org/3.6/library/datetime.html#datetime.datetime "in Python V3.6")  | date and time
-`month()`     | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (months), [`date`](https://docs.python.org/3.6/library/datetime.html#datetime.date "in Python V3.6")           | year and month
-`date()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (days), [`date`](https://docs.python.org/3.6/library/datetime.html#datetime.date "in Python V3.6")             | year, month and day
-`datetime()`  |                                  | (deprecated)
-`timespan()`  | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (nanoseconds), [`timedelta`](https://docs.python.org/3.6/library/datetime.html#datetime.timedelta "in Python V3.6") | duration in nanoseconds
-`minute()`    | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (minutes), [`time`](https://docs.python.org/3.6/library/datetime.html#datetime.time "in Python V3.6")          | duration or time of day in minutes
-`second()`    | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (seconds), [`time`](https://docs.python.org/3.6/library/datetime.html#datetime.time "in Python V3.6")          | duration or time of day in seconds
-`time()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (milliseconds), [`time`](https://docs.python.org/3.6/library/datetime.html#datetime.time "in Python V3.6")     | duration or time of day in milliseconds
+`month()`     | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (months), [`date`](https://docs.python.org/3.6/library/datetime.html#datetime.date "in Python V3.6")               | year and month
+`date()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (days), [`date`](https://docs.python.org/3.6/library/datetime.html#datetime.date "in Python V3.6")                 | year, month and day
+`datetime()`  |                                                                                                                                                                                                     | (deprecated)
+`timespan()`  | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (nanoseconds), [`timedelta`](https://docs.python.org/3.6/library/datetime.html#datetime.timedelta "in Python V3.6")| duration in nanoseconds
+`minute()`    | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (minutes), [`time`](https://docs.python.org/3.6/library/datetime.html#datetime.time "in Python V3.6")              | duration or time of day in minutes
+`second()`    | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (seconds), [`time`](https://docs.python.org/3.6/library/datetime.html#datetime.time "in Python V3.6")              | duration or time of day in seconds
+`time()`      | [`int`](https://docs.python.org/3.6/library/functions.html#int "in Python V3.6") (milliseconds), [`time`](https://docs.python.org/3.6/library/datetime.html#datetime.time "in Python V3.6")         | duration or time of day in milliseconds
 
 The typed constructors can also be used to access infinities and missing values of the given type.
 
@@ -837,7 +837,7 @@ operation | result                                             | note
 `x & y`   | element-wise minimum of `x` and `y`                | 1
 `x << n`  | `x` shifted left by `n` elements                   | 3
 `x >> n`  | `x` shifted right by `n` elements                  | 3
-`~x`      | a boolean vector with 1s for zero elements of `x` |
+`~x`      | a boolean vector with 1s for zero elements of `x`  |
 
 Notes:
 
