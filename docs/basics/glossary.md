@@ -296,6 +296,12 @@ Berlin| London
 ```
 
 
+## Flag
+
+A boolean or an integer in the range (0,1).
+
+
+
 ## Function
 
 A mapping from input/s to result defined by an algorithm.

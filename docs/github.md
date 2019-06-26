@@ -36,8 +36,8 @@ about new repositories.</div>
 	</td>
 </tr>
 <tr>
-	<td class="nowrap">[help](https://github.com/KxSystems/help) ==revised==</td>
-	<td>online help for q</td>
+	<td class="nowrap">[help](https://github.com/KxSystems/help)</td>
+	<td>online help for q ==new version==</td>
 </tr>
 <tr>
 	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
@@ -103,6 +103,7 @@ about new repositories.</div>
 </tr>
 </table>
 
+
 ## <i class="fas fa-star"></i> Featured
 
 <small>Repositories by kdb+ users</small>
@@ -115,11 +116,19 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/LeslieGoldsmith/qprof">qprof</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/kxcontrib/phrases">phrases</a> ==new==</td>
+<td>The Q Phrasebook <span class="author"><a href="https://github.com/kxcontrib?tab=repositories">
+						(kxcontrib)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/LeslieGoldsmith/qprof">qprof</a></td>
 <td>Code profiler <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
 </td>
+</tr>
 <tr>
 <td class="nowrap"><a href="https://github.com/CharlesSkelton//studio">studio</a></td>
 <td>A rapid-development environment for q. 
@@ -322,7 +331,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/aa1024/nexusQ">nexusQ ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/aa1024/nexusQ">nexusQ</a></td>
 <td>Visualizer for q process network. <span class="author"><a href="https://github.com/aa1024/?tab=repositories">
 						(Ali Kapadiya)
 					</a></span>
@@ -421,6 +430,20 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/timeseries/qstudioopen">qstudioopen ==new==</a></td>
+<td>JDBC driver and authenticator. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+						(TimeStored)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/timeseries/kdb/tree/master/qunit">QUnit ==new==</a></td>
+<td>Unit testing framework. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+						(TimeStored)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/simongarland/reservedwords">reservedwords</a></td>
 <td>Lists q’s reserved words. <span class="author"><a href="https://github.com/simongarland?tab=repositories">
 						(Simon Garland)
@@ -428,7 +451,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/aa1024/sphinxQ">sphinxQ ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/aa1024/sphinxQ">sphinxQ</a></td>
 <td>A [Sphinx](http://www.sphinx-doc.org/en/master/) documentation tool for q. <span class="author"><a href="https://github.com/aa1024/?tab=repositories">
 						(Ali Kapadiya)
 					</a></span>
@@ -469,6 +492,13 @@ about new repositories.</div>
 						(Leslie Goldsmith)
 					</a></span>
 	<i class="fas fa-star" title="Featured repository"></i>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q</a> ==new==</td>
+<td>CI and test runners <span class="author"><a href="https://github.com/prodrive11?tab=repositories">
+						(Patryk Bukowinski)
+					</a></span>
 </td>
 </tr>
 </table>
@@ -514,6 +544,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/timeseries/kdb">kdb ==new==</a></td>
+<td>Kdb+ database examples. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+						(TimeStored)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/kimtang/kdb-euler">kdb-euler</a></td>
 <td>Solutions to [Euler’s problems](https://projecteuler.net/). <span class="author"><a href="https://github.com/kimtang?tab=repositories">
 						(Kim Tang)
@@ -532,6 +569,14 @@ about new repositories.</div>
 <td>Experimental spreadsheet UI. <span class="author"><a href="https://github.com/srpeck?tab=repositories">
 						(Stephen Peck)
 					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/kxcontrib/phrases">phrases ==new==</a></td>
+<td>The Q Phrasebook <span class="author"><a href="https://github.com/kxcontrib?tab=repositories">
+						(kxcontrib)
+					</a></span>
+	<i class="fas fa-star" title="Featured repository"></i>
 </td>
 </tr>
 <tr>
@@ -570,7 +615,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/robmoore-i/qtest/">qtest</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/robmoore-i/qtest/">qtest</a></td>
 <td>Test-driven development <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
 						(Rob Moore)
 					</a></span>
@@ -616,7 +661,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/eepgwde/vivas">vivas</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/eepgwde/vivas">vivas</a></td>
 <td>Charting: kdb+ WebSocketdrives JavaScript client
 <span class="author"><a href="https://github.com/eepgwde?tab=repositories">(Walter Eaves)</a></span>
 </td>
@@ -823,7 +868,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/jlucid/qhandle">qhandle ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/jlucid/qhandle">qhandle</a></td>
 <td>Manage open handles and backup switchover. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
 						(Jeremy Lucid)
 					</a></span>

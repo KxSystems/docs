@@ -370,12 +370,8 @@ q)(-22!v)=count -8!v
 
 Since V3.1t 2013.03.04
 
-Maps data into memory without copying.
-
-```q
-q)/ previous tricks to force load included .. where i>=0
-q)-23!t:select from get`:t/; 
-```
+Attempts to force the object `x` to be resident in memory by hinting to the OS and/or faulting the underlying memory pages. 
+Useful for triggering sequential access to the storage backing `x`.
 
 
 ## `-24!x` (read-only eval)

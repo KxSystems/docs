@@ -173,8 +173,8 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     <td><i class="fab fa-bitcoin"></i> Bitcoin</td>
     <td>
         <i class="fab fa-github"></i> [bitmx/btceQ](https://github.com/bitmx/btceQ)<br/>
-        <i class="fab fa-github"></i> [jlucid/qbitcoind](https://github.com/jlucid/qbitcoind) ==new==<br/>
-        <i class="fab fa-github"></i> [jlucid/qexplorer](https://github.com/jlucid/qexplorer) ==new==
+        <i class="fab fa-github"></i> [jlucid/qbitcoind](https://github.com/jlucid/qbitcoind)<br/>
+        <i class="fab fa-github"></i> [jlucid/qexplorer](https://github.com/jlucid/qexplorer)
     </td>
 </tr>
 <tr><td>Bloomberg</td><td>[Q client for Bloomberg](q-client-for-bloomberg)</td></tr>
@@ -185,7 +185,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     <td>[Factom](https://www.factom.com/) blockchain</td>
     <td>
         <i class="fab fa-github"></i> [jlucid/qfactom](https://github.com/jlucid/qfactom)<br/>
-        <i class="fab fa-github"></i> [jlucid/qfactomconnect](https://github.com/jlucid/qfactomconnect) ==new==
+        <i class="fab fa-github"></i> [jlucid/qfactomconnect](https://github.com/jlucid/qfactomconnect)
     </td>
 </tr>
 <tr><td>ForexConnect</td><td><i class="fab fa-github"></i> [mortensorensen/qfxcm](https://github.com/mortensorensen/qfxcm)</td></tr>
@@ -193,7 +193,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>[IEX](https://iextrading.com)</td><td><i class="fab fa-github"></i> [himoacs/iex_q](https://github.com/himoacs/iex_q)</td></tr>
 <tr><td>J</td><td>[Q client for J](q-client-for-j.md)</td></tr>
 <tr><td>JDBC</td><td><i class="fab fa-github"></i> [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
-<tr><td>Lightning</td><td><i class="fab fa-github"></i> [jlucid/qlnd](https://github.com/jlucid/qlnd) ==new==</td></tr>
+<tr><td>Lightning</td><td><i class="fab fa-github"></i> [jlucid/qlnd](https://github.com/jlucid/qlnd)</td></tr>
 <tr><td>MQTT</td><td><i class="fab fa-github"></i> [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
 <tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc)<br/>
 <i class="fab fa-github"></i> [johnanthonyludlow/kdb/docs/odbc.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/odbc.pdf)</td></tr>
@@ -201,7 +201,13 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>R</td><td>[Using R with kdb+](with-r.md#calling-r-from-q)</td></tr>
 <tr><td>Reuters</td><td><i class="fab fa-github"></i> [KxSystems/kdb/c/feed/rfa.zip](https://github.com/KxSystems/kdb/blob/master/c/feed/rfa.zip)</td></tr>
 <tr><td>TSE FLEX</td><td><i class="fab fa-github"></i> [Naoki-Yatsu/TSE-FLEX-Converter](https://github.com/Naoki-Yatsu/TSE-FLEX-Converter)</td></tr>
-<tr><td>Twitter</td><td><i class="fab fa-github"></i> [gartinian/kdbTwitter](https://github.com/gartinian/kdbTwitter)</td></tr>
+<tr>
+    <td> <i class="fab fa-twitter"></i> Twitter</td>
+    <td>
+        <i class="fab fa-github"></i> [gartinian/kdbTwitter](https://github.com/gartinian/kdbTwitter)<br/>
+        <i class="fab fa-github"></i> [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb) ==new==
+    </td>
+</tr>
 <tr><td>[Wind资讯](http://www.wind.com.cn/en/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>
 <tr><td>Yahoo!</td><td><i class="fab fa-github"></i> [fdeleze/tickYahoo](https://github.com/fdeleze/tickYahoo)</td></tr>
 </table>
