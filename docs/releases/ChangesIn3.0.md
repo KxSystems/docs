@@ -28,10 +28,11 @@ When compiling for V3.0, define `KXVER=3`, e.g. `gcc -D KXVER=3 …`
 
 At the moment there's no need to recompile standalone apps, i.e. that do not load as a shared lib into kdb+. If you choose to update to the latest `k.h` header file, and compile with `KXVER=3`, ensure that you link to the latest C library (`c.o`/`c.dll`). For legacy apps that are just being maintained, you can continue to use the new header file and compile with `KXVER` undefined or `=2`, and bind with older `c.o`/`c.obj` available from the [SVN repository revision 1442](http://code.kx.com/wsvn/code/kx/kdb%2B/l32/c.o?op=revision&rev=1442).
 
-Kdb+V3.0 has support for WebSockets according to RFC 6455, and has been tested with Chrome and Firefox. It is expected that other browsers will catch up shortly.
+-   Kdb+V3.0 has support for WebSockets according to RFC 6455, and has been tested with Chrome and Firefox. It is expected that other browsers will catch up shortly.
 
-A new type has also been added – Guid. See [Datatypes](../basics/datatypes.md#guid)
+-   A new type – Guid, type 2 – has been added. See [Datatypes](../basics/datatypes.md#guid)
 
 -   `plist` has been removed.
--   date+time-timestamp, previously this resulted in datetime type which has been deprecated since V2.6.
+
+-   date+time results in timestamp type; previously date+time resulted in datetime type, which has been deprecated since V2.6.
 
