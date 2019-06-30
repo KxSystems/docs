@@ -23,7 +23,6 @@ Utility functions
   .ml.shape              Shape of a matrix
   .ml.tab2df             Pandas dataframe from a q table
   .ml.traintestsplit     Split into training and test sets
-  .ml.mproc.init         Initialise multi process procedures
 ```
 
 ## `.ml.arange`
@@ -280,49 +279,3 @@ ytrain| 0.5029018 0.05230331 0.628313 0.5766565 0.6314705 0.3266584 0.9624403..
 xtest | 0.3692275 0.4192985 0.1573064 0.9121564 0.28237 0.07992544
 ytest | 0.3821462 0.9177309 0.3572827 0.1110881 0.9807582 0.5132051
 ```
-
-## `.ml.mproc.init`
-
-_Initialise multi process procedure_
-
-Syntax: `.ml.mproc.init[n;x]`
-
-Where
-
--  `n` is an integer indicating the number of worker processes to be initialised by the server
--  `x` is a command as an enlisted string indicating instructions to be executed on the worker processes.
-
-function does not return an output when called but will populate `.z.pd` indicating the open workers. Further checks to ensure that the process has been successful are outlined below.
-
-```q
-$q -s -4 -p 4323          / initialise 4 slave processes and set server port as 4323
-/ load toolkit on main server process
-q)\l ml/ml.q  
-q).ml.loadfile`:init.q
-Loading init.q
-Loading util/init.q
-Loading util/util.q
-Loading util/metrics.q
-Loading util/preproc.q
-Loading fresh/init.q
-Loading fresh/extract.q
-Loading util/mproc.q
-Loading fresh/select.q
-Loading xval/init.q
-Loading xval/xval.q
-/ should only be run when workers are opened as processes rather than threads
-q)if[0>system"s";.ml.mproc.init[abs system"s"]enlist".ml.loadfile`:fresh/init.q"];
-q).z.pd
-`u#8 7 10 9
-q){x"key .ml"}each .z.pd  / check FRESH has been loaded onto the slave processes
-``version`path`loadfile`fresh`mproc
-``version`path`loadfile`fresh`mproc
-``version`path`loadfile`fresh`mproc
-``version`path`loadfile`fresh`mproc
-q).z.pc[.z.pd]            / close connections to open processes
-q).z.pd
-`u#`int$()
-```
-
-!!! note
-	This forms the basis for the procedure used within the toolkit for the multi processing of functions containing Python code, namely `.ml.fresh.createfeatures` and a number of those contained within the `.ml.xval` namespace. The reasons for this and code execution procedures to be followed to access this functionality are outlined [here](link to the blog)
