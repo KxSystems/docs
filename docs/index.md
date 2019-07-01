@@ -30,6 +30,10 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 
 </div>
 
+[**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
+<i class="fas fa-download"></i>
+[Free download](/developer/getting-started)
+
 <div style="clear: both">&nbsp;</div>
 
 <div class="kx-flex-grid" markdown="1">
