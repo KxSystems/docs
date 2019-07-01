@@ -7,48 +7,48 @@ keywords: time-series, cross validation, grid search, roll-forward, chain-forwar
 # <i class="fa fa-share-alt"></i> Cross Validation Procedures 
 
 
-The `.ml.xval` namespace contains functions used for the application of various cross-validation procedures through embedPy and kdb+. These offer the ability to test how robust/stable a model is to changes in the volume of data being interrogated or the subsets of data being used in validation procedures.
+The `.ml.xval` namespace contains a number of cross validation and grid search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/xval/](https://github.com/kxsystems/ml/tree/master/xval)
 
-The following functions are those contained at present within the `.ml.xval` namespace
+The following functions are contained in the `.ml.xval` namespace
 
 ```txt
 .ml.xval - Cross validation functions
   .gridsearch         Grid search returning scores based on ML-model params
   .gridsearchfit      Grid search returning score/params for best model
-  .kfshuff            K-Fold cross validation, randomized indiced
-  .kfsplit            K-Fold cross validation, sequential split indices
-  .kfstrat            K-Fold cross validation, with stratified indices
-  .mcsplit            Monte-Carlo cross validation with random split indices
-  .pcsplit            Percentage split fit and score cross validation 
-  .tschain            Chain forward cross validation
-  .tsroll             Roll forward cross validation
+  .kfshuff            K-Fold cross validation with randomized indices
+  .kfsplit            K-Fold cross validation with sequential indices
+  .kfstrat            K-Fold cross validation with stratified indices
+  .mcsplit            Monte Carlo cross validation with random split indices
+  .pcsplit            Percentage split cross validation
+  .tschain            Chain-forward cross validation
+  .tsroll             Roll-forward cross validation
 ```
 
 !!!notes
-	* Within the following examples `.ml.xval.fitscore` is used extensively, this function allows users to fit a model and return the score on the test/holdout data. This function can be replaced by a user defined alternative for tailored applications, for example a function to fit on training data and predict outputs for new data.
-	* As of toolkit version 0.3, the distribution of cross validation jobs using the functions defined below is invoked at console initialization as follows, `$q -s -4 -p 4321` in this case 4 processes will be available to execute the jobs undertaken during cross validation.
+	* Within the following examples `.ml.xval.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, for example a function to fit on training data and predict outputs for new data.
+	* As of toolkit version 0.1.3, the distribution of cross validation functions is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then the cross validation library will automatically make 4 worker processes available to execute jobs.
 
 ## `.ml.xval.gridsearch`
 
 _Find optimal parameters for a machine-learning model through an exhaustive parameter gridsearch_
 
-Syntax: `.ml.xval.gridsearch[x;y;f;pd;d]`
+Syntax: `.ml.xval.gridsearch[x;y;f;p;d]`
 
 Where
 
--   `x` is a data matrix 
--   `y` is a target vector
--   `f` is a function taking parameters and data as input that returning a score
--   `pd` is a dictionary of hyperparameters to be searched
--   `d` is a parameter which can be modified to change number of folds, data split method, number of repetitions and shuffle initialization.
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking parameters and data as input and returning a score
+-   `p` is a dictionary of hyperparameters to be searched
+-   `d` is a dictionary of cross validation parameters (cross validation function, number of folds, number of repetitions)
 
-returns the scores in tabular form associated with each of the splits for each of the hyperparameter sets
+returns a dictionary, with a vector of scores associated with each of the splits, for each of the hyperparameter sets.
 
 !!!note
-	The values of the parameter d defaults as follows `` `xval`n`k`test`shuffle!(.ml.xval.pcsplit;1;0.2;0.2;0b)`` modifications to each of these allows modified cross validation procedures to be used
+	The default values of parameter d are `` `xval`n`k`test`shuffle!(.ml.xval.pcsplit;1;0.2;0.2;0b)`` modifications to these allows different cross validation procedures to be used
 ```q
 q)m:10000
 q)x:(m;10)#(m*10)?1f
@@ -58,8 +58,11 @@ q)yr:x[;0]+m?.05
 q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)k:5
 q)n:1
+// regression model
 q)ar:{.p.import[`sklearn.linear_model]`:LinearRegression}
-// Regression using default x-val type
+// classification model
+q)ac:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
+// regression using default cross validation params
 q)pr:`fit_intercept`normalize!(01b;01b)
 q).ml.xval.gridsearch[x;yr;.ml.xval.fitscore ar;pr][]
 fit_intercept normalize|          
@@ -68,7 +71,7 @@ fit_intercept normalize|
 0             1        | 0.9972705
 1             0        | 0.9975118
 1             1        | 0.9975118
-// Regression using updated x-val type
+// regression using updated cross validation params
 q)dr:`xval`k!(.ml.xval.kfsplit;4)
 q).ml.xval.gridsearch[x;yr;.ml.xval.fitscore ar;pr;dr]
 fit_intercept normalize|                                                  
@@ -77,7 +80,7 @@ fit_intercept normalize|
 0             1        | 0.9972705 0.9972844 0.9971721 0.9973347
 1             0        | 0.9975118 0.9974799 0.9974753 0.9975939
 1             1        | 0.9975118 0.9974799 0.9974753 0.9975939
-// Classification using default x-val type
+// classification using default cross validation params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
 q).ml.xval.gridsearch[x;yc;.ml.xval.fitscore ac;pc][]
 max_depth|      
@@ -88,7 +91,7 @@ max_depth|
 3        | 1    
 4        | 1    
 5        | 1  
-// Classification with updated x-val type
+// classification with updated cross validation params
 q)dc:`xval`k!(.ml.xval.kfstrat;4)
 q).ml.xval.gridsearch[x;yc;.ml.xval.fitscore ac;pc;dc]
 max_depth|                                   
@@ -104,45 +107,50 @@ max_depth|
 
 ## `.ml.xval.gridsearchfit`
 
-_K-Fold validated grid-search with optimal model fit to testing set_
+_Find optimal parameters for a machine-learning model through an exhaustive parameter gridsearch, and evaluate optimal model on held-out data_
 
-Syntax: `.ml.xval.gridsearchfit[x;y;f;pd;d]`
+Syntax: `.ml.xval.gridsearchfit[x;y;f;p;d]`
 
 Where
 
--   `x` is a data matrix
--   `y` is a target vector
--   `f` is a function taking parameters and data as input that returns a score
--   `pd` is a dictionary of hyperparameters to be searched
--   `d` is a parameter which can be modified to change number of folds, data split method, number of repetitions and shuffle initialization
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking parameters and data as input and returning a score
+-   `p` is a dictionary of hyperparameters to be searched
+-   `d` is a dictionary of cross validation parameters (cross validation function, number of folds, number of repetitions, whether to shuffle for test set)
 
-returns the best score achieved and the associated parameter set for scores based on fitting on a holdout set.
+returns the optimal parameter set and the scored achieved by the optimal model on a held-out testing set.
 
 
 ```q
 q)m:10000
 q)x:(m;10)#(m*10)?1f
+// regression based target
 q)yr:x[;0]+m?.05
+// classification based target
 q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)k:5
 q)n:1
+// regression model
 q)ar:{.p.import[`sklearn.linear_model]`:LinearRegression}
-// Regression using default x-val type
+// classification model
+q)ac:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
+// regression using default cross validation params
 q)pr:`fit_intercept`normalize!(01b;01b)
 q).ml.xval.gridsearchfit[x;yr;.ml.xval.fitscore ar;pr][]
 `fit_intercept`normalize!10b
 0.9975627
-// Regression using updated x-val type
+// regression using updated cross validation params
 q)dr:`xval`k!(.ml.xval.kfshuff;4)
 q).ml.xval.gridsearchfit[x;yr;.ml.xval.fitscore ar;pr;dr]
 `fit_intercept`normalize!11b
 0.9975627
-// Classification using default x-val type
+// classification using default cross validation params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
 q).ml.xval.gridsearchfit[x;yc;.ml.xval.fitscore ac;pc][]
 (,`max_depth)!,::
 1f
-// Classification with updated x-val type
+// classification using updated cross validation params
 q)dc:`xval`k!(.ml.xval.tsroll;4)
 q).ml.xval.gridsearchfit[x;yc;.ml.xval.fitscore ac;pc;dc]
 (,`max_depth)!,::
@@ -154,17 +162,17 @@ q).ml.xval.gridsearchfit[x;yc;.ml.xval.fitscore ac;pc;dc]
 
 _K-Fold cross validation for randomized non-repeating indices_
 
-Syntax: `.ml.xval.kfshuff[k;n;x;y;mdlfn]`
+Syntax: `.ml.xval.kfshuff[k;n;x;y;f]`
 
 Where
 
--   `k` is the number of folds into which the data is split.
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix
--   `y` is the target vector
--   `mdlfn` is a function that takes params and data as input
+-   `k` is the number of folds into which the data is split
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns scores for a model applied to each of the possible K-folds splits.
+returns output of `f` applied to each of the cross validation splits
 
 ```q
 q)m:10000
@@ -180,19 +188,19 @@ q).ml.xval.kfshuff[k;n;x;yr;mdlfn]
 
 ## `.ml.xval.kfsplit`
 
-_Cross validation for ascending indices split into K-folds_
+_K-Fold cross validation for ascending indices split into K-folds_
 
-Syntax: `.ml.xval.kfsplit[k;n;x;y;mdlfn]`
+Syntax: `.ml.xval.kfsplit[k;n;x;y;f]`
 
 Where
 
--   `k` is the number of folds into which the data is split.
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix
--   `y` is the target vector
--   `mdlfn` is a function that takes params and data as input
+-   `k` is the number of folds into which the data is split
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns scores for a model applied to each of the possible K-folds splits.
+returns output of `f` applied to each of the cross validation splits
 
 ```q
 q)m:10000
@@ -211,17 +219,17 @@ q).ml.xval.kfsplit[k;n;x;yr;mdlfn]
 
 _Stratified K-Fold cross validation with an approximately equal distribution of classes per fold_
 
-Syntax: `.ml.xval.kfstrat[k;n;x;y;mdlfn]`
+Syntax: `.ml.xval.kfstrat[k;n;x;y;f]`
 
 Where
 
--   `k` is the number of folds into which the data is split.
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix
--   `y` is the target vector
--   `mdlfn` is a function that takes params and data as input
+-   `k` is the number of folds into which the data is split
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns the indices for each of the K-folds where the folds have approximately equal distributions of target classes within each fold.
+returns output of `f` applied to each of the cross validation splits
 
 ```q
 q)m:10000
@@ -240,19 +248,19 @@ q).ml.xval.kfsplit[k;n;x;yc;mdlfn]
 
 ## `.ml.xval.mcsplit`
 
-_Scores for a monte-carlo cross validated machine learning model_
+_Monte Carlo cross validation using randomized non-repeating indices_
 
-Syntax: `.ml.xval.mcsplit[p;n;x;y;mdlfn]`
+Syntax: `.ml.xval.mcsplit[p;n;x;y;f]`
 
 Where
 
--   `p` is a float between 0 and 1, which is the percentage of data within the validation set.
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix.
--   `y` is the target vector.
--   `mdlfn` is a function that takes params and data as input
+-   `p` is a float between 0 and 1 representing the percentage of data within the validation set
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns the average score for all iterations of the monte-carlo cross validation.
+returns output of `f` applied to each of the cross validation splits
 
 ```q
 q)m:10000
@@ -271,19 +279,19 @@ q).ml.xval.mcsplit[p;n;x;yr;mdlfn]
 
 ## `.ml.xval.pcsplit`
 
-_Scores from a percentage split based cross validation procedure_
+_Percentage split cross validation procedure_
 
-Syntax: `.ml.xval.pcsplit[p;n;x;y]`
+Syntax: `.ml.xval.pcsplit[p;n;x;y;f]`
 
 Where
 
--   `p` is the percentage of data in the validation set
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix
--   `y` is the target vector
--   `mdlfn` is a function that takes params and data as input
+-   `p` is a float between 0 and 1 representing the percentage of data within the validation set
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns the scores for the applied models on each of the n repetitions
+returns output of `f` applied to each of the cross validation splits
 
 ```q
 q)m:10000
@@ -300,19 +308,19 @@ q).ml.xval.pcsplit[p;n;x;yr]
 
 ## `.ml.xval.tschain`
 
-_Scores from a chain-forward cross validation procedure_
+_Chain-forward cross validation procedure_
 
-Syntax: `.ml.xval.tschain[k;n;x;y;mdlfn]`
+Syntax: `.ml.xval.tschain[k;n;x;y;f]`
 
 Where
 
--   `k` is the number of folds into which the data is split.
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix
--   `y` is the target vector
--   `mdlfn` is a function that takes params and data as input
+-   `k` is the number of folds into which the data is split
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns the k-1 scores for the applied model over chained iterations.
+returns output of `f` applied to each of the chained iterations.
 
 ```q
 q)m:10000
@@ -336,19 +344,19 @@ q).ml.xval.tschain[k;n;x;yr;mdlfn]
 
 ## `.ml.xval.tsroll`
 
-_Scores from a roll-forward cross validation procedure_
+_Roll-forward cross validation procedure_
 
-Syntax: `.ml.xval.tsroll[k;n;x;y;mdlfn]`
+Syntax: `.ml.xval.tsroll[k;n;x;y;f]`
 
 Where
 
--   `k` is the number of folds into which the data is split.
--   `n` is the number of repetitions of this cross validation procedure.
--   `x` is a matrix
--   `y` is the target vector
--   `mdlfn` is a function that takes params and data as input
+-   `k` is the number of folds into which the data is split
+-   `n` is the number of repetitions of this cross validation procedure
+-   `x` is a matrix of features
+-   `y` is a vector of targets
+-   `f` is a function taking data as input
 
-returns the scores for each (k-1) rolled fits to the validation set.
+returns output of `f` applied to each of the chained iterations.
 
 ```q
 q)m:10000
