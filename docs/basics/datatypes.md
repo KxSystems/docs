@@ -10,21 +10,28 @@ keywords: atom, boolean, character, datatype, date, datetime, double, float, int
 
 
 
-The _datatype_ of an object is given as a short int. 
+The datatype of an object can be found using the _type_ function.
 
 ```q
-q)type 5                      / integer atom
+q)type 5                      / long atom (default numerical type as of kdb 3.0)
+-7h
+q)type 5i                     / int atom (the default prior to 3.0)
 -6h
-q)type 2 3 5                  / integer list
-6h
+q)type 2 3 5                  / list of longs
+7h
 q)type (2;3 5f;"hello")       / mixed list
 0h
 q)type each (2;3 5f;"hello")
--6 9 10h
+-7 9 10h
 q)type (+)                    /not just data
 102h
 ```
 
+_Type_ returns numbers of type "h" (type 5), aka a short int.
+```q
+q)type type 5
+-5h
+```
 <i class="far fa-hand-point-right"></i> 
 [Casting](casting.md), 
 [`type`](../ref/type.md), 
