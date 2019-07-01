@@ -20,7 +20,8 @@ If you have some experience with mathematics, functional programming or SQL, you
 These are full versions of the product. 
 The 64-bit version (on-demand) requires an always-on Internet connection.
 (A free, stand-alone 32-bit version is also available.)
- 
+
+Download and install the free IDE, [**Kx Developer**](/developer/). 
 
 
 
