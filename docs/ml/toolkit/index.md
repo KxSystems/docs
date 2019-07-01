@@ -16,8 +16,8 @@ These have been produced to provide kdb+/q users with general-use functions and 
 The toolkit contains:
 
 -   Utility functions relating to important aspects of machine-learning including [data preprocessing](utilities/preproc), [statistical metrics](utilities/metric), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util). 
--   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. 
-    This lets a kdb+/q user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
+-   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. This lets a kdb+/q user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
+-   Implementations of a number of [cross validation](xval.md) and grid search procedures. These allow kdb+/q users to validate the performance of machine learning models when exposed to new data, test the stability of models over time or find the best hyper-parameters for tuning their models.
 
 Over time the machine-learning functionality in this library will be extended to include;
 

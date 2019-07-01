@@ -115,15 +115,15 @@ valcount[x;val]                  | Number of occurrances of `val` within the ser
 var[x]                           | Variance of the series
 vargtstdev[x]                    | Boolean value stating if the variance of the dataset is larger than the standard deviation
 
-!!! note
-
-    Feature extraction functions are not, typically, called individually.
 
 ## Feature extraction
 
 Feature extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target vector than the raw time series. 
 
 The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
+
+!!!note
+	As of toolkit version 0.3 the creation of features using the function `.ml.fresh.createfeatures` can be distributed to multiple processes. This behaviour is invoked on startup by initializing the console as follows `$q -s -4 -p 4321` in this case on loading FRESH, 4 processes will be available to execute multi-processed work. 
 
 ### `.ml.fresh.createfeatures`
 
@@ -213,8 +213,18 @@ q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of init
 92
 ```
 
-!!!note
-	Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Users can create their own features by defining a function within the `.ml.fresh.feat` namespace and, if necessary, providing relevant hyperparameters in .ml.fresh.params.
+!!!notes
+        1) The following list of functions contain some Python dependancy,
+        
+        ``fns:`aggautocorr`augfuller`fftaggreg`fftcoeff`numcwtpeaks`partautocorrelation`spktwelch``
+
+        in the scenario that only q dependant functions are to be applied run the following update
+        command on the `.ml.fresh.params` table
+
+        ``q)update valid:0b from `.ml.fresh.params where f in fns ``
+
+	2) Modifications to the file `hyperparam.txt` within the FRESH folder allows for fine tuning to the number and variety of calculations to be made. Users can create their own features by defining a function within the `.ml.fresh.feat` namespace and, if necessary, providing relevant hyperparameters in .ml.fresh.params.
+
 !!!warning
 	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 had been a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
 
