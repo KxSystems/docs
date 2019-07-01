@@ -93,7 +93,7 @@ RO: read only; RW: read-write
 
 !!! note "Strings"
 
-    There is no string datatype. The nearest equivalent to a string is a symbol, or a char vector. On this site, _string_ is a synonym for character vector.
+    There is no string datatype. On this site, _string_ is a synonym for character vector (type 10h). In kdb, the nearest equivalent to an atomic string is the symbol.
 
 ### Temporal
 
