@@ -123,7 +123,7 @@ Feature extraction involves applying a set of aggregations to subsets of the ini
 The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
 
 !!!note
-	As of toolkit version 0.3 the creation of features using the function `.ml.fresh.createfeatures` can be distributed to multiple processes. This behaviour is invoked on startup by initializing the console as follows `$q -s -4 -p 4321` in this case on loading FRESH, 4 processes will be available to execute multi-processed work. 
+	As of toolkit version 0.1.3 the creation of features using the function `.ml.fresh.createfeatures` is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then 4 processes will be automatically be used to process feature creation on multiple processes. 
 
 ### `.ml.fresh.createfeatures`
 
