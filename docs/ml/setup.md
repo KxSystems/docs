@@ -51,8 +51,8 @@ This in turn sends an email confirmation link to validate the license file.
 
 ### Docker command
 
-1.  Install [Docker](https://www.docker.com/community-edition)
-2.  Run:
+*  Installing [Docker](https://www.docker.com/community-edition)
+*  Running EmbedPy through Docker
 
 ```bash
 $ docker run -it --name myembedpy kxsys/embedpy
@@ -81,12 +81,10 @@ q)
 Instructions for running headless or an existing q license are [available](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#headlesspresets)
 
 <i class="far fa-hand-point-right"></i>
-[Build instructions for the image](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#building)
+[Build instructions for the EmbedPy Image](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#building)
 
 
-#### Install Docker.
-
-Run
+* Running JupyterQ through Docker
 
 ```bash
 docker run --rm -it -p 8888:8888 kxsys/jupyterq
@@ -94,8 +92,10 @@ docker run --rm -it -p 8888:8888 kxsys/jupyterq
 
 Now point your browser at http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb.
 
+This allows you to Jupyter notebooks to be used within a docker container 
+
 <i class="far fa-hand-point-right"></i> 
-[Build instructions for the image](https://github.com/KxSystems/jupyterq/blob/master/docker/README.md)
+[Build instructions for the JupyterQ Image](https://github.com/KxSystems/jupyterq/blob/master/docker/README.md)
 
 
 ### Do it yourself
