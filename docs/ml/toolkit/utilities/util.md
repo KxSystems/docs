@@ -131,7 +131,8 @@ jcol| fcol
 50  | 0.5
 ```
 
-!!! note "DataFrame indices are mapped to q key columns."
+!!! note 
+ When converting from python to q this function operates on the assumption that a single unnamed python index column is to be removed (return an unkeyed table). All other varients of python index columns will map to q key columns. For example any instance with two or more indices will map to two or more python keys while any named single index python column be associated with a q key in a keyed table
 
 
 ## `.ml.eye`
@@ -233,7 +234,7 @@ x        x1 x2 x3
 q)show pdf:.ml.tab2df[table] / convert to pandas dataframe and show it is an embedPy object
 {[f;x]embedPy[f;x]}[foreign]enlist
 
-q)print pdf / display the python form of the dataframe
+q)print pdf / display the Python form of the dataframe
              x  x1  x2         x3
 0  2631.439704   1   4  78.719172
 1  1118.109056   2   3  80.093563

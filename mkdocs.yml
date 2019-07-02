@@ -432,13 +432,14 @@ nav:
     - Introduction: ml/index.md
     - Set up: ml/setup.md
     - embedPy: 
-      - User guide: ml/embedpy/index.md
-      # - Running Python code: ml/embedpy/running.md
-      # - EmbedPy objects: ml/embedpy/objects.md
-      # - Function calls: ml/embedpy/functions.md
+      - Overview: ml/embedpy/index.md
+      - User Guide: ml/embedpy/userguide.md
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
-    - JupyterQ: ml/jupyterq/index.md
+    - JupyterQ: 
+      - Overview: ml/jupyterq/index.md
+      - User Guide: ml/jupyterq/notebooks.md
+      - FAQ: ml/jupyterq/faq.md
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
       - Overview: ml/toolkit/index.md
@@ -447,7 +448,16 @@ nav:
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
       - FRESH: ml/toolkit/fresh.md  
-    - Natural language processing: ml/nlp.md
+      - Cross Validation: ml/toolkit/xval.md
+    - Natural language processing:
+      - Overview: ml/nlp/index.md
+      - User Guide:
+        - Text manipulation: ml/nlp/userguide/preproc.md
+        - Text Comparison: ml/nlp/userguide/comparisons.md
+        - Clustering: ml/nlp/userguide/clustering.md
+        - Data Interrogation: ml/nlp/userguide/analysis.md
+        - Utilities: ml/nlp/userguide/utils.md
+        - Emails: ml/nlp/userguide/emails.md
   - Knowledge Base:
     - Introduction: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
