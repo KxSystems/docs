@@ -64,7 +64,10 @@ q).p.qeval"1+2"
 3
 ```
 
-**Side effects** Python evaluation (unlike Python _execution_) does not allow side effects. Any attempt at variable assignment or class definition will signal an error. To execute a string performing side effects, use `.p.e`. A more detailed explanation of the difference between `eval` and `exec` in Python can be found [here](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile-in-python).
+**Side effects** Python evaluation (unlike Python _execution_) does not allow side effects. Any attempt at variable assignment or class definition will signal an error. To execute a string performing side effects, use `.p.e`. 
+
+<i class="fab fa-stack-overflow"></i>
+[Difference between `eval` and `exec` in Python](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile-in-python)
 
 
 ## EmbedPy objects
@@ -269,7 +272,7 @@ q)arange_q 12
 ```
 
 
-### embedPy function API
+### EmbedPy function API
 
 Using the function API, embedPy objects can be called directly (returning embedPy) or declared callable returning q or `foreign` data.
 
@@ -288,10 +291,11 @@ func[>]                / declare func callable (returning foreign)
 func[>]arg             / call func(arg) (returning foreign)
 func[>;arg]            / equivalent
 ```
+
 **Chaining operations** Returning another embedPy object from a function or method call, allows users to chain together sequences of operations.  We can also chain these operations together with calls to `.p.import`, `.p.get` and `.p.eval`.
 
 
-### embedPy examples
+### EmbedPy examples
 
 Some examples
 
@@ -507,8 +511,12 @@ q)qfunc[4;pyarglist enlist 3;`c pykw 2;pykwargs enlist[`d]!enlist 1]
 4 3 2 1 24
 ```
 
-!!! warning
-        Prior to defining fuctions containing `pykw / pykwargs / pyarglist` within a script, the file `p.q` must be loaded explicitly. Failure to do so will result in an error `'pykw/'pykwargs/'pyarglist`.
+!!! warning "`pykw`, `pykwargs`, and `pyarglist`"
+
+    Before defining functions containing `pykw`, `pykwargs`, or `pyarglist` within a script, the file `p.q` must be loaded explicitly. 
+    Failure to do so will result in errors `'pykw`, `'pykwargs`, or `'pyarglist`.
+
+
 ### Zero-argument calls
 
 In Python these two calls are _not_ equivalent:
@@ -576,7 +584,7 @@ q).p.help n / interactive help
 
 ### Aliases in the root
 
-For convenience, `p.q` defines `print` and `help` in the default namespace of q, as aliases for `.p.print` and `.p.help`. To prevent this, comment out the relevant code in p.q before loading.
+For convenience, `p.q` defines `print` and `help` in the default namespace of q, as aliases for `.p.print` and `.p.help`. To prevent this, comment out the relevant code in `p.q` before loading.
 
 ```q
 {@[`.;x;:;get x]}each`help`print; / comment to remove from global namespace
@@ -593,8 +601,8 @@ Closures allow us to define functions that retain state between successive calls
 To create a closure in embedPy, we must:
 
 1.  Define a function in q with
-    -   2+ arguments: the current state and at least one other (possibly dummy) argument
-    -   2 return values: the new state and the return value
+    -   two or more arguments: the current state and at least one other (possibly dummy) argument
+    -   two return values: the new state and the return value
 1.  Wrap the function using `.p.closure`, which takes 2 arguments:
     -   the q function
     -   the initial state
@@ -612,7 +620,7 @@ The state `x` is the last value returned
 q)xtil:{[x;dummy]x,x+:1}
 ```
 
-Create the closure with initial state -1, so the first value returned will be 0
+Create the closure with initial state `-1`, so the first value returned will be 0
 
 ```q
 q)ftil:.p.closure[xtil;-1][<]
@@ -706,7 +714,9 @@ To create a generator in embedPy, we must
 
 The _factorial_ ($n!$) of a non-negative integer $n$, is the product of all positive integers less than or equal to $n$.
 
-We can create a sequence of factorials (starting with 1), with the sequence  `x(n) = x(n-1) * n`
+We can create a sequence of factorials (starting with 1), with the sequence  
+
+$$x(n) = x(n-1) \times n$$
 
 The state `x` will be a 2-item list comprising
 

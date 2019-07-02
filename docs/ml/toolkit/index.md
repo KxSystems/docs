@@ -36,13 +36,13 @@ These can be installed as outlined at
 
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml) 
-using `pip`
+using Pip
 
 ```bash
 pip install -r requirements.txt
 ```
 
-or via `conda`
+or Conda
 
 ```bash
 conda install --file requirements.txt
@@ -56,11 +56,17 @@ conda install --file requirements.txt
 
 ## Installation
 
-Copy (a link to) the library into `$QHOME` to install and load all libraries using
+Install and load all libraries.
 
 ```q
 q)\l ml/ml.q
 q).ml.loadfile`:init.q
-/ This can also be achieved in one line provided the library is located in `$QHOME`using
+```
+
+This can be achieved by one command.
+Copy a link to the library into `$QHOME`.
+Then:
+
+```q
 q)\l ml/init.q
 ```

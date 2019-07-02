@@ -4,18 +4,17 @@ date: March 2019
 keywords: time-series, cross validation, grid search, roll-forward, chain-forward, grid search fit, data splitting, stratified splitting, kdb+, q
 ---
 
-# <i class="fa fa-share-alt"></i> Cross Validation Procedures 
+# <i class="fa fa-share-alt"></i> Cross validation procedures 
 
 
-The `.ml.xval` namespace contains a number of cross validation and grid search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
+The `.ml.xval` namespace contains cross-validation and grid-search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/xval/](https://github.com/kxsystems/ml/tree/master/xval)
 
-The following functions are contained in the `.ml.xval` namespace
+The following functions are contained in the `.ml.xval` namespace.
 
 ```txt
-.ml.xval - Cross validation functions
   .gridsearch         Grid search returning scores based on ML-model params
   .gridsearchfit      Grid search returning score/params for best model
   .kfshuff            K-Fold cross validation with randomized indices
@@ -27,9 +26,10 @@ The following functions are contained in the `.ml.xval` namespace
   .tsroll             Roll-forward cross validation
 ```
 
-!!!notes
-	* Within the following examples `.ml.xval.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, for example a function to fit on training data and predict outputs for new data.
-	* As of toolkit version 0.1.3, the distribution of cross validation functions is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then the cross validation library will automatically make 4 worker processes available to execute jobs.
+Within the following examples `.ml.xval.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, for example a function to fit on training data and predict outputs for new data.
+
+As of version 0.1.3, the distribution of cross validation functions is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then the cross validation library will automatically make four worker processes available to execute jobs.
+
 
 ## `.ml.xval.gridsearch`
 
@@ -47,8 +47,13 @@ Where
 
 returns a dictionary, with a vector of scores associated with each of the splits, for each of the hyperparameter sets.
 
-!!!note
-	The default values of parameter d are `` `xval`n`k`test`shuffle!(.ml.xval.pcsplit;1;0.2;0.2;0b)`` modifications to these allows different cross validation procedures to be used
+The default values of `d` are 
+```q
+`xval`n`k`test`shuffle!(.ml.xval.pcsplit;1;0.2;0.2;0b)
+```
+
+Modifications to these allow different cross-validation procedures to be used.
+
 ```q
 q)m:10000
 q)x:(m;10)#(m*10)?1f
@@ -167,12 +172,12 @@ Syntax: `.ml.xval.kfshuff[k;n;x;y;f]`
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -186,6 +191,7 @@ q).ml.xval.kfshuff[k;n;x;yr;mdlfn]
 0.9999935 0.9999934 0.9999935 0.9999935 0.9999935
 ```
 
+
 ## `.ml.xval.kfsplit`
 
 _K-Fold cross validation for ascending indices split into K-folds_
@@ -195,12 +201,12 @@ Syntax: `.ml.xval.kfsplit[k;n;x;y;f]`
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -224,7 +230,7 @@ Syntax: `.ml.xval.kfstrat[k;n;x;y;f]`
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
@@ -243,8 +249,8 @@ q).ml.xval.kfsplit[k;n;x;yc;mdlfn]
 0.9995 0.9995 0.9995 1 1
 ```
 
-!!!note
-	This is used extensively in cases where the distribution of classes in the data is unbalanced.
+This is used extensively where the distribution of classes in the data is unbalanced.
+
 
 ## `.ml.xval.mcsplit`
 
@@ -255,12 +261,12 @@ Syntax: `.ml.xval.mcsplit[p;n;x;y;f]`
 Where
 
 -   `p` is a float between 0 and 1 representing the percentage of data within the validation set
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -274,8 +280,11 @@ q).ml.xval.mcsplit[p;n;x;yr;mdlfn]
 0.9999905 0.9999906 0.9999905 0.9999905 0.9999905
 ```
 
-!!! note
-        This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
+This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. 
+
+<i class="fab fa-wikipedia-w"></i>
+[Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation "Wikipedia")
+
 
 ## `.ml.xval.pcsplit`
 
@@ -286,12 +295,12 @@ Syntax: `.ml.xval.pcsplit[p;n;x;y;f]`
 Where
 
 -   `p` is a float between 0 and 1 representing the percentage of data within the validation set
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -334,12 +343,11 @@ q).ml.xval.tschain[k;n;x;yr;mdlfn]
 0.9973771 0.9992741 0.9996898 0.9997031
 ```
 
-!!! note
-        This works as shown in the following image:
+This works as shown in the following image.
 
-        ![Figure 1](img/chainforward.png)
+![Figure 1](img/chainforward.png)
 
-        The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting. It also allows the robustness of the model to increasing data volumes to be probed.
+The data are split into equi-sized bins with increasing amounts of data incorporated in the testing set at each step. This avoids testing a model on historical information, which would be counter-productive in testing a model for time-series forecasting. It also allows the robustness of the model to increasing data volumes to be probed.
 
 
 ## `.ml.xval.tsroll`
@@ -369,9 +377,9 @@ q)mdlfn:.ml.xval.fitscore[ac][]
 q).ml.xval.tsroll[k;n;x;yc;mdlfn]
 0.9973771 0.9995615 0.9999869 0.999965
 ```
-!!! note
-        This works as shown in the following image:
 
-        ![Figure 2](img/rollforward.png)
+This works as shown in the following image.
 
-        Successive equi-sized bins are taken as validation and training sets for each step. This avoids testing a model on historical information which would be counter-productive in testing a model for time-series forecasting for example.
+![Figure 2](img/rollforward.png)
+
+Successive equi-sized bins are taken as validation and training sets for each step. This avoids testing a model on historical information, which would be counter-productive in testing a model for time-series forecasting, for example.

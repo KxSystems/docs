@@ -4,9 +4,9 @@ date: August 2018
 keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, comparison, corpora, corpus, document, email, feature, file, k-mean, kdbplus, learning, machine, machine learning, mbox, message, ml, nlp, parse, parsing, q, sentiment, similarity, string function, vector
 ---
 
-# <i class="fas fa-share-alt"></i> Utility Functions
+# <i class="fas fa-share-alt"></i> Utility functions
 
-Within the nlp library there are a number of further functions which have particular utility in the performance of in depth document analysis. These are functions that extract elements of the text that can be applied to NLP algorithms, or that can help you with your analysis.
+The NLP library contains functions useful for in-depth document analysis. They extract elements of the text that can be applied to NLP algorithms, or that can help you with your analysis.
 
 
 ## `.nlp.findTimes`
@@ -35,9 +35,7 @@ _All the dates in a document_
 
 Syntax: `.nlp.findDates x`
 
-Where `x` is a string
-
-returns a general list:
+Where `x` is a string, returns a general list:
 
 1.  start date of the range
 1.  end date of the range
@@ -72,7 +70,7 @@ _All the files in a directory, imported recursively_
 
 Syntax: `.nlp.loadTextFromDir x`
 
-Where `x` the directory’s filepath as a string, returns a table of filenames, paths and texts.
+Where `x` is the directory’s filepath as a string, returns a table of filenames, paths and texts.
 
 ```q
 q).nlp.loadTextFromDir["./datasets/maildir/skilling-j"]

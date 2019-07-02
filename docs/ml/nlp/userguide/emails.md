@@ -6,31 +6,28 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 # <i class="fas fa-share-alt"></i> Emails
 
-One of the most important document formats for analysis in the area of Natural Language Processing is emails, particularly in the areas of surveillance and spam detection. As a result the following functions have been supplied to form a basis for the handling of email format data.
-
-## Importing and parsing MBOX files 
-
-The MBOX file is the most common format for storing email messages on a hard drive. All the messages for each mailbox are stored as a single, long, text file in a string of concatenated e-mail messages, starting with the _From_ header of the message. The NLP library allows the user to import these files and creates a kdb+ table.
+One of the most important document formats for analysis in natural-language processing is emails, particularly for surveillance, and spam detection. The following functions form a basis for the handling of email-format data.
 
 
-Column        | Type                              | Content
---------------|-----------------------------------|---------------------------
-`sender`      | list of characters                | The name and email address of the sender
-`to`          | list of characters                | The name and email address of the reciever/recievers
-`date`        | timestamp                         | The date
-`subject`     | list of characters                | The subject of the email
-`text`        | list of characters                | The original text of the email
-`contentType` | list of characters                | The content type of the email
-`payload`     | list of characters or dictionaries| The payload of the email
-
-
-#### `.nlp.loadEmails`
+### `.nlp.loadEmails`
 
 _An MBOX file as a table of parsed metadata_
 
 Syntax: `.nlp.loadEmails x`
 
 Where `x` is a string of the filepath, returns a table.
+
+column      | type                           | content
+------------|--------------------------------|---------------------------
+sender      | string                         | Name and address of sender
+to          | string                         | Name and address of receiver/s
+date        | timestamp                      | Date
+subject     | string                         | Subject
+text        | string                         | Original text
+contentType | string                         | Content type
+payload     | string or list of dictionaries | Payload
+
+The MBOX file is the most common format for storing email messages on a hard drive. All the messages for each mailbox are stored as a single, long, text file in a string of concatenated e-mail messages, starting with the _From_ header of the message. 
 
 ```q
 q)email:.nlp.loadEmails["/home/kx/nlp/datasets/tdwg.mbox"]
@@ -39,14 +36,16 @@ q)cols email
 ```
 
 
-#### `.nlp.email.getGraph`
+<!-- FIXME ### `.nlp.email.i.parseMbox` -->
+
+
+### `.nlp.email.getGraph`
 
 _Graph of who emailed whom, with the number of times they emailed_
 
 Syntax: `.nlp.email.getGraph x`
 
 Where `x` is a table (result from `.nlp.email.i.parseMbox`), returns a table of to-from pairing.
-
 
 ```q
 q).nlp.email.getGraph[emails]
@@ -75,9 +74,8 @@ ricardo@tdwg.org                 tdwg-tapir@lists.tdwg.org        3
 roger@tdwg.org                   Tdwg-img@lists.tdwg.org          1
 ```
 
-# Parsing emails from a string format 
 
-#### `.nlp.email.i.parseMail`
+### `.nlp.email.i.parseMail`
 
 _Parses an email in string format_
 

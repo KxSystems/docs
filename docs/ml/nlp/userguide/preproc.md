@@ -57,7 +57,7 @@ field         | type                   | content
 
 The resulting function is applied to a list of strings.
 
-Spell check can also be performed on the text by passing in `spell as in input field. This updates any misspelt words to their most likely alternative. This is performed on text prior to parsing. 
+Spell check can also be performed on the text by passing in `spell` as in input field. This updates any misspelt words to their most likely alternative. This is performed on text prior to parsing. 
 
 Parsing the novel _Moby Dick_:
 
@@ -140,7 +140,7 @@ rode     | 14.11136
 ```
 
 In cases where the dataset is more similar to a single document than a collection of separate documents, a different algorithm can be used. This algorithm is taken from
-Carpena, P., et al. “Level statistics of words: Finding keywords in literary texts and symbolic sequences.”.
+Carpena, P., et al. “Level statistics of words: Finding keywords in literary texts and symbolic sequences”.
 The idea behind the algorithm is that more important words occur in clusters and less important words follow a random distribution.
 
 

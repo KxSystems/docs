@@ -4,17 +4,16 @@ date: April 2019
 keywords: preprocessing, linear combinations, polynomial creation, infinite replace, scaler, data filling, encoding, one-hot, frequency, lexigraphical, time splitting 
 ---
 
-# <i class="fa fa-share-alt"></i> Data Preprocessing 
+# <i class="fa fa-share-alt"></i> Data preprocessing 
 
-The Machine Learning Toolkit contains a set of functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure that data is in the correct format and does not contain uninformative information or datatypes that the algorithms cannot handle.
+The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/util/preproc.q](https://github.com/kxsystems/ml/blob/master/util/preproc.q)
 
-The following functions are those at present contained within the file `preproc.q` in the Machine Learning Toolkit
+The following functions are defined in the file `preproc.q` in the Machine Learning Toolkit.
 
 ```txt
-Manipulation and transformation of data
   .ml.dropconstant         Columns with zero variance removed
   .ml.filltab              Tailored filling of null values for a simple matrix
   .ml.freqencode           Numerically encode frequency of category occurance
@@ -26,6 +25,7 @@ Manipulation and transformation of data
   .ml.stdscaler            Standard scaler transform-based representation of a table
   .ml.timesplit            Decompose time columns into constituent parts
 ```
+
 
 ## `.ml.dropconstant`
 
@@ -121,8 +121,13 @@ B   18:16:47.740 0.6288875  0.4052153 0.04499967  1      0       1
 B   23:10:44.297 0.6288875  0.5513535 0.2213819   1      0       0      
 ```
 
-!!!note
-	Expected dictionary input for this function has changed, in versions `0.1.x` mapping of the dictionary was in the form `` `linear`median!(`x`x1;`x2`x3) `` from version `0.2.0` this has been replaced with `` `x`x1`x2`x3!(2#`linear),2#`median ``. 
+!!! note "Form of the `dict` argument"
+
+  	The form of the `dict` argument changed in version 0.2. 
+    Previously, it had the form `` `linear`median!(`x`x1;`x2`x3) ``. 
+    
+    In version `0.2.0` this is has become `` `x`x1`x2`x3!(2#`linear),2#`median ``. 
+
 
 ## `.ml.freqencode`
 

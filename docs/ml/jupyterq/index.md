@@ -31,13 +31,15 @@ Jupyter kernel for kdb+.
 
 <i class="fas fa-download"></i> Download the code from <i class="fab fa-github"></i> [KxSystems/JupyterQ](https://github.com/kxsystems/jupyterq) and follow the instructions there.
 
-JupyterQ can also be downloaded through conda install as follows
+JupyterQ can also be downloaded through Conda install as follows
 
 ```bash
 conda install -c kx jupyterq
 ```
 
-This download will install both kdb and embedPy if not previously installed within the conda environment.
+This download will install both kdb and embedPy if not previously installed within the Conda environment.
+
+
 ## Using notebooks
 
 See the notebook `kdb+Notebooks.ipynb` for full interactive examples and explanation, also [viewable on GitHub](https://github.com/KxSystems/jupyterq/blob/master/kdb%2BNotebooks.ipynb).

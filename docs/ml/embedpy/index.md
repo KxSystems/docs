@@ -26,25 +26,26 @@ Download the code from
 <i class="fab fa-github"></i>
 [KxSystems/embedPy](https://github.com/kxsystems/embedpy) and follow installation instructions there.
 
-EmbedPy can also be downloaded through a conda install as follows
+EmbedPy can also be downloaded through a Conda install as follows
 
 ```bash
 conda install -c kx embedpy
 ```
 
-This download will install kdb+ if not previously installed within the conda environment.
+This download will install kdb+ if not previously installed within the Conda environment.
+
 
 ## Back-incompatible changes
 
 ### V0.2-beta -> V1.0
 
-- Attribute access from embedPy object
-```q
-q)obj\`ATTRNAME     / old
-q)obj\`:ATTRNAME    / new
-```
+-   Attribute access from embedPy object
+    <pre><code class="language-q">
+    q)obj\`ATTRNAME     / old
+    q)obj\`:ATTRNAME    / new
+    </code></pre>
 
-- embedPy objects can be called directly without explicitly specifying the call return type, the default return type is an embedPy object
+-   embedPy objects can be called directly without explicitly specifying the call return type, the default return type is an embedPy object
 
 
 ### V0.1-beta -> V0.2beta in V0.2-beta

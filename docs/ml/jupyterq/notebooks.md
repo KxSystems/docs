@@ -93,6 +93,7 @@ This will not attempt to execute the code and any code in the rest of the cell w
 ```q
 /%savescript filename [overwrite]
 ```
+
 Will save contents of the cell as a script, optionally overwriting the script if it already exists
 
 ![saving](img/savescript.gif "Saving code as script")
@@ -102,7 +103,7 @@ Will save contents of the cell as a script, optionally overwriting the script if
 
 !!! warning "Experimental"
 
-Along with k and q code, python code can be run in a q process using [embedPy](https://github.com/kxsystems/embedpy), lines preceded by `p)` will be executed as Python code.
+Along with q code, Python code can be run in a q process using [embedPy](https://github.com/kxsystems/embedpy), lines preceded by `p)` will be executed as Python code.
 Charts created using matplotlib will be displayed inline in the notebook.
 
 ![matplotlib](img/matplotlib.gif "Matplotlib inline display")

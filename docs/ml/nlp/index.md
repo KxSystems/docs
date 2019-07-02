@@ -13,7 +13,7 @@ It can be applied to datasets such as emails, online articles and comments, twee
 
 ## Requirements
 
-The following requirements cover those needed to initialize running of the nlp library
+The following requirements cover those needed to initialize running of the NLP library
 
 -   [embedPy](../embedpy/)
 
@@ -21,29 +21,35 @@ A number of Python dependencies also exist for this library. These can be instal
 
 <i class="fab fa-github"></i>
 [KxSystems/nlp](https://github.com/kxsystems/nlp)
-using `pip`
+using Pip
 
 ```bash
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
-or via `conda`
+or via Conda
 
 ```bash
-conda install --file requirements.txt
+$ conda install --file requirements.txt
 ```
 
-In addition to those which can be installed via the above syntax there is also a requirement that the English model be downloaded for Spacy. This can be completed as follows; `python -m spacy download en`
+Besides those installed via the above code there is also a requirement that the English model be downloaded for Spacy:
+
+```bash
+$ python -m spacy download en
+```
+
 
 ## Installation
 
-As mentioned above this library is available on the KxSystems github [here](https://github.com/kxsystems/nlp). Alternatively this is library is available as a Docker image
+The library is available from
+<i class="fab fa-github"></i> [KxSystems/nlp](https://github.com/kxsystems/nlp)
 
-### Docker
+Alternatively the library is available as a Docker image.
 
 If you have [Docker installed](https://www.docker.com/products/docker-engine) you can run:
 
-```
+```bash
 $ docker run -it --name mynlp kxsys/nlp
 kdb+ on demand - Personal Edition
 
@@ -71,4 +77,5 @@ q).nlp.findTimes"I went to work at 9:00am and had a coffee at 10:20"
 10:20:00.000 "10:20"  45 50
 ```
 
-Further instructions regarding build instructions for the nlp docker image are available [here](https://github.com/KxSystems/nlp/blob/master/docker/README.md)
+<i class="fab fa-github"></i>
+[Build instructions for the NLP Docker image](https://github.com/KxSystems/nlp/blob/master/docker/README.md)

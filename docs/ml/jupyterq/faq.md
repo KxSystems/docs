@@ -4,7 +4,7 @@ date: April 2019
 keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q, faq
 ---
 
-# <i class="fa fa-share-alt"></i> Frequently Asked Questions
+# <i class="fa fa-share-alt"></i> Frequently asked questions
 
 ## Can I run the kernel remotely?
 
@@ -26,9 +26,9 @@ You will need to export the `LD_LIBRARY_PATH` and add this to your configuration
 c.Spawner.env_keep.append('LD_LIBRARY_PATH')
 ```
 
-## Why is setting `LD_LIBRARY_PATH/DYLD_LIBRARY_PATH` required with Anaconda python?
+## Why is setting `LD_LIBRARY_PATH/DYLD_LIBRARY_PATH` required with Anaconda Python?
 
-Anaconda packages libraries which may conflict with the system versions of these libraries loaded by q at startup e.g. `libssl` or `libz`. There is a `conda` packaged version of `q` which doesn't require setting `LD_LIBRARY_PATH`, if you are already using Anaconda then you can install it with
+Anaconda packages libraries which may conflict with the system versions of these libraries loaded by q at startup e.g. `libssl` or `libz`. There is a Conda packaged version of q which doesn't require setting `LD_LIBRARY_PATH`. If you are already using Anaconda then you can install it with
 
 ```bash
 conda install -c kx kdb

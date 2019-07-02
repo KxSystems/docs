@@ -5,11 +5,14 @@ keywords: Docker, embedPy, Jupyter, ml, machine learning, Python
 
 # <i class="fas fa-share-alt"></i> Setting up your machine-learning environment
 
-There are three methods available to set up an environment in which to work on Machine Learning within kdb+/q.
+There are three methods available to set up an environment in which to work on Machine Learning within kdb+/q: 
 
-## Setup methods for JupyterQ
+-   with Anaconda
+-   with Docker
+-   do it yourself
 
-### Download via Anaconda
+
+## Download via Anaconda
 
 The three Kx packages can be downloaded from [anaconda.org/kx](https://anaconda.org/kx):
 
@@ -31,7 +34,7 @@ conda install -c kx jupyterq
 
 At present, the packages work only from the base environment.
 
-Before starting q, please run the following commands:
+Before starting q, run the following commands:
 
 ```anaconda
 source deactivate base
@@ -45,14 +48,16 @@ Please provide your email (requires validation):
 Please provide your name:
 If applicable please provide your company name (press enter for none):
 ```
-This will then reach out to the Kx license server and generate a `kc.lic`.
 
-This in turn sends an email confirmation link to validate the license file.
+This will then contact the Kx license server, which will generate a `kc.lic` and send an email confirmation link to validate it.
 
-### Docker command
 
-1.  Install [Docker](https://www.docker.com/community-edition)
-2.  Run:
+
+## Docker command
+
+### 1. Install [Docker](https://www.docker.com/community-edition)
+
+### 2. Run embedPy
 
 ```bash
 $ docker run -it --name myembedpy kxsys/embedpy
@@ -61,7 +66,8 @@ l64/ 4(16)core 7905MB kx 0123456789ab 172.17.0.2 EXPIRE 2018.12.04 bob@example.c
 
 q)
 ```
-You can drop straight into bash with:
+
+You can drop straight into Bash with:
 
 ```bash
 $ docker run -it kxsys/embedpy bash
@@ -78,27 +84,26 @@ l64/ 8()core 64304MB kx b8279373a1d1 172.17.0.3 EXPIRE 2019.05.21 bob@example.co
 q)
 ```
 
-Instructions for running headless or an existing q license are [available](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#headlesspresets)
+<i class="fab fa-github"></i>
+[Instructions for running headless or with an existing license](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#headlesspresets)
 
-<i class="far fa-hand-point-right"></i>
-[Build instructions for the image](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#building)
+<i class="fab fa-github"></i>
+[Build instructions for the embedPy image](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#building)
 
 
-#### Install Docker.
-
-Run
+### 3. Run JupyterQ
 
 ```bash
 docker run --rm -it -p 8888:8888 kxsys/jupyterq
 ```
 
-Now point your browser at http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb.
+Now point your browser at `http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb`.
 
-<i class="far fa-hand-point-right"></i> 
-[Build instructions for the image](https://github.com/KxSystems/jupyterq/blob/master/docker/README.md)
+<i class="fab fa-github"></i>
+[Build instructions for the JupyterQ image](https://github.com/KxSystems/jupyterq/blob/master/docker/README.md)
 
 
-### Do it yourself
+## Do it yourself
 
 1.  Install [kdb+](../learn/install/index.md) 
 2.  Install [embedPy](embedpy/)

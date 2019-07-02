@@ -433,12 +433,12 @@ nav:
     - Set up: ml/setup.md
     - embedPy: 
       - Overview: ml/embedpy/index.md
-      - User Guide: ml/embedpy/userguide.md
+      - User guide: ml/embedpy/userguide.md
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
     - JupyterQ: 
       - Overview: ml/jupyterq/index.md
-      - User Guide: ml/jupyterq/notebooks.md
+      - User guide: ml/jupyterq/notebooks.md
       - FAQ: ml/jupyterq/faq.md
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
@@ -448,14 +448,14 @@ nav:
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
       - FRESH: ml/toolkit/fresh.md  
-      - Cross Validation: ml/toolkit/xval.md
+      - Cross validation: ml/toolkit/xval.md
     - Natural language processing:
       - Overview: ml/nlp/index.md
-      - User Guide:
+      - User guide:
         - Text manipulation: ml/nlp/userguide/preproc.md
-        - Text Comparison: ml/nlp/userguide/comparisons.md
+        - Text comparison: ml/nlp/userguide/comparisons.md
         - Clustering: ml/nlp/userguide/clustering.md
-        - Data Interrogation: ml/nlp/userguide/analysis.md
+        - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
   - Knowledge Base:

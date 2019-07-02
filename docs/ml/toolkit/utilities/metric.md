@@ -694,8 +694,9 @@ q).ml.tscore[x;y]
 7.634824
 ```
 
-!!! note 
-	"Above 30 samples a one-sample t-score is not statistically significant."
+!!! tip "One-sample t-score"
+
+    Above 30 samples a one-sample t-score is not statistically significant.
 
 
 ## `.ml.tscoreeq`

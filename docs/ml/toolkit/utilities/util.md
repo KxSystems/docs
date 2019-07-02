@@ -6,15 +6,14 @@ keywords: pandas manipulation, dataframe, train test split, .
 
 # <i class="fa fa-share-alt"></i> Utility functions 
 
-Within the toolkit there are a number of functions which are true utils. These functions are used within many machine-learning applications but do not fit with under sections such as statistics or preprocessing.
+The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/blob/master/util/util.q)
 
-The following functions are those at present that contained within the `util.q` file of the Machine Learning Toolkit.
+The following functions are defined in the `util.q` file of the Machine Learning Toolkit.
 
 ```txt
-Utility functions
   .ml.arange             Evenly-spaced values within a range
   .ml.combs              n linear combinations of k numbers
   .ml.df2tab             kdb+ table from a pandas dataframe
@@ -25,17 +24,14 @@ Utility functions
   .ml.traintestsplit     Split into training and test sets
 ```
 
+
 ## `.ml.arange`
 
 _Evenly-spaced values_
 
 Syntax: `.ml.arange[x;y;z]`
 
-Where 
-
--  `x`,`y`&`z` are numeric atoms
-
-returns a vector of evenly-spaced values between `x` (inclusive) and `y` (non-inclusive) in steps of length `z`.
+Where `x`, `y`, and `z` are numeric atoms, returns a vector of evenly-spaced values between `x` (inclusive) and `y` (non-inclusive) in steps of length `z`.
 
 ```q
 q).ml.arange[1;10;1]
@@ -86,15 +82,11 @@ q)m .ml.combs[count m;3]
 
 ## `.ml.df2tab`
 
-_Convert a Pandas DataFrame to q table_
+_Convert pandas dataframe to q table_
 
 Syntax: `.ml.df2tab[x]`
 
-Where 
-
--  `x` is an embedPy representation of a Pandas DataFrame
-
-returns as a q table.
+Where  `x` is an embedPy representation of a Pandas dataframe, returns it as a q table.
 
 ```q
 q)p)import pandas as pd
@@ -131,8 +123,7 @@ jcol| fcol
 50  | 0.5
 ```
 
-!!! note 
- When converting from python to q this function operates on the assumption that a single unnamed python index column is to be removed (return an unkeyed table). All other varients of python index columns will map to q key columns. For example any instance with two or more indices will map to two or more python keys while any named single index python column be associated with a q key in a keyed table
+**Index columns** This function assumes a single unnamed Python index column is to be removed. It returns an unkeyed table. All other variants of Python index columns map to q key columns. For example any instance with two or more indexes will map to two or more Python keys, while any named single-index Python column be associated with a q key in a keyed table.
 
 
 ## `.ml.eye`
@@ -141,11 +132,7 @@ _Identity matrix_
 
 Syntax: `.ml.eye[x]`
 
-Where
-
--  `x` is an integer atom
-
-returns an identity matrix of height/width `x`.
+Where  `x` is an integer atom, returns an identity matrix of height/width `x`.
 
 ```q
 q).ml.eye 5
@@ -184,11 +171,7 @@ _Shape of a matrix_
 
 Syntax: `.ml.shape[x]`
 
-Where 
-
--  `x` is an object
-
-returns its shape as a list of dimensions.
+Where `x` is an object, returns its shape as a list of dimensions.
 
 ```q
 q).ml.shape 10
@@ -212,15 +195,11 @@ q).ml.shape ([]c1:til 10;c2:0)
 
 ## `.ml.tab2df`
 
-_Convert a q table to Pandas dataframe_
+_Convert q table to Pandas dataframe_
 
 Syntax: `.ml.tab2df[x]`
 
-Where 
-
--  `x` is a table
-
-returns a Pandas dataframe.
+Where  `x` is a table, returns a Pandas dataframe.
 
 ```q
 q)n:5

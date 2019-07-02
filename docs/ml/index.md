@@ -46,7 +46,7 @@ The [Machine Learning Toolkit](toolkit/) is at the core of kdb+/q centered machi
 -  [Pre-processing](toolkit/utilities/preproc.md) data prior to the application of machine-learning algorithms.
 -  An implementation of the [FRESH](toolkit/fresh.md) algorithm for feature extraction and selection on structured time series data. 
 -  [Utility](toolkit/utilities/util.md) functions which are useful in many machine-learning applications but do not fall within the other sections of the toolkit.
--  [Cross-Validation](toolkit/utilities/xval.md) functions, used to verify how robust and stable a machine-learning model is to changes in the data being interrogated and the volume of this data.
+-  [Cross-Validation](toolkit/xval.md) functions, used to verify how robust and stable a machine-learning model is to changes in the data being interrogated and the volume of this data.
 
 The library is available [here](https://github.com/KxSystems/ml).
 
