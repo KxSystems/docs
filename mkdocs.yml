@@ -76,7 +76,7 @@ nav:
   - Reference: https://code.kx.com/v2/ref/
   - GitHub: github.md
   - Support: support.md
-  - Platform for Kx: platform.md
+  - Developer tools: platform.md
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
