@@ -7,7 +7,7 @@ keywords: time-series, cross validation, grid search, roll-forward, chain-forwar
 # <i class="fa fa-share-alt"></i> Cross Validation Procedures 
 
 
-The `.ml.xv` and `.ml.gs` namespaces contain a number of functions related to cross-validation and grid-search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
+The `.ml.xv` and `.ml.gs` namespaces contain a number of functions related to cross-validation and grid search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/xval/](https://github.com/kxsystems/ml/tree/master/xval)
@@ -39,7 +39,7 @@ The following functions are those contained in the `.ml.gs` and `.ml.xv` namespa
 
 ## `.ml.gs.kfshuff`
 
-_Cross-validated parameter grid-search applied to data with shuffled split indices_
+_Cross-validated parameter grid search applied to data with shuffled split indices_
 
 Syntax: `.ml.gs.kfshuff[k;n;x;y;f;p;h]`
 
@@ -71,11 +71,11 @@ fit_intercept normalize|
 0             1        | 0.9974428 0.9972132 0.9972411 0.9973183
 1             0        | 0.9975179 0.997513  0.9975894 0.99757  
 1             1        | 0.99761   0.9974926 0.997565  0.997517 
-// 5 fold cross-validated grid-search fitted on 20% holdout set
+// 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfshuff[5;1;x;yr;.ml.xv.fitscore rf;pr;0.2]
 `fit_intercept`normalize!11b
 0.9975171
-// 10 fold cross-validated grid-search fitted on 10% holdout with initial data shuffle
+// 10 fold cross-validated grid search fitted on 10% holdout with initial data shuffle
 q).ml.gs.kfshuff[10;1;x;yr;.ml.xv.fitscore rf;pr;-0.1]
 `fit_intercept`normalize!10b
 0.9975167
@@ -83,7 +83,7 @@ q).ml.gs.kfshuff[10;1;x;yr;.ml.xv.fitscore rf;pr;-0.1]
 
 ## `.ml.gs.kfsplit`
 
-_Cross-validated parameter grid-search applied to data with ascending split indices_
+_Cross-validated parameter grid search applied to data with ascending split indices_
 
 Syntax: `.ml.gs.kfsplit[k;n;x;y;f;p;h]`
 
@@ -117,7 +117,7 @@ max_depth|
 3        | 1      0.9995 0.9995 0.9995 1     
 4        | 1      0.9995 0.9995 0.9995 1     
 5        | 1      0.9995 0.9995 0.9995 1     
-// 5 fold cross-validated grid-search fitted on 20% holdout set
+// 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfsplit[5;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,::
 1f
@@ -125,7 +125,7 @@ q).ml.gs.kfsplit[5;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 
 ## `.ml.gs.kfstrat`
 
-_Cross-validated parameter grid-search applied to data with an equi-distributions of targets per fold_
+_Cross-validated parameter grid search applied to data with an equi-distributions of targets per fold_
 
 Syntax: `.ml.gs.kfstrat[k;n;x;y;f;p;h]`
 
@@ -159,7 +159,7 @@ max_depth|
 3        | 1      0.9995 1      1   1     
 4        | 0.999  1      1      1   1     
 5        | 0.9995 1      0.9995 1   1     
-// 4 fold cross-validated grid-search fitted on 20% holdout set
+// 4 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfstrat[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,3
 1f
@@ -171,7 +171,7 @@ q).ml.gs.kfstrat[10;1;x;yc;.ml.xv.fitscore cf;pc;-0.1]
 
 ## `.ml.gs.mcsplit`
 
-_Cross-validated parameter grid-search applied to randomly shuffled data and validated on a percentage holdout set_
+_Cross-validated parameter grid search applied to randomly shuffled data and validated on a percentage holdout set_
 
 Syntax: `.ml.gs.mcsplit[pc;n;x;y;f;p;h]`
 
@@ -212,7 +212,7 @@ q).ml.gs.mcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;0.2]
 
 ## `.ml.gs.pcsplit`
 
-_Cross-validated parameter grid-search applied to percentage split dataset_
+_Cross-validated parameter grid search applied to percentage split dataset_
 
 Syntax: `.ml.gs.pcsplit[pc;n;x;y;f;p;h]`
 
@@ -255,7 +255,7 @@ q).ml.gs.pcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;0.2]
 
 ## `.ml.gs.tschain`
 
-_Cross-validated parameter grid-search applied to chain forward time-series sets_
+_Cross-validated parameter grid search applied to chain forward time-series sets_
 
 Syntax: `.ml.gs.tschain[k;n;x;y;f;p;h]`
 
@@ -289,7 +289,7 @@ max_depth|
 3        | 0.9995 0.9995 0.9995 1     
 4        | 0.9995 0.9995 0.9995 1     
 5        | 0.9995 0.9995 0.9995 1     
-// 4 fold cross-validated grid-search fitted on 20% holdout set
+// 4 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.tschain[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,::
 1f
@@ -305,7 +305,7 @@ q).ml.gs.tschain[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 
 ## `.ml.gs.tsroll`
 
-_Cross-validated parameter grid-search applied to roll forward time-series sets_
+_Cross-validated parameter grid search applied to roll forward time-series sets_
 
 Syntax: `.ml.gs.tsroll[k;n;x;y;f;p;h]`
 
@@ -339,7 +339,7 @@ max_depth|
 3        | 0.9988002 1         0.9993998 1         0.9994001
 4        | 0.9988002 1         0.9993998 1         0.9994001
 5        | 0.9988002 1         0.9993998 1         0.9994001
-// 5 fold cross-validated grid-search fitted on 20% holdout set
+// 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.tsrolls[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,::
 0.9995
