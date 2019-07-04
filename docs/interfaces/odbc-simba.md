@@ -6,9 +6,6 @@ keywords: interface, kdb+, library, magnitude, odbc, odbc3, q, simba, sql
 
 
 
-!!! info "General availability for beta evaluation"
-
-    Simba/Magnitude ODBC drivers, Beta evaluation, support kdb+ V3.5 and V3.6.
 
 The Simba Kdb+ ODBC Driver enables Business Intelligence (BI), analytics, and reporting on kdb+ data. The driver complies with the ODBC 3.80 data standard and adds important functionality such as Unicode, as well as 32- and 64-bit support for high-performance computing environments on all platforms.
 
@@ -54,31 +51,25 @@ is suitable for all users who are looking to access kdb+ data from their desktop
 
 ### <i class="fab fa-linux"></i> Linux
 
--   64-bit: [`simbakdb-1.0.0.1001-1.x86_64.rpm`](/download/simbakdb-1.0.0.1001-1.x86_64.rpm) (21MB)
--   32-bit: [`simbakdb-1.0.0.1001-1.i686.rpm`](/download/simbakdb-1.0.0.1001-1.i686.rpm) (21MB)
+-   64-bit: [`simbakdb-1.1.0.1000-1.x86_64.rpm`](/download/simbakdb-1.1.0.1000-1.x86_64.rpm) (21MB)
+-   32-bit: [`simbakdb-1.1.0.1000-1.i686.rpm`](/download/simbakdb-1.1.0.1000-1.i686.rpm) (21MB)
 
 
 ### <i class="fab fa-apple"></i> macOS
 
--   [`simba-kdb-1.0.dmg`](/download/simba-kdb-1.0.dmg) (37MB)
+-   [`simba-kdb-1.1.dmg`](/download/simba-kdb-1.1.dmg) (35MB)
 
 
 ### <i class="fab fa-windows"></i> Windows
 
--   64-bit: [`simba-kdb-1.0-64-bit.msi`](/download/simba-kdb-1.0-64-bit.msi) (16MB)
--   32-bit: [`simba-kdb-1.0-32-bit.msi`](/download/simba-kdb-1.0-32-bit.msi) (17MB)
+-   64-bit: [`simba-kdb-1.1-64-bit.msi`](/download/simba-kdb-1.1-64-bit.msi) (17MB)
+-   32-bit: [`simba-kdb-1.1-32-bit.msi`](/download/simba-kdb-1.1-32-bit.msi) (16MB)
 -   Common config file: [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc) (2kB)
 
 
-
+<!-- 
 ## Prior releases
 
 The biggest change from previous releases is that with this version you install and run the driver entirely from the client perspective.
 
-
-
-## Support
-
-We are seeking feedback for this Beta test phase.
-
-For support _only during_ the beta test phase, please use tech@kx.com as a gateway for support cases for Simba.
+ -->
