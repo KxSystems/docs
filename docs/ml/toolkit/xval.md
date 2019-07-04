@@ -7,7 +7,7 @@ keywords: time-series, cross validation, grid search, roll-forward, chain-forwar
 # <i class="fa fa-share-alt"></i> Cross Validation Procedures 
 
 
-The `.ml.xv` and `.ml.gs` namespaces contain a number of functions related to cross validation and grid search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
+The `.ml.xv` and `.ml.gs` namespaces contain a number of functions related to cross-validation and grid-search algorithms. These algorithms test how robust/stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/xval/](https://github.com/kxsystems/ml/tree/master/xval)
@@ -16,30 +16,30 @@ The following functions are those contained in the `.ml.gs` and `.ml.xv` namespa
 
 ```txt
 .ml.gs - Grid search functions
-  .kfshuff            K-Fold cross validation with randomized indices
-  .kfsplit            K-Fold cross validation with sequential indices
-  .kfstrat            K-Fold cross validation with stratified indices
-  .mcsplit            Monte Carlo cross validation with random split indices
-  .pcsplit            Percentage split cross validation
-  .tschain            Chain-forward cross validation
-  .tsrolls            Roll-forward cross validation
+  .kfshuff            K-Fold cross-validation with randomized indices
+  .kfsplit            K-Fold cross-validation with sequential indices
+  .kfstrat            K-Fold cross-validation with stratified indices
+  .mcsplit            Monte-Carlo cross-validation with random split indices
+  .pcsplit            Percentage split cross-validation
+  .tschain            Chain-forward cross-validation
+  .tsrolls            Roll-forward cross-validation
 .ml.xv - Cross validation functions
-  .kfshuff            K-Fold cross validation with randomized indices
-  .kfsplit            K-Fold cross validation with sequential indices
-  .kfstrat            K-Fold cross validation with stratified indices
-  .mcsplit            Monte Carlo cross validation with random split indices
-  .pcsplit            Percentage split cross validation
-  .tschain            Chain-forward cross validation
-  .tsrolls            Roll-forward cross validation
+  .kfshuff            K-Fold cross-validation with randomized indices
+  .kfsplit            K-Fold cross-validation with sequential indices
+  .kfstrat            K-Fold cross-validation with stratified indices
+  .mcsplit            Monte-Carlo cross-validation with random split indices
+  .pcsplit            Percentage split cross-validation
+  .tschain            Chain-forward cross-validation
+  .tsrolls            Roll-forward cross-validation
 ```
 
 !!!notes
 	* Within the following examples `.ml.xv.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, for example a function to fit on training data and predict outputs for new data.
-	* As of toolkit version 0.1.3, the distribution of cross validation functions is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then the cross validation library will automatically make 4 worker processes available to execute jobs.
+	* As of toolkit version 0.1.3, the distribution of cross-validation functions is invoked at console initialization. If a process is started with `$q -s -4 -p 4321` and load `xval.q` into the process, then the cross-validation library will automatically make 4 worker processes available to execute jobs.
 
 ## `.ml.gs.kfshuff`
 
-_Cross validated parameter grid search applied to data with shuffled split indices_
+_Cross-validated parameter grid-search applied to data with shuffled split indices_
 
 Syntax: `.ml.gs.kfshuff[k;n;x;y;f;p;h]`
 
@@ -63,7 +63,7 @@ q)yr:x[;0]+m?.05
 q)rf:{.p.import[`sklearn.linear_model]`:LinearRegression}
 // params
 q)pr:`fit_intercept`normalize!(01b;01b)
-// 4 fold cross validation no holdout
+// 4 fold cross-validation no holdout
 q).ml.gs.kfshuff[4;1;x;yr;.ml.xv.fitscore rf;pr;0]
 fit_intercept normalize|                                        
 -----------------------| ---------------------------------------
@@ -71,11 +71,11 @@ fit_intercept normalize|
 0             1        | 0.9974428 0.9972132 0.9972411 0.9973183
 1             0        | 0.9975179 0.997513  0.9975894 0.99757  
 1             1        | 0.99761   0.9974926 0.997565  0.997517 
-// 5 fold cross validated grid search fitted on 20% holdout set
+// 5 fold cross-validated grid-search fitted on 20% holdout set
 q).ml.gs.kfshuff[5;1;x;yr;.ml.xv.fitscore rf;pr;0.2]
 `fit_intercept`normalize!11b
 0.9975171
-// 10 fold cross validated grid search fitted on 10% holdout with initial data shuffle
+// 10 fold cross-validated grid-search fitted on 10% holdout with initial data shuffle
 q).ml.gs.kfshuff[10;1;x;yr;.ml.xv.fitscore rf;pr;-0.1]
 `fit_intercept`normalize!10b
 0.9975167
@@ -83,7 +83,7 @@ q).ml.gs.kfshuff[10;1;x;yr;.ml.xv.fitscore rf;pr;-0.1]
 
 ## `.ml.gs.kfsplit`
 
-_Cross validated parameter grid search applied to data with ascending split indices_
+_Cross-validated parameter grid-search applied to data with ascending split indices_
 
 Syntax: `.ml.gs.kfsplit[k;n;x;y;f;p;h]`
 
@@ -107,7 +107,7 @@ q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)cf:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
 // params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-// 5 fold cross validation no holdout
+// 5 fold cross-validation no holdout
 q).ml.gs.kfsplit[5;1;x;yc;.ml.xv.fitscore cf;pc;0]
 max_depth|                                   
 ---------| ----------------------------------
@@ -117,7 +117,7 @@ max_depth|
 3        | 1      0.9995 0.9995 0.9995 1     
 4        | 1      0.9995 0.9995 0.9995 1     
 5        | 1      0.9995 0.9995 0.9995 1     
-// 5 fold cross validated grid search fitted on 20% holdout set
+// 5 fold cross-validated grid-search fitted on 20% holdout set
 q).ml.gs.kfsplit[5;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,::
 1f
@@ -125,7 +125,7 @@ q).ml.gs.kfsplit[5;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 
 ## `.ml.gs.kfstrat`
 
-_Cross validated parameter grid search applied to data with an equi-distributions of targets per fold_
+_Cross-validated parameter grid-search applied to data with an equi-distributions of targets per fold_
 
 Syntax: `.ml.gs.kfstrat[k;n;x;y;f;p;h]`
 
@@ -149,7 +149,7 @@ q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)cf:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
 // params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-// 5 fold cross validation no holdout
+// 5 fold cross-validation no holdout
 q).ml.gs.kfstrat[5;1;x;yc;.ml.xv.fitscore cf;pc;0]
 max_depth|                                
 ---------| -------------------------------
@@ -159,7 +159,7 @@ max_depth|
 3        | 1      0.9995 1      1   1     
 4        | 0.999  1      1      1   1     
 5        | 0.9995 1      0.9995 1   1     
-// 4 fold cross validated grid search fitted on 20% holdout set
+// 4 fold cross-validated grid-search fitted on 20% holdout set
 q).ml.gs.kfstrat[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,3
 1f
@@ -171,7 +171,7 @@ q).ml.gs.kfstrat[10;1;x;yc;.ml.xv.fitscore cf;pc;-0.1]
 
 ## `.ml.gs.mcsplit`
 
-_Cross validated parameter grid search applied to randomly shuffled data and validated on a percentage holdout set_
+_Cross-validated parameter grid-search applied to randomly shuffled data and validated on a percentage holdout set_
 
 Syntax: `.ml.gs.mcsplit[pc;n;x;y;f;p;h]`
 
@@ -212,7 +212,7 @@ q).ml.gs.mcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;0.2]
 
 ## `.ml.gs.pcsplit`
 
-_Cross validated parameter grid search applied to percentage split dataset_
+_Cross-validated parameter grid-search applied to percentage split dataset_
 
 Syntax: `.ml.gs.pcsplit[pc;n;x;y;f;p;h]`
 
@@ -251,11 +251,11 @@ q).ml.gs.pcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;0.2]
 ```
 
 !!! note
-        This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
+        This form of cross-validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
 
 ## `.ml.gs.tschain`
 
-_Cross validated parameter grid search applied to chain forward time-series sets_
+_Cross-validated parameter grid-search applied to chain forward time-series sets_
 
 Syntax: `.ml.gs.tschain[k;n;x;y;f;p;h]`
 
@@ -279,7 +279,7 @@ q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)cf:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
 // params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-// 5 fold cross validation no holdout
+// 5 fold cross-validation no holdout
 q).ml.gs.tschain[5;1;x;yc;.ml.xv.fitscore cf;pc;0]
 max_depth|                            
 ---------| ---------------------------
@@ -289,7 +289,7 @@ max_depth|
 3        | 0.9995 0.9995 0.9995 1     
 4        | 0.9995 0.9995 0.9995 1     
 5        | 0.9995 0.9995 0.9995 1     
-// 4 fold cross validated grid search fitted on 20% holdout set
+// 4 fold cross-validated grid-search fitted on 20% holdout set
 q).ml.gs.tschain[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,::
 1f
@@ -305,7 +305,7 @@ q).ml.gs.tschain[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 
 ## `.ml.gs.tsroll`
 
-_Cross validated parameter grid search applied to roll forward time-series sets_
+_Cross-validated parameter grid-search applied to roll forward time-series sets_
 
 Syntax: `.ml.gs.tsroll[k;n;x;y;f;p;h]`
 
@@ -329,7 +329,7 @@ q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)cf:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
 // params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-// 6 fold cross validation no holdout
+// 6 fold cross-validation no holdout
 q).ml.gs.tsrolls[6;1;x;yc;.ml.xv.fitscore cf;pc;0]
 max_depth|                                                  
 ---------| -------------------------------------------------
@@ -339,7 +339,7 @@ max_depth|
 3        | 0.9988002 1         0.9993998 1         0.9994001
 4        | 0.9988002 1         0.9993998 1         0.9994001
 5        | 0.9988002 1         0.9993998 1         0.9994001
-// 5 fold cross validated grid search fitted on 20% holdout set
+// 5 fold cross-validated grid-search fitted on 20% holdout set
 q).ml.gs.tsrolls[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 (,`max_depth)!,::
 0.9995
@@ -354,19 +354,19 @@ q).ml.gs.tsrolls[4;1;x;yc;.ml.xv.fitscore cf;pc;0.2]
 
 ## `.ml.xv.kfshuff`
 
-_K-Fold cross validation for randomized non-repeating indices_
+_K-Fold cross-validation for randomized non-repeating indices_
 
 Syntax: `.ml.xv.kfshuff[k;n;x;y;f]`
 
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -382,19 +382,19 @@ q).ml.xv.kfshuff[k;n;x;yr;mdlfn]
 
 ## `.ml.xv.kfsplit`
 
-_K-Fold cross validation for ascending indices split into K-folds_
+_K-Fold cross-validation for ascending indices split into K-folds_
 
 Syntax: `.ml.xv.kfsplit[k;n;x;y;f]`
 
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -411,19 +411,19 @@ q).ml.xv.kfsplit[k;n;x;yr;mdlfn]
 
 ## `.ml.xv.kfstrat`
 
-_Stratified K-Fold cross validation with an approximately equal distribution of classes per fold_
+_Stratified K-Fold cross-validation with an approximately equal distribution of classes per fold_
 
 Syntax: `.ml.xv.kfstrat[k;n;x;y;f]`
 
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -442,19 +442,19 @@ q).ml.xv.kfsplit[k;n;x;yc;mdlfn]
 
 ## `.ml.xv.mcsplit`
 
-_Monte Carlo cross validation using randomized non-repeating indices_
+_Monte Carlo cross-validation using randomized non-repeating indices_
 
 Syntax: `.ml.xv.mcsplit[p;n;x;y;f]`
 
 Where
 
 -   `p` is a float between 0 and 1 representing the percentage of data within the validation set
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -469,23 +469,23 @@ q).ml.xv.mcsplit[p;n;x;yr;mdlfn]
 ```
 
 !!! note
-        This form of cross validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
+        This form of cross-validation is also known as 'repeated random sub-sampling validation'. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. More information is available [here](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation).
 
 ## `.ml.xv.pcsplit`
 
-_Percentage split cross validation procedure_
+_Percentage split cross-validation procedure_
 
 Syntax: `.ml.xv.pcsplit[p;n;x;y;f]`
 
 Where
 
 -   `p` is a float between 0 and 1 representing the percentage of data within the validation set
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
 
-returns output of `f` applied to each of the cross validation splits
+returns output of `f` applied to each of the cross-validation splits
 
 ```q
 q)m:10000
@@ -502,14 +502,14 @@ q).ml.xv.pcsplit[p;n;x;yr;mdlfn]
 
 ## `.ml.xv.tschain`
 
-_Chain-forward cross validation procedure_
+_Chain-forward cross-validation procedure_
 
 Syntax: `.ml.xv.tschain[k;n;x;y;f]`
 
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
@@ -538,14 +538,14 @@ q).ml.xv.tschain[k;n;x;yr;mdlfn]
 
 ## `.ml.xv.tsrolls`
 
-_Roll-forward cross validation procedure_
+_Roll-forward cross-validation procedure_
 
 Syntax: `.ml.xv.tsrolls[k;n;x;y;f]`
 
 Where
 
 -   `k` is the number of folds into which the data is split
--   `n` is the number of repetitions of this cross validation procedure
+-   `n` is the number of repetitions of this cross-validation procedure
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function taking data as input
