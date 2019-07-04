@@ -6,6 +6,10 @@ keywords: interface, kdb+, library, magnitude, odbc, odbc3, q, simba, sql
 
 
 
+!!! info "Current version"
+
+    The latest version of Simba/Magnitude ODBC is 1.1, released 2019.07.04.
+
 
 The Simba Kdb+ ODBC Driver enables Business Intelligence (BI), analytics, and reporting on kdb+ data. The driver complies with the ODBC 3.80 data standard and adds important functionality such as Unicode, as well as 32- and 64-bit support for high-performance computing environments on all platforms.
 
