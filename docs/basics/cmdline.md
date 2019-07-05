@@ -317,6 +317,9 @@ and with `-q`
 4
 ```
 
+<i class="far fa-hand-point-right"></i>
+[`.z.q`](../ref/dotz.md#zq-quiet-mode) (quiet mode) 
+
 
 ## `-r` (replicate)
   

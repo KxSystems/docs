@@ -693,6 +693,9 @@ Syntax: `.z.q`
 
 Returns `1b` if Quiet Mode is set, else `0b`.
 
+<i class="far fa-hand-point-right"></i>
+[Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
+
 
 ## `.z.s` (self)
 
