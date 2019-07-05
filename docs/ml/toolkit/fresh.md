@@ -112,7 +112,7 @@ stddev[x]                        | Standard deviation of series
 sumrecurringdatapoint[x]         | Sum of all points present in the series more than once
 sumrecurringval[x]               | Sum of all the values present within the series more than once
 sumval[x]                        | Sum of values within the series
-symmetriclooking[x]              | Measure of symmetry in the series
+symmetriclooking[x;y]            | Measure of symmetry in the series |mean(x)-median(x)|-y*(max[x]-min[x]) with y in range 0->1
 treverseasymstat[x;lag]          | Measure of asymmetry of the series based on `lag`
 valcount[x;val]                  | Number of occurrences of `val` within the series
 var[x]                           | Variance of the series

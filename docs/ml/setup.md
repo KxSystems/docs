@@ -102,6 +102,8 @@ Now point your browser at `http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb
 <i class="fab fa-github"></i>
 [Build instructions for the JupyterQ image](https://github.com/KxSystems/jupyterq/blob/master/docker/README.md)
 
+Allows Jupyter notebooks to be used within a Docker container.
+
 
 ## Do it yourself
 
