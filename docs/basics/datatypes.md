@@ -10,19 +10,26 @@ keywords: atom, boolean, character, datatype, date, datetime, double, float, int
 
 
 
-The _datatype_ of an object is given as a short int. 
+The datatype of an object is given as a short int. 
 
 ```q
-q)type 5                      / integer atom
--6h
-q)type 2 3 5                  / integer list
-6h
+q)type 5                      / long (integer) atom
+-7h
+q)type 2 3 5                  / long (integer) list
+7h
 q)type (2;3 5f;"hello")       / mixed list
 0h
 q)type each (2;3 5f;"hello")
--6 9 10h
+-7 9 10h
 q)type (+)                    /not just data
 102h
+```
+
+`type` returns short integers (type `5h` or `"h"`), negative for an atom, positive for a list.
+
+```q
+q)type type 1
+-5h
 ```
 
 <i class="far fa-hand-point-right"></i> 
@@ -90,10 +97,15 @@ _sz_: size in bytes
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
 RO: read only; RW: read-write
 
-
 !!! note "Strings"
 
     There is no string datatype. The nearest equivalent to a string is a symbol, or a char vector. On this site, _string_ is a synonym for character vector.
+
+!!! note "Default integer type"
+
+    The default type for an integer is long (`7h` or `"j"`). 
+    Before V3.0 it was int (`6h` or `"i"`).
+
 
 ### Temporal
 
