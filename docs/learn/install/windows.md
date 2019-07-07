@@ -12,7 +12,7 @@ Extract the files to `C:\`, producing a new folder `C:\q`.
 
 ## <i class="fas fa-check"></i> Confirm q is working
 
-Open a command shell window: type :fa-windows:-r or click the Start button, and type `cmd`.
+Open a command shell window: type <i class="fab fa-windows"></i>-r or click the Start button, and type `cmd`.
 
 Launch q by typing 
 
