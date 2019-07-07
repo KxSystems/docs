@@ -509,7 +509,7 @@ nav:
     - Using .z: kb/using-dotz.md
     - Write-only RDB: kb/w-q.md
     - WebSockets: kb/websockets.md
-    - Windows Service: kb/windows-service.md
+    - Windows service: kb/windows-service/index.md
   - White papers: 
     - Index: wp/index.md
     - Bitcoin blockchains: wp/blockchain/index.md
