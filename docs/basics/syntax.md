@@ -385,33 +385,33 @@ Add Scan `+\` is variadic and has infix syntax.
 
 ```q
 q)+\[1 2 3 4 5]                 / unary
-1 2 6 24 120
-q)+\[1000;1 2 3 4 5]            / binary
-10001 10002 10006 10024 10120
+1 3 6 10 15
+q)+\[1000;1 2 3 4 5]            / unary
+1001 1003 1006 1010 1015
 q)1000+\1 2 3 4 5               / binary, applied infix
-10001 10002 10006 10024 10120
+1001 1003 1006 1010 1015
 ```
 
 Captured as a value by parentheses, it remains variadic, but can be applied postfix as a unary.
 
 ```q
 q)(+\)[1000;1 2 3 4 5]          / binary
-10001 10002 10006 10024 10120
+1001 1003 1006 1010 1015
 q)(+\)1 2 3 4 5                 / unary, applied postfix
-1 2 6 24 120
+1 3 6 10 15
 ```
 
 Captured as a value, a function with infix syntax can be passed as an argument to another function.
 
 ```q
-q)(+) scan 1 2 3 4 5            / + is binary and infix
+q)(*) scan 1 2 3 4 5            / * is binary and infix
 1 2 6 24 120
 q)n:("the ";("quick ";"brown ";("fox ";"jumps ";"over ");"the ");("lazy ";"dog."))
 q)(,/) over n                   / ,/ is variadic and infix
 "the quick brown fox jumps over the lazy dog."
 ```
 
-The parentheses above are not necessary for functions without infix syntax.
+For functions without infix syntax, parentheses are unnecessary.
 
 ```q
 q)raze over n
@@ -419,6 +419,7 @@ q)raze over n
 q){,/[x]}over n
 "the quick brown fox jumps over the lazy dog."
 ```
+
 
 ## Compound expressions
 
