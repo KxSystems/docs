@@ -76,7 +76,7 @@ nav:
   - Reference: https://code.kx.com/v2/ref/
   - GitHub: github.md
   - Support: support.md
-  - Platform for Kx: platform.md
+  - Developer tools: devtools.md
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -432,13 +432,14 @@ nav:
     - Introduction: ml/index.md
     - Set up: ml/setup.md
     - embedPy: 
-      - User guide: ml/embedpy/index.md
-      # - Running Python code: ml/embedpy/running.md
-      # - EmbedPy objects: ml/embedpy/objects.md
-      # - Function calls: ml/embedpy/functions.md
+      - Overview: ml/embedpy/index.md
+      - User guide: ml/embedpy/userguide.md
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
-    - JupyterQ: ml/jupyterq/index.md
+    - JupyterQ: 
+      - Overview: ml/jupyterq/index.md
+      - User guide: ml/jupyterq/notebooks.md
+      - FAQ: ml/jupyterq/faq.md
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
       - Overview: ml/toolkit/index.md
@@ -447,7 +448,16 @@ nav:
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
       - FRESH: ml/toolkit/fresh.md  
-    - Natural language processing: ml/nlp.md
+      - Cross validation: ml/toolkit/xval.md
+    - Natural language processing:
+      - Overview: ml/nlp/index.md
+      - User guide:
+        - Text manipulation: ml/nlp/userguide/preproc.md
+        - Text comparison: ml/nlp/userguide/comparisons.md
+        - Clustering: ml/nlp/userguide/clustering.md
+        - Data interrogation: ml/nlp/userguide/analysis.md
+        - Utilities: ml/nlp/userguide/utils.md
+        - Emails: ml/nlp/userguide/emails.md
   - Knowledge Base:
     - Introduction: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
@@ -499,7 +509,7 @@ nav:
     - Using .z: kb/using-dotz.md
     - Write-only RDB: kb/w-q.md
     - WebSockets: kb/websockets.md
-    - Windows Service: kb/windows-service.md
+    - Windows service: kb/windows-service/index.md
   - White papers: 
     - Index: wp/index.md
     - Bitcoin blockchains: wp/blockchain/index.md

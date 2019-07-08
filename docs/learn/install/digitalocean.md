@@ -59,7 +59,7 @@ q
 ```
 
 
-##<i class="fas fa-code"></i> Define q alias
+## <i class="fas fa-code"></i> Define q alias
 
 SSH from your local machine to your droplet. 
 Edit the Bash profile for non-login (i.e. non-interactive) sessions. 
@@ -103,7 +103,7 @@ boss@droplet:~$
 ```
 
 
-## Rlwrap
+## <i class="fas fa-code"></i> Rlwrap
 
 Interactive kdb+ sessions under Linux use Rlwrap to recall lines from the keyboard buffer. 
 This is less useful for the non-interactive sessions you run on your droplet. 

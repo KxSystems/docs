@@ -31,8 +31,8 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka.md)</td></tr>
 <tr><td>Python</td>
     <td>
-</i> [Using Python with kdb+ (PyQ)](pyq/)<br/>
-[Using Python with kdb+ (embedPy)](../ml/embedpy/) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning")
+</i> [Using kdb+ within Python (PyQ)](pyq/)<br/>
+[Using Python within kdb+ (embedPy)](../ml/embedpy/) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning")
     </td></tr>
 <tr><td>R</td><td>[Using R with kdb+](with-r.md#calling-q-from-r)</td>
 </tr>

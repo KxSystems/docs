@@ -13,29 +13,8 @@ $(function() {
 		}
 	});
     // Search engine call from Search box
-	// var kxSearch = 'https://code.kx.com/v2/search?query='; // >>> reverse-proxy on Nginx at code.kx.com
-	var kxSearch = 'https://code.kx.com/v2/search2?query='; // >>> reverse-proxy on Nginx at code.kx.com
-	var gsSearch = "https://www.google.com/search?q=site%3Acode.kx.com+";
-	var sendToG = function( str ) {
-		// send to GS queries with spaces, in PascalCase, hyphenated-phrases or words_joined_with_underscores
-		// UNLESS query begins with a .
-		if( str[0] === '.' ) {
-			return false;
-		} else {
-			var pc = /([A-Z][a-z0-9]+){2,}/g; 				// PascalCaseLikeThis
-			var hy = /^([A-Za-z0-9]+-)+[A-Za-z0-9]+$/; 		// hyphenated-phrases-like-this
-			var us = /^([A-Za-z0-9]+_)+[A-Za-z0-9]+$/; 		// underscored_words_like_this
-			return str.indexOf(' ') >= 0 || str.match(pc) || str.match(hy) || str.match(us);
-		}
-	}
-	var gsQuery = function( str ) {
-		// expand PascalCase, eg 'CompactingHdbSym' to 'Compacting Hdb Sym'
-		var separate = function( x ){return x +' ';};
-		var r = str.replace(/([A-Z][a-z0-9]+){2,}/g,function( x ){return x.replace(/[A-Z][a-z0-9]+/g,separate);})
-		// hyphens and underscores to spaces, eg 'Command-line' and 'command_line' to 'command line'
-		var r = r.replace(/[-|_]/g," ");
-		return encodeURIComponent(r);
-	};
+	var kxSearch = 'https://code.kx.com/v2/search?query='; // >>> reverse-proxy on Nginx at code.kx.com
+	var gsSearch = "https://www.google.com/search?q=site%3Acode.kx.com/v2/+";
 	var srchHandler =function( evt ) {
 		if( evt.which===13 ) {
 			var qry = $("[data-md-component=query]").val().trim();

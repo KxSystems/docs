@@ -124,28 +124,6 @@ q).p.py2q .p.getattr[obj]`y
 ```
 
 
-### Dictionary keys and values
-
-Two functions retrieve keys and values directly from a foreign dictionary, without performing the conversion to a q dictionary. 
-
--   `.p.pykey` returns the keys
--   `.p.pyvalue` returns the values
-
-In each case, the result is a `foreign` object.
-
-```q
-q)d:.p.pyeval"{'key1':1,'key2':2}"
-q).p.py2q d
-key1| 1
-key2| 2
-q).p.py2q .p.pykey d
-"key1"
-"key2"
-q).p.py2q .p.pyvalue d
-1 2
-```
-
-
 ## `.p` namespace 
 
 object             | description                                                                                                                             
@@ -161,7 +139,6 @@ object             | description
 .p.helpstr         | get docstring for `x` as q-string
 .p.i               | internal functions and objects 
 .p.import          | import module `x - symbol` and return result as embedPy
-.p.printpy         | print string representation of `x`
 .p.py2q            | convert `x - foreign` to q
 <span class="nowrap">.p.pycallable</span> | make `x` a callable embedPy object, which will return foreign results
 .p.pyeval          | evaluate `x - string` as Python code and return result as foreign

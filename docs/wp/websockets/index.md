@@ -435,7 +435,7 @@ function generateTableHTML(data){
         tableHTML += '<th>' + x + '</th>';
     }
     tableHTML += '</tr>';
-    for (var i = 0 i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
         /* loop through the rows, putting tags around each col value */
         tableHTML += '<tr>';
         for (var x in data[0]) {

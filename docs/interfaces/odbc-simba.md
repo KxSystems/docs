@@ -6,9 +6,10 @@ keywords: interface, kdb+, library, magnitude, odbc, odbc3, q, simba, sql
 
 
 
-!!! info "General availability for beta evaluation"
+!!! info "Current version"
 
-    Simba/Magnitude ODBC drivers, Beta evaluation, support kdb+ V3.5 and V3.6.
+    The latest version of Simba/Magnitude ODBC is 1.1, released 2019.07.04.
+
 
 The Simba Kdb+ ODBC Driver enables Business Intelligence (BI), analytics, and reporting on kdb+ data. The driver complies with the ODBC 3.80 data standard and adds important functionality such as Unicode, as well as 32- and 64-bit support for high-performance computing environments on all platforms.
 
@@ -52,33 +53,19 @@ is suitable for all users who are looking to access kdb+ data from their desktop
 [_Installation and Configuration Guide_](/download/simba-kdb-odbc-install-and-configuration-guide.pdf)
 (PDF 1.5MB)
 
-### <i class="fab fa-linux"></i> Linux
-
--   64-bit: [`simbakdb-1.0.0.1001-1.x86_64.rpm`](/download/simbakdb-1.0.0.1001-1.x86_64.rpm) (21MB)
--   32-bit: [`simbakdb-1.0.0.1001-1.i686.rpm`](/download/simbakdb-1.0.0.1001-1.i686.rpm) (21MB)
-
-
-### <i class="fab fa-apple"></i> macOS
-
--   [`simba-kdb-1.0.dmg`](/download/simba-kdb-1.0.dmg) (37MB)
-
-
-### <i class="fab fa-windows"></i> Windows
-
--   64-bit: [`simba-kdb-1.0-64-bit.msi`](/download/simba-kdb-1.0-64-bit.msi) (16MB)
--   32-bit: [`simba-kdb-1.0-32-bit.msi`](/download/simba-kdb-1.0-32-bit.msi) (17MB)
--   Common config file: [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc) (2kB)
+os | bit | file | size | md5
+---|-----|------|------|-------------------------
+Linux | 64 | [`simbakdb-1.1.0.1000-1.x86_64.rpm`](/download/simbakdb-1.1.0.1000-1.x86_64.rpm) | 20MB | `f01e05f05f40fc16c3c29254b1ba25bc`
+Linux | 32 | [`simbakdb-1.1.0.1000-1.i686.rpm`](/download/simbakdb-1.1.0.1000-1.i686.rpm) | 20MB | `59e454a35a1b7c1f8d7ec22926688470`
+macOS |    | [`simba-kdb-1.1.dmg`](/download/simba-kdb-1.1.dmg) | 35MB | `fcb7db71b7bd461e72d6df74f2056a32`
+Windows | 64 | [`simba-kdb-1.1-64-bit.msi`](/download/simba-kdb-1.1-64-bit.msi) | 17MB | `3844c00a9922f772fae584baecd4c71c`
+Windows | 32 | [`simba-kdb-1.1-32-bit.msi`](/download/simba-kdb-1.1-32-bit.msi) | 16MB | `f69dc00d6b00320914a3f5aae9a34804`
+Windows | | [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc)<br/>(Common config file) | 2kB | `bdc05a4eb0a3b5602d210446da06d25c`
 
 
-
+<!-- 
 ## Prior releases
 
 The biggest change from previous releases is that with this version you install and run the driver entirely from the client perspective.
 
-
-
-## Support
-
-We are seeking feedback for this Beta test phase.
-
-For support _only during_ the beta test phase, please use tech@kx.com as a gateway for support cases for Simba.
+ -->

@@ -1,8 +1,11 @@
 ---
 description: Technical documentation and resources for q and kdb+ developers
+keywords: code, cloud, contact, cookbook, developer, documentation, download, fd, first derivatives, github, ide, interface, kdb+, knowledge base, kx, programming, q, reference, support, tutorial, white paper
 ---
-
 # Get going with kdb+
+
+
+
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
@@ -18,17 +21,23 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](/interfaces/odbc-simba/)</p>
+    
+    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-glasses"></i> [Kdb+ Windows service](/kb/windows-service/)</p>
+    
     <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](/phrases/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Lightning&nbsp;tickerplants](wp/lightning-tickerplants/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Analyst](/analyst/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Developer](/developer/)</p>
-    
 </div>
 
 </div>
+
+[**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
+<i class="fas fa-download"></i>
+[Free download](/developer/getting-started)
 
 <div style="clear: both">&nbsp;</div>
 

@@ -5,12 +5,10 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 
 # ![Jupyter](img/jupyter.png) Jupyter notebooks (JupyterQ)
 
-<div class="fusion" markdown="1">
-<i class="fas fa-share-alt"></i> [Machine learning](../ml/index.md)
-</div>
 
+JupyterQ provides a kdb+/q user with a kdb+/q kernel for the Jupyter project. This allows users to create Jupyter Notebooks and use JupyterHub both of which are very commonly used within the data science community.
 
-The JupyterQ library opens [Jupyter](https://jupyter.org) to q programmers.
+A full outline of the available functionality and installation instructions can be found in the machine learning section of this website at the link below.
 
 <i class="far fa-hand-point-right"></i> 
 Machine learning: [JupyterQ](../ml/jupyterq/index.md)

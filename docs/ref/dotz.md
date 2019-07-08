@@ -693,6 +693,9 @@ Syntax: `.z.q`
 
 Returns `1b` if Quiet Mode is set, else `0b`.
 
+<i class="far fa-hand-point-right"></i>
+[Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
+
 
 ## `.z.s` (self)
 
@@ -745,11 +748,30 @@ When kdb+ has completed executing a script passed as a command-line argument, an
 
 Syntax: `.z.u`
 
-Returns user’s name as a symbol.
+Returns the userid associated with the current handle.
 
 ```q
 q).z.u
 `demo
+```
+
+For 
+
+-   handle 0 (console) returns the userid under which the process is running.
+-   handles > 0 returns either:
+    -   on the server end of a connection, the userid as passed to `hopen` by the client
+    -   on the client end of a connection, the null symbol `` ` ``
+
+```q
+q).z.u                  / console is handle 0
+`charlie
+q)0".z.u"               / explicitly using handle 0
+`charlie
+q)h:hopen`:localhost:5000:geoffrey:geffspasswd
+q)h".z.u"               / server side .z.u is as passed by the client to hopen
+`geoffrey
+q)h({.z.w".z.u"};::)    / client side returns null symbol 
+`
 ```
 
 

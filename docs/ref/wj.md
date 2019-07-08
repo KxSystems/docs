@@ -48,12 +48,15 @@ For `wj`, the prevailing quote on entry to the window is considered valid as quo
 
 `wj1` considers quotes on or after entry to the window. If the join is to consider quotes that arrive from the beginning of the interval, use `wj1`.
 
-Prior to V3.0, `wj1` considers only quotes in the window except for the window end (i.e. quotes &gt;= start and &lt; end).
+Prior to V3.0, `wj1` considers only quotes in the window except for the window end (i.e. quotes ≥start and &lt;end of the interval).
 
 | version | wj1  |  wj               |
 |---------|------|-------------------|
 | 3.0     | `[]` | prevailing + `[]` |
 | 2.7/2.8 | `[)` | prevailing + `[]` |
+
+<i class="fab fa-wikipedia-w"></i>
+[Notation for intervals](https://en.wikipedia.org/wiki/Interval_(mathematics)#Notations_for_intervals "Wikipedia")
 
 
 ```q
