@@ -53,22 +53,14 @@ is suitable for all users who are looking to access kdb+ data from their desktop
 [_Installation and Configuration Guide_](/download/simba-kdb-odbc-install-and-configuration-guide.pdf)
 (PDF 1.5MB)
 
-### <i class="fab fa-linux"></i> Linux
-
--   64-bit: [`simbakdb-1.1.0.1000-1.x86_64.rpm`](/download/simbakdb-1.1.0.1000-1.x86_64.rpm) (21MB)
--   32-bit: [`simbakdb-1.1.0.1000-1.i686.rpm`](/download/simbakdb-1.1.0.1000-1.i686.rpm) (21MB)
-
-
-### <i class="fab fa-apple"></i> macOS
-
--   [`simba-kdb-1.1.dmg`](/download/simba-kdb-1.1.dmg) (35MB)
-
-
-### <i class="fab fa-windows"></i> Windows
-
--   64-bit: [`simba-kdb-1.1-64-bit.msi`](/download/simba-kdb-1.1-64-bit.msi) (17MB)
--   32-bit: [`simba-kdb-1.1-32-bit.msi`](/download/simba-kdb-1.1-32-bit.msi) (16MB)
--   Common config file: [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc) (2kB)
+os | bit | file | size | md5
+---|-----|------|------|-------------------------
+Linux | 64 | [`simbakdb-1.1.0.1000-1.x86_64.rpm`](/download/simbakdb-1.1.0.1000-1.x86_64.rpm) | 20MB | `f01e05f05f40fc16c3c29254b1ba25bc`
+Linux | 32 | [`simbakdb-1.1.0.1000-1.i686.rpm`](/download/simbakdb-1.1.0.1000-1.i686.rpm) | 20MB | `59e454a35a1b7c1f8d7ec22926688470`
+macOS |    | [`simba-kdb-1.1.dmg`](/download/simba-kdb-1.1.dmg) | 35MB | `fcb7db71b7bd461e72d6df74f2056a32`
+Windows | 64 | [`simba-kdb-1.1-64-bit.msi`](/download/simba-kdb-1.1-64-bit.msi) | 17MB | `3844c00a9922f772fae584baecd4c71c`
+Windows | 32 | [`simba-kdb-1.1-32-bit.msi`](/download/simba-kdb-1.1-32-bit.msi) | 16MB | `f69dc00d6b00320914a3f5aae9a34804`
+Windows | | [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc)<br/>(Common config file) | 2kB | `bdc05a4eb0a3b5602d210446da06d25c`
 
 
 <!-- 
