@@ -92,7 +92,7 @@ q)
 ## `-7!x` (`hcount`)
 
 <i class="far fa-hand-point-right"></i> 
-[`hcount`](../ref/hcount.md)
+[`hcount`](../ref/handles.md#hcount)
 
 
 ## `-8!x` (to bytes)
