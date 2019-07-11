@@ -1,7 +1,7 @@
 /*
  * Custom script for code.kx.com/v2
  * Author: stephen@kx.com
- * Version: 2019.06.15
+ * Version: 2019.06.12
  * https://gist.github.com/wpscholar/4637176#file-jquery-external-links-new-window-js-L4
  */
 $(function() {
@@ -19,8 +19,7 @@ $(function() {
 		if( evt.which===13 ) {
 			var qry = $("[data-md-component=query]").val().trim();
 			if( qry !== "" ) {
-				// var url = ( qry.indexOf(' ') >= 0 ? gsSearch : kxSearch ) + encodeURIComponent(qry);
-				var url = sendToG(qry) ? gsSearch + gsQuery(qry) : kxSearch + encodeURIComponent(qry);
+				var url = ( qry.indexOf(' ') >= 0 ? gsSearch : kxSearch ) + encodeURIComponent(qry);
 				console.log(url);
 				window.location = url;
 			};
