@@ -1,3 +1,6 @@
+---
+keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
+---
 # <i class="fas fa-certificate"></i> Licensing
 
 
@@ -42,6 +45,8 @@ Welcome to kdb+ 32bit edition
 Use of commercial kdb+ is covered by your license agreement with Kx.
 
 Your copy of kdb+ will need access to a valid license key file.
+
+If you wish to begin using kdb+ commercially, please contact sales@kx.com.
 
 
 ## License key files
