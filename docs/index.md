@@ -21,9 +21,9 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](/interfaces/odbc-simba/)</p>
+    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba/)</p>
     
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-glasses"></i> [Kdb+ Windows service](/kb/windows-service/)</p>
+    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-glasses"></i> [Kdb+ Windows service](kb/windows-service/)</p>
     
     <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](/phrases/)</p>
     
