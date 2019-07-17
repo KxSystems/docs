@@ -421,14 +421,20 @@ q)r~10?10
 1b
 ```
 
-!!! note "Since V3.1 2013.08.19"
+Allows user to save and restore state of the rng. 
+(Since V3.6 2017.09.26.)
 
-    Since V3.1 the behavior is as follows.
+```q
+q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
+```
 
-    Random-number generation (rng) is thread-local.
+!!! note "Thread-local"
+
+    Since V3.1 2013.08.19 random-number generation (rng) is thread-local.
     `\S 1234` sets the seed for the rng for the main thread only.
     The rng in a slave thread is assigned a seed based on the slave thread number.
-    In multithreaded input mode, the seed is based on socket descriptor.
+
+    In multithreaded input mode, the seed is based on the socket descriptor.
     Instances started on ports 20000 through 20099 (slave procs, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
 
 
