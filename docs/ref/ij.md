@@ -16,7 +16,7 @@ Syntax: `t1 ijf t2`, `ijf[t1;t2]`
 Where 
 
 -   `t1` and `t2` are tables
--   `t2` is keyed, and its key columnns are columns of `t1`
+-   `t2` is keyed, and its key columns are columns of `t1`
 
 returns two tables joined on the key columns of the second table. 
 The result has one combined record for each row in `t1` that matches a row in `t2`.
