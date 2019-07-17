@@ -127,6 +127,25 @@ q){a:1000;f x}1  / f reads a in root
 43
 ```
 
+Local variables are identified on parsing and initialized as `()` (empty list). Assignments within code branches (never recommended) can produce unexpected results. 
+
+```q
+q)t:([]0 1)
+q){select from t}[]                       / global t
+x
+-
+0
+1
+q){if[x;t:([]`a`b)];select from t} 1b     / local t
+x
+-
+a
+b
+q) {if[x;t:([]`a`b)];select from t} 0b     / local t is ()
+'type
+  [4]  {if[x;t:([]`a`b)];select from t}
+                         ^
+```
 
 ## Multiline definition
 
