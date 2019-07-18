@@ -40,7 +40,7 @@ Solaris is supported, but has not been tested recently.
 V2.8+
 
 -   <i class="fas fa-download"></i> [Download](https://kx.com/download)
--   <i class="far fa-hand-point-right"></i> [Install](../../../learn/install/)
+-   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/index.md)
 
 ### Python
 

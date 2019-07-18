@@ -641,7 +641,7 @@ This allows a user to handle remote qcon connections (via `.z.pq`) without defin
 
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: 
-[Firewalling](../../kb/firewalling) for locking down message handlers.
+[Firewalling](../kb/firewalling.md) for locking down message handlers.
 
 
 ## `.z.ps` (set)

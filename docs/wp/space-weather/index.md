@@ -601,7 +601,7 @@ in the Capital Markets Training Program.
 
 [3] OMNI Web: <ftp://spdf.gsfc.nasa.gov/pub/data/omni/>, accessed 30 October 2018.
 
-[4] National Oceanic and Atmospheric Administration: [GOES SEM Data Files]( https://satdat.ngdc.noaa.gov/sem/goes/data/full/), accessed 30 October 2018.
+[4] National Oceanic and Atmospheric Administration: [GOES SEM Data Files](https://satdat.ngdc.noaa.gov/sem/goes/data/full/), accessed 30 October 2018.
 
 [5] [CARISMA: University of Alberta](http://data.carisma.ca/FGM/1Hz/), accessed 30 October 2018.
 

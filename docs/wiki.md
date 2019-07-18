@@ -7,7 +7,7 @@ The Kx wiki was the primary documentation for q and kdb+ until January 2017.
 The content, which runs on [Mediawiki](http://mediawiki.org), 
 has now been [archived on GitHub](https://github.com/kxsystems/wiki).
 
-The current **reference card** can be found [**here**](https://code.kx.com/v2/ref).
+The current **reference card** can be found [**here**](https://code.kx.com/v2/ref/).
 
 Inquiries to <librarian@kx.com>. 
 

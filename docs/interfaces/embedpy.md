@@ -12,4 +12,4 @@ As a result Python variables or objects become q variables or objects and both l
 A full outline of the available functionality and installation instructions can be foundin the machine learning section of this website at the link below.
 
 <i class="far fa-hand-point-right"></i>
-Machine learning: [embedPy](../../ml/embedpy/)
+Machine learning: [embedPy](../ml/embedpy/index.md)

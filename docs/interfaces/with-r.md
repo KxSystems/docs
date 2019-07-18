@@ -73,7 +73,7 @@ Considering the potential size of the data, it is probably more likely that the 
 ### rkdb: R client for kdb+
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../fusion)
+<i class="fab fa-superpowers"></i> [Fusion for kdb+](fusion.md)
 </div>
 
 Connects R to a kdb+ database to extract partially analyzed data into R 

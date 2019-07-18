@@ -15,7 +15,7 @@ It can be applied to datasets such as emails, online articles and comments, twee
 
 The following requirements cover those needed to initialize running of the NLP library
 
--   [embedPy](../embedpy/)
+-   [embedPy](../embedpy/index.md)
 
 A number of Python dependencies also exist for this library. These can be installed as outlined at
 

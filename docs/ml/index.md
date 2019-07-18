@@ -10,7 +10,7 @@ keywords: Python, Jupyter, natural language processing, nlp, machine learning, m
 
 **Machine-learning** capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 
-<i class="far fa-hand-point-right"></i> [How to set up](setup) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build.
+<i class="far fa-hand-point-right"></i> [How to set up](setup.md) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build.
 
 ## Anaconda
 
@@ -20,7 +20,7 @@ Users can now install kdb+/q along with our supported Python and Machine Learnin
 
 ## embedPy
 
-[EmbedPy](embedpy/) loads Python into kdb+/q, allowing access to a rich ecosystem of libraries such as scikit-learn, tensorflow and pytorch.
+[EmbedPy](embedpy/index.md) loads Python into kdb+/q, allowing access to a rich ecosystem of libraries such as scikit-learn, tensorflow and pytorch.
 
 -   Python variables and objects become q variables – and either language can act upon them. 
 -   Python code and files can be embedded within q code.
@@ -31,7 +31,7 @@ Users can now install kdb+/q along with our supported Python and Machine Learnin
 
 ## JupyterQ
 
-[JupyterQ](jupyterq/) supports Jupyter notebooks for q, providing
+[JupyterQ](jupyterq/index.md) supports Jupyter notebooks for q, providing
 
 -   Syntax highlighting, code completion and help
 -   Multiline input (script-like execution)
@@ -40,7 +40,7 @@ Users can now install kdb+/q along with our supported Python and Machine Learnin
 
 ## Machine Learning Toolkit
 
-The [Machine Learning Toolkit](toolkit/) is at the core of kdb+/q centered machine-learning functionality. This library contains functions that cover the following areas.
+The [Machine Learning Toolkit](toolkit/index.md) is at the core of kdb+/q centered machine-learning functionality. This library contains functions that cover the following areas.
 
 -  Accuracy [metrics](toolkit/utilities/metric.md) to test the performance of constructed machine-learning models.
 -  [Pre-processing](toolkit/utilities/preproc.md) data prior to the application of machine-learning algorithms.
@@ -55,7 +55,7 @@ The library is available [here](https://github.com/KxSystems/ml).
 
 ## Natural Language Processing 
 
-[NLP](nlp) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp).
+[NLP](nlp/index.md) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp/index.md).
 
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/ML07%20Natural%20Language%20Processing.ipynb)
 

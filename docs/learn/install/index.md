@@ -45,9 +45,9 @@ Numerical release versions of the form 2.8, or 3.5 are production code. Versions
 
 Follow the installation instructions for your operating system:
 
--   <i class="fab fa-linux"></i> [Linux](linux)
--   <i class="fab fa-apple"></i> [macOS](macos)
--   <i class="fab fa-windows"></i> [Windows](windows)
+-   <i class="fab fa-linux"></i> [Linux](linux.md)
+-   <i class="fab fa-apple"></i> [macOS](macos.md)
+-   <i class="fab fa-windows"></i> [Windows](windows.md)
 
 
 ## <i class="fas fa-certificate"></i> Licenses

@@ -27,12 +27,12 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <table class="kx-compact" markdown="1">
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
-<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning") ==new==</td>
+<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") ==new==</td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka.md)</td></tr>
 <tr><td>Python</td>
     <td>
-</i> [Using kdb+ within Python (PyQ)](pyq/)<br/>
-[Using Python within kdb+ (embedPy)](../ml/embedpy/) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning")
+</i> [Using kdb+ within Python (PyQ)](pyq/index.md)<br/>
+[Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning")
     </td></tr>
 <tr><td>R</td><td>[Using R with kdb+](with-r.md#calling-q-from-r)</td>
 </tr>
@@ -52,9 +52,9 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </tr>
 <tr><td>amCharts</td><td><i class="fab fa-github"></i> [kxcontrib/cburke/amcharts](https://github.com/kxcontrib/cburke/tree/master/amcharts/)</td></tr>
 <tr><td>AQuery</td><td><i class="fab fa-github"></i> [josepablocam/aquery](https://github.com/josepablocam/aquery) ==new==</td></tr>
-<tr><td>C</td><td>[C client for kdb+](c-client-for-q)</td></tr>
+<tr><td>C</td><td>[C client for kdb+](c-client-for-q.md)</td></tr>
 <tr><td>CZMQ</td><td><i class="fab fa-github"></i> [jaeheum/qzmq](https://github.com/jaeheum/qzmq)</i></td></tr>
-<tr><td>C#</td><td>[C# client for kdb+](csharp-client-for-q/)<br/>
+<tr><td>C#</td><td>[C# client for kdb+](csharp-client-for-q.md)<br/>
 <i class="fab fa-github"></i> [exxeleron/qSharp](https://github.com/exxeleron/qSharp)</td></tr>
 <tr>
     <td>Erlang</td>
@@ -81,7 +81,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <i class="fab fa-github"></i> [jkozlowski/kdb-haskell](https://github.com/jkozlowski/kdb-haskell)
     </td>
 </tr>
-<tr><td>J</td><td>[J client for kdb+](j-client-for-q/)</td></tr>
+<tr><td>J</td><td>[J client for kdb+](j-client-for-q.md)</td></tr>
 <tr>
     <td>Java</td>
     <td>
@@ -92,7 +92,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </tr>
 <tr>
     <td>JDBC</td>
-    <td>[JDBC client for kdb+](jdbc-client-for-kdb/)</td>
+    <td>[JDBC client for kdb+](jdbc-client-for-kdb.md)</td>
 </tr>
 <tr>
     <td>JavaScript</td>
@@ -143,7 +143,6 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>PLplot</td><td><i class="fab fa-github"></i> [jaeheum/qplplot](https://github.com/jaeheum/qplplot)</td></tr>
 <tr><td>Python</td>
     <td>
-<!-- [Using Python with kdb+](with-python/)<br/> -->
 <i class="fab fa-github"></i> [brogar/pykdb](https://github.com/brogar/pykdb)<br/>
 <i class="fab fa-github"></i> [enlnt/pyk](https://github.com/enlnt/pyk)<br/>
 <!-- <i class="fab fa-github"></i> [enlnt/pyq](https://github.com/enlnt/pyq)<br/> -->
@@ -161,7 +160,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <i class="fab fa-github"></i> [jnordwick/rik](https://github.com/jnordwick/rik)
     </td>
 </tr>
-<tr><td>Scala</td><td>[Scala client for kdb+](scala-client-for-q/)</td></tr>
+<tr><td>Scala</td><td>[Scala client for kdb+](scala-client-for-q.md)</td></tr>
 </table>
 
 
@@ -177,7 +176,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
         <i class="fab fa-github"></i> [jlucid/qexplorer](https://github.com/jlucid/qexplorer)
     </td>
 </tr>
-<tr><td>Bloomberg</td><td>[Q client for Bloomberg](q-client-for-bloomberg)</td></tr>
+<tr><td>Bloomberg</td><td>[Q client for Bloomberg](q-client-for-bloomberg.md)</td></tr>
 <tr><td>[BosonNLP](http://bosonnlp.com/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
 <tr><td>CUDA</td><td>[GPUs](gpus.md)</td></tr>
 <tr><td>Expat XML parser</td><td><i class="fab fa-github"></i> [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
@@ -195,7 +194,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>JDBC</td><td><i class="fab fa-github"></i> [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
 <tr><td>Lightning</td><td><i class="fab fa-github"></i> [jlucid/qlnd](https://github.com/jlucid/qlnd)</td></tr>
 <tr><td>MQTT</td><td><i class="fab fa-github"></i> [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
-<tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc)<br/>
+<tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc.md)<br/>
 <i class="fab fa-github"></i> [johnanthonyludlow/kdb/docs/odbc.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/odbc.pdf)</td></tr>
 <tr><td>Philips Hue</td><td><i class="fab fa-github"></i> [jparmstrong/qphue](https://github.com/jparmstrong/qphue)</td></tr>
 <tr><td>R</td><td>[Using R with kdb+](with-r.md#calling-r-from-q)</td></tr>

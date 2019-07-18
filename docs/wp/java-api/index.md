@@ -897,7 +897,7 @@ the same as that covered here.
 ### Extracting the table schema
 
 Typical subscriber processes are required to make an initial subscription request to the tickerplant in order to receive data. 
-See the [publish and subscribe](../../kb/publish-subscribe) Knowledge Base article for details. 
+See the [publish and subscribe](../../kb/publish-subscribe.md) Knowledge Base article for details. 
 This request involves calling the `.u.sub` function with two
 parameters. The first parameter is the table name and the second is a
 list of symbols for subscription. (Specifying a backtick in any of the

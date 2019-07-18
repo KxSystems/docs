@@ -41,7 +41,7 @@ The best resource for learning q. It includes:
 
 ### Other material
 
-Several background articles and links can be found in the [Archive](../archive). For example, the Thalesians’ [Knowledge Base Kdb](http://www.thalesians.com/finance/index.php/Knowledge_Base/Databases/Kdb) has a good overview.
+Several background articles and links can be found in the [Archive](../archive.md). For example, the Thalesians’ [Knowledge Base Kdb](http://www.thalesians.com/finance/index.php/Knowledge_Base/Databases/Kdb) has a good overview.
 
 
 ### Discussion groups

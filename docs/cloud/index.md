@@ -1,5 +1,5 @@
 # <i class="fas fa-cloud"></i> Cloud
 
 
--   [Amazon Web Services](aws/)
--   [Google Cloud Platform Marketplace](gcpm/)
+-   [Amazon Web Services](aws/index.md)
+-   [Google Cloud Platform Marketplace](gcpm/index.md)

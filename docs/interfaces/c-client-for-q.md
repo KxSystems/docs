@@ -614,7 +614,7 @@ if(handle==-3){K x=ee(sslInfo((K)0));printf("Init error %s\n",xt==-128?x->s:"unk
 
 A restriction for SSL/TLS connections – these can be used from the initialization thread only, i.e. the thread which first calls any `khp` function since the start of the application.
 
-The lib is sensitive to the same environment variables as kdb+, noted at [Knowledge Base: SSL/TLS](../../kb/ssl)
+The lib is sensitive to the same environment variables as kdb+, noted at [Knowledge Base: SSL/TLS](../kb/ssl.md)
 
 The OpenSSL libs are loaded dynamically,  the first time a TLS connection is requested. It may be forced on startup with
 
