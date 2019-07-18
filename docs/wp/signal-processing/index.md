@@ -1,10 +1,10 @@
 ---
 title: Signal processing and q
+description: Signal processing is the analysis, interpretation and manipulation of signals to reveal important information. Signals of interest include human speech, seismic waves, images of faces or handwriting, brainwaves, radar, traffic counts and many others. This processing reveals information in a signal that can be obscured by non-useful information, commonly called ‘noise’.
 keywords: kdb+, processing, q, signal
 author: Callum Biggs
 date: August 2018
 ---
-
 # Signal processing and q
 
 
@@ -859,7 +859,7 @@ in its Capital Markets Training Program.
 I would like to acknowledge the Machine Learning Repository 
 hosted by the University of California, Irvine, for providing the
 real-world data sets used as sample input data sets for the
-methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.html) has an enormous number of freely-available datasets.
+methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.php) has an enormous number of freely-available datasets.
 
 
 ## Notes

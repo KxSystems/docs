@@ -155,7 +155,7 @@ are built.
 
 explorer                                                | underlying database
 ------------------------------------------------------- | -------------------
-[blockexplorer.com](https://blockexplorer.com/)         | SQL                
+[blockexplorer.com](https://blockexplorer.com)          | SQL                
 [blockchain.com](https://www.blockchain.com/en/explorer)| SQL                
 [bitpay.com](https://insight.bitpay.com)                | MongoDB            
 

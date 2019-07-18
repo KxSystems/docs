@@ -1,13 +1,16 @@
 ---
+title: Corporate actions – q and kdb+ Knowledge Base
+description: Even routine corporate actions can have a significant impact on prices, volume and volatility. With q one typically captures raw tick data, and should a corporate action influence a previously captured price, an adjustment factor is applied to that raw data – this can be done on-the-fly, and hence can also be selective about which types of corporate actions are applied.
 keywords: actions, corporate, kdb+, q
 ---
-
 # Corporate actions
+
+
 
 
 Even routine corporate actions can have a significant impact on prices, volume and volatility. With q one typically captures raw tick data, and should a corporate action influence a previously captured price, an adjustment factor is applied to that raw data – this can be done on-the-fly, and hence can also be selective about which types of corporate actions are applied.
 
-Q is data-vendor agnostic, and as such you are free to choose which vendor to source corporate actions data from, one being [ActionsExchange](https://www.actionsxchange.com) who provide corporate action updates several times per day via an FTP site in a well-documented fixed-width ASCII format, or [ISO15022 MT564](http://www.iso15022.org/UHB/UHB2007/FINMT564.htm). [Telekurs](https://www.six-financial-information.com/en/site/six-id.html) and [bme](http://www.bmemarketdata.es/) are other such vendors. 
+Q is data-vendor agnostic, and as such you are free to choose which vendor to source corporate actions data from, one being [ActionsExchange](https://www.actionsxchange.com) who provide corporate action updates several times per day via an FTP site in a well-documented fixed-width ASCII format, or [ISO15022 MT564](http://www.iso15022.org/UHB/UHB2007/FINMT564.htm). [Telekurs](https://www.six-group.com/financial-information/en/site/six-id-x/overview.html) and [bme](http://www.bmemarketdata.es/) are other such vendors. 
 
 If your vendor happens to provide adjustment factors, that is a nice-to-have, otherwise you’ll be tasked with calculating the adjustment factor from first principles – not difficult, but you’ll need further data such as close prices. Also, your corporate action vendor may provide each action with a confidence measure. 
 

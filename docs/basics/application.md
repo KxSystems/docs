@@ -92,7 +92,7 @@ q)1000+\2 3 4                   / derived function
 
 ## Apply operator
 
-All applicable values can be applied by the [Apply](../ref/apply) operator. 
+All applicable values can be applied by the [Apply](../ref/apply.md) operator. 
 
 ```q
 q)"abcdef" . 1 4 3                      / list applied to its indexes

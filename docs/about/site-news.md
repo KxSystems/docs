@@ -1,8 +1,11 @@
 ---
+title: Site news – code.kx.com 
+description: News of changes to the q and kdb+ documentation site
+auithor: Stephen Taylor
 keywords: blog, kdb+, news, q, site
 ---
 
-# <i class="far fa-newspaper"></i> Site news
+# <i class="fas fa-newspaper"></i> Site news
 
 
 ## V1

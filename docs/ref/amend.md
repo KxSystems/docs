@@ -1,4 +1,6 @@
 ---
+title: Amend, Amend At
+description: Operators Amend and Amend At modify one or more items in a list.
 keywords: amend, amend at, at, dot, kdb+, q
 ---
 
@@ -42,7 +44,8 @@ Call the items selected by `d . i` or `d@i` the _selection_.
 
 If `d` is an **atom** other than a dictionary or a handle and `i` is an empty list, then all of `d` is modified.
 
-If `d` is a **list** and `i` is **nil**, then all of `d` is amended, but one item at a time, as if `i` were `key d`. ==FIXME Confirm. Example==
+If `d` is a **list** and `i` is **nil**, then all of `d` is amended, but one item at a time, as if `i` were `key d`. 
+<!-- FIXME Confirm. Example -->
 
 In the case of a non-empty list `i`, the value `u` or `v` is evaluated once for every path generated from `i`, just as the above definition indicates. 
 
@@ -88,7 +91,7 @@ The new value/s of `d . i` are determined by the third argument, and whether `i`
 `v`          | `v[d . i; y . i]` | `v'[d . i; y . i]`
 
 
-==FIXME Replace `'` in definition with recursion?==
+<!-- FIXME Replace `'` in definition with recursion? -->
 
 
 ## Examples
@@ -240,9 +243,9 @@ Amend:{[d;F;R;v;y]
              Amend[;; R;;]/[d; F; v; y]}
 ```
 
-==FIXME Revise definition: Atom; nil==
+<!-- FIXME Revise definition: Atom; nil -->
 
-Note the application of [Over](FIXME) to Amend, which requires that whenever `F` is not an atom, either `y` is an atom or `count F` equals `count y`. Over is used to accumulate all changes in the first argument `d`.
+Note the application of [Over](accumulators.md) to Amend, which requires that whenever `F` is not an atom, either `y` is an atom or `count F` equals `count y`. Over is used to accumulate all changes in the first argument `d`.
 
 
 ## Accumulate

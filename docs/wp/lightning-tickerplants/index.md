@@ -166,7 +166,7 @@ $ bitcoind -daemon
 
 One way to confirm the local node is in sync with the rest of the network is by comparing the 
 block height with another public node. In the example below, a comparison is made against
-[blockexplorer.com](https://blockexplorer.com/).
+[blockexplorer.com](https://blockexplorer.com).
 
 ```bash
 # Extract the block height from blockexplorer.com

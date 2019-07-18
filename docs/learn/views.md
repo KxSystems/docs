@@ -269,5 +269,11 @@ q){a}peach 0 1
 
 Views are not parsable, e.g. `eval parse "a::b+c"`
 
-<i class="far fa-hand-point-right"></i> [`view`](../ref/metadata/#view), [`views`](../ref/view.md), [`\b`](../basics/syscmds/#b-views "views"), [`\B`](../basics/syscmds/#b-pending-views "pending views"), [`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"), [`.z.vs`](../ref/dotz.md#zvs-value-set "value set")
+<i class="far fa-hand-point-right"></i> 
+[`view`](../ref/view.md), [`views`](../ref/view.md)  
+System commands: [`\b`](../basics/syscmds.md#b-views "views"), 
+[`\B`](../basics/syscmds.md#b-pending-views "pending views")  
+Namespaces: [`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"), 
+[`.z.vs`](../ref/dotz.md#zvs-value-set "value set")
+
 

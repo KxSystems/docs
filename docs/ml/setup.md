@@ -1,9 +1,10 @@
 ---
 title: Set up your machine-learning environment
-keywords: Docker, embedPy, Jupyter, ml, machine learning, Python
+description: How to set up an environment in which to work on Machine Learning within kdb+ and q
+keywords: anaconda, conda, docker, embedpy, jupyter, ml, machine learning, python
 ---
-
 # <i class="fas fa-share-alt"></i> Setting up your machine-learning environment
+
 
 There are three methods available to set up an environment in which to work on Machine Learning within kdb+/q: 
 
