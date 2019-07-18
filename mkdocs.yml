@@ -44,7 +44,7 @@ markdown_extensions:
   # - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
   - toc:
-      permalink: true
+      permalink: false
 plugins: 
   - search
   # - markdownextradata
