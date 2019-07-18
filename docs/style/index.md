@@ -4,7 +4,7 @@ author: Stevan Apter
 keywords: kdb+, q, style
 ---
 
-# Introduction
+# Preface
 
 ![Remarks on Style](img/qros.png)
 

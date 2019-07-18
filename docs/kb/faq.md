@@ -1,8 +1,10 @@
 ---
+title: Frequently-asked questions about kdb+
+description: Frequently-asked questions about kdb+
 keywords: aggregate, csv, delete, export, faq, kdb+, mdb, null, odbc, q, script, shebang, sql, update, upsert
 ---
 
-# Frequently-asked questions
+# Frequently-asked questions about kdb+
 
 
 ## How do q tables differ from SQL relations ?

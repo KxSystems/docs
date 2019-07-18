@@ -93,7 +93,7 @@ nav:
     - Q for All: learn/q-for-all.md
     - Q for Mortals 3: /q4m3
     - Remarks on Style:
-      - Introduction: style/index.md
+      - Preface: style/index.md
       - Maxims: style/maxims.md
       - Names: style/names.md
       - Default arguments: style/default-arguments.md
@@ -130,7 +130,7 @@ nav:
       - Omitted pages: style/omitted-pages.md
     - Shifts & scans: learn/shifts-scans.md
     - Starting kdb+: 
-      - Introduction: learn/startingkdb/index.md
+      - Overview: learn/startingkdb/index.md
       - The q language: learn/startingkdb/language.md
       - IPC: learn/startingkdb/ipc.md
       - Tables: learn/startingkdb/tables.md
@@ -306,10 +306,6 @@ nav:
       - Overloaded glyphs: ref/overloads.md
       - Add: ref/add.md
       - Amend: ref/amend.md
-      # - Amend At: ref/amend-at.md
-      # - Apply, Index: ref/apply-trap.md
-      # - Index: ref/index-dot.md
-      # - Index At: ref/index-at.md
       - Apply, Index, Trap: ref/apply.md
       - Cast: ref/cast.md
       - Coalesce: ref/coalesce.md
@@ -382,7 +378,7 @@ nav:
   - Interfaces:
     - Index: interfaces/index.md
     - Fusion for kdb+:
-      - Introduction: interfaces/fusion.md
+      - Overview: interfaces/fusion.md
       - FFI: interfaces/ffi.md
       - Java: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
@@ -429,7 +425,7 @@ nav:
       - J. Quobyte: cloud/aws/app-j-quobyte.md
     - Google CPM: cloud/gcpm/index.md
   - Machine learning:
-    - Introduction: ml/index.md
+    - Overview: ml/index.md
     - Set up: ml/setup.md
     - embedPy: 
       - Overview: ml/embedpy/index.md
@@ -452,14 +448,14 @@ nav:
     - Natural language processing:
       - Overview: ml/nlp/index.md
       - User guide:
-        - Text manipulation: ml/nlp/userguide/preproc.md
+        - Data preparation: ml/nlp/userguide/preproc.md
         - Text comparison: ml/nlp/userguide/comparisons.md
         - Clustering: ml/nlp/userguide/clustering.md
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
   - Knowledge Base:
-    - Introduction: kb/index.md
+    - Overview: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
     - Authentication and access: kb/authentication.md
     - Bulk Copy Program: kb/bcp.md

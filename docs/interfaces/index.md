@@ -1,8 +1,13 @@
 ---
-keywords: editor, github, integration, interface, kdb+, q
+title: Interfaces and editor integrations
+description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
+keywords: editor, github, integration, interface, kdb+, q, repository
 ---
 
 # Interfaces and editor integrations
+
+
+
 
 <i class="far fa-hand-point-right"></i> [General index](../github.md) of other kdb+ repositories
 

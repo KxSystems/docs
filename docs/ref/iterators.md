@@ -1,5 +1,8 @@
 ---
+title: Iterators
+description: The iterators (earlier known as adverbs) are native higher-order operators. They take applicable values as arguments and return derived functions.
 keywords: adverb, iterator, infix, iterate, iteration, kdb+, operator, postfix, unary, value, variadic
+author: Stephen Taylor
 ---
 
 

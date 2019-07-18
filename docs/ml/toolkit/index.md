@@ -1,4 +1,6 @@
 ---
+title: Machine-learning toolkit
+description: The toolkit contains libraries and scripts that provide kdb+/q users with general-use functions and procedures to perform machine-learning tasks on a wide variety of datasets.
 author: Conor McCarthy
 date: October 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
@@ -10,8 +12,8 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
-The toolkit contains a number of libraries and scripts. 
-These have been produced to provide kdb+/q users with general-use functions and procedures to perform machine-learning tasks on a wide variety of datasets.
+
+The toolkit contains libraries and scripts that provide kdb+/q users with general-use functions and procedures to perform machine-learning tasks on a wide variety of datasets.
 
 The toolkit contains:
 

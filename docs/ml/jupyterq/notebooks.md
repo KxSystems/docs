@@ -1,8 +1,13 @@
 ---
+title: JupyterQ user guide
+description: JupyterQ user guide
 author: Fionnuala Carr
 date: April 2019
 keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q, errors, connections, system
 ---
+# JupyterQ user guide
+
+
 
 ## Running code
 
@@ -20,6 +25,7 @@ The simplest case is running some code and getting a result. Note here:
 System commands can be used with the `\` escape character at the start of a line in a code cell.
 
 !!! warning
+
 	Namespace setting using `\d` operates on a per cell basis so cannot be set for an entire notebook
 	
 	![namespaces](img/namespace.png "Namespace setting")

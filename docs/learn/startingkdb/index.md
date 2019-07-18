@@ -1,7 +1,10 @@
 ---
 hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+title: Starting kdb+ – a tutorial
+description: A quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material.
+keywords: kdb+, q, start, tutorial, 
 ---
-# Introduction
+# Starting kdb+
 
 
 

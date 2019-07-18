@@ -1,10 +1,15 @@
 ---
+title: Frequently-asked questions about JupyterQ
+descrtiption: Frequently-asked questions about JupyterQ
 author: Fionnuala Carr
 date: April 2019
 keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q, faq
 ---
 
-# <i class="fa fa-share-alt"></i> Frequently asked questions
+# <i class="fa fa-share-alt"></i> Frequently-asked questions about JupyterQ
+
+
+
 
 ## Can I run the kernel remotely?
 

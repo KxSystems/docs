@@ -1,7 +1,8 @@
 ---
+title: Q client for J
+description: QJ is a C extension for q, working as a frontend of J engine DLL, so we can use the J engine and the J Application Library within q.
 keywords: api, client, interface, j, kdb+, q
 ---
-
 # ![J](img/j.png) Q client for J
 
 

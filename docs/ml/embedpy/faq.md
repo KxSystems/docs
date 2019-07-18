@@ -1,13 +1,16 @@
 ---
-keywords: embedpy, interface, kdb+, python, q
+title: Frequently-asked questions about embedPy
+description: Frequently-asked questions about embedPy
+keywords: dates, embedpy, interface, kdb+, pandas, python, q
 ---
 
-# <i class="fab fa-python"></i> Frequently-asked questions
+# <i class="fab fa-python"></i> Frequently-asked questions about embedPy
 
 
 ## How can I convert between q tables and pandas DataFrames?
 
 Using embedPy, we can directly convert between q tables to pandas Dataframes and vice-versa. This functionality is contained within the machine learning toolkit available [here](https://github.com/kxsystems/ml). The functions `.ml.tab2df` and `.ml.df2tab` control these conversions and are fully documented [here](../toolkit/utilities/util.md)
+
 
 ## How can I convert q dates to Python dates?
 

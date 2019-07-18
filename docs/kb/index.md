@@ -1,3 +1,9 @@
+---
+title: Knowledge Base for q and kdb+
+description: The Knowledge Base contains articles about how to get things done with kdb+.
+keywords: cookbook, how-to, q, kdb+
+---
+
 # Knowledge Base
 
 The Knowledge Base contains articles about how to get things done with kdb+.

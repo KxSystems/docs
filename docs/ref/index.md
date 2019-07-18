@@ -1,5 +1,7 @@
 ---
 title: Reference card - code.kx.com
+description: Quick reference for kdb+ and the q programming language
+author: Stephen Taylor
 keywords: card, index, kdb+, keywords, operators, q, reference
 ---
 

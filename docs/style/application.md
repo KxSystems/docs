@@ -1,12 +1,14 @@
 ---
+title: Style – application and indexing 
+description: In q, there are several ways to apply a function and index a variable. Underlying them all is the ur-function Apply/Index.
 hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
-keywords: kdb+, q, style
+keywords: apply, at, dot, index, kdb+, q, style, trap
 ---
+# Application and indexing 
 
-# All the forms of dot
 
-
+## All the forms of dot
 
 In q, there are several ways to apply a function and index a variable. Underlying them all is the _ur_-function [Apply/Index](../ref/apply.md)
 

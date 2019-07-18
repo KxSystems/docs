@@ -1,6 +1,8 @@
 ---
 keywords: kdb+, q, style
 hero: Site style guide
+title: Style guide for code.kx.com
+description: Typographical, spelling,markup and lexical conventions for the q and kdb+ documentation site
 ---
 
 # <i class="fas fa-pen-nib"></i> Style guide

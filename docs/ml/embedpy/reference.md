@@ -2,7 +2,7 @@
 keywords: embedpy, interface, kdb+, python, q
 ---
 
-# <i class="fab fa-python"></i> Reference 
+# <i class="fab fa-python"></i> Reference for embedPy
 
 
 ## Raw (foreign) data
