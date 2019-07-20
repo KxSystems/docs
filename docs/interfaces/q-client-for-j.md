@@ -6,6 +6,7 @@ keywords: api, client, interface, j, kdb+, q
 # ![J](img/j.png) Q client for J
 
 
+
 QJ is a C extension for q, working as a frontend of [J](http://jsoftware.com) engine DLL, so we can use the [J engine](http://www.jsoftware.com/help/dictionary/vocabul.htm) and the [J Application Library](http://www.jsoftware.com/jwiki/JAL/j701) within q. It has been tested on l64 with j701beta. 
 
 <i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qj](https://github.com/kxcontrib/zuoqianxu/tree/master/qj) 

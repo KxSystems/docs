@@ -1,7 +1,10 @@
 ---
+title: Simba/Magnitude ODBC
+description: How to use a the Simba ODBC Driver to connect to a kdb+ server process
+author: Glenn Wright
+date: March 2019
 keywords: interface, kdb+, library, magnitude, odbc, odbc3, q, simba, sql
 ---
-
 # <i class="fas fa-database"></i> Simba/Magnitude ODBC
 
 

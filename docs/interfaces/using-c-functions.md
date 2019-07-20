@@ -1,8 +1,11 @@
 ---
+title: C/C++ functions
+description: Functions can be written in C or C++ as shared objects and loaded into a kdb+ process for use in a q program.
+author: Charles Skelton
 keywords: api, c, c++, interface, kdb+, library, q
 ---
-
 # C/C++ functions
+
 
 
 Q functionality can be extended using dynamically-loaded modules. 

@@ -1,8 +1,10 @@
 ---
+title: JDBC client for kdb+
+description: How to connect a Java client program to a kdb+server process using the JDBC driver
 keywords: api, interface, java, jdbc, kdb+, library, q
 ---
+# <i class="fab fa-java"></i> JDBC client for kdb+
 
-# ![Java](img/java.jpg) JDBC client for kdb+
 
 
 <i class="fab fa-github"></i> 

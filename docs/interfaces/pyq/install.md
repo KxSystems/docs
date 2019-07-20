@@ -1,4 +1,7 @@
 ---
+title: Installing PyQ
+description: How to install the PyQ interface between kdb+ and Python
+author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 ---

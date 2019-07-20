@@ -1,8 +1,10 @@
 ---
-keywords: api, excel, interface, kdb+, library, q
+title: Excel client for kdb+
+description: How to connect a Microsoft Excel instance to a kdb+ server process
+keywords: api, excel, interface, kdb+, library, microsoft, q
 ---
+# ![Microsoft Excel](img/excel.png) Microsoft Excel™ client for kdb+
 
-# ![Microsoft Excel](img/excel.png) Excel client for kdb+
 
 
 ## Interfacing via HTTP and CSV files

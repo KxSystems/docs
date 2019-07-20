@@ -1,8 +1,12 @@
 ---
+title: C client for kdb+
+description: How to connect a C client program to a kdb+ server process
+author: Charles Skelton
 keywords: api, c, interface, kdb+, library, q
 ---
-
 # ![C](img/c.png) C client for kdb+
+
+
 
 <i class="far fa-hand-point-right"></i> 
 [C API reference](capiref.md)

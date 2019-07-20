@@ -2,11 +2,11 @@
 title: PyQ user guide
 description: PyQ lets you enjoy the power of kdb+ in a Python environment.
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
-authors: Alex Belopolsky, Aleks Bunin
+author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
 ---
-
 # ![PyQ](../img/pyq.png) PyQ user guide
+
 
 
 PyQ lets you enjoy the power of kdb+ in a comfortable environment provided by a mainstream programming language. In this guide we will assume that the reader has a working knowledge of Python, but we will explain the q language concepts as we encounter them.

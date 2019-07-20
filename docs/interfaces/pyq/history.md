@@ -1,9 +1,13 @@
 ---
-keywords: his6tory, interface, kdb+, library, pyq, python, q, version
+title: PyQ version history
+description: Version history of the PyQ interface between kdb+ and Python
+author: Alex Belopolsky, Aleks Bunin
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
+keywords: history, interface, kdb+, library, pyq, python, q, version
 ---
-
 # ![PyQ](../img/pyq.png) Version history
+
+
 
 ## Version 4.2.1
 

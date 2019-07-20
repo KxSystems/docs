@@ -3,8 +3,8 @@ title: Interfaces and editor integrations
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---
+# <i class="far fa-handshake"></i> Interfaces and editor integrations
 
-# Interfaces and editor integrations
 
 
 
@@ -62,7 +62,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>C#</td><td>[C# client for kdb+](csharp-client-for-q.md)<br/>
 <i class="fab fa-github"></i> [exxeleron/qSharp](https://github.com/exxeleron/qSharp)</td></tr>
 <tr>
-    <td>Erlang</td>
+    <td><i class="fab fa-erlang"></i> Erlang</td>
     <td>
 <i class="fab fa-github"></i> [exxeleron/qErlang](https://github.com/exxeleron/qErlang/)<br/>
 <i class="fab fa-github"></i> [republicwireless-open/gen_q](https://github.com/republicwireless-open/gen_q)<br/>
@@ -70,7 +70,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td>Excel</td>
+    <td><i class="fas fa-table"></i> Excel</td>
     <td>
 [Excel client for kdb+](excel-client-for-q.md)<br/>
 <i class="fab fa-github"></i> [exxeleron/qXL](https://github.com/exxeleron/qXL)<br/>
@@ -88,7 +88,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </tr>
 <tr><td>J</td><td>[J client for kdb+](j-client-for-q.md)</td></tr>
 <tr>
-    <td>Java</td>
+    <td><i class="fab fa-java"></i> Java</td>
     <td>
 <i class="fab fa-github"></i> [CharlesSkelton/jshow](https://github.com/CharlesSkelton/jshow)<br/>
 <i class="fab fa-github"></i> [exxeleron/qJava](https://github.com/exxeleron/qJava)<br/>
@@ -122,7 +122,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <i class="fab fa-github"></i> [dmarienko/kdbml](https://github.com/dmarienko/kdbml)</td></tr>
 <tr><td>NaCL</td><td><i class="fab fa-github"></i> [geocar/qsalt](https://github.com/geocar/qsalt)</td></tr>
 <tr>
-    <td>NodeJS</td>
+    <td><i class="fab fa-node-js"></i> NodeJS</td>
     <td>
 <i class="fab fa-github"></i> [geocar/qnode](https://github.com/geocar/qnode)<br/>
 <i class="fab fa-github"></i> [michaelwittig/node-q](https://github.com/michaelwittig/node-q)
@@ -139,14 +139,14 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td>PHP</td>
+    <td><i class="fab fa-php"></i> PHP</td>
     <td>
 <i class="fab fa-github"></i> [geocar/qphp](https://github.com/geocar/qphp)<br/>
 <i class="fab fa-github"></i> [johnanthonyludlow/kdb/docs/phptoq.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/phptoq.pdf)
     </td>
 </tr>
 <tr><td>PLplot</td><td><i class="fab fa-github"></i> [jaeheum/qplplot](https://github.com/jaeheum/qplplot)</td></tr>
-<tr><td>Python</td>
+<tr><td><i class="fab fa-python"></i> Python</td>
     <td>
 <i class="fab fa-github"></i> [brogar/pykdb](https://github.com/brogar/pykdb)<br/>
 <i class="fab fa-github"></i> [enlnt/pyk](https://github.com/enlnt/pyk)<br/>
@@ -157,7 +157,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <i class="fab fa-github"></i> [exxeleron/qPython](https://github.com/exxeleron/qPython)<br/>
 <i class="fab fa-github"></i> [kingan/mongodb_kdb_python_connection](https://github.com/kingan/mongodb_kdb_python_connection)
     </td></tr>
-<tr><td>R</td><td><i class="fab fa-github"></i> [yang-guo/qserver](https://github.com/yang-guo/qserver)</td></tr> 
+<tr><td><i class="fab fa-r-project"></i> R</td><td><i class="fab fa-github"></i> [yang-guo/qserver](https://github.com/yang-guo/qserver)</td></tr> 
 <tr>
     <td>Rust</td>
     <td>
@@ -202,7 +202,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc.md)<br/>
 <i class="fab fa-github"></i> [johnanthonyludlow/kdb/docs/odbc.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/odbc.pdf)</td></tr>
 <tr><td>Philips Hue</td><td><i class="fab fa-github"></i> [jparmstrong/qphue](https://github.com/jparmstrong/qphue)</td></tr>
-<tr><td>R</td><td>[Using R with kdb+](with-r.md#calling-r-from-q)</td></tr>
+<tr><td><i class="fab fa-r-project"></i> R</td><td>[Using R with kdb+](with-r.md#calling-r-from-q)</td></tr>
 <tr><td>Reuters</td><td><i class="fab fa-github"></i> [KxSystems/kdb/c/feed/rfa.zip](https://github.com/KxSystems/kdb/blob/master/c/feed/rfa.zip)</td></tr>
 <tr><td>TSE FLEX</td><td><i class="fab fa-github"></i> [Naoki-Yatsu/TSE-FLEX-Converter](https://github.com/Naoki-Yatsu/TSE-FLEX-Converter)</td></tr>
 <tr>
@@ -213,7 +213,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr><td>[Wind资讯](http://www.wind.com.cn/en/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>
-<tr><td>Yahoo!</td><td><i class="fab fa-github"></i> [fdeleze/tickYahoo](https://github.com/fdeleze/tickYahoo)</td></tr>
+<tr><td><i class="fab fa-yahoo"></i> Yahoo!</td><td><i class="fab fa-github"></i> [fdeleze/tickYahoo](https://github.com/fdeleze/tickYahoo)</td></tr>
 </table>
 
 
@@ -237,13 +237,13 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>Mathematica</td><td><i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qmathematica](https://github.com/kxcontrib/zuoqianxu/tree/master/qmathematica)</td></tr>
 <tr><td>Matlab</td><td><i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qmatlab](https://github.com/kxcontrib/zuoqianxu/tree/master/qmatlab)</td></tr>
 <tr><td>Perl</td><td><i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qperl](https://github.com/kxcontrib/zuoqianxu/tree/master/qperl)</td></tr>
-<tr><td>Python</td><td>
+<tr><td><i class="fab fa-python"></i> Python</td><td>
 <i class="fab fa-github"></i> [kxcontrib/serpent.speak](https://github.com/kxcontrib/serpent.speak)<br/>
 <i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qpython](https://github.com/kxcontrib/zuoqianxu/tree/master/qpython)
 </td></tr>
 <tr><td>Non-linear least squares</td><td><i class="fab fa-github"></i> [brogar/nls](https://github.com/brogar/nls)</td></tr>
 <tr><td>Regular Expressions</td><td>[Regex libraries](../kb/regex.md#regex-libraries)</td></tr>
-<tr><td>R</td><td><i class="fab fa-github"></i> [kimtang/rinit](https://github.com/kimtang/rinit)<br/>
+<tr><td><i class="fab fa-r-project"></i> R</td><td><i class="fab fa-github"></i> [kimtang/rinit](https://github.com/kimtang/rinit)<br/>
 <i class="fab fa-github"></i> [rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)</td></tr>
 <tr>
     <td>Rust</td>
@@ -318,7 +318,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     <td>Visual Studio Code</td><td><i class="fab fa-github"></i> [lwshang/vscode-q](https://github.com/lwshang/vscode-q)</td>
 </tr>
 <tr>
-    <td>WordPress</td><td><i class="fab fa-github"></i> [simongarland/Syntaxhighlighter-for-q](https://github.com/simongarland/Syntaxhighlighter-for-q) ==new==</td>
+    <td><i class="fab fa-wordpress"></i> WordPress</td><td><i class="fab fa-github"></i> [simongarland/Syntaxhighlighter-for-q](https://github.com/simongarland/Syntaxhighlighter-for-q) ==new==</td>
 </tr>
 </table>
 

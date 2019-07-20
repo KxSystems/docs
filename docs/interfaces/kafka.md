@@ -1,9 +1,11 @@
 ---
-keywords: apache, api, consumer, fusion, interface, kafka, learning, library, machine, producer, q
+title: Using Kafka with kdb+
+description: How to connect a kdb+ server process to the Apache Kafka distributed streaming platform
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+keywords: apache, api, consumer, fusion, interface, kafka, learning, library, machine, producer, q
 ---
-
 # ![Apache Kafka](img/kafka.png) Using Kafka with kdb+
+
 
 
 

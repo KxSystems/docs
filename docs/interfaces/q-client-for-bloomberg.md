@@ -1,8 +1,10 @@
 ---
+title: Q client for Bloomberg
+description: A Linux-based feed handler for Bloomberg
 keywords: api, bloomberg, interface, kdb+, library, q
 ---
-
 # ![Bloomberg](img/bloomberg.png) Q client for Bloomberg
+
 
 
 
@@ -10,6 +12,7 @@ Marshall Wace has kindly contributed a Linux-based Bloomberg Feed Handler, writt
 
 <i class="fab fa-github"></i> 
 [KxSystems/cookbook/bloomberg](https://github.com/KxSystems/cookbook/tree/master/bloomberg)
+
 
 ## Design notes
 

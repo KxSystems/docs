@@ -1,3 +1,11 @@
+---
+title: Quobyte – Appendix J of Migrating a kdb+ HDB to Amazon EC2
+description: Quobyte offers a shared namespace solution based on either locally-provisioned or EBS-style storage. It leverages an erasure-coding model around nodes of a Quobyte cluster.
+author: Glenn Wright
+date: March 2018
+hero: <i class="fas fa-cloud"></i> Cloud
+keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, quobyte
+---
 # Appendix J – Quobyte 
 
 

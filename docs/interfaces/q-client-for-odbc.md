@@ -3,8 +3,8 @@ title: Q client for ODBC
 description: In Windows and Linux, you can use ODBC to connect to a non-kdb+ database from q.
 keywords: api, interface, kdb+, library, odbc, q
 ---
-
 # <i class="fas fa-database"></i> Q client for ODBC
+
 
 
 

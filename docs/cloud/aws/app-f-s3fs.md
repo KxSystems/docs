@@ -1,3 +1,11 @@
+---
+title: S3FS – Appendix F of Migrating a kdb+ HDB to Amazon EC2
+description: S3FS is an open-source Linux client software layer that arbitrates between the AWS S3 storage layer and each AWS EC2 instance. It presents a POSIX file system layer to kdb+.
+author: Glenn Wright
+date: March 2018
+hero: <i class="fas fa-cloud"></i> Cloud
+keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, s3fs
+---
 # Appendix F - S3FS
 
 

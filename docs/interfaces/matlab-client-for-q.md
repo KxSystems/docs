@@ -1,8 +1,10 @@
 ---
+title: Matlab client for kdb+
+description: How connect a Matlab client program toa kdb+ server process
 keywords: api, interface, kdb+, library, matlab, q
 ---
-
 # ![Matlab](img/matlab.png) Matlab client for kdb+
+
 
 
 Support for Matlab is a part of [Datafeed Toolbox for Matlab](https://uk.mathworks.com/help/datafeed/kx-systems-inc-.html): since R2007a edition.

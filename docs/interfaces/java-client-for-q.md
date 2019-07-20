@@ -1,9 +1,11 @@
 ---
-keywords: fusion, interface, java, kdb+, q
+title: Using Java with kdb+
+description: How to enable a Java client to query kdb+, subscribe to a kdb+ publisher, and publish to a kdb+ consumer
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+keywords: fusion, interface, java, kdb+, q
 ---
+# <i class="fab fa-java"></i> Using Java with kdb+
 
-# ![Java](img/java.jpg) Using Java with kdb+
 
 
 
