@@ -1,9 +1,11 @@
 ---
 title: Joins
+description: A join combines data from two tables, or from a table and a dictionary. Some joins are keyed, in that columns in the first argument are matched with the key columns of the second argument. Some joins are as-of, where a time column in the first argument specifies corresponding intervals in a time column of the second argument. Such joins are not keyed.
 keywords: aj, asof, coalesce, equi-join, inner join, join, kdb+, keyed, left join, plus join, q, union join, upsert, window join, wj, wj1
 ---
-
 # Joins
+
+
 
 
 

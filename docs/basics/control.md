@@ -1,8 +1,12 @@
 ---
+title: Controlling evaluation
+description: Evaluation in q is controlled by [iterators](../ref/iterators.md) for iteration ; conditional evaluation; explicit return from a lambda; signalling and trapping errors; and control words.
+author: Stephen Taylor
 keywords: control, control words, distributive, evaluation, iterate, kdb+, operator, progressive, q, unary, word
 ---
-
 # Controlling evaluation
+
+
 
 
 

@@ -1,8 +1,10 @@
 ---
+title: Interprocess communication
+description: TCP/IP is used for communicating between processes. The protocol is extremely simple, as is the message format.
 keywords: communication, interprocess, ipc, kdb+, message, process, protocol, q
 ---
-
 # Interprocess communication
+
 
 
 

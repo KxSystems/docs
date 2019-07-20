@@ -1,11 +1,14 @@
 ---
-title: Sorting
+title: Sorting functions
+description: Operators and keywords for sorting lists
+author: Stephen Taylor
 keywords: asc, ascending, desc, descending, grade, group, iasc, idesc, kdb+, q, rank, sort, xgroup, xrank
 ---
-
 # Sorting functions
 
 
+
+Operators and keywords for sorting lists.
 
 function                        | semantics
 --------------------------------|------------------------

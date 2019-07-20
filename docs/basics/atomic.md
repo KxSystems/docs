@@ -1,14 +1,16 @@
 ---
 title: Atomic functions
+description: There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
+author: Stephen Taylor
 keywords: atomic, function, kdb+, q, scalar extension
 ---
-
 # Atomic functions
 
 
 
 
-There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions .
+
+There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
 
 A unary is atomic if it applies to both atoms and lists, and in the case of a list, applies independently to every atom in the list. For example, the unary `neg` is atomic. A result of `neg` is just like its argument, except that each atom in an argument is replaced by its negation. 
 
@@ -65,9 +67,9 @@ Add can be defined recursively in terms of Add for atoms as follows:
 q)Add:{$[(0>type x) & 0>type y; x + y; Add'[x;y]]}
 ```
 
-The arguments of an atom function must be conformable, or else a Length error is signalled. The evaluation will also fail if the function is applied to atoms that are not in its domain. For example, `1 2 3 + (4;"a";5)` will fail because `2 + "a"` fails with a Type error. Atomic functions are not restricted to ranks 1 and 2. For example, the rank-3 function `{x+y xexp z}` is an atomic function (“x plus y to the power z”).
+The arguments of an atomic function must be conformable, or else a Length error is signalled. The evaluation will also fail if the function is applied to atoms that are not in its domain. For example, `1 2 3 + (4;"a";5)` will fail because `2 + "a"` fails with a Type error. Atomic functions are not restricted to ranks 1 and 2. For example, the rank-3 function `{x+y xexp z}` is an atomic function (“x plus y to the power z”).
 
-A function can be atomic relative to some of its arguments but not all. For example, the Index At operator `@[x;y]` is an atom function of its right argument but not its left, and is said to be _right-atomic_, or atomic in its second argument. That is, for every left argument `x` the projected unary function `x@` is atomic. This primitive function, like `x[y]`, selects items from `x` according to the atoms in `y`, and the result is structurally like `y`, except that every atom in `y` is replaced by the item of `x` that it selects. 
+A function can be atomic relative to some of its arguments but not all. For example, the Index At operator `@[x;y]` is an atomic function of its right argument but not its left, and is said to be _right-atomic_, or atomic in its second argument. That is, for every left argument `x` the projected unary function `x@` is atomic. This primitive function, like `x[y]`, selects items from `x` according to the atoms in `y`, and the result is structurally like `y`, except that every atom in `y` is replaced by the item of `x` that it selects. 
 
 ```q
 q)2 4 -23 8 7 @ (0 4 ; 2)

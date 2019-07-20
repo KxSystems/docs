@@ -1,10 +1,20 @@
+---
+title: About this site
+description: Origin and content of the Kx documentation site
+author: Stephen Taylor
+keywords: blog, kdb+, news, q, site
+---
+# About this site
+
+
 This site is the successor to the Mediawiki site. 
 
 It reflects the work of the Kx community since 1993, has many authors, 
 and continues to evolve.  
 
-!!! tip "Please update your bookmarks" 
-    For now the wiki remains at [code.kx.com/wiki](http://code.kx.com/wiki), but it is no longer maintained.
+!!! warning "Please update your bookmarks" 
+
+    For now the wiki remains at [code.kx.com/oldwiki](http://code.kx.com/oldwiki), but it is no longer maintained.
 
 
 ## <i class="fab fa-github"></i> GitHub

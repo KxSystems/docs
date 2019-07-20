@@ -1,14 +1,17 @@
 ---
+title: Function notation
+description: Function notation enables the definition of functions. Function notation is also known as the lambda notation and the defined functions as lambdas.
+author: Stephen Taylor
 keywords: abort, control, expression, function, kdb+, lambda, multiline, notation, q, rank, signal, signed, unsigned
 ---
-
 # Function notation
 
 
 
 
+
 Function notation enables the definition of functions.
-Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_.
+Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_. 
 
 !!! note "Anonymity"
 
@@ -16,6 +19,8 @@ Function notation is also known as the _lambda notation_ and the defined functio
 
     In this usage a lambda assigned a name is still a lambda.
     For example, if `plus:{x+y}`, then `plus` is a lambda.
+
+    Lambdas have datatype 100. 
 
 
 A lambda is defined as a pair of braces (curly brackets) enclosing an optional _signature_ (a list of up to 8 argument names) followed by a zero or more expressions separated by semicolons. 

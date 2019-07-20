@@ -1,9 +1,10 @@
 ---
+title: Style Guide – Style
 hero: Site style guide
+description: Usage and markup rules for inline style, such as bold and italic type, and for codeblocks and Lists
+author: Stephen Taylor
 keywords: bold, code, italic, kdb+, markdown, q, style
-author: stephen@kx.com
 ---
-
 # <i class="fas fa-pen-nib"></i> Style
 
 

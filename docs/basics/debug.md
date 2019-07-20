@@ -1,8 +1,11 @@
 ---
+title: Debugging
+description: Facilities for debugging q programs
+author: Stephen Taylor
 keywords: debug, errors, kdb+, q, trap
 ---
-
 # Debugging 
+
 
 
 

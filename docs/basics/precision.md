@@ -1,9 +1,10 @@
 ---
 title: Precision
+description: Precision of floats is a tricky issue since floats (doubles in other languages) are actually binary rational approximations to real numbers. 
 keywords: comparison, float, precision, tolerance
 ---
-
 # Precision
+
 
 
 

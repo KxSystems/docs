@@ -1,8 +1,8 @@
 ---
 title: Application and projection
 description: Everything in q is a value and almost everything can be applied to some other values. To apply a value means to evaluate a function on its arguments, to select items from a list or dictionary, or to write to a file or process handle. Projection (or currying) is a partial application in which one or more values is bound.
-keywords: apply, curry, domain, function, index, kdb+, list, project, projection, q, value
 author: Stephen Taylor
+keywords: apply, curry, domain, function, index, kdb+, list, project, projection, q, value
 ---
 # Application and projection
 

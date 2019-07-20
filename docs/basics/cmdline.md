@@ -1,8 +1,11 @@
 ---
+title: Command line
+description: Command-line syntax for invoking q and list of the command-line options
+author: Stephen Taylor
 keywords: command, file, kdb+, line, option, q
 ---
-
 # Command line
+
 
 
 

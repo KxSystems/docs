@@ -1,19 +1,15 @@
 ---
 title: Dictionaries & tables
+description: Operators and keywords for working with dictionaries and tables
+author: Stephen Taylor
 keywords: dictionary, group, kdb+, q, sort, table
 ---
-
 # Dictionaries and tables
 
 
 
 
-!!! warning "Duplicate keys or columns"
-
-    Avoid duplicating keys in a dictionary or (column names in a) table.
-    
-    Q does not reject duplicate keys, but operations on dictionaries and tables with duplicate keys are **undefined**. 
-
+Operators and keywords for working with dictionaries and tables.
 
 [`!` Dict](../ref/dict.md)
 
@@ -52,5 +48,14 @@ keywords: dictionary, group, kdb+, q, sort, table
 : Set specified columns as primary keys of a table
 
 
+!!! warning "Duplicate keys or columns"
+
+    Avoid duplicating keys in a dictionary or (column names in a) table.
+    
+    Q does not reject duplicate keys, but operations on dictionaries and tables with duplicate keys are **undefined**. 
+
+
+
 <i class="far fa-hand-point-right"></i>
+[qSQL](qsql.md)  
 Reference: Apply, Index, Trap: [Step dictionaries](../ref/apply.md#step-dictionaries)

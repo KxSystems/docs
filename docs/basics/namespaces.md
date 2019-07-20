@@ -1,9 +1,12 @@
 ---
 title: Namespaces
+description: Namespaces are containers within the kdb+ workspace. Names defined in a namespace are unique only within the namespace. Namespaces are a convenient way to divide an application between modules; also to construct and share library code.
+author: Stephen Taylor
 keywords: kdb+, namespaces, q
 ---
-
 # Namespaces
+
+
 
 
 

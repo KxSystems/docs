@@ -1,6 +1,15 @@
+---
+title: Conformable data objects
+description: Many q operators and keywords implicitly iterate through the items of their list arguments, provided that the arguments are conformable. This article describes what it means for data objects to conform. 
+author: Stephen Taylor
+keywords: argument, conform, conformable, kdb+, keyword, list, operator, q
+---
 # Conformable data objects
 
 
+
+
+Many q operators and keywords implicitly iterate through the items of their list arguments, provided that the arguments are conformable. This article describes what it means for data objects to conform. 
 
 The idea of conformable objects is tied to atomic functions such as Add, functions like Cast with behavior very much like atom functions, and functions derived from Each. 
 

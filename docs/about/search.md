@@ -1,4 +1,7 @@
 ---
+title: Searching Kx documentation site
+description: How to use the custom search tool on the Kx documentation site
+author: Stephen Taylor
 keywords: kdb+, keyword, namespace, operator, overload, q, search, space, term
 ---
 # Search

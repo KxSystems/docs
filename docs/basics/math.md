@@ -1,10 +1,12 @@
 ---
 title: Mathematics and statistics
+description: Operators and keywords that perform mathematical or statistical operations
+author: Stephen Taylor
 keywords: kdb+, mathematics, q, statistics
 ---
-
-
 # Mathematics and statistics
+
+
 
 
 function                           | rank | ƒ | semantics

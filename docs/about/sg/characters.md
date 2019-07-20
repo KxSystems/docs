@@ -1,4 +1,11 @@
-# Characters and encoding 
+---
+title: Style Guide – Characters and encoding
+hero: Site style guide
+description: Rules for the ncoding vof Markdown source files, choices of characters, how to use quotation marks, how to write acronyms and abbreviations.
+author: Stephen Taylor
+keywords: acronym, abbreviation, ampersand, apostrophe, dash, ellipse, encoding, hyphen, latex, ligature, math, quotation, quote, unicode
+---
+# <i class="fas fa-pen-nib"></i> Characters and encoding 
 
 
 ## Encoding

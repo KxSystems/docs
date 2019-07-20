@@ -1,6 +1,14 @@
+---
+title: Logic
+description: Operators and keywords that perform logical operations
+author: Stephen Taylor
+keywords: all, and, any, kdb+, logic, not, null, or, q
+---
 # Logic
 
 
+
+Operators and keywords that perform logical operations.
 
 [`all`](../ref/all-any.md#all)
 

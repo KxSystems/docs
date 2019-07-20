@@ -1,3 +1,9 @@
+---
+title: Casting and encoding
+description: An index of operators and keywords that cast values from one representation to another
+author: Stephen Taylor
+keywords: cast, encode, enumeration, decode, kdb+, keyword, operator, q, string
+---
 # Casting and encoding
 
 

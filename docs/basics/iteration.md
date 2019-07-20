@@ -1,4 +1,11 @@
+---
+title: Iteration
+description: The primary means of iteration in q are atomic functions, the map iterators Each and its variants, and the accumulating iterators Scan and Over.
+author: Stephen Taylor
+keywords: accumulating, atomic, each, iteration, iterator, kdb+, q, over, scan
+---
 # Iteration
+
 
 
 The primary means of iteration in q are 

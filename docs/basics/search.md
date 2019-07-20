@@ -1,11 +1,14 @@
 ---
 title: search
+description: Operators and keywords for searching.
+author: Stephen Taylor
 keywords: bin, binary, binr, distinct, find, in, kdb+, q, within
 ---
-
 # Search functions
 
 
+
+Operators and keywords for searching.
 
 function                         | semantics
 ---------------------------------|------------------------------------

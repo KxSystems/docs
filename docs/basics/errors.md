@@ -1,4 +1,6 @@
 ---
+title: Errors
+description: Errors signalled by the interpreter, and what triggers them
 keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 ---
 

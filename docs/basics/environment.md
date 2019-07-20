@@ -1,11 +1,13 @@
 ---
 title: Environment
+description: Environment variables in kdb+ and q keywords for getting and setting them. 
 keywords: environment, kdb+, q, variable
 ---
-
 # Environment 
 
 
+
+Environment variables in kdb+ and q keywords for getting and setting them. 
 
 ## Variables
 
@@ -28,7 +30,7 @@ Kdb+ refers to the following environment variables.
 : supplied by OS, used to set [`\c`](syscmds.md#c-console-size)
 
 
-## Functions
+## Keywords
 
 [`getenv`](../ref/getenv.md)
 

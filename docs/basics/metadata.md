@@ -1,12 +1,15 @@
 ---
 title: Metadata
+description: Operators and keywords that get or set metadata
+author: Stephen Taylor
 keywords: kdb+, metadata, q
 ---
-
 # Metadata
 
 
 
+
+Operators and keywords that get or set metadata.
 
 [`attr`](../ref/attr.md)
 
@@ -41,6 +44,10 @@ keywords: kdb+, metadata, q
 [`meta`](../ref/meta.md)
 
 : Metadata for a table
+
+[`#` Set Attribute](../ref/set-attribute.md)
+
+: Set the attribute of a list
 
 [`tables`](../ref/tables.md)
 

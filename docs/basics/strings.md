@@ -1,11 +1,15 @@
 ---
 title: String functions
+description: Operators and keywords for handling strings (character vectors)
+author: Stephen Taylor
 keywords: kdb+, like, lower, ltrim, md5, pad, q, rtrim, ss, ssr, trim, upper
 ---
-
 # String functions
 
 
+
+
+Operators and keywords for handling strings (character vectors).
 
 function                         | semantics
 ---------------------------------|-------------------------------

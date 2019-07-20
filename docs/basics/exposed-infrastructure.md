@@ -1,3 +1,9 @@
+---
+title: Exposed infrastructure
+description: Q is an embedded domain-specific language for time-series analysis, implemented in the proprietary programming language k. As such, q leaves features of k exposed. They should be avoided.
+author: Stephen Taylor
+keywords: embedded, domain-specific language, dsl, k, kdb+, q
+---
 # Exposed infrastructure
 
 

@@ -1,9 +1,12 @@
 ---
-keywords: kdb+, q, style, terminology
+title: Style Guide – Terminology
 hero: Site style guide
+description: In 2017 and 2018 the terminology used to describe Kx technology was reviewed and revised to prefer terms in general use for concepts common with other programming languages, and to describe adverbs more clearly.
+author: Stephen Taylor
+keywords: kdb+, q, style, terminology
 ---
 
-# Terminology
+# <i class="fas fa-pen-nib"></i> Terminology
 
 
 In 2017 and 2018 the terminology used to describe Kx technology was reviewed and revised to prefer terms in general use for concepts common with other programming languages, and to describe adverbs more clearly. 

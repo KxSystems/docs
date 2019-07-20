@@ -1,9 +1,10 @@
 ---
 title: Enumerations
+description: For a long list containing few distinct values, an enumeration can reduce storage requirements. 
 keywords: enumerate, enumeration, enumerations, extend, kdb+, q
 ---
-
 # Enumerations
+
 
 
 
