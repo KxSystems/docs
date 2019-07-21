@@ -1,4 +1,10 @@
-# <i class="fab fa-linux"></i> Installing at DigitalOcean on Ubuntu
+---
+title: Installing kdb+ at DigitalOcean on Ubuntu
+description: How to install kdb+ under Ubuntu at DigitalOcean
+author: Stephen Taylor
+keywords: digitalocean, install, kdb+, linux, q, ubuntu
+---
+# <i class="fab fa-digital-ocean"></i> Installing on Ubuntu at DigitalOcean
 
 
 

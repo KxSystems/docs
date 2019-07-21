@@ -1,5 +1,8 @@
 ---
+title: Realtime database – Starting kdb+
+description: How to set up and use a real-time database in kdb+
 hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+keywords: kdb+, q, rdb, realtime database start, tutorial
 ---
 # Realtime database
 

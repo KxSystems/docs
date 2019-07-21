@@ -1,4 +1,11 @@
-# Get started 
+---
+title: Get started 
+description: How to get started installing and using kdb+
+author: Stephen Taylor
+keywords: download, install, introduction, license, kdb+, q, tutorial
+---
+# Get started with q and kdb+
+
 
 
 Kdb+ is a database. While you can use it through interfaces such as ODBC, its power and performance are best accessed through its own language, q.

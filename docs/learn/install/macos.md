@@ -1,3 +1,9 @@
+---
+title: Installing under macOS
+description: How to install kdb+ under macOS
+author: Stephen Taylor
+keywords: install, kdb+, macos, q
+---
 # <i class="fab fa-apple"></i> Installing under macOS
 
 

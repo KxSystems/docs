@@ -1,4 +1,7 @@
 ---
+title: Licensing kdb+
+description: How to ensure your kdb+ processes have thelicenses they need.
+author: Stephen Taylor
 keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
 ---
 # <i class="fas fa-certificate"></i> Licensing

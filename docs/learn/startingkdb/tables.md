@@ -1,5 +1,8 @@
 ---
+title: Tables – Starting kdb+
+description: How to work with tables in q
 hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+keywords: kdb+, q, start, table, tutorial
 ---
 # Tables
 

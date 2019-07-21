@@ -1,4 +1,11 @@
+---
+title: Installing under Microsoft Windows
+description: How to install kdb+ under Microsoft Windows
+author: Stephen Taylor
+keywords: install, kdb+, microsoft, q, windows
+---
 # <i class="fab fa-windows"></i> Installing under Microsoft Windows
+
 
 
 

@@ -1,8 +1,13 @@
+---
+title: Views in kdb+
+description: A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation.
+keywords: kdb+, q,view
+---
+# Views
+
+
+
 A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation. 
-
-!!! note "Splayed tables"
-
-    To use views with splayed tables make sure you invalidate the data when it changes; this can be done for example by reloading the table.
 
 
 ## Why use a view?
@@ -124,6 +129,10 @@ q)a
 q)\B
 `symbol$()
 ```
+
+!!! tip "Splayed tables"
+
+    To use views with splayed tables make sure you invalidate the data when it changes; this can be done for example by reloading the table.
 
 
 ## How to see the definition of a view

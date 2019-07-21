@@ -1,4 +1,11 @@
+---
+title: Installing kdb+
+description: How to install kdb+
+author: Stephen Taylor
+keywords: install, kdb+, q
+---
 # Installing kdb+
+
 
 
 ## <i class="fas fa-download"></i> Download

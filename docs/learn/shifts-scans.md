@@ -1,3 +1,9 @@
+---
+title: Shifts & scans
+description: Shifts are powerful expressions for finding where the items of a list change in specific ways. Boolean shifts are commonly used to find where in a list the result of a test expression on its elements has changed. Shifts compare each list item to its neighbour, but scan results relate to the entire list – and can terminate quickly.
+author: Stephen Taylor
+keywords: idiom, kdb+, q, scan, shift
+---
 # Shifts & scans
 
 

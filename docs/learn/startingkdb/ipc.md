@@ -1,5 +1,8 @@
 ---
+title: Interprocess communications – Starting kdb+
+description: How to set up interprocess communications between kdb+ processes
 hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+keywords: kdb+, q, start, tutorial, 
 ---
 # Interprocess communications
 
