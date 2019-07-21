@@ -1,8 +1,10 @@
 ---
+title: Firewalling
+description: How to protect a kdb+ process with a firewall
 keywords: firewall, ipc, iptables, kdb+, q
 ---
-
 # Firewalling
+
 
 
 

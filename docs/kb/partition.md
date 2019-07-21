@@ -1,8 +1,10 @@
 ---
+title: Partitioning
+description: File par.txt defines a top-level partitioning of a database into directories. Each row of par.txt is a directory path. Each such directory would itself be partitioned in the usual way, typically by date. The directories should not be empty. The par.txt file should be created in the main database directory.
 keywords: database, kdb+, q, par.txt, partitioning
 ---
-
 # Partitioning
+
 
 
 

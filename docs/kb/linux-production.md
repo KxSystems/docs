@@ -1,8 +1,10 @@
 ---
+title: Linux production notes
+description: Notes for deploying kdb+ processes on production Linux servers
 keywords: kdb+, linux, production, q
 ---
-
 # Linux production notes
+
 
 
 !!! important "Linux kernels"

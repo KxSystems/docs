@@ -1,17 +1,20 @@
 ---
-keywords: chanined, kdb+, q, rdb, tickerplant
+title: Chained tickerplant and RDB for kdb+tick
+description: Two scripts provide convenient additional functionality to an existing kdb+tick setup.
+author: Simon Garland
+keywords: chained, kdb+, q, rdb, tickerplant
 ---
-
-
 # Chained tickerplant and RDB for kdb+tick
 
-<source:contrib/simon/tick>
+
+
 
 Two scripts provide convenient additional functionality to an existing kdb+tick setup.
 
+
 ## Chained tickerplant
 
-There are a number of occasions when an additional tickerplant would be useful – but it’s overkill to have a full parallel installation. A chained tickerplant subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn. Unlike the master tickerplant, it doesn't keep its own log.
+There are a number of occasions when an additional tickerplant would be useful – but it’s overkill to have a full parallel installation. A chained tickerplant subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn. Unlike the master tickerplant, it doesn’t keep its own log.
 
 If the master tickerplant is a zero-latency tickerplant the chained tickerplant can be a more traditional tickerplant that chunks up updates on a timer. For example if clients are using data from the tickerplant to drive a GUI it’s pointless having that updated every time a new tick comes in – probably a tickerplant that updates once a second would suffice.
 

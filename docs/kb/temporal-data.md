@@ -1,8 +1,10 @@
 ---
+title: Temporal data
+description: How to handle temporal data in q
 keywords: data, kdb+, q, temporal
 ---
+# How to handle temporal data in q
 
-# Temporal data
 
 
 

@@ -18,10 +18,10 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 
 
 ```txt
-.h.br    linebreak                 .h.http      hyperlinks
-.h.c0    web color                 .h.hu        URI escape
-.h.c1    web color                 .h.hug       URI map
-.h.cd    CSV from data             .h.hy        HTTP response
+.h.br    linebreak                 .h.hu        URI escape
+.h.c0    web color                 .h.hug       URI map
+.h.c1    web color                 .h.hy        HTTP response
+.h.cd    CSV from data             .h.HOME      webserver root
 .h.code  code after Tab            .h.iso8601   ISO timestamp
 .h.data                            .h.jx        table
 .h.ed    Excel from data           .h.logo      Kx logo
@@ -39,6 +39,7 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 .h.htac  element                   .h.xmp       XMP
 .h.htc   element                   .h.xs        XML escape
 .h.html  document                  .h.xt        JSON
+.h.http  hyperlinks
 ```
 
 
@@ -409,6 +410,16 @@ q)\head test.txt
 " {\"val\":\"d\",\"x\":1},"
 " {\"val\":\"e\",\"x\":1}]"
 ```
+
+
+## `.h.HOME` (webserver root)
+
+Syntax: `.h.HOME`
+
+String: location of the webserver root. 
+
+<i class="far fa-hand-point-right"></i>
+[Customizing the default webserver](../kb/custom-web.md)
 
 
 ## `.h.iso8601` (ISO timestamp)

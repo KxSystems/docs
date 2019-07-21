@@ -1,8 +1,10 @@
 ---
-keywords: kdb+, q, ssl, tls
+title: SSL/TLS
+description: How to use Secure Sockets Layer(SSL)/Transport Layer Security(TLS) to encrypt connections using the OpenSSL libraries.
+keywords: kdb+, openssl, q, ssl, tls
 ---
-
 # SSL/TLS
+
 
 
 

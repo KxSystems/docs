@@ -1,3 +1,9 @@
+---
+title: Linear programming
+description: Some applications of kdb+ to linear-programming problems
+author: Rob Hodgkinson
+keywords: apl, iverson, kdb+, linear programming, q
+---
 # Linear programming
 
 
@@ -23,7 +29,7 @@ Given a series of nodes and distances, find the minimum path from each node to g
 
 ## Solution
 
-Edsger W. Dijkstra published an optimised solution in 1959 that calculated cumulative minimums.
+Edsger W. Dijkstra published an optimized solution in 1959 that calculated cumulative minimums.
 A simple Linear Algebra approach entails producing a ‘path connection matrix’ (square matrix with nodes down rows and across columns) showing the distances, which is typically symmetric.
 Inner product is used in repeated iterations to enhance the initial matrix to include paths possible through 1 hop (through 1 intermediate node), 2 hops and so forth by repeated calls.
 The optimal solution (all paths) is found by iterating until no further changes are noted in the matrix (called _transitive closure_).
@@ -235,9 +241,9 @@ q)iters .\: node?2 210       / Path improvement for node [2;210]
 
 ## Related applications of this approach
 
-The principle used can be generalised to different inner-product solutions for related problems.
+The principle used can be generalized to different inner-product solutions for related problems.
 
-The solution above is an instance of generalised inner-product of 2 functions `f.g` and was an example Ken Iverson often used to demonstrate how Linear Algebra can be applied to real-world problems.
+The solution above is an instance of generalized inner-product of 2 functions `f.g` and was an example Ken Iverson often used to demonstrate how Linear Algebra can be applied to real-world problems.
 The solution may be considered ‘expensive’ on memory and CPU, as it calculates all possible paths, but that is becoming less of an issue.
 
 The `bridge` function above uses the inner product of `Minimum.Sum` (`&` and `+` in q), but variants can be used in similar, related problem domains.
@@ -275,7 +281,7 @@ Each iteration improves the connections by adding additional 1s into the matrix 
 
 ### Matrix multiplication
 
-For generalised matrix multiplication, using an inner product of `Sum.Times`.
+For generalized matrix multiplication, using an inner product of `Sum.Times`.
 
 This calculates the sum of the product between nodes at each pivot, the bridge function looks like this;
 
@@ -284,9 +290,9 @@ bridge:{x + x('[sum;*])\: x}
 ```
    
 
-## Generalisation
+## Generalization
 
-The inner product for the above 3 `bridge` use cases could be further generalised as projections of a cumulative inner product function.
+The inner product for the above 3 `bridge` use cases could be further generalized as projections of a cumulative inner product function.
 
 ```q
 q)cip:{[f;g;z] f[z;] z('[f/;g])\: z}
@@ -299,7 +305,7 @@ q)bridgeMM:cip[+;*;]  / Sum.Times (matrix multiplication)
 ## Performance
 
 The version of `bridge` used above shows the Linear Algebra most clearly.
-It can be further optimised for performance, as shown here for the first case (minimum-path problem).
+It can be further optimized for performance, as shown here for the first case (minimum-path problem).
 
 Although all operations are atomic, flipping the argument seems to improve cache efficiency.
 
@@ -307,7 +313,7 @@ Although all operations are atomic, flipping the argument seems to improve cache
 bridgef:{x + x('[sum;*])/:\: flip x}
 ```
 
-The `peach` keyword can be used to parallelise evaluation.
+The `peach` keyword can be used to parallelize evaluation.
 
 ```q
 / Parallel version (multithreaded run q -s 6)

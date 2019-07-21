@@ -1,8 +1,10 @@
 ---
+title: Using modified .z functions to trace, monitor and control execution
+description: Some techniques for debugging q programs
 keywords: control, debug, dotz, execution, kdb+, monitor, q, trace
 ---
-
 # Using modified `.z` functions to trace, monitor and control execution
+
 
 
 Every client interaction with a kdb+ server is handled by one of the `p`? functions you’ll find in the system namespace `.z`. These functions have reasonable, simple defaults that work fine right out of the box. What we’re doing here is taking advantage of the fact that they’re just functions, allowing you to overwrite them with your own custom code to show or modify what’s happening.

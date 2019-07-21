@@ -1,8 +1,10 @@
 ---
+title: Programming examples
+description: Some examples of q programs to solve various problems
 keywords: example, kdb+, programming, q
 ---
-
 # Programming examples
+
 
 
 

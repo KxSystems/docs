@@ -1,8 +1,10 @@
 ---
+title: Publish and subscribe
+description: KxSystems/kdb-tick contains functionality to allow processes to publish data and subscribe to it. It is worth highlighting how the publish-and-subscribe code can be used by any process on a standalone basis. The pubsub functionality is supplied in the u.q script of kdb+tick.
 keywords: kdb+, publish, q, subscribe
 ---
-
 # Publish and subscribe
+
 
 
 

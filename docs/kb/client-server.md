@@ -1,14 +1,16 @@
 ---
+title: Basic client-server computing 
+description: A kdb+ server can listen for connections on a port. Clients can then send requests to the server via that port. A kdb+ process starts listening to a port either at start-up, via a command-line argument.
 keywords: client, kdb+, q, server
 ---
-
 # Basic client-server computing 
 
 
 
-A q server can listen for connections on a port. Clients can then send requests to the server via that port.
 
-A q process starts listening to a port either at start-up, via a command-line argument
+A kdb+ server can listen for connections on a port. Clients can then send requests to the server via that port.
+
+A kdb+ process starts listening to a port either at start-up, via a command-line argument.
 
 ```bash
 $ q -p 5001

@@ -1,8 +1,10 @@
 ---
+title: Linking columns
+description: The concept of a link column is closely related to a foreign-key column, in that it provides linkage between the values of a column in a table to the values in a column in a second table. The difference is that whereas a foreign-key column is an enumeration over the key column of a keyed table, a link column comprises indices into an arbitrary column of an arbitrary table. A link column is useful in situations where a key column is not available. For example, a table can contain a link to itself in order to create a parent-child relationship. You can also use links to create ‘foreign-key’ relationships between splayed tables, where foreign keys are not possible since a keyed table cannot be splayed.
 keywords: column, foreign, kdb+, key, link, linking, q
 ---
-
 # Linking columns
+
 
 
 

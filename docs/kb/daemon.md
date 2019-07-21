@@ -1,8 +1,10 @@
 ---
+title: Running a kdb+ daemon
+description: A simple way to daemonize kdb+ on Linux. Supports redirecting stderr and stdout. It closes stdin and writes a pid to a pidfile.
 keywords: daemon, kdb+, linux, q
 ---
+# Running a kdb+ daemon
 
-Daemon
 
 
 Here’s a simple way to daemonize kdb+ on Linux. Supports redirecting stderr and stdout. It closes stdin and writes a pid to a pidfile.

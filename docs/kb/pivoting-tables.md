@@ -1,8 +1,10 @@
 ---
+title: Pivot tables
+description: Some notes on the theory and practice of pivoting tables.
 keywords: kdb+, pivot, q, table
 ---
-
 # Pivot tables
+
 
 
 

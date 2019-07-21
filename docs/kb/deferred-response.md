@@ -1,8 +1,11 @@
 ---
+title: Deferred response
+description: Ideally, for concurrency, all messaging would be async. However, sync messaging is a convenient paradigm for client apps. Hence -30!x was added as a feature in V3.6, allowing processing of a sync message to be ‘suspended’ to allow other messages to be processed prior to sending a response message. 
+author: Charles Skelton
 keywords: async, concurrency, deferred, kdb+_, q, response, sync
 ---
-
 # Deferred response
+
 
 
 

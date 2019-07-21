@@ -1,8 +1,10 @@
 ---
+title: Regular expressions
+description: Support for Regular Expression handling in q.
 keywords: kdb+, library, q, regex, regular expression
 ---
-
 # Regular expressions
+
 
 
 ## Special characters

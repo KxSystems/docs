@@ -1,8 +1,10 @@
 ---
+title: Kdb+tick configuration
+description: A ‘vanilla’ tick setup has a tickerplant (TP) logging to disk and publishing to an in-memory realtime database (RDB) – and at day-end the RDB data is saved to disk as another day in the history database (HDB). Users typically query the RDB or HDB directly. It doesn’t have to be that way. There are a many other ways of assembling the kdb+tick “building blocks” to reduce or share the load.
 keywords: chained, hdb, kdb+, q, rdb, tick, tickerplant
 ---
-
 # Kdb+tick configuration
+
 
 
 

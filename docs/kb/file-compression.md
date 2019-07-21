@@ -1,8 +1,10 @@
 ---
+title: File compression
+description: How to work with compressed files in kdb+.
 keywords: compress, decompress, file, kdb+, log, q, streaming
 ---
-
 # File compression
+
 
 
 Q has had built-in optional file compression since V2.7.

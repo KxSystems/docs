@@ -3,8 +3,8 @@ title: Frequently-asked questions from the k4 listbox
 description: The k4 Listbox is a community of professional q programmers. This article answers questions frequently asked in the group. 
 keywords: faq, k4, kdb+, listbox, q
 ---
-
 # Frequently-asked questions from the k4 listbox
+
 
 
 

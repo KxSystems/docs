@@ -1,8 +1,10 @@
 ---
+title: Server calling client
+description: Demonstrates how to simulate a C client handling a get call from a kdb+ server. The Java interface allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses (message type 0) can be sent using k(-c,...).
 keywords: client, kdb+, q, server
 ---
-
 # Server calling client
+
 
 
 This demonstrates how to _simulate_ a C client handling a _get_ call from a kdb+ server. The [Java interface](../interfaces/java-client-for-q.md) allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses ([message type 0](../basics/ipc.md)) can be sent using `k(-c,...)`.

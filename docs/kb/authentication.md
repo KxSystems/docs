@@ -1,8 +1,10 @@
 ---
+title: Authentication and access control
+description: Q has built-in authentication via the -U and -u command line options. Access control is very flexible, through hooking the message interface .z.pg, .z.ps, and validating the input before execution.
 keywords: access, authentication, control, kdb+, q
 ---
-
 # Authentication and access control
+
 
 
 

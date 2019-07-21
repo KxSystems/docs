@@ -1,8 +1,10 @@
 ---
+title: Performance tips
+description: Tips on improving the performance of kdb+ processes
 keywords: kdb+, performance, q
 ---
-
 # Performance tips
+
 
 
 

@@ -1,8 +1,10 @@
 ---
+title: Write-only RDB
+description: The default behaviour of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. This makes sense if it’s actually queried during the day – but if the only reason for having an RDB is to be able to save the historical partition the amount of memory required to keep the in-memory database can be excessive.
 keywords: kdb+, q, rdb, write-only
 ---
-
 # Write-only RDB
+
 
 
 

@@ -1,8 +1,10 @@
 ---
+title: inetd, xinetd
+description: On *nix-like operating systems, inetd (or its successor xinetd) maintains a list of passive sockets for various services configured to run on that particular machine. When a client attempts to connect to one of the service, inetd will start a program to handle the connexion based on the configuration files. This way, inetd will run the server programs as they are needed by spawning multiple processes to service multiple network connexions. Since V2.4, a q server can work under inetd to provide a private server for each connexion established on a designated port.
 keywords: cygwin, inetd, kdb+, linux, microsoft, q, sfu, xinetd, unix, windows
 ---
-
 # inetd, xinetd
+
 
 
 

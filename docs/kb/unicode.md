@@ -1,8 +1,10 @@
 ---
-keywords: bytee, character, kdb+, q, text, unicode
+title: Unicode
+description: Howto handle Unicode-encoded data in kdb+
+keywords: byte, character, kdb+, q, text, unicode
 ---
-
 # Unicode
+
 
 
 

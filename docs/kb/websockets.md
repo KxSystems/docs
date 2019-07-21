@@ -1,8 +1,10 @@
 ---
+title: WebSockets
+description: How to work with WebSockets in q
 keywords: browser, json, kdb+, q, websockets
 ---
-
 # WebSockets
+
 
 
 
