@@ -1,13 +1,14 @@
 ---
+title: deltas
+description: deltas is a q keyword that returns the differences between adjacent list items.
 keywords: diff, difference, item, kdb+, list, q
 ---
-
 # `deltas`
 
 _Differences between list items_
 
 
-<!-- FIXME deprecate binary form? -->
+
 
 
 Syntax: `deltas y`, `deltas[y]`, `deltas[x;y]` 

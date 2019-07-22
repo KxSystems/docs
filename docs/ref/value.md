@@ -1,12 +1,15 @@
 ---
+title: value
+description: value is a q keyword that returns the value of a named variable, or metadata.
+author: Stephen Taylor
 keywords: kdb+, metadata, q, value,
 ---
-
 <div style="float: right">
 <i class="fas fa-wrench fa-5x"></i>
 </div>
 
 # `value`
+
 
 _Various metadata_
 

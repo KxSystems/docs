@@ -1,10 +1,13 @@
 ---
+title: exp, xexp
+description: exp and xexp are q keywords. exp raises e to the power of its argument; xexp raises its left argument to the power of its right.
+author: Stephen Taylor
 keywords: e, kdb+, mathematics, power, q
 ---
-
 # `exp`, `xexp`
 
 _Raise to a power_
+
 
 
 

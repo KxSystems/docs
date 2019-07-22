@@ -1,8 +1,11 @@
 ---
+title: Lesser, and
+description: Lesser is a q operator that returns the lesser of its arguments. and is a q keyword that performs a logical AND. 
+author: Stephen Taylor
 keywords: and, kdb+, lesser of, logic, minimum, q
 ---
-
 # `&` Lesser, `and`
+
 
 
 

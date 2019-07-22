@@ -1,4 +1,6 @@
 ---
+title: Cast
+description: Cast is a q operator that converts a data argument to another datatype.
 keywords: cast, datatype, dollar, kdb+,q
 ---
 

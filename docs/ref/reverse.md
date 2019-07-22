@@ -1,9 +1,11 @@
 ---
+title: reverse
+description: reverse is a q keyword that reverses the order of a list or dictionary.
 keywords: dictionary, entry, item, list, kdb+, q, reverse
 ---
-
-
 # `reverse`
+
+
 
 
 

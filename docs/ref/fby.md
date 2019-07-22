@@ -1,8 +1,11 @@
 ---
+title: fby
+description: fby is a q keyword that applies an aggregate function to groups.
+author: Stephen Taylor
 keywords: fby, group, kdb+, q, query, qsql, sql
 ---
-
 # `fby`
+
 
 
 

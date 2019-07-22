@@ -1,10 +1,13 @@
 ---
+title: dev, mdev, sdev
+description: dev, mdev, and sdev are q keywords that return, respectively, the standard deviation, moving deviation, and sample standard deviation of their argument. 
+author: Stephen Taylor
 keywords: dev, deviation, kdb+, math, mathematics, moving, q, sdev, standard deviation, statistics
 ---
-
 # `dev`, `mdev`, `sdev`
 
 _Deviation_
+
 
 
 

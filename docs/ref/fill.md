@@ -1,10 +1,13 @@
 ---
+title: Fill, fills
+description: Fill is a q operator that replaces nulls in a vector. fills is a q keyword that replaces nulls in a vector with preceding non-nulls.
+author: Stephen Taylor
 keywords: fill, fills, kdb+, null, q, replace
 ---
-
 # `^` Fill, `fills`
 
 _Replace nulls_
+
 
 
 

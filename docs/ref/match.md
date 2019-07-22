@@ -1,3 +1,9 @@
+---
+title: Match
+description: Match is a q operator that flags whether its arguments have the same value.
+author: Stephen Taylor
+keywords: compare, kdb+, q, value
+---
 # `~` Match
 
 

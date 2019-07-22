@@ -1,8 +1,11 @@
 ---
+title: inter
+description: inter is a q keyword that returns the intersection of two lists or dictionaries.
+author: Stephen Taylor
 keywords: inter, intersection, kdb+, q, select
 ---
-
 # `inter`
+
 
 
 

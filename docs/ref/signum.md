@@ -1,4 +1,12 @@
+---
+title: signum
+description: signum is a q keyword that returns 1, 0,or -1 according to the sign of its argument.
+author: Stephen Taylor
+keywords: kdb+, q, sign, signum
+---
 # `signum`
+
+
 
 
 Syntax: `signum x`, `signum[x]` 

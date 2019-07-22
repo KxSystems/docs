@@ -1,13 +1,18 @@
 ---
+title: string
+description: string is a q keyword that casts its argument to a string.
+author: Stephen Taylor
 keywords: kdb+, q , string, text
 ---
-
 # `string`
 
 _Cast to string_
 
-Syntax: `string x`, `string[x]` 
 
+
+
+
+Syntax: `string x`, `string[x]` 
 
 Returns each item in list or atom `x` as a string; applies to all data types.
 

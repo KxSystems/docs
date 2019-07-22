@@ -1,8 +1,11 @@
 ---
+title: Display
+description: Display is a q operator that writes a value to the console before returning it.
+author: Stephen Taylor
 keywords: bang, console, debug, display, kdb+
 ---
-
 # `!` Display
+
 
 
 _Write to console and return_

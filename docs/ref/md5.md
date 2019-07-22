@@ -1,10 +1,13 @@
 ---
+title: md5
+description: md5 is a q keyword that returns the Message Digest (MD5 hash) of a string.
+author: Stephen Taylor
 keywords: cryptography, hash, kdb+, md5, q, string
 ---
-
 # `md5`
 
 _Message Digest hash_
+
 
 
 Syntax `md5 x`, `md5[x]` 

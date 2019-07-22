@@ -1,12 +1,15 @@
 ---
+title: inv
+description: inv is a q keyword that returns the matrix inverse of its argument.
+author: Stephen Taylor
 keywords: inv, inverse, kdb+, matrix, q
 ---
-
 # `inv`
 
-
-
 _Matrix inverse_
+
+
+
 
 Syntax: `inv x`, `inv[x]`
 

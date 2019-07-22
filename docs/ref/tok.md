@@ -1,8 +1,11 @@
 ---
+title: Tok
+description: Tok is a q operator that casts string data to another datatype.
+author: Stephen Taylor
 keywords: cast, datatype, kdb+, operator, q, string, tok
 ---
-
 # `$` Tok
+
 
 
 Syntax: `x$y`, `$[x;y]`

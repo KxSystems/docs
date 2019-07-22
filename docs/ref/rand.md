@@ -1,10 +1,13 @@
 ---
+title: rand
+description: rand is a q keyword that randomly picks a number, or an item from a list.
+author: Stephen Taylor
 keywords: deal, kdb+, q, rand, random, roll
 ---
-
 # `rand` 
 
 _Pick randomly_
+
 
 
 Syntax: `rand x`, `rand[x]`

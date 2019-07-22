@@ -1,8 +1,11 @@
 ---
+title: Dict
+description: Dict is a q operator that returns a dictionary from vectors of keys and values. 
+author: Stephen Taylor
 keywords: bang, dict, dictionaries, dictionary, kdb+, q
 ---
-
 # `!` Dict
+
 
 
 

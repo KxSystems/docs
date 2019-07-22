@@ -1,8 +1,14 @@
 ---
+title: prior
+description: prior is a q keyword that is a wrapper for the Each Prior iterator.
+author: Stephen Taylor
+date: March 2019
 keywords: each prior, iterator, kdb+, map, prior, q
 ---
-
 # `prior`
+
+
+
 
 Syntax: `v2 prior x`, `prior[v2;x]`  
 Syntax: `(vv)prior x`, `prior[vv;x]`

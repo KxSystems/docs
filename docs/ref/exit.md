@@ -1,8 +1,11 @@
 ---
+title: exit
+description: exit is a control word that terminates a kdb+ process with a specified exit code.
+author: Stephen Taylor
 keywords: exit, kdb+, kill, q, return code, terminate
 ---
-
 # `exit`
+
 
 
 

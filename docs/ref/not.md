@@ -1,8 +1,11 @@
 ---
+title: not
+description: not is a q keyword that flags whether its argument is false.
+author: Stephen Taylor
 keywords: false, kdb+, logic, not, q, true
 ---
-
 # `not`
+
 
 
 _Is false_

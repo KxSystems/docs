@@ -1,8 +1,11 @@
 ---
+title: upsert
+description: upsert is a q keyword that adds new records to a table.
+author: Stephen Taylor
 keywords: kdb+, q, query, qsql, records, sql, table, update, upsert
 ---
-
 # `upsert`
+
 
 
 

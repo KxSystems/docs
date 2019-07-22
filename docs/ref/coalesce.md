@@ -1,9 +1,10 @@
 ---
 title: Coalesce
+description: Coalesce is a q operator that merge keyed tables.
 keywords: coalesce, join, kdb+,q
 ---
-
 # `^` Coalesce
+
 
 
 
@@ -65,6 +66,7 @@ k| c1   c2
 
 
 !!! note "Speed"
+
     The performance of `^` is slower than that of `,` since each column value of the right operand must be checked for null.
 
 

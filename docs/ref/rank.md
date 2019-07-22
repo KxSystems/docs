@@ -1,8 +1,11 @@
 ---
+title: rank
+description: rank is a q keyword that returns the position of the items of its argument in the sorted list. 
+author: Stephen Taylor
 keywords: kdb+, q, sort
 ---
-
 # `rank`
+
 
 
 

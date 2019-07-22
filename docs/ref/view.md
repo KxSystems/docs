@@ -1,8 +1,11 @@
 ---
+title: view, views
+description: view and views are q keywords. view returns the expression defining a view. views lists views defined in the default namespace. 
+author: Stephen Taylor
 keywords: kdb+, metadata, q, view, views
 ---
-
 # `view`, `views`
+
 
 
 

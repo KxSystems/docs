@@ -1,10 +1,14 @@
 ---
+title: Maps
+description: The maps are iterators that derive uniform functions that apply their values once to each item of a dictionary, a list, or conforming lists.
+author: Stephen Taylor
+date:March 2019
 keywords: adverb, case, dictionary, each, each both, each left, each parallel, each prior, each right, iterate, iterator, kdb+, keyword, map, mnemonic, operator, parallel, prior, q, unary
 ---
-
 # Maps
 
 `'` `\:` `/:` `':` 
+
 
 
 

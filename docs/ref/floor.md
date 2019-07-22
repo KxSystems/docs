@@ -1,10 +1,13 @@
 ---
+title: floor
+description: floor is a q keyword that returns the greatest integer smaller than its argument.
+author: Stephen taylor
 keywords: floor, kdb+, math, mathematics, maximum, q
 ---
-
 # `floor`
 
 _Round down_
+
 
 
 Syntax: `floor x`, `floor[x]` 

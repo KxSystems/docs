@@ -1,9 +1,11 @@
 ---
-title: Update
+title: update, Update
+description: update and Update are (respectively) a q keyword and a q operator that add rows or columns to a table.
+author: Stephen Taylor
 keywords: columns, kdb+, q, query, qsql, rows, sql, update
 ---
-
 # `update`, `!` Update
+
 
 
 

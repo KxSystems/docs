@@ -1,10 +1,13 @@
 ---
+title: keys, xkey
+description: keys and xkey are q keywords that get or set the key columns of a table. 
+author: Stephen taylor
 keyword: kdb+, key, key columns, keyed table, q
 ---
-
 # `keys`, `xkey`
 
 _Get or set key column/s of a table_
+
 
 
 

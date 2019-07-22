@@ -1,4 +1,7 @@
 ---
+title: key
+description: key is a q keyword that returns the keys of a dictionary; the key columns of a keyed table; files in a folder; whether a fileexists; whether a name is defined; the tareget of a foreign key, the type of a vector; or the enumerator of a list.
+author: Stephen Taylor
 keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
 ---
 

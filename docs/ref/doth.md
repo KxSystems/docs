@@ -1,8 +1,11 @@
 ---
+title: The .h namespace
+description: The .h namespace contains objects useful for marking up data for an HTTP response.
+author: Stephen Taylor
 keywords: html, kdb+, markup, q
 ---
-
 # The .h namespace
+
 
 
 

@@ -1,11 +1,13 @@
 ---
 title: File and process handles
+description: hclose, hcount, hdel, hopen, and hsym are q keywords for working with file and process handles.
+author: Stephen Taylor
 keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, filehandle, filepath, filesize, filesystem, folder, handle, hclose, hcount, hdel, hopen, hostname, hsym, ip address, ipc, kdb+, named pipe, open, os, pipe, port, process, q, query, request, size, socket, ssl, symbol, timeout, tls
 ---
-
 # `hclose`, `hcount`, `hdel`, `hopen`, `hsym`
 
 _File and process handles_
+
 
 
 

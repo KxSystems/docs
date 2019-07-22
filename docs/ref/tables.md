@@ -1,8 +1,11 @@
 ---
+title: tables
+description: tables is a q keyword that returns a list of tables in a namespace.
+author: Stephen Taylor
 keywords: kdb+, metadata, q, table
 ---
-
 # `tables`
+
 
 
 

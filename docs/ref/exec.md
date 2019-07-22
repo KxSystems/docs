@@ -1,3 +1,9 @@
+---
+title: exec, Exec
+description: exec is a q keyword that returns selected rows and columns from a table. Exec is a q operator that does the same in functional SQL.
+author: Stephen Taylor
+keywords: kdb+, q, table
+---
 # `exec`, `?` Exec
 
 

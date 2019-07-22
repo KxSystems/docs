@@ -1,9 +1,12 @@
 ---
+title: xgroup
+description: xgroup is a q keyword that groups a table by values in selected columns.
+author: Stephen Taylor
 keywords: column, group, kdb+, q, xgroup
 ---
-
-
 # `xgroup`
+
+
 
 
 _Groups a table by values in selected columns_

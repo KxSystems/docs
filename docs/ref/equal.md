@@ -1,3 +1,9 @@
+---
+title: Equal
+description: Equal is a q operator that flags where its arguments are equal.
+author: Stephen Taylor
+keywords: equal, kdb+, q
+---
 # `=` Equal
 
 

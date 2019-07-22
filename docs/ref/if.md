@@ -1,3 +1,9 @@
+---
+title: if
+description: if is a q control word for conditional evaluation of one or more expressions.
+author: Stephen Taylor
+keywords: condition, control, evaluate, kdb+, q
+---
 # `if`
 
 

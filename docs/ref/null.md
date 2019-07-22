@@ -1,8 +1,11 @@
 ---
+title: null
+description: null is a q keyword that flags where its argument is null.
+author: Stephen Taylor
 keywords: kdb+, null, q
 ---
-
 # `null`
+
 
 
 

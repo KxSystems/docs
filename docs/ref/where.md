@@ -1,8 +1,11 @@
 ---
+title: where
+description: where is a q keyword that returns copies of indexes of a list or keys of a dictionary.
+author: Stephen Taylor
 keywords: kdb+, q, selection, where
 ---
-
 # `where`
+
 
 
 

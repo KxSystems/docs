@@ -1,9 +1,11 @@
 ---
 title: Greater Than, At Least
+description: Greater Than and At Least are q operators that compare their arguments.
+author: Stephen Taylor
 keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
 ---
-
 # `>` Greater Than <br>`>=` At Least
+
 
 
 

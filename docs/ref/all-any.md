@@ -1,5 +1,7 @@
 ---
 title: all, any
+description: all and any are q keywords that invoke aggregator functions for vectors of flags
+author: Stephen Taylor
 keywords: all, any, boolean, kdb+, logic, q
 ---
 

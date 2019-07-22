@@ -1,8 +1,11 @@
 ---
+title: abs
+description: abs is a q keyword that returns the absolute value of its argument
+author: Stephen Taylor
 keywords: abs, absolute, kdb+, math, mathematics, q
 ---
-
 # `abs`
+
 
 
 

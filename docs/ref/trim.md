@@ -1,10 +1,13 @@
 ---
+title: trim, ltrim, rtrim
+description: trim, ltrim, and rtrim are q keywords that remove leading or trailing spaces from a string.
+author: Stephen Taylor
 keywords: kdb+, ltrim, q, rtrim, string, trim
 ---
-
 # `trim`, `ltrim`, `rtrim`
 
 _Remove leading or trailing spaces from a string_
+
 
 
 

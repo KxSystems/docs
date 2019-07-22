@@ -6,6 +6,7 @@ keywords: anaconda, conda, docker, embedpy, jupyter, ml, machine learning, pytho
 # <i class="fas fa-share-alt"></i> Setting up your machine-learning environment
 
 
+
 There are three methods available to set up an environment in which to work on Machine Learning within kdb+/q: 
 
 -   with Anaconda

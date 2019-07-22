@@ -1,10 +1,12 @@
 ---
 author: Conor McCarthy
+title: Cross validation procedures - Machine Learning
+description: The .ml.xv and .ml.gs namespaces contain functions related to cross-validation and grid search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 date: March 2019
 keywords: time-series, cross validation, grid search, roll-forward, chain-forward, grid search fit, data splitting, stratified splitting, kdb+, q
 ---
-
 # <i class="fa fa-share-alt"></i> Cross validation procedures 
+
 
 
 The `.ml.xv` and `.ml.gs` namespaces contain functions related to cross-validation and grid search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.

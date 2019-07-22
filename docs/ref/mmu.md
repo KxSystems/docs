@@ -1,4 +1,7 @@
 ---
+title: Matrix Multiply, mmu
+description: Matrix Multiply is a q operator that performs matrix multiplication; mmu is a q keyword that is a wrapper for it.
+author: Stephen Taylor
 keywords: kdb+, mathematics, matrix, multiply, q, tensors
 ---
 

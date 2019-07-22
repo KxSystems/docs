@@ -1,8 +1,11 @@
 ---
+title: asc, iasc, xasc
+description: asc is a q keyword that returns a sortable argument in ascending order and with the s attribute set; iasc grades its items into ascending order; and xasc sorts a table by specified columns.
+author: Stephen Taylor
 keywords: asc, ascending, grade, iasc, kdb+, q, sort, table, xasc
 ---
-
 # `asc`, `iasc`, `xasc`
+
 
 _Sort and grade: ascending_
 

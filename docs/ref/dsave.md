@@ -1,8 +1,15 @@
+---
+title: dsave
+description: dsave is a q keyword that Saves global tables to disk as splayed, enumerated, indexed kdb+ tables.
+author: Stephen Taylor
+keywords: enumerated, indexed, kdb+, q, splayed, table
+---
 # `dsave`
 
-
-
 _Saves global tables to disk as splayed, enumerated, indexed kdb+ tables._
+
+
+
 
 Syntax: `x dsave y`, `dsave[x;y]`
 

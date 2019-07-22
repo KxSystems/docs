@@ -1,10 +1,13 @@
 ---
+title: gtime, ltime
+description: gtime and ltime are q keywords that return, respectively, global and local time.
+author: Stephen Taylor
 keywords: clock, environment, global, gtime, local, ltime, kdb+, os, q, system, time, timestamp, utc
 ---
-
 # `gtime`, `ltime`
 
 _Global and local time_
+
 
 
 

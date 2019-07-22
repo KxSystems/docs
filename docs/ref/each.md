@@ -1,8 +1,13 @@
 ---
+title: each, peach
+description: each and peach are q keywords, wrappers for the iterators Each and Each Parallel.
+author: Stephen Taylor
 keywords: each, iterator, kdb+, map, q
 ---
-
 # `each`, `peach`
+
+
+
 
 Syntax: `v1 each x`, `each[v1;x]`, `v1 peach x`, `peach[v1;x]`  
 Syntax: `(vv)each x`, `each[vv;x]`, `(vv)peach x`, `peach[vv;x]`

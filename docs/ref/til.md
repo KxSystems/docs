@@ -1,11 +1,14 @@
 ---
+title: til 
+description: til is a q keyword that returns the natural numbers up to its argument.
+author: Stephen Taylor
 keywords: integers, kdb+, math, mathematics, natural numbers, q
 ---
-
 # `til`
 
 
-Syntax: `til x`,`til[x]` 
+
+Syntax: `til x`, `til[x]` 
 
 _First x natural numbers_ 
 

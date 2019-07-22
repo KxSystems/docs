@@ -1,8 +1,10 @@
 ---
+title: aj, aj0, ajf, ajf0
+description: As-of joins join two tables taking from the second the most recent records prior to the times in the first
 keywords: as-of, join, kdb+, q
 ---
-
 # `aj`, `aj0`, `ajf`, `ajf0`
+
 
 
 

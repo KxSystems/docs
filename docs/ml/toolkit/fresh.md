@@ -1,10 +1,12 @@
 ---
+title: FRESH – a feature-extraction and feature-significance toolkit
 author: Conor McCarthy
+description: Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 date: August 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, interpolation
 ---
-
 # <i class="fas fa-share-alt"></i> FRESH: a feature-extraction and feature-significance toolkit
+
 
 
 

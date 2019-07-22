@@ -1,9 +1,11 @@
 ---
 title: Window join
+description: wj and wj1 are q keywords that perform window joins.
+author: Stephen Taylor
 keywords: join, kdb+, q, window join, wj, wj1
 ---
-
 # `wj`, `wj1` 
+
 
 
 

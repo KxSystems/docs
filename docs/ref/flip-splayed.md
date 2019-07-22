@@ -1,8 +1,11 @@
 ---
+title: Flip Splayed or Partitioned
+description: Flip Splayed or Partitioned is a q operator that returns the flip of a splayed orpartitioned table.
+author: Stephen Taylor
 keywords: flip, flip splayed, kdb+, partitioned, q, splayed, table
 ---
-
 # `!` Flip Splayed or Partitioned
+
 
 
 

@@ -1,10 +1,11 @@
 ---
 author: Conor McCarthy
+description: The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
 date: April 2019
 keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statistics, roc, auc, precision, logloss, cross entropy.
 ---
-
 # <i class="fa fa-share-alt"></i> Metrics 
+
 
 The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
 

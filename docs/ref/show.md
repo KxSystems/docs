@@ -1,8 +1,11 @@
 ---
+title: show
+description: show is a q keyword that formats its argument and displays it at the console.
+author: Stephen Taylor
 keywords: console, debug, develop, display, kdb+, q, tool
 ---
-
 # `show`
+
 
 
 _Format and display at the console._

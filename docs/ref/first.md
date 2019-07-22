@@ -1,8 +1,11 @@
 ---
+title: first, last
+description: first and last are q keywords that return respectively the first and last items from a list.
+author: Stephen Taylor
 keywords: each, enlist, first, last kdb+, q, select
 ---
-
 # `first`, `last`
+
 
 
 ## `first`

@@ -1,10 +1,12 @@
 ---
 author: Conor McCarthy
+description: The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 date: April 2019
 keywords: pandas manipulation, dataframe, train test split, .
 ---
-
 # <i class="fa fa-share-alt"></i> Utility functions 
+
+
 
 The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 

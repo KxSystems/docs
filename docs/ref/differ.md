@@ -1,11 +1,14 @@
 ---
+title: differ
+description: differ is a q keyword that flags where items of a list change value.
+author: Stephen Taylor
 keywords: diff, differ, kdb+, item, list, q
 ---
-
 # `differ`
 
-_Find where list items change value
-_
+_Find where list items change value_
+
+
 
 
 Syntax: `differ x`, `differ[x]`

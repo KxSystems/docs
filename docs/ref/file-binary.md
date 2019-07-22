@@ -1,8 +1,16 @@
+---
+title: File Binary
+description: File Binary is a q operator that reads or writes a binary file.
+author: Stephen Taylor
+keywords: binary, file, kdb+, q, read, write
+---
 # `1:` File Binary 
 
-
-
 _Read or write a binary file_
+
+
+
+
 
 
 ## Read Binary

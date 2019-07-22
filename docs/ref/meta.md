@@ -1,8 +1,11 @@
 ---
+title: meta
+description: meta is a q keyword that returns metadata for a table.
+author: Stephen Taylor
 keywords: kdb+, meta, metadata, q, table
 ---
-
 # `meta`
+
 
 
 

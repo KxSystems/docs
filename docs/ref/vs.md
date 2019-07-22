@@ -1,12 +1,15 @@
 ---
+title: vs
+description: vs is a q keyword that performs variousn functions under the scheme vector-from-scalar (atom).
+author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
-
 <div style="float: right">
 <i class="fas fa-wrench fa-5x"></i>
 </div>
 
 # `vs`
+
 
 
 

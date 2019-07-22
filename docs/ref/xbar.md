@@ -1,9 +1,12 @@
 ---
+title: xbar
+description: xbar is a q keyword that returns one argument rounded down to the nearest multiple of the other. 
+author: Stephen Taylor
 keywords: bar, group, interval, kdb+, math, mathematics, q, xbar
 ---
-
-
 # `xbar`
+
+
 
 _Round down_
 

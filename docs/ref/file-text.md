@@ -1,7 +1,15 @@
+---
+title: File Text
+description: File Text is a q operator that reads or writes text files.
+author: Stephen Taylor
+keywords: file, kdb+, q, read, text, write
+---
 # `0:` File Text
 
-
 _Read or write a text file_
+
+
+
 
 The operator `0:` has six forms:
 

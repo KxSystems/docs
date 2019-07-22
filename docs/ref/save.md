@@ -1,10 +1,13 @@
 ---
+title: save, rsave
+description: save and rsave are q keywords that save global data to file or splayed to a directory.
+author: Stephen Taylor
 keywords: directory, global, kdb+, q, rsave, save, splayed, table
 ---
-
 # `save`, `rsave`
 
 _Save global data to file or splayed to a directory_
+
 
 
 ## `save`

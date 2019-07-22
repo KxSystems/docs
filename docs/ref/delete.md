@@ -1,14 +1,17 @@
 ---
+title: delete, Delete
+description: delete is a q keyword that removes rows or columns from a table, entries from a dictionary, or objects from a namespace. Delete is a q operator, part of functional SQL.
+author: Stephen Taylor
 keywords: delete, functional kdb+, q, query, qsql, sql
 ---
-
 # `delete`, `!` Delete
 
 _Delete rows or columns from a table, entries from a dictionary, or objects from a namespace_
 
 
 
-## `delete`
+
+## `delete` keyword
 
 Syntax: `delete from t [where {cond}]`  
 Syntax: `delete [cols] from t`  
@@ -113,7 +116,7 @@ q)\v
 [qSQL](../basics/qsql.md)
 
 
-## `!` Delete
+## `!` Delete operator
 
 <i class="far fa-hand-point-right"></i>
 [Functional Delete](../basics/funsql.md#delete)

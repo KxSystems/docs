@@ -1,9 +1,11 @@
 ---
 title: Less Than, Up To
+description: Less Than and Up To are q operators that compare the values of their arguments.
+author: Stephen Taylor
 keywords: comparison, kdb+, less-than, less-than-or-equal, q, up to
 ---
-
 # `<` Less Than<br>`<=` Up To
+
 
 
 

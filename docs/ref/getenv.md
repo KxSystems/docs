@@ -1,10 +1,13 @@
 ---
+title: getenv, setenv
+description: getenv and setenv are q keywords that get or set an environment variable.
+author: Stephen Taylor
 keywords: environment, get, getenv, kdb+, q, set, setenv, variable
 ---
-
 # `getenv`
 
 _Get or set an environment variable_
+
 
 
 

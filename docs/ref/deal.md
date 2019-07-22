@@ -1,13 +1,16 @@
 ---
-keywords: deal, kdb+, permute, q, rand, random, seed
+title: Roll, Deal, Permute
+description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
+author: Stephen Taylor
+keywords: deal, duplicate, kdb+, permute, q, rand, random, seed
 ---
-
 # `?` Roll, Deal, Permute
 
-
-
-
 _Random selections, with or without duplicates_
+
+
+
+
 
 
 ## Roll

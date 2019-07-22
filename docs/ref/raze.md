@@ -1,8 +1,11 @@
 ---
+title: raze
+description: raze is a q keyword that returns the items of a list joined, collapsing one level of nesting.
+author: Stephen Taylor
 keywords: items, join, kdb+, list, q
 ---
-
 # `raze`
+
 
 
 _Return the items of `x` joined, collapsing one level of nesting_

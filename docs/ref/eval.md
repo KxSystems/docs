@@ -1,10 +1,13 @@
 ---
+title: eval, reval
+description: eval and reval are q keywords that evaluate parse trees.
+author: Stephen Taylor
 keywords: eval, kdb+, q, reval
 ---
-
 # `eval`, `reval`
 
 _Evaluate a parse tree_
+
 
 
 

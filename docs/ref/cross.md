@@ -1,4 +1,7 @@
 ---
+title: cross
+description: cross is a q keyword that returns the cross-product (all possible combinations) of the items of its arguments.
+author: Stephen Taylor
 keywords: cross, dot product, kdb+, list, product, q, vector
 ---
 

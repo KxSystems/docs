@@ -1,8 +1,11 @@
 ---
+title: the .z namespace
+description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
+author: Stephen Taylor
 keywords: callbacks, environment, kdb+, q
 ---
-
 # The .z namespace
+
 
 
 

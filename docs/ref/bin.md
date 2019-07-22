@@ -1,9 +1,10 @@
 ---
-title: bin and binr
+title: bin, binr
+description: bin and binr are q keywords that perform binary searches.
 keywords: bin, binr, kdb+, q, search_
 ---
-
 ## `bin`, `binr`
+
 
 
 

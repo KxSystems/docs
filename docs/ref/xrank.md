@@ -1,8 +1,11 @@
 ---
+title: xrank
+description: xrank is a q keyword that groups its argument by value.
+author: Stephen Taylor
 keywords: group, kdb+, q, sort
 ---
-
 # `xrank`
+
 
 
 

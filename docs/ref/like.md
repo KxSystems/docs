@@ -1,8 +1,11 @@
 ---
+title: like
+description: like is a q keyword that matches text to a pattern.
+author: Stephen Taylor
 keywords: like, kdb+, pattern, match, q, regex, regular expression, string
 ---
-
 # `like`
+
 
 
 Syntax: `x like y`, `like[x;y]`

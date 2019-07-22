@@ -1,13 +1,15 @@
 ---
-keywords: join, kdb+, left,left join, lj, ljf, q
+title: lj
+description: lj is a q keyword that performs a left join.
+keywords: join, kdb+, left, left join, lj, ljf, q
 ---
-
 # `lj`, `ljf` 
 
-
-
-
 _Left join_
+
+
+
+
 
 Syntax: `x lj y`, `lj[x;y]`  
 Syntax: `x ljf y`, `ljf[x;y]`

@@ -1,8 +1,11 @@
 ---
+title: sqrt
+description: sqrt is a q keyword that returns the square root of its argument.
+author: Stephen Taylor
 keywords: kdb+, math, mathematics, q, root, square root
 ---
-
 # `sqrt`
+
 
 
 

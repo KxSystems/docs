@@ -99,6 +99,10 @@ q)goo 3
 
 : evaluate some expression/s some number of times
 
+[`exit`](../ref/exit.md)
+
+: terminate kdb+
+
 [`if`](../ref/if.md)
 
 : evaluate some expression/s if some condition holds 

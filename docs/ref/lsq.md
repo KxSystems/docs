@@ -1,12 +1,15 @@
 ---
+title: lsq
+description: lsq is a q keyword that performs least squares fitting, matrix division.
+author: Stephen Taylor
 keywords: divide, division, fit, fitting, kdb+, least squares, lsq, matrix, mmu, polynomial, q
 ---
-
 <div markdown="1" style="float: right">
 ![Linear regression](../img/linear-regression.png)
 </div>
 
 # `lsq`
+
 
 
 

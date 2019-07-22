@@ -1,8 +1,14 @@
+---
+title: fkeys
+description: fkeys is a q keyword that returns the foreign-key columns of a table.
+author: Stephen Taylor
+keywords: column, foreign key, kdb+, q, table
+---
 # `fkeys`
 
-
-
 _Foreign-key columns of a table_
+
+
 
 Syntax: `fkeys x`, `fkeys[x]`
 

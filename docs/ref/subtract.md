@@ -1,8 +1,11 @@
 ---
+title: Subtract
+description: Subtract is a q operator that returns the difference of its arguments.
+author: Stephen Taylor
 keywords: difference, kdb+, math, mathematics, minus, subtract
 ---
-
 # `-` Subtract
+
 
 
 Syntax: `x-y`, `-[x;y]`

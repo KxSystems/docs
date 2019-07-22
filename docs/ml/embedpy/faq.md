@@ -3,8 +3,8 @@ title: Frequently-asked questions about embedPy
 description: Frequently-asked questions about embedPy
 keywords: dates, embedpy, interface, kdb+, pandas, python, q
 ---
-
 # <i class="fab fa-python"></i> Frequently-asked questions about embedPy
+
 
 
 ## How can I convert between q tables and pandas DataFrames?

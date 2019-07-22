@@ -1,10 +1,13 @@
 ---
+title: Enkey, Unkey
+description: Enkey and Unkey are q operators that respectively convert a simple tableto a keyed table and vice-versa.
+author: Stephen Taylor
 keywords: bang, enkey, kdb+, keyed table, q, table, Unkey
 ---
-
 # `!` Enkey, Unkey
 
 _Simple to keyed table and vice-versa_
+
 
 
 

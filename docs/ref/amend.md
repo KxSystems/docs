@@ -3,8 +3,8 @@ title: Amend, Amend At
 description: Operators Amend and Amend At modify one or more items in a list.
 keywords: amend, amend at, at, dot, kdb+, q
 ---
-
 # `.` `@` Amend, Amend At
+
 
 
 

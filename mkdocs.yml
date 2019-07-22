@@ -219,7 +219,6 @@ nav:
       - except: ref/except.md
       - exec: ref/exec.md
       - exp, xexp: ref/exp.md
-      - exit: ref/exit.md
       - fby: ref/fby.md
       - fills: ref/fill.md
       - first, last: ref/first.md
@@ -353,6 +352,7 @@ nav:
       - Vector Conditional: ref/vector-conditional.md
     - Control words:
       - do: ref/do.md
+      - exit: ref/exit.md
       - if: ref/if.md
       - while: ref/while.md
     - Namespaces:

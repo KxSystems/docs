@@ -1,3 +1,9 @@
+---
+title: do
+description: do is a q control word that evaluates one or more expressions a set number of times.
+author: Stephen Taylor
+keywords: control, evaluate, expression, kdb+, q
+---
 # `do`
 
 

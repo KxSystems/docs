@@ -1,10 +1,15 @@
 ---
+title: Greater, or
+description: Greater is a q operator that returns the greater of its arguments. or is a q keyword that performs a logical OR. 
+author: Stephen Taylor
 keywords: greater, kdb+, logic, maximum, or, q
 ---
-
 # `|` Greater, `or`
 
 _Greater, logical OR_
+
+
+
 
 Syntax: `x|y`, `|[x;y]`  
 Syntax: `x or y`, `or[x;y]` 

@@ -1,8 +1,11 @@
 ---
+title: The .Q namespace
+description: The .Q namespace contains utility objects for q programming
+author: Stephen Taylor
 keywords: database, decode, encode, kdb+, namespace, partitioned, q, segmented, utilities
 ---
-
 # The .Q namespace
+
 
 
 

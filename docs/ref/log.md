@@ -1,10 +1,13 @@
 ---
+title: log, xlog
+description: log and xlog are q keywords that return logarithms, either natural orto a specified base.
+author: Stephen Taylor
 keywords: e, log, logarithm, kdb+, natural, power, q, xlog 
 ---
-
 # `log`, `xlog`
 
 _Logarithms and natural logarithms_
+
 
 
 ## `log`

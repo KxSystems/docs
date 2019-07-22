@@ -1,10 +1,13 @@
 ---
+title: ss, ssr
+description: ss and ssr are q keywords that perform string search and replacement.
+author: Stephen Taylor
 keywords: kdb+, match, pattern, q, regex, regular expression, replace, search, ss, ssr, string
 ---
-
 # `ss`, `ssr`
 
 _String search – and replace_
+
 
 
 

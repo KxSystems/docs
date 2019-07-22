@@ -1,10 +1,13 @@
 ---
+title: sum, sums, msum, wsum
+description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument. 
+author: Stephen Taylor
 keywords: kdb+, math, mathematics, moving, q, sum, sums, statistics, weight, weighted sum
 ---
-
 # `sum`, `sums`, `msum`, `wsum`
 
 _Sums_
+
 
 
 

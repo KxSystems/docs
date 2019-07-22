@@ -1,8 +1,11 @@
 ---
+title: attr
+description: attr is a q keyword that reurns the attributes of its arguments
+author: Stephen Taylor
 keywords: attr, attribute, data, kdb+, q
 ---
-
 # `attr`
+
 
 
 
@@ -12,10 +15,13 @@ Syntax: `attr x`, `attr[x]`
 
 Returns the attributes of `x`. It can be applied to all data types. The possible attributes are:
 
--   `` `s# `` sorted
--   `` `u# `` unique (hash table)
--   `` `p# `` partitioned (grouped)
--   `` `g# `` true index (dynamic attribute): enables constant time update and access for real-time tables
+code | attribute
+:---:|---------------------
+s    | sorted
+u    | unique (hash table)
+p    | partitioned (grouped)
+g    | true index (dynamic attribute): enables constant time update and access for real-time tables
+
 
 The result is a symbol atom and is one of `` `s`u`p`g` `` with `` ` `` meaning no attributes are set on the argument.
 

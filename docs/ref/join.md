@@ -1,3 +1,9 @@
+---
+title: Join
+description: Join is a q operator that joins atoms, lists, dictionaries or tables.
+author: Stephen Taylor
+keywords: atom, dictionary, join, kdb+, list, q
+---
 # `,` Join
 
 

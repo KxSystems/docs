@@ -1,8 +1,12 @@
 ---
+title: over, scan
+description: over and scan are q keywords that are wrappers for the Over and Scan accumulating iterators.
+author: Stephen Taylor
+date: March 2019
 keywords: accumulator, iterator, kdb+, operator, over, q, scan
 ---
-
 # `over`, `scan`
+
 
 
 

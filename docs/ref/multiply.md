@@ -1,8 +1,11 @@
 ---
+title: Multiply
+description: Multiply is a q operator that returns the product of its arguments.
+author: Stephen Taylor
 keywords: kdb+, math, mathematics, multiply, product, q, times
 ---
-
 # `*` Multiply
+
 
 
 

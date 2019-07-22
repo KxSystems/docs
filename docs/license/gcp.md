@@ -1,6 +1,7 @@
 ---
+title: Kdb+ license for Google Cloud
+description: Kdb+ software end-user agreement for Google Cloud Platform Marketplace
 hero: <i class="fas fa-cloud"></i> Google Cloud Platform Marketplace
-title: Kdb+ software end-user agreement for Google Cloud
 date: July 2018
 ---
 
@@ -8,11 +9,7 @@ date: July 2018
 
 
 
-Carefully read the following terms and conditions. By accessing the Kdb+ Software via the Google platform, you are agreeing to be bound by these terms and conditions (which may be updated from time to time) and to the extent you are acting on behalf of a permitted organization that you have authority to act on their behalf and bind them to these terms and conditions.
-
-If you do not agree to these terms and conditions or do not have the necessary authority, do not access or use the software.
-
-You may not access the Kdb+ Software if you are a direct competitor of Kx.
+_Carefully read the following terms and conditions. By accessing the Kdb+ Software via the Google platform, you are agreeing to be bound by these terms and conditions (which may be updated from time to time) and to the extent you are acting on behalf of a permitted organization that you have authority to act on their behalf and bind them to these terms and conditions. If you do not agree to these terms and conditions or do not have the necessary authority, do not access or use the software. You may not access the Kdb+ Software if you are a direct competitor of Kx._
 
 ## 1.  Scope of agreement
     

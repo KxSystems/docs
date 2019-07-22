@@ -1,8 +1,10 @@
 ---
+title: asof
+description: Where t1 is a table  and t2 is a table or dictionary in which the last key or column of t2 corresponds to a time column in t1, asof[t1;t2] returns the values from the last rows matching the rest of the keys and time ≤ the time in t2.
 keywords: asof, join, kdb+, q
 ---
-
 # `asof`
+
 
 
 
@@ -16,7 +18,7 @@ Where
 -   `t2` is a table or dictionary
 -   the last key or column of `t2` corresponds to a time column in `t1`
 
-returns the values from the last rows matching the rest of the keys and time &le; the time in `t2`.
+returns the values from the last rows matching the rest of the keys and time ≤ the time in `t2`.
 
 ```q
 q)show trade asof`sym`time!(`IBM;09:30:00.0)

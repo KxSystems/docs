@@ -1,9 +1,12 @@
 ---
+title: read1
+description: read1 is a q keyword that reads bytes from a file or named pipe.
+author: Stephen Taylor
 keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
 ---
-
-
 # `read1`
+
+
 
 
 

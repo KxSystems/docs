@@ -1,8 +1,11 @@
 ---
+title: Accumulators
+description: An accumulator is an iterator that takes an applicable value as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of successive evaluations.
+author: Stephen Taylor
 keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, value, while
 ---
-
 # Accumulators
+
 
 `/` `\`
 

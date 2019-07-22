@@ -1,8 +1,11 @@
 ---
+title: cols, xcol, xcols
+description: cols, xcol and xcols are q keywords. cols returns the column names of a table. xcol renames tablecolumns. xcols reorders table columns. 
+author: Stephen Taylor
 keywords: cols, column, kdb+, q, table, xcol, xcols
 ---
-
 # `cols`, `xcol`, `xcols`
+
 
 _Table columns_
 

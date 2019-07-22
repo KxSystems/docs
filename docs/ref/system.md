@@ -1,8 +1,13 @@
 ---
+title: system
+description: system is a q keyword that executes a system command.
+author: Stephen Taylor
 keywords: command, kdb+, q, system, system command
 ---
-
 # `system`
+
+
+
 
 _Execute a system command_
 

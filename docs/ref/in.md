@@ -1,8 +1,12 @@
 ---
+title: in
+description: in is a q keyword that flags whether its left argument is an item in its right argument.
+author: Stephen Taylor
+date: June 2019
 keywords: in, kdb+, q, search
 ---
-
 # `in`
+
 
 
 

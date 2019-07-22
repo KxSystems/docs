@@ -1,10 +1,13 @@
 ---
+title: desc, idesc, xdesc
+description: desc, idesc, and xdesc are q keywords. desc returns a list sorted descending; idesc returns the grade for that sort. xdesc sorts a table descending by specified columns.
+author: Stephen Taylor
 keywords: asc, desc, descending, grade, idesc, kdb+, q, sort, xdesc
 ---
-
 # `desc`, `idesc`, `xdesc`
 
 _Sort and grade: descending_
+
 
 
 

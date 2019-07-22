@@ -1,8 +1,10 @@
 ---
+title: ej
+description: ej is a q keyword that performs an equi join on two tables.
 keywords: ej, equi join, join, kdb+, q
 ---
-
 # `ej` 
+
 
 
 

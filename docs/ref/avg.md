@@ -1,8 +1,11 @@
 ---
+title: avg, avgs, mavg, wavg
+description: avg and wavg are q keywords invoking aggregate functions for the arithmetic and weighted means of a vector. avgs and mavgs are q keywords that invoke uniform functions that return the cumulative and moving means of a vector.
+author: Stephen Taylor
 keywords: arithmetic mean, average, avg, avgs, kdb+, mean, moving, q, statistics, volume-weighted average price, vwap, weighted average
 ---
-
 # `avg`, `avgs`, `mavg`, `wavg`
+
 
 
 

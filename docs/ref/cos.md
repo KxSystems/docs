@@ -1,8 +1,11 @@
 ---
+title: cos
+description: cos and acos are q keywords. They return the cosine and arccosine respectively of their numeric argument.
+author: Stephen Taylor
 keywords: acos, arccosine, cos, kdb+, math, mathematics, q, trigonometry
 ---
-
 # `cos`, `acos`
+
 
 _Cosine, Arccosine_
 

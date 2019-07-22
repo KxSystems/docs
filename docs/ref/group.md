@@ -1,8 +1,11 @@
 ---
+title: group
+description: group is a q keyword that returns a dictionary in which the keys are the distinct items of its argument, and the values the indexes where the distinct items occur.
+author: Stephen Taylor
 keywords: group, kdb+, q, qsql, sql, sort
 ---
-
 # `group`
+
 
 
 

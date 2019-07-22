@@ -1,4 +1,6 @@
 ---
+title: med
+description: med is a q keyword that returns the median of its argument.
 keywords: kdb+, median, q, statistics
 ---
 

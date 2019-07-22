@@ -1,8 +1,10 @@
 ---
+title: ceiling
+description: ceiling is a q keyword that returns the least integer greater than its numeric argument.
 keywords: ceiling, floor, kdb+, math, mathematics, q
 ---
-
 # `ceiling`
+
 
 _Round up_
 
