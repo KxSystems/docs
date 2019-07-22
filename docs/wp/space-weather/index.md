@@ -1,11 +1,12 @@
 ---
 title: NASA Frontier Development Lab Space Weather Challenge
-keywords: kdb+, q, space, NASA, machine learning
+description: In this paper, we examine the use of ML models to predict scintillation events, using historical GNSS data. Initially, a Support Vector Machine (SVM) was used to recreate the baseline model outlined in McGranaghan et al., 2018. We then implemented a neural network model in an attempt to improve upon the baseline results and accurately predict events as far as 24 hours ahead. Both methods used the strength of kdb+/q to deal with time-series data and embedPy to import the necessary python ML libraries.
 author: Deanna Morgan
 date: November 2018
+keywords: kdb+, q, space, NASA, machine learning
 ---
-
 # NASA Frontier Development Lab Space Weather Challenge
+
 
 
 The NASA Frontier Development Lab (FDL) is an applied artificial intelligence (AI) research accelerator, hosted by the SETI Institute in partnership with NASA Ames Research Centre. The programme brings commercial and private partners together with researchers to solve challenges in the space science community using new AI technologies.

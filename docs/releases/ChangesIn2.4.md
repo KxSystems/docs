@@ -1,13 +1,21 @@
-New features in the 2.4 release of kdb+
-=======================================
+---
+title: New features in the 2.4 release of kdb+
+description: New features in the 2.4 release of kdb+
+author: Charles Skelton
+---
+# New features in the 2.4 release of kdb+
+
+
+
+
 
 **Detailed change list / release notes**
-
 Commercially licensed users may obtain the detailed change list / release notes from <http://kxdownloads.com>
 
-**General Info**
+## General info
 
-This release builds on the existing 2.3. The non upward-compatible changes (NUC) are the change to `.z.ph` (which only impacts people who've written their own HTTP handler), the additional `.z.pc` close event when closing stdin, and the removal of the `hopen` shortcut of just ``hopen`:port``. All other code should run without change.
+This release builds on the existing V2.3. The non upward-compatible changes (NUC) are the change to `.z.ph` (which only impacts people who've written their own HTTP handler), the additional `.z.pc` close event when closing stdin, and the removal of the `hopen` shortcut of just ``hopen`:port``. All other code should run without change.
+
 
 ## Multi-threaded input
 

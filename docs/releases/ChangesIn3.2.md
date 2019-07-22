@@ -1,3 +1,12 @@
+---
+title: Changes in 3.2
+description: Changes to V3.2 of kdb+ from the previous version
+author: Charles Skelton
+---
+# Changes in 3.2
+
+
+
 Below is a summary of changes from V3.1. Commercially-licensed users may obtain the detailed change list / release notes from [downloads.kx.com](http://downloads.kx.com)
 
 

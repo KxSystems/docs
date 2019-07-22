@@ -1,3 +1,14 @@
+---
+title: Functions withdrawn from q
+description: The functions listed here have been withdrawn from q, and are listed here solely for the interpretation of old scripts. 
+author: Stephen Taylor
+keywords: kdb+, q, withdrawn
+---
+# Functions withdrawn from q
+
+
+
+
 The functions listed here have been withdrawn from q, and are listed here solely for the interpretation of old scripts. 
 
 

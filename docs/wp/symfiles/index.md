@@ -1,5 +1,6 @@
 ---
 title: Working with sym files
+description: In this whitepaper, we discuss what the sym file is, suggestions for table setup, the maintenance of the sym file and safety measures that can be taken to protect the sym file.
 author: Paula Clarke
 date: March 2019
 keywords: ksb+, q, sym, symfile

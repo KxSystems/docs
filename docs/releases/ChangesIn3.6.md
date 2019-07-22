@@ -1,14 +1,23 @@
+---
+title: Changes in 3.6
+description: Changes to V3.6 of kdb+ from the previous version
+author: Charles Skelton
+---
 # Changes in 3.6
 
+
 Below is a summary of changes from V3.5. Commercially licensed users may obtain the detailed change list / release notes from <http://downloads.kx.com>
+
 
 ## Production release date
 
 2018.05.16
 
+
 ## Deferred response
 
 More efficient gateways: a server process can now use [`-30!x`](../basics/internal.md#-30x-deferred-response) to defer responding to a sync query until, for example, worker process have completed their tasks. 
+
 
 ## 64-bit enumerations
 

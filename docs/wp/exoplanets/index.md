@@ -1,11 +1,13 @@
 ---
 title: NASA Frontier Development Lab Exoplanets Challenge
+description: The NASA Frontier Development Lab (FDL) is an applied artificial intelligence (AI) research accelerator, hosted by the SETI Institute in partnership with NASA Ames Research Centre. The programme brings commercial and private partners together with researchers to solve challenges in the space science community using new AI technologies. NASA FDL 2018 focused on four areas of research – Space Resources, Exoplanets, Space Weather and Astrobiology – each with their own separate challenges. This paper will focus on the Exoplanets challenge, which aimed to improve accuracy in finding new exoplanets.
 keywords: kdb+, q, space, NASA, machine learning
 author: Esperanza López Aguilera
 date: December 2018
 ---
-
 # NASA Frontier Development Lab Exoplanets Challenge
+
+
 
 
 

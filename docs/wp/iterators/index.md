@@ -1,9 +1,10 @@
 ---
 title: Iterators
+desacription: Iterators (formerly known as adverbs) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill. The first part of this paper introduces iterators informally. This provides ready access to the two principal forms of iteration – maps and accumulators. The second part of the paper reviews iterators more formally and with greater attention to syntax. We see how iterators apply not only to functions but also to lists, dictionaries and tables. From their syntax we see when parentheses are required, and why.
+author: Stephen Taylor
 date: March 2019
 keywords: accumulator, adverb, applicable value, converge, dictionary, do, iteration, iterator, kdb+, list, loop, map, operator, q, value, while
 ---
-
 # Iterators
 
 

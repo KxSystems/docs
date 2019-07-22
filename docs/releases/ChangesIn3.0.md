@@ -1,3 +1,12 @@
+---
+title: Changes in 3.0
+description: Changes to V3.0 of kdb+ from the previous version
+author: Charles Skelton
+---
+# Changes in 3.0
+
+
+
 Below is a summary of changes from V2.8. Commercially licensed users may obtain the detailed change list / release notes from (http://downloads.kx.com)
 
 

@@ -1,3 +1,13 @@
+---
+title: Changes in 3.4
+description: Changes to V3.4 of kdb+ from the previous version
+author: Charles Skelton
+---
+# Changes in 3.4
+
+
+
+
 Below is a summary of changes from V3.3. Commercially licensed users may obtain the detailed change list / release notes from <http://downloads.kx.com>
 
 

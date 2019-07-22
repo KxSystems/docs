@@ -1,10 +1,12 @@
 ---
+title: Java API for kdb+
+description: This paper illustrates how the Java API for kdb+ can be used to enable a Java program to interact with a kdb+ process. It first explores the API itself – how it is structured, and how it might be included in a development project. Examples are then provided for core use cases for the API in a standard setup. Particular consideration is given to how the API facilitates subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system.
 author: Peter Lyness
 date: May 2018
 keywords: API, Java, interface, connection
 ---
-
 # <i class="fab fa-java"></i> Java API for kdb+
+
 
 
 

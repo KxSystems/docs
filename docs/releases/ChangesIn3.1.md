@@ -1,3 +1,12 @@
+---
+title: Changes in 3.1
+description: Changes to V3.1 of kdb+ from the previous version
+author: Charles Skelton
+---
+# Changes in 3.1
+
+
+
 Below is a summary of changes from V3.0. Commercially licensed users may obtain the detailed change list / release notes from (http://downloads.kx.com)
 
 - improved performance of `select` with intervals.

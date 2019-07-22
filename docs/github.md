@@ -1,8 +1,11 @@
 ---
+title: Repositories on GitHub
+description: An index of q and kdb+ repositories on GitHub.
+author: Stephen Taylor
 keywords: code, github, kdb+, q, repo, repository
 ---
-
 # <i class="fab fa-github"></i> Repositories on GitHub
+
 
 
 <i class="far fa-hand-point-right"></i> [Interfaces](interfaces/index.md) to feeds, services and other languages  

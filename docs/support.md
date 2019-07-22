@@ -1,8 +1,11 @@
 ---
+title: Support for kdb+
+description: We are proud to provide industry-acclaimed support for our customers, starting with free, onsite evaluations for qualified prospects with application requirements well-suited for Kx technology. We pride ourselves on being highly responsive to customer needs, typically responding to technical inquiries within minutes, and offering solutions within the day; these are responses from knowledgeable staff who are familiar with the code at a very deep level, not scripted responses from an outsourced support center. Beyond this, we offer a full ecosystem of resources – of both the material and the human variety – that enhances the experiences of our customers.
+author: Stephen Taylor
 keywords: contact, customer, github, googlegroup, interface, kdb+, knowledge, license, mortal, q, reference, repo, repository, sales, stackoverflow, support, technicalsupport, textbook, whitepaper
 ---
-
 # <i class="fas fa-life-ring"></i> Support
+
 
 
 We are proud to provide industry-acclaimed support for our customers, starting with free, onsite evaluations for qualified prospects with application requirements well-suited for Kx technology.
