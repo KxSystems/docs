@@ -66,6 +66,12 @@ Windows | 32 | [`simba-kdb-1.1-32-bit.msi`](/download/simba-kdb-1.1-32-bit.msi) 
 Windows | | [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc)<br/>(Common config file) | 2kB | `bdc05a4eb0a3b5602d210446da06d25c`
 
 
+## License
+
+The license for the driver itself is presented during installation. 
+One can then choose to accept the license or abort the installation.
+The driver is sponsored by Kx, at no cost to the end user.
+
 <!-- 
 ## Prior releases
 
