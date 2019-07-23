@@ -154,39 +154,6 @@ q)-1?0Ng                                   / deal 1 GUID
 Roll uses the current seed (`\S 0N`). Deal uses a seed based on process properties and the current time. This means `-10?0Ng` is different from `{first -1?0Ng}each til 10`.
 
 
-## Range and domain 
-
-For Roll.
-
-```txt
-?| b g x h i j e f c s p m d z n u v t
--| -----------------------------------
-b| b . x h i j e f . . p m d z n u v t
-g| . . . . . . . . . . . . . . . . . .
-x| b . x h i j e f . . p m d z n u v t
-h| b . x h i j e f . . p m d z n u v t
-i| b . x h i j e f . . p m d z n u v t
-j| b . x h i j e f . . p m d z n u v t
-e| . . . . . . . . . . . . . . . . . .
-f| . . . . . . . . . . . . . . . . . .
-c| b . x h i j e f . . p m d z n u v t
-s| . . . . . . . . .   . . . . . . . .
-p| b . x h i j e f .   p m d z n u v t
-m| b . x h i j e f .   p m d z n u v t
-d| b . x h i j e f .   p m d z n u v t
-z| . . . . . . . . . . . . . . . . . .
-n| b . x h i j e f .   p m d z n u v t
-u| b . x h i j e f .   p m d z n u v t
-v| b . x h i j e f .   p m d z n u v t
-t| b . x h i j e f .   p m d z n u v t
-```
-
-Range: `bxhijefpmdznuvt`
-
-<i class="far fa-hand-point-right"></i>
-[Datatypes](../basics/datatypes.md).
-
-
 ## Errors
 
 error  | cause
