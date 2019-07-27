@@ -577,7 +577,7 @@ If `f` is rank 2 or higher, the number of evaluations is determined by the lengt
 
 There are three ways to determine the number of evaluations of `f1` performed by `f1\`. 
 
-A [table in the Reference](../../ref/iterators.md/#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
+A [table in the Reference](../../ref/iterators.md#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
 
 
 ### Converge

@@ -56,7 +56,7 @@ The library is available [here](https://github.com/KxSystems/ml).
 
 ## Natural Language Processing 
 
-[NLP](nlp/index.md) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp/index.md).
+[NLP](nlp/index.md) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp).
 
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/ML07%20Natural%20Language%20Processing.ipynb)
 

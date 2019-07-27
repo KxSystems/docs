@@ -34,7 +34,7 @@ about new repositories.</div>
 	<td class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
 	<td>
 		calling Python from q 
-		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
+		[<i class="fas fa-share-alt"></i>](./ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
