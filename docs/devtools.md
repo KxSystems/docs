@@ -44,7 +44,7 @@ offers an easy-to-use, yet powerful drag-and-drop interface to allow creators to
 !!! info "Sign in"
 
     The User Guide is for Platform customers. 
-    (Kx Systems provides credentials to follow the links.) 
+    (Kx provides credentials to follow the links.) 
 
 
 ### Kx Control

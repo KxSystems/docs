@@ -9,7 +9,7 @@ keywords: fusion, interface, java, kdb+, q
 
 
 
-<i class="fab fa-github"></i> [KxSystems/javakdb](https://github.com/KxSystems/javakdb) is the original Java driver, a.k.a `c.java`, from Kx Systems for interfacing [Java](https://www.java.com) with kdb+ via TCP/IP. This driver allows Java applications to
+<i class="fab fa-github"></i> [KxSystems/javakdb](https://github.com/KxSystems/javakdb) is the original Java driver, a.k.a `c.java`, from Kx for interfacing [Java](https://www.java.com) with kdb+ via TCP/IP. This driver allows Java applications to
 
  - query kdb+
  - subscribe to a kdb+ publisher

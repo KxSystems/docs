@@ -1,6 +1,6 @@
 ---
 title: Kx technology
-description: The Kx Systems technology consists of kdb+, the database; q, an analytic and query language for kdb+ users; k, the programming language used to implement both kdb+ and q. This reference documents q – the main language for working with kdb+. The kdb+ database and q language were introduced in 2003 as part of a 64-bit rewrite of the earlier kdb database. The underlying k language and databases have been developed since 1993.
+description: The Kx technology consists of kdb+, the database; q, an analytic and query language for kdb+ users; k, the programming language used to implement both kdb+ and q. This reference documents q – the main language for working with kdb+. The kdb+ database and q language were introduced in 2003 as part of a 64-bit rewrite of the earlier kdb database. The underlying k language and databases have been developed since 1993.
 author: Stephen Taylor
 keywords: bug, error, k, kdb+, q, report, technology
 ---
@@ -17,7 +17,7 @@ keywords: bug, error, k, kdb+, q, report, technology
 
 
 
-The Kx Systems technology consists of:
+The Kx technology consists of:
 
 -   kdb+ – the database
 -   q – an analytic and query language for kdb+ users

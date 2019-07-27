@@ -1028,7 +1028,7 @@ All tests were run using kdb+ 3.6 (2018.10.23).
 
 Conor Slattery is a Financial Engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
 
-Stephen Taylor is the Kx Systems librarian. 
+Stephen Taylor is the Kx librarian. 
 
 An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](efficient_use_of_adverbs.pdf).
 

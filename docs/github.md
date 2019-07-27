@@ -11,15 +11,15 @@ keywords: code, github, kdb+, q, repo, repository
 <i class="far fa-hand-point-right"></i> [Interfaces](interfaces/index.md) to feeds, services and other languages  
 <i class="far fa-hand-point-right"></i> [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
 
-Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx Systems. Other repositories are maintained by their owners. 
+Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
 
 <div style="background-color: #efefef; border: 1px solid #005499; border-radius: 10px; display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
 
 
-## Kx Systems
+## Kx
 
-<small>Repositories maintained by Kx Systems</small>
+<small>Repositories maintained by Kx</small>
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -270,7 +270,7 @@ about new repositories.</div>
 <tr>
 <td class="nowrap"><a href="https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md">dbmaint</a></td>
 <td>Database maintenance utilities. <span class="author"><a href="https://github.com/kxsystems?tab=repositories">
-						(Kx Systems)
+						(Kx)
 					</a></span>
 </td>
 </tr>
