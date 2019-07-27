@@ -593,7 +593,7 @@ The report allows for 3 things:
 -   grouping (aggregating) by different combinations of dimensions. The aggregated stats are max/min/avg/total/count. If no grouping is selected, the raw usage for every meter is displayed
 -   pivoting of the data by a chosen field. If the data is pivoted then the `totalusage` value is displayed.
 
-To access the UI, start the smart-meter demo database on port 5600 and point your browser (Chrome or Firefox only) at <http://localhost:5600/smartmeter.html>. If the date range becomes large, the query will take more time and memory. Similarly, grouping by hour can increase the time taken. 
+To access the UI, start the smart-meter demo database on port 5600 and point your browser (Chrome or Firefox only) at `http://localhost:5600/smartmeter.html`. If the date range becomes large, the query will take more time and memory. Similarly, grouping by hour can increase the time taken. 
 
 !!! warning "32-bit free version"
 

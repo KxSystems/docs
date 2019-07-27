@@ -39,7 +39,7 @@ The best resource for learning q. It includes:
 ### <i class="fab fa-github"></i> GitHub
 
 - the [KxSystems](https://github.com/KxSystems) repositories
-- [user-contributed repositories](https:///kxsystems.github.io)
+- [user-contributed repositories](https://kxsystems.github.io)
 
 
 ### Other material
