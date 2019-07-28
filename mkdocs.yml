@@ -157,7 +157,7 @@ nav:
       - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
       - Iteration: basics/iteration.md
-      - IPC protocol: basics/ipc.md
+      - Iinterprocess communication: basics/ipc.md
       - Joins: basics/joins.md
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
