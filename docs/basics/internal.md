@@ -1,5 +1,5 @@
 ---
-title: Internal functions
+title: Internal functions – Basics – kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
 keywords: bang, functions, internal, kdb+, q
 ---

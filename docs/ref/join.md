@@ -1,5 +1,5 @@
 ---
-title: Join
+title: Join – Reference – kdb+ and q documentation
 description: Join is a q operator that joins atoms, lists, dictionaries or tables.
 author: Stephen Taylor
 keywords: atom, dictionary, join, kdb+, list, q

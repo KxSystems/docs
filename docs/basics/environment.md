@@ -1,5 +1,5 @@
 ---
-title: Environment
+title: Environment – Basics – kdb+ and q documentation
 description: Environment variables in kdb+ and q keywords for getting and setting them. 
 keywords: environment, kdb+, q, variable
 ---

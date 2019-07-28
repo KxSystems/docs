@@ -1,5 +1,5 @@
 ---
-title: Set Attribute
+title: Set Attribute – Reference – kdb+ and q documentation
 description: Set Attribute is a q operator that assigns an attribute to a list.
 author: Stephen Taylor
 keywords: attribute, grouped, kdb+, parted, q, sorted, unique, 

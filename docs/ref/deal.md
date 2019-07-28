@@ -1,5 +1,5 @@
 ---
-title: Roll, Deal, Permute
+title: Roll, Deal, Permute – Reference – kdb+ and q documentation
 description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
 author: Stephen Taylor
 date: July 2019

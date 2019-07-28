@@ -1,5 +1,5 @@
 ---
-title: value
+title: value – Reference – kdb+ and q documentation
 description: value is a q keyword that returns the value of a named variable, or metadata.
 author: Stephen Taylor
 keywords: kdb+, metadata, q, value,

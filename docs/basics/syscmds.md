@@ -1,5 +1,5 @@
 ---
-title: System commands
+title: System commands – Basics – kdb+ and q documentation
 description: System commands control the q environment. 
 keywords: command, kdb+, q, system
 ---

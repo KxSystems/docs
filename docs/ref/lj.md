@@ -1,5 +1,5 @@
 ---
-title: lj
+title: lj – Reference – kdb+ and q documentation
 description: lj is a q keyword that performs a left join.
 keywords: join, kdb+, left, left join, lj, ljf, q
 ---

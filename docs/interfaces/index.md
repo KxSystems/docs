@@ -1,5 +1,5 @@
 ---
-title: Interfaces and editor integrations
+title: Interfaces and editor integrations – Interfaces – kdb+ and q documentation
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---

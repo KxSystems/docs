@@ -1,5 +1,5 @@
 ---
-title: A load-balancing kdb+ server
+title: A load-balancing kdb+ server – Knowledge Base – kdb+ and q documentation
 description: The script KxSystems/kdb/e/mserve.q can be used to start a load-balancing kdb+ server. The master server starts a number of slave servers (in the same host). Clients then send requests to the master server which, transparently to the client, chooses a slave server with low CPU load, and forwards the request there. This set-up is useful for read operations, such as queries on historical databases. Each query is executed in one of the slaves, hence writes are not replicated.
 keywords: balance, kdb+, java, load, q, swing
 ---

@@ -1,5 +1,5 @@
 ---
-title: Function notation
+title: Function notation – Basics – kdb+ and q documentation
 description: Function notation enables the definition of functions. Function notation is also known as the lambda notation and the defined functions as lambdas.
 author: Stephen Taylor
 keywords: abort, control, expression, function, kdb+, lambda, multiline, notation, q, rank, signal, signed, unsigned

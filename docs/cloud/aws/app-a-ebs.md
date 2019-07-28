@@ -1,5 +1,5 @@
 ---
-title: Elastic Block Store (EBS) – Appendix A of Migrating a kdb+ HDB to Amazon EC2
+title: Elastic Block Store (EBS) – Appendix A of Migrating a kdb+ HDB to Amazon EC2 – Cloud – kdb+ and q documentation
 description: Three variants of the Elastic Block Service (EBS) are all qualified by kdb+. gp2 and io1 are both NAND Flash, but offer different price/performance points, and st1 is comprised of traditional drives. Unlike ephemeral SSD storage, EBS-based storage can be dynamically provisioned to any other EC2 instance via operator control. So this is a candidate for on-demand HDB storage. 
 author: Glenn Wright
 date: March 2018

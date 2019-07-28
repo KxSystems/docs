@@ -1,5 +1,5 @@
 ---
-title: ss, ssr
+title: ss, ssr – Reference – kdb+ and q documentation
 description: ss and ssr are q keywords that perform string search and replacement.
 author: Stephen Taylor
 keywords: kdb+, match, pattern, q, regex, regular expression, replace, search, ss, ssr, string

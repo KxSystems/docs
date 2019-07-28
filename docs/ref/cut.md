@@ -1,5 +1,5 @@
 ---
-title: Cut, cut
+title: Cut, cut – Reference – kdb+ and q documentation
 description: Cut is a q operator that cuts a list or table into subarrays. cut is a q keyword that cuts a list or table into a matrix into a specified number of columns. 
 author: Stephen Taylor
 keywords: cut, kdb+, keyword, operator, q

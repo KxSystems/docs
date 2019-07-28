@@ -1,5 +1,5 @@
 ---
-title: Functions withdrawn from q
+title: Functions withdrawn from q – Releases – kdb+ and q documentation
 description: The functions listed here have been withdrawn from q, and are listed here solely for the interpretation of old scripts. 
 author: Stephen Taylor
 keywords: kdb+, q, withdrawn

@@ -1,5 +1,5 @@
 ---
-title: Iterators
+title: Iterators – Reference – kdb+ and q documentation
 description: The iterators (earlier known as adverbs) are native higher-order operators. They take applicable values as arguments and return derived functions.
 keywords: adverb, iterator, infix, iterate, iteration, kdb+, operator, postfix, unary, value, variadic
 date: March 2019

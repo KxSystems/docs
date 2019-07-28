@@ -1,5 +1,5 @@
 ---
-title: Splayed tables
+title: Splayed tables – Knowledge Base – kdb+ and q documentation
 description: Medium-sized tables (up to 100 million rows) are best stored on disk splayed, that is, each column is stored as a separate file, rather than using a single file for the whole table. Tables that have many columns are good candidates for splaying, as most queries access only a small subset of those columns.
 keywords: kdb+, q, splayed, table
 ---

@@ -1,5 +1,5 @@
 ---
-title: Frequently-asked questions about JupyterQ
+title: Frequently-asked questions about JupyterQ – Machine Learning – kdb+ and q documentation
 descrtiption: Frequently-asked questions about JupyterQ
 author: Fionnuala Carr
 date: April 2019

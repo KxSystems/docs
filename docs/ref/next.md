@@ -1,5 +1,5 @@
 ---
-title: next, prev, xprev
+title: next, prev, xprev – Reference – kdb+ and q documentation
 description: next, prev, and xprev are q keywords that return the immediate or near neighbours of the items of a list.
 author: Stephen Taylor
 keywords: item, kdb+, list, next, prev, previous, prior, q, select, xprev

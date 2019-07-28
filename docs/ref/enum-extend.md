@@ -1,5 +1,5 @@
 ---
-title: Enum Extend 
+title: Enum Extend  – Reference – kdb+ and q documentation
 description: Enum Extend is a q operator that extends an enumeration.
 author: Stephen Taylor
 keywords: enumeration, enum extend, extend, kdb+, list, q, query

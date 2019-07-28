@@ -1,5 +1,5 @@
 ---
-title: show
+title: show – Reference – kdb+ and q documentation
 description: show is a q keyword that formats its argument and displays it at the console.
 author: Stephen Taylor
 keywords: console, debug, develop, display, kdb+, q, tool

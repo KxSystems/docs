@@ -1,5 +1,5 @@
 ---
-title: Maps
+title: Maps – Reference – kdb+ and q documentation
 description: The maps are iterators that derive uniform functions that apply their values once to each item of a dictionary, a list, or conforming lists.
 author: Stephen Taylor
 date:March 2019

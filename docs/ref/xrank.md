@@ -1,5 +1,5 @@
 ---
-title: xrank
+title: xrank – Reference – kdb+ and q documentation
 description: xrank is a q keyword that groups its argument by value.
 author: Stephen Taylor
 keywords: group, kdb+, q, sort

@@ -1,5 +1,5 @@
 ---
-title: Subtract
+title: Subtract – Reference – kdb+ and q documentation
 description: Subtract is a q operator that returns the difference of its arguments.
 author: Stephen Taylor
 keywords: difference, kdb+, math, mathematics, minus, subtract

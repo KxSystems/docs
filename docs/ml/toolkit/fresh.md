@@ -1,5 +1,5 @@
 ---
-title: FRESH – a feature-extraction and feature-significance toolkit
+title: FRESH – a feature-extraction and feature-significance toolkit – Machine Learning – kdb+ and q documentation
 author: Conor McCarthy
 description: Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 date: August 2018

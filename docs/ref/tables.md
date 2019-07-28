@@ -1,5 +1,5 @@
 ---
-title: tables
+title: tables – Reference – kdb+ and q documentation
 description: tables is a q keyword that returns a list of tables in a namespace.
 author: Stephen Taylor
 keywords: kdb+, metadata, q, table

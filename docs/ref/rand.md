@@ -1,5 +1,5 @@
 ---
-title: rand
+title: rand – Reference – kdb+ and q documentation
 description: rand is a q keyword that randomly picks a number, or an item from a list.
 author: Stephen Taylor
 keywords: deal, kdb+, q, rand, random, roll

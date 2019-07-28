@@ -1,5 +1,5 @@
 ---
-title: type
+title: type – Reference – kdb+ and q documentation
 description: type is a q keyword that returns as a short int the datatype of its argument. 
 author: Stephen Taylor
 keywords: cast, datatype, kdb+, metadata, q, type

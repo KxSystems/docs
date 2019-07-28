@@ -1,5 +1,5 @@
 ---
-title: Tok
+title: Tok – Reference – kdb+ and q documentation
 description: Tok is a q operator that casts string data to another datatype.
 author: Stephen Taylor
 keywords: cast, datatype, kdb+, operator, q, string, tok

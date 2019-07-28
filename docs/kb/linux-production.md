@@ -1,5 +1,5 @@
 ---
-title: Linux production notes
+title: Linux production notes – Knowledge Base – kdb+ and q documentation
 description: Notes for deploying kdb+ processes on production Linux servers
 keywords: kdb+, linux, production, q
 ---

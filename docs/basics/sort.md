@@ -1,5 +1,5 @@
 ---
-title: Sorting functions
+title: Sorting functions – Basics – kdb+ and q documentation
 description: Operators and keywords for sorting lists
 author: Stephen Taylor
 keywords: asc, ascending, desc, descending, grade, group, iasc, idesc, kdb+, q, rank, sort, xgroup, xrank

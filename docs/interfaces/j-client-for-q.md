@@ -1,5 +1,5 @@
 ---
-title: J client for kdb+
+title: J client for kdb+ – Interfaces – kdb+ and q documentation
 description: JQ is a socket interface to kdb+ from J, for example to provide a GUI for a kdb+ server. 
 keywords: api, interface, j, kdb+, library, q
 ---

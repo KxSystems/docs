@@ -1,5 +1,5 @@
 ---
-title: Developer tools
+title: Developer tools – kdb+ and q documentation
 description: Kx offers developers a variety of tools, some free, others only to commercially-licensed customers. 
 keywords: analyst, control, dashboards, developer, kdb+, monitoring, platform, product, q, stream
 ---

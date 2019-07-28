@@ -1,5 +1,5 @@
 ---
-title: Installing under macOS
+title: Installing under macOS – Learn – kdb+ and q documentation
 description: How to install kdb+ under macOS
 author: Stephen Taylor
 keywords: install, kdb+, macos, q

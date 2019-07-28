@@ -1,5 +1,5 @@
 ---
-title: Conformable data objects
+title: Conformable data objects – Basics – kdb+ and q documentation
 description: Many q operators and keywords implicitly iterate through the items of their list arguments, provided that the arguments are conformable. This article describes what it means for data objects to conform. 
 author: Stephen Taylor
 keywords: argument, conform, conformable, kdb+, keyword, list, operator, q

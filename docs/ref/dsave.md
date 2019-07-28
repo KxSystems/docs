@@ -1,5 +1,5 @@
 ---
-title: dsave
+title: dsave – Reference – kdb+ and q documentation
 description: dsave is a q keyword that Saves global tables to disk as splayed, enumerated, indexed kdb+ tables.
 author: Stephen Taylor
 keywords: enumerated, indexed, kdb+, q, splayed, table

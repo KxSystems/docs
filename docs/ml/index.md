@@ -1,5 +1,5 @@
 ---
-title: Machine learning - code.kx.com
+title: Machine learning - code.kx.com – Machine Learning – kdb+ and q documentation
 description: Machine-learning capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 keywords: Python, Jupyter, natural language processing, nlp, machine learning, ml, sentiment, Anaconda, Docker
 ---

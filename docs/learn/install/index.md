@@ -1,5 +1,5 @@
 ---
-title: Installing kdb+
+title: Installing kdb+ – Learn – kdb+ and q documentation
 description: How to install kdb+
 author: Stephen Taylor
 keywords: install, kdb+, q

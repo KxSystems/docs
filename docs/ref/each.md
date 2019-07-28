@@ -1,5 +1,5 @@
 ---
-title: each, peach
+title: each, peach – Reference – kdb+ and q documentation
 description: each and peach are q keywords, wrappers for the iterators Each and Each Parallel.
 author: Stephen Taylor
 keywords: each, iterator, kdb+, map, q

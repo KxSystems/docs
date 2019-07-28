@@ -1,5 +1,5 @@
 ---
-title: sublist
+title: sublist – Reference – kdb+ and q documentation
 description: sublist is a q keyword that returns a sublist of a list.
 author: Stephen Taylor
 keywords: kdb+, q, select, sublist

@@ -1,5 +1,5 @@
 ---
-title: Union join
+title: Union join – Reference – kdb+ and q documentation
 description: uj and ujf are q keywords that perform a union join on two tables.
 keywords: join, kdb+, q, uj, ujf, union join
 ---

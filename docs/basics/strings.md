@@ -1,5 +1,5 @@
 ---
-title: String functions
+title: String functions – Basics – kdb+ and q documentation
 description: Operators and keywords for handling strings (character vectors)
 author: Stephen Taylor
 keywords: kdb+, like, lower, ltrim, md5, pad, q, rtrim, ss, ssr, trim, upper

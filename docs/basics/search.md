@@ -1,5 +1,5 @@
 ---
-title: search
+title: search – Basics – kdb+ and q documentation
 description: Operators and keywords for searching.
 author: Stephen Taylor
 keywords: bin, binary, binr, distinct, find, in, kdb+, q, within

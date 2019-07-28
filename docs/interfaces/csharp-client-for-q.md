@@ -1,5 +1,5 @@
 ---
-title: The C# interface to kdb+
+title: The C# interface to kdb+ – Interfaces – kdb+ and q documentation
 description: How to connect a C# program to a kdb+ server process
 keywords: api, c#, c sharp, interface, kdb+, library, q
 ---

@@ -1,5 +1,5 @@
 ---
-title: Logging, recovery and replication
+title: Logging, recovery and replication – Knowledge Base – kdb+ and q documentation
 description: Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
 keywords: kdb+, log, logging, q, replication
 ---

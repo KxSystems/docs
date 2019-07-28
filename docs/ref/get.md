@@ -1,5 +1,5 @@
 ---
-title: get, set
+title: get, set – Reference – kdb+ and q documentation
 description: get and set are q keywords that read or set value of a variable or a kdb+ data file.
 author: Stephen Taylor
 keywords: get, kdb+, q, set

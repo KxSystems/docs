@@ -1,5 +1,5 @@
 ---
-title: load
+title: load – Reference – kdb+ and q documentation
 description: load is q keyword that loads binary data from a file or directory.
 keywords: directory, file, kdb+, load, q, rload, splayed, table
 ---

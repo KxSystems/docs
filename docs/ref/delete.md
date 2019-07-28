@@ -1,5 +1,5 @@
 ---
-title: delete, Delete
+title: delete, Delete – Reference – kdb+ and q documentation
 description: delete is a q keyword that removes rows or columns from a table, entries from a dictionary, or objects from a namespace. Delete is a q operator, part of functional SQL.
 author: Stephen Taylor
 keywords: delete, functional kdb+, q, query, qsql, sql

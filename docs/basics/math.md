@@ -1,5 +1,5 @@
 ---
-title: Mathematics and statistics
+title: Mathematics and statistics – Basics – kdb+ and q documentation
 description: Operators and keywords that perform mathematical or statistical operations
 author: Stephen Taylor
 keywords: kdb+, mathematics, q, statistics

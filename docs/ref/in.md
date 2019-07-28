@@ -1,5 +1,5 @@
 ---
-title: in
+title: in – Reference – kdb+ and q documentation
 description: in is a q keyword that flags whether its left argument is an item in its right argument.
 author: Stephen Taylor
 date: June 2019

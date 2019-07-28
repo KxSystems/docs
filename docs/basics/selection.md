@@ -1,5 +1,5 @@
 ---
-title: Selecting from lists and dictionaries
+title: Selecting from lists and dictionaries – Basics – kdb+ and q documentation
 description: Operators and keywords for selecting from lists or dictionaries
 author: Stephen Taylor
 keywords: dictionary, except, first, index, index at, inter, kdb+, last, list, next, prev, q, select, selection, sublist, union, where, xprev

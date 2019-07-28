@@ -1,5 +1,5 @@
 ---
-title: An introduction to kdb+
+title: An introduction to kdb+ – Learn – kdb+ and q documentation
 description: Q for All is a two-hour introduction to kdb+ and q by Jeffry Borror, author of Q for Mortals.
 keywords: introduction, kdb+, q, tutorial, youtube
 ---

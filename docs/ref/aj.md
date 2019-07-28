@@ -1,5 +1,5 @@
 ---
-title: aj, aj0, ajf, ajf0
+title: aj, aj0, ajf, ajf0 – Reference – kdb+ and q documentation
 description: As-of joins join two tables taking from the second the most recent records prior to the times in the first
 keywords: as-of, join, kdb+, q
 ---

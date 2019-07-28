@@ -1,5 +1,5 @@
 ---
-title: Style Guide – Style
+title: Style Guide – Style – About – kdb+ and q documentation
 hero: Site style guide
 description: Usage and markup rules for inline style, such as bold and italic type, and for codeblocks and Lists
 author: Stephen Taylor

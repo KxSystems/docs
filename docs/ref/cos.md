@@ -1,5 +1,5 @@
 ---
-title: cos
+title: cos – Reference – kdb+ and q documentation
 description: cos and acos are q keywords. They return the cosine and arccosine respectively of their numeric argument.
 author: Stephen Taylor
 keywords: acos, arccosine, cos, kdb+, math, mathematics, q, trigonometry

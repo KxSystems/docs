@@ -1,5 +1,5 @@
 ---
-title: while
+title: while – Reference – kdb+ and q documentation
 description: while is a q control word that governs iteration.
 author: Stephen Taylor
 keywords: condition, control, iteration, kdb+, q, while

@@ -1,5 +1,5 @@
 ---
-title: Reference for embedPy
+title: Reference for embedPy – Machine Learning – kdb+ and q documentation
 description: A reference guide for embedPy, which allows q programs to call Python code
 keywords: embedpy, interface, kdb+, python, q
 ---

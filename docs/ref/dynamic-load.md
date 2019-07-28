@@ -1,5 +1,5 @@
 ---
-title: Dynamic Load
+title: Dynamic Load – Reference – kdb+ and q documentation
 description: Dynamic Load is a q operator that loads C shared objects for use in q programs.
 keywords: c, dynamic, kdb+, load, object, q, shared
 ---

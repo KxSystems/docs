@@ -1,5 +1,5 @@
 ---
-title: WebSockets
+title: WebSockets – Knowledge Base – kdb+ and q documentation
 description: How to work with WebSockets in q
 keywords: browser, json, kdb+, q, websockets
 ---

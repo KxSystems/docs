@@ -1,5 +1,5 @@
 ---
-title: Firewalling
+title: Firewalling – Knowledge Base – kdb+ and q documentation
 description: How to protect a kdb+ process with a firewall
 keywords: firewall, ipc, iptables, kdb+, q
 ---

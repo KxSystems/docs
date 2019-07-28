@@ -1,5 +1,5 @@
 ---
-title: differ
+title: differ – Reference – kdb+ and q documentation
 description: differ is a q keyword that flags where items of a list change value.
 author: Stephen Taylor
 keywords: diff, differ, kdb+, item, list, q

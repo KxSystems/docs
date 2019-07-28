@@ -1,5 +1,5 @@
 ---
-title: File Text
+title: File Text – Reference – kdb+ and q documentation
 description: File Text is a q operator that reads or writes text files.
 author: Stephen Taylor
 keywords: file, kdb+, q, read, text, write

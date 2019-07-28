@@ -1,5 +1,5 @@
 ---
-title: except
+title: except – Reference – kdb+ and q documentation
 description: except is a q keyword that excludes items from a list.
 author: Stephen Taylor
 keywords: except, kdb+, q, select

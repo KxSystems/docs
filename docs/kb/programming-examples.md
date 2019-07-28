@@ -1,5 +1,5 @@
 ---
-title: Programming examples
+title: Programming examples – Knowledge Base – kdb+ and q documentation
 description: Some examples of q programs to solve various problems
 keywords: example, kdb+, programming, q
 ---

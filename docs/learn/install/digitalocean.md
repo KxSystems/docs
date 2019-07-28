@@ -1,5 +1,5 @@
 ---
-title: Installing kdb+ at DigitalOcean on Ubuntu
+title: Installing kdb+ at DigitalOcean on Ubuntu – Learn – kdb+ and q documentation
 description: How to install kdb+ under Ubuntu at DigitalOcean
 author: Stephen Taylor
 keywords: digitalocean, install, kdb+, linux, q, ubuntu

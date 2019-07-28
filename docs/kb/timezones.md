@@ -1,5 +1,5 @@
 ---
-title: Timezones and Daylight Savings Time
+title: Timezones and Daylight Savings Time – Knowledge Base – kdb+ and q documentation
 description: Q has two built-in functions ltime and gtime which can be used to get the UTC time or local time according to the TZ shell environment setting.
 keywords: daylight, kdb+, q, savings, time
 ---

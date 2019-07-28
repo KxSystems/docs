@@ -1,5 +1,5 @@
 ---
-title: Comparison
+title: Comparison – Basics – kdb+ and q documentation
 description: Operators and keywords for comparing values
 author: Stephen Taylor
 keywords: comparison, differ, equal, greater-than, greater-than-or-equal, kdb+, less-than, less-than-or-equal, match, not-equal, operators, q

@@ -1,5 +1,5 @@
 ---
-title: read1
+title: read1 – Reference – kdb+ and q documentation
 description: read1 is a q keyword that reads bytes from a file or named pipe.
 author: Stephen Taylor
 keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1

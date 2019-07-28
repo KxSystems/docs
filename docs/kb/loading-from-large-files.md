@@ -1,5 +1,5 @@
 ---
-title:  Loading from large files
+title:  Loading from large files – Knowledge Base – kdb+ and q documentation
 description: Elsewhere we show how to load a CSV file into a table in memory and save a table to disk in native format. However, when the data in the CSV file is too large to fit into memory, those techniques fail. Instead, we need to break the large CSV file into manageable chunks and process them in sequence. Doing this by hand is quite tiresome. 
 keywords: file, large, load, kdb+, q
 ---

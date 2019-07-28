@@ -1,5 +1,5 @@
 ---
-title: perl client for kdb+
+title: perl client for kdb+ – Interfaces – kdb+ and q documentation
 description: How to connect a Perl program to a kdb+ server process
 keywords: api, interface, kdb+, library, perl, q
 ---

@@ -1,5 +1,5 @@
 ---
-title: Frequently-asked questions about kdb+
+title: Frequently-asked questions about kdb+ – Knowledge Base – kdb+ and q documentation
 description: Frequently-asked questions about kdb+
 keywords: aggregate, csv, delete, export, faq, kdb+, mdb, null, odbc, q, script, shebang, sql, update, upsert
 ---

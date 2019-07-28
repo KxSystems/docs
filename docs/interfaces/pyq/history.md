@@ -1,5 +1,5 @@
 ---
-title: PyQ version history
+title: PyQ version history – Interfaces – kdb+ and q documentation
 description: Version history of the PyQ interface between kdb+ and Python
 author: Alex Belopolsky, Aleks Bunin
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ

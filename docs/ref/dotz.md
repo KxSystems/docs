@@ -1,5 +1,5 @@
 ---
-title: the .z namespace
+title: the .z namespace – Reference – kdb+ and q documentation
 description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
 author: Stephen Taylor
 keywords: callbacks, environment, kdb+, q

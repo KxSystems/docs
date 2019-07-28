@@ -1,5 +1,5 @@
 ---
-title: lower, upper
+title: lower, upper – Reference – kdb+ and q documentation
 description: lower and upper are q keywords that shift text to lower or upper case respectively. 
 author: Stephen Taylor
 keywords: case, kdb+, lower, q, string, text, upper

@@ -1,5 +1,5 @@
 ---
-title: Q client for Bloomberg
+title: Q client for Bloomberg – Interfaces – kdb+ and q documentation
 description: A Linux-based feed handler for Bloomberg
 keywords: api, bloomberg, interface, kdb+, library, q
 ---

@@ -1,5 +1,5 @@
 ---
-title: Linear programming
+title: Linear programming – Knowledge Base – kdb+ and q documentation
 description: Some applications of kdb+ to linear-programming problems
 author: Rob Hodgkinson
 keywords: apl, iverson, kdb+, linear programming, q

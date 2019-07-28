@@ -1,5 +1,5 @@
 ---
-title: read0
+title: read0 – Reference – kdb+ and q documentation
 description: read0 is a q keyword that reads text from a file or process handle.
 author: Stephen Taylor
 keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, read, read0, text

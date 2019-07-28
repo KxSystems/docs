@@ -1,5 +1,5 @@
 ---
-title: ij, ijf
+title: ij, ijf – Reference – kdb+ and q documentation
 description: ij and ijf are q keywords that perform inner joins.
 author: Stephen Taylor
 keywords: ij, ijf, inner join, join, kdb+, q

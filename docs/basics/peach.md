@@ -1,5 +1,5 @@
 ---
-title: Parallel processing
+title: Parallel processing – Basics – kdb+ and q documentation
 description: The iterator Each Parallel (or its mnemonic keyword peach) delegates processing to slave tasks for parallel execution. This can be useful, for example, for computationally expensive functions, or for accessing several drives at once from a single CPU.
 keywords: kdb+, parallel, parallel each, peach, q, uniform
 ---

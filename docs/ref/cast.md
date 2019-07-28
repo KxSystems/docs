@@ -1,5 +1,5 @@
 ---
-title: Cast
+title: Cast – Reference – kdb+ and q documentation
 description: Cast is a q operator that converts a data argument to another datatype.
 keywords: cast, datatype, dollar, kdb+,q
 ---

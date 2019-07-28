@@ -1,5 +1,5 @@
 ---
-title: embedPy user guide
+title: embedPy user guide – Machine Learning – kdb+ and q documentation
 description: embedPy user guide
 keywords: embedpy, interface, kdb+, python
 ---

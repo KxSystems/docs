@@ -1,5 +1,5 @@
 ---
-title: Glossary for the q and kdb+ documentation site
+title: Glossary for the q and kdb+ documentation site – Basics – kdb+ and q documentation
 description: Glossary of terms used in documenting kdb+ and the q programming language.
 author: Stephen Taylor
 ---

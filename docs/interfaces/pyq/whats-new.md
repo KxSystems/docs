@@ -1,5 +1,5 @@
 ---
-title: What’s new in PyQ
+title: What’s new in PyQ – Interfaces – kdb+ and q documentation
 description: A log of changes and additions to the PyQ interface between kdb+ and Python
 author: Alex Belopolsky, Aleks Bunin
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ

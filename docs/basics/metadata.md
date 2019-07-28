@@ -1,5 +1,5 @@
 ---
-title: Metadata
+title: Metadata – Basics – kdb+ and q documentation
 description: Operators and keywords that get or set metadata
 author: Stephen Taylor
 keywords: kdb+, metadata, q

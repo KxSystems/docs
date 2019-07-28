@@ -1,5 +1,5 @@
 ---
-title: Q-SQL
+title: Q-SQL – Basics – kdb+ and q documentation
 description: Q-SQL expressions have their own syntax rules, with optional dependent clauses, by, from and where. Q-SQL column lists are comma-separated lists of column names, not symbol vectors, and can include definitions of new, derived columns. 
 keywords: exec, delete, kdb+, q, query, select, sql, update, upsert
 ---

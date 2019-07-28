@@ -1,5 +1,5 @@
 ---
-title: Divide
+title: Divide – Reference – kdb+ and q documentation
 description: Divide is a q operator that returns the ratio of its arguments.
 author: Stephen Taylor
 keywords: div, divide, division, divisor,kdb+, math, mathematics, numerator, percent, q, ratio

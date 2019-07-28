@@ -1,5 +1,5 @@
 ---
-title: Take
+title: Take – Reference – kdb+ and q documentation
 description: Take is a q operator that selects leading or trailing items from a list or dictionary, named entries from a dictionary, or named columns from a table.
 author: Stephen Taylor
 keywords: kdb+, operator, q, take

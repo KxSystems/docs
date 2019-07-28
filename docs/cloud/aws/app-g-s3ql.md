@@ -1,5 +1,5 @@
 ---
-title: S3QL – Appendix G of Migrating a kdb+ HDB to Amazon EC2
+title: S3QL – Appendix G of Migrating a kdb+ HDB to Amazon EC2 – Cloud – kdb+ and q documentation
 description: The code is perhaps the least-referenced open-source S3 gateway package, and from a vanilla RHEL 7.3 build we had to add a significant number of packages to get to the utility compiled and installed. S3QL is written in Python. Significant additions are required to build S3QL namely llfuse, Python3, Cython, Python-pip, EPEL and SQlite.
 author: Glenn Wright
 date: March 2018

@@ -1,5 +1,5 @@
 ---
-title: reciprocal
+title: reciprocal – Reference – kdb+ and q documentation
 description: reciprocal is a q keyword that returns the reciprocal of a number.
 author: Stephen Taylor
 keywords: divide, division, divisor, kdb+, math, mathematics, numerator, q

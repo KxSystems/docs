@@ -1,5 +1,5 @@
 ---
-title: neg
+title: neg – Reference – kdb+ and q documentation
 description: neg is a q keyword that returns the negation of its argument. 
 author: Stephen Taylor
 keywords: kdb+, math, mathematics, neg, negate, negative, q

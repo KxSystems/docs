@@ -1,5 +1,5 @@
 ---
-title: select, Select
+title: select, Select – Reference – kdb+ and q documentation
 description: select and Select are (respectively) a q keyword and operator that select all or part of a table, possibly with new columns.
 author: Stephen Taylor
 keywords: column, kdb+, q, qsql, query, select, sql, table

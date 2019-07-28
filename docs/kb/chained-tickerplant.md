@@ -1,5 +1,5 @@
 ---
-title: Chained tickerplant and RDB for kdb+tick
+title: Chained tickerplant and RDB for kdb+tick – Knowledge Base – kdb+ and q documentation
 description: Two scripts provide convenient additional functionality to an existing kdb+tick setup.
 author: Simon Garland
 keywords: chained, kdb+, q, rdb, tickerplant

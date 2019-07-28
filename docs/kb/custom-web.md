@@ -1,5 +1,5 @@
 ---
-title: Customizing the default webserver
+title: Customizing the default webserver – Knowledge Base – kdb+ and q documentation
 description: Without changing anything in q you can make a kdb+ session serve up static content by creating a directory called html underneath your QHOME directory. This is the root server for the webserver (like the Apache /var/www/html) and is the place to save static content to be served up from kdb+. Try for example saving a favicon.ico file there and calling up a page.
 keywords: html, http, javascript, kdb+, q, server, web, webserver
 ---

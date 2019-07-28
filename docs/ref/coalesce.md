@@ -1,5 +1,5 @@
 ---
-title: Coalesce
+title: Coalesce – Reference – kdb+ and q documentation
 description: Coalesce is a q operator that merge keyed tables.
 keywords: coalesce, join, kdb+,q
 ---

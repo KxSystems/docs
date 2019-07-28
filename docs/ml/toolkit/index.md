@@ -1,5 +1,5 @@
 ---
-title: Machine-learning toolkit
+title: Machine-learning toolkit – Machine Learning – kdb+ and q documentation
 description: The toolkit contains libraries and scripts that provide kdb+/q users with general-use functions and procedures to perform machine-learning tasks on a wide variety of datasets.
 author: Conor McCarthy
 date: October 2018

@@ -1,5 +1,5 @@
 ---
-title: ema
+title: ema – Reference – kdb+ and q documentation
 description: ema is a q keyword that returns the exponential moving average of its arguments.
 keywords: average, ema, exponential, kdb+, mathematics, moving, q, statistics
 ---

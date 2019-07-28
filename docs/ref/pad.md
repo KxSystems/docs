@@ -1,5 +1,5 @@
 ---
-title: Pad
+title: Pad – Reference – kdb+ and q documentation
 description: Pad is a q operator that pads a string to a specified length.
 author: Stephen Taylor
 keywords: fill, dollar, kdb+, pad, q

@@ -1,5 +1,5 @@
 ---
-title: Site news – code.kx.com 
+title: Site news – code.kx.com  – About – kdb+ and q documentation
 description: News of changes to the Kx documentation site
 author: Stephen Taylor
 keywords: blog, kdb+, news, q, site

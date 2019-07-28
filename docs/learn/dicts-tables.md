@@ -1,5 +1,5 @@
 ---
-title: Dictionaries & tables
+title: Dictionaries & tables – Learn – kdb+ and q documentation
 description: How to handle dictionaries and tables in q
 keywords: dictionary, kdb+, q, tutorial, table
 ---

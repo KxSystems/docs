@@ -1,5 +1,5 @@
 ---
-title: SSL/TLS
+title: SSL/TLS – Knowledge Base – kdb+ and q documentation
 description: How to use Secure Sockets Layer(SSL)/Transport Layer Security(TLS) to encrypt connections using the OpenSSL libraries.
 keywords: kdb+, openssl, q, ssl, tls
 ---

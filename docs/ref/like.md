@@ -1,5 +1,5 @@
 ---
-title: like
+title: like – Reference – kdb+ and q documentation
 description: like is a q keyword that matches text to a pattern.
 author: Stephen Taylor
 keywords: like, kdb+, pattern, match, q, regex, regular expression, string

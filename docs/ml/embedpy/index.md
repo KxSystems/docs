@@ -1,5 +1,5 @@
 ---
-title: embedPy
+title: embedPy – Machine Learning – kdb+ and q documentation
 description: embedPy allows the kdb+ interpreter to manipulate Python objects and call Python functions.
 keywords: embedpy, interface, kdb+, python
 ---

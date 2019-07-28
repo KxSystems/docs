@@ -1,5 +1,5 @@
 ---
-title: GPUs – calling CUDA code from q
+title: GPUs – calling CUDA code from q – Interfaces – kdb+ and q documentation
 description: This is a quick example of calling CUDA code from q. CUDA is a variant on C that is used to write general-purpose programs that execute on NVIDIA graphics cards. Data is copied to the card, the computation executed, and the results copied back. It is important that there is significant computation work to be performed on the card (ideally this entirely dominates the execution time); there is enough parallelism in the computation to keep the hardware resources of the card/s busy; and that the data set fit in the limited memory of the cards.
 keywords: api, cuda, gpu, graphical, kdb+, library, processing, q, unit
 ---

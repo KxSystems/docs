@@ -1,5 +1,5 @@
 ---
-title: prior
+title: prior – Reference – kdb+ and q documentation
 description: prior is a q keyword that is a wrapper for the Each Prior iterator.
 author: Stephen Taylor
 date: March 2019

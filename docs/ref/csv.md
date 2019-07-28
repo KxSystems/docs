@@ -1,5 +1,5 @@
 ---
-title: csv
+title: csv – Reference – kdb+ and q documentation
 description: csv is a q keyword that represents the delimiter of CSV files.
 author: Stephen Taylor
 keywords: comma, comma-separated values, csv, file, kdb+, q, text

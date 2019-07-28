@@ -1,5 +1,5 @@
 ---
-title: Listening port
+title: Listening port – Basics – kdb+ and q documentation
 description: Use the -p command-line option or the \p system command to tell kdb+ to listen to a port. The command-line option and the system command take the same parameters and have the same syntax and semantics.
 keywords: ephemeral, kdb+, listen, multi-threaded, port, q, socket, unix
 ---

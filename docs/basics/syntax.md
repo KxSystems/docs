@@ -1,5 +1,5 @@
 ---
-title: Syntax
+title: Syntax – Basics – kdb+ and q documentation
 description: Syntax of the q programming language
 author: Stephen Taylor
 keywords: attribute, bracket, colon, comment, composition, compound, conditional, control, empty, function, infix, iterators, kdb+, multiline, name, namespace, operator, parenthesis, precedence, prefix, projection, postfix, q, space, syntax, token, vector

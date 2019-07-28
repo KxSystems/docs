@@ -1,5 +1,5 @@
 ---
-title: Logic
+title: Logic – Basics – kdb+ and q documentation
 description: Operators and keywords that perform logical operations
 author: Stephen Taylor
 keywords: all, and, any, kdb+, logic, not, null, or, q

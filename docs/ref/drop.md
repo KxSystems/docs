@@ -1,5 +1,5 @@
 ---
-title: Drop
+title: Drop – Reference – kdb+ and q documentation
 description: Drop is a q operator that drops items from a list, entries from a dictionary or columns from a table.
 author: Stephen Taylor
 keywords: cut, drop, kdb+, list,q

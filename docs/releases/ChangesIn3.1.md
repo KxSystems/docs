@@ -1,5 +1,5 @@
 ---
-title: Changes in 3.1
+title: Changes in 3.1 – Releases – kdb+ and q documentation
 description: Changes to V3.1 of kdb+ from the previous version
 author: Charles Skelton
 ---

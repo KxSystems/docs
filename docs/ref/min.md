@@ -1,5 +1,5 @@
 ---
-title: min, mins, mmin
+title: min, mins, mmin – Reference – kdb+ and q documentation
 description: min, mins and mmin are q keywords that return respectively the smallest item, the cumulative minimums, and the moving minimums of the argument.
 author: Stephen Taylor
 keywords: kdb+, math, mathematics, minimum, moving, q, statistics

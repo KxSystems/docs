@@ -1,5 +1,5 @@
 ---
-title: Interprocess communication
+title: Interprocess communication – Basics – kdb+ and q documentation
 description: TCP/IP is used for communicating between processes. The protocol is extremely simple, as is the message format.
 keywords: async, block, buffer, communication, flush, hopen, interprocess, ip, ipc, kdb+, message, port, process, protocol, q, queue, socket, sync, tcp
 ---

@@ -1,5 +1,5 @@
 ---
-title: Temporal data
+title: Temporal data – Knowledge Base – kdb+ and q documentation
 description: How to handle temporal data in q
 keywords: data, kdb+, q, temporal
 ---

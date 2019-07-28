@@ -1,5 +1,5 @@
 ---
-title: var, svar
+title: var, svar – Reference – kdb+ and q documentation
 description: var and svar are q keywords that reurn (respectively) the variance and sample variance of their argument. 
 author: Stephen Taylor
 keywords: kdb+, math, mathematics, q, statistics, statistical variance, variance

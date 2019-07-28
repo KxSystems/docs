@@ -1,5 +1,5 @@
 ---
-title: The Kx wiki
+title: The Kx wiki – kdb+ and q documentation
 description: The Kx wiki was the primary documentation for q and kdb+ until January 2017. The content has now been archived on GitHub.
 author: Stephen Taylor
 keywords: documentation, kdb+, q, search, wiki

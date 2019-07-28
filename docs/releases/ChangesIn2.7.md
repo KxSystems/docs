@@ -1,5 +1,5 @@
 ---
-title: Changes in 2.7
+title: Changes in 2.7 – Releases – kdb+ and q documentation
 description: Changes to V2.7 of kdb+ from the previous version
 author: Charles Skelton
 ---

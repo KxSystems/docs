@@ -1,5 +1,5 @@
 ---
-title: gtime, ltime
+title: gtime, ltime – Reference – kdb+ and q documentation
 description: gtime and ltime are q keywords that return, respectively, global and local time.
 author: Stephen Taylor
 keywords: clock, environment, global, gtime, local, ltime, kdb+, os, q, system, time, timestamp, utc

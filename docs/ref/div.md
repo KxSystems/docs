@@ -1,5 +1,5 @@
 ---
-title: div
+title: div – Reference – kdb+ and q documentation
 description: div is a q keyword that performs integer division. 
 author: Stephen Taylor
 keywords: div, divide, division, in, integer, kdb+, math, mathematics, q

@@ -1,5 +1,5 @@
 ---
-title: JupyterQ user guide
+title: JupyterQ user guide – Machine Learning – kdb+ and q documentation
 description: JupyterQ user guide
 author: Fionnuala Carr
 date: April 2019

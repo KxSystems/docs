@@ -1,5 +1,5 @@
 ---
-title: A brief introduction to q and kdb+
+title: A brief introduction to q and kdb+ – Learn – kdb+ and q documentation
 description: Kdb+ is a powerful database that can be used for streaming, real-time and historical data. Q is the SQL-like, general-purpose programming language built on top of kdb+. It offers high-performance, in-database analytic capabilities.
 keywords: introduction, kdb+, q, tutorial
 ---

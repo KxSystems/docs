@@ -1,5 +1,5 @@
 ---
-title: Installing under Microsoft Windows
+title: Installing under Microsoft Windows – Learn – kdb+ and q documentation
 description: How to install kdb+ under Microsoft Windows
 author: Stephen Taylor
 keywords: install, kdb+, microsoft, q, windows

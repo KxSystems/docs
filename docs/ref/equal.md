@@ -1,5 +1,5 @@
 ---
-title: Equal
+title: Equal – Reference – kdb+ and q documentation
 description: Equal is a q operator that flags where its arguments are equal.
 author: Stephen Taylor
 keywords: equal, kdb+, q

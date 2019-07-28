@@ -1,5 +1,5 @@
 ---
-title: count
+title: count – Reference – kdb+ and q documentation
 description: count and mcount are q keywords count returns the number of items in a list. mcount returns a moving count of the non-null items of a list. 
 author: Stephen Taylor
 keywords: count, kdb+, length, list, q, shape, table

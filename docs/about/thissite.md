@@ -1,5 +1,5 @@
 ---
-title: About this site
+title: About this site – About – kdb+ and q documentation
 description: Origin and content of the Kx documentation site
 author: Stephen Taylor
 keywords: blog, kdb+, news, q, site

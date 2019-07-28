@@ -1,5 +1,5 @@
 ---
-title: Frequently-asked questions from the k4 listbox
+title: Frequently-asked questions from the k4 listbox – Knowledge Base – kdb+ and q documentation
 description: The k4 Listbox is a community of professional q programmers. This article answers questions frequently asked in the group. 
 keywords: faq, k4, kdb+, listbox, q
 ---

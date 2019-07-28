@@ -1,5 +1,5 @@
 ---
-title: log, xlog
+title: log, xlog – Reference – kdb+ and q documentation
 description: log and xlog are q keywords that return logarithms, either natural orto a specified base.
 author: Stephen Taylor
 keywords: e, log, logarithm, kdb+, natural, power, q, xlog 

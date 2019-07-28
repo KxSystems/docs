@@ -1,5 +1,5 @@
 ---
-title: md5
+title: md5 – Reference – kdb+ and q documentation
 description: md5 is a q keyword that returns the Message Digest (MD5 hash) of a string.
 author: Stephen Taylor
 keywords: cryptography, hash, kdb+, md5, q, string

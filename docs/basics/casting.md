@@ -1,5 +1,5 @@
 ---
-title: Casting and encoding
+title: Casting and encoding – Basics – kdb+ and q documentation
 description: An index of operators and keywords that cast values from one representation to another
 author: Stephen Taylor
 keywords: cast, encode, enumeration, decode, kdb+, keyword, operator, q, string

@@ -1,5 +1,5 @@
 ---
-title: JDBC client for kdb+
+title: JDBC client for kdb+ – Interfaces – kdb+ and q documentation
 description: How to connect a Java client program to a kdb+server process using the JDBC driver
 keywords: api, interface, java, jdbc, kdb+, library, q
 ---

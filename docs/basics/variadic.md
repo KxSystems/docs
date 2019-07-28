@@ -1,5 +1,5 @@
 ---
-title: Variadic syntax
+title: Variadic syntax – Basics – kdb+ and q documentation
 description: An applicable value is variadic if its rank is not fixed.
 author: Stephen Taylor
 keywords: applicable value, binary, kdb+, operator, projection, q, rank, syntax, unary, variadic

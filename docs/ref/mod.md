@@ -1,5 +1,5 @@
 ---
-title: mod
+title: mod – Reference – kdb+ and q documentation
 description: mod is a q keyword that returns the modulus of a number.
 author: Stephen Taylor
 keywords: kdb+, math, mathematics, modulus, q

@@ -1,5 +1,5 @@
 ---
-title: Pivot tables
+title: Pivot tables – Knowledge Base – kdb+ and q documentation
 description: Some notes on the theory and practice of pivoting tables.
 keywords: kdb+, pivot, q, table
 ---

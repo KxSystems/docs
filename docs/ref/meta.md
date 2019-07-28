@@ -1,5 +1,5 @@
 ---
-title: meta
+title: meta – Reference – kdb+ and q documentation
 description: meta is a q keyword that returns metadata for a table.
 author: Stephen Taylor
 keywords: kdb+, meta, metadata, q, table

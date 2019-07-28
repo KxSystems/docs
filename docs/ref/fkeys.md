@@ -1,5 +1,5 @@
 ---
-title: fkeys
+title: fkeys – Reference – kdb+ and q documentation
 description: fkeys is a q keyword that returns the foreign-key columns of a table.
 author: Stephen Taylor
 keywords: column, foreign key, kdb+, q, table

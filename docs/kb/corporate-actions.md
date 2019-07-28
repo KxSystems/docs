@@ -1,5 +1,5 @@
 ---
-title: Corporate actions – q and kdb+ Knowledge Base
+title: Corporate actions – q and kdb+ Knowledge Base – Knowledge Base – kdb+ and q documentation
 description: Even routine corporate actions can have a significant impact on prices, volume and volatility. With q one typically captures raw tick data, and should a corporate action influence a previously captured price, an adjustment factor is applied to that raw data – this can be done on-the-fly, and hence can also be selective about which types of corporate actions are applied.
 keywords: actions, corporate, kdb+, q
 ---

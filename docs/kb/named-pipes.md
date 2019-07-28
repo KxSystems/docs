@@ -1,5 +1,5 @@
 ---
-title: Named pipes
+title: Named pipes – Knowledge Base – kdb+ and q documentation
 description: How to read FIFOs/named pipes on Unix.
 keywords: fifo, kdb+, named, pipe, q, unix
 ---

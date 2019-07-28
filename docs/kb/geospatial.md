@@ -1,5 +1,5 @@
 ---
-title: Geospatial indexing
+title: Geospatial indexing – Knowledge Base – kdb+ and q documentation
 description: A demo showing the basics of geospatial indexing with q. A 10-million-point random data set is queried from the HTML map client. Click on the map to see nearby points.
 keywords: geospatial, index, kdb+, map, openstreetmap, q
 ---

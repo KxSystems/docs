@@ -1,5 +1,5 @@
 ---
-title: Dictionaries & tables
+title: Dictionaries & tables – Basics – kdb+ and q documentation
 description: Operators and keywords for working with dictionaries and tables
 author: Stephen Taylor
 keywords: dictionary, group, kdb+, q, sort, table

@@ -1,5 +1,5 @@
 ---
-title: Get started 
+title: Get started  – Learn – kdb+ and q documentation
 description: How to get started installing and using kdb+
 author: Stephen Taylor
 keywords: download, install, introduction, license, kdb+, q, tutorial

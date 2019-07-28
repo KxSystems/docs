@@ -1,5 +1,5 @@
 ---
-title: Repositories on GitHub
+title: Repositories on GitHub – kdb+ and q documentation
 description: An index of q and kdb+ repositories on GitHub.
 author: Stephen Taylor
 keywords: code, github, kdb+, q, repo, repository

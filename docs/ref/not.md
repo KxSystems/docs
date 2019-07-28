@@ -1,5 +1,5 @@
 ---
-title: not
+title: not – Reference – kdb+ and q documentation
 description: not is a q keyword that flags whether its argument is false.
 author: Stephen Taylor
 keywords: false, kdb+, logic, not, q, true

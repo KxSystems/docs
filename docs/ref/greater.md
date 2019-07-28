@@ -1,5 +1,5 @@
 ---
-title: Greater, or
+title: Greater, or – Reference – kdb+ and q documentation
 description: Greater is a q operator that returns the greater of its arguments. or is a q keyword that performs a logical OR. 
 author: Stephen Taylor
 keywords: greater, kdb+, logic, maximum, or, q

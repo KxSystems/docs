@@ -1,5 +1,5 @@
 ---
-title: deltas
+title: deltas – Reference – kdb+ and q documentation
 description: deltas is a q keyword that returns the differences between adjacent list items.
 keywords: diff, difference, item, kdb+, list, q
 ---

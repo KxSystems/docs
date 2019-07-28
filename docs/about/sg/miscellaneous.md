@@ -1,5 +1,5 @@
 ---
-title: Style Guide – Miscellaneous
+title: Style Guide – Miscellaneous – About – kdb+ and q documentation
 hero: Site style guide
 description: Miscellaneous rules for writing for code.kx.com
 author: Stephen Taylor

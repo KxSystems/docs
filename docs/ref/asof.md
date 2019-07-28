@@ -1,5 +1,5 @@
 ---
-title: asof
+title: asof – Reference – kdb+ and q documentation
 description: Where t1 is a table  and t2 is a table or dictionary in which the last key or column of t2 corresponds to a time column in t1, asof[t1;t2] returns the values from the last rows matching the rest of the keys and time ≤ the time in t2.
 keywords: asof, join, kdb+, q
 ---

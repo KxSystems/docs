@@ -1,5 +1,5 @@
 ---
-title: null
+title: null – Reference – kdb+ and q documentation
 description: null is a q keyword that flags where its argument is null.
 author: Stephen Taylor
 keywords: kdb+, null, q

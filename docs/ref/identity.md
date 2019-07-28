@@ -1,5 +1,5 @@
 ---
-title: Identity, Null
+title: Identity, Null – Reference – kdb+ and q documentation
 description: Identity is a q operator that returns its argument unchanged. Null is a generic null value.
 author: Stephen Taylor
 keywords: identity, kdb+, null, q

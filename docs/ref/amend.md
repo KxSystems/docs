@@ -1,5 +1,5 @@
 ---
-title: Amend, Amend At
+title: Amend, Amend At – Reference – kdb+ and q documentation
 description: Operators Amend and Amend At modify one or more items in a list.
 keywords: amend, amend at, at, dot, kdb+, q
 ---

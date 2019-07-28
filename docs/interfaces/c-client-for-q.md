@@ -1,5 +1,5 @@
 ---
-title: C client for kdb+
+title: C client for kdb+ – Interfaces – kdb+ and q documentation
 description: How to connect a C client program to a kdb+ server process
 author: Charles Skelton
 keywords: api, c, interface, kdb+, library, q

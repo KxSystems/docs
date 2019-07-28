@@ -1,5 +1,5 @@
 ---
-title: system
+title: system – Reference – kdb+ and q documentation
 description: system is a q keyword that executes a system command.
 author: Stephen Taylor
 keywords: command, kdb+, q, system, system command

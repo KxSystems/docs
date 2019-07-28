@@ -1,5 +1,5 @@
 ---
-title: vs
+title: vs – Reference – kdb+ and q documentation
 description: vs is a q keyword that performs variousn functions under the scheme vector-from-scalar (atom).
 author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs

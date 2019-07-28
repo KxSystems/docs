@@ -1,5 +1,5 @@
 ---
-title: string
+title: string – Reference – kdb+ and q documentation
 description: string is a q keyword that casts its argument to a string.
 author: Stephen Taylor
 keywords: kdb+, q , string, text

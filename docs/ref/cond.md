@@ -1,5 +1,5 @@
 ---
-title: Cond
+title: Cond – Reference – kdb+ and q documentation
 description: Cond is a q ternary operator that enables conditional evaluation.
 author: Stephen Taylor
 keywords: cond, conditional, control, dollar, kdb+, q

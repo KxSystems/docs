@@ -1,5 +1,5 @@
 ---
-title: Changes in 2.8
+title: Changes in 2.8 – Releases – kdb+ and q documentation
 description: Changes to V2.8 of kdb+ from the previous version
 author: Charles Skelton
 ---

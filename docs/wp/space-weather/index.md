@@ -1,5 +1,5 @@
 ---
-title: NASA Frontier Development Lab Space Weather Challenge
+title: NASA Frontier Development Lab Space Weather Challenge – White Papers – kdb+ and q documentation
 description: In this paper, we examine the use of ML models to predict scintillation events, using historical GNSS data. Initially, a Support Vector Machine (SVM) was used to recreate the baseline model outlined in McGranaghan et al., 2018. We then implemented a neural network model in an attempt to improve upon the baseline results and accurately predict events as far as 24 hours ahead. Both methods used the strength of kdb+/q to deal with time-series data and embedPy to import the necessary python ML libraries.
 author: Deanna Morgan
 date: November 2018

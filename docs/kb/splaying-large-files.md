@@ -1,5 +1,5 @@
 ---
-title: Splaying large files
+title: Splaying large files – Knowledge Base – kdb+ and q documentation
 description: Elsewhere we give a recipe for turning larger-than-RAM CSV files into tables, and for saving tables to disk splayed. This recipe shows how to combine both.
 keywords: file, large, kdb+, q, splay
 ---

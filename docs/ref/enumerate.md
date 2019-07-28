@@ -1,5 +1,5 @@
 ---
-title: Enumerate
+title: Enumerate – Reference – kdb+ and q documentation
 description: Enumerate is a q operator that returns one list as an enumeration of another.
 author: Stephen Taylor
 keywords: dollar, enumerate, list, kdb+, q, vector

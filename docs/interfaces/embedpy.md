@@ -1,5 +1,5 @@
 ---
-title: Calling Python from q (embedPy)
+title: Calling Python from q (embedPy) – Interfaces – kdb+ and q documentation
 description: The embedPy library opens Python to q programmers. This is achieved by loading Python into kdb+ via a C shared object file.
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: fusion, interface, kdb+, learning, library, machine, q

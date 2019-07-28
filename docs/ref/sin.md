@@ -1,5 +1,5 @@
 ---
-title: sin, asin
+title: sin, asin – Reference – kdb+ and q documentation
 description: sin and asin are q keywords that return (respectively) the sin and arcsine of their argument. 
 author: Stephen Taylor
 keywords: asin, arcsine, sin, sine, kdb+, math, mathematics, q, trigonometry

@@ -1,5 +1,5 @@
 ---
-title: Get going with kdb+
+title: Get going with kdb+ – kdb+ and q documentation
 description: Technical documentation and resources for q and kdb+ developers
 author: Stephen Taylor
 keywords: code, cloud, contact, cookbook, developer, documentation, download, fd, first derivatives, github, ide, interface, kdb+, knowledge base, kx, programming, q, reference, support, tutorial, white paper

@@ -1,5 +1,5 @@
 ---
-title: The .h namespace
+title: The .h namespace – Reference – kdb+ and q documentation
 description: The .h namespace contains objects useful for marking up data for an HTTP response.
 author: Stephen Taylor
 keywords: html, kdb+, markup, q

@@ -1,5 +1,5 @@
 ---
-title: Views in kdb+
+title: Views in kdb+ – Learn – kdb+ and q documentation
 description: A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation.
 keywords: kdb+, q,view
 ---

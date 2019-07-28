@@ -1,5 +1,5 @@
 ---
-title: The .j namespace
+title: The .j namespace – Reference – kdb+ and q documentation
 description: the .j namespace contains objects useful for converting between JSON and and q dictionaries.
 author: Stephen Taylor
 keywords: json, kdb+, markup, q

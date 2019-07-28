@@ -1,5 +1,5 @@
 ---
-title: sv
+title: sv – Reference – kdb+ and q documentation
 description: sv is a q keyword that performs a variety of functions under the general scheme of scalar (atom) from vector – join strings or filepath elements; decode a vector to an atom.
 author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, sv, vector

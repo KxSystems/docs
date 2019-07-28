@@ -1,5 +1,5 @@
 ---
-title: JupyterQ
+title: JupyterQ – Machine Learning – kdb+ and q documentation
 description: Jupyter kernel for kdb+ provides syntax highlighting for q; code completion for q keywords, and namespace functions, and user-defined variables; code help for q keywords and basic help (display and type information) for user-defined objects; script-like execution of code (multiline input); inline display of charts created using embedPy, matplotlib, seaborn etc.; console stdout/stderr capture and display in notebooks; inline loading and saving of scripts into and from notebook cells
 keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q
 ---

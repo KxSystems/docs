@@ -1,5 +1,5 @@
 ---
-title: Apply (At), Index (At), Trap (At)
+title: Apply (At), Index (At), Trap (At) – Reference – kdb+ and q documentation
 description: Operators Apply (At), Index (At), and Trap (At) apply a funcxtion to one ormore arguments, get items at depth in a list, and trap errors.
 author: Stephen Taylor
 keywords: apply, apply at, index, index at, kdb+, q, trap, trap at

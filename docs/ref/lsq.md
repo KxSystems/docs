@@ -1,5 +1,5 @@
 ---
-title: lsq
+title: lsq – Reference – kdb+ and q documentation
 description: lsq is a q keyword that performs least squares fitting, matrix division.
 author: Stephen Taylor
 keywords: divide, division, fit, fitting, kdb+, least squares, lsq, matrix, mmu, polynomial, q

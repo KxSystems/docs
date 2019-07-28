@@ -1,5 +1,5 @@
 ---
-title: Regular expressions
+title: Regular expressions – Knowledge Base – kdb+ and q documentation
 description: Support for Regular Expression handling in q.
 keywords: kdb+, library, q, regex, regular expression
 ---

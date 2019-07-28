@@ -1,5 +1,5 @@
 ---
-title: if
+title: if – Reference – kdb+ and q documentation
 description: if is a q control word for conditional evaluation of one or more expressions.
 author: Stephen Taylor
 keywords: condition, control, evaluate, kdb+, q

@@ -1,5 +1,5 @@
 ---
-title: Vector Conditional
+title: Vector Conditional – Reference – kdb+ and q documentation
 description: Vector Conditional isd a q operator that replaces selected items of one list with corresponding items of another.
 author: Stephen Taylor
 keywords: condition, item, kdb+, q, vector

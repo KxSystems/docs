@@ -1,5 +1,5 @@
 ---
-title: Callbacks
+title: Callbacks – Knowledge Base – kdb+ and q documentation
 desacription: The construct of an asynchronous remote call with callback is not built into interprocess communication (IPC) syntax in q, but it is not difficult to implement. We explain here how to do this with simple examples that are easily generalized.
 keywords: callback, kdb+, q
 ---

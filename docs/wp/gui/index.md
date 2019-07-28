@@ -1,5 +1,5 @@
 ---
-title: An introduction to graphical interfaces for kdb+ using C#
+title: An introduction to graphical interfaces for kdb+ using C# – White Papers – kdb+ and q documentation
 description: Over the course of fifteen years, C# has become one of the most common programming languages in the world. It has been used in applications ranging from computer games to medical systems to storage systems. When deployed in an environment which requires database connections, it is traditional for C# to use a form of SQL for the back end, be it MySQL or SQLite to provide data storage and the ability to execute queries. Though functional, kdb+ offers substantial improvements in performance and processing power over this standard method of operation.
 author: Michael Reynolds
 date: May 2013

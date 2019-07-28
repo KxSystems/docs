@@ -1,5 +1,5 @@
 ---
-title: File compression
+title: File compression – Knowledge Base – kdb+ and q documentation
 description: How to work with compressed files in kdb+.
 keywords: compress, decompress, file, kdb+, log, q, streaming
 ---

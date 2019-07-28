@@ -1,5 +1,5 @@
 ---
-title: New features in the 2.4 release of kdb+
+title: New features in the 2.4 release of kdb+ – Releases – kdb+ and q documentation
 description: New features in the 2.4 release of kdb+
 author: Charles Skelton
 ---

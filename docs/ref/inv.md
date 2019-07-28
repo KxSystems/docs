@@ -1,5 +1,5 @@
 ---
-title: inv
+title: inv – Reference – kdb+ and q documentation
 description: inv is a q keyword that returns the matrix inverse of its argument.
 author: Stephen Taylor
 keywords: inv, inverse, kdb+, matrix, q

@@ -1,5 +1,5 @@
 ---
-title: Changes in 3.6
+title: Changes in 3.6 – Releases – kdb+ and q documentation
 description: Changes to V3.6 of kdb+ from the previous version
 author: Charles Skelton
 ---

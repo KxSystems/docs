@@ -1,5 +1,5 @@
 ---
-title: Performance tips
+title: Performance tips – Knowledge Base – kdb+ and q documentation
 description: Tips on improving the performance of kdb+ processes
 keywords: kdb+, performance, q
 ---

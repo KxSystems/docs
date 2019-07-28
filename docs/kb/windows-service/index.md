@@ -1,5 +1,5 @@
 ---
-title: Running kdb+ as a service on Windows
+title: Running kdb+ as a service on Windows – Knowledge Base – kdb+ and q documentation
 description: Windows 7+ provides a task scheduler tool which can be used to run kdb+.
 author: Eamonn McKernan
 keywords: kdb+, q, schedule, service, windows

@@ -1,5 +1,5 @@
 ---
-title: Using modified .z functions to trace, monitor and control execution
+title: Using modified .z functions to trace, monitor and control execution – Knowledge Base – kdb+ and q documentation
 description: Some techniques for debugging q programs
 keywords: control, debug, dotz, execution, kdb+, monitor, q, trace
 ---

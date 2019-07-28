@@ -1,5 +1,5 @@
 ---
-title: attr
+title: attr – Reference – kdb+ and q documentation
 description: attr is a q keyword that reurns the attributes of its arguments
 author: Stephen Taylor
 keywords: attr, attribute, data, kdb+, q
