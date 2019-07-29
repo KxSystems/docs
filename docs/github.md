@@ -192,6 +192,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/anandkulkarnisg/MarketDataClient">MarketDataClient ==new==</a></td>
+<td>Web scraper for quotes from external financial sites. <span class="author"><a href="https://github.com/anandkulkarnisg?tab=repositories">
+						(Anand Kulkarni)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/nperrem/mserve">mserve</a></td>
 <td>Enhanced mserve load-balanced solution. <span class="author"><a href="https://github.com/nperrem?tab=repositories">
 						(Nathan Perrem)
@@ -199,7 +206,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/psaris/mm">mm</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/psaris/mm">mm</a></td>
 <td>A q implementation of the classic Mastermind game. <span class="author"><a href="https://github.com/psaris?tab=repositories">
 						(Nick Psaris)
 					</a></span>
