@@ -91,7 +91,8 @@ nav:
     - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md
-    - Q for Mortals 3: /q4m3
+    - Q for Mortals 3: /q4m3/
+    - Q Phrases: /phrases/
     - Remarks on Style:
       - Preface: style/index.md
       - Maxims: style/maxims.md
