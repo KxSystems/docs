@@ -1030,5 +1030,5 @@ Conor Slattery is a Financial Engineer who has designed kdb+ applications for a 
 
 Stephen Taylor is the Kx librarian. 
 
-An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](efficient_use_of_adverbs.pdf).
+An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](/download/wp/efficient_use_of_adverbs.pdf).
 
