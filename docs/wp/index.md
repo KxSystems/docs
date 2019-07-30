@@ -47,7 +47,7 @@ keywords: kdb+, q, technical, white paper
 ## Machine learning
 
 * **K-Nearest Neighbor classification** and pattern recognition with q &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](machine_learning_in_kdb.pdf)
-* [An introduction to **neural networks** with kdb+](neural-networks/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](an_introduction_to_neural_networks_with_kdb.pdf)</small>
+* [An introduction to **neural networks** with kdb+](neural-networks/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/an_introduction_to_neural_networks_with_kdb.pdf)</small>
 * ==new== [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/exoplanets-us.pdf)
 * ==new== [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/space-weather-us.pdf)
 * [**Using embedPy to apply LASSO regression**](embedpy-lasso/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/embedpy-lasso-us.pdf)
@@ -71,7 +71,6 @@ keywords: kdb+, q, technical, white paper
 * Kdb+tick profiling for **throughput optimization** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdbtick_profiling_for_throughput_optimization.pdf)
 * **Time-series simplification** in kdb+: a method for dynamically shrinking Big Data &nbsp; <i class="fas fa-print"></i> <small>[A4](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)</small>
 
-* 
 
 Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](http://firstderivatives.com).
 

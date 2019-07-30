@@ -269,7 +269,7 @@ carefully manage any querying of the database.
 ![](img/image12.jpeg)
 
 <i class="far fa-hand-point-right"></i> Whitepaper –
-[Query Routing: a kdb+ framework for a scalable load-balanced system](../query_routing_a_kdb_framework_for_a_scalable_load_balanced_system.pdf)
+[Query Routing: a kdb+ framework for a scalable load-balanced system](/download/wp/query_routing_a_kdb_framework_for_a_scalable_load_balanced_system.pdf)
 
 As mentioned above, the usual strategy for failover is to have a
 complete mirror of the production system (feedhandler, tickerplant,
