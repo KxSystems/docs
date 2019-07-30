@@ -166,6 +166,17 @@ The number of licensed cores is always 16 for the on-demand license.
 <i class="far fa-hand-point-right"></i> [License errors](../basics/errors.md#license-errors)
 
 
+!!! warning "On the road"
+
+    The license key file binds the interpreter to your computer’s hostname.
+    For example, for a Mac named `mymbp` the hostname might be `mymbp.local`.
+    When travelling you may find a network has changed the hostname, for example to `mymbp.lan` or `mymbp.fritz.box`. Kdb+ then signals a host error on launch. 
+
+    Linux and macOS users can restore their hostnames from the command shell, e.g. 
+
+    `scutil --set HostName "mymbp.local"`
+
+
 ## License questions
 
 Designated Contacts should send license questions to licadmin@kx.com. 
