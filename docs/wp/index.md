@@ -21,13 +21,13 @@ keywords: kdb+, q, technical, white paper
 
 ## Interfaces
 
-* [Data visualization with kdb+ using ODBC: a Tableau case study](data-visualization/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/data-visualization-a4.pdf), [US&nbsp;Letter](/download/wp/data-visualization-us.pdf)</small>
+* [**Data visualization** with kdb+ using ODBC: a Tableau case study](data-visualization/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/data-visualization-a4.pdf), [US&nbsp;Letter](/download/wp/data-visualization-us.pdf)</small>
 * Kdb+ and **FIX** messaging &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_and_fix_messaging.pdf)
 * Common design principles for kdb+ **gateways** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](common_design_principles_for_kdb_gateways.pdf)
 * [An introduction to **graphical interfaces** for kdb+ using C#](gui/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/csharp-gui-a4.pdf), [US&nbsp;Letter](/download/wp/csharp-gui-us.pdf)</small>
 * [**Java API** for kdb+](java-api/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/java-api-a4.pdf), [US&nbsp;Letter](/download/wp/java-api-us.pdf)</small>
 * ==new== [**Lightning tickerplants**: Pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/lightning-a4.pdf), [US&nbsp;Letter](/download/wp/lightning-us.pdf)</small>
-* Building **real-time tick subscribers** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](building_real_time_tick_subscribers.pdf)
+* [Building **real-time tick subscribers**](rt-tick/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/building_real_time_tick_subscribers.pdf)
 * **Socket sharding** with kdb+ and Linux &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](socket-sharding.pdf)
 * [Kdb+ and **WebSockets**](websockets/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/websockets-a4.pdf), [US&nbsp;Letter](/download/wp/websockets-us.pdf)</small>
 

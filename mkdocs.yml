@@ -522,6 +522,7 @@ nav:
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Neural networks: wp/neural-networks/index.md
     - Query Routing: wp/query-routing/index.md
+    - Real-time tick subscribers: wp/rt-tick/index.md
     - Signal processing and q: wp/signal-processing/index.md
     - Space weather: wp/space-weather/index.md
     - Working with sym files: wp/symfiles/index.md
