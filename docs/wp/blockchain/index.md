@@ -1,6 +1,6 @@
 ---
 title: Storing and exploring the Bitcoin blockchain – White Papers – kdb+ and q documentation
-description: For over a decade, Kx technology has played an important role in the growing financial system by providing an integrated platform consisting of a high-performance kdb+ database, in-memory compute engines and real-time streaming processes. For example, across the largest financial institutions, kdb+ time-series databases are utilized for the real-time capture, processing and storage of the worlds market data streams, providing the backbone for high-frequency trading and real-time market surveillance systems. The ability of the technology to maximize hardware utilization, and achieve scale, has resulted in a natural demand for the technology across other data-intensive domains from the Internet of Things (IoT) to machine learning.
+description: A blockchain explorer uses kdb+ to store and query Bitcoin transactions using partitioned databases, splayed tables, intraday write-downs, and in-memory joins.
 author: Jeremy Lucid and Daniel Irwin
 date: December 2018
 keywords: bitcoin, blockchain, kdb+, q
