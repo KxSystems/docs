@@ -119,3 +119,14 @@ a  | 10.75
 <i class="far fa-hand-point-right"></i>
 Wikipedia:[Weighted average](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
 Basics: [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)avg (1 2;0N 4)
+0n 3
+```

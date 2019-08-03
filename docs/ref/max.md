@@ -86,3 +86,14 @@ Knowledge Base:
 Basics: 
 [Comparison](../basics/comparison.md), 
 [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)max (1 2;0N 4)
+1 4
+```

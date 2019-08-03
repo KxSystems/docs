@@ -84,3 +84,14 @@ Knowledge Base:
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: 
 [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)min (1 2;0N 4)
+0N 2
+```
