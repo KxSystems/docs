@@ -50,14 +50,14 @@ Where
 `v . vx` evaluates value `v` on the $n$ arguments listed in `vx`.
 
 ```q
-q)+ . 2 3           / +[2;3] Apply
-5
 q)add
 0 1 2 3
 1 2 3 4
 2 3 4 5
 3 4 5 6
 q)add . 2 3         / add[2;3] Index
+5
+q)(+) . 2 3         / +[2;3] Apply
 5
 q).[+;2 3]
 5
