@@ -34,5 +34,5 @@ q)eval ((/;+);(til;(+;2;2)))
 
 
 <i class="far fa-hand-point-right"></i> 
-Technical Whitepaper: [_Parse Trees and Functional Forms_](../wp/parse_trees_and_functional_forms.pdf)
+Technical Whitepaper: [Parse trees and functional forms](../wp/parse-trees.md)
 

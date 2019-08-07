@@ -14,7 +14,7 @@ keywords: kdb+, q, technical, white paper
 * **Compression** in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](compression_in_kdb.pdf)
 * The application of **foreign keys** and linked columns in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)
 * **Multi-threading** in kdb+ performance optimisations and use cases &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
-* **Parse trees** and functional forms &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](parse_trees_and_functional_forms.pdf)
+* ==revised== [**Parse trees** and functional forms](parse-trees.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/parse_trees_and_functional_forms.pdf)
 * Columnar database and **query optimization** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](columnar_database_and_query_optimization.pdf)
 * Kdb+ **query scaling** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_query_scaling.pdf)
 
