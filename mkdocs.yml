@@ -521,7 +521,7 @@ nav:
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Neural networks: wp/neural-networks/index.md
-    - Parse trees: wp/parse-trees.md
+    - Parse trees, functional SQL: wp/parse-trees.md
     - Query Routing: wp/query-routing/index.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Signal processing and q: wp/signal-processing/index.md
