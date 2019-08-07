@@ -39,7 +39,11 @@ The incoming data feed could be from Reuters, Bloomberg, a particular exchange o
 
 ### Tickerplant (TP)
 
-The tickerplant process is started up as follows:
+The tickerplant process is started up as follows.
+
+```bash
+q tick.q sym C:\OnDiskDB -p 5000
+```
 
 Although the inner workings of the tickerplant process are beyond the scope of this white paper, we will consider the significance of the two custom command-line arguments supplied:
 
@@ -196,7 +200,7 @@ upd:insert
 In other words, when records `y` for table `x` are received, simply insert these records into the table whose name is `x`. If a different behavior is required upon a new update, then a different definition of `upd` should be used. In this white paper we will build custom subscribers which maintain certain analytics in real time. The core of any such solution involves a custom definition for `upd`. To reinforce this point, here are some scenarios with different, valid definitions of `upd`.
 
 ```q
-/upd is a dyadic function which increments MC and does an insert 
+/upd is a binary function which increments MC and does an insert 
 /the output is a list with the new row indices 
 q)upd:{[t;d]MC+:1;t insert d}
 ```
@@ -308,13 +312,13 @@ This would replay all messages in the logfile, resulting in inserts into the `tr
 Define `upd` for tickerplant log replay in whatever way is deemed appropriate. Here are some different definitions:
 
 ```q
-/upd is a dyadic function which increments MC and does an insert
+/upd is a binary function which increments MC and does an insert
 q)upd:{[t;d]MC+:1;t insert d}
 q)-11! `:C:/OnDiskDB/sym2014.08.23 /output is number of messages read 
 45
 ```
 ```q
-/upd is a dyadic function which maintains counters for trade and quote
+/upd is a binary function which maintains counters for trade and quote
 q)upd:{[t;d]$[t=`trade;TC+:1;t=`quote;QC+:1;]} 
 q)-11! `:C:/OnDiskDB/sym2014.08.23
 45
