@@ -1,8 +1,8 @@
 ---
 title: Parse trees and functional forms – White Paper – code.kx.com
 description: How to understand parse trees and use functional forms in q queries; how to convert qSQL expressions to functional form.
-author: Peter Storeng
-keywords: functional, kdb+, parse, parse tree, q, qSQL, query
+author: Peter Storeng and Stephen Taylor
+keywords: functional, kdb+, parse, parse tree, q, qSQL, query, SQL
 ---
 # Parse trees and functional forms
 
@@ -271,10 +271,10 @@ An iterator applies to a value (function, list, or dictionary) to produce a  rel
 
 ```q
 q)+/[1 2 3 4]
-10
 q)parse "+/[1 2 3 4]"
+10
 (/;+)
-1234
+1 2 3 4
 ```
 
 The first item of the parse tree is `(/;+)`, which is itself a parse
@@ -300,9 +300,9 @@ queries, such as when column names are dynamically queried.
 Here 
 
 -   `t` is a table
--   `a` is a dictionary of aggregates
--   `b` is a dictionary of group-bys
 -   `c` is a list of constraints in the portable parse tree format
+-   `b` is a dictionary of group-bys
+-   `a` is a dictionary of aggregates
 
 <i class="far fa-hand-point-right"></i>
 _Q for Mortals_: [§9.12 Functional forms of queries](/q4m3/9_Queries_q-sql/#912-functional-forms)
@@ -356,7 +356,7 @@ There are three issues with this parse-and-“by eye” method to convert to the
 
 ### Parse trees and eval
 
-The first issue with passing a `select` query to `parse` is that each returned item is in unevaluated form. As discussed, simply applying `value` to a parse tree does not work. However, if we evaluate each one of the arguments fully, then there would be no nested parse trees. We could then apply `value` to the result:
+The first issue with passing a `select` query to `parse` is that each returned item is in unevaluated form. As [discussed above](#eval-and-value), simply applying `value` to a parse tree does not work. However, if we evaluate each one of the arguments fully, then there would be no nested parse trees. We could then apply `value` to the result:
 
 ```q
 q)eval each parse "select count i from trade where 140>(count;i) fby sym"
@@ -386,6 +386,19 @@ q)value[str]~value eval each parse str
 
 In fact, since within the functional form we can refer to the table by name we can make this even clearer. Also, the first item in the result of `parse` applied to a `select` query will always be `?` (or `!` for a `delete`or `update` query) which cannot be evaluated any further. So we don’t need to apply `eval` to it.
 
+```q
+q)pTree:parse str:"select count i from trade where 140>(count;i) fby sym"
+q)@[pTree;2 3 4;eval]
+?
+`trade
+,(>;140;(k){@[(#y)#x[0]0#x 
+1;g;:;x[0]'x[1]g:.=y]};(enlist;#:;`i);`sym)) 
+0b
+(,`x)!,(#:;`i)
+q)value[str] ~ value @[pTree;2 3 4;eval]
+1b
+```
+
 
 ### Variable representation in parse trees
 
@@ -400,7 +413,7 @@ q)(#;3;enlist `a`b`c`d`e`f)~parse"3#`a`b`c`d`e`f"
 1b
 ```
 
-This causes a difficulty. As discussed above, q has no unary syntax for operators.
+This causes a difficulty. As [discussed above](#variadic-operators), q has no unary syntax for operators.
 
 Which means the following isn’t a valid q expression and so returns an error.
 
@@ -415,7 +428,12 @@ In the parse tree we receive we need to somehow distinguish between k’s unary 
 ### Explicit definitions in `.q` are shown in full
 
 The `fby` in the `select` query above is represented by its full k
-definition:
+definition.
+
+```q
+q)parse "fby"
+k){@[(#y)#x[0]0#x 1;g;:;x[0]'x[1]g:.=y]}
+```
 
 While using the k form isn’t generally a problem from a functionality perspective, it does however make the resulting functional statement difficult to read.
 
@@ -661,7 +679,7 @@ stringify:{$[(0=type x) and 1=count x;"enlist ";""],basic x}
 ab:{
   $[(0=count x) or -1=type x; .Q.s1 x;
     99=type x; (addbraks stringify key x ),"!",stringify value x;
-    stringify x]}
+    stringify x] }
 
 inner:{[x]
   idxs:2 3 4 5 6 inter ainds:til count x;
@@ -672,5 +690,5 @@ inner:{[x]
   x:@[x;ainds except idxs;string];
   x[0],strBrk[1_x;"[";"]"] }
 
-buildSelect:{inner parse x}
+buildQuery:{inner parse x}
 ```
