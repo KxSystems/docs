@@ -445,6 +445,37 @@ Since V3.4 2016.05.12.
 Knowledge Base: [SSL](../kb/ssl.md)
 
 
+## `-27!(x;y)` (format)
+
+Where 
+
+-   `x` is an int atom
+-   `y` is numeric
+
+returns `y` as a string or strings formatted as a float to `x` decimal places.
+(Since V3.6 2018.09.26.)
+It is atomic and doesn’t take `\P` into account. e.g.
+
+```q
+q)-27!(3i;0 1+123456789.4567)
+"123456789.457"
+"123456790.457"
+```
+
+This is a more precise, built-in version of [`.Q.f`](../ref/dotq.md#qf-format) but uses IEEE754 rounding:
+
+```q
+q).045
+0.044999999999999998
+q)-27!(2i;.045)
+"0.04"
+q).Q.f[2;.045]
+"0.05"
+```
+
+You might want to apply a rounding before applying `-27!`.
+
+
 ## `-29!x` (parse JSON)
 
 Underpins the JSON parser, [`.j.k`](../ref/dotj.md).
