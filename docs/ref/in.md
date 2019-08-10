@@ -17,10 +17,9 @@ Where
 x                     | y              | result
 ----------------------|----------------|---------------------------------
 atom or vector        | atom or vector | boolean for each item of `x`: whether it is an item of `y`
-atom, vector, or list | list           | boolean atom: whether `x` is an item of `y`
+vector or list        | list           | boolean atom: whether `x` is an item of `y`
 list                  | atom or vector | `x in\:y`
 
-Where `x` and `y` are both atoms or 1-lists, `x in y` is equivalent to `x=y`.
 
 ```q
 q)"x" in "a"                                    / atom in atom
@@ -73,6 +72,20 @@ q)1 2 in (1 2;9)              / 1 2 is an item of y
 q)1 2 in ((1 2;3 4);9)        / 1 2 is not an item of y
 0b
 q)(1 2;3 4) in ((1 2;3 4);9)  / x is an item of y
+1b
+```
+
+!!! warning "Results for mixed-rank arguments are not intuitive"
+
+```q
+q)3 in'1 reverse\(1 2;3)
+01b
+```
+
+Instead use [Match `~`](match.md) for mixed-rank lists::
+
+```q
+q)any ` ~/: (1 2;`)
 1b
 ```
 
