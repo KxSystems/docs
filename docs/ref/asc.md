@@ -178,6 +178,12 @@ city  | s
 ```
 
 
+**Duplicate column names** `xasc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
+
+<i class="far fa-hand-point-right"></i>
+[`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
+
+
 ### Sorting data on disk
 
 `xasc` can sort data on disk directly, without loading the entire table into memory.
@@ -213,9 +219,8 @@ a 43 2
 ```
 
 
-!!! warning "Duplicate keys or column names"
+!!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
 
 <i class="far fa-hand-point-right"></i>

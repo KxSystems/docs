@@ -31,6 +31,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>Could not initialize ssl</td><td/><td>[`(-26!)[]`](internal.md#-26x-ssl) found SSL/TLS not enabled</td></tr>
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
 <tr><td>domain</td> <td class="nowrap">`til -1`</td> <td>Out of domain</td> </tr>
+<tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
 <tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
