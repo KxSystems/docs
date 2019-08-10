@@ -597,6 +597,15 @@ int main(){
 ```
 
 
+## Unix domain sockets
+
+A Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
+
+```c
+int handle=khpu("0.0.0.0",5000,"user:password");
+```
+
+
 ## SSL/TLS
 
 To use this feature, you must link with one of [the `e` libs](#two-sets-of-files).

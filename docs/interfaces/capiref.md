@@ -460,29 +460,29 @@ Null: `kh(nh)`
 
 ### `khp` – connect anonymously
 
-Signature: `I khp(const S h, I p)`
+Signature: `I khp(const S hostname, I port)`
 
 Standalone apps only. 
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpu(h, p, "")`
+<i class="far fa-hand-point-right"></i> `khpu(hostname, port, "")`
 
 
 ### `khpu` – connect, no timeout
 
-Signature: `I khpu(const S h, I p, const S u)`
+Signature: `I khpu(const S hostname, I port, const S credentials)`
 
 Standalone apps only. 
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpun(h, p, u, 0)`
+<i class="far fa-hand-point-right"></i> `khpun(hostname, port, credentials, 0)`
 
 
 ### `khpun` – connect
 
-Signature: `I khpun(const S h, I p, const S u, I n)`
+Signature: `I khpun(const S hostname, I port, const S credentials, I timeout)`
 
-Establish a connection to host `h` on port `p` providing credentials ("username:password" format) `u` with timeout `n`.
+Establish a connection to hostname on port providing credentials (`username:password` format) with timeout.
 
 On success, returns positive file descriptor for established connection. On error, 0 or a negative value is returned.
 
@@ -500,7 +500,7 @@ Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not 
 
 ### `khpunc` – connect with capability
 
-Signature: `I khpunc(S hostname, I port, S usernamepassword, I timeout, I capability)`
+Signature: `I khpunc(S hostname, I port, S credentials, I timeout, I capability)`
 
 `capability` is a bit field: 
 
@@ -523,6 +523,14 @@ code  error
 ```
 
 <i class="far fa-hand-point-right"></i> [`sslInfo`](#sslinfo-ssl-info)
+
+!!! tip "Unix domain socket"
+
+    For `khp`, `khpu`, `khpun`, and `khpunc` a Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
+
+    <pre><code class="language-c">
+    int handle=khpu("0.0.0.0",5000,"user:password");
+    </code></pre>
 
 
 ### `ki` – create int
