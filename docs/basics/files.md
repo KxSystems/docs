@@ -20,6 +20,13 @@ A file handle is either
 -   an integer file handle returned by `hopen`
 
 
+Relative filepaths are sought in the following locations, in order.
+
+1.  current directory
+2.  `QHOME`
+3.  `QLIC`
+
+
 ## Writing text to a file handle
 
 Syntax: `h x`, `h[x]`
