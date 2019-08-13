@@ -97,7 +97,7 @@ Enum Extend is a uniform function.
 <i class="far fa-hand-point-right"></i> 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
-[`.Q.en` (enumerate varchar cols)](dotq/#qen-enumerate-varchar-cols),
+[`.Q.en` (enumerate varchar cols)](dotq.md#qen-enumerate-varchar-cols),
 [`?` query overloads](overloads.md#query)  
 Basics: [Enumerations](../basics/enumerations.md),
 [File system](../basics/files.md)  
