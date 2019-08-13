@@ -304,7 +304,7 @@ q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 
 ## `.h.htac` (element)
 
-Syntax: `.h.tac[x;y;z]`
+Syntax: `.h.htac[x;y;z]`
 
 Where `x` is the element as a symbol atom, `y` is a dictionary of attributes and their values, and `z` is the content of the node as a string, returns as a string the HTML element. 
 
