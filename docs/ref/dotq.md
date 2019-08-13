@@ -416,6 +416,7 @@ q).Q.dsftg[d;s;f;t;g]
 Syntax: `.Q.en[x;y]`
 
 <i class="far fa-hand-point-right"></i> 
+[Enum Extend](enum-extend.md)  
 Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
 
 
