@@ -57,6 +57,7 @@ We gratefully acknowledge contributions by pull requests from
 -   Esperanza Lopez Aguilera
 -   Geo Carncross
 -   James Hanna
+-   kylenarocroc
 -   Sean Keevey
 -   Sean O’Hagan
 -   Rian O’Cuinneagain
