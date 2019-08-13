@@ -80,7 +80,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr> <td>os</td> <td>`\foo bar`</td> <td>Operating-system error or [license error](#license-errors)</td> </tr>
 <tr> <td>par</td> <td/> <td>Unsupported operation on a partitioned table or component thereof</td> </tr>
 <tr> <td>parse</td> <td/> <td>Invalid [syntax](syntax.md); bad IPC header; or bad binary data in file</td> </tr>
-<tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB</td> </tr> 
+<tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB; or [`med`](../ref/med.md) applied over partitions or segments</td> </tr> 
 <tr> <td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
 <tr> <td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
 <tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install/linux.md#64-bit-or-32-bit).)</td> </tr>
