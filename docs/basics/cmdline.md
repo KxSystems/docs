@@ -104,7 +104,6 @@ Set console maximum rows and columns, default 25 80.
 
 <i class="far fa-hand-point-right"></i> 
 [`\c` system command](syscmds.md#c-console-size) for detail  
-[Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
 
 
 ## `-C` (HTTP size)
@@ -114,8 +113,7 @@ Syntax: `-C r c`
 Set HTTP display maximum rows and columns. 
 
 <i class="far fa-hand-point-right"></i> 
-[`\C` system command](syscmds.md#c-http-size) for detail  
-[Gnu Shopt documentation](http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+[`\C` system command](syscmds.md#c-http-size) for detail 
 
 
 
