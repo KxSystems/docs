@@ -31,7 +31,10 @@ q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 This is deliberate, as previously `med` was returning median of medians for such cases. This should now be explicitly coded as a cascading select.
 
 ```q
-q)select med price by sym from select price, sym from trade where date=2001.10.10, sym in `AAPL`LEH
+select med price by sym from 
+  select price, sym from trade where 
+      date within 2001.10.10 2001.10.11, 
+      sym in `AAPL`LEH;
 ```
 
 
