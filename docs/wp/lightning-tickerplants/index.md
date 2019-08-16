@@ -1,6 +1,6 @@
 ---
 title: Lightning tickerplants – Pay-per-ticker with micropayments on the Lightning network – White Papers – kdb+ and q documentation
-description: This paper will explore Lightning network technology in the context of its application to the monetization of streaming data. As an example of how Lightning can be integrated into kdb+ based applications, this paper will illustrate how a kdb+ tickerplant can be easily modified to communicate with a Lightning node to accept payments for market, or sensor data, on a per request (ticker) basis, with a fast settlement. In particular, the paper will describe how the kdb+ qlnd library can be used to communicate with a Lightning node to create payment channels with peers, generate invoices for payment, and route payments rapidly across the network.
+description: Use Lightning to monetize streaming data. Use the qlnd library to create payment channels, generate invoices, and route payments across the network.
 author: Jeremy Lucid
 date: May 2019
 keywords: bitcoin, lightning, blockchain, kdb+, q, tickerplant
