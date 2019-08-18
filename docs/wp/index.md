@@ -58,7 +58,7 @@ keywords: kdb+, q, technical, white paper
 * [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
 * Temporal Data: a kdb+ framework for **corporate actions** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 * Kdb+ **data-management sample customisation** techniques &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
-* **Data recovery** for kdb+tick &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](data_recovery_for_kdb_tick.pdf)
+* [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
 * [**Disaster-recovery planning** for kdb+ tick systems](disaster-recovery/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/disaster-recovery-a4.pdf), [US Letter](/download/wp/disaster-recovery-us.pdf) </small>
 * A natural query interface for **distributed systems** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](a_natural_query_interface_for_distributed_systems.pdf)
 * A method for **dynamically shrinking big data** using time-series database kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)

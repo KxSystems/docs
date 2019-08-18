@@ -89,7 +89,7 @@ memory-map it, allowing for fast queries across a large volume of
 data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 
 <i class="far fa-hand-point-right"></i> Whitepaper:
-[Data Recovery for kdb+ tick](../data_recovery_for_kdb_tick.pdf)
+[Data Recovery for kdb+ tick](../data-recovery.md)
 
 
 ## What does a kdb+ database look like on disk?
@@ -364,7 +364,7 @@ recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
 <i class="far fa-hand-point-right"></i> Whitepaper 
-[Data recovery for kdb+tick](../data_recovery_for_kdb_tick.pdf)
+[Data recovery for kdb+tick](../data-recovery.md)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
 

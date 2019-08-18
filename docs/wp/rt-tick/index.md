@@ -346,7 +346,7 @@ This attempt at logfile replay failed because the data is a list, not a table, a
 
 The real-time database (`r.q`) replays the tickerplant logfile upon startup. Specifically, after it has connected/subscribed to the tickerplant, but before it has received any intraday updates.
 
-For more information on tickerplant logfile replay, see White Paper [“Data Recovery for kdb+tick”](../data_recovery_for_kdb_tick.pdf) published in July 2014, written by Fionnbharr Gaston.
+For more information on tickerplant logfile replay, see White Paper [“Data Recovery for kdb+tick”](../data-recovery.md) published in July 2014, written by Fionnbharr Gaston.
 
 
 ### End of day
