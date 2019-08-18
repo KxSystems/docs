@@ -510,6 +510,7 @@ nav:
   - White papers: 
     - Index: wp/index.md
     - Bitcoin blockchains: wp/blockchain/index.md
+    - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md
     - Data visualization: wp/data-visualization/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
