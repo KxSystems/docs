@@ -38,7 +38,10 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 It is good q style to use `each` and `peach` for unary values. 
 
 <i class="far fa-hand-point-right"></i>
-[Maps](maps.md) for uses of Each with binary and higher-rank values.
+[Maps](maps.md) for uses of Each with binary and higher-rank values  
+[`.Q.fc` parallel on cut](dotq/#qfc-parallel-on-cut)  
+Basics: [Parallel processing](../basics/peach.md)
+
 
 ## Higher-rank values
 

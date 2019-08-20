@@ -12,7 +12,6 @@ keywords: kdb+, q, technical, white paper
 * ==new== [**Iterators**](iterators/index.md) (previously _Efficient use of adverbs_)
 * **Compression** in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](compression_in_kdb.pdf)
 * The application of **foreign keys** and linked columns in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)
-* **Multi-threading** in kdb+ performance optimisations and use cases &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
 * ==revised== [**Parse trees** and functional forms](parse-trees.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/parse_trees_and_functional_forms.pdf)
 * Columnar database and **query optimization** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](columnar_database_and_query_optimization.pdf)
 * Kdb+ **query scaling** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_query_scaling.pdf)
@@ -65,6 +64,7 @@ keywords: kdb+, q, technical, white paper
 * Order Book: a kdb+ **intraday storage and access** methodology &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
 * **Intraday writedown** solutions &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](intraday_writedown_solutions.pdf)
 * [**Multi-partitioned** kdb+ databases: an equity options case study](multi-partitioned-dbs/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/multi-partitioned-dbs-a4.pdf), [US Letter](/download/wp/multi-partitioned-dbs-us.pdf)</small>
+* [**Multi-threading** in kdb+: Performance optimizations and use cases](multi-thread/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
 * **Permissions** with kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](permissions_with_kdb.pdf)
 * [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/query-routing-a4.pdf), [US&nbsp;Letter](/download/wp/query-routing-us.pdf)</small>
 * ==new== [Working with **sym files**](symfiles/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/symfiles-a4.pdf), [US&nbsp;Letter](/download/wp/symfiles-us.pdf)</small>
