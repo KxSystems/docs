@@ -281,7 +281,7 @@ AAPL 09:45 | 440.5254
 While the user and superuser classes have relatively simple validation logic, the poweruser class is slightly more complex. Like ordinary users, powerusers have the ability to execute stored procedures. They can also write raw, freeform queries, but we will add some additional logic here to enforce table- specific permissions, meaning a poweruser may be able to select from table A, but not from table B etc. Finally, we will enforce read-only entitlements on all powerusers.
 
 
-#### Classifying incoming queries
+<!-- #### Classifying incoming queries -->
 
 In order to properly enforce these restrictions, we need to parse and classify every query a poweruser attempts to execute. For the purposes of this paper, we will restrict this to classifying the various table operations (`select`, `delete`, `insert`, `update` and `upsert`), though a fully-functional permissioning system would expand this to classify every type of query.
 
@@ -489,8 +489,10 @@ time         sym  price    size   ex   vwap
 09:00:05.878 GOOG 875.2613 190000 BATS 876.9627
 ```
 
+<i class="far fa-hand-point-right"></i>
+Reference: [`reval`](../../ref/eval.md#reval) for read-only access
 
-
+<!-- 
 #### Read-only access
 
 The standard way to prevent clients from writing to a kdb+ process is to start the process with the [`–b` command-line option](../../basics/cmdline.md#-b-blocked). While this will successfully restrict clients to read-only queries, it affects all clients equally: write access will be revoked from every single client who connects to the process. If we want to be more selective in to whom we do and do not grant write access, we have to take a different approach.
@@ -551,7 +553,7 @@ q)h"{`a set 1}[`]"
 'You do not have write access
 ```
 
-
+ -->
 
 ## Protecting proprietary code
 
