@@ -567,7 +567,7 @@ The methods used to protect kdb+ processes can be extended to cover
 WebSockets. There is one caveat in terms of username/password
 authentication which we will discuss below. A full discussion on kdb+
 permissioning is beyond the scope of this whitepaper; instead, please
-refer to the [July 2013 white paper](../permissions_with_kdb.pdf).
+refer to the [July 2013 white paper](../permissions/index.md).
 
 
 ### Username and password 

@@ -276,7 +276,7 @@ process. Within C#, this will throw a KException with the message
 access in the C# API.
 
 <i class="far fa-hand-point-right"></i> 
-Tom Martin’s whitepaper [“Permissions with kdb+”](../permissions_with_kdb.pdf)
+Tom Martin’s whitepaper [“Permissions with kdb+”](../permissions/index.md)
 for more detailed information on validation and authentication
 
 ```csharp

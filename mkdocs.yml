@@ -525,6 +525,7 @@ nav:
     - Multi-threading: wp/multi-thread/index.md
     - Neural networks: wp/neural-networks/index.md
     - Parse trees, functional SQL: wp/parse-trees.md
+    - Permissions: wp/permissions/index.md
     - Query Routing: wp/query-routing/index.md
     - Query scaling: wp/query-scaling.md
     - Real-time tick subscribers: wp/rt-tick/index.md

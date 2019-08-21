@@ -217,7 +217,7 @@ resource exists. We are setting outside the scope of this paper any
 further request validation, including access permissioning. 
 
 For further details on access control, please refer to the technical
-white paper [“Permissions with kdb+”](../permissions_with_kdb.pdf).
+white paper [“Permissions with kdb+”](../permissions/index.md).
 
 When a user sends her query via the `userQuery` function, we assign
 the query a unique sequence number and publish an asynchronous
