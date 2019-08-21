@@ -526,10 +526,11 @@ nav:
     - Neural networks: wp/neural-networks/index.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Query Routing: wp/query-routing/index.md
+    - Query scaling: wp/query-scaling.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Signal processing and q: wp/signal-processing/index.md
     - Space weather: wp/space-weather/index.md
-    - Working with sym files: wp/symfiles/index.md
+    - Working with sym files: wp/symfiles.md
     - WebSockets: wp/websockets/index.md
   - About: 
     - Kx technology: about/kxtechnology.md

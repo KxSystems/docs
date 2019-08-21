@@ -417,7 +417,8 @@ Syntax: `.Q.en[x;y]`
 
 <i class="far fa-hand-point-right"></i> 
 [Enum Extend](enum-extend.md)  
-Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)  
+White paper: [Working with sym files](../wp/symfiles.md#qen)
 
 
 ## `.Q.ens` (enumerate against domain)
@@ -429,6 +430,9 @@ allows enumeration against domains (and therefore filename) other than `` `sym``
 ```q
 q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 ```
+
+<i class="far fa-hand-point-right"></i>
+White paper: [Working with sym files](../wp/symfiles.md#qens)
 
 
 ## `.Q.f` (format)
