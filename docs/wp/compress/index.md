@@ -3,7 +3,7 @@ title: Compression in kdb+ – White papers – q and kdb+ documentation
 description: introduction to compression in kdb+, contributing factors to compression ratios and performance, and how the use of compressed data can affect performance 
 author: Eoin Killeen
 date: October 2013
-keywords:
+keywords: compress, compression ratio, datatype, get, gzip, kdb+, logical block size, performance, q, set, 
 ---
 # Compression in kdb+
 
@@ -14,7 +14,7 @@ keywords:
 As the rate of data generation in financial markets continues to increase, there is a strong impetus to investigate how large data volumes can be more efficiently processed. Even if disk is considered cheap, it can be a valuable exercise for many applications to determine what improvements can be gleaned from an analysis of the use of compression. Aside from reduced disk costs, some use cases can gain significant performance improvements through a problem-specific approach to compression. For example, some systems have fast CPUs, but find that disk i/o is a bottleneck. In some such cases, utilizing CPU power to reduce the amount of data being sent to disk can improve
 overall performance.
 
-Prior to kdb+ V2.7, compression was achieved via file systems with inbuilt compression, such as ZFS. V2.7 introduced built-in OS-agnostic compression, which allowed on-disk data to be converted to compressed format using a range of algorithms and compression levels. This was expanded in V2.8, with the addition of the ability to stream in-memory data directly to compressed format on disk. ZFS compression is still useful for some kdb+ applications, as it keeps cached data available for multiple processes. However, this paper will focus on the inbuilt data-compression options provided by kdb+, which are available on all supported architectures.
+Early versions of kdb+ achieved compression via file systems with inbuilt compression, such as ZFS. V2.7 introduced built-in OS-agnostic compression, which allowed on-disk data to be converted to compressed format using a range of algorithms and compression levels. This was expanded (V2.8), with the ability to stream in-memory data directly to compressed format on disk. ZFS compression is still useful for some kdb+ applications, as it keeps cached data available for multiple processes. However, this paper will focus on the inbuilt data-compression options provided by kdb+, available on all supported architectures.
 
 Each system will have its own characteristics which determine the appropriate compression configurations to use. This paper will cover an introduction to compression in kdb+, a discussion of contributing factors to compression ratios and performance, and an analysis of how the use of compressed data can affect performance of some sample use cases.
 
@@ -23,7 +23,7 @@ All tests were run using kdb+ version 3.1 (2013.09.05)
 
 ## Compression options
 
-There are two high-level approaches to saving on-disk data in compressed format. The first (since V2.7) is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach (since V2.8) is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
+There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
 
 <i class="far fa-hand-point-right"></i>
 Reference: [`set`](../../ref/get.md#set), 
