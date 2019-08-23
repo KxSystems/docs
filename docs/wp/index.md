@@ -10,7 +10,6 @@ keywords: kdb+, q, technical, white paper
 ## Programming in q
 
 * ==new== [**Iterators**](iterators/index.md) (previously _Efficient use of adverbs_)
-* **Compression** in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](compression_in_kdb.pdf)
 * The application of **foreign keys** and linked columns in kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)
 * ==revised== [**Parse trees** and functional forms](parse-trees.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/parse_trees_and_functional_forms.pdf)
 * Columnar database and **query optimization** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](columnar_database_and_query_optimization.pdf)
@@ -55,6 +54,7 @@ keywords: kdb+, q, technical, white paper
 ## Managing data and systems
 
 * [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
+* [**Compression** in kdb+](compress/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/compression_in_kdb.pdf)
 * Temporal Data: a kdb+ framework for **corporate actions** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 * Kdb+ **data-management sample customisation** techniques &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
 * [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
