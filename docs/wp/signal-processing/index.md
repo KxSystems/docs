@@ -41,7 +41,7 @@ it is possible to integrate a kdb+ process with Python or C++, and utilize
 these signal-processing routines on a kdb+ dataset, it is entirely possible
 to implement them natively within q.
 
-This whitepaper will explore how statistical signal-processing
+This white paper will explore how statistical signal-processing
 operations (those which assume that signals are stochastic), can be
 implemented natively within q to remove noise, extract useful
 information, and quickly identify anomalies. This integration allows for
@@ -69,7 +69,7 @@ following steps:
 
 This paper will focus on the last three steps listed above, as the first
 topic of data capture has already been covered extensively in previous
-Kx whitepapers, including 
+Kx white papers, including 
 
 -   [Kdb+tick profiling for throughput optimization](../kdbtick_profiling_for_throughput_optimization.pdf),
 -   [Disaster recovery for kdb+tick](../disaster-recovery/index.md) 

@@ -61,7 +61,7 @@ Kdb+, from [Kx](http://kx.com), is
 </div>
 <div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
-    Whitepapers](wp/index.md "Technical whitepapers on using kdb+")
+    White papers](wp/index.md "Technical white papers on using kdb+")
 </div>
 <div>
     [<i class="fas fa-fw fa-glasses fa-border fa-5x"></i><br/>

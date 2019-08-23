@@ -19,7 +19,7 @@ cloud computing provider and an international airline highlight the
 importance for IT systems to have a comprehensive disaster recovery
 plan in place.
 
-This whitepaper discusses disaster recovery (DR) and failover concepts
+This white paper discusses disaster recovery (DR) and failover concepts
 from the perspective of the gateway layer accessing a typical kdb+
 tick system used in capital-markets applications. The end goal of
 constructing this plan is to ensure high availability of the
@@ -88,7 +88,7 @@ split into date partitions. A q process can read this data and
 memory-map it, allowing for fast queries across a large volume of
 data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 
-<i class="far fa-hand-point-right"></i> Whitepaper:
+<i class="far fa-hand-point-right"></i> White paper:
 [Data Recovery for kdb+ tick](../data-recovery.md)
 
 
@@ -268,7 +268,7 @@ carefully manage any querying of the database.
 
 ![](img/image12.jpeg)
 
-<i class="far fa-hand-point-right"></i> Whitepaper –
+<i class="far fa-hand-point-right"></i> White paper –
 [Query Routing: a kdb+ framework for a scalable load-balanced system](/download/wp/query_routing_a_kdb_framework_for_a_scalable_load_balanced_system.pdf)
 
 As mentioned above, the usual strategy for failover is to have a
@@ -363,7 +363,7 @@ gateway queries should continue to be routed to the secondary until
 recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
-<i class="far fa-hand-point-right"></i> Whitepaper 
+<i class="far fa-hand-point-right"></i> White paper 
 [Data recovery for kdb+tick](../data-recovery.md)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
@@ -697,7 +697,7 @@ resilience or availability requirements.
 
 ## Conclusion
 
-This whitepaper has stressed the importance of disaster-recovery planning. 
+This white paper has stressed the importance of disaster-recovery planning. 
 There is always a possibility of disastrous events
 occurring, therefore it is vital to plan effectively to mitigate any
 impact on the system if problems occur. The paper has covered the

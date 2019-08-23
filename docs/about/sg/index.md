@@ -17,7 +17,7 @@ Here are typographical, spelling and lexical conventions for the content of this
 They apply to 
 
 -   Markdown source files for code.kx.com, hosted at <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/kxsystems/docs)
--   Technical Whitepapers prepared as PDFs for code.kx.com 
+-   Technical White papers prepared as PDFs for code.kx.com 
 
 ## Purpose
 

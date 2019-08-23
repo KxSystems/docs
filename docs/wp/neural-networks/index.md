@@ -736,7 +736,7 @@ training data.
 
 ## Conclusion
 
-In this whitepaper we have explored a proof-of-concept implementation
+In this white paper we have explored a proof-of-concept implementation
 of a feedforward network in kdb+. By constructing the model for the
 network using linear algebra (inputs, outputs and weights represented
 by matrices) we have shown that an array-processing language is well

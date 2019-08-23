@@ -1,6 +1,6 @@
 ---
 title: Working with sym files – White Papers – kdb+ and q documentation
-description: In this whitepaper, we discuss what the sym file is, suggestions for table setup, the maintenance of the sym file and safety measures that can be taken to protect the sym file.
+description: In this white paper, we discuss what the sym file is, suggestions for table setup, the maintenance of the sym file and safety measures that can be taken to protect the sym file.
 author: Paula Clarke
 date: March 2019
 keywords: ksb+, q, sym, symfile
@@ -24,7 +24,7 @@ performing database management. Correct procedure when creating and
 modifying a historical database (HDB) should be followed to ensure that
 this file does not become corrupt or bloated.
 
-In this whitepaper, we discuss what the sym file is, suggestions for
+In this white paper, we discuss what the sym file is, suggestions for
 table setup, the maintenance of the sym file and safety measures that
 can be taken to protect the sym file.
 

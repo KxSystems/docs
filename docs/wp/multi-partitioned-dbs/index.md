@@ -508,7 +508,7 @@ ajparted[
 ## Compression
 
 The use of compression for all or part of the dataset here is outside
-the scope of this whitepaper, however, this is undoubtedly an
+the scope of this white paper, however, this is undoubtedly an
 important feature to consider using for options data. 
 
 <i class="far fa-hand-point-right"></i> 

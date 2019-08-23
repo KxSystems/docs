@@ -3,7 +3,7 @@ title: Query Routing – a kdb+ framework for a scalable, load balanced system �
 description: This paper focuses on the design principle of the Connection Manager Load Balancer schematic whilst providing an asynchronous-only method of communication between processes. In this paper, our Load Balancer will also act as a Connection Manager with distributing access to all services whilst minimizing the waiting time for gateways.
 author: Kevin Holsgrove
 date: November 2015
-hero: Technical Whitepaper
+hero: Technical White paper
 keywords: query, routing, load, balancing, kdb+, gateway
 ---
 # Query Routing: A kdb+ framework for a scalable, load balanced system
@@ -16,10 +16,10 @@ and size of databases increase, the system is able to easily absorb
 the extra capacity.
 
 Distributed kdb+ systems have been covered in a number of Kx Technical
-Whitepapers. The primary objective of this paper is to expand on
+White papers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
-based heavily on the ideas discussed in another whitepaper:
+based heavily on the ideas discussed in another white paper:
 [“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf).
 
 It is recommended the reader understand these concepts before
@@ -620,7 +620,7 @@ much of the core functionality, but the scope of this paper does not
 encompass some desirable production features a system architect should
 consider, such as permissions, query validation and capacity
 management. Where topics haven’t been covered previously, the Kx
-Technical Whitepaper series will continue to drill down on important
+Technical White paper series will continue to drill down on important
 components that provide the building blocks for a stable, scalable,
 protected and efficient kdb+ system.
 

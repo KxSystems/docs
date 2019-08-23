@@ -845,7 +845,7 @@ simple dataflow of a potential kdb+ tick system:
 <i class="far fa-hand-point-right"></i> 
 [_Building Real-time Tick Subscribers_](../building_real_time_tick_subscribers.pdf) regarding the above vanilla setup
 
-Of interest in this whitepaper are the Java publisher and subscriber processes. As the kdb+ tick system is very widely used, both of these kinds of processes are highly likely to come up in development tasks involving kdb+ interfacing.
+Of interest in this white paper are the Java publisher and subscriber processes. As the kdb+ tick system is very widely used, both of these kinds of processes are highly likely to come up in development tasks involving kdb+ interfacing.
 
 
 ### Test tickerplant and feedhandler setup

@@ -14,7 +14,7 @@ keywords: find, join, kdb+, optimize, performance, q, query, scale, select
 
 Trading volumes in financial market exchanges have increased significantly in recent years and as a result it has become increasingly important for financial institutions to invest in the best technologies and to ensure that they are used to their full potential.
 
-This whitepaper will examine some of the key steps which can be taken to ensure the optimal efficiency of queries being run against large kdb+ databases. In particular it will focus on [q-SQL statements](../basics/qsql.md), [joins](../basics/joins.md), and other constructs which provide kdb+ with a powerful framework for extracting information from increasingly large amounts of timeseries data both-in memory and on- disk. It covers key ideas and optimization solutions while also highlighting potential pitfalls.
+This white paper will examine some of the key steps which can be taken to ensure the optimal efficiency of queries being run against large kdb+ databases. In particular it will focus on [q-SQL statements](../basics/qsql.md), [joins](../basics/joins.md), and other constructs which provide kdb+ with a powerful framework for extracting information from increasingly large amounts of timeseries data both-in memory and on- disk. It covers key ideas and optimization solutions while also highlighting potential pitfalls.
 
 All tests were run using kdb+ 3.1 (2013.12.27)
 

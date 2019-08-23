@@ -19,7 +19,7 @@ The interface allows the kdb+ interpreter to manipulate
 Python objects, call Python functions, and load Python libraries. 
 Developers can fuse the technologies, allowing seamless application of q’s high-speed analytics and Python’s extensive libraries.
 
-This whitepaper introduces embedPy, covering both a range of basic
+This white paper introduces embedPy, covering both a range of basic
 tutorials as well as a comprehensive solution to a machine-learning
 project. 
 
@@ -637,7 +637,7 @@ qplt[`:savefig]"lassopred.png";
 
 ## Conclusion
 
-In this whitepaper, we have shown how easily embedPy allows q to
+In this white paper, we have shown how easily embedPy allows q to
 communicate with Python and its vast range of libraries and packages. We
 saw how machine-learning libraries can be coupled with q’s high-speed
 analytics to significantly enhance the application of solutions across

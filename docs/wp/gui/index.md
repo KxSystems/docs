@@ -195,7 +195,7 @@ from connecting to the server without permission.
 In the below process, we have created a simple table with a user and
 their password. The password could be further encrypted using a
 hashing algorithm such as MD5 for extra security (this will not be
-shown in this whitepaper but is highly recommended).
+shown in this white paper but is highly recommended).
 
 ```q
 q)user_table:([users:`mreynolds`user1`user2]password:("password";"password2";"password3"))
@@ -276,7 +276,7 @@ process. Within C#, this will throw a KException with the message
 access in the C# API.
 
 <i class="far fa-hand-point-right"></i> 
-Tom Martin’s whitepaper [“Permissions with kdb+”](../permissions/index.md)
+Tom Martin’s white paper [“Permissions with kdb+”](../permissions/index.md)
 for more detailed information on validation and authentication
 
 ```csharp
@@ -412,7 +412,7 @@ creation of GUIs to interact with kdb+.
 It should be noted that while it is possible to build a dynamic query
 as shown in the below example, it is vulnerable to injection attacks.
 Production systems should be more robust in dealing with these kinds
-of attacks, though this is beyond the scope of this whitepaper.
+of attacks, though this is beyond the scope of this white paper.
 
 Below is an example of a class and GUI that has been constructed using
 simple dropdowns and text boxes yet creates a flexible and powerful

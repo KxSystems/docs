@@ -480,7 +480,7 @@ common column to group data together. Such [partitioned
 table](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
 structures help to more easily manage large datasets and enable query
 optimization. For more information on the benefits of partitioned
-databases, see whitepaper “[Columnar Database and Query
+databases, see white paper “[Columnar Database and Query
 Optimization](../columnar_database_and_query_optimization.pdf)”.
 
 For `mainDB`, each table contains a common column named `height`
@@ -628,7 +628,7 @@ comparisons performed when searching for an address or TXID within a
 given partition.
 
 For more information on the performance enhancements achieved by on-disk
-attribute application, refer again to the whitepaper [Columnar Database
+attribute application, refer again to the white paper [Columnar Database
 and Query
 Optimisation](https://kx.com/media/2017/11/Columnar_database_and_query_optimization.pdf).
 
@@ -689,9 +689,8 @@ heightToPartition:{[Height;Width]
   }
 ```
 
-For more information on similar intraday write-down solutions, see the
-whitepaper [Intraday Writedown
-Solutions](../intraday_writedown_solutions.pdf).
+<i class="far fa-hand-point-right"></i>
+White paper: [Intraday Writedown Solutions](../intraday_writedown_solutions.pdf)
 
 
 #### Garbage collection
@@ -725,9 +724,10 @@ databases in a compressed format. This was achieved by setting
 q).z.zd:17 2 6
 ```
 
-The above setting resulted in a compression ratio of 2.7 on average. For
-more information on compression settings and performance, see whitepaper
-[Compression in kdb+](../compression_in_kdb.pdf)
+The above setting resulted in a compression ratio of 2.7 on average. 
+
+<i class="far fa-hand-point-right"></i>
+White paper: [Compression in kdb+](../compress/index.md)
 
 
 #### Assigning appropriate data types

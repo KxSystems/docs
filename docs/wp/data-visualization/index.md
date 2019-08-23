@@ -547,7 +547,7 @@ multiple environments and DSNs.
 Kdb+ is well known as the world’s fastest time-series database. Kx’s
 own visualization tool, _Dashboards for Kx_, is optimized for this
 technology. However, kdb+ is flexible enough to connect with a
-range of different visualization tools. This whitepaper demonstrates how to connect to one such visualization tool,
+range of different visualization tools. This white paper demonstrates how to connect to one such visualization tool,
 Tableau, by means of the Kx ODBC driver.
 
 You have seen how to set up a connection between kdb+ and Tableau

@@ -2,7 +2,7 @@
 title: Support for kdb+ – kdb+ and q documentation
 description: We are proud to provide industry-acclaimed support for our customers, starting with free, onsite evaluations for qualified prospects with application requirements well-suited for Kx technology. We pride ourselves on being highly responsive to customer needs, typically responding to technical inquiries within minutes, and offering solutions within the day; these are responses from knowledgeable staff who are familiar with the code at a very deep level, not scripted responses from an outsourced support center. Beyond this, we offer a full ecosystem of resources – of both the material and the human variety – that enhances the experiences of our customers.
 author: Stephen Taylor
-keywords: contact, customer, github, googlegroup, interface, kdb+, knowledge, license, mortal, q, reference, repo, repository, sales, stackoverflow, support, technicalsupport, textbook, whitepaper
+keywords: contact, customer, github, googlegroup, interface, kdb+, knowledge, license, mortal, q, reference, repo, repository, sales, stackoverflow, support, technicalsupport, textbook, white paper
 ---
 # <i class="fas fa-life-ring"></i> Support
 
@@ -55,8 +55,8 @@ This site is the primary resource for kdb+ developers.
 <i class="fas fa-book"></i> [_Q for Mortals 3_](/q4m3/)
 : An online edition of the classic textbook, now in its third edition. 
 
-<i class="far fa-map"></i> [Technical Whitepapers](wp/index.md)
-: An occasional series of whitepapers on developing systems with kdb+.
+<i class="far fa-map"></i> [Technical White papers](wp/index.md)
+: An occasional series of white papers on developing systems with kdb+.
 
 <i class="fas fa-glasses"></i> [Knowledge Base](kb/index.md)
 : A collection of shorter articles on developing systems with kdb+.

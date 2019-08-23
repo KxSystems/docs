@@ -121,7 +121,7 @@ generate the HTML markup, the application can be fully customized
 independently of the kdb+ process. In order to receive updates, the
 application will still have to poll the server, which is not ideal for
 real-time data. The full implementation of this method is beyond the
-scope of this whitepaper.
+scope of this white paper.
 
 As WebSocket connections are persistent, the server is able to push
 updates to the client rather than relying on the client to poll for the
@@ -566,7 +566,7 @@ allowed to see.
 The methods used to protect kdb+ processes can be extended to cover
 WebSockets. There is one caveat in terms of username/password
 authentication which we will discuss below. A full discussion on kdb+
-permissioning is beyond the scope of this whitepaper; instead, please
+permissioning is beyond the scope of this white paper; instead, please
 refer to the [July 2013 white paper](../permissions/index.md).
 
 
@@ -726,7 +726,7 @@ WebSocket integration.
 
 ## Conclusion 
 
-This whitepaper has shown how WebSockets can be used as part of a HTML5
+This white paper has shown how WebSockets can be used as part of a HTML5
 GUI to connect to a q process and allow persistent, real-time
 communication between kdb+ and a web browser.
 
