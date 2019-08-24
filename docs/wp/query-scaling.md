@@ -371,7 +371,7 @@ Basics: [Joins](../basics/joins.md)
 The majority of joins in a kdb+ database should be performed implicitly by foreign keys and linked columns, permanent relationships defined between tables in a database. These provide a performance advantage over the standard joins and should be used where appropriate.
 
 <i class="far fa-hand-point-right"></i>
-White paper: [The application of foreign keys and linked columns in kdb+](the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)
+White paper: [The application of foreign keys and linked columns in kdb+](foreign-keys.md)
 
 
 ### Left joins

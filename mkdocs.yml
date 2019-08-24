@@ -158,7 +158,7 @@ nav:
       - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
       - Iteration: basics/iteration.md
-      - Iinterprocess communication: basics/ipc.md
+      - Interprocess communication: basics/ipc.md
       - Joins: basics/joins.md
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
@@ -518,6 +518,7 @@ nav:
     - Disaster recovery: wp/disaster-recovery/index.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
+    - Foreign keys: wp/foreign-keys.md
     - Iterators: wp/iterators/index.md
     - Java API: wp/java-api/index.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md

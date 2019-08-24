@@ -434,7 +434,7 @@ The following section will outline how to construct a link from a `trade` table 
     table for each date using a standard as-of join across time and sym.
 3.  Lastly, we append a column linking the `trade` table to the `quote` table based on this mapping and save this to disk.
 
-We use slightly modified versions of the standard [`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols) and [`.Q.dpft`](../ref/dotq/#qdpft-save-table) functions to ensure that no sym file clashes occur across the two databases. We will place these functions, and the other utility functions we will define, into the linked column namespace `.lc`.
+We use slightly modified versions of the standard [`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols) and [`.Q.dpft`](../ref/dotq.md#qdpft-save-table) functions to ensure that no sym file clashes occur across the two databases. We will place these functions, and the other utility functions we will define, into the linked column namespace `.lc`.
 
 The following code defines the `trade` and `quote` tables and writes them to disk in databases `db1` and `db2` respectively:
 
