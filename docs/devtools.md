@@ -34,6 +34,12 @@ It supports a wide range of users, from non-technical analysts to experienced q 
 [Kx Dashboards](/dashboards/)
 offers an easy-to-use, yet powerful drag-and-drop interface to allow creators to build dashboards without the need for programming experience. 
 
+!!! info "Sign in"
+
+    The User Guide is for Kx Dashboards customers. 
+    (Kx provides credentials to follow the links.) 
+
+    Sales inquiries to sales@kx.com.
 
 
 
@@ -43,8 +49,10 @@ offers an easy-to-use, yet powerful drag-and-drop interface to allow creators to
 
 !!! info "Sign in"
 
-    The User Guide is for Platform customers. 
+    The User Guide is for Kx Platform customers. 
     (Kx provides credentials to follow the links.) 
+
+    Sales inquiries to sales@kx.com.
 
 
 ### Kx Control
