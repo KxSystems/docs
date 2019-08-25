@@ -1,5 +1,5 @@
 ---
-title: The application of foreign keys and linked columns in kdb+
+title: The application of foreign keys and linked columns in kdb+ – White papers – q and kdb+ documentation
 description: How foreign keys and linked columns may be established and applied in kdb+ databases, and a review of the advantages and penalties
 author: Kevin Smyth
 date: April 2013
