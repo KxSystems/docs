@@ -690,7 +690,7 @@ heightToPartition:{[Height;Width]
 ```
 
 <i class="far fa-hand-point-right"></i>
-White paper: [Intraday Writedown Solutions](../intraday_writedown_solutions.pdf)
+White paper: [Intraday Writedown Solutions](../intraday-writedown/index.md)
 
 
 #### Garbage collection

@@ -519,6 +519,7 @@ nav:
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
     - Foreign keys: wp/foreign-keys.md
+    - Intraday writedown: wp/intraday-writedown/index.md
     - Iterators: wp/iterators/index.md
     - Java API: wp/java-api/index.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md

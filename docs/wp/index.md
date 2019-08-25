@@ -62,7 +62,7 @@ keywords: kdb+, q, technical, white paper
 * A natural query interface for **distributed systems** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](a_natural_query_interface_for_distributed_systems.pdf)
 * A method for **dynamically shrinking big data** using time-series database kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
 * Order Book: a kdb+ **intraday storage and access** methodology &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
-* **Intraday writedown** solutions &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](intraday_writedown_solutions.pdf)
+* [**Intraday writedown** solutions](intraday-writedown/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/intraday_writedown_solutions.pdf)
 * [**Multi-partitioned** kdb+ databases: an equity options case study](multi-partitioned-dbs/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/multi-partitioned-dbs-a4.pdf), [US Letter](/download/wp/multi-partitioned-dbs-us.pdf)</small>
 * [**Multi-threading** in kdb+: Performance optimizations and use cases](multi-thread/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
 * [**Permissions** with kdb+](permissions/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/permissions_with_kdb.pdf)
