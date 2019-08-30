@@ -83,6 +83,22 @@ Instead of using [`xasc`](../../ref/asc.md#xasc) to sort the table, the script i
 -   the column name to part the table by, generally `sym`
 -   a function to [apply an attribute](../../ref/set-attribute.md), e.g. `` `p#`` for parted
 
+```q
+disksort:{[t;c;a]
+  if[not`s~attr(t:hsym t)c;
+    if[count t;
+      ii:iasc iasc flip c!t c,:();
+      if[not$[(0,-1+count ii)~(first;last)@\:ii;@[{`s#x;1b};ii;0b];0b];
+        {v:get y;
+          if[not$[all(fv:first v)~/:256#v;all fv~/:v;0b];
+            v[x]:v;
+            y set v];}[ii] each ` sv't,'get ` sv t,`.d 
+            ] 
+      ];
+  @[t;first c;a]];
+  t}
+```
+
 The table is not reorganized if the column we are parting the table by is already sorted – it may actually already have a `s` attribute applied. If the table needs to be sorted, each column is sorted in turn except if all values in a particular column are identical. Rather than check the whole column, initially just the first 256 entries are checked for uniqueness. Finally the `p` attribute is set on the `sym` column. To ensure best performance, `xasc` times should be compared with `disksort` on each table.
 
 The `w.q` script has an additional option to delete the temporary data on exit to handle recovery scenarios. The default behavior is to delete the temporary data and recover from the TP log as it is difficult to locate the point in the TP log which was last committed to disk.
@@ -242,7 +258,7 @@ writecount:{[t;s]maxrows[t;s]-minrows[t;s]}
 LASTTIME:enlist[`]!enlist(0#`)!0#0Nt
 ```
 
-Initially, the location of the HDB and temporary intraday DB are set, and the tables that need to be written down intraday are defined, as well as the minimum and maximum number of rows to keep in memory. This configuration is similar to some of the customisations described in previously for `w.q`, but slightly more granular in that it allows values to be set for each table and for each sym within that table. This is done using a dictionary of dictionaries, which can be easily indexed.
+Initially, the location of the HDB and temporary intraday DB are set, and the tables that need to be written down intraday are defined, as well as the minimum and maximum number of rows to keep in memory. This configuration is similar to some of the customizations described in previously for `w.q`, but slightly more granular in that it allows values to be set for each table and for each sym within that table. This is done using a dictionary of dictionaries, which can be easily indexed.
 
 ```q
 q)MAXTBLSYM:MINTBLSYM:enlist[`]!enlist(0#`)!0#0N
