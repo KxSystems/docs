@@ -80,7 +80,7 @@ about new repositories.</div>
 	<td class="nowrap">[nlp](https://github.com/awilson-kx/nlp)</td>
 	<td>
 		demonstration notebook for [Natural-language processing](ml/nlp/index.md)
-		[<i class="fas fa-share-alt"></i>](ml/ "Machine learning")
+		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
 	</td>
 </tr>
 <tr>

@@ -46,12 +46,12 @@ offers an easy-to-use, yet powerful drag-and-drop interface to allow creators to
 
 [![Kx Control](img/controlkx.png)](img/controlkx.png "Click to expand")
 
-[Kx Control](/platform/user_interface/) is a client-server application that allows you to design, build, deploy and manage data-capture/streaming systems.
+[Kx Control](/platform/) is a client-server application that allows you to design, build, deploy and manage data-capture/streaming systems.
 
 
 ### Kx Stream
 
-[Kx Stream](/platform/stream/) 
+[Kx Stream](/platform/) 
 is a platform for capturing, storing and enriching large volumes of data. It provides a framework to develop and deploy customized analytics that quickly perform complex calculations on large volumes of real-time and historical market data.
 
 [![Kx Stream](img/stream.png)](img/stream.png "Click to expand")  
@@ -62,7 +62,7 @@ is a platform for capturing, storing and enriching large volumes of data. It pro
 
 ![Kx Monitoring](img/monitoroverview.png)
 
-[Kx Monitoring](/platform/monitoring/) 
+[Kx Monitoring](/platform/) 
 gathers and displays information about a server’s status. Each server requires a SysMon Java application installed and running to collect the server and process statistics. The dashboards provide powerful tools for visualizing and analyzing the current and historical state of the system.
 
 

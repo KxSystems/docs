@@ -50,7 +50,7 @@ show "Published 1 message";
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[<i class="fab fa-github"></i> KxSystems/kafka/test_producer.q](https://github.com/KxSystems/kafka/blob/master/test_producer.q)
+[<i class="fab fa-github"></i> KxSystems/kafka/examples/test_producer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_producer.q)
 
 
 ### Minimal consumer example
@@ -70,7 +70,7 @@ data:();
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[<i class="fab fa-github"></i> KxSystems/kafka/test_consumer.q](https://github.com/KxSystems/kafka/blob/master/test_consumer.q) for a slightly more elaborate version 
+[<i class="fab fa-github"></i> KxSystems/kafka/examples/test_consumer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_consumer.q) for a slightly more elaborate version 
 
 
 ## Configuration
