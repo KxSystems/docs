@@ -14,7 +14,7 @@ For Markdown source files use only UTF-8 encoding with no BOM (byte-order mark).
 
 Prefer **actual Unicode characters** – which a modern text editor will display correctly – to both character entities and HTML character entities, which degrade the readability of the source. (HTML character entities are more readable than character entities, but different browsers support different subsets of them.) Thus, use `π` rather than `&#928;` or `&pi;`. 
 
--   <i class="fab fa-windows"></i> Windows allows many characters to be typed as ASCII codes from the numeric keyboard, eg Alt+0215 for ×. (See the [W3C list of HTML character entity references](http://www.w3.org/TR/html401/sgml/entities.html#h-24.2) for codes.) 
+-   <i class="fab fa-windows"></i> Windows allows many characters to be typed as ASCII codes from the numeric keyboard, eg Alt+0215 for ×. (See the [W3C list of HTML character entity references](https://www.w3.org/TR/html401/sgml/entities.html#h-24.2) for codes.) 
 -   <i class="fab fa-apple"></i> Mac OS X provides a graphical palette of Unicode characters. 
 
 If a character proves particularly difficult to source (for example, the romaji O-micron), try using its character entity, displaying the result in a browser, then copying and pasting the character from the browser back into the source. (It is a good idea in such cases to leave the character entity embedded as a comment.)

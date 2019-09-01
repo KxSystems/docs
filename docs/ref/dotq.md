@@ -720,7 +720,7 @@ Returns the amount of memory that was returned to the OS.
 
 !!! detail "How it works"
 
-    Kdb+ uses reference counting and [buddy memory allocation](http://en.wikipedia.org/wiki/Buddy_memory_allocation). 
+    Kdb+ uses reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation). 
     The chosen buddy algorithm dices bucket sizes according to powers of 2, and the heap expands in powers of 64MB.
     
     Reference counting means there is never any garbage (so `.Q.gc` is not accurately named) and memory is returned to the heap as soon as it is no longer referenced; if that memory is a vector using >=64MB it may be returned immediately to the OS depending on the command-line option `-g`.

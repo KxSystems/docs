@@ -46,7 +46,7 @@ Start kdb+ and load `odbc.k` – this populates the `.odbc` context.
 ## Method
 
 First open an ODBC connection to a database. 
-To do so, define a [DSN](http://en.wikipedia.org/wiki/Database_Source_Name) (database source name), and then connect to the DSN using `.odbc.open`. 
+To do so, define a [DSN](https://en.wikipedia.org/wiki/Database_Source_Name) (database source name), and then connect to the DSN using `.odbc.open`. 
 This returns a connection handle, which is used for subsequent ODBC calls:
 
 ```q

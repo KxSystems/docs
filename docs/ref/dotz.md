@@ -1013,7 +1013,7 @@ Compression algorithm
     + 0: none
     + 1: q IPC
     + 2: `gzip`
-    + 3: [snappy](http://google.github.io/snappy) (since V3.4)
+    + 3: [snappy](http://google.github.io/snappy/) (since V3.4)
     + 4: lz4hc (since V3.6)
 
 Compression level

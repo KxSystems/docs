@@ -747,7 +747,7 @@ intra-day and historical data. Completely configurable, _Dashboards for
 Kx_ enable clients to quickly build powerful grids and charts of the
 underlying data stored within Kx and other databases. 
 
-<i class="far fa-hand-point-right"></i> [Dashboards for Kx](http://kx.com/media/2016/07/Dashboards-for-Kx-Product-Overview.pdf)
+<i class="far fa-hand-point-right"></i> [Dashboards for Kx](https://kx.com/solutions/the-enterprise/dashboards/)
 
 All tests were run using kdb+ version 3.5 (2017.11.30)
 

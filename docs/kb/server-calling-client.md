@@ -97,11 +97,11 @@ I main(I n,S*v){I c=khp("",5001);while(1)if(c==sel(c,1e-2))A(sr(c));}
 ## A TUI
 
 Consider a C client `u` that is nothing but a 
-[TUI](http://en.wikipedia.org/wiki/Text-based_user_interface). 
+[TUI](https://en.wikipedia.org/wiki/Text-based_user_interface). 
 It exposes 
 [ncurses](https://en.wikipedia.org/wiki/Ncurses) 
 functionality for a kdb+ listener. For fun, 
-[Conway’s game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Conway’s game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 will play out on `u` – all drawn by a 
 [q program](http://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
 

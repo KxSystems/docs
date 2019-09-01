@@ -57,7 +57,7 @@ site_author: 'Kx Systems'
 site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
 site_name: 'Kdb+ and q documentation'
-site_url: 'https://code.kx.com/v2'
+site_url: 'https://code.kx.com/v2/'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
@@ -478,7 +478,6 @@ nav:
     - Firewalling: kb/firewalling.md
     - Geospatial indexing: kb/geospatial.md
     - inetd, xinetd: kb/inetd.md
-    - Interprocess communication: kb/ipc.md
     - Kdb+tick configuration: kb/kdb-tick.md
     - Linear programming: kb/lp.md
     - Linking columns: kb/linking-columns.md

@@ -217,7 +217,7 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
     337714f8-3d76-f283-cdc1-33ca89be59e9 0a369037-75d3-b24d-6721-5a1d44d4bed5
     </code></pre>
 
-    If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
+    If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
     
     Guids can also be created from strings or byte vectors, using `sv` or `"G"$`, e.g.
     <pre><code class="language-q">

@@ -10,7 +10,7 @@ keywords: kdb+, q, start, tutorial,
 
 
 
-This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](/q4m3), and the wiki [Reference](../../ref/index.md) and consult the [Knowledge base](../../kb/index.md).
+This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](/q4m3/), and the [Reference](../../ref/index.md) and consult the [Knowledge base](../../kb/index.md).
 
 One caution: you can learn kdb+ reasonably well by independent study, but for serious deployment of the product you need the help of a consultant. This is because kdb+ is typically used for very demanding applications that require experience to set up properly. Contact Kx for help with such evaluations.
 
@@ -30,7 +30,7 @@ The kdb+ system is both a database and a programming language:
 
 The best resource for learning q. It includes:
 
--   Jeff Borror’s textbook [Q for Mortals](/q4m3)
+-   Jeff Borror’s textbook [Q for Mortals](/q4m3/)
 -   a [Knowledge Base](../../kb/index.md) of common tasks
 -   a [Reference](../../ref/index.md) for the built-in functions
 -   [interfaces](../../interfaces/index.md) with other languages and processes
@@ -100,5 +100,5 @@ As you become more familiar with q, you may try one of the GUIs.
 -   [Q and K Development Tools](http://www.qkdt.org) has an Eclipse plugin
 -   [**Q Insight Pad**](http://www.qinsightpad.com) is an IDE for Windows
 -   [**Qconsole**](source:contrib/cburke/qconsole "wikilink") is an IDE using GTK
--   [**JupyterQ**](../../ml/jupyterq/index.md) lets you run q inside a [Jupyter](http://jupyter.org/) notebook 
+-   [**JupyterQ**](../../ml/jupyterq/index.md) lets you run q inside a [Jupyter](https://jupyter.org) notebook 
 

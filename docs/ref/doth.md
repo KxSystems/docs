@@ -272,7 +272,7 @@ q).h.hr "foo"
 
 Syntax: `.h.ht x`
 
-HTML documentation generator: <!-- for <http://kx.com/q/d/> --> 
+HTML documentation generator: <!-- for <https://kx.com/q/d/> --> 
 where `x` is a symbol atom, reads file `:src/x.txt` and writes file `:x.htm`.
 (Marqdown is a rudimentary form of Markdown.)
 

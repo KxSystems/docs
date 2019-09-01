@@ -38,7 +38,7 @@ Download and install the free IDE, [**Kx Developer**](/developer/).
 -   See [Q by Examples](q-by-examples.md) for a quick taste of the language
 -   Watch Jeffry Borror’s [Q for All](q-for-all.md), a two-hour introduction to kdb+ and q  in fifteen videos
 -   Bookmark the [Q Reference Card](../ref/index.md)
--   Study Jeffry Borror’s textbook [_Q for Mortals, Version 3_](/q4m3)
+-   Study Jeffry Borror’s textbook [_Q for Mortals, Version 3_](/q4m3/)
 
 
 

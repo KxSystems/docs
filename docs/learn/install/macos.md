@@ -71,7 +71,7 @@ $
 
 If Rlwrap is already installed you can go on to the next step.
 
-Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using your package manager. (Probably either [MacPorts](https://www.macports.org/install.php) or [Homebrew](http://brew.sh/))
+Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using your package manager. (Probably either [MacPorts](https://www.macports.org/install.php) or [Homebrew](https://brew.sh/))
 
 
 ### <i class="fas fa-code"></i> Edit your profile

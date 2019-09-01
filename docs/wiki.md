@@ -30,6 +30,6 @@ We trust the search engines will catch up soon.
 
 ## Still spinning
 
-You can visit a frozen copy of [the archived wiki](https://code.kx.com/oldwiki).
+You can visit a frozen copy of [the archived wiki](https://code.kx.com/oldwiki/Main_Page).
 
 If you still prefer using the wiki to the current documentation, the [Librarian](mailto:librarian@kx.com) would be grateful for a note about why that is.

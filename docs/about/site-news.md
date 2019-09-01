@@ -36,7 +36,7 @@ Version 2 of this site has
 -   HTTP requests redirected to HTTPS 
 -   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
 
-The Kx wiki, frozen in 2016, has been retired to <https://code.kx.com/oldwiki>.
+The Kx wiki, frozen in 2016, has been retired to [https://code.kx.com/oldwiki](https://code.kx.com/oldwiki/Main_Page).
 
 
 ## <i class="fas fa-birthday-cake"></i>  Kx@25
@@ -114,7 +114,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 <small>2017.08.09</small>
 
-Replaced standard [MkDocs](https://mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](http://prismjs.com): 
+Replaced standard [MkDocs](http://mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](http://prismjs.com): 
 
 -   syntax highlighting for q
 -   a _Copy to Clipboard_ button on all code blocks
@@ -124,9 +124,9 @@ Replaced standard [MkDocs](https://mkdocs.org) [Pygments](http://pygments.org/) 
 
 <small>2017.08.05</small>
 
-The site content is now licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
+The site content is now licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
 
-<div style="text-align: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></div>
+<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></div>
 
 
 ## <i class="far fa-comment"></i> Terminology
@@ -140,7 +140,7 @@ The site content is now licensed under a <a rel="license" href="http://creativec
         — <i>Bob Dylan</i> “When the ship comes in” 
     </p>
     <p style="display: inline-block; padding: 0 1em;">
-        <a href="//bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/v2/img/dylan.png" style="height: 70px"/></a>
+        <a href="https://www.bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/v2/img/dylan.png" style="height: 70px"/></a>
     </p>
 </blockquote>
 

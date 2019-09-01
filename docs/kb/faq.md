@@ -628,4 +628,4 @@ l64/ ...
 ```
 
 <i class="fas fa-external-link-alt"></i> 
-[Shebang (Unix)](http://en.wikipedia.org/wiki/Shebang_(Unix))
+[Shebang (Unix)](https://en.wikipedia.org/wiki/Shebang_(Unix))

@@ -45,7 +45,7 @@ When sending the bug report please ensure that you include the following informa
     m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
     </code></pre>
 
-    If you aren’t using the latest version of kdb+, please confirm that the problem still occurs in the latest version (from [kxdownloads.com](http://kxdownloads.com)) – the problem may already have been reported and fixed.
+    If you aren’t using the latest version of kdb+, please confirm that the problem still occurs in the latest version (from [downloads.kx.com](http://downloads.kx.com)) – the problem may already have been reported and fixed.
 
 -   information about the **OS being used**, machine configuration and file system (if relevant).
 -   details of any **external code** (DLLs, user-written primitives) loaded into the problem session.  

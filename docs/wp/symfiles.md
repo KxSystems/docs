@@ -377,7 +377,8 @@ q)`:db/ set .Q.en[`:db] t
             ^
 ```
 
-For more information see the white paper [“Compression in kdb+”](https://code.kx.com/v2/wp/compression_in_kdb.pdf).
+<i class="far fa-hand-point-right"></i>
+White paper: [“Compression in kdb+”](compress/index.md)
 
 
 ## Datatype considerations

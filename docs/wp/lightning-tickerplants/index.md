@@ -681,7 +681,11 @@ trade:([]
 ```
 
 The main library functions this tickerplant implementation uses are shown below, and they will
-form the basis for subsequent modifications. For a more in-depth exploration of tickerplant technology, see [Building Real-Time tick subscribers](https://code.kx.com/v2/wp/building_real_time_tick_subscribers.pdf).
+form the basis for subsequent modifications. 
+
+<i class="far fa-hand-point-right"></i>
+White paper: 
+[Building Real-Time Tick Subscribers](../rt-tick/index.md)
 
 ```q
 \d .u

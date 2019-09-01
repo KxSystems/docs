@@ -276,7 +276,7 @@ complete mirror of the production system (feedhandler, tickerplant,
 and real-time subscriber), and when any critical process goes down,
 the secondary is able to take over. Switching from production to
 disaster recovery systems can be implemented seamlessly using kdb+
-[interprocess communication](../../kb/ipc.md) (via `.z.pc`).
+[interprocess communication](../../basics/ipc.md) (via `.z.pc`).
 
 An alternative method is to have a parent control process monitoring
 everything within the system with heart-beating: a simple message sent

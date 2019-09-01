@@ -12,7 +12,7 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
 <div style="display: inline-flex;" markdown="1">
-Kdb+, from [Kx](http://kx.com), is 
+Kdb+, from [Kx](https://kx.com), is 
 
 -   a high-performance historical time-series columnar database
 -   an in-memory compute engine
@@ -39,7 +39,7 @@ Kdb+, from [Kx](http://kx.com), is
 
 [**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
 <i class="fas fa-download"></i>
-[Free download](/developer/getting-started)
+[Free download](/developer/getting-started/)
 
 <div style="clear: both">&nbsp;</div>
 

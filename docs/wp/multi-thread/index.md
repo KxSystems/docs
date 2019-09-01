@@ -36,7 +36,7 @@ Kdb+ starts in single-threaded mode by default. This ensures data consistency an
 
 To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-slaves). When called with a value of `n`>1, kdb+ will start `n` slave threads. For optimal performance when using multi-threading, the number of slaves should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of slaves to allocate.
 
-Parallel execution is explicitly invoked by using two built-in functions: [`peach`](../../ref/each) and [`.Q.fc`](../../ref/dotq.md#qfc-parallel-on-cut). Parallel execution is also implicitly invoked in kdb+ when used as part of a multi-threaded HDB. This mode of operation will be reviewed in more detail below.
+Parallel execution is explicitly invoked by using two built-in functions: [`peach`](../../ref/each/) and [`.Q.fc`](../../ref/dotq.md#qfc-parallel-on-cut). Parallel execution is also implicitly invoked in kdb+ when used as part of a multi-threaded HDB. This mode of operation will be reviewed in more detail below.
 
 
 ### Functions for parallel execution

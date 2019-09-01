@@ -8,7 +8,7 @@ keywords: digitalocean, install, kdb+, linux, q, ubuntu
 
 
 
-In this scenario you install kdb+ on a [DigitalOcean](https://digitalocean.com) ‘droplet’ (cloud server) running Ubuntu. 
+In this scenario you install kdb+ on a [DigitalOcean](https://www.digitalocean.com/) ‘droplet’ (cloud server) running Ubuntu. 
 Kdb+ tasks on the droplet will be able to offer services over the Net.
 
 You access and control the droplet via SSH and Bash.

@@ -45,7 +45,7 @@ Ensure your q process has loaded the SQL interpreter.
 
 ## Method
 
--   if the user or password are not needed for the connection, then you can use the Windows ODBC Data Source Administrator to create a q [DSN](http://en.wikipedia.org/wiki/Database_Source_Name) of `host:port`, for example `localhost:5001`
+-   if the user or password are not needed for the connection, then you can use the Windows ODBC Data Source Administrator to create a q [DSN](https://en.wikipedia.org/wiki/Database_Source_Name) of `host:port`, for example `localhost:5001`
 -   if the user or password has to be given, you need to connect with a statement of the form:
 
 ```txt

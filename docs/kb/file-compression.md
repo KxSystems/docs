@@ -99,7 +99,7 @@ For Linux and Solaris you may find it convenient to install zlib using your pack
 
 ## Do I need additional libraries to use algorithm \#3 (snappy)?
 
-Yes, but they may already be installed on your system, and can be utilized in V3.4 onwards. It binds dynamically to [snappy](http://google.github.io/snappy). Kdb+ will look for the following files on the respective OSs: 
+Yes, but they may already be installed on your system, and can be utilized in V3.4 onwards. It binds dynamically to [snappy](http://google.github.io/snappy/). Kdb+ will look for the following files on the respective OSs: 
 
 -   Windows: snappy.dll
 -   macOS: libsnappy.dylib
