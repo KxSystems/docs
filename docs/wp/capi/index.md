@@ -1622,7 +1622,7 @@ int main() {
 
 ### Publishing multiple rows using a mixed-list object
 
-For performance-related reasons, discussed in the white paper, [Kdb+tick profiling for throughput optimization](../kdbtick_profiling_for_throughput_optimization.pdf) it is recommended to publish multiple rows at once so that bulk inserts can be performed on the tickerplant, maximizing tickerplant eﬃciency.
+For performance-related reasons, discussed in the white paper, [Kdb+tick profiling for throughput optimization](../tick-profiling.md) it is recommended to publish multiple rows at once so that bulk inserts can be performed on the tickerplant, maximizing tickerplant eﬃciency.
 
 > Feeds should read as many messages oﬀ the socket as possible and send bulk updates to the tickerplant if possible. Bulk updates will greatly increase the maximum throughput achievable.
 

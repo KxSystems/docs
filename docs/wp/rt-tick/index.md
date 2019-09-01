@@ -2,7 +2,7 @@
 title: Building real-time tick subscribers – White Papers – kdb+ and q documentation
 description: 
 author: Nathan Perrem
-date: December 2018
+date: August 2014
 keywords: kdb+, q, real-time, subscribe, tick
 ---
 # Building real-time tick subscribers

@@ -42,7 +42,7 @@ Historical database
 
 <i class="far fa-hand-point-right"></i>
 White paper: 
-[Kdb+ tick profiling for throughput optimization](kdbtick_profiling_for_throughput_optimization.pdf)
+[Kdb+ tick profiling for throughput optimization](tick-profiling.md)
 
 This paper will primarily consider the relationship between the TP and RDB and in particular the use of tickerplant logs when recovering lost data in an RDB.
 

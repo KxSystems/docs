@@ -2,7 +2,7 @@
 title: Kdb+ and WebSockets – White Papers – kdb+ and q documentation
 description: This paper introduces what WebSockets are and what benefits they hold over standard HTTP. It takes the reader through the set-up of a simple web page that uses WebSockets to connect to a kdb+ process, the steps involved in passing data through the connection, and the various methods for converting data between kdb+ and JavaScript.
 author: Chris Scott and Michael Gracey
-date: May 2018
+date: March 2018
 hero: Interfaces
 keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSockets
 ---
@@ -846,7 +846,7 @@ and saved with the respective names in the same directory. Start the q
 processes up first, and then open the HTML file in a web browser.
 
 
-#### B.1 pubsub.q 
+#### B.1 `pubsub.q` 
 
 Start this process first. It will create the q interface for the
 WebSocket connections and contains a simple pubsub mechanism to push
@@ -895,7 +895,7 @@ pub:{
 ```
 
 
-#### B.2 fh.q 
+#### B.2 `fh.q` 
 
 This will generate dummy trade and quote data and push it to the pubsub
 process. The script can be edited to change the number of symbols and
@@ -928,10 +928,10 @@ getask:{[s] prices[s]+getmovement[s]}; /* generate ask price */
 \t 100
 ```
 
-This code is from the August 2014 white paper [_Building Real-time Tick Subscribers_](../building_real_time_tick_subscribers.pdf).
+This code is from the August 2014 white paper [_Building Real-time Tick Subscribers_](../rt-tick/index.md).
 
 
-#### B.3 websockets.html 
+#### B.3 `websockets.html` 
 
 Due to the length of code required for this example, the JavaScript and
 HTML code have been split into separate files
@@ -976,7 +976,7 @@ HTML code have been split into separate files
 ```
 
 
-#### B.4 websockets.js 
+#### B.4 `websockets.js` 
 
 This script will be loaded into the web page by the HTML. Make sure this
 is saved as a JS file in the same directory as the above HTML file.
