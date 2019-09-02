@@ -7,7 +7,7 @@ keywords: bulk, copy, database, kdb+, load, microsoft, program, q, server, sql, 
 
 
 
-Microsoft’s [Bulk Copy Progam](https://docs.microsoft.com/en-us/sql/tools/bcp-utility) (bcp) is supported using the text format. 
+Microsoft’s [Bulk Copy Progam](https://docs.microsoft.com/en-us/sql/tools/bcp-utility?view=sql-server-2017) (bcp) is supported using the text format. 
 
 
 ## Export

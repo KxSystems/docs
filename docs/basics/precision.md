@@ -125,7 +125,7 @@ q){x+y}over reverse 1e-10*til 10000000
 4999.9995000000026
 ```
 
-If you need to sum numbers with most precision, you can look into implementing a suitable algorithm, like the ones discussed in [“Accurate floating point summation”](http://www.cs.berkeley.edu/~demmel/AccurateSummation.pdf) by Demmel et al.
+If you need to sum numbers with most precision, you can look into implementing a suitable algorithm, like the ones discussed in [“Accurate floating point summation”](https://people.eecs.berkeley.edu/~demmel/AccurateSummation.pdf) by Demmel et al.
 
 
 ## Comparison tolerance 

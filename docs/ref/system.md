@@ -91,5 +91,5 @@ ls: egg: No such file or directory
 
 !!! warning "Changing working directory in Windows"
 
-    In the event of an unexpected change to the working directory, Windows users please note <http://blogs.msdn.com/b/oldnewthing/archive/2007/11/21/6447771.aspx>
+    In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
 

@@ -26,7 +26,7 @@ Below is a summary of changes from V3.1. Commercially-licensed users may obtain 
 -   map single splayed files.
 -   appending a sorted vector to a sorted vector on disk now just appends to the file if the sort can be retained.
 -   `exec by a,b`  or `select by a,b` now sets sort/part attr for those cols. Enhancement to that released on 2014.02.07, now multiple cols
--   Support automatic WebSockets compression according to (http://tools.ietf.org/html/draft-ietf-hybi-permessage-compression-17)
+-   Support automatic WebSockets compression according to (https://tools.ietf.org/html/draft-ietf-hybi-permessage-compression-17)
 -   added `dsave` to make it easy to ``.Q.en`p#sym`` and save; expects `sym` as first col.
 -   `rload` changed to map all singleton splayed tables; eliminates all the open, map, unmap, close overhead.
 -   expanded **mlim** (number of mapped nested files) from 251 to 32767.

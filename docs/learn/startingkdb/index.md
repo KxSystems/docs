@@ -50,7 +50,7 @@ Several background articles and links can be found in the [Archive](../archive.m
 ### Discussion groups
 
 -   The main discussion forum is the [k4 Topicbox](https://k4.topicbox.com/groups/k4). This is available only to licensed customers – please use a work email address to [apply for access](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106).
--   The [Kdb+ Personal Developers](http://groups.google.com/group/personal-kdbplus) forum is an open Google discussion group for users of the free system.
+-   The [Kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
 
 
 ## Install free system
@@ -95,10 +95,10 @@ As you become more familiar with q, you may try one of the GUIs.
 
 -   Most popular is Charlie Skelton’s **Studio for kdb+**, a cross-platform execution environment – worth having available even if you use another interface  
 <i class="fab fa-github"></i> [CharlesSkelton/studio](https://github.com/CharlesSkelton/studio)
--   [**qStudio**](http://timestored.com/qStudio), a cross-platform IDE with charting and autocompletion by TimeStored 
--   [First Derivatives](http://www.firstderivatives.com) offer their clients the **qIDE** development system
+-   [**qStudio**](http://www.timestored.com/qstudio/), a cross-platform IDE with charting and autocompletion by TimeStored 
+-   [First Derivatives](https://www.firstderivatives.com) offer their clients the **qIDE** development system
 -   [Q and K Development Tools](http://www.qkdt.org) has an Eclipse plugin
 -   [**Q Insight Pad**](http://www.qinsightpad.com) is an IDE for Windows
--   [**Qconsole**](source:contrib/cburke/qconsole "wikilink") is an IDE using GTK
+-   [**Qconsole**](https://github.com/kxcontrib/cburke/tree/master/qconsole) is an IDE using GTK
 -   [**JupyterQ**](../../ml/jupyterq/index.md) lets you run q inside a [Jupyter](https://jupyter.org) notebook 
 

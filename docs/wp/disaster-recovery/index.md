@@ -188,7 +188,7 @@ system "l ."
 server, system or network upon the failure or termination of an
 existing asset. Failover should happen without any kind of human
 intervention or warning.
-— [_Computer Weekly_](http://www.computerweekly.com/feature/Idea-lab)
+— [_Computer Weekly_](https://www.computerweekly.com/feature/Idea-lab)
 
 In a kdb+ tick setup, failover can be designed and configured at a
 whole system level or at a process-by- process level. Generally, if a

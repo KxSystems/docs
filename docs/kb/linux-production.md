@@ -48,7 +48,7 @@ $ echo 0 > /proc/sys/vm/zone_reclaim_mode
 
 !!! info "The MySQL “swap insanity” problem and the effects of NUMA"
 
-    Although [**this post**](http://jcole.us/blog/archives/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/) is about the impact on MySQL, the issues are the same for other databases such as q.
+    Although [**this post**](https://blog.jcole.us/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/) is about the impact on MySQL, the issues are the same for other databases such as q.
 
 To find out whether NUMA is enabled in your bios, use
 
@@ -179,7 +179,7 @@ $ ulimit -n 4096
 Timekeeping on production servers is a complicated topic. These are just a few notes which can help.
 
 If you are using any of local time functions `.z.(TPNZD)` q will use the `localtime(3)` system function to determine time offset from GMT. In some setups (GNU libc) this can cause excessive system calls to `/etc/localtime`.  
-<i class="far fa-hand-point-right"></i> [chemie.fu-berlin.de](http://www.chemie.fu-berlin.de/chemnet/use/info/libc/libc_17.html#SEC301), [stackoverflow.com](http://stackoverflow.com/questions/4554271/how-to-avoid-excessive-stat-etc-localtime-calls-in-strftime-on-linux/4554302#4554302)
+<i class="far fa-hand-point-right"></i> [chemie.fu-berlin.de](http://kirste.userpage.fu-berlin.de/chemnet/use/info/libc/libc_17.html#SEC301), [stackoverflow.com](https://stackoverflow.com/questions/4554271/how-to-avoid-excessive-stat-etc-localtime-calls-in-strftime-on-linux/4554302#4554302)
 
 Setting TZ environment helps this:
 

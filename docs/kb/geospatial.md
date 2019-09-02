@@ -74,5 +74,5 @@ retrieves points contained in the given spherical rectangle. `lu` takes the rect
 
 The result is then filtered to remove points outside the rectangle (since the covering might exceed the rectangle dimensions) and to constrain by time.
 
-The simple HTML interface is implemented with [openstreetmap](http://www.openstreetmap.org) and [leaflet](http://leafletjs.com).
+The simple HTML interface is implemented with [openstreetmap](http://www.openstreetmap.org/) and [leaflet](https://leafletjs.com).
 

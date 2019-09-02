@@ -88,4 +88,4 @@ date       sym qty
 2006.10.06 IBM 200
 ```
 
-For an enhanced interactive shell, use the `ipyq` script to start [IPython](https://ipython.org/) or the `pq` script to start a [prompt toolkit](https://python-prompt-toolkit.readthedocs.io) based shell.
+For an enhanced interactive shell, use the `ipyq` script to start [IPython](https://ipython.org/) or the `pq` script to start a [prompt toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/) based shell.

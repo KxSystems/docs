@@ -66,8 +66,10 @@ q)save `:output.csv
 
 ## Excel automation add-ins
 
-With Automation add-ins for Excel, you can use a C\# function in a cell formula. This function can communicate with a kdb+ server process.  
-<i class="far fa-hand-point-right"></i> <http://msdn.microsoft.com/en-us/library/ms173189(VS.80).aspx>
+With Automation add-ins for Excel, you can use a C\# function in a cell formula. This function can communicate with a kdb+ server process.
+
+<i class="far fa-hand-point-right"></i> 
+[Writing Custom Excel Worksheet Functions in C\#](https://blogs.msdn.microsoft.com/gabhan_berry/2008/04/07/writing-custom-excel-worksheet-functions-in-c/)
 
 
 ## Real-time interface via Excel RTD

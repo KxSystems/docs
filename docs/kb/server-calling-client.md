@@ -114,6 +114,5 @@ TODO...
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Interprocess communication](ipc.md)  
-Basics: [IPC protocol](../basics/ipc.md)
+Basics: [Interprocess communication](../basics/ipc.md)
 

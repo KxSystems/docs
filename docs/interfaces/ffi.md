@@ -117,7 +117,7 @@ Bindings to [PCRE (POSIX variant)](https://www.pcre.org/original/doc/html/pcrepo
 
     Complex regular expressions can be catastrophic, exhibiting
     [exponential run time](https://www.regular-expressions.info/catastrophic.html) 
-    that leads to real [outages](http://stackstatus.net/post/147710624694/outage-postmortem-july-20-2016).
+    that leads to real [outages](https://stackstatus.net/post/147710624694/outage-postmortem-july-20-2016).
 
 [FFI for kdb+](https://github.com/kxsystems/ffi) is required for this library. `pcre` is normally available on modern Linux distributions and macOS.
 

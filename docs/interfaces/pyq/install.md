@@ -11,7 +11,7 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 
 PyQ can be installed using the standard Python package management tool `pip`.
 
-<i class="far fa-hand-point-right"></i> [Installing Python Modules](https://docs.python.org/3/installing)
+<i class="far fa-hand-point-right"></i> [Installing Python Modules](https://docs.python.org/3/installing/)
 
 To install the latest version, run the following command
 
@@ -371,7 +371,7 @@ Requirements are:
 
 -   Installation should be started using the Windows Command Prompt.
 -   [Visual Studio 9 for Python](http://aka.ms/vcpython27), if using Python 2.7.x.
--   [Microsoft Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017), if using Python 3.6.x
+-   [Microsoft Build Tools for Visual Studio 2017](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017), if using Python 3.6.x
 -   Ensure that kdb+ is installed under `C:\q`, or that the `QHOME` environment variable is set to the location of the kdb+ executable.
 
 Install PyQ:

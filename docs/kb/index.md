@@ -16,7 +16,6 @@ The Knowledge Base contains articles about how to get things done with kdb+.
 -   [Programming idioms](programming-idioms.md)  
 -   [WebSockets](websockets.md)                  
 -   [File compression](file-compression.md)      
--   [Interprocess communication](ipc.md)         
  
                                              
 ## Big Data

@@ -742,7 +742,7 @@ q).signal.mult[(5 2 1;-3 -8 10);(9 8 -4;2 3 6)]
 
 Fast Fourier Transform, written
 natively in Python 3.6, and also against a well refined, and highly-optimized C based library. The library in question will be the
-[NumPy](http://www.numpy.org/) library, called via the q fusion with
+[NumPy](https://numpy.org) library, called via the q fusion with
 Python – embedPy (details on setting up this environment are available
 from [Machine Learning section](../../ml/embedpy/index.md) on
 code.kx.com.

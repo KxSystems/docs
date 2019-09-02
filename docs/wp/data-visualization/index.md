@@ -21,7 +21,7 @@ database to kdb+ for increased efficiency and scalability, while
 retaining their current visualization front end. This paper
 offers guidance.
 
-[Tableau](https://tableau.com/) is an example of a widely-used BI tool. 
+[Tableau](https://www.tableau.com) is an example of a widely-used BI tool. 
 This paper
 outlines how it can be used to access kdb+ via ODBC
 (Open Database Connectivity), a standard application-programming
@@ -506,7 +506,7 @@ Tableau where the volume of datasets can be very large.
 As mentioned above, to share workbooks
 between Tableau Desktop and Tableau Server you can publish the former to
 the latter. 
-Tableau provides [detailed documentation and instructions](https://onlinehelp.tableau.com/current/pro/desktop/en-us/publish_workbooks_howto.html) 
+Tableau provides [detailed documentation and instructions](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_howto.htm)
 on the general publishing procedure, which involves publishing from within an already-open workbook.
 
 ![](img/image20.png)

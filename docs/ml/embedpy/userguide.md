@@ -69,7 +69,7 @@ q).p.qeval"1+2"
 **Side effects** Python evaluation (unlike Python _execution_) does not allow side effects. Any attempt at variable assignment or class definition will signal an error. To execute a string performing side effects, use `.p.e`. 
 
 <i class="fab fa-stack-overflow"></i>
-[Difference between `eval` and `exec` in Python](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile-in-python)
+[Difference between `eval` and `exec` in Python](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile)
 
 
 ## EmbedPy objects

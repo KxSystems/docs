@@ -965,7 +965,7 @@ q).z.Z
 
 The offset from UTC is fetched from the OS: kdb+ does not have its own time-offset database. 
 
-Which avoids problems like [this](http://it.slashdot.org/article.pl?sid=07/02/25/2038217).
+Which avoids problems like [this](https://it.slashdot.org/story/07/02/25/2038217/software-bug-halts-f-22-flight).
 
 
 ## `.z.z` (UTC datetime)

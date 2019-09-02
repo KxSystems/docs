@@ -88,5 +88,5 @@ date       sym price size
 
 ## Further reading
 
--   [Corporate Actions: A Guide to Securities Event Management](http://www.amazon.com/Corporate-Actions-Securities-Management-Finance/dp/0470870664/ref=sr_1_1?ie=UTF8&qid=1321379060&sr=8-1)
--   [Corporate Actions – A Concise Guide: An Introduction to Securities Events](http://www.amazon.com/Corporate-Actions-Concise-Introduction-Securities/dp/1905641672/ref=sr_1_3?ie=UTF8&qid=1321379060&sr=8-3)
+-   [Corporate Actions: A Guide to Securities Event Management](http://www.amazon.com/Corporate-Actions-Securities-Management-Finance/dp/0470870664/)
+-   [Corporate Actions – A Concise Guide: An Introduction to Securities Events](http://www.amazon.com/Corporate-Actions-Concise-Introduction-Securities/dp/1905641672/)

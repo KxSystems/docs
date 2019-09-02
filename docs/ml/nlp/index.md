@@ -49,7 +49,7 @@ The library is available from
 
 Alternatively the library is available as a Docker image.
 
-If you have [Docker installed](https://www.docker.com/products/docker-engine) you can run:
+If you have [Docker installed](https://www.docker.com/products/container-runtime) you can run:
 
 ```bash
 $ docker run -it --name mynlp kxsys/nlp

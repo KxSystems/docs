@@ -651,7 +651,7 @@ This interface is useful across many institutions that are developing in
 both languages, allowing for the best features of both technologies to
 fuse into a powerful tool. Further machine-learning techniques powered
 by kdb+ can be found under _Featured Resources_ at 
-[kx.com/machine-learning](https://kx.com/machine-learning/).
+[kx.com/machine-learning](https://kx.com/discover/machine-learning/).
 
 
 ## Author

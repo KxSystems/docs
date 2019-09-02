@@ -22,9 +22,9 @@ action include:
 
 -   [Aiding in medical diagnostics](http://www.ijesit.com/Volume%202/Issue%202/IJESIT201302_33.pdf)
 
--   Interpreting art and painting images \[[Mordvintsev _et al._](http://googleresearch.blogspot.ca/2015/06/inceptionism-going-deeper-into-neural.html)\] \[[Gatys _et al._](http://arxiv.org/pdf/1508.06576v1.pdf)\]
+-   Interpreting art and painting images \[[Mordvintsev _et al._](https://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html)\] \[[Gatys _et al._](https://arxiv.org/pdf/1508.06576v1.pdf)\]
 
--   [Performing stock market predictions](https://www.sciencedirect.com/science/article/pii/S2077188616300245)<!-- (http://reference.wolfram.com/applications/neuralnetworks/ApplicationExamples/12.2.0.html) -->
+-   [Performing stock market predictions](https://www.sciencedirect.com/science/article/pii/S2077188616300245)
 
 A number of different algorithms have been developed around this field
 of research, and this paper is going to focus on the implementation of
@@ -654,7 +654,7 @@ within machine learning. By taking measurements of certain metrics
 (eg. length and width of sepals) the plants can be classified and
 computationally distinguished from each other. The data and a
 description of the data can be found in the links at
-[archive.ics.uci.edu](http://archive.ics.uci.edu/ml/machine-learning-databases/iris)
+[archive.ics.uci.edu](http://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
 
 We one-hot encode the different possible species of Iris, resulting in
 a neural network with 5 inputs (including the bias neuron), 7 hidden
@@ -774,7 +774,7 @@ machine learning as part of the First Derivatives training programme.
     perspective._ MIT Press.
 
 2.  Hastie, T., Tibshirani, R. and Friedman, J. _The Elements of
-    Statistical Learning._ Springer, New York. ([Online version](http://statweb.stanford.edu/~tibs/ElemStatLearn/))
+    Statistical Learning._ Springer, New York. ([Online version](https://web.stanford.edu/~hastie/ElemStatLearn//))
 
 3.  Alpaydin, E. _Introduction to Machine Learning, Second Edition._ MIT
     Press.

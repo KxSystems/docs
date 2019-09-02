@@ -182,7 +182,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr><td>Bloomberg</td><td>[Q client for Bloomberg](q-client-for-bloomberg.md)</td></tr>
-<tr><td>[BosonNLP](http://bosonnlp.com/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
+<tr><td>[BosonNLP](https://bosonnlp.com)</td><td><i class="fab fa-github"></i> [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
 <tr><td>CUDA</td><td>[GPUs](gpus.md)</td></tr>
 <tr><td>Expat XML parser</td><td><i class="fab fa-github"></i> [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
 <tr>
@@ -212,7 +212,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
         <i class="fab fa-github"></i> [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb) ==new==
     </td>
 </tr>
-<tr><td>[Wind资讯](http://www.wind.com.cn/en/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>
+<tr><td>[Wind资讯](https://www.wind.com.cn/en/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>
 <tr><td><i class="fab fa-yahoo"></i> Yahoo!</td><td><i class="fab fa-github"></i> [fdeleze/tickYahoo](https://github.com/fdeleze/tickYahoo)</td></tr>
 </table>
 
@@ -221,7 +221,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 ## <i class="fas fa-map-signs"></i> Foreign functions 
 
 <table class="kx-compact" markdown="1">
-<tr><td>[Boost](http://www.boost.org/) math library</td><td><i class="fab fa-github"></i> [kimtang/bml](https://github.com/kimtang/bml)</td></tr>
+<tr><td>[Boost](https://www.boost.org) math library</td><td><i class="fab fa-github"></i> [kimtang/bml](https://github.com/kimtang/bml)</td></tr>
 <tr>
     <td>C/C++</td>
     <td>
@@ -282,7 +282,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>Heroku</td><td><i class="fab fa-github"></i> [gargraman/heroku-buildpack-kdb](https://github.com/gargraman/heroku-buildpack-kdb)</td></tr>
 <tr><td>IntelliJ IDEA</td>
     <td>
-<i class="fab fa-github"></i> [a2ndrade/k-intellij-plugin](https://github.com/a2ndrade/k-intellij-plugin)<br/>
+<i class="fab fa-github"></i> [a2ndrade/k-intellij-plugin](https://github.com/a2ndrade/q-intellij-plugin)<br/>
 <i class="fab fa-gitlab"></i> [shupakabras/kdb-intellij-plugin](https://gitlab.com/shupakabras/kdb-intellij-plugin) ==new==
     </td>
 </tr>

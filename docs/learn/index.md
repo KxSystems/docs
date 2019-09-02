@@ -69,7 +69,7 @@ Download and install the free IDE, [**Kx Developer**](/developer/).
 ![q for Mortals Version 3](../img/qfm3.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
 ### _Q for Mortals_
 **Version 3**
-by Jeffry A. Borror, available from [Amazon.com](https://www.createspace.com/5843336) or [Amazon.co.uk](https://www.amazon.co.uk/d/Books/q-Mortals-Version-3-Introduction-Programming/0692573674/). Covers up to kdb+ V3.3. If you are a new kdb+ user, this is the book for you!
+by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-Version-Introduction-Programming/dp/0692573674/) or [Amazon.co.uk](https://www.amazon.co.uk/d/Books/q-Mortals-Version-3-Introduction-Programming/0692573674/). Covers up to kdb+ V3.3. If you are a new kdb+ user, this is the book for you!
 
 [HTML edition](/q4m3/) now online
 </div>

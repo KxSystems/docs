@@ -18,7 +18,7 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
     entity which accesses the Kdb+ Software (“User” or “you”), with
     respect to Kx’s Kdb+ Software made available at the online
     GCP Marketplace at
-    http://console.cloud.google.com/marketplace/ (“Google Platform”) owned and
+    https://console.cloud.google.com/marketplace (“Google Platform”) owned and
     controlled by Google Inc. You are required to have a Google
     account for the Google Platform in good standing prior to
     accessing the Kdb+ Software. Kx shall not in any way be liable

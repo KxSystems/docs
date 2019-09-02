@@ -152,7 +152,7 @@ about new repositories.</div>
 </tr>
 <tr>
 <td class="nowrap"><a href="https://github.com/picoDoc/betfair-data-capture">betfair-data-capture</a></td>
-<td>Data capture and analysis system built on TorQ for sports exchange data from [Betfair](http://betfair.com). 
+<td>Data capture and analysis system built on TorQ for sports exchange data from [Betfair](https://www.betfair.com). 
 <span class="author"><a href="https://github.com/picoDoc?tab=repositories">(Matthew Doherty)</a></span>
 </td>
 </tr>
@@ -393,6 +393,13 @@ about new repositories.</div>
 <td class="nowrap"><a href="https://github.com/patmok/qcon2">qcon2</a></td>
 <td>Console application to query q. <span class="author"><a href="https://github.com/patmok?tab=repositories">
 						(patmok)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/kxcontrib/cburke/tree/master/qconsole">qconsole</a></td>
+<td>An IDE for q, written in J/GTK. <span class="author"><a href="https://github.com/kxcontrib/cburke">
+						(Chris Burke)
 					</a></span>
 </td>
 </tr>
@@ -816,7 +823,7 @@ about new repositories.</div>
 </tr>
 <tr>
 <td class="nowrap"><a href="https://github.com/Naoki-Yatsu/kdb-jfx-viewer">kdb-jfx-viewer</a></td>
-<td>(Making) q realtime viewer by [JavaFX](http://docs.oracle.com/javase/8/javase-clienttechnologies.htm). <span class="author"><a href="https://github.com/Naoki-Yatsu?tab=repositories">
+<td>(Making) q realtime viewer by [JavaFX](https://docs.oracle.com/javase/8/javase-clienttechnologies.htm). <span class="author"><a href="https://github.com/Naoki-Yatsu?tab=repositories">
 						(Naoki Yatsu)
 					</a></span>
 </td>

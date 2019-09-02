@@ -384,7 +384,7 @@ StackOverflow:
 [What exactly are iterator, iterable, and iteration?](https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration)  
 Dictionaries: 
 [Wiktionary](https://en.wiktionary.org/wiki/iterable),
-[Oxford](https://en.oxforddictionaries.com/definition/iterate)
+[Lexico](https://www.lexico.com/en/definition/iterate)
 
 
 

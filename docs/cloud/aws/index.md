@@ -32,7 +32,7 @@ We cover some of the in-house solutions supplied by Amazon Web Services (AWS), a
 
 ## Why Amazon EC2?
 
-[Gartner](http://fortune.com/2017/06/15/gartner-cloud-rankings/),
+[Gartner](https://fortune.com/2017/06/15/gartner-cloud-rankings/),
 and other sources such as [Synergy
 Research](https://www.srgresearch.com/articles/microsoft-google-and-ibm-charge-public-cloud-expense-smaller-providers),
 rank cloud-services providers:
@@ -833,7 +833,7 @@ What might not be immediately apparent is that for this style of product, they w
 
 ### EFS and AWS Gateway
 
-Avoid [EFS](http://docs.aws.amazon.com/efs/latest/ug/performance.html) and AWS Gateway for HDB storage. They both exhibit very high latencies of operation in addition to the network-bandwidth constraints. They appear to impact further on the overall performance degradations seen in generic NFS builds in Linux. This stems from the latency between a customer-owned S3 bucket (AWS Gateway), and an availability zone wide distribution of S3 buckets managed privately by AWS.
+Avoid [EFS](https://docs.aws.amazon.com/efs/latest/ug/performance.html) and AWS Gateway for HDB storage. They both exhibit very high latencies of operation in addition to the network-bandwidth constraints. They appear to impact further on the overall performance degradations seen in generic NFS builds in Linux. This stems from the latency between a customer-owned S3 bucket (AWS Gateway), and an availability zone wide distribution of S3 buckets managed privately by AWS.
 
 
 ### Open-source products

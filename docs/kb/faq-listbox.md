@@ -14,7 +14,7 @@ If you notice a question that is asked more then once on the k4 list, please fee
 
 ## Where can I find archives of the k4 list?
 
-Archives are available to subscribers at the [Listbox](https://www.listbox.com/member/archive). When you follow that link, you will be asked for your e-mail address and the mailing list name. Use `k4` for the list name, and the e-mail address that you used to subscribe to the k4 list.
+Archives are available to subscribers at the [Topicbox](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106). When you follow that link, you will be asked for your e-mail address and the mailing list name. Use `k4` for the list name, and the e-mail address that you used to subscribe to the k4 list.
 
 
 ## How to post test data on the k4 list?

@@ -288,7 +288,7 @@ q)\t select from trade where sym=r,ox=1,time=time time bin t
 
 ## STAC-M3 benchmark
 
-[STAC-M3](http://www.stacresearch.com/m3) is an independent benchmark for testing solutions (such as kdb+) that manage large timeseries datasets (tick databases). This has been run using kdb+ on several platforms. The [results](http://www.stacresearch.com/kx) are available to registered STAC users.
+[STAC-M3](https://www.stacresearch.com/m3) is an independent benchmark for testing solutions (such as kdb+) that manage large timeseries datasets (tick databases). This has been run using kdb+ on several platforms. The [results](https://www.stacresearch.com/kx) are available to registered STAC users.
 
 These benchmarks are run on a year of daily NYSE TAQ-like data, approximately 5 TB in total. They use a series of up to 20 complex queries that were defined by financial institutions to reflect real business requirements. The benchmarks enable users and vendors to compare the performance of their database solutions against audited, third-party measurements.
 

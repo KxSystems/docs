@@ -40,7 +40,7 @@ Start kdb+ and load `odbc.k` – this populates the `.odbc` context.
     <pre><code class="language-bash">
     $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$QHOME/l64
     </code></pre>
-    <i class="far fa-hand-point-right"></i> [unixODBC configuration guide](http://www.easysoft.com/developer/interfaces/odbc/linux.html)
+    <i class="far fa-hand-point-right"></i> [unixODBC configuration guide](https://www.easysoft.com/developer/interfaces/odbc/linux.html)
 
 
 ## Method
@@ -182,5 +182,5 @@ TraceFile     =/tmp/odbc.log
 to the `odbcinst.ini` file, which can typically be found in `/etc` or `/usr/local/etc`.
 
 <i class="far fa-hand-point-right"></i> 
-[MSDN](http://msdn.microsoft.com/en-us/library/windows/desktop/ms711034(v=vs.85).aspx)
+[MSDN](https://docs.microsoft.com/en-us/sql/odbc/reference/develop-app/enabling-tracing?view=sql-server-2017).aspx)
 for tracing on Windows

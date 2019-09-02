@@ -72,5 +72,5 @@ keywords: kdb+, q, technical, white paper
 * **Time-series simplification** in kdb+: a method for dynamically shrinking Big Data &nbsp; <i class="fas fa-print"></i> <small>[A4](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)</small>
 
 
-Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](https://firstderivatives.com).
+Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](https://www.firstderivatives.com).
 

@@ -12,7 +12,7 @@ Links relating to q and the k programming languages and their origins.
 
 ## <i class="fas fa-book"></i> Articles
 
-* [A conversation with Arthur Whitney](http://queue.acm.org/detail.cfm?id=1531242) 2009
+* [A conversation with Arthur Whitney](https://queue.acm.org/detail.cfm?id=1531242) 2009
 * [An interview with Arthur Whitney](https://kx.com/blog/arthur-whitney-talks/) 2004
 * [Tables with calculated columns](http://archive.vector.org.uk/art10500650) Stevan Apter, _Vector_ 25\#1
 * [Treetable: a case-study in q](http://archive.vector.org.uk/art10500340) Stevan Apter, _Vector_ 24\#4

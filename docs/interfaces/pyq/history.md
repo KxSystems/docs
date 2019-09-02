@@ -117,7 +117,7 @@ CI
 - gh-39 - BLD Blacklist pytest 3.3.0.
 - gh-45 - BLD Send coverage results to Codecov
 
-## [Version 4.1.2](http://pyq.readthedocs.io/en/pyq-4.1.2/)
+## [Version 4.1.2](https://pyq.readthedocs.io/en/pyq-4.1.2/)
 
 Released 2017.10.12
 
@@ -137,7 +137,7 @@ Documentation
 - !599 – DOC #964 Updated documentation in preparation for 4.1.2 release.
 
 
-## [Version 4.1.1](http://pyq.readthedocs.io/en/pyq-4.1.1/)
+## [Version 4.1.1](https://pyq.readthedocs.io/en/pyq-4.1.1/)
 
 Released 2017.09.21
 
@@ -156,7 +156,7 @@ CI
 - !584 – TST #952 Attempt to fix failing tests on Windows.
 
 
-## [Version 4.1.0](http://pyq.readthedocs.io/en/pyq-4.1.0/)
+## [Version 4.1.0](https://pyq.readthedocs.io/en/pyq-4.1.0/)
 
 Released 2017.08.30
 
@@ -210,7 +210,7 @@ CI
 - !531 – #909 Added ubuntu job to CI in develop branch
 
 
-## [Version 4.0.3](http://pyq.readthedocs.io/en/pyq-4.0.3/)
+## [Version 4.0.3](https://pyq.readthedocs.io/en/pyq-4.0.3/)
 
 Released 2017.07.17
 
@@ -223,7 +223,7 @@ Documentation:
 
 - !547 – DOC: Minor documentation corrections
 
-## [Version 4.0.2](http://pyq.readthedocs.io/en/pyq-4.0.2/)
+## [Version 4.0.2](https://pyq.readthedocs.io/en/pyq-4.0.2/)
 
 Released 2017.05.12
 
@@ -239,7 +239,7 @@ Documentation:
 - !537 – #909: Added a guide on installing PyQ on Ubuntu.
 - !533 – #914: Use new kx.code.com.
 
-## [Version 4.0.1](http://pyq.readthedocs.io/en/pyq-4.0.1/)
+## [Version 4.0.1](https://pyq.readthedocs.io/en/pyq-4.0.1/)
 
 Released 2017.03.15
 
@@ -254,7 +254,7 @@ Documentation:
 - !511 – Use locally stored intersphinx inventory.
 - !506 – #902 Updated README.
 
-## [Version 4.0](http://pyq.readthedocs.io/en/pyq-4.0/)
+## [Version 4.0](https://pyq.readthedocs.io/en/pyq-4.0/)
 
 Released 2017.03.02
 
@@ -385,27 +385,27 @@ Setup:
 - !339 – #782: Use extras instead of deps in tox.ini.
 - !340 – #788: Add ipython extras.
 
-## [Version 3.8.5](http://pyq.readthedocs.io/en/pyq-3.8.5/)
+## [Version 3.8.5](https://pyq.readthedocs.io/en/pyq-3.8.5/)
 
 Released 2017.03.16
 
 - !517 – #901: Provide a fallback for systems that lack `CPU_COUNT`.
 
-## [Version 3.8.4](http://pyq.readthedocs.io/en/pyq-3.8.4/)
+## [Version 3.8.4](https://pyq.readthedocs.io/en/pyq-3.8.4/)
 
 Released 2017.01.13
 
 - !414 – #843: Setup should not fail if `VIRTUAL_ENV` is undefined
 - !395 – #825: Fixed uninitialized "readonly" field in getbuffer
 
-## [Version 3.8.3](http://pyq.readthedocs.io/en/pyq-3.8.3/)
+## [Version 3.8.3](https://pyq.readthedocs.io/en/pyq-3.8.3/)
 
 Released 2016.12.15
 
 - !357 – #799: Several documentation fixes.
 - !368 – #802: Setup should not fail if `$VIRTUAL_ENV/q` does not exist.
 
-## [Version 3.8.2](http://pyq.readthedocs.io/en/pyq-3.8.2/)
+## [Version 3.8.2](https://pyq.readthedocs.io/en/pyq-3.8.2/)
 
 Released 2016.12.01
 
@@ -442,7 +442,7 @@ Improvement in the (internal) CI:
 - !305, !309, !311, !321, !335, !347 – Multiple improvements in the CI.
 - !319 – #770: Run doctests in tox.
 
-## [Version 3.8.1](http://pyq.readthedocs.io/en/pyq-3.8.1/)
+## [Version 3.8.1](https://pyq.readthedocs.io/en/pyq-3.8.1/)
 
 Released 2016.06.21
 
@@ -453,7 +453,7 @@ Released 2016.06.21
 - !298, !299, !300, !303 – #753: CI Improvements.
 - !302 – #755: Use preserveEnumerations=1 option to b9 instead of -1.
 
-## [Version 3.8](http://pyq.readthedocs.io/en/pyq-3.8/)
+## [Version 3.8](https://pyq.readthedocs.io/en/pyq-3.8/)
 
 Released 2016.04.26.
 

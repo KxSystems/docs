@@ -49,8 +49,8 @@ updating of tables based on user queries.
 
     As well as q, this paper makes significant use of HTML, CSS and JavaScript. A basic understanding of these will be necessary to take full advantage of this paper, though any complex structures will be examined here in detail. For a crash course on the above languages, please refer to the following resources:
 
-    -   [w3schools.com](http://www.w3schools.com/)
-    -   [codecademy.com ](http://www.codecademy.com/)
+    -   [w3schools.com](https://www.w3schools.com)
+    -   [codecademy.com ](https://www.codecademy.com)
 
 
 ## What are WebSockets?

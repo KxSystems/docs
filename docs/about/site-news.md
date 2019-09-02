@@ -114,7 +114,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 <small>2017.08.09</small>
 
-Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](http://prismjs.com): 
+Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](https://prismjs.com): 
 
 -   syntax highlighting for q
 -   a _Copy to Clipboard_ button on all code blocks

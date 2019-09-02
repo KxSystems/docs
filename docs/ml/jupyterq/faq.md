@@ -13,7 +13,7 @@ keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q, faq
 
 ## Can I run the kernel remotely?
 
-Yes, see the [Jupyter documentation](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html). To set up a notebook server for multiple users Jupyter recommends [JupyterHub](http://jupyterhub.readthedocs.io/en/latest/index.html)
+Yes, see the [Jupyter documentation](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html). To set up a notebook server for multiple users Jupyter recommends [JupyterHub](https://jupyterhub.readthedocs.io/en/latest/index.html)
 
 
 ### Additional setup for JupyterQ under JupyterHub

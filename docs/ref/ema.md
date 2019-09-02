@@ -28,7 +28,7 @@ q)ema[1%3;1,10#0]
 1 0.6666667 0.4444444 0.2962963 0.1975309 0.1316872 0.0877915 0.05852766 0.03901844 0.02601229 0.01734153
 ```
 
-Example: 10-day EMA on price, as at [stockcharts.com](http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_averages). Smoothing parameter for EMA over $N$ points is defined as $\frac{2}{1+N}$.
+Example: 10-day EMA on price, as at [stockcharts.com](https://school.stockcharts.com/doku.php?id=technical_indicators:moving_averages). Smoothing parameter for EMA over $N$ points is defined as $\frac{2}{1+N}$.
 
 ```q
 q)p:22.27 22.19 22.08 22.17 22.18 22.13 22.23 22.43 22.24 22.29 22.15 22.39 22.38 22.61 23.36 24.05 23.75 23.83 23.95 23.63 23.82 23.87 23.65 23.19 23.1 23.33 22.68 23.1 22.4 22.17
