@@ -528,7 +528,7 @@ to the gateway. Calling `nh[]` after sending the result causes the
 outgoing message queue for this handle to be flushed immediately. 
 
 <i class="far fa-hand-point-right">
-Basics: [Interprocess communications](../../kb/ipc.md)
+Basics: [Interprocess communications](../../basics/ipc.md)
 
 Like our gateway, the `.z.pc` handle is set to reconnect to the Load
 Balancer on disconnect. The `.z.ts` function retries to connect to the

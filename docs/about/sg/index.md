@@ -73,7 +73,7 @@ Here are the most important – or most commonly neglected – rules.
 
 -   [**Grammarly**](https://www.grammarly.com) checks spelling and grammar
 -   **Markdown** original definition at [Daring Fireball](https://daringfireball.net/projects/markdown/) 
--   [**MkDocs**](http://mkdocs.org): static site generator
+-   [**MkDocs**](https://www.mkdocs.org): static site generator
 -   [**Material for MkDocs**](https://squidfunk.github.io/mkdocs-material/): Material theme for code.kx.com
 -   [**PyMdown**](https://squidfunk.github.io/mkdocs-material/extensions/pymdown/): Markdown extension for the Material theme
 -   [**Prism.js**](https://prismjs.com): code syntax highlighting

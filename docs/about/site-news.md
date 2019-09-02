@@ -114,7 +114,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 <small>2017.08.09</small>
 
-Replaced standard [MkDocs](http://mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](http://prismjs.com): 
+Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](http://prismjs.com): 
 
 -   syntax highlighting for q
 -   a _Copy to Clipboard_ button on all code blocks
@@ -126,7 +126,7 @@ Replaced standard [MkDocs](http://mkdocs.org) [Pygments](http://pygments.org/) s
 
 The site content is now licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
 
-<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></div>
+<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
 ## <i class="far fa-comment"></i> Terminology

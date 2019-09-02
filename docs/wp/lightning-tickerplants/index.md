@@ -14,7 +14,7 @@ keywords: bitcoin, lightning, blockchain, kdb+, q, tickerplant
 [Lightning](https://lightning.network/lightning-network-paper.pdf) is a technology designed to scale Bitcoin and other compatible blockchains by enabling high transaction throughput with greater privacy while preserving decentralized qualities. It is a layer two infrastructure which builds upon the security and [smart contract](https://en.wikipedia.org/wiki/Smart_contract) functionality of the underlying base blockchain, analogous to how the HTTP application layer protocol builds on an underlying and reliable TCP layer. 
 Lightning succeeds by allowing payments to be made off-chain through the technology of bidirectional [payment channels](#payment-channels), wherein the underlying network of nodes do not need to validate and record every transaction. Consequently, peer-to-peer payments made over the Lightning network can be performed in high volume, with micro value (order of cents and lower), with low or zero fees and with near instant settlement times. Today, Lightning is one of the most rapidly growing networks (see [Real-time Network Statistics](https://1ml.com/statistics)) and adopted technologies in the cryptocurrency space and is at the cutting edge of blockchain innovation.
 
-Lightning application (LApp) development is progressing quickly and includes [eCommerce integrations](https://blockstream.com/2018/01/16/lightning-charge/), [micropayment paywalls](https://github.com/ElementsProject/wordpress-lightning-publisher) for content creators, [micropayment tipping](https://tippin.me/) services (Twitter), and multiple Custodial and Non-Custodial [wallet](https://lopp.net/lightning.html) implementations. The micropayment application, in particular, has the potential to transform how online content
+Lightning application (LApp) development is progressing quickly and includes [eCommerce integrations](https://blockstream.com/2018/01/16/lightning-charge/), [micropayment paywalls](https://github.com/ElementsProject/wordpress-lightning-publisher) for content creators, [micropayment tipping](https://tippin.me/) services (Twitter), and multiple Custodial and Non-Custodial [wallet](https://www.lopp.net/lightning-information.html) implementations. The micropayment application, in particular, has the potential to transform how online content
 is monetized by facilitating a micro fee pay-per-view model, as opposed to an ad based or yearly subscription model.
 Lightning payments are also highly applicable to the **IoT space**, as the network can be used to implement a decentralized peer-to-peer payment layer for transactions between IoT devices, utilizing all of the networks key features, see [IoT and Lightning](https://medium.com/meetbitfury/the-internet-of-things-and-the-lightning-network-41b93dbb8456), [Bitcoin Payment-Channels for Resource Limited IoT Devices](https://arxiv.org/pdf/1812.10345.pdf) and [Micropayments between IoT devices](http://www.diva-portal.org/smash/get/diva2:1272048/FULLTEXT01.pdf).
 
@@ -104,7 +104,7 @@ the value held on Lightning increasing continuously.
 
 For a more detailed explanation of how Lightning works see
 [Payment Channels Explained](https://medium.com/softblocks/lightning-network-in-depth-part-1-payment-channels-b943607950dd)
-and [Lightning Network Resources](https://lopp.net/lightning.html).
+and [Lightning Network Resources](https://www.lopp.net/lightning-information.html).
 
 
 ## Installing and configuring a Lightning node

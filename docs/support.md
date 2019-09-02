@@ -76,7 +76,7 @@ This site is the primary resource for kdb+ developers.
 <i class="fab fa-github"></i> [Kx on GitHub](https://kxsystems.github.io)
 : Developers from around the world share some of their best kdb+ code, libraries, and frameworks on GitHub, and Kx [indexes](github.md) them. Please send your kdb+ repository URLs to librarian@kx.com.
 
-<i class="fab fa-meetup"></i> [Meetup](https://meetup.com)
-: Use [meetup.com](http://meetup.com) to find Kx events round the world. 
+<i class="fab fa-meetup"></i> [Meetup](https://www.meetup.com)
+: Use [meetup.com](https://www.meetup.com) to find Kx events round the world. 
 
 

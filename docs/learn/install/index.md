@@ -63,7 +63,7 @@ Follow the installation instructions for your operating system:
 
 Use of the Free 64-bit kdb+ On-Demand Personal Edition is governed by the [On Demand terms and conditions](https://ondemand.kx.com/) and requires a [license key file](../licensing.md) to run.
 
-Use of the Free 32-bit kdb+ Personal Edition is governed by the [32-bit terms and conditions](https://kx.com/download) and requires no license key file.
+Use of the Free 32-bit kdb+ Personal Edition is governed by the [32-bit terms and conditions](https://kx.com/download/) and requires no license key file.
 
 
 ### Commercial

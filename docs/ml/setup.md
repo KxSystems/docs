@@ -57,7 +57,7 @@ This will then contact the Kx license server, which will generate a `kc.lic` and
 
 ## Docker command
 
-### 1. Install [Docker](https://www.docker.com/community-edition)
+### 1. Install [Docker](https://docs.docker.com/install/)
 
 ### 2. Run embedPy
 

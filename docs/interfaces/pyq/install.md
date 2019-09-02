@@ -42,7 +42,7 @@ Solaris is supported, but has not been tested recently.
 
 V2.8+
 
--   <i class="fas fa-download"></i> [Download](https://kx.com/download)
+-   <i class="fas fa-download"></i> [Download](https://kx.com/download/)
 -   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/index.md)
 
 ### Python
@@ -410,7 +410,7 @@ You can follow the latest updates on Windows support on [issue gh\#1](https://gi
 
 Since we have not ported the `pyq` executable to the Windows platform yet, setting up a working PyQ environment on Windows requires several manual steps.
 
-First, you are strongly recommended to use a dedicated Python virtual environment and install `q` in `%VIRTUAL_ENV%`. Assuming that you have downloaded `windows.zip` from [kx.com](https://kx.com/download) into your `Downloads` folder, enter the following commands:
+First, you are strongly recommended to use a dedicated Python virtual environment and install `q` in `%VIRTUAL_ENV%`. Assuming that you have downloaded `windows.zip` from [kx.com](https://kx.com/download/) into your `Downloads` folder, enter the following commands:
 
 ```bash
 python -mvenv py36

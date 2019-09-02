@@ -206,7 +206,7 @@ ages | 42  39    51  44
 
 The domain of a function is all the possible values of its argument.  
 <i class="far fa-hand-point-right"></i> 
-intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 Functions with multiple arguments have multiple domains. 
 A function’s first domain is known as its _left domain_. 
@@ -550,7 +550,7 @@ The range of a function is the complete set of all its possible results.
 All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges. 
 
 <i class="far fa-hand-point-right"></i> 
-intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 
 ## Rank

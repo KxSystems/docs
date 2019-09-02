@@ -687,7 +687,7 @@ of sensors based signal information.
 
 [2] E. Chu and A. George, _Inside the FFT Black Box: Serial and Parallel Fast Fourier Transform Algorithms_, CRC Press, 1999.
 
-[3] PJS, “Window Smoothing and Spectral Leakage”, Siemens, 14 September 2017. [siemens.com](https://community.plm.automation.siemens.com/t5/Testing-Knowledge-Base/Windows-and-Spectral-Leakage/ta-p/432760), accessed 20 May 2018.
+[3] PJS, “Window Smoothing and Spectral Leakage”, Siemens, 14 September 2017. [siemens.com](https://community.sw.siemens.com/s/article/windows-and-spectral-leakage), accessed 20 May 2018.
 
 [4] K. Jones, _The Regularized Fast Hartley Transform_, Springer Netherlands, 2010. 
 
@@ -898,7 +898,7 @@ methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml
     the underlying mathematics of a Fourier Transformation. An excellent
     discussion of this phenomena (which avoids the heavy math) can be
     found at [Windows and Spectral
-    Leakage](https://community.plm.automation.siemens.com/t5/Testing-Knowledge-Base/Windows-and-Spectral-Leakage/ta-p/432760)
+    Leakage](https://community.sw.siemens.com/s/article/windows-and-spectral-leakage)
 
 9.  This is because the result of a real valued FFT is conjugate
     symmetric, or Hermitian, with the exception of the first value.

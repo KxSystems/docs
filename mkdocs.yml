@@ -1,4 +1,4 @@
-copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
+copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.firstderivatives.com/">First Derivatives plc</a>.'
 # dev_addr: '159.65.88.218:8000'
 dev_addr: '0.0.0.0:9000'
 docs_dir: 'docs'

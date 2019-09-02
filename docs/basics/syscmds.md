@@ -413,7 +413,7 @@ Reference: [`.Q.f`](../ref/dotq.md#qf-format),
 [`.Q.fmt`](../ref/dotq.md#qfmt-format) 
 
 <i class="far fa-hand-point-right"></i> 
-[What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://docs.sun.com/source/806-3568/ncg_goldberg.html)
+[What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
 
 
 

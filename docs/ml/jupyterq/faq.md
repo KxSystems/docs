@@ -62,7 +62,7 @@ Yes, either with `p)` or `/%python`.
 
 ## Is there a Docker image available?
 
-Yes, if you have [Docker](https://www.docker.com/community-edition) installed, you can run:
+Yes, if you have [Docker](https://docs.docker.com/install/) installed, you can run:
 
 ```bash
 docker run -it --rm -p 8888:8888 kxsys/jupyterq
