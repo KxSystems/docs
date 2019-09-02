@@ -77,6 +77,6 @@ Here are the most important – or most commonly neglected – rules.
 -   [**Material for MkDocs**](https://squidfunk.github.io/mkdocs-material/): Material theme for code.kx.com
 -   [**PyMdown**](https://squidfunk.github.io/mkdocs-material/extensions/pymdown/): Markdown extension for the Material theme
 -   [**Prism.js**](https://prismjs.com): code syntax highlighting
--   [**FontAwesome**](https://fontawesome.io/icons/) icons
+-   [**FontAwesome**](https://fontawesome.com) icons
 
 

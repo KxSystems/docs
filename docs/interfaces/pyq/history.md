@@ -385,7 +385,8 @@ Setup:
 - !339 – #782: Use extras instead of deps in tox.ini.
 - !340 – #788: Add ipython extras.
 
-## [Version 3.8.5](https://pyq.readthedocs.io/en/pyq-3.8.5/)
+<!-- ## [Version 3.8.5](https://pyq.readthedocs.io/en/pyq-3.8.5/) 404 RESPONSE 2019.09.02 -->
+## Version 3.8.5
 
 Released 2017.03.16
 

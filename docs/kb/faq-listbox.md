@@ -115,7 +115,6 @@ Start q under `rlwrap` to get [readline](http://tiswww.case.edu/php/chet/readlin
 $ rlwrap l64/q -p 5001
 ```
 
-This is available in most Linux repositories, or from <i class="fab fa-linux"></i> [utopia.knoware.nl](http://utopia.knoware.nl/~hlub/rlwrap) or
-<i class="fab fa-apple"></i> [darwinports.com](http://rlwrap.darwinports.com).
+This is available in most Linux repositories.
 
 An alternative to `rlwrap` is tecla's [`enhance`](http://www.astro.caltech.edu/~mcs/tecla/enhance.html). This is good for `vi`-mode users who would like more of `vi`’s keys functionality – eg `d f x` will delete everything up to the next `x` and you can paste it back, too.  

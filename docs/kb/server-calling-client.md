@@ -103,7 +103,7 @@ It exposes
 functionality for a kdb+ listener. For fun, 
 [Conway’s game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 will play out on `u` – all drawn by a 
-[q program](http://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
+[q program](https://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
 
 ```bash
 $ cat t.c

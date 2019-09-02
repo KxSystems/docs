@@ -163,7 +163,9 @@ K FullMatch(K x,K y){
 }
 ```
 
-Another library which has been loaded into kdb+ is http://q.o.potam.us/?p=pcre although you will need to test whether it works with your current version of kdb+.
+<!-- NOT RESPONDING 2019.09.02 
+Another library which has been loaded into kdb+ is <http://q.o.potam.us/?p=pcre> although you will need to test whether it works with your current version of kdb+. 
+-->
 
 <i class="far fa-hand-point-right"></i>
 Reference: [Dynamic Load](../ref/dynamic-load.md)

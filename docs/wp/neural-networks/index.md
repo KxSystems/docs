@@ -20,7 +20,7 @@ computers can be used to ‘think’ and learn to solve problems given an
 appropriate algorithm. A few interesting examples of this research in
 action include:
 
--   [Aiding in medical diagnostics](http://www.ijesit.com/Volume%202/Issue%202/IJESIT201302_33.pdf)
+-   [Aiding in medical diagnostics](http://www.ijesit.com/Volume%202/Issue%202/IJESIT201302_33.pdf) <!-- NOT RESPONDING 2019.09.02 -->
 
 -   Interpreting art and painting images \[[Mordvintsev _et al._](https://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html)\] \[[Gatys _et al._](https://arxiv.org/pdf/1508.06576v1.pdf)\]
 
