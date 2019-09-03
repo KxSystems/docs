@@ -60,16 +60,15 @@ keywords: kdb+, q, technical, white paper
 * [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
 * [**Disaster-recovery planning** for kdb+ tick systems](disaster-recovery/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/disaster-recovery-a4.pdf), [US Letter](/download/wp/disaster-recovery-us.pdf) </small>
 * A natural query interface for **distributed systems** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](a_natural_query_interface_for_distributed_systems.pdf)
-* A method for **dynamically shrinking big data** using time-series database kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
 * Order Book: a kdb+ **intraday storage and access** methodology &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
 * [**Intraday writedown** solutions](intraday-writedown/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/intraday_writedown_solutions.pdf)
 * [**Multi-partitioned** kdb+ databases: an equity options case study](multi-partitioned-dbs/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/multi-partitioned-dbs-a4.pdf), [US Letter](/download/wp/multi-partitioned-dbs-us.pdf)</small>
 * [**Multi-threading** in kdb+: Performance optimizations and use cases](multi-thread/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
 * [**Permissions** with kdb+](permissions/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/permissions_with_kdb.pdf)
 * [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/query-routing-a4.pdf), [US&nbsp;Letter](/download/wp/query-routing-us.pdf)</small>
+* [**Time-series simplification** in kdb+: a method for dynamically shrinking Big Data](ts-shrink/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
 * ==new== [Working with **sym files**](symfiles.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/symfiles-a4.pdf), [US&nbsp;Letter](/download/wp/symfiles-us.pdf)</small>
 * [Kdb+tick profiling for **throughput optimization**](tick-profiling.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)
-* **Time-series simplification** in kdb+: a method for dynamically shrinking Big Data &nbsp; <i class="fas fa-print"></i> <small>[A4](time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)</small>
 
 
 Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](https://www.firstderivatives.com).
