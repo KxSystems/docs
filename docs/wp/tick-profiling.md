@@ -351,7 +351,7 @@ timer freq | frequency the timer in the tickerplant is run in milliseconds
 tpupd      | median time in microseconds to run upd in the tickerplant
 tpflush    | median time in microseconds to run the timer (`.z.ts`) in the tickerplant
 
-In Table 4 above we can see that when publishing on the timer, the tickerplant `upd` function still takes roughly the same time as in zero-latency mode, but we are only publishing data 10 times a second which reduces the overall load: the TP CPU usage has decreased from 31% to 22%. The RDB CPU usage decreases from 12% to 0.1% as it is only doing 10 bulk updates per second instead of 10,000 single updates per second. Only writing to disk 10 times a second reduces the load on the tickerplant further. The improvements will be greater the more updates the tickerplant receives per second.
+In Table 4 above we can see that when publishing on the timer, the tickerplant `upd` function still takes roughly the same time as in zero-latency mode, but we are only publishing data 10 times a second which reduces the overall load: the TP CPU usage has decreased from 31% to 22%. The RDB CPU usage decreases from 12% to 0.1% as it is only doing 10 bulk updates per second instead of 10,000 single updates per second. Writing to disk only 10 times a second reduces the load on the tickerplant further. The improvements will be greater the more updates the tickerplant receives per second.
 
 
 ### Number of subscribers
@@ -417,5 +417,5 @@ All tests were run using kdb+ version 3.1 (2014.02.08)
 ## Author
 
 Ian Kilpatrick has worked on several kdb+ systems. Based in Belfast,
-Ian is a technical architect for the Kx suite of high-performance data-management, event-processing and trading platforms.
+Ian is a technical architect for high-performance data-management, event-processing and trading platforms.
 
