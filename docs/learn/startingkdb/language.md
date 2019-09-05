@@ -144,7 +144,7 @@ q)2 + "hello"                / cannot add number to character
 Basics: [Errors](../../basics/errors.md)
 
 
-## 2.6 Introductory examples
+## Introductory examples
 
 To gain experience with the language, enter the following examples and explain the results. Also experiment with similar expressions.
 
