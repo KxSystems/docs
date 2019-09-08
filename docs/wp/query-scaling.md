@@ -183,7 +183,7 @@ q)\ts .mem.quote(`sym`bs#.mem.quote)?0!select max bs by sym from .mem.quote
 
 ### Efficient select statements using attributes
 
-One of the most effective ways to ensure fast lookup of data is the correct use of attributes, discussed in white paper [Columnar database and query optimization](columnar_database_and_query_optimization.pdf). In this section we will look at how we can ensure an attribute is used throughout an entire select statement.
+One of the most effective ways to ensure fast lookup of data is the correct use of attributes, discussed in white paper [Columnar database and query optimization](columnar-database/index.md). In this section we will look at how we can ensure an attribute is used throughout an entire select statement.
 
 If we wish to filter a table for entries containing a particular list of syms, the simplest way of doing this is to use a statement like `select from table where sym in symList`. However, when we apply the `in` keyword to a column which contains an attribute we will only receive that attribute’s performance benefit for the first symbol in the list we are searching. 
 

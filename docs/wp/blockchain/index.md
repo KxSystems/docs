@@ -480,8 +480,8 @@ common column to group data together. Such [partitioned
 table](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
 structures help to more easily manage large datasets and enable query
 optimization. For more information on the benefits of partitioned
-databases, see white paper “[Columnar Database and Query
-Optimization](../columnar_database_and_query_optimization.pdf)”.
+databases, see white paper “[Columnar database and query
+optimization](../columnar-database/index.md)”.
 
 For `mainDB`, each table contains a common column named `height`
 corresponding to the height of the block the data was extracted from.
@@ -628,9 +628,7 @@ comparisons performed when searching for an address or TXID within a
 given partition.
 
 For more information on the performance enhancements achieved by on-disk
-attribute application, refer again to the white paper [Columnar Database
-and Query
-Optimisation](https://kx.com/media/2017/11/Columnar_database_and_query_optimization.pdf).
+attribute application, refer again to the white paper [Columnar database and query optimization](../columnar-database/index.md).
 
 
 ### Memory management 
