@@ -264,7 +264,7 @@ size | j
 ex   | c
 ```
 
-The use of attributes to optimize datasets has been reviewed in another white paper, [Columnar database and query optimization](../columnar_database_and_query_optimization.pdf).
+The use of attributes to optimize datasets has been reviewed in another white paper, [Columnar database and query optimization](../columnar-database/index.md).
 
 In each of the test cases outlined in this section, the kdb+ session is restarted between each test and the disk cache flushed using `io.q`.
 

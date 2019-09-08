@@ -514,6 +514,7 @@ nav:
     - Bitcoin blockchains: wp/blockchain/index.md
     - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md
+    - Columnar database: wp/columnar-database/index.md
     - Compression: wp/compress/index.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
