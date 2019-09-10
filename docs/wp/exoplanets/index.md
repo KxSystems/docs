@@ -613,9 +613,11 @@ To sum up, the proposed solution achieves our main goal, detecting a high propor
 
 
 ## Author
+
 Esperanza López Aguilera joined First Derivatives in October 2017 as a Data Scientist in the Capital Markets Training Program.
 
 
 ##  Acknowledgements
+
 I gratefully acknowledge the Exoplanet team at FDL, Chedy Raissi, Jeff Smith, Megan Ansdell, Yani Ioannou, Hugh Osborn and Michele Sasdelli, for their contributions and support.
 
