@@ -20,7 +20,7 @@ White papers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
 based heavily on the ideas discussed in another white paper:
-[“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf).
+[“Common design principles for kdb+ gateways”](../gateway-design/index.md).
 
 It is recommended the reader understand these concepts before
 progressing with this paper.
@@ -44,14 +44,6 @@ for load balancing and query routing. Rather than presenting a golden
 solution, this paper explores one method of implementation.
 
 All tests were run using kdb+ version 3.3 (2015.11.03)
-
-
-### Author
-
-Kevin Holsgrove is a kdb+ consultant based in New York. He has
-developed data and analytic systems for some of the world’s largest
-financial institutions in a range of asset classes.
-
 
 
 ## Technical overview
@@ -135,7 +127,7 @@ user query.
 
 Instead of taking a standard round-robin approach to load balancing as
 explained in
-[“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf), 
+[“Common design principles for kdb+ gateways”](../gateway-design/index.md), 
 our Load Balancer will keep track of what resources are free and 
 allocate queries to services only when they are available. After executing
 a query, the service provides a notification to the Load Balancer that
@@ -627,3 +619,14 @@ components that provide the building blocks for a stable, scalable,
 protected and efficient kdb+ system.
 
 All tests were run using kdb+ version 3.3 (2015.11.03)
+
+
+
+### Author
+
+Kevin Holsgrove is a kdb+ consultant based in New York. He has
+developed data and analytic systems for some of the world’s largest
+financial institutions in a range of asset classes.
+
+
+

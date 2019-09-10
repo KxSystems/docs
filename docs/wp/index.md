@@ -21,7 +21,7 @@ keywords: kdb+, q, technical, white paper
 * [**C API** for kdb+](capi/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/c_api_for_kdb.pdf)
 * [**Data visualization** with kdb+ using ODBC: a Tableau case study](data-visualization/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/data-visualization-a4.pdf), [US&nbsp;Letter](/download/wp/data-visualization-us.pdf)</small>
 * Kdb+ and **FIX** messaging &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_and_fix_messaging.pdf)
-* Common design principles for kdb+ **gateways** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](common_design_principles_for_kdb_gateways.pdf)
+* [Common design principles for kdb+ **gateways**](gateway-design/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/common_design_principles_for_kdb_gateways.pdf)
 * [An introduction to **graphical interfaces** for kdb+ using C#](gui/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/csharp-gui-a4.pdf), [US&nbsp;Letter](/download/wp/csharp-gui-us.pdf)</small>
 * [**Java API** for kdb+](java-api/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/java-api-a4.pdf), [US&nbsp;Letter](/download/wp/java-api-us.pdf)</small>
 * ==new== [**Lightning tickerplants**: Pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/lightning-a4.pdf), [US&nbsp;Letter](/download/wp/lightning-us.pdf)</small>
@@ -60,7 +60,7 @@ keywords: kdb+, q, technical, white paper
 * [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
 * [**Disaster-recovery planning** for kdb+ tick systems](disaster-recovery/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/disaster-recovery-a4.pdf), [US Letter](/download/wp/disaster-recovery-us.pdf) </small>
 * A natural query interface for **distributed systems** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](a_natural_query_interface_for_distributed_systems.pdf)
-* Order Book: a kdb+ **intraday storage and access** methodology &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
+* [Order Book: a kdb+ **intraday storage and access** methodology](order-book.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
 * [**Intraday writedown** solutions](intraday-writedown/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/intraday_writedown_solutions.pdf)
 * [**Multi-partitioned** kdb+ databases: an equity options case study](multi-partitioned-dbs/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/multi-partitioned-dbs-a4.pdf), [US Letter](/download/wp/multi-partitioned-dbs-us.pdf)</small>
 * [**Multi-threading** in kdb+: Performance optimizations and use cases](multi-thread/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)

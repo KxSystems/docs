@@ -358,7 +358,7 @@ k(-handle, "1.0 + 2.0", (K)0);
 The asynchronous option is recommended when maximum data throughput is desired and the sender does not require an acknowledgment. Greater technical details on synchronous vs asynchronous requests can be found in the following white papers.
 
 <i class="far fa-hand-point-right"></i> White papers:  
-[Common design principles for kdb+ gateways](../common_design_principles_for_kdb_gateways.pdf)  
+[Common design principles for kdb+ gateways](../gateway-design/index.md)  
 [Query Routing: A kdb+ framework for a scalable, load balanced system](../query-routing/index.md)
 
 
