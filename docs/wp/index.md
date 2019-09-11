@@ -35,6 +35,7 @@
 * ==new== [Storing and exploring the **Bitcoin blockchain**](blockchain/) &nbsp; <i class="fas fa-print"></i> <small>[A4](blockchain/blockchain-a4.pdf), [US&nbsp;Letter](blockchain/blockchain-us.pdf)</small>
 * Sample aggregation engine for **market depth** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](sample_aggregation_engine_for_market_depth.pdf)
 * [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/) &nbsp; <i class="fas fa-print"></i> <small>[A4](market-fragmentation/market-fragmentation-a4.pdf), [US&nbsp;Letter](market-fragmentation/market-fragmentation-us.pdf)</small>
+* [**Option pricing in kdb**](optionpricing/) &nbsp; <i class="fas fa-print"></i> 
 * [**Signal processing and q**](signal-processing/) &nbsp; <i class="fas fa-print"></i> <small>[A4](signal-processing/signal-processing-a4.pdf), [US&nbsp;Letter](signal-processing/signal-processing-us.pdf)</small>
 * **Surveillance** techniques to effectively monitor algo and high-frequency trading &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
 * **Transaction-cost** analysis using kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](transaction_cost_analysis_using_kdb.pdf)

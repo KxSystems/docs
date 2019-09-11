@@ -513,6 +513,7 @@ nav:
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
+    - Option pricing in kdb: wp/optionpricing/index.md
     - Neural networks: wp/neural-networks/index.md
     - Query Routing: wp/query-routing/index.md
     - Signal processing and q: wp/signal-processing/index.md
