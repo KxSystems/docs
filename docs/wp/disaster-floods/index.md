@@ -12,7 +12,7 @@ The Frontier Development Lab(FDL) is a public private partnership run annually w
 
 ## The need for AI in Disaster Prevention
 
-Floods are the most destructive and dangerous natural disasters worldwide. All regions can be affected by flooding events and with the increased variability in weather patterns due to global warming this is likely to become a more prelevant issue moving forward [1]. The speed at which these events can occur and difficulties in predicting their occurrance create huge logistic problems for both governmental and non-governmental agencies. In the US alone,in the last 10 years floods caused on average 95 deaths a year [2], making them the deadliest weather related phenomenon [3]. Worldwide, floods cost on average in excess of 40 Billion dollars per year [4], impacting property, agriculture and the health of individuals.
+Floods are the most destructive and dangerous natural disasters worldwide. All regions can be affected by flooding events and with the increased variability in weather patterns due to global warming this is likely to become a more prelevant issue moving forward <sup>[1]</sup>. The speed at which these events can occur and difficulties in predicting their occurrance create huge logistic problems for both governmental and non-governmental agencies. In the US alone,in the last 10 years floods caused on average 95 deaths a year <sup>[2]</sup>, making them the deadliest weather related phenomenon <sup>[3]</sup>. Worldwide, floods cost on average in excess of 40 Billion dollars per year <sup>[4]</sup>, impacting property, agriculture and the health of individuals.
 	 	 	
 During the duration of the project, we collaborated with United States Geological Survey (USGS), this is a scientific agency within the US Department of the Interior. The objective of the organization is to study the landscape of the US and provide information about its natural resources and the natural hazards that affect them. Currently, hydrologists use physical models to help predict floods. These models require predictions to be carefully calibrated for each stream or watershed and careful consideration must be taken for dams, levees etc. Producing these models are extremely costly due to resource requirements. This limits the areas within the US that can avail of such systems allowing them to better prepare for flood events.
 
@@ -87,7 +87,7 @@ _PRISM_
 
 _National Land Cover Database (NLCD)_
 
-The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). This satellite has a 30-meter resolution and provides information for the entire US. The Landsat satellite program is a NASA/USGS collaboration which provides the longest continuous space-based record of Earth's landscape [5]. Landsat's ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This dataset provides information such as land use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every 5 years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
+The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). This satellite has a 30-meter resolution and provides information for the entire US. The Landsat satellite program is a NASA/USGS collaboration which provides the longest continuous space-based record of Earth's landscape <sup>[5]</sup>. Landsat's ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This dataset provides information such as land use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every 5 years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
 
 _National Hydrology Dataset Plus (NHDPlus)_
 
@@ -389,7 +389,7 @@ q)peak_split:update split:`TEST from cleaned_peak where site_no in`$tts[1]
 	 	 	
 For both problems we tested a variety of models, but for the sake of this paper, models and results from an XGBoost classifier and random forest classifier are presented.
 
-To visualise the results, a precision-recall curve was used, this illustrates the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds [7].This is a good metric of measuring the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
+To visualise the results, a precision-recall curve was used, this illustrates the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [7]</sup> .This is a good metric of measuring the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
 
 A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returns the prediction at each location in time for the models used, this is used later in this paper to create a map of flooding locations.
 
@@ -745,6 +745,6 @@ Nearest neighbour search is applied to the tree in order to efficiently find a d
 
 
 ![Figure_1](imgs/KDtree.png)<br/>
-<small>_Visual Representation of a kd-tree[6]_</small>
+<small>_Visual Representation of a kd-tree <sup>[6]</sup> _</small>
 
 
