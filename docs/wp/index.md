@@ -56,7 +56,7 @@ keywords: kdb+, q, technical, white paper
 * [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
 * [**Compression** in kdb+](compress/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/compression_in_kdb.pdf)
 * Temporal Data: a kdb+ framework for **corporate actions** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](temporal_data_a_kdb_framework_for_corporate_actions.pdf)
-* Kdb+ **data-management sample customisation** techniques &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
+* [Kdb+ **data-management** techniques](data-management.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
 * [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
 * [**Disaster-recovery planning** for kdb+ tick systems](disaster-recovery/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/disaster-recovery-a4.pdf), [US Letter](/download/wp/disaster-recovery-us.pdf) </small>
 * A natural query interface for **distributed systems** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](a_natural_query_interface_for_distributed_systems.pdf)
