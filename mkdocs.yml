@@ -140,6 +140,7 @@ nav:
       - Tables: learn/startingkdb/tables.md
       - Historical database: learn/startingkdb/hdb.md
       - Realtime database: learn/startingkdb/tick.md
+    - Technical articles: learn/blogs.md
     - Views: learn/views.md
     - Archive: learn/archive.md
   - Reference:

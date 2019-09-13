@@ -37,8 +37,12 @@ Download and install the free IDE, [**Kx Developer**](/developer/).
 
 -   See [Q by Examples](q-by-examples.md) for a quick taste of the language
 -   Watch Jeffry Borror’s [Q for All](q-for-all.md), a two-hour introduction to kdb+ and q  in fifteen videos
+-   Study the tutorials at [learn.kx.com](https://learn.kx.com/)
 -   Bookmark the [Q Reference Card](../ref/index.md)
 -   Study Jeffry Borror’s textbook [_Q for Mortals, Version 3_](/q4m3/)
+-   Review the basics of the language, starting with [application](../basics/application.md)
+-   Experiment with the [Q Phrases](/phrases/index.html)
+-   Explore the [Knowledge Base](../kb/index.md) and the [technical articles](blogs.md) on [kx.com](https://kx.com/blogs/) 
 
 
 
