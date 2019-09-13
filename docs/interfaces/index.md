@@ -33,13 +33,13 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
 <tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") ==new==</td>
-<tr><td>Kafka</td><td>[Q client for Kafka](kafka.md)</td></tr>
+<tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
 <tr><td>Python</td>
     <td>
 </i> [Using kdb+ within Python (PyQ)](pyq/index.md)<br/>
 [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning")
     </td></tr>
-<tr><td>R</td><td>[Using R with kdb+](with-r.md#calling-q-from-r)</td>
+<tr><td>R</td><td>[Using R with kdb+](R/index.md)</td>
 </tr>
 </table>
 
@@ -202,7 +202,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc.md)<br/>
 <i class="fab fa-github"></i> [johnanthonyludlow/kdb/docs/odbc.pdf](https://github.com/johnanthonyludlow/kdb/blob/master/docs/odbc.pdf)</td></tr>
 <tr><td>Philips Hue</td><td><i class="fab fa-github"></i> [jparmstrong/qphue](https://github.com/jparmstrong/qphue)</td></tr>
-<tr><td><i class="fab fa-r-project"></i> R</td><td>[Using R with kdb+](with-r.md#calling-r-from-q)</td></tr>
+<tr><td><i class="fab fa-r-project"></i> R</td><td>[Using R with kdb+](R/R-and-q.md)</td></tr>
 <tr><td>Reuters</td><td><i class="fab fa-github"></i> [KxSystems/kdb/c/feed/rfa.zip](https://github.com/KxSystems/kdb/blob/master/c/feed/rfa.zip)</td></tr>
 <tr><td>TSE FLEX</td><td><i class="fab fa-github"></i> [Naoki-Yatsu/TSE-FLEX-Converter](https://github.com/Naoki-Yatsu/TSE-FLEX-Converter)</td></tr>
 <tr>
