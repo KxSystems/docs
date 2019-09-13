@@ -401,8 +401,8 @@ nav:
         - Overview: interfaces/R/index.md
         - rkdb: interfaces/R/rkdb.md
         - embedR: interfaces/R/embedR.md
-        - examples: interfaces/R/examples.md
-        - complimentary interfaces: interfaces/R/R-and-q.md
+        - Examples: interfaces/R/examples.md
+        - Complementary interfaces: interfaces/R/R-and-q.md
     - From: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
