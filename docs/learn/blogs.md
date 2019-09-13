@@ -10,7 +10,7 @@ keywords: amazon, anaconda, analytics, audit trail, benchmark, bitcoin, blockcha
 Technical articles of interest to developers can be found at [kx.com](https://kx.com/blog/). Here is a selection.
 
 <i class="far fa-hand-point-right"></i>
-[Most-popular recent articles](https://kx.com/blog/2018-most-read-blogs-python-machine-learning-cloud-and-kdb-performance/)
+[Popular recent articles](https://kx.com/blog/2018-most-read-blogs-python-machine-learning-cloud-and-kdb-performance/)
 
 
 ## Machine learning
