@@ -512,6 +512,7 @@ nav:
     - Windows service: kb/windows-service/index.md
   - White papers: 
     - Index: wp/index.md
+    - Astronomy: wp/astronomy.md
     - Bitcoin blockchains: wp/blockchain/index.md
     - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md
@@ -522,6 +523,7 @@ nav:
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
+    - Distributed systems: wp/query-interface.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
     - Foreign keys: wp/foreign-keys.md

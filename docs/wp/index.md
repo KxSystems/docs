@@ -33,7 +33,7 @@ keywords: kdb+, q, technical, white paper
 ## Applications
 
 * Streaming **analytics**: detecting card counters in Blackjack &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](card-counters-in-blackjack.pdf)
-* Kdb+ in **astronomy** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_in_astronomy.pdf)
+* [Kdb+ in **astronomy**](astronomy.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_in_astronomy.pdf)
 * ==new== [Storing and exploring the **Bitcoin blockchain**](blockchain/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/blockchain-a4.pdf), [US&nbsp;Letter](/download/wp/blockchain-us.pdf)</small>
 * Sample aggregation engine for **market depth** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](sample_aggregation_engine_for_market_depth.pdf)
 * [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/market-fragmentation-a4.pdf), [US&nbsp;Letter](/download/wp/market-fragmentation-us.pdf)</small>
@@ -59,7 +59,7 @@ keywords: kdb+, q, technical, white paper
 * [Kdb+ **data-management** techniques](data-management.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
 * [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
 * [**Disaster-recovery planning** for kdb+ tick systems](disaster-recovery/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/disaster-recovery-a4.pdf), [US Letter](/download/wp/disaster-recovery-us.pdf) </small>
-* A natural query interface for **distributed systems** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](a_natural_query_interface_for_distributed_systems.pdf)
+* [A natural query interface for **distributed systems**](query-interface.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/a_natural_query_interface_for_distributed_systems.pdf)
 * [Order Book: a kdb+ **intraday storage and access** methodology](order-book.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
 * [**Intraday writedown** solutions](intraday-writedown/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/intraday_writedown_solutions.pdf)
 * [**Multi-partitioned** kdb+ databases: an equity options case study](multi-partitioned-dbs/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/multi-partitioned-dbs-a4.pdf), [US Letter](/download/wp/multi-partitioned-dbs-us.pdf)</small>

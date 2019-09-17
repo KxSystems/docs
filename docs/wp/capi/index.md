@@ -14,7 +14,7 @@ In its traditional ﬁnancial domain, and across an increasingly broad range of 
 
 This paper will illustrate how the C API can be used to enable a C program to interact with a kdb+ process, and so leverage the real-time streaming and processing strengths of kdb+. Particular consideration will be given to how the API can facilitate subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system. Just as trade and quote data can be piped into a ﬁnancial kdb+ application through a C feedhandler, interesting new datasets in non-ﬁnancial industries can readily be consumed and processed with minimal setup work in C.
 
-For example, in a recent white paper “[Kdb+ in astronomy](../kdb_in_astronomy.pdf)” a standard scientiﬁc ﬁle format is loaded into kdb+ for fast calculation of the recessional velocities of celestial bodies.
+For example, in a recent white paper “[Kdb+ in astronomy](../astronomy.md)” a standard scientiﬁc ﬁle format is loaded into kdb+ for fast calculation of the recessional velocities of celestial bodies.
 
 While [Interfaces: C](../../interfaces/c-client-for-q.md) remains the primary source for up-to-date information on the C API, the examples presented here provide a complementary set of practical templates. These templates can be combined and used to apply kdb+ across a broad range of problem domains. 
 
