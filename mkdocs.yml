@@ -523,6 +523,7 @@ nav:
     - Bitcoin blockchains: wp/blockchain/index.md
     - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md
+    - Card counters: wp/card-counters/index.md
     - Columnar database: wp/columnar-database/index.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md

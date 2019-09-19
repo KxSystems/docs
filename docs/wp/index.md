@@ -32,7 +32,7 @@ keywords: kdb+, q, technical, white paper
 
 ## Applications
 
-* Streaming **analytics**: detecting card counters in Blackjack &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](card-counters-in-blackjack.pdf)
+* [Streaming **analytics**: detecting card counters in Blackjack](card-counters/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/card-counters-in-blackjack.pdf)
 * [Kdb+ in **astronomy**](astronomy.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_in_astronomy.pdf)
 * ==new== [Storing and exploring the **Bitcoin blockchain**](blockchain/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/blockchain-a4.pdf), [US&nbsp;Letter](/download/wp/blockchain-us.pdf)</small>
 * Sample aggregation engine for **market depth** &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](sample_aggregation_engine_for_market_depth.pdf)
