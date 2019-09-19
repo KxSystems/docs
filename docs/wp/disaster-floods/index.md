@@ -387,9 +387,10 @@ q)peak_split:update split:`TEST from cleaned_peak where site_no in`$tts[1]
 
 ## Building Models
 	 	 	
-For both problems we tested a variety of models, but for the sake of this paper, models and results from an XGBoost classifier and random forest classifier are presented.
+For both problems we tested a variety of models, but for the sake of this paper, models and results from an eXtreme Gradient Boost (XGBoost) and random forest classifier are presented. These models were chosen due to the models ability to deal with complex, imbalanced datasets. With this type of dataset, overfitting is a common feature seen. Overfitting occurs when the model fits too well to the training set, capturing a lot of the noise from the data. This leads to the model preforming successfully in training, while not succeeding as well on the testing or validation sets. Another problem that can occur due to imbalanced datasets,is that a naive model can be produced, always predicting that a flood will not occur. This leads to high acccuracy but not meaningful results. As seen below in the results section, XGBoosts and random forests were able to deal much better with these issues by tuning their respective hyper-parameters. A more detailed description of these models can be found in Appendix 2.
 
-To visualise the results, a precision-recall curve was used, this illustrates the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [7]</sup> .This is a good metric of measuring the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
+
+To visualise the results, a precision-recall curve was used, this illustrates the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [8]</sup> .This is a good metric of measuring the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
 
 A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returns the prediction at each location in time for the models used, this is used later in this paper to create a map of flooding locations.
 
@@ -731,9 +732,11 @@ I gratefully acknowledge the Disaster Prevention team at FDL- Piotr Bilinski, Ch
 
 [5] https://landsat.gsfc.nasa.gov/
 
-[6] https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/KDtree.html
+[6] https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
 
-[7] https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/
+[7] https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/KDtree.html
+
+[8] https://medium.com/@williamkoehrsen/random-forest-simple-explanation-377895a60d2d
 
 ## Appendix:1
 
@@ -744,7 +747,24 @@ A kd-tree is used in k-dimensional space to create a tree structure. In the tree
 Nearest neighbour search is applied to the tree in order to efficiently find a datapoints nearest neighbour by potentially eleminating a large portion of the dataset using the kd-trees properties. This is done by starting at the root and moving down the tree recursively, calculating the distance between each node and the datapoint in question, allowing branches of the dataset to be eliminated based on if this node-point distance is less than or greater than the curent nearest neighbour distance. This enables rapid look ups for each point in a dataset.
 
 
-![Figure_1](imgs/KDtree.png)<br/>
-<small>_Visual Representation of a kd-tree <sup>[6]</sup> _</small>
+![Figure_10](imgs/KDtree.png)<br/>
+<small>_Visual Representation of a kd-tree <sup>[7]</sup> _</small>
 
+## Appendix:2
+
+Ensemble Methods
+
+An ensemble learning algorithm combines multiple outputs from a wide variety of predictors to achieve improved results. A combination of "weak" learners are typically used with the objective to achieve a "strong" learner. A weak predictor is a classifier that is only slightly correlated to the true predictions, while a strong learner is highly correlated. One of the advantages of using ensemble methods is that overfitting is reduced by diversifying the set of predictors used and averaging the outcome, lowering the variance in the model. 
+
+XGBoosts
+
+XGBoosts, commended for its speed and performance, is an ensemble method built on a gradient boosting framework of decision trees. This method utilises boosting techniques by building the model sequentially, using the results from the previous step to improve the next. This method relies on subsequent classifiers to learn from the mistakes of the previous classifier. 
+
+
+Random Forests
+
+This is also an ensemble method, where classifiers are trained independently using a randomized subsample of the data. This randomness reduces overfitting, while making the model more robust than if just a single decision tree was used. To obtain the output of the model, the decisions of multiple trees are merged together, represented by the average.
+
+![Figure 11](imgs/rand-forest.png)<br/>
+<small>_Visual Representation of a random forest <sup>[8]<sup>_</small> 
 
