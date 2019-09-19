@@ -1,13 +1,13 @@
 ---
-title: Using R with kdb+ – Non-Fusion Interfaces – kdb+ and q documentation
+title: Using R with kdb+ – Non-Fusion Interfaces
 description: Enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely; and enable q to load the R maths library and invoke R math routines locally.
 keywords: interface, kdb+, library, q, r
 ---
 # <i class="fab fa-r-project"></i> Using R and kdb+
 
-Outside the Fusion interfaces to R there are a number of interfaces that provide extremely useful functionality to a q instance from R and vice-versa.
+Outside the Fusion interfaces to R, a number of interfaces provide extremely useful functionality to a q instance from R and vice-versa.
 
-## q in R
+## Q in R
 
 ### RODBC with kdb+
 
@@ -36,7 +36,7 @@ The RODBC package should be installed in R. An example is given below.
 
 R contains a maths library which can be compiled standalone.
 The functions can then be exposed to q by wrapping them in C code which handles the mapping between R datatypes and q datatypes (K objects).
-See <i class="fab fa-github"></i> [github.com/rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)
+See <i class="fab fa-github"></i> [rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)
 for an example of integrating q with the R API (i.e. making use of some statistical functions from q).
 
 ```q

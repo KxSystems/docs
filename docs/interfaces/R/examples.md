@@ -1,32 +1,37 @@
 ---
-title: Using R with kdb+ - Examples -
-description: Examples showing the use of the R fusion interfaces in a number of scenarios, this acts as an exploratory test bed for new users.
+title: Examples of using R from q
+description: Examples showing the use of the Fusion interfaces between R and q
 keywords: interface, kdb+, library, q, r
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # <i class="fab fa-r-project"></i> Examples using rkdb/embedR
 
 
-The following examples make use of the fusion interfaces to R and show the versatility of the interfaces.
+The following examples make use of the Fusion interfaces between q/kdb+ and R and show their versatility.
+
 
 ## Extract aggregated data into R
 
-The second approach is to extract aggregated statistics from q to R.
+This approach extracts aggregated statistics from q to R.
 The required statistics in this case are the price returns between consecutive time buckets for each instrument.
-The following q function extracts time bucketed data:
+The following q function extracts time-bucketed data:
 
 ```q
 timebucketedstocks:{[startdate; enddate; symbols; timebucket]
- data:select last price by date,sym,time:timebucket xbar date+time from trade where date within (startdate;enddate),sym in symbols;  / extract the time bucketed data
- () xkey update return:1^price%prev price by sym from data /  calculate returns between prices in consecutive buckets and return the results unkeyed
- }
+  / extract the time-bucketed data
+  data:select last price by date,sym,time:timebucket xbar date+time 
+    from trade 
+    where date within (startdate;enddate),sym in symbols;  
+  / calculate returns between prices in consecutive buckets 
+  / and return the results unkeyed
+  () xkey update return:1^price%prev price by sym from data }
 ```
 
 An example is:
 
 ```q
 q)timebucketedstocks[2014.01.09;2014.01.13;`GOOG`IBM;0D00:05]
-date       sym  time                         price    return
+date       sym  time                          price    return
 ----------------------------------------------------------------
 2014.01.09 GOOG 2014.01.09D04:00:00.000000000 1142     1
 2014.01.09 GOOG 2014.01.09D04:05:00.000000000 1142.5   1.000438
@@ -56,7 +61,8 @@ To align the data we will use a pivot function defined in the reshape package.
 > library(reshape)
 # Pivot the data using the re-shape package
 > p <- cast(res, time~sym)
-Using return as value column. Use the value argument to cast to override this choice
+# Using return as value column. 
+# Use the value argument to cast to override this choice
 > head(p)
                  time      GOOG       IBM      MSFT
 1 2014-01-09 09:30:00 1.0000000 1.0000000 1.0000000
@@ -92,7 +98,8 @@ We can see that
 -   the data extract to R takes 145 ms. Much of this time is taken up by q producing the dataset. There is minimal transport cost (as the processes are on the same host);
 
     <pre><code class="language-q">
-    q)\t select time,sym,return from timebucketedstocks[2014.01.09; 2014.01.15; \`GOOG\`IBM\`MSFT; 0D00:05]
+    q)\t select time,sym,return 
+      from timebucketedstocks[2014.01.09; 2014.01.15; \`GOOG\`IBM\`MSFT; 0D00:05]
     134
     </code></pre>
 
@@ -121,7 +128,8 @@ We can see that the time to extract the data increases by ~90 ms.
 The q query time increases by 4 ms, so the majority of the increase is due to shipping the larger dataset from q to R.
 
 ```q
-q)\t select time,sym,return from timebucketedstocks[2014.01.09; 2014.01.15; `GOOG`IBM`MSFT; 0D00:00:10]
+q)\t select time,sym,return 
+  from timebucketedstocks[2014.01.09; 2014.01.15; `GOOG`IBM`MSFT; 0D00:00:10]
 138
 ```
 
@@ -134,18 +142,18 @@ As the dataset grows, the time to pivot the data in R starts to dominate the ove
 
 Given the pivot performance in R, an alternative is to pivot the data on the q side.
 This has the added benefit of reducing the volume of data transported
-due to the fact that we can drop the time and sym identification columns as the data is already aligned.
+due to the fact that we can drop the `time` and `sym` identification columns as the data is already aligned.
 The q function below pivots the data.
 
 ```q
 timebucketedpivot:{[startdate; enddate; symbols; timebucket]
- / Extract the time bucketed data
- data:timebucketedstocks[startdate;enddate;symbols;timebucket];
- / Get the distinct list of column names (the instruments)
- colheaders:value asc exec distinct sym from data;
- / Pivot the table, filling with 1 because if no value, the price has stayed the same and return the results unkeyed
- () xkey 1^exec colheaders#(sym!return) by time:time from data
- }
+  / Extract the time bucketed data
+  data:timebucketedstocks[startdate;enddate;symbols;timebucket];
+  / Get the distinct list of column names (the instruments)
+  colheaders:value asc exec distinct sym from data;
+  / Pivot the table, filling with 1 because if no value, 
+  / the price has stayed the same and return the results unkeyed
+  () xkey 1^exec colheaders#(sym!return) by time:time from data }
 ```
 
 <i class="far fa-hand-point-right"></i>
@@ -191,22 +199,22 @@ Utilizing the function `timebucketedpivot` defined above, and
 
 ```q
 correlationmatrix:{[startdate; enddate; symbols; timebucket]
- / Extract the pivoted data
- data:timebucketedpivot[startdate;enddate;symbols;timebucket];
- / Make sure the symbol list is distinct
- / and only contains values present in the data
- symbols:asc distinct symbols inter exec distinct sym from data;
- / Calculate the list of pairs to correlate
- pairs:raze {first[x],/:1 _ x}each {1 _ x}\[symbols];
- / Return the pair correlation
- / Calculate two rows for each pair, with the same value in each correlate
- pair:{[data;pair]([]s1:pair;s2:reverse pair; correlation:cor[data pair 0; data pair 1])};
- paircor:raze correlatepair[flip delete time from data] each pairs;
- / Pivot the data to give a matrix
- pivot:exec symbols#s1!correlation by sym:s2 from paircor;
- / fill with 1 for the diagonal
- unkey () xkey 1f^pivot
- }
+  / Extract the pivoted data
+  data:timebucketedpivot[startdate;enddate;symbols;timebucket];
+  / Make sure the symbol list is distinct
+  / and contains only values present in the data
+  symbols:asc distinct symbols inter exec distinct sym from data;
+  / Calculate the list of pairs to correlate
+  pairs:raze {first[x],/:1 _ x}each {1 _ x}\[symbols];
+  / Return the pair correlation
+  / Calculate two rows for each pair, with the same value in each correlate
+  pair:{[data;pair]
+    ([]s1:pair;s2:reverse pair; correlation:cor[data pair 0; data pair 1])};
+  paircor:raze correlatepair[flip delete time from data] each pairs;
+  / Pivot the data to give a matrix
+  pivot:exec symbols#s1!correlation by sym:s2 from paircor;
+  / fill with 1 for the diagonal
+  unkey () xkey 1f^pivot }
 ```
 
 which can be run like this:
@@ -227,12 +235,12 @@ This solution executes quickest and with the least network usage, as the resulta
 
 ## Example: working with smart-meter data
 
-To demonstrate the power of q, an example using randomly-generated smart meter data has been developed.
+To demonstrate the power of q, an example using randomly-generated smart-meter data has been developed.
 This can be downloaded from
 <i class="fab fa-github"></i>
 [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial).
 By following the instructions in the README, an example database can be built.
-The default database contains information on 100,000 smart meter customers from different sectors and regions over 61 days.
+The default database contains information on 100,000 smart-meter customers from different sectors and regions over 61 days.
 The default database contains 9.6M records per day, 586M rows in total.
 A set of example queries are provided, and a tutorial to step through the queries and test the performance of q.
 Users are encouraged to experiment with:
@@ -267,7 +275,7 @@ for each customer type (`res` = residential, `com` = commercial, `ind` = industr
 
 which produces the plot in Figure 5:
 
-![Customer usage profiles generated in q and drawn in R](../../img/r/figure5.png)
+![Customer usage profiles generated in q and drawn in R](../../img/r/figure5.png)<br>
 _Figure 5: Customer usage profiles generated in q and drawn in R_
 
 

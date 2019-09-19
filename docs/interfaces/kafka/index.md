@@ -1,5 +1,5 @@
 ---
-title: Using Kafka with kdb+ – Interfaces – kdb+ and q documentation
+title: Using Kafka with kdb+ – Interfaces
 description: How to connect a kdb+ server process to the Apache Kafka distributed streaming platform
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: apache, api, consumer, fusion, interface, kafka, learning, library, machine, producer, q
@@ -13,7 +13,7 @@ keywords: apache, api, consumer, fusion, interface, kafka, learning, library, ma
 
 
 `kfk` is a thin wrapper for kdb+ around the 
- librdkafka C API (available on [MacOS/Linux](https://github.com/edenhill/librdkafka) or [Windows](https://www.nuget.org/packages/librdkafka.redist/1.0.0)) for [Apache Kafka](https://kafka.apache.org/).
+ `librdkafka` C API (available on [MacOS/Linux](https://github.com/edenhill/librdkafka) or [Windows](https://www.nuget.org/packages/librdkafka.redist/1.0.0)) for [Apache Kafka](https://kafka.apache.org/).
 
 Follow the [installation instructions](https://github.com/KxSystems/kafka#building-and-installation) for set-up.
 
@@ -86,12 +86,12 @@ One can use either existing Kafka broker or start a test Kafka broker as describ
 
 ### Setting up a test Kafka instance
 
-To start a kafka instance for testing follow the instructions outlined in the link below
+To start a Kafka instance for testing follow the instructions outlined in the link below
 
 <i class="far fa-hand-point-right"></i> 
 [Apache Kafka tutorial](http://kafka.apache.org/documentation.html#quickstart)
 
-Zookeeper and a Kafka broker are initialised using the following commands
+Zookeeper and a Kafka broker are initialized using the following commands.
 
 Start `zookeeper`.
 
@@ -99,7 +99,7 @@ Start `zookeeper`.
 $ bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-Start Kafka broker
+Start Kafka broker.
 
 ```bash
 $ bin/kafka-server-start.sh config/server.properties
