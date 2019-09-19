@@ -96,7 +96,7 @@ _National Hydrology Dataset Plus (NHDPlus)_
 
 _Flooded Locations And Simulated Hydrographs Project (FLASH)_
 
-[FLASH](https://blog.nssl.noaa.gov/flash/) is a database containing information about flood events that occur within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset is the time taken for a river to reach its peak height after a major rain event.
+[FLASH](https://blog.nssl.noaa.gov/flash/) is a database containing information about flood events within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset is the time taken for a river to reach its peak height after a major rain event.
 
 _NOAA_
 
@@ -223,7 +223,7 @@ q)floodlvl:(maxht ij joins)lj`nn xkey warning
 
 This dataset was then joined onto the stream gauge data, adding columns counting the number of times a given stream gauge reached each warning level per month. 
 
-For the sake of this project, we only want to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data is a binary label denoting whether the flood warning level was reached in a given month. Any site that claims to flood more than 28 days per month is omitted from the dataset as we only want to focus on events that occur inextremely frequently and are more difficult to predict.
+For the sake of this project, we only want to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data is a binary label denoting whether the flood warning level was reached in a given month. Any site that claims to flood more than 28 days per month is omitted from the dataset as we only want to focus on events that occur infrequently and are more difficult to predict.
 
 ```q
 q)threshold:0!select first Action,first Flood,first Moderate,first Major,no_Action:
@@ -254,7 +254,7 @@ _Time to Peak Model_
 
 The FLASH dataset was then used for the time to peak model, which highlights how long it will take a stream gauge location to reach its peak height after the rain event. 
 
-Only dates and site numbers within the 6 states mentioned and the given 10 year period were included. The target data was calculated by subtracting the start-time (denoted by the start of a major rainfall event at the location) from the time that the peak height was found to occur. 
+Only dates within the 10 year period and site numbers within the 6 states mentioned were included. The target data was calculated by subtracting the start-time (denoted by the start of a major rainfall event at the location) from the time that the peak height was found to occur. 
 
 This was then converted into a binary classification problem by setting a threshold for a 'flash flood' at 3.5 hours after the major rainfall event. Any time above this was set to `0b` and less than this time was `1b`. This threshold was chosen after discussions with hydrologists, who found this to be a reasonable split in the dataset.
 
@@ -390,7 +390,7 @@ The inputs to the `pr_curve` function are:
 -	`dictionary of models that are being used`
 
 
-The dictionary of models, consisted of XGBoost and a random forest model with varying hyper-parameters such as number of estimators, max depth and class weights for each model. 
+The dictionary of models, consisted of XGBoost and a random forest model, with varying hyper-parameters for each model. 
 
 ```q
 q)build_model:{[Xtrain;ytrain;dict]
@@ -404,7 +404,7 @@ q)build_model:{[Xtrain;ytrain;dict]
 
 ## Results
 
-The results below are separated based on the three distinct datasets discussed throughout this paper.
+The results below are separated based on the three datasets.
 
 ### Model testing
 
@@ -586,7 +586,7 @@ avg/total| 0.7266119 0.71811  0.7219266 542
 
 ### Feature Significance
 
-There is also a lot to be learned from determining what features contribute to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enables the top x most significant features to be extracted from each dataset. 
+There is also a lot to be learned from determining which features contribute to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data, to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enables the top x most significant features to be extracted from each dataset. 
 
 _Monthly Model_
 
@@ -644,7 +644,7 @@ q)string .ml.fresh.significantfeatures[flip forecast[`P]!cleaned_peak[forecast[`
 
 _Monthly Model_
 
-Using these results, it was also possible to build a map that highlights per month where areas are at risk of flooding. This could be used for example by staff in governmental bodies to make decisions regarding area funding in the coming weeks.
+Using these results, it was also possible to build a map that highlights per month which areas are at risk of flooding. This could be used by governmental bodies to prioritize funding in the coming weeks.
 
 ```q
 q)preds:last pltP1`model
@@ -688,17 +688,17 @@ q)plt[`:show][];
 
 ## Conclusion
 
-From the above results we can predict with relatively high accuracy whether an area is likely to flood or not in the next month and also produce a model to predict if a stream will reach its peak height within 3.5 hours.
+From the above results we can predict, with relatively high accuracy, whether an area is likely to flood or not in the next month. We can also produce a model to predict if a stream will reach its peak height within 3.5 hours.
 
-For the monthly models, the future weather predictions played an important role in predicting whether an area will flood or not, with the accuracy and other metrics such as recall and precision increasing as the weather predictions and gauged information columns are included into the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
+For the monthly models, the future weather predictions played an important role in predicting whether an area will flood or not. Accuracy, recall and precision all increasing as the weather predictions and gauged information columns are added to the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
 
 The opposite was true for the time-peak values, as previous rain and stream gauge information along with the basin characteristics were seen to be the most significant features when predicting these values. Including additional information about the future predicted rainfall decreased the accuracy of the results, with the best results being obtained from the model with only past rainfall and basin and soil characteristics being fed into the model.
 
-Both of these results would likely be physically expected. In the case of the monthly prediction information regarding future forecast will be pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value it would be unlikely that information about rainfall in the next number of days will add to the predictive power of a model.
+Both of these results would likely be physically expected. In the case of the monthly prediction, information regarding future forecast will be pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value, it would be unlikely that information about rainfall in the next number of days will add to the predictive power of a model.
 
-Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height is an important piece of information to extract from the model so that organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
+Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height, is an important piece of information to extract from the model. Organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
 
-The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model meant that weighting the classes was an important feature to experiment with. This was particular important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
+The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model, meant that weighting the classes was an important feature to experiment with. This was particularly important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
 
 ## Author
 Diane O'Donoghue joined First Derivatives in June 2018 as a Data Scientist in the Capital Markets Training Program and is currently on the machine learning team based in London
@@ -729,12 +729,9 @@ I gratefully acknowledge the Disaster Prevention team at FDL- Piotr Bilinski, Ch
 
 Kd-tree
 
-A kd-tree is used in k-dimensional space to create a tree structure. In the tree each node represents a hyperplane which divides the plane into two seperate parts (the left and the right branch) based on a given direction. This direction is associated with a certain axis dimension, with the hyperplane perpendicular to the axis dimension. What is to the left or right of the hyperplane is determined by whether each data point being added to the tree is greater or less than the node value at the splitting dimension. For example, if the splitting dimension of the node is `x`, all data points with a smaller `x` value than the value at the splitting dimension node will be to the left of the hyperplane, while all points equal to or greater than will be in the right subplane.
+A kd-tree is used in k-dimensional space to create a tree structure. In the tree each node represents a hyperplane which divides the space into two seperate parts (the left and the right branch) based on a given direction. This direction is associated with a certain axis dimension, with the hyperplane perpendicular to the axis dimension. What is to the left or right of the hyperplane is determined by whether each data point being added to the tree is greater or less than the node value at the splitting dimension. For example, if the splitting dimension of the node is `x`, all data points with a smaller `x` value than the value at the splitting dimension node will be to the left of the hyperplane, while all points equal to or greater than will be in the right subplane.
 
-Nearest neighbour search is applied to the tree in order to efficiently find a datapoints nearest neighbour by potentially eleminating a large portion of the dataset using the kd-trees properties. This is done by starting at the root and moving down the tree recursively, calculating the distance between each node and the datapoint in question, allowing branches of the dataset to be eliminated based on if this node-point distance is less than or greater than the curent nearest neighbour distance. This enables rapid look ups for each point in a dataset.
-
+The tree is used to efficiently find a datapoint's nearest neighbour, by potentially eleminating a large portion of the dataset using the kd-trees properties. This is done by starting at the root and moving down the tree recursively, calculating the distance between each node and the datapoint in question, allowing branches of the dataset to be eliminated based on whether this node-point distance is less than or greater than the curent nearest neighbour distance. This enables rapid look ups for each point in a dataset.
 
 ![Figure_1](imgs/KDtree.png)<br/>
 <small>_Visual Representation of a kd-tree <sup>[6]</sup> _</small>
-
-
