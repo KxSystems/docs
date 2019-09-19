@@ -51,14 +51,14 @@ The [Machine Learning Toolkit](toolkit/index.md) is at the core of kdb+/q center
 
 The library is available [here](https://github.com/KxSystems/ml).
 
-<i class="far fa-hand-point-right"></i> [Example notebooks showing FRESH and various aspects of toolkit functionality](https://github.com/KxSystems/ml/tree/master/fresh/notebooks) 
+<i class="far fa-hand-point-right"></i> [Example notebooks showing FRESH and various aspects of toolkit functionality](https://github.com/KxSystems/mlnotebooks). 
 
 
 ## Natural Language Processing 
 
 [NLP](nlp/index.md) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp).
 
-<i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/ML07%20Natural%20Language%20Processing.ipynb)
+<i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks)
 
 
 All machine-learning libraries are:

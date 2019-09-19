@@ -26,9 +26,8 @@ Feature selection can improve the accuracy of a machine-learning algorithm by
 -  Mitigating the curse of dimensionality
 -  Reducing variance in the dataset to reduce overfitting
 
-Notebooks showing examples of the FRESH algorithm used in different applications can be found at 
-<i class="fab fa-github"></i>
-[KxSystems/ml/fresh/notebooks](https://github.com/kxsystems/ml/tree/master/fresh/notebooks).
+!!! note
+        Interactive notebook implementations of a large showing examples of the FRESH algorithm used in different applications can be found at <i class="fab fa-github"></i> [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
 
 ## Loading
