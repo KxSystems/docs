@@ -20,7 +20,7 @@ keywords: kdb+, q, technical, white paper
 
 * [**C API** for kdb+](capi/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/c_api_for_kdb.pdf)
 * [**Data visualization** with kdb+ using ODBC: a Tableau case study](data-visualization/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/data-visualization-a4.pdf), [US&nbsp;Letter](/download/wp/data-visualization-us.pdf)</small>
-* Kdb+ and **FIX** messaging &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](kdb_and_fix_messaging.pdf)
+* [Kdb+ and **FIX** messaging](fix-messaging.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_and_fix_messaging.pdf)
 * [Common design principles for kdb+ **gateways**](gateway-design/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/common_design_principles_for_kdb_gateways.pdf)
 * [An introduction to **graphical interfaces** for kdb+ using C#](gui/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/csharp-gui-a4.pdf), [US&nbsp;Letter](/download/wp/csharp-gui-us.pdf)</small>
 * [**Java API** for kdb+](java-api/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/java-api-a4.pdf), [US&nbsp;Letter](/download/wp/java-api-us.pdf)</small>
