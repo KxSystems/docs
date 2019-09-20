@@ -48,9 +48,10 @@ Where $n$ is the number of timesteps.
 
 ## Monte Carlo and Quasi-Monte Carlo Simulations
 
-The use of MC simulations in the financial industry stems from the need to evaluate complex financial instruments and the lack of analytical solutions available to do so. MC is used to mimic the uncertainty associated with the underlying price of an instrument and subsequently generate a value based on the possible underlying input values. One example of where MC is used in finance, is in evaluating an option on an equity. For each underlying share, a MC simulation is used to create thousands of random price paths, with an associated payoff and option price for each path <sup>[5]</sup>.
+The use of MC simulations in the financial industry stems from the need to evaluate complex financial instruments and the lack of analytical solutions available to do so. MC is used to mimic the uncertainty associated with the underlying price of an instrument and subsequently generate a value based on the possible underlying input values. One example of where MC is used in finance, is in evaluating an option on an equity. For each underlying asset, an MC simulation is used to create thousands of random price paths, with an associated payoff. The option price for each path is calculated by taking the average over the future payoffs and discounting them to the present <sup>[5]</sup>.
 
-These models are based on pseudo-random numbers and despite being commonly used, tend to have slow convergence, with a rate of $O(1/\sqrt{N})$ where N is the number of sampled points. To improve upon these models, QMC methods have been developed which use low-discrepancy sequences (LDS) to produce a rate of convergence ~ $O(1/N)$. LDS are deterministic uniformly distributed sequences, an example of which is the Sobol sequence used throughout this work <sup>[1]</sup>.
+These models are based on pseudo-random numbers which despite being commonly used, exhibit very slow convergence, with a rate of $O(1/\sqrt{N})$ where N is the number of sampled points. To improve upon these models, QMC methods have been developed which use low-discrepancy sequences (LDS) to produce a rate of convergence ~ $O(1/N)$. LDS are deterministic uniformly distributed sequences which are specifically designed to place sample points as uniformly as possible.  Many practical studies have proven that the Sobol’ LDS is superior to other LDS. The most effective Quasi-Monte Carlo method for application in financial engineering are based on Sobol’ LDS."
+<sup>[6][8]</sup>
 
 ## Wiener Path
 
@@ -476,3 +477,4 @@ I gratefully acknowledge Sergei Kucherenko for allowing us to create a version o
 5. Monte Carlo methods in finance. En.wikipedia.org. https://en.wikipedia.org/wiki/Monte_Carlo_methods_in_finance. Published 2019. Accessed September 11, 2019.
 6. P. Jäckel 2001, ‘Monte Carlo Methods In Finance’, pp. 122.
 7. Normal distribution. En.wikipedia.org. https://en.wikipedia.org/wiki/Normal_distribution. Published 2019. Accessed September 11, 2019.
+8. P. Glasserman 2003, 'Monte Carlo Methods in Financial Engineering', _Springer_.
