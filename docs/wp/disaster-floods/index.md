@@ -1,6 +1,6 @@
 ---
 title: NASA Frontier Development Lab Disaster Prevention (Floods)
-description: In this paper, we examine how machine learning methods can be used to predict flood susceptibility in an area. The paper looks at two seperate problems, of predicting flood susceptibility of an area per month and also predicting how long it takes for a river to reach its peak heightr after a rainfall event. Random Forests and XGBoosts will be deployed in order to achieve this. Both problems make use of kdb+  to deal with the time series element,along with it's machine learning library and embedpy in order to achieve these results. 
+description: In this paper, we examine how machine learning methods can be used to predict flood susceptibility in an area. The paper looks at the problems of predicting the flood susceptibility of an area and predicting the time taken for a river to reach its peak height after a rainfall event. Kdb+ is used to manage the time-series data, while Random Forest and XGBoost models are deployed via embedPy and the ML-Toolkit. 
 author: Diane O' Donoghue
 date: October 2019
 keywords: kdb+, q, space, NASA, machine learning,flood
@@ -8,13 +8,13 @@ keywords: kdb+, q, space, NASA, machine learning,flood
 
 # NASA Frontier Development Lab - Disaster Prevention, Progress and Response (Floods)	 	
  	
-The Frontier Development Lab(FDL) is a public private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration(NASA). The objective of FDL is to bring together researchers in both the Artificial Intelligence (AI) and the space science sector over the summer to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention,Progress and Response (Floods) challenge which Kx was a sponsor for this year. 
+The Frontier Development Lab (FDL) is a public private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration (NASA). The objective of FDL is to bring together researchers from the Artificial Intelligence (AI) and space science sectors to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention, Progress and Response (Floods) challenge, for which Kx was a sponsor. 
 
 ## The need for AI in Disaster Prevention
 
-Floods are the most destructive and dangerous natural disasters worldwide. All regions can be affected by flooding events and with the increased variability in weather patterns due to global warming this is likely to become a more prelevant issue moving forward <sup>[1]</sup>. The speed at which these events can occur and difficulties in predicting their occurrance create huge logistic problems for both governmental and non-governmental agencies. In the US alone,in the last 10 years floods caused on average 95 deaths a year <sup>[2]</sup>, making them the deadliest weather related phenomenon <sup>[3]</sup>. Worldwide, floods cost on average in excess of 40 Billion dollars per year <sup>[4]</sup>, impacting property, agriculture and the health of individuals.
+Floods are the most destructive and dangerous natural disasters worldwide. All regions can be affected by flooding events and, with the increased variability in weather patterns due to global warming, this is likely to become even more prelevant <sup>[1]</sup>. The speed at which flooding events can occur, and difficulties in predicting their occurrance, create huge logistic problems for both governmental and non-governmental agencies. Over the past 10 years, floods have caused on average 95 deaths a year in the US alone, <sup>[2]</sup>, making them the deadliest weather related phenomenon <sup>[3]</sup>. Worldwide, floods cost in excess of 40 Billion dollars per year <sup>[4]</sup>, impacting property, agriculture and the health of individuals.
 	 	 	
-During the duration of the project, we collaborated with United States Geological Survey (USGS), this is a scientific agency within the US Department of the Interior. The objective of the organization is to study the landscape of the US and provide information about its natural resources and the natural hazards that affect them. Currently, hydrologists use physical models to help predict floods. These models require predictions to be carefully calibrated for each stream or watershed and careful consideration must be taken for dams, levees etc. Producing these models are extremely costly due to resource requirements. This limits the areas within the US that can avail of such systems allowing them to better prepare for flood events.
+During the duration of the project, we collaborated with United States Geological Survey (USGS), a scientific agency within the US Department of the Interior. The objective of the organization is to study the landscape of the US and provide information about its natural resources and the natural hazards that affect them. Currently, hydrologists use physical models to help predict floods. These models require predictions to be carefully calibrated for each stream or watershed and careful consideration must be taken for dams, levees etc. Producing these models is extremely costly due to resource requirements. This limits the areas within the US that can avail of such systems to better prepare for flood events.
 
 ## The Challenge
 
@@ -22,7 +22,7 @@ To predict the flood susceptibility of a stream area, the project was separated 
 
 _Monthly Model_
 
-Predicting per month if a stream height will reach a flood threshold or not. These flood thresholds are set by the National Oceanic and Atmospheric Administration (NOAA) and are location specific. Knowing what areas are susceptible to floods, will allow locations to better prepare for a flood event. 
+Predicting, per month, if a stream height will reach a flood threshold or not. These flood thresholds are set by the National Oceanic and Atmospheric Administration (NOAA) and are location specific. Knowing which areas are susceptible to flooding, will allow locations to better prepare for a flood event. 
 
 _Time to Peak Model_
 
@@ -30,7 +30,7 @@ Predicting the time to peak of a flood event. When a major rain event occurs, kn
 
 ## Dependencies
 
-All development was done with the following software versions
+All development was done with the following software versions:
 
 software | version
 -------- | -------
@@ -38,7 +38,7 @@ kdb+     | 3.6
 Python   | 3.7.0
 
 
-The python modules that were used are:
+The following python modules were also used:
 
 library         | version
 --------------- |--------
@@ -51,7 +51,7 @@ xgboost         | 1.0.0
 gmaps           | 0.9.0
 geopandas       | 0.5.1
 
-In addition to this a number of kdb+ libraries and interfaces were leveraged
+In addition, a number of kdb+ libraries and interfaces were leveraged:
 
 library/interface | Release
 ----------------- | -------
@@ -61,7 +61,7 @@ ML-Toolkit        | 0.3.2
 
 ## The Data
 
-This project, focusses on 6 states within the US over a period of 10 years between July 2009 and June 2019, this consists of ~800 gauge sites. Not all gauge sites have continuous historical data over that 10 year period but all the available data for each site was used. 
+This project focuses on 6 states within the US, over a period of 10 years. Data is taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites have continuous historical data over the period, but all the available data for each site was used. 
 
 The six states are:
 
@@ -72,7 +72,7 @@ The six states are:
 -	`South Dakota`
 -	`Virginia`
 
-These states were chosen for a number of reasons. Primary among which is that each of these states exhibits similar climate and landscape. Given that it is difficult to predict flooding events, focusing on similar geographies is important to ensure that the models produced are precise.
+A primary reason for choosing these states, is that each exhibits similar climate and landscape. Focusing on similar geographies helps to ensure that the models produced are precise.
 
 Required datasets and providers:
 
@@ -83,20 +83,20 @@ USGS provided their Surface Water [dataset](https://waterdata.usgs.gov/nwis/sw).
 
 _PRISM_
 
-[The PRISM Climate Group](http://www.prism.oregonstate.edu/), provides climate observations across the whole of the US. This data contains information on total precipitation amount, minimum/maximum temperature and dew point for each requested latitude and longitude. Spatial and climate datasets are then developed which reveal short and long-term climate patterns. This dataset was used to extract daily precipitation readings from the site locations for each day during the requested 10 year period. 
+[The PRISM Climate Group](http://www.prism.oregonstate.edu/) provides climate observations across the whole of the US. This data contains information on total precipitation, minimum/maximum temperature and dew point for each requested latitude and longitude. Spatial and climate datasets are then developed to reveal short and long-term climate patterns. This dataset was used to extract daily precipitation readings from the site locations for each day during the requested 10 year period. 
 
 _National Land Cover Database (NLCD)_
 
-The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). This satellite has a 30-meter resolution and provides information for the entire US. The Landsat satellite program is a NASA/USGS collaboration which provides the longest continuous space-based record of Earth's landscape <sup>[5]</sup>. Landsat's ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This dataset provides information such as land use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every 5 years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
+The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). This satellite has a 30-meter resolution and provides information for the entire US. The Landsat satellite program is a NASA/USGS collaboration which provides the longest continuous space-based record of Earth's landscape <sup>[5]</sup>. Landsat's ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This provides information such as land-use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every 5 years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
 
 _National Hydrology Dataset Plus (NHDPlus)_
 
-[NHDPlus](http://www.horizon-systems.com/nhdplus/) is a geo-spatial hydrologic framework dataset associated with USGS, released in 2006. It is based off the NHD dataset, which provides information about the streams, rivers,canals, lakes and ponds throughout the US. The features used from this dataset were the catchment and drainage area characteristics at the stream site locations. Catchment areas are particularly important, as these are the areas of a river/stream in which water is collected and accumulates. This is vital information for predicting whether a flood is likely to occur or not. 
+[NHDPlus](http://www.horizon-systems.com/nhdplus/) is a geo-spatial hydrologic framework dataset associated with USGS, released in 2006. It is based off the NHD dataset, which provides information about the streams, rivers, canals, lakes and ponds throughout the US. The features used from this dataset were the catchment and drainage area characteristics at the stream site locations. Catchment areas are particularly important, as these are the areas of a river/stream in which water is collected and accumulates. This is vital information for predicting whether a flood is likely to occur or not. 
 
 
 _Flooded Locations And Simulated Hydrographs Project (FLASH)_
 
-[FLASH](https://blog.nssl.noaa.gov/flash/) is a database which contains information about flood events that occur within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset within this whitepaper relates to how long a river takes to reach its peak height after a major rain event occurs.
+[FLASH](https://blog.nssl.noaa.gov/flash/) is a database containing information about flood events within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset is the time taken for a river to reach its peak height after a major rain event.
 
 _NOAA_
 
@@ -104,23 +104,21 @@ _NOAA_
 
 Warning  |Meaning
 ---------|---------------
-Action   | Where mitigation action needs to be taken in order to prepare for possible hydrological activity. This required action differs from site to site.
-Flood    | A river height has been reached which poses a threat to lives,property and businesses.
-Moderate | Occurs when some inundation of roads or buildings. A flood warning should be released if this stage is thought to be reached.
-Major    | Occurs when there is extensive inundation of roads and buildings. Considerable evacuations of areas may occur at this stage
+Action   | Mitigation action needs to be taken in order to prepare for possible hydrological activity.
+Flood    | The river height poses a threat to lives, property and businesses.
+Moderate | Some inundation of roads or buildings. A flood warning should be released.
+Major    | Extensive inundation of roads and buildings. Considerable evacuations of areas may occur.
 
 
 ## Feature Engineering
 
-Given the data available, it was possible to split the information into three distinct datasets which provide useful test cases in flood prediction
+Given the data available, it was possible to split the information into three datasets 
 
-1. Ungauged basin: This set of features encompasses all information that is available at sites which do not contain stream gauge or future forecasting information. As such this is limited to land use, past rainfall and upstream information to make predictions.
+1. Ungauged basin: Information available at sites that do not contain stream gauge or future forecasting information. Data is limited to land use, past rainfall and upstream information.
 
+2. Gauged basin: All information contained within the ungauged basin dataset, as well as stream guage information. This includes previous river heights and lagged/aggregated flooding information.
 
-2. Gauged basins: The gauged basin subset of features includes all those features contained within the ungauged basin dataset as well as a significant amount of further information. Given that these locations contain stream gauges, previous river heights and lagged/aggregated flooding information about these locations can also be incorporated
-
-3. Perfect Forecasts: This dataset contains all information provided in the previous two cases with additional data surrounding the precipitation information around the time of the event. In a real world scenario, these precipitation values would come from weather forecasts.
-
+3. Perfect Forecasts: All information contained within the gauged basin dataset, as well as precipitation information around the time of the event.
 
 To obtain these features, the `feat` function was used. This enables previous information along with windowed features to be extracted. This function takes the following parameters as input:
 
@@ -128,14 +126,13 @@ To obtain these features, the `feat` function was used. This enables previous in
 -	`y` how many values to calculate (integer list)
 -	`z` column to apply the function to (symbol)
 -	`col` new column name (symbol)
--	`d` dictionary of where,groupby and what type of functional statement is used
+-	`d` dictionary of where, groupby and what type of functional statement is used
 -	`fnc` function that is applied to the grouped columns
 
 ```q
 q)colname:{enlist`$string[y],"_",string[x],"_",string[z]}
 q)m_avg:{(max;(mavg;y;x))}
 q)prv:{(xprev;y;x)}
-
 q)func:{[x;y;z;b]raze{[x;y;z;b]colname[x;y;z]!enlist b[x;z]}[z;y;;b]each raze x}
 q)feat:{[x;y;z;col;d;fnc] d[`w][x;d`wh;d`gr;$[1<count[z];raze;]func[y;col;;fnc]each z]}
 ```
@@ -158,7 +155,7 @@ q)prev_rain:feat[upstr_ppt;enlist 1_til 10;`ppt`upstr_ppt_1;`prev;sited:dict;prv
 q)all_height:feat[upstr_height;enlist 1_til 10;`height`upstr_height_1;`prev;dict;prv]
 ```
  
-The above features are applicable to both aspects of this project. However additional features that are problem specific were also added. 
+The above features are applicable to both aspects of this project. However, additional features that are problem specific were also added.
 
 _Monthly Model_
 
@@ -171,7 +168,7 @@ q)all_rain:feat[prev_rain;enlist 1_til 15;`ppt`upstr_ppt_1;`window;dict;m_avg]
 
 _Time to Peak Model_
 
-The hours before a flood event can provide important information on how quickly the stream gauge height is moving. This is incredibly useful to a model predicting how long it will take for the stream to reach its peak height. The information extracted in this case are the maximum moving averages over different bucket sizes for the previous two days before the event at a given stream location using the stream height data from USGS which is updated at 15 minute intervals.
+The hours before a flood event can provide important information on how quickly the stream gauge height is moving. This is incredibly useful to a model predicting how long it will take for the stream to reach its peak height. The information extracted at a given stream location, comprises the maximum moving averages over different bucket sizes for the two days before the event. This is found using stream height data from USGS, which is updated at 15 minute intervals.
 
 To make the times from the stream height dataset consistent with the FLASH dataset, the times were converted to be time zone agnostic.
 
@@ -189,7 +186,7 @@ q)peak_data:peak_data ij`site_no xkey time_zone
 q)change_zone:{$[y=`EDT;x-04:00;y=`CDT;x-05:00;x-06:00]}
 ```
 
-The features, along with information about what the projected rainfall over the days following the event were also extracted and joined back onto the dataset
+The features, along with information about the projected rainfall in the days following the event, were also extracted and joined onto the dataset
 
 ```q
 q)range:{(within;x;(,;(+;(-:;2);y);y))}
@@ -206,14 +203,13 @@ q)rain_pred:{feat[all_rain;enlist 1_til x;`ppt`upstr_ppt_1;`fut_window;dict[x;y]
 
 ## Target Data
 
-
 _Monthly Model_
 
-The target data used in this case was extracted from the NOAA dataset and more specifically the Flood level warning they provide.
+The target data used in this case was the Flood level warning, extracted from the NOAA dataset.
 
 The latitude and longitude of these provided thresholds do not exactly match the stream gauge locations. As such, the latitudes and longitudes of both the stream locations and NOAA threshold readings were joined using a k-dimensional tree (kd-tree) nearest neighbours algorithm. This algorithm is explained in Appendix 1 at the end of this paper. 
 
-The code used to achieve this nearest neighbours calculation is seen below with the algorithm implementation contained in full in the github repository associated with this white-paper. 
+The code used to achieve this nearest neighbours calculation is seen below with the algorithm implementation contained in full in the github repository associated with this paper. 
 
 ```q
 q)wlatl:raze each warning[`Latitude`Longitude],'gauges[`dec_lat_va`dec_long_v]
@@ -225,9 +221,9 @@ q)joins:([site_no:gauges`site_no]nn:nnwarn[;0];ndw:nnwarn[;1])
 q)floodlvl:(maxht ij joins)lj`nn xkey warning
 ```
 
-This dataset was then joined onto the stream gauge data, adding columns counting the amount of times a given stream gauge reached each warning level per month. 
+This dataset was then joined onto the stream gauge data, adding columns counting the number of times a given stream gauge reached each warning level per month. 
 
-For the sake of this project, we only want to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data is a binary label denoting whether the flood warning level was reached in a given month. Any site that claims to flood more than 28 days per month is omitted from the dataset as we only want to focus on events that don't occur extremely frequently and are more difficult to predict. Including these values could skew the results, making the model look like it was performing better than it actually was.
+For the sake of this project, we only want to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data is a binary label denoting whether the flood warning level was reached in a given month. Any site that claims to flood more than 28 days per month is omitted from the dataset as we only want to focus on events that occur infrequently and are more difficult to predict.
 
 ```q
 q)threshold:0!select first Action,first Flood,first Moderate,first Major,no_Action:
@@ -254,12 +250,11 @@ site_no  date    Action Moderate Major target ...
 ...
 ```
 
-
 _Time to Peak Model_
 
-The FLASH dataset was then used for the time to peak model, this highlights how long it will take a stream gauge location to reach its peak height after the rain event. 
+The FLASH dataset was then used for the time to peak model, which highlights how long it will take a stream gauge location to reach its peak height after the rain event. 
 
-Only dates and site numbers within the 6 states mentioned earlier and within the given 10 year period were included. The target data was calculated by subtracting the start-time (denoted by the start of a major rainfall event at the location) from the time that the peak height was found to occur. 
+Only dates within the 10 year period and site numbers within the 6 states mentioned were included. The target data was calculated by subtracting the start-time (denoted by the start of a major rainfall event at the location) from the time that the peak height was found to occur. 
 
 This was then converted into a binary classification problem by setting a threshold for a 'flash flood' at 3.5 hours after the major rainfall event. Any time above this was set to `0b` and less than this time was `1b`. This threshold was chosen after discussions with hydrologists, who found this to be a reasonable split in the dataset.
 
@@ -273,8 +268,7 @@ q)peak[`target]:peak[`delta_peak]<3.5
 
 _Monthly Model_
 
-After joining the stream height and precipitation tables from USGS and PRISM, the dataset is then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for differnt window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consists of the basin and landcover characteristcs, and the “threshold” dataset, based on month and site number.
-
+After joining the stream height and precipitation tables from USGS and PRISM, the dataset is then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for different window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consists of the basin and landcover characteristcs, and the “threshold” dataset, based on month and site number.
 
 Lagged features are then added to this dataset, which includes information like did a flood occur in the month prior, the year prior and also how often on average does the given location flood.
 
@@ -290,15 +284,13 @@ The daily rain and height, FLASH, and the `stream_char` were then joined based o
 
 ## Train and Test Split
 
-A dictionary was created for each of the three separate datasets to make predictions on:
+A dictionary was created for each of the three separate datasets:
 
 1. Ungauged
-
 2. Gauged
-
 3. Perfect Forecasts
 
-The dictionary contains the different feature columns that need to be included to make up the above datasets for each of the monthly (`M`) and time to peak (`P`) models.
+The dictionary contains the different feature columns required to make up the above datasets for each of the monthly (`M`) and time to peak (`P`) models.
 
 ```q
 q)fnd_col:{x where x in y}
@@ -308,7 +300,7 @@ q)perfect_forecastM:         fnd_col[perfect_forecast;cols cleaned_monthly]
 q)ungauged_noforecast_basinP:fnd_col[ungauged_noforecast_basin;cols cleaned_peak]
 q)gauged_basinP:             fnd_col[gauged_basin;cols cleaned_peak]
 q)perfect_forecastP:         fnd_col[perfect_forecast;cols cleaned_peak]
-
+q)
 q)ungauge: `M`P!(ungauged_noforecast_basinM;ungauged_noforecast_basinP)
 q)gauge:   `M`P!(ungauge[`M],gauged_basinM;ungauge[`P],gauged_basinP)
 q)show forecast:`M`P!(gauge[`M],perfect_forecastM;gauge[`P],perfect_forecastP)
@@ -316,20 +308,19 @@ M| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100`WsAreaS..
 P| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100`WsAreaS..
 ```
 
-These dictionaries were then used to extract the appropriate columns from each table to make them suitable to be inserted into machine learning models later. This is achieved by using the `split_dict` function which takes a table as input, aswell as `M` or `P` indicating which model is being used.
+These dictionaries were then used to extract the appropriate columns from each table, to make them suitable inputs to machine learning models. This is achieved by using the `split_dict` function which takes a table as input, as well as `M` or `P` indicating which model is being used.
 
 ```q
 q)split_dict:{(!). flip(
    (`ungauged;flip x[ungauge[y]]);
    (`gauged;flip x[gauge[y]]);
    (`forecast;flip x[forecast[y]]))}
-
 q)split_dict[all_monthly_data;`M]
 ungauged| 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 gauged  | 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 forecast| 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 ```
-The function returns a dictionary containing the matrix for each ungauged,gaged and perfect forecast datasets.
+The function returns a dictionary containing the matrix for each of the ungauged, gauged and perfect forecast datasets.
 
 ```q
 q)(split_dict[all_monthly_data;`M])`ungauged
@@ -350,7 +341,7 @@ q)(split_dict[all_monthly_data;`M])`ungauged
 
 _Monthly Model_
 
-When splitting the training and testing sets for this model it was deemed important that no time leakage occurred between the two sets(i.e. the training set contained information from 2009 to 2017 for example for sites that have the full 10 year period while the test set contains the remaining years). This ensures that the model is being tested in a way that is similar to a real-world deployment. A split was chosen so that 20 percent of the data for each site was in the test set.
+When splitting the data for this model, it was deemed important that no time leakage occurred between the training and test sets (e.g. the training set contained information from 2009 to 2017, while the test set contained the remaining years). This ensures that the model is being tested in a way that is similar to a real-world deployment. A split was chosen so that 20 percent of the data for each site was in the test set.
 
 ```q
 q)cutoff:update cutoff:min[date]+floor 0.8*max[date]-min[date]by site_no from cleaned_monthly
@@ -358,7 +349,6 @@ q)XtrainMi:select from cutoff where date<cutoff
 q)ytrainM:exec target from cutoff where date<cutoff
 q)XtestMi:select from cutoff where date>=cutoff
 q)ytestM:exec target from cutoff where date>=cutoff
-
 q)XtrainM:split_dict[XtrainMi;`M]
 q)XtestM:split_dict[XtestMi;`M]
 ```
@@ -389,8 +379,8 @@ q)peak_split:update split:`TEST from cleaned_peak where site_no in`$tts[1]
 	 	 	
 For both problems we tested a variety of models, but for the sake of this paper, models and results from an eXtreme Gradient Boost (XGBoost) and random forest classifier are presented. These models were chosen due to the models ability to deal with complex, imbalanced datasets. With this type of dataset, overfitting is a common feature seen. Overfitting occurs when the model fits too well to the training set, capturing a lot of the noise from the data. This leads to the model preforming successfully in training, while not succeeding as well on the testing or validation sets. Another problem that can occur due to imbalanced datasets,is that a naive model can be produced, always predicting that a flood will not occur. This leads to high acccuracy but not meaningful results. As seen below in the results section, XGBoosts and random forests were able to deal much better with these issues by tuning their respective hyper-parameters. A more detailed description of these models can be found in Appendix 2.
 
+To visualise the results, a precision-recall curve was used, illustrating the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [7]</sup>. This is a good metric to measure the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
 
-To visualise the results, a precision-recall curve was used, this illustrates the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [8]</sup> .This is a good metric of measuring the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
 
 A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returns the prediction at each location in time for the models used, this is used later in this paper to create a map of flooding locations.
 
@@ -401,7 +391,7 @@ The inputs to the `pr_curve` function are:
 -	`dictionary of models that are being used`
 
 
-The dictionary of models, consisted of XGBoost and a random forest model with varying hyper-parameters such as number of estimators, max depth and class weights for each model. 
+The dictionary of models, consisted of XGBoost and a random forest model, with varying hyper-parameters for each model. 
 
 ```q
 q)build_model:{[Xtrain;ytrain;dict]
@@ -415,7 +405,7 @@ q)build_model:{[Xtrain;ytrain;dict]
 
 ## Results
 
-The results below are separated based on the three distinct datasets discussed throughout this paper.
+The results below are separated based on the three datasets.
 
 ### Model testing
 
@@ -597,7 +587,7 @@ avg/total| 0.7266119 0.71811  0.7219266 542
 
 ### Feature Significance
 
-There is also a lot to be learned from determining what features contribute to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enables the top x most significant features to be extracted from each dataset. 
+There is also a lot to be learned from determining which features contribute to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data, to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enables the top x most significant features to be extracted from each dataset. 
 
 _Monthly Model_
 
@@ -655,7 +645,7 @@ q)string .ml.fresh.significantfeatures[flip forecast[`P]!cleaned_peak[forecast[`
 
 _Monthly Model_
 
-Using these results, it was also possible to build a map that highlights per month where areas are at risk of flooding. This could be used for example by staff in governmental bodies to make decisions regarding area funding in the coming weeks.
+Using these results, it was also possible to build a map that highlights per month which areas are at risk of flooding. This could be used by governmental bodies to prioritize funding in the coming weeks.
 
 ```q
 q)preds:last pltP1`model
@@ -699,17 +689,17 @@ q)plt[`:show][];
 
 ## Conclusion
 
-From the above results we can predict with relatively high accuracy whether an area is likely to flood or not in the next month and also produce a model to predict if a stream will reach its peak height within 3.5 hours.
+From the above results we can predict, with relatively high accuracy, whether an area is likely to flood or not in the next month. We can also produce a model to predict if a stream will reach its peak height within 3.5 hours.
 
-For the monthly models, the future weather predictions played an important role in predicting whether an area will flood or not, with the accuracy and other metrics such as recall and precision increasing as the weather predictions and gauged information columns are included into the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
+For the monthly models, the future weather predictions played an important role in predicting whether an area will flood or not. Accuracy, recall and precision all increasing as the weather predictions and gauged information columns are added to the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
 
 The opposite was true for the time-peak values, as previous rain and stream gauge information along with the basin characteristics were seen to be the most significant features when predicting these values. Including additional information about the future predicted rainfall decreased the accuracy of the results, with the best results being obtained from the model with only past rainfall and basin and soil characteristics being fed into the model.
 
-Both of these results would likely be physically expected. In the case of the monthly prediction information regarding future forecast will be pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value it would be unlikely that information about rainfall in the next number of days will add to the predictive power of a model.
+Both of these results would likely be physically expected. In the case of the monthly prediction, information regarding future forecast will be pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value, it would be unlikely that information about rainfall in the next number of days will add to the predictive power of a model.
 
-Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height is an important piece of information to extract from the model so that organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
+Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height, is an important piece of information to extract from the model. Organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
 
-The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model meant that weighting the classes was an important feature to experiment with. This was particular important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
+The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model, meant that weighting the classes was an important feature to experiment with. This was particularly important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
 
 ## Author
 Diane O'Donoghue joined First Derivatives in June 2018 as a Data Scientist in the Capital Markets Training Program and is currently on the machine learning team based in London
@@ -742,9 +732,9 @@ I gratefully acknowledge the Disaster Prevention team at FDL- Piotr Bilinski, Ch
 
 Kd-tree
 
-A kd-tree is used in k-dimensional space to create a tree structure. In the tree each node represents a hyperplane which divides the plane into two seperate parts (the left and the right branch) based on a given direction. This direction is associated with a certain axis dimension, with the hyperplane perpendicular to the axis dimension. What is to the left or right of the hyperplane is determined by whether each data point being added to the tree is greater or less than the node value at the splitting dimension. For example, if the splitting dimension of the node is `x`, all data points with a smaller `x` value than the value at the splitting dimension node will be to the left of the hyperplane, while all points equal to or greater than will be in the right subplane.
+A kd-tree is used in k-dimensional space to create a tree structure. In the tree each node represents a hyperplane which divides the space into two seperate parts (the left and the right branch) based on a given direction. This direction is associated with a certain axis dimension, with the hyperplane perpendicular to the axis dimension. What is to the left or right of the hyperplane is determined by whether each data point being added to the tree is greater or less than the node value at the splitting dimension. For example, if the splitting dimension of the node is `x`, all data points with a smaller `x` value than the value at the splitting dimension node will be to the left of the hyperplane, while all points equal to or greater than will be in the right subplane.
 
-Nearest neighbour search is applied to the tree in order to efficiently find a datapoints nearest neighbour by potentially eleminating a large portion of the dataset using the kd-trees properties. This is done by starting at the root and moving down the tree recursively, calculating the distance between each node and the datapoint in question, allowing branches of the dataset to be eliminated based on if this node-point distance is less than or greater than the curent nearest neighbour distance. This enables rapid look ups for each point in a dataset.
+The tree is used to efficiently find a datapoint's nearest neighbour, by potentially eleminating a large portion of the dataset using the kd-trees properties. This is done by starting at the root and moving down the tree recursively, calculating the distance between each node and the datapoint in question, allowing branches of the dataset to be eliminated based on whether this node-point distance is less than or greater than the curent nearest neighbour distance. This enables rapid look ups for each point in a dataset.
 
 
 ![Figure_10](imgs/KDtree.png)<br/>
@@ -767,4 +757,3 @@ This is also an ensemble method, where classifiers are trained independently usi
 
 ![Figure 11](imgs/rand-forest.png)<br/>
 <small>_Visual Representation of a random forest <sup>[8]<sup>_</small> 
-
