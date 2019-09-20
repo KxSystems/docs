@@ -43,7 +43,6 @@ Kafka interface functionality
   .kfk.Version                 Librdkafka version
   .kfk.VersionSym              Human readable Librdkafka version
   .kfk.ThreadCount             Number of threads being used by librdkafka
-  .kfk.PartitionAvailable      Check if partition is available to a topic
 
   // topic functionality
   .kfk.Topic                   Create a topic on which messages can be sent
@@ -195,7 +194,7 @@ returns a null on successful application of function.
 ```q
 q)show client
 0i
-q).kfk.SetLoggerLevel[0i;7]
+q).kfk.SetLoggerLevel[client;7]
 ```
 
 
@@ -230,7 +229,7 @@ Where
 
 -   `x` is the integer value associated with the consumer ID
 -   `y` is a symbol denoting the topic
--   `z` is an int list of partitions or dictionary of partitions(int) and offsets(long)
+-   `z` is a list of int/short or long partitions or a dictionary of partitions(int) and offsets(long)
 
 returns a table containing the current offset and partition for the topic of interest.
 
@@ -244,12 +243,19 @@ q).kfk.PositionOffsets[client;TOPIC;seen]
 topic partition offset metadata
 -------------------------------
 test  0         26482  ""
-// list input
+// int list input
 q).kfk.PositionOffsets[client;TOPIC;0 1i]
 topic partition offset metadata
 -------------------------------
 test  0         26482  ""
 test  1         -1001  ""
+// long list input
+q).kfk.PositionOffsets[client;TOPIC;0 1 2]
+topic partition offset metadata
+-------------------------------
+test  0         26482  ""
+test  1         -1001  ""
+test  2         -1001  ""
 ```
 
 
@@ -263,7 +269,7 @@ Where
 
 -   `x` is the integer value associated with the consumer ID
 -   `y` is a symbol denoting the topic
--   `z` is an int list of partitions or dictionary of partitions(int) and offsets(long)
+-   `z` is a list of int/short or long partitions or a dictionary of partitions(int) and offsets(long)
 
 returns a table containing the offset for a particular partition for a topic.
 
@@ -279,6 +285,12 @@ topic partition offset metadata
 test  0         26481  ""
 // integer list input
 q).kfk.CommittedOffsets[client;TOPIC;0 1i]
+topic partition offset metadata
+-------------------------------
+test  0         26481  ""
+test  1         -1001  ""
+// long list input
+q).kfk.CommittedOffsets[client;TOPIC;0 1]
 topic partition offset metadata
 -------------------------------
 test  0         26481  ""
