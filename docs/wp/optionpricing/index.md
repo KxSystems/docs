@@ -1,6 +1,6 @@
 ---
 title: Sobol Option Pricing in kdb+/q
-description: In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods in the process of pricing Asian and European call options. In doing so, we consider the use of two discretization schemes - standard discretization and Brownian bridge construction. Results produced by the different methods will be compared to the Black-Scholes price for each option type using Global Sensitivity Analysis (SA). Note that the methods demonstrated below follow the work presented in the paper S. Kucherenko et. al 2007.
+description: In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods in the process of pricing European and Asian options. In doing so, we consider the use of two discretization schemes - standard discretization and Brownian bridge construction. Results produced by the different methods are compared with the deterministic Black-Scholes price for each option type, using Global Sensitivity Analysis (SA). Note that the methods demonstrated below follow the work presented in the paper S. Kucherenko et. al 2007.
 author: Deanna Morgan
 date: October 2019
 keywords: kdb+, q, C++, sobol, monte carlo, option pricing, asian, european
@@ -8,11 +8,11 @@ keywords: kdb+, q, C++, sobol, monte carlo, option pricing, asian, european
 
 # Comparing Option Pricing Methods in kdb+/q
 
-In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods in the process of pricing Asian and European call options. In doing so, we consider the use of two discretization schemes - standard discretization and Brownian bridge construction. Results produced by the different methods will be compared to the Black-Scholes price for each option type using Global Sensitivity Analysis (SA). Note that the methods demonstrated below follow the work presented in the paper S. Kucherenko et. al 2007 <sup>[1]</sup>.
+In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods in the process of pricing European and Asian options. In doing so, we consider the use of two discretization schemes - standard discretization and Brownian bridge construction. Results produced by the different methods are compared with the deterministic Black-Scholes price for each option type, using Global Sensitivity Analysis (SA). Note that the methods demonstrated below follow the work presented in the paper S. Kucherenko et. al 2007. <sup>[1]</sup>.
 
 ## Black-Scholes 
 
-A common model used in finance to calculate the price of call options is Black-Scholes, where the formula for each market is derived from the Black-Scholes equation <sup>[2]</sup>. In this paper, we look specifically at the Black-Scholes models for Asian and European options. The models differ from each other due to the fact that the payoff for an Asian option is given by the average underlying price over a pre-defined time period, whereas for European options the payoff is calculated based on the underlying price at exercise <sup>[3]</sup>. The function for each market produces a closed form solution with a deterministic result.
+The most common model used to calculate the price of options is Black-Scholes, where the formula for each market is derived from the Black-Scholes equation <sup>[2]</sup>. In this paper, we look specifically at the Black-Scholes models for European and Asian call options. The standard Black-Scholes model for European options assumes a payoff based on the underlying price at exercise. The modified model for Asian options assumes a payoff based on the average underlying price over a pre-defined time period <sup>[3]</sup>. In each case, the Black-Scholes model produces a closed-form solution with a deterministic result.
 
 For European call options, the price of the corresponding option at time $t$, $P(S_{t},t)$, is given by:
 
@@ -48,34 +48,17 @@ Where $n$ is the number of timesteps.
 
 ## Monte Carlo and Quasi-Monte Carlo Simulations
 
-The use of MC simulations in the financial industry stems from the need to evaluate complex financial instruments and the lack of analytical solutions available to do so. MC is used to mimic the uncertainty associated with the underlying price of an instrument and subsequently generate a value based on the possible underlying input values. One example of where MC is used in finance is in evaluating an option on equity. For each underlying share, a MC simulation is used to create thousands of random price paths, with a given option price for each path <sup>[5]</sup>.
+The use of MC simulations in the financial industry stems from the need to evaluate complex financial instruments and the lack of analytical solutions available to do so. MC is used to mimic the uncertainty associated with the underlying price of an instrument and subsequently generate a value based on the possible underlying input values. One example of where MC is used in finance, is in evaluating an option on an equity. For each underlying share, a MC simulation is used to create thousands of random price paths, with an associated payoff and option price for each path <sup>[5]</sup>.
 
-These models are based on pseudo-random numbers and despite being commonly used, tend to have slow convergence, with a rate of $O(1/\sqrt{N})$ where N is the number of sampled points. To improve upon these models, QMC methods have been developed which use low-discrepancy sequences (LDS) to produce a rate of convergence ~ $O(1/N)$. LDS are deterministic uniformly distributed sequences, an example of which is the Sobol sequence used throughout this work <sup>[1]</sub>.
+These models are based on pseudo-random numbers and despite being commonly used, tend to have slow convergence, with a rate of $O(1/\sqrt{N})$ where N is the number of sampled points. To improve upon these models, QMC methods have been developed which use low-discrepancy sequences (LDS) to produce a rate of convergence ~ $O(1/N)$. LDS are deterministic uniformly distributed sequences, an example of which is the Sobol sequence used throughout this work <sup>[1]</sup>.
 
 ## Wiener Path
 
-A large portion of financial problems can be solved by calculating the relevant Weiner path integral. Such solutions are formalized by using either standard discretization or Brownian bridge construction. In the standard approximation, this Weiner path can be found by taking the cumulative sum across the random values converted to a gaussian distribution.
+The starting point for asset price simulation, is the construction of a Wiener path (or Brownian motion). Such paths are built from a set of independent Gaussian variates, using either standard discretization or Brownian bridge construction.
 
-To construct a Brownian bridge, the order of steps in the Weiner path have to be determined. The overall idea is to create a path with $n$ timesteps (from $0$ to $n-1$) where we want to calculate the last step first, followed by the mid-step and then fill in the rest.
+In the standard approximation, the Weiner path is found by taking the cumulative sum of the Gaussian variates.
 
-The process is as follows:
-
-1. Start by calculating the first and last steps, where we assume that the first index has a value equal to 0.
-2. Calculate the mid-step, noting that for floating point values we round down.
-3. Then follow an iterative bisecting process (see note below):
-
-    1. Start with the current mid-point.
-    2. Move to the right, to the next index which is already in the path.
-    3. Find the midpoint between that index and the index to its right.
-    4. Move to the new midpoint.
-
-4. This process of moving to the right and finding the midpoint between indices is then repeated until there are no further indices left to add to the path.
-
-
-!!!Note
-	1. The sequence acts as a loop, such that moving to point n is equivalent to index 0.
-	2. It is only possible to move between steps which have already been added to the final path.
-
+When constructing a Brownian bridge, the last step of the Wiener path is calculated first, followed by the mid-step, and then bisecting to fill in the gaps until all steps are determined.
 
 An example of building up a Brownian bridge is shown in the diagram below, where we have a total of 14 timesteps (from 1 to 14) and the 0th index, assumed to have a 0 value.
 
@@ -104,31 +87,31 @@ The prices produced are then averaged to find a final predicted price.
 
 ## Implementation
 
-In the following sections we detail the comparison of the above mentioned methods of option pricing. The Black-Scholes price for each market was compared to an average price generated using the following combinations of simulation and discretization methods:
+In the following sections, we compare the methods of option pricing mentioned above. The Black-Scholes price for each market is compared to an average price generated using the following combinations of simulation and discretization methods:
 
  * Pseudo-random number generation (MC) with standard discretization.
  * Sobol sequences (QMC) with standard discretization.
- * Sobol sequences (QMC) with Brownian Bridge construction.
+ * Sobol sequences (QMC) with Brownian bridge construction.
 
-The Black-Scholes function for each market produces a closed form solution with a deterministic result, while the MC/QMC functions perform a number of random experiments and return an average price, based on the option type and the strike price.
+The Black-Scholes function for each market produces a closed-form solution with a deterministic result, while the MC/QMC functions perform a number of random experiments and return an average price, based on the option type and the strike price.
 
-Once both the Black-Scholes and MC/QMC prices had been calculated for each market, the RMSE was calculated between the two. This is demonstrated in the final example below where the process was repeated for an increasing number of paths, with resulting errors compared.
+Once both the Black-Scholes and MC/QMC prices have been calculated for each market, the root mean square error (RMSE) is calculated between the two. This is demonstrated in the final example below, where the process is repeated for an increasing number of paths, with resulting errors compared.
 
 The technical dependencies required for the below work are as follows:
 
 - [Option Pricing kdb+/q library](https://github.com/dmorgankx/sobol/)
 - [embedPy](https://github.com/KxSystems/embedPy)
-- [Sobol C++ library](https://www.broda.co.uk/software.html) - relevant code contained within the Option Pricing kdb+/q library.
-- matplotlib
+- [Sobol C++ library](https://www.broda.co.uk/software.html) (relevant code contained within the Option Pricing kdb+/q library)
+- [matplotlib](https://matplotlib.org/)
 
 !!! note
-	For simplicity, utility functions were omitted from the code snippets below. These can be found within the Option Pricing library linked above.
+	For simplicity, utility functions are omitted from the code snippets below. These can be found within the Option Pricing library linked above.
 
 ### Load scripts
 
-As mentioned previously, the implementations of option pricing methods outlined below were based on original C++ scripts used in S. Kucherenko et. al 2007 <sup>[1]</sup>. Given the optimised performance exhibited by a number of elements in the original code, q wrappers were written for the C++ pseudo-random and sobol sequence number generators, contained within `rand.q`, along with the cumulative and inverse cumulative normal distribution functions in `norm.q`.
+As mentioned previously, the implementations of option pricing methods outlined below are based on original C++ scripts used in S. Kucherenko et. al 2007 <sup>[1]</sup>. Wrappers for the C++ pseudo-random and sobol sequence number generators are contained within `rand.q`, along with the cumulative and inverse cumulative normal distribution functions in `norm.q`.
 
-To run the below examples, q scripts were loaded in which include the C++ wrappers and graphics functions used throughout.
+To run the below examples, q scripts are loaded including the C++ wrappers and graphics functions used throughout.
 
 ```q
 \l code/q/rand.q
@@ -138,7 +121,7 @@ To run the below examples, q scripts were loaded in which include the C++ wrappe
 
 ### Black-Scholes Option Pricing
 
-Using the Black-Scholes formulae outlined above, the following functions were written in q for each market of interest.
+The following functions provide q implementations of the Black-Scholes formulae for each market of interest.
 
 European:
 ```q
@@ -172,7 +155,7 @@ Asian Black Scholes Price:    5.556009
 
 #### 1. Random number generation
 
-The first stage in predicting an option price is to generate a set of random numbers using either MC or QMC methods. In the below example we generated 512 pseudo-random and Sobol sequence numbers, with results plotted for comparison.
+The first stage in predicting an option price is to generate a set of random numbers using either MC or QMC methods. In the below example we generate 512 pseudo-random and Sobol sequence numbers, with results plotted for comparison.
 
 ```q
 q)rdm:(2;nsteps)#mtrand3 2*nsteps
@@ -181,19 +164,19 @@ q)subplot[(rdm;sob);("Random";"Sobol");2;2#`scatter]
 ```
 <img src="img/numgen.png">
 
-It is clear that the pseudo-random numbers are not evenly distributed, with a points clustering together in some sections, while leaving large portions of white space in others.
+It is clear that the pseudo-random numbers are not evenly distributed, with points clustering together in some sections, while leaving large portions of white space in others.
 
-In contrast, the Sobol sequence plot exhibits a much more even distribution where points are better spaced out, with few points clumping together.
+In contrast, the Sobol sequence plot exhibits a much more even distribution, with few points clumping together.
 
 #### 2. Convert to a Gaussian distribution
 
-The generated sequences were then converted from a uniform distribution to a gaussian distribution. Following this conversion, around 68% of the values lie within one standard deviation, while two standard deviations account for around 95% and three account for 99.7%.
+The generated sequences are converted from a uniform distribution to a Gaussian distribution. Following this conversion, around 68% of the values lie within one standard deviation, while two standard deviations account for around 95% and three account for 99.7%.
 
 <center><img src="img/gaussian.png" style="height:400px"></center>
 
 <center><u><b>Gaussian Distribution</b></u> <sup>[7]</sup></center>
 
-In the example below we converted the uniform generated Sobol sequence to a normal distribution using the inverse cumulative normal function, `invcnorm`.
+In the example below we convert the uniform generated Sobol sequence to a Gaussian distribution, using the inverse cumulative normal function, `invcnorm`.
 
 ```q
 q)zsob:invcnorm each sob
@@ -201,7 +184,7 @@ q)subplot[(sob;zsob;first zsob);("Sobol Uniform";"Sobol Gaussian";"Sobol Gaussia
 ```
 <img src="img/sobgaussdist.png" style="height:300px">
 
-As expected the points exhibited a Gaussian curve when plotted in one dimension.
+As expected the points exhibit a Gaussian "bell curve" when plotted in one dimension.
 
 #### 3. Convert into a Wiener path random walk
 
@@ -253,7 +236,7 @@ X  X  X  X  X  X  X     X
 X  X  X  X  X  X  X  X  X 
 ```
 
-When recording the order of steps in the path, we also took note of the left and right weights and indices, and the corresponding sigma value for each step in the sequence. This is shown for 512 timesteps and 1 unit of time, with the sigma value for each index in the Brownian Bridge subsequently plotted.
+When recording the order of steps in the path, we take note of the left and right weights and indices, and the corresponding sigma value for each step in the sequence. This is shown for 512 timesteps and 1 unit of time, with the sigma value for each index in the Brownian bridge subsequently plotted.
 
 ```q
 q)dt:1
@@ -273,7 +256,7 @@ bidx ridx lidx lwt rwt sigma
 ```
 <img src="img/sigma.png">
 
-The next step in generating an option price is to calculate the Wiener path random walk. In the cell below we found the Wiener path for a sobol sequence with 512 timesteps using the Brownian bridge constructed in the previous cell. Note that the function `wpath` takes the following arguments:
+Once the Brownian bridge is intialized, it can be used to transform Gaussian variates into a Wiener path random walk. In the cell below, a Wiener path with 512 timesteps is constructed using a Sobol sequence (of length 512) and the Brownian bridge constructed previously. Note that the function `wpath` takes the following arguments:
 
 - `n` - Number of timesteps.
 - `d` - Dictionary indicating whether to use standard discretization or Brownian bridge construction, and whether to use Sobol sequences (`1b`) or pseudo-random numbers (`0b`). If using a Brownian bridge, the initial Brownian bridge must be passed in, if not use `(::)`.
@@ -285,13 +268,13 @@ q)wpath[nsteps;`bb`sobol!(bbex;1b)
 <img src="img/wiener.png">
 
 #### 4. Convert into asset price path
-At this point it was possible to convert the Wiener path to an asset price path using the function below.
+At this point, the Wiener path is converted into an asset price path using the function below.
 
 ```q
 q)spath:{[n;d;pd]pd[`s]*exp(wpath[n;d]*pd[`v]*sqrt dt)+(1+til n)*dr:(pd[`r]-pd[`q]+.5*v*v:pd`v)*dt:pd[`t]%n}
 ```
 
-Here we calculated six different asset price paths and overplot them for comparison. 512 timesteps were again used with Sobol sequences and Brownian bridge approximation.
+Here we calculate six different asset price paths and overplot them for comparison. 512 timesteps are again used, with Sobol sequences and Brownian bridge approximation.
 
 ```q
 q)plt[`:title]"Asset Price Path";
@@ -301,7 +284,7 @@ q)plt[`:show][];
 <img src="img/asset.png">
 
 #### 5. Convert into option price
-Lastly, to find a single option price, an average was taken across the asset price path for the MC/QMC method. This allowed for comparison between the predicted price and the Black-Scholes equivalent.
+Lastly, to find a single option price, an average is taken across the asset price path for the MC/QMC method. This allows for comparison between the predicted price and the Black-Scholes equivalent.
 
 European:
 
@@ -314,7 +297,7 @@ Asian:
 q)mcAsiaCall:{[m;n;d;pd]exp[neg pd[`r]*pd`t]*avg 0|(last each prds each xexp[;1%n]spath[;d;pd]each m#n)-pd`k}
 ```
 
-Here we ran the functions for 512 timesteps, 256 paths and 1 trial. Note that the index in `sobolrand` must be reset before each trial. This can be done using `sobolrand 0`.
+Here we run the functions for 512 timesteps, 256 paths and 1 trial. Note that the index in `sobolrand` must be reset before each trial. This can be done using `sobolrand 0`.
 
 ```q
 q)npaths:256
@@ -350,7 +333,7 @@ In this section we deploy all of the aforementioned techniques and compare the r
 
 ### Parameters
 
-As shown previously, a dictionary of parameters was created.
+As shown previously, a dictionary of parameters is created.
 
 ```q
 q)show pd:`s`k`v`r`q`t!100 100 .2 .05 0 1
@@ -362,7 +345,7 @@ q| 0
 t| 1
 ```
 
-Additional parameters we also initialized for the number of paths (experiments), steps and trials.
+Additional parameters are also initialized for the number of paths (experiments), steps and trials.
 
 ```q
 q)l:20                        / Number of trials
@@ -371,7 +354,7 @@ q)n:1024                      / Number of steps
 8 16 32 64 128 256 512 1024
 ```
 
-Given that the initial Brownian bridge would be the same throughout, it was also initialized and passed in as an argument.
+Given that the initial Brownian bridge is the same throughout, it is also initialized and passed in as an argument.
 
 ```q
 q)show 10#last value bb:bbridge[n;1]
@@ -412,7 +395,7 @@ q)run:{[mkt;bs;bb;pd;l;n;m]
 ```
 
 ### Compare results
-At this stage it was possible to plot the results we obtained for the option prices, RMSE and log RMSE values.
+At this stage it is possible to plot the results obtained for the option prices, RMSE and log RMSE values.
 
 ```q
 q)r:runall[bb;pd;l;n;m]
@@ -442,7 +425,7 @@ euro 1024   0.03198992    0.2377595      0.5633116    10.4798      10.41221     
 
 #### Option Prices
 
-The plot below shows the option prices produced for each number of paths, compared to the Black-Scholes equivalent (black dashed-line). It is clear that the Sobol-Brownian bridge method converged the fastest.
+The plot below shows the option prices produced for each number of paths, compared to the Black-Scholes equivalent (black dashed-line). It is clear that the Sobol-Brownian bridge method converges the fastest.
 
 ```q
 q)prxerrplot[r;`prx]
@@ -460,7 +443,7 @@ q)prxerrplot[r;`rmse]
 
 #### Log RMSE
 
-Lastly, we also look at the log RMSE plot as another means of comparison between the methods. Similarly, we see that the Sobol-Brownian bridge method (blue) exhibited superior performance.
+Lastly, we can look at the log RMSE plot as another means of comparison between the methods. Similarly, we see that the Sobol-Brownian bridge method (blue) exhibits superior performance.
 
 ```q 
 q)prxerrplot[r;`logrsme]
@@ -471,7 +454,7 @@ q)prxerrplot[r;`logrsme]
 
 In this paper we demonstrated that it is possible to calculate option prices using both Black-Scholes and Monte Carlo/Quasi-Monte Carlo methods in kdb+/q. The Monte Carlo/Quasi-Monte Carlo methods used deployed different implementations of both Wiener path approximation and random number generation.
 
-Looking at the results produced, it is clear that both the option price produced and the resulting RMSE/log RMSE converged fastest when compared to the Black-Scholes price for the Quasi-Monte Carlo approach, with Sobol sequence number generation and Brownian bridge construction.
+Looking at the results produced, it is clear that both the option price produced and the resulting RMSE/log RMSE converged fastest when compared with the Black-Scholes price for the Quasi-Monte Carlo approach, with Sobol sequence number generation and Brownian bridge construction.
 
 Additionally, by plotting results we have shown that the kdb+/q implementation replicates the original results produced in C++, presented in the paper S. Kucherenko et. al 2007.
 
