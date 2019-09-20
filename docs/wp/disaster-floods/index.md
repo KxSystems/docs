@@ -22,7 +22,7 @@ To predict the flood susceptibility of a stream area, the project was separated 
 
 _Monthly Model_
 
-Predicting, per month, if a stream height will reach a flood threshold or not. These flood thresholds are set by the National Oceanic and Atmospheric Administration (NOAA) and are location specific. Knowing which areas are susceptible to flooding, will allow locations to better prepare for a flood event. 
+Predicting, per month, if a stream height will reach a flood threshold or not. These flood thresholds were set by the National Oceanic and Atmospheric Administration (NOAA) and were location specific. Knowing which areas are susceptible to flooding, allow locations to better prepare for a flood event. 
 
 _Time to Peak Model_
 
@@ -61,9 +61,9 @@ ML-Toolkit        | 0.3.2
 
 ## The Data
 
-This project focuses on 6 states within the US, over a period of 10 years. Data is taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites have continuous historical data over the period, but all the available data for each site was used. 
+This project focuses on 6 states within the US, over a period of 10 years. Data was taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites had continuous historical data over the period, but all the available data for each site was used. 
 
-The six states are:
+The six states were:
 
 -	`New Jersey`
 -	`Nebraska`
@@ -72,13 +72,13 @@ The six states are:
 -	`South Dakota`
 -	`Virginia`
 
-A primary reason for choosing these states, is that each exhibits similar climate and landscape. Focusing on similar geographies helps to ensure that the models produced are precise.
+A primary reason for choosing these states, was that each exhibits similar climate and landscape. Focusing on similar geographies helped to ensure that the models produced were precise.
 
 Required datasets and providers:
 
 _USGS_
 
-USGS provided their Surface Water [dataset](https://waterdata.usgs.gov/nwis/sw). This consists of the height of a stream as measured by gauges for over 11,000 sites in the US. The data is updated every 15 minutes, with some locations having historical data for over 50 years. As previously mentioned, the data chosen in this case is a subset of these sites based on geographical location.
+USGS provided their Surface Water [dataset](https://waterdata.usgs.gov/nwis/sw). This consisted of the height of a stream as measured by gauges for over 11,000 sites in the US. The data was updated every 15 minutes, with some locations having historical data for over 50 years. As previously mentioned, the data chosen in this case was a subset of these sites based on geographical location.
 
 
 _PRISM_
@@ -96,11 +96,11 @@ _National Hydrology Dataset Plus (NHDPlus)_
 
 _Flooded Locations And Simulated Hydrographs Project (FLASH)_
 
-[FLASH](https://blog.nssl.noaa.gov/flash/) is a database containing information about flood events within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset is the time taken for a river to reach its peak height after a major rain event.
+[FLASH](https://blog.nssl.noaa.gov/flash/) is a database containing information about flood events within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset was the time taken for a river to reach its peak height after a major rain event.
 
 _NOAA_
 
-[NOAA](https://www.noaa.gov/) is a US governmental agency for monitoring and preserving the climate and environment. This provides flood level thresholds for locations across the US. These thresholds consist of four warning stages and the river height for a given location that causes them to reach these levels. The four warning stages are
+[NOAA](https://www.noaa.gov/) is a US governmental agency for monitoring and preserving the climate and environment. This dataset provided flood level thresholds for locations across the US. These thresholds consisted of four warning stages and the river height for a given location that causes them to reach these levels. The four warning stages were
 
 Warning  |Meaning
 ---------|---------------
@@ -114,15 +114,15 @@ Major    | Extensive inundation of roads and buildings. Considerable evacuations
 
 Given the data available, it was possible to split the information into three datasets 
 
-1. Ungauged basin: Information available at sites that do not contain stream gauge or future forecasting information. Data is limited to land use, past rainfall and upstream information.
+1. Ungauged basin: Information available at sites that do not contain stream gauge or future forecasting information. Data was limited to land use, past rainfall and upstream information.
 
-2. Gauged basin: All information contained within the ungauged basin dataset, as well as stream guage information. This includes previous river heights and lagged/aggregated flooding information.
+2. Gauged basin: All information contained within the ungauged basin dataset, as well as stream gauge information. This included previous river heights and lagged/aggregated flooding information.
 
 3. Perfect Forecasts: All information contained within the gauged basin dataset, as well as precipitation information around the time of the event.
 
-To obtain these features, the `feat` function was used. This enables previous information along with windowed features to be extracted. This function takes the following parameters as input:
+To obtain these features, the `feat` function was used. This enabled previous information along with windowed features to be extracted. This function takes the following parameters as input:
 
--	`x` table that's being updated
+-	`x` table that is being updated
 -	`y` how many values to calculate (integer list)
 -	`z` column to apply the function to (symbol)
 -	`col` new column name (symbol)
@@ -137,7 +137,7 @@ q)func:{[x;y;z;b]raze{[x;y;z;b]colname[x;y;z]!enlist b[x;z]}[z;y;;b]each raze x}
 q)feat:{[x;y;z;col;d;fnc] d[`w][x;d`wh;d`gr;$[1<count[z];raze;]func[y;col;;fnc]each z]}
 ```
 
-To obtain the upstream values the `feat` function was used. The id number of each stream site consists of over 8 digits. The first two digits are the grouping number of the river basin catchment. While the remaining digits are in ascending order based on the location of the gauge along the stream.
+To obtain the upstream values the `feat` function was used. The id number of each stream site consisted of over 8 digits. The first two digits were the grouping number of the river basin catchment. While the remaining digits were in ascending order based on the location of the gauge along the stream.
 
 ```q
 q)catch_site:((';#);2;($:;`site_no))
@@ -155,11 +155,11 @@ q)prev_rain:feat[upstr_ppt;enlist 1_til 10;`ppt`upstr_ppt_1;`prev;sited:dict;prv
 q)all_height:feat[upstr_height;enlist 1_til 10;`height`upstr_height_1;`prev;dict;prv]
 ```
  
-The above features are applicable to both aspects of this project. However, additional features that are problem specific were also added.
+The above features were applicable to both aspects of this project. However, additional features that were problem specific were also added.
 
 _Monthly Model_
 
-When forecasts are provided for each model, it is important to have information on the average historical rainfall over different time windows. This feature that was added to the dataset using the functions displayed below.
+When forecasts were provided for each model, it was important to have information on the average historical rainfall over different time windows. This feature was added to the dataset using the functions displayed below.
 
 ```q
 q)dict[`gr]:(`date`site_no)!(($;enlist`month;`date);`site_no)
@@ -168,7 +168,7 @@ q)all_rain:feat[prev_rain;enlist 1_til 15;`ppt`upstr_ppt_1;`window;dict;m_avg]
 
 _Time to Peak Model_
 
-The hours before a flood event can provide important information on how quickly the stream gauge height is moving. This is incredibly useful to a model predicting how long it will take for the stream to reach its peak height. The information extracted at a given stream location, comprises the maximum moving averages over different bucket sizes for the two days before the event. This is found using stream height data from USGS, which is updated at 15 minute intervals.
+The hours before a flood event can provide important information on how quickly the stream gauge height is moving. This is incredibly useful to a model predicting how long it will take for the stream to reach its peak height. The information extracted at a given stream location, comprised of the maximum moving averages over different bucket sizes for the two days before the event. This was found using stream height data from USGS, which was updated at 15 minute intervals.
 
 To make the times from the stream height dataset consistent with the FLASH dataset, the times were converted to be time zone agnostic.
 
@@ -207,7 +207,7 @@ _Monthly Model_
 
 The target data used in this case was the Flood level warning, extracted from the NOAA dataset.
 
-The latitude and longitude of these provided thresholds do not exactly match the stream gauge locations. As such, the latitudes and longitudes of both the stream locations and NOAA threshold readings were joined using a k-dimensional tree (kd-tree) nearest neighbours algorithm. This algorithm is explained in Appendix 1 at the end of this paper. 
+The latitude and longitude of these provided thresholds did not exactly match the stream gauge locations. As such, the latitudes and longitudes of both the stream locations and NOAA threshold readings were joined using a k-dimensional tree (kd-tree) nearest neighbours algorithm. This algorithm is explained in Appendix 1 at the end of this paper. 
 
 The code used to achieve this nearest neighbours calculation is seen below with the algorithm implementation contained in full in the github repository associated with this paper. 
 
@@ -223,7 +223,7 @@ q)floodlvl:(maxht ij joins)lj`nn xkey warning
 
 This dataset was then joined onto the stream gauge data, adding columns counting the number of times a given stream gauge reached each warning level per month. 
 
-For the sake of this project, we only want to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data is a binary label denoting whether the flood warning level was reached in a given month. Any site that claims to flood more than 28 days per month is omitted from the dataset as we only want to focus on events that occur infrequently and are more difficult to predict.
+For the sake of this project, we only wanted to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data was a binary label denoting whether the flood warning level was reached in a given month. Any site that claimed to flood more than 28 days per month were omitted from the dataset as we only wanted to focus on events that occured infrequently and were more difficult to predict.
 
 ```q
 q)threshold:0!select first Action,first Flood,first Moderate,first Major,no_Action:
@@ -268,9 +268,9 @@ q)peak[`target]:peak[`delta_peak]<3.5
 
 _Monthly Model_
 
-After joining the stream height and precipitation tables from USGS and PRISM, the dataset is then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for different window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consists of the basin and landcover characteristcs, and the “threshold” dataset, based on month and site number.
+After joining the stream height and precipitation tables from USGS and PRISM, the dataset was then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for different window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consisted of the basin and landcover characteristcs, and the “threshold” dataset, based on month and site number.
 
-Lagged features are then added to this dataset, which includes information like did a flood occur in the month prior, the year prior and also how often on average does the given location flood.
+Lagged features were then added to this dataset, which included information like did a flood occur in the month prior, the year prior and also how often on average did the given location flood.
 
 ```q
 q)all_monthly_data:window_feat[all_monthly_data;enlist 1 12;`target;();site_d;`lagged;!]
@@ -290,7 +290,7 @@ A dictionary was created for each of the three separate datasets:
 2. Gauged
 3. Perfect Forecasts
 
-The dictionary contains the different feature columns required to make up the above datasets for each of the monthly (`M`) and time to peak (`P`) models.
+The dictionary contained the different feature columns required to make up the above datasets for each of the monthly (`M`) and time to peak (`P`) models.
 
 ```q
 q)fnd_col:{x where x in y}
@@ -308,7 +308,7 @@ M| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100`WsAreaS..
 P| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100`WsAreaS..
 ```
 
-These dictionaries were then used to extract the appropriate columns from each table, to make them suitable inputs to machine learning models. This is achieved by using the `split_dict` function which takes a table as input, as well as `M` or `P` indicating which model is being used.
+These dictionaries were then used to extract the appropriate columns from each table, to make them suitable inputs to machine learning models. This was achieved by using the `split_dict` function which takes a table as input, as well as `M` or `P` indicating which model was being used.
 
 ```q
 q)split_dict:{(!). flip(
@@ -320,7 +320,7 @@ ungauged| 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 gauged  | 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 forecast| 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 ```
-The function returns a dictionary containing the matrix for each of the ungauged, gauged and perfect forecast datasets.
+The function returned a dictionary containing the matrix for each of the ungauged, gauged and perfect forecast datasets.
 
 ```q
 q)(split_dict[all_monthly_data;`M])`ungauged
@@ -341,7 +341,7 @@ q)(split_dict[all_monthly_data;`M])`ungauged
 
 _Monthly Model_
 
-When splitting the data for this model, it was deemed important that no time leakage occurred between the training and test sets (e.g. the training set contained information from 2009 to 2017, while the test set contained the remaining years). This ensures that the model is being tested in a way that is similar to a real-world deployment. A split was chosen so that 20 percent of the data for each site was in the test set.
+When splitting the data for this model, it was deemed important that no time leakage occurred between the training and test sets (e.g. the training set contained information from 2009 to 2017, while the test set contained the remaining years). This ensured that the model was being tested in a way that was similar to a real-world deployment. A split was chosen so that 20 percent of the data for each site was in the test set.
 
 ```q
 q)cutoff:update cutoff:min[date]+floor 0.8*max[date]-min[date]by site_no from cleaned_monthly
@@ -355,7 +355,7 @@ q)XtestM:split_dict[XtestMi;`M]
 
 _Time to Peak Model_
 
-The time to peak data was separated so that sites do not appear in both the train and test dataset. This is done to ensure that the models being produced could be generalized to new locations. The target data was binned into a histogram as below and the train test split completed such that the distribution of targets in the training and testing sets were stratified.
+The time to peak data was separated so that sites did not appear in both the train and test dataset. This was done to ensure that the models being produced could be generalized to new locations. The target data was binned into a histogram as below and the train test split completed such that the distribution of targets in the training and testing sets were stratified.
 
 ```q
 q)sites:0!select sum target by site_no from cleaned_peak
@@ -377,12 +377,12 @@ q)peak_split:update split:`TEST from cleaned_peak where site_no in`$tts[1]
 
 ## Building Models
 	 	 	
-For both problems we tested a variety of models, but for the sake of this paper, models and results from an eXtreme Gradient Boost (XGBoost) and random forest classifier are presented. These models were chosen due to the models ability to deal with complex, imbalanced datasets. With this type of dataset, overfitting is a common feature seen. Overfitting occurs when the model fits too well to the training set, capturing a lot of the noise from the data. This leads to the model preforming successfully in training, while not succeeding as well on the testing or validation sets. Another problem that can occur due to imbalanced datasets,is that a naive model can be produced, always predicting that a flood will not occur. This leads to high acccuracy but not meaningful results. As seen below in the results section, XGBoosts and random forests were able to deal much better with these issues by tuning their respective hyper-parameters. A more detailed description of these models can be found in Appendix 2.
+For both problems a variety of models were tested, but for the sake of this paper, models and results from an eXtreme Gradient Boost (XGBoost) and random forest classifier are presented below. These models were chosen due to the models ability to deal with complex, imbalanced datasets. With this type of dataset, overfitting is a common feature. Overfitting occurs when the model fits too well to the training set, capturing a lot of the noise from the data. This leads to the model preforming successfully in training, while not succeeding as well on the testing or validation sets. Another problem that can occur, is that a naive model can be produced, always predicting that a flood will not occur. This leads to high acccuracy but not meaningful results. As seen below in the results section, XGBoosts and random forests were able to deal much better with these issues by tuning their respective hyper-parameters. A more detailed description of these models can be found in Appendix 2.
 
-To visualise the results, a precision-recall curve was used, illustrating the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [7]</sup>. This is a good metric to measure the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, is vital to ensure that all floods are given warnings. Yet also to ensure that a low number of false positives are given, the penalty for which is that warnings will be ignored.  
+To visualise the results, a precision-recall curve was used, illustrating the trade off between the positive predictive value and the true positive rate over a variety of probability thresholds <sup> [7]</sup>. This is a good metric to measure the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, was vital to ensure that all floods were given warnings. Yet also to ensure that a low number of false positives were given, the penalty for which was that warnings would be ignored.  
 
 
-A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returns the prediction at each location in time for the models used, this is used later in this paper to create a map of flooding locations.
+A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returned the prediction at each location in time for the models used, this can be seen later in this paper to create a map of flooding locations.
 
 The inputs to the `pr_curve` function are:
 
@@ -400,12 +400,12 @@ q)build_model:{[Xtrain;ytrain;dict]
  xgboost_clf: XGBClassifier[`n_estimators pykw dict`xgb_n;`learning_rate pykw 
               dict`xgb_lr;`random_state pykw 0;`scale_pos_weight pykw dict`xgb_wgt;
               `max_depth pykw dict`xgb_maxd][`:fit][np[`:array]Xtrain; ytrain];
- `random_forest`GBDT!(rf_clf;xgboost_clf)}
+ `random_forest`XGB!(rf_clf;xgboost_clf)}
 ```
 
 ## Results
 
-The results below are separated based on the three datasets.
+The results below were separated based on the three datasets.
 
 ### Model testing
 
@@ -427,8 +427,8 @@ class    | precision recall    f1_score  support
 1        | 0.7598566 0.210109  0.3291925 1009
 avg/total| 0.8513272 0.6025172 0.6486765 14212
 
-Accuracy for GBDT: 0.9205713
-Meanclass accuracy for GBDT: 0.6914636
+Accuracy for XGB: 0.9205713
+Meanclass accuracy for XGB: 0.6914636
 
 
 class    | precision recall    f1_score  support
@@ -455,8 +455,8 @@ class    | precision recall    f1_score  support
 1        | 0.7164179 0.2840237 0.4067797 169
 avg/total| 0.7308405 0.6165427 0.6208427 542
 
-Accuracy for GBDT: 0.7702206
-Meanclass accuracy for GBDT: 0.7376155
+Accuracy for XGB: 0.7702206
+Meanclass accuracy for XGB: 0.7376155
 
 
 class    | precision recall    f1_score  support
@@ -467,6 +467,7 @@ avg/total| 0.7376155 0.7121452 0.721616  542
 ```
 ![Figure_4](imgs/pr_U2.png)
 
+The monthly model obtained the highest accuracy scores using random forests, while the time to peak model performed best for XGBoost. In both cases, random forests achieved high precision scores and low recall results. Meanwhile, XGBoost gave a slightly more balanced precision/recall result.  
 
 #### Gauged Model
 
@@ -486,8 +487,8 @@ class    | precision recall    f1_score  support
 1        | 0.869258  0.2438057 0.380805  1009
 avg/total| 0.9072401 0.6205017 0.6756597 14212
 
-Accuracy for GBDT: 0.9330941
-Meanclass accuracy for GBDT: 0.7474907
+Accuracy for XGB: 0.9330941
+Meanclass accuracy for XGB: 0.7474907
 
 
 class    | precision recall    f1_score  support
@@ -514,8 +515,8 @@ class    | precision recall    f1_score  support
 1        | 0.6666667 0.2248521 0.3362832 169
 avg/total| 0.6982818 0.5869569 0.580729  542
 
-Accuracy for GBDT: 0.7610294
-Meanclass accuracy for GBDT: 0.7325731
+Accuracy for XGB: 0.7610294
+Meanclass accuracy for XGB: 0.7325731
 
 
 class    | precision recall    f1_score  support
@@ -525,6 +526,8 @@ class    | precision recall    f1_score  support
 avg/total| 0.7325731 0.6811714 0.6946479 542
 ```
 ![Figure_6](imgs/pr_G2.png)
+
+Accuracy for the monthly model improved when compared with the previous predictions, whereas a decrease was observed for the time to peak model. 
 
 #### Perfect Forecasts
 
@@ -544,8 +547,8 @@ class    | precision recall    f1_score  support
 1        | 0.8785714 0.2438057 0.3816912 1009
 avg/total| 0.9119027 0.6206153 0.6761598 14212
 
-Accuracy for GBDT: 0.9473758
-Meanclass accuracy for GBDT: 0.8037618
+Accuracy for XGB: 0.9473758
+Meanclass accuracy for XGB: 0.8037618
 
 
 class    | precision recall    f1_score  support
@@ -572,8 +575,8 @@ class    | precision recall    f1_score  support
 1        | 0.8032787 0.2899408 0.426087  169
 avg/total| 0.7768992 0.6288846 0.6357601 542
 
-Accuracy for GBDT: 0.7628676
-Meanclass accuracy for GBDT: 0.7266119
+Accuracy for XGB: 0.7628676
+Meanclass accuracy for XGB: 0.7266119
 
 
 class    | precision recall   f1_score  support
@@ -584,10 +587,11 @@ avg/total| 0.7266119 0.71811  0.7219266 542
 ```
 ![Figure_8](imgs/pr_P2.png)
 
+In the above case, the XGBoost classifier achieved the hightest accuracy score in both models. Once again, XGBoost also gave a more balanced precision/recall score for both models.
 
 ### Feature Significance
 
-There is also a lot to be learned from determining which features contribute to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data, to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enables the top x most significant features to be extracted from each dataset. 
+There was also a lot to be learned from determining which features contributed to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data, to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enabled the top x most significant features to be extracted from each dataset. 
 
 _Monthly Model_
 
@@ -645,7 +649,7 @@ q)string .ml.fresh.significantfeatures[flip forecast[`P]!cleaned_peak[forecast[`
 
 _Monthly Model_
 
-Using these results, it was also possible to build a map that highlights per month which areas are at risk of flooding. This could be used by governmental bodies to prioritize funding in the coming weeks.
+Using these results, it was also possible to build a map that highlighted per month which areas were at risk of flooding. This could be used by governmental bodies to prioritize funding in the coming weeks.
 
 ```q
 q)preds:last pltP1`model
@@ -689,15 +693,15 @@ q)plt[`:show][];
 
 ## Conclusion
 
-From the above results we can predict, with relatively high accuracy, whether an area is likely to flood or not in the next month. We can also produce a model to predict if a stream will reach its peak height within 3.5 hours.
+From the above results we could predict, with relatively high accuracy, whether an area was likely to flood or not in the next month. We could also produce a model to predict if a stream would reach its peak height within 3.5 hours.
 
-For the monthly models, the future weather predictions played an important role in predicting whether an area will flood or not. Accuracy, recall and precision all increasing as the weather predictions and gauged information columns are added to the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
+For the monthly models, the future weather predictions played an important role in predicting whether an area would flood or not. Accuracy, recall and precision all increased as the weather predictions and gauged information columns were added to the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
 
 The opposite was true for the time-peak values, as previous rain and stream gauge information along with the basin characteristics were seen to be the most significant features when predicting these values. Including additional information about the future predicted rainfall decreased the accuracy of the results, with the best results being obtained from the model with only past rainfall and basin and soil characteristics being fed into the model.
 
-Both of these results would likely be physically expected. In the case of the monthly prediction, information regarding future forecast will be pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value, it would be unlikely that information about rainfall in the next number of days will add to the predictive power of a model.
+Both of these results are likely be physically expected. In the case of the monthly prediction, information regarding future forecast was pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value, it would be unlikely that information about rainfall in the next number of days would add to the predictive power of a model.
 
-Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height, is an important piece of information to extract from the model. Organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
+Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height, is an important piece of information to extract from the model. From this, organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
 
 The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model, meant that weighting the classes was an important feature to experiment with. This was particularly important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
 
