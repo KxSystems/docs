@@ -541,6 +541,7 @@ nav:
     - Java API: wp/java-api/index.md
     - Kdb+tick profiling: wp/tick-profiling.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
+    - Machine learning: wp/machine-learning/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Multi-threading: wp/multi-thread/index.md
