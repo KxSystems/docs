@@ -159,9 +159,11 @@ Asian Black Scholes Price:    5.556009
 The first stage in predicting an option price is to generate a set of random numbers using either MC or QMC methods. In the below example we generate 512 pseudo-random and Sobol sequence numbers, with results plotted for comparison.
 
 ```q
-q)rdm:(2;nsteps)#mtrand3 2*nsteps
-q)sob:flip sobolrand each nsteps#2
-q)subplot[(rdm;sob);("Random";"Sobol");2;2#`scatter]
+q)/ Functions to generate n numbers (random or Sobol) in d dimensions
+q)rdmngen:{[n;d](d;n)#mtrand3 d*n}
+q)sobngen:{[n;d]sobolrand 0;flip sobolrand each n#d}
+q)data:(rdmngen;sobngen).\:nsteps,2
+q)subplot[data;("Random";"Sobol");2;2#`scatter]
 ```
 <img src="img/numgen.png">
 
@@ -180,12 +182,23 @@ The generated sequences are converted from a uniform distribution to a Gaussian 
 In the example below we convert the uniform generated Sobol sequence to a Gaussian distribution, using the inverse cumulative normal function, `invcnorm`.
 
 ```q
-q)zsob:invcnorm each sob
-q)subplot[(sob;zsob;first zsob);("Sobol Uniform";"Sobol Gaussian";"Sobol Gaussian 1D");3;`scatter`scatter`hist]
+q)zsob:invcnorm each sob:last data
+q)subplot[(sob;zsob);("Sobol Uniform";"Sobol Gaussian");2;2#`scatter]
 ```
 <img src="img/sobgaussdist.png" style="height:300px">
 
-As expected the points exhibit a Gaussian "bell curve" when plotted in one dimension.
+The differences between the Gaussian distributions produced for random and Sobol sequences are best demonstrated for a small number of timesteps, e.g. 64. Below we plot the 1D Gaussian distributions for both random and Sobol number generation across 64 timesteps.
+
+```q
+q)/ Returns 1D Gaussian distribution to plot
+q)gausscnv:{[g;n;d]first invcnorm each$[g~`rdm;rdmngen;sobngen][n;d]}
+q)/ Calculates Gaussian variates for 64 steps, in 2 dimensions
+q)dist:gausscnv[;64;2]each`rdm`sob
+q)subplot[dist;("Random";"Sobol");2;2#`hist]
+```
+<img src="img/bin64.png" style="height:300px">
+
+As expected the Sobol sequence exhibits a Gaussian curve with much better statistical properties than the random number sequence <sup>[11]</sup>.
 
 #### 3. Convert into a Wiener path random walk
 
@@ -482,3 +495,5 @@ I gratefully acknowledge Sergei Kucherenko for allowing us to create a version o
 8. P. Jäckel 2001, ‘Monte Carlo Methods In Finance’, pp. 122.
 9. Normal distribution. En.wikipedia.org. https://en.wikipedia.org/wiki/Normal_distribution. Published 2019. Accessed September 11, 2019.
 10. P. Glasserman 2003, 'Monte Carlo Methods in Financial Engineering', _Springer_.
+11. S. Kucherenko 2008. 'High Dimensional Sobol's Sequences And Their Application'. Available at http://www.broda.co.uk/doc/SobolSeq_report.pdf. Accessed September 23, 2019.
+
