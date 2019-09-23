@@ -534,6 +534,7 @@ nav:
     - Distributed systems: wp/query-interface.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
+    - FIX messaging: wp/fix-messaging.md
     - Foreign keys: wp/foreign-keys.md
     - Intraday writedown: wp/intraday-writedown/index.md
     - Iterators: wp/iterators/index.md
