@@ -12,7 +12,7 @@ In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo
 
 ## Black-Scholes 
 
-The most common model used to calculate the price of options is Black-Scholes, where the formula for each market is derived from the Black-Scholes equation <sup>[2]</sup>. In this paper, we look specifically at the Black-Scholes models for European and Asian call options. The standard Black-Scholes model for European options assumes a payoff based on the underlying price at exercise. The modified model for Asian options assumes a payoff based on the average underlying price over a pre-defined time period <sup>[3]</sup>. In each case, the Black-Scholes model produces a closed-form solution with a deterministic result.
+The most common model used to calculate the price of options is Black-Scholes, where the formula for each market is derived from the Black-Scholes equation <sup>[4]</sup>. In this paper, we look specifically at the Black-Scholes models for European and Asian call options. The standard Black-Scholes model for European options assumes a payoff based on the underlying price at exercise. The modified model for Asian options assumes a payoff based on the average underlying price over a pre-defined time period <sup>[5]</sup>. In each case, the Black-Scholes model produces a closed-form solution with a deterministic result.
 
 For European call options, the price of the corresponding option at time $t$, $P(S_{t},t)$, is given by:
 
@@ -28,7 +28,7 @@ $$\begin{eqnarray}
 P(S_{t},t) = S_{t}e^{-q(T-t)}N(d_{1})-Ke^{-r(T-t)}N(d_{2})
 \end{eqnarray}$$
 
-Where $T$ is the expiry, $S_{t}$ is the price of the underlying asset at time $t$, $K$ is the strike price of the option, $\sigma$ is the volatility and $r$ is the interest rate. Note that the price is discounted by the dividends, $q$, throughout <sup>[4]</sup>.
+Where $T$ is the expiry, $S_{t}$ is the price of the underlying asset at time $t$, $K$ is the strike price of the option, $\sigma$ is the volatility and $r$ is the interest rate. Note that the price is discounted by the dividends, $q$, throughout <sup>[6]</sup>.
  
 For Asian call options, we implement the same formula, using an adjusted $S_{t}$ and $\sigma^{2}$:
 
@@ -48,10 +48,10 @@ Where $n$ is the number of timesteps.
 
 ## Monte Carlo and Quasi-Monte Carlo Simulations
 
-The use of MC simulations in the financial industry stems from the need to evaluate complex financial instruments and the lack of analytical solutions available to do so. MC is used to mimic the uncertainty associated with the underlying price of an instrument and subsequently generate a value based on the possible underlying input values. One example of where MC is used in finance, is in evaluating an option on an equity. For each underlying asset, an MC simulation is used to create thousands of random price paths, with an associated payoff. The option price for each path is calculated by taking the average over the future payoffs and discounting them to the present <sup>[5]</sup>.
+The use of MC simulations in the financial industry stems from the need to evaluate complex financial instruments and the lack of analytical solutions available to do so. MC is used to mimic the uncertainty associated with the underlying price of an instrument and subsequently generate a value based on the possible underlying input values. One example of where MC is used in finance, is in evaluating an option on an equity. For each underlying asset, an MC simulation is used to create thousands of random price paths, with an associated payoff. The option price for each path is calculated by taking the average over the future payoffs and discounting them to the present <sup>[7]</sup>.
 
 These models are based on pseudo-random numbers which despite being commonly used, exhibit very slow convergence, with a rate of $O(1/\sqrt{N})$ where N is the number of sampled points. To improve upon these models, QMC methods have been developed which use low-discrepancy sequences (LDS) to produce a rate of convergence ~ $O(1/N)$. LDS are deterministic uniformly distributed sequences which are specifically designed to place sample points as uniformly as possible.  Many practical studies have proven that the Sobol’ LDS is superior to other LDS. The most effective Quasi-Monte Carlo method for application in financial engineering are based on Sobol’ LDS.
-<sup>[6][8]</sup>
+<sup>[2][3][8][10]</sup>
 
 ## Wiener Path
 
@@ -65,13 +65,13 @@ An example of building up a Brownian bridge is shown in the diagram below, where
 
 <center><img src="img/bbconstruct.png"></center>
 
-<center><u><b>The construction of a Brownian bridge over 14 steps</b></u> <sup>[6]</sup></center>
+<center><u><b>The construction of a Brownian bridge over 14 steps</b></u> <sup>[8]</sup></center>
 
 Both standard discretization and Brownian bridge construction share the same variance and therefore the same resulting convergence when used with MC models. However, performance differs between the two when QMC methods are introduced, with faster convergence seen for Brownian bridge construction.
 
 In order to showcase how performant the QMC simulation is when paired with Brownian bridge construction, we use Global SA as outlined in S. Kucherenko et. al 2007 <sup>[1]</sup>. This method allows us to estimate the contribution of individual input parameters in the final variance of the output over a number of experiments. In each experiment, we:
 
-1. Randomly generate n random numbers, either pseudo-random (MC) or sobol sequence (QMC).
+1. Randomly generate n random numbers, either pseudo-random (MC) or sobol sequence (QMC) <sup>[2][3]</sup>.
 2. Convert into a normal distribution.
 3. Convert into a Wiener path random walk using standard discretization or Brownian bridge construction.
 4. Convert into an asset price path based on parameters:
@@ -110,7 +110,7 @@ The technical dependencies required for the below work are as follows:
 
 ### Load scripts
 
-As mentioned previously, the implementations of option pricing methods outlined below are based on original C++ scripts used in S. Kucherenko et. al 2007 <sup>[1]</sup>. Wrappers for the C++ pseudo-random and sobol sequence number generators are contained within `rand.q`, along with the cumulative and inverse cumulative normal distribution functions in `norm.q`.
+As mentioned previously, the implementations of option pricing methods outlined below are based on original C++ scripts used in S. Kucherenko et. al 2007 <sup>[1]</sup>. Wrappers for the C++ pseudo-random and sobol sequence number generators <sup>[2][3]</sup> are contained within `rand.q`, along with the cumulative and inverse cumulative normal distribution functions in `norm.q`.
 
 To run the below examples, q scripts are loaded including the C++ wrappers and graphics functions used throughout.
 
@@ -175,7 +175,7 @@ The generated sequences are converted from a uniform distribution to a Gaussian 
 
 <center><img src="img/gaussian.png" style="height:400px"></center>
 
-<center><u><b>Gaussian Distribution</b></u> <sup>[7]</sup></center>
+<center><u><b>Gaussian Distribution</b></u> <sup>[9]</sup></center>
 
 In the example below we convert the uniform generated Sobol sequence to a Gaussian distribution, using the inverse cumulative normal function, `invcnorm`.
 
@@ -471,10 +471,14 @@ I gratefully acknowledge Sergei Kucherenko for allowing us to create a version o
 ## References
 
 1. S. Kucherenko et al. 2007, 'The Importance of Being Global - Application of Global Sensitivity Analysis in Monte Carlo Option Pricing', _Wilmott_, pp. 82–91. Available at http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf. Accessed September 3, 2019.
-2. Black–Scholes equation. En.wikipedia.org. https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_equation. Published 2019. Accessed September 6, 2019.
-3. Asian option. En.wikipedia.org. https://en.wikipedia.org/wiki/Asian_option#European_Asian_call_and_put_options_with_geometric_averaging. Published 2019. Accessed September 11, 2019.
-4. Black–Scholes model. En.wikipedia.org. https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model. Published 2019. Accessed September 11, 2019. 
-5. Monte Carlo methods in finance. En.wikipedia.org. https://en.wikipedia.org/wiki/Monte_Carlo_methods_in_finance. Published 2019. Accessed September 11, 2019.
-6. P. Jäckel 2001, ‘Monte Carlo Methods In Finance’, pp. 122.
-7. Normal distribution. En.wikipedia.org. https://en.wikipedia.org/wiki/Normal_distribution. Published 2019. Accessed September 11, 2019.
-8. P. Glasserman 2003, 'Monte Carlo Methods in Financial Engineering', _Springer_.
+2. S. Kucherenko et al. 2001, 'Construction and Comparison of
+  High-Dimensional SobolGenerators', _Wilmott_, Nov,
+  pp. 64-79. Available at http://www.broda.co.uk/doc/HD_SobolGenerator.pdf. Accessed September 23, 2019.
+3. Broda. Broda.co.uk. http://www.broda.co.uk. Published 2019. Accessed September 23, 2019.
+4. Black–Scholes equation. En.wikipedia.org. https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_equation. Published 2019. Accessed September 6, 2019.
+5. Asian option. En.wikipedia.org. https://en.wikipedia.org/wiki/Asian_option#European_Asian_call_and_put_options_with_geometric_averaging. Published 2019. Accessed September 11, 2019.
+6. Black–Scholes model. En.wikipedia.org. https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model. Published 2019. Accessed September 11, 2019. 
+7. Monte Carlo methods in finance. En.wikipedia.org. https://en.wikipedia.org/wiki/Monte_Carlo_methods_in_finance. Published 2019. Accessed September 11, 2019.
+8. P. Jäckel 2001, ‘Monte Carlo Methods In Finance’, pp. 122.
+9. Normal distribution. En.wikipedia.org. https://en.wikipedia.org/wiki/Normal_distribution. Published 2019. Accessed September 11, 2019.
+10. P. Glasserman 2003, 'Monte Carlo Methods in Financial Engineering', _Springer_.
