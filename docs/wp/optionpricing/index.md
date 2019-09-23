@@ -102,7 +102,7 @@ The technical dependencies required for the below work are as follows:
 
 - [Option Pricing kdb+/q library](https://github.com/dmorgankx/sobol/)
 - [embedPy](https://github.com/KxSystems/embedPy)
-- Sobol C++ library - `SobolSeq1024` function provided in within the Option Pricing kdb+/q library with max dimension of 1024.
+- Sobol C++ library - `SobolSeq1024` function provided in the Option Pricing kdb+/q library with max dimension of 1024.
 - [matplotlib](https://matplotlib.org/)
 
 !!! note
