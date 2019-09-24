@@ -18,17 +18,17 @@ Annually, flooding events worldwide affect on the order of 80 million people, bo
 
 The primary goal of the European research team focusing on disaster management, was to investigate the use of AI to improve the capabilities of organizations to respond to flooding using orbital imagery and social media data. The central problem tackled by the team, was the development of deep learning algorithms to map flood extent for deployment on a [CubeSat](https://en.wikipedia.org/wiki/CubeSat) satellite. This project used a [VPU](https://en.wikipedia.org/wiki/Vision_processing_unit) microprocessor chip in the hopes that a neural network architecture could be embedded on the chip, thus allowing for on-the-edge mapping of floods on cheap satellite systems. The cost of such satellites is on the order of 100 times cheaper than a typical imaging satellite, thus allowing a larger number to be deployed for tailored purposes such as flood mapping.
 
-Given the use of extremely specialized hardware for this task, a complementary project was designed to leverage kdb+ and the machine learning and interface libraries. In this paper, we examine the use of deep learning methods to classify tweets relating to natural disasters and, more specifically, flooding events. The goal is to allow concerned parties to filter tweets and thus contact individuals based on their needs. 
+Given the use of extremely specialized hardware for this task, a complementary project was designed to leverage kdb+ and the machine learning and interface libraries. In this paper, we will examine the use of deep learning methods to classify tweets relating to natural disasters and, more specifically, flooding events. The goal is to allow concerned parties to filter tweets and thus contact individuals based on their needs. 
 
 This project was seen as being complementary to the CubeSat project for a number of reasons. Firstly, tweets sourced from the twitter API often contain gps information thus providing locations for the CubeSats' to focus the production flood maps. Secondly, the flood maps provided can give first responders and NGO's information about which affected areas to avoid during by flood event.
 
-This work is completed in two distinct sections,
+This work was completed across two distinct sections,
 
 1.  The training of a binary classifier to discern relevant vs irrelevant tweets and following this a multi-class model in an attempt to label the tweets according to sub-classes including but not limited to:
 	1.  Affected Individuals.
 	2.  Infrastructural damage. 
 
-2.  Deploy the multi-class model on a kdb+ tickerplant architecture to produce a framework for the live classification and querying of tweets. 
+2.  Creation of a multi-class model on a kdb+ tickerplant architecture to produce a framework for the live classification and querying of tweets. 
 
 
 All development was done with the following software versions
@@ -61,7 +61,7 @@ NLP               | 0.1
 
 ## Data
 
-The data used for this work was sourced from the [Crisis NLP](https://crisisnlp.qcri.org) datasets. This datasource contains human-annotated tweets collected from twitter and relating directly to a wide variety of crises. These crises range from earthquakes and virus outbreaks, to typhoons and war events. The data of interest within this use case, is that relating to floods. Flood data from the following events was chosen.
+The data used for this work was sourced from the [Crisis NLP](https://crisisnlp.qcri.org) datasets. This datasource contains human-annotated tweets collected from twitter and relating directly to a wide variety of crises. These crises range from earthquakes and virus outbreaks, to typhoons and war events. The data of interest within this use case, is that relating to floods. Flood data from the following events were chosen.
 
 1. 2012 Phillipines
 2. 2013 Alberta, Canada 
@@ -70,7 +70,7 @@ The data used for this work was sourced from the [Crisis NLP](https://crisisnlp.
 5. 2014 India
 6. 2014 Pakistan
 
-These evnets were chosen both due to the availability of the datasets themselves, and the geographical and socio-economic variability in those affected. In total, the dataset contains approximately 8,000 tweets. The data comes from two distinct macro datasets, which contain both the tweet text and classifications of the tweets. Following preprocessing to standardize the classes across the datasets, the following are the sub-classes used within the multi-class section of this project.
+These events were chosen both due to the availability of the datasets themselves, and the geographical and socio-economic variability in those affected. In total, the dataset contains approximately 8,000 tweets. The data comes from two distinct macro datasets, which contain both the tweet text and classifications of the tweets. Following preprocessing to standardize the classes across the datasets, the following are the sub-classes used within the multi-class section of this project.
 
 1. Affected Individual
 2. Sympathy and Prayers
@@ -89,7 +89,7 @@ Dealing with social media data and in particular twitter data, poses a number of
 
 2. The ambiguity of language also poses an issue. The same phrase in different contexts can have wildly different meanings. For example, if an individual was to tweet “I just got free ice-cream and now looking forward to the theater later. How much better could my day get?” vs someone tweeting "It's been raining all day and I missed my bus. How much better could my day get?", clearly the first use of better is positive while the second is sarcastic. In each case, information about the correct interpretation is contained within the first sentence.
 
-3. Colloquialisms and the names of locations can also pose an issue. One of the most important target categories being used here is infrastructure and utilities. This target has a strong association with place names. For example, "Terrible to see the damage on the Hoover due with the flooding in Colorado". For anyone that's aware of the Hoover Dam in Colorado, it is clear that there is likely infrastructural damage to the Dam. However, a computer is likely to miss this without context.
+3. Colloquialisms and the names of locations can also pose an issue. One of the most important target categories used in this work is infrastructure and utilities. This target has a strong association with place names. For example, "Terrible to see the damage on the Hoover due with the flooding in Colorado". For anyone that's aware of the Hoover Dam in Colorado, it is clear that there is likely infrastructural damage to the Dam. However, a computer is likely to miss this without context.
 
 These are just a small number of potential issues which can arise when dealing with social media data but can be rectified in the following manner.
 
@@ -98,7 +98,7 @@ These are just a small number of potential issues which can arise when dealing w
 
 ## Pre-processing
 
-To highlight the need to preprocess the data being used in this paper, the following are examples of some tweets within the corpus
+To highlight the need to preprocess the data used in this paper, the following are examples of some tweets seen within the corpus
 
 ```q
 // tweet contains user handle with leading at symbol and numeric values
@@ -145,7 +145,7 @@ Taking these changes into account, the tweets above are transformed into the fol
 When producing a machine learning model, it is important to understand the content of the data being used. Doing so provides us with the ability to choose and tune an appropriate model to apply. This is heavily influenced by an understanding of how the target data is distributed and what information is contained in the data itself.
 
 ### Data Distribution
-Firstly we look at the distributions of the targets in the binary example:
+Firstly I looked at the distributions of the targets in the binary example:
 
 ```q
 q)distrib_b:desc count each group data_b`target
@@ -160,17 +160,17 @@ q)plt[`:show][];
 
 ![Figure 1](imgs/binary_dist.png)
 
-We can see from this that the dataset contains significantly more of the affected individuals class. Given the dataset being used, this is unsurprising.
+We can see from this that the dataset contains significantly more of the affected individuals class. Given the dataset being used, this is unsurprising as every effort has been made to make the dataset as relevant as possible by the collaters of this dataset.
 
 Looking at the multi-class example, we can see how the dataset as a whole breaks down into categories. The code to achieve this is similar to that above and thus not displayed again.
 
 ![Figure 2](imgs/multi_dist.png)
 
-As with the binary case, there are a number of classes that are more prominent within the data, such as affected individuals and donations/volunteering. Some classes are seen less often, such as sympathy and prayers.
+As with the binary case, there are a number of classes that are more prominent within the data, such as affected individuals and donations/volunteering. Some classes are seen less often, such as sympathy and prayers. As such it may be expected that the models produced will be more likely to correctly classify tweets surrounding donations than those relating to prayers. 
 
 ### Word Cloud
 
-Similar to the data distribution case, it is possible to gain some insights into the content of the dataset by looking at commonly occurring words within the classes. This is completed through the use of the wordcloud library in Python. The code to achieve this is wrapped in the function `wordcloud`, which functionally is as follows
+Similar to the data distribution case, it is possible to gain some insights into the content of the dataset by looking at commonly occurring words within the classes. This was achieved here through the use of the wordcloud library in Python. The code to achieve this was wrapped in the function `wordcloud`, which functionally is as follows
 
 ```q
 args:`background_color`collocations`min_font_size`max_font_size
@@ -195,7 +195,7 @@ In the above example, surrounding the affected individuals class, it is clear th
 
 ![Figure 4](imgs/Sympathy_prayers.png)  
 
-This indicates that while words such as "flood" and "kashmir" are prominent in tweets associated with each class, there are words that seem to indicate the base class of the tweets themselves.
+This indicates that while words such as "flood" and "kashmir" are prominent in tweets associated with each class, there are words that seem to be indicative of the base class of the tweets themselves.
 
 ### Sentiment Analysis
 
@@ -215,12 +215,12 @@ q)3?100#data_m[`tweet_text] iasc  sentiment`compound
 "at least dead in colo flooding severe flooding in jamestown in colorados boulder county killed one person"
 ```
 
-This allows us to gain insights into the state of mind of individuals who are tweeting and an understanding of some of the characteristics that may be associated with individual classes. For example, the positive tweets above both offer the sympathy and donations, whereas the negative tweets talk about the death of individuals and criminal activity. This can have a bearing on how tweets get classified, based on the absence or presence of specific words or phrases.
+This allows us to gain insights into the state of mind of individuals who are tweeting and an understanding of some of the characteristics that may be associated with individual classes. For example, the positive tweets above both offer the sympathy and donations, whereas the negative tweets talk about the death of individuals and criminal activity. This could have a bearing on how tweets are classified, based on the absence or presence of specific words or phrases.
 
 
 ## Model
 
-The model that has been applied to both the binary and multi classification problems, is a Long short-term memory (LSTM) model. This type of deep learning architecture is a form of recurrent neural network (RNN). Its use stems from the need to gain an understanding of the ordering of words within the tweets, so that context can be derived. 
+The model that was applied to both the binary and multi classification problems, is a Long short-term memory (LSTM) model. This type of deep learning architecture is a form of recurrent neural network (RNN). Its use stems from the need to gain an understanding of the ordering of words within the tweets, in order for context to be derived. 
 
 To gain this understanding, the model uses a structure known as a memory cell to regulate weights/gradients within the system. Commonly RNNs suffer issues with [exploding](https://machinelearningmastery.com/exploding-gradients-in-neural-networks/) or [vanishing](https://towardsdatascience.com/the-vanishing-gradient-problem-69bf08b15484) gradients during back propagation but these are mitigated through the memory structure of the model.
 
@@ -235,7 +235,7 @@ The following is a pictorial representation of an LSTM cell, with the purpose of
 
 ### Model Structure
 
-Producing an LSTM model can be done in embedPy using Keras. The following is the model used for the multi-class use case in this paper
+Producing an LSTM model was done in embedPy using Keras. The following is the model used for the multi-class use case in this paper,
 
 ```q
 // Define python functionality to produce the model
@@ -263,20 +263,20 @@ The summary of this model is as follows:
 
 A few points of note on this model:
 
-*  A number of forms of dropout are used to prevent model overfitting.
-*  The dense layer contains seven nodes, one associated with each of the output classes in the multi-class example.
+*  A number of forms of dropout were used to prevent model overfitting.
+*  The dense layer contained seven nodes, one associated with each of the output classes in the multi-class example.
 *  The number of LSTM units chosen was 100, these are 100 individual layers with independent weights.
-*  The loss function used is categorical cross-entropy, to account for the target being categorical and non-binary.
+*  The loss function used is categorical cross-entropy, this accounts for the target being categorical and non-binary.
 
 ### Model Data preparation
 
-Prior to fitting this model, a number of steps must be taken to manipulate the data, so that it can be 'understood' by the LSTM and scored correctly.
+Prior to fitting this model, a number of steps were taken to manipulate the data, such that it could be 'understood' by the LSTM and scored correctly.
 
-Due to how computers handle information, the data cannot be passed to the model as strings or symbols. Instead, it must be encoded numerically. This can be achieved through a number of methods, including tokenization and one-hot encoding, both of which are used here.
+Due to how computers handle information, data cannot be passed to the model as strings or symbols. Instead, it must be encoded numerically. This can be achieved through a number of methods, including tokenization and one-hot encoding, both of which were used here.
 
 Tokenization in Natural Language Processing is the splitting of data into distinct pieces known as tokens. These tokens provide natural points of distinction between words within the corpus and thus allow the text to be converted into numerical sequences. 
 
-This conversion was completed as follows using keras text processing tools on the tweets:
+This conversion was completed as follows using Keras text processing tools on the tweets:
 
 ```q
 // Python text processing utilities
@@ -299,9 +299,9 @@ q)tokenizer[`:fit_on_texts]tweet_vals;
 q)X:tokenizer[`:texts_to_sequences]tweet_vals
 ```
 
-Finally, once the data has been converted into numerical sequences, it must be 'padded' so that the input length of each of the tweets is the same. This ensures that the neural network is passed consistent lengths of data. Padding refers to the addition of leading zeros to the numeric representation of the tweets, such that each is a list of 50 integers. 
+Finally, once the data has been converted into numerical sequences, it is 'padded' such that the input length of each of the tweets is the same. This ensures that the neural network is passed consistent lengths of data. Padding refers to the addition of leading zeros to the numeric representation of the tweets, such that each is a list of 50 integers. 
 
-The display of the tweets below is truncated to ensure that the final values can be seen.
+The display of the tweets below is truncated to ensure that the final non zero values can be seen. and is represetative of a subset of the data that was used in this paper
 
 ```q
 q)X:pad[X;`maxlen pykw max_seq_len]`
@@ -314,7 +314,7 @@ q)5#{30_x}each X
 0 0   0   0  216 6   233 63   3    116  1    141  99   195 68   138  3   9    290  90 
 ```
 
-As mentioned above, one-hot encoding can also be used to create a mapping between text and numbers. As the target categories themselves are symbols, these must also be encoded. This is done using a utility function contained within the [machine-learning toolkit](https://github.com/kxsystems/ml).
+As mentioned above, one-hot encoding can also be used to create a mapping between text and numbers. As the target categories themselves are symbols, these must also be encoded. This was done using a utility function contained within the [machine-learning toolkit](https://github.com/kxsystems/ml).
 
 ```q
 q)show y:data_m`target
@@ -330,7 +330,7 @@ q)5#Y_m:flip value ohe_m:.ml.i.onehot1 data_m`target
 
 ### Model fitting
 
-Now the categorical and textual data has been converted into a numerical representation, it must be split into a training and testing set. This is done in order to maintain separation of the data, in order to allow the results to be judged fairly. This is completed as follows:
+Once the categorical and textual data had been converted into a numerical representation, it was split into a training and testing set. This is done in order to maintain separation of the data, such that results could be judged fairly. This was completed as follows:
 
 ```q
 // train-test split binary data
@@ -353,7 +353,7 @@ q)mdl_m[`:fit][npa xtrn_m;npa ytrn_m;`epochs pykw epochs;`verbose pykw 0]
 
 ## Results
 
-Now that the models have been fit on the training set the results can be scored on the held out test set, the scoring is done in a number of parts:
+Once the models had been fit on the training set the results could be scored on the held out test set, the scoring was done in a number of parts:
 
 1. Percentage of correct predictions vs misses per class.
 
@@ -361,7 +361,7 @@ Now that the models have been fit on the training set the results can be scored 
 
 3. Classification report outlining precision and recall and f1-score for each class.
 
-This functionality is wrapped in the function `class_scoring` in the `code/fdl_disasters.q` script
+This functionality is wrapped in a function `class_scoring` in the `code/fdl_disasters.q` script
 
 ```q
 // Binary classification prediction and scoring
@@ -473,9 +473,9 @@ The multi-class example also appears to be working well, with overall accuracy o
 
 ## Live-System
 
-As outlined in the results section above, the scores produced for the categorization of multi-class tweets has been broadly successful. The conclusions section below will outline the limiting factors that affect the ability to produce a better model. However, the results are sufficient to move onto producing a framework, which could be used for the live classification of tweets.
+As outlined in the results section above, given the scores produced for the categorization of multi-class tweets, the production of a model was broadly successful. The conclusions section below outlines the limiting factors that affect the ability to produce a better model. However, the results are sufficient to move onto producing a framework, which could be used for the live classification of tweets.
 
-The first step is the saving of the tokenizer and model, which are to be applied to the data as it is fed through the feed. This is done within the notebook using the following commands
+The first step was the saving of the tokenizer and model, which were to be applied to the data as it is fed through the system. This can be seen within the notebook in the following commands
 
 ```q
 // python script which uses pickle to save tokenizer
@@ -486,11 +486,11 @@ q)sv_tok[tokenizer];
 q)mdl_m[`:save]["../live/multiclass_mdl.h5"]
 ```
 
-Given limited availability to data, data from the notebook is used to produce a 'live' system. 
+Given limited availability to data, data from the notebook was used to produce the 'live' system. 
 
 The outline for this system is based heavily on the 'vanilla' [kdb tickerplant architecture](https://github.com/KxSystems/kdb-tick).
 
-The first step to run the system is to initialize the tickerplant. Here the port is being automatically set to 5140, all other port assignments are overwritten
+The first step to run the system is to initialize the tickerplant. Here the port is being automatically set to localhost:5140, any other port assignment would be overwritten
 
 ```q
 $q tick.q sym ./log/
@@ -500,7 +500,7 @@ For the purposes of this example -p must be set to 5140, setting port accordingl
 q)
 ```
 
-Now that the tickerplant is listening for messages from the feedhandler, we can start to look at the creation of this feed. The code sections of note within this are the following
+Once the tickerplant is listening for messages from the feedhandler, we can start to look at how this feed was produced. The code sections of note within this are the following
 
 ```q
 // Open a connection to the tickerplant
@@ -556,9 +556,9 @@ Looking closely at the feed function above, it is clear that this is generally f
 
 3. The trained model is used to predict the class of the tweet
 
-The divergence comes once we have classified the tweet. At this point, the table appropriate for the class is updated using the `upd.vals` function. The classification time, the class label and the cleaned tweet are inserted into the appropriate tables.
+The divergence comes once tweets have been classified. At this point, the table appropriate for the class is updated using the `upd_vals` function. The classification time, the class label and the cleaned tweet are inserted into the appropriate tables.
 
-The feed is kicked off, at which point the required libraries are loaded into the feed process
+The feed is started, at which point the required libraries are loaded into the feed process
 
 ```q
 $q feed.q
@@ -572,7 +572,7 @@ Loading time.q
 q)\t 100
 ```
 
-At this point, we can set up an rdb to allow us to query the tables associated with each class. For the sake of simplicity, the rdb in this example is subscribed to all the tables. However, this could be modified based on use-case
+At this point, an rdb cna be set up to allow a user to query the tables associated with each class. For the sake of simplicity, the rdb in this example is subscribed to all the tables. However, this could be modified based on use-case
 
 ```q
 $q tick/r.q -p 5011
@@ -600,7 +600,7 @@ In conclusion, it is clear from the results above that the use of an LSTM archit
 
 A number of limiting factors hamper the ability to create a better model with the data available. These are as follows:
 
-1. The dataset used was limited in size with only 7,800 classified tweets readily available. Given the 'noisy' nature of tweets this creates difficulties around producing a reliable model. A larger corpus would likely produce a better representation of the language used in flooding scenarios and thus allow a better model to be produced.
+1. The dataset used was limited in size with only 7,800 classified tweets readily available. Given the 'noisy' nature of tweets this creates difficulties around producing a reliable model. A larger corpus would likely have produced a better representation of the language used in flooding scenarios and thus allow a better model to be produced.
 
 2. The human-annotated data can be unreliable. While the data was collected and tagged by CrisisNLP, given the similarity of some of the classes, it may be the case that mistakes being made by the model are accurate representation of the true class. This is certainly true in the case of the data from India and Pakistan, where a reference for the quality of the classifications is provided in the raw dataset.
 
