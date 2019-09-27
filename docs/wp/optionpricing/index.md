@@ -158,10 +158,14 @@ Asian Black Scholes Price:    5.556009
 
 The first stage in predicting an option price is to generate a set of random numbers using either MC or QMC methods. In the below example we generate 512 pseudo-random and Sobol sequence numbers, with results plotted for comparison.
 
+Random numbers are generated using the Mersenne Twister <sup>[12]</sup> number generator which has 1 parameter, the number of steps.
+
+The Sobol sequence generator takes in 2 arguments, the index of the point (0 < i < 2<sup>31</sup> - 1) and the dimension of the Sobol sequence, i.e. the number of steps (0 < d < 1025).
+
 ```q
-q)/ Functions to generate n numbers (random or Sobol) in d dimensions
+/ Functions to generate n numbers (random or Sobol) in d dimensions
 q)rdmngen:{[n;d](d;n)#mtrand3 d*n}
-q)sobngen:{[n;d]sobolrand 0;flip sobolrand each n#d}
+q)sobngen:{[n;d]flip sobolrand[d]each 1+til n}
 q)data:(rdmngen;sobngen).\:nsteps,2
 q)subplot[data;("Random";"Sobol");2;2#`scatter]
 ```
@@ -185,7 +189,7 @@ In the example below we convert the uniform generated Sobol sequence to a Gaussi
 q)zsob:invcnorm each sob:last data
 q)subplot[(sob;zsob);("Sobol Uniform";"Sobol Gaussian");2;2#`scatter]
 ```
-<img src="img/sobgaussdist.png" style="height:300px">
+<img src="img/sobgaussdist.png">
 
 The differences between the Gaussian distributions produced for random and Sobol sequences are best demonstrated for a small number of timesteps, e.g. 64. Below we plot the 1D Gaussian distributions for both random and Sobol number generation across 64 timesteps.
 
@@ -196,7 +200,7 @@ q)/ Calculates Gaussian variates for 64 steps, in 2 dimensions
 q)dist:gausscnv[;64;2]each`rdm`sob
 q)subplot[dist;("Random";"Sobol");2;2#`hist]
 ```
-<img src="img/bin64.png" style="height:300px">
+<img src="img/bin64.png">
 
 As expected the Sobol sequence exhibits a Gaussian curve with much better statistical properties than the random number sequence <sup>[11]</sup>.
 
@@ -217,7 +221,7 @@ q)bbridge:{[n;dt]
 Wiener path:
 
 ```q
-q)wpath:{[n;d]$[(::)~d`bb;sums;d`bb]invcnorm$[d`sobol;sobolrand;mtrand3]n}
+q)wpath:{[u;d]$[(::)~d`bb;sums;d`bb]invcnorm u}
 ```
 
 An example of how the Brownian bridge is built is shown below up using `bbdemo`. The function outputs a table with n timesteps, in this case n = 8, showing the order in which steps are added to the path. Note that `i0` was added here, where we assume that it has a value equal to 0.
@@ -270,14 +274,17 @@ bidx ridx lidx lwt rwt sigma
 ```
 <img src="img/sigma.png">
 
-Once the Brownian bridge is intialized, it can be used to transform Gaussian variates into a Wiener path random walk. In the cell below, a Wiener path with 512 timesteps is constructed using a Sobol sequence (of length 512) and the Brownian bridge constructed previously. Note that the function `wpath` takes the following arguments:
-
-- `n` - Number of timesteps.
+Once the Brownian bridge has been intialized, it can be used to transform Gaussian variates into a Wiener path random walk. Below, a Wiener path with 512 timesteps is constructed using a Sobol sequence (of length 512) and the Brownian bridge constructed previously. Note that the function `wpath` takes the following arguments:
+- `u` - Sequence of generated numbers, Sobol or random.
 - `d` - Dictionary indicating whether to use standard discretization or Brownian bridge construction, and whether to use Sobol sequences (`1b`) or pseudo-random numbers (`0b`). If using a Brownian bridge, the initial Brownian bridge must be passed in, if not use `(::)`.
 
 ```q
-q)wpath[nsteps;`bb`sobol!(bbex;1b)
--0.3261343 -0.124455 -0.7468779 -0.7283514 -0.02784596 -0.1341059 -0.09226226 0.1405605 -0.5829703 -2.99527..
+q)d:`bb`sobol!(bbex;1b)
+q)show w:wpath[sobolrand[nsteps;2];d]
+-0.4450092 0.06385387 -0.1017726 -1.221271 -0.9099617 -1.552524 -0.5667251 -0.5347982 -0.3631799 -1.145434 ..
+q)plt[`:title]"Wiener path random walk";
+q)plt[`:plot]w;
+q)plt[`:show][];
 ```
 <img src="img/wiener.png">
 
@@ -285,16 +292,29 @@ q)wpath[nsteps;`bb`sobol!(bbex;1b)
 At this point, the Wiener path is converted into an asset price path using the function below.
 
 ```q
-q)spath:{[n;d;pd]pd[`s]*exp(wpath[n;d]*pd[`v]*sqrt dt)+(1+til n)*dr:(pd[`r]-pd[`q]+.5*v*v:pd`v)*dt:pd[`t]%n}
+spath:{[u;n;d;pd]pd[`s]*exp(wpath[u;d]*pd[`v]*sqrt dt)+(1+til n)*dr:(pd[`r]-pd[`q]+.5*v*v:pd`v)*dt:pd[`t]%n}
 ```
 
-Here we calculate six different asset price paths and overplot them for comparison. 512 timesteps are again used, with Sobol sequences and Brownian bridge approximation.
+Here we calculate six different asset price paths and overplot them for comparison. We start by generating the Sobol sequences for 8 paths with 512 timesteps, incrementing the Sobol index each time. Brownian bridge approximation is also used.
 
 ```q
+q)-1"Generated sequences: \n";
+q)show u:sobolrand[nsteps;]each 2+til 8;
 q)plt[`:title]"Asset Price Path";
-q)do[6;plt[`:plot]spath[nsteps;d;pd]];
+q)plt[`:plot] each spath[;nsteps;d;pd]each u;
 q)plt[`:show][];
+Generated sequences: 
+
+0.25   0.75   0.25   0.75   0.25   0.75   0.25   0.25   0.75   0.75   0.25   0.25   0.75   0.75   0.25   0...
+0.75   0.25   0.75   0.25   0.75   0.25   0.75   0.75   0.25   0.25   0.75   0.75   0.25   0.25   0.75   0...
+0.375  0.625  0.125  0.875  0.875  0.125  0.625  0.125  0.875  0.625  0.125  0.375  0.375  0.125  0.625  0...
+0.875  0.125  0.625  0.375  0.375  0.625  0.125  0.625  0.375  0.125  0.625  0.875  0.875  0.625  0.125  0...
+0.125  0.375  0.375  0.125  0.625  0.875  0.875  0.375  0.125  0.375  0.375  0.125  0.625  0.875  0.875  0...
+0.625  0.875  0.875  0.625  0.125  0.375  0.375  0.875  0.625  0.875  0.875  0.625  0.125  0.375  0.375  0...
+0.3125 0.3125 0.6875 0.5625 0.1875 0.0625 0.9375 0.5625 0.0625 0.8125 0.1875 0.6875 0.6875 0.6875 0.1875 0...
+0.8125 0.8125 0.1875 0.0625 0.6875 0.5625 0.4375 0.0625 0.5625 0.3125 0.6875 0.1875 0.1875 0.1875 0.6875 0...
 ```
+
 <img src="img/asset.png">
 
 #### 5. Convert into option price
@@ -311,14 +331,30 @@ Asian:
 q)mcAsiaCall:{[m;n;d;pd]exp[neg pd[`r]*pd`t]*avg 0|(last each prds each xexp[;1%n]spath[;d;pd]each m#n)-pd`k}
 ```
 
-Here we run the functions for 512 timesteps, 256 paths and 1 trial. Note that the index in `sobolrand` must be reset before each trial. This can be done using `sobolrand 0`.
+We also need a number generator function for l trials, m paths and n steps which can be used with the Sobol or random number generators.
+```q
+numgen:{[ng;l;m;n]ng@''$[ng~mtrand3;(l;first m)#n;(0N;m)#1+til l*m]}
+```
+
+Here we demonstrate how to run these functions below for 512 timesteps, 256 paths and 5 trials. Sequences are generated for Sobol sequences using the above numgen function which will produce a sequence for each path and each trial.
 
 ```q
+q)ntrials:5
 q)npaths:256
-q)sobolrand 0;-1"European Monte Carlo Price: ",string mcEuroCall[npaths;nsteps;`bb`sobol!(bbex;1b);pd];
-q)sobolrand 0;-1"Asian Monte Carlo Price:    ",string mcAsiaCall[npaths;nsteps;`bb`sobol!(bbex;1b);pd];
-European Monte Carlo Price: 10.2713
-Asian Monte Carlo Price:    5.367306
+q)-1"Generated sequences:\n";
+q)show 5#u:first numgen[sobolrand nsteps;ntrials;npaths;nsteps]
+q)-1"\nEuropean Monte Carlo Price: ",string mcEuroCall[u;nsteps;`bb`sobol!(bbex;1b);pd];
+q)-1"Asian Monte Carlo Price:    ",  string mcAsiaCall[u;nsteps;`bb`sobol!(bbex;1b);pd];
+Generated sequences:
+
+0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5   0.5  ..
+0.25  0.75  0.25  0.75  0.25  0.75  0.25  0.25  0.75  0.75  0.25  0.25  0.75  0.75  0.25  0.25  0.75  0.75 ..
+0.75  0.25  0.75  0.25  0.75  0.25  0.75  0.75  0.25  0.25  0.75  0.75  0.25  0.25  0.75  0.75  0.25  0.25 ..
+0.375 0.625 0.125 0.875 0.875 0.125 0.625 0.125 0.875 0.625 0.125 0.375 0.375 0.125 0.625 0.375 0.625 0.375..
+0.875 0.125 0.625 0.375 0.375 0.625 0.125 0.625 0.375 0.125 0.625 0.875 0.875 0.625 0.125 0.875 0.125 0.875..
+
+European Monte Carlo Price: 10.28224
+Asian Monte Carlo Price:    5.365942
 ```
 
 Remembering that the Black-Scholes option prices for the same number of timesteps were:
@@ -335,7 +371,9 @@ Asian Black Scholes Price:    5.556009
 In this section we deploy all of the aforementioned techniques and compare the results.
 
 !!!note
-	The below example can be run from the terminal using the following commands:
+	The below example can be run from the terminal across multiple threads using the following commands:
+
+	```$ q -s 8
 
 	```q)\l op.q```
 
@@ -392,20 +430,20 @@ The below functions calculate the RMSE between the Black Scholes and MC/QMC pric
 ```q
 q)/ Run all techniques for option pricing
 q)runall:{[bb;pd;l;n;m]
-   st:.z.p;e:run[`euro;bsEuroCall pd;bb;pd;l;n]each m;
+   st:.z.p;0N!i.rcol;e:i.run[`euro;bsEuroCall pd;bb;pd;l;n]each m;
    -1"European: time taken = ",string[.z.p-st],"\n";
-   st:.z.p;a:run[`asia;bsAsiaCall[n;pd];bb;pd;l;n]each m;
-   -1"Asian:    time taken = ",string .z.p-st;
+   st:.z.p;0N!i.rcol;a:i.run[`asia;bsAsiaCall[n;pd];bb;pd;l;n]each m;
+   -1"Asian: time taken = ",string .z.p-st;
    e,a}
-q)/ Show individual results tables
-q)rt:{[t;m]show delete mkt from select from t where mkt=m}
-q)/ Run Asian and European models for a single path
-q)run:{[mkt;bs;bb;pd;l;n;m]
+q)i.d:`bb`sobol!
+q)i.rcol:`mkt`npaths`rmse_bb_sobol`rmse_std_sobol`rmse_std_rdm`prx_bb_sobol`prx_std_sobol`prx_std_rdm`prx_bs
+q)i.rmse:{sqrt avg x*x-:y}
+q)i.run :{[mkt;bs;bb;pd;l;n;m]
    mc:$[mkt~`asia;mcAsiaCall;mcEuroCall][;n;;pd];
-   sobolrand 0;ea:i.rmse[bs]a:mc[;i.d(bb;1b)]each k:l#m;
-   sobolrand 0;eb:i.rmse[bs]mc[;i.d(::;1b)]each k;
-   ec:i.rmse[bs]mc[;i.d(bb;0b)]each k;
-   i.rcol!(mkt;m;ea;eb;ec;last a;bs)}
+   ea:i.rmse[bs]a:mc[;i.d(bb;1b)]each sob:numgen[sobolrand n;l;m;n];
+   eb:i.rmse[bs]b:mc[;i.d(::;1b)]each sob;
+   ec:i.rmse[bs]c:mc[;i.d(bb;0b)]each numgen[mtrand3;l;m;n];
+   i.rcol!0N!(mkt;m;ea;eb;ec;last a;last b;last c;bs)}
 ```
 
 ### Compare results
@@ -416,25 +454,25 @@ q)r:runall[bb;pd;l;n;m]
 q)select from r where mkt=`asia
 mkt  npaths rmse_bb_sobol rmse_std_sobol rmse_std_rdm prx_bb_sobol prx_std_sobol prx_std_rdm prx_bs  
 -----------------------------------------------------------------------------------------------------
-asia 8      1.68821       2.013819       3.147605     6.926262     5.342983      12.26076    5.551409
-asia 16     0.7919814     1.368621       1.711212     6.038532     6.48064       4.374625    5.551409
-asia 32     0.4884619     0.9335427      1.104675     6.008211     7.071975      6.579842    5.551409
-asia 64     0.2670961     0.5958815      0.9631084    5.47246      5.124664      6.130296    5.551409
-asia 128    0.1364009     0.3684939      0.5781844    5.699357     5.712784      5.205714    5.551409
-asia 256    0.0712398     0.2190598      0.4188585    5.637535     5.490097      5.577969    5.551409
-asia 512    0.04164343    0.162801       0.3104471    5.559133     5.282835      5.752811    5.551409
-asia 1024   0.02488236    0.1251515      0.1838573    5.576541     5.548824      5.957194    5.551409
+asia 8      1.044296      2.126291       2.367783     6.461112     5.220244      7.388339    5.551409
+asia 16     0.6879741     1.37292        1.377341     4.369775     6.440017      7.051311    5.551409
+asia 32     0.3959254     0.90278        1.2315       5.445392     6.276696      7.052442    5.551409
+asia 64     0.2453828     0.4006613      1.006066     5.641087     5.432976      5.68178     5.551409
+asia 128    0.1543742     0.3089822      0.5366735    5.473975     5.609705      5.874212    5.551409
+asia 256    0.0771557     0.2283313      0.6641969    5.590241     5.307291      5.522739    5.551409
+asia 512    0.03863931    0.1614974      0.3205372    5.576155     5.22571       5.24652     5.551409
+asia 1024   0.01975347    0.166499       0.2591332    5.544304     5.629553      5.718109    5.551409
 q)select from r where mkt=`euro
 mkt  npaths rmse_bb_sobol rmse_std_sobol rmse_std_rdm prx_bb_sobol prx_std_sobol prx_std_rdm prx_bs  
 -----------------------------------------------------------------------------------------------------
-euro 8      2.201757      3.4776         3.98521      12.33432     8.626886      13.09728    10.45058
-euro 16     1.246201      2.696852       3.699515     11.53213     13.80096      11.89048    10.45058
-euro 32     0.6918545     1.746251       3.556733     11.06003     11.68062      12.73627    10.45058
-euro 64     0.3797879     1.174968       1.870878     10.78884     9.449268      14.08304    10.45058
-euro 128    0.2065756     0.7232412      1.521816     10.63613     10.58083      8.916734    10.45058
-euro 256    0.1115481     0.426031       0.9262192    10.5514      10.21488      9.565821    10.45058
-euro 512    0.05989714    0.2955258      0.7497614    10.50504     10.43822      10.11798    10.45058
-euro 1024   0.03198992    0.2377595      0.5633116    10.4798      10.41221      10.14242    10.45058
+euro 8      2.218523      3.328543       5.209454     13.86836     4.627863      20.38541    10.45058
+euro 16     1.345787      2.442911       3.676035     9.206011     12.88644      12.20984    10.45058
+euro 32     0.6865024     1.623545       3.015535     9.879788     11.36182      5.68257     10.45058
+euro 64     0.3774031     0.9891046      1.967627     10.90519     11.03423      9.034532    10.45058
+euro 128    0.2089234     0.5977986      1.619673     10.34505     11.26803      7.360597    10.45058
+euro 256    0.117329      0.3648233      1.065048     10.52265     10.26664      8.453786    10.45058
+euro 512    0.05984563    0.3127605      0.7586819    10.50504     9.799289      11.4056     10.45058
+euro 1024   0.03176637    0.2853521      0.3566248    10.43112     10.29892      11.01441    10.45058
 ```
 
 #### Option Prices
@@ -466,7 +504,7 @@ q)prxerrplot[r;`logrsme]
 
 ## Conclusion
 
-In this paper we demonstrated that it is possible to calculate option prices using both Black-Scholes and Monte Carlo/Quasi-Monte Carlo methods in kdb+/q. The Monte Carlo/Quasi-Monte Carlo methods used deployed different implementations of both Wiener path approximation and random number generation.
+In this paper we demonstrated that it is possible to calculate option prices using both Black-Scholes and Monte Carlo/Quasi-Monte Carlo methods in kdb+/q. The Monte Carlo/Quasi-Monte Carlo methods deployed different implementations of both Wiener path approximation and random number generation.
 
 Looking at the results produced, it is clear that both the option price produced and the resulting RMSE/log RMSE converged fastest when compared with the Black-Scholes price for the Quasi-Monte Carlo approach, with Sobol sequence number generation and Brownian bridge construction.
 
@@ -496,4 +534,4 @@ I gratefully acknowledge Sergei Kucherenko for allowing us to create a version o
 9. Normal distribution. En.wikipedia.org. https://en.wikipedia.org/wiki/Normal_distribution. Published 2019. Accessed September 11, 2019.
 10. P. Glasserman 2003, 'Monte Carlo Methods in Financial Engineering', _Springer_.
 11. S. Kucherenko 2008. 'High Dimensional Sobol's Sequences And Their Application'. Available at http://www.broda.co.uk/doc/SobolSeq_report.pdf. Accessed September 23, 2019.
-
+12. Mersenne Twister. En.wikipedia.org. https://en.wikipedia.org/wiki/Mersenne_Twister. Published 2019. Accessed September 27, 2019.
