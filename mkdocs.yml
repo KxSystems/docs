@@ -556,6 +556,7 @@ nav:
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Time-series simplification: wp/ts-shrink/index.md
     - Signal processing and q: wp/signal-processing/index.md
+    - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
     - Working with sym files: wp/symfiles.md
     - WebSockets: wp/websockets/index.md

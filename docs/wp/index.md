@@ -26,7 +26,6 @@ keywords: kdb+, q, technical, white paper
 * [**Java API** for kdb+](java-api/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/java-api-a4.pdf), [US&nbsp;Letter](/download/wp/java-api-us.pdf)</small>
 * ==new== [**Lightning tickerplants**: Pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/lightning-a4.pdf), [US&nbsp;Letter](/download/wp/lightning-us.pdf)</small>
 * [Building **real-time tick subscribers**](rt-tick/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/building_real_time_tick_subscribers.pdf)
-* **Socket sharding** with kdb+ and Linux &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](socket-sharding.pdf)
 * [Kdb+ and **WebSockets**](websockets/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/websockets-a4.pdf), [US&nbsp;Letter](/download/wp/websockets-us.pdf)</small>
 
 
@@ -66,6 +65,7 @@ keywords: kdb+, q, technical, white paper
 * [**Multi-threading** in kdb+: Performance optimizations and use cases](multi-thread/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
 * [**Permissions** with kdb+](permissions/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/permissions_with_kdb.pdf)
 * [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/query-routing-a4.pdf), [US&nbsp;Letter](/download/wp/query-routing-us.pdf)</small>
+* [**Socket sharding** with kdb+ and Linux](socket-sharding/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/socket-sharding.pdf)
 * [**Time-series simplification** in kdb+: a method for dynamically shrinking Big Data](ts-shrink/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
 * ==new== [Working with **sym files**](symfiles.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/symfiles-a4.pdf), [US&nbsp;Letter](/download/wp/symfiles-us.pdf)</small>
 * [Kdb+tick profiling for **throughput optimization**](tick-profiling.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)

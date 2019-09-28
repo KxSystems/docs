@@ -74,7 +74,7 @@ In beta on [GitHub](https://github.com/KxSystems/jupyterq): a Jupyter kernel for
 
 <small>2018.01.25</small>
 
-New white paper [Socket sharding with kdb+ on Linux](../wp/socket-sharding.pdf)
+New white paper [Socket sharding with kdb+ on Linux](../wp/socket-sharding/index.md)
 
 
 ## <i class="fas fa-share-alt"></i> Machine learning

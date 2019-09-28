@@ -13,7 +13,7 @@ The command line for invoking kdb+ has the form:
 
 ```txt
 q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] 
-    [-p port|servicename|host:port|host:servicename] 
+    [-p [rp,]port|servicename|host:port|host:servicename] 
     [-P N] [-q] [-r :H:P] [-s N] [-t N] [-T N] [-u 1] [-u|U F] [-w N] [-W N] 
     [-z 0|1]
 ```
@@ -188,12 +188,14 @@ Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 
 ## `-p` (listening port)
 
-Syntax: `-p [hostname:][portnumber|servicename]`
+Syntax: `-p [rp,][hostname:][portnumber|servicename]`
 
 Kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified. 
 The port must be available and the process must have permission for the port.
 
 The default is 0 (no listening port). 
+
+Optional parameter `rp` allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
 <i class="far fa-hand-point-right"></i>
 [`\p` system command](syscmds.md#p-listening-port) for detail
