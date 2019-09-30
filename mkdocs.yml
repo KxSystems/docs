@@ -525,6 +525,7 @@ nav:
     - C# GUIs: wp/gui/index.md
     - Card counters: wp/card-counters/index.md
     - Columnar database: wp/columnar-database/index.md
+    - Corporate actions: wp/corporate-actions.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md
     - Data management: wp/data-management.md
