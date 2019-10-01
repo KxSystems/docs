@@ -1,6 +1,6 @@
 ---
-author: Conor McCarthy
-date: October 2018
+author: Deanna Morgan
+date: October 2019
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
 ---
 
@@ -16,13 +16,10 @@ These have been produced to provide kdb+/q users with general-use functions and 
 The toolkit contains:
 
 -   Utility functions relating to important aspects of machine-learning including [data preprocessing](utilities/preproc), [statistical metrics](utilities/metric), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util). 
--   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. 
-    This lets a kdb+/q user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
+-   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. This lets a kdb+/q user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
+-   [Clustering algorithms](clustering/algos.md), with accompanying [k-dimensional tree](clustering/kdtree.md) and [scoring functions](clustering/score.md), can be used in a range of unsupervised learning problems. 
 
-Over time the machine-learning functionality in this library will be extended to include;
-
--   q-specific implementations of machine-learning algorithms
--   broader functionality
+Over time the machine learning functionality in this library will be extended to include broader functionality.
 
 
 ## Requirements

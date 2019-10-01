@@ -446,7 +446,11 @@ nav:
         - Metrics: ml/toolkit/utilities/metric.md
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
-      - FRESH: ml/toolkit/fresh.md  
+      - FRESH: ml/toolkit/fresh.md
+      - Clustering:
+        - Algorithms: ml/toolkit/clustering/algos.md
+        - K-D tree: ml/toolkit/clustering/kdtree.md
+        - Scoring: ml/toolkit/clustering/score.md
     - Natural language processing: ml/nlp.md
   - Knowledge Base:
     - Introduction: kb/index.md
