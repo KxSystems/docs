@@ -1,13 +1,18 @@
 ---
+title: Get going with kdb+ – kdb+ and q documentation
 description: Technical documentation and resources for q and kdb+ developers
+author: Stephen Taylor
+keywords: code, cloud, contact, cookbook, developer, documentation, download, fd, first derivatives, github, ide, interface, kdb+, knowledge base, kx, programming, q, reference, support, tutorial, white paper
 ---
-
 # Get going with kdb+
+
+
+
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
 <div style="display: inline-flex;" markdown="1">
-Kdb+, from [Kx&nbsp;Systems](http://kx.com), is 
+Kdb+, from [Kx](https://kx.com), is 
 
 -   a high-performance historical time-series columnar database
 -   an in-memory compute engine
@@ -18,17 +23,23 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Lightning&nbsp;tickerplants](wp/lightning-tickerplants/)</p>
+    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba.md)</p>
+    
+    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-glasses"></i> [Kdb+ Windows service](kb/windows-service/index.md)</p>
+    
+    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](/phrases/)</p>
+    
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Lightning&nbsp;tickerplants](wp/lightning-tickerplants/index.md)</p>
     
     <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Analyst](/analyst/)</p>
-    
-    <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Developer](/developer/)</p>
-    
-    <p style="text-align: center;" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC drivers](interfaces/odbc-simba.md)</p>
     
 </div>
 
 </div>
+
+[**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
+<i class="fas fa-download"></i>
+[Free download](/developer/getting-started/)
 
 <div style="clear: both">&nbsp;</div>
 
@@ -50,7 +61,7 @@ Kdb+, from [Kx&nbsp;Systems](http://kx.com), is
 </div>
 <div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
-    Whitepapers](wp/index.md "Technical whitepapers on using kdb+")
+    White papers](wp/index.md "Technical white papers on using kdb+")
 </div>
 <div>
     [<i class="fas fa-fw fa-glasses fa-border fa-5x"></i><br/>

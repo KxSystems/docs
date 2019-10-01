@@ -1,4 +1,7 @@
 ---
+title: Kx technology – About – kdb+ and q documentation
+description: The Kx technology consists of kdb+, the database; q, an analytic and query language for kdb+ users; k, the programming language used to implement both kdb+ and q. This reference documents q – the main language for working with kdb+. The kdb+ database and q language were introduced in 2003 as part of a 64-bit rewrite of the earlier kdb database. The underlying k language and databases have been developed since 1993.
+author: Stephen Taylor
 keywords: bug, error, k, kdb+, q, report, technology
 ---
 
@@ -13,7 +16,8 @@ keywords: bug, error, k, kdb+, q, report, technology
 
 
 
-The Kx Systems technology consists of:
+
+The Kx technology consists of:
 
 -   kdb+ – the database
 -   q – an analytic and query language for kdb+ users
@@ -41,7 +45,7 @@ When sending the bug report please ensure that you include the following informa
     m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
     </code></pre>
 
-    If you aren’t using the latest version of kdb+, please confirm that the problem still occurs in the latest version (from [kxdownloads.com](http://kxdownloads.com)) – the problem may already have been reported and fixed.
+    If you aren’t using the latest version of kdb+, please confirm that the problem still occurs in the latest version (from [downloads.kx.com](http://downloads.kx.com)) – the problem may already have been reported and fixed.
 
 -   information about the **OS being used**, machine configuration and file system (if relevant).
 -   details of any **external code** (DLLs, user-written primitives) loaded into the problem session.  
@@ -55,4 +59,4 @@ Don’t send complete applications, or commercially sensitive code or data!
 Don’t send core-dumps unless requested, they’re typically meaningful only on the machine where they were generated. If you know how to generate a backtrace from a core-dump, please do send us the backtrace.
 
 
-<i class="far fa-hand-point-right"></i> [Simon Tatham, How to Report Bugs Effectively](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html)
+<i class="far fa-hand-point-right"></i> [Simon Tatham, How to Report Bugs Effectively](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html)

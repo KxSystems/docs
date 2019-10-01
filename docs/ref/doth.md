@@ -1,8 +1,11 @@
 ---
+title: The .h namespace – Reference – kdb+ and q documentation
+description: The .h namespace contains objects useful for marking up data for an HTTP response.
+author: Stephen Taylor
 keywords: html, kdb+, markup, q
 ---
-
 # The .h namespace
+
 
 
 
@@ -18,10 +21,10 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 
 
 ```txt
-.h.br    linebreak                 .h.http      hyperlinks
-.h.c0    web color                 .h.hu        URI escape
-.h.c1    web color                 .h.hug       URI map
-.h.cd    CSV from data             .h.hy        HTTP response
+.h.br    linebreak                 .h.hu        URI escape
+.h.c0    web color                 .h.hug       URI map
+.h.c1    web color                 .h.hy        HTTP response
+.h.cd    CSV from data             .h.HOME      webserver root
 .h.code  code after Tab            .h.iso8601   ISO timestamp
 .h.data                            .h.jx        table
 .h.ed    Excel from data           .h.logo      Kx logo
@@ -39,6 +42,7 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 .h.htac  element                   .h.xmp       XMP
 .h.htc   element                   .h.xs        XML escape
 .h.html  document                  .h.xt        JSON
+.h.http  hyperlinks
 ```
 
 
@@ -268,19 +272,20 @@ q).h.hr "foo"
 
 Syntax: `.h.ht x`
 
-HTML documentation generator: <!-- for <http://kx.com/q/d/> --> 
-where `x` is a symbol atom, reads file `:src/.txt` and writes file `:x.htm`.
+HTML documentation generator: <!-- for <https://kx.com/q/d/> --> 
+where `x` is a symbol atom, reads file `:src/x.txt` and writes file `:x.htm`.
+(Marqdown is a rudimentary form of Markdown.)
 
 - edit `src/mydoc.txt`
 - ``q).h.ht`mydoc``
-- browse mydoc.htm (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
+- browse `mydoc.htm` (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
 
 Basic Marqdown formatting rules:
 
 - Paragraph text starts at the beginning of the line.
 - Lines beginning with `"."` are treated as section headings.
-- Lines beginning with `"\t"` get wrapped in `<code>`
-- Line data beginning with `" "` get wrapped in `<xmp>`
+- Lines beginning with `"\t"` get wrapped in `code` tags
+- Line data beginning with `" "` get wrapped in `xmp` tags
 - If second line of data starts with `"-"`, draw a horizontal rule to format the header
 - Aligns two-column data if 2nd column starts with `"\t "`
 
@@ -299,7 +304,7 @@ q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 
 ## `.h.htac` (element)
 
-Syntax: `.h.tac[x;y;z]`
+Syntax: `.h.htac[x;y;z]`
 
 Where `x` is the element as a symbol atom, `y` is a dictionary of attributes and their values, and `z` is the content of the node as a string, returns as a string the HTML element. 
 
@@ -408,6 +413,16 @@ q)\head test.txt
 " {\"val\":\"d\",\"x\":1},"
 " {\"val\":\"e\",\"x\":1}]"
 ```
+
+
+## `.h.HOME` (webserver root)
+
+Syntax: `.h.HOME`
+
+String: location of the webserver root. 
+
+<i class="far fa-hand-point-right"></i>
+[Customizing the default webserver](../kb/custom-web.md)
 
 
 ## `.h.iso8601` (ISO timestamp)

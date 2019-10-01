@@ -1,8 +1,10 @@
 ---
+title: WebSockets – Knowledge Base – kdb+ and q documentation
+description: How to work with WebSockets in q
 keywords: browser, json, kdb+, q, websockets
 ---
-
 # WebSockets
+
 
 
 
@@ -215,7 +217,7 @@ Both client and server support permessage-deflate compression.
 
 ## Secure sockets: stunnel
 
-[Stunnel](http://en.wikipedia.org/wiki/Stunnel) <i class="fab fa-wikipedia-w"></i> will provide secure sockets (TLS/SSL) using the OpenSSL library. Stunnel will take any WebSocket server, HTTP server, or similar and secure it – you get `https://` and `wss://` for free.
+[Stunnel](https://en.wikipedia.org/wiki/Stunnel) <i class="fab fa-wikipedia-w"></i> will provide secure sockets (TLS/SSL) using the OpenSSL library. Stunnel will take any WebSocket server, HTTP server, or similar and secure it – you get `https://` and `wss://` for free.
 
 <i class="fab fa-github"></i> 
 [cesanta/ssl_wrapper](https://github.com/cesanta/ssl_wrapper)

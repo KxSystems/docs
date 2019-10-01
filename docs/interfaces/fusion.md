@@ -1,11 +1,14 @@
 ---
+title: Fusion for kdb+ – Interfaces – kdb+ and q documentation
+description: The Fusion interfaces to kdb+ are written for non-kdb+ programmers to use; well documented, with understandable and useful examples; maintained and supported by Kx on a best-efforts basis, at no cost to customers; released under the Apache 2 license; free for all use cases, including 64-bit and commercial use.
 keywords: fusion, interface, kdb+, library, q
 ---
-
 # <i class="fab  fa-superpowers"></i> Fusion for kdb+
 
 
-![fusion](img/840166516.jpg) <!-- Licensed from getty Images -->
+
+![fusion](img/840166516.jpg) <!-- Licensed from Getty Images -->
+
 
 The Fusion interfaces to kdb+ are
 

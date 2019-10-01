@@ -1,9 +1,10 @@
 ---
+title: Style Guide – Style – About – kdb+ and q documentation
 hero: Site style guide
+description: Usage and markup rules for inline style, such as bold and italic type, and for codeblocks and Lists
+author: Stephen Taylor
 keywords: bold, code, italic, kdb+, markdown, q, style
-author: stephen@kx.com
 ---
-
 # <i class="fas fa-pen-nib"></i> Style
 
 
@@ -58,8 +59,8 @@ Use underscores for italic and double asterisks for bold. For example,
 
 ```markdown
 The _quick_ brown fox jumps over the **lazy** dog.
-
 ```
+
 renders as: 
 
 > The _quick_ brown fox jumps over the **lazy** dog.
@@ -80,12 +81,12 @@ q)til 3
 
 Where a code block is a **child** of a list item or an admonition, indent it to mark its parentage. This will break the Prism JavaScript that highlights syntax, so it is necessary to replace the backtick code fences with HTML elements. For example, to put the code block above within a list item:
 
-```html
-<pre><code class="language-q">
+<pre><code class="language-markdown">
+&#060;pre&#062;&#060;code class="language-q"&#062;
 q)til 3
 0 1 2
+&#060;/code&#062;&#060;/pre&#062;
 </code></pre>
-```
 
 ### Lists
 

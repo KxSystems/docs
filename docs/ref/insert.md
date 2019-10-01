@@ -1,8 +1,11 @@
 ---
+title: insert – Reference – kdb+ and q documentation
+description: insert is a q keyword inserts or appends records to a table.
+author: Stephen Taylor
 keywords: append, insert, kdb+, q, qsql, query, record, sql, table
 ---
-
 # `insert`
+
 
 
 

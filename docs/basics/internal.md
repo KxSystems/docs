@@ -1,8 +1,10 @@
 ---
+title: Internal functions – Basics – kdb+ and q documentation
+description: The operator ! with a negative integer as left-argument calls an internal function.
 keywords: bang, functions, internal, kdb+, q
 ---
-
 # Internal functions
+
 
 
 
@@ -80,19 +82,19 @@ q)
 ## `-5!x` (`parse`)
 
 <i class="far fa-hand-point-right"></i> 
-[parse](../ref/parse.md)
+[`parse`](../ref/parse.md)
 
 
 ## `-6!x` (`eval`)
 
 <i class="far fa-hand-point-right"></i> 
-[eval](../ref/eval.md)
+[`eval`](../ref/eval.md)
 
 
 ## `-7!x` (`hcount`)
 
 <i class="far fa-hand-point-right"></i> 
-hcount](../ref/hcount.md)
+[`hcount`](../ref/handles.md#hcount)
 
 
 ## `-8!x` (to bytes)
@@ -292,7 +294,7 @@ Where `x` is a list of 5 items:
     + 0: none
     + 1: q IPC
     + 2: `gzip`
-    + 3: [snappy](http://google.github.io/snappy) (since V3.4)
+    + 3: [snappy](http://google.github.io/snappy/) (since V3.4)
     + 4: `lz4hc` (since V3.6)
 -   _compression level_: an integer 
     +   for `gzip`: between 0 and 9 
@@ -370,12 +372,8 @@ q)(-22!v)=count -8!v
 
 Since V3.1t 2013.03.04
 
-Maps data into memory without copying.
-
-```q
-q)/ previous tricks to force load included .. where i>=0
-q)-23!t:select from get`:t/; 
-```
+Attempts to force the object `x` to be resident in memory by hinting to the OS and/or faulting the underlying memory pages. 
+Useful for triggering sequential access to the storage backing `x`.
 
 
 ## `-24!x` (read-only eval)
@@ -445,6 +443,37 @@ View TLS settings on a handle or current process `-26!handle` or `-26!()`.
 Since V3.4 2016.05.12.  
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: [SSL](../kb/ssl.md)
+
+
+## `-27!(x;y)` (format)
+
+Where 
+
+-   `x` is an int atom
+-   `y` is numeric
+
+returns `y` as a string or strings formatted as a float to `x` decimal places.
+(Since V3.6 2018.09.26.)
+It is atomic and doesn’t take `\P` into account. e.g.
+
+```q
+q)-27!(3i;0 1+123456789.4567)
+"123456789.457"
+"123456790.457"
+```
+
+This is a more precise, built-in version of [`.Q.f`](../ref/dotq.md#qf-format) but uses IEEE754 rounding:
+
+```q
+q).045
+0.044999999999999998
+q)-27!(2i;.045)
+"0.04"
+q).Q.f[2;.045]
+"0.05"
+```
+
+You might want to apply a rounding before applying `-27!`.
 
 
 ## `-29!x` (parse JSON)

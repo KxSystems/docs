@@ -1,8 +1,10 @@
 ---
+title: System commands – Basics – kdb+ and q documentation
+description: System commands control the q environment. 
 keywords: command, kdb+, q, system
 ---
-
 # System commands
+
 
 
 
@@ -19,7 +21,7 @@ for some command `cmd`, and optional parameter list `p`.
 [`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters), 
 [`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
 
-Commands with optional parameters that set values, will show the current values if the parameters are elided.
+Commands with optional parameters that set values, will show the current values if the parameters are omitted.
 
 Some system commands have equivalent command-line parameters.
 
@@ -150,17 +152,17 @@ q)\B              / no longer pending
 
 ## `\c` (console size)
 
-Syntax: `\c`
+Syntax: `\c [size]`
 
-Syntax: `\c [h,w]`
+Show or set console maximum rows and columns.
+`size` is a pair of integers: rows and columns.
+The default `25 80`; values are coerced to the range \[10,2000\].
 
-Sets console height and width. This is the same as the [`-c` command line parameter](cmdline.md#-c-console-size).
+These settings determine when q truncates output with `..`
 
-These settings determine when q elides output with `..`
+!!! tip "You do not usually need to set this"
 
-!!! note 
-
-    You usually don’t need to set this. If the environment variables `LINES` and `COLUMNS` are found they’ll be taken as the default value. See Bash documentation for `shopt` parameter `checkwinsize` to make sure they’re reset as needed.
+    If the environment variables `LINES` and `COLUMNS` are found they’ll be taken as the default value. See Bash documentation for `shopt` parameter `checkwinsize` to make sure they’re reset as needed.
 
 ```q
 q)\c
@@ -180,18 +182,21 @@ q)til each 20+til 10
 ```
 
 <i class="far fa-hand-point-right"></i>
-[`-c`](cmdline.md#-c-console-size)
+[`-c` command-line option](cmdline.md#-c-console-size)
+
 
 
 
 ## `\C` (HTTP size)
 
-Syntax: `\C [h,w]`
+Syntax: `\C [size]`
 
-Sets the HTTP height and width. This is the same as [command-line option `-C`](cmdline.md#-c-http-size). 
+Show or set HTTP display maximum rows and columns. 
+`size` is a pair of integers: rows and columns.
+The default is `36 2000`; values are coerced to the range \[10,2000\].
 
 <i class="far fa-hand-point-right"></i>
-[`-C`](cmdline.md#-c-http-size)
+[`-C` command-line option](cmdline.md#-c-http-size)
 
 
 ## `\cd` (change directory)
@@ -237,16 +242,18 @@ q.s)key`
 
 ## `\e` (error trap clients)
 
-Syntax: `\e [0|1]`
+Syntax: `\e [mode]`
 
-This enables error trapping for client requests. The default is 0 (off).
+This enables error trapping for client requests. The default mode is 0 (off).
 
-When a client request has an error, by default the server clears the stack. This is appropriate for production use as it enables the server to continue processing other client requests.
-
-For development, you can set `\e 1` to enable debugging on the server. In this case, the server suspends on an error, and does not process other requests until the stack is cleared.
+mode | behavior
+:---:|---------
+0    | When a client request has an error, by default the server clears the stack. Appropriate for production use as it enables the server to continue processing other client requests.
+1    | The server suspends on an error, and does not process other requests until the stack is cleared. Appropriate for development: enables debugging on the server. 
+2    | Dumps stack to stderr for untrapped errors during request from a remote. (Since V3.5 2016.10.03)
 
 <i class="far fa-hand-point-right"></i>
-[`-e`](cmdline.md#-e-error-traps)
+[Command-line option `-e`](cmdline.md#-e-error-traps)
 
 
 ## `\f` (functions)
@@ -270,10 +277,16 @@ q){x where x like"ht??"}system"f .h"
 
 Syntax: `\g [mode]`
 
-Since V2.7 2011.02.04. Switch garbage collection between immediate (1) and deferred (0) modes. 
+Show or set garbage-collection mode. 
+The default mode is 0 (deferred) since V2.7 2011.02.04.
+
+B | mode      | behavior
+--|-----------|------------------------------------------------------
+0 | deferred  | returns memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
+1 | immediate | returns (certain types of) memory to the OS as soon as no longer referenced; has an associated performance overhead.
 
 <i class="far fa-hand-point-right"></i> 
-[`-g` command-line option](cmdline.md#-g-garbage-collection)
+[Command-line option `-g`](cmdline.md#-g-garbage-collection)
 
 
 ## `\l` (load file or directory)
@@ -302,7 +315,8 @@ q)\a                 / with tables quote and trade
 
 Syntax: `\o [n]`
 
-Sets the local time offset, as hours from UTC, or as minutes if `abs[n]>23`. Initially, the value is `0N`, meaning that the machine’s offset is used.
+Show or set the local time offset, as `n` hours from UTC, or as minutes if `abs[n]>23`. 
+The initial value of `0N` means the machine’s offset is used.
 
 ```q
 q)\o
@@ -322,34 +336,89 @@ q).z.P
 This corresponds to the `-o` command line parameter.
 
 <i class="far fa-hand-point-right"></i>
-[`-o`](cmdline.md#-o-utc-offset)
+[Command-line option `-o`](cmdline.md#-o-utc-offset)
 
 
 ## `\p` (listening port)
 
-Syntax: `\p [hostname:][portnumber|servicename]`
+Syntax: `\p [rp,][hostname:][portnumber|servicename]`
 
-kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified. 
+Show or set listening port: kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
 The port must be available and the process must have permission for the port.
 
-The default is 0 (no listening port). 
+Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
+
+The default is 0: no listening port. 
 
 <i class="far fa-hand-point-right"></i>
-[Listening port](listening-port.md) for details  
+[Listening port](listening-port.md), 
+[`-p` command-line option ](cmdline.md#-p-listening-port)  
 Reference: [`hopen`](../ref/handles.md#hopen)  
-Command-line options: [`-e`](cmdline.md#-e-tls-server-mode), 
-[`-p`](cmdline.md#-p-listening-port)  
-Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)
+Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)<br>
+Releases: [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)<br>
+White paper: [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
 ## `\P` (precision)
 
 Syntax: `\P [n]`
 
-Sets display precision for floating point numbers, i.e. the number of digits shown. 
+Show or set display precision for floating-point numbers, i.e. the number of digits shown. 
+
+The default value is 7 and possible values are in the range \[0,17\]. 
+A value of 0 means use maximum precision. 
+This is used when exporting to CSV files.
+
+```bash
+$ q
+```
+
+```q
+q)\P                       / default
+7i
+q)reciprocal 7             / 7 digits shown
+0.1428571
+q)123456789                / integers shown in full
+123456789
+q)123456789f               / floats shown to 7 significant digits
+1.234568e+08
+
+q)\P 3
+q)1%3
+0.333
+
+q)\P 10
+q)1%3
+0.3333333333
+```
+
+!!! tip "`.Q.fmt` and `.q.f`"
+
+    Use `.Q.fmt` to format numbers to given width and precision.
+    <pre><code class="language-q">
+    q).Q.fmt[8;6]a            / format to width 8, 6 decimal places
+    "0.142857"
+    </code></pre>
+
+    Use `.Q.f` to format numbers to given precision after the decimal.
+
+    <pre><code class="language-q">
+    q).Q.f[2;]each 9.996 34.3445 7817047037.90  / format to 2 decimal places
+    "10.00"
+    "34.34"
+    "7817047037.90"
+    </code></pre>
 
 <i class="far fa-hand-point-right"></i> 
-[`-P` command-line option](cmdline.md#-p-display-precision)
+[Precision](precision.md), 
+[`-P` command-line option](cmdline.md#-p-display-precision), 
+[`-27!` internal function](internal.md#-27xy-format)  
+Reference: [`.Q.f`](../ref/dotq.md#qf-format), 
+[`.Q.fmt`](../ref/dotq.md#qfmt-format) 
+
+<i class="far fa-hand-point-right"></i> 
+[What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
+
 
 
 ## `\r` (replication master)
@@ -359,7 +428,7 @@ Syntax: `\r`
 This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count. 
 
 <i class="far fa-hand-point-right"></i> 
-[`-r` command-line option](cmdline.md#-r-replicate)
+[`-r` command-line option](cmdline.md#-r-replicate) 
 
 
 ## `\r` (rename)
@@ -371,11 +440,11 @@ This renames file `src` to `dst`. It is equivalent to the Unix `mv` command, or 
 
 ## `\s` (number of slaves)
 
-Syntax: `\s`
+Syntax: `\s [N]`
 
-This queries or limits the number of slaves, set with the [`-s` command line  option](cmdline.md#-s-slaves).
+Show or set the number of slaves available for parallel processing, within the limit set by the [`-s` command-line option](cmdline.md#-s-slaves).
 
-As of V3.5 2017.05.02, slave threads can be adjusted dynamically up to the maximum specified on the command line. A negative number indicates that processes should be used, instead of threads.
+Since V3.5 2017.05.02, slave threads can be adjusted dynamically up to the maximum specified on the command line. A negative `N` indicates processes should be used, instead of threads.
 
 ```q
 q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
@@ -386,8 +455,20 @@ q)system"s 0N" / show max slave threads
 8i
 ```
 
-<i class="far fa-hand-point-right"></i>
-[`-s`](cmdline.md#-s-slaves)
+
+N   | parallel processing uses
+:--:|-------------------------
+\>0 | `N` threads
+<0 | processes with handles in `.z.pd`
+
+For processes:
+
+-   `peach` or `':` will call [`.z.pd`](../ref/dotz.md#zpd-peach-handles) for a list of handles to the processes, which must have been started previously
+-   the absolute value of `-N` in the command line is ignored 
+
+<i class="far fa-hand-point-right"></i> 
+[`-s` command-line option](cmdline.md#-s-slaves), 
+[Parallel processing](peach.md)
 
 
 ## `\S` (random seed)
@@ -421,28 +502,42 @@ q)r~10?10
 1b
 ```
 
-!!! note "Since V3.1 2013.08.19"
+Allows user to save and restore state of the rng. 
+(Since V3.6 2017.09.26.)
 
-    Since V3.1 the behavior is as follows.
+```q
+q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
+```
 
-    Random-number generation (rng) is thread-local.
+!!! note "Thread-local"
+
+    Since V3.1 2013.08.19 random-number generation (rng) is thread-local.
     `\S 1234` sets the seed for the rng for the main thread only.
     The rng in a slave thread is assigned a seed based on the slave thread number.
-    In multithreaded input mode, the seed is based on socket descriptor.
+
+    In multithreaded input mode, the seed is based on the socket descriptor.
     Instances started on ports 20000 through 20099 (slave procs, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
 
 
 ## `\t` (timer)
 
-Syntax: `\t [p]`
+Syntax: `\t [ [N|[:n ]e] ]`
 
-This command has two different uses depending on the parameter given.
+This command has two different uses, according to the parameter.
+If the parameter is omitted, it shows the number of milliseconds between timer ticks: 0 means the timer is off.
 
-An integer parameter is the number of milliseconds between timer ticks. If 0, the timer is turned off, otherwise the timer is turned on and the first tick given. On each tick, the function assigned to 
-[`.z.ts`](../ref/dotz.md#zts-timer) 
-is executed.
+`N` (integer)
+
+: Set the number of milliseconds between timer ticks. If 0, the timer is disabled, otherwise the timer is enabled and the first tick given. On each tick, the function assigned to [`.z.ts`](../ref/dotz.md#zts-timer) is executed.
+
+: This usage corresponds to the [`-t` command-line option](cmdline.md#-t-timer-ticks)
+
+`[:n] e` (expression)
+
+: A q expression `e` (other than a single integer) is executed and the execution time shown in milliseconds. Since V3.0 2011.11.22, if `n` is specified, `e` is executed `n` times. 
 
 ```q
+q)/Show or set timer ticks
 q)\t                           / default off
 0
 q).z.ts:{show`second$.z.N}
@@ -451,43 +546,34 @@ q)13:12:52
 13:12:53
 13:12:54
 \t 0                           / turn off
-```
 
-A parameter of a q expression other than a single integer is executed and the execution time shown in milliseconds.
-
-```q
+q)/Time an expression
 q)\t log til 100000            / milliseconds for log of first 100000 numbers
 3
-q)\t do[100;log til 100000]    / timing for 100 repetitions
-196
-q)\t:100 log til 100000    / timing for 100 repetitions, new syntax of "\t:n expr" since 3.0 2011.11.22
+q)\t:100 log til 100000        / timing for 100 repetitions
 186
 ```
 
-The tick timer usage corresponds to the `-t` command line parameter. 
-
-<i class="far fa-hand-point-right"></i>
-[`-t`](cmdline.md#-t-timer-ticks)
 
 
 ## `\T` (timeout)
 
 Syntax: `\T [n]`
 
-This sets the client execution timeout, as the integer number of seconds a client call will execute before timing out, default 0 (no timeout). Note this is in seconds, not milliseconds like `\t`.
-
-This corresponds to the `-T` command line parameter.
+Show or set the client execution timeout, as `n` (integer) number of seconds a client call will execute before timing out.
+The default is 0: no timeout. 
+Note this is in seconds, not milliseconds like `\t`.
 
 <i class="far fa-hand-point-right"></i>
-[`-T`]](cmdline.md#-t-timeout)
+[`-T` command-line option](cmdline.md#-t-timeout)
 
 
 
 ## `\ts` (time and space)
 
-Syntax: `\ts exp`
+Syntax: `\ts[:n] exp`
 
-Executes the expression and shows the execution time in milliseconds and the space used in bytes.
+Executes the expression `exp` and shows the execution time in milliseconds and the space used in bytes.
 
 ```q
 q)\ts log til 100000
@@ -509,7 +595,7 @@ Syntax: `\u`
 When q is invoked with the `-u` parameter specifying a user password file, then `\u` will reload the password file. This allows updates to the password file while the server is running.
 
 <i class="far fa-hand-point-right"></i>
-[`-u`](cmdline.md#-u-usr-pwd-local)
+[`-u` command-line option](cmdline.md#-u-usr-pwd-local)
 
 
 ## `\v` (variables)
@@ -597,19 +683,17 @@ q)\w 3
 ```
 
 <i class="far fa-hand-point-right"></i>
-[`-w`](cmdline.md#-w-memory)
+[`-w` command-line option](cmdline.md#-w-memory)
 
 
 ## `\W` (week offset)
 
 Syntax: `\W [n]`
 
-Specifies the start of week offset, where 0 is Saturday. The default is 2 = Monday.
-
-This corresponds to the `-W` command line parameter.
+Show or set the start-of-week offset `n`, where 0 is Saturday. The default is 2, i.e Monday.
 
 <i class="far fa-hand-point-right"></i>
-[`-W`](cmdline.md#-w-start-week)
+[`-W` command-line option](cmdline.md#-w-start-week)
 
 
 ## `\x` (expunge)
@@ -632,9 +716,9 @@ N.B. This works only for `.z.p*` variables defined in k before q.k is loaded. e.
 
 ## `\z` (date parsing)
 
-Syntax: `\z [0|1]`
+Syntax: `\z [B]`
 
-Specifies the format for date parsing. 0 is "mm/dd/yyyy" and 1 is "dd/mm/yyyy".
+Show or set the format for `"D"$` date parsing. `B` is 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
 
 ```q
 q)\z
@@ -647,7 +731,7 @@ q)"D"$"06/01/2010"
 ```
 
 <i class="far fa-hand-point-right"></i>
-[`-z`](cmdline.md#-z-date-format)
+[`-z` command-line option](cmdline.md#-z-date-format)
 
 
 ## `\1` & `\2` (redirect)
@@ -772,7 +856,7 @@ Syntax: `\\`
 
 
 
-## OS Commands
+## OS commands
 
 If an expression begins with `\` but is not recognized as a system command, then it is executed as an OS command.
 
@@ -787,7 +871,7 @@ q)\ls                 / usual ls command
 ..
 ```
 
-!!! warning "Typos can get passed to the OS."
+!!! warning "Typos can get passed to the OS"
 
 > When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [<i class="fab fa-twitter"></i> DevOps Borat](https://twitter.com/devops_borat)
 

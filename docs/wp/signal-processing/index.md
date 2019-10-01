@@ -1,10 +1,10 @@
 ---
-title: Signal processing and q
+title: Signal processing and q – White Papers – kdb+ and q documentation
+description: Signal processing is the analysis, interpretation and manipulation of signals to reveal important information. Signals of interest include human speech, seismic waves, images of faces or handwriting, brainwaves, radar, traffic counts and many others. This processing reveals information in a signal that can be obscured by non-useful information, commonly called ‘noise’.
 keywords: kdb+, processing, q, signal
 author: Callum Biggs
 date: August 2018
 ---
-
 # Signal processing and q
 
 
@@ -41,7 +41,7 @@ it is possible to integrate a kdb+ process with Python or C++, and utilize
 these signal-processing routines on a kdb+ dataset, it is entirely possible
 to implement them natively within q.
 
-This whitepaper will explore how statistical signal-processing
+This white paper will explore how statistical signal-processing
 operations (those which assume that signals are stochastic), can be
 implemented natively within q to remove noise, extract useful
 information, and quickly identify anomalies. This integration allows for
@@ -69,9 +69,9 @@ following steps:
 
 This paper will focus on the last three steps listed above, as the first
 topic of data capture has already been covered extensively in previous
-Kx whitepapers, including 
+Kx white papers, including 
 
--   [Kdb+tick profiling for throughput optimization](../kdbtick_profiling_for_throughput_optimization.pdf),
+-   [Kdb+tick profiling for throughput optimization](../tick-profiling.md)
 -   [Disaster recovery for kdb+tick](../disaster-recovery/index.md) 
 -   [Query Routing: a kdb+ framework for a scalable load-balanced](../query-routing/index.md)
 
@@ -687,7 +687,7 @@ of sensors based signal information.
 
 [2] E. Chu and A. George, _Inside the FFT Black Box: Serial and Parallel Fast Fourier Transform Algorithms_, CRC Press, 1999.
 
-[3] PJS, “Window Smoothing and Spectral Leakage”, Siemens, 14 September 2017. [siemens.com](https://community.plm.automation.siemens.com/t5/Testing-Knowledge-Base/Windows-and-Spectral-Leakage/ta-p/432760), accessed 20 May 2018.
+[3] PJS, “Window Smoothing and Spectral Leakage”, Siemens, 14 September 2017. [siemens.com](https://community.sw.siemens.com/s/article/windows-and-spectral-leakage), accessed 20 May 2018.
 
 [4] K. Jones, _The Regularized Fast Hartley Transform_, Springer Netherlands, 2010. 
 
@@ -742,7 +742,7 @@ q).signal.mult[(5 2 1;-3 -8 10);(9 8 -4;2 3 6)]
 
 Fast Fourier Transform, written
 natively in Python 3.6, and also against a well refined, and highly-optimized C based library. The library in question will be the
-[NumPy](http://www.numpy.org/) library, called via the q fusion with
+[NumPy](https://numpy.org) library, called via the q fusion with
 Python – embedPy (details on setting up this environment are available
 from [Machine Learning section](../../ml/embedpy/index.md) on
 code.kx.com.
@@ -859,7 +859,7 @@ in its Capital Markets Training Program.
 I would like to acknowledge the Machine Learning Repository 
 hosted by the University of California, Irvine, for providing the
 real-world data sets used as sample input data sets for the
-methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.html) has an enormous number of freely-available datasets.
+methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.php) has an enormous number of freely-available datasets.
 
 
 ## Notes
@@ -898,7 +898,7 @@ methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml
     the underlying mathematics of a Fourier Transformation. An excellent
     discussion of this phenomena (which avoids the heavy math) can be
     found at [Windows and Spectral
-    Leakage](https://community.plm.automation.siemens.com/t5/Testing-Knowledge-Base/Windows-and-Spectral-Leakage/ta-p/432760)
+    Leakage](https://community.sw.siemens.com/s/article/windows-and-spectral-leakage)
 
 9.  This is because the result of a real valued FFT is conjugate
     symmetric, or Hermitian, with the exception of the first value.

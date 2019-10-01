@@ -1,11 +1,12 @@
 ---
+title: An introduction to neural networks with kdb+ – White Papers – kdb+ and q documentation
+description: A number of different algorithms have been developed around neural networks, and this paper is going to focus on the implementation of a feedforward neural network in kdb+. A feedforward network (also known as a _multi-layer perceptron_) is a type of supervised machine-learning algorithm which uses a series of nonlinear functions layered together with an output. It can be used for classification or regression purposes and has been shown to be a universal approximator – an algorithm that can model any smooth function given enough hidden units.
 author: James Neill
-title: An introduction to neural networks with kdb+
-date: 
 keywords: kdb+, neural network
 ---
-
 # An introduction to neural networks with kdb+
+
+
 
 Due to the desire to understand the brain and mimic the way it works
 by creating machines that learn, neural networks have been studied
@@ -19,11 +20,11 @@ computers can be used to ‘think’ and learn to solve problems given an
 appropriate algorithm. A few interesting examples of this research in
 action include:
 
--   [Aiding in medical diagnostics](http://www.ijesit.com/Volume%202/Issue%202/IJESIT201302_33.pdf)
+-   [Aiding in medical diagnostics](http://www.ijesit.com/Volume%202/Issue%202/IJESIT201302_33.pdf) <!-- NOT RESPONDING 2019.09.02 -->
 
--   Interpreting art and painting images \[[Mordvintsev _et al._](http://googleresearch.blogspot.ca/2015/06/inceptionism-going-deeper-into-neural.html)\] \[[Gatys _et al._](http://arxiv.org/pdf/1508.06576v1.pdf)\]
+-   Interpreting art and painting images \[[Mordvintsev _et al._](https://ai.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html)\] \[[Gatys _et al._](https://arxiv.org/pdf/1508.06576v1.pdf)\]
 
--   [Performing stock market predictions](https://www.sciencedirect.com/science/article/pii/S2077188616300245)<!-- (http://reference.wolfram.com/applications/neuralnetworks/ApplicationExamples/12.2.0.html) -->
+-   [Performing stock market predictions](https://www.sciencedirect.com/science/article/pii/S2077188616300245)
 
 A number of different algorithms have been developed around this field
 of research, and this paper is going to focus on the implementation of
@@ -653,7 +654,7 @@ within machine learning. By taking measurements of certain metrics
 (eg. length and width of sepals) the plants can be classified and
 computationally distinguished from each other. The data and a
 description of the data can be found in the links at
-[archive.ics.uci.edu](http://archive.ics.uci.edu/ml/machine-learning-databases/iris)
+[archive.ics.uci.edu](http://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
 
 We one-hot encode the different possible species of Iris, resulting in
 a neural network with 5 inputs (including the bias neuron), 7 hidden
@@ -735,7 +736,7 @@ training data.
 
 ## Conclusion
 
-In this whitepaper we have explored a proof-of-concept implementation
+In this white paper we have explored a proof-of-concept implementation
 of a feedforward network in kdb+. By constructing the model for the
 network using linear algebra (inputs, outputs and weights represented
 by matrices) we have shown that an array-processing language is well
@@ -773,7 +774,7 @@ machine learning as part of the First Derivatives training programme.
     perspective._ MIT Press.
 
 2.  Hastie, T., Tibshirani, R. and Friedman, J. _The Elements of
-    Statistical Learning._ Springer, New York. ([Online version](http://statweb.stanford.edu/~tibs/ElemStatLearn/))
+    Statistical Learning._ Springer, New York. ([Online version](https://web.stanford.edu/~hastie/ElemStatLearn//))
 
 3.  Alpaydin, E. _Introduction to Machine Learning, Second Edition._ MIT
     Press.

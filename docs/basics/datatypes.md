@@ -1,7 +1,9 @@
 ---
+title: Datatypes – Basics – kdb+ and q documentation
+description: Every kdb+ object has a corresponding datatype. There are 38 datatypes. 
+author: Stephen Taylor
 keywords: atom, boolean, character, datatype, date, datetime, double, float, integer, kdb+, list, long, q, scalar, short, string, symbol, temporal, time, timespan, timestamp, type, vector
 ---
-
 # Datatypes
 
 
@@ -10,19 +12,28 @@ keywords: atom, boolean, character, datatype, date, datetime, double, float, int
 
 
 
-The _datatype_ of an object is given as a short int. 
+Every kdb+ object has a corresponding datatype. There are 38 datatypes. 
+
+The datatype of an object is given as a short int. 
 
 ```q
-q)type 5                      / integer atom
--6h
-q)type 2 3 5                  / integer list
-6h
+q)type 5                      / long (integer) atom
+-7h
+q)type 2 3 5                  / long (integer) list
+7h
 q)type (2;3 5f;"hello")       / mixed list
 0h
 q)type each (2;3 5f;"hello")
--6 9 10h
+-7 9 10h
 q)type (+)                    /not just data
 102h
+```
+
+`type` returns short integers (type `5h` or `"h"`), negative for an atom, positive for a list.
+
+```q
+q)type type 1
+-5h
 ```
 
 <i class="far fa-hand-point-right"></i> 
@@ -90,10 +101,15 @@ _sz_: size in bytes
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
 RO: read only; RW: read-write
 
-
 !!! note "Strings"
 
-    There is no string datatype. The nearest equivalent to a string is a symbol, or a char vector. On this site, _string_ is a synonym for character vector.
+    There is no string datatype. On this site, _string_ is a synonym for character vector (type 10h). In kdb, the nearest equivalent to an atomic string is the symbol.
+
+!!! note "Default integer type"
+
+    The default type for an integer is long (`7h` or `"j"`). 
+    Before V3.0 it was int (`6h` or `"i"`).
+
 
 ### Temporal
 
@@ -201,7 +217,7 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
     337714f8-3d76-f283-cdc1-33ca89be59e9 0a369037-75d3-b24d-6721-5a1d44d4bed5
     </code></pre>
 
-    If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
+    If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
     
     Guids can also be created from strings or byte vectors, using `sv` or `"G"$`, e.g.
     <pre><code class="language-q">
@@ -242,7 +258,7 @@ q)type `city$10?city:`london`paris`rome
 
 ### Nested types
 
-These types are used for mapped lists of lists of the same type. The numbering is 77 + primitive type (e.g. 78 is boolean, 96 is time and 97 is `` `sym$`` enumeration.)
+These types are used for mapped lists of lists of the same type. The numbering is 77 + primitive type (e.g. 77 is [anymap](../releases/ChangesIn3.6.md#anymap), 78 is boolean, 96 is time and 97 is `` `sym$`` enumeration.)
 
 ```q
 q)`:t1.dat set 2 3#til 6

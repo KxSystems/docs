@@ -1,4 +1,11 @@
+---
+title: Installing under Microsoft Windows – Learn – kdb+ and q documentation
+description: How to install kdb+ under Microsoft Windows
+author: Stephen Taylor
+keywords: install, kdb+, microsoft, q, windows
+---
 # <i class="fab fa-windows"></i> Installing under Microsoft Windows
+
 
 
 
@@ -12,7 +19,7 @@ Extract the files to `C:\`, producing a new folder `C:\q`.
 
 ## <i class="fas fa-check"></i> Confirm q is working
 
-Open a command shell window: type :fa-windows:-r or click the Start button, and type `cmd`.
+Open a command shell window: type <i class="fab fa-windows"></i>-r or click the Start button, and type `cmd`.
 
 Launch q by typing 
 

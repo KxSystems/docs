@@ -1,8 +1,11 @@
 ---
+title: avg, avgs, mavg, wavg – Reference – kdb+ and q documentation
+description: avg and wavg are q keywords invoking aggregate functions for the arithmetic and weighted means of a vector. avgs and mavgs are q keywords that invoke uniform functions that return the cumulative and moving means of a vector.
+author: Stephen Taylor
 keywords: arithmetic mean, average, avg, avgs, kdb+, mean, moving, q, statistics, volume-weighted average price, vwap, weighted average
 ---
-
 # `avg`, `avgs`, `mavg`, `wavg`
+
 
 
 
@@ -116,3 +119,14 @@ a  | 10.75
 <i class="far fa-hand-point-right"></i>
 Wikipedia:[Weighted average](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
 Basics: [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)avg (1 2;0N 4)
+0n 3
+```

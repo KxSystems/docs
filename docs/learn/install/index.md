@@ -1,4 +1,11 @@
+---
+title: Installing kdb+ – Learn – kdb+ and q documentation
+description: How to install kdb+
+author: Stephen Taylor
+keywords: install, kdb+, q
+---
 # Installing kdb+
+
 
 
 ## <i class="fas fa-download"></i> Download
@@ -45,9 +52,9 @@ Numerical release versions of the form 2.8, or 3.5 are production code. Versions
 
 Follow the installation instructions for your operating system:
 
--   <i class="fab fa-linux"></i> [Linux](linux)
--   <i class="fab fa-apple"></i> [macOS](macos)
--   <i class="fab fa-windows"></i> [Windows](windows)
+-   <i class="fab fa-linux"></i> [Linux](linux.md)
+-   <i class="fab fa-apple"></i> [macOS](macos.md)
+-   <i class="fab fa-windows"></i> [Windows](windows.md)
 
 
 ## <i class="fas fa-certificate"></i> Licenses
@@ -56,7 +63,7 @@ Follow the installation instructions for your operating system:
 
 Use of the Free 64-bit kdb+ On-Demand Personal Edition is governed by the [On Demand terms and conditions](https://ondemand.kx.com/) and requires a [license key file](../licensing.md) to run.
 
-Use of the Free 32-bit kdb+ Personal Edition is governed by the [32-bit terms and conditions](https://kx.com/download) and requires no license key file.
+Use of the Free 32-bit kdb+ Personal Edition is governed by the [32-bit terms and conditions](https://kx.com/download/) and requires no license key file.
 
 
 ### Commercial

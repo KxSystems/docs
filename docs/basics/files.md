@@ -1,9 +1,10 @@
 ---
-title: File system
+title: File system – Basics – kdb+ and q documentation
+description: Operators and keywords for using the file system
 keywords: file, kdb+, q
 ---
-
 # File system
+
 
 
 
@@ -17,6 +18,13 @@ A file handle is either
     +   `1` – stdout
     +   `2` – stderr
 -   an integer file handle returned by `hopen`
+
+
+Relative filepaths are sought in the following locations, in order.
+
+1.  current directory
+2.  `QHOME`
+3.  `QLIC`
 
 
 ## Writing text to a file handle

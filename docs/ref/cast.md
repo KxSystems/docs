@@ -1,5 +1,7 @@
 ---
-keywords: cast, datatype, dollar, kdb+,q
+title: Cast – Reference – kdb+ and q documentation
+description: Cast is a q operator that converts a data argument to another datatype.
+keywords: cast, datatype, dollar, kdb+, q, tok
 ---
 
 # `$` Cast
@@ -95,6 +97,9 @@ When converting a string to a symbol, leading and trailing blanks are automatica
 q)`$"   IBM   "
 `IBM
 ```
+
+
+!!! tip "Use [Tok](tok.md) to cast a string to numeric or temporal"
 
 
 ## Identity

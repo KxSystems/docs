@@ -1,8 +1,11 @@
 ---
+title: The .Q namespace – Reference – kdb+ and q documentation
+description: The .Q namespace contains utility objects for q programming
+author: Stephen Taylor
 keywords: database, decode, encode, kdb+, namespace, partitioned, q, segmented, utilities
 ---
-
 # The .Q namespace
+
 
 
 
@@ -16,47 +19,73 @@ Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. So
 
 ```txt
 General                                      Database
- .Q.addmonths                                 .Q.chk     fill HDB
- .Q.dd       join symbols                     .Q.dpft    save table
- .Q.def                                       .Q.dsftg   load process save
- .Q.f        format                           .Q.en      enumerate varchar cols
- .Q.fc       parallel on cut                  .Q.fps     streaming algorithm
- .Q.ff       append columns                   .Q.fs      streaming algorithm
- .Q.fk       foreign key                      .Q.fsn     streaming algorithm
- .Q.fmt      format                           .Q.hdpf    save tables
- .Q.ft       apply simple                     .Q.qt      is table
- .Q.fu       apply unique                     .Q.qp      is partitioned
- .Q.gc       garbage collect                      
- .Q.id       sanitize                         Partitioned database state
- .Q.s        plain text                       .Q.cn      count partitioned table
- .Q.V        table to dict                    .Q.bv      build vp
- .Q.v        value                            .Q.ind     partitioned index
- .Q.view     subview                          .Q.MAP     maps partitions
-                                              .Q.par     locate partition
-Environment                                   .Q.PD      partition locations
- .Q.k        version                          .Q.pd      modified partition locations
- .Q.opt      command parameters               .Q.pf      partition field
- .Q.res      k words                          .Q.pn      partition counts
- .Q.w        memory stats                     .Q.pt      partitioned tables
- .Q.x        non-command parameters           .Q.PV      partition values
-                                              .Q.pv      modified partition values
-IPC                                           .Q.vp      missing partitions
- .Q.addr     IP address                         
- .Q.hg       HTTP get                         Segmented database state
- .Q.host     hostname                         .Q.D       partitions
- .Q.hp       HTTP post                        .Q.P       segments
-                                              .Q.u       date based
-Datatype                                     
- .Q.j10      encode binhex                   File I/O
- .Q.j12      encode base64                    .Q.l        load                             
- .Q.M        long infinity                    .Q.Cf       create empty nested char file    
- .Q.ty       type                             .Q.Xf       create file                      
- .Q.x10      decode binhex                    
+ .Q.a        lowercase alphabet               .Q.chk     fill HDB
+ .Q.A        uppercase alphabet               .Q.dpft    save table
+ .Q.addmonths                                 .Q.dsftg   load process save
+ .Q.dd       join symbols                     .Q.en      enumerate varchar cols
+ .Q.def                                       .Q.fps     streaming algorithm
+ .Q.f        format                           .Q.fs      streaming algorithm
+ .Q.fc       parallel on cut                  .Q.fsn     streaming algorithm
+ .Q.ff       append columns                   .Q.hdpf    save tables
+ .Q.fk       foreign key                      .Q.qt      is table
+ .Q.fmt      format                           .Q.qp      is partitioned
+ .Q.ft       apply simple                         
+ .Q.fu       apply unique                    Partitioned database state
+ .Q.gc       garbage collect                  .Q.cn      count partitioned table
+ .Q.id       sanitize                         .Q.bv      build vp
+ .Q.s        plain text                       .Q.ind     partitioned index
+ .Q.V        table to dict                    .Q.MAP     maps partitions
+ .Q.v        value                            .Q.par     locate partition
+ .Q.view     subview                          .Q.PD      partition locations
+                                              .Q.pd      modified partition locations
+Environment                                   .Q.pf      partition field
+ .Q.k        version                          .Q.pn      partition counts
+ .Q.opt      command parameters               .Q.pt      partitioned tables
+ .Q.res      k words                          .Q.PV      partition values
+ .Q.w        memory stats                     .Q.pv      modified partition values
+ .Q.x        non-command parameters           .Q.vp      missing partitions
+                                                
+IPC                                          Segmented database state
+ .Q.addr     IP address                       .Q.D       partitions
+ .Q.hg       HTTP get                         .Q.P       segments
+ .Q.host     hostname                         .Q.u       date based
+ .Q.hp       HTTP post                       
+                                             File I/O
+Datatype                                      .Q.l        load                             
+ .Q.j10      encode binhex                    .Q.Cf       create empty nested char file    
+ .Q.j12      encode base64                    .Q.Xf       create file                      
+ .Q.M        long infinity                    
+ .Q.ty       type                             
+ .Q.x10      decode binhex                   
  .Q.x12      decode base64                    
 ```
 
 In non-partitioned databases the partitioned database state variables remain undefined.
 
+
+
+## `.Q.a` (lower-case alphabet)
+
+Syntax: `.Q.a`
+
+Lower-case Roman alphabet as a char vector. 
+
+```q
+q).Q.a
+"abcdefghijklmnopqrstuvwxyz"
+```
+
+
+## `.Q.A` (upper-case alphabet)
+
+Syntax: `.Q.A`
+
+Upper-case Roman alphabet as a char vector. 
+
+```q
+q).Q.A
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+```
 
 
 ## `.Q.addmonths` 
@@ -387,7 +416,9 @@ q).Q.dsftg[d;s;f;t;g]
 Syntax: `.Q.en[x;y]`
 
 <i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+[Enum Extend](enum-extend.md)  
+Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)  
+White paper: [Working with sym files](../wp/symfiles.md#qen)
 
 
 ## `.Q.ens` (enumerate against domain)
@@ -399,6 +430,9 @@ allows enumeration against domains (and therefore filename) other than `` `sym``
 ```q
 q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 ```
+
+<i class="far fa-hand-point-right"></i>
+White paper: [Working with sym files](../wp/symfiles.md#qens)
 
 
 ## `.Q.f` (format)
@@ -686,7 +720,7 @@ Returns the amount of memory that was returned to the OS.
 
 !!! detail "How it works"
 
-    Kdb+ uses reference counting and [buddy memory allocation](http://en.wikipedia.org/wiki/Buddy_memory_allocation). 
+    Kdb+ uses reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation). 
     The chosen buddy algorithm dices bucket sizes according to powers of 2, and the heap expands in powers of 64MB.
     
     Reference counting means there is never any garbage (so `.Q.gc` is not accurately named) and memory is returned to the heap as soon as it is no longer referenced; if that memory is a vector using >=64MB it may be returned immediately to the OS depending on the command-line option `-g`.

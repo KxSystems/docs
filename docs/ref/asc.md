@@ -1,8 +1,11 @@
 ---
+title: asc, iasc, xasc – Reference – kdb+ and q documentation
+description: asc is a q keyword that returns a sortable argument in ascending order and with the s attribute set; iasc grades its items into ascending order; and xasc sorts a table by specified columns.
+author: Stephen Taylor
 keywords: asc, ascending, grade, iasc, kdb+, q, sort, table, xasc
 ---
-
 # `asc`, `iasc`, `xasc`
+
 
 _Sort and grade: ascending_
 
@@ -175,6 +178,12 @@ city  | s
 ```
 
 
+**Duplicate column names** `xasc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
+
+<i class="far fa-hand-point-right"></i>
+[`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
+
+
 ### Sorting data on disk
 
 `xasc` can sort data on disk directly, without loading the entire table into memory.
@@ -210,9 +219,8 @@ a 43 2
 ```
 
 
-!!! warning "Duplicate keys or column names"
+!!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
 
 <i class="far fa-hand-point-right"></i>

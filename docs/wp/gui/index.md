@@ -1,12 +1,13 @@
 ---
-hero: Interfaces
-title: An introduction to graphical interfaces for kdb+ using C#
+title: An introduction to graphical interfaces for kdb+ using C# – White Papers – kdb+ and q documentation
+description: Over the course of fifteen years, C# has become one of the most common programming languages in the world. It has been used in applications ranging from computer games to medical systems to storage systems. When deployed in an environment which requires database connections, it is traditional for C# to use a form of SQL for the back end, be it MySQL or SQLite to provide data storage and the ability to execute queries. Though functional, kdb+ offers substantial improvements in performance and processing power over this standard method of operation.
 author: Michael Reynolds
 date: May 2013
+hero: Interfaces
 keywords: analytics, connections, csharp, gui, kdb+, queries, validation
 ---
-
 # An introduction to graphical interfaces for kdb+ using C&#35;
+
 
 
 Over the course of fifteen years, C# has become one of the most
@@ -42,11 +43,6 @@ allow a C# application to connect to and run queries against a kdb+
 process.
 
 The C# source code for this paper can be found at <i class="fab fa-github"></i> [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
-
-
-### Author
-
-Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
 
 
 ## Connecting kdb+ and C#
@@ -194,7 +190,7 @@ from connecting to the server without permission.
 In the below process, we have created a simple table with a user and
 their password. The password could be further encrypted using a
 hashing algorithm such as MD5 for extra security (this will not be
-shown in this whitepaper but is highly recommended).
+shown in this white paper but is highly recommended).
 
 ```q
 q)user_table:([users:`mreynolds`user1`user2]password:("password";"password2";"password3"))
@@ -275,7 +271,7 @@ process. Within C#, this will throw a KException with the message
 access in the C# API.
 
 <i class="far fa-hand-point-right"></i> 
-Tom Martin’s whitepaper [“Permissions with kdb+”](../permissions_with_kdb.pdf)
+Tom Martin’s white paper [“Permissions with kdb+”](../permissions/index.md)
 for more detailed information on validation and authentication
 
 ```csharp
@@ -411,7 +407,7 @@ creation of GUIs to interact with kdb+.
 It should be noted that while it is possible to build a dynamic query
 as shown in the below example, it is vulnerable to injection attacks.
 Production systems should be more robust in dealing with these kinds
-of attacks, though this is beyond the scope of this whitepaper.
+of attacks, though this is beyond the scope of this white paper.
 
 Below is an example of a class and GUI that has been constructed using
 simple dropdowns and text boxes yet creates a flexible and powerful
@@ -874,4 +870,10 @@ were built with Visual Studio 2010.
 The C# source code for this paper
 can be found on GitHub at <i class="fab fa-github"></i>
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
+
+
+## Author
+
+Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
+
 

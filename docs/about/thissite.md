@@ -1,10 +1,20 @@
+---
+title: About this site – About – kdb+ and q documentation
+description: Origin and content of the Kx documentation site
+author: Stephen Taylor
+keywords: blog, kdb+, news, q, site
+---
+# About this site
+
+
 This site is the successor to the Mediawiki site. 
 
 It reflects the work of the Kx community since 1993, has many authors, 
 and continues to evolve.  
 
-!!! tip "Please update your bookmarks" 
-    For now the wiki remains at [code.kx.com/wiki](http://code.kx.com/wiki), but it is no longer maintained.
+!!! warning "Please update your bookmarks" 
+
+    For now the wiki remains at [code.kx.com/oldwiki](https://code.kx.com/oldwiki/Main_Page), but it is no longer maintained.
 
 
 ## <i class="fab fa-github"></i> GitHub
@@ -47,6 +57,7 @@ We gratefully acknowledge contributions by pull requests from
 -   Esperanza Lopez Aguilera
 -   Geo Carncross
 -   James Hanna
+-   kylenarocroc
 -   Sean Keevey
 -   Sean O’Hagan
 -   Rian O’Cuinneagain
@@ -57,9 +68,9 @@ We gratefully acknowledge contributions by pull requests from
 
 
 ## <i class="fas fa-balance-scale"></i> License 
-This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-<div style="text-align: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></div>
+<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
 ## <i class="fas fa-camera-retro"></i> Images

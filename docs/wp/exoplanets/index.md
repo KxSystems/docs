@@ -1,11 +1,13 @@
 ---
-title: NASA Frontier Development Lab Exoplanets Challenge
+title: NASA Frontier Development Lab Exoplanets Challenge – White Papers – kdb+ and q documentation
+description: The NASA Frontier Development Lab (FDL) is an applied artificial intelligence (AI) research accelerator, hosted by the SETI Institute in partnership with NASA Ames Research Centre. The programme brings commercial and private partners together with researchers to solve challenges in the space science community using new AI technologies. NASA FDL 2018 focused on four areas of research – Space Resources, Exoplanets, Space Weather and Astrobiology – each with their own separate challenges. This paper will focus on the Exoplanets challenge, which aimed to improve accuracy in finding new exoplanets.
 keywords: kdb+, q, space, NASA, machine learning
 author: Esperanza López Aguilera
 date: December 2018
 ---
-
 # NASA Frontier Development Lab Exoplanets Challenge
+
+
 
 
 
@@ -611,9 +613,11 @@ To sum up, the proposed solution achieves our main goal, detecting a high propor
 
 
 ## Author
+
 Esperanza López Aguilera joined First Derivatives in October 2017 as a Data Scientist in the Capital Markets Training Program.
 
 
 ##  Acknowledgements
+
 I gratefully acknowledge the Exoplanet team at FDL, Chedy Raissi, Jeff Smith, Megan Ansdell, Yani Ioannou, Hugh Osborn and Michele Sasdelli, for their contributions and support.
 

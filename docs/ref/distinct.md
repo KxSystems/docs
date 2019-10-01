@@ -1,8 +1,11 @@
 ---
+title: distinct – Reference – kdb+ and q documentation
+description: distinct is a q keyword that returns the nub (the unique items) of a list.
+author: Stephen Taylor
 keywords: distinct, kdb+, list, q, search, unique
 ---
-
 # `distinct`
+
 
 
 

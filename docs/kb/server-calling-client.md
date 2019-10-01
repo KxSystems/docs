@@ -1,8 +1,10 @@
 ---
+title: Server calling client – Knowledge Base – kdb+ and q documentation
+description: Demonstrates how to simulate a C client handling a get call from a kdb+ server. The Java interface allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses (message type 0) can be sent using k(-c,...).
 keywords: client, kdb+, q, server
 ---
-
 # Server calling client
+
 
 
 This demonstrates how to _simulate_ a C client handling a _get_ call from a kdb+ server. The [Java interface](../interfaces/java-client-for-q.md) allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses ([message type 0](../basics/ipc.md)) can be sent using `k(-c,...)`.
@@ -95,13 +97,13 @@ I main(I n,S*v){I c=khp("",5001);while(1)if(c==sel(c,1e-2))A(sr(c));}
 ## A TUI
 
 Consider a C client `u` that is nothing but a 
-[TUI](http://en.wikipedia.org/wiki/Text-based_user_interface). 
+[TUI](https://en.wikipedia.org/wiki/Text-based_user_interface). 
 It exposes 
 [ncurses](https://en.wikipedia.org/wiki/Ncurses) 
 functionality for a kdb+ listener. For fun, 
-[Conway’s game of Life](http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+[Conway’s game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 will play out on `u` – all drawn by a 
-[q program](http://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
+[q program](https://thesweeheng.wordpress.com/2009/02/10/game-of-life-in-one-line-of-q/).
 
 ```bash
 $ cat t.c
@@ -112,6 +114,5 @@ TODO...
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[Interprocess communication](ipc.md)  
-Basics: [IPC protocol](../basics/ipc.md)
+Basics: [Interprocess communication](../basics/ipc.md)
 

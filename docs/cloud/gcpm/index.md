@@ -1,14 +1,16 @@
 ---
+title: Kdb+ on Google Cloud Platform Marketplace – Cloud – kdb+ and q documentation
+description: Howto deploy kdb+ on Google Cloud Platform Marketplace
 hero: <i class="fas fa-cloud"></i> Cloud
-keywords: Cloud, Google Cloud Platform Marketplace
-title: Kdb+ on GCP Marketplace
+author: Glenn Wright
+keywords: cloud, gcpm, google, google cloud platform marketplace, kdb+
 ---
-
 # Kdb+ on Google Cloud Platform Marketplace
 
 
 
-Select `kdb+` from the [GCP Marketplace console](http://console.cloud.google.com/marketplace) and click _Launch on Compute Engine_
+
+Select `kdb+` from the [GCP Marketplace console](https://console.cloud.google.com/marketplace?pli=1) and click _Launch on Compute Engine_
 
 ![kdb+ on GCL](img/gcpm-landing.png)
 

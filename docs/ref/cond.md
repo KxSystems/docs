@@ -1,8 +1,11 @@
 ---
+title: Cond – Reference – kdb+ and q documentation
+description: Cond is a q ternary operator that enables conditional evaluation.
+author: Stephen Taylor
 keywords: cond, conditional, control, dollar, kdb+, q
 ---
-
 # `$` Cond
+
 
 
 
@@ -49,6 +52,13 @@ These two expressions are equivalent:
 q)$[0;a;r;b;c]
 q)    $[r;b;c]
 ```
+
+!!! warning "Assigning a local variable within a code branch"
+
+    Good style avoids using Cond to control side effects, such as amending variables. (Using [`if`](if.md) is a clearer signal to the reader that a side effect is intended.) 
+
+    Also, setting local variables in a code branch can have [unintended consequences](../basics/function-notation.md#name-scope).
+
 
 
 ## Even numbers of arguments

@@ -1,15 +1,17 @@
 ---
-title: Functional qSQL
+title: Functional qSQL – Basics – kdb+ and q documentation
+description: The functional forms of delete, exec, select and update are particularly useful for programmatically-generated queries, such as when column names are dynamically produced.
 keywords: delete, exec, functional, kdb+, q, select, sql, update
 ---
-
 # Functional qSQL
+
 
 
 
 The functional forms of [`delete`](qsql.md#delete), [`exec`](qsql.md#exec), [`select`](qsql.md#select) and [`update`](qsql.md#update) are particularly useful for programmatically-generated queries, such as when column names are dynamically produced. 
 
 !!! info "Performance"
+
     The q interpreter parses `delete`, `exec`, `select`, and `update` into their equivalent functional forms, so there is no performance difference.
 
 The functional forms are
@@ -17,7 +19,7 @@ The functional forms are
 ```q
 ![t;c;b;a]    /update and delete
 ?[t;c;b;a]    /select and exec
-?[t;i;x]      /simple exec
+?[t;i;p]      /simple exec
 ```
 
 where: 

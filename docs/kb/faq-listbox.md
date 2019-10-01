@@ -1,8 +1,10 @@
 ---
+title: Frequently-asked questions from the k4 listbox – Knowledge Base – kdb+ and q documentation
+description: The k4 Listbox is a community of professional q programmers. This article answers questions frequently asked in the group. 
 keywords: faq, k4, kdb+, listbox, q
 ---
-
 # Frequently-asked questions from the k4 listbox
+
 
 
 
@@ -12,7 +14,7 @@ If you notice a question that is asked more then once on the k4 list, please fee
 
 ## Where can I find archives of the k4 list?
 
-Archives are available to subscribers at the [Listbox](https://www.listbox.com/member/archive). When you follow that link, you will be asked for your e-mail address and the mailing list name. Use `k4` for the list name, and the e-mail address that you used to subscribe to the k4 list.
+Archives are available to subscribers at the [Topicbox](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106). When you follow that link, you will be asked for your e-mail address and the mailing list name. Use `k4` for the list name, and the e-mail address that you used to subscribe to the k4 list.
 
 
 ## How to post test data on the k4 list?
@@ -113,7 +115,6 @@ Start q under `rlwrap` to get [readline](http://tiswww.case.edu/php/chet/readlin
 $ rlwrap l64/q -p 5001
 ```
 
-This is available in most Linux repositories, or from <i class="fab fa-linux"></i> [utopia.knoware.nl](http://utopia.knoware.nl/~hlub/rlwrap) or
-<i class="fab fa-apple"></i> [darwinports.com](http://rlwrap.darwinports.com).
+This is available in most Linux repositories.
 
 An alternative to `rlwrap` is tecla's [`enhance`](http://www.astro.caltech.edu/~mcs/tecla/enhance.html). This is good for `vi`-mode users who would like more of `vi`’s keys functionality – eg `d f x` will delete everything up to the next `x` and you can paste it back, too.  

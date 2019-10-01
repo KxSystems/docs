@@ -1,8 +1,11 @@
 ---
+title: ratios – Reference – kdb+ and q documentation
+description: ratios is a q keyword that returns the ratios between successive items of a list. 
+author: Stephen Taylor
 keywords: division, kdb+, math, mathematics, q, ratio
 ---
-
 # `ratios`
+
 
 
 

@@ -1,8 +1,10 @@
 ---
+title: Logging, recovery and replication – Knowledge Base – kdb+ and q documentation
+description: Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
 keywords: kdb+, log, logging, q, replication
 ---
-
 # Logging, recovery and replication
+
 
 
 
@@ -184,7 +186,7 @@ $ q /mylogs/test -l -p 5000
 
 the replicating process will receive this information when it connects. 
 
-On start-up, the replicating process connects to the logging process, gets the log filename and record count, opens the log file, plays back that count of records from the log file, and continues to receive updates via [TCP/IP](ipc.md). Each record is executed via `value`.
+On start-up, the replicating process connects to the logging process, gets the log filename and record count, opens the log file, plays back that count of records from the log file, and continues to receive updates via [TCP/IP](../basics/ipc.md). Each record is executed via `value`.
 
 If the replicating process loses its connection to the logging process, you can detect that with `.z.pc`. To resubscribe to the logging process, restart the replicating process.
 

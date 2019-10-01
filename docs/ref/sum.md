@@ -1,10 +1,13 @@
 ---
+title: sum, sums, msum, wsum – Reference – kdb+ and q documentation
+description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument. 
+author: Stephen Taylor
 keywords: kdb+, math, mathematics, moving, q, sum, sums, statistics, weight, weighted sum
 ---
-
 # `sum`, `sums`, `msum`, `wsum`
 
 _Sums_
+
 
 
 
@@ -135,3 +138,14 @@ q)2 wsum 1 2 4       / equivalent to sum 2 * 1 2 4
 Wikipedia: [Weighted sum](https://en.wikipedia.org/wiki/Weight_function)  
 Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)sum (1 2;0N 4)
+0N 6
+```

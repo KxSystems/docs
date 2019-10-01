@@ -1,8 +1,13 @@
 ---
+title: system – Reference – kdb+ and q documentation
+description: system is a q keyword that executes a system command.
+author: Stephen Taylor
 keywords: command, kdb+, q, system, system command
 ---
-
 # `system`
+
+
+
 
 _Execute a system command_
 
@@ -86,5 +91,5 @@ ls: egg: No such file or directory
 
 !!! warning "Changing working directory in Windows"
 
-    In the event of an unexpected change to the working directory, Windows users please note <http://blogs.msdn.com/b/oldnewthing/archive/2007/11/21/6447771.aspx>
+    In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
 

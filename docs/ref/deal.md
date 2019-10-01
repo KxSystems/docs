@@ -1,117 +1,101 @@
 ---
-keywords: deal, kdb+, permute, q, rand, random, seed
+title: Roll, Deal, Permute – Reference – kdb+ and q documentation
+description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
+author: Stephen Taylor
+date: July 2019
+keywords: deal, duplicate, kdb+, permute, q, rand, random, seed
 ---
-
 # `?` Roll, Deal, Permute
-
-
-
 
 _Random selections, with or without duplicates_
 
 
-## Roll
+
+
+
+
+## Roll and Deal
 
 _A list of random selections._
 
-Syntax: `x ? y`, `?[x;y]`
+Syntax: `x?y`, `?[x;y]` (Roll)  
+Syntax: `neg[x]?y`, `?[neg[x];y]` (Deal) 
 
-Where `x` is a **positive int atom** and `y` is a:
+Where `x` is an int atom, returns a list of `x` randomly selected items, without duplication if `x` is negative. 
+
+Where `y` is
+
+-   a **list**, the result items are items of `y`
+    <pre><code class="language-q">
+    q)5?\`Arthur\`Steve\`Dennis
+    \`Arthur\`Arthur\`Steve\`Dennis\`Arthur
+    q)2?("a";0101b;\`abc;\`the\`quick;2012.06m)
+    \`abc
+    2012.06m
+    q)-3?\`the\`quick\`brown\`fox
+    \`brown\`quick\`fox
+    </code></pre>
+
+-   an **atom**, the result items have the same type as `y` and are generated as follows
+
+y                       | range        | operator
+:----------------------:|--------------|----------
+integer                 | `til y`      | Roll, Deal
+`0Ng`                   | GUIDs        | Roll, Deal
+float, temporal         | 0 to `y`     | Roll 
+`0i`                    | ints         | Roll 
+`0j`                    | longs        | Roll 
+`0b`                    | `01b`        | Roll 
+`" "`                   | `.Q.a`       | Roll 
+`0x0`                   | bytes        | Roll
+numeric symbol `` `n``  | symbols, each of `n` chars (`n≤8`) from `abcdefghijklmnop` | Roll 
 
 
-### Numeric atom
+```q
+q)10?5                                        / roll 10 (5-sided dice)
+4 2 1 1 3 2 0 0 2 2   
+q)-5?20                                       / deal 5 
+13 11 8 12 19   
+q)-10?10                                      / first 10 ints in random order
+9 3 5 7 2 0 6 1 4 8
+q)(asc -10?10)~asc -10?10
+1b
    
-returns `x` values of the same type as `y` randomly chosen from the range 0 to `y`.
+q)-1?0Ng                                      / deal 1 GUID
+,fd2db048-decb-0008-0176-01714e5eeced
+q)count distinct -1000?0Ng                    / deal 1000 GUIDs
+1000
 
-```q
-q)20?5
-4 3 3 4 1 2 2 0 1 3 1 4 0 2 2 1 4 4 2 4
-q)5?4.5
+q)5?4.5                                       / roll floats
 3.13239 1.699364 2.898484 1.334554 3.085937 
-q)4?2012.09m
+
+q)4?2012.09m                                  / roll months    
 2006.02 2007.07 2007.07 2008.06m
-```
 
+q)30?" "
+"tusrgoufcetphltnkegcflrunpornt"
 
-#### Short symbols
+q)16?0x0                                      / roll 16 bytes
+0x8c6b8b64681560840a3e178401251b68
 
-There is a shorthand special case for generating short symbols (length between 1 and 8) using the first 16 lower-case letters of the alphabet.
+q)20?0b                                       / roll booleans
+00000110010101000100b
 
-```q
-q)10?`3
+q)10?`3                                       / roll short symbols
 `bon`dec`nei`jem`pgm`kei`lpn`bjh`flj`npo
 q)rand `6
 `nemoad
 ```
 
 
-### List
-
-returns `x` items randomly chosen from `y`. 
-
-```q
-q)10?`Arthur`Steve`Dennis
-`Arthur`Arthur`Steve`Dennis`Arthur`Arthur`Arthur`Dennis`Arthur`Dennis
-q)2?("a";0101b;`abc;`the`quick;2012.06m)
-`abc
-2012.06m
-```
-
-
-## Deal
-
-_Random selections without repetition_
-
-Syntax: `x ? y`, `?[x;y]`
-
-Where `x` is a **negative int atom**, and `y` is a:
-
-
-### Integers
-
-Where `y` is an **integer atom** such that `x<=y`, returns `x` integers chosen randomly and without repetition from the range `til y`.
-
-```q
-q)-20?100  /20 different integers from 0-99
-2 40 66 52 86 45 94 84 38 26 33 23 78 49 51 59 44 37 48 53
-q)-20?20   /first 20 integers in random order
-10 19 2 6 17 16 14 8 3 12 13 1 5 11 4 9 18 15 0 7
-q)(asc -20?20)~asc -20?20
-1b
-```
-
-
-### GUIDs
-
-Where `y` is the **null GUID**, returns a list of distinct GUIDs.
-
-```q
-q)-1?0Ng 
-,fd2db048-decb-0008-0176-01714e5eeced
-q)count distinct -1000?0Ng
-1000
-```
-
-!!! warning 
+!!! warning "Successive calls of Deal"
 
     Deal of GUID uses a mix of process ID, current time and IP address to generate the GUID, and successive calls may not allow enough time for the current time reading to change. 
 
-```q
-q)count distinct {-1?0ng}each til 10
-5
-```
-
-
-### Selection from a list
-
-Where `y` is a **list of unique values** and `count[y]>=neg x`, returns `x` items randomly chosen without repetition from `y`.
-
-```q
-q)-3?`Arthur`Steve`Dennis
-`Steve`Arthur`Dennis
-q)-4?`Arthur`Steve`Dennis
-'length
-```
+    <pre><code class="language-q">
+    q)count distinct {-1?0ng}each til 10
+    5
+    </code></pre>
 
 
 ## Permute
@@ -143,20 +127,31 @@ q)0N?("the";1 2 4;`ibm`goog)    / permute items
 
 Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and set the value of the seed with system command [`\S`](../basics/syscmds.md#s-random-seed).)
 
-!!! warning "To use GUIDs as identifiers, ensure `x` is negative." 
+!!! tip "To use GUIDs as identifiers, use Deal, not Roll."
 
-    Otherwise, you will get duplicates, given the same seed:
+```q
+$ q
+..
+q)1?0Ng                                    / roll 1 GUID
+,8c6b8b64-6815-6084-0a3e-178401251b68
+q)\\
+$ q
+..
+q)1?0Ng                                    / roll 1 GUID
+,8c6b8b64-6815-6084-0a3e-178401251b68
+q)\\
+$ q
+..
+q)-1?0Ng                                   / deal 1 GUID
+,2afe0040-2a1b-bfce-ef3e-7160260cf992
+q)\\
+$ q
+..
+q)-1?0Ng                                   / deal 1 GUID
+,753a8739-aa6b-3cb4-2e31-0fcdf20fd2f0
+```
 
-    <pre><code class="language-q">
-    $ q
-    q)1?0Ng
-    ,8c6b8b64-6815-6084-0a3e-178401251b68
-    q)\\
-    $ q
-    q)1?0Ng
-    ,8c6b8b64-6815-6084-0a3e-178401251b68
-    </code></pre>
-
+Roll uses the current seed (`\S 0N`). Deal uses a seed based on process properties and the current time. This means `-10?0Ng` is different from `{first -1?0Ng}each til 10`.
 
 
 ## Errors
@@ -164,6 +159,7 @@ Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on kdb+ startup: s
 error  | cause
 -------|-----------------------------
 length | `neg x` exceeds `count y` 
+type   | `x` is negative (Roll only)
 
 
 <i class="far fa-hand-point-right"></i>

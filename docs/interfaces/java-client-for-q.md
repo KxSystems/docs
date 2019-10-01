@@ -1,13 +1,15 @@
 ---
-keywords: fusion, interface, java, kdb+, q
+title: Using Java with kdb+ – Interfaces – kdb+ and q documentation
+description: How to enable a Java client to query kdb+, subscribe to a kdb+ publisher, and publish to a kdb+ consumer
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+keywords: fusion, interface, java, kdb+, q
 ---
-
-# ![Java](img/java.jpg) Using Java with kdb+
-
+# <i class="fab fa-java"></i> Using Java with kdb+
 
 
-<i class="fab fa-github"></i> [KxSystems/javakdb](https://github.com/KxSystems/javakdb) is the original Java driver, a.k.a `c.java`, from Kx Systems for interfacing [Java](https://www.java.com) with kdb+ via TCP/IP. This driver allows Java applications to
+
+
+<i class="fab fa-github"></i> [KxSystems/javakdb](https://github.com/KxSystems/javakdb) is the original Java driver, a.k.a `c.java`, from Kx for interfacing [Java](https://www.java.com/en/) with kdb+ via TCP/IP. This driver allows Java applications to
 
  - query kdb+
  - subscribe to a kdb+ publisher
@@ -153,18 +155,18 @@ Kdb+ types are mapped to and from Java types by this driver, and the example `sr
 |   [Ljava.lang.String|    (11)symbol vector|                                    42|                              ,&#96;42|
 |   java.sql.Timestamp|       (-12)timestamp|               2017-07-07 15:22:38.976|         2017.07.07D15:22:38.976000000|
 | [Ljava.sql.Timestamp| (12)timestamp vector|               2017-07-07 15:22:38.976|        ,2017.07.07D15:22:38.976000000|
-|           kx.c$Month|           (-13)month|                               2000-12|                              2000.12m|
-|         [Lkx.c$Month|     (13)month vector|                               2000-12|                             ,2000.12m|
+|           kx.c\$Month|           (-13)month|                               2000-12|                              2000.12m|
+|         [Lkx.c\$Month|     (13)month vector|                               2000-12|                             ,2000.12m|
 |        java.sql.Date|            (-14)date|                            2017-07-07|                            2017.07.07|
 |      [Ljava.sql.Date|      (14)date vector|                            2017-07-07|                           ,2017.07.07|
 |       java.util.Date|        (-15)datetime|    Fri Jul 07 15:22:38 GMT+03:00 2017|               2017.07.07T15:22:38.995|
 |     [Ljava.util.Date|  (15)datetime vector|    Fri Jul 07 15:22:38 GMT+03:00 2017|              ,2017.07.07T15:22:38.995|
-|        kx.c$Timespan|        (-16)timespan|                    15:22:38.995000000|                  0D15:22:38.995000000|
-|      [Lkx.c$Timespan|  (16)timespan vector|                    15:22:38.995000000|                 ,0D15:22:38.995000000|
-|          kx.c$Minute|          (-17)minute|                                 12:22|                                 12:22|
-|        [Lkx.c$Minute|    (17)minute vector|                                 12:22|                                ,12:22|
-|          kx.c$Second|          (-18)second|                              12:22:38|                              12:22:38|
-|        [Lkx.c$Second|    (18)second vector|                              12:22:38|                             ,12:22:38|
+|        kx.c\$Timespan|        (-16)timespan|                    15:22:38.995000000|                  0D15:22:38.995000000|
+|      [Lkx.c\$Timespan|  (16)timespan vector|                    15:22:38.995000000|                 ,0D15:22:38.995000000|
+|          kx.c\$Minute|          (-17)minute|                                 12:22|                                 12:22|
+|        [Lkx.c\$Minute|    (17)minute vector|                                 12:22|                                ,12:22|
+|          kx.c\$Second|          (-18)second|                              12:22:38|                              12:22:38|
+|        [Lkx.c\$Second|    (18)second vector|                              12:22:38|                             ,12:22:38|
 |        java.sql.Time|            (-19)time|                              15:22:38|                          15:22:38.995|
 |      [Ljava.sql.Time|      (19)time vector|                              15:22:38|                         ,15:22:38.995|
 

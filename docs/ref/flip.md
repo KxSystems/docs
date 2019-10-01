@@ -1,8 +1,11 @@
 ---
+title: flip – Reference – kdb+ and q documentation
+description: flip is a q keyword that transposes its argument.
+author: Stephen Taylor
 keywords: dictionary, flip, kdb+, list, q, table
 ---
-
 # `flip`
+
 
 
 

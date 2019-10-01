@@ -1,4 +1,6 @@
 ---
+title: med – Reference – kdb+ and q documentation
+description: med is a q keyword that returns the median of its argument.
 keywords: kdb+, median, q, statistics
 ---
 
@@ -24,10 +26,15 @@ q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 
 ## Partitions and segments
 
-In V3.0 upwards `med` signals a rank error when running a median over partitions, or segments. This is deliberate, as previously `med` was returning median of medians for such cases. This should now be explicitly coded as a cascading select.
+`med` signals a part error when running a median over partitions, or segments. 
+(Since V3.5 2017.01.18; from V3.0 it signalled a rank error.)
+This is deliberate, as previously `med` was returning median of medians for such cases. This should now be explicitly coded as a cascading select.
 
 ```q
-q)select med price by sym from select price, sym from trade where date=2001.10.10, sym in `AAPL`LEH
+select med price by sym from 
+  select price, sym from trade where 
+      date within 2001.10.10 2001.10.11, 
+      sym in `AAPL`LEH;
 ```
 
 

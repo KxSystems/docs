@@ -1,8 +1,11 @@
 ---
+title: Debugging – Basics – kdb+ and q documentation
+description: Facilities for debugging q programs
+author: Stephen Taylor
 keywords: debug, errors, kdb+, q, trap
 ---
-
 # Debugging 
+
 
 
 
@@ -271,6 +274,11 @@ q)'type
 q))                 / the server is suspended in a debug session
 ```
 
+
+!!! warning "Keywords"
+
+    Q is an embedded domain-specific language. Many of its keywords are defined as lambdas or projections, and can suspend as described. 
+    
 
 ## See also
 

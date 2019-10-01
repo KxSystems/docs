@@ -1,10 +1,13 @@
 ---
+title: Machine learning <br/>Using embedPy to apply LASSO regression – White Papers – kdb+ and q documentation
+description: From its deep roots in financial technology Kx is expanding into new fields. It is important for q to communicate seamlessly with other technologies. The embedPy interface allows this to be done with Python.
 author: Samantha Gallagher
 date: October 2018
 keywords: analysis, categorical, clean, coefficient, csv, data, embedpy, engineering, error, feature, foreign, house, install, jupyter, kdb+, lasso, learning, library, log, machine, matrix, mean, model, mse, notebook, numerical, polynomial, predict, price, python, q, regression, split, standardize, transform
 ---
-
 # Machine learning: <br/>Using embedPy to apply LASSO regression
+
+
 
 
 
@@ -16,7 +19,7 @@ The interface allows the kdb+ interpreter to manipulate
 Python objects, call Python functions, and load Python libraries. 
 Developers can fuse the technologies, allowing seamless application of q’s high-speed analytics and Python’s extensive libraries.
 
-This whitepaper introduces embedPy, covering both a range of basic
+This white paper introduces embedPy, covering both a range of basic
 tutorials as well as a comprehensive solution to a machine-learning
 project. 
 
@@ -634,7 +637,7 @@ qplt[`:savefig]"lassopred.png";
 
 ## Conclusion
 
-In this whitepaper, we have shown how easily embedPy allows q to
+In this white paper, we have shown how easily embedPy allows q to
 communicate with Python and its vast range of libraries and packages. We
 saw how machine-learning libraries can be coupled with q’s high-speed
 analytics to significantly enhance the application of solutions across
@@ -648,7 +651,7 @@ This interface is useful across many institutions that are developing in
 both languages, allowing for the best features of both technologies to
 fuse into a powerful tool. Further machine-learning techniques powered
 by kdb+ can be found under _Featured Resources_ at 
-[kx.com/machine-learning](https://kx.com/machine-learning/).
+[kx.com/machine-learning](https://kx.com/discover/machine-learning/).
 
 
 ## Author

@@ -1,8 +1,11 @@
 ---
-keywords: enumeration, enum extend, extend, kdb+, list, q, query
+title: Enum Extend  – Reference – kdb+ and q documentation
+description: Enum Extend is a q operator that extends an enumeration.
+author: Stephen Taylor
+keywords: enumerate, enumeration, enum extend, extend, kdb+, list, q, query
 ---
-
 # `?` Enum Extend
+
 
 
 
@@ -52,15 +55,53 @@ q)bar
 `a`b`c
 ```
 
+In detail: 
+
+```q
+`:enumname ?`a`b`c
+```
+
+executes the following steps:
+
+1.  opens the file `enumname` and locks it (see note)
+1.  reads contents of the file `enumname`, interning each symbol, and binds the resulting symbol vector to `enumname`
+1.  enumerates according to `` `enumname ?`a`b`c``
+1.  appends any new symbols to the file `` `:enumname``
+1.  closes file `enumname`, which automatically unlocks it
+
+!!! note "Locking the file"
+
+    The file is locked at a **process** level for **writing** during `.Q.en` only. 
+    Avoid reading from any file which may be being written to. 
+
+    The system call used is <https://linux.die.net/man/3/lockf>.
+
+One can verify that the file system supports the write lock by stracing the following q script `locktest.q` on the filesystem which you are sharing between those machines:
+
+```q
+`:dummysym?`a`b
+\\
+```
+
+```bash
+$ strace q locktest.q 2>&1 | grep F_SETLKW
+fcntl(1024, F_SETLKW, {type=F_WRLCK, whence=SEEK_CUR, start=0, len=0}) = 0
+```
+
+If that return value is not 0, then the lock failed and may not be supported by the chosen filesystem.
+Kdb+ does not report an error if that lock call fails.
+
 
 Enum Extend is a uniform function. 
 
 <i class="far fa-hand-point-right"></i> 
 [Enumerate](enumerate.md),
-[Enumeration](enumeration.md)  
+[Enumeration](enumeration.md),
+[`.Q.en` (enumerate varchar cols)](dotq.md#qen-enumerate-varchar-cols),
+[`?` query overloads](overloads.md#query)  
 Basics: [Enumerations](../basics/enumerations.md),
 [File system](../basics/files.md)  
-_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
-[`?` query](overloads.md#query) 
+Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)  
+_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations) 
 
 

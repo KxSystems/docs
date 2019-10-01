@@ -1,8 +1,10 @@
 ---
+title: Using ODBC with kdb+ – Knowledge Base – kdb+ and q documentation
+description: Q has limited support for ODBC. In general, ODBC is not recommended for large databases (for performance reasons) but may be acceptable for small databases, or for one-off data import and export.
 keywords: database, kdb+, linux, odbc, odbc3, q, windows
 ---
+# <i class="fas fa-database"></i> Using ODBC with kdb+
 
-# ODBC
 
 
 

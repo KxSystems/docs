@@ -1,9 +1,10 @@
 ---
-title: Iterators
+title: Iterators – White Papers – kdb+ and q documentation
+description: Iterators (formerly known as adverbs) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill. The first part of this paper introduces iterators informally. This provides ready access to the two principal forms of iteration – maps and accumulators. The second part of the paper reviews iterators more formally and with greater attention to syntax. We see how iterators apply not only to functions but also to lists, dictionaries and tables. From their syntax we see when parentheses are required, and why.
+author: Stephen Taylor
 date: March 2019
 keywords: accumulator, adverb, applicable value, converge, dictionary, do, iteration, iterator, kdb+, list, loop, map, operator, q, value, while
 ---
-
 # Iterators
 
 
@@ -576,7 +577,7 @@ If `f` is rank 2 or higher, the number of evaluations is determined by the lengt
 
 There are three ways to determine the number of evaluations of `f1` performed by `f1\`. 
 
-A [table in the Reference](../../ref/iterators.md/#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
+A [table in the Reference](../../ref/iterators.md#glyphs) tells us `f1\` is [variadic](../../basics/variadic.md) and can be applied as a unary (Converge) or as a binary (Do or While). 
 
 
 ### Converge
@@ -1025,9 +1026,9 @@ All tests were run using kdb+ 3.6 (2018.10.23).
 
 ## Authors 
 
-Conor Slattery is a Financial Engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
+Conor Slattery is a financial engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
 
-Stephen Taylor is the Kx Systems librarian. 
+Stephen Taylor is the Kx librarian. 
 
-An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](efficient_use_of_adverbs.pdf).
+An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](/download/wp/efficient_use_of_adverbs.pdf).
 

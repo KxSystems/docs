@@ -1,14 +1,13 @@
 ---
+title: Kdb+ and WebSockets – White Papers – kdb+ and q documentation
+description: This paper introduces what WebSockets are and what benefits they hold over standard HTTP. It takes the reader through the set-up of a simple web page that uses WebSockets to connect to a kdb+ process, the steps involved in passing data through the connection, and the various methods for converting data between kdb+ and JavaScript.
+author: Chris Scott and Michael Gracey
+date: March 2018
 hero: Interfaces
-title: Kdb+ and WebSockets
-author:
-    - Chris Scott
-    - Michael Gracey
-date: May 2018
 keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSockets
 ---
-
 # Kdb+ and WebSockets 
+
 
 
 
@@ -50,8 +49,8 @@ updating of tables based on user queries.
 
     As well as q, this paper makes significant use of HTML, CSS and JavaScript. A basic understanding of these will be necessary to take full advantage of this paper, though any complex structures will be examined here in detail. For a crash course on the above languages, please refer to the following resources:
 
-    -   [w3schools.com](http://www.w3schools.com/)
-    -   [codecademy.com ](http://www.codecademy.com/)
+    -   [w3schools.com](https://www.w3schools.com)
+    -   [codecademy.com ](https://www.codecademy.com)
 
 
 ## What are WebSockets?
@@ -122,7 +121,7 @@ generate the HTML markup, the application can be fully customized
 independently of the kdb+ process. In order to receive updates, the
 application will still have to poll the server, which is not ideal for
 real-time data. The full implementation of this method is beyond the
-scope of this whitepaper.
+scope of this white paper.
 
 As WebSocket connections are persistent, the server is able to push
 updates to the client rather than relying on the client to poll for the
@@ -435,7 +434,7 @@ function generateTableHTML(data){
         tableHTML += '<th>' + x + '</th>';
     }
     tableHTML += '</tr>';
-    for (var i = 0 i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
         /* loop through the rows, putting tags around each col value */
         tableHTML += '<tr>';
         for (var x in data[0]) {
@@ -567,8 +566,8 @@ allowed to see.
 The methods used to protect kdb+ processes can be extended to cover
 WebSockets. There is one caveat in terms of username/password
 authentication which we will discuss below. A full discussion on kdb+
-permissioning is beyond the scope of this whitepaper; instead, please
-refer to the [July 2013 white paper](../permissions_with_kdb.pdf).
+permissioning is beyond the scope of this white paper; instead, please
+refer to the [July 2013 white paper](../permissions/index.md).
 
 
 ### Username and password 
@@ -727,7 +726,7 @@ WebSocket integration.
 
 ## Conclusion 
 
-This whitepaper has shown how WebSockets can be used as part of a HTML5
+This white paper has shown how WebSockets can be used as part of a HTML5
 GUI to connect to a q process and allow persistent, real-time
 communication between kdb+ and a web browser.
 
@@ -748,7 +747,7 @@ intra-day and historical data. Completely configurable, _Dashboards for
 Kx_ enable clients to quickly build powerful grids and charts of the
 underlying data stored within Kx and other databases. 
 
-<i class="far fa-hand-point-right"></i> [Dashboards for Kx](http://kx.com/media/2016/07/Dashboards-for-Kx-Product-Overview.pdf)
+<i class="far fa-hand-point-right"></i> [Dashboards for Kx](https://kx.com/solutions/the-enterprise/dashboards/)
 
 All tests were run using kdb+ version 3.5 (2017.11.30)
 
@@ -847,7 +846,7 @@ and saved with the respective names in the same directory. Start the q
 processes up first, and then open the HTML file in a web browser.
 
 
-#### B.1 pubsub.q 
+#### B.1 `pubsub.q` 
 
 Start this process first. It will create the q interface for the
 WebSocket connections and contains a simple pubsub mechanism to push
@@ -896,7 +895,7 @@ pub:{
 ```
 
 
-#### B.2 fh.q 
+#### B.2 `fh.q` 
 
 This will generate dummy trade and quote data and push it to the pubsub
 process. The script can be edited to change the number of symbols and
@@ -929,10 +928,10 @@ getask:{[s] prices[s]+getmovement[s]}; /* generate ask price */
 \t 100
 ```
 
-This code is from the August 2014 white paper [_Building Real-time Tick Subscribers_](../building_real_time_tick_subscribers.pdf).
+This code is from the August 2014 white paper [_Building Real-time Tick Subscribers_](../rt-tick/index.md).
 
 
-#### B.3 websockets.html 
+#### B.3 `websockets.html` 
 
 Due to the length of code required for this example, the JavaScript and
 HTML code have been split into separate files
@@ -977,7 +976,7 @@ HTML code have been split into separate files
 ```
 
 
-#### B.4 websockets.js 
+#### B.4 `websockets.js` 
 
 This script will be loaded into the web page by the HTML. Make sure this
 is saved as a JS file in the same directory as the above HTML file.

@@ -1,9 +1,12 @@
 ---
-keywords: kdb+, q, style, typography
+title: Style Guide – Typography – About – kdb+ and q documentation
 hero: Site style guide
+description: Rules for using sentence and title case, admonitions, and ordered and unordered lists
+author: Stephen Taylor
+keywords: kdb+, q, style, typography
 ---
+# <i class="fas fa-pen-nib"></i> Typography
 
-# Typography
 
 
 ## Case

@@ -1,13 +1,16 @@
 ---
+title: select, Select – Reference – kdb+ and q documentation
+description: select and Select are (respectively) a q keyword and operator that select all or part of a table, possibly with new columns.
+author: Stephen Taylor
 keywords: column, kdb+, q, qsql, query, select, sql, table
 ---
-
 # `select`, `?` Select
 
 
+
+
+
 _Select all or part of a table, possibly with new columns_
-
-
 
 
 ## `select`
@@ -52,6 +55,8 @@ select[3;>price] from bids where sym=s,size>0
 This would return the three best prices for symbol `s` with a size greater than 0.
 
 This construct works on in-memory tables but not on memory-mapped tables loaded from splayed or partitioned files. 
+
+Where there is a by-clause, and no sort order is specified, the result is sorted ascending by its key.
 
 !!! tip "Performance characteristic"
 

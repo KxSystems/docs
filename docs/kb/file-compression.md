@@ -1,8 +1,10 @@
 ---
+title: File compression – Knowledge Base – kdb+ and q documentation
+description: How to work with compressed files in kdb+.
 keywords: compress, decompress, file, kdb+, log, q, streaming
 ---
-
 # File compression
+
 
 
 Q has had built-in optional file compression since V2.7.
@@ -18,7 +20,7 @@ Use the [`-19!` internal function](../basics/internal.md#-19x-compress-file).
     As of V2.8 2011.10.06, do not try to compress the associated _name#_ or _name##_ files for nested data explicitly, as they will be compressed as part of compressing the root name file; e.g.
 
     <pre><code class="language-q">
-    q)`:a set 1000#enlist asc 1000?10;-19!(`:a;`:za;17;2;9);0N!get[`:a]~get`:za;
+    q)\`:a set 1000#enlist asc 1000?10;-19!(\`:a;\`:za;17;2;9);0N!get[\`:a]~get\`:za;
     </code></pre>
 
 
@@ -97,7 +99,7 @@ For Linux and Solaris you may find it convenient to install zlib using your pack
 
 ## Do I need additional libraries to use algorithm \#3 (snappy)?
 
-Yes, but they may already be installed on your system, and can be utilized in V3.4 onwards. It binds dynamically to [snappy](http://google.github.io/snappy). Kdb+ will look for the following files on the respective OSs: 
+Yes, but they may already be installed on your system, and can be utilized in V3.4 onwards. It binds dynamically to [snappy](http://google.github.io/snappy/). Kdb+ will look for the following files on the respective OSs: 
 
 -   Windows: snappy.dll
 -   macOS: libsnappy.dylib
@@ -203,7 +205,7 @@ The `logicalBlockSize` represents how much data is taken as a compression unit, 
 Yes. In our defense, ZFS has similar issues. 
 
 <i class="far fa-hand-point-right"></i> 
-[blog.buttermountain.co.uk](http://blog.buttermountain.co.uk/2008/05/10/zfs-compression-when-du-and-ls-appear-to-disagree)
+[blog.buttermountain.co.uk](https://serverfault.com/questions/362090/freebsd-how-to-know-real-file-size-on-zfs-with-compression-on)
 
 Compressed file size can be obtained from the [`-21!` internal function](../basics/internal.md#-21x-compression-stats). 
 

@@ -1,8 +1,10 @@
 ---
+title: Multithreaded input queue mode – Knowledge Base – kdb+ and q documentation
+description: By default, kdb+ is single-threaded, and processes incoming queries sequentially. An additional mode exists, designed for serving in-memory static data to an externally constrained number of clients only; it is not intended for use as a gateway, or serving mutable data, or data from disk. Each incoming connection is executed in its own thread, and is unable to update globals – it is purely functional in the sense that the execution of a query should not have side-effects.
 keywords: input, kdb+, mode, multithreaded, q, queue
 ---
-
 # Multithreaded input queue mode
+
 
 
 

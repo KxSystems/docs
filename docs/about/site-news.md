@@ -1,8 +1,11 @@
 ---
+title: Site news – code.kx.com  – About – kdb+ and q documentation
+description: News of changes to the Kx documentation site
+author: Stephen Taylor
 keywords: blog, kdb+, news, q, site
 ---
+# <i class="fas fa-newspaper"></i> Site news
 
-# <i class="far fa-newspaper"></i> Site news
 
 
 ## V1
@@ -33,7 +36,7 @@ Version 2 of this site has
 -   HTTP requests redirected to HTTPS 
 -   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
 
-The Kx wiki, frozen in 2016, has been retired to <https://code.kx.com/oldwiki>.
+The Kx wiki, frozen in 2016, has been retired to [https://code.kx.com/oldwiki](https://code.kx.com/oldwiki/Main_Page).
 
 
 ## <i class="fas fa-birthday-cake"></i>  Kx@25
@@ -45,7 +48,7 @@ Announcements to mark our 25th birthday:
 -   [Kdb+ on Google Cloud Platform](../cloud/gcpm/index.md)
 -   [Version 3.6](../releases/ChangesIn3.6.md)
 -   [Anaconda](../ml/index.md)
--   [Natural Language Processing toolkit](../ml/nlp.md)
+-   [Natural Language Processing toolkit](../ml/nlp/index.md)
 -   [Docker and Notebooks](../ml/setup.md#docker-command)
 -   [JupyterQ FAQ](../ml/jupyterq/index.md#frequently-asked-questions)
 
@@ -71,7 +74,7 @@ In beta on [GitHub](https://github.com/KxSystems/jupyterq): a Jupyter kernel for
 
 <small>2018.01.25</small>
 
-New whitepaper [Socket sharding with kdb+ on Linux](../wp/socket-sharding.pdf)
+New white paper [Socket sharding with kdb+ on Linux](../wp/socket-sharding/index.md)
 
 
 ## <i class="fas fa-share-alt"></i> Machine learning
@@ -111,7 +114,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 <small>2017.08.09</small>
 
-Replaced standard [MkDocs](https://mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](http://prismjs.com): 
+Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.org/) syntax highlighting with [Prism](https://prismjs.com): 
 
 -   syntax highlighting for q
 -   a _Copy to Clipboard_ button on all code blocks
@@ -121,9 +124,9 @@ Replaced standard [MkDocs](https://mkdocs.org) [Pygments](http://pygments.org/) 
 
 <small>2017.08.05</small>
 
-The site content is now licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
+The site content is now licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. 
 
-<div style="text-align: center;"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></div>
+<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
 ## <i class="far fa-comment"></i> Terminology
@@ -137,7 +140,7 @@ The site content is now licensed under a <a rel="license" href="http://creativec
         — <i>Bob Dylan</i> “When the ship comes in” 
     </p>
     <p style="display: inline-block; padding: 0 1em;">
-        <a href="//bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/v2/img/dylan.png" style="height: 70px"/></a>
+        <a href="https://www.bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/v2/img/dylan.png" style="height: 70px"/></a>
     </p>
 </blockquote>
 

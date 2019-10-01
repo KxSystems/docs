@@ -1,10 +1,14 @@
 ---
+title: Programming idioms – Knowledge Base – kdb+ and q documentation
+description: Q expressions that solve some common programming problems.
 keywords: idiom, kdb+, programming, q
 ---
-
 # Programming idioms
 
 
+
+
+Q expressions that solve some common programming problems.
 
 
 ## How do I select all the columns of a table except one?

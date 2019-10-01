@@ -1,3 +1,8 @@
+---
+title: Glossary for the q and kdb+ documentation site – Basics – kdb+ and q documentation
+description: Glossary of terms used in documenting kdb+ and the q programming language.
+author: Stephen Taylor
+---
 # Glossary
 
 
@@ -100,7 +105,7 @@ A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master t
 A character constant is defined by entering the characters between double-quotes, as in `"abcdefg"`. If only one character is entered the constant is an atom, otherwise the constant is a list. For example, `"a"` is an atom. The expression `enlist "a"` is required to indicate a one character list. 
 
 <i class="far fa-hand-point-right"></i> 
-[Escape sequences](#escape-sequences) for entering non-graphic characters in character constants.
+[Escape sequences](#escape-sequence) for entering non-graphic characters in character constants.
 
 
 ## Character vector
@@ -201,7 +206,7 @@ ages | 42  39    51  44
 
 The domain of a function is all the possible values of its argument.  
 <i class="far fa-hand-point-right"></i> 
-intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 Functions with multiple arguments have multiple domains. 
 A function’s first domain is known as its _left domain_. 
@@ -232,8 +237,7 @@ The domain of a list is its indexes.
 The left domain of a matrix is its row numbers. Its right domain is its column numbers.
 The left domain of a table is its row numbers. Its right domain is its column names.
 
-All applicable values are mappings from their domains to their [ranges](#range].
-)
+All applicable values are mappings from their domains to their [ranges](#range).
 
 ## Empty list
 
@@ -296,6 +300,12 @@ Berlin| London
 ```
 
 
+## Flag
+
+A boolean or an integer in the range (0,1).
+
+
+
 ## Function
 
 A mapping from input/s to result defined by an algorithm.
@@ -303,7 +313,7 @@ A mapping from input/s to result defined by an algorithm.
 Operators, keywords, compositions, projections and lambdas are all functions. 
 
 <i class="far fa-hand-point-right"></i> 
-[`.Q.res`](../ref/dotq.md#qres-k-words) returns a list of keywords
+[`.Q.res`](../ref/dotq.md#qres-keywords) returns a list of keywords
 
 
 
@@ -330,7 +340,7 @@ x: .[ x; i; f; y]
 
 In the first, referencing `x` as the first argument causes its entire value to be constructed, even though only a small part may be needed. In the second, the symbol `` `x`` is used as the first argument. In this case, only the parts of `x` referred to by the index `i` will be referenced and reassigned. The second case is usually more efficient than the first, sometimes significantly so. 
 
-Where `x` is a directory, referencing the global variable `x` causes the entire dictionary value to be constructed, even though only a small part of it may be needed. Consequently, in the description of [Amend](amend), the symbol atoms holding global variable names are referred to as handles.
+Where `x` is a directory, referencing the global variable `x` causes the entire dictionary value to be constructed, even though only a small part of it may be needed. Consequently, in the description of [Amend](../ref/amend.md), the symbol atoms holding global variable names are referred to as handles.
 
 
 ## HDB
@@ -374,7 +384,7 @@ StackOverflow:
 [What exactly are iterator, iterable, and iteration?](https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration)  
 Dictionaries: 
 [Wiktionary](https://en.wiktionary.org/wiki/iterable),
-[Oxford](https://en.oxforddictionaries.com/definition/iterate)
+[Lexico](https://www.lexico.com/en/definition/iterate)
 
 
 
@@ -525,7 +535,7 @@ Defined in the q language.
 A function passed fewer arguments than its rank projects those arguments and returns a projection: a function of the unspecified argument/s. 
 
 <i class="far fa-hand-point-right"></i> 
-[Projection](syntax.md#projection)
+[Projection](application.md#projection)
 
 
 ## Quaternary
@@ -540,7 +550,7 @@ The range of a function is the complete set of all its possible results.
 All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges. 
 
 <i class="far fa-hand-point-right"></i> 
-intmath.com: [Domain and range](http://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 
 ## Rank
@@ -553,7 +563,7 @@ rank | adjective  | example
 1    | unary      | [`til`](../ref/til.md)
 2    | binary     | [`+`](../ref/add.md) Add
 3    | ternary    | [`ssr`](../ref/ss.md#ssr) string search and replace
-4    | quaternary | [`.[d;i;m;my]`](../ref/overloads/amend) Amend
+4    | quaternary | [`.[d;i;m;my]`](../ref/overloads.md#dot) Amend
 
 <i class="far fa-hand-point-right"></i>
 [Function notation](function-notation.md#rank)
@@ -781,8 +791,8 @@ A view should not have side effects, i.e. should not update global variables.
 
 <i class="far fa-hand-point-right"></i> 
 [`view`, `views`](../ref/view.md)  
-[`.Q.view`](../ref/dotq.md#qview-subview) (subview)
-Tutorial: [Views](../learn/views)
+[`.Q.view`](../ref/dotq.md#qview-subview) (subview)  
+Tutorial: [Views](../learn/views.md)
 
 
 

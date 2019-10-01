@@ -1,8 +1,10 @@
 ---
+title: Firewalling – Knowledge Base – kdb+ and q documentation
+description: How to protect a kdb+ process with a firewall
 keywords: firewall, ipc, iptables, kdb+, q
 ---
-
 # Firewalling
+
 
 
 
@@ -37,7 +39,7 @@ Restrict input by defining at least:
 <i class="far fa-hand-point-right"></i>
 [Namespace `.z.`](../ref/dotz.md)
 
-If you want to allow certain IPC calls, implement only the ones you want. Trying to blacklist functions is tricky because some otherwise useful functions may have a mode that accesses the disk which may cause information leak (e.g. [key](../ref/key.md)). It is much easier to use a whitelist approach. Whitepaper [Permissions with kdb+](../wp/permissions_with_kdb.pdf) has some suggestions here.
+If you want to allow certain IPC calls, implement only the ones you want. Trying to blacklist functions is tricky because some otherwise useful functions may have a mode that accesses the disk which may cause information leak (e.g. [key](../ref/key.md)). It is much easier to use a whitelist approach. White paper [Permissions with kdb+](../wp/permissions/index.md) has some suggestions here.
 
 As IPC functions either receive a [parse tree](../basics/parsetrees.md) or a string (that you could [parse](../ref/parse.md) yourself), make sure you check the type of the input e.g. `x:$[10h=type x;parse x;x]`
 

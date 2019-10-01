@@ -1,4 +1,11 @@
-# Get started 
+---
+title: Get started  – Learn – kdb+ and q documentation
+description: How to get started installing and using kdb+
+author: Stephen Taylor
+keywords: download, install, introduction, license, kdb+, q, tutorial
+---
+# Get started with q and kdb+
+
 
 
 Kdb+ is a database. While you can use it through interfaces such as ODBC, its power and performance are best accessed through its own language, q.
@@ -20,7 +27,8 @@ If you have some experience with mathematics, functional programming or SQL, you
 These are full versions of the product. 
 The 64-bit version (on-demand) requires an always-on Internet connection.
 (A free, stand-alone 32-bit version is also available.)
- 
+
+Download and install the free IDE, [**Kx Developer**](/developer/). 
 
 
 
@@ -29,8 +37,12 @@ The 64-bit version (on-demand) requires an always-on Internet connection.
 
 -   See [Q by Examples](q-by-examples.md) for a quick taste of the language
 -   Watch Jeffry Borror’s [Q for All](q-for-all.md), a two-hour introduction to kdb+ and q  in fifteen videos
+-   Study the tutorials at [learn.kx.com](https://learn.kx.com/)
 -   Bookmark the [Q Reference Card](../ref/index.md)
--   Study Jeffry Borror’s textbook [_Q for Mortals, Version 3_](/q4m3)
+-   Study Jeffry Borror’s textbook [_Q for Mortals, Version 3_](/q4m3/)
+-   Review the basics of the language, starting with [application](../basics/application.md)
+-   Experiment with the [Q Phrases](/phrases/index.html)
+-   Explore the [Knowledge Base](../kb/index.md) and the [technical articles](blogs.md) on [kx.com](https://kx.com/blogs/) 
 
 
 
@@ -61,7 +73,7 @@ The 64-bit version (on-demand) requires an always-on Internet connection.
 ![q for Mortals Version 3](../img/qfm3.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
 ### _Q for Mortals_
 **Version 3**
-by Jeffry A. Borror, available from [Amazon.com](https://www.createspace.com/5843336) or [Amazon.co.uk](https://www.amazon.co.uk/d/Books/q-Mortals-Version-3-Introduction-Programming/0692573674/). Covers up to kdb+ V3.3. If you are a new kdb+ user, this is the book for you!
+by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-Version-Introduction-Programming/dp/0692573674/) or [Amazon.co.uk](https://www.amazon.co.uk/d/Books/q-Mortals-Version-3-Introduction-Programming/0692573674/). Covers up to kdb+ V3.3. If you are a new kdb+ user, this is the book for you!
 
 [HTML edition](/q4m3/) now online
 </div>

@@ -1,8 +1,11 @@
 ---
+title: Compose – Reference – kdb+ and q documentation
+description: Compose is a q operator that composes (or curries) a unary value with another. The rank of the result is the rank of the second argument. 
+author: Stephen Taylor
 keywords: adverb, compose, composition, function, kdb+, map, q, value
 ---
-
 # `'` Compose
+
 
 
 
@@ -46,3 +49,20 @@ q)'[;]/[(g;f;ff)][1;2;3;4]
 
 
 
+## Implicit composition
+
+Operators and their projections can be composed by juxtaposition. 
+
+```q
+q)x:-100 2 3 4 -100 6 7 8 9 -100
+q)(x;0 (0|+)\x)
+-100 2 3 4 -100 6 7  8  9  -100
+0    2 5 9 0    6 13 21 30 0
+```
+
+Above, `(0|+)` composes the unary projection `0|` with Add. The composition becomes the argument to Scan, which derives the ambivalent function `(0|+)\`, which is then applied infix to 0 and `x` to return cumulative sums.
+
+If we take `-100` to flag parts of `x`, the expression `max 0 (0|+)\x` returns the largest of the sums of the parts. 
+
+<i class="far fa-hand-point-right"></i>
+[Q Phrasebook](https://code.kx.com/phrases/)

@@ -1,4 +1,6 @@
 ---
+title: Errors – Basics – kdb+ and q documentation
+description: Errors signalled by the interpreter, and what triggers them
 keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 ---
 
@@ -29,6 +31,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>Could not initialize ssl</td><td/><td>[`(-26!)[]`](internal.md#-26x-ssl) found SSL/TLS not enabled</td></tr>
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
 <tr><td>domain</td> <td class="nowrap">`til -1`</td> <td>Out of domain</td> </tr>
+<tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
 <tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
@@ -38,12 +41,13 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>hwr</td><td/><td>Handle write error, can't write inside a [`peach`](peach.md)</td> </tr>
 <tr><td>IJS</td> <td class="nowrap">`"D=\001"0:"0=hello\0011=world"`</td> <td>[Key type](../ref/file-text.md#key-value-pairs) is not `I`, `J`, or `S`.</td> </tr>
 <tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to insert a record with an existing key into a keyed table</td> </tr>
+<tr><td>invalid</td> <td class="nowrap">`q -e 3`</td> <td>Invalid command-line option value</td> </tr>
 <tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
 <tr>
 <td>limit</td>
 <td class="nowrap">`0W#2`</td>
 <td>
-    Tried to generate a list longer than 2,000,000,000, 
+    Tried to generate a list longer than 2<sup>64</sup>-1 (2e+09 until V3.0), 
     or serialized object is &gt; 1TB (2GB until V3.4), 
     or `'type` if trying to serialize a nested object which has &gt; 2 billion elements,
     or <i class="far fa-hand-point-right"></i> [Parse errors](#parse-errors)
@@ -76,7 +80,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr> <td>os</td> <td>`\foo bar`</td> <td>Operating-system error or [license error](#license-errors)</td> </tr>
 <tr> <td>par</td> <td/> <td>Unsupported operation on a partitioned table or component thereof</td> </tr>
 <tr> <td>parse</td> <td/> <td>Invalid [syntax](syntax.md); bad IPC header; or bad binary data in file</td> </tr>
-<tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB</td> </tr> 
+<tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB; or [`med`](../ref/med.md) applied over partitions or segments</td> </tr> 
 <tr> <td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
 <tr> <td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
 <tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install/linux.md#64-bit-or-32-bit).)</td> </tr>
@@ -135,7 +139,7 @@ From file ops and [IPC](ipc.md)
 </tbody>
 </table>
 
-`XXX` from addr, close, conn, p(from `-p`), snd, rcv or (invalid) filename, e.g. `read0`:invalidname.txt`
+`XXX` from addr, close, conn, p(from `-p`), snd, rcv or (invalid) filename, e.g. ``read0`:invalidname.txt``
 
 
 
@@ -148,7 +152,7 @@ On execute or load
 </thead>
 <tbody>
 <tr> <td class="nowrap">`[({])}"`</td> <td class="nowrap">`"hello`</td> <td>Open `([{` or `"`</td> </tr>
-<tr> <td>branch</td> <td class="nowrap">`a:"1;",65024#"0;"`<br/>`value "{if[",a,"]}"`</td> <td>A branch (if;do;while;$[.;.;.]) more than 65025 byte codes away (255 before V3.6 2017.09.26)</td> </tr>
+<tr> <td>branch</td> <td class="nowrap">`a:"1;",65024#"0;"`<br/>`value "{if[",a,"]}"`</td> <td>A branch (`if`;`do`;`while`;`$[.;.;.]`) more than 65025 byte codes away (255 before V3.6 2017.09.26)</td> </tr>
 <tr> <td>char</td> <td class="nowrap">`value "\000"`</td> <td>Invalid character</td> </tr>
 <tr> <td>globals</td> <td class="nowrap">`a:"::a"sv string til 111;`<br/>`value"{a",a,"::0}"`</td> <td>Too many [global variables](function-notation.md#variables-and-constants)</td> </tr>
 <tr> 
@@ -201,8 +205,9 @@ which will cause a `'host` error.
 <tr> <td>os</td><td>Wrong OS or operating-system error (if runtime error)</td> </tr>
 <tr> <td>srv</td><td>Client-only license in server mode</td> </tr>
 <tr> <td>upd</td><td>Version of kdb+ more recent than update date, _or_ the function `upd` is undefined (sometimes encountered during ``-11!`:logfile``)</td> </tr>
-<tr> <td>user</td><td>Unlicenced user</td> </tr>
+<tr> <td>user</td><td>Unlicensed user</td> </tr>
 <tr> <td>wha</td><td>System date is prior to kdb+ version date</td> </tr>
+<tr> <td>wrong q.k version</td><td>`q` and `q.k` versions do not match</td> </tr>
 </tbody>
 </table>
 

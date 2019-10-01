@@ -1,8 +1,10 @@
 ---
+title: inetd, xinetd – Knowledge Base – kdb+ and q documentation
+description: On *nix-like operating systems, a q server can work under inetd to provide a private server for each connexion established on a designated port.
 keywords: cygwin, inetd, kdb+, linux, microsoft, q, sfu, xinetd, unix, windows
 ---
+# inetd, xinetd
 
-# indetd, xinetd
 
 
 
@@ -12,20 +14,12 @@ When a client attempts to connect to one of the service, `inetd` will start a pr
 
 This way, `inetd` will run the server programs as they are needed by spawning multiple processes to service multiple network connexions.
 
-Since V2.4, a q server can work under `inetd` to provide a private server for each connexion established on a designated port.
+A kdb+ server can work under `inetd` to provide a private server for each connexion established on a designated port. (Since V2.4.)
 
-For Windows you might be able to have q run under `inetd` using either Microsoft SFU (Services For Unix) or Cygwin.
-
-Microsoft SFU:
-
--   [SFU](http://www.microsoft.com/windowsserver/unix/default.mspx)
--   [Download SFU](http://www.microsoft.com/downloads/details.aspx?familyid=896C9688-601B-44F1-81A4-02878FF11778&displaylang=en)
-<!-- -   [SFU `inetd`](http://www.microsoft.com/technet/interopmigration/unix/sfu/intdrutil.mspx) -->
-
-Cygwin:
+For Windows you might be able to have kdb+ run under `inetd` using Cygwin.
 
 -   [Cygwin](http://www.cygwin.com/)
--   [A useful page about configuring Cygwin `inetd`](http://www.amanda.org/docs/howto-cygwin.html)
+-   [A useful page about configuring Cygwin `inetd`](https://wiki.zmanda.com/index.php/How_To%3ARun_Amanda_Server_on_Cygwin)
 
 
 ## Configuration

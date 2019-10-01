@@ -1,3 +1,8 @@
+---
+title: Q by examples – Learn – kdb+ and q documentation
+description: A simple introduction by examples to the q programming language
+keywords: introduction, kdb+, q , tutorial
+---
 # Q by examples
 
 

@@ -1,8 +1,10 @@
 ---
+title: pj – Reference – kdb+ and q documentation
+description: pj is a q keyword that performs a plus join.
 keywords: join, kdb+, pj,plus join, q
 ---
-
 # `pj` 
+
 
 
 

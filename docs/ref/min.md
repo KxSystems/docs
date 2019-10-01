@@ -1,10 +1,13 @@
 ---
+title: min, mins, mmin – Reference – kdb+ and q documentation
+description: min, mins and mmin are q keywords that return respectively the smallest item, the cumulative minimums, and the moving minimums of the argument.
+author: Stephen Taylor
 keywords: kdb+, math, mathematics, minimum, moving, q, statistics
 ---
-
 # `min`, `mins`, `mmin`
 
 _Minimum/s_
+
 
 
 
@@ -81,3 +84,14 @@ Knowledge Base:
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: 
 [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)min (1 2;0N 4)
+0N 2
+```

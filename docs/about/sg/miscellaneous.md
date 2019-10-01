@@ -1,9 +1,12 @@
 ---
-keywords: kdb+, q, style
+title: Style Guide – Miscellaneous – About – kdb+ and q documentation
 hero: Site style guide
+description: Miscellaneous rules for writing for code.kx.com
+author: Stephen Taylor
+keywords: kdb+, number, place, q, refactor, style
 ---
 
-# Miscellaneous
+# <i class="fas fa-pen-nib"></i> Miscellaneous
 
 
 ## Refactor

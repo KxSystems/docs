@@ -1,3 +1,9 @@
+---
+title: Installing under Linux – Learn – kdb+ and q documentation
+description: How to install kdb+ under Linux
+author: Stephen Taylor
+keywords: install, kdb+, linux, q
+---
 # <i class="fab fa-linux"></i> Installing under Linux
 
 

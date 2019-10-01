@@ -1,8 +1,10 @@
 ---
+title: Kdb+ server for ODBC – Interfaces – kdb+ and q documentation
+description: The ODBC interface for kdb+is no longer supported. See instead the SImba Magnitude ODBC drivers.
 keywords: api, interface, kdb+, library, odbc, q, server
 ---
-
 # <i class="fas fa-database"></i> Kdb+ server for ODBC
+
 
 
 
@@ -31,7 +33,7 @@ Ensure your q process has loaded the SQL interpreter.
 
 !!! warning "Windows 2003 hotfix KB948459"
 
-    If using Windows 2003, before installing ensure you have hotfix [KB948459](http://www.microsoft.com/en-gb/download/details.aspx?id=20065) applied. 
+    If using Windows 2003, before installing ensure you have hotfix [KB948459](https://www.microsoft.com/en-gb/download/details.aspx?id=20065) applied. 
 
 -   in W32, download <i class="fab fa-github"></i> [KxSystems/kdb/w32/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w32/odbc.zip) and run it to install the q ODBC driver
 -   in W64, download <i class="fab fa-github"></i> [KxSystems/kdb/w64/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w64/odbc.zip) and extract it to a temporary directory. Run `d0.exe` to install the q ODBC driver.
@@ -43,7 +45,7 @@ Ensure your q process has loaded the SQL interpreter.
 
 ## Method
 
--   if the user or password are not needed for the connection, then you can use the Windows ODBC Data Source Administrator to create a q [DSN](http://en.wikipedia.org/wiki/Database_Source_Name) of `host:port`, for example `localhost:5001`
+-   if the user or password are not needed for the connection, then you can use the Windows ODBC Data Source Administrator to create a q [DSN](https://en.wikipedia.org/wiki/Database_Source_Name) of `host:port`, for example `localhost:5001`
 -   if the user or password has to be given, you need to connect with a statement of the form:
 
 ```txt
