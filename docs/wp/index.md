@@ -39,7 +39,7 @@ keywords: kdb+, q, technical, white paper
 -   [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/market-fragmentation-a4.pdf), [US&nbsp;Letter](/download/wp/market-fragmentation-us.pdf)</small>
 -   [**Signal processing and q**](signal-processing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/signal-processing-a4.pdf), [US&nbsp;Letter](/download/wp/signal-processing-us.pdf)</small>
 -   [**Surveillance** techniques to effectively monitor algo and high-frequency trading](surveillance/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
--   **Transaction-cost** analysis using kdb+ &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](transaction_cost_analysis_using_kdb.pdf)
+-   [**Transaction-cost** analysis using kdb+](transaction-cost.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/transaction_cost_analysis_using_kdb.pdf)
 
 
 ## Machine learning

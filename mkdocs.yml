@@ -557,6 +557,7 @@ nav:
     - Query scaling: wp/query-scaling.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Time-series simplification: wp/ts-shrink/index.md
+    - Transaction-cost analysis: wp/transaction-cost.md
     - Signal processing and q: wp/signal-processing/index.md
     - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
