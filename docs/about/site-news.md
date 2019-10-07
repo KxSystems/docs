@@ -8,6 +8,15 @@ keywords: blog, kdb+, news, q, site
 
 
 
+## Kx wiki (1993-2016) 
+
+<small>2019.10.05</small>
+
+The old wiki has now been taken off life support at /oldwiki. 
+_Requiescat in pacem_. 
+
+If this causes you a problem, please contact the [Librarian](mailto:librarian@kx.com).
+
 ## V1
 
 <small>2019.04.15</small>
@@ -36,7 +45,7 @@ Version 2 of this site has
 -   HTTP requests redirected to HTTPS 
 -   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
 
-The Kx wiki, frozen in 2016, has been retired to [https://code.kx.com/oldwiki](https://code.kx.com/oldwiki/Main_Page).
+The Kx wiki, frozen in 2016, has been retired to code.kx.com/oldwiki.
 
 
 ## <i class="fas fa-birthday-cake"></i>  Kx@25
