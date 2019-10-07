@@ -141,7 +141,7 @@ You’re done. You have completely installed kdb+.
 
 For any version of q, 64-bit and 32-bit interpreter binaries share the same `q.k` file, located in `QHOME` for that version. 
 
-All versions share the same `k4.lic` licence-key file. 
+All versions share the same `k4.lic` license-key file. 
 
 Arrange your files as in this example:
 
@@ -184,7 +184,7 @@ q)\\
 ☕ sjt@mint:~$
 ```
 
-The 32-bit interpreter finds and reports the licence-key file even though it will run without it. 
+The 32-bit interpreter finds and reports the license-key file even though it will run without it. 
 
 ```bash
 ☕ sjt@mint:~$ q
