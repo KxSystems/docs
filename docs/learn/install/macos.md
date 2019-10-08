@@ -88,7 +88,7 @@ Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using yo
 
     The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
 
-In Terminal (Bash), open your profile `~/.bashrc` with TextEdit (or your favourite text editor),
+In Terminal (Bash), open your profile `~/.bashrc` with TextEdit, Sublime Text or your favourite text editor,
 
 ```bash
 $ open -a "Sublime Text" .bashrc
@@ -158,6 +158,7 @@ All versions share the same `k4.lic` license-key file.
 Arrange your files as in this example:
 
 ```txt
+$ tree q
 q
 ├── k4.lic
 ├── phrases.q
@@ -188,18 +189,18 @@ alias  q32='export QHOME=~/q/v3.5; rlwrap -r $QHOME/m32/q'
 In a command shell:
 
 ```bash
-☕ sjt@mint:~$q32
+$ q32
 KDB+ 3.5 2019.05.15 Copyright (C) 1993-2019 Kx Systems
 m32/ 4()core 8192MB sjt mint.local 192.168.0.10 EXPIRE 2020.04.01 stephen@kx.com #55032
 
 q)\\
-☕ sjt@mint:~$
+$
 ```
 
 The 32-bit interpreter finds and reports the license-key file even though it will run without it. 
 
 ```bash
-☕ sjt@mint:~$ q
+$ q
 KDB+ 3.6 2019.03.07 Copyright (C) 1993-2019 Kx Systems
 m64/ 4()core 8192MB sjt mint.local 192.168.0.10 EXPIRE 2020.04.01 stephen@kx.com #55032
 
