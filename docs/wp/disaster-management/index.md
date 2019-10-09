@@ -9,9 +9,9 @@ keywords: disaster, kdb+, machine-learning, nasa, q, space, social media
 
 
 
-The European Space Agency (ESA) Frontier Development Lab (FDL) is an applied artificial-intelligence (AI) research accelerator, hosted by both the ESA Centre for Earth Observation and Oxford University. The program brings commercial and private partners together with researchers, to solve challenges in the space-science sector using AI techniques and cutting-edge technologies.
+Frontier Development Lab (FDL) Europe is an applied artificial-intelligence (AI) research accelerator, in partnership with the European Space Agency (ESA) and Oxford University and leaders in commercial AI. The overall goal of the program is to solve challenges in the space-science sector using AI techniques and cutting-edge technologies.
 
-[ESA FDL 2019](https://fdleurope.org/fdl-europe-2019) focused on three main areas of research – Atmospheric Phenomena and Climate Variability, Disaster Prevention Progress and Response, and Ground Station Pass Optimization for Constellations. This paper will focus on the second of these challenges and, more specifically, the response aspect of flood management.
+[FDL Europe 2019](https://fdleurope.org/fdl-europe-2019) focused on three main areas of research – Atmospheric Phenomena and Climate Variability, Disaster Prevention Progress and Response, and Ground Station Pass Optimization for Constellations. This paper will focus on the second of these challenges and, more specifically, the response aspect of flood management.
 
 
 ## Project overview
