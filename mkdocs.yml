@@ -525,21 +525,26 @@ nav:
     - C# GUIs: wp/gui/index.md
     - Card counters: wp/card-counters/index.md
     - Columnar database: wp/columnar-database/index.md
+    - Corporate actions: wp/corporate-actions.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
+    # - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - Distributed systems: wp/query-interface.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
+    - FIX messaging: wp/fix-messaging.md
     - Foreign keys: wp/foreign-keys.md
     - Intraday writedown: wp/intraday-writedown/index.md
     - Iterators: wp/iterators/index.md
     - Java API: wp/java-api/index.md
     - Kdb+tick profiling: wp/tick-profiling.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
+    - Machine learning: wp/machine-learning/index.md
+    - Market depth: wp/market-depth/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Multi-threading: wp/multi-thread/index.md
@@ -552,8 +557,11 @@ nav:
     - Query scaling: wp/query-scaling.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Time-series simplification: wp/ts-shrink/index.md
+    - Transaction-cost analysis: wp/transaction-cost.md
     - Signal processing and q: wp/signal-processing/index.md
+    - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
+    - Surveillance techniques: wp/surveillance/index.md
     - Working with sym files: wp/symfiles.md
     - WebSockets: wp/websockets/index.md
   - About: 
@@ -567,7 +575,7 @@ nav:
       - Miscellaneous: about/sg/miscellaneous.md
       - Style: about/sg/style.md
       - Typography: about/sg/typography.md
-      - Terminology: about/sg/terminology.md
+    - Terminology: about/terminology.md
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md

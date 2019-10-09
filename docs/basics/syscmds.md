@@ -341,10 +341,12 @@ This corresponds to the `-o` command line parameter.
 
 ## `\p` (listening port)
 
-Syntax: `\p [hostname:][portnumber|servicename]`
+Syntax: `\p [rp,][hostname:][portnumber|servicename]`
 
 Show or set listening port: kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
 The port must be available and the process must have permission for the port.
+
+Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
 The default is 0: no listening port. 
 
@@ -352,7 +354,9 @@ The default is 0: no listening port.
 [Listening port](listening-port.md), 
 [`-p` command-line option ](cmdline.md#-p-listening-port)  
 Reference: [`hopen`](../ref/handles.md#hopen)  
-Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)
+Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)<br>
+Releases: [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)<br>
+White paper: [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
 ## `\P` (precision)

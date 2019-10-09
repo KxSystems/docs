@@ -104,6 +104,18 @@ Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using yo
 
 ### <i class="fas fa-code"></i> Edit your profile
 
+!!! info "Environment variables"
+
+    The q interpreter refers to environment variable `QHOME` for the location of certain files. 
+    Absent this variable, it will guess based on the path to the interpreter. 
+    Better to set the variable explicitly. 
+
+    If you run just one version of kdb+, it might suit you to define `QHOME` in your Bash profile and export it for use by non-console processes. 
+
+    Otherwise set `QHOME` with each invocation of the interpreter, as shown below. 
+
+    The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
+
 In the File Manager, find `.bashrc` in your home folder.
 
 ![Bash profile](img/install_linux_05.png "Bash profile")

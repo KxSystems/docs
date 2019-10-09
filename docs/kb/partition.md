@@ -42,9 +42,12 @@ with directories :
 
 ## Some considerations
 
--   the data should be partitioned correctly across the partitions – i.e. data for a particular date should reside in the partition for that date.  
+-   the data should be partitioned correctly across the partitions – i.e. data for a particular date should reside in the partition for that date.<br>
 <i class="far fa-hand-point-right"></i> [`.Q.par`](../ref/dotq.md#qpar-locate-partition)
 -   the slave/directory partitioning is for both read and write.
 -   the directories pointed to in `par.txt` may only contain appropriate database subdirectories. Any other content (file or directory) will give an error.
 -   the same subdirectory name may be in multiple `par.txt` partitions. For example, this would allow symbols to be split, as in A-M on `/0/db`, N-Z on `/1/db` (e.g. to work around the 2-billion row limit). Aggregations are handled correctly, as long as data is properly split (not duplicated). Note that in this case, the same day would appear on multiple partitions.
 
+<i class="far fa-hand-point-right"></i>
+_Q for Mortals:_ [§14.4 Segmented Tables](/q4m3/14_Introduction_to_Kdb+/#144-segmented-tables)
+for an extended discussion of this topic

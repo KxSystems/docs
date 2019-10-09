@@ -15,7 +15,7 @@ _As-of join_
 Syntax: <code>aj[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
 Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
 Syntax: <code>ajf[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
-Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
+Syntax: <code>ajf0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
 
 Where 
 
