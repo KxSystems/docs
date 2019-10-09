@@ -466,6 +466,15 @@ nav:
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
+    - q auto machine learning:
+      - Introduction: ml/automl/index.md
+      - User guide:
+        - Overview: ml/automl/userguide/index.md
+        - Data preprocessing: ml/automl/userguide/preproc.md
+        - Data processing: ml/automl/userguide/proc.md
+        - Data Postprocessing: ml/automl/userguide/postproc.md
+      - Advanced platform modifications: 
+        - Advanced parameters: ml/automl/adv/params.md
   - Knowledge Base:
     - Overview: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
