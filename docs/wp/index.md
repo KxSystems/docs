@@ -44,20 +44,19 @@ keywords: kdb+, q, technical, white paper
 
 ## Machine learning
 
-<<<<<<< HEAD
 * **K-Nearest Neighbor classification** and pattern recognition with q &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](machine_learning_in_kdb.pdf)
 * [An introduction to **neural networks** with kdb+](neural-networks/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/an_introduction_to_neural_networks_with_kdb.pdf)</small>
-* ==new== [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/exoplanets-us.pdf)
-* ==new== [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/space-weather-us.pdf)
+* [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/exoplanets-us.pdf)
+* [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/space-weather-us.pdf)
 * [**Using embedPy to apply LASSO regression**](embedpy-lasso/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/embedpy-lasso-us.pdf)
 * ==new== [NASA Frontier Development Lab **Disaster Prevention** Challenge](disaster-floods/index.md) &nbsp;
+=======
 =======
 -   [**K-Nearest Neighbor classification** and pattern recognition with q](machine-learning/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/machine_learning_in_kdb.pdf)
 -   [An introduction to **neural networks** with kdb+](neural-networks/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/an_introduction_to_neural_networks_with_kdb.pdf)</small>
 -   ==new== [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/exoplanets-us.pdf)
 -   ==new== [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/space-weather-us.pdf)
 -   [**Using embedPy to apply LASSO regression**](embedpy-lasso/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/embedpy-lasso-us.pdf)
->>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
 
 
 ## Managing data and systems

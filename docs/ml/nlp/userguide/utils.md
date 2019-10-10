@@ -61,6 +61,9 @@ Where `x` is a dictionary or a table of document records or subcorpus, returns a
 ```q
 /finds the sentences in the first chapter of MobyDick
 q) .nlp.getSentences corpus[0]
+"CHAPTER 1\n\n  Loomings\n\n\n\nCall me Ishmael."
+" Some years ago--never mind how long precisely-- having little or no money in my purse, and noth..
+" It is a way I have of driving off the spleen and regulating the circulation."
 ```
 
 
@@ -73,7 +76,7 @@ Syntax: `.nlp.loadTextFromDir x`
 Where `x` is the directory’s filepath as a string, returns a table of filenames, paths and texts.
 
 ```q
-q).nlp.loadTextFromDir["./datasets/maildir/skilling-j"]
+q).nlp.loadTextFromDir["/home/kx/nlp/datasets/maildir/skilling-j"]
 
 fileName path                                           text                 ..
 -----------------------------------------------------------------------------..
