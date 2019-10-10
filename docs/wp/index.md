@@ -34,7 +34,7 @@ keywords: kdb+, q, technical, white paper
 -   [Streaming **analytics**: detecting card counters in Blackjack](card-counters/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/card-counters-in-blackjack.pdf)
 -   [Kdb+ in **astronomy**](astronomy.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_in_astronomy.pdf)
 -   [Storing and exploring the **Bitcoin blockchain**](blockchain/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/blockchain-a4.pdf), [US&nbsp;Letter](/download/wp/blockchain-us.pdf)</small>
-<!-- -   ==new== [Analyzing social media data for **disaster management**](disaster-management/index.md)  -->
+-   ==new== [Analyzing social media data for **disaster management**](disaster-management/index.md) 
 -   [Sample aggregation engine for **market depth**](market-depth/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/sample_aggregation_engine_for_market_depth.pdf)
 -   [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/market-fragmentation-a4.pdf), [US&nbsp;Letter](/download/wp/market-fragmentation-us.pdf)</small>
 -   [**Signal processing and q**](signal-processing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/signal-processing-a4.pdf), [US&nbsp;Letter](/download/wp/signal-processing-us.pdf)</small>
