@@ -1,10 +1,10 @@
 ---
-title: Using Kafka with kdb+ – Interfaces – kdb+ and q documentation
+title: Using Kafka with kdb+ – Interfaces
 description: How to connect a kdb+ server process to the Apache Kafka distributed streaming platform
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: apache, api, consumer, fusion, interface, kafka, learning, library, machine, producer, q
 ---
-# ![Apache Kafka](img/kafka.png) Using Kafka with kdb+
+# ![Apache Kafka](../img/kafka.png) Using Kafka with kdb+
 
 
 
@@ -13,9 +13,7 @@ keywords: apache, api, consumer, fusion, interface, kafka, learning, library, ma
 
 
 `kfk` is a thin wrapper for kdb+ around the 
-<i class="fab fa-github"></i> 
-[edenhill/librdkafka](https://github.com/edenhill/librdkafka) 
-C API for [Apache Kafka](https://kafka.apache.org/). 
+ `librdkafka` C API (available on [MacOS/Linux](https://github.com/edenhill/librdkafka) or [Windows](https://www.nuget.org/packages/librdkafka.redist/1.0.0)) for [Apache Kafka](https://kafka.apache.org/).
 
 Follow the [installation instructions](https://github.com/KxSystems/kafka#building-and-installation) for set-up.
 
@@ -27,8 +25,8 @@ To run examples on this page you will need a Kafka broker available. It is easy 
 The library follows the `librdkafka` API closely where possible.
 As per its [introduction](https://github.com/edenhill/librdkafka/blob/master/INTRODUCTION.md):
 
--   Base container `rd_kafka_t` is a client created by `.kfk.Client`. `.kfk.Producer` and `.kfk.Consumer` are provided for simplicity. Provides global configuration and shared state.
--   One or more topics `rd_kafka_topic_t`, which are either producers or consumers and created by function `.kfk.Topic` 
+-   Base container `rd_kafka_t` is a client created by `.kfk.Client`. For ease of use `.kfk.Producer` and `.kfk.Consumer` are provided. These provide global configuration and shared states.
+-   One or more topics `rd_kafka_topic_t`, which are either producers or consumers are created by the function `.kfk.Topic` 
 
 Both clients and topics accept an optional configuration dictionary.
 `.kfk.Client` and `.kfk.Topic` return an int which acts as a Client or Topic ID (index into an internal array). Client IDs are used to create topics and Topic IDs are used to publish or subscribe to data on that topic. They can also be used to query metadata – state of subscription, pending queues, etc.
@@ -83,22 +81,17 @@ The library supports and uses all configuration options exposed by `librdkafka`,
 
 ## Testing
 
-Use can use either existing Kafka broker or start a test Kafka broker as described below.
+One can use either existing Kafka broker or start a test Kafka broker as described below.
 
 
 ### Setting up a test Kafka instance
 
+To start a Kafka instance for testing follow the instructions outlined in the link below
+
 <i class="far fa-hand-point-right"></i> 
 [Apache Kafka tutorial](http://kafka.apache.org/documentation.html#quickstart)
 
-Download and unzip Kafka.
-
-```bash
-$ cd $HOME
-$ wget http://www-us.apache.org/dist/kafka/0.10.2.0/kafka_2.11-0.10.2.0.tgz
-$ tar xzvf kafka_2.11-0.10.2.0.tgz
-$ cd $HOME/kafka_2.11-0.10.2.0
-```
+Zookeeper and a Kafka broker are initialized using the following commands.
 
 Start `zookeeper`.
 
@@ -106,7 +99,7 @@ Start `zookeeper`.
 $ bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-Start Kafka broker
+Start Kafka broker.
 
 ```bash
 $ bin/kafka-server-start.sh config/server.properties
@@ -119,6 +112,13 @@ Start producer.
 
 ```q
 q)\l test_producer.q
+"Publishing on topic:test"
+"Published 1 message"
+topic              err     partitions                                        ..
+-----------------------------------------------------------------------------..
+test               Success ,`id`err`leader`replicas`isrs!(0i;`Success;0i;,0i;..
+__consumer_offsets Success (`id`err`leader`replicas`isrs!(0i;`Success;0i;,0i;..
+"Set timer with \t 1000 to publish message every second"
 q)\t 1000
 ```
 
@@ -126,9 +126,18 @@ Start consumer.
 
 ```q
 q)\l test_consumer.q
+q)data
+mtype topic client partition offset msgtime                       data       ..
+-----------------------------------------------------------------------------..
+      test  0      0         20616  2019.08.09D09:11:03.709000000 "2019.08.09..
+      test  0      0         20617  2019.08.09D09:11:21.955000000 "2019.08.09..
+      test  0      0         20618  2019.08.09D09:11:22.956000000 "2019.08.09..
+      test  0      0         20619  2019.08.09D09:11:23.955000000 "2019.08.09..
+      test  0      0         20620  2019.08.09D09:11:24.956000000 "2019.08.09..
+      test  0      0         20621  2019.08.09D09:11:25.956000000 "2019.08.09..
 ```
 
-The messages will now flow from producer to consumer and the publishing rate can be adjusted via `\t x` in the producer process.
+The messages will now flow from producer to consumer, the publishing rate can be adjusted via `\t x` in the producer process.
 
 
 ## Performance and tuning
@@ -137,4 +146,3 @@ The messages will now flow from producer to consumer and the publishing rate can
 [<i class="fab fa-github"></i> edenhill/librdkafka/wiki/How-to-decrease-message-latency](https://github.com/edenhill/librdkafka/wiki/How-to-decrease-message-latency)
 
 There are numerous configuration options and it is best to find settings that suit your needs and setup. See [Configuration](#configuration) above. 
-

@@ -743,6 +743,7 @@ Stewart Robinson is a kdb+ consultant currently based in Belfast. He
 has developed various kdb+ tick applications, focusing on market
 surveillance, for some of the world’s largest financial institutions.
 
+
 ## Appendix
 
 The examples here are edits of `r.q` from kdb+ tick.

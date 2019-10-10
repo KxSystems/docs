@@ -1,6 +1,6 @@
 ---
 title: NASA Frontier Development Lab Disaster Prevention (Floods)
-description: In this paper, we examine how machine learning methods can be used to predict flood susceptibility in an area. The paper looks at the problems of predicting the flood susceptibility of an area and predicting the time taken for a river to reach its peak height after a rainfall event. Kdb+ is used to manage the time-series data, while Random Forest and XGBoost models are deployed via embedPy and the ML-Toolkit. 
+description: In this paper, we examine how machine learning methods can be used to predict flood susceptibility in an area. The paper looks at the problems of predicting the flood susceptibility of an area and predicting the time taken for a river to reach its peak height after a rainfall event. Kdb+ was used to manage the time-series data, while Random Forest and XGBoost models were deployed via embedPy and the ML-Toolkit. 
 author: Diane O' Donoghue
 date: October 2019
 keywords: kdb+, q, space, NASA, machine learning,flood
@@ -42,14 +42,15 @@ The following python modules were also used:
 
 library         | version
 --------------- |--------
-TensorFlow      | 16.04
-NumPy           | 1.14.0
-pandas          | 0.20.3
-Matplotlib      | 2.1.1
-scikit_learn    | 0.19.1
-xgboost         | 1.0.0
+TensorFlow      | 1.14.0
+NumPy           | 1.17.2
+pandas          | 0.24.2
+Matplotlib      | 2.2.2
+scikit_learn    | 1.1.0
+xgboost         | 0.9.0
 gmaps           | 0.9.0
 geopandas       | 0.5.1
+ipywidgets 	| 7.5.1
 
 In addition, a number of kdb+ libraries and interfaces were leveraged:
 
@@ -63,7 +64,7 @@ ML-Toolkit        | 0.3.2
 
 This project focuses on 6 states within the US, over a period of 10 years. Data was taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites had continuous historical data over the period, but all the available data for each site was used. 
 
-The six states were:
+The 6 states were:
 
 -	`New Jersey`
 -	`Nebraska`
@@ -300,7 +301,7 @@ q)perfect_forecastM:         fnd_col[perfect_forecast;cols cleaned_monthly]
 q)ungauged_noforecast_basinP:fnd_col[ungauged_noforecast_basin;cols cleaned_peak]
 q)gauged_basinP:             fnd_col[gauged_basin;cols cleaned_peak]
 q)perfect_forecastP:         fnd_col[perfect_forecast;cols cleaned_peak]
-q)
+
 q)ungauge: `M`P!(ungauged_noforecast_basinM;ungauged_noforecast_basinP)
 q)gauge:   `M`P!(ungauge[`M],gauged_basinM;ungauge[`P],gauged_basinP)
 q)show forecast:`M`P!(gauge[`M],perfect_forecastM;gauge[`P],perfect_forecastP)
@@ -477,25 +478,25 @@ _Monthly Model_
 q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;16;8;100;0.2;16;9)
 q)pltG1:pr_curve[XtestM`gauged;ytestM;build_model[XtrainM`gauged;ytrainM;dict]]
 
-Accuracy for random_forest: 0.9435768
-Meanclass accuracy for random_forest: 0.9072401
+Accuracy for random_forest: 0.9430843
+Meanclass accuracy for random_forest: 0.9163495
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.9452222 0.9971976 0.9705145 13203
-1        | 0.869258  0.2438057 0.380805  1009
-avg/total| 0.9072401 0.6205017 0.6756597 14212
+0        | 0.9442374 0.9978035 0.9702817 13203  
+1        | 0.8884615 0.2289395 0.3640662 1009   
+avg/total| 0.9163495 0.6133715 0.667174  14212  
 
-Accuracy for XGB: 0.9330941
-Meanclass accuracy for XGB: 0.7474907
+Accuracy for XGB: 0.9359083
+Meanclass accuracy for XGB: 0.7633167
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.9554036 0.9735666 0.9643996 13203
-1        | 0.5395778 0.4053518 0.4629315 1009
-avg/total| 0.7474907 0.6894592 0.7136656 14212
+0        | 0.9547943 0.9774294 0.9659793 13203  
+1        | 0.5718391 0.39445   0.4668622 1009   
+avg/total| 0.7633167 0.6859397 0.7164207 14212  
 ```
 ![Figure_5](imgs/pr_G1.png)
 
@@ -537,25 +538,25 @@ _Monthly Model_
 q)dict:`rf_n`rf_wgt`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;15;100;0.2;15;7)
 q)pltP1:pr_curve[XtestM`forecast;ytestM;build_model[XtrainM`forecast;ytrainM;dict]]
 
-Accuracy for random_forest: 0.9437878
-Meanclass accuracy for random_forest: 0.9119027
+Accuracy for random_forest: 0.9456874
+Meanclass accuracy for random_forest: 0.9194042
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.945234  0.9974248 0.9706283 13203
-1        | 0.8785714 0.2438057 0.3816912 1009
-avg/total| 0.9119027 0.6206153 0.6761598 14212
+0        | 0.9470051 0.9975006 0.9715972 13203  
+1        | 0.8918033 0.2695738 0.414003  1009   
+avg/total| 0.9194042 0.6335372 0.6928001 14212  
 
-Accuracy for XGB: 0.9473758
-Meanclass accuracy for XGB: 0.8037618
+Accuracy for XGB: 0.9466019
+Meanclass accuracy for XGB: 0.8004197
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.9698273 0.9737938 0.9718065 13203
-1        | 0.6376963 0.6035679 0.6201629 1009
-avg/total| 0.8037618 0.7886809 0.7959847 14212
+0        | 0.9695895 0.9731879 0.9713854 13203  
+1        | 0.63125   0.6005946 0.6155409 1009   
+avg/total| 0.8004197 0.7868913 0.7934631 14212  
 ```
 ![Figure_7](imgs/pr_P1.png)
 
@@ -614,8 +615,8 @@ q)string .ml.fresh.significantfeatures[flip forecast[`M]!cleaned_monthly[forecas
 "window_upstr_ppt_1_2"
 "window_upstr_ppt_1_3"
 "window_upstr_ppt_1_4"
-"lagged_target_12"
 "lagged_target_1"
+"lagged_target_12"
 "window_upstr_ppt_1_5"
 "window_ppt_7"
 ```

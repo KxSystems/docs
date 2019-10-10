@@ -76,6 +76,18 @@ Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using yo
 
 ### <i class="fas fa-code"></i> Edit your profile
 
+!!! info "Environment variables"
+
+    The q interpreter refers to environment variable `QHOME` for the location of certain files. 
+    Absent this variable, it will guess based on the path to the interpreter. 
+    Better to set the variable explicitly. 
+
+    If you run just one version of kdb+, it might suit you to define `QHOME` in your Bash profile and export it for use by non-console processes. 
+
+    Otherwise set `QHOME` with each invocation of the interpreter, as shown below. 
+
+    The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
+
 In Terminal (Bash), open your profile `~/.bashrc` with TextEdit (or your favourite text editor),
 
 ```bash
@@ -141,7 +153,7 @@ You’re done. You have completely installed kdb+.
 
 For any version of q, 64-bit and 32-bit interpreter binaries share the same `q.k` file, located in `QHOME` for that version. 
 
-All versions share the same `k4.lic` licence-key file. 
+All versions share the same `k4.lic` license-key file. 
 
 Arrange your files as in this example:
 
@@ -184,7 +196,7 @@ q)\\
 ☕ sjt@mint:~$
 ```
 
-The 32-bit interpreter finds and reports the licence-key file even though it will run without it. 
+The 32-bit interpreter finds and reports the license-key file even though it will run without it. 
 
 ```bash
 ☕ sjt@mint:~$ q

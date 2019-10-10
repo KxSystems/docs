@@ -9,7 +9,7 @@ keywords: time-series, cross validation, grid search, roll-forward, chain-forwar
 
 
 
-The `.ml.xv` and `.ml.gs` namespaces contain functions related to cross-validation and grid search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
+The `.ml.xv` and `.ml.gs` namespaces contain functions related to cross-validation and grid-search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/xval](https://github.com/kxsystems/ml/tree/master/xval/)
@@ -17,27 +17,31 @@ The `.ml.xv` and `.ml.gs` namespaces contain functions related to cross-validati
 The following functions are contained in the `.ml.gs` and `.ml.xv` namespaces.
 
 ```txt
-.ml.gs - Grid search functions
-  .kfshuff            K-Fold cross-validation with randomized indices
-  .kfsplit            K-Fold cross-validation with sequential indices
-  .kfstrat            K-Fold cross-validation with stratified indices
-  .mcsplit            Monte-Carlo cross-validation with random split indices
-  .pcsplit            Percentage split cross-validation
-  .tschain            Chain-forward cross-validation
-  .tsrolls            Roll-forward cross-validation
-.ml.xv - Cross validation functions
-  .kfshuff            K-Fold cross-validation with randomized indices
-  .kfsplit            K-Fold cross-validation with sequential indices
-  .kfstrat            K-Fold cross-validation with stratified indices
-  .mcsplit            Monte-Carlo cross-validation with random split indices
-  .pcsplit            Percentage split cross-validation
-  .tschain            Chain-forward cross-validation
-  .tsrolls            Roll-forward cross-validation
+.ml.gs - Grid-search functions
+  .kfshuff            K-Fold cross validation with randomized indices
+  .kfsplit            K-Fold cross validation with sequential indices
+  .kfstrat            K-Fold cross validation with stratified indices
+  .mcsplit            Monte-Carlo cross validation with random split indices
+  .pcsplit            Percentage-split cross validation
+  .tschain            Chain-forward cross validation
+  .tsrolls            Roll-forward cross validation
+.ml.xv - Cross-validation functions
+  .kfshuff            K-Fold cross validation with randomized indices
+  .kfsplit            K-Fold cross validation with sequential indices
+  .kfstrat            K-Fold cross validation with stratified indices
+  .mcsplit            Monte-Carlo cross validation with random split indices
+  .pcsplit            Percentage-split cross validation
+  .tschain            Chain-forward cross validation
+  .tsrolls            Roll-forward cross validation
 ```
 
 Within the following examples, `.ml.xv.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, e.g. a function to fit on training data and predict outputs for new data.
 
 As of toolkit version 0.1.3, the distribution of cross-validation functions is invoked at console initialization. If a process is started with `$q -s -4 -p 4321` and `xval.q` is loaded into the process, then the cross-validation library will automatically make 4 worker processes available to execute jobs.
+
+!!! tip "Interactive notebook implementations"
+
+  	Interactive notebook implementations of a large number of the functions outlined here are available within <i class="fab fa-github"></i> [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
 
 ## `.ml.gs.kfshuff`
@@ -76,7 +80,7 @@ fit_intercept normalize|
 1             1        | 0.997542  0.997472  0.9974438 0.9974849
 // 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfshuff[5;1;x;yr;.ml.xv.fitscore rf;pr;.2]
-(+`fit_intercept`normalize!(0011b;0101b))!(0.9971515 0.9971983 0.9973203 0.99..
+(+`fit_intercept`normalize!(0011b;0101b))!(0.9971515 0.9971983 0.9973203 ..
 `fit_intercept`normalize!11b
 0.9975178
 ```
@@ -120,12 +124,13 @@ max_depth|
 5        | 1      0.9995 0.9995 0.9985 0.999
 // 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfsplit[5;1;x;yc;.ml.xv.fitscore cf;pc;.2]
-(+(,`max_depth)!,(::;1;2;3;4;5))!(1 0.999375 0.998125 1 0.99875;0.475 0.47562..
+(+(,`max_depth)!,(::;1;2;3;4;5))!(1 0.999375 0.998125 1 0.99875;0.475 0.475..
 (,`max_depth)!,::
 1f
-// 10 fold cross-validated grid search fitted on 10% holdout with initial data shuffle
+// 10 fold cross-validated grid search fitted on 10% holdout 
+// with initial data shuffle
 q).ml.gs.kfsplit[10;1;x;yc;.ml.xv.fitscore cf;pc;-.1]
-(+(,`max_depth)!,(::;1;2;3;4;5))!(1 1 1 0.9988889 0.9977778 1 1 1 1 0.9988889..
+(+(,`max_depth)!,(::;1;2;3;4;5))!(1 1 1 0.9988889 0.9977778 1 1 1 1 0.99888..
 (,`max_depth)!,::
 1f
 ```
@@ -169,7 +174,7 @@ max_depth|
 5        | 0.9995 1      1      0.999  1 
 // 4 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfstrat[4;1;x;yc;.ml.xv.fitscore cf;pc;.2]
-(+(,`max_depth)!,(::;1;2;3;4;5))!(0.9995005 1 1 0.998999;0.501998 0.5022511 0..
+(+(,`max_depth)!,(::;1;2;3;4;5))!(0.9995005 1 1 0.998999;0.501998 0.5022511..
 (,`max_depth)!,5
 0.9995
 ```
@@ -211,7 +216,7 @@ fit_intercept normalize|
 1             1        | 0.9973651 0.9974569 0.9974633 0.9974753 0.9975381
 // 10% validation set with 3 repetitions, fit on 20% holdout set
 q).ml.gs.mcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;.2]
-(+`fit_intercept`normalize!(0011b;0101b))!(0.9971063 0.9971009 0.997168;0.997..
+(+`fit_intercept`normalize!(0011b;0101b))!(0.9971063 0.9971009 0.997168;0.9..
 `fit_intercept`normalize!11b
 0.9975662
 ```
@@ -253,12 +258,12 @@ fit_intercept normalize|
 1             1        | 0.9974099
 // 10% validation set with 3 repetitions, fit on 20% holdout set
 q).ml.gs.pcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;.2]
-(+`fit_intercept`normalize!(0011b;0101b))!(0.9972871 0.9972871 0.9972871;0.99..
+(+`fit_intercept`normalize!(0011b;0101b))!(0.9972871 0.9972871 0.9972871;0...
 `fit_intercept`normalize!10b
 0.9974099
 ```
 
-This form of cross-validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. 
+This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. 
 
 <i class="fab fa-wikipedia-w"></i>
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation)
@@ -302,7 +307,7 @@ max_depth|
 5        | 1      0.9995 0.999  0.9995   
 // 4 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.tschain[4;1;x;yc;.ml.xv.fitscore cf;pc;.2]
-(+(,`max_depth)!,(::;1;2;3;4;5))!(1 0.9995 0.999;0.491 0.507 0.491;0.7445 0.7..
+(+(,`max_depth)!,(::;1;2;3;4;5))!(1 0.9995 0.999;0.491 0.507 0.491;0.7445 ..
 (,`max_depth)!,::
 0.9995
 ```
@@ -340,7 +345,7 @@ q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
 q)cf:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
 // params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-// 6 fold cross-validation no holdout
+// 6-fold cross validation no holdout
 q).ml.gs.tsrolls[6;1;x;yc;.ml.xv.fitscore cf;pc;0]
 max_depth|                                                  
 ---------| -------------------------------------------------
@@ -352,7 +357,7 @@ max_depth|
 5        | 0.9994001 0.9988002 1         0.9988002 1        
 // 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.tsrolls[4;1;x;yc;.ml.xv.fitscore cf;pc;.2]
-(+(,`max_depth)!,(::;1;2;3;4;5))!(0.9995 0.999 0.999;0.4965 0.506 0.5015;0.74..
+(+(,`max_depth)!,(::;1;2;3;4;5))!(0.9995 0.999 0.999;0.4965 0.506 0.5015;0...
 (,`max_depth)!,::
 1f
 ```
@@ -366,7 +371,7 @@ Successive equi-sized bins are taken as training and validation sets at each ste
 
 ## `.ml.xv.kfshuff`
 
-_K-Fold cross-validation for randomized non-repeating indices_
+_K-Fold cross validation for randomized non-repeating indices_
 
 Syntax: `.ml.xv.kfshuff[k;n;x;y;f]`
 
@@ -455,7 +460,7 @@ This is used extensively where the distribution of classes in the data is unbala
 
 ## `.ml.xv.mcsplit`
 
-_Monte-Carlo cross-validation using randomized non-repeating indices_
+_Monte-Carlo cross validation using randomized non-repeating indices_
 
 Syntax: `.ml.xv.mcsplit[p;n;x;y;f]`
 
@@ -481,7 +486,7 @@ q).ml.xv.mcsplit[p;n;x;yr;mdlfn]
 0.9999905 0.9999906 0.9999905 0.9999905 0.9999905
 ```
 
-This form of cross-validation is also known as _repeated random sub-sampling validation_. This has advantages over k-fold when equi-sized bins of observations are not wanted or where outliers could heavily bias the classifier. 
+This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over k-fold when equi-sized bins of observations are not wanted or where outliers could heavily bias the classifier. 
 
 <i class="fab fa-wikipedia-w"></i>
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation "Wikipedia")

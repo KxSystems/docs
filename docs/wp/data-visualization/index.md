@@ -55,11 +55,6 @@ efficiency and increase usability when combining these two technologies.
 All tests were run using kdb+ version 3.5 and Tableau 10.3.
 
 
-### Author
-
-Michaela Woods is a kdb+ consultant for Kx. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
-
-
 ## Connecting to kdb+ using ODBC
 
 Instructions on how to connect kdb+ from Tableau Desktop for both
@@ -569,6 +564,11 @@ But if the question is “Can you combine these two technologies in an
 effective way?” the answer is “Yes”, and by applying the functionality
 described in this paper to work around limitations, to connect a Tableau
 visualization front-end to a kdb+ back end.
+
+
+## Author
+
+Michaela Woods is a kdb+ consultant for Kx. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
 
 
 ## Appendix A

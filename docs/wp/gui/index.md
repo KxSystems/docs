@@ -45,11 +45,6 @@ process.
 The C# source code for this paper can be found at <i class="fab fa-github"></i> [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
 
-### Author
-
-Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
-
-
 ## Connecting kdb+ and C#
 
     
@@ -875,4 +870,10 @@ were built with Visual Studio 2010.
 The C# source code for this paper
 can be found on GitHub at <i class="fab fa-github"></i>
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
+
+
+## Author
+
+Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
+
 

@@ -26,9 +26,9 @@ Feature selection can improve the accuracy of a machine-learning algorithm by
 -  Mitigating the curse of dimensionality
 -  Reducing variance in the dataset to reduce overfitting
 
-Notebooks showing examples of the FRESH algorithm used in different applications can be found at 
-<i class="fab fa-github"></i>
-[KxSystems/ml/fresh/notebooks](https://github.com/kxsystems/ml/tree/master/fresh/notebooks).
+!!! tip "Examples"
+
+    Interactive notebook implementations showing examples of the FRESH algorithm used in different applications can be found at <i class="fab fa-github"></i> [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
 
 ## Loading
@@ -43,13 +43,13 @@ q).ml.loadfile`:fresh/init.q
 
 ## Data formatting
 
-Data passed to the feature extraction procedure should contain an identifying (Id) column, which groups the time series into subsets from which features can be extracted. The Id column can be inherent to the data or derived for a specific use-case (e.g. applying a sliding window onto the dataset).
+Data passed to the feature extraction procedure should contain an identifying (ID) column, which groups the time series into subsets from which features can be extracted. The ID column can be inherent to the data or derived for a specific use-case (e.g. applying a sliding window onto the dataset).
 
 Null values in the data should be replaced with derived values most appropriate to the column.
 
-The feature extraction procedure supports columns of boolean, integer and floating-point types. Other datatypes should not be passed to the extraction procedure.
+The feature-extraction procedure supports columns of boolean, integer and floating-point types. Other datatypes should not be passed to the extraction procedure.
 
-In particular, data should not contain text (strings or symbols), other than within the Id column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
+In particular, data should not contain text (strings or symbols), other than within the ID column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
 
 !!! tip "Formatting"
 
@@ -143,11 +143,17 @@ Where
 -   `cnames` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
 -   `ptab` is a table containing the functions and parameters to be applied to the `cnames` columns. This should be a modified version of `.ml.fresh.params`
 
-This returns a table keyed by Id column and containing the features extracted from the subset of the data identified by the `id` column.
+This returns a table keyed by ID column and containing the features extracted from the subset of the data identified by the `id` column.
 
 ```q 
-q)m:30;n:100
-q)10#tab:([]date:raze m#'"d"$til n;time:(m*n)#"t"$til m;col1:50*1+(m*n)?20;col2:(m*n)?1f)
+m:30;n:100
+tab:([]date:raze m#'"d"$til n;
+  time:(m*n)#"t"$til m;
+  col1:50*1+(m*n)?20;
+  col2:(m*n)?1f )
+```
+```q
+q)10#tab
 date       time         col1 col2      
 ---------------------------------------
 2000.01.01 00:00:00.000 1000 0.3927524 
@@ -160,61 +166,65 @@ date       time         col1 col2
 2000.01.01 00:00:00.007 500  0.5347096 
 2000.01.01 00:00:00.008 600  0.7111716 
 2000.01.01 00:00:00.009 250  0.411597  
-q)show ptab:.ml.fresh.params		/ for documentation purposes this table has been truncated
-f                       | pnum pnames         pvals                        valid
-------------------------| ------------------------------------------------------
-absenergy               | 0    ()             ()                               1    
-abssumchange            | 0    ()             ()                               1    
-count                   | 0    ()             ()                               1    
-countabovemean          | 0    ()             ()                               1    
-countbelowmean          | 0    ()             ()                               1    
-firstmax                | 0    ()             ()                               1    
-firstmin                | 0    ()             ()                               1    
-autocorr                | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9             1    
-binnedentropy           | 1    ,`lag          ,2 5 10                          1    
-c3                      | 1    ,`lag          ,1 2 3                           1    
-cidce                   | 1    ,`boolean      ,01b                             1    
-eratiobychunk           | 1    ,`numsegments  ,3                               1    
-rangecount              | 2    `minval`maxval -1 1                             1    
-changequant             | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)            1    
+
+q)show ptab:.ml.fresh.params / truncated for documentation purposes 
+f              | pnum pnames         pvals                 valid
+---------------| -----------------------------------------------
+absenergy      | 0    ()             ()                        1    
+abssumchange   | 0    ()             ()                        1    
+count          | 0    ()             ()                        1    
+countabovemean | 0    ()             ()                        1    
+countbelowmean | 0    ()             ()                        1    
+firstmax       | 0    ()             ()                        1    
+firstmin       | 0    ()             ()                        1    
+autocorr       | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9      1    
+binnedentropy  | 1    ,`lag          ,2 5 10                   1    
+c3             | 1    ,`lag          ,1 2 3                    1    
+cidce          | 1    ,`boolean      ,01b                      1    
+eratiobychunk  | 1    ,`numsegments  ,3                        1    
+rangecount     | 2    `minval`maxval -1 1                      1    
+changequant    | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)     1    
+
 q)5#cfeats:.ml.fresh.createfeatures[tab;`date;2_ cols tab;ptab]
-date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1_countb..
-----------| ---------------------------------------------------------------------------..
-2000.01.01| 1.33e+07       10100             30         13                  17         ..
-2000.01.02| 1.023e+07      11450             30         14                  16         ..
-2000.01.03| 7805000        9200              30         13                  17         ..
-2000.01.04| 8817500        9950              30         17                  13         ..
-2000.01.05| 7597500        7300              30         12                  18         ..
+date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean ..
+----------| ----------------------------------------------------------------..
+2000.01.01| 1.33e+07       10100             30         13                  ..
+2000.01.02| 1.023e+07      11450             30         14                  ..
+2000.01.03| 7805000        9200              30         13                  ..
+2000.01.04| 8817500        9950              30         17                  ..
+2000.01.05| 7597500        7300              30         12                  ..
 q)count 1_cols cfeats	/ 595 features have been produced from 2 columns
 568
 
 / update ptab to exclude hyperparameter-dependent functions 
 q)show ptabnew:update valid:0b from ptab where pnum>0
-f                       | pnum pnames         pvals                        valid
-------------------------| ------------------------------------------------------
-absenergy               | 0    ()             ()                               1
-abssumchange            | 0    ()             ()                               1
-count                   | 0    ()             ()                               1
-countabovemean          | 0    ()             ()                               1
-countbelowmean          | 0    ()             ()                               1
-firstmax                | 0    ()             ()                               1
-firstmin                | 0    ()             ()                               1
-autocorr                | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9             0
-binnedentropy           | 1    ,`lag          ,2 5 10                          0
-c3                      | 1    ,`lag          ,1 2 3                           0
-cidce                   | 1    ,`boolean      ,01b                             0
-eratiobychunk           | 1    ,`numsegments  ,3                               0
-rangecount              | 2    `minval`maxval -1 1                             0
-changequant             | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)            0
+f               | pnum pnames         pvals                 valid
+----------------| -----------------------------------------------
+absenergy       | 0    ()             ()                        1
+abssumchange    | 0    ()             ()                        1
+count           | 0    ()             ()                        1
+countabovemean  | 0    ()             ()                        1
+countbelowmean  | 0    ()             ()                        1
+firstmax        | 0    ()             ()                        1
+firstmin        | 0    ()             ()                        1
+autocorr        | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9      0
+binnedentropy   | 1    ,`lag          ,2 5 10                   0
+c3              | 1    ,`lag          ,1 2 3                    0
+cidce           | 1    ,`boolean      ,01b                      0
+eratiobychunk   | 1    ,`numsegments  ,3                        0
+rangecount      | 2    `minval`maxval -1 1                      0
+changequant     | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)     0
+
 q)5#cfeatsnew:.ml.fresh.createfeatures[tab;`date;2_ cols tab;ptabnew]
-date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean col1_countb..
-----------| ---------------------------------------------------------------------------..
-2000.01.01| 1.33e+07       10100             30         13                  17         ..
-2000.01.02| 1.023e+07      11450             30         14                  16         ..
-2000.01.03| 7805000        9200              30         13                  17         ..
-2000.01.04| 8817500        9950              30         17                  13         ..
-2000.01.05| 7597500        7300              30         12                  18         ..
-q)count 1_cols cfeatsnew     / 74 columns now being created via a subset of initial functions
+date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean ..
+----------| ----------------------------------------------------------------..
+2000.01.01| 1.33e+07       10100             30         13                  ..
+2000.01.02| 1.023e+07      11450             30         14                  ..
+2000.01.03| 7805000        9200              30         13                  ..
+2000.01.04| 8817500        9950              30         17                  ..
+2000.01.05| 7597500        7300              30         12                  ..
+q)/74 columns now being created via a subset of initial functions
+q)count 1_cols cfeatsnew     
 92
 ```
 

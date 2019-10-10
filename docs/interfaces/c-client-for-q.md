@@ -43,8 +43,8 @@ SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/ma
 
 capability | dependencies | 32-bit | 64-bit 
 -----------|--------------|-----------|-----
-no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o) 
-SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)
+no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o) 
+SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)
 
 
 ### <i class="fab fa-windows"></i> Windows

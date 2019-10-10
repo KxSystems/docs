@@ -1026,7 +1026,7 @@ All tests were run using kdb+ 3.6 (2018.10.23).
 
 ## Authors 
 
-Conor Slattery is a Financial Engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
+Conor Slattery is a financial engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
 
 Stephen Taylor is the Kx librarian. 
 

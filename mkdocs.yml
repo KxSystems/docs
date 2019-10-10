@@ -137,6 +137,7 @@ nav:
       - Tables: learn/startingkdb/tables.md
       - Historical database: learn/startingkdb/hdb.md
       - Realtime database: learn/startingkdb/tick.md
+    - Technical articles: learn/blogs.md
     - Views: learn/views.md
     - Archive: learn/archive.md
   - Reference:
@@ -383,10 +384,16 @@ nav:
       - FFI: interfaces/ffi.md
       - Java: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
+<<<<<<< HEAD
       - Kafka: 
         - Overview: interfaces/kafka/index.md
         - User guide: interfaces/kafka/user-guide.md
       - MQTT: interfaces/mqtt.md
+=======
+      - Kafka:
+        - Overview: interfaces/kafka/index.md
+        - User guide: interfaces/kafka/user-guide.md
+>>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
@@ -396,11 +403,19 @@ nav:
         - What’s new: interfaces/pyq/whats-new.md
         - Version history: interfaces/pyq/history.md
       - R:
+<<<<<<< HEAD
         - Overview: interfaces/R/index.md
         - rkdb: interfaces/R/rkdb.md
         - embedR: interfaces/R/embedR.md
         - examples: interfaces/R/examples.md
         - complimentary interfaces: interfaces/R/R-and-q.md
+=======
+        - Overview: interfaces/r/index.md
+        - rkdb: interfaces/r/rkdb.md
+        - embedR: interfaces/r/embedr.md
+        - Examples: interfaces/r/examples.md
+        - Complementary interfaces: interfaces/r/r-and-q.md
+>>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
     - From: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
@@ -517,26 +532,60 @@ nav:
     - Windows service: kb/windows-service/index.md
   - White papers: 
     - Index: wp/index.md
+    - Astronomy: wp/astronomy.md
     - Bitcoin blockchains: wp/blockchain/index.md
     - C# GUIs: wp/gui/index.md
+<<<<<<< HEAD
+=======
+    - Card counters: wp/card-counters/index.md
+    - Columnar database: wp/columnar-database/index.md
+    - Corporate actions: wp/corporate-actions.md
+    - Gateway design: wp/gateway-design/index.md
+    - Compression: wp/compress/index.md
+    - Data management: wp/data-management.md
+    - Data recovery for kdb+tick: wp/data-recovery.md
+>>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
     - Data visualization: wp/data-visualization/index.md
+    # - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
+<<<<<<< HEAD
     - Disaster management using social media: wp/disaster-management/index.md
     - Disaster Prevention for Floods: wp/disaster-floods/index.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
+=======
+    - Distributed systems: wp/query-interface.md
+    - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
+    - Exoplanets: wp/exoplanets/index.md
+    - FIX messaging: wp/fix-messaging.md
+    - Foreign keys: wp/foreign-keys.md
+    - Intraday writedown: wp/intraday-writedown/index.md
+>>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
     - Iterators: wp/iterators/index.md
     - Java API: wp/java-api/index.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
+    - Machine learning: wp/machine-learning/index.md
+    - Market depth: wp/market-depth/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Neural networks: wp/neural-networks/index.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Query Routing: wp/query-routing/index.md
     - Real-time tick subscribers: wp/rt-tick/index.md
+<<<<<<< HEAD
+=======
+    - Time-series simplification: wp/ts-shrink/index.md
+    - Transaction-cost analysis: wp/transaction-cost.md
+>>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
     - Signal processing and q: wp/signal-processing/index.md
+    - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
+<<<<<<< HEAD
     - Working with sym files: wp/symfiles/index.md
+=======
+    - Surveillance techniques: wp/surveillance/index.md
+    - Working with sym files: wp/symfiles.md
+>>>>>>> 29e55bd11d9a45189ba2d01b3be134b1b8fe27e5
     - WebSockets: wp/websockets/index.md
   - About: 
     - Kx technology: about/kxtechnology.md
@@ -549,7 +598,7 @@ nav:
       - Miscellaneous: about/sg/miscellaneous.md
       - Style: about/sg/style.md
       - Typography: about/sg/typography.md
-      - Terminology: about/sg/terminology.md
+    - Terminology: about/terminology.md
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md

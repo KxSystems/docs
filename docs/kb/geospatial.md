@@ -19,6 +19,7 @@ $ q q/geo.q
 $ open html/geo.html
 ```
 
+
 This should then open a browser, connect to the kdb+ process and retrieve `geo.html`, displayed similar to:
 
 ![map](../img/geo.png)
@@ -76,3 +77,11 @@ The result is then filtered to remove points outside the rectangle (since the co
 
 The simple HTML interface is implemented with [openstreetmap](http://www.openstreetmap.org/) and [leaflet](https://leafletjs.com).
 
+
+!!! warning "OpenSSL 1.1 and Ubuntu 18.04"
+
+    `geo.zip` conflicts with OpenSSL 1.1 and won’t compile on Ubuntu 18.04.
+
+    For now, a workaround can be found at 
+    <i class="fab fa-github"></i>
+    [rianoc/geo](https://github.com/rianoc/geo)
