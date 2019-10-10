@@ -531,7 +531,7 @@ nav:
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
-    # - Disaster management: wp/disaster-management/index.md
+    - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - Distributed systems: wp/query-interface.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
