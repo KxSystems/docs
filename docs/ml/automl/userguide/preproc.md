@@ -202,14 +202,88 @@ In the default configuration target consistency in FRESH is determined by checki
 The following truncated output is indicative of incorrect lengths targets mapped to rows being given, the function to apply to replicate the behaviour is provided for execution while invocation using `runexample` is also supplied.
 
 ```q
+q)data:([]100?1f;100?1f;100?1f)
+q)tgt:50?1f
 
+// .aml.i.runexample[data;tgt;`fresh;`reg;::]
+q)dict:enlist[`aggcols]!enlist `x // This is defined in the macro function
+q).aml.i.lencheck[data;tgt;`fresh;dict]
+'Target count must equal count of unique agg values for fresh
 ```
 
 #### Non-FRESH
 
+In the case of non-FRESH automated machine learning the comparison is much simpler. If the number of rows in the input table does not equal the number of targets an error will be flagged. The following is an example of such an error.
+
+```q
+q)data:([]100?1f;100?1f;100?1f)
+q)tgt:50?1f
+
+//.aml.runexample[data;tgt;`normal;`reg;::]
+q).aml.i.lencheck[data;tgt;`normal;::]
+'Must have the same number of targets as values in table
+```
+
 ### Symbol encoding
+
+In the FRESH and all non-FRESH example symbol columns are encoded as follows,
+
+-  If there are less than 10 unique symbols in a particular column the data is one-hot encoded.
+-  If a column contains more than 10 unique symbols the values are frequency encoded
+
+The following example shows the application of this encoding for two columns which between the two of them meet both of the above criteria
+
+```q
+q).aml.i.symencode[x;10]
+x          x2_freq    x1_b x1_d x1_e x1_h x1_i x1_j x1_n x1_o
+-------------------------------------------------------------
+0.8585142  0.09090909 0    0    1    0    0    0    0    0   
+0.4174982  0.09090909 0    0    0    0    0    0    0    1   
+0.8838377  0.09090909 0    0    0    0    1    0    0    0   
+0.7256753  0.09090909 0    1    0    0    0    0    0    0   
+0.5056055  0.09090909 0    1    0    0    0    0    0    0   
+0.9348517  0.09090909 0    0    0    0    0    1    0    0   
+0.5689362  0.09090909 0    0    0    1    0    0    0    0   
+0.07686201 0.09090909 0    0    0    1    0    0    0    0   
+0.7035851  0.09090909 1    0    0    0    0    0    0    0   
+0.7945502  0.09090909 0    0    0    0    0    0    1    0   
+0.7611306  0.09090909 0    0    0    0    0    1    0    0   
+```
 
 ### Constant column removal
 
+Columns which contain only one unique value are removed from the dataset as they cannot provide useful information to prediction of a target due a lack of signal within the data. The following is the implemented code to achieve this.
+
+```q
+q)5#data:([]100?1f;100#0f;100?1f)
+x         x1 x2       
+----------------------
+0.4774146 0  0.4286866
+0.4041947 0  0.3158067
+0.7717654 0  0.9003969
+0.3876964 0  0.719155 
+0.1433602 0  0.6433137
+q).ml.dropconstant[data]
+x          x2       
+--------------------
+0.4774146  0.4286866
+0.4041947  0.3158067
+0.7717654  0.9003969
+0.3876964  0.719155 
+0.1433602  0.6433137
+```
+
 ### Null and infinity replacement
 
+Both null values and infinities are removed from the data due to the inability of machine learning models in sklearn and keras to handle this form of data. In the case of `+/-0w` the values are replaced by the minimum/maximum value of the column while `0n`'s is replaced by the median value of the column. In cases where nulls are present an additional column is added denoting the location of the null prior to filling of the dataset thus encoding the null in the case that this is an important signal.
+
+```q
+q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)
+q).aml.i.null_encode[.ml.infreplace data;med]
+x         x1        x2         x_null
+-------------------------------------
+0.9764793 0.8737778 0.02064306 0     
+0.5706695 0.4463957 0.9888238  0     
+0.4079939 0.7378628 0.5247357  0     
+0.4893317 0.4463957 0.4674091  1     
+```
