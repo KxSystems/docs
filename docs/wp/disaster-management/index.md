@@ -120,7 +120,7 @@ Tweet contains URL and emojis:
 
 ```txt
 Colorado flooding could help keep tourists away 
-http://t.co/vqwifb51hk Denver\342\200\224a
+http://t.co/vqwifb51hk Denver 🤔
 ```
 
 For this work, the following steps were taken to standardize the data being presented to the model.
