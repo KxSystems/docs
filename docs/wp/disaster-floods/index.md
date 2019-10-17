@@ -131,20 +131,25 @@ To obtain these features, the `feat` function was used. This enabled previous in
 -	`fnc` function that is applied to the grouped columns
 
 ```q
-q)colname:{enlist`$string[y],"_",string[x],"_",string[z]}
-q)m_avg:{(max;(mavg;y;x))}
-q)prv:{(xprev;y;x)}
+q)colname:{enlist`$string[y],"_",string[x],"_",string[z]} // Create new column name
+q)max_mavg:{(max;(mavg;y;x))}                             // Calculate maximal moving average
+q)prv:{(xprev;y;x)}                                       // Calculate value of lagged features
+
+// Applies functions to appropriate columns and rename columns appropriately
 q)func:{[x;y;z;b]raze{[x;y;z;b]colname[x;y;z]!enlist b[x;z]}[z;y;;b]each raze x}
+
+// upstream, previous, windowed and lagged extraction function
 q)feat:{[x;y;z;col;d;fnc] d[`w][x;d`wh;d`gr;$[1<count[z];raze;]func[y;col;;fnc]each z]}
 ```
 
 To obtain the upstream values the `feat` function was used. The id number of each stream site consisted of over 8 digits. The first two digits were the grouping number of the river basin catchment. While the remaining digits were in ascending order based on the location of the gauge along the stream.
 
 ```q
-q)catch_site:((';#);2;($:;`site_no))
-q)site_date:`site_no`date!(catch_site;`date)
+q)catch_site:((';#);2;($:;`site_no))    /Grouping site numbers by catchment, using the first 2 digits
+q)site_date :`site_no`date!(catch_site;`date)
 q)dict:`w`wh`gr!(!;();site_date)
-q)upstr_ppt:feat[precip;1;`ppt;`upstr;dict;prv]
+
+q)upstr_ppt   :feat[precip;1;`ppt;`upstr;dict;prv]
 q)upstr_height:feat[maxht;1;`height;`upstr;dict;prv]
 ```
 
@@ -152,6 +157,7 @@ The `feat` function was also used to obtain previous values of both rainfall and
 
 ```q
 q)dict[`gr]:site:(enlist `site_no)!enlist `site_no
+
 q)prev_rain:feat[upstr_ppt;enlist 1_til 10;`ppt`upstr_ppt_1;`prev;sited:dict;prv]
 q)all_height:feat[upstr_height;enlist 1_til 10;`height`upstr_height_1;`prev;dict;prv]
 ```
@@ -164,7 +170,8 @@ When forecasts were provided for each model, it was important to have informatio
 
 ```q
 q)dict[`gr]:(`date`site_no)!(($;enlist`month;`date);`site_no)
-q)all_rain:feat[prev_rain;enlist 1_til 15;`ppt`upstr_ppt_1;`window;dict;m_avg]
+
+q)all_rain:feat[prev_rain;enlist 1_til 15;`ppt`upstr_ppt_1;`window;dict;max_mavg]
 ```
 
 _Time to Peak Model_
@@ -180,26 +187,36 @@ These zones consist of
 3. EST: Eastern Standard Time
 
 ```q
-q)time_zone:raze{dd:x[1];si:x[0];
-          select `$first site_no,`$first unk from str where date=first dd,si=`$site_no}each 
-          value each 0!select date by distinct site_no from all_peak_data;
+// The timezone (unk) information for each site is obtained from the gauges hdb (str)
+q)time_zone:raze{
+  dd:x[1];si:x[0];
+  select `$first site_no,`$first unk from str where date=first dd,si=`$site_no}each site_date
+
+// The time-zone information is joined to the peak dataset
 q)peak_data:peak_data ij`site_no xkey time_zone
-q)change_zone:{$[y=`EDT;x-04:00;y=`CDT;x-05:00;x-06:00]}
+
+// Define a function to modify the time-zone based on extracted information from gauges hdb
+q)change_zone:{tz:x[1];tm:x[0];$[tz=`EDT;tm-04:00;tz=`CDT;tm-05:00;tm-06:00]}
 ```
 
 The features, along with information about the projected rainfall in the days following the event, were also extracted and joined onto the dataset
 
 ```q
+// The date range of interest 
 q)range:{(within;x;(,;(+;(-:;2);y);y))}
-q)wh:{(range[`date;x[1]];range[`datetime;x[2]];(=;x[0];($;enlist`;`site_no)))}
+// The where clause to be applied 
+q)wh:{(range[`date;x[1]];range[`datetime;x[2]];(=;enlist x[0];($;enlist`;`site_no)))}
+// Dictionary to be passed to the feat function
 q)dict:{`w`wh`gr!(?;wh x;0b)}
-q)wind_ht_prev:{feat[str;enlist 2 4 12 48;`height;`wind_prev;dict x;m_avg]}each 
-               flip peak_data[`site_no`date`start_time]
 
-q)wh:{((within;`date;(,;y[1];(+;y[1];x)));(=;y[0];`site_no))}
+q)wind_ht_prev:{feat[str;enlist 2 4 12 48;`height;`wind_prev;dict x;max_mavg]
+  }each flip peak_data[`site_no`date`start_time]
+
+q)wh:{((within;`date;(,;y[1];(+;y[1];x)));(=;enlist y[0];`site_no))}
 q)dict:{`w`wh`gr!(?;wh[x;y];0b)}
-q)rain_pred:{feat[all_rain;enlist 1_til x;`ppt`upstr_ppt_1;`fut_window;dict[x;y];m_avg]}[3]
-          each flip peak_data[`site_no`date]
+
+q)rain_pred:{feat[all_rain;enlist 1_til x;`ppt`upstr_ppt_1;`fut_window;dict[x;y];max_mavg]
+  }[3]each flip peak_data[`site_no`date]
 ```
 
 ## Target Data
@@ -213,12 +230,14 @@ The latitude and longitude of these provided thresholds did not exactly match th
 The code used to achieve this nearest neighbours calculation is seen below with the algorithm implementation contained in full in the github repository associated with this paper. 
 
 ```q
-q)wlatl:raze each warning[`Latitude`Longitude],'gauges[`dec_lat_va`dec_long_v]
+q)wlatl:raze each warning[`Latitude`Longitude],'gauges[`dec_lat_va`dec_long_va]
+
 q)tabw:kd.buildtree[wlatl;2]
 q)gauge_val:count[warning]+til count gauges
 q)nnwarn:kd.nns[;tabw;(count[warning]#0),count[gauges]#1;flip wlatl;`edist]each gauge_val
 
 q)joins:([site_no:gauges`site_no]nn:nnwarn[;0];ndw:nnwarn[;1])
+
 q)floodlvl:(maxht ij joins)lj`nn xkey warning
 ```
 
@@ -227,12 +246,16 @@ This dataset was then joined onto the stream gauge data, adding columns counting
 For the sake of this project, we only wanted to focus on the "Flood" stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data was a binary label denoting whether the flood warning level was reached in a given month. Any site that claimed to flood more than 28 days per month were omitted from the dataset as we only wanted to focus on events that occured infrequently and were more difficult to predict.
 
 ```q
-q)threshold:0!select first Action,first Flood,first Moderate,first Major,no_Action:
-	   count where height>Action,no_Flood:count where height>Flood,
-	   no_Mod:count where height>Moderate,no_Major:count where 
-	   height>Major by site_no,"m"$date from floodlvl;
+q)threshold:0!select 
+                first Action,first Flood,first Moderate,first Major,
+                no_Action:count where height>Action,no_Flood:count where height>Flood,
+                no_Mod:count where height>Moderate,no_Major:count where height>Major 
+                by site_no,"m"$date from floodlvl
+
 q)threshold:select from threshold where no_Flood<28;
+
 q)threshold[`target]:threshold[`no_Flood]>0
+
 q)threshold
 site_no  date    Action Moderate Major target ...
 ---------------------------------------------
@@ -261,6 +284,7 @@ This was then converted into a binary classification problem by setting a thresh
 
 ```q
 q)peak[`delta_peak]:(peak[`peak_time]-peak[`start_time])*24
+
 q)peak[`target]:peak[`delta_peak]<3.5
 ```
 
@@ -274,9 +298,11 @@ After joining the stream height and precipitation tables from USGS and PRISM, th
 Lagged features were then added to this dataset, which included information like did a flood occur in the month prior, the year prior and also how often on average did the given location flood.
 
 ```q
-q)all_monthly_data:window_feat[all_monthly_data;enlist 1 12;`target;();site_d;`lagged;!]
-q)tgts:0!select site_no,no_Flood,date,cs:count date by site_no from all_monthly_data
-q)all_monthly_data[`lagged_target_all]:raze{count[x]mavg raze x}each?[tgts;();();`no_Flood]
+q)all_monthly_data:feat[all_monthly_data;enlist 1 12;`target;`lagged;sited;prv]
+
+q)tgts:value exec no_Flood by site_no from all_monthly_data
+
+q)all_monthly_data[`lagged_target_all]:raze{count[x]mavg raze x}each tgts
 ```
 
 _Time to Peak Model_
@@ -295,16 +321,18 @@ The dictionary contained the different feature columns required to make up the a
 
 ```q
 q)fnd_col:{x where x in y}
-q)ungauged_noforecast_basinM:fnd_col[ungauged_noforecast_basin;cols cleaned_monthly]
-q)gauged_basinM:             fnd_col[gauged_basin;cols cleaned_monthly]
-q)perfect_forecastM:         fnd_col[perfect_forecast;cols cleaned_monthly]
-q)ungauged_noforecast_basinP:fnd_col[ungauged_noforecast_basin;cols cleaned_peak]
-q)gauged_basinP:             fnd_col[gauged_basin;cols cleaned_peak]
-q)perfect_forecastP:         fnd_col[perfect_forecast;cols cleaned_peak]
 
-q)ungauge: `M`P!(ungauged_noforecast_basinM;ungauged_noforecast_basinP)
-q)gauge:   `M`P!(ungauge[`M],gauged_basinM;ungauge[`P],gauged_basinP)
-q)show forecast:`M`P!(gauge[`M],perfect_forecastM;gauge[`P],perfect_forecastP)
+q)ungauged_colsM:         fnd_col[ungauged_cols;cols cleaned_monthly]
+q)gauged_colsM:           fnd_col[gauged_cols;cols cleaned_monthly]
+q)perfect_forecast_colsM: fnd_col[perfect_forecast_cols;cols cleaned_monthly]
+
+q)ungauged_colsP:         fnd_col[ungauged_cols;cols cleaned_peak]
+q)gauged_colsP:           fnd_col[gauged_cols;cols cleaned_peak]
+q)perfect_forecast_colsP: fnd_col[perfect_forecast_cols;cols cleaned_peak]
+
+q)ungauge: `M`P!(ungauged_colsM;ungauged_colsP)
+q)gauge:   `M`P!(ungauge[`M],gauged_colsM;ungauge[`P],gauged_colsP)
+q)show forecast:`M`P!(gauge[`M],perfect_forecast_colsM;gauge[`P],perfect_forecast_colsP)
 M| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100`WsAreaS..
 P| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100`WsAreaS..
 ```
@@ -316,6 +344,7 @@ q)split_dict:{(!). flip(
    (`ungauged;flip x[ungauge[y]]);
    (`gauged;flip x[gauge[y]]);
    (`forecast;flip x[forecast[y]]))}
+
 q)split_dict[all_monthly_data;`M]
 ungauged| 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
 gauged  | 7i  -0.959493  -0.2817326    456f 1.454468 0.7407  526.9086 0.1926 ..
@@ -345,11 +374,17 @@ _Monthly Model_
 When splitting the data for this model, it was deemed important that no time leakage occurred between the training and test sets (e.g. the training set contained information from 2009 to 2017, while the test set contained the remaining years). This ensured that the model was being tested in a way that was similar to a real-world deployment. A split was chosen so that 20 percent of the data for each site was in the test set.
 
 ```q
-q)cutoff:update cutoff:min[date]+floor 0.8*max[date]-min[date]by site_no from cleaned_monthly
-q)XtrainMi:select from cutoff where date<cutoff
-q)ytrainM:exec target from cutoff where date<cutoff
-q)XtestMi:select from cutoff where date>=cutoff
-q)ytestM:exec target from cutoff where date>=cutoff
+// The cutoff dataset is produced and date defined at which the datasets are to be cutoff
+q)cutoff:update cutoff_date:min[date]+floor 0.8*max[date]-min[date] by site_no from cleaned_monthly
+
+// Data and targets from the dataset are extracted
+q)XtrainMi:select from cutoff where date<cutoff_date
+q)XtestMi :select from cutoff where date>=cutoff_date
+q)ytrainM :exec target from cutoff where date<cutoff_date
+q)ytestM  :exec target from cutoff where date>=cutoff_date
+
+// From the master training and testing datasets the appropriate information 
+// for the monthly data are extracted
 q)XtrainM:split_dict[XtrainMi;`M]
 q)XtestM:split_dict[XtestMi;`M]
 ```
@@ -361,17 +396,25 @@ The time to peak data was separated so that sites did not appear in both the tra
 ```q
 q)sites:0!select sum target by site_no from cleaned_peak
 q)plt[`:hist][sites`target];
+q)plt[`:xlabel]["Number of events per site"];
+q)plt[`:ylabel]["Number of associated sites"];
 q)plt[`:show][];
 ```
 
 ![Figure_2](imgs/dist.png)
 
 ```q
-q)train_test_split:.p.import[`sklearn.model_selection]`:train_test_split
+// The number of events associated with each bin of the dataset is set
 q)bins:0 5 15 25.0
+
+// The target data is split into the associated bin
 q)y_binned:bins bin`float$sites`target
-q)tts:train_test_split[sites[`site_no];sites[`target];`test_size pykw 0.2;
- `random_state pykw 607;`shuffle pykw 1b;`stratify pykw y_binned]`;
+
+// Using embedPy, site numbers and targets are stratified into an 80-20 train-test split of the data
+q)tts:train_test_split[sites[`site_no];sites[`target];`test_size pykw 0.2; `random_state pykw 607;
+    `shuffle pykw 1b;`stratify pykw y_binned]`;
+
+// The cleaned_peak data is updated such that a flag indicating training/testing is added
 q)cleaned_peak[`split]:`TRAIN
 q)peak_split:update split:`TEST from cleaned_peak where site_no in`$tts[1]
 ```
@@ -396,12 +439,15 @@ The dictionary of models, consisted of XGBoost and a random forest model, with v
 
 ```q
 q)build_model:{[Xtrain;ytrain;dict]
- rf_clf:      RandomForestClassifier[`n_estimators pykw dict`rf_n;`random_state pykw 0;
-            `class_weight pykw(0 1)!(1;dict`rf_wgt)][`:fit][Xtrain; ytrain];
- xgboost_clf: XGBClassifier[`n_estimators pykw dict`xgb_n;`learning_rate pykw 
-              dict`xgb_lr;`random_state pykw 0;`scale_pos_weight pykw dict`xgb_wgt;
-              `max_depth pykw dict`xgb_maxd][`:fit][np[`:array]Xtrain; ytrain];
- `random_forest`XGB!(rf_clf;xgboost_clf)}
+ rf_hyp_nms:`n_estimators`random_state`class_weight;
+ rf_hyp_vals:(dict`rf_n;0;(0 1)!(1;dict`rf_wgt));
+ rf_clf:RandomForestClassifier[pykwargs rf_hyp_nms!rf_hyp_vals][`:fit][Xtrain; ytrain];
+
+ xgb_hyp_nms:`n_estimators`learning_rate`random_state`scale_pos_weight`max_depth;
+ xgb_hyp_vals:(dict`xgb_n;dict`xgb_lr;0;dict`xgb_wgt;dict`xgb_maxd);
+ xgb_clf: XGBClassifier[pykwargs xgb_hyp_nms!xgb_hyp_vals][`:fit][np[`:array]Xtrain; ytrain];
+ 
+ `random_forest`XGB!(rf_clf;xgb_clf)}
 ```
 
 ## Results
@@ -416,59 +462,67 @@ _Monthly Model_
 
 ```q
 q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(200;1;8;200;.2;15;7)
-q)pltU1:pr_curve[XtestM`ungauged;ytestM;build_model[XtrainM`ungauged;ytrainM;dict]]
+q)models:build_model[XtrainM`ungauged;ytrainM;dict]
+q)pltU1:pr_curve[XtestM`ungauged;ytestM;models]
 
-Accuracy for random_forest: 0.9390742
-Meanclass accuracy for random_forest: 0.8513272
+Accuracy for random_forest: 0.9380757
 
 
-class    | precision recall    f1_score  support
----------| -------------------------------------
-0        | 0.9427977 0.9949254 0.9681604 13203
-1        | 0.7598566 0.210109  0.3291925 1009
-avg/total| 0.8513272 0.6025172 0.6486765 14212
-
-Accuracy for XGB: 0.9205713
-Meanclass accuracy for XGB: 0.6914636
+Meanclass accuracy for random_forest: 0.8382345
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.9520138 0.9631902 0.9575694 13203
-1        | 0.4309133 0.3647175 0.3950617 1009
-avg/total| 0.6914636 0.6639539 0.6763155 14212
+0        | 0.9424622 0.9939699 0.967531  13101  
+1        | 0.7340067 0.2152024 0.3328244 1013   
+avg/total| 0.8382345 0.6045861 0.6501777 14114  
+
+Accuracy for XGB: 0.9197959
+
+
+Meanclass accuracy for XGB: 0.69065
+
+
+class    | precision recall    f1_score  support
+---------| -------------------------------------
+0        | 0.9512177 0.9629799 0.9570627 13101  
+1        | 0.4300823 0.3613031 0.3927039 1013   
+avg/total| 0.69065   0.6621415 0.6748833 14114  
 ```
 ![Figure_3](imgs/pr_U1.png)
 
 _Time to Peak Model_
 
 ```q
-q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;1;17;350;.01;1.5;3)
-q)pltU2:pr_curve[XtestP`ungauged;ytestP;build_model[XtrainP`ungauged;ytrainP;dict]]
+q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(220;1;17;340;.01;1.5;3)
+q)models:build_model[XtrainP`ungauged;ytrainP;dict]
+q)pltU2 :pr_curve[XtestP`ungauged;ytestP;models]
 
-Accuracy for random_forest: 0.7389706
-Meanclass accuracy for random_forest: 0.7308405
+Accuracy for random_forest: 0.7330896
 
 
-class    | precision recall    f1_score  support
----------| -------------------------------------
-0        | 0.7452632 0.9490617 0.8349057 373
-1        | 0.7164179 0.2840237 0.4067797 169
-avg/total| 0.7308405 0.6165427 0.6208427 542
-
-Accuracy for XGB: 0.7702206
-Meanclass accuracy for XGB: 0.7376155
+Meanclass accuracy for random_forest: 0.7312101
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.8109453 0.8739946 0.8412903 373
-1        | 0.6642857 0.5502959 0.6019417 169
-avg/total| 0.7376155 0.7121452 0.721616  542
+0        | 0.7336066 0.9572193 0.8306265 374    
+1        | 0.7288136 0.2485549 0.3706897 173    
+avg/total| 0.7312101 0.6028871 0.6006581 547    
+
+Accuracy for XGB: 0.7751371
+
+
+Meanclass accuracy for XGB: 0.7474176
+
+
+class    | precision recall    f1_score  support
+---------| -------------------------------------
+0        | 0.7995227 0.8957219 0.8448928 374    
+1        | 0.6953125 0.5144509 0.5913621 173    
+avg/total| 0.7474176 0.7050864 0.7181275 547    
 ```
 ![Figure_4](imgs/pr_U2.png)
-
-The monthly model obtained the highest accuracy scores using random forests, while the time to peak model performed best for XGBoost. In both cases, random forests achieved high precision scores and low recall results. Meanwhile, XGBoost gave a slightly more balanced precision/recall result.  
 
 #### Gauged Model
 
@@ -476,59 +530,71 @@ _Monthly Model_
 
 ```q
 q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;16;8;100;0.2;16;9)
-q)pltG1:pr_curve[XtestM`gauged;ytestM;build_model[XtrainM`gauged;ytrainM;dict]]
+q)models:build_model[XtrainM`gauged;ytrainM;dict]
+q)pltG1:pr_curve[XtestM`gauged;ytestM;models]
 
 Accuracy for random_forest: 0.9430843
 Meanclass accuracy for random_forest: 0.9163495
 
 
-class    | precision recall    f1_score  support
----------| -------------------------------------
-0        | 0.9442374 0.9978035 0.9702817 13203  
-1        | 0.8884615 0.2289395 0.3640662 1009   
-avg/total| 0.9163495 0.6133715 0.667174  14212  
+Accuracy for random_forest: 0.9422559
 
-Accuracy for XGB: 0.9359083
-Meanclass accuracy for XGB: 0.7633167
+
+Meanclass accuracy for random_forest: 0.9000509
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.9547943 0.9774294 0.9659793 13203  
-1        | 0.5718391 0.39445   0.4668622 1009   
-avg/total| 0.7633167 0.6859397 0.7164207 14212  
+0        | 0.9439867 0.9969468 0.9697442 13101  
+1        | 0.8561151 0.2349457 0.3687064 1013   
+avg/total| 0.9000509 0.6159463 0.6692253 14114  
+
+Accuracy for XGB: 0.9332578
+
+
+Meanclass accuracy for XGB: 0.7507384
+
+
+class    | precision recall    f1_score  support
+---------| -------------------------------------
+0        | 0.9559055 0.9729792 0.9643668 13101  
+1        | 0.5455712 0.4195459 0.4743304 1013   
+avg/total| 0.7507384 0.6962625 0.7193486 14114  
 ```
 ![Figure_5](imgs/pr_G1.png)
 
 _Time to Peak Model_
 
 ```q
-q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;1;17;360;0.01;1.5;3)
-q)pltG2:pr_curve[XtestP`gauged;ytestP;build_model[XtrainP`gauged;ytrainP;dict]]
+q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;1;17;350;0.01;1.5;3)
+q)models:build_model[XtrainP`gauged;ytrainP;dict]
+q)pltG2 :pr_curve[XtestP`gauged;ytestP;models]
 
-Accuracy for random_forest: 0.7205882
-Meanclass accuracy for random_forest: 0.6982818
+Accuracy for random_forest: 0.7367459
 
 
-class    | precision recall    f1_score  support
----------| -------------------------------------
-0        | 0.7298969 0.9490617 0.8251748 373
-1        | 0.6666667 0.2248521 0.3362832 169
-avg/total| 0.6982818 0.5869569 0.580729  542
-
-Accuracy for XGB: 0.7610294
-Meanclass accuracy for XGB: 0.7325731
+Meanclass accuracy for random_forest: 0.763421
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.7868852 0.9008043 0.84      373
-1        | 0.6782609 0.4615385 0.5492958 169
-avg/total| 0.7325731 0.6811714 0.6946479 542
+0        | 0.7309237 0.973262  0.8348624 374    
+1        | 0.7959184 0.2254335 0.3513514 173    
+avg/total| 0.763421  0.5993478 0.5931069 547    
+
+Accuracy for XGB: 0.7842779
+
+
+Meanclass accuracy for XGB: 0.7650789
+
+
+class    | precision recall    f1_score  support
+---------| -------------------------------------
+0        | 0.7990654 0.9144385 0.8528678 374    
+1        | 0.7310924 0.5028902 0.5958904 173    
+avg/total| 0.7650789 0.7086643 0.7243791 547  
 ```
 ![Figure_6](imgs/pr_G2.png)
-
-Accuracy for the monthly model improved when compared with the previous predictions, whereas a decrease was observed for the time to peak model. 
 
 #### Perfect Forecasts
 
@@ -536,27 +602,33 @@ _Monthly Model_
 
 ```q
 q)dict:`rf_n`rf_wgt`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;15;100;0.2;15;7)
-q)pltP1:pr_curve[XtestM`forecast;ytestM;build_model[XtrainM`forecast;ytrainM;dict]]
-
-Accuracy for random_forest: 0.9456874
-Meanclass accuracy for random_forest: 0.9194042
+q)models:build_model[XtrainM`forecast;ytrainM;dict]
+q)pltP1:pr_curve[XtestM`forecast;ytestM;models]
 
 
-class    | precision recall    f1_score  support
----------| -------------------------------------
-0        | 0.9470051 0.9975006 0.9715972 13203  
-1        | 0.8918033 0.2695738 0.414003  1009   
-avg/total| 0.9194042 0.6335372 0.6928001 14212  
+Accuracy for random_forest: 0.9448066
 
-Accuracy for XGB: 0.9466019
-Meanclass accuracy for XGB: 0.8004197
+
+Meanclass accuracy for random_forest: 0.9130627
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.9695895 0.9731879 0.9713854 13203  
-1        | 0.63125   0.6005946 0.6155409 1009   
-avg/total| 0.8004197 0.7868913 0.7934631 14212  
+0        | 0.9462553 0.9971758 0.9710484 13101  
+1        | 0.8798701 0.2675222 0.4102952 1013   
+avg/total| 0.9130627 0.632349  0.6906718 14114  
+
+Accuracy for XGB: 0.9471447
+
+
+Meanclass accuracy for XGB: 0.8045102
+
+
+class    | precision recall    f1_score  support
+---------| -------------------------------------
+0        | 0.9695219 0.9736661 0.9715896 13101  
+1        | 0.6394984 0.6041461 0.6213198 1013   
+avg/total| 0.8045102 0.7889061 0.7964547 14114    
 ```
 ![Figure_7](imgs/pr_P1.png)
 
@@ -564,86 +636,108 @@ _Time to Peak Model_
 
 ```q
 q)dict:`rf_n`rf_wgt`rf_maxd`xgb_n`xgb_lr`xgb_wgt`xgb_maxd!(100;1;17;300;0.01;2.5;3)
-q)pltP2:pr_curve[XtestP`forecast;ytestP;build_model[XtrainP`forecast;ytrainP;dict]]
+q)models:build_model[XtrainP`forecast;ytrainP;dict]
+q)pltP2 :pr_curve[XtestP`forecast;ytestP;models]
 
-Accuracy for random_forest: 0.7536765
-Meanclass accuracy for random_forest: 0.7768992
+Accuracy for random_forest: 0.7550274
+
+
+Meanclass accuracy for random_forest: 0.7668274
+
+
+class    | precision recall    f1_score support
+---------| ------------------------------------
+0        | 0.751046  0.959893  0.842723 374    
+1        | 0.7826087 0.3121387 0.446281 173    
+avg/total| 0.7668274 0.6360159 0.644502 547    
+
+Accuracy for XGB: 0.7440585
+
+
+Meanclass accuracy for XGB: 0.7027966
 
 
 class    | precision recall    f1_score  support
 ---------| -------------------------------------
-0        | 0.7505198 0.9678284 0.8454333 373
-1        | 0.8032787 0.2899408 0.426087  169
-avg/total| 0.7768992 0.6288846 0.6357601 542
-
-Accuracy for XGB: 0.7628676
-Meanclass accuracy for XGB: 0.7266119
-
-
-class    | precision recall   f1_score  support
----------| ------------------------------------
-0        | 0.8203125 0.844504 0.8322325 373
-1        | 0.6329114 0.591716 0.6116208 169
-avg/total| 0.7266119 0.71811  0.7219266 542
+0        | 0.8031088 0.828877  0.8157895 374    
+1        | 0.6024845 0.5606936 0.5808383 173    
+avg/total| 0.7027966 0.6947853 0.6983139 547 
 ```
 ![Figure_8](imgs/pr_P2.png)
 
-In the above case, the XGBoost classifier achieved the hightest accuracy score in both models. Once again, XGBoost also gave a more balanced precision/recall score for both models.
+### Scoring Summary 
+
+#### Ungauged Models
+
+_Monthly_
+
+The accuracies of both classifiers in the monthly model were relatively high in this case. Random forests achieved a slightly higher score of 0.938. The meanclass accuracy was lower for both classifiers, ranging from ~0.7-0.84 in the random forests and XGBoost respectively. However, considering that the class distribution was extremely imbalanced, the accuracy is an unreliable metric to evaluate the models fairly. Both classifiers returned low precision and recall scores when evaluating the positive class, indicating that the models were not adept at discerning flood events. Low scores of ~0.4 were also seen in the precision-recall curves for both classifiers.
+
+_Time to Peak_
+
+XGBoosts achieved both a higher accuracy of 0.78 and a more stable precision recall ratio, 0.7 to 0.51, for the positive class when compared with random forests. This indicates that a relatively large amount of flood events occuring under the 3.5 hour threshold were being identified by the model. The meanclass accuracies for both classifiers were similar at ~0.75. The area under the precision-recall curve were also seen to be comparable for both classifiers.
+
+#### Gauged Models
+
+_Monthly_
+
+Improvements in both the accuracy and meanclass accuracy were evident in the gauged models when compared to the ungauged example. In this case, higher accuracies were achieved by the random forest classifier. The meanclass accuracy also performed better at 0.9 when compared with the XGBoost classifier result of 0.75. Although still low, a slightly improved balance between the precision and recall scores, 0.54 to 0.42, for the positive class was reached by the XGBoost. The area under the precision-recall curve improved in both classifiers to 0.51 (XGBoost) and 0.54 (random forests) from the previous ungauged model.
+
+_Time to Peak_
+
+The accuracy and meanclass accuracy achieved with the gauged datasets were very similar to the results obtained in the ungauged model. This in conjunction with similarities to the precision and recall scores indicates that the addition of previous stream/river heights does not impact the models. The areas under with the precision-recall curves however, were also similar when compared with the previous models curves.
+
+#### Perfect Forecast Models
+
+_Monthly_
+
+Similar accuracy results were seen between the random forests and XGBoost with results on the order of 0.945. The random forest classifier achieved a greater meanclass accuracy score of 0.91 compared with that of XGBoosts 0.8. Precision and recall scores for the positive class were also high at ~0.62 for both metrics. However the random forest classifier produced a high imbalance between the precision and recall scores which were 0.88 and 0.27 respectively. Both precision-recall curves improved from the previous gauged model, achieving areas of 0.69 and 0.64 for XGBoost and the random forest classifier respectively.
+
+_Time to Peak_
+
+A slight decrease in accuracy occured in both classifiers compared with previous models, although an improved balance between the precision and recall scores of 0.6 and 0.56 were seen for the XGBoost. The area under the precision-recall curves increased slightly when compared to the the previous models results, reaching scores of 0.65 for the XGBoost and and 0.62 for the random forests classifiers.
 
 ### Feature Significance
 
 There was also a lot to be learned from determining which features contributed to predicting the target for each model. To do this, the function ```ml.fresh.significantfeatures``` was applied to the data, to return the statistically significant features based on a p-value. Combining this with ```ml.fresh.ksigfeat[x]``` enabled the top x most significant features to be extracted from each dataset. 
 
+```q
+q)title:{"The top 15 significant features for ",x," predictions are:"}
+q)nums :{string[1+til x],'x#enlist". "}
+q_kfeat:.ml.fresh.ksigfeat 15
+```
+
 _Monthly Model_
 
 ```q
-q)title:{"The top 15 significant features for the ",x," predicts are:"}
 q)title["monthly"]
-q)string .ml.fresh.significantfeatures[flip forecast[`M]!cleaned_monthly[forecast[`M]];
-  cleaned_monthly`target;.ml.fresh.ksigfeat 15]
+q)X_Month:flip forecast[`M]!cleaned_monthly[forecast[`M]]
+q)y_Month:cleaned_monthly`target
+q)3 cut`$nums[15],'string .ml.fresh.significantfeatures[X_Month;y_Month;kfeat]
 
-"The top 15 significant features for the monthly predicts are:"
-
-"lagged_target_all"
-"window_ppt_1"
-"window_ppt_2"
-"window_ppt_3"
-"window_ppt_4"
-"window_ppt_5"
-"window_ppt_6"
-"window_upstr_ppt_1_1"
-"window_upstr_ppt_1_2"
-"window_upstr_ppt_1_3"
-"window_upstr_ppt_1_4"
-"lagged_target_1"
-"lagged_target_12"
-"window_upstr_ppt_1_5"
-"window_ppt_7"
+"The top 15 significant features for monthly predictions are:"
+Out[40]:
+1. lagged_target_all     2. window_ppt_1          3. window_ppt_2        
+4. window_ppt_3          5. window_ppt_4          6. window_ppt_5        
+7. window_ppt_6          8. window_upstr_ppt_1_1  9. window_upstr_ppt_1_2
+10. window_upstr_ppt_1_3 11. window_upstr_ppt_1_4 12. lagged_target_1    
+13. lagged_target_12     14. window_upstr_ppt_1_5 15. window_ppt_7 
 ```
 _Time To Peak Model_
 
 ```q
 q)title["time-peak"]
-q)string .ml.fresh.significantfeatures[flip forecast[`P]!cleaned_peak[forecast[`P]];
- cleaned_peak`target;.ml.fresh.ksigfeat 15]
+q)X_t2p:flip forecast[`P]!cleaned_peak[forecast[`P]]
+q)y_t2p:cleaned_peak`target
+q)3 cut`$nums[15],'string .ml.fresh.significantfeatures[X_t2p;y_t2p;kfeat]
 
-"The top 15 significant features for the time-peak predicts are:"
-
-"WsAreaSqKmRp100"
-"WsAreaSqKm"
-"wind_prev_height_48"
-"prev_upstr_height_1_1"
-"wind_prev_height_12"
-"prev_height_1"
-"prev_height_5"
-"WetIndexCat"
-"prev_height_4"
-"prev_height_7"
-"prev_height_6"
-"prev_height_2"
-"prev_height_8"
-"prev_height_3"
-"wind_prev_height_4"
+"The top 15 significant features for time-peak predictions are:"
+Out[41]:
+1. WsAreaSqKmRp100       2. WsAreaSqKm          3. wind_prev_height_48
+4. prev_upstr_height_1_1 5. wind_prev_height_12 6. prev_height_1      
+7. WetIndexCat           8. prev_height_5       9. prev_height_4      
+10. prev_height_6        11. prev_height_7      12. prev_height_2     
+13. wind_prev_height_4   14. prev_height_8      15. prev_height_3     
 ```
 
 ### Graphics
@@ -667,21 +761,35 @@ _Time to Peak Model_
 Data relating to the peak height of a stream from an actual flooding event was also compared with the upper bound peak time from our model.
 
 ```q
+// The predictions for the ungauged model are extracted
 q)pred:last pltU2`model
+
+// For a specific site the start, peak and end times of an produced
 q)pg:raze select site_no,start_time,end_time,peak_time from XtrainPi 
     where unk=`EDT,i in where pred=XtestPi`target,site_no=`02164110,
     target=1,delta_peak>2
 
-q)rainfall:`x_val`col`title!(pg[`start_time];`r;`rainfall)
+// Define the parameters to be taken into account in plotting
+q)rainfall   :`x_val`col`title!(pg[`start_time];`r;`rainfall)
 q)actual_peak:`x_val`col`title!(pg[`peak_time];`g;`actual_peak)
-q)pred_bound:`x_val`col`title!(03:30+pg[`start_time];`black;`predicted_upper_bound)
+q)pred_bound :`x_val`col`title!(03:30+pg[`start_time];`black;`predicted_upper_bound)
 
-q)graph:select from str where date within(`date$pg[`start_time];`date$pg[`end_time]),datetime
-      within (neg[00:15]+pg[`start_time];[00:10]+pg[`end_time]),(value pg`site_no)=`$site_no
+// The relevant information for each site at the time of a major rainfall event is extracted
+q)graph:select from str where date within (`date$pg[`start_time];`date$pg[`end_time]), datetime
+      within (neg[00:15]+pg[`start_time];[00:10]+pg[`end_time]),(pg`site_no)=`$site_no
 
-q)plt[`:plot][graph`datetime;graph`height;`label pykw `height;`linewidth pykw 3];
-q)pltline:{plt[`:axvline][x`x_val;`color pykw x`col;`label pykw x`title;`linewidth pykw 3];}
-q)pltline each (rainfall;actual_peak;pred_bound);
+// The stream height is plotted as a function of time
+q)times  :graph`datetime
+q)heights:graph`height
+q)plt_params:`label`linewidth!(`height;3)
+q)plt[`:plot][times;heights;pykwargs plt_params];
+
+// Lines indicating relevant events are plotted
+q)pltline:{
+  dict:`color`label`linewidth!(x`col;x`title;3);
+  plt[`:axvline][x`x_val;pykwargs dict];}
+
+q)pltline each(rainfall;actual_peak;pred_bound);
 
 q)plt[`:legend][`loc pykw `best];
 q)plt[`:title]["Time to Peak"];
@@ -696,13 +804,13 @@ q)plt[`:show][];
 
 From the above results we could predict, with relatively high accuracy, whether an area was likely to flood or not in the next month. We could also produce a model to predict if a stream would reach its peak height within 3.5 hours.
 
-For the monthly models, the future weather predictions played an important role in predicting whether an area would flood or not. Accuracy, recall and precision all increased as the weather predictions and gauged information columns were added to the dataset. This corresponded with the results from the significant feature tests, with lagged_target information and also the windowed rain values of the current month being the most important features to include. 
+For the monthly models, the future weather predictions played an important role in predicting whether an area would flood or not. Accuracy increased as the weather predictions and gauged information columns were added to the dataset. This corresponds with the results from the significant feature tests, where lagged_target information and the windowed rain volumes of the current month were deemed to be the most features for inclusion. For the majority of the models, the random forests classifier obtained high accuracy results, however this often coincided with imbalanced precision and recall scores. In some scenarios, high precision scores were achieved along with corresponding low recall, indicating that flooding events could be missed. Although XGBoosts didn't achieve as high accuracy, the precision and recall scores were much more balanced which is a favourable trait to have in this type of model when predicting complex events such as flooding.
 
-The opposite was true for the time-peak values, as previous rain and stream gauge information along with the basin characteristics were seen to be the most significant features when predicting these values. Including additional information about the future predicted rainfall decreased the accuracy of the results, with the best results being obtained from the model with only past rainfall and basin and soil characteristics being fed into the model.
+The opposite was true for the time to peak models, as previous rain and stream gauge information along with the basin characteristics were deemed to be the most significant features when predicting these values. Including additional information about the future predicted rainfall did not improve the accuracy of the results. The best results were obtained from the gauged model by the XGBoost classifier. Despite this, the perfect forecasts dataset achieved the best balance between the precision and recall of the positive class, compared with the ungauged model that favoured high precision alongside low recall scores.
 
-Both of these results are likely be physically expected. In the case of the monthly prediction, information regarding future forecast was pivotal in whether an area will flood in the next month. Whereas in the case of a time to peak value, it would be unlikely that information about rainfall in the next number of days would add to the predictive power of a model.
+Both of these results are to be physically expected. In the case of the monthly prediction, information regarding future rainfall information is vital to predicting if an area will flood in the next month. Whereas in the case of a time to peak value, it would extremely unlikely that information about rainfall in the days following the peak height being reached would add any predictive power to the model.
 
-Knowing what features contribute to flood susceptibility and the length of time it takes for a river to reach its peak height, is an important piece of information to extract from the model. From this, organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
+Knowing the features that contribute to flood susceptibility and the length of time it takes for a river to reach its peak height, are important pieces of information to extract from the model. From this, organizations such as USGS can better prepare for flood events and understand how changing climates and placement of impervious surface can affect the likelihood of flooding.
 
 The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model, meant that weighting the classes was an important feature to experiment with. This was particularly important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
 
