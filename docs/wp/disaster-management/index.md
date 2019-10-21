@@ -1,11 +1,11 @@
 ---
-title: ESA Frontier Development Lab – Disaster management using social media
+title: FDL Europe – Analyzing social media data for disaster management | White papers | q and kdb+ documentation
 description: Deep-learning methods to classify tweets relating to flooding events – training a binary classifier to discern relevance; a categorical model to classify tweets into finer-grained buckets.
 author: Conor McCarthy
 date: October 2019
 keywords: disaster, kdb+, machine-learning, nasa, q, space, social media
 ---
-# ESA Frontier Development Lab:<br>Analyzing social media data for disaster management
+# FDL Europe: Analyzing social media data for disaster management
 
 
 
