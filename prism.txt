@@ -1,0 +1,42 @@
+Prism configuration
+===================
+
+Languages
+---------
+Markup
+CSS
+C-like
+JavaScript
+APL
+Bash+Shell
+Batch
+C
+C#
+C++
+Docker
+Gherkin
+Git
+HTTP
+HTTP Public-Key-Pins
+HTTP Strict-Transport-Security
+Ini
+Java
+JSON
+LaTeX
+Markdown
+Python
+Q
+R
+Regex
+Shell
+SQL
+Visual Basic
+YAML
+
+Plugins
+-------
+None
+
+Theme
+-----
+Solarized Light theme

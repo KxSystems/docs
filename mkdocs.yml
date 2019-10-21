@@ -6,7 +6,8 @@ extra:
   version: 2.0
 extra_css: 
   - 'stylesheets/extra.css'
-  - 'stylesheets/prism.css'
+  # - 'stylesheets/prism.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
 extra_javascript: 
   # See /syntax/#projection to see if MathJax is working 
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
