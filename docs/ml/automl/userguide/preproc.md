@@ -5,28 +5,28 @@ description: This document outlines the default behaviour of the Kx automated ma
 date: October 2019
 keywords: machine learning, ml, automated, preprocessing, feature extraction, feature selection, time-series, cleansing
 ---
-# <i class="fas fa-share-alt"></i> Automated Preprocessing.
+# <i class="fas fa-share-alt"></i> Automated Preprocessing
 
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-As highlighted in the description of the function used to run the Kx automl offering [here](Insert the link here), the system can be run in a default configuration by setting the final function parameter to (`::`). The behaviour exhibited in this case is highlighted here with the full range of possible modifications outlined in the advanced description section [here](../../adv/params).
+As previously highlighted, the [function](Insert the link here) used to run the Kx automl offering can be run in a default configuration by setting the final function parameter to (`::`). The behaviour exhibited in this case is highlighted here, with the full range of possible modifications outlined in the [advanced](../../adv/params) section.
 
-The procedures described below outline the steps taken to preprocess data, initialize appropriate models and correctly parameterize the system prior to the application and scoring of machine learning algorithms on the data. In cases where it is appropriate this page will highlight use-case specific differences in the procedures followed. The preprocessing of data is of critical importance in all machine learning applications but in particular within automated pipelines as the majority of control is by definition removed from the user.
+The procedures described below outline the steps taken to preprocess data, initialize appropriate models and correctly parameterize the system prior to the application and scoring of machine learning algorithms on the data. In cases where it is appropriate, this page will highlight use-case specific differences in the procedures followed. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.
 
 Data preprocessing ensures the following:
 
--  The formatting of the data is consistent with the requirements of the machine learning models being applied.
+-  The formatting of data is consistent with the requirements of the machine learning models being applied.
 -  Only appropriate data types are passed through the machine learning workflow.
 -  Features which would not provide relevant information to a model are removed.
--  Characters such as infinities and nulls are handled appropriately such that columns containing them do not need to be removed, while also ensuring that this information is not lost.
+-  Characters, such as infinities and nulls are handled appropriately such that the columns containing them do not need to be removed, while also ensuring that information on their original locations is not lost.
 
-The procedures outlined below are those found to be the most effective in ensuring that the data being passed to the feature extraction and algorithm application procedures are consistent and managable.
+The procedures outlined below most effectively ensure that data being passed to the feature extraction and algorithm application procedures is consistent and managable.
 
 
 ## Outline of procedures
 
-The following are the procedures completed when the system is in its default configuration.
+The following are the procedures completed when the default system configuration is deployed:
 
 1. Appropriate models are chosen for the use-case being explored.
 2. Inappropriate columns within the dataset are removed based on types.
@@ -35,9 +35,9 @@ The following are the procedures completed when the system is in its default con
 5. Constant columns are removed from the data.
 6. Nulls are replaced and an indicating column is added to encode their original position.
 
-### Models applied
+### Applied models
 
-The applied models are chosen based on user definitions of the type of machine learning task being explored and information about the target data. For clarity the models which can be applied are as follow
+Models applied are chosen based on user definition of the type of machine learning task being explored, paired with additional information about the target data. For clarity, the models available are listed below:
 
 Model                       | Task 
 :---------------------------|:--------------
@@ -50,8 +50,8 @@ KNeighborsClassifier        | binary/multi-class classification
 MLPClassifier               | binary/multi-class classification
 SVC                         | binary-class classification
 LinearSVC                   | binary-class classification
-Binary class Keras model    | binary-class classification
-Multi class Keras model     | multi-class classification
+Binary-class Keras model    | binary-class classification
+Multi-class Keras model     | multi-class classification
 AdaBoostRegressor           | regression
 RandomForestRegressor       | regression
 GradientBoostingRegressor   | regression
@@ -61,9 +61,10 @@ Lasso                       | regression
 LinearRegression            | regression
 RegKeras                    | regression 
 
-These models can be augmented through modification of the text files `regmodels.txt` and `classmodels.txt` within the `mdl_def` folder of the github repository
 
-The following examples show how the models would be defined within the workflow as a result of changes to initial input. For clarity the application of `.aml.runexample` is provided.
+These models can be augmented through modification of `regmodels.txt` and `classmodels.txt` within the `mdl_def` folder of the github repository.
+
+The following examples show how models are defined within the workflow as a result of changes to the initial input. For clarity, the application of `.aml.runexample` is provided.
 
 ```q
 q)5#data:([]100?1f;100?1f;100?1f)
@@ -130,18 +131,18 @@ MultiKeras                 keras   multifitscore  seed multi {
 
 ### Automatic type checking
 
-Given the automated nature of the machine learning pipeline being produced it is important to ensure that only types which can be handled by the feature extraction procedures are passed through the workflow. These types are problem type specific as outlined below. It should be noted that if a column is removed due to an inability to handle this type this omission will be highlighted in the output to console.
+Given the automated nature of the machine learning pipeline, it is important to ensure that only types which can be handled by the feature extraction procedures are passed through the workflow. These types are problem type specific, as outlined below. Note that when a column of an incompatible type is removed, its omission will be communicated to the user via the console output.
 
 #### Non time-series/time-aware model
 
-Due to restrictions in the the feature extraction procedures for "normal" feature extraction the following types are omitted from the extraction procedure
+Due to restrictions in the feature extraction procedures for "normal" feature extraction, the following types are omitted from the extraction procedure:
 
 - guid
 - byte
 - list
 - character
 
-Example output on passing of inappropriate type
+Example output for inappropriate types:
 
 ```q
 q)5#data:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f))
@@ -163,7 +164,7 @@ Removed the following columns due to type restrictions for normal
 
 #### FRESH
 
-Given the feature extraction procedures completed by the FRESH algorithm as outlined [here](../../../toolkit/fresh.md) the list of omitted types is extensive, for clarity the id columns are not subject to these restrictions
+Given the feature extraction procedures completed by the FRESH algorithm as outlined [here](../../../toolkit/fresh.md), the list of omitted types is extensive. For clarity, the id columns are not subject to these restrictions and can have the following type:
 
 - guid
 - byte
@@ -171,7 +172,7 @@ Given the feature extraction procedures completed by the FRESH algorithm as outl
 - list
 - character
 
-Example output on passing of inappropriate type
+Example output for inappropriate types:
 
 ```q
 q)5#data:([]100?5?0p;100?0p;100?`time$10?100;100?1f;100?0f;100?0f;100?0x)
@@ -193,13 +194,13 @@ q).aml.runexample[data;target;`fresh;`reg;::]
 
 ### Target consistency
 
-Given the requirement for a one-to-one mapping between the rows output after feature extraction and the number of target values this is checked prior to the application of feature extraction or machine learning algorithms. The logic behind this check is different for the FRESH algorithm and the other forms of automated learning provided.
+Given the requirement for a one-to-one mapping between the rows output after feature extraction and the number of target values, target consistency is checked prior to the application of feature extraction or machine learning algorithms. The logic behind this check is different for the FRESH algorithm and other forms of automated learning provided.
 
 #### FRESH
 
-In the default configuration target consistency in FRESH is determined by checking that the number of unique values in the first column of the input table and comparing this to the number of targets. For cases where multiple 'aggregation' columns are required see the advanced options section [here](insert).
+In the default configuration, target consistency in FRESH is determined by checking the number of unique values in the first column of the input table against the number of targets. For cases where multiple 'aggregation' columns are required, see the [advanced](insert) section.
 
-The following truncated output is indicative of incorrect lengths targets mapped to rows being given, the function to apply to replicate the behaviour is provided for execution while invocation using `runexample` is also supplied.
+The following truncated output is indicative of targets of incorrect length mapped to the rows being passed in. The function used to replicate this behaviour is provided for execution, while invocation using `runexample` is also supplied.
 
 ```q
 q)data:([]100?1f;100?1f;100?1f)
@@ -213,7 +214,7 @@ q).aml.i.lencheck[data;tgt;`fresh;dict]
 
 #### Non-FRESH
 
-In the case of non-FRESH automated machine learning the comparison is much simpler. If the number of rows in the input table does not equal the number of targets an error will be flagged. The following is an example of such an error.
+In the case of non-FRESH automated machine learning, the comparison is much simpler. If the number of rows in the input table does not equal the number of targets, an error will be flagged. The following is an example of such an error.
 
 ```q
 q)data:([]100?1f;100?1f;100?1f)
@@ -226,12 +227,12 @@ q).aml.i.lencheck[data;tgt;`normal;::]
 
 ### Symbol encoding
 
-In the FRESH and all non-FRESH example symbol columns are encoded as follows,
+In the FRESH and all non-FRESH example symbol columns are encoded as follows:
 
 -  If there are less than 10 unique symbols in a particular column the data is one-hot encoded.
 -  If a column contains more than 10 unique symbols the values are frequency encoded
 
-The following example shows the application of this encoding for two columns which between the two of them meet both of the above criteria
+The following example shows the application of this encoding for two columns which between the two of them meet both of the above criteria.
 
 ```q
 q).aml.i.symencode[x;10]
@@ -252,7 +253,7 @@ x          x2_freq    x1_b x1_d x1_e x1_h x1_i x1_j x1_n x1_o
 
 ### Constant column removal
 
-Columns which contain only one unique value are removed from the dataset as they cannot provide useful information to prediction of a target due a lack of signal within the data. The following is the implemented code to achieve this.
+Constant columns are those within the dataset which only contain one unique value. These columns are removed as they do not provide useful information in the prediction of a target. This is due to a lack of signal within the data. The following is the implemented code to achieve this.
 
 ```q
 q)5#data:([]100?1f;100#0f;100?1f)
@@ -275,7 +276,7 @@ x          x2
 
 ### Null and infinity replacement
 
-Both null values and infinities are removed from the data due to the inability of machine learning models in sklearn and keras to handle this form of data. In the case of `+/-0w` the values are replaced by the minimum/maximum value of the column while `0n`'s is replaced by the median value of the column. In cases where nulls are present an additional column is added denoting the location of the null prior to filling of the dataset thus encoding the null in the case that this is an important signal.
+Both null values and infinities are removed from the data due to the inability of machine learning models in both sklearn and keras to handle this form of data. In the case of `+/-0w`, the values are replaced by the minimum/maximum value of the column, while `0n`'s are replaced by the median value of the column. In cases where nulls are present, an additional column is added denoting the location of the null prior to filling of the dataset, thus encoding the null in the case that this is an important signal.
 
 ```q
 q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)
