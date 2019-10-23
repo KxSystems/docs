@@ -176,7 +176,7 @@ byte | effect
 
 !!! warning "Java and C#"
 
-    Java and C# have array length limits which make these caps inviable with the current object model.
+    Java and C# have array length limits which make caps 5 and 6 inviable with their current object models.
 
 
 ### Compression
