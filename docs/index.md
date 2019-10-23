@@ -85,9 +85,10 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 </div>
 
-!!! tip "Using this site offline"
+!!! tip "Using this site locally"
 
-    You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use offline.
+    You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use locally. 
+    (It uses scripts from the Web so needs Net access to render correctly.)
 
     The source code for this site is on GitHub at 
     <i class="fab fa-github"></i>
