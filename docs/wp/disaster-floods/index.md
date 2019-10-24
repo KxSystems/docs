@@ -15,7 +15,7 @@ The Frontier Development Lab (FDL) is a public-private partnership run annually 
 
 ## The need for AI in disaster prevention
 
-Floods are the most destructive and dangerous natural disasters worldwide =='the most destructive worldwide' is a bit strong. one of the most destructive perhaps? Or the most destructive in the US? - since you have some data at the end of this para to support this claim?==. All regions can be affected by flooding events and, with the increased variability in weather patterns due to global warming, this is [likely to become even more prevalent](https://www.nrdc.org/stories/flooding-and-climate-change-everything-you-need-know). The speed at which flooding events can occur, and difficulties in predicting their occurrence, create huge logistical problems for both governmental and non-governmental agencies. Over the past 10 years, floods have caused on average [95 deaths a year in the US alone](https://weather.com/safety/floods/news/2018-11-08-flood-related-deaths-increasing-in-united-states), making them [the deadliest weather-related phenomenon](https://www.nssl.noaa.gov/education/svrwx101/floods/). Worldwide, [floods cost in excess of 40 billion dollars per year](https://www.nationalgeographic.com/environment/natural-disasters/floods/), impacting property, agriculture and the health of individuals.
+Floods are one of the most destructive natural disasters worldwide. All regions can be affected by flooding events and, with the increased variability in weather patterns due to global warming, this is [likely to become even more prevalent](https://www.nrdc.org/stories/flooding-and-climate-change-everything-you-need-know). The speed at which flooding events can occur, and difficulties in predicting their occurrence, create huge logistical problems for both governmental and non-governmental agencies. Over the past 10 years, floods have caused on average [95 deaths a year in the US alone](https://weather.com/safety/floods/news/2018-11-08-flood-related-deaths-increasing-in-united-states), making them [the deadliest weather-related phenomenon](https://www.nssl.noaa.gov/education/svrwx101/floods/). Worldwide, [floods cost in excess of 40 billion dollars per year](https://www.nationalgeographic.com/environment/natural-disasters/floods/), impacting property, agriculture and the health of individuals.
 
 During the duration of the project, we collaborated with the United States Geological Survey (USGS), a scientific agency within the US Department of the Interior. The objective of the organization is to study the landscape of the US and provide information about its natural resources and the natural hazards that affect them. Currently, hydrologists use physical models to help predict floods. These models require predictions to be carefully calibrated for each stream or watershed and careful consideration must be taken for dams, levees, etc. Producing these models is extremely costly due to resource requirements. This limits the areas within the US that can use such systems to better prepare for flood events.
 
@@ -69,7 +69,7 @@ ML toolkit      0.3.2
 
 This project focuses on six states within the US, over a period of 10 years. Data was taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites had continuous historical data over the period, but all the available data for each site was used.
 
-The six states were: New Jersey, Nebraska, South Carolina, New York, South Dakota, and Virginia. A primary reason for choosing these states, was that each exhibits ==they exhibit== similar climate and landscape ==to one another==. Focusing on similar geographies helped to ensure that the models produced were precise ==what do you mean by precise in this context? you mean the models produced precise predictions? Or models were precise for this specific type of climate and geography? how do similar geographies help with that - not an expert but I would think you want variability in the data if the model is to be general?==.
+The six states were: New Jersey, Nebraska, South Carolina, New York, South Dakota, and Virginia. A primary reason for choosing these states, was that they exhibit similar climate and landscape to one another. Climate and landscape play a major role in predicting floods, meaning that building a model to predict flood forcasting for the entire US would be extremely difficult as the climates and landscapes vary dramatically between locations. After discussions with hydrologists at USGS, it was decided that focusing on a subset of areas with similar geographies would help to ensure that the models being produced, created meaningful results that could be used in a real world scenario. 
 
 Required datasets and providers:
 
@@ -84,7 +84,7 @@ PRISM
 
 National Land Cover Database (NLCD)
 
-: The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). This satellite has a 30-meter resolution and provides information for the entire US ==this statement feels out of place here==. The Landsat satellite program is a NASA/USGS collaboration which provides [the longest continuous space-based record of Earth’s landscape](https://landsat.gsfc.nasa.gov/). Landsat’s ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This provides information such as land-use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every five years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
+: The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). The Landsat satellite program is a NASA/USGS collaboration which provides [the longest continuous space-based record of Earth’s landscape](https://landsat.gsfc.nasa.gov/). Landsat’s ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This provides information such as land-use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every five years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
 
 National Hydrology Dataset Plus (NHDPlus)
 
@@ -109,78 +109,84 @@ NOAA
 
 ## Feature engineering
 
-==I read this whole paragraph and it's a bit confusing what a feature is. Is a feature one of these 3 subsets of data you talk about? I think this section would benefit by clarifying what a feature is, and by explaining why we want to do this specific 3 way split, i.e. why not just look at perfect forecasts?==
-
-Given the data available, it was possible to split the information into three datasets.
+Given all the different data sources available, it was possible to split the information into three datasets. The datasets differ based on the features contained within them. These features were created by extracting aggregated information from the rainfall and stream height datasets. A description of the features defining each dataset are explained below:
 
 Ungauged basin
 
-: Information available at sites that do not contain stream gauge or future forecasting information. Data was limited to land use, past rainfall and upstream information.
+: Features included the past rainfall information of stream sites. This dataset can be used at locations where there is no stream height gauge present, therefor no features were extracted from the stream gauge dataset. The land use data was also included in this dataset.
 
 Gauged basin
 
-: All information contained within the ungauged basin dataset, as well as stream gauge information. This included previous river heights and lagged/aggregated flooding information.
+: Features were extracted containing information about past stream height values before an event. This was also joined with the data from the `Ungauged basin` above. The `Gauged basin` dataset can be used for locations containing historical data from stream gauges.
 
 Perfect Forecasts
 
-: All information contained within the gauged basin dataset, as well as precipitation information around the time of the event.
+: This dataset extracted features using the current rainfall values for a short period of time after after an event. Data from the `Ungauged basin` and `Gauged basin` were also included. This dataset is used when weather predictions are available for locations along with historical stream height information.
 
-To obtain these features, the `feat` function was used. This enabled previous information ==which is previous information?== along with windowed features ==what are windowed features?== to be extracted. This function takes the following arguments:
+The reason that these three datasets were chosen, was to reflect how this model could be used in a real world scenario. For the `Perfect Forecasts` dataset, we assume that future forecasted rainfall is available for the location, however in some applications, this future rainfall prediction cannot always be given with certainty, which is when the `Gauged basin` or `Ungauged basin` datasets could be used. The `Gauged basin` dataset is suitable for stream sites that have historical stream height data recoreded over a period of time. When predicting on new sites that do not have this historical data or future rainfall predictions available, the `Gauged basin` dataset is applicable. 
+
+To obtain these features, the `addFeat` function was used. This enabled features pertaining to previous information to be extracted. This previous information included the past rainfall and stream height values during a set period of time before an event. Windowed features were also added using this function. These window features provided a summary of how certain values changed, such as rainfall or stream height, over a fixed window of time. Windowed features were included, as knowing how fast the rainfall is accumulating in an area along with how the stream height is changing before an event can have a major inpact on predicting if a flood will occur. `addFeat` takes the following arguments as inputs:
 
 1.  table that is being updated
-1.  how many values to calculate (integer list)
-1.  column to apply the function to (symbol)
-1.  new column name (symbol)
-1.  dictionary of where, groupby and what type of functional statement is used
-1.  function that is applied to the grouped columns
+2.  how many values to calculate (integer list)
+3.  column to apply the function to (symbol)
+4.  new column name (symbol)
+5.  dictionary of where, groupby and what type of functional statement is used
+6.  function that is applied to the grouped columns
 
-==the definition of the feat function should be here, immediately after defining its parameters instead of all the way in the bottom==
-==in general reverse the approach - define and explain top level function first followed by lower level functions, i.e. feat first followed by functions that feat calls - the majority of readers care about top level function.==
-==max_mavg isn't actually used in feat until much later in the paper, so I wouldn't include it here but later when you actually use it to call feat==
-==it's a style thing but parameters named x,y,z in feat would be better named something meaningful - as you're trying to explain here how this function works.==
-==it is a good idea to also stay away from generic function names like func... name it something meaningful; I am not a great function namer myself but applyAndRename or something liek that looking at definition?==
+```q
+// Upstream, previous, windowed and lagged extraction function
+q)addFeat:{[tab;n;col;newcol;dict;fnc]
+  dict[`w][tab;dict`wh;dict`gr;$[1<count[col];raze;]applyFunc[n;newcol;;fnc]each col]}
+```
+
+The following functions are also called within `addFeat`:
 
 ```q
 // Create new column name
-colname:{enlist`$string[y],"_",string[x],"_",string[z]}
-// Calculate maximal moving average
-max_mavg:{(max;(mavg;y;x))}
-// Calculate value of lagged features
-prv:{(xprev;y;x)}
+q)colname:{enlist`$string[y],"_",string[x],"_",string[z]}
 
 // Apply functions to appropriate columns
 // and rename columns appropriately
-func:{[x;y;z;b]
-  raze{[x;y;z;b]colname[x;y;z]!enlist b[x;z]}[z;y;;b]each raze x }
-
-// Upstream, previous, windowed and lagged extraction function
-feat:{[x;y;z;col;d;fnc]
-  d[`w][x;d`wh;d`gr;$[1<count[z];raze;] func[y;col;;fnc] each z] }
+q)applyFunc:{[n;newcol;col;fnc]
+  raze{[n;newcol;col;fnc]colname[n;newcol;col]!enlist fnc[n;col]}[col;newcol;;fnc]each raze n}
 ```
 
+Whether or not flooding will occur, also depends on what happens in the stream prior to reaching the stream site. This information can be extracted by looking at what happens at locations upstream (direction towards the source of the river), such as the upstream precipitation and stream height values. The ordering of the stream ID number allows the `addFeat` function to extract the upstream values from the precipitation and stream height datasets. The ID number of each stream site consisted of at least eight digits. The first two digits were the grouping number of the river-basin catchment. The remaining digits were in ascending order based on the location of the gauge along the stream.
 
-
-
-To obtain the upstream values ==what are upstream values?== the `feat` function was used ==this doesn't read well ; maybe something like 'This is how upstream values are defined would be better.'==. The ID number of each stream site consisted of over eight digits. The first two digits were the grouping number of the river-basin catchment. The remaining digits were in ascending order based on the location of the gauge along the stream ==Can we give a small example of data? It would be easier to follow the remainder of the code==.
+An example of this grouping is given below
 
 ```q
-/Grouping site numbers by catchment, using the first 2 digits
-catch_site:((';#);2;($:;`site_no))
-site_date :`site_no`date!(catch_site;`date)
-dict:`w`wh`gr!(!;();site_date)
+select distinct site_no by catch_id:2#'string each site_no from precip
+catch_id| site_no                                                            ..
+--------| -------------------------------------------------------------------..
+"01"    | `01303500`01304000`01304500`01305000`01305500`01306460`01308000`013..
+"02"    | `02077000`02079500`02079640`02110400`02110500`02110550`02110701`021..
+"03"    | `03010674`03010820`03011020`03014500`03164000`03165000`03165500`031..
+"04"    | `04213319`04213376`04213394`04213401`04213500`04214060`04214231`042..
+"05"    | `05050000`05290000`05291000                                        ..
+"06"    | `06334500`06354881`06355500`06356500`06357800`06359500`06360500`063.
+```
+This characteristic of the site ID numbering is then applied in order to extract the upstream features. Only the first upstream value of each stream site was obtained as this is the most influencial upstream information affecting the results. 
 
-upstr_ppt   :feat[precip;1;`ppt;`upstr;dict;prv]
-upstr_height:feat[maxht;1;`height;`upstr;dict;prv]
+```q
+// Calculate value of lagged features
+q)prv:{(xprev;y;x)}
+//Grouping site numbers by catchment, using the first 2 digits
+q)catch_site:((';#);2;($:;`site_no))
+q)site_date :`site_no`date!(catch_site;`date)
+q)dict:`w`wh`gr!(!;();site_date)
+
+q)upstr_ppt   :addFeat[precip;1;`ppt;`upstr;dict;prv]
+q)upstr_height:addFeat[maxht;1;`height;`upstr;dict;prv]
 ```
 
-The `feat` function was also used to obtain previous values of both rainfall- and stream-gauge height readings before each date, for both the current location and sites upstream.
-
-==I think we need more explanation about why we're doing this...why do we need previous values? How did you come up with the second parameter to feat?== 
+When predicting flood events, it is important to also look at what happens in the days prior to the event, such as the amount of rainfall that fell or how the height of the stream changed. The `addFeat` function was applied to obtain these historical values of rainfall and stream gauge height, for both the current and upstream locations. After discussions with hydrologists, it was decided that the 10 days prior to an event would be included. Any longer than that was deemed to be irrelevant and had the potential to negatively effect the predictions.
 
 ```q
-dict[`gr]:site:(enlist `site_no)!enlist `site_no
+q)dict[`gr]:site:(enlist `site_no)!enlist `site_no
 
-prev_rain:feat[
+q)prev_rain:addFeat[
   upstr_ppt;
   enlist 1_til 10;
   `ppt`upstr_ppt_1;
@@ -188,27 +194,36 @@ prev_rain:feat[
   sited:dict;
   prv]
 
-all_height:feat[
+//print the new columns created
+q)reverse cols prev_rain
+`prev_upstr_height_1_9`prev_upstr_height_1_8`prev_upstr_height_1_7`prev_upstr..
+
+q)all_height:addFeat[
   upstr_height;
   enlist 1_til 10;
   `height`upstr_height_1;
   `prev;
   dict;
   prv]
+
+//print the new columns created
+q)reverse cols all_height
+`prev_upstr_ppt_1_9`prev_upstr_ppt_1_8`prev_upstr_ppt_1_7`prev_upstr_ppt_1_6`..
 ```
 
-The above features were applicable to both aspects of this project ==do you mean monthly model and time to peak model? if so worth reiterating what these are here==. However, additional features that were problem-specific were also added.
+The above features were applicable to both the monthly and time to peak models. However, additional features that were problem-specific were also added.
 
 _Monthly model_
 
-When forecasts were provided for each model, it was important to have information on the average historical rainfall over different time windows. This feature was added to the dataset using the functions displayed below.
-
-==this is where you should introduce max_mavg==
+When forecasts were provided for each model, it was important to include information about the maximum moving average rainfall over different time windows. This windowed feature gives an insight into how fast the rain was falling over a set time period, which may indicate whether a flood will occur or not. This feature was added to the dataset using the functions displayed below.
 
 ```q
-dict[`gr]:(`date`site_no)!(($;enlist`month;`date);`site_no)
+// Calculate maximal moving average
+q)max_mavg:{(max;(mavg;y;x))}
 
-all_rain:feat[
+q)dict[`gr]:(`date`site_no)!(($;enlist`month;`date);`site_no)
+
+q)all_rain:addFeat[
   prev_rain;
   enlist 1_til 15;
   `ppt`upstr_ppt_1;
@@ -219,7 +234,7 @@ all_rain:feat[
 
 _Time-to-peak model_
 
-The hours before a flood event can provide important information on how quickly the stream gauge height is moving. This is incredibly useful to a model predicting how long it will take for the stream to reach its peak height. The information extracted at a given stream location, comprised of the maximum moving averages over different bucket sizes for the two days before the event. This was found using stream height data from USGS, which was updated at 15-minute intervals.
+The hours before a flood event can provide important information about how quickly the stream gauge height is moving. This is incredibly useful to a model predicting how long it will take for the stream to reach its peak height. The information extracted at a given stream location, comprised of the maximum moving averages over different bucket sizes for the two days before the event. This was found using stream height data from USGS, which was updated at 15-minute intervals.
 
 To make the times from the stream-height dataset consistent with the FLASH dataset, the times were converted to be time-zone agnostic.
 
@@ -231,54 +246,108 @@ CDT  Central Daylight Time
 EST  Eastern Standard Time
 ```
 
-==what follows is a lot of code that's hard to follow - perhaps a snippet of output from each stage so that we can follow what's being constructed would be good==
-
 ```q
 // Obtain timezone (unk) information for each site
 // from the gauges hdb (str)
-time_zone:raze{
+q)show 5#time_zone:raze{
   si:x 0; dd:x 1;
   select `$first site_no,`$first unk from str
     where date=first dd,si=`$site_no
   }each site_date
 
+site_no  unk
+------------
+01312000 EST
+01315000 EST
+01315500 EST
+01318500 EST
+01321000 EST
+
 // Join time-zone information to the peak dataset
-peak_data:peak_data ij`site_no xkey time_zone
+q)show 5#peak_data:peak_data ij`site_no xkey time_zone
+
+site_no  lat     lon       start_time              end_time                pe..
+-----------------------------------------------------------------------------..
+01396500 40.6778 -74.87917 2009.07.01T16:30:00.000 2009.07.01T20:15:00.000 75..
+01397000 40.5722 -74.86806 2009.07.01T19:00:00.000 2009.07.02T02:00:00.000 11..
+01377500 40.9928 -74.02111 2009.07.01T23:45:00.000 2009.07.02T00:15:00.000 21..
+06478500 43.1858 -97.63528 2009.07.06T16:45:00.000 2009.07.22T15:45:00.000 16..
+04215500 42.8297 -78.77528 2009.07.10T21:15:00.000 2009.07.11T01:45:00.000 16..
 
 // Modify the time-zone based on extracted information from gauges hdb
-change_zone:{
+q)change_zone:{
   tm:x 0; tz:x 1;
   $[tz=`EDT;tm-04:00;tz=`CDT;tm-05:00;tm-06:00] }
+```
+
+After `change_zone` was applied to the `peak_data` table the start_time, end_time and peak_time values were updated in order to reflect the correct time-zone.
+
+```q
+q)show 5#peak_data
+
+site_no  lat     lon       start_time              end_time                pe..
+-----------------------------------------------------------------------------..
+01396500 40.6778 -74.87917 2009.07.01T12:30:00.000 2009.07.01T16:15:00.000 75..
+01397000 40.5722 -74.86806 2009.07.01T15:00:00.000 2009.07.01T22:00:00.000 11..
+01377500 40.9928 -74.02111 2009.07.01T19:45:00.000 2009.07.01T20:15:00.000 21..
+06478500 43.1858 -97.63528 2009.07.06T11:45:00.000 2009.07.22T10:45:00.000 16..
+04215500 42.8297 -78.77528 2009.07.10T15:15:00.000 2009.07.10T19:45:00.000 16..
 ```
 
 The features, along with information about the projected rainfall in the days following the event, were also extracted and joined onto the dataset.
 
 ```q
 // The date range of interest
-range:{(within;x;(,;(+;(-:;2);y);y))}
+q)range:{(within;x;(,;(+;(-:;2);y);y))}
 // The where clause to be applied
-wh:{(
+q)wh:{(
   range[`date;x 1];
   range[`datetime;x 2];
   (=;enlist first x; ($;enlist`;`site_no)) ) }
 
 // Dictionary to be passed to the feat function
-dict:{`w`wh`gr!(?;wh x;0b)}
+q)dict:{`w`wh`gr!(?;wh x;0b)}
 
-wind_ht_prev:{
-  feat[str; enlist 2 4 12 48; `height; `wind_prev; dict x; max_mavg]
+q)show 10#raze wind_ht_prev:{
+  addFeat[str; enlist 2 4 12 48; `height; `wind_prev; dict x; max_mavg]
   } each flip peak_data `site_no`date`start_time
 
-wh:{((within;`date;(,;y 1;(+;y 1;x)));(=;enlist first y;`site_no))}
-dict:{`w`wh`gr!(?;wh[x;y];0b)}
+wind_prev_height_2 wind_prev_height_4 wind_prev_height_12 wind_prev_height_48
+-----------------------------------------------------------------------------
+6.25               6.25               6.245               6.211818           
+2.89               2.89               2.89                2.89               
+1.92               1.92               1.92                1.92               
+12.875             12.8625            12.84833            12.8125            
+2.38               2.38               2.38                2.38               
+3.22               3.22               3.22                3.22               
+2.82               2.82               2.82                2.816522           
+1.52               1.52               1.52                1.52               
+0.47               0.47               0.47                0.47               
+1.67               1.67               1.668333            1.657222         
 
-rain_pred:{feat[
+q)wh:{((within;`date;(,;y 1;(+;y 1;x)));(=;enlist first y;`site_no))}
+q)dict:{`w`wh`gr!(?;wh[x;y];0b)}
+
+q)show 10#raze rain_pred:{addFeat[
   all_rain;
   enlist 1_til x;
   `ppt`upstr_ppt_1;
   `fut_window;
   dict[x;y];
   max_mavg] }[3] each flip peak_data `site_no`date
+
+fut_window_ppt_1 fut_window_ppt_2 fut_window_upstr_ppt_1_1 fut_window_upstr_p..
+-----------------------------------------------------------------------------..
+3.06             1.665            2.29                     1.265             ..
+1.53             0.935            2.49                     1.39              ..
+0.71             0.605            0.71                     0.605             ..
+1.07             0.535            0.32                     0.16              ..
+0.44             0.22             0.62                     0.31              ..
+0.62             0.31             1.78                     0.89              ..
+1.8              0.97             0.66                     0.57              ..
+1.61             0.935            1.58                     0.93              ..
+2.12             1.095            0.43                     0.245             ..
+0.87             0.79             0.69                     0.51              ..
 ```
 
 
@@ -293,22 +362,34 @@ The latitude and longitude of these provided thresholds did not exactly match th
 The code used to achieve this nearest-neighbors calculation is seen below with the algorithm implementation contained in full in the GitHub repository associated with this paper.
 
 ```q
-wlatl:raze each
+q)wlatl:raze each
   warning[`Latitude`Longitude],'gauges[`dec_lat_va`dec_long_va]
 
-tabw:kd.buildtree[wlatl;2]
-gauge_val:count[warning]+til count gauges
+q)tabw:kd.buildtree[wlatl;2]
+q)gauge_val:count[warning]+til count gauges
 
-nnwarn:kd.nns[
+q)nnwarn:kd.nns[
   ;
   tabw;
   (count[warning]#0),count[gauges]#1;
   flip wlatl;
   `edist] each gauge_val
 
-joins:([site_no:gauges`site_no]nn:nnwarn[;0];ndw:nnwarn[;1])
+q)show 10#joins:([site_no:gauges`site_no]nn:nnwarn[;0];ndw:nnwarn[;1])
+site_no | nn   ndw       
+--------| ---------------
+01303500| 4652 0.1774627 
+01304000| 1545 0.1393672 
+01304500| 3475 0.04823593
+01305000| 2800 0.1609363 
+01305500| 1508 0.07574579
+01306460| 1508 0.1871804 
+01308000| 2458 0.05487667
+01308500| 2458 0.04829199
+01309500| 2458 0.100588  
+01309950| 1596 0.07899928
 
-floodlvl:(maxht ij joins)lj`nn xkey warning
+q)floodlvl:(maxht ij joins)lj`nn xkey warning
 ```
 
 This dataset was then joined onto the stream-gauge data, adding columns counting the number of times a given stream gauge reached each warning level per month.
@@ -354,9 +435,9 @@ Only dates within the 10 year period and site numbers within the 6 states mentio
 This was then converted into a binary classification problem by setting a threshold for a ‘flash flood’ at 3.5 hours after the major rainfall event. Any time above this was set to `0b` and less than this time was `1b`. This threshold was chosen after discussions with hydrologists, who found this to be a reasonable split in the dataset.
 
 ```q
-peak[`delta_peak]:(peak[`peak_time]-peak[`start_time])*24
+q)peak[`delta_peak]:(peak[`peak_time]-peak[`start_time])*24
 
-peak[`target]:peak[`delta_peak]<3.5
+q)peak[`target]:peak[`delta_peak]<3.5
 ```
 
 
@@ -369,7 +450,7 @@ After joining the stream-height and precipitation tables from USGS and PRISM, th
 Lagged features were then added to this dataset, which included information like did a flood occur in the month prior, the year prior and also how often on average did the given location flood.
 
 ```q
-all_monthly_data:feat[
+q)all_monthly_data:addFeat[
   all_monthly_data;
   enlist 1 12;
   `target;
@@ -377,9 +458,9 @@ all_monthly_data:feat[
   sited;
   prv]
 
-tgts:value exec no_Flood by site_no from all_monthly_data
+q)tgts:value exec no_Flood by site_no from all_monthly_data
 
-all_monthly_data[`lagged_target_all]:raze{count[x]mavg raze x}each tgts
+q)all_monthly_data[`lagged_target_all]:raze{count[x]mavg raze x}each tgts
 ```
 
 _Time-to-peak model_
@@ -398,23 +479,22 @@ A dictionary was created for each of the three separate datasets:
 The dictionary contained the different feature columns required to make up the above datasets for each of the monthly (`M`) and time to peak (`P`) models.
 
 ```q
-fc:{x where x in y}    / find column
+q)fc:{x where x in y}    / find column
 
-ungauged_colsM:        fc[ungauged_cols;cols cleaned_monthly]
-gauged_colsM:          fc[gauged_cols;cols cleaned_monthly]
-perfect_forecast_colsM:fc[perfect_forecast_cols;cols cleaned_monthly]
+q)ungauged_colsM:        fc[ungauged_cols;cols cleaned_monthly]
+q)gauged_colsM:          fc[gauged_cols;cols cleaned_monthly]
+q)perfect_forecast_colsM:fc[perfect_forecast_cols;cols cleaned_monthly]
 
-ungauged_colsP:        fc[ungauged_cols;cols cleaned_peak]
-gauged_colsP:          fc[gauged_cols;cols cleaned_peak]
-perfect_forecast_colsP:fc[perfect_forecast_cols;cols cleaned_peak]
+q)ungauged_colsP:        fc[ungauged_cols;cols cleaned_peak]
+q)gauged_colsP:          fc[gauged_cols;cols cleaned_peak]
+q)perfect_forecast_colsP:fc[perfect_forecast_cols;cols cleaned_peak]
 
-ungauge: `M`P!(ungauged_colsM;ungauged_colsP)
-gauge:   `M`P!(ungauge[`M],gauged_colsM;ungauge[`P],gauged_colsP)
+q)ungauge: `M`P!(ungauged_colsM;ungauged_colsP)
+q)gauge:   `M`P!(ungauge[`M],gauged_colsM;ungauge[`P],gauged_colsP)
 
-forecast:`M`P!
+q)forecast:`M`P!
   (gauge[`M],perfect_forecast_colsM;gauge[`P],perfect_forecast_colsP)
-```
-```q
+
 q)forecast
 M| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100..
 P| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100..
@@ -459,19 +539,19 @@ When splitting the data for this model, it was deemed important that no time lea
 ```q
 // The cutoff dataset is produced and date defined
 // at which the datasets are to be cutoff
-cutoff:update cutoff_date:min[date]+floor 0.8*max[date]-min[date]
+q)cutoff:update cutoff_date:min[date]+floor 0.8*max[date]-min[date]
   by site_no from cleaned_monthly
 
 // Extract data and targets from the dataset
-XtrainMi:select from cutoff where date<cutoff_date
-XtestMi :select from cutoff where date>=cutoff_date
-ytrainM :exec target from cutoff where date<cutoff_date
-ytestM  :exec target from cutoff where date>=cutoff_date
+q)XtrainMi:select from cutoff where date<cutoff_date
+q)XtestMi :select from cutoff where date>=cutoff_date
+q)ytrainM :exec target from cutoff where date<cutoff_date
+q)ytestM  :exec target from cutoff where date>=cutoff_date
 
 // From the master training and testing datasets extract
 // appropriate information for the monthly data
-XtrainM:split_dict[XtrainMi;`M]
-XtestM:split_dict[XtestMi;`M]
+q)XtrainM:split_dict[XtrainMi;`M]
+q)XtestM:split_dict[XtestMi;`M]
 ```
 
 _Time-to-peak model_
@@ -479,25 +559,25 @@ _Time-to-peak model_
 The time-to-peak data was separated so that sites did not appear in both the train and test datasets. This was done to ensure that the models being produced could be generalized to new locations. The target data was binned into a histogram as below and the train-test split completed such that the distribution of targets in the training and testing sets were stratified.
 
 ```q
-sites:0!select sum target by site_no from cleaned_peak
-plt[`:hist][sites`target]
-plt[`:xlabel]["Number of events per site"]
-plt[`:ylabel]["Number of associated sites"]
-plt[`:show][]
+q)sites:0!select sum target by site_no from cleaned_peak
+q)plt[`:hist][sites`target]
+q)plt[`:xlabel]["Number of events per site"]
+q)plt[`:ylabel]["Number of associated sites"]
+q)plt[`:show][]
 ```
 
 ![Figure 2](imgs/dist.png)
 
 ```q
 // Set the number of events associated with each bin of the dataset
-bins:0 5 15 25.0
+q)bins:0 5 15 25.0
 
 // Split the target data into the associated bin
-y_binned:bins bin`float$sites`target
+q)y_binned:bins bin`float$sites`target
 
 // Using embedPy, stratify site numbers and targets
 // into an 80-20 train-test split of the data
-tts:train_test_split[
+q)tts:train_test_split[
   sites `site_no;
   sites `target;
   `test_size pykw 0.2;
@@ -507,10 +587,9 @@ tts:train_test_split[
 
 // Update the cleaned_peak data
 // to add a flag indicating training/testing
-cleaned_peak[`split]:`TRAIN
-peak_split:update split:`TEST from cleaned_peak where site_no in`$tts 1
+q)cleaned_peak[`split]:`TRAIN
+q)peak_split:update split:`TEST from cleaned_peak where site_no in`$tts 1
 ```
-
 
 ## Building models
 
@@ -529,7 +608,7 @@ The arguments to the `pr_curve` function are:
 The dictionary of models consisted of XGBoost and a random-forest model, with varying hyper-parameters for each model.
 
 ```q
-build_model:{[Xtrain;ytrain;dict]
+q)build_model:{[Xtrain;ytrain;dict]
   rf_hyp_nms:`n_estimators`random_state`class_weight;
   rf_hyp_vals:(dict`rf_n;0;(0 1)!(1;dict`rf_wgt));
   rf_clf:RandomForestClassifier[pykwargs rf_hyp_nms!rf_hyp_vals]
@@ -813,9 +892,9 @@ A slight decrease in accuracy occurred in both classifiers compared with previou
 There was also a lot to be learned from determining which features contributed to predicting the target for each model. To do this, the function `ml.fresh.significantfeatures` was applied to the data, to return the statistically significant features based on a p-value. Combining this with `ml.fresh.ksigfeat[x]` enabled the top `x` most significant features to be extracted from each dataset.
 
 ```q
-title:{"The top 15 significant features for ",x," predictions are:"}
-nums :{string[1+til x],'x#enlist". "}
-q_kfeat:.ml.fresh.ksigfeat 15
+q)title:{"The top 15 significant features for ",x," predictions are:"}
+q)nums :{string[1+til x],'x#enlist". "}
+q)q_kfeat:.ml.fresh.ksigfeat 15
 ```
 
 _Monthly model_
@@ -862,12 +941,12 @@ _Monthly model_
 Using these results, it was also possible to build a map that highlighted per month which areas were at risk of flooding. This could be used by governmental bodies to prioritize funding in the coming weeks.
 
 ```q
-preds:last pltP1`model
-newtst:update preds:preds from XtestMi
-newt:select from newtst where date within 2018.01 2018.12m,preds=1
-dfnew:.ml.tab2df newt
-graphs:.p.get`AcledExplorer
-graphs[`df pykw dfnew][`:render][];
+q)preds:last pltP1`model
+q)newtst:update preds:preds from XtestMi
+q)newt:select from newtst where date within 2018.01 2018.12m,preds=1
+q)dfnew:.ml.tab2df newt
+q)graphs:.p.get`AcledExplorer
+q)graphs[`df pykw dfnew][`:render][];
 ```
 ![Figure_8](imgs/gmap.png)
 
@@ -877,46 +956,46 @@ Data relating to the peak height of a stream from an actual flooding event was a
 
 ```q
 // The predictions for the ungauged model are extracted
-pred:last pltU2`model
+q)pred:last pltU2`model
 
 // For a specific site the start, peak and end times of an produced
-pg:raze select site_no, start_time, end_time, peak_time
+q)pg:raze select site_no, start_time, end_time, peak_time
   from XtrainPi
   where unk=`EDT,i in
   where pred=XtestPi`target,site_no=`02164110, target=1,delta_peak>2
 
 // Define parameters to be taken into account in plotting
-rainfall   :`x_val`col`title!(pg[`start_time];`r;`rainfall)
-actual_peak:`x_val`col`title!(pg[`peak_time];`g;`actual_peak)
-pred_bound :`x_val`col`title!
+q)rainfall   :`x_val`col`title!(pg[`start_time];`r;`rainfall)
+q)actual_peak:`x_val`col`title!(pg[`peak_time];`g;`actual_peak)
+q)pred_bound :`x_val`col`title!
   (03:30+pg[`start_time];`black;`predicted_upper_bound)
 
 // Extract relevant information for each site
 // at the time of a major rainfall event
-graph:select from str where
+q)graph:select from str where
   date within (`date$pg[`start_time];`date$pg[`end_time]),
   datetime within (neg[00:15]+pg[`start_time];[00:10]+pg[`end_time]),
   (pg`site_no)=`$site_no
 
 // Plot stream height as a function of time
-times  :graph`datetime
-heights:graph`height
-plt_params:`label`linewidth!(`height;3)
-plt[`:plot][times;heights;pykwargs plt_params]
+q)times  :graph`datetime
+q)heights:graph`height
+q)plt_params:`label`linewidth!(`height;3)
+q)plt[`:plot][times;heights;pykwargs plt_params]
 
 // Plot lines indicating relevant events
-pltline:{
+q)pltline:{
   dict:`color`label`linewidth!(x`col;x`title;3);
   plt[`:axvline][x`x_val;pykwargs dict]; }
 
-pltline each(rainfall;actual_peak;pred_bound)
+q)pltline each(rainfall;actual_peak;pred_bound)
 
-plt[`:legend][`loc pykw `best]
-plt[`:title]["Time to Peak"]
-plt[`:ylabel]["Height"]
-plt[`:xlabel]["Time"]
-plt[`:xticks][()]
-plt[`:show][]
+q)plt[`:legend][`loc pykw `best]
+q)plt[`:title]["Time to Peak"]
+q)plt[`:ylabel]["Height"]
+q)plt[`:xlabel]["Time"]
+q)plt[`:xticks][()]
+q)plt[`:show][]
 ```
 ![Figure_9](imgs/peak.png)
 
