@@ -192,7 +192,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/anandkulkarnisg/MarketDataClient">MarketDataClient ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/anandkulkarnisg/MarketDataClient">MarketDataClient</a></td>
 <td>Web scraper for quotes from external financial sites. <span class="author"><a href="https://github.com/anandkulkarnisg?tab=repositories">
 						(Anand Kulkarni)
 					</a></span>
@@ -223,6 +223,13 @@ about new repositories.</div>
 <td class="nowrap"><a href="https://github.com/jwbuitenhuis/q-chess">q-chess</a></td>
 <td>Simple chess engine. <span class="author"><a href="https://github.com/jwbuitenhuis?tab=repositories">
 						(Will Buitenhuis)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qMiner">qMiner ==new==</a></td>
+<td>Experimental Bitcoin mining project to combat inequality and climate change. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
 					</a></span>
 </td>
 </tr>
@@ -867,6 +874,13 @@ about new repositories.</div>
 <td class="nowrap"><a href="https://github.com/robmoore-i/Q-GeneticAlgo">Q-GeneticAlgo </a></td>
 <td>Functions for defining and running genetic algorithms for fixed length binary chromosomes. <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
 						(Rob&nbsp;Moore)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/jlucid/qbitcoind">qbitcoin</a> ==new==</td>
+<td>Enables communication with a running bitcoin core node and wallet, via HTTP JSON-RPC messages; supports most calls in bitcoin-cli. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
+						(Jeremy Lucid)
 					</a></span>
 </td>
 </tr>

@@ -23,6 +23,8 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
+    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
+    
     <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Disaster&nbsp;management](wp/disaster-management/index.md)</p>
     
     <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba.md)</p>
@@ -30,8 +32,6 @@ Kdb+, from [Kx](https://kx.com), is
     <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-graduation-cap"></i> [Kdb+ Windows service](kb/windows-service/index.md)</p>
     
     <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](/phrases/)</p>
-    
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Lightning&nbsp;tickerplants](wp/lightning-tickerplants/index.md)</p>
     
 </div>
 
@@ -60,16 +60,22 @@ Kdb+, from [Kx](https://kx.com), is
     Reference](ref/index.md "Reference card for the q language")
 </div>
 <div>
+    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+    Phrasebook](/phrases/ "Power expressions in q")
+</div>
+<!-- 
+<div>
+    [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
+    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
+</div>
+ -->
+<div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
     White papers](wp/index.md "Technical white papers on using kdb+")
 </div>
 <div>
     [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
     Knowledge<br/>Base](kb/index.md)
-</div>
-<div>
-    [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
-    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
 </div>
 <div>
     [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
