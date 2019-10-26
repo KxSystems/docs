@@ -227,13 +227,6 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/sandybradley/qMiner">qMiner ==new==</a></td>
-<td>Experimental Bitcoin mining project to combat inequality and climate change. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
-						(Sandy Bradley)
-					</a></span>
-</td>
-</tr>
-<tr>
 <td class="nowrap"><a href="https://github.com/simongarland/tickrecover">tickrecover</a></td>
 <td>Recover from tickerplant crash. <span class="author"><a href="https://github.com/simongarland?tab=repositories">
 						(Simon Garland)
@@ -244,6 +237,75 @@ about new repositories.</div>
 <td class="nowrap"><a href="https://github.com/vschon/VD_KDB">VD_KDB</a></td>
 <td>Forex tick database. <span class="author"><a href="https://github.com/vschon?tab=repositories">
 						(Brandon Yang)
+					</a></span>
+</td>
+</tr>
+</table>
+
+
+## <i class="fas fa-lock"></i> Cryptography and cryptocurrency
+
+<table class="kx-compact" markdown="1">
+<tr>
+<td class="nowrap"><a href="https://github.com/srpeck/cryptopals">cryptopals</a></td>
+<td>Matasano [Crypto Challenges](https://cryptopals.com/). <span class="author"><a href="https://github.com/srpeck?tab=repositories">
+						(Stephen Peck)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/asatirahul/cryptoq/">cryptoq</a> </td>
+<td>Cryptographic functions and binary operation. <span class="author"><a href="https://github.com/asatirahul?tab=repositories">
+						(Rahul Asati)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/jlucid/qbitcoind">qbitcoin</a> ==new==</td>
+<td>Enables communication with a running Bitcoin core node and wallet, via HTTP JSON-RPC messages; supports most calls in bitcoin-cli. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
+						(Jeremy Lucid)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qMachineTrader">qMachineTrader ==new==</a></td>
+<td>Reinforcement learning method for incrementally estimating the optimal action-value function. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qMonitor">qMonitor ==new==</a></td>
+<td>Real-time directional trade volume for bitcoin to fiat markets on Binance, Bitfinex, Bitstamp, Kraken and CoinbasePro. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qMiner">qMiner ==new==</a></td>
+<td>Experimental Bitcoin mining project to combat inequality and climate change. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qOrderBook">qOrderBook ==new==</a></td>
+<td>OrderBook snapshot for Bitcoin / USD market across Binance, Kraken, Coinbase, Bitstamp, Bitfinex, bitFlyer, Poloniex, Gemini, itBit and Bittrex. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qSignals">qSignals ==new==</a></td>
+<td>Live-trade signal-generation for crypto market. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/sandybradley/qTrends">qTrends ==new==</a></td>
+<td>Bitcoin trend analysis. <span class="author"><a href="https://github.com/sandybradley?tab=repositories">
+						(Sandy Bradley)
 					</a></span>
 </td>
 </tr>
@@ -532,13 +594,6 @@ about new repositories.</div>
 
 <table class="kx-compact" markdown="1">
 <tr>
-<td class="nowrap"><a href="https://github.com/srpeck/cryptopals">cryptopals</a></td>
-<td>Matasano [Crypto Challenges](https://cryptopals.com/). <span class="author"><a href="https://github.com/srpeck?tab=repositories">
-						(Stephen Peck)
-					</a></span>
-</td>
-</tr>
-<tr>
 <td class="nowrap"><a href="https://github.com/tjcelaya/game-of-life">game-of-life</a></td>
 <td>Conway’s [Game of Life](http://www.conwaylife.com/). <span class="author"><a href="https://github.com/tjcelaya?tab=repositories">
 						(Tomas Celaya)
@@ -808,13 +863,6 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/asatirahul/cryptoq/">cryptoq</a> </td>
-<td>Cryptographic functions and binary operation. <span class="author"><a href="https://github.com/asatirahul?tab=repositories">
-						(Rahul Asati)
-					</a></span>
-</td>
-</tr>
-<tr>
 <td class="nowrap"><a href="https://github.com/tjcelaya/jwt.q">jwt.q</a></td>
 <td>[JSON Web Token](https://jwt.io/) signing and parsing for q. <span class="author"><a href="https://github.com/tjcelaya?tab=repositories">
 						(Tomas Celaya)
@@ -874,13 +922,6 @@ about new repositories.</div>
 <td class="nowrap"><a href="https://github.com/robmoore-i/Q-GeneticAlgo">Q-GeneticAlgo </a></td>
 <td>Functions for defining and running genetic algorithms for fixed length binary chromosomes. <span class="author"><a href="https://github.com/robmoore-i?tab=repositories">
 						(Rob&nbsp;Moore)
-					</a></span>
-</td>
-</tr>
-<tr>
-<td class="nowrap"><a href="https://github.com/jlucid/qbitcoind">qbitcoin</a> ==new==</td>
-<td>Enables communication with a running bitcoin core node and wallet, via HTTP JSON-RPC messages; supports most calls in bitcoin-cli. <span class="author"><a href="https://github.com/jlucid?tab=repositories">
-						(Jeremy Lucid)
 					</a></span>
 </td>
 </tr>
