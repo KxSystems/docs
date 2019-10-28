@@ -12,7 +12,7 @@ keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q
 
 
 
-Jupyter kernel for kdb+.
+[Jupyter](https://jupyter.org/) kernel for kdb+.
 
 -   Syntax highlighting for q
 -   Code completion for q keywords, `.z`, `.h`, `.Q`, `.j` namespace functions, and user-defined variables
