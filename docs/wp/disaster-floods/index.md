@@ -8,16 +8,15 @@ keywords: embedpy, flash, flood, kdb+, machine learning, model, nasa, nhdplus, n
 # Predicting floods with q and machine learning
 
 
-==DRAFT==
 
-The Frontier Development Lab (FDL) is a public-private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration (NASA). The objective of FDL is to bring together researchers from the Artificial Intelligence (AI) and space science sectors to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention, Progress and Response (Floods) challenge, for which Kx was a sponsor.
+The Frontier Development Lab (FDL) is a public-private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration (NASA). The objective of FDL is to bring together researchers from the Artificial Intelligence (AI) and space science sectors to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention, Progress and Response (Floods) challenge, for which Kx was a partner.
 
 
 ## The need for AI in disaster prevention
 
-Floods are one of the most destructive natural disasters worldwide. All regions can be affected by flooding events and, with the increased variability in weather patterns due to global warming, this is [likely to become even more prevalent](https://www.nrdc.org/stories/flooding-and-climate-change-everything-you-need-know). The speed at which flooding events can occur, and difficulties in predicting their occurrence, create huge logistical problems for both governmental and non-governmental agencies. Over the past 10 years, floods have caused on average [95 deaths a year in the US alone](https://weather.com/safety/floods/news/2018-11-08-flood-related-deaths-increasing-in-united-states), making them [the deadliest weather-related phenomenon](https://www.nssl.noaa.gov/education/svrwx101/floods/). Worldwide, [floods cost in excess of 40 billion dollars per year](https://www.nationalgeographic.com/environment/natural-disasters/floods/), impacting property, agriculture and the health of individuals.
+Floods are one of the most destructive natural disasters worldwide. All regions can be affected by flooding events and, with the increased variability in weather patterns due to global warming, this is [likely to become even more prevalent](https://www.nrdc.org/stories/flooding-and-climate-change-everything-you-need-know). The speed at which flooding events can occur, and difficulties in predicting their occurrence, create huge logistical problems for both governmental and non-governmental agencies. Over the past 10 years, floods have caused on average [95 deaths a year in the US alone](https://weather.com/safety/floods/news/2018-11-08-flood-related-deaths-increasing-in-united-states), making them one of [the deadliest weather-related phenomenon](https://www.nssl.noaa.gov/education/svrwx101/floods/). Worldwide, [floods cost in excess of 40 billion dollars per year](https://www.nationalgeographic.com/environment/natural-disasters/floods/), impacting property, agriculture and the health of individuals.
 
-During the duration of the project, we collaborated with the United States Geological Survey (USGS), a scientific agency within the US Department of the Interior. The objective of the organization is to study the landscape of the US and provide information about its natural resources and the natural hazards that affect them. Currently, hydrologists use physical models to help predict floods. These models require predictions to be carefully calibrated for each stream or watershed and careful consideration must be taken for dams, levees, etc. Producing these models is extremely costly due to resource requirements. This limits the areas within the US that can use such systems to better prepare for flood events.
+For the duration of the project, we collaborated with the United States Geological Survey (USGS), a scientific agency within the US Department of the Interior. The objective of the organization is to study the landscape of the US and provide information about its natural resources and the natural hazards that affect them. Currently, hydrologists use physical models to help predict floods. These models require predictions to be carefully calibrated for each stream or watershed and careful consideration must be taken for dams, levees, etc. Producing these models is extremely costly due to resource requirements. This limits the areas within the US that can use such systems to better prepare for flood events.
 
 
 ## The challenge
@@ -53,7 +52,7 @@ scikit_learn    1.1.0
 xgboost         0.9.0
 gmaps           0.9.0
 geopandas       0.5.1
-ipywidgets 	    7.5.1
+ipywidgets      7.5.1
 ```
 
 In addition, a number of kdb+ libraries and interfaces were used:
@@ -69,7 +68,7 @@ ML toolkit      0.3.2
 
 This project focuses on six states within the US, over a period of 10 years. Data was taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites had continuous historical data over the period, but all the available data for each site was used.
 
-The six states were: New Jersey, Nebraska, South Carolina, New York, South Dakota, and Virginia. A primary reason for choosing these states, was that they exhibit similar climate and landscape to one another. Climate and landscape play a major role in predicting floods, meaning that building a model to predict flood forcasting for the entire US would be extremely difficult as the climates and landscapes vary dramatically between locations. After discussions with hydrologists at USGS, it was decided that focusing on a subset of areas with similar geographies would help to ensure that the models being produced, created meaningful results that could be used in a real world scenario.
+The six states were: New Jersey, Nebraska, South Carolina, New York, South Dakota, and Virginia. The primary reason for choosing these states, was that they exhibit similar climate and landscape to one another. Climate and landscape play a major role in predicting floods, meaning that building a model to predict flood forcasting for the entire US would be extremely difficult as the climates and landscapes vary dramatically between locations. After discussions with hydrologists at USGS, it was decided that focusing on a subset of areas with similar geographies would help to ensure that the models being produced created meaningful results that could be used in a real world scenario.
 
 Required datasets and providers:
 
@@ -78,6 +77,14 @@ Required datasets and providers:
 
 USGS provided its [Surface Water dataset](https://waterdata.usgs.gov/nwis/sw). This consisted of the height of a stream as measured by gauges for over 11,000 sites in the US. The data was updated every 15 minutes, with some locations having historical data for over 50 years. As previously mentioned, the data chosen in this case was a subset of these sites based on geographical location.
 
+```q
+q)meta max_ht_str
+c      | t f a
+-------| -----
+site_no| C    
+date   | d    
+height | f   
+```
 
 ### PRISM
 
@@ -130,7 +137,7 @@ Om             Mean of all organic matter
 Perm           Mean of all permeability of soils 
 RckDep         Mean of all depth to bedrock of soils 
 Clay           Mean of all clay values
-Sand           Mean of all Sand values 
+Sand           Mean of all sand values 
 Runoff         Mean of all runoff values 
 WetIndex       Mean wetness index
 BFI            Ratio of base flow to total flow as a percentage
@@ -176,7 +183,7 @@ date      | d
 
 ### NOAA
 
-[NOAA](https://www.noaa.gov/) is a US governmental agency for monitoring and preserving the climate and environment. This dataset provided flood-level thresholds for locations across the US. These thresholds consisted of four warning stages and the river height for a given location that causes them to reach these levels. The four warning stages are
+[NOAA](https://www.noaa.gov/) is a US governmental agency for monitoring and preserving the climate and environment. This dataset provided flood-level thresholds for locations across the US. These thresholds consisted of four warning stages and the river height for a given location that causes them to reach these stages. The four warning stages are
 
 warning  | meaning
 ---------|---------------
@@ -212,7 +219,7 @@ Given all the different data sources available, it was possible to split the inf
 
 Ungauged basin
 
-: Features included the past rainfall information of stream sites. This dataset can be used at locations where there is no stream height gauge present, therefor no features were extracted from the stream gauge dataset. The land use data was also included in this dataset.
+: Features included the past rainfall information of stream sites. This dataset can be used at locations where there is no stream height gauge present, therefore no features were extracted from the stream gauge dataset. The land use data was also included in this dataset.
 
 Gauged basin
 
@@ -222,7 +229,7 @@ Perfect Forecasts
 
 : This dataset extracted features using the current rainfall values for a short period of time after after an event. Data from the `Ungauged basin` and `Gauged basin` were also included. This dataset is used when weather predictions are available for locations along with historical stream height information.
 
-The reason that these three datasets were chosen, was to reflect how this model could be used in a real world scenario. For the `Perfect Forecasts` dataset, we assume that future forecasted rainfall is available for the location, however in some applications, this future rainfall prediction cannot always be given with certainty, which is when the `Gauged basin` or `Ungauged basin` datasets could be used. The `Gauged basin` dataset is suitable for stream sites that have historical stream height data recoreded over a period of time. When predicting on new sites that do not have this historical data or future rainfall predictions available, the `Gauged basin` dataset is applicable.
+The reason that these three datasets were chosen, was to reflect how this model could be used in a real-world scenario. For the `Perfect Forecasts` dataset, we assume that future forecasted rainfall is available for the location, however in some applications, this future rainfall prediction cannot always be given with certainty, which is when the `Gauged basin` or `Ungauged basin` datasets could be used. The `Gauged basin` dataset is suitable for stream sites that have historical stream height data recorded over a period of time. When predicting on new sites that do not have this historical data or future rainfall predictions available, the `Gauged basin` dataset is applicable.
 
 To obtain these features, the `addFeat` function was used. This enabled features pertaining to previous information to be extracted. This previous information included the past rainfall and stream height values during a set period of time before an event. Windowed features were also added using this function. These window features provided a summary of how certain values changed, such as rainfall or stream height, over a fixed window of time. Windowed features were included, as knowing how fast the rainfall is accumulating in an area along with how the stream height is changing before an event can have a major inpact on predicting if a flood will occur. `addFeat` takes the following arguments as inputs:
 
@@ -289,7 +296,7 @@ upstr_ppt   :addFeat[precip;1;`ppt;`upstr;dict;prv]
 upstr_height:addFeat[maxht;1;`height;`upstr;dict;prv]
 ```
 
-When predicting flood events, it is important to also look at what happens in the days prior to the event, such as the amount of rainfall that fell or how the height of the stream changed. The `addFeat` function was applied to obtain these historical values of rainfall and stream gauge height, for both the current and upstream locations. After discussions with hydrologists, it was decided that the 10 days prior to an event would be included. Any longer than that was deemed to be irrelevant and had the potential to negatively effect the predictions.
+When predicting flood events, it is important to also look at what happens in the days prior to the event, such as the amount of rainfall that fell or how the height of the stream changed. The `addFeat` function was applied to obtain these historical values of rainfall and stream gauge height, for both the current and upstream locations. After discussions with hydrologists, it was decided that the 10 days prior to an event would be included. Any longer than that was deemed to be irrelevant and had the potential to negatively affect the predictions.
 
 ```q
 dict[`gr]:site:(enlist `site_no)!enlist `site_no
@@ -505,7 +512,7 @@ nnwarn:kd.nns[
 joins:([site_no:gauges`site_no]nn:nnwarn[;0];ndw:nnwarn[;1])
 ```
 ```q
-q)show 10#joins
+q)10#joins
 site_no | nn   ndw
 --------| ---------------
 01303500| 4652 0.1774627
@@ -593,7 +600,7 @@ _Monthly model_
 
 After joining the stream-height and precipitation tables from USGS and PRISM, the dataset was then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for different window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consisted of the basin and landcover characteristcs, and the “threshold” dataset, based on month and site number.
 
-Lagged features were then added to this dataset, which included information like did a flood occur in the month prior, the year prior and also how often on average did the given location flood.
+Lagged features were then added to this dataset, which included information such as did a flood occur in the month prior, the year prior and also how often on average did the given location flood.
 
 ```q
 all_monthly_data:addFeat[
@@ -674,8 +681,6 @@ q)forecast
 M| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100..
 P| `month`cos_t`sin_t`elv`imp`CatAreaSqKm`WsAreaSqKm`CatAreaSqKmRp100..
 ```
-==A lot of columns are contained within forecast (~100) so instead I added in a description under NHDPlus of some of the features that haven't been mentioned yet just to add clarity?==
-
 These dictionaries were then used to extract the appropriate columns from each table, to make them suitable inputs to machine-learning models. This was achieved by using the `split_dict` function which takes a table as input, as well as `M` or `P` indicating which model was being used.
 
 ```q
@@ -775,16 +780,13 @@ cleaned_peak[`split]:`TRAIN
 peak_split:update split:`TEST from cleaned_peak where site_no in`$tts 1
 ```
 
-==Extra ` due to coverting from embedPy object to q object==
-
-
 ## Building models
 
-For both problems a variety of models were tested, but for the sake of this paper, models and results from an eXtreme Gradient Boost (XGBoost) and random-forest classifier ==(described in more detail in Appendix 2)== are presented below. These models were chosen due to their ability to deal with complex, imbalanced datasets where overfitting is a common feature. Overfitting occurs when the model fits too well to the training set, capturing a lot of the noise from the data. This leads to the model preforming successfully in training, while not succeeding as well on the testing or validation sets. Another problem that can occur, is that a naïve model can be produced, always predicting that a flood will not occur. This leads to high accuracy but not meaningful results. As seen below in the results section, XGBoosts and random forests were able to deal much better with these issues by tuning their respective hyper-parameters.
+For both problems a variety of models were tested, but for the sake of this paper, models and results from an eXtreme Gradient Boost (XGBoost) and random-forest classifier (described in more detail in Appendix 2) are presented below. These models were chosen due to their ability to deal with complex, imbalanced datasets where overfitting is a common feature. Overfitting occurs when the model fits too well to the training set, capturing a lot of the noise from the data. This leads to the model performing successfully in training, while not succeeding as well on the testing or validation sets. Another problem that can occur, is that a naïve model can be produced, always predicting that a flood will not occur. This leads to high accuracy but not meaningful results. As seen below in the results section, XGBoosts and random forests were able to deal much better with these issues by tuning their respective hyper-parameters.
 
-To visualize the results, a precision-recall curve was used, illustrating the [trade-off between the positive predictive value and the true positive rate over a variety of probability thresholds](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/). This is a good metric for the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods, was vital to ensure that all floods were given warnings. Yet also to ensure that a low number of false positives were given, the penalty for which was that warnings would be ignored.
+To visualize the results, a precision-recall curve was used, illustrating the [trade-off between the positive predictive value and the true positive rate over a variety of probability thresholds](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/). This is a good metric for the success of a model when the classes are unbalanced, compared with similar graphs such as the ROC curve. Precision and recall were also used because getting a balance between these metrics when predicting floods was vital to ensure that all floods were given warnings. Yet also to ensure that a low number of false positives were given, the penalty for which was that warnings would be ignored.
 
-A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returned the prediction at each location in time for the models used, this can be seen later in this paper to create a map of flooding locations.
+A function named `pr_curve` was created to output the desired results from the models. This function outputs the accuracy of prediction, the meanclass accuracy, a classification report highlighting the precision and recall per class, along with a precision-recall curve. This function also returned the prediction at each location in time for the models used, as can be seen later in this paper to create a map of flooding locations.
 
 The arguments to the `pr_curve` function are:
 
@@ -1099,10 +1101,6 @@ q_kfeat:.ml.fresh.ksigfeat 15
 
 _Monthly model_
 
-==Let's include a legend of the significant features together with more verbose descriptions of what these are. I think this is really interesting but readers might now know/remember what WetIndexCat or lagged_target_12 are for example==
-
-==As a score is not associated with each significant feature I'm not sure a plot would be applicable in this circumstance?== 
-
 ```q
 title["monthly"]
 X_Month:flip forecast[`M]!cleaned_monthly forecast[`M]
@@ -1215,7 +1213,7 @@ plt[`:show][]
 ```
 ![Figure_9](imgs/peak.png)
 
-The above plot gives an indication to how close the time to peak models prediction was compared with the time that the actual flood peak occured. In a real life scenario, being able to create an upper bound time limit predicting when a flood will reach it's peak, allows emergency services to take appropriate action, possibly reducing the damages caused by floods.
+The above plot gives an indication to how close the time to peak models prediction was compared with the time that the actual flood peak occured. In a real life scenario, being able to create an upper bound time limit predicting when a flood will reach its peak, allows emergency services to take appropriate action, possibly reducing the damages caused by floods.
 
 
 ## Conclusion
@@ -1242,7 +1240,7 @@ Diane O’Donoghue joined First Derivatives in June 2018 as a data scientist in 
 
 The code presented in this paper is available from
 <i class="fab fa-github"></i>
-[kxcontrib/==FIXME==](FIXME)
+[kxcontrib/fdl2019](https://github.com/kxcontrib/fdl2019).
 
 
 ## Acknowledgements
