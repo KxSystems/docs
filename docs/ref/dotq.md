@@ -1356,7 +1356,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 Since V3.5 2017.03.15.
 
 <i class="far fa-hand-point-right"></i> 
-Basics: [Debugging](../basics/debug.md)
+Basics: [Debugging](../basics/debug.md), [-105!](../basics/internal.md##-105!-extend-trap)
 
 
 ## `.Q.ts` (time and space)

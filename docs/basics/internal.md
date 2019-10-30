@@ -495,3 +495,39 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 Since V3.6 2018.05.18. 
 
 <i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)
+
+## `-105!x` (extend trap)
+
+Syntax: `-105!(f;x;g)`
+
+Where
+
+-   `f` is a function
+-   `x` is a list of arguments
+-   `g` is a binary function
+
+extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` gets called with arguments:
+
+1.   the error string
+2.   the backtrace object
+
+You can format the backtrace object with `.Q.sbt`.
+
+```q
+q)f:{x+y}
+q)           / print the formatted backtrace and error string to stderr
+q)-105!(f;(2;`a);{2@"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1})
+error: type
+backtrace:
+  [1]  f:{x+y}
+           ^
+  [0]  -105!(f;(2;`a);{2@"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1})
+           ^
+-1
+q)
+```
+
+Since V3.5 2017.03.15.
+
+<i class="far fa-hand-point-right"></i>
+[.Q.trp](../ref/dotq.md#qtrp-extend-trap)

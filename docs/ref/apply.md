@@ -341,6 +341,9 @@ q).[+;2 3;{"Wrong ",x}]
 5
 ```
 
+<i class="far fa-hand-point-right"></i>
+[-105!](../basics/internal.md#-105x-extend-trap)
+
 
 ### Trap At
 
@@ -348,6 +351,8 @@ q).[+;2 3;{"Wrong ",x}]
 
 Use Trap At as a simpler form of Trap, for unary values.
 
+<i class="far fa-hand-point-right"></i>
+[.Q.trp](../ref/dotq.md#qtrp-extend-trap)
 
 ### Limit of the trap
 
