@@ -23,7 +23,7 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p>
+    <!-- <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p> -->
     
     <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
     

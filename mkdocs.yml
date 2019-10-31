@@ -553,7 +553,7 @@ nav:
     - Order Book: wp/order-book.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Permissions: wp/permissions/index.md
-    - Predicting floods: wp/disaster-floods/index.md
+    # - Predicting floods: wp/disaster-floods/index.md
     - Query optimization: wp/columnar-database/index.md
     - Query Routing: wp/query-routing/index.md
     - Query scaling: wp/query-scaling.md
