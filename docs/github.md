@@ -28,12 +28,12 @@ about new repositories.</div>
 </tr>
 <tr>
 	<td class="nowrap">[docs](https://github.com/KxSystems/docs)</td>
-	<td>source files for this site</td>
+	<td>source files for [this site](about/thissite.md)</td>
 </tr>
 <tr>
 	<td class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
 	<td>
-		calling Python from q 
+		[calling Python from q](ml/embedpy/index.md) 
 		[<i class="fas fa-share-alt"></i>](./ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
@@ -45,14 +45,14 @@ about new repositories.</div>
 <tr>
 	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
 	<td>
-		Java client for kdb+ 
+		[Java client for kdb+](interfaces/java-client-for-q.md) 
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
 	<td>
-		Jupyter kernel for kdb+
+		[Jupyter kernel for kdb+](ml/jupyterq/index.md)
 		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
@@ -74,33 +74,40 @@ about new repositories.</div>
 </tr>
 <tr>
 	<td class="nowrap">[kdb-tick](https://github.com/KxSystems/kdb-tick)</td>
-	<td>ticker plant</td>
+	<td>[tickerplant](kb/kdb-tick.md)</td>
 </tr>
 <tr>
-	<td class="nowrap">[nlp](https://github.com/awilson-kx/nlp)</td>
+	<td class="nowrap">[ml](https://github.com/KxSystems/ml)</td>
 	<td>
-		demonstration notebook for [Natural-language processing](ml/nlp/index.md)
+		[machine-learning toolkit](ml/toolkit/index.md)
 		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
 	</td>
 </tr>
 <tr>
-	<td class="nowrap">[notebooks](https://github.com/awilson-kx/notebooks)</td>
+	<td class="nowrap">[mlnotebooks](https://github.com/KxSystems/mlnotebooks)</td>
 	<td>
-		demonstration notebooks for [embedPy](ml/embedpy/index.md)
+		[machine-learning notebooks](ml/notebooks.md)
+		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[nlp](https://github.com/KxSystems/nlp)</td>
+	<td>
+		demonstration notebook for [natural-language processing](ml/nlp/index.md)
 		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[pyq](https://github.com/KxSystems/pyq)</td>
 	<td>
-		calling Python from q
+		[calling Python from q](interfaces/pyq/index.md)
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[rkdb](https://github.com/KxSystems/rkdb)</td>
 	<td>
-		R client for q
+		[R client for q](interfaces/r/index.md)
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
@@ -750,6 +757,11 @@ about new repositories.</div>
 
 ## <i class="fas fa-share-alt"></i> Machine learning
 
+<small>
+	<i class="far fa-hand-point-right"></i>
+	[Repositories maintained by Kx](#kx)
+</small>
+
 <table class="kx-compact" markdown="1">
 <tr>
 <td class="nowrap">[funq](https://github.com/psaris/funq)</td>
@@ -771,6 +783,7 @@ about new repositories.</div>
 						(Juan Lasheras)
 					</a></span>
 </td>
+</tr>
 <tr>
 <td class="nowrap">[mlq](https://github.com/zakoud/mlq)</td>
 <td>Machine Learning for q <span class="author"><a href="https://github.com/zakoud?tab=repositories">
