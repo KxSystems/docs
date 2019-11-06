@@ -13,6 +13,8 @@ After downloading, if necessary, unzip the archive. A new folder `q` will appear
 
 Next perform the _Minimum install and launch_. We then strongly recommend continuing to [Complete install and launch](#complete-install-and-launch).
 
+!!! warning "macOS Catalina (10.15) ended macOS support for 32-bit applications."
+
 
 ## <i class="fas fa-rocket"></i> Minimum install and launch
 

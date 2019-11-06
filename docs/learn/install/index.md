@@ -18,6 +18,8 @@ Free 64-bit kdb+ On-Demand Personal Edition
 Free 32-bit kdb+ Personal Edition
 : The 32-bit kdb+ Personal Edition is free for non-commercial use. It can be run on cloud servers.
 
+!!! warning "<i class="fab fa-apple"></i> macOS Catalina (10.15) ended macOS support for 32-bit applications."
+
 Use the link below to obtain the 64-bit or 32-bit Personal Edition of kdb+.
 
 <button style="background: #0088ff; padding: 10px;" type="button">
