@@ -79,9 +79,16 @@ q)"NT"$\:"123456123987654"  / since V3.4
 
 ## Truthy characters
 
-These characters are recognized as boolean true:
+Certain characters are recognized as boolean True:
 
 ```q
+q)"B"$(" Y ";"    N ")
+10b
+q)" ",.Q.an
+" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
+q)"B"$'" ",.Q.an
+0000000000000000000010001100000000000000000000100011000100000000b
+
 q).Q.an where"B"$'.Q.an
 "txyTXY1"
 ```

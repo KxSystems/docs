@@ -75,6 +75,15 @@ q)1h$(neg\)1 0 2
 101b
 ```
 
+Characters are cast to True.
+
+```q
+q)" ",.Q.an
+" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
+q)"b"$" ",.Q.an
+1111111111111111111111111111111111111111111111111111111111111111b
+```
+
 
 ## Temporal
 
