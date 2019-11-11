@@ -183,6 +183,7 @@ On launch
 <tr><th>error</th><th>explanation</th></tr>
 </thead>
 <tbody>
+<tr> <td>{timestamp} couldn't connect to license daemon</td> <td>Could not connect to Kx license server ([kdb+ On Demand](../learn/licensing/#licensing-server-for-kdb-on-demand))</td> </tr>
 <tr> <td>cores</td> <td>The license is for [fewer cores than available](../kb/cpu-affinity.md)</td> </tr>
 <tr> <td>cpu</td> <td>The license is for fewer CPUs than available</td> </tr>
 <tr> <td>exp</td> <td>License expiry date is prior to system date</td> </tr>
