@@ -575,6 +575,7 @@ nav:
       - Characters: about/sg/characters.md
       - Miscellaneous: about/sg/miscellaneous.md
       - Style: about/sg/style.md
+      - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
     - Terminology: about/terminology.md
     - License agreements:
