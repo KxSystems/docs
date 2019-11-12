@@ -250,10 +250,10 @@ Enumerated types are numbered from `20h` up to `76h`. For example, in a new sess
 q)type `sym$10?sym:`AAPL`AIG`GOOG`IBM
 20h
 q)type `city$10?city:`london`paris`rome
-21h
+20h
 ```
 
-(Since V3.0, type `20h` is reserved for `` `sym$``.)
+(Since V3.0, type `20h` is reserved for `` `xxx$`` where `xxx` is the name of a variable.)
 
 
 ### Nested types
