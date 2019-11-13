@@ -1,5 +1,5 @@
 ---
-title: Tok – Reference – kdb+ and q documentation
+title: Tok casts string data to another datatype | Reference | kdb+ and q documentation
 description: Tok is a q operator that casts string data to another datatype.
 author: Stephen Taylor
 keywords: cast, datatype, kdb+, operator, q, string, tok
@@ -12,7 +12,7 @@ Syntax: `x$y`, `$[x;y]`
 
 Where 
 
--   `x` is an upper-case letter or non-positive short int
+-   `x` is an upper-case letter, symbol atom, or negative short int
 -   `y` is a string
 
 returns `y` interpreted as a value according to `x`. 
@@ -41,14 +41,19 @@ q)flip{(neg x;upper .Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
 -19h "T" `time
 ```
 
+`0h$` and `"*"$` are no-ops. 
+For positive short or lower-case letter values of `x`, see [Cast](cast.md).
+
+
 !!! Tip "String to symbol"
 
     Use `` `$y`` as shorthand for `"S"$y`.
+
     <pre><code class="language-q">
-    q)"S"$"hello"
-    `hello
-    q)`$"hello"
-    `hello
+    q)"S"\$"hello"
+    \`hello
+    q)\`\$"hello"
+    \`hello
     </code></pre>
 
 ```q
@@ -71,16 +76,27 @@ q)"NT"$\:"123456123987654"  / since V3.4
 12:34:56.123
 ```
 
-!!! tip "Truthy characters"
 
-    These characters are recognized as boolean true:
+## Truthy characters
 
-    <pre><code class="language-q">
-    q).Q.an where"B"$'.Q.an
-    "txyTXY1"
-    </code></pre>
+Certain characters are recognized as boolean True:
 
-Parsing **Unix timestamps** (from seconds since Unix epoch), string with 9…11 digits:
+```q
+q)"B"$(" Y ";"    N ")
+10b
+q)" ",.Q.an
+" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
+q)"B"$'" ",.Q.an
+0000000000000000000010001100000000000000000000100011000100000000b
+
+q).Q.an where"B"$'.Q.an
+"txyTXY1"
+```
+
+
+## Unix timestamps
+
+(from seconds since Unix epoch), string with 9…11 digits:
 
 ```q
 q)"P"$"10129708800"
@@ -98,7 +114,10 @@ q)"P"$"00000000000.123456789"
 1970.01.01D00:00:00.123456789
 ```
 
-`"D"$` will Tok **dates** with varied formats:
+
+## Date formats
+
+`"D"$` will Tok dates with varied formats:
 
 ```txt
 [yy]yymmdd
@@ -109,8 +128,10 @@ dd/[mm|MMM]/[yy]yy  / \z 1
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[`\z` (date format)](../basics/syscmds.md#z-date-parsing)  
-[`.h.iso8601`](doth.md#hiso8601-iso-timestamp)  
-Basics: [Casting](../basics/casting.md)  
-[`$` dollar](overloads.md#dollar)
+[Cast](cast.md), 
+[`$` dollar](overloads.md#dollar),
+[`.h.iso8601`](doth.md#hiso8601-iso-timestamp)<br>
+Basics: 
+[system command `\z` (date format)](../basics/syscmds.md#z-date-parsing),
+[Casting](../basics/casting.md)  
 

@@ -1,17 +1,17 @@
 ---
-title: ESA Frontier Development Lab – Disaster management using social media
+title: FDL Europe – Analyzing social media data for disaster management | White papers | q and kdb+ documentation
 description: Deep-learning methods to classify tweets relating to flooding events – training a binary classifier to discern relevance; a categorical model to classify tweets into finer-grained buckets.
 author: Conor McCarthy
 date: October 2019
 keywords: disaster, kdb+, machine-learning, nasa, q, space, social media
 ---
-# ESA Frontier Development Lab:<br>Analyzing social media data for disaster management
+# FDL Europe: Analyzing social media data for disaster management
 
 
 
-The European Space Agency (ESA) Frontier Development Lab (FDL) is an applied artificial-intelligence (AI) research accelerator, hosted by both the ESA Centre for Earth Observation and Oxford University. The program brings commercial and private partners together with researchers, to solve challenges in the space-science sector using AI techniques and cutting-edge technologies.
+Frontier Development Lab (FDL) Europe is an applied artificial-intelligence (AI) research accelerator, in partnership with the European Space Agency (ESA) and Oxford University and leaders in commercial AI. The overall goal of the program is to solve challenges in the space-science sector using AI techniques and cutting-edge technologies.
 
-[ESA FDL 2019](https://fdleurope.org/fdl-europe-2019) focused on three main areas of research – Atmospheric Phenomena and Climate Variability, Disaster Prevention Progress and Response, and Ground Station Pass Optimization for Constellations. This paper will focus on the second of these challenges and, more specifically, the response aspect of flood management.
+[FDL Europe 2019](https://fdleurope.org/fdl-europe-2019) focused on three main areas of research – Atmospheric Phenomena and Climate Variability, Disaster Prevention Progress and Response, and Ground Station Pass Optimization for Constellations. This paper will focus on the second of these challenges and, more specifically, the response aspect of flood management.
 
 
 ## Project overview
@@ -120,7 +120,7 @@ Tweet contains URL and emojis:
 
 ```txt
 Colorado flooding could help keep tourists away 
-http://t.co/vqwifb51hk Denver\342\200\224a
+http://t.co/vqwifb51hk Denver 🤔
 ```
 
 For this work, the following steps were taken to standardize the data being presented to the model.
@@ -642,7 +642,7 @@ Conor McCarthy joined First Derivatives in March 2018 as a Data Scientist in the
 The code presented in this paper is available on GitHub.
 
 <i class="fab fa-github"></i>
-[cmccarthy1/fdl_europe_2019](https://github.com/cmccarthy1/fdl_europe_2019)
+[kxcontrib/fdl_europe_2019](https://github.com/kxcontrib/fdl_europe_2019)
 
 
 ## Acknowledgements

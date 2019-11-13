@@ -6,7 +6,7 @@ extra:
   version: 2.0
 extra_css: 
   - 'stylesheets/extra.css'
-  - 'stylesheets/prism.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
 extra_javascript: 
   # See /syntax/#projection to see if MathJax is working 
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -528,7 +528,7 @@ nav:
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
-    # - Disaster management: wp/disaster-management/index.md
+    - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - Disaster management using social media: wp/disaster-management/index.md
     - Disaster Prevention for Floods: wp/disaster-floods/index.md
@@ -547,6 +547,9 @@ nav:
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Neural networks: wp/neural-networks/index.md
     - Parse trees, functional SQL: wp/parse-trees.md
+    - Permissions: wp/permissions/index.md
+    # - Predicting floods: wp/disaster-floods/index.md
+    - Query optimization: wp/columnar-database/index.md
     - Query Routing: wp/query-routing/index.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Time-series simplification: wp/ts-shrink/index.md
@@ -567,6 +570,7 @@ nav:
       - Characters: about/sg/characters.md
       - Miscellaneous: about/sg/miscellaneous.md
       - Style: about/sg/style.md
+      - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
     - Terminology: about/terminology.md
     - License agreements:

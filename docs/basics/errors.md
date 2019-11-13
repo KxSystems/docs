@@ -47,7 +47,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>limit</td>
 <td class="nowrap">`0W#2`</td>
 <td>
-    Tried to generate a list longer than 2<sup>64</sup>-1 (2e+09 until V3.0), 
+    Tried to generate a list longer than 2<sup>40</sup>-1 (2e+09 until V3.0), 
     or serialized object is &gt; 1TB (2GB until V3.4), 
     or `'type` if trying to serialize a nested object which has &gt; 2 billion elements,
     or <i class="far fa-hand-point-right"></i> [Parse errors](#parse-errors)
@@ -183,6 +183,7 @@ On launch
 <tr><th>error</th><th>explanation</th></tr>
 </thead>
 <tbody>
+<tr> <td>{timestamp} couldn't connect to license daemon</td> <td>Could not connect to Kx license server ([kdb+ On Demand](../learn/licensing/#licensing-server-for-kdb-on-demand))</td> </tr>
 <tr> <td>cores</td> <td>The license is for [fewer cores than available](../kb/cpu-affinity.md)</td> </tr>
 <tr> <td>cpu</td> <td>The license is for fewer CPUs than available</td> </tr>
 <tr> <td>exp</td> <td>License expiry date is prior to system date</td> </tr>

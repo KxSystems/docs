@@ -1,5 +1,5 @@
 ---
-title: Interfaces and editor integrations – Interfaces – kdb+ and q documentation
+title: Interfaces and editor integrations | Interfaces | kdb+ and q documentation
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---
@@ -56,7 +56,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr><td>amCharts</td><td><i class="fab fa-github"></i> [kxcontrib/cburke/amcharts](https://github.com/kxcontrib/cburke/tree/master/amcharts/)</td></tr>
-<tr><td>AQuery</td><td><i class="fab fa-github"></i> [josepablocam/aquery](https://github.com/josepablocam/aquery) ==new==</td></tr>
+<tr><td>AQuery</td><td><i class="fab fa-github"></i> [josepablocam/aquery](https://github.com/josepablocam/aquery)</td></tr>
 <tr><td>C</td><td>[C client for kdb+](c-client-for-q.md)</td></tr>
 <tr><td>CZMQ</td><td><i class="fab fa-github"></i> [jaeheum/qzmq](https://github.com/jaeheum/qzmq)</i></td></tr>
 <tr><td>C#</td><td>[C# client for kdb+](csharp-client-for-q.md)<br/>
@@ -146,6 +146,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr><td>PLplot</td><td><i class="fab fa-github"></i> [jaeheum/qplplot](https://github.com/jaeheum/qplplot)</td></tr>
+<tr><td>Postgres</td><td><i class="fab fa-github"></i> [hughhyndman/pgtokdb](https://github.com/hughhyndman/pgtokdb) ==new==</td></tr>
 <tr><td><i class="fab fa-python"></i> Python</td>
     <td>
 <i class="fab fa-github"></i> [brogar/pykdb](https://github.com/brogar/pykdb)<br/>

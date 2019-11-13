@@ -29,12 +29,16 @@ Set headings in sentence case, i.e., in lower case except for
 -   acronyms, e.g. _IPC_, _HTTP_, _API_
 -   proper names, e.g. _Python_, _C#_, _WebSocket_, _GitHub_, _macOS_
 
-Minimise punctuation within a heading and end it without punctuation. 
+Apply inline code style where appropriate. 
 
-Number headings in an article only when there are many references in the text to the numbers. Where there are a few references to heading numbers, replace them with the italicised heading texts, linked to the headings. 
+Use hash characters, not underlines, to mark H1s and H2s. (Underlines break the site indexing script.) 
+
+Minimize punctuation within a heading and end it without punctuation. 
+
+Number headings in an article only when there are many references in the text to the numbers. Where there are a few references to heading numbers, replace them with the italicized heading texts, linked to the headings. 
 
 
-### Ordered and unordered lists
+## Ordered and unordered lists
 
 Use numbered lists only 
 
@@ -51,12 +55,41 @@ suffix all but the last item with a semicolon, and use "and" or "or" before the 
 Otherwise, leave the ends of list items unpunctuated. 
 
 
-### Admonitions
+## Admonitions
 
-Use admonitions for warnings, tips and notes.
+Use [admonitions](https://squidfunk.github.io/mkdocs-material/extensions/admonition/) for warnings, tips and notes.
+Use them sparingly. 
 
 !!! note "Example"
 
     This shows how it’s done.
+
+In the Markdown source, the admonition above looks like this:
+
+```markdown
+!!! note "Example"
+
+    This shows how it’s done.
+```
+
+
+## Tables
+
+Make column headers lower case, except for proper names and code objects. 
+
+Prefer text code blocks for tables with many columns or columns that do not 
+need to be wrapped. E.g.
+
+```txt
+label          symbol
+errorClass     symbol
+description    string
+problemText    string
+errorMessage   string
+startLine      long
+endLine        long
+startIndex     long
+endIndex       long
+```
 
 

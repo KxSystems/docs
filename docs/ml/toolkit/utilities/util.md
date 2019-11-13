@@ -19,6 +19,7 @@ The following functions are defined in the `util.q` file of the Machine Learning
   .ml.arange             Evenly-spaced values within a range
   .ml.combs              n linear combinations of k numbers
   .ml.df2tab             kdb+ table from a pandas dataframe
+  .ml.df2tab_tz		 kdb+ table from a pandas dataframe containing datetime timezones
   .ml.eye                Identity matrix
   .ml.linspace           List of evenly-spaced values
   .ml.shape              Shape of a matrix
@@ -127,6 +128,40 @@ jcol| fcol
 
 **Index columns** This function assumes a single unnamed Python index column is to be removed. It returns an unkeyed table. All other variants of Python index columns map to q key columns. For example any instance with two or more indexes will map to two or more Python keys, while any named single-index Python column be associated with a q key in a keyed table.
 
+
+## `.ml.df2tab_tz`
+
+_Convert pandas dataframe containing datetime timezones to a q table_
+
+Syntax: `.ml.df2tab_tz[x;y]`
+
+Where:
+
+- `x` is an embedPy representatoin of a Pandas dataframe
+- `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or not
+
+Returns a q table
+
+```q
+)dtT = pd.Series(pd.date_range('2019-01-01 1:30',periods=2)).to_frame(name='dt')
+p)dtT['dt_with_tz']=dtT.dt.dt.tz_localize('CET')
+q)print t: .p.eval "dtT"
+                   dt                dt_with_tz
+0 2019-01-01 01:30:00 2019-01-01 01:30:00+01:00
+1 2019-01-02 01:30:00 2019-01-02 01:30:00+01:00
+
+q).ml.df2tab_tz[t;0b]
+dt                            dt_with_tz                   
+-----------------------------------------------------------
+2019.01.01D01:30:00.000000000 2019.01.01D00:30:00.000000000
+2019.01.02D01:30:00.000000000 2019.01.02D00:30:00.000000000
+
+q).ml.df2tab_tz[t;1b]
+dt                            dt_with_tz                   
+-----------------------------------------------------------
+2019.01.01D01:30:00.000000000 2019.01.01D01:30:00.000000000
+2019.01.02D01:30:00.000000000 2019.01.02D01:30:00.000000000
+``` 
 
 ## `.ml.eye`
 

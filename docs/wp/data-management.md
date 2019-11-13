@@ -70,7 +70,7 @@ A slight variation on the `enumerate` function, detailed below, specifies a mapp
 ```q
 /mapping from column names to enumeration names
 columnFileMapping:![`cusip`isin`symbol`market`currency`sector`trader`traderID;
-`products`products`products`markets`markets`markets`people`people]
+  `products`products`products`markets`markets`markets`people`people]
 
 enumerate:{[d;t] /directory,table
   t:cols[t]!
