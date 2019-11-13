@@ -44,11 +44,11 @@ q).ml.arange[6.25;10.5;0.05]
 ```
 
 
-## `.ml.comb`
+## `.ml.combs`
 
 _Unique combinations of vector or matrix_
 
-Syntax: `.ml.comb[x;y]`
+Syntax: `.ml.combs[x;y]`
 
 Where
 
@@ -137,37 +137,43 @@ Syntax: `.ml.df2tab_tz[x;y]`
 
 Where:
 
-- `x` is an embedPy representatoin of a Pandas dataframe
+- `x` is an embedPy representation of a Pandas dataframe
 - `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or not
 
 Returns a q table
 
 ```q
-)dtT = pd.Series(pd.date_range('2019-01-01 1:30',periods=2)).to_frame(name='dt')
-p)dtT['dt_with_tz']=dtT.dt.dt.tz_localize('CET')
-q)print t: .p.eval "dtT"
-                   dt                dt_with_tz
-0 2019-01-01 01:30:00 2019-01-01 01:30:00+01:00
-1 2019-01-02 01:30:00 2019-01-02 01:30:00+01:00
+q)p)import pandas as pd
+q)p)import datetime
+q)p)import numpy as np
+q)p)dtdf=pd.DataFrame(
+    {'time':[datetime.time(12, 10, 30,500),datetime.time(12, 13, 30,200)],
+    'timed':[datetime.timedelta(hours=-5),datetime.timedelta(seconds=1000)],
+    'datetime':[np.datetime64('2005-02-25T03:30'),np.datetime64('2015-12-22')]})
+q)p)dtdf['dt_with_tz']=dtdf.datetime.dt.tz_localize('CET')
 
-q).ml.df2tab_tz[t;0b]
-dt                            dt_with_tz                   
------------------------------------------------------------
-2019.01.01D01:30:00.000000000 2019.01.01D00:30:00.000000000
-2019.01.02D01:30:00.000000000 2019.01.02D00:30:00.000000000
+q)print dttab:.p.get[`dtdf]
+              time             timed            datetime                dt_with_tz
+0  12:10:30.000500 -1 days +19:00:00 2005-02-25 03:30:00 2005-02-25 03:30:00+01:00
+1  12:13:30.000200          00:16:40 2015-12-22 00:00:00 2015-12-22 00:00:00+01:00
 
-q).ml.df2tab_tz[t;1b]
-dt                            dt_with_tz                   
------------------------------------------------------------
-2019.01.01D01:30:00.000000000 2019.01.01D01:30:00.000000000
-2019.01.02D01:30:00.000000000 2019.01.02D01:30:00.000000000
+
+q).ml.df2tab_tz[dttab;0b]
+time                 timed                 datetime                      dt_with_tz         ..
+--------------------------------------------------------------------------------------------..
+0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:00..
+0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:00..
+
+/ local time representation
+q).ml.df2tab_tz[dttab;1b]
+time                 timed                 datetime                      dt_with_tz         ..
+--------------------------------------------------------------------------------------------..
+0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D03:30:00..
+0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.22D00:00:00..
 ``` 
 
 ## `.ml.eye`
 
-_Identity matrix_
-
-Syntax: `.ml.eye[x]`
 
 Where  `x` is an integer atom, returns an identity matrix of height/width `x`.
 
