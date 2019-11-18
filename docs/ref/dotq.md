@@ -15,55 +15,57 @@ Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. So
 
     The `.Q` namespace is reserved for use by Kx, as are all single-letter namespaces.
 
-    Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
+    Consider all undocumented functions in the namespace as [exposed infrastructure](../basics/exposed-infrastructure.md) – and do not use them.
 
 ```txt
-General                                  Datatype
- .Q.a        lowercase alphabet           .Q.btoa    b64 encode
- .Q.A        uppercase alphabet           .Q.j10     encode binhex
- .Q.addmonths                             .Q.j12     encode base64
- .Q.bt       backtrace                    .Q.M       long infinity
- .Q.dd       join symbols                 .Q.ty      type
- .Q.def                                   .Q.x10     decode binhex
- .Q.ens      enumerate aginst domain      .Q.x12     decode base64
- .Q.f        format
- .Q.fc       parallel on cut             Database
- .Q.ff       append columns               .Q.chk     fill HDB
- .Q.fmt      format                       .Q.dpft    save table
- .Q.ft       apply simple                 .Q.dpfts   save table with sym
- .Q.fu       apply unique                 .Q.dsftg   load process save
- .Q.gc       garbage collect              .Q.en      enumerate varchar cols
- .Q.id       sanitize                     .Q.fk      foreign key
- .Q.qt       is table                     .Q.hdpf    save tables
- .Q.res      keywords                     .Q.qt      is table
- .Q.s        plain text                   .Q.qp      is partitioned
- .Q.s1       string representation
- .Q.sbt      string backtrace            Partitioned database state
- .Q.sha1     SHA-1 encode                 .Q.bv      build vp
- .Q.trp      extend trap                  .Q.cn      count partitioned table
- .Q.ts       time and space               .Q.D       partitions
- .Q.u        date based                   .Q.ind     partitioned index
- .Q.V        table to dict                .Q.MAP     maps partitions
- .Q.v        value                        .Q.par     locate partition
- .Q.view     subview                      .Q.PD      partition locations
-                                          .Q.pd      modified partition locations
-Environment                               .Q.pf      partition field
- .Q.k        version                      .Q.pn      partition counts
- .Q.opt      command parameters           .Q.qp      is partitioned
- .Q.res      k words                      .Q.pt      partitioned tables
- .Q.w        memory stats                 .Q.PV      partition values
- .Q.x        non-command parameters       .Q.pv      modified partition values
-                                          .Q.vp      missing partitions
-IPC
- .Q.addr     IP address                  Segmented database state
- .Q.fps      streaming algorithm          .Q.D       partitions
- .Q.fs       streaming algorithm          .Q.P       segments
- .Q.fsn      streaming algorithm          .Q.u       date based
- .Q.hg       HTTP get
- .Q.host     hostname                    File I/O
- .Q.hp       HTTP post                    .Q.l       load
-                                          .Q.Cf      create empty nested char file
-                                          .Q.Xf      create file
+General                              Datatype
+ .Q.a        lowercase alphabet       .Q.btoa   b64 encode
+ .Q.A        uppercase alphabet       .Q.j10    encode binhex
+ .Q.addmonths                         .Q.j12    encode base64
+ .Q.bt       backtrace                .Q.M      long infinity
+ .Q.dd       join symbols             .Q.ty     type
+ .Q.def                               .Q.x10    decode binhex
+ .Q.f        format                   .Q.x12    decode base64
+ .Q.fc       parallel on cut         
+ .Q.ff       append columns          Database
+ .Q.fmt      format                   .Q.chk    fill HDB
+ .Q.ft       apply simple             .Q.dpft   save table
+ .Q.fu       apply unique             .Q.dpfts  save table with sym
+ .Q.gc       garbage collect          .Q.dsftg  load process save
+ .Q.id       sanitize                 .Q.en     enumerate varchar cols
+ .Q.qt       is table                 .Q.ens    enumerate against domain     
+ .Q.res      keywords                 .Q.fk     foreign key
+ .Q.s        plain text               .Q.hdpf   save tables
+ .Q.s1       string representation    .Q.qt     is table
+ .Q.sbt      string backtrace         .Q.qp     is partitioned
+ .Q.sha1     SHA-1 encode            
+ .Q.trp      extend trap             Partitioned database state
+ .Q.ts       time and space           .Q.bv     build vp
+ .Q.u        date based               .Q.cn     count partitioned table
+ .Q.V        table to dict            .Q.D      partitions
+ .Q.v        value                    .Q.ind    partitioned index
+ .Q.view     subview                  .Q.MAP    maps partitions
+                                      .Q.par    locate partition
+Environment                           .Q.PD     partition locations
+ .Q.k        version                  .Q.pd     modified partition locns
+ .Q.opt      command parameters       .Q.pf     partition field
+ .Q.res      k words                  .Q.pn     partition counts
+ .Q.w        memory stats             .Q.qp     is partitioned
+ .Q.x        non-command parameters   .Q.pt     partitioned tables
+                                      .Q.PV     partition values
+IPC                                   .Q.pv     modified partition values
+ .Q.addr     IP address               .Q.vp     missing partitions
+ .Q.fps      streaming algorithm     
+ .Q.fs       streaming algorithm     Segmented database state
+ .Q.fsn      streaming algorithm      .Q.D      partitions
+ .Q.hg       HTTP get                 .Q.P      segments
+ .Q.host     hostname                 .Q.u      date based
+ .Q.hp       HTTP post               
+ .Q.l        load                    
+
+ File I/O
+ .Q.Cf     create empty nested char file
+ .Q.Xf     create file
 ```
 
 In non-partitioned databases the partitioned database state variables remain undefined.
@@ -419,25 +421,60 @@ q).Q.dsftg[d;s;f;t;g]
 
 ## `.Q.en` (enumerate varchar cols)
 
-Syntax: `.Q.en[x;y]`
+Syntax: `.Q.en[dir;table]`
+
+Where
+
+-   `dir` is a symbol handle to a folder
+-   `table` is a table
+
+the function 
+
+-   assigns to variable `sym` the list of unique symbols in `table`
+-   creates if necessary the folder `dir`
+-   writes in `dir` a file `sym` with the same contents
+-   returns `table` with columns enumerated.
+
+Tables that are splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
+
+!!! warning "Locking"
+
+    Enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage.
 
 <i class="far fa-hand-point-right"></i>
-[Enum Extend](enum-extend.md)
-Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
-White paper: [Working with sym files](../wp/symfiles.md#qen)
+[`dsave`](dsave.md),
+[Enum Extend](enum-extend.md),
+[`save`](save.md)<br>
+Knowledge Base:<br> 
+[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)<br>
+[Splaying large files](../kb/splaying-large-files.md#enumerating-using-qen)<br>
+White papers:<br>
+[Data-management techniques](../wp/data-management/index.md#multiple-enumeration-files)<br>
+[Working with sym files](../wp/symfiles.md#qen)
 
 
 ## `.Q.ens` (enumerate against domain)
 
 Syntax: `.Q.ens[dir;table;name]`
 
-allows enumeration against domains (and therefore filename) other than `` `sym``.  E.g. enumerate against contents of `` `:mysym``.
+Where
+
+-   `dir` is a symbol handle to a folder
+-   `table` is a table
+-   `name` is a symbol atom naming a sym file in `dir` 
+
+returns `table` with columns enumerated against `name`.
+
+Allows enumeration against domains (and therefore filenames) other than `sym`.
+
+Enumerate against contents of `db/mysym`:
 
 ```q
 q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 ```
 
 <i class="far fa-hand-point-right"></i>
+[`.Q.en`](#qen-enumerate-varchar-columns)<br>
 White paper: [Working with sym files](../wp/symfiles.md#qens)
 
 
@@ -445,7 +482,12 @@ White paper: [Working with sym files](../wp/symfiles.md#qens)
 
 Syntax: `.Q.f[x;y]`
 
-Where `x` is an int atom and `y` is a numeric atom, returns `y` as a string formatted as a float to `x` decimal places.
+Where 
+
+-   `x` is an int atom
+-   `y` is a numeric atom
+
+returns `y` as a string formatted as a float to `x` decimal places.
 
 Because of the limits of precision in a double, for `y` above `1e13` or the limit set by `\P`, formats in scientific notation.
 
@@ -473,7 +515,12 @@ q)10 xlog 0Wj-1
 
 Syntax: `.Q.fc[x;y]`
 
-Where `x` is is a unary atomic function and `y` is a list, returns the result of evaluating `f vec` – using multiple threads if possible. (Since V2.6)
+Where 
+
+-   `x` is is a unary atomic function
+-   `y` is a list
+
+returns the result of evaluating `f vec` – using multiple threads if possible. (Since V2.6)
 
 ```q
 q -s 8
@@ -497,7 +544,12 @@ q)\t f peach vec
 
 Syntax: `.Q.ff[x;y]`
 
-Where `x` is table to modify, and `y` is a table of columns to add to `x` and set to null, returns `x`, with all new columns in `y`, with values in new columns set to null of the appropriate type.
+Where 
+
+-   `x` is table to modify
+-   `y` is a table of columns to add to `x` and set to null
+
+returns `x`, with all new columns in `y`, with values in new columns set to null of the appropriate type.
 
 If there is a common column in `x` and `y`, the column from `x` is kept (i.e. it will not null any columns that exist in `x`).
 
@@ -544,7 +596,12 @@ Where `x` is a table column, returns `` ` `` if the column is not a foreign key 
 
 Syntax: `.q.fmt[x;y;z]`
 
-Where `x` and `y` are integer atoms and `z` is a numeric atom, returns `z` as a string of length `x`, formatted to `y` decimal places. (Since V2.4)
+Where 
+
+-   `x` and `y` are integer atoms
+-   `z` is a numeric atom
+
+returns `z` as a string of length `x`, formatted to `y` decimal places. (Since V2.4)
 
 ```q
 q).Q.fmt[6;2]each 1 234
@@ -617,9 +674,14 @@ Knowledge Base: [Named Pipes](../kb/named-pipes.md)
 
 Syntax: `.Q.fs[x;y]`
 
-Where `x` is a unary function and `y` is a filepath, loops through `y` (grabbing conveniently sized lumps of complete `"\n"`-delimited records) and applies function `x` to each record. This enables you to implement a streaming algorithm to load a large CSV file into an on-disk database without holding the data in memory all at once.
+Where 
 
-For example, assume that the file potamus.csv contains the following:
+-   `x` is a unary value
+-   `y` is a filepath
+
+loops through `y` (grabbing conveniently sized lumps of complete `"\n"`-delimited records) and applies `x` to each record. This enables you to implement a streaming algorithm to load a large CSV file into an on-disk database without holding the data in memory all at once.
+
+For example, assume that the file `potamus.csv` contains the following:
 
 ```csv
 Take, a,   hippo, to,   lunch, today,        -1, 1941-12-07
@@ -643,7 +705,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 ```
 
 <i class="far fa-hand-point-right"></i>
-Knowledge base: [Loading large CSV files](../kb/loading-from-large-files.md)
+Knowledge Base: [Loading large CSV files](../kb/loading-from-large-files.md)
 
 
 ## `.Q.fsn` (streaming algorithm)
@@ -662,8 +724,9 @@ Syntax: `.Q.ft[x;y]`
 Where
 
 -   `y` is a keyed table
--   `x` is a unary function `x[t]` in which `t` is a simple table, and the
-result is a table with at least as many key columns as `t`
+-   `x` is a unary function `x[t]` in which `t` is a simple table
+
+returns a table with at least as many key columns as `t`.
 
 As an example, note that you can index into a simple table with row indices, but not into a keyed table – for that you should use a select statement. However, to illustrate the method, we show an indexing function being applied to a keyed table.
 
@@ -706,7 +769,12 @@ s4| clark 20     london
 
 Syntax: `.Q.fu[x;y]`
 
-Where `x` is a unary atomic function and `y` is a list, returns `x[y]` after evaluating `x` only on distinct items of `y`.
+Where 
+
+-   `x` is a unary atomic function
+-   `y` is a list
+
+returns `x[y]` after evaluating `x` only on distinct items of `y`.
 
 ```q
 q)n: 100000; vec: n ? 30 / long vectors with few different values
@@ -925,7 +993,12 @@ Where `x` is
 
 Syntax: `.Q.ind[x;y]`
 
-Where `x` is a partitioned table, and `y` is a **long** int vector of row indexes into `x`, returns rows `y` from `x`.
+Where 
+
+-   `x` is a partitioned table
+-   `y` is a **long** int vector of row indexes into `x`
+
+returns rows `y` from `x`.
 
 When picking individual records from an in-memory table you can simply use the special virtual field `i`:
 
@@ -933,7 +1006,7 @@ When picking individual records from an in-memory table you can simply use the s
 select from table where i<100
 ```
 
-But you can't do that directly for a partitioned table.
+But you can’t do that directly for a partitioned table.
 
 `.Q.ind` comes to the rescue here, it takes a table and (long!) indexes into the table - and returns the appropriate rows.
 
@@ -993,7 +1066,7 @@ q).Q.j12 .Q.x12 12345j
 
 !!! tip
 
-    If you don't need the default alphabets it can be very convenient to change them to have a blank as the first character, allowing the identity `0` <-> `" "`.
+    If you don’t need the default alphabets it can be very convenient to change them to have a blank as the first character, allowing the identity `0` <-> `" "`.
 
     If the values are not going to be searched (or will be searched with `like`) then keeping them as nested character is probably going to be simpler.
 
@@ -1003,7 +1076,7 @@ q).Q.j12 .Q.x12 12345j
 
 Syntax: `.Q.k`
 
-Returns the interpreter version number for which q.k has been written:
+Returns the interpreter version number for which `q.k` has been written:
 checked against [`.z.K`](dotz.md#zk-version) at startup.
 
 
@@ -1039,7 +1112,7 @@ q)\l .
 q).Q.MAP[]
 ```
 
-When using `.Q.MAP[]` you can't access the date column outside of the usual:
+When using `.Q.MAP[]` you can’t access the date column outside of the usual:
 
 ```q
 select … [by date,…] from … where [date …]
@@ -1066,7 +1139,12 @@ Returns a dictionary, so you can easily see if a key was defined (flag set or no
 
 Syntax: `.Q.par[dir;part;table]`
 
-Where `dir` is a directory filepath, `part` is a date, returns the location of `table`. (Sensitive to `par.txt`.)
+Where 
+
+-   `dir` is a directory filepath
+-   `part` is a date
+
+returns the location of `table`. (Sensitive to `par.txt`.)
 
 ```q
 q).Q.par[`:.;2010.02.02;`quote]
@@ -1283,14 +1361,14 @@ Returns a string representation of `x`.
 
 ## `.Q.sbt` (string backtrace)
 
-Syntax: `.Q.sbt[y]`
+Syntax: `.Q.sbt x`
 
-Where `y` is a [backtrace object](#qtrp-extend-trap) returns it as a string formatted for display.
+Where `x` is a [backtrace object](#qtrp-extend-trap) returns it as a string formatted for display.
 
 Since V3.5 2017.03.15.
 
 <i class="far fa-hand-point-right"></i>
-basics: [Debugging](../basics/debug.md)
+Basics: [Debugging](../basics/debug.md)
 
 
 ## `.Q.sha1` (SHA-1 encode)
@@ -1311,7 +1389,8 @@ Syntax: `.Q.trp[f;x;g]`
 
 Where
 
--   `f` is a unary function and `x` is its argument
+-   `f` is a unary function
+-   `x` is its argument
 -   `g` is a binary function
 
 extends [Trap](apply.md#trap) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
@@ -1534,7 +1613,12 @@ q).Q.x
 
 Syntax: `.Q.Xf[x;y]`
 
-Where `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``) and `y` is a filepath, creates an empty nested-vector file at `y`.
+Where 
+
+-   `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``)
+-   `y` is a filepath
+
+creates an empty nested-vector file at `y`.
 
 ```q
 q).Q.Xf["C";`:emptyNestedCharVector];
