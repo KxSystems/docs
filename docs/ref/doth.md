@@ -38,11 +38,11 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 .h.hp    HTTP response             .h.tx        filetypes
 .h.hr    horizontal rule           .h.ty        MIME types
 .h.ht    Marqdown to HTML          .h.uh        URI unescape
-.h.hta   start tag                 .h.xd        XML
-.h.htac  element                   .h.xmp       XMP
-.h.htc   element                   .h.xs        XML escape
-.h.html  document                  .h.xt        JSON
-.h.http  hyperlinks
+.h.hta   start tag                 .h.val       value
+.h.htac  element                   .h.xd        XML
+.h.htc   element                   .h.xmp       XMP
+.h.html  document                  .h.xs        XML escape
+.h.http  hyperlinks                .h.xt        JSON
 ```
 
 
@@ -648,6 +648,19 @@ Where `x` is a string, returns `x` with `%`*xx* hex sequences replaced with char
 q).h.uh "http%3a%2f%2fwww.kx.com"
 "http://www.kx.com"
 ```
+
+
+## `.h.val` (value)
+
+Syntax: `.h.val x`
+
+`.h.val` is called by [`.z.ph`](dotz.md#zph-http-get) to evaluate a request to the server.
+
+Its default value is [`value`](value.md).
+Users can override this with a custom evaluation function. 
+
+Since V3.6 and V3.5 2019.11.13. 
+
 
 
 ## `.h.xd` (XML)
