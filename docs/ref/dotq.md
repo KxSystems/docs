@@ -449,7 +449,7 @@ Knowledge Base:<br>
 [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)<br>
 [Splaying large files](../kb/splaying-large-files.md#enumerating-using-qen)<br>
 White papers:<br>
-[Data-management techniques](../wp/data-management/index.md#multiple-enumeration-files)<br>
+[Data-management techniques](../wp/data-management.md#multiple-enumeration-files)<br>
 [Working with sym files](../wp/symfiles.md#qen)
 
 
