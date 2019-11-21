@@ -271,11 +271,11 @@ Markup output for HTTP
 <tr><td><a href="doth/#hhp-http-response">`.h.hp`</a></td><td><a href="doth/#hhp-http-response">HTTP response</a></td><td><a href="doth/#htx-filetypes">`.h.tx`</a></td><td><a href="doth/#htx-filetypes">filetypes</a></td></tr>
 <tr><td><a href="doth/#hhr-horizontal-rule">`.h.hr`</a></td><td><a href="doth/#hhr-horizontal-rule">horizontal rule</a></td><td><a href="doth/#hty-mime-types">`.h.ty`</a></td><td><a href="doth/#hty-mime-types">MIME types</a></td></tr>
 <tr><td><a href="doth/#hht-marqdown-to-html">`.h.ht`</a></td><td><a href="doth/#hht-marqdown-to-html">Marqdown to HTML</a></td><td><a href="doth/#huh-uri-unescape">`.h.uh`</a></td><td><a href="doth/#huh-uri-unescape">URI unescape</a></td></tr>
-<tr><td><a href="doth/#hhta-start-tag">`.h.hta`</a></td><td><a href="doth/#hhta-start-tag">start tag</a></td><td><a href="doth/#hxd-xml">`.h.xd`</a></td><td><a href="doth/#hxd-xml">XML</a></td></tr>
-<tr><td><a href="doth/#hhtac-element">`.h.htac`</a></td><td><a href="doth/#hhtac-element">element</a></td><td><a href="doth/#hxmp-xmp">`.h.xmp`</a></td><td><a href="doth/#hxmp-xmp">XMP</a></td></tr>
-<tr><td><a href="doth/#hhtc-element">`.h.htc`</a></td><td><a href="doth/#hhtc-element">element</a></td><td><a href="doth/#hxs-xml-escape">`.h.xs`</a></td><td><a href="doth/#hxs-xml-escape">XML escape</a></td></tr>
-<tr><td><a href="doth/#hhtml-document">`.h.html`</a></td><td><a href="doth/#hhtml-document">document</a></td><td><a href="doth/#hxt-json">`.h.xt`</a></td><td><a href="doth/#hxt-json">JSON</a></td></tr>
-<tr><td><a href="doth/#hhttp-hyperlinks">`.h.http`</a></td><td><a href="doth/#hhttp-hyperlinks">hyperlinks</a></td></tr>
+<tr><td><a href="doth/#hhta-start-tag">`.h.hta`</a></td><td><a href="doth/#hhta-start-tag">start tag</a></td>                       <td><a href="doth.md#hval-value">`.h.val`</a></td><td><a href="doth.md#hval-value">value</a></td></tr>
+<tr><td><a href="doth/#hhtac-element">`.h.htac`</a></td><td><a href="doth/#hhtac-element">element</a></td>                          <td><a href="doth/#hxd-xml">`.h.xd`</a></td><td><a href="doth/#hxd-xml">XML</a></td></tr>
+<tr><td><a href="doth/#hhtc-element">`.h.htc`</a></td><td><a href="doth/#hhtc-element">element</a></td>                             <td><a href="doth/#hxmp-xmp">`.h.xmp`</a></td><td><a href="doth/#hxmp-xmp">XMP</a></td></tr>
+<tr><td><a href="doth/#hhtml-document">`.h.html`</a></td><td><a href="doth/#hhtml-document">document</a></td>                       <td><a href="doth/#hxs-xml-escape">`.h.xs`</a></td><td><a href="doth/#hxs-xml-escape">XML escape</a></td></tr>
+<tr><td><a href="doth/#hhttp-hyperlinks">`.h.http`</a></td><td><a href="doth/#hhttp-hyperlinks">hyperlinks</a></td>                 <td><a href="doth/#hxt-json">`.h.xt`</a></td><td><a href="doth/#hxt-json">JSON</a></td></tr>
 </table>
 
 
