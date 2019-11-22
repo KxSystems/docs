@@ -72,6 +72,10 @@ For a general visitor pattern with `hdel`
 q)nuke:visitNode[hdel]
 ```
 
+!!! warning "Deleting a column from a splayed table on Windows"
+
+    Unlike Linux, Windows doesn’t allow one to overwrite files which are memory mapped, and it takes some mS after unmapping for that to become possible.
+
 <i class="far fa-hand-point-right"></i>
 Basics: [File system](../basics/files.md), 
 
