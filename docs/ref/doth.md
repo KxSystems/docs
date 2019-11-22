@@ -73,7 +73,7 @@ Returns as a symbol a web color used by the web console.
 
 Syntax: `.h.cd x`
 
-CSV from data: where `x` is a table or a list of columns returns a matrix of comma-separated values.
+Where `x` is a table or a list of columns returns a matrix of comma-separated values. 
 
 ```q
 q).h.cd ([]a:1 2 3;b:`x`y`z)
@@ -87,6 +87,9 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 "b,2,y"
 "c,3,z"
 ```
+
+Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V3.7t 2019.10.11.)
+
 
 
 ## `.h.code` (code after Tab)
@@ -108,11 +111,35 @@ q).h.code "foo"
 ```
 
 
-<!-- 
-## `.h.data`
+## `.h.d` (delimiter)
 
-==FIXME==
- -->
+Syntax: `.h.d`
+
+Delimiter used by [`.h.cd`](#hcd-csv-from-data) to join subitems of nested lists. Default is `" "`. 
+
+```q
+q)show t:([a:til 3]b:3 3#"abc";c:3 3#1 2 3)
+a| b     c
+-| -----------
+0| "abc" 1 2 3
+1| "abc" 1 2 3
+2| "abc" 1 2 3
+
+q).h.d
+" "
+q).h.cd t
+"a,b,c"
+"0,a b c,1 2 3"
+"1,a b c,1 2 3"
+"2,a b c,1 2 3"
+
+q).h.d:"*"
+q).h.cd t
+"a,b,c"
+"0,a*b*c,1*2*3"
+"1,a*b*c,1*2*3"
+"2,a*b*c,1*2*3"
+```
 
 
 ## `.h.ed` (Excel from data)

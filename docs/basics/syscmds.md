@@ -631,7 +631,7 @@ index | meaning
 0     | number of bytes allocated
 1     | bytes available in heap
 2     | maximum heap size so far
-3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline.md#-w-memory)
+3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline.md#-w-workspace)
 4     | mapped bytes
 5     | physical memory
 
@@ -657,7 +657,7 @@ The utility [`.Q.w`](../ref/dotq.md#qw-memory-stats) formats all this informatio
 
 **Run-time increase** 
 Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, if it was initialized via the 
-[`-w` command-line option](cmdline.md#-w-memory). 
+[`-w` command-line option](cmdline.md#-w-workspace). 
 E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it. 
 
 Specifying too large a number will fall back to the same behavior as `\w 0` or `\w 1`.
@@ -682,8 +682,21 @@ q)\w 3
 '-w init via cmd line
 ```
 
+**Domain-local** 
+Since V3.7t 2019.10.22 returns information for the [current memory domain](../ref/dotm.md) only.
+
+```q
+q)value each ("\\d .m";"\\w";"\\d .";"\\w")
+::
+353968 67108864 67108864 0 0 8589934592
+::
+354032 67108864 67108864 0 0 8589934592
+```
+
 <i class="far fa-hand-point-right"></i>
-[`-w` command-line option](cmdline.md#-w-memory)
+[`-w` command-line option](cmdline.md#-w-workspace)<br>
+Reference: 
+[`.m` namespace](../ref/dotm.md)
 
 
 ## `\W` (week offset)

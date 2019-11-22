@@ -41,6 +41,8 @@ The operator `!` with a negative integer as left argument calls an internal func
 -26!x       SSL                     
 -27!(x;y)   format                  
 -30!x       deferred response       
+-33!x       SHA-1 hash
+-120!x      domain
 ```
 
 
@@ -500,3 +502,33 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 Since V3.6 2018.05.18. 
 
 <i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)
+
+
+### `-33!x` (SHA-1 hash)
+
+Syntax: `-33!x`
+
+where `x` is a string, returns its SHA-1 hash as a list of strings of hex codes.
+
+```q
+q)raze string -33!"mypassword"
+"91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
+```
+
+<i class="far fa-hand-point-right"></i>
+Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
+
+
+## `-120!x` (memory domain)
+
+Syntax `-120!x`
+
+returns `x`’s memory domain (currently 0 or 1), e.g. 
+
+```q
+q)-120!'(1 2 3;.m.x:1 2 3)
+0 1
+```
+
+<i class="far fa-hand-point-right"></i>
+Reference: [`.m` namespace](../ref/dotm.md)

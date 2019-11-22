@@ -143,7 +143,7 @@ Each slave thread has its own heap, a minimum of 64MB.
 
 Since V2.7 2011.09.21, [`.Q.gc[]`](../ref/dotq.md#qgc-garbage-collect) in the main thread collects garbage in the slave threads too.
 
-Automatic garbage collection within each thread (triggered by a wsfull, or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-memory) on the command line) is executed only for that particular thread, not across all threads.
+Automatic garbage collection within each thread (triggered by a wsfull, or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-workspace) on the command line) is executed only for that particular thread, not across all threads.
 
 Symbols are internalized from a single memory area common to all threads.
 

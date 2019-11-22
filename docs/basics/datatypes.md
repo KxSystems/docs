@@ -23,7 +23,7 @@ q)type 2 3 5                  / long (integer) list
 7h
 q)type (2;3 5f;"hello")       / mixed list
 0h
-q)type each (2;3 5f;"hello")
+q)type each (2;3 5f;"Zürich")
 -7 9 10h
 q)type (+)                    /not just data
 102h
@@ -101,14 +101,28 @@ _sz_: size in bytes
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
 RO: read only; RW: read-write
 
-!!! note "Strings"
-
-    There is no string datatype. On this site, _string_ is a synonym for character vector (type 10h). In kdb, the nearest equivalent to an atomic string is the symbol.
-
 !!! note "Default integer type"
 
     The default type for an integer is long (`7h` or `"j"`). 
     Before V3.0 it was int (`6h` or `"i"`).
+
+
+### Strings
+
+There is no string datatype. On this site, _string_ is a synonym for character vector (type 10h). In q, the nearest equivalent to an atomic string is the symbol.
+
+Strings can include 8-bit characters, which each occupy two list items.
+
+```q
+q)"Zürich"
+"Z\303\274rich"
+q)count "Zürich"
+7
+q)`$"Zürich"
+`Zürich
+q)count string `$"Zürich"
+7
+```
 
 
 ### Temporal

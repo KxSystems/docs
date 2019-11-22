@@ -942,7 +942,18 @@ q).Q.host .Q.addr`localhost
 `localhost
 q).Q.addr`localhost
 2130706433i
+
+q)"I"$"104.130.139.23"
+1753385751i
+q).Q.host "I"$"104.130.139.23"
+`netbox.com
+q).Q.addr `netbox.com
+1753385751i
 ```
+
+<i class="far fa-hand-point-right"></i>
+[`.Q.addr`](#qaddr-ip-address), 
+[Tok](tok.md)
 
 
 ## `.Q.hp` (HTTP post)
@@ -1582,7 +1593,7 @@ symw| 25436
 ```
 
 <i class="far fa-hand-point-right"></i>
-Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-memory),
+Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace),
 [System command `\w`](../basics/syscmds.md#w-workspace)
 
 

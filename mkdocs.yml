@@ -153,7 +153,6 @@ nav:
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
-      - Debugging: basics/debug.md
       - Dictionaries & tables: basics/dictsandtables.md
       # - Elements: basics/elements.md
       - Enumerations: basics/enumerations.md
@@ -167,6 +166,7 @@ nav:
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
       - Mathematics: basics/math.md
+      - Memory backed by files: basics/memory-backed.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parallel processing: basics/peach.md
@@ -181,6 +181,7 @@ nav:
       - Variadic syntax: basics/variadic.md
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
+    - Debugging: basics/debug.md
     - Errors: basics/errors.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
@@ -363,6 +364,7 @@ nav:
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md
+      - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
