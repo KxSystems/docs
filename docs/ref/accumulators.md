@@ -220,9 +220,9 @@ q)m                       / finite-state machine
 7 8 4 3 0
 4 5 8 0 4
 9 8 0 3 9
-q)c
+q)cols                    / columns of m
 4 1 3 3 1 4
-q)7 m\c
+q)7 m\cols
 0 6 6 6 1 5
 ```
 
