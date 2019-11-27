@@ -165,9 +165,18 @@ After a client has opened a socket to the server, it sends a null-terminated ASC
 
 Kdb+ recognizes these capability bytes:
 
-- `0`: (V2.5) no compression, no timestamp, no timespan, no UUID
-- `1..2`: (V2.6-2.8) compression, timestamp, timespan
-- `3`: (V3.0) compression, timestamp, timespan, UUID
+byte | effect
+:---:|------------------------------------------------------
+0    | (V2.5) no compression, no timestamp, no timespan, no UUID
+1..2 | (V2.6-2.8) compression, timestamp, timespan
+3    | (V3.0) compression, timestamp, timespan, UUID
+4    | reserved
+5    | support msgs >2GB; vectors must each have a count ≤ 2 billion
+6    | support msgs >2GB and vectors may each have a count > 2 billion
+
+!!! warning "Java and C#"
+
+    Java and C# have array length limits which make caps 5 and 6 inviable with their current object models.
 
 
 ### Compression
@@ -179,6 +188,14 @@ For releases since 2012.05.29, kdb+ and the C-API will compress an outgoing mess
 - Size of compressed data is less than &frac12; the size of uncompressed data
 
 The compression/decompression algorithms are proprietary and implemented as the `z` and `u` methods in `c.java`. The message validator does not validate the integrity of compressed messages.
+
+HTTP server supports gzip compression via `Content-Encoding: gzip` for responses to `form?…`-style requests.
+The response payload must be 2,000+ chars and the client must indicate support via `Accept-Encoding: gzip` in the HTTP header.
+Since V3.7t 2019.10.22.
+
+The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indicate this in the request via the HTTP header `Accept-Encoding: gzip`.
+Since V3.7t 2019.10.22.
+
 
 
 ## Serialization examples

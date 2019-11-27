@@ -194,10 +194,16 @@ q)h"til 5"
 ': Bad file descriptor
 ```
 
-If the handle refers to 
+Pending data on the handle is not sent prior to closing. 
+If flushing is required prior to close, this must be done explicitly. (Since V3.6 2019.09.19)
 
--   an **IPC socket**, any pending data on that handle is not sent prior to closing
--   a **websocket handle**, `hclose` blocks until any pending data on the handle has been sent
+```q
+q)neg[h][];hclose h; 
+```
+
+!!! warning "Before V3.6 2019.09.19"
+
+    If the handle refers to a websocket, `hclose` blocks until any pending data on the handle has been sent.
 
 <i class="far fa-hand-point-right"></i>
 Basics: [File system](../basics/files.md), 

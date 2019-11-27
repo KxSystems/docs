@@ -24,7 +24,7 @@ In 2017 an informal poll in London of senior q programmers found none able to gi
 
 Worse, discussions with the language implementors repeatedly foundered on conflicting understandings of terms such as _verb_ and _ambivalent_.
 
-The terms we had inherited for describing q were obstacles people learning the language. We set out to remove the obstacles.
+The terms we had inherited for describing q were obstacles in the path of people learning the language. We set out to remove the obstacles.
 
 
 ## Revision

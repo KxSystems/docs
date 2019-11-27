@@ -6,7 +6,7 @@ extra:
   version: 2.0
 extra_css: 
   - 'stylesheets/extra.css'
-  - 'stylesheets/prism.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
 extra_javascript: 
   # See /syntax/#projection to see if MathJax is working 
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -153,7 +153,6 @@ nav:
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
-      - Debugging: basics/debug.md
       - Dictionaries & tables: basics/dictsandtables.md
       # - Elements: basics/elements.md
       - Enumerations: basics/enumerations.md
@@ -167,6 +166,7 @@ nav:
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
       - Mathematics: basics/math.md
+      - Memory backed by files: basics/memory-backed.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parallel processing: basics/peach.md
@@ -181,6 +181,7 @@ nav:
       - Variadic syntax: basics/variadic.md
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
+    - Debugging: basics/debug.md
     - Errors: basics/errors.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
@@ -363,6 +364,7 @@ nav:
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md
+      - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
@@ -531,7 +533,7 @@ nav:
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
-    # - Disaster management: wp/disaster-management/index.md
+    - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - Distributed systems: wp/query-interface.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
@@ -552,6 +554,7 @@ nav:
     - Order Book: wp/order-book.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Permissions: wp/permissions/index.md
+    - Predicting floods: wp/disaster-floods/index.md
     - Query optimization: wp/columnar-database/index.md
     - Query Routing: wp/query-routing/index.md
     - Query scaling: wp/query-scaling.md
@@ -574,6 +577,7 @@ nav:
       - Characters: about/sg/characters.md
       - Miscellaneous: about/sg/miscellaneous.md
       - Style: about/sg/style.md
+      - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
     - Terminology: about/terminology.md
     - License agreements:

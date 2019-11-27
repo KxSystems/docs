@@ -19,13 +19,15 @@ Syntax: `avg x`, `avg[x]`
 Where `x` is a numeric list, returns its arithmetic mean. 
 
 The mean of an atom is itself. 
-Null is returned if `x` is empty, or contains both positive and negative infinity. Any null items in `x` are ignored.
+Null is returned if `x` is empty, or contains both positive and negative infinity. Where `x` is a vector null items are ignored.
 
 ```q
 q)avg 1 2 3
 2f
-q)avg 1 0n 2 3       / null values are ignored
+q)avg 1 0n 2 3       / vector: null items are ignored
 2f
+q)avg (1 2;0N 4)     / nested: null items are preserved
+0n 3
 q)avg 1.0 0w
 0w
 q)avg -0w 0w
@@ -100,10 +102,7 @@ q)2 0N 4 5 wavg 1 2 0N 8  / nulls in either argument ignored
 6f
 ```
 
-
-### Volume-weighted average price
-
-The financial analytic known as [VWAP](https://en.wikipedia.org/wiki/Volume-weighted_average_price "Wikipedia") is a weighted average.
+The financial analytic known as VWAP (volume-weighted average price) is a weighted average.
 
 ```q
 q)select size wavg price by sym from trade
@@ -117,16 +116,9 @@ a  | 10.75
 
 
 <i class="far fa-hand-point-right"></i>
-Wikipedia:[Weighted average](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)  
-Basics: [Mathematics](../basics/math.md)
+Basics: [Mathematics](../basics/math.md)<br>
+<i class="fab fa-wikipedia-w"></i> Wikipedia:<br>
+[Weighted average mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)<br>
+[Volume-weighted average price (VWAP)](https://en.wikipedia.org/wiki/Volume-weighted_average_price)  
 
 
-## Aggregating nulls
-
-`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
-But for nested `x` these functions preserve the nulls.
-
-```q
-q)avg (1 2;0N 4)
-0n 3
-```

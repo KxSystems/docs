@@ -9,8 +9,8 @@ keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
 
 
 
-Syntax: `x > y` , `<[x;y]`  
-Syntax: `x >= y`, `<=[x;y]`
+Syntax: `x > y` , `>[x;y]`  
+Syntax: `x >= y`, `>=[x;y]`
 
 Returns `1b` where (items of) `x` are greater than (or at least) `y`.
 

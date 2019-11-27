@@ -3,20 +3,48 @@ title: Internal functions – Basics – kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
 keywords: bang, functions, internal, kdb+, q
 ---
-# Internal functions
+# <i class="fas fa-exclamation-triangle"></i> Internal functions
 
 
 
 
-The operator `!` with a negative integer as left-argument calls an internal function.
-
-<i class="far fa-hand-point-right"></i> [Exposed infrastructure](exposed-infrastructure.md)
-
-
+The operator `!` with a negative integer as left argument calls an internal function.
 
 !!! warning 
 
-    `-n!` bindings are subject to change. If a cover function is provided in the `.q` or `.Q` namespaces – use that instead!
+    Internal functions are for use by language implementors. 
+    They may be redefined in subsequent releases. 
+
+    They also allow new language features to be tried on a provisional basis. 
+    Where they are replaced by keywords or utilities, use the replacements.
+
+<i class="far fa-hand-point-right"></i> [Exposed infrastructure](exposed-infrastructure.md)
+
+```txt
+-4!x        tokens                  Replaced:
+-8!x        to bytes                 -1!x   hsym
+-9!x        from bytes               -2!x   attr
+-10!x       type enum                -3!x   .Q.s1
+-11!x       streaming execute        -5!x   parse
+−11!(-1;x)  streaming execute        -6!x   eval
+−11!(n;x)   streaming execute        -7!x   hcount
+-11!(-2;x)  logfile chunks           -12!x  .Q.host
+-14!x       quote escape             -13!x  .Q.addr
+-16!x       ref count                -15!x  md5
+-17!x       flip endian-ess          -20!0  .Q.gc
+-18!x       compress byte            -24!x  reval
+-19!x       compress file            -29!x  .j.k
+-21!x       compression stats       
+-22!x       uncompressed length     
+-23!x       memory map              
+-25!x       async broadcast         
+-26!x       SSL                     
+-27!(x;y)   format                  
+-30!x       deferred response       
+-33!x       SHA-1 hash
+-120!x      domain
+```
+
 
 [![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)  
 _xkcd.com_
@@ -24,26 +52,22 @@ _xkcd.com_
 
 ## `-1!x` (`hsym`)
 
-<i class="far fa-hand-point-right"></i> 
-[hsym](../ref/handles.md#hsym)
+Use [`hsym`](../ref/handles.md#hsym).
 
 
 ## `-2!x` (`attr`)
 
-<i class="far fa-hand-point-right"></i> 
-[attr](../basics/metadata.md#attr)
+Use [`attr`](../ref/attr.md).
 
 
-## `-3!x` string
+## `-3!x` (string)
 
-Returns the string representation of `x`. 
-Covered by `.Q.s1`. 
-Use `show`.
+Use [`.Q.s1`](../ref/dotq.md#qs1-string-representation). 
 
 <i class="far fa-hand-point-right"></i> 
 [`show`](../ref/show.md),
-[.Q.s](../ref/dotq.md#qs-plain-text)
-
+[`string`](../ref/string.md),
+[`.Q.s`](../ref/dotq.md#qs-plain-text)
 
 
 ## `-4!x` (tokens)
@@ -81,20 +105,17 @@ q)
 
 ## `-5!x` (`parse`)
 
-<i class="far fa-hand-point-right"></i> 
-[`parse`](../ref/parse.md)
+Use [`parse`](../ref/parse.md).
 
 
 ## `-6!x` (`eval`)
 
-<i class="far fa-hand-point-right"></i> 
-[`eval`](../ref/eval.md)
+Use [`eval`](../ref/eval.md).
 
 
 ## `-7!x` (`hcount`)
 
-<i class="far fa-hand-point-right"></i> 
-[`hcount`](../ref/handles.md#hcount)
+Use[`hcount`](../ref/handles.md#hcount).
 
 
 ## `-8!x` (to bytes)
@@ -105,7 +126,6 @@ Returns the IPC byte representation of `x`.
 q)-8!1 2 3
 0x010000001a000000060003000000010000000200000003000000
 ```
-
 
 
 ## `-9!x` (from bytes)
@@ -119,7 +139,7 @@ q)-9!-8!1 2 3
 
 ## `-10!x` (type enum)
 
-Resolves a [type](datatypes.md) number to an [enum](enumerations.md) vector and check if it is available.
+Resolve a [type](datatypes.md) number to an [enum](enumerations.md) vector and check if it is available.
 
 ```q
 q)-10!20h
@@ -150,12 +170,14 @@ q)h enlist(`f;`a;10) / append a record
 q)h enlist(`f;`b;20) / append a record
 3i
 q)hclose h / close the file
-q)f:{0N!(x;y)} / define the function that is referenced in those records
+q)/Define the function that is referenced in those records
+q)f:{0N!(x;y)} 
 q)-11!`:logfile.2013.12.03 / playback the logfile
 (`a;10)
 (`b;20)
 2
-q)/ DO NOT DO THIS ON LARGE LOGFILES!!!! This is the whole purpose of -11!x.
+q)/ DO NOT DO THIS ON LARGE LOGFILES!!!! 
+q)/This is the whole purpose of -11!x.
 q)value each get `:logfile.2013.12.03
 (`a;10)
 (`b;20)
@@ -169,7 +191,8 @@ If successful, the number of chunks executed is returned. If the end of the file
 / Continuing the above example
 q)delete f from `.
 `.
-q)-11!`:logfile.2013.12.03 / function f no longer defined, so it signals an error
+q)/function f no longer defined, so it signals an error
+q)-11!`:logfile.2013.12.03 
 'f
 ```
 
@@ -217,7 +240,8 @@ q)logfile:`:good.log / a non-corrupted logfile
 q)-11!(-2;logfile)
 26
 q)logfile:`:broken.log / a manually corrupted logfile
-q)upd:{[x;y]} / define a dummy upd file as components are of the form (`upd;data)
+q)/define a dummy upd file as components are of the form (`upd;data)
+q)upd:{[x;y]} 
 q)-11!logfile
 'badtail
 q)-11!(-1;logfile)
@@ -235,14 +259,12 @@ q)-11!(26;logfile)
 
 ## `-12!x` (`.Q.host`)
 
-<i class="far fa-hand-point-right"></i> 
-[.Q.host](../ref/dotq.md#qhost-hostname)
+Use [.Q.host](../ref/dotq.md#qhost-hostname).
 
 
 ## `-13!x` (`.Q.addr`)
 
-<i class="far fa-hand-point-right"></i> 
-[.Q.addr](../ref/dotq.md#qaddr-ip-address)
+Use [.Q.addr](../ref/dotq.md#qaddr-ip-address).
 
 
 ## `-14!x` (quote escape)
@@ -252,8 +274,7 @@ Handles `"` escaping in strings: used to prepare data for CSV export.
 
 ## `-15!x` (`md5`)
 
-<i class="far fa-hand-point-right"></i> 
-[md5](../ref/md5.md)
+Use [md5](../ref/md5.md).
 
 
 ## `-16!x` (ref count)
@@ -274,11 +295,9 @@ q)-16!a
 Returns flip endian-ness of kdb+ datafile `x`, see notes in [Changes in kdb+ V2.6](../releases/ChangesIn2.6.md)
 
 
-
 ## `-18!x` (compress byte)
 
 Returns compressed IPC byte representation of `x`, see notes about network compression in [Changes in V2.6](../releases/ChangesIn2.6.md)
-
 
 
 ## `-19!x` (compress file)
@@ -330,8 +349,7 @@ Knowledge Base: [File compression](../kb/file-compression.md)
 
 ## `-20!0` (`.Q.gc`)
 
-<i class="far fa-hand-point-right"></i> 
-[`.Q.gc`](../ref/dotq.md#qgc-garbage-collect)
+Use [`.Q.gc`](../ref/dotq.md#qgc-garbage-collect).
 
 
 ## `-21!x` (compression stats)
@@ -378,18 +396,7 @@ Useful for triggering sequential access to the storage backing `x`.
 
 ## `-24!x` (read-only eval)
 
-Since V3.3t 2014.10.07.
-
-Read-only evaluation, underpinning the keyword "reval", similar to eval (-6!), which behaves as if the command-line option `-b` were active for the duration of the `-24!` call.
-
-An example usage is inside the message handler `.z.pg`, useful for access control, here blocking sync messages from updating
-
-```q
-q).z.pg:{reval(value;enlist x)} / define on local process listening on port 500
-q)h:hopen 5000 / from another process on localhost
-q)h"a:4"
-'noupdate: `. `a
-```
+Use [`reval`](../ref/eval.md#reval).
 
 
 ## `-25!x` (async broadcast)
@@ -441,6 +448,7 @@ Possible error scenarios:
 
 View TLS settings on a handle or current process `-26!handle` or `-26!()`.
 Since V3.4 2016.05.12.  
+
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: [SSL](../kb/ssl.md)
 
@@ -478,13 +486,12 @@ You might want to apply a rounding before applying `-27!`.
 
 ## `-29!x` (parse JSON)
 
-Underpins the JSON parser, [`.j.k`](../ref/dotj.md).
-Since V3.3t 2015.02.17.
+Use [`.j.k`](../ref/dotj.md).
 
 
 ## `-30!x` (deferred response)
 
-Syntax: `-30!(::)`
+Syntax: `-30!(::)`<br>
 Syntax: `-30!(handle;isError;msg)`
 
 Where `handle` is an int, `isError` is a boolean, and `msg` is a string
@@ -495,3 +502,33 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 Since V3.6 2018.05.18. 
 
 <i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)
+
+
+### `-33!x` (SHA-1 hash)
+
+Syntax: `-33!x`
+
+where `x` is a string, returns its SHA-1 hash as a list of strings of hex codes.
+
+```q
+q)raze string -33!"mypassword"
+"91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
+```
+
+<i class="far fa-hand-point-right"></i>
+Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
+
+
+## `-120!x` (memory domain)
+
+Syntax `-120!x`
+
+returns `x`’s memory domain (currently 0 or 1), e.g. 
+
+```q
+q)-120!'(1 2 3;.m.x:1 2 3)
+0 1
+```
+
+<i class="far fa-hand-point-right"></i>
+Reference: [`.m` namespace](../ref/dotm.md)

@@ -98,8 +98,11 @@ Character constants
 
 Symbol constants
 
-: A symbol constant is denoted by a back-quote to the left of a string of characters that form a valid name, as in `` `a.b_2``. The string of characters can be empty; that is, back-quote alone is a valid symbol constant. A symbol constant can also be formed for a string of characters that does not form a valid name by including the string in double-quotes with a back-quote immediately to the left, as in `` `"a-b!"``.
+: A symbol constant is denoted by a back-quote to the left of a string of characters that form a valid name, as in `` `a.b_2``. 
 
+<!-- 
+The string of characters can be empty; that is, back-quote alone is a valid symbol constant. A symbol constant can also be formed for a string of characters that does not form a valid name by including the string in double-quotes with a back-quote immediately to the left, as in `` `"a-b!"``.
+ -->
 Dictionaries
 
 : are [created](../ref/dict.md) from lists of a special form. 

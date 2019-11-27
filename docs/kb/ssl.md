@@ -216,4 +216,5 @@ The following associated features are not yet implemented for TLS:
 1.   multithreaded input mode
 1.   use within slave threads
 1.   `hopen` timeout (implemented in V3.5)
-1.   OpenSSL 1.1
+
+OpenSSL 1.1 is supported since V3.7t 2019.10.22.

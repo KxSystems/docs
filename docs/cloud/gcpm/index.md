@@ -10,7 +10,7 @@ keywords: cloud, gcpm, google, google cloud platform marketplace, kdb+
 
 
 
-Select `kdb+` from the [GCP Marketplace console](https://console.cloud.google.com/marketplace?pli=1) and click _Launch on Compute Engine_
+Select `kdb+` from the [GCP Marketplace console](https://console.cloud.google.com/marketplace/details/kx-kdb-vm-public/kdb?q=kdb%2B&id=2ea31279-c1cd-4177-872c-e569c81651d6) and click _Launch on Compute Engine_
 
 ![kdb+ on GCL](img/gcpm-landing.png)
 

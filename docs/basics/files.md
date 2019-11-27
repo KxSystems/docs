@@ -27,7 +27,7 @@ Relative filepaths are sought in the following locations, in order.
 3.  `QLIC`
 
 
-## Writing text to a file handle
+## Write text to a file handle
 
 Syntax: `h x`, `h[x]`
 
@@ -82,11 +82,21 @@ q)hclose a
 ```
 
 
-### Prepare Text
+## Flush asyncs
 
-The [Prepare Text](../ref/file-text.md#prepare-text) operator converts a table to strings ready to write to file. 
+Syntax: `neg[h][]`   
 
-Keyword [`csv`](../ref/csv.md) specifies the comma delimiter to be used when [writing](../ref/file-text.md#save-text) or [loading](../ref/file-text.md#load-csv) a CSV.
+flushes all asyncs on handle `h` at least as far as TCP/IP.
+It is a blocking write.
+
+!!! tip "`h""` flushes all asyncs to server"
+
+
+!!! tip "Preparing text"
+
+    The [Prepare Text](../ref/file-text.md#prepare-text) operator converts a table to strings ready to write to file. 
+
+    Keyword [`csv`](../ref/csv.md) specifies the comma delimiter to be used when [writing](../ref/file-text.md#save-text) or [loading](../ref/file-text.md#load-csv) a CSV.
 
 
 ## File functions

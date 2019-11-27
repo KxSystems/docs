@@ -15,14 +15,14 @@ Kx’s source code for kdb+tick will form the basis of this paper. The purpose o
 
 Some of the possible factors are:
 
-  - Number of rows in each update
-  - Size of the data in bytes
-  - Tickerplant publish frequency
-  - Number of subscribers
-  - Network latency and bandwidth
-  - Disk write speed
-  - TCP/IP tuning
-  - Version of kdb+
+-   Number of rows in each update
+-   Size of the data in bytes
+-   Tickerplant publish frequency
+-   Number of subscribers
+-   Network latency and bandwidth
+-   Disk write speed
+-   TCP/IP tuning
+-   Version of kdb+
 
 This paper examines the first four of these. All tests were performed on 64-bit Linux with eight CPUs, using kdb+ version 3.1 (2014.02.08).
 
@@ -40,7 +40,7 @@ Starting kdb+: [Tick](../learn/startingkdb/tick.md)
 We will run a feed simulator which will publish trade data to a tickerplant (TP) on a timer. The trade table has the following schema:
 
 ```q
- trade:([] time:"P"$(); sym:`g#"S"$(); price:"F"$(); size:"I"$(); cond:())
+trade:([] time:"P"$(); sym:`g#"S"$(); price:"F"$(); size:"I"$(); cond:())
 ```
 
 We will also run an RDB (real-time database) which subscribes to the tickerplant for trade messages and inserts into an in-memory table. All the processes will run on the same server and we will use `taskset` to tie each process to a different CPU, e.g.
@@ -201,7 +201,6 @@ tickerplant per second is calculated as:
 Rows per second = `r * u * 1000 % t`
 
 ```txt
-
   r    u   t     rps  | tplog tppub tpcpu rdbrecv rdbupd rdbcpu
 ----------------------|----------------------------------------
    1  10   1   10,000 |   14    3     31%    71      4     12%

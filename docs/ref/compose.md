@@ -23,7 +23,7 @@ the derived function `'[f;ff]` has the rank of `ff` and returns `f ff[x;y;z;…]
 ```q
 q)ff:{[w;x;y;z]w+x+y+z}
 q)f:{2*x}
-q)d:('[f;fff])              / Use noun syntax to assign a composition
+q)d:('[f;ff])               / Use noun syntax to assign a composition
 q)d[1;2;3;4]                / f ff[1;2;3;4]
 20
 q)'[f;ff][1;2;3;4]

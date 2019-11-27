@@ -14,6 +14,11 @@ Below is a summary of changes from V3.5. Commercially licensed users may obtain 
 2018.05.16
 
 
+## Update 2019.11.13
+
+[`.z.ph`](../ref/dotz.md#zph-http-get) now calls [`.h.val`](../ref/doth.md#hval-value) instead of [`value`](../ref/value.md), to allow users to interpose their own evaluation code. `.h.val` defaults to `value`.
+
+
 ## Deferred response
 
 More efficient gateways: a server process can now use [`-30!x`](../basics/internal.md#-30x-deferred-response) to defer responding to a sync query until, for example, worker process have completed their tasks. 

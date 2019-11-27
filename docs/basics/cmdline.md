@@ -12,7 +12,8 @@ keywords: command, file, kdb+, line, option, q
 The command line for invoking kdb+ has the form:
 
 ```txt
-q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N] 
+q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L]
+    [-o N] [-m path]
     [-p [rp,]port|servicename|host:port|host:servicename] 
     [-P N] [-q] [-r :H:P] [-s N] [-t N] [-T N] [-u 1] [-u|U F] [-w N] [-W N] 
     [-z 0|1]
@@ -25,18 +26,18 @@ q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L][-o N]
 
 ```txt
 Options:
- -b blocked                 -q quiet mode
- -c console size            -r replicate
- -C HTTP size               -s slaves
- -e error traps             -t timer ticks
- -E TLS Server Mode         -T timeout
- -g garbage collection      -u disable syscmds
- -l log updates             -u usr-pwd local
- -L log sync                -U usr-pwd
+ -b blocked                 -P display precision
+ -c console size            -q quiet mode
+ -C HTTP size               -r replicate
+ -e error traps             -s slaves
+ -E TLS Server Mode         -t timer ticks
+ -g garbage collection      -T timeout
+ -l log updates             -u disable syscmds
+ -L log sync                -u usr-pwd local
+ -m memory domain           -U usr-pwd
  -o UTC offset              -w memory
  -p listening port          -W start week
  -p multithread port        -z date format
- -P display precision        
 ```
 
 
@@ -173,6 +174,23 @@ Syntax: `-L`
 As `-l`, but sync logging  
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: [Logging](../kb/logging.md)
+
+
+## `-m` (memory-domain)
+
+Syntax: `-m path`
+
+Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
+
+This command-line option directs kdb+ to use the filesystem path specified as a separate memory domain. This splits every thread’s heap into two:
+
+domain | description
+-------|------------
+0      | regular anonymous memory, active and used for all allocs by default
+1      | filesystem-backed memory
+
+The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1, however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`
+
 
 
 ## `-o` (UTC offset)
@@ -313,12 +331,21 @@ user1:password1
 user2:password2
 ```
 
-The password can be plain text, or an MD5 hash of the password.
+The password can be 
+
+-   plain text
+-   an MD5 hash of the password
+-   an SHA-1 hash of the password (since V3.7t 2019.10.22)
 
 ```q
 q)raze string md5 "this is my password"
 "210d53992dff432ec1b1a9698af9da16"
+q)raze string -33!"mypassword" / -33! calculates sha1
+"91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
+
+<i class="far fa-hand-point-right"></i>
+Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
 
 ## `-U` (usr-pwd)
@@ -328,7 +355,7 @@ Syntax: `-U file`
 As `-u`, but without access restrictions.
 
 
-## `-w` (memory)
+## `-w` (workspace)
 
 Syntax: `-w N`
   
@@ -337,6 +364,9 @@ Workspace limit in MB for the heap per thread. Default is 0: no limit.
 <i class="far fa-hand-point-right"></i>
 [`\w` system command](syscmds.md#w-workspace) for detail  
 Reference: [`.Q.w`](../ref/dotq.md#qw-memory-stats)
+
+**Domain-local**
+Since V3.7t 2019.10.22 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
 
 
 !!! tip "Other ways to limit resources"

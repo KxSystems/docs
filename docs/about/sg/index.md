@@ -61,7 +61,7 @@ Here are the most important – or most commonly neglected – rules.
     -   titles of articles, essays, and scholarly papers
 -   Use **single typographer’s quotes** 
     -   to denote possession (but never plurals), e.g. 1983’s hit “Oobop Shebam” was her best work in the 1980s, and perhaps the 1980s’ favorite song.
-    -   to remove emphasis, i.e., when a word or phrase is not meant literally 
+    -   to remove emphasis, i.e., when a word or phrase is not meant literally (sometimes called ‘scare quotes’)
 -   Use **typewriter quotes** only in code elements, e.g. `ssr'[x;y;z]`
 -   Use **spaced endashes** for parenthetical phrases – such as this – not spaced hyphens and not emdashes, spaced or unspaced. 
 -   Use **numbered lists** (or headings) only when there are multiple references to the numbers; otherwise use bulleted lists. 

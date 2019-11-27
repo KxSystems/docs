@@ -25,7 +25,12 @@ We will use a very basic order-book schema and make the assumption that we deal 
 
 ```q
 /simple example order book schema
-book:([]time:`second$();sym:`$();side:`char$();price:`float$();size:`int$())
+book:([]
+  time:`second$();
+  sym:`$();
+  side:`char$();
+  price:`float$();
+  size:`int$() )
 
 /create sample data
 s:(),`FDP
@@ -48,33 +53,36 @@ x:create 10
 We examine four possible structures that could be used to store a real-time view of the order book data described above. While not a definitive list, it is useful to demonstrate a logical progression in the different columns that can be used to key this type of data.
 
 ```q
-/structure 1 – table keyed on sym,side,price
+/structure 1: table keyed on sym,side,price
 book3key:`sym`side`price xkey book
 
-/structure 2 - separate tables keyed on sym,price
+/structure 2: separate tables keyed on sym,price
 bidbook2key:askbook2key:`sym`price xkey book
 
-/structure 3 - table keyed on side,price in dictionary keyed on sym
+/structure 3: table keyed on side,price in dictionary keyed on sym
 bookbysym:(1#`)!enlist`side`price xkey book
 
-/structure 4 - separate tables keyed on price in dictionary keyed on sym
+/structure 4: separate tables keyed on price in dictionary keyed on sym
 bidbookbysym:askbookbysym:(1#`)!enlist`price xkey book
 ```
 
 It is important to consider potential issues that may be encountered when using a column of type float as one of the keys in our structures. Due to precision issues that can occur when using floats (which have been discussed enough across various forums as not to warrant repetition here), it is possible that you may discover what appears to be a duplicate keyed row in your table. Mindful that the example below is contrived, imagine receiving the zero quantity update to a price level and the following occurs.
 
 ```q
-q)bookfloat:`sym`side`price xkey book
-q)`bookfloat upsert flip`time`sym`side`price`size!
-(09:30:00 09:30:01;`FDP`FDP;"BB";4.950000001 4.949999996;100 0) `bookfloat
+bookfloat:`sym`side`price xkey book
+
+`bookfloat upsert flip `time`sym`side`price`size!
+  (09:30:00 09:30:01;`FDP`FDP;"BB";4.950000001 4.949999996;100 0) 
+  `bookfloat
+```
+```q
 q)bookfloat
 sym side price | time   size
 ---------------|------------
 FDP B    4.95  | 09:30  100
 FDP B    4.95  | 09:30  0
 
-/display the maximum precision possible
-q)\P 0
+q)\P 0   /display the maximum precision possible
 q)bookfloat
 sym side price              | time   size
 ----------------------------|------------
@@ -91,7 +99,7 @@ q)pxm:(0#`)!0#0N
 q)pxm[`FDP]:100
 q)pxmf:{`int$y*100^pxm x}
 q)pxmf . x`sym`price
-495 450 470 490 530 505
+460 545 470 465 475 490 480 480 540 545i
 ```
 
 Using a column of type float as one of the keys in our structures is a point for consideration when deciding on a schema to maintain book state. Floating-point issues aside, in the interest of consistency and ease of reading, the remainder of this white paper will continue to use price as a float.
@@ -108,7 +116,7 @@ As previously specified, we will assume we only ever receive one symbol in each 
 
 ```q
 /sample upd functions to populate each structure
-q)updSimple:{[t;x]`book3key upsert x}
+updSimple:{[t;x]`book3key upsert x}
 
 updBySide:{[t;x]
   if[count bid:select from x where side="B";`bidbook2key upsert bid];
@@ -320,8 +328,10 @@ x:@[`sym xasc createBig 1000000;`sym;`p#]
 /we have to split by sym for the last 2 functions
 updSimple[`tablename;x]
 updBySide[`tablename;x]
-updBySym[`tablename]each{[s]select from x where sym=s}each distinct x`sym
-updBySymSide[`tablename]each{[s]select from x where sym=s}each distinct x`sym
+updBySym[`tablename] each
+  {[s]select from x where sym=s}each distinct x`sym
+updBySymSide[`tablename]each
+  {[s]select from x where sym=s}each distinct x`sym
 ```
 
 ```txt

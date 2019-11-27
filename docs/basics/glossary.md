@@ -73,8 +73,9 @@ An atomic function is a uniform function such that for `r:f[x]`  `r[i]~f x[i]` i
 
 ## Attribute
 
-Attributes are metadata that apply to lists of special form. 
-They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
+Attributes are metadata associated primarily with tables and dictionaries to improve performance.
+
+The attributes are: sorted, unique, grouped, and partitioned.
 
 <i class="far fa-hand-point-right"></i> 
 Reference: [Set Attribute](../ref/set-attribute.md), 
