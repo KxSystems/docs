@@ -80,7 +80,9 @@ q)"i"$0x0 vs .z.a
 
 !!! warning "Callbacks" 
 
-    When called inside a `.z.p?` callback it is the IP address of the client session, not the current session.
+    When invoked inside a `.z.p?` callback via a TCP/IP connection, it is the IP address of the client session, not the current session. 
+
+    When invoked via a Unix Domain Socket, it is 0.
 
 
 ## `.z.ac` (HTTP auth from cookie)
