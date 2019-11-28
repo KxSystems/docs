@@ -83,7 +83,7 @@ Operators, and some keywords and derived functions can also be applied infix.
 ```q
 q)2+3                           / operator
 5
-q)2 mod 2 3 4 5                 / keyword
+q)2 3 4 5 mod 2                 / keyword
 0 1 0 1
 q)1000+\2 3 4                   / derived function
 1002 1005 1009
