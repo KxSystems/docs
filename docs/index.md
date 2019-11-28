@@ -23,15 +23,15 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 7px;" markdown="1">
 !!! tip "New"
 
-    <!-- <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p> -->
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Option pricing](wp/option-pricing/index.md)</p>
+    
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p>
     
     <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Disaster&nbsp;management](wp/disaster-management/index.md)</p>
+    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Managing disasters](wp/disaster-management/index.md)</p>
     
     <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba.md)</p>
-    
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-graduation-cap"></i> [Kdb+ Windows service](kb/windows-service/index.md)</p>
     
 </div>
 

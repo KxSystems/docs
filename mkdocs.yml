@@ -551,6 +551,7 @@ nav:
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Multi-threading: wp/multi-thread/index.md
     - Neural networks: wp/neural-networks/index.md
+    - Option pricing: wp/option-pricing/index.md
     - Order Book: wp/order-book.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Permissions: wp/permissions/index.md
