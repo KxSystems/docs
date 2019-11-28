@@ -93,6 +93,9 @@ It uses [`peach`](../ref/maps.md#each-parallel) for both in-memory and on-disk t
 select … by sym, … from t where date …, sym in …, …
 ```
 
+<i class="fas fa-graduation-cap"></i>
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
+
 
 ### Special functions
 

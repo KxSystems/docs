@@ -1,6 +1,6 @@
 ---
-title: Partitioning – Knowledge Base – kdb+ and q documentation
-description: File par.txt defines a top-level partitioning of a database into directories. Each row of par.txt is a directory path. Each such directory would itself be partitioned in the usual way, typically by date. The directories should not be empty. The par.txt file should be created in the main database directory.
+title: Partitioning data bases | Knowledge Base | kdb+ and q documentation
+description: File par.txt in the main database directory defines a top-level partitioning of a database into directories. 
 keywords: database, kdb+, q, par.txt, partitioning
 ---
 # Partitioning
@@ -38,6 +38,23 @@ with directories :
 
 ...
 ```
+
+
+## Table counts
+
+For partitioned databases, q caches the count for a table, and this count cannot be updated from within a `reval` expression or from a slave thread. 
+
+!!! tip "To avoid `noupdate` errors on queries on partitioned tables, put `count table` in your startup script."
+
+<i class="fas fa-book"></i>
+[`count`](../ref/count.md), 
+[maps](../ref/maps.md),
+[`peach`](../ref/each.md#peach),
+[`reval`](../ref/eval.md#reval),
+[`select`](../ref/select.md)<br>
+<i class="fas fa-book-reader"></i>
+[Errors](../basics/errors.md),
+[Parallel execution](../basics/peach.md)
 
 
 ## Some considerations
