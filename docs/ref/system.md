@@ -81,7 +81,7 @@ Can I capture the stderr output from the system call? Not directly, but a workar
 
 ```q
 / force capture to a file, and cat the file
-q)system"ls egg > file 2>&amp;1;cat file"
+q)system"ls egg > file 2>&1;cat file"
 "ls: egg: No such file or directory"        
 / try and fails to capture the text
 q)@[system;"ls egg";{0N!"error - ",x;}]
