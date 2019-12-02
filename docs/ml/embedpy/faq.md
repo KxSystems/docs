@@ -252,3 +252,44 @@ q)py2qdts pymonths
 q)py2qdts pystamps
 2003.06.28D17:26:01.260806768 2002.08.17D16:36:35.216906816 2003.11.07D05:38:..
 ```
+
+## How do I convert between q and Python guids?
+
+Due to type restrictions within the underlying Python API a direct conversion between q GUIDs and the python equivalent UUIDs is not provided within the interface.
+
+Conversions between the two are handled through conversion to an alternative representation on one side and a conversion to a GUID once passed to the other language as in the following examples
+
+### Convert q to Python
+
+In the following code the need to complete conversions on a GUID by GUID basis is due to restrictions in the `uuid` Python module which does not have any array conversion functionality. This conversion is completed via an intermediary string representation
+
+```q
+// Generate a random list of GUIDs
+q)show guids:2?0Ng
+e92aeefb-b363-a793-b925-9c0d327b47a8 fc35ccfc-96e8-98ce-b3c1-f2cad1b9ccd1
+// Convert GUIDs to strings
+q)show strguid:string guids
+"e92aeefb-b363-a793-b925-9c0d327b47a8"
+"fc35ccfc-96e8-98ce-b3c1-f2cad1b9ccd1"
+// Load the relevant python functionality to complete conversion
+q)uuidconvert:.p.import[`uuid][`:UUID;<]
+q)print uuidconvert each strguid
+[UUID('e92aeefb-b363-a793-b925-9c0d327b47a8'), UUID('fc35ccfc-96e8-98ce-b3c1-f2cad1b9ccd1') ...
+```
+
+### Convert Python to q
+
+As with the conversions from q to Python this requires an initial conversion of the data to an appropriate type in this case individual byte objects in python followed by a conversion of each element to a kdb+ GUID type.
+
+```q
+// Create a list of GUIDs in Python
+q)p)import uuid
+q)p)uuid=(uuid.uuid4(),uuid.uuid4(),uuid.uuid4())
+q)p)print(uid)
+(UUID('a60e1654-88b0-473c-9700-4094a795b8e6'), UUID('a2ed21a5-eab6-4950-aa8c-41f444601f6f'), UUID('587e26d4-c2e2-4f2e-9ccd-ac281f3f49ce'))
+// Retrieve Python GUID list
+q)pyguid:.p.get[`uuid]
+// Convert from Python to q GUID
+q){0x0 sv(.p.wrap x)[`:bytes]`}each pyguid`
+a60e1654-88b0-473c-9700-4094a795b8e6 a2ed21a5-eab6-4950-aa8c-41f444601f6f 587..
+```
