@@ -1,5 +1,5 @@
 ---
-title: eval, reval – Reference – kdb+ and q documentation
+title: eval, reval | Reference | kdb+ and q documentation
 description: eval and reval are q keywords that evaluate parse trees.
 author: Stephen Taylor
 keywords: eval, kdb+, q, reval
@@ -11,7 +11,7 @@ _Evaluate a parse tree_
 
 
 
-## eval
+## `eval`
 
 Syntax: `eval x`, `eval[x]`
 
@@ -50,11 +50,9 @@ q)h"a:4"
 'noupdate: `. `a
 ```
 
-!!! tip "Partitioned databases"
 
-    For partitioned databases, q caches the count for a table, and this count cannot be updated from within a `reval` expression or from a slave thread. Thus to avoid `'noupdate` on queries on partitioned tables you should put `count table` in your startup script.
-
-
-<i class="far fa-hand-point-right"></i>
-Basics: [Internal function `-6!`](../basics/internal.md#-6x-eval)
+<i class="fas fa-book-reader"></i>
+[Internal function `-6!`](../basics/internal.md#-6x-eval)<br>
+<i class="fas fa-graduation-cap"></i>
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 

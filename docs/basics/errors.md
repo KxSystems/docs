@@ -71,7 +71,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td class="nowrap">`{a::x}peach 0 1`</td>
 <td>
 Updates blocked by the [`-b` cmd line arg](cmdline.md#-b-blocked), 
-or reval code or a thread other than the main thread has attempted to update a global variable 
+or [`reval`](../ref/eval.md#reval) code or a thread other than the main thread has attempted to update a global variable 
 when in [`peach`](peach.md)+slave threads or multithreaded input queue. 
 Update not allowed when using [negative port number](syscmds.md#p-port).
 </td>

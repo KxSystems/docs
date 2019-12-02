@@ -255,7 +255,7 @@ q)py2qdts pystamps
 
 ## How do I convert between q and Python guids?
 
-Due to type restrictions within the underlying Python API a direct conversion between q GUIDs and the python equivalent UUIDs is not provided within the interface.
+Due to type restrictions within the underlying Python API a direct conversion between q GUIDs and the Python equivalent UUIDs is not provided within the interface.
 
 Conversions between the two are handled through conversion to an alternative representation on one side and a conversion to a GUID once passed to the other language as in the following examples
 
@@ -276,7 +276,6 @@ q)uuidconvert:.p.import[`uuid][`:UUID;<]
 q)print uuidconvert each strguid
 [UUID('e92aeefb-b363-a793-b925-9c0d327b47a8'), UUID('fc35ccfc-96e8-98ce-b3c1-f2cad1b9ccd1') ...
 ```
-
 ### Convert Python to q
 
 As with the conversions from q to Python this requires an initial conversion of the data to an appropriate type in this case individual byte objects in python followed by a conversion of each element to a kdb+ GUID type.

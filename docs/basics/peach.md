@@ -69,7 +69,10 @@ works, as single-item list shortcuts to execute on the main kdb+ thread
 q){`a set x} peach 0 1
 ```
 
-fails and signals `'noupdate` as it is executed from within slave threads.
+fails and signals `noupdate` as it is executed from within slave threads.
+
+<i class="fas fa-graduation-cap"></i>
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 `peach` defaults to `each` when no slave threads are specified on startup. 
 It then executes on the only available thread, the main kdb+ thread.
@@ -169,6 +172,6 @@ q)handles:`u#`int$();
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i> 
 [`.Q.fc`](../ref/dotq.md#qfc-parallel-on-cut) (parallel on cut)
 
