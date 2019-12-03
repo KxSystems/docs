@@ -1,10 +1,12 @@
 ---
+title: cov – Reference – kdb+ and q documentation
+description: cov and scov are q keyword, that return respectively the covariance and dsample covariance of two conforming numeric lists.
 keywords: cov, covariance, kdb+, q, statistical covariance, statistics
 ---
-
 # `cov`, `scov`
 
 _Covariance_
+
 
 
 

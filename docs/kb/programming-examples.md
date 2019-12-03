@@ -1,8 +1,10 @@
 ---
+title: Programming examples – Knowledge Base – kdb+ and q documentation
+description: Some examples of q programs to solve various problems
 keywords: example, kdb+, programming, q
 ---
-
 # Programming examples
+
 
 
 
@@ -15,7 +17,7 @@ Q has a built-in HTTP request command, which follows the syntax
 ```
 
 The string-to-send can be anything within the HTTP protocol the HTTP server will understand.  
-<i class="far fa-hand-point-right"></i> [jmarshall.com/easy/http](http://www.jmarshall.com/easy/http)
+<i class="far fa-hand-point-right"></i> [jmarshall.com/easy/http](https://www.jmarshall.com/easy/http/)
 
 Kdb+ does not add to nor encode the string to send, and as it does not support ‘chunking’ you should specify HTTP 1.0 for your desired HTTP procotol. Kdb+ will signal a `'chunk error` if it encounters a chunked response – not possible with HTTP 1.0. Kdb+ doesn’t decode the response – it just returns the raw data. 
 
@@ -189,7 +191,7 @@ The result looks as follows after some space is added by hand:
 
 ## Computing Bollinger bands
 
-[Bollinger bands](http://wikipedia.org/wiki/bollinger_bands) <i class="fab fa-wikipedia-w"></i> consist of:
+[Bollinger bands](https://en.wikipedia.org/wiki/Bollinger_Bands) <i class="fab fa-wikipedia-w"></i> consist of:
 
 -   a middle band being a N-period simple moving average
 -   an upper band at K times a N-period standard deviation above the middle band

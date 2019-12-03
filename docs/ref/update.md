@@ -1,9 +1,11 @@
 ---
-title: Update
+title: update, Update – Reference – kdb+ and q documentation
+description: update and Update are (respectively) a q keyword and a q operator that add rows or columns to a table.
+author: Stephen Taylor
 keywords: columns, kdb+, q, query, qsql, rows, sql, update
 ---
-
 # `update`, `!` Update
+
 
 
 
@@ -11,8 +13,9 @@ _Add rows or columns to a table_
 
 ## `update`
 
-<i class="far fa-hand-point-right"></i> [_Q for Mortals_: The `update` template](/q4m3/9_Queries_q-sql/#95-the-update-template),
-Basics: [q-SQL](../basics/qsql.md)
+<i class="far fa-hand-point-right"></i> 
+Basics: [q-SQL](../basics/qsql.md)<br>
+_Q for Mortals_: [§9.5 The `update` template](/q4m3/9_Queries_q-sql/#95-the-update-template)
 
 
 !!! warning "Cond is not supported inside q-SQL expressions"
@@ -25,6 +28,8 @@ Basics: [q-SQL](../basics/qsql.md)
 
 ## `!` Update
 
+_Functional update_
+
 <i class="far fa-hand-point-right"></i>
-For functional Update, see Basics: [Functional qSQL](../basics/funsql.md#update)
+Basics: [Functional qSQL](../basics/funsql.md#update)
 

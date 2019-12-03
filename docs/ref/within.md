@@ -1,11 +1,14 @@
 ---
+title: within – Reference – kdb+ and q documentation
+description: within is a q keyword that tests whether one argument is within the bounds defined by the other.
+author: Stephen Taylor
 keywords: kdb+, ordered pair, q, search, within
 ---
-
-
-
-
 # `within`
+
+
+
+
 
 _Check bounds_
 

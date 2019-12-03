@@ -1,8 +1,12 @@
 ---
+title: C client for kdb+ – Interfaces – kdb+ and q documentation
+description: How to connect a C client program to a kdb+ server process
+author: Charles Skelton
 keywords: api, c, interface, kdb+, library, q
 ---
-
 # ![C](img/c.png) C client for kdb+
+
+
 
 <i class="far fa-hand-point-right"></i> 
 [C API reference](capiref.md)
@@ -39,8 +43,8 @@ SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/ma
 
 capability | dependencies | 32-bit | 64-bit 
 -----------|--------------|-----------|-----
-no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o) 
-SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)
+no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o) 
+SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)
 
 
 ### <i class="fab fa-windows"></i> Windows
@@ -593,6 +597,15 @@ int main(){
 ```
 
 
+## Unix domain sockets
+
+A Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
+
+```c
+int handle=khpu("0.0.0.0",5000,"user:password");
+```
+
+
 ## SSL/TLS
 
 To use this feature, you must link with one of [the `e` libs](#two-sets-of-files).
@@ -614,7 +627,7 @@ if(handle==-3){K x=ee(sslInfo((K)0));printf("Init error %s\n",xt==-128?x->s:"unk
 
 A restriction for SSL/TLS connections – these can be used from the initialization thread only, i.e. the thread which first calls any `khp` function since the start of the application.
 
-The lib is sensitive to the same environment variables as kdb+, noted at [Knowledge Base: SSL/TLS](../../kb/ssl)
+The lib is sensitive to the same environment variables as kdb+, noted at [Knowledge Base: SSL/TLS](../kb/ssl.md)
 
 The OpenSSL libs are loaded dynamically,  the first time a TLS connection is requested. It may be forced on startup with
 

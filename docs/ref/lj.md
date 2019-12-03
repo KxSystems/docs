@@ -1,13 +1,15 @@
 ---
-keywords: join, kdb+, left,left join, lj, ljf, q
+title: lj – Reference – kdb+ and q documentation
+description: lj is a q keyword that performs a left join.
+keywords: join, kdb+, left, left join, lj, ljf, q
 ---
-
 # `lj`, `ljf` 
 
-
-
-
 _Left join_
+
+
+
+
 
 Syntax: `x lj y`, `lj[x;y]`  
 Syntax: `x ljf y`, `ljf[x;y]`
@@ -53,6 +55,41 @@ c d
 ----
 1 10
 2 20
+```
+
+
+## Changes in V3.7
+
+`lj` checks that `y` is a keyed table. (Since V3.7t 2019.10.22.)
+
+```q
+q)show x:([]a:1 2 3;b:10 20 30)
+a b
+----
+1 10
+2 20
+3 30
+q)show y:([]a:1 3;b:100 300)
+a b
+-----
+1 100
+3 300
+q)show r:([]a:1 2 3;b:100 20 300)
+a b
+-----
+1 100
+2 20
+3 300
+
+q)(1!r)~(1!x)lj 1!y
+1b
+q)r~t1 lj 1!t2
+1b
+
+q)t1 lj t2
+'type
+  [0]  t1 lj t2
+          ^
 ```
 
 

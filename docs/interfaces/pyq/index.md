@@ -1,13 +1,16 @@
 ---
-keywords: fusion, interface, kdb+, library, pyq, python, q
+title: Using Python with kdb+ (PyQ) – Interfaces – kdb+ and q documentation
+description: PyQ brings the Python programming language to the kdb+ database. It allows developers to integrate Python and q code seamlessly in one application. This is achieved by bringing the Python and q interpreters into the same process, so that code written in either of the languages operates on the same data.
+author: Alex Belopolsky, Aleks Bunin
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
+keywords: fusion, interface, kdb+, library, pyq, python, q
 ---
-
 # ![PyQ](../img/pyq.png) Using Python with kdb+ (PyQ)
 
 
 
-PyQ brings the [Python programming language](https://www.python.org/about) to the kdb+ database. It allows developers to integrate Python and q code seamlessly in one application. This is achieved by bringing the Python and q interpreters into the same process, so that code written in either of the languages operates on the same data.
+
+PyQ brings the [Python programming language](https://www.python.org/about/) to the kdb+ database. It allows developers to integrate Python and q code seamlessly in one application. This is achieved by bringing the Python and q interpreters into the same process, so that code written in either of the languages operates on the same data.
 
 In PyQ, Python and q objects live in the same memory space and share the same data.
 
@@ -85,4 +88,4 @@ date       sym qty
 2006.10.06 IBM 200
 ```
 
-For an enhanced interactive shell, use the `ipyq` script to start [IPython](https://ipython.org/) or the `pq` script to start a [prompt toolkit](https://python-prompt-toolkit.readthedocs.io) based shell.
+For an enhanced interactive shell, use the `ipyq` script to start [IPython](https://ipython.org/) or the `pq` script to start a [prompt toolkit](https://python-prompt-toolkit.readthedocs.io/en/master/) based shell.

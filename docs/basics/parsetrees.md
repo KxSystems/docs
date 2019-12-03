@@ -1,3 +1,8 @@
+---
+title: Parse trees – Basics – kdb+ and q documentation
+description: A parse tree represents an expression, not immediately evaluated. Its virtue is that the expression can be evaluated whenever and in whatever context it is needed. The two main functions dealing with parse trees are eval, which evaluates a parse tree, and parse, which returns one from a string containing a valid q expression.
+keywords: kdb+, parse, parse tree, q
+---
 # Parse trees
 
 
@@ -29,5 +34,5 @@ q)eval ((/;+);(til;(+;2;2)))
 
 
 <i class="far fa-hand-point-right"></i> 
-Technical Whitepaper: [_Parse Trees and Functional Forms_](../wp/parse_trees_and_functional_forms.pdf)
+Technical White paper: [Parse trees and functional forms](../wp/parse-trees.md)
 

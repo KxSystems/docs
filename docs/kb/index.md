@@ -1,3 +1,9 @@
+---
+title: Knowledge Base for q and kdb+ – Knowledge Base – kdb+ and q documentation
+description: The Knowledge Base contains articles about how to get things done with kdb+.
+keywords: cookbook, how-to, q, kdb+
+---
+
 # Knowledge Base
 
 The Knowledge Base contains articles about how to get things done with kdb+.
@@ -10,7 +16,6 @@ The Knowledge Base contains articles about how to get things done with kdb+.
 -   [Programming idioms](programming-idioms.md)  
 -   [WebSockets](websockets.md)                  
 -   [File compression](file-compression.md)      
--   [Interprocess communication](ipc.md)         
  
                                              
 ## Big Data

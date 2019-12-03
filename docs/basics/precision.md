@@ -1,9 +1,10 @@
 ---
-title: Precision
+title: Precision – Basics – kdb+ and q documentation
+description: Precision of floats is a tricky issue since floats (doubles in other languages) are actually binary rational approximations to real numbers. 
 keywords: comparison, float, precision, tolerance
 ---
-
 # Precision
+
 
 
 
@@ -92,7 +93,7 @@ q)group 96.100000000000009 96.099999999999994
 
 The moral of this story is that we should think of floats as being “fuzzy” real values and never use them as keys or where precise equality is required – e.g., in `group` or `?`.
 
-For those interested in investigating these issues in depth, we recommend the excellent exposition by David Goldberg [“What Every Computer Scientist Should Know about Floating Point Arithmetic’](http://docs.sun.com/source/806-3568/ncg_goldberg.html).
+For those interested in investigating these issues in depth, we recommend the excellent exposition by David Goldberg [“What Every Computer Scientist Should Know about Floating Point Arithmetic’](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html).
 
 
 ### Q SIMD sum
@@ -124,7 +125,7 @@ q){x+y}over reverse 1e-10*til 10000000
 4999.9995000000026
 ```
 
-If you need to sum numbers with most precision, you can look into implementing a suitable algorithm, like the ones discussed in [“Accurate floating point summation”](http://www.cs.berkeley.edu/~demmel/AccurateSummation.pdf) by Demmel et al.
+If you need to sum numbers with most precision, you can look into implementing a suitable algorithm, like the ones discussed in [“Accurate floating point summation”](https://people.eecs.berkeley.edu/~demmel/AccurateSummation.pdf) by Demmel et al.
 
 
 ## Comparison tolerance 

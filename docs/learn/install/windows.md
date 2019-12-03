@@ -1,4 +1,11 @@
+---
+title: Installing under Microsoft Windows – Learn – kdb+ and q documentation
+description: How to install kdb+ under Microsoft Windows
+author: Stephen Taylor
+keywords: install, kdb+, microsoft, q, windows
+---
 # <i class="fab fa-windows"></i> Installing under Microsoft Windows
+
 
 
 
@@ -12,7 +19,7 @@ Extract the files to `C:\`, producing a new folder `C:\q`.
 
 ## <i class="fas fa-check"></i> Confirm q is working
 
-Open a command shell window: type :fa-windows:-r or click the Start button, and type `cmd`.
+Open a command shell window: type <i class="fab fa-windows"></i>-r or click the Start button, and type `cmd`.
 
 Launch q by typing 
 
@@ -65,6 +72,14 @@ C:\Users\mr.user>
 ## <i class="fas fa-code"></i> Define q as a command
 
 Defining `q` as a command allows you to invoke kdb+ without specifying the path to it.
+
+!!! info "Environment variables"
+
+    The q interpreter refers to environment variable `QHOME` for the location of certain files. 
+    Absent this variable, it will guess based on the path to the interpreter. 
+    Better to set the variable explicitly. 
+
+    The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
 
 In the MS-DOS shell:
 

@@ -123,6 +123,7 @@ input {
 
 #kxsearch-colophon {
 	margin: 2em;
+	opacity: .5;
 }
 #kxsearch-results-wrapper {
 	margin: 0 auto;

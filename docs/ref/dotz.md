@@ -1,8 +1,11 @@
 ---
+title: the .z namespace – Reference – kdb+ and q documentation
+description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
+author: Stephen Taylor
 keywords: callbacks, environment, kdb+, q
 ---
-
 # The .z namespace
+
 
 
 
@@ -77,7 +80,9 @@ q)"i"$0x0 vs .z.a
 
 !!! warning "Callbacks" 
 
-    When called inside a `.z.p?` callback it is the IP address of the client session, not the current session.
+    When invoked inside a `.z.p?` callback via a TCP/IP connection, it is the IP address of the client session, not the current session. 
+
+    When invoked via a Unix Domain Socket, it is 0.
 
 
 ## `.z.ac` (HTTP auth from cookie)
@@ -530,8 +535,8 @@ Where `f` is a unary function, it is evaluated when a synchronous HTTP request i
 
 `.z.ph` is passed a single argument, a 2-item list `(requestText;requestHeaderAsDictionary)`:
 
-- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task.
-- `requestHeaderAsDictionary` contains information such as the user agent and can be used to return content optimised for particular browsers
+- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task. Since V3.6 and V3.5 2019.11.13 [`.h.val`](doth.md#hval-value) is called instead of `value`, allowing users to interpose their own valuation code.
+- `requestHeaderAsDictionary` contains information such as the user agent and can be used to return content optimized for particular browsers.
 
 ```q
 q)\c 43 75
@@ -641,7 +646,7 @@ This allows a user to handle remote qcon connections (via `.z.pq`) without defin
 
 <i class="far fa-hand-point-right"></i> 
 Knowledge Base: 
-[Firewalling](../../kb/firewalling) for locking down message handlers.
+[Firewalling](../kb/firewalling.md) for locking down message handlers.
 
 
 ## `.z.ps` (set)
@@ -692,6 +697,9 @@ Releases: [Changes in 2.4](../releases/ChangesIn2.4.md#zpw)
 Syntax: `.z.q`
 
 Returns `1b` if Quiet Mode is set, else `0b`.
+
+<i class="far fa-hand-point-right"></i>
+[Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
 
 
 ## `.z.s` (self)
@@ -745,11 +753,30 @@ When kdb+ has completed executing a script passed as a command-line argument, an
 
 Syntax: `.z.u`
 
-Returns user’s name as a symbol.
+Returns the userid associated with the current handle.
 
 ```q
 q).z.u
 `demo
+```
+
+For 
+
+-   handle 0 (console) returns the userid under which the process is running.
+-   handles > 0 returns either:
+    -   on the server end of a connection, the userid as passed to `hopen` by the client
+    -   on the client end of a connection, the null symbol `` ` ``
+
+```q
+q).z.u                  / console is handle 0
+`charlie
+q)0".z.u"               / explicitly using handle 0
+`charlie
+q)h:hopen`:localhost:5000:geoffrey:geffspasswd
+q)h".z.u"               / server side .z.u is as passed by the client to hopen
+`geoffrey
+q)h({.z.w".z.u"};::)    / client side returns null symbol 
+`
 ```
 
 
@@ -940,7 +967,7 @@ q).z.Z
 
 The offset from UTC is fetched from the OS: kdb+ does not have its own time-offset database. 
 
-Which avoids problems like [this](http://it.slashdot.org/article.pl?sid=07/02/25/2038217).
+Which avoids problems like [this](https://it.slashdot.org/story/07/02/25/2038217/software-bug-halts-f-22-flight).
 
 
 ## `.z.z` (UTC datetime)
@@ -988,7 +1015,7 @@ Compression algorithm
     + 0: none
     + 1: q IPC
     + 2: `gzip`
-    + 3: [snappy](http://google.github.io/snappy) (since V3.4)
+    + 3: [snappy](http://google.github.io/snappy/) (since V3.4)
     + 4: lz4hc (since V3.6)
 
 Compression level

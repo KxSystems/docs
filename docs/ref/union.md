@@ -1,8 +1,11 @@
 ---
+title: union – Reference – kdb+ and q documentation
+description: union is a q keyword that returns the union of two lists.
+author: Stephen Taylor
 keywords: intersection, kdb+, q, select, union
 ---
-
 # `union`
+
 
 
 

@@ -1,18 +1,20 @@
 ---
+title: Kdb+ license for AWS – kdb+ and q documentation
+description: Software End User Agreement for Amazon Web Services
 hero: <i class="fas fa-cloud"></i> Amazon Web Services
 date: Nov 2018
 ---
-
 # Kdb+ software end user agreement
 
-Carefully read the following terms and conditions. By accessing the Kdb+
+
+_Carefully read the following terms and conditions. By accessing the Kdb+
 Software via the Amazon Marketplace, you are agreeing to be bound by
 these terms and conditions (which may be updated from time to time) and
 to the extent you are acting on behalf of a permitted organisation that
 you have authority to act on their behalf and bind them to these terms
 and conditions. If you do not agree to these terms and conditions or do
 not have the necessary authority, do not access or use the software. You
-may not access the Kdb+ Software if you are a direct competitor of Kx.
+may not access the Kdb+ Software if you are a direct competitor of Kx._
 
 ## 1.  Scope of agreement
 
@@ -271,7 +273,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     representatives total liability for direct damages under or in
     connection with this agreement, whether in an action in contract
     or tort (including negligence) or any other form of action will
-    in no event exceed $10,000.
+    in no event exceed \$10,000.
 
 24. _Entire Financial Liability._ For the
     avoidance of doubt this section 8 sets out the entire financial

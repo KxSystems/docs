@@ -1,12 +1,15 @@
 ---
+title: value – Reference – kdb+ and q documentation
+description: value is a q keyword that returns the value of a named variable, or metadata.
+author: Stephen Taylor
 keywords: kdb+, metadata, q, value,
 ---
-
 <div style="float: right">
 <i class="fas fa-wrench fa-5x"></i>
 </div>
 
 # `value`
+
 
 _Various metadata_
 
@@ -176,7 +179,7 @@ q)value each (::;+;-;*;%)
 
 ## Derived function
 
-returns the original [applicable value](../basics/glossary.md#applicable-value.
+returns the original [applicable value](../basics/glossary.md#applicable-value).
 
 ```q
 q)f:+/

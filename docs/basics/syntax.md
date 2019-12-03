@@ -1,5 +1,7 @@
 ---
-title: Syntax
+title: Syntax – Basics – kdb+ and q documentation
+description: Syntax of the q programming language
+author: Stephen Taylor
 keywords: attribute, bracket, colon, comment, composition, compound, conditional, control, empty, function, infix, iterators, kdb+, multiline, name, namespace, operator, parenthesis, precedence, prefix, projection, postfix, q, space, syntax, token, vector
 ---
 
@@ -96,8 +98,11 @@ Character constants
 
 Symbol constants
 
-: A symbol constant is denoted by a back-quote to the left of a string of characters that form a valid name, as in `` `a.b_2``. The string of characters can be empty; that is, back-quote alone is a valid symbol constant. A symbol constant can also be formed for a string of characters that does not form a valid name by including the string in double-quotes with a back-quote immediately to the left, as in `` `"a-b!"``.
+: A symbol constant is denoted by a back-quote to the left of a string of characters that form a valid name, as in `` `a.b_2``. 
 
+<!-- 
+The string of characters can be empty; that is, back-quote alone is a valid symbol constant. A symbol constant can also be formed for a string of characters that does not form a valid name by including the string in double-quotes with a back-quote immediately to the left, as in `` `"a-b!"``.
+ -->
 Dictionaries
 
 : are [created](../ref/dict.md) from lists of a special form. 
@@ -155,12 +160,12 @@ Numeric and temporal vectors separate items with spaces and if necessary declare
 
 ```q
 2018.05 2018.07 2019.01m            / month
-2 3 4 5 6                           / integer
-2 3 4 5 6h                          / short integer
-2 3 4 5 6i                          / xxxxx integer
-2 3 4 5 6j                          / xxxxx integer
-2 3 4 5.6                           / float
-2 3 4 5 6f                          / float
+2 3 4 5 6                           / long  integer (8 bytes)
+2 3 4 5 6h                          / short integer (2 bytes)
+2 3 4 5 6i                          / xxxxx integer (4 bytes)
+2 3 4 5 6j                          / long  integer (8 bytes)
+2 3 4 5.6                           / float         (8 bytes)
+2 3 4 5 6f                          / float         (8 bytes)
 ```
 
 type    | example                
@@ -385,33 +390,33 @@ Add Scan `+\` is variadic and has infix syntax.
 
 ```q
 q)+\[1 2 3 4 5]                 / unary
-1 2 6 24 120
-q)+\[1000;1 2 3 4 5]            / binary
-10001 10002 10006 10024 10120
+1 3 6 10 15
+q)+\[1000;1 2 3 4 5]            / unary
+1001 1003 1006 1010 1015
 q)1000+\1 2 3 4 5               / binary, applied infix
-10001 10002 10006 10024 10120
+1001 1003 1006 1010 1015
 ```
 
 Captured as a value by parentheses, it remains variadic, but can be applied postfix as a unary.
 
 ```q
 q)(+\)[1000;1 2 3 4 5]          / binary
-10001 10002 10006 10024 10120
+1001 1003 1006 1010 1015
 q)(+\)1 2 3 4 5                 / unary, applied postfix
-1 2 6 24 120
+1 3 6 10 15
 ```
 
 Captured as a value, a function with infix syntax can be passed as an argument to another function.
 
 ```q
-q)(+) scan 1 2 3 4 5            / + is binary and infix
+q)(*) scan 1 2 3 4 5            / * is binary and infix
 1 2 6 24 120
 q)n:("the ";("quick ";"brown ";("fox ";"jumps ";"over ");"the ");("lazy ";"dog."))
 q)(,/) over n                   / ,/ is variadic and infix
 "the quick brown fox jumps over the lazy dog."
 ```
 
-The parentheses above are not necessary for functions without infix syntax.
+For functions without infix syntax, parentheses are unnecessary.
 
 ```q
 q)raze over n
@@ -419,6 +424,7 @@ q)raze over n
 q){,/[x]}over n
 "the quick brown fox jumps over the lazy dog."
 ```
+
 
 ## Compound expressions
 
@@ -580,11 +586,11 @@ Note that whenever a set of expressions is evaluated left to right, such as thos
 Any number of spaces are usually permitted between tokens in expressions, and usually the spaces are not required. The exceptions are:
 
 -   No spaces are permitted between the symbols 
-  -   `'` and `:` when denoting the iterator `':`
-  -   `\` and `:` when denoting the iterator `\:`
-  -   `/` and `:` when denoting the iterator `/:`
-  -   a digit and `:` when denoting a function such as `0:`
-  -   `:` and `:` for assignments of the form `name :: value`
+    -   `'` and `:` when denoting the iterator `':`
+    -   `\` and `:` when denoting the iterator `\:`
+    -   `/` and `:` when denoting the iterator `/:`
+    -   a digit and `:` when denoting a function such as `0:`
+    -   `:` and `:` for assignments of the form `name :: value`
 -   No spaces are permitted between an iterator glyph and the value or
 iterator symbol to its left.
 -   No spaces are permitted between an operator glyph and a colon to its right whose purpose is to denote assignment.

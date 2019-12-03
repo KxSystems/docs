@@ -1,10 +1,13 @@
 ---
+title: prd, prds – Reference – kdb+ and q documentation
+description: prd and prds are q keywords that return respectively the product and the cumulating products of their arguments.
+author: Stephen Taylor
 keywords: aggregate, kdb+, multiply, product, products, q, statistics, uniform
 ---
-
 # `prd`, `prds`
 
 _Product/s_
+
 
 
 

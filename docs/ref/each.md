@@ -1,8 +1,13 @@
 ---
+title: each, peach | Reference | kdb+ and q documentation
+description: each and peach are q keywords, wrappers for the map iterators Each and Each Parallel.
+author: Stephen Taylor
 keywords: each, iterator, kdb+, map, q
 ---
-
 # `each`, `peach`
+
+
+
 
 Syntax: `v1 each x`, `each[v1;x]`, `v1 peach x`, `peach[v1;x]`  
 Syntax: `(vv)each x`, `each[vv;x]`, `(vv)peach x`, `peach[vv;x]`
@@ -33,7 +38,13 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 It is good q style to use `each` and `peach` for unary values. 
 
 <i class="far fa-hand-point-right"></i>
-[Maps](maps.md) for uses of Each with binary and higher-rank values.
+[Maps](maps.md) for uses of Each with binary and higher-rank values  
+[`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)<br>
+<i class="fas fa-book-reader"></i>
+[Parallel processing](../basics/peach.md)<br>
+<i class="fas fa-graduation-cap"></i>
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
+
 
 ## Higher-rank values
 
@@ -43,3 +54,6 @@ For a values of rank ≥2, use [Apply](apply.md) to project `v` as a unary value
 For example, suppose `m` is a 4-column matrix and each row has values for the arguments of `v4`. Then `.[v4;]peach m` will apply `v4` to each list of arguments. 
 
 Alternatively, suppose `t` is a table in which columns `b`, `c`, and `a` are arguments of `v3`. Then ``.[v3;]peach flip t `b`c`a`` will apply `v3` to the arguments in each row of `t`.
+
+
+

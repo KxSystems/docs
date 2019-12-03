@@ -1,4 +1,7 @@
 ---
+title: Installing PyQ – Interfaces – kdb+ and q documentation
+description: How to install the PyQ interface between kdb+ and Python
+author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 ---
@@ -8,7 +11,7 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 
 PyQ can be installed using the standard Python package management tool `pip`.
 
-<i class="far fa-hand-point-right"></i> [Installing Python Modules](https://docs.python.org/3/installing)
+<i class="far fa-hand-point-right"></i> [Installing Python Modules](https://docs.python.org/3/installing/)
 
 To install the latest version, run the following command
 
@@ -39,8 +42,8 @@ Solaris is supported, but has not been tested recently.
 
 V2.8+
 
--   <i class="fas fa-download"></i> [Download](https://kx.com/download)
--   <i class="far fa-hand-point-right"></i> [Install](../../../learn/install/)
+-   <i class="fas fa-download"></i> [Download](https://kx.com/download/)
+-   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/index.md)
 
 ### Python
 
@@ -56,10 +59,12 @@ V2.8+
 ## Installing from the package repository
 
 Use the following `pip` command to install the latest version of PyQ into your environment.
+
 ```bash
 $ pip install pyq
 ```
 To install another version, specify which version you would like to install:
+
 ```bash
 $ pip install pyq==4.1.2
 ```
@@ -75,7 +80,7 @@ $ pip install pyq==4.1.2
     -   Download the source archive as a [tar file](https://github.com/kxsystems/pyq/archive/master.tar.gz) or a [zip file](https://github.com/kxsystems/pyq/archive/master.zip) and extract it.
 
 2.  Install the sources into your environment using `pip`:
-    <pre><code class="language-bash">$ pip install path-to-the-source</path></code>
+    <pre><code class="language-bash">$ pip install path-to-the-source</path></code></pre>
 
 
 
@@ -84,28 +89,39 @@ $ pip install pyq==4.1.2
 PyQ was designed to work inside virtual environments. You can set up your system to use different versions of Python and/or kdb+ by using separate virtual environments.
 
 To create a virtual environment, you need to install the [virtualenv](https://virtualenv.pypa.io/en/stable/installation/) package:
+
 ```bash
 $ [sudo] pip install virtualenv
 ```
+
 Create a new virtualenv and activate it:
+
 ```bash
 $ virtualenv path/to/virtualenv
 $ source path/to/virtualenv/bin/activate
 ```
+
 Download [kdb+](https://kx.com/download/) and save into your `~/Downloads` folder. Extract it into `virtualenv`:
+
 ```bash
 $ unzip ${HOME}/Downloads/macosx.zip -d ${VIRTUAL_ENV}
 ```
+
 If you have a license for kdb+, create a directory for it first:
+
 ```bash
 $ mkdir -p ${VIRTUAL_ENV}/q && unzip path/to/m64.zip -d ${VIRTUAL_ENV}/q
 ```
+
 Copy your kdb+ license file to `${VIRTUAL_ENV}/q` or set the `QLIC` environment variable to the directory containing the license file and add it to the virtualenv's `activate` file:
+
 ```bash
 $ echo "export QLIC=path/to/qlic" >> ${VIRTUAL_ENV}/bin/activate
 $ source ${VIRTUAL_ENV}/bin/activate
 ```
+
 Install PyQ:
+
 ```bash
 $ pip install pyq
 ```
@@ -221,15 +237,20 @@ Since Python provided by Ubuntu is statically linked, shared libraries need to b
 ### Python 2
 
 Install shared libraries:
+
 ```bash
 $ sudo apt-get install libpython-dev libpython-stdlib python-pip python-virtualenv
 ```
+
 Create and activate virtual environment:
+
 ```bash
 $ python -m virtualenv -p $(which python2) py2
 $ source py2/bin/activate
 ```
+
 Install PyQ:
+
 ```bash
 (py2) $ pip install pyq
 ```
@@ -237,15 +258,20 @@ Install PyQ:
 ### Python 3
 
 Install shared libraries:
+
 ```bash
 $ sudo apt-get install libpython3-dev libpython3-stdlib python3-pip python3-virtualenv
 ```
+
 Create and activate virtual environment:
+
 ```bash
 $ python3 -m virtualenv -p $(which python3) py3
 $ source py3/bin/activate
 ```
+
 Install PyQ:
+
 ```bash
 (py3) $ pip3 install pyq
 ```
@@ -263,24 +289,31 @@ To use PyQ with the free 32-bit kdb+ on macOS, you need a 32-bit version of Pyth
 ### System Python 2
 
 Install the virtualenv module:
+
 ```bash
 $ pip install virtualenv
 ```
+
 If your system, does not have `pip` installed, follow [`pip` installation guide](https://pip.pypa.io/en/stable/installing/).
 
 Create and activate a virtual environment:
+
 ```bash
 $ virtualenv ${HOME}/pyq2
 $ source ${HOME}/pyq2/bin/activate
 ```
+
 [Download kdb+](https://kx.com/download/) and save the downloaded file as `${HOME}/Downloads/macosx.zip`.
 
 Install kdb+ and PyQ:
+
 ```bash
 (pyq2) $ unzip ${HOME}/Downloads/macosx.zip -d ${VIRTUAL_ENV}
 (pyq2) $ pip install pyq
 ```
+
 PyQ is ready and can be launched:
+
 ```bash
 (pyq2) $ pyq
 ```
@@ -338,7 +371,7 @@ Requirements are:
 
 -   Installation should be started using the Windows Command Prompt.
 -   [Visual Studio 9 for Python](http://aka.ms/vcpython27), if using Python 2.7.x.
--   [Microsoft Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017), if using Python 3.6.x
+-   [Microsoft Build Tools for Visual Studio 2017](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017), if using Python 3.6.x
 -   Ensure that kdb+ is installed under `C:\q`, or that the `QHOME` environment variable is set to the location of the kdb+ executable.
 
 Install PyQ:
@@ -377,7 +410,7 @@ You can follow the latest updates on Windows support on [issue gh\#1](https://gi
 
 Since we have not ported the `pyq` executable to the Windows platform yet, setting up a working PyQ environment on Windows requires several manual steps.
 
-First, you are strongly recommended to use a dedicated Python virtual environment and install `q` in `%VIRTUAL_ENV%`. Assuming that you have downloaded `windows.zip` from [kx.com](https://kx.com/download) into your `Downloads` folder, enter the following commands:
+First, you are strongly recommended to use a dedicated Python virtual environment and install `q` in `%VIRTUAL_ENV%`. Assuming that you have downloaded `windows.zip` from [kx.com](https://kx.com/download/) into your `Downloads` folder, enter the following commands:
 
 ```bash
 python -mvenv py36

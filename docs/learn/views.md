@@ -1,8 +1,13 @@
+---
+title: Views in kdb+ – Learn – kdb+ and q documentation
+description: A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation.
+keywords: kdb+, q,view
+---
+# Views
+
+
+
 A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation. 
-
-!!! note "Splayed tables"
-
-    To use views with splayed tables make sure you invalidate the data when it changes; this can be done for example by reloading the table.
 
 
 ## Why use a view?
@@ -124,6 +129,10 @@ q)a
 q)\B
 `symbol$()
 ```
+
+!!! tip "Splayed tables"
+
+    To use views with splayed tables make sure you invalidate the data when it changes; this can be done for example by reloading the table.
 
 
 ## How to see the definition of a view
@@ -269,5 +278,11 @@ q){a}peach 0 1
 
 Views are not parsable, e.g. `eval parse "a::b+c"`
 
-<i class="far fa-hand-point-right"></i> [`view`](../ref/metadata/#view), [`views`](../ref/view.md), [`\b`](../basics/syscmds/#b-views "views"), [`\B`](../basics/syscmds/#b-pending-views "pending views"), [`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"), [`.z.vs`](../ref/dotz.md#zvs-value-set "value set")
+<i class="far fa-hand-point-right"></i> 
+[`view`](../ref/view.md), [`views`](../ref/view.md)  
+System commands: [`\b`](../basics/syscmds.md#b-views "views"), 
+[`\B`](../basics/syscmds.md#b-pending-views "pending views")  
+Namespaces: [`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"), 
+[`.z.vs`](../ref/dotz.md#zvs-value-set "value set")
+
 

@@ -1,5 +1,8 @@
 ---
+title: Q language – Starting kdb+ – Learn – kdb+ and q documentation
+description: Introduction to the q programming language
 hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+keywords: kdb+, language, q, tutorial
 ---
 # The q language
 
@@ -141,7 +144,7 @@ q)2 + "hello"                / cannot add number to character
 Basics: [Errors](../../basics/errors.md)
 
 
-## 2.6 Introductory examples
+## Introductory examples
 
 To gain experience with the language, enter the following examples and explain the results. Also experiment with similar expressions.
 

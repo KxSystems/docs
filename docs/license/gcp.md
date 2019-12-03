@@ -1,6 +1,7 @@
 ---
+title: Kdb+ license for Google Cloud – kdb+ and q documentation
+description: Kdb+ software end-user agreement for Google Cloud Platform Marketplace
 hero: <i class="fas fa-cloud"></i> Google Cloud Platform Marketplace
-title: Kdb+ software end-user agreement for Google Cloud
 date: July 2018
 ---
 
@@ -8,11 +9,7 @@ date: July 2018
 
 
 
-Carefully read the following terms and conditions. By accessing the Kdb+ Software via the Google platform, you are agreeing to be bound by these terms and conditions (which may be updated from time to time) and to the extent you are acting on behalf of a permitted organization that you have authority to act on their behalf and bind them to these terms and conditions.
-
-If you do not agree to these terms and conditions or do not have the necessary authority, do not access or use the software.
-
-You may not access the Kdb+ Software if you are a direct competitor of Kx.
+_Carefully read the following terms and conditions. By accessing the Kdb+ Software via the Google platform, you are agreeing to be bound by these terms and conditions (which may be updated from time to time) and to the extent you are acting on behalf of a permitted organization that you have authority to act on their behalf and bind them to these terms and conditions. If you do not agree to these terms and conditions or do not have the necessary authority, do not access or use the software. You may not access the Kdb+ Software if you are a direct competitor of Kx._
 
 ## 1.  Scope of agreement
     
@@ -21,7 +18,7 @@ You may not access the Kdb+ Software if you are a direct competitor of Kx.
     entity which accesses the Kdb+ Software (“User” or “you”), with
     respect to Kx’s Kdb+ Software made available at the online
     GCP Marketplace at
-    http://console.cloud.google.com/marketplace/ (“Google Platform”) owned and
+    https://console.cloud.google.com/marketplace (“Google Platform”) owned and
     controlled by Google Inc. You are required to have a Google
     account for the Google Platform in good standing prior to
     accessing the Kdb+ Software. Kx shall not in any way be liable
@@ -244,7 +241,7 @@ You may not access the Kdb+ Software if you are a direct competitor of Kx.
     representatives total liability for direct damages under or in
     connection with this Agreement, whether in an action in contract
     or tort (including negligence) or any other form of action will
-    in no event exceed $10,000.
+    in no event exceed \$10,000.
 
 24. **Entire Financial Liability.** For the avoidance of doubt this section 8 sets out the entire financial liability of each party and their respective affiliates, officers, directors, employees, agents and representatives and their successors and assigns under or in connection with this Agreement.
 

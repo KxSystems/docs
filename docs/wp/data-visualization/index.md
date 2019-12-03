@@ -1,26 +1,27 @@
 ---
+title: Data visualization with kdb+ using ODBC <br/>a Tableau case study – White Papers – kdb+ and q documentation
+description: Business intelligence (BI) tools are widely used across many industries for their interactive nature, which enables users to create and customize dynamic data visualizations easily. Kx provides its own visualization tool, Dashboards for Kx, but clients might have incumbent solutions they wish to connect to kdb+.
 author: Michaela Woods
-title: Data visualization with kdb+ using ODBC
 date: July 2018
 keywords: data, kdb+, ODBC, Tableau, visualization
 ---
-
-
 # Data visualization with kdb+ using ODBC: <br/>a Tableau case study
+
+
+
 
 
 Business intelligence (BI) tools are widely used across many industries
 for their interactive nature, which enables users to create and
 customize dynamic data visualizations easily. Kx provides its own
-visualization tool, [_Dashboards for Kx_](/platform/dashboards/index.md), but clients might have incumbent
-solutions they wish to connect to kdb+.
+visualization tool, [_Dashboards for Kx_](/dashboards/), but clients might have incumbent solutions they wish to connect to kdb+.
 
 Alternatively, many organizations might wish to migrate their back-end
 database to kdb+ for increased efficiency and scalability, while
 retaining their current visualization front end. This paper
 offers guidance.
 
-[Tableau](https://tableau.com/) is an example of a widely-used BI tool. 
+[Tableau](https://www.tableau.com) is an example of a widely-used BI tool. 
 This paper
 outlines how it can be used to access kdb+ via ODBC
 (Open Database Connectivity), a standard application-programming
@@ -52,11 +53,6 @@ existing users, this paper aims to reduce the learning curve, boost
 efficiency and increase usability when combining these two technologies.
 
 All tests were run using kdb+ version 3.5 and Tableau 10.3.
-
-
-### Author
-
-Michaela Woods is a kdb+ consultant for Kx. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
 
 
 ## Connecting to kdb+ using ODBC
@@ -505,7 +501,7 @@ Tableau where the volume of datasets can be very large.
 As mentioned above, to share workbooks
 between Tableau Desktop and Tableau Server you can publish the former to
 the latter. 
-Tableau provides [detailed documentation and instructions](https://onlinehelp.tableau.com/current/pro/desktop/en-us/publish_workbooks_howto.html) 
+Tableau provides [detailed documentation and instructions](https://help.tableau.com/current/pro/desktop/en-us/publish_workbooks_howto.htm)
 on the general publishing procedure, which involves publishing from within an already-open workbook.
 
 ![](img/image20.png)
@@ -546,7 +542,7 @@ multiple environments and DSNs.
 Kdb+ is well known as the world’s fastest time-series database. Kx’s
 own visualization tool, _Dashboards for Kx_, is optimized for this
 technology. However, kdb+ is flexible enough to connect with a
-range of different visualization tools. This whitepaper demonstrates how to connect to one such visualization tool,
+range of different visualization tools. This white paper demonstrates how to connect to one such visualization tool,
 Tableau, by means of the Kx ODBC driver.
 
 You have seen how to set up a connection between kdb+ and Tableau
@@ -568,6 +564,11 @@ But if the question is “Can you combine these two technologies in an
 effective way?” the answer is “Yes”, and by applying the functionality
 described in this paper to work around limitations, to connect a Tableau
 visualization front-end to a kdb+ back end.
+
+
+## Author
+
+Michaela Woods is a kdb+ consultant for Kx. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
 
 
 ## Appendix A

@@ -1,12 +1,13 @@
 ---
+title: Disaster-recovery planning for kdb+ tick systems – White Papers – kdb+ and q documentation
+description: Disasters are inevitable; hardware failure, network problems, and data corruption are all events that could play havoc with a system. If these events are not fully understood and planned for they may lead to significant downtime and potentially severe business impact, including revenue loss, legal and financial implications, and impact to business reputation and brand. Recent high-profile systems failures of a large cloud computing provider and an international airline highlight the importance for IT systems to have a comprehensive disaster recovery plan in place.
 author: Stewart Robinson
-title: Disaster-recovery planning for kdb+ tick systems
-date: 
 keywords: disaster, failover, kdb+, planning, recovery, tick
 ---
-
-
 # Disaster-recovery planning for kdb+ tick systems
+
+
+
 
 Disasters are inevitable; hardware failure, network problems, and data
 corruption are all events that could play havoc with a system. If
@@ -18,7 +19,7 @@ cloud computing provider and an international airline highlight the
 importance for IT systems to have a comprehensive disaster recovery
 plan in place.
 
-This whitepaper discusses disaster recovery (DR) and failover concepts
+This white paper discusses disaster recovery (DR) and failover concepts
 from the perspective of the gateway layer accessing a typical kdb+
 tick system used in capital-markets applications. The end goal of
 constructing this plan is to ensure high availability of the
@@ -87,8 +88,8 @@ split into date partitions. A q process can read this data and
 memory-map it, allowing for fast queries across a large volume of
 data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 
-<i class="far fa-hand-point-right"></i> Whitepaper:
-[Data Recovery for kdb+ tick](../data_recovery_for_kdb_tick.pdf)
+<i class="far fa-hand-point-right"></i> White paper:
+[Data Recovery for kdb+ tick](../data-recovery.md)
 
 
 ## What does a kdb+ database look like on disk?
@@ -187,7 +188,7 @@ system "l ."
 server, system or network upon the failure or termination of an
 existing asset. Failover should happen without any kind of human
 intervention or warning.
-— [_Computer Weekly_](http://www.computerweekly.com/feature/Idea-lab)
+— [_Computer Weekly_](https://www.computerweekly.com/feature/Idea-lab)
 
 In a kdb+ tick setup, failover can be designed and configured at a
 whole system level or at a process-by- process level. Generally, if a
@@ -267,15 +268,15 @@ carefully manage any querying of the database.
 
 ![](img/image12.jpeg)
 
-<i class="far fa-hand-point-right"></i> Whitepaper –
-[Query Routing: a kdb+ framework for a scalable load-balanced system](../query_routing_a_kdb_framework_for_a_scalable_load_balanced_system.pdf)
+<i class="far fa-hand-point-right"></i> White paper –
+[Query Routing: a kdb+ framework for a scalable load-balanced system](../query-routing/index.md)
 
 As mentioned above, the usual strategy for failover is to have a
 complete mirror of the production system (feedhandler, tickerplant,
 and real-time subscriber), and when any critical process goes down,
 the secondary is able to take over. Switching from production to
 disaster recovery systems can be implemented seamlessly using kdb+
-[interprocess communication](../../kb/ipc.md) (via `.z.pc`).
+[interprocess communication](../../basics/ipc.md) (via `.z.pc`).
 
 An alternative method is to have a parent control process monitoring
 everything within the system with heart-beating: a simple message sent
@@ -362,8 +363,8 @@ gateway queries should continue to be routed to the secondary until
 recovery and failover are complete, and the primary RDB is available
 to capture data and serve queries again.
 
-<i class="far fa-hand-point-right"></i> Whitepaper 
-[Data recovery for kdb+tick](../data_recovery_for_kdb_tick.pdf)
+<i class="far fa-hand-point-right"></i> White paper 
+[Data recovery for kdb+tick](../data-recovery.md)
 for a complete understanding of the recovery from a tickerplant log
 file, including how to deal with a corrupted log file
 
@@ -696,7 +697,7 @@ resilience or availability requirements.
 
 ## Conclusion
 
-This whitepaper has stressed the importance of disaster-recovery planning. 
+This white paper has stressed the importance of disaster-recovery planning. 
 There is always a possibility of disastrous events
 occurring, therefore it is vital to plan effectively to mitigate any
 impact on the system if problems occur. The paper has covered the
@@ -741,6 +742,7 @@ these events, and most importantly prevent and minimize data loss.
 Stewart Robinson is a kdb+ consultant currently based in Belfast. He
 has developed various kdb+ tick applications, focusing on market
 surveillance, for some of the world’s largest financial institutions.
+
 
 ## Appendix
 

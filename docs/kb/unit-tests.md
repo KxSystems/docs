@@ -1,8 +1,10 @@
 ---
+title: Unit tests – Knowledge Base – kdb+ and q documentation
+description: How to write unit tests for q programs
 keywords: kdb+, q, test, unit
 ---
-
 # Unit tests
+
 
 
 
@@ -10,7 +12,7 @@ keywords: kdb+, q, test, unit
 The goal of unit tests is to check that the individual parts of a program are correct. 
 Unit tests provide a written contract that a piece of code must satisfy.  
 <i class="fab fa-wikipedia-w"></i> 
-[Unit testing](http://en.wikipedia.org/wiki/Unit_testing)
+[Unit testing](https://en.wikipedia.org/wiki/Unit_testing)
 
 Q supports unit testing with the script `k4unit.q`, which loads test descriptions from CSV files, runs the tests, and writes results to a table. 
 

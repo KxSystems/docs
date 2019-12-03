@@ -1,8 +1,10 @@
 ---
+title: Q client for ODBC – Interfaces – kdb+ and q documentation
+description: In Windows and Linux, you can use ODBC to connect to a non-kdb+ database from q.
 keywords: api, interface, kdb+, library, odbc, q
 ---
-
 # <i class="fas fa-database"></i> Q client for ODBC
+
 
 
 
@@ -38,13 +40,13 @@ Start kdb+ and load `odbc.k` – this populates the `.odbc` context.
     <pre><code class="language-bash">
     $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$QHOME/l64
     </code></pre>
-    <i class="far fa-hand-point-right"></i> [unixODBC configuration guide](http://www.easysoft.com/developer/interfaces/odbc/linux.html)
+    <i class="far fa-hand-point-right"></i> [unixODBC configuration guide](https://www.easysoft.com/developer/interfaces/odbc/linux.html)
 
 
 ## Method
 
 First open an ODBC connection to a database. 
-To do so, define a [DSN](http://en.wikipedia.org/wiki/Database_Source_Name) (database source name), and then connect to the DSN using `.odbc.open`. 
+To do so, define a [DSN](https://en.wikipedia.org/wiki/Database_Source_Name) (database source name), and then connect to the DSN using `.odbc.open`. 
 This returns a connection handle, which is used for subsequent ODBC calls:
 
 ```q
@@ -180,5 +182,5 @@ TraceFile     =/tmp/odbc.log
 to the `odbcinst.ini` file, which can typically be found in `/etc` or `/usr/local/etc`.
 
 <i class="far fa-hand-point-right"></i> 
-[MSDN](http://msdn.microsoft.com/en-us/library/windows/desktop/ms711034(v=vs.85).aspx)
+[MSDN](https://docs.microsoft.com/en-us/sql/odbc/reference/develop-app/enabling-tracing?view=sql-server-2017).aspx)
 for tracing on Windows

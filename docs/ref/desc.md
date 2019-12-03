@@ -1,10 +1,13 @@
 ---
+title: desc, idesc, xdesc – Reference – kdb+ and q documentation
+description: desc, idesc, and xdesc are q keywords. desc returns a list sorted descending; idesc returns the grade for that sort. xdesc sorts a table descending by specified columns.
+author: Stephen Taylor
 keywords: asc, desc, descending, grade, idesc, kdb+, q, sort, xdesc
 ---
-
 # `desc`, `idesc`, `xdesc`
 
 _Sort and grade: descending_
+
 
 
 
@@ -113,14 +116,17 @@ city  | s
 ```
 
 
+**Duplicate column names** `xdesc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
+
+<i class="far fa-hand-point-right"></i>
+[`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
+
+
 ### Sorting data on disk
 
 `xdesc` can sort data on disk directly, without loading the entire table into memory: see [`xasc`](asc.md#sorting-data-on-disk).
 
-!!! warning "Duplicate keys or column names"
-
-    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
-
+!!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
 <i class="far fa-hand-point-right"></i>
 [`asc`, `iasc`, `xasc`](asc.md)  

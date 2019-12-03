@@ -1,10 +1,15 @@
 ---
+title: Migrating a kdb+ HDB to Amazon EC2  – Cloud – kdb+ and q documentation
+description: If you are assessing migrating a kdb+ historical database (HDB) and analytics workloads into the Amazon Elastic Compute Cloud (EC2) key considerations are performance and functionality attributes expected from using kdb+, and the associated HDB, in EC2; capabilities of several storage solutions working in the EC2 environment, as of March 2018; performance attributes of EC2 and benchmark results. You must weigh the pros and cons of each solution.
 author: Glenn Wright
 date: March 2018
+hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud
 ---
-
 # Migrating a kdb+ HDB to Amazon EC2 
+
+
+
 
 ![Amazon Elastic Compute Cloud](img/media/ec2.png)
 
@@ -27,7 +32,7 @@ We cover some of the in-house solutions supplied by Amazon Web Services (AWS), a
 
 ## Why Amazon EC2?
 
-[Gartner](http://fortune.com/2017/06/15/gartner-cloud-rankings/),
+[Gartner](https://fortune.com/2017/06/15/gartner-cloud-rankings/),
 and other sources such as [Synergy
 Research](https://www.srgresearch.com/articles/microsoft-google-and-ibm-charge-public-cloud-expense-smaller-providers),
 rank cloud-services providers:
@@ -71,7 +76,7 @@ As long as the speed of deployment and ease of use is coupled with similar or _g
 
 ## Author
 
-Glenn Wright, Systems Architect, Kx Systems, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At Kx, Glenn supports partners and solutions vendors to further exploit the industry- leading performance and enterprise aspects of kdb+.
+Glenn Wright, Systems Architect, Kx, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At Kx, Glenn supports partners and solutions vendors to further exploit the industry- leading performance and enterprise aspects of kdb+.
 
 ## In-house vs EC2
 
@@ -337,7 +342,7 @@ remapping the address to another instance in your estate. That is handy
 for things such as GUIs and dashboards, though you should be aware of
 this capability and use it. You are charged for the elastic IP address
 if you close down the instance associated with it, otherwise one IP
-address is free when associated. As of January 2018 the cost is, $0.12
+address is free when associated. As of January 2018 the cost is, \$0.12
 per Elastic IP address/day when not associated with a running instance.
 Additional IP addresses per instance are charged.
 
@@ -400,7 +405,7 @@ Or you may be replicating data from one region or availability zone, to another.
 
 ### Network Direct
 
-If you use the Network Direct option from EC2, you get a dedicated network with guaranteed bandwidth. You then pay for the dedicated link, plus the same outbound data transfer rates. For example, as of January 2018 the standard charge for a dedicated 1&nbsp;GB/sec link to EC2 would cost $220/month plus $90/month for a transfer fee per TB.
+If you use the Network Direct option from EC2, you get a dedicated network with guaranteed bandwidth. You then pay for the dedicated link, plus the same outbound data transfer rates. For example, as of January 2018 the standard charge for a dedicated 1&nbsp;GB/sec link to EC2 would cost \$220/month plus \$90/month for a transfer fee per TB.
 
 Consider these costs when planning to replicate HDB data between regions, and when exporting your data continually back to your own data center for visualization or other purposes. Consider the migration of these tools to coexist with kdb+ in the AWS estate, and if you do not, consider the time to export the data. 
 
@@ -423,7 +428,7 @@ EC2 offers the capability of bringing up an instance with internal NVMe or SAS/S
 
 ### EBS volumes
 
-You can store your HDB on [EBS volumes](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html). These appear like persistent block-level storage. Because the EC2 instances are virtualized, the storage is separated at birth from all compute instances. 
+You can store your HDB on [EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html). These appear like persistent block-level storage. Because the EC2 instances are virtualized, the storage is separated at birth from all compute instances. 
 
 By doing this, it allows you to start instances on demand, without the need to co-locate the HDB data alongside those nodes. This separation is always via the networking infrastructure built into EC2. In other words, your virtualized compute instance can be attached to a real physical instance of the storage via the EC2 network, and thereafter appears as block storage. This is referred to as _network attached storage_ (Elastic Block Storage). 
 
@@ -828,7 +833,7 @@ What might not be immediately apparent is that for this style of product, they w
 
 ### EFS and AWS Gateway
 
-Avoid [EFS](http://docs.aws.amazon.com/efs/latest/ug/performance.html) and AWS Gateway for HDB storage. They both exhibit very high latencies of operation in addition to the network-bandwidth constraints. They appear to impact further on the overall performance degradations seen in generic NFS builds in Linux. This stems from the latency between a customer-owned S3 bucket (AWS Gateway), and an availability zone wide distribution of S3 buckets managed privately by AWS.
+Avoid [EFS](https://docs.aws.amazon.com/efs/latest/ug/performance.html) and AWS Gateway for HDB storage. They both exhibit very high latencies of operation in addition to the network-bandwidth constraints. They appear to impact further on the overall performance degradations seen in generic NFS builds in Linux. This stems from the latency between a customer-owned S3 bucket (AWS Gateway), and an availability zone wide distribution of S3 buckets managed privately by AWS.
 
 
 ### Open-source products

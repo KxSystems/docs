@@ -1,15 +1,18 @@
 ---
 hero: <i class="fas fa-pen-nib"></i> Remarks on Style
+title: Lines of communication – Remarks on Style – kdb+ and q documentation
+description: A variable is a line of communication between where it is set and where it is read. The length of that line affects clarity. 
 author: Stephen Taylor
 date: Sep 2018
 keywords: kdb+, q, style
 ---
-
 # Lines of communication
 
 
+A variable is a line of communication between where it is set and where it is read. The length of that line affects clarity. 
 
-Naming a function or value saves it for use later and further away. It’s a way to communicate across ‘distance’ – time and space. It tells the reader: remember this, we’re going to need it later. 
+Naming a function or value saves it for use later – and ‘further away’. It’s a way to communicate across ‘distance’ – time and space. It tells the reader: remember this, we’re going to need it later. 
+
 Each such request is a burden.
 
 The nearer and sooner we use it, the sooner we unburden our reader, and more clearly she sees what’s going on. We should shorten our communication paths. But what is shorter than what?
@@ -29,7 +32,7 @@ selection:where(rows:format 1)#0 1        / [2]
 The distance in [2] between setting and reading `rows` is less than in [1]. Now consider a third equivalent.
 
 ```q
-selection←{where x#0 1}format 1           / [3]
+selection:{where x#0 1}format 1           / [3]
 ```
 
 Here a lambda is used, carrying the value in its argument `x`, which is local to it, and thus clearly extinguished when the lambda has been evaluated. Because it’s clear no further use will be made of this stored value, [3] is clearer than [2], where `rows` might have had some later use.

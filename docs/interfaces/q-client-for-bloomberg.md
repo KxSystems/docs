@@ -1,15 +1,18 @@
 ---
+title: Q client for Bloomberg – Interfaces – kdb+ and q documentation
+description: A Linux-based feed handler for Bloomberg
 keywords: api, bloomberg, interface, kdb+, library, q
 ---
-
 # ![Bloomberg](img/bloomberg.png) Q client for Bloomberg
 
 
 
-Marshall Wace has kindly contributed a Linux-based Bloomberg Feed Handler, written by Sufian Al-Qasem & Attila Vrabecz, using the [Bloomberg Open Api](http://www.openbloomberg.com/open-api/). 
+
+Marshall Wace has kindly contributed a Linux-based Bloomberg Feed Handler, written by Sufian Al-Qasem & Attila Vrabecz, using the [Bloomberg Open Api](https://www.bloomberg.com/professional/support/api-library/). 
 
 <i class="fab fa-github"></i> 
 [KxSystems/cookbook/bloomberg](https://github.com/KxSystems/cookbook/tree/master/bloomberg)
+
 
 ## Design notes
 

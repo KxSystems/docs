@@ -1,3 +1,9 @@
+---
+title: enlist – Reference – kdb+ and q documentation
+description: enlist is a q keyword that makes a 1-list from its arguments.
+author: Stephen taylor
+keywords: kdb+,list, q
+---
 # `enlist`
 
 _Make a list._

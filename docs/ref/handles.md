@@ -1,11 +1,13 @@
 ---
-title: File and process handles
+title: File and process handles – Reference – kdb+ and q documentation
+description: hclose, hcount, hdel, hopen, and hsym are q keywords for working with file and process handles.
+author: Stephen Taylor
 keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, filehandle, filepath, filesize, filesystem, folder, handle, hclose, hcount, hdel, hopen, hostname, hsym, ip address, ipc, kdb+, named pipe, open, os, pipe, port, process, q, query, request, size, socket, ssl, symbol, timeout, tls
 ---
-
 # `hclose`, `hcount`, `hdel`, `hopen`, `hsym`
 
 _File and process handles_
+
 
 
 
@@ -69,6 +71,10 @@ For a general visitor pattern with `hdel`
 ​q)visitNode:{if[11h=type d:key y;.z.s[x]each` sv/:y,/:d;];x y}
 q)nuke:visitNode[hdel]
 ```
+
+!!! warning "Deleting a column from a splayed table on Windows"
+
+    Unlike Linux, Windows doesn’t allow one to overwrite files which are memory mapped, and it takes some mS after unmapping for that to become possible.
 
 <i class="far fa-hand-point-right"></i>
 Basics: [File system](../basics/files.md), 
@@ -192,10 +198,16 @@ q)h"til 5"
 ': Bad file descriptor
 ```
 
-If the handle refers to 
+Pending data on the handle is not sent prior to closing. 
+If flushing is required prior to close, this must be done explicitly. (Since V3.6 2019.09.19)
 
--   an **IPC socket**, any pending data on that handle is not sent prior to closing
--   a **websocket handle**, `hclose` blocks until any pending data on the handle has been sent
+```q
+q)neg[h][];hclose h; 
+```
+
+!!! warning "Before V3.6 2019.09.19"
+
+    If the handle refers to a websocket, `hclose` blocks until any pending data on the handle has been sent.
 
 <i class="far fa-hand-point-right"></i>
 Basics: [File system](../basics/files.md), 

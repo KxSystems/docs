@@ -1,8 +1,11 @@
 ---
+title: C/C++ functions – Interfaces – kdb+ and q documentation
+description: Functions can be written in C or C++ as shared objects and loaded into a kdb+ process for use in a q program.
+author: Charles Skelton
 keywords: api, c, c++, interface, kdb+, library, q
 ---
-
 # C/C++ functions
+
 
 
 Q functionality can be extended using dynamically-loaded modules. 
@@ -167,7 +170,7 @@ q)(`add 2:(`add;2))[3;4]
 /c/q$ gcc -shared -DKXVER=3 add.c -L. -lq -o add.dll
 ```
 
-Tested using [MinGW-64](http://mingw-w64.sourceforge.net/) with `q/w32`.
+Tested using [MinGW-64](http://mingw-w64.org/doku.php) with `q/w32`.
 
 
 ## High-resolution timing
@@ -286,7 +289,7 @@ q)cpu_frequency[]
 
 ### Reading CPU frequency on macOS
 
-MacOS does not have `/proc` interface. One can create one in user space using [MacFUSE](http://osxbook.com/book/bonus/chapter11/procfs), but it is easier to use `sysctl`:
+MacOS does not have `/proc` interface. One can create one in user space using [MacFUSE](http://osxbook.com/book/bonus/chapter11/procfs/), but it is easier to use `sysctl`:
 
 ```c
 #include <sys/types.h>

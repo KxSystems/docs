@@ -1,8 +1,11 @@
 ---
+title: parse – Reference – kdb+ and q documentation
+description: parse is a q keyword that returns a parse tree for a string expression.
+author: Stephen Taylor
 keywords: eval, evaluate, kdb+, parse, q, reval, string
 ---
-
 # parse 
+
 
 
 

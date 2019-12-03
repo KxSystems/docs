@@ -1,3 +1,12 @@
+---
+title: Changes in 2.6 – Releases – kdb+ and q documentation
+description: Changes to V2.6 of kdb+ from the previous version
+author: Charles Skelton
+---
+# Changes in 2.6
+
+
+
 Below is a summary of changes from V2.5. Commercially licensed users may obtain the detailed change list / release notes from (http://downloads.kx.com)
 
 

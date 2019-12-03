@@ -1,4 +1,7 @@
 ---
+title: Enumeration – Reference – kdb+ and q documentation
+description: Enumeration isd a q operator that returns an enumerated symbol list.
+author: Stephen Taylor
 keywords: bang, enumerate, enumeration, list, kdb+, q
 ---
 # `!` Enumeration

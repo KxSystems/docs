@@ -1,11 +1,13 @@
 ---
+title: J client for kdb+ – Interfaces – kdb+ and q documentation
+description: JQ is a socket interface to kdb+ from J, for example to provide a GUI for a kdb+ server. 
 keywords: api, interface, j, kdb+, library, q
 ---
-
 # ![J](img/j.png) J client for kdb+
 
 
-JQ is a socket interface to kdb+ from [J](http://jsoftware.com), for example to provide a GUI for a kdb+ server. JQ was written in J602 for V2.4, and has been tested on w32, l32 and l64. 
+
+JQ is a socket interface to kdb+ from [J](https://www.jsoftware.com/#/), for example to provide a GUI for a kdb+ server. JQ was written in J602 for V2.4, and has been tested on w32, l32 and l64. 
 
 <i class="fab fa-github"></i> [kxcontrib/cburke/jk](https://github.com/kxcontrib/cburke/tree/master/jk) 
 

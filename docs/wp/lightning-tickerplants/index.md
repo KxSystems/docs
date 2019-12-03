@@ -1,9 +1,9 @@
 ---
-authors:
-    - Jeremy Lucid
+title: Lightning tickerplants – Pay-per-ticker with micropayments on the Lightning network – White Papers – kdb+ and q documentation
+description: Use Lightning to monetize streaming data. Use the qlnd library to create payment channels, generate invoices, and route payments across the network.
+author: Jeremy Lucid
 date: May 2019
 keywords: bitcoin, lightning, blockchain, kdb+, q, tickerplant
-title: Lightning tickerplants
 ---
 # Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network
 
@@ -14,7 +14,7 @@ title: Lightning tickerplants
 [Lightning](https://lightning.network/lightning-network-paper.pdf) is a technology designed to scale Bitcoin and other compatible blockchains by enabling high transaction throughput with greater privacy while preserving decentralized qualities. It is a layer two infrastructure which builds upon the security and [smart contract](https://en.wikipedia.org/wiki/Smart_contract) functionality of the underlying base blockchain, analogous to how the HTTP application layer protocol builds on an underlying and reliable TCP layer. 
 Lightning succeeds by allowing payments to be made off-chain through the technology of bidirectional [payment channels](#payment-channels), wherein the underlying network of nodes do not need to validate and record every transaction. Consequently, peer-to-peer payments made over the Lightning network can be performed in high volume, with micro value (order of cents and lower), with low or zero fees and with near instant settlement times. Today, Lightning is one of the most rapidly growing networks (see [Real-time Network Statistics](https://1ml.com/statistics)) and adopted technologies in the cryptocurrency space and is at the cutting edge of blockchain innovation.
 
-Lightning application (LApp) development is progressing quickly and includes [eCommerce integrations](https://blockstream.com/2018/01/16/lightning-charge/), [micropayment paywalls](https://github.com/ElementsProject/wordpress-lightning-publisher) for content creators, [micropayment tipping](https://tippin.me/) services (Twitter), and multiple Custodial and Non-Custodial [wallet](https://lopp.net/lightning.html) implementations. The micropayment application, in particular, has the potential to transform how online content
+Lightning application (LApp) development is progressing quickly and includes [eCommerce integrations](https://blockstream.com/2018/01/16/lightning-charge/), [micropayment paywalls](https://github.com/ElementsProject/wordpress-lightning-publisher) for content creators, [micropayment tipping](https://tippin.me/) services (Twitter), and multiple Custodial and Non-Custodial [wallet](https://www.lopp.net/lightning-information.html) implementations. The micropayment application, in particular, has the potential to transform how online content
 is monetized by facilitating a micro fee pay-per-view model, as opposed to an ad based or yearly subscription model.
 Lightning payments are also highly applicable to the **IoT space**, as the network can be used to implement a decentralized peer-to-peer payment layer for transactions between IoT devices, utilizing all of the networks key features, see [IoT and Lightning](https://medium.com/meetbitfury/the-internet-of-things-and-the-lightning-network-41b93dbb8456), [Bitcoin Payment-Channels for Resource Limited IoT Devices](https://arxiv.org/pdf/1812.10345.pdf) and [Micropayments between IoT devices](http://www.diva-portal.org/smash/get/diva2:1272048/FULLTEXT01.pdf).
 
@@ -104,7 +104,7 @@ the value held on Lightning increasing continuously.
 
 For a more detailed explanation of how Lightning works see
 [Payment Channels Explained](https://medium.com/softblocks/lightning-network-in-depth-part-1-payment-channels-b943607950dd)
-and [Lightning Network Resources](https://lopp.net/lightning.html).
+and [Lightning Network Resources](https://www.lopp.net/lightning-information.html).
 
 
 ## Installing and configuring a Lightning node
@@ -139,7 +139,7 @@ $sudo apt-get install bitcoind
 
 Before starting the daemon, a `bitcoin.conf` file should be created in the install folder (usually `$HOME/.bitcoin`),
 as described in white paper [Storing and exploring the Bitcoin blockchain](https://code.kx.com/v2/wp/blockchain/#installing-a-bitcoin-full-node).
-However, the sample `bitcoin.conf` file presented in that whitepaper should now be extended, as shown below, to
+However, the sample `bitcoin.conf` file presented in that white paper should now be extended, as shown below, to
 include the [ZeroMQ](https://github.com/bitcoin/bitcoin/blob/master/doc/zmq.md) wrapper, which will allow the Lightning
 node to be notified of events like the arrival of new blocks or transactions. Note that in the configuration file below, the
 `rpcuser` and `rpcpassword` values need to be changed.
@@ -166,7 +166,7 @@ $ bitcoind -daemon
 
 One way to confirm the local node is in sync with the rest of the network is by comparing the 
 block height with another public node. In the example below, a comparison is made against
-[blockexplorer.com](https://blockexplorer.com/).
+[blockexplorer.com](https://blockexplorer.com).
 
 ```bash
 # Extract the block height from blockexplorer.com
@@ -681,7 +681,11 @@ trade:([]
 ```
 
 The main library functions this tickerplant implementation uses are shown below, and they will
-form the basis for subsequent modifications. For a more in-depth exploration of tickerplant technology, see [Building Real-Time tick subscribers](https://code.kx.com/v2/wp/building_real_time_tick_subscribers.pdf).
+form the basis for subsequent modifications. 
+
+<i class="far fa-hand-point-right"></i>
+White paper: 
+[Building Real-Time Tick Subscribers](../rt-tick/index.md)
 
 ```q
 \d .u
@@ -1133,7 +1137,7 @@ For more info on the economics of fees on Lightning, see the recent article from
 Users can test the API by buying small items on the various Lightning-enabled stores. 
 Below is an example of a payment request generated by the [Blockstream store](https://store.blockstream.com/), and presented at checkout time to the customer.
 By decoding the string we can see the amount to be paid and the description of the item being
-bought, in this case, a $4.99 sticker.
+bought, in this case, a \$4.99 sticker.
 
 ```q
 q)paymentRequestFromBlockstream:"lnbc1252532570p1pwf84ldpp557ypsquf8lyvuwrytnjnykqu…"

@@ -1,10 +1,24 @@
+---
+title: Changes in 3.5 – Releases – kdb+ and q documentation
+description: Changes to V3.5 of kdb+ from the previous version
+author: Charles Skelton
+---
 # Changes in 3.5
 
+
+
+
 Below is a summary of changes from V3.4. Commercially licensed users may obtain the detailed change list / release notes from <http://downloads.kx.com>
+
 
 ## Production release date
 
 2017.03.15
+
+
+## Update 2019.11.13
+
+[`.z.ph`](../ref/dotz.md#zph-http-get) now calls [`.h.val`](../ref/doth.md#hval-value) instead of [`value`](../ref/value.md), to allow users to interpose their own evaluation code. `.h.val` defaults to `value`.
 
 
 ## Enhanced debugger

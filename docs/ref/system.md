@@ -1,8 +1,13 @@
 ---
+title: system – Reference – kdb+ and q documentation
+description: system is a q keyword that executes a system command.
+author: Stephen Taylor
 keywords: command, kdb+, q, system, system command
 ---
-
 # `system`
+
+
+
 
 _Execute a system command_
 
@@ -76,7 +81,7 @@ Can I capture the stderr output from the system call? Not directly, but a workar
 
 ```q
 / force capture to a file, and cat the file
-q)system"ls egg > file 2>&amp;1;cat file"
+q)system"ls egg > file 2>&1;cat file"
 "ls: egg: No such file or directory"        
 / try and fails to capture the text
 q)@[system;"ls egg";{0N!"error - ",x;}]
@@ -86,5 +91,5 @@ ls: egg: No such file or directory
 
 !!! warning "Changing working directory in Windows"
 
-    In the event of an unexpected change to the working directory, Windows users please note <http://blogs.msdn.com/b/oldnewthing/archive/2007/11/21/6447771.aspx>
+    In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
 

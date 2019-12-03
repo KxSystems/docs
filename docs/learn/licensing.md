@@ -1,3 +1,9 @@
+---
+title: Licensing kdb+ – Learn – kdb+ and q documentation
+description: How to ensure your kdb+ processes have thelicenses they need.
+author: Stephen Taylor
+keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
+---
 # <i class="fas fa-certificate"></i> Licensing
 
 
@@ -42,6 +48,8 @@ Welcome to kdb+ 32bit edition
 Use of commercial kdb+ is covered by your license agreement with Kx.
 
 Your copy of kdb+ will need access to a valid license key file.
+
+If you wish to begin using kdb+ commercially, please contact sales@kx.com.
 
 
 ## License key files
@@ -156,6 +164,17 @@ You can see the number of cores entitled to a q process:
 The number of licensed cores is always 16 for the on-demand license. 
 
 <i class="far fa-hand-point-right"></i> [License errors](../basics/errors.md#license-errors)
+
+
+!!! warning "On the road"
+
+    The license key file binds the interpreter to your computer’s hostname.
+    For example, for a Mac named `mymbp` the hostname might be `mymbp.local`.
+    When travelling you may find a network has changed the hostname, for example to `mymbp.lan` or `mymbp.fritz.box`. Kdb+ then signals a host error on launch. 
+
+    Linux and macOS users can restore their hostnames from the command shell, e.g. 
+
+    `scutil --set HostName "mymbp.local"`
 
 
 ## License questions

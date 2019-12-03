@@ -1,5 +1,7 @@
 ---
-title: Apply (At), Index (At), Trap (At)
+title: Apply (At), Index (At), Trap (At) – Reference – kdb+ and q documentation
+description: Operators Apply (At), Index (At), and Trap (At) apply a funcxtion to one ormore arguments, get items at depth in a list, and trap errors.
+author: Stephen Taylor
 keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
 ---
 
@@ -24,7 +26,7 @@ Everything begins with a dot.<br>— W.W. Kandinsky
 <div style="clear: both"></div>
 
 rank | syntax               | function semantics                  | list semantics
------|----------------------|-------------------------------------|---------------
+:---:|----------------------|-------------------------------------|---------------
 2    | `v . vx`<br>`.[v;vx]` | **Apply**<br>Apply `v` to list `vx` of arguments | **Index**<br>Get item/s `vx` at depth from `v`
 2    | `u @ ux`<br>`@[u;ux]` | **Apply At**<br>Apply unary `u` to argument `ux`    | **Index At**<br>Get items `ux` from `u`
 3    | `.[g;gx;e]`          | **Trap**<br>Try `g . gx`; catch with `e`        |
@@ -38,6 +40,9 @@ Where
 -   `v` is a value of rank $n$ (or a handle to one) and `vx` a list of count $n$ with items in the domains of `v`
 -   `u` is a unary value (or a handle to one) and `ux` in its domain
 
+<i class="far fa-hand-point-right"></i>
+[Amend, Amend At](amend.md)
+
 
 
 ## Apply, Index
@@ -45,14 +50,14 @@ Where
 `v . vx` evaluates value `v` on the $n$ arguments listed in `vx`.
 
 ```q
-q)+ . 2 3           / +[2;3] Apply
-5
 q)add
 0 1 2 3
 1 2 3 4
 2 3 4 5
 3 4 5 6
 q)add . 2 3         / add[2;3] Index
+5
+q)(+) . 2 3         / +[2;3] Apply
 5
 q).[+;2 3]
 5
@@ -193,7 +198,7 @@ Note that `d .(::;0)` is the same as `d .(0 1 2;0)`, but in the last example, th
 
 In the general case, when the items of `i` are non-negative integer atoms or lists, or null, the structure of the result can be thought of as cascading structures of the items of `i`. That is, with nulls aside, the result is structurally like `i[0]`, except that wherever there is an atom in `i[0]`, the result is structurally like `i[1]`, except that wherever there is an atom in `i[1]`, the result is structurally like `i[2]`, and so on. 
 
-The general case of Index can be defined recursively in terms of [**Index At**](index-at) by partitioning the list `i` into its first item and the rest:
+The general case of Index can be defined recursively in terms of [**Index At**](#index-at) by partitioning the list `i` into its first item and the rest:
 
 ```q
 Index:{[d;F;R] 

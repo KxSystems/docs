@@ -1,8 +1,11 @@
 ---
+title: Accumulators – Reference – kdb+ and q documentation
+description: An accumulator is an iterator that takes an applicable value as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of successive evaluations.
+author: Stephen Taylor
 keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, map reduce, mnemonic, operator, over, q, scan, unary, value, while
 ---
-
 # Accumulators
+
 
 `/` `\`
 
@@ -217,7 +220,7 @@ q)m                       / finite-state machine
 7 8 4 3 0
 4 5 8 0 4
 9 8 0 3 9
-q)c
+q)c                       / columns of m
 4 1 3 3 1 4
 q)7 m\c
 0 6 6 6 1 5
@@ -250,7 +253,7 @@ q)42{[x;y]x}\2 3 4    / 42 is the first left argument
 42 42 42
 q)({[x;y]x}\)2 3 4    / 2 is the first left argument
 2 2 2
-q)(m\)cols            / cols[0] is the first left argument
+q)(m\)c               / c[0] is the first left argument
 4 3 1 0 6 9
 ```
 
@@ -272,14 +275,16 @@ q)({count x,y}\)("The";"quick";"brown";"fox")
 
 ### Keywords `scan` and `over`
 
-Mnemonic keywords `scan` and `over` can be used to apply a binary value to a list or dictionary. Parenthesize an infix to pass it as a left argument.
+Mnemonic keywords `scan` and `over` can be used to apply a binary value to a list or dictionary. 
+
+!!! tip "Parenthesize an infix to pass it as a left argument."
 
 ```q
 q)(+) over til 5           / (+/)til 5
 10
 q)(+) scan til 5           / (+\)til 5
 0 1 3 6 10
-q)m scan cols              / (m\)cols
+q)m scan c                 / (m\)c
 4 3 1 0 6 9
 ```
 

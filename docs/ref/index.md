@@ -1,5 +1,7 @@
 ---
-title: Reference card - code.kx.com
+title: Reference card - code.kx.com – Reference – kdb+ and q documentation
+description: Quick reference for kdb+ and the q programming language
+author: Stephen Taylor
 keywords: card, index, kdb+, keywords, operators, q, reference
 ---
 
@@ -14,12 +16,12 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>A</td><td>[`abs`](abs.md "absolute value") [`acos`](cos.md#acos "arccosine") [`aj` `aj0`](aj.md "as-of join") [`all`](all-any.md#all "all nonzero") [`and`](lesser.md "lesser") [`any`](all-any.md#any "any item is non-zero") [`asc`](asc.md "ascending sort") [`asin`](sin.md#asin "arcsine") [`asof`](asof.md "as-of join") [`atan`](tan.md#atan "arctangent") [`attr`](attr.md "attributes") [`avg`](avg.md#avg "arithmetic mean") [`avgs`](avg.md#avgs "running averages")</td></tr>
 <tr><td>B</td><td>[`bin` `binr`](bin.md "binary search")</td></tr>
 <tr><td>C</td><td>[`ceiling`](ceiling.md "lowest integer above") [`cols`](cols.md#cols "column names of a table") [`cor`](cor.md "correlation") [`cos`](cos.md "cosine") [`count`](count.md "number of items") [`cov`](cov.md "covariance") [`cross`](cross.md "cross product") [`csv`](csv.md "comma delimiter") [`cut`](cut.md "cut array into pieces")</td></tr>
-<tr><td>D</td><td>[`delete`](delete.md "delete rows or columns from a table") [`deltas`](deltas.md "differences between consecutive pairs") [`desc`](desc.md "descending sort") [`dev`](dev.md "standard deviation") [`differ`](differ.md "flag differences in consecutive pairs") [`distinct`](distinct.md "unique items") [`div`](div.md "integer division") [`do`](../basics/control.md#control-words "control word") [`dsave`](dsave.md "save global tables to disk")</td></tr>
+<tr><td>D</td><td>[`delete`](delete.md#delete-keyword "delete rows or columns from a table") [`deltas`](deltas.md "differences between consecutive pairs") [`desc`](desc.md "descending sort") [`dev`](dev.md "standard deviation") [`differ`](differ.md "flag differences in consecutive pairs") [`distinct`](distinct.md "unique items") [`div`](div.md "integer division") [`do`](do.md) [`dsave`](dsave.md "save global tables to disk")</td></tr>
 <tr><td>E</td><td>[`each`](each.md "apply to each item") [`ej`](ej.md "equi-join") [`ema`](ema.md "exponentially-weighted moving average") [`enlist`](enlist.md "arguments as a list") [`eval`](eval.md "evaluate a parse tree") [`except`](except.md "left argument without items in right argument") [`exec`](exec.md) [`exit`](exit.md "terminate q") [`exp`](exp.md "power of e")</td></tr>
 <tr><td>F</td><td>[`fby`](fby.md "filter-by") [`fills`](fill.md#fills "forward-fill nulls") [`first`](first.md "first item") [`fkeys`](fkeys.md "foreign-key columns mapped to their tables") [`flip`](flip.md "transpose") [`floor`](floor.md "greatest integer less than argument")</td></tr>
 <tr><td>G</td><td>[`get`](get.md "get a q data file") [`getenv`](getenv.md "value of an environment variable") [`group`](group.md "dictionary of distinct items") [`gtime`](gtime.md "UTC timestamp")</td></tr>
 <tr><td>H</td><td>[`hclose`](handles.md#hclose "close a file or process") [`hcount`](handles.md#hcount "size of a file") [`hdel`](handles.md#hdel "delete a file") [`hopen`](handles.md#hopen "open a file") [`hsym`](handles.md#hsym "convert symbol to filename or IP address")</td></tr>
-<tr><td>I</td><td>[`iasc`](asc.md#iasc "indices of ascending sort") [`idesc`](desc.md#idesc "indices of descending sort") [`if`](../basics/control.md#control-words "control word: conditional") [`ij` `ijf`](ij.md "inner join") [`in`](in.md "membership") [`insert`](insert.md "append records to a table") [`inter`](inter.md "items common to both arguments") [`inv`](inv.md "matrix inverse")</td></tr>
+<tr><td>I</td><td>[`iasc`](asc.md#iasc "indices of ascending sort") [`idesc`](desc.md#idesc "indices of descending sort") [`if`](if.md) [`ij` `ijf`](ij.md "inner join") [`in`](in.md "membership") [`insert`](insert.md "append records to a table") [`inter`](inter.md "items common to both arguments") [`inv`](inv.md "matrix inverse")</td></tr>
 <tr><td>K</td><td>[`key`](key.md "keys of a dictionary etc.") [`keys`](keys.md "names of a table's columns")</td></tr>
 <tr><td>L</td><td>[`last`](first.md#last "last item") [`like`](like.md "pattern matching") [`lj` `ljf`](lj.md "left join") [`load`](load.md "load binary data") [`log`](log.md "natural logarithm") [`lower`](lower.md "lower case") [`lsq`](lsq.md "least squares – matrix divide") [`ltime`](gtime.md#ltime "local timestamp") [`ltrim`](trim.md#ltrim "function remove leading spaces")</td></tr>
 <tr><td>M</td><td>[`mavg`](avg.md#mavg "moving average") [`max`](max.md "maximum") [`maxs`](max.md#maxs "maxima of preceding items") [`mcount`](count.md#mcount "moving count") [`md5`](md5.md "MD5 hash") [`mdev`](dev.md#mdev "moving deviation") [`med`](med.md "median") [`meta`](meta.md "metadata of a table") [`min`](min.md "minimum") [`mins`](min.md#mins "minimum of preceding items") [`mmax`](max.md#mmax "moving maxima") [`mmin`](min.md#mmin "moving minima") [`mmu`](mmu.md "matrix multiplication") [`mod`](mod.md "remainder") [`msum`](sum.md#msum "moving sum")</td></tr>
@@ -27,16 +29,16 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>O</td><td>[`or`](greater.md "greater") [`over`](over.md "reduce an array with a value")</td></tr>
 <tr><td>P</td><td>[`parse`](parse.md "parse a string") [`peach`](each.md "parallel each") [`pj`](pj.md "plus join") [`prd` `prds`](prd.md "product, unning products") [`prev`](next.md#prev "previous items") [`prior`](prior.md "apply function between each item and its predecessor")</td></tr>
 <tr><td>R</td><td>[`rand`](rand.md "random number") [`rank`](rank.md "grade up") [`ratios`](ratios.md "ratios of consecutive pairs") [`raze`](raze.md "join items") [`read0`](read0.md "read file as lines") [`read1`](read1.md "read file as bytes") [`reciprocal`](reciprocal.md "reciprocal of a number") [`reval`](eval.md#reval "variation of eval") [`reverse`](reverse.md "reverse the order of items") [`rload`](load.md#rload "load a splayed table") [`rotate`](rotate.md "rotate items") [`rsave`](save.md#rsave) [`rtrim`](trim.md#rtrim "remove trailing spaces")</td></tr>
-<tr><td>S</td><td>[`save`](save.md "save global data to file") [`scan`](over.md "apply value to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
+<tr><td>S</td><td>[`save`](save.md "save global data to file") [`scan`](over.md "apply value to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv.md "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
 <tr><td>T</td><td>[`tables`](tables.md "sorted list of tables") [`tan`](tan.md "tangent") [`til`](til.md "integers up to x") [`trim`](trim.md "remove leading and trailing spaces") [`type`](type.md "data type")</td></tr>
 <tr><td>U</td><td>[`uj` `ujf`](uj.md "union join") [`ungroup`](ungroup.md "flattened table") [`union`](union.md "distinct items of combination of two lists") [`update`](update.md "insert or replace table records") [`upper`](lower.md#upper "upper-case") [`upsert`](upsert.md "add table records")</td></tr>
 <tr><td>V</td><td>[`value`](value.md "value of a variable or dictionary key; value of an executed sting") [`var`](var.md "variance") [`view`](view.md "definition of a dependency") [`views`](view.md#views "list of defined views") [`vs`](vs.md "encode, split")</td></tr>
-<tr><td>W</td><td>[`wavg`](avg.md#wavg "weighted average") [`where`](where.md "replicated items") [`while`](../basics/control.md#control-words "control word") [`within`](within.md "flag items within range") [`wj` `wj1`](wj.md "window join") [`wsum`](sum.md#wsum "weighted sum")</td></tr>
+<tr><td>W</td><td>[`wavg`](avg.md#wavg "weighted average") [`where`](where.md "replicated items") [`while`](while.md) [`within`](within.md "flag items within range") [`wj` `wj1`](wj.md "window join") [`wsum`](sum.md#wsum "weighted sum")</td></tr>
 <tr><td>X</td><td>[`xasc`](asc.md#xasc "table sorted ascending by columns") [`xbar`](xbar.md "interval bar") [`xcol`](cols.md#xcol "rename table columns") [`xcols`](cols.md#xcols "re-order table columns") [`xdesc`](desc.md#xdesc "table sorted descending by columns") [`xexp`](exp.md#xexp "raised to a power") [`xgroup`](xgroup.md "table grouped by keys") [`xkey`](keys.md#xkey "set primary keys of a table") [`xlog`](log.md#xlog "base-x logarithm") [`xprev`](next.md#xprev "previous items") [`xrank`](xrank.md "items assigned to buckets")</td></tr>
 </table>
 
-<i class="far fa-hand-point-right"></i> 
-[`.Q.id`](dotq.md#qid-sanitize) (sanitize), 
+<i class="far fa-hand-point-right"></i>
+[`.Q.id`](dotq.md#qid-sanitize) (sanitize),
 [`.Q.res`](dotq.md#qres-keywords) (reserved words)
 
 
@@ -67,8 +69,8 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr>
 <td class="kx-glyph">[`#`](overloads.md#hash)</td><td>[Take](take.md)<br>[Set&nbsp;Attribute](set-attribute.md)</td>
 <td class="kx-glyph">[`_`](overloads.md#_-underscore)</td><td>[Cut](cut.md)<br>[Drop](drop.md)</td>
-<td class="kx-glyph">`^`</td><td>[Fill](fill)</td>
-<td class="kx-glyph">`,`</td><td>[Join](join)</td>
+<td class="kx-glyph">`^`</td><td>[Fill](fill.md)</td>
+<td class="kx-glyph">`,`</td><td>[Join](join.md)</td>
 </tr>
 </table>
 
@@ -94,7 +96,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 
 
-## Other 
+## Other
 
 <table markdown="1">
 <tr>
@@ -134,7 +136,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>[`\d`](../basics/syscmds.md#d-directory)</td><td>directory</td><td>[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td>usr-pwd</td></tr>
 <tr><td>[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td>error traps</td><td>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td>disable syscmds</td></tr>
 <tr><td>[`-E`](../basics/cmdline.md#-e-error-traps)</td><td>TLS Server Mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
-<tr><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td><td>[`-w`](../basics/cmdline.md#-w-memory) [`\w`](../basics/syscmds.md#w-workspace)</td><td>memory</td></tr>
+<tr><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td><td>[`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)</td><td>memory</td></tr>
 <tr><td>[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td>garbage collection</td><td>[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td>week offset</td></tr>
 <tr><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
 <tr><td>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td>log sync</td><td>[`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)</td><td>date format</td></tr>
@@ -145,13 +147,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
-<i class="far fa-hand-point-right"></i> 
-[Command-line options](../basics/cmdline.md), 
-[System commands](../basics/syscmds.md), 
-[OS Commands](../basics/syscmds.md#os-commands), 
+<i class="far fa-hand-point-right"></i>
+[Command-line options](../basics/cmdline.md),
+[System commands](../basics/syscmds.md),
+[OS Commands](../basics/syscmds.md#os-commands),
 [`system`](../ref/system.md)
 
-<!-- 
+<!--
 ## Environment variables
 
 <table class="kx-tight">
@@ -225,11 +227,11 @@ q)`VARNAME setenv "NEWVALUE"
 </tbody>
 </table>
 
-_n_: short int returned by [`type`](type.md) and used for [casting](../basics/casting.md), e.g. `9h$3`  
-_c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)  
-_sz_: size in bytes  
-_inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
-`v`: applicable value  
+_n_: short int returned by [`type`](type.md) and used for [casting](../basics/casting.md), e.g. `9h$3`
+_c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)
+_sz_: size in bytes
+_inf_: infinity (no math on temporal types); `0Wh` is `32767h`
+`v`: applicable value
 RO: read only; RW: read-write
 
 
@@ -241,7 +243,7 @@ Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
 dict:`a`b!…
 table:([]x:…;y:…)
 date.(year month week mm dd)
-time.(minute second mm ss)  
+time.(minute second mm ss)
 milliseconds: time mod 1000
 ```
 
@@ -269,11 +271,11 @@ Markup output for HTTP
 <tr><td><a href="doth/#hhp-http-response">`.h.hp`</a></td><td><a href="doth/#hhp-http-response">HTTP response</a></td><td><a href="doth/#htx-filetypes">`.h.tx`</a></td><td><a href="doth/#htx-filetypes">filetypes</a></td></tr>
 <tr><td><a href="doth/#hhr-horizontal-rule">`.h.hr`</a></td><td><a href="doth/#hhr-horizontal-rule">horizontal rule</a></td><td><a href="doth/#hty-mime-types">`.h.ty`</a></td><td><a href="doth/#hty-mime-types">MIME types</a></td></tr>
 <tr><td><a href="doth/#hht-marqdown-to-html">`.h.ht`</a></td><td><a href="doth/#hht-marqdown-to-html">Marqdown to HTML</a></td><td><a href="doth/#huh-uri-unescape">`.h.uh`</a></td><td><a href="doth/#huh-uri-unescape">URI unescape</a></td></tr>
-<tr><td><a href="doth/#hhta-start-tag">`.h.hta`</a></td><td><a href="doth/#hhta-start-tag">start tag</a></td><td><a href="doth/#hxd-xml">`.h.xd`</a></td><td><a href="doth/#hxd-xml">XML</a></td></tr>
-<tr><td><a href="doth/#hhtac-element">`.h.htac`</a></td><td><a href="doth/#hhtac-element">element</a></td><td><a href="doth/#hxmp-xmp">`.h.xmp`</a></td><td><a href="doth/#hxmp-xmp">XMP</a></td></tr>
-<tr><td><a href="doth/#hhtc-element">`.h.htc`</a></td><td><a href="doth/#hhtc-element">element</a></td><td><a href="doth/#hxs-xml-escape">`.h.xs`</a></td><td><a href="doth/#hxs-xml-escape">XML escape</a></td></tr>
-<tr><td><a href="doth/#hhtml-document">`.h.html`</a></td><td><a href="doth/#hhtml-document">document</a></td><td><a href="doth/#hxt-json">`.h.xt`</a></td><td><a href="doth/#hxt-json">JSON</a></td></tr>
-<tr><td><a href="doth/#hhttp-hyperlinks">`.h.http`</a></td><td><a href="doth/#hhttp-hyperlinks">hyperlinks</a></td></tr>
+<tr><td><a href="doth/#hhta-start-tag">`.h.hta`</a></td><td><a href="doth/#hhta-start-tag">start tag</a></td>                       <td><a href="doth.md#hval-value">`.h.val`</a></td><td><a href="doth.md#hval-value">value</a></td></tr>
+<tr><td><a href="doth/#hhtac-element">`.h.htac`</a></td><td><a href="doth/#hhtac-element">element</a></td>                          <td><a href="doth/#hxd-xml">`.h.xd`</a></td><td><a href="doth/#hxd-xml">XML</a></td></tr>
+<tr><td><a href="doth/#hhtc-element">`.h.htc`</a></td><td><a href="doth/#hhtc-element">element</a></td>                             <td><a href="doth/#hxmp-xmp">`.h.xmp`</a></td><td><a href="doth/#hxmp-xmp">XMP</a></td></tr>
+<tr><td><a href="doth/#hhtml-document">`.h.html`</a></td><td><a href="doth/#hhtml-document">document</a></td>                       <td><a href="doth/#hxs-xml-escape">`.h.xs`</a></td><td><a href="doth/#hxs-xml-escape">XML escape</a></td></tr>
+<tr><td><a href="doth/#hhttp-hyperlinks">`.h.http`</a></td><td><a href="doth/#hhttp-hyperlinks">hyperlinks</a></td>                 <td><a href="doth/#hxt-json">`.h.xt`</a></td><td><a href="doth/#hxt-json">JSON</a></td></tr>
 </table>
 
 
@@ -286,45 +288,52 @@ De/serialize as JSON
 </table>
 
 
+### `.m`
+
+<i class="far fa-hand-point-right"></i>
+[Memory backed by files](dotm.md)
+
+
 ### `.Q`
 
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
 <table class="kx-shrunk kx-tight" markdown="1">
-<tr><td><a href="dotq/#qaddmonths">`.Q.addmonths`</a></td><td><a href="dotq/#qaddmonths"></a></td><td><a href="dotq/#qx10-decode-binhex">`.Q.x10`</a></td><td><a href="dotq/#qx10-decode-binhex">decode binhex</a></td></tr>
-<tr><td><a href="dotq/#qaddr-ip-address">`.Q.addr`</a></td><td><a href="dotq/#qaddr-ip-address">IP address</a></td><td><a href="dotq/#qj12-encode-base64">`.Q.j12`</a></td><td><a href="dotq/#qj12-encode-base64">encode base64</a></td></tr>
-<tr><td><a href="dotq/#qbt-backtrace">`.Q.bt`</a></td><td><a href="dotq/#qbt-backtrace">backtrace</a></td><td><a href="dotq/#qx12-decode-base64">`.Q.x12`</a></td><td><a href="dotq/#qx12-decode-base64">decode base64</a></td></tr>
-<tr><td><a href="dotq/#qbtoa-b64-encode">`.Q.btoa`</a></td><td><a href="dotq/#qbtoa-b64-encode">b64 encode</a></td><td><a href="dotq/#qk-version">`.Q.k`</a></td><td><a href="dotq/#qk-version">version</a></td></tr>
-<tr><td><a href="dotq/#qbv-build-vp">`.Q.bv`</a></td><td><a href="dotq/#qbv-build-vp">build vp</a></td><td><a href="dotq/#ql-load">`.Q.l`</a></td><td><a href="dotq/#ql-load">load</a></td></tr>
-<tr><td><a href="dotq/#qchk-fill-hdb">`.Q.chk`</a></td><td><a href="dotq/#qchk-fill-hdb">fill HDB</a></td><td><a href="dotq/#qm-long-infinity">`.Q.M`</a></td><td><a href="dotq/#qm-long-infinity">long infinity</a></td></tr>
-<tr><td><a href="dotq/#qcn-count-partitioned-table">`.Q.cn`</a></td><td><a href="dotq/#qcn-count-partitioned-table">count partitioned table</a></td><td><a href="dotq/#qmap-maps-partitions">`.Q.MAP`</a></td><td><a href="dotq/#qmap-maps-partitions">maps partitions</a></td></tr>
-<tr><td><a href="dotq/#qcf-create-empty-nested-char-file">`.Q.Cf`</a></td><td><a href="dotq/#qcf-create-empty-nested-char-file">create empty nested char file</a></td><td><a href="dotq/#qopt-command-parameters">`.Q.opt`</a></td><td><a href="dotq/#qopt-command-parameters">command parameters</a></td></tr>
-<tr><td><a href="dotq/#qd-partitions">`.Q.D`</a></td><td><a href="dotq/#qd-partitions">partitions</a></td><td><a href="dotq/#qpar-locate-partition">`.Q.par`</a></td><td><a href="dotq/#qpar-locate-partition">locate partition</a></td></tr>
-<tr><td><a href="dotq/#qdd-join-symbols">`.Q.dd`</a></td><td><a href="dotq/#qdd-join-symbols">join symbols</a></td><td><a href="dotq/#qpd-modified-partition-locations">`.Q.pd`</a></td><td><a href="dotq/#qpd-modified-partition-locations">modified partition locations</a></td></tr>
-<tr><td><a href="dotq/#qdef">`.Q.def`</a></td><td><a href="dotq/#qdef"></a></td><td><a href="dotq/#qpf-partition-field">`.Q.pf`</a></td><td><a href="dotq/#qpf-partition-field">partition field</a></td></tr>
-<tr><td><a href="dotq/#qdpft-save-table">`.Q.dpft`</a></td><td><a href="dotq/#qdpft-save-table">save table</a></td><td><a href="dotq/#qpn-partition-counts">`.Q.pn`</a></td><td><a href="dotq/#qpn-partition-counts">partition counts</a></td></tr>
-<tr><td><a href="dotq/#qdpfts-save-table-with-symtable">`.Q.dpfts`</a></td><td><a href="dotq/#qdpfts-save-table-with-symtable">save table with symtable</a></td><td><a href="dotq/#qpt-partitioned-tables">`.Q.pt`</a></td><td><a href="dotq/#qpt-partitioned-tables">partitioned tables</a></td></tr>
-<tr><td><a href="dotq/#qdsftg-load-process-save">`.Q.dsftg`</a></td><td><a href="dotq/#qdsftg-load-process-save">load process save</a></td><td><a href="dotq/#qpv-modified-partition-values">`.Q.pv`</a></td><td><a href="dotq/#qpv-modified-partition-values">modified partition values</a></td></tr>
-<tr><td><a href="dotq/#qen-enumerate-varchar-cols">`.Q.en`</a></td><td><a href="dotq/#qen-enumerate-varchar-cols">enumerate varchar cols</a></td><td><a href="dotq/#qp-segments">`.Q.P`</a></td><td><a href="dotq/#qp-segments">segments</a></td></tr>
-<tr><td><a href="dotq/#qens-enumerate-against-domain">`.Q.ens`</a></td><td><a href="dotq/#qens-enumerate-against-domain">enumerate against domain</a></td><td><a href="dotq/#qpd-partition-locations">`.Q.PD`</a></td><td><a href="dotq/#qpd-partition-locations">partition locations</a></td></tr>
-<tr><td><a href="dotq/#qf-format">`.Q.f`</a></td><td><a href="dotq/#qf-format">format</a></td><td><a href="dotq/#qpv-partition-values">`.Q.PV`</a></td><td><a href="dotq/#qpv-partition-values">partition values</a></td></tr>
-<tr><td><a href="dotq/#qfc-parallel-on-cut">`.Q.fc`</a></td><td><a href="dotq/#qfc-parallel-on-cut">parallel on cut</a></td><td><a href="dotq/#qqp-is-partitioned">`.Q.qp`</a></td><td><a href="dotq/#qqp-is-partitioned">is partitioned</a></td></tr>
-<tr><td><a href="dotq/#qff-append-columns">`.Q.ff`</a></td><td><a href="dotq/#qff-append-columns">append columns</a></td><td><a href="dotq/#qqt-is-table">`.Q.qt`</a></td><td><a href="dotq/#qqt-is-table">is table</a></td></tr>
-<tr><td><a href="dotq/#qfk-foreign-key">`.Q.fk`</a></td><td><a href="dotq/#qfk-foreign-key">foreign key</a></td><td><a href="dotq/#qres-keywords">`.Q.res`</a></td><td><a href="dotq/#qres-keywords">keywords</a></td></tr>
-<tr><td><a href="dotq/#qfmt-format">`.Q.fmt`</a></td><td><a href="dotq/#qfmt-format">format</a></td><td><a href="dotq/#qs-plain-text">`.Q.s`</a></td><td><a href="dotq/#qs-plain-text">plain text</a></td></tr>
-<tr><td><a href="dotq/#qfps-streaming-algorithm">`.Q.fps`</a></td><td><a href="dotq/#qfps-streaming-algorithm">streaming algorithm</a></td><td><a href="dotq/#qsbt-string-backtrace">`.Q.sbt`</a></td><td><a href="dotq/#qsbt-string-backtrace">string backtrace</a></td></tr>
-<tr><td><a href="dotq/#qfs-streaming-algorithm">`.Q.fs`</a></td><td><a href="dotq/#qfs-streaming-algorithm">streaming algorithm</a></td><td><a href="dotq/#qsha1-sha-1-encode">`.Q.sha1`</a></td><td><a href="dotq/#qsha1-sha-1-encode">SHA-1 encode</a></td></tr>
-<tr><td><a href="dotq/#qfsn-streaming-algorithm">`.Q.fsn`</a></td><td><a href="dotq/#qfsn-streaming-algorithm">streaming algorithm</a></td><td><a href="dotq/#qtrp-extend-trap">`.Q.trp`</a></td><td><a href="dotq/#qtrp-extend-trap">extend trap</a></td></tr>
-<tr><td><a href="dotq/#qft-apply-simple">`.Q.ft`</a></td><td><a href="dotq/#qft-apply-simple">apply simple</a></td><td><a href="dotq/#qts-time-and-space">`.Q.ts`</a></td><td><a href="dotq/#qts-time-and-space">time and space</a></td></tr>
-<tr><td><a href="dotq/#qfu-apply-unique">`.Q.fu`</a></td><td><a href="dotq/#qfu-apply-unique">apply unique</a></td><td><a href="dotq/#qty-type">`.Q.ty`</a></td><td><a href="dotq/#qty-type">type</a></td></tr>
-<tr><td><a href="dotq/#qgc-garbage-collect">`.Q.gc`</a></td><td><a href="dotq/#qgc-garbage-collect">garbage collect</a></td><td><a href="dotq/#qu-date-based">`.Q.u`</a></td><td><a href="dotq/#qu-date-based">date based</a></td></tr>
-<tr><td><a href="dotq/#qhdpf-save-tables">`.Q.hdpf`</a></td><td><a href="dotq/#qhdpf-save-tables">save tables</a></td><td><a href="dotq/#qv-value">`.Q.v`</a></td><td><a href="dotq/#qv-value">value</a></td></tr>
-<tr><td><a href="dotq/#qhg-http-get">`.Q.hg`</a></td><td><a href="dotq/#qhg-http-get">HTTP get</a></td><td><a href="dotq/#qv-table-to-dict">`.Q.V`</a></td><td><a href="dotq/#qv-table-to-dict">table to dict</a></td></tr>
-<tr><td><a href="dotq/#qhost-hostname">`.Q.host`</a></td><td><a href="dotq/#qhost-hostname">hostname</a></td><td><a href="dotq/#qview-subview">`.Q.view`</a></td><td><a href="dotq/#qview-subview">subview</a></td></tr>
-<tr><td><a href="dotq/#qhp-http-post">`.Q.hp`</a></td><td><a href="dotq/#qhp-http-post">HTTP post</a></td><td><a href="dotq/#qvp-missing-partitions">`.Q.vp`</a></td><td><a href="dotq/#qvp-missing-partitions">missing partitions</a></td></tr>
-<tr><td><a href="dotq/#qid-sanitize">`.Q.id`</a></td><td><a href="dotq/#qid-sanitize">sanitize</a></td><td><a href="dotq/#qw-memory-stats">`.Q.w`</a></td><td><a href="dotq/#qw-memory-stats">memory stats</a></td></tr>
-<tr><td><a href="dotq/#qind-partitioned-index">`.Q.ind`</a></td><td><a href="dotq/#qind-partitioned-index">partitioned index</a></td><td><a href="dotq/#qx-non-command-parameters">`.Q.x`</a></td><td><a href="dotq/#qx-non-command-parameters">non-command parameters</a></td></tr>
-<tr><td><a href="dotq/#qj10-encode-binhex">`.Q.j10`</a></td><td><a href="dotq/#qj10-encode-binhex">encode binhex</a></td><td><a href="dotq/#qxf-create-file">`.Q.Xf`</a></td><td><a href="dotq/#qxf-create-file">create file</a></td></tr>
+<tr><td><a href="dotq/#qa-lower-case-alphabet">`.Q.a`</a></td><td><a href="dotq/#qa-lower-case-alphabet">lower-case alphabet</a></td>                                                               <td><a href="dotq/#qj10-encode-binhex">`.Q.j10`</a></td><td><a href="dotq/#qj10-encode-binhex">encode binhex</a></td></tr>
+<tr><td><a href="dotq/#qa-upper-case-alphabet">`.Q.A`</a></td><td><a href="dotq/#qa-upper-case-alphabet">upper-case alphabet</a></td>                                                               <td><a href="dotq/#qx10-decode-binhex">`.Q.x10`</a></td><td><a href="dotq/#qx10-decode-binhex">decode binhex</a></td></tr>
+<tr><td><a href="dotq/#qaddmonths">`.Q.addmonths`</a></td><td><a href="dotq/#qaddmonths"></a></td>                                                                                                  <td><a href="dotq/#qj12-encode-base64">`.Q.j12`</a></td><td><a href="dotq/#qj12-encode-base64">encode base64</a></td></tr>
+<tr><td><a href="dotq/#qaddr-ip-address">`.Q.addr`</a></td><td><a href="dotq/#qaddr-ip-address">IP address</a></td>                                                                                 <td><a href="dotq/#qx12-decode-base64">`.Q.x12`</a></td><td><a href="dotq/#qx12-decode-base64">decode base64</a></td></tr>
+<tr><td><a href="dotq/#qbt-backtrace">`.Q.bt`</a></td><td><a href="dotq/#qbt-backtrace">backtrace</a></td>                                                                                          <td><a href="dotq/#qk-version">`.Q.k`</a></td><td><a href="dotq/#qk-version">version</a></td></tr>
+<tr><td><a href="dotq/#qbtoa-b64-encode">`.Q.btoa`</a></td><td><a href="dotq/#qbtoa-b64-encode">b64 encode</a></td>                                                                                 <td><a href="dotq/#ql-load">`.Q.l`</a></td><td><a href="dotq/#ql-load">load</a></td></tr>
+<tr><td><a href="dotq/#qbv-build-vp">`.Q.bv`</a></td><td><a href="dotq/#qbv-build-vp">build vp</a></td>                                                                                             <td><a href="dotq/#qm-long-infinity">`.Q.M`</a></td><td><a href="dotq/#qm-long-infinity">long infinity</a></td></tr>
+<tr><td><a href="dotq/#qchk-fill-hdb">`.Q.chk`</a></td><td><a href="dotq/#qchk-fill-hdb">fill HDB</a></td>                                                                                          <td><a href="dotq/#qmap-maps-partitions">`.Q.MAP`</a></td><td><a href="dotq/#qmap-maps-partitions">maps partitions</a></td></tr>
+<tr><td><a href="dotq/#qcn-count-partitioned-table">`.Q.cn`</a></td><td><a href="dotq/#qcn-count-partitioned-table">count partitioned table</a></td>                                                <td><a href="dotq/#qopt-command-parameters">`.Q.opt`</a></td><td><a href="dotq/#qopt-command-parameters">command parameters</a></td></tr>
+<tr><td><a href="dotq/#qcf-create-empty-nested-char-file">`.Q.Cf`</a></td><td><a href="dotq/#qcf-create-empty-nested-char-file">create empty nested char file</a></td>                              <td><a href="dotq/#qpar-locate-partition">`.Q.par`</a></td><td><a href="dotq/#qpar-locate-partition">locate partition</a></td></tr>
+<tr><td><a href="dotq/#qd-partitions">`.Q.D`</a></td><td><a href="dotq/#qd-partitions">partitions</a></td>                                                                                          <td><a href="dotq/#qpd-modified-partition-locations">`.Q.pd`</a></td><td><a href="dotq/#qpd-modified-partition-locations">modified partition locations</a></td></tr>
+<tr><td><a href="dotq/#qdd-join-symbols">`.Q.dd`</a></td><td><a href="dotq/#qdd-join-symbols">join symbols</a></td>                                                                                 <td><a href="dotq/#qpf-partition-field">`.Q.pf`</a></td><td><a href="dotq/#qpf-partition-field">partition field</a></td></tr>
+<tr><td><a href="dotq/#qdef">`.Q.def`</a></td><td><a href="dotq/#qdef"></a></td>                                                                                                                    <td><a href="dotq/#qpn-partition-counts">`.Q.pn`</a></td><td><a href="dotq/#qpn-partition-counts">partition counts</a></td></tr>
+<tr><td><a href="dotq/#qdpft-save-table">`.Q.dpft`</a></td><td><a href="dotq/#qdpft-save-table">save table</a></td>                                                                                 <td><a href="dotq/#qpt-partitioned-tables">`.Q.pt`</a></td><td><a href="dotq/#qpt-partitioned-tables">partitioned tables</a></td></tr>
+<tr><td><a href="dotq/#qdpfts-save-table-with-symtable">`.Q.dpfts`</a></td><td><a href="dotq/#qdpfts-save-table-with-symtable">save table with symtable</a></td>                                    <td><a href="dotq/#qpv-modified-partition-values">`.Q.pv`</a></td><td><a href="dotq/#qpv-modified-partition-values">modified partition values</a></td></tr>
+<tr><td><a href="dotq/#qdsftg-load-process-save">`.Q.dsftg`</a></td><td><a href="dotq/#qdsftg-load-process-save">load process save</a></td>                                                         <td><a href="dotq/#qp-segments">`.Q.P`</a></td><td><a href="dotq/#qp-segments">segments</a></td></tr>
+<tr><td><a href="dotq/#qen-enumerate-varchar-cols">`.Q.en`</a></td><td><a href="dotq/#qen-enumerate-varchar-cols">enumerate varchar cols</a></td>                                                   <td><a href="dotq/#qpd-partition-locations">`.Q.PD`</a></td><td><a href="dotq/#qpd-partition-locations">partition locations</a></td></tr>
+<tr><td><a href="dotq/#qens-enumerate-against-domain">`.Q.ens`</a></td><td><a href="dotq/#qens-enumerate-against-domain">enumerate against domain</a></td>                                          <td><a href="dotq/#qpv-partition-values">`.Q.PV`</a></td><td><a href="dotq/#qpv-partition-values">partition values</a></td></tr>
+<tr><td><a href="dotq/#qf-format">`.Q.f`</a></td><td><a href="dotq/#qf-format">format</a></td>                                                                                                      <td><a href="dotq/#qqp-is-partitioned">`.Q.qp`</a></td><td><a href="dotq/#qqp-is-partitioned">is partitioned</a></td></tr>
+<tr><td><a href="dotq/#qfc-parallel-on-cut">`.Q.fc`</a></td><td><a href="dotq/#qfc-parallel-on-cut">parallel on cut</a></td>                                                                        <td><a href="dotq/#qqt-is-table">`.Q.qt`</a></td><td><a href="dotq/#qqt-is-table">is table</a></td></tr>
+<tr><td><a href="dotq/#qff-append-columns">`.Q.ff`</a></td><td><a href="dotq/#qff-append-columns">append columns</a></td>                                                                           <td><a href="dotq/#qres-keywords">`.Q.res`</a></td><td><a href="dotq/#qres-keywords">keywords</a></td></tr>
+<tr><td><a href="dotq/#qfk-foreign-key">`.Q.fk`</a></td><td><a href="dotq/#qfk-foreign-key">foreign key</a></td>                                                                                    <td><a href="dotq/#qs-plain-text">`.Q.s`</a></td><td><a href="dotq/#qs-plain-text">plain text</a></td></tr>
+<tr><td><a href="dotq/#qfmt-format">`.Q.fmt`</a></td><td><a href="dotq/#qfmt-format">format</a></td>                                                                                                <td><a href="dotq/#qsbt-string-backtrace">`.Q.sbt`</a></td><td><a href="dotq/#qsbt-string-backtrace">string backtrace</a></td></tr>
+<tr><td><a href="dotq/#qfps-streaming-algorithm">`.Q.fps`</a></td><td><a href="dotq/#qfps-streaming-algorithm">streaming algorithm</a></td>                                                         <td><a href="dotq/#qsha1-sha-1-encode">`.Q.sha1`</a></td><td><a href="dotq/#qsha1-sha-1-encode">SHA-1 encode</a></td></tr>
+<tr><td><a href="dotq/#qfs-streaming-algorithm">`.Q.fs`</a></td><td><a href="dotq/#qfs-streaming-algorithm">streaming algorithm</a></td>                                                            <td><a href="dotq/#qtrp-extend-trap">`.Q.trp`</a></td><td><a href="dotq/#qtrp-extend-trap">extend trap</a></td></tr>
+<tr><td><a href="dotq/#qfsn-streaming-algorithm">`.Q.fsn`</a></td><td><a href="dotq/#qfsn-streaming-algorithm">streaming algorithm</a></td>                                                         <td><a href="dotq/#qts-time-and-space">`.Q.ts`</a></td><td><a href="dotq/#qts-time-and-space">time and space</a></td></tr>
+<tr><td><a href="dotq/#qft-apply-simple">`.Q.ft`</a></td><td><a href="dotq/#qft-apply-simple">apply simple</a></td>                                                                                 <td><a href="dotq/#qty-type">`.Q.ty`</a></td><td><a href="dotq/#qty-type">type</a></td></tr>
+<tr><td><a href="dotq/#qfu-apply-unique">`.Q.fu`</a></td><td><a href="dotq/#qfu-apply-unique">apply unique</a></td>                                                                                 <td><a href="dotq/#qu-date-based">`.Q.u`</a></td><td><a href="dotq/#qu-date-based">date based</a></td></tr>
+<tr><td><a href="dotq/#qgc-garbage-collect">`.Q.gc`</a></td><td><a href="dotq/#qgc-garbage-collect">garbage collect</a></td>                                                                        <td><a href="dotq/#qv-value">`.Q.v`</a></td><td><a href="dotq/#qv-value">value</a></td></tr>
+<tr><td><a href="dotq/#qhdpf-save-tables">`.Q.hdpf`</a></td><td><a href="dotq/#qhdpf-save-tables">save tables</a></td>                                                                              <td><a href="dotq/#qv-table-to-dict">`.Q.V`</a></td><td><a href="dotq/#qv-table-to-dict">table to dict</a></td></tr>
+<tr><td><a href="dotq/#qhg-http-get">`.Q.hg`</a></td><td><a href="dotq/#qhg-http-get">HTTP get</a></td>                                                                                             <td><a href="dotq/#qview-subview">`.Q.view`</a></td><td><a href="dotq/#qview-subview">subview</a></td></tr>
+<tr><td><a href="dotq/#qhost-hostname">`.Q.host`</a></td><td><a href="dotq/#qhost-hostname">hostname</a></td>                                                                                       <td><a href="dotq/#qvp-missing-partitions">`.Q.vp`</a></td><td><a href="dotq/#qvp-missing-partitions">missing partitions</a></td></tr>
+<tr><td><a href="dotq/#qhp-http-post">`.Q.hp`</a></td><td><a href="dotq/#qhp-http-post">HTTP post</a></td>                                                                                          <td><a href="dotq/#qw-memory-stats">`.Q.w`</a></td><td><a href="dotq/#qw-memory-stats">memory stats</a></td></tr>
+<tr><td><a href="dotq/#qid-sanitize">`.Q.id`</a></td><td><a href="dotq/#qid-sanitize">sanitize</a></td>                                                                                             <td><a href="dotq/#qx-non-command-parameters">`.Q.x`</a></td><td><a href="dotq/#qx-non-command-parameters">non-command parameters</a></td></tr>
+<tr><td><a href="dotq/#qind-partitioned-index">`.Q.ind`</a></td><td><a href="dotq/#qind-partitioned-index">partitioned index</a></td>                                                               <td><a href="dotq/#qxf-create-file">`.Q.Xf`</a></td><td><a href="dotq/#qxf-create-file">create file</a></td></tr>
 </table>
 
 

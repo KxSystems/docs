@@ -1,3 +1,9 @@
+---
+title: Not Equal – Reference – kdb+ and q documentation
+description: Not Equal is a q operator that flags whether its arguments have the same value.
+author: Stephen Taylor
+keywords: compare, equal, kdb+, q
+---
 # `<>` Not Equal
 
 

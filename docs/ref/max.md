@@ -1,8 +1,11 @@
 ---
+title: max, maxs, mmax – Reference – kdb+ and q documentation
+description: max, maxs, and mmax are q keywords that return respectively the largest item from a list or dictionary, the cumulative maximums, and the moving maximums.
+author: Stephen Taylor
 keywords: kdb+, math, mathematics, maximum, maximums, moving, q, statistics
 ---
-
 # `max`, `maxs`, `mmax`
+
 
 
 
@@ -83,3 +86,14 @@ Knowledge Base:
 Basics: 
 [Comparison](../basics/comparison.md), 
 [Mathematics](../basics/math.md)
+
+
+## Aggregating nulls
+
+`avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.
+But for nested `x` these functions preserve the nulls.
+
+```q
+q)max (1 2;0N 4)
+1 4
+```

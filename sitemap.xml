@@ -2,2062 +2,2122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://code.kx.com/v2/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/github/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/support/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://code.kx.com/v2/platform/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <loc>https://code.kx.com/v2/devtools/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/wiki/</loc>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/install/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/install/linux/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/install/macos/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/install/windows/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/install/digitalocean/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/licensing/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/brief-introduction/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/dicts-tables/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/q-by-examples/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/q-for-all/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/maxims/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/names/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/default-arguments/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/braces/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/indentation/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/whitespace/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/parentheses/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/line-length/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/internal-assignment/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/function-length/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/function-arguments/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/modularity/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/communication-lines/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/comments/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/conditionals/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/de-looping/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/engine-design/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/composition/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/application/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/defaults/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/projection/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/which-each/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/whats-in-a-script/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/sam/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/new-wine/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/style/omitted-pages/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/shifts-scans/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/startingkdb/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/startingkdb/language/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/startingkdb/ipc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/startingkdb/tables/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/startingkdb/hdb/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/startingkdb/tick/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/views/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/learn/archive/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/application/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/atomic/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/casting/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/comparison/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/conformable/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/control/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/debug/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/dictsandtables/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/enumerations/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/environment/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/exposed-infrastructure/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/function-notation/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/funsql/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/iteration/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/ipc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/joins/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/listening-port/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/logic/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/math/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/metadata/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/namespaces/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/peach/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/parsetrees/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/precision/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/qsql/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/search/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/selection/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/sort/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/strings/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/syntax/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/variadic/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/cmdline/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/datatypes/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/errors/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/files/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/glossary/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/internal/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/iterators/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/maps/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/accumulators/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/abs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/aj/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/all-any/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/and/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/asc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/asof/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/attr/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/avg/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/bin/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ceiling/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/count/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cols/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cor/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cos/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cov/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cross/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/csv/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cut/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/delete/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/deltas/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/desc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dev/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/differ/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/distinct/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/div/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dsave/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/each/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ej/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ema/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/enlist/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/eval/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/except/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/exec/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/exp/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/exit/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/fby/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/fill/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/first/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/fkeys/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/flip/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/floor/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/get/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/getenv/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/group/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/gtime/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/handles/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ij/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/in/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/insert/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/inter/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/inv/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/key/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/keys/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/like/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/lj/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/load/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/log/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/lower/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/lsq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/max/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/md5/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/med/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/meta/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/min/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/mmu/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/mod/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/neg/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/next/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/not/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/null/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/or/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/over/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/parse/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/pj/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/prd/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/prior/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/rand/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/rank/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ratios/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/raze/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/read0/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/read1/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/reciprocal/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/reverse/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/rotate/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/save/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/select/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/show/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/signum/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/sin/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/sqrt/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ss/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/string/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/sublist/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/sum/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/sv/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/system/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/tables/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/tan/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/til/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/trim/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/type/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/uj/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/union/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/ungroup/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/update/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/upsert/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/value/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/var/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/view/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/vs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/where/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/within/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/wj/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/xbar/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/xgroup/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/xrank/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/overloads/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/add/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/amend/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/apply/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cast/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/coalesce/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/compose/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cond/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/cut/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/deal/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/delete/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/display/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dict/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/divide/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/display/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dynamic-load/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/drop/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/enkey/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/enumerate/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/enumeration/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/enum-extend/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/equal/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/exec/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/file-binary/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/file-text/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/fill/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/find/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/flip-splayed/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/greater/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/greater-than/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/identity/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/join/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/less-than/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/lesser/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/match/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/mmu/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/multiply/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/not-equal/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/pad/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/select/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/set-attribute/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/simple-exec/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/signal/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/subtract/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/take/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/tok/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/update/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/vector-conditional/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/do/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/if/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/while/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/doth/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dotj/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dotq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ref/dotz/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.6/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.5/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.4/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.3/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.2/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.1/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn3.0/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn2.8/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn2.7/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn2.6/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn2.5/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/ChangesIn2.4/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/releases/withdrawn/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/basics/syscmds/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/fusion/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/ffi/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/java-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/jupyterq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/kafka/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/embedpy/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/pyq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/pyq/install/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/pyq/user-guide/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/pyq/reference/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/pyq/whats-new/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/pyq/history/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/with-r/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/c-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/capiref/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/csharp-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/excel-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/j-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/jdbc-client-for-kdb/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/matlab-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/odbc-simba/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/q-server-for-odbc3/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/perl-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/scala-client-for-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/q-client-for-bloomberg/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/using-c-functions/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/gpus/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/q-client-for-j/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/interfaces/q-client-for-odbc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-a-ebs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-b-efs-nfs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-c-asg/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-d-mapr/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-e-goofys/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-f-s3fs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-g-s3ql/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-h-objectivefs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-i-wekaio-matrix/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/aws/app-j-quobyte/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/cloud/gcpm/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/setup/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/embedpy/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/embedpy/userguide/</loc>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/embedpy/faq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/embedpy/reference/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/jupyterq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/jupyterq/notebooks/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/jupyterq/faq/</loc>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/notebooks/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/toolkit/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/toolkit/utilities/metric/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/toolkit/utilities/preproc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/toolkit/utilities/util/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/toolkit/fresh/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/toolkit/xval/</loc>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/ml/nlp/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/nlp/userguide/preproc/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/nlp/userguide/comparisons/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/nlp/userguide/clustering/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/nlp/userguide/analysis/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/nlp/userguide/utils/</loc>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/ml/nlp/userguide/emails/</loc>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/alternative-in-memory-layouts/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/authentication/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/bcp/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/callbacks/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/chained-tickerplant/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/client-server/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/compacting-hdb-sym/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/corporate-actions/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/cpu-affinity/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/custom-web/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/daemon/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/deferred-response/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/faq/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/faq-listbox/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/file-compression/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/firewalling/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/geospatial/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/inetd/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/ipc/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/kdb-tick/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/lp/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/linking-columns/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/linux-production/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/load-balancing/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/loading-from-large-files/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/logging/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/multithreaded-input/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/named-pipes/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://code.kx.com/v2/kb/odbc/</loc>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/partition/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/performance-tips/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/pivoting-tables/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/programming-examples/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/programming-idioms/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/publish-subscribe/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/regex/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/server-calling-client/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/splayed-schema-change/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/splayed-tables/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/splaying-large-files/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/ssl/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/temporal-data/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/timezones/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/unicode/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/unit-tests/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/using-dotz/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/w-q/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/websockets/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/kb/windows-service/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/blockchain/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/gui/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/data-visualization/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/disaster-recovery/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/embedpy-lasso/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/exoplanets/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/iterators/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/java-api/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/lightning-tickerplants/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/market-fragmentation/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/multi-partitioned-dbs/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/neural-networks/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/query-routing/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/signal-processing/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/space-weather/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/symfiles/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/wp/websockets/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/kxtechnology/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/search/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/site-news/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/thissite/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/sg/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/sg/characters/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/sg/miscellaneous/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/sg/style/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/sg/typography/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/about/sg/terminology/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/license/aws/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://code.kx.com/v2/license/gcp/</loc>
-     <lastmod>2019-04-30</lastmod>
+     <lastmod>2019-07-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

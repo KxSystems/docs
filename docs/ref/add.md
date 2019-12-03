@@ -1,8 +1,10 @@
 ---
+title: Add – Reference – kdb+ and q documentation
+description: A q operator that returns the sum of two numeric, boolean or temporal arguments
 keywords: add, kdb+, mathematics, plus, q, sum
 ---
-
 # `+` Add
+
 
 
 Syntax: `x+y`, `+[x;y]` 

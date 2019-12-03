@@ -1,11 +1,14 @@
 ---
+title: tan, atan – Reference – kdb+ and q documentation
+description: tand and atan are q keyowsrd that return the tangent or arctangent of their argument.
+author: Stephen Taylor
 keywords: atan, arctan, tan, tangent, kdb+, math, mathematics, q, trigonometry
 ---
-
 # `tan`, `atan`
 
-_Tangent and arctangent_
 
+
+_Tangent and arctangent_
 
 ## `tan`
 

@@ -1,8 +1,11 @@
 ---
+title: asc, iasc, xasc – Reference – kdb+ and q documentation
+description: asc is a q keyword that returns a sortable argument in ascending order and with the s attribute set; iasc grades its items into ascending order; and xasc sorts a table by specified columns.
+author: Stephen Taylor
 keywords: asc, ascending, grade, iasc, kdb+, q, sort, table, xasc
 ---
-
 # `asc`, `iasc`, `xasc`
+
 
 _Sort and grade: ascending_
 
@@ -16,20 +19,35 @@ Syntax: `asc x`, `asc[x]`
 
 Where `x` is a:
 
--   **vector**, returns its items in ascending order of value, with the `` `s# `` attribute set, indicating the list is sorted
+-   **vector**, returns its items in ascending order of value, with the [sorted attribute](set-attribute.md) set, indicating the list is sorted; where the argument vector is found to be in ascending order already, it is assigned the sorted attribute
 -   **mixed list**, returns the items sorted within datatype
--   **dictionary**, returns it sorted by the values and with the `` `s# `` attribute set
--   **table**, returns it sorted by the first non-key column and with the `` `s# `` attribute set
+-   **dictionary**, returns it sorted by the values and with the sorted attribute set
+-   **table**, returns it sorted by the first non-key column and with the partitioned attribute set on it
 
 The function is uniform. 
 The sort is stable: it preserves order between equals.
 
+
+### Vector
+
 ```q
 q)asc 2 1 3 4 2 1 2
 `s#1 1 2 2 2 3 4
+
+q)a:0 1
+q)b:a
+q)asc b  / result has sorted attribute
+`s#0 1
+q)b      / argument was already in ascending order
+`s#0 1
+q)a      / b was a shallow copy of a
+`s#0 1
 ```
 
-In a mixed list the boolean is returned first, then the sorted integers, the sorted characters, and then the date.
+
+### Mixed list
+
+In the example below, the boolean is returned first, then the sorted integers, the sorted characters, and then the date.
 
 ```q
 q)asc (1;1b;"b";2009.01.01;"a";0)
@@ -41,7 +59,7 @@ q)asc (1;1b;"b";2009.01.01;"a";0)
 2009.01.01
 ```
 
-Note how the type numbers are used in a mixed list.
+Note how the type numbers are used.
 
 ```q
 q)asc(2f;3j;4i;5h)
@@ -49,32 +67,62 @@ q)asc(2f;3j;4i;5h)
 4i
 3
 2f
-q){(asc;x iasc abs t)fby t:type each x}(2f;3j;4i;5h)  / kind of what asc does
+q){(asc;x iasc abs t)fby t:type each x}(2f;3j;4i;5h)  / compare asc
 5h
 4i
 3
 2f
 ```
 
-Sorting a table:
+
+### Table
 
 ```q
-q)t:([]a:3 4 1;b:`a`d`s)
+q)/ simple table
+q)t:([]a:3 4 1;b:`a`d`s)  
 q)asc t
 a b
 ---
 1 s
 3 a
 4 d
+q)meta asc t
+c| t f a
+-| -----
+a| j   p
+b| s
 
-q)a:0 1
-q)b:a
-q)asc b
-`s#0 1
-q)a
-`s#0 1
+q)/ keyed table
+q)show kt:([sym:5?`3];c1:5?10;c2:5?10)
+sym| c1 c2
+---| -----
+enb| 6  3
+emo| 6  9
+ged| 4  5
+kkc| 7  9
+jma| 8  7
+q)asc kt
+sym| c1 c2
+---| -----
+ged| 4  5
+enb| 6  3
+emo| 6  9
+kkc| 7  9
+jma| 8  7
+
+q)meta kt
+c  | t f a
+---| -----
+sym| s
+c1 | j
+c2 | j
+q)meta asc kt
+c  | t f a
+---| -----
+sym| s
+c1 | j   p
+c2 | j
 ```
-
 
 
 ## `iasc`
@@ -118,7 +166,7 @@ Where `x` is a symbol vector of column names defined in table `y`, which is pass
 `y` sorted in ascending order by `x`. 
 The sort is by the first column specified, then by the second column within the first, and so on.
 
-The `` `s# `` attribute is set on the first column given (if possible).
+The sorted attribute is set on the first column given (if possible).
 The sort is stable, i.e. it preserves order amongst equals.
 
 ```q
@@ -175,6 +223,12 @@ city  | s
 ```
 
 
+**Duplicate column names** `xasc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
+
+<i class="far fa-hand-point-right"></i>
+[`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
+
+
 ### Sorting data on disk
 
 `xasc` can sort data on disk directly, without loading the entire table into memory.
@@ -197,9 +251,9 @@ g 10 1
 a 43 2
 s 13 3
 a 24 4
-q)\l dat/t                      / load table from disk
-`t
-q)t                             / table is sorted
+q)\l dat/t                       / load table from disk
+`t 
+q)t                              / table is sorted
 b c  g
 ------
 g 10 1
@@ -210,13 +264,13 @@ a 43 2
 ```
 
 
-!!! warning "Duplicate keys or column names"
+!!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
 
 <i class="far fa-hand-point-right"></i>
-[`desc`, `idesc`, `xdesc`](desc.md)  
+[`desc`, `idesc`, `xdesc`](desc.md),
+[Set Attribute](set-attribute.md)<br>
 Basics: [Dictionaries & tables](../basics/dictsandtables.md), 
 [Sorting](../basics/sort.md)
 

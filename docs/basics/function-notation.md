@@ -1,14 +1,17 @@
 ---
+title: Function notation – Basics – kdb+ and q documentation
+description: Function notation enables the definition of functions. Function notation is also known as the lambda notation and the defined functions as lambdas.
+author: Stephen Taylor
 keywords: abort, control, expression, function, kdb+, lambda, multiline, notation, q, rank, signal, signed, unsigned
 ---
-
 # Function notation
 
 
 
 
+
 Function notation enables the definition of functions.
-Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_.
+Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_. 
 
 !!! note "Anonymity"
 
@@ -16,6 +19,8 @@ Function notation is also known as the _lambda notation_ and the defined functio
 
     In this usage a lambda assigned a name is still a lambda.
     For example, if `plus:{x+y}`, then `plus` is a lambda.
+
+    Lambdas have datatype 100. 
 
 
 A lambda is defined as a pair of braces (curly brackets) enclosing an optional _signature_ (a list of up to 8 argument names) followed by a zero or more expressions separated by semicolons. 
@@ -127,6 +132,25 @@ q){a:1000;f x}1  / f reads a in root
 43
 ```
 
+Local variables are identified on parsing and initialized as `()` (empty list). Assignments within code branches (never recommended) can produce unexpected results. 
+
+```q
+q)t:([]0 1)
+q){select from t}[]                       / global t
+x
+-
+0
+1
+q){if[x;t:([]`a`b)];select from t} 1b     / local t
+x
+-
+a
+b
+q) {if[x;t:([]`a`b)];select from t} 0b     / local t is ()
+'type
+  [4]  {if[x;t:([]`a`b)];select from t}
+                         ^
+```
 
 ## Multiline definition
 
@@ -152,8 +176,8 @@ A lambda definition can include up to:
 &nbsp;    | in use | current     | <V3.6 2017.09.26
 ----------|--------|-------------|------------------
 arguments |        | 8           | 8
-locals    | $m$    | 110         | 31
-globals   | $n$    | 110         | 23
+locals    | $m$    | 110         | 23
+globals   | $n$    | 110         | 31
 constants |        | $240-(m+n)$ | $95-(m+n)$
 
 <i class="far fa-hand-point-right"></i>

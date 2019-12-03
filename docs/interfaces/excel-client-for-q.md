@@ -1,8 +1,10 @@
 ---
-keywords: api, excel, interface, kdb+, library, q
+title: Excel client for kdb+ – Interfaces – kdb+ and q documentation
+description: How to connect a Microsoft Excel instance to a kdb+ server process
+keywords: api, excel, interface, kdb+, library, microsoft, q
 ---
+# ![Microsoft Excel](img/excel.png) Microsoft Excel™ client for kdb+
 
-# ![Microsoft Excel](img/excel.png) Excel client for kdb+
 
 
 ## Interfacing via HTTP and CSV files
@@ -64,8 +66,10 @@ q)save `:output.csv
 
 ## Excel automation add-ins
 
-With Automation add-ins for Excel, you can use a C\# function in a cell formula. This function can communicate with a kdb+ server process.  
-<i class="far fa-hand-point-right"></i> <http://msdn.microsoft.com/en-us/library/ms173189(VS.80).aspx>
+With Automation add-ins for Excel, you can use a C\# function in a cell formula. This function can communicate with a kdb+ server process.
+
+<i class="far fa-hand-point-right"></i> 
+[Writing Custom Excel Worksheet Functions in C\#](https://blogs.msdn.microsoft.com/gabhan_berry/2008/04/07/writing-custom-excel-worksheet-functions-in-c/)
 
 
 ## Real-time interface via Excel RTD
@@ -79,7 +83,7 @@ This server is a .NET application, and it communicates directly with a q Ticker 
 
 The RTD server can be downloaded from 
 <i class="fab fa-github"></i> 
-[CharlesSkelton/excelrtd](http://github.com/CharlesSkelton/excelrtd)
+[CharlesSkelton/excelrtd](https://github.com/CharlesSkelton/excelrtd)
 
 To install, run the `setup.exe` program and follow the instructions. You will need the Microsoft .NET Runtime installed.
 

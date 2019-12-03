@@ -1,8 +1,11 @@
 ---
+title: Overloaded operators – Reference – kdb+ and q documentation
+description: Many non-alphabetic keyboard characters are overloaded by q. This page tabulates their different forms. 
+author: Stephen Taylor
 keywords: at, backslash, bang, dash, dot, dollar, hash, kdb+, operator, overload, pound, q, query, quote, quote-colon, slash, underscore, unary
 ---
-
 # Overloaded operators
+
 
 
 
@@ -122,13 +125,15 @@ rank | example         | semantics
 rank | example                     | semantics
 :---:|-----------------------------|----------------------------------------------------
 2    | `"abcdef"?"cab"`            | [Find](find.md) `y` in `x`
-2    | `10?1000`, `5?01b`          | [Roll](deal.md#roll)
-2    | `-10?1000`, ``-1?`yes`no``  | [Deal](deal.md#deal)
+2    | `10?1000`, `5?01b`          | [Roll](deal.md#roll-and-deal)
+2    | `-10?1000`, ``-1?`yes`no``  | [Deal](deal.md#roll-and-deal)
 2    | `0N?1000`, ``0N?`yes`no``   | [Permute](deal.md#permute)
 2    | `x?v`                       | extend an enumeration: [Enum Extend](enum-extend.md)
-3    | ?[11011b;"black";"flock"]   | [Vector Conditional](vector-conditional.md)
+3    | `?[11011b;"black";"flock"]`   | [Vector Conditional](vector-conditional.md)
+3    | `?[t;i;p]`                  | [Simple Exec](../basics/funsql.md#simple-exec)
 4    | `?[t;b;c;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)
-4    | `?[t;i;x]`                  | [Simple exec](../basics/funsql.md#simple-exec)
+5    | `?[t;b;c;a;n]`              | [Select](../basics/funsql.md#rank-5)
+6    | `?[t;b;c;a;n;(g;cn)]`       | [Select](../basics/funsql.md#rank-6)
 
 
 ## `'` quote

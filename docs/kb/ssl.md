@@ -1,8 +1,10 @@
 ---
-keywords: kdb+, q, ssl, tls
+title: SSL/TLS – Knowledge Base – kdb+ and q documentation
+description: How to use Secure Sockets Layer(SSL)/Transport Layer Security(TLS) to encrypt connections using the OpenSSL libraries.
+keywords: kdb+, openssl, q, ssl, tls
 ---
-
 # SSL/TLS
+
 
 
 
@@ -52,19 +54,27 @@ mkdir -f $HOME/certs && cd $HOME/certs
 
 # Create CA certificate
 openssl genrsa 2048 > ca-key.pem
-openssl req -new -x509 -nodes -days 3600 -key ca-key.pem -out ca.pem -extensions usr_cert -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com'
+openssl req -new -x509 -nodes -days 3600 \
+    -key ca-key.pem -out ca.pem -extensions usr_cert \
+    -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com'
 
 # Create server certificate, remove passphrase, and sign it
 # server-crt.pem = public key, server-key.pem = private key
-openssl req -newkey rsa:2048 -days 3600 -nodes -keyout server-key.pem -out server-req.pem -extensions usr_cert -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com'
+openssl req -newkey rsa:2048 -days 3600 -nodes \
+    -keyout server-key.pem -out server-req.pem -extensions usr_cert \
+    -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com'
 openssl rsa -in server-key.pem -out server-key.pem
-openssl x509 -req -in server-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out server-crt.pem -extensions usr_cert
+openssl x509 -req -in server-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem \
+    -set_serial 01 -out server-crt.pem -extensions usr_cert
 
 # Create client certificate, remove passphrase, and sign it
 # client-crt.pem = public key, client-key.pem = private key
-openssl req -newkey rsa:2048 -days 3600  -nodes -keyout client-key.pem -out client-req.pem -extensions usr_cert -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com'
+openssl req -newkey rsa:2048 -days 3600  -nodes \
+    -keyout client-key.pem -out client-req.pem -extensions usr_cert \
+    -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com'
 openssl rsa -in client-key.pem -out client-key.pem
-openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem -set_serial 01 -out client-crt.pem -extensions usr_cert
+openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem \
+    -set_serial 01 -out client-crt.pem -extensions usr_cert
 ```
 
 !!! warning "Secure your certificates"
@@ -82,19 +92,28 @@ and you may override this via the environment variable `SSL_CIPHER_LIST`, to red
 e.g.
 
 ```bash
-$ export SSL_CIPHER_LIST='ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS'
+$ export SSL_CIPHER_LIST='ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY
+1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES2
+56-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES
+256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AE
+S128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384
+:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES1
+28-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-
+RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES12
+8-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS'
 ```
 
 If you select a set which is not compatible with the peer process, you’ll observe a message at the q console similar to the following.
 
-```q
-140735201689680:error:1408A0C1:SSL routines:ssl3_get_client_hello:no shared cipher:s3_srvr.c:1417:
+```txt
+140735201689680:error:1408A0C1:SSL routines:ssl3_get_client_hello:no 
+shared cipher:s3_srvr.c:1417:
 ```
 
 
 ## TLS Server Mode
 
-Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option](../basics/cmdline.md#-e-error-traps) `-E 0` (plain), `1` (plain & TLS), `2` (TLS only). e.g.
+Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option](../basics/cmdline.md#-e-tls-server-mode) `-E 0` (plain), `1` (plain & TLS), `2` (TLS only). e.g.
 
 ```bash
 $ q -u 1 -E 1 -p 5000
@@ -197,4 +216,5 @@ The following associated features are not yet implemented for TLS:
 1.   multithreaded input mode
 1.   use within slave threads
 1.   `hopen` timeout (implemented in V3.5)
-1.   OpenSSL 1.1
+
+OpenSSL 1.1 is supported since V3.7t 2019.10.22.

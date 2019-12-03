@@ -1,3 +1,9 @@
+---
+title: Installing under macOS – Learn – kdb+ and q documentation
+description: How to install kdb+ under macOS
+author: Stephen Taylor
+keywords: install, kdb+, macos, q
+---
 # <i class="fab fa-apple"></i> Installing under macOS
 
 
@@ -6,6 +12,8 @@
 After downloading, if necessary, unzip the archive. A new folder `q` will appear in your `Downloads` folder.
 
 Next perform the _Minimum install and launch_. We then strongly recommend continuing to [Complete install and launch](#complete-install-and-launch).
+
+!!! warning "macOS Catalina (10.15) ended macOS support for 32-bit applications."
 
 
 ## <i class="fas fa-rocket"></i> Minimum install and launch
@@ -65,12 +73,24 @@ $
 
 If Rlwrap is already installed you can go on to the next step.
 
-Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using your package manager. (Probably either [MacPorts](https://www.macports.org/install.php) or [Homebrew](http://brew.sh/))
+Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using your package manager. (Probably either [MacPorts](https://www.macports.org/install.php) or [Homebrew](https://brew.sh/))
 
 
 ### <i class="fas fa-code"></i> Edit your profile
 
-In Terminal (Bash), open your profile `~/.bashrc` with TextEdit (or your favourite text editor),
+!!! info "Environment variables"
+
+    The q interpreter refers to environment variable `QHOME` for the location of certain files. 
+    Absent this variable, it will guess based on the path to the interpreter. 
+    Better to set the variable explicitly. 
+
+    If you run just one version of kdb+, it might suit you to define `QHOME` in your Bash profile and export it for use by non-console processes. 
+
+    Otherwise set `QHOME` with each invocation of the interpreter, as shown below. 
+
+    The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
+
+In Terminal (Bash), open your profile `~/.bashrc` with TextEdit, Sublime Text or your favourite text editor,
 
 ```bash
 $ open -a "Sublime Text" .bashrc
@@ -128,6 +148,79 @@ $
 [Obtain and install](../licensing.md) one.
 
 You’re done. You have completely installed kdb+. 
+
+
+
+## <i class="fas fa-code"></i> Installing multiple versions
+
+For any version of q, 64-bit and 32-bit interpreter binaries share the same `q.k` file, located in `QHOME` for that version. 
+
+All versions share the same `k4.lic` license-key file. 
+
+Arrange your files as in this example:
+
+```txt
+$ tree q
+q
+├── k4.lic
+├── phrases.q
+├── sp.q
+├── trade.q
+├── v3.5
+│   ├── m32
+│   │   └── q
+│   ├── m64
+│   │   └── q
+│   └── q.k
+└── v3.6
+    ├── m64
+    │   └── q
+    └── q.k
+```
+
+In `.bash_profile` export `QLIC` and define aliases as in this example:
+
+```bash
+# versions of q
+export QLIC=~/q
+alias    q='export QHOME=~/q/v3.6; rlwrap -r $QHOME/m64/q'
+alias q3.5='export QHOME=~/q/v3.5; rlwrap -r $QHOME/m64/q'
+alias  q32='export QHOME=~/q/v3.5; rlwrap -r $QHOME/m32/q'
+```
+
+In a command shell:
+
+```bash
+$ q32
+KDB+ 3.5 2019.05.15 Copyright (C) 1993-2019 Kx Systems
+m32/ 4()core 8192MB sjt mint.local 192.168.0.10 EXPIRE 2020.04.01 stephen@kx.com #55032
+
+q)\\
+$
+```
+
+The 32-bit interpreter finds and reports the license-key file even though it will run without it. 
+
+```bash
+$ q
+KDB+ 3.6 2019.03.07 Copyright (C) 1993-2019 Kx Systems
+m64/ 4()core 8192MB sjt mint.local 192.168.0.10 EXPIRE 2020.04.01 stephen@kx.com #55032
+
+q)\pwd
+"/Users/sjt"
+q)\echo $QLIC
+"/Users/sjt/q"
+q)\echo $QHOME
+"/Users/sjt/q/v3.6"
+q)\l ../sp.q
++`p`city!(`p$`p1`p2`p3`p4`p5`p6`p1`p2;`london`london`london`london`london`lon..
+(`s#+(,`color)!,`s#`blue`green`red)!+(,`qty)!,900 1000 1200
++`s`p`qty!(`s$`s1`s1`s1`s2`s3`s4;`p$`p1`p4`p6`p2`p2`p4;300 200 100 400 200 300)
+q)
+```
+
+Loading `sp.q`, a sibling of `QHOME`, requires the relative path specified. 
+
 
 
 ## <i class="far fa-hand-point-right"></i> What’s next?

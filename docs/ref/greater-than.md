@@ -1,14 +1,16 @@
 ---
-title: Greater Than, At Least
+title: Greater Than, At Least – Reference – kdb+ and q documentation
+description: Greater Than and At Least are q operators that compare their arguments.
+author: Stephen Taylor
 keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
 ---
-
 # `>` Greater Than <br>`>=` At Least
 
 
 
-Syntax: `x > y` , `<[x;y]`  
-Syntax: `x >= y`, `<=[x;y]`
+
+Syntax: `x > y` , `>[x;y]`  
+Syntax: `x >= y`, `>=[x;y]`
 
 Returns `1b` where (items of) `x` are greater than (or at least) `y`.
 

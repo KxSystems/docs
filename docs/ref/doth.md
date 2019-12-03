@@ -1,8 +1,11 @@
 ---
+title: The .h namespace – Reference – kdb+ and q documentation
+description: The .h namespace contains objects useful for marking up data for an HTTP response.
+author: Stephen Taylor
 keywords: html, kdb+, markup, q
 ---
-
 # The .h namespace
+
 
 
 
@@ -18,10 +21,10 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 
 
 ```txt
-.h.br    linebreak                 .h.http      hyperlinks
-.h.c0    web color                 .h.hu        URI escape
-.h.c1    web color                 .h.hug       URI map
-.h.cd    CSV from data             .h.hy        HTTP response
+.h.br    linebreak                 .h.hu        URI escape
+.h.c0    web color                 .h.hug       URI map
+.h.c1    web color                 .h.hy        HTTP response
+.h.cd    CSV from data             .h.HOME      webserver root
 .h.code  code after Tab            .h.iso8601   ISO timestamp
 .h.data                            .h.jx        table
 .h.ed    Excel from data           .h.logo      Kx logo
@@ -35,10 +38,11 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 .h.hp    HTTP response             .h.tx        filetypes
 .h.hr    horizontal rule           .h.ty        MIME types
 .h.ht    Marqdown to HTML          .h.uh        URI unescape
-.h.hta   start tag                 .h.xd        XML
-.h.htac  element                   .h.xmp       XMP
-.h.htc   element                   .h.xs        XML escape
-.h.html  document                  .h.xt        JSON
+.h.hta   start tag                 .h.val       value
+.h.htac  element                   .h.xd        XML
+.h.htc   element                   .h.xmp       XMP
+.h.html  document                  .h.xs        XML escape
+.h.http  hyperlinks                .h.xt        JSON
 ```
 
 
@@ -69,7 +73,7 @@ Returns as a symbol a web color used by the web console.
 
 Syntax: `.h.cd x`
 
-CSV from data: where `x` is a table or a list of columns returns a matrix of comma-separated values.
+Where `x` is a table or a list of columns returns a matrix of comma-separated values. 
 
 ```q
 q).h.cd ([]a:1 2 3;b:`x`y`z)
@@ -83,6 +87,9 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 "b,2,y"
 "c,3,z"
 ```
+
+Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V3.7t 2019.10.11.)
+
 
 
 ## `.h.code` (code after Tab)
@@ -104,11 +111,35 @@ q).h.code "foo"
 ```
 
 
-<!-- 
-## `.h.data`
+## `.h.d` (delimiter)
 
-==FIXME==
- -->
+Syntax: `.h.d`
+
+Delimiter used by [`.h.cd`](#hcd-csv-from-data) to join subitems of nested lists. Default is `" "`. 
+
+```q
+q)show t:([a:til 3]b:3 3#"abc";c:3 3#1 2 3)
+a| b     c
+-| -----------
+0| "abc" 1 2 3
+1| "abc" 1 2 3
+2| "abc" 1 2 3
+
+q).h.d
+" "
+q).h.cd t
+"a,b,c"
+"0,a b c,1 2 3"
+"1,a b c,1 2 3"
+"2,a b c,1 2 3"
+
+q).h.d:"*"
+q).h.cd t
+"a,b,c"
+"0,a*b*c,1*2*3"
+"1,a*b*c,1*2*3"
+"2,a*b*c,1*2*3"
+```
 
 
 ## `.h.ed` (Excel from data)
@@ -268,19 +299,20 @@ q).h.hr "foo"
 
 Syntax: `.h.ht x`
 
-HTML documentation generator: <!-- for <http://kx.com/q/d/> --> 
-where `x` is a symbol atom, reads file `:src/.txt` and writes file `:x.htm`.
+HTML documentation generator: <!-- for <https://kx.com/q/d/> --> 
+where `x` is a symbol atom, reads file `:src/x.txt` and writes file `:x.htm`.
+(Marqdown is a rudimentary form of Markdown.)
 
 - edit `src/mydoc.txt`
 - ``q).h.ht`mydoc``
-- browse mydoc.htm (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
+- browse `mydoc.htm` (`a/_mydoc.htm` is navigation frame, `a/mydoc.htm` is content frame)
 
 Basic Marqdown formatting rules:
 
 - Paragraph text starts at the beginning of the line.
 - Lines beginning with `"."` are treated as section headings.
-- Lines beginning with `"\t"` get wrapped in `<code>`
-- Line data beginning with `" "` get wrapped in `<xmp>`
+- Lines beginning with `"\t"` get wrapped in `code` tags
+- Line data beginning with `" "` get wrapped in `xmp` tags
 - If second line of data starts with `"-"`, draw a horizontal rule to format the header
 - Aligns two-column data if 2nd column starts with `"\t "`
 
@@ -299,7 +331,7 @@ q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 
 ## `.h.htac` (element)
 
-Syntax: `.h.tac[x;y;z]`
+Syntax: `.h.htac[x;y;z]`
 
 Where `x` is the element as a symbol atom, `y` is a dictionary of attributes and their values, and `z` is the content of the node as a string, returns as a string the HTML element. 
 
@@ -408,6 +440,16 @@ q)\head test.txt
 " {\"val\":\"d\",\"x\":1},"
 " {\"val\":\"e\",\"x\":1}]"
 ```
+
+
+## `.h.HOME` (webserver root)
+
+Syntax: `.h.HOME`
+
+String: location of the webserver root. 
+
+<i class="far fa-hand-point-right"></i>
+[Customizing the default webserver](../kb/custom-web.md)
 
 
 ## `.h.iso8601` (ISO timestamp)
@@ -633,6 +675,19 @@ Where `x` is a string, returns `x` with `%`*xx* hex sequences replaced with char
 q).h.uh "http%3a%2f%2fwww.kx.com"
 "http://www.kx.com"
 ```
+
+
+## `.h.val` (value)
+
+Syntax: `.h.val x`
+
+`.h.val` is called by [`.z.ph`](dotz.md#zph-http-get) to evaluate a request to the server.
+
+Its default value is [`value`](value.md).
+Users can override this with a custom evaluation function. 
+
+Since V3.6 and V3.5 2019.11.13. 
+
 
 
 ## `.h.xd` (XML)

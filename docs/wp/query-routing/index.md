@@ -1,12 +1,13 @@
 ---
-hero: Technical Whitepaper
-title: Query Routing – a kdb+ framework for a scalable, load balanced system
+title: Query Routing – a kdb+ framework for a scalable, load balanced system – White Papers – kdb+ and q documentation
+description: This paper focuses on the design principle of the Connection Manager Load Balancer schematic whilst providing an asynchronous-only method of communication between processes. In this paper, our Load Balancer will also act as a Connection Manager with distributing access to all services whilst minimizing the waiting time for gateways.
 author: Kevin Holsgrove
 date: November 2015
+hero: Technical White paper
 keywords: query, routing, load, balancing, kdb+, gateway
 ---
-
 # Query Routing: A kdb+ framework for a scalable, load balanced system
+
 
 
 Due to the large scale that kdb+ systems commonly grow to, it is
@@ -15,11 +16,11 @@ and size of databases increase, the system is able to easily absorb
 the extra capacity.
 
 Distributed kdb+ systems have been covered in a number of Kx Technical
-Whitepapers. The primary objective of this paper is to expand on
+White papers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
-based heavily on the ideas discussed in another whitepaper:
-[“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf).
+based heavily on the ideas discussed in another white paper:
+[“Common design principles for kdb+ gateways”](../gateway-design/index.md).
 
 It is recommended the reader understand these concepts before
 progressing with this paper.
@@ -43,14 +44,6 @@ for load balancing and query routing. Rather than presenting a golden
 solution, this paper explores one method of implementation.
 
 All tests were run using kdb+ version 3.3 (2015.11.03)
-
-
-### Author
-
-Kevin Holsgrove is a kdb+ consultant based in New York. He has
-developed data and analytic systems for some of the world’s largest
-financial institutions in a range of asset classes.
-
 
 
 ## Technical overview
@@ -118,9 +111,9 @@ Further information can be found at the Knowledge Base article on [load balancin
 
 ```q
 gw:{h:hopen x;{(neg x)(`userQuery;y);x[]}[h]}[`:localhost:5555]
-  // `:localhost:5555 is an example gateway address
+// `:localhost:5555 is an example gateway address
 gw(`EQUITY_MARKET_RDB;"select from trade where date=max date")
-  // Where EQUITY_MARKET_RDB is the name of the required service
+// EQUITY_MARKET_RDB is the name of the required service
 ```
 
 The diagram below outlines the logical steps taken when a user’s query
@@ -134,7 +127,7 @@ user query.
 
 Instead of taking a standard round-robin approach to load balancing as
 explained in
-[“Common design principles for kdb+ gateways”](../common_design_principles_for_kdb_gateways.pdf), 
+[“Common design principles for kdb+ gateways”](../gateway-design/index.md), 
 our Load Balancer will keep track of what resources are free and 
 allocate queries to services only when they are available. After executing
 a query, the service provides a notification to the Load Balancer that
@@ -167,8 +160,11 @@ resources that come available, all future communication is sent via
 asynchronous messages.
 
 ```q
-resources:([address:()] source:();sh:());
-addResource:{`resources upsert `address xkey update sh:{hopen first x}'[address] from x};
+resources:([address:()] source:();sh:())
+
+addResource:{
+  `resources upsert `address xkey update 
+    sh:{hopen first x}each address from x }
 ```
 
 The gateway process creates and maintains an empty query table. The
@@ -200,7 +196,7 @@ queryTable:([sq:`int$()];
   user:`$();
   sh:`int$();
   serv:`$();
-  query:());
+  query:() )
 ```
 
 This table could be extended to include more information by making
@@ -216,7 +212,7 @@ resource exists. We are setting outside the scope of this paper any
 further request validation, including access permissioning. 
 
 For further details on access control, please refer to the technical
-white paper [“Permissions with kdb+”](../permissions_with_kdb.pdf).
+white paper [“Permissions with kdb+”](../permissions/index.md).
 
 When a user sends her query via the `userQuery` function, we assign
 the query a unique sequence number and publish an asynchronous
@@ -224,10 +220,10 @@ request to the Load Balancer to be assigned an available resource.
 
 ```q
 userQuery:{
-  $[(serv:x 0) in exec distinct source from resources; // Check if valid service
+  $[(serv:x 0) in exec distinct source from resources; // valid service?
     [queryTable,:(SEQ+:1;.z.w;.z.p;0Np;0Np;.z.u;0N;serv;x 1); 
       NLB(`requestService;SEQ;serv)];
-    (neg .z.w)(`$"Service Unavailable")]};
+    (neg .z.w)(`$"Service Unavailable")] }
 ```
 
 The `addResource` function defined earlier is used to add new service
@@ -248,7 +244,7 @@ serviceAlloc:{[sq;addr]
   // Service no longer required
     [(neg sh:resources[addr;`sh]) (`queryService;(sq;queryTable[sq;`query]));
   // Send query to allocated resource, update queryTable
-      queryTable[sq;`snt`sh]:(.z.p;sh)]]};
+      queryTable[sq;`snt`sh]:(.z.p;sh)]] }
 ```
 
 When a service returns results to the gateway, the results arrive
@@ -265,8 +261,7 @@ returnRes:{[res]
   // (res 0) is the sequence number
   if[not null uh;(neg uh)(res 1)];
   // (res 1) is the result
-  queryTable[(res 0);`ret]:.z.p
-  };
+  queryTable[(res 0);`ret]:.z.p }
 ```
 
 In the situation where a process disconnects from the gateway, `.z.pc`
@@ -300,7 +295,8 @@ and register the process.
     returnRes’[sq cross `$”Service Disconnect”]]; 
   if[handle~LB; // if handle is Load Balancer
     // Send message to each connected user, which has not received results
-    (neg exec uh from queryTable where not null uh,null snt)@\: `$”Service Unavailable”;
+    (neg exec uh from queryTable where not null uh,null snt)@\: 
+      `$”Service Unavailable”;
     // Close handle to all resources and clear resources table
     hclose each (0!resources)`sh;
     delete from `resources;
@@ -308,13 +304,13 @@ and register the process.
     update snt:.z.p,ret:.z.p from `queryTable where not null uh,null snt; 
     // reset LB handle and set timer of 10 seconds
     // to try and reconnect to Load Balancer process
-    LB::0; NLB::0; value”\\t 10000”]};
+    LB::0; NLB::0; value”\\t 10000”] }
 
 .z.ts:{
-  manageConn[]; if[0<LB;@[registerGWFunc;`;{show x}];value”\\t 0”]
-  }; 
+  manageConn[]; 
+  if[0<LB;@[registerGWFunc;`;{show x}];value”\\t 0”] }
 
-.z.ts[];
+.z.ts[]
 ```
 
 
@@ -329,13 +325,13 @@ services:([handle:`int$()]
   source:`$();
   gwHandle:`int$();
   sq:`in t$();
-  udt:`timestamp$());
+  udt:`timestamp$() )
 
 serviceQueue:([gwHandle:`int$();sq:`int$()]
   source:`$();
-  time:`timestamp$()); 
+  time:`timestamp$() )
 
-gateways:();
+gateways:()
 ```
 
 The `service` table maintains all available instances/resources of
@@ -353,12 +349,13 @@ within the `serviceQueue` table is allocated immediately to this new
 resource.
 
 ```q
-registerGW:{gateways,:.z.w ; select source, address from services};
+registerGW:{gateways,:.z.w ; select source, address from services}
+
 registerResource:{[name;addr]
   `services upsert (.z.w;addr;name;0N;0N;.z.p);
   (neg gateways)@\:(`addResource;enlist`source`address!(name;addr)); 
   // Sends resource information to all registered gateway handles 
-  serviceAvailable[.z.w;name]};
+  serviceAvailable[.z.w;name] }
 ```
 
 Incoming requests for service allocation arrive with a corresponding
@@ -370,7 +367,7 @@ returned to the gateway along with the query sequence number that made
 the initial request.
 
 ```q
-sendService:{[gw;h]neg[gw]raze(`serviceAlloc;services[h;`sq`address])};
+sendService:{[gw;h]neg[gw]raze(`serviceAlloc;services[h;`sq`address])}
 // Returns query sequence number and resource address to gateway handle
 
 requestService:{[seq;serv]
@@ -379,7 +376,7 @@ requestService:{[seq;serv]
   $[null res;
     addRequestToQueue[seq;serv;.z.w]; 
     [services[res;`gwHandle`sq`udt]:(.z.w;seq;.z.p);
-      sendService[.z.w;res]]]};
+      sendService[.z.w;res]]] }
 ```
 
 If all matching resources are busy, then the gateway handle + sequence
@@ -387,7 +384,7 @@ number combination is appended to the `serviceQueue` table along with
 the service required.
 
 ```q
-addRequestToQueue:{[seq;serv;gw]`serviceQueue upsert (gw;seq;serv;.z.p)};
+addRequestToQueue:{[seq;serv;gw]`serviceQueue upsert (gw;seq;serv;.z.p)}
 ```
 
 After a service resource has finished processing a request, it sends
@@ -401,8 +398,8 @@ differentiates between these two situations.
 returnService:{
   serviceAvailable . $[.z.w in (0!services)`handle;
     (.z.w;x);
-    value first select handle,source from services where gwHandle=.z.w,sq=x]
-  }
+    value first select handle,source from services 
+      where gwHandle=.z.w,sq=x ] }
 ```
 
 On execution of the `serviceAvailable` function, the Load Balancer will
@@ -416,7 +413,7 @@ serviceAvailable:{[zw;serv]
   serviceQueue::(1#n)_ serviceQueue;
   // Take first request for service and remove from queue 
   services[zw;`gwHandle`sq`udt]:(nxt`gwHandle;nxt`sq;.z.p);
-  if[count n;sendService[nxt`gwHandle;zw]]};
+  if[count n; sendService[nxt`gwHandle;zw]] }
 ```
 
 Any resource that disconnects from the Load Balancer is removed from
@@ -434,8 +431,7 @@ removed on demand based on the size of the `serviceQueue` table.
   services _:h;
   gateways::gateways except h;
   delete from `serviceQueue where gwHandle=h;
-  update gwHandle:0N from `services where gwHandle=h
-  };
+  update gwHandle:0N from `services where gwHandle=h }
 ```
 
 If a gateway dies, data services will continue to run queries that
@@ -455,21 +451,21 @@ is assigned, to prevent queries running for too long.
 ```q
 \T 10
 \p 2222
-LB:0;
+LB:0
 
 quote:([]
   date:10#.z.D-1;
   sym:10#`FDP;
   time:09:30t+00:30t*til 10;
   bid:100.+0.01*til 10;
-  ask:101.+0.01*til 10);
+  ask:101.+0.01*til 10 )
 
 trade:([]
   date:10#.z.D-1;
   sym:10#`FDP;
   time:09:30t+00:30t*til 10;
   price:100.+0.01*til 10;
-  size:10#100);
+  size:10#100 )
 ```
 
 Each instance of a service uses the same service name. Within this
@@ -485,14 +481,14 @@ The `serviceDetails` function is executed on connection to the Load
 Balancer to register each service address.
 
 ```q
-manageConn:{@[{NLB::neg LB::hopen x};`:localhost:1234;
-  {show "Can't connect to Load Balancer-> ",x}]};
+manageConn:{@[{NLB::neg LB::hopen x}; `:localhost:1234;
+  {show "Can't connect to Load Balancer-> ",x}] }
 
-serviceName:`EQUITY_MARKET_RDB;
+serviceName:`EQUITY_MARKET_RDB
 
 serviceDetails:(`registerResource; 
   serviceName;
-  `$":" sv string (();.z.h;system"p"));
+  `$":" sv string (();.z.h;system"p") )
 ```
 
 When a gateway sends the service a request via the `queryService`
@@ -514,18 +510,20 @@ Load Balancer informing it that the service is now available for the
 next request.
 
 ```q
-execRequest:{[nh;rq]nh(`returnRes;(rq 0;@[value;rq 1;{x}]));nh[]};
+execRequest:{[nh;rq]nh(`returnRes;(rq 0;@[value;rq 1;{x}]));nh[]}
 
 queryService:{ 
   errProj:{[nh;sq;er]nh(sq;`$er);nh[]}; 
   @[execRequest[neg .z.w];x;errProj[neg .z.w;x 0]]; 
-  NLB(`returnService;serviceName)};
+  NLB(`returnService;serviceName) }
 ```
 
 Note that in the `execRequest` function, `nh` is the asynchronous handle
 to the gateway. Calling `nh[]` after sending the result causes the
-outgoing message queue for this handle to be flushed immediately. For
-more details, see the [Knowledge Base article on IPC](../../kb/ipc.md).
+outgoing message queue for this handle to be flushed immediately. 
+
+<i class="far fa-hand-point-right"></i>
+Basics: [Interprocess communications](../../basics/ipc.md)
 
 Like our gateway, the `.z.pc` handle is set to reconnect to the Load
 Balancer on disconnect. The `.z.ts` function retries to connect to the
@@ -534,9 +532,9 @@ The `.z.ts` function is executed once on start-up – like the gateway –
 to initialize the first connection.
 
 ```q
-.z.ts:{manageConn[];if[0<LB;@[NLB;serviceDetails;{show x}];value"\\t 0"]}; 
-.z.pc:{[handle]if[handle~LB;LB::0;value"\\t 10000"]};
-.z.ts[];
+.z.ts:{manageConn[];if[0<LB;@[NLB;serviceDetails;{show x}];value"\\t 0"]}
+.z.pc:{[handle]if[handle~LB;LB::0;value"\\t 10000"]}
+.z.ts[]
 ```
 
 
@@ -619,8 +617,19 @@ much of the core functionality, but the scope of this paper does not
 encompass some desirable production features a system architect should
 consider, such as permissions, query validation and capacity
 management. Where topics haven’t been covered previously, the Kx
-Technical Whitepaper series will continue to drill down on important
+Technical White paper series will continue to drill down on important
 components that provide the building blocks for a stable, scalable,
 protected and efficient kdb+ system.
 
 All tests were run using kdb+ version 3.3 (2015.11.03)
+
+
+
+## Author
+
+Kevin Holsgrove is a kdb+ consultant based in New York. He has
+developed data and analytic systems for some of the world’s largest
+financial institutions in a range of asset classes.
+
+
+

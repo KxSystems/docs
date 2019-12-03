@@ -1,8 +1,10 @@
 ---
+title: aj, aj0, ajf, ajf0 – Reference – kdb+ and q documentation
+description: As-of joins join two tables taking from the second the most recent records prior to the times in the first
 keywords: as-of, join, kdb+, q
 ---
-
 # `aj`, `aj0`, `ajf`, `ajf0`
+
 
 
 
@@ -13,7 +15,7 @@ _As-of join_
 Syntax: <code>aj[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
 Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
 Syntax: <code>ajf[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
-Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
+Syntax: <code>ajf0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
 
 Where 
 
@@ -81,12 +83,18 @@ q)t0~ajf[`sym`time;t1;t2]
 
 ## Performance
 
+!!! warning "Order of search columns"
+
+    Ensure the first argument to `aj`, the columns to search on, is in the correct order, e.g. `` `sym`time``. Otherwise you’ll suffer a severe performance hit.
+
+If the resulting time value is to be from the quote (actual time) instead of the (boundary time) from trade, use `aj0` instead of `aj`.
+
 `aj` should run at a million or two trade records per second; whether the tables are mapped or not is irrelevant. However, for speed:
 
-medium | c<sub>1</sub> | c<sub>2</sub>…
--------|---------------|-----------------------------------------
-memory | `g#`          | sorted within <code>c<sub>1</sub></code>
-disk   | `p#`          | sorted within <code>c<sub>1</sub></code>
+medium | t2\[c<sub>1</sub>\] | t2\[c<sub>2</sub>…\] | example
+-------|---------------------|----------------------|-----------------------
+memory | `g#`          | sorted within <code>c<sub>1</sub></code> | `quote` has `` `g#sym`` and `time` sorted within `sym`
+disk   | `p#`          | sorted within <code>c<sub>1</sub></code> | `quote` has `` `p#sym`` and `time` sorted within `sym`
 
 Departure from this incurs a severe performance penalty. 
 

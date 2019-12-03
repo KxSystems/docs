@@ -1,20 +1,25 @@
 ---
+title: Union join – Reference – kdb+ and q documentation
+description: uj and ujf are q keywords that perform a union join on two tables.
 keywords: join, kdb+, q, uj, ujf, union join
 ---
-
-
 <div markdown="1" style="float:right; margin-left: 3em; max-width: 250px;">
 ![Union join animation](../img/uj.gif) 
 </div>
 
 # `uj`, `ujf` 
 
+
+
+
+
+
 _Union join_
 
 Syntax: `t1 uj t2`, `uj[t1;t2]`  
 Syntax: `t1 ujf t2`, `ujf[t1;t2]`
 
-Where `t1` and `t2` are keyed tables, returns the union of the columns, filled with nulls where necessary:
+Where `t1` and `t2` are both keyed or both unkeyed tables, returns the union of the columns, filled with nulls where necessary:
 
 -   if `t1` and `t2` have matching key column/s, then records in `t2` update matching records in `t1`
 -   otherwise, `t2` records are inserted.

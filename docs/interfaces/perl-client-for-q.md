@@ -1,11 +1,13 @@
 ---
+title: perl client for kdb+ – Interfaces – kdb+ and q documentation
+description: How to connect a Perl program to a kdb+ server process
 keywords: api, interface, kdb+, library, perl, q
 ---
-
 # ![Perl](img/perl.png) Perl client for kdb+
 
 
-<i class="far fa-hand-point-right"></i> [cpan.org/~markpf/Kx-0.039/](http://search.cpan.org/~markpf/Kx-0.039/)
+
+<i class="far fa-hand-point-right"></i> [cpan.org/~markpf/Kx-0.039/](https://metacpan.org/release/MARKPF/Kx-0.039)
 
 !!! note "From Mark Pfeiffer"
 
