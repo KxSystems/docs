@@ -1,74 +1,72 @@
 ---
-title: Machine-learning toolkit – Machine Learning – kdb+ and q documentation
-description: The toolkit contains libraries and scripts that provide kdb+/q users with general-use functions and procedures to perform machine-learning tasks on a wide variety of datasets.
-author: Conor McCarthy
-date: October 2018
-keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
+title: Machine learning - code.kx.com – Machine Learning – kdb+ and q documentation
+description: Machine-learning capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
+keywords: Python, Jupyter, natural language processing, nlp, machine learning, ml, sentiment, Anaconda, Docker
 ---
-# <i class="fas fa-share-alt"></i> Machine-learning toolkit
+# <i class="fas fa-share-alt"></i> Machine learning
 
 
-
-<i class="fab fa-github"></i>
-[KxSystems/ml](https://github.com/kxsystems/ml/)
+![Machine learning](../img/ml.png)
 
 
-The toolkit contains libraries and scripts that provide kdb+/q users with general-use functions and procedures to perform machine-learning tasks on a wide variety of datasets.
+**Machine-learning** capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 
-The toolkit contains:
+<i class="far fa-hand-point-right"></i> [How to set up](setup.md) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build.
 
--   Utility functions relating to important aspects of machine-learning including [data preprocessing](utilities/preproc.md), [statistical metrics](utilities/metric.md), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util.md). 
--   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. This lets a kdb+/q user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
--   Implementations of a number of [cross validation](xval.md) and grid search procedures. These allow kdb+/q users to validate the performance of machine learning models when exposed to new data, test the stability of models over time or find the best hyper-parameters for tuning their models.
-
-Over time the machine-learning functionality in this library will be extended to include;
-
--   q-specific implementations of machine-learning algorithms
--   broader functionality
+## Anaconda
 
 
-## Requirements
-
-The following requirements cover all those needed to run the libraries in the current build of the toolkit.
-
--   [embedPy](../embedpy/index.md)
-
-A number of Python dependencies also exist for the running of embedPy functions within both the the machine-learning utilities and FRESH libraries. 
-These can be installed as outlined at
-
-<i class="fab fa-github"></i>
-[KxSystems/ml](https://github.com/kxsystems/ml) 
-using Pip
-
-```bash
-pip install -r requirements.txt
-```
-
-or Conda
-
-```bash
-conda install --file requirements.txt
-```
-
-!!! warning "Running notebooks"
-
-    Running notebooks within the [FRESH](fresh.md) section requires both [JupyterQ](../jupyterq/index.md) and embedPy.
-    However this is not a requirement for the toolkit itself.
+Users can now install kdb+/q along with our supported Python and Machine Learning libraries, embedPy and JupyterQ using the popular [Anaconda](https://anaconda.org/) package-management system `conda`.
 
 
-## Installation
+## embedPy
 
-Install and load all libraries.
+[EmbedPy](embedpy/index.md) loads Python into kdb+/q, allowing access to a rich ecosystem of libraries such as scikit-learn, tensorflow and pytorch.
 
-```q
-q)\l ml/ml.q
-q).ml.loadfile`:init.q
-```
+-   Python variables and objects become q variables – and either language can act upon them. 
+-   Python code and files can be embedded within q code.
+-   Python functions can be called as q functions.
 
-This can be achieved by one command.
-Copy a link to the library into `$QHOME`.
-Then:
+<i class="far fa-hand-point-right"></i> [Example notebooks using embedPy](https://github.com/KxSystems/mlnotebooks)
 
-```q
-q)\l ml/init.q
-```
+
+## JupyterQ
+
+[JupyterQ](jupyterq/index.md) supports Jupyter notebooks for q, providing
+
+-   Syntax highlighting, code completion and help
+-   Multiline input (script-like execution)
+-   Inline display of charts
+
+
+## Machine Learning Toolkit
+
+The [Machine Learning Toolkit](toolkit/index.md) is at the core of kdb+/q centered machine-learning functionality. This library contains functions that cover the following areas.
+
+-  Accuracy [metrics](toolkit/utilities/metric.md) to test the performance of constructed machine-learning models.
+-  [Pre-processing](toolkit/utilities/preproc.md) data prior to the application of machine-learning algorithms.
+-  An implementation of the [FRESH](toolkit/fresh.md) algorithm for feature extraction and selection on structured time series data. 
+-  [Utility](toolkit/utilities/util.md) functions which are useful in many machine-learning applications but do not fall within the other sections of the toolkit.
+-  [Cross-Validation](toolkit/xval.md) functions, used to verify how robust and stable a machine-learning model is to changes in the data being interrogated and the volume of this data.
+
+The library is available [here](https://github.com/KxSystems/ml).
+
+<i class="far fa-hand-point-right"></i> [Example notebooks showing FRESH and various aspects of toolkit functionality](https://github.com/KxSystems/mlnotebooks). 
+
+
+## Natural Language Processing 
+
+[NLP](nlp/index.md) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp).
+
+<i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks)
+
+
+All machine-learning libraries are:
+
+-   well **documented**, with understandable and useful examples
+-   maintained and **supported** by Kx on a best-efforts basis, at no cost to customers
+-   released under the **Apache 2 license**
+-   **free** for all use cases, including 64-bit and commercial use
+
+Commercial support is available if required: please email sales@kx.com.
+

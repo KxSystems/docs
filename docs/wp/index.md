@@ -41,7 +41,6 @@ keywords: kdb+, q, technical, white paper
 -   [**Surveillance** techniques to effectively monitor algo and high-frequency trading](surveillance/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
 -   [**Transaction-cost** analysis using kdb+](transaction-cost.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/transaction_cost_analysis_using_kdb.pdf)
 
-
 ## Machine learning
 
 -   [FDL Europe: Analyzing social media data for **disaster management**](disaster-management/index.md) 
@@ -75,4 +74,3 @@ keywords: kdb+, q, technical, white paper
 
 
 Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](https://www.firstderivatives.com).
-
