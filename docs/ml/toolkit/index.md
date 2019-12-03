@@ -48,6 +48,7 @@ The [Machine Learning Toolkit](toolkit/index.md) is at the core of kdb+/q center
 -  An implementation of the [FRESH](toolkit/fresh.md) algorithm for feature extraction and selection on structured time series data. 
 -  [Utility](toolkit/utilities/util.md) functions which are useful in many machine-learning applications but do not fall within the other sections of the toolkit.
 -  [Cross-Validation](toolkit/xval.md) functions, used to verify how robust and stable a machine-learning model is to changes in the data being interrogated and the volume of this data.
+- [Clustering](toolkit/clustering/index.md) algorithms have been included to allow users to group and identify patterns in sets of data.
 
 The library is available [here](https://github.com/KxSystems/ml).
 
