@@ -173,6 +173,7 @@ nav:
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
       - QSQL: basics/qsql.md
+      - Regular Expressions: basics/regex.md
       - Search: basics/search.md
       - Selection: basics/selection.md
       - Sorting: basics/sort.md

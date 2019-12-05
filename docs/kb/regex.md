@@ -3,20 +3,15 @@ title: Regular expressions – Knowledge Base – kdb+ and q documentation
 description: Support for Regular Expression handling in q.
 keywords: kdb+, library, q, regex, regular expression
 ---
-# Regular expressions
+# Using regular expressions
 
 
+<i class="fas fa-book"></i>
+[`like`](../ref/like.md),
+[`ss`, `ssr`](../ref/ss.md), 
+[Regular Expressions in q](../basics/regex.md)
 
-## Special characters
 
-In a q [Regular Expression](https://en.wikipedia.org/wiki/Regular_expression) (regex) pattern certain characters have special meaning:
-
-char | meaning
----- | -----------------------------------------------------------
-`?`  | matches any character
-`*`  | matches any sequence of characters
-`[]` | embraces a list of alternatives, any of which matches
-`^`  | at the beginning of a list of alternatives indicates they are _not_ to be matched
 
 Special characters can be matched by bracketing them.
 
@@ -96,8 +91,6 @@ q)tb like "*[^0-9]"
 00001b
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[`like`](../ref/like.md)
 
 
 ## Regex libraries
