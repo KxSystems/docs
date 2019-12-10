@@ -1,27 +1,16 @@
 ---
 title: Mass ingestion through kdb+ data loaders | White papers | kdb+ and q documentation
-description: FIXME
+description: A fast, efficient and scalable kdb+ framework for receiving large amounts of data from multiple sources in various formats 
 author: Enda Gildea
-keywords: FIXME
+keywords: attribute, batch, data, disk, file, format, ingest, loader, sort
 ---
 # Mass ingestion through data loaders
 
-==DRAFT==
 
 
 
 
 
-
-
-
-
-
-_A proposed framework that is fast, efficient and scalable_
-
-==Why _proposed_? Proposed to whom? How about _A fast, efficent and scalable framework_?==
-
-==Fixed some syntax errors where I thought the correction was obvious, but – code sections need scrutiny. SJT==
 
 Receiving a large amount of data in various file formats and from multiple different sources that need to be ingested, processed, persisted, and reported upon within a certain time period is a challenging task.
 
@@ -169,8 +158,6 @@ The following section has an example of a dynamic approach.
 <i class="fab fa-github"></i>
 [kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
 
-==FIXME clone https://github.com/egildea/massIngestionDataloader before publication==
-
 The master process will act as a file watcher. It will check for specific batches of files and add any valid files to the `.mi.tasks` table along with the relevant tasks to apply. The master process starts up and pings the staging area for batches and constituent files. It has view of all available slaves in the `.mi.slaves` table:
 
 ```q
@@ -219,8 +206,6 @@ If memory available is twice that of the required memory buffer the file size li
 mem:7h$mi.fileSizeLimit *
   .95 1 1.05 sum(and)scan .mi.freeMemoryFree>.mi.memoryBuffer*1 2
 ```
-
-==Refactored from original==
 
 It then proceeds to check how many tasks can be distributed based on memory available.
 
@@ -282,12 +267,17 @@ The slave receives a run task command `.mi.runTask` from the master:
 `.mi.runTask` takes a dictionary of parameters: the task to run and the arguments of the assigned task. An example parameter dictionary of `.mi.runTask`:
 
 ```q
+q)d        /args to .mi.runTask
 task   | `.mi.readAndSave
-args   | `file`readFunction`postRead`batchID! (`:/mnt/mts/data/marketData3of3.csv;`.mi.read;`.mi.postRead;07d312e0-bd18-092d-06a3-1707ab9cd7f1) 
+args   | `file`readFunction`postRead`batchID! (`:/mnt/mts/data/market..
 taskID | e552aec7-5c9d-69c6-846b-b4e178dcc042
-```
 
-==FIXME Narrower display format==
+q)d`args   /args to assigned task
+file        | `:/mnt/mts/data/marketData3of3.csv
+readFunction| `.mi.read
+postRead    | `.mi.postRead
+batchID     | 07d312e0-bd18-092d-06a3-1707ab9cd7f1
+```
 
 The slave then applies the arguments to the assigned task. During this stage, the slave reads, transforms and saves each column to its subdirectory based on the batch ID and filename, e.g. _/&lt;batchID&gt;/&lt;filename&gt;_.
 
@@ -334,10 +324,8 @@ written:update
   symbolCols:count[written]#enlist[symbolCols]
   from written
 
-`t`written`uniqueSymbolsAcrossCols!(t;written;distinct raze symbolCols#f)
+res:`t`written`uniqueSymbolsAcrossCols!(t;written;distinct raze symbolCols#f)
 ```
-
-==Unassigned result in last line==
 
 Once the read and save task is complete, the tracked information i.e. the name of table saved, column names of the table, the unique symbol values and the column memory statistics, are returned to the master via the callback function `.mi.slaveResponse` within `.mi.runTask`.
 
@@ -350,18 +338,7 @@ Once the read and save task is complete, the tracked information i.e. the name o
 
 After a success message is received from a slave via `.mi.slaveResponse`, the master updates the tasks and slaves tables.
 
-==Syntax of first query below?==
-
 ```q
-mi.slaves:update 
-    time:.z.p,
-    task:`,
-    lasttask:task,
-    mb:x`mb,processed+1,
-    taskSize:0N 
-  from .mi.slaves 
-  where slave in (exec slave from .mi.slaves where taskID=x`taskID)
-
 .mi.tasks:update 
     status:stat,
     endTime:.z.p,
@@ -398,12 +375,11 @@ If read and save tasks are complete, the unique symbols for the batch are append
 ```q
 if[0<count first us:.mi.uniqueSymbols batch;
   0N!"Appending unique syms to the sym file ",
-    string symFile:` sv .mi.hdbDir,`sym;
+  string symFile:` sv .mi.hdbDir,`sym;
   symFile?us`uniqueSymbolsAcrossCols;
   delete from`.mi.uniqueSymbols where batchID=batch;
+  0N!"Finished .mi.appendToSymFile"]
 ```
-
-==Close `if` expression above==
 
 The master then creates the required index, merge and move jobs.
 
@@ -446,7 +422,6 @@ These tasks are then upserted into the `.mi.tasks` table and will be
 distributed and run in sequence.
 
 ```q
-
 if[count queued:0!select from .mi.tasks where 
   not status=`complete,
   task in `.mi.index`.mi.merge`.mi.move, 

@@ -80,6 +80,7 @@ nav:
   - GitHub: github.md
   - Support: support.md
   - Developer tools: devtools.md
+  - Corporate site: https://kx.com
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -531,6 +532,7 @@ nav:
     - Corporate actions: wp/corporate-actions.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md
+    - Data loaders: wp/data-loaders/index.md
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
