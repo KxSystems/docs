@@ -124,25 +124,12 @@ s1 p3 400
 ..
 ```
 
-A list written to a file using `set` can be extended by opening the file, writing through the handle, and closing the file.
+`set` saves the data in a binary format akin to tag+value, retaining the structure of the data in addition to its value.
 
 ```q
 q)`:data/foo set 10 20 30
 `:data/foo
-q)h:hopen `:data/foo
-q)h[42]
-3i
-q)h 100 200
-3i
-q)hclose h
-q)get `:data/foo
-10 20 30 42 100 200
-```
-
-`set` saves the data in a binary format akin to tag+value, retaining the structure of the data in addition to its value.
-
-```q
-q)read0 `:data/L
+q)read0 `:data/foo
 "\376 \007\000\000\000\000\000\003\000\000\000\000\000\000\000"
 "\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\036\000..
 ```

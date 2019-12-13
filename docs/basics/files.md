@@ -45,8 +45,6 @@ q)get `:data/bar
 "thin white duke"
 ```
 
-A list written to a file using `set` can be extended by opening the file, writing with the handle, and closing the file.
-
 
 ## Writing and reading
 
