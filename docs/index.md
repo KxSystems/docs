@@ -23,6 +23,8 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" markdown="1"><i class="fas fa-book"></i> [File system](basics/files.md)</p>
+    
     <p markdown="1"><i class="far fa-map"></i> [Data loaders](wp/data-loaders/index.md)</p>
     
     <p markdown="1"><i class="far fa-map"></i> [Option pricing](wp/option-pricing/index.md)</p>
@@ -30,8 +32,6 @@ Kdb+, from [Kx](https://kx.com), is
     <p markdown="1"><i class="far fa-map"></i> [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
-    
-    <p class="nowrap" markdown="1"><i class="far fa-map"></i> [Managing disasters](wp/disaster-management/index.md)</p>
     
 </div>
 

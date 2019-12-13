@@ -151,6 +151,7 @@ nav:
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
+      - Connection handles: basics/handles.md
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
@@ -237,7 +238,10 @@ nav:
       - getenv, setenv: ref/getenv.md
       - group: ref/group.md
       - gtime, ltime: ref/gtime.md
-      - hcount, hdel, hopen, hclose, hsym: ref/handles.md
+      - hcount: ref/hcount.md
+      - hdel: ref/hdel.md 
+      - hopen, hclose: ref/hopen.md
+      - hsym: ref/hsym.md
       - ij, ijf: ref/ij.md
       - in: ref/in.md
       - insert: ref/insert.md
@@ -508,6 +512,7 @@ nav:
     - Programming idioms: kb/programming-idioms.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Regular expressions: kb/regex.md
+    - Replay logfile: kb/replay-log.md
     - Server calling client: kb/server-calling-client.md
     - Splayed schema change: kb/splayed-schema-change.md
     - Splayed tables: kb/splayed-tables.md

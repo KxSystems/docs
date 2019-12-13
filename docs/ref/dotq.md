@@ -1369,6 +1369,10 @@ Syntax: `.Q.s1 x`
 
 Returns a string representation of `x`.
 
+<i class="far fa-hand-point-right"></i>
+[`show`](show.md),
+[`string`](string.md)
+
 
 ## `.Q.sbt` (string backtrace)
 
