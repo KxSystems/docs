@@ -375,11 +375,11 @@ K class | q namespace | q   | function
 <code class="nowrap">K.getenv()</code> | <code class="nowrap">q.getenv()</code> | [<code class="nowrap">getenv</code>](../../ref/getenv.md) | value of an environment variable
 <code class="nowrap">K.group()</code> | <code class="nowrap">q.group()</code> | [<code class="nowrap">group</code>](../../ref/group.md) | dictionary of distinct items
 <code class="nowrap">K.gtime()</code> | <code class="nowrap">q.gtime()</code> | [<code class="nowrap">gtime</code>](../../ref/gtime.md) | UTC timestamp
-<code class="nowrap">K.hclose()</code> | <code class="nowrap">q.hclose()</code> | [<code class="nowrap">hclose</code>](../../ref/handles.md#hclose) | close a file or process
-<code class="nowrap">K.hcount()</code> | <code class="nowrap">q.hcount()</code> | [<code class="nowrap">hcount</code>](../../ref/handles.md#hcount) | size of a file
-<code class="nowrap">K.hdel()</code> | <code class="nowrap">q.hdel()</code> | [<code class="nowrap">hdel</code>](../../ref/handles.md#hdel) | delete a file
-<code class="nowrap">K.hopen()</code> | <code class="nowrap">q.hopen()</code> | [<code class="nowrap">hopen</code>](../../ref/handles.md#hopen) | open a file
-<code class="nowrap">K.hsym()</code> | <code class="nowrap">q.hsym()</code> | [<code class="nowrap">hsym</code>](../../ref/handles.md#hsym) | convert symbol to filename or IP address
+<code class="nowrap">K.hclose()</code> | <code class="nowrap">q.hclose()</code> | [<code class="nowrap">hclose</code>](../../ref/hopen.md#hclose) | close a file or process
+<code class="nowrap">K.hcount()</code> | <code class="nowrap">q.hcount()</code> | [<code class="nowrap">hcount</code>](../../ref/hcount.md) | size of a file
+<code class="nowrap">K.hdel()</code> | <code class="nowrap">q.hdel()</code> | [<code class="nowrap">hdel</code>](../../ref/hdel.md) | delete a file
+<code class="nowrap">K.hopen()</code> | <code class="nowrap">q.hopen()</code> | [<code class="nowrap">hopen</code>](../../ref/hopen.md) | open a file
+<code class="nowrap">K.hsym()</code> | <code class="nowrap">q.hsym()</code> | [<code class="nowrap">hsym</code>](../../ref/hsym.md) | convert symbol to filename or IP address
 <code class="nowrap">K.iasc()</code> | <code class="nowrap">q.iasc()</code> | [<code class="nowrap">iasc</code>](../../ref/asc.md#iasc) | indices of ascending sort
 <code class="nowrap">K.idesc()</code> | <code class="nowrap">q.idesc()</code> | [<code class="nowrap">idesc</code>](../../ref/desc.md#idesc) | indices of descending sort
 <code class="nowrap">K.ij()</code> | <code class="nowrap">q.ij()</code> | [<code class="nowrap">ij</code>](../../ref/ij.md) | inner join

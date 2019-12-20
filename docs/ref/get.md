@@ -6,23 +6,27 @@ keywords: get, kdb+, q, set
 ---
 # `get`, `set`
 
-_Read or set value of a variable or a kdb+ data file_
+_Read or set the value of a variable or a kdb+ data file_
 
 
 
 
 ## `get`
 
-_Read or memory-map a kdb+ data file_
+_Read or memory-map a variable or kdb+ data file_
 
 Syntax: `get x`, `get[x]`
 
 Reads or memory maps kdb+ data file `x`. 
 A type error is signalled if the file is not a kdb+ data file.
 
-Used to map columns of databases in and out of memory when querying splayed databases, and can be used to read q log files etc.
+Used to map columns of databases in and out of memory when querying splayed databases, and can be used to read q log files, etc.
 
 ```q
+q)a:42
+q)get `a
+42
+
 q)\l trade.q
 q)`:NewTrade set trade                  / save trade data to file
 `:NewTrade
@@ -54,7 +58,12 @@ _Assign a value to a variable or file_
 
 Syntax: `x set y`, `set[x;y]`
 
-Assigns the value of `y` to variable name or filename `x`
+Where `x` is 
+
+-   a [file symbol](../basics/glossary.md#file-symbol) 
+-   a symbol naming a variable
+
+assigns the value of `y` to variable name or filename `x`.
 
 ```q
 q)`a set 1 2 3            / set name a
@@ -73,7 +82,7 @@ q)a set 1 2 3             / fails, as name must be a symbol
 :["type"]
 ```
 
-If `x` is a filename, the values are written to file:
+If `x` is a file symbol, the values are written to file.
 
 ```q
 q)`:work.dat set 1 2 3    / write values to file
@@ -115,13 +124,25 @@ s1 p3 400
 ..
 ```
 
+`set` saves the data in a binary format akin to tag+value, retaining the structure of the data in addition to its value.
+
+```q
+q)`:data/foo set 10 20 30
+`:data/foo
+q)read0 `:data/foo
+"\376 \007\000\000\000\000\000\003\000\000\000\000\000\000\000"
+"\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\036\000..
+```
+
+
 !!! warning "Avoid Kx namespaces"
 
-    Avoid setting variables in the Kx namespaces, as undesired and confusing behaviour can result.
+    Avoid setting variables in the Kx namespaces, as undesired and confusing behavior can result.
 
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 
 
-<i class="far fa-hand-point-right"></i>
-[`value`](value.md)  
-Basics: [File system](../basics/files.md)
+<i class="fas fa-book"></i>
+[`value`](value.md)<br>
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md)

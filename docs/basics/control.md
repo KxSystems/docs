@@ -44,7 +44,7 @@ There is no `case` or `switch` control word in q. Use the [Case](../ref/maps.md#
 
 ## Conditional evaluation
 
-Syntax: `?[x;y;z]`
+Syntax: `$[x;y;z]`
 
 [Cond](../ref/cond.md) returns `z` when `x` is zero; else `y`.
 

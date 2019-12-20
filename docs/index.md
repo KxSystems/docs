@@ -20,18 +20,18 @@ Kdb+, from [Kx](https://kx.com), is
 -   an expressive query and programming language called q
 </div>
 
-<div style="display: inline-flex; margin-left: 7px;" markdown="1">
+<div style="display: inline-flex; margin-left: 25px;" markdown="1">
 !!! tip "New"
 
-    <!-- <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p> -->
+    <p class="nowrap" markdown="1"><i class="fas fa-book"></i> [File system](basics/files.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
+    <p markdown="1"><i class="far fa-map"></i> [Data loaders](wp/data-loaders/index.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Disaster&nbsp;management](wp/disaster-management/index.md)</p>
+    <p markdown="1"><i class="far fa-map"></i> [Option pricing](wp/option-pricing/index.md)</p>
     
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba.md)</p>
+    <p markdown="1"><i class="far fa-map"></i> [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p>
     
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-graduation-cap"></i> [Kdb+ Windows service](kb/windows-service/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
     
 </div>
 
@@ -57,7 +57,7 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 <div>
     [<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
-    Reference](ref/index.md "Reference card for the q language")
+    Reference<br>and basics](ref/index.md "Reference card for the q language")
 </div>
 <div>
     [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
@@ -94,7 +94,7 @@ Kdb+, from [Kx](https://kx.com), is
 !!! tip "Using this site locally"
 
     You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use locally. 
-    (It uses scripts from the Web so needs Net access to render correctly.)
+    (It uses scripts from the Web so needs Net access or a browser cache to render correctly.)
 
     The source code for this site is on GitHub at 
     <i class="fab fa-github"></i>

@@ -80,7 +80,9 @@ q)"i"$0x0 vs .z.a
 
 !!! warning "Callbacks" 
 
-    When called inside a `.z.p?` callback it is the IP address of the client session, not the current session.
+    When invoked inside a `.z.p?` callback via a TCP/IP connection, it is the IP address of the client session, not the current session. 
+
+    When invoked via a Unix Domain Socket, it is 0.
 
 
 ## `.z.ac` (HTTP auth from cookie)
@@ -533,8 +535,8 @@ Where `f` is a unary function, it is evaluated when a synchronous HTTP request i
 
 `.z.ph` is passed a single argument, a 2-item list `(requestText;requestHeaderAsDictionary)`:
 
-- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task.
-- `requestHeaderAsDictionary` contains information such as the user agent and can be used to return content optimised for particular browsers
+- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task. Since V3.6 and V3.5 2019.11.13 [`.h.val`](doth.md#hval-value) is called instead of `value`, allowing users to interpose their own valuation code.
+- `requestHeaderAsDictionary` contains information such as the user agent and can be used to return content optimized for particular browsers.
 
 ```q
 q)\c 43 75

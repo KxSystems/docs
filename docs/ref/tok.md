@@ -12,33 +12,35 @@ Syntax: `x$y`, `$[x;y]`
 
 Where 
 
--   `x` is an upper-case letter, symbol atom, or negative short int
+-   `x` is an upper-case letter or negative short int
 -   `y` is a string
 
 returns `y` interpreted as a value according to `x`. 
 
-A table of `x` values for Tok:
+`x` values for Tok:
 
 ```q
-q)flip{(neg x;upper .Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
--1h  "B" `boolean
--2h  "G" `guid
--4h  "X" `byte
--5h  "H" `short
--6h  "I" `int
--7h  "J" `long
--8h  "E" `real
--9h  "F" `float
--10h "C" `char
--11h "S" `symbol
--12h "P" `timestamp
--13h "M" `month
--14h "D" `date
--15h "Z" `datetime
--16h "N" `timespan
--17h "U" `minute
--18h "V" `second
--19h "T" `time
+q){([result:key'[x$\:()]];short:neg x;char:upper .Q.t x)}5h$where" "<>20#.Q.t
+result   | short char
+---------| ----------
+boolean  | -1    B
+guid     | -2    G
+byte     | -4    X
+short    | -5    H
+int      | -6    I
+long     | -7    J
+real     | -8    E
+float    | -9    F
+char     | -10   C
+symbol   | -11   S
+timestamp| -12   P
+month    | -13   M
+date     | -14   D
+datetime | -15   Z
+timespan | -16   N
+minute   | -17   U
+second   | -18   V
+time     | -19   T
 ```
 
 `0h$` and `"*"$` are no-ops. 
@@ -69,12 +71,17 @@ q)"T"$"123456789"
 12:34:56.789
 q)"P"$"2015-10-28D03:55:58.6542"
 2015.10.28D03:55:58.654200000
+
 q)"I"$"192.168.1.34" /an IP address as an int
 -1062731486i
 q)"NT"$\:"123456123987654"  / since V3.4
 0D12:34:56.123987654
 12:34:56.123
 ```
+
+<i class="far fa-hand-point-right"></i>
+[`.Q.addr`](dotq.md#qaddr-ip-address),
+[`.Q.host`](dotq.md#qhost-hostname)
 
 
 ## Truthy characters
@@ -112,6 +119,10 @@ q)"P"$"10129708800.123456789"
 2290.12.31D00:00:00.123456789
 q)"P"$"00000000000.123456789"
 1970.01.01D00:00:00.123456789
+
+q)"PZ"$\:"20191122-11:11:11.123"
+2019.11.22D11:11:11.123000000
+2019.11.22T11:11:11.123
 ```
 
 

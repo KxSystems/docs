@@ -1,96 +1,41 @@
 ---
-title: File and process handles – Reference – kdb+ and q documentation
-description: hclose, hcount, hdel, hopen, and hsym are q keywords for working with file and process handles.
+title: Connect and disconnect files and processes | Reference | kdb+ and q documentation
+description: hopen and hclose are q keywords for connecting and disconnecting files and processes.
 author: Stephen Taylor
 keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, filehandle, filepath, filesize, filesystem, folder, handle, hclose, hcount, hdel, hopen, hostname, hsym, ip address, ipc, kdb+, named pipe, open, os, pipe, port, process, q, query, request, size, socket, ssl, symbol, timeout, tls
 ---
-# `hclose`, `hcount`, `hdel`, `hopen`, `hsym`
-
-_File and process handles_
+# `hopen`, `hclose`
 
 
+<pre markdown="1" class="language-txt">
+[`hopen`](#hopen)   connect a process or file
+[`hclose`](#hclose)  disconnect a process or file
+</pre>
 
 
-## `hcount`
+Kdb+ communicates with the file system and other processes through [handles](../basics/handles.md).
 
-_File size_
-
-Syntax: `hcount x`, `hcount[x]`
-
-Returns as a long integer the size in bytes of file `x`.
-
-```q
-q)hcount`:c:/q/test.txt
-42j
-```
-
-On a compressed file returns the size of the original uncompressed file.
-
-<i class="far fa-hand-point-right"></i>
-Basics: [File system](../basics/files.md), 
-
-
-## `hdel`
-
-_Delete a file or folder_
-
-Syntax: `hdel x`, `hdel[x]`
-
-Where `x` is a file or folder symbol, deletes it.
-
-```q
-q)hdel`:test.txt   / delete test.txt in current working directory
-`:test.txt
-q)hdel`:test.txt   / should generate an error
-'test.txt: No such file or directory
-```
-
-!!! warning "`hdel` can delete folders only if empty"
-
-    <pre><code class="language-q">
-    q)hdel\`:mydir
-    '​mydir​. OS reports: Directory not empty
-      [0]  hdel\`:​mydir​
-    </code></pre>
-
-!!! tip "Delete a folder and its contents"
-
-    To delete a folder and its contents, [recursively](dotz.md)
-
-    <pre><code class="language-q">
-    ​/diR gets recursive dir listing​
-    q)diR:{$[11h=type d:key x;raze x,.z.s each\` sv/:x,/:d;d]}
-    ​/hide power behind nuke​
-    q)​nuke:hdel​ ​each​ ​​desc diR​@​ / desc sort!​
-    ​q)nuke\`:mydir
-    </code></pre>
-
-For a general visitor pattern with `hdel`
-
-```q
-​q)visitNode:{if[11h=type d:key y;.z.s[x]each` sv/:y,/:d;];x y}
-q)nuke:visitNode[hdel]
-```
-
-<i class="far fa-hand-point-right"></i>
-Basics: [File system](../basics/files.md), 
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md),
+[Interprocess communication](../basics/ipc.md)
 
 
 ## `hopen`
-
-_Open a file or process handle_
 
 Syntax: `hopen x`, `hopen[x]`
 
 Where `x` is one of 
 
--   a process handle
--   a 2-item list of a process handle and a timeout in milliseconds
--   a filename: symbol or (since V3.6 2017.09.26) string
+-   a _process symbol_
+-   a 2-item list of a process symbol and a timeout in milliseconds
+-   a [file symbol](../basics/glossary.md#file-symbol) or (since V3.6 2017.09.26) [filename](../basics/glossary.md#filename)
 
-opens a file or a process handle, and returns a positive integer handle.
+opens communication to a file or a process, and returns a handle.
 
-A _process handle_ has the form:
+
+### Processes
+
+A _process symbol_ has the form:
 
 TCP
 : `` `:host:port[:user:password]`` 
@@ -102,7 +47,7 @@ Unix domain socket
 
 SSL/TLS
 : `` `:tcps://host:port[:user:password] `` 
-: <i class="far fa-hand-point-right"></i> Knowledge Base: [SSL/TLS](../kb/ssl.md)
+: <i class="fas fa-graduation-cap"></i> [SSL/TLS](../kb/ssl.md)
 
 User and password are required if the server session has been started with the [`-u`](../basics/cmdline.md#-u-usr-pwd-local) or [`-U`](../basics/cmdline.md#-u-usr-pwd) command line options, and are passed to [`.z.pw`](dotz.md#zpw-validate-user) for (optional) additional processing.
 
@@ -133,14 +78,14 @@ q)`:mydb.us.com:5010:elmo:sesame "1+1"
 2
 ```
 
-<i class="far fa-hand-point-right"></i> 
-.Q: [`.Q.Xf`](dotq.md#qxf-create-file) (create file)  
-Knowledge Base: [Client-server](../kb/client-server.md)
+<i class="fas fa-book"></i> 
+[`.Q.Xf`](dotq.md#qxf-create-file) (create file)
+<br>
+<i class="fas fa-graduation-cap"></i> 
+[Client-server](../kb/client-server.md)
 
 
-### File handles
-
-A file handle is used for writing to a file. The `hopen` argument is a symbol or (since V3.6 2017.09.26) string filename:
+### Files
 
 ```q
 q)hdat:hopen `:f.dat             / data file (bytes)
@@ -169,21 +114,21 @@ q)r:htxt ` sv("asdf";"qwer")
 
 V3.4 Unix builds have support for reading from a Fifo/named pipe, where the `hopen` argument has the form `` `:fifo://filename``.
 
-<i class="far fa-hand-point-right"></i> 
-Basics: [File system](../basics/files.md),
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md),
 [Client-server](../kb/client-server.md), 
-[Named pipes](../kb/named-pipes.md)  
-Knowledge Base: [SSL/TLS](../kb/ssl.md)
+[Named pipes](../kb/named-pipes.md)<br>
+<i class="fas fa-graduation-cap"></i>
+[SSL/TLS](../kb/ssl.md)
 
 
 
 ## `hclose`
 
-_Close a file or process handle_
-
 Syntax: `hclose x`, `hclose[x]`
 
-Close file or process handle `x`.
+Where `x` is a file or process handle, closes communication to it and destroys the handle. 
+(The corresponding integer can no longer be applied to an argument.)
 
 ```q
 q)h:hopen `::5001
@@ -194,8 +139,9 @@ q)h"til 5"
 ': Bad file descriptor
 ```
 
-Pending data on the handle is not sent prior to closing. 
-If flushing is required prior to close, this must be done explicitly. (Since V3.6 2019.09.19)
+Async connections: pending data on the handle is not sent prior to closing. 
+If flushing is required prior to close, this must be done explicitly. 
+(Since V3.6 2019.09.19)
 
 ```q
 q)neg[h][];hclose h; 
@@ -205,26 +151,3 @@ q)neg[h][];hclose h;
 
     If the handle refers to a websocket, `hclose` blocks until any pending data on the handle has been sent.
 
-<i class="far fa-hand-point-right"></i>
-Basics: [File system](../basics/files.md), 
-[IPC](../basics/ipc.md)
-
-
-## `hsym`
-
-_Convert symbol to file handle_
-
-Syntax: `hsym x`,`hsym[x]`
-
-Converts symbol `x` into a file name, or valid hostname, or IP address. Since V3.1, `x` can be a symbol list.
-
-```q
-q)hsym`c:/q/test.txt
-`:c:/q/test.txt
-q)hsym`10.43.23.197
-`:10.43.23.197
-```
-
-
-<i class="far fa-hand-point-right"></i>
-Basics: [File system](../basics/files.md)

@@ -36,6 +36,7 @@ keywords: kdb+, q, technical, white paper
 -   [Storing and exploring the **Bitcoin blockchain**](blockchain/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/blockchain-a4.pdf), [US&nbsp;Letter](/download/wp/blockchain-us.pdf)</small>
 -   [Sample aggregation engine for **market depth**](market-depth/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/sample_aggregation_engine_for_market_depth.pdf)
 -   [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/market-fragmentation-a4.pdf), [US&nbsp;Letter](/download/wp/market-fragmentation-us.pdf)</small>
+-   ==new== [Comparing **option-pricing** methods in q](option-pricing/index.md)
 -   [**Signal processing and q**](signal-processing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/signal-processing-a4.pdf), [US&nbsp;Letter](/download/wp/signal-processing-us.pdf)</small>
 -   [**Surveillance** techniques to effectively monitor algo and high-frequency trading](surveillance/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
 -   [**Transaction-cost** analysis using kdb+](transaction-cost.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/transaction_cost_analysis_using_kdb.pdf)
@@ -43,11 +44,11 @@ keywords: kdb+, q, technical, white paper
 
 ## Machine learning
 
--   ==new== [FDL Europe: Analyzing social media data for **disaster management**](disaster-management/index.md) 
+-   [FDL Europe: Analyzing social media data for **disaster management**](disaster-management/index.md) 
 -   [**K-Nearest Neighbor classification** and pattern recognition with q](machine-learning/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/machine_learning_in_kdb.pdf)
 -   [An introduction to **neural networks** with kdb+](neural-networks/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/an_introduction_to_neural_networks_with_kdb.pdf)</small>
 -   [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/exoplanets-us.pdf)
-<!-- -   ==new== [NASA Frontier Development Lab **Predicting floods** with q and machine learning](disaster-floods/index.md) -->
+-   ==new== [NASA Frontier Development Lab **Predicting floods** with q and machine learning](disaster-floods/index.md)
 -   [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/space-weather-us.pdf)
 -   [**Using embedPy to apply LASSO regression**](embedpy-lasso/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/embedpy-lasso-us.pdf)
 
@@ -57,6 +58,7 @@ keywords: kdb+, q, technical, white paper
 -   [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
 -   [**Compression** in kdb+](compress/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/compression_in_kdb.pdf)
 -   [Temporal data: a kdb+ framework for **corporate actions**](corporate-actions.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/temporal_data_a_kdb_framework_for_corporate_actions.pdf)
+-   ==new== [Mass ingestion through **data loaders**](data-loaders/index.md) 
 -   [Kdb+ **data-management** techniques](data-management.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
 -   [**Data recovery** for kdb+tick](data-recovery.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/data_recovery_for_kdb_tick.pdf)
 -   [**Disaster-recovery planning** for kdb+ tick systems](disaster-recovery/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/disaster-recovery-a4.pdf), [US Letter](/download/wp/disaster-recovery-us.pdf) </small>
@@ -69,9 +71,8 @@ keywords: kdb+, q, technical, white paper
 -   [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/query-routing-a4.pdf), [US&nbsp;Letter](/download/wp/query-routing-us.pdf)</small>
 -   [**Socket sharding** with kdb+ and Linux](socket-sharding/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/socket-sharding.pdf)
 -   [**Time-series simplification** in kdb+: a method for dynamically shrinking Big Data](ts-shrink/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
--   ==new== [Working with **sym files**](symfiles.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/symfiles-a4.pdf), [US&nbsp;Letter](/download/wp/symfiles-us.pdf)</small>
+-   [Working with **sym files**](symfiles.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/symfiles-a4.pdf), [US&nbsp;Letter](/download/wp/symfiles-us.pdf)</small>
 -   [Kdb+tick profiling for **throughput optimization**](tick-profiling.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)
 
 
-Some of these white papers originally appeared as the _q for Gods_ series from [First Derivatives](https://www.firstderivatives.com).
 

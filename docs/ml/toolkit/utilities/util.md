@@ -133,12 +133,13 @@ jcol| fcol
 
 _Convert pandas dataframe containing datetime timezones to a q table_
 
-Syntax: `.ml.df2tab_tz[x;y]`
+Syntax: `.ml.df2tab_tz[x;y;z]`
 
 Where:
 
 - `x` is an embedPy representation of a Pandas dataframe
 - `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or not
+- `z` is a boolean indicating whether to transform python datetime.datetime and datetime.time objects to q objects (1b) or to leave as foreign objects
 
 Returns a q table
 
@@ -158,18 +159,18 @@ q)print dttab:.p.get[`dtdf]
 1  12:13:30.000200          00:16:40 2015-12-22 00:00:00 2015-12-22 00:00:00+01:00
 
 
-q).ml.df2tab_tz[dttab;0b]
-time                 timed                 datetime                      dt_with_tz         ..
---------------------------------------------------------------------------------------------..
-0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:00..
-0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:00..
+q).ml.df2tab_tz[dttab;0b;0b]
+time    timed                 datetime                      dt_with_tz       ..
+-----------------------------------------------------------------------------..
+foreign -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:..
+foreign 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:..
 
 / local time representation
-q).ml.df2tab_tz[dttab;1b]
-time                 timed                 datetime                      dt_with_tz         ..
---------------------------------------------------------------------------------------------..
-0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D03:30:00..
-0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.22D00:00:00..
+q).ml.df2tab_tz[dttab;1b;1b]
+time                 timed                 datetime                      dt_w..
+-----------------------------------------------------------------------------..
+0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005..
+0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015..
 ``` 
 
 ## `.ml.eye`
@@ -185,7 +186,6 @@ q).ml.eye 5
 0 0 0 1 0
 0 0 0 0 1
 ```
-
 
 ## `.ml.linspace`
 

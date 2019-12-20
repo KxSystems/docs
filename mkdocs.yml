@@ -77,6 +77,7 @@ nav:
   - GitHub: github.md
   - Support: support.md
   - Developer tools: devtools.md
+  - Corporate site: https://kx.com
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -147,10 +148,10 @@ nav:
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
+      - Connection handles: basics/handles.md
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
-      - Debugging: basics/debug.md
       - Dictionaries & tables: basics/dictsandtables.md
       # - Elements: basics/elements.md
       - Enumerations: basics/enumerations.md
@@ -164,12 +165,14 @@ nav:
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
       - Mathematics: basics/math.md
+      - Memory backed by files: basics/memory-backed.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parallel processing: basics/peach.md
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
       - QSQL: basics/qsql.md
+      - Regular Expressions: basics/regex.md
       - Search: basics/search.md
       - Selection: basics/selection.md
       - Sorting: basics/sort.md
@@ -178,6 +181,7 @@ nav:
       - Variadic syntax: basics/variadic.md
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
+    - Debugging: basics/debug.md
     - Errors: basics/errors.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
@@ -231,7 +235,10 @@ nav:
       - getenv, setenv: ref/getenv.md
       - group: ref/group.md
       - gtime, ltime: ref/gtime.md
-      - hcount, hdel, hopen, hclose, hsym: ref/handles.md
+      - hcount: ref/hcount.md
+      - hdel: ref/hdel.md 
+      - hopen, hclose: ref/hopen.md
+      - hsym: ref/hsym.md
       - ij, ijf: ref/ij.md
       - in: ref/in.md
       - insert: ref/insert.md
@@ -360,6 +367,7 @@ nav:
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md
+      - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
@@ -502,6 +510,7 @@ nav:
     - Programming idioms: kb/programming-idioms.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Regular expressions: kb/regex.md
+    - Replay logfile: kb/replay-log.md
     - Server calling client: kb/server-calling-client.md
     - Splayed schema change: kb/splayed-schema-change.md
     - Splayed tables: kb/splayed-tables.md
@@ -525,6 +534,7 @@ nav:
     - Corporate actions: wp/corporate-actions.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md
+    - Data loaders: wp/data-loaders/index.md
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
@@ -546,9 +556,11 @@ nav:
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Neural networks: wp/neural-networks/index.md
+    - Option pricing: wp/option-pricing/index.md
+    - Order Book: wp/order-book.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Permissions: wp/permissions/index.md
-    # - Predicting floods: wp/disaster-floods/index.md
+    - Predicting floods: wp/disaster-floods/index.md
     - Query optimization: wp/columnar-database/index.md
     - Query Routing: wp/query-routing/index.md
     - Real-time tick subscribers: wp/rt-tick/index.md

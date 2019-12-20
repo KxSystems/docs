@@ -83,7 +83,7 @@ Operators, and some keywords and derived functions can also be applied infix.
 ```q
 q)2+3                           / operator
 5
-q)2 mod 2 3 4 5                 / keyword
+q)2 3 4 5 mod 2                 / keyword
 0 1 0 1
 q)1000+\2 3 4                   / derived function
 1002 1005 1009
@@ -95,19 +95,19 @@ q)1000+\2 3 4                   / derived function
 All applicable values can be applied by the [Apply](../ref/apply.md) operator. 
 
 ```q
-q)"abcdef" . 1 4 3                      / list applied to its indexes
+q)"abcdef" . 1 4 3                  / list to its indexes
 "bed"
-q)count . 1 4 3                         / unary keyword applied to its argument
+q)count . 1 4 3                     / unary keyword to its argument
 3
-q)+ . 2 3                               / binary operator applied to its arguments
+q)(+) . 2 3                         / binary operator to its arguments
 5
-q).[+;2 3]                              / binary operator applied to its arguments
+q).[+;2 3]                          / binary operator to its arguments
 5
-q)d . `cow`sheep                        / dictionary applied to its keys
+q)d . `cow`sheep                    / dictionary to its keys
 `vache`mouton
-q).[d;`cow`sheep]                       / dictionary applied to its keys
+q).[d;`cow`sheep]                   / dictionary to its keys
 `vache`mouton
-q)ssr . ("Hello word!";"rd";"rld")      / ternary function applied to its arguments
+q)ssr . ("Hello word!";"rd";"rld")  / ternary function to its arguments
 "Hello world!"
 ```
 
@@ -149,11 +149,11 @@ q)d`cow`sheep
 Iterators are unary operators that can be (and almost always are) applied postfix. They derive functions from their value arguments. Some derived functions are variadic: they can be applied either unary or binary. 
 
 ```q
-q)+\[2 3 4]                             / derived function applied unary
+q)+\[2 3 4]                             / derived fn applied unary
 2 5 9
-q)+\[1000;2 3 4]                        / derived function applied binary
+q)+\[1000;2 3 4]                        / derived fn applied binary
 1002 1005 1009
-q)count'[("the";"quick";"brown";"fox")] / derived function applied unary
+q)count'[("the";"quick";"brown";"fox")] / derived fn applied unary
 3 5 5 3
 ```
 

@@ -17,7 +17,19 @@ Here are typographical, spelling and lexical conventions for the content of this
 They apply to 
 
 -   Markdown source files for code.kx.com, hosted at <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/kxsystems/docs)
--   Technical White papers prepared as PDFs for code.kx.com 
+-   Technical White papers prepared for code.kx.com 
+
+## White papers
+
+Contributions to the series of [Kx Technical White Papers](../../wp/index.md) should be drafted in Markdown and follow the conventions in this guide. 
+Image files should be ≤500px wide. 
+
+Use the source files for published papers as models: 
+
+<i class="fab fa-github"></i>
+[KxSystems/docs/docs/wp](https://github.com/KxSystems/docs/tree/master/docs/wp).
+
+
 
 ## Purpose
 

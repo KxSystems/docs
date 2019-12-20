@@ -27,9 +27,11 @@ In pattern `y` certain characters have special meaning:
 
 Special characters can be matched by bracketing them.
 
-<i class="far fa-hand-point-right"></i> 
-[`ss` `ssr`](ss.md)  
-Basics: [Strings](../basics/strings.md)  
-Knowledge Base: [Regular expressions](../kb/regex.md) 
+<i class="fas fa-book"></i> 
+[`ss`, `ssr`](ss.md),
+[Regular Expressions in q](../basics/regex.md),
+[Strings](../basics/strings.md)<br>
+<i class="fas fa-graduation-cap"></i>
+[Using regular expressions](../kb/regex.md) 
 
 

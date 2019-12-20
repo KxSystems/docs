@@ -9,7 +9,7 @@ keywords: geospatial, index, kdb+, map, openstreetmap, q
 
 This demo shows the basics of geospatial indexing with q.
 
-A 10-million-point random data set is queried from the HTML map client. Click on the map to see nearby points. 
+A 1-million-point random data set is queried from the HTML map client. Click on the map to see nearby points. 
 
 Download <i class="fab fa-github"></i> [KxSystems/kdb/e/geo.zip](https://github.com/KxSystems/kdb/blob/master/e/geo.zip) and run:
 
@@ -76,12 +76,3 @@ retrieves points contained in the given spherical rectangle. `lu` takes the rect
 The result is then filtered to remove points outside the rectangle (since the covering might exceed the rectangle dimensions) and to constrain by time.
 
 The simple HTML interface is implemented with [openstreetmap](http://www.openstreetmap.org/) and [leaflet](https://leafletjs.com).
-
-
-!!! warning "OpenSSL 1.1 and Ubuntu 18.04"
-
-    `geo.zip` conflicts with OpenSSL 1.1 and won’t compile on Ubuntu 18.04.
-
-    For now, a workaround can be found at 
-    <i class="fab fa-github"></i>
-    [rianoc/geo](https://github.com/rianoc/geo)
