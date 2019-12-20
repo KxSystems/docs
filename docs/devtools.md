@@ -25,6 +25,9 @@ is a version of Kx Developer extended for use by enterprise customers.
 It supports a wide range of users, from non-technical analysts to experienced q programmers.
 
 
+## Kx Libraries
+
+[Kx Libraries](/developer/libraries/) are a collection of useful q libraries for q development and build pipelines. The Kx Libraries package provides libraries for Markdown documentation generation from q source, unit testing and property-based testing frameworks, static code linting, code profiling, code coverage, and an expressive data visualization library.
 
 
 ## Kx Dashboards
