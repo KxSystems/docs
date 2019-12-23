@@ -26,18 +26,18 @@ q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L]
 
 ```txt
 Options:
- -b blocked                 -P display precision
- -c console size            -q quiet mode
- -C HTTP size               -r replicate
- -e error traps             -s slaves
- -E TLS Server Mode         -t timer ticks
- -g garbage collection      -T timeout
- -l log updates             -u disable syscmds
- -L log sync                -u usr-pwd local
- -m memory domain           -U usr-pwd
- -o UTC offset              -w memory
- -p listening port          -W start week
- -p multithread port        -z date format
+ -b blocked                 -q quiet mode
+ -c console size            -r replicate
+ -C HTTP size               -s slaves
+ -e error traps             -t timer ticks
+ -E TLS Server Mode         -T timeout
+ -g garbage collection      -u disable syscmds
+ -l log updates             -u usr-pwd local
+ -L log sync                -U usr-pwd
+ -m memory domain           -w memory
+ -o UTC offset              -W start week
+ -p listening port          -z date format
+ -P display precision       
 ```
 
 
