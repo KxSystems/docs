@@ -10,39 +10,37 @@ keywords: bang, functions, internal, kdb+, q
 
 The operator `!` with a negative integer as left argument calls an internal function.
 
-!!! warning
+<pre markdown="1" class="language-txt">
+[-4!x](#-4x-tokens)        tokens                  Replaced:
+[-8!x](#-8x-to-bytes)        to bytes                 -1!   [hsym](../ref/hsym.md)
+[-9!x](#-9x-from-bytes)        from bytes               -2!   [attr](../ref/attr.md)
+[-10!x](#-10x-type-enum)       type enum                -3!   [.Q.s1](../ref/dotq.md#qs1-string-representation)
+[-11!](#-11-streaming-execute)        streaming execute        -5!   [parse](../ref/parse.md)
+[-14!x](#-14x-quote-escape)       quote escape             -6!   [eval](../ref/eval.md)
+[-16!x](#-16x-ref-count)       ref count                -7!   [hcount](../ref/hcount.md)
+[-17!x](#-17x-flip-endian-ess)       flip endian-ess          -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
+[-18!x](#-18x-compress-byte)       compress byte            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
+[-19!](#-19-compress-file)        compress file            -15!  [md5](../ref/md5.md)
+[-21!x](#-21x-compression-stats)       compression stats        -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
+[-22!x](#-22x-uncompressed-length)       uncompressed length      -24!  [reval](../ref/eval.md#reval)
+[-23!x](#-23x-memory-map)       memory map               -29!  [.j.k](../ref/dotj.md#jk-deserialize)
+[-25!x](#-25x-async-broadcast)       async broadcast          -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[-26!x](#-26x-ssl)       SSL
+[-27!(x;y)](#-27xy-format)   format
+[-30!x](#-30x-deferred-response)       deferred response
+[-33!x](#-33x-sha-1-hash)       SHA-1 hash
+[-120!x](#-120x-memory-domain)      memory domain
+</pre>
+
+!!! warning 
 
     Internal functions are for use by language implementors.
-    They may be redefined in subsequent releases.
+    They are [exposed infrastructure](exposed-infrastructure.md)
+    and may be redefined in subsequent releases.
 
     They also allow new language features to be tried on a provisional basis.
 
     Where they are replaced by keywords or utilities, **use the replacements**.
-
-<i class="far fa-hand-point-right"></i> [Exposed infrastructure](exposed-infrastructure.md)
-
-<pre markdown="1" class="language-txt">
--4!x        tokens                  Replaced:
--8!x        to bytes                 -1!   [hsym](../ref/hsym.md)
--9!x        from bytes               -2!   [attr](../ref/attr.md)
--10!x       type enum                -3!   [.Q.s1](../ref/dotq.md#qs1-string representation)
--11!        streaming execute        -5!   [parse](../ref/parse.md)
--14!x       quote escape             -6!   [eval](../ref/eval.md)
--16!x       ref count                -7!   [hcount](../ref/hcount.md)
--17!x       flip endian-ess          -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
--18!x       compress byte            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
--19!        compress file            -15!  [md5](../ref/md5.md)
--21!x       compression stats        -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
--22!x       uncompressed length      -24!  [reval](../ref/eval.md#reval)
--23!x       memory map               -29!  [.j.k](../ref/dotj.md#jk-parse)
--25!x       async broadcast          -31!  [.j.jd](../ref/dotj.md#serialize-infinity)
--26!x       SSL
--27!(x;y)   format
--30!x       deferred response
--33!x       SHA-1 hash
--120!x      domain
-</pre>
-
 
 [![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)
 _xkcd.com_
@@ -312,8 +310,8 @@ Possible error scenarios:
 View TLS settings on a handle or current process `-26!handle` or `-26!()`.
 Since V3.4 2016.05.12.
 
-<i class="far fa-hand-point-right"></i>
-Knowledge Base: [SSL](../kb/ssl.md)
+<i class="fas fa-graduation-cap"></i>
+[SSL](../kb/ssl.md)
 
 
 ## `-27!(x;y)` (format)
@@ -359,7 +357,8 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 
 Since V3.6 2018.05.18.
 
-<i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)
+<i class="fas fa-graduation-cap"></i> 
+[Deferred response](../kb/deferred-response.md)
 
 
 ## `-33!x` (SHA-1 hash)
@@ -373,7 +372,7 @@ q)raze string -33!"mypassword"
 "91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
 
 
@@ -388,5 +387,5 @@ q)-120!'(1 2 3;.m.x:1 2 3)
 0 1
 ```
 
-<i class="far fa-hand-point-right"></i>
-Reference: [`.m` namespace](../ref/dotm.md)
+<i class="fas fa-book"></i>
+[`.m` namespace](../ref/dotm.md)

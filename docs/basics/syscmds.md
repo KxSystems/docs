@@ -9,26 +9,6 @@ keywords: command, kdb+, q, system
 
 
 
-System commands control the q environment. They have the form:
-
-```txt
-\cmd [p]
-```
-
-for some command `cmd`, and optional parameter list `p`.  
-
-<i class="far fa-hand-point-right"></i> 
-[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters), 
-[`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
-
-Commands with optional parameters that set values, will show the current values if the parameters are omitted.
-
-Some system commands have equivalent command-line parameters.
-
-!!! tip "`system`"
-
-    The [`system`](../ref/system.md) keyword executes a string representation of a system command – and allows its result to be captured.
-
 ```txt
 \   abort                       \s       number of slaves
 \a  tables                      \S       random seed
@@ -48,6 +28,26 @@ Some system commands have equivalent command-line parameters.
 \r  replication master          \\       quit
 \r  rename                      
 ```
+
+System commands control the q environment. They have the form:
+
+```txt
+\cmd [p]
+```
+
+for some command `cmd`, and optional parameter list `p`.  
+
+<i class="far fa-hand-point-right"></i> 
+[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters), 
+[`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
+
+Commands with optional parameters that set values, will show the current values if the parameters are omitted.
+
+Some system commands have equivalent command-line parameters.
+
+!!! tip "`system`"
+
+    The [`system`](../ref/system.md) keyword executes a string representation of a system command – and allows its result to be captured.
 
 
 ## `\` (abort)

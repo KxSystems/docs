@@ -4,26 +4,37 @@ description: Help for man.q documentation script for q programmers
 author: Stephen Taylor
 date: December 2019
 ---
-# Usage examples for `man.q`
+# Help for `man.q`
 
 
+<i class="fab fa-github"></i>
+[KxSystems/man](https://github.com/kxsystems/man)
 
-<pre style="padding: 1em">
+## Examples
+```txt
 man "$"               / operator glyph
-man "enum extend"     / operator by name
+man "enum extend"     / operator name
 man "read0"           / keyword
 man ".z"              / namespace
 man "-b"              / command-line option
 man "\\b"             / system command
+```
 
+
+## Special pages
+```txt
+man "cmdline"         / command-line options
 man "errors"
 man "datatypes"
+man "debug"
 man "help"
 man "interfaces"
 man "internal"
+man "iterators"
 man "kb"              / Knowledge Base
+man "syscmds"         / system commands
 man "wp"              / White Papers
-</pre>
+```
 
 
 <i class="fas fa-book"></i>
@@ -38,5 +49,3 @@ man "wp"              / White Papers
 <i class="far fa-map"></i>
 [White Papers](../wp/index.md)
 
-<i class="fab fa-github"></i>
-[KxSystems/man](https://github.com/kxsystems/man)
