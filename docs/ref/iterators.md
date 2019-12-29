@@ -25,7 +25,7 @@ They are the primary means of iterating in q.
 [Iteration](../basics/iteration.md) in q
 <br>
 <i class="far fa-map"></i>
-White paper: [Iterators](../wp/iterators.md)
+White paper: [Iterators](../wp/iterators/index.md)
 
 !!! detail "Applicable value"
 

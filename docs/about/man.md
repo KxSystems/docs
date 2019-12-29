@@ -23,6 +23,7 @@ man "\\b"             / system command
 
 ## Special pages
 ```txt
+man ""                / reference card
 man "cmdline"         / command-line options
 man "errors"
 man "datatypes"
@@ -34,6 +35,11 @@ man "iterators"
 man "kb"              / Knowledge Base
 man "syscmds"         / system commands
 man "wp"              / White Papers
+```
+
+## Arguments to `man`
+```txt
+man "--list"
 ```
 
 
