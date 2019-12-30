@@ -131,15 +131,15 @@ jcol| fcol
 
 ## `.ml.df2tab_tz`
 
-_Convert pandas dataframe containing datetime timezones to a q table_
+_Convert a pandas dataframe containing datetime timezones and datetime objects (datetime.datetime, datetime.time) to a q table_
 
 Syntax: `.ml.df2tab_tz[x;y;z]`
 
 Where:
 
 - `x` is an embedPy representation of a Pandas dataframe
-- `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or not
-- `z` is a boolean indicating whether to transform python datetime.datetime and datetime.time objects to q objects (1b) or to leave as foreign objects
+- `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or to UTC time (0b)
+- `z` is a boolean indicating whether to transform python datetime.datetime and datetime.time objects to q objects (1b) or to leave as foreign objects (0b)
 
 Returns a q table
 
