@@ -133,7 +133,7 @@ jcol| fcol
 
 ## `.ml.df2tab_tz`
 
-_Convert pandas dataframe containing datetime.date/time and timezones to a q table_
+_Convert a pandas dataframe containing datetime timezones and datetime objects (datetime.datetime, datetime.time) to a q table_
 
 Syntax: `.ml.df2tab_tz[x;y;z]`
 
