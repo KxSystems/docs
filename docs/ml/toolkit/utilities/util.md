@@ -19,7 +19,7 @@ The following functions are defined in the `util.q` file of the Machine Learning
   .ml.arange             Evenly-spaced values within a range
   .ml.combs              n linear combinations of k numbers
   .ml.df2tab             kdb+ table from a pandas dataframe
-  .ml.df2tab_tz		 kdb+ table from a pandas dataframe containing datetime timezones
+  .ml.df2tab_tz          Pandas dataframe to kdb+ conversion handling dates/times/timezones
   .ml.eye                Identity matrix
   .ml.linspace           List of evenly-spaced values
   .ml.shape              Shape of a matrix
@@ -128,18 +128,20 @@ jcol| fcol
 
 **Index columns** This function assumes a single unnamed Python index column is to be removed. It returns an unkeyed table. All other variants of Python index columns map to q key columns. For example any instance with two or more indexes will map to two or more Python keys, while any named single-index Python column be associated with a q key in a keyed table.
 
+!!!note
+	This function is a wrapper around `.ml.df2tab_tz`, conversions within this function will default to convert datetime.date and datetime.time types to foreign objects, numpy timezone types are converted to their UTC representation. These conversion choices have been made due to python related computational inefficiencies in converting to native q types and local-time representations respectively.
 
 ## `.ml.df2tab_tz`
 
-_Convert pandas dataframe containing datetime timezones to a q table_
+_Convert pandas dataframe containing datetime.date/time and timezones to a q table_
 
 Syntax: `.ml.df2tab_tz[x;y;z]`
 
 Where:
 
 - `x` is an embedPy representation of a Pandas dataframe
-- `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or not
-- `z` is a boolean indicating whether to transform python datetime.datetime and datetime.time objects to q objects (1b) or to leave as foreign objects
+- `y` is a boolean indicating if timezone(tz) objects are converted to local time (1b) or UTC (0b)
+- `z` is a boolean indicating if python datetime.date/datetime.time objects are returned as q (1b) or foreign objects (0b)
 
 Returns a q table
 
@@ -158,19 +160,26 @@ q)print dttab:.p.get[`dtdf]
 0  12:10:30.000500 -1 days +19:00:00 2005-02-25 03:30:00 2005-02-25 03:30:00+01:00
 1  12:13:30.000200          00:16:40 2015-12-22 00:00:00 2015-12-22 00:00:00+01:00
 
-
+/ default behaviour (tz -> UTC, time -> foreign)
 q).ml.df2tab_tz[dttab;0b;0b]
-time    timed                 datetime                      dt_with_tz       ..
------------------------------------------------------------------------------..
-foreign -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:..
-foreign 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:..
+time    timed                 datetime                      dt_with_tz                   
+-----------------------------------------------------------------------------------------
+foreign -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:00.000000000
+foreign 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:00.000000000
 
-/ local time representation
-q).ml.df2tab_tz[dttab;1b;1b]
-time                 timed                 datetime                      dt_w..
------------------------------------------------------------------------------..
-0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005..
-0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015..
+/ default time conversion, local tz conversion
+q).ml.df2tab_tz[dttab;1b;0b]
+time    timed                 datetime                      dt_with_tz                   
+-----------------------------------------------------------------------------------------
+foreign -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D03:30:00.000000000
+foreign 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.22D00:00:00.000000000
+
+/ default tz conversion and conversion to q time
+q).ml.df2tab_tz[dttab;0b;1b]
+time                 timed                 datetime                      dt_with_tz                   
+------------------------------------------------------------------------------------------------------
+0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:00.000000000
+0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:00.000000000
 ``` 
 
 ## `.ml.eye`
