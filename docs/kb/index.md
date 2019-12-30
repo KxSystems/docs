@@ -16,6 +16,7 @@ The Knowledge Base contains articles about how to get things done with kdb+.
 -   [Programming idioms](programming-idioms.md)  
 -   [WebSockets](websockets.md)                  
 -   [File compression](file-compression.md)      
+-   [Replay logfile](replay-log.md)      
  
                                              
 ## Big Data

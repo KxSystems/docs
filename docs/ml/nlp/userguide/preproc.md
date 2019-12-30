@@ -55,9 +55,10 @@ field         | type                   | content
 `keywords`    | list of dictionaries   | significance of each term
 `starts`      | long                   | index that a token starts at
 
+
 The resulting function is applied to a list of strings.
 
-Spell check can also be performed on the text by passing in `spell` as in input field. This updates any misspelt words to their most likely alternative. This is performed on text prior to parsing. 
+Spell check can also be performed on the text by passing in `spell` as in input field. This updates any misspelt words to their most likely alternative. This is performed on text prior to parsing.
 
 Parsing the novel _Moby Dick_:
 
@@ -67,7 +68,7 @@ fields:`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
 myparser:.nlp.newParser[`en;fields]
 corpus:myparser mobyDick
 cols corpus
-`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords`text
+`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
 ```
 
 
@@ -101,7 +102,7 @@ q)myparser:.nlp.newParser[`en;fields]
 q)corpus:myparser mobyDick
 
 q).nlp.findPOSRuns[`pennPOS;`NNP`NNPS;corpus 0][;0]
-`loomings`ishmael`november`cato`manhattoes`circumambulate`sabbath`go`corlears`hook`coenties
+`ishmael`november`cato`manhattoes`sabbath`corlears hook`coenties slip
 ```
 
 
@@ -131,12 +132,12 @@ Extract a specific document and find the most significiant words in that documen
 
 ```q
 q)queriedemail:jeffcorpus[where jeffcorpus[`text] like "*charity bike*"]`text;
-q)5#desc .nlp.TFIDF[jeffcorpus]1928
-bikers   | 17.7979
-biker    | 17.7979
-strenuous| 14.19154
-route    | 14.11932
-rode     | 14.11136
+q)5#desc .nlp.TFIDF[jeffcorpus]1346
+ride  | 0.100777
+bike  | 0.09897329
+bikers| 0.05344036
+biker | 0.05344036
+miles | 0.04910715
 ```
 
 In cases where the dataset is more similar to a single document than a collection of separate documents, a different algorithm can be used. This algorithm is taken from
@@ -156,16 +157,18 @@ Treating all of _Moby Dick_ as a single document, the most significant keywords 
 
 ```q
 q)10#keywords:.nlp.keywordsContinuous corpus
-ahab     | 65.23191
-peleg    | 52.21875
-bildad   | 46.56072
-whale    | 42.72953
-stubb    | 38.11739
-queequeg | 35.34769
-steelkilt| 33.96713
-pip      | 32.90067
-starbuck | 32.05286
-thou     | 32.05231
+ahab      | 64.24125
+peleg     | 52.37642
+bildad    | 46.86506
+whale     | 42.41664
+stubb     | 37.82133
+queequeg  | 35.50147
+steelkilt | 33.94292
+ye        | 33.43198
+pip       | 32.90571
+starbuck  | 31.63382
+captain   | 29.1811
+thou      | 28.27945
 ```
 
 
@@ -190,11 +193,11 @@ returns a dictionary of the related tokens and their relevances.
 
 ```q
 q).nlp.findRelatedTerms[corpus;`captain]
-peleg | 1.653247
-bildad| 1.326868
-ahab  | 1.232073
-ship  | 1.158671
-cabin | 0.9743517
+peleg   | 1.665086
+bildad  | 1.336501
+ahab    | 1.236744
+ship    | 1.154238
+cabin   | 0.9816231
 ```
 
 
@@ -214,21 +217,21 @@ Where
 
 returns a dictionary with phrases as the keys and their relevance as the values.
 
-Search for the phrases that contain `captain` and see which phrase has the largest occurrence; we find `captain ahab` occurs most often in the book: 31 times.
+Search for the phrases that contain `captain` and see which phrase has the largest occurrence; we find `captain ahab` occurs most often in the book: 50 times.
 
 ```q
 q).nlp.extractPhrases[corpus;`captain]
-"captain ahab"        | 31
-"captain peleg"       | 12
-"captain bildad"      | 7
-"captain sleet"       | 5
-"stranger captain"    | 4
-"said the captain"    | 3
-"sea-captain"         | 2
-"whaling captain"     | 2
-"captain's cabin"     | 2
-"captain ahab,\" said"| 2
-"captain pollard"     | 2
-"captain d'wolf"      | 2
-"way, captain"        | 2
+`captain`ahab      | 50
+`captain`peleg     | 25
+`captain`bildad    | 10
+`stranger`captain  | 6
+`captain`sleet     | 5
+`sea`captain       | 3
+`captain`pollard   | 3
+`captain`mayhew    | 3
+`whaling`captain   | 2
+`captain`ahab`stood| 2
+`captain`stood     | 2
+`captain`d'wolf    | 2
+`way`captain       | 2
 ```

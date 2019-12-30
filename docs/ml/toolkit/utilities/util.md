@@ -19,6 +19,7 @@ The following functions are defined in the `util.q` file of the Machine Learning
   .ml.arange             Evenly-spaced values within a range
   .ml.combs              n linear combinations of k numbers
   .ml.df2tab             kdb+ table from a pandas dataframe
+  .ml.df2tab_tz		 kdb+ table from a pandas dataframe containing datetime timezones
   .ml.eye                Identity matrix
   .ml.linspace           List of evenly-spaced values
   .ml.shape              Shape of a matrix
@@ -43,11 +44,11 @@ q).ml.arange[6.25;10.5;0.05]
 ```
 
 
-## `.ml.comb`
+## `.ml.combs`
 
 _Unique combinations of vector or matrix_
 
-Syntax: `.ml.comb[x;y]`
+Syntax: `.ml.combs[x;y]`
 
 Where
 
@@ -128,11 +129,52 @@ jcol| fcol
 **Index columns** This function assumes a single unnamed Python index column is to be removed. It returns an unkeyed table. All other variants of Python index columns map to q key columns. For example any instance with two or more indexes will map to two or more Python keys, while any named single-index Python column be associated with a q key in a keyed table.
 
 
+## `.ml.df2tab_tz`
+
+_Convert pandas dataframe containing datetime timezones to a q table_
+
+Syntax: `.ml.df2tab_tz[x;y;z]`
+
+Where:
+
+- `x` is an embedPy representation of a Pandas dataframe
+- `y` is a boolean indicating whether to convert the timezones to their local time representation (1b) or not
+- `z` is a boolean indicating whether to transform python datetime.datetime and datetime.time objects to q objects (1b) or to leave as foreign objects
+
+Returns a q table
+
+```q
+q)p)import pandas as pd
+q)p)import datetime
+q)p)import numpy as np
+q)p)dtdf=pd.DataFrame(
+    {'time':[datetime.time(12, 10, 30,500),datetime.time(12, 13, 30,200)],
+    'timed':[datetime.timedelta(hours=-5),datetime.timedelta(seconds=1000)],
+    'datetime':[np.datetime64('2005-02-25T03:30'),np.datetime64('2015-12-22')]})
+q)p)dtdf['dt_with_tz']=dtdf.datetime.dt.tz_localize('CET')
+
+q)print dttab:.p.get[`dtdf]
+              time             timed            datetime                dt_with_tz
+0  12:10:30.000500 -1 days +19:00:00 2005-02-25 03:30:00 2005-02-25 03:30:00+01:00
+1  12:13:30.000200          00:16:40 2015-12-22 00:00:00 2015-12-22 00:00:00+01:00
+
+
+q).ml.df2tab_tz[dttab;0b;0b]
+time    timed                 datetime                      dt_with_tz       ..
+-----------------------------------------------------------------------------..
+foreign -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005.02.25D02:30:..
+foreign 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015.12.21D23:00:..
+
+/ local time representation
+q).ml.df2tab_tz[dttab;1b;1b]
+time                 timed                 datetime                      dt_w..
+-----------------------------------------------------------------------------..
+0D12:10:30.000500000 -0D05:00:00.000000000 2005.02.25D03:30:00.000000000 2005..
+0D12:13:30.000200000 0D00:16:40.000000000  2015.12.22D00:00:00.000000000 2015..
+``` 
+
 ## `.ml.eye`
 
-_Identity matrix_
-
-Syntax: `.ml.eye[x]`
 
 Where  `x` is an integer atom, returns an identity matrix of height/width `x`.
 
@@ -144,7 +186,6 @@ q).ml.eye 5
 0 0 0 1 0
 0 0 0 0 1
 ```
-
 
 ## `.ml.linspace`
 

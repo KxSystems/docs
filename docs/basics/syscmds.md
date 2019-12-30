@@ -353,7 +353,7 @@ The default is 0: no listening port.
 <i class="far fa-hand-point-right"></i>
 [Listening port](listening-port.md), 
 [`-p` command-line option ](cmdline.md#-p-listening-port)  
-Reference: [`hopen`](../ref/handles.md#hopen)  
+Reference: [`hopen`](../ref/hopen.md)  
 Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)<br>
 Releases: [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)<br>
 White paper: [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)

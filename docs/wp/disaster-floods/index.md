@@ -1,4 +1,3 @@
----
 title: Predicting floods | White paper | kdb+ and q documentation
 description: Machine-learning methods in q to predict flood susceptibility in an area and the time for a river to reach its peak height after a rainfall event.
 author: Diane O’Donoghue
@@ -36,6 +35,79 @@ Predicting the time to peak of a flood event. When a major rain event occurs, kn
 
 All development was done with the following software versions:
 
+<<<<<<< HEAD
+software | version
+-------- | -------
+kdb+     | 3.6
+Python   | 3.7.0
+
+
+The following python modules were also used:
+
+library         | version
+--------------- |--------
+TensorFlow      | 1.14.0
+NumPy           | 1.17.2
+pandas          | 0.24.2
+Matplotlib      | 2.2.2
+scikit_learn    | 1.1.0
+xgboost         | 0.9.0
+gmaps           | 0.9.0
+geopandas       | 0.5.1
+ipywidgets 	| 7.5.1
+
+In addition, a number of kdb+ libraries and interfaces were leveraged:
+
+library/interface | Release
+----------------- | -------
+EmbedPy           | 1.3.2
+JupyterQ          | 1.1.7
+ML-Toolkit        | 0.3.2
+
+## The Data
+
+This project focuses on 6 states within the US, over a period of 10 years. Data was taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites had continuous historical data over the period, but all the available data for each site was used. 
+
+The 6 states were:
+
+-	`New Jersey`
+-	`Nebraska`
+-	`South Carolina`
+-	`New York`
+-	`South Dakota`
+-	`Virginia`
+
+A primary reason for choosing these states, was that each exhibits similar climate and landscape. Focusing on similar geographies helped to ensure that the models produced were precise.
+
+Required datasets and providers:
+
+_USGS_
+
+USGS provided their Surface Water [dataset](https://waterdata.usgs.gov/nwis/sw). This consisted of the height of a stream as measured by gauges for over 11,000 sites in the US. The data was updated every 15 minutes, with some locations having historical data for over 50 years. As previously mentioned, the data chosen in this case was a subset of these sites based on geographical location.
+
+
+_PRISM_
+
+[The PRISM Climate Group](http://www.prism.oregonstate.edu/) provides climate observations across the whole of the US. This data contains information on total precipitation, minimum/maximum temperature and dew point for each requested latitude and longitude. Spatial and climate datasets are then developed to reveal short and long-term climate patterns. This dataset was used to extract daily precipitation readings from the site locations for each day during the requested 10 year period. 
+
+_National Land Cover Database (NLCD)_
+
+The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). This satellite has a 30-meter resolution and provides information for the entire US. The Landsat satellite program is a NASA/USGS collaboration which provides the longest continuous space-based record of Earth's landscape <sup>[5]</sup>. Landsat's ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This provides information such as land-use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every 5 years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
+
+_National Hydrology Dataset Plus (NHDPlus)_
+
+[NHDPlus](http://www.horizon-systems.com/nhdplus/) is a geo-spatial hydrologic framework dataset associated with USGS, released in 2006. It is based off the NHD dataset, which provides information about the streams, rivers, canals, lakes and ponds throughout the US. The features used from this dataset were the catchment and drainage area characteristics at the stream site locations. Catchment areas are particularly important, as these are the areas of a river/stream in which water is collected and accumulates. This is vital information for predicting whether a flood is likely to occur or not. 
+
+
+_Flooded Locations And Simulated Hydrographs Project (FLASH)_
+
+[FLASH](https://blog.nssl.noaa.gov/flash/) is a database containing information about flood events within the US. The main goal of the FLASH project was to improve the accuracy and timing when predicting these flash floods. The information used from this dataset was the time taken for a river to reach its peak height after a major rain event.
+
+_NOAA_
+
+[NOAA](https://www.noaa.gov/) is a US governmental agency for monitoring and preserving the climate and environment. This dataset provided flood level thresholds for locations across the US. These thresholds consisted of four warning stages and the river height for a given location that causes them to reach these levels. The four warning stages were
+
+Warning  |Meaning
 ```txt
 kdb+     3.6
 Python   3.7.0
@@ -817,9 +889,6 @@ build_model:{[Xtrain;ytrain;dict]
 ## Results
 
 The results below were separated based on the three datasets.
-
-
-### Model testing
 
 
 #### Ungauged models

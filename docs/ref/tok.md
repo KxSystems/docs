@@ -12,33 +12,35 @@ Syntax: `x$y`, `$[x;y]`
 
 Where 
 
--   `x` is an upper-case letter, symbol atom, or negative short int
+-   `x` is an upper-case letter or negative short int
 -   `y` is a string
 
 returns `y` interpreted as a value according to `x`. 
 
-A table of `x` values for Tok:
+`x` values for Tok:
 
 ```q
-q)flip{(neg x;upper .Q.t x;key'[x$\:()])}5h$where" "<>20#.Q.t
--1h  "B" `boolean
--2h  "G" `guid
--4h  "X" `byte
--5h  "H" `short
--6h  "I" `int
--7h  "J" `long
--8h  "E" `real
--9h  "F" `float
--10h "C" `char
--11h "S" `symbol
--12h "P" `timestamp
--13h "M" `month
--14h "D" `date
--15h "Z" `datetime
--16h "N" `timespan
--17h "U" `minute
--18h "V" `second
--19h "T" `time
+q){([result:key'[x$\:()]];short:neg x;char:upper .Q.t x)}5h$where" "<>20#.Q.t
+result   | short char
+---------| ----------
+boolean  | -1    B
+guid     | -2    G
+byte     | -4    X
+short    | -5    H
+int      | -6    I
+long     | -7    J
+real     | -8    E
+float    | -9    F
+char     | -10   C
+symbol   | -11   S
+timestamp| -12   P
+month    | -13   M
+date     | -14   D
+datetime | -15   Z
+timespan | -16   N
+minute   | -17   U
+second   | -18   V
+time     | -19   T
 ```
 
 `0h$` and `"*"$` are no-ops. 

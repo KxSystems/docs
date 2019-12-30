@@ -9,9 +9,7 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 Following the application of [data-processing procedures](preproc.md), it is possible to compare feature vectors, corpora and documents.
 
 
-## Comparisons
-
-### Comparing feature vectors  
+## Comparing feature vectors  
 
 A vector can be thought of either as
 
@@ -23,12 +21,12 @@ The view of a vector as a line segment starting at the origin is useful, as any 
 The _cosine similarity_ of two vectors is the dot product of two vectors over the product of their magnitudes. It is a standard distance metric for comparing documents.
 
 
-### Comparing corpora
+## Comparing corpora
 
 A quick way to compare corpora is to find words common to the whole dataset, but with a strong affinity to only one corpus. This is a function of how much higher their frequency is in that corpus than in the dataset.
 
 
-#### `.nlp.compareCorpora`
+### `.nlp.compareCorpora`
 
 _Terms’ comparative affinities to two corpora_
 
@@ -49,12 +47,12 @@ q)summaries 1  / summary of the remaining corpus
 ```
 
 
-### Comparing documents
+## Comparing documents
 
 This function allows you to calculate the similarity of two different documents. It finds the keywords that are present in both the corporas, and calculates the cosine similarity.
 
 
-#### `.nlp.compareDocs`
+### `.nlp.compareDocs`
 
 _Cosine similarity of two documents_
 
@@ -66,16 +64,16 @@ Given the queried email defined above, and a random email from the corpus, we ca
 
 ```q 
 q)queryemail2:jeffcorpus[rand count jeffcorpus]
-q).nlp.compareDocs[queryemail`keywords;email2`keywords]
+q).nlp.compareDocs[queryemail`keywords;queryemail2`keywords]
 0.1163404
 ```
 
 
 
-### Comparing documents to corpus
+## Comparing documents to corpus
 
 
-#### `.nlp.compareDocToCorpus`
+### `.nlp.compareDocToCorpus`
 
 _Cosine similarity between a document and other documents in the corpus_
 
@@ -92,7 +90,7 @@ Comparing the first chapter with the rest of the book:
 
 ```q
 q).nlp.compareDocToCorpus[corpus`keywords;0]
-0.03592943 0.04720108 0.03166343 0.02691693 0.03363885 0.02942622 0.03097797 0.0408502..
+0.078517 0.1048744 0.06266384 0.07095197 0.08974005 0.05909442 0.06855744..
 ```
 
 
