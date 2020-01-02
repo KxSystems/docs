@@ -10,19 +10,9 @@ keywords: machine learning, ml, automated, preprocessing, feature extraction, fe
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-As previously highlighted, the [function](Insert the link here) used to run the Kx automl offering can be run in a default configuration by setting the final function parameter to (`::`). The behaviour exhibited in this case is highlighted here, with the full range of possible modifications outlined in the [advanced](../../adv/params) section.
+As highlighted [here](../../userguide) the running of the function `.aml.run` in its default configuration is achieved by setting the final parameter `dict` to `::`. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user. The preprocessing procedures taken in this default configuration are as follows
 
-The procedures described below outline the steps taken to preprocess data, initialize appropriate models and correctly parameterize the system prior to the application and scoring of machine learning algorithms on the data. In cases where it is appropriate, this page will highlight use-case specific differences in the procedures followed. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.
-
-Data preprocessing ensures the following:
-
--  The formatting of data is consistent with the requirements of the machine learning models being applied.
--  Only appropriate data types are passed through the machine learning workflow.
--  Features which would not provide relevant information to a model are removed.
--  Characters, such as infinities and nulls are handled appropriately such that the columns containing them do not need to be removed, while also ensuring that information on their original locations is not lost.
-
-The procedures outlined below most effectively ensure that data being passed to the feature extraction and algorithm application procedures is consistent and managable.
-
+The procedures outlined below most ensure that the data being passed to the feature extraction and algorithm application procedures is consistent and managable. In cases where it is appropriate, this page will highlight use-case specific differences in the procedures followed.
 
 ## Outline of procedures
 
@@ -39,96 +29,79 @@ The following are the procedures completed when the default system configuration
 
 Models applied are chosen based on user definition of the type of machine learning task being explored, paired with additional information about the target data. For clarity, the models available are listed below:
 
-Model                       | Task 
-:---------------------------|:--------------
-AdaBoostClassifier          | binary/multi-class classification 
-RandomForestClassifier      | binary/multi-class classification
-GradientBoostingClassifier  | binary/multi-class classification
-LogisticRegression          | binary-class classification
-GaussianNB                  | binary-class classification
-KNeighborsClassifier        | binary/multi-class classification
-MLPClassifier               | binary/multi-class classification
-SVC                         | binary-class classification
-LinearSVC                   | binary-class classification
-Binary-class Keras model    | binary-class classification
-Multi-class Keras model     | multi-class classification
-AdaBoostRegressor           | regression
-RandomForestRegressor       | regression
-GradientBoostingRegressor   | regression
-KNeighborsRegressor         | regression
-MLPRegressor                | regression
-Lasso                       | regression
-LinearRegression            | regression
-RegKeras                    | regression 
+**Binary classification models**
+```
+ AdaBoostClassifier
+ RandomForestClassifier
+ GradientBoostingClassifier
+ LogisticRegression
+ GaussianNB                 
+ KNeighborsClassifier
+ MLPClassifier
+ SVC 
+ LinearSVC
+ Keras binary-classification model
+```
 
+**Multi-class classification models**
+```
+ AdaBoostClassifier
+ RandomForestClassifier
+ GradientBoostingClassifier
+ KNeighborsClassifier
+ MLPClassifier
+ Keras multi-classification model
+```
 
-These models can be augmented through modification of `regmodels.txt` and `classmodels.txt` within the `mdl_def` folder of the github repository.
+**Regression models**
+```
+ AdaBoostRegressor
+ RandomForestRegressor
+ GradientBoostingRegressor
+ KNeighborsRegressor
+ MLPRegressor
+ Lasso
+ LinearRegression
+ Keras regression model
+```
 
-The following examples show how models are defined within the workflow as a result of changes to the initial input. For clarity, the application of `.aml.runexample` is provided.
+These models can be augmented through modification of `regmodels.txt` and `classmodels.txt` within the `mdldef` folder of the repository.
+
+The following examples show how these models are defined within the workflow for a regression example with an explanation of the meaning of the columns provided for completeness
 
 ```q
-q)5#data:([]100?1f;100?1f;100?1f)
+// Tabular dataset
+q)2#tab:([]100?1f;100?1f;100?1f)
 x         x1        x2        
 ------------------------------
 0.7250709 0.724948  0.06165008
 0.481804  0.8112026 0.285799  
-0.9351307 0.2086614 0.6684724 
-0.7093398 0.9907116 0.9133033 
-0.9452199 0.5794801 0.1485357 
 
 // Regression task
 q)5#tgt:100?1f
 0.3927524 0.5170911 0.5159796 0.4066642 0.1780839
-// .aml.runexample[data;tgt;`normal;`reg;::]
-q).aml.models[`reg;tgt]
-model                     lib     fnc            seed typ minit                        ..
----------------------------------------------------------------------------------------..
-AdaBoostRegressor         sklearn ensemble       seed reg {[x;y;z].p.import[x]y}[`sklea..
-RandomForestRegressor     sklearn ensemble       seed reg {[x;y;z].p.import[x]y}[`sklea..
-GradientBoostingRegressor sklearn ensemble       seed reg {[x;y;z].p.import[x]y}[`sklea..
-KNeighborsRegressor       sklearn neighbors      ::   reg {[x;y;z].p.import[x]y}[`sklea..
-MLPRegressor              sklearn neural_network ::   reg {[x;y;z].p.import[x]y}[`sklea..
-Lasso                     sklearn linear_model   seed reg {[x;y;z].p.import[x]y}[`sklea..
-LinearRegression          sklearn linear_model   ::   reg {[x;y;z].p.import[x]y}[`sklea..
-RegKeras                  keras   regfitscore    seed reg {
- npa:.p.import[`numpy]`:arr..
-
-// Binary classification task
-q)5#tgt:100?0b
-01001b
-// .aml.runexample[data;tgt;`normal;`class;::]
-q).aml.models[`class;tgt]
-model                      lib     fnc            seed typ    minit                    ..
----------------------------------------------------------------------------------------..
-AdaBoostClassifier         sklearn ensemble       seed multi  {[x;y;z].p.import[x]y}[`s..
-RandomForestClassifier     sklearn ensemble       seed multi  {[x;y;z].p.import[x]y}[`s..
-GradientBoostingClassifier sklearn ensemble       seed multi  {[x;y;z].p.import[x]y}[`s..
-LogisticRegression         sklearn linear_model   seed binary {[x;y;z].p.import[x]y}[`s..
-GaussianNB                 sklearn naive_bayes    ::   binary {[x;y;z].p.import[x]y}[`s..
-KNeighborsClassifier       sklearn neighbors      ::   multi  {[x;y;z].p.import[x]y}[`s..
-MLPClassifier              sklearn neural_network seed multi  {[x;y;z].p.import[x]y}[`s..
-SVC                        sklearn svm            seed binary {[x;y;z].p.import[x]y}[`s..
-LinearSVC                  sklearn svm            seed binary {[x;y;z].p.import[x]y}[`s..
-BinaryKeras                keras   binfitscore    seed binary {
- npa:.p.import[`numpy]`..
-
-// Multi-class classification task
-q)5#tgt:100?5
-1 3 4 4 2
-// .aml.runexample[data;tgt;`normal;`class;::]
-q).aml.models[`class;tgt]
-model                      lib     fnc            seed typ   minit                     ..
----------------------------------------------------------------------------------------..
-AdaBoostClassifier         sklearn ensemble       seed multi {[x;y;z].p.import[x]y}[`sk..
-RandomForestClassifier     sklearn ensemble       seed multi {[x;y;z].p.import[x]y}[`sk..
-GradientBoostingClassifier sklearn ensemble       seed multi {[x;y;z].p.import[x]y}[`sk..
-KNeighborsClassifier       sklearn neighbors      ::   multi {[x;y;z].p.import[x]y}[`sk..
-MLPClassifier              sklearn neural_network seed multi {[x;y;z].p.import[x]y}[`sk..
-MultiKeras                 keras   multifitscore  seed multi {
- npa:.p.import[`numpy]`:..
-
+// .aml.runexample[tab;tgt;`normal;`reg;::]
+q).aml.i.models[`reg;tgt;::]
+model                     lib     fnc            seed typ minit              ..
+-----------------------------------------------------------------------------..
+AdaBoostRegressor         sklearn ensemble       seed reg {[x;y;z].p.import[x..
+RandomForestRegressor     sklearn ensemble       seed reg {[x;y;z].p.import[x..
+GradientBoostingRegressor sklearn ensemble       seed reg {[x;y;z].p.import[x..
+KNeighborsRegressor       sklearn neighbors      ::   reg {[x;y;z].p.import[x..
+MLPRegressor              sklearn neural_network seed reg {[x;y;z].p.import[x..
+Lasso                     sklearn linear_model   seed reg {[x;y;z].p.import[x..
+LinearRegression          sklearn linear_model   ::   reg {[x;y;z].p.import[x..
+RegKeras                  keras   reg            seed reg {[d;s;mtype]
 ```
-
+In the above example the following describe the columns for the defined tables.
+```
+ model = Name of the model to be applied
+ lib   = Python library from which the model is derived
+ fnc   = Sub module within the python library from which a model is derived
+ seed  = Is a model capable of being seeded allowing for consistent rerunning
+ typ   = type of problem being solved
+ minit = definition of the model which will to be applied in the workflow
+```
 ### Automatic type checking
 
 Given the automated nature of the machine learning pipeline, it is important to ensure that only types which can be handled by the feature extraction procedures are passed through the workflow. These types are problem type specific, as outlined below. Note that when a column of an incompatible type is removed, its omission will be communicated to the user via the console output.

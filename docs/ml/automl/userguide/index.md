@@ -1,312 +1,130 @@
 ---
 title: Basic userguide for the Kx open source automated machine learning offering.
 author: Conor McCarthy
-description: The purpose of this is to outline to a user the steps that are being taken in the automl platform in its default configuration, the advanced section outlines all possible changes that can be made to the interface but this is beyond the remit of what would be expected from the average user.
+description: The purpose of this file is to outline to a user how the highest level callable functions within the repository are to be used and what is acceptable as input for the each function. This will also outline some areas where users should be careful applying this functionality.
 
 date: October 2019
 
 keywords: machine learning, automated, ml, feature extraction, feature selection, data cleansing
 ---
-# <i class="fas fa-share-alt"></i> Introduction to the 
+# User interface
 
+At the highest level this repository allows for two primary functions to be called:
 
+1. `.aml.run` = Run the automated machine learning pipeline on user defined data and target
+2. `.aml.new` = Using a previously fit model and set of instructions derived from 1 above predict the target value for new tabular data
 
+Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the advanced section [here](../adv/params).
 
-<i class="fab fa-github"></i>
-[KxSystems/ml](https://github.com/kxsystems/ml)
+The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non time series specific machine learning examples and implementations making use of the FRESH algorithm outlined [here](../../toolkit/fresh)
 
-Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
+## `.aml.run`
 
-Feature extraction is the process of building derived, aggregate features from a time-series dataset. The features created are designed to characterize the underlying time series in a way that is easier to interpret and often provides a more suitable input to machine-learning algorithms.
+_Apply automated machine learning based on user provided data and target_
 
-Following feature extraction, statistical significance tests between feature and target vectors can be applied. This allows selection of only those features with relevance (in the form of a p-value) as defined by the user.
-
-Feature selection can improve the accuracy of a machine-learning algorithm by
-
--  Simplifying the models used
--  Shortening the training time needed
--  Mitigating the curse of dimensionality
--  Reducing variance in the dataset to reduce overfitting
-
-!!! tip "Examples"
-
-    Interactive notebook implementations showing examples of the FRESH algorithm used in different applications can be found at <i class="fab fa-github"></i> [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
-
-
-## Loading
-
-Load the FRESH library in isolation from the utilities section of the toolkit using
-
-```q
-q)\l ml/ml.q
-q).ml.loadfile`:fresh/init.q
-```
-
-
-## Data formatting
-
-Data passed to the feature extraction procedure should contain an identifying (ID) column, which groups the time series into subsets from which features can be extracted. The ID column can be inherent to the data or derived for a specific use-case (e.g. applying a sliding window onto the dataset).
-
-Null values in the data should be replaced with derived values most appropriate to the column.
-
-The feature-extraction procedure supports columns of boolean, integer and floating-point types. Other datatypes should not be passed to the extraction procedure.
-
-In particular, data should not contain text (strings or symbols), other than within the ID column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
-
-!!! tip "Formatting"
-
-    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [preprocessing section](utilities/preproc.md) of the toolkit.
-
-
-## Calculated features
-
-Feature extraction functions are defined in the script `fresh.q` and found within the `.ml.fresh.feat` namespace.
-
-function                         | returns 
-:--------------------------------|:--------------
-absenergy[x]                     | Sum of squares
-abssumchange[x]                  | Absolute sum of the differences between successive datapoints
-aggautocorr[x]                   | Aggregation (mean, median, variance and standard deviation) of an autocorrelation over all possible lags (1 - count[x]) 
-agglintrend[x;chunklen]          | Slope, intercept and rvalue for the series over aggregated max, min, variance or average for chunks of size `chunklen`
-augfuller[x]                     | Hypothesis test to check for a unit root in series
-autocorr[x;lag]                  | Autocorrelation over specified lag
-binnedentropy[x;nbins]           | Entropy of the series binned into `nbins` equidistant bins
-c3[x;lag]                        | Measure of the non-linearity of the series lagged by `lag`
-changequant[x;ql;qh;isabs]       | Aggregated value of successive changes within corridor specified by lower quantile `ql` and upper quantile `qh` (boolean `isabs` defines whether absolute values are considered)
-cidce[x;isabs]                   | Measure of series complexity based on peaks and troughs in the dataset (boolean `isabs` defines whether absolute values are considered)
-count[x]                         | Number of values within the series
-countabovemean[x]                | Number of values in the series with a value greater than the mean
-countbelowmean[x]                | Number of values in the series with a value less than the mean
-eratiobychunk[x;numsegments]     | Sum of squares of each region of the series split into `numsegments` segments, divided by the sum of squares for the entire series
-firstmax[x]                      | Position of the first occurrence of the maximum value in the series relative to the series length 
-firstmin[x]                      | Position of the first occurrence of the minimum value in the series relative to the series length
-fftaggreg[x]                     | Spectral centroid (mean), variance, skew, and kurtosis of the absolute Fourier-transform spectrum
-fftcoeff[x;coeff]                | Fast-Fourier transform `coeff` coefficient, given real inputs and extracting real, imaginary, absolute and angular components
-hasdup[x]                        | Boolean: the series contains any duplicate values
-hasdupmax[x]                     | Boolean: a duplicate of the maximum value exists in the series
-hasdupmin[x]                     | Boolean: a duplicate of the minimum value exists in the series
-indexmassquantile[x;q]           | Relative index such that `q`% of the series' mass lies to the left
-kurtosis[x]                      | Adjusted G2 Fisher-Pearson kurtosis of the series
-largestdev[x;ratio]              | Boolean: the standard deviation is `ratio` times larger than the max - min values of the series
-lastmax[x]                       | Position of the last occurrence of the maximum value in the series relative to the series length
-lastmin[x]                       | Position of the last occurrence of the minimum value in the series relative to the series length
-lintrend[x]                      | Slope, intercept and r-value associated with the series
-longstrikegtmean[x]              | Length of the longest subsequence in the series greater than the series mean
-longstrikeltmean[x]              | Length of the longest subsequence in the series less than the series mean
-max[x]                           | Maximum value of the series
-mean[x]                          | Mean value of the series
-meanabschange[x]                 | Mean over the absolute difference between subsequent series values
-meanchange[x]                    | Mean over the difference between subsequent series values
-mean2dercentral[x]               | Mean value of the central approximation of the second derivative of the series
-med[x]                           | Median value of the series
-min[x]                           | Minimum value of the series
-numcrossingm[x;crossval]         | Number of crossings in the series over the value `crossval`
-numcwtpeaks[x;width]             | Number of peaks in the series following data smoothing via application of a Ricker wavelet of defined `width`
-numpeaks[x;support]              | Number of peaks in the series with a specified `support`
-partautocorrelation[x;lag]       | Partial autocorrelation of the series with a specified `lag`
-perrecurtoalldata[x]             | Ratio of count of values occurring more than once to count of different values
-perrecurtoallval[x]              | Ratio of count of values occurring more than once to count of data
-quantile[x;quantile]             | The value of series greater than the `quantile` percent of the ordered series
-rangecount[x;minval;maxval]      | The number of values greater than or equal to `minval` and less than `maxval`
-ratiobeyondrsigma[x;r]           | Ratio of values more than `r*dev[x]` from the mean
-ratiovalnumtserieslength[x]      | Ratio of number of unique values to total number of values
-skewness[x]                      | Skew of the series indicating asymmetry within the series
-spktwelch[x;coeff]               | Cross power spectral density of the series at given `coeff`
-stddev[x]                        | Standard deviation of series
-sumrecurringdatapoint[x]         | Sum of all points present in the series more than once
-sumrecurringval[x]               | Sum of all the values present within the series more than once
-sumval[x]                        | Sum of values within the series
-symmetriclooking[x;y]            | Measure of symmetry in the series `|mean(x)-median(x)|-y*(max[x]-min[x])` with y in range 0-&gt;1
-treverseasymstat[x;lag]          | Measure of asymmetry of the series based on `lag`
-valcount[x;val]                  | Number of occurrences of `val` within the series
-var[x]                           | Variance of the series
-vargtstdev[x]                    | Boolean: the variance of the dataset is larger than the standard deviation
-
-
-## Feature extraction
-
-Feature extraction involves applying a set of aggregations to subsets of the initial input data, with the goal of obtaining information that is more informative to the prediction of the target vector than the raw time series. 
-
-The `.ml.fresh.createfeatures` function applies a set of aggregation functions to derive features. There are 57 such functions callable within the `.ml.fresh.feat` namespace, although users may select a subset of these based on requirement.
-
-As of version 0.1.3 the creation of features using the function `.ml.fresh.createfeatures` is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then four processes will automatically be used to process feature creation. 
-
-
-### `.ml.fresh.createfeatures`
-
-_Applies functions to subsets of initial data to create features_
-
-Syntax: `.ml.fresh.createfeatures[t;aggs;cnames;ptab]`
+Syntax: `.aml.run[tab;tgt;ftype;ptype;dict]`
 
 Where
 
--   `t` is the input data in the form of a simple table.
--   `aggs` is the Id column name (syms).
--   `cnames` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
--   `ptab` is a table containing the functions and parameters to be applied to the `cnames` columns. This should be a modified version of `.ml.fresh.params`
+-   `tab` is unkeyed tabular data from which the models will be created
+-   `tgt` is the target vector
+-   `ftype` type of feature extraction being completed as a symbol (`fresh/`normal)
+-   `ptype` type of problem regression/class as a symbol (`reg/`class)
+-   `dict` is one of `::` for default behaviour, a kdb+ dictionary or path to a user defined flat file for modifying default parameters.
 
-This returns a table keyed by ID column and containing the features extracted from the subset of the data identified by the `id` column.
+Default return/saved items from an individual run
 
-```q 
-m:30;n:100
-tab:([]date:raze m#'"d"$til n;
-  time:(m*n)#"t"$til m;
-  col1:50*1+(m*n)?20;
-  col2:(m*n)?1f )
-```
-```q
-q)10#tab
-date       time         col1 col2      
----------------------------------------
-2000.01.01 00:00:00.000 1000 0.3927524 
-2000.01.01 00:00:00.001 350  0.5170911 
-2000.01.01 00:00:00.002 950  0.5159796 
-2000.01.01 00:00:00.003 550  0.4066642 
-2000.01.01 00:00:00.004 450  0.1780839 
-2000.01.01 00:00:00.005 400  0.3017723 
-2000.01.01 00:00:00.006 400  0.785033  
-2000.01.01 00:00:00.007 500  0.5347096 
-2000.01.01 00:00:00.008 600  0.7111716 
-2000.01.01 00:00:00.009 250  0.411597  
+1. The saved down best model achieved
+2. A saved report indicating the procedure taken and scores achieved
+3. A binary encoded dictionary denoting the procedure to be taken for reproducing results or running on new data
+4. Results from each step of the pipeline published to console.
 
-q)show ptab:.ml.fresh.params / truncated for documentation purposes 
-f              | pnum pnames         pvals                 valid
----------------| -----------------------------------------------
-absenergy      | 0    ()             ()                        1    
-abssumchange   | 0    ()             ()                        1    
-count          | 0    ()             ()                        1    
-countabovemean | 0    ()             ()                        1    
-countbelowmean | 0    ()             ()                        1    
-firstmax       | 0    ()             ()                        1    
-firstmin       | 0    ()             ()                        1    
-autocorr       | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9      1    
-binnedentropy  | 1    ,`lag          ,2 5 10                   1    
-c3             | 1    ,`lag          ,1 2 3                    1    
-cidce          | 1    ,`boolean      ,01b                      1    
-eratiobychunk  | 1    ,`numsegments  ,3                        1    
-rangecount     | 2    `minval`maxval -1 1                      1    
-changequant    | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)     1    
-
-q)5#cfeats:.ml.fresh.createfeatures[tab;`date;2_ cols tab;ptab]
-date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean ..
-----------| ----------------------------------------------------------------..
-2000.01.01| 1.33e+07       10100             30         13                  ..
-2000.01.02| 1.023e+07      11450             30         14                  ..
-2000.01.03| 7805000        9200              30         13                  ..
-2000.01.04| 8817500        9950              30         17                  ..
-2000.01.05| 7597500        7300              30         12                  ..
-q)count 1_cols cfeats	/ 595 features have been produced from 2 columns
-568
-
-/ update ptab to exclude hyperparameter-dependent functions 
-q)show ptabnew:update valid:0b from ptab where pnum>0
-f               | pnum pnames         pvals                 valid
-----------------| -----------------------------------------------
-absenergy       | 0    ()             ()                        1
-abssumchange    | 0    ()             ()                        1
-count           | 0    ()             ()                        1
-countabovemean  | 0    ()             ()                        1
-countbelowmean  | 0    ()             ()                        1
-firstmax        | 0    ()             ()                        1
-firstmin        | 0    ()             ()                        1
-autocorr        | 1    ,`lag          ,0 1 2 3 4 5 6 7 8 9      0
-binnedentropy   | 1    ,`lag          ,2 5 10                   0
-c3              | 1    ,`lag          ,1 2 3                    0
-cidce           | 1    ,`boolean      ,01b                      0
-eratiobychunk   | 1    ,`numsegments  ,3                        0
-rangecount      | 2    `minval`maxval -1 1                      0
-changequant     | 3    `ql`qh`isabs   (0.1 0.2;0.9 0.8;01b)     0
-
-q)5#cfeatsnew:.ml.fresh.createfeatures[tab;`date;2_ cols tab;ptabnew]
-date      | col1_absenergy col1_abssumchange col1_count col1_countabovemean ..
-----------| ----------------------------------------------------------------..
-2000.01.01| 1.33e+07       10100             30         13                  ..
-2000.01.02| 1.023e+07      11450             30         14                  ..
-2000.01.03| 7805000        9200              30         13                  ..
-2000.01.04| 8817500        9950              30         17                  ..
-2000.01.05| 7597500        7300              30         12                  ..
-q)/74 columns now being created via a subset of initial functions
-q)count 1_cols cfeatsnew     
-92
-```
-
-The following functions contain some Python dependency.
+!!!Note
+	The following example displays the implementation of the function `.aml.run` in a regression task for a non-time series task. Data and implementation code is provided for other problem types however for brevity output is not displayed in full.
 
 ```q
-fns:`aggautocorr`augfuller`fftaggreg`fftcoeff`numcwtpeaks`partautocorrelation`spktwelch
+// Non time-series example table
+q)tab:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+// Regression target
+q)reg_tgt:asc 100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Use default system parameters
+q)dict:(::)
+// Run example
+q).aml.run[tab;reg_tgt;ftype;ptype;dict]
+
+The following is a breakdown of information for each of the relevant columns in the dataset
+
+  | count unique mean      std       min         max       type   
+--| --------------------------------------------------------------
+x1| 100   100    0.5241723 0.2885251 0.002184472 0.9830794 numeric
+x3| 100   100    0.4722098 0.2894009 0.00283353  0.9996082 numeric
+x4| 100   100    0.493481  0.2763346 0.01392076  0.9877844 numeric
+x | 100   100    ::        ::        ::          ::        time   
+x2| 100   2      ::        ::        ::          ::        boolean
+
+Data preprocessing complete, starting feature creation
+
+Feature creation and significance testing complete
+Starting initial model selection - allow ample time for large datasets
+
+Total features being passed to the models = 3
+
+Scores for all models, using .ml.mse
+GradientBoostingRegressor| 0.0001987841
+RandomForestRegressor    | 0.0002360554
+AdaBoostRegressor        | 0.0003896983
+LinearRegression         | 0.0004134209
+KNeighborsRegressor      | 0.0005237273
+Lasso                    | 0.03033336
+MLPRegressor             | 0.1881076
+RegKeras                 | 0.4328872
+
+Best scoring model = GradientBoostingRegressor
+Score for validation predictions using best model = 0.0002752211
+
+Feature impact calculated for features associated with GradientBoostingRegressor model
+Plots saved in /outputs/2020.01.02/run_11.21.47.763/images/
+
+Continuing to grid-search and final model fitting on holdout set
+
+Best model fitting now complete - final score on test set = 0.0001017797
+
+Saving down procedure report to /outputs/2020.01.02/run_11.21.47.763/report/
+Saving down GradientBoostingRegressor model to /outputs/2020.01.02/run_11.21.47.763/models/
+Saving down model parameters to /outputs/2020.01.02/run_11.21.47.763/config/
+
+// Example data for various problem types
+q)bin_target:asc 100?0b
+q)multi_target:desc 100?3
+q)fresh_data:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+// FRESH regression example
+q).aml.run[fresh_data;reg_tgt;`fresh;`reg;::]
+// non-time series/FRESH binary classification example
+q).aml.run[tab;bin_target;`normal;`class;::]
 ```
 
-If only q-dependent functions are to be applied, run the following update
-command on the `.ml.fresh.params` table.
+## `.aml.new`
 
-```q
-q)update valid:0b from `.ml.fresh.params where f in fns
-```
+_Apply the workflow and fitted model associated with a specified run to new data_
 
-Modifications to the file `hyperparam.txt` within the FRESH folder allows fine tuning of the number and variety of calculations to be made. Users can create their own features by defining a function within the `.ml.fresh.feat` namespace and, if necessary, providing relevant hyperparameters in `.ml.fresh.params`.
-
-!!! warning "Change from version 0.1"
-
-	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 was a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). 
-
-    To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
-
-
-## Feature significance
-
-Statistical significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
-
-feature type       | target type       | significance test 
-:------------------|:------------------|:------------------
-Binary             | Real              | Kolmogorov-Smirnov
-Binary             | Binary            | Fisher-Exact      
-Real               | Real              | Kendall Tau-b     
-Real               | Binary            | Kolmogorov-Smirnov
-
-Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
-
-1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level. The recommended input is 5% (0.05).
-2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to allow us to predict the target vector.
-3. Percentile based selection: set a percentile threshold for p-values below which features are selected.
-
-Each of these procedures can be implemented by modifying parameter input to the following function;
-
-### `.ml.fresh.significantfeatures`
-
-_Return statistically significant features based on defined selection procedure_
-
-Syntax: `.ml.fresh.significantfeatures[t;tgt;f]`
+Syntax: `.aml.new[tab;fpath]`
 
 Where
 
--   `t` is the value side of a table of created features
--   `tgt` is a list of targets corresponding to the rows of table `t` 
--   `f` is a projection with example syntax `.ml.fresh.ksigfeat 10`
+-   `tab` is an unkeyed tabular dataset which has the same schema as the run specified
+-   `fpath` the path to the folder in which the /config and /models folders are defined
 
-returns a list of features deemed statistically significant according to the userdefined procedure within parameter `f`.
+returns the predictions on new data based on a previously fitted model and workflow.
 
 ```q
-q)tgt:value exec avg col2+.001*col2 by date from tab      / combination of col avgs
-
-q)/ BHY procedure with a FDR level of 0.05
-q)show sigBH:.ml.fresh.significantfeatures[value cfeats;tgt;.ml.fresh.benjhoch 0.05]
-`col2_mean`col2_sumval`col2_fftcoeff_maxcoeff_10_coeff_0_real`col2_fftcoeff_m..
-
-q)/ Extract the top 20 best features
-q)show sigK:.ml.fresh.significantfeatures[value cfeats;tgt;.ml.fresh.ksigfeat 20]
-`mean_col2`sumval_col2`absenergy_col2`c3_1_col2`c3_2_col2`med_col2`quantile_0..
-
-q)/ Extract the top 5th percentile of created features
-q)show sigP:.ml.fresh.significantfeatures[value cfeats;tgt;.ml.fresh.percentile 0.05]
-`col2_absenergy`col2_mean`col2_med`col2_skewness`col2_sumval`col2_c3_lag_1`co..
-
-q)/ Check the count of each method to show differences in outputs
-q)count each (sigBH;sigK;sigP)
-30 20 22
+// New dataset
+q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
+q)fpath:"2020.01.02/run_11.21.47.763"
+q).aml.newproc[new_tab;fpath]
+0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
 ```
-
-!!! warning "Change from version 0.1"
-
-	The input behaviour of `.ml.fresh.significantfeatures` has changed to accommodate an increased number of feature-selection methods.
-
 

@@ -35,6 +35,8 @@ Over time the functionality available and the problems which can be solved using
 -   Broader workflow flexibility
 -   More detailed outputs describing the steps taken
 
+!!!Note
+	This should not be seen necessarily as a replacement to commercially available automated machine learning platforms. The work outlined here is intended to allow kdb users to explore the use of machine learning on their data and highlight automation techniques which can be deployed through kdb+ for various workflows. This platform is currently in beta and feedback on the interface is readily encouraged.
 
 ## Requirements
 
@@ -66,7 +68,7 @@ conda install --file requirements.txt
 Install and load all libraries.
 
 ```q
-q)\l automl/automl.q.q
+q)\l automl/automl.q
 q).automl.loadfile`:init.q
 ```
 
