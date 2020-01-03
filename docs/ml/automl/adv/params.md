@@ -225,3 +225,68 @@ q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
 // No outputs saved
 q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
 ```
+
+## File based input
+
+In each of the above examples the final parameter input has been a kdb+ dictionary, while this may be the easiest method to modify parameters for some users a more human readable flat-file based version is also provided. The following is an example of a flatfile which can be user modified and passed as a parameter.
+
+```
+// Fresh parameter file
+aggcols |{first cols x}
+params  |.ml.fresh.params
+xv      |.ml.xv.kfshuff;5
+gs      |.ml.gs.kfshuff;5
+prf     |.aml.xv.fitpredict
+scf     |class=.ml.accuracy;reg=.ml.mse
+seed    |rand_val
+saveopt |2
+hld     |0.2
+tts     |.ml.ttsnonshuff
+sz      |0.2
+
+// Normal parameter file
+xv      |.ml.xv.kfshuff;5
+gs      |.ml.gs.kfshuff;5
+prf     |.aml.xv.fitpredict
+scf     |class=.ml.accuracy;reg=.ml.mse
+seed    |rand_val
+saveopt |2
+hld     |0.2
+tts     |.ml.traintestsplit
+sz      |0.2
+```
+
+These files can be generated in the folder `code/mdldef/` using the following functions
+
+```q
+q).aml.savedefault["fresh_params.txt";`fresh]
+q).aml.savedefault["normal_params.txt";`normal]
+```
+
+Once modified the function `.aml.run` can be used with one of these files as follows
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+q).aml.run[tab;tgt;`normal;`reg;"normal_params.txt"]
+```
+
+## Complex examples
+
+While the above documentation outlines how each parameter can be modified it is important to note that multiple of these parameters can be changed simultaneously. The flat-file based input option is useful for this but the same functionality is possible using a kdb+ dictionary as in the following example
+
+Assume we want to run the following updated parameters in a FRESH use case
+
+1. Seeded run with seed = 100
+2. 3-fold sequentially split cross validation and grid search
+3. Hold out set of 25%
+4. Only save the model and configuration file
+
+```q
+q)uval:100?50
+q)tab:([]tstamp:"p"$uval;val:uval;100?1f;100?1f;100?1f)
+q)tgt:count[distinct uval]?1f
+q)key_vals:`seed`hld`saveopt`xv`gs
+q)vals:(100;0.25;1;(`.ml.xv.kfsplit;3);(`.ml.gs.kfsplit;3))
+q).aml.run[tab;tgt;`fresh;`reg;key_vals!vals]
+```
