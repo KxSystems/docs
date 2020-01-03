@@ -8,201 +8,160 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 
 # <i class="fas fa-share-alt"></i> Advanced Parameter Options
 
-<i class="fab fa-github"></i>
-[KxSystems/automl](https://github.com/kxsystems/automl)
+<i class="fab fa-github"></i> [KxSystems/automl](https://github.com/kxsystems/automl)
 
 
-The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.runexample`. This section will focus on the options available within the parameter dictionary and how these affect the overall behaviour of the pipeline if changed by the user. The specific parameters are detailed below.
+The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.runexample`. This section will focus on how this final parameter can be modified to input changes to the default behaviour. There are two options for how this final parameter can be input
+
+1. kdb+ dictionary outlining the changes to default behaviour that are to be made
+2. The path to a flat file containing more human readable updates to the parameter set.
+
+Given that both options allow for the same modifications to be made the full list of parameters which can be modified is outlined first and the implementation of each is described at the end of this page.
+
+## Advanced parameters
+
+The following are all the parameters which can be modified by a user to modify the functionality of the automl platform. In each case the parameter name corresponds to the kdb+ key which would be passed to the function to update the functionality.
 
 ```q
 Parameters:
   aggcols     Aggregation columns for FRESH
-  params      Parameter dictionary for FRESH
-  hld         Size of holdout set
-  tts         Train-test split function
+  params      Functions to be applied for FRESH feature extraction
+  hld         Size of holdout set on which the final model is tested
+  tts         Train-test split function to be applied
   sz          Size of test set for train-test split function
-  seed        Random seed
-  xv          Mixed list containing cross validation function and associated no. of folds/percentage
-  scf         Dictionary of scoring functions for both class/reg tasks
-  gs          Mixed list containing grid search function and associated no. of folds/percentage
-  saveopt     Number of outputs (images, plots, reports)
+  seed        Random seed to be used
+  xv          Cross validation function and associated no. of folds/percentage
+  scf         Scoring functions for classification/regression tasks
+  gs          Grid search function and associated no. of folds/percentage
+  saveopt     Saving options outlining what is to be saved to disk from a run
 ```
 
-This section will be cover the behaviour contained within processing and post-processong which is altered by changing the values of the parameter dictionary. 
+For simplicity each of these modifications will be handled seperately with, where possible example implementations provided
 
-## Outline of Procedures
+### `aggcols`
 
-__Processing__:
+_Denotes the columns to be used for aggregations in FRESH_
 
-1. FRESH parameters and aggregation columns
-2. Size, number of folds and type of datasplit
-3. Random seeding
-4. Type of cross validation and scoring metric to apply
-5. Type of grid search
-
-__Post-processing__:
-
-1. Output options following model selection
-
-### Processing
-
-#### FRESH
-
-When FRESH feature extraction is used, both the aggregation columns and FRESH parameter table can be altered by the user. In the default configuration, the first column is always taken as the aggregation column, as shown below.
+By default the aggregation column for any FRESH based feature extraction is assumed to be the first column in the dataset, in certain circumstances this may not be sufficient and a more complex aggregation setup may be required as outlined below.
 
 ```q
-q)5#tb1:([]asc 1000?"d"$til 50;1000?1f;1000?1f;1000?1f;1000?10;1000?`a`b`c)
-x          x1         x2         x3        x4 x5
-------------------------------------------------
-2000.01.01 0.18956    0.01199094 0.8203575 5  a 
-2000.01.01 0.08331423 0.346107   0.3022948 1  a 
-2000.01.01 0.104807   0.9722498  0.8909094 5  c 
-2000.01.01 0.30073    0.09336937 0.8399883 9  b 
-2000.01.01 0.3847399  0.2896479  0.7630746 7  c 
-// binary classification problem
-q)tgt1:50?0b
-// default parameters
-q).aml.runexample[tb1;tgt1;`fresh;`class;::]
+q)uval:100?50
+q)tab:([]tstamp:"p"$uval;val:uval;100?1f;100?1f;100?1f)
+q)tgt:count[distinct uval]?1f
+// In this case we wist to have tstamp and val as aggregation columns
+// all other parameters are left as default
+q).aml.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 ```
 
-This can be changed by the user, as long as the number of distinct entries in the aggregation columns match the number of distinct target values. In the example below, a second aggregation column and new target vector are defined. The new aggregation columns are passed in under the dictionary parameter `aggcols`.
+### `params`
+
+_Denotes the functions that are to be applied to features when using FRESH_
+
+By default the feature extraction functions applied for any FRESH based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. If a user wishes to augment these functions or choose a subsection of them this can be completed as follows
 
 ```q
-q)5#tb2:([]asc 1000?"d"$til 50;asc 1000?5?0t;1000?1f;1000?1f;1000?1f;1000?10;1000?`a`b`c)
-x          x1           x2         x3         x4        x5 x6
--------------------------------------------------------------
-2000.01.01 07:27:55.433 0.1872061  0.2627136  0.1187479 4  a 
-2000.01.01 07:27:55.433 0.6790457  0.467528   0.3508021 1  c 
-2000.01.01 07:27:55.433 0.2163943  0.6746799  0.7759487 1  a 
-2000.01.01 07:27:55.433 0.9159549  0.04129306 0.9215819 1  a 
-2000.01.01 07:27:55.433 0.04729689 0.8410767  0.95253   9  b 
-// count distinct entries to define target
-q)count distinct flip tb2`x`x1
-54
-// define new target
-q)tgt2:54?0b
-// pass in new aggcols
-q).aml.runexample[tb2;tgt2;`fresh;`class;enlist[`aggcols]!enlist`x`x1]
+q)uval:100?50
+q)tab:([]tstamp:"p"$uval;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:count[distinct uval]?1f
+// Select only functions to apply which take < 1 argument
+q).aml.newfuncs:select from .ml.fresh.params where pnum<1
+// Run feature extraction using user defined function table
+q).aml.run[tab;tgt;`fresh;`reg;enlist[`params]!enlist `.aml.newfuncs]
 ```
 
-To change the FRESH parameters, the user must create a keyed table with the same format as `.ml.fresh.params`, used in the default configuration, and pass this in as the value for `params` in the dictionary argument. Below is an example of doing so, where the original FRESH parameter table has been altered to only include those function with at least one parameter. Note that `tb1` and `tgt1` have been used from the previous example.
+### `hld`
+
+_Size of the holdout set on which the best grid searched model is tested_
+
+By default the holdout set across all problem types is set to 20%. For problems with a small number of data points a user may augment this to increase the number of datapoints being trained on 
 
 ```q
-// default parameters
-q).aml.runexample[tb1;tgt1;`fresh;`class;::]
-...
-Total features being passed to the models = 369
-...
-// user defined FRESH parameters
-q)newparam:update valid:0b from .ml.fresh.params where pnum>0
-q).aml.runexample[tb1;tgt1;`fresh;`class;enlist[`params]!enlist newparam]
-...
-Total features being passed to the models = 64
-...
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Set holdout set to contain 10% of the dataset
+q)hldout:0.1
+q).aml.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist hldout]
 ```
 
-#### Train-Test Split
+### `tts`
 
-As described in the [processing](https://code.kx.com/v2/ml/automl/userguide/proc/) section of the automl documentation, the default configuration uses 20% of the overall dataset as the holdout set, 20% of the remaining dataset as the validation set and splits the remaining data into 5-folds for cross validation, shown below.
+_Function used when splitting the data into training and testing sets_
 
-<img src="../../userguide/img/5fold.png">
+As described when outlining the default behaviour of the systems [here](../../userguide/preproc) The default functions used for splitting the data into a training and testing set are as follows
 
-This is achieved by passing `::` as the dictionary argument to `runexample`:
+Problem Type | Function | Description |
+-------------|----------|-------------|
+Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
+FRESH        |.ml.ttsnonshuff    | Without shuffling the dataset split into training and testing set with defined percentage in each to ensure no time leakage
+
+For specific use cases this may not be sufficient, for example if a user wishes to split the data such that a equal distribution of target classes occur in the training and testing sets this could be implemented as in the following example
+
 ```q
-q).aml.runexample[tb;tgt;feat_typ;prob_typ;::]
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?5
+q)shuffle:.ml.xv.i.shuffle
+q).ml.ttstrat:{[x;y;sz]`xtrain`ytrain`xtest`ytest!raze(x;y)@\:/:r@'shuffle each r:(,'/){x@(0,floor n*1-y)_neg[n]?n:count x}[;sz]each value n@'shuffle each n:group y}
+q).aml.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
 ```
 
-This data split can be altered by changing values of parameters within the input dictionary, namely `hld`, `sz` and `xv`/`gs`:
+!!!Note
+	In this case the user defined function must take as input the dataset, target vector and size of the split between training and testing sets. It must also return a dictionary containing ````xtrain`ytrain`xtest`ytest! ... ``` to ensure consistency with the rest of the workflow
 
--   `hld` determines the size of the holdout set
--   `sz` determines the size of the validation set
--   `xv` and `gs` are mixed lists containing cross validation and grid search functions and their associated value of k or a percentage (described in more detail in the [Cross Validation](#### Cross Validation) and [Grid Search](####Grid Search) sections below).
+### `sz`
 
-For example, the user could choose to pass in the below parameters for the dictionary:
+_Size of the validation set on which the non grid searched best model is tested_
+
+By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on
 
 ```q
-q).aml.runexample[tb;tgt;`fresh;`class;`hld`sz`xv`gs!(.3;.1),2#enlist(`kfshuff;3)]
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Set holdout set to contain 10% of the dataset
+q)size:0.1
+q).aml.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 ```
 
-This will split the data in the below fashion, where there 3-fold cross validation and grid search, a 10% validation set and a 30% holdout set.
+### `seed`
 
-<img src="../../userguide/img/3fold.png">
+_The seed which is used to ensure model reruns are consistent_
 
-There is also the ability to change the type of splitting function used by changing the parameter `tts`. The example below shows how to use the user defined function `tts_strat`, which ensures that data from each class appears in each data split, compared to the default `.ml.traintestsplit`.
+By default each run of the platform is completed with a 'random' seed derived based on the time of a run. If a user wishes to have more explicit control of this behaviour the seed can be set to a user specified value. This allows ensures that each run of the platform will return results which are consistent run to run thus allowing for the impact of modifications to the pipeline to be accurately monitored
 
 ```q
-q)5#tb:([]asc 100?0t;100?1f;100?1f;100?10;100?0x;100?(5?1f;5?1f);asc 100?10?`1)
-x            x1         x2        x3 x4 x5                                                x6
---------------------------------------------------------------------------------------------
-00:05:47.306 0.4520729  0.315151  1  00 0.2437381 0.8423177 0.7056326 0.81604  0.01814654 c 
-00:09:13.781 0.07141803 0.6559971 5  00 0.1778226 0.4928689 0.6004873 0.390837 0.6876976  c 
-00:18:32.674 0.2531992  0.4942834 5  00 0.2437381 0.8423177 0.7056326 0.81604  0.01814654 c 
-00:37:24.732 0.1876413  0.3317289 7  00 0.1778226 0.4928689 0.6004873 0.390837 0.6876976  c 
-00:50:11.909 0.9072513  0.8600681 1  00 0.2437381 0.8423177 0.7056326 0.81604  0.01814654 c 
-// multi-class classification problem
-q)tgt:asc 100?10?`1
-// default configuration
-q).aml.runexample[tb;tgt;`normal;`class;::]
-...
- Test set does not contain examples of each class. Removed MultiKeras from models
-...
-Scores for all models, using .ml.accuracy
-KNeighborsClassifier      | 0.8576923
-GradientBoostingClassifier| 0.7807692
-RandomForestClassifier    | 0.7807692
-MLPClassifier             | 0.7
-AdaBoostClassifier        | 0.45
-...
-// run with user defined parameters
-q)tts_strat:{[x;y;sz]`xtrain`ytrain`xtest`ytest!raze(x;y)@\:/:r@'i.shuffle each r:(,'/){x@(0,floor n*1-y)_neg[n]?n:count x}[;.2]each value n@'i.shuffle each n:group y}
-q)i.shuffle:{neg[n]?n:count x}
-q).aml.runexample[tb;tgt;`normal;`class;enlist[`tts]!enlist tts_strat]
-...
-Scores for all models, using .ml.accuracy
-RandomForestClassifier    | 0.9151515
-GradientBoostingClassifier| 0.8621212
-KNeighborsClassifier      | 0.8090909
-MLPClassifier             | 0.6893939
-AdaBoostClassifier        | 0.5530303
-MultiKeras                | 0.03484848
-...
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// User defined seed
+q)seed:42
+q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
+// Run the workflow again to show run to run consistency
+q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 ```
 
-As the user defined splitting function ensures that each class appears in every data split, Keras models are not removed, which is seen for the default case in the above example.
+### `xv`
 
-#### Random Seed
+_Cross validation procedure being implemented_
 
-... doesn't work just now - look at having random unless seed passed ...
+In each case by default the cross validation procedure being implemented is a 5 fold shuffled cross validation. This can be augmented by a user for different use cases for example more time series specific cross validations. 
 
-#### Cross Validation
-
-The methods of cross validation available within the ML-Toolkit and thus the automl platform are listed below. In the default configuration, `kfshuff` is used with 5-folds.
+The input for this parameter is a mixed list containing the cross validation function name as a symbol and the number of cross validation folds to split the data into
 
 ```q
-.ml.xv - Cross-validation functions
-  .kfshuff     K-Fold cross validation with randomized indices
-  .kfsplit     K-Fold cross validation with sequential indices
-  .kfstrat     K-Fold cross validation with stratified indices
-  .mcsplit     Monte-Carlo cross validation with random split indices
-  .pcsplit     Percentage-split cross validation
-  .tschain     Chain-forward cross validation
-  .tsrolls     Roll-forward cross validation
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Chain forward cross validation with 3 folds
+q)chain:(`.ml.xv.tschain;3)
+q).aml.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
 ```
 
-!!!note
-        For time-dependent datasets, users should consider splitting data using either `.ml.xv.tschain` or `.ml.xv.tsrolls` (explained in depth in the [ML-Toolkit documentation](https://code.kx.com/v2/ml/toolkit/xval/)).
+### `scf`
 
-Users can specify the type of cross validation using the `xv` parameter, where the default is `.ml.xv.kfshuff`.
+_Scoring functions used in model validation and optimization_
 
-The scoring metric used to calculate the performance of each classifier is defined by the `scf` parameter, a dictionary containing a scoring metric for both regression and classification problems. The default value for `scf` has the form:
+The scoring metric used to calculate the performance of each classifier is defined by this parameter which is a dictionary containing a scoring metric for both regression and classification problems. The default behaviour is to use `.ml.accuracy` for classification tasks and `.ml.mse` for regression tasks. Modifying these may be required in order to correctly optimise a model for a specific use case. 
 
-```q
-q)`class`reg!(`.ml.accuracy;`.ml.mse)
+The following functions are supported within the platform at present with the ordering which allows the best model to be chosen are displayed below and defined in `code/mdldef/scoring.txt`
+
 ```
-
-The options currently available within the ML-Toolkit are detailed below, accompanied by the function used to order the scores within the pipeline.
-
-```q
 .ml - Statistical analysis metrics with automl score order
   .accuracy         Accuracy of classification results        desc
   .crossentropy     Categorical cross entropy                 asc
@@ -223,79 +182,46 @@ The options currently available within the ML-Toolkit are detailed below, accomp
   .sse              Sum squared error                         asc
 ```
 
-#### Grid Search
-
-The methods of grid search available within the ML-Toolkit and thus the automl platform are listed below. In the default configuration, `kfshuff` is used with 5-folds.
+The following is an example implementation
 
 ```q
-.ml.gs - Grid-search functions
-  .kfshuff            K-Fold cross validation with randomized indices
-  .kfsplit            K-Fold cross validation with sequential indices
-  .kfstrat            K-Fold cross validation with stratified indices
-  .mcsplit            Monte-Carlo cross validation with random split indices
-  .pcsplit            Percentage-split cross validation
-  .tschain            Chain-forward cross validation
-  .tsrolls            Roll-forward cross validation
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+q)reg_scf:enlist[`reg]!enlist `.ml.mae
+q).aml.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf] 
 ```
 
-As shown in the [Train-Test Split](####Train-Test Split) section, to change the cross validation or grid search functionality and associated parameter, a mixed list must be passed in as the dictionary parameter. In the below example, `.ml.xv.kfsplit` is used to perform cross validation with 4-folds, while `.ml.gs.mcsplit` is used to perform grid search with an 80-20% split. The performance metrics have also been changed, using `.ml.r2score` as the metric for the classification problem.
+### `gs`
+
+_Grid search procedure being implemented_
+
+In each case by default the grid search procedure being implemented is a 5 fold shuffled cross validation. This can be augmented by a user for different use cases for example more time series specific grid searches. 
+
+The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into
 
 ```q
-q)5#tb:([]asc 1000?"d"$til 50;1000?1f;1000?1f;1000?1f;1000?10;1000?`a`b`c)
-x          x1        x2        x3        x4 x5
-----------------------------------------------
-2000.01.01 0.4216349 0.6297507 0.85339   5  b 
-2000.01.01 0.6329419 0.5618693 0.7169903 6  c 
-2000.01.01 0.1959696 0.725458  0.514287  5  b 
-2000.01.01 0.121249  0.4265559 0.9040834 6  c 
-2000.01.01 0.4664259 0.3213726 0.3438525 7  c 
-// classification problem
-q)tgt:50?0b
-// change xval, gsearch and scoring metric
-q).aml.runexample[tb;tgt;`fresh;`class;`xv`gs`scf!((`kfsplit;4);(`mcsplit;.2);enlist[`class]!enlist`.ml.r2score)]
-...
-Scores for all models, using .ml.r2score
-...
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Roll forward grid search with 6 folds
+q)roll_forward:(`.ml.gs.tsrolls;6)
+q).aml.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 ```
 
-### Post-Processing
+### `saveopt`
 
-#### Outputs
+_Save options to be used_
 
-Continuing on from the above example, this section will demonstrate the possible outputs available within the pipeline. Outputs can be altered by the user by changing the `saveopt` parameter, where the default has ```enlist[`saveopt]!enlist 2``` and saves the report, plots, models and parameters outlined in the [processing](link) section of the documentation.
+By default the system will save all outputs to disk (reports, images, config file, models). In a case a user does not wish for all outputs to be saved there are currently 3 options
 
-The expected output in the default case is as follows:
-
-```q
-q).aml.runexample[tb;tgt;`fresh;`class;::]
-...
-Feature impact calculated for features associated with LinearSVC model - 
-see img folder in current directory for results
-
-The best model has been selected as LinearSVC, continuing to grid-search and final model fitting on holdout set
-
-Grid search/final model fitting now completed the final score on the holdout set was: 0.8
-Now saving down a report on this run to Outputs/2019.10.22/Run_16:22:35.777/Reports/
-
-Saving to pdf has been completed
-"LinearSVC model saved to /home/deanna/automl/Outputs/2019.10.22/Run_16:22:35..
-```
-
-This can be altered to save nothing at all (`0`), just the model (`1`) or everything (matching the default, `2`).
+1. 0 = Nothing is saved the models will run and display results to console but nothing persisted
+2. 1 = Save the model and configuration file only, will not generate a report for the user or any images
+3. 2 = Save all possible outputs to disk for the user including reports, images, config and models
 
 ```q
-// save nothing
-q).aml.runexample[tb;tgt;`fresh;`class;enlist[`saveopt]!enlist 0]
-...
-The best model has been selected as LinearSVC, continuing to grid-search and final model fitting on holdout set
-
-Grid search/final model fitting now completed the final score on the holdout set was: 0.8
-
-// save model
-q).aml.runexample[tb;tgt;`fresh;`class;enlist[`saveopt]!enlist 1]
-...
-The best model has been selected as LinearSVC, continuing to grid-search and final model fitting on holdout set
-
-Grid search/final model fitting now completed the final score on the holdout set was: 0.8
-"LinearSVC model saved to /home/deanna/automl/Outputs/2019.10.22/Run_16:22:17..
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Save only the minimal outputs
+q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
+// No outputs saved
+q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
 ```

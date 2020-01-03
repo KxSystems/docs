@@ -106,17 +106,24 @@ In the above example the following describe the columns for the defined tables.
 
 Given the automated nature of the machine learning pipeline, it is important to ensure that only types which can be handled by the feature extraction procedures are passed through the workflow. These types are problem type specific, as outlined below. Note that when a column of an incompatible type is removed, its omission will be communicated to the user via the console output.
 
-#### Non time-series/time-aware model
+The following lists show the restricted types for each problem type. In each case these types are not handled gracefully within the feature extraction workflow and thus are omitted
 
-Due to restrictions in the feature extraction procedures for "normal" feature extraction, the following types are omitted from the extraction procedure:
+**Normal Feature Extraction**
 
 - guid
 - byte
 - list
 - character
 
-Example output for inappropriate types:
+**FRESH Feature Extraction**
 
+- guid
+- byte
+- time/date types
+- list
+- character
+
+The following example shows a truncated output from a normal feature creation procedure where a column containing bytes and lists are removed.
 ```q
 q)5#data:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f))
 x         x1        x2         x3 x4                                                
@@ -135,66 +142,25 @@ Removed the following columns due to type restrictions for normal
 ...
 ```
 
-#### FRESH
-
-Given the feature extraction procedures completed by the FRESH algorithm as outlined [here](../../../toolkit/fresh.md), the list of omitted types is extensive. For clarity, the id columns are not subject to these restrictions and can have the following type:
-
-- guid
-- byte
-- time/date types
-- list
-- character
-
-Example output for inappropriate types:
-
-```q
-q)5#data:([]100?5?0p;100?0p;100?`time$10?100;100?1f;100?0f;100?0f;100?0x)
-x                             x1                            x2           x3         x4 ..
----------------------------------------------------------------------------------------..
-2001.11.17D03:43:34.704083648 2000.07.20D10:53:23.066901862 00:00:00.052 0.5898436  0  ..
-2000.10.31D17:06:42.021188288 2001.12.01D05:48:39.442939016 00:00:00.026 0.8530844  0  ..
-2001.08.27D00:41:11.301421520 2002.02.08D23:46:16.352224496 00:00:00.077 0.592908   0  ..
-2003.08.10D17:18:14.377742704 2003.03.07D22:49:27.928487056 00:00:00.070 0.2352599  0  ..
-2001.08.27D00:41:11.301421520 2003.06.20D03:55:14.609259360 00:00:00.073 0.09766787 0  ..
-q)tgt:5?1f
-// output truncated to only include appropriate information
-q).aml.runexample[data;target;`fresh;`reg;::]
-...
- Removed the following columns due to type restrictions for fresh
-`x1`x2`x6
-...
-```
-
 ### Target consistency
 
-Given the requirement for a one-to-one mapping between the rows output after feature extraction and the number of target values, target consistency is checked prior to the application of feature extraction or machine learning algorithms. The logic behind this check is different for the FRESH algorithm and other forms of automated learning provided.
+Given the requirement for a one-to-one mapping between the rows output after feature extraction and the number of target values, target consistency is checked prior to the application of feature extraction or machine learning algorithms. The logic behind this check varies for different problem types
 
-#### FRESH
+Problem Type | Description |
+:------------|:------------|
+FRESH        | The number of unique configurations of aggregate columns must equal the number of targets
+Normal       | The number of rows in the input table must equal the number of target values
 
-In the default configuration, target consistency in FRESH is determined by checking the number of unique values in the first column of the input table against the number of targets. For cases where multiple 'aggregation' columns are required, see the [advanced](insert) section.
-
-The following truncated output is indicative of targets of incorrect length mapped to the rows being passed in. The function used to replicate this behaviour is provided for execution, while invocation using `runexample` is also supplied.
+The example below show a failure for each problem type
 
 ```q
 q)data:([]100?1f;100?1f;100?1f)
 q)tgt:50?1f
-
-// .aml.i.runexample[data;tgt;`fresh;`reg;::]
-q)dict:enlist[`aggcols]!enlist `x // This is defined in the macro function
-q).aml.i.lencheck[data;tgt;`fresh;dict]
+q)fresh_dict:enlist[`aggcols]!enlist `x
+q)norm_dict:(::)
+q).aml.prep.i.lencheck[data;tgt;`fresh;fresh_dict]
 'Target count must equal count of unique agg values for fresh
-```
-
-#### Non-FRESH
-
-In the case of non-FRESH automated machine learning, the comparison is much simpler. If the number of rows in the input table does not equal the number of targets, an error will be flagged. The following is an example of such an error.
-
-```q
-q)data:([]100?1f;100?1f;100?1f)
-q)tgt:50?1f
-
-//.aml.runexample[data;tgt;`normal;`reg;::]
-q).aml.i.lencheck[data;tgt;`normal;::]
+q).aml.prep.i.lencheck[data;tgt;`normal;norm_dict]
 'Must have the same number of targets as values in table
 ```
 
@@ -205,23 +171,20 @@ In the FRESH and all non-FRESH example symbol columns are encoded as follows:
 -  If there are less than 10 unique symbols in a particular column the data is one-hot encoded.
 -  If a column contains more than 10 unique symbols the values are frequency encoded
 
+!!!Note
+	In the case of FRESH the above limitations are performed on an aggregation bucket basis for frequency encoding rather than for an entire column. This ensures that encoding on new data is as fair as possible in the case of FRESH since each aggregation bucket is associated with an individual target
+
 The following example shows the application of this encoding for two columns which between the two of them meet both of the above criteria.
 
 ```q
-q).aml.i.symencode[x;10]
-x          x2_freq    x1_b x1_d x1_e x1_h x1_i x1_j x1_n x1_o
--------------------------------------------------------------
-0.8585142  0.09090909 0    0    1    0    0    0    0    0   
-0.4174982  0.09090909 0    0    0    0    0    0    0    1   
-0.8838377  0.09090909 0    0    0    0    1    0    0    0   
-0.7256753  0.09090909 0    1    0    0    0    0    0    0   
-0.5056055  0.09090909 0    1    0    0    0    0    0    0   
-0.9348517  0.09090909 0    0    0    0    0    1    0    0   
-0.5689362  0.09090909 0    0    0    1    0    0    0    0   
-0.07686201 0.09090909 0    0    0    1    0    0    0    0   
-0.7035851  0.09090909 1    0    0    0    0    0    0    0   
-0.7945502  0.09090909 0    0    0    0    0    0    1    0   
-0.7611306  0.09090909 0    0    0    0    0    1    0    0   
+q).aml.prep.i.symencode[tab;10;0b;::;::]
+x2         x_freq x1_a x1_b x1_c
+--------------------------------
+0.3673896  0.07   0    1    0   
+0.3427332  0.08   1    0    0   
+0.5061528  0.06   0    0    1   
+0.02651098 0.08   0    1    0   
+0.131004   0.1    0    1    0   
 ```
 
 ### Constant column removal
@@ -249,7 +212,7 @@ x          x2
 
 ### Null and infinity replacement
 
-Both null values and infinities are removed from the data due to the inability of machine learning models in both sklearn and keras to handle this form of data. In the case of `+/-0w`, the values are replaced by the minimum/maximum value of the column, while `0n`'s are replaced by the median value of the column. In cases where nulls are present, an additional column is added denoting the location of the null prior to filling of the dataset, thus encoding the null in the case that this is an important signal.
+Both null values and infinities are removed from the data due to the inability of machine learning models in both sklearn and keras to handle this form of data. In the case of `+/-0w`, the values are replaced by the minimum/maximum value of the column, while `0n`'s are replaced by the median value of the column. In cases where nulls are present, an additional column is added denoting the location of the null prior to filling of the dataset, thus encoding the null location in the case that this is an important signal for prediction.
 
 ```q
 q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)

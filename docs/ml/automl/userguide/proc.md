@@ -11,7 +11,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the data preprocessing and feature extraction methods outlined in the [Automated Preprocessing](https://code.kx.com/v2/ml/automl/userguide/preproc/) section of the documentation.
+The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the data preprocessing methods outlined in the [Automated Preprocessing](https://code.kx.com/v2/ml/automl/userguide/preproc/) section of the documentation.
 
 ## Outline of Procedures
 
@@ -30,9 +30,9 @@ Feature extraction is the process of building derived or aggregate features from
 
 #### FRESH
 
-The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time-series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time-series into subsets from which features can be extracted. Note that each subset will have an associated target. The feature extraction functions applied within the FRESH procedure are defined within the [ML-Toolkit documentation](https://code.kx.com/v2/ml/toolkit/fresh/).
+The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time-series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time-series into subsets from which features can be extracted. Note that each subset will have an associated target. The feature extraction functions applied within the FRESH procedure are defined within the [ML-Toolkit documentation](https://code.kx.com/v2/ml/toolkit/fresh/) a full explanation of this algorithm is also provided there.
 
-The below example shows the application of FRESH to a time-series dataset with a date-time column and 4 features.
+The below example shows the application of FRESH to a time-series dataset with a date-time ID column and 4 columns from which we derive features.
 
 ```q
 q)5#tb:([]d:100?2001.01.01+til 5;100?1.;100?1.;100?100;100?10)
@@ -62,7 +62,13 @@ q)count 1_cols freshfeats
 
 #### Normal
 
-Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target per row. The current implementation of normal feature extraction applies a bulk transform and a truncated SVD to the data. If time columns are present within the data, a time split is applied to those columns, separating them into their component parts. An example is shown below.
+Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target per row. The current implementation of normal feature extraction applies the following feature extraction procedures
+
+1. Bulk transforms (sum/difference/product/ratio) between each combination of two integer/short/long columns
+2. Truncated singular value decomposition on each combination of two float columns
+3. Time/date type columns are decomposed into their component parts 
+
+The following shows an example of these procedures being performed.
 
 ```q
 q)5#tb:([]asc 100?0t;100?1.;100?1.;100?1.;100?100;100?10)
@@ -77,16 +83,24 @@ x            x1        x2        x3        x4 x5
 q)count cols tb
 6
 // apply normal feature extraction
-q)5#normfeats:.aml.normalcreate[tb;::]0
-x_hh x_uu x_ss x1        x2        x3        x4 x5 x1x2_trsvd x1x3_trsvd x2x3..
------------------------------------------------------------------------------..
-0    27   44   0.4370286 0.1024512 0.6908697 75 1  0.3844979  0.7972267  0.56..
-0    37   16   0.7071204 0.6892404 0.3227387 58 5  0.9874572  0.7286985  0.71..
-0    52   6    0.3053207 0.5529379 0.7147758 4  9  0.604565   0.7208054  0.89..
-0    55   3    0.5192614 0.7592389 0.4201505 23 7  0.9017658  0.664387   0.83..
-1    3    26   0.5691797 0.3437228 0.3924408 22 0  0.6475276  0.6801877  0.52..
+q)show normfeat:flip .aml.prep.normalcreate[tb;::]0
+x1        | 0.1312281  0.3667245  0.1415448  0.8186288  0.5973116 0.2413466  ..
+x2        | 0.5068552  0.9532577  0.8768543  0.6690883  0.8108164 0.07458746 ..
+x3        | 0.9967246  0.07262924 0.1245068  0.5506067  0.1330347 0.1533462  ..
+x4        | 68         28         77         78         47        8          ..
+x5        | 3          2          1          6          8         3          ..
+x1x2_trsvd| 0.4609804  0.9484851  0.7393944  1.047185   1.000724  0.2187467  ..
+x1x3_trsvd| 0.8292033  0.2990912  0.1872121  0.956661   0.4981166 0.2753584  ..
+x2x3_trsvd| 1.070563   0.7115201  0.6961798  0.8604001  0.6566854 0.162361   ..
+x4x5_multi| 204        56         77         468        376       24         ..
+x4x5_sum  | 71         30         78         84         55        11         ..
+x4x5_div  | 0.01470588 0.03571429 0.01298701 0.01282051 0.0212766 0.125      ..
+x4x5_sub  | -65        -26        -76        -72        -39       -5         ..
+x_hh      | 0          0          0          0          0         0          ..
+x_uu      | 0          11         13         30         31        45         ..
+x_ss      | 32         31         48         2          12        50         ..
 // no. of features after feature extraction
-q)count cols normfeats
+q)count normfeat
 15
 ``` 
 
@@ -120,35 +134,27 @@ x         x1         x2         x6 x5_A x5_B x5_C xx1_trsvd xx2_trsvd xx6_trsvd 
 q)count cols tb
 28
 // select top 25th percentile of extracted features
-q)show feats:freshsignificance[tb;tgt]
+q)show feats:.aml.prep.freshsignificance[tb;tgt]
 `xx1_trsvd`xx5_A_trsvd`x1x5_A_trsvd`x2x5_A_trsvd`x5_Ax5_B_trsvd`x5_Ax5_C_trsvd`x5_A
 q)count feats
 7
 ```
 
-In the example, columns ````x3`x4``` were first removed due to type restictions. Following this, 28 features were created using normal feature extraction, with 7 selected for model training using the FRESH significance tests.
+In the example above, the columns ````x3`x4``` were first removed due to type restictions. Following this, 28 features were created using normal feature extraction, with 7 selected for model training using the FRESH significance tests.
 
-When feature extraction and selection are implemented within the automl pipeline, the below output would be expected:
-
-```q
-q).aml.runexample[tb;tgt;`normal;`reg;(::)]
-...
-Data preprocessing completed, starting feature creation
-
-Feature creation and significance testing completed.
-Starting initial model selection - allow ample time for large datasets
-
-Total features being passed to the models = 7
-...
-```
 
 ### Train-Test Split
 
-Once the most significant features have been selected, the data is split into training and testing (holdout) sets. The holdout set is required later in the process for optimizing the best model.
+Once the most significant features have been selected, the data is split into a training and holdout set. The holdout set is required later in the process for optimizing the best model.
 
-In order to split the data, `.ml.traintestsplit` is used (contained in the [ML-Toolkit](https://code.kx.com/v2/ml/toolkit/utilities/util/)) where the feature and target vectors must be passed in as arguments, along with the size of the test set. Within the automated machine learning pipeline, the size of the test set is defined as 20% by default. Note that this parameter can be altered by the user as required (see [advanced section](Link)).
+In order to split the data a number of train-test split procedures are implemented for the different problem types
 
-An example of how `.ml.traintestsplit` is used within the automated pipeline is shown below.
+Problem Type | Function | Description |
+-------------|----------|-------------|
+Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
+FRESH        |.ml.ttsnonshuff    | Without shuffling the dataset split into training and testing set with defined percentage in each to ensure no time leakage.
+
+An example shows `.ml.traintestsplit` being used within the automated pipeline.
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f))
@@ -194,15 +200,15 @@ At this stage it is possible to begin model training and validation using cross 
 
 Cross validation procedures are commonly used in machine learning as a means of testing how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation. The technique ensures that the best model selected at the end of the process is the one that best generalizes to new unseen data.
 
-The cross validation techniques implemented in the automated machine learning platform are those contained within the ML-Toolkit (available [here](https://code.kx.com/v2/ml/toolkit/xval/)). The specific type of cross validation applied to the training data is shuffled 5-fold cross validation in the default configuration or one of the below listed methods when specified by the user.
+The cross validation techniques implemented in the automated machine learning platform are those contained within the ML-Toolkit (available [here](https://code.kx.com/v2/ml/toolkit/xval/)). The specific type of cross validation applied to the training data in each case is a shuffled 5-fold cross validation procedure.
 
-For clarity, the over all datasplit implemented in the default configuration is depicted below, where 20% of the overall dataset is used as the holdout set, 20% of the remaining dataset is used as the validation set and then the remaining data is split into 5-folds for cross validation to be carried out.
+For clarity, the splitting of data to this point as implemented in the default configuration is depicted below, where 20% of the overall dataset is used as the holdout set, 20% of the remaining dataset is used as the validation set and then the remaining data is split into 5-folds for cross validation to be carried out.
 
 <img src="../img/5fold.png">
 
 ### Model Selection
 
-Once the relevant models have cross validated using the training data, scores are calculated using the relevant scoring metric for the problem type (classification or regression). The file `scoring.txt` is provided within the platform which specifies the possible scoring metrics and how results should be ordered, shown below. This can be altered by the user if necessary. The default metric for classification problems is accuracy, while MSE is used for regression.
+Once the relevant models have undergone cross validation using the training data, scores are calculated using the relevant scoring metric for the problem type (classification or regression). The file `scoring.txt` is provided within the platform which specifies the possible scoring metrics and how results should be ordered for each of these metrics in order to ensure that the best model is being returned. This file can be altered by the user if necessary in order to expand the number of metrics available or to add custom metrics. The default metric for classification problems is accuracy, while MSE is used for regression.
 
 Below is an example of the expected output for a regression problem following cross validation. All models are scored using the default regression scoring metric, with the best scoring model selected and used to make predictions on the validation set.
 
@@ -235,7 +241,7 @@ Score for holdout predictions using best model - KNeighborsRegressor
 
 ### Optimization
 
-In order to optimize the best model, grid search procedures are implemented. Similarly to the cross validation methods used, grid search functionality is contained within the ML-Toolkit.
+In order to optimize the best model, grid search procedures are implemented. Similarly to the cross validation methods above this grid search functionality is sourced from within the ML-Toolkit.
 
 In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the flat file `hyperparam.txt` and can be altered by the user if required. 
 
@@ -257,7 +263,7 @@ Models and default grid search hyperparameters:
   SVC                              C, degree, tol
 ```
 
-Once grid search has been performed, the optimized model is tested using the holdout set, with the final score returned and the best model saved down. An regression example is shown below.
+Once the grid search has been performed, the optimized model is tested using the holdout set, with the final score returned and the best model saved down. An regression example is shown below.
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
