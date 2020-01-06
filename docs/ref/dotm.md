@@ -8,7 +8,7 @@ keywords: appdirect, dax, memory, thread
 # The `.m` namespace
 
 
-Since V3.7t 20019.10.22
+Since V3.7t 2019.10.22
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
