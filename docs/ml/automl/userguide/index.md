@@ -12,7 +12,7 @@ keywords: machine learning, automated, ml, feature extraction, feature selection
 At the highest level this repository allows for two primary functions to be called:
 
 1. `.aml.run` = Run the automated machine learning pipeline on user defined data and target
-2. `.aml.new` = Using a previously fit model and set of instructions derived from 1 above predict the target value for new tabular data
+2. `.aml.new` = Using a previously fit model and set of instructions derived from 1 above, predict the target value for new tabular data
 
 Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the advanced section [here](../adv/params).
 
@@ -32,11 +32,11 @@ Where
 -   `ptype` type of problem regression/class as a symbol (`reg/`class)
 -   `dict` is one of `::` for default behaviour, a kdb+ dictionary or path to a user defined flat file for modifying default parameters.
 
-Default return/saved items from an individual run
+Default return/saved items from an individual run:
 
-1. The saved down best model achieved
-2. A saved report indicating the procedure taken and scores achieved
-3. A binary encoded dictionary denoting the procedure to be taken for reproducing results or running on new data
+1. The best model, saved as a hdf5 file, or pickled byte object.
+2. A saved report indicating the procedure taken and scores achieved.
+3. A saved binary encoded dictionary denoting the procedure to be taken for reproducing results or running on new data.
 4. Results from each step of the pipeline published to console.
 
 !!!Note

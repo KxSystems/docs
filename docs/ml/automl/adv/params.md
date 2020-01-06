@@ -11,7 +11,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 <i class="fab fa-github"></i> [KxSystems/automl](https://github.com/kxsystems/automl)
 
 
-The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.runexample`. This section will focus on how this final parameter can be modified to input changes to the default behaviour. There are two options for how this final parameter can be input
+The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.run`. This section will focus on how this final parameter can be modified to input changes to the default behaviour. There are two options for how this final parameter can be input
 
 1. kdb+ dictionary outlining the changes to default behaviour that are to be made
 2. The path to a flat file containing more human readable updates to the parameter set.
@@ -20,7 +20,7 @@ Given that both options allow for the same modifications to be made the full lis
 
 ## Advanced parameters
 
-The following are all the parameters which can be modified by a user to modify the functionality of the automl platform. In each case the parameter name corresponds to the kdb+ key which would be passed to the function to update the functionality.
+The following lists the parameters which can be altered by users to modify the functionality of the automl platform. In each case, the parameter name corresponds to the kdb+ dictionary key which would be passed, alongside its user defined value, to the `.aml.run` function in order to update functionality.
 
 ```q
 Parameters:
@@ -36,13 +36,13 @@ Parameters:
   saveopt     Saving options outlining what is to be saved to disk from a run
 ```
 
-For simplicity each of these modifications will be handled seperately with, where possible example implementations provided
+For simplicity, each of these modifications will be handled seperately below with example implementations where possible.
 
 ### `aggcols`
 
 _Denotes the columns to be used for aggregations in FRESH_
 
-By default the aggregation column for any FRESH based feature extraction is assumed to be the first column in the dataset, in certain circumstances this may not be sufficient and a more complex aggregation setup may be required as outlined below.
+By default the aggregation column for any FRESH based feature extraction is assumed to be the first column in the dataset. In certain circumstances this may not be sufficient and a more complex aggregation setup may be required as outlined below.
 
 ```q
 q)uval:100?50
@@ -195,7 +195,7 @@ q).aml.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
 
 _Grid search procedure being implemented_
 
-In each case by default the grid search procedure being implemented is a 5 fold shuffled cross validation. This can be augmented by a user for different use cases for example more time series specific grid searches. 
+In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
 
 The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into
 
@@ -211,7 +211,7 @@ q).aml.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 
 _Save options to be used_
 
-By default the system will save all outputs to disk (reports, images, config file, models). In a case a user does not wish for all outputs to be saved there are currently 3 options
+By default, the system will save all outputs to disk (reports, images, config file, models). In a case where a user does not wish for all outputs to be saved, there are currently 3 options
 
 1. 0 = Nothing is saved the models will run and display results to console but nothing persisted
 2. 1 = Save the model and configuration file only, will not generate a report for the user or any images
