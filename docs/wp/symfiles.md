@@ -501,7 +501,7 @@ operations.
 
 ### Single-threaded sym rewrite
 
-The [function](https://code.kx.com/v2/kb/compacting-hdb-sym/) that we’re going to discuss in detail below was written by Charles Skelton and can be used as
+The [function](https://code.kx.com/q/kb/compacting-hdb-sym/) that we’re going to discuss in detail below was written by Charles Skelton and can be used as
 a template for compacting a sym file. Changes have been made where
 needed for V3.6 of kdb+, with comments added where necessary. The
 function assumes a single enumeration (sym), and only splayed tables in
