@@ -10,9 +10,7 @@ keywords: machine learning, ml, automated, preprocessing, feature extraction, fe
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-As highlighted [here](../../userguide) the running of the function `.aml.run` in its default configuration is achieved by setting the final parameter `dict` to `::`. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user. The preprocessing procedures taken in this default configuration are as follows
-
-The procedures outlined below most ensure that the data being passed to the feature extraction and algorithm application procedures is consistent and managable. In cases where it is appropriate, this page will highlight use-case specific differences in the procedures followed.
+As highlighted [here](../../userguide) the running of the function `.aml.run` in its default configuration is achieved by setting the final parameter `dict` to `::`. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.
 
 ## Outline of procedures
 
@@ -23,7 +21,8 @@ The following are the procedures completed when the default system configuration
 3. A check is applied to ensure that the number of targets is appropriate for the dataset.
 4. Symbol data is encoded via either one-hot or frequency encoding.
 5. Constant columns are removed from the data.
-6. Nulls are replaced and an indicating column is added to encode their original position.
+6. Nulls are replaced and an indicating column is added to encode their original position
+7. Positive/negative infinities are replaced by the non infinitie max/min value of the column
 
 ### Applied models
 
@@ -108,20 +107,20 @@ Given the automated nature of the machine learning pipeline, it is important to 
 
 The following lists show the restricted types for each problem type. In each case these types are not handled gracefully within the feature extraction workflow and thus are omitted
 
-**Normal Feature Extraction**
+```
+Normal Feature Extraction
+  - guid
+  - byte
+  - list
+  - character
 
-- guid
-- byte
-- list
-- character
-
-**FRESH Feature Extraction**
-
-- guid
-- byte
-- time/date types
-- list
-- character
+FRESH Feature Extraction
+  - guid
+  - byte
+  - time/date types
+  - list
+  - character
+```
 
 The following example shows a truncated output from a normal feature creation procedure where a column containing bytes and lists are removed.
 ```q

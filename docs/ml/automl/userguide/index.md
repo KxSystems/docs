@@ -28,19 +28,19 @@ Where
 
 -   `tab` is unkeyed tabular data from which the models will be created
 -   `tgt` is the target vector
--   `ftype` type of feature extraction being completed as a symbol (`fresh/`normal)
--   `ptype` type of problem regression/class as a symbol (`reg/`class)
+-   `ftype` type of feature extraction being completed as a symbol (``` `fresh/`normal```)
+-   `ptype` type of problem regression/class as a symbol (``` `reg/`class ```)
 -   `dict` is one of `::` for default behaviour, a kdb+ dictionary or path to a user defined flat file for modifying default parameters.
 
 Default return/saved items from an individual run:
 
-1. The best model, saved as a hdf5 file, or pickled byte object.
+1. The best model, saved as a hdf5 file, or "pickled" byte object.
 2. A saved report indicating the procedure taken and scores achieved.
 3. A saved binary encoded dictionary denoting the procedure to be taken for reproducing results or running on new data.
 4. Results from each step of the pipeline published to console.
 
 !!!Note
-	The following example displays the implementation of the function `.aml.run` in a regression task for a non-time series task. Data and implementation code is provided for other problem types however for brevity output is not displayed in full.
+	The following example displays the implementation of the function `.aml.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity output is only displayed in full for one example.
 
 ```q
 // Non time-series example table
@@ -124,7 +124,7 @@ returns the predictions on new data based on a previously fitted model and workf
 // New dataset
 q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
 q)fpath:"2020.01.02/run_11.21.47.763"
-q).aml.newproc[new_tab;fpath]
+q).aml.new[new_tab;fpath]
 0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
 ```
 

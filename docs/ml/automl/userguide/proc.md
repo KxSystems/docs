@@ -64,9 +64,7 @@ q)count 1_cols freshfeats
 
 Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target per row. The current implementation of normal feature extraction applies the following feature extraction procedures
 
-1. Bulk transforms (sum/difference/product/ratio) between each combination of two integer/short/long columns
-2. Truncated singular value decomposition on each combination of two float columns
-3. Time/date type columns are decomposed into their component parts 
+1. Time/date type columns are decomposed into their component parts 
 
 The following shows an example of these procedures being performed.
 
@@ -89,20 +87,22 @@ x2        | 0.5068552  0.9532577  0.8768543  0.6690883  0.8108164 0.07458746 ..
 x3        | 0.9967246  0.07262924 0.1245068  0.5506067  0.1330347 0.1533462  ..
 x4        | 68         28         77         78         47        8          ..
 x5        | 3          2          1          6          8         3          ..
-x1x2_trsvd| 0.4609804  0.9484851  0.7393944  1.047185   1.000724  0.2187467  ..
-x1x3_trsvd| 0.8292033  0.2990912  0.1872121  0.956661   0.4981166 0.2753584  ..
-x2x3_trsvd| 1.070563   0.7115201  0.6961798  0.8604001  0.6566854 0.162361   ..
-x4x5_multi| 204        56         77         468        376       24         ..
-x4x5_sum  | 71         30         78         84         55        11         ..
-x4x5_div  | 0.01470588 0.03571429 0.01298701 0.01282051 0.0212766 0.125      ..
-x4x5_sub  | -65        -26        -76        -72        -39       -5         ..
 x_hh      | 0          0          0          0          0         0          ..
 x_uu      | 0          11         13         30         31        45         ..
 x_ss      | 32         31         48         2          12        50         ..
 // no. of features after feature extraction
 q)count normfeat
-15
+8
 ``` 
+
+!!!Note
+	The early stage releases of this repository limit the feature extraction procedures that are performed by default on the tabular data for a number of reasons.
+ 
+	1. The naive application of many relevant feature extraction procedures (truncated singular value decomposition/bulk transforms) while potentially informative can expand the memory usage and computation time beyond an acceptable level.
+
+	2. Procedures being applied in one field of use may not be relevant in another field. As such the framework is provided to allow a user to complete feature extractions which are domain specific if required rather than assuming procedures to be applied are ubiquitous in all cases.
+
+	Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations.
 
 ### Feature selection
 

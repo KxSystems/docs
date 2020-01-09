@@ -25,7 +25,7 @@ The following lists the parameters which can be altered by users to modify the f
 ```q
 Parameters:
   aggcols     Aggregation columns for FRESH
-  params      Functions to be applied for FRESH feature extraction
+  funcs       Functions to be applied for feature extraction
   hld         Size of holdout set on which the final model is tested
   tts         Train-test split function to be applied
   sz          Size of test set for train-test split function
@@ -53,20 +53,28 @@ q)tgt:count[distinct uval]?1f
 q).aml.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 ```
 
-### `params`
+### `funcs`
 
-_Denotes the functions that are to be applied to features when using FRESH_
+_Denotes the functions that are to be applied to for feature extraction_
 
-By default the feature extraction functions applied for any FRESH based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. If a user wishes to augment these functions or choose a subsection of them this can be completed as follows
+**FRESH**
+By default the feature extraction functions applied for any FRESH based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A who wishes to augment these functions or choose a subsection therein contained can do so as seen in the below example.
+
+**Normal**
+By default feature extraction in the case of Normal feature extraction procedures is the decomposistion of time/date types into their component parts, this can be augmented by a user to add new functionality. Functions supported are any that take as input a simple table and return a simple table.
 
 ```q
 q)uval:100?50
-q)tab:([]tstamp:"p"$uval;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:count[distinct uval]?1f
+q)tab:([]tm:"t"$uval;asc 100?1f;100?1f;100?1f;100?1f)
+q)fresh_tgt:count[distinct uval]?1f
+q)norm_tgt :asc 100?1f
 // Select only functions to apply which take < 1 argument
 q).aml.newfuncs:select from .ml.fresh.params where pnum<1
-// Run feature extraction using user defined function table
-q).aml.run[tab;tgt;`fresh;`reg;enlist[`params]!enlist `.aml.newfuncs]
+// Run feature extraction using user defined function table for FRESH
+q).aml.run[tab;fresh_tgt;`fresh;`reg;enlist[`funcs]!enlist `.aml.newfuncs]
+// Run feature extraction using a set of functions provided by a user
+q)funcs:`.aml.prep.i.truncsvd`.aml.prep.i.bulktransform
+q).aml.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
 ```
 
 ### `hld`
