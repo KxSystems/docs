@@ -149,7 +149,7 @@ The site content is now licensed under a <a rel="license" href="https://creative
         — <i>Bob Dylan</i> “When the ship comes in” 
     </p>
     <p style="display: inline-block; padding: 0 1em;">
-        <a href="https://www.bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/v2/img/dylan.png" style="height: 70px"/></a>
+        <a href="https://www.bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/q/img/dylan.png" style="height: 70px"/></a>
     </p>
 </blockquote>
 

@@ -19,7 +19,7 @@ Below is a summary of changes from V3.3. Commercially licensed users may obtain 
 ## New
 
 -   IPC message size limit raised from 2GB to 1TB.
--   supports IPC via [Unix domain sockets](../ref/handles.md#hopen) for lower latency, higher throughput local IPC connections.
+-   supports IPC via [Unix domain sockets](../ref/hopen.md) for lower latency, higher throughput local IPC connections.
 -   can use both incoming and outgoing encrypted connections using [Secure Sockets Layer(SSL)/Transport Layer Security(TLS)](../kb/ssl.md).
 -   can read directly from [NamedPipes](../kb/named-pipes.md) (e.g. avoid unzipping a CSV to disk, can pipe it directly into kdb+).
 -   `varchar~\:x` and `x~/:varchar` are now ~10x faster.

@@ -48,6 +48,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>Adobe Flex</td><td><i class="fab fa-github"></i> [quantbin/kdb](https://github.com/quantbin/kdb)</td></tr>
+<tr><td>Apache Spark</td><td><i class="fab fa-github"></i> [hughhyndman/kdbspark](https://github.com/hughhyndman/kdbspark) ==new==</td></tr>
 <tr>
     <td>ADO.Net</td>
     <td>
@@ -146,7 +147,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr><td>PLplot</td><td><i class="fab fa-github"></i> [jaeheum/qplplot](https://github.com/jaeheum/qplplot)</td></tr>
-<tr><td>Postgres</td><td><i class="fab fa-github"></i> [hughhyndman/pgtokdb](https://github.com/hughhyndman/pgtokdb) ==new==</td></tr>
+<tr><td>Postgres</td><td><i class="fab fa-github"></i> [hughhyndman/pgtokdb](https://github.com/hughhyndman/pgtokdb)</td></tr>
 <tr><td><i class="fab fa-python"></i> Python</td>
     <td>
 <i class="fab fa-github"></i> [brogar/pykdb](https://github.com/brogar/pykdb)<br/>

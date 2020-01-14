@@ -1,5 +1,5 @@
 ---
-title: Command line – Basics – kdb+ and q documentation
+title: Command line options | Basics | kdb+ and q documentation
 description: Command-line syntax for invoking q and list of the command-line options
 author: Stephen Taylor
 keywords: command, file, kdb+, line, option, q
@@ -11,42 +11,35 @@ keywords: command, file, kdb+, line, option, q
 
 The command line for invoking kdb+ has the form:
 
-```txt
-q [file] [-b] [-c r c] [-C r c] [-e 0|1] [-E 0|1|2] [-g 0|1] [-l] [-L]
-    [-o N] [-m path]
-    [-p [rp,]port|servicename|host:port|host:servicename] 
-    [-P N] [-q] [-r :H:P] [-s N] [-t N] [-T N] [-u 1] [-u|U F] [-w N] [-W N] 
-    [-z 0|1]
-```
+<pre markdown="1" class="language-txt">
+q [[file](#file)] [-option [parameters] … ]
 
-<i class="far fa-hand-point-right"></i> 
-[`.z.x`](../ref/dotz.md#zx-argv) (argv), 
-[`.z.X`](../ref/dotz.md#zx-raw-command-line) (raw command line) 
-
-
-```txt
 Options:
- -b blocked                 -P display precision
- -c console size            -q quiet mode
- -C HTTP size               -r replicate
- -e error traps             -s slaves
- -E TLS Server Mode         -t timer ticks
- -g garbage collection      -T timeout
- -l log updates             -u disable syscmds
- -L log sync                -u usr-pwd local
- -m memory domain           -U usr-pwd
- -o UTC offset              -w memory
- -p listening port          -W start week
- -p multithread port        -z date format
-```
+ [-b blocked](#-b-blocked)                    [-q quiet mode](#-q-quiet-mode)
+ [-c console size](#-c-console-size)               [-r replicate](#-r-replicate)
+ [-C HTTP size](#-c-http-size)                  [-s slaves](#-s-slaves)
+ [-e error traps](#-e-error-traps)                [-t timer ticks](#-t-timer-ticks)
+ [-E TLS Server Mode](#-e-tls-server-mode)            [-T timeout](#-t-timeout)
+ [-g garbage collection](#-g-garbage-collection)         [-u disable syscmds](#-u-disable-syscmds)
+ [-l log updates](#-l-log-updates)                [-u usr-pwd local](#-u-usr-pwd-local)
+ [-L log sync](#-l-log-sync)                   [-U usr-pwd](#-u-usr-pwd)
+ [-m memory domain](#-m-memory-domain)              [-w workspace](#-w-workspace)
+ [-o UTC offset](#-o-utc-offset)                 [-W start week](#-w-start-week)
+ [-p listening port](#-p-listening-port)             [-z date format](#-z-date-format)
+ [-P display precision](#-p-display-precision)                                            
+</pre>
+
+<i class="fas fa-book"></i>
+[`.z.x`](../ref/dotz.md#zx-argv) (argv),
+[`.z.X`](../ref/dotz.md#zx-raw-command-line) (raw command line)
 
 
 ## file
-  
+
 This is either the script to load (\*.q, \*.k, \*.s), or a file or a directory.
 
 ```bash
-$q sp.q
+$ q sp.q
 KDB+ 3.5t 2017.02.28 Copyright (C) 1993-2017 Kx Systems
 m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
 ```
@@ -62,8 +55,8 @@ q)
 ## `-b` (blocked)
 
 Syntax: `-b`
-  
-Block client write-access to a kdb+ database. 
+
+Block client write-access to a kdb+ database.
 
 ```bash
 ~/q$ q -b
@@ -100,21 +93,21 @@ q)\_
 ## `-c` (console size)
 
 Syntax: `-c r c`
-  
+
 Set console maximum rows and columns, default 25 80.
 
-<i class="far fa-hand-point-right"></i> 
-[`\c` system command](syscmds.md#c-console-size) for detail  
+<i class="fas fa-book-open"></i>
+[`\c` system command](syscmds.md#c-console-size) for detail
 
 
 ## `-C` (HTTP size)
 
 Syntax: `-C r c`
-  
-Set HTTP display maximum rows and columns. 
 
-<i class="far fa-hand-point-right"></i> 
-[`\C` system command](syscmds.md#c-http-size) for detail 
+Set HTTP display maximum rows and columns.
+
+<i class="fas fa-book-open"></i>
+[`\C` system command](syscmds.md#c-http-size) for detail
 
 
 
@@ -123,9 +116,9 @@ Set HTTP display maximum rows and columns.
 Syntax: `-e [0|1|2]`
 
 Sets error-trapping mode.
-The default is 0 (off). 
+The default is 0 (off).
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\e` system command](syscmds.md#e-error-trap-clients) for detail
 
 
@@ -140,20 +133,20 @@ x   | mode
 1   | plain & TLS
 2   | TLS only
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book-open"></i>
 Knowledge Base: [SSL/TLS](../kb/ssl.md#tls-server-mode)
 
 
 ## `-g` (garbage collection)
 
 Syntax: `-g [0|1]`
-  
-Sets garbage-collection mode: 
+
+Sets garbage-collection mode:
 
 -   0 for deferred (default)
 -   1 for immediate
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\g` system command](syscmds.md#g-garbage-collection-mode) for detail
 
 
@@ -161,19 +154,21 @@ Sets garbage-collection mode:
 ## `-l` (log updates)
 
 Syntax: `-l`
-  
-Log updates to filesystem  
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Logging](../kb/logging.md)
+
+Log updates to filesystem.
+
+<i class="fas fa-graduation-cap"></i>
+[Logging](../kb/logging.md)
 
 
 ## `-L` (log sync)
 
 Syntax: `-L`
-  
-As `-l`, but sync logging  
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Logging](../kb/logging.md)
+
+As `-l`, but sync logging.
+
+<i class="fas fa-graduation-cap"></i>
+[Logging](../kb/logging.md)
 
 
 ## `-m` (memory-domain)
@@ -196,11 +191,11 @@ The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1,
 ## `-o` (UTC offset)
 
 Syntax: `-o N`
-  
-Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23` 
+
+Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 (Affects [`.z.Z`](../ref/dotz.md#zz-local-datetime))
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\o` system command](syscmds.md#o-offset-from-utc) for detail
 
 
@@ -208,14 +203,14 @@ Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 
 Syntax: `-p [rp,][hostname:][portnumber|servicename]`
 
-Kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified. 
+Kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
 The port must be available and the process must have permission for the port.
 
-The default is 0 (no listening port). 
+The default is 0 (no listening port).
 
 Optional parameter `rp` allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\p` system command](syscmds.md#p-listening-port) for detail
 
 
@@ -223,17 +218,17 @@ Optional parameter `rp` allows multiple sockets (kdb+ processes) to listen on th
 ## `-P` (display precision)
 
 Syntax: `-P N`
-  
-Display precision for floating-point numbers, i.e. the number of digits shown. 
 
-<i class="far fa-hand-point-right"></i>
+Display precision for floating-point numbers, i.e. the number of digits shown.
+
+<i class="fas fa-book-open"></i>
 [`\P` system command](syscmds.md#p-precision) for detail
 
 
 ## `-q` (quiet mode)
 
 Syntax: `-q`
-  
+
 Quiet, i.e. no startup banner text or session prompts. Typically used where no console is required.
 
 ```bash
@@ -259,27 +254,27 @@ and with `-q`
 4
 ```
 
-<i class="far fa-hand-point-right"></i>
-[`.z.q`](../ref/dotz.md#zq-quiet-mode) (quiet mode) 
+<i class="fas fa-book"></i>
+[`.z.q`](../ref/dotz.md#zq-quiet-mode) (quiet mode)
 
 
 ## `-r` (replicate)
-  
+
 Syntax: `-r :host:port[:user[:password]]`
-  
+
 Replicate from `:host:port`.
 
-<i class="far fa-hand-point-right"></i>
-[`\r` system command](syscmds.md#r-replication-master) 
+<i class="fas fa-book-open"></i>
+[`\r` system command](syscmds.md#r-replication-master)
 
 
 ## `-s` (slaves)
-  
+
 Syntax: `-s N`
-  
+
 Number of slave threads or processes available for parallel processing.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\s` system command](syscmds.md#s-number-of-slaves) for detail
 
 
@@ -287,27 +282,27 @@ Number of slave threads or processes available for parallel processing.
 ## `-t` (timer ticks)
 
 Syntax: `-t N`
-  
+
 Period in milliseconds between timer ticks. Default is 0, for no timer.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\t` system command](syscmds.md#t-timer) for detail
 
 
 ## `-T` (timeout)
 
 Syntax: `-T N`
-  
+
 Timeout in seconds for client queries, i.e. maximum time a client call will execute. Default is 0, for no timeout.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\T` system command](syscmds.md#t-timeout) for detail
 
 
 ## `-u` (disable syscmds)
 
 Syntax: `-u 1`
-  
+
 Disables system commands from a remote (signals `'access`). As such, this includes disabling exit via `"\\"` from a remote.
 
 !!! warning "Weak protection"
@@ -320,10 +315,10 @@ For example, setting a system command in `.z.ts` and starting the timer still wo
 ## `-u` (usr-pwd local)
 
 Syntax: `-u file`
-  
+
 Sets a password file; no access above start directory
 
-The password file is a text file with one credential on each line. 
+The password file is a text file with one credential on each line.
 (No trailing blank line/s.)
 
 ```txt
@@ -331,7 +326,7 @@ user1:password1
 user2:password2
 ```
 
-The password can be 
+The password can be
 
 -   plain text
 -   an MD5 hash of the password
@@ -344,25 +339,25 @@ q)raze string -33!"mypassword" / -33! calculates sha1
 "91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
 
 ## `-U` (usr-pwd)
 
 Syntax: `-U file`
-  
+
 As `-u`, but without access restrictions.
 
 
 ## `-w` (workspace)
 
 Syntax: `-w N`
-  
-Workspace limit in MB for the heap per thread. Default is 0: no limit. 
 
-<i class="far fa-hand-point-right"></i>
-[`\w` system command](syscmds.md#w-workspace) for detail  
+Workspace limit in MB for the heap per thread. Default is 0: no limit.
+
+<i class="fas fa-book-open"></i>
+[`\w` system command](syscmds.md#w-workspace) for detail
 Reference: [`.Q.w`](../ref/dotq.md#qw-memory-stats)
 
 **Domain-local**
@@ -379,22 +374,22 @@ Since V3.7t 2019.10.22 this command is no longer thread-local, but [memory domai
 ## `-W` (start week)
 
 Syntax: `-W N`
-  
+
 Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\W` system command](syscmds.md#w-week-offset) for detail
 
 
 ## `-z` (date format)
 
 Syntax: `-z [0|1]`
-  
+
 Set the format for `"D"$` date parsing: 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`\z` system command](syscmds.md#z-date-parsing)
 
 
-[![](../img/xkcd.tar.png)](https://xkcd.com/1168/)  
+[![](../img/xkcd.tar.png)](https://xkcd.com/1168/)
 _xkcd.com_

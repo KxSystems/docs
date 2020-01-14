@@ -7,34 +7,34 @@ keywords: adverb, case, dictionary, each, each both, each left, each parallel, e
 ---
 # Map iterators
 
-`'` `\:` `/:` `':` 
+<pre markdown="1" class="language-txt">
+map                        rank
+ [Each](#each)           v'       same as v    [each](#each-keyword)
+ [Each Left](#each-left-and-each-right)      v2\:        2
+ [Each Right](#each-left-and-each-right)     v2/:        2
+ [Each Parallel](#each-parallel)  v1':        1         [peach](#peach-keyword)
+ [Each Prior](#each-prior)     v2':     variadic     [prior](#prior-keyword)
+ [Case](#case)           i'        1+max i
 
-
-
-
-
+-------------------------------------------------------------------
+v1: value (rank 1)         v: value (rank 1-8)
+v2: value (rank 2)         i: vector of ints≥0
+</pre>
 
 The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
-
-There are six maps. 
-
-glyph | operator      | value rank | iteration rank
-------|---------------|------------|----------------
-`'`   | Each          | any        | same as value
-`\:`  | Each Left     | binary     | binary
-`/:`  | Each Right    | binary     | binary
-`':`  | Each Parallel | unary      | unary
-`':`  | Each Prior    | binary     | variadic
-`'`   | Case          | unary      | variadic
 
 
 ## Each
 
 _Apply a value item-wise to a dictionary, list, or conforming lists and/or dictionaries._
 
-Syntax: `(v')x`, `x v'y`, `v'[x;y;z]`
+```txt
+(v1')x    v1'[x]       v1 each x
+x v2'y    v2'[x;y]
+          v3'[x;y;z]
+```
 
-A function derived by Each applies its value to each item of a list, dictionary or on corresponding items of conforming lists. The derived function has the same rank as the value. 
+Where `v` is an applicable value, `v'` applies `v` to each item of a list, dictionary or to corresponding items of conforming lists. The derived function has the same rank as `v`. 
 
 ```q
 q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 
@@ -44,15 +44,6 @@ c| 4
 ```
 
 
-### `each` keyword
-
-The mnemonic keyword [`each`](each.md) can be used to apply a unary value without parentheses or brackets.
-
-```q
-q)count each string `Clash`Fixx`The`Who
-5 4 3 3
-```
-
 <div markdown="1" style="float: right; margin-left: 1em; text-align: center;">
 ![each-both](../img/each-both.png)  
 <small>_Each Both_</small>
@@ -61,7 +52,7 @@ q)count each string `Clash`Fixx`The`Who
 Each applied to a binary value is sometimes called _each both_ and can be applied infix.
 
 ```q
-q)1 2 3 in'(1 0 1;til 100;5 6 7)            / binary, infix 
+q)1 2 3 in'(1 0 1;til 100;5 6 7)  / in' is binary, infix 
 110b
 ```
 
@@ -72,19 +63,32 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 1005000 1000000 1007000
 ```
 
+### `each` keyword
+
+The mnemonic keyword [`each`](each.md) can be used to apply a unary value without parentheses or brackets.
+
+```q
+q)count each string `Clash`Fixx`The`Who
+5 4 3 3
+```
+
 
 ## Each Left and Each Right
 
 _Apply a binary value between one argument and each item of the other._
 
+```txt
+Each Left     x v2\: y    v2\:[x;y]   |->   v2[;y] each x
+Each Right    x v2/: y    v2/:[x;y]   |->   v2[x;] each y
+```
+
+The maps Each Left and Each Right take **binary** values and derive binary functions that pair one argument to each item of the other. Effectively, the map projects its value on one argument and applies Each.
 
 &nbsp;      | Each Left                        | Each Right
 ------------|:--------------------------------:|:-----------------:
-syntax:     | `x b\:y`                         |  `x b/:y`
-equivalent: | `(b[;y]')x`                      | `(b[x;]')y`
+syntax:     | `x f\:y`                         |  `x f/:y`
+equivalent: | `f[;y] each x`                      | `f[x;] each y`
 &nbsp;      | ![Each Left](../img/each-left.png) | ![Each Right](../img/each-right.png)
-
-The maps Each Left and Each Right take **binary** values and derive binary functions that pair one argument to each item of the other. Effectively, the map projects its value on one argument and applies Each.
 
 ```q
 q)"abcde",\:"XY"             / Each Left
@@ -160,13 +164,14 @@ q)raze[a] ~ b
 
 _Assign sublists of the argument list to slave tasks, in which the unary value is applied to each item of the sublist._
 
+```txt
+(v1':)x   v1':[x]   v1 peach x
+```
 
-Syntax: `(u':)x`
+The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies `v1` to each item of its sublist. 
 
-The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `u':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies `u` to each item of its sublist. 
-
-<i class="far fa-hand-point-right"></i> 
-Basics: [Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
+<i class="fas fa-book-open"></i> 
+[Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
 [Parallel processing](../basics/peach.md)
 
 ```bash
@@ -185,7 +190,7 @@ q)\t ({sum exp x?1.0}':)2#1000000  / peach
 
 ### `peach` keyword
 
-The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e.g. instead of  `(u:')` write `u peach list`.
+The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e.g. instead of  `(v1:')` write `v1 peach list`.
 
 !!! tip "Higher-rank values"
 
@@ -202,7 +207,10 @@ The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e
 
 _Apply a binary value between each item of a list and its preceding item._
 
-Syntax: `(b':)x`, `x b':y`
+```txt
+(v2':)x    v2':[x]      (v2)prior x
+x v2':y    v2':[x;y]   
+```
 
 The Each Prior map takes a **binary** value and derives a variadic function.
 The derived function applies the value between each item of a list or dictionary and the item prior to it.
@@ -259,6 +267,7 @@ q)deltas 5 16 42 103
 ```
 
 
+
 ## Case
 
 _Pick successive items from multiple list arguments: the left argument of the iterator determines from which of the arguments each item is picked._
@@ -312,9 +321,6 @@ office "(649)-678-6937" "(577)-671-6744" "(577)-671-6744"
 home   "(677)-200-5231" "(546)-864-5636" "(677)-200-5231"
 home   "(463)-653-5120" "(636)-437-2336" "(463)-653-5120"
 ```
-
-<i class="far fa-hand-point-right"></i> 
-[Iterators](iterators.md)
 
 Case is a map. 
 Consider the iteration’s arguments as a matrix, of which each row corresponds to an argument.

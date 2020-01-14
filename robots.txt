@@ -1,1 +1,0 @@
-Sitemap: https://code.kx.com/v2/sitemap.xml

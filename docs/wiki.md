@@ -14,7 +14,7 @@ The content, which runs on [Mediawiki](http://mediawiki.org),
 has now been [archived on GitHub](https://github.com/kxsystems/wiki).
 
 <i class="far fa-hand-point-right"></i>
-[Current **reference card**](https://code.kx.com/v2/ref/)
+[Current **reference card**](https://code.kx.com/q/ref/)
 
 Inquiries to <librarian@kx.com>. 
 

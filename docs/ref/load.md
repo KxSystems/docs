@@ -1,5 +1,5 @@
 ---
-title: load – Reference – kdb+ and q documentation
+title: load a table | Reference | kdb+ and q documentation
 description: load is q keyword that loads binary data from a file or directory.
 keywords: directory, file, kdb+, load, q, rload, splayed, table
 ---
@@ -93,13 +93,14 @@ q)sp:get `:sp/        / equivalent to rload `sp
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i> 
 [`save`, `rsave`](save.md)  
 [`.Q.dsftg`](dotq.md#qdsftg-load-process-save) (load process save), 
 [`.Q.fps`](dotq.md#qfps-streaming-algorithm) (streaming algorithm), 
 [`.Q.fs`](dotq.md#qfs-streaming-algorithm) (streaming algorithm), 
 [`.Q.fsn`](dotq.md#qfsn-streaming-algorithm) (streaming algorithm), 
-[`.Q.v`](dotq.md#qv-value) (get splayed table)   
-Basics: [File system](../basics/files.md)
-
+[`.Q.v`](dotq.md#qv-value) (get splayed table)
+<br>
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md)
 

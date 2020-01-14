@@ -75,7 +75,7 @@ Hyphenate adjectival phrases. For example, the hyphen in _high-level category_ i
 ## Linking
 
 Take opportunities to link to the Reference, the Knowledge Base, _Q for Mortals_,etc. 
-Links can start from the site root, e.g. `/v2/ref/cond/`.
+Links can start from the site root, e.g. `/q/ref/cond/`.
 
 
 ## Function reference

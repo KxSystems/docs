@@ -95,7 +95,7 @@ q)\ls /tmp/kxuds
 ```
 
 <i class="far fa-hand-point-right"></i>
-Reference: [`hopen`](../ref/handles.md#hopen)  
+Reference: [`hopen`](../ref/hopen.md)  
 Command-line options: [`-e`](cmdline.md#-e-tls-server-mode), 
 [`-p`](cmdline.md#-p-listening-port)  
 System command: [`\p`](syscmds.md#p-listening-port)  
