@@ -1,10 +1,10 @@
 ---
-title: Get going with kdb+ – kdb+ and q documentation
-description: Technical documentation and resources for q and kdb+ developers
+title: Documentation for kdb+ and the q programming language from Kx 
+description: Documentation, white papers and developer resources for kdb+ and the q programming language
 author: Stephen Taylor
 keywords: code, cloud, contact, cookbook, developer, documentation, download, fd, first derivatives, github, ide, interface, kdb+, knowledge base, kx, programming, q, reference, support, tutorial, white paper
 ---
-# Get going with kdb+
+# Developing with kdb+ and the q language
 
 
 
@@ -20,18 +20,18 @@ Kdb+, from [Kx](https://kx.com), is
 -   an expressive query and programming language called q
 </div>
 
-<div style="display: inline-flex; margin-left: 7px;" markdown="1">
+<div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba.md)</p>
+    <p class="nowrap" markdown="1"><i class="fab fa-github"></i> [`man.q`](https://github.com/KxSystems/man)</p>
     
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-glasses"></i> [Kdb+ Windows service](kb/windows-service/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-graduation-cap"></i> [_Q for Mortals 3.1_](/q4m3/preface/)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [The Q Phrasebook](/phrases/)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-book"></i> [File system](basics/files.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> White paper: [Lightning&nbsp;tickerplants](wp/lightning-tickerplants/index.md)</p>
+    <p markdown="1"><i class="far fa-map"></i> [Data loaders](wp/data-loaders/index.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="fas fa-download"></i> [Kx&nbsp;Analyst](/analyst/)</p>
+    <p markdown="1"><i class="far fa-map"></i> [Option pricing](wp/option-pricing/index.md)</p>
     
 </div>
 
@@ -52,42 +52,49 @@ Kdb+, from [Kx](https://kx.com), is
     <i class="fab fa-windows"></i>](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 </div>
 <div>
-    [<i class="far fa-fw fa-question-circle fa-border fa-5x"></i><br/>
-    Reference](ref/index.md "Reference card for the q language")
-</div>
-<div>
-    [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
+    [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
     Get started](learn/index.md "Learn how to install and start using kdb+")
 </div>
+<div>
+    [<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
+    Reference<br>and basics](ref/index.md "Reference card for the q language")
+</div>
+<div>
+    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+    Phrasebook](/phrases/ "Power expressions in q")
+</div>
+<!-- 
+<div>
+    [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
+    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
+</div>
+ -->
 <div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
     White papers](wp/index.md "Technical white papers on using kdb+")
 </div>
 <div>
-    [<i class="fas fa-fw fa-glasses fa-border fa-5x"></i><br/>
+    [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
     Knowledge<br/>Base](kb/index.md)
 </div>
 <div>
-    [<i class="fas fa-fw fa-life-ring fa-border fa-5x"></i><br/>
-    Support](support.md "Support contacts")
-</div>
-<div>
-    [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
-    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
+    [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
+    Fusion<br/>interfaces](interfaces/ "Interfaces to other technologies")
 </div>
 <div>
     [<i class="fab fa-fw fa-github fa-border fa-5x"></i><br/>
     Share code](http://kxsystems.github.io/ "Kdb+ repositories on GitHub")
 </div>
 <div>
-    [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
-    Fusion<br/>interfaces](interfaces/ "Interfaces to other technologies")
+    [<i class="fas fa-fw fa-life-ring fa-border fa-5x"></i><br/>
+    Support](support.md "Support contacts")
 </div>
 </div>
 
-!!! tip "Using this site offline"
+!!! tip "Using this site locally"
 
-    You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use offline.
+    You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use locally. 
+    (It uses scripts from the Web so needs Net access or a browser cache to render correctly.)
 
     The source code for this site is on GitHub at 
     <i class="fab fa-github"></i>

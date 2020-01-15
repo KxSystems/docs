@@ -1,6 +1,6 @@
 ---
-title: desc, idesc, xdesc – Reference – kdb+ and q documentation
-description: desc, idesc, and xdesc are q keywords. desc returns a list sorted descending; idesc returns the grade for that sort. xdesc sorts a table descending by specified columns.
+title: desc, idesc, xdesc – descending sorts | Reference | kdb+ and q documentation
+description: Descending sorts in q; desc returns a list sorted descending; idesc returns the grade for that sort. xdesc sorts a table descending by specified columns.
 author: Stephen Taylor
 keywords: asc, desc, descending, grade, idesc, kdb+, q, sort, xdesc
 ---
@@ -10,6 +10,8 @@ _Sort and grade: descending_
 
 
 
+
+!!! info "Q chooses from a variety of algorithms, depending on the type and data distribution."
 
 ## `desc`
 
@@ -128,8 +130,9 @@ city  | s
 
 !!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book"></i>
 [`asc`, `iasc`, `xasc`](asc.md)  
-Basics: [Dictionaries & tables](../basics/dictsandtables.md),
+<i class="fas fa-book-open"></i>
+[Dictionaries & tables](../basics/dictsandtables.md),
 [Sorting](../basics/sort.md)
 

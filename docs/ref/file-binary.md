@@ -6,7 +6,7 @@ keywords: binary, file, kdb+, q, read, write
 ---
 # `1:` File Binary 
 
-_Read or write a binary file_
+_Read or write bytes_
 
 
 
@@ -20,7 +20,7 @@ Syntax: `x 1: y`, `1:[x;y]`
 Where 
 
 -   `x` is a 2-item list of types (char vector) and widths (int vector), of which the order determines whether the data is parsed as little-endian or big-endian
--   `y` is a file descriptor or string, or byte sequence
+-   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or string, or byte sequence
 
 returns the content of `y` as atom, list or matrix.
 
@@ -57,9 +57,9 @@ q)d:raze{("ii";4 4)1:(`:/tmp/data;x;100000)}each 100000*til 5
 
 ## Save Binary
 
-Syntax: `x 1: y`, `1:[x;y]`
+Syntax: `file symbol 1: bytes`, `1:[file symbol;bytes]`
 
-writes bytes `y` to file `x`.
+writes `bytes` to [`file symbol`](../basics/glossary.md#file-symbol).
 
 ```q
 `:hello 1: 0x68656c6c6f776f726c64
@@ -67,5 +67,6 @@ writes bytes `y` to file `x`.
 
 
 <i class="far fa-hand-point-right"></i>
-[File Text](file-text.md)  
-Basics: [File system](../basics/files.md)
+[`0:` File Text](file-text.md)<br>
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md)

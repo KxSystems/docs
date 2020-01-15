@@ -1,6 +1,6 @@
 ---
-title: read1 – Reference – kdb+ and q documentation
-description: read1 is a q keyword that reads bytes from a file or named pipe.
+title: read1 reads bytes | Reference | kdb+ and q documentation
+description: read1 is a q keyword that reads bytes from a file or named pipe
 author: Stephen Taylor
 keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
 ---
@@ -15,26 +15,23 @@ _Read bytes from a file or named pipe_
 
 Syntax: `read1 x`, `read1[x]`
 
-Where `x` is 
+Where `x` is a
 
--   an **atom** `file`, a **list** `(file; offset)`, or `(file; offset; length)`
--   an **atom** `fifo`, or a **list** (`fifo`;`length`)
+-   [file symbol](../basics/glossary.md#file-symbol)
+-   [file descriptor](../basics/glossary.md#file-descriptor)
+-   [handle](../basics/handles.md) to a [fifo](hopen.md#fifonamed-pipes)
+-   2-list: a handle to a fifo, and a byte count (int)
 
-and 
-
--   `file` and `fifo` are handles to, respectively, a file and a named pipe 
--   `offset` and `length` are non-negative int atoms
-
-returns corresponding bytes from `file`  or the pipe bound to `fifo`.
+returns bytes from the source, as follows.
 
 
 ## File
 
 Where `x` is 
 
+-   an file symbol, returns the entire content of the file
 -   a list `(file;offset;length)`, returns up to `length` bytes from `file` starting at `offset`
 -   a list `(file;offset)`, returns the entire content of `file` from `offset` onwards
--   an atom `file`, returns the entire content of the file
 
 ```q
 q)`:test.txt 0:("hello";"goodbye")      / write some text to a file
@@ -46,6 +43,9 @@ q)"c"$read1`:test.txt                   / convert from bytes to char
 q)/ read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read1(`:/tmp/data;x;100000)}each 100000*til 5 
 ```
+
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md)
 
 
 ## Named pipe
@@ -64,6 +64,6 @@ q)"c"$read1(h;8)
 q)system"mkfifo somefifo";h:hopen`fifo:somefifo; 0N!read1 h; hclose h
 ```
 
+<i class="fas fa-book-open"></i>
+[Interprocess communicaion](../basics/ipc.md)
 
-<i class="far fa-hand-point-right"></i>
-[File system](../basics/files.md)

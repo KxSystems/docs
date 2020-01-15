@@ -13,7 +13,7 @@ $(function() {
 		}
 	});
     // Search engine call from Search box
-	var kxSearch = 'https://code.kx.com/v2/search2?query='; // >>> reverse-proxy on Nginx at code.kx.com
+	var kxSearch = 'https://code.kx.com/q/search2?query='; // >>> reverse-proxy on Nginx at code.kx.com
 	var srchHandler =function( evt ) {
 		if( evt.which===13 ) {
 			var qry = $("[data-md-component=query]").val().trim();
@@ -41,7 +41,7 @@ $(function() {
 	});
 	$(btn).click(function() {
 		var host = window.location.host;
-		var dest = "/v2/about/search/";
+		var dest = "/q/about/search/";
 		window.location = dest;
 	});
 });

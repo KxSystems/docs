@@ -1,6 +1,6 @@
 ---
 title: System commands – Basics – kdb+ and q documentation
-description: System commands control the q environment. 
+description: System commands control the q environment.
 keywords: command, kdb+, q, system
 ---
 # System commands
@@ -9,16 +9,35 @@ keywords: command, kdb+, q, system
 
 
 
+<pre markdown="1" class="language-txt">
+[\a  tables](#a-tables)                      [\s       number of slaves](#s-number-of-slaves)
+[\b  views](#b-views)                       [\S       random seed](#s-random-seed)
+[\B  pending views](#b-pending-views)               [\t       timer](#t-timer)
+[\c  console size](#c-console-size)                [\T       timeout](#t-timeout)
+[\cd change directory](#cd-change-directory)            [\ts      time and space](#ts-time-and-space)
+[\C  HTTP size](#c-http-size)                   [\u       reload user password file](#u-reload-user-password-file)
+[\d  directory](#d-directory)                   [\v       variables](#v-variables)
+[\e  error trap clients](#e-error-trap-clients)          [\w       workspace](#w-workspace)
+[\f  functions](#f-functions)                   [\W       week offset](#w-week-offset)
+[\g  garbage collection mode](#g-garbage-collection-mode)     [\x       expunge](#x-expunge)
+[\l  load file or directory](#l-load-file-or-directory)      [\z       date parsing](#z-date-parsing)
+[\o  offset from UTC](#o-offset-from-utc)             [\1 & \2  redirect](#1-2-redirect)
+[\p  listening port](#p-listening-port)              [\\_       hide q code](#_-hide-q-code)
+[\P  precision](#p-precision)                   [\\        terminate](#terminate)
+[\r  replication master](#r-replication-master)          [\\        toggle q/k](#toggle-qk)
+[\r  rename](#r-rename)                      [\\\\       quit](#quit)
+</pre>
+
 System commands control the q environment. They have the form:
 
 ```txt
 \cmd [p]
 ```
 
-for some command `cmd`, and optional parameter list `p`.  
+for some command `cmd`, and optional parameter list `p`.
 
-<i class="far fa-hand-point-right"></i> 
-[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters), 
+<i class="fas fa-book"></i>
+[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters),
 [`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
 
 Commands with optional parameters that set values, will show the current values if the parameters are omitted.
@@ -28,53 +47,6 @@ Some system commands have equivalent command-line parameters.
 !!! tip "`system`"
 
     The [`system`](../ref/system.md) keyword executes a string representation of a system command – and allows its result to be captured.
-
-```txt
-\   abort                       \s       number of slaves
-\a  tables                      \S       random seed
-\b  views                       \t       timer
-\B  pending views               \T       timeout
-\c  console size                \ts      time and space
-\cd change directory            \u       reload user password file
-\C  HTTP size                   \v       variables
-\d  directory                   \w       workspace
-\e  error trap clients          \W       week offset
-\f  functions                   \x       expunge
-\g  garbage collection mode     \z       date parsing
-\l  load file or directory      \1 & \2  redirect
-\o  offset from UTC             \_       hide q code
-\p  listening port              \        terminate
-\P  precision                   \        toggle q/k
-\r  replication master          \\       quit
-\r  rename                      
-```
-
-
-## `\` (abort)
-
-At the debugger’s `q))` prompt clears one level from the execution stack and (eventually) returns to the interactive session.
-
-```q
-q)f:{g[]}
-q)g:{'`xyz}
-q)f[]
-{g[]}
-'xyz
-@
-{'`xyz}
-::
-q))\
-q)
-```
-
-<i class="far fa-hand-point-right"></i> 
-[Debugging](debug.md)
-
-
-!!! warning "At the session’s `q)` prompt"
-
-    toggles in an out of the k interpreter.
-    (Don’t go there.)
 
 
 ## `\a` (tables)
@@ -115,7 +87,7 @@ q.nn)
 
 Syntax: `\b [namespace]`
 
-Lists dependencies (views) in `namespace`. 
+Lists dependencies (views) in `namespace`.
 Defaults to current namespace.
 
 ```q
@@ -125,7 +97,7 @@ q)\b
 `s#`a`b
 ```
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i>
 [`.z.b`](../ref/dotz.md#zb-dependencies).
 
 
@@ -133,7 +105,7 @@ q)\b
 
 Syntax: `\B [namespace]`
 
-Lists pending dependencies (views) in `namespace`, i.e. dependencies not yet referenced, or not referenced after their referents have changed. 
+Lists pending dependencies (views) in `namespace`, i.e. dependencies not yet referenced, or not referenced after their referents have changed.
 Defaults to current namespace.
 
 ```q
@@ -181,7 +153,7 @@ q)til each 20+til 10
 ..
 ```
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`-c` command-line option](cmdline.md#-c-console-size)
 
 
@@ -191,17 +163,17 @@ q)til each 20+til 10
 
 Syntax: `\C [size]`
 
-Show or set HTTP display maximum rows and columns. 
+Show or set HTTP display maximum rows and columns.
 `size` is a pair of integers: rows and columns.
 The default is `36 2000`; values are coerced to the range \[10,2000\].
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`-C` command-line option](cmdline.md#-c-http-size)
 
 
 ## `\cd` (change directory)
 
-Syntax: `\cd [name]` 
+Syntax: `\cd [name]`
 
 Changes the current directory.
 ```q
@@ -220,7 +192,7 @@ q)\cd
 
 Syntax: `\d [namespace]`
 
-Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The prompt indicates the current namespace. 
+Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The prompt indicates the current namespace.
 
 ```q
 q)\d                  / default namespace
@@ -249,10 +221,10 @@ This enables error trapping for client requests. The default mode is 0 (off).
 mode | behavior
 :---:|---------
 0    | When a client request has an error, by default the server clears the stack. Appropriate for production use as it enables the server to continue processing other client requests.
-1    | The server suspends on an error, and does not process other requests until the stack is cleared. Appropriate for development: enables debugging on the server. 
+1    | The server suspends on an error, and does not process other requests until the stack is cleared. Appropriate for development: enables debugging on the server.
 2    | Dumps stack to stderr for untrapped errors during request from a remote. (Since V3.5 2016.10.03)
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [Command-line option `-e`](cmdline.md#-e-error-traps)
 
 
@@ -277,7 +249,7 @@ q){x where x like"ht??"}system"f .h"
 
 Syntax: `\g [mode]`
 
-Show or set garbage-collection mode. 
+Show or set garbage-collection mode.
 The default mode is 0 (deferred) since V2.7 2011.02.04.
 
 B | mode      | behavior
@@ -285,7 +257,7 @@ B | mode      | behavior
 0 | deferred  | returns memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
 1 | immediate | returns (certain types of) memory to the OS as soon as no longer referenced; has an associated performance overhead.
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book-open"></i>
 [Command-line option `-g`](cmdline.md#-g-garbage-collection)
 
 
@@ -293,7 +265,7 @@ B | mode      | behavior
 
 Syntax: `\l name`
 
-The parameter can be a script filename or a directory. A script is loaded, and a directory database is opened. When q opens a directory, it changes its current directory to it. This allows reloading the current database using `\l .`. If the directory is specified as `.`, any scripts in that directory will be ignored; this is to allow (re)loading of data only. 
+The parameter can be a script filename or a directory. A script is loaded, and a directory database is opened. When q opens a directory, it changes its current directory to it. This allows reloading the current database using `\l .`. If the directory is specified as `.`, any scripts in that directory will be ignored; this is to allow (re)loading of data only.
 
 If a file or directory under the path being loaded has a dollar-sign suffix then it is also ignored. e.g. `db/tickdata/myfile$` and `db/tickdata/mydir$` would be ignored on `\l db/tickdata` or on `\l .` if `db/tickdata` is the current directory.
 
@@ -307,7 +279,7 @@ q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i>
 [`.Q.l`](../ref/dotq.md#ql-load) (load)
 
 
@@ -315,7 +287,7 @@ q)\a                 / with tables quote and trade
 
 Syntax: `\o [n]`
 
-Show or set the local time offset, as `n` hours from UTC, or as minutes if `abs[n]>23`. 
+Show or set the local time offset, as `n` hours from UTC, or as minutes if `abs[n]>23`.
 The initial value of `0N` means the machine’s offset is used.
 
 ```q
@@ -335,34 +307,44 @@ q).z.P
 
 This corresponds to the `-o` command line parameter.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [Command-line option `-o`](cmdline.md#-o-utc-offset)
 
 
 ## `\p` (listening port)
 
-Syntax: `\p [hostname:][portnumber|servicename]`
+Syntax: `\p [rp,][hostname:][portnumber|servicename]`
 
 Show or set listening port: kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
 The port must be available and the process must have permission for the port.
 
-The default is 0: no listening port. 
+Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
-<i class="far fa-hand-point-right"></i>
-[Listening port](listening-port.md), 
-[`-p` command-line option ](cmdline.md#-p-listening-port)  
-Reference: [`hopen`](../ref/handles.md#hopen)  
-Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)
+The default is 0: no listening port.
+
+<i class="fas fa-book-open"></i>
+[Listening port](listening-port.md),
+[`-p` command-line option ](cmdline.md#-p-listening-port)
+<br>
+<i class="fas fa-book"></i>
+[`hopen`](../ref/hopen.md)
+<br>
+<i class="fas fa-graduation-cap"></i>
+[Multithreaded input mode](../kb/multithreaded-input.md),
+[Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
+<br>
+<i class="far fa-map"></i>
+[Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
 ## `\P` (precision)
 
 Syntax: `\P [n]`
 
-Show or set display precision for floating-point numbers, i.e. the number of digits shown. 
+Show or set display precision for floating-point numbers, i.e. the number of digits shown.
 
-The default value is 7 and possible values are in the range \[0,17\]. 
-A value of 0 means use maximum precision. 
+The default value is 7 and possible values are in the range \[0,17\].
+A value of 0 means use maximum precision.
 This is used when exporting to CSV files.
 
 ```bash
@@ -405,14 +387,16 @@ q)1%3
     "7817047037.90"
     </code></pre>
 
-<i class="far fa-hand-point-right"></i> 
-[Precision](precision.md), 
-[`-P` command-line option](cmdline.md#-p-display-precision), 
-[`-27!` internal function](internal.md#-27xy-format)  
-Reference: [`.Q.f`](../ref/dotq.md#qf-format), 
-[`.Q.fmt`](../ref/dotq.md#qfmt-format) 
+<i class="fas fa-book-open"></i>
+[Precision](precision.md),
+[`-P` command-line option](cmdline.md#-p-display-precision),
+[`-27!` internal function](internal.md#-27xy-format)
+<br>
+<i class="fas fa-book"></i>
+[`.Q.f`](../ref/dotq.md#qf-format),
+[`.Q.fmt`](../ref/dotq.md#qfmt-format)
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-globe"></i>
 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
 
 
@@ -421,10 +405,10 @@ Reference: [`.Q.f`](../ref/dotq.md#qf-format),
 
 Syntax: `\r`
 
-This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count. 
+This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count.
 
-<i class="far fa-hand-point-right"></i> 
-[`-r` command-line option](cmdline.md#-r-replicate) 
+<i class="fas fa-book-open"></i>
+[`-r` command-line option](cmdline.md#-r-replicate)
 
 
 ## `\r` (rename)
@@ -460,10 +444,10 @@ N   | parallel processing uses
 For processes:
 
 -   `peach` or `':` will call [`.z.pd`](../ref/dotz.md#zpd-peach-handles) for a list of handles to the processes, which must have been started previously
--   the absolute value of `-N` in the command line is ignored 
+-   the absolute value of `-N` in the command line is ignored
 
-<i class="far fa-hand-point-right"></i> 
-[`-s` command-line option](cmdline.md#-s-slaves), 
+<i class="fas fa-book-open"></i>
+[`-s` command-line option](cmdline.md#-s-slaves),
 [Parallel processing](peach.md)
 
 
@@ -481,16 +465,16 @@ Note that `\S` displays the last value to which the seed was initialized: it is 
 
 ```q
 q)\S                       / default
--314159i         
-q)5?10         
-8 1 9 5 4         
-q)5?10         
-6 6 1 8 5         
+-314159i
+q)5?10
+8 1 9 5 4
+q)5?10
+6 6 1 8 5
 q)\S -314159               / restore default seed
 q)5?10                     / same random numbers generated
-8 1 9 5 4         
+8 1 9 5 4
 q)\S                       / seed is not updated
--314159         
+-314159
 q)x:system "S 0N"          / current value of seed
 q)r:10?10
 q)system "S ",string x     / re-initialize seed
@@ -498,7 +482,7 @@ q)r~10?10
 1b
 ```
 
-Allows user to save and restore state of the rng. 
+Allows user to save and restore state of the rng.
 (Since V3.6 2017.09.26.)
 
 ```q
@@ -530,7 +514,7 @@ If the parameter is omitted, it shows the number of milliseconds between timer t
 
 `[:n] e` (expression)
 
-: A q expression `e` (other than a single integer) is executed and the execution time shown in milliseconds. Since V3.0 2011.11.22, if `n` is specified, `e` is executed `n` times. 
+: A q expression `e` (other than a single integer) is executed and the execution time shown in milliseconds. Since V3.0 2011.11.22, if `n` is specified, `e` is executed `n` times.
 
 ```q
 q)/Show or set timer ticks
@@ -557,10 +541,10 @@ q)\t:100 log til 100000        / timing for 100 repetitions
 Syntax: `\T [n]`
 
 Show or set the client execution timeout, as `n` (integer) number of seconds a client call will execute before timing out.
-The default is 0: no timeout. 
+The default is 0: no timeout.
 Note this is in seconds, not milliseconds like `\t`.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`-T` command-line option](cmdline.md#-t-timeout)
 
 
@@ -590,7 +574,7 @@ Syntax: `\u`
 
 When q is invoked with the `-u` parameter specifying a user password file, then `\u` will reload the password file. This allows updates to the password file while the server is running.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`-u` command-line option](cmdline.md#-u-usr-pwd-local)
 
 
@@ -612,7 +596,7 @@ q){x where x like"????"}system"v .h"
 
 !!! tip "Expunging variables"
 
-    To expunge `a` from the workspace root, ``delete a from `.``  
+    To expunge `a` from the workspace root, ``delete a from `.``
     <i class="far fa-hand-point-right"></i> _Q for Mortals_: [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
 
@@ -627,7 +611,7 @@ index | meaning
 0     | number of bytes allocated
 1     | bytes available in heap
 2     | maximum heap size so far
-3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline.md#-w-memory)
+3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline.md#-w-workspace)
 4     | mapped bytes
 5     | physical memory
 
@@ -635,9 +619,9 @@ index | meaning
 q)\w
 168144 67108864 67108864 0 0 8589934592
 ```
-  
+
 `\w 0` or `\w 1` returns a pair.
-  
+
 index | meaning
 :----:|--------
 0     | number of internalized symbols
@@ -651,10 +635,10 @@ q)\w 0
 The utility [`.Q.w`](../ref/dotq.md#qw-memory-stats) formats all this information.
 
 
-**Run-time increase** 
-Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, if it was initialized via the 
-[`-w` command-line option](cmdline.md#-w-memory). 
-E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it. 
+**Run-time increase**
+Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, if it was initialized via the
+[`-w` command-line option](cmdline.md#-w-workspace).
+E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it.
 
 Specifying too large a number will fall back to the same behavior as `\w 0` or `\w 1`.
 
@@ -678,8 +662,21 @@ q)\w 3
 '-w init via cmd line
 ```
 
-<i class="far fa-hand-point-right"></i>
-[`-w` command-line option](cmdline.md#-w-memory)
+**Domain-local**
+Since V3.7t 2019.10.22 returns information for the [current memory domain](../ref/dotm.md) only.
+
+```q
+q)value each ("\\d .m";"\\w";"\\d .";"\\w")
+::
+353968 67108864 67108864 0 0 8589934592
+::
+354032 67108864 67108864 0 0 8589934592
+```
+
+<i class="fas fa-book-open"></i>
+[`-w` command-line option](cmdline.md#-w-workspace)<br>
+<i class="fas fa-book"></i>
+[`.m` namespace](../ref/dotm.md)
 
 
 ## `\W` (week offset)
@@ -688,7 +685,7 @@ Syntax: `\W [n]`
 
 Show or set the start-of-week offset `n`, where 0 is Saturday. The default is 2, i.e Monday.
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`-W` command-line option](cmdline.md#-w-start-week)
 
 
@@ -726,14 +723,14 @@ q)"D"$"06/01/2010"
 2010.01.06
 ```
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book-open"></i>
 [`-z` command-line option](cmdline.md#-z-date-format)
 
 
 ## `\1` & `\2` (redirect)
 
-Syntax: `\1 filename`  
-Syntax: `\2 filename` 
+Syntax: `\1 filename`
+Syntax: `\2 filename`
 
 `\1` and `\2` allow redirecting stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary.
 
@@ -759,7 +756,7 @@ til 10
 q)q)'type
 ```
 
-On macOS and Linux `\1 /dev/stdin` returns output to the default. 
+On macOS and Linux `\1 /dev/stdin` returns output to the default.
 
 
 ## `\_` (hide q code)
@@ -768,14 +765,14 @@ Syntax: `\_ [scriptname]`
 
 This command has two different uses depending on whether a parameter is given.
 
-If no parameter, then `\_` checks if client write access is blocked. 
+If no parameter, then `\_` checks if client write access is blocked.
 
 ```q
 q)\_
 0b
 ```
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book-open"></i>
 [`-b` command-line option](cmdline.md#-b-blocked)
 
 If a parameter is given, it should be a scriptname and `\_ f.q` makes a runtime script `f.q_`. The q code cannot be viewed or serialized.
@@ -805,6 +802,27 @@ q)read0`:t1.q_          / file contents are scrambled
 
 ## `\` (terminate)
 
+At the debugger’s `q))` prompt clears one level from the execution stack and (eventually) returns to the interactive session.
+
+```q
+q)f:{g[]}
+q)g:{'`xyz}
+q)f[]
+{g[]}
+'xyz
+@
+{'`xyz}
+::
+q))\
+q)
+```
+
+<i class="fas fa-book-open"></i>
+[Debugging](debug.md)
+
+
+!!! warning "Without a suspension, `\` toggles in an out of the k interpreter."
+
 If there is a suspension, this exits one level of the suspension. Otherwise, it toggles between q and k mode. (To switch languages from inside a suspension, type "`\`".)
 
 ```q
@@ -816,34 +834,38 @@ q){1+x}"hello"
 "hello"
 q))\                         / clear suspension (only one level)
 q)\                          / toggle to k mode
-  !5
-0 1 2 3 4
-  \                          / toggle to q mode
-q)
 ```
 
 
-## `\` (toggle q/k) 
+## `\` (toggle q/k)
 
 In the interactive session `\` toggles between the q and k interpreters.
 
 ```q
 q)\
   \
+  !5                  / this is k
+0 1 2 3 4
+  \
 q)
 ```
+
+!!! warning "The k programming language is exposed infrastructure."
+
+<i class="fas fa-book-open"></i>
+[Exposed infrastructure](exposed-infrastructure.md)
 
 
 ## `\\` (quit)
 
 Syntax: `\\`
 
--   In the interactive session type `\\` at the prompt to quit the session. 
--   Inside a function, use `value"\\\\"` or `exit 0` for the same result. 
+-   In the interactive session type `\\` at the prompt to quit the session.
+-   Inside a function, use `value"\\\\"` or `exit 0` for the same result.
 
-<i class="far fa-hand-point-right"></i> 
-[`exit`](../ref/exit.md), 
-[`value`](../ref/value.md), 
+<i class="far fa-hand-point-right"></i>
+[`exit`](../ref/exit.md),
+[`value`](../ref/value.md),
 [`.z.exit`](../ref/dotz.md#zexit-action-on-exit)
 
 !!! tip "Final comments"

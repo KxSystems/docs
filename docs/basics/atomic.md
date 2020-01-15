@@ -33,7 +33,7 @@ q)neg (5 2; 3; -8 0 2)
 Using these constructs, `neg` can be defined as follows:
 
 ```q
-neg:{$[0>type xx; 0-x; neg'[x]}
+neg:{$[0>type x; 0-x; neg'[x]]}
 ```
 
 That is, if `x` is an atom then `neg x` is `0-x`, and otherwise `neg` is applied independently to every item of the list `x`. One can see from this definition that `neg` and `neg'` are identical. In general, this is the definition of atomic: a function `f` of any number of arguments is atomic if `f` is identical to `f'`.

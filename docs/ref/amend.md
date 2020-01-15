@@ -21,7 +21,7 @@ syntax           | rank | semantics
 
 Where 
 
--   `d` is a list or a handle to a list
+-   `d` is a list or a dictionary or a handle to one
 -   `i` is a list of items in the domain of `d`
 -   `v` is a value of rank $n$, and `my` an atom, or list conformable to `i`, of rank $n-1$ with items in the right domain/s of `m`
 -   `u` is a unary value

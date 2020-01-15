@@ -16,17 +16,17 @@ _Save global data to file_
 
 Syntax: `save x`, `save[x]`
 
-Where `x` is a filename as a symbol, saves the global table to file and returns the filename. 
+Where `x` is a file symbol, saves the global table to file and returns the filename. 
 The file shortname (ignoring path and extension) must match the name of a global table. 
 The format used depends on the file extension:
 
-extension | file format
-:--------:|---------------------------------
-(none)    | binary
-csv       | comma-separated values
-txt       | plain text
-xls       | Excel spreadsheet
-xml       | Extensible Markup Language (XML)
+```txt
+(none)   binary
+ csv     comma-separated values
+ txt     plain text
+ xls     Excel spreadsheet
+ xml     Extensible Markup Language (XML)
+```
 
 ```q
 q)t:([]x:2 3 5;y:`ibm`amd`intel;z:"npn")
@@ -113,10 +113,12 @@ q)`:sp/ set sp        / equivalent to rsave `sp
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
-[`set`](get.md#set)  
-.Q: [`.Q.dpft`](dotq.md#qchk-fill-hdb) (save table), 
-[`.Q.Xf`](dotq.md#qxf-create-file) (create file)  
-Basics: [File system](../basics/files.md)
+<i class="fas fa-book"></i> 
+[`set`](get.md#set), 
+[`.Q.dpft`](dotq.md#qchk-fill-hdb) (save table), 
+[`.Q.Xf`](dotq.md#qxf-create-file) (create file)
+<br>
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md)
 
 

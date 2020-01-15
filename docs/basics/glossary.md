@@ -1,6 +1,6 @@
 ---
-title: Glossary for the q and kdb+ documentation site – Basics – kdb+ and q documentation
-description: Glossary of terms used in documenting kdb+ and the q programming language.
+title: Glossary of terms | Basics | kdb+ and q documentation
+description: Glossary of terms used in documenting kdb+ and the q programming language
 author: Stephen Taylor
 ---
 # Glossary
@@ -73,8 +73,9 @@ An atomic function is a uniform function such that for `r:f[x]`  `r[i]~f x[i]` i
 
 ## Attribute
 
-Attributes are metadata that apply to lists of special form. 
-They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
+Attributes are metadata associated primarily with tables and dictionaries to improve performance.
+
+The attributes are: sorted, unique, grouped, and partitioned.
 
 <i class="far fa-hand-point-right"></i> 
 Reference: [Set Attribute](../ref/set-attribute.md), 
@@ -139,6 +140,16 @@ Lists, dictionaries and tables conform if they are either atoms or have the same
 
 <i class="far fa-hand-point-right"></i> 
 [Conformability](conformable.md)
+
+
+## Connection handle
+
+A handle to the communication path to a process or object in the file system.
+
+<i class="fas fa-book-open"></i>
+[Connection handles](handles.md),
+[File system](files.md),
+[Interprocess communication](ipc.md)
 
 
 ## Console
@@ -271,7 +282,29 @@ A pair of square brackets enclosing zero or more expressions separated by semico
 
 ## Feedhandler
 
-A process that receives and processes, typically high volumes of, messages from a source such as a financial excchange. 
+A process that receives and processes, typically high volumes of, messages from a source such as a financial exchange. 
+
+
+## File descriptor
+
+Either: 
+
+-   a _file symbol_
+-   a 2-list `(filesymbol;offset)`
+-   a 3-list `(filesymbol;offset;length)` where `offset` and `length` are non-zero integers
+
+
+## Filename
+
+An absolute or relative filepath as a string, e.g. `":path/to/data"`.
+
+
+## File symbol
+
+A symbol atom denoting a file or folder in the file system, e.g. `` `:path/to/data``
+
+<i class="fas fa-book-open"></i>
+[File system](files.md)
 
 
 ## Finite-state machine
@@ -530,6 +563,14 @@ Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `
 Defined in the q language.
 
 
+## Process symbol
+
+A symbol defining the communication path to a process.
+
+<i class="fas fa-book"></i>
+[`hopen`](../ref/hopen.md#processes)
+
+
 ## Project, projection
 
 A function passed fewer arguments than its rank projects those arguments and returns a projection: a function of the unspecified argument/s. 
@@ -645,6 +686,11 @@ Expressions beginning with `\` are [system commands](syscmds.md). (Or [multiline
 q)/ load the script in file my_app.q
 q)\l my_app.q
 ```
+
+
+## System handle
+
+A connection handle to console (0), stdin (1), or stderr (2)
 
 
 ## Table

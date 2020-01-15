@@ -3,47 +3,47 @@ title: Internal functions – Basics – kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
 keywords: bang, functions, internal, kdb+, q
 ---
-# Internal functions
+# <i class="fas fa-exclamation-triangle"></i> Internal functions
 
 
 
 
-The operator `!` with a negative integer as left-argument calls an internal function.
+The operator `!` with a negative integer as left argument calls an internal function.
 
-<i class="far fa-hand-point-right"></i> [Exposed infrastructure](exposed-infrastructure.md)
-
-
+<pre markdown="1" class="language-txt">
+[-4!x](#-4x-tokens)        tokens                  Replaced:
+[-8!x](#-8x-to-bytes)        to bytes                 -1!   [hsym](../ref/hsym.md)
+[-9!x](#-9x-from-bytes)        from bytes               -2!   [attr](../ref/attr.md)
+[-10!x](#-10x-type-enum)       type enum                -3!   [.Q.s1](../ref/dotq.md#qs1-string-representation)
+[-11!](#-11-streaming-execute)        streaming execute        -5!   [parse](../ref/parse.md)
+[-14!x](#-14x-quote-escape)       quote escape             -6!   [eval](../ref/eval.md)
+[-16!x](#-16x-ref-count)       ref count                -7!   [hcount](../ref/hcount.md)
+[-17!x](#-17x-flip-endian-ess)       flip endian-ess          -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
+[-18!x](#-18x-compress-byte)       compress byte            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
+[-19!](#-19-compress-file)        compress file            -15!  [md5](../ref/md5.md)
+[-21!x](#-21x-compression-stats)       compression stats        -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
+[-22!x](#-22x-uncompressed-length)       uncompressed length      -24!  [reval](../ref/eval.md#reval)
+[-23!x](#-23x-memory-map)       memory map               -29!  [.j.k](../ref/dotj.md#jk-deserialize)
+[-25!x](#-25x-async-broadcast)       async broadcast          -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[-26!x](#-26x-ssl)       SSL
+[-27!(x;y)](#-27xy-format)   format
+[-30!x](#-30x-deferred-response)       deferred response
+[-33!x](#-33x-sha-1-hash)       SHA-1 hash
+[-120!x](#-120x-memory-domain)      memory domain
+</pre>
 
 !!! warning 
 
-    `-n!` bindings are subject to change. If a cover function is provided in the `.q` or `.Q` namespaces – use that instead!
+    Internal functions are for use by language implementors.
+    They are [exposed infrastructure](exposed-infrastructure.md)
+    and may be redefined in subsequent releases.
 
-[![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)  
+    They also allow new language features to be tried on a provisional basis.
+
+    Where they are replaced by keywords or utilities, **use the replacements**.
+
+[![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)
 _xkcd.com_
-
-
-## `-1!x` (`hsym`)
-
-<i class="far fa-hand-point-right"></i> 
-[hsym](../ref/handles.md#hsym)
-
-
-## `-2!x` (`attr`)
-
-<i class="far fa-hand-point-right"></i> 
-[attr](../basics/metadata.md#attr)
-
-
-## `-3!x` string
-
-Returns the string representation of `x`. 
-Covered by `.Q.s1`. 
-Use `show`.
-
-<i class="far fa-hand-point-right"></i> 
-[`show`](../ref/show.md),
-[.Q.s](../ref/dotq.md#qs-plain-text)
-
 
 
 ## `-4!x` (tokens)
@@ -79,24 +79,6 @@ q)
 ```
 
 
-## `-5!x` (`parse`)
-
-<i class="far fa-hand-point-right"></i> 
-[`parse`](../ref/parse.md)
-
-
-## `-6!x` (`eval`)
-
-<i class="far fa-hand-point-right"></i> 
-[`eval`](../ref/eval.md)
-
-
-## `-7!x` (`hcount`)
-
-<i class="far fa-hand-point-right"></i> 
-[`hcount`](../ref/handles.md#hcount)
-
-
 ## `-8!x` (to bytes)
 
 Returns the IPC byte representation of `x`.
@@ -105,7 +87,6 @@ Returns the IPC byte representation of `x`.
 q)-8!1 2 3
 0x010000001a000000060003000000010000000200000003000000
 ```
-
 
 
 ## `-9!x` (from bytes)
@@ -119,7 +100,7 @@ q)-9!-8!1 2 3
 
 ## `-10!x` (type enum)
 
-Resolves a [type](datatypes.md) number to an [enum](enumerations.md) vector and check if it is available.
+Resolve a [type](datatypes.md) number to an [enum](enumerations.md) vector and check if it is available.
 
 ```q
 q)-10!20h
@@ -133,127 +114,36 @@ q)-10!20h
 ```
 
 
-## `-11!x` (streaming execute)
+## `-11!` (streaming execute)
 
-Streaming-execute over file `x`, used for example in kdb+tick to replay logfiles in a memory-efficient manner.
+Syntax: `-11!x`<br>
+Syntax: `-11!(-1;x)`<br>
+Syntax: `-11!(-2;x)`<br>
+Syntax: `-11!(n;x)`
 
-A logfile is just a list of lists, and each list is read in turn and evaluated, either by [`value`](metadata.md#value) or by [`.z.ps`](../ref/dotz.md#zps-set) if it is defined.
+Where `n` is a non-negative integer and `x` is a logfile handle
 
-Here, for demonstration purposes, we manually create a logfile, and play it back through `-11!`. This is functionally equivalent to doing ``value each get `:logfile`` but uses far less memory.
+`-11!x` and `-11!(-1;x)`
 
-```q
-q)`:logfile.2013.12.03 set () / create a new,empty log file
-`:logfile.2013.12.03
-q)h:hopen `:logfile.2013.12.03 / open it
-q)h enlist(`f;`a;10) / append a record
-3i
-q)h enlist(`f;`b;20) / append a record
-3i
-q)hclose h / close the file
-q)f:{0N!(x;y)} / define the function that is referenced in those records
-q)-11!`:logfile.2013.12.03 / playback the logfile
-(`a;10)
-(`b;20)
-2
-q)/ DO NOT DO THIS ON LARGE LOGFILES!!!! This is the whole purpose of -11!x.
-q)value each get `:logfile.2013.12.03
-(`a;10)
-(`b;20)
-`a 10
-`b 20
-```
+: replay `x` and return the number of chunks executed; if end of file is corrupted, signal `badtail`.
 
-If successful, the number of chunks executed is returned. If the end of the file is corrupt a `'badtail` error is signalled. In the event that the log file references an undefined function, the function name is signalled as an error. This can be confusing if the missing function name is `upd`, as it does not reflect the same situation as the license expiry 'upd error. e.g.
+`-11!(-2;x)`
 
-```q
-/ Continuing the above example
-q)delete f from `.
-`.
-q)-11!`:logfile.2013.12.03 / function f no longer defined, so it signals an error
-'f
-```
+: returns the number of consecutive valid chunks in `x` and the length of the valid part of the file
 
-<i class="fab fa-github"></i> [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) for examples of usage
+`-11x(n;x)`
 
+: replays `n` chunks from top of logfile and returns the number of chunks executed
 
-## `−11!(-1;x)` (streaming execute)
+In replaying, if the logfile references an undefined function, the function name is signalled as an error.
 
-Same as `−11!x`.
-
-
-## `−11!(n;x)` (streaming execute)
-
-Streaming-execute the first `n` chunks of logfile `x`, return the number of chunks if successful.
-
-It is possible to use the above to playback `n` records from record `M` onwards. 
-
-Firstly create a sample log file, which contains 1000 records as 
-`((`f;0);(`f;1);(`f;2);..;(`f;999))`.
-
-```q
-q)`:log set();h:hopen`:log;i:0;do[1000;h enlist(`f;i);i+:1];hclose h;
-```
-
-Then define function `f` to just print its arg, skip the first `M` records. If [`.z.ps`](../ref/dotz.md#zps-set) is defined, `-11!` calls it for each record.
-
-```q
-q)m:0;M:750;f:0N!;.z.ps:{m+:1;if[m>M;value x;];};-11!(M+5-1;`:log)
-750
-751
-752
-753
-754
-```
-
-
-## `-11!(-2;x)` (logfile chunks)
-
-Given a valid logfile, returns the number of chunks.
-
-Given an invalid logfile, returns the number of valid chunks and length of the valid part.
-
-```q
-q)logfile:`:good.log / a non-corrupted logfile
-q)-11!(-2;logfile)
-26
-q)logfile:`:broken.log / a manually corrupted logfile
-q)upd:{[x;y]} / define a dummy upd file as components are of the form (`upd;data)
-q)-11!logfile
-'badtail
-q)-11!(-1;logfile)
-'badtail
-q)hcount logfile
-39623j
-q)-11!(-2;logfile)
-26
-35634j
-q)/ 26 valid chunks until position 35634 (out of 39623)
-q)-11!(26;logfile)
-26
-```
-
-
-## `-12!x` (`.Q.host`)
-
-<i class="far fa-hand-point-right"></i> 
-[.Q.host](../ref/dotq.md#qhost-hostname)
-
-
-## `-13!x` (`.Q.addr`)
-
-<i class="far fa-hand-point-right"></i> 
-[.Q.addr](../ref/dotq.md#qaddr-ip-address)
+<i class="fas fa-graduation-cap"></i>
+[Replaying logfiles](../kb/replay-log.md)
 
 
 ## `-14!x` (quote escape)
 
 Handles `"` escaping in strings: used to prepare data for CSV export.
-
-
-## `-15!x` (`md5`)
-
-<i class="far fa-hand-point-right"></i> 
-[md5](../ref/md5.md)
 
 
 ## `-16!x` (ref count)
@@ -274,34 +164,34 @@ q)-16!a
 Returns flip endian-ness of kdb+ datafile `x`, see notes in [Changes in kdb+ V2.6](../releases/ChangesIn2.6.md)
 
 
-
 ## `-18!x` (compress byte)
 
 Returns compressed IPC byte representation of `x`, see notes about network compression in [Changes in V2.6](../releases/ChangesIn2.6.md)
 
 
+## `-19!` (compress file)
 
-## `-19!x` (compress file)
+Syntax: `-19!(src;tgt;lbs;alg;lvl)`
 
-Syntax: `-19! x`
+Where
 
-Where `x` is a list of 5 items: 
+-   `src` is a handle to a source file
+-   `tgt` is a handle to the target file
+-   `lbs` is logical block size: a power of 2 between 12 and 20 (pageSize or allocation granularity to 1MB – pageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB). When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `"disk compression - bad logicalBlockSize"`. Note that this argument affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
+-   `alg` is compression algorithm
+-   `lvl` is compression level
 
--   _source file_: file symbol
--   _target file_: file symbol
--   _logical block size_: a power of 2 between 12 and 20 (pageSize or allocation granularity to 1MB – pageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB). When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `"disk compression - bad logicalBlockSize"`. Note that this argument affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
--   _compression algorithm_: one of:
-    + 0: none
-    + 1: q IPC
-    + 2: `gzip`
-    + 3: [snappy](http://google.github.io/snappy/) (since V3.4)
-    + 4: `lz4hc` (since V3.6)
--   _compression level_: an integer 
-    +   for `gzip`: between 0 and 9 
-    +   for `lz4hc`: between 1 and 12 (int `x` taken as `12&x`) 
-    +   otherwise: 0
+returns the target file as a file symbol.
 
-returns the target file as a file symbol. 
+Compression algorithms and levels:
+
+alg | algorithm | level
+:--:|-----------|:-------:
+0   | none      | 0
+1   | q IPC     | 0
+2   | gzip      | 0-9
+3   | [snappy](http://google.github.io/snappy/) (since V3.4) | 0
+4   | `lz4hc` (since V3.6) | 1-12
 
 ```q
 q)`:test set asc 10000000?100; / create a test data file
@@ -310,7 +200,7 @@ q) / using a block size of 128kB (2 xexp 17), gzip level 6
 q)-19!(`:test;`:ztest;17;2;6)
 99.87667
 q) / check the compressed data is the same as the uncompressed data
-q)get[`:test]~get`:ztest 
+q)get[`:test]~get`:ztest
 1b
 ```
 
@@ -318,20 +208,14 @@ q)get[`:test]~get`:ztest
 
     Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+.
 
-    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process. 
+    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process.
 
     Kdb+ requires at least `lz4-r129`.
-    `lz4-1.8.3` works. 
+    `lz4-1.8.3` works.
     We recommend using the latest `lz4` release available.
 
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [File compression](../kb/file-compression.md)
-
-
-## `-20!0` (`.Q.gc`)
-
-<i class="far fa-hand-point-right"></i> 
-[`.Q.gc`](../ref/dotq.md#qgc-garbage-collect)
+<i class="fas fa-graduation-cap"></i>
+[File compression](../kb/file-compression.md)
 
 
 ## `-21!x` (compression stats)
@@ -349,8 +233,8 @@ logicalBlockSize  | 17i
 zipLevel          | 6i
 ```
 
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [File compression](../kb/file-compression.md)
+<i class="fas fa-graduation-cap"></i>
+[File compression](../kb/file-compression.md)
 
 
 ## `-22!x` (uncompressed length)
@@ -372,24 +256,8 @@ q)(-22!v)=count -8!v
 
 Since V3.1t 2013.03.04
 
-Attempts to force the object `x` to be resident in memory by hinting to the OS and/or faulting the underlying memory pages. 
+Attempts to force the object `x` to be resident in memory by hinting to the OS and/or faulting the underlying memory pages.
 Useful for triggering sequential access to the storage backing `x`.
-
-
-## `-24!x` (read-only eval)
-
-Since V3.3t 2014.10.07.
-
-Read-only evaluation, underpinning the keyword "reval", similar to eval (-6!), which behaves as if the command-line option `-b` were active for the duration of the `-24!` call.
-
-An example usage is inside the message handler `.z.pg`, useful for access control, here blocking sync messages from updating
-
-```q
-q).z.pg:{reval(value;enlist x)} / define on local process listening on port 500
-q)h:hopen 5000 / from another process on localhost
-q)h"a:4"
-'noupdate: `. `a
-```
 
 
 ## `-25!x` (async broadcast)
@@ -440,14 +308,15 @@ Possible error scenarios:
 ## `-26!x` (SSL)
 
 View TLS settings on a handle or current process `-26!handle` or `-26!()`.
-Since V3.4 2016.05.12.  
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [SSL](../kb/ssl.md)
+Since V3.4 2016.05.12.
+
+<i class="fas fa-graduation-cap"></i>
+[SSL](../kb/ssl.md)
 
 
 ## `-27!(x;y)` (format)
 
-Where 
+Where
 
 -   `x` is an int atom
 -   `y` is numeric
@@ -476,15 +345,9 @@ q).Q.f[2;.045]
 You might want to apply a rounding before applying `-27!`.
 
 
-## `-29!x` (parse JSON)
-
-Underpins the JSON parser, [`.j.k`](../ref/dotj.md).
-Since V3.3t 2015.02.17.
-
-
 ## `-30!x` (deferred response)
 
-Syntax: `-30!(::)`
+Syntax: `-30!(::)`<br>
 Syntax: `-30!(handle;isError;msg)`
 
 Where `handle` is an int, `isError` is a boolean, and `msg` is a string
@@ -492,6 +355,37 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 - `-30!(::)` allows the currently-executing callback to complete without responding
 - `-30!(handle;isError;msg)` responds to the deferred sync call
 
-Since V3.6 2018.05.18. 
+Since V3.6 2018.05.18.
 
-<i class="far fa-hand-point-right"></i> Knowledge Base: [Deferred response](../kb/deferred-response.md)
+<i class="fas fa-graduation-cap"></i> 
+[Deferred response](../kb/deferred-response.md)
+
+
+## `-33!x` (SHA-1 hash)
+
+Syntax: `-33!x`
+
+where `x` is a string, returns its SHA-1 hash as a list of strings of hex codes.
+
+```q
+q)raze string -33!"mypassword"
+"91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
+```
+
+<i class="fas fa-book-open"></i>
+Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
+
+
+## `-120!x` (memory domain)
+
+Syntax `-120!x`
+
+returns `x`’s memory domain (currently 0 or 1), e.g.
+
+```q
+q)-120!'(1 2 3;.m.x:1 2 3)
+0 1
+```
+
+<i class="fas fa-book"></i>
+[`.m` namespace](../ref/dotm.md)

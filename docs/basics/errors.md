@@ -32,6 +32,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
 <tr><td>domain</td> <td class="nowrap">`til -1`</td> <td>Out of domain</td> </tr>
 <tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
+<tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V3.7 2019.10.22)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
 <tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
@@ -47,7 +48,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>limit</td>
 <td class="nowrap">`0W#2`</td>
 <td>
-    Tried to generate a list longer than 2,000,000,000, 
+    Tried to generate a list longer than 2<sup>40</sup>-1 (2e+09 until V3.0), 
     or serialized object is &gt; 1TB (2GB until V3.4), 
     or `'type` if trying to serialize a nested object which has &gt; 2 billion elements,
     or <i class="far fa-hand-point-right"></i> [Parse errors](#parse-errors)
@@ -70,7 +71,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td class="nowrap">`{a::x}peach 0 1`</td>
 <td>
 Updates blocked by the [`-b` cmd line arg](cmdline.md#-b-blocked), 
-or reval code or a thread other than the main thread has attempted to update a global variable 
+or [`reval`](../ref/eval.md#reval) code or a thread other than the main thread has attempted to update a global variable 
 when in [`peach`](peach.md)+slave threads or multithreaded input queue. 
 Update not allowed when using [negative port number](syscmds.md#p-port).
 </td>
@@ -117,7 +118,7 @@ Update not allowed when using [negative port number](syscmds.md#p-port).
 <tr>
 <td>wsfull</td>
 <td class="nowrap">`999999999#0j`</td>
-<td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, ran out of swap (or addressability on 32-bit), or hit [`-w` limit](cmdline.md#-w-memory)
+<td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, ran out of swap (or addressability on 32-bit), or hit [`-w` limit](cmdline.md#-w-workspace)
 </td>
 </tr> 
 <tr> <td>wsm</td> <td class="nowrap">`010b wsum 010b`</td> <td>Alias for nyi for `wsum` prior to V3.2</td> </tr>
@@ -183,6 +184,7 @@ On launch
 <tr><th>error</th><th>explanation</th></tr>
 </thead>
 <tbody>
+<tr> <td>{timestamp} couldn't connect to license daemon</td> <td>Could not connect to Kx license server ([kdb+ On Demand](../learn/licensing/#licensing-server-for-kdb-on-demand))</td> </tr>
 <tr> <td>cores</td> <td>The license is for [fewer cores than available](../kb/cpu-affinity.md)</td> </tr>
 <tr> <td>cpu</td> <td>The license is for fewer CPUs than available</td> </tr>
 <tr> <td>exp</td> <td>License expiry date is prior to system date</td> </tr>

@@ -33,7 +33,7 @@ to
 
 ## Numbers 
 
-Use words for numbers of things, e.g. “there are three ways to achieve this”, up to a hundred. Use numbers to refer to numbers themselves, e.g. “and adds 2 to the total”.
+Use words for numbers of things, e.g. “there are three ways to achieve this”, up to twenty. Use numbers to refer to numbers themselves, e.g. “and adds 2 to the total”.
 
 
 ## Place names
@@ -65,4 +65,43 @@ _The function will return 0 **only if** an error occurs._
 : _If_ an error occurs the function will return a zero. Otherwise it will return something else. 
 
     Here _only_ qualifies _if_. 
+
+
+## Adjectival phrases
+
+Hyphenate adjectival phrases. For example, the hyphen in _high-level category_ indicates that it is the level that is high, not the category. Do this even when there is little or no risk of ambiguity: consistency lightens the reader’s cognitive load. 
+
+
+## Linking
+
+Take opportunities to link to the Reference, the Knowledge Base, _Q for Mortals_,etc. 
+Links can start from the site root, e.g. `/q/ref/cond/`.
+
+
+## Function reference
+
+In documenting library functions follow the format of the Reference, e.g
+
+
+### `.foo.bar` (example)
+
+Syntax: `.foo.bar[abc;def;ghi;klm]`
+
+Where
+
+-   `abc` is a boolean vector
+-   `def` is blah blah blah
+-   `ghi` is blah blah blah
+-   `klm` is blah blah blah
+
+returns the gorabeezer of hoojamaflip as a table with columns
+
+column | semantics
+-------|-----------
+this   | the first thing
+that   | something like `this`
+other  | and so on
+
+Narrative, exceptions, errors,tips and and so on.
+
 

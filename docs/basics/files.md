@@ -6,117 +6,76 @@ keywords: file, kdb+, q
 # File system
 
 
+<pre markdown="1" class="language-txt">
+0 console     [read0](../ref/read0.md)  [0: File Text](../ref/file-text.md)      read/write chars¹
+1 stdout      [read1](../ref/read1.md)  [1: File Binary](../ref/file-binary.md)    read/write bytes¹
+2 stderr             [2: Dynamic Load](../ref/dynamic-load.md)   load shared object
+                     [?  Enum Extend](../ref/enum-extend.md#filepath)
+
+[get set](../ref/get.md)       read/write or memory-map a data file¹
+
+[hopen hclose](../ref/hopen.md)  open/close a file¹
+
+[hcount](../ref/hcount.md)        file size
+[hdel](../ref/hdel.md)          delete a file or folder
+[hsym](../ref/hsym.md)          symbol/s to file symbol/s¹
+
+[save](../ref/save.md#save)   [load](../ref/load.md)   a table
+[rsave](../ref/save.md#rsave)  [rload](../ref/load.md#rload)  a splayed table
+[dsave](../ref/dsave.md)         tables
+</pre>
+
+¹ Has application beyond the file system.
+
+Kdb+ communicates with the system, file system, and with other processes through [connection handles](handles.md) and the operators
+[File Text](../ref/file-text.md), [File Binary](../ref/file-binary.md), [Dynamic Load](../ref/dynamic-load.md), and [Enum Extend](../ref/enum-extend.md).
+Keywords cover important use cases.
 
 
-## File handles
+## Setting and getting
 
-A file handle is either
+Keywords [`set` and `get`](../ref/get.md) write and read the values of files in the filesystem. (Also variables in memory.)
 
--   a symbol representing the filepath, e.g. `` `:/path/to/file``
--   a system file handle:
-    +   `0` – console
-    +   `1` – stdout
-    +   `2` – stderr
--   an integer file handle returned by `hopen`
+```q
+q)`:data/foo`:data/bar set'(42;"thin white duke")
+`:data/foo`:data/bar
+q)get `:data/foo
+42
+q)get `:data/bar
+"thin white duke"
+```
 
+
+## Writing and reading
+
+&nbsp; | text | bytes
+-------|------|------
+write | [`hopen` `hclose`](../ref/hopen.md)<br>write with handle | [`hopen` `hclose`](../ref/hopen.md)<br>write with handle
+ | [`0:` Save Text](../ref/file-text.md#save-text) | [`1:` Save Binary](../ref/file-binary.md#save-binary)
+read | [`read0`](../ref/read0.md) | [`read1`](../ref/read1.md)
+ | [`0:` Load CSV](../ref/file-text.md#load-csv)<br>[`0:` Load Fixed](../ref/file-text.md#load-fixed) | [`1:` Read Binary](../ref/file-binary.md#read-binary)
+
+<i class="fas fa-book-open"></i>
+[Writing with handles](handles.md)
+
+!!! tip "File Text operator"
+
+    Operator form [Prepare Text](../ref/file-text.md#prepare-text) represents a table as strings; [Key-Value Pairs](../ref/file-text.md#key-value-pairs) interprets key-value pairs.
+
+
+
+## Tables
+
+Kdb+ uses files and directories to represent database tables.
+[Partitioning a table](../kb/partition.md) divides its rows across multiple directories.
+[Splaying a table](../kb/splayed-tables.md) stores each column as a separate file.
+
+
+## Relative filepaths
 
 Relative filepaths are sought in the following locations, in order.
 
 1.  current directory
 2.  `QHOME`
 3.  `QLIC`
-
-
-## Writing text to a file handle
-
-Syntax: `h x`, `h[x]`
-
-Where 
-
--   `h` is a file handle or its negation
--   `x` is a string or [parse tree](parsetrees.md)
-
-Writes a string to the file.
-
-```q
-q)0 "1 \"hello\""
-hello1
-```
-
-Negate the handle to append a newline to the string.
-
-```q
-q)1 "String vector here\n"
-String vector here
-1
-q)-1 "String vector here"    / equivalent
-String vector here
--1
-```
-
-Writing a [parse tree](parsetrees.md) evaluates it in the main thread.
-
-```q
-q)0 (+;2;2)
-4
-```
-
-!!! tip "Reading from the console with [`read0`](../ref/read0.md#file-handle) permits interactive input."
-
-Not just system file handles.
-
-```q
-q)a:hopen`:file.txt
-q)a "first "
-q)a "word\n"
-q)hclose a
-```
-
-If `h` is negative and points to an existing file, then a newline is included.
-
-```q
-q)a:hopen`:file.txt
-q)neg[a] "first line"
-q)neg[a] "second line"
-q)hclose a
-```
-
-
-### Prepare Text
-
-The [Prepare Text](../ref/file-text.md#prepare-text) operator converts a table to strings ready to write to file. 
-
-Keyword [`csv`](../ref/csv.md) specifies the comma delimiter to be used when [writing](../ref/file-text.md#save-text) or [loading](../ref/file-text.md#load-csv) a CSV.
-
-
-## File functions
-
-Three file operators and 14 keywords read from and write to file descriptors.
-
-A file descriptor is either 
-
-- a file handle
-- a list `(file handle; offset; length)` to specify that the file is to be read from `offset` (int atom) for `length` (int atom) characters. 
-
-function                             | semantics
--------------------------------------|-----------------------
-[`0:`](../ref/file-text.md)          | [File Text](../ref/file-text.md):<br>- Prepare Text<br>- Save Text<br>- Load CSV<br>- Load Fixed<br>- Key-value Pairs
-[`1:`](../ref/file-binary.md)        | [File Binary](../ref/file-binary.md):<br>- Read Binary<br>- Save Binary
-[`2:`](../ref/dynamic-load.md)       | [Dynamic Load](../ref/dynamic-load.md) of C shared objects
-[`dsave`](../ref/dsave.md)           | Save global tables to disk
-[Enum Extend](../ref/enum-extend.md#filepath) | Extend and load sym file
-[`get`](../ref/get.md)               | Read or memory-map a kdb+ data file
-[`hclose`](../ref/handles.md#hclose) | Close a file or process handle
-[`hcount`](../ref/handles.md#hcount) | File size
-[`hdel`](../ref/handles.md#hdel)     | Delete a file or folder
-[`hopen`](../ref/handles.md#hopen)   | Open a file or process handle
-[`hsym`](../ref/handles.md#hsym)     | Convert a symbol to a file handle
-[`load`](../ref/load.md)             | Load binary data from the filesystem
-[`read0`](../ref/read0.md)           | Read text from a file
-[`read1`](../ref/read1.md)           | read bytes from a file or named pipe
-[`rload`](../ref/load.md#rload)      | Load a splayed table
-[`rsave`](../ref/save.md#rsave)      | Save a splayed table to a directory
-[`save`](../ref/save.md#save)        | Save global data to file
-[`set`](../ref/get.md#set)           | Assign a value to a variable or file
-
 

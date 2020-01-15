@@ -14,7 +14,7 @@ Typically, you can set the CPU affinity for the shell you are in, and then proce
 
 <i class="far fa-hand-point-right"></i> 
 [`.Q.w`](../ref/dotq.md#qw-memory-stats) (memory stats)  
-Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-memory), 
+Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace), 
 [System command `\w`](../basics/syscmds.md#w-workspace)
 
 

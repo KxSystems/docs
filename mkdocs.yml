@@ -6,7 +6,7 @@ extra:
   version: 2.0
 extra_css: 
   - 'stylesheets/extra.css'
-  - 'stylesheets/prism.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
 extra_javascript: 
   # See /syntax/#projection to see if MathJax is working 
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
@@ -57,7 +57,7 @@ site_author: 'Kx Systems'
 site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
 site_name: 'Kdb+ and q documentation'
-site_url: 'https://code.kx.com/v2/'
+site_url: 'https://code.kx.com/q/'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
@@ -76,10 +76,11 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
-  - Reference: https://code.kx.com/v2/ref/
+  - Reference: https://code.kx.com/q/ref/
   - GitHub: github.md
   - Support: support.md
   - Developer tools: devtools.md
+  - Corporate site: https://kx.com
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -150,10 +151,10 @@ nav:
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
+      - Connection handles: basics/handles.md
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
-      - Debugging: basics/debug.md
       - Dictionaries & tables: basics/dictsandtables.md
       # - Elements: basics/elements.md
       - Enumerations: basics/enumerations.md
@@ -167,12 +168,14 @@ nav:
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
       - Mathematics: basics/math.md
+      - Memory backed by files: basics/memory-backed.md
       - Metadata: basics/metadata.md
       - Namespaces: basics/namespaces.md
       - Parallel processing: basics/peach.md
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
       - QSQL: basics/qsql.md
+      - Regular Expressions: basics/regex.md
       - Search: basics/search.md
       - Selection: basics/selection.md
       - Sorting: basics/sort.md
@@ -181,6 +184,7 @@ nav:
       - Variadic syntax: basics/variadic.md
     - Command line: basics/cmdline.md
     - Datatypes: basics/datatypes.md
+    - Debugging: basics/debug.md
     - Errors: basics/errors.md
     - File system: basics/files.md
     - Glossary: basics/glossary.md
@@ -234,7 +238,10 @@ nav:
       - getenv, setenv: ref/getenv.md
       - group: ref/group.md
       - gtime, ltime: ref/gtime.md
-      - hcount, hdel, hopen, hclose, hsym: ref/handles.md
+      - hcount: ref/hcount.md
+      - hdel: ref/hdel.md 
+      - hopen, hclose: ref/hopen.md
+      - hsym: ref/hsym.md
       - ij, ijf: ref/ij.md
       - in: ref/in.md
       - insert: ref/insert.md
@@ -363,6 +370,7 @@ nav:
     - Namespaces:
       - .h: ref/doth.md
       - .j: ref/dotj.md
+      - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
@@ -513,6 +521,7 @@ nav:
     - Programming idioms: kb/programming-idioms.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Regular expressions: kb/regex.md
+    - Replay logfile: kb/replay-log.md
     - Server calling client: kb/server-calling-client.md
     - Splayed schema change: kb/splayed-schema-change.md
     - Splayed tables: kb/splayed-tables.md
@@ -534,11 +543,14 @@ nav:
     - C# GUIs: wp/gui/index.md
     - Card counters: wp/card-counters/index.md
     - Columnar database: wp/columnar-database/index.md
+    - Corporate actions: wp/corporate-actions.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md
+    - Data loaders: wp/data-loaders/index.md
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md
+    - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - Disaster management using social media: wp/disaster-management/index.md
     - Distributed systems: wp/query-interface.md
@@ -551,20 +563,27 @@ nav:
     - Java API: wp/java-api/index.md
     - Kdb+tick profiling: wp/tick-profiling.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
+    - Machine learning: wp/machine-learning/index.md
+    - Market depth: wp/market-depth/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
     - Multi-threading: wp/multi-thread/index.md
     - Neural networks: wp/neural-networks/index.md
+    - Option pricing: wp/option-pricing/index.md
     - Order Book: wp/order-book.md
     - Parse trees, functional SQL: wp/parse-trees.md
     - Permissions: wp/permissions/index.md
+    - Predicting floods: wp/disaster-floods/index.md
     - Query optimization: wp/columnar-database/index.md
     - Query Routing: wp/query-routing/index.md
     - Query scaling: wp/query-scaling.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Time-series simplification: wp/ts-shrink/index.md
+    - Transaction-cost analysis: wp/transaction-cost.md
     - Signal processing and q: wp/signal-processing/index.md
+    - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
+    - Surveillance techniques: wp/surveillance/index.md
     - Working with sym files: wp/symfiles.md
     - WebSockets: wp/websockets/index.md
   - About: 
@@ -577,8 +596,9 @@ nav:
       - Characters: about/sg/characters.md
       - Miscellaneous: about/sg/miscellaneous.md
       - Style: about/sg/style.md
+      - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
-      - Terminology: about/sg/terminology.md
+    - Terminology: about/terminology.md
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md

@@ -13,6 +13,8 @@ After downloading, if necessary, unzip the archive. A new folder `q` will appear
 
 Next perform the _Minimum install and launch_. We then strongly recommend continuing to [Complete install and launch](#complete-install-and-launch).
 
+!!! warning "macOS Catalina (10.15) ended macOS support for 32-bit applications."
+
 
 ## <i class="fas fa-rocket"></i> Minimum install and launch
 
@@ -30,7 +32,7 @@ m32/ 2()core 4096MB sjt mark.local 192.168.0.17 NONEXPIRE
 
 Welcome to kdb+ 32bit edition
 For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/v2/tutorials/install
+Tutorials can be found at http://code.kx.com/q/tutorials/install
 To exit type \\
 To remove this startup msg, edit q.q
 ```
@@ -76,7 +78,19 @@ Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using yo
 
 ### <i class="fas fa-code"></i> Edit your profile
 
-In Terminal (Bash), open your profile `~/.bashrc` with TextEdit (or your favourite text editor),
+!!! info "Environment variables"
+
+    The q interpreter refers to environment variable `QHOME` for the location of certain files. 
+    Absent this variable, it will guess based on the path to the interpreter. 
+    Better to set the variable explicitly. 
+
+    If you run just one version of kdb+, it might suit you to define `QHOME` in your Bash profile and export it for use by non-console processes. 
+
+    Otherwise set `QHOME` with each invocation of the interpreter, as shown below. 
+
+    The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
+
+In Terminal (Bash), open your profile `~/.bashrc` with TextEdit, Sublime Text or your favourite text editor,
 
 ```bash
 $ open -a "Sublime Text" .bashrc
@@ -112,7 +126,7 @@ m32/ 2()core 4096MB sjt mark.local 192.168.0.17 NONEXPIRE
 
 Welcome to kdb+ 32bit edition
 For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/v2/tutorials/install
+Tutorials can be found at http://code.kx.com/q/tutorials/install
 To exit type \\
 To remove this startup msg, edit q.q
 ```
@@ -141,11 +155,12 @@ You’re done. You have completely installed kdb+.
 
 For any version of q, 64-bit and 32-bit interpreter binaries share the same `q.k` file, located in `QHOME` for that version. 
 
-All versions share the same `k4.lic` licence-key file. 
+All versions share the same `k4.lic` license-key file. 
 
 Arrange your files as in this example:
 
 ```txt
+$ tree q
 q
 ├── k4.lic
 ├── phrases.q
@@ -176,18 +191,18 @@ alias  q32='export QHOME=~/q/v3.5; rlwrap -r $QHOME/m32/q'
 In a command shell:
 
 ```bash
-☕ sjt@mint:~$q32
+$ q32
 KDB+ 3.5 2019.05.15 Copyright (C) 1993-2019 Kx Systems
 m32/ 4()core 8192MB sjt mint.local 192.168.0.10 EXPIRE 2020.04.01 stephen@kx.com #55032
 
 q)\\
-☕ sjt@mint:~$
+$
 ```
 
-The 32-bit interpreter finds and reports the licence-key file even though it will run without it. 
+The 32-bit interpreter finds and reports the license-key file even though it will run without it. 
 
 ```bash
-☕ sjt@mint:~$ q
+$ q
 KDB+ 3.6 2019.03.07 Copyright (C) 1993-2019 Kx Systems
 m64/ 4()core 8192MB sjt mint.local 192.168.0.10 EXPIRE 2020.04.01 stephen@kx.com #55032
 

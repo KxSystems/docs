@@ -69,7 +69,10 @@ works, as single-item list shortcuts to execute on the main kdb+ thread
 q){`a set x} peach 0 1
 ```
 
-fails and signals `'noupdate` as it is executed from within slave threads.
+fails and signals `noupdate` as it is executed from within slave threads.
+
+<i class="fas fa-graduation-cap"></i>
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 `peach` defaults to `each` when no slave threads are specified on startup. 
 It then executes on the only available thread, the main kdb+ thread.
@@ -143,7 +146,7 @@ Each slave thread has its own heap, a minimum of 64MB.
 
 Since V2.7 2011.09.21, [`.Q.gc[]`](../ref/dotq.md#qgc-garbage-collect) in the main thread collects garbage in the slave threads too.
 
-Automatic garbage collection within each thread (triggered by a wsfull, or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-memory) on the command line) is executed only for that particular thread, not across all threads.
+Automatic garbage collection within each thread (triggered by a wsfull, or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-workspace) on the command line) is executed only for that particular thread, not across all threads.
 
 Symbols are internalized from a single memory area common to all threads.
 
@@ -169,6 +172,6 @@ q)handles:`u#`int$();
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i> 
 [`.Q.fc`](../ref/dotq.md#qfc-parallel-on-cut) (parallel on cut)
 

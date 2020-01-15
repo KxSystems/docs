@@ -164,13 +164,14 @@ In the next section we will use the above to demonstrate seamless querying of ta
 
 ## Example
 
-It is easy to demonstrate where this idea may be useful. Consider a simple case where there is a quote table on one rdb process and a trade table on another along with a supplementary metadata.
+It is easy to demonstrate where this idea may be useful. Consider a simple case where there is a quote table on one RDB process and a trade table on another along with a supplementary metadata.
 
 We use the following files to initialize q processes with a quote, trade and traders table, populated with some sample data:
 
 ### `quote.q`
 
 ```q
+\p 29002
 //set random seed
 \S 1
 

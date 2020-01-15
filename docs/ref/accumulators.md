@@ -6,15 +6,35 @@ keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, 
 ---
 # Accumulators
 
+<pre markdown="1" class="language-txt">
+[Converge  (v1\\)x    v1\\[x]](#converge)       [v1 scan x](#keywords-scan-and-over)
+          [(v1/)x    v1/[x]](#converge)       [v1 over x](#keywords-scan-and-over)
 
-`/` `\`
+[Do        n v1\\x    v1\\[n;x]](#do)
+          [n v1/x    v1/[n;x]](#do)
 
+[While     t v1\\x    v1\\[t;x]](#while)
+          [t v1/x    v1/[t;x]](#while)
 
+[Scan      (v2\\)x    v2\\[x]](#unary-application "binary value, unary application")      [(v2)scan x](#keywords-scan-and-over)
+[Over      (v2/)x    v2/[x]](#unary-application "binary value, unary application")      [(v2)over x](#keywords-scan-and-over)
 
+[Scan      x v2\\y    v2\\[x;y]](#binary-application "binary application")
+[Over      x v2/y    v2/[x;y]](#binary-application "binary application")
 
-An accumulator is an iterator that takes an [applicable value](../basics/glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
+[Scan                v3\\[x;y;z]](#ternary-values "ternary")   [x y\z](#alternative-syntax "alternative syntax")
+[Over                v3/[x;y;z]](#ternary-values "ternary")
 
-There are two accumulators, Scan and Over. They have the same syntax and perform the same computation. But where the Scan-derived functions return the result of each evaluation, those of Over return only the last result. 
+---------------------------------------
+v1, v2, v3: applicable value (rank 1-3)
+n:          integer≥0
+t:          unary truth map
+x, y:       arguments/indexes of v
+</pre>
+
+An accumulator is an [iterator](iterators.md) that takes an [applicable value](../basics/glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
+
+There are two accumulators, Scan and Over. They have the same syntax and perform the same computation. But where the Scan-derived functions return the result of each evaluation, those of Over return only the last result.
 
 Over resembles _map reduce_ in some other programming languages.
 
@@ -34,9 +54,9 @@ q)(+/)2 3 4    / Over
 
     While Scan and Over perform the same computation, in general, Over requires less memory, because it does not store intermediate results.
 
-The number of successive evaluations is determined differently for unary and for higher-rank values. 
+The number of successive evaluations is determined differently for unary and for higher-rank values.
 
-The domain of the accumulators is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine). 
+The domain of the accumulators is functions, lists, and dictionaries that represent [finite-state machines](../basics/glossary.md#finite-state-machine).
 
 ```q
 q)yrp                               / a European tour
@@ -60,21 +80,21 @@ Berlin| London
 
 ## Unary values
 
-Syntax: `(v\)x`, `(v/)x`  unary application  
-Syntax: `x v\y`, `x v/y`  binary application
+Syntax: `(v1\)x`, `(v1/)x`  unary application<br>
+Syntax: `x v1\y`, `x v1/y`  binary application
 
-The function an accumulator derives from a unary value is [variadic](../basics/variadic.md). 
+The function an accumulator derives from a unary value is [variadic](../basics/variadic.md).
 The result of the first evaluation is the right argument for the second evaluation. And so on.
 
-!!! note "The value is evaluated on the entire right argument, not on items of it." 
+!!! note "The value is evaluated on the entire right argument, not on items of it."
 
-The number of evaluations the derived function performs is determined (when applied as a binary) by its left argument, or (when applied as a unary) by convergence.
+When applied as a binary, the number of evaluations the derived function performs is determined by its left argument, or (when applied as a unary) by convergence.
 
 syntax           | name     | number of successive evaluations
 -----------------|----------|---------------------------------------------
-`(v\)x`, `(v/)x` | Converge | until two successive evaluations match, or an evaluation matches `x`
-`i v\x`, `i v/x` | Do       | `i`, a non-negative integer
-`t v\x`, `t v/x` | While    | until unary value `t`, evaluated on the result, returns 0
+`(v1\)x`, `(v1/)x` | Converge | until two successive evaluations match, or an evaluation matches `x`
+`i v1\x`, `i v1/x` | Do       | `i`, a non-negative integer
+`t v1\x`, `t v1/x` | While    | until unary value `t`, evaluated on the result, returns 0
 
 
 ### Converge
@@ -194,17 +214,17 @@ In the last example, both applicable values are dictionaries.
 
 Syntax: `x v\y`, `x v/y`
 
-The function an accumulator derived from a binary value is [variadic](../basics/variadic.md). 
-Functions derived by Scan are uniform; functions derived by Over are aggregates. 
+The function an accumulator derived from a binary value is [variadic](../basics/variadic.md).
+Functions derived by Scan are uniform; functions derived by Over are aggregates.
 The number of evaluations is the count of the right argument.
 
-![over](../img/over.png)  
+![over](../img/over.png)
 <small>_Unary and binary application of f/_</small>
 
 
 ### Binary application
 
-When the derived function is applied as a binary, the first evaluation applies the value to the function’s left argument and the first item of the its right argument, i.e. `m[x;first y]`. The result of this becomes the left argument in the next evaluation, for which the right argument is the second item of the right argument. And so on. 
+When the derived function is applied as a binary, the first evaluation applies the value to the function’s left argument and the first item of the its right argument, i.e. `m[x;first y]`. The result of this becomes the left argument in the next evaluation, for which the right argument is the second item of the right argument. And so on.
 
 ```q
 q)1000+\2 3 4
@@ -220,7 +240,7 @@ q)m                       / finite-state machine
 7 8 4 3 0
 4 5 8 0 4
 9 8 0 3 9
-q)c
+q)c                       / columns of m
 4 1 3 3 1 4
 q)7 m\c
 0 6 6 6 1 5
@@ -253,7 +273,7 @@ q)42{[x;y]x}\2 3 4    / 42 is the first left argument
 42 42 42
 q)({[x;y]x}\)2 3 4    / 2 is the first left argument
 2 2 2
-q)(m\)cols            / cols[0] is the first left argument
+q)(m\)c               / c[0] is the first left argument
 4 3 1 0 6 9
 ```
 
@@ -275,14 +295,16 @@ q)({count x,y}\)("The";"quick";"brown";"fox")
 
 ### Keywords `scan` and `over`
 
-Mnemonic keywords `scan` and `over` can be used to apply a binary value to a list or dictionary. Parenthesize an infix to pass it as a left argument.
+Mnemonic keywords `scan` and `over` can be used to apply a binary value to a list or dictionary.
+
+!!! tip "Parenthesize an infix to pass it as a left argument."
 
 ```q
 q)(+) over til 5           / (+/)til 5
 10
 q)(+) scan til 5           / (+\)til 5
 0 1 3 6 10
-q)m scan cols              / (m\)cols
+q)m scan c                 / (m\)c
 4 3 1 0 6 9
 ```
 
@@ -294,11 +316,11 @@ q)m scan cols              / (m\)cols
 
 Syntax: `v\[x;y;z]`, `v/[x;y;z]`
 
-The function an accumulator derives from an value of rank >2 has the same rank as the value. 
-Functions derived by Scan are uniform; functions derived by Over are aggregates. 
+The function an accumulator derives from an value of rank >2 has the same rank as the value.
+Functions derived by Scan are uniform; functions derived by Over are aggregates.
 The number of evaluations is the maximum of the count of the right arguments.
 
-For `v\[x;y;z]` and `v/[x;y;z]` 
+For `v\[x;y;z]` and `v/[x;y;z]`
 
 -   `x` is in the left domain of `v`
 -   `y` and `z` are atoms or conforming lists or dictionaries in the right domains of `v`
@@ -319,7 +341,7 @@ The result of `v/[x;y;z]` is simply the last item of the above.
 : <code>v[ v[… v[ v[x;y<sub>0</sub>;z<sub>0</sub>] ;y<sub>1</sub>;z<sub>1</sub>]; … y<sub>n-2</sub>;z<sub>n-2</sub>]; y<sub>n-1</sub>;z<sub>n-1</sub>]</code>
 
 ```q
-q){x+y*z}\[1000;5 10 15 20;2 3 4 5]    
+q){x+y*z}\[1000;5 10 15 20;2 3 4 5]
 1010 1040 1100 1200
 q){x+y*z}\[1000 2000;5 10 15 20;3]
 1015 2015
@@ -358,7 +380,7 @@ Note that the built-in version is for floats.
 In iterating through an empty list **the value is not evaluated.**
 The result might not be in the range of the value.
 
-Allow for a possible change of type to `0h` when scanning or reducing lists of unknown length. 
+Allow for a possible change of type to `0h` when scanning or reducing lists of unknown length.
 
 ```q
 q)mt:0#0
@@ -369,7 +391,7 @@ q)type each (mt;*\[mt];{x*y}\[mt])  / so can Scan
 ```
 
 
-### Scan 
+### Scan
 
 The function Scan derives from a non-unary value is a uniform function: for empty right argument/s it returns the generic empty list.
 It does not evaluate the value.
@@ -380,11 +402,11 @@ q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
 ```
 
 
-### Over 
+### Over
 
 The function Over derives from a non-unary value is an aggregate: it reduces lists and dictionaries to atoms.
 
-For empty right argument/s the atom result depends on the value and, if the derived function is variadic, on how it is applied. 
+For empty right argument/s the atom result depends on the value and, if the derived function is variadic, on how it is applied.
 
 If the value is a **binary function with a known identity element** $I$, and the derived function is applied as a unary, the result is $I$.
 
@@ -402,7 +424,7 @@ q)()~({x+y}/)mt
 1b
 ```
 
-If the value is a **list** and the derived function is applied as a unary, the result is an empty list of the same type as the list. 
+If the value is a **list** and the derived function is applied as a unary, the result is an empty list of the same type as the list.
 
 ```q
 q)type 1 0 3h/[til 0]

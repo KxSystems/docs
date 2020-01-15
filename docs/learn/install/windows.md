@@ -59,7 +59,7 @@ w32/ 4()core 3974MB mr.user it1234567 192.168.0.37 NONEXPIRE
 
 Welcome to kdb+ 32bit edition
 For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/v2/tutorials/install
+Tutorials can be found at http://code.kx.com/q/tutorials/install
 To exit type \\
 To remove this startup msg, edit q.q
 q)til 6
@@ -72,6 +72,14 @@ C:\Users\mr.user>
 ## <i class="fas fa-code"></i> Define q as a command
 
 Defining `q` as a command allows you to invoke kdb+ without specifying the path to it.
+
+!!! info "Environment variables"
+
+    The q interpreter refers to environment variable `QHOME` for the location of certain files. 
+    Absent this variable, it will guess based on the path to the interpreter. 
+    Better to set the variable explicitly. 
+
+    The `QLIC` environment variable tells kdb+ where to find [a license key file](../licensing.md). Absent the variable, the value of `QHOME` is used. 
 
 In the MS-DOS shell:
 

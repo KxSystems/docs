@@ -4,12 +4,37 @@ description: The .h namespace contains objects useful for marking up data for an
 author: Stephen Taylor
 keywords: html, kdb+, markup, q
 ---
-# The .h namespace
+# The `.h` namespace
 
 
 
 
 
+
+<pre markdown="1" class="language-txt">
+[.h.br    linebreak](#hbr-linebreak)             [.h.hu        URI escape](#hhu-uri-escape)
+[.h.c0    web color](#hc0-web-color)             [.h.hug       URI map](#hhug-uri-map)
+[.h.c1    web color](#hc1-web-color)             [.h.hy        HTTP response](#hhy-http-response)
+[.h.cd    CSV from data](#hcd-csv-from-data)         [.h.HOME      webserver root](#hhome-webserver-root)
+[.h.code  code after Tab](#hcode-code-after-tab)        [.h.iso8601   ISO timestamp](#hiso8601-iso-timestamp)
+[.h.d     delimiter](#hd-delimiter)             [.h.jx        table](#hjx-table)
+[.h.ed    Excel from data](#hed-excel-from-data)       [.h.logo      Kx logo](#hlogo-kx-logo)
+[.h.edsn  Excel from tables](#hedsn-excel-from-tables)     [.h.nbr       no break](#hnbr-no-break)
+[.h.fram  frame](#hfram-frame)                 [.h.pre       pre](#hpre-pre)
+[.h.ha    anchor](#hha-anchor)                [.h.sa        style](#hsa-style)
+[.h.hb    anchor target](#hhb-anchor-target)         [.h.sb        style](#hsb-style)
+[.h.hc    escape lt](#hhc-escape-lt)             [.h.sc        URI-safe](#hsc-uri-safe)
+[.h.he    HTTP 400](#hhe-http-400)              [.h.td        TSV](#htd-tsv)
+[.h.hn    HTTP error](#hhn-http-error)            [.h.text      paragraphs](#htext-paragraphs)
+[.h.hp    HTTP response](#hhp-http-response)         [.h.tx        filetypes](#htx-filetypes)
+[.h.hr    horizontal rule](#hhr-horizontal-rule)       [.h.ty        MIME types](#hty-mime-types)
+[.h.ht    Marqdown to HTML](#hht-marqdown-to-html)      [.h.uh        URI unescape](#huh-uri-unescape)
+[.h.hta   start tag](#hhta-start-tag)             [.h.val       value](#hval-value)
+[.h.htac  element](#hhtac-element)               [.h.xd        XML](#hxd-xml)
+[.h.htc   element](#hhtc-element)               [.h.xmp       XMP](#hxmp-xmp)
+[.h.html  document](#hhtml-document)              [.h.xs        XML escape](#hxs-xml-escape)
+[.h.http  hyperlinks](#hhttp-hyperlinks)            [.h.xt        JSON](#hxt-json)
+</pre>
 
 The `.h` [namespace](../basics/namespaces.md) contains functions for converting files into various formats and for web-console display. 
 
@@ -18,32 +43,6 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
     The `.h` namespace is reserved for use by Kx, as are all single-letter namespaces. 
 
     Consider all undocumented functions in the namespace as its private API – and do not use them. 
-
-
-```txt
-.h.br    linebreak                 .h.hu        URI escape
-.h.c0    web color                 .h.hug       URI map
-.h.c1    web color                 .h.hy        HTTP response
-.h.cd    CSV from data             .h.HOME      webserver root
-.h.code  code after Tab            .h.iso8601   ISO timestamp
-.h.data                            .h.jx        table
-.h.ed    Excel from data           .h.logo      Kx logo
-.h.edsn  Excel from tables         .h.nbr       no break
-.h.fram  frame                     .h.pre       pre
-.h.ha    anchor                    .h.sa        style
-.h.hb    anchor target             .h.sb        style
-.h.hc    escape lt                 .h.sc        URI-safe
-.h.he    HTTP 400                  .h.td        TSV
-.h.hn    HTTP error                .h.text      paragraphs
-.h.hp    HTTP response             .h.tx        filetypes
-.h.hr    horizontal rule           .h.ty        MIME types
-.h.ht    Marqdown to HTML          .h.uh        URI unescape
-.h.hta   start tag                 .h.xd        XML
-.h.htac  element                   .h.xmp       XMP
-.h.htc   element                   .h.xs        XML escape
-.h.html  document                  .h.xt        JSON
-.h.http  hyperlinks
-```
 
 
 
@@ -73,7 +72,7 @@ Returns as a symbol a web color used by the web console.
 
 Syntax: `.h.cd x`
 
-CSV from data: where `x` is a table or a list of columns returns a matrix of comma-separated values.
+Where `x` is a table or a list of columns returns a matrix of comma-separated values. 
 
 ```q
 q).h.cd ([]a:1 2 3;b:`x`y`z)
@@ -87,6 +86,9 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 "b,2,y"
 "c,3,z"
 ```
+
+Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V3.7t 2019.10.11.)
+
 
 
 ## `.h.code` (code after Tab)
@@ -108,11 +110,35 @@ q).h.code "foo"
 ```
 
 
-<!-- 
-## `.h.data`
+## `.h.d` (delimiter)
 
-==FIXME==
- -->
+Syntax: `.h.d`
+
+Delimiter used by [`.h.cd`](#hcd-csv-from-data) to join subitems of nested lists. Default is `" "`. 
+
+```q
+q)show t:([a:til 3]b:3 3#"abc";c:3 3#1 2 3)
+a| b     c
+-| -----------
+0| "abc" 1 2 3
+1| "abc" 1 2 3
+2| "abc" 1 2 3
+
+q).h.d
+" "
+q).h.cd t
+"a,b,c"
+"0,a b c,1 2 3"
+"1,a b c,1 2 3"
+"2,a b c,1 2 3"
+
+q).h.d:"*"
+q).h.cd t
+"a,b,c"
+"0,a*b*c,1*2*3"
+"1,a*b*c,1*2*3"
+"2,a*b*c,1*2*3"
+```
 
 
 ## `.h.ed` (Excel from data)
@@ -242,7 +268,8 @@ returns as a string an HTTP error response.
 q).h.hn["404";`txt;"Not found: favicon.ico"]
 "HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Len..
 ```
-<i class="far fa-hand-point-right"></i> [Content types](#hty-mime-types)
+<i class="far fa-hand-point-right"></i> 
+[`.h.ty` MIME types](#hty-mime-types)
 
 
 ## `.h.hp` (HTTP response)
@@ -421,7 +448,7 @@ Syntax: `.h.HOME`
 
 String: location of the webserver root. 
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-graduation-cap""></i>
 [Customizing the default webserver](../kb/custom-web.md)
 
 
@@ -546,7 +573,8 @@ q).h.sc
 "$-.+!*'(),abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
 
-<i class="fa-hand-point-right"></i> [`.h.hu`](#hhu-uri-escape)
+<i class="fa-hand-point-right"></i> 
+[`.h.hu`](#hhu-uri-escape)
 
 
 ## `.h.td` (TSV)
@@ -648,6 +676,19 @@ Where `x` is a string, returns `x` with `%`*xx* hex sequences replaced with char
 q).h.uh "http%3a%2f%2fwww.kx.com"
 "http://www.kx.com"
 ```
+
+
+## `.h.val` (value)
+
+Syntax: `.h.val x`
+
+`.h.val` is called by [`.z.ph`](dotz.md#zph-http-get) to evaluate a request to the server.
+
+Its default value is [`value`](value.md).
+Users can override this with a custom evaluation function. 
+
+Since V3.6 and V3.5 2019.11.13. 
+
 
 
 ## `.h.xd` (XML)

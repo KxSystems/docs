@@ -93,6 +93,9 @@ It uses [`peach`](../ref/maps.md#each-parallel) for both in-memory and on-disk t
 select … by sym, … from t where date …, sym in …, …
 ```
 
+<i class="fas fa-graduation-cap"></i>
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
+
 
 ### Special functions
 
@@ -125,10 +128,10 @@ a
 
 ### Name resolution
 
-Resolution of a name within select/exec/update is as follows:
+Resolution of a name within `select`, `exec`, and `update` is as follows:
 
 1.  column name
-1.  local name in (or param of) the encapsulating function
+1.  local name in (or argument of) the encapsulating function
 1.  global name in the current working namespace – not necessarily the space in which the function was defined
 
 !!! tip 
@@ -139,10 +142,26 @@ Resolution of a name within select/exec/update is as follows:
     select (\`. \`toplevel) x from t
     </code></pre>
 
+!!! warning "Duplicate names for columns or groups"
+
+    `select` auto-aliases colliding duplicate column names for either `select az,a from t`, or `select a by c,c from t`, but not for `select a,a by a from t`.
+
+    Such a collision throws a `'dup names for cols/groups a` error during parse, indicating the first column name which collides. 
+    (Since V3.7t 2019.10.22.)
+
+    <pre><code class="language-q">
+    q)parse"select b by b from t"
+    'dup names for cols/groups b
+      [2]  select b by b from t
+           ^
+    </code></pre>
+
+    The easiest way to resolve this conflict is to explicitly rename columns. e.g. `select a,b by c:a from t`.
+
 
 ### Implicit arguments
 
-When compiling functions, the implicit args `x`, `y`, `z` are visible to the compiler only when they are not inside the select-, by- and where-clauses. The from-clause is not masked. This can be observed by taking the [`value`](value.md) of the function and observing the second item: the args.
+When compiling functions, the implicit args `x`, `y`, `z` are visible to the compiler only when they are not inside the Select, By, and Where clauses. The From clause is not masked. This can be observed by taking the [`value`](value.md) of the function and observing the second item: the args.
 
 ```q
 q)args:{(value x)1}

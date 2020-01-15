@@ -1,5 +1,5 @@
 ---
-title: Debugging – Basics – kdb+ and q documentation
+title: Debugging facilities in the q interpreter | Basics | kdb+ and q documentation
 description: Facilities for debugging q programs
 author: Stephen Taylor
 keywords: debug, errors, kdb+, q, trap
@@ -7,7 +7,16 @@ keywords: debug, errors, kdb+, q, trap
 # Debugging 
 
 
-
+<pre markdown="1" class="language-txt">
+q))       extra right parens mark suspended execution/s
+'myerror  [Signal](../ref/signal.md) error, cut back stack
+:r        [exit suspended function](#resume) with r as result
+\\         abort execution and exit debugger
+[.Q.bt](../ref/dotq.md#qbt-backtrace)     dump backtrace
+[&](#where)         current frame information
+[.Q.trp](../ref/dotq.md#qtrp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
+[-e](cmdline.md#-e-error-traps) [\e](syscmds.md#e-error-trap-clients)     error-trap mode
+</pre>
 
 
 
@@ -40,6 +49,15 @@ q)f0[2]
   [2]  f0@:{("hi";x+y)}
                    ^
 q)\
+```
+
+A name error (global used as local) bytecode compiler error has location info.
+
+```q
+q){a::1;a:1}
+'a
+  [0]  {a::1;a:1}
+             ^
 ```
 
 
@@ -163,11 +181,15 @@ q)
 ```
 
 
-## Backtrace
+## Stack frames
+
+### Backtrace
 
 [`.Q.bt[]`](../ref/dotq.md#qbt-backtrace) will dump the backtrace to stdout at any point during execution or debug.
+It will highlight the curent stack frame with `>>`. (Since V3.7t 2019.10.22.)
 
 ```q
+q)g:{a:x*2;a+y}
 q)f:{{.Q.bt[];x*2}x+1}
 q)f 4
   [2]  f@:{.Q.bt[];x*2}
@@ -176,25 +198,54 @@ q)f 4
           ^
   [0]  f 4
        ^
-10                   / (4+1)*2
+10
 q)g[3;"hello"]
 'type
-  [2]  g:{a:x*2;a+y}
-                ^
+  [1]  g:{a:x*2;a+y}
+                 ^
 q)).Q.bt[]
-  [4]  .Q.bt[]
+>>[1]  g:{a:x*2;a+y}
+                 ^
+  [0]  g[3;"hello"]
        ^
-  [3]  (.Q.dbg)      / see note
-
-  [2]  g:{a:x*2;a+y}
-                ^
-  [1]  f:{g[x;2#y]}
-          ^
-  [0]  f[3;"hello"]
-       ^ 
 ```
 
 !!! note "The debugger itself occupies a stack frame, but its source is hidden."
+
+
+### Where
+
+Debugger command `&` displays current frame information. 
+(Since V3.7t 2019.10.22.)
+
+```q
+q))&
+'type
+  [1]  g:{a:x*2;a+y}
+                 ^
+```
+
+
+### Context
+
+The debugger restores the original namespace and language (q or k) setting for each frame.
+
+View calculations and system commands, including [`\l`](syscmds.md#l-load), correspond to individual debug stack frames.
+
+```q
+  .d1 ).Q.bt`
+ >>[3]  t0.k:8: va::-a
+                     ^
+   [2]  t1.q:8: vb::va*3
+                    ^
+   [1]  t1.q:7: vc::vb+2
+                    ^
+   [0]  2+vc
+          ^
+```
+
+
+### Trap
 
 [`.Q.trp[f;x;g]`](../ref/dotq.md#qtrp-extend-trap) extends trap (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
 
@@ -243,16 +294,28 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
               ^
 ```
 
+Errors thrown by `parse` show up in `.Q.trp` with location information.
+
+```q
+q).Q.trp[parse;"2+2;+2";{1@.Q.sbt 2#y}];
+  [3]  2+2;+2
+           ^
+  [2]  (.q.parse) 
+```
+
 
 ## Error trap modes
 
-At any point during execution, the behavior of Signal (`'`) is determined by the internal error trap mode:
+At any point during execution, the behavior of [Signal](../ref/signal.md) (`'`) is determined by the internal error-trap mode:
 
 mode | behavior
 :---:|------------------------------------------------
 0    | abort execution (set by Trap: `@` or `.`)
 1    | suspend execution and run the debugger
 2    | collect stack trace and abort (set by `.Q.trp`)
+
+Mode 2 (dump stack trace) is now default for loading scripts non-interactively (e.g. with [`-q`](cmdline.md#-q-quiet-mode)). 
+
 
 During abort, the stack is unwound up to the nearest trap (`@` or `.` or `.Q.trp`). The error-trap mode is always initially set to 1 for console input and to 0 for sync message processing.
 
@@ -274,7 +337,6 @@ q)'type
 q))                 / the server is suspended in a debug session
 ```
 
-
 !!! warning "Keywords"
 
     Q is an embedded domain-specific language. Many of its keywords are defined as lambdas or projections, and can suspend as described. 
@@ -282,7 +344,9 @@ q))                 / the server is suspended in a debug session
 
 ## See also
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i> 
 [Display](../ref/display.md),
-[`show`](../ref/show.md), 
+[`show`](../ref/show.md)
+<br>
+<i class="fas fa-graduation-cap"></i>
 _Q for Mortals 3:_ [§10.2 Debugging](/q4m3/10_Execution_Control/#102-debugging)

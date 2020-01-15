@@ -17,7 +17,19 @@ Here are typographical, spelling and lexical conventions for the content of this
 They apply to 
 
 -   Markdown source files for code.kx.com, hosted at <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/kxsystems/docs)
--   Technical White papers prepared as PDFs for code.kx.com 
+-   Technical White papers prepared for code.kx.com 
+
+## White papers
+
+Contributions to the series of [Kx Technical White Papers](../../wp/index.md) should be drafted in Markdown and follow the conventions in this guide. 
+Image files should be ≤500px wide. 
+
+Use the source files for published papers as models: 
+
+<i class="fab fa-github"></i>
+[KxSystems/docs/docs/wp](https://github.com/KxSystems/docs/tree/master/docs/wp).
+
+
 
 ## Purpose
 
@@ -61,7 +73,7 @@ Here are the most important – or most commonly neglected – rules.
     -   titles of articles, essays, and scholarly papers
 -   Use **single typographer’s quotes** 
     -   to denote possession (but never plurals), e.g. 1983’s hit “Oobop Shebam” was her best work in the 1980s, and perhaps the 1980s’ favorite song.
-    -   to remove emphasis, i.e., when a word or phrase is not meant literally 
+    -   to remove emphasis, i.e., when a word or phrase is not meant literally (sometimes called ‘scare quotes’)
 -   Use **typewriter quotes** only in code elements, e.g. `ssr'[x;y;z]`
 -   Use **spaced endashes** for parenthetical phrases – such as this – not spaced hyphens and not emdashes, spaced or unspaced. 
 -   Use **numbered lists** (or headings) only when there are multiple references to the numbers; otherwise use bulleted lists. 
