@@ -26,14 +26,15 @@ The following lists the parameters which can be altered by users to modify the f
 Parameters:
   aggcols     Aggregation columns for FRESH
   funcs       Functions to be applied for feature extraction
-  hld         Size of holdout set on which the final model is tested
-  tts         Train-test split function to be applied
-  sz          Size of test set for train-test split function
-  seed        Random seed to be used
-  xv          Cross validation function and associated no. of folds/percentage
-  scf         Scoring functions for classification/regression tasks
   gs          Grid search function and associated no. of folds/percentage
+  hld         Size of holdout set on which the final model is tested
   saveopt     Saving options outlining what is to be saved to disk from a run
+  scf         Scoring functions for classification/regression tasks
+  seed        Random seed to be used
+  sigfeats    Feature significance procedure to be applied to the data
+  sz          Size of test set for train-test split function
+  tts         Train-test split function to be applied
+  xv          Cross validation function and associated no. of folds/percentage
 ```
 
 For simplicity, each of these modifications will be handled seperately below with example implementations where possible.
@@ -77,6 +78,34 @@ q)funcs:`.aml.prep.i.truncsvd`.aml.prep.i.bulktransform
 q).aml.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
 ```
 
+!!!Note
+	User defined functions should take as input
+	
+	* x = a simple table
+
+	This function should return a simple table with the feature extraction procedure applied. These features should not augment the number of rows in the dataset as this will result in errors within the pipeline
+
+### `gs`
+
+_Grid search procedure being implemented_
+
+In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
+
+The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into
+
+For simplicity of implementation a user should where possible use the functions within the `.ml.gs` namespace for this task.
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Roll forward grid search with 6 folds
+q)roll_forward:(`.ml.gs.tsrolls;6)
+q).aml.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
+```
+
+!!!Warning
+        If you intend to add a custom grid search function please follow the guidelines for function definition provided [here](../../../toolkit/xval). If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the automl framework this can become a complicated procedure.
+
 ### `hld`
 
 _Size of the holdout set on which the best grid searched model is tested_
@@ -91,81 +120,32 @@ q)hldout:0.1
 q).aml.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist hldout]
 ```
 
-### `tts`
 
-_Function used when splitting the data into training and testing sets_
+### `saveopt`
 
-As described when outlining the default behaviour of the systems [here](../../userguide/preproc) The default functions used for splitting the data into a training and testing set are as follows
+_Save options to be used_
 
-Problem Type | Function | Description |
--------------|----------|-------------|
-Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
-FRESH        |.ml.ttsnonshuff    | Without shuffling the dataset split into training and testing set with defined percentage in each to ensure no time leakage
+By default, the system will save all outputs to disk (reports, images, config file, models). In a case where a user does not wish for all outputs to be saved, there are currently 3 options
 
-For specific use cases this may not be sufficient, for example if a user wishes to split the data such that a equal distribution of target classes occur in the training and testing sets this could be implemented as in the following example
-
-```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?5
-q)shuffle:.ml.xv.i.shuffle
-q).ml.ttstrat:{[x;y;sz]`xtrain`ytrain`xtest`ytest!raze(x;y)@\:/:r@'shuffle each r:(,'/){x@(0,floor n*1-y)_neg[n]?n:count x}[;sz]each value n@'shuffle each n:group y}
-q).aml.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
-```
-
-!!!Note
-	In this case the user defined function must take as input the dataset, target vector and size of the split between training and testing sets. It must also return a dictionary containing ````xtrain`ytrain`xtest`ytest! ... ``` to ensure consistency with the rest of the workflow
-
-### `sz`
-
-_Size of the validation set on which the non grid searched best model is tested_
-
-By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on
+1. 0 = Nothing is saved the models will run and display results to console but nothing persisted
+2. 1 = Save the model and configuration file only, will not generate a report for the user or any images
+3. 2 = Save all possible outputs to disk for the user including reports, images, config and models
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Set holdout set to contain 10% of the dataset
-q)size:0.1
-q).aml.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
+// Save only the minimal outputs
+q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
+// No outputs saved
+q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
 ```
 
-### `seed`
-
-_The seed which is used to ensure model reruns are consistent_
-
-By default each run of the platform is completed with a 'random' seed derived based on the time of a run. If a user wishes to have more explicit control of this behaviour the seed can be set to a user specified value. This allows ensures that each run of the platform will return results which are consistent run to run thus allowing for the impact of modifications to the pipeline to be accurately monitored
-
-```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
-// User defined seed
-q)seed:42
-q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
-// Run the workflow again to show run to run consistency
-q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
-```
-
-### `xv`
-
-_Cross validation procedure being implemented_
-
-In each case by default the cross validation procedure being implemented is a 5 fold shuffled cross validation. This can be augmented by a user for different use cases for example more time series specific cross validations. 
-
-The input for this parameter is a mixed list containing the cross validation function name as a symbol and the number of cross validation folds to split the data into
-
-```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
-// Chain forward cross validation with 3 folds
-q)chain:(`.ml.xv.tschain;3)
-q).aml.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
-```
 
 ### `scf`
 
 _Scoring functions used in model validation and optimization_
 
-The scoring metric used to calculate the performance of each classifier is defined by this parameter which is a dictionary containing a scoring metric for both regression and classification problems. The default behaviour is to use `.ml.accuracy` for classification tasks and `.ml.mse` for regression tasks. Modifying these may be required in order to correctly optimise a model for a specific use case. 
+The scoring metric used to calculate the performance of each classifier is defined by this parameter which is a dictionary containing a scoring metric for both regression and classification problems. The default behaviour is to use `.ml.accuracy` for classification tasks and `.ml.mse` for regression tasks. Modifying these may be required in order to correctly optimise a model for a specific use case.
 
 The following functions are supported within the platform at present with the ordering which allows the best model to be chosen are displayed below and defined in `code/mdldef/scoring.txt`
 
@@ -196,43 +176,123 @@ The following is an example implementation
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 q)reg_scf:enlist[`reg]!enlist `.ml.mae
-q).aml.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf] 
+q).aml.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
 ```
 
-### `gs`
+!!!Note
+	If a user wishes to use a custom scoring metric this function must be defined within the central process and added to `code/mdldef/scoring.txt` in order to define how optimisation is completed. This function must take as input
 
-_Grid search procedure being implemented_
+	* x = vector of predicted labels
+	* y = vector of true labels
 
-In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
+	The function should return the score as defined by the user defined metric.
 
-The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into
+
+### `seed`
+
+_The seed which is used to ensure model reruns are consistent_
+
+By default each run of the platform is completed with a 'random' seed derived based on the time of a run. If a user wishes to have more explicit control of this behaviour the seed can be set to a user specified value. This allows ensures that each run of the platform will return results which are consistent run to run thus allowing for the impact of modifications to the pipeline to be accurately monitored
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Roll forward grid search with 6 folds
-q)roll_forward:(`.ml.gs.tsrolls;6)
-q).aml.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
+// User defined seed
+q)seed:42
+q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
+// Run the workflow again to show run to run consistency
+q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 ```
 
-### `saveopt`
 
-_Save options to be used_
+### `sigfeats`
 
-By default, the system will save all outputs to disk (reports, images, config file, models). In a case where a user does not wish for all outputs to be saved, there are currently 3 options
+_Feature significance function to be applied to data to reduce feature set_
 
-1. 0 = Nothing is saved the models will run and display results to console but nothing persisted
-2. 1 = Save the model and configuration file only, will not generate a report for the user or any images
-3. 2 = Save all possible outputs to disk for the user including reports, images, config and models
+By default the system will apply a feature significance tests provided within the ML toolkit [here](https://code.kx.com/q/ml/toolkit/fresh/#mlfreshsignificantfeatures). The function uses the 25th percentile of important features based on the p-values returned from a number of statistical tests comparing each column within the dataset with the target vector. This can be modified by a user as follows
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;asc 100?1f)
+q)tgt:desc 100?1f
+// Define the function to be applied for feature significance tests
+q).aml.newsigfeat:{.ml.fresh.significantfeatures[x;y;.ml.fresh.ksigfeat 2]}
+q).aml.run[tab;tgt;`normal;`reg;enlist[`sigfeats]!enlist `.aml.newsigfeat]
+```
+
+!!!Note
+	The function which replaces the default feature significance tests should take as input
+
+	* x = A simple table
+	* y = The target vector
+
+	The return from this function should be a simple table with unimportant features (as deemed by the user) removed.
+
+### `sz`
+
+_Size of the validation set on which the non grid searched best model is tested_
+
+By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Save only the minimal outputs
-q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
-// No outputs saved
-q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
+// Set holdout set to contain 10% of the dataset
+q)size:0.1
+q).aml.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 ```
+
+
+### `tts`
+
+_Function used when splitting the data into training and testing sets_
+
+As described when outlining the default behaviour of the systems [here](../../userguide/preproc) The default functions used for splitting the data into a training and testing set are as follows
+
+Problem Type | Function | Description |
+-------------|----------|-------------|
+Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
+FRESH        |.ml.ttsnonshuff    | Without shuffling the dataset split into training and testing set with defined percentage in each to ensure no time leakage
+
+For specific use cases this may not be sufficient, for example if a user wishes to split the data such that a equal distribution of target classes occur in the training and testing sets this could be implemented as in the following example
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?5
+q)shuffle:.ml.xv.i.shuffle
+q).ml.ttstrat:{[x;y;sz]`xtrain`ytrain`xtest`ytest!raze(x;y)@\:/:r@'shuffle each r:(,'/){x@(0,floor n*1-y)_neg[n]?n:count x}[;sz]each value n@'shuffle each n:group y}
+q).aml.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
+```
+
+!!!Note
+	When using a user defined function must take as input 
+	
+	* x = A simple table
+	* y = The target vector
+	* z = the size splitting criteria used (number folds/percentage of data in holdout)
+	
+	The return from this function should be a dictionary containing keys ``` `xtrain`ytrain`xtest`ytest! ... ``` where the x components are tables containing the split data and y components are the associated target vector components
+
+
+### `xv`
+
+_Cross validation procedure being implemented_
+
+In each case by default the cross validation procedure being implemented is a 5 fold shuffled cross validation. This can be augmented by a user for different use cases for example more time series specific cross validations. 
+
+The input for this parameter is a mixed list containing the cross validation function name as a symbol and the number of cross validation folds to split the data into.
+
+For simplicity of implementation a user should where possible use the functions within the `.ml.xv` namespace for this task.
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Chain forward cross validation with 3 folds
+q)chain:(`.ml.xv.tschain;3)
+q).aml.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
+```
+
+!!!Warning
+	If you intend to add a custom cross validation function please follow the guidelines for function definition provided [here](../../../toolkit/xval). If you have any questions on this please contact ai@kx.com . When compared to other custom functionality within the automl framework this can become a complicated procedure.
 
 ## File based input
 

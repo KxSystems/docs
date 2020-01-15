@@ -106,7 +106,7 @@ q)count normfeat
 
 ### Feature selection
 
-In order to reduce dimensionality in the data following feature extraction, significance tests are performed using the FRESH [feature significance](https://code.kx.com/v2/ml/toolkit/fresh/) function contained within the ML-Toolkit. When default parameters are used, the top 25th percentile of features are selected. The below regression example demonstrates the steps required extract significant features within the automl pipeline. 
+In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](https://code.kx.com/v2/ml/toolkit/fresh/) function contained within the ML-Toolkit. When default parameters are used, the top 25th percentile of features are selected. The below regression example demonstrates the steps required extract significant features within the automl pipeline. 
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
