@@ -39,7 +39,55 @@ For unary values, they have three forms, known as Converge, Do, and While.
 
 ### Case
 
-There is no `case` or `switch` control word in q. Use the [Case](../ref/maps.md#case) iterator instead. Or a dictionary.
+Case control structures in other languages map values to code or result values. In q this mapping is more often handled by indexing into lists or dictionaries.
+
+```q
+q)show v:10?`v1`v2`v3               / values
+`v1`v1`v3`v2`v3`v2`v3`v3`v2`v1
+q)`r1`r2`r3 `v1`v2`v3?v             / Find
+`r1`r1`r3`r2`r3`r2`r3`r3`r2`r1
+q)(`v1`v2!`r1`r2) v                 / dictionary: implicit default
+`r1`r1``r2``r2```r2`r1
+q)`r1`r2`default `v1`v2?v           / explicit default
+`r1`r1`default`r2`default`r2`default`default`r2`r1
+```
+
+The values mapped can be functions. The pseudocode
+
+```txt
+for-each (x in v) {
+    switch(x) {
+    case `v1:
+        `abc,x;
+        break;
+    case `v2:
+        string x;
+        break;
+    default:
+        x;
+    }
+}
+```
+
+can be written in q as
+
+```q
+q)((`abc,;string;::) `v1`v2?v)@'v   
+`abc`v1
+`abc`v1
+`v3
+"v2"
+`v3
+"v2"
+`v3
+`v3
+"v2"
+`abc`v1
+```
+
+and optimized with [`.Q.fu`](..//ref/dotq/#qfu-apply-unique).
+
+See also the [Case](../ref/maps.md#case) iterator.
 
 
 ## Conditional evaluation
@@ -51,6 +99,7 @@ Syntax: `$[x;y;z]`
 Two arguments are evaluated: `x` and either `y` or `z`.
 
 [Vector Conditional](../ref/vector-conditional.md) does something similar for lists of arguments, but evaluates all three arguments. 
+It should be used in [qSQL queries](qsql.md), which do not support Cond.
 
 
 ## Explicit return
@@ -111,14 +160,14 @@ q)goo 3
 
 : evaluate some expression/s while some condition holds
 
-!!! tip "iteration"
+!!! tip "Iteration"
 
     Control words are little used in practice for iteration.
     [Iterators](../ref/iterators.md) are more commonly used.
 
-<i class="far fa-hand-point-right"></i> Iterators:  
-[Maps](../ref/maps.md) – Each, Each Left, Each Right, Each Parallel, Each Prior<br>
-[Accumulators](../ref/accumulators.md) – Converge, Do, While
+<i class="fas fa-book"></i> Iterators:  
+[Maps](../ref/maps.md) – Case, Each, Each Left, Each Right, Each Parallel, Each Prior<br>
+[Accumulators](../ref/accumulators.md) – Converge, Do, While, Scan, Over
 
 
 ### Common errors
