@@ -105,6 +105,9 @@ q)"Zürich"
 "Z\374rich"
 ```
 
+<i class="fas fa-graduation-cap"></i>
+[Unicode](../kb/unicode.md)
+
 
 ### Temporal
 
