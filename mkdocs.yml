@@ -483,6 +483,7 @@ nav:
         - Data postprocessing: ml/automl/userguide/postproc.md
       - Advanced platform modifications: 
         - Advanced parameters: ml/automl/adv/params.md
+      - FAQ: ml/automl/faq.md
   - Knowledge Base:
     - Overview: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
