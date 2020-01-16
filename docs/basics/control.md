@@ -8,17 +8,25 @@ keywords: control, control words, distributive, evaluation, iterate, kdb+, opera
 
 
 
+<pre markdown="1" class="language-txt">
 
+[' ': /: \:   each peach prior](../ref/maps.md "maps")     [\$[x;y;z] Cond](../ref/cond.md)
+[\\ /          scan over](../ref/accumulators.md "accumulators")            [?[x;y;z] Vector Conditional](../ref/vector-conditional.md)
 
+[.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)
+[@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)
+</pre>
 
-Evaluation is controlled by 
+Evaluation is controlled by
 
--   [iterators](../ref/iterators.md) for iteration 
+-   [iterators](../ref/iterators.md) (maps and accumulators) for iteration
 -   conditional evaluation
 -   explicit return from a lambda
 -   signalling and trapping errors
 -   control words
 
+<i class="fas fa-book-open"></i>
+    [Debugging](debug.md)
 
 ## Iterators
 
@@ -27,14 +35,14 @@ Evaluation is controlled by
 
 ### Maps
 
-The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [values](glossary.md#applicable-value) across the items of lists and dictionaries. 
+The [maps](../ref/maps.md) Each, Each Left, Each Right, Each Parallel, and Each Prior are [iterators](../ref/iterators.md) that apply [values](glossary.md#applicable-value) across the items of lists and dictionaries.
 
 
 ### Accumulators
 
-The [accumulators](../ref/accumulators.md) Scan and Over are iterators that apply values _progressively_: that is, first to argument/s, then progressively to the result of each evaluation. 
+The [accumulators](../ref/accumulators.md) Scan and Over are iterators that apply values _progressively_: that is, first to argument/s, then progressively to the result of each evaluation.
 
-For unary values, they have three forms, known as Converge, Do, and While. 
+For unary values, they have three forms, known as Converge, Do, and While.
 
 
 ### Case
@@ -72,7 +80,7 @@ for-each (x in v) {
 can be written in q as
 
 ```q
-q)((`abc,;string;::) `v1`v2?v)@'v   
+q)((`abc,;string;::) `v1`v2?v)@'v
 `abc`v1
 `abc`v1
 `v3
@@ -98,7 +106,7 @@ Syntax: `$[x;y;z]`
 
 Two arguments are evaluated: `x` and either `y` or `z`.
 
-[Vector Conditional](../ref/vector-conditional.md) does something similar for lists of arguments, but evaluates all three arguments. 
+[Vector Conditional](../ref/vector-conditional.md) does something similar for lists of arguments, but evaluates all three arguments.
 It should be used in [qSQL queries](qsql.md), which do not support Cond.
 
 
@@ -123,7 +131,7 @@ q)foo 3
 
 ## Signalling and trapping errors
 
-[Signal](../ref/signal.md) will exit the lambda under evaluation and signal an error to the expression that invoked it. 
+[Signal](../ref/signal.md) will exit the lambda under evaluation and signal an error to the expression that invoked it.
 
 ```q
 q)goo:{if[0>type x;'`type]; x cross x}
@@ -138,7 +146,7 @@ q)goo 3
        ^
 ```
 
-[Trap and Trap At](../ref/apply.md#trap) set traps to catch errors. 
+[Trap and Trap At](../ref/apply.md#trap) set traps to catch errors.
 
 
 ## Control words
@@ -154,7 +162,7 @@ q)goo 3
 
 [`if`](../ref/if.md)
 
-: evaluate some expression/s if some condition holds 
+: evaluate some expression/s if some condition holds
 
 [`while`](../ref/while.md)
 
@@ -165,7 +173,8 @@ q)goo 3
     Control words are little used in practice for iteration.
     [Iterators](../ref/iterators.md) are more commonly used.
 
-<i class="fas fa-book"></i> Iterators:  
+<i class="fas fa-book"></i> Iterators:
+<br>
 [Maps](../ref/maps.md) – Case, Each, Each Left, Each Right, Each Parallel, Each Prior<br>
 [Accumulators](../ref/accumulators.md) – Converge, Do, While, Scan, Over
 
@@ -174,7 +183,7 @@ q)goo 3
 
 !!! warning "Control words are not functions, and return as a result only Identity."
 
-A common error is forgetting to terminate with a semi-colon. 
+A common error is forgetting to terminate with a semi-colon.
 
 The result of `if`, `do`, and `while` is [Identity](../ref/identity.md), `(::)`, which allows one mistakenly to write code such as `a:if[1b;42]43` (instead use [Cond](../ref/cond.md)), or `a:0b;if[a;0N!42]a:1b` – the sequence is not as intended!
 
