@@ -16,12 +16,12 @@ As highlighted [here](../../userguide) the running of the function `.aml.run` in
 
 The following are the procedures completed when the default system configuration is deployed:
 
-1. Appropriate models are chosen for the use-case being explored.
-2. Inappropriate columns within the dataset are removed based on types.
-3. A check is applied to ensure that the number of targets is appropriate for the dataset.
-4. Symbol data is encoded via either one-hot or frequency encoding.
+1. Appropriate models are chosen for the use-case type being explored (classification/regression).
+2. Inappropriate columns within the dataset are removed based on their types.
+3. A check is applied to ensure that the number of targets is appropriate for the dataset type (`FRESH`/`normal`).
+4. Symbol data columns are encoded via either one-hot or frequency encoding.
 5. Constant columns are removed from the data.
-6. Nulls are replaced and an indicating column is added to encode their original position
+6. Nulls are replaced and an additional column is added to encode their original position
 7. Positive/negative infinities are replaced by the non infinitie max/min value of the column
 
 ### Applied models
@@ -97,7 +97,7 @@ In the above example the following describe the columns for the defined tables.
  model = Name of the model to be applied
  lib   = Python library from which the model is derived
  fnc   = Sub module within the python library from which a model is derived
- seed  = Is a model capable of being seeded allowing for consistent rerunning
+ seed  = Is a model capable of being seeded allowing for consistent rerunning?
  typ   = type of problem being solved
  minit = definition of the model which will to be applied in the workflow
 ```

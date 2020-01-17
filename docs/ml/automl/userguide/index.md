@@ -20,7 +20,7 @@ The following examples and function descriptions outline the most basic implemen
 
 ## `.aml.run`
 
-_Apply automated machine learning based on user provided data and target_
+_Apply automated machine learning based on user provided data and target values_
 
 Syntax: `.aml.run[tab;tgt;ftype;ptype;dict]`
 
@@ -28,11 +28,11 @@ Where
 
 -   `tab` is unkeyed tabular data from which the models will be created
 -   `tgt` is the target vector
--   `ftype` type of feature extraction being completed as a symbol (``` `fresh/`normal```)
--   `ptype` type of problem regression/class as a symbol (``` `reg/`class ```)
+-   `ftype` type of feature extraction being completed on the dataset as a symbol (``` `fresh/`normal```)
+-   `ptype` type of problem, regression/class, as a symbol (``` `reg/`class ```)
 -   `dict` is one of `::` for default behaviour, a kdb+ dictionary or path to a user defined flat file for modifying default parameters.
 
-Default return/saved items from an individual run:
+Default returned/saved items from an individual run:
 
 1. The best model, saved as a hdf5 file, or "pickled" byte object.
 2. A saved report indicating the procedure taken and scores achieved.
@@ -115,10 +115,10 @@ Syntax: `.aml.new[tab;fpath]`
 
 Where
 
--   `tab` is an unkeyed tabular dataset which has the same schema as the run specified
+-   `tab` is an unkeyed tabular dataset which has the same schema as the input data from the run specified in `fpath`
 -   `fpath` the path to the folder in which the /config and /models folders are defined
 
-returns the predictions on new data based on a previously fitted model and workflow.
+returns the target predictions for new data based on a previously fitted model and workflow.
 
 ```q
 // New dataset

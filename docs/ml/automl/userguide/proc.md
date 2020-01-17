@@ -17,7 +17,7 @@ The procedures outlined below describe the steps required to prepare extracted f
 
 The following are the procedures completed when the default system configuration is deployed:
 
-1. Feature extraction is performed using either FRESH or normal feature extraction.
+1. Feature extraction is performed using either FRESH or normal feature extraction methods.
 2. Significance tests are applied to extracted features to determine those most relevant for model training.
 3. Data is split into training, validation and testing (holdout) sets.
 4. Cross validation procedures are performed on a selection of models.
@@ -59,10 +59,13 @@ d         | x_absenergy x_abssumchange x_count x_countabovemean x_countbelowm..
 q)count 1_cols freshfeats
 1132
 ```
+!!!Note
+	When running `.aml.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. Instructions on how to amend this can be found [here](../adv/params.md)
+
 
 #### Normal
 
-Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target per row. The current implementation of normal feature extraction applies the following feature extraction procedures
+Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target value per row. The current implementation of normal feature extraction applies the following feature extraction procedures
 
 1. Time/date type columns are decomposed into their component parts 
 
@@ -106,7 +109,7 @@ q)count normfeat
 
 ### Feature selection
 
-In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](https://code.kx.com/v2/ml/toolkit/fresh/) function contained within the ML-Toolkit. When default parameters are used, the top 25th percentile of features are selected. The below regression example demonstrates the steps required extract significant features within the automl pipeline. 
+In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](https://code.kx.com/v2/ml/toolkit/fresh/) function contained within the ML-Toolkit. When default parameters are used, the top 25th percentile of features are selected. The below regression example demonstrates the steps required to extract significant features within the automl pipeline. 
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
@@ -152,7 +155,7 @@ In order to split the data a number of train-test split procedures are implement
 Problem Type | Function | Description |
 -------------|----------|-------------|
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
-FRESH        |.ml.ttsnonshuff    | Without shuffling the dataset split into training and testing set with defined percentage in each to ensure no time leakage.
+FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage.
 
 An example shows `.ml.traintestsplit` being used within the automated pipeline.
 
@@ -208,7 +211,8 @@ For clarity, the splitting of data to this point as implemented in the default c
 
 ### Model Selection
 
-Once the relevant models have undergone cross validation using the training data, scores are calculated using the relevant scoring metric for the problem type (classification or regression). The file `scoring.txt` is provided within the platform which specifies the possible scoring metrics and how results should be ordered for each of these metrics in order to ensure that the best model is being returned. This file can be altered by the user if necessary in order to expand the number of metrics available or to add custom metrics. The default metric for classification problems is accuracy, while MSE is used for regression.
+Once the relevant models have undergone cross validation using the training data, scores are calculated using the relevant scoring metric for the problem type (classification or regression). The file `scoring.txt` is provided within the platform which specifies the possible scoring metrics and how results should be ordered (ascending/descending) for each of these metrics in order to ensure that the best model is being returned. This file can be altered by the user if necessary in order to expand the number of metrics available or to add custom metrics. The default metric for classification problems is accuracy, while MSE is used for regression. An extensive list of example metric functions  applied in kdb can be found in the [ML-Toolkit](https://code.kx.com/q/ml/toolkit/utilities/metric/)
+
 
 Below is an example of the expected output for a regression problem following cross validation. All models are scored using the default regression scoring metric, with the best scoring model selected and used to make predictions on the validation set.
 
@@ -241,7 +245,7 @@ Score for holdout predictions using best model - KNeighborsRegressor
 
 ### Optimization
 
-In order to optimize the best model, grid search procedures are implemented. Similarly to the cross validation methods above this grid search functionality is sourced from within the ML-Toolkit.
+In order to optimize the best model, grid search procedures are implemented. Similarly to the cross validation methods above, this grid search functionality is sourced from within the ML-Toolkit.
 
 In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the flat file `hyperparam.txt` and can be altered by the user if required. 
 
