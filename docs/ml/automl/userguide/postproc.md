@@ -25,9 +25,9 @@ These outputs are contained within sub folders for `images`, `models` and `confi
 
 **Feature Impact**
 
-The feature impact plot identifies the features which have the highest impact on the outcomes of a model. Within the framework, the impact of a single feature column is determined by shuffling the values in that column and running the best model again with this new, scrambled feature.
+The feature impact plot identifies the features which have the highest impact when predicting the outcomes of a model. Within the framework, the impact of a single feature column is determined by shuffling the values in that column and running the best model again with this new, scrambled feature.
 
-It should be expected that if a feature is an important contributor to the output of a model, then scambling or shuffling that feature will cause the model to perform less well. Conversely, if the model performs better on the shuffled data, which is effectively noise, it is safe to say that the feature is not relevant for model training.
+It should be expected that if a feature is an important contributor to the output of a model, then scambling or shuffling that feature will cause the model to not perform as well. Conversely, if the model performs better on the shuffled data, which is effectively noise, it is safe to say that the feature is not relevant for model training.
 
 A score is produced by the model for each scrambled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML-Toolkit. An example plot is shown below for a table comprised of 4 features, using a Gradient Boosting Regressor.
 
@@ -35,7 +35,7 @@ A score is produced by the model for each scrambled column, with all scores orde
 
 ### Models
 
-The model which produced the best score throughout the pipeline is saved down such that is can be used on new data and maintained for a production environment the following describes form of model is saved to disk.
+The model which produced the best score throughout the pipeline is saved down such that it can be used on new data and maintained for a production environment the following describes form of model is saved to disk.
 
 Model Library | Save type |
 --------------|-----------|

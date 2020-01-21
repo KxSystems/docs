@@ -11,7 +11,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 <i class="fab fa-github"></i> [KxSystems/automl](https://github.com/kxsystems/automl)
 
 
-The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.run`. This section will focus on how this final parameter can be modified to input changes to the default behaviour. There are two options for how this final parameter can be input
+The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.run`. This section will focus on how this final parameter can be modified to apply changes to the default behaviour. There are two options for how this final parameter can be input
 
 1. kdb+ dictionary outlining the changes to default behaviour that are to be made
 2. The path to a flat file containing more human readable updates to the parameter set.
@@ -56,10 +56,10 @@ q).aml.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 
 ### `funcs`
 
-_Denotes the functions that are to be applied to for feature extraction_
+_Denotes the functions that are to be applied for feature extraction_
 
 **FRESH**
-By default the feature extraction functions applied for any FRESH based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A who wishes to augment these functions or choose a subsection therein contained can do so as seen in the below example.
+By default the feature extraction functions applied for any FRESH based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A user who wishes to augment these functions or choose a subsection therein contained, can do so as seen in the below example.
 
 **Normal**
 By default feature extraction in the case of Normal feature extraction procedures is the decomposistion of time/date types into their component parts, this can be augmented by a user to add new functionality. Functions supported are any that take as input a simple table and return a simple table.
@@ -69,11 +69,11 @@ q)uval:100?50
 q)tab:([]tm:"t"$uval;asc 100?1f;100?1f;100?1f;100?1f)
 q)fresh_tgt:count[distinct uval]?1f
 q)norm_tgt :asc 100?1f
-// Select only functions to apply which take < 1 argument
+// Select only functions which take < 1 argument for a FRESH based problem
 q).aml.newfuncs:select from .ml.fresh.params where pnum<1
 // Run feature extraction using user defined function table for FRESH
 q).aml.run[tab;fresh_tgt;`fresh;`reg;enlist[`funcs]!enlist `.aml.newfuncs]
-// Run feature extraction using a set of functions provided by a user
+// Run feature extraction on Normal data using a set of functions provided by a user
 q)funcs:`.aml.prep.i.truncsvd`.aml.prep.i.bulktransform
 q).aml.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
 ```
@@ -93,7 +93,7 @@ In each case, the default grid search procedure being implemented is a shuffled 
 
 The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into
 
-For simplicity of implementation a user should where possible use the functions within the `.ml.gs` namespace for this task.
+For simplicity of implementation, a user should where possible use the functions within the `.ml.gs` namespace for this task.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
@@ -147,7 +147,7 @@ _Scoring functions used in model validation and optimization_
 
 The scoring metric used to calculate the performance of each classifier is defined by this parameter which is a dictionary containing a scoring metric for both regression and classification problems. The default behaviour is to use `.ml.accuracy` for classification tasks and `.ml.mse` for regression tasks. Modifying these may be required in order to correctly optimise a model for a specific use case.
 
-The following functions are supported within the platform at present with the ordering which allows the best model to be chosen are displayed below and defined in `code/mdldef/scoring.txt`
+The following functions are supported within the platform at present with the ordering which allows the best model to be chosen displayed below and defined in `code/mdldef/scoring.txt`
 
 ```
 .ml - Statistical analysis metrics with automl score order
@@ -192,7 +192,7 @@ q).aml.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
 
 _The seed which is used to ensure model reruns are consistent_
 
-By default each run of the platform is completed with a 'random' seed derived based on the time of a run. If a user wishes to have more explicit control of this behaviour the seed can be set to a user specified value. This allows ensures that each run of the platform will return results which are consistent run to run thus allowing for the impact of modifications to the pipeline to be accurately monitored
+By default each run of the platform is completed with a 'random' seed derived based on the time of a run. If a user wishes to have more explicit control of this behaviour the seed can be set to a user specified value. This ensures that each run of the platform will return results which are consistent run to run, thus allowing for the impact of modifications to the pipeline to be accurately monitored
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
@@ -209,7 +209,7 @@ q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 
 _Feature significance function to be applied to data to reduce feature set_
 
-By default the system will apply a feature significance tests provided within the ML toolkit [here](https://code.kx.com/q/ml/toolkit/fresh/#mlfreshsignificantfeatures). The function uses the 25th percentile of important features based on the p-values returned from a number of statistical tests comparing each column within the dataset with the target vector. This can be modified by a user as follows
+By default the system will apply a feature significance test provided within the ML toolkit [here](https://code.kx.com/q/ml/toolkit/fresh/#mlfreshsignificantfeatures). The function uses the 25th percentile of important features based on the p-values returned from a number of statistical tests, comparing each column within the dataset with the target vector. This can be modified by a user as follows
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;asc 100?1f)
@@ -251,9 +251,9 @@ As described when outlining the default behaviour of the systems [here](../../us
 Problem Type | Function | Description |
 -------------|----------|-------------|
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
-FRESH        |.ml.ttsnonshuff    | Without shuffling the dataset split into training and testing set with defined percentage in each to ensure no time leakage
+FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage
 
-For specific use cases this may not be sufficient, for example if a user wishes to split the data such that a equal distribution of target classes occur in the training and testing sets this could be implemented as in the following example
+For specific use cases this may not be sufficient, for example if a user wishes to split the data such that an equal distribution of target classes occur in the training and testing sets this could be implemented as in the following example
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
@@ -264,7 +264,7 @@ q).aml.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
 ```
 
 !!!Note
-	When using a user defined function must take as input 
+	When using a user defined function, it must take the following as input 
 	
 	* x = A simple table
 	* y = The target vector
@@ -281,7 +281,7 @@ In each case by default the cross validation procedure being implemented is a 5 
 
 The input for this parameter is a mixed list containing the cross validation function name as a symbol and the number of cross validation folds to split the data into.
 
-For simplicity of implementation a user should where possible use the functions within the `.ml.xv` namespace for this task.
+For simplicity of implementation a user should where possible, should use the functions within the `.ml.xv` namespace for this task.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)

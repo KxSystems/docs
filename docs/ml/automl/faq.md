@@ -7,7 +7,7 @@ keywords: embedpy, machine learning, automation, distribution, cross validation,
 
 ## Can this automated machine learning framework be configured for distributed execution?
 
-Yes. As outlined within the documentation for the machine learning toolkit [here](https://code.kx.com/q/ml/toolkit/xval/) and [here](https://code.kx.com/q/ml/toolkit/fresh/#feature-extraction) procedures for the application of distributed multiprocess cross validation and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
+Yes. As outlined within the documentation for the machine learning toolkit [here](https://code.kx.com/q/ml/toolkit/xval/) and [here](https://code.kx.com/q/ml/toolkit/fresh/#feature-extraction), procedures for the application of distributed multiprocess cross validation and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
 
 ```q
 // Initialize your process with multiple slave processes and an associated port
