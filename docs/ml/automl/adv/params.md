@@ -301,7 +301,7 @@ In each of the above examples the final parameter input has been a kdb+ dictiona
 ```
 // Fresh parameter file
 aggcols |{first cols x}
-params  |.ml.fresh.params
+funcs   |.ml.fresh.params
 xv      |.ml.xv.kfshuff;5
 gs      |.ml.gs.kfshuff;5
 prf     |.aml.xv.fitpredict
@@ -315,6 +315,7 @@ sz      |0.2
 // Normal parameter file
 xv      |.ml.xv.kfshuff;5
 gs      |.ml.gs.kfshuff;5
+funcs   |.aml.prep.i.default
 prf     |.aml.xv.fitpredict
 scf     |class=.ml.accuracy;reg=.ml.mse
 seed    |rand_val

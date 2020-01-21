@@ -9,7 +9,7 @@ keywords: machine learning, automated, ml, feature extraction, feature selection
 ---
 # User interface
 
-At the highest level this repository allows for two primary functions to be called:
+At the highest level this repository allows for two primary callable functions:
 
 1. `.aml.run` = Run the automated machine learning pipeline on user defined data and target
 2. `.aml.new` = Using a previously fit model and set of instructions derived from 1 above, predict the target value for new tabular data
