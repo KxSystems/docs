@@ -1,7 +1,7 @@
 /*
  * Custom script for code.kx.com
  * Author: stephen@kx.com
- * Version: 2020.01.16
+ * Version: 2020.01.27
  * https://gist.github.com/wpscholar/4637176#file-jquery-external-links-new-window-js-L4
  */
 $(function() {
@@ -14,6 +14,7 @@ $(function() {
 	});
     // Search engine call from Search box
 	var site = window.location.origin + "/";
+	var test = site[4]!=="s"; // production site uses HTTPS
 	var kxSearch = site + 'q/search2?query='; // >>> reverse-proxy on Nginx at code.kx.com
 	var gsSearch = 'https://www.google.com/search?q=site%3Acode.kx.com+';
 	var srchHandler = function( evt ) {
@@ -41,7 +42,7 @@ $(function() {
 						? qry + "/" : "");
 				// namespaces
 				if( !pag && qry.length>1 && qry[0]=="." ){
- 					pag = ($.inArray(qry[1], ["h","j","m","q","Q","z"] )>-1 ? "dot"+qry[1]+"/" : "");
+ 					pag = ($.inArray(qry[1], ["h","j","m","q","Q","z"] )>-1 ? "dot"+qry[1].toLowerCase()+"/" : "");
 				}
 				pag = pag ? "ref/" + pag : "";  // all the above in /q/ref
 
@@ -56,7 +57,7 @@ $(function() {
 					($.inArray(qry,["types","datatype","datatypes","data type","data types"])>-1 ?
 						"basics/datatypes/" : "");
 				pag = pag?pag : ($.inArray(qry,["man","man.q"])>-1 ? "about/man/" : "");
-				pag = pag ? "q/" + pag : "";  // all the above in /q
+				pag = pag ? (test ? "" : "q/") + pag : "";  // all the above in /q
 
 				pag = pag?pag : (qry.match(/q4m/gi)       ? "q4m3/" : "");
 				pag = pag?pag : (qry.match(/mortal/gi)    ? "q4m3/" : "");
