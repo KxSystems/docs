@@ -32,7 +32,9 @@ Where
 -   `ptype` type of problem, regression/class, as a symbol (``` `reg/`class ```)
 -   `dict` is one of `::` for default behaviour, a kdb+ dictionary or path to a user defined flat file for modifying default parameters.
 
-Default returned/saved items from an individual run:
+Returns the date and time at which the run was initiated
+
+The default setup saves the following items from an individual run:
 
 1. The best model, saved as a hdf5 file, or "pickled" byte object.
 2. A saved report indicating the procedure taken and scores achieved.
@@ -96,6 +98,8 @@ Best model fitting now complete - final score on test set = 0.0001017797
 Saving down procedure report to /outputs/2020.01.02/run_11.21.47.763/report/
 Saving down GradientBoostingRegressor model to /outputs/2020.01.02/run_11.21.47.763/models/
 Saving down model parameters to /outputs/2020.01.02/run_11.21.47.763/config/
+2020.01.02
+11:21:47.763
 
 // Example data for various problem types
 q)bin_target:asc 100?0b
@@ -111,20 +115,24 @@ q).aml.run[tab;bin_target;`normal;`class;::]
 
 _Apply the workflow and fitted model associated with a specified run to new data_
 
-Syntax: `.aml.new[tab;fpath]`
+Syntax: `.aml.new[tab;dt;tm]`
 
 Where
 
 -   `tab` is an unkeyed tabular dataset which has the same schema as the input data from the run specified in `fpath`
--   `fpath` the relative path from the outputs folder to the location of sub-directories associated with a specified run.
+-   `dt` is the date of a run as a q date, or string representation i.e. `"yyyy.mm.dd"`
+-   `tm` is the time of a run as a q time or string representation either in the form `"hh:mm:ss.xxx"/"hh.mm.ss.xxx"`.
 
 returns the target predictions for new data based on a previously fitted model and workflow.
 
 ```q
 // New dataset
 q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
-q)fpath:"2020.01.02/run_11.21.47.763"
-q).aml.new[new_tab;fpath]
+// q date/time input
+q).aml.new[new_tab;2020.01.02;11.21.47.763]
 0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
+// string date/time input
+q).aml.new[new_tab;"2020.01.02";"11:21:47.763"]
+0.1953181 0.449196 0.6708352 0.5842918 0.230593 0.4713597 0.1953181 0.0576498..
 ```
 

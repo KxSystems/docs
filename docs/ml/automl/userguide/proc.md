@@ -188,10 +188,10 @@ For classification problems, similar to the one above, it cannot be guaranteed t
 
 For this reason, the utility function `.aml.i.kerascheck` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
 
-Below shows the output to be expected from `.aml.runexample` when the same number of classes are not present in each dataset.
+Below shows the output to be expected from `.aml.run` when the same number of classes are not present in each dataset.
 
 ```q
-q).aml.runexample[tb;tgt;`normal;`class;(::)]
+q).aml.run[tb;tgt;`normal;`class;(::)]
 ...
 Test set does not contain examples of each class. Removed MultiKeras from models
 ...
@@ -227,7 +227,7 @@ x          x1         x2        x3 x4                                        ..
 0.9841029  0.3510406  0.7041609 00 0.002184472 0.06670537 0.6918339 0.4301331..
 // regression example
 q)tgt:100?1f
-q).aml.runexample[tb;tgt;`normal;`reg;(::)]
+q).aml.run[tb;tgt;`normal;`reg;(::)]
 ...
 Scores for all models, using .ml.mse
 KNeighborsRegressor      | 0.07372374
@@ -280,7 +280,7 @@ x         x1         x2         x3 x4                                        ..
 0.2092798 0.02959764 0.03549935 00 0.3442338 0.1319948 0.6779861 0.2621923 0...
 // regression example
 q)tgt:100?1f
-q).aml.runexample[tb;tgt;`normal;`reg;(::)]
+q).aml.run[tb;tgt;`normal;`reg;(::)]
 ...
 The best model has been selected as Lasso, continuing to grid-search and final model fitting on holdout set
 

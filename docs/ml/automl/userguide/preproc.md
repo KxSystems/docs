@@ -79,7 +79,7 @@ x         x1        x2
 // Regression task
 q)5#tgt:100?1f
 0.3927524 0.5170911 0.5159796 0.4066642 0.1780839
-// .aml.runexample[tab;tgt;`normal;`reg;::]
+// .aml.run[tab;tgt;`normal;`reg;::]
 q).aml.i.models[`reg;tgt;::]
 model                     lib     fnc            seed typ minit              ..
 -----------------------------------------------------------------------------..
@@ -134,7 +134,7 @@ x         x1        x2         x3 x4
 0.6081598 0.8784222 0.3745857  00 0.03301238 0.3722512 0.2911225 0.7153449 0.2740865
 q)tgt:100?1f
 // output truncated to only include appropriate information
-q).aml.runexample[data;target;`normal;`reg;::]
+q).aml.run[data;target;`normal;`reg;::]
 ...
 Removed the following columns due to type restrictions for normal
 `x3`x4
