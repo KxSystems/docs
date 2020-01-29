@@ -116,7 +116,7 @@ Syntax: `.aml.new[tab;fpath]`
 Where
 
 -   `tab` is an unkeyed tabular dataset which has the same schema as the input data from the run specified in `fpath`
--   `fpath` the path to the folder in which the /config and /models folders are defined
+-   `fpath` the relative path from the outputs folder to the location of sub-directories associated with a specified run.
 
 returns the target predictions for new data based on a previously fitted model and workflow.
 

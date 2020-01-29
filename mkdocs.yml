@@ -481,8 +481,7 @@ nav:
         - Data preprocessing: ml/automl/userguide/preproc.md
         - Data processing: ml/automl/userguide/proc.md
         - Data postprocessing: ml/automl/userguide/postproc.md
-      - Advanced platform modifications: 
-        - Advanced parameters: ml/automl/adv/params.md
+      - Advanced parameter modifications: ml/automl/params.md
       - FAQ: ml/automl/faq.md
   - Knowledge Base:
     - Overview: kb/index.md
