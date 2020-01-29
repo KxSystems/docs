@@ -37,7 +37,7 @@ The addition of sklearn models can be completed through the modification of a nu
 
 1 - Open the file relevant to the problem type being solved, namely classification/regression i.e. `classmodels.txt`/`regmodels.txt` respectively.
 
-2 - Add a row to the defined tabular flat file, below is a sample of a number of rows from the regression file (table header added for convenience)
+2 - Add a row to the defined tabular flat file using the same format as shown below.This a sample of a number of rows from the regression file (table header added for convenience)
 ```q
 Model name                | library   ; sub-module    ;  seeded? ; problem type
 --------------------------|-----------;---------------;----------;-------------
@@ -51,7 +51,7 @@ q)seed:42
 q)mdl:.p.import[`sklearn.ensemble][`:AdaBoostRegressor][`random_state pykw seed]
 ```
 
-This defines a model from the `sklearn` library, from the submodule `ensemble`, named `AdaBoostRegressor` which can be seeded with a random state `seed` to ensure that runs of the model can be reproducible. If the model does not take a `random_state` as input this should be set as `::`.
+This defines a model from pythons `sklearn` library, with the associated submodule `ensemble`, named `AdaBoostRegressor` which can be seeded with a random state `seed`, to ensure that runs of the model can be reproducible. If the model does not take a `random_state`, the input to this is set to `::`.
 
 The following would be the table modified to include a Bayesian ridge regressor (not included by default).
 
@@ -64,9 +64,13 @@ KNeighborsRegressor       | sklearn   ;   neighbors    ;    ::     ; reg
 BayesianRidge             | sklearn   ;  linear_model  ;    ::     ; reg
 ```
 
+<<<<<<< HEAD
+3 - If a grid search is to be performed on the model, a user must add the model associated hyperparameters over which to perform this to the file `code/models/hyperparams.txt`, if not then the model name must be added to `.aml.i.excludelist` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor
+=======
 3 - If a grid search is to be performed on the model a user must add the hyperparameters over which to perform this to the file `code/models/hyperparams.txt`. **If not** then the model name **must** be added to `.aml.i.excludelist` within `code/utils.q`.
 
 The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor
+>>>>>>> e81005c6c522cb682ed638e88ab5420ddd3165bf
 
 ```q
 BayesianRidge  |n_iter=100 200 300;tol=0.001 0.005 0.01
@@ -79,7 +83,11 @@ The addition of custom keras models is slightly more involved than that performe
 1 - Open the file `code/models/kerasmdls.q`
 
 
+<<<<<<< HEAD
+2 - Follow the naming convention [model-name]{mdl/fit/predict} to create function which defines the model to be used, fits the model to the training data and predicts the value of the target. Ensure that the functions are defined in the root of the `.aml` namespace (this is already handled if within the `kerasmdls.q` file)
+=======
 2 - Follow the naming convention `[model-name]{mdl/fit/predict}` to create functions which define, the model to be used, fits the model and predicts the value of the target. A user must ensure that the functions are defined in the root of the `.aml` namespace (this is handled if within the `kerasmdls.q` file)
+>>>>>>> e81005c6c522cb682ed638e88ab5420ddd3165bf
 
 ```q
 $vi kerasmdls.q
@@ -112,13 +120,13 @@ customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
 ```
 
 !!!Warning
-	To ensure that the behaviour of the system is consistent with the framework, it is vital that a user follows the above instructions in particularly ensuring that their models take as input the defined parameters and output appropriately, in particular at the model definition phase where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
+	To ensure that the behaviour of the system is consistent with the framework, it is vital that a user follows the above instructions, particularly ensuring that their models take as input the defined parameters along with returning the appropriate output, in particular at the model definition phase where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
 
 !!!Note
-	For the fitting and prediction of keras models through embedPy it is important that the feature data is a numpy array, omission of this conversion can cause issues. As seen above within `kerasmdls.q` this is done through application of ```npa:.p.import[`numpy]`:array``` to the data
+	For the fitting and prediction of keras models through embedPy, it is important that the feature data is a numpy array, omission of this conversion can cause issues. As seen above within `kerasmdls.q` this is done through application of ```npa:.p.import[`numpy]`:array``` to the data
 
 
-3 - Update the list `.aml.i.keraslist` defined at the top of the `code/models/keramdls.q` file. At present grid search procedures are **not** completed on keras models. The name of the model here must coincide with the naming convention to be used for displays to console and that defined in the next step as the "display-name"
+3 - Update the list `.aml.i.keraslist` defined at the top of the `code/models/keramdls.q` file. The name of the model here must coincide with the naming convention to be used for displays to console and that defined in the next step as the "display-name". At present grid search procedures are **not** completed on keras models.
 
 ```q
 \d .aml

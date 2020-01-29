@@ -16,7 +16,7 @@ The other sections of the automl documentation describe the default behaviour of
 1. kdb+ dictionary outlining the changes to default behaviour that are to be made
 2. The path to a flat file containing more human readable updates to the parameter set.
 
-Given that both options allow for the same modifications to be made the full list of parameters which can be modified is outlined first and the implementation of each is described at the end of this page.
+Given that both options allow for the same modifications to be made, the full list of parameters which can be modified is outlined first and the implementation of each is described at the end of this page.
 
 ## Advanced parameters
 
@@ -49,7 +49,7 @@ By default the aggregation column for any FRESH based feature extraction is assu
 q)uval:100?50
 q)tab:([]tstamp:"p"$uval;val:uval;100?1f;100?1f;100?1f)
 q)tgt:count[distinct uval]?1f
-// In this case we wist to have tstamp and val as aggregation columns
+// In this case we wish to have tstamp and val as aggregation columns
 // all other parameters are left as default
 q).aml.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 ```
@@ -62,7 +62,7 @@ _Denotes the functions that are to be applied for feature extraction_
 By default the feature extraction functions applied for any FRESH based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A user who wishes to augment these functions or choose a subsection therein contained, can do so as seen in the below example.
 
 **Normal**
-By default feature extraction in the case of Normal feature extraction procedures is the decomposistion of time/date types into their component parts, this can be augmented by a user to add new functionality. Functions supported are any that take as input a simple table and return a simple table.
+By default, feature extraction in the case of Normal feature extraction procedures is the decomposistion of time/date types into their component parts, this can be augmented by a user to add new functionality. Functions supported are any that take as input a simple table and return a simple table.
 
 ```q
 q)uval:100?50
@@ -110,7 +110,7 @@ q).aml.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 
 _Size of the holdout set on which the best grid searched model is tested_
 
-By default the holdout set across all problem types is set to 20%. For problems with a small number of data points a user may augment this to increase the number of datapoints being trained on 
+By default the holdout set across all problem types is set to 20%. For problems with a small number of data points, a user may augment this to increase the number of datapoints being trained on 
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
