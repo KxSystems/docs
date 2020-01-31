@@ -127,9 +127,9 @@ _Save options to be used_
 
 By default, the system will save all outputs to disk (reports, images, config file, models). In a case where a user does not wish for all outputs to be saved, there are currently 3 options
 
-1. 0 = Nothing is saved the models will run and display results to console but nothing persisted
-2. 1 = Save the model and configuration file only, will not generate a report for the user or any images
-3. 2 = Save all possible outputs to disk for the user including reports, images, config and models
+- 0 = Nothing is saved the models will run and display results to console but nothing persisted
+- 1 = Save the model and configuration file only, will not generate a report for the user or any images
+- 2 = Save all possible outputs to disk for the user including reports, images, config and models
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
