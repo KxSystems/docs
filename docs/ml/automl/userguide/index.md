@@ -11,18 +11,18 @@ keywords: machine learning, automated, ml, feature extraction, feature selection
 
 At the highest level this repository allows for two primary callable functions:
 
-1. `.aml.run` = Run the automated machine learning pipeline on user defined data and target
-2. `.aml.new` = Using a previously fit model and set of instructions derived from 1 above, predict the target value for new tabular data
+1. `.automl.run` = Run the automated machine learning pipeline on user defined data and target
+2. `.automl.new` = Using a previously fit model and set of instructions derived from 1 above, predict the target value for new tabular data
 
 Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the advanced section [here](../adv/params).
 
 The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non time series specific machine learning examples and implementations making use of the FRESH algorithm outlined [here](../../toolkit/fresh)
 
-## `.aml.run`
+## `.automl.run`
 
 _Apply automated machine learning based on user provided data and target values_
 
-Syntax: `.aml.run[tab;tgt;ftype;ptype;dict]`
+Syntax: `.automl.run[tab;tgt;ftype;ptype;dict]`
 
 Where
 
@@ -42,7 +42,7 @@ The default setup saves the following items from an individual run:
 4. Results from each step of the pipeline published to console.
 
 !!!Note
-	The following example displays the implementation of the function `.aml.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity output is only displayed in full for one example.
+	The following example displays the implementation of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity output is only displayed in full for one example.
 
 ```q
 // Non time-series example table
@@ -56,7 +56,7 @@ q)ptype:`reg
 // Use default system parameters
 q)dict:(::)
 // Run example
-q).aml.run[tab;reg_tgt;ftype;ptype;dict]
+q).automl.run[tab;reg_tgt;ftype;ptype;dict]
 
 The following is a breakdown of information for each of the relevant columns in the dataset
 
@@ -106,16 +106,16 @@ q)bin_target:asc 100?0b
 q)multi_target:desc 100?3
 q)fresh_data:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
 // FRESH regression example
-q).aml.run[fresh_data;reg_tgt;`fresh;`reg;::]
+q).automl.run[fresh_data;reg_tgt;`fresh;`reg;::]
 // non-time series/FRESH binary classification example
-q).aml.run[tab;bin_target;`normal;`class;::]
+q).automl.run[tab;bin_target;`normal;`class;::]
 ```
 
-## `.aml.new`
+## `.automl.new`
 
 _Apply the workflow and fitted model associated with a specified run to new data_
 
-Syntax: `.aml.new[tab;dt;tm]`
+Syntax: `.automl.new[tab;dt;tm]`
 
 Where
 
@@ -129,10 +129,10 @@ returns the target predictions for new data based on a previously fitted model a
 // New dataset
 q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
 // q date/time input
-q).aml.new[new_tab;2020.01.02;11.21.47.763]
+q).automl.new[new_tab;2020.01.02;11.21.47.763]
 0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
 // string date/time input
-q).aml.new[new_tab;"2020.01.02";"11:21:47.763"]
+q).automl.new[new_tab;"2020.01.02";"11:21:47.763"]
 0.1953181 0.449196 0.6708352 0.5842918 0.230593 0.4713597 0.1953181 0.0576498..
 ```
 

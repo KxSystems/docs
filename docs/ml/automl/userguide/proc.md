@@ -60,7 +60,7 @@ q)count 1_cols freshfeats
 1132
 ```
 !!!Note
-	When running `.aml.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. Instructions on how to amend this can be found [here](../adv/params.md)
+	When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. Instructions on how to amend this can be found [here](../adv/params.md)
 
 
 #### Normal
@@ -84,7 +84,7 @@ x            x1        x2        x3        x4 x5
 q)count cols tb
 6
 // apply normal feature extraction
-q)show normfeat:flip .aml.prep.normalcreate[tb;::]0
+q)show normfeat:flip .automl.prep.normalcreate[tb;::]0
 x1        | 0.1312281  0.3667245  0.1415448  0.8186288  0.5973116 0.2413466  ..
 x2        | 0.5068552  0.9532577  0.8768543  0.6690883  0.8108164 0.07458746 ..
 x3        | 0.9967246  0.07262924 0.1245068  0.5506067  0.1330347 0.1533462  ..
@@ -137,7 +137,7 @@ x         x1         x2         x6 x5_A x5_B x5_C xx1_trsvd xx2_trsvd xx6_trsvd 
 q)count cols tb
 28
 // select top 25th percentile of extracted features
-q)show feats:.aml.prep.freshsignificance[tb;tgt]
+q)show feats:.automl.prep.freshsignificance[tb;tgt]
 `xx1_trsvd`xx5_A_trsvd`x1x5_A_trsvd`x2x5_A_trsvd`x5_Ax5_B_trsvd`x5_Ax5_C_trsvd`x5_A
 q)count feats
 7
@@ -186,12 +186,12 @@ ytest | 20
 
 For classification problems, similar to the one above, it cannot be guaranteed that the N distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
 
-For this reason, the utility function `.aml.i.kerascheck` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
+For this reason, the utility function `.automl.i.kerascheck` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
 
-Below shows the output to be expected from `.aml.run` when the same number of classes are not present in each dataset.
+Below shows the output to be expected from `.automl.run` when the same number of classes are not present in each dataset.
 
 ```q
-q).aml.run[tb;tgt;`normal;`class;(::)]
+q).automl.run[tb;tgt;`normal;`class;(::)]
 ...
 Test set does not contain examples of each class. Removed MultiKeras from models
 ...
@@ -227,7 +227,7 @@ x          x1         x2        x3 x4                                        ..
 0.9841029  0.3510406  0.7041609 00 0.002184472 0.06670537 0.6918339 0.4301331..
 // regression example
 q)tgt:100?1f
-q).aml.run[tb;tgt;`normal;`reg;(::)]
+q).automl.run[tb;tgt;`normal;`reg;(::)]
 ...
 Scores for all models, using .ml.mse
 KNeighborsRegressor      | 0.07372374
@@ -280,7 +280,7 @@ x         x1         x2         x3 x4                                        ..
 0.2092798 0.02959764 0.03549935 00 0.3442338 0.1319948 0.6779861 0.2621923 0...
 // regression example
 q)tgt:100?1f
-q).aml.run[tb;tgt;`normal;`reg;(::)]
+q).automl.run[tb;tgt;`normal;`reg;(::)]
 ...
 The best model has been selected as Lasso, continuing to grid-search and final model fitting on holdout set
 

@@ -64,7 +64,7 @@ The following is an example of the contents of one of the config files.
 q)get`:metadata
 xv        | (`.ml.xv.kfshuff;5)
 gs        | (`.ml.gs.kfshuff;5)
-prf       | `.aml.xv.fitpredict
+prf       | `.automl.xv.fitpredict
 scf       | `class`reg!`.ml.accuracy`.ml.mse
 seed      | 45760980
 saveopt   | 2

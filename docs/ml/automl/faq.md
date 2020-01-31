@@ -14,7 +14,7 @@ Yes. As outlined within the documentation for the machine learning toolkit [here
 $q -s -8 -p 4321
 // load the automl framework
 q)\l automl/automl.q
-q).aml.loadfile`:init.q
+q).automl.loadfile`:init.q
 ```
 
 The above will now allow the application of grid search and the FRESH algorithm to be distributed to multiple processes.
@@ -64,7 +64,7 @@ KNeighborsRegressor       | sklearn   ;   neighbors    ;    ::     ; reg
 BayesianRidge             | sklearn   ;  linear_model  ;    ::     ; reg
 ```
 
-3 - If a grid search is to be performed on the model, a user must add the model associated hyperparameters over which to perform this to the file `code/models/hyperparams.txt`, if not then the model name must be added to `.aml.i.excludelist` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor
+3 - If a grid search is to be performed on the model, a user must add the model associated hyperparameters over which to perform this to the file `code/models/hyperparams.txt`, if not then the model name must be added to `.automl.i.excludelist` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor
 
 ```q
 BayesianRidge  |n_iter=100 200 300;tol=0.001 0.005 0.01
@@ -77,11 +77,11 @@ The addition of custom keras models is slightly more involved than that performe
 1 - Open the file `code/models/kerasmdls.q`
 
 
-2 - Follow the naming convention [model-name]{mdl/fit/predict} to create function which defines the model to be used, fits the model to the training data and predicts the value of the target. Ensure that the functions are defined in the root of the `.aml` namespace (this is already handled if within the `kerasmdls.q` file)
+2 - Follow the naming convention [model-name]{mdl/fit/predict} to create function which defines the model to be used, fits the model to the training data and predicts the value of the target. Ensure that the functions are defined in the root of the `.automl` namespace (this is already handled if within the `kerasmdls.q` file)
 
 ```q
 $vi kerasmdls.q
-\d .aml
+\d .automl
 // Custom regression model
 /* d = mixed list containing ((xtrn;ytrn);(ytrn;ytst))
 /* s = random seed used to ensure reinitialisation consistent
@@ -116,10 +116,10 @@ customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
 	For the fitting and prediction of keras models through embedPy, it is important that the feature data is a numpy array, omission of this conversion can cause issues. As seen above within `kerasmdls.q` this is done through application of ```npa:.p.import[`numpy]`:array``` to the data
 
 
-3 - Update the list `.aml.i.keraslist` defined at the top of the `code/models/keramdls.q` file. The name of the model here must coincide with the naming convention to be used for displays to console and that defined in the next step as the "display-name". At present grid search procedures are **not** completed on keras models.
+3 - Update the list `.automl.i.keraslist` defined at the top of the `code/models/keramdls.q` file. The name of the model here must coincide with the naming convention to be used for displays to console and that defined in the next step as the "display-name". At present grid search procedures are **not** completed on keras models.
 
 ```q
-\d .aml
+\d .automl
 i.keraslist:`regkeras`multikeras`binarykeras`customregkeras
 ```
 
@@ -133,5 +133,5 @@ customregkeras  | keras      ; customreg  ; seed    ; reg
 ```
 
 !!!Note
-	1. display-name is used for display and saving purposes, this is the name that should be added to the `.aml.i.keraslist` in order to be excluded from grid-search
+	1. display-name is used for display and saving purposes, this is the name that should be added to the `.automl.i.keraslist` in order to be excluded from grid-search
 	2. model-name should coincide with the naming convention used in step 1 for `[model-name]{fit/...}`

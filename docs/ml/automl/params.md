@@ -11,7 +11,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 <i class="fab fa-github"></i> [KxSystems/automl](https://github.com/kxsystems/automl)
 
 
-The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.aml.run`. This section will focus on how this final parameter can be modified to apply changes to the default behaviour. There are two options for how this final parameter can be input
+The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behaviour. There are two options for how this final parameter can be input
 
 1. kdb+ dictionary outlining the changes to default behaviour that are to be made
 2. The path to a flat file containing more human readable updates to the parameter set.
@@ -20,7 +20,7 @@ Given that both options allow for the same modifications to be made, the full li
 
 ## Advanced parameters
 
-The following lists the parameters which can be altered by users to modify the functionality of the automl platform. In each case, the parameter name corresponds to the kdb+ dictionary key which would be passed, alongside its user defined value, to the `.aml.run` function in order to update functionality.
+The following lists the parameters which can be altered by users to modify the functionality of the automl platform. In each case, the parameter name corresponds to the kdb+ dictionary key which would be passed, alongside its user defined value, to the `.automl.run` function in order to update functionality.
 
 ```q
 Parameters:
@@ -51,7 +51,7 @@ q)tab:([]tstamp:"p"$uval;val:uval;100?1f;100?1f;100?1f)
 q)tgt:count[distinct uval]?1f
 // In this case we wish to have tstamp and val as aggregation columns
 // all other parameters are left as default
-q).aml.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
+q).automl.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 ```
 
 ### `funcs`
@@ -70,12 +70,12 @@ q)tab:([]tm:"t"$uval;asc 100?1f;100?1f;100?1f;100?1f)
 q)fresh_tgt:count[distinct uval]?1f
 q)norm_tgt :asc 100?1f
 // Select only functions which take < 1 argument for a FRESH based problem
-q).aml.newfuncs:select from .ml.fresh.params where pnum<1
+q).automl.newfuncs:select from .ml.fresh.params where pnum<1
 // Run feature extraction using user defined function table for FRESH
-q).aml.run[tab;fresh_tgt;`fresh;`reg;enlist[`funcs]!enlist `.aml.newfuncs]
+q).automl.run[tab;fresh_tgt;`fresh;`reg;enlist[`funcs]!enlist `.automl.newfuncs]
 // Run feature extraction on Normal data using a set of functions provided by a user
-q)funcs:`.aml.prep.i.truncsvd`.aml.prep.i.bulktransform
-q).aml.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
+q)funcs:`.automl.prep.i.truncsvd`.automl.prep.i.bulktransform
+q).automl.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
 ```
 
 !!!Note
@@ -100,7 +100,7 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 // Roll forward grid search with 6 folds
 q)roll_forward:(`.ml.gs.tsrolls;6)
-q).aml.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 ```
 
 !!!Warning
@@ -117,7 +117,7 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 // Set holdout set to contain 10% of the dataset
 q)hldout:0.1
-q).aml.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist hldout]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist hldout]
 ```
 
 
@@ -135,9 +135,9 @@ By default, the system will save all outputs to disk (reports, images, config fi
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 // Save only the minimal outputs
-q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
 // No outputs saved
-q).aml.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
 ```
 
 
@@ -176,7 +176,7 @@ The following is an example implementation
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 q)reg_scf:enlist[`reg]!enlist `.ml.mae
-q).aml.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
 ```
 
 !!!Note
@@ -199,9 +199,9 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 // User defined seed
 q)seed:42
-q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 // Run the workflow again to show run to run consistency
-q).aml.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 ```
 
 
@@ -215,8 +215,8 @@ By default the system will apply a feature significance test provided within the
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;asc 100?1f)
 q)tgt:desc 100?1f
 // Define the function to be applied for feature significance tests
-q).aml.newsigfeat:{.ml.fresh.significantfeatures[x;y;.ml.fresh.ksigfeat 2]}
-q).aml.run[tab;tgt;`normal;`reg;enlist[`sigfeats]!enlist `.aml.newsigfeat]
+q).automl.newsigfeat:{.ml.fresh.significantfeatures[x;y;.ml.fresh.ksigfeat 2]}
+q).automl.run[tab;tgt;`normal;`reg;enlist[`sigfeats]!enlist `.automl.newsigfeat]
 ```
 
 !!!Note
@@ -238,7 +238,7 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 // Set holdout set to contain 10% of the dataset
 q)size:0.1
-q).aml.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 ```
 
 
@@ -260,7 +260,7 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?5
 q)shuffle:.ml.xv.i.shuffle
 q).ml.ttstrat:{[x;y;sz]`xtrain`ytrain`xtest`ytest!raze(x;y)@\:/:r@'shuffle each r:(,'/){x@(0,floor n*1-y)_neg[n]?n:count x}[;sz]each value n@'shuffle each n:group y}
-q).aml.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
+q).automl.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
 ```
 
 !!!Note
@@ -288,7 +288,7 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
 // Chain forward cross validation with 3 folds
 q)chain:(`.ml.xv.tschain;3)
-q).aml.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
 ```
 
 !!!Warning
@@ -304,7 +304,7 @@ aggcols |{first cols x}
 funcs   |.ml.fresh.params
 xv      |.ml.xv.kfshuff;5
 gs      |.ml.gs.kfshuff;5
-prf     |.aml.xv.fitpredict
+prf     |.automl.xv.fitpredict
 scf     |class=.ml.accuracy;reg=.ml.mse
 seed    |rand_val
 saveopt |2
@@ -315,8 +315,8 @@ sz      |0.2
 // Normal parameter file
 xv      |.ml.xv.kfshuff;5
 gs      |.ml.gs.kfshuff;5
-funcs   |.aml.prep.i.default
-prf     |.aml.xv.fitpredict
+funcs   |.automl.prep.i.default
+prf     |.automl.xv.fitpredict
 scf     |class=.ml.accuracy;reg=.ml.mse
 seed    |rand_val
 saveopt |2
@@ -328,16 +328,16 @@ sz      |0.2
 These files can be generated in the folder `code/mdldef/` using the following functions
 
 ```q
-q).aml.savedefault["fresh_params.txt";`fresh]
-q).aml.savedefault["normal_params.txt";`normal]
+q).automl.savedefault["fresh_params.txt";`fresh]
+q).automl.savedefault["normal_params.txt";`normal]
 ```
 
-Once modified the function `.aml.run` can be used with one of these files as follows
+Once modified the function `.automl.run` can be used with one of these files as follows
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-q).aml.run[tab;tgt;`normal;`reg;"normal_params.txt"]
+q).automl.run[tab;tgt;`normal;`reg;"normal_params.txt"]
 ```
 
 ## Complex examples
@@ -357,5 +357,5 @@ q)tab:([]tstamp:"p"$uval;val:uval;100?1f;100?1f;100?1f)
 q)tgt:count[distinct uval]?1f
 q)key_vals:`seed`hld`saveopt`xv`gs
 q)vals:(100;0.25;1;(`.ml.xv.kfsplit;3);(`.ml.gs.kfsplit;3))
-q).aml.run[tab;tgt;`fresh;`reg;key_vals!vals]
+q).automl.run[tab;tgt;`fresh;`reg;key_vals!vals]
 ```

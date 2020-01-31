@@ -10,7 +10,7 @@ keywords: machine learning, ml, automated, preprocessing, feature extraction, fe
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-As highlighted [here](../../userguide) the running of the function `.aml.run` in its default configuration is achieved by setting the final parameter `dict` to `::`. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.
+As highlighted [here](../../userguide) the running of the function `.automl.run` in its default configuration is achieved by setting the final parameter `dict` to `::`. The preprocessing of data is of critical importance in all machine learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.
 
 ## Outline of procedures
 
@@ -79,8 +79,8 @@ x         x1        x2
 // Regression task
 q)5#tgt:100?1f
 0.3927524 0.5170911 0.5159796 0.4066642 0.1780839
-// .aml.run[tab;tgt;`normal;`reg;::]
-q).aml.i.models[`reg;tgt;::]
+// .automl.run[tab;tgt;`normal;`reg;::]
+q).automl.i.models[`reg;tgt;::]
 model                     lib     fnc            seed typ minit              ..
 -----------------------------------------------------------------------------..
 AdaBoostRegressor         sklearn ensemble       seed reg {[x;y;z].p.import[x..
@@ -134,7 +134,7 @@ x         x1        x2         x3 x4
 0.6081598 0.8784222 0.3745857  00 0.03301238 0.3722512 0.2911225 0.7153449 0.2740865
 q)tgt:100?1f
 // output truncated to only include appropriate information
-q).aml.run[data;target;`normal;`reg;::]
+q).automl.run[data;target;`normal;`reg;::]
 ...
 Removed the following columns due to type restrictions for normal
 `x3`x4
@@ -157,9 +157,9 @@ q)data:([]100?1f;100?1f;100?1f)
 q)tgt:50?1f
 q)fresh_dict:enlist[`aggcols]!enlist `x
 q)norm_dict:(::)
-q).aml.prep.i.lencheck[data;tgt;`fresh;fresh_dict]
+q).automl.prep.i.lencheck[data;tgt;`fresh;fresh_dict]
 'Target count must equal count of unique agg values for fresh
-q).aml.prep.i.lencheck[data;tgt;`normal;norm_dict]
+q).automl.prep.i.lencheck[data;tgt;`normal;norm_dict]
 'Must have the same number of targets as values in table
 ```
 
@@ -176,7 +176,7 @@ In the FRESH and all non-FRESH example symbol columns are encoded as follows:
 The following example shows the application of this encoding for two columns which between the two of them meet both of the above criteria.
 
 ```q
-q).aml.prep.i.symencode[tab;10;0b;::;::]
+q).automl.prep.i.symencode[tab;10;0b;::;::]
 x2         x_freq x1_a x1_b x1_c
 --------------------------------
 0.3673896  0.07   0    1    0   
@@ -215,7 +215,7 @@ Both null values and infinities are removed from the data due to the inability o
 
 ```q
 q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)
-q).aml.i.null_encode[.ml.infreplace data;med]
+q).automl.i.null_encode[.ml.infreplace data;med]
 x         x1        x2         x_null
 -------------------------------------
 0.9764793 0.8737778 0.02064306 0     
