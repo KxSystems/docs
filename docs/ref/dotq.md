@@ -1059,13 +1059,14 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
 ## `.Q.j10` (encode binhex)
 ## `.Q.x10` (decode binhex)
-## `.Q.j12` (encode base64)
-## `.Q.x12` (decode base64)
+## `.Q.j12` (encode base-36)
+## `.Q.x12` (decode base-36)
 
-Syntax: `.Q.j10 s`
-Syntax: `.Q.x10 s`
-Syntax: `.Q.j12 s`
-Syntax: `.Q.x12 s`
+Syntax:
+<pre markdown="1" class="language-txt">
+.Q.j10 s     .Q.j12 s
+.Q.x10 s     .Q.x12 s
+</pre>
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 
