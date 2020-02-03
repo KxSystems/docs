@@ -85,7 +85,7 @@ where
 
 `symColumn`
 
-:name of a secondary grouping column common to both `dataJustReceivedInFeedToBeAnalyzed` and `lookbackTableToAggregate`. It dictates to the function that when identifying the rows in `lookbackTableToAggregate` that are in the moving time windows for each row of data just received, only look at rows with the same `symColumn` value.
+: name of a secondary grouping column common to both `dataJustReceivedInFeedToBeAnalyzed` and `lookbackTableToAggregate`. It dictates to the function that when identifying the rows in `lookbackTableToAggregate` that are in the moving time windows for each row of data just received, only look at rows with the same `symColumn` value.
 
 
 ### Example
@@ -247,7 +247,7 @@ For each case, we run the alert analytic twenty times to simulate twenty such lo
 [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP)
 
 <i class="far fa-hand-point-right"></i>
-Appendix for how to install and configure the code.
+[Appendix for how to install and configure the code.](https://code.kx.com/q/wp/surveillance-latency/#appendix-surveillance-framework-example)
 
 
 ### Exchange-member simulation
