@@ -630,7 +630,7 @@ Since the columns of a table are lists, it is irrelevant whether the functional 
 The `buildQuery` function handles the 6th argument as a special case so will produce `iasc` or `idesc` as appropriate.
 
 ```q
-q)buildSelect "select[10 20;>price] from trade" 
+q)buildQuery "select[10 20;>price] from trade" 
 "?[trade;();0b;();10 20;(idesc;`price)]"
 ```
 
