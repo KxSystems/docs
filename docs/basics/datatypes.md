@@ -1,6 +1,6 @@
 ---
-title: Datatypes – Basics – kdb+ and q documentation
-description: Every kdb+ object has a corresponding datatype. There are 38 datatypes. 
+title: Data types | Basics | kdb+ and q documentation
+description: Every kdb+ object has a data type. This page tabulates the datatypes.
 author: Stephen Taylor
 keywords: atom, boolean, character, datatype, date, datetime, double, float, integer, kdb+, list, long, q, scalar, short, string, symbol, temporal, time, timespan, timestamp, type, vector
 ---
