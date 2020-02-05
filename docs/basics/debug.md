@@ -7,9 +7,18 @@ keywords: debug, errors, kdb+, q, trap
 # Debugging 
 
 
+<pre markdown="1" class="language-txt">
+q))       extra right parens mark suspended execution/s
+'myerror  [Signal](../ref/signal.md) error, cut back stack
+:r        [exit suspended function](#resume) with r as result
+\\         abort execution and exit debugger
+[.Q.bt](../ref/dotq.md#qbt-backtrace)     dump backtrace
+[&](#where)         current frame information
+[.Q.trp](../ref/dotq.md#qtrp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
+[-e](cmdline.md#-e-error-traps) [\e](syscmds.md#e-error-trap-clients)     error-trap mode
+</pre>
 
 
-## 
 
 ## Errors
 
@@ -335,7 +344,9 @@ q))                 / the server is suspended in a debug session
 
 ## See also
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book"></i> 
 [Display](../ref/display.md),
-[`show`](../ref/show.md), 
+[`show`](../ref/show.md)
+<br>
+<i class="fas fa-graduation-cap"></i>
 _Q for Mortals 3:_ [§10.2 Debugging](/q4m3/10_Execution_Control/#102-debugging)

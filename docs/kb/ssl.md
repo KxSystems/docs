@@ -8,7 +8,7 @@ keywords: kdb+, openssl, q, ssl, tls
 
 
 
-V3.4t 2016.05.12 can use Secure Sockets Layer(SSL)/Transport Layer Security(TLS) to encrypt connections using the OpenSSL libraries.
+V3.4t 2016.05.12 can use Secure Sockets Layer (SSL)/Transport Layer Security (TLS) to encrypt connections using the OpenSSL libraries.
 
 
 ## Prerequisites
@@ -17,9 +17,9 @@ Ensure that your OS has the latest OpenSSL libraries installed, and that they ar
 
 Kdb+ loads the following files
 
--   Windows: ssleay32.dll, libeay32.dll
--   macOS: libssl.dylib
--   Linux, Solaris: libssl.so
+-   Windows: `ssleay32.dll`, `libeay32.dll`
+-   macOS: `libssl.dylib`
+-   Linux, Solaris: `libssl.so`
 
 The Windows build was tested with the precompiled libs (Win32 OpenSSL v1.0.2h Light, Win64 OpenSSL v1.0.2h Light) from <https://slproweb.com/products/Win32OpenSSL.html>
 

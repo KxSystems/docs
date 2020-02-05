@@ -77,6 +77,10 @@ about new repositories.</div>
 	<td>[tickerplant](kb/kdb-tick.md)</td>
 </tr>
 <tr>
+	<td class="nowrap">[man](https://github.com/KxSystems/man)</td>
+	<td>[man.q](about/man.md) ==new==</td>
+</tr>
+<tr>
 	<td class="nowrap">[ml](https://github.com/KxSystems/ml)</td>
 	<td>
 		[machine-learning toolkit](ml/toolkit/index.md)

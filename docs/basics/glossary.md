@@ -1,6 +1,6 @@
 ---
-title: Glossary for the q and kdb+ documentation site – Basics – kdb+ and q documentation
-description: Glossary of terms used in documenting kdb+ and the q programming language.
+title: Glossary of terms | Basics | kdb+ and q documentation
+description: Glossary of terms used in documenting kdb+ and the q programming language
 author: Stephen Taylor
 ---
 # Glossary
@@ -142,6 +142,16 @@ Lists, dictionaries and tables conform if they are either atoms or have the same
 [Conformability](conformable.md)
 
 
+## Connection handle
+
+A handle to the communication path to a process or object in the file system.
+
+<i class="fas fa-book-open"></i>
+[Connection handles](handles.md),
+[File system](files.md),
+[Interprocess communication](ipc.md)
+
+
 ## Console
 
 Console refers to the source of messages to q and their responses that are typed in a q session.
@@ -272,7 +282,29 @@ A pair of square brackets enclosing zero or more expressions separated by semico
 
 ## Feedhandler
 
-A process that receives and processes, typically high volumes of, messages from a source such as a financial excchange. 
+A process that receives and processes, typically high volumes of, messages from a source such as a financial exchange. 
+
+
+## File descriptor
+
+Either: 
+
+-   a _file symbol_
+-   a 2-list `(filesymbol;offset)`
+-   a 3-list `(filesymbol;offset;length)` where `offset` and `length` are non-zero integers
+
+
+## Filename
+
+An absolute or relative filepath as a string, e.g. `":path/to/data"`.
+
+
+## File symbol
+
+A symbol atom denoting a file or folder in the file system, e.g. `` `:path/to/data``
+
+<i class="fas fa-book-open"></i>
+[File system](files.md)
 
 
 ## Finite-state machine
@@ -531,6 +563,14 @@ Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `
 Defined in the q language.
 
 
+## Process symbol
+
+A symbol defining the communication path to a process.
+
+<i class="fas fa-book"></i>
+[`hopen`](../ref/hopen.md#processes)
+
+
 ## Project, projection
 
 A function passed fewer arguments than its rank projects those arguments and returns a projection: a function of the unspecified argument/s. 
@@ -646,6 +686,11 @@ Expressions beginning with `\` are [system commands](syscmds.md). (Or [multiline
 q)/ load the script in file my_app.q
 q)\l my_app.q
 ```
+
+
+## System handle
+
+A connection handle to console (0), stdin (1), or stderr (2)
 
 
 ## Table

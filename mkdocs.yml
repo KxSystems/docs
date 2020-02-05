@@ -57,7 +57,7 @@ site_author: 'Kx Systems'
 site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
 site_name: 'Kdb+ and q documentation'
-site_url: 'https://code.kx.com/v2/'
+site_url: 'https://code.kx.com/q/'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
@@ -76,10 +76,11 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
-  - Reference: https://code.kx.com/v2/ref/
+  - Reference: https://code.kx.com/q/ref/
   - GitHub: github.md
   - Support: support.md
   - Developer tools: devtools.md
+  - Corporate site: https://kx.com
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
@@ -150,6 +151,7 @@ nav:
       - Application: basics/application.md
       - Atomic functions: basics/atomic.md
       - Casting & encoding: basics/casting.md
+      - Connection handles: basics/handles.md
       - Comparison: basics/comparison.md
       - Conformability: basics/conformable.md
       - Control: basics/control.md
@@ -173,6 +175,7 @@ nav:
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
       - QSQL: basics/qsql.md
+      - Regular Expressions: basics/regex.md
       - Search: basics/search.md
       - Selection: basics/selection.md
       - Sorting: basics/sort.md
@@ -235,7 +238,10 @@ nav:
       - getenv, setenv: ref/getenv.md
       - group: ref/group.md
       - gtime, ltime: ref/gtime.md
-      - hcount, hdel, hopen, hclose, hsym: ref/handles.md
+      - hcount: ref/hcount.md
+      - hdel: ref/hdel.md 
+      - hopen, hclose: ref/hopen.md
+      - hsym: ref/hsym.md
       - ij, ijf: ref/ij.md
       - in: ref/in.md
       - insert: ref/insert.md
@@ -510,6 +516,7 @@ nav:
     - Programming idioms: kb/programming-idioms.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Regular expressions: kb/regex.md
+    - Replay logfile: kb/replay-log.md
     - Server calling client: kb/server-calling-client.md
     - Splayed schema change: kb/splayed-schema-change.md
     - Splayed tables: kb/splayed-tables.md
@@ -534,6 +541,7 @@ nav:
     - Corporate actions: wp/corporate-actions.md
     - Gateway design: wp/gateway-design/index.md
     - Compression: wp/compress/index.md
+    - Data loaders: wp/data-loaders/index.md
     - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
     - Data visualization: wp/data-visualization/index.md

@@ -551,7 +551,7 @@ This is a rather involved line of q code and its inner workings are broken down 
 hopen `$":",.u.x 0
 ```
 
-Reading this from the right, we obtain the location of the tickerplant process which is then passed into the [`hopen`](../../ref/handles.md#hopen) function, which returns a handle (connection) to the tickerplant. Through this handle, we then send a synchronous message to the tickerplant, telling it to do two things:
+Reading this from the right, we obtain the location of the tickerplant process which is then passed into the [`hopen`](../../ref/hopen.md) function, which returns a handle (connection) to the tickerplant. Through this handle, we then send a synchronous message to the tickerplant, telling it to do two things:
 
 ``.u.sub[`;`]``
 

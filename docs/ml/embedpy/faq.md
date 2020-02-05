@@ -5,7 +5,24 @@ keywords: dates, embedpy, interface, kdb+, pandas, python, q
 ---
 # <i class="fab fa-python"></i> Frequently-asked questions about embedPy
 
+## Installing embedPy on system with Python installed from source?
 
+When installing embedPy on a system where Python was installed manually a common error which can occur is `'libpython`. This error commonly results from a Python install which has not been enabled to allow shared libraries.
+
+If this error occurs run the following to display output to indicate if the issue is related to the python build
+
+```q
+q)key each hsym each`$`L`M#.p
+L| `:/root/anaconda3/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a
+M| `:/root/anaconda3/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a
+```
+
+In the above example case the `libpython` files are static `.a` files rather than `.so` files. To recitfy complete one of the following
+
+1. Reinstall Python with the system enabled to allow the python shared objects to be shared with other programs. This can be achieved using instructions provided [here](https://www.iram.fr/IRAMFR/GILDAS/doc/html/gildas-python-html/node36.html). With particular care to be taken in the `./configure --enable-shared` step. If following the instructions in the link provided ensure you install a version of python suitable for use with embedPy.
+2. Create a symlink between a static `.a` file and a `.so` file associated with the python build if one exists.
+
+If neither of the above solutions work please contact ai@kx.com with detailed instructions indicating the steps taken to solve the problem.
 
 ## How can I convert between q tables and pandas DataFrames?
 

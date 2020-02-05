@@ -11,7 +11,7 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure
 
 A k-d tree (k-dimensional tree) is a special case of a binary search tree with constraints applied. It is a data structure commonly used in computer science to organize data points in k-dimensional space. Each leaf node in the tree represents a k-dimensional point, while each non-leaf node generates a splitting hyperplane that divides the surrounding space.
 
-The median of a dataset is used as the root node of the tree, with the root splitting dimension chosen to reflect the axis with highest variance. At the root node, the dataset is split in two. This process of finding the axis with the widest spread and splitting the remaining data then repeats recursively throughout the tree until a leaf is reached. Leaves can contain more than one data point depending on their position in the tree.
+The median of a dataset is used as the root node of the tree, with the root splitting dimension chosen to reflect the axis with highest variance. At the root node, the dataset is split in two. This process of finding the axis with the widest spread and splitting the remaining data then repeats recursively throughout the tree until a leaf is reached. Leaves can contain more than one data point depending on the construction of the tree.
 
 The placement of each node in the tree is determined by whether the node is less than (to the left) or greater than (to the right) of the proceeding node value.
 
@@ -23,10 +23,10 @@ _Build tree with median data point as root and remaining points subsequently add
 
 Syntax: `.ml.clust.kd.buildtree[d;r]`
 
--   `d` is data points in horizontal matrix format (`flip value` table)
--   `r` is the number of representative points
+-   `d` is data points (floating values) in horizontal matrix format (`flip value` table)
+-   `r` is a value that restricts how many datapoints can be contained at each leaf within the tree. If no reoccuring values are present in the dataset, the datapoints per leaf are restricted to <=2*r. 
 
-returns a k-d tree.
+returns a k-d tree
 
 ```q
 q)show d:10 2#20?5.
@@ -55,27 +55,39 @@ q)flip t
 
 !!! note
 
-	The k-d tree is shown above and has been flipped to give a clearer picture of the features present. These include
+	The k-d tree is shown above and has been flipped to give a clearer picture of the features present. Each column within `flip t` above represent respectively:
 
-	-   The parent node
-	-   Is left
-	-   Is leaf node
-	-   Indices of children
-	-   Pivot point/value
-	-   Pivot axis/splitting dimension, e.g. x -> 0, y -> 1, z -> 2, etc.
+
+	-   The parent node (if at the root node, -1 is given  as no parent exists)
+ 
+	-   Boolean indicating if the node/leaf is to the left `1b` or to the right `0b` of the parent node
+
+	-   Boolen indicating if it is a leaf `1b` or a node `0b`
+
+	-   If at a leaf, the indices of the datapoints contained at that leaf are returned. Otherwise the indices of the nodes/leaves which branch from the node are given 
+
+	-   Pivot point/value of each node (this is a null value if a leaf is reached)
+
+	-   Pivot axis/splitting dimension from which the pivot value was obtained, e.g. x -> 0, y -> 1, z -> 2, etc.
+
+
+!!! note
+
+	The value of `r` can affect the speed when searching for nearest neighbours in function [.ml.clust.kd.searchfrom](#mlclustkdnnc)
+
 
 ## Find the nearest neighouring cluster
 
 ### `.ml.clust.kd.nnc`
 
-_Find the nearest neighbouring cluster and return the index/distince of the cluster with respect to the current cluster of interest_
+_Find the nearest neighbouring cluster to a group of datapoints within a single cluster, returning the index and distance of the nearest cluster_
 
 Syntax: `.ml.clust.kd.nnc[rp;t;cl;d;df]`
 
--   `rp` are the representative points (indices) of the cluster
+-   `rp` is a list of representative points (indices) of the cluster
 -   `t` is a k-d tree
 -   `cl` is the cluster index of each data point in the tree
--   `d` are data points
+-   `d` are the data points within the tree
 -   `df` is the distance function: `e2dist` `edist` `mdist`
 
 returns the index and distance of the closest cluster to the current cluster.
@@ -103,6 +115,9 @@ q)/inputs         [rp ;t;clt inds           ;d;distfnc]
 q).ml.clust.kd.nnc[2 9;t;0 1 2 3 4 5 6 7 8 2;d;`e2dist]
 0
 1.292973
+q).ml.clust.kd.nnc[enlist 0;t;0 1 2 3 4 5 6 7 8 2;d;`e2dist]
+3
+0.4488996
 ```
 
 !!! note
@@ -113,15 +128,15 @@ q).ml.clust.kd.nnc[2 9;t;0 1 2 3 4 5 6 7 8 2;d;`e2dist]
 
 ### `.ml.clust.kd.searchfrom`
 
-_Search the tree and find where point belongs_
+_Search the tree and find the index of the leaf that each datapoint belongs to_
 
 Syntax: `.ml.clust.kd.searchfrom[x;y;z]`
 
 -   `x` is a k-d tree
--   `y` is the points to search
+-   `y` is the point to search
 -   `z` is a node in the k-d tree to start the search
 
-returns   
+returns the leaf index within the tree that the datapoint belongs to
 
 ```q
 q)d

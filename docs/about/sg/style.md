@@ -14,7 +14,7 @@ keywords: bold, code, italic, kdb+, markdown, q, style
 
 Everything in plain type should be American English or
 
--   a term in the [Glossary](https://code.kx.com/v2/basics/glossary/)
+-   a term in the [Glossary](https://code.kx.com/q/basics/glossary/)
 -   a locally-defined usage 
 
 

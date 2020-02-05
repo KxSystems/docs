@@ -113,7 +113,7 @@ Where
 - `i` is a dictionary of inputs in the form:
     - `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics)) 
     - `c` is the compression
-    - `b` is a boolean, `1b` for C, `0b` for q
+    - `b` is a boolean, `1b` for C, `0b` for q implementation of the tree
     - `s` is a boolean, `1b` to return a dictionary, `0b` to return a table of clusters
 
 returns a dictionary or a table.
