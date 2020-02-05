@@ -11,7 +11,7 @@ keywords: byte, character, kdb+, q, text, unicode
 
 Unicode text can be stored in symbol, byte and character datatypes.
 
-Since the data is simply a sequence of bytes, any Unicode format can be stored. However, it is best to use an encoding such as UTF-8 or GBK that extends 7-bit ASCII, i.e. a single byte in the range 00–7f means the same thing in ASCII. Kdb+ will load a script with such encoding, but it will not load other formats. Note that if using these encodings, avoid having a byte-order-mark prefix on the data.
+Since the data is simply a sequence of bytes, any Unicode format can be stored. However, it is best to use an encoding such as UTF-8 or GBK that extends 7-bit ASCII, i.e. a single byte in the range `00`–`7f` means the same thing in ASCII. Kdb+ will load a script with such encoding, but it will not load other formats. Note that if using these encodings, avoid having a byte-order-mark prefix on the data.
 
 The q language itself uses only 7-bit ASCII. For example, the statement `2+3` should be given as the three decimal bytes 50 43 51, as in:
 

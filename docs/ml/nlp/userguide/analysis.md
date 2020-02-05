@@ -31,24 +31,20 @@ Matches the first centroid of the clusters with the rest of the corpus:
 
 ```q
 q).nlp.cluster.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
-0 23 65 137
-1 5 14 45 81
-2 6 7 13 15 16 17 19 20 21 26 27 31 40 44 47 48 49 50 54 57 58 62 63 66 67 68..
-3 9 10
-,4
-8 51 55 95 96 108 112 117 129 132 136 146 148
+,0
+1 2 4 9 10
+,3
+,5
+6 7
+8 95 96
 11 12
-,18
-22 25
-,24
-28 53 61 72 82 83 86 91 113 130 147
-,29
-,30
-32 33 79 98 104 105 107 131
-34 97
-35 37 38 39 41 42
-36 133 149
-43 60 64 74 106 115
+,13
+,14
+15 19 21
+,16
+,17
+18 20
+,22
 ```
 
 
@@ -76,7 +72,7 @@ returns the cosine similarity of the two documents as a float.
 q)petition:laycorpus where laycorpus[`subject] like "Demand Ken*"
 q)centroid:sum petition`keywords
 q).nlp.compareDocToCentroid[centroid]each petition`keywords
-0.2374891 0.2308969 0.2383573 0.2797052 0.2817323 0.3103245 0.279753 0.2396462 0.3534717 0.369767
+0.7578176 0.6816524 0.7749509 0.7046721 0.7882777 0.5808967 0.8139832 0.7567036..
 q)outliers:petition iasc .nlp.i.compareDocToCentroid[centroid]each petition`keywords
 ```
 
@@ -92,43 +88,34 @@ q)queryemail:first jeffcorpus where jeffcorpus[`text] like "Fire Chief Committee
 q)-1 queryemail`text;
 q)mostsimilar:jeffcorpus first 1_idesc .nlp.compareDocs[queryemail`keywords]each jeffcorpus`keywords
 
-Select Comm AGENDA - Jan 25-Febr 1
+Fire Chief Committee
 
-Houston Fire Chief Selection Committee Members: Jeff Skilling - Chairperson,
-Troy Blakeney, Gerald Smith, Roel Campos and James Duke.
+Dear Jeff:
 
-Congratulations selection committee members! We have a very important and
-exciting task ahead of us.
+    Thank you again for extending me an invitation to be on your committee to
+select the new Houston Fire Chief.  I look forward with much enthusiasm and
+excitement to working with you and the committee members on this very
+important project.
 
-On the agenda for the next week are two important items - (1) the Mayor's
-February 1 news conference announcing the Houston Fire Chief selection
-committee and its members; and (2) coordination of an action plan, which we
-should work out prior to the news conference.
+    I enjoyed our visit at the Doubletree immensely. It was great walking
+down memory lane and recalling our days in Cambridge. We probably passed each
+other at Harvard Square at some point during our time there.  As I said, I am
+a great admirer of you and ENRON. The innovation, creativity and unique
+(though soon to be widely copied) business plan make ENRON one of Houston's
+(and the nation's, maybe also California's in the near future) great assets.
 
-News Conference specifics:
-speakers - Mayor Brown and Jeff Skilling
-in attendance - all selection committee members
-location - Fire Station #6, 3402 Washington Ave.
-date - Thursday, February 1, 2001
-time - 2pm
-duration - approximately 30 minutes
+     Since the subject came up in our conversation, I will add a short
+personal note. After reviewing several potential transactions this week, it
+is quite possible that my partners and I will be entering into a "business
+defining" transaction in the next two months. Since I am a lousy golfer, I
+will be exploring new challenges.
 
-I'd like to emphasize that it would be ideal if all selection committee
-members were present at the news conference.
+    Thursday, at the fire station, should be fun. I can see you and the mayor
+in one of the hook and ladder trucks for the photo op.
 
-I will need bios on each committee member emailed to me by close of business
-Monday, January 29, 2001. These bios will be attached to a press release the
-Mayor's Office is compiling.
+Take care,
 
-Coordination of action plan:
-Since we have only 1 week between now and the news conference, Jeff has
-proposed that he take a stab at putting together an initial draft. He will
-then email to all committee members for comments/suggestions and make changes
-accordingly. Hope this works for everyone - if not, give me a call
-(713)-345-4840.
-
-Thanks,
-Lisa
+Roel 
 ```
 
 
@@ -150,17 +137,17 @@ Where
 returns a dictionary of how much of the similarity score each token is responsible for.
 
 ```q
-q)10#.nlp.explainSimilarity . jeffcorpus[`keywords]568 358
-fire     | 0.2588778
-roel     | 0.1456685
-committee| 0.1298068
-mayor    | 0.1295087
-station  | 0.09342764
-chief    | 0.06948782
-select   | 0.04325209
-important| 0.03838308
-members  | 0.03530552
-plan     | 0.02459828
+q)10#.nlp.explainSimilarity . jeffcorpus[`keywords]306 309
+fire     | 0.3542747
+committee| 0.2015475
+chief    | 0.08861098
+roel     | 0.06699533
+station  | 0.04705624
+mayor    | 0.04343555
+houston  | 0.04181817
+business | 0.03459796
+select   | 0.02556851
+thursday | 0.01825156
 ```
 
 
@@ -175,19 +162,16 @@ _Sentiment of a sentence_
 
 Syntax: `.nlp.sentiment x`
 
-Where 
-
--  `x` is string or a list of strings
-
-returns a dictionary or table containing the sentiment of the text.
+Where `x` is string or a list of strings returns a dictionary or table containing the sentiment of the text.
 
 An run of sentences from _Moby Dick_:
 
 ```q
-q).nlp.sentiment("Three cheers,men--all hearts alive!";"No,no! shame upon all cowards-shame upon them!")
+q).nlp.sentiment each ("Three cheers,men--all hearts alive!";"No,no! shame upon all cowards-shame upon them!")
 compound   pos       neg       neu
 ----------------------------------------
 0.7177249  0.5996797 0         0.4003203
 -0.8802318 0         0.6910529 0.3089471
 ```
+
 

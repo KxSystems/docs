@@ -313,21 +313,21 @@ This corresponds to the `-o` command line parameter.
 
 ## `\p` (listening port)
 
-Syntax: `\p [rp,][hostname:][portnumber|servicename]`
+_Show or set listening port_
 
-Show or set listening port: kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
-The port must be available and the process must have permission for the port.
+```txt
+\p [rp,][hostname:][portnumber|servicename]
+```
 
-Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
-
-The default is 0: no listening port.
-
+See 
 <i class="fas fa-book-open"></i>
-[Listening port](listening-port.md),
-[`-p` command-line option ](cmdline.md#-p-listening-port)
-<br>
+[Listening port](listening-port.md) for detail.
+
 <i class="fas fa-book"></i>
 [`hopen`](../ref/hopen.md)
+<br>
+<i class="fas fa-book-open"></i>
+[`-p` command-line option ](cmdline.md#-p-listening-port)
 <br>
 <i class="fas fa-graduation-cap"></i>
 [Multithreaded input mode](../kb/multithreaded-input.md),

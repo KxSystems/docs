@@ -1059,13 +1059,14 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
 ## `.Q.j10` (encode binhex)
 ## `.Q.x10` (decode binhex)
-## `.Q.j12` (encode base64)
-## `.Q.x12` (decode base64)
+## `.Q.j12` (encode base-36)
+## `.Q.x12` (decode base-36)
 
-Syntax: `.Q.j10 s`
-Syntax: `.Q.x10 s`
-Syntax: `.Q.j12 s`
-Syntax: `.Q.x12 s`
+Syntax:
+<pre markdown="1" class="language-txt">
+.Q.j10 s     .Q.j12 s
+.Q.x10 s     .Q.x12 s
+</pre>
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 
@@ -1498,21 +1499,30 @@ Since V3.6 2018.05.18.
 
 Syntax: `.Q.ty x`
 
-Returns the type of `x` as a character code.
+Where `x` is a list, returns the type of `x` as a character code:
+
+-   lower case for a vector
+-   upper case for a list of uniform type
+-   else blank
 
 ```q
-q).Q.ty 1 2
-"i"
-q).Q.ty 1 2.
-"f"
+q)t:([]a:3 4 5;b:"abc";c:(3;"xy";`ab);d:3 2#3 4 5;e:("abc";"de";"fg"))
+q)t
+a b c    d   e
+------------------
+3 a 3    3 4 "abc"
+4 b "xy" 5 3 "de"
+5 c `ab  4 5 "fg"
+q).Q.ty each t`a`b`c`d`e
+"jc JC"
 ```
 
-If the argument is a table column, returns upper case for mappable/uniform lists of vectors. (c.f. [`meta`](meta.md))
+!!! tip "`.Q.ty` is a helper function for `meta`"
 
-```q
-q).Q.ty ("ab";"cd")
-"C"
-```
+    If the argument is a table column, returns upper case for mappable/uniform lists of vectors. 
+
+<i class="fas fa-book"></i>
+[`meta`](meta.md)
 
 
 ## `.Q.u` (date based)

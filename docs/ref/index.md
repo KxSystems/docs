@@ -141,7 +141,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
 <tr><td>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td>log sync</td><td>[`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)</td><td>date format</td></tr>
 <tr><td>[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)</td><td>UTC offset</td><td>[`\1` `\2`](../basics/syscmds.md#1-2-redirect)</td><td>redirect</td></tr>
-<tr><td>[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td>multithread port</td><td>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td>hide q code</td></tr>
+<tr><td>[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td>listening port</td><td>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td>hide q code</td></tr>
 <tr><td>[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)</td><td>display precision</td><td>[`\`](../basics/syscmds.md#terminate)</td><td>terminate</td></tr>
 <tr><td>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td>quiet mode</td><td>[`\`](../basics/syscmds.md#toggle-qk)</td><td>toggle q/k</td></tr>
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
@@ -254,29 +254,33 @@ milliseconds: time mod 1000
 
 Markup output for HTTP
 
-<table class="kx-shrunk kx-tight" markdown="1">
-<tr><td><a href="doth/#hbr-linebreak">`.h.br`</a></td><td><a href="doth/#hbr-linebreak">linebreak</a></td><td><a href="doth/#hhu-uri-escape">`.h.hu`</a></td><td><a href="doth/#hhu-uri-escape">URI escape</a></td></tr>
-<tr><td><a href="doth/#hc0-web-color">`.h.c0`</a></td><td><a href="doth/#hc0-web-color">web color</a></td><td><a href="doth/#hhug-uri-map">`.h.hug`</a></td><td><a href="doth/#hhug-uri-map">URI map</a></td></tr>
-<tr><td><a href="doth/#hc1-web-color">`.h.c1`</a></td><td><a href="doth/#hc1-web-color">web color</a></td><td><a href="doth/#hhy-http-response">`.h.hy`</a></td><td><a href="doth/#hhy-http-response">HTTP response</a></td></tr>
-<tr><td><a href="doth/#hcd-csv-from-data">`.h.cd`</a></td><td><a href="doth/#hcd-csv-from-data">CSV from data</a></td><td><a href="doth/#hiso8601-iso-timestamp">`.h.iso8601`</a></td><td><a href="doth/#hiso8601-iso-timestamp">ISO timestamp</a></td></tr>
-<tr><td><a href="doth/#hcode-code-after-tab">`.h.code`</a></td><td><a href="doth/#hcode-code-after-tab">code after Tab</a></td><td><a href="doth/#hjx-table">`.h.jx`</a></td><td><a href="doth/#hjx-table">table</a></td></tr>
-<tr><td><a href="doth/#hed-excel-from-data">`.h.ed`</a></td><td><a href="doth/#hed-excel-from-data">Excel from data</a></td><td><a href="doth/#hlogo-kx-logo">`.h.logo`</a></td><td><a href="doth/#hlogo-kx-logo">Kx logo</a></td></tr>
-<tr><td><a href="doth/#hedsn-excel-from-tables">`.h.edsn`</a></td><td><a href="doth/#hedsn-excel-from-tables">Excel from tables</a></td><td><a href="doth/#hnbr-no-break">`.h.nbr`</a></td><td><a href="doth/#hnbr-no-break">no break</a></td></tr>
-<tr><td><a href="doth/#hfram-frame">`.h.fram`</a></td><td><a href="doth/#hfram-frame">frame</a></td><td><a href="doth/#hpre-pre">`.h.pre`</a></td><td><a href="doth/#hpre-pre">pre</a></td></tr>
-<tr><td><a href="doth/#hha-anchor">`.h.ha`</a></td><td><a href="doth/#hha-anchor">anchor</a></td><td><a href="doth/#hsa-style">`.h.sa`</a></td><td><a href="doth/#hsa-style">style</a></td></tr>
-<tr><td><a href="doth/#hhb-anchor-target">`.h.hb`</a></td><td><a href="doth/#hhb-anchor-target">anchor target</a></td><td><a href="doth/#hsb-style">`.h.sb`</a></td><td><a href="doth/#hsb-style">style</a></td></tr>
-<tr><td><a href="doth/#hhc-escape-lt">`.h.hc`</a></td><td><a href="doth/#hhc-escape-lt">escape lt</a></td><td><a href="doth/#hsc-uri-safe">`.h.sc`</a></td><td><a href="doth/#hsc-uri-safe">URI-safe</a></td></tr>
-<tr><td><a href="doth/#hhe-http-400">`.h.he`</a></td><td><a href="doth/#hhe-http-400">HTTP 400</a></td><td><a href="doth/#htd-tsv">`.h.td`</a></td><td><a href="doth/#htd-tsv">TSV</a></td></tr>
-<tr><td><a href="doth/#hhn-http-error">`.h.hn`</a></td><td><a href="doth/#hhn-http-error">HTTP error</a></td><td><a href="doth/#htext-paragraphs">`.h.text`</a></td><td><a href="doth/#htext-paragraphs">paragraphs</a></td></tr>
-<tr><td><a href="doth/#hhp-http-response">`.h.hp`</a></td><td><a href="doth/#hhp-http-response">HTTP response</a></td><td><a href="doth/#htx-filetypes">`.h.tx`</a></td><td><a href="doth/#htx-filetypes">filetypes</a></td></tr>
-<tr><td><a href="doth/#hhr-horizontal-rule">`.h.hr`</a></td><td><a href="doth/#hhr-horizontal-rule">horizontal rule</a></td><td><a href="doth/#hty-mime-types">`.h.ty`</a></td><td><a href="doth/#hty-mime-types">MIME types</a></td></tr>
-<tr><td><a href="doth/#hht-marqdown-to-html">`.h.ht`</a></td><td><a href="doth/#hht-marqdown-to-html">Marqdown to HTML</a></td><td><a href="doth/#huh-uri-unescape">`.h.uh`</a></td><td><a href="doth/#huh-uri-unescape">URI unescape</a></td></tr>
-<tr><td><a href="doth/#hhta-start-tag">`.h.hta`</a></td><td><a href="doth/#hhta-start-tag">start tag</a></td>                       <td><a href="doth.md#hval-value">`.h.val`</a></td><td><a href="doth.md#hval-value">value</a></td></tr>
-<tr><td><a href="doth/#hhtac-element">`.h.htac`</a></td><td><a href="doth/#hhtac-element">element</a></td>                          <td><a href="doth/#hxd-xml">`.h.xd`</a></td><td><a href="doth/#hxd-xml">XML</a></td></tr>
-<tr><td><a href="doth/#hhtc-element">`.h.htc`</a></td><td><a href="doth/#hhtc-element">element</a></td>                             <td><a href="doth/#hxmp-xmp">`.h.xmp`</a></td><td><a href="doth/#hxmp-xmp">XMP</a></td></tr>
-<tr><td><a href="doth/#hhtml-document">`.h.html`</a></td><td><a href="doth/#hhtml-document">document</a></td>                       <td><a href="doth/#hxs-xml-escape">`.h.xs`</a></td><td><a href="doth/#hxs-xml-escape">XML escape</a></td></tr>
-<tr><td><a href="doth/#hhttp-hyperlinks">`.h.http`</a></td><td><a href="doth/#hhttp-hyperlinks">hyperlinks</a></td>                 <td><a href="doth/#hxt-json">`.h.xt`</a></td><td><a href="doth/#hxt-json">JSON</a></td></tr>
-</table>
+<pre markdown="1" class="language-txt">
+[`.h.br`](doth.md#hbr-linebreak)      linebreak                [`.h.cd`](doth.md#hcd-csv-from-data)      CSV from data
+[`.h.code`](doth.md#hcode-code-after-tab)    code after Tab           [`.h.d`](doth.md#hd-delimiter)       delimiter
+[`.h.fram`](doth.md#hfram-frame)    frame                    [`.h.ed`](doth.md#hed-excel-from-data)      Excel from data
+[`.h.ha`](doth.md#hha-anchor)      anchor                   [`.h.edsn`](doth.md#hedsn-excel-from-tables)    Excel from tables
+[`.h.hb`](doth.md#hhb-anchor-target)      anchor target            [`.h.hc`](doth.md#hhc-escape-lt)      escape lt
+[`.h.ht`](doth.md#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](doth.md#hhr-horizontal-rule)      horizontal rule
+[`.h.hta`](doth.md#hhta-start-tag)     start tag                [`.h.iso8601`](doth.md#hiso8601-iso-timestamp) ISO timestamp
+[`.h.htac`](doth.md#hhtac-element)    element                  [`.h.jx`](doth.md#hjx-table)      table
+[`.h.htc`](doth.md#hhtc-element)     element                  [`.h.td`](doth.md#htd-tsv-from-data)      TSV from data
+[`.h.html`](doth.md#hhtml-document)    document                 [`.h.tx`](doth.md#htx-filetypes)      filetypes
+[`.h.http`](doth.md#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](doth.md#hxd-xml)      XML
+[`.h.nbr`](doth.md#hnbr-no-break)     no break                 [`.h.xs`](doth.md#hxs-xml-escape)      XML escape
+[`.h.pre`](doth.md#hpre-pre)     pre                      [`.h.xt`](doth.md#hxt-json)      JSON
+[`.h.text`](doth.md#htext-paragraphs)    paragraphs
+[`.h.xmp`](doth.md#hxmp-xmp)     XMP
+
+[`.h.he`](doth.md#hhe-http-400)      HTTP 400                 [`.h.c0`](doth.md#hc0-web-color)    web color
+[`.h.hn`](doth.md#hhn-http-response)      HTTP response            [`.h.c1`](doth.md#hc1-web-color)    web color
+[`.h.hp`](doth.md#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](doth.md#hhome-webserver-root)  webserver root
+[`.h.hy`](doth.md#hhy-http-response-content)      HTTP response content    [`.h.logo`](doth.md#hlogo-kx-logo)  Kx logo
+                                    [`.h.sa`](doth.md#hsa-anchor-style)    anchor style
+[`.h.hu`](doth.md#hhu-uri-escape)      URI escape               [`.h.sb`](doth.md#hsb-body-style)    body style
+[`.h.hug`](doth.md#hhug-uri-map)     URI map                  [`.h.ty`](doth.md#hty-mime-types)    MIME types
+[`.h.sc`](doth.md#hsc-uri-safe)      URI-safe                 [`.h.val`](doth.md#hval-value)   value
+[`.h.uh`](doth.md#huh-uri-unescape)      URI unescape
+</pre>
 
 
 ### `.j`
