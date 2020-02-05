@@ -23,8 +23,8 @@ _Build tree with median data point as root and remaining points subsequently add
 
 Syntax: `.ml.clust.kd.buildtree[d;r]`
 
--   `d` is data points (floating values) in horizontal matrix format (`flip value` table)
--   `r` is a value that restricts how many datapoints can be contained at each leaf within the tree. If no reoccuring values are present in the dataset, the datapoints per leaf are restricted to <=2*r. 
+-   `d` is a horizonal matrix of (float) data points (`value flip` table)
+-   `r` is the maximum number of data points contained within each leaf of the tree. If no reoccuring values are present in `d`, the number of data points per leaf are restricted to `<=2*r`. 
 
 returns a k-d tree
 
@@ -55,20 +55,15 @@ q)flip t
 
 !!! note
 
-	The k-d tree is shown above and has been flipped to give a clearer picture of the features present. Each column within `flip t` above represent respectively:
+	The k-d tree above has been flipped to give a clearer picture of the features present. The columns of `flip t` represent the following:
 
 
-	-   The parent node (if at the root node, -1 is given  as no parent exists)
- 
-	-   Boolean indicating if the node/leaf is to the left `1b` or to the right `0b` of the parent node
-
-	-   Boolen indicating if it is a leaf `1b` or a node `0b`
-
-	-   If at a leaf, the indices of the datapoints contained at that leaf are returned. Otherwise the indices of the nodes/leaves which branch from the node are given 
-
-	-   Pivot point/value of each node (this is a null value if a leaf is reached)
-
-	-   Pivot axis/splitting dimension from which the pivot value was obtained, e.g. x -> 0, y -> 1, z -> 2, etc.
+	-   Index of the parent node - `-1` is used for the root node as no parent exists
+	-   Boolean indicating if node/leaf is to the left `1b` or to the right `0b` of the parent node
+	-   Boolean indicating if leaf `1b` or node `0b`
+	-   Indices of data points contained in a leaf or indices of the nodes/leaves which branch from a node 
+	-   Pivot/splitting value of each node - null if leaf has been reached
+	-   Splitting dimension from which the pivot value was obtained, e.g. x -> 0, y -> 1, z -> 2, etc.
 
 
 !!! note
@@ -122,7 +117,7 @@ q).ml.clust.kd.nnc[enlist 0;t;0 1 2 3 4 5 6 7 8 2;d;`e2dist]
 
 !!! note
 
-	In the above example the inputs to `.ml.clust.kd.nnc` data points at indices 2 and 9 have been merged into one cluster. This means that cluster indices have changed from `0123456789` to `0123456782`. Additionally, the data point at index 9 has been set to invalid.
+	In the example above, the data points at indices 2 and 9 are merged into one cluster and passed in as `rp` to `.ml.clust.kd.nnc`. As these points now belong to the same cluster, the cluster indices change from `0123456789` to `0123456782`. The data point at index 9 has also been set to invalid.
 
 ## Find where point belongs in tree
 
