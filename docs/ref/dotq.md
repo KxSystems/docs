@@ -191,8 +191,11 @@ Since V3.6 2018.05.18.
 
 ## `.Q.bv` (build vp)
 
-Syntax: `.Q.bv[]`
-Syntax: ``.Q.bv[`]``
+Syntax: 
+```txt
+.Q.bv[]
+.Q.bv[`]
+```
 
 In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
 (Since V2.8 2012.01.20, modified  V3.0 2012.01.26)
@@ -312,8 +315,11 @@ Provides defaults and types for command line arguments parsed with [``.Q.opt``](
 ## `.Q.dpft` (save table)
 ## `.Q.dpfts` (save table with symtable)
 
-Syntax: ``.Q.dpft[d;p;f;t]``
-Syntax: ``.Q.dpfts[d;p;f;t;s]``
+Syntax: 
+```txt
+.Q.dpft[d;p;f;t]
+.Q.dpfts[d;p;f;t;s]
+```
 
 Where
 
@@ -1481,15 +1487,25 @@ Since V3.5 2017.03.15.
 
 ## `.Q.ts` (time and space)
 
+_Apply, with time and space_
+
 Syntax: `.Q.ts[x;y]`
 
-Where `x` and `y` are valid arguments of _dot-apply_, adds [`\ts`](../basics/syscmds.md#ts-time-and-space) functionality.
+Where `x` and `y` are valid arguments to [Apply](apply.md) returns a 2-item list:
+
+1.  time and space as [`\ts`](../basics/syscmds.md#ts-time-and-space) would
+2.  the result of `.[x;y]`
 
 ```q
 q)\ts .Q.hg `:http://www.google.com
 148 131760
-q).Q.ts(.Q.hg;enlist`:http://www.google.com)
+q).Q.ts[.Q.hg;enlist`:http://www.google.com]
 148 131760
+"<!doctype html><html itemscope=\"\" itemtype=\"http://schema.org/WebPa
+
+q).Q.ts[+;2 3]
+0 80
+5
 ```
 
 Since V3.6 2018.05.18.
