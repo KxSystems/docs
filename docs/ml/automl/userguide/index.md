@@ -12,11 +12,11 @@ keywords: machine learning, automated, ml, feature extraction, feature selection
 At the highest level this repository allows for two primary callable functions:
 
 1. `.automl.run` = Run the automated machine learning pipeline on user defined data and target
-2. `.automl.new` = Using a previously fit model and set of instructions derived from 1 above, predict the target value for new tabular data
+2. `.automl.new` = Using a previously fit model and set of instructions derived from 1 above, return predicted values for new tabular data
 
 Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the advanced section [here](../adv/params).
 
-The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non time series specific machine learning examples and implementations making use of the FRESH algorithm outlined [here](../../toolkit/fresh)
+The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non time series specific machine learning examples and implementations making use of the FRESH algorithm outlined in detail [here](../../toolkit/fresh)
 
 ## `.automl.run`
 
@@ -38,11 +38,11 @@ The default setup saves the following items from an individual run:
 
 1. The best model, saved as a hdf5 file, or "pickled" byte object.
 2. A saved report indicating the procedure taken and scores achieved.
-3. A saved binary encoded dictionary denoting the procedure to be taken for reproducing results or running on new data.
+3. A saved binary encoded dictionary denoting, the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
 4. Results from each step of the pipeline published to console.
 
 !!!Note
-	The following example displays the implementation of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity output is only displayed in full for one example.
+	The following shows the execution of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity output is only displayed in full for one example.
 
 ```q
 // Non time-series example table
@@ -121,7 +121,7 @@ Where
 
 -   `tab` is an unkeyed tabular dataset which has the same schema as the input data from the run specified in `fpath`
 -   `dt` is the date of a run as a q date, or string representation i.e. `"yyyy.mm.dd"`
--   `tm` is the time of a run as a q time or string representation either in the form `"hh:mm:ss.xxx"/"hh.mm.ss.xxx"`.
+-   `tm` is the time of a run as a q time, or string representation either in the form `"hh:mm:ss.xxx"/"hh.mm.ss.xxx"`.
 
 returns the target predictions for new data based on a previously fitted model and workflow.
 

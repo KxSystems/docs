@@ -11,7 +11,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the data preprocessing methods outlined in the [Automated Preprocessing](https://code.kx.com/v2/ml/automl/userguide/preproc/) section of the documentation.
+The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the data preprocessing methods outlined in the [Automated Preprocessing](../preproc/) section of the documentation.
 
 ## Outline of Procedures
 
@@ -30,7 +30,7 @@ Feature extraction is the process of building derived or aggregate features from
 
 #### FRESH
 
-The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time-series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time-series into subsets from which features can be extracted. Note that each subset will have an associated target. The feature extraction functions applied within the FRESH procedure are defined within the [ML-Toolkit documentation](https://code.kx.com/v2/ml/toolkit/fresh/) a full explanation of this algorithm is also provided there.
+The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time-series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time-series into subsets from which features can be extracted. Note that each subset will have an associated target. The feature extraction functions applied within the FRESH procedure are defined within the ML-Toolkit documentation [here](../../../toolkit/fresh/) a full explanation of this algorithm is also provided there.
 
 The below example shows the application of FRESH to a time-series dataset with a date-time ID column and 4 columns from which we derive features.
 
@@ -60,14 +60,14 @@ q)count 1_cols freshfeats
 1132
 ```
 !!!Note
-	When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. Instructions on how to amend this can be found [here](../adv/params.md)
+	When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. Instructions on how to amend this can be found [here](../params.md)
 
 
 #### Normal
 
 Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target value per row. The current implementation of normal feature extraction applies the following feature extraction procedures
 
-1. Time/date type columns are decomposed into their component parts 
+1. Time/date type columns are split into their component parts 
 
 The following shows an example of these procedures being performed.
 
@@ -105,7 +105,7 @@ q)count normfeat
 
 	2. Procedures being applied in one field of use may not be relevant in another field. As such the framework is provided to allow a user to complete feature extractions which are domain specific if required rather than assuming procedures to be applied are ubiquitous in all cases.
 
-	Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations.
+	Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations and where general frameworks can be assummed to be informative.
 
 ### Feature selection
 

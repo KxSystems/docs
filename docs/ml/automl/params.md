@@ -11,12 +11,12 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 <i class="fab fa-github"></i> [KxSystems/automl](https://github.com/kxsystems/automl)
 
 
-The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the parameter dictionary to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behaviour. There are two options for how this final parameter can be input
+The other sections of the automl documentation describe the default behaviour of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behaviour. The two methods to complete this are by inputting
 
-1. kdb+ dictionary outlining the changes to default behaviour that are to be made
-2. The path to a flat file containing more human readable updates to the parameter set.
+1. q dictionary outlining the changes to default behaviour that are to be made
+2. The path to a flat file containing human readable updates to the parameter set.
 
-Given that both options allow for the same modifications to be made, the full list of parameters which can be modified is outlined first and the implementation of each is described at the end of this page.
+Given that both options allow for the same modifications to be made, the full list of parameters which can be modified are outlined here first and an implementation of each is described at the end of this page.
 
 ## Advanced parameters
 
@@ -26,7 +26,7 @@ The following lists the parameters which can be altered by users to modify the f
 Parameters:
   aggcols     Aggregation columns for FRESH
   funcs       Functions to be applied for feature extraction
-  gs          Grid search function and associated no. of folds/percentage
+  gs          Grid search function and no. of folds/percentage of data in validation set
   hld         Size of holdout set on which the final model is tested
   saveopt     Saving options outlining what is to be saved to disk from a run
   scf         Scoring functions for classification/regression tasks
@@ -34,7 +34,7 @@ Parameters:
   sigfeats    Feature significance procedure to be applied to the data
   sz          Size of test set for train-test split function
   tts         Train-test split function to be applied
-  xv          Cross validation function and associated no. of folds/percentage
+  xv          Cross validation function and no. of folds/percentage of data in validation set
 ```
 
 For simplicity, each of these modifications will be handled seperately below with example implementations where possible.
@@ -78,12 +78,8 @@ q)funcs:`.automl.prep.i.truncsvd`.automl.prep.i.bulktransform
 q).automl.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
 ```
 
-!!!Note
-	User defined functions should take as input
-	
-	* x = a simple table
-
-	This function should return a simple table with the feature extraction procedure applied. These features should not augment the number of rows in the dataset as this will result in errors within the pipeline
+!!!Warning
+	Any user defined functions should take as input a simple table and return a simple table with the desired feature extraction procedures applied. These features should not augment the number of rows in the dataset as this will result in errors within the pipeline
 
 ### `gs`
 
@@ -91,7 +87,7 @@ _Grid search procedure being implemented_
 
 In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
 
-The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into
+The input for this parameter is a mixed list containing the grid search function name as a symbol and the number of folds to split the data into or the percentage of data in the validation set.
 
 For simplicity of implementation, a user should where possible use the functions within the `.ml.gs` namespace for this task.
 
@@ -110,7 +106,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 
 _Size of the holdout set on which the best grid searched model is tested_
 
-By default the holdout set across all problem types is set to 20%. For problems with a small number of data points, a user may augment this to increase the number of datapoints being trained on 
+By default the holdout set across all problem types is set to 20%. For problems with a small number of data points, a user may wish to augment this to increase the number of datapoints being trained on while the opposite may be true on larger datasets.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
@@ -127,7 +123,7 @@ _Save options to be used_
 
 By default, the system will save all outputs to disk (reports, images, config file, models). In a case where a user does not wish for all outputs to be saved, there are currently 3 options
 
-- 0 = Nothing is saved the models will run and display results to console but nothing persisted
+- 0 = Nothing is saved, the models will run and display results to console but nothing is persisted to disk
 - 1 = Save the model and configuration file only, will not generate a report for the user or any images
 - 2 = Save all possible outputs to disk for the user including reports, images, config and models
 
@@ -152,21 +148,14 @@ The following functions are supported within the platform at present with the or
 ```
 .ml - Statistical analysis metrics with automl score order
   .accuracy         Accuracy of classification results        desc
-  .crossentropy     Categorical cross entropy                 asc
-  .f1score          F1-score on classification results        desc
-  .fbscore          Fbeta-score on classification results     desc
-  .logloss          Logarithmic loss                          asc
   .mae              Mean absolute error                       asc
   .mape             Mean absolute percentage error            desc
   .matcorr          Matthews correlation coefficient          desc
   .mse              Mean square error                         asc
-  .precision        Precision of a binary classifier          desc
   .rmse             Root mean square error                    asc
   .rmsle            Root mean square logarithmic error        asc
   .r2score          R2-score                                  desc
-  .sensitivity      Sensitivity of a binary classifier        desc
   .smape            Symmetric mean absolute error             desc
-  .specificity      Specificity of a binary classifier        desc
   .sse              Sum squared error                         asc
 ```
 
@@ -179,13 +168,13 @@ q)reg_scf:enlist[`reg]!enlist `.ml.mae
 q).automl.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
 ```
 
-!!!Note
+!!!Warning
 	If a user wishes to use a custom scoring metric this function must be defined within the central process and added to `code/mdldef/scoring.txt` in order to define how optimisation is completed. This function must take as input
 
 	* x = vector of predicted labels
 	* y = vector of true labels
 
-	The function should return the score as defined by the user defined metric.
+	The function should return the score as defined by the user defined metric. Functions within the machine learning toolkit which take additional parameters such as `.ml.f1score` can be accessed in this way and could be defined as a projection.
 
 
 ### `seed`
@@ -209,7 +198,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 
 _Feature significance function to be applied to data to reduce feature set_
 
-By default the system will apply a feature significance test provided within the ML toolkit [here](https://code.kx.com/q/ml/toolkit/fresh/#mlfreshsignificantfeatures). The function uses the 25th percentile of important features based on the p-values returned from a number of statistical tests, comparing each column within the dataset with the target vector. This can be modified by a user as follows
+By default the system will apply a feature significance test provided within the ML toolkit [here](../../toolkit/fresh/#mlfreshsignificantfeatures). The function uses the 25th percentile of important features based on the p-values returned from a number of statistical tests, comparing each column within the dataset with the target vector. This can be modified by a user as follows
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;asc 100?1f)
@@ -219,19 +208,19 @@ q).automl.newsigfeat:{.ml.fresh.significantfeatures[x;y;.ml.fresh.ksigfeat 2]}
 q).automl.run[tab;tgt;`normal;`reg;enlist[`sigfeats]!enlist `.automl.newsigfeat]
 ```
 
-!!!Note
+!!!Warning
 	The function which replaces the default feature significance tests should take as input
 
 	* x = A simple table
 	* y = The target vector
 
-	The return from this function should be a simple table with unimportant features (as deemed by the user) removed.
+	The return from this function should be a simple table with unimportant features (as deemed by the user defined function) removed.
 
 ### `sz`
 
 _Size of the validation set on which the non grid searched best model is tested_
 
-By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on
+By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on, the reverse may be required for larger data sets.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
@@ -263,7 +252,7 @@ q).ml.ttstrat:{[x;y;sz]`xtrain`ytrain`xtest`ytest!raze(x;y)@\:/:r@'shuffle each 
 q).automl.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
 ```
 
-!!!Note
+!!!Warning
 	When using a user defined function, it must take the following as input 
 	
 	* x = A simple table
@@ -279,7 +268,7 @@ _Cross validation procedure being implemented_
 
 In each case by default the cross validation procedure being implemented is a 5 fold shuffled cross validation. This can be augmented by a user for different use cases for example more time series specific cross validations. 
 
-The input for this parameter is a mixed list containing the cross validation function name as a symbol and the number of cross validation folds to split the data into.
+The input for this parameter is a mixed list containing the cross validation function name as a symbol and the number of cross validation folds to split the data into or percentage of data within the validation set.
 
 For simplicity of implementation a user should where possible, should use the functions within the `.ml.xv` namespace for this task.
 
@@ -292,7 +281,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
 ```
 
 !!!Warning
-	If you intend to add a custom cross validation function please follow the guidelines for function definition provided [here](../../../toolkit/xval). If you have any questions on this please contact ai@kx.com . When compared to other custom functionality within the automl framework this can become a complicated procedure.
+	If you intend to add a custom cross validation function outside of those provided please follow the guidelines for function definition provided [here](../../../toolkit/xval). If you have any questions on this please contact ai@kx.com . When compared to other custom functionality within the automl framework this can become a complicated procedure.
 
 ## File based input
 
@@ -300,32 +289,34 @@ In each of the above examples the final parameter input has been a kdb+ dictiona
 
 ```
 // Fresh parameter file
-aggcols |{first cols x}
-funcs   |.ml.fresh.params
-xv      |.ml.xv.kfshuff;5
-gs      |.ml.gs.kfshuff;5
-prf     |.automl.xv.fitpredict
-scf     |class=.ml.accuracy;reg=.ml.mse
-seed    |rand_val
-saveopt |2
-hld     |0.2
-tts     |.ml.ttsnonshuff
-sz      |0.2
+aggcols  |{first cols x}
+funcs    |`.ml.fresh.params
+xv       |.ml.xv.kfshuff;5
+gs       |.ml.gs.kfshuff;5
+prf      |`.automl.xv.fitpredict
+scf      |class=.ml.accuracy;reg=.ml.mse
+seed     |`rand_val
+saveopt  |2
+hld      |0.2
+tts      |`.ml.ttsnonshuff
+sz       |0.2
+sigfeats |`.automl.prep.freshsignificance
 
 // Normal parameter file
-xv      |.ml.xv.kfshuff;5
-gs      |.ml.gs.kfshuff;5
-funcs   |.automl.prep.i.default
-prf     |.automl.xv.fitpredict
-scf     |class=.ml.accuracy;reg=.ml.mse
-seed    |rand_val
-saveopt |2
-hld     |0.2
-tts     |.ml.traintestsplit
-sz      |0.2
+xv       |.ml.xv.kfshuff;5
+gs       |.ml.gs.kfshuff;5
+funcs    |`.automl.prep.i.default
+prf      |`.automl.xv.fitpredict
+scf      |class=.ml.accuracy;reg=.ml.mse
+seed     |`rand_val
+saveopt  |2
+hld      |0.2
+tts      |`.ml.traintestsplit
+sz       |0.2
+sigfeats |`.automl.prep.freshsignificance
 ```
 
-These files can be generated in the folder `code/mdldef/` using the following functions
+These files can be generated in the folder `code/models/` using the following functions
 
 ```q
 q).automl.savedefault["fresh_params.txt";`fresh]

@@ -474,7 +474,7 @@ nav:
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
-    - q auto machine learning:
+    - Automated machine learning:
       - Introduction: ml/automl/index.md
       - User guide:
         - Overview: ml/automl/userguide/index.md

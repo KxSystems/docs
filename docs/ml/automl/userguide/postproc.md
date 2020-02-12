@@ -29,9 +29,15 @@ The feature impact plot identifies the features which have the highest impact wh
 
 It should be expected that if a feature is an important contributor to the output of a model, then scambling or shuffling that feature will cause the model to not perform as well. Conversely, if the model performs better on the shuffled data, which is effectively noise, it is safe to say that the feature is not relevant for model training.
 
-A score is produced by the model for each scrambled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML-Toolkit. An example plot is shown below for a table comprised of 4 features, using a Gradient Boosting Regressor.
+A score is produced by the model for each shuffled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML-Toolkit. An example plot is shown below for a table comprised of 4 features, using a Gradient Boosting Regressor.
 
-<img src="../img/featureimpact.png"> 
+<img src="../img/featureimpact.png" width="500" height"400"> 
+
+**Confusion Matrix**
+
+A confusion matrix is produced for classification problems and highlights how well the predictions produced by a model predict the actual class. This visualisation gives a user a visual representation of the success or otherwise of their produced model.
+
+<img src="../img/confusion.png" width="325" height"325">
 
 ### Models
 
@@ -62,20 +68,23 @@ The following is an example of the contents of one of the config files.
 
 ```q
 q)get`:metadata
-xv        | (`.ml.xv.kfshuff;5)
-gs        | (`.ml.gs.kfshuff;5)
-prf       | `.automl.xv.fitpredict
-scf       | `class`reg!`.ml.accuracy`.ml.mse
-seed      | 45760980
-saveopt   | 2
-hld       | 0.2
-tts       | `.ml.traintestsplit
-sz        | 0.2
-tf        | 0b
-typ       | `normal
-features  | `x3`x4`xx4_trsvd`xx1_v_trsvd`x4x2_freq_trsvd`x4x1_v_trsvd
-test_score| 0.09685584
-best_model| `LinearRegression
-symencode | `freq`ohe!(,`x2;,`x1)
-pylib     | `sklearn
+xv              | (`.ml.xv.kfshuff;5)
+gs              | (`.ml.gs.kfshuff;5)
+funcs           | `.automl.prep.i.default
+prf             | `.automl.xv.fitpredict
+scf             | `class`reg!`.ml.accuracy`.ml.mse
+seed            | 51879508
+saveopt         | 2
+hld             | 0.2
+tts             | `.ml.traintestsplit
+sz              | 0.2
+sigfeats        | `.automl.prep.freshsignificance
+tf              | 0b
+typ             | `normal
+hyper_parameters| `n_neighbors`leaf_size`metric!(2;10;`minkowski)
+features        | `x1`x2
+test_score      | 1f
+best_model      | `KNeighborsClassifier
+symencode       | `freq`ohe!(`symbol$();,`x)
+pylib           | `sklearn
 ```

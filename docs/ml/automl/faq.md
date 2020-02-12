@@ -7,7 +7,7 @@ keywords: embedpy, machine learning, automation, distribution, cross validation,
 
 ## Can this automated machine learning framework be configured for distributed execution?
 
-Yes. As outlined within the documentation for the machine learning toolkit [here](https://code.kx.com/q/ml/toolkit/xval/) and [here](https://code.kx.com/q/ml/toolkit/fresh/#feature-extraction), procedures for the application of distributed multiprocess cross validation and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
+Yes. As outlined within the documentation for the machine learning toolkit [here](https://code.kx.com/q/ml/toolkit/xval/) and [here](https://code.kx.com/q/ml/toolkit/fresh/#feature-extraction), procedures for the application of distributed multiprocessed cross-validation, grid-search and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
 
 ```q
 // Initialize your process with multiple slave processes and an associated port
@@ -17,7 +17,7 @@ q)\l automl/automl.q
 q).automl.loadfile`:init.q
 ```
 
-The above will now allow the application of grid search and the FRESH algorithm to be distributed to multiple processes.
+The above will now automatically distribute grid-search, cross-validation and the FRESH algorithm to multiple processes.
 
 It should be noted that the framework to achieve this for user defined processes is generalizable. To do this within this automl framework a user must complete the followings two steps
 
@@ -37,7 +37,7 @@ The addition of sklearn models can be completed through the modification of a nu
 
 1 - Open the file relevant to the problem type being solved, namely classification/regression i.e. `classmodels.txt`/`regmodels.txt` respectively.
 
-2 - Add a row to the defined tabular flat file using the same format as shown below.This a sample of a number of rows from the regression file (table header added for convenience)
+2 - Add a row to the defined tabular flat file using the same format as shown below. This is a sample of a number of rows from the regression file (table header added for convenience)
 ```q
 Model name                | library   ; sub-module    ;  seeded? ; problem type
 --------------------------|-----------;---------------;----------;-------------
@@ -77,7 +77,7 @@ The addition of custom keras models is slightly more involved than that performe
 1 - Open the file `code/models/kerasmdls.q`
 
 
-2 - Follow the naming convention [model-name]{mdl/fit/predict} to create function which defines the model to be used, fits the model to the training data and predicts the value of the target. Ensure that the functions are defined in the root of the `.automl` namespace (this is already handled if within the `kerasmdls.q` file)
+2 - Follow the naming convention [model-name]{mdl/fit/predict} to create functions which defines the model to be used, fits the model to the training data and predicts the value of the target. Ensure that the functions are defined in the root of the `.automl` namespace (this is already handled if within the `kerasmdls.q` file)
 
 ```q
 $vi kerasmdls.q
@@ -110,7 +110,7 @@ customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
 ```
 
 !!!Warning
-	To ensure that the behaviour of the system is consistent with the framework, it is vital that a user follows the above instructions, particularly ensuring that their models take as input the defined parameters along with returning the appropriate output, in particular at the model definition phase where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
+	To ensure that the behaviour of the system is consistent with the framework, it is vital that a user follows the above instructions, particularly ensuring that their models take as input the defined parameters and returning an appropriate output, in particular at the model definition phase where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
 
 !!!Note
 	For the fitting and prediction of keras models through embedPy, it is important that the feature data is a numpy array, omission of this conversion can cause issues. As seen above within `kerasmdls.q` this is done through application of ```npa:.p.import[`numpy]`:array``` to the data
@@ -123,7 +123,7 @@ customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
 i.keraslist:`regkeras`multikeras`binarykeras`customregkeras
 ```
 
-4 - Open the file `code/models/regmodels.txt`. This can be changed to `classmodels.txt` depending on use case and add a row associated with the new model.
+4 - Open the file `code/models/regmodels.txt` or `classmodels.txt` depending on use case and add a row associated with the new model.
 
 ```q
 display-name    | model-type ; model-name ; seeded? ; problem-type

@@ -22,7 +22,7 @@ The following are the procedures completed when the default system configuration
 4. Symbol data columns are encoded via either one-hot or frequency encoding.
 5. Constant columns are removed from the data.
 6. Nulls are replaced and an additional column is added to encode their original position
-7. Positive/negative infinities are replaced by the non infinitie max/min value of the column
+7. Positive/negative infinities are replaced by the non infinite max/min value of the column
 
 ### Applied models
 
@@ -101,6 +101,10 @@ In the above example the following describe the columns for the defined tables.
  typ   = type of problem being solved
  minit = definition of the model which will to be applied in the workflow
 ```
+
+!!!Note
+	The keras models first introduced in v0.1 are basic single layer neural networks. As outlined [here](../faq.md) a user can define more complex keras architectures as desired for the use case in question if an appropriate architecture is known.
+
 ### Automatic type checking
 
 Given the automated nature of the machine learning pipeline, it is important to ensure that only types which can be handled by the feature extraction procedures are passed through the workflow. These types are problem type specific, as outlined below. Note that when a column of an incompatible type is removed, its omission will be communicated to the user via the console output.
@@ -122,7 +126,7 @@ FRESH Feature Extraction
   - character
 ```
 
-The following example shows a truncated output from a normal feature creation procedure where a column containing bytes and lists are removed.
+The following example shows a truncated output from a normal feature creation procedure where columns containing byte objects and lists are removed.
 ```q
 q)5#data:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f))
 x         x1        x2         x3 x4                                                
@@ -173,17 +177,18 @@ In the FRESH and all non-FRESH example symbol columns are encoded as follows:
 !!!Note
 	In the case of FRESH the above limitations are performed on an aggregation bucket basis for frequency encoding rather than for an entire column. This ensures that encoding on new data is as fair as possible in the case of FRESH since each aggregation bucket is associated with an individual target
 
-The following example shows the application of this encoding for two columns which between the two of them meet both of the above criteria.
+The following example shows the application of this encoding for on two columns one of which will be one hot encoded while the other is frequency encoded.
 
 ```q
+q)tab:([]1000?`1;1000?`a`b`c;1000?1f)
 q).automl.prep.i.symencode[tab;10;0b;::;::]
 x2         x_freq x1_a x1_b x1_c
 --------------------------------
-0.3673896  0.07   0    1    0   
-0.3427332  0.08   1    0    0   
-0.5061528  0.06   0    0    1   
-0.02651098 0.08   0    1    0   
-0.131004   0.1    0    1    0   
+0.7701313  0.06   0    1    0   
+0.9673079  0.058  0    0    1   
+0.5634727  0.048  1    0    0   
+0.1465967  0.071  0    0    1   
+0.6474446  0.071  0    1    0 
 ```
 
 ### Constant column removal
