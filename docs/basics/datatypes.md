@@ -1,6 +1,6 @@
 ---
-title: Datatypes – Basics – kdb+ and q documentation
-description: Every kdb+ object has a corresponding datatype. There are 38 datatypes. 
+title: Data types | Basics | kdb+ and q documentation
+description: Every kdb+ object has a data type. This page tabulates the datatypes.
 author: Stephen Taylor
 keywords: atom, boolean, character, datatype, date, datetime, double, float, integer, kdb+, list, long, q, scalar, short, string, symbol, temporal, time, timespan, timestamp, type, vector
 ---
@@ -80,18 +80,33 @@ The datatype of an object is given as a short int: negative for atom, positive f
 
 There is no string datatype. On this site, _string_ is a synonym for character vector (type `10h`). In q, the nearest equivalent to an atomic string is the symbol.
 
-Strings can include 8-bit characters, which each occupy two list items.
+Strings can include multibyte characters, which each occupy the respective number of bytes. For example, assuming that the input encoding is UTF-8:
 
 ```q
-q)"Zürich"
+q){(x;count x)}"Zürich"
 "Z\303\274rich"
-q)count "Zürich"
 7
-q)`$"Zürich"
-`Zürich
-q)count string `$"Zürich"
-7
+q){(x;count x)}"日本"
+"\346\227\245\346\234\254"
+6
 ```
+
+Other encodings may give different results. 
+
+```q
+q)\chcp
+"Active code page: 850"
+q)"Zürich"
+"Z\201rich"
+
+q)\chcp 1250
+"Active code page: 1250"
+q)"Zürich"
+"Z\374rich"
+```
+
+<i class="fas fa-graduation-cap"></i>
+[Unicode](../kb/unicode.md)
 
 
 ### Temporal

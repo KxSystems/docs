@@ -199,6 +199,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>[IEX](https://iextrading.com)</td><td><i class="fab fa-github"></i> [himoacs/iex_q](https://github.com/himoacs/iex_q)</td></tr>
 <tr><td>J</td><td>[Q client for J](q-client-for-j.md)</td></tr>
 <tr><td>JDBC</td><td><i class="fab fa-github"></i> [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
+<tr><td>Kafka</td><td><i class="fab fa-github"></i> [ajayrathore/krak](https://github.com/ajayrathore/krak) ==new==</td></tr>
 <tr><td>Lightning</td><td><i class="fab fa-github"></i> [jlucid/qlnd](https://github.com/jlucid/qlnd)</td></tr>
 <tr><td>MQTT</td><td><i class="fab fa-github"></i> [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
 <tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc.md)<br/>
@@ -211,7 +212,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     <td> <i class="fab fa-twitter"></i> Twitter</td>
     <td>
         <i class="fab fa-github"></i> [gartinian/kdbTwitter](https://github.com/gartinian/kdbTwitter)<br/>
-        <i class="fab fa-github"></i> [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb) ==new==
+        <i class="fab fa-github"></i> [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb)
     </td>
 </tr>
 <tr><td>[Wind资讯](https://www.wind.com.cn/en/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>

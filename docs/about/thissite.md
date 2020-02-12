@@ -12,9 +12,6 @@ This site is the successor to the Mediawiki site.
 It reflects the work of the Kx community since 1993, has many authors, 
 and continues to evolve.  
 
-!!! warning "Please update your bookmarks" 
-
-    For now the wiki remains at [code.kx.com/oldwiki](https://code.kx.com/oldwiki/Main_Page), but it is no longer maintained.
 
 
 ## <i class="fab fa-github"></i> GitHub

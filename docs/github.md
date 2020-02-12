@@ -499,13 +499,6 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/iuhh/qprofiler">qprofiler </a></td>
-<td>Production-safe profiler that can be used for live debugging and performance troubleshooting <span class="author"><a href="https://github.com/iuhh?tab=repositories">
-						(HL)
-					</a></span>
-</td>
-</tr>
-<tr>
 <td class="nowrap"><a href="https://github.com/patmok/qprofiler">qprofiler</a></td>
 <td>Simple code profiler <span class="author"><a href="https://github.com/patmok?tab=repositories">
 						(patmok)

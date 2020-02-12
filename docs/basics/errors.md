@@ -73,7 +73,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 Updates blocked by the [`-b` cmd line arg](cmdline.md#-b-blocked), 
 or [`reval`](../ref/eval.md#reval) code or a thread other than the main thread has attempted to update a global variable 
 when in [`peach`](peach.md)+slave threads or multithreaded input queue. 
-Update not allowed when using [negative port number](syscmds.md#p-port).
+Update not allowed when using [negative port number](syscmds.md#p-listening-port).
 </td>
 </tr>
 <tr> <td>nosocket</td> <td class="nowrap">Can only open or use sockets in main thread.</td> </tr>
@@ -184,7 +184,7 @@ On launch
 <tr><th>error</th><th>explanation</th></tr>
 </thead>
 <tbody>
-<tr> <td>{timestamp} couldn't connect to license daemon</td> <td>Could not connect to Kx license server ([kdb+ On Demand](../learn/licensing/#licensing-server-for-kdb-on-demand))</td> </tr>
+<tr> <td>{timestamp} couldn't connect to license daemon</td> <td>Could not connect to Kx license server ([kdb+ On Demand](../learn/licensing.md#licensing-server-for-kdb-on-demand))</td> </tr>
 <tr> <td>cores</td> <td>The license is for [fewer cores than available](../kb/cpu-affinity.md)</td> </tr>
 <tr> <td>cpu</td> <td>The license is for fewer CPUs than available</td> </tr>
 <tr> <td>exp</td> <td>License expiry date is prior to system date</td> </tr>
@@ -219,7 +219,7 @@ Tutorial: [Licensing](../learn/licensing.md)
 
 ## Handling errors
 
-Use system command [`\` (abort)](syscmds.md#abort) to clear one level off the execution stack. 
+Use system command [`\` (abort)](syscmds.md#terminate) to clear one level off the execution stack. 
 
 Keyword [`exit`](../ref/exit.md) terminates the kdb+ process. 
 

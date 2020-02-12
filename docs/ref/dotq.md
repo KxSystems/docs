@@ -191,8 +191,11 @@ Since V3.6 2018.05.18.
 
 ## `.Q.bv` (build vp)
 
-Syntax: `.Q.bv[]`
-Syntax: ``.Q.bv[`]``
+Syntax: 
+```txt
+.Q.bv[]
+.Q.bv[`]
+```
 
 In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables with missing partitions. Optionally allow tables to be missing from partitions, by scanning partitions for missing tables and taking the tables’ prototypes from the last partition. After loading/re-loading from the filesystem, invoke `.Q.bv[]` to (re)populate `.Q.vt`/`.Q.vp`, which are used inside `.Q.p1` during the partitioned select `.Q.ps`.
 (Since V2.8 2012.01.20, modified  V3.0 2012.01.26)
@@ -312,8 +315,11 @@ Provides defaults and types for command line arguments parsed with [``.Q.opt``](
 ## `.Q.dpft` (save table)
 ## `.Q.dpfts` (save table with symtable)
 
-Syntax: ``.Q.dpft[d;p;f;t]``
-Syntax: ``.Q.dpfts[d;p;f;t;s]``
+Syntax: 
+```txt
+.Q.dpft[d;p;f;t]
+.Q.dpfts[d;p;f;t;s]
+```
 
 Where
 
@@ -1059,13 +1065,14 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
 ## `.Q.j10` (encode binhex)
 ## `.Q.x10` (decode binhex)
-## `.Q.j12` (encode base64)
-## `.Q.x12` (decode base64)
+## `.Q.j12` (encode base-36)
+## `.Q.x12` (decode base-36)
 
-Syntax: `.Q.j10 s`
-Syntax: `.Q.x10 s`
-Syntax: `.Q.j12 s`
-Syntax: `.Q.x12 s`
+Syntax:
+<pre markdown="1" class="language-txt">
+.Q.j10 s     .Q.j12 s
+.Q.x10 s     .Q.x12 s
+</pre>
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 
@@ -1480,15 +1487,25 @@ Since V3.5 2017.03.15.
 
 ## `.Q.ts` (time and space)
 
+_Apply, with time and space_
+
 Syntax: `.Q.ts[x;y]`
 
-Where `x` and `y` are valid arguments of _dot-apply_, adds [`\ts`](../basics/syscmds.md#ts-time-and-space) functionality.
+Where `x` and `y` are valid arguments to [Apply](apply.md) returns a 2-item list:
+
+1.  time and space as [`\ts`](../basics/syscmds.md#ts-time-and-space) would
+2.  the result of `.[x;y]`
 
 ```q
 q)\ts .Q.hg `:http://www.google.com
 148 131760
-q).Q.ts(.Q.hg;enlist`:http://www.google.com)
+q).Q.ts[.Q.hg;enlist`:http://www.google.com]
 148 131760
+"<!doctype html><html itemscope=\"\" itemtype=\"http://schema.org/WebPa
+
+q).Q.ts[+;2 3]
+0 80
+5
 ```
 
 Since V3.6 2018.05.18.
@@ -1498,21 +1515,30 @@ Since V3.6 2018.05.18.
 
 Syntax: `.Q.ty x`
 
-Returns the type of `x` as a character code.
+Where `x` is a list, returns the type of `x` as a character code:
+
+-   lower case for a vector
+-   upper case for a list of uniform type
+-   else blank
 
 ```q
-q).Q.ty 1 2
-"i"
-q).Q.ty 1 2.
-"f"
+q)t:([]a:3 4 5;b:"abc";c:(3;"xy";`ab);d:3 2#3 4 5;e:("abc";"de";"fg"))
+q)t
+a b c    d   e
+------------------
+3 a 3    3 4 "abc"
+4 b "xy" 5 3 "de"
+5 c `ab  4 5 "fg"
+q).Q.ty each t`a`b`c`d`e
+"jc JC"
 ```
 
-If the argument is a table column, returns upper case for mappable/uniform lists of vectors. (c.f. [`meta`](meta.md))
+!!! tip "`.Q.ty` is a helper function for `meta`"
 
-```q
-q).Q.ty ("ab";"cd")
-"C"
-```
+    If the argument is a table column, returns upper case for mappable/uniform lists of vectors. 
+
+<i class="fas fa-book"></i>
+[`meta`](meta.md)
 
 
 ## `.Q.u` (date based)
