@@ -38,7 +38,6 @@ real-time firing | Immediate check on latest transaction<br><br>Example: check r
 intraday firing | Frequent scheduled checking of latest transactions<br><br>Example: check each in latest unchecked window of transactions for spoofing activity for 5 minutes prior to transaction | Frequent scheduled checks of groups of fixed-length window of transactions once those windows have ended<br><br>Example: checking for price manipulation prior to a benchmark setting at the time of the setting | N/A
 end-of-day firing | Once-off scheduled checking of each transaction received that day<br><br>Example: check each transaction today for spoofing activity in the 5 minutes prior to transaction | Once-off scheduled check of groups of fixed-length window of transactions<br><br>Example: checking for price manipulation prior to a benchmark setting at the time of the setting (may be multiple per day) | Scheduled singlecheck at EOD of all transactions received that day as a single group<br><br>Example: checking for wash-trades collectively across the day
 
-<!-- <small>_Table 1: Illustration of run-time versus alert-logic style_</small> -->
 
 
 ## Real-time analytics on streaming data
@@ -85,7 +84,7 @@ where
 
 `symColumn`
 
-:name of a secondary grouping column common to both `dataJustReceivedInFeedToBeAnalyzed` and `lookbackTableToAggregate`. It dictates to the function that when identifying the rows in `lookbackTableToAggregate` that are in the moving time windows for each row of data just received, only look at rows with the same `symColumn` value.
+: name of a secondary grouping column common to both `dataJustReceivedInFeedToBeAnalyzed` and `lookbackTableToAggregate`. It dictates to the function that when identifying the rows in `lookbackTableToAggregate` that are in the moving time windows for each row of data just received, only look at rows with the same `symColumn` value.
 
 
 ### Example
@@ -98,7 +97,6 @@ sym    Time     orderID
 BTCUSD 09:00:04 4
 LTCUSD 09:00:05 5
 ```
-<!-- <small>_Table 2: Data just received (variable `d`)_</small> -->
 
 We wish to look back in 2-second moving windows up to the time of each of these orders. Our lookup table of in-memory cached order records is in table `l` below and we wish to count the number of `orderID`s in the lookback window for that same `sym`:
 
@@ -111,7 +109,6 @@ LTCUSD 09:00:03 3
 BTCUSD 09:00:04 4
 LTCUSD 09:00:05 5
 ```
-<!-- <small>_Table 3: Cached data received so far in lookback table (variable `l`)_</small> -->
 
 Then, for the first row of table `d`, only row 4 of table `l` is in the 2-second window (row 2 is for sym `BTCUSD` also but is three seconds prior). For the second row of table `d`, rows 3 and 5 in table `l` are in its window. The q code to perform this lookup is:
 
@@ -153,7 +150,6 @@ sym    time     orderID eventID orderStatus
 BTCUSD 09:00:04 4       4       cancelled
 BTCUSD 09:00:04 5       5       cancelled
 ```
-<!-- <small>_Table 4: Data just received (variable `d`)_</small> -->
 
 Suppose our lookup table is:
 
@@ -166,7 +162,6 @@ BTCUSD 09:00:03 3       3       cancelled
 BTCUSD 09:00:04 4       4       cancelled
 BTCUSD 09:00:04 5       5       cancelled
 ```
-<!-- <small>_Table 5: Cached data received so far in lookback table (variable `l`)_</small> -->
 
 If we wish to count the number of cancellations in a 2-second time window, event 5 is in the time window of event 4 due to the shared timestamp, even though we know it happened sequentially after it. This would lead the window-join function to return 3 and 3 as the counts of cancelled orders in the time window for each row of `d`. Suppose our threshold was 3, this would lead to two alerts being identified, one true positive and one false positive. For compliance-department investigators, this could become a frequent nuisance in feeds with such imprecise timestamps.
 
@@ -247,12 +242,12 @@ For each case, we run the alert analytic twenty times to simulate twenty such lo
 [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP)
 
 <i class="far fa-hand-point-right"></i>
-Appendix for how to install and configure the code.
+[Appendix](#appendix-surveillance-framework-example) for how to install and configure the code.
 
 
 ### Exchange-member simulation
 
-As our cryptocurrency exchange data is anonymised, we do not have any information on the exchange member who placed the order. Ideally, this is what we would group on when aggregating in alert logic; e.g. we would count the number of cancelled orders in a `sym` by a particular market participant in the Spoofing alert logic. Instead, we perform the experiments initially by grouping on the cryptocurrency symbol on its own and then after fabricating member IDs to simulate institutional data and grouping on the cryptocurrency symbol and the member ID.
+As our cryptocurrency exchange data is anonymized, we do not have any information on the exchange member who placed the order. Ideally, this is what we would group on when aggregating in alert logic; e.g. we would count the number of cancelled orders in a `sym` by a particular market participant in the Spoofing alert logic. Instead, we perform the experiments initially by grouping on the cryptocurrency symbol on its own and then after fabricating member IDs to simulate institutional data and grouping on the cryptocurrency symbol and the member ID.
 
 In our data set, there are 2,769,761 order IDs, each with multiple records detailing their lifetimes. We randomly shuffle these and disperse them out to fabricated member IDs. Each member ID gets $N_i$ order IDs assigned to them, where the $N_i$ values are from a normal distribution and rounded down to the nearest integer. For this cryptocurrency exchange data, we choose a mean and standard deviation for the number of orders by a member as 550 and 10 respectively which generates just over 5,000 members.
 
@@ -266,76 +261,68 @@ That is, rather than grouping on the cryptocurrency symbol, of which there are o
 We perform three experiments:
 
 1.  Running all approaches for one hour of streaming data
-2.  Running all approaches for replaying the log file from experiment (1)
+2.  Running all approaches for replaying the log file from experiment 1
 3.  After discounting the iterative approach, running for four hours streaming data with simulated member IDs
 
 We perform each experiment three times and take the average of the three runs as our final result.
 
-The results of experiment (1) are:
+The results of experiment 1 are:
 
-![Results of experiment (1) – 1 hour of streaming data](img/experiment_i_table.PNG)
-
-<!-- <small>_Table 6: Results of experiment (1) – 1 hour of streaming data_</small> -->
+![Results of experiment 1 – 1 hour of streaming data](img/experiment_i_table.png)
 
 These are represented in graphical form.
 
-![Results of experiment (1) – 1 hour of streaming data](img/experiment_i_graph.PNG)
+![Results of experiment 1 – 1 hour of streaming data](img/experiment_i_graph.png)
 
-<small>_Results of experiment (1) - 1 hour of streaming data_</small>
+<small>_Results of experiment 1 - 1 hour of streaming data_</small>
 
 Overall, as execution becomes less frequent (from instantaneously, to every one minute, to every five minutes etc.), we see an increase in the run time. This is to be expected, as there is more work to do. In the real-time case, we see that the iterative approach is using the least memory but takes slightly longer to run than the other approaches. However, its true performance behavior reveals itself as the execution points become less frequent – there is a radically longer run time as the process has zero recovery/idle time between data buckets. This could transpire in practice even in the real-time case if the upstream feed were sending messages in pulses due to a delay which is out of the control of the kdb+ application.
 
 Note, we also observe cases of the OS having to allocate more memory to the kdb+ process mid-lifetime for the ad-hoc approach. We will show later though that the more realistic grouping by a member ID appears to rule out such an event and brings the number of MB used down to the levels of the window-join approaches.
 
-We next check the performance when replaying the [log file](../..//kb/logging.md) from experiment (1) to check the performance in a case of recovery or running the alerts in an historical manner under revised conditions e.g. new thresholds or reference data:
+We next check the performance when replaying the [log file](../..//kb/logging.md) from experiment 1 to check the performance in a case of recovery or running the alerts in an historical manner under revised conditions e.g. new thresholds or reference data:
 
-![Results of experiment (2) – replaying log file of experiment (1)](img/experiment_ii_table.PNG)
-
-<!-- <small>_Table 7: Results of experiment (2) - replaying log file of experiment (i)_</small> -->
+![Results of experiment 2 – replaying log file of experiment 1](img/experiment_ii_table.png)
 
 In graphical form, these are presented as:
 
-![Results of experiment (2) – replaying log file of experiment (1)](img/experiment_ii_graph..PNG)
+![Results of experiment 2 – replaying log file of experiment 1](img/experiment_ii_graph.png)
 
-<small>_Results of experiment (2) – replaying log file of experiment (1)_</small>
+<small>_Results of experiment 2 – replaying log file of experiment 1_</small>
 
-In this case, the memory usage is similar if not identical to that in experiment (1) – to be expected given that the data is the same. The run times behave the same across the execution points as previously i.e. grows as execution point is less frequent and appears to take slightly longer than when the data is streaming. Although the run time of the iterative approach in the real-time case is in line with the other approaches, it is unacceptably long in the intraday cases and would lead to a lengthy time rerunning the alerts historical.
+In this case, the memory usage is similar if not identical to that in experiment 1 – to be expected given that the data is the same. The run times behave the same across the execution points as previously i.e. grows as execution point is less frequent and appears to take slightly longer than when the data is streaming. Although the run time of the iterative approach in the real-time case is in line with the other approaches, it is unacceptably long in the intraday cases and would lead to a lengthy time rerunning the alerts historical.
 
-We could experiment with the introduction of [parallel processing](../../basics/peach.md) into the framework. From the results in the white paper [“Multithreading in kdb+”](../multi-thread/index.md), we would expect this to reduce the run-time and memory usage of the iterative approach. Although, not as much as to bring them down to those of the other three approaches without a considerable implementation revision. At this stage, we discount the iterative approach as an option as there is strong evidence that it would cause an unacceptable lag behind the streaming data which may require considerable efficiency-making efforts to overcome.
+We could experiment with the introduction of [parallel processing](../../basics/peach.md) into the framework. From the results in the white paper “[Multithreading in kdb+](../multi-thread/index.md)”, we would expect this to reduce the run-time and memory usage of the iterative approach. Although, not as much as to bring them down to those of the other three approaches without a considerable implementation revision. At this stage, we discount the iterative approach as an option as there is strong evidence that it would cause an unacceptable lag behind the streaming data which may require considerable efficiency-making efforts to overcome.
 
 As mentioned previously, in the section ‘Exchange-member simulation’, the grouping by cryptocurrency sym only is not seen as realistic. It is expected that institutional data will be grouped by combinations such as sym+traderID, sym+brokerID, sym+desk etc. Our final experiment tests the remaining three approaches on four hours of streaming data with simulated member IDs added to the data. We consider the following results to be more reflective of real institutional data:
 
-![Results of experiment (3) – 4 hours of streaming simulated institutional data](img/experiment_iii_table.PNG)
-
-<!-- <small>_Table 8: Results of experiment (3) - 4 hours of streaming simulated institutional data_</small> -->
+![Results of experiment 3 – 4 hours of streaming simulated institutional data](img/experiment_iii_table.png)
 
 Presenting these in graphical form, we have:
 
-![Results of experiment (3) – 4 hours of streaming simulated institutional data](img/experiment_iii_graph.PNG)
+![Results of experiment 3 – 4 hours of streaming simulated institutional data](img/experiment_iii_graph.png)
 
-<small>_Results of experiment (3) – 4 hours of streaming simulated institutional data_</small>
+<small>_Results of experiment 3 – 4 hours of streaming simulated institutional data_</small>
 
 Here, when viewed in isolation from the other experiments, the same observation is made that as the execution-point frequency decreases, the run times and memory usage increase overall. The performance of both window-join approaches mirror each other closely while the ad-hoc approach seems to exhibit a slightly better performance in general in the intraday cases.
 
-To compare with experiment (1) results, we re-run experiments (3) for 12 hours (once only) and show run times and MB used after certain numbers of hours:
+To compare with experiment 1 results, we re-run experiment 3 for 12 hours (once only) and show run times and MB used after certain numbers of hours:
 
-![Results of experiment (4) – compared with experiment (1) results and broken by number of hours](img/experiment_iv_table.PNG)
-
-<!-- <small>_Table 9: Results of experiment (4) – compared with experiment (1) results and broken by number of hours_</small> -->
+![Results of experiment 4 – compared with experiment 1 results and broken by number of hours](img/experiment_iv_table.png)
 
 Above, the _ep-app_ column is a shorthand combination of the _execution point_ and _approach_ columns of previous result tables. The column _1hs_ means the highest number of seconds to run and the highest MB used when running the experiment for 1 hour and grouping by sym only. The columns named in the format _Nhm_ have a similar meaning but for $N$ hours and grouping by fabricated sym and member ID.
 
 Discarding the results when grouping by sym only, we present these in a series of subgraphs for number of seconds to run and MB used – one for each execution point but for all number of hours as below:
 
-![Results of experiment (4) – Number of seconds for each approach broken down by number of hours](img/experiment_iv_graph_secondsTaken.PNG)
+![Results of experiment 4 – Number of seconds for each approach broken down by number of hours](img/experiment_iv_graph_secondstaken.png)
 
-<small>_Results of experiment (4) – Number of seconds for each approach broken down by number of hours_</small>
+<small>_Results of experiment 4 – Number of seconds for each approach broken down by number of hours_</small>
 
-![Results of experiment (4) - Number of MB used for each approach broken down by number of hours](img/experiment_iv_graph_MBUsed.PNG)
+![Results of experiment 4 - Number of MB used for each approach broken down by number of hours](img/experiment_iv_graph_mbused.png)
 
-<small>_Results of experiment (4) - Number of MB used for each approach broken down by number of hours_</small>
+<small>_Results of experiment 4 - Number of MB used for each approach broken down by number of hours_</small>
 
-When viewed in comparison to experiment (1), after one hour of streaming data was analyzed, we see slightly longer run times in the real-time case but faster run times in all intraday cases. In terms of memory usage, we see slightly higher memory usage in both window join approaches and lower usage in the ad-hoc approach, especially in the intraday cases. This suggests the ad-hoc method outperforms either the window-join approaches as the data becomes more granular in the grouping clause values. The requirement to sort by the more granular sym+memberID and then within that, by time, in the window-join cases may explain why the ad-hoc approach is faster for the higher granularity.
+When viewed in comparison to experiment 1, after one hour of streaming data was analyzed, we see slightly longer run times in the real-time case but faster run times in all intraday cases. In terms of memory usage, we see slightly higher memory usage in both window join approaches and lower usage in the ad-hoc approach, especially in the intraday cases. This suggests the ad-hoc method outperforms either the window-join approaches as the data becomes more granular in the grouping clause values. The requirement to sort by the more granular sym+memberID and then within that, by time, in the window-join cases may explain why the ad-hoc approach is faster for the higher granularity.
 
 As time progresses up to 12 hours, we can see that runtime memory usage fluctuates, rising, lowering and returning to previous highs by the end of the experiment. Note, we haven’t implemented memory-management techniques, such as purging data outside the lookback windows from the in-memory tables and calling garbage collection to stop the growth in time and memory used.
 
@@ -346,7 +333,7 @@ These results show that the use of event ID windows instead of timestamp windows
 
 There are other factors that we have not experimented with – the distribution of the twenty runs of the alert analytics out to different slave threads, implementing intraday memory management techniques in the alert engines or varying the hard-coded lookback threshold of five minutes on top of varying the intraday execution point frequency.
 
-Whether on the minimal grouping by sym or on an estimated realistic grouping of sym and member ID, the real-time execution results appear not to discount the possibility of the alert engine being regularly occupied while it attempts to catch up with the live streaming data. More careful examination of bucket-by-bucket results is required though, to truly qualify that finding. If so, this would affect the implementation of memory-management techniques or the scheduling of intraday/end-of-day activities within the alert engines as the lag could continuously build up over time (more applicable in the case of 24 streaming data as is used in these experiments). This ties in with the conclusions in the [“Kdb+tick profiling for throughput optimization”](../tick-profiling.md) white paper, where it is found more efficient to deal with messages in bulk rather than in isolation – further justifying our dismissal of the iterative approach.
+Whether on the minimal grouping by sym or on an estimated realistic grouping of sym and member ID, the real-time execution results appear not to discount the possibility of the alert engine being regularly occupied while it attempts to catch up with the live streaming data. More careful examination of bucket-by-bucket results is required though, to truly qualify that finding. If so, this would affect the implementation of memory-management techniques or the scheduling of intraday/end-of-day activities within the alert engines as the lag could continuously build up over time (more applicable in the case of 24 streaming data as is used in these experiments). This ties in with the conclusions in the “[Kdb+tick profiling for throughput optimization](../tick-profiling.md)” white paper, where it is found more efficient to deal with messages in bulk rather than in isolation – further justifying our dismissal of the iterative approach.
 
 On the other hand, the results suggest that the intraday approaches always finish their task in ample time before the next intraday milestone is reached – giving plenty of time for any memory management tasks or intraday/end-of-day job scheduling to complete in an expected timeframe. For example, the results suggest that any EOD job scheduled in an alert engine running on an intraday 1-minute basis will start at most at 00:07 after the last intraday bucket of the day has been analyzed by the 20 alert calls. This short delay could be further reduced by memory-management techniques and the use of slave threads.
 
@@ -367,7 +354,7 @@ joining our Kx for Surveillance product team.
 
 ## Appendix – Surveillance framework example
 
-The white paper [“Building real-time tick subscribers”](../rt-tick/index.md), demonstrates the ease with which a skeleton kdb+ ticker plant framework can be adapted to meet an organization’s specific needs. Taking this, we set up the following sample surveillance framework:
+The white paper “[Building real-time tick subscribers](../rt-tick/index.md)”, demonstrates the ease with which a skeleton kdb+ ticker plant framework can be adapted to meet an organization’s specific needs. Taking this, we set up the following sample surveillance framework:
 
 ![Example surveillance framework used for experimentation](img/figure6.png)
 
@@ -386,7 +373,7 @@ In addition, we have introduced a number of alert-engine processes subscribing t
 
 This framework is for the purposes of experimenting only and we do not suggest that this is an optimal TP setup for the above processes. Potentially we could have placed chained ticker plants between the main parent ticker plant and the alert engines.
 
-See white paper [“Building real-time tick subscribers”](../rt-tick/index.md) for details behind the startup scripts for the ticker plant, RDB and HDB processes. The main adjustment we made to those scripts was to define additional schemas in `sym.q`. These schemas are
+See white paper “[Building real-time tick subscribers](../rt-tick/index.md)” for details behind the startup scripts for the ticker plant, RDB and HDB processes. The main adjustment we made to those scripts was to define additional schemas in `sym.q`. These schemas are
 
 schema | contents
 -------|----------
@@ -412,8 +399,6 @@ limitPrice       | limit price of order
 originalQuantity | originally ordered quantity
 fillPrice        | price that order partially filled at
 fillQuantity     | quantity that order partially filled for
-
-<!-- <small>_Table 10: Partial schema of `dxOrderPublic`_</small> -->
 
 We set a similar but simpler schema for `dxTradePublic`. Other adjustments to those startup scripts are negligible and are not detailed here.
 

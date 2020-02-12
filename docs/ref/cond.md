@@ -53,11 +53,16 @@ q)$[0;a;r;b;c]
 q)    $[r;b;c]
 ```
 
-!!! warning "Assigning a local variable within a code branch"
+!!! warning "Cond is not supported inside [qSQL queries](../basics/qsql.md)."
 
-    Good style avoids using Cond to control side effects, such as amending variables. (Using [`if`](if.md) is a clearer signal to the reader that a side effect is intended.) 
+    Instead, use [Vector Conditional](vector-conditional.md).
 
-    Also, setting local variables in a code branch can have [unintended consequences](../basics/function-notation.md#name-scope).
+
+## Assigning a local variable within a code branch
+
+Good style avoids using Cond to control side effects, such as amending variables. (Using [`if`](if.md) is a clearer signal to the reader that a side effect is intended.) 
+
+Also, setting local variables in a code branch can have [unintended consequences](../basics/function-notation.md#name-scope).
 
 
 
@@ -75,6 +80,10 @@ q)$[0b;`true;0b;`foo]~(::)
 1b
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[`$` dollar](overloads.md#dollar)  
-Basics: [Evaluation control](../basics/control.md)
+<i class="fas fa-book"></i> 
+[`$` dollar](overloads.md#dollar), 
+[Vector Conditional](vector-conditional.md)
+<br>
+<i class="fas fa-book-open"></i> 
+[Controlling evaluation](../basics/control.md)
+

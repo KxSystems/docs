@@ -26,7 +26,10 @@ $ echo $?
 42
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit)  
-Basics: [Debugging](../basics/debug.md)
+<i class="fas fa-book"></i> 
+[`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit) 
+<br>
+<i class="fas fa-book-open"></i> 
+[Controlling evaluation](../basics/control.md), 
+[Debugging](../basics/debug.md)
 

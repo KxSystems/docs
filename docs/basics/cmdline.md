@@ -201,17 +201,28 @@ Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 
 ## `-p` (listening port)
 
-Syntax: `-p [rp,][hostname:][portnumber|servicename]`
+_Set listening port_
 
-Kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
-The port must be available and the process must have permission for the port.
+```txt
+-p [rp,][hostname:](portnumber|servicename)
+```
 
-The default is 0 (no listening port).
-
-Optional parameter `rp` allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
-
+See 
 <i class="fas fa-book-open"></i>
-[`\p` system command](syscmds.md#p-listening-port) for detail
+[Listening port](listening-port.md) for detail.
+
+<i class="fas fa-book"></i>
+[`hopen`](../ref/hopen.md)
+<br>
+<i class="fas fa-book-open"></i>
+[`\p` system command](syscmds.md#p-listening-port)
+<br>
+<i class="fas fa-graduation-cap"></i>
+[Multithreaded input mode](../kb/multithreaded-input.md),
+[Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
+<br>
+<i class="far fa-map"></i>
+[Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
 

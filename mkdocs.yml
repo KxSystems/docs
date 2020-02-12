@@ -583,6 +583,7 @@ nav:
     - Signal processing and q: wp/signal-processing/index.md
     - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
+    - Surveillance latency: wp/surveillance-latency/index.md
     - Surveillance techniques: wp/surveillance/index.md
     - Working with sym files: wp/symfiles.md
     - WebSockets: wp/websockets/index.md

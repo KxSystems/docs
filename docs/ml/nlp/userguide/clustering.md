@@ -11,9 +11,9 @@ The NLP library contains a variety of clustering algorithms, with different para
 Clusters can be summarized by their centroids, which are the sum of the feature vectors of all the documents they contain.
 
 
-### Markox Cluster algorithm
+## Markox Cluster algorithm
 
-MCL clustering, which takes document similarity as its only parameter other than the documents. This algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. Then it runs a graph-clustering algorithm on the dataset.
+MCL clustering, which takes document similarity as its only parameter other than the documents. This algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. It then runs a graph-clustering algorithm on the dataset.
 
 
 #### `.nlp.cluster.MCL`
@@ -30,12 +30,12 @@ Where
 
 returns as a list of longs the document’s indexes, grouped into clusters.
 
-Cluster 2603 of Jeff Skillings emails, creating 398 clusters with the minimum threshold at 0.25:
+Setting a minimum similarity of 0.25 results in 370 clusters out of Jeff Skillings 2603 emails:
 
 ``` q
-q)clusterjeff:.nlp.cluster.similarity[jeffcorpus;0.25;0b]
+q)clusterjeff:.nlp.cluster.MCL[jeffcorpus;0.25;0b]
 q)count clusterjeff
-398
+370
 ```
 
 
@@ -60,20 +60,16 @@ returns the documents’ indexes, grouped into clusters.
 ```q
 q).nlp.cluster.summarize[jeffcorpus;30]
 
-0 31 47 127 361 431 513 615 724 786 929 933 1058..
-1 40 44 189 507 514 577 585 746 805 869 1042..
-2 3 4 6 7 9 10 13 16 17 19 20 22 23 24 28 33 34..
-5 27 30 39 393 611 641 654 670 782 820 1358..
-8 73 147 427 592 660 743 794 850
-11 26 113 236 263 280 281 340 391 414 429 478..
-12 14 38 43 49 52 89 173 232 278 325 328
-15 18 21 25 32 45 100 119 168 202 285 298..
-29 159 386 430 459 499 508 597 659 731
-68 83 105 132 141 152 177 182 185 226 257..
-78 91 219 225 231 239 244 255 401 477 524 551..
+0 18 22 25 32 33 38 51 54 66 83 87 92 95 100 101 111 112 142 150..
+1 79 120 175 176 177 179 180 208 217 281 290 294 295 302 303 306..
+2 5 6 12 13 14 16 17 21 26 28 36 46 48 56 60 62 72 73 75 78 85 89..
+3 4 8 19 24 27 50 76 110 118 131 139 172 178 232 233 237 244 256..
+7 9 10 11 20 108 109 153 201 202 225 255 262 328 344 347 354 463..
+15 103 126 128 155 165 186 304 383 419 869 880 1023 1115 1175 1346..
+23 86 240 253 701 724 725 727 1029 1037 1725 1932 2054 2528 2579
 ```
 
-### K-means clustering
+## K-means clustering
 
 Given a set of documents, K-means clustering aims to partition the documents into a number of sets. Its objective is to minimize the residual sum of squares, a measure of how well the centroids represent the members of their clusters.
 
@@ -97,11 +93,11 @@ Partition _Moby Dick_ into 15 clusters; we find there is one large cluster prese
 ``` q
 q)clusters:.nlp.cluster.kmeans[corpus;15;30]
 q)count each clusters
-32 9 13 9 12 5 12 8 6 8 7 11 11 5 2
+7 4 4 17 49 17 30 4 2 6 3 1 4 1 1
 ```
 
 
-### Bisecting K-means
+## Bisecting K-means
 
 Bisecting K-means adopts the K-means algorithm and splits a cluster in two. This algorithm is more efficient when _k_ is large. For the K-means algorithm, the computation involves every data point of the data set and _k_ centroids. On the other hand, in each bisecting step of Bisecting K-means, only the data points of one cluster and two centroids are involved in the computation. Thus the computation time is reduced. Secondly, Bisecting K-means produce clusters of similar sizes, while K-means is known to produce clusters of widely differing sizes.
 
@@ -122,11 +118,10 @@ returns, as a list of lists of longs, the documents’ indexes, grouped into clu
 
 ```q
 q)count each .nlp.cluster.bisectingKMeans[corpus;15;30]
-8 5 13 5 12 8 10 10 1 12 5 15 1 37 8
+16 54 8 11 39 3 1 1 1 1 1 1 1 10 2
 ```
 
-
-### Radix algorithm 
+## Radix algorithm 
 
 The Radix clustering algorithms are a set of non-comparison, binning-based clustering algorithms. Because they do no comparisons, they can be much faster than other clustering algorithms. In essence, they cluster via topic modeling, but without the complexity.
 
@@ -136,9 +131,9 @@ At its simplest, Radix clustering just bins on most significant term. A more acc
 
 
 
-#### Hard Clustering
+### Hard Clustering
 
-Hard Clustering means that each datapoint belongs to a cluster completely or not.
+Hard Clustering means that each datapoint either belongs to a cluster completely or not.
 
 
 #### `.nlp.cluster.fastRadix`
@@ -152,19 +147,19 @@ Where
 -   `docs` is a list of documents or document keywords (table or a list of dictionaries)
 -   `numOfClusters` is the number of clusters (long)
 
-returns a list of list of longs, the documents’ indexes, grouped into clusters.
+returns a list of longs, the documents’ indexes, grouped into clusters.
 
 Group Jeff Skilling’s emails into 60 clusters:
 
 ```q
 q)count each .nlp.cluster.fastRadix[jeffcorpus;60]
-15 14 10 9 8 13 9 8 8 6 5 6 6 8 5 6 5 4 4 4 4 4 4 8 4 5 4 4 5 4 4 4 3 3 3 3 3..
+39 16 14 39 17 15 14 25 12 13 8 19 14 6 15 12 19 9 12.. 
 ```
 
 
-#### Soft Clustering
+### Soft Clustering
 
-In Soft Clustering, a probability or likelihood of a data point to be in a clusters is assigned. This mean that some clusters can overlap.
+In Soft Clustering, a probability or likelihood of a data point to be in a clusters is assigned. This means that some clusters can overlap.
 
 
 #### `.nlp.cluster.radix`
@@ -184,5 +179,5 @@ Group Jeff Skilling’s emails into 60 clusters:
 
 ```q
 q)count each .nlp.cluster.radix[jeffcorpus;60]
-9 7 6 7 10 12 6 5 5 5 6 8 6 5 8 5 6 5 5 5 6 7 5 5 5 6 9 6 5 5 9 5 5 8 17 7 37.
+37 9 13 21 7 7 12 13 7 11 6 9 6 6 5 6 5 8 22 7 12..
 ```
