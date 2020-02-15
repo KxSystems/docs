@@ -23,6 +23,10 @@ about new repositories.</div>
 
 <table class="kx-compact" markdown="1">
 <tr>
+	<td class="nowrap">[analyst-training](https://github.com/kxsystems/analyst-training)</td>
+	<td>training for [Kx Analyst](/analyst/) and [Kx Developer](/developer/) ==new==</td>
+</tr>
+<tr>
 	<td class="nowrap">[cookbook](https://github.com/KxSystems/cookbook)</td>
 	<td>companion files to the [Knowledge Base](kb/index.md)</td>
 </tr>
@@ -40,7 +44,7 @@ about new repositories.</div>
 </tr>
 <tr>
 	<td class="nowrap">[help](https://github.com/KxSystems/help)</td>
-	<td>online help for q ==new version==</td>
+	<td>online help for q</td>
 </tr>
 <tr>
 	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
