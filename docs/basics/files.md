@@ -76,6 +76,6 @@ Kdb+ uses files and directories to represent database tables.
 Relative filepaths are sought in the following locations, in order.
 
 1.  current directory
-2.  `QHOME`
-3.  `QLIC`
+1.  [`QHOME`](../basics/environment.md)
+1.  [`QLIC`](../basics/environment.md)
 
