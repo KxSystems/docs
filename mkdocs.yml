@@ -94,20 +94,19 @@ nav:
     - Tour:
       - Begin here: learn/tour/index.md
       - The q session: learn/tour/session.md
-      - Language: 
-        - Data types: learn/tour/datatypes.md
-        - Dictionaries: learn/tour/dictionaries.md
-        - Tables: learn/tour/tables.md
-        - Queries: learn/tour/queries.md
-        - Functions: learn/tour/functions.md
-        - Iteration: learn/tour/iteration.md
-      - Data:
-        - CSVs: learn/tour/csvs.md
-        - Databases: learn/tour/databases.md
-        - Files: learn/tour/files.md
-      - Communications: 
-        - HTTP, HTTPS: learn/tour/http.md
-
+      - Data types: learn/tour/datatypes.md
+      - Dictionaries: learn/tour/dictionaries.md
+      - Tables: learn/tour/tables.md
+      - Queries: learn/tour/queries.md
+      - Functions: learn/tour/functions.md
+      - Iteration: learn/tour/iteration.md
+      - CSVs: learn/tour/csvs.md
+      - Databases: learn/tour/databases.md
+      - Files: learn/tour/files.md
+      - HTTP, HTTPS: learn/tour/http.md
+      - Webserver: learn/tour/webserver.md
+      - Scripts: learn/tour/scripts.md
+      - IDE: learn/tour/ide.md
     - Brief introduction: learn/brief-introduction.md
     - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
