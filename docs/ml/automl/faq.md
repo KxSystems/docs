@@ -5,7 +5,7 @@ keywords: embedpy, machine learning, automation, distribution, cross validation,
 ---
 # <i class="fab fa-python"></i> Frequently-asked questions
 
-## Can this automated machine learning framework be configured for distributed execution?
+## How can the automated machine learning framework be configured for distributed execution?
 
 Yes. As outlined within the documentation for the machine learning toolkit [here](https://code.kx.com/q/ml/toolkit/xval/) and [here](https://code.kx.com/q/ml/toolkit/fresh/#feature-extraction), procedures for the application of distributed multiprocessed cross-validation, grid-search and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
 
@@ -27,7 +27,7 @@ It should be noted that the framework to achieve this for user defined processes
 if[0>system"s";.ml.mproc.init[abs system"s"]enlist"system[\"l myscript.q\"]"]
 ```
 
-## Can I add my own models to be evaluated using this framework?
+## How can my own models to be evaluated using this framework?
 
 Yes, within supported limits. Within the current version of this framework it is possible for a user to add sklearn models and define Keras models to be evaluated. The steps to be taken to integrate models from each of these python libraries are outlined separately here.
 
