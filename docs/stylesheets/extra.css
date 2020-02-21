@@ -148,3 +148,22 @@ code, kbd, pre {
 .fusion a {
 	font-weight: bold;
 }
+
+/* tweak Prism.js styles 
+--------------------------------------------- */
+.md-typeset code[class*="language-"],
+.md-typeset pre[class*="language-"] {
+	font-size: .9em;
+}
+
+/* match Prism code blocks */
+.md-typeset code {
+	background-color: #fdf6e3;
+}
+.md-typeset .admonition code {
+	background-color: transparent;
+}
+
+.md-typeset .admonition pre[class*="language-"] {
+	padding: 0;
+}

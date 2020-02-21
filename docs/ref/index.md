@@ -230,10 +230,15 @@ q)`VARNAME setenv "NEWVALUE"
 </table>
 
 _n_: short int returned by [`type`](type.md) and used for [casting](../basics/casting.md), e.g. `9h$3`
+<br>
 _c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)
+<br>
 _sz_: size in bytes
+<br>
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`
+<br>
 `v`: applicable value
+<br>
 RO: read only; RW: read-write
 
 
@@ -256,7 +261,7 @@ milliseconds: time mod 1000
 
 Markup output for HTTP
 
-<pre markdown="1" class="language-txt" style="font-size: 90%">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
 [`.h.br`](doth.md#hbr-linebreak)      linebreak                [`.h.cd`](doth.md#hcd-csv-from-data)      CSV from data
 [`.h.code`](doth.md#hcode-code-after-tab)    code after Tab           [`.h.d`](doth.md#hd-delimiter)       delimiter
 [`.h.fram`](doth.md#hfram-frame)    frame                    [`.h.ed`](doth.md#hed-excel-from-data)      Excel from data
@@ -289,7 +294,7 @@ Markup output for HTTP
 
 De/serialize as JSON
 
-<pre markdown="1" class="language-txt" style="font-size: 90%">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
 [.j.j   serialize](#jj-serialize)                [.j.k   deserialize](#jk-deserialize)
 [.j.jd  serialize infinity](#jjd-serialize-infinity)
 </pre>
@@ -305,54 +310,54 @@ De/serialize as JSON
 
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
-<pre markdown="1" class="language-txt" style="font-size: 90%">
-General                              Datatype
- [.Q.a        lowercase alphabet](dotq.md#qa-lower-case-alphabet)       [.Q.btoa   b64 encode](dotq.md#qbtoa-b64-encode)
- [.Q.A        uppercase alphabet](dotq.md#qa-upper-case-alphabet)       [.Q.j10    encode binhex](dotq.md#qj10-encode-binhex)
- [.Q.addmonths](dotq.md#qaddmonths)                         [.Q.j12    encode base64](dotq.md#qj12-encode-base64)
- [.Q.bt       backtrace](dotq.md#qbt-backtrace)                [.Q.M      long infinity](dotq.md#qm-long-infinity)
- [.Q.dd       join symbols](dotq.md#qdd-join-symbols)             [.Q.ty     type](dotq.md#qty-type)
- [.Q.def](dotq.md#qdef)                               [.Q.x10    decode binhex](dotq.md#qx10-decode-binhex)
- [.Q.f        format](dotq.md#qf-format)                   [.Q.x12    decode base64](dotq.md#qx12-decode-base64)
- [.Q.fc       parallel on cut](dotq.md#qfc-parallel-on-cut)
- [.Q.ff       append columns](dotq.md#qff-append-columns)           Database
- [.Q.fmt      format](dotq.md#qfmt-format)                   [.Q.chk    fill HDB](dotq.md#qchk-fill-hdb)
- [.Q.ft       apply simple](dotq.md#qft-apply-simple)             [.Q.dpft   save table](dotq.md#qdpft-save-table)
- [.Q.fu       apply unique](dotq.md#qfu-apply-unique)             [.Q.dpfts  save table with sym](dotq.md#qdpfts-save-table-with-symtable)
- [.Q.gc       garbage collect](dotq.md#qgc-garbage-collect)          [.Q.dsftg  load process save](dotq.md#qdsftg-load-process-save)
- [.Q.id       sanitize](dotq.md#qid-sanitize)                 [.Q.en     enumerate varchar cols](dotq.md#qen-enumerate-varchar-cols)
- [.Q.qt       is table](dotq.md#qqt-is-table)                 [.Q.ens    enumerate against domain](dotq.md#qens-enumerate-against-domain)
- [.Q.res      keywords](dotq.md#qres-keywords)                 [.Q.fk     foreign key](dotq.md#qfk-foreign-key)
- [.Q.s        plain text](dotq.md#qs-plain-text)               [.Q.hdpf   save tables](dotq.md#qhdpf-save-tables)
- [.Q.s1       string representation](dotq.md#qs1-string-representation)    [.Q.qt     is table](dotq.md#qqt-is-table)
- [.Q.sbt      string backtrace](dotq.md#qsbt-string-backtrace)         [.Q.qp     is partitioned](dotq.md#qqp-is-partitioned)
- [.Q.sha1     SHA-1 encode](dotq.md#qsha1-sha-1-encode)
- [.Q.trp      extend trap](dotq.md#qtrp-extend-trap)              Partitioned database state
- [.Q.ts       time and space](dotq.md#qts-time-and-space)           [.Q.bv     build vp](dotq.md#qbv-build-vp)
- [.Q.u        date based](dotq.md#qu-date-based)               [.Q.cn     count partitioned table](dotq.md#qcn-count-partitioned-table)
- [.Q.V        table to dict](dotq.md#qv-table-to-dict)            [.Q.D      partitions](dotq.md#qd-partitions)
- [.Q.v        value](dotq.md#qv-value)                    [.Q.ind    partitioned index](dotq.md#qind-partitioned-index)
- [.Q.view     subview](dotq.md#qview-subview)                  [.Q.MAP    maps partitions](dotq.md#qmap-maps-partitions)
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+General                               Datatype
+[.Q.a        lowercase alphabet](dotq.md#qa-lower-case-alphabet)        [.Q.btoa   b64 encode](dotq.md#qbtoa-b64-encode)
+[.Q.A        uppercase alphabet](dotq.md#qa-upper-case-alphabet)        [.Q.j10    encode binhex](dotq.md#qj10-encode-binhex)
+[.Q.addmonths](dotq.md#qaddmonths)                          [.Q.j12    encode base64](dotq.md#qj12-encode-base64)
+[.Q.bt       backtrace](dotq.md#qbt-backtrace)                 [.Q.M      long infinity](dotq.md#qm-long-infinity)
+[.Q.dd       join symbols](dotq.md#qdd-join-symbols)              [.Q.ty     type](dotq.md#qty-type)
+[.Q.def](dotq.md#qdef)                                [.Q.x10    decode binhex](dotq.md#qx10-decode-binhex)
+[.Q.f        format](dotq.md#qf-format)                    [.Q.x12    decode base64](dotq.md#qx12-decode-base64)
+[.Q.fc       parallel on cut](dotq.md#qfc-parallel-on-cut)
+[.Q.ff       append columns](dotq.md#qff-append-columns)            Database
+[.Q.fmt      format](dotq.md#qfmt-format)                    [.Q.chk    fill HDB](dotq.md#qchk-fill-hdb)
+[.Q.ft       apply simple](dotq.md#qft-apply-simple)              [.Q.dpft   save table](dotq.md#qdpft-save-table)
+[.Q.fu       apply unique](dotq.md#qfu-apply-unique)              [.Q.dpfts  save table with sym](dotq.md#qdpfts-save-table-with-symtable)
+[.Q.gc       garbage collect](dotq.md#qgc-garbage-collect)           [.Q.dsftg  load process save](dotq.md#qdsftg-load-process-save)
+[.Q.id       sanitize](dotq.md#qid-sanitize)                  [.Q.en     enumerate varchar cols](dotq.md#qen-enumerate-varchar-cols)
+[.Q.qt       is table](dotq.md#qqt-is-table)                  [.Q.ens    enumerate against domain](dotq.md#qens-enumerate-against-domain)
+[.Q.res      keywords](dotq.md#qres-keywords)                  [.Q.fk     foreign key](dotq.md#qfk-foreign-key)
+[.Q.s        plain text](dotq.md#qs-plain-text)                [.Q.hdpf   save tables](dotq.md#qhdpf-save-tables)
+[.Q.s1       string representation](dotq.md#qs1-string-representation)     [.Q.qt     is table](dotq.md#qqt-is-table)
+[.Q.sbt      string backtrace](dotq.md#qsbt-string-backtrace)          [.Q.qp     is partitioned](dotq.md#qqp-is-partitioned)
+[.Q.sha1     SHA-1 encode](dotq.md#qsha1-sha-1-encode)
+[.Q.trp      extend trap](dotq.md#qtrp-extend-trap)               Partitioned database state
+[.Q.ts       time and space](dotq.md#qts-time-and-space)            [.Q.bv     build vp](dotq.md#qbv-build-vp)
+[.Q.u        date based](dotq.md#qu-date-based)                [.Q.cn     count partitioned table](dotq.md#qcn-count-partitioned-table)
+[.Q.V        table to dict](dotq.md#qv-table-to-dict)             [.Q.D      partitions](dotq.md#qd-partitions)
+[.Q.v        value](dotq.md#qv-value)                     [.Q.ind    partitioned index](dotq.md#qind-partitioned-index)
+[.Q.view     subview](dotq.md#qview-subview)                   [.Q.MAP    maps partitions](dotq.md#qmap-maps-partitions)
                                       [.Q.par    locate partition](dotq.md#qpar-locate-partition)
 Environment                           [.Q.PD     partition locations](dotq.md#qpd-partition-locations)
- [.Q.k        version](dotq.md#qk-version)                  [.Q.pd     modified partition locns](dotq.md#qpd-modified-partition-locations)
- [.Q.opt      command parameters](dotq.md#qopt-command-parameters)       [.Q.pf     partition field](dotq.md#qpf-partition-field)
- [.Q.w        memory stats](dotq.md#qw-memory-stats)             [.Q.pn     partition counts](dotq.md#qpn-partition-counts)
- [.Q.x        non-command parameters](dotq.md#qx-non-command-parameters)   [.Q.qp     is partitioned](dotq.md#qqp-is-partitioned)
+[.Q.k        version](dotq.md#qk-version)                   [.Q.pd     modified partition locns](dotq.md#qpd-modified-partition-locations)
+[.Q.opt      command parameters](dotq.md#qopt-command-parameters)        [.Q.pf     partition field](dotq.md#qpf-partition-field)
+[.Q.w        memory stats](dotq.md#qw-memory-stats)              [.Q.pn     partition counts](dotq.md#qpn-partition-counts)
+[.Q.x        non-command parameters](dotq.md#qx-non-command-parameters)    [.Q.qp     is partitioned](dotq.md#qqp-is-partitioned)
                                       [.Q.pt     partitioned tables](dotq.md#qpt-partitioned-tables)
 IPC                                   [.Q.PV     partition values](dotq.md#qpv-partition-values)
- [.Q.addr     IP address](dotq.md#qaddr-ip-address)               [.Q.pv     modified partition values](dotq.md#qpv-modified-partition-values)
- [.Q.fps      streaming algorithm](dotq.md#qfps-streaming-algorithm)      [.Q.vp     missing partitions](dotq.md#qvp-missing-partitions)
- [.Q.fs       streaming algorithm](dotq.md#qfs-streaming-algorithm)
- [.Q.fsn      streaming algorithm](dotq.md#qfsn-streaming-algorithm)     Segmented database state
- [.Q.hg       HTTP get](dotq.md#qhg-http-get)                [.Q.D      partitions](dotq.md#qd-partitions)
- [.Q.host     hostname](dotq.md#qhost-hostname)                [.Q.P      segments](dotq.md#qp-segments)
- [.Q.hp       HTTP post](dotq.md#qhp-http-post)               [.Q.u      date based](dotq.md#qu-date-based)
- [.Q.l        load](dotq.md#ql-load)
+[.Q.addr     IP address](dotq.md#qaddr-ip-address)                [.Q.pv     modified partition values](dotq.md#qpv-modified-partition-values)
+[.Q.fps      streaming algorithm](dotq.md#qfps-streaming-algorithm)       [.Q.vp     missing partitions](dotq.md#qvp-missing-partitions)
+[.Q.fs       streaming algorithm](dotq.md#qfs-streaming-algorithm)
+[.Q.fsn      streaming algorithm](dotq.md#qfsn-streaming-algorithm)       Segmented database state
+[.Q.hg       HTTP get](dotq.md#qhg-http-get)                  [.Q.D      partitions](dotq.md#qd-partitions)
+[.Q.host     hostname](dotq.md#qhost-hostname)                  [.Q.P      segments](dotq.md#qp-segments)
+[.Q.hp       HTTP post](dotq.md#qhp-http-post)                 [.Q.u      date based](dotq.md#qu-date-based)
+[.Q.l        load](dotq.md#ql-load)
 
- File I/O
- [.Q.Cf       create empty nested char file](dotq.md#qcf-create-empty-nested-char-file)
- [.Q.Xf       create file](dotq.md#qxf-create-file)
+File I/O
+[.Q.Cf       create empty nested char file](dotq.md#qcf-create-empty-nested-char-file)
+[.Q.Xf       create file](dotq.md#qxf-create-file)
 </pre>
 
 
@@ -360,31 +365,31 @@ IPC                                   [.Q.PV     partition values](dotq.md#qpv-p
 
 System variables, callbacks
 
-<pre markdown="1" class="language-txt" style="font-size: 90%">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
 System information                 Callbacks
- [.z.a    IP address](dotz.md#za-ip-address)                 [.z.ac    HTTP auth from cookie](dotz.md#zac-http-auth-from-cookie)
- [.z.b    dependencies](dotz.md#zb-dependencies)               [.z.bm    msg validator](dotz.md#zbm-msg-validator)
- [.z.c    cores](dotz.md#zc-cores)                      [.z.exit  action on exit](dotz.md#zexit-action-on-exit)
- [.z.D/d  date shortcuts](dotz.md#zt-zt-zd-zd-timedate-shortcuts)             [.z.pc    close](dotz.md#zpc-close)
- [.z.e    TLS connection status](dotz.md#ze-tls-connection-status)      [.z.pd    peach handles](dotz.md#zpd-peach-handles)
- [.z.ex   failed primitive](dotz.md#zex-failed-primitive)           [.z.pg    get](dotz.md#zpg-get)
- [.z.ey   arg to failed primitive](dotz.md#zey-argument-to-failed-primitive)    [.z.ph    HTTP get](dotz.md#zph-http-get)
- [.z.f    file](dotz.md#zf-file)                       [.z.pi    input](dotz.md#zpi-input)
- [.z.h    host](dotz.md#zh-host)                       [.z.po    open](dotz.md#zpo-open)
- [.z.i    PID](dotz.md#zi-pid)                        [.z.pp    HTTP post](dotz.md#zpp-http-post)
- [.z.K    version](dotz.md#zk-version)                    [.z.pq    qcon](dotz.md#zpq-qcon)
- [.z.k    release date](dotz.md#zk-release-date)               [.z.ps    set](dotz.md#zps-set)
- [.z.l    license](dotz.md#zl-license)                    [.z.pw    validate user](dotz.md#zpw-validate-user)
- [.z.N/n  local/UTC timespan](dotz.md#zn-local-timespan)         [.z.ts    timer](dotz.md#zts-timer)
- [.z.o    OS version](dotz.md#zo-os-version)                 [.z.vs    value set](dotz.md#zvs-value-set)
- [.z.P/p  local/UTC timestamp](dotz.md#zp-local-timestamp)        [.z.wc    WebSocket close](dotz.md#zwc-websocket-close)
- [.z.pm   HTTP options](dotz.md#zpm-http-options)               [.z.wo    WebSocket open](dotz.md#zwo-websocket-open)
- [.z.q    quiet mode](dotz.md#zq-quiet-mode)                 [.z.ws    WebSockets](dotz.md#zws-websockets)
- [.z.s    self](dotz.md#zs-self)
- [.z.T/t  time shortcuts](dotz.md#zt-zt-zd-zd-timedate-shortcuts)
- [.z.u    user ID](dotz.md#zu-user-id)
- [.z.W/w  handles/handle](dotz.md#zw-handles)
- [.z.X/x  raw/parsed command line](dotz.md#zx-raw-command-line)
- [.z.Z/z  local/UTC datetime](dotz.md#zz-local-datetime)
- [.z.zd   zip defaults](dotz.md#zzd-zip-defaults)
+[.z.a    IP address](dotz.md#za-ip-address)                 [.z.ac    HTTP auth from cookie](dotz.md#zac-http-auth-from-cookie)
+[.z.b    dependencies](dotz.md#zb-dependencies)               [.z.bm    msg validator](dotz.md#zbm-msg-validator)
+[.z.c    cores](dotz.md#zc-cores)                      [.z.exit  action on exit](dotz.md#zexit-action-on-exit)
+[.z.D/d  date shortcuts](dotz.md#zt-zt-zd-zd-timedate-shortcuts)             [.z.pc    close](dotz.md#zpc-close)
+[.z.e    TLS connection status](dotz.md#ze-tls-connection-status)      [.z.pd    peach handles](dotz.md#zpd-peach-handles)
+[.z.ex   failed primitive](dotz.md#zex-failed-primitive)           [.z.pg    get](dotz.md#zpg-get)
+[.z.ey   arg to failed primitive](dotz.md#zey-argument-to-failed-primitive)    [.z.ph    HTTP get](dotz.md#zph-http-get)
+[.z.f    file](dotz.md#zf-file)                       [.z.pi    input](dotz.md#zpi-input)
+[.z.h    host](dotz.md#zh-host)                       [.z.po    open](dotz.md#zpo-open)
+[.z.i    PID](dotz.md#zi-pid)                        [.z.pp    HTTP post](dotz.md#zpp-http-post)
+[.z.K    version](dotz.md#zk-version)                    [.z.pq    qcon](dotz.md#zpq-qcon)
+[.z.k    release date](dotz.md#zk-release-date)               [.z.ps    set](dotz.md#zps-set)
+[.z.l    license](dotz.md#zl-license)                    [.z.pw    validate user](dotz.md#zpw-validate-user)
+[.z.N/n  local/UTC timespan](dotz.md#zn-local-timespan)         [.z.ts    timer](dotz.md#zts-timer)
+[.z.o    OS version](dotz.md#zo-os-version)                 [.z.vs    value set](dotz.md#zvs-value-set)
+[.z.P/p  local/UTC timestamp](dotz.md#zp-local-timestamp)        [.z.wc    WebSocket close](dotz.md#zwc-websocket-close)
+[.z.pm   HTTP options](dotz.md#zpm-http-options)               [.z.wo    WebSocket open](dotz.md#zwo-websocket-open)
+[.z.q    quiet mode](dotz.md#zq-quiet-mode)                 [.z.ws    WebSockets](dotz.md#zws-websockets)
+[.z.s    self](dotz.md#zs-self)
+[.z.T/t  time shortcuts](dotz.md#zt-zt-zd-zd-timedate-shortcuts)
+[.z.u    user ID](dotz.md#zu-user-id)
+[.z.W/w  handles/handle](dotz.md#zw-handles)
+[.z.X/x  raw/parsed command line](dotz.md#zx-raw-command-line)
+[.z.Z/z  local/UTC datetime](dotz.md#zz-local-datetime)
+[.z.zd   zip defaults](dotz.md#zzd-zip-defaults)
 </pre>
