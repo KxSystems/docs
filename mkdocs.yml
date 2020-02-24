@@ -94,14 +94,14 @@ nav:
     - Tour:
       - Begin here: learn/tour/index.md
       - The q session: learn/tour/session.md
+      - Databases: learn/tour/databases.md
+      - Tables: learn/tour/tables.md
+      - CSVs: learn/tour/csvs.md
       - Data types: learn/tour/datatypes.md
       - Dictionaries: learn/tour/dictionaries.md
-      - Tables: learn/tour/tables.md
       - Queries: learn/tour/queries.md
       - Functions: learn/tour/functions.md
       - Iteration: learn/tour/iteration.md
-      - CSVs: learn/tour/csvs.md
-      - Databases: learn/tour/databases.md
       - Files: learn/tour/files.md
       - HTTP, HTTPS: learn/tour/http.md
       - Webserver: learn/tour/webserver.md
