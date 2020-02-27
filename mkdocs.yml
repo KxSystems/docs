@@ -390,6 +390,7 @@ nav:
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
+      - History: releases/index.md
       - Changes in 3.6: releases/ChangesIn3.6.md
       - Changes in 3.5: releases/ChangesIn3.5.md
       - Changes in 3.4: releases/ChangesIn3.4.md

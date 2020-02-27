@@ -23,6 +23,8 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
+    
     <p class="nowrap" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC 1.1](interfaces/odbc-simba.md)</p>
     
     <p markdown="1"><i class="fas fa-question"></i> [Search Box](about/search.md)</p>
@@ -30,8 +32,6 @@ Kdb+, from [Kx](https://kx.com), is
     <p markdown="1"><i class="far fa-map"></i> [Surveillance latency](wp/surveillance-latency/index.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fab fa-github"></i> [`man.q`](https://github.com/KxSystems/man)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-graduation-cap"></i> [_Q for Mortals 3.1_](/q4m3/preface/)</p>
     
 </div>
 
