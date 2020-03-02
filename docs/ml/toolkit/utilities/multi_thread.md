@@ -32,7 +32,7 @@ The above command sets 4 processes using port 1234
 
 Which results in the following architecture
 
-![Figure 1](img/multiprocess.png)
+![Figure 1](../img/multiprocess.png)
 
 Using this process results in functions within the FRESH and cross validation libraries to be peached across the defined number of ports and main port. 
 
