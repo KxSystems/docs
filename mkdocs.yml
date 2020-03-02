@@ -460,6 +460,7 @@ nav:
         - Metrics: ml/toolkit/utilities/metric.md
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
+      - MultiProcess: ml/toolkit/multi_thread.md
       - FRESH: ml/toolkit/fresh.md  
       - Cross validation: ml/toolkit/xval.md
     - Natural language processing:
@@ -569,6 +570,7 @@ nav:
     - Signal processing and q: wp/signal-processing/index.md
     - Socket sharding: wp/socket-sharding/index.md
     - Space weather: wp/space-weather/index.md
+    - Surveillance latency: wp/surveillance-latency/index.md
     - Surveillance techniques: wp/surveillance/index.md
     - Working with sym files: wp/symfiles.md
     - WebSockets: wp/websockets/index.md

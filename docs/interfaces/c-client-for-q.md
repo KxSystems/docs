@@ -699,13 +699,13 @@ This example assumes rows with three fields: symbol, price and size.
 
 ## Error signaling and catching
 
-To signal an error from your C code use the function `krr(S);`. 
+Note the two different directions of error flow below.
+
+1.  To signal an error from your C code to kdb+ use the function `krr(S)`. 
 A utility function `orr(S)` can be used to signal system errors. 
 It is similar to `krr(S)`, but it appends a system error message to the user-provided string before passing it to `krr`. 
-Note that `krr` does not create a copy of the string passed to it. 
-It is the user’s responsibility to ensure the string is valid for the expected lifetime of the error.
 
-To catch an error code from the results of a call to `r=k(h, …)`, check the return value and type. 
+1.  To catch an error code from the results of a call to `r=k(h, …)`, check the return value and type. 
 If result is `NULL`, then a network error has occurred. 
 If it has type -128, then `r->s` will point to the error string. Note that K object with type -128 acts as a marker only and other uses are not supported(i.e. passing it to other C API or kdb+ functions).
 
@@ -717,6 +717,9 @@ if(r && -128==r->t)
 
 Under some network-error scenarios, `errno` can be used to obtain the details of the error,
 e.g. `perror(“network”);`
+
+<i class="far fa-hand-point-right"></i>
+[`krr`](capiref.md#krr-signal-c-error)
 
 
 ## Return values

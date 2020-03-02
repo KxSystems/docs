@@ -36,7 +36,6 @@ Links relating to q and the k programming languages and their origins.
 * [Abridged kdb+tick manual](https://legaldocumentation.kx.com/q/d/tick.htm), Arthur Whitney, 2005
 * [Abridged kdb+taq manual](https://legaldocumentation.kx.com/q/d/taq.htm), Arthur Whitney, 2005
 * [Kdb+ database and language primer](https://legaldocumentation.kx.com/q/d/primer.htm), Dennis Sasha, 2005
-* [_Q for Mortals 2nd edn_](https://code.kx.com/oldwiki/JB:QforMortals2/contents), a tutorial in q programming by Jeffry A. Borror. This version covers kdb+ version 2.4, and has been superseded by the book&rsquo;s [third edition](/q4m3/).
 
 
 

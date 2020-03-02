@@ -12,14 +12,14 @@ keywords: condition, control, iteration, kdb+, q, while
 
 _Control word: evaluate expression/s while some condition remains true_
 
-Syntax: `while[test;e1;e2;e3;…;en]` 
+Syntax: `while[test;e1;e2;e3;…;en]`
 
 Where
 
 -   `test` is an expression that evaluates to an atom
 -   `e1`, `e2`, … `en` are expressions
 
-unless `test` evaluates to zero, the expressions `e1` to `en` are evaluated, in order. The cycle – evaluate `test`, then the expressions – continues until `test` evaluates to zero. 
+unless `test` evaluates to zero, the expressions `e1` to `en` are evaluated, in order. The cycle – evaluate `test`, then the expressions – continues until `test` evaluates to zero.
 
 ```q
 q)r:1 1
@@ -36,6 +36,8 @@ q)r
     It returns [Identity](identity.md) `(::)`.
 
 
-<i class="far fa-hand-point-right"></i> 
-[Accumulators – While](accumulators.md#while)  
-Basics: [Control](../basics/control.md) 
+<i class="fas fa-book"></i>
+[Accumulators – While](accumulators.md#while)
+<br>
+<i class="fas fa-book-open"></i>
+[Controlling evaluation](../basics/control.md)

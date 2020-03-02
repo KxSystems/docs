@@ -9,7 +9,7 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 One of the most important document formats for analysis in natural-language processing is emails, particularly for surveillance, and spam detection. The following functions form a basis for the handling of email-format data.
 
 
-### `.nlp.loadEmails`
+### `.nlp.email.loadEmails`
 
 _An MBOX file as a table of parsed metadata_
 
@@ -34,8 +34,8 @@ q)email:.nlp.loadEmails["/home/kx/nlp/datasets/tdwg.mbox"]
 q)cols email
 `sender`to`date`subject`contentType`payload`text
 ```
-!!! warning "Change to .nlp.loadEmails"
-	The function `nlp.loadEmails` will soon be changed to `nlp.emails.loadEmails` and no longer work thereafter. 
+!!! warning "Depreciation"
+	The above function was previously defined by `nlp.loadEmails`, this function definition is still callable but will be deprecated with the next major release. 
 
 
 <!-- FIXME ### `.nlp.email.i.parseMbox` -->
@@ -91,3 +91,7 @@ q)table:.nlp.email.parseMail emailString
 q)cols table
 `sender`to`date`subject`contentType`payload
 ```
+
+!!! warning "Depreciation"
+        The above function was previously defined by `nlp.i.parseMail`, this function definition is still callable but will be deprecated with the next major release.  
+

@@ -32,6 +32,8 @@ Where `x` is one of
 
 opens communication to a file or a process, and returns a handle.
 
+!!! warning "Do not use colons in a file-path as it conflicts with the pattern used to identify a process."
+
 
 ### Processes
 

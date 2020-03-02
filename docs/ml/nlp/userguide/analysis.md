@@ -162,11 +162,7 @@ _Sentiment of a sentence_
 
 Syntax: `.nlp.sentiment x`
 
-Where 
-
--  `x` is string or a list of strings
-
-returns a dictionary or table containing the sentiment of the text.
+Where `x` is string or a list of strings returns a dictionary or table containing the sentiment of the text.
 
 An run of sentences from _Moby Dick_:
 
@@ -177,4 +173,5 @@ compound   pos       neg       neu
 0.7177249  0.5996797 0         0.4003203
 -0.8802318 0         0.6910529 0.3089471
 ```
+
 

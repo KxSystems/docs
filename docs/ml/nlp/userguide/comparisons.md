@@ -20,6 +20,18 @@ The view of a vector as a line segment starting at the origin is useful, as any 
 
 The _cosine similarity_ of two vectors is the dot product of two vectors over the product of their magnitudes. It is a standard distance metric for comparing documents.
 
+### `.nlp.cosineSimilarity`
+
+_The cosine similarity of two vectors_
+
+Syntax: `.nlp.cosineSimilarity[x;y]`
+
+Where `x` and `y` are two vectors, returns the cosine similarity between the vectors
+
+```q
+.nlp.compareDocs[first corpus`keywords;last corpus`keywords]
+0.03635309
+```
 
 ## Comparing corpora
 
@@ -62,9 +74,10 @@ Where `dict1` and `dict2` are dictionaries that consist of the document‘s keyw
 
 Given the queried email defined above, and a random email from the corpus, we can calculate the cosine similarity between them.
 
-```q 
-q)queryemail2:jeffcorpus[rand count jeffcorpus]
-q).nlp.compareDocs[queryemail`keywords;queryemail2`keywords]
+```q
+q)email1:jeffcorpus[rand count jeffcorpus]
+q)email2:jeffcorpus[rand count jeffcorpus] 
+q).nlp.compareDocs[email1`keywords;email2`keywords]
 0.1163404
 ```
 
@@ -92,5 +105,18 @@ Comparing the first chapter with the rest of the book:
 q).nlp.compareDocToCorpus[corpus`keywords;0]
 0.078517 0.1048744 0.06266384 0.07095197 0.08974005 0.05909442 0.06855744..
 ```
+## Comparing strings of text
 
+### `.nlp.jaroWinkler`
+
+_The similarity between two strings of text, scored between 0 and 1_
+
+Syntax:`.nlp.jaroWinkler[x;y]`
+
+Where `x` and `y` are both strings, returns the Jaro-Winkler score of the two strings. The score is a number between 0 and 1, 1 being identical, and 0 being completely dissimilar.
+
+```q
+q).nlp.jaroWinkler[corpus[0]`text;corpus[1]`text]
+0.835967
+```
 
