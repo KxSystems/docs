@@ -2,7 +2,7 @@
 title: man.q help page | About | q and kdb+ documentation
 description: Help for man.q documentation script for q programmers
 author: Stephen Taylor
-date: December 2019
+date: February 2020
 ---
 # Help for `man.q`
 
@@ -28,7 +28,6 @@ man "cmdline"         / command-line options
 man "errors"
 man "datatypes"
 man "debug"
-man "help"
 man "interfaces"
 man "internal"
 man "iterators"
@@ -40,6 +39,7 @@ man "wp"              / White Papers
 ## Arguments to `man`
 ```txt
 man "--list"
+man "--help"
 ```
 
 

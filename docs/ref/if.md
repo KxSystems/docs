@@ -11,7 +11,7 @@ keywords: condition, control, evaluate, kdb+, q
 
 _Control word: evaluate expression/s under some condition_
 
-Syntax: `if[test;e1;e2;e3;…;en]` 
+Syntax: `if[test;e1;e2;e3;…;en]`
 
 Where
 
@@ -38,10 +38,13 @@ q)r
 
 !!! warning "Assigning a local variable within a code branch"
 
-    `if` is often preferred to [Cond](cond.md) when a test guards a side effect, such as amending a global. 
+    `if` is often preferred to [Cond](cond.md) when a test guards a side effect, such as amending a global.
     But setting local variables using `if` can have [unintended consequences](../basics/function-notation.md#name-scope).
 
 
-<i class="far fa-hand-point-right"></i>
-[Cond](cond.md), [Vector Conditional](vector-conditional.md)  
-Basics: [Control](../basics/control.md) 
+<i class="fas fa-book"></i>
+[Cond](cond.md),
+[Vector Conditional](vector-conditional.md)
+<br>
+<i class="fas fa-book-open"></i>
+[Controlling evaluation](../basics/control.md)

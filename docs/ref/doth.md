@@ -12,37 +12,43 @@ keywords: html, kdb+, markup, q
 
 
 <pre markdown="1" class="language-txt">
-[.h.br    linebreak](#hbr-linebreak)             [.h.hu        URI escape](#hhu-uri-escape)
-[.h.c0    web color](#hc0-web-color)             [.h.hug       URI map](#hhug-uri-map)
-[.h.c1    web color](#hc1-web-color)             [.h.hy        HTTP response](#hhy-http-response)
-[.h.cd    CSV from data](#hcd-csv-from-data)         [.h.HOME      webserver root](#hhome-webserver-root)
-[.h.code  code after Tab](#hcode-code-after-tab)        [.h.iso8601   ISO timestamp](#hiso8601-iso-timestamp)
-[.h.d     delimiter](#hd-delimiter)             [.h.jx        table](#hjx-table)
-[.h.ed    Excel from data](#hed-excel-from-data)       [.h.logo      Kx logo](#hlogo-kx-logo)
-[.h.edsn  Excel from tables](#hedsn-excel-from-tables)     [.h.nbr       no break](#hnbr-no-break)
-[.h.fram  frame](#hfram-frame)                 [.h.pre       pre](#hpre-pre)
-[.h.ha    anchor](#hha-anchor)                [.h.sa        style](#hsa-style)
-[.h.hb    anchor target](#hhb-anchor-target)         [.h.sb        style](#hsb-style)
-[.h.hc    escape lt](#hhc-escape-lt)             [.h.sc        URI-safe](#hsc-uri-safe)
-[.h.he    HTTP 400](#hhe-http-400)              [.h.td        TSV](#htd-tsv)
-[.h.hn    HTTP error](#hhn-http-error)            [.h.text      paragraphs](#htext-paragraphs)
-[.h.hp    HTTP response](#hhp-http-response)         [.h.tx        filetypes](#htx-filetypes)
-[.h.hr    horizontal rule](#hhr-horizontal-rule)       [.h.ty        MIME types](#hty-mime-types)
-[.h.ht    Marqdown to HTML](#hht-marqdown-to-html)      [.h.uh        URI unescape](#huh-uri-unescape)
-[.h.hta   start tag](#hhta-start-tag)             [.h.val       value](#hval-value)
-[.h.htac  element](#hhtac-element)               [.h.xd        XML](#hxd-xml)
-[.h.htc   element](#hhtc-element)               [.h.xmp       XMP](#hxmp-xmp)
-[.h.html  document](#hhtml-document)              [.h.xs        XML escape](#hxs-xml-escape)
-[.h.http  hyperlinks](#hhttp-hyperlinks)            [.h.xt        JSON](#hxt-json)
+[`.h.br`](#hbr-linebreak)      linebreak                [`.h.cd`](#hcd-csv-from-data)      CSV from data
+[`.h.code`](#hcode-code-after-tab)    code after Tab           [`.h.d`](#hd-delimiter)       delimiter
+[`.h.fram`](#hfram-frame)    frame                    [`.h.ed`](#hed-excel-from-data)      Excel from data
+[`.h.ha`](#hha-anchor)      anchor                   [`.h.edsn`](#hedsn-excel-from-tables)    Excel from tables
+[`.h.hb`](#hhb-anchor-target)      anchor target            [`.h.hc`](#hhc-escape-lt)      escape lt
+[`.h.ht`](#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](#hhr-horizontal-rule)      horizontal rule
+[`.h.hta`](#hhta-start-tag)     start tag                [`.h.iso8601`](#hiso8601-iso-timestamp) ISO timestamp
+[`.h.htac`](#hhtac-element)    element                  [`.h.jx`](#hjx-table)      table
+[`.h.htc`](#hhtc-element)     element                  [`.h.td`](#htd-tsv-from-data)      TSV from data
+[`.h.html`](#hhtml-document)    document                 [`.h.tx`](#htx-filetypes)      filetypes
+[`.h.http`](#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](#hxd-xml)      XML
+[`.h.nbr`](#hnbr-no-break)     no break                 [`.h.xs`](#hxs-xml-escape)      XML escape
+[`.h.pre`](#hpre-pre)     pre                      [`.h.xt`](#hxt-json)      JSON
+[`.h.text`](#htext-paragraphs)    paragraphs
+[`.h.xmp`](#hxmp-xmp)     XMP
+
+[`.h.he`](#hhe-http-400)      HTTP 400                 [`.h.c0`](#hc0-web-color)    web color
+[`.h.hn`](#hhn-http-response)      HTTP response            [`.h.c1`](#hc1-web-color)    web color
+[`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](#hhome-webserver-root)  webserver root
+[`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  Kx logo
+                                    [`.h.sa`](#hsa-anchor-style)    anchor style
+[`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.sb`](#hsb-body-style)    body style
+[`.h.hug`](#hhug-uri-map)     URI map                  [`.h.ty`](#hty-mime-types)    MIME types
+[`.h.sc`](#hsc-uri-safe)      URI-safe                 [`.h.val`](#hval-value)   value
+[`.h.uh`](#huh-uri-unescape)      URI unescape
 </pre>
 
-The `.h` [namespace](../basics/namespaces.md) contains functions for converting files into various formats and for web-console display. 
+The `.h` [namespace](../basics/namespaces.md) contains objects for 
 
-!!! warning "Reserved"
+-   marking up strings as HTML
+-   converting data into various formats
+-   composing HTTP responses
+-   web-console display
 
-    The `.h` namespace is reserved for use by Kx, as are all single-letter namespaces. 
+!!! warning "The `.h` namespace is reserved for use by Kx, as are all single-letter namespaces."
 
-    Consider all undocumented functions in the namespace as its private API – and do not use them. 
+    Consider all undocumented functions in the namespace as its private API – and do not use them.
 
 
 
@@ -51,28 +57,28 @@ The `.h` [namespace](../basics/namespaces.md) contains functions for converting 
 
 Syntax: `.h.br`
 
-Returns the string `"<br>"`. 
+HTML linebreak (string), defaults to `"<br>"`.
 
 
 ## `.h.c0` (web color)
 
 Syntax: `.h.c0`
 
-Returns as a symbol a web color used by the web console.
+Color used by the web console (symbol), defaults to `` `024C7E``.
 
 
 ## `.h.c1` (web color)
 
 Syntax: `.h.c1`
 
-Returns as a symbol a web color used by the web console.
+Color used by the web console (symbol), defaults to `` `958600``.
 
 
 ## `.h.cd` (CSV from data)
 
 Syntax: `.h.cd x`
 
-Where `x` is a table or a list of columns returns a matrix of comma-separated values. 
+Where `x` is a table or a list of columns returns a matrix of comma-separated values.
 
 ```q
 q).h.cd ([]a:1 2 3;b:`x`y`z)
@@ -95,7 +101,7 @@ Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to 
 
 Syntax: `.h.code x`
 
-Where `x` is a string with embedded Tab characters, returns the string with alternating segments marked up as 
+Where `x` is a string with embedded Tab characters, returns the string with alternating segments marked up as
 
 -   plain text
 -   `code` and `nobr`.
@@ -114,7 +120,7 @@ q).h.code "foo"
 
 Syntax: `.h.d`
 
-Delimiter used by [`.h.cd`](#hcd-csv-from-data) to join subitems of nested lists. Default is `" "`. 
+Delimiter used by [`.h.cd`](#hcd-csv-from-data) to join subitems of nested lists. Default is `" "`.
 
 ```q
 q)show t:([a:til 3]b:3 3#"abc";c:3 3#1 2 3)
@@ -145,7 +151,7 @@ q).h.cd t
 
 Syntax: `.h.ed x`
 
-Where `x` is a table, returns as a list of strings the XML for an Excel workbook. 
+Where `x` is a table, returns as a list of strings the XML for an Excel workbook.
 
 ```q
 q).h.ed ([]a:1 2 3;b:`x`y`z)
@@ -158,7 +164,7 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 
 Syntax: `.h.edsn x!y`
 
-Where 
+Where
 
 -   `x` is a symbol vector
 -   `y` is a conformable list of tables
@@ -197,9 +203,32 @@ q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
 
 ## `.h.fram` (frame)
 
-Syntax: `.h.fram[x;y;z]`
+_HTML page with two frames_
 
-Creates an HTML page with two frames. Takes three string arguments: the title; the location of the left frame; the location of the right frame.
+Syntax: `.h.fram[t;s;(l;r)]`
+
+Where
+
+-   `t` is the page title (string)
+-   `s` is a list of strings
+-   `l` and `r` are respectively the sources of the left and right frames (strings)
+
+returns as a string an HTML page with two frames in a frameset wide enough to accommodate the lines of `s`.
+
+Example: suppose `tmp.htm` contains the content for the first frame.
+
+```q
+q)`tmp.txt: 0:0N!s:" "sv'2#''string 5 10#50?100
+"12 10 11 90 73 90 43 90 84 63"
+"93 54 38 97 88 58 68 45 22 39"
+"64 49 82 40 88 77 30 17 23 12"
+"66 36 37 44 28 20 30 34 77 61"
+"70 36 12 97 92 99 45 83 94 88"
+q).h.fram["Five rows";s;("tmpl.htm";"tmp.txt")]
+"<html><head><title>Five rows</title><frameset cols=\"316,*\"><frame
+src=\"tmp.htm\"><frame name=v src=\"tmp.txt\"></frameset></head></html>"
+```
+
 
 
 ## `.h.ha` (anchor)
@@ -252,15 +281,15 @@ q).h.he "<rubbish>"
 ```
 
 
-## `.h.hn` (HTTP error)
+## `.h.hn` (HTTP response)
 
 Syntax: `.h.hn[x;y;z]`
 
-Where 
+Where
 
--   `x` is the [type of error](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string) 
--   `y` is the [content type](#hty-mime-types) (symbol) 
--   `z` is the error message (string) 
+-   `x` is the [status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) (string)
+-   `y` is the [content type](#hty-mime-types) (symbol)
+-   `z` is the content (string)
 
 returns as a string an HTTP error response.
 
@@ -268,19 +297,29 @@ returns as a string an HTTP error response.
 q).h.hn["404";`txt;"Not found: favicon.ico"]
 "HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Len..
 ```
-<i class="far fa-hand-point-right"></i> 
+<i class="far fa-hand-point-right"></i>
 [`.h.ty` MIME types](#hty-mime-types)
 
 
-## `.h.hp` (HTTP response)
+## `.h.hp` (HTTP response pre)
 
 Syntax: `.h.hp x`
 
-Where `x` is a list of strings, returns as a string a valid HTTP response displaying them.
+Where `x` is a list of strings, returns as a string a valid HTTP response displaying them as a `pre` element in an HTML document.
 
 ```q
-q).h.hp("foo";"bar")
-"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\nContent-L..
+q)1 .h.hp" "sv'2#''string 5 10#50?100;
+HTTP/1.1 200 OK
+Content-Type: text/html
+Connection: close
+Content-Length: 257
+
+<html><head><style>body{font:10pt verdana;text-align:justify}</style></head><body><pre>89 97 11 99 33 77 98 30 22 15
+28 17 11 55 51 81 68 96 61 70
+70 39 76 26 91 83 76 88 44 56
+32 30 97 31 96 53 47 65 34 50
+96 99 13 72 81 70 33 99 56 12
+</pre></body></html>
 ```
 
 
@@ -299,7 +338,7 @@ q).h.hr "foo"
 
 Syntax: `.h.ht x`
 
-HTML documentation generator: <!-- for <https://kx.com/q/d/> --> 
+HTML documentation generator: <!-- for <https://kx.com/q/d/> -->
 where `x` is a symbol atom, reads file `:src/x.txt` and writes file `:x.htm`.
 (Marqdown is a rudimentary form of Markdown.)
 
@@ -321,7 +360,7 @@ Basic Marqdown formatting rules:
 
 Syntax: `.h.hta[x;y]`
 
-Where `x` is the element as a symbol atom, and `y` is a dictionary of attributes and values, returns as a string an opening HTML tag for element `x`. 
+Where `x` is the element as a symbol atom, and `y` is a dictionary of attributes and values, returns as a string an opening HTML tag for element `x`.
 
 ```q
 q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
@@ -333,7 +372,7 @@ q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 
 Syntax: `.h.htac[x;y;z]`
 
-Where `x` is the element as a symbol atom, `y` is a dictionary of attributes and their values, and `z` is the content of the node as a string, returns as a string the HTML element. 
+Where `x` is the element as a symbol atom, `y` is a dictionary of attributes and their values, and `z` is the content of the node as a string, returns as a string the HTML element.
 
 ```q
 q).h.htac[`a;(`href`target)!("http://www.example.com";"_blank");"Example.com Main Page"]
@@ -345,7 +384,7 @@ q).h.htac[`a;(`href`target)!("http://www.example.com";"_blank");"Example.com Mai
 
 Syntax: `.h.htc[x;y]`
 
-Where `x` is the HTML element as a symbol atom, and `y` is the content of the node as a string, returns as a string the HTML node. 
+Where `x` is the HTML element as a symbol atom, and `y` is the content of the node as a string, returns as a string the HTML node.
 
 ```q
 q).h.htc[`tag;"value"]
@@ -357,7 +396,7 @@ q).h.htc[`tag;"value"]
 
 Syntax: `.h.html x`
 
-Where `x` is the body of an HTML document as a string, returns as a string an HTML document with fixed style rules. 
+Where `x` is the body of an HTML document as a string, returns as a string an HTML document with fixed style rules.
 
 ```html
 <html>
@@ -406,14 +445,19 @@ q).h.hu "http://www.kx.com"
 
 Syntax: `.h.hug x`
 
-Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape sequences *except* for the chars in `x`, which get mapped to themselves. 
+Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape sequences *except* for the chars in `x`, which get mapped to themselves.
 
 
-## `.h.hy` (HTTP response)
+## `.h.hy` (HTTP response content)
 
 Syntax: `.h.hy[x;y]`
 
-Where `x` is a symbol atom and `y` is a string, returns as a string `y` as an HTTP response for content-type `x`.
+Where
+
+-   `x` is an HTTP content type as a symbol atom
+-   `y` is a string 
+
+returns as a string an HTTP response for `y` as content-type `x`.
 
 ```q
 q)show t:([]idx: 1 2 3 4 5;val: `a`b`c`d`e)
@@ -446,7 +490,7 @@ q)\head test.txt
 
 Syntax: `.h.HOME`
 
-String: location of the webserver root. 
+String: location of the webserver root.
 
 <i class="fas fa-graduation-cap""></i>
 [Customizing the default webserver](../kb/custom-web.md)
@@ -512,7 +556,7 @@ q)1_.h.jx[5;`a]
 
 Syntax: `.h.logo`
 
-Returns as a string the kx.com logo in HTML format.
+String: defaults to the Kx logo in HTML format.
 
 
 ## `.h.nbr` (no break)
@@ -539,11 +583,11 @@ q).h.pre("foo";"bar")
 ```
 
 
-## `.h.sa` (style)
+## `.h.sa` (anchor style)
 
 Syntax: `.h.sa`
 
-Returns CSS style rules used in the web console.
+Returns CSS style rules used in the web console for anchor elements.
 
 ```q
 q).h.sa
@@ -551,11 +595,11 @@ q).h.sa
 ```
 
 
-## `.h.sb` (style)
+## `.h.sb` (body-style)
 
 Syntax: `.h.sb`
 
-Returns CSS style rules used in the web console.
+Returns CSS style rules used in the web console for the HTML body.
 ```q
 q).h.sb
 "body{font:10pt verdana;text-align:justify}"
@@ -566,22 +610,22 @@ q).h.sb
 
 Syntax: `.h.sc`
 
-Returns as a char vector a list of characters that do not need to be escaped in URIs.  
+A list of characters that do not need to be escaped in URIs.
 
 ```q
 q).h.sc
 "$-.+!*'(),abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
 
-<i class="fa-hand-point-right"></i> 
+<i class="fa-hand-point-right"></i>
 [`.h.hu`](#hhu-uri-escape)
 
 
-## `.h.td` (TSV)
+## `.h.td` (TSV from data)
 
 Syntax: `.h.td x`
 
-Where `x` is a table, returns it as a list of tab-separated value strings 
+Where `x` is a table, returns it as a list of tab-separated value strings
 
 ```q
 q).h.td ([]a:1 2 3;b:`x`y`z)
@@ -596,7 +640,7 @@ q).h.td ([]a:1 2 3;b:`x`y`z)
 
 Syntax: `.h.text x`
 
-Where `x` is a list of strings, returns as a string, `x` with each item as the content of a `p` element. 
+Where `x` is a list of strings, returns as a string, `x` with each item as the content of a `p` element.
 
 ```q
 q).h.text("foo";"bar")
@@ -685,9 +729,9 @@ Syntax: `.h.val x`
 `.h.val` is called by [`.z.ph`](dotz.md#zph-http-get) to evaluate a request to the server.
 
 Its default value is [`value`](value.md).
-Users can override this with a custom evaluation function. 
+Users can override this with a custom evaluation function.
 
-Since V3.6 and V3.5 2019.11.13. 
+Since V3.6 and V3.5 2019.11.13.
 
 
 
@@ -695,7 +739,7 @@ Since V3.6 and V3.5 2019.11.13.
 
 Syntax: `.h.xd x`
 
-Where `x` is a table, returns as a list of strings, `x` as an XML table. 
+Where `x` is a table, returns as a list of strings, `x` as an XML table.
 
 ```q
 q).h.xd ([]a:1 2 3;b:`x`y`z)
@@ -723,7 +767,7 @@ q).h.xmp("foo";"bar")
 
 Syntax: `.h.xs x`
 
-Where `x` is a string, returns `x` with characters XML-escaped where necessary. 
+Where `x` is a string, returns `x` with characters XML-escaped where necessary.
 
 ```q
 q).h.xs "Arthur & Co."

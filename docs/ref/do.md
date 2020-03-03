@@ -44,6 +44,8 @@ q)\t do[100;log til 100000]
     It returns [Identity](identity.md) `(::)`.
 
 
-<i class="far fa-hand-point-right"></i> 
-[Accumulators – Do](accumulators.md#do)  
-Basics: [Control](../basics/control.md) 
+<i class="fas fa-book"></i> 
+[Accumulators – Do](accumulators.md#do) 
+<br>
+<i class="fas fa-book-open"></i> 
+[Controlling evaluation](../basics/control.md) 

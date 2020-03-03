@@ -1,6 +1,0 @@
-wheel
-setuptools
-mkdocs==1.0.3
-mkdocs-material==3.0.3
-fontawesome_markdown
-pymdown-extensions==5

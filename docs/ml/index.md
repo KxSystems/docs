@@ -16,7 +16,7 @@ keywords: Python, Jupyter, natural language processing, nlp, machine learning, m
 ## Anaconda
 
 
-Users can now install kdb+/q along with our supported Python and Machine Learning libraries, embedPy and JupyterQ using the popular [Anaconda](https://anaconda.org/) package-management system `conda`.
+Users can now install kdb+/q along with our supported Python and Machine Learning libraries, embedPy and JupyterQ using the popular [Anaconda](https://anaconda.com/) package-management system `conda`.
 
 
 ## embedPy
