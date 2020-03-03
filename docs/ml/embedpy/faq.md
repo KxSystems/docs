@@ -317,3 +317,9 @@ q)pyguid:.p.get[`uuid]
 q){0x0 sv(.p.wrap x)[`:bytes]`}each pyguid`
 a60e1654-88b0-473c-9700-4094a795b8e6 a2ed21a5-eab6-4950-aa8c-41f444601f6f 587..
 ```
+
+## Is EmbedPy Thread safe?
+EmbedPy is **not** thread safe. Functions executed on python threads via embedPy should not call back to execute q functions. This behaviour is not supported.
+
+## Can EmbedPy functions make use of python multithreading?
+Yes, provided the defined python function does not break the thread safety consideration above. Assuming that python is guaranteed not to call q from any job on the threads, these python threads can safely do work and the result can be returned to q.
