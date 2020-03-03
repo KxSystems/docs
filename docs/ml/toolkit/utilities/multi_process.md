@@ -14,7 +14,7 @@ keywords: machine learning, ml, utilitites, multi-threading, kdb+, q
 
 The framework described below is designed to provide a user friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized in both the FRESH and cross-validation procedures outlined within this toolkit by default provided the process is located on a defined port and with a specified number of slave processes.
 
-The following workflow shows how FRESH could be initialized exclusively in such a manor and not as part of the loading of the entire toolkit.
+The following workflow shows how FRESH can be initialized exclusively and not as part of the loading of the entire toolkit.
 
  - Initialize a q process with four workers on a user-defined central port.
 
@@ -33,7 +33,7 @@ This results in the following architecture
 
 ![Figure 1](../img/multiprocess.png)
 
-If the central process is initialized as above and the toolkit in its entirity is loaded both FRESH and cross validation will make use of this architecture multi-processed by default.
+If the central process is initialized as above and the toolkit in its entirity is loaded, both FRESH and cross validation will make use of this architecture multi-processed by default.
 
 While general purpose in nature, this framework is particularly useful when distributing Python.
 
