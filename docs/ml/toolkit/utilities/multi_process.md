@@ -1,20 +1,20 @@
 ---
-title: Multi-threading – Machine Learning – kdb+ and q documentation
+title: Multi-processing – Machine Learning – kdb+ and q documentation
 description: Documentation for the execution of work across multiple processes via embedPy or q.
 author: Diane O'Donoghue
 date: March 2020
 keywords: machine learning, ml, utilitites, multi-threading, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Multiprocess distribution framework
+# <i class="fas fa-share-alt"></i> Multi-process distribution framework
 
 
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 
-The framework described below is designed to provide a user friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized in both the FRESH and cross-validation procedures outlined within this toolkit by default provided the process is located on a defined port and with a specified number of slave processes.
+The framework described below is designed to provide a user-friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized in both the FRESH and cross-validation procedures outlined within this toolkit by default, provided the process is located on a defined port and with a specified number of slave processes.
 
-The following workflow shows how FRESH can be initialized exclusively and not as part of the loading of the entire toolkit.
+The following workflow shows how FRESH can be initialized exclusively, without loading of the entire toolkit.
 
  - Initialize a q process with four workers on a user-defined central port.
 
@@ -22,7 +22,7 @@ The following workflow shows how FRESH can be initialized exclusively and not as
 $ q ml/ml.q -s -4 -p 1234
 ```
 
-The above command sets 4 slave processes with the central process on port 1234. The below must be executed to load the relevant functionality contained in `util/mproc.q` and to load the appropriate functionality for the FRESH algorithm on each of the processes
+The above command sets 4 slave processes with the central process on port 1234. The below must be executed to load the relevant functionality contained in `util/mproc.q` and to load the appropriate functionality for the FRESH algorithm on each of the processes.
 
 ```q
 q).ml.loadfile`:util/mproc.q
@@ -33,13 +33,13 @@ This results in the following architecture
 
 ![Figure 1](../img/multiprocess.png)
 
-If the central process is initialized as above and the toolkit in its entirity is loaded, both FRESH and cross validation will make use of this architecture multi-processed by default.
+If the central process is initialized as above and the toolkit is loaded in its entirity, both FRESH and cross validation will make use of this architecture, multi-processed by default.
 
 While general purpose in nature, this framework is particularly useful when distributing Python.
 
-The primary difficulty with Python distribution surrounds Python’s use of a Global Interpreter Lock (GIL). This limiting execution of Python bytecode to a single thread at a time. We can subvert this by either wrapping the Python functionality within a q lambda or by converting the Python functionality to a byte stream using Python ‘pickle’ and passing these to the worker processes for execution. Both of these options are possible within the framework outlined here.
+The primary difficulty with Python distribution surrounds Python’s use of a Global Interpreter Lock (GIL). This limits execution of Python bytecode to a single thread at a time. We can subvert this by either wrapping the Python functionality within a q lambda or by converting the Python functionality to a byte stream using Python `pickle` and passing these to the worker processes for execution. Both of these options are possible within the framework outlined here.
 
-This method is not restricted to functions contained only within the ml library, but can be be used to distribute any function q or otherwise across worker processes. This can be seen in the example below.
+This method is not restricted to functions contained only within the ml library and can be be used to distribute any function q or otherwise across worker processes. This can be seen in the example below.
 
 ### `mproc.init`
 
