@@ -4,21 +4,28 @@ author: Stephen Taylor
 date: February 2020
 description: A whirlwind tour of kdb+ and the q programming language, with links to explore topics in depth
 ---
-# A tour of kdb+ and the q programming language
+# A mountain tour of kdb+ and q
 
 
+![Mountain walk](img/GettyImages-914651812.jpg)
 
-This is a whirlwind, one-page tour of q, the programming language built into kdb+.
-Use it to get a fast overview of what it is like to work in q.
 
-Follow
-<i class="far fa-hand-point-right"></i>
-links to deeper treatments of topics.
+This is a mountain tour of q, the programming language built into kdb+.
+It takes the form of a one-page ‘ridge walk’ along the tops, with optional side descents to see more detail.
+
+Use it as a very fast start with kdb+, or for a quick overview of what it is like to work in q.
+
+<i class="far fa-hand-point-left"></i>
+[`TL;DR`?](tldr.md)
 
 !!! tip "Before you start"
 
     [Download, install and launch q.](../install/index.md)
     Experiment with the expressions as you read.
+
+Follow
+<i class="far fa-hand-point-right"></i>
+links to deeper treatments of topics.
 
 
 ## The q session
@@ -436,7 +443,7 @@ q)8 {x,sum -2#x}\1 1                            / 10 Fibonacci numbers
 
 Interprocess communication is ‘baked in’ to q. It requires no library code and is easy to set up.
 
-We’ll illustrate this with two kdb+ processes communicating through TCP/IP.
+Watch two kdb+ processes communicating through TCP/IP.
 
 
 ### Client/server
@@ -466,11 +473,11 @@ q)+`p`city!(`p$`p1`p2`p3`p4`p5  |
                                 | q)
 ```
 
-What happened? The server task started listening on port 5432. The client task opened a socket to port 5432, getting a handle, which it dubbed `h`.
+On the left, the server task started listening on port 5432. The client task opened a socket to port 5432, getting a handle, which it dubbed `h`.
 
-The client task then sent to the server the expression `2+2` to be evaluated, and received the value 4 in return.
+The client task sent to the server the expression `2+2` to be evaluated, and received the value 4 in return.
 
-The client task then told the server to load the Suppliers and Parts script.
+The client task told the server to load the Suppliers and Parts script.
 The server task session showed that script loaded.
 The client sent the server a qSQL query and got a table as a result.
 

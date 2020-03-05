@@ -92,22 +92,44 @@ nav:
       - DigitalOcean: learn/install/digitalocean.md
     - Licensing: learn/licensing.md
     - Tour:
+      - TLDR: learn/tour/tldr.md
       - Begin here: learn/tour/index.md
       - The q session: learn/tour/session.md
       - Databases: learn/tour/databases.md
       - Tables: learn/tour/tables.md
       - CSVs: learn/tour/csvs.md
-      - Data types: learn/tour/datatypes.md
+      - Datatypes: learn/tour/datatypes.md
       - Dictionaries: learn/tour/dictionaries.md
       - Queries: learn/tour/queries.md
       - Functions: learn/tour/functions.md
       - Iteration: learn/tour/iteration.md
       - Files: learn/tour/files.md
+      - TCP/IP: learn/tour/tcp-ip.md
       - HTTP, HTTPS: learn/tour/http.md
-      - Webserver: learn/tour/webserver.md
       - Scripts: learn/tour/scripts.md
       - IDE: learn/tour/ide.md
+    - Primer:
+      - Introduction: learn/primer/index.md
+      - Datatypes: learn/primer/datatypes.md
+      - Dictionaries: learn/primer/dictionaries.md
+      - Tables: learn/primer/tables.md
+      - Operations: learn/primer/operations.md
+      - Operations on dictionaries: learn/primer/operations-dict.md
+      - Iterators: learn/primer/iterators.md
+      - Table operations (qSQL): learn/primer/table-operations.md
+      - Semantic extensions to SQL: learn/primer/extensions-to-sql.md
+      - Modifying tables: learn/primer/modify-tables.md
+      - Appendixes:
+        - Temporal primitives: learn/primer/temporal-primitives.md
+        - Execution control: learn/primer/control.md
+        - Input/output to files: learn/primer/file-io.md
+        - Interprocess communication: learn/primer/ipc.md
+        - Type and cast: learn/primer/type-cast.md
+        - Debugging: learn/primer/debug.md
+        - Namespaces: learn/primer/namespace.md
     - Brief introduction: learn/brief-introduction.md
+    - Examples from Python: 
+      - Basic programs: learn/python/basic.md
     - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md
