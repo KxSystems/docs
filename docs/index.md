@@ -23,15 +23,15 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
+    <p markdown="1"><i class="fas fa-graduation-cap"></i> [Optane Memory](kb/optane.md)</p>
+    
     <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="fas fa-graduation-cap"></i> [A tour of kdb+](learn/tour/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-graduation-cap"></i> [Mountain Tour](learn/tour/index.md)</p>
     
     <p class="nowrap" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC 1.1](interfaces/odbc-simba.md)</p>
     
     <p markdown="1"><i class="fas fa-question"></i> [Search Box](about/search.md)</p>
-    
-    <p markdown="1"><i class="far fa-map"></i> [Surveillance latency](wp/surveillance-latency/index.md)</p>
     
 </div>
 

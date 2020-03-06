@@ -543,6 +543,7 @@ nav:
     - Multithreaded input: kb/multithreaded-input.md
     - Named pipes: kb/named-pipes.md
     - ODBC: kb/odbc.md
+    - Optane Memory: kb/optane.md
     - Partitioning: kb/partition.md
     - Performance tips: kb/performance-tips.md
     - Pivoting tables: kb/pivoting-tables.md
