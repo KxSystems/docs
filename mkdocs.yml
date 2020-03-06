@@ -130,6 +130,7 @@ nav:
     - Brief introduction: learn/brief-introduction.md
     - Examples from Python: 
       - Basic programs: learn/python/basic.md
+      - Array programs: learn/python/array.md
     - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md
