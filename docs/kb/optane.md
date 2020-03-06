@@ -74,8 +74,7 @@ system memory on a single system.
 
 ### Cost-efficient
 
-Optane memory is priced at around 40% of the latest DDR4 DRAM modules,
-offering a considerable discount per GB of main memory.
+The retail prices of Optane memory should sit between the prices for DRAM and NVMe Optane storage. This can be one consideration for a kdb+ solution, especially if it uses a lot of active memory for streaming or real-time analytics, or if it needs extremely fast access to hot data in a HDB. This may make such a solution more affordable than just using DRAM.
 
 The increased memory size also provides an opportunity to consolidate
 workloads onto fewer nodes, leading to an even lower TCO through reduced
@@ -101,6 +100,7 @@ three main options:
 -   read/write data from storage
 -   scale horizontally
 -   scale vertically
+
 
 ### Read/write data from storage
 
