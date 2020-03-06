@@ -19,8 +19,8 @@ M| `:/root/anaconda3/lib/python3.7/config-3.7m-x86_64-linux-gnu/libpython3.7m.a
 
 In the above example case the `libpython` files are static `.a` files rather than `.so` files. To recitfy complete one of the following
 
-1. Reinstall Python with the system enabled to allow the python shared objects to be shared with other programs. This can be achieved using instructions provided [here](https://www.iram.fr/IRAMFR/GILDAS/doc/html/gildas-python-html/node36.html). With particular care to be taken in the `./configure --enable-shared` step. If following the instructions in the link provided ensure you install a version of python suitable for use with embedPy.
-2. Create a symlink between a static `.a` file and a `.so` file associated with the python build if one exists.
+1. Reinstall Python with the system enabled to allow the python shared objects to be shared with other programs. This can be achieved using instructions provided [here](https://www.iram.fr/IRAMFR/GILDAS/doc/html/gildas-python-html/node36.html). With particular care to be taken in the `./configure --enable-shared` step. If following the instructions in the link provided ensure you install a version of Python suitable for use with embedPy.
+2. Create a symlink between a static `.a` file and a `.so` file associated with the Python build if one exists.
 
 If neither of the above solutions work please contact ai@kx.com with detailed instructions indicating the steps taken to solve the problem.
 
@@ -292,7 +292,7 @@ q)show strguid:string guids
 "e92aeefb-b363-a793-b925-9c0d327b47a8"
 "fc35ccfc-96e8-98ce-b3c1-f2cad1b9ccd1"
 
-// Load the relevant python functionality to complete conversion
+// Load the relevant Python functionality to complete conversion
 q)uuidconvert:.p.import[`uuid][`:UUID;<]
 q)print uuidconvert each strguid
 [UUID('e92aeefb-b363-a793-b925-9c0d327b47a8'), UUID('fc35ccfc-96e8-98ce-b3c1-f2cad1b9ccd1') ...
@@ -318,8 +318,11 @@ q){0x0 sv(.p.wrap x)[`:bytes]`}each pyguid`
 a60e1654-88b0-473c-9700-4094a795b8e6 a2ed21a5-eab6-4950-aa8c-41f444601f6f 587..
 ```
 
-## Is EmbedPy Thread safe?
-EmbedPy is **not** thread safe. Functions executed on python threads via embedPy should not call back to execute q functions. This behaviour is not supported.
 
-## Can EmbedPy functions make use of python multithreading?
-Yes, provided the defined python function does not break the thread safety consideration above. Assuming that python is guaranteed not to call q from any job on the threads, these python threads can safely do work and the result can be returned to q.
+## Is embedPy thread-safe?
+
+EmbedPy is **not** thread-safe. Functions executed on Python threads via embedPy should not call back to execute q functions. This behavior is not supported.
+
+## Can embedPy functions make use of Python multithreading?
+
+Yes, provided the defined Python function does not break the thread-safety consideration above. Assuming that Python is guaranteed not to call q from any job on the threads, these Python threads can safely do work and the result can be returned to q.
