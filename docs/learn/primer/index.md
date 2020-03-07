@@ -4,7 +4,7 @@ author: Dennis Shasha (shasha@cs.nyu.edu)
 description: Introduction to the kdb+ database and q language, used for Dennis Sasha’s college classes
 hero: <i class="fas fa-graduation-cap"></i> Kdb+ database and language primer
 ---
-# Q language primer
+# <i class="fab fa-python"></i> Q for pythons
 
 
 
@@ -12,6 +12,7 @@ hero: <i class="fas fa-graduation-cap"></i> Kdb+ database and language primer
 <!-- GettyImages-1168983656.jpg -->
 
 This primer is aimed at new developers with a technical background, an interest in data science, and prior acquaintance with [Python](https://python.org).
+(But you can follow it even if you do not know Python.)
 
 [Kdb+](https://kx.com) is a high-performance, in-memory, column-store database widely used in demanding applications.
 Q is the programming language built into it.

@@ -14,7 +14,7 @@ extra_javascript:
   - 'https://tracker.mrpfd.com/tracker.js'
   # - 'scripts/googleanalytics.js'
   # - 'https://use.fontawesome.com/3dbf29ed12.js'
-  - 'https://use.fontawesome.com/releases/v5.2.0/js/all.js'
+  - 'https://use.fontawesome.com/releases/v5.4.0/js/all.js'
   # theme.js modifies HTML to prepare for prism.js
   - 'scripts/theme.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'

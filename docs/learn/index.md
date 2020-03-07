@@ -8,62 +8,76 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 
 
 
-Kdb+ is a database. While you can use it through interfaces such as ODBC, its power and performance are best accessed through its own language, q.
+<div style="clear: both">&nbsp;</div>
+
+<div class="kx-flex-grid" markdown="1">
+<div>
+    [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
+    Download<br/>
+    <i class="fab fa-apple"></i>
+    <i class="fab fa-linux"></i>
+    <i class="fab fa-windows"></i>](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
+</div>
+<div>
+    [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
+    Install](install/index.md "How to install kdb+")
+</div>
+<div>
+    [<i class="fas fa-fw fa-binoculars fa-border fa-5x"></i><br/>
+    Mountain tour](tour/index.md "A one-page mountain tour of the q language")
+</div>
+<div>
+    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
+    Q for pythons](primer/index.md "A q tutorial for Python and Panda users")
+</div>
+<div>
+    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
+    Python to q](python/basic.md "Python programs and their q equivalents")
+</div>
+<div>
+    [<i class="fas fa-fw fa-street-view fa-border fa-5x"></i><br/>
+    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
+</div>
+<div>
+    [<i class="fab fa-fw fa-youtube fa-border fa-5x"></i><br/>
+    Q for All](q-for-all.md "Video tutorials by Jeffry Borror")
+</div>
+<div>
+    [<i class="fas fa-fw fa-code fa-border fa-5x"></i><br/>
+    Q by examples](q-by-examples.md "An introduction to q through examples")
+</div>
+<div>
+    [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
+    Starting kdb+](startingkdb/index.md "Getting started on real-time and historical database")
+</div>
+<!--
+<div>
+    [<i class="fas fa-fw fa-bolt fa-border fa-5x"></i><br/>
+    Brief intro](brief-introduction/index.md "A brief introduction to the q language and kdb+ databases")
+</div>
+-->
+<div>
+    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+    Phrasebook](/phrases/ "Power expressions in q")
+</div>
+<div>
+    [<i class="fas fa-fw fa-chalkboard-teacher fa-border fa-5x"></i><br/>
+    learn.kx.com](https://learn.kx.com/ "Online classroms")
+</div>
+<div>
+    [<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
+    Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
+</div>
+
+</div>
+
+Kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](../interfaces/pyq/index.md). But its power and performance are best accessed through its own language, q.
 
 Q is a general-purpose programming language. You can write programs for anything in q. 
 
-You do not need prior programming experience to learn q. 
-If you have some experience with mathematics, functional programming or SQL, you will find much that is familiar. 
-
-
-## <i class="fas fa-download"></i> Download
-
-[Download and install](install/index.md)
-(for your personal, non-commercial use) a free version of kdb+ for
-<i class="fab fa-linux"></i> Linux, 
-<i class="fab fa-apple"></i> macOS, or
-<i class="fab fa-windows"></i> Windows.
-
-These are full versions of the product. 
-The 64-bit version (on-demand) requires an always-on Internet connection.
-(A free, stand-alone 32-bit version is also available.)
-
-Download and install the free IDE, [**Kx Developer**](/developer/). 
-
-
-
-
-## <i class="fas fa-graduation-cap"></i> Learn q
-
--   See [Q by Examples](q-by-examples.md) for a quick taste of the language
--   Watch Jeffry Borror’s [Q for All](q-for-all.md), a two-hour introduction to kdb+ and q  in fifteen videos
--   Study the tutorials at [learn.kx.com](https://learn.kx.com/)
--   Bookmark the [Q Reference Card](../ref/index.md)
--   Study Jeffry Borror’s textbook [_Q for Mortals, Version 3_](/q4m3/)
--   Review the basics of the language, starting with [application](../basics/application.md)
--   Experiment with the [Q Phrases](/phrases/index.html)
--   Explore the [Knowledge Base](../kb/index.md) and the [technical articles](blogs.md) on [kx.com](https://kx.com/blogs/) 
-
-
-
-## <i class="fas fa-database"></i> A brief introduction
-
-[First steps](brief-introduction.md)
-
-: Run your first query.
-
-[In-memory queries](brief-introduction.md#in-memory-queries)
-
-: Build a more complex dataset in memory and perform some queries and joins on it. The dataset is from an imaginary desktop PC monitoring and helpdesk support system.
-
-[On-disk queries](brief-introduction.md#on-disk-queries)
-
-: Download a set of scripts to build and run queries against a large on-disk database. The dataset is from an imaginary smart-meter network. It includes a basic HTML5 Business Intelligence tool which queries the database directly.
-
-[Introduction to kdb+](/q4m3/14_Introduction_to_Kdb+/)
-: _Q for Mortals_, Chapter 14 by Jeffry A. Borror. 
-
-    > Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.
+You do not need prior programming experience to learn it. 
+If you have some experience with mathematics, functional programming or SQL, you will find in q much that is familiar. 
+(And we have tutorials for Python programmers.)
 
 
 ## <i class="fas fa-book"></i> Books
