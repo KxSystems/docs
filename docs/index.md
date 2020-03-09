@@ -9,6 +9,10 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 
 
 
+<div style="background-color: yellow; border-radius: 10px; font-size: 200%; text-align: center;">
+<a href="/q/releases/ChangesIn4.0/">kdb+ V4.0 released 2020.03.19</a>
+</div>
+
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
 <div style="display: inline-flex;" markdown="1">
@@ -23,6 +27,8 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" markdown="1"><i class="fas fa-lock"></i> [Data-at-rest crypto](kb/dare.md)</p>
+    
     <p markdown="1">[kdb+ on <i class="fab fa-aws"></i> Lambda](wp/aws-lambda/index.md)</p>
     
     <p markdown="1"><i class="fas fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
@@ -31,15 +37,15 @@ Kdb+, from [Kx](https://kx.com), is
     
     <p class="nowrap" markdown="1"><i class="fas fa-binoculars"></i> [Mountain Tour](learn/tour/index.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC 1.1](interfaces/odbc-simba.md)</p>
-    
 </div>
 
 </div>
 
+<!--
 [**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
 <i class="fas fa-download"></i>
 [Free download](/developer/getting-started/)
+-->
 
 <div style="clear: both">&nbsp;</div>
 
