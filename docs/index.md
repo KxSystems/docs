@@ -23,15 +23,15 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p markdown="1"><i class="fas fa-graduation-cap"></i> [Optane Memory](kb/optane.md)</p>
+    <p markdown="1">[kdb+ on <i class="fab fa-aws"></i> Lambda](wp/aws-lambda/index.md)</p>
+    
+    <p markdown="1"><i class="fas fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="fas fa-graduation-cap"></i> [Mountain Tour](learn/tour/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-binoculars"></i> [Mountain Tour](learn/tour/index.md)</p>
     
     <p class="nowrap" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC 1.1](interfaces/odbc-simba.md)</p>
-    
-    <p markdown="1"><i class="fas fa-question"></i> [Search Box](about/search.md)</p>
     
 </div>
 
@@ -60,8 +60,8 @@ Kdb+, from [Kx](https://kx.com), is
     Reference<br>and basics](ref/index.md "Reference card for the q language")
 </div>
 <div>
-    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
-    Phrasebook](/phrases/ "Power expressions in q")
+    [<i class="fas fa-fw fa-share-alt fa-border fa-5x"></i><br/>
+    Machine<br>Learning](/phrases/ "Power expressions in q")
 </div>
 <!-- 
 <div>

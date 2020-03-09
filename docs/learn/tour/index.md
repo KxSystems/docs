@@ -4,7 +4,7 @@ author: Stephen Taylor
 date: February 2020
 description: A whirlwind tour of kdb+ and the q programming language, with links to explore topics in depth
 ---
-# A mountain tour of kdb+ and q
+# <i class="fas fa-binoculars"></i> A mountain tour of kdb+ and q
 
 
 ![Mountain walk](img/GettyImages-914651812.jpg)
@@ -28,13 +28,17 @@ Follow
 links to deeper treatments of topics.
 
 
-## The q session
+## <i class="fas fa-laptop-code"></i> The q session
 
 The q session is a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "Wikipedia").
 It evaluates a q expression and prints the result.
 You can use it as a calculator.
 
 ```q
+$ q
+KDB+ 3.7t 2020.03.05 Copyright (C) 1993-2020 Kx Systems
+m64/ 4()core 8192MB sjt ...
+
 q)2+2 3 4
 4 5 6
 q)acos -1
@@ -52,7 +56,7 @@ $
 [The q session](session.md)
 
 
-## Databases
+## <i class="fas fa-database"></i> Databases
 
 ### Tables
 
@@ -196,7 +200,7 @@ In qSQL queries you can use q operators, keywords, and functions you define your
 
 <i class="far fa-hand-point-right"></i>
 [Functions](functions.md),
-[QSQL](queries.md)
+[qSQL](queries.md)
 
 
 
@@ -509,7 +513,7 @@ Browse to `http://localhost:8090`.
 [The `.h` namespace](../../ref/doth.md)
 
 
-## Development
+## <i class="fas fa-code"></i> Development
 
 ### Scripts
 

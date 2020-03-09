@@ -570,6 +570,7 @@ nav:
   - White papers: 
     - Index: wp/index.md
     - Astronomy: wp/astronomy.md
+    - AWS Lambda: wp/aws-lambda/index.md
     - Bitcoin blockchains: wp/blockchain/index.md
     - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md

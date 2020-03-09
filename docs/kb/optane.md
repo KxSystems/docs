@@ -1,8 +1,9 @@
 # Optane Memory and kdb+
 
 
-
-## What is Optane Memory?
+<div markdown="1" style="text-align: center;">
+![Optane Memory](optane-memory.jpg)
+</div>
 
 Intel Optane DC persistent memory, herein called Optane Memory, is a new
 hardware technology from Intel. 
