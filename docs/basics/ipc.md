@@ -85,7 +85,7 @@ q)h"2+2" / this is sent to the remote process for calculation
 4
 ```
 
-A useful shorthand for a single-shot get is:
+A useful shorthand for a one-shot get is:
 
 ```q
 q)`::5001 "1+1"
