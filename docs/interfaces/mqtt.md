@@ -7,6 +7,8 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 
 <i class="fab fa-github"></i> [KxSystems/mqtt](https://github.com/KxSystems/mqtt)
 
+## Overview
+
 `mqtt` is a thin wrapper for kdb+ around the
 <i class="fab fa-github"></i>
 [eclipse/paho.mqtt.c](https://github.com/eclipse/paho.mqtt.c)
@@ -14,22 +16,20 @@ C API for the Message Queuing Telemetry Transport [(MQTT)](http://mqtt.org/) ISO
 
 Follow the installation instructions for set-up [here](https://github.com/KxSystems/mqtt#building-and-installation).
 
-## API
+## Interface
 
-The library follows the `paho.mqtt.c` API closely where possible.
-
-`mqtt.q` exposes 3 primary functions from this API to allow users to interact with mqtt brokers these functions are as follows
+`mqtt.q` exposes 4 primary functions from the `paho.mqtt.c` API to allow users to interact with mqtt brokers, these functions are as follows
 
 ### `.mqtt.conn`
 
 _Connect to a mosquitto host_
 
-Syntax: `.mqtt.conn[x;y]`
+Syntax: `.mqtt.conn[con;nm]`
 
 Where
 
--   `x` is a symbol denoting the tcp connection to be connected to
--   `y` is a symbol denoting the name of the connecting process
+-   `con` is a symbol denoting the tcp connection to be connected to
+-   `nm` is a symbol denoting the name of the connecting process
 
 returns a `'connection failed` error if connnection to host could not be established otherwise does not return output.
 
@@ -47,14 +47,14 @@ q)
 
 _Publish a message to mosquitto broker_
 
-Syntax: `.mqtt.pub[x;y]`
+Syntax: `.mqtt.pub[top;msg]`
 
 Where
 
--   `x` is a symbol denoting the topic that the message is to be sent to
--   `y` is a string of the message being sent to the broker
+-   `top` is a symbol denoting the topic that the message is to be sent to
+-   `msg` is a string of the message being sent to the broker
 
-returns a callback to the process stating that the message has been sent to the broker.
+returns a callback to the process stating that the message has been sent to the broker (this can be overwritten by a user).
 
 ```q
 // Connect to the host broker and publish a message
@@ -67,11 +67,11 @@ q).mqtt.pub[`topic1;"This is a test message"]
 
 _Subscribe to a topic on a mosquitto broker process_
 
-Syntax: `.mqtt.sub[x]`
+Syntax: `.mqtt.sub[top]`
 
 Where
 
--   `x` is a symbol denoting the topic that the process should listen to 
+-   `top` is a symbol denoting the topic that the process should listen to 
 
 returns a callback to the process when a message is received on topic stating that the message was received and what that message is.
 
@@ -89,11 +89,11 @@ q).mqtt.sub[`topic1]
 
 _Unsubscribe from a mosquitto broker topic_
 
-Syntax: `.mqtt.unsub[x]`
+Syntax: `.mqtt.unsub[top]`
 
 Where
 
--  `x` is a symbol denoting the topic to be unsubscribed from
+-  `top` is a symbol denoting the topic to be unsubscribed from
 
 Does not return a message on correct application, errors on incorrect input
 
@@ -109,7 +109,7 @@ q).mqtt.unsub[`topic1]
 ```
 
 
-## Running example
+## Example/Demonstration
 
 * Open a mosquitto broker on the default localhost `tcp://localhost:1883`.
 * Start two q processes to run the producer and receivers separately through the mosquitto broker process.
