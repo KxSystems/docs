@@ -46,14 +46,7 @@ q){e:count[x]-1; @[x;0,e;:;x e,0]} 12 35 9 56 24
 # Swap function
 def swapPositions(list, pos1, pos2):
 
-    # popping both the elements from list
-    first_ele = list.pop(pos1)
-    second_ele = list.pop(pos2-1)
-
-    # inserting in each others positions
-    list.insert(pos1, second_ele)
-    list.insert(pos2, first_ele)
-
+    list[pos1], list[pos2] = list[pos2], list[pos1]
     return list
 
 # Driver function
