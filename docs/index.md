@@ -29,7 +29,7 @@ Kdb+, from [Kx](https://kx.com), is
 
     <p class="nowrap" markdown="1"><i class="fas fa-lock"></i> [Data-at-rest crypto](kb/dare.md)</p>
     
-    <p markdown="1">[kdb+ on <i class="fab fa-aws"></i> Lambda](wp/aws-lambda/index.md)</p>
+    <p markdown="1"><i class="fab fa-aws"></i> [kdb+ on Lambda](wp/aws-lambda/index.md)</p>
     
     <p markdown="1"><i class="fas fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
     
