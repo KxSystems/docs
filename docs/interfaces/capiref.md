@@ -579,9 +579,43 @@ Create a char array from a string of length `n`.
 Signature: `K krr(const S)`<br>
 Tags: `c.o`
 
-Signal an error from your C code.
+Kdb+ recognizes an error returned from a C function via the function’s return value being 0, combined with the value of a global error indicator that can be set by calling `krr` with a null-terminated string. As `krr` records only the passed pointer, you should ensure that the string remains valid after the return from your code into kdb+ – typically you should use static storage for the string. (Thread-local if you expect to amend the error string from multiple threads.) The strings `"stop"`, `"abort"` and `"stack"` are reserved values and `krr` must not be called with those.
 
-It is the user’s responsibility to ensure the string is valid for the expected lifetime of the error.
+Do **not** call `krr()` and then return a valid pointer!
+For convenience, `krr` returns 0, so it can be used directly as 
+
+```c
+K f(K x){
+  K r=someFn();
+  ...
+  if(some error)
+    return krr("an error message"); // preferred style
+  ...
+  return r;
+}
+```
+
+or a style more prone to mismatch, decoupled as
+
+```c
+K f(K x){
+  I f=0;
+  K r=someFn();
+  ...
+  if(some error){
+    krr("an error message"); // set the message string
+    f=1;
+  }
+  ...
+  if(f)
+    return 0; // combined with string set via krr(), this return value of 0 indicates an error 
+  else
+    return r;
+}
+```
+
+<i class="far fa-hand-point-right"></i>
+[Error signaling and catching](c-client-for-q.md#error-signaling-and-catching)
 
 
 ### `ks` – create symbol

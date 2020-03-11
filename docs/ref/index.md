@@ -37,7 +37,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>X</td><td>[`xasc`](asc.md#xasc "table sorted ascending by columns") [`xbar`](xbar.md "interval bar") [`xcol`](cols.md#xcol "rename table columns") [`xcols`](cols.md#xcols "re-order table columns") [`xdesc`](desc.md#xdesc "table sorted descending by columns") [`xexp`](exp.md#xexp "raised to a power") [`xgroup`](xgroup.md "table grouped by keys") [`xkey`](keys.md#xkey "set primary keys of a table") [`xlog`](log.md#xlog "base-x logarithm") [`xprev`](next.md#xprev "previous items") [`xrank`](xrank.md "items assigned to buckets")</td></tr>
 </table>
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book"></i>
 [`.Q.id`](dotq.md#qid-sanitize) (sanitize),
 [`.Q.res`](dotq.md#qres-keywords) (reserved words)
 
@@ -74,7 +74,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </tr>
 </table>
 
-<i class="far fa-hand-point-right"></i>
+<i class="fas fa-book"></i>
 [Overloaded operator glyphs](overloads.md)
 
 
@@ -117,11 +117,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 ## [Attributes](../basics/syntax.md#attributes)
 
-```txt
-`s  sorted     `u  unique
-`p  parted     `g  grouped
-```
+<pre markdown="1" class="language-txt" style="font-size: 90%">
+s  sorted     u  unique
+p  parted     g  grouped
+</pre>
 
+<i class="fas fa-book"></i>
+[Set Attribute](set-attribute.md)
 
 ## Command-line options and system commands
 
@@ -254,7 +256,7 @@ milliseconds: time mod 1000
 
 Markup output for HTTP
 
-<pre markdown="1" class="language-txt">
+<pre markdown="1" class="language-txt" style="font-size: 90%">
 [`.h.br`](doth.md#hbr-linebreak)      linebreak                [`.h.cd`](doth.md#hcd-csv-from-data)      CSV from data
 [`.h.code`](doth.md#hcode-code-after-tab)    code after Tab           [`.h.d`](doth.md#hd-delimiter)       delimiter
 [`.h.fram`](doth.md#hfram-frame)    frame                    [`.h.ed`](doth.md#hed-excel-from-data)      Excel from data
@@ -287,9 +289,10 @@ Markup output for HTTP
 
 De/serialize as JSON
 
-<table class="kx-shrunk kx-tight" markdown="1">
-<tr><td><a href="dotj/#jj-serialize">`.j.j`</a></td><td><a href="dotj/#jj-serialize">serialize</a></td><td><a href="dotj/#jk-deserialize">`.j.k`</a></td><td><a href="dotj/#jk-deserialize">deserialize</a></td></tr>
-</table>
+<pre markdown="1" class="language-txt" style="font-size: 90%">
+[.j.j   serialize](#jj-serialize)                [.j.k   deserialize](#jk-deserialize)
+[.j.jd  serialize infinity](#jjd-serialize-infinity)
+</pre>
 
 
 ### `.m`
@@ -302,7 +305,7 @@ De/serialize as JSON
 
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
-<pre markdown="1" class="language-txt">
+<pre markdown="1" class="language-txt" style="font-size: 90%">
 General                              Datatype
  [.Q.a        lowercase alphabet](dotq.md#qa-lower-case-alphabet)       [.Q.btoa   b64 encode](dotq.md#qbtoa-b64-encode)
  [.Q.A        uppercase alphabet](dotq.md#qa-upper-case-alphabet)       [.Q.j10    encode binhex](dotq.md#qj10-encode-binhex)
@@ -357,7 +360,7 @@ IPC                                   [.Q.PV     partition values](dotq.md#qpv-p
 
 System variables, callbacks
 
-<pre markdown="1" class="language-txt">
+<pre markdown="1" class="language-txt" style="font-size: 90%">
 System information                 Callbacks
  [.z.a    IP address](dotz.md#za-ip-address)                 [.z.ac    HTTP auth from cookie](dotz.md#zac-http-auth-from-cookie)
  [.z.b    dependencies](dotz.md#zb-dependencies)               [.z.bm    msg validator](dotz.md#zbm-msg-validator)
