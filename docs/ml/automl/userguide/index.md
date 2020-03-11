@@ -128,11 +128,11 @@ returns the target predictions for new data based on a previously fitted model a
 ```q
 // New dataset
 q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
-// q date/time input
-q).automl.new[new_tab;2020.01.02;11.21.47.763]
-0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
 // string date/time input
-q).automl.new[new_tab;"2020.01.02";"11:21:47.763"]
+q).automl.new[new_tab;2020.01.02;"11.21.47.763"]
+0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
+// q date/time input
+q).automl.new[new_tab;"2020.01.02";11:21:47.763]
 0.1953181 0.449196 0.6708352 0.5842918 0.230593 0.4713597 0.1953181 0.0576498..
 ```
 
