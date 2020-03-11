@@ -117,7 +117,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>-w init via cmd line</td> <td/> <td>Trying to allocate memory with [`\w`](syscmds.md#w-workspace) without `-w` on command line</td> </tr>
 <tr>
 <td>wsfull</td>
-<td class="nowrap">`999999999#0j`</td>
+<td class="nowrap">`999999999#0`</td>
 <td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, ran out of swap (or addressability on 32-bit), or hit [`-w` limit](cmdline.md#-w-workspace)
 </td>
 </tr> 

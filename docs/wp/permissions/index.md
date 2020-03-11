@@ -825,7 +825,7 @@ So far, this paper has just discussed how to restrict and control access from a 
 
 ```k
 k).z.ph:{x:uh$[@x;x;*x];$[~#x;hy[`htm]fram[$.z.f;x]("?";"?",*x:$."\\v" ); 
- x~,"?";hp@{hb["?",x]x}'$."\\v";"?["~2#x;hp jx["J"$2_x]R "?"=*x;@[{hp jx[0j]
+ x~,"?";hp@{hb["?",x]x}'$."\\v";"?["~2#x;hp jx["J"$2_x]R "?"=*x;@[{hp jx[0]
  R::1_x};x;he];"?"in x;@[{hy[t]@`/:tx[t:`$- 3#n#x]@.(1+n:x?"?")_x};x;he] 
  #r:@[1::;`$":",p:HOME,"/",x;""];hy[`$(1+x?".")_x]"c"$r;hn["404 Not Found";`txt]
  p,": not found"]}
@@ -843,7 +843,7 @@ Translated to q:
     "?["~2#x;      //3
       .h.hp[.h.jx["J"$2_x; .h.R]];
     "?"=first x; //4 
-      @[{.h.hp[.h.jx[0j;.h.R::1_x]]};x;.h.he];
+      @[{.h.hp[.h.jx[0;.h.R::1_x]]};x;.h.he];
     "?" in x;      //5
       @[{.h.ht[t;] ` sv .h.tx[t:`$-3#n#x;value (1+n:x?"?")_x]};x;.h.he];
     count r:@[1:;`$":",p:.h.HOME,"/",x;""]; //6
@@ -905,7 +905,7 @@ In `.z.ph` we then replace any references to `.h.jx` with `.h.jx2`, adding in ou
     "?["~2#x; //3
       .h.hp[.h.jx2["J"$2_x; .h.R; .perm.h.user;.perm.h.class]]; 
     "?"=first x; //4
-      @[{.h.hp[.h.jx2[0j;.h.R::1_x;.perm.h.user;.perm.h.class]]};x;.h.he]; 
+      @[{.h.hp[.h.jx2[0;.h.R::1_x;.perm.h.user;.perm.h.class]]};x;.h.he]; 
     "?" in x; //5
       @[{.h.ht[t;] ` sv .h.tx[t:`$-3#n#x;value (1+n:x?"?")_x]};x;.h.he];
     count r:@[1:;`$":",p:.h.HOME,"/",x;""]; //6 

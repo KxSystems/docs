@@ -170,9 +170,9 @@ q)\ts value each get`:sym2014.05.07
 q)\ts -11!`:sym2014.05.07
 1 4195344
 q)\ts -11!`:sym2014.05.07
-1204 4257168j
+1204 4257168
 q)\ts value each get `:sym2014.05.07
-1690 296580768j
+1690 296580768
 ```
 
 <i class="far fa-hand-point-right"></i>
@@ -207,7 +207,7 @@ Should a tplog be corrupted in some way, running ``-11!(-2;`:tplog)`` will retur
 ```q
 q)-11!(-2;`:sym2013.10.29)
 46333621
-46756601608j
+46756601608
 ```
 
 This means that there are 46,333,621 valid chunks in the tplog, and 467,56,601,608 valid bytes. Anything after this point is considered corrupt and not replayable.
@@ -242,7 +242,7 @@ q)-11!(`:sym2013.10.29)
 ```q
 q)-11!(-2;`:sym2013.10.29)
 46333621
-46756601608j
+46756601608
 ```
 
 There are 46,333,621 valid chunks in the tplog, and the valid portion of the log file is 46,756,601,608 bytes in size.
@@ -304,7 +304,7 @@ time sym side size price
 
 //recover new tplog
 q) -11! new
-46333621j
+46333621
 
 q)trade
 time                 sym    side size price

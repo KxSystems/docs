@@ -831,11 +831,11 @@ mmap| 0
 syms| 534
 symw| 23926
 q).Q.gc[]
-0j
+0
 q)delete a from `.
 `.
 q).Q.gc[]
-67108864j
+67108864
 q).Q.w[]
 used| 128768
 heap| 67108864
@@ -1037,10 +1037,10 @@ select from table where i<100
 
 But you can’t do that directly for a partitioned table.
 
-`.Q.ind` comes to the rescue here, it takes a table and (long!) indexes into the table - and returns the appropriate rows.
+`.Q.ind` comes to the rescue here, it takes a table and indexes into the table – and returns the appropriate rows.
 
 ```q
-.Q.ind[trade;2 3j]
+.Q.ind[trade;2 3]
 ```
 
 A more elaborate example that selects all the rows from a date:
@@ -1082,16 +1082,16 @@ Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or deco
 The main use of these functions is to encode long alphanumeric identifiers (CUSIP, ORDERID..) so they can be quickly searched – but without filling up the symbol table with vast numbers of single-use values.
 
 ```q
-q).Q.x10 12345j
+q).Q.x10 12345
 "AAAAAAADA5"
-q).Q.j10 .Q.x10 12345j
-12345j
-q).Q.j10 each .Q.x10 each 12345j+1 2 3
-12346 12347 12348j
-q).Q.x12 12345j
+q).Q.j10 .Q.x10 12345
+12345
+q).Q.j10 each .Q.x10 each 12345+1 2 3
+12346 12347 12348
+q).Q.x12 12345
 "0000000009IX"
-q).Q.j12 .Q.x12 12345j
-12345j
+q).Q.j12 .Q.x12 12345
+12345
 ```
 
 !!! tip

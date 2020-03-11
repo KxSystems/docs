@@ -17,7 +17,7 @@ Recall the recipe to convert a large CSV file into an on-disk database without h
 ```q
 q)colnames: `date`open`high`low`close`volume`sym
 q).Q.fs[{ .[`:newfile; (); ,; flip colnames!("DFFFFIS";",")0:x]}]`:file.csv
-387j
+387
 q)value `:newfile
 date       open  high  low   close volume   sym
 ------------------------------------------------
@@ -38,7 +38,7 @@ In order to save splayed, we have to enumerate varchar columns. In our case, it 
 q)sym: `symbol$()
 q)colnames: `date`open`high`low`close`volume`sym
 q).Q.fs[{ .[`:dir/trade/; (); ,; update sym:`sym?sym from flip colnames!("DFFFFIS";",")0:x]}]`:file.csv
-387j
+387
 ```
 
 But we also have to save the symbols so that they can be found when the splayed database is opened:
@@ -82,7 +82,7 @@ Instead of doing the separate steps by hand, we can have `.Q.en` do them for us:
 ```q
 q)colnames: `date`open`high`low`close`volume`sym
 q).Q.fs[{ .[`:dir/trade/; (); ,; .Q.en[`:dir] flip colnames!("DFFFFIS";",")0:x]}]`:file.csv
-387j
+387
 ```
 
 And we can verify that this works too:

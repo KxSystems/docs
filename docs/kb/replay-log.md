@@ -99,10 +99,10 @@ q)-11!logfile
 q)-11!(-1;logfile)
 'badtail
 q)hcount logfile
-39623j
+39623
 q)-11!(-2;logfile)
 26
-35634j
+35634
 q)/ 26 valid chunks until position 35634 (out of 39623)
 q)-11!(26;logfile)
 26

@@ -151,7 +151,7 @@ q)key x
 Where `x` is a vector returns the name of its [type](../basics/datatypes.md) as a symbol.
 
 ```q
-q)key each ("abc";101b;1 2 3h;1 2 3;1 2 3j;1 2 3f)
+q)key each ("abc";101b;1 2 3h;1 2 3;1 2 3;1 2 3f)
 `char`boolean`short`int`long`float
 q)key 0#5
 `long

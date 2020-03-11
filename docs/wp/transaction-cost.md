@@ -336,12 +336,12 @@ q)\ts aj[
         time:`time$time.minute 
         from trade where date=d, sym in `FDP1`FDP2`FDP3`FDP4; 
     select date, sym, time, openBid:bid, openAsk:ask from quote where date=d]
-2691 2155880464j
+2691 2155880464
 
 q)/ retrieving bars from native bar table
 q)\ts select date, sym, bar, firstTradePrice, volume, openBid, openAsk 
     from bar where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-1090 183184j
+1090 183184
 ```
 
 <i class="far fa-hand-point-right"></i>
@@ -362,12 +362,12 @@ q)\ts aj[
         time:`time$time.minute 
         from trade where date=d, sym in `FDP1`FDP2`FDP3`FDP4; 
     select date, sym, time, openBid:bid, openAsk:ask from quote where date=d]
-489 2155880464j
+489 2155880464
 
 q)/ retrieving bars from native bar table
 q)\ts select date, sym, bar, firstTradePrice, volume, openBid, openAsk 
     from bar where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-1 183184j
+1 183184
 ```
 
 Taking this a step further, one should also store data, which can be aggregated by day and accessed regularly in a separate table for optimal access. In the example below, only a small number of columns are included, but this could be easily expanded. Other useful daily data may include auction volumes, block trades, trade count and average quote size to name but a few.
@@ -383,12 +383,12 @@ q)\ts select
     closeTime:first time where closeAuc 
     by date, sym 
     from trade where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-671 5246432j
+671 5246432
 
 q)/ retrieving from dedicated daily table
 q)\ts select date, sym, open, openTime, close, closeTime 
     from daily where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-28 2622528j
+28 2622528
 ```
 
 The partitioning structure you choose will depend on your access pattern, number of columns and records. If you are retrieving data for multiple dates at once and the number of records and columns is small, a plain vanilla splayed table may suffice. Otherwise, partitioning by month or by year should investigated.
