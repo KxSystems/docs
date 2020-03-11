@@ -9,8 +9,8 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 
 
 
-<div style="background-color: yellow; border-radius: 10px; font-size: 200%; text-align: center;">
-<a href="/q/releases/ChangesIn4.0/">kdb+ V4.0 released 2020.03.19</a>
+<div style="background-color: yellow; border-radius: 10px; text-align: center;">
+<a href="/q/releases/ChangesIn4.0/"><small>Kx Streaming Analytics</small><br><big><b>kdb+ 4.0 released 2020.03.19</b></big></a>
 </div>
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">

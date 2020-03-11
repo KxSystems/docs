@@ -29,6 +29,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-27!(x;y)](#-27xy-format)   format
 [-30!x](#-30x-deferred-response)       deferred response
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash
+[-36!(x;y)](#-36xy-load-master-key)   load master key
 [-120!x](#-120x-memory-domain)      memory domain
 </pre>
 
@@ -374,6 +375,34 @@ q)raze string -33!"mypassword"
 
 <i class="fas fa-book-open"></i>
 Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
+
+
+## `-36!(x;y)` Load master key
+
+Syntax: `-36!(x;y)` 
+
+Where
+
+-   `x` is a master-key file as a [file symbol](glossary.md#file-symbol)
+-   `y` is a password as a string
+
+loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk. 
+
+<i class="fas fa-graduation-cap"></i>
+[Create master key](../kb/dare.md#configuration)
+
+Expect this call to take about 500 milliseconds to execute.
+It can be executed from handle 0 only.
+
+Signals errors: 
+```txt
+Encryption lib unavailable      failed to load OpenSSL libs
+Invalid password                
+Main thread only                can be executed from the main thread only
+PKCS5_PBKDF2_HMAC               library invocation failed
+Restricted                      must be executed under handle 0
+Unrecognized key format         master key file format unrecognized
+```
 
 
 ## `-120!x` (memory domain)
