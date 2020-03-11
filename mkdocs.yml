@@ -502,6 +502,7 @@ nav:
         - Metrics: ml/toolkit/utilities/metric.md
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
+        - Multiprocessing: ml/toolkit/utilities/multiprocess.md
       - FRESH: ml/toolkit/fresh.md  
       - Cross validation: ml/toolkit/xval.md
     - Natural language processing:

@@ -39,8 +39,9 @@ Besides those installed via the above code there is also a requirement that the 
 $ python -m spacy download en
 ```
 
-!!! Note "Tensorflow"
-	Tensorflow and Tensorflow_text are not a requirement to run this library, however, if installed, [extra functionality](userguide/tensorflow.md) is included.
+!!! note "Tensorflow"
+
+	Tensorflow and Tensorflow_text are not a requirement to run this library, however, if installed, extra functionality is included.
 
 
 ## Installation

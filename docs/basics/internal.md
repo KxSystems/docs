@@ -132,7 +132,7 @@ Where `n` is a non-negative integer and `x` is a logfile handle
 
 : returns the number of consecutive valid chunks in `x` and the length of the valid part of the file
 
-`-11x(n;x)`
+`-11!(n;x)`
 
 : replays `n` chunks from top of logfile and returns the number of chunks executed
 
