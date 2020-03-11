@@ -9,8 +9,8 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 
 
 
-<div style="background-color: yellow; border-radius: 10px; text-align: center;">
-<a href="/q/releases/ChangesIn4.0/"><small>Kx Streaming Analytics</small><br><big><b>kdb+ 4.0 released 2020.03.19</b></big></a>
+<div style="background-color: #0070cd; border-radius: 10px; color: white; text-align: center;">
+<small>Kx Streaming Analytics</small><br><big><b>kdb+ 4.0 released 2020.03.19</b></big>
 </div>
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
@@ -27,15 +27,21 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" markdown="1"><i class="fas fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
+    
+    <p markdown="1"><i class="fas fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
+    
     <p class="nowrap" markdown="1"><i class="fas fa-lock"></i> [Data-at-rest crypto](kb/dare.md)</p>
     
     <p markdown="1"><i class="fab fa-aws"></i> [kdb+ on Lambda](wp/aws-lambda/index.md)</p>
     
-    <p markdown="1"><i class="fas fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
-    
     <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="fas fa-binoculars"></i> [Mountain Tour](learn/tour/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-share-alt"></i> [Auto ML](FIXME)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-binoculars"></i> [Mountain Tour of q](learn/tour/index.md)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fab fa-python"></i> [Python examples](learn/python/basic.md)</p>
     
 </div>
 

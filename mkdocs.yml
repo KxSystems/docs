@@ -542,6 +542,7 @@ nav:
     - Loading from large files: kb/loading-from-large-files.md
     - Logging: kb/logging.md
     - Multithreaded input: kb/multithreaded-input.md
+    - Multithreaded primitives: kb/mt-primitives.md
     - Named pipes: kb/named-pipes.md
     - ODBC: kb/odbc.md
     - Optane Memory: kb/optane.md
