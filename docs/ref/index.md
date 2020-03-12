@@ -295,8 +295,8 @@ Markup output for HTTP
 De/serialize as JSON
 
 <pre markdown="1" class="language-txt" style="font-size: 80%">
-[.j.j   serialize](#jj-serialize)                [.j.k   deserialize](#jk-deserialize)
-[.j.jd  serialize infinity](#jjd-serialize-infinity)
+[.j.j   serialize](dotj.md#jj-serialize)                [.j.k   deserialize](dotj.md#jk-deserialize)
+[.j.jd  serialize infinity](dotj.md#jjd-serialize-infinity)
 </pre>
 
 
