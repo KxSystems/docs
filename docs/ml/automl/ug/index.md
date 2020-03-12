@@ -1,22 +1,28 @@
 ---
-title: Basic userguide for the Kx open source automated machine learning offering.
+title: Automated machine-learning user guide | Machine Learning | Documentation for kdb+ and q
 author: Conor McCarthy
-description: The purpose of this file is to outline to a user how the highest level callable functions within the repository are to be used and what is acceptable as input for the each function. This will also outline some areas where users should be careful applying this functionality.
-
-date: October 2019
-
+description: How to call the top-level functions in the automated machine-learning repository. 
+date: March 2020
 keywords: machine learning, automated, ml, feature extraction, feature selection, data cleansing
 ---
 # User interface
 
-At the highest level this repository allows for two primary callable functions:
 
-1. `.automl.run` = Run the automated machine learning pipeline on user defined data and target
-2. `.automl.new` = Using a previously fit model and set of instructions derived from 1 above, return predicted values for new tabular data
 
-Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the advanced section [here](../adv/params).
+The top-level functions in the repository are:
 
-The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non time series specific machine learning examples and implementations making use of the FRESH algorithm outlined in detail [here](../../toolkit/fresh)
+`.automl.run`
+
+: Run the automated machine -learning pipeline on user-defined data and target.
+
+`.automl.new`
+
+: Using a previously fit model and set of instructions derived from `.automl.run`, return predicted values for new tabular data.
+
+Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](params.md).
+
+The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non-timeseries-specific machine-learning examples and implementations making use of the [FRESH algorithm](../../toolkit/fresh).
+
 
 ## `.automl.run`
 
@@ -28,21 +34,20 @@ Where
 
 -   `tab` is unkeyed tabular data from which the models will be created
 -   `tgt` is the target vector
--   `ftype` type of feature extraction being completed on the dataset as a symbol (``` `fresh/`normal```)
--   `ptype` type of problem, regression/class, as a symbol (``` `reg/`class ```)
--   `dict` is one of `::` for default behaviour, a kdb+ dictionary or path to a user defined flat file for modifying default parameters.
+-   `ftype` type of feature extraction being completed on the dataset as a symbol (`` `fresh/`normal``)
+-   `ptype` type of problem, regression/class, as a symbol (` `reg/`class ``)
+-   `dict` is one of `::` for default behavior, a kdb+ dictionary or path to a user-defined flat file for modifying default parameters.
 
-Returns the date and time at which the run was initiated
+returns the date and time at which the run was initiated.
 
 The default setup saves the following items from an individual run:
 
-1. The best model, saved as a hdf5 file, or "pickled" byte object.
+1. The best model, saved as a HDF5 file, or ‘pickled’ byte object.
 2. A saved report indicating the procedure taken and scores achieved.
 3. A saved binary encoded dictionary denoting, the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
 4. Results from each step of the pipeline published to console.
 
-!!!Note
-	The following shows the execution of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity output is only displayed in full for one example.
+The following shows the execution of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity, output is displayed in full for one example only.
 
 ```q
 // Non time-series example table
@@ -110,6 +115,7 @@ q).automl.run[fresh_data;reg_tgt;`fresh;`reg;::]
 // non-time series/FRESH binary classification example
 q).automl.run[tab;bin_target;`normal;`class;::]
 ```
+
 
 ## `.automl.new`
 

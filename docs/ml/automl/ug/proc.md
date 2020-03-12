@@ -1,38 +1,39 @@
 ---
-title: Processing procedures for the Kx automated machine learning platform
+title: Processing procedures Kx automated machine-learning | Machine Learning | Documentation for q and kdb+
 author: Deanna Morgan
-description: This document outlines the default behaviour of the Kx automated machine learning offering in particular highlighting the common processes completed across all forms of automated machine learning and the differences between offerings
+description: Default behavior of automated machine learning; common processes completed across all forms of automated machine learning
 date: October 2019
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
+# <i class="fas fa-share-alt"></i> Automated data processing
 
-# <i class="fas fa-share-alt"></i> Automated Processing
+
 
 <i class="fab fa-github"></i>
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the data preprocessing methods outlined in the [Automated Preprocessing](../preproc/) section of the documentation.
-
-## Outline of Procedures
+The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the [data preprocessing methods](preproc.md).
 
 The following are the procedures completed when the default system configuration is deployed:
 
 1. Feature extraction is performed using either FRESH or normal feature extraction methods.
 2. Significance tests are applied to extracted features to determine those most relevant for model training.
 3. Data is split into training, validation and testing (holdout) sets.
-4. Cross validation procedures are performed on a selection of models.
+4. Cross-validation procedures are performed on a selection of models.
 5. Models are scored using a predefined performance metric, based on the problem type (classification/regression), with the best model selected and scored on the validation set.
-6. Best model saved down following optimization using grid search procedures.
+6. Best model saved following optimization using grid search procedures.
 
-### Feature extraction
+
+## Feature extraction
 
 Feature extraction is the process of building derived or aggregate features from a dataset in order to provide a more suitable or useful input for machine learning algorithms. Within the automated machine learning framework, there are currently 2 types of feature extraction available, FRESH and normal feature extraction.
 
-#### FRESH
 
-The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time-series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time-series into subsets from which features can be extracted. Note that each subset will have an associated target. The feature extraction functions applied within the FRESH procedure are defined within the ML-Toolkit documentation [here](../../../toolkit/fresh/) a full explanation of this algorithm is also provided there.
+### FRESH
 
-The below example shows the application of FRESH to a time-series dataset with a date-time ID column and 4 columns from which we derive features.
+The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time-series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time-series into subsets from which features can be extracted. Note that each subset will have an associated target. The feature extraction functions applied within the FRESH procedure are defined within the [ML Toolkit](../../toolkit/fresh.md). A full explanation of this algorithm is also provided there.
+
+The example below shows the application of FRESH to a time-series dataset with a date-time ID column and 4 columns from which we derive features.
 
 ```q
 q)5#tb:([]d:100?2001.01.01+til 5;100?1.;100?1.;100?100;100?10)
@@ -59,17 +60,17 @@ d         | x_absenergy x_abssumchange x_count x_countabovemean x_countbelowm..
 q)count 1_cols freshfeats
 1132
 ```
-!!!Note
-	When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. Instructions on how to amend this can be found [here](../params.md)
+
+!!! note
+
+    When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
+
+    See instructions on [how to amend this](params.md)
 
 
-#### Normal
+### Normal
 
-Normal feature extraction can be applied to "normal" problems, which are independent of time and have one target value per row. The current implementation of normal feature extraction applies the following feature extraction procedures
-
-1. Time/date type columns are split into their component parts 
-
-The following shows an example of these procedures being performed.
+Normal feature extraction can be applied to ‘normal’ problems, which are independent of time and have one target value per row. The current implementation of normal feature extraction splits time/date type columns into their component parts.
 
 ```q
 q)5#tb:([]asc 100?0t;100?1.;100?1.;100?1.;100?100;100?10)
@@ -96,20 +97,20 @@ x_ss      | 32         31         48         2          12        50         ..
 // no. of features after feature extraction
 q)count normfeat
 8
-``` 
+```
 
-!!!Note
-	The early stage releases of this repository limit the feature extraction procedures that are performed by default on the tabular data for a number of reasons.
- 
-	1. The naive application of many relevant feature extraction procedures (truncated singular value decomposition/bulk transforms) while potentially informative can expand the memory usage and computation time beyond an acceptable level.
+The early-stage releases of this repository limit the feature extraction procedures that are performed by default on the tabular data for a number of reasons.
 
-	2. Procedures being applied in one field of use may not be relevant in another field. As such the framework is provided to allow a user to complete feature extractions which are domain specific if required rather than assuming procedures to be applied are ubiquitous in all cases.
+1.  The naïve application of many relevant feature-extraction procedures (truncated singular-value decomposition/bulk transforms) while potentially informative can expand the memory usage and computation time beyond an acceptable level.
 
-	Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations and where general frameworks can be assummed to be informative.
+2. Procedures being applied in one field of use may not be relevant in another field. As such the framework is provided to allow a user to complete feature extractions which are domain-specific if required, rather than assuming procedures to be applied are ubiquitous in all cases.
 
-### Feature selection
+Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations and where general frameworks can be assummed to be informative.
 
-In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](https://code.kx.com/v2/ml/toolkit/fresh/) function contained within the ML-Toolkit. When default parameters are used, the top 25th percentile of features are selected. The below regression example demonstrates the steps required to extract significant features within the automl pipeline. 
+
+## Feature selection
+
+In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](../../toolkit/fresh.md) function contained within the ML Toolkit. When default parameters are used, the top 25th percentile of features are selected. The regression example below demonstrates the steps required to extract significant features within the AutoML pipeline. 
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
@@ -143,16 +144,16 @@ q)count feats
 7
 ```
 
-In the example above, the columns ````x3`x4``` were first removed due to type restictions. Following this, 28 features were created using normal feature extraction, with 7 selected for model training using the FRESH significance tests.
+In the example above, the columns `` `x3`x4`` were first removed due to type restrictions. Following this, 28 features were created using normal feature extraction, with 7 selected for model training using the FRESH significance tests.
 
 
-### Train-Test Split
+## Train-test split
 
 Once the most significant features have been selected, the data is split into a training and holdout set. The holdout set is required later in the process for optimizing the best model.
 
 In order to split the data a number of train-test split procedures are implemented for the different problem types
 
-Problem Type | Function | Description |
+problem type | function | description |
 -------------|----------|-------------|
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage.
@@ -184,7 +185,7 @@ xtest | 20
 ytest | 20
 ```
 
-For classification problems, similar to the one above, it cannot be guaranteed that the N distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
+For classification problems, similar to the one above, it cannot be guaranteed that the $N$ distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
 
 For this reason, the utility function `.automl.i.kerascheck` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
 
@@ -197,22 +198,23 @@ Test set does not contain examples of each class. Removed MultiKeras from models
 ...
 ```
 
-At this stage it is possible to begin model training and validation using cross validation procedures. To do so, the data which is currently in the training set must be further split into training and validation sets. Following the same process as before, the Keras check must be applied again if Keras models are still present.
+At this stage it is possible to begin model training and validation using cross-validation procedures. To do so, the data which is currently in the training set must be further split into training and validation sets. Following the same process as before, the Keras check must be applied again if Keras models are still present.
 
-### Cross Validation
 
-Cross validation procedures are commonly used in machine learning as a means of testing how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation. The technique ensures that the best model selected at the end of the process is the one that best generalizes to new unseen data.
+## Cross validation
 
-The cross validation techniques implemented in the automated machine learning platform are those contained within the ML-Toolkit (available [here](https://code.kx.com/v2/ml/toolkit/xval/)). The specific type of cross validation applied to the training data in each case is a shuffled 5-fold cross validation procedure.
+Cross-validation procedures are commonly used in machine learning as a means of testing how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation. The technique ensures that the best model selected at the end of the process is the one that best generalizes to new unseen data.
+
+The cross validation techniques implemented in the automated machine-learning platform are those contained within the [ML Toolkit](../../toolkit/xval.md)). The specific type of cross validation applied to the training data in each case is a shuffled 5-fold cross-validation procedure.
 
 For clarity, the splitting of data to this point as implemented in the default configuration is depicted below, where 20% of the overall dataset is used as the holdout set, 20% of the remaining dataset is used as the validation set and then the remaining data is split into 5-folds for cross validation to be carried out.
 
-<img src="../img/5fold.png">
+![](img/5fold.png)
 
-### Model Selection
 
-Once the relevant models have undergone cross validation using the training data, scores are calculated using the relevant scoring metric for the problem type (classification or regression). The file `scoring.txt` is provided within the platform which specifies the possible scoring metrics and how results should be ordered (ascending/descending) for each of these metrics in order to ensure that the best model is being returned. This file can be altered by the user if necessary in order to expand the number of metrics available or to add custom metrics. The default metric for classification problems is accuracy, while MSE is used for regression. An extensive list of example metric functions  applied in kdb can be found in the [ML-Toolkit](https://code.kx.com/q/ml/toolkit/utilities/metric/)
+## Model selection
 
+Once the relevant models have undergone cross validation using the training data, scores are calculated using the relevant scoring metric for the problem type (classification or regression). The file `scoring.txt` is provided within the platform which specifies the possible scoring metrics and how results should be ordered (ascending/descending) for each of these metrics in order to ensure that the best model is being returned. This file can be altered by the user if necessary in order to expand the number of metrics available or to add custom metrics. The default metric for classification problems is accuracy, while MSE is used for regression. An extensive list of example metric functions  applied in kdb can be found in the [ML-Toolkit](../../toolkit/utilities/metric.md)
 
 Below is an example of the expected output for a regression problem following cross validation. All models are scored using the default regression scoring metric, with the best scoring model selected and used to make predictions on the validation set.
 
@@ -243,13 +245,14 @@ Score for holdout predictions using best model - KNeighborsRegressor
 0.05449826
 ```
 
-### Optimization
 
-In order to optimize the best model, grid search procedures are implemented. Similarly to the cross validation methods above, this grid search functionality is sourced from within the ML-Toolkit.
+## Optimization
+
+In order to optimize the best model, grid-search procedures are implemented. Similarly to the cross validation methods above, this grid search functionality is sourced from within the ML-Toolkit.
 
 In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the flat file `hyperparam.txt` and can be altered by the user if required. 
 
-```q
+```txt
 Models and default grid search hyperparameters:
   AdaBoost Regressor               learning_rate, n_estimators
   Gradient Boosting Regressor      criterion, learning_rate, loss
@@ -267,7 +270,7 @@ Models and default grid search hyperparameters:
   SVC                              C, degree, tol
 ```
 
-Once the grid search has been performed, the optimized model is tested using the holdout set, with the final score returned and the best model saved down. An regression example is shown below.
+Once the grid search has been performed, the optimized model is tested using the holdout set, with the final score returned and the best model saved down. A regression example is shown below.
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
