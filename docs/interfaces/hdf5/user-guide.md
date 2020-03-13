@@ -466,7 +466,7 @@ _Get the total number of data points in an attribute dataset_
 
 Syntax: `.hdf5.getAttrPoints[fname;oname;aname]`
 
--   `fname` is the HDF5 containing the attribute
+-   `fname` is the HDF5 file containing the attribute
 -   `oname` object to which the attribute is associated
 -   `aname` attribute name of interest
 
@@ -485,7 +485,7 @@ Syntax: `.hdf5.getDataShape[fname;oname]`
 
 Where
 
--   `fname` is the HDF5 containing the dataset 
+-   `fname` is the HDF5 file containing the dataset 
 -   `oname` name of the dataset of interest 
 
 returns an numerical list indicating the shape of the dataset
@@ -501,20 +501,102 @@ _Get the total number of data points in an attribute dataset_
 
 Syntax: `.hdf5.getDataPoints[fname;oname]`
 
--   `fname` is the HDF5 containing the attribute
--   `oname` object to which the attribute is associated
+Where
 
-returns the number of data points associated with an attribute
+-   `fname` is the HDF5 file containing the dataset
+-   `oname` name of the dataset of interest 
+
+returns the number of data points associated with a dataset
 
 ```q
-q).hdf5.getAttrPoints["test.h5";"dset";"Temperatures"]
-10
+q).hdf5.getDataPoints["test.h5";"dset"]
+20
 ```
+
 ### `.hdf5.isAttr`
+
+_Does the named attribute exist_
+
+Syntax: `.hdf5.isAttr[fname;oname;aname]`
+
+-   `fname` is the HDF5 file containing the attribute
+-   `oname` is the object to which the attribute is associated
+-   `aname` name of the attribute
+
+returns a boolean indicating if the attribute exists or not
+
+```q
+q).hdf5.isAttr["test.h5";"dset";"Temperatures"]
+1b
+q).hdf5.isAttr["test.h5";"dset";"Temps"]
+0b
+```
 
 ### `.hdf5.ishdf5`
 
+_Is the specified file a HDF5 file_
+
+Syntax: `.hdf5.ishdf5[fname]`
+
+Where
+
+-   `fname` is a file path
+
+returns a boolean indicating if the file is a hdf5 file or not
+
+```q
+q).hdf5.ishdf5["test.h5"]
+1b
+q).hdf5.ishdf5["test.txt"]
+0b
+```
+
 ### `.hdf5.isObject`
 
+_Is the object specified a group or dataset_
+
+Syntax: `.hdf5.isObject[fname;oname]`
+
+Where
+
+-   `fname` is a HDF5 file
+-   `oname` is the path to an object (dataset/group) within the file
+
+returns a boolean indicating if the object exists or not
+
+```q
+// Dataset exists
+q).hdf5.isObject["test.h5";"dset"]
+1b
+// Group exists
+q).hdf5.isObject["test.h5";"G1"]
+1b
+// Object doesn't exist
+q).hdf5.isObject["test.h5";"not_obj"]
+0b
+```
+ 
 ### `.hdf5.ls`
 
+_Display the structure of a HDF5 file_
+
+Syntax: `.hdf5.ls[fname]`
+
+Where
+
+-   `fname` is a file name of interest
+
+returns a print out of the overall structure of the HDF5 file
+
+```q
+q).hdf5.ls["test.h5"]
+/ {
+  Group: G1 {
+    Group: G2 {
+      Dataset: group_dset
+    }
+    Dataset: dset1
+  }
+  Dataset: dset
+}
+```
