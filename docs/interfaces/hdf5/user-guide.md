@@ -207,17 +207,314 @@ q).hdf5.writeAttr["test.h5";"dset1";"temperature";10 2#20?1f]
 
 The following functions relate to the reading of HDF5 datasets/attributes to an equivalent kdb+ representation.
 
+### `.hdf5.readAttr`
+
+_Read the data contained in a HDF5 attribute to kdb+_
+
+Syntax: `.hdf5.readAttr[fname;oname;aname]`
+
+Where
+
+-   `fname` name of a HDF5 file as a symbol/char string
+-   `oname` name of the object dataset which the attribute being read from is connected
+-   `aname` name of the attribute from which data is to be read
+
+returns a kdb+ dataset containing the data associated with the named HDF5 attribute
+
+```q
+// Read numeric data from attribute
+q).hdf5.readAttr["test.h5";"dset";"Temperatures"]
+10.0696 10.45295 10.97325 12.04377 12.04978 12.24866 12.48825 13.05441 13.574..
+
+// Read string data from attribute 
+q).hdf5.readAttr["test.h5";"dset";"Description"]
+"This data relates to experiment 1"
+"Time difference between values = 1ms"
+```
+
+### `.hdf5.readData`
+
+_Read the data contained in a HDF5 data to kdb+_
+
+Syntax: `.hdf5.readAttr[fname;oname]`
+
+Where
+
+-   `fname` name of a HDF5 file as a symbol/char string 
+-   `oname` name of the dataset which is to be read from
+
+returns a kdb+ dataset containing the data associated with a HDF5 dataset 
+                                 
+
+```q
+// Read numeric data
+q).hdf5.readData["test.h5";"dset"]
+0.4707883 0.6346716 
+0.9672398 0.2306385 
+0.949975  0.439081  
+0.5759051 0.5919004 
+0.8481567 0.389056  
+0.391543  0.08123546
+0.9367503 0.2782122 
+0.2392341 0.1508133 
+0.1567317 0.9785    
+0.7043314 0.9441671
+
+// Read string data
+q).hdf5.readData["test.h5";"strdset"]
+"Value 1 = 0.01"
+"Value 2 = 0.02"
+"Value 3 = 0.04"
+```
 
 ## Linking Functions
 
-The following functions allow a user to link datasets/groups internally or externally to a hdf5 file.
+The following functions allow a user to link datasets/groups internally or externally to a hdf5 file. The explicit definitions of external, hard and soft links as they pertain to the HDF5 data format can be found [here](http://davis.lbl.gov/Manuals/HDF5-1.8.7/UG/09_Groups.html)
 
+### `.hdf5.createExternal`
+
+_Creates an external link to an object in a different file_
+
+Syntax: `.hdf5.createExternal[fname;lname;tname;tobj]`
+
+Where
+
+-   `fname` HDF5 file containing the location being linked from     
+-   `lname` object being linked from
+-   `tname` target file containing the target object
+-   `tobj`  target object as an end point to the link
+
+returns null on successful execution and creates the external link
+
+```q
+// Produce a new .h5 file and link a path within this to a dataset in another h5 file
+// using the create external link functionality within the api
+q).hdf5.createFile["test_external.h5"]
+q).hdf5.createExternal["test_external.h5";"/dset";"test.h5";"/dset"]
+// Access the data from this new link
+q).hdf5.readDataset["test_external.h5";"/dset"]
+0.4707883 0.6346716
+0.9672398 0.2306385
+0.949975  0.439081
+0.5759051 0.5919004
+0.8481567 0.389056
+0.391543  0.08123546
+0.9367503 0.2782122
+0.2392341 0.1508133
+0.1567317 0.9785
+0.7043314 0.9441671
+```
+
+### `.hdf5.createHard`
+
+_Create a hard link to a physical address in a file_ 
+                    
+Syntax: `.hdf5.createHard[fname;lname;tname]`
+                    
+Where               
+                    
+-   `fname` HDF5 file within which link objects are contained            
+-   `lname` object being linked from
+-   `tname` target address as an end point to the link
+                    
+returns null on successful execution and creates the hard link.
+
+```q
+// Create a hard link from existing 'dset' to 'G1/dset'
+q).hdf5.createHard["test.h5";"/dset";"G1/dset"]
+// Access the data using the new link
+q).hdf5.readData["test";"/G1/dset"]
+8 1 9 5 4 6
+6 1 8 5 4 9
+2 7 0 1 9 2
+1 8 8 1 7 2
+```
+
+### `.hdf5.createSoft`
+
+_Create a soft/symbolic link between two locations in a HDF5 file_
+
+Syntax: `.hdf5.createHard[fname;lname;tname]`
+
+Where      
+
+-   `fname` HDF5 file within which link objects are contained  
+-   `lname` object being linked from
+-   `tname` target address as an end point to the link
+                    
+returns null on successful execution and creates the specified soft link.
+
+```q
+// Create a soft link (symbolic link) between two unpopulated points in the file
+q).hdf5.createSoft["test.h5";"/G1/dset1";"/G1/dset2"]
+// Create a hard link between an existing file and /G1/dset1
+q).hdf5.createHard["test.h5";"dset";"/G1/dset1"]
+// Read from the location pointed to using the soft link
+q).hdf5.readData["tets.h5";"/G1/dset2"]
+8 1 9 5 4 6
+6 1 8 5 4 9
+2 7 0 1 9 2
+1 8 8 1 7 2
+```
+
+### `.hdf5.delLink`
+
+_Delete an assigned external hard or soft link_
+
+Syntax: `.hdf5.delLink[fname;lname]`
+
+Where
+
+-   `fname` HDF5 file within which the link to be deleted is contained
+-   `lname` name of the link to be deleted within a HDF5 file
+
+returns a message indicating successful deletion of a link.
+
+```q
+// Create a delete a soft link
+q).hdf5.delLink["test.h5";"/G1/dset1"]
+"Successfully deleted the link"
+// Attempt to delete the link again
+q).hdf5.delLink["test.h5";"/G1/dset1"]
+'could not delete specified link 
+```
 
 ## Group Functions
 
 The following function is used to create an individual or set of intermediate groups.
 
+### `.hdf5.createGroup`
+
+_Create a group or set of groups within a file_
+
+Syntax: `.hdf5.createGroup[fname;gname]`
+
+Where
+
+-   `fname` HDF5 file within which groups are to be created
+-   `gname` Structure of the groups to be created within the file
+
+returns null on successful execution and creates the desired groups.
+
+```q
+// Create a single group
+q).hdf5.createGroup["test.h5";"SingleGroup"]
+// Create a set of groups
+q).hdf5.createGroup["test.h5";"Group1/SubGroup1/SubGroup2"]
+```
+
 
 ## Utility Functions
 
 The following are a number of utility functions which may be useful when dealing with HDF5 objects and files.
+
+### `.hdf5.datasetInfo`
+
+_Relevant information about a dataset_
+
+Syntax: `.hdf5.datasetInfo[fname;oname]`
+
+Where
+
+-   `fname` HDF5 file containing the dataset of interest
+-   `oname` Dataset about which information is to be displayed
+
+returns a dictionary outlining the type, rank and dimensionality of the dataset
+
+```q
+q).hdf5.datasetInfo["test.h5";"dset"]
+type | `float
+ndims| 2i
+dims | 10 2i
+```
+
+### `.hdf5.gc`
+
+_Garbage collect on free HDF5 lists of all types_
+
+Syntax: `.hdf5.gc[]`
+
+returns 0i on successful execution
+
+```q
+q).hdf5.gc[]
+0i
+```
+
+### `.hdf5.getAttrShape`
+
+_Get the shape of an attribute dataset_
+
+Syntax: `.hdf5.getAttrShape[fname;oname;aname]`
+
+Where
+
+-   `fname` is the HDF5 containing the attribute
+-   `oname` object to which the attribute is associated
+-   `aname` attribute name of interest
+
+returns an numerical list indicating the attribute shape
+
+```q
+q).hdf5.getAttrShape["test.h5";"dset";"Temperatures"]
+1 10
+```
+
+### `.hdf5.getAttrPoints`
+
+_Get the total number of data points in an attribute dataset_
+
+Syntax: `.hdf5.getAttrPoints[fname;oname;aname]`
+
+-   `fname` is the HDF5 containing the attribute
+-   `oname` object to which the attribute is associated
+-   `aname` attribute name of interest
+
+returns the number of data points associated with an attribute
+
+```q
+q).hdf5.getAttrPoints["test.h5";"dset";"Temperatures"]
+10
+```
+
+### `.hdf5.getDataShape`
+
+_Get the shape of a dataset_
+
+Syntax: `.hdf5.getDataShape[fname;oname]`
+
+Where
+
+-   `fname` is the HDF5 containing the dataset 
+-   `oname` name of the dataset of interest 
+
+returns an numerical list indicating the shape of the dataset
+
+```q
+q).hdf5.getDataShape["test.h5";"dset"]
+2 4
+```
+
+### `.hdf5.getDataPoints`
+
+_Get the total number of data points in an attribute dataset_
+
+Syntax: `.hdf5.getDataPoints[fname;oname]`
+
+-   `fname` is the HDF5 containing the attribute
+-   `oname` object to which the attribute is associated
+
+returns the number of data points associated with an attribute
+
+```q
+q).hdf5.getAttrPoints["test.h5";"dset";"Temperatures"]
+10
+```
+### `.hdf5.isAttr`
+
+### `.hdf5.ishdf5`
+
+### `.hdf5.isObject`
+
+### `.hdf5.ls`
+
