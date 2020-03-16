@@ -14,27 +14,6 @@ GeeksforGeeks [Python Programming Examples](https://www.geeksforgeeks.org/python
 Follow links to the originals for more details on the problem and the Python solution/s.
 
 
-### [Add two numbers](https://www.geeksforgeeks.org/python-program-to-add-two-numbers/)
-
-```python
-# Python3 program to add two numbers
-
-num1 = 15
-num2 = 12
-
-# Adding two nos
-sum = num1 + num2
-
-# printing values
-print("Sum of {0} and {1} is {2}" .format(num1, num2, sum))
-```
-```q
-q:n:15 12  / two numbers
-q){"Sum of ",x," and ",y," is ",z) . string n,sum n
-"Sum of 15 and 12 is 27"
-```
-
-
 ### [Factorial of a number](https://www.geeksforgeeks.org/python-program-for-factorial-of-a-number/)
 
 ```python
@@ -52,9 +31,15 @@ factorial(num))
 
 # This code is contributed by Smitha Dinesh Semwal
 ```
+
+The q versions focus on the calculation and set aside formatting as a distraction. The terse presentation offers some insight into how vector programmers actually think. 
+
+`1+til 5` gives us the integers 1-5; `prd` their product.
+
 ```q
-q){"Factorial of ",x," is ",y}. string{x,prd 1+til x}5
-"Factorial of 5 is 120"
+q)fac:{prd 1+til x}   / factorial
+q)fac 5
+120
 ```
 
 
@@ -79,10 +64,22 @@ print("simple interest is", SI)
 
 # This code is contributed by Azkia Anam.
 ```
+
+Principal, rate and time are three numbers. The result is one hundredth of their product.
+
 ```q
-q)prt:1 1 1  / principal, rate, time
-q)"simple interest is ",string prd[prt]%100
-"simple interest is 0.01"
+q)(prd 1 1 1)%100   / principal, rate, time
+0.01
+```
+
+Iteration is implicit in most q operators. 
+We can write a function of conformable lists. 
+Here we have three principals, one rate, and three time periods.
+
+```q
+q)si:{[p;r;t] (p*r*t)%100}  /simple interest
+q)si[1000 1500 1750;3;5 6 7]
+150 270 367.5
 ```
 
 
@@ -104,11 +101,16 @@ compound_interest(10000, 10.25, 5)
 # This code is contributed by Abhishek Agrawal.
 ```
 ```q
-compound_interest:{[p;r;t]
-  "compound interest is ",string{p*(1+r%100)xexp t }
+q)ci:{[p;r;t] p*(1+r%100)xexp t}  / compound interest
+q)ci[10000;10.25;5]
+16288.95
+```
 
-q)compound_interest[10000;10.25;5]
-"compound interest is 16288.95"
+Again, iteration through lists is implicit.
+
+```q
+q)ci[1000 1500 1750;3;5 6 7]
+1159.274 1791.078 2152.279
 ```
 
 
@@ -157,6 +159,9 @@ print(isArmstrong(x))
 x = 1253
 print(isArmstrong(x))
 ```
+
+`10 vs x` decodes base-10 integer `x` into a list of digits; `x xexp count x` raises them to the power of the length of the list. 
+
 ```q
 isArmstrong:{x=sum{x xexp count x}{10 vs x}x}
 
@@ -179,11 +184,13 @@ print("Area is %.6f" % findArea(5));
 
 # This code is contributed by Chinmoy Lenka
 ```
-```q
-findArea:{(acos -1)*x*x}            / Pi is arc-cosine of -1
 
-q)"Area is ",string findArea 5
-"Area is 78.53982"
+Pi is the arc-cosine of -1. 
+
+```q
+q)ac:{x*x*acos -1}            / area of circle of radius x
+q)ac 5
+78.53982
 ```
 
 
@@ -207,9 +214,22 @@ if val > 1:
     else:
         print(val)
 ```
+
+Range is a useful concept. We’ll define a q function for it.
+
 ```q
-q)r:{x _ til y+1}[11;25]  / range
-q){x where all{x<>floor x}x%\:/:1_1+til"j"$sqrt last x}r
+q)rg:{x+til y-x-1}          / range
+q)rg[11;25]
+11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+```
+
+The Python program overcomputes. It is not necessary to test division by all numbers from 2 to `val`. One can stop after reaching the square root of `val`.
+
+For each number in the list `x`, check its modulo for integers in the range (2, `sqrt last x`).
+`x mod/:y` returns the modulo of `x` for each divisor in `y`.
+
+```q
+q){x where all 0<x mod/:rg[2;]"j"$sqrt last x}rg[11;25]
 11 13 17 19 23
 ```
 
@@ -260,13 +280,10 @@ else :
 # by Nikita Tiwari.
 ```
 ```q
-isPrime:{
-  isInt:{x=floor x};            / is integer
-  d:1_1+til ceiling sqrt x;     / divisors
-  `true`false any isInt x%d }
-
+q)rg:{x+til y-x-1}          / range
+q)isPrime:{all 0<x mod rg[2;]"j"$sqrt x}
 q)isPrime each 11 15
-`true`false
+10b
 ```
 
 
@@ -294,12 +311,12 @@ print(Fibonacci(9))
 #This code is contributed by Saket Modi
 ```
 ```q
-Fibonacci:{last(x-2){last[x],sum -2#x}/0 1}
-
+q)Fibonacci:{last(x-2){last[x],sum -2#x}/0 1}
 q)Fibonacci 9
 21
 ```
 
+Above we see the first two Fibonacci numbers `0 1`. Also the expression for the next pair in the series: `last[x],sum -2#x`. These are combined using the [Do iterator `/`](../../ref/accumulators.md#do).
 
 ### [Whether a Fibonacci number](https://www.geeksforgeeks.org/python-program-for-how-to-check-if-a-given-number-is-fibonacci-number/)
 
@@ -372,14 +389,14 @@ print("Position of n\'th multiple of k in"
 ```
 ```q
 findPosition:{[k;n]
-  ii:{x=floor x};                           / is integer?
-  im:{ii y%x};                              / is y multiple of x?
   nf:{last[x],sum x};                       / next Fibonacci pair
-  n*count{not im[x]last y}[k;]nf\0 1 }
+  n*count{0=x mod last y}[k;]nf\0 1 }
 
-q)"Position of 5th multiple of 4 in Fibonacci series is ",string findPosition[4;5]
-"Position of 5th multiple of 4 in Fibonacci series is 30"
+q)findPosition[4;5]
+30
 ```
+
+Above, `nf` is again the expression for the next Fibonacci number of a series. Here we see it applied with the [While iterator `\`](../../ref/accumiulators.md#while). This takes the form of `t nf\0 1` where `nf` is applied successively (starting with `0 1`) while test function `t` applied to the iteration result returns zero. In this case, the test function is `{0=(last y)mod x}[k;]`, which tests that the newest (last) number in the series is not a multiple of `k`. When a multiple is found, iteration stops and all the iteration results are returned. They are counted and the count is multiplied  by `n`. 
 
 
 ### [ASCII value of a character](https://www.geeksforgeeks.org/program-print-ascii-value-character/)
@@ -395,9 +412,12 @@ c = 'g'
 # print the ASCII value of assigned character in c
 print("The ASCII value of '" + c + "' is", ord(c))
 ```
+
+Casting a character to long int returns its ASCII code.
+
 ```q
-q){"The ASCII value of ",x," is ",string"j"$x}"g"
-"The ASCII value of g is 103"
+q)"j"$"g"
+103
 ```
 
 
@@ -450,6 +470,9 @@ print(sumOfSeries(n))
 
 # Code Contributed by Mohit Gupta_OMG <(0_o)>
 ```
+
+Below, we use the functional conditional [Cond](../../ref/cond.md), then [Cast](../../ref/cast.md) the result to long and square it. Both Cond and Cast are overloads of `$`.
+
 ```q
 sumOfSeries:{
   n:x+1;
