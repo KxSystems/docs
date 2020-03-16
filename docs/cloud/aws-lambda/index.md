@@ -7,7 +7,7 @@ date: March 2020
 # Serverless q/kdb+ on AWS Lambda
 
 
-![Cloud services](cloud-services.jpg)
+![Cloud services](../../wp/aws-lambda/cloud-services.jpg)
 <!-- GettyImages-1087885966.jpg -->
 
 Although kdb+ is already widely used within AWS, we are often asked by users to explain how we run kdb+ under a “serverless” framework. One way of running kdb+ in this mode is to use the [AWS Lambda service](https://aws.amazon.com/lambda/).
@@ -17,8 +17,6 @@ AWS Lambda is an event-driven, serverless computing platform. It runs code in re
 Lambda can be described as a type of serverless Function-as-a-Service (FaaS). FaaS is one approach to building event-driven computing systems. It relies on functions as the unit of deployment and execution and provides provision-free scalability and built-in reliability.
 
 Lambda functions can be triggered by a variety of events that occur on AWS or on supporting third-party services. They enable you to build reactive, event-driven systems. When there are multiple, simultaneous events to respond to, Lambda runs more copies of the function in parallel and scales with the size of the workload.
-
-This paper examines the q/kdb+ runtime environment on AWS Lambda. Furthermore, it provides details on how to provision the kdb+ runtime to your Lambda environment using the Serverless Application Repository and Cloud Development Kit. Finally, some practical examples are explored to show the functionality and feature set of q/kdb+ on AWS Lambda.
 
 
 ## Benefits
@@ -49,7 +47,8 @@ AWS Lambda integrates with a range of other AWS services. Triggers can be set up
 
 Each service that integrates with Lambda sends data to the lambda function as an event in JSON format. The structure of the event document is different for each event type, and contains data about the resource or request that triggered the function. Each Lambda runtime converts the event into an object and passes it to your function.
 
-![AWS Lambda Processflow](aws-lambda-flow.png)
+![AWS Lambda Processflow](../../wp/aws-lambda/aws-lambda-flow.png)
+
 
 ## Q/kdb+ Lambda runtime
 
@@ -95,13 +94,13 @@ bootstrap
 script.q
 ```
 
-![Lambda console](image8.png)
+![Lambda console](../../wp/aws-lambda/image8.png)
 
 A custom runtime’s entry point is an executable file named `bootstrap`. Once the Lambda function is invoked by an event, the bootstrap file passes the event data to the function handler and posts the response from the handler back to the Lambda function. The following bootstrap takes advantage of using FIFO pipes in Linux for larger payloads and enhanced error handling. The bootstrap also sets some environment variables for `QHOME`, `QLIC` and `PATH`.
 
 The q code to execute is placed in a file called `script.q`. On the Lambda console, the handler is set as `script.q`.
 
-![Specifying the handler](image1.png)
+![Specifying the handler](../../wp/aws-lambda/image1.png)
 
 In the bootstrap file, the handler is called using `$_HANDLER`.
 
@@ -211,10 +210,10 @@ class​ ​LambdaKxStack​(core.Stack):
 ​
     def​ ​__init__​(self, scope: core.Construct, id: str, **kwargs) -> ​None​:
         super().__init__(scope, id, **kwargs)
-​
+
     # Defines the kdb+ runtime layer from the layers directory
-    kxlayer = _lambda.LayerVersion(self, ​'kxlayer'​,
-    code = _lambda.AssetCode(​'layers'​)
+     kxlayer = _lambda.LayerVersion(self, ​'kxlayer'​,
+        code = _lambda.AssetCode(​'layers'​)
     )
     ​# Defines an AWS Lambda function, q code from
     # code directory, memory, handler and runtime layer
@@ -240,9 +239,7 @@ To deploy the LambdaKxStack to the Lambda environment, navigate to the directory
 ```bash
 $ cdk deploy kx-lambda-cdk
 ```
-
-![CDK deploy output](cdk-deploy-output.png)
-
+![CDK deploy output](../../wp/aws-lambda/cdk-deploy-output.png)
 
 To remove the stack and all dependencies from your account, run:
 
@@ -647,13 +644,13 @@ $ aws lambda update-function-configuration \
 
 Taking one example, we examine the trace logs for a function and see how much time is attributed to function invocation and run time of the q code. For illustration purposes, a function was run 100 times in parallel and the X-Ray trace logs can be seen below.
 
-![Response distribution of the 100 invocations of the function](image6.png)
+![Response distribution of the 100 invocations of the function](../../wp/aws-lambda/image6.png)
 <br>
 <small>_Response distribution of the 100 invocations of the function_</small>
 
 Taking a closer look at one of the traces, we can see the function took a total of 479ms to run. 330ms of this time was spent on running the q code and 138ms was spent preparing the environment.
 
-![Trace details](image7.png)
+![Trace details](../../wp/aws-lambda/image7.png)
 <br>
 <small>_Trace details_</small>
 
@@ -677,38 +674,4 @@ $ aws lambda put-​function​-concurrency \
 ```
 
 It is also worth noting, in order to raise the limit above 1,000 concurrent function executions, a request can be submitted to the AWS Support Centre.
-
-
-##  Conclusion
-
-High-Performance Computing applications today require parallel processing, either by deploying grids or clusters of servers and CPUs in a scale-out manner. Services such as AWS Lambda are addressing these requirements and becoming widely used for HPC workloads in the cloud due to its elasticity to meet demand and pseudo-infinite capacity.
-
-Furthermore, legislation such as Fundamental Review of the Trading Book (FRTB) will significantly increase the demand for HPC capacity over the next few years. This presents a significant technical and financial challenge for banks without a scalable compute infrastructure. Subsequently, risk measures such as Value at Risk (VaR), Expected Shortfall (ES), VaR Decomposition/Attribution and Credit Value Adjustments (CVA) are becoming more complex as more sophisticated products are constructed. In addition, higher trade volumes result in more trades to account for in modelling.
-
-By using an efficient, in-memory database such as q/kdb+ in conjunction with AWS Lambda, users can take advantage of unparalleled efficiency and scaling, allowing them to utilize resources and memory in an agile and performant way.
-
-Serverless q/kdb+ has many promising capabilities that can be applied not only to finance, but also to the internet of things (IOT), artificial intelligence / machine learning, and more. As more applications evolve to use serverless frameworks it will be interesting to see what applications are built using q/kdb+ on AWS Lambda.
-
-## Author
-
-Eric Corcoran is a Cloud Solutions Architect for Kx. He has worked for several investmant banks in developer and analyst roles where he engineered data transformation and delivery solutions. Currently based in NY, he is involved in evaluating and exploiting the latest technology and service offerings from public cloud vendors.  
-
-
-## Further reading
-
-1.  [Using AWS Lambda with Other Services](https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html)
-2.  [Using AWS Lambda with Amazon Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
-3.  [Using AWS Lambda with Amazon S3 Events](https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html)
-4.  [`create-function`](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-function.html)
-5.  [Install the AWS CLI version 1 on macOS](https://docs.aws.amazon.com/cli/latest/userguide/install-macos.html)
-6.  [Best Practices for Working with AWS Lambda Functions](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html)
-7.  [Using AWS Lambda with the AWS Command Line Interface](https://docs.aws.amazon.com/lambda/latest/dg/with-userapp.html)
-8.  [AWS Lambda Runtime Interface](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-api.html)
-9.  [Custom AWS Lambda Runtimes](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html)
-10. [Monitor serverless apps on AWS](https://dashbird.io/blog/exploring-lambda-limitations/)
-11. [Introducing Firecracker, a New Virtualization Technology and Open Source Project for Running Multi-Tenant Container Workloads](https://aws.amazon.com/about-aws/whats-new/2018/11/firecracker-lightweight-virtualization-for-serverless-computing/)
-12. [Tutorial: Using AWS Lambda with Amazon Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis-example.html)
-13. [An Introduction to High Performance Computing on AWS](https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf) <i class="fas fa-file-pdf"></i>
-
-
 
