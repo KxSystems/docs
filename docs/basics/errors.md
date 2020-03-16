@@ -23,6 +23,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>arch</td> <td class="nowrap">`:test set til 100`<br/>``-17!`:test``</td> <td>Attempt to load file of wrong endian format</td> </tr>
 <tr><td>assign</td> <td class="nowrap">`cos:12`</td> <td>Attempt to redefine a reserved word</td> </tr>
 <tr><td>badtail</td> <td/> <td>Incomplete transaction at end of file, get good (count;length) with ``-11!(-2;`:file)``</td> </tr>
+<tr><td>binary mismatch</td> <td/> <td>Wrong process for [code profiler](../kb/profiler.md)</td> </tr>
 <tr><td>can't </td> <td/> <td>Only commercially licensed kdb+ instances can encrypt code in a script</td> </tr>
 <tr><td>cast</td> <td class="nowrap">``s:`a`b; c:`s$`a`e``</td> <td>Value not in enumeration</td> </tr>
 <tr><td>con</td> <td/> <td>qcon client is not supported when kdb+ is in [multithreaded input mode](../kb/multithreaded-input.md)</td> </tr>
@@ -35,6 +36,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V3.7 2019.10.22)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
 <tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
+<tr><td>encryption lib unavailable</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Failed to load OpenSSL libraries</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
 <tr><td>from</td> <td class="nowrap">`select price trade`</td> <td>Badly formed select statement</td> </tr>
 <tr><td>glim</td> <td/> <td>`` `g#`` limit (99 prior to V3.2, now unlimited</td> </tr>
@@ -43,6 +45,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>IJS</td> <td class="nowrap">`"D=\001"0:"0=hello\0011=world"`</td> <td>[Key type](../ref/file-text.md#key-value-pairs) is not `I`, `J`, or `S`.</td> </tr>
 <tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to insert a record with an existing key into a keyed table</td> </tr>
 <tr><td>invalid</td> <td class="nowrap">`q -e 3`</td> <td>Invalid command-line option value</td> </tr>
+<tr><td>invalid password</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Invalid keyfile password</td> </tr>
 <tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
 <tr>
 <td>limit</td>
@@ -54,13 +57,14 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
     or <i class="far fa-hand-point-right"></i> [Parse errors](#parse-errors)
 </td>
 </tr>
-<tr> <td>loop</td> <td class="nowrap">`a::a`</td> <td>Dependency loop</td> </tr>
-<tr> <td>mismatch</td> <td class="nowrap">`([]a:til 4),([]b:til 3)`</td> <td>Columns that can't be aligned for R,R or K,K</td> </tr>
-<tr> <td>Mlim</td> <td/> <td>Too many nested columns in [splayed tables](../kb/splayed-tables.md). (Prior to V3.0, limited to 999; from V3.0, 251; from V3.3, 65530)</td> </tr>
-<tr> <td>mq</td> <td/> <td>Multi-threading not allowed</td> </tr>
-<tr> <td>name&nbsp;too&nbsp;long</td> <td/> <td>Filepath ≥100 chars (until V3.6 2018.09.26)</td> </tr>
-<tr> <td>noamend</td> <td class="nowrap">`t:([]a:1 2 3)`<br />``n:`a`b`c``<br />``update b:{`n?`d;:`n?`d}[]``<br/>`` from `t``</td> <td>Cannot change global state from within an amend</td> </tr>
-<tr> <td>no append to zipped enums</td> <td class="nowrap">V2:<br/>`.z.zd:17 2 6`<br/>`` `:sym?`a`b``<br/>V3:<br/>`` `:sym?`c``</td> <td>Cannot append to zipped enum (from V3.0)</td> </tr>
+<tr><td>loop</td> <td class="nowrap">`a::a`</td> <td>Dependency loop</td> </tr>
+<tr><td>main thread only</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Not executed from main thread</td> </tr>
+<tr><td>mismatch</td> <td class="nowrap">`([]a:til 4),([]b:til 3)`</td> <td>Columns that can't be aligned for R,R or K,K</td> </tr>
+<tr><td>Mlim</td> <td/> <td>Too many nested columns in [splayed tables](../kb/splayed-tables.md). (Prior to V3.0, limited to 999; from V3.0, 251; from V3.3, 65530)</td> </tr>
+<tr><td>mq</td> <td/> <td>Multi-threading not allowed</td> </tr>
+<tr><td>name&nbsp;too&nbsp;long</td> <td/> <td>Filepath ≥100 chars (until V3.6 2018.09.26)</td> </tr>
+<tr><td>noamend</td> <td class="nowrap">`t:([]a:1 2 3)`<br />``n:`a`b`c``<br />``update b:{`n?`d;:`n?`d}[]``<br/>`` from `t``</td> <td>Cannot change global state from within an amend</td> </tr>
+<tr><td>no append to zipped enums</td> <td class="nowrap">V2:<br/>`.z.zd:17 2 6`<br/>`` `:sym?`a`b``<br/>V3:<br/>`` `:sym?`c``</td> <td>Cannot append to zipped enum (from V3.0)</td> </tr>
 <tr>
 <td>no `` `g#``</td>
 <td class="nowrap">``{`g#x}peach 2#enlist 0 1``</td>
@@ -76,14 +80,15 @@ when in [`peach`](peach.md)+slave threads or multithreaded input queue.
 Update not allowed when using [negative port number](syscmds.md#p-listening-port).
 </td>
 </tr>
-<tr> <td>nosocket</td> <td class="nowrap">Can only open or use sockets in main thread.</td> </tr>
-<tr> <td>nyi</td> <td class="nowrap">`"a"like"**"`</td> <td>Not yet implemented: it probably makes sense, but it’s not defined nor implemented, and needs more thinking about as the language evolves</td> </tr>
-<tr> <td>os</td> <td>`\foo bar`</td> <td>Operating-system error or [license error](#license-errors)</td> </tr>
-<tr> <td>par</td> <td/> <td>Unsupported operation on a partitioned table or component thereof</td> </tr>
-<tr> <td>parse</td> <td/> <td>Invalid [syntax](syntax.md); bad IPC header; or bad binary data in file</td> </tr>
-<tr> <td>part</td> <td/> <td>Something wrong with the partitions in the HDB; or [`med`](../ref/med.md) applied over partitions or segments</td> </tr> 
-<tr> <td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
-<tr> <td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
+<tr><td>nosocket</td> <td class="nowrap">Can only open or use sockets in main thread.</td> </tr>
+<tr><td>nyi</td> <td class="nowrap">`"a"like"**"`</td> <td>Not yet implemented: it probably makes sense, but it’s not defined nor implemented, and needs more thinking about as the language evolves</td> </tr>
+<tr><td>os</td> <td>`\foo bar`</td> <td>Operating-system error or [license error](#license-errors)</td> </tr>
+<tr><td>par</td> <td/> <td>Unsupported operation on a partitioned table or component thereof</td> </tr>
+<tr><td>parse</td> <td/> <td>Invalid [syntax](syntax.md); bad IPC header; or bad binary data in file</td> </tr>
+<tr><td>part</td> <td/> <td>Something wrong with the partitions in the HDB; or [`med`](../ref/med.md) applied over partitions or segments</td> </tr> 
+<tr><td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
+<tr><td>PKCS5_PBKDF2_HMAC</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Library invocation failed</td> </tr>
+<tr><td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
 <tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install/linux.md#64-bit-or-32-bit).)</td> </tr>
 <tr><td>Q7</td><td/><td>nyi op on file nested array</td></tr>
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](glossary.md#rank)</td> </tr> 
@@ -109,6 +114,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>type/attr error amending file</td> <td/> <td>Direct update on disk for this type or attribute is not allowed</td> </tr>
 <tr><td>u-fail</td> <td class="nowrap">`` `u#2 2``</td> <td>Invalid attempt to set “unique” [attribute](syntax.md#attributes)</td> </tr>
 <tr><td>unmappable</td> <td>``t:([]sym:`a`b;a:(();()))``<br/>``.Q.dpft[`:thdb;.z.d;`sym;`t]``</td> <td>When saving partitioned data each column must be mappable. `()` and `("";"";"")` are OK</td> </tr>
+<tr><td>unrecognized key format</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Master keyfile format not recognized</td> </tr>
 <tr><td>upd</td> <td/> <td>Function `upd` is undefined (sometimes encountered during ``-11!`:logfile``) _or_ [license error](#license-errors)</td> </tr>
 <tr><td>utf8</td> <td/> <td>The websocket requires that text is UTF-8 encoded</td> </tr>
 <tr><td>value</td> <td/> <td>No value</td> </tr>
@@ -121,8 +127,8 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, ran out of swap (or addressability on 32-bit), or hit [`-w` limit](cmdline.md#-w-workspace)
 </td>
 </tr> 
-<tr> <td>wsm</td> <td class="nowrap">`010b wsum 010b`</td> <td>Alias for nyi for `wsum` prior to V3.2</td> </tr>
-<tr> <td>XXX</td> <td class="nowrap">`delete x from system "d";x`</td> <td>Value error (`XXX` undefined)</td> </tr>
+<tr><td>wsm</td> <td class="nowrap">`010b wsum 010b`</td> <td>Alias for nyi for `wsum` prior to V3.2</td> </tr>
+<tr><td>XXX</td> <td class="nowrap">`delete x from system "d";x`</td> <td>Value error (`XXX` undefined)</td> </tr>
 </tbody>
 </table>
 
@@ -213,8 +219,8 @@ which will cause a `'host` error.
 </tbody>
 </table>
 
-<i class="far fa-hand-point-right"></i> 
-Tutorial: [Licensing](../learn/licensing.md)
+<i class="fas fa-graduation-cap"></i> 
+[Licensing](../learn/licensing.md)
 
 
 ## Handling errors
@@ -229,7 +235,8 @@ Use [Signal](../ref/signal.md) to signal errors.
 
 Use [Trap and Trap At](../ref/apply.md#trap) to trap errors.
 
-<i class="far fa-hand-point-right"></i> [Debugging](debug.md)
+<i class="fas fa-book-open"></i> 
+[Debugging](debug.md)
 
 
 <!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="fab fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->

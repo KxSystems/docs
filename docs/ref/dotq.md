@@ -25,6 +25,7 @@ General                              Datatype
  [.Q.fu       apply unique](#qfu-apply-unique)             [.Q.dpfts  save table with sym](#qdpfts-save-table-with-symtable)
  [.Q.gc       garbage collect](#qgc-garbage-collect)          [.Q.dsftg  load process save](#qdsftg-load-process-save)
  [.Q.id       sanitize](#qid-sanitize)                 [.Q.en     enumerate varchar cols](#qen-enumerate-varchar-cols)
+ [.Q.prf0     code profiler](#qprf0-code-profiler)
  [.Q.qt       is table](#qqt-is-table)                 [.Q.ens    enumerate against domain](#qens-enumerate-against-domain)
  [.Q.res      keywords](#qres-keywords)                 [.Q.fk     foreign key](#qfk-foreign-key)
  [.Q.s        plain text](#qs-plain-text)               [.Q.hdpf   save tables](#qhdpf-save-tables)
@@ -1246,6 +1247,28 @@ q).Q.pv!flip .Q.pn
 2010.01.01| 100
 2010.01.02| 100
 ```
+
+
+## `.Q.prf0` (code profiler)
+
+Syntax: `.Q.prf0 pid`
+
+Where `pid` is a process ID, returns a table representing a snapshot of the call stack at the time of the call in another kdb+ process `pid`, with columns
+
+```txt
+name   assigned name of the function
+file   path to the file containing the definition
+line   line number of the definition
+col    column offset of the definition, 0-based
+text   function definition or source string
+pos    execution position (caret) within text
+```
+
+This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
+
+<i class="fas fa-graduation-cap"></i>
+[Code profiler](../kb/profiler.md)
+
 
 
 ## `.Q.pt` (partitioned tables)

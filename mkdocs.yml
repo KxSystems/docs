@@ -482,6 +482,7 @@ nav:
       - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
       - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
       - J. Quobyte: cloud/aws/app-j-quobyte.md
+    - AWS Lambda: cloud/aws-lambda/index.md
     - Google CPM: cloud/gcpm/index.md
   - Machine learning:
     - Overview: ml/index.md
@@ -521,7 +522,7 @@ nav:
         - Preprocessing: ml/automl/ug/preproc.md
         - Processing: ml/automl/ug/proc.md
         - Postprocessing: ml/automl/ug/postproc.md
-        - Advanced parameters: ml/automl/ug/params.md
+        - Advanced options: ml/automl/ug/options.md
       - FAQ: ml/automl/faq.md
   - Knowledge Base:
     - Overview: kb/index.md
@@ -531,6 +532,7 @@ nav:
     - Callbacks: kb/callbacks.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
+    - Code profiler: kb/profiler.md
     - Compacting HDB sym: kb/compacting-hdb-sym.md
     - Corporate actions: kb/corporate-actions.md
     - CPU affinity: kb/cpu-affinity.md
@@ -581,7 +583,6 @@ nav:
   - White papers: 
     - Index: wp/index.md
     - Astronomy: wp/astronomy.md
-    - AWS Lambda: wp/aws-lambda/index.md
     - Bitcoin blockchains: wp/blockchain/index.md
     - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md
