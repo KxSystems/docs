@@ -1,11 +1,11 @@
 ---
-title: Advanced parameter options for automated machine-learning | Machine Lea`rning | Documentation for q and kdb+
+title: Advanced options for automated machine-learning | Machine Lea`rning | Documentation for q and kdb+
 author: Deanna Morgan
 description: Optional behavior available from the Kx automated machine learning platform; the effect of changing the input parameters
 date: March 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
-# <i class="fas fa-share-alt"></i> Advanced Parameter Options
+# <i class="fas fa-share-alt"></i> Advanced options
 
 
 

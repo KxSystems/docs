@@ -19,7 +19,7 @@ The top-level functions in the repository are:
 
 : Using a previously fit model and set of instructions derived from `.automl.run`, return predicted values for new tabular data.
 
-Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](params.md).
+Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](options.md).
 
 The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non-timeseries-specific machine-learning examples and implementations making use of the [FRESH algorithm](../../toolkit/fresh).
 

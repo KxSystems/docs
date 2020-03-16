@@ -65,7 +65,7 @@ q)count 1_cols freshfeats
 
     When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
 
-    See instructions on [how to amend this](params.md)
+    See instructions on [how to amend this](options.md)
 
 
 ### Normal
