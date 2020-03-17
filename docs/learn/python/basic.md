@@ -68,13 +68,13 @@ print("simple interest is", SI)
 Principal, rate and time are three numbers. The result is one hundredth of their product.
 
 ```q
-q)(prd 1 1 1)%100   / principal, rate, time
-0.01
+q)(prd 10000 5 5)%100   / principal, rate, time
+2500f
 ```
 
 Iteration is implicit in most q operators. 
 We can write a function of conformable lists. 
-Here we have three principals, one rate, and three time periods.
+Here we have one rate for three principals and time periods.
 
 ```q
 q)si:{[p;r;t] (p*r*t)%100}  /simple interest
@@ -102,15 +102,15 @@ compound_interest(10000, 10.25, 5)
 ```
 ```q
 q)ci:{[p;r;t] p*(1+r%100)xexp t}  / compound interest
-q)ci[10000;10.25;5]
-16288.95
+q)ci[1200;5.4;2]
+1333.099
 ```
 
 Again, iteration through lists is implicit.
 
 ```q
-q)ci[1000 1500 1750;3;5 6 7]
-1159.274 1791.078 2152.279
+q)ci[1200 1500 1800;5.4;2 2 3]
+1333.099 1666.374 2107.63
 ```
 
 
@@ -163,10 +163,9 @@ print(isArmstrong(x))
 `10 vs x` decodes base-10 integer `x` into a list of digits; `x xexp count x` raises them to the power of the length of the list. 
 
 ```q
-isArmstrong:{x=sum{x xexp count x}{10 vs x}x}
-
-q)isArmstrong each 153 1253
-10b
+q)isArmstrong:{x=sum{x xexp count x}{10 vs x}x}
+q)isArmstrong each 153 120 1253 1634
+1001b
 ```
 
 
@@ -188,8 +187,8 @@ print("Area is %.6f" % findArea(5));
 Pi is the arc-cosine of -1. 
 
 ```q
-q)ac:{x*x*acos -1}            / area of circle of radius x
-q)ac 5
+q)acr:{x*x*acos -1}            / area of circle of radius x
+q)acr 5
 78.53982
 ```
 
@@ -215,7 +214,7 @@ if val > 1:
         print(val)
 ```
 
-Range is a useful concept. We’ll define a q function for it.
+Range is a useful construct.
 
 ```q
 q)rg:{x+til y-x-1}          / range
@@ -223,7 +222,7 @@ q)rg[11;25]
 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 ```
 
-The Python program overcomputes. It is not necessary to test division by all numbers from 2 to `val`. One can stop after reaching the square root of `val`.
+The Python program overcomputes. It is not necessary to test division by all numbers from 2 to `val`. One can stop at the square root of `val`.
 
 For each number in the list `x`, check its modulo for integers in the range (2, `sqrt last x`).
 `x mod/:y` returns the modulo of `x` for each divisor in `y`.
@@ -281,9 +280,9 @@ else :
 ```
 ```q
 q)rg:{x+til y-x-1}          / range
-q)isPrime:{all 0<x mod rg[2;]"j"$sqrt x}
-q)isPrime each 11 15
-10b
+q)isPrime:{(x>1)and all 0<x mod rg[2;]"j"$sqrt x}
+q)isPrime each 11 15 1
+100b
 ```
 
 
@@ -310,13 +309,21 @@ print(Fibonacci(9))
 
 #This code is contributed by Saket Modi
 ```
+
+We can generate the Fibonacci series as a sequence of pairs: we do not need to retain the entire list.
+
 ```q
-q)Fibonacci:{last(x-2){last[x],sum -2#x}/0 1}
+q)nf:{(x 1),sum x}
+q)nf 0 1
+1 1
+
+q)Fibonacci:{last(x-2)nf/0 1}
 q)Fibonacci 9
 21
 ```
 
-Above we see the first two Fibonacci numbers `0 1`. Also the expression for the next pair in the series: `last[x],sum -2#x`. These are combined using the [Do iterator `/`](../../ref/accumulators.md#do).
+Above we see the `nf` applied with the [Do iterator `/`](../../ref/accumulators.md#do).
+
 
 ### [Whether a Fibonacci number](https://www.geeksforgeeks.org/python-program-for-how-to-check-if-a-given-number-is-fibonacci-number/)
 
@@ -387,16 +394,17 @@ print("Position of n\'th multiple of k in"
 
 # Code contributed by Mohit Gupta_OMG
 ```
-```q
-findPosition:{[k;n]
-  nf:{last[x],sum x};                       / next Fibonacci pair
-  n*count{0=x mod last y}[k;]nf\0 1 }
 
-q)findPosition[4;5]
+We already have `nf:{(x 1),sum x}` to generate pairs of the Fibonacci series. With a test function to check whether it is a multiple, we can apply it with the [While iterator `\`](../../ref/accumulators.md#while), and count how many iterations there were.
+
+```q
+q)findPosition:{[k;n]n*count {0<(x 1)mod y}[;k] nf\0 1}
+q)findPosition'[2 4;3 5]  / 3rd and 5th ocurrences of multiples of 2 and 4
 30
 ```
 
-Above, `nf` is again the expression for the next Fibonacci number of a series. Here we see it applied with the [While iterator `\`](../../ref/accumiulators.md#while). This takes the form of `t nf\0 1` where `nf` is applied successively (starting with `0 1`) while test function `t` applied to the iteration result returns zero. In this case, the test function is `{0=(last y)mod x}[k;]`, which tests that the newest (last) number in the series is not a multiple of `k`. When a multiple is found, iteration stops and all the iteration results are returned. They are counted and the count is multiplied  by `n`. 
+The binary function `{0<(x 1)mod y}` confirms that the second number of the latest Fibonacci pair `x` is not a multiple of `y`. 
+By projecting it onto `k` we get a unary function for the While iterator. 
 
 
 ### [ASCII value of a character](https://www.geeksforgeeks.org/program-print-ascii-value-character/)
@@ -438,10 +446,13 @@ print(squaresum(n));
 
 # Code Contributed by Mohit Gupta_OMG <(0_o)>
 ```
+
+Once again, implicit iteration in the q operators make looping unnecessary.
+
 ```q
 q)squaresum:{"j"$(x*(x+1)%2)*(1+x*2)%3}
-q)squaresum 4
-30
+q)squaresum 4 5
+30 55
 ```
 
 
@@ -478,7 +489,7 @@ sumOfSeries:{
   n:x+1;
   {x*x}"j"$$[x mod 2;n*x%2;x*n%2] }
 
-q)sumOfSeries 5
-225
+q)sumOfSeries each 5 7
+225 784
 ```
 

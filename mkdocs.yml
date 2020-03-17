@@ -126,9 +126,11 @@ nav:
         - Namespaces: learn/primer/namespace.md
     - Brief introduction: learn/brief-introduction.md
     - Examples from Python: 
-      - Basic programs: learn/python/basic.md
-      - Array programs: learn/python/array.md
-      - List programs: learn/python/list.md
+      - Basic: learn/python/basic.md
+      - Array: learn/python/array.md
+      - List: learn/python/list.md
+      - Strings: learn/python/string.md
+      - Dictionaries: learn/python/dict.md
     - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md

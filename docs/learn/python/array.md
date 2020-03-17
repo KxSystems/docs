@@ -41,9 +41,12 @@ print (\'Sum of the array is \',ans)
 
 # This code is contributed by Himanshu Ranjan 
 ```
+
+Q has keywords for common aggregate functions. 
+
 ```q
-q)sum 12 3 4 15
-34
+q)sum each (1 2 3; 15 12 13 10)
+6 50
 ```
 
 
@@ -77,8 +80,8 @@ print ("Largest in given array is",Ans)
 # This code is contributed by Smitha Dinesh Semwal 
 ```
 ```q
-q)max 10 324 45 90 9808
-9808
+q)max each (10 20 4; 20 10 20 4 100)
+20 100
 ```
 
 
@@ -122,6 +125,9 @@ printArray(arr, 7)
 
 # This code is contributed by Shreyanshi Arun 
 ```
+
+Q is an vector programming language. It has a [primitive for rotating lists](../../ref/rotate.md). 
+
 ```q
 q)2 rotate 1 2 3 4 5 6 7
 3 4 5 6 7 1 2
@@ -161,12 +167,17 @@ print( findremainder(arr, lens, n))
 
 # This code is contributed by "rishabh_jain". 
 ```
+
+The naïve solution below risks overflowing the product calculation and returning unpredictable results. 
+
 ```q
 q)(prd 100 10 5 25 35 14) mod 11        / naive solution
 9
 q){(x*y)mod 11}/[100 10 5 25 35 14]     / dry solution (avoids overflow)
 9
 ```
+
+In the ‘dry’ solution the binary lambda `{(x*y)mod 11}` returns the modulo-11 of the product of two numbers. The [Over](../../ref/accumulators.md#binary-application) operator applies it to reduce the argument list.
 
 
 ## [Reconstruct array, replacing `arr[i]` with `(arr[i-1]+1)%M`](https://www.geeksforgeeks.org/reconstruct-the-array-by-replacing-arri-with-arri-11-m/)
@@ -198,11 +209,14 @@ n, m = 6, 7
 a =[5, -1, -1, 1, 2, 3] 
 construct(n, m, a) 
 ```
+
+The solution is to apply a binary lambda _successively_ to selected items of argument vector `v`, then return `v`. Successive application calls for the [Scan](../../ref/accumulators.md#binary-application) iterator. 
+
 ```q
 / q implementation of the above approach
 construct:{[v;M]
   i:where v=-1;                 / find targets in v
-  f:{(1+x)mod z}[;;M];          / reduction fn
+  f:{(1+x)mod z}[;;M];          / binary lambda
   v[i]:(v first[i]-1)f\v i;     / apply f with accumulator
   v }
 ```

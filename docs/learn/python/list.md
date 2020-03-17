@@ -31,6 +31,10 @@ def swapList(newList):
 newList = [12, 35, 9, 56, 24]
 print(swapList(newList))
 ```
+
+`-1` is not an index in q, so we need the end index: `count[x]-1`.
+Once we have that, functional [Amend](../../ref/amend.md) lets us specify the list, the indexes to amend, the function to apply (in this case Assign `:`) and the replacement values. Functional Amend allows us to modify lists without making a new copy – efficient for long ists.
+
 ```q
 q){e:count[x]-1; @[x;0,e;:;x e,0]} 12 35 9 56 24
 24 35 9 56 12
@@ -61,7 +65,7 @@ q){@[x;y,z;:;x z,y]}[23 65 19 90;1;3]
 ```
 
 
-## Remove Nth occurrence of the given word
+## [Remove Nth occurrence of the given word](https://www.geeksforgeeks.org/python-program-to-remove-nth-occurrence-of-the-given-word/)
 
 ```python
 # Python3 program to remove Nth
@@ -97,11 +101,25 @@ N = 2
 
 RemoveIthWord(list, word, N)
 ```
+
+`til count x` returns all the indexes of list `x`. (So `x til count x` is always `x`.)
+
+`lst~\:wrd` flags the items of `lst` that match `wrd`.
+We just need to find where the `i`th flag occurs and omit it from the indexes.
+
 ```q
-q)list:("geeks";"for";"geeks")
-q){x til[count x]except(where y~/:x)z-1}[list;"geeks";2]
+q)RemoveIthWord:{[lst;wrd;i]lst til[count lst] except sums[lst~\:wrd]?i}
+
+q)RemoveIthWord[("geeks";"for";"geeks");"geeks";2]
 "geeks"
 "for"
+
+q)RemoveIthWord[("can";"you";"can";"a";"can";"?");"can";1]
+"you"
+"can"
+"a"
+"can"
+"?"
 ```
 
 
@@ -134,6 +152,9 @@ test_list_bisect.sort()
 if bisect_left(test_list_bisect, 4):
     print ("Element Exists")
 ```
+
+Q is a vector programming language. It has a primitive for this.
+
 ```q
 q)list: 1 6 3 5 3 4
 q)4 in list
@@ -167,6 +188,10 @@ print ("List2 before deleting is : " + str(list2))
 del list2[:]
 print ("List2 after clearing using del : " + str(list2))
 ```
+
+Clearing a list means removing all its items while retaining its datatype. 
+[`0#`](../../ref/take.md) is perfect for this. 
+
 ```q
 q)list:1 2 3  / initialize list
 q)0#list      / take 0 items
@@ -185,12 +210,18 @@ def Reverse(lst):
 lst = [10, 11, 12, 13, 14, 15]
 print(Reverse(lst))
 ```
+
+Q is a vector programming language. It has a primitive for this. 
+
 ```q
-q)reverse 10 11 12 13 14 15
+q)reverse each (10 11 12 13 14 15;4 5 6 7 8 9)
 15 14 13 12 11 10
+9  8  7  6  5  4
 ```
 
+The two lists have the same count, and therefore constitute a 2-row matrix. 
 
+<!--
 ## [Clone or copy a list](https://www.geeksforgeeks.org/python-cloning-copying-list/)
 
 ```python
@@ -209,7 +240,7 @@ print("After Cloning:", li2)
 q)show li2:li1:4 8 2 10 15 18
 4 8 2 10 15 18
 ```
-
+-->
 
 ## [Count occurrences of an item in a list](https://www.geeksforgeeks.org/python-count-occurrences-element-list/)
 
@@ -227,12 +258,15 @@ lst = [8, 6, 8, 10, 8, 20, 10, 8, 8]
 x = 8
 print('{} has occurred {} times'.format(x, countX(lst, x)))
 ```
+
+Just as you were taught in school, `=` tests equality. Like other q operators, iteration is implicit, so below `8 6 8 10 8 20 10 8 8 = 8` returns a list of flags. Which we sum. Simple. 
+
 ```q
 q)sum 8 6 8 10 8 20 10 8 8 = 8
 5i
 ```
 
-
+<!--0
 ## [Sum of items in a list](https://www.geeksforgeeks.org/python-program-to-find-sum-of-elements-in-list/)
 
 ```python
@@ -312,9 +346,9 @@ print("Largest element is:", max(list1))
 q)max 10 20 4 45 99
 99
 ```
+-->
 
-
-## [Find second-largest number in a list](https://www.geeksforgeeks.org/python-program-to-find-second-largest-number-in-a-list/)
+## [Second-largest number in a list](https://www.geeksforgeeks.org/python-program-to-find-second-largest-number-in-a-list/)
 
 ```python
 # Python program to find largest
@@ -335,7 +369,7 @@ q)(desc 10 20 4 45 99)1
 ```
 
 
-## [Find N largest items from a list](https://www.geeksforgeeks.org/python-program-to-find-n-largest-elements-from-a-list/)
+## [N largest items from a list](https://www.geeksforgeeks.org/python-program-to-find-n-largest-elements-from-a-list/)
 
 ```python
 # Python program to find N largest
@@ -392,6 +426,7 @@ q){x where 0=x mod 2}10 21 4 45 66 93 11
 ```
 
 
+<!--
 ## [Odd numbers from a list](https://www.geeksforgeeks.org/python-program-to-print-odd-numbers-in-a-list/)
 
 ```python
@@ -408,7 +443,6 @@ print(only_odd)
 q){x where x mod 2}10 21 4 45 66 93 11
 21 45 93 11
 ```
-
 
 ## [All even numbers in a range](https://www.geeksforgeeks.org/python-program-to-print-all-even-numbers-in-a-range/)
 
@@ -432,9 +466,10 @@ q){x where not x mod 2}rg[4;15]
 q){x where not x mod 2}rg[8;11]
 8 10
 ```
+-->
 
 
-## [All odd numbers in a range](https://www.geeksforgeeks.org/python-program-to-print-all-odd-numbers-in-a-range/)
+## [Odd numbers in a range](https://www.geeksforgeeks.org/python-program-to-print-all-odd-numbers-in-a-range/)
 
 ```python
 # Python program to print odd Numbers in given range
@@ -477,7 +512,7 @@ q){o,count[x]-o:sum x mod 2}10 21 4 45 66 93 11
 ```
 
 
-## [Positive items in a list](https://www.geeksforgeeks.org/python-program-to-print-positive-numbers-in-a-list/)
+## [Positive items of a list](https://www.geeksforgeeks.org/python-program-to-print-positive-numbers-in-a-list/)
 
 ```python
 # Python program to print Positive Numbers in a List
@@ -498,6 +533,7 @@ q){x where x>0} 12 14 -95 3
 ```
 
 
+<!--
 ## [Negative numbers from a list](https://www.geeksforgeeks.org/python-program-to-print-negative-numbers-in-a-list/)
 
 ```python
@@ -595,7 +631,7 @@ q){p,count[x]-p:"j"$sum x>=0}2 -7 5 -64 -14
 q){p,count[x]-p:"j"$sum x>=0} -12 14 95 3
 3 1
 ```
-
+-->
 
 ## [Remove multiple items from a list](https://www.geeksforgeeks.org/remove-multiple-elements-from-a-list-in-python/)
 
@@ -612,9 +648,18 @@ del list1[1:5]
 
 print(*list1)
 ```
+
+The examples given in the linked page show two problems. 
+The first is to remove from one list all items that are also items of another.
+
 ```q
 q)12 15 3 10 except 12 3
 15 10
+```
+
+The second is to remove items from a range of indexes.
+
+```q
 q)rg:{x+til y-x-1}          / range
 q){x til[count x]except rg[y+1;z]-1}[11 5 17 18 23 50;1;5]
 11 50
@@ -637,16 +682,17 @@ tuples = [(), ('ram','15','8'), (), ('laxman', 'sita'),
 print(Remove(tuples))
 ```
 ```q
+q)Remove:{x where(count each x)>0}
 q)lst1:(();("ram";"15";"8");();("laxman";"sita");("krishna";"akbar";"45");("";"");())
 q)lst2:(("";"";"8");("0";"00";"000");("birbal";"";"45");("";""))
 
-q){x where(count each x)>0}lst1
+q)Remove lst1
 ("ram";"15";"8")
 ("laxman";"sita")
 ("krishna";"akbar";"45")
 ("";"")
 
-q){x where(count each x)>0}lst2
+q)Remove lst2
 ("";"";"8")
 ("0";"00";"000")
 ("birbal";"";"45")
@@ -701,11 +747,13 @@ def Cumulative(lists):
 lists = [10, 20, 30, 40, 50]
 print (Cumulative(lists))
 ```
+
+Q is a vector programming language. It has a keyword for cumulative sums.
+
 ```q
-q)sums 10 20 30 40 50
+q)sums each (10 20 30 40 50; 4 10 15 18 20)
 10 30 60 100 150
-q)sums 4 10 15 18 20
-4 14 29 47 67
+4  14 29 47  67
 ```
 
 
@@ -723,6 +771,8 @@ n = 4
 final = [my_list[i * n:(i + 1) * n] for i in range((len(my_list) + n - 1) // n )]
 print (final)
 ```
+Q is a vector programming language. It has a keyword for this.
+
 ```q
 q)L:("geeks";"for";"geeks";"like";"geeky";"nerdy";"geek";"love";"questions";"words";"life")
 q)5 cut L
@@ -759,12 +809,19 @@ y = [ 0, 1, 1, 0, 1, 2, 2, 0, 1]
 
 print(sort_list(x, y))
 ```
+
+Q is a vector programming language. Where the lists have the same count, a q keyword suffices.
+
 ```q
 q)l1:"abcdefghi"
 q)l2:0 1 1 0 1 2 2 0 1
 q)l1 iasc l2
 "adhbceifg"
+```
 
+Where the list counts differ, a little care must be taken.
+
+```q
 q)l3:"geeksforgeeks"
 q)l4:0 1 10 1 2 2 0 1
 q)(count[l4]#l3)iasc l4
@@ -772,6 +829,7 @@ q)(count[l4]#l3)iasc l4
 ```
 
 
+<!--
 ## [Variables from list items](https://www.geeksforgeeks.org/python-construct-variables-of-list-elements/)
 
 ```python
@@ -800,6 +858,7 @@ q)d:`gfg`is`best!1 2 3
 q)d`gfg`best
 1 3
 ```
+-->
 
 
 ## [Remove empty list from list](https://www.geeksforgeeks.org/python-remove-empty-list-from-list/)
