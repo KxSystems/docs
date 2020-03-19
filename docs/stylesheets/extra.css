@@ -148,3 +148,18 @@ code, kbd, pre {
 .fusion a {
 	font-weight: bold;
 }
+
+.md-typeset .alert-message {
+	background-color: #00a891;;
+	border-radius: 10px;
+	font-size: 1.3em;
+	font-weight: bold;
+	padding: 0 10px;
+}
+.md-typeset .alert-message p {
+	margin: 0;
+}
+.md-typeset .alert-message a,
+.md-typeset .alert-message a:hover {
+	color: white;
+}

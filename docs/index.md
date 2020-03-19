@@ -7,7 +7,9 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 # Developing with kdb+ and the q language
 
 
-
+<div markdown="1" class="alert-message">
+[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
+</div>
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
