@@ -149,21 +149,17 @@ code, kbd, pre {
 	font-weight: bold;
 }
 
-/* tweak Prism.js styles 
---------------------------------------------- */
-.md-typeset code[class*="language-"],
-.md-typeset pre[class*="language-"] {
-	font-size: .9em;
+.md-typeset .alert-message {
+	background-color: #00a891;;
+	border-radius: 10px;
+	font-size: 1.3em;
+	font-weight: bold;
+	padding: 0 10px;
 }
-
-/* match Prism code blocks */
-.md-typeset code {
-	background-color: #fdf6e3;
+.md-typeset .alert-message p {
+	margin: 0;
 }
-.md-typeset .admonition code {
-	background-color: transparent;
-}
-
-.md-typeset .admonition pre[class*="language-"] {
-	padding: 0;
+.md-typeset .alert-message a,
+.md-typeset .alert-message a:hover {
+	color: white;
 }

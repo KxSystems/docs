@@ -7,10 +7,8 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 # Developing with kdb+ and the q language
 
 
-
-
-<div style="background-color: #0070cd; border-radius: 10px; color: white; text-align: center;">
-<small>Kx Streaming Analytics</small><br><big><b>kdb+ 4.0 released 2020.03.19</b></big>
+<div markdown="1" class="alert-message">
+[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 </div>
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
@@ -27,33 +25,23 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [code profiler](kb/profiler.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
     
     <p markdown="1"><i class="fas fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="fas fa-lock"></i> [Data-at-rest crypto](kb/dare.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-lock"></i> [data-at-rest crypto](kb/dare.md)</p>
     
-    <p markdown="1"><i class="fab fa-aws"></i> [kdb+ on Lambda](cloud/aws-lambda/index.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-share-alt"></i> [Auto ML](ml/automl/index.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-binoculars"></i> [Mountain Tour of q](learn/tour/index.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fab fa-python"></i> [Python examples](learn/python/basic.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [code profiler](kb/profiler.md)</p>
     
 </div>
 
 </div>
 
-<!--
 [**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
 <i class="fas fa-download"></i>
 [Free download](/developer/getting-started/)
--->
 
 <div style="clear: both">&nbsp;</div>
 
@@ -74,8 +62,8 @@ Kdb+, from [Kx](https://kx.com), is
     Reference<br>and basics](ref/index.md "Reference card for the q language")
 </div>
 <div>
-    [<i class="fas fa-fw fa-share-alt fa-border fa-5x"></i><br/>
-    Machine<br>Learning](/phrases/ "Power expressions in q")
+    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+    Phrasebook](/phrases/ "Power expressions in q")
 </div>
 <!-- 
 <div>

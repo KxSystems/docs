@@ -22,6 +22,7 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
     Install](install/index.md "How to install kdb+")
 </div>
+<!--
 <div>
     [<i class="fas fa-fw fa-binoculars fa-border fa-5x"></i><br/>
     Mountain tour](tour/index.md "A one-page mountain tour of the q language")
@@ -34,6 +35,7 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
     [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
     Python to q](python/basic.md "Python programs and their q equivalents")
 </div>
+-->
 <div>
     [<i class="fas fa-fw fa-street-view fa-border fa-5x"></i><br/>
     _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
