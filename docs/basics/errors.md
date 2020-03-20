@@ -33,7 +33,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
 <tr><td>domain</td> <td class="nowrap">`til -1`</td> <td>Out of domain</td> </tr>
 <tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
-<tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V3.7 2019.10.22)</td> </tr>
+<tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V4.0 2020.03.17)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
 <tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>encryption lib unavailable</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Failed to load OpenSSL libraries</td> </tr>

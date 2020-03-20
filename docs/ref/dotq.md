@@ -155,27 +155,23 @@ q)f 4
           ^
   [0]  f 4
        ^
-10                   / (4+1)*2
+10
+q)g:{a:x*2;a+y}
 q)g[3;"hello"]
 'type
-  [2]  g:{a:x*2;a+y}
-                ^
+  [1]  g:{a:x*2;a+y}
+                 ^
 q)).Q.bt[]
-  [4]  .Q.bt[]
-       ^
-  [3]  (.Q.dbg)      / see note
-
-  [2]  g:{a:x*2;a+y}
-                ^
-  [1]  f:{g[x;2#y]}
-          ^
-  [0]  f[3;"hello"]
+>>[1]  g:{a:x*2;a+y}
+                 ^
+  [0]  g[3;"hello"]
        ^
 ```
 
-Since V3.5 2017.03.15.
+`>>` marks the current stack frame. (Since V4.0 2020.03.23.)
 
-!!! note "The debugger itself occupies a stack frame, but its source is hidden."
+The debugger itself occupies a stack frame, but its source is hidden. (Since V3.5 2017.03.15.)
+
 
 
 ## `.Q.btoa` (b64 encode)

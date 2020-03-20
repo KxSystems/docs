@@ -201,10 +201,10 @@ The compression/decompression algorithms are proprietary and implemented as the 
 
 HTTP server supports gzip compression via `Content-Encoding: gzip` for responses to `form?…`-style requests.
 The response payload must be 2,000+ chars and the client must indicate support via `Accept-Encoding: gzip` in the HTTP header.
-Since V3.7t 2019.10.22.
+Since V4.0 2020.03.17.
 
 The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indicate this in the request via the HTTP header `Accept-Encoding: gzip`.
-Since V3.7t 2019.10.22.
+Since V4.0 2020.03.17.
 
 
 
