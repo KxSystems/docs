@@ -47,12 +47,12 @@ HDF5 interface functionality
   .hdf5.getAttrPoints          Number of points associated with an attribute
   .hdf5.getDataShape           Dimensionality of a dataset
   .hdf5.getDataPoints          Number of points associated with a dataset
-  .hdf5.datasetInfo            Information about type, number of dimension and dimensionality
-  .hdf5.gc                     Garbage collect on free HDF5 lists of all types
+  .hdf5.datasetInfo            Information about type, number of dimensions and dimensionality
+  .hdf5.gc                     Run garbage collect on free HDF5 lists of all types
   .hdf5.ls                     ls like representation of the structure of a hdf5 file
 ```
 
-For simplicity in each of the examples below it should be assumed that unless otherwise specified a file/group/dataset/attribute that is being manipulated exists and is valid and the results displayed coincide with correct execution
+For simplicity in each of the examples below it should be assumed that unless otherwise specified a file/group/dataset/attribute that is being manipulated exists and is valid and the results displayed coincide with correct execution in that example.
 
 
 ## Creation functions
@@ -111,7 +111,7 @@ q).hdf5.createDataset["test.h5";"G1/G2/dset";1 5i;"i"]
 ```
 
 !!!Note
-	If the file does not exist it will be created, in this case the dataset can ONLY be written to the root directory of the file
+	If the file does not exist it will be created, in this case the dataset can **ONLY** be written to the root directory of the file
 
 
 ### `.hdf5.createFile`
@@ -132,12 +132,12 @@ q).hdf5.createFile["test.h5"]
 ```
 
 !!!Note 
-        If a file already exists it will not be overwritten.
+        If a file already exists it will **not** be overwritten.
 
 
 ## Write Functions
 
-The following functions relate to writing of kdb+ data to HDF5 files either contained in attributes or datasets.
+The following functions relate to writing of kdb+ data to HDF5 files as either attributes or datasets.
 
 ### `.hdf5.writeAttr`
 
@@ -179,13 +179,13 @@ Syntax: `.hdf5.writeData[fname;oname;dset]`
 Where
 
 -   `fname` name of a HDF5 file as a symbol/char string
--   `oname` name of the object dataset which is to be written to
+-   `oname` name of the dataset which is to be written to
 -   `dset`  dataset which is being written to HDF5 format
 
 returns null on successful writing of data to dataset. Failure to write to the dataset will result in an appropriate error
 
 !!!Note
-        The function `.hdf5.createDataset` can be used to create a dataset prior to writing. Use of this function in case where a file or dataset had not been previously been created will create the file and the datset, appropriately dimensioned and typed based on the provided dataset.
+        The function `.hdf5.createDataset` can be used to create a dataset prior to writing. Use of this function in case a where a file or dataset had not been previously been created will create the file and the dataset, appropriately dimensioned and typed based on the provided dataset. It should be noted that if the file did not exist the data can only be written to the root location.
 
 ```q
 // Write numeric dataset
@@ -234,7 +234,7 @@ q).hdf5.readAttr["test.h5";"dset";"Description"]
 
 ### `.hdf5.readData`
 
-_Read the data contained in a HDF5 data to kdb+_
+_Read the data contained in a HDF5 dataset to kdb+_
 
 Syntax: `.hdf5.readAttr[fname;oname]`
 
@@ -279,10 +279,10 @@ Syntax: `.hdf5.createExternal[fname;lname;tname;tobj]`
 
 Where
 
--   `fname` HDF5 file containing the location being linked from     
--   `lname` object being linked from
+-   `fname` HDF5 file containing end point for the external link     
+-   `lname` object acting as the end point for the link
 -   `tname` target file containing the target object
--   `tobj`  target object as an end point to the link
+-   `tobj`  target object which is linked to lname
 
 returns null on successful execution and creates the external link
 
@@ -334,7 +334,7 @@ q).hdf5.readData["test";"/G1/dset"]
 
 _Create a soft/symbolic link between two locations in a HDF5 file_
 
-Syntax: `.hdf5.createHard[fname;lname;tname]`
+Syntax: `.hdf5.createSoft[fname;lname;tname]`
 
 Where      
 
@@ -344,6 +344,8 @@ Where
                     
 returns null on successful execution and creates the specified soft link.
 
+!!!Note
+	Neither `lname` or `tname` need to exist prior to the creation of the soft link. They can be populated after its creation
 ```q
 // Create a soft link (symbolic link) between two unpopulated points in the file
 q).hdf5.createSoft["test.h5";"/G1/dset1";"/G1/dset2"]
@@ -381,7 +383,7 @@ q).hdf5.delLink["test.h5";"/G1/dset1"]
 
 ## Group Functions
 
-The following function is used to create an individual or set of intermediate groups.
+The following function is used to create either individual or sets of intermediate groups.
 
 ### `.hdf5.createGroup`
 
@@ -553,7 +555,7 @@ q).hdf5.ishdf5["test.txt"]
 
 ### `.hdf5.isObject`
 
-_Is the object specified a group or dataset_
+_Is the object specified a group/dataset_
 
 Syntax: `.hdf5.isObject[fname;oname]`
 

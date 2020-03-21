@@ -14,17 +14,17 @@ keywords: HDF5, api, fusion, interface, conversion, data formatting
 
 ## Introduction
 
-Hierarchical Data Format 5(HDF5) is a file format designed explicitely for the storage and organisation of large amounts of data. It is supported by the HDF Group and free to use under a BSD-like licence. This data format is used extensively in scientific research and in particular astronomy. 
+Hierarchical Data Format 5(HDF5) is a file format designed specifically for the storage and organisation of large amounts of data. It is supported by the HDF Group and free to use under a BSD-like licence. This data format is used extensively in scientific research and in particular astronomy. 
 
-HDF5 data acts in many ways like a truely hierarchical filesystem-like data format and consists of two major types of object:
+HDF5 data acts in many ways like a truely hierarchical filesystem similar to that used by linux or windows. This structure contains two major types of object:
 
-1. Datasets which contain multidimensional arrays of homogenous type
-2. Groups which act as container structures which can hold datasets or other groups
+1. Datasets which contain multidimensional arrays of homogenous type. similar to files within a traditional file system
+2. Groups which act as container structures which can hold datasets or other groups. Similar to folders in a traditional file system.
 
 There are a number of secondary objects and structures which add complexity to the format but in doing so allow the format to be used for a wider number of use cases
 
 * Attributes: These allow metadata information to be associated with a dataset or group i.e. Associate the date of data collection with a group or a room temperature at the time of a set of results being collected.
-* Linking functionality: Like a traditional unix-like file system it is possible to create symbolic links between objects (hard/soft/external), these allow datasets or groups pertinent to multiple experiments or use-cases to be accessed via routes that a user may find more logical.
+* Linking functionality: Like a traditional unix-like file system it is possible to create symbolic links between objects (hard/soft/external), these allow datasets or groups relevant to multiple experiments or use-cases to be accessed via routes that a user may find more logical.
 
 ## API
 
@@ -34,4 +34,4 @@ In cases where this is necessary documentation will indicate the assumptions mad
 
 ## Status
 
-This interface is currently available as a beta version and is supported on a best effort basis by the Fusion team. This interface is currently in active development, with additional functionality to be added over time.
+This interface is currently available as a beta version and is supported on a best effort basis by the Fusion team. This interface is currently in active development, with additional functionality to be released on a rolling basis.

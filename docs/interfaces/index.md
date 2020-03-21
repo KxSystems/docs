@@ -5,10 +5,6 @@ keywords: editor, github, integration, interface, kdb+, q, repository
 ---
 # <i class="far fa-handshake"></i> Interfaces and editor integrations
 
-
-
-
-
 <i class="far fa-hand-point-right"></i> [General index](../github.md) of other kdb+ repositories
 
 Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. 
@@ -31,8 +27,9 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
+<tr><td>HDF5</td><td>[Handling HDF5 data with kdb+](hdf5/index.md) ==new==</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
-<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") ==new==</td>
+<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") </td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
 <tr><td>Python</td>
     <td>
