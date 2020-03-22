@@ -4,7 +4,7 @@ description:
 author: Oleg Finkelshteyn
 date: March 2020
 ---
-# Code profiler
+# <i class="fas fa-code"></i> Code profiler
 
 
 

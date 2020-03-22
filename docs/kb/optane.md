@@ -1,4 +1,10 @@
-# Optane Memory and kdb+
+---
+title: Intel Optane Memory and kdb+ performance | Knowledge Base | Documentation for jdb+ and queries
+description: Kdb+ 4.0 can exploit Optane DC persistent memory, a new hardware technology from Intel, in App Direct Memory mode and substantially reduce execution times.
+author: Glenn Wright
+date: March 2020
+---
+# <i class="fas fa-bolt"></i> Optane Memory and kdb+
 
 
 <div markdown="1" style="text-align: center;">

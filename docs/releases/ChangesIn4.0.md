@@ -9,10 +9,10 @@ date: March 2020
 
 ## Production release date
 
-2020.03.23
+2020.03.17
 
 
-## Multithreaded primitives
+## <i class="fas fa-bolt"></i> Multithreaded primitives
 
 Kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../kb/multithreaded-input.md).
 
@@ -30,7 +30,7 @@ Multi-threaded primitives are not NUMA-aware and should not be expected to scale
 [Multithreaded primitives](../kb/mt-primitives.md)
 
 
-## Data-At-Rest Encryption (DARE)
+## <i class="fas fa-lock"></i> Data-At-Rest Encryption (DARE)
 
 Kdb+4.0 supports Data-At-Rest Encryption (DARE), using AES256CBC. As with the built-in file compression, encryption is transparent and requires no changes to a query to utilize it. Once a master key has been created via a third-party tool such as OpenSSL:
 
@@ -62,7 +62,7 @@ or use [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) for process-wide default setti
 [Data-At-Rest Encryption (DARE)](../kb/dare.md)
 
 
-## Optane support
+## <i class="fas fa-bolt"></i> Optane support
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
@@ -106,12 +106,12 @@ The [-w limit](../basics/cmdline.md#-w-workspace) (M1/m2) is no longer thread-lo
 [Optane Memory and kdb+](../kb/optane.md)
 
 
-## Profiler
+## <i class="fas fa-code"></i> Profiler
 
 Kdb+ 4.0 (for Linux only) includes an experimental built-in call-stack snapshot primitive that allows building a sampling [profiler](../kb/profiler.md).
 
 
-## Added support for OpenSSL 1.1.x
+## <i class="fas fa-lock"></i> Added support for OpenSSL 1.1.x
 
 One-shot sync queries can now execute via
 
@@ -122,7 +122,7 @@ One-shot sync queries can now execute via
 which allows a timeout to be specified.
 
 
-## Debugger
+## <i class="fas fa-code"></i> Debugger
 
 There are various Debugger improvements:
 
@@ -208,7 +208,7 @@ q){a::1;a:1}
 -   [`.Q.cn`](../ref/dotq.md#qcn-count-partitioned-table) now uses [`peach`](../ref/each.md) to get the count of partitioned tables. This can improve the startup time for a partitioned database.
 
 
-## NUCs
+## <i class="fas fa-exclamation-triangle"></i> NUCs
 
 We have sought to avoid introducing compatability issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
 
