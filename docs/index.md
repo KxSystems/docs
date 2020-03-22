@@ -25,7 +25,7 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [kdb+ version 4.0](releases/ChangesIn4.0.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-code"></i> [==**kdb+ version 4.0**==](releases/ChangesIn4.0.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
     
