@@ -13,6 +13,26 @@ As outlined in the overview for this API, the kdb+/HDF5 interface is a wrapper f
 <i class="fab fa-github"></i>
 [KxSystems/kafka](https://github.com/KxSystems/hdf5)
 
+## Type Mapping
+
+The following outlines the mapping which takes place between HDF5 and q datatypes. Where there is no exact mapping available between the two types every effort has been made to provide the most appropriate conversion possible.
+
+|            kdb+ type|            HDF5 type|      Note|
+|--------------------:|--------------------:|--------------:|
+|         boolean (1h)|       H5T_NATIVE_INT| q->hdf5->q conversion limited by types |
+|           short (5h)|     H5T_NATIVE_SHORT|               |
+|             int (6h)|       H5T_NATIVE_INT|               |
+|            long (7h)|      H5T_NATIVE_LONG|               |
+|            real (8h)|      H5T_NATIVE_REAL|               |
+|           float (9h)|    H5T_NATIVE_DOUBLE|               |
+|           char (10h)|             H5T_C_S1|               |
+|         symbol (11h)|             H5T_C_S1| q->hdf5->q conversion limited by types |
+
+!!!Note
+	Conversions are at present limited to the above types, over time, as appropriate additional types will be added. Due to restrictions in the available types in HDF5 it is unlikely that it will always be possible to create a direct mapping as such additions will be on a best effort basis. If the mapping is not direct this will be highlighted in the documentation.
+
+## Functionality
+
 The following functions are those exposed within the `.hdf5` namespace allowing users to convert data between the HDF5 data format and kdb+.
 
 ```txt
