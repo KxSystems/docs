@@ -39,6 +39,8 @@ Kdb+, from [Kx](https://kx.com), is
     
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Dashboards](/dashboards/)</p>
     
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Platform 4.5](/platform/)</p>
+    
 </div>
 
 </div>
