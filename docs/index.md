@@ -25,7 +25,7 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [==**kdb+ version 4.0**==](releases/ChangesIn4.0.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [**kdb+ version 4.0**](releases/ChangesIn4.0.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
     
@@ -36,8 +36,6 @@ Kdb+, from [Kx](https://kx.com), is
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [code profiler](kb/profiler.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Developer 1.3](/developer/)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Dashboards](/dashboards/)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Platform 4.5](/platform/)</p>
     
