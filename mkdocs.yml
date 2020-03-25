@@ -430,6 +430,7 @@ nav:
       - J: interfaces/q-client-for-j.md
       - ODBC: interfaces/q-client-for-odbc.md
   - Cloud: 
+    - Overview: cloud/index.md
     - Amazon EC2: 
       - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
       - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
