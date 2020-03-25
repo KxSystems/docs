@@ -16,7 +16,8 @@ date: March 2020
 
 Kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../kb/multithreaded-input.md).
 
-Kdb+ 4.0 adds an additional level of multithreading via primitives, similar to an implicit fork/join mechanism. It is fully transparent to the user, requiring no code change by the user to exploit it. The underlying framework currently uses the number of threads configured as slave threads on the command line.
+Kdb+ 4.0 adds an additional level of multithreading via primitives.
+It is fully transparent to the user, requiring no code change by the user to exploit it. The underlying framework currently uses the number of threads configured as slave threads on the command line.
    
 As most kdb+ primitives are memory-bound, within-primitive parallelism is intended to exploit all-core memory bandwidth available on modern server hardware with multi-channel memory. 
 

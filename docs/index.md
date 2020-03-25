@@ -35,6 +35,10 @@ Kdb+, from [Kx](https://kx.com), is
     
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [code profiler](kb/profiler.md)</p>
     
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Developer 1.3](/developer/)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Dashboards](/dashboards/)</p>
+    
 </div>
 
 </div>
