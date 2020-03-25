@@ -45,6 +45,8 @@ misc:      $(Cast) #(Take) _(Drop/Cut) ,(Join) deltas differ distinct
 
 Multithreaded primitives execute in the same slave threads as `peach`, and similar limitations apply. System command [`\s`](../basics/syscmds.md#s-number-of-slaves) controls the maximum number of threads. 
 
+!!! tip "Launch q with the [`-s`](../basics/cmdline.md#s-slaves) command-line option to allow primitives to multithread."
+
 For example, here we invoke `max` from outside `peach`, and from within `peach`:
 ```q
 q)v:100000000?10000;system each("t max v";"t {max x}peach(0#0;v)")
