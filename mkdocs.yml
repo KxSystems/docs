@@ -5,19 +5,19 @@ docs_dir: 'docs'
 extra:
   version: 2.0
 extra_css: 
-  - 'stylesheets/extra.css'
   - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
+  - 'https://code.kx.com/stylesheets/extra.css'
+  - 'stylesheets/extra.css'
 extra_javascript: 
-  # See /syntax/#projection to see if MathJax is working 
+  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
+  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
+  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
   - 'https://code.jquery.com/jquery-3.1.1.min.js'
+  - 'https://code.kx.com/scripts/prism.js'
   - 'https://tracker.mrpfd.com/tracker.js'
-  - 'https://use.fontawesome.com/releases/v5.4.0/js/all.js'
+  - 'https://use.fontawesome.com/releases/v5.8.0/js/all.js'
   - 'scripts/theme.js'
-  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
-  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
-  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
-  - 'scripts/prism.js'
 google_analytics:
   - 'UA-3462586-1'
   - 'auto'
@@ -49,7 +49,6 @@ remote_branch: 'master'
 # repo_name: 'GitHub'
 # repo_url: 'https://github.com/kxsystems/docs'
 site_dir: 'site'
-# site_dir: '/var/www/html'
 site_author: 'Kx Systems'
 site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
