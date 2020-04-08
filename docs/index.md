@@ -6,10 +6,11 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 ---
 # Developing with kdb+ and the q language
 
-
+<!-- 
 <div markdown="1" class="alert-message">
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 </div>
+-->
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
@@ -36,6 +37,8 @@ Kdb+, from [Kx](https://kx.com), is
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [code profiler](kb/profiler.md)</p>
     
     <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Platform 4.5](/platform/)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-comment-medical"></i> [Coronavirus](coronavirus.md)</p>
     
 </div>
 
