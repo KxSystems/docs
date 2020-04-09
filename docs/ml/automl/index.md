@@ -1,0 +1,85 @@
+---
+title: Automated Machine Learning | Machine Learning | Documentation for q and kdb+
+description: The kdb+/q automated machine-learning platform helps find models to predict a target of interest, and handles preprocessing data, export of models, images and reports.
+author: Conor McCarthy
+date: October 2019
+keywords: machine learning, ml, ai, automated, preprocessing, postprocessing, feature extraction, feature selection, statistics, interpretability, kdb+, q
+---
+# <i class="fas fa-share-alt"></i> Automated Machine Learning in kdb+/q
+
+
+
+<i class="fab fa-github"></i>
+[KxSystems/ml](https://github.com/kxsystems/automl/)
+
+The automated machine learning platform described here is built largely on the tools available within the [Machine Learning Toolkit](../toolkit/ml/toolkit). The purpose of this platform is to help automate the process of applying machine-learning techniques to real-world problems. In the absence of expert machine-learning engineers this handles the following processes within a traditional workflow.
+
+1. Data preprocessing
+2. Feature engineering and feature selection
+3. Model selection
+4. Hyperparameter tuning 
+5. Report generation and model persistence
+
+Each of these steps is described in detail. This allows users to understand the processes by which decisions are being made and the transformations which their data undergo during the production of the output models.
+
+At present the machine-learning frameworks supported for this are based on:
+
+1. One-to-one feature to target non time-series
+2. [FRESH](../toolkit/ml/fresh) based feature extraction and model production
+
+Over time the functionality available and the problems which can be solved using this library will be extended to include;
+
+-   Time-series use-cases and architectures
+-   Natural Language Processing frameworks
+-   Broader workflow flexibility
+-   More detailed outputs describing the steps taken
+
+!!! note
+
+	This should not necessarily be seen as a replacement to commercially available automated machine-learning platforms. The work outlined here is intended to allow kdb+ users to explore the use of machine learning on their data and highlight automation techniques which can be deployed through kdb+ for various workflows. 
+
+    This platform is currently in beta and feedback on the interface is requested. Please write to ai@kx.com. 
+
+
+## Requirements
+
+The following requirements cover all those needed to run the libraries in the current build of the toolkit.
+
+-   [embedPy](../embedpy/index.md)
+-   [ML-Toolkit](../toolkit/index.md)
+
+A number of Python dependencies also exist for the running of embedPy functions within both the machine-learning utilities and FRESH libraries.
+These can be installed as outlined at
+
+<i class="fab fa-github"></i>
+[KxSystems/ml](https://github.com/kxsystems/automl)
+using Pip
+
+```bash
+pip install -r requirements.txt
+```
+
+or Conda
+
+```bash
+conda install --file requirements.txt
+```
+
+
+## Installation and loading
+
+Install and load all libraries.
+
+```q
+q)\l automl/automl.q
+q).automl.loadfile`:init.q
+```
+
+This can be achieved by one command.
+Copy a link to the library into `QHOME`.
+Then:
+
+```q
+q)\l automl/init.q
+```
+
