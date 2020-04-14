@@ -93,7 +93,7 @@ q).h.cd (`a`b`c;1 2 3;"xyz")
 "c,3,z"
 ```
 
-Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V3.7t 2019.10.11.)
+Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to separate subitems. (Since V4.0 2020.03.17.)
 
 
 

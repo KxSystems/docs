@@ -44,7 +44,7 @@ integer                 | `til y`      | Roll, Deal
 `0Ng`                   | GUIDs        | Roll, Deal
 float, temporal         | 0 to `y`     | Roll 
 `0i`                    | ints         | Roll 
-`0j`                    | longs        | Roll 
+`0`                     | longs        | Roll 
 `0b`                    | `01b`        | Roll 
 `" "`                   | `.Q.a`       | Roll 
 `0x0`                   | bytes        | Roll

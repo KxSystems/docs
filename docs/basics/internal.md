@@ -18,17 +18,17 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-11!](#-11-streaming-execute)        streaming execute        -5!   [parse](../ref/parse.md)
 [-14!x](#-14x-quote-escape)       quote escape             -6!   [eval](../ref/eval.md)
 [-16!x](#-16x-ref-count)       ref count                -7!   [hcount](../ref/hcount.md)
-[-17!x](#-17x-flip-endian-ess)       flip endian-ess          -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
-[-18!x](#-18x-compress-byte)       compress byte            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
-[-19!](#-19-compress-file)        compress file            -15!  [md5](../ref/md5.md)
-[-21!x](#-21x-compression-stats)       compression stats        -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
-[-22!x](#-22x-uncompressed-length)       uncompressed length      -24!  [reval](../ref/eval.md#reval)
-[-23!x](#-23x-memory-map)       memory map               -29!  [.j.k](../ref/dotj.md#jk-deserialize)
-[-25!x](#-25x-async-broadcast)       async broadcast          -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
-[-26!x](#-26x-ssl)       SSL
+[-18!x](#-18x-compress-byte)       compress byte            -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
+[-19!](#-19-compress-file)        compress file            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
+[-21!x](#-21x-compression-stats)       compression stats        -15!  [md5](../ref/md5.md)
+[-22!x](#-22x-uncompressed-length)       uncompressed length      -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
+[-23!x](#-23x-memory-map)       memory map               -24!  [reval](../ref/eval.md#reval)
+[-25!x](#-25x-async-broadcast)       async broadcast          -29!  [.j.k](../ref/dotj.md#jk-deserialize)
+[-26!x](#-26x-ssl)       SSL                      -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
 [-27!(x;y)](#-27xy-format)   format
 [-30!x](#-30x-deferred-response)       deferred response
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash
+[-36!(x;y)](#-36xy-load-master-key)   load master key
 [-120!x](#-120x-memory-domain)      memory domain
 </pre>
 
@@ -157,11 +157,6 @@ q)a:b:c:d:e:1 2 3
 q)-16!a
 5
 ```
-
-
-## `-17!x` (flip endian-ess)
-
-Returns flip endian-ness of kdb+ datafile `x`, see notes in [Changes in kdb+ V2.6](../releases/ChangesIn2.6.md)
 
 
 ## `-18!x` (compress byte)
@@ -374,6 +369,34 @@ q)raze string -33!"mypassword"
 
 <i class="fas fa-book-open"></i>
 Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
+
+
+## `-36!(x;y)` Load master key
+
+Syntax: `-36!(x;y)` 
+
+Where
+
+-   `x` is a master-key file as a [file symbol](glossary.md#file-symbol)
+-   `y` is a password as a string
+
+loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk. 
+
+<i class="fas fa-graduation-cap"></i>
+[Create master key](../kb/dare.md#configuration)
+
+Expect this call to take about 500 milliseconds to execute.
+It can be executed from handle 0 only.
+
+Signals errors: 
+```txt
+Encryption lib unavailable      failed to load OpenSSL libs
+Invalid password                
+Main thread only                can be executed from the main thread only
+PKCS5_PBKDF2_HMAC               library invocation failed
+Restricted                      must be executed under handle 0
+Unrecognized key format         master key file format unrecognized
+```
 
 
 ## `-120!x` (memory domain)

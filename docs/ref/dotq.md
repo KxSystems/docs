@@ -25,6 +25,7 @@ General                              Datatype
  [.Q.fu       apply unique](#qfu-apply-unique)             [.Q.dpfts  save table with sym](#qdpfts-save-table-with-symtable)
  [.Q.gc       garbage collect](#qgc-garbage-collect)          [.Q.dsftg  load process save](#qdsftg-load-process-save)
  [.Q.id       sanitize](#qid-sanitize)                 [.Q.en     enumerate varchar cols](#qen-enumerate-varchar-cols)
+ [.Q.prf0     code profiler](#qprf0-code-profiler)
  [.Q.qt       is table](#qqt-is-table)                 [.Q.ens    enumerate against domain](#qens-enumerate-against-domain)
  [.Q.res      keywords](#qres-keywords)                 [.Q.fk     foreign key](#qfk-foreign-key)
  [.Q.s        plain text](#qs-plain-text)               [.Q.hdpf   save tables](#qhdpf-save-tables)
@@ -154,27 +155,23 @@ q)f 4
           ^
   [0]  f 4
        ^
-10                   / (4+1)*2
+10
+q)g:{a:x*2;a+y}
 q)g[3;"hello"]
 'type
-  [2]  g:{a:x*2;a+y}
-                ^
+  [1]  g:{a:x*2;a+y}
+                 ^
 q)).Q.bt[]
-  [4]  .Q.bt[]
-       ^
-  [3]  (.Q.dbg)      / see note
-
-  [2]  g:{a:x*2;a+y}
-                ^
-  [1]  f:{g[x;2#y]}
-          ^
-  [0]  f[3;"hello"]
+>>[1]  g:{a:x*2;a+y}
+                 ^
+  [0]  g[3;"hello"]
        ^
 ```
 
-Since V3.5 2017.03.15.
+`>>` marks the current stack frame. (Since V4.0 2020.03.23.)
 
-!!! note "The debugger itself occupies a stack frame, but its source is hidden."
+The debugger itself occupies a stack frame, but its source is hidden. (Since V3.5 2017.03.15.)
+
 
 
 ## `.Q.btoa` (b64 encode)
@@ -831,11 +828,11 @@ mmap| 0
 syms| 534
 symw| 23926
 q).Q.gc[]
-0j
+0
 q)delete a from `.
 `.
 q).Q.gc[]
-67108864j
+67108864
 q).Q.w[]
 used| 128768
 heap| 67108864
@@ -1037,10 +1034,10 @@ select from table where i<100
 
 But you can’t do that directly for a partitioned table.
 
-`.Q.ind` comes to the rescue here, it takes a table and (long!) indexes into the table - and returns the appropriate rows.
+`.Q.ind` comes to the rescue here, it takes a table and indexes into the table – and returns the appropriate rows.
 
 ```q
-.Q.ind[trade;2 3j]
+.Q.ind[trade;2 3]
 ```
 
 A more elaborate example that selects all the rows from a date:
@@ -1082,16 +1079,16 @@ Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or deco
 The main use of these functions is to encode long alphanumeric identifiers (CUSIP, ORDERID..) so they can be quickly searched – but without filling up the symbol table with vast numbers of single-use values.
 
 ```q
-q).Q.x10 12345j
+q).Q.x10 12345
 "AAAAAAADA5"
-q).Q.j10 .Q.x10 12345j
-12345j
-q).Q.j10 each .Q.x10 each 12345j+1 2 3
-12346 12347 12348j
-q).Q.x12 12345j
+q).Q.j10 .Q.x10 12345
+12345
+q).Q.j10 each .Q.x10 each 12345+1 2 3
+12346 12347 12348
+q).Q.x12 12345
 "0000000009IX"
-q).Q.j12 .Q.x12 12345j
-12345j
+q).Q.j12 .Q.x12 12345
+12345
 ```
 
 !!! tip
@@ -1246,6 +1243,28 @@ q).Q.pv!flip .Q.pn
 2010.01.01| 100
 2010.01.02| 100
 ```
+
+
+## `.Q.prf0` (code profiler)
+
+Syntax: `.Q.prf0 pid`
+
+Where `pid` is a process ID, returns a table representing a snapshot of the call stack at the time of the call in another kdb+ process `pid`, with columns
+
+```txt
+name   assigned name of the function
+file   path to the file containing the definition
+line   line number of the definition
+col    column offset of the definition, 0-based
+text   function definition or source string
+pos    execution position (caret) within text
+```
+
+This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
+
+<i class="fas fa-graduation-cap"></i>
+[Code profiler](../kb/profiler.md)
+
 
 
 ## `.Q.pt` (partitioned tables)

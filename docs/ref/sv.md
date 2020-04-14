@@ -117,9 +117,9 @@ q)0x0 sv "x" $128 255
 q)0x0 sv "x" $0 64 128 255    / int
 4227327
 q)0x0 sv "x" $til 8           / long
-283686952306183j
-q)256j sv til 8               / same calculation
-283686952306183j
+283686952306183
+q)256 sv til 8                / same calculation
+283686952306183
 ```
 
 !!! tip "Converting non-integers" 

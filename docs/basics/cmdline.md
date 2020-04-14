@@ -341,7 +341,7 @@ The password can be
 
 -   plain text
 -   an MD5 hash of the password
--   an SHA-1 hash of the password (since V3.7t 2019.10.22)
+-   an SHA-1 hash of the password (since V4.0 2020.03.17)
 
 ```q
 q)raze string md5 "this is my password"
@@ -372,7 +372,7 @@ Workspace limit in MB for the heap per thread. Default is 0: no limit.
 Reference: [`.Q.w`](../ref/dotq.md#qw-memory-stats)
 
 **Domain-local**
-Since V3.7t 2019.10.22 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
+Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
 
 
 !!! tip "Other ways to limit resources"
