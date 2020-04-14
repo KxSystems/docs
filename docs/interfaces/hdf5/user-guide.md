@@ -11,25 +11,77 @@ keywords: HDF5, kdb+, file-format,
 As outlined in the overview for this API, the kdb+/HDF5 interface is a wrapper for kdb+ around the HDF Groups C API for HDF5 found [here](https://support.hdfgroup.org/HDF5/doc/RM/RM_H5Front.html). 
 
 <i class="fab fa-github"></i>
-[KxSystems/kafka](https://github.com/KxSystems/hdf5)
+[KxSystems/hdf5-kdb](https://github.com/KxSystems/hdf5-kdb)
 
 ## Type Mapping
 
-The following outlines the mapping which takes place between HDF5 and q datatypes. Where there is no exact mapping available between the two types every effort has been made to provide the most appropriate conversion possible.
+Mapping of kdb+ datatypes to HDF5 types and vice-versa where possible maps directly to an equivalent type. In cases where a direct mapping is not possible the kdb+ types will be mapped to the closest HDF5 native type possible.
 
-|            kdb+ type|            HDF5 type|      Note|
-|--------------------:|--------------------:|--------------:|
-|         boolean (1h)|       H5T_NATIVE_INT| q->hdf5->q conversion limited by types |
-|           short (5h)|     H5T_NATIVE_SHORT|               |
-|             int (6h)|       H5T_NATIVE_INT|               |
-|            long (7h)|      H5T_NATIVE_LONG|               |
-|            real (8h)|      H5T_NATIVE_REAL|               |
-|           float (9h)|    H5T_NATIVE_DOUBLE|               |
-|           char (10h)|             H5T_C_S1|               |
-|         symbol (11h)|             H5T_C_S1| q->hdf5->q conversion limited by types |
+In cases where a direct mapping is not possible an attribute `kdb_datatype` will be associated with the dataset and outline the type of the original kdb+ data. This allows the mapping `q -> HDF5 -> q`.
 
-!!!Note
-	Conversions are at present limited to the above types, over time, as appropriate additional types will be added. Due to restrictions in the available types in HDF5 it is unlikely that it will always be possible to create a direct mapping as such additions will be on a best effort basis. If the mapping is not direct this will be highlighted in the documentation.
+The following outlines the mapping which takes place between kdb+ and HDF5 datatypes. Where there is no exact mapping available between the two types every effort has been made to provide the most appropriate conversion possible.
+
+### kdb+ to HDF5
+
+|            kdb+ type|            HDF5 type|     kdb_datatype|
+|--------------------:|--------------------:|----------------:|
+|         boolean (1h)|       H5T_NATIVE_INT|        "boolean"|
+|            guid (2h)|             H5T_C_S1|                 |
+|            byte (4h)|     H5T_NATIVE_UCHAR|                 |
+|           short (5h)|     H5T_NATIVE_SHORT|                 |
+|             int (6h)|       H5T_NATIVE_INT|                 |
+|            long (7h)|      H5T_NATIVE_LONG|                 |
+|            real (8h)|      H5T_NATIVE_REAL|                 |
+|           float (9h)|    H5T_NATIVE_DOUBLE|                 |
+|           char (10h)|             H5T_C_S1|                 |
+|         symbol (11h)|             H5T_C_S1|                 |
+|      timestamp (12h)|      H5T_NATIVE_LONG|      "timestamp"|
+|          month (13h)|       H5T_NATIVE_INT|          "month"|
+|           date (14h)|       H5T_NATIVE_INT|           "date"|
+|       datetime (15h)|    H5T_NATIVE_DOUBLE|       "datetime"|
+|       timespan (16h)|      H5T_NATIVE_LONG|       "timespan"|
+|         minute (17h)|       H5T_NATIVE_INT|         "minute"|
+|         second (18h)|       H5T_NATIVE_INT|         "second"|
+|           time (19h)|       H5T_NATIVE_INT|           "time"|
+|          table (98h)|                     |          "table"|
+|     dictionary (99h)|                     |           "dict"|
+
+#### Tables and Dictionaries
+
+While HDF5 has the concept of tables and compound datasets. Writing to these types relies on an understanding of the underlying structure of the table or compound dataset which cannot be defined dynamically easily, this poses a challenge when writing to such datatypes. As can be seen [here](https://www.pytables.org/usersguide/tutorials.html#declaring-a-column-descriptor), the python pytables module handles this by defining a class similar to the C struct. Such a architecture is scalable diverse and unknown datasets, as such a different data writing architecture has been implemented summarized as follows
+
+1. Tables and dictionaries are not written to datasets but instead to groups named by the user.
+2. These groups have an associated attribute 'kdb_datatype' which indicates if they are a dictionary or table
+3. An attribute 'kdb_cols'/'kdb_keys' is associated with the group indicating the ordering and naming of columns and keys depending on use case
+4. Each key/column has an associated dataset within this group, if applicable these datasets will have an attribute describing the kdb+ type to which they are associated 
+5. Recursive writes for nested dictionaries or tables within tables etc will also be completed
+
+The following images show how such a structure is formatted on write for both a table and dictionary
+
+![Figure 1](../img/hdf5_kdb_table.png)
+
+![Figure 2](../img/hdf5_kdb_dict.png)
+
+### HDF5 to kdb+
+
+The following outlines how HDF5 native datatypes are mapped to kdb+ datatypes.
+
+|      HDF5 type/class|            kdb+ type|
+|--------------------:|--------------------:|
+|     H5T_NATIVE_SHORT|            short(5h)|
+|       H5T_NATIVE_INT|              int(6h)|
+|      H5T_NATIVE_LONG|             long(7h)|
+|      H5T_NATIVE_REAL|             real(8h)|
+|    H5T_NATIVE_DOUBLE|            float(9h)|
+|     H5T_NATIVE_UCHAR|             byte(4h)|
+|    H5T_NATIVE_USHORT|              int(6h)|
+|      H5T_NATIVE_UINT|             long(7h)|
+|     H5T_NATIVE_ULONG|             long(7h)|
+|        H5T_NATIVE_B8|             byte(4h)|
+|             H5T_C_S1|            char(10h)|
+|         H5T_COMPOUND|           table(98h)|
+
+In cases where the associated kdb+ type is included in the attribute 'kdb_datatype' the dataset will me mapped to the correct kdb+ type. Otherwise they will be returned as the underlying kdb representation.
 
 ## Functionality
 
@@ -60,16 +112,20 @@ HDF5 interface functionality
   .hdf5.createGroup            Create a single or multiple group levels
 
   // Utility functions
-  .hdf5.isAttr                 Does this attribute exist
-  .hdf5.ishdf5                 Is a file of HDF5 format
-  .hdf5.isObject               Does this object exist
+  .hdf5.copyObject             Copy a group or dataset to another file
+  .hdf5.datasetInfo            Information about type, number of dimensions and dimensionality
+  .hdf5.dataSize               Size of a HDF5 dataset in MB
+  .hdf5.fileSize               Size of a HDF5 in MB
   .hdf5.getAttrShape           Dimensionality of an attribute
   .hdf5.getAttrPoints          Number of points associated with an attribute
   .hdf5.getDataShape           Dimensionality of a dataset
   .hdf5.getDataPoints          Number of points associated with a dataset
-  .hdf5.datasetInfo            Information about type, number of dimensions and dimensionality
   .hdf5.gc                     Run garbage collect on free HDF5 lists of all types
+  .hdf5.isAttr                 Does this attribute exist
+  .hdf5.ishdf5                 Is a file of HDF5 format
+  .hdf5.isObject               Does this object exist
   .hdf5.ls                     ls like representation of the structure of a hdf5 file
+  .hdf5.version                Version of the HDF5 C api being used
 ```
 
 For simplicity in each of the examples below it should be assumed that unless otherwise specified a file/group/dataset/attribute that is being manipulated exists and is valid and the results displayed coincide with correct execution in that example.
@@ -430,6 +486,66 @@ q).hdf5.createGroup["test.h5";"Group1/SubGroup1/SubGroup2"]
 
 The following are a number of utility functions which may be useful when dealing with HDF5 objects and files.
 
+### `.hdf5.copyObject`
+
+_Copy a hdf5 dataset or group from one file to another_
+
+Syntax: `.hdf5.copyObject[fname;oname;fdest;odest]`
+
+Where
+
+- `fname` is the name of the file containing the object to be copied
+- `oname` is the name of the object to be copied
+- `fdest` is the destination file for the copied object
+- `odest` it the path in the destination file to which the copied object is associated
+
+return null on successful execution, will error if there are issues accessing files
+
+```q
+q).hdf5.writeData["test.h5";"dset";100?5]
+q).hdf5.createFile["testing.h5"]
+// Copy original object to a new file
+q).hdf5.copyObject["test.h5";"dset";"testing.h5";"data"]
+q).hdf5.readData["testing.h5";"data"]
+4 0 2 1 2 1 2 3 2 4 1 0 2 4 1 2 0 1 1 2 1 0 0 1 ..
+```
+
+### `.hdf5.fileSize`
+
+_Size of a HDF5 file in MB_
+
+Syntax: `.hdf5.fileSize[fname]`
+
+Where
+
+- `fname` is the name of a HDF5 file
+
+return the size of a HDF5 in MB
+
+```q
+q).hdf5.fileSize["test.h5"]
+8.002048
+```
+
+### `.hdf5.dataSize`
+
+_Size of an uncompressed HDF5 dataset in MB_
+
+Syntax: `.hdf5.dataSize[fname;dname]`
+
+Where
+
+- `fname` is the name of the file containing a dataset
+- `dname` is the name of the dataset
+
+return the size of a HDF5 dataset in MB
+
+```q
+q).hdf5.dataSize["test.h5";"dset"]
+8f
+```
+
+
 ### `.hdf5.datasetInfo`
 
 _Relevant information about a dataset_
@@ -621,4 +737,19 @@ q).hdf5.ls["test.h5"]
   }
   Dataset: dset
 }
+```
+
+### `.hdf5.version`
+
+_Display C api major/minor/release versions_
+
+Syntax: `.hdf5.version[]`
+
+returns a dictionary with the major/minor and release versions of the HDF groups C api
+
+```q
+q).hdf5.version[]
+Major  | 1
+Minor  | 10
+Release| 5
 ```
