@@ -594,6 +594,7 @@ nav:
       - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
     - Terminology: about/terminology.md
+    - Citations: about/citations.md
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md
