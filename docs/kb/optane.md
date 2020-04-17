@@ -8,7 +8,7 @@ date: March 2020
 
 
 <div markdown="1" style="text-align: center;">
-![Optane Memory](optane-memory.jpg)
+![Optane Memory](../img/optane-memory.jpg)
 </div>
 
 Intel Optane DC persistent memory, herein called Optane Memory, is a new
@@ -131,7 +131,7 @@ hardware.
 
 ### Scale vertically
 
-Vertical scaling is the prefered method of scaling for most kdb+
+Vertical scaling is the preferred method of scaling for most kdb+
 applications, as users aim to keep as much hot data as possible close to
 the CPU. If everything would fit in memory, and we could afford it, we’d
 probably put it there. However, traditional memory (DRAM) is expensive
@@ -150,7 +150,7 @@ design of users’ existing applications.
 There are three modes by which Optane can be used by kdb+
 
 -   Storage mode
--   Cached-memory mode
+-   Cached Memory mode
 -   App Direct Memory mode
 
 
@@ -193,9 +193,9 @@ Write speeds are also improved using Optane memory, allowing higher
 throughput when logging and writing down database partitions.
 
 
-### Cached-memory mode
+### Cached Memory mode
 
-In Cached-memory mode, DRAM mixes its memory address space with Optane
+In Cached Memory mode, DRAM mixes its memory address space with Optane
 Memory, dramatically increasing the amount of memory seen by the kernel
 and hence available to kdb+.
 
@@ -209,7 +209,7 @@ Vertical-vs-horizontal scaling
 
 : A common solution for overly-large in-memory datasets, is to split the data across multiple machines. Data is usually split based on some inherent partition of the data (e.g. ticker symbol, sensor ID, region), to allow parallelization of calculations. Horizontal scaling allows users to add memory, but comes at a cost. Average perfomance (versus a single machine) is reduced due to the cost of IPC to move data between processes. There is also an increase in complexity as well as hardware, datacenter and operations costs.
 
-: Optane Memory, in cached-memory mode, creates a new opportunity to scale vertically. A significantly extended memory space enables calculations on a single machine, rather than a cluster. This removes or reduces the complexities and performance cost of IPC, allowing users to run simpler, more efficient analytics.
+: Optane Memory, in Cached Memory mode, creates a new opportunity to scale vertically. A significantly extended memory space enables calculations on a single machine, rather than a cluster. This removes or reduces the complexities and performance cost of IPC, allowing users to run simpler, more efficient analytics.
 
 
 ### App Direct Memory mode
@@ -239,7 +239,7 @@ applications. Through reduced memory costs and significant
 infrastructure consolidation, Optane Memory should also reduce TCO.
 
 Earlier versions of kdb+ are already compatible with Optane Memory
-through Storage mode and Cached-memory modes, providing significant
+through Storage mode and Cached Memory modes, providing significant
 improvements for both in-memory and on-disk datasets. From version 4.0
 onwards App Direct Memory mode gives users control over Optane Memory,
 taking optimal advantage of the technology to suit their applications.
