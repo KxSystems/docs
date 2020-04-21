@@ -6,11 +6,17 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 ---
 # Developing with kdb+ and the q language
 
-<!-- 
+<div markdown="1" class="container">
+  <div class="css-carousel">
+    [![kdb+ V4.0](img/carousel/kdb4.png){.css-img}](releases/ChangesIn4.0.md)[![Optane Memory](img/carousel/optane-memory-600.png){.css-img}](kb/optane.md)[![Kx Platform 4.5](img/carousel/platform.png){.css-img}](/platform/)[![Multithreading primitives](img/carousel/parallelism.png){.css-img}](kb/mt-primitives.md)[![DARE](img/carousel/encryption.jpg){.css-img}](kb/dare.md)[![Kx Developer](img/carousel/ide.png){.css-img}](/developer/)
+    <!-- [![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)[![Q for pythons](img/carousel/q4p.png){.css-img}](learn/python/index.md) -->
+  </div>
+</div>
+
+<!--
 <div markdown="1" class="alert-message">
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 </div>
--->
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
@@ -47,6 +53,7 @@ Kdb+, from [Kx](https://kx.com), is
 [**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
 <i class="fas fa-download"></i>
 [Free download](/developer/getting-started/)
+-->
 
 <div style="clear: both">&nbsp;</div>
 
@@ -97,6 +104,9 @@ Kdb+, from [Kx](https://kx.com), is
     Support](support.md "Support contacts")
 </div>
 </div>
+
+<i class="fas fa-comment-medical"></i>
+[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 
 !!! tip "Using this site locally"
 

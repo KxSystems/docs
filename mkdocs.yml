@@ -8,6 +8,7 @@ extra_css:
   - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
   - 'https://code.kx.com/stylesheets/extra.css'
   - 'stylesheets/extra.css'
+  - 'stylesheets/carousel-6.css'
 extra_javascript: 
   # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
   # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
