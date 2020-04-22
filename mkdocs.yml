@@ -399,8 +399,12 @@ nav:
       - Kafka:
         - Overview: interfaces/kafka/index.md
         - User guide: interfaces/kafka/user-guide.md
-      - Python (embedPy): interfaces/embedpy.md
       - MQTT: interfaces/mqtt.md
+      - Prometheus: 
+        - Exporter:
+          - Overview: interfaces/prom/exporter/index.md
+          - User guide: interfaces/prom/exporter/user-guide.md
+      - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
         - Installation: interfaces/pyq/install.md
