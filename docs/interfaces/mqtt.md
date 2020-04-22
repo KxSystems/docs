@@ -34,10 +34,11 @@ Where
 returns a `'connection failed` error if connnection to host could not be established otherwise does not return output.
 
 ```q
-// Mosquitto not started on the following defined host
+// In this example Mosquitto is not started on the defined host
 q)hst:`$"tcp://localhost:1883"
 q).mqtt.conn[hst;`src]
 'connection failed
+
 // Mosquitto now started on appropriate host
 q).mqtt.conn[hst;`src]
 q)
@@ -57,8 +58,10 @@ Where
 returns a callback to the process stating that the message has been sent to the broker (this can be overwritten by a user).
 
 ```q
-// Connect to the host broker and publish a message
+// Connect to the host broker
 q).mqtt.conn[`$"tcp://localhost:1883";`src]
+
+// Publish a message to a topic names `topic1
 q).mqtt.pub[`topic1;"This is a test message"]
 (`msgsent;1)
 ```
@@ -77,7 +80,9 @@ returns a callback to the process when a message is received on topic stating th
 
 ```q
 // Connect to the host broker and publish a message
-q).mqtt.conn[`$"tcp://localhost:1883";`src]
+q).mqtt.conn[`$"tcp://localhost:1883";`rcv]
+
+// Subscribe to topic1 and recieve a message sent to that topic
 q).mqtt.sub[`topic1]
 (`msgrcvd;"This is a test message")
 ```
@@ -98,14 +103,17 @@ Where
 Does not return a message on correct application, errors on incorrect input
 
 ```q
-// Connect to the host broker
+// Connect to the host broker with the name `rcv
 q).mqtt.conn[`$"tcp://localhost:1883";`rcv]
+// Subscribe to `topic1
 q).mqtt.sub[`topic1]
-// publish a message to topic1 (message received)
+
+// publish a message to `topic1 on the broker
 (`msgrcvd;"This is a test message")
+
 // Unsubscribe from the topic 
 q).mqtt.unsub[`topic1]
-// publish a message to topic1 (no message received)
+// publish another message to `topic1 (note, no message received)
 ```
 
 
@@ -117,7 +125,8 @@ q).mqtt.unsub[`topic1]
 
 ```q
 q)\l producer.q
-Type `\t 100` to publish a message every 100ms up to 3000 messages, to stop and any time type `q)\t 0`
+// Type `\t 100` to publish a message every 100ms 
+// for up to 200 messages. To stop and any time type `q)\t 0`
 q)\t 100
 (`msgsent;1)
 (`msgsent;2)

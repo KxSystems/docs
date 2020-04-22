@@ -32,8 +32,9 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <table class="kx-compact" markdown="1">
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
-<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") ==new==</td>
+<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") </td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
+<tr><td>MQTT</td><td>[Q client for MQTT](mqtt.md) ==new==</td></tr>
 <tr><td>Python</td>
     <td>
 </i> [Using kdb+ within Python (PyQ)](pyq/index.md)<br/>
