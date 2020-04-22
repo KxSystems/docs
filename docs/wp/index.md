@@ -55,7 +55,8 @@ keywords: kdb+, q, technical, white paper
 
 ## Managing data and systems
 
--   [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small>
+<!-- -   [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small> -->
+<!-- -   ==new== [Serverless kdb+ on **AWS Lambda**](aws-lambda/index.md)  -->
 -   [**Compression** in kdb+](compress/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/compression_in_kdb.pdf)
 -   [Temporal data: a kdb+ framework for **corporate actions**](corporate-actions.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 -   [Mass ingestion through **data loaders**](data-loaders/index.md) 
@@ -71,7 +72,7 @@ keywords: kdb+, q, technical, white paper
 -   [**Query Routing**: a kdb+ framework for a scalable load-balanced system](query-routing/index.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/query-routing-a4.pdf), [US&nbsp;Letter](/download/wp/query-routing-us.pdf)</small>
 -   [**Socket sharding** with kdb+ and Linux](socket-sharding/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/socket-sharding.pdf)
 -   [Working with **sym files**](symfiles.md) &nbsp; <i class="fas fa-print"></i> <small>[A4](/download/wp/symfiles-a4.pdf), [US&nbsp;Letter](/download/wp/symfiles-us.pdf)</small>
--   ==new== [**Surveillance** latency and efficiency](surveillance-latency/index.md)
+-   [**Surveillance** latency and efficiency](surveillance-latency/index.md)
 -   [**Time-series simplification** in kdb+: a method for dynamically shrinking Big Data](ts-shrink/index.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
 -   [Kdb+tick profiling for **throughput optimization**](tick-profiling.md) &nbsp; <i class="fas fa-print"></i> [<small>A4</small>](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)
 

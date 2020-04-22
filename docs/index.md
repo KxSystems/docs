@@ -6,8 +6,11 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 ---
 # Developing with kdb+ and the q language
 
-
-
+<!-- 
+<div markdown="1" class="alert-message">
+[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
+</div>
+-->
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
@@ -23,15 +26,19 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" markdown="1"><i class="far fa-handshake"></i> [Simba ODBC 1.1](interfaces/odbc-simba.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [**kdb+ version 4.0**](releases/ChangesIn4.0.md)</p>
     
-    <p markdown="1"><i class="fas fa-question"></i> [Search Box](about/search.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
     
-    <p markdown="1"><i class="far fa-map"></i> [Surveillance latency](wp/surveillance-latency/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="fab fa-github"></i> [`man.q`](https://github.com/KxSystems/man)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-lock"></i> [data-at-rest crypto](kb/dare.md)</p>
     
-    <p class="nowrap" markdown="1"><i class="fas fa-graduation-cap"></i> [_Q for Mortals 3.1_](/q4m3/preface/)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [code profiler](kb/profiler.md)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Platform 4.5](/platform/)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-comment-medical"></i> [Coronavirus](coronavirus.md)</p>
     
 </div>
 

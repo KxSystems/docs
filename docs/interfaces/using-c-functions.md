@@ -228,7 +228,7 @@ A sample execution which counts the cycles taken between two executions of funct
 
 ```q
 q)read_cycles[]-read_cycles[]
-1377j
+1377
 ```
 
 
@@ -304,7 +304,7 @@ K1(cpuf){J f;size_t l=sizeof(f);
 ```q
 q)cpuf:`cpu 2:(`cpuf;1)
 q)cpuf[]
-2330000000j
+2330000000
 ```
 
 

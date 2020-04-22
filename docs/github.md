@@ -518,20 +518,27 @@ about new repositories.</div>
 </tr>
 <tr>
 <td class="nowrap"><a href="https://github.com/nugend/qspec">qspec</a></td>
-<td>A testing framework lightly inspired by [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) and the [rspec](http://rspec.info) testing framework. <span class="author"><a href="https://github.com/nugend?tab=repositories">
+<td>A testing framework lightly inspired by [Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) and the [rspec](http://rspec.info) testing framework. <span class="author"><a href="https://github.com/nugend?tab=repositories">
 						(Daniel Nugent)
 					</a></span>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/timeseries/qstudioopen">qstudioopen ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/timeseries/qstudioopen">qstudioopen</a></td>
 <td>JDBC driver and authenticator. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
 						(TimeStored)
 					</a></span>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/timeseries/kdb/tree/master/qunit">QUnit ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/ktsr42/qtb">qtb ==new==</a></td>
+<td>Unit testing framework. <span class="author"><a href="https://github.com/ktsr42?tab=repositories">
+						(Klaas Teschauer)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/timeseries/kdb/tree/master/qunit">QUnit</a></td>
 <td>Unit testing framework. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
 						(TimeStored)
 					</a></span>

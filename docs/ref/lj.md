@@ -58,9 +58,9 @@ c d
 ```
 
 
-## Changes in V3.7
+## Changes in V4.0
 
-`lj` checks that `y` is a keyed table. (Since V3.7t 2019.10.22.)
+`lj` checks that `y` is a keyed table. (Since V4.0 2020.03.17.)
 
 ```q
 q)show x:([]a:1 2 3;b:10 20 30)
