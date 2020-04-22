@@ -400,6 +400,7 @@ nav:
         - Overview: interfaces/kafka/index.md
         - User guide: interfaces/kafka/user-guide.md
       - Python (embedPy): interfaces/embedpy.md
+      - MQTT: interfaces/mqtt.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
         - Installation: interfaces/pyq/install.md
