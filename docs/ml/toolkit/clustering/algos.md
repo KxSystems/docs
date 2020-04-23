@@ -42,55 +42,29 @@ The algorithm uses a user specified damping coefficient to reduce the availabili
 
 _Cluster data using exemplars_
 
-Syntax: `.ml.clust.ap[d;df;dmp;p]`
+Syntax: `.ml.clust.ap[data;df;dmp;diag]`
 
 Where
 
-- `d` is data points in matrix form
+- `data` is the data points in a horizontal matrix format
 - `df` is the distance function as a symbol: `nege2dist` commonly used for this algorithm, but can also be used with `e2dist` `edist` and `mdist` (see [section](##Disance Metrics))
 - `dmp` is the damping coefficient to apply to the availability and responsibility matrices.
-- `p` is the preference for the diagonal of the similarity matrix, can be a function as a symbol (e.g. ``` `min`med`max ``` etc.) or a floating point value.
+- `diag` is the preference for the diagonal of the similarity matrix, can be a function as a symbol (e.g. ``` `min`med`max ``` etc.).
 
-returns a table.
+returns a list indicating the cluster each data point belongs to
 
 ```q
-q)show d:flip 2 10#20?10.
-0.891041  6.348263  
-8.345194  7.66752   
-3.621949  9.281844  
-9.99934   2.035925  
-3.837986  7.747888  
-8.619188  9.667728  
-0.9183638 8.225125  
-2.530883  9.088765  
-2.504566  6.458066  
-7.517286  0.08962677
-q).ml.clust.ap[d;`nege2dist;.3;`med]
-idx clt pts                 
-----------------------------
-0   0   0.891041  6.348263  
-1   1   8.345194  7.66752   
-2   0   3.621949  9.281844  
-3   2   9.99934   2.035925  
-4   0   3.837986  7.747888  
-5   1   8.619188  9.667728  
-6   0   0.9183638 8.225125  
-7   0   2.530883  9.088765  
-8   0   2.504566  6.458066  
-9   2   7.517286  0.08962677
-q).ml.clust.ap[d;`nege2dist;.4;-6.]
-idx clt pts                 
-----------------------------
-0   0   0.891041  6.348263  
-1   1   8.345194  7.66752   
-2   2   3.621949  9.281844  
-3   3   9.99934   2.035925  
-4   2   3.837986  7.747888  
-5   1   8.619188  9.667728  
-6   0   0.9183638 8.225125  
-7   2   2.530883  9.088765  
-8   0   2.504566  6.458066  
-9   3   7.517286  0.08962677
+show d:2 10#20?10.
+0.8123546 9.367503 2.782122 2.392341 1.508133 ..
+4.099561  6.108817 4.976492 4.087545 4.49731  ..
+q)show APclt:.ml.clust.ap[d;`nege2dist;.3;med]
+0 1 2 2 0 2 1 3 3 1
+// Group indices into their calculated clusters
+q)group APclt
+0| 0 4
+1| 1 6 9
+2| 2 3 5
+3| 7 8
 ```
 
 ## CURE (Clustering Using REpresentatives)
@@ -103,181 +77,59 @@ In the implementation below, a k-d tree is used in order to store the representa
 
 _Cluster data using representative points_
 
-Syntax: `.ml.clust.ccure[d;k;r;i]`
+Syntax: `.ml.clust.ccure[data;df;k;n;c]`
 
 Where
 
-- `d` is data points in matrix form
+- `data` is the data points in a horizontal matrix format
+- `df`  is the distance function as a symbol: `e2dist `edist `mdist (see [section](##Distance Metrics))
 - `k` is the number of clusters
-- `r` is the number of representative points
-- `i` is a dictionary of inputs in the form:
-    - `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics)) 
-    - `c` is the compression
-    - `b` is a boolean, `1b` for C, `0b` for q implementation of the tree
-    - `s` is a boolean, `1b` to return a dictionary, `0b` to return a table of clusters
+- `n` is the number of representative points
+- `c` is the compression
 
-returns a dictionary or a table.
+returns a list indicating the cluster each data point belongs to
 
 ```q
-q)show d:10 2#20?5.
-1.963762  2.585456 
-2.579898  2.033321 
-0.8904193 1.508861 
-3.925165  2.673548 
-3.555858  2.057985 
-2.465917  2.892601 
-0.4194429 0.9799536
-1.87819   3.068726 
-2.647404  3.458049 
-1.148308  3.459765 
-q).ml.clust.cure[d;3;2;()]
-idx clt pts                
----------------------------
-0   0   1.963762  2.585456 
-1   0   2.579898  2.033321 
-2   1   0.8904193 1.508861 
-3   0   3.925165  2.673548 
-4   0   3.555858  2.057985 
-5   0   2.465917  2.892601 
-6   1   0.4194429 0.9799536
-7   0   1.87819   3.068726 
-8   0   2.647404  3.458049 
-9   2   1.148308  3.459765 
-q).ml.clust.cure[d;3;2;`df`c!(`mdist;1b)]
-idx clt pts                
----------------------------
-0   0   1.963762  2.585456 
-1   0   2.579898  2.033321 
-2   1   0.8904193 1.508861 
-3   2   3.925165  2.673548 
-4   2   3.555858  2.057985 
-5   0   2.465917  2.892601 
-6   1   0.4194429 0.9799536
-7   0   1.87819   3.068726 
-8   0   2.647404  3.458049 
-9   0   1.148308  3.459765 
-q)show t:.ml.clust.cure[d;3;2;enlist[`s]!enlist 1b]
-reps| (3.925165 2.673548;1.87819 3.068726;0.8904193 1.508861;0.4194429 0.9799..
-tree| (-1 0 1 1 0 4 4;0110010b;0011011b;(1 4;2 3;2 3;4 1;5 6;`long$();,0);2.4..
-r2c | 0 0 1 1 2
-r2l | 6 3 2 2 3
-```
-
-!!! note
-	Using `()` for the input dictionary will use default inputs, where `df = e2dist`, `c = 0`,`b = 0b` and `s = 0b`. To alter these inputs, the user must specify the parameters and their new values in dictionary format, shown above.
-
-!!! note
-	If the parameter `s` is set to 1b the function will return a dictionary as output. This can be used in conjuction with live streaming data and has the form
-
-	-  `reps` are the representative points
-	-  `tree` is a k-d tree
-	-  `r2c` is the cluster indices
-	-  `r2l` is the leaf indices
-
-	New points can be added to the tree, with representative points updated (see [notebooks](https://github.com/kxsystems/ml/clust/notebooks/streaming.ipynb)). 
-
-### `.ml.clust.clustnew`
-
-_Cluster new data points using previously defined tree_
-
-Syntax: `.ml.clust.clustnew[t;df;p]`
-
-Where
-
--   `t` is a dictionary with the information of the tree
--   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
--   `d` is a new point to be classified
-
-returns the cluster of the new point.
-
-```q
-q)t
-reps| (3.925165 2.673548;1.87819 3.068726;0.8904193 1.508861;0.4194429 0.9799..
-tree| (-1 0 1 1 0 4 4;0110010b;0011011b;(1 4;2 3;2 3;4 1;5 6;`long$();,0);2.4..
-r2c | 0 0 1 1 2
-r2l | 6 3 2 2 3
-q)show new:5 2#10?5.
-1.957715  0.4061773
-4.683752  1.391061 
-1.196171  0.7540665
-0.7836585 4.8925   
-3.521657  4.720835 
-q).ml.clust.clustnew[t;`e2dist]each enlist each new
-1 0 1 2 0
+q)show d:2 10#20?20.
+8.24634 19.75569 7.734706 14.53562 8.093092 16.71013 ..
+18.0615 15.50058 7.739636 12.64823 8.657069 4.861672 ..
+q).ml.clust.cure[d;`e2dist;3;2;0]
+0 1 1 1 1 1 1 2 1 1
+q).ml.clust.cure[d;`mdist;3;5;0.5]
+0 1 2 2 2 2 2 2 2 2
 ```
 
 ## DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
 
 The DBSCAN algorithm groups points together that are closely packed in areas of high-density. Any points in low-density regions are seen as outliers.
 
-Unlike other clustering algorithms which require the user to input the desired number of clusters, DBSCAN will decide how many clusters are in the dataset based the minimum number of points required per cluster and the epsilon radius, both given by the user.
+Unlike other clustering algorithms which require the user to input the desired number of clusters, DBSCAN will decide how many clusters are in the dataset based on the minimum number of points required per cluster and the epsilon radius, both given by the user.
 
 ### `.ml.clust.dbscan`
 
 _Cluster data based on areas of high-density_
 
-Syntax: `.ml.clust.dbscan[d;df;p;e]`
+Syntax: `.ml.clust.dbscan[data;df;minpts;eps]`
 
 Where
 
--   `d` is data points in matrix form
+-   `data` is the data points in a horizontal matrix format
 -   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
--   `p` is minimum number of points required in a given neighbourhood for it to be classified as a cluster
--   `e` is the epsilon radius, the distance from each point within which points are defined as being in the same cluster
+-   `minpts` is the minimum number of points required in a given neighbourhood for it to be classified as a cluster
+-   `eps` is the epsilon radius, the distance from each point within which points are defined as being in the same cluster
 
-returns a table with the index, cluster and original data points.
+returns a list indicating the cluster each data point belongs to, any outliers in the data will return a null value as their cluster
 
 ```q
-q)show d:10 2#20?5.
-3.916843   2.049781 
-3.054409   2.488246 
-2.043772   2.248655 
-0.06960381 3.57439  
-0.9732546  0.4529513
-3.101507   4.663158 
-1.373533   0.2876258
-1.280329   1.155054 
-0.4362008  0.5122161
-4.335548   3.639264 
-q).ml.clust.dbscan[d;`e2dist;3;3] / returns 2 clusters and 2 outliers
-idx clt pts                 
-----------------------------
-0   0   3.916843   2.049781 
-1   1   3.054409   2.488246 
-2   1   2.043772   2.248655 
-3   2   0.06960381 3.57439  
-4   3   0.9732546  0.4529513
-5   1   3.101507   4.663158 
-6   3   1.373533   0.2876258
-7   3   1.280329   1.155054 
-8   3   0.4362008  0.5122161
-9   1   4.335548   3.639264 
+q)show d:2 10#20?5.
+4.938922 1.933677 3.633905 2.023273 4.177532 3.213685 ..
+3.875146 1.934909 3.162057 2.164267 1.215418 1.958976 ..
+q).ml.clust.dbscan[d;`e2dist;2;1] /returns 3 clusters and 3 outliers
+0 1 0 1 2 0N 0N 0N 2 0
 q).ml.clust.dbscan[d;`e2dist;3;6]  / radius too larger - returns one cluster
-idx clt pts                 
-----------------------------
-0   0   3.916843   2.049781 
-1   0   3.054409   2.488246 
-2   0   2.043772   2.248655 
-3   0   0.06960381 3.57439  
-4   0   0.9732546  0.4529513
-5   0   3.101507   4.663158 
-6   0   1.373533   0.2876258
-7   0   1.280329   1.155054 
-8   0   0.4362008  0.5122161
-9   0   4.335548   3.639264 
+0 0 0 0 0 0 0 0 0 0
 q).ml.clust.dbscan[d;`e2dist;3;.5] / radius too small - clustering not possible, points returned as individual clusters
-idx clt pts                 
-----------------------------
-0   0   3.916843   2.049781 
-1   1   3.054409   2.488246 
-2   2   2.043772   2.248655 
-3   3   0.06960381 3.57439  
-4   4   0.9732546  0.4529513
-5   5   3.101507   4.663158 
-6   6   1.373533   0.2876258
-7   7   1.280329   1.155054 
-8   8   0.4362008  0.5122161
-9   9   4.335548   3.639264 
+0N 0N 0N 0N 0N 0N 0N 0N 0N 0N
 ```
 
 ## Hierarchical
@@ -290,59 +142,35 @@ There are 5 possible linkages in hierarchical clustering: single, complete, aver
 
 _Cluster data using hierarchical methods_
 
-Syntax: `.ml.clust.hc[d;k;df;lf]`
+Syntax: `.ml.clust.hc[data;df;lf;k]`
 
 Where
 
--   `d` is data points in matrix form
--   `k` is the number of clusters
+-   `data` is the data points in a horizontal matrix format
 -   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
 -   `lf` is the linkage function as a symbol: `single`  `complete` `average` `centroid` `ward`
--   `bc` is a boolean flag indicating whether to use the C or q implementations of the k-d tree for the centroid and single models. Can be `1b` for C and `0b` or `()` for q.
+-   `k` is the number of clusters
 
-returns a table with the index, cluster and original data points.
+returns a list indicating the cluster each data point belongs to
 
 ```q
-q)show d:10 2#20?5.
-0.8138311 3.442378
-4.088774  3.760051
-0.5434121 4.799482
-0.183417  3.215491
-3.354369  3.394541
-2.061585  4.938922
-1.933677  3.633905
-2.023273  4.177532
-3.213685  2.915131
-0.7124676 4.574941
-q).ml.clust.hc[d;3;`e2dist;`single;1b]
-idx clt pts               
---------------------------
-0   0   0.8138311 3.442378
-1   1   4.088774  3.760051
-2   2   0.5434121 4.799482
-3   0   0.183417  3.215491
-4   1   3.354369  3.394541
-5   0   2.061585  4.938922
-6   0   1.933677  3.633905
-7   0   2.023273  4.177532
-8   1   3.213685  2.915131
-9   2   0.7124676 4.574941
-q).ml.clust.hc[d;3;`e2dist;`ward;()]
-idx clt pts               
---------------------------
-0   0   0.8138311 3.442378
-1   1   4.088774  3.760051
-2   0   0.5434121 4.799482
-3   0   0.183417  3.215491
-4   1   3.354369  3.394541
-5   5   2.061585  4.938922
-6   5   1.933677  3.633905
-7   5   2.023273  4.177532
-8   1   3.213685  2.915131
-9   0   0.7124676 4.574941
-q).ml.clust.hc[d;3;`mdist;`ward;()]
+q)show d:2 10#20?5.
+4.608218 0.9047679 3.217318 1.453547  0.3673904 1.579763 ...
+1.428995 3.342362  4.566516 0.7426785 2.428773  3.561801 ...
+q).ml.clust.hc[d;`e2dist;`single;3]
+0 1 2 1 1 1 1 0 1 1
+q).ml.clust.hc[d;`mdist;`complete;3]
+0 1 2 0 1 1 0 0 0 1
+q).ml.clust.hc[d;`edist;`average;3]
+0 1 2 1 1 1 1 0 1 1
+q).ml.clust.hc[d;`mdist;`centroid;3]
+0 1 2 0 1 1 0 0 0 1
+q).ml.clust.hc[d;`e2dist;`ward;3]
+0 1 1 2 1 1 2 0 2 1
+q).ml.clust.hc[d;`mdist;`ward;3]
 'ward must be used with e2dist
   [0]  .ml.clust.hc[d;3;`mdist;`ward;()]
+
        ^
 ```
 
@@ -360,7 +188,7 @@ Syntax: `.ml.clust.dgram[d;df;lf]`
 
 Where
 
--   `d` is data points in matrix form
+-   `d` is data points in matrix format
 -   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
 -   `lf` is the linkage function as a symbol: `single`  `complete` `average` `centroid` `ward`
 
@@ -403,57 +231,35 @@ K-means clustering begins by selecting k data points as cluster centres and assi
 
 _Cluster data using k-means_
 
-Syntax: `.ml.clust.kmeans[d;k;n;i;df]`
+Syntax: `.ml.clust.kmeans[data;df;k;iter;kpp]`
 
 Where
 
--   `d` is data points in matrix form
--   `k` is the number of clusters
--   `n` is the number of iterations
--   `i` is a boolean flag indicating the initialisaton type: both select k points from the dataset as cluster centres, `1b` initialises the [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) algorithm or `0b` selects k random points
+-   `data` is the data points in a horizontal matrix format
 -   `df` is the distance function: `e2dist` `edist` `mdist` `cshev` (see [section](##Disance Metrics))
+-   `k` is the number of clusters
+-   `iter` is the number of iterations
+-   `kpp` is a boolean flag indicating the initialisaton type: both select k points from the dataset as cluster centres, `1b` initialises the [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) algorithm or `0b` selects k random points
 
-returns a table with the index, cluster and original data points.
+returns a list indicating the cluster each data point belongs to
 
 ```q
-q)show d:10 2#20?5.
-2.353941  3.173358 
-4.836199  1.153192 
-4.749875  2.195405 
-2.879526  2.959502 
-4.240783  1.94528  
-1.957715  0.4061773
-4.683752  1.391061 
-1.196171  0.7540665
-0.7836585 4.8925   
-3.521657  4.720835 
-q).ml.clust.kmeans[d;3;`mdist;10;1b]
-idx clt pts                
----------------------------
-0   0   2.353941  3.173358 
-1   1   4.836199  1.153192 
-2   1   4.749875  2.195405 
-3   0   2.879526  2.959502 
-4   1   4.240783  1.94528  
-5   2   1.957715  0.4061773
-6   1   4.683752  1.391061 
-7   2   1.196171  0.7540665
-8   0   0.7836585 4.8925   
-9   0   3.521657  4.720835 
-q).ml.clust.kmeans[d;3;`e2dist;10;0b]
-idx clt pts                
----------------------------
-0   0   2.353941  3.173358 
-1   1   4.836199  1.153192 
-2   1   4.749875  2.195405 
-3   0   2.879526  2.959502 
-4   1   4.240783  1.94528  
-5   0   1.957715  0.4061773
-6   1   4.683752  1.391061 
-7   0   1.196171  0.7540665
-8   2   0.7836585 4.8925   
-9   2   3.521657  4.720835 
+q)show d:2 10#20?5.
+1.963762 2.585456 2.579898  2.033321  0.8904193 1.508861 ...
+2.465917 2.892601 0.4194429 0.9799536 1.87819   3.068726 ...
+q).ml.clust.kmeans[d;`e2dist;3;10;1b]
+0 0 1 1 0 0 2 0 2 0
+q).ml.clust.kmeans[d;`e2dist;3;10;0b]
+0 1 2 2 0 0 1 1 2 0
+q).ml.clust.kmeans[d;`mdist;3;10;1b]
+'kmeans must be used with edist/e2dist
 ```
+
+!!! note
+      K-Means only works in conjunction with euclidean squared distances (e2dist). If the user tries to input a different distance metric an error will result, as shown above.
+
+!!! warning
+    All the above clustering functions must have the input data as a floating point type
 
 ## Distance Metrics
 
