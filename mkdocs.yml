@@ -27,24 +27,29 @@ markdown_extensions:
   # - codehilite(guess_lang=false)
   - extra
   # - fenced_code
-  # - fontawesome_markdown
   - pymdownx.arithmatex
   # - pymdownx.betterem(smart_enable=all)
-  # - pymdownx.caret
+  - pymdownx.caret
   # - pymdownx.critic
-  # - pymdownx.emoji:
-  # emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   # - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   # - pymdownx.smartsymbols
   # - pymdownx.superfences
+  - pymdownx.tabbed
   # - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
   - toc:
       permalink: false
+# specifying a French search engine is a workaround for a missing file
+# /assets/javascripts/lunr/min/lunr..min.js
 plugins: 
-  - search
+  - search:
+      lang: fr
   # - markdownextradata
 remote_branch: 'master'
 # repo_name: 'GitHub'
@@ -59,9 +64,10 @@ use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
   favicon: ./img/favicon.ico
-  feature:
-    tabs: true
+  features:
+    - tabs
   name: 'material'
+  language: en
   logo: 'img/kx.jpeg'
   palette: 
     primary: 'blue'
