@@ -3,13 +3,13 @@ title: Interfaces and editor integrations | Interfaces | kdb+ and q documentatio
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---
-# <i class="far fa-handshake"></i> Interfaces and editor integrations
+# :fontawesome-regular-handshake: Interfaces and editor integrations
 
 
 
 
 
-<i class="far fa-hand-point-right"></i> [General index](../github.md) of other kdb+ repositories
+:fontawesome-regular-hand-point-right: [General index](../github.md) of other kdb+ repositories
 
 Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. 
 Other repositories are maintained by their owners. 
@@ -171,7 +171,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </table>
 
 
-## <i class="far fa-handshake"></i> Kdb+ as client
+## :fontawesome-regular-handshake: Kdb+ as client
 
 <table class="kx-compact" markdown="1">
 <tr><td>Betfair</td><td>:fontawesome-brands-github: [picoDoc/betfair-data-capture](https://github.com/picoDoc/betfair-data-capture)</td></tr>

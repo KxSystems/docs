@@ -47,7 +47,7 @@ But if you are installing 32-bit kdb+ on a 64-bit Linux distribution, you will n
 sudo apt-get install libc6-i386
 ```
 
-<i class="far fa-hand-point-right"></i> AskUbuntu: [How to run 32-bit app in Ubuntu 64-bit?](https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit)
+:fontawesome-regular-hand-point-right: AskUbuntu: [How to run 32-bit app in Ubuntu 64-bit?](https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit)
 
 
 ## :fontawesome-solid-rocket: Minimum install and launch
@@ -247,7 +247,7 @@ Loading `sp.q`, a sibling of `QHOME`, requires the relative path specified.
 
 
 
-## <i class="far fa-hand-point-right"></i> What’s next?
+## :fontawesome-regular-hand-point-right: What’s next?
 
 [Learn the q programming language](../index.md#learn-q), look through the [reference card](../../ref/index.md), or see in the [Knowledge Base](../../kb/index.md)  what you can do with kdb+.
 

@@ -278,7 +278,7 @@ q){a}peach 0 1
 
 Views are not parsable, e.g. `eval parse "a::b+c"`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`view`](../ref/view.md), [`views`](../ref/view.md)  
 System commands: [`\b`](../basics/syscmds.md#b-views "views"), 
 [`\B`](../basics/syscmds.md#b-pending-views "pending views")  

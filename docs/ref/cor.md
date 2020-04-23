@@ -30,7 +30,7 @@ q)select price cor size by sym from trade
 Perfectly correlated data results in a `1` or `-1`. When one variable increases as the other increases the correlation is positive; when one decreases as the other increases it is negative. Completely uncorrelated arguments return `0f`. 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Wikipedia: [Correlation and dependence](https://en.wikipedia.org/wiki/Correlation_and_dependence)  
 financereference.com: [Correlation](http://financereference.com/learn/correlation)  
 Basics: [Mathematics](../basics/math.md)

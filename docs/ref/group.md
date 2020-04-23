@@ -44,7 +44,7 @@ p| 8
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`ungroup`](ungroup.md), 
 [`xgroup`](xgroup.md)  
 Basics: [Sorting](../basics/sort.md) 

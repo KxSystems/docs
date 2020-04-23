@@ -20,7 +20,7 @@ Starting at the beginning with the TP: if this is running in zero-latency mode (
 
 One way of doing this is to have a chained TP, or even a chain of them. The first TP would be a zero-latency TP – and would have only clients who truly need immediate update. It in turn would have as one of its clients a TP publishing bulk updates every 100ms. That in turn would have a chained tickerplant as client that publishes updates only every second. Clients then subscribe to the TP with granularity that suits their needs. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Chained tickerplant and RDB for kdb+tick](chained-tickerplant.md)
 
 
@@ -28,7 +28,7 @@ One way of doing this is to have a chained TP, or even a chain of them. The firs
 
 Next in the chain comes the RDB. An RDB is an in-memory database, and by day-end can be using a lot of memory. If clients are querying that data intra-day then the memory cost is reasonable – but if the data’s only being collected for insertion into the HDB at day-end the overhead is unreasonable. In such a case it would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Write-only alternative to RDB](w-q.md)
 
 
@@ -38,7 +38,7 @@ The other extreme is when one RDB isn’t enough - then the same approach can be
 
 A chained RDB doesn’t have to subscribe to the whole ‘firehose’. It might be useful to have a TP with only the stocks building a particular index, or perhaps only trades and no quotes.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Chained tickerplant and RDB for kdb+tick](chained-tickerplant.md)
 
 

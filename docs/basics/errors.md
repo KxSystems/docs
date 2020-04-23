@@ -8,7 +8,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 
 
 
-<!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="far fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- :fontawesome-regular-hand-point-right: Simon’s list :fontawesome-regular-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 
 ## Runtime errors
@@ -54,7 +54,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
     Tried to generate a list longer than 2<sup>40</sup>-1 (2e+09 until V3.0), 
     or serialized object is &gt; 1TB (2GB until V3.4), 
     or `'type` if trying to serialize a nested object which has &gt; 2 billion elements,
-    or <i class="far fa-hand-point-right"></i> [Parse errors](#parse-errors)
+    or :fontawesome-regular-hand-point-right: [Parse errors](#parse-errors)
 </td>
 </tr>
 <tr><td>loop</td> <td class="nowrap">`a::a`</td> <td>Dependency loop</td> </tr>
@@ -167,7 +167,7 @@ On execute or load
     <td class="nowrap">`a:";"sv string 2+til 241;`<br/>`value"{",a,"}"`</td> 
     <td>
         Too many [constants](function-notation.md#variables-and-constants),
-        or <i class="far fa-hand-point-right"></i> [limit error](#runtime-errors)
+        or :fontawesome-regular-hand-point-right: [limit error](#runtime-errors)
     </td> 
 </tr>
 <tr> 
@@ -239,6 +239,6 @@ Use [Trap and Trap At](../ref/apply.md#trap) to trap errors.
 [Debugging](debug.md)
 
 
-<!-- <i class="far fa-hand-point-right"></i> Simon’s list :fontawesome-brands-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- :fontawesome-regular-hand-point-right: Simon’s list :fontawesome-brands-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 

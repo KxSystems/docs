@@ -37,7 +37,7 @@ directory of detailed examples.
 In this section, we introduce some core elements of embedPy that will be
 used in the LASSO regression problem that follows. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Full documentation for embedPy](../../ml/embedpy/index.md)
 
 
@@ -197,7 +197,7 @@ Dataset, compiled by Dean De Cock for use in data-science education. It
 contains 79 explanatory variables describing various aspects of
 residential homes which influence their sale prices. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [kaggle.com](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
 
 The Least Absolute Shrinkage and Selection Operator (LASSO) method was

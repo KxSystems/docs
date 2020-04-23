@@ -156,7 +156,7 @@ timebucketedpivot:{[startdate; enddate; symbols; timebucket]
   () xkey 1^exec colheaders#(sym!return) by time:time from data }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Pivoting tables](../../kb/pivoting-tables.md)
 
 An example is:
@@ -299,5 +299,5 @@ q)Rget "date()"
 "Fri Feb  3 01:33:57 2012"
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Timezones and Daylight Saving Time](../../kb/timezones.md)

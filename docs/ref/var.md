@@ -52,7 +52,7 @@ q)select svar price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 `svar` is an aggregate function.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`cov, scov`](cov.md)  
 Wikipedia: [Covariance](https://en.wikipedia.org/wiki/Covariance),
 [Variance](https://en.wikipedia.org/wiki/Variance)  

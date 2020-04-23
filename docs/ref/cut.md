@@ -87,5 +87,5 @@ q)4 cut til 10
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Drop](drop.md)

@@ -54,7 +54,7 @@ s2 p2 400
 s4 p4 300
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`group`](group.md),
 [`xgroup`](xgroup.md)
 

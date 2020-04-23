@@ -46,12 +46,12 @@ man "--help"
 :fontawesome-solid-book:
 [Reference](../ref/index.md)
 <br>
-<i class="far fa-handshake"></i>
+:fontawesome-regular-handshake:
 [Interfaces](../interfaces/index.md)
 <br>
 :fontawesome-solid-graduation-cap:
 [Knowledge base](../kb/index.md)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [White Papers](../wp/index.md)
 

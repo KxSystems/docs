@@ -227,6 +227,6 @@ Both client and server support permessage-deflate compression.
 
 The WebSocket requires that text is UTF-8 encoded. If you try to send invalidly encoded text it will signal `'utf8`.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Namespace `.h`](../ref/doth.md)
 

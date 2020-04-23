@@ -79,7 +79,7 @@ q)"NT"$\:"123456123987654"  / since V3.4
 12:34:56.123
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.addr`](dotq.md#qaddr-ip-address),
 [`.Q.host`](dotq.md#qhost-hostname)
 
@@ -138,7 +138,7 @@ yyyy/[mm|MMM]/dd
 dd/[mm|MMM]/[yy]yy  / \z 1
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Cast](cast.md), 
 [`$` dollar](overloads.md#dollar),
 [`.h.iso8601`](doth.md#hiso8601-iso-timestamp)<br>

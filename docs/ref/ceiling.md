@@ -55,7 +55,7 @@ range  i . i . i j j j i . . . . . . . . .
 Range: `ij`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`floor`](floor.md)  
 Basics: [Mathematics](../basics/math.md)
 

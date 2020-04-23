@@ -11,7 +11,7 @@ keywords: conditional, default, dictionary, else, if, indexing, result, switch
 
 Q has two forms of conditional evaluation: Cond (`$`) and `if`. The following rules help you write code where useful information is conveyed by your choice of conditional.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Cond](../ref/cond.md),
 [`if`](../ref/if.md)
 
@@ -182,7 +182,7 @@ Consistent use of `if` and the conditional will make your code more readable:
 -   seeing `$[]`, you know that a result is intended unconditionally.
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`do`](../ref/do.md), 
 [`while`](../ref/while.md), 
 [Do](../ref/accumulators.md#do),

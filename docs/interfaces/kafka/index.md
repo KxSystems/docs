@@ -47,7 +47,7 @@ test_topic:.kfk.Topic[producer;`test;()!()]
 show "Published 1 message";
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [:fontawesome-brands-github: KxSystems/kafka/examples/test_producer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_producer.q)
 
 
@@ -67,7 +67,7 @@ data:();
 .kfk.Sub[client;`test;enlist .kfk.PARTITION_UA];
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [:fontawesome-brands-github: KxSystems/kafka/examples/test_consumer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_consumer.q) for a slightly more elaborate version 
 
 
@@ -75,7 +75,7 @@ data:();
 
 The library supports and uses all configuration options exposed by `librdkafka`, except callback functions, which are identical to Kafka options by design of `librdkafka`. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [:fontawesome-brands-github: edenhill/librdkafka/CONFIGURATION.md](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md) for a list of options
 
 
@@ -88,7 +88,7 @@ One can use either existing Kafka broker or start a test Kafka broker as describ
 
 To start a Kafka instance for testing follow the instructions outlined in the link below
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Apache Kafka tutorial](http://kafka.apache.org/documentation.html#quickstart)
 
 Zookeeper and a Kafka broker are initialized using the following commands.
@@ -142,7 +142,7 @@ The messages will now flow from producer to consumer, the publishing rate can be
 
 ## Performance and tuning
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [:fontawesome-brands-github: edenhill/librdkafka/wiki/How-to-decrease-message-latency](https://github.com/edenhill/librdkafka/wiki/How-to-decrease-message-latency)
 
 There are numerous configuration options and it is best to find settings that suit your needs and setup. See [Configuration](#configuration) above. 

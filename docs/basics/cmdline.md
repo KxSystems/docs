@@ -221,7 +221,7 @@ See
 [Multithreaded input mode](../kb/multithreaded-input.md),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 

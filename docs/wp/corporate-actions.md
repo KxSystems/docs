@@ -65,7 +65,7 @@ One option for dealing with corporate actions would be to capture the daily stat
 
 In the following sections we look at the behavior of applying the sorted attribute to dictionaries and tables. Its characteristics are important in achieving temporal data to obtain meaningful results when passing any argument within the key range.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Set Attribute](../ref/set-attribute.md)
 
 Adding the sorted attribute `s` to a dictionary indicates that the data structure is sorted in ascending order. When kdb+ encounters this, a faster binary search can be used instead of the usual linear search. When applied to a dictionary, the attribute creates a step function.
@@ -168,7 +168,7 @@ Adequate reference data is paramount to the ability of obtaining consolidated st
 
 Introduced in kdb+ V3.0, GUID is now an option for `uid`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Datatypes](../basics/datatypes.md)
 
 
@@ -263,7 +263,7 @@ q)cact:`s#cact;
 
 Within the majority of kdb+ systems, data is obtained through the use of a gateway process.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Common design principles for kdb+ gateways](gateway-design/index.md)
 
 The gateway acts as an interface between the end user and the underlying databases. We would like to pass many different parameters into the function `getRes` that executes the query on the database, and perhaps more than the maximum number allowed in q, which is eight. For this reason we will use a dictionary as the single parameter. A typical parameter dictionary looks like the following:
@@ -361,7 +361,7 @@ RY.TO  RY.TO       62.23244 6057164
 
 All that is left to do is to aggregate the data by the `origSymList`. Use of a functional select here has the power to do this.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Functional qSQL](../basics/funsql.md)<br>
 _Q for Mortals_ [§9.12.1 Functional select](/q4m3/9_Queries_q-sql/#9121-functional-select)
 

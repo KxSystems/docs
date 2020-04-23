@@ -204,7 +204,7 @@ The `logicalBlockSize` represents how much data is taken as a compression unit, 
 
 Yes. In our defense, ZFS has similar issues. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [blog.buttermountain.co.uk](https://serverfault.com/questions/362090/freebsd-how-to-know-real-file-size-on-zfs-with-compression-on)
 
 Compressed file size can be obtained from the [`-21!` internal function](../basics/internal.md#-21x-compression-stats). 

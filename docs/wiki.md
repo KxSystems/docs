@@ -13,7 +13,7 @@ The Kx wiki was the primary documentation for q and kdb+ until January 2017.
 The content, which runs on [Mediawiki](http://mediawiki.org), 
 has now been [archived on GitHub](https://github.com/kxsystems/wiki).
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Current **reference card**](https://code.kx.com/q/ref/)
 
 Inquiries to <librarian@kx.com>. 

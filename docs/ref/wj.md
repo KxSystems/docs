@@ -123,6 +123,6 @@ ibm 10:01:08 105   107 108 107 108 104 106 106 107
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)
 

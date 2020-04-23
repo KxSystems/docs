@@ -85,7 +85,7 @@ q)c
 0
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Evaluation control](control.md)
 
 
@@ -103,7 +103,7 @@ q)c
 0
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Error handling](errors.md) 
 
 
@@ -165,7 +165,7 @@ sqsum:{[a;b]   / square of sum
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Multiline expressions](syntax.md#multiline-expressions)
 
 
@@ -180,6 +180,6 @@ locals    | $m$    | 110         | 23
 globals   | $n$    | 110         | 31
 constants |        | $240-(m+n)$ | $95-(m+n)$
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Parse errors](errors.md#parse-errors)
 

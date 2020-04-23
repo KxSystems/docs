@@ -50,7 +50,7 @@ Kdb+ refers to the following environment variables.
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 environment sections in namespaces
 [`.Q`](../ref/dotq.md),
 [`.z`](../ref/dotz.md) 

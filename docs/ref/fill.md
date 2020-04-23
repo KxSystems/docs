@@ -91,7 +91,7 @@ q)fills {(x where x=0W):0N;x} 0N 2 3 0W 0N 7 0W
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
 
 

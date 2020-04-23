@@ -65,7 +65,7 @@ name  file     line col text          pos
 
 By default on most Linux systems, a non-root process can only profile (using `ptrace`) its direct children. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Yama documentation](https://www.kernel.org/doc/Documentation/security/Yama.txt) for details
 
 `\q` starts a child process, so you should be able to profile these with no system changes.

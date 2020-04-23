@@ -45,7 +45,7 @@ abc
 1
 ```
 
-<i class="far fa-comment"></i>
+:fontawesome-regular-comment:
 A handle is an [applicable value](glossary.md#applicable-value). It (and its negation) can be applied to an argument and iterated. 
 
 

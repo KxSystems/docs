@@ -19,7 +19,7 @@ Class attributes are collected in n-dimensional arrays. This means that the perf
 
 The UCI website contains several examples of such datasets; an interesting example is the [Pen-Based Recognition of Handwritten Digits](https://archive.ics.uci.edu/ml/datasets/Pen-Based%2BRecognition%2Bof%2BHandwritten%2BDigits). 
 
-<i class="far fa-hand-point-right"></i> Lichman, M. (2013). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
+:fontawesome-regular-hand-point-right: Lichman, M. (2013). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
 
 This dataset contains two disjointed collections:
 

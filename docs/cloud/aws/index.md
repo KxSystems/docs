@@ -389,7 +389,7 @@ Key issues:
 -   The Amazon Linux AMI Security Center provides patch and fix lists, and these can be automatically inlaid by the AMI. The Amazon Linux AMI is a supported and maintained Linux image provided by AWS for use on EC2.
 -   Encryption at rest is offered by many of the storage interfaces covered in this report.
 
-<i class="far fa-hand-point-right"></i> [Amazon Security](https://aws.amazon.com/blogs/security/)
+:fontawesome-regular-hand-point-right: [Amazon Security](https://aws.amazon.com/blogs/security/)
 
 
 ## Getting your data out of EC2
@@ -444,7 +444,7 @@ Finally, there is the ubiquitous Amazon S3 object store, available in all region
 
 Amazon can  be configured to duplicate your uploaded data across multiple geographically diverse repositories, according to the replication service selected at bucket-creation time. S3 promises [99.999999999%](https://aws.amazon.com/s3/faqs/) durability. 
 
-<i class="far fa-hand-point-right"></i> [AWS S3 replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
+:fontawesome-regular-hand-point-right: [AWS S3 replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
 
 However, there are severe limitations on using S3 when it comes to kdb+.
 The main limitation is the API. 

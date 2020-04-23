@@ -130,7 +130,7 @@ boss@droplet:~$
 ```
 
 
-## <i class="far fa-hand-point-right"></i> What’s next?
+## :fontawesome-regular-hand-point-right: What’s next?
 
 Set up a script to run as a service on your droplet:
 

@@ -133,7 +133,7 @@ q)256 vs .Q.addr`localhost
 127 0 0 1
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.host`](#qhost-hostname)
 <br>
 :fontawesome-solid-book-open:
@@ -484,10 +484,10 @@ Enumerate against contents of `db/mysym`:
 q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.en`](#qen-enumerate-varchar-columns)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Working with sym files](../wp/symfiles.md#qens)
 
 
@@ -667,7 +667,7 @@ Syntax:
 
 Blah blah blah
 
-<i class="far fa-graduation-cap"></i>
+:fontawesome-regular-graduation-cap:
 [Named Pipes](../kb/named-pipes.md)
  -->
 
@@ -964,7 +964,7 @@ q).Q.addr `netbox.com
 1753385751i
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.addr`](#qaddr-ip-address)
 <br>
 :fontawesome-solid-book:
@@ -1383,7 +1383,7 @@ q).Q.res,key`.q
 `abs`acos`asin`atan`avg`bin`binr`cor`cos`cov`delete`dev`div`do`enlist`exec`ex..
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.id`](#qid-sanitize)
 
 
@@ -1604,7 +1604,7 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 .Q.view 2#date
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 

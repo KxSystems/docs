@@ -107,7 +107,7 @@ t   | t . t t t t f f t . . . . . . . . .
 
 Range: `ijfpmdznuvte`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`bin`](bin.md), [`floor`](floor.md)  
 Basics: [Mathematics](../basics/math.md)
 

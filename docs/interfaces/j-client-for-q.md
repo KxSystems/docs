@@ -499,7 +499,7 @@ Datetime is a float: day number + seconds as a fraction of day. For example:
 
 ## Message format
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Interprocess communication](../basics/ipc.md) for the internal layout of messages
 
 

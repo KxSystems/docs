@@ -522,7 +522,7 @@ back into a string using `-9!` so that it can then be evaluated.
 q).z.ws:{neg[.z.w] -8! @[value;-9!x;{`$ "'",x}]} 
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Reference: [IPC](../../basics/ipc.md) for more on serialization 
 
 
@@ -614,7 +614,7 @@ connections using OpenSSL. This process will secure any WebSocket server
 and upgrade its connection protocols to `wss://` and `https://`
 respectively. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [Secure sockets stunnel](../../kb/websockets.md#secure-sockets-stunnel)
 
 
@@ -747,7 +747,7 @@ intra-day and historical data. Completely configurable, _Dashboards for
 Kx_ enable clients to quickly build powerful grids and charts of the
 underlying data stored within Kx and other databases. 
 
-<i class="far fa-hand-point-right"></i> [Dashboards for Kx](https://kx.com/solutions/the-enterprise/dashboards/)
+:fontawesome-regular-hand-point-right: [Dashboards for Kx](https://kx.com/solutions/the-enterprise/dashboards/)
 
 All tests were run using kdb+ version 3.5 (2017.11.30)
 

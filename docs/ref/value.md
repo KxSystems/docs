@@ -45,7 +45,7 @@ q)value `a
 1 2 3
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`.Q.v`](dotq.md#qv-value) (value)
 
 

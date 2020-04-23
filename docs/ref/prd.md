@@ -66,5 +66,5 @@ q)prds "abc"                 / type error if list is not numeric
 
 `prds` is a uniform function. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Mathematics](../basics/math.md)

@@ -8,8 +8,8 @@ keywords: code, github, kdb+, q, repo, repository
 
 
 
-<i class="far fa-hand-point-right"></i> [Interfaces](interfaces/index.md) to feeds, services and other languages  
-<i class="far fa-hand-point-right"></i> [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
+:fontawesome-regular-hand-point-right: [Interfaces](interfaces/index.md) to feeds, services and other languages  
+:fontawesome-regular-hand-point-right: [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
 
 Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
 
@@ -766,7 +766,7 @@ about new repositories.</div>
 ## :fontawesome-solid-share-alt: Machine learning
 
 <small>
-	<i class="far fa-hand-point-right"></i>
+	:fontawesome-regular-hand-point-right:
 	[Repositories maintained by Kx](#kx)
 </small>
 

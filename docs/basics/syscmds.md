@@ -333,7 +333,7 @@ See
 [Multithreaded input mode](../kb/multithreaded-input.md),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
@@ -597,7 +597,7 @@ q){x where x like"????"}system"v .h"
 !!! tip "Expunging variables"
 
     To expunge `a` from the workspace root, ``delete a from `.``
-    <i class="far fa-hand-point-right"></i> _Q for Mortals_: [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
+    :fontawesome-regular-hand-point-right: _Q for Mortals_: [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
 
 ## `\w` (workspace)
@@ -863,7 +863,7 @@ Syntax: `\\`
 -   In the interactive session type `\\` at the prompt to quit the session.
 -   Inside a function, use `value"\\\\"` or `exit 0` for the same result.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`exit`](../ref/exit.md),
 [`value`](../ref/value.md),
 [`.z.exit`](../ref/dotz.md#zexit-action-on-exit)

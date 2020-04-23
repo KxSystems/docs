@@ -13,7 +13,7 @@ Outside the Fusion interfaces to R, a number of interfaces provide extremely use
 
 Although it is not the recommended method, if R is running on Windows, the q ODBC driver can be used to connect to kdb+ from R.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Kdb+ server for ODBC](../q-server-for-odbc.md)
 
 The RODBC package should be installed in R. An example is given below.
@@ -50,7 +50,7 @@ q)pnorm[0;1.5;1.5] / cdf value for 0 for a N(1.5,1.5) distribution
 q)dnorm[0;1.5;1.5] / normal density at 0 for N(1.5;1.5) distribution
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Andrey’s [althenia.net/qml](http://althenia.net/qml)
 for an embedded math lib
 

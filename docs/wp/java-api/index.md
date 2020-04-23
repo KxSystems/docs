@@ -842,7 +842,7 @@ simple dataflow of a potential kdb+ tick system:
 
 ![Simple dataflow of a potential kdb+ tick system](media/image2.png)
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [_Building Real-time Tick Subscribers_](../rt-tick/index.md) regarding the above vanilla setup
 
 Of interest in this white paper are the Java publisher and subscriber processes. As the kdb+ tick system is very widely used, both of these kinds of processes are highly likely to come up in development tasks involving kdb+ interfacing.
@@ -1074,7 +1074,7 @@ int[] aSize = new int[]{1000, 2000};
 In order to maximize tickerplant throughput and efficiency, it is
 generally recommended to publish multiple rows in one go. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 White paper [_Kdb+tick Profiling for Throughput Optimization_](../tick-profiling.md).
 
 Care has to be taken here to ensure that all typed arrays maintain

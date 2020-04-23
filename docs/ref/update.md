@@ -13,7 +13,7 @@ _Add rows or columns to a table_
 
 ## `update`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [q-SQL](../basics/qsql.md)<br>
 _Q for Mortals_: [§9.5 The `update` template](/q4m3/9_Queries_q-sql/#95-the-update-template)
 
@@ -22,7 +22,7 @@ _Q for Mortals_: [§9.5 The `update` template](/q4m3/9_Queries_q-sql/#95-the-upd
 
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
-    <i class="far fa-hand-point-right"></i>
+    :fontawesome-regular-hand-point-right:
     [q-SQL](../basics/qsql.md#cond)
 
 
@@ -30,6 +30,6 @@ _Q for Mortals_: [§9.5 The `update` template](/q4m3/9_Queries_q-sql/#95-the-upd
 
 _Functional update_
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Functional qSQL](../basics/funsql.md#update)
 

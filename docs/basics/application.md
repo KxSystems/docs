@@ -235,7 +235,7 @@ In the last example, the derived function `count'` is the argument of the second
 
 Only iterators can be applied postfix. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Apply/Index and Apply/Index At](../ref/apply.md) for how to apply functions and index lists
 
 

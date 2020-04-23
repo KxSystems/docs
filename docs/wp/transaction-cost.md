@@ -41,7 +41,7 @@ The point-in-time query is commonly used by analysts to compare performance agai
 
 A powerful built-in function in q makes this point-in-time query a trivial operation – the `aj` or as-of join.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`aj`](../ref/aj.md)
 
 It takes three arguments:
@@ -110,7 +110,7 @@ FDP 11:20:00.000 100.55  200    100.03 100
 
 Depending on whether your table is in-memory or on disk, correct attribute usage should be employed.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`aj`](../ref/aj.md#performance)
 
 
@@ -344,7 +344,7 @@ q)\ts select date, sym, bar, firstTradePrice, volume, openBid, openAsk
 1090 183184
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Performance tips](../kb/performance-tips.md)
 
 On subsequent runs, when the data is now in the operating-system cache, the speed-up is even more pronounced at almost 500×. If this is a calculation, which is repeatedly performed, the argument to pre-calculate is even stronger.

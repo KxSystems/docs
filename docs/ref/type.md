@@ -31,7 +31,7 @@ q)type (+)                       / function atom
 102h
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [.Q.ty](dotq.md#qty-type)  
 Basics: [Casting and encoding](../basics/casting.md),
 [Datatypes](../basics/datatypes.md)

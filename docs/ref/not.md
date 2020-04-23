@@ -29,6 +29,6 @@ b| 0001b
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`neg`](neg.md)  
 Basics: [Logic](../basics/logic.md)

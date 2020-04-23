@@ -57,7 +57,7 @@ q)where 0 1 2 3 ! 2 3 0 1     / same on dictionary with indices as keys
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [`where` in q-SQL](../basics/qsql.md), 
 [Selection](../basics/selection.md)
 

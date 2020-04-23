@@ -99,7 +99,7 @@ Each slave will read, transform, map and upsert data to a relevant schema and to
 
 Once all files of a batch are loaded, the slaves will be tasked with merging a list of specific columns, sorting based on the index from the files saved and if necessary include any existing data from the HDB during the sort and merge. Once the merge is complete the table will be moved to the HDB, during which all queries to the HDB will be temporarily disabled using a lockfile.
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White paper: [“Intraday writedown solutions”](../intraday-writedown/index.md)
 for similar solutions
 
@@ -447,7 +447,7 @@ In order to maintain sym file integrity the following method is used to ensure a
       string symFile:` sv .mi.hdbDir,`sym] }
 ```
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White paper: [Working with symfiles](../symfiles.md)
 
 
@@ -546,7 +546,7 @@ In order to reduce downtime between batches, each slave is killed and restarted 
 
 Once the batch successfully completes, any post-ingestion event-driven tasks can be run. These can include any scheduled reporting, regulatory reporting for surveillance, transaction analysis, or ad-hoc queries.
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White papers:<br>
 [Surveillance techniques to effectively monitor algo- and high-frequency trading](../surveillance/index.md)<br>
 [Transaction-cost analysis using kdb+](../transaction-cost.md)

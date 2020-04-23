@@ -76,7 +76,7 @@ a b c  d
 
 Join for keyed tables is strict; both the key and data columns must match in names and datatypes.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)  
 [`.Q.dd`](dotq.md#qdd-join-symbols) join symbols
 

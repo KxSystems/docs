@@ -268,14 +268,14 @@ In general, there are two common types of errors; those generated during the soc
 
 As an example of an initialization error, the ”Authentication Error” will occur when the user name or password credentials passed to `khpu` are invalid. In kdb+, a process can be started in a restricted access mode where only users with valid credentials can connect.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 White paper: [WebSockets](../websockets/index.md)
 
 Similarly, the ”Connection error” can result for incorrect hostname or port numbers being passed to `khpu`.
 
 Evaluation errors occur from invalid queries being passed to the kdb+ process using `k`. In this case, the type element (`x->t`) of the `K` object, `x`, returned by `k` should be checked, see [_Object type element t_](#object-type-element-t). If the type value is 0 (null), then a network error has occurred. If the type value is `-128`, then `x->s` will give the error message resulting from the invalid query. In `error.c`, below, three invalid queries are passed to a kdb+ process and their associated error messages printed. For all subsequent examples in this paper, the function `isRemoteErr` will be used to capture such errors. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Errors](../../basics/errors.md) for the complete list of error codes 
 
 ```c
@@ -357,7 +357,7 @@ k(-handle, "1.0 + 2.0", (K)0);
 
 The asynchronous option is recommended when maximum data throughput is desired and the sender does not require an acknowledgment. Greater technical details on synchronous vs asynchronous requests can be found in the following white papers.
 
-<i class="far fa-hand-point-right"></i> White papers:  
+:fontawesome-regular-hand-point-right: White papers:  
 [Common design principles for kdb+ gateways](../gateway-design/index.md)  
 [Query Routing: A kdb+ framework for a scalable, load balanced system](../query-routing/index.md)
 
@@ -1312,7 +1312,7 @@ A kdb+ tickerplant is a kdb+ process speciﬁcally designed to handle incoming, 
 
 ![Architecture](img/architecture.png)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Building real-time tick subscribers](../rt-tick/index.md)
 
 
@@ -1369,7 +1369,7 @@ Once the tickerplant and feedhandler processes are up and running the C subscrib
 
 Subscriber processes are required to make an initial subscribe request to the tickerplant in order to receive data.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Publish and subscribe](../../kb/publish-subscribe.md)
 
 This request involves calling the `.u.sub` function with two parameter arguments. The ﬁrst argument is the table name, and the second is the list of symbols to subscribe to.

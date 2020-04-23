@@ -32,5 +32,5 @@ The Knowledge Base contains articles about how to get things done with kdb+.
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Interfaces](../interfaces/index.md)

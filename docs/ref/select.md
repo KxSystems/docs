@@ -121,7 +121,7 @@ a
 
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
-    <i class="far fa-hand-point-right"></i>
+    :fontawesome-regular-hand-point-right:
     [q-SQL](../basics/qsql.md#cond)
 
 
@@ -184,7 +184,7 @@ a b
 0 2
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§9.3 The `select` Template](/q4m3/9_Queries_q-sql/#93-the-select-template)  
 Basics: [qSQL](../basics/qsql.md)
 
@@ -192,6 +192,6 @@ Basics: [qSQL](../basics/qsql.md)
 
 ## `?` Select
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 For functional Select, see Basics: [Functional qSQL](../basics/funsql.md#select)
 

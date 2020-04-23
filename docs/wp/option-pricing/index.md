@@ -11,7 +11,7 @@ keywords: asian, black-scholes, c++, european, kdb+, monte carlo, option pricing
 
 In this paper, we compare the use of both Monte Carlo (MC) and Quasi-Monte Carlo (QMC) methods in the process of pricing European and Asian options. In doing so, we consider the use of two discretization schemes - standard discretization and Brownian-bridge construction. Results produced by the different methods are compared with the deterministic Black-Scholes price for each option type, using Global Sensitivity Analysis (SA). Note that the methods demonstrated below follow the work presented by [S. Kucherenko et al. 2007](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott").
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 S. Kucherenko et al. 2007, [“The Importance of Being Global – Application of Global Sensitivity Analysis in Monte Carlo Option Pricing”](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott"), _Wilmott_, pp. 82–91
 
 
@@ -61,7 +61,7 @@ Within the financial industry, there is a need to price complex financial instru
 
 These models are based on pseudo-random numbers which, despite being commonly used, exhibit very slow convergence, with a rate of $O(1/\sqrt{N})$ where $N$ is the number of sampled points. To improve upon these models, QMC methods have been developed which use low-discrepancy sequences (LDS) to produce a rate of convergence ~ $O(1/N)$. LDS are deterministic uniformly distributed sequences which are specifically designed to place sample points as uniformly as possible. Practical studies have shown that the most effective QMC method for applicaton in financial engineering is based on Sobol' LDS.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 S. Kucherenko et al. 2001, [“Construction and Comparison of High-Dimensional Sobol’ Generators”](http://www.broda.co.uk/doc/HD_SobolGenerator.pdf), _Wilmott_, Nov, pp. 64-79<br>
 [broda.co.uk](http://www.broda.co.uk)<br>
 P. Jäckel 2001, _Monte Carlo Methods In Finance_, pp. 122.<br>

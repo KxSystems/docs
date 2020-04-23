@@ -80,7 +80,7 @@ The **Oxford comma** cannot safely be used without thought.
 -   It can introduce ambiguity into a list.
 -   Some lists have ambiguities that its use or omission do not resolve; such ambiguity may be resolved only by rephrasing.
 
-<i class="far fa-hand-point-right"></i> _Wikipedia:_ [Serial comma](https://en.wikipedia.org/wiki/Serial_comma)
+:fontawesome-regular-hand-point-right: _Wikipedia:_ [Serial comma](https://en.wikipedia.org/wiki/Serial_comma)
 
 Commas can have semantic force outside lists, e.g. _Let’s eat, Grandma!_
 

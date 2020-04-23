@@ -63,7 +63,7 @@ The “tools” you have to work with are the `p`? functions from `.z`: [`.z.po`
 
 By default, execution is done using [`value`](../ref/value.md) so strings or symbol argument lists can be tested in a console. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 _Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 
@@ -424,7 +424,7 @@ q)
 
     All these utility files should be treated as examples. For any particular case they probably have too many options and should be cut down to do just what you want. The access control script is the most obvious case - it probably has far too many options/checks going on.
 
-## <i class="far fa-hand-point-right"></i> Further reading
+## :fontawesome-regular-hand-point-right: Further reading
 
 -   [Namespace `.z`](../ref/dotz.md ".z namespace")
 -   [Changes in V2.4](../releases/ChangesIn2.4.md)

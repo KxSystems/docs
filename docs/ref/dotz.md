@@ -110,7 +110,7 @@ and `mySSOAuthenticator` is your custom code that authenticates against your SSO
 
 Note that if `.z.ac` is defined, `.z.pw` will _not_ be called for HTTP connections for authentication.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pw` password check](#zpw-validate-user)
 
 
@@ -237,7 +237,7 @@ q))'`up
 ```bash
 os>..
 ```
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pc` port close](#zpc-close)
 <br>
 :fontawesome-solid-book:
@@ -268,7 +268,7 @@ q).z.f
 `test.q
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.x` argv](#zx-argv)
 
 
@@ -337,7 +337,7 @@ q).z.k
 2006.10.30
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.k` release date](#zk-release-date)
 
 
@@ -355,7 +355,7 @@ q)
 
 This value is checked against `.Q.k` as part of the startup to make sure that the executable and the version of q.k being used are compatible.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.K` version](#zk-version)
 
 
@@ -527,7 +527,7 @@ Where `f` is a unary function, called with the object that is passed to the q se
 
 The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and executes in the root context.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.ps`](#zps-set)
 
 
@@ -569,7 +569,7 @@ Connection     | "keep-alive"
 Host           | "localhost:5001"
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pp` port post](#zpp-http-post)
 <br>
 :fontawesome-solid-book:
@@ -623,7 +623,7 @@ Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ 
 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pc` port close](#zpc-close),
 [`.z.pw` validate user](#zpw-validate-user)
 
@@ -674,7 +674,7 @@ q)0 "2+2"
 4
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pg`](#zpg-get)
 
 
@@ -692,7 +692,7 @@ If `.z.pw` returns `0b` the task attempting to establish the connection will get
 
 The default definition is `{[user;pswd]1b}`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.po` port open](#zpo-open)
 <br>
 <i class="fas fa-book""></i>
@@ -849,7 +849,7 @@ As the connection has been closed by the time `.z.wc` is called there are strict
 
 To allow you to clean up things like tables of users keyed by handle the handle that _was_ being used is passed as a parameter to `.z.wc`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.po` port open](#zpo-open),
 [`.z.pc` port close](#zpc-close),
 [`.z.pw` validate user](#zpw-validate-user)
@@ -864,7 +864,7 @@ Where `f` is a unary function, `.z.wo` is evaluated when a websocket connection 
 
 The argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.wc` websocket close](#zwc-websocket-close),
 [`.z.po` port open](#zpo-open),
 [`.z.pc` port close](#zpc-close),
@@ -957,7 +957,7 @@ xyz| 321f
 efg| `foo
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.f` file](#zf-file)
 
 

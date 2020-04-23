@@ -8,13 +8,13 @@ keywords: api, c, interface, kdb+, library, q
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [C API reference](capiref.md)
 
 There are three cases in which to to use the C API for kdb+:
 
 1.   Dynamically-loaded library called by q, e.g. OS, math, analytics.  
-<i class="far fa-hand-point-right"></i> [Using C functions](using-c-functions.md)
+:fontawesome-regular-hand-point-right: [Using C functions](using-c-functions.md)
 2.  Dynamically-loaded library doing callbacks into q, e.g. feedhandlers ([Bloomberg client](q-client-for-bloomberg.md))
 3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`. 
 
@@ -718,7 +718,7 @@ if(r && -128==r->t)
 Under some network-error scenarios, `errno` can be used to obtain the details of the error,
 e.g. `perror(“network”);`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`krr`](capiref.md#krr-signal-c-error)
 
 
@@ -892,7 +892,7 @@ It can be a struggle printing q values from a debugger, but you can call the han
 
 If your client is a shared library, you might get away with `p k(0,"show",r1(x),(K)0)`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 _GDB Manual_: [§12. C Preprocessor Macros](https://sourceware.org/gdb/onlinedocs/gdb/Macros.html)
 
 Now, we compile the program using the GNU C compiler, `gcc`. We pass the `-gdwarf-21` and `-g3` flags to ensure the compiler includes information about preprocessor macros in the debugging information.
@@ -977,7 +977,7 @@ $13 = {m = 0 '\000', a = 0 '\000', t = -7 '\371', u = 0 '\000',
 The q multithreaded C library (`c.dll`) uses static thread-local storage (TLS), and is incompatible with the `LoadLibrary` Win32 API. 
 If you are writing an Excel plugin, this point is relevant to you, as loading of the plugin uses this mechanism. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](http://support.microsoft.com/kb/118816)
 
 When trying to use the library, the problem manifests itself as a crash during the `khpu()` call.

@@ -22,5 +22,5 @@ The JavaScript used to do the formatting of the rows and columns came from an ar
 
 ![Plaid-striped formatting](../img/plaid.png "Plaid-striped formatting")
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Namespace `.h`](../ref/doth.md)

@@ -60,6 +60,6 @@ x 10
 t 40
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`in`](in.md), [`within`](within.md)  
 Basics: [Selection](../basics/selection.md)

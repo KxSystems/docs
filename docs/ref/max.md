@@ -79,7 +79,7 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 `mmax` is a uniform function. 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Greater Than](greater-than.md)  
 Knowledge Base: 
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  

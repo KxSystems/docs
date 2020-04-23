@@ -54,7 +54,7 @@ q)-1 tree[`;0]
 -1
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Reference: [`.z.s`](../ref/dotz.md#zs-self)
 
 Observe that the user of `tree` has to supply an initial value for the counter, always 0. Bit of gunk. 

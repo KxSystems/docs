@@ -162,5 +162,5 @@ length | `neg x` exceeds `count y`
 type   | `x` is negative (Roll only)
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`rand`](rand.md)

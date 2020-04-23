@@ -147,7 +147,7 @@ below.
 Here we assume some familiarity with loading large data files by
 splitting the file and loading in chunks using `.Q.fs` and `.Q.fsn`. 
 
-<i class="far fa-hand-point-right"></i> [Knowledge Base](../../kb/index.md)
+:fontawesome-regular-hand-point-right: [Knowledge Base](../../kb/index.md)
 
 
 ### Striping data over multiple partitions per date
@@ -511,7 +511,7 @@ The use of compression for all or part of the dataset here is outside
 the scope of this white paper, however, this is undoubtedly an
 important feature to consider using for options data. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [File compression](../../kb/file-compression.md)
 
 

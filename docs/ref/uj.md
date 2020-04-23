@@ -89,6 +89,6 @@ a| b c
 Since 2017.04.10, the earlier version is available in all V3.5 and later versions as `ujf`.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)
 

@@ -22,10 +22,10 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
 
 ## Licensed customers
 
-<i class="far fa-comments"></i> kdb+ Topicbox
+:fontawesome-regular-comments: kdb+ Topicbox
 : If you work at a company that has licensed kdb+, you can join the [k4 Topicbox group](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106).
 
-<i class="far fa-handshake"></i> Designated Contacts
+:fontawesome-regular-handshake: Designated Contacts
 : Licensed customers designate to Kx staff members whom they have authorised to deal with kdb+ licenses, downloads and bug reports. Designated Contacts can reach us at the following addresses:
 
     <table>
@@ -55,19 +55,19 @@ This site is the primary resource for kdb+ developers.
 :fontawesome-solid-book: [_Q for Mortals 3_](/q4m3/)
 : An online edition of the classic textbook, now in its third edition. 
 
-<i class="far fa-map"></i> [Technical White papers](wp/index.md)
+:fontawesome-regular-map: [Technical White papers](wp/index.md)
 : An occasional series of white papers on developing systems with kdb+.
 
 :fontawesome-solid-glasses: [Knowledge Base](kb/index.md)
 : A collection of shorter articles on developing systems with kdb+.
 
-<i class="far fa-handshake"></i> [Interfaces](interfaces/index.md)
+:fontawesome-regular-handshake: [Interfaces](interfaces/index.md)
 : Interfaces between kdb+ and other languages, services and editors.
 
 
 ## Web and Real-World
 
-<i class="far fa-comments"></i> [kdb+ personal developers](https://groups.google.com/forum/?fromgroups#!forum/personal-kdbplus)
+:fontawesome-regular-comments: [kdb+ personal developers](https://groups.google.com/forum/?fromgroups#!forum/personal-kdbplus)
 : An open Google discussion group for users of the Personal Developer edition of kdb+.
 
 :fontawesome-brands-stack-overflow: [Stack Overflow](https://stackoverflow.com/search?q=kdb%2B)

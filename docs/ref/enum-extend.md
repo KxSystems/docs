@@ -94,7 +94,7 @@ Kdb+ does not report an error if that lock call fails.
 
 Enum Extend is a uniform function. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
 [`.Q.en` (enumerate varchar cols)](dotq.md#qen-enumerate-varchar-cols),

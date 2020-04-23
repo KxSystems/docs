@@ -10,7 +10,7 @@ keywords: api, interface, kdb+, library, odbc, q
 
 In Windows and Linux, you can use ODBC to connect to a non-kdb+ database from q. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [ODBC](../kb/odbc.md)
 
 
@@ -40,7 +40,7 @@ Start kdb+ and load `odbc.k` – this populates the `.odbc` context.
     <pre><code class="language-bash">
     $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$QHOME/l64
     </code></pre>
-    <i class="far fa-hand-point-right"></i> [unixODBC configuration guide](https://www.easysoft.com/developer/interfaces/odbc/linux.html)
+    :fontawesome-regular-hand-point-right: [unixODBC configuration guide](https://www.easysoft.com/developer/interfaces/odbc/linux.html)
 
 
 ## Method
@@ -181,6 +181,6 @@ TraceFile     =/tmp/odbc.log
 ```
 to the `odbcinst.ini` file, which can typically be found in `/etc` or `/usr/local/etc`.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [MSDN](https://docs.microsoft.com/en-us/sql/odbc/reference/develop-app/enabling-tracing?view=sql-server-2017).aspx)
 for tracing on Windows

@@ -69,7 +69,7 @@ Announcements to mark our 25th birthday:
 
 Listed on [GitHub](../github.md#development-tools): three new development tools  by legendary developer [Leslie Goldsmith](https://github.com/LeslieGoldsmith).
 
-<i class="far fa-hand-point-right"></i> [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
+:fontawesome-regular-hand-point-right: [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
 
 
 ## :fontawesome-brands-github: Jupyter kernel for kdb+
@@ -79,7 +79,7 @@ Listed on [GitHub](../github.md#development-tools): three new development tools 
 In beta on [GitHub](https://github.com/KxSystems/jupyterq): a Jupyter kernel for kdb+ 
 
 
-## <i class="far fa-map"></i> Socket sharding on Linux
+## :fontawesome-regular-map: Socket sharding on Linux
 
 <small>2018.01.25</small>
 
@@ -138,7 +138,7 @@ The site content is now licensed under a <a rel="license" href="https://creative
 <div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
-## <i class="far fa-comment"></i> Terminology
+## :fontawesome-regular-comment: Terminology
 
 <small>2017.06.15</small>
 

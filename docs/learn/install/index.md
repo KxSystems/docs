@@ -73,10 +73,10 @@ Use of the Free 32-bit kdb+ Personal Edition is governed by the [32-bit terms an
 Use of commercial kdb+ is covered by your license agreement with Kx.
 Ensure your kdb+ installation is connected to your `k4.lic` or `kc.lic` [license key file](../licensing.md).
 
-<i class="far fa-hand-point-right"></i> [License errors](../../basics/errors.md#license-errors), [Licensing](../licensing.md), [Linux production notes](../../kb/linux-production.md)
+:fontawesome-regular-hand-point-right: [License errors](../../basics/errors.md#license-errors), [Licensing](../licensing.md), [Linux production notes](../../kb/linux-production.md)
 
 
-## <i class="far fa-hand-point-right"></i> What’s next?
+## :fontawesome-regular-hand-point-right: What’s next?
 
 [Learn the q programming language](../index.md#learn-q), look through the [reference card](../..//ref/index.md), or see in the [Knowledge Base](../../kb/index.md)  what you can do with kdb+.
 

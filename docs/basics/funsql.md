@@ -76,7 +76,7 @@ where:
 
     Note throughout the use of [`enlist`](../ref/enlist.md) to create singletons to ensure that appropriate entities are lists.
 
-<i class="far fa-hand-point-right"></i> [q-ist] [Functional Query Functions](http://www.q-ist.com/2012/10/functional-query-functions.html)
+:fontawesome-regular-hand-point-right: [q-ist] [Functional Query Functions](http://www.q-ist.com/2012/10/functional-query-functions.html)
  
 
 

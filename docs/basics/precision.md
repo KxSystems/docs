@@ -160,7 +160,7 @@ q)0=a-(a-1)      / a is not strictly equal to a-1
 
 To see how this works, first set the print precision so that all digits of floating-point numbers are displayed.  
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`\P` Precision](syscmds.md#p-precision)
 
 ```q
@@ -278,6 +278,6 @@ q)0=a-b                               / but not strictly equal
 Other temporal types, including the new timestamp and timespan types in V2.6, are based on int or long. 
 These do not use comparison tolerance, and are therefore appropriate for database keys.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Comparison](comparison.md), 
 [Match](../ref/match.md), [`differ`](../ref/differ.md)

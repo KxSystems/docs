@@ -149,7 +149,7 @@ p  parted     g  grouped
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Command-line options](../basics/cmdline.md),
 [System commands](../basics/syscmds.md),
 [OS Commands](../basics/syscmds.md#os-commands),
@@ -302,7 +302,7 @@ De/serialize as JSON
 
 ### `.m`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Memory backed by files](dotm.md)
 
 

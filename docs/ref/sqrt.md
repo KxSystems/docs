@@ -29,7 +29,7 @@ range  f . f f f f f f f . f f f z f f f f
 
 Range: `fz`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`exp`](exp.md), 
 [`log`](log.md), 
 [`xexp`](exp.md#xexp), 

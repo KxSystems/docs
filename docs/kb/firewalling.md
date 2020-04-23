@@ -36,7 +36,7 @@ Restrict input by defining at least:
 .z.ps:{}
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Namespace `.z.`](../ref/dotz.md)
 
 If you want to allow certain IPC calls, implement only the ones you want. Trying to blacklist functions is tricky because some otherwise useful functions may have a mode that accesses the disk which may cause information leak (e.g. [key](../ref/key.md)). It is much easier to use a whitelist approach. White paper [Permissions with kdb+](../wp/permissions/index.md) has some suggestions here.

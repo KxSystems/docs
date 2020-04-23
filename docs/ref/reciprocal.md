@@ -33,7 +33,7 @@ range  f . f f f f f f f . p f f z f f f f
 
 Range: `fpz`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`div`](div.md), [Divide](divide.md)  
 Basics: [Mathematics](../basics/math.md)
 

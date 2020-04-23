@@ -45,7 +45,7 @@ q)(2%1+10)ema p
     </code></pre>
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`avg`, `avgs`, `mavg`, `wavg`](avg.md)  
 Basics: [Mathematics](../basics/math.md)
 

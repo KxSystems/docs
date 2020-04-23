@@ -80,7 +80,7 @@ input, parameter | argument
 matrices         | matrixes
 output           | result
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Glossary](../basics/glossary.md)
 
 

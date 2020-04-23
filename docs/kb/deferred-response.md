@@ -62,7 +62,7 @@ callback:{[clientHandle;result]
  }
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Internal `-30!x`](../basics/internal.md#-30x-deferred-response)  
 [Namespace `.z`](../ref/dotz.md)
 

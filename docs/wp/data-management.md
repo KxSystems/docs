@@ -455,6 +455,6 @@ Simon Mescal is based in New York. Simon is a financial engineer who has designe
 
 ## Related articles
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Working with sym files](symfiles.md)
 

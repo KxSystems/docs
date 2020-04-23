@@ -7,7 +7,7 @@ keywords: api, interface, kdb+, library, odbc, odbc3, q, SQL
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [ODBC](../kb/odbc.md)
 
 The ODBC3 server allows applications to query kdb+ via the ODBC interface.  

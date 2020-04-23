@@ -60,5 +60,5 @@ date       sym  price   size
 
     For a binary version, use Match Each Prior: `~:'`.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Comparison](../basics/comparison.md)

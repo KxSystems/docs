@@ -28,7 +28,7 @@ to
 
 > The active mood is to be preferred. 
 
-<i class="far fa-hand-point-right"></i> [_The Complete Plain Words_](https://en.wikipedia.org/wiki/The_Complete_Plain_Words)
+:fontawesome-regular-hand-point-right: [_The Complete Plain Words_](https://en.wikipedia.org/wiki/The_Complete_Plain_Words)
 
 
 ## Numbers 

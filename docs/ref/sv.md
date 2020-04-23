@@ -71,7 +71,7 @@ q)` sv `mywork`dat
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`vs`](vs.md#partition) partition
 
 
@@ -154,7 +154,7 @@ q)0b sv 8#1b
 0xff
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`vs`](vs.md#encode) encode  
 [`.Q.j10`](dotq.md#qj10-encode-binhex) (encode binhex)   
 [`.Q.x10`](dotq.md#qx10-decode-binhex) (decode binhex)   

@@ -26,7 +26,7 @@ Some of the possible factors are:
 
 This paper examines the first four of these. All tests were performed on 64-bit Linux with eight CPUs, using kdb+ version 3.1 (2014.02.08).
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Starting kdb+: [Tick](../learn/startingkdb/tick.md)
 
 !!! note "Your mileage will vary"
@@ -388,7 +388,7 @@ We can see that increasing the number of subscribers increases the tickerplant p
 
 If there are multiple subscribers to a tickerplant it might be worth considering a chained tickerplant to reduce the number of subscribers. Only the chained tickerplant and the subscribers which need the data as quickly as possible would subscribe to the main tickerplant. Then other subscribers would subscribe to the chained tickerplant to get the data.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Chained tickerplant](../kb/chained-tickerplant.md)
 
 

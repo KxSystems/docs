@@ -66,7 +66,7 @@ writes `bytes` to [`file symbol`](../basics/glossary.md#file-symbol).
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`0:` File Text](file-text.md)<br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)

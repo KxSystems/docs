@@ -11,7 +11,7 @@ hero: :fontawesome-brands-superpowers: Fusion for Kdb+ / PyQ
 
 PyQ can be installed using the standard Python package management tool `pip`.
 
-<i class="far fa-hand-point-right"></i> [Installing Python Modules](https://docs.python.org/3/installing/)
+:fontawesome-regular-hand-point-right: [Installing Python Modules](https://docs.python.org/3/installing/)
 
 To install the latest version, run the following command
 
@@ -43,7 +43,7 @@ Solaris is supported, but has not been tested recently.
 V2.8+
 
 -   :fontawesome-solid-download: [Download](https://kx.com/download/)
--   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/index.md)
+-   :fontawesome-regular-hand-point-right: [Install](../../learn/install/index.md)
 
 ### Python
 

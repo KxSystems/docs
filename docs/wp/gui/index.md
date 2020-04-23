@@ -270,7 +270,7 @@ process. Within C#, this will throw a KException with the message
 `access`. This can be used to track if the user has been refused
 access in the C# API.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Tom Martin’s white paper [“Permissions with kdb+”](../permissions/index.md)
 for more detailed information on validation and authentication
 

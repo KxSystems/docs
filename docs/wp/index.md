@@ -4,7 +4,7 @@ description: Index to technical white papers (formerly published as q for Gods)
 author: Stephen Taylor
 keywords: kdb+, q, technical, white paper
 ---
-# <i class="far fa-map"></i> Technical white papers
+# :fontawesome-regular-map: Technical white papers
 
 
 ## Programming in q

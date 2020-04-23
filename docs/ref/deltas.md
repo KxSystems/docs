@@ -55,7 +55,7 @@ price| x
 1    | 252
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Each-prior](maps.md#each-prior), [`differ`](differ.md), [`ratios`](ratios.md)
 
 

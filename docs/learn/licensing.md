@@ -15,7 +15,7 @@ Everyone. All use of kdb+ is governed by a license.
 
 64-bit installations require a **license key file**: `k4.lic` or `kc.lic`.
 
-<i class="far fa-hand-point-right"></i> [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com
+:fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com
 
 
 ### Free, non-commercial, 64-bit kdb+ on demand
@@ -163,7 +163,7 @@ You can see the number of cores entitled to a q process:
 
 The number of licensed cores is always 16 for the on-demand license. 
 
-<i class="far fa-hand-point-right"></i> [License errors](../basics/errors.md#license-errors)
+:fontawesome-regular-hand-point-right: [License errors](../basics/errors.md#license-errors)
 
 
 !!! warning "On the road"

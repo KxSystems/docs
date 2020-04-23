@@ -62,5 +62,5 @@ bucket| Min Max Count
     Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Sorting](../basics/sort.md)

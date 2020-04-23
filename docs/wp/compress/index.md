@@ -25,7 +25,7 @@ All tests were run using kdb+ version 3.1 (2013.09.05)
 
 There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`set`](../../ref/get.md#set), 
 [`-19!`](../../basics/internal.md#-19x-compress-file)
 

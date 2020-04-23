@@ -377,7 +377,7 @@ q)`:db/ set .Q.en[`:db] t
             ^
 ```
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Compression in kdb+](compress/index.md)
 
 
@@ -416,7 +416,7 @@ persisted along with the original ID. IDs requiring lookup should not be
 char vectors. Guids are faster (much faster for `=`) than the 16-byte char
 vectors and take 2.5 times less storage (16 per instead of 40 per).
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Kdb+ data-management techniques](data-management.md#id-fields-the-guid-datatype)
 
 
@@ -776,7 +776,7 @@ global tick-capture kdb+ system.
 
 ## Related articles
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Kdb+ data-management techniques](data-management.md)
 
 

@@ -24,7 +24,7 @@ They are the primary means of iterating in q.
 :fontawesome-solid-book-open:
 [Iteration](../basics/iteration.md) in q
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White paper: [Iterators](../wp/iterators/index.md)
 
 !!! detail "Applicable value"

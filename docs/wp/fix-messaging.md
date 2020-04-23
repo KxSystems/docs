@@ -579,7 +579,7 @@ OrderID    SecurityID Side MsgType OrdStatus OrderQty CumQty AvgPx    CommValue
 
 This paper has provided a guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an OMS. We focused on some key FIX fields to provide an understanding of the valid entries and an insight into how they should be handled. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [fixwiki.org/fixwiki](http://fixwiki.org/fixwiki/FIXwiki)
 for a comprehensive list of all fields for each FIX version
 

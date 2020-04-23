@@ -21,7 +21,7 @@ Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-gith
 For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
 
-## <i class="far fa-life-ring"></i> Reference
+## :fontawesome-regular-life-ring: Reference
 
 The wiki’s Reference section, organised by glyphs, was a good tool for _reading_ q. It was easy to find, for example, all the possible meanings of `$`. On the other hand, a writer looking for tools to convert between datatypes and representations would have to explore most of the Reference section to be confident she had found them all. 
 
@@ -32,7 +32,7 @@ The new site reference has three aims:
 - to help _writing_ by categorising the tools by semantic topic 
 
 
-## <i class="far fa-handshake"></i> Contribute
+## :fontawesome-regular-handshake: Contribute
 
 > A finished work is exactly that, requires resurrection.  
 — _John Cage_, “Lecture on Nothing”, 1949

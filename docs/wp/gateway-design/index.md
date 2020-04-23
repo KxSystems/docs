@@ -46,7 +46,7 @@ Let’s consider a basic example where a user makes a request for trade data for
 
 As the gateway serves as the sole client interface it is the logical point for entitlement validation. Permissioning is commonly broken into two components; user level access using the `.z.pw` function, and execution access using either `.z.pg` or `.z.ps`. These functions can be customized to control access at several levels including by symbol, table, service or region.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference:
 [`.z.pg`](../../ref/dotz.md#zpg-get),
 [`.z.ps`](../../ref/dotz.md#zps-set),
@@ -99,7 +99,7 @@ In this setup the gateway sends each individual service request to the load-bala
 
 The `mserve` solution written by Arthur Whitney and Simon Garland provides a sample implementation of how a load-balancing process can allocate the query to the least busy service and return the result to the client, which in this case is the gateway.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [A load-balancing kdb+ server](../../kb/load-balancing.md)
 
 In this script the load balancer process determines which service to issue the request to according to which has the minimum number of outstanding requests queued at the time the request is received.

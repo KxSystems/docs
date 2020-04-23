@@ -33,6 +33,6 @@ q)attr asc 1 3 4
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Set Attribute](set-attribute.md)  
 Basics: [Metadata](../basics/metadata.md)
