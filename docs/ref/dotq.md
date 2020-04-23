@@ -136,7 +136,7 @@ q)256 vs .Q.addr`localhost
 <i class="far fa-hand-point-right"></i>
 [`.Q.host`](#qhost-hostname)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`vs`](vs.md)
 
 
@@ -305,7 +305,7 @@ Syntax: `.Q.def[x;y]`
 
 Provides defaults and types for command line arguments parsed with [``.Q.opt``](#qopt-command-parameters).
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
 
 
@@ -679,7 +679,7 @@ Syntax: `.Q.fps[x;y]`
 
 Reads conveniently sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Named Pipes](../kb/named-pipes.md)
 
 
@@ -717,7 +717,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 120
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Loading large CSV files](../kb/loading-from-large-files.md)
 
 
@@ -967,7 +967,7 @@ q).Q.addr `netbox.com
 <i class="far fa-hand-point-right"></i>
 [`.Q.addr`](#qaddr-ip-address)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Tok](tok.md)
 
 
@@ -1158,7 +1158,7 @@ Syntax: `.Q.opt .z.x`
 
 Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
 
 
@@ -1262,7 +1262,7 @@ pos    execution position (caret) within text
 
 This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Code profiler](../kb/profiler.md)
 
 
@@ -1407,7 +1407,7 @@ Syntax: `.Q.s1 x`
 
 Returns a string representation of `x`.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`show`](show.md),
 [`string`](string.md)
 
@@ -1420,7 +1420,7 @@ Where `x` is a [backtrace object](#qtrp-extend-trap) returns it as a string form
 
 Since V3.5 2017.03.15.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
 
 
@@ -1500,7 +1500,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 
 Since V3.5 2017.03.15.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
 
 
@@ -1556,7 +1556,7 @@ q).Q.ty each t`a`b`c`d`e
 
     If the argument is a table column, returns upper case for mappable/uniform lists of vectors. 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`meta`](meta.md)
 
 
@@ -1588,7 +1588,7 @@ Where `x` is
 -   a table, returns a dictionary of its column values.
 -   a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`meta`](meta.md)
 
 
@@ -1653,10 +1653,10 @@ syms| 577
 symw| 25436
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [System command `\w`](../basics/syscmds.md#w-workspace)
 
 
@@ -1678,7 +1678,7 @@ q).Q.x
 "path/to/destn"
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv),
 [`.z.X`](dotz.md#zx-raw-command-line)
 

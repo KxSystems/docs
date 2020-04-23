@@ -271,10 +271,10 @@ a 43 2
 
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`desc`, `idesc`, `xdesc`](desc.md),
 [Set Attribute](set-attribute.md)<br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md), 
 [Sorting](../basics/sort.md)
 

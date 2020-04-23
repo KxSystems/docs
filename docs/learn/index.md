@@ -82,7 +82,7 @@ If you have some experience with mathematics, functional programming or SQL, you
 (And we have tutorials for Python programmers.)
 
 
-## <i class="fas fa-book"></i> Books
+## :fontawesome-solid-book: Books
 
 
 <div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
@@ -100,14 +100,14 @@ by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-
 **Fast, scalable and maintainable kdb+**
 by Nick Psaris, available from [Amazon.co.uk](https://www.amazon.co.uk/d/Books/Tips-Fast-Scalable-Maintainable-Kdb/9881389909/).
 
-<i class="fas fa-quote-left"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
+:fontawesome-solid-quote-left:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
 There is information that if you were learning by yourself, would take years to work out.
-<i class="fas fa-quote-right"></i>
+:fontawesome-solid-quote-right:
 </div>
 
 

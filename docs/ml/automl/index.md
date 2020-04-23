@@ -5,7 +5,7 @@ author: Conor McCarthy
 date: October 2019
 keywords: machine learning, ml, ai, automated, preprocessing, postprocessing, feature extraction, feature selection, statistics, interpretability, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Automated Machine Learning in kdb+/q
+# :fontawesome-solid-share-alt: Automated Machine Learning in kdb+/q
 
 
 

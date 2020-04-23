@@ -5,7 +5,7 @@ description: Rules for the ncoding vof Markdown source files, choices of charact
 author: Stephen Taylor
 keywords: acronym, abbreviation, ampersand, apostrophe, dash, ellipse, encoding, hyphen, latex, ligature, math, quotation, quote, unicode
 ---
-# <i class="fas fa-pen-nib"></i> Characters and encoding 
+# :fontawesome-solid-pen-nib: Characters and encoding 
 
 
 ## Encoding

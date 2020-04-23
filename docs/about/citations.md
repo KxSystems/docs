@@ -38,5 +38,5 @@ _Documentation for kdb+ and q._ 2020. Reference Card. [online] Available at: <ht
 Reference Card [Internet]. Documentation for kdb and q. Kx Systems, Inc.; 2020 [cited 2020Apr15]. Available from: https://code.kx.com/q/ref/
 
 ---
-<i class="fas fa-globe"></i>
+:fontawesome-solid-globe:
 [Citation Machine](https://www.citationmachine.net/) for other citation styles

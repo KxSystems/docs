@@ -4,7 +4,7 @@ description: In 2018-2019 the vocabulary used to describe the q language changed
 author: Stephen Taylor
 date: October 2019
 ---
-# <i class="fas fa-pen-nib"></i> Terminology
+# :fontawesome-solid-pen-nib: Terminology
 
 
 In 2018 and 2019 the vocabulary used to describe the q language changed. Why?

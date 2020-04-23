@@ -6,7 +6,7 @@ author: Stephen Taylor
 keywords: kdb+, number, place, q, refactor, style
 ---
 
-# <i class="fas fa-pen-nib"></i> Miscellaneous
+# :fontawesome-solid-pen-nib: Miscellaneous
 
 
 ## Refactor

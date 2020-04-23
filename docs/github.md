@@ -38,7 +38,7 @@ about new repositories.</div>
 	<td class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
 	<td>
 		[calling Python from q](ml/embedpy/index.md) 
-		[<i class="fas fa-share-alt"></i>](./ml/index.md "Machine learning")
+		[:fontawesome-solid-share-alt:](./ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
@@ -57,7 +57,7 @@ about new repositories.</div>
 	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
 	<td>
 		[Jupyter kernel for kdb+](ml/jupyterq/index.md)
-		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
+		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
 		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
@@ -88,21 +88,21 @@ about new repositories.</div>
 	<td class="nowrap">[ml](https://github.com/KxSystems/ml)</td>
 	<td>
 		[machine-learning toolkit](ml/toolkit/index.md)
-		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
+		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[mlnotebooks](https://github.com/KxSystems/mlnotebooks)</td>
 	<td>
 		[machine-learning notebooks](ml/notebooks.md)
-		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
+		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[nlp](https://github.com/KxSystems/nlp)</td>
 	<td>
 		demonstration notebook for [natural-language processing](ml/nlp/index.md)
-		[<i class="fas fa-share-alt"></i>](ml/index.md "Machine learning")
+		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
 	</td>
 </tr>
 <tr>
@@ -122,7 +122,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-star"></i> Featured
+## :fontawesome-solid-star: Featured
 
 <small>Repositories by kdb+ users</small>
 
@@ -156,7 +156,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-industry"></i> Applications
+## :fontawesome-solid-industry: Applications
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -258,7 +258,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-lock"></i> Cryptography and cryptocurrency
+## :fontawesome-solid-lock: Cryptography and cryptocurrency
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -327,7 +327,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-wrench"></i> Development tools
+## :fontawesome-solid-wrench: Development tools
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -605,7 +605,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-eye"></i> Examples
+## :fontawesome-solid-eye: Examples
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -763,7 +763,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-share-alt"></i> Machine learning
+## :fontawesome-solid-share-alt: Machine learning
 
 <small>
 	<i class="far fa-hand-point-right"></i>
@@ -832,7 +832,7 @@ about new repositories.</div>
 
 
 
-## <i class="fas fa-superscript"></i> Mathematics
+## :fontawesome-solid-superscript: Mathematics
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -873,7 +873,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-cogs"></i> Utilities
+## :fontawesome-solid-cogs: Utilities
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -1067,7 +1067,7 @@ about new repositories.</div>
 </table>
 
 
-## <i class="fas fa-share-alt-square"></i> kxcontrib
+## :fontawesome-solid-share-alt-square: kxcontrib
 
 !!! warning "Salvaged repositories"
 	<i class="fab fa-github"></i> [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 

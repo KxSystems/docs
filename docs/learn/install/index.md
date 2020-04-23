@@ -8,7 +8,7 @@ keywords: install, kdb+, q
 
 
 
-## <i class="fas fa-download"></i> Download
+## :fontawesome-solid-download: Download
 
 ### Personal, non-commercial
 
@@ -24,7 +24,7 @@ Use the link below to obtain the 64-bit or 32-bit Personal Edition of kdb+.
 
 <button style="background: #0088ff; padding: 10px;" type="button">
   <a href="https://kx.com/connect-with-us/download/" style="color: white">
-    <span style="font-size: 2em"><i class="fas fa-download"></i> Get kdb+</span><br/>Personal, non-commercial
+    <span style="font-size: 2em">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
       <i class="fab fa-linux"></i>
       <i class="fab fa-apple"></i>
       <i class="fab fa-windows"></i>
@@ -59,7 +59,7 @@ Follow the installation instructions for your operating system:
 -   <i class="fab fa-windows"></i> [Windows](windows.md)
 
 
-## <i class="fas fa-certificate"></i> Licenses
+## :fontawesome-solid-certificate: Licenses
 
 ### Personal, non-commercial
 

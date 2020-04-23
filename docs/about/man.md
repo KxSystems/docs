@@ -43,13 +43,13 @@ man "--help"
 ```
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Reference](../ref/index.md)
 <br>
 <i class="far fa-handshake"></i>
 [Interfaces](../interfaces/index.md)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Knowledge base](../kb/index.md)
 <br>
 <i class="far fa-map"></i>

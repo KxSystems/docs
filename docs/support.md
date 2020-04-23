@@ -4,7 +4,7 @@ description: We are proud to provide industry-acclaimed support for our customer
 author: Stephen Taylor
 keywords: contact, customer, github, googlegroup, interface, kdb+, knowledge, license, mortal, q, reference, repo, repository, sales, stackoverflow, support, technicalsupport, textbook, white paper
 ---
-# <i class="fas fa-life-ring"></i> Support
+# :fontawesome-solid-life-ring: Support
 
 
 
@@ -41,7 +41,7 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
     </table>
 
 
-<i class="fas fa-life-ring"></i> Technical support
+:fontawesome-solid-life-ring: Technical support
 : If you work at a company that has licensed kdb+, please refer to your internal support team, your Designated Contact, or the kdb+ Listbox. 
 
 
@@ -49,16 +49,16 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
 
 This site is the primary resource for kdb+ developers.
 
-<i class="fas fa-question-circle"></i> Reference
+:fontawesome-solid-question-circle: Reference
 : The complete reference for q and kdb+, with a [reference card](ref/index.md), and formal definitions of q primitives, grouped by semantic topic.
 
-<i class="fas fa-book"></i> [_Q for Mortals 3_](/q4m3/)
+:fontawesome-solid-book: [_Q for Mortals 3_](/q4m3/)
 : An online edition of the classic textbook, now in its third edition. 
 
 <i class="far fa-map"></i> [Technical White papers](wp/index.md)
 : An occasional series of white papers on developing systems with kdb+.
 
-<i class="fas fa-glasses"></i> [Knowledge Base](kb/index.md)
+:fontawesome-solid-glasses: [Knowledge Base](kb/index.md)
 : A collection of shorter articles on developing systems with kdb+.
 
 <i class="far fa-handshake"></i> [Interfaces](interfaces/index.md)

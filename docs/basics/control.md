@@ -25,7 +25,7 @@ Evaluation is controlled by
 -   signalling and trapping errors
 -   control words
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
     [Debugging](debug.md)
 
 ## Iterators
@@ -173,7 +173,7 @@ q)goo 3
     Control words are little used in practice for iteration.
     [Iterators](../ref/iterators.md) are more commonly used.
 
-<i class="fas fa-book"></i> Iterators:
+:fontawesome-solid-book: Iterators:
 <br>
 [Maps](../ref/maps.md) – Case, Each, Each Left, Each Right, Each Parallel, Each Prior<br>
 [Accumulators](../ref/accumulators.md) – Converge, Do, While, Scan, Over

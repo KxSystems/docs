@@ -5,7 +5,7 @@ description: Feature extraction and selection are vital components of many machi
 date: August 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, interpolation
 ---
-# <i class="fas fa-share-alt"></i> FRESH: a feature-extraction and feature-significance toolkit
+# :fontawesome-solid-share-alt: FRESH: a feature-extraction and feature-significance toolkit
 
 
 

@@ -4,7 +4,7 @@ description: News of changes to the Kx documentation site
 author: Stephen Taylor
 keywords: blog, kdb+, news, q, site
 ---
-# <i class="fas fa-newspaper"></i> Site news
+# :fontawesome-solid-newspaper: Site news
 
 
 
@@ -48,7 +48,7 @@ Version 2 of this site has
 The Kx wiki, frozen in 2016, has been retired to code.kx.com/oldwiki.
 
 
-## <i class="fas fa-birthday-cake"></i>  Kx@25
+## :fontawesome-solid-birthday-cake:  Kx@25
 
 <small>2018.05.18</small>
 
@@ -86,14 +86,14 @@ In beta on [GitHub](https://github.com/KxSystems/jupyterq): a Jupyter kernel for
 New white paper [Socket sharding with kdb+ on Linux](../wp/socket-sharding/index.md)
 
 
-## <i class="fas fa-share-alt"></i> Machine learning
+## :fontawesome-solid-share-alt: Machine learning
 
 <small>2018.01.24</small>
 
 New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy/index.md) library.
 
 
-## <i class="fas fa-search"></i> Custom search engine
+## :fontawesome-solid-search: Custom search engine
 
 <small>2018.01.14</small>
 
@@ -119,7 +119,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 
 
-## <i class="fas fa-code"></i> Syntax highlighting
+## :fontawesome-solid-code: Syntax highlighting
 
 <small>2017.08.09</small>
 
@@ -129,7 +129,7 @@ Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.or
 -   a _Copy to Clipboard_ button on all code blocks
 
 
-## <i class="fas fa-balance-scale"></i> Creative Commons license
+## :fontawesome-solid-balance-scale: Creative Commons license
 
 <small>2017.08.05</small>
 

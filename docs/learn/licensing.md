@@ -4,7 +4,7 @@ description: How to ensure your kdb+ processes have thelicenses they need.
 author: Stephen Taylor
 keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
 ---
-# <i class="fas fa-certificate"></i> Licensing
+# :fontawesome-solid-certificate: Licensing
 
 
 
@@ -79,7 +79,7 @@ License key files (`kc.lic`) are distributed by email.
 
 <button style="background: #0088ff; padding: 10px;" type="button">
     <a href="https://ondemand.kx.com/" style="color: white">
-        <i class="fas fa-certificate"></i>
+        :fontawesome-solid-certificate:
         Request an On-Demand license key file
     </a>
 </button>

@@ -108,13 +108,13 @@ q)\ls /tmp/kxuds
 "kx.5000"
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Command-line options [`-e`](cmdline.md#-e-tls-server-mode),
 [`-p`](cmdline.md#-p-listening-port); 
 system command [`\p`](syscmds.md#p-listening-port)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Multithreaded input mode](../kb/multithreaded-input.md)

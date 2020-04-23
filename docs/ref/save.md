@@ -115,12 +115,12 @@ q)`:sp/ set sp        / equivalent to rsave `sp
 ```
 
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`set`](get.md#set), 
 [`.Q.dpft`](dotq.md#qchk-fill-hdb) (save table), 
 [`.Q.Xf`](dotq.md#qxf-create-file) (create file)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)
 
 

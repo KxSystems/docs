@@ -1,7 +1,7 @@
 ---
 title: Starting kdb+ – a tutorial – Learn – kdb+ and q documentation
 description: A quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material.
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+hero: :fontawesome-solid-graduation-cap: Starting kdb+
 keywords: kdb+, q, start, tutorial, 
 ---
 # Starting kdb+
@@ -26,7 +26,7 @@ The kdb+ system is both a database and a programming language:
 
 ## Resources
 
-### <i class="fas fa-globe"></i> code.kx.com
+### :fontawesome-solid-globe: code.kx.com
 
 The best resource for learning q. It includes:
 
@@ -53,12 +53,12 @@ Several background articles and links can be found in the [Archive](../archive.m
 -   The [Kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
 
 
-## <i class="fas fa-download"></i> Install free system
+## :fontawesome-solid-download: Install free system
 
 If you do not already have access to a licensed copy, go to [Get started](../index.md) to download and install q.
 
 
-## <i class="fas fa-file"></i> Example files
+## :fontawesome-solid-file: Example files
 
 Two sets of scripts are referenced in this guide:
 

@@ -6,7 +6,7 @@ author: Stephen Taylor
 keywords: convention, kdb+, q, style, spelling, typography
 ---
 
-# <i class="fas fa-pen-nib"></i> Style guide
+# :fontawesome-solid-pen-nib: Style guide
 
 
 Here are typographical, spelling and lexical conventions for the content of this site.

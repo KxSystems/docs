@@ -51,7 +51,7 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 
 [**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
-<i class="fas fa-download"></i>
+:fontawesome-solid-download:
 [Free download](/developer/getting-started/)
 -->
 
@@ -105,7 +105,7 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 </div>
 
-<i class="fas fa-comment-medical"></i>
+:fontawesome-solid-comment-medical:
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 
 !!! tip "Using this site locally"

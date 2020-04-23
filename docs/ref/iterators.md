@@ -21,7 +21,7 @@ author: Stephen Taylor
 The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
 They are the primary means of iterating in q.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Iteration](../basics/iteration.md) in q
 <br>
 <i class="far fa-map"></i>
@@ -57,7 +57,7 @@ q)+/[1000000;2 3 4]   / binary
 1000009
 ```
 
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Variadic syntax](../basics/variadic.md)
 
 

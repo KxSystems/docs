@@ -10,7 +10,7 @@ keywords: kdb+, linux, production, q
 !!! important "Linux kernels"
 
     Kx recommendations for NUMA hardware, Transparent Huge Pages and Huge Pages are different for different Linux kernels. 
-    Details below. Look for the <i class="fas fa-code"></i> icon. 
+    Details below. Look for the :fontawesome-solid-code: icon. 
 
 
 

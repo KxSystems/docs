@@ -10,7 +10,7 @@ date: Decemeber 2019
 
 Streaming-execute over a file is used (for example in kdb+tick) to replay logfiles in a memory-efficient manner.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-11!` streaming execute](../basics/internal.md#-11-streaming-execute)
 
 A logfile is just a list of lists, and each list is read in turn and evaluated by [`.z.ps`](../ref/dotz.md#zps-set) (which defaults to [`value`](../ref/value.md)).

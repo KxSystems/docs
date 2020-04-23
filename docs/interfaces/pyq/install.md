@@ -42,14 +42,14 @@ Solaris is supported, but has not been tested recently.
 
 V2.8+
 
--   <i class="fas fa-download"></i> [Download](https://kx.com/download/)
+-   :fontawesome-solid-download: [Download](https://kx.com/download/)
 -   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/index.md)
 
 ### Python
 
 2.7, or 3.5+
 
--    <i class="fas fa-download"></i> [Download](https://www.python.org/downloads/)
+-    :fontawesome-solid-download: [Download](https://www.python.org/downloads/)
 
 ### Compiler
 

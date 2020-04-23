@@ -14,7 +14,7 @@ Simple, powerful and fast.
 
     This page discusses TCP/IP sockets, but there are other types of IPC, that use the familiar open/request/close paradigm. All use [`hopen`](../ref/hopen.md#) to connect. 
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Connection handles](handles.md),
 [File system](files.md)
 
@@ -131,10 +131,10 @@ To detect when a connection is closed from the remote end, override the port clo
 .z.pc:{0N!(`` `portClosed;x``);} 
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`.z`](../ref/dotz.md) namespace
 <br>
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Using `.z`](../kb/using-dotz.md) for more resources, including contributed code for tracing and monitoring
 
 
@@ -568,7 +568,7 @@ bytes | semantics
 
 1.  Enumerations are automatically converted to values before sending through IPC.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`, `hclose`](../ref/hopen.md),
 [`hsym`](../ref/hsym.md)
 <br>

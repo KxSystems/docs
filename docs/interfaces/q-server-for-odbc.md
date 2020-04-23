@@ -3,7 +3,7 @@ title: Kdb+ server for ODBC – Interfaces – kdb+ and q documentation
 description: The ODBC interface for kdb+is no longer supported. See instead the SImba Magnitude ODBC drivers.
 keywords: api, interface, kdb+, library, odbc, q, server
 ---
-# <i class="fas fa-database"></i> Kdb+ server for ODBC
+# :fontawesome-solid-database: Kdb+ server for ODBC
 
 
 

@@ -30,12 +30,12 @@ Code examples are intended for readers with at least a beginner-level knowledge 
 
 In splayed databases, the default behavior is that all columns of type symbol are enumerated using the same list, a file called `sym`. Enumerating in this context means that rather than containing the actual symbol values, the column, when saved to disk, will consist of a list of integers each of which is the index of the actual value in the list (file) called `sym`.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Enumerate](../ref/enumerate.md),
 [Enumeration](../ref/enumeration.md),
 [Enum Extend](../ref/enum-extend.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Basics: [Enumerations](../basics/enumerations.md)<br>
 _Q for Mortals_: [§7.2 Cast](/q4m3/7_Transforming_Data/#72-cast),
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)
@@ -210,7 +210,7 @@ g  grouped    u  unique
 p  parted     s  sorted
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Set Attribute](../ref/set-attribute.md)
 
 To apply the parted attribute to a list, all occurrences in the list of each value $n$ must be adjacent to one another. For example, the following list is not of the required structure and attempting to apply the parted attribute to it will fail:
@@ -264,15 +264,15 @@ grouped    (24*u)+4*n
 
 It is often the case that a kdb+ application receives an ID field which does not repeat and contains characters that are not numbers. The question is which datatype should be used for such a field. The problem with using enumerated symbols in this case is that the enumeration file becomes too large, slowing down searches and resulting in too much memory being consumed by the enumeration list.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Enumerations](../basics/enumerations.md)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Splayed tables](../kb/splayed-tables.md)
 
 The problem with using char vector is that it is not an atom, so attributes cannot be applied, and searches on char vectors are very slow. In this case, it is worth considering GUID, which can be used for storing 16-byte values.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Datatypes](../basics/datatypes.md)
 
 As the data is persisted to disk, or written to an intra-day in-memory instance, the ID field can be converted to GUID and persisted along with the original ID. The following code shows how this would be done in memory. It assumes that the original ID is a char vector of no more than 16 characters in length.

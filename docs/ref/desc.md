@@ -130,9 +130,9 @@ city  | s
 
 !!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`asc`, `iasc`, `xasc`](asc.md)  
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md),
 [Sorting](../basics/sort.md)
 

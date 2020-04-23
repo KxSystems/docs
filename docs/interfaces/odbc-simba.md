@@ -5,7 +5,7 @@ author: Glenn Wright
 date: March 2019
 keywords: interface, kdb+, library, magnitude, odbc, odbc3, q, simba, sql
 ---
-# <i class="fas fa-database"></i> Simba/Magnitude ODBC
+# :fontawesome-solid-database: Simba/Magnitude ODBC
 
 
 
@@ -50,7 +50,7 @@ The
 _Installation and Configuration Guide_
 is suitable for all users who are looking to access kdb+ data from their desktop environment.
 
-<i class="fas fa-download"></i>
+:fontawesome-solid-download:
 [_Installation and Configuration Guide_](/download/simba-kdb-odbc-install-and-configuration-guide.pdf)
 (PDF 1.5MB)
 

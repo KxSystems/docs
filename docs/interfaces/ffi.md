@@ -5,7 +5,7 @@ author: Sergey Vidyuk
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: foreign, function, fusion, interface, kdb+, q
 ---
-# <i class="fas fa-map-signs"></i> Using foreign functions with kdb+
+# :fontawesome-solid-map-signs: Using foreign functions with kdb+
 
 
 

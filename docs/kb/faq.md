@@ -627,5 +627,5 @@ l64/ ...
 5
 ```
 
-<i class="fas fa-external-link-alt"></i> 
+:fontawesome-solid-external-link-alt: 
 [Shebang (Unix)](https://en.wikipedia.org/wiki/Shebang_(Unix))

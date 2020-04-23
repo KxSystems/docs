@@ -21,7 +21,7 @@ keywords: embedpy, interface, kdb+, python
 
 ## Build and install
 
-<i class="fas fa-download"></i>
+:fontawesome-solid-download:
 Download the code from
 <i class="fab fa-github"></i>
 [KxSystems/embedPy](https://github.com/kxsystems/embedpy) and follow installation instructions there.

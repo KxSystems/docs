@@ -12,7 +12,7 @@ date: March 2020
 2020.03.17
 
 
-## <i class="fas fa-bolt"></i> Multithreaded primitives
+## :fontawesome-solid-bolt: Multithreaded primitives
 
 Kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../kb/multithreaded-input.md).
 
@@ -27,11 +27,11 @@ Within-primitive parallelism reverts to being single-threaded within `peach` or 
 Systems with low aggregate memory bandwidth are unlikely to see an improvement for in-memory data, but on-disk data should still benefit. 
 Multi-threaded primitives are not NUMA-aware and should not be expected to scale beyond 1 socket.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Multithreaded primitives](../kb/mt-primitives.md)
 
 
-## <i class="fas fa-lock"></i> Data-At-Rest Encryption (DARE)
+## :fontawesome-solid-lock: Data-At-Rest Encryption (DARE)
 
 Kdb+4.0 supports Data-At-Rest Encryption (DARE), using AES256CBC. As with the built-in file compression, encryption is transparent and requires no changes to a query to utilize it. Once a master key has been created via a third-party tool such as OpenSSL:
 
@@ -59,11 +59,11 @@ or use [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) for process-wide default setti
 
 !!! info "Kdb+ DARE requires OpenSSL 1.1.1"
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Data-At-Rest Encryption (DARE)](../kb/dare.md)
 
 
-## <i class="fas fa-bolt"></i> Optane support
+## :fontawesome-solid-bolt: Optane support
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
@@ -103,16 +103,16 @@ The [-w limit](../basics/cmdline.md#-w-workspace) (M1/m2) is no longer thread-lo
 
 `mapped` is a single global counter, the same in every thread’s `\w`.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Optane Memory and kdb+](../kb/optane.md)
 
 
-## <i class="fas fa-code"></i> Profiler
+## :fontawesome-solid-code: Profiler
 
 Kdb+ 4.0 (for Linux only) includes an experimental built-in call-stack snapshot primitive that allows building a sampling [profiler](../kb/profiler.md).
 
 
-## <i class="fas fa-lock"></i> Added support for OpenSSL 1.1.x
+## :fontawesome-solid-lock: Added support for OpenSSL 1.1.x
 
 One-shot sync queries can now execute via
 
@@ -123,7 +123,7 @@ One-shot sync queries can now execute via
 which allows a timeout to be specified.
 
 
-## <i class="fas fa-code"></i> Debugger
+## :fontawesome-solid-code: Debugger
 
 There are various Debugger improvements:
 
@@ -209,7 +209,7 @@ q){a::1;a:1}
 -   [`.Q.cn`](../ref/dotq.md#qcn-count-partitioned-table) now uses [`peach`](../ref/each.md) to get the count of partitioned tables. This can improve the startup time for a partitioned database.
 
 
-## <i class="fas fa-exclamation-triangle"></i> NUCs
+## :fontawesome-solid-exclamation-triangle: NUCs
 
 We have sought to avoid introducing compatability issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
 

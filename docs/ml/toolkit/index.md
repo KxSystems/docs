@@ -5,7 +5,7 @@ author: Conor McCarthy
 date: October 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Machine-learning toolkit
+# :fontawesome-solid-share-alt: Machine-learning toolkit
 
 
 

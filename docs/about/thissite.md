@@ -66,13 +66,13 @@ We gratefully acknowledge contributions by pull requests from
 -   William Da Silva
 
 
-## <i class="fas fa-balance-scale"></i> License 
+## :fontawesome-solid-balance-scale: License 
 This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 <div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
-## <i class="fas fa-camera-retro"></i> Images
+## :fontawesome-solid-camera-retro: Images
 
 This site includes images for which Kx holds neither copyright nor permission. 
 These images serve as links to their original sites. 
@@ -81,7 +81,7 @@ We understand this to be fair use.
 If you are a copyright holder and object to this use, please write to librarian@kx.com. 
 
 
-## <i class="fas fa-envelope"></i> Contact
+## :fontawesome-solid-envelope: Contact
 
 This site is a project of the [Librarian](mailto:librarian@kx.com).
 

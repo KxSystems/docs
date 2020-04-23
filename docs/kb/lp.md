@@ -17,7 +17,7 @@ _Linear Programming is a large topic, of which this article reviews just a few a
 
     Q Math Library: <i class="fab fa-github"></i> [zholos/qml](https://github.com/zholos/qml)
 
-    <i class="fas fa-camera"></i> [Ken Iverson & Arthur Whitney, APL89, New York City](../img/keiandatw89.png "photo courtesy Rob Hodgkinson")
+    :fontawesome-solid-camera: [Ken Iverson & Arthur Whitney, APL89, New York City](../img/keiandatw89.png "photo courtesy Rob Hodgkinson")
 
 
 
@@ -330,7 +330,7 @@ bridgefc:{x & .Q.fc[{{{min x+y}[x] each y}[;y] each x}[;flip x];x]}
 A colleague, Ryan Sparks, is presently experimenting with further (significant) performance improvements by using [CUDA](../interfaces/gpus.md) on a graphics coprocessor for the inner-product function `bridge`.
 This work is evolving and looks very promising.  I look forward to Ryan presenting a paper and/or presentation on his results when complete as perhaps a sequel to this article.
 
-<i class="fas fa-download"></i> 
+:fontawesome-solid-download: 
 [Script with examples from this article](assets/mp.q)
 
 

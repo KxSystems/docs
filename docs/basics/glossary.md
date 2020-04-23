@@ -146,7 +146,7 @@ Lists, dictionaries and tables conform if they are either atoms or have the same
 
 A handle to the communication path to a process or object in the file system.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Connection handles](handles.md),
 [File system](files.md),
 [Interprocess communication](ipc.md)
@@ -303,7 +303,7 @@ An absolute or relative filepath as a string, e.g. `":path/to/data"`.
 
 A symbol atom denoting a file or folder in the file system, e.g. `` `:path/to/data``
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](files.md)
 
 
@@ -567,7 +567,7 @@ Defined in the q language.
 
 A symbol defining the communication path to a process.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md#processes)
 
 

@@ -6,7 +6,7 @@ keywords: kdb+, library, q, regex, regular expression
 # Using regular expressions
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`like`](../ref/like.md),
 [`ss`, `ssr`](../ref/ss.md), 
 [Regular Expressions in q](../basics/regex.md)

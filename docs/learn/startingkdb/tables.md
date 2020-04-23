@@ -1,7 +1,7 @@
 ---
 title: Tables – Starting kdb+ – Learn – kdb+ and q documentation
 description: How to work with tables in q
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
+hero: :fontawesome-solid-graduation-cap: Starting kdb+
 keywords: kdb+, q, start, table, tutorial
 ---
 # Tables

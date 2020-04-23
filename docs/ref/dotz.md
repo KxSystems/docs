@@ -51,7 +51,7 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 
     By default, callbacks are not defined in the session. After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Callbacks](../kb/callbacks.md),
 [Using `.z`](../kb/using-dotz.md)
 <br>
@@ -128,7 +128,7 @@ x| `a`b
 y| ,`a
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\b`](../basics/syscmds.md#b-views)
 
 
@@ -240,10 +240,10 @@ os>..
 <i class="far fa-hand-point-right"></i>
 [`.z.pc` port close](#zpc-close)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`exit`](exit.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\\` quit](../basics/syscmds.md#quit)
 
 
@@ -572,7 +572,7 @@ Host           | "localhost:5001"
 <i class="far fa-hand-point-right"></i>
 [`.z.pp` port post](#zpp-http-post)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.h` namespace](doth.md)
 
 
@@ -604,7 +604,7 @@ To return to the default display, just delete your custom handler
 q)\x .z.pi
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Changes in V2.4](../releases/ChangesIn2.4.md#zpi)
 
 
@@ -638,7 +638,7 @@ There is no default implementation, but an example would be that it calls [`valu
 
 See `.z.ph` for details of the argument.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.h` namespace](doth.md)
 
 
@@ -650,7 +650,7 @@ Since V3.5+3.6 2019.01.31, remote connections using the "qcon" text protocol are
 
 This allows a user to handle remote qcon connections (via `.z.pq`) without defining special handling for console processing (via `.z.pi`).
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Firewalling](../kb/firewalling.md) for locking down message handlers
 
 
@@ -705,7 +705,7 @@ Syntax: `.z.q`
 
 Returns `1b` if Quiet Mode is set, else `0b`.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
 
 
@@ -752,7 +752,7 @@ q)2010.12.16D17:12:12.849442000
 
 When kdb+ has completed executing a script passed as a command-line argument, and if there are no open sockets nor a console, kdb+ will exit. The timer alone is not enough to stop the process exiting – it must have an event source which is a file descriptor (socket, console, or some plugin registering a file descriptor and callback via the C API `sd1` function).
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\t`](../basics/syscmds.md#t-timer)
 
 

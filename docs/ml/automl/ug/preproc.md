@@ -5,7 +5,7 @@ description: Default behavior of the Kx automated machine learning tools; common
 date: October 2019
 keywords: machine learning, ml, automated, preprocessing, feature extraction, feature selection, time-series, cleansing
 ---
-# <i class="fas fa-share-alt"></i> Automated data preprocessing
+# :fontawesome-solid-share-alt: Automated data preprocessing
 
 
 

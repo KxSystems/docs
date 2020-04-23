@@ -4,7 +4,7 @@ description: Kdb+ 4.0 can exploit Optane DC persistent memory, a new hardware te
 author: Glenn Wright
 date: March 2020
 ---
-# <i class="fas fa-bolt"></i> Optane Memory and kdb+
+# :fontawesome-solid-bolt: Optane Memory and kdb+
 
 
 <div markdown="1" style="text-align: center;">

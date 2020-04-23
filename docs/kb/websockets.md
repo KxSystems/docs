@@ -74,7 +74,7 @@ Note that the above functions for `.z.ws` won't work when using serialize/deseri
 
 This example works, because the default `.z.ws` echoes the byte vector over the WebSocket.
 
-<i class="fas fa-download"></i> Downloads:
+:fontawesome-solid-download: Downloads:
 
 -   <i class="fab fa-github"></i> [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
 -   <i class="fab fa-github"></i> [KxSystems/cookbook/wslogin.htm](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm)

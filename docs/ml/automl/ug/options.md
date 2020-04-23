@@ -5,7 +5,7 @@ description: Optional behavior available from the Kx automated machine learning 
 date: March 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
-# <i class="fas fa-share-alt"></i> Advanced options
+# :fontawesome-solid-share-alt: Advanced options
 
 
 

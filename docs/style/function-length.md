@@ -1,5 +1,5 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
+hero: :fontawesome-solid-pen-nib: Remarks on Style
 author: Stevan Apter
 keywords: function, kdb+, length, q, style
 ---

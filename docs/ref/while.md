@@ -36,8 +36,8 @@ q)r
     It returns [Identity](identity.md) `(::)`.
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Accumulators – While](accumulators.md#while)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Controlling evaluation](../basics/control.md)

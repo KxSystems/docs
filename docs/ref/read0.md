@@ -89,7 +89,7 @@ q)read0(h;8)
 ```
 
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Connection handles](../basics/handles.md),
 [File system](../basics/files.md),
 [Interprocess communication](../basics/ipc.md)

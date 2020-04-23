@@ -3,7 +3,7 @@ title: Set up your machine-learning environment – Machine Learning – kdb+ an
 description: How to set up an environment in which to work on Machine Learning within kdb+ and q
 keywords: anaconda, conda, docker, embedpy, jupyter, ml, machine learning, python
 ---
-# <i class="fas fa-share-alt"></i> Setting up your machine-learning environment
+# :fontawesome-solid-share-alt: Setting up your machine-learning environment
 
 
 

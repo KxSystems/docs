@@ -28,7 +28,7 @@ This tutorial supposes you
 To run 32-bit kdb+ on a 64-bit server, see the [notes for running 32-bit kdb+ on 64-bit Linux](linux.md#64-bit-or-32-bit).
 
 
-## <i class="fas fa-download"></i> Download
+## :fontawesome-solid-download: Download
 
 [Download 32-bit kdb+](https://kx.com/connect-with-us/download/) to your local machine and unzip it. 
 You will want the `l32.zip` download. 
@@ -46,7 +46,7 @@ $
 ```
 
 
-## <i class="fas fa-upload"></i> Upload
+## :fontawesome-solid-upload: Upload
 
 Upload the kdb+ files to your droplet. 
 
@@ -65,7 +65,7 @@ q
 ```
 
 
-## <i class="fas fa-code"></i> Define q alias
+## :fontawesome-solid-code: Define q alias
 
 SSH from your local machine to your droplet. 
 Edit the Bash profile for non-login (i.e. non-interactive) sessions. 
@@ -87,7 +87,7 @@ alias q='QHOME=~/q ~/q/l32/q'
 The Bash profile `.bashrc` sets the environment used for non-login sessions, for example, any script that you set up as a daemon under Systemctl. 
 
 
-## <i class="fas fa-check"></i> Confirm successful installation
+## :fontawesome-solid-check: Confirm successful installation
 
 Run `.bashrc` now for your current (login) session.
 
@@ -109,7 +109,7 @@ boss@droplet:~$
 ```
 
 
-## <i class="fas fa-code"></i> Rlwrap
+## :fontawesome-solid-code: Rlwrap
 
 Interactive kdb+ sessions under Linux use Rlwrap to recall lines from the keyboard buffer. 
 This is less useful for the non-interactive sessions you run on your droplet. 

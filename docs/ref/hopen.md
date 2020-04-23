@@ -15,7 +15,7 @@ keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, fil
 
 Kdb+ communicates with the file system and other processes through [handles](../basics/handles.md).
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md),
 [Interprocess communication](../basics/ipc.md)
 
@@ -49,7 +49,7 @@ Unix domain socket
 
 SSL/TLS
 : `` `:tcps://host:port[:user:password] `` 
-: <i class="fas fa-graduation-cap"></i> [SSL/TLS](../kb/ssl.md)
+: :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
 
 User and password are required if the server session has been started with the [`-u`](../basics/cmdline.md#-u-usr-pwd-local) or [`-U`](../basics/cmdline.md#-u-usr-pwd) command line options, and are passed to [`.z.pw`](dotz.md#zpw-validate-user) for (optional) additional processing.
 
@@ -80,10 +80,10 @@ q)`:mydb.us.com:5010:elmo:sesame "1+1"
 2
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`.Q.Xf`](dotq.md#qxf-create-file) (create file)
 <br>
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Client-server](../kb/client-server.md)
 
 
@@ -116,11 +116,11 @@ q)r:htxt ` sv("asdf";"qwer")
 
 V3.4 Unix builds have support for reading from a Fifo/named pipe, where the `hopen` argument has the form `` `:fifo://filename``.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md),
 [Client-server](../kb/client-server.md), 
 [Named pipes](../kb/named-pipes.md)<br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [SSL/TLS](../kb/ssl.md)
 
 

@@ -37,7 +37,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>X</td><td>[`xasc`](asc.md#xasc "table sorted ascending by columns") [`xbar`](xbar.md "interval bar") [`xcol`](cols.md#xcol "rename table columns") [`xcols`](cols.md#xcols "re-order table columns") [`xdesc`](desc.md#xdesc "table sorted descending by columns") [`xexp`](exp.md#xexp "raised to a power") [`xgroup`](xgroup.md "table grouped by keys") [`xkey`](keys.md#xkey "set primary keys of a table") [`xlog`](log.md#xlog "base-x logarithm") [`xprev`](next.md#xprev "previous items") [`xrank`](xrank.md "items assigned to buckets")</td></tr>
 </table>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.Q.id`](dotq.md#qid-sanitize) (sanitize),
 [`.Q.res`](dotq.md#qres-keywords) (reserved words)
 
@@ -74,7 +74,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </tr>
 </table>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Overloaded operator glyphs](overloads.md)
 
 
@@ -122,7 +122,7 @@ s  sorted     u  unique
 p  parted     g  grouped
 </pre>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
 
 ## Command-line options and system commands

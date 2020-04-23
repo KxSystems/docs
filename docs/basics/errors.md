@@ -4,7 +4,7 @@ description: Errors signalled by the interpreter, and what triggers them
 keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 ---
 
-# <i class="fas fa-bomb"></i> Errors 
+# :fontawesome-solid-bomb: Errors 
 
 
 
@@ -219,7 +219,7 @@ which will cause a `'host` error.
 </tbody>
 </table>
 
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Licensing](../learn/licensing.md)
 
 
@@ -235,7 +235,7 @@ Use [Signal](../ref/signal.md) to signal errors.
 
 Use [Trap and Trap At](../ref/apply.md#trap) to trap errors.
 
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Debugging](debug.md)
 
 

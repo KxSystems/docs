@@ -5,7 +5,7 @@ description: Default behavior of automated machine learning; common processes co
 date: October 2019
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
-# <i class="fas fa-share-alt"></i> Automated data processing
+# :fontawesome-solid-share-alt: Automated data processing
 
 
 

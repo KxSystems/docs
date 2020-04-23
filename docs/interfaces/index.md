@@ -44,7 +44,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </table>
 
 
-## <i class="fas fa-server"></i> Kdb+ as server
+## :fontawesome-solid-server: Kdb+ as server
 
 <table class="kx-compact" markdown="1">
 <tr><td>Adobe Flex</td><td><i class="fab fa-github"></i> [quantbin/kdb](https://github.com/quantbin/kdb)</td></tr>
@@ -71,7 +71,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td><i class="fas fa-table"></i> Excel</td>
+    <td>:fontawesome-solid-table: Excel</td>
     <td>
 [Excel client for kdb+](excel-client-for-q.md)<br/>
 <i class="fab fa-github"></i> [exxeleron/qXL](https://github.com/exxeleron/qXL)<br/>
@@ -221,7 +221,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 
 
-## <i class="fas fa-map-signs"></i> Foreign functions 
+## :fontawesome-solid-map-signs: Foreign functions 
 
 <table class="kx-compact" markdown="1">
 <tr><td>[Boost](https://www.boost.org) math library</td><td><i class="fab fa-github"></i> [kimtang/bml](https://github.com/kimtang/bml)</td></tr>
@@ -261,7 +261,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </table>
 
 
-## <i class="fas fa-plug"></i> Editor integrations
+## :fontawesome-solid-plug: Editor integrations
 
 <table class="kx-compact" markdown="1">
 <tr>

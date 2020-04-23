@@ -149,7 +149,7 @@ calls:([]
 computerlookup:([id:key startcpu] dept:n?depts; os:n?`win7`win8`osx`vista)
 ```
 
-<i class="fas fa-download"></i> Download [`calls.q`](assets/calls.q) into your `QHOME` folder, then [load it](../basics/syscmds.md#l-load-file-or-directory):
+:fontawesome-solid-download: Download [`calls.q`](assets/calls.q) into your `QHOME` folder, then [load it](../basics/syscmds.md#l-load-file-or-directory):
 
 ```q
 q)\l calls.q

@@ -44,7 +44,7 @@ q)/ read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read1(`:/tmp/data;x;100000)}each 100000*til 5 
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)
 
 
@@ -64,6 +64,6 @@ q)"c"$read1(h;8)
 q)system"mkfifo somefifo";h:hopen`fifo:somefifo; 0N!read1 h; hclose h
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Interprocess communicaion](../basics/ipc.md)
 
