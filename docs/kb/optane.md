@@ -252,3 +252,6 @@ Optane Memory. Through a POC, we can determine the optimal way to deploy
 the new technology to new and existing use cases. Please contact
 optane@kx.com to coordinate any such POC, or for any technical
 questions.
+
+:fontawesome-solid-book:
+[`.m` namespace](../ref/dotm.md)
