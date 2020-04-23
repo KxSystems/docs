@@ -82,7 +82,7 @@ This server is a .NET application, and it communicates directly with a q Ticker 
 ### Downloading
 
 The RTD server can be downloaded from 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [CharlesSkelton/excelrtd](https://github.com/CharlesSkelton/excelrtd)
 
 To install, run the `setup.exe` program and follow the instructions. You will need the Microsoft .NET Runtime installed.

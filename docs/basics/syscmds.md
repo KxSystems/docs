@@ -891,7 +891,7 @@ q)\ls                 / usual ls command
 
 !!! warning "Typos can get passed to the OS"
 
-> When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [<i class="fab fa-twitter"></i> DevOps Borat](https://twitter.com/devops_borat)
+> When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [:fontawesome-brands-twitter: DevOps Borat](https://twitter.com/devops_borat)
 
 
 

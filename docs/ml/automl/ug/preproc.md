@@ -9,7 +9,7 @@ keywords: machine learning, ml, automated, preprocessing, feature extraction, fe
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 The preprocessing of data is of critical importance in all machine-learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.

@@ -35,7 +35,7 @@ P(S_{t},t) = S_{t}e^{-q(T-t)}N(d_{1})-Ke^{-r(T-t)}N(d_{2})
 
 Where $T$ is the expiry, $S_{t}$ is the price of the underlying asset at time $t$, $K$ is the strike price of the option, $\sigma$ is the volatility and $r$ is the interest rate. Note that the price is discounted by the dividends, $q$, throughout.
 
-<i class="fab fa-wikipedia-w"></i>
+:fontawesome-brands-wikipedia-w:
 [Black-Scholes model](https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model "Wikipedia")
 
 For Asian call options, we implement the same formula, using an adjusted $S_{t}$, $\sigma^{2}$ and drift rate, $\mu$:
@@ -129,7 +129,7 @@ The technical dependencies required for the below work are as follows:
 
 As mentioned previously, the implementations of option pricing methods outlined below are based on original C++ scripts used in [S. Kucherenko et al. 2007](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott"). All code is contained within the option-pricing repository:
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/optionpricing](https://github.com/kxcontrib/optionpricing)
 
 Wrappers for the C++ pseudo-random and [Sobol’ sequence number generators](http://www.broda.co.uk/doc/HD_SobolGenerator.pdf) (see also [broda.co.uk](http://www.broda.co.uk/)) are contained within `rand.q`, along with the cumulative and inverse cumulative normal distribution functions in `norm.q`.

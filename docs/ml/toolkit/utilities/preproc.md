@@ -9,7 +9,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/util/preproc.q](https://github.com/kxsystems/ml/blob/master/util/preproc.q)
 
 The following functions are defined in the file `preproc.q` in the Machine Learning Toolkit.

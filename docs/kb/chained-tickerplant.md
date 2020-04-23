@@ -31,7 +31,7 @@ Start a chained tickerplant which echoes updates immediately.
 $ q chainedtick.q :5010 -p 5110 -t 0
 ```
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/tick/chainedtick.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedtick.q)
 
 
@@ -47,5 +47,5 @@ Don’t forget though that a second RDB will double up the memory usage – it's
 $ q chainedr.q :5010 -p 5111 / start a chained RDB from :5010
 ```
 
-<i class="fab fa-github"></i> [KxSystems/kdb/tick/chainedr.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q)
+:fontawesome-brands-github: [KxSystems/kdb/tick/chainedr.q](https://github.com/KxSystems/kdb/blob/master/tick/chainedr.q)
 

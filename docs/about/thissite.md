@@ -14,11 +14,11 @@ and continues to evolve.
 
 
 
-## <i class="fab fa-github"></i> GitHub
+## :fontawesome-brands-github: GitHub
 
-Truncated GitHub URLs are prefixed with the GitHub icon <i class="fab fa-github"></i> and omit the `https://github.com/` prefix. 
+Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-github: and omit the `https://github.com/` prefix. 
 
-For example, read <i class="fab fa-github"></i> `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
+For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
 
 ## <i class="far fa-life-ring"></i> Reference
@@ -37,7 +37,7 @@ The new site reference has three aims:
 > A finished work is exactly that, requires resurrection.  
 — _John Cage_, “Lecture on Nothing”, 1949
 
-The repository for this site is <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/KxSystems/docs). 
+The repository for this site is :fontawesome-brands-github: [KxSystems/docs](https://github.com/KxSystems/docs). 
 The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow). 
 
 To contribute, submit a pull request. 

@@ -9,7 +9,7 @@ keywords: machine learning, ml, ai, automated, preprocessing, postprocessing, fe
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/automl/)
 
 The automated machine learning platform described here is built largely on the tools available within the [Machine Learning Toolkit](../toolkit/ml/toolkit). The purpose of this platform is to help automate the process of applying machine-learning techniques to real-world problems. In the absence of expert machine-learning engineers this handles the following processes within a traditional workflow.
@@ -51,7 +51,7 @@ The following requirements cover all those needed to run the libraries in the cu
 A number of Python dependencies also exist for the running of embedPy functions within both the machine-learning utilities and FRESH libraries.
 These can be installed as outlined at
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/automl)
 using Pip
 

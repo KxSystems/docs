@@ -9,7 +9,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the [data preprocessing methods](preproc.md).

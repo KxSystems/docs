@@ -17,7 +17,7 @@ Q has limited support for ODBC. In general, ODBC is not recommended for large da
 <i class="far fa-hand-point-right"></i> Interfaces: [Simba/Magnitude ODBC drivers](../interfaces/odbc-simba.md)  
 <i class="far fa-hand-point-right"></i> Interfaces: [Q server for ODBC3 ](../interfaces/q-server-for-odbc3.md)
 
-<i class="far fa-hand-point-right"></i> John Ludlow’s <i class="fab fa-github"></i> [How to get kdb+ to talk to other databases <i class="far fa-file-pdf"></i>](https://github.com/kxcontrib/jludlow/blob/master/docs/odbc.pdf)
+<i class="far fa-hand-point-right"></i> John Ludlow’s :fontawesome-brands-github: [How to get kdb+ to talk to other databases <i class="far fa-file-pdf"></i>](https://github.com/kxcontrib/jludlow/blob/master/docs/odbc.pdf)
 
-<i class="far fa-hand-point-right"></i> Charles Skelton’s <i class="fab fa-github"></i> [Babel for kdb+](https://github.com/CharlesSkelton/babel) for a simpler alternative to ODBC
+<i class="far fa-hand-point-right"></i> Charles Skelton’s :fontawesome-brands-github: [Babel for kdb+](https://github.com/CharlesSkelton/babel) for a simpler alternative to ODBC
 

@@ -14,9 +14,9 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 <div>
     [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
     Download<br/>
-    <i class="fab fa-apple"></i>
-    <i class="fab fa-linux"></i>
-    <i class="fab fa-windows"></i>](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
+    :fontawesome-brands-apple:
+    :fontawesome-brands-linux:
+    :fontawesome-brands-windows:](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 </div>
 <div>
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>

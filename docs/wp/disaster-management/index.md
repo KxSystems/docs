@@ -641,7 +641,7 @@ Conor McCarthy joined First Derivatives in March 2018 as a Data Scientist in the
 
 The code presented in this paper is available on GitHub.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/fdl_europe_2019](https://github.com/kxcontrib/fdl_europe_2019)
 
 

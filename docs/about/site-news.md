@@ -43,7 +43,7 @@ Version 2 of this site has
 -   simplified URLs for Reference articles
 -   a new version, [Iterators](../wp/iterators/index.md) of the 2013 white paper “Efficient use of adverbs”
 -   HTTP requests redirected to HTTPS 
--   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
+-   An updated version of :fontawesome-brands-github: [`help.q`](https://github.com/kxsystems/help)
 
 The Kx wiki, frozen in 2016, has been retired to code.kx.com/oldwiki.
 
@@ -63,7 +63,7 @@ Announcements to mark our 25th birthday:
 
 
 
-## <i class="fab fa-github"></i> New development tools
+## :fontawesome-brands-github: New development tools
 
 <small>2018.03.01</small>
 
@@ -72,7 +72,7 @@ Listed on [GitHub](../github.md#development-tools): three new development tools 
 <i class="far fa-hand-point-right"></i> [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
 
 
-## <i class="fab fa-github"></i> Jupyter kernel for kdb+
+## :fontawesome-brands-github: Jupyter kernel for kdb+
 
 <small>2018.01.30</small>
 
@@ -105,7 +105,7 @@ The engine is still being developed.
 Please send your comments, suggestions and requests to librarian@kx.com. 
 
 
-## <i class="fab fa-superpowers"></i> Fusion interfaces
+## :fontawesome-brands-superpowers: Fusion interfaces
 
 <small>2017.11.06</small>
 

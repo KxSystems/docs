@@ -74,7 +74,7 @@ cols corpus
 !!! Note "Language support"
 
 	`.nlp.newParser` also supports Chinese (`zh`) and Japanese (`ja`) tokenization. These languages are only in the alpha stage of developement within Spacy so all functionality may not be available. Instructions on how to install these languages can be found at
-    <i class="fab fa-github"></i> 
+    :fontawesome-brands-github: 
     [KxSystems/nlp](https://github.com/KxSystems/nlp).
 
 

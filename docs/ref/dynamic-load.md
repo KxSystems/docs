@@ -39,7 +39,7 @@ If using a relative path which does not resolve to reside under `$QHOME/os`, ens
 
 :fontawesome-solid-book-open: 
 [File system](../basics/files.md)<br>
-<i class="fab fa-superpowers"></i>
+:fontawesome-brands-superpowers:
 [Using C/C++ functions](../interfaces/using-c-functions.md)
 
 

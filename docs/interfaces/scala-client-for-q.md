@@ -6,7 +6,7 @@ keywords: api, interface, kdb+, library, q, scala
 
 
 Download 
-<i class="fab fa-github"></i> [KxSystems/kdb/c/kx/c.java](https://github.com/KxSystems/kdb/blob/master/c/kx/c.java) to subfolder `kx` and compile it.
+:fontawesome-brands-github: [KxSystems/kdb/c/kx/c.java](https://github.com/KxSystems/kdb/blob/master/c/kx/c.java) to subfolder `kx` and compile it.
 
 ```bash
 $ javac kx/c.java

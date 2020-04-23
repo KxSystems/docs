@@ -16,7 +16,7 @@ MathWorks provides functions overview, usage instructions and some examples on t
     As Matlab/datafeed toolbox evolves features or instruction below are subject to revisions. Please refer to toolbox documentation for latest version.
     Users have reported that this works with more recent versions (e.g. R2015b on RHEL 6.8/2016b and 2017a on macOS).
 
-    See also community-supported native connector <i class="fab fa-github"></i> [dmarienko/kdbml](https://github.com/dmarienko/kdbml)
+    See also community-supported native connector :fontawesome-brands-github: [dmarienko/kdbml](https://github.com/dmarienko/kdbml)
 
 
 First, we start up a kdb+ process that we wish to communicate with from Matlab and load some sample data into it.
@@ -84,9 +84,9 @@ q)
 The Matlab integration depends on the two Java files `c.jar` and `jdbc.jar`. 
 For the purposes of this recipe, we assume this is available on the machine Matlab is running on, at `C:\q\jdbc.jar`. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/c.jar](https://github.com/KxSystems/kdb/blob/master/c/c.jar)  
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/jdbc.jar](https://github.com/KxSystems/kdb/blob/master/c/jdbc.jar)
 
 We then start a new Matlab session. From here on, `>>` represents the Matlab prompt.

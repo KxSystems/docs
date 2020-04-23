@@ -564,7 +564,7 @@ bytes | semantics
 
 ## Notes
 
-1.  <i class="fab fa-github"></i> [KxSystems/kdb/c/kx/c.java](https://github.com/KxSystems/kdb/blob/master/c/kx/c.java), <i class="fab fa-github"></i> [KxSystems/kdb/c/c.cs](https://github.com/KxSystems/kdb/blob/master/c/c.cs) etc., are simply (de)serializers for these structures. 
+1.  :fontawesome-brands-github: [KxSystems/kdb/c/kx/c.java](https://github.com/KxSystems/kdb/blob/master/c/kx/c.java), :fontawesome-brands-github: [KxSystems/kdb/c/c.cs](https://github.com/KxSystems/kdb/blob/master/c/c.cs) etc., are simply (de)serializers for these structures. 
 
 1.  Enumerations are automatically converted to values before sending through IPC.
 

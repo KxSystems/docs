@@ -9,7 +9,7 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 
@@ -36,7 +36,7 @@ The following requirements cover all those needed to run the libraries in the cu
 A number of Python dependencies also exist for the running of embedPy functions within both the the machine-learning utilities and FRESH libraries. 
 These can be installed as outlined at
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml) 
 using Pip
 

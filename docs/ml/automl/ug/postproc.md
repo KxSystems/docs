@@ -9,7 +9,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 
 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 This section describes the outputs produced following model selection and optimization. All outputs are contained in an `outputs` directory within the `automl` repository from which the user has executed the pipeline. In its default configuration, the pipeline returns 

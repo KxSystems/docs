@@ -70,13 +70,13 @@ This site is the primary resource for kdb+ developers.
 <i class="far fa-comments"></i> [kdb+ personal developers](https://groups.google.com/forum/?fromgroups#!forum/personal-kdbplus)
 : An open Google discussion group for users of the Personal Developer edition of kdb+.
 
-<i class="fab fa-stack-overflow"></i> [Stack Overflow](https://stackoverflow.com/search?q=kdb%2B)
+:fontawesome-brands-stack-overflow: [Stack Overflow](https://stackoverflow.com/search?q=kdb%2B)
 : Stackoverflow has a substantial collection of kdb+ questions and answers.
 
-<i class="fab fa-github"></i> [Kx on GitHub](https://kxsystems.github.io)
+:fontawesome-brands-github: [Kx on GitHub](https://kxsystems.github.io)
 : Developers from around the world share some of their best kdb+ code, libraries, and frameworks on GitHub, and Kx [indexes](github.md) them. Please send your kdb+ repository URLs to librarian@kx.com.
 
-<i class="fab fa-meetup"></i> [Meetup](https://www.meetup.com)
+:fontawesome-brands-meetup: [Meetup](https://www.meetup.com)
 : Use [meetup.com](https://www.meetup.com) to find Kx events round the world. 
 
 

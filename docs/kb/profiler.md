@@ -9,7 +9,7 @@ date: March 2020
 
 
 
-!!! info "Experimental feature <i class="fab fa-linux"></i>"
+!!! info "Experimental feature :fontawesome-brands-linux:"
 
     This is currently implemented for x86\_64 Linux (kdb+ `l64`).
 

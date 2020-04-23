@@ -154,10 +154,10 @@ The example will require us to
 -   generate a daily statistics table to be stored as a splayed table at the top level of the database
 
 Test data for this example can be generated using the CSV generator 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/dataloader/gencsv.q](https://github.com/KxSystems/cookbook/blob/master/dataloader/gencsv.q). 
 The full loader is at 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/dataloader/loader.q](https://github.com/KxSystems/cookbook/blob/master/dataloader/loader.q). 
 The loader could be made more generic, though has not been, for reasons of code clarity.
 
@@ -311,7 +311,7 @@ This may improve performance, but has the side effects that the loading is no lo
 ## Utilities
 
 A utility script 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [simongarland/csvguess](https://github.com/simongarland/csvguess) 
 allows CSV loader scripts to be generated automatically. This is especially useful for very wide or long CSV files where it is time-consuming to specify the correct types for each column. This also includes an optimized on-disk sorter, and the ability to create a loader to load and enumerate quickly all the symbol columns, allowing parallel loading processes to have only to read the sym file.
 

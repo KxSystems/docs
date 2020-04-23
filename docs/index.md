@@ -61,9 +61,9 @@ Kdb+, from [Kx](https://kx.com), is
 <div>
     [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
     Download<br/>
-    <i class="fab fa-apple"></i>
-    <i class="fab fa-linux"></i>
-    <i class="fab fa-windows"></i>](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
+    :fontawesome-brands-apple:
+    :fontawesome-brands-linux:
+    :fontawesome-brands-windows:](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 </div>
 <div>
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
@@ -114,7 +114,7 @@ Kdb+, from [Kx](https://kx.com), is
     (It uses scripts from the Web so needs Net access or a browser cache to render correctly.)
 
     The source code for this site is on GitHub at 
-    <i class="fab fa-github"></i>
+    :fontawesome-brands-github:
     [KxSystems/docs](https://github.com/kxsystems/docs/). 
 
 !!! info "[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)"

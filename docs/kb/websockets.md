@@ -19,7 +19,7 @@ q -p 5000
 ```
 
 Download 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/ws.htm](https://github.com/KxSystems/cookbook/blob/master/ws.htm), 
 a simple WebSocket client, and open it in a WebSocket-capable browser. You should see something like this:
 
@@ -76,14 +76,14 @@ This example works, because the default `.z.ws` echoes the byte vector over the 
 
 :fontawesome-solid-download: Downloads:
 
--   <i class="fab fa-github"></i> [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
--   <i class="fab fa-github"></i> [KxSystems/cookbook/wslogin.htm](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm)
+-   :fontawesome-brands-github: [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
+-   :fontawesome-brands-github: [KxSystems/cookbook/wslogin.htm](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm)
 
 
 ## JSON
 
 A small utility to parse and generate JSON is shipped in `q.k`. (Since V3.2 2014.08.22.) For prior releases, it can be found at:
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/e/json.k](https://github.com/KxSystems/kdb/blob/master/e/json.k)
 
 After loading `json.k`, example data is in `.j.x`
@@ -217,9 +217,9 @@ Both client and server support permessage-deflate compression.
 
 ## Secure sockets: stunnel
 
-[Stunnel](https://en.wikipedia.org/wiki/Stunnel) <i class="fab fa-wikipedia-w"></i> will provide secure sockets (TLS/SSL) using the OpenSSL library. Stunnel will take any WebSocket server, HTTP server, or similar and secure it – you get `https://` and `wss://` for free.
+[Stunnel](https://en.wikipedia.org/wiki/Stunnel) :fontawesome-brands-wikipedia-w: will provide secure sockets (TLS/SSL) using the OpenSSL library. Stunnel will take any WebSocket server, HTTP server, or similar and secure it – you get `https://` and `wss://` for free.
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [cesanta/ssl_wrapper](https://github.com/cesanta/ssl_wrapper)
 
 

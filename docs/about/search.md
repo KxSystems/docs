@@ -28,7 +28,7 @@ Queries not matched by the Search Box are handled by Google Search.
 
 !!! tip "Install `man.q.` to open the Reference direct from the q session."
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/man](https://github.com/KxSystems/man)
 
 :fontawesome-solid-question:

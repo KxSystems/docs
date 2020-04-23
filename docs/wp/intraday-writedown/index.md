@@ -34,7 +34,7 @@ One solution is to write down some of the data from the RDB to a temporary direc
 
 ## `w.q`
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/tick](https://github.com/simongarland/tick)
 
 This script can easily be modified to work with any standard kdb+ setup. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.

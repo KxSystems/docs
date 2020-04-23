@@ -20,7 +20,7 @@ Where appropriate, sample code snippets are provided to illustrate how the techn
 
 Sample on-disk test databases can be created using the `tq.q` script.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-taq](https://github.com/KxSystems/kdb-taq)
 
 Code examples are intended for readers with at least a beginner-level knowledge of kdb+ and the q language. However we encourage any interested reader to contact us at [lectureseries@firstderivatives.com](mailto:lectureseries@firstderivatives.com) with questions regarding code syntax or any other aspect of the paper.
@@ -94,7 +94,7 @@ enumerate:{[d;t] /directory,table
 
 In some kdb+ installations, table schemas change frequently. This can be difficult to manage if the installation consists of a splayed partitioned database, since each time the schema changes you have to manually change all the historical data to comply with the new schema. This is time-consuming and prone to error. `dbmaint.q` is a useful tool for performing these manual changes.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb/utils](https://github.com/KxSystems/kdb/tree/master/utils)
 
 To reduce the administrative overhead, the historical database schema can be updated programmatically as intra-day data is persisted. This can be achieved by invoking function `updateHistoricalSchema` (below), which connects to the historical database and runs locally-defined functions to add and remove tables, add and remove columns, reorder columns and change their types. It does this by comparing the table schemas in the last partition with those of the other partitions, and making the necessary adjustments to the other partitions.
@@ -106,7 +106,7 @@ To reduce the administrative overhead, the historical database schema can be upd
 Note also that column type conversion (function `changeColumnTypes`) will not work when changing to or from nested types or symbols – this functionality is beyond the scope of this paper.
 
 The `updateHistoricalSchema` function should be invoked once the in-memory data is fully persisted. If
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 is being used, the function should be called as the last line of the `.u.end` function in `r.q` – the real-time database. `updateHistoricalSchema` takes the port of the historical database as an argument, opens a connection to the historical database and calls functions that perform changes to the historical data. Note that the functions are defined in the calling process. This avoids having to load functionality into the historical process, which usually has no functionality defined in it.
 
@@ -363,7 +363,7 @@ The above `flush` function does not sort or set the parted attribute on the data
 
 If the component which feeds the process is a tickerplant (see kdb+tick) it is necessary to truncate the tickerplant log file (file containing all records received) each time `flush` is called, otherwise the historical data could end up with duplicates. This can happen if the process saves to disk and then restarts, retrieving those same records from the log file, which will subsequently be saved again. The call to the `flush` function can be initiated from the tickerplant in the same way it calls the end-of-day function. If the source of the data is something other than a component which maintains a file of records received, such as a tickerplant, then calling the `flush` function from within the process is usually the best approach.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 
 

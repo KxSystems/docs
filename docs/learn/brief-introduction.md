@@ -438,7 +438,7 @@ time                          id  severity cpu cpu
 
 The linked scripts allow you to build an on-disk database and run some queries against it. The database is randomly-generated utility (smart-meter) data for different customers in different regions and industry sectors, along with some associated payment information. The idea is to allow you to see some of the q language and performance. There is more information in the `README` file. 
 
-<i class="fab fa-github"></i> [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial)
+:fontawesome-brands-github: [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial)
 
 
 ### Building the database

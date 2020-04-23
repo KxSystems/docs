@@ -2,9 +2,9 @@
 title: Examples of using R from q
 description: Examples showing the use of the Fusion interfaces between R and q
 keywords: interface, kdb+, library, q, r
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+hero: :fontawesome-brands-superpowers: Fusion for Kdb+
 ---
-# <i class="fab fa-r-project"></i> Examples using rkdb/embedR
+# :fontawesome-brands-r-project: Examples using rkdb/embedR
 
 
 The following examples make use of the Fusion interfaces between q/kdb+ and R and show their versatility.
@@ -237,7 +237,7 @@ This solution executes quickest and with the least network usage, as the resulta
 
 To demonstrate the power of q, an example using randomly-generated smart-meter data has been developed.
 This can be downloaded from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial).
 By following the instructions in the README, an example database can be built.
 The default database contains information on 100,000 smart-meter customers from different sectors and regions over 61 days.

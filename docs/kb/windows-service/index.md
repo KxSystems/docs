@@ -13,7 +13,7 @@ processes as services.
 
 To schedule a kdb+ process to start on startup:
 
-1.  Press the <i class="fab fa-windows"></i>+R keys to open Run.
+1.  Press the :fontawesome-brands-windows:+R keys to open Run.
 
 2.  Type `taskschd.msc` and press Enter.
     

@@ -7,7 +7,7 @@ date: February 2020
 # Help for `man.q`
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/man](https://github.com/kxsystems/man)
 
 ## Examples

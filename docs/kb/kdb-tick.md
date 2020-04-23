@@ -45,7 +45,7 @@ A chained RDB doesn’t have to subscribe to the whole ‘firehose’. It might 
 ## Working with the TP logfile
 
 The TP logs the updates published to subscribers to a file. In the event of a serious crash, this file can be rescued using the utility functions in 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q)
 
 
@@ -57,7 +57,7 @@ A simple example would be keeping a running Open/High/Low/Latest: much simpler t
 
 A more interesting example is keeping a table of the latest trade and the associated quote for every stock – trivial to do in real time with the incremental updates from the TP, but impossible to build from scratch in a timely fashion with the raw data. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
 
 
@@ -65,7 +65,7 @@ A more interesting example is keeping a table of the latest trade and the associ
 
 The default version of `c.q` linked to above connects to a TP and starts collecting data. Sometimes that’s not enough and you want to replay the log through the task first. (For example, to get the Open/High/Low for the day, not just since starting the task.) For that, use `clog.q` instead. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
 
 
@@ -74,5 +74,5 @@ The default version of `c.q` linked to above connects to a TP and starts collect
 By default, the end-of-day processing simply saves the intra-day RDB to disk after a little re-organization. 
 
 An example of additional processing (updating a permanent HLOC table and building an NBBO table from scratch) can be found in
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/taq/daily.q](https://github.com/simongarland/tick/blob/master/clog.q). 

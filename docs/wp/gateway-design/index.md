@@ -107,7 +107,7 @@ In this script the load balancer process determines which service to issue the r
 Nathan Perrem has also provided an extended version of this solution, which queues outstanding requests in the load-balancer process if all services are busy and processes the queue as services complete their request. This script ensures requests are processed in the order in which they are received and provides support for scenarios where services crash before completing a request. This solution makes it easier to track the status of all incoming queries as well as allowing clients to provide callback functions for results
 of queries.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [nperrem/mserve](https://github.com/nperrem/mserve)
 
 

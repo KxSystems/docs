@@ -2,7 +2,7 @@
 title: Using foreign functions with kdb+ – Interfaces – kdb+ and q documentation
 description: FFI for kdb+ is an extension to kdb+ for loading and calling dynamic libraries using pure q.
 author: Sergey Vidyuk
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+hero: :fontawesome-brands-superpowers: Fusion for Kdb+
 keywords: foreign, function, fusion, interface, kdb+, q
 ---
 # :fontawesome-solid-map-signs: Using foreign functions with kdb+
@@ -10,7 +10,7 @@ keywords: foreign, function, fusion, interface, kdb+, q
 
 
 
-FFI for kdb+ (<i class="fab fa-github"></i> [KxSystems/ffi](https://github.com/kxsystems/ffi)) is an extension to kdb+ for loading and calling dynamic libraries using pure q.
+FFI for kdb+ (:fontawesome-brands-github: [KxSystems/ffi](https://github.com/kxsystems/ffi)) is an extension to kdb+ for loading and calling dynamic libraries using pure q.
 
 The main purpose of the library is to build stable interfaces on top of external libraries, or to interact with the operating system from `q`. No compiler toolchain or writing C/C++ code is required to use this library.
 
@@ -25,7 +25,7 @@ We are grateful to Alexander Belopolsky for allowing us to adapt and expand on h
 
 ## Requirements and installation
 
-See <i class="fab fa-github"></i> [KxSystems/ffi](https://github.com/KxSystems/ffi#requirements)
+See :fontawesome-brands-github: [KxSystems/ffi](https://github.com/KxSystems/ffi#requirements)
 
 
 ## API

@@ -8,10 +8,10 @@ keywords: interface, kdb+, q, r,
 # embedR, an interface for calling R from q
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../fusion.md)
+:fontawesome-brands-superpowers: [Fusion for kdb+](../fusion.md)
 </div>
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxsystems/embedr](https://github.com/kxsystems/embedr)
 
 This package is used to invoke R from q for both 32- and 64-bit builds. If the appropriate build is not available on your target system, build instructions are available in the `README.md` for this repository

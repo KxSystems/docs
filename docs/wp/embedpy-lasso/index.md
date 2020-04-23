@@ -45,7 +45,7 @@ used in the LASSO regression problem that follows.
 
 Download the embedPy package from
 GitHub:
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/embedPy](https://github.com/kxsystems/embedpy)
 
 Follow the instructions in `README.md` for installing the interface. 
@@ -213,7 +213,7 @@ useful given the high dimensionality of this dataset.
 
 A kdb+ Jupyter notebook on GitHub accompanies this paper.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/embedpy-lasso](https://github.com/kxcontrib/embedpy-lasso)
 
 

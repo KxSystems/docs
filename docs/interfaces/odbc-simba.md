@@ -25,14 +25,14 @@ microsoft.com: [ODBC API Reference](https://docs.microsoft.com/en-us/sql/odbc/re
 
 The Simba Kdb+ ODBC Driver is available for these clients:
 
--   <i class="fab fa-linux"></i> Linux
+-   :fontawesome-brands-linux: Linux
     +   RedHat®EnterpriseLinux®(RHEL) 6 or 7
     +   CentOS 6 or 7
     +   SUSE Linux EnterpriseServer (SLES) 11 or 12
     +   Debian 8 or 9
     +   Ubuntu 14.04, 16.04, or 18.04
--   <i class="fab fa-apple"></i> macOS version 10.12, 10.13, or 10.14
--   <i class="fab fa-windows"></i> Microsoft® Windows®
+-   :fontawesome-brands-apple: macOS version 10.12, 10.13, or 10.14
+-   :fontawesome-brands-windows: Microsoft® Windows®
     +   Windows 10, 8.1, or 7 SP1
     +   WindowsServer 2016, 2012, or 2008R2SP1
 

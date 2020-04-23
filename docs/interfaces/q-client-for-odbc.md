@@ -19,7 +19,7 @@ Knowledge Base: [ODBC](../kb/odbc.md)
 
 To install, download
 
--   <i class="fab fa-github"></i> [KxSystems/kdb/c/odbc.k](https://github.com/KxSystems/kdb/blob/master/c/odbc.k) into the q directory
+-   :fontawesome-brands-github: [KxSystems/kdb/c/odbc.k](https://github.com/KxSystems/kdb/blob/master/c/odbc.k) into the q directory
 -   the appropriate `odbc.so` or `odbc.dll`:
 
 | q        | q/l32 | q/l64 | q/w32 | q/w64 |

@@ -96,11 +96,11 @@ q)tb like "*[^0-9]"
 ## Regex libraries
 
 For those who need something more flexible, it’s possible to use regex libs such as 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [google/re2](https://github.com/google/re2), 
 
 The code below was compiled to use `re2` with V3.1. The `k.h` file can be downloaded from 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/c](https://github.com/KxSystems/kdb/tree/master/c/c) 
 This can be compiled for 64-bit Linux:
 

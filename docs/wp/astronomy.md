@@ -43,10 +43,10 @@ Kx provides a header file, `k.h`, for interacting with C from kdb+. It provides 
 <i class="far fa-hand-point-right"></i>
 Interfaces: [C client for kdb+](../interfaces/c-client-for-q.md)<br>
 White paper: [“C API for kdb+”](capi/index.md)<br>
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb](https://github.com/kxsystems/kdb)<br>
 James Neill’s repository for kdb+ in astronomy:
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [jpneill/fitsToKdb](https://github.com/jpneill/fitsToKdb)
 
 

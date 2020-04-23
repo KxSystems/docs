@@ -9,7 +9,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 
 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 The other sections of the AutoML documentation describe the default behavior of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behavior. The two methods to complete this are by inputting

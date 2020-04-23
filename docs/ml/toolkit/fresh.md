@@ -10,7 +10,7 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml)
 
 Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
@@ -28,7 +28,7 @@ Feature selection can improve the accuracy of a machine-learning algorithm by
 
 !!! tip "Examples"
 
-    Interactive notebook implementations showing examples of the FRESH algorithm used in different applications can be found at <i class="fab fa-github"></i> [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
+    Interactive notebook implementations showing examples of the FRESH algorithm used in different applications can be found at :fontawesome-brands-github: [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
 
 ## Loading

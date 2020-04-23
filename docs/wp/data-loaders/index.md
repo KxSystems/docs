@@ -155,7 +155,7 @@ The following section has an example of a dynamic approach.
 
 ### Ingestion-flow example
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
 
 The master process will act as a file watcher. It will check for specific batches of files and add any valid files to the `.mi.tasks` table along with the relevant tasks to apply. The master process starts up and pings the staging area for batches and constituent files. It has view of all available slaves in the `.mi.slaves` table:
@@ -591,7 +591,7 @@ For use cases where real-time feeds are unfeasible (due to cost, technical limit
 
 In this paper we discussed batch processing and use cases where it may be most appropriate: high volumes and throughput, large number of files, hardware constraints. We then described a proposed mass ingestion framework using kdb+, discussing the technical aspects of the framework such as the number of slaves to utilize, maintaining sym file integrity and task allocation. Finally, we went through an example ingestion scenario and concluded by outlining the benefits of the framework.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
 
 The framework outlined in this paper is a simplified version of a framework that has been used in several Kx implementations for batch ingestion. It has proven to be fast, efficient and scalable.

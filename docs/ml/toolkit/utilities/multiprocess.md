@@ -8,7 +8,7 @@ keywords: machine learning, ml, utilitites, multi-threading, kdb+, q
 # :fontawesome-solid-share-alt: Multiprocess distribution framework
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 

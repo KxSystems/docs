@@ -18,16 +18,16 @@ Free 64-bit kdb+ On-Demand Personal Edition
 Free 32-bit kdb+ Personal Edition
 : The 32-bit kdb+ Personal Edition is free for non-commercial use. It can be run on cloud servers.
 
-!!! warning "<i class="fab fa-apple"></i> macOS Catalina (10.15) ended macOS support for 32-bit applications."
+!!! warning ":fontawesome-brands-apple: macOS Catalina (10.15) ended macOS support for 32-bit applications."
 
 Use the link below to obtain the 64-bit or 32-bit Personal Edition of kdb+.
 
 <button style="background: #0088ff; padding: 10px;" type="button">
   <a href="https://kx.com/connect-with-us/download/" style="color: white">
     <span style="font-size: 2em">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
-      <i class="fab fa-linux"></i>
-      <i class="fab fa-apple"></i>
-      <i class="fab fa-windows"></i>
+      :fontawesome-brands-linux:
+      :fontawesome-brands-apple:
+      :fontawesome-brands-windows:
   </a>
 </button>
 
@@ -54,9 +54,9 @@ Numerical release versions of the form 2.8, or 3.5 are production code. Versions
 
 Follow the installation instructions for your operating system:
 
--   <i class="fab fa-linux"></i> [Linux](linux.md)
--   <i class="fab fa-apple"></i> [macOS](macos.md)
--   <i class="fab fa-windows"></i> [Windows](windows.md)
+-   :fontawesome-brands-linux: [Linux](linux.md)
+-   :fontawesome-brands-apple: [macOS](macos.md)
+-   :fontawesome-brands-windows: [Windows](windows.md)
 
 
 ## :fontawesome-solid-certificate: Licenses

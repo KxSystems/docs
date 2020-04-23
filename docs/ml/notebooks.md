@@ -9,7 +9,7 @@ EmbedPy and JupyterQ can be used to solve all kind of machine-learning problems,
 
 
 The notebooks at 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 provide examples that bring together these concepts and show what can be achieved.
 

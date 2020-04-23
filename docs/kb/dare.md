@@ -256,7 +256,7 @@ These are some of the points of research on our encryption roadmap.
 
 Kdb+ presently provides for confidentiality but not integrity beyond the meta block.
 
-<i class="fab fa-wikipedia-w"></i>
+:fontawesome-brands-wikipedia-w:
 [Authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption "Wikipedia")
 
 

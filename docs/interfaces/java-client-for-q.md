@@ -1,15 +1,15 @@
 ---
 title: Using Java with kdb+ – Interfaces – kdb+ and q documentation
 description: How to enable a Java client to query kdb+, subscribe to a kdb+ publisher, and publish to a kdb+ consumer
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+hero: :fontawesome-brands-superpowers: Fusion for Kdb+
 keywords: fusion, interface, java, kdb+, q
 ---
-# <i class="fab fa-java"></i> Using Java with kdb+
+# :fontawesome-brands-java: Using Java with kdb+
 
 
 
 
-<i class="fab fa-github"></i> [KxSystems/javakdb](https://github.com/KxSystems/javakdb) is the original Java driver, a.k.a `c.java`, from Kx for interfacing [Java](https://www.java.com/en/) with kdb+ via TCP/IP. This driver allows Java applications to
+:fontawesome-brands-github: [KxSystems/javakdb](https://github.com/KxSystems/javakdb) is the original Java driver, a.k.a `c.java`, from Kx for interfacing [Java](https://www.java.com/en/) with kdb+ via TCP/IP. This driver allows Java applications to
 
  - query kdb+
  - subscribe to a kdb+ publisher

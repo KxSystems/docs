@@ -10,7 +10,7 @@ keywords: pandas manipulation, dataframe, train test split, .
 
 The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/blob/master/util/util.q)
 
 The following functions are defined in the `util.q` file of the Machine Learning Toolkit.

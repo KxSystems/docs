@@ -476,7 +476,7 @@ serialize and deserialize data on the client side. The deserialize
 function converts kdb+ binary data into JSON, while the serialize
 function will convert our message into kdb+ binary format before sending
 it to the server. `c.js` can be found on GitHub at:
-<i class="fab fa-github"></i> [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
+:fontawesome-brands-github: [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
 
 The previous section showed how we can parse q structures into JSON strings and
 send them to our client. In this example, we will instead do all of the
@@ -764,7 +764,7 @@ Michael Gracey also joined First Derivatives in 2013 and works as a front-end de
 ## Appendices 
 
 The following code is also available on GitHub at
-<i class="fab fa-github"></i> [kxcontrib/websocket](https://github.com/kxcontrib/websocket).
+:fontawesome-brands-github: [kxcontrib/websocket](https://github.com/kxcontrib/websocket).
 
 
 ### A. `SimpleDemo.html`

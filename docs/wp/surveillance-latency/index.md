@@ -238,7 +238,7 @@ In the intraday cases, when we say every $x$ minutes, we mean every $x$ minutes 
 
 For each case, we run the alert analytic twenty times to simulate twenty such logic checks running in an alert-engine process within the system.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP)
 
 <i class="far fa-hand-point-right"></i>
@@ -407,7 +407,7 @@ We set a similar but simpler schema for `dxTradePublic`. Other adjustments to th
 
 We assume the reader is installing on a Linux platform.
 
-1.  Clone the repository <i class="fab fa-github"></i> [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
+1.  Clone the repository :fontawesome-brands-github: [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
 
     <pre><code class="language-bash">
     $ cd $HOME

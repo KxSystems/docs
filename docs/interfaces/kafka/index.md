@@ -1,7 +1,7 @@
 ---
 title: Using Kafka with kdb+ – Interfaces
 description: How to connect a kdb+ server process to the Apache Kafka distributed streaming platform
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+hero: :fontawesome-brands-superpowers: Fusion for Kdb+
 keywords: apache, api, consumer, fusion, interface, kafka, learning, library, machine, producer, q
 ---
 # ![Apache Kafka](../img/kafka.png) Using Kafka with kdb+
@@ -9,7 +9,7 @@ keywords: apache, api, consumer, fusion, interface, kafka, learning, library, ma
 
 
 
-<i class="fab fa-github"></i> [KxSystems/kafka](https://github.com/KxSystems/kafka)
+:fontawesome-brands-github: [KxSystems/kafka](https://github.com/KxSystems/kafka)
 
 
 `kfk` is a thin wrapper for kdb+ around the 
@@ -48,7 +48,7 @@ show "Published 1 message";
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[<i class="fab fa-github"></i> KxSystems/kafka/examples/test_producer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_producer.q)
+[:fontawesome-brands-github: KxSystems/kafka/examples/test_producer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_producer.q)
 
 
 ### Minimal consumer example
@@ -68,7 +68,7 @@ data:();
 ```
 
 <i class="far fa-hand-point-right"></i> 
-[<i class="fab fa-github"></i> KxSystems/kafka/examples/test_consumer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_consumer.q) for a slightly more elaborate version 
+[:fontawesome-brands-github: KxSystems/kafka/examples/test_consumer.q](https://github.com/KxSystems/kafka/blob/master/examples/test_consumer.q) for a slightly more elaborate version 
 
 
 ## Configuration
@@ -76,7 +76,7 @@ data:();
 The library supports and uses all configuration options exposed by `librdkafka`, except callback functions, which are identical to Kafka options by design of `librdkafka`. 
 
 <i class="far fa-hand-point-right"></i> 
-[<i class="fab fa-github"></i> edenhill/librdkafka/CONFIGURATION.md](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md) for a list of options
+[:fontawesome-brands-github: edenhill/librdkafka/CONFIGURATION.md](https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md) for a list of options
 
 
 ## Testing
@@ -143,6 +143,6 @@ The messages will now flow from producer to consumer, the publishing rate can be
 ## Performance and tuning
 
 <i class="far fa-hand-point-right"></i> 
-[<i class="fab fa-github"></i> edenhill/librdkafka/wiki/How-to-decrease-message-latency](https://github.com/edenhill/librdkafka/wiki/How-to-decrease-message-latency)
+[:fontawesome-brands-github: edenhill/librdkafka/wiki/How-to-decrease-message-latency](https://github.com/edenhill/librdkafka/wiki/How-to-decrease-message-latency)
 
 There are numerous configuration options and it is best to find settings that suit your needs and setup. See [Configuration](#configuration) above. 

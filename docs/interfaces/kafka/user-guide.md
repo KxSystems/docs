@@ -10,7 +10,7 @@ keywords: broker, consumer, kafka, producer, publish, subscribe, subscription, t
 
 As outlined in the overview for this API, the kdb+/Kafka interface is a thin wrapper for kdb+ around the [`librdkafka`](https://github.com/edenhill/librdkafka) C API for [Apache Kafka](https://kafka.apache.org/). 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kafka](https://github.com/KxSystems/kafka)
 
 The following functions are those exposed within the `.kfk` namespace allowing users to interact with Kafka from a kdb+ instance.

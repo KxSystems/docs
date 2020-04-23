@@ -771,7 +771,7 @@ handles are opened on startup.
 .z.pc:{.tp.handles:.tp.handles except x;(first .tp.handles)".u.sub[`;`]";}
 ```
 
-Full details on GitHub at <i class="fab fa-github"></i>
+Full details on GitHub at :fontawesome-brands-github:
 [KxSystems/kdb-tick/tick/r.q](https://github.com/KxSystems/kdb-tick/blob/master/tick/r.q)
 
 

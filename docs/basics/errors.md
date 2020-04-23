@@ -239,6 +239,6 @@ Use [Trap and Trap At](../ref/apply.md#trap) to trap errors.
 [Debugging](debug.md)
 
 
-<!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="fab fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- <i class="far fa-hand-point-right"></i> Simon’s list :fontawesome-brands-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 

@@ -15,7 +15,7 @@ _Linear Programming is a large topic, of which this article reviews just a few a
 
     Like other descendants of Iverson Notation (e.g. [A+](http://www.aplusdev.org/index.html), [APL](https://en.wikipedia.org/wiki/APL_(programming_language)), [J](https://en.wikipedia.org/wiki/J_(programming_language))), q inherits compact and powerful expression of linear algebra. 
 
-    Q Math Library: <i class="fab fa-github"></i> [zholos/qml](https://github.com/zholos/qml)
+    Q Math Library: :fontawesome-brands-github: [zholos/qml](https://github.com/zholos/qml)
 
     :fontawesome-solid-camera: [Ken Iverson & Arthur Whitney, APL89, New York City](../img/keiandatw89.png "photo courtesy Rob Hodgkinson")
 

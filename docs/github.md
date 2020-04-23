@@ -4,14 +4,14 @@ description: An index of q and kdb+ repositories on GitHub.
 author: Stephen Taylor
 keywords: code, github, kdb+, q, repo, repository
 ---
-# <i class="fab fa-github"></i> Repositories on GitHub
+# :fontawesome-brands-github: Repositories on GitHub
 
 
 
 <i class="far fa-hand-point-right"></i> [Interfaces](interfaces/index.md) to feeds, services and other languages  
 <i class="far fa-hand-point-right"></i> [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
 
-Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
+Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
 
 <div style="background-color: #efefef; border: 1px solid #005499; border-radius: 10px; display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
@@ -39,7 +39,7 @@ about new repositories.</div>
 	<td>
 		[calling Python from q](ml/embedpy/index.md) 
 		[:fontawesome-solid-share-alt:](./ml/index.md "Machine learning")
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
+		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
@@ -50,7 +50,7 @@ about new repositories.</div>
 	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
 	<td>
 		[Java client for kdb+](interfaces/java-client-for-q.md) 
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
+		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
@@ -58,14 +58,14 @@ about new repositories.</div>
 	<td>
 		[Jupyter kernel for kdb+](ml/jupyterq/index.md)
 		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
+		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[kafka](https://github.com/KxSystems/kafka)</td>
 	<td>
 		kdb+ client for [Apache Kafka](https://kafka.apache.org)
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
+		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
@@ -109,14 +109,14 @@ about new repositories.</div>
 	<td class="nowrap">[pyq](https://github.com/KxSystems/pyq)</td>
 	<td>
 		[calling Python from q](interfaces/pyq/index.md)
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
+		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[rkdb](https://github.com/KxSystems/rkdb)</td>
 	<td>
 		[R client for q](interfaces/r/index.md)
-		[<i class="fab fa-superpowers"></i>](interfaces/fusion.md "Fusion interfaces")
+		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 </table>
@@ -1070,7 +1070,7 @@ about new repositories.</div>
 ## :fontawesome-solid-share-alt-square: kxcontrib
 
 !!! warning "Salvaged repositories"
-	<i class="fab fa-github"></i> [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 
+	:fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 
 
 
 <table class="kx-compact" markdown="1">

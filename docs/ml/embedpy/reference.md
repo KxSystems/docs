@@ -3,7 +3,7 @@ title: Reference for embedPy – Machine Learning – kdb+ and q documentation
 description: A reference guide for embedPy, which allows q programs to call Python code
 keywords: embedpy, interface, kdb+, python, q
 ---
-# <i class="fab fa-python"></i> Reference for embedPy
+# :fontawesome-brands-python: Reference for embedPy
 
 
 

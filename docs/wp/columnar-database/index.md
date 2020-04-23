@@ -15,13 +15,13 @@ Kdb+ has a well deserved reputation as a high-performance database, appropriate 
 
 Adjustments to column attributes are made using the `dbmaint.q` library.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb/utils/dbmaint.q](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md)
 
 Where appropriate, OS disk cache has been flushed using Simon
 Garland’s `io.q` script. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/io](https://github.com/simongarland/io)
 
 Tests performed using kdb+ version 2.8 (2012.05.29)

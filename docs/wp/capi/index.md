@@ -18,7 +18,7 @@ For example, in a recent white paper “[Kdb+ in astronomy](../astronomy.md)” 
 
 While [Interfaces: C](../../interfaces/c-client-for-q.md) remains the primary source for up-to-date information on the C API, the examples presented here provide a complementary set of practical templates. These templates can be combined and used to apply kdb+ across a broad range of problem domains. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/capi](https://github.com/kxcontrib/capi)
 
 
@@ -1320,7 +1320,7 @@ White paper: [Building real-time tick subscribers](../rt-tick/index.md)
 
 To facilitate testing of a C subscriber process, the following kdb+ tickerplant will be used.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick/blob/master/tick.q)
 
 For the sake of demonstration, the publisher will be conﬁgured to send a mock market-data feed in the form of trade records to the tickerplant. The trade table schema to be used is deﬁned below.

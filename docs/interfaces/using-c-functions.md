@@ -82,7 +82,7 @@ The resulting binary should be placed in the same directory as the q executable.
 
 Building an extension on multiple platforms with portable source.
 
-You will need <i class="fab fa-github"></i> [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) 
+You will need :fontawesome-brands-github: [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) 
 and familiarity with [C client for q](c-client-for-q.md).
 
 `add()` adds two q integers and returns the result. The code is portable across all platforms supported by q.
@@ -146,7 +146,7 @@ EXPORTS
 add
 ```
 
-To ensure that the linker can find `kj()`, we link with <i class="fab fa-github"></i> [KxSystems/kdb/w32/q.lib](https://github.com/KxSystems/kdb/blob/master/w32/q.lib) or [KxSystems/kdb/w64/q.lib](https://github.com/KxSystems/kdb/blob/master/w64/q.lib) The `.lib` contains stub code that links to the `kj()` function in `q.exe`.
+To ensure that the linker can find `kj()`, we link with :fontawesome-brands-github: [KxSystems/kdb/w32/q.lib](https://github.com/KxSystems/kdb/blob/master/w32/q.lib) or [KxSystems/kdb/w64/q.lib](https://github.com/KxSystems/kdb/blob/master/w64/q.lib) The `.lib` contains stub code that links to the `kj()` function in `q.exe`.
 
 Now, with k.h, add.c, add.def, q.lib we can build a C extension:
 
@@ -177,7 +177,7 @@ Tested using [MinGW-64](http://mingw-w64.org/doku.php) with `q/w32`.
 
 The purpose of this recipe is to explain how to access a low-level feature of an operating system and processor from q. This is illustrative of the type of operation that cannot be performed directly in q, and for which it makes sense to write a C function for use within q.
 
-Source code: <i class="fab fa-github"></i> [KxSystems/cookbook/cpu_extension](https://github.com/KxSystems/cookbook/tree/master/cpu_extension)
+Source code: :fontawesome-brands-github: [KxSystems/cookbook/cpu_extension](https://github.com/KxSystems/cookbook/tree/master/cpu_extension)
 
 
 ### Accessing the TSC
