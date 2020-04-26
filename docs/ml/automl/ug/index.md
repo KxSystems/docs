@@ -131,6 +131,9 @@ Where
 
 returns the target predictions for new data based on a previously fitted model and workflow.
 
+!!!Note
+	In the below example the date and time are related to a previous run and taken from the return of `.automl.new` the below examples should be run based on your run date and time.
+
 ```q
 // New dataset
 q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)

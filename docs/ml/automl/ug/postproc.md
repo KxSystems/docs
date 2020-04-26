@@ -73,23 +73,27 @@ The following is an example of the contents of one of the config files.
 
 ```q
 q)get`:metadata
-xv              | (`.ml.xv.kfshuff;5)
-gs              | (`.ml.gs.kfshuff;5)
-funcs           | `.automl.prep.i.default
-prf             | `.automl.xv.fitpredict
-scf             | `class`reg!`.ml.accuracy`.ml.mse
-seed            | 51879508
-saveopt         | 2
-hld             | 0.2
-tts             | `.ml.traintestsplit
-sz              | 0.2
-sigfeats        | `.automl.prep.freshsignificance
-tf              | 0b
-typ             | `normal
-hyper_parameters| `n_neighbors`leaf_size`metric!(2;10;`minkowski)
-features        | `x1`x2
-test_score      | 1f
-best_model      | `KNeighborsClassifier
-symencode       | `freq`ohe!(`symbol$();,`x)
-pylib           | `sklearn
+best_scoring_name| `RandomForestRegressor
+cnt_feats        | 1
+features         | ,`x2
+test_score       | 0.0005079553
+symencode        | `freq`ohe!``
+feat_time        | 00:00:00.001
+describe         | `x`x1`x2!+`count`unique`mean`std`min`max`type!(100 100 100..
+hyper_params     | `n_estimators`criterion`min_samples_leaf!(10;`mse;1)
+xv               | (`.ml.xv.kfshuff;5)
+gs               | (`.ml.gs.kfshuff;5)
+funcs            | `.automl.prep.i.default
+prf              | `.automl.xv.fitpredict
+scf              | `class`reg!`.ml.accuracy`.ml.mse
+seed             | 55701248
+saveopt          | 2
+hld              | 0.2
+tts              | `.ml.traintestsplit
+sz               | 0.2
+sigfeats         | `.automl.prep.freshsignificance
+tf               | 0b
+typ              | `normal
+pylib            | `sklearn
+mtyp             | `reg
 ```

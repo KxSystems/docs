@@ -418,6 +418,9 @@ nav:
         - embedR: interfaces/r/embedr.md
         - Examples: interfaces/r/examples.md
         - Complementary interfaces: interfaces/r/r-and-q.md
+      - Solace:
+        - Overview: interfaces/solace/index.md
+        - User guide: interfaces/solace/user-guide.md
     - From: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
@@ -482,6 +485,15 @@ nav:
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
+    - Automl:
+      - Overview: ml/automl/index.md
+      - User guide:
+        - Overview: ml/automl/ug/index.md
+        - Data preprocessing: ml/automl/ug/preproc.md
+        - Data processing: ml/automl/ug/proc.md
+        - Data postprocessing: ml/automl/ug/postproc.md
+        - Advanced parameter modifications: ml/automl/ug/options.md
+      - FAQ: ml/automl/faq.md
   - Knowledge Base:
     - Overview: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md

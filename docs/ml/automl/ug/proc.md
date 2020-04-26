@@ -48,7 +48,7 @@ d          x         x1        x2 x3
 q)count 1_cols tb
 4
 // apply FRESH feature extraction
-q)freshfeats:.ml.fresh.createfeatures[tb;`d;1_cols tb;.ml.fresh.params]
+q)show freshfeats:.ml.fresh.createfeatures[tb;`d;1_cols tb;.ml.fresh.params]
 d         | x_absenergy x_abssumchange x_count x_countabovemean x_countbelowm..
 ----------| -----------------------------------------------------------------..
 2001.01.01| 5.984048    8.764463       23      9                14           ..
@@ -84,8 +84,10 @@ x            x1        x2        x3        x4 x5
 // no. of features before feature extraction
 q)count cols tb
 6
+// Define the functions to be applied in normal feature creation
+q)funcs:enlist[`funcs]!enlist `.automl.prep.i.default
 // apply normal feature extraction
-q)show normfeat:flip .automl.prep.normalcreate[tb;::]0
+q)show normfeat:flip first .automl.prep.normalcreate[tb;funcs]
 x1        | 0.1312281  0.3667245  0.1415448  0.8186288  0.5973116 0.2413466  ..
 x2        | 0.5068552  0.9532577  0.8768543  0.6690883  0.8108164 0.07458746 ..
 x3        | 0.9967246  0.07262924 0.1245068  0.5506067  0.1330347 0.1533462  ..

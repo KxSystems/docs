@@ -148,7 +148,7 @@ x         x1        x2         x3 x4
 0.6081598 0.8784222 0.3745857  00 0.03301238 0.3722512 0.2911225 0.7153449 0.2740865
 q)tgt:100?1f
 // output truncated to only include appropriate information
-q).automl.run[data;target;`normal;`reg;::]
+q).automl.run[data;tgt;`normal;`reg;::]
 ...
 Removed the following columns due to type restrictions for normal
 `x3`x4
@@ -235,7 +235,7 @@ Both null values and infinities are removed from the data due to the inability o
 
 ```q
 q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)
-q).automl.i.null_encode[.ml.infreplace data;med]
+q).automl.prep.i.nullencode[.ml.infreplace data;med]
 x         x1        x2         x_null
 -------------------------------------
 0.9764793 0.8737778 0.02064306 0     
