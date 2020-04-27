@@ -65,12 +65,12 @@ q)asc (1;1b;"b";2009.01.01;"a";0)
 Note how the type numbers are used.
 
 ```q
-q)asc(2f;3j;4i;5h)
+q)asc(2f;3;4i;5h)
 5h
 4i
 3
 2f
-q){(asc;x iasc abs t)fby t:type each x}(2f;3j;4i;5h)  / compare asc
+q){(asc;x iasc abs t)fby t:type each x}(2f;3;4i;5h)  / compare asc
 5h
 4i
 3

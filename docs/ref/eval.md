@@ -50,6 +50,9 @@ q)h"a:4"
 'noupdate: `. `a
 ```
 
+Behaves as if command-line options [`-u 1`](../basics/cmdline.md#-u-usr-pwd) and [`-b`](../basics/cmdline.md#-b-blocked) were active; also blocks all system calls which change state.
+That is, all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
+(Since V4.0 2020.03.17.)
 
 <i class="fas fa-book-reader"></i>
 [Internal function `-6!`](../basics/internal.md#-6x-eval)<br>

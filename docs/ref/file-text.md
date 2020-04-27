@@ -11,7 +11,7 @@ _Read or write text_
 
 
 
-The operator `0:` has six forms:
+The File Text operator `0:` has five forms:
 
 <pre markdown="1" class="language-txt">
 [Prepare Text](#prepare-text)     table as a list of delimited strings
@@ -31,7 +31,9 @@ The operator `0:` has six forms:
 
 _Represent a table as a list of delimited strings_
 
-Syntax: `delimiter 0: t`, `0:[delimiter;t]`
+```txt
+delimiter 0: t                          0:[delimiter;t]
+```
 
 Where 
 
@@ -78,11 +80,13 @@ qu"ux
 
 _Write a list of strings to file_
 
-Syntax: `file symbol 0: strings`, `0:[file symbol;strings]`
+```txt
+filesymbol 0: strings                   0:[filesymbol;strings]
+```
 
 Where 
 
--   `file symbol` is a file symbol
+-   `filesymbol` is a file symbol
 -   `strings` a list of character strings
 
 `strings` are saved as lines in the file. The result of [Prepare Text](#prepare-text) can be used as `strings`.
@@ -94,13 +98,18 @@ q)`:status.txt 0: string system "w"
 `:status.txt
 ```
 
+<i class="fas fa-book"></i>
+[`save`, `rsave`](save.md)
+
 
 ## Load CSV
 
 _Interpret a field-delimited string, list of strings, or file as a list or matrix_
 
-Syntax: `(types;delimiter     ) 0: y`, `0:[(types;delimiter);y]`  
-Syntax: `(types;delimiter;flag) 0: y`, `0:[(types;delimiter;flag);y]`
+```txt
+(types;delimiter     ) 0: y             0:[(types;delimiter);y]
+(types;delimiter;flag) 0: y             0:[(types;delimiter;flag);y]
+```
 
 Where 
 
@@ -118,7 +127,7 @@ If `delimiter` is enlisted, the first row of the content of `y` is read as colum
 q)t:("SS";enlist" ")0:`:/tmp/txt
 ```
 
-Use optional arg `flag` to allow line returns embedded within strings.
+Use optional argument `flag` to allow line returns embedded within strings.
 
 ```q
 q)("I*";",";1)0:("0,\"ab\nc\"";"1,\"def\"")
@@ -139,7 +148,9 @@ q)("DT";",")0:"20130315,185540686"
 
 _Interpret a fixed-format list of strings or file as a list or matrix_
 
-Syntax: `(types; widths) 0: y`, `0:[(types;widths);y]`
+```txt
+(types; widths) 0: y                    0:[(types;widths);y]
+```
 
 Where 
 
@@ -177,7 +188,9 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
 
 _Interpret a delimited string as key-value pairs_
 
-Syntax: `x 0: string`, `0:[x;string]`
+```txt
+x 0: string                             0:[x;string]
+```
 
 Where `x` is a 3- or 4-char string: 
 

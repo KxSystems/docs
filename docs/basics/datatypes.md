@@ -1,12 +1,12 @@
 ---
-title: Datatypes – Basics – kdb+ and q documentation
-description: Every kdb+ object has a corresponding datatype. There are 38 datatypes. 
+title: Data types | Basics | kdb+ and q documentation
+description: Every kdb+ object has a data type. This page tabulates the datatypes.
 author: Stephen Taylor
 keywords: atom, boolean, character, datatype, date, datetime, double, float, integer, kdb+, list, long, q, scalar, short, string, symbol, temporal, time, timespan, timestamp, type, vector
 ---
 # Datatypes
 
-<pre class="language-txt" style="font-size:90%">
+<pre class="language-txt" style="font-size:80%">
 n   c   name      sz  literal            null inf SQL       Java      .Net
 ----------------------------------------------------------------------------------
 0   *   list                         
@@ -153,8 +153,7 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
 
     The empty symbol can be used with [Cast](../ref/cast.md) to cast a string into a symbol, creating symbols whose names could not otherwise be written, such as symbols containing spaces. `` `$x`` is shorthand for `"S"$x`. 
 
-    <pre><code class="language-q">
-    q)s:\`hello world
+    <pre><code class="language-q">q)s:\`hello world
     'world
     q)s:\`$"hello world"
     q)s
@@ -210,16 +209,14 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
 
     Use [Deal](../ref/deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
 
-    <pre><code class="language-q">
-    q)-2?0Ng
+    <pre><code class="language-q">q)-2?0Ng
     337714f8-3d76-f283-cdc1-33ca89be59e9 0a369037-75d3-b24d-6721-5a1d44d4bed5
     </code></pre>
 
     If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
     
     Guids can also be created from strings or byte vectors, using `sv` or `"G"$`, e.g.
-    <pre><code class="language-q">
-    q)0x0 sv 16?0xff
+    <pre><code class="language-q">q)0x0 sv 16?0xff
     8c680a01-5a49-5aab-5a65-d4bfddb6a661
     q)"G"$"8c680a01-5a49-5aab-5a65-d4bfddb6a661"
     8c680a01-5a49-5aab-5a65-d4bfddb6a661
@@ -259,6 +256,7 @@ q)type `city$10?city:`london`paris`rome
 [Enum Extend](../ref/enum-extend.md)<br>
 <i class="fas fa-book-open"></i>
 [Enumerations](enumerations.md)
+
 
 ### Nested types
 

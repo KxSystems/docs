@@ -5,22 +5,19 @@ docs_dir: 'docs'
 extra:
   version: 2.0
 extra_css: 
-  - 'stylesheets/extra.css'
   - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
+  - 'https://code.kx.com/stylesheets/extra.css'
+  - 'stylesheets/extra.css'
 extra_javascript: 
-  # See /syntax/#projection to see if MathJax is working 
+  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
+  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
+  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
   - 'https://code.jquery.com/jquery-3.1.1.min.js'
+  - 'https://code.kx.com/scripts/prism.js'
   - 'https://tracker.mrpfd.com/tracker.js'
-  # - 'scripts/googleanalytics.js'
-  # - 'https://use.fontawesome.com/3dbf29ed12.js'
-  - 'https://use.fontawesome.com/releases/v5.2.0/js/all.js'
-  # theme.js modifies HTML to prepare for prism.js
+  - 'https://use.fontawesome.com/releases/v5.8.0/js/all.js'
   - 'scripts/theme.js'
-  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
-  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
-  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
-  - 'scripts/prism.js'
 google_analytics:
   - 'UA-3462586-1'
   - 'auto'
@@ -52,7 +49,6 @@ remote_branch: 'master'
 # repo_name: 'GitHub'
 # repo_url: 'https://github.com/kxsystems/docs'
 site_dir: 'site'
-# site_dir: '/var/www/html'
 site_author: 'Kx Systems'
 site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
@@ -374,6 +370,8 @@ nav:
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
+      - History: releases/index.md
+      - Changes in 4.0: releases/ChangesIn4.0.md
       - Changes in 3.6: releases/ChangesIn3.6.md
       - Changes in 3.5: releases/ChangesIn3.5.md
       - Changes in 3.4: releases/ChangesIn3.4.md
@@ -393,11 +391,19 @@ nav:
     - Fusion for kdb+:
       - Overview: interfaces/fusion.md
       - FFI: interfaces/ffi.md
+      - HDF5:
+        - Overview: interfaces/hdf5/index.md
+        - User guide: interfaces/hdf5/user-guide.md
       - Java: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
       - Kafka:
         - Overview: interfaces/kafka/index.md
         - User guide: interfaces/kafka/user-guide.md
+      - MQTT: interfaces/mqtt.md
+      - Prometheus: 
+        - Exporter:
+          - Overview: interfaces/prom/exporter/index.md
+          - User guide: interfaces/prom/exporter/user-guide.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
@@ -412,6 +418,9 @@ nav:
         - embedR: interfaces/r/embedr.md
         - Examples: interfaces/r/examples.md
         - Complementary interfaces: interfaces/r/r-and-q.md
+      - Solace:
+        - Overview: interfaces/solace/index.md
+        - User guide: interfaces/solace/user-guide.md
     - From: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
@@ -431,6 +440,7 @@ nav:
       - J: interfaces/q-client-for-j.md
       - ODBC: interfaces/q-client-for-odbc.md
   - Cloud: 
+    - Overview: cloud/index.md
     - Amazon EC2: 
       - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
       - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
@@ -463,6 +473,7 @@ nav:
         - Metrics: ml/toolkit/utilities/metric.md
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
+        - Multiprocessing: ml/toolkit/utilities/multiprocess.md
       - FRESH: ml/toolkit/fresh.md  
       - Cross validation: ml/toolkit/xval.md
       - Clustering:
@@ -478,6 +489,15 @@ nav:
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
+    - Automl:
+      - Overview: ml/automl/index.md
+      - User guide:
+        - Overview: ml/automl/ug/index.md
+        - Data preprocessing: ml/automl/ug/preproc.md
+        - Data processing: ml/automl/ug/proc.md
+        - Data postprocessing: ml/automl/ug/postproc.md
+        - Advanced parameter modifications: ml/automl/ug/options.md
+      - FAQ: ml/automl/faq.md
   - Knowledge Base:
     - Overview: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
@@ -486,11 +506,13 @@ nav:
     - Callbacks: kb/callbacks.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
+    - Code profiler: kb/profiler.md
     - Compacting HDB sym: kb/compacting-hdb-sym.md
     - Corporate actions: kb/corporate-actions.md
     - CPU affinity: kb/cpu-affinity.md
     - Custom web server: kb/custom-web.md
     - Daemon: kb/daemon.md
+    - Data-At-Rest Encryption: kb/dare.md
     - Deferred response: kb/deferred-response.md
     - FAQ: kb/faq.md
     - FAQ from k4 listbox: kb/faq-listbox.md
@@ -506,8 +528,10 @@ nav:
     - Loading from large files: kb/loading-from-large-files.md
     - Logging: kb/logging.md
     - Multithreaded input: kb/multithreaded-input.md
+    - Multithreaded primitives: kb/mt-primitives.md
     - Named pipes: kb/named-pipes.md
     - ODBC: kb/odbc.md
+    - Optane Memory: kb/optane.md
     - Partitioning: kb/partition.md
     - Performance tips: kb/performance-tips.md
     - Pivoting tables: kb/pivoting-tables.md
@@ -594,6 +618,7 @@ nav:
       - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
     - Terminology: about/terminology.md
+    - Citations: about/citations.md
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md

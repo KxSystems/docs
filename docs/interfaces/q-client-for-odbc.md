@@ -144,7 +144,7 @@ Open a connection to a database, returning an ODBC connection handle. For exampl
 ```q
 q)h:.odbc.open `northwind
 q)h
-77932560j
+77932560
 ```
 
 

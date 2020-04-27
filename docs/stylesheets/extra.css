@@ -1,61 +1,14 @@
 /*
 	Title: Extra CSS for code.kx.com in MkDocs
 	Author: stephen@kx.com
+	Version: 2020.04.08
+	Note: Read with https://code.kx.com/stylesheets/extra.css
  */
 
-/* countermand MkDocs insertion of href attribute after link anchor
---------------------------------------------- */
-@media print {
-  a[href]:after {
-    content: none !important;
-  }
-}
-
- /* palette
---------------------------------------------- */
- [data-md-color-primary=blue] .md-header
- {
- 	background: #0070cd; /* hsl(207, 100%, 40%) */
- }
- /* override accent background colour on repo download and star buttons */
-.scrollable .wrapper .repo a {
- 	background: #8099fd;
- }
- /* override theme link color */
- [data-md-color-primary=blue] .md-typeset a {
- 	color: #005499; /* hsl(207, 100%, 30%) */
- }
- 
 /* suppress nav footer
 --------------------------------------------- */
 .md-footer-nav {
 	display: none;
-}
-
-/* type
---------------------------------------------- */
-/* Override "Roboto Mono" from theme */
-code, kbd, pre {
-	font-family: Courier, "Courier New", monospace;
-}
-.md-typeset a>code {
-	padding: 0 .15em;
-}
-
-/* undo font-size:85% code */
-.md-typeset code,
-.md-typeset .admonition pre {
- 	font-size: 95%;
- }
-
-/* admonition
---------------------------------------------- */
-.md-typeset .admonition p {
-	margin: .3em 0;
-}
-.md-typeset .admonition pre {
-	background-color: transparent;
-	margin-top: 0;
 }
 
 /* front page
@@ -76,17 +29,8 @@ code, kbd, pre {
 	color: #0070cd;
 }
 
-/* reference card
---------------------------------------------- */
- .kx-big {
- 	font-size: 115%;
- }
- .kx-nowrap {
- 	white-space: nowrap;
- }
- .kx-ruled td {
- 	border-bottom: 1px solid rgba(0,0,0,.05);
- }
+
+
  .kx-tight td,
  .kx-tight th {
  	padding: 0 .4em;
@@ -120,22 +64,12 @@ code, kbd, pre {
 .kx-compact table tr:first-child {
 	border-top: 0;
 }
-.kx-list td {
-	font-size: 1.1em;
-	padding: .5em 1em;
-}
 
 .kx-zero {
 	border: none;
 	margin: 0;
 	padding: 0;
 }
-
-.nowrap {
-	white-space: nowrap;
-}
-
-
 
 .fusion {
     background-color: #c6c9ff; 
@@ -148,3 +82,29 @@ code, kbd, pre {
 .fusion a {
 	font-weight: bold;
 }
+
+/* tweak Prism.js styles 
+--------------------------------------------- */
+.md-typeset code[class*="language-python"],
+.md-typeset pre[class*="language-python"] {
+	background-color: #eee7d4;
+}
+
+/* alert message on front page
+--------------------------------------------- */
+.md-typeset .alert-message {
+	background-color: #00a891;;
+	border-radius: 10px;
+	font-size: 1.3em;
+	font-weight: bold;
+	padding: 0 10px;
+}
+.md-typeset .alert-message p {
+	margin: 0;
+	text-align: center;
+}
+.md-typeset .alert-message a,
+.md-typeset .alert-message a:hover {
+	color: white;
+}
+

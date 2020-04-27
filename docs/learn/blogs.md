@@ -66,7 +66,6 @@ Technical articles of interest to developers can be found at [kx.com](https://kx
 - [Kx fueling IoT revolution with manufacturing win](https://kx.com/blog/kx-fueling-iot-revolution-manufacturing-win/)
 - [Overview of kdb+tick](https://kx.com/blog/overview-kdb-tick/)
 - [Web scraping](https://kx.com/blog/web-scraping-a-kdb-use-case/)
-- [Users boost speed-to-data using Applied SmartFactory® E3 modules powered by kdb+](https://kx.com/blog/users-boost-speed-to-data-using-applied-smartfactory-e3-modules-powered-by-kx-technology/)
 - [The exploration of space weather at NASA FDL](https://kx.com/blog/nasa-frontier-development-lab-space-weather-challenge/)
 - [Edge computing on a low-profile device](https://kx.com/blog/kx-poc-blog-series-edge-computing-on-a-low-profile-device/)
 
