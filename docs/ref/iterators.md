@@ -8,15 +8,29 @@ author: Stephen Taylor
 # Iterators
 
 
+<pre markdown="1" class="language-txt">
+--------- [maps](maps.md) --------     --------- [accumulators](accumulators.md) ----------
+['  Each](maps.md#each)           [each](maps.md#each-keyword)      / [Over](accumulators.md#binary-application)  [over](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
+[': Each Parallel](maps.md#each-parallel)  [peach](maps.md#peach-keyword)     \\ [Scan](accumulators.md#binary-application)  [scan](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
+[': Each Prior](maps.md#each-prior)     [prior](maps.md#prior-keyword)
+[\: Each Left](maps.md#each-left-and-each-right)
+[/: Each Right](maps.md#each-left-and-each-right)
+['  Case](maps.md#case)
+</pre>
 
+The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
+They are the primary means of iterating in q.
 
-The iterators (earlier known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
+<i class="fas fa-book-open"></i>
+[Iteration](../basics/iteration.md) in q
+<br>
+<i class="far fa-map"></i>
+White paper: [Iterators](../wp/iterators/index.md)
 
 !!! detail "Applicable value"
 
     An applicable value is a q object that can be indexed or applied to arguments: a function (operator, keyword, lambda, or derived function), a list (vector, mixed list, matrix, or table), a file- or process handle, or a dictionary.
 
-Iterators are the primary means of [iterating](../basics/iteration.md) in q.
 
 For example, the iterator Over (written `/`) uses a value to reduce a list or dictionary.
 
@@ -43,7 +57,7 @@ q)+/[1000000;2 3 4]   / binary
 1000009
 ```
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-book-open"></i> 
 [Variadic syntax](../basics/variadic.md)
 
 
@@ -70,23 +84,23 @@ Only iterators can be applied postfix.
 To apply an infix derived function in any way besides infix, you can use bracket notation, as you can with any function.
 
 ```q
-q)1000000+/2 3 4          / variadic function applied infix
+q)1000000+/2 3 4       / variadic function applied infix
 1000009
-q)+/[100000;2 3 4]        / variadic function applied binary with brackets
+q)+/[100000;2 3 4]     / variadic function applied binary with brackets
 1000009
-q)+/[2 3 4]               / variadic function applied unary with brackets
+q)+/[2 3 4]            / variadic function applied unary with brackets
 9
 q)txt:("the";"quick";"brown";"fox")
-q)count'[txt]             / unary function applied with brackets
+q)count'[txt]          / unary function applied with brackets
 3 5 5 4
 ```
 
 If the derived function is unary or [variadic](../basics/variadic.md), you can also parenthesize it and apply it prefix.
 
 ```q
-q)(count')txt             / unary function applied prefix
+q)(count')txt          / unary function applied prefix
 3 5 5 4
-q)(+/)2 3 4               / variadic function appled prefix
+q)(+/)2 3 4            / variadic function appled prefix
 9
 ```
 
@@ -139,7 +153,7 @@ Some derived functions are **variadic** and can be applied as either unary or bi
 This gives rise to multiple equivalent forms, tabulated here.
 Any function can be applied with bracket notation or with Apply.
 So to simplify, such forms are omitted here in favour of prefix or infix application. 
-For example, `u'[x]` is valid, but only `(u')x` is shown here.
+For example, `u'[x]` and `@[u';x]` are valid, but only `(u')x` is shown here.
 (Iterators are applied here postfix only.)
 
 The mnemonic keywords `each`, `over`, `peach`, `prior` and `scan` are also shown.
@@ -155,8 +169,8 @@ value<br>rank | syntax                                            | name        
 1             | `(u/)d`, `(u\)d`                                  | [Converge](accumulators.md#converge)           | apply `u` to `d` until result converges
 1             | `n u/d`, `n u\d`                                  | [Do](accumulators.md#do)                       | apply `u` to `d`, `n` times
 1             | `t u/d`, `t u\d`                                  | [While](accumulators.md#while)                 | apply `u` to `d` until `t` of result is 0
-1<br>2<br>3+  | `(b/)y`, `b over y`<br>`d b/y`<br>`vv/[d;y;z;…]`  | [Reduce](accumulators.md#binary-values)     | reduce a list or lists 
-1<br>2<br>3+  | `(g\)y`, `g scan y`<br>`d g\y`<br>`vv\[d;y;z;…]`  | [Accumulate](accumulators.md#binary-values) | scan a list or lists 
+1<br>2<br>3+  | `(b/)y`, `b over y`<br>`d b/y`<br>`vv/[d;y;z;…]`  | [Over](accumulators.md#binary-values)     | reduce a list or lists 
+1<br>2<br>3+  | `(g\)y`, `g scan y`<br>`d g\y`<br>`vv\[d;y;z;…]`  | [Scan](accumulators.md#binary-values) | scan a list or lists 
 
 Key: 
 

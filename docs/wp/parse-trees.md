@@ -250,7 +250,8 @@ When using reverse lookup on the `.q` context we are slightly hampered by the fa
 ```q
 q)qfind:{key[.q]where x~/:string value .q}
 
-q)qfind"k){x*y div x:$[16h=abs[@x];\"j\"$x;x]}" ,`xbar
+q)qfind"k){x*y div x:$[16h=abs[@x];\"j\"$x;x]}" 
+,`xbar
 q)qfind"~:"
 `not`hdel
 ```
@@ -271,8 +272,8 @@ An iterator applies to a value (function, list, or dictionary) to produce a  rel
 
 ```q
 q)+/[1 2 3 4]
-q)parse "+/[1 2 3 4]"
 10
+q)parse "+/[1 2 3 4]"
 (/;+)
 1 2 3 4
 ```
@@ -629,11 +630,12 @@ Since the columns of a table are lists, it is irrelevant whether the functional 
 The `buildQuery` function handles the 6th argument as a special case so will produce `iasc` or `idesc` as appropriate.
 
 ```q
-q)buildSelect "select[10 20;>price] from trade" 
+q)buildQuery "select[10 20;>price] from trade" 
 "?[trade;();0b;();10 20;(idesc;`price)]"
 ```
 
 The full `buildQuery` function code is provided in the Appendix.
+
 
 ## Conclusion
 

@@ -34,7 +34,7 @@ If you call `.Q.fs` with the function `0N!`, you get a list with the rows as ele
 ```q
 q).Q.fs[0N!]`:file.csv
 ("2006-10-03,24.5,24.51,23.79,24.13,19087300,AMD";"2006-10-03,27.37,27.48,27...
-387j
+387
 ```
 
 You can get a list with the columns as elements like this:
@@ -42,7 +42,7 @@ You can get a list with the columns as elements like this:
 ```q
 q).Q.fs[{0N!("DFFFFIS";",")0:x}]`:file.csv
 (2006.10.03 2006.10.03 2006.10.04 2006.10.04 2006.10.05 2006.10.05 2006.10.06..
-387j
+387
 ```
 
 Having that, the next step is to table it:
@@ -50,14 +50,14 @@ Having that, the next step is to table it:
 ```q
 q).Q.fs[{0N! flip `date`open`high`low`close`volume`sym!("DFFFFIS";",")0:x}]`:file.csv
 +`date`open`high`low`close`volume`sym!(2006.10.03 2006.10.03 2006.10.04 2006...
-387j
+387
 ```
 
 And finally we can insert each row into a table
 
 ```q
 q).Q.fs[{`trade insert flip `date`open`high`low`close`volume`sym!("DFFFFIS";",")0:x}]`:file.csv
-387j
+387
 q)trade
 date       open  high  low   close volume   sym
 ------------------------------------------------
@@ -76,7 +76,7 @@ The above sequence has created the table in memory. As explained above, sometime
 ```q
 q)colnames: `date`open`high`low`close`volume`sym
 q).Q.fs[{`:newfile upsert flip colnames!("DFFFFIS";",")0:x}]`:file.csv
-387j
+387
 q)value `:newfile
 date       open  high  low   close volume   sym
 ------------------------------------------------
@@ -122,7 +122,7 @@ $ q fs.q
 KDB+ 2.7 2011.11.22 Copyright (C) 1993-2011 Kx Systems
 l64/
 
-436j
+436
 q)\l db
 q)stats
 date       sym  open  high  low   close volume

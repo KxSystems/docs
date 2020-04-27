@@ -1,6 +1,6 @@
 ---
-title: dsave – Reference – kdb+ and q documentation
-description: dsave is a q keyword that Saves global tables to disk as splayed, enumerated, indexed kdb+ tables.
+title: dsave saves a list of tables | Reference | kdb+ and q documentation
+description: dsave is a q keyword that saves global tables to disk as splayed, enumerated, indexed kdb+ tables.
 author: Stephen Taylor
 keywords: enumerated, indexed, kdb+, q, splayed, table
 ---
@@ -15,7 +15,7 @@ Syntax: `x dsave y`, `dsave[x;y]`
 
 Where
 
--   `x` is the save path as a symbol or symbol list
+-   `x` is the save path as a file symbol or a vector of file symbols
 -   `y` is a list of table names
 
 returns the list of table names, having saved the table/s as a side effect.
@@ -132,11 +132,13 @@ bsize| j
 asize| j    
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[set](get.md#set), 
-[.Q.en](dotq.md#qen-enumerate-varchar-cols), 
-[.Q.dpft](dotq.md#qdpft-save-table), 
-[.Q.hdpf](dotq.md#qhdpf-save-tables)  
-Basics: [File system](../basics/files.md)
+<i class="fas fa-book"></i> 
+[`set`](get.md#set), 
+[`.Q.en`](dotq.md#qen-enumerate-varchar-cols), 
+[`.Q.dpft`](dotq.md#qdpft-save-table), 
+[`.Q.hdpf`](dotq.md#qhdpf-save-tables) 
+<br>
+<i class="fas fa-book-open"></i>
+[File system](../basics/files.md)
 
 

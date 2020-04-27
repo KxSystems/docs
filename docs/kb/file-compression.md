@@ -192,7 +192,7 @@ Currently, ZFS compression probably has an edge due to keeping more decompressed
 
 ## Is the compression or decompression multithreaded?
 
-The reading or writing of a compressed file must _not_ be performed concurrently from multiple threads. However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [`par.txt`]](partition.md)’d historical database with slave threads will be using the decompression in a multithreaded mode.
+The reading or writing of a compressed file must _not_ be performed concurrently from multiple threads. However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [`par.txt`](partition.md)’d historical database with slave threads will be using the decompression in a multithreaded mode.
 
 
 ## What’s the difference among different logicalBlockSize (pageSize to 1MB) and compressionLevel (1 to 9 for gzip)? What’s a standard recommendation?
@@ -300,7 +300,7 @@ Installation is very straightforward: unpack and plug in the card, compile and l
 
 On Linux, perhaps – it really depends on the size and number of compressed files you have open at any time, and the access patterns used. For example, random access to a compressed file will use many more kernel resources than sequential access. 
 
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-graduation-cap"></i> 
 [Linux production notes/Compression](linux-production.md#compression)
 
 
@@ -322,19 +322,5 @@ R uses signal handling to detect stack overflows. This conflicts with kdb+’s u
 
 ## I’d like to use Transparent Huge Pages (THP) on Linux. Is this compatible with the kdb+ file compression?
 
-No. We have had reports of systems stalling due to THP fragmentation. Disable THP either with the shell command
-
-```bash
-$ echo never >/sys/kernel/mm/redhat_transparent_hugepage/enabled
-```
-
-or more permanently via `grub` at boot time
-
-```txt
-transparent_hugepage=never
-```
-
-Kdb+ must be restarted to pick up the new setting. 
-
-<i class="far fa-hand-point-right"></i> 
+<i class="fas fa-graduation-cap"></i> 
 Linux production notes [Huge Pages and Transparent Huge Pages](linux-production.md#huge-pages-and-transparent-huge-pages-thp)

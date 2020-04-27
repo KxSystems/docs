@@ -59,7 +59,7 @@ w32/ 4()core 3974MB mr.user it1234567 192.168.0.37 NONEXPIRE
 
 Welcome to kdb+ 32bit edition
 For support please see http://groups.google.com/d/forum/personal-kdbplus
-Tutorials can be found at http://code.kx.com/v2/tutorials/install
+Tutorials can be found at http://code.kx.com/q/tutorials/install
 To exit type \\
 To remove this startup msg, edit q.q
 q)til 6

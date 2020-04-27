@@ -377,8 +377,8 @@ q)`:db/ set .Q.en[`:db] t
             ^
 ```
 
-<i class="far fa-hand-point-right"></i>
-White paper: [“Compression in kdb+”](compress/index.md)
+<i class="far fa-map"></i>
+[Compression in kdb+](compress/index.md)
 
 
 ## Datatype considerations
@@ -411,10 +411,13 @@ pool.
 
 If queries against an ID column are required, use the guid type. A guid
 is a 16-byte type, and can be used for storing arbitrary 16-byte values.
-As data is persisted to disk,the ID field can be converted to guid and
+As data is persisted to disk, the ID field can be converted to guid and
 persisted along with the original ID. IDs requiring lookup should not be
-char vectors. Guids are faster (much faster for =) than the 16-byte char
+char vectors. Guids are faster (much faster for `=`) than the 16-byte char
 vectors and take 2.5 times less storage (16 per instead of 40 per).
+
+<i class="far fa-map"></i>
+[Kdb+ data-management techniques](data-management.md#id-fields-the-guid-datatype)
 
 
 ### Encoding/decoding
@@ -501,7 +504,7 @@ operations.
 
 ### Single-threaded sym rewrite
 
-The [function](https://code.kx.com/v2/kb/compacting-hdb-sym/) that we’re going to discuss in detail below was written by Charles Skelton and can be used as
+The [function](https://code.kx.com/q/kb/compacting-hdb-sym/) that we’re going to discuss in detail below was written by Charles Skelton and can be used as
 a template for compacting a sym file. Changes have been made where
 needed for V3.6 of kdb+, with comments added where necessary. The
 function assumes a single enumeration (sym), and only splayed tables in
@@ -770,6 +773,11 @@ is working for a major investment bank where she is part of a team
 responsible for designing, developing and maintaining a reporting and
 global tick-capture kdb+ system.
 
+
+## Related articles
+
+<i class="far fa-map"></i>
+[Kdb+ data-management techniques](data-management.md)
 
 
 ## Appendix – for versions of kdb+ earlier than 3.6

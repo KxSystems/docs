@@ -574,12 +574,12 @@ To illustrate this, consider the following methods for calculating the last pric
 //create simulated realtime trade table sorted on time
 q)rttrade:update `#time from `time xasc select from trade where date=first date
 q)\ts select last price by sym from rttrade
-24 33561280j
+24 33561280
 
 //create simulated realtime trade table sorted on time
 q)rttrade:update `g#sym, `#time from `time xasc select from trade where date=first date
 q)\ts select last price by sym from rttrade
-15 33559232j
+15 33559232
 
 //create simulated realtime trade table sorted on time
 q)rttrade:update `g#sym, `#time from `time xasc select from trade where date=first date
@@ -588,7 +588,7 @@ q)rttrade:update `g#sym, `#time from `time xasc select from trade where date=fir
 //last value in each vector. Use these index values to directly index 
 //into the price vector, then create a table with the results
 q)\ts {1!([]sym:key x;price::value x)} rttrade[`price] last each group[rttrade`sym]
-0 15072j
+0 15072
 ```
 
 As we can see in the results above, using the same form of query with the attribute applied results in a significant speedup. However, using an alternative approach in which we retrieve the individual indexes for each security, then find the last, results in a much faster calculation, and usage of much less data.

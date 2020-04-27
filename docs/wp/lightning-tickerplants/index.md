@@ -44,7 +44,7 @@ Lightning daemon (`lnd`) | 0.6.0-beta (`commit=v0.6.0-beta-41-g1c22474ad31b5f7fe
 
 [qbitcoind](https://github.com/jlucid/qbitcoind) is a q library designed to interact with a Bitcoin core full node.
 
-This library is used herein to transfer funds from a Bitcoin core wallet to a Lightning wallet. For more information on running a node, and using qbitcoind, see [Kdb+ Securing Digital Assets](https://kx.com/blog/securing-digital-assets-a-bitcoin-full-node-api-for-kdb/) and [Storing and exploring the Bitcoin blockchain](https://code.kx.com/v2/wp/blockchain/).
+This library is used herein to transfer funds from a Bitcoin core wallet to a Lightning wallet. For more information on running a node, and using qbitcoind, see [Kdb+ Securing Digital Assets](https://kx.com/blog/securing-digital-assets-a-bitcoin-full-node-api-for-kdb/) and [Storing and exploring the Bitcoin blockchain](../blockchain/index.md).
 
 The reader should be aware that the above software is a beta version and the technology is still relatively new and experimental. 
 Keep funds held on Lightning to a minimum.
@@ -138,7 +138,7 @@ $sudo apt-get install bitcoind
 ```
 
 Before starting the daemon, a `bitcoin.conf` file should be created in the install folder (usually `$HOME/.bitcoin`),
-as described in white paper [Storing and exploring the Bitcoin blockchain](https://code.kx.com/v2/wp/blockchain/#installing-a-bitcoin-full-node).
+as described in white paper [Storing and exploring the Bitcoin blockchain](../blockchain/index.md#installing-a-bitcoin-full-node).
 However, the sample `bitcoin.conf` file presented in that white paper should now be extended, as shown below, to
 include the [ZeroMQ](https://github.com/bitcoin/bitcoin/blob/master/doc/zmq.md) wrapper, which will allow the Lightning
 node to be notified of events like the arrival of new blocks or transactions. Note that in the configuration file below, the
@@ -336,7 +336,7 @@ use of the powerful embedPy interface, recently released by Kx, which allows the
 ### EmbedPy setup
 
 EmbedPy is available on [GitHub](https://github.com/kxsystems/embedpy) to use with kdb+ V3.5+ and Python 3.5 or higher, for macOS or Linux operating systems and Python 3.6 or higher on the Windows operating system. The installation directory also contains a `README` about embedPy, and an example directory containing thorough examples.
-The reader is encouraged to follow the [online documentation](https://code.kx.com/v2/ml/embedpy/) to become familiar with the functionality.
+The reader is encouraged to follow the [online documentation](../../ml/embedpy/index.md) to become familiar with the functionality.
 
 
 ### Running `qlnd`

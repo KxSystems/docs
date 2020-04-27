@@ -4,23 +4,32 @@ description: How to use the custom search tool on the Kx documentation site
 author: Stephen Taylor
 keywords: kdb+, keyword, namespace, operator, overload, q, search, space, term
 ---
-# Search
+# <i class="fas fa-question"></i> Search
 
 
 
 
-Our search engine is customized to the q language. 
+The Search Box on this site is customized for the q language. 
+Some examples:
 
-**Operators** are recognized: a search for `*` becomes a search for `Multiply`. 
+```txt
+Operator glyphs            $  ^  .  <>  /:  ':
+ and their names           dollar  bang  at
+Operator names             Drop  roll  Enum Extend  
+Keywords                   xbar  like  ajf0  uj
+Namespace objects          .z.pd  .Q.dpfts
+System commands            \d  \ts  \_  \\
+Command-line options       -b  -p
+Internal functions         -11!
+Popular queries            types  datatypes
+```
 
-A search for an **overloaded** operator such as `@` takes you to a disambiguation table. 
+Queries not matched by the Search Box are handled by Google Search.
 
-Kx **namespaces** are recognized: a search for `.z.pd` takes you to the `.z` page.
+!!! tip "Install `man.q.` to open the Reference direct from the q session."
 
-By default, searches ignore the content of code listings and inline code elements.
+<i class="fab fa-github"></i>
+[KxSystems/man](https://github.com/KxSystems/man)
 
-You can direct a search to **code elements**. Prefix your search term with `code:` and the engine will search only code blocks, inline code elements, and headings. So, a search for `code:compress` will ignore the word _compress_ in body text. 
-
-A search for a **keyword** is always performed as a code search. For example a search for `and` looks only in page titles, headings, inline code elements and code listings. 
-
-Our search engine is designed for single words, keywords and symbols. If your query contains **spaces** it will be handled by Google Search.
+<i class="fas fa-question"></i>
+[`man.q`](man.md)

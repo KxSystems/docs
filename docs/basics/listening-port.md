@@ -7,19 +7,28 @@ keywords: ephemeral, kdb+, listen, multi-threaded, port, q, socket, unix
 
 
 
-Use the `-p` command-line option or the `\p` system command to tell kdb+ to listen to a port. The command-line option and the system command take the same parameters and have the same syntax and semantics.
+Use the `-p` [command-line option](cmdline.md) or the `\p` [system command](syscmds.md) to tell kdb+ to listen to a port. The command-line option and the system command take the same parameters.
 
-Syntax: `[-p|\p] [hostname:][portnumber|servicename]`
+```txt
+\p [rp,][hostname:][portnumber|servicename]
+-p [rp,][hostname:](portnumber|servicename)
+```
 
-Where 
+Where
 
--   `portnumber` is an integer
+-   `portnumber` is an integer or long infinity
 -   `servicename` is defined in `/etc/services`
 
-kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified. 
+kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
 The port must be available and the process must have permission for the port.
 
-The default is 0 (no listening port). 
+Where no parameter is specified in the system command, the listening port is reported.
+The default is 0 (no listening port).
+
+```q
+q)\p
+0i
+```
 
 Use for [client/server](../kb/client-server.md), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
 
@@ -27,11 +36,16 @@ Given a servicename, q will look up its port number in `/etc/services`.
 
 ```q
 q)\p commplex-main  / servicename
-q)\p 
+q)\p
 5000i
 ```
 
 !!! tip "If you know the process is for clients on the localhost only, choose localhost:port for maximum security."
+
+
+## Load balancing
+
+Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
 
 ## Ephemeral port
@@ -61,9 +75,9 @@ You can disable listening on the UDS, or change the default path from `/tmp` usi
 
 ```q
 q)/ disable listening on unix domain socket
-q)system"p 0";setenv[`QUDSPATH;""];system"p 6000" 
+q)system"p 0";setenv[`QUDSPATH;""];system"p 6000"
 q)/ use /home/kdbuser as path
-q)system"p 0";setenv[`QUDSPATH;"/home/kdbuser"];system"p 6000" 
+q)system"p 0";setenv[`QUDSPATH;"/home/kdbuser"];system"p 6000"
 ```
 
 V3.5+ uses abstract namespace for Unix domain sockets on Linux to avoid file-permission issues in `/tmp`.
@@ -80,23 +94,27 @@ On macOS:
 q)\p 5000
 q)\ls /tmp/kx*
 "/tmp/kx.5000"
-q)system"p 0";setenv[`QUDSPATH;""];system"p 5000" 
+q)system"p 0";setenv[`QUDSPATH;""];system"p 5000"
 q)\ls /tmp/kx*
 ls: /tmp/kx*: No such file or directory
 'os
-q)system"p 0";setenv[`QUDSPATH;"/tmp/kxuds"];system"p 5000" 
+q)system"p 0";setenv[`QUDSPATH;"/tmp/kxuds"];system"p 5000"
 'cannot listen on uds /tmp/kxuds/kx.5000. OS reports: No such file or directory
-  [0]  system"p 0";setenv[`QUDSPATH;"/tmp/kxuds"];system"p 5000" 
+  [0]  system"p 0";setenv[`QUDSPATH;"/tmp/kxuds"];system"p 5000"
                                                   ^
 q)\mkdir /tmp/kxuds
-q)system"p 0";setenv[`QUDSPATH;"/tmp/kxuds"];system"p 5000" 
+q)system"p 0";setenv[`QUDSPATH;"/tmp/kxuds"];system"p 5000"
 q)\ls /tmp/kxuds
 "kx.5000"
 ```
 
-<i class="far fa-hand-point-right"></i>
-Reference: [`hopen`](../ref/handles.md#hopen)  
-Command-line options: [`-e`](cmdline.md#-e-tls-server-mode), 
-[`-p`](cmdline.md#-p-listening-port)  
-System command: [`\p`](syscmds.md#p-listening-port)  
-Knowledge Base: [Multithreaded input mode](../kb/multithreaded-input.md)
+<i class="fas fa-book"></i>
+[`hopen`](../ref/hopen.md)
+<br>
+<i class="fas fa-book-open"></i>
+Command-line options [`-e`](cmdline.md#-e-tls-server-mode),
+[`-p`](cmdline.md#-p-listening-port); 
+system command [`\p`](syscmds.md#p-listening-port)
+<br>
+<i class="fas fa-graduation-cap"></i>
+[Multithreaded input mode](../kb/multithreaded-input.md)

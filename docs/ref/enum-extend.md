@@ -98,10 +98,12 @@ Enum Extend is a uniform function.
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
 [`.Q.en` (enumerate varchar cols)](dotq.md#qen-enumerate-varchar-cols),
-[`?` query overloads](overloads.md#query)  
-Basics: [Enumerations](../basics/enumerations.md),
-[File system](../basics/files.md)  
-Knowledge Base: [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)  
+[`?` query overloads](overloads.md#query)<br>
+<i class="fas fa-book-open"></i>
+[Enumerations](../basics/enumerations.md),
+[File system](../basics/files.md)<br>
+<i class="fas fa-graduation-cap"></i>
+[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)<br>
 _Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations) 
 
 

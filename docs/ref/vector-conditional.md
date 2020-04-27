@@ -39,13 +39,9 @@ q)?[11001b;1 2 3 4 5;99]
 
 Since V2.7 2010.10.07 `?[x;y;z]` works for atoms too.
 
-It can be useful to have more than just a true/false selection, 
-e.g. match1/match2/match3/others mapping to result1/result2/result3/default. This can be achieved with [Find](find.md), e.g.
 
-```q
-q)input:10?`m1`m2`m3`other`yetanother
-q)input
-`yetanother`m1`m3`m2`m3`m2`m3`other`m3`yetanother
-q)`r1`r2`r3`default `m1`m2`m3?input
-`default`r1`r3`r2`r3`r2`r3`default`r3`default
-```
+!!! tip "Vector Conditional can be used in [qSQL queries](../basics/qsql.md), which do not support [Cond](cond.md)."
+
+
+!!! tip "For multiple cases – more than just true/false – see [Controlling evaluation](../basics/control.md#case)."
+

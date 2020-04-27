@@ -5,10 +5,6 @@ keywords: editor, github, integration, interface, kdb+, q, repository
 ---
 # <i class="far fa-handshake"></i> Interfaces and editor integrations
 
-
-
-
-
 <i class="far fa-hand-point-right"></i> [General index](../github.md) of other kdb+ repositories
 
 Repositories at <i class="fab fa-github"></i> [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. 
@@ -31,9 +27,12 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
+<tr><td>HDF5</td><td>[Handling HDF5 data with kdb+](hdf5/index.md) ==new==</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
-<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") ==new==</td>
+<tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") </td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
+<tr><td>MQTT</td><td>[Q client for MQTT](mqtt.md) ==new==</td></tr>
+<tr><td>Prometheus-Exporter</td><td>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md) ==new==</td></tr>
 <tr><td>Python</td>
     <td>
 </i> [Using kdb+ within Python (PyQ)](pyq/index.md)<br/>
@@ -48,6 +47,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>Adobe Flex</td><td><i class="fab fa-github"></i> [quantbin/kdb](https://github.com/quantbin/kdb)</td></tr>
+<tr><td>Apache Spark</td><td><i class="fab fa-github"></i> [hughhyndman/kdbspark](https://github.com/hughhyndman/kdbspark) ==new==</td></tr>
 <tr>
     <td>ADO.Net</td>
     <td>
@@ -146,7 +146,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr><td>PLplot</td><td><i class="fab fa-github"></i> [jaeheum/qplplot](https://github.com/jaeheum/qplplot)</td></tr>
-<tr><td>Postgres</td><td><i class="fab fa-github"></i> [hughhyndman/pgtokdb](https://github.com/hughhyndman/pgtokdb) ==new==</td></tr>
+<tr><td>Postgres</td><td><i class="fab fa-github"></i> [hughhyndman/pgtokdb](https://github.com/hughhyndman/pgtokdb)</td></tr>
 <tr><td><i class="fab fa-python"></i> Python</td>
     <td>
 <i class="fab fa-github"></i> [brogar/pykdb](https://github.com/brogar/pykdb)<br/>
@@ -198,6 +198,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>[IEX](https://iextrading.com)</td><td><i class="fab fa-github"></i> [himoacs/iex_q](https://github.com/himoacs/iex_q)</td></tr>
 <tr><td>J</td><td>[Q client for J](q-client-for-j.md)</td></tr>
 <tr><td>JDBC</td><td><i class="fab fa-github"></i> [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
+<tr><td>Kafka</td><td><i class="fab fa-github"></i> [ajayrathore/krak](https://github.com/ajayrathore/krak) ==new==</td></tr>
 <tr><td>Lightning</td><td><i class="fab fa-github"></i> [jlucid/qlnd](https://github.com/jlucid/qlnd)</td></tr>
 <tr><td>MQTT</td><td><i class="fab fa-github"></i> [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
 <tr><td>ODBC</td><td>[Q client for ODBC](q-client-for-odbc.md)<br/>
@@ -210,7 +211,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     <td> <i class="fab fa-twitter"></i> Twitter</td>
     <td>
         <i class="fab fa-github"></i> [gartinian/kdbTwitter](https://github.com/gartinian/kdbTwitter)<br/>
-        <i class="fab fa-github"></i> [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb) ==new==
+        <i class="fab fa-github"></i> [timeseries/twitter-kdb](https://github.com/timeseries/twitter-kdb)
     </td>
 </tr>
 <tr><td>[Wind资讯](https://www.wind.com.cn/en/)</td><td><i class="fab fa-github"></i> [FlyingOE/q_Wind](https://github.com/FlyingOE/q_Wind)</td></tr>

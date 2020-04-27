@@ -69,9 +69,11 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
-[`like`](like.md)  
-Basics: [Strings](../basics/strings.md)  
-Knowledge Base: [Regular expressions](../kb/regex.md), 
+<i class="fas fa-book"></i> 
+[`like`](like.md),
+[Regular Expressions in q](../basics/regex.md),
+[Strings](../basics/strings.md)<br>
+<i class="fas fa-graduation-cap"></i>
+[Using regular expressions](../kb/regex.md)
 
 

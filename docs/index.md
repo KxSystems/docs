@@ -6,8 +6,11 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 ---
 # Developing with kdb+ and the q language
 
-
-
+<!-- 
+<div markdown="1" class="alert-message">
+[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
+</div>
+-->
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
@@ -20,18 +23,22 @@ Kdb+, from [Kx](https://kx.com), is
 -   an expressive query and programming language called q
 </div>
 
-<div style="display: inline-flex; margin-left: 7px;" markdown="1">
+<div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Option pricing](wp/option-pricing/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [**kdb+ version 4.0**](releases/ChangesIn4.0.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Predicting&nbsp;floods](wp/disaster-floods/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="fab fa-github"></i> [qMiner](https://github.com/sandybradley/qMiner/) Bitcoin miner</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
     
-    <p style="text-align: center;" markdown="1"><i class="far fa-map"></i> [Managing disasters](wp/disaster-management/index.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-lock"></i> [data-at-rest crypto](kb/dare.md)</p>
     
-    <p class="nowrap" style="text-align: center;" markdown="1"><i class="fas fa-database"></i> [ODBC Simba drivers 1.1](interfaces/odbc-simba.md)</p>
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [code profiler](kb/profiler.md)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Platform 4.5](/platform/)</p>
+    
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-comment-medical"></i> [Coronavirus](coronavirus.md)</p>
     
 </div>
 
@@ -57,7 +64,7 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 <div>
     [<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
-    Reference](ref/index.md "Reference card for the q language")
+    Reference<br>and basics](ref/index.md "Reference card for the q language")
 </div>
 <div>
     [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
@@ -94,7 +101,7 @@ Kdb+, from [Kx](https://kx.com), is
 !!! tip "Using this site locally"
 
     You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use locally. 
-    (It uses scripts from the Web so needs Net access to render correctly.)
+    (It uses scripts from the Web so needs Net access or a browser cache to render correctly.)
 
     The source code for this site is on GitHub at 
     <i class="fab fa-github"></i>

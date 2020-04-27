@@ -131,9 +131,9 @@ rank | example                     | semantics
 2    | `x?v`                       | extend an enumeration: [Enum Extend](enum-extend.md)
 3    | `?[11011b;"black";"flock"]`   | [Vector Conditional](vector-conditional.md)
 3    | `?[t;i;p]`                  | [Simple Exec](../basics/funsql.md#simple-exec)
-4    | `?[t;b;c;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)
-5    | `?[t;b;c;a;n]`              | [Select](../basics/funsql.md#rank-5)
-6    | `?[t;b;c;a;n;(g;cn)]`       | [Select](../basics/funsql.md#rank-6)
+4    | `?[t;c;b;a]`                | [Select](../basics/funsql.md#select), [Exec](../basics/funsql.md#exec)
+5    | `?[t;c;b;a;n]`              | [Select](../basics/funsql.md#rank-5)
+6    | `?[t;c;b;a;n;(g;cn)]`       | [Select](../basics/funsql.md#rank-6)
 
 
 ## `'` quote

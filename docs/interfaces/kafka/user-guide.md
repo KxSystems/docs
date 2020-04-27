@@ -202,6 +202,9 @@ q).kfk.SetLoggerLevel[client;7]
 
 The following functions relate to use of offsets within the API to ensure records are read correctly from the broker.
 
+!!! note "Multiple topic offset assignment"
+
+    As of v1.4.0 offset functionality can now handle calls associated with multiple topics without overwriting previous definitions. To apply the functionality this must be called for each topic.
 
 ### `.kfk.CommitOffsets`
 
@@ -369,11 +372,17 @@ returns a null on successful execution.
 
     Subscriptions can be made to topics that do not currently exist.
 
+!!! note "Multiple subscriptions"
+
+    As of v1.4.0 multiple calls to `.kfk.Sub` for a given client will allow for consumption from multiple topics rather than overwriting the subscribed topic.
+
 ```q
 q)client:.kfk.Consumer[kfk_cfg]
 q).kfk.PARTITION_UA // subscription defined to be to an unassigned partition
 -1i
-q).kfk.Sub[client;`test;enlist .kfk.PARTITION_UA]
+// List of topics to be subscribed to
+q)topic_list:`test`test1`test2
+q).kfk.Sub[client;;enlist .kfk.PARTITION_UA]each topic_list
 ```
 
 
@@ -401,13 +410,13 @@ test2 -1        -1001  ""
 
 ### `.kfk.Unsub`
 
-_Unsubscribe from a topic_
+_Unsubscribe from all topics associated with Client_
 
 Syntax: `.kfk.Unsub[x]`
 
 Where
 
--   `x` is the integer representation of the topic from which you intend to unsubscribe
+-   `x` is the integer representating the client ID from which you intend to unsubscribe from all topics
 
 returns a null on successful execution; signals an error if client is unknown.
 
