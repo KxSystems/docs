@@ -180,49 +180,6 @@ q).ml.clust.hc[d;`mdist;`ward;3]
 !!! warning 
 	If the user inputs a linkage function which is not contained within the `.ml.clust.i.ld` dictionary an error will occur.
 
-### `.ml.clust.dgram`
-
-_Return the hierarchichal clustering dendrogram_
-
-Syntax: `.ml.clust.dgram[d;df;lf]`
-
-Where
-
--   `d` is data points in matrix format
--   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
--   `lf` is the linkage function as a symbol: `single`  `complete` `average` `centroid` `ward`
-
-returns a table where `i1` and `i2` represent the clusters merged at step `i`, `dist` is the distance between the merged clusters and `n` is the number of point in the new cluster.
-
-```q
-q)show d:10 2#20?5.
-2.353941  3.173358
-4.836199  1.153192
-4.749875  2.195405
-2.879526  2.959502
-4.240783  1.94528
-1.957715  0.4061773
-4.683752  1.391061
-1.196171  0.7540665
-0.7836585 4.8925
-3.521657  4.720835
-q).ml.clust.dgram[d;`edist;`complete;()]
-i1 i2 dist      n
-------------------
-1  6  0.2825272 2
-2  4  0.5672187 2
-0  3  0.567427  2
-5  7  0.8372435 2
-10 11 1.045781  4
-12 9  1.93862   3
-15 8  2.851165  4
-14 13 3.834876  6
-16 17 5.514119  10
-```
-
-!!! note
-       The dendrogram can be plotted to give an idea of the hierarchichal relationship between the points. Examples can be seen in [notebooks](https://github.com/kxsystems/ml/clust/notebooks/dendrograms.ipynb).
-
 ## K-Means
 
 K-means clustering begins by selecting k data points as cluster centres and assigning data to the cluster with the nearest centre. The algorithm follows an iterative refinement process which will run n times, updating the cluster centers and assigned points during each iteration.
