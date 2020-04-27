@@ -19,60 +19,31 @@ Each of the scoring metrics described below are used in unsupervised learning to
 
 _Calculate the Davies-Bouldin index for clustered data. Minimum value of zero, where lower values indicate better clustering._
 
-Syntax: `.ml.clust.daviesbouldin[x]`
+Syntax: `.ml.clust.daviesbouldin[data;clt]`
 
 Where
 
-- `x` is the results table (`idx`, `clt`, `pts`) produced by `.clust.ml.cure/dbscan/hc/kmeans`
+- `data` is the data points in a horizontal matrix format
+- `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
 
 returns the Davies-Bouldin index.
 
 ```q
-q)show d:10 2#20?10.
-0.891041  6.348263  
-8.345194  7.66752   
-3.621949  9.281844  
-9.99934   2.035925  
-3.837986  7.747888  
-8.619188  9.667728  
-0.9183638 8.225125  
-2.530883  9.088765  
-2.504566  6.458066  
-7.517286  0.08962677
-q)show r1:.ml.clust.hc[d;3;`edist;`single;0b]
-idx clt pts                 
-----------------------------
-0   0   0.891041  6.348263  
-1   1   8.345194  7.66752   
-2   0   3.621949  9.281844  
-3   2   9.99934   2.035925  
-4   0   3.837986  7.747888  
-5   1   8.619188  9.667728  
-6   0   0.9183638 8.225125  
-7   0   2.530883  9.088765  
-8   0   2.504566  6.458066  
-9   2   7.517286  0.08962677
-q)show r2:.ml.clust.kmeans[d;3;3;0b;`e2dist]
-idx clt pts                 
-----------------------------
-0   0   0.891041  6.348263  
-1   1   8.345194  7.66752   
-2   1   3.621949  9.281844  
-3   2   9.99934   2.035925  
-4   0   3.837986  7.747888  
-5   1   8.619188  9.667728  
-6   0   0.9183638 8.225125  
-7   0   2.530883  9.088765  
-8   0   2.504566  6.458066  
-9   2   7.517286  0.08962677
-q).ml.clust.daviesbouldin[r2]
-0.6920524
-q).ml.clust.daviesbouldin[r1]    / lower values indicate better clustering
-0.3970272
+q)show d:2 10#20?10.
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
+q)show r1:.ml.clust.hc[d;`edist;`single;3]
+0 0 1 1 0 0 2 0 1 0
+q)show r2:.ml.clust.kmeans[d;`e2dist;3;10;0b]
+0 0 1 1 0 2 0 2 1 2
+q).ml.clust.daviesbouldin[d;r1]  / lower values indicate better clustering
+0.56649
+q).ml.clust.daviesbouldin[d;r2]
+1.424637
 ```
 
 !!! note
-	The Davies-Bouldin index can only be used with Euclidean distances.
+	The Davies-Bouldin index can only be used with Euclidean distances (`edist`/`e2dist`).
     
 ## Dunn Index
 
@@ -80,57 +51,28 @@ q).ml.clust.daviesbouldin[r1]    / lower values indicate better clustering
 
 _Calculate the Dunn index for clustered data. Minimum value of 0, where higher values indicate better clustering._
 
-Syntax: `.ml.clust.dunn[x;y]`
+Syntax: `.ml.clust.dunn[data;df;clt]`
 
 Where
 
-- `x` is the results table (`idx`, `clt`, `pts`) produced by `.clust.ml.cure/dbscan/hc/kmeans`
-- `y` is the distance function as a symbol: `e2dist` `edist` `mdist`
+- `data` is the data points in a horizontal matrix format
+- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist` etc.
+- `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
 
 returns the Dunn index.
 
 ```q
 q)d
-0.891041  6.348263
-8.345194  7.66752
-3.621949  9.281844
-9.99934   2.035925
-3.837986  7.747888
-8.619188  9.667728
-0.9183638 8.225125
-2.530883  9.088765
-2.504566  6.458066
-7.517286  0.08962677
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
 q)r1
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   0   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
+0 0 1 1 0 0 2 0 1 0
 q)r2
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   1   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
-q).ml.clust.dunn[r1;`edist]
-1.124743
-q).ml.clust.dunn[r2;`edist]
-0.221068
+0 0 1 1 0 2 0 2 1 2
+q).ml.clust.dunn[d;`edist;r1]  / higher values indicate better clustering  
+0.5716933
+q).ml.clust.dunn[d;`e2dist;r2]
+0.03341283
 ```
 
 ## Silhouette Coefficient
@@ -139,58 +81,29 @@ q).ml.clust.dunn[r2;`edist]
 
 _Calculate the Silhouette coefficient for clustered data. `+1` indicates correct clustering, `0` indicates that clusters are close to each other, if not overlapping and `-1` indicates incorrect clustering._
 
-Syntax: `.ml.clust.silhouette[x;y]`
+Syntax: `.ml.clust.silhouette[data;df;clt;isavg]`
 
 Where
 
-- `x` is the results table (`idx`, `clt`, `pts`) produced by `.clust.ml.cure/dbscan/hc/kmeans`
-- `y` is the distance function as a symbol: `e2dist` `edist` `mdist`
-- `z` is a boolean, `1b` indicates that the user wants to return the average coefficient
+- `data` is the data points in a horizontal matrix format
+- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist` etc.
+- `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
+- `isavg` is a boolean - `1b` to return the average coefficient, `0b` to return a list of coefficients
 
 returns the Silhouette coefficient.
 
 ```q
 q)d
-0.891041  6.348263
-8.345194  7.66752
-3.621949  9.281844
-9.99934   2.035925
-3.837986  7.747888
-8.619188  9.667728
-0.9183638 8.225125
-2.530883  9.088765
-2.504566  6.458066
-7.517286  0.08962677
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
 q)r1
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   0   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
+0 0 1 1 0 0 2 0 1 0
 q)r2
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   1   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
-q).ml.clust.silhouette[r1;`edist;1b]
-0.6180839
-q).ml.clust.silhouette[r2;`edist;1b]
-0.4330343
+0 0 1 1 0 2 0 2 1 2
+q).ml.clust.silhouette[d;`edist;r1;1b]
+0.3698386
+q).ml.clust.silhouette[d;`e2dist;r2;1b]
+0.2409856
 ```
 
 # Supervised Learning
@@ -235,31 +148,23 @@ Plotting the average cluster score against the k values, the line graph produced
 
 _Returns a distortion score for each value of k applied to data using k-means clustering_
 
-Syntax: `.ml.clust.elbow[x;y;z]`
+Syntax: `.ml.clust.elbow[data;df;k]`
 
 Where
 
--   `x` is data in matrix form
--   `y` is the distance metric
--   `z` is the maximum number of clusters
+- `data` is the data points in a horizontal matrix format
+- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist` etc.
+- `k` is the maximum number of clusters
 
 returns the distortion score for each set of clusters produced in k-means with a different value of k.
 
 ```q
-q)show d:100 2#200?10. 
-4.784272  9.534398 
-6.30036   3.165436 
-6.549844  2.643322 
-3.114316  9.103693 
-0.7540168 7.423834 
-7.414441  7.074521 
-8.872926  3.763147 
-3.88313   4.84379  
-0.7841939 1.943085 
-3.213079  4.090672 
+q)d
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099.. 
 ..
-q).ml.clust.elbow[d;`mdist;5]
-365.4611 262.1237 239.9233 196.0932
+q).ml.clust.elbow[d;`edist;5]
+16.74988 13.01954 10.91546 9.271871
 ```
 
 !!! note
@@ -267,4 +172,4 @@ q).ml.clust.elbow[d;`mdist;5]
 
 	![elbow_graph](img/elbow_example.png)
 
-	It is clear that the elbow score occurs when the data has been clustered into 3 distinct clusters.
+	It is clear that the elbow score occurs when the data should be grouped into 3 clusters.
