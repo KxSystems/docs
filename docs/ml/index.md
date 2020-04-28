@@ -60,8 +60,23 @@ The library is available [here](https://github.com/KxSystems/ml).
 
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks)
 
+## Automated Machine Learning
 
-All machine-learning libraries are:
+[AutoML](automl/index.md) is a framework to automate the process of machine learning using kdb+. This is build largely on the machine learning toolkit and handles the following aspects of a traditional machine learning pipeline:
+
+1. Data preprocessing
+2. Feature engineering and feature selection
+3. Model selection
+4. Hyperparameter tuning
+5. Report generation and model persistence
+
+The library is available [here](https://github.com/KxSystems/automl)
+
+<i class="far fa-hand-point-right"></i> Example notebook showing the use of AutoML available [here](https://github.com/KxSystems/mlnotebooks).
+
+## Useful information
+
+All of the Kx machine-learning libraries are:
 
 -   well **documented**, with understandable and useful examples
 -   maintained and **supported** by Kx on a best-efforts basis, at no cost to customers
