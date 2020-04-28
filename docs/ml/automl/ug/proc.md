@@ -187,7 +187,7 @@ xtest | 20
 ytest | 20
 ```
 
-For classification problems, similar to the one above, it cannot be guaranteed that the $N$ distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
+For classification problems, similar to the one above, it cannot be guaranteed that all of the distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
 
 For this reason, the utility function `.automl.i.kerascheck` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
 
