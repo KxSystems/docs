@@ -63,48 +63,55 @@ q)dict:(::)
 // Run example
 q).automl.run[tab;reg_tgt;ftype;ptype;dict]
 
+q).automl.run[([]100?1f;100?1f);100?5;`normal;`class;::]
+
 The following is a breakdown of information for each of the relevant columns in the dataset
 
   | count unique mean      std       min         max       type   
---| --------------------------------------------------------------
-x1| 100   100    0.5241723 0.2885251 0.002184472 0.9830794 numeric
-x3| 100   100    0.4722098 0.2894009 0.00283353  0.9996082 numeric
-x4| 100   100    0.493481  0.2763346 0.01392076  0.9877844 numeric
-x | 100   100    ::        ::        ::          ::        time   
-x2| 100   2      ::        ::        ::          ::        boolean
+- | --------------------------------------------------------------
+x | 100   100    0.5054736 0.2845194 0.002184472 0.9875418 numeric
+x1| 100   100    0.5329125 0.3065479 0.009011743 0.9907116 numeric
 
 Data preprocessing complete, starting feature creation
 
 Feature creation and significance testing complete
 Starting initial model selection - allow ample time for large datasets
 
-Total features being passed to the models = 3
+Total features being passed to the models = 1
 
-Scores for all models, using .ml.mse
-GradientBoostingRegressor| 0.0001987841
-RandomForestRegressor    | 0.0002360554
-AdaBoostRegressor        | 0.0003896983
-LinearRegression         | 0.0004134209
-KNeighborsRegressor      | 0.0005237273
-Lasso                    | 0.03033336
-MLPRegressor             | 0.1881076
-RegKeras                 | 0.4328872
+Scores for all models, using .ml.accuracy
+AdaBoostClassifier        | 0.2025641
+KNeighborsClassifier      | 0.1717949
+MLPClassifier             | 0.1397436
+RandomForestClassifier    | 0.1269231
+GradientBoostingClassifier| 0.1269231
 
-Best scoring model = GradientBoostingRegressor
-Score for validation predictions using best model = 0.0002752211
+Best scoring model = AdaBoostClassifier
+Score for validation predictions using best model = 0.0625
 
-Feature impact calculated for features associated with GradientBoostingRegressor model
-Plots saved in /outputs/2020.01.02/run_11.21.47.763/images/
 
-Continuing to grid-search and final model fitting on holdout set
+Feature impact calculated for features associated with AdaBoostClassifier model
+Plots saved in /outputs/2020.04.28/run_15.16.55.074/images/
 
-Best model fitting now complete - final score on test set = 0.0001017797
+Continuing to grid-search and final model fitting on testing set
 
-Saving down procedure report to /outputs/2020.01.02/run_11.21.47.763/report/
-Saving down GradientBoostingRegressor model to /outputs/2020.01.02/run_11.21.47.763/models/
-Saving down model parameters to /outputs/2020.01.02/run_11.21.47.763/config/
-2020.01.02
-11:21:47.763
+Best model fitting now complete - final score on testing set = 0.2
+
+Confusion matrix for testing set:
+
+      | pred_0 pred_1 pred_2 pred_3 pred_4
+------| ----------------------------------
+true_0| 0      1      2      0      0     
+true_1| 0      1      4      0      0     
+true_2| 0      0      3      0      2     
+true_3| 0      0      1      0      0     
+true_4| 0      2      4      0      0     
+
+Saving down procedure report to /outputs/2020.04.28/run_15.16.55.074/report/
+Saving down AdaBoostClassifier model to /outputs/2020.04.28/run_15.16.55.074/models/
+Saving down model parameters to /outputs/2020.04.28/run_15.16.55.074/config/
+2020.04.28
+15:16:55.074
 
 // Example data for various problem types
 q)bin_target:asc 100?0b
