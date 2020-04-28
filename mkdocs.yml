@@ -476,6 +476,10 @@ nav:
         - Multiprocessing: ml/toolkit/utilities/multiprocess.md
       - FRESH: ml/toolkit/fresh.md  
       - Cross validation: ml/toolkit/xval.md
+      - Clustering:
+        - Algorithms: ml/toolkit/clustering/algos.md
+        - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
+        - Scoring metrics: ml/toolkit/clustering/score.md
     - Natural language processing:
       - Overview: ml/nlp/index.md
       - User guide:
