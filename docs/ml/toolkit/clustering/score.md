@@ -116,12 +116,12 @@ If the correct cluster is known for each data point in a chosen dataset, the pro
 
 _Returns a score between 0 and 1, where 1 indicates correct clustering_
 
-Syntax: `.ml.clust.homogeneity[x;y]`
+Syntax: `.ml.clust.homogeneity[pred;true]`
 
 Where
 
--  `x` is the predicted cluster labels
--  `y` is the true cluster labels
+-  `pred` is the predicted cluster labels
+-  `true` is the true cluster labels
 
 returns the homogeneity score.
 
