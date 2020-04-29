@@ -355,7 +355,7 @@ All the examples and sample outputs shown here are being run on a regular laptop
 KDB+ 3.1 2014.03.27 Copyright (C) 1993-2014 Kx Systems
 m32/ 4()core 8192MB ryansparks ryans-macbook-pro.local 192.168.2.30 NONEXPIRE
 q)\t getPriceFadesData[2013.10.07;`;0D00:00:00.1;100;`sym`marketSegmentID] 
-6510j
+6510
 ```
 
 This clearly highlights the speed and succinctness with which kdb+ can

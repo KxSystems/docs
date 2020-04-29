@@ -73,7 +73,7 @@ q)h"2+2"          / synchronous (GET)
 q)(neg h)"a:2"    / asynchronous (SET)
 ```
 
-If only one synchronous query/request is to be run, then the single-shot synchronous request can be used to open a connection, send the query, get the results, then close the connection. It is more efficient to keep a connection open if there is an opportunity to re-use it for other queries.
+If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to open a connection, send the query, get the results, then close the connection. It is more efficient to keep a connection open if there is an opportunity to re-use it for other queries.
 
 ```q
 q)`:mydb.us.com:5010:elmo:sesame "1+1"

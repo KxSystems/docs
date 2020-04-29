@@ -147,7 +147,7 @@ Resolution of a name within `select`, `exec`, and `update` is as follows:
     `select` auto-aliases colliding duplicate column names for either `select az,a from t`, or `select a by c,c from t`, but not for `select a,a by a from t`.
 
     Such a collision throws a `'dup names for cols/groups a` error during parse, indicating the first column name which collides. 
-    (Since V3.7t 2019.10.22.)
+    (Since V4.0 2020.03.17.)
 
     <pre><code class="language-q">
     q)parse"select b by b from t"

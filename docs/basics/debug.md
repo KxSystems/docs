@@ -111,7 +111,7 @@ q)).z.ey
 
 ## Signal
 
-`'err` will signal err from the deepest frame available, destroying it.
+`'err` will signal `err` from the deepest frame available, destroying it.
 
 ```q
 q))'myerror
@@ -186,7 +186,7 @@ q)
 ### Backtrace
 
 [`.Q.bt[]`](../ref/dotq.md#qbt-backtrace) will dump the backtrace to stdout at any point during execution or debug.
-It will highlight the curent stack frame with `>>`. (Since V3.7t 2019.10.22.)
+It will highlight the curent stack frame with `>>`. (Since V4.0 2020.03.17.)
 
 ```q
 q)g:{a:x*2;a+y}
@@ -216,7 +216,7 @@ q)).Q.bt[]
 ### Where
 
 Debugger command `&` displays current frame information. 
-(Since V3.7t 2019.10.22.)
+(Since V4.0 2020.03.17.)
 
 ```q
 q))&

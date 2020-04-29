@@ -48,6 +48,7 @@ The [Machine Learning Toolkit](toolkit/index.md) is at the core of kdb+/q center
 -  An implementation of the [FRESH](toolkit/fresh.md) algorithm for feature extraction and selection on structured time series data. 
 -  [Utility](toolkit/utilities/util.md) functions which are useful in many machine-learning applications but do not fall within the other sections of the toolkit.
 -  [Cross-Validation](toolkit/xval.md) functions, used to verify how robust and stable a machine-learning model is to changes in the data being interrogated and the volume of this data.
+- [Clustering algorithms](toolkit/clustering/algos.md) used to group data points and to identify patterns in their distributions. The algorithms make use of a [k-dimensional tree](toolkit/clustering/kdtree.md) to store points and [scoring functions](toolkit/clustering/score.md) to analyze how well they performed.
 
 The library is available [here](https://github.com/KxSystems/ml).
 
@@ -60,8 +61,23 @@ The library is available [here](https://github.com/KxSystems/ml).
 
 <i class="far fa-hand-point-right"></i> [Demonstration notebook](https://github.com/KxSystems/mlnotebooks)
 
+## Automated Machine Learning
 
-All machine-learning libraries are:
+[AutoML](automl/index.md) is a framework to automate the process of machine learning using kdb+. This is build largely on the machine learning toolkit and handles the following aspects of a traditional machine learning pipeline:
+
+1. Data preprocessing
+2. Feature engineering and feature selection
+3. Model selection
+4. Hyperparameter tuning
+5. Report generation and model persistence
+
+The library is available [here](https://github.com/KxSystems/automl)
+
+<i class="far fa-hand-point-right"></i> Example notebook showing the use of AutoML available [here](https://github.com/KxSystems/mlnotebooks).
+
+## Useful information
+
+All of the Kx machine-learning libraries are:
 
 -   well **documented**, with understandable and useful examples
 -   maintained and **supported** by Kx on a best-efforts basis, at no cost to customers

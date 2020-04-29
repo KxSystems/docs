@@ -323,8 +323,8 @@ The following is a summary:
 boolean   1b                   boolean    as Jraw   n/a
 byte      0xff                 character  as Jraw   n/a
 short     23h                  integer    as Jraw   <.-2^31
-int       23                   integer    as Jraw   <.-2^31
-long      23j                  extended   as Jraw   -2^56x
+int       23i                  integer    as Jraw   <.-2^31
+long      23                   extended   as Jraw   -2^56x
 real      2.3e                 floating   as Jraw   __
 float     2.3                  floating   as Jraw   __
 char      "a"                  character  as Jraw   ''

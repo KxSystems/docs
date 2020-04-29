@@ -10,7 +10,7 @@ keywords: kdb+, q, start, tutorial,
 
 
 
-This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](/q4m3/), and the [Reference](../../ref/index.md) and consult the [Knowledge base](../../kb/index.md).
+This is a quick-start guide to kdb+, aimed primarily at those learning independently. It covers system installation, the kdb+ environment, IPC, tables and typical databases, and where to find more material. After completing this you should be able to follow the Borror textbook [Q for Mortals](/q4m3/), and the [Reference](../../ref/index.md) and consult the [Knowledge Base](../../kb/index.md).
 
 One caution: you can learn kdb+ reasonably well by independent study, but for serious deployment of the product you need the help of a consultant. This is because kdb+ is typically used for very demanding applications that require experience to set up properly. Contact Kx for help with such evaluations.
 
@@ -41,11 +41,11 @@ The best resource for learning q. It includes:
 - the [KxSystems](https://github.com/KxSystems) repositories
 - [user-contributed repositories](https://kxsystems.github.io)
 
-
+<!--
 ### Other material
 
 Several background articles and links can be found in the [Archive](../archive.md). For example, the Thalesians’ [Knowledge Base Kdb](http://www.thalesians.com/finance/index.php/Knowledge_Base/Databases/Kdb) has a good overview.
-
+-->
 
 ### Discussion groups
 
@@ -53,19 +53,19 @@ Several background articles and links can be found in the [Archive](../archive.m
 -   The [Kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
 
 
-## Install free system
+## <i class="fas fa-download"></i> Install free system
 
 If you do not already have access to a licensed copy, go to [Get started](../index.md) to download and install q.
 
 
-## Example files
+## <i class="fas fa-file"></i> Example files
 
 Two sets of scripts are referenced in this guide:
 
 1. The free system is distributed with the following example scripts in the main directory:
 
-    -   sp.q – the Suppliers and Parts sample database
-    -   trade.q – a stock trades sample database
+    -   `sp.q` – the Suppliers and Parts sample database
+    -   `trade.q` – a stock trades sample database
 
     If you do not have these scripts, get them from 
     <i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/KxSystems/kdb) 
@@ -75,8 +75,7 @@ Two sets of scripts are referenced in this guide:
 
     Move the `start` directory under your `QHOME` directory, e.g. `q/start`. For example, there should be a file:
 
-    <pre><code class="language-txt">
-    c:\q\start\buildhdb.q         / Windows
+    <pre><code class="language-txt">c:\q\start\buildhdb.q         / Windows
     ~/q/start/buildhdb.q          / Linux and macOS
     </code></pre>
 
@@ -91,8 +90,9 @@ Two sets of scripts are referenced in this guide:
 
 When q is run, it displays a console where you can enter commands and see the results. This is all you need to follow the tutorial, and if you just want to learn a little about q, then it is easiest to work in the console.
 
-As you become more familiar with q, you may try one of the GUIs.
+As you become more familiar with q, you may prefer to work in the interactive development environment [**Kx Developer**](/developer/). ([_Kx Analyst_](/analyst/) is the enterprise version of Developer.)
 
+<!--
 -   Most popular is Charlie Skelton’s **Studio for kdb+**, a cross-platform execution environment – worth having available even if you use another interface  
 <i class="fab fa-github"></i> [CharlesSkelton/studio](https://github.com/CharlesSkelton/studio)
 -   [**qStudio**](http://www.timestored.com/qstudio/), a cross-platform IDE with charting and autocompletion by TimeStored 
@@ -101,4 +101,4 @@ As you become more familiar with q, you may try one of the GUIs.
 -   [**Q Insight Pad**](http://www.qinsightpad.com) is an IDE for Windows
 -   [**Qconsole**](https://github.com/kxcontrib/cburke/tree/master/qconsole) is an IDE using GTK
 -   [**JupyterQ**](../../ml/jupyterq/index.md) lets you run q inside a [Jupyter](https://jupyter.org) notebook 
-
+-->

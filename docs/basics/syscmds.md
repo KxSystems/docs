@@ -557,7 +557,7 @@ Executes the expression `exp` and shows the execution time in milliseconds and t
 
 ```q
 q)\ts log til 100000
-7 2621568j
+7 2621568
 ```
 
 Since 3.1 2014.02.07
@@ -663,7 +663,7 @@ q)\w 3
 ```
 
 **Domain-local**
-Since V3.7t 2019.10.22 returns information for the [current memory domain](../ref/dotm.md) only.
+Since V4.0 2020.03.17 returns information for the [current memory domain](../ref/dotm.md) only.
 
 ```q
 q)value each ("\\d .m";"\\w";"\\d .";"\\w")

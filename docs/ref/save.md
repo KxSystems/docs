@@ -71,6 +71,8 @@ q)save `$"/tmp/t"
 `:/tmp/t
 ```
 
+!!! tip "Use [`set`](get.md) to save a table to a file of a different name."
+
 
 ### Saving local data
 

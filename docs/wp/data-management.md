@@ -25,15 +25,17 @@ Sample on-disk test databases can be created using the `tq.q` script.
 
 Code examples are intended for readers with at least a beginner-level knowledge of kdb+ and the q language. However we encourage any interested reader to contact us at [lectureseries@firstderivatives.com](mailto:lectureseries@firstderivatives.com) with questions regarding code syntax or any other aspect of the paper.
 
-
+<!--
 ## Multiple enumeration files
 
 In splayed databases, the default behavior is that all columns of type symbol are enumerated using the same list, a file called `sym`. Enumerating in this context means that rather than containing the actual symbol values, the column, when saved to disk, will consist of a list of integers each of which is the index of the actual value in the list (file) called `sym`.
 
-<i class="far fa-hand-point-right"></i>
-Reference: [Enumerate](../ref/enumerate.md),
+<i class="fas fa-book"></i>
+[Enumerate](../ref/enumerate.md),
 [Enumeration](../ref/enumeration.md),
-[Enum Extend](../ref/enum-extend.md)<br>
+[Enum Extend](../ref/enum-extend.md)
+<br>
+<i class="fas fa-book-open"></i>
 Basics: [Enumerations](../basics/enumerations.md)<br>
 _Q for Mortals_: [§7.2 Cast](/q4m3/7_Transforming_Data/#72-cast),
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)
@@ -86,7 +88,7 @@ enumerate:{[d;t] /directory,table
     }[d]'[cols t;value flip t];
   flip t }
 ```
-
+-->
 
 ## Automating schema changes
 
@@ -208,8 +210,8 @@ g  grouped    u  unique
 p  parted     s  sorted
 ```
 
-<i class="far fa-hand-point-right"></i>
-Reference: [Set Attribute](../ref/set-attribute.md)
+<i class="fas fa-book"></i>
+[Set Attribute](../ref/set-attribute.md)
 
 To apply the parted attribute to a list, all occurrences in the list of each value $n$ must be adjacent to one another. For example, the following list is not of the required structure and attempting to apply the parted attribute to it will fail:
 
@@ -262,14 +264,16 @@ grouped    (24*u)+4*n
 
 It is often the case that a kdb+ application receives an ID field which does not repeat and contains characters that are not numbers. The question is which datatype should be used for such a field. The problem with using enumerated symbols in this case is that the enumeration file becomes too large, slowing down searches and resulting in too much memory being consumed by the enumeration list.
 
-<i class="far fa-hand-point-right"></i>
-Basics: [Enumerations](../basics/enumerations.md)<br>
-Knowledge Base: [Splayed tables](../kb/splayed-tables.md)
+<i class="fas fa-book-open"></i>
+[Enumerations](../basics/enumerations.md)
+<br>
+<i class="fas fa-graduation-cap"></i>
+[Splayed tables](../kb/splayed-tables.md)
 
 The problem with using char vector is that it is not an atom, so attributes cannot be applied, and searches on char vectors are very slow. In this case, it is worth considering GUID, which can be used for storing 16-byte values.
 
-<i class="far fa-hand-point-right"></i>
-Basics: [Datatypes](../basics/datatypes.md)
+<i class="fas fa-book-open"></i>
+[Datatypes](../basics/datatypes.md)
 
 As the data is persisted to disk, or written to an intra-day in-memory instance, the ID field can be converted to GUID and persisted along with the original ID. The following code shows how this would be done in memory. It assumes that the original ID is a char vector of no more than 16 characters in length.
 
@@ -447,3 +451,10 @@ As mentioned in the introduction, a key feature of kdb+ is that it is a flexible
 ## Author
 
 Simon Mescal is based in New York. Simon is a financial engineer who has designed and developed kdb+-related data-management solutions for top-tier investment banks and trading firms, across multiple asset classes. Simon has extensive experience implementing a range of applications in both object-oriented and vector-programming languages.
+
+
+## Related articles
+
+<i class="far fa-map"></i>
+[Working with sym files](symfiles.md)
+
