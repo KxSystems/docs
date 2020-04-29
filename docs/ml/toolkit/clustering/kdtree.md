@@ -102,11 +102,11 @@ closestDist | 0.9449095
 
 ## Find where point belongs in tree
 
-### `.ml.clust.kd.i.findleaf`
+### `.ml.clust.kd.findleaf`
 
 _Search the tree and find the index of the leaf that each datapoint belongs to_
 
-Syntax: `.ml.clust.kd.i.findleaf[tree;pt;node]`
+Syntax: `.ml.clust.kd.findleaf[tree;pt;node]`
 
 -   `tree` is a k-d tree
 -   `pt` is the point to search
@@ -131,7 +131,7 @@ leaf left self parent children axis midval   idxs
 // Point to search
 q)show pt:2?10f
 3.414991 9.516746
-q).ml.clust.kd.i.findleaf[tree;pt;first tree]
+q).ml.clust.kd.findleaf[tree;pt;first tree]
 leaf    | 1b
 left    | 0b
 self    | 3
