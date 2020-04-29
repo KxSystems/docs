@@ -28,12 +28,12 @@ The following lists the parameters which can be altered by users to modify the f
 aggcols     Aggregation columns for FRESH
 funcs       Functions to be applied for feature extraction
 gs          Grid search function and no. of folds/percentage of data in validation set
-hld         Size of holdout set on which the final model is tested
+hld         Size of the testing set on which the final model is tested
 saveopt     Saving options outlining what is to be saved to disk from a run
 scf         Scoring functions for classification/regression tasks
 seed        Random seed to be used
 sigfeats    Feature significance procedure to be applied to the data
-sz          Size of test set for train-test split function
+sz          Size of validation set used.
 tts         Train-test split function to be applied
 xv          Cross-validation function and no. of folds/percentage of data in validation set
 ```
@@ -90,7 +90,7 @@ _Grid search procedure_
 
 In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
 
-The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in the validation set.
+The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
 
 For simplicity of implementation, a user should where possible use the functions within the `.ml.gs` namespace for this task.
 
@@ -111,16 +111,16 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 
 ### `hld`
 
-_Size of the holdout set_
+_Size of the testing set_
 
-By default the holdout set across all problem types is set to 20%. For problems with a small number of data points, a user may wish to increase the number of datapoints being trained on. The opposite may be true on larger datasets.
+By default the testing set across all problem types is set to 20%. For problems with a small number of data points, a user may wish to increase the number of datapoints being trained on. The opposite may be true on larger datasets.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Set holdout set to contain 10% of the dataset
-q)hldout:0.1
-q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist hldout]
+// Set the testing set to contain 10% of the dataset
+q)tst:0.1
+q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist tst]
 ```
 
 
@@ -228,12 +228,12 @@ The result of this function should be a simple table with unimportant features (
 
 _Size of the validation set on which the non grid-searched best model is tested_
 
-By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on. The ooposite may be required for larger data sets.
+By default the validation set prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on. The ooposite may be required for larger data sets.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Set holdout set to contain 10% of the dataset
+// Set the size of the validation set to contain 10% of the dataset
 q)size:0.1
 q).automl.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 ```
@@ -264,7 +264,7 @@ A user-defined function for this must take the following arguments.
 	
 -   `x`, a simple table
 -   `y`, the target vector
--   `z`, the size-splitting criteria used (number folds/percentage of data in holdout)
+-   `z`, the size-splitting criteria used (number folds/percentage of data in validating model)
 	
 The result from this function must be a dictionary with keys `` `xtrain`ytrain`xtest`ytest`` where the `x` components are tables containing the split data and `y` components are the associated target vector components
 
