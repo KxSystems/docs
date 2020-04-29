@@ -1,23 +1,26 @@
-copyright: 'This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="http://www.firstderivatives.com/">First Derivatives plc</a>.'
+copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.firstderivatives.com/">First Derivatives plc</a>.'
 # dev_addr: '159.65.88.218:8000'
 dev_addr: '0.0.0.0:9000'
 docs_dir: 'docs'
 extra:
   version: 2.0
 extra_css: 
-  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
-  - 'https://code.kx.com/stylesheets/extra.css'
   - 'stylesheets/extra.css'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
 extra_javascript: 
-  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
-  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
-  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
+  # See /syntax/#projection to see if MathJax is working 
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
   - 'https://code.jquery.com/jquery-3.1.1.min.js'
-  - 'https://code.kx.com/scripts/prism.js'
   - 'https://tracker.mrpfd.com/tracker.js'
-  - 'https://use.fontawesome.com/releases/v5.8.0/js/all.js'
+  # - 'scripts/googleanalytics.js'
+  # - 'https://use.fontawesome.com/3dbf29ed12.js'
+  - 'https://use.fontawesome.com/releases/v5.2.0/js/all.js'
+  # theme.js modifies HTML to prepare for prism.js
   - 'scripts/theme.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
+  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
+  # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
+  - 'scripts/prism.js'
 google_analytics:
   - 'UA-3462586-1'
   - 'auto'
@@ -49,6 +52,7 @@ remote_branch: 'master'
 # repo_name: 'GitHub'
 # repo_url: 'https://github.com/kxsystems/docs'
 site_dir: 'site'
+# site_dir: '/var/www/html'
 site_author: 'Kx Systems'
 site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
@@ -65,6 +69,9 @@ theme:
   palette: 
     primary: 'blue'
     accent: 'deep orange'
+  static_templates:
+    - 401.html
+    - 404.html
   toc:
     title: "On this page"
 nav:
@@ -88,8 +95,8 @@ nav:
     - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md
-    - Q for Mortals 3: /q4m3/
-    - Q Phrases: /phrases/
+    - Q for Mortals 3: https://code.kx.com/q4m3/index.html
+    - Q Phrases: https://code.kx.com/phrases/index.html
     - Remarks on Style:
       - Preface: style/index.md
       - Maxims: style/maxims.md
@@ -156,7 +163,7 @@ nav:
       - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
       - Iteration: basics/iteration.md
-      - Iinterprocess communication: basics/ipc.md
+      - Interprocess communication: basics/ipc.md
       - Joins: basics/joins.md
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
@@ -367,8 +374,6 @@ nav:
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
     - Release notes:
-      - History: releases/index.md
-      - Changes in 4.0: releases/ChangesIn4.0.md
       - Changes in 3.6: releases/ChangesIn3.6.md
       - Changes in 3.5: releases/ChangesIn3.5.md
       - Changes in 3.4: releases/ChangesIn3.4.md
@@ -388,19 +393,11 @@ nav:
     - Fusion for kdb+:
       - Overview: interfaces/fusion.md
       - FFI: interfaces/ffi.md
-      - HDF5:
-        - Overview: interfaces/hdf5/index.md
-        - User guide: interfaces/hdf5/user-guide.md
       - Java: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
-      - Kafka: 
+      - Kafka:
         - Overview: interfaces/kafka/index.md
         - User guide: interfaces/kafka/user-guide.md
-      - MQTT: interfaces/mqtt.md
-      - Prometheus: 
-        - Exporter:
-          - Overview: interfaces/prom/exporter/index.md
-          - User guide: interfaces/prom/exporter/user-guide.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
@@ -415,9 +412,6 @@ nav:
         - embedR: interfaces/r/embedr.md
         - Examples: interfaces/r/examples.md
         - Complementary interfaces: interfaces/r/r-and-q.md
-      - Solace:
-        - Overview: interfaces/solace/index.md
-        - User guide: interfaces/solace/user-guide.md
     - From: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
@@ -437,7 +431,6 @@ nav:
       - J: interfaces/q-client-for-j.md
       - ODBC: interfaces/q-client-for-odbc.md
   - Cloud: 
-    - Overview: cloud/index.md
     - Amazon EC2: 
       - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
       - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
@@ -473,10 +466,6 @@ nav:
         - Multiprocessing: ml/toolkit/utilities/multiprocess.md
       - FRESH: ml/toolkit/fresh.md  
       - Cross validation: ml/toolkit/xval.md
-      - Clustering:
-        - Algorithms: ml/toolkit/clustering/algos.md
-        - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
-        - Scoring metrics: ml/toolkit/clustering/score.md
     - Natural language processing:
       - Overview: ml/nlp/index.md
       - User guide:
@@ -486,15 +475,6 @@ nav:
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
-    - Automl:
-      - Overview: ml/automl/index.md
-      - User guide:
-        - Overview: ml/automl/ug/index.md
-        - Data preprocessing: ml/automl/ug/preproc.md
-        - Data processing: ml/automl/ug/proc.md
-        - Data postprocessing: ml/automl/ug/postproc.md
-        - Advanced parameter modifications: ml/automl/ug/options.md
-      - FAQ: ml/automl/faq.md
   - Knowledge Base:
     - Overview: kb/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
@@ -503,13 +483,11 @@ nav:
     - Callbacks: kb/callbacks.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
-    - Code profiler: kb/profiler.md
     - Compacting HDB sym: kb/compacting-hdb-sym.md
     - Corporate actions: kb/corporate-actions.md
     - CPU affinity: kb/cpu-affinity.md
     - Custom web server: kb/custom-web.md
     - Daemon: kb/daemon.md
-    - Data-At-Rest Encryption: kb/dare.md
     - Deferred response: kb/deferred-response.md
     - FAQ: kb/faq.md
     - FAQ from k4 listbox: kb/faq-listbox.md
@@ -517,7 +495,6 @@ nav:
     - Firewalling: kb/firewalling.md
     - Geospatial indexing: kb/geospatial.md
     - inetd, xinetd: kb/inetd.md
-    - Interprocess communication: kb/ipc.md
     - Kdb+tick configuration: kb/kdb-tick.md
     - Linear programming: kb/lp.md
     - Linking columns: kb/linking-columns.md
@@ -526,10 +503,8 @@ nav:
     - Loading from large files: kb/loading-from-large-files.md
     - Logging: kb/logging.md
     - Multithreaded input: kb/multithreaded-input.md
-    - Multithreaded primitives: kb/mt-primitives.md
     - Named pipes: kb/named-pipes.md
     - ODBC: kb/odbc.md
-    - Optane Memory: kb/optane.md
     - Partitioning: kb/partition.md
     - Performance tips: kb/performance-tips.md
     - Pivoting tables: kb/pivoting-tables.md
@@ -556,6 +531,7 @@ nav:
     - Index: wp/index.md
     - Astronomy: wp/astronomy.md
     - Bitcoin blockchains: wp/blockchain/index.md
+    - C API: wp/capi/index.md
     - C# GUIs: wp/gui/index.md
     - Card counters: wp/card-counters/index.md
     - Columnar database: wp/columnar-database/index.md
@@ -568,8 +544,6 @@ nav:
     - Data visualization: wp/data-visualization/index.md
     - Disaster management: wp/disaster-management/index.md
     - Disaster recovery: wp/disaster-recovery/index.md
-    - Disaster management using social media: wp/disaster-management/index.md
-    - Disaster Prevention for Floods: wp/disaster-floods/index.md
     - Distributed systems: wp/query-interface.md
     - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
     - Exoplanets: wp/exoplanets/index.md
@@ -578,11 +552,13 @@ nav:
     - Intraday writedown: wp/intraday-writedown/index.md
     - Iterators: wp/iterators/index.md
     - Java API: wp/java-api/index.md
+    - Kdb+tick profiling: wp/tick-profiling.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
     - Machine learning: wp/machine-learning/index.md
     - Market depth: wp/market-depth/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
     - Multi partitions: wp/multi-partitioned-dbs/index.md
+    - Multi-threading: wp/multi-thread/index.md
     - Neural networks: wp/neural-networks/index.md
     - Option pricing: wp/option-pricing/index.md
     - Order Book: wp/order-book.md
@@ -591,6 +567,7 @@ nav:
     - Predicting floods: wp/disaster-floods/index.md
     - Query optimization: wp/columnar-database/index.md
     - Query Routing: wp/query-routing/index.md
+    - Query scaling: wp/query-scaling.md
     - Real-time tick subscribers: wp/rt-tick/index.md
     - Time-series simplification: wp/ts-shrink/index.md
     - Transaction-cost analysis: wp/transaction-cost.md
@@ -614,7 +591,6 @@ nav:
       - Code blocks: about/sg/code.md
       - Typography: about/sg/typography.md
     - Terminology: about/terminology.md
-    - Citations: about/citations.md
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md

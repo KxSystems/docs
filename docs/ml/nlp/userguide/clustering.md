@@ -16,7 +16,7 @@ Clusters can be summarized by their centroids, which are the sum of the feature 
 MCL clustering, which takes document similarity as its only parameter other than the documents. This algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. It then runs a graph-clustering algorithm on the dataset.
 
 
-### `.nlp.cluster.MCL`
+#### `.nlp.cluster.MCL`
 
 _Cluster a subcorpus using graph clustering_
 
@@ -44,7 +44,7 @@ q)count clusterjeff
 This clustering algorithm finds the top ten keywords in each document, finds the average of these keywords and determines the top keyword. This is set to be the centroid and therefore finds the closest document. This process is repeated until the number of clusters are found.
 
 
-### `.nlp.cluster.summarize`
+#### `.nlp.cluster.summarize`
 
 _A clustering algorithm that works like many summarizing algorithms, by finding the most representative elements, then subtracting them from the centroid and iterating until the number of clusters has been reached_
 
@@ -74,7 +74,7 @@ q).nlp.cluster.summarize[jeffcorpus;30]
 Given a set of documents, K-means clustering aims to partition the documents into a number of sets. Its objective is to minimize the residual sum of squares, a measure of how well the centroids represent the members of their clusters.
 
 
-### `.nlp.cluster.kmeans`
+#### `.nlp.cluster.kmeans`
 
 _K-means clustering for documents_
 
@@ -102,7 +102,7 @@ q)count each clusters
 Bisecting K-means adopts the K-means algorithm and splits a cluster in two. This algorithm is more efficient when _k_ is large. For the K-means algorithm, the computation involves every data point of the data set and _k_ centroids. On the other hand, in each bisecting step of Bisecting K-means, only the data points of one cluster and two centroids are involved in the computation. Thus the computation time is reduced. Secondly, Bisecting K-means produce clusters of similar sizes, while K-means is known to produce clusters of widely differing sizes.
 
 
-### `.nlp.cluster.bisectingKMeans` 
+#### `.nlp.cluster.bisectingKMeans` 
 
 _The Bisecting K-means algorithm uses K-means repeatedly to split the most cohesive clusters into two clusters_
 

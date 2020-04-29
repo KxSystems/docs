@@ -127,7 +127,7 @@ Syntax: `.nlp.loadTextFromDir x`
 Where `x` is the directory’s filepath as a string, returns a table of filenames, paths and texts.
 
 ```q
-q).nlp.loadTextFromDir["/home/kx/nlp/datasets/maildir/skilling-j"]
+q).nlp.loadTextFromDir["./datasets/maildir/skilling-j"]
 
 fileName path                                           text                 ..
 -----------------------------------------------------------------------------..

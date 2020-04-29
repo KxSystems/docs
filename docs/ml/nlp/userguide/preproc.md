@@ -210,11 +210,7 @@ queequeg  | 35.50147
 steelkilt | 33.94292
 ye        | 33.43198
 pip       | 32.90571
-<<<<<<< HEAD
-starbuck  | 31.63382
-=======
 starbuck  | parseURLs["http://www.google.com"]31.63382
->>>>>>> ef219160d4f40a217894c9915c27a9daf2b28ad9
 captain   | 29.1811
 thou      | 28.27945
 ```
@@ -302,5 +298,4 @@ precisely-- little     | 1
 little      money      | 0.004016064
 money       purse      | 0.07692308
 purse       particular | 0.1428571
->>>>>>> ef219160d4f40a217894c9915c27a9daf2b28ad9
 ```

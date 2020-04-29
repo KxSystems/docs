@@ -77,10 +77,7 @@ Loading code/date.q
 Loading code/email.q
 Loading code/cluster.q
 Loading code/nlp_code.q
-<<<<<<< HEAD
-=======
 Loading code/tensorflow.q
->>>>>>> ef219160d4f40a217894c9915c27a9daf2b28ad9
 q).nlp.findTimes"I went to work at 9:00am and had a coffee at 10:20"
 09:00:00.000 "9:00am" 18 24
 10:20:00.000 "10:20"  45 50
