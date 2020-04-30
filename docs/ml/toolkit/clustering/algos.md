@@ -47,14 +47,14 @@ Syntax: `.ml.clust.ap[data;df;dmp;diag]`
 Where
 
 - `data` is the data points in a horizontal matrix format
-- `df` is the distance function as a symbol: `nege2dist` commonly used for this algorithm, but can also be used with `e2dist` `edist` and `mdist` (see [section](##Disance Metrics))
+- `df` is the distance function as a symbol: `nege2dist` is commonly used for this algorithm. (see [section](## Distance Metrics))
 - `dmp` is the damping coefficient to apply to the availability and responsibility matrices.
-- `diag` is the preference for the diagonal of the similarity matrix, can be a function as a symbol (e.g. ``` `min`med`max ``` etc.).
+- `diag` is the preference function for the diagonal of the similarity matrix (e.g.  `min` `med` `max` etc.).
 
 returns a list indicating the cluster each data point belongs to
 
 ```q
-show d:2 10#20?10.
+q)show d:2 10#20?10.
 0.8123546 9.367503 2.782122 2.392341 1.508133 ..
 4.099561  6.108817 4.976492 4.087545 4.49731  ..
 q)show APclt:.ml.clust.ap[d;`nege2dist;.3;med]
@@ -71,7 +71,7 @@ q)group APclt
 
 CURE clustering is a technique used to deal with datasets containing outliers and clusters of varying sizes and shapes. Each cluster is represented by a specified number of representative points. These points are chosen by taking the the most scattered points in each cluster and shrinking them towards the cluster centre by a fixed amount, known as the compression.
 
-In the implementation below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available and are specified as an argument. 
+In the implementation below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available. Instructions to build the C code can be found [here](https://github.com/Dianeod/ml-1/blob/cluster/clust/README.md) on the github repo.
 
 ### `.ml.clust.ccure`
 
@@ -82,7 +82,7 @@ Syntax: `.ml.clust.ccure[data;df;k;n;c]`
 Where
 
 - `data` is the data points in a horizontal matrix format
-- `df`  is the distance function as a symbol: `e2dist `edist `mdist (see [section](##Distance Metrics))
+- `df`  is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Distance Metrics))
 - `k` is the number of clusters
 - `n` is the number of representative points
 - `c` is the compression
@@ -114,7 +114,7 @@ Syntax: `.ml.clust.dbscan[data;df;minpts;eps]`
 Where
 
 -   `data` is the data points in a horizontal matrix format
--   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
+-   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Distance Metrics))
 -   `minpts` is the minimum number of points required in a given neighbourhood for it to be classified as a cluster
 -   `eps` is the epsilon radius, the distance from each point within which points are defined as being in the same cluster
 
@@ -147,7 +147,7 @@ Syntax: `.ml.clust.hc[data;df;lf;k]`
 Where
 
 -   `data` is the data points in a horizontal matrix format
--   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
+-   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Distance Metrics))
 -   `lf` is the linkage function as a symbol: `single`  `complete` `average` `centroid` `ward`
 -   `k` is the number of clusters
 
@@ -193,7 +193,7 @@ Syntax: `.ml.clust.kmeans[data;df;k;iter;kpp]`
 Where
 
 -   `data` is the data points in a horizontal matrix format
--   `df` is the distance function: `e2dist` `edist` `mdist` `cshev` (see [section](##Disance Metrics))
+-   `df` is the distance function: `e2dist` `edist` (see [section](##Distance Metrics))
 -   `k` is the number of clusters
 -   `iter` is the number of iterations
 -   `kpp` is a boolean flag indicating the initialisaton type: both select k points from the dataset as cluster centres, `1b` initialises the [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) algorithm or `0b` selects k random points
@@ -213,10 +213,7 @@ q).ml.clust.kmeans[d;`mdist;3;10;1b]
 ```
 
 !!! note
-      K-Means only works in conjunction with euclidean squared distances (e2dist). If the user tries to input a different distance metric an error will result, as shown above.
-
-!!! warning
-    All the above clustering functions must have the input data as a floating point type
+      K-Means only works in conjunction with euclidean squared distances (`e2dist`,`edist`). If the user tries to input a different distance metric an error will result, as shown above.
 
 ## Distance Metrics
 
@@ -226,7 +223,6 @@ The distance functions available in the clustering library are:
 -   `e2dist` is the squared Euclidean distance
 -   `nege2dist` is the negative squared Euclidean distance (used predominantly for affinity propagation)
 -   `mdist` is the manhattan distance
--   `cshev` is the chebyshev distance (k-means only)
 
 !!! warning
 	If the user inputs a distance metric that is not contained within the `.ml.clust.i.dd` dictionary an error will occur.
