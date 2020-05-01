@@ -477,6 +477,7 @@ nav:
       - FRESH: ml/toolkit/fresh.md  
       - Cross validation: ml/toolkit/xval.md
       - Clustering:
+        - Overview: ml/toolkit/clustering/index.md
         - Algorithms: ml/toolkit/clustering/algos.md
         - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
         - Scoring metrics: ml/toolkit/clustering/score.md

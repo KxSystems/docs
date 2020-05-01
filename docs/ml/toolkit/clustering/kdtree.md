@@ -1,29 +1,36 @@
 ---
 author: Deanna Morgan
 date: May 2019
-keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure
+keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure, kdtree, k-dimensional tree
 ---
 
 # <i class="fas fa-share-alt"></i> K-D Tree
 
-<i class="fab fa-github"></i>
-[KxSystems/ml/clust/kdtree.q](https://github.com/kxsystems/ml/clust/kdtree.q)
-
-A k-d tree (k-dimensional tree) is a special case of a binary search tree with constraints applied. It is a data structure commonly used in computer science to organize data points in k-dimensional space. Each leaf node in the tree represents a k-dimensional point, while each non-leaf node generates a splitting hyperplane that divides the surrounding space.
+A k-d tree (k-dimensional) tree is a special case of a binary search tree with constraints applied. It is a data structure commonly used in computer science to organize data points in k-dimensional space. Each leaf node in the tree represents a k-dimensional point, while each non-leaf node generates a splitting hyperplane which divides the surrounding space.
 
 The median of a dataset is used as the root node of the tree, with the root splitting dimension chosen to reflect the axis with highest variance. At the root node, the dataset is split in two. This process of finding the axis with the widest spread and splitting the remaining data then repeats recursively throughout the tree until a leaf is reached. Leaves can contain more than one data point depending on the construction of the tree.
 
 The placement of each node in the tree is determined by whether the node is less than (to the left) or greater than (to the right) of the proceeding node value.
 
-## Build k-d tree
+Within this toolkit a number of functions are provided to deal with k-d trees
 
-### `.ml.clust.kd.newtree`
+```txt
+.ml.clust.kd - k-d tree functions
+  .newtree       Build a k-d tree
+  .nn            Find the nearest neighbouring cluster to a point
+  .findleaf      Find the leaf node to which a datapoint belongs  
+``` 
 
-_Build tree with median data point as root and remaining points subsequently added_
+<i class="fab fa-github"></i>
+[KxSystems/ml/clust/kdtree.q](https://github.com/kxsystems/ml/clust/kdtree.q)
+
+## `.ml.clust.kd.newtree`
+
+_Build tree with the median data point as root subsequently adding remaining points_
 
 Syntax: `.ml.clust.kd.newtree[data;leafsz]`
 
--   `data` is the data points in a horizontal matrix format
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `leafsz` is the minimum number of data points contained within each leaf of the tree. 
 
 returns a k-d tree table with the following columns
@@ -65,16 +72,14 @@ leaf left self parent children axis midval  idxs
 	The value of `leafsz` can affect the speed when searching for nearest neighbours
 
 
-## Find the nearest neighouring point
-
-### `.ml.clust.kd.nn`
+## `.ml.clust.kd.nn`
 
 _Find the nearest neighbouring cluster to a data point, returning the index and distance of the nearest cluster_
 
 Syntax: `.ml.clust.kd.nn[tree;data;df;xidxs;pt]`
 
 -   `tree` is a k-d tree
--   `data` is the data points within the tree in a horizontal matrix format
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `df` is the distance function: `e2dist` `edist` `mdist`
 -   `xidxs` are the indices in the tree that are not to be chosen as the nearest neighbour of the point ( `()` is used if any point can be chosen)
 -   `pt` is the floating data point to be searched
@@ -100,9 +105,7 @@ closestPoint| 3
 closestDist | 9.4059
 ```
 
-## Find leaf where point belongs in tree
-
-### `.ml.clust.kd.findleaf`
+## `.ml.clust.kd.findleaf`
 
 _Search the tree and find the index of the leaf that each datapoint belongs to_
 
