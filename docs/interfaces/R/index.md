@@ -1,8 +1,8 @@
 ---
 title: Using R with kdb+ – Interfaces – kdb+ and q documentation
 description: How to enable R to connect to kdb+ and extract data; embed R inside q and invoke R routines; enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely; and enable q to load the R maths library and invoke R math routines locally.
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: interface, kdb+, library, q, r
-hero: :fontawesome-brands-superpowers: Fusion for Kdb+
 ---
 # :fontawesome-brands-r-project: Using R with kdb+
 

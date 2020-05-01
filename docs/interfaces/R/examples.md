@@ -2,7 +2,7 @@
 title: Examples of using R from q
 description: Examples showing the use of the Fusion interfaces between R and q
 keywords: interface, kdb+, library, q, r
-hero: :fontawesome-brands-superpowers: Fusion for Kdb+
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # :fontawesome-brands-r-project: Examples using rkdb/embedR
 

@@ -108,14 +108,9 @@ Kdb+, from [Kx](https://kx.com), is
 :fontawesome-solid-comment-medical:
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 
-!!! tip "Using this site locally"
-
-    You can download a [static HTML copy of this site](https://code.kx.com/site.zip) for use locally. 
-    (It uses scripts from the Web so needs Net access or a browser cache to render correctly.)
-
-    The source code for this site is on GitHub at 
-    :fontawesome-brands-github:
-    [KxSystems/docs](https://github.com/kxsystems/docs/). 
+The source code for this site is on GitHub at 
+:fontawesome-brands-github:
+[KxSystems/docs](https://github.com/kxsystems/docs/). 
 
 !!! info "[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)"
     

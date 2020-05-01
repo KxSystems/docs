@@ -3,6 +3,7 @@ title: Guide for using Kafka with kdb+
 author: Conor McCarthy
 description: Lists functions available for use within the Kafka API for kdb+ and gives limitations as well as examples of each being used 
 date: September 2019
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 keywords: broker, consumer, kafka, producer, publish, subscribe, subscription, topic
 ---
 # <i class="fa fa-share-alt"></i> User guide 

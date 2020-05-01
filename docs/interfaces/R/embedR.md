@@ -3,6 +3,7 @@ title: embedR, an interface for calling R from q
 author: Conor McCarthy
 date: September 2019
 description: embedR is an interface that allows the R programming language to be invoked by q programs
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: interface, kdb+, q, r, 
 ---
 # embedR, an interface for calling R from q

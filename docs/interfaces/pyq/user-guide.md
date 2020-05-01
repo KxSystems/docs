@@ -1,7 +1,7 @@
 ---
 title: PyQ user guide – Interfaces – kdb+ and q documentation
 description: PyQ lets you enjoy the power of kdb+ in a Python environment.
-hero: :fontawesome-brands-superpowers: Fusion for Kdb+ / PyQ
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
 ---

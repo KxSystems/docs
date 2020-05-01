@@ -1,7 +1,7 @@
 ---
 title: Kdb+ on Google Cloud Platform Marketplace – Cloud – kdb+ and q documentation
 description: Howto deploy kdb+ on Google Cloud Platform Marketplace
-hero: :fontawesome-solid-cloud: Cloud
+hero: <i class="fas fa-cloud"></i> Cloud
 author: Glenn Wright
 keywords: cloud, gcpm, google, google cloud platform marketplace, kdb+
 ---
