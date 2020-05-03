@@ -22,6 +22,9 @@ In order to run the examples provided with this interface you will need a MQTT b
 
 This interface exposes a number of functions allowing a kdb+ process to interact with a MQTT broker, these functions allow connection, publishing, subscription and unsubscription to topics and are defined as follows:
 
+!!!Note
+        The callbacks implemented within this API to handle disconnections and the sending/receipt of messages are minimal implementations and can be overwritten by the user to tailor to the messages being sent to or received from the broker.
+
 ### `.mqtt.conn`
 
 _Connect to a mosquitto host_
@@ -92,9 +95,6 @@ q).mqtt.conn[`$"tcp://localhost:1883";`rcv]
 q).mqtt.sub[`topic1]
 (`msgrcvd;"topic1";"This is a test message")
 ```
-
-!!!note
-	The callbacks implemented within this API are minimal implementations and can be overwritten by the user to tailor to the messages being received or sent through the broker.
 
 ### `.mqtt.unsub`
 
