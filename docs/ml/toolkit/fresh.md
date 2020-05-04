@@ -7,9 +7,6 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 ---
 # <i class="fas fa-share-alt"></i> FRESH: a feature-extraction and feature-significance toolkit
 
-
-
-
 <i class="fab fa-github"></i>
 [KxSystems/ml](https://github.com/kxsystems/ml)
 
