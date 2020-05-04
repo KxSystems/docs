@@ -23,6 +23,7 @@ The following are the models provided within this library
   // Connectivity-based models
   .cure               Implementation of the CURE algorithm
   .hc                 Implemenation of hierarchical clustering
+  .dgram2clt          Conversion of dendrogram to clusters for hierarchical
 
   // Density-based models
   .dbscan             Implementation of density-based 
@@ -157,38 +158,62 @@ q).ml.clust.cure[d;`mdist;3;5;0.5]
 
 _Cluster data using hierarchical methods_
 
-Syntax: `.ml.clust.hc[data;df;lf;k]`
+Syntax: `.ml.clust.hc[data;df;lf]`
 
 Where
 
 -   `data` is the data points in a horizontal matrix format
 -   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
 -   `lf` is the linkage function as a symbol: `single`  `complete` `average` `centroid` `ward`
--   `k` is the number of clusters
 
-returns a list indicating the cluster each data point belongs to
+returns a dendrogram table
 
 ```q
 q)show d:2 10#20?5.
-4.608218 0.9047679 3.217318 1.453547  0.3673904 1.579763 ...
-1.428995 3.342362  4.566516 0.7426785 2.428773  3.561801 ...
-q).ml.clust.hc[d;`e2dist;`single;3]
-0 1 2 1 1 1 1 0 1 1
-q).ml.clust.hc[d;`mdist;`complete;3]
-0 1 2 0 1 1 0 0 0 1
-q).ml.clust.hc[d;`edist;`average;3]
-0 1 2 1 1 1 1 0 1 1
-q).ml.clust.hc[d;`mdist;`centroid;3]
-0 1 2 0 1 1 0 0 0 1
-q).ml.clust.hc[d;`e2dist;`ward;3]
-0 1 1 2 1 1 2 0 2 1
-q).ml.clust.hc[d;`mdist;`ward;3]
+3.916843 2.049781 3.054409 2.488246  2.043772 2.248655..
+3.101507 4.663158 1.373533 0.2876258 1.280329 1.155054..
+q)show r1:.ml.clust.hc[d;`e2dist;`single]
+i1 i2 dist       n
+-------------------
+4  5  0.05767075 2
+2  10 0.6969718  3
+8  9  0.7555276  2
+11 3  0.8098354  4
+13 7  1.012247   5
+1  12 1.266236   3
+0  14 3.729687   6
+16 6  4.609894   7
+17 15 5.924676   10
+q)show r2:.ml.clust.hc[d;`mdist;`complete]
+i1 i2 dist      n
+------------------
+4  5  0.3301577 2
+2  10 1.103841  3
+8  9  1.216588  2
+3  7  1.310734  2
+11 13 2.29873   5
+1  12 2.620724  3
+14 6  3.922137  6
+0  15 4.177629  4
+17 16 6.512546  10
+q).ml.clust.hc[d;`mdist;`ward]
 'ward must be used with e2dist
-  [0]  .ml.clust.hc[d;3;`mdist;`ward;()]
-
-       ^
 ```
 
+!!! note
+    The dendrogram returned can be passed to a mixture of matplotlib and scipy functions which plot the dendrogram structure represented in the table. An example is shown below.
+    
+    ```q
+    q)plt:.p.import`matplotlib.pyplot
+    q).p.import[`scipy.cluster][`:hierarchy][`:dendrogram]flip value flip r1;
+    q)plt[`:title]"Dendrogram";
+    q)plt[`:xlabel]"Data Points";
+    q)plt[`:ylabel]"Distance";
+    q)plt[`:show][];
+    ```
+    
+    ![dendro_plot](img/dendrogram_example.png)    
+    
 !!! warning
         * Ward linkage only works in conjunction with euclidean squared distances (`e2dist`). If the user tries to input a different distance metric an error will result, as shown above.
 
