@@ -119,20 +119,19 @@ Two connectivity-based models are provided with this library
 
 	CURE clustering is a technique used to deal with datasets containing outliers and clusters of varying sizes and shapes. Each cluster is represented by a specified number of representative points. These points are chosen by taking the the most scattered points in each cluster and shrinking them towards the cluster centre by a fixed amount, known as the compression.
 
-	In the implementation below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available. Instructions to build the C code can be found [here](https://github.com/Dianeod/ml-1/blob/cluster/clust/README.md) on the github repo.
-
 2. **Hierarchical Clustering**:
 
 	The implementation of hierarchical clustering described below groups data using an agglomerative/bottom-up approach which initially treats all data points as individual clusters.
 
 	There are 5 possible linkages in hierarchical clustering: single, complete, average, centroid and ward. Euclidean or manhattan distances can be used for with each linkage, except for ward which only works with euclidean squared distances. Additionally, a k-d tree has been used for the single and centroid implementations.
 	
+	In the implementations of both functions below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available (See [kdtree](kdtree.md)). Instructions to build the C code can be found [here](https://github.com/Dianeod/ml-1/blob/cluster/clust/README.md) on the github repo.
 
-### `.ml.clust.ccure`
+### `.ml.clust.cure`
 
 _Cluster data using representative points_
 
-Syntax: `.ml.clust.ccure[data;df;k;n;c]`
+Syntax: `.ml.clust.cure[data;df;k;n;c]`
 
 Where
 
@@ -146,14 +145,33 @@ returns a list indicating the cluster each data point belongs to
 
 ```q
 q)show d:2 10#20?20.
-8.24634 19.75569 7.734706 14.53562 8.093092 16.71013 ..
-18.0615 15.50058 7.739636 12.64823 8.657069 4.861672 ..
-q).ml.clust.cure[d;`e2dist;3;2;0]
-0 1 1 1 1 1 1 2 1 1
-q).ml.clust.cure[d;`mdist;3;5;0.5]
-0 1 2 2 2 2 2 2 2 2
+15.66737 8.199122 12.21763 9.952983 8.175089 8.994621 0.2784152 14.29756 3.89..
+12.40603 18.65263 5.494133 1.150503 5.121315 4.620216 1.744803  2.048864 17.3..
+q).ml.clust.cure[d;`e2dist;2;0]
+i1 i2 dist      n 
+------------------
+4  5  0.9227319 2 
+2  10 11.15155  3 
+8  9  12.08844  2 
+11 7  16.19596  4 
+13 3  18.92826  5 
+1  12 20.25978  3 
+14 6  73.7583   6 
+0  15 94.79481  4 
+17 16 109.1472  10
+q).ml.clust.cure[d;`mdist;5;0.5]
+i1 i2 dist     n 
+-----------------
+4  5  1.320631 2 
+2  10 4.176539 3 
+11 3  4.256665 4 
+8  9  4.866351 2 
+12 7  4.978184 5 
+1  13 6.833131 3 
+14 6  10.73582 6 
+0  16 13.04284 7 
+17 15 14.39012 10
 ```
-
 ### `.ml.clust.hc`
 
 _Cluster data using hierarchical methods_
@@ -162,8 +180,8 @@ Syntax: `.ml.clust.hc[data;df;lf]`
 
 Where
 
--   `data` is the data points in a horizontal matrix format
--   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Disance Metrics))
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
+-   `df` is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Distance Metrics))
 -   `lf` is the linkage function as a symbol: `single`  `complete` `average` `centroid` `ward`
 
 returns a dendrogram table
@@ -172,7 +190,7 @@ returns a dendrogram table
 q)show d:2 10#20?5.
 3.916843 2.049781 3.054409 2.488246  2.043772 2.248655..
 3.101507 4.663158 1.373533 0.2876258 1.280329 1.155054..
-q)show r1:.ml.clust.hc[d;`e2dist;`single]
+q).ml.clust.hc[d;`e2dist;`single]
 i1 i2 dist       n
 -------------------
 4  5  0.05767075 2
@@ -184,7 +202,7 @@ i1 i2 dist       n
 0  14 3.729687   6
 16 6  4.609894   7
 17 15 5.924676   10
-q)show r2:.ml.clust.hc[d;`mdist;`complete]
+q).ml.clust.hc[d;`mdist;`complete]
 i1 i2 dist      n
 ------------------
 4  5  0.3301577 2
@@ -204,11 +222,17 @@ q).ml.clust.hc[d;`mdist;`ward]
     The dendrogram returned can be passed to a mixture of matplotlib and scipy functions which plot the dendrogram structure represented in the table. An example is shown below.
     
     ```q
+
     q)plt:.p.import`matplotlib.pyplot
+
     q).p.import[`scipy.cluster][`:hierarchy][`:dendrogram]flip value flip r1;
+
     q)plt[`:title]"Dendrogram";
+
     q)plt[`:xlabel]"Data Points";
+
     q)plt[`:ylabel]"Distance";
+
     q)plt[`:show][];
     ```
     
@@ -219,6 +243,43 @@ q).ml.clust.hc[d;`mdist;`ward]
 
 	* If the user inputs a linkage function which is not contained within the `.ml.clust.i.ld` dictionary an error will occur.
 
+### `.ml.clust.dgram2clt`
+
+_Convert dendrogram table produced from hierarchial clustetering to list of clusters_
+
+Syntax: `.ml.clust.dgram2clt[t;cutcrut;cutval]
+
+Where
+
+- `t` is the dendrogram table produced by the hierarchial clustering functions
+- `cutcrit` is the cutting criteria when creating cluster groups (`dist or `k)
+- `cutval` is the cutting value of `cutcrit` 
+
+returns a list indicating the cluster each data point belongs to
+
+```q
+q)show d:2 10#20?5.
+2.353941 3.173358  4.836199 1.153192 4.749875 2.195405  2.879526  2.959502 4...
+1.957715 0.4061773 4.683752 1.391061 1.196171 0.7540665 0.7836585 4.8925   3...
+q)show dgram:.ml.clust.hc[d;`e2dist;`single]
+i1 i2 dist      n 
+------------------
+1  6  0.2288295 2 
+10 5  0.4688969 3 
+7  9  1.058115  2 
+0  11 1.473903  4 
+13 3  1.491969  5 
+2  8  1.704984  2 
+14 4  3.109495  6 
+15 12 3.520892  4 
+16 17 5.667062  10
+// Split the dendrogram into 2 clusters
+q).ml.clust.dgram2clt[dgram;`k;2]
+0 0 1 0 0 0 0 1 1 1
+// Use 3 as the cutting value to split clusters
+.ml.clust.dgram2clt[dgram;`dist;3]
+0 0 1 0 3 0 0 2 1 2
+```
 
 ## Density-based models
 
