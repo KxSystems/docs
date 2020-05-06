@@ -125,8 +125,8 @@ Syntax: `.ml.confdict[x;y;z]`
 
 Where
 
--   `x` is a vector of (binary) predicted labels
--   `y` is a vector of (binary) true labels
+-   `x` is a vector of (binary or multi-class) predicted labels
+-   `y` is a vector of (binary or multi-class) true labels
 -   `z` is an atom denoting the positive class label
 
 returns a dictionary giving the count of true positives (tp), true negatives (tn), false positives (fp) and false negatives (fn).
@@ -149,6 +149,33 @@ fn| 19
 tp| 3
 ```
 
+## `.ml.confmat`
+
+_Confusion matrix_
+
+Syntax: `.ml.confmat[x;y]`
+
+Where
+
+-   `x` is a vector of (binary or multi-class) predicted labels
+-   `y` is a vector of (binary or multi-class) true labels
+
+returns a confusion matrix.
+
+```q 
+q).ml.confmat[100?"AB";100?"AB"]        / non-numeric inputs
+A| 22 30
+B| 22 26
+q).ml.confmat[100?0b;100?0b]            / boolean input
+0| 20 26
+1| 26 28
+q).ml.confmat[100?5;100?5]              / supports multiclass by converting to boolean representation
+0| 5 6 2 2 1
+1| 1 6 5 4 3
+2| 3 5 2 4 4
+3| 6 5 9 2 8
+4| 3 5 4 2 3
+```
 
 ## `.ml.corrmat`
 
