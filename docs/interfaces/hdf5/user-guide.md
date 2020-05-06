@@ -13,85 +13,11 @@ As outlined in the overview for this API, the kdb+/HDF5 interface is a wrapper f
 <i class="fab fa-github"></i>
 [KxSystems/hdf5-kdb](https://github.com/KxSystems/hdf5-kdb)
 
-## Type Mapping
-
-Mapping of kdb+ datatypes to HDF5 types and vice-versa where possible maps directly to an equivalent type. In cases where a direct mapping is not possible the kdb+ types will be mapped to the closest HDF5 native type possible.
-
-In cases where a direct mapping is not possible an attribute `kdb_datatype` will be associated with the dataset and outline the type of the original kdb+ data. This allows the mapping `q -> HDF5 -> q`.
-
-The following outlines the mapping which takes place between kdb+ and HDF5 datatypes. Where there is no exact mapping available between the two types every effort has been made to provide the most appropriate conversion possible.
-
-### kdb+ to HDF5
-
-|            kdb+ type|            HDF5 type|     kdb_datatype|
-|--------------------:|--------------------:|----------------:|
-|         boolean (1h)|       H5T_NATIVE_INT|        "boolean"|
-|            guid (2h)|             H5T_C_S1|                 |
-|            byte (4h)|     H5T_NATIVE_UCHAR|                 |
-|           short (5h)|     H5T_NATIVE_SHORT|                 |
-|             int (6h)|       H5T_NATIVE_INT|                 |
-|            long (7h)|      H5T_NATIVE_LONG|                 |
-|            real (8h)|      H5T_NATIVE_REAL|                 |
-|           float (9h)|    H5T_NATIVE_DOUBLE|                 |
-|           char (10h)|             H5T_C_S1|                 |
-|         symbol (11h)|             H5T_C_S1|                 |
-|      timestamp (12h)|      H5T_NATIVE_LONG|      "timestamp"|
-|          month (13h)|       H5T_NATIVE_INT|          "month"|
-|           date (14h)|       H5T_NATIVE_INT|           "date"|
-|       datetime (15h)|    H5T_NATIVE_DOUBLE|       "datetime"|
-|       timespan (16h)|      H5T_NATIVE_LONG|       "timespan"|
-|         minute (17h)|       H5T_NATIVE_INT|         "minute"|
-|         second (18h)|       H5T_NATIVE_INT|         "second"|
-|           time (19h)|       H5T_NATIVE_INT|           "time"|
-|          table (98h)|                     |          "table"|
-|     dictionary (99h)|                     |           "dict"|
-
-#### Tables and Dictionaries
-
-While HDF5 has the concept of tables and compound datasets. Writing to these types relies on an understanding of the underlying structure of the table or compound dataset which cannot be defined dynamically easily, this poses a challenge when writing to such datatypes. As can be seen [here](https://www.pytables.org/usersguide/tutorials.html#declaring-a-column-descriptor), the python pytables module handles this by defining a class similar to the C struct. Such a architecture is scalable diverse and unknown datasets, as such a different data writing architecture has been implemented summarized as follows
-
-1. Tables and dictionaries are not written to datasets but instead to groups named by the user.
-2. These groups have an associated attribute 'kdb_datatype' which indicates if they are a dictionary or table
-3. An attribute 'kdb_cols'/'kdb_keys' is associated with the group indicating the ordering and naming of columns and keys depending on use case
-4. Each key/column has an associated dataset within this group, if applicable these datasets will have an attribute describing the kdb+ type to which they are associated 
-5. Recursive writes for nested dictionaries or tables within tables etc will also be completed
-
-The following images show how such a structure is formatted on write for both a table and dictionary
-
-![Figure 1](../img/hdf5_kdb_table.png)
-
-![Figure 2](../img/hdf5_kdb_dict.png)
-
-### HDF5 to kdb+
-
-The following outlines how HDF5 native datatypes are mapped to kdb+ datatypes.
-
-|      HDF5 type/class|            kdb+ type|
-|--------------------:|--------------------:|
-|     H5T_NATIVE_SHORT|            short(5h)|
-|       H5T_NATIVE_INT|              int(6h)|
-|      H5T_NATIVE_LONG|             long(7h)|
-|      H5T_NATIVE_REAL|             real(8h)|
-|    H5T_NATIVE_DOUBLE|            float(9h)|
-|     H5T_NATIVE_UCHAR|             byte(4h)|
-|    H5T_NATIVE_USHORT|              int(6h)|
-|      H5T_NATIVE_UINT|             long(7h)|
-|     H5T_NATIVE_ULONG|             long(7h)|
-|        H5T_NATIVE_B8|             byte(4h)|
-|             H5T_C_S1|            char(10h)|
-|         H5T_COMPOUND|           table(98h)|
-
-In cases where the associated kdb+ type is included in the attribute 'kdb_datatype' the dataset will me mapped to the correct kdb+ type. Otherwise they will be returned as the underlying kdb representation.
-
-## Functionality
-
-The following functions are those exposed within the `.hdf5` namespace allowing users to convert data between the HDF5 data format and kdb+.
+The following functions are those exposed within the `.hdf5` namespace allowing users to convert data between the HDF5 data format and kdb+ and manipulate HDF5 files.
 
 ```txt
 HDF5 interface functionality
   // Creation functions
-  .hdf5.createAttr             Create an empty typed and dimensioned attribute
-  .hdf5.createDataset          Create an empty typed and dimensioned dataset
   .hdf5.createFile             Create a named hdf5 file
  
   // Writing functions
@@ -113,13 +39,12 @@ HDF5 interface functionality
 
   // Utility functions
   .hdf5.copyObject             Copy a group or dataset to another file
-  .hdf5.datasetInfo            Information about type, number of dimensions and dimensionality
   .hdf5.dataSize               Size of a HDF5 dataset in MB
+  .hdf5.errorOn                Turn the HDF5 C api error signalling on
+  .hdf5.errorOff               Turn the HDF5 C api error signalling off (default)
   .hdf5.fileSize               Size of a HDF5 in MB
   .hdf5.getAttrShape           Dimensionality of an attribute
-  .hdf5.getAttrPoints          Number of points associated with an attribute
   .hdf5.getDataShape           Dimensionality of a dataset
-  .hdf5.getDataPoints          Number of points associated with a dataset
   .hdf5.gc                     Run garbage collect on free HDF5 lists of all types
   .hdf5.isAttr                 Does this attribute exist
   .hdf5.ishdf5                 Is a file of HDF5 format
@@ -133,62 +58,7 @@ For simplicity in each of the examples below it should be assumed that unless ot
 
 ## Creation functions
 
-The following functions relate to the creation of files, datasets and attributes.
-
-### `.hdf5.createAttr`
-
-_Create an attribute associated with an existing dataset/group_
-
-Syntax: `.hdf5.createAttr[fname;oname;aname;dims;typ]`
-
-Where
-
--   `fname` name of a HDF5 file as a symbol/char string
--   `oname` name of the object (group/datset) to which the attribute is linked
--   `aname` name of the attribute being created
--   `dims`  dimensionality of the attribute as a list of integers
--   `typ`   type of the dataset "f"/"i" ...
-
-returns null on successful addition of attribute, failure to execute will result in display of appropriate error. 
-
-```q
-// File does not exist
-q).hdf5.createAttr["test.h5";"obj/";"attr name";4 5i;"f"]
-'file does not exist
-
-// Dataset/Group does not exist
-q).hdf5.createAttr["test1.h5";"obj/";"attr name";4 5i;"f"]
-'dataset/group which attribute is to be written to does not exist
-
-// Successful execution
-q).hdf5.createAttr["test1.h5";"obj1/";"attr name";4 5i;"f"]
-```
-
-### `.hdf5.createDataset`
-
-_Create an typed and dimensioned dataset_
-
-Syntax: `.hdf5.createDataset[fname;oname;dims;typ]`
-
-Where
-
--   `fname` name of a HDF5 file as a symbol/char string
--   `oname` name of the dataset to be created
--   `dims`  dimensionality of the dataset as a list of integers
--   `typ`   type of the dataset "f"/"i" ...
-
-returns null on successful creation of the dataset.
-
-```q
-// Create both file and dataset 
-q).hdf5.createDataset["test.h5";"dset";4 5i;"f"]
-// Create a dataset within a defined group
-q).hdf5.createDataset["test.h5";"G1/G2/dset";1 5i;"i"]
-```
-
-!!!Note
-	If the file does not exist it will be created, in this case the dataset can **ONLY** be written to the root directory of the file
-
+The following function relates to the creation of files.
 
 ### `.hdf5.createFile`
 
@@ -260,23 +130,19 @@ Where
 
 returns null on successful writing of data to dataset. Failure to write to the dataset will result in an appropriate error
 
-!!!Note
-        The function `.hdf5.createDataset` can be used to create a dataset prior to writing. Use of this function in case a where a file or dataset had not been previously been created will create the file and the dataset, appropriately dimensioned and typed based on the provided dataset. It should be noted that if the file did not exist the data can only be written to the root location.
-
 ```q
 // Write numeric dataset
 q).hdf5.writeData["test.h5";"dset";10 2#20?10]
 
-// Create a dataset to hold a list of strings
+// Write string data
 q).hdf5.writeData["test.h5";"strdset";enlist "test string"]
 
-// File does not exist
-q).hdf5.writeAttr["test1.h5";"dset";"temperature";10 2#20?1f]
-'file does not exist
+// Write table of data
+q).hdf5.writeData["test.h5";"table";([]100?1f;100?1f;100?0b;100?0t;100?`4)]
 
-// Dataset/group does not exist
-q).hdf5.writeAttr["test.h5";"dset1";"temperature";10 2#20?1f]
-'dataset/group you are attempting to write attribute to does not exist
+// Write dictionary of data
+q).hdf5.writeData["test.h5";"dict";`x1`x2`x3!(til 10;5?`4;100?0p)]
+
 ```
 
 ## Read Functions
@@ -299,8 +165,12 @@ returns a kdb+ dataset containing the data associated with the named HDF5 attrib
 
 ```q
 // Read numeric data from attribute
-q).hdf5.readAttr["test.h5";"dset";"Temperatures"]
-10.0696 10.45295 10.97325 12.04377 12.04978 12.24866 12.48825 13.05441 13.574..
+q).hdf5.readAttr["test.h5";"dset";"temperature"]
+0.08123546 0.9367503 
+0.2782122  0.2392341 
+0.1508133  0.1567317 
+0.9785     0.7043314 
+0.9441671  0.7833686 
 
 // Read string data from attribute 
 q).hdf5.readAttr["test.h5";"dset";"Description"]
@@ -325,22 +195,33 @@ returns a kdb+ dataset containing the data associated with a HDF5 dataset
 ```q
 // Read numeric data
 q).hdf5.readData["test.h5";"dset"]
-0.4707883 0.6346716 
-0.9672398 0.2306385 
-0.949975  0.439081  
-0.5759051 0.5919004 
-0.8481567 0.389056  
-0.391543  0.08123546
-0.9367503 0.2782122 
-0.2392341 0.1508133 
-0.1567317 0.9785    
-0.7043314 0.9441671
+8 1
+9 5
+4 6
+6 1
+8 5
 
 // Read string data
 q).hdf5.readData["test.h5";"strdset"]
 "Value 1 = 0.01"
 "Value 2 = 0.02"
 "Value 3 = 0.04"
+
+// Read table
+q).hdf5.readData["test.h5";"table"]
+x          x1         x2 x3           x4  
+------------------------------------------
+0.2400771  0.7263287  1  08:12:43.345 apah
+0.1039355  0.4886361  1  04:42:08.234 mlfb
+0.2353326  0.6535973  0  17:54:05.495 fmbf
+0.6423479  0.02810674 0  16:58:19.059 iibh
+0.5778177  0.4449053  1  12:47:14.478 fpam
+
+// Read dictionary
+q).hdf5.readData["test.h5";"dict"]
+x1| 0 1 2 3 4 5 6 7 8 9
+x2| `nbmb`gbdn`ijca`khjj`gncf
+x3| 2003.01.16D01:51:45.083828416 2002.11.25D05:50:34.964843088 2000.09.19D10.
 ```
 
 ## Linking Functions
@@ -545,26 +426,43 @@ q).hdf5.dataSize["test.h5";"dset"]
 8f
 ```
 
+### `.hdf5.errorOff`
 
-### `.hdf5.datasetInfo`
+_Turn off printing of errors from HDF5 C api_
 
-_Relevant information about a dataset_
+Syntax: `.hdf5.errorOff[]`
 
-Syntax: `.hdf5.datasetInfo[fname;oname]`
-
-Where
-
--   `fname` HDF5 file containing the dataset of interest
--   `oname` Dataset about which information is to be displayed
-
-returns a dictionary outlining the type, rank and dimensionality of the dataset
-
+returns null on successful execution
 ```q
-q).hdf5.datasetInfo["test.h5";"dset"]
-type | `float
-ndims| 2i
-dims | 10 2i
+// Failing function called with HDF5 error ons
+q).hdf5.createFile["test.h5"]
+HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
+  #000: H5F.c line 444 in H5Fcreate(): unable to create file
+    major: File accessibilty
+    minor: Unable to open file
+  #001: H5Fint.c line 1558 in H5F_open(): unable to open file
+    major: File accessibilty
+    minor: Unable to open file
+  #002: H5FD.c line 734 in H5FD_open(): open failed
+    major: Virtual File Layer
+    minor: Unable to initialize object
+  #003: H5FDsec2.c line 346 in H5FD_sec2_open(): unable to open file: name = 'test.h5', errno = 17, error message = 'File exists', flags = 15, o_flags = a02
+    major: File accessibilty
+    minor: Unable to open file
+'error creating file
+  [0]  .hdf5.createFile["test.h5"]
+
+// Turn off errors and repeat the above function call
+q).hdf5.errorOff[]
+q).hdf5.createFile["test.h5"]
+'error creating file
+  [0]  .hdf5.createFile["test.h5"]
 ```
+
+!!!Note
+	This interface by default is initialized HDF5 erroring turned off.
+
+### `.hdf5.errorOn`
 
 ### `.hdf5.gc`
 
@@ -598,23 +496,6 @@ q).hdf5.getAttrShape["test.h5";"dset";"Temperatures"]
 1 10
 ```
 
-### `.hdf5.getAttrPoints`
-
-_Get the total number of data points in an attribute dataset_
-
-Syntax: `.hdf5.getAttrPoints[fname;oname;aname]`
-
--   `fname` is the HDF5 file containing the attribute
--   `oname` object to which the attribute is associated
--   `aname` attribute name of interest
-
-returns the number of data points associated with an attribute
-
-```q
-q).hdf5.getAttrPoints["test.h5";"dset";"Temperatures"]
-10
-```
-
 ### `.hdf5.getDataShape`
 
 _Get the shape of a dataset_
@@ -631,24 +512,6 @@ returns an numerical list indicating the shape of the dataset
 ```q
 q).hdf5.getDataShape["test.h5";"dset"]
 2 4
-```
-
-### `.hdf5.getDataPoints`
-
-_Get the total number of data points in an attribute dataset_
-
-Syntax: `.hdf5.getDataPoints[fname;oname]`
-
-Where
-
--   `fname` is the HDF5 file containing the dataset
--   `oname` name of the dataset of interest 
-
-returns the number of data points associated with a dataset
-
-```q
-q).hdf5.getDataPoints["test.h5";"dset"]
-20
 ```
 
 ### `.hdf5.isAttr`

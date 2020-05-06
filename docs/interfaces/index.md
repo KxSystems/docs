@@ -39,6 +39,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [<i class="fab fa-superpowers"></i>](../ml/ "Machine learning")
     </td></tr>
 <tr><td>R</td><td>[Using R with kdb+](r/index.md)</td>
+<tr><td>Solace</td><td>[Interface to Solace PubSub+ broker](solace/index.md) ==new==</td></tr>
 </tr>
 </table>
 

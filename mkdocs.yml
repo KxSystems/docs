@@ -393,7 +393,9 @@ nav:
       - FFI: interfaces/ffi.md
       - HDF5:
         - Overview: interfaces/hdf5/index.md
+        - Type mapping: interfaces/hdf5/hdf5-types.md
         - User guide: interfaces/hdf5/user-guide.md
+        - Examples: interfaces/hdf5/examples.md
       - Java: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
       - Kafka:
