@@ -109,7 +109,7 @@ q).ml.clust.kmeans[d;`mdist;3;10;1b]
 ```
 
 !!! note
-      The distance metrics which can be used with the K-Means algorithm are the euclidean squared distances (`e2dist`,`edist`). The use of any other distance metric will result in a error being flagged.
+      The distance metrics which can be used with the K-Means algorithm are the Euclidean distances (`e2dist`,`edist`). The use of any other distance metric will result in a error being flagged.
 
 ## Connectivity-based models
 
@@ -123,9 +123,9 @@ Two connectivity-based models are provided with this library
 
 	The implementation of hierarchical clustering described below groups data using an agglomerative/bottom-up approach which initially treats all data points as individual clusters.
 
-	There are 5 possible linkages in hierarchical clustering: single, complete, average, centroid and ward. Euclidean or manhattan distances can be used for with each linkage, except for ward which only works with euclidean squared distances. Additionally, a k-d tree has been used for the single and centroid implementations.
+	There are 5 possible linkages in hierarchical clustering: single, complete, average, centroid and ward. Euclidean or manhattan distances can be used for with each linkage, except for ward which only works with Euclidean squared distances. Additionally, a k-d tree has been used for the single and centroid implementations.
 	
-	In the implementations of both functions below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available (See [kdtree](kdtree.md)). Instructions to build the C code can be found [here](https://github.com/Dianeod/ml-1/blob/cluster/clust/README.md) on the github repo.
+	In the implementations of both functions below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available (See [kdtree](kdtree.md)). Instructions to build the C code can be found [here](https://github.com/kxsystems/ml/clust/README.md) on the github repo.
 
 ### `.ml.clust.cure`
 
@@ -239,21 +239,20 @@ q).ml.clust.hc[d;`mdist;`ward]
     ![dendro_plot](img/dendrogram_example.png)    
     
 !!! warning
-        * Ward linkage only works in conjunction with euclidean squared distances (`e2dist`). If the user tries to input a different distance metric an error will result, as shown above.
+        * Ward linkage only works in conjunction with Euclidean squared distances (`e2dist`), while centroid linkage only works with Euclidean distances (`e2dist`,`edist`). If the user tries to input a different distance metric an error will result, as shown above.
 
 	* If the user inputs a linkage function which is not contained within the `.ml.clust.i.ld` dictionary an error will occur.
 
-### `.ml.clust.dgram2clt`
+### `.ml.clust.hccutk`
 
-_Convert dendrogram table produced from hierarchial clustetering to list of clusters_
+_Cut dendrogram produced from hierarchical clustetering into k clusters_
 
-Syntax: `.ml.clust.dgram2clt[t;cutcrut;cutval]
+Syntax: `.ml.clust.hccutk[t;kval]`
 
 Where
 
-- `t` is the dendrogram table produced by the hierarchial clustering functions
-- `cutcrit` is the cutting criteria when creating cluster groups (`dist or `k)
-- `cutval` is the cutting value of `cutcrit` 
+- `t` is the dendrogram table produced by the hierarchical clustering functions
+- `kval` is the number of clusters to be produced from cutting the dendrogram
 
 returns a list indicating the cluster each data point belongs to
 
@@ -273,12 +272,43 @@ i1 i2 dist      n
 14 4  3.109495  6 
 15 12 3.520892  4 
 16 17 5.667062  10
-// Split the dendrogram into 2 clusters
-q).ml.clust.dgram2clt[dgram;`k;2]
+// cut the dendrogram into 2 clusters
+q).ml.clust.hccutk[dgram;2]
 0 0 1 0 0 0 0 1 1 1
-// Use 3 as the cutting value to split clusters
-.ml.clust.dgram2clt[dgram;`dist;3]
-0 0 1 0 3 0 0 2 1 2
+```
+
+### `.ml.clust.hccutdist`
+
+_Use a distance threshold to cut dendrogram produced from hierarchical clustetering to a list of clusters_
+
+Syntax: `.ml.clust.hccutdist[t;dthresh]
+
+Where
+
+- `t` is the dendrogram table produced by the hierarchical clustering functions
+- `dthresh` is the distance threshold applied when cutting the dendrogram into clusters
+
+returns a list indicating the cluster each data point belongs to
+
+```q
+q)show d:2 10#20?10.
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096 7.11..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099 2.29..
+q)show dgram:.ml.clust.hc[d;`mdist;`complete]
+i1 i2 dist     n 
+-----------------
+7  9  1.234559 2 
+0  1  2.096755 2 
+2  3  2.214176 2 
+11 5  2.505438 3 
+13 10 3.403836 5 
+12 8  3.40965  3 
+14 6  5.675252 6 
+15 4  6.790642 4 
+16 17 7.93483  10
+// cut dendrogram using a distance threshold of 6
+q).ml.clust.hccutdist[dgram;6]
+1 1 0 0 2 1 1 1 0 1
 ```
 
 ## Density-based models
