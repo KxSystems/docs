@@ -29,28 +29,34 @@ This interface exposes a number of functions allowing a kdb+ process to interact
 
 _Connect to a mosquitto host_
 
-Syntax: `.mqtt.conn[host;nm]`
+Syntax: `.mqtt.conn[host;nm;opts]`
 
 Where
 
 -   `host` is the IP address or hostname of the MQTT broker being connected to as a symbol.
 -   `name` is a symbol denoting the name to be given to the connecting process
+-   `opts` dictionary of connection options to the MQTT broker, for default options use `()!()`
 
 returns a failure notice if connnection to host could not be established otherwise does not return output.
+
+!!!Note
+	At present the `opts` parameter can allow a user to specify a username and password for brokers that require this flexibility. Further options will be added
 
 ```q
 // In this example Mosquitto is not started on the defined host
 q)hst:`$"tcp://localhost:1883"
-q).mqtt.conn[hst;`src]
+q).mqtt.conn[hst;`src;()!()]
 'Failure
 
-// Attempt to connect to a host using an invalid protocol
-q).mqtt.conn[`$"https://localhost:1883";`src]
+// Attempt to connect to a host using an invalid protocol with default options
+q).mqtt.conn[`$"https://localhost:1883";`src;()!()]
 'Invalid protocol scheme
 
-// Mosquitto now started on appropriate host
-q).mqtt.conn[hst;`src]
-q)
+// Mosquitto now started on appropriate host with default options
+q).mqtt.conn[hst;`src;()!()]
+
+// Connect to Mosquitto broker providing username and password
+q).mqtt.conn[hst;`src;`username`password!`myuser`mypass]
 ```
 
 ### `.mqtt.pub`
@@ -64,7 +70,7 @@ Where
 -   `topic` is a symbol denoting the topic that the message is to be sent to
 -   `msg` is a string of the message being sent to the broker
 
-returns a callback to the process stating that the message has been sent to the broker (this can be overwritten by a user).
+returns a callback to the process stating that the message has been sent to the broker.
 
 ```q
 // Connect to the host broker

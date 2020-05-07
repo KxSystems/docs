@@ -22,14 +22,14 @@ Run kdb+ with the supplied `exporter.q` on the host upon which Docker is initial
 The following will expose the metrics on port 8080
 
 ```q
-$q exporter.q -p 8080
+q exporter.q -p 8080
 ```
 
 Next we are required to initialize docker environment containing a single prometheus instance and a grafana dashboard. This accesses the kdb+ exporter from the local machine at port 8080. Please refer to the prometheus docs for using multiple targets and service discovery if wishing to use it for mulitple targets.
 
 Initializing the docker environment varies for Linux/Mac vs Windows as outlined here
 
-**Linux and Mac**
+**Windows and Mac**
 In order to run Prometheus and Grafana, enter the supplied DockerCompose directory and run
 
 ```bash
@@ -44,17 +44,17 @@ When you have finished running the demo, ctrl-c in the running docker-compose an
 docker-compose-down
 ```
 
-**Windows**
+**Linux**
 As above, but run
 
 ```bash
-docker-compose -f docker-compose-win.yml up
+docker-compose -f docker-compose-linux.yml up
 ```
 
 and then the following when you wish to finish with the environment.
 
 ```bash
-docker-compose -f docker-compose-win.yml down
+docker-compose -f docker-compose-linux.yml down
 ```
 
 ### Example Resource Utilization

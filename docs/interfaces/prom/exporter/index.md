@@ -42,7 +42,7 @@ The following are potential use cases for the interface, this is by no means an 
 Within the interface the script `exporter.q` is supplied. This contains a variety of metrics which can be monitored on an associated port. For example to expose the metrics on port 8080 run the following command
 
 ```q
-$q exporter.q -p 8080
+q exporter.q -p 8080
 ```
 
 Once running, you can use your web browser to view the currently exposed statistics on the metrics URL e.g. http://localhost:8080/metrics. The metrics exposed will be the current values from the time at which the URL is requested.
