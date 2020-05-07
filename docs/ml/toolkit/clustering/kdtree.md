@@ -144,4 +144,4 @@ idxs    | 2 3 4
 ```
 
 !!! note
-    Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or C code in their implementations (See instructions [here](https://github.com/dmorgankx/ml/blob/idv/clust/README.md) to build C code). To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `b` is a boolean indicating whether to use the q (1b) or C (0b) code. If the C code is not available, the function will default to q regardless of the input.
+    Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or C code in their implementations (See instructions [here](https://github.com/kxsystems/ml/clust/README.md) to build C code). To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `b` is a boolean indicating whether to use the q (1b) or C (0b) code. If the C code is not available, the function will default to q regardless of the input.
