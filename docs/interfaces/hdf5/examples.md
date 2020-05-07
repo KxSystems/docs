@@ -54,8 +54,10 @@ q).hdf5.writeAttr[fname;dset_name;user_attr;"Alice and Bob"]
 // Add an attribute indicating room temperature
 q)temp_attr:"Temperatures"
 q).hdf5.writeAttr[fname;dset_name;temp_attr;21.7 20.3]
+```
 
 * Create a group to contain tables related to another experiment 
+
 ```q
 // Create a group within the dataset
 q)gname:"experiment2_tables"
@@ -114,7 +116,7 @@ q).hdf5.readData[fname;"experiment_data"]
 5.260983  4.556574   9.517531 5.659605  0.864824  0.8628434 4.824764  3.95274..
 
 // Read the attributes outlining the scientists and temperatures at the time of the experiment
-q).hdf5.readAttr[fname;dset_name;]each (user_attr;temp_attr)
+q).hdf5.readAttr[fname;dset_name;]each(user_attr;temp_attr)
 "Alice and Bob"
 21.7 20.3
 

@@ -23,7 +23,7 @@ In order to run the examples provided with this interface you will need a MQTT b
 This interface exposes a number of functions allowing a kdb+ process to interact with a MQTT broker, these functions allow connection, publishing, subscription and unsubscription to topics and are defined as follows:
 
 !!!Note
-        The callbacks implemented within this API to handle disconnections and the sending/receipt of messages are minimal implementations and can be overwritten by the user to tailor to the messages being sent to or received from the broker.
+        The callbacks implemented within this API to handle disconnections and the sending/receipt of messages are minimal implementations and can be overwritten by the user to tailor to the messages being sent to or received from the broker. An outline of how these can be modified is outlined below.
 
 ### `.mqtt.conn`
 
@@ -33,7 +33,7 @@ Syntax: `.mqtt.conn[host;nm]`
 
 Where
 
--   `host` is the IP address or hostname of the MQTT broker beign connected to as a symbol.
+-   `host` is the IP address or hostname of the MQTT broker being connected to as a symbol.
 -   `name` is a symbol denoting the name to be given to the connecting process
 
 returns a failure notice if connnection to host could not be established otherwise does not return output.
@@ -120,6 +120,88 @@ q).mqtt.sub[`topic1]
 // Unsubscribe from the topic 
 q).mqtt.unsub[`topic1]
 // publish another message to `topic1 (note, no message received)
+```
+
+## Callback functions
+
+As outlined above a number of functions control the handling of messages and signals via callback.
+
+```txt
+MQTT interface callback functionality
+  .mqtt.disconn           Triggered on disconnection from MQTT broker
+  .mqtt.msgrcvd           Triggered when a message is received from a broker
+  .mqtt.msgsent           Triggered when a q process successfully sends a message to broker
+```
+
+These functions should be modified to control how messages and disconnections are handled by the q process in a that is suitable for the use case and messages being transfered via MQTT.
+
+### `.mqtt.disconn`
+
+_Handle disconnections from an MQTT broker_
+
+Syntax: `.mqtt.disconn[x]`
+
+Where
+
+-   `x` is a null value
+
+returns the output of user defined logic for handling disconnections
+
+```q
+// Default occurrence of a disconnection
+(`disconn;())
+
+// Modify the disconnection callback function
+q).mqtt.disconn:{0N!"Disconnection from broker at: ",string[.z.p];}
+
+// Disconnect with the new disconnection logic
+"Disconnection from broker at: 2020.05.07D08:28:47.836698000"
+
+```
+
+### `.mqtt.msgrcvd`
+
+_Handle messages received from an MQTT broker_
+
+Syntax: `.mqtt.msgrcvd[topic;msg]`
+
+Where
+
+-  `topic` is a string denoting the topic from which the message was received
+
+-  `msg` is the content of the message received from the MQTT broker
+
+```q
+// Default occurrence of a message being received
+(`msgrecvd;"topic1";"Test message")
+
+// Modify the receiving callback function
+q).mqtt.msgrcvd:{0N!"Message - '",string[y],"' received from, ",string[x];}
+
+// The same message received with the new logic
+"Message - 'Test message' received from, topic1"
+```
+
+### `.mqtt.msgsent`
+
+_Handle callback on successful sending a message to an MQTT broker_
+
+Syntax: `.mqtt.msgsent[token]`
+
+Where
+
+-  `token` is a long representing the MqttDeliveryToken to monitor delivery
+
+```q
+// Default occurrence of a message being sent
+q).mqtt.pub[`tcp://localhost:1883;"Test message"];
+(`msgsent;1)
+
+// Modify the sending callback function
+q).mqtt.msgsent:{0N!"Message was sent with delivery token - ,string[x];}
+
+// The same message sent with the new logic
+"Message was sent with delivery token - 1" 
 ```
 
 
