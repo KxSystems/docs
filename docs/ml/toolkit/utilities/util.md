@@ -21,6 +21,8 @@ The following functions are defined in the `util.q` file of the Machine Learning
   .ml.df2tab             kdb+ table from a pandas dataframe
   .ml.df2tab_tz          Pandas dataframe to kdb+ conversion handling dates/times/timezones
   .ml.eye                Identity matrix
+  .ml.imax               Index of maximum element of a list
+  .ml.imin               Index of minimum element of a list
   .ml.linspace           List of evenly-spaced values
   .ml.shape              Shape of a matrix
   .ml.tab2df             Pandas dataframe from a q table
@@ -195,6 +197,41 @@ q).ml.eye 5
 0 0 0 1 0
 0 0 0 0 1
 ```
+
+## `.ml.imax`
+
+_Index of maximum element of a list_
+
+Where `x` is a numerical list, returns the index of the maximum element of `x`.
+
+```q
+q)show a:8?5.
+3.883438 4.96977 2.447749 3.253555 4.246108 4.54695 1.381171 2.273137
+q).ml.imax a
+1
+q)show b:8?100
+23 8 12 24 6 36 68 37
+q).ml.imax b
+6
+```
+
+## `.ml.imin`
+
+_Index of maximum element of a list_
+
+Where `x` is a numerical list, returns the index of the maximum element of `x`.
+
+```q
+q)show a:8?10.
+0.6916353 8.045142 7.619755 4.599266 0.3341879 6.43216 6.177459 4.751895
+q).ml.imin a
+4
+q)show b:8?50
+22 45 3 22 3 5 40 26
+q).ml.imin b
+2
+```
+
 
 ## `.ml.linspace`
 

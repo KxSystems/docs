@@ -12,7 +12,7 @@ The median of a dataset is used as the root node of the tree, with the root spli
 
 The placement of each node in the tree is determined by whether the node is less than (to the left) or greater than (to the right) of the proceeding node value.
 
-Within this toolkit a number of functions are provided to deal with k-d trees
+Within this toolkit a number of functions are provided to deal with k-d trees. 
 
 ```txt
 .ml.clust.kd - k-d tree functions
@@ -66,9 +66,7 @@ leaf left self parent children axis midval  idxs
 1    0    2    0      `long$()              0 5 6 7 8
 ```
 
-
 !!! note
-
 	The value of `leafsz` can affect the speed when searching for nearest neighbours
 
 
@@ -144,3 +142,6 @@ axis    | 0N
 midval  | 0n
 idxs    | 2 3 4
 ```
+
+!!! note
+    Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or C code in their implementations (See instructions [here](https://github.com/dmorgankx/ml/blob/idv/clust/README.md) to build C code). To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `b` is a boolean indicating whether to use the q (1b) or C (0b) code. If the C code is not available, the function will default to q regardless of the input.

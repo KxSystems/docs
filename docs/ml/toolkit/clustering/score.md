@@ -71,17 +71,18 @@ returns the Davies-Bouldin index.
 
 ```q
 q)show d:2 10#20?10.
-3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
-4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
-q)show r1:.ml.clust.hc[d;`edist;`single;3]
-0 0 1 1 0 0 2 0 1 0
-q)show r2:.ml.clust.kmeans[d;`e2dist;3;10;0b]
-0 0 1 1 0 2 0 2 1 2
+4.126605 8.429965 6.214154 5.365242 7.470449 6.168275 6.876426 6.123797 9.363..
+4.45644  7.274244 1.301704 2.018829 1.451855 9.819545 7.490215 6.372719 5.856..
+q)show r1:10?3
+0 1 2 0 1 0 0 1 0 1
+q)show r2:10?3
+2 2 1 0 2 2 1 2 0 0
+
 // lower values indicate better clustering
-q).ml.clust.daviesbouldin[d;r1] 
-0.56649
+q).ml.clust.daviesbouldin[d;r1]
+9.014795
 q).ml.clust.daviesbouldin[d;r2]
-1.424637
+5.890376
 ```
 
 ### `.ml.clust.dunn`
@@ -106,6 +107,7 @@ q)show r1:10?3
 0 0 1 1 0 0 2 0 1 0
 q)show r2:10?3
 0 0 1 1 0 2 0 2 1 2
+
 // higher values indicate better clustering
 q).ml.clust.dunn[d;`edist;r1]
 0.5716933
@@ -136,11 +138,13 @@ q)show r1:10?3
 0 0 1 1 0 0 2 0 1 0
 q)show r2:10?3
 0 0 1 1 0 2 0 2 1 2
+
 // Return the averaged coefficients across all points
 q).ml.clust.silhouette[d;`edist;r1;1b]
 0.3698386
 q).ml.clust.silhouette[d;`e2dist;r2;1b]
 0.2409856
+
 // Return the individual coefficients for each point
 q).ml.clust.silhouette[d;`e2dist;r2;0b]
 -0.4862092 -0.6652588 0.8131323 0.595948 -0.2540023 0.5901292 -0.2027718 0.61..
