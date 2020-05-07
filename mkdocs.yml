@@ -406,6 +406,7 @@ nav:
         - Exporter:
           - Overview: interfaces/prom/exporter/index.md
           - User guide: interfaces/prom/exporter/user-guide.md
+          - Examples: interfaces/prom/exporter/examples.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
