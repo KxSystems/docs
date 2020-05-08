@@ -15,7 +15,7 @@ The following page outlines the use of a number of scripts provided with this in
 These examples require the following steps to completed
 
 1. The Solace interface to be installed following the steps outlined in the interfaces `README.md` [here](https://github.com/kxsystems/solace/blob/master/README.md)
-2. The folder `script/` containing `solace.q` be placed either in the examples folder or preferably in the users `$QHOME/%QHOME% directory.
+2. The folder `script/` containing `solace.q` be placed either in the examples folder or preferably in the users `$QHOME`/`%QHOME%` directory.
 
 ## Examples
 
