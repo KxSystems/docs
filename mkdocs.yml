@@ -424,6 +424,8 @@ nav:
       - Solace:
         - Overview: interfaces/solace/index.md
         - User guide: interfaces/solace/user-guide.md
+        - RESTful api: interfaces/solace/solacerest.md
+        - Examples: interfaces/solace/examples.md
     - From: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
