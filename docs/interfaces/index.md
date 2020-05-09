@@ -31,7 +31,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
 <tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [<i class="fab fa-superpowers"></i>](../ml/index.md "Machine learning") </td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
-<tr><td>MQTT</td><td>[Q client for MQTT](mqtt.md) ==new==</td></tr>
+<tr><td>MQTT</td><td>[Q client for MQTT](mqtt/index.md) ==new==</td></tr>
 <tr><td>Prometheus-Exporter</td><td>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md) ==new==</td></tr>
 <tr><td>Python</td>
     <td>

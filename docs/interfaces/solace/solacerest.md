@@ -8,7 +8,7 @@ keywords: Solace, PubSub+, publish, subscribe, REST, streaming
 
 # <i class="fa fa-share-alt"></i> Messaging and subscibing to Solace via REST api
 
-The following page outlines an alternative method to interact with Solace using the the Solace REST api rather than via the C api. This may be suitable in low data rate settings. The Solace REST api is outlined [here](https://docs.solace.com/Open-APIs-Protocols/REST-get-start.htm)
+The following page outlines an alternative method to interact with Solace using the the Solace REST api outline [here](https://docs.solace.com/Open-APIs-Protocols/REST-get-start.htm) rather than via the C api. This may be suitable in low data rate settings.
 
 ## REST Publishing to Solace
 

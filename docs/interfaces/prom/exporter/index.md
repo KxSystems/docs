@@ -17,10 +17,20 @@ Visualization and querying can be done through its built in expression browser, 
 
 An  environment being administrated or analyzed by Prometheus will be able to include current and past metrics exposed by kdb+.
 
+### Use-cases
+
+The following are potential use cases for the interface, this is by no means an exhaustive list
+
+- Effects from version upgrades (e.g. performance before/after changes)
+- Alerts when your that a licence may be due to expire
+- Bad use of symbol types within an instance
+
+### kdb+/Prometheus-Exporter integration
+
 The purpose of this interface is to:
 
-1. Provide a script that provides useful general metrics that can be extended if required
-2. Allow correlations between different instances, metrics, exporters and installs to be easily identified
+1. Provide a script that provides useful general metrics that can be extended if required.
+2. Allow correlations between different instances, metrics, exporters and installs to be easily identified.
 
 The following caveats should be made regarding where this interface in its current iteration can be used
 
@@ -28,30 +38,9 @@ The following caveats should be made regarding where this interface in its curre
 2. You may need to extend this script to provide more relevant metrics for your environment. Please consider contributing if your change may be generic enough to have a wider user benefit
 3. General machine/kubernetes/cloud metrics on which kdb+ is running. Metrics can be gathered by such exporters as the node exporter. Metrics from multiple exporters can be correlated together to provide a bigger picture of your environment conditions.
 
-### Example Use cases
+#### Metrics
 
-The following are potential use cases for the interface, this is by no means an exhaustive list
-
-- Effects from version upgrades (e.g. performance before/after changes)
-- Alerts when your that a licence may be due to expire
-- Bad use of symbol types within an instance
-- Instances upon which garbage collection may be beneficial on long running processes
-
-## Quick Start
-
-Within the interface the script `exporter.q` is supplied. This contains a variety of metrics which can be monitored on an associated port. For example to expose the metrics on port 8080 run the following command
-
-```q
-q exporter.q -p 8080
-```
-
-Once running, you can use your web browser to view the currently exposed statistics on the metrics URL e.g. http://localhost:8080/metrics. The metrics exposed will be the current values from the time at which the URL is requested.
-
-## Metrics
-
-In Prometheus `metrics` refer to the statistics which are being monitored. By running the exporter above, you can view the metric endpoints in your web browser. Within prometheus there are a number of different forms of metric.
-
-### Metric Types
+In Prometheus `metrics` refer to the statistics which are being monitored. Within prometheus there are a number of different forms of metric, the exposure of these metrics from a kdb+ session allows for the monitoring a q process with Prometheus.
 
 There are [4 types of metric](https://prometheus.io/docs/concepts/metric_types/) in Prometheus
 
@@ -74,3 +63,8 @@ Both `histogram` and `summary` are aggregate metrics, providing summary statisti
 
 When updating a sample metric, a list of numeric values will be appended to. On request, this list will be used to construct the metric values, depending on the metric type and params.
 
+## Status
+
+This interface is currently available as a beta version under an Apache 2.0 licence and is supported on a best effort basis by the Fusion team. This interface is currently in active development, with additional functionality to be released on an ongoing basis.
+
+If you find issues with the interface or have feature requests please consider raising an issue [here](https://github.com/KxSystems/prometheus-kdb-exporter/issues). If you wish to contribute to this project please follow the contributing guide [here](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/CONTRIBUTING.md).

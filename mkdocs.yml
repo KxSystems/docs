@@ -401,11 +401,15 @@ nav:
       - Kafka:
         - Overview: interfaces/kafka/index.md
         - User guide: interfaces/kafka/user-guide.md
-      - MQTT: interfaces/mqtt.md
+      - MQTT:
+        - Overview: interfaces/mqtt/index.md
+        - User guide: interfaces/mqtt/user-guide.md
+        - Examples: interfaces/mqtt/examples.md
       - Prometheus: 
         - Exporter:
           - Overview: interfaces/prom/exporter/index.md
           - User guide: interfaces/prom/exporter/user-guide.md
+          - Event Handlers: interfaces/prom/exporter/event-handlers.md
           - Examples: interfaces/prom/exporter/examples.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):

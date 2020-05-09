@@ -8,11 +8,13 @@ keywords: Solace, PubSub+, publish, subscribe, request, reply, streaming
 
 # <i class="fa fa-share-alt"></i> Solace Interface Examples
 
+<i class="fab fa-github"></i> [KxSystems/solace](https://github.com/KxSystems/solace)
+
 The following page outlines the use of a number of scripts provided with this interface to highlight functionality available within the interface.
 
 ## Requirements
 
-These examples require the following steps to completed
+These examples require the following steps to be completed
 
 1. The Solace interface to be installed following the steps outlined in the interfaces `README.md` [here](https://github.com/kxsystems/solace/blob/master/README.md)
 2. The folder `script/` containing `solace.q` be placed either in the examples folder or preferably in the users `$QHOME`/`%QHOME%` directory.
