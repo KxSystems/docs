@@ -63,7 +63,7 @@ Syntax: `.hdf5.createFile[fname]`
 
 Where
 
--   `fname` name of a HDF5 file as a string
+-   `fname` is the name of a HDF5 file as a string
 
 returns null on successful creation of file. Attempting to create a file that already exists will result in an error
 
@@ -84,8 +84,8 @@ Syntax: `.hdf5.createGroup[fname;gname]`
 
 Where
 
--   `fname` HDF5 file within which groups are to be created as a string
--   `gname` is a string indicating the structure of the groups to be created within the file
+-   `fname` is the name of a HDF5 file as a string
+-   `gname` is the structure of the groups to be created as a string
 
 returns null on successful execution and creates the desired groups.
 
@@ -108,9 +108,9 @@ Syntax: `.hdf5.writeAttr[fname;oname;aname;dset]`
 
 Where
 
--   `fname` name of a HDF5 file as a string
--   `oname` name of the object (group/dataset) which the attribute is to be written to as a string
--   `aname` name of the attribute to be written to as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `oname` is the name of an object (group/dataset) to which an attribute is to be written to as a string
+-   `aname` is the name of the attribute to be written to as a string
 -   `dset`  dataset which is being written to HDF5 format
 
 returns null on successful writing of data to attribute. Failure to write to the attribute will result in an appropriate error
@@ -145,8 +145,8 @@ Syntax: `.hdf5.writeData[fname;dname;dset]`
 
 Where
 
--   `fname` name of a HDF5 file as a string
--   `dname` name of the dataset which is to be written to as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `dname` is the name of the dataset which is to be written to as a string
 -   `dset`  dataset which is being written to HDF5 format
 
 returns null on successful writing of data to dataset. Failure to write to the dataset will result in an appropriate error
@@ -186,9 +186,9 @@ Syntax: `.hdf5.readAttr[fname;oname;aname]`
 
 Where
 
--   `fname` name of a HDF5 file as a string
--   `oname` name of the group or dataset which the attribute being read from is associated as a string
--   `aname` name of the attribute from which data is to be read as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `oname` is the name of the object (group/dataset) with which the attribute being read from is associated as a string
+-   `aname` is the name of the attribute from which data is to be read as a string
 
 returns a kdb+ dataset containing the data associated with the named HDF5 attribute
 
@@ -215,8 +215,8 @@ Syntax: `.hdf5.readAttr[fname;dname]`
 
 Where
 
--   `fname` name of a HDF5 file as a string 
--   `dname` name of the dataset which is to be read from as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `dname` is the name of the dataset which is to be read from as a string
 
 returns a kdb+ dataset containing the data associated with a HDF5 dataset 
                                  
@@ -265,10 +265,10 @@ Syntax: `.hdf5.createExternal[lfile;lpath;tfile;tpath]`
 
 Where
 
--   `lfile` HDF5 file containing end point for the new external link as a string
--   `lpath` object acting as the end point for the link as a string
--   `tfile` target file containing the target object as a string
--   `tpath` target object which is linked to lpath as a string
+-   `lfile` is the name of the HDF5 file containing the end point for the new external link as a string
+-   `lpath` is the name of the object acting as the end point for the link as a string
+-   `tfile` is the name of the target HDF5 file containing the target object as a string
+-   `tpath` is the name of the target object which is linked to lpath as a string
 
 returns null on successful execution and creates the external link
 
@@ -294,9 +294,9 @@ Syntax: `.hdf5.createHard[lfile;lpath;tpath]`
                     
 Where               
                     
--   `lfile` HDF5 file within which hard linking takes place as a string
--   `lpath` object acting as the end point for the link as a string
--   `tpath` name of the target path for the new hard link as a string
+-   `lfile` is the name of a HDF5 file as a string
+-   `lpath` is the name of the object acting as the end point for the link as a string
+-   `tpath` is the name of the target path for the new hard link as a string
                     
 returns null on successful execution and creates the hard link.
 
@@ -322,9 +322,9 @@ Syntax: `.hdf5.createSoft[lfile;lpath;tpath]`
 
 Where      
 
--   `lfile` HDF5 file within which the soft linking takes place as a string
--   `lpath` object acting as the end point for the link as a string
--   `tpath` name of the target path for the new soft link as a string
+-   `lfile` is the name of a HDF5 file as a string
+-   `lpath` is the name of the object acting as the end point for the link as a string
+-   `tpath` is the name of of the target path for the new soft link as a string
                     
 returns null on successful execution and creates the specified soft link.
 
@@ -357,8 +357,8 @@ Syntax: `.hdf5.delLink[lfile;lpath]`
 
 Where
 
--   `lfile` HDF5 file within which the link to be deleted is contained as a string
--   `lpath` name of the link to be deleted within a HDF5 file as a string
+-   `lfile` is the name of a HDF5 file as a string
+-   `lpath` is the name of the link to be deleted as a string
 
 returns a message indicating successful deletion of a link.
 
@@ -385,8 +385,8 @@ Where
 
 - `fname` is the name of the file containing the object to be copied as a string
 - `oname` is the name of the object to be copied as a string 
-- `fdest` is the destination file for the copied object as a string
-- `odest` it the path in the destination file to which the copied object is associated as a string
+- `fdest` is the name of the destination file for the copied object as a string
+- `odest` it the name of the path in the destination file to which the copied object is associated as a string
 
 return null on successful execution, will error if there are issues accessing files
 
@@ -424,7 +424,7 @@ Syntax: `.hdf5.dataSize[fname;dname]`
 
 Where
 
-- `fname` is the name of the file containing a dataset as a string
+- `fname` is the name of a HDF5 file as a string
 - `dname` is the name of the dataset as a string
 
 return the size of a HDF5 dataset in MB
@@ -526,9 +526,9 @@ Syntax: `.hdf5.getAttrShape[fname;oname;aname]`
 
 Where
 
--   `fname` is the HDF5 containing the attribute as a string
--   `oname` object to which the attribute is associated as a string
--   `aname` attribute name of interest as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `oname` is the name of an object (group/dataset) to which an attribute is associated as a string
+-   `aname` is the name of an attribute as a string
 
 returns an numerical list indicating the attribute shape
 
@@ -541,12 +541,12 @@ q).hdf5.getAttrShape["test.h5";"dset";"Temperatures"]
 
 _Get the shape of a dataset_
 
-Syntax: `.hdf5.getDataShape[fname;oname]`
+Syntax: `.hdf5.getDataShape[fname;dname]`
 
 Where
 
--   `fname` is the HDF5 file containing the dataset as a string 
--   `oname` name of the dataset of interest as a string 
+-   `fname` is the name of a HDF5 file as a string
+-   `dname` is the name of the dataset of interest as a string 
 
 returns an numerical list indicating the shape of the dataset
 
@@ -561,9 +561,9 @@ _Does the named attribute exist_
 
 Syntax: `.hdf5.isAttr[fname;oname;aname]`
 
--   `fname` is the HDF5 file containing the attribute as a string
--   `oname` is the object to which the attribute is associated as a string
--   `aname` name of the attribute as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `oname` is the name of an object (group/dataset) to which the attribute is associated as a string
+-   `aname` is the name of the attribute as a string
 
 returns a boolean indicating if the attribute exists or not
 
@@ -582,7 +582,7 @@ Syntax: `.hdf5.ishdf5[fname]`
 
 Where
 
--   `fname` is the HDF5 file of interest as a string
+-   `fname` is the name of a HDF5 file as a string
 
 returns a boolean indicating if the file is a hdf5 file or not
 
@@ -601,8 +601,8 @@ Syntax: `.hdf5.isObject[fname;oname]`
 
 Where
 
--   `fname` is the HDF5 file containing the object of interest as a string
--   `oname` is the path to an object (dataset/group) within the file as a string
+-   `fname` is the name of a HDF5 file as a string
+-   `oname` is the name of an object (group/dataset) as a string
 
 returns a boolean indicating if the object exists or not
 
@@ -626,7 +626,7 @@ Syntax: `.hdf5.ls[fname]`
 
 Where
 
--   `fname` is the HDF5 file for which the structure is to be displayed as a string
+-   `fname` is the name of a HDF5 file as a string
 
 returns a print out of the overall structure of the HDF5 file
 

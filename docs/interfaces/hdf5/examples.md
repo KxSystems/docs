@@ -9,13 +9,13 @@ keywords: HDF5, kdb+, examples, read, write, link, group
 
 The following page provides a basic example outlining how a kdb+ user could read, write, modify and inspect a HDF5 dataset from a kdb+ session. Examples showcasing wider ranging functionality are provided with the associated repository [here](https://github.com/KxSystems/hdf5-kdb/tree/master/examples)
 
-In the following example shows a typical workflow when dealing with HDF5 data 
+The following example shows a typical workflow when dealing with HDF5 data 
 
-* Create a `.h5` file to house experimental data
+* Create a `.h5` file to house experimental datasets
 
 ```q
 //create a file named appropriately
-q)fname:"experiment1.h5"
+q)fname:"experiments.h5"
 q).hdf5.createFile[fname]
 
 //Check that this file exists
@@ -33,13 +33,13 @@ q)show dset:dims#prd[dims:5*1+til 5]?10f
 9.822297  8.278122  6.610537 5.013077  8.215865 2.360797  6.881804 1.411613  ..
 9.674024   9.491312  8.290642  8.987704  6.497505  1.057242   4.66386   8.425..
 5.260983  4.556574   9.517531 5.659605  0.864824  0.8628434 4.824764  3.95274..
-q)dset_name:"experiment_data"
+q)dset_name:"experiment1_data"
 q).hdf5.writeData[fname;dset_name;dset]
 
 // Inspect the content of the file to ensure the data has been written to file
 q).hdf5.ls[fname]
 / {
-  Dataset: experiment_data
+  Dataset: experiment1_data
 }
 ```
 
