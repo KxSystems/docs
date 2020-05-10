@@ -117,13 +117,13 @@ Two connectivity-based models are provided with this library
 
 1. **CURE**:
 
-	CURE clustering is a technique used to deal with datasets containing outliers and clusters of varying sizes and shapes. Each cluster is represented by a specified number of representative points. These points are chosen by taking the the most scattered points in each cluster and shrinking them towards the cluster centre by a fixed amount, known as the compression.
+	CURE clustering is a technique used to deal with datasets containing outliers and clusters of varying sizes and shapes. Each cluster is represented by a specified number of representative points. These points are chosen by taking the most scattered points in each cluster and shrinking them towards the cluster centre by a fixed amount, known as the compression.
 
 2. **Hierarchical Clustering**:
 
 	The implementation of hierarchical clustering described below groups data using an agglomerative/bottom-up approach which initially treats all data points as individual clusters.
 
-	There are 5 possible linkages in hierarchical clustering: single, complete, average, centroid and ward. Euclidean or manhattan distances can be used for with each linkage, except for ward which only works with Euclidean squared distances. Additionally, a k-d tree has been used for the single and centroid implementations.
+	There are 5 possible linkages in hierarchical clustering: single, complete, average, centroid and ward. Euclidean or manhattan distances can be used for each linkage, except for ward which only works with Euclidean squared distances, and centroid which only works with Euclidean distances. Additionally, a k-d tree has been used for the single and centroid implementations.
 	
 	In the implementations of both functions below, a k-d tree is used in order to store the representative points of each cluster (more information [here](https://code.kx.com/v2/ml/toolkit/clustering/kdtree)). Both q and C implementations of the tree are available (See [kdtree](kdtree.md)). Instructions to build the C code can be found [here](https://github.com/kxsystems/ml/clust/README.md) on the github repo.
 
@@ -131,18 +131,16 @@ Two connectivity-based models are provided with this library
 
 _Cluster data using representative points_
 
-Syntax: `.ml.clust.cure[data;df;k;n;c]`
+Syntax: `.ml.clust.cure[data;df;n;c]`
 
 Where
 
 - `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 - `df`  is the distance function as a symbol: `e2dist` `edist` `mdist` (see [section](##Distance Metrics))
-- `k` is the number of clusters
 - `n` is the number of representative points
 - `c` is the compression
 
-returns a list indicating the cluster each data point belongs to
-
+returns a dendrogram table
 ```q
 q)show d:2 10#20?20.
 15.66737 8.199122 12.21763 9.952983 8.175089 8.994621 0.2784152 14.29756 3.89..
