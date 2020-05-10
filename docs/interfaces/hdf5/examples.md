@@ -107,7 +107,7 @@ q).hdf5.ls[fname]
 * Read the data and attributes written to the file back into kdb+
 
 ```q
-// Read back the dataset "experiment_data"
+// Read back the dataset "experiment1_data"
 q).hdf5.readData[fname;"experiment1_data"]
 3.927524  5.170911 5.159796  4.066642  1.780839  3.017723 7.85033    5.347096..
 1.572794   4.25421    2.573062  1.30827   1.930758  6.585985   3.227891 3.888..
