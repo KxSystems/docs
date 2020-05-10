@@ -100,7 +100,7 @@ q).hdf5.ls[fname]
       Dataset: volume
     }
   }
-  Dataset: experiment_data
+  Dataset: experiment1_data
 }
 ```
 
@@ -108,7 +108,7 @@ q).hdf5.ls[fname]
 
 ```q
 // Read back the dataset "experiment_data"
-q).hdf5.readData[fname;"experiment_data"]
+q).hdf5.readData[fname;"experiment1_data"]
 3.927524  5.170911 5.159796  4.066642  1.780839  3.017723 7.85033    5.347096..
 1.572794   4.25421    2.573062  1.30827   1.930758  6.585985   3.227891 3.888..
 9.822297  8.278122  6.610537 5.013077  8.215865 2.360797  6.881804 1.411613  ..
