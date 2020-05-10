@@ -9,7 +9,7 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 
 ## Introduction
 
-Message Queueing Telemetry Transport[(MQTT)](http://mqtt.org/) is a machine-to-machine/IOT connectivity protocol. It is designed to be lightweight offering functionality for publish/subscribe messaging transport and is designed for constrained devices and low-bandwidth, high-latency or unreliable networks.
+Message Queueing Telemetry Transport[(MQTT)](http://mqtt.org/) is a machine-to-machine/IOT connectivity protocol. It is designed to be lightweight offering functionality for publish/subscribe messaging transport. This protocol is commonly used for constrained devices with low-bandwidth, high-latency or unreliable networks.
 
 ### Use-cases
 
@@ -30,6 +30,8 @@ The purpose of this interface is to provide kdb+ users with the ability to commu
 3. Publishing to a broker
 
 A full outline of the available functionality is outlined [here](user-guide.md) with example inplementations outlined [here](examples.md).
+
+Installation of this interface can be completed by following the install guide outlined [here](https://github.com/KxSystems/mqtt#installation).
 
 !!!Note
 	In order to run the examples provided with this interface you will need a MQTT broker installed and running locally. A Mosquitto broker can be setup and installed following the instructions provided [here](https://mosquitto.org/download/).

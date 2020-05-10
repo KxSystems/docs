@@ -14,7 +14,7 @@ The following page outlines an alternative method to interact with Solace using 
 
 In order to publish to a Solace broker via REST a kdb+ user should make use of the function [.Q.hp](https://code.kx.com/q/ref/dotq/#qhp-http-post) to create a POST request.
 
-The Solace [documentation](https://docs.solace.com/Open-APIs-Protocols/REST-get-start.htm) should be used as a reference guide to configure HTTP parameters according to your use case, and how to test the api prior to running from a kdb+ session
+The Solace [documentation](https://docs.solace.com/Open-APIs-Protocols/REST-get-start.htm) should be used as a reference guide to configure HTTP parameters according to your use case. This documentation should also be used to test the api prior to running from a kdb+ session
 
 The following examples provide some basic commands to publish to queues and topics
 
@@ -58,10 +58,8 @@ q -p 12341
 q).z.pp:{[x] 0N!((first where x[0]=" ")+1)_x[0];r:.h.hn["200 OK";`txt;""];r}
 ```
 
-Configuring a Solace REST Consumer using your host/port, with a queue binding will allow messages on the queue to be received in KDB+ (view Solace documentation on configuring REST consumers).
+Configuring a Solace REST Consumer using your host/port, with a queue binding will allow messages on the queue to be received in kdb+ (view Solace documentation on configuring REST consumers).
 
 !!!Note
 	It is possible to configure multiple REST endpoints in KDB+, with data transformations & callbacks.
-
-
 

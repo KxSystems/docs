@@ -135,7 +135,7 @@ q).mqtt.unsub[`topic1]
 
 ## Callback functions
 
-These functions should be modified to control how messages and disconnections are handled by the q process in a that is suitable for the use case and messages being transfered via MQTT.
+These functions should be modified to control how messages and disconnections are handled by the q process in a way that is suitable for the use case and messages being transfered via MQTT.
 
 ### `.mqtt.disconn`
 

@@ -10,7 +10,7 @@ keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter,
 <i class="fab fa-github"></i>
 [KxSystems/prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)
 
-The following functions are those exposed within the `.prom` namespace allowing users to interact augment metrics exposed to prometheus from a kdb+ interface. Modifications to behaviour of event handlers is outlined [here](./event-handlers.md)
+The following functions are those exposed within the `.prom` namespace allowing users to interact augment metrics exposed to prometheus from a kdb+ interface. The functionality to modify the behaviour of event handlers which control the logic of metric updates is outlined [here](./event-handlers.md).
 
 ```txt
 Prometheus Exporter Interface
@@ -37,16 +37,14 @@ Syntax: `.prom.addmetric[metric;labelvals;params;startval]`
 
 Where
 
-- `metric` is the metric class being used (s)
-- `labelvals` are the values of labels used to differentiate metric characteristics (s|S)
-- `params` are the parameters relevant to the metric type (F)
-- `startval` is the starting value of the metric (f)
+- `metric` is a symbol denoting the metric class being used.
+- `labelvals` are the values of labels used to differentiate metric characteristics as a symbol/list of symbols.
+- `params` are the parameters relevant to the metric type as a list of floats.
+- `startval` is a float denoting the starting value of the metric.
 
-returning an identifier(s) for the metric, to be used in future updates.
+returns an identifier(s) for the metric, to be used in future updates.
 
-Example
-
-```
+```q
 // Tables
 q)numtab1:.prom.addmetric[`number_tables;`amer;();0f]
 q)numtab2:.prom.addmetric[`number_tables;`emea;();0f]
@@ -65,14 +63,12 @@ Syntax: `.prom.newmetric[metric;metrictype;labelnames;helptxt]`
 
 Where
 
-- `metric` is the name of the metric class (s)
-- `metrictype` is the type of metric (s)
-- `labelnames` are the names of labels used to differentiate metric characteristics (s|S)
-- `helptxt` is the HELP text provided with the metric values (C)
+- `metric` is a symbol denoting the name of the metric class.
+- `metrictype` is a symbol outlining the type of metric.
+- `labelnames` is a symbol or list of symbols denoting the names of labels used to differentiate metric characteristics.
+- `helptxt` is a string providing the HELP text which is provided with the metric values.
 
-Example
-
-```
+```q
 // Tables
 q).prom.newmetric[`number_tables;`gauge;`region;"number of tables"]
 // Updates
@@ -91,30 +87,34 @@ Syntax: `.prom.updval[name;func;arg]`
 
 Where
 
-- `name` is the metric instance being updated (s)
-- `func` is the function/operator used to update the value
-- `arg` is the second argument provided to `func` (the first argument being the value itself)
+- `name` is a symbol denoting the metric instance being updated.
+- `func` is a function/operator used to update the value.
+- `arg` is the second argument provided to `func` (the first argument being the value itself).
 
-When updating a single-value metric (`counter` or `gauge`), the value will typically be incremented, decremented or assigned to. This value will be reported directly to Prometheus.
+!!!Note
+	* When updating a single-value metric (`counter` or `gauge`), the value will typically be incremented, decremented or assigned to. This value will be reported directly to Prometheus.
+	* When updating a sample metric (`histogram` or `summary`), a list of numeric values will typically be appended to. This list will be aggregated to provide statistics to Prometheus according to the metric type and parameters provided.
 
-When updating a sample metric (`histogram` or `summary`), a list of numeric values will typically be appended to. This list will be aggregated to provide statistics to Prometheus according to the metric type and parameters provided.
-
-Example
-
-```
+```q
 // Tables
-q).prom.updval[numtab1;:;count tables[]] // set
-q).prom.updval[numtab2;+;1]              // increment
-q).prom.updval[numtab3;-;1]              // decrement
+q).prom.updval[`numtab1;:;count tables[]] // set
+q).prom.updval[`numtab2;+;1]              // increment
+q).prom.updval[`numtab3;-;1]              // decrement
 // Updates
-q).prom.updval[updsz;,;10 15 20f]        // append
+q).prom.updval[`updsz;,;10 15 20f]        // append
 ```
 
 ## Initialize library
 
-Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to `.prom.init`, the updating of event handler logic is described [here](eventhandlers.md)
+Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to `.prom.init`, the updating of event handler logic is described [here](event-handlers.md)
 
-```
+### `.prom.init`
+
+_Initialize metric monitoring_
+
+Syntax: `.prom.init[unused]`
+
+```q
 q).prom.init[]
 ```
 

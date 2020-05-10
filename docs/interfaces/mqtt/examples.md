@@ -17,7 +17,7 @@ This example requires the following steps to be completed
 
 ## Example
 
-The example below outlines a minimal use case which publishs data on multiple topics from kdb+ to a mosquitto broker and subscribes to these topics from a separate kdb+ process. This is achieved following steps below
+The example below outlines a minimal use case which publishes data on multiple topics from kdb+ to a mosquitto broker and subscribes to these topics from a separate kdb+ process. This is achieved following the steps outlined below
 
 * Open a mosquitto broker on the default localhost `tcp://localhost:1883`.
 * From the examples folder, start two q processes.

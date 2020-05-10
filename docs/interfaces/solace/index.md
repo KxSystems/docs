@@ -32,6 +32,9 @@ The purpose of this interface is to provide kdb+ users with the ability to commu
 
 A full outline of the available functionality is outlined [here](user-guide.md) with example inplementations outlined [here](examples.md).
 
+Installation of this interface can be completed by following the install guide outlined [here](https://github.com/KxSystems/solace#installation).
+
+
 In addition to integration with the C api use of the Solace RESTful api is also outlined for the sending and receipt of messages from kdb+. This method of integrating with Solace PubSub+ brokers is outlined [here](solacerest.md).
 
 ## Status

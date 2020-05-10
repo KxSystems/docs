@@ -10,7 +10,7 @@ keywords: Solace, PubSub+, publish, subscribe, request, reply, streaming
 
 <i class="fab fa-github"></i> [KxSystems/solace](https://github.com/KxSystems/solace)
 
-The following page outlines the use of a number of scripts provided with this interface to highlight functionality available within the interface.
+The following page outlines the use of a number of scripts provided with this interface to highlight available functionality within the interface.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ These examples require the following steps to be completed
 
 Each of the scripts outlined below are contained in the `examples` folder of the interface [here](https://github.com/KxSystems/solace/tree/master/examples). These scripts provide an insight into to different capabilities within the Solace Interface.
 
-An outline is provided here as a guide to potential users to showcase the parameters which can be passed to the scripts as command line arguments on initialisation of a q session.
+An outline is provided here as a guide for potential users, in order to showcase the parameters which can be passed to the scripts as command line arguments on initialisation of a q session.
 
 ### Endpoint interactions
 

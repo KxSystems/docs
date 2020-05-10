@@ -10,7 +10,7 @@ keywords: solace, interface, fusion , q
 <i class="fab fa-github"></i>
 [KxSystems/solace](https://github.com/KxSystems/solace)
 
-The following functions are those exposed within the `.solace` namespace allowing users to interact with Solace
+The following functions are those exposed within the `.solace` namespace allowing users to interact with a Solace PubSub+ broker
 
 ```txt
 .solace - Solace Interface
@@ -95,10 +95,9 @@ Syntax: `.solace.init[options]`
 
 Where
 
-- `options` is a dictionary of options consisting of a symbol to symbol mapping. 
+- `options` is a symbol to symbol dictionary mapping Solace properties to their values. 
 	- A list of possible session properties are listed [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/group___session_props.html). 
 	- Common properties are `SESSION_HOST`,  `SESSION_VPN_NAME`, `SESSION_USERNAME`, `SESSION_PASSWORD`, `SESSION_RECONNECT_RETRIES`.
-	- Mapping is from Solace property to kdb+ value
 
 !!!Warning
 	You must be connected before running any subsequent solace functions.
@@ -124,7 +123,7 @@ Syntax: `.solace.createEndpoint[options;provFlags]`
 
 Where
 
--  `options` is a symbol to symbol dictionary mapping Solace endpoint properties (keys) to their values. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
+-  `options` is a symbol to symbol dictionary mapping Solace endpoint properties to their values. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
 -  `provFlags` is an integer indicating the provision flag used by Solace. A list of provision flags for the Solace api can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags).
 
 ### `.solace.destroyEndpoint`
@@ -135,7 +134,7 @@ Syntax: `.solace.destroyEndpoint[options;provFlags]`
 
 Where
 
--  `options` is a symbol to symbol dictionary mapping Solace endpoint properties (keys) to their values. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
+-  `options` is a symbol to symbol dictionary mapping Solace endpoint properties to their values. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
 -  `provFlags` is an integer indicating the provision flag used by Solace. A list of provision flags fo
 r the Solace api can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags).
 
@@ -147,7 +146,7 @@ Syntax: `.solace.endpointTopicSubscribe[options;provFlags;topic]`
 
 Where
 
-- `options` is a symbol to symbol dictionary mapping Solace endpoint properties (keys) to their values.. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
+- `options` is a symbol to symbol dictionary mapping Solace endpoint properties to their values. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
 -  `provFlags` is an integer indicating the provision flag used by Solace. A list of provision flags fo
 r the Solace api can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags).
 -  `topic` is a symbol or string denoting a topic subscription
@@ -163,9 +162,8 @@ Syntax: `.solace.endpointTopicUnsubscribe[options;provFlags;topic]`
 
 Where
 
-- `options` is a symbol to symbol dictionary. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
--  `provFlags` is an integer indicating the provision flag used by Solace. A list of provision flags fo
-r the Solace api can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags).
+- `options` is a symbol to symbol dictionary mapping Solace endpoint properties to their values. The list of possible Solace endpoint property names can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps).
+-  `provFlags` is an integer indicating the provision flag used by Solace. A list of provision flags for the Solace api can be found [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags).
 -  `topic` is a symbol or string denoting a topic subscription
 
 !!!Note
@@ -217,11 +215,11 @@ Returns a byte array containing the payload on successful execution. Otherwise w
 
 _Set callback for messages received from topic subscriptions_
 
-Syntax: `.solace.setTopicMsgCallback[cb]`
+Syntax: `.solace.setTopicMsgCallback[callbackFunction]`
 
 Where
 
-- `cb` is a function taking three parameters 
+- `callbackFunction` is a function taking three parameters 
 	1. `destination` as a symbol
 	2. `payload` as a byte array containing the message payload
 	3. `msg values` as a dictionary
@@ -339,7 +337,7 @@ Where
 	 	5. `correlationId` is a string containing the original messages correlationId
 	 	6. `msgId` is a long used for sending acks see [here](#solacesendack)
 
-	* See [here](#solacesendersistentRequest) for information on possible values for `destType` and `replyType`
+	* See [here](#solacesendpersistentrequest) for information on possible values for `destType` and `replyType`
 
 ### `.solace.bindQueue`
 
@@ -349,7 +347,7 @@ Syntax: `.solace.bindQueue[bindProps]`
 
 Where
 
--  `bindProps` is a symbol to symbol dictionary. This maps symbols denoting the Solace bind properties to their values
+-  `bindProps` is a symbol to symbol dictionary mapping the Solace bind properties to their values.
  
 !!!Note
 	You can find possible flow binding properties [here](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#flowProps) along with the default settings.
@@ -371,7 +369,7 @@ Where
 
 ### .solace.unBindQueue
 
-_Remove a subscription/binding created via `.solace.bindQueue_
+_Remove a subscription/binding created via `.solace.bindQueue`_
 
 Syntax: `.solace.unBindQueue[endpointname]`
 

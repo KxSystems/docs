@@ -12,7 +12,7 @@ keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter,
 
 Metric updates are generally carried out inside event handlers. By overwriting these handlers, users can update metric values in response to various triggers ranging from HTTP requests to timer events.
 
-The functions outlined below can be modified to allow a user to monitor events outside those exposed in `exporter.q` and 
+The functions outlined below can be modified to allow a user to monitor events outside those exposed in `exporter.q` 
 
 ```txt
 Prometheus event handlers triggered on
@@ -36,7 +36,8 @@ Prometheus event handlers triggered on
 ```
 
 !!!Note
-	* Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to [`.prom.init`](user-guide/#initialize-library)
+	* Example invocations of these event handlers can be seen [here](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/exporter.q)
+	* Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to [`.prom.init`](./user-guide.md#initialize-library)
 	* Updating `.z.*` handlers after the call to `.prom.init` will overwrite the Prometheus logic. Correct usage is to load all process logic before loading the Prometheus library. 
 
 ## `.prom.on_poll`
@@ -79,7 +80,7 @@ Where
 
 - `msg` is the object to be executed 
 
-returning a (tmp) object to be passed to the _after_ handler.
+returns a `tmp` object to be passed to the _after_ handler.
 
 ## `.prom.after_pg`
 
@@ -103,7 +104,7 @@ Where
 
 - `msg` is the object to be executed 
 
-returning a (tmp) object to be passed to the _after_ handler.
+returns a `tmp` object to be passed to the _after_ handler.
 
 ## `.prom.after_ps`
 
@@ -127,7 +128,7 @@ Where
 
 - `msg` is the http request as a 2-item list (requestText;requestHeaderAsDictionary)
 
-returning a (`tmp`) object to be passed to the _after_ handler.
+returns a `tmp` object to be passed to the _after_ handler.
 
 ## `.prom.after_ph`
 
@@ -151,7 +152,7 @@ Where
 
 - `msg` is the http request as a 2-item list (requestText;requestHeaderAsDictionary)
 
-returning a (`tmp`) object to be passed to the _after_ handler.
+returns a `tmp` object to be passed to the _after_ handler.
 
 ## `.prom.after_pp`
 
@@ -175,7 +176,7 @@ Where
 
 - `msg` is the object to be executed 
 
-returning a (tmp) object to be passed to the _after_ handler.
+returns a `tmp` object to be passed to the _after_ handler.
 
 ## `.prom.after_ws`
 
@@ -199,7 +200,7 @@ Where
 
 - `dtm` is the timestamp at the start of execution
 
-returning a (tmp) object to be passed to the _after_ handler.
+returns a `tmp` object to be passed to the _after_ handler.
 
 ## `.prom.after_ts`
 

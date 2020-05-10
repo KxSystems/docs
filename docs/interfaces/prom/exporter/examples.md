@@ -22,12 +22,12 @@ Run kdb+ with the supplied `exporter.q` on the host upon which Docker is initial
 The following will expose the metrics on port 8080
 
 ```q
-q exporter.q -p 8080
+q ../exporter.q -p 8080
 ```
 
-Next we are required to initialize docker environment containing a single prometheus instance and a grafana dashboard. This accesses the kdb+ exporter from the local machine at port 8080. Please refer to the prometheus docs for using multiple targets and service discovery if wishing to use it for mulitple targets.
+Next we are required to initialize a docker environment containing a single prometheus instance and a grafana dashboard. This accesses the kdb+ exporter from the local machine at port 8080. If you wish to use it for multiple targets or service discovery please refer to the Prometheus documentation.
 
-Initializing the docker environment varies for Linux/Mac vs Windows as outlined here
+Initializing the docker environment varies for Windows and Mac vs Linux as outlined here.
 
 **Windows and Mac**
 In order to run Prometheus and Grafana, enter the supplied DockerCompose directory and run
@@ -57,18 +57,6 @@ and then the following when you wish to finish with the environment.
 docker-compose -f docker-compose-linux.yml down
 ```
 
-### Example Resource Utilization
-
-In order to show resources being consumed within the demo environment, we have supplied a q script that can connect to the q session being monitored and consumed resources (along with generating example errors).
-
-The following script defaults to connecting to a remote q session on port 8080 (i.e. the q session being monitored above). To do this, run the following from the same machine.
-
-```bash
-q kdb_user_example.q
-```
-
-If the system is configured correctly, you should start to see the metrics changing within the Grafanas kdb+ dashboard after a few seconds.
-
 ### Accessing Prometheus and Grafana
 
 After starting the environment, Prometheus and Grafana should be accessible from your web browser in the port mentioned in the docker-compose.yml these are defaulted as follows
@@ -90,4 +78,16 @@ Files contained with the grafana-config directory contain the defaults used for 
 Example generated dashboard using the exposed metric data:
 
 ![Grafana_dash](../../img/grafana_kdb_example.png)
+
+### Example Resource Utilization
+
+In order to show resources being consumed within the demo environment, we have supplied a q script that can connect to the q session being monitored and consumed resources (along with generating example errors).
+
+The following script defaults to connecting to a remote q session on port 8080 (i.e. the q session being monitored above). To do this, run the following from the same machine at command line.
+
+```bash
+q kdb_user_example.q
+```
+
+If the system is configured correctly, you should start to see the metrics changing within the Grafanas kdb+ dashboard after a few seconds.
 

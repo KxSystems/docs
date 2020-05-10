@@ -11,19 +11,19 @@ keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter,
 
 ## Introduction
 
-Prometheus is free software which facilitates metric gathering, querying and alerting for a wealth of different 3rd party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
+[Prometheus](https://prometheus.io/docs/instrumenting/exporters/) is free software which facilitates metric gathering, querying and alerting for a wealth of different 3rd party languages and applications. It also provides integration with Kubernetes for automatic discovery of supported applications.
 
-Visualization and querying can be done through its built in expression browser, or more commonly via Grafana.
+Visualization and querying can be done through its built in expression browser, or more commonly via [Grafana](https://grafana.com/).
 
-An  environment being administrated or analyzed by Prometheus will be able to include current and past metrics exposed by kdb+.
+An environment being administrated or analyzed by Prometheus will be able to include current and past metrics exposed by kdb+.
 
 ### Use-cases
 
 The following are potential use cases for the interface, this is by no means an exhaustive list
 
-- Effects from version upgrades (e.g. performance before/after changes)
-- Alerts when your that a licence may be due to expire
-- Bad use of symbol types within an instance
+- Effects from version upgrades (e.g. performance before/after changes).
+- Alerts when your that a licence may be due to expire.
+- Bad use of symbol types within an instance.
 
 ### kdb+/Prometheus-Exporter integration
 
@@ -35,10 +35,10 @@ The purpose of this interface is to:
 The following caveats should be made regarding where this interface in its current iteration can be used
 
 1. This interface does not provide service discovery. Prometheus itself has support for multiple mechanisms such as DNS, Kubernetes, EC2, file based config, etc in order to discover all the kdb+ instances within your environment.
-2. You may need to extend this script to provide more relevant metrics for your environment. Please consider contributing if your change may be generic enough to have a wider user benefit
+2. You may need to extend this script to provide more relevant metrics for your environment. Please consider contributing if your change may be generic enough to have a wider user benefit.
 3. General machine/kubernetes/cloud metrics on which kdb+ is running. Metrics can be gathered by such exporters as the node exporter. Metrics from multiple exporters can be correlated together to provide a bigger picture of your environment conditions.
 
-#### Metrics
+### Metrics
 
 In Prometheus `metrics` refer to the statistics which are being monitored. Within prometheus there are a number of different forms of metric, the exposure of these metrics from a kdb+ session allows for the monitoring a q process with Prometheus.
 
