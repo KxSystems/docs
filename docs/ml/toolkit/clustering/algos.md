@@ -1,6 +1,6 @@
 ---
 author: Deanna Morgan
-date: May 2019
+date: May 2020
 keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure
 ---
 
@@ -37,15 +37,9 @@ Where
 -   `k` is the number of clusters
 -   `iter` is the number of iterations to be completed
 -   `kpp` is a boolean flag indicating the initializaton type: random (`0b`) or using [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`)
-<<<<<<< HEAD
 
 returns a list indicating the cluster each datapoint belongs to.
 
-=======
-
-returns a list indicating the cluster each datapoint belongs to.
-
->>>>>>> d14894c5bf3bcea4191aeb83ffa8a91913cb73e9
 ```q
 q)show d:2 10#20?5.
 1.963762 2.585456 2.579898  2.033321  0.8904193 1.508861 ...
@@ -98,7 +92,7 @@ q)group APclt
 
 The **DBSCAN** (Density-Based Spatial Clustering of Applications with Noise) algorithm, groups points that are closely packed in areas of high density. Any points in low-density regions are seen as outliers.
 
-Unlike many clustering algorithms, which require the user to input the desired number of clusters, DBSCAN calculates how many clusters are in the dataset based two criteria
+Unlike many clustering algorithms, which require the user to input the desired number of clusters, DBSCAN calculates how many clusters are in the dataset based on two criteria
 
 1. The minimum number of points required within a neighborhood in order for a cluster to be defined
 
@@ -247,7 +241,7 @@ i1 i2 dist     n
 
 ## Cutting dendrograms
 
-Hierarchical clustering methods (including CURE) produce dendrograms, which can then be _cut_ at a given count or distance to produce a clustering.
+Hierarchical clustering methods (including CURE) produce dendrograms, which can then be _cut_ at a given count or distance to produce clusters.
 
 ### `.ml.clust.hccutk`
 
@@ -287,11 +281,7 @@ q).ml.clust.hccutk[dgram;2]
 
 _Cut dendrogram into clusters based on a distance threshold_
 
-<<<<<<< HEAD
-Syntax: `.ml.clust.hccutdist[t;dist]`
-=======
 Syntax: `.ml.clust.hccutdist[t;dist]
->>>>>>> d14894c5bf3bcea4191aeb83ffa8a91913cb73e9
 
 Where
 
