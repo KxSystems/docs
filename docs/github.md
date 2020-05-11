@@ -16,6 +16,12 @@ Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSys
 <div style="background-color: #efefef; border: 1px solid #005499; border-radius: 10px; display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
 
+:fontawesome-brands-github: 
+GitHub topic queries:&nbsp;&nbsp;
+[`q`](https://github.com/search?q=topic%3Aq "Search GitHub for repositories with topic q")&nbsp;&nbsp;
+[`kdb`](https://github.com/search?q=topic%3Akdb "Search GitHub for repositories with topic kdb")&nbsp;&nbsp;
+[`kdb-q`](https://github.com/search?q=topic%3Akdb-q "Search GitHub for repositories with topic kdb-q")
+
 
 ## Kx
 
@@ -638,7 +644,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/timeseries/kdb">kdb ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/timeseries/kdb">kdb</a></td>
 <td>Kdb+ database examples. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
 						(TimeStored)
 					</a></span>
@@ -659,6 +665,13 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://github.com/StephenTaylor-Kx/klondike">klondike  ==new==</a></td>
+<td>Klondike solitaire <span class="author"><a href="https://github.com/StephenTaylor-Kx?tab=repositories">
+						(Stephen Taylor)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/srpeck/kxl">kxl</a></td>
 <td>Experimental spreadsheet UI. <span class="author"><a href="https://github.com/srpeck?tab=repositories">
 						(Stephen Peck)
@@ -666,7 +679,7 @@ about new repositories.</div>
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/kxcontrib/phrases">phrases ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/kxcontrib/phrases">phrases</a></td>
 <td>The Q Phrasebook <span class="author"><a href="https://github.com/kxcontrib?tab=repositories">
 						(kxcontrib)
 					</a></span>
