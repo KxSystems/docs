@@ -38,7 +38,7 @@ q)\t 0
 * On the other process load the test receiver script which updates messages from topics `topic1` and `topic2`
 
 ```q
-q)\l receiver.q
+q)\l consumer.q
 "Message received"
 "Message received"
 "Message received"
