@@ -28,6 +28,6 @@ range  i . i h i j e f i . p m d z n u v t
 
 Range: `ihjefpmdznuvt`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Subtract](subtract.md)  
 Basics: [Mathematics](../basics/math.md)

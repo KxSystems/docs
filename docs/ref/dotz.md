@@ -51,7 +51,7 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 
     By default, callbacks are not defined in the session. After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Callbacks](../kb/callbacks.md),
 [Using `.z`](../kb/using-dotz.md)
 <br>
@@ -110,7 +110,7 @@ and `mySSOAuthenticator` is your custom code that authenticates against your SSO
 
 Note that if `.z.ac` is defined, `.z.pw` will _not_ be called for HTTP connections for authentication.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pw` password check](#zpw-validate-user)
 
 
@@ -128,7 +128,7 @@ x| `a`b
 y| ,`a
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\b`](../basics/syscmds.md#b-views)
 
 
@@ -237,13 +237,13 @@ q))'`up
 ```bash
 os>..
 ```
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pc` port close](#zpc-close)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`exit`](exit.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\\` quit](../basics/syscmds.md#quit)
 
 
@@ -268,7 +268,7 @@ q).z.f
 `test.q
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.x` argv](#zx-argv)
 
 
@@ -337,7 +337,7 @@ q).z.k
 2006.10.30
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.k` release date](#zk-release-date)
 
 
@@ -355,7 +355,7 @@ q)
 
 This value is checked against `.Q.k` as part of the startup to make sure that the executable and the version of q.k being used are compatible.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.K` version](#zk-version)
 
 
@@ -527,7 +527,7 @@ Where `f` is a unary function, called with the object that is passed to the q se
 
 The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and executes in the root context.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.ps`](#zps-set)
 
 
@@ -569,10 +569,10 @@ Connection     | "keep-alive"
 Host           | "localhost:5001"
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pp` port post](#zpp-http-post)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.h` namespace](doth.md)
 
 
@@ -604,7 +604,7 @@ To return to the default display, just delete your custom handler
 q)\x .z.pi
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Changes in V2.4](../releases/ChangesIn2.4.md#zpi)
 
 
@@ -623,7 +623,7 @@ Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ 
 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pc` port close](#zpc-close),
 [`.z.pw` validate user](#zpw-validate-user)
 
@@ -638,7 +638,7 @@ There is no default implementation, but an example would be that it calls [`valu
 
 See `.z.ph` for details of the argument.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.h` namespace](doth.md)
 
 
@@ -650,7 +650,7 @@ Since V3.5+3.6 2019.01.31, remote connections using the "qcon" text protocol are
 
 This allows a user to handle remote qcon connections (via `.z.pq`) without defining special handling for console processing (via `.z.pi`).
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Firewalling](../kb/firewalling.md) for locking down message handlers
 
 
@@ -674,7 +674,7 @@ q)0 "2+2"
 4
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.pg`](#zpg-get)
 
 
@@ -692,7 +692,7 @@ If `.z.pw` returns `0b` the task attempting to establish the connection will get
 
 The default definition is `{[user;pswd]1b}`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.po` port open](#zpo-open)
 <br>
 <i class="fas fa-book""></i>
@@ -705,7 +705,7 @@ Syntax: `.z.q`
 
 Returns `1b` if Quiet Mode is set, else `0b`.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
 
 
@@ -752,7 +752,7 @@ q)2010.12.16D17:12:12.849442000
 
 When kdb+ has completed executing a script passed as a command-line argument, and if there are no open sockets nor a console, kdb+ will exit. The timer alone is not enough to stop the process exiting – it must have an event source which is a file descriptor (socket, console, or some plugin registering a file descriptor and callback via the C API `sd1` function).
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\t`](../basics/syscmds.md#t-timer)
 
 
@@ -849,7 +849,7 @@ As the connection has been closed by the time `.z.wc` is called there are strict
 
 To allow you to clean up things like tables of users keyed by handle the handle that _was_ being used is passed as a parameter to `.z.wc`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.po` port open](#zpo-open),
 [`.z.pc` port close](#zpc-close),
 [`.z.pw` validate user](#zpw-validate-user)
@@ -864,7 +864,7 @@ Where `f` is a unary function, `.z.wo` is evaluated when a websocket connection 
 
 The argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.wc` websocket close](#zwc-websocket-close),
 [`.z.po` port open](#zpo-open),
 [`.z.pc` port close](#zpc-close),
@@ -957,7 +957,7 @@ xyz| 321f
 efg| `foo
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.z.f` file](#zf-file)
 
 

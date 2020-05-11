@@ -7,7 +7,7 @@ date: February 2020
 # Help for `man.q`
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/man](https://github.com/kxsystems/man)
 
 ## Examples
@@ -43,15 +43,15 @@ man "--help"
 ```
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Reference](../ref/index.md)
 <br>
-<i class="far fa-handshake"></i>
+:fontawesome-regular-handshake:
 [Interfaces](../interfaces/index.md)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Knowledge base](../kb/index.md)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [White Papers](../wp/index.md)
 

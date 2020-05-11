@@ -56,6 +56,6 @@ Operators and keywords for working with dictionaries and tables.
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [qSQL](qsql.md)  
 Reference: Apply, Index, Trap: [Step dictionaries](../ref/apply.md#step-dictionaries)

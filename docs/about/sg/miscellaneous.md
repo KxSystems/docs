@@ -6,7 +6,7 @@ author: Stephen Taylor
 keywords: kdb+, number, place, q, refactor, style
 ---
 
-# <i class="fas fa-pen-nib"></i> Miscellaneous
+# :fontawesome-solid-pen-nib: Miscellaneous
 
 
 ## Refactor
@@ -28,7 +28,7 @@ to
 
 > The active mood is to be preferred. 
 
-<i class="far fa-hand-point-right"></i> [_The Complete Plain Words_](https://en.wikipedia.org/wiki/The_Complete_Plain_Words)
+:fontawesome-regular-hand-point-right: [_The Complete Plain Words_](https://en.wikipedia.org/wiki/The_Complete_Plain_Words)
 
 
 ## Numbers 

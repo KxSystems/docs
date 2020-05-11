@@ -5,7 +5,7 @@ author: Peter Lyness
 date: May 2018
 keywords: API, Java, interface, connection
 ---
-# <i class="fab fa-java"></i> Java API for kdb+
+# :fontawesome-brands-java: Java API for kdb+
 
 
 
@@ -36,13 +36,13 @@ Particular consideration is given to how the API facilitates subscription and pu
 The examples presented here form a set of practical templates complementary to the [primary source of information](../../interfaces/java-client-for-q.md) on code.kx.com.
 These templates can be combined and adapted to apply kdb+ across a
 broad range of problem domains. They are available on 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [GitHub](https://github.com/kxcontrib/java-for-kdb-examples).
 
 
 ## API overview  
 
-The API is contained in a <i class="fab fa-github"></i> [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
+The API is contained in a :fontawesome-brands-github: [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
 Inclusion in a development project is, therefore, a straightforward matter
 of including the file with other source code under the package `kx`, and
 ensuring it is properly imported and referenced by other classes. If
@@ -54,7 +54,7 @@ As the API is provided as source, it is perfectly possible to customize code to 
 However, without prior knowledge of how the interactions work, this is not advised unless the solution to these requirements or issues are known.
 It is also possible, and in some contexts encouraged, to wrap the
 functionality of this class within a model suitable for your framework.
-An example might be the open-source <i class="fab fa-github"></i> [qJava library](https://github.com/exxeleron/qJava). 
+An example might be the open-source :fontawesome-brands-github: [qJava library](https://github.com/exxeleron/qJava). 
 Although it is not compatible with the most recent kdb+ version at the time of writing, it shows how to use `c.java` as a core over which an object-oriented framework of q types and functionality has been applied.
 
 The source file is structured as a single outer class, `c`. 
@@ -842,7 +842,7 @@ simple dataflow of a potential kdb+ tick system:
 
 ![Simple dataflow of a potential kdb+ tick system](media/image2.png)
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [_Building Real-time Tick Subscribers_](../rt-tick/index.md) regarding the above vanilla setup
 
 Of interest in this white paper are the Java publisher and subscriber processes. As the kdb+ tick system is very widely used, both of these kinds of processes are highly likely to come up in development tasks involving kdb+ interfacing.
@@ -1074,7 +1074,7 @@ int[] aSize = new int[]{1000, 2000};
 In order to maximize tickerplant throughput and efficiency, it is
 generally recommended to publish multiple rows in one go. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 White paper [_Kdb+tick Profiling for Throughput Optimization_](../tick-profiling.md).
 
 Care has to be taken here to ensure that all typed arrays maintain

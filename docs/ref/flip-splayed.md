@@ -19,5 +19,5 @@ Where `x` is a symbol list and `y` is
 returns the flip of `y`.
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Dictionaries & tables](../basics/dictsandtables.md)

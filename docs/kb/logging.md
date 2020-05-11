@@ -196,5 +196,5 @@ Currently, only a single replicating process can subscribe to the master process
 
     A concise implementation of logger for q applications.
 
-    <i class="fab fa-github"></i> 
+    :fontawesome-brands-github: 
     [prodrive11/log4q](https://github.com/prodrive11/log4q)

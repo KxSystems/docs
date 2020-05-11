@@ -9,7 +9,7 @@ keywords: api, interface, j, kdb+, library, q
 
 JQ is a socket interface to kdb+ from [J](https://www.jsoftware.com/#/), for example to provide a GUI for a kdb+ server. JQ was written in J602 for V2.4, and has been tested on w32, l32 and l64. 
 
-<i class="fab fa-github"></i> [kxcontrib/cburke/jk](https://github.com/kxcontrib/cburke/tree/master/jk) 
+:fontawesome-brands-github: [kxcontrib/cburke/jk](https://github.com/kxcontrib/cburke/tree/master/jk) 
 
 
 ## Sample session
@@ -499,7 +499,7 @@ Datetime is a float: day number + seconds as a fraction of day. For example:
 
 ## Message format
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Interprocess communication](../basics/ipc.md) for the internal layout of messages
 
 

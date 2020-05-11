@@ -45,6 +45,6 @@ MSFT 0.5433888 CME 250
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)
 

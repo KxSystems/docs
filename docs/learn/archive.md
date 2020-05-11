@@ -3,14 +3,14 @@ title: Archive – Learn – kdb+ and q documentation
 description: Links relating to q and the k programming languages and their origins.
 keywords: archive, k, kdb+, obsolete, q
 ---
-# <i class="fas fa-archive"></i> Archive
+# :fontawesome-solid-archive: Archive
 <!-- ![monk](../img/monk.png) -->
 
 
 
 Links relating to q and the k programming languages and their origins.
 
-## <i class="fas fa-book"></i> Articles
+## :fontawesome-solid-book: Articles
 
 * [A conversation with Arthur Whitney](https://queue.acm.org/detail.cfm?id=1531242) 2009
 * [An interview with Arthur Whitney](https://kx.com/blog/arthur-whitney-talks/) 2004
@@ -19,14 +19,14 @@ Links relating to q and the k programming languages and their origins.
 * [Vector processing languages: the future of Big Data analytics and real-time business intelligence](http://conceptualorigami.blogspot.com/2010/12/vector-processing-languages-future-of.html) Conceptual Origami
 
 
-## <i class="fas fa-laptop"></i> Websites
+## :fontawesome-solid-laptop: Websites
 
 * [Jsoftware wiki](https://code.jsoftware.com/wiki/Main_Page)
 * [no stinking loops](http://www.nsl.com) Stevan Apter
 
 
 
-## <i class="fas fa-book"></i> Older documents
+## :fontawesome-solid-book: Older documents
 
 
 * [Abridged q language manual](https://legaldocumentation.kx.com/q/d/q.htm), Arthur Whitney, 2009

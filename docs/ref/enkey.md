@@ -68,7 +68,7 @@ a b  c
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`key`](key.md), 
 [`keys`](keys.md), 
 [`xkey`](keys.md#xkey)  

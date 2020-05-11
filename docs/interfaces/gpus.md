@@ -15,7 +15,7 @@ To set the scene (and hopefully experts will forgive the simplifications) CUDA i
 -   there is enough parallelism in the computation to keep the hardware resources of the card/s busy
 -   that the data set fit in the limited memory of the cards
 
-<i class="far fa-hand-point-right"></i> [Documentation on CUDA](https://developer.nvidia.com/cuda-downloads)
+:fontawesome-regular-hand-point-right: [Documentation on CUDA](https://developer.nvidia.com/cuda-downloads)
 
 On to a simple example of a function that takes an array of reals and squares it. Here we use single-precision floating point, however double can be used as well on later-model cards. Here is the annotated code:
 
@@ -78,7 +78,7 @@ l64/ ...
 
 To give a feel for real use-cases, a Libor Monte-Carlo portfolio computation runs in about 26 seconds on a single core of an x86 machine, and in 0.2 seconds on the graphics card. Some companies are releasing commercial code, such as swaption volatility calculations, as libraries that use GPUs under the covers.
 
-<i class="far fa-hand-point-right"></i> [nvidia.com/object/cuda_home.html](https://developer.nvidia.com/cuda-zone) 
+:fontawesome-regular-hand-point-right: [nvidia.com/object/cuda_home.html](https://developer.nvidia.com/cuda-zone) 
 
 (Based on a k4 post by Niall 2008.09.13)
 

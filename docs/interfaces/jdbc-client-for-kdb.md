@@ -3,11 +3,11 @@ title: JDBC client for kdb+ – Interfaces – kdb+ and q documentation
 description: How to connect a Java client program to a kdb+server process using the JDBC driver
 keywords: api, interface, java, jdbc, kdb+, library, q
 ---
-# <i class="fab fa-java"></i> JDBC client for kdb+
+# :fontawesome-brands-java: JDBC client for kdb+
 
 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/jdbc.java](https://github.com/KxSystems/kdb/blob/master/c/jdbc.java)
 
 Compile:

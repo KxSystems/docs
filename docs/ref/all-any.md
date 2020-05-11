@@ -79,7 +79,7 @@ q)if[any x in y;....]   / use in control structure
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Cast](cast.md),
 [`&` `and`](lesser.md), 
 [`|` `or`](greater.md), 

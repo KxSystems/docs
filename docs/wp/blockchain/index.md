@@ -687,7 +687,7 @@ heightToPartition:{[Height;Width]
   }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Intraday Writedown Solutions](../intraday-writedown/index.md)
 
 
@@ -724,7 +724,7 @@ q).z.zd:17 2 6
 
 The above setting resulted in a compression ratio of 2.7 on average. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Compression in kdb+](../compress/index.md)
 
 

@@ -38,7 +38,7 @@ Since V3.6 2017.09.26 `inv` uses LU decomposition.
 Previously it used Cholesky decomposition as well.
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`lsq`](lsq.md)  
 Basics: [Mathematics](../basics/math.md)  
 Wikipedia: [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition),

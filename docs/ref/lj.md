@@ -125,6 +125,6 @@ a b c
 Since 2014.05.03, the earlier version is available in all V3.x versions as `ljf`.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)
 

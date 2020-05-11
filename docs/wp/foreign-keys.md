@@ -23,7 +23,7 @@ Tests performed using kdb+ 3.0 (2013.04.05).
 
 The concept behind a foreign key is analogous to that of an enumerated list. While enumerating a list involves separating it into its distinct elements and their associated indexes within the list, here we take an arbitrary table column and enumerate it across a keyed column, which may be either in the same table as itself or a different table in the same database. Behind the scenes, a pointer to the associated key column replaces the enumerated column’s values essentially creating a parent-child relationship if they are in the same table or a data link if they are in different tables.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Enumerate `$`](../ref/enumerate.md), 
 [Enumeration `!`](../ref/enumeration.md), 
 [Enum Extend `?`](../ref/enum-extend.md)  

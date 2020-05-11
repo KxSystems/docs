@@ -18,6 +18,6 @@ q)(3;"a")<>(2 3 4;"abc")
 011b
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Equal](equal.md)  
 Basics: [Comparison](../basics/comparison.md)

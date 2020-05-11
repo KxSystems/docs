@@ -102,6 +102,6 @@ q)views[]
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`eval` and `reval`](eval.md),  
 Basics: [Internal function `-5!`](../basics/internal.md)

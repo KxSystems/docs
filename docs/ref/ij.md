@@ -78,6 +78,6 @@ a b c
 Since 2016.02.17, the earlier version is available in all V3.4 and later versions as `ijf`.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)
 

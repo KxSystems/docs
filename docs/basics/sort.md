@@ -34,6 +34,6 @@ function                        | semantics
     Re-sorting compressed data on disk decompresses it. 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Dictionaries & tables](dictsandtables.md)
 

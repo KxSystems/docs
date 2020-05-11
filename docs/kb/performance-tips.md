@@ -18,7 +18,7 @@ In the expression `f each xs`, `f` is applied to each element of `xs` in sequenc
 
 The scripts `throughput.q` and `io.q` are a useful starting point for users wanting to measure the performance of the systems where kdb+ will be deployed. The results of these (somewhat rough) tests can be used to stress-test different CPU, disk and network configurations running kdb+. 
 
-<i class="fab fa-github"></i> [simongarland/io](https://github.com/simongarland/io)
+:fontawesome-brands-github: [simongarland/io](https://github.com/simongarland/io)
 
 
 ### Throughput

@@ -217,6 +217,6 @@ rank | example      | semantics
 
 Many of the operators tabulated above have unary forms in k.
 
-<i class="far fa-hand-point-right"></i> [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
+:fontawesome-regular-hand-point-right: [Exposed infrastructure](../basics/exposed-infrastructure.md#unary-forms)
 
 

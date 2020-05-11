@@ -4,7 +4,7 @@ description: Q primitives in V4.0 implicitly seek and use opportunities for para
 author: Pierre Kovalev
 date: March 2020
 ---
-# <i class="fas fa-bolt"></i> Multithreaded primitives
+# :fontawesome-solid-bolt: Multithreaded primitives
 
 
 ![Parallelism](../img/parallelism.jpg)

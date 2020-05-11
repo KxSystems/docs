@@ -31,5 +31,5 @@ Typically, client processes connect to a gateway, and execute canned functions o
 
 This can easily be extended to group/role permissioning.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Using `.z`](using-dotz.md) for some concrete examples, such as `controlaccess.q`

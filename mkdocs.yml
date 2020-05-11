@@ -7,7 +7,9 @@ extra:
 extra_css: 
   - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
   - 'https://code.kx.com/stylesheets/extra.css'
-  - 'stylesheets/extra.css'
+  # - 'stylesheets/extra.css'
+  - 'stylesheets/q.css'
+  - 'stylesheets/carousel-6.css'
 extra_javascript: 
   # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
   # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
@@ -26,24 +28,30 @@ markdown_extensions:
   # - codehilite(guess_lang=false)
   - extra
   # - fenced_code
-  # - fontawesome_markdown
+  - meta
   - pymdownx.arithmatex
   # - pymdownx.betterem(smart_enable=all)
-  # - pymdownx.caret
+  - pymdownx.caret
   # - pymdownx.critic
-  # - pymdownx.emoji:
-  # emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   # - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   # - pymdownx.smartsymbols
   # - pymdownx.superfences
+  - pymdownx.tabbed
   # - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
   - toc:
       permalink: false
+# specifying a French search engine is a workaround for a missing file
+# /assets/javascripts/lunr/min/lunr..min.js
 plugins: 
-  - search
+  - search:
+      lang: fr
   # - markdownextradata
 remote_branch: 'master'
 # repo_name: 'GitHub'
@@ -58,9 +66,10 @@ use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
   favicon: ./img/favicon.ico
-  feature:
-    tabs: true
+  features:
+    - tabs
   name: 'material'
+  language: en
   logo: 'img/kx.jpeg'
   palette: 
     primary: 'blue'
@@ -73,7 +82,7 @@ theme:
 nav:
   - Home: index.md
   - Reference: https://code.kx.com/q/ref/
-  - GitHub: github.md
+  - Community: github.md
   - Support: support.md
   - Developer tools: devtools.md
   - Corporate site: https://kx.com
@@ -86,50 +95,103 @@ nav:
       - macOS: learn/install/macos.md
       - Windows: learn/install/windows.md
       - DigitalOcean: learn/install/digitalocean.md
-    - Licensing: learn/licensing.md
-    - Brief introduction: learn/brief-introduction.md
-    - Dictionaries & tables: learn/dicts-tables.md
+    - Licenses: learn/licensing.md
+    - Mountain tour:
+      - TLDR: learn/tour/tldr.md
+      - Begin here: learn/tour/index.md
+      - The q session: learn/tour/session.md
+      - Databases: learn/tour/databases.md
+      - Tables: learn/tour/tables.md
+      - CSVs: learn/tour/csvs.md
+      - Datatypes: learn/tour/datatypes.md
+      - Dictionaries: learn/tour/dictionaries.md
+      - Queries: learn/tour/queries.md
+      - Functions: learn/tour/functions.md
+      - Iteration: learn/tour/iteration.md
+      - Files: learn/tour/files.md
+      - TCP/IP: learn/tour/tcp-ip.md
+      - HTTP, HTTPS: learn/tour/http.md
+      - Scripts: learn/tour/scripts.md
+      - IDE: learn/tour/ide.md
+    - Q for quants: learn/brief-introduction.md
+    # - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md
-    - Q for Mortals 3: https://code.kx.com/q4m3/index.html
-    - Q Phrases: https://code.kx.com/phrases/index.html
-    - Remarks on Style:
-      - Preface: style/index.md
-      - Maxims: style/maxims.md
-      - Names: style/names.md
-      - Default arguments: style/default-arguments.md
-      - Braces: style/braces.md
-      - Indentation: style/indentation.md
-      - Whitespace: style/whitespace.md
-      - Parentheses: style/parentheses.md
-      - Line length: style/line-length.md
-      - Internal assignment: style/internal-assignment.md
-      - Function length: style/function-length.md
-      - Function arguments: style/function-arguments.md
-      - Modularity: style/modularity.md
-      - Communication lines: style/communication-lines.md
-      - Comments: style/comments.md
-      - Conditionals: style/conditionals.md
-      - De-looping: style/de-looping.md
-      # - Window scripts and function: 
-      # - Reference error hell: 
-      - Engine design: style/engine-design.md
-      # - Window design:
-      # - Connections: 
-      # - Dependencies:
-      # - Event code
-      # - f and g:
-      # - Fast loads: fast-loads.md
-      - Compose out eaches: style/composition.md
-      - Application: style/application.md
-      - Defaults: style/defaults.md
-      - Projection: style/projection.md
-      - Which each?: style/which-each.md
-      - What’s in a script?: style/whats-in-a-script.md
-      - SAM – A simple application model: style/sam.md
-      - New wine for old bottles: style/new-wine.md
-      - Omitted pages: style/omitted-pages.md
-    - Shifts & scans: learn/shifts-scans.md
+    # - Q for Pythons:
+    #   - Introduction: learn/python/index.md
+    #   - Primer:
+    #     - Datatypes: learn/python/primer/datatypes.md
+    #     - Dictionaries: learn/python/primer/dictionaries.md
+    #     - Tables: learn/python/primer/tables.md
+    #     - Operations: learn/python/primer/operations.md
+    #     - Operations on dictionaries: learn/python/primer/operations-dict.md
+    #     - Iterators: learn/python/primer/iterators.md
+    #     - Table operations (qSQL): learn/python/primer/table-operations.md
+    #     - Semantic extensions to SQL: learn/python/primer/extensions-to-sql.md
+    #     - Modifying tables: learn/python/primer/modify-tables.md
+    #     - Temporal primitives: learn/python/primer/temporal-primitives.md
+    #     - Execution control: learn/python/primer/control.md
+    #     - Input/output to files: learn/python/primer/file-io.md
+    #     - Interprocess communication: learn/python/primer/ipc.md
+    #     - Type and cast: learn/python/primer/type-cast.md
+    #     - Debugging: learn/python/primer/debug.md
+    #     - Namespaces: learn/python/primer/namespace.md
+    - Examples from Python:
+      - Basic: learn/python/examples/index.md
+      - Array: learn/python/examples/array.md
+      - List: learn/python/examples/list.md
+      - Strings: learn/python/examples/string.md
+      - Dictionaries: learn/python/examples/dict.md
+    - Q for Mortals 3: /q4m3/
+    - Reading room:
+      - Information desk: learn/reading/index.md
+      - Boggle: learn/reading/boggle.md
+      - Cats cradle: learn/reading/strings.md
+      - Klondike: learn/reading/klondike.md
+      - Phrasebook: /phrases/
+      - Scrabble: learn/reading/scrabble.md
+    - Advanced q:
+      - Overview: learn/advanced.md
+      - Remarks on Style:
+        - Preface: style/index.md
+        - Maxims: style/maxims.md
+        - Names: style/names.md
+        - Default arguments: style/default-arguments.md
+        - Braces: style/braces.md
+        - Indentation: style/indentation.md
+        - Whitespace: style/whitespace.md
+        - Parentheses: style/parentheses.md
+        - Line length: style/line-length.md
+        - Internal assignment: style/internal-assignment.md
+        - Function length: style/function-length.md
+        - Function arguments: style/function-arguments.md
+        - Modularity: style/modularity.md
+        - Communication lines: style/communication-lines.md
+        - Comments: style/comments.md
+        - Conditionals: style/conditionals.md
+        - De-looping: style/de-looping.md
+        # - Window scripts and function: 
+        # - Reference error hell: 
+        - Engine design: style/engine-design.md
+        # - Window design:
+        # - Connections: 
+        # - Dependencies:
+        # - Event code
+        # - f and g:
+        # - Fast loads: fast-loads.md
+        - Compose out eaches: style/composition.md
+        - Application: style/application.md
+        - Defaults: style/defaults.md
+        - Projection: style/projection.md
+        - Which each?: style/which-each.md
+        - What’s in a script?: style/whats-in-a-script.md
+        - SAM – A simple application model: style/sam.md
+        - New wine for old bottles: style/new-wine.md
+        - Omitted pages: style/omitted-pages.md
+      - Shifts & scans: learn/shifts-scans.md
+      - Technical articles: learn/blogs.md
+      - Views: learn/views.md
+      - Archive: learn/archive.md
     - Starting kdb+: 
       - Overview: learn/startingkdb/index.md
       - The q language: learn/startingkdb/language.md
@@ -137,9 +199,6 @@ nav:
       - Tables: learn/startingkdb/tables.md
       - Historical database: learn/startingkdb/hdb.md
       - Realtime database: learn/startingkdb/tick.md
-    - Technical articles: learn/blogs.md
-    - Views: learn/views.md
-    - Archive: learn/archive.md
   - Reference:
     - Reference card: ref/index.md
     - Basics:

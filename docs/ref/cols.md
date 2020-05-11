@@ -86,7 +86,7 @@ q)cols trade
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`meta`](meta.md)  
 .Q: [`.Q.V`](dotq.md#qv-table-to-dict) (table to dictionary)  
 Basics: [Dictionaries & tables](../basics/dictsandtables.md), 

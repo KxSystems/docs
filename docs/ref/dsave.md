@@ -132,13 +132,13 @@ bsize| j
 asize| j    
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`set`](get.md#set), 
 [`.Q.en`](dotq.md#qen-enumerate-varchar-cols), 
 [`.Q.dpft`](dotq.md#qdpft-save-table), 
 [`.Q.hdpf`](dotq.md#qhdpf-save-tables) 
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)
 
 

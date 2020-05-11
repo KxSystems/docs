@@ -20,7 +20,7 @@ A function that reduces its argument, typically a list to an atom, e.g. `sum`
 ## Applicable value
 
 A function, file- or process-handle, list, or dictionary: an object that can be applied to its [argument/s or index/es](#argument).
-<!-- <i class="far fa-hand-point-right"></i> 
+<!-- :fontawesome-regular-hand-point-right: 
 [Iterables](../tutorials/uq/values.md)
  -->
 
@@ -28,7 +28,7 @@ A function, file- or process-handle, list, or dictionary: an object that can be 
 ## Apply
 
 As in _apply a function to its arguments_:  evaluate a function on values corresponding to its arguments.  
-<i class="far fa-hand-point-right"></i> [Application](application.md)
+:fontawesome-regular-hand-point-right: [Application](application.md)
 
 
 ## Argument
@@ -67,7 +67,7 @@ A single instance of a [datatype](datatypes.md), eg `42`, `"a"`, `1b`, `2012.09.
 
 An atomic function is a uniform function such that for `r:f[x]`  `r[i]~f x[i]` is true for all `i`, e.g. `signum`. A function `f` is atomic if `f` is identical to `f'`. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Atomic functions](atomic.md)
 
 
@@ -77,7 +77,7 @@ Attributes are metadata associated primarily with tables and dictionaries to imp
 
 The attributes are: sorted, unique, grouped, and partitioned.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Reference: [Set Attribute](../ref/set-attribute.md), 
 [Step dictionaries](../ref/apply.md#step-dictionaries)
 
@@ -92,7 +92,7 @@ A value of rank 2, i.e. a function that takes 2 arguments, or a list of depth â‰
 
 Applying a value to its argument/s or indexes by writing it to the left of an argument list, e.g. `+[2;3]` or `count["zero"]`.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Application](application.md)
 
 
@@ -105,7 +105,7 @@ A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master t
 
 A character constant is defined by entering the characters between double-quotes, as in `"abcdefg"`. If only one character is entered the constant is an atom, otherwise the constant is a list. For example, `"a"` is an atom. The expression `enlist "a"` is required to indicate a one character list. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Escape sequences](#escape-sequence) for entering non-graphic characters in character constants.
 
 
@@ -122,7 +122,7 @@ _String_ is another name for character vector.
 
 Characters ignored by the interpreter.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Comment syntax](syntax.md#comments)
 
 
@@ -130,7 +130,7 @@ Characters ignored by the interpreter.
 
 Because floating-point values resulting from computations are usually only approximations to the true mathematical values, the Equal operator is defined so that `x = y` is `1b` (true) for two floating-point values that are either near one another or identical. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Precision](precision.md)
 
 
@@ -138,7 +138,7 @@ Because floating-point values resulting from computations are usually only appro
 
 Lists, dictionaries and tables conform if they are either atoms or have the same count.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Conformability](conformable.md)
 
 
@@ -146,7 +146,7 @@ Lists, dictionaries and tables conform if they are either atoms or have the same
 
 A handle to the communication path to a process or object in the file system.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Connection handles](handles.md),
 [File system](files.md),
 [Interprocess communication](ipc.md)
@@ -161,7 +161,7 @@ Console refers to the source of messages to q and their responses that are typed
 
 Control words `do`, `if`, and `while` interrupt the usual evaluation rules, e.g. by omitting expressions, terminating evaluation.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Evaluation control](control.md)
 
 
@@ -209,14 +209,14 @@ names| bob carol ted alice
 ages | 42  39    51  44
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`!` Dict](../ref/dict.md)
 
 
 ## Domain
 
 The domain of a function is all the possible values of its argument.  
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 Functions with multiple arguments have multiple domains. 
@@ -260,7 +260,7 @@ The distinction between `()` and the typed empty lists is relevant to certain op
 ## Enumeration
 
 A representation of a list as indexes of the items in its nub or another list.  
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Enumerations](enumerations.md)
 
 
@@ -303,7 +303,7 @@ An absolute or relative filepath as a string, e.g. `":path/to/data"`.
 
 A symbol atom denoting a file or folder in the file system, e.g. `` `:path/to/data``
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](files.md)
 
 
@@ -345,7 +345,7 @@ A mapping from input/s to result defined by an algorithm.
 
 Operators, keywords, compositions, projections and lambdas are all functions. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`.Q.res`](../ref/dotq.md#qres-keywords) returns a list of keywords
 
 
@@ -387,7 +387,7 @@ For function `f` the value `x` such that `y~f[x;y]` for any `y`.
 
 Q knows the identity elements of some functions, e.g. `+` (zero), but not others, e.g. {x+y} (also zero). 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Variadic syntax](variadic.md)
 
 
@@ -440,7 +440,7 @@ Functions are defined in the _lambda notation_: an optional signature followed b
 
 A defined function is also known as a _lambda_.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Lambda notation](function-notation.md)
 
 
@@ -463,7 +463,7 @@ See _Argument_
 
 An array, its items indexed by position.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [List notation](syntax.md#list-notation)
 
 
@@ -512,7 +512,7 @@ A synonym for _primitive_.
 
 The unique items of a list.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`distinct`](../ref/distinct.md)
 
 
@@ -532,7 +532,7 @@ A function of rank 0, i.e. that takes no arguments.
 
 A primitive binary function that may be applied infix as well as prefix, e.g. `+`, `&`.  
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Application](application.md)
 
 
@@ -554,7 +554,7 @@ Applying an iterator to its argument by writing it to the right, e.g. `+/` appli
 
 Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `vx` is equivalent to `v[x]`. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Application](application.md)
 
 
@@ -567,7 +567,7 @@ Defined in the q language.
 
 A symbol defining the communication path to a process.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md#processes)
 
 
@@ -575,7 +575,7 @@ A symbol defining the communication path to a process.
 
 A function passed fewer arguments than its rank projects those arguments and returns a projection: a function of the unspecified argument/s. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Projection](application.md#projection)
 
 
@@ -590,7 +590,7 @@ The range of a function is the complete set of all its possible results.
 
 All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 
@@ -606,7 +606,7 @@ rank | adjective  | example
 3    | ternary    | [`ssr`](../ref/ss.md#ssr) string search and replace
 4    | quaternary | [`.[d;i;m;my]`](../ref/overloads.md#dot) Amend
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Function notation](function-notation.md#rank)
 
 Of a **list**, the depth to which it is nested. 
@@ -756,7 +756,7 @@ A source of messages.
 
 Most binary operators have unary forms that take a single argument. Q provides more legible covers for these functions.  
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Exposed infrastructure](exposed-infrastructure.md)
 
 
@@ -769,7 +769,7 @@ A value of rank 1, i.e. a function with 1 argument, or a list of depth â‰¥1.
 
 See **Iterator**.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Iterators](../ref/iterators.md)
 
 
@@ -797,7 +797,7 @@ _Pass by value_ means passing an object (not its name) as an argument to a funct
 
 A value that may be applied to a variable number arguments is variadic. For example, a matrix, the operator `@`, or the derived function `+/`. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Each Prior](../ref/maps.md#each-prior), 
 [Over, Scan](../ref/accumulators.md) 
 
@@ -835,7 +835,7 @@ The act of defining a view does not trigger its evaluation.
 
 A view should not have side effects, i.e. should not update global variables.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`view`, `views`](../ref/view.md)  
 [`.Q.view`](../ref/dotq.md#qview-subview) (subview)  
 Tutorial: [Views](../learn/views.md)

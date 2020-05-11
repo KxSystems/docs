@@ -16,7 +16,7 @@ Running analytics in real-time has the benefit of alerting on transactions as so
 
 In general, alerts on trading abuses like Momentum Ignition or Ping Orders in the Kx for Surveillance system, fire in real-time on real-time streaming data. While it may be simpler to operate on intraday data by looking across, say, fixed 15-minute buckets of data in isolation, such an approach risks missing alerts. For example, a trader might not violate Ping Orders alert logic within bucket $N$ or bucket $N+1$ in isolation but might violate it if they were combined.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Blog:<br>
 [Momentum Ignition Alert](https://kx.com/blog/kx-product-insights-momentum-ignition-alert/)<br>
 [Ping Order Alerts](https://kx.com/blog/kx-product-insights-ping-order-alerts/)
@@ -238,10 +238,10 @@ In the intraday cases, when we say every $x$ minutes, we mean every $x$ minutes 
 
 For each case, we run the alert analytic twenty times to simulate twenty such logic checks running in an alert-engine process within the system.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Appendix](#appendix-surveillance-framework-example) for how to install and configure the code.
 
 
@@ -407,7 +407,7 @@ We set a similar but simpler schema for `dxTradePublic`. Other adjustments to th
 
 We assume the reader is installing on a Linux platform.
 
-1.  Clone the repository <i class="fab fa-github"></i> [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
+1.  Clone the repository :fontawesome-brands-github: [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
 
     <pre><code class="language-bash">
     $ cd $HOME

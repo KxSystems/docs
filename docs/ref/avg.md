@@ -115,9 +115,9 @@ a  | 10.75
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Mathematics](../basics/math.md)<br>
-<i class="fab fa-wikipedia-w"></i> Wikipedia:<br>
+:fontawesome-brands-wikipedia-w: Wikipedia:<br>
 [Weighted average mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)<br>
 [Volume-weighted average price (VWAP)](https://en.wikipedia.org/wiki/Volume-weighted_average_price)  
 

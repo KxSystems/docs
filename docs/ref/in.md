@@ -89,7 +89,7 @@ q)any ` ~/: (1 2;`)
 1b
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`except`](except.md),
 [`inter`](inter.md),
 [`union`](union.md)  

@@ -59,12 +59,12 @@ RO: read only; RW: read-write
 
 The datatype of an object is given as a short int: negative for atom, positive for a vector, zero for a general list. 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Cast](../ref/cast.md),
 [Tok](../ref/tok.md),
 [`type`](../ref/type.md), 
 [`.Q.ty`](../ref/dotq.md#qty-type) (type)<br>
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Casting](casting.md)
 
 
@@ -105,7 +105,7 @@ q)"Zürich"
 "Z\374rich"
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Unicode](../kb/unicode.md)
 
 
@@ -160,7 +160,7 @@ A back tick without characters after it represents the _empty symbol_: `` ` ``.
     \`hello world
     </code></pre>
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 _Q for Mortals_: [§2.4 Basic Data Types – Atoms](/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
 
 
@@ -197,7 +197,7 @@ q)0w + 5
 0w
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`.Q.M`](../ref/dotq.md#qm-long-infinity) (long infinity)
 
 
@@ -250,11 +250,11 @@ q)type `city$10?city:`london`paris`rome
 
 (Since V3.0, type `20h` is reserved for `` `xxx$`` where `xxx` is the name of a variable.)
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Enumerate](../ref/enumerate.md),
 [Enumeration](../ref/enumeration.md),
 [Enum Extend](../ref/enum-extend.md)<br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Enumerations](enumerations.md)
 
 

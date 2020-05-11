@@ -103,5 +103,5 @@ t   | . . . . . . . . . . . . . . . . . .
 Range: `f`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`log`, `xlog`](log.md) 

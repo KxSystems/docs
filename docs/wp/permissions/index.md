@@ -489,7 +489,7 @@ time         sym  price    size   ex   vwap
 09:00:05.878 GOOG 875.2613 190000 BATS 876.9627
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`reval`](../../ref/eval.md#reval) for read-only access
 
 <!-- 

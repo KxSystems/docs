@@ -77,5 +77,5 @@ And even better: `F:'[H;G]` where the distances between symbols `F`, `G` and `H`
 **Shorten lines of communication.**
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [“Three Principles of Coding Clarity”](http://archive.vector.org.uk/art10009750)

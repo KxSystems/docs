@@ -4,7 +4,7 @@ description: How to install kdb+ under Microsoft Windows
 author: Stephen Taylor
 keywords: install, kdb+, microsoft, q, windows
 ---
-# <i class="fab fa-windows"></i> Installing under Microsoft Windows
+# :fontawesome-brands-windows: Installing under Microsoft Windows
 
 
 
@@ -17,9 +17,9 @@ Extract the files to `C:\`, producing a new folder `C:\q`.
     You can install on a different filepath. If you do, in the following instructions simply replace `C:\q` with your filepath.
 
 
-## <i class="fas fa-check"></i> Confirm q is working
+## :fontawesome-solid-check: Confirm q is working
 
-Open a command shell window: type <i class="fab fa-windows"></i>-r or click the Start button, and type `cmd`.
+Open a command shell window: type :fontawesome-brands-windows:-r or click the Start button, and type `cmd`.
 
 Launch q by typing 
 
@@ -69,7 +69,7 @@ C:\Users\mr.user>
 ```
 
 
-## <i class="fas fa-code"></i> Define q as a command
+## :fontawesome-solid-code: Define q as a command
 
 Defining `q` as a command allows you to invoke kdb+ without specifying the path to it.
 
@@ -127,7 +127,7 @@ q)
 You’re done. You have completely installed kdb+. 
 
 
-## <i class="far fa-hand-point-right"></i> What’s next?
+## :fontawesome-regular-hand-point-right: What’s next?
 
 [Learn the q programming language](../index.md#learn-q), look through the [reference card](../../ref/index.md), or see in the [Knowledge Base](../../kb/index.md)  what you can do with kdb+.
 

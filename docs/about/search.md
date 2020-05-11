@@ -4,7 +4,7 @@ description: How to use the custom search tool on the Kx documentation site
 author: Stephen Taylor
 keywords: kdb+, keyword, namespace, operator, overload, q, search, space, term
 ---
-# <i class="fas fa-question"></i> Search
+# :fontawesome-solid-question: Search
 
 
 
@@ -28,8 +28,8 @@ Queries not matched by the Search Box are handled by Google Search.
 
 !!! tip "Install `man.q.` to open the Reference direct from the q session."
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/man](https://github.com/KxSystems/man)
 
-<i class="fas fa-question"></i>
+:fontawesome-solid-question:
 [`man.q`](man.md)

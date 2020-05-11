@@ -9,7 +9,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
 
 The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/util/metrics.q](https://github.com/KxSystems/ml/blob/master/util/metrics.q)
 
 The following functions are those at present that are contained within the `metrics.q` file of the Machine Learning Toolkit.

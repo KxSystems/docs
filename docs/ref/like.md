@@ -27,11 +27,11 @@ In pattern `y` certain characters have special meaning:
 
 Special characters can be matched by bracketing them.
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`ss`, `ssr`](ss.md),
 [Regular Expressions in q](../basics/regex.md),
 [Strings](../basics/strings.md)<br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Using regular expressions](../kb/regex.md) 
 
 

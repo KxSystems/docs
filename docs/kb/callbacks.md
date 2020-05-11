@@ -26,7 +26,7 @@ The `echo` utility uses `0N!` to force its argument to the console (i.e., stdout
 
 Callback implementation is straightforward if you understand basic IPC in kdb+. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Interprocess Communication](../basics/ipc.md)  
 _Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 

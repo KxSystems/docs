@@ -3,7 +3,7 @@ title: Internal functions – Basics – kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
 keywords: bang, functions, internal, kdb+, q
 ---
-# <i class="fas fa-exclamation-triangle"></i> Internal functions
+# :fontawesome-solid-exclamation-triangle: Internal functions
 
 
 
@@ -137,7 +137,7 @@ Where `n` is a non-negative integer and `x` is a logfile handle
 
 In replaying, if the logfile references an undefined function, the function name is signalled as an error.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Replaying logfiles](../kb/replay-log.md)
 
 
@@ -209,7 +209,7 @@ q)get[`:test]~get`:ztest
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` release available.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [File compression](../kb/file-compression.md)
 
 
@@ -228,7 +228,7 @@ logicalBlockSize  | 17i
 zipLevel          | 6i
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [File compression](../kb/file-compression.md)
 
 
@@ -305,7 +305,7 @@ Possible error scenarios:
 View TLS settings on a handle or current process `-26!handle` or `-26!()`.
 Since V3.4 2016.05.12.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [SSL](../kb/ssl.md)
 
 
@@ -352,7 +352,7 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 
 Since V3.6 2018.05.18.
 
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Deferred response](../kb/deferred-response.md)
 
 
@@ -367,7 +367,7 @@ q)raze string -33!"mypassword"
 "91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
 
 
@@ -382,7 +382,7 @@ Where
 
 loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk. 
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Create master key](../kb/dare.md#configuration)
 
 Expect this call to take about 500 milliseconds to execute.
@@ -410,5 +410,5 @@ q)-120!'(1 2 3;.m.x:1 2 3)
 0 1
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.m` namespace](../ref/dotm.md)

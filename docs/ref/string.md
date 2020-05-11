@@ -55,7 +55,7 @@ range  c c c c c c c c c c c c c c c c c c
 Range: `c`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Namespace [`.h`](doth.md)  
 .Q: [`.Q.addr`](dotq.md#qaddr-ip-address) (IP address), 
 [`.Q.f`](dotq.md#qf-format) (format), 

@@ -64,5 +64,5 @@ Above, `(0|+)` composes the unary projection `0|` with Add. The composition beco
 
 If we take `-100` to flag parts of `x`, the expression `max 0 (0|+)\x` returns the largest of the sums of the parts. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Q Phrasebook](https://code.kx.com/phrases/)

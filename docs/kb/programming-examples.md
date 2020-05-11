@@ -17,7 +17,7 @@ Q has a built-in HTTP request command, which follows the syntax
 ```
 
 The string-to-send can be anything within the HTTP protocol the HTTP server will understand.  
-<i class="far fa-hand-point-right"></i> [jmarshall.com/easy/http](https://www.jmarshall.com/easy/http/)
+:fontawesome-regular-hand-point-right: [jmarshall.com/easy/http](https://www.jmarshall.com/easy/http/)
 
 Kdb+ does not add to nor encode the string to send, and as it does not support ‘chunking’ you should specify HTTP 1.0 for your desired HTTP procotol. Kdb+ will signal a `'chunk error` if it encounters a chunked response – not possible with HTTP 1.0. Kdb+ doesn’t decode the response – it just returns the raw data. 
 
@@ -28,7 +28,7 @@ q)data:(`$":http://www.football-data.co.uk") s2s
 q)(" SSSIIIIII IIIIIIIIIIII"; ",")0:data
 ```
 
-<i class="fab fa-github"></i> [KxSystems/cookbook/yahoo.q](https://github.com/KxSystems/cookbook/blob/master/yahoo.q)
+:fontawesome-brands-github: [KxSystems/cookbook/yahoo.q](https://github.com/KxSystems/cookbook/blob/master/yahoo.q)
 
 This example function queries Yahoo Financials and produces a table of trading info for a list of stocks during the last few days. 
 The list of stocks and the number of days are parameters of the function.
@@ -60,7 +60,7 @@ Date       Open   High   Low    Close  Volume   Sym
 
 The above function definition has been adapted from a more compact one by Simon Garland. 
 The long version adds comments, renames variables, and splits computations into smaller steps so that the code is easier to follow.  
-Compact version: <i class="fab fa-github"></i> [KxSystems/cookbook/yahoo_compact.q](https://github.com/KxSystems/cookbook/blob/master/yahoo_compact.q)
+Compact version: :fontawesome-brands-github: [KxSystems/cookbook/yahoo_compact.q](https://github.com/KxSystems/cookbook/blob/master/yahoo_compact.q)
 
 
 ## An efficient query to extract last n ticks for a particular stock from quote table
@@ -191,7 +191,7 @@ The result looks as follows after some space is added by hand:
 
 ## Computing Bollinger bands
 
-[Bollinger bands](https://en.wikipedia.org/wiki/Bollinger_Bands) <i class="fab fa-wikipedia-w"></i> consist of:
+[Bollinger bands](https://en.wikipedia.org/wiki/Bollinger_Bands) :fontawesome-brands-wikipedia-w: consist of:
 
 -   a middle band being a N-period simple moving average
 -   an upper band at K times a N-period standard deviation above the middle band

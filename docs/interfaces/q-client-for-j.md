@@ -9,7 +9,7 @@ keywords: api, client, interface, j, kdb+, q
 
 QJ is a C extension for q, working as a frontend of [J](https://www.jsoftware.com/#/) engine DLL, so we can use the [J engine](https://www.jsoftware.com/help/dictionary/vocabul.htm) and the [J Application Library](https://code.jsoftware.com/wiki/JAL/j701) within q. It has been tested on l64 with j701beta. 
 
-<i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qj](https://github.com/kxcontrib/zuoqianxu/tree/master/qj) 
+:fontawesome-brands-github: [kxcontrib/zuoqianxu/qj](https://github.com/kxcontrib/zuoqianxu/tree/master/qj) 
 
 
 ## Install

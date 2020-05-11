@@ -139,7 +139,7 @@ q)`float$0Wh
 
 !!! tip "The infinity corresponding to numeric `x` is `min 0#x`."
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Tok](tok.md), 
 [dollar `$`](overloads.md#dollar)<br>
 Basics: [Casting and encoding](../basics/casting.md)

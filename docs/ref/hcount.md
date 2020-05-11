@@ -23,5 +23,5 @@ q)hcount`:c:/q/test.txt
 
 On a compressed file returns the size of the original uncompressed file.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)

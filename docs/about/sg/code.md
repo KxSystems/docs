@@ -5,7 +5,7 @@ description: Usage and markup rules for code blocks
 author: Stephen Taylor
 keywords: 
 ---
-# <i class="fas fa-pen-nib"></i> Code blocks
+# :fontawesome-solid-pen-nib: Code blocks
 
 
 Code blocks aim as far as practically possible for visual fidelity, mimicking what the reader sees in a script or session. 

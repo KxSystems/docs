@@ -3,13 +3,13 @@ title: Demonstration notebooks for machine learning – Machine Learning – kdb
 description: EmbedPy and JupyterQ can be used to solve all kind of machine-learning problems, from feature engineering to the training and testing of models. They also allow users to display results in a range of ways, giving a better understanding of the data and results. The notebooks described here provide examples that bring together these concepts and show what can be achieved.
 keywords: embedPy, Jupyter, ml, machine learning, notebook, Python
 ---
-# <i class="fas fa-share-alt"></i> Demonstration notebooks for machine learning
+# :fontawesome-solid-share-alt: Demonstration notebooks for machine learning
 
 EmbedPy and JupyterQ can be used to solve all kind of machine-learning problems, from feature engineering to the training and testing of models. They also allow users to display results in a range of ways, giving a better understanding of the data and results.
 
 
 The notebooks at 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 provide examples that bring together these concepts and show what can be achieved.
 

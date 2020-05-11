@@ -11,7 +11,7 @@ keywords: introduction, kdb+, q, tutorial
 
 Kdb+ is a powerful database that can be used for streaming, real-time and historical data. Q is the SQL-like, general-purpose programming language built on top of kdb+. It offers high-performance, in-database analytic capabilities.
 
-<i class="far fa-hand-point-right"></i> [Get started](install/index.md) to download and install kdb+.
+:fontawesome-regular-hand-point-right: [Get started](install/index.md) to download and install kdb+.
 
 
 ## Launch q
@@ -149,7 +149,7 @@ calls:([]
 computerlookup:([id:key startcpu] dept:n?depts; os:n?`win7`win8`osx`vista)
 ```
 
-<i class="fas fa-download"></i> Download [`calls.q`](assets/calls.q) into your `QHOME` folder, then [load it](../basics/syscmds.md#l-load-file-or-directory):
+:fontawesome-solid-download: Download [`calls.q`](assets/calls.q) into your `QHOME` folder, then [load it](../basics/syscmds.md#l-load-file-or-directory):
 
 ```q
 q)\l calls.q
@@ -438,7 +438,7 @@ time                          id  severity cpu cpu
 
 The linked scripts allow you to build an on-disk database and run some queries against it. The database is randomly-generated utility (smart-meter) data for different customers in different regions and industry sectors, along with some associated payment information. The idea is to allow you to see some of the q language and performance. There is more information in the `README` file. 
 
-<i class="fab fa-github"></i> [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial)
+:fontawesome-brands-github: [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial)
 
 
 ### Building the database

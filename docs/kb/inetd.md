@@ -91,5 +91,5 @@ $ ps -e|grep inetd
 $ kill -HUP 3848
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`\1` and `\2`](../basics/syscmds.md#1-2-redirect) for stdout/stderr redirect

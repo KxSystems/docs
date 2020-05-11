@@ -69,7 +69,7 @@ t  | t . t t t t t t t . t t t t t t t t
 
 Range: `ijfpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`%` Divide](divide.md), [`reciprocal`](reciprocal.md)  
 Basics: [Mathematics](../basics/math.md)
 

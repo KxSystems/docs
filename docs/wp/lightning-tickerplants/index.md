@@ -683,7 +683,7 @@ trade:([]
 The main library functions this tickerplant implementation uses are shown below, and they will
 form the basis for subsequent modifications. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: 
 [Building Real-Time Tick Subscribers](../rt-tick/index.md)
 

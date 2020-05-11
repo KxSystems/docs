@@ -228,7 +228,7 @@ city  | s
 
 **Duplicate column names** `xasc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
 
 
@@ -271,10 +271,10 @@ a 43 2
 
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`desc`, `idesc`, `xdesc`](desc.md),
 [Set Attribute](set-attribute.md)<br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md), 
 [Sorting](../basics/sort.md)
 

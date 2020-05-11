@@ -26,10 +26,10 @@ $ echo $?
 42
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`.z.exit`](dotz.md#zexit-action-on-exit) (action on exit) 
 <br>
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Controlling evaluation](../basics/control.md), 
 [Debugging](../basics/debug.md)
 

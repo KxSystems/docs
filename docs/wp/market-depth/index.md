@@ -366,7 +366,7 @@ EURUSD FeedC 1.2343 3000
 
 It is worth noting that the `u` attribute is applied to the majority of data structures. This is used to ensure quick lookup times on the structure keys as they grow. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)<br>
 Reference: [Set Attribute](../../ref/set-attribute)
 

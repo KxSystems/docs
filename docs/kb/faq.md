@@ -36,12 +36,12 @@ In this table, the [datatype](../basics/datatypes.md) of the columns is not defi
 
 This creates a table in memory. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [How do I write a table to disk?](#how-do-i-write-a-table-to-disk)
 
 Tables can also be created functionally with q primitive functions. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Dictionaries and tables](../basics/dictsandtables.md), 
 [Q-SQL](../basics/qsql.md), 
 [Functional SQL](../basics/funsql.md)
@@ -55,7 +55,7 @@ Yes. A type descriptor can be specified for each column:
 q)trade:([] stock:`symbol$(); price:`float$(); amount:`int$(); time:`time$())
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Datatypes](../basics/datatypes.md)
 
 
@@ -423,7 +423,7 @@ q)update amount+42 from `trade where stock=`ibm
 
 `update` modifies the table in place like `delete` deletes in place if a symbol is given as the table name. Also note the default column names. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [qSQL](../basics//qsql.md)
 
 
@@ -540,7 +540,7 @@ a   b   c
 20  oil 77
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`0:` File Text](../ref/file-text.md) 
 
 
@@ -581,7 +581,7 @@ q)table: flip `a`b`c!Cols
 q)save `:trade.txt
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`save`](../ref/save.md)
 
 
@@ -627,5 +627,5 @@ l64/ ...
 5
 ```
 
-<i class="fas fa-external-link-alt"></i> 
+:fontawesome-solid-external-link-alt: 
 [Shebang (Unix)](https://en.wikipedia.org/wiki/Shebang_(Unix))

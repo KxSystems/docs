@@ -57,7 +57,7 @@ Prior to V3.0, `wj1` considers only quotes in the window except for the window e
 | 3.0     | `[]` | prevailing + `[]` |
 | 2.7/2.8 | `[)` | prevailing + `[]` |
 
-<i class="fab fa-wikipedia-w"></i>
+:fontawesome-brands-wikipedia-w:
 [Notation for intervals](https://en.wikipedia.org/wiki/Interval_(mathematics)#Notations_for_intervals "Wikipedia")
 
 
@@ -123,6 +123,6 @@ ibm 10:01:08 105   107 108 107 108 104 106 106 107
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)
 

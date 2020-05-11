@@ -5,10 +5,10 @@ author: Diane O'Donoghue
 date: March 2020
 keywords: machine learning, ml, utilitites, multi-threading, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Multiprocess distribution framework
+# :fontawesome-solid-share-alt: Multiprocess distribution framework
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 

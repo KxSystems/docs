@@ -45,7 +45,7 @@ q)(1 3 10 6 4;"acyxmpu") within ((2;"b");(6;"r"))
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`except`](except.md), 
 [`in`](in.md), 
 [`inter`](inter.md), 

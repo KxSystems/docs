@@ -4,7 +4,7 @@ description: News of changes to the Kx documentation site
 author: Stephen Taylor
 keywords: blog, kdb+, news, q, site
 ---
-# <i class="fas fa-newspaper"></i> Site news
+# :fontawesome-solid-newspaper: Site news
 
 
 
@@ -43,12 +43,12 @@ Version 2 of this site has
 -   simplified URLs for Reference articles
 -   a new version, [Iterators](../wp/iterators/index.md) of the 2013 white paper “Efficient use of adverbs”
 -   HTTP requests redirected to HTTPS 
--   An updated version of <i class="fab fa-github"></i> [`help.q`](https://github.com/kxsystems/help)
+-   An updated version of :fontawesome-brands-github: [`help.q`](https://github.com/kxsystems/help)
 
 The Kx wiki, frozen in 2016, has been retired to code.kx.com/oldwiki.
 
 
-## <i class="fas fa-birthday-cake"></i>  Kx@25
+## :fontawesome-solid-birthday-cake:  Kx@25
 
 <small>2018.05.18</small>
 
@@ -63,37 +63,37 @@ Announcements to mark our 25th birthday:
 
 
 
-## <i class="fab fa-github"></i> New development tools
+## :fontawesome-brands-github: New development tools
 
 <small>2018.03.01</small>
 
 Listed on [GitHub](../github.md#development-tools): three new development tools  by legendary developer [Leslie Goldsmith](https://github.com/LeslieGoldsmith).
 
-<i class="far fa-hand-point-right"></i> [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
+:fontawesome-regular-hand-point-right: [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
 
 
-## <i class="fab fa-github"></i> Jupyter kernel for kdb+
+## :fontawesome-brands-github: Jupyter kernel for kdb+
 
 <small>2018.01.30</small>
 
 In beta on [GitHub](https://github.com/KxSystems/jupyterq): a Jupyter kernel for kdb+ 
 
 
-## <i class="far fa-map"></i> Socket sharding on Linux
+## :fontawesome-regular-map: Socket sharding on Linux
 
 <small>2018.01.25</small>
 
 New white paper [Socket sharding with kdb+ on Linux](../wp/socket-sharding/index.md)
 
 
-## <i class="fas fa-share-alt"></i> Machine learning
+## :fontawesome-solid-share-alt: Machine learning
 
 <small>2018.01.24</small>
 
 New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy/index.md) library.
 
 
-## <i class="fas fa-search"></i> Custom search engine
+## :fontawesome-solid-search: Custom search engine
 
 <small>2018.01.14</small>
 
@@ -105,7 +105,7 @@ The engine is still being developed.
 Please send your comments, suggestions and requests to librarian@kx.com. 
 
 
-## <i class="fab fa-superpowers"></i> Fusion interfaces
+## :fontawesome-brands-superpowers: Fusion interfaces
 
 <small>2017.11.06</small>
 
@@ -119,7 +119,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 
 
-## <i class="fas fa-code"></i> Syntax highlighting
+## :fontawesome-solid-code: Syntax highlighting
 
 <small>2017.08.09</small>
 
@@ -129,7 +129,7 @@ Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.or
 -   a _Copy to Clipboard_ button on all code blocks
 
 
-## <i class="fas fa-balance-scale"></i> Creative Commons license
+## :fontawesome-solid-balance-scale: Creative Commons license
 
 <small>2017.08.05</small>
 
@@ -138,7 +138,7 @@ The site content is now licensed under a <a rel="license" href="https://creative
 <div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
-## <i class="far fa-comment"></i> Terminology
+## :fontawesome-regular-comment: Terminology
 
 <small>2017.06.15</small>
 

@@ -22,6 +22,6 @@ q)2+0N!3
 
 Useful for debugging, or avoiding formatting that obscures the data’s structure.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`show`](show.md)  
 Basics: [Debugging](../basics/debug.md)

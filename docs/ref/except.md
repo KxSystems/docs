@@ -28,7 +28,7 @@ q)1 2 3 4 1 3 except 2 3
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`in`](in.md), 
 [`within`](within.md)  
 Basics: [Select](../basics/selection.md)

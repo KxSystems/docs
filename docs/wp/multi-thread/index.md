@@ -24,7 +24,7 @@ We will also address use cases where parallel processing may not be appropriate 
 
 The OS disk cache is flushed when required using the `io.q` script, available from GitHub.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/io](https://github.com/simongarland/io/blob/master/io.q)
 
 All tests performed using kdb+ version 3.1 (2013.06.25)
@@ -376,7 +376,7 @@ Adding or modifying a column to a partitioned database can be slow when carried 
 
 In the example below, we have added a column to the quote table on the test database. This is done using the functions in the `dbmaint.q` script.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb/utils/dbmaint.md](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md)
 
 ```q

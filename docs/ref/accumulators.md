@@ -308,7 +308,7 @@ q)m scan c                 / (m\)c
 4 3 1 0 6 9
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`over`, `scan`](over.md)
 
 

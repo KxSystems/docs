@@ -64,7 +64,7 @@ t| t . t t t t t f t . . . . . . . . .
 
 Range: `ijefpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Divide](divide.md),
 [`prd`, `prds`](prd.md)  
 .Q: [`.Q.addmonths`](dotq.md#qaddmonths)  

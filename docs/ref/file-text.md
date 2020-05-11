@@ -98,7 +98,7 @@ q)`:status.txt 0: string system "w"
 `:status.txt
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`save`, `rsave`](save.md)
 
 
@@ -237,13 +237,13 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 (`a`b;("hello,world";,"1"))
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`.j` namespace](../ref/dotj.md) for JSON 
 <br>
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Casting](../basics/casting.md), 
 [Datatypes](../basics/datatypes.md), 
 [File system](../basics/files.md)<br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [How do I import a CSV file into a table?](../kb/faq.md#how-do-i-import-a-csv-file-into-a-table)
 

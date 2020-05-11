@@ -80,7 +80,7 @@ t| t . t t t t t t t . t . . t n t t t
 
 Range: `bxhijefcpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`&` and Lesser](lesser.md), [`max`](max.md), [`min`](min.md)  
 Basics: [Comparison](../basics/comparison.md),
 [Logic](../basics/logic.md)

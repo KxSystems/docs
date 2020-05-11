@@ -80,10 +80,10 @@ q)$[0b;`true;0b;`foo]~(::)
 1b
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`$` dollar](overloads.md#dollar), 
 [Vector Conditional](vector-conditional.md)
 <br>
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Controlling evaluation](../basics/control.md)
 

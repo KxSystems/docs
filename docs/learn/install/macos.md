@@ -4,7 +4,7 @@ description: How to install kdb+ under macOS
 author: Stephen Taylor
 keywords: install, kdb+, macos, q
 ---
-# <i class="fab fa-apple"></i> Installing under macOS
+# :fontawesome-brands-apple: Installing under macOS
 
 
 
@@ -16,7 +16,7 @@ Next perform the _Minimum install and launch_. We then strongly recommend contin
 !!! warning "macOS Catalina (10.15) ended macOS support for 32-bit applications."
 
 
-## <i class="fas fa-rocket"></i> Minimum install and launch
+## :fontawesome-solid-rocket: Minimum install and launch
 
 Open the Terminal application and enter the following commands:
 
@@ -58,7 +58,7 @@ The minimum installation can be improved in two important ways. We strongly reco
 -   Define `q` as a command alias, allowing you to invoke kdb+ without specifying the path to it
 
 
-### <i class="fas fa-plug"></i> Install Rlwrap
+### :fontawesome-solid-plug: Install Rlwrap
 
 Exit kdb+ to return to the command prompt and your home folder. Ask for Rlwrap’s version number. If you see one, Rlwrap is already installed.
 
@@ -76,7 +76,7 @@ If Rlwrap is already installed you can go on to the next step.
 Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using your package manager. (Probably either [MacPorts](https://www.macports.org/install.php) or [Homebrew](https://brew.sh/))
 
 
-### <i class="fas fa-code"></i> Edit your profile
+### :fontawesome-solid-code: Edit your profile
 
 !!! info "Environment variables"
 
@@ -115,7 +115,7 @@ $ source .bashrc
     You can install kdb+ where you please. The environment variables `QHOME` (specified above) and `QLIC` tell kdb+ [where to find its files](../licensing.md). 
 
 
-## <i class="fas fa-check"></i> Confirm successful installation
+## :fontawesome-solid-check: Confirm successful installation
 
 From your home folder, launch kdb+, type an expression and recall it using the up-arrow key:
 
@@ -142,7 +142,7 @@ $
 <!-- ![In q, type an expression and recall it with the up-arrow key](img/install_mac_06.png "In q, type an expression and recall it with the up-arrow key") -->
 
 
-## <i class="fas fa-certificate"></i> Install a license key file
+## :fontawesome-solid-certificate: Install a license key file
 
 64-bit kdb+ requires a license key file.
 [Obtain and install](../licensing.md) one.
@@ -151,7 +151,7 @@ You’re done. You have completely installed kdb+.
 
 
 
-## <i class="fas fa-code"></i> Installing multiple versions
+## :fontawesome-solid-code: Installing multiple versions
 
 For any version of q, 64-bit and 32-bit interpreter binaries share the same `q.k` file, located in `QHOME` for that version. 
 
@@ -223,7 +223,7 @@ Loading `sp.q`, a sibling of `QHOME`, requires the relative path specified.
 
 
 
-## <i class="far fa-hand-point-right"></i> What’s next?
+## :fontawesome-regular-hand-point-right: What’s next?
 
 [Learn the q programming language](../index.md#learn-q), look through the [reference card](../../ref/index.md), or see in the [Knowledge Base](../../kb/index.md)  what you can do with kdb+.
 

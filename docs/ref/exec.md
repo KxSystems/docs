@@ -73,18 +73,18 @@ s4| 600
 
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
-    <i class="far fa-hand-point-right"></i>
+    :fontawesome-regular-hand-point-right:
     [q-SQL](../basics/qsql.md#cond)
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§9.4 The `exec` Template](/q4m3/9_Queries_q-sql/#94-the-exec-template)  
 Basics: [q-SQL](../basics/qsql.md)
 
 
 ## `?` Exec
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Functional SQL](../basics/funsql.md#exec)
 

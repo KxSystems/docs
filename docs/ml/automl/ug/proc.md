@@ -5,11 +5,11 @@ description: Default behavior of automated machine learning; common processes co
 date: October 2019
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
-# <i class="fas fa-share-alt"></i> Automated data processing
+# :fontawesome-solid-share-alt: Automated data processing
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the [data preprocessing methods](preproc.md).

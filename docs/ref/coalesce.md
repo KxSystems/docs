@@ -70,7 +70,7 @@ k| c1   c2
     The performance of `^` is slower than that of `,` since each column value of the right operand must be checked for null.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Joins](../basics/joins.md)  
 [`^` Fill](fill.md) where `x` and `y` are lists or dictionaries
 

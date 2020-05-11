@@ -12,11 +12,11 @@ Since V4.0 2020.03.17
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Command-line options [`-m`](cmdline.md#-m-memory-domain),
 [`-w`](cmdline.md#-m-workspace),
 System command [`\w`](syscmds.md#w-workspace)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.m` namespace](../ref/dotm.md)
 

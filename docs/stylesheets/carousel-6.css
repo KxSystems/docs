@@ -1,0 +1,62 @@
+/* https://codepen.io/epainter/pen/jdLvG */
+
+/* generated for 6 slides at 2020.04.20 11:46 */
+
+.container {
+  width:600px;
+	height:300px;
+	position:relative;
+	overflow:hidden;
+}
+
+.css-carousel {
+  width:700%%;
+  -webkit-animation: css-carousel 30s linear infinite;
+	-moz-animation: css-carousel 30s linear infinite;
+	-ms-animation: css-carousel 30s linear infinite;
+	animation: css-carousel 30s linear infinite;
+}
+
+.css-carousel .css-img{
+  display:inline-block;
+}
+.css-carousel img:not(:first-child){
+  float:left;
+}
+
+@-webkit-keyframes css-carousel {
+  100% { margin-left:0;}
+  0%, 14% {margin-left:0;}
+  16%, 31% {margin-left:-100%;}
+  33%, 48% {margin-left:-200%;}
+  50%, 64% {margin-left:-300%;}
+  66%, 81% {margin-left:-400%;}
+  83%, 98% {margin-left:-500%;}
+}
+@-moz-keyframes css-carousel {
+  100% { margin-left:0;}
+  0%, 14% {margin-left:0;}
+  16%, 31% {margin-left:-100%;}
+  33%, 48% {margin-left:-200%;}
+  50%, 64% {margin-left:-300%;}
+  66%, 81% {margin-left:-400%;}
+  83%, 98% {margin-left:-500%;}
+}
+@-ms-keyframes css-carousel {
+  100% { margin-left:0;}
+  0%, 14% {margin-left:0;}
+  16%, 31% {margin-left:-100%;}
+  33%, 48% {margin-left:-200%;}
+  50%, 64% {margin-left:-300%;}
+  66%, 81% {margin-left:-400%;}
+  83%, 98% {margin-left:-500%;}
+}
+@keyframes css-carousel {
+  0%, 14% {margin-left:0;}
+  16%, 31% {margin-left:-100%;}
+  33%, 48% {margin-left:-200%;}
+  50%, 64% {margin-left:-300%;}
+  66%, 81% {margin-left:-400%;}
+  83%, 98% {margin-left:-500%;}
+  100% { margin-left:0;}
+}

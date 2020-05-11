@@ -204,7 +204,7 @@ The `logicalBlockSize` represents how much data is taken as a compression unit, 
 
 Yes. In our defense, ZFS has similar issues. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [blog.buttermountain.co.uk](https://serverfault.com/questions/362090/freebsd-how-to-know-real-file-size-on-zfs-with-compression-on)
 
 Compressed file size can be obtained from the [`-21!` internal function](../basics/internal.md#-21x-compression-stats). 
@@ -300,7 +300,7 @@ Installation is very straightforward: unpack and plug in the card, compile and l
 
 On Linux, perhaps – it really depends on the size and number of compressed files you have open at any time, and the access patterns used. For example, random access to a compressed file will use many more kernel resources than sequential access. 
 
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Linux production notes/Compression](linux-production.md#compression)
 
 
@@ -322,5 +322,5 @@ R uses signal handling to detect stack overflows. This conflicts with kdb+’s u
 
 ## I’d like to use Transparent Huge Pages (THP) on Linux. Is this compatible with the kdb+ file compression?
 
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 Linux production notes [Huge Pages and Transparent Huge Pages](linux-production.md#huge-pages-and-transparent-huge-pages-thp)

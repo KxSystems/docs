@@ -3,7 +3,7 @@ title: Using ODBC with kdb+ – Knowledge Base – kdb+ and q documentation
 description: Q has limited support for ODBC. In general, ODBC is not recommended for large databases (for performance reasons) but may be acceptable for small databases, or for one-off data import and export.
 keywords: database, kdb+, linux, odbc, odbc3, q, windows
 ---
-# <i class="fas fa-database"></i> Using ODBC with kdb+
+# :fontawesome-solid-database: Using ODBC with kdb+
 
 
 
@@ -12,12 +12,12 @@ keywords: database, kdb+, linux, odbc, odbc3, q, windows
 Q has limited support for ODBC. In general, ODBC is not recommended for large databases – for performance reasons – but may be acceptable for small databases, or for one-off data import and export.
 
 -   in Windows and Linux, kdb+ can use ODBC to access a non-kdb+ database  
-<i class="far fa-hand-point-right"></i> Interfaces: [Q client for ODBC](../interfaces/q-client-for-odbc.md)
+:fontawesome-regular-hand-point-right: Interfaces: [Q client for ODBC](../interfaces/q-client-for-odbc.md)
 -   in Windows only, a non-kdb+ client can use ODBC to access a kdb+ database  
-<i class="far fa-hand-point-right"></i> Interfaces: [Simba/Magnitude ODBC drivers](../interfaces/odbc-simba.md)  
-<i class="far fa-hand-point-right"></i> Interfaces: [Q server for ODBC3 ](../interfaces/q-server-for-odbc3.md)
+:fontawesome-regular-hand-point-right: Interfaces: [Simba/Magnitude ODBC drivers](../interfaces/odbc-simba.md)  
+:fontawesome-regular-hand-point-right: Interfaces: [Q server for ODBC3 ](../interfaces/q-server-for-odbc3.md)
 
-<i class="far fa-hand-point-right"></i> John Ludlow’s <i class="fab fa-github"></i> [How to get kdb+ to talk to other databases <i class="far fa-file-pdf"></i>](https://github.com/kxcontrib/jludlow/blob/master/docs/odbc.pdf)
+:fontawesome-regular-hand-point-right: John Ludlow’s :fontawesome-brands-github: [How to get kdb+ to talk to other databases :fontawesome-regular-file-pdf:](https://github.com/kxcontrib/jludlow/blob/master/docs/odbc.pdf)
 
-<i class="far fa-hand-point-right"></i> Charles Skelton’s <i class="fab fa-github"></i> [Babel for kdb+](https://github.com/CharlesSkelton/babel) for a simpler alternative to ODBC
+:fontawesome-regular-hand-point-right: Charles Skelton’s :fontawesome-brands-github: [Babel for kdb+](https://github.com/CharlesSkelton/babel) for a simpler alternative to ODBC
 

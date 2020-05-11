@@ -40,6 +40,6 @@ range  i . i i i i i i i . i i i i i i i i
 Range: `i`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`abs`](abs.md)  
 Basics: [Mathematics](../basics/math.md)

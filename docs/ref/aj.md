@@ -144,7 +144,7 @@ In this case you will have to reduce the number of quotes retrieved by applying 
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`asof`](asof.md)  
 Basics: [Joins](../basics/joins.md)
 

@@ -10,7 +10,7 @@ keywords: kdb+, linux, production, q
 !!! important "Linux kernels"
 
     Kx recommendations for NUMA hardware, Transparent Huge Pages and Huge Pages are different for different Linux kernels. 
-    Details below. Look for the <i class="fas fa-code"></i> icon. 
+    Details below. Look for the :fontawesome-solid-code: icon. 
 
 
 
@@ -62,7 +62,7 @@ And to see if NUMA is enabled on a process basis
 $ numactl -s
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [CPU affinity – Linux](cpu-affinity.md#linux)
 
 
@@ -179,7 +179,7 @@ $ ulimit -n 4096
 Timekeeping on production servers is a complicated topic. These are just a few notes which can help.
 
 If you are using any of local time functions `.z.(TPNZD)` q will use the `localtime(3)` system function to determine time offset from GMT. In some setups (GNU libc) this can cause excessive system calls to `/etc/localtime`.  
-<i class="far fa-hand-point-right"></i> [chemie.fu-berlin.de](http://kirste.userpage.fu-berlin.de/chemnet/use/info/libc/libc_17.html#SEC301), [stackoverflow.com](https://stackoverflow.com/questions/4554271/how-to-avoid-excessive-stat-etc-localtime-calls-in-strftime-on-linux/4554302#4554302)
+:fontawesome-regular-hand-point-right: [chemie.fu-berlin.de](http://kirste.userpage.fu-berlin.de/chemnet/use/info/libc/libc_17.html#SEC301), [stackoverflow.com](https://stackoverflow.com/questions/4554271/how-to-avoid-excessive-stat-etc-localtime-calls-in-strftime-on-linux/4554302#4554302)
 
 Setting TZ environment helps this:
 

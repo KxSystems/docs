@@ -108,7 +108,7 @@ q)(spans<t;spans=t;spans>t)
 011111b
 ```
 
-<i class="far fa-hand-point-right"></i> Knowledge Base: [Temporal data](../kb/temporal-data.md#comparing-temporals)
+:fontawesome-regular-hand-point-right: Knowledge Base: [Temporal data](../kb/temporal-data.md#comparing-temporals)
 
 
 ## `deltas`
@@ -126,6 +126,6 @@ Keyword [`differ`](../ref/differ.md) is a uniform unary function that returns a 
 [Match](../ref/match.md) (`~`) compares its arguments and returns a boolean atom to say whether they are the same.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Comparison tolerance](precision.md#comparison-tolerance)
 

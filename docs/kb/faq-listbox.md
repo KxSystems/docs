@@ -48,13 +48,13 @@ a b c
 
 ## What are the limits on the number of variables in q functions?
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Reference: [Lambdas](../basics/function-notation.md#variables-and-constants)
 
 
 ## What does `'error` mean?
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Errors](../basics/errors.md)
 
 

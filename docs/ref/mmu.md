@@ -55,7 +55,7 @@ q)mmu[;b]peach a
 81 99  117
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`$` dollar](overloads.md#dollar)  
 Basics: [Mathematics](../basics/math.md)  
 Wikipedia: [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication)

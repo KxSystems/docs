@@ -96,7 +96,7 @@ q))                 / the server is suspended in a debug session
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Trap, Trap At](apply.md#trap)  
 Basics: [Control](../basics/control.md),
 [Debugging](../basics/debug.md),

@@ -54,6 +54,6 @@ Range: `ijcs`
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`ceiling`](ceiling.md)  
 Basics: [Mathematics](../basics/math.md)

@@ -95,7 +95,7 @@ system"mv sym zym" /make backup of sym file
   } peach symFiles
 ```
 
-[<i class="fas fa-download"></i> 
+[:fontawesome-solid-download: 
 Multi-threaded sym rewrite code](assets/multi-threaded-sym-rewrite-code.q)
 
 !!! tip "Take backups!"

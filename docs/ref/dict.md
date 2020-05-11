@@ -58,5 +58,5 @@ error  | cause
 -------|--------------------------------------
 length | `x` and `y` are not same-length lists
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Dictionaries & tables](../basics/dictsandtables.md)

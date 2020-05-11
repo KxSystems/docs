@@ -40,13 +40,13 @@ FITS files consist of segments called Header Data Units (HDUs). Every FITS file 
 
 Kx provides a header file, `k.h`, for interacting with C from kdb+. It provides the link between kdb+ and C by converting the different data types and structures between the two languages. Using this header file, we created a shared object that could natively parse a FITS file and load the data into a kdb+ database. This C extension can read metadata in HDUs and extract columns from binary tables, converting the information into a format usable by kdb+. The C functions are loaded into kdb+ from the shared object by using the [Dynamic Load](../ref/dynamic-load.md) operator `2:`, which is described in more detail later.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Interfaces: [C client for kdb+](../interfaces/c-client-for-q.md)<br>
 White paper: [“C API for kdb+”](capi/index.md)<br>
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb](https://github.com/kxsystems/kdb)<br>
 James Neill’s repository for kdb+ in astronomy:
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [jpneill/fitsToKdb](https://github.com/jpneill/fitsToKdb)
 
 
@@ -131,7 +131,7 @@ The other functions can then be loaded in in the same manner.
 
 The source file for these example analytics is the `specObj-dr12.fits` file from the SDSS database.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [www.sdss.org/dr12/spectro/spectro_access](http://www.sdss.org/dr12/spectro/spectro_access)
 
 This is a 2.9GB file containing the redshifts and classifications of all 4 million+ objects observed, including galaxy, quasar, and stellar spectra. We are able to use the functions defined above to create a kdb+ database from this FITS format file.
@@ -148,7 +148,7 @@ q)icols:lower[icols]!.astro.readIntCol[file;;n;2]each icols
 // repeat for each of the long, float and sym cols
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Interfaces: [Using foreign functions with kdb+](../interfaces/ffi.md)
 
 

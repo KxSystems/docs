@@ -25,5 +25,5 @@ function                                 | semantics
 [`xprev`](../ref/next.md#xprev)          | Nearby list items
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [q-SQL](qsql.md)

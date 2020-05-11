@@ -26,7 +26,7 @@ A historical database (HDB) holds data before today, and its tables would be sto
 
 Typically, large tables in the HDB (such as daily tick data) are stored splayed, i.e. each column is stored in its own file.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [Splayed tables](../../kb/splayed-tables.md)  
 _Q for Mortals_: [§11.3 Splayed Tables](/q4m3/11_IO/#113-splayed-tables)
 
@@ -41,7 +41,7 @@ For example, a simple partitioning scheme on a single disk might be as shown rig
 
 The script `buildhdb.q` will build a sample HDB. It builds a month’s random data in directory `start/db`, and takes a few seconds to run. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/start/buildhdb.q](https://github.com/KxSystems/cookbook/blob/master/start/buildhdb.q) 
 
 Load q, then:

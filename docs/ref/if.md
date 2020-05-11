@@ -42,9 +42,9 @@ q)r
     But setting local variables using `if` can have [unintended consequences](../basics/function-notation.md#name-scope).
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Cond](cond.md),
 [Vector Conditional](vector-conditional.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Controlling evaluation](../basics/control.md)

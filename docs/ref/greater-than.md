@@ -36,6 +36,6 @@ q)0 1 >=/:\: 0 1
 11b
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Less Than, Up To](less-than.md)  
 Basics: [Comparison](../basics/comparison.md)

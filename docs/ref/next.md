@@ -95,7 +95,7 @@ q)1 xprev "abcde"
 `xprev` is a right-uniform function.
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Each Prior](../ref/maps.md#each-prior)  
 Basics: [Select](../basics/selection.md)
 

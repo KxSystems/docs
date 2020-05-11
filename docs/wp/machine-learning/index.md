@@ -19,7 +19,7 @@ Class attributes are collected in n-dimensional arrays. This means that the perf
 
 The UCI website contains several examples of such datasets; an interesting example is the [Pen-Based Recognition of Handwritten Digits](https://archive.ics.uci.edu/ml/datasets/Pen-Based%2BRecognition%2Bof%2BHandwritten%2BDigits). 
 
-<i class="far fa-hand-point-right"></i> Lichman, M. (2013). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
+:fontawesome-regular-hand-point-right: Lichman, M. (2013). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
 
 This dataset contains two disjointed collections:
 
@@ -30,7 +30,7 @@ Class features for each instance are represented via one-dimensional arrays of 1
 
 Due to its compute-heavy features, k-NN has limited industry application compared to other machine-learning methods. In this paper, we will analyze an alternative implementation of the k-NN, using the array-processing power of kdb+. Kdb+ has powerful built-in functions designed and optimized for tables and lists. Together with qSQL, these functions can be used to great effect for machine-learning purposes, especially with compute-heavy implementations like k-NN.
 
-All tests were run using kdb+ version 3.5 2017.06.15, on a Virtual Machine with four allocated 4.2GHz cores. Code used can be found at <i class="fab fa-github"></i> [kxcontrib/wp-knn](https://github.com/kxcontrib/wp-knn).
+All tests were run using kdb+ version 3.5 2017.06.15, on a Virtual Machine with four allocated 4.2GHz cores. Code used can be found at :fontawesome-brands-github: [kxcontrib/wp-knn](https://github.com/kxcontrib/wp-knn).
 
 
 ## Loading the dataset in q
@@ -665,7 +665,7 @@ q)// ~1.1ms average to classify one instance
 ## Conclusions
 
 In this paper, we saw how trivial it is to implement a k-NN classification algorithm with kdb+. Using tables and qSQL it can be implemented with three select statements at most, as shown in the util library at
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/wp-knn](https://www.github.com/kxcontrib/wp-knn).
 We also briefly saw how to use iterators to optimize the classification time, and how data structures can influence performance comparing tables and vectors.
 

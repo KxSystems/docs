@@ -120,7 +120,7 @@ city  | s
 
 **Duplicate column names** `xdesc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
 
 
@@ -130,9 +130,9 @@ city  | s
 
 !!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`asc`, `iasc`, `xasc`](asc.md)  
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md),
 [Sorting](../basics/sort.md)
 

@@ -3,7 +3,7 @@ title: Set up your machine-learning environment – Machine Learning – kdb+ an
 description: How to set up an environment in which to work on Machine Learning within kdb+ and q
 keywords: anaconda, conda, docker, embedpy, jupyter, ml, machine learning, python
 ---
-# <i class="fas fa-share-alt"></i> Setting up your machine-learning environment
+# :fontawesome-solid-share-alt: Setting up your machine-learning environment
 
 
 
@@ -86,10 +86,10 @@ l64/ 8()core 64304MB kx b8279373a1d1 172.17.0.3 EXPIRE 2019.05.21 bob@example.co
 q)
 ```
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [Instructions for running headless or with an existing license](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#headlesspresets)
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [Build instructions for the embedPy image](https://github.com/KxSystems/embedPy/blob/master/docker/README.md#building)
 
 
@@ -101,7 +101,7 @@ docker run --rm -it -p 8888:8888 kxsys/jupyterq
 
 Now point your browser at `http://localhost:8888/notebooks/kdb%2BNotebooks.ipynb`.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [Build instructions for the JupyterQ image](https://github.com/KxSystems/jupyterq/blob/master/docker/README.md)
 
 Allows Jupyter notebooks to be used within a Docker container.

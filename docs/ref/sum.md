@@ -134,7 +134,7 @@ q)2 wsum 1 2 4       / equivalent to sum 2 * 1 2 4
 
 `wsum` is an aggregate function.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Wikipedia: [Weighted sum](https://en.wikipedia.org/wiki/Weight_function)  
 Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)

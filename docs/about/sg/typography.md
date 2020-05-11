@@ -5,7 +5,7 @@ description: Rules for using sentence and title case, admonitions, and ordered a
 author: Stephen Taylor
 keywords: kdb+, q, style, typography
 ---
-# <i class="fas fa-pen-nib"></i> Typography
+# :fontawesome-solid-pen-nib: Typography
 
 
 

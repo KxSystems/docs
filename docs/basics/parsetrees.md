@@ -33,6 +33,6 @@ q)eval ((/;+);(til;(+;2;2)))
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Technical White paper: [Parse trees and functional forms](../wp/parse-trees.md)
 

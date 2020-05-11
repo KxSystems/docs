@@ -7,7 +7,7 @@ keywords: api, interface, kdb+, library, perl, q
 
 
 
-<i class="far fa-hand-point-right"></i> [cpan.org/~markpf/Kx-0.039/](https://metacpan.org/release/MARKPF/Kx-0.039)
+:fontawesome-regular-hand-point-right: [cpan.org/~markpf/Kx-0.039/](https://metacpan.org/release/MARKPF/Kx-0.039)
 
 !!! note "From Mark Pfeiffer"
 

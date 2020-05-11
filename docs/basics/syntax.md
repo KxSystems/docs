@@ -89,7 +89,7 @@ Temporal constants
     00:00:00.000         / time    
     </code></pre>
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Datatypes](datatypes.md)
 
 Character constants
@@ -223,7 +223,7 @@ bob   SFO | 51
 alice SFO | 44
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`!` Key](dictsandtables.md#key)
 
 
@@ -232,7 +232,7 @@ alice SFO | 44
 Attributes are metadata that apply to lists of special form. 
 They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Reference: [Set Attribute](../ref/set-attribute.md), 
 [Step dictionaries](../ref/apply.md#step-dictionaries)
 
@@ -312,7 +312,7 @@ The first expression in a function expression can be a _signature_: an argument 
 
 Within a script, a function may be defined across [multiple lines](#multi-line-expressions).
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Function notation](function-notation.md)
 
 
@@ -337,7 +337,7 @@ q)"abcdef" 1 0 3
 "bad"
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Application](application.md),
 [Iterators](../ref/iterators.md)
 
@@ -483,7 +483,7 @@ q)16 + 1 2 3 4      / sum the list with starting value 16
 
 Any notation for a derived function without its arguments (e.g. `+/`) denotes a constant function atom. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Application](application.md) for how to apply iterators
 
 

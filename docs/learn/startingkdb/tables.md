@@ -167,7 +167,7 @@ The following is a typical layout populated with random data. Load the `trades.q
 q)\l start/trades.q
 ```
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/start/trades.q](https://github.com/KxSystems/cookbook/blob/master/start/trades.q) 
 
 A trade table might include: date, time, symbol, price, size, condition code.

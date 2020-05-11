@@ -170,7 +170,7 @@ _Assign sublists of the argument list to slave tasks, in which the unary value i
 
 The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies `v1` to each item of its sublist. 
 
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
 [Parallel processing](../basics/peach.md)
 
@@ -351,7 +351,7 @@ q)i'[a;b;c]
 `Kuh`chien`Katte`fish
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 

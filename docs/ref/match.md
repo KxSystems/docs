@@ -66,4 +66,4 @@ q)t1~t2
 1b
 ```
 
-<i class="far fa-hand-point-right"></i> Basics: [Comparison](../basics/comparison.md)
+:fontawesome-regular-hand-point-right: Basics: [Comparison](../basics/comparison.md)

@@ -43,7 +43,7 @@ q)asin 0.8
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`cos`, `acos`](cos.md)  
 Basics: [Mathematics](../basics/math.md)
 

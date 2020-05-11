@@ -3,7 +3,7 @@ title: Frequently-asked questions for the automated machine learning | Machine L
 description: Frequently-asked questions about the automated machine learning interface/framework
 keywords: embedpy, machine learning, automation, distribution, cross validation, preprocessing, ml
 ---
-# <i class="fas fa-share-alt"></i> Frequently-asked questions
+# :fontawesome-solid-share-alt: Frequently-asked questions
 
 
 

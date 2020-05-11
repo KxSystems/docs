@@ -7,7 +7,7 @@ keywords: api, c, interface, kdb+, library, q, reference
 # C API Reference
 
 
-<i class="far fa-hand-point-right"></i> [C client for kdb+](c-client-for-q.md)
+:fontawesome-regular-hand-point-right: [C client for kdb+](c-client-for-q.md)
 
 
 ## Overview
@@ -264,7 +264,7 @@ Tags: `c.o`
 
 Converts a q date to a `yyyymmdd` integer.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`ymd` – numbers to date](#ymd-numbers-to-date)
 
 
@@ -460,7 +460,7 @@ Signature: `I khp(const S hostname, I port)`
 Standalone apps only.
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpu(hostname, port, "")`
+:fontawesome-regular-hand-point-right: `khpu(hostname, port, "")`
 
 
 ### `khpu` – connect, no timeout
@@ -470,7 +470,7 @@ Signature: `I khpu(const S hostname, I port, const S credentials)`
 Standalone apps only.
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpun(hostname, port, credentials, 0)`
+:fontawesome-regular-hand-point-right: `khpun(hostname, port, credentials, 0)`
 
 
 ### `khpun` – connect
@@ -511,7 +511,7 @@ A return value of -3 indicates the OpenSSL initialisation failed.
 -3   OpenSSL initialisation failed
 ```
 
-<i class="far fa-hand-point-right"></i> [`sslInfo`](#sslinfo-ssl-info)
+:fontawesome-regular-hand-point-right: [`sslInfo`](#sslinfo-ssl-info)
 
 !!! tip "Unix domain socket"
 
@@ -614,7 +614,7 @@ K f(K x){
 }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Error signaling and catching](c-client-for-q.md#error-signaling-and-catching)
 
 
@@ -838,7 +838,7 @@ included by `k.h`
 
 These are `va_list` versions of the `K k(I,const S,…)` and `K knk(I,…)` functions, useful for writing variadic utility functions that can forward the K objects.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 comp.lang.c: [How can I write a function which takes a variable number of arguments and passes them to some other function (which takes a variable number of arguments)?](http://c-faq.com/varargs/handoff.html)
 
 
@@ -880,6 +880,6 @@ Tags: `c.o`
 
 Encode a year/month/day as a q date, e.g. `0==ymd(2000, 1, 1)`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`dj` – date to number](#dj-date-to-number)
 

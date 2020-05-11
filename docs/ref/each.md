@@ -37,12 +37,12 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 `peach` is a wrapper for the [Each Parallel iterator](maps.md#each-parallel). 
 It is good q style to use `each` and `peach` for unary values. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Maps](maps.md) for uses of Each with binary and higher-rank values  
 [`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)<br>
-<i class="fas fa-book-reader"></i>
+:fontawesome-solid-book-reader:
 [Parallel processing](../basics/peach.md)<br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 

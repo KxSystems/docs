@@ -19,7 +19,7 @@ There are three permanent _system handles_:
 
 File and process handles are created by `hopen` and destroyed by `hclose`.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`, `hclose`](../ref/hopen.md),
 [`hsym`](../ref/hsym.md)
 
@@ -45,7 +45,7 @@ abc
 1
 ```
 
-<i class="far fa-comment"></i>
+:fontawesome-regular-comment:
 A handle is an [applicable value](glossary.md#applicable-value). It (and its negation) can be applied to an argument and iterated. 
 
 
@@ -61,10 +61,10 @@ q)0 (+;2;2)         /parse tree
 4
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`eval`](../ref/eval.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Parse trees](parsetrees.md)
 
 
@@ -124,7 +124,7 @@ q)read0 `:data/new         /hopen created file path
 "now is the time for all good men to come to the aid of the party"
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](files.md)
 
 
@@ -133,7 +133,7 @@ q)read0 `:data/new         /hopen created file path
 -   `h x` sends string `x` as a sync request (get)
 -   `neg[h] x` sends string `x` as an async request (set)
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Interprocess communication](ipc.md)
 
 
@@ -153,11 +153,11 @@ q)s
 
 ### File 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`read0`](../ref/read0.md), 
 [File Text](../ref/file-text.md)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`read1`](../ref/read1.md), 
 [File Binary](../ref/file-binary.md)
 

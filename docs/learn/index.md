@@ -14,23 +14,27 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 <div>
     [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
     Download<br/>
-    <i class="fab fa-apple"></i>
-    <i class="fab fa-linux"></i>
-    <i class="fab fa-windows"></i>](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
+    :fontawesome-brands-apple:
+    :fontawesome-brands-linux:
+    :fontawesome-brands-windows:](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 </div>
 <div>
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
     Install](install/index.md "How to install kdb+")
 </div>
-<!--
 <div>
-    [<i class="fas fa-fw fa-binoculars fa-border fa-5x"></i><br/>
-    Mountain tour](tour/index.md "A one-page mountain tour of the q language")
+    [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
+    Mountain tour](tour/index.md "A one-page rapid tour of the q language")
 </div>
 <div>
     [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
-    Q for pythons](primer/index.md "A q tutorial for Python and Panda users")
+    Examples<br>from Python](python/examples/index.md "Examples from Python")
 </div>
+<div>
+    [<i class="fab fa-fw fa-youtube fa-border fa-5x"></i><br/>
+    Q for All](q-for-all.md "Video tutorials by Jeffry Borror")
+</div>
+<!--
 <div>
     [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
     Python to q](python/basic.md "Python programs and their q equivalents")
@@ -41,15 +45,15 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
     _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
 </div>
 <div>
-    [<i class="fab fa-fw fa-youtube fa-border fa-5x"></i><br/>
-    Q for All](q-for-all.md "Video tutorials by Jeffry Borror")
+    [<i class="fas fa-fw fa-chart-line fa-border fa-5x"></i><br/>
+    Q for quants](brief-introduction.md "A q tutorial for analysts and quants")
 </div>
 <div>
     [<i class="fas fa-fw fa-code fa-border fa-5x"></i><br/>
     Q by examples](q-by-examples.md "An introduction to q through examples")
 </div>
 <div>
-    [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
+    [<i class="fas fa-fw fa-database fa-border fa-5x"></i><br/>
     Starting kdb+](startingkdb/index.md "Getting started on real-time and historical database")
 </div>
 <!--
@@ -60,15 +64,21 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 -->
 <div>
     [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
-    Phrasebook](/phrases/ "Power expressions in q")
-</div>
-<div>
-    [<i class="fas fa-fw fa-chalkboard-teacher fa-border fa-5x"></i><br/>
-    learn.kx.com](https://learn.kx.com/ "Online classroms")
+    Reading room](reading/index.md "Example programs for study")
 </div>
 <div>
     [<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
     Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
+</div>
+<!--
+<div>
+    [<i class="fas fa-fw fa-chalkboard-teacher fa-border fa-5x"></i><br/>
+    learn.kx.com](https://learn.kx.com/ "Online classroms")
+</div>
+-->
+<div>
+    [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
+    Advanced q](advanced.md "Advanced topics in q")
 </div>
 
 </div>
@@ -79,10 +89,13 @@ Q is a general-purpose programming language. You can write programs for anything
 
 You do not need prior programming experience to learn it. 
 If you have some experience with mathematics, functional programming or SQL, you will find in q much that is familiar. 
-(And we have tutorials for Python programmers.)
+
+Here we offer different routes into the language.
+Find one that suits your experience and learning style.
+(Or ask the [Librarian](mailto:librarian@code.kx.com) for what you need.)
 
 
-## <i class="fas fa-book"></i> Books
+## :fontawesome-solid-book: Books
 
 
 <div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
@@ -100,14 +113,14 @@ by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-
 **Fast, scalable and maintainable kdb+**
 by Nick Psaris, available from [Amazon.co.uk](https://www.amazon.co.uk/d/Books/Tips-Fast-Scalable-Maintainable-Kdb/9881389909/).
 
-<i class="fas fa-quote-left"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
+:fontawesome-solid-quote-left:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
+:fontawesome-solid-star:
 There is information that if you were learning by yourself, would take years to work out.
-<i class="fas fa-quote-right"></i>
+:fontawesome-solid-quote-right:
 </div>
 
 

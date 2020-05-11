@@ -29,7 +29,7 @@ Options:
  [-P display precision](#-p-display-precision)                                            
 </pre>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](../ref/dotz.md#zx-argv) (argv),
 [`.z.X`](../ref/dotz.md#zx-raw-command-line) (raw command line)
 
@@ -96,7 +96,7 @@ Syntax: `-c r c`
 
 Set console maximum rows and columns, default 25 80.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\c` system command](syscmds.md#c-console-size) for detail
 
 
@@ -106,7 +106,7 @@ Syntax: `-C r c`
 
 Set HTTP display maximum rows and columns.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\C` system command](syscmds.md#c-http-size) for detail
 
 
@@ -118,7 +118,7 @@ Syntax: `-e [0|1|2]`
 Sets error-trapping mode.
 The default is 0 (off).
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\e` system command](syscmds.md#e-error-trap-clients) for detail
 
 
@@ -133,7 +133,7 @@ x   | mode
 1   | plain & TLS
 2   | TLS only
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Knowledge Base: [SSL/TLS](../kb/ssl.md#tls-server-mode)
 
 
@@ -146,7 +146,7 @@ Sets garbage-collection mode:
 -   0 for deferred (default)
 -   1 for immediate
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\g` system command](syscmds.md#g-garbage-collection-mode) for detail
 
 
@@ -157,7 +157,7 @@ Syntax: `-l`
 
 Log updates to filesystem.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)
 
 
@@ -167,7 +167,7 @@ Syntax: `-L`
 
 As `-l`, but sync logging.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)
 
 
@@ -195,7 +195,7 @@ Syntax: `-o N`
 Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 (Affects [`.z.Z`](../ref/dotz.md#zz-local-datetime))
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\o` system command](syscmds.md#o-offset-from-utc) for detail
 
 
@@ -208,20 +208,20 @@ _Set listening port_
 ```
 
 See 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Listening port](listening-port.md) for detail.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\p` system command](syscmds.md#p-listening-port)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Multithreaded input mode](../kb/multithreaded-input.md),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
@@ -232,7 +232,7 @@ Syntax: `-P N`
 
 Display precision for floating-point numbers, i.e. the number of digits shown.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\P` system command](syscmds.md#p-precision) for detail
 
 
@@ -265,7 +265,7 @@ and with `-q`
 4
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.q`](../ref/dotz.md#zq-quiet-mode) (quiet mode)
 
 
@@ -275,7 +275,7 @@ Syntax: `-r :host:port[:user[:password]]`
 
 Replicate from `:host:port`.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\r` system command](syscmds.md#r-replication-master)
 
 
@@ -285,7 +285,7 @@ Syntax: `-s N`
 
 Number of slave threads or processes available for parallel processing.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\s` system command](syscmds.md#s-number-of-slaves) for detail
 
 
@@ -296,7 +296,7 @@ Syntax: `-t N`
 
 Period in milliseconds between timer ticks. Default is 0, for no timer.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\t` system command](syscmds.md#t-timer) for detail
 
 
@@ -306,7 +306,7 @@ Syntax: `-T N`
 
 Timeout in seconds for client queries, i.e. maximum time a client call will execute. Default is 0, for no timeout.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\T` system command](syscmds.md#t-timeout) for detail
 
 
@@ -350,7 +350,7 @@ q)raze string -33!"mypassword" / -33! calculates sha1
 "91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
 
@@ -367,7 +367,7 @@ Syntax: `-w N`
 
 Workspace limit in MB for the heap per thread. Default is 0: no limit.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\w` system command](syscmds.md#w-workspace) for detail
 Reference: [`.Q.w`](../ref/dotq.md#qw-memory-stats)
 
@@ -388,7 +388,7 @@ Syntax: `-W N`
 
 Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\W` system command](syscmds.md#w-week-offset) for detail
 
 
@@ -398,7 +398,7 @@ Syntax: `-z [0|1]`
 
 Set the format for `"D"$` date parsing: 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\z` system command](syscmds.md#z-date-parsing)
 
 

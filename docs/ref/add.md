@@ -59,7 +59,7 @@ t| t . t t t t t f t . p p p z n t t t
 
 Range: `ijefpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Subtract](subtract.md), 
 [`sum`](sum.md)  
 .Q; [`.Q.addmonths`](dotq.md#qaddmonths)  

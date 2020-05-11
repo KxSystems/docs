@@ -113,6 +113,6 @@ $ cat t.c
 TODO...
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Interprocess communication](../basics/ipc.md)
 

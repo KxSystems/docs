@@ -71,7 +71,7 @@ q){`a set x} peach 0 1
 
 fails and signals `noupdate` as it is executed from within slave threads.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 `peach` defaults to `each` when no slave threads are specified on startup. 
@@ -172,6 +172,6 @@ q)handles:`u#`int$();
 ```
 
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [`.Q.fc`](../ref/dotq.md#qfc-parallel-on-cut) (parallel on cut)
 

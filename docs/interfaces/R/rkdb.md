@@ -1,12 +1,13 @@
 ---
 title: rkdb an interface giving R access to q/kdb+
 description: Enable R to connect to kdb+ and extract data; enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely.
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: interface, kdb+, library, q, r
 ---
-# <i class="fab fa-r-project"></i> rkdb 
+# :fontawesome-brands-r-project: rkdb 
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../fusion.md)
+:fontawesome-brands-superpowers: [Fusion for kdb+](../fusion.md)
 </div>
 
 Connects R to a kdb+ database to extract partially analyzed data into R
@@ -14,11 +15,11 @@ for further local manipulation, analysis and display.
 
 Operating systems: tested and available for
 
--   <i class="fab fa-linux"></i> Linux (64-bit)
--   <i class="fab fa-apple"></i> macOS
--   <i class="fab fa-windows"></i> Windows (32-bit and 64-bit)
+-   :fontawesome-brands-linux: Linux (64-bit)
+-   :fontawesome-brands-apple: macOS
+-   :fontawesome-brands-windows: Windows (32-bit and 64-bit)
 
-Download from <i class="fab fa-github"></i> [KxSystems/rkdb](https://github.com/KxSystems/rkdb) and follow the [installation instructions](https://github.com/KxSystems/rkdb#installation).
+Download from :fontawesome-brands-github: [KxSystems/rkdb](https://github.com/KxSystems/rkdb) and follow the [installation instructions](https://github.com/KxSystems/rkdb#installation).
 
 The interface allows R to connect to a kdb+ database and send it a request, which can optionally return a result.
 Three methods are available:

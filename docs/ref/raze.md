@@ -57,5 +57,5 @@ q)raze (10;d)   / raze will not work
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Join](join.md)

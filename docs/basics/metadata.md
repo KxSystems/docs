@@ -87,6 +87,6 @@ Operators and keywords that get or set metadata.
 : List of views in the default namespace
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q`](../ref/dotq.md) and
 [`.z`](../ref/dotz.md) namespaces

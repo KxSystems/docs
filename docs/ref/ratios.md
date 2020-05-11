@@ -50,7 +50,7 @@ q)ratios 1 2 4 6 7 10
     q)select log ratios price from trade
     </code></pre>
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Each Prior](maps.md#each-prior), 
 [`differ`](differ.md), 
 [`%` Divide](divide.md)  

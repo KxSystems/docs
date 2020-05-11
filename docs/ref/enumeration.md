@@ -27,7 +27,7 @@ q)`x!1 2 3
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Enum Extend](enum-extend.md),
 [Enumeration](enumeration.md)  
 [`!` bang](overloads.md#bang)  

@@ -109,7 +109,7 @@ Range: `f`
 
 Function is commutative under datatype.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`exp`, `xexp`](exp.md)  
 Basics: [Datatypes](../basics/datatypes.md)
 

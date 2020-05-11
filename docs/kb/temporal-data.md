@@ -159,5 +159,5 @@ q)tab.timeStamp>09:29
 000011b
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Comparison](../basics/comparison.md)

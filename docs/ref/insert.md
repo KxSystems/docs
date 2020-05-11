@@ -64,7 +64,7 @@ t| 50
     `insert` can insert to global variables only, due to the lookup of the symbol name. If you need to insert to function-local tables, use `table,:data` instead.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`,` Join](join.md)  
 Basics: [q-SQL](../basics/qsql.md)
 

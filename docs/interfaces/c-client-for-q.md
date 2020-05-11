@@ -8,13 +8,13 @@ keywords: api, c, interface, kdb+, library, q
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [C API reference](capiref.md)
 
 There are three cases in which to to use the C API for kdb+:
 
 1.   Dynamically-loaded library called by q, e.g. OS, math, analytics.  
-<i class="far fa-hand-point-right"></i> [Using C functions](using-c-functions.md)
+:fontawesome-regular-hand-point-right: [Using C functions](using-c-functions.md)
 2.  Dynamically-loaded library doing callbacks into q, e.g. feedhandlers ([Bloomberg client](q-client-for-bloomberg.md))
 3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`. 
 
@@ -24,14 +24,14 @@ There are three cases in which to to use the C API for kdb+:
 
 To minimize dependencies for existing projects, there are now two sets of files available.
 
-<i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/kxsystems/kdb)
+:fontawesome-brands-github: [KxSystems/kdb](https://github.com/kxsystems/kdb)
 
 The `e` set of files, those with SSL/TLS support, contain all the functionality of the `c` files.
 
 !!! warning "Do not link with both `c` and `e` files; just choose one set."
 
 
-### <i class="fab fa-linux"></i> Linux
+### :fontawesome-brands-linux: Linux
 
 capability | dependencies | 32-bit | 64-bit 
 -----------|--------------|-----------|-----
@@ -39,7 +39,7 @@ no SSL/TLS |              | [`l32/c.o`](https://github.com/KxSystems/kdb/blob/ma
 SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`l64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)
 
 
-### <i class="fab fa-apple"></i> macOS
+### :fontawesome-brands-apple: macOS
 
 capability | dependencies | 32-bit | 64-bit 
 -----------|--------------|-----------|-----
@@ -47,7 +47,7 @@ no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/ma
 SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)
 
 
-### <i class="fab fa-windows"></i> Windows
+### :fontawesome-brands-windows: Windows
 
 capability | dependencies | 32-bit | 64-bit 
 -----------|--------------|-----------|-----
@@ -64,7 +64,7 @@ We no longer ship `c.obj` or `cst.obj`; they have been replaced by `c_static.lib
 ## Overview
 
 The best way to understand the underpinnings of q, and to interact with it from C, is to start with the header file available from 
-<i class="fab fa-github"></i> [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) .
+:fontawesome-brands-github: [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) .
 
 This is the file you will need to include in your C or C++ code to interact with q from a low level.
 
@@ -190,7 +190,7 @@ symbol | `x->s`   | error
 
     <pre><code class="language-bash">gcc -D KXVER=3 …</code></pre>
     
-    If you need to link against earlier releases of the C library, you can obtain those files from <i class="fab fa-github"></i> [the earlier version](https://github.com/KxSystems/kdb/blob/6455fa25b0e1e5e403ded9bcec96728b4445ccac/c/c/k.h) of 2011.04.20. 
+    If you need to link against earlier releases of the C library, you can obtain those files from :fontawesome-brands-github: [the earlier version](https://github.com/KxSystems/kdb/blob/6455fa25b0e1e5e403ded9bcec96728b4445ccac/c/c/k.h) of 2011.04.20. 
 
 
 ## Examining K objects
@@ -718,7 +718,7 @@ if(r && -128==r->t)
 Under some network-error scenarios, `errno` can be used to obtain the details of the error,
 e.g. `perror(“network”);`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`krr`](capiref.md#krr-signal-c-error)
 
 
@@ -803,7 +803,7 @@ Callbacks from `sd1` are executed on the main thread of q.
 
 !!! tip
 
-    Windows developers may be interested in <i class="fab fa-github"></i> [ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)
+    Windows developers may be interested in :fontawesome-brands-github: [ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)
 
 
 ## Serialization and deserialization
@@ -892,7 +892,7 @@ It can be a struggle printing q values from a debugger, but you can call the han
 
 If your client is a shared library, you might get away with `p k(0,"show",r1(x),(K)0)`
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 _GDB Manual_: [§12. C Preprocessor Macros](https://sourceware.org/gdb/onlinedocs/gdb/Macros.html)
 
 Now, we compile the program using the GNU C compiler, `gcc`. We pass the `-gdwarf-21` and `-g3` flags to ensure the compiler includes information about preprocessor macros in the debugging information.
@@ -977,12 +977,12 @@ $13 = {m = 0 '\000', a = 0 '\000', t = -7 '\371', u = 0 '\000',
 The q multithreaded C library (`c.dll`) uses static thread-local storage (TLS), and is incompatible with the `LoadLibrary` Win32 API. 
 If you are writing an Excel plugin, this point is relevant to you, as loading of the plugin uses this mechanism. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](http://support.microsoft.com/kb/118816)
 
 When trying to use the library, the problem manifests itself as a crash during the `khpu()` call.
 
-Hence Kx also provides at <i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/KxSystems/kdb) a single-threaded version of this library as `w32/cst.dll` and `w64/cst.dll`, which do _not_ use TLS. 
+Hence Kx also provides at :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) a single-threaded version of this library as `w32/cst.dll` and `w64/cst.dll`, which do _not_ use TLS. 
 To use this library:
 
 -    download `cst.dll` and `cst.lib` 
@@ -1020,6 +1020,6 @@ You can check dependencies using the methods described at [qt.io](https://wiki.q
 
 ## Example
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/c/csv.c](https://github.com/KxSystems/cookbook/blob/master/c/csv.c) – CSV export example in C
 

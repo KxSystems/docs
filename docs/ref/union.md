@@ -36,7 +36,7 @@ q)(distinct t0,t1)~t0 union t1
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`in`](in.md), [`inter`](inter.md), [`within`](within.md)  
 Basics: [Select](../basics/selection.md)
 

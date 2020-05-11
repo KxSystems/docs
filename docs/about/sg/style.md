@@ -5,7 +5,7 @@ description: Usage and markup rules for inline style, such as bold and italic ty
 author: Stephen Taylor
 keywords: bold, code, italic, kdb+, markdown, q, style
 ---
-# <i class="fas fa-pen-nib"></i> Style
+# :fontawesome-solid-pen-nib: Style
 
 
 ## Inline style

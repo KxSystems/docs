@@ -1239,7 +1239,7 @@ Diane O’Donoghue joined First Derivatives in June 2018 as a data scientist in 
 ## Code
 
 The code presented in this paper is available from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/fdl2019](https://github.com/kxcontrib/fdl2019).
 
 

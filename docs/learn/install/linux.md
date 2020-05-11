@@ -4,7 +4,7 @@ description: How to install kdb+ under Linux
 author: Stephen Taylor
 keywords: install, kdb+, linux, q
 ---
-# <i class="fab fa-linux"></i> Installing under Linux
+# :fontawesome-brands-linux: Installing under Linux
 
 
 
@@ -47,10 +47,10 @@ But if you are installing 32-bit kdb+ on a 64-bit Linux distribution, you will n
 sudo apt-get install libc6-i386
 ```
 
-<i class="far fa-hand-point-right"></i> AskUbuntu: [How to run 32-bit app in Ubuntu 64-bit?](https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit)
+:fontawesome-regular-hand-point-right: AskUbuntu: [How to run 32-bit app in Ubuntu 64-bit?](https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit)
 
 
-## <i class="fas fa-rocket"></i> Minimum install and launch
+## :fontawesome-solid-rocket: Minimum install and launch
 
 Confirm that kdb+ runs. In your home folder, type `q/l32/q`
 to see the kdb+ banner and the `q)` prompt. 
@@ -84,7 +84,7 @@ The minimum installation can be improved in two important ways. We strongly reco
 * Define `q` as a command alias, allowing you to invoke kdb+ without specifying the path to it
 
 
-### <i class="fas fa-plug"></i> Install Rlwrap
+### :fontawesome-solid-plug: Install Rlwrap
 
 <!-- Exit kdb+ to return to the Bash prompt and your home folder.  -->
 Ask for Rlwrap’s version number. If you see one, Rlwrap is already installed
@@ -102,7 +102,7 @@ If Rlwrap is already installed you can go on to the next step.
 Otherwise, you will be told `rlwrap: command not found`. Install Rlwrap using your package manager.
 
 
-### <i class="fas fa-code"></i> Edit your profile
+### :fontawesome-solid-code: Edit your profile
 
 !!! info "Environment variables"
 
@@ -139,7 +139,7 @@ $ source .bashrc
     You can install kdb+ where you please. The environment variables `QHOME` (specified above) and `QLIC` tell kdb+ [where to find its files](../licensing.md). 
 
 
-## <i class="fas fa-check"></i> Confirm successful installation
+## :fontawesome-solid-check: Confirm successful installation
 
 From your home folder, launch kdb+, type an expression and recall it using the up-arrow key. Exit kdb+.
 
@@ -167,7 +167,7 @@ $
 <!-- ![In q, type an expression and recall it with the up-arrow key](img/install_linux_07.png "In q, type an expression and recall it with the up-arrow key") -->
 
 
-## <i class="fas fa-certificate"></i> Install a license key file
+## :fontawesome-solid-certificate: Install a license key file
 
 64-bit kdb+ requires a license key file.
 [Obtain and install](../licensing.md) one.
@@ -175,7 +175,7 @@ $
 You’re done. You have completely installed kdb+. 
 
 
-## <i class="fas fa-code"></i> Installing multiple versions
+## :fontawesome-solid-code: Installing multiple versions
 
 For any version of q, 64-bit and 32-bit interpreter binaries share the same `q.k` file, located in `QHOME` for that version. 
 
@@ -247,7 +247,7 @@ Loading `sp.q`, a sibling of `QHOME`, requires the relative path specified.
 
 
 
-## <i class="far fa-hand-point-right"></i> What’s next?
+## :fontawesome-regular-hand-point-right: What’s next?
 
 [Learn the q programming language](../index.md#learn-q), look through the [reference card](../../ref/index.md), or see in the [Knowledge Base](../../kb/index.md)  what you can do with kdb+.
 

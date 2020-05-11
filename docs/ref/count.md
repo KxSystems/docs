@@ -59,7 +59,7 @@ q)count sp
 12
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 
@@ -85,6 +85,6 @@ q)3 mcount 0N 1 2 3 0N 5
 
 `mcount` is a uniform function. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: [Mathematics](../basics/math.md)

@@ -5,11 +5,11 @@ description: Default behavior of automated machine learning; common processes co
 date: March 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
-# <i class="fas fa-share-alt"></i> Automated Post-Processing
+# :fontawesome-solid-share-alt: Automated Post-Processing
 
 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 This section describes the outputs produced following model selection and optimization. All outputs are contained in an `outputs` directory within the `automl` repository from which the user has executed the pipeline. In its default configuration, the pipeline returns 

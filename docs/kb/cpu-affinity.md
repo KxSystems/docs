@@ -12,7 +12,7 @@ Kdb+ can be constrained to run on specific cores through the setting of CPU affi
 
 Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`.Q.w`](../ref/dotq.md#qw-memory-stats) (memory stats)  
 Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace), 
 [System command `\w`](../basics/syscmds.md#w-workspace)
@@ -20,7 +20,7 @@ Basics: [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace),
 
 ## Linux
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Non-Uniform Access Memory (NUMA)](linux-production.md#non-uniform-access-memory-numa-hardware)
 
 

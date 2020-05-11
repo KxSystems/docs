@@ -70,7 +70,7 @@ error | cause
 cast  | item/s of `y` not in `x`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Enum Extend](enum-extend.md),
 [Enumeration](enumeration.md)  
 Basics: [Enumerations](../basics/enumerations.md)  

@@ -10,7 +10,7 @@ keywords: and, kdb+, lesser, minimum, q
 
 _Lesser of two values, logical AND_
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Lesser](lesser.md)
 
 

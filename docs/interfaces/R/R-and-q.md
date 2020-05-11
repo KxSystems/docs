@@ -1,9 +1,10 @@
 ---
 title: Using R with kdb+ – Non-Fusion Interfaces
 description: Enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely; and enable q to load the R maths library and invoke R math routines locally.
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: interface, kdb+, library, q, r
 ---
-# <i class="fab fa-r-project"></i> Using R and kdb+
+# :fontawesome-brands-r-project: Using R and kdb+
 
 Outside the Fusion interfaces to R, a number of interfaces provide extremely useful functionality to a q instance from R and vice-versa.
 
@@ -13,7 +14,7 @@ Outside the Fusion interfaces to R, a number of interfaces provide extremely use
 
 Although it is not the recommended method, if R is running on Windows, the q ODBC driver can be used to connect to kdb+ from R.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Kdb+ server for ODBC](../q-server-for-odbc.md)
 
 The RODBC package should be installed in R. An example is given below.
@@ -36,7 +37,7 @@ The RODBC package should be installed in R. An example is given below.
 
 R contains a maths library which can be compiled standalone.
 The functions can then be exposed to q by wrapping them in C code which handles the mapping between R datatypes and q datatypes (K objects).
-See <i class="fab fa-github"></i> [rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)
+See :fontawesome-brands-github: [rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)
 for an example of integrating q with the R API (i.e. making use of some statistical functions from q).
 
 ```q
@@ -50,7 +51,7 @@ q)pnorm[0;1.5;1.5] / cdf value for 0 for a N(1.5,1.5) distribution
 q)dnorm[0;1.5;1.5] / normal density at 0 for N(1.5;1.5) distribution
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Andrey’s [althenia.net/qml](http://althenia.net/qml)
 for an embedded math lib
 

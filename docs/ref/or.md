@@ -10,7 +10,7 @@ _Greater of two values, logical OR_
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Greater](greater.md)
 
 

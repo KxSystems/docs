@@ -20,7 +20,7 @@ Starting at the beginning with the TP: if this is running in zero-latency mode (
 
 One way of doing this is to have a chained TP, or even a chain of them. The first TP would be a zero-latency TP – and would have only clients who truly need immediate update. It in turn would have as one of its clients a TP publishing bulk updates every 100ms. That in turn would have a chained tickerplant as client that publishes updates only every second. Clients then subscribe to the TP with granularity that suits their needs. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Chained tickerplant and RDB for kdb+tick](chained-tickerplant.md)
 
 
@@ -28,7 +28,7 @@ One way of doing this is to have a chained TP, or even a chain of them. The firs
 
 Next in the chain comes the RDB. An RDB is an in-memory database, and by day-end can be using a lot of memory. If clients are querying that data intra-day then the memory cost is reasonable – but if the data’s only being collected for insertion into the HDB at day-end the overhead is unreasonable. In such a case it would make sense to write the data to disk during the day so that it’s ready for day-end processing, but with only a small memory footprint to build bulk updates.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Write-only alternative to RDB](w-q.md)
 
 
@@ -38,14 +38,14 @@ The other extreme is when one RDB isn’t enough - then the same approach can be
 
 A chained RDB doesn’t have to subscribe to the whole ‘firehose’. It might be useful to have a TP with only the stocks building a particular index, or perhaps only trades and no quotes.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Chained tickerplant and RDB for kdb+tick](chained-tickerplant.md)
 
 
 ## Working with the TP logfile
 
 The TP logs the updates published to subscribers to a file. In the event of a serious crash, this file can be rescued using the utility functions in 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q)
 
 
@@ -57,7 +57,7 @@ A simple example would be keeping a running Open/High/Low/Latest: much simpler t
 
 A more interesting example is keeping a table of the latest trade and the associated quote for every stock – trivial to do in real time with the incremental updates from the TP, but impossible to build from scratch in a timely fashion with the raw data. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)
 
 
@@ -65,7 +65,7 @@ A more interesting example is keeping a table of the latest trade and the associ
 
 The default version of `c.q` linked to above connects to a TP and starts collecting data. Sometimes that’s not enough and you want to replay the log through the task first. (For example, to get the Open/High/Low for the day, not just since starting the task.) For that, use `clog.q` instead. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [simongarland/tick/clog.q](https://github.com/simongarland/tick/blob/master/clog.q)
 
 
@@ -74,5 +74,5 @@ The default version of `c.q` linked to above connects to a TP and starts collect
 By default, the end-of-day processing simply saves the intra-day RDB to disk after a little re-organization. 
 
 An example of additional processing (updating a permanent HLOC table and building an NBBO table from scratch) can be found in
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/taq/daily.q](https://github.com/simongarland/tick/blob/master/clog.q). 

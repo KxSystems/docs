@@ -5,11 +5,11 @@ author: Conor McCarthy
 date: October 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Machine-learning toolkit
+# :fontawesome-solid-share-alt: Machine-learning toolkit
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 
@@ -37,7 +37,7 @@ The following requirements cover all those needed to run the libraries in the cu
 A number of Python dependencies also exist for the running of embedPy functions within both the the machine-learning utilities and FRESH libraries. 
 These can be installed as outlined at
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml) 
 using Pip
 

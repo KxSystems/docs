@@ -6,7 +6,7 @@ author: Stephen Taylor
 keywords: convention, kdb+, q, style, spelling, typography
 ---
 
-# <i class="fas fa-pen-nib"></i> Style guide
+# :fontawesome-solid-pen-nib: Style guide
 
 
 Here are typographical, spelling and lexical conventions for the content of this site.
@@ -16,7 +16,7 @@ Here are typographical, spelling and lexical conventions for the content of this
 
 They apply to 
 
--   Markdown source files for code.kx.com, hosted at <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/kxsystems/docs)
+-   Markdown source files for code.kx.com, hosted at :fontawesome-brands-github: [KxSystems/docs](https://github.com/kxsystems/docs)
 -   Technical White papers prepared for code.kx.com 
 
 ## White papers
@@ -26,7 +26,7 @@ Image files should be ≤500px wide.
 
 Use the source files for published papers as models: 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/docs/docs/wp](https://github.com/KxSystems/docs/tree/master/docs/wp).
 
 

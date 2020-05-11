@@ -6,7 +6,7 @@ keywords: kdb+, library, q, regex, regular expression
 # Using regular expressions
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`like`](../ref/like.md),
 [`ss`, `ssr`](../ref/ss.md), 
 [Regular Expressions in q](../basics/regex.md)
@@ -96,11 +96,11 @@ q)tb like "*[^0-9]"
 ## Regex libraries
 
 For those who need something more flexible, it’s possible to use regex libs such as 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [google/re2](https://github.com/google/re2), 
 
 The code below was compiled to use `re2` with V3.1. The `k.h` file can be downloaded from 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/c](https://github.com/KxSystems/kdb/tree/master/c/c) 
 This can be compiled for 64-bit Linux:
 
@@ -160,7 +160,7 @@ K FullMatch(K x,K y){
 Another library which has been loaded into kdb+ is <http://q.o.potam.us/?p=pcre> although you will need to test whether it works with your current version of kdb+. 
 -->
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Dynamic Load](../ref/dynamic-load.md)
 
 

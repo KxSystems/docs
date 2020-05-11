@@ -88,7 +88,7 @@ c| 2
 
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
-    <i class="far fa-hand-point-right"></i>
+    :fontawesome-regular-hand-point-right:
     [q-SQL](../basics/qsql.md#cond)
 
 
@@ -112,13 +112,13 @@ q)\v
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [qSQL](../basics/qsql.md)
 
 
 ## `!` Delete operator
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Functional Delete](../basics/funsql.md#delete)
 
 

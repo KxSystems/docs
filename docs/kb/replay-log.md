@@ -10,7 +10,7 @@ date: Decemeber 2019
 
 Streaming-execute over a file is used (for example in kdb+tick) to replay logfiles in a memory-efficient manner.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-11!` streaming execute](../basics/internal.md#-11-streaming-execute)
 
 A logfile is just a list of lists, and each list is read in turn and evaluated by [`.z.ps`](../ref/dotz.md#zps-set) (which defaults to [`value`](../ref/value.md)).
@@ -52,7 +52,7 @@ q)-11!`:logfile.2013.12.03
 'f
 ```
 
-<i class="fab fa-github"></i> [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) for examples of usage
+:fontawesome-brands-github: [github.com/simongarland/tickrecover/rescuelog.q](https://github.com/simongarland/tickrecover/blob/master/rescuelog.q) for examples of usage
 
 
 
