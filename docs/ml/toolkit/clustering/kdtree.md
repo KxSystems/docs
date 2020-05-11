@@ -1,6 +1,6 @@
 ---
 author: Deanna Morgan
-date: May 2019
+date: May 2020
 keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure, kdtree, k-dimensional tree
 ---
 
