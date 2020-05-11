@@ -18,7 +18,7 @@ The following are the procedures completed when the default system configuration
 
 1. Feature extraction is performed using either FRESH or normal feature extraction methods.
 2. Significance tests are applied to extracted features to determine those most relevant for model training.
-3. Data is split into training, validation and testing (holdout) sets.
+3. Data is split into training, validation and testing sets.
 4. Cross-validation procedures are performed on a selection of models.
 5. Models are scored using a predefined performance metric, based on the problem type (classification/regression), with the best model selected and scored on the validation set.
 6. Best model saved following optimization using grid search procedures.
@@ -48,7 +48,7 @@ d          x         x1        x2 x3
 q)count 1_cols tb
 4
 // apply FRESH feature extraction
-q)freshfeats:.ml.fresh.createfeatures[tb;`d;1_cols tb;.ml.fresh.params]
+q)show freshfeats:.ml.fresh.createfeatures[tb;`d;1_cols tb;.ml.fresh.params]
 d         | x_absenergy x_abssumchange x_count x_countabovemean x_countbelowm..
 ----------| -----------------------------------------------------------------..
 2001.01.01| 5.984048    8.764463       23      9                14           ..
@@ -84,8 +84,10 @@ x            x1        x2        x3        x4 x5
 // no. of features before feature extraction
 q)count cols tb
 6
+// Define the functions to be applied in normal feature creation
+q)funcs:enlist[`funcs]!enlist `.automl.prep.i.default
 // apply normal feature extraction
-q)show normfeat:flip .automl.prep.normalcreate[tb;::]0
+q)show normfeat:flip first .automl.prep.normalcreate[tb;funcs]
 x1        | 0.1312281  0.3667245  0.1415448  0.8186288  0.5973116 0.2413466  ..
 x2        | 0.5068552  0.9532577  0.8768543  0.6690883  0.8108164 0.07458746 ..
 x3        | 0.9967246  0.07262924 0.1245068  0.5506067  0.1330347 0.1533462  ..
@@ -149,7 +151,7 @@ In the example above, the columns `` `x3`x4`` were first removed due to type res
 
 ## Train-test split
 
-Once the most significant features have been selected, the data is split into a training and holdout set. The holdout set is required later in the process for optimizing the best model.
+Once the most significant features have been selected, the data is split into a training and testing set. The testing set is required later in the process for optimizing the best model.
 
 In order to split the data a number of train-test split procedures are implemented for the different problem types
 
@@ -185,7 +187,7 @@ xtest | 20
 ytest | 20
 ```
 
-For classification problems, similar to the one above, it cannot be guaranteed that the $N$ distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
+For classification problems, similar to the one above, it cannot be guaranteed that all of the distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which require that a sample from each target class is present in both splits of the data.
 
 For this reason, the utility function `.automl.i.kerascheck` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
 
@@ -207,7 +209,7 @@ Cross-validation procedures are commonly used in machine learning as a means of 
 
 The cross validation techniques implemented in the automated machine-learning platform are those contained within the [ML Toolkit](../../toolkit/xval.md)). The specific type of cross validation applied to the training data in each case is a shuffled 5-fold cross-validation procedure.
 
-For clarity, the splitting of data to this point as implemented in the default configuration is depicted below, where 20% of the overall dataset is used as the holdout set, 20% of the remaining dataset is used as the validation set and then the remaining data is split into 5-folds for cross validation to be carried out.
+For clarity, the splitting of data to this point as implemented in the default configuration is depicted below, where 20% of the overall dataset is used as the testing set, 20% of the remaining dataset is used as the validation set and then the remaining data is split into 5-folds for cross validation to be carried out.
 
 ![](img/5fold.png)
 
@@ -232,17 +234,17 @@ q)tgt:100?1f
 q).automl.run[tb;tgt;`normal;`reg;(::)]
 ...
 Scores for all models, using .ml.mse
-KNeighborsRegressor      | 0.07372374
-Lasso                    | 0.07546235
-LinearRegression         | 0.08135832
-AdaBoostRegressor        | 0.08199678
-GradientBoostingRegressor| 0.09505053
-RandomForestRegressor    | 0.09638924
-MLPRegressor             | 0.1035959
-RegKeras                 | 0.2236037
+LinearRegression         | 0.08938869
+KNeighborsRegressor      | 0.09325071
+Lasso                    | 0.09390912
+AdaBoostRegressor        | 0.09654465
+RandomForestRegressor    | 0.1206891
+MLPRegressor             | 0.1398568
+GradientBoostingRegressor| 0.1399826
+regkeras                 | 0.3604642
 
-Score for holdout predictions using best model - KNeighborsRegressor
-0.05449826
+Best scoring model = LinearRegression
+Score for validation predictions using best model = 0.1263564
 ```
 
 
@@ -270,7 +272,7 @@ Models and default grid search hyperparameters:
   SVC                              C, degree, tol
 ```
 
-Once the grid search has been performed, the optimized model is tested using the holdout set, with the final score returned and the best model saved down. A regression example is shown below.
+Once the grid search has been performed, the optimized model is tested using the testing set, with the final score returned and the best model saved down. A normal classification example is shown below.
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
@@ -282,12 +284,13 @@ x         x1         x2         x3 x4                                        ..
 0.1726593 0.5145226  0.9719498  00 0.8372026 0.4100884 0.7181567 0.7001034 0...
 0.2092798 0.02959764 0.03549935 00 0.3442338 0.1319948 0.6779861 0.2621923 0...
 // regression example
-q)tgt:100?1f
-q).automl.run[tb;tgt;`normal;`reg;(::)]
+q)tgt:100?5
+q).automl.run[tb;tgt;`normal;`class;::]
 ...
-The best model has been selected as Lasso, continuing to grid-search and final model fitting on holdout set
+Best scoring model = AdaBoostClassifier
 
-Grid search/final model fitting now completed the final score on the holdout set was: 0.08075211
-"Lasso model saved to /home/user/automl/Outputs/2019.10.17/Run_11:28:47.614..
+Best model fitting now complete - final score on testing set = 0.2
+
+Saving down AdaBoostClassifier model to /outputs/2020.04.28/run_15.16.55.074/models/
 ```
 

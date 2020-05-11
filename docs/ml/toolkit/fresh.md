@@ -7,11 +7,7 @@ keywords: machine learning, ml, feature extraction, feature selection, time seri
 ---
 # :fontawesome-solid-share-alt: FRESH: a feature-extraction and feature-significance toolkit
 
-
-
-
-:fontawesome-brands-github:
-[KxSystems/ml](https://github.com/kxsystems/ml)
+:fontawesome-brands-github: [KxSystems/ml](https://github.com/kxsystems/ml)
 
 Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 
