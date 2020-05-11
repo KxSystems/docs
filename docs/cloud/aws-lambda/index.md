@@ -83,10 +83,11 @@ Initialization counts towards billed execution time and timeout. When an executi
 ### Q/kdb+ bootstrap and code execution
 
 To deploy the q/kdb+ runtime to your Lambda environment follow the instructions at
-
+[_Deploy using Serverless Application Repository_](#deploy-using-serverless-application-repository).
+<!-- 
 -   [Deploy using Serverless Application Repository](#deploy-using-serverless-application-repository)
 -   [Deploy using Cloud Development Kit](#deploy-using-the-cloud-development-kit)
-
+ -->
 Once the q/kdb+ runtime is deployed to your Lambda environment, two files can be seen on the Lambda console.
 
 ```txt
@@ -192,6 +193,7 @@ The AWS Serverless Application Repository is a managed repository for serverless
 
 Following the instructions from the above link, you can deploy the latest version of q/kdb+ to your AWS Lambda environment. To register your q/kdb+ Lambda function, visit [serverless.kx.com](https://serverless.kx.com/).
 
+<!-- 
 ## Deploy using the Cloud Development Kit
 
 The AWS Cloud Development Kit (CDK) is a software-development framework to model and provision cloud applications using a range of programming languages. To install the CDK follow the instructions at [cdkworkshop.com](https://cdkworkshop.com/).
@@ -246,7 +248,7 @@ To remove the stack and all dependencies from your account, run:
 ```bash
 $ cdk destroy kx-lambda-cdk
 ```
-
+ -->
 ## Option pricing using Black-Scholes pricing model
 
 For many financial institutions, HPC grids are a key infrastructure component of their financial and risk modelling. These model computations are becoming increasingly more complex and a growing number of financial institutions are evolving to leverage serverless architectures to achieve high parallelization on AWS Lambda.
