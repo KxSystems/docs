@@ -6,33 +6,34 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 
 # <i class="fas fa-share-alt"></i> Scoring Metrics
 
-The scoring metrics provided for the clustering section of the machine learning toolkit allow users to validate the performance of their clustering algorithms. These metrics cover three distinct use-cases
+Scoring metrics allow users to validate the performance of their clustering algorithms in three distinct use cases
 
 1. Unsupervised Learning: 
 
-	These metrics analyze how well groups of data have been assigned to clusters. The metrics measure the intra-cluster similarity (cohesion) and inter-cluster differences (separation) of data. In general clustering is said to be successful if clusters are well-spaced and densely packed.
+	These metrics analyze how well data has been assigned to clusters, measuring intra-cluster similarity (cohesion) and differences (separation). In general, clustering is said to be successful if clusters are well spaced and densely packed.
 
 2. Supervised Learning:
 
-	If the labels of the clusters are known for each data point in a chosen dataset, the problem of clustering the data can be analysed in a supervised manner. The true and predicted labels can be compared using metrics such as the homogeneity score detailed below.
+	If the labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
 
-3. Optimum number of cluster:
+3. Optimum number of clusters:
 
-	If the correct number of clusters is not known prior to the application of a clustering method it is possible to use the **Elbow Method** to estimate the optimum number of clusters within the dataset using K-means clustering.
+	If the required number of clusters is not known prior to clustering, the **Elbow Method** is used to estimate the optimum number of clusters within the dataset using K-means clustering.
 
-The following are the scoring metrics and analysis function provided within this library
+The following scoring metrics are provided within this library
 
 ```txt
 .ml.clust - Scoring Metrics
-  // Unsupervised Learning
+
+// Unsupervised Learning
   .daviesbouldin      Davies-Bouldin Index
   .dunn               Dunn Index
   .silhouette         Silhouette score
 
-  // Supervised Learning
+// Supervised Learning
   .homogeneity        Homogeneity score between predictions and actual value
 
-  // Cluster Optimisation
+  // Optimum number of clusters
   .elbow              Distortion scores for increasing numbers of clusters
 ```
 
@@ -44,21 +45,9 @@ The following are the scoring metrics and analysis function provided within this
 
 The following scoring methods are provided for use when the true cluster assignment is not known.
 
-1. **Davies-Bouldin Index**:
-
-	This index works by calculating the ratio of how scattered data points are within a cluster, to the separation that exists between clusters. A lower value indicates that the clusters are well separated and tightly packed.
-
-2. **Dunn Index**:
-
-	This index is calculated based on the minimum inter-cluster distance divided by the maximum size of a cluster. A higher Dunn Index indicates better clustering, where the definition of better is that clusters are compact and well-separated.
-
-3. **Silhouette Score**:
-
-	This score measures how similar an object is to the members of its own cluster when compared to other clusters. This metric ranges from -1 to +1 with a high value indicating that objects are well matched to their own clusters and poorly matched to neighbouring clusters. A value of -1 indicates clusters are overlapping, 0 indicates that clusters are close to one another and +1 indicates clusters are separated from one another.
-
 ### `.ml.clust.daviesbouldin`
 
-_Calculate the Davies-Bouldin index for clustered data._
+The Davies-Bouldin index works by calculating the ratio of how scattered data points are within a cluster, to the separation that exists between clusters.
 
 Syntax: `.ml.clust.daviesbouldin[data;clt]`
 
@@ -67,7 +56,7 @@ Where
 - `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 - `clt` is the list of clusters returned by one of the clustering algorithms in `.ml.clust`
 
-returns the Davies-Bouldin index.
+returns the Davies-Bouldin index, where a lower value indicates better clustering, with well-separated, tightly-packed clusters.
 
 ```q
 q)show d:2 10#20?10.
@@ -87,17 +76,17 @@ q).ml.clust.daviesbouldin[d;r2]
 
 ### `.ml.clust.dunn`
 
-_Calculate the Dunn index for clustered data._
+The Dunn index is calculated based on the minimum inter-cluster distance divided by the maximum size of a cluster. 
 
 Syntax: `.ml.clust.dunn[data;df;clt]`
 
 Where
 
 - `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist` etc.
+- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist`
 - `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
 
-returns the Dunn index.
+returns the Dunn index, where a higher value indicates better clustering, with well-separated, tightly-packed clusters.
 
 ```q
 q)show d:2 10#20?10.
@@ -117,18 +106,18 @@ q).ml.clust.dunn[d;`e2dist;r2]
 
 ### `.ml.clust.silhouette`
 
-_Calculate the Silhouette coefficient for clustered data._
+The Silhouette coefficient measures how similar an object is to the members of its own cluster when compared to other clusters.
 
 Syntax: `.ml.clust.silhouette[data;df;clt;isavg]`
 
 Where
 
 - `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist` etc.
+- `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist`
 - `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
 - `isavg` is a boolean - `1b` to return the average coefficient, `0b` to return a list of coefficients
 
-returns the Silhouette coefficient.
+returns the Silhouette coefficient, ranging from -1 (overlapping clusters) to +1 (separated clusters).
 
 ```q
 q)show d:2 10#20?10.
@@ -150,18 +139,13 @@ q).ml.clust.silhouette[d;`e2dist;r2;0b]
 -0.4862092 -0.6652588 0.8131323 0.595948 -0.2540023 0.5901292 -0.2027718 0.61..
 ```
 
-
 ## Supervised Learning
 
-The following metrics are provided in the case that the true and predicted labels of the clusters are known
-
-1. **Homogeneity Score**:
-
-	This metric works on the basis that a cluster should contain only samples belonging to a single class. The metric is bounded between 0 and 1 with high value indicating more homogenous (more accurate) labeling of clusters
+The following metric is provided in the case that the true and predicted labels of the clusters are known
 
 ### `.ml.clust.homogeneity`
 
-_Homogeneity score between predicted and true labels_
+Homogeneity score works on the basis that a cluster should contain only samples belonging to a single class.
 
 Syntax: `.ml.clust.homogeneity[pred;true]`
 
@@ -170,7 +154,7 @@ Where
 -  `pred` is the predicted cluster labels
 -  `true` is the true cluster labels
 
-returns the homogeneity score.
+returns the homogeneity score, bounded between 0 and 1, with a high value indicating a more accurate labeling of clusters.
 
 ```q
 q)show true:10?3
@@ -185,27 +169,21 @@ q).ml.clust.homogeneity[true;true]
 
 ## Optimum Number of Clusters
 
-The optimum number of clusters can be found manually in a number of ways using techniques above. Within the toolkit we provide an implementation of one of the most common methods for caluculating the optimum number of clusters:
-
-1. **Elbow Method**:
-
-	The elbow method is used to find the optimum number of clusters for data grouped using k-means clustering. K-means is applied to a dataset for a range of k values and the average score for each set of clusters is calculated. Traditionally, the distortion score is used in the elbow method. This score calculates the sum of square distances from each point to its assigned center.
-
-	Plotting the average cluster score against the k values, the line graph produced will resemble an arm, where the value at the elbow indicates the optimum number of clusters for the chosen dataset.
+The optimum number of clusters can be found manually in a number of ways using techniques above. Within the toolkit we provide an implementation of one of the most common methods for calculating the optimum number of clusters:
 
 ### `.ml.clust.elbow`
 
-_Returns a distortion score for each value of k applied to data using k-means clustering_
+The elbow method returns a distortion score for each value of k applied to data, using k-means clustering
 
-Syntax: `.ml.clust.elbow[data;df;k]`
+Syntax: `.ml.clust.elbow[data;df;kmax]`
 
 Where
 
 - `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-- `df` is the distance function as a symbol, e.g. `e2dist` `edist`.
-- `k` is the maximum number of clusters
+- `df` is the distance function as a symbol, e.g. `e2dist` `edist`
+- `kmax` is the maximum number of clusters
 
-returns the distortion score for each set of clusters produced in k-means with a different value of k.
+returns distortion scores for each set of clusters produced by k-means, with increasing values of k up to `kmax`.
 
 ```q
 q)show d:2 10#20?10.
@@ -216,7 +194,7 @@ q).ml.clust.elbow[d;`edist;5]
 ```
 
 !!! note
-	If the values produced by `.ml.clust.elbow` are plotted it is possible to determine the optimum number of clusters. The above example produces the following graph
+	If the values produced by `.ml.clust.elbow` are plotted, it is possible to determine the optimum number of clusters. The above example produces the following graph
 
 	![elbow_graph](img/elbow_example.png)
 
