@@ -1,17 +1,23 @@
 ---
-title: Example usage of the HDF5 kdb+ interface
+title: Example usage | HDF5 | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
-description: Minimal examples showing the use of the HDF5 kdb interface 
+description: Minimal examples showing the use of the HDF5 kdb+ interface 
 date: March 2020
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: HDF5, kdb+, examples, read, write, link, group
 ---
-# <i class="fa fa-share-alt"></i> Example usage of interface 
+# :fontawesome-solid-share-alt: Example usage of interface 
 
-The following page provides a basic example outlining how a kdb+ user could read, write, modify and inspect a HDF5 dataset from a kdb+ session. Examples showcasing wider ranging functionality are provided with the associated repository [here](https://github.com/KxSystems/hdf5-kdb/tree/master/examples)
+Here is an example of how to read, write, modify and inspect a HDF5 dataset from a kdb+ session. The associated repository has examples with more functionality.
 
-The following example shows a typical workflow when dealing with HDF5 data 
+:fontawesome-brands-github: 
+[KxSystems/hdf5-kdb/examples](https://github.com/KxSystems/hdf5-kdb/tree/master/examples)
 
-* Create a `.h5` file to house experimental datasets
+A typical workflow when dealing with HDF5 data:
+
+## Create a `.h5` file 
+
+Create a `.h5` file to house experimental datasets.
 
 ```q
 //create a file named appropriately
@@ -23,7 +29,9 @@ q).hdf5.ishdf5[fname]
 1b
 ```
 
-* Create a dataset containing experimental information and write to a file
+## Create a dataset 
+
+Create a dataset containing experimental information and write to a file.
 
 ```q
 // Create a dataset of floating point data and write to HDF5
@@ -43,10 +51,13 @@ q).hdf5.ls[fname]
 }
 ```
 
-* Add attributes to the dataset indicating who collected the dataset and the temperature of the room at the start and end of data collection
+
+## Add attributes to the dataset 
+
+Add attributes to the dataset indicating who collected the dataset and the temperature of the room at the start and end of data collection.
+
 
 ```q
-
 // Add an attribute named for the scientists collecting data
 q)user_attr:"Completed by"
 q).hdf5.writeAttr[fname;dset_name;user_attr;"Alice and Bob"]
@@ -56,7 +67,10 @@ q)temp_attr:"Temperatures"
 q).hdf5.writeAttr[fname;dset_name;temp_attr;21.7 20.3]
 ```
 
-* Create a group to contain tables related to another experiment 
+
+## Create a group 
+
+Create a group to contain tables related to another experiment.
 
 ```q
 // Create a group within the dataset
@@ -72,7 +86,10 @@ q).hdf5.ls[fname]
 }
 ```
 
-* Write a set of tabular data collected from sensors into the 'experiment2_tables' group
+
+## Write a set of tabular data 
+
+Write a set of tabular data collected from sensors into the `experiment2_tables` group
 
 ```q
 // Create a kdb+ table and write this to a dataset in the appropriate group
@@ -104,7 +121,10 @@ q).hdf5.ls[fname]
 }
 ```
 
-* Read the data and attributes written to the file back into kdb+
+
+## Read data and attributes back into kdb+
+
+Read the data and attributes written to the file back into kdb+.
 
 ```q
 // Read back the dataset "experiment1_data"

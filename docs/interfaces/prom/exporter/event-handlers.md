@@ -37,7 +37,7 @@ Prometheus event handlers triggered on
 
 !!!Note
 	* Example invocations of these event handlers can be seen [here](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/exporter.q)
-	* Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to [`.prom.init`](./user-guide.md#initialize-library)
+	* Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to [`.prom.init`](./reference.md#initialize-library)
 	* Updating `.z.*` handlers after the call to `.prom.init` will overwrite the Prometheus logic. Correct usage is to load all process logic before loading the Prometheus library. 
 
 ## `.prom.on_poll`

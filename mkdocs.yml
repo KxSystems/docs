@@ -453,21 +453,21 @@ nav:
       - HDF5:
         - Overview: interfaces/hdf5/index.md
         - Type mapping: interfaces/hdf5/hdf5-types.md
-        - User guide: interfaces/hdf5/user-guide.md
+        - Reference: interfaces/hdf5/reference.md
         - Examples: interfaces/hdf5/examples.md
       - Java: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
       - Kafka:
         - Overview: interfaces/kafka/index.md
-        - User guide: interfaces/kafka/user-guide.md
+        - Reference: interfaces/kafka/reference.md
       - MQTT:
         - Overview: interfaces/mqtt/index.md
-        - User guide: interfaces/mqtt/user-guide.md
+        - Reference: interfaces/mqtt/reference.md
         - Examples: interfaces/mqtt/examples.md
       - Prometheus: 
         - Exporter:
           - Overview: interfaces/prom/exporter/index.md
-          - User guide: interfaces/prom/exporter/user-guide.md
+          - Reference: interfaces/prom/exporter/reference.md
           - Event Handlers: interfaces/prom/exporter/event-handlers.md
           - Examples: interfaces/prom/exporter/examples.md
       - Python (embedPy): interfaces/embedpy.md
@@ -486,8 +486,8 @@ nav:
         - Complementary interfaces: interfaces/r/r-and-q.md
       - Solace:
         - Overview: interfaces/solace/index.md
-        - User guide: interfaces/solace/user-guide.md
-        - RESTful api: interfaces/solace/solacerest.md
+        - Reference: interfaces/solace/reference.md
+        - RESTful API: interfaces/solace/solacerest.md
         - Examples: interfaces/solace/examples.md
     - From: 
       - C: interfaces/c-client-for-q.md
