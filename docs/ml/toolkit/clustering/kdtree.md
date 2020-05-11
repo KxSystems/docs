@@ -80,7 +80,7 @@ Syntax: `.ml.clust.kd.nn[tree;data;df;xidxs;pt]`
 -   `xidxs` are the indices (columns in `data`) to be excluded from the nearest neighbor search (`()` if any point can be chosen)
 -   `pt` is the floating data point to be searched
 
-returns a dictionary containing the distance (`closestDist) and the column index in `data` (`closestPoint`) of the nearest neighbor.
+returns a dictionary containing the distance (`closestDist`) and the column index in `data` (`closestPoint`) of the nearest neighbor.
 
 ```q
 q)show d:2 10#20?10.

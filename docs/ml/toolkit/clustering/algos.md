@@ -37,9 +37,15 @@ Where
 -   `k` is the number of clusters
 -   `iter` is the number of iterations to be completed
 -   `kpp` is a boolean flag indicating the initializaton type: random (`0b`) or using [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`)
+<<<<<<< HEAD
 
 returns a list indicating the cluster each datapoint belongs to.
 
+=======
+
+returns a list indicating the cluster each datapoint belongs to.
+
+>>>>>>> d14894c5bf3bcea4191aeb83ffa8a91913cb73e9
 ```q
 q)show d:2 10#20?5.
 1.963762 2.585456 2.579898  2.033321  0.8904193 1.508861 ...
@@ -175,18 +181,21 @@ q).ml.clust.hc[d;`mdist;`ward]
 ```
 
 !!! note
-    The dendrogram returned can be passed to a mixture of matplotlib and scipy functions which plot the dendrogram structure represented in the table. An example is shown below.
+	The dendrogram returned can be passed to a mixture of matplotlib and scipy functions which plot the dendrogram structure represented in the table. An example is shown below.
     
-    ```q
-    q)plt:.p.import`matplotlib.pyplot
-    q).p.import[`scipy.cluster][`:hierarchy][`:dendrogram]flip value flip r1;
-    q)plt[`:title]"Dendrogram";
-    q)plt[`:xlabel]"Data Points";
-    q)plt[`:ylabel]"Distance";
-    q)plt[`:show][];
-    ```
-    
-    ![dendro_plot](img/dendrogram_example.png)    
+	q)plt:.p.import`matplotlib.pyplot
+
+	q).p.import[`scipy.cluster][`:hierarchy][`:dendrogram]flip value flip r1;
+
+	q)plt[`:title]"Dendrogram";
+
+	q)plt[`:xlabel]"Data Points";
+
+	q)plt[`:ylabel]"Distance";
+
+	q)plt[`:show][];
+
+	![dendro_plot](img/dendrogram_example.png)    
     
 !!! warning
         * Ward linkage only works in conjunction with Euclidean squared distances (`e2dist`), while centroid linkage only works with Euclidean distances (`e2dist`,`edist`). If the user tries to input a different distance metric an error will result, as shown above.
@@ -278,7 +287,11 @@ q).ml.clust.hccutk[dgram;2]
 
 _Cut dendrogram into clusters based on a distance threshold_
 
+<<<<<<< HEAD
+Syntax: `.ml.clust.hccutdist[t;dist]`
+=======
 Syntax: `.ml.clust.hccutdist[t;dist]
+>>>>>>> d14894c5bf3bcea4191aeb83ffa8a91913cb73e9
 
 Where
 
