@@ -521,6 +521,7 @@ nav:
       - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
       - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
       - J. Quobyte: cloud/aws/app-j-quobyte.md
+    - AWS Lambda: cloud/aws-lambda/index.md
     - Google CPM: cloud/gcpm/index.md
   - Machine learning:
     - Overview: ml/index.md
