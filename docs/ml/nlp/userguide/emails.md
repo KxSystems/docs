@@ -6,42 +6,17 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 # :fontawesome-solid-share-alt: Emails
 
+<pre markdown="1" class="language-txt">
+.nlp.email   **Emails**
+  loadEmails   an MBOX file as a table of parsed metadata
+  getGraph     graph of who emailed whom, and how often
+  parseMail    an email parsed in string format
+</pre>
+
 One of the most important document formats for analysis in natural-language processing is emails, particularly for surveillance, and spam detection. The following functions form a basis for the handling of email-format data.
 
 
-### `.nlp.email.loadEmails`
-
-_An MBOX file as a table of parsed metadata_
-
-Syntax: `.nlp.loadEmails x`
-
-Where `x` is a string of the filepath, returns a table.
-
-column      | type                           | content
-------------|--------------------------------|---------------------------
-sender      | string                         | name and address of sender
-to          | string                         | name and address of receiver/s
-date        | timestamp                      | date
-subject     | string                         | subject
-text        | string                         | original text
-contentType | string                         | content type
-payload     | string or list of dictionaries | payload
-
-The MBOX file is the most common format for storing email messages on a hard drive. All the messages for each mailbox are stored as a single, long, text file in a string of concatenated e-mail messages, starting with the _From_ header of the message. 
-
-```q
-q)email:.nlp.loadEmails["/home/kx/nlp/datasets/tdwg.mbox"]
-q)cols email
-`sender`to`date`subject`contentType`payload`text
-```
-!!! warning "Depreciation"
-	The above function was previously defined by `nlp.loadEmails`, this function definition is still callable but will be deprecated with the next major release. 
-
-
-<!-- FIXME ### `.nlp.email.i.parseMbox` -->
-
-
-### `.nlp.email.getGraph`
+## `.nlp.email.getGraph`
 
 _Graph of who emailed whom, with the number of times they emailed_
 
@@ -77,7 +52,38 @@ roger@tdwg.org                   Tdwg-img@lists.tdwg.org          1
 ```
 
 
-### `.nlp.email.parseMail`
+## `.nlp.email.loadEmails`
+
+_An MBOX file as a table of parsed metadata_
+
+Syntax: `.nlp.email.loadEmails x`
+
+Where `x` is a string of the filepath, returns a table.
+
+column      | type                           | content
+------------|--------------------------------|---------------------------
+sender      | string                         | name and address of sender
+to          | string                         | name and address of receiver/s
+date        | timestamp                      | date
+subject     | string                         | subject
+text        | string                         | original text
+contentType | string                         | content type
+payload     | string or list of dictionaries | payload
+
+The MBOX file is the most common format for storing email messages on a hard drive. All the messages for each mailbox are stored as a single, long, text file in a string of concatenated e-mail messages, starting with the _From_ header of the message. 
+
+```q
+q)email:.nlp.email.loadEmails["/home/kx/nlp/datasets/tdwg.mbox"]
+q)cols email
+`sender`to`date`subject`contentType`payload`text
+```
+
+!!! warning "`nlp.loadEmails` deprecated"
+    The above function was previously defined as `.nlp.loadEmails`.
+    It is still callable but will be deprecated with the next major release.  
+
+
+## `.nlp.email.parseMail`
 
 _Parses an email in string format_
 
@@ -92,6 +98,7 @@ q)cols table
 `sender`to`date`subject`contentType`payload
 ```
 
-!!! warning "Depreciation"
-        The above function was previously defined by `nlp.i.parseMail`, this function definition is still callable but will be deprecated with the next major release.  
+!!! warning "`.nlp.i.parseMail` deprecated"
+    The above function was previously defined as `.nlp.i.parseMail`.
+    It is still callable but will be deprecated with the next major release.  
 

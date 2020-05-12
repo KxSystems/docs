@@ -8,11 +8,6 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure
 # :fontawesome-solid-share-alt: Clustering algorithms reference
 
 
-
-The clustering library provides q implementations of a number of common clustering algorithms.
-
-Hierarchical clustering methods (including CURE) produce dendrograms, which can then be _cut_ at a given count or distance to produce a clustering.
-
 <pre markdown="1" class="language-txt">
 .ml.clust   **Clustering**
 
@@ -29,8 +24,11 @@ Cutting dendograms into
 </pre>
 
 <i class="fab fa-github"></i>
-[KxSystems/ml/clust/clust.q](https://github.com/kxsystems/ml/clust/clust.q)
+[KxSystems/ml/clust/clust.q](https://github.com/kxsystems/ml/blob/master/clust/clust.q)
 
+The clustering library provides q implementations of a number of common clustering algorithms.
+
+Hierarchical clustering methods (including CURE) produce dendrograms, which can then be _cut_ at a given count or distance to produce a clustering.
 
 ## `.ml.clust.ap`
 

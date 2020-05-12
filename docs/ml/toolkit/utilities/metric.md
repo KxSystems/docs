@@ -7,46 +7,45 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
 # <i class="fa fa-share-alt"></i> Metrics 
 
 
-The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
+<pre markdown="1" class="language-txt">
+.ml   **Statistical analysis metrics**
+  [accuracy](#mlaccuracy)      Accuracy of classification results
+  [classreport](#mlclassreport)   Statistical information about classification results
+  [confdict](#mlconfdict)      True/false positives and true/false negatives as dictionary
+  [confmat](#mlconfmat)       Confusion matrix
+  [corrmat](#mlcorrmat)       Table-like correlation matrix for a simple table
+  [crossentropy](#mlcrossentropy)  Categorical cross entropy
+  [crm](#mlcrm)           Correlation matrix
+  [cvm](#mlcvm)           Covariance matrix
+  [describe](#mldescribe)      Descriptive information about a table
+  [f1score](#mlf1score)       F1-score on classification results
+  [fbscore](#mlfbscore)       Fbeta-score on classification results
+  [logloss](#mllogloss)       Logarithmic loss
+  [mae](#mlmae)           Mean absolute error
+  [mape](#mlmape)          Mean absolute percentage error
+  [matcorr](#mlmatcorr)       Matthews correlation coefficient
+  [mse](#mlmse)           Mean square error
+  [percentile](#mlpercentile)    Percentile calculation for an array
+  [precision](#mlprecision)     Precision of a binary classifier
+  [r2score](#mlr2score)       R2-score
+  [range](#mlrange)         Range of values
+  [rmse](#mlrmse)          Root mean square error
+  [rmsle](#mlrmsle)         Root mean square logarithmic error
+  [roc](#mlroc)           X- and Y-axis values for an ROC curve
+  [rocaucscore](#mlrocaucscore)   Area under an ROC curve
+  [sensitivity](#mlsensitivity)   Sensitivity of a binary classifier
+  [smape](#mlsmape)         Symmetric mean absolute error
+  [specificity](#mlspecificity)   Specificity of a binary classifier
+  [sse](#mlsse)           Sum squared error
+  [tscore](#mltscore)        One-sample t-test score
+  [tscoreeq](#mltscoreeq)      T-test for independent samples with unequal variances
+</pre>
 
 :fontawesome-brands-github:
 [KxSystems/ml/util/metrics.q](https://github.com/KxSystems/ml/blob/master/util/metrics.q)
 
-The following functions are those at present that are contained within the `metrics.q` file of the Machine Learning Toolkit.
+The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
 
-```txt
-Statistical analysis metrics
-  .ml.accuracy      Accuracy of classification results
-  .ml.classreport   Statistical information about classification results
-  .ml.confdict      True/false positives and true/false negatives as dictionary
-  .ml.confmat       Confusion matrix
-  .ml.corrmat       Table-like correlation matrix for a simple table
-  .ml.crossentropy  Categorical cross entropy
-  .ml.crm           Correlation matrix
-  .ml.cvm           Covariance matrix
-  .ml.describe      Descriptive information about a table
-  .ml.f1score       F1-score on classification results
-  .ml.fbscore       Fbeta-score on classification results
-  .ml.logloss       Logarithmic loss
-  .ml.mae           Mean absolute error
-  .ml.mape          Mean absolute percentage error
-  .ml.matcorr       Matthews correlation coefficient
-  .ml.mse           Mean square error
-  .ml.percentile    Percentile calculation for an array
-  .ml.precision     Precision of a binary classifier
-  .ml.r2score       R2-score
-  .ml.range         Range of values
-  .ml.rmse          Root mean square error
-  .ml.rmsle         Root mean square logarithmic error
-  .ml.roc           X- and Y-axis values for an ROC curve
-  .ml.rocaucscore   Area under an ROC curve
-  .ml.sensitivity   Sensitivity of a binary classifier
-  .ml.smape         Symmetric mean absolute error
-  .ml.specificity   Specificity of a binary classifier
-  .ml.sse           Sum squared error
-  .ml.tscore        One-sample t-test score
-  .ml.tscoreeq      T-test for independent samples with unequal variances
-```
 
 ## `.ml.accuracy`
 

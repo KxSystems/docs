@@ -9,31 +9,30 @@ keywords: time-series, cross validation, grid search, roll-forward, chain-forwar
 
 
 
-The `.ml.xv` and `.ml.gs` namespaces contain functions related to cross-validation and grid-search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
+<pre markdown="1" class="language-txt">
+.ml.gs   **Grid-search functions**
+  [kfshuff](#mlgskfshuff)      K-Fold cross validation with randomized indices
+  [kfsplit](#mlgskfsplit)      K-Fold cross validation with sequential indices
+  [kfstrat](#mlgskfstrat)      K-Fold cross validation with stratified indices
+  [mcsplit](#mlgsmcsplit)      Monte-Carlo cross validation with random split indices
+  [pcsplit](#mlgspcsplit)      Percentage-split cross validation
+  [tschain](#mlgstschain)      Chain-forward cross validation
+  [tsrolls](#mlgstsrolls)      Roll-forward cross validation
+
+.ml.xv   **Cross-validation functions**
+  [kfshuff](#mlxvkfshuff)      K-Fold cross validation with randomized indices
+  [kfsplit](#mlxvkfsplit)      K-Fold cross validation with sequential indices
+  [kfstrat](#mlxvkfstrat)      K-Fold cross validation with stratified indices
+  [mcsplit](#mlxvmcsplit)      Monte-Carlo cross validation with random split indices
+  [pcsplit](#mlxvpcsplit)      Percentage-split cross validation
+  [tschain](#mlxvtschain)      Chain-forward cross validation
+  [tsrolls](#mlxvtsrolls)      Roll-forward cross validation
+</pre>
 
 :fontawesome-brands-github:
 [KxSystems/ml/xval](https://github.com/kxsystems/ml/tree/master/xval/)
 
-The following functions are contained in the `.ml.gs` and `.ml.xv` namespaces.
-
-```txt
-.ml.gs - Grid-search functions
-  .kfshuff            K-Fold cross validation with randomized indices
-  .kfsplit            K-Fold cross validation with sequential indices
-  .kfstrat            K-Fold cross validation with stratified indices
-  .mcsplit            Monte-Carlo cross validation with random split indices
-  .pcsplit            Percentage-split cross validation
-  .tschain            Chain-forward cross validation
-  .tsrolls            Roll-forward cross validation
-.ml.xv - Cross-validation functions
-  .kfshuff            K-Fold cross validation with randomized indices
-  .kfsplit            K-Fold cross validation with sequential indices
-  .kfstrat            K-Fold cross validation with stratified indices
-  .mcsplit            Monte-Carlo cross validation with random split indices
-  .pcsplit            Percentage-split cross validation
-  .tschain            Chain-forward cross validation
-  .tsrolls            Roll-forward cross validation
-```
+The `.ml.xv` and `.ml.gs` namespaces contain functions related to cross-validation and grid-search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 Within the following examples, `.ml.xv.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, e.g. a function to fit on training data and predict outputs for new data.
 

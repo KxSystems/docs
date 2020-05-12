@@ -8,26 +8,25 @@ keywords: pandas manipulation, dataframe, train test split, .
 
 
 
-The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
+<pre markdown="1" class="language-txt">
+.ml   **Utility functions**
+  [arange](#mlarange)             Evenly-spaced values within a range
+  [combs](#mlcombs)              n linear combinations of k numbers
+  [df2tab](#mldf2tab)             kdb+ table from a pandas dataframe
+  [df2tab_tz](#mldf2tab_tz)          Pandas dataframe to kdb+ conversion handling dates/times/timezones
+  [eye](#mleye)                Identity matrix
+  [imax](#mlimax)               Index of maximum element of a list
+  [imin](#mlimin)               Index of minimum element of a list
+  [linspace](#mllinspace)           List of evenly-spaced values
+  [shape](#mlshape)              Shape of a matrix
+  [tab2df](#mltab2df)             Pandas dataframe from a q table
+  [traintestsplit](#mltraintestsplit)     Split into training and test sets
+</pre>
 
 :fontawesome-brands-github:
 [KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/blob/master/util/util.q)
 
-The following functions are defined in the `util.q` file of the Machine Learning Toolkit.
-
-```txt
-  .ml.arange             Evenly-spaced values within a range
-  .ml.combs              n linear combinations of k numbers
-  .ml.df2tab             kdb+ table from a pandas dataframe
-  .ml.df2tab_tz          Pandas dataframe to kdb+ conversion handling dates/times/timezones
-  .ml.eye                Identity matrix
-  .ml.imax               Index of maximum element of a list
-  .ml.imin               Index of minimum element of a list
-  .ml.linspace           List of evenly-spaced values
-  .ml.shape              Shape of a matrix
-  .ml.tab2df             Pandas dataframe from a q table
-  .ml.traintestsplit     Split into training and test sets
-```
+The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 
 
 ## `.ml.arange`

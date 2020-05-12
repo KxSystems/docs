@@ -7,12 +7,6 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 
 # :fontawesome-solid-share-alt: K-D tree reference
 
-A k-dimensional tree (k-d tree) is a special case of a binary search tree, commonly used in computer science to organize data points in k-dimensional space. Each leaf node in the tree contains a set of k-dimensional points, while each non-leaf node generates a splitting hyperplane which divides the surrounding space.
-
-At each non-leaf node, the dataset is split roughly in two. A splitting dimension is chosen to reflect the axis with highest variance, and the median value for the dataset is used to split the data along this axis. The placement of each node in the tree is determined by whether the node is less than (to the left of) or greater than (to the right of) the proceeding median value. This splitting process repeats recursively throughout the tree, until a small enough number of points remain to form a leaf.
-
-Within this toolkit a number of functions are provided to manage k-d trees.
-
 <pre markdown="1" class="language-txt">
 .ml.clust.kd   **k-d tree functions**
   [newtree](#mlclustkdnewtree)       build a k-d tree
@@ -21,7 +15,11 @@ Within this toolkit a number of functions are provided to manage k-d trees.
 </pre>
 
 :fontawesome-brands-github:
-[KxSystems/ml/clust/kdtree.q](https://github.com/kxsystems/ml/clust/kdtree.q)
+[KxSystems/ml/clust/kdtree.q](https://github.com/kxsystems/ml/blob/master/clust/kdtree.q)
+
+A k-dimensional tree (k-d tree) is a special case of a binary search tree, commonly used in computer science to organize data points in k-dimensional space. Each leaf node in the tree contains a set of k-dimensional points, while each non-leaf node generates a splitting hyperplane which divides the surrounding space.
+
+At each non-leaf node, the dataset is split roughly in two. A splitting dimension is chosen to reflect the axis with highest variance, and the median value for the dataset is used to split the data along this axis. The placement of each node in the tree is determined by whether the node is less than (to the left of) or greater than (to the right of) the proceeding median value. This splitting process repeats recursively throughout the tree, until a small enough number of points remain to form a leaf.
 
 
 ## `.ml.clust.kd.findleaf`

@@ -7,6 +7,24 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 
 # :fontawesome-solid-share-alt: Scoring metrics reference
 
+<pre markdown="1" class="language-txt">
+.ml.clust   **Scoring metrics**
+
+Unsupervised learning
+  [daviesbouldin](#mlclustdaviesbouldin)      Davies-Bouldin index
+  [dunn](#mlclustdunn)               Dunn index
+  [silhouette](#mlclustsilhouette)         silhouette score
+
+Supervised learning
+  [homogeneity](#mlclusthomogeneity)         homogeneity score between predictions and actual value
+
+Optimum number of clusters
+  [elbow](#mlclustelbow)               distortion scores for increasing numbers of clusters
+</pre>
+
+:fontawesome-brands-github:
+[KxSystems/ml/clust/score.q](https://github.com/KxSystems/ml/blob/master/clust/score.q)
+
 Scoring metrics allow you to validate the performance of your clustering algorithms in three distinct use cases.
 
 use case | analysis
@@ -14,24 +32,6 @@ use case | analysis
 Unsupervised learning | These metrics analyze how well data has been assigned to clusters, measuring intra-cluster similarity (cohesion) and differences (separation). In general, clustering is said to be successful if clusters are well spaced and densely packed. Used when the true cluster assignment is not known.
 Supervised learning | If the true and predicted labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
 Optimum number of clusters | The optimum number of clusters can be found manually in a number of ways using techniques above. If the required number of clusters is not known prior to clustering, the Elbow Method is used to estimate the optimum number of clusters within the dataset using K-means clustering.
-
-<pre markdown="1" class="language-txt">
-.ml.clust   **Scoring metrics**
-
-Unsupervised learning
-   daviesbouldin      Davies-Bouldin index
-   dunn               Dunn index
-   silhouette         silhouette score
-
-Supervised learning
-  homogeneity         homogeneity score between predictions and actual value
-
-Optimum number of clusters
-  elbow               distortion scores for increasing numbers of clusters
-</pre>
-
-<i class="fab fa-github"></i>
-[KxSystems/ml/clust/score.q](https://github.com/kxsystems/ml/clust/score.q)
 
 
 ## `.ml.clust.daviesbouldin`
