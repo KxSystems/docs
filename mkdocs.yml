@@ -559,7 +559,7 @@ nav:
         - Data interrogation: ml/nlp/userguide/analysis.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
-    - Automl:
+    - AutoML:
       - Overview: ml/automl/index.md
       - User guide:
         - Overview: ml/automl/ug/index.md

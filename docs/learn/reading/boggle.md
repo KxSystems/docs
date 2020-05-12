@@ -98,7 +98,7 @@ PAST   | 1
 ## Discussion
 
 Boggle boards have been made in different languages and sizes.
-There are [old and new versions](/ https://www.boardgamegeek.com/thread/300565) of English dice for the 4×4 board.
+There are [old and new versions](https://www.boardgamegeek.com/thread/300565) of English dice for the 4×4 board.
 Each die is defined by six letters.
 
 We start with a dictionary of Boggle boxes.

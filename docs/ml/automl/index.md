@@ -12,7 +12,7 @@ keywords: machine learning, ml, ai, automated, preprocessing, postprocessing, fe
 :fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/automl/)
 
-The automated machine learning platform described here is built largely on the tools available within the [Machine Learning Toolkit](../toolkit/ml/toolkit). The purpose of this platform is to help automate the process of applying machine-learning techniques to real-world problems. In the absence of expert machine-learning engineers this handles the following processes within a traditional workflow.
+The automated machine learning platform described here is built largely on the tools available within the [Machine Learning Toolkit](../toolkit/index.md). The purpose of this platform is to help automate the process of applying machine-learning techniques to real-world problems. In the absence of expert machine-learning engineers this handles the following processes within a traditional workflow.
 
 1. Data preprocessing
 2. Feature engineering and feature selection
@@ -25,7 +25,7 @@ Each of these steps is described in detail. This allows users to understand the 
 At present the machine-learning frameworks supported for this are based on:
 
 1. One-to-one feature to target non time-series
-2. [FRESH](../toolkit/ml/fresh) based feature extraction and model production
+2. [FRESH](../toolkit/fresh.md)-based feature extraction and model production
 
 Over time the functionality available and the problems which can be solved using this library will be extended to include;
 

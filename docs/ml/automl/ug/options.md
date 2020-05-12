@@ -104,7 +104,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 
 !!! warning "Custom grid-search function"
 
-    To add a custom grid search function, follow the [guidelines for function definition](/../../toolkit/xval.md).
+    To add a custom grid search function, follow the [guidelines for function definition](../../toolkit/xval.md).
 
     If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework this can become a complicated procedure.
 
