@@ -7,10 +7,7 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 # Developing with kdb+ and the q language
 
 <div markdown="1" class="container">
-  <div class="css-carousel">
-    [![kdb+ V4.0](img/carousel/kdb4.png){.css-img}](releases/ChangesIn4.0.md)[![Optane Memory](img/carousel/optane-memory-600.png){.css-img}](kb/optane.md)[![Kx Platform 4.5](img/carousel/platform.png){.css-img}](/platform/)[![Multithreading primitives](img/carousel/parallelism.png){.css-img}](kb/mt-primitives.md)[![DARE](img/carousel/encryption.jpg){.css-img}](kb/dare.md)[![Kx Developer](img/carousel/ide.png){.css-img}](/developer/)
-    <!-- [![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)[![Q for pythons](img/carousel/q4p.png){.css-img}](learn/python/index.md) -->
-  </div>
+  <div class="css-carousel">[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![Kx Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![Examples from Python](img/carousel/q-for-pythons.png){.css-img}](learn/python/examples/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
 </div>
 
 <!--
