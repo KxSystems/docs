@@ -78,7 +78,7 @@ q)cols email
 `sender`to`date`subject`contentType`payload`text
 ```
 
-!!! warning "`nlp.loadEmails` deprecated"
+!!! warning "`.nlp.loadEmails` deprecated"
     The above function was previously defined as `.nlp.loadEmails`.
     It is still callable but will be deprecated with the next major release.  
 

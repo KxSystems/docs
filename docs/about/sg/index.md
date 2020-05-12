@@ -5,9 +5,10 @@ description: Typographical, spelling, markup and lexical conventions for the q a
 author: Stephen Taylor
 keywords: convention, kdb+, q, style, spelling, typography
 ---
-
 # :fontawesome-solid-pen-nib: Style guide
 
+
+[![Dilbert and slides](../../img/dilbert-slides.gif)](https://dilbert.com/strip/2020-05-11 "dilbert.com")
 
 Here are typographical, spelling and lexical conventions for the content of this site.
 
