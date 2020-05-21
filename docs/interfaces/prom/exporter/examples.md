@@ -17,12 +17,14 @@ This demonstration requires a Docker instance capable of running Unix based cont
 
 ### Setup
 
-Run kdb+ with the supplied `exporter.q` on the host upon which Docker is initialized. This will metrics over http that will be gathered by Prometheus configured within in the supplied demo
+Ensure you have installed the q scripts to `$QHOME`/`%QHOME%` as appropriate following the instructions [here](https://github.com/KxSystems/prometheus-kdb-exporter#quick-start).
 
-The following will expose the metrics on port 8080
+Run kdb+ with the supplied `exporter.q` on the host upon which Docker is initialized. This will expose metrics over http that will be gathered by Prometheus configured within in the supplied demo
+
+From the examples folder the following will expose the metrics on port 8080
 
 ```q
-q ../exporter.q -p 8080
+q ../q/exporter.q -p 8080
 ```
 
 Next we are required to initialize a docker environment containing a single prometheus instance and a grafana dashboard. This accesses the kdb+ exporter from the local machine at port 8080. If you wish to use it for multiple targets or service discovery please refer to the Prometheus documentation.
