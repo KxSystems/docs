@@ -225,7 +225,7 @@ q)@[get;"select from tt";-2@]; / no error
 
 Syntax: `.Q.chk x`
 
-Where `x` is a HDB as a filepath, fills missing tables.
+Where `x` is a HDB as a filepath, fills tables missing from partitions using the most recent partition as a template.
 
 ```q
 q).Q.chk[`:hdb]
