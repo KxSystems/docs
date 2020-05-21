@@ -173,7 +173,7 @@ q)4 0N#til 9
 
 Where
 
--   `x` is an **int atom or vector**
+-   `x` is an **int atom**
 -   `y` is a **dictionary**
 
 returns `x` entries from `y`.
@@ -187,7 +187,7 @@ b| 2
 
 Where
 
--   `x` is a **symbol atom or vector**
+-   `x` is a **symbol vector**
 -   `y` is a **dictionary**
 
 returns from `y` entries for `x`.
@@ -197,6 +197,8 @@ q)d:`a`b`c!1 2 3
 q)`a`b#d
 a| 1
 b| 2
+q)enlist[`a]#d
+a| 1
 ```
 
 
@@ -224,7 +226,7 @@ s4 p5 100
 
 Where
 
--   `x` is a **symbol atom or vector**
+-   `x` is a **symbol vector**
 -   `y` is a **table**
 
 returns column/s `x` from `y`.
