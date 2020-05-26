@@ -56,7 +56,7 @@ q)
 
 Syntax: `-b`
 
-Block client write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
+Block write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
 
 ```bash
 ~/q$ q -b

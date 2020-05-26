@@ -57,3 +57,20 @@ Alternatively, suppose `t` is a table in which columns `b`, `c`, and `a` are arg
 
 
 
+## Blocked within `peach`
+
+```txt
+hopen socket
+websocket open
+socket broadcast (25!x)
+amending global variables
+load master decryption key (-36!)
+```
+
+And any **system command** which might cause a change of global state.
+
+Generally, do not use **sockets** within `peach`, unless it is encapsulated via one-shot or HTTP client request.
+
+If you are careful to manage your **file handles/file access** so that there is no parallel use of the same handle (or file) across threads, then you can open and close files within `peach`.
+
+**Streaming execute** ([`-11!`](../basics/internal.md#-11-streaming-execute)) should also be fine. However updates to global variables are not possible, so use cases might be quite restricted within `peach`.
