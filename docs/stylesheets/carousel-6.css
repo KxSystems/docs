@@ -6,11 +6,16 @@
   width:600px;
 	height:300px;
 	position:relative;
-	overflow:hidden;
+  overflow:hidden;
+  margin: 0 auto;
+}
+
+.container > p {
+  display: none;
 }
 
 .css-carousel {
-  width:700%%;
+  width: 900%;
   -webkit-animation: css-carousel 30s linear infinite;
 	-moz-animation: css-carousel 30s linear infinite;
 	-ms-animation: css-carousel 30s linear infinite;
@@ -19,44 +24,58 @@
 
 .css-carousel .css-img{
   display:inline-block;
+  width: 600px;
+  height: 300px;
 }
 .css-carousel img:not(:first-child){
   float:left;
 }
 
 @-webkit-keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
   100% { margin-left:0;}
-  0%, 14% {margin-left:0;}
-  16%, 31% {margin-left:-100%;}
-  33%, 48% {margin-left:-200%;}
-  50%, 64% {margin-left:-300%;}
-  66%, 81% {margin-left:-400%;}
-  83%, 98% {margin-left:-500%;}
 }
 @-moz-keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
   100% { margin-left:0;}
-  0%, 14% {margin-left:0;}
-  16%, 31% {margin-left:-100%;}
-  33%, 48% {margin-left:-200%;}
-  50%, 64% {margin-left:-300%;}
-  66%, 81% {margin-left:-400%;}
-  83%, 98% {margin-left:-500%;}
 }
 @-ms-keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
   100% { margin-left:0;}
-  0%, 14% {margin-left:0;}
-  16%, 31% {margin-left:-100%;}
-  33%, 48% {margin-left:-200%;}
-  50%, 64% {margin-left:-300%;}
-  66%, 81% {margin-left:-400%;}
-  83%, 98% {margin-left:-500%;}
 }
 @keyframes css-carousel {
-  0%, 14% {margin-left:0;}
-  16%, 31% {margin-left:-100%;}
-  33%, 48% {margin-left:-200%;}
-  50%, 64% {margin-left:-300%;}
-  66%, 81% {margin-left:-400%;}
-  83%, 98% {margin-left:-500%;}
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
   100% { margin-left:0;}
 }

@@ -6,51 +6,22 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 ---
 # Developing with kdb+ and the q language
 
-<div markdown="1" class="container">
-  <div class="css-carousel">[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![Kx Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![Examples from Python](img/carousel/q-for-pythons.png){.css-img}](learn/python/examples/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
+<div markdown="1" class="container"><div class="css-carousel">[![Kdb+ 4.0](img/carousel/kdb4.jpg){.css-img}](releases/ChangesIn4.0.md)[![Kx Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Parallelism](img/carousel/parallelism-600.jpg){.css-img}](kb/mt-primitives.md)[![Encryption](img/carousel/encryption-600.jpg){.css-img}](kb/dare.md)[![Optane](img/carousel/optane-memory-600.jpg){.css-img}](kb/optane.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
 </div>
 
-<!--
-<div markdown="1" class="alert-message">
-[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
-</div>
+??? info "New on code.kx.com"
 
-<div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
-
-<div style="display: inline-flex;" markdown="1">
-Kdb+, from [Kx](https://kx.com), is 
-
--   a high-performance historical time-series columnar database
--   an in-memory compute engine
--   a real-time streaming processor
--   an expressive query and programming language called q
-</div>
-
-<div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
-!!! tip "New"
-
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [**kdb+ version 4.0**](releases/ChangesIn4.0.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [multithreaded operators](kb/mt-primitives.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [Optane Memory](kb/optane.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-lock"></i> [data-at-rest crypto](kb/dare.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [code profiler](kb/profiler.md)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-code"></i> [Kx Platform 4.5](/platform/)</p>
-    
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-comment-medical"></i> [Coronavirus](coronavirus.md)</p>
-    
-</div>
-
-</div>
-
-[**Kx Developer**](https://code.kx.com/developer/) A visual environment used to manage, manipulate and explore massive datasets in real-time. 
-:fontawesome-solid-download:
-[Free download](/developer/getting-started/)
--->
+    <ul markdown="1">
+    <li>[kdb+ 4.0 – more speed, more security](releases/ChangesIn4.0.md)</li>
+    <li>[Kx Dashboards – visualize, stream, and share](/dashboards/)</li>
+    <li>[AutoML](ml/automl/index.md)</li>
+    <li>[Go serverless – AWS Lambda](cloud/aws-lambda/index.md)</li>
+    <li>[Multithreading primitives and implicit parallelism](cloud/aws-lambda/index.md)</li>
+    <li>[DARE – data-at-rest encryption](kb/dare.md)</li>
+    <li>[Optane memory](kb/optane.md)</li>
+    <li>[New Fusion interfaces – HDF5, MQTT, Prometheus, Solace](interfaces/hdf5/index.md)</li>
+    <li>[The Reading Room – q code to study](learn/reading/index.md)</li>
+    </ul>
 
 <div style="clear: both">&nbsp;</div>
 
