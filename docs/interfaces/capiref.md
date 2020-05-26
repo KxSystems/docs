@@ -777,6 +777,9 @@ Shared library only.
 
 On success, returns int K object containing `d`. On error, `NULL` is returned, `d` is closed.
 
+:fontawesome-regular-hand-point-right:
+[Callbacks](c-client-for-q.md#callbacks)
+
 
 ### `setm` – toggle symbol lock
 

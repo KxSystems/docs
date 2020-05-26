@@ -801,9 +801,13 @@ This demonstrates the deferred invocation of `onCallback` until q has at least f
 In situations where you can’t hook a feedhandler’s callbacks directly into `sd1`, on Linux `eventfd` may be a viable option for you. 
 Callbacks from `sd1` are executed on the main thread of q.
 
-!!! tip
+!!! tip "Windows developers may be interested in :fontawesome-brands-github: [ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)."
 
-    Windows developers may be interested in :fontawesome-brands-github: [ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)
+Callbacks from `sd1` are executed on the main thread of q, in the handle context ([`.z.w`](../ref/dotz.md#zw-handle)) of the registered handle, and hence are also subject to permissions checks:
+
+-   read-only [(Command-line option `-b`)](../basics/cmdline.md#-b-blocked)
+-   access-controlled path ([Command-line option `-u`)](../basics/cmdline.md#-u-usr-pwd-local)
+-   [`reval`](../ref/eval.md#reval)
 
 
 ## Serialization and deserialization

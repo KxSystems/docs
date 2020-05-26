@@ -56,7 +56,7 @@ q)
 
 Syntax: `-b`
 
-Block client write-access to a kdb+ database.
+Block client write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
 
 ```bash
 ~/q$ q -b
@@ -327,7 +327,7 @@ For example, setting a system command in `.z.ts` and starting the timer still wo
 
 Syntax: `-u file`
 
-Sets a password file; no access above start directory
+Sets a password file; blocks access above start directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
 
 The password file is a text file with one credential on each line.
 (No trailing blank line/s.)
