@@ -1,5 +1,5 @@
 ---
-title: Documentation for kdb+ and the q programming language from Kx 
+title: Documentation for kdb+ and the q programming language from Kx
 description: Documentation, white papers and developer resources for kdb+ and the q programming language
 author: Stephen Taylor
 keywords: code, cloud, contact, cookbook, developer, documentation, download, fd, first derivatives, github, ide, interface, kdb+, knowledge base, kx, programming, q, reference, support, tutorial, white paper
@@ -9,19 +9,41 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 <div markdown="1" class="container"><div class="css-carousel">[![Kdb+ 4.0](img/carousel/kdb4.jpg){.css-img}](releases/ChangesIn4.0.md)[![Kx Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Parallelism](img/carousel/parallelism-600.jpg){.css-img}](kb/mt-primitives.md)[![Encryption](img/carousel/encryption-600.jpg){.css-img}](kb/dare.md)[![Optane](img/carousel/optane-memory-600.jpg){.css-img}](kb/optane.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
 </div>
 
-??? info "New on code.kx.com"
+??? tip "New on code.kx.com"
 
-    <ul markdown="1">
-    <li>[kdb+ 4.0 – more speed, more security](releases/ChangesIn4.0.md)</li>
-    <li>[Kx Dashboards – visualize, stream, and share](/dashboards/)</li>
-    <li>[AutoML](ml/automl/index.md)</li>
-    <li>[Go serverless – AWS Lambda](cloud/aws-lambda/index.md)</li>
-    <li>[Multithreading primitives and implicit parallelism](cloud/aws-lambda/index.md)</li>
-    <li>[DARE – data-at-rest encryption](kb/dare.md)</li>
-    <li>[Optane memory](kb/optane.md)</li>
-    <li>[New Fusion interfaces – HDF5, MQTT, Prometheus, Solace](interfaces/hdf5/index.md)</li>
-    <li>[The Reading Room – q code to study](learn/reading/index.md)</li>
-    </ul>
+    :fontawesome-solid-chart-line:&nbsp;
+    [White paper: Implementing trend indicators](wp/trend-indicators/index.md)
+
+    :fontawesome-solid-book-reader:&nbsp;
+    [Example Python programs translated to q](learn/python/examples/index.md)
+
+    :fontawesome-solid-bolt:&nbsp;
+    [kdb+ 4.0: more speed, more security](releases/ChangesIn4.0.md)
+
+    :fontawesome-solid-chart-line:&nbsp;
+    [Kx Dashboards: visualize, stream, and share](/dashboards/)
+
+    :fontawesome-solid-cloud:&nbsp;
+    [Go serverless with AWS Lambda](cloud/aws-lambda/index.md)
+
+    :fontawesome-solid-share-alt:&nbsp;
+    [AutoML](ml/automl/index.md)
+
+    :fontawesome-solid-bolt:&nbsp;
+    [Multithreading primitives and implicit parallelism](cloud/aws-lambda/index.md)</li>
+
+    :fontawesome-solid-lock:&nbsp;
+    [DARE: data-at-rest encryption](kb/dare.md)</li>
+
+    :fontawesome-solid-bolt:&nbsp;
+    [Support for Optane Memory](kb/optane.md)</li>
+
+    :fontawesome-solid-handshake:&nbsp;
+    [New Fusion interfaces: HDF5, MQTT, Prometheus, Solace](interfaces/hdf5/index.md)</li>
+
+    :fontawesome-solid-book-reader:&nbsp;
+    [The Reading Room: q code to study](learn/reading/index.md)</li>
+
 
 <div style="clear: both">&nbsp;</div>
 
@@ -45,7 +67,7 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
     [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
     Phrasebook](/phrases/ "Power expressions in q")
 </div>
-<!-- 
+<!--
 <div>
     [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
     _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
@@ -76,9 +98,9 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 :fontawesome-solid-comment-medical:
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
 
-The source code for this site is on GitHub at 
+The source code for this site is on GitHub at
 :fontawesome-brands-github:
-[KxSystems/docs](https://github.com/kxsystems/docs/). 
+[KxSystems/docs](https://github.com/kxsystems/docs/).
 
 !!! info "[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)"
-    
+
