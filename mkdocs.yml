@@ -468,7 +468,7 @@ nav:
         - Exporter:
           - Overview: interfaces/prom/exporter/index.md
           - Reference: interfaces/prom/exporter/reference.md
-          - Event Handlers: interfaces/prom/exporter/event-handlers.md
+          - Event handlers: interfaces/prom/exporter/event-handlers.md
           - Examples: interfaces/prom/exporter/examples.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):

@@ -1,11 +1,11 @@
 ---
 title: Function reference for the Prometheus Exporter | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
-description: List all functionality and options for the Prometheus Exporter for kdb+ metrics
+description: All functionality and options for the Prometheus Exporter for kdb+ metrics
 date: April 2020
 keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
 ---
-# :fontawesome-solid-share-alt: Function reference
+# Function reference
 
 :fontawesome-brands-github:
 [KxSystems/prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)
@@ -28,6 +28,9 @@ Once the relevant event handlers have been defined to update the metric values, 
 
 :fontawesome-regular-hand-point-right:
 [Modify the behavior of event handlers that control the logic of metric updates](event-handlers.md)
+
+
+
 
 
 ## `.prom.addmetric`
