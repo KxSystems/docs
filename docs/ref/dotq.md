@@ -725,9 +725,17 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 
 Syntax: `.Q.fsn[x;y;z]`
 
-Loops over a file and grabs `z`-sized lumps of complete `"\n"` delimited records and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk database without holding the data in memory all at once.
+Where
 
-`.Q.fsn` is almost identical to `.Q.fs` but it takes an extra argument: `z` is the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and ram usage. `.Q.fs` is in fact a projection of `.Q.fsn` with the size set to 131000 bytes by default.
+-   `x` is a unary value
+-   `y` is a filepath
+-   `z` is an integer
+
+loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk database without holding the data in memory all at once.
+
+`.Q.fsn` is almost identical to `.Q.fs` but takes an extra argument `z`, the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and RAM usage. 
+
+!!! tip "`.Q.fs` is a projection of `.Q.fsn` with the chunk size set to 131000 bytes."
 
 
 ## `.Q.ft` (apply simple)
