@@ -47,6 +47,8 @@ q)prd 1+til 5
 120
 ```
 
+:fontawesome-brands-linkedin:
+[Adding 42 to a list](https://www.linkedin.com/pulse/adding-42-list-ferenc-bodon-ph-d-/)
 
 ### [Simple interest](https://www.geeksforgeeks.org/python-program-for-simple-interest/)
 
