@@ -457,7 +457,7 @@ Syntax: `.z.pc:f`
 
 Where `f` is a unary function, `.z.pc` is called _after_ a connection has been closed.
 
-As the connection has been closed by the time `f` is called there are strictly no remote values that can be put into .z.a, .z.u or .z.w – so the local values are returned.
+As the connection has been closed by the time `f` is called there are strictly no remote values that can be put into [`.z.a`](#za-ip-address), [`.z.u`](#zu-user-id) or [`.z.w`](#zw-handle) – so the local values are returned.
 
 To allow you to clean up things like tables of users keyed by handle, the handle that _was_ being used is passed as a parameter to `.z.pc`
 
@@ -479,6 +479,8 @@ q).z.w
 0
 q)
 ```
+
+!!! info "`.z.pc` is not called by `hclose`."
 
 
 ## `.z.pd` (peach handles)
