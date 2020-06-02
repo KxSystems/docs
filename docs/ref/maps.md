@@ -190,7 +190,14 @@ q)\t ({sum exp x?1.0}':)2#1000000  / peach
 
 ### `peach` keyword
 
-The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e.g. instead of  `(v1:')` write `v1 peach list`.
+The binary keyword [`peach`](each.md) can be used as a mnemonic alternative.
+The following are equivalent.
+
+```q
+v1':[list]
+(v1':)list
+v1 peach list
+```
 
 !!! tip "Higher-rank values"
 

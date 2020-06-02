@@ -51,6 +51,7 @@ We gratefully acknowledge contributions by pull requests from
 -   Angus Wilson
 -   Andrew in New York
 -   Chris Shucksmith
+-   Cillian Reilly
 -   Conor McCarthy
 -   David Z. Han
 -   Esperanza Lopez Aguilera
