@@ -43,8 +43,8 @@ keyword                      | semantics
 [`exec`](../ref/exec.md)     | Return columns from a table, possibly with new columns
 [`fby`](../ref/fby.md)       | Aggregate subgroups
 [`select`](../ref/select.md) | Return part of a table, possibly with new columns
-[`update`](../ref/select.md) | Add rows or columns to a table
-[`upsert`](../ref/select.md) | Add new records to a table, update existing records
+[`update`](../ref/update.md) | Add rows or columns to a table
+[`upsert`](../ref/upsert.md) | Add new records to a table, update existing records
 
 
 ## Functional forms
