@@ -83,14 +83,6 @@ q){`a set x} peach 0 1
 
 works when no slave threads are specified, as `peach` defaults to `each`.
 
-Results from the function are copied (via serialization and deserialization) to the main thread, as kdb+ uses thread-local heaps. Hence for best performance, `peach` should crunch large amounts of data in a computationally intense function and return small data sets, as serialization has an overhead. This overhead can be observed with
-
-```q
-\t do[100;-9!-8!object]
-```
-
-where `object` is the data being passed or returned.
-
 The algorithm for grouping symbols differs between slave threads and the main kdb+ thread. The main kdb+ thread uses an optimization not available to the slave threads. E.g. kdb+ started with 2 slave threads
 
 ```q
