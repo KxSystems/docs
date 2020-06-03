@@ -1314,6 +1314,9 @@ q).Q.pv!flip .Q.pn
 2010.01.02| 100
 ```
 
+:fontawesome-solid-graduation-cap:
+[Table counts](../kb/partition.md#table-counts)
+
 
 ## `.Q.prf0` (code profiler)
 
