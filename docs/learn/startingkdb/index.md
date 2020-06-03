@@ -17,11 +17,10 @@ One caution: you can learn kdb+ reasonably well by independent study, but for se
 
 ## Kdb+
 
-The kdb+ system is both a database and a programming language:
+The kdb+ system is both a database and a programming language.
   
-**kdb+** the database (_k database plus_).
-
-**q** the programming language for working with kdb+
+-   **kdb+**: the database (_k database plus_)
+-   **q**: a general-purpose programming language integrated with kdb+
 
 
 ## Resources
@@ -92,13 +91,3 @@ When q is run, it displays a console where you can enter commands and see the re
 
 As you become more familiar with q, you may prefer to work in the interactive development environment [**Kx Developer**](/developer/). ([_Kx Analyst_](/analyst/) is the enterprise version of Developer.)
 
-<!--
--   Most popular is Charlie Skelton’s **Studio for kdb+**, a cross-platform execution environment – worth having available even if you use another interface  
-:fontawesome-brands-github: [CharlesSkelton/studio](https://github.com/CharlesSkelton/studio)
--   [**qStudio**](http://www.timestored.com/qstudio/), a cross-platform IDE with charting and autocompletion by TimeStored 
--   [First Derivatives](https://www.firstderivatives.com) offer their clients the **qIDE** development system
--   [Q and K Development Tools](http://www.qkdt.org) has an Eclipse plugin
--   [**Q Insight Pad**](http://www.qinsightpad.com) is an IDE for Windows
--   [**Qconsole**](https://github.com/kxcontrib/cburke/tree/master/qconsole) is an IDE using GTK
--   [**JupyterQ**](../../ml/jupyterq/index.md) lets you run q inside a [Jupyter](https://jupyter.org) notebook 
--->
