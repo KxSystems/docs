@@ -986,7 +986,7 @@ Syntax: `.z.z`
 Returns UTC time as a datetime atom.
 
 ```q
-q).z.Z
+q).z.z
 2006.11.13T21:16:14.601
 ```
 
