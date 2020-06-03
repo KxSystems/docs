@@ -29,6 +29,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-30!x](#-30x-deferred-response)       deferred response
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash
 [-36!(x;y)](#-36xy-load-master-key)   load master key
+[-38!x](#-38x-socket-table)       socket table
 [-120!x](#-120x-memory-domain)      memory domain
 </pre>
 
@@ -399,6 +400,27 @@ Unrecognized key format         master key file format unrecognized
 ```
 
 
+## `-38!x` (socket table)
+
+Syntax: `-38!x`
+
+where `x` is a list of socket handles, returns a table with columns
+
+-   `p` (protocol): `q` (IPC) or `w` (WebSocket)
+-   `f` (family): `t` (TCP) or `u` (Unix domain socket)
+
+Since v4.0 2020.06.01.
+
+```q
+q){([]h)!-38!h:.z.H}[]
+h| p f
+-| ---
+8| q u
+9| q t
+```
+
+:fontawesome-solid-book:
+[`.z.H`](../ref/dotz.md#zh-active-sockets)
 ## `-120!x` (memory domain)
 
 Syntax `-120!x`

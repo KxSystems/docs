@@ -20,16 +20,17 @@ System information                 Callbacks
  [.z.ex   failed primitive](#zex-failed-primitive)           [.z.pg    get](#zpg-get)
  [.z.ey   arg to failed primitive](#zey-argument-to-failed-primitive)    [.z.ph    HTTP get](#zph-http-get)
  [.z.f    file](#zf-file)                       [.z.pi    input](#zpi-input)
- [.z.h    host](#zh-host)                       [.z.po    open](#zpo-open)
- [.z.i    PID](#zi-pid)                        [.z.pp    HTTP post](#zpp-http-post)
- [.z.K    version](#zk-version)                    [.z.pq    qcon](#zpq-qcon)
- [.z.k    release date](#zk-release-date)               [.z.ps    set](#zps-set)
- [.z.l    license](#zl-license)                    [.z.pw    validate user](#zpw-validate-user)
- [.z.N/n  local/UTC timespan](#zn-local-timespan)         [.z.ts    timer](#zts-timer)
- [.z.o    OS version](#zo-os-version)                 [.z.vs    value set](#zvs-value-set)
- [.z.P/p  local/UTC timestamp](#zp-local-timestamp)        [.z.wc    WebSocket close](#zwc-websocket-close)
- [.z.pm   HTTP options](#zpm-http-options)               [.z.wo    WebSocket open](#zwo-websocket-open)
- [.z.q    quiet mode](#zq-quiet-mode)                 [.z.ws    WebSockets](#zws-websockets)
+ [.z.H    active sockets](#zh-active-sockets)             [.z.po    open](#zpo-open)
+ [.z.h    host](#zh-host)                       [.z.pp    HTTP post](#zpp-http-post)
+ [.z.i    PID](#zi-pid)                        [.z.pq    qcon](#zpq-qcon)
+ [.z.K    version](#zk-version)                    [.z.ps    set](#zps-set)
+ [.z.k    release date](#zk-release-date)               [.z.pw    validate user](#zpw-validate-user)
+ [.z.l    license](#zl-license)                    [.z.ts    timer](#zts-timer)
+ [.z.N/n  local/UTC timespan](#zn-local-timespan)         [.z.vs    value set](#zvs-value-set)
+ [.z.o    OS version](#zo-os-version)                 [.z.wc    WebSocket close](#zwc-websocket-close)
+ [.z.P/p  local/UTC timestamp](#zp-local-timestamp)        [.z.wo    WebSocket open](#zwo-websocket-open)
+ [.z.pm   HTTP options](#zpm-http-options)               [.z.ws    WebSockets](#zws-websockets)
+ [.z.q    quiet mode](#zq-quiet-mode)
  [.z.s    self](#zs-self)
  [.z.T/t  time shortcuts](#zt-zt-zd-zd-timedate-shortcuts)
  [.z.u    user ID](#zu-user-id)
@@ -270,6 +271,23 @@ q).z.f
 
 :fontawesome-regular-hand-point-right:
 [`.z.x` argv](#zx-argv)
+
+
+## `.z.H` (active sockets)
+
+Syntax: `.z.H`
+
+Returns the active sockets as a list. A low-cost method.
+
+Since v4.0 2020.06.01.
+
+```q
+q).z.H~key .z.W
+1b
+```
+
+:fontawesome-solid-book-open:
+[`-38!` socket table](../basics/internal.md#-38x-socket-table)
 
 
 ## `.z.h` (host)
