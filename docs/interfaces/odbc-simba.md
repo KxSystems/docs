@@ -57,7 +57,12 @@ is suitable for all users who are looking to access kdb+ data from their desktop
 !!! info "The latest version of Simba/Magnitude ODBC is 1.1.1, released 2020.02.14."
 
 <pre markdown="1" class="language-txt">
-Linux
+Linux     [linux-1.1.1.zip](/download/linux-1.1.1.zip)          42MB fc2eb21cfdb54617b2c795ac2e5eab61
+macOS     [osx-1.1.1.zip](/download/osx-1.1.1.zip)            35MB d5427c1b84ad6ee4a0563099159e276f
+Windows   [windows-1.1.1.zip](/download/windows-1.1.1.zip)        32MB d87519bd7a197471f26bad4dc7f18c13
+</pre>
+
+<!-- Linux
  64 [`simbakdb-1.1.1.1000-1.x86_64.rpm`](/download/simbakdb-1.1.1.1000-1.x86_64.rpm)   eefafb40b28f574a8f5ce1603112f992
  32 [`simbakdb-1.1.1.1000-1.i686.rpm`](/download/simbakdb-1.1.1.1000-1.i686.rpm)     0989e038d86335f83bf1390bdc2827a8
 
@@ -69,7 +74,7 @@ Windows
  32 [`simba-kdb-1.1-32-bit.msi`](/download/simba-kdb-1.1-32-bit.msi)           34fe980c2408f369956d58c695b49e7b
  Common config file:
     [`simba-kdb-odbc-driver.tdc`](/download/simba-kdb-odbc-driver.tdc)          bdc05a4eb0a3b5602d210446da06d25c
-</pre>
+ -->
 
 ## License
 
