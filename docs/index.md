@@ -11,6 +11,9 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 
 ??? tip "New on code.kx.com"
 
+    :fontawesome-brands-python:&nbsp;
+    [PyQ 5.0 released](https://github.com/KxSystems/pyq/blob/pyq-5.0.0/HISTORY.md)
+
     :fontawesome-solid-chart-line:&nbsp;
     [White paper: Implementing trend indicators](wp/trend-indicators/index.md)
 
