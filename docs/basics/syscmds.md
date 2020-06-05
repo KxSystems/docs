@@ -10,22 +10,23 @@ keywords: command, kdb+, q, system
 
 
 <pre markdown="1" class="language-txt">
-[\a  tables](#a-tables)                      [\s       number of slaves](#s-number-of-slaves)
-[\b  views](#b-views)                       [\S       random seed](#s-random-seed)
-[\B  pending views](#b-pending-views)               [\t       timer](#t-timer)
-[\c  console size](#c-console-size)                [\T       timeout](#t-timeout)
-[\cd change directory](#cd-change-directory)            [\ts      time and space](#ts-time-and-space)
-[\C  HTTP size](#c-http-size)                   [\u       reload user password file](#u-reload-user-password-file)
-[\d  directory](#d-directory)                   [\v       variables](#v-variables)
-[\e  error trap clients](#e-error-trap-clients)          [\w       workspace](#w-workspace)
-[\f  functions](#f-functions)                   [\W       week offset](#w-week-offset)
-[\g  garbage collection mode](#g-garbage-collection-mode)     [\x       expunge](#x-expunge)
-[\l  load file or directory](#l-load-file-or-directory)      [\z       date parsing](#z-date-parsing)
-[\o  offset from UTC](#o-offset-from-utc)             [\1 & \2  redirect](#1-2-redirect)
-[\p  listening port](#p-listening-port)              [\\_       hide q code](#_-hide-q-code)
-[\P  precision](#p-precision)                   [\\        terminate](#terminate)
-[\r  replication master](#r-replication-master)          [\\        toggle q/k](#toggle-qk)
-[\r  rename](#r-rename)                      [\\\\       quit](#quit)
+[\a  tables](#a-tables)                           [\s       number of slaves](#s-number-of-slaves)
+[\b  views](#b-views)                            [\S       random seed](#s-random-seed)
+[\B  pending views](#b-pending-views)                    [\t       timer](#t-timer)
+[\c  console size](#c-console-size)                     [\T       timeout](#t-timeout)
+[\cd change directory](#cd-change-directory)                 [\ts      time and space](#ts-time-and-space)
+[\C  HTTP size](#c-http-size)                        [\u       reload user password file](#u-reload-user-password-file)
+[\d  directory](#d-directory)                        [\v       variables](#v-variables)
+[\e  error trap clients](#e-error-trap-clients)               [\w       workspace](#w-workspace)
+[\E  TLS server mode](#e-tls-server-mode)                  [\W       week offset](#w-week-offset)
+[\f  functions](#f-functions)                        [\x       expunge](#x-expunge)
+[\g  garbage collection mode](#g-garbage-collection-mode)          [\z       date parsing](#z-date-parsing)
+[\l  load file or directory](#l-load-file-or-directory)           [\1 & \2  redirect](#1-2-redirect)
+[\o  offset from UTC](#o-offset-from-utc)                  [\\_       hide q code](#_-hide-q-code)
+[\p  listening port](#p-listening-port)                   [\\        terminate](#terminate)
+[\P  precision](#p-precision)                        [\\        toggle q/k](#toggle-qk)
+[\r  replication master](#r-replication-master)               [\\\\       quit](#quit)
+[\r  rename](#r-rename)                                              
 </pre>
 
 System commands control the q environment. They have the form:
@@ -44,9 +45,7 @@ Commands with optional parameters that set values, will show the current values 
 
 Some system commands have equivalent command-line parameters.
 
-!!! tip "`system`"
-
-    The [`system`](../ref/system.md) keyword executes a string representation of a system command – and allows its result to be captured.
+!!! tip "The [`system`](../ref/system.md) keyword executes a string representation of a system command and returns its result."
 
 
 ## `\a` (tables)
@@ -226,6 +225,22 @@ mode | behavior
 
 :fontawesome-solid-book-open:
 [Command-line option `-e`](cmdline.md#-e-error-traps)
+
+
+## `\E` (TLS server mode)
+
+Syntax: `\E`
+
+Displays TLS server mode as an int:
+
+```txt
+0i   plain
+1i   plain and TLS
+2i   TLS only
+```
+
+:fontawesome-solid-book-open:
+[Command-line option `-E`](cmdline.md#-e-tls-server-mode) to set the mode
 
 
 ## `\f` (functions)

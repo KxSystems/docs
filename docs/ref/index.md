@@ -137,7 +137,7 @@ p  parted     g  grouped
 <tr><td>[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td>change directory</td><td>[`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)</td><td>timeout</td></tr>
 <tr><td>[`\d`](../basics/syscmds.md#d-directory)</td><td>directory</td><td>[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td>usr-pwd</td></tr>
 <tr><td>[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td>error traps</td><td>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td>disable syscmds</td></tr>
-<tr><td>[`-E`](../basics/cmdline.md#-e-error-traps)</td><td>TLS Server Mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
+<tr><td>[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)</td><td>TLS server mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
 <tr><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td><td>[`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)</td><td>memory</td></tr>
 <tr><td>[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td>garbage collection</td><td>[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td>week offset</td></tr>
 <tr><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
@@ -149,6 +149,29 @@ p  parted     g  grouped
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
+<!-- 
+<pre markdown="1" class="language-txt">
+[file](../basics/cmdline.md#file)
+[`\a`](../basics/syscmds.md#a-tables)       tables                                                       [`\r`](../basics/syscmds.md#r-rename)                                                       rename
+[`-b`](../basics/cmdline.md#-b-blocked)       blocked                                                       [`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)                                                       slaves
+[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)    views                                                       [`\S`](../basics/syscmds.md#s-random-seed)                                                       random seed
+[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)    console size                                                       [`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)                                                       timer ticks
+[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)    HTTP size                                                       [`\ts`](../basics/syscmds.md#ts-time-and-space)                                                       time and space
+[`\cd`](../basics/syscmds.md#cd-change-directory)      change directory                                                       [`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)                                                       timeout
+[`\d`](../basics/syscmds.md#d-directory)       directory                                                       [`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)                                                       usr-pwd
+[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)    error traps                                                       [`-u`](../basics/cmdline.md#-u-disable-syscmds)                                                       disable syscmds
+[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)    TLS server mode             [`\v`](../basics/syscmds.md#v-variables)                                                       variables
+[`\f`](../basics/syscmds.md#f-functions)       functions                  [`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)                                                       memory
+[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)    garbage collection         [`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)                                                       week offset
+[`\l`](../basics/syscmds.md#l-load-file-or-directory)       load file or directory      [`\x`](../basics/syscmds.md#x-expunge)                                                       expunge
+[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)    log sync                                                       [`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)                                                       date format
+[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)    UTC offset                                                       [`\1` `\2`](../basics/syscmds.md#1-2-redirect)                                                       redirect
+[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)    listening port                                                       [`\_`](../basics/syscmds.md#_-hide-q-code)                                                       hide q code
+[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)    display precision                                                       [`\`](../basics/syscmds.md#terminate)                                                       terminate
+[`-q`](../basics/cmdline.md#-q-quiet-mode)       quiet mode                                                       [`\`](../basics/syscmds.md#toggle-qk)                                                       toggle q/k
+[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)    replicate                                                       [`\\`](../basics/syscmds.md#quit)                                                       quit
+</pre>
+ -->
 :fontawesome-regular-hand-point-right:
 [Command-line options](../basics/cmdline.md),
 [System commands](../basics/syscmds.md),

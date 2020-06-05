@@ -134,7 +134,10 @@ x   | mode
 2   | TLS only
 
 :fontawesome-solid-book-open:
-Knowledge Base: [SSL/TLS](../kb/ssl.md#tls-server-mode)
+[`\E` system command](syscmds.md#e-tls-server-mode)
+<br>
+:fontawesome-solid-graduation-cap:
+[SSL/TLS](../kb/ssl.md#tls-server-mode)
 
 
 ## `-g` (garbage collection)
