@@ -502,13 +502,27 @@ Signature: `I khpunc(S hostname, I port, S credentials, I timeout, I capability)
 2    use TLS
 ```
 
-A return value of -3 indicates the OpenSSL initialisation failed.
+??? detail "Messages larger than 2GB"
+
+    During the initial handshake of a connection, each side’s capability is exchanged, and the common maximum is chosen for the connection. By setting the capability parameter for `khpunc`, the default message-size limit for this connection can be raised from 2GB to 1TB. e.g.
+
+    ```
+    int handle=khpunc("hostname",5000,"user:password",timeout,1);
+    ```
+
+    A TLS-enabled connection supporting upto 1TB messages can be achieved via bit-or of the TLS and 1TB bits, e.g.
+
+    ```
+    int handle=khpunc("hostname",5000,"user:password",timeout,1|2);
+    ```
+
+A return value of -3 indicates the OpenSSL initialization failed.
 
 ```txt
  0   Authentication error
 -1   Connection error
 -2   Timeout error
--3   OpenSSL initialisation failed
+-3   OpenSSL initialization failed
 ```
 
 :fontawesome-regular-hand-point-right: [`sslInfo`](#sslinfo-ssl-info)
@@ -517,9 +531,9 @@ A return value of -3 indicates the OpenSSL initialisation failed.
 
     For `khp`, `khpu`, `khpun`, and `khpunc` a Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
 
-    <pre><code class="language-c">
+    ```
     int handle=khpu("0.0.0.0",5000,"user:password");
-    </code></pre>
+    ```
 
 
 ### `ki` – create int
