@@ -823,7 +823,7 @@ q)y ~ y2 / returns 1b, the outputs are equal
 Syntax: `.Q.gc[]`
 
 Returns the amount of memory that was returned to the OS.
-(Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in slave threads since V2.7 2011.09.21)
+(Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in secondary threads since V2.7 2011.09.21)
 
 !!! detail "How it works"
 
@@ -834,7 +834,7 @@ Returns the amount of memory that was returned to the OS.
     `.Q.gc` attempts to coalesce diced blocks into their original 64MB block, and then returns blocks >=64MB to the OS.
 
     Coalescing is always deferred, i.e. can only be triggered by a call to `.Q.gc`.
-    When slave threads are used, `.Q.gc` in the main thread also executes `.Q.gc` in the slave threads.
+    When secondary threads are used, `.Q.gc` in the main thread also executes `.Q.gc` in the secondary threads.
     `.Q.gc` can take several seconds to execute on large memory systems that have a fragmented heap, and hence is not recommended for frequent use in a time-critical path of code. Consider running with the command-line option `-g 1`, which will return larger blocks of memory to the OS without trying to coalesce the smaller blocks.
 
 ```q

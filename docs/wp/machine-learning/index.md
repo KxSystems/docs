@@ -444,9 +444,9 @@ Accuracy
 ## Further approaches
 
 
-### Use slave threads
+### Use secondary threads
 
-Testing and validation phases will benefit significantly from the use of slave threads in kdb+, applied through the use of the `peach` keyword: 
+Testing and validation phases will benefit significantly from the use of secondary threads in kdb+, applied through the use of the `peach` keyword: 
 
 `-s 0` (0 slaves) – Run time: ~13s
 
@@ -569,7 +569,7 @@ Manhattan distance:
 ```q
 q)apply_dist:apply_dist_manh // Manhattan Distance
 
-q)// 2 cores, 4 slave threads (-s 4)
+q)// 2 cores, 4 secondary threads (-s 4)
 q)\ts show select Accuracy:avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -590,7 +590,7 @@ q)4892%count tes
 1.398513  
 q)// ~1.4 ms average to classify one instance
 
-q)// 4 cores, 8 slave threads (-s 8)
+q)// 4 cores, 8 secondary threads (-s 8)
 q)\ts show select Accuracy:avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -617,7 +617,7 @@ Euclidean distance:
 ```q
 q)apply_dist:apply_dist_eucl // Euclidean Distance
 
-q)// 2 cores, 4 slave threads (-s 4)
+q)// 2 cores, 4 secondary threads (-s 4)
 q)\ts show select Accuracy: avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -636,7 +636,7 @@ k | Accuracy
 
 q)6717%count tes
 1.92  // ~1.9ms average to classify one instance
-// 4 cores, 8 slave threads (-s 8)
+// 4 cores, 8 secondary threads (-s 8)
 q)\ts show select Accuracy:avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -669,7 +669,7 @@ In this paper, we saw how trivial it is to implement a k-NN classification algor
 [kxcontrib/wp-knn](https://www.github.com/kxcontrib/wp-knn).
 We also briefly saw how to use iterators to optimize the classification time, and how data structures can influence performance comparing tables and vectors.
 
-Benchmarking this lazy implementation, with a random dataset available on the UCI website and using the Euclidean distance metric showed an average prediction accuracy of ~97.7%. The classification time can vary greatly, based on the number of cores and slave threads used. With 2 cores and 4 slaves (`-s 4`) the classification time of a single instance after optimization of the code was ~1.9ms per instance and the total validation time decreased significantly when using 4 cores and 8 slave threads (`-s 8`), showing how kdb+ can be used to great effect for machine-learning purposes, even with heavy-compute implementations such as the k-NN.
+Benchmarking this lazy implementation, with a random dataset available on the UCI website and using the Euclidean distance metric showed an average prediction accuracy of ~97.7%. The classification time can vary greatly, based on the number of cores and secondary threads used. With 2 cores and 4 secondary threads (`-s 4`) the classification time of a single instance after optimization of the code was ~1.9ms per instance and the total validation time decreased significantly when using 4 cores and 8 secondary threads (`-s 8`), showing how kdb+ can be used to great effect for machine-learning purposes, even with heavy-compute implementations such as the k-NN.
 
 
 ## Author

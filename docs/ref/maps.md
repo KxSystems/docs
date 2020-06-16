@@ -162,16 +162,16 @@ q)raze[a] ~ b
 ![Each Parallel](../img/each-parallel.png)
 </div>
 
-_Assign sublists of the argument list to slave tasks, in which the unary value is applied to each item of the sublist._
+_Assign sublists of the argument list to secondary tasks, in which the unary value is applied to each item of the sublist._
 
 ```txt
 (v1':)x   v1':[x]   v1 peach x
 ```
 
-The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies `v1` to each item of its sublist. 
+The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available secondary tasks](../basics/cmdline.md#-s-secondary-threads). Each secondary task applies `v1` to each item of its sublist. 
 
 :fontawesome-solid-book-open: 
-[Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
+[Command-line option `-s`](../basics/cmdline.md#-s-secondary-threads), 
 [Parallel processing](../basics/peach.md)
 
 ```bash

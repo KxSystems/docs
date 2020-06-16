@@ -192,7 +192,7 @@ Currently, ZFS compression probably has an edge due to keeping more decompressed
 
 ## Is the compression or decompression multithreaded?
 
-The reading or writing of a compressed file must _not_ be performed concurrently from multiple threads. However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [`par.txt`](partition.md)’d historical database with slave threads will be using the decompression in a multithreaded mode.
+The reading or writing of a compressed file must _not_ be performed concurrently from multiple threads. However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [`par.txt`](partition.md)’d historical database with secondary threads will be using the decompression in a multithreaded mode.
 
 
 ## What’s the difference among different logicalBlockSize (pageSize to 1MB) and compressionLevel (1 to 9 for gzip)? What’s a standard recommendation?

@@ -35,7 +35,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
 <tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V4.0 2020.03.17)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
-<tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
+<tr><td>enable secondary threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>encryption lib unavailable</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Failed to load OpenSSL libraries</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
 <tr><td>from</td> <td class="nowrap">`select price trade`</td> <td>Badly formed select statement</td> </tr>
@@ -68,7 +68,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr>
 <td>no `` `g#``</td>
 <td class="nowrap">``{`g#x}peach 2#enlist 0 1``</td>
-<td>A thread other than the main q thread has attempted to add a group [attribute](syntax.md#attributes) to a vector. Seen with [`peach`](peach.md)+slave threads or multithreaded input queue</td>
+<td>A thread other than the main q thread has attempted to add a group [attribute](syntax.md#attributes) to a vector. Seen with [`peach`](peach.md)+secondary threads or multithreaded input queue</td>
 </tr>
  <tr>
 <td>noupdate</td>
@@ -76,7 +76,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>
 Updates blocked by the [`-b` cmd line arg](cmdline.md#-b-blocked), 
 or [`reval`](../ref/eval.md#reval) code or a thread other than the main thread has attempted to update a global variable 
-when in [`peach`](peach.md)+slave threads or multithreaded input queue. 
+when in [`peach`](peach.md)+secondary threads or multithreaded input queue. 
 Update not allowed when using [negative port number](syscmds.md#p-listening-port).
 </td>
 </tr>

@@ -47,7 +47,7 @@ q)1 2 3f$4 5 6f  /dot product of two vectors
 
 ## Working in parallel
 
-Use slave threads via `peach`.
+Use secondary threads via `peach`.
 
 ```q
 q)mmu[;b]peach a

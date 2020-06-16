@@ -12,7 +12,7 @@ keywords: embedpy, machine learning, automation, distribution, cross validation,
 As outlined within the documentation for the [Machine-Learning Toolkit](../toolkit/index.md), procedures for the application of distributed multiprocessed cross-validation, grid-search and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
 
 ```q
-// Initialize your process with multiple slave processes and an associated port
+// Initialize your process with multiple secondary processes and an associated port
 $q -s -8 -p 4321
 // load the AutoML framework
 q)\l automl/automl.q

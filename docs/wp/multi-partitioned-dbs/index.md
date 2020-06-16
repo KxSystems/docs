@@ -64,7 +64,7 @@ Firstly, when saving data, multiple partitions can be written
 concurrently, potentially reducing the time required to load data from
 flat files or persist it from memory. Secondly, when running queries
 against the database, data from multiple partitions can be read in
-parallel using slave threads. In the same way as queries on a database
+parallel using secondary threads. In the same way as queries on a database
 with a single partition per date can read data for multiple days in
 parallel, now data for the same date can be read in parallel. A third
 advantage related to database maintenance is that since the size of

@@ -505,14 +505,14 @@ q)
 
 Syntax: `.z.pd: x`
 
-Where q has been [started with slave processes for use in parallel processing](../basics/cmdline.md#-s-slaves),  `x` is
+Where q has been [started with secondary processes for use in parallel processing](../basics/cmdline.md#-s-secondarys),  `x` is
 
--    an int vector of handles to slave processes
--    a function that returns a list of handles to those slave processes
+-    an int vector of handles to secondary processes
+-    a function that returns a list of handles to those secondary processes
 
-For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to the slave processes by calling [`.z.pd[]`](#zpd-peach-handles).
+For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to the secondary processes by calling [`.z.pd[]`](#zpd-peach-handles).
 
-!!! warning "Slaves to peach"
+!!! warning "Secondary threads dedicated to `peach`"
 
     The processes with these handles must not be used for other messaging; Parallel Each will close them if it receives anything other than a response message.
 

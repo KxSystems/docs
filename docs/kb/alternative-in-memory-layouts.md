@@ -71,7 +71,7 @@ q)/ vwap for whole day for all symbols in 5 minute bins
 q)\ts raze {0!select first sym,size wavg price by 5 xbar time.minute from x} each value t 
 942 21631792
 
-q)/ Use multiple slave threads for queries! e.g. using 4 threads - almost linear scaling.
+q)/ Use multiple secondary threads for queries! e.g. using 4 threads - almost linear scaling.
 q)\ts raze {0!select first sym,size wavg price by 5 xbar time.minute from x} peach value t 
 269 21002352
 

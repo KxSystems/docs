@@ -496,7 +496,7 @@ The following Kdb+ Software variables are reported by the license-manager softwa
 -    process ID (`.z.i`)
 -    user ID (`.z.u`)
 -    kdb+ version (`.z.K`)
--    number of slave tasks (`\s`)
+-    number of secondary tasks (`\s`)
 -    port number (`\p`)
 -    license (`.z.l`)
 -    CPU mask as in `sched_getaffinity[2]`

@@ -152,7 +152,7 @@ hello world
 $
 ```
 
-Other predefined parameters set the listening port, number of slave tasks allocated, and so on. 
+Other predefined parameters set the listening port, number of secondary tasks allocated, and so on. 
 
 :fontawesome-solid-book-open:
 [Command-line options](../../basics/cmdline.md)

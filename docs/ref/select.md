@@ -79,7 +79,7 @@ Where there is a by-clause, and no sort order is specified, the result is sorted
 
 ### Multithreading
 
-The following pattern will make use of slave threads via `peach`
+The following pattern will make use of secondary threads via `peach`
 
 ```q
 select … by sym, … from t where sym in …, … 

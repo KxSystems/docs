@@ -123,6 +123,10 @@ Q must be restarted to pick up the new setting.
 
 In addition to monitoring free disk space for the usual partitions you write to, ensure you also monitor free space of `/tmp` on Unix, since q uses this area for capturing the output from system commands, such as `system "ls"`.
 
+!!! warning "Disk space for log files"
+
+    It is essential to ensure there is sufficient disk space for tickerplant log files, as in the event of exhausting disk space, the logging mechanism may write a partial record, and then drop records, thereby leaving the log file in a corrupt state due to the partial record.
+
 
 ## Back up the sym file
 

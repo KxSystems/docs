@@ -282,11 +282,11 @@ Replicate from `:host:port`.
 [`\r` system command](syscmds.md#r-replication-master)
 
 
-## `-s` (slaves)
+## `-s` (secondary threads)
 
 Syntax: `-s N`
 
-Number of slave threads or processes available for parallel processing.
+Number of secondary threads or processes available for parallel processing.
 
 :fontawesome-solid-book-open:
 [`\s` system command](syscmds.md#s-number-of-slaves) for detail

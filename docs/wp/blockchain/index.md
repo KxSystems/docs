@@ -513,7 +513,7 @@ same size after 2016 when Bitcoin blocks are more consistently full.
 However, the size of partitions containing data prior to then are much
 smaller. Having partitions of roughly equal size is an advantage when it
 comes to multi-threaded queries, as it makes it easier to allocate an
-equal amount of data to each slave for processing. Below is a sample of
+equal amount of data to each secondary thread for processing. Below is a sample of
 the `txInfo` table, containing the partition column `int`.
 
 ```q

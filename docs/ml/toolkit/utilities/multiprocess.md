@@ -12,7 +12,7 @@ keywords: machine learning, ml, utilitites, multi-threading, kdb+, q
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 
-The framework described below is designed to provide a user-friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized by default in both the FRESH and cross-validation procedures outlined within this toolkit, provided the process is located on a defined port and with a specified number of slave processes.
+The framework described below is designed to provide a user-friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized by default in both the FRESH and cross-validation procedures outlined within this toolkit, provided the process is located on a defined port and with a specified number of secondary processes.
 
 The following workflow shows how FRESH can be initialized exclusively, without loading of the entire toolkit.
 
@@ -22,7 +22,7 @@ Initialize a q process with four workers on a user-defined central port.
 $ q ml/ml.q -s -4 -p 1234
 ```
 
-The above command sets four slave processes with the central process on port 1234. The below must be executed to load the relevant functionality contained in `util/mproc.q` and to load the appropriate functionality for the FRESH algorithm on each of the processes.
+The above command sets four secondary processes with the central process on port 1234. The below must be executed to load the relevant functionality contained in `util/mproc.q` and to load the appropriate functionality for the FRESH algorithm on each of the processes.
 
 ```q
 q).ml.loadfile`:util/mproc.q

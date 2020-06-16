@@ -32,7 +32,7 @@ V3.5 has an improved memory allocator which allows memory to be used across thre
 
 !!! note 
 
-    Kdb+ manages its own heap, using thread-local heaps to avoid contention. One complication of thread-local heaps is how to share allocations between threads, and avoid ballooning of allocated space due to the producer allocating in one arena and the consumer freeing that area in another arena. This was the primary reason for serialization/deserialization of the results from slave threads to the main thread when _peach_ completes. This serialization and associated overhead has now been removed.
+    Kdb+ manages its own heap, using thread-local heaps to avoid contention. One complication of thread-local heaps is how to share allocations between threads, and avoid ballooning of allocated space due to the producer allocating in one arena and the consumer freeing that area in another arena. This was the primary reason for serialization/deserialization of the results from secondary threads to the main thread when _peach_ completes. This serialization and associated overhead has now been removed.
 
 
 ## Socket sharding
@@ -55,16 +55,16 @@ Use cases include coarse load-balancing and HA/failover.
     When using socket sharding (e.g. `-p rp,5000`) the Unix domain socket (`uds`) is not active; this is deliberate and not expected to change.
 
 
-## Number of slaves
+## Number of secondary threads
 
-Slave threads can now be adjusted dynamically up to the maximum [specified on the command line](../basics/syscmds.md#s-number-of-slaves). A negative number indicates that processes should be used, instead of threads.
+Secondary threads can now be adjusted dynamically up to the maximum [specified on the command line](../basics/syscmds.md#s-number-of-secondary-threads). A negative number indicates that processes should be used, instead of threads.
 
 ```q
-q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
-("current slave threads";0i)
-("current,max slave threads";4i;8i)
-q)system"s 0" / disable slave threads
-q)system"s 0N" / show max slave threads
+q)0N!("current secondary threads";system"s");system"s 4";0N!("current,max secondary threads";system"s";system"s 0N"); / q -s 8
+("current secondary threads";0i)
+("current,max secondary threads";4i;8i)
+q)system"s 0" / disable secondary threads
+q)system"s 0N" / show max secondary threads
 8i
 ```
 

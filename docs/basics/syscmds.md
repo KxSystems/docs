@@ -10,7 +10,7 @@ keywords: command, kdb+, q, system
 
 
 <pre markdown="1" class="language-txt">
-[\a  tables](#a-tables)                           [\s       number of slaves](#s-number-of-slaves)
+[\a  tables](#a-tables)                           [\s       number of secondary threadss](#s-number-of-secondary-threads)
 [\b  views](#b-views)                            [\S       random seed](#s-random-seed)
 [\B  pending views](#b-pending-views)                    [\t       timer](#t-timer)
 [\c  console size](#c-console-size)                     [\T       timeout](#t-timeout)
@@ -433,20 +433,20 @@ Syntax: `\r src dst`
 This renames file `src` to `dst`. It is equivalent to the Unix `mv` command, or the windows `move` command (except that it will not rename to a different disk drive).
 
 
-## `\s` (number of slaves)
+## `\s` (number of secondary threads)
 
 Syntax: `\s [N]`
 
-Show or set the number of slaves available for parallel processing, within the limit set by the [`-s` command-line option](cmdline.md#-s-slaves).
+Show or set the number of secondary threads available for parallel processing, within the limit set by the [`-s` command-line option](cmdline.md#-s-secondary-threads).
 
-Since V3.5 2017.05.02, slave threads can be adjusted dynamically up to the maximum specified on the command line. A negative `N` indicates processes should be used, instead of threads.
+Since V3.5 2017.05.02, secondary threads can be adjusted dynamically up to the maximum specified on the command line. A negative `N` indicates processes should be used, instead of threads.
 
 ```q
-q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
-("current slave threads";0i)
-("current,max slave threads";4i;8i)
-q)system"s 0" / disable slave threads
-q)system"s 0N" / show max slave threads
+q)0N!("current secondary threads";system"s");system"s 4";0N!("current,max secondary threads";system"s";system"s 0N"); / q -s 8
+("current secondary threads";0i)
+("current,max secondary threads";4i;8i)
+q)system"s 0" / disable secondary threads
+q)system"s 0N" / show max secondary threads
 8i
 ```
 
@@ -462,7 +462,7 @@ For processes:
 -   the absolute value of `-N` in the command line is ignored
 
 :fontawesome-solid-book-open:
-[`-s` command-line option](cmdline.md#-s-slaves),
+[`-s` command-line option](cmdline.md#-s-secondary-threads),
 [Parallel processing](peach.md)
 
 
@@ -508,10 +508,10 @@ q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
 
     Since V3.1 2013.08.19 random-number generation (rng) is thread-local.
     `\S 1234` sets the seed for the rng for the main thread only.
-    The rng in a slave thread is assigned a seed based on the slave thread number.
+    The rng in a secondary thread is assigned a seed based on the secondary thread number.
 
     In multithreaded input mode, the seed is based on the socket descriptor.
-    Instances started on ports 20000 through 20099 (slave procs, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
+    Instances started on ports 20000 through 20099 (secondary threads, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
 
 
 ## `\t` (timer)

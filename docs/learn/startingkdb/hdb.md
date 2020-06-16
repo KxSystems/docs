@@ -32,7 +32,7 @@ _Q for Mortals_: [§11.3 Splayed Tables](/q4m3/11_IO/#113-splayed-tables)
 
 Typically also, large tables are stored [partitioned]/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables) by date. Very large databases may be further partitioned into segments, using [`par.txt`](../../kb/partition.md).
 
-These storage strategies give best efficiency for searching and retrieval. For example, the database can be written over several drives. Also, partitions can be allocated to slave threads so that queries over a range of dates can be run in parallel. The exact set-up would be customized for each installation.
+These storage strategies give best efficiency for searching and retrieval. For example, the database can be written over several drives. Also, partitions can be allocated to secondary threads so that queries over a range of dates can be run in parallel. The exact set-up would be customized for each installation.
 
 For example, a simple partitioning scheme on a single disk might be as shown right. Here, the daily and master tables are small enough to be written to single files, while the trade and quote tables are splayed and partitioned by date.
 
