@@ -369,7 +369,7 @@ Tickerplant | Receives messages in q format, typically from a feed handler, writ
 RDB | Receives messages from a ticker plant and stores them in in-memory tables which are written to disk at the end of the day 
 HDB | Stores historical messages in date partitions
 
-In addition, we have introduced a number of alert-engine processes subscribing to the tickerplant into the standard TP framework. Altogether, we have 16 alert engines, performing the tests on the four different coding approaches running at four different execution points. They all publish any discovered violations to an Alert Monitor process where the alerts can be viewed. Over all of these processes, we have made a master process that starts the rest of the processes up, monitors their responsiveness and shuts them down at the end of the test and constructs a summary of timings and stores them in csv format so that they can be inspected afterwards.
+In addition, we have introduced a number of alert-engine processes subscribing to the tickerplant into the standard TP framework. Altogether, we have 16 alert engines, performing the tests on the four different coding approaches running at four different execution points. They all publish any discovered violations to an Alert Monitor process where the alerts can be viewed. Over all of these processes, we have made a primary process that starts the rest of the processes up, monitors their responsiveness and shuts them down at the end of the test and constructs a summary of timings and stores them in CSV format so that they can be inspected afterwards.
 
 This framework is for the purposes of experimenting only and we do not suggest that this is an optimal TP setup for the above processes. Potentially we could have placed chained ticker plants between the main parent ticker plant and the alert engines.
 
@@ -444,7 +444,7 @@ The system can be started by loading the `startUp.q` script in `kdbAlertTP`.
 $ q startUp.q
 ```
 
-This will start up the master process with the default settings on. A table called `processStatus` will be available with process port numbers, PIDs and last heartbeat received time. The reader can query `dxOrderPublic` or `dxTradePublic` in the RDB. We can query any alerts in `dxAlert` in the alert monitor process. To shut down the test framework, from within the master process, we can simply call
+This will start up the primary process with the default settings on. A table called `processStatus` will be available with process port numbers, PIDs and last heartbeat received time. The reader can query `dxOrderPublic` or `dxTradePublic` in the RDB. We can query any alerts in `dxAlert` in the alert monitor process. To shut down the test framework, from within the primary process, we can simply call
 
 ```q
 \l shutDown.q
@@ -491,7 +491,7 @@ upd:{[t;x]
   /Convert to tabular form from list of replayed directly from log file
   if[0=type x;x:enlist cols[t]!x;];
 
-  /Pass to master alert upd function
+  /Pass to primary alert upd function
   .ae.alert_upd[t;x];
 
   /Push any alerts sitting in dxAlert to the alert monitor
@@ -505,7 +505,7 @@ upd:{[t;x]
   ] }
 ```
 
-It then defines a master `alert_upd` function to behave appropriately whether the run time is real-time or intraday and behaves as follows:
+It then defines a primary `alert_upd` function to behave appropriately whether the run time is real-time or intraday and behaves as follows:
 
 It only proceeds if 
 

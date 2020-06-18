@@ -1,6 +1,6 @@
 ---
 title: A load-balancing kdb+ server – Knowledge Base – kdb+ and q documentation
-description: The master server starts secondary servers; clients send requests to the master server which chooses a secondary server with low CPU load, and forwards the request there. 
+description: The primary server starts secondary servers; clients send requests to the primary server which chooses a secondary server with low CPU load, and forwards the request there. 
 keywords: balance, kdb+, java, load, q, swing
 ---
 # A load-balancing kdb+ server
@@ -13,12 +13,12 @@ keywords: balance, kdb+, java, load, q, swing
 The script 
 :fontawesome-brands-github: 
 [KxSystems/kdb/e/mserve.q](https://github.com/KxSystems/kdb/blob/master/e/mserve.q) 
-can be used to start a load-balancing kdb+ server. The master server starts a number of secondary servers (in the same host). Clients then send requests to the master server which, transparently to the client, chooses a secondary server with low CPU load, and forwards the request there.
+can be used to start a load-balancing kdb+ server. The primary server starts a number of secondary servers (in the same host). Clients then send requests to the primary server which, transparently to the client, chooses a secondary server with low CPU load, and forwards the request there.
 
 This set-up is useful for read operations, such as queries on historical databases. Each query is executed in one of the secondary threads, hence writes are not replicated.
 
 
-## Starting the master server
+## Starting the primary server
 
 The arguments are the number of secondary servers, and the name of a q script that will be executed by the secondary servers at start-up. Typically this script will read in a database from disk into memory.
 
@@ -35,7 +35,7 @@ In the client, connect to the server with `hopen`
 q)h: hopen `:localhost:5001
 ```
 
-Synchronous messages are executed at the master.
+Synchronous messages are executed at the primary server.
 
 ```q
 q)h "xs: til 9"

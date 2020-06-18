@@ -25,7 +25,7 @@ keywords: command, kdb+, q, system
 [\o  offset from UTC](#o-offset-from-utc)                  [\\_       hide q code](#_-hide-q-code)
 [\p  listening port](#p-listening-port)                   [\\        terminate](#terminate)
 [\P  precision](#p-precision)                        [\\        toggle q/k](#toggle-qk)
-[\r  replication master](#r-replication-master)               [\\\\       quit](#quit)
+[\r  replication master](#r-replication-primary)               [\\\\       quit](#quit)
 [\r  rename](#r-rename)                                              
 </pre>
 
@@ -416,11 +416,11 @@ q)1%3
 
 
 
-## `\r` (replication master)
+## `\r` (replication primary)
 
 Syntax: `\r`
 
-This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count.
+This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the primary process, and returns the log file name and log file count.
 
 :fontawesome-solid-book-open:
 [`-r` command-line option](cmdline.md#-r-replicate)

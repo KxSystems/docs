@@ -190,7 +190,7 @@ On start-up, the replicating process connects to the logging process, gets the l
 
 If the replicating process loses its connection to the logging process, you can detect that with `.z.pc`. To resubscribe to the logging process, restart the replicating process.
 
-Currently, only a single replicating process can subscribe to the master process. If another kdb+ process attempts to replicate from the master, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
+Currently, only a single replicating process can subscribe to the primary process. If another kdb+ process attempts to replicate from the primary, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
 
 !!! tip "log4q"
 

@@ -114,7 +114,7 @@ This is the last release, where documentation included with the PyQ source. Star
 CI
 
 - gh-27, gh-29, gh-46 - BLD Travis CI configuration.
-- gh-39 - BLD Blacklist pytest 3.3.0.
+- gh-39 - BLD Denylist pytest 3.3.0.
 - gh-45 - BLD Send coverage results to Codecov
 
 ## [Version 4.1.2](https://pyq.readthedocs.io/en/pyq-4.1.2/)
@@ -204,7 +204,7 @@ CI
 - !513 – #904 Add Centos 7 x64 docker image to CI runs
 - !559 – BLD #935 Change default kdb+ version to 3.5.
 - !561 – TST #930 Test 64-bit installation on macOS.
-- !565 – BLD #938 Blacklist pytest 3.2.0, due to a bug.
+- !565 – BLD #938 Denylist pytest 3.2.0, due to a bug.
 - !570 – BLD Closes #940 Test using Python 2.7, 3.5 and 3.6; numpy 1.12 and 1.13.
 - !571 – BLD #867 Add setup option when we remove setuptools.
 - !531 – #909 Added ubuntu job to CI in develop branch

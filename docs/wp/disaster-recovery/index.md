@@ -671,8 +671,7 @@ setups.
 A basic example of these features could be using the replication to
 support CEP processes in syncing a table between primary and
 secondary. This process pair can be configured such that the secondary
-subscribes to the primary, and all state changes on the master
-(primary) are automatically replicated to the secondary. These changes
+subscribes to the primary, and all state changes on the primary are automatically replicated to the secondary. These changes
 are logged to disk as well, to allow for recovery in the event that
 the process fails.
 
