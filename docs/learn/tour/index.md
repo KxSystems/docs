@@ -20,7 +20,7 @@ Use it as a very fast start with kdb+, or for a quick overview of what it is lik
 
 !!! tip "Before you start"
 
-    [Download, install and launch q.](../install/index.md)
+    [Download, install and launch q.](../install.md)
     Experiment with the expressions as you read.
 
 Follow

@@ -1,14 +1,13 @@
 ---
-title: Installing kdb+ at DigitalOcean on Ubuntu – Learn – kdb+ and q documentation
+title: Installing kdb+ on Ubuntu at DigitalOcean | Learn | kdb+ and q documentation
 description: How to install kdb+ under Ubuntu at DigitalOcean
 author: Stephen Taylor
-keywords: digitalocean, install, kdb+, linux, q, ubuntu
 ---
-# :fontawesome-brands-digital-ocean: Installing on Ubuntu at DigitalOcean
+# :fontawesome-brands-digital-ocean: Installing kdb+ on Ubuntu at DigitalOcean
 
 
 
-In this scenario you install kdb+ on a [DigitalOcean](https://www.digitalocean.com/) ‘droplet’ (cloud server) running Ubuntu. 
+In this scenario you [install](../learn/install.md) kdb+ on a [DigitalOcean](https://www.digitalocean.com/) ‘droplet’ (cloud server) running Ubuntu. 
 Kdb+ tasks on the droplet will be able to offer services over the Net.
 
 You access and control the droplet via SSH and Bash.
@@ -25,7 +24,7 @@ This tutorial supposes you
 -   install 32-bit kdb+ on a 32-bit Ubuntu droplet, e.g. `16.04.5 x32`
 -   intend on the server to run one or more scripts, rather than interactive sessions
 
-To run 32-bit kdb+ on a 64-bit server, see the [notes for running 32-bit kdb+ on 64-bit Linux](linux.md#64-bit-or-32-bit).
+To run 32-bit kdb+ on a 64-bit server, see the [install notes](../learn/install.md#step-2-put-kdb-in-qhome).
 
 
 ## :fontawesome-solid-download: Download
@@ -134,5 +133,6 @@ boss@droplet:~$
 
 Set up a script to run as a service on your droplet:
 
-[How To Use Systemctl to Manage Systemd Services and Units](https://cloudsupport.digitalocean.com/s/#none|ka21N000000Cp7aQAC)
+:fontawesome-brands-digital-ocean:
+[How To Use Systemctl to Manage Systemd Services and Units](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units)
 

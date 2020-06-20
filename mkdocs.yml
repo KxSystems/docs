@@ -89,12 +89,7 @@ nav:
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
-    - Install:
-      - Begin here: learn/install/index.md
-      - Linux: learn/install/linux.md
-      - macOS: learn/install/macos.md
-      - Windows: learn/install/windows.md
-      - DigitalOcean: learn/install/digitalocean.md
+    - Install: learn/install.md
     - Licenses: learn/licensing.md
     - Mountain tour:
       - TLDR: learn/tour/tldr.md
@@ -584,6 +579,7 @@ nav:
     - Daemon: kb/daemon.md
     - Data-At-Rest Encryption: kb/dare.md
     - Deferred response: kb/deferred-response.md
+    - DigitalOcean: kb/digitalocean.md
     - FAQ: kb/faq.md
     - FAQ from k4 listbox: kb/faq-listbox.md
     - File compression: kb/file-compression.md
@@ -597,6 +593,7 @@ nav:
     - Load balancing: kb/load-balancing.md
     - Loading from large files: kb/loading-from-large-files.md
     - Logging: kb/logging.md
+    - Multiple versions: kb/versions.md
     - Multithreaded input: kb/multithreaded-input.md
     - Multithreaded primitives: kb/mt-primitives.md
     - Named pipes: kb/named-pipes.md

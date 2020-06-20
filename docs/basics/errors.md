@@ -89,7 +89,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
 <tr><td>PKCS5_PBKDF2_HMAC</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Library invocation failed</td> </tr>
 <tr><td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
-<tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install/linux.md#64-bit-or-32-bit).)</td> </tr>
+<tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install.md#step-2-put-kdb-in-qhome).)</td> </tr>
 <tr><td>Q7</td><td/><td>nyi op on file nested array</td></tr>
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](glossary.md#rank)</td> </tr> 
 <tr><td>rb</td> <td/> <td>Encountered a problem while doing a blocking read</td> </tr> 
@@ -206,7 +206,7 @@ which will cause a `'host` error.
 <td>k4.lic</td>
 <td>
 `k4.lic` file not found, check contents of environment variables 
-[`QHOME`../learn/install.md#installing-elsewhere) and 
+[`QHOME`../learn/install.md#step-2-put-kdb-in-qhome) and 
 [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
 </td>
 </tr>

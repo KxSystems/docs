@@ -20,7 +20,7 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 </div>
 <div>
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
-    Install](install/index.md "How to install kdb+")
+    Install](install.md "How to install kdb+")
 </div>
 <div>
     [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>

@@ -11,7 +11,7 @@ keywords: introduction, kdb+, q, tutorial
 
 Kdb+ is a powerful database that can be used for streaming, real-time and historical data. Q is the SQL-like, general-purpose programming language built on top of kdb+. It offers high-performance, in-database analytic capabilities.
 
-:fontawesome-regular-hand-point-right: [Get started](install/index.md) to download and install kdb+.
+:fontawesome-regular-hand-point-right: [Get started](install.md) to download and install kdb+.
 
 
 ## Launch q
