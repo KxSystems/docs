@@ -655,6 +655,8 @@ Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, i
 [`-w` command-line option](cmdline.md#-w-workspace).
 E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it.
 
+If the system tries to allocate more memory than allowed, it signals `-w abort` and terminates with exit code 1. 
+
 Specifying too large a number will fall back to the same behavior as `\w 0` or `\w 1`.
 
 ```q

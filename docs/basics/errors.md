@@ -51,8 +51,8 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>limit</td>
 <td class="nowrap">`0W#2`</td>
 <td>
-    Tried to generate a list longer than 2<sup>40</sup>-1 (2e+09 until V3.0), 
-    or serialized object is &gt; 1TB (2GB until V3.4), 
+    Tried to generate a list longer than <span class="nowrap">2<sup>40</sup>-1</span>, 
+    or serialized object is &gt; 1TB, 
     or `'type` if trying to serialize a nested object which has &gt; 2 billion elements,
     or :fontawesome-regular-hand-point-right: [Parse errors](#parse-errors)
 </td>
@@ -119,13 +119,13 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>utf8</td> <td/> <td>The websocket requires that text is UTF-8 encoded</td> </tr>
 <tr><td>value</td> <td/> <td>No value</td> </tr>
 <tr><td>vd1</td> <td/> <td>Attempted multithread update</td> </tr>
-<tr><td>view</td> <td/> <td>Trying to re-assign a [view](../learn/views.md) to something else</td> </tr>
+<tr><td>view</td> <td/> <td>Tried to re-assign a [view](../learn/views.md) to something else</td> </tr>
+<tr><td>-w abort</td> <td/> <td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) hit [`-w` limit](cmdline.md#-w-workspace) or [`\w` limit](syscmds.md#w-workspace)</td> </tr>
 <tr><td>-w init via cmd line</td> <td/> <td>Trying to allocate memory with [`\w`](syscmds.md#w-workspace) without `-w` on command line</td> </tr>
 <tr>
 <td>wsfull</td>
 <td class="nowrap">`999999999#0`</td>
-<td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, ran out of swap (or addressability on 32-bit), or hit [`-w` limit](cmdline.md#-w-workspace)
-</td>
+<td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, or ran out of swap (or addressability on 32-bit). The params also reported are intended to help Kx diagnose when assisting clients, and are subject to change.</td>
 </tr> 
 <tr><td>wsm</td> <td class="nowrap">`010b wsum 010b`</td> <td>Alias for nyi for `wsum` prior to V3.2</td> </tr>
 <tr><td>XXX</td> <td class="nowrap">`delete x from system "d";x`</td> <td>Value error (`XXX` undefined)</td> </tr>
