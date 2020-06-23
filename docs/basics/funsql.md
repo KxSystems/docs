@@ -131,15 +131,31 @@ _Limit result rows_
 
 Syntax: `?[t;c;b;a;n]`
 
-Returns as for rank 4, but where `n` is a non-negative integer or infinity, with a count no higher than `n`. 
+Returns as for rank 4, but where `n` is 
+
+-   a non-negative integer or infinity, only the first `n` rows
+-   a pair of non-negative integers, up to `n[1]` rows starting with row `n[0]`
 
 ```q
-q)t:([] c1:`a`b`c`a; c2:10 20 30 40)
+q)show t:([] c1:`a`b`c`a; c2:10 20 30 40)
+c1 c2
+-----
+a  10
+b  20
+c  30
+a  40
+
 q)?[t;();0b;();2]
 c1 c2
 -----
 a  10
 b  20
+
+q)?[t;();0b;();1 2]
+c1 c2
+-----
+b  20
+c  30
 ```
 
 
