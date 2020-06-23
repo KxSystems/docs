@@ -802,20 +802,28 @@ s4| clark 20     london
 
 Syntax: `.Q.fu[x;y]`
 
-Where
+Where `x` is a unary function and `y` is 
 
--   `x` is a unary atomic function
--   `y` is a list
-
-returns `x[y]` after evaluating `x` only on distinct items of `y`.
+-   a list, returns `x[y]` after evaluating `x` only on distinct items of `y`
+-   not a list, returns `x[y]`
 
 ```q
-q)n: 100000; vec: n ? 30 / long vectors with few different values
-q)f:{[x] exp (x*x)} / e raised to x*x
-q)\t y: f each vec / returns 270 (milliseconds)
-q)\t y2: .Q.fu[f] vec / returns 10 (milliseconds)
-q)y ~ y2 / returns 1b, the outputs are equal
+q)vec:100000 ? 30     / long vector with few different values
+q)f:{exp x*x}         / e raised to x*x
+q)\t:1000 r1:f vec
+745
+q)\t:1000 r2:.Q.fu[f;vec]
+271
+q)r1~r2
+1b
 ```
+
+!!! warning "Not suitable for all unary functions"
+
+    `.Q.fu` applies `x` to the distinct items of `y`. 
+    Where for any index `i`, the result of `x y i` depends on no other item of `y`, then `.Q.fu` works as intended. Where this is not so, the result is unlikely to be expected or useful. 
+
+    To explore this, study `.Q.fu[avg;] (4 3#12?100)10?4`.
 
 
 ## `.Q.gc` (garbage collect)
