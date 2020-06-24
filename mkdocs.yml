@@ -99,13 +99,13 @@ nav:
       - Tables: learn/tour/tables.md
       - CSVs: learn/tour/csvs.md
       - Datatypes: learn/tour/datatypes.md
-      - Dictionaries: learn/tour/dictionaries.md
-      - Queries: learn/tour/queries.md
-      - Functions: learn/tour/functions.md
-      - Iteration: learn/tour/iteration.md
-      - Files: learn/tour/files.md
-      - TCP/IP: learn/tour/tcp-ip.md
-      - HTTP, HTTPS: learn/tour/http.md
+      # - Dictionaries: learn/tour/dictionaries.md
+      # - Queries: learn/tour/queries.md
+      # - Functions: learn/tour/functions.md
+      # - Iteration: learn/tour/iteration.md
+      # - Files: learn/tour/files.md
+      # - TCP/IP: learn/tour/tcp-ip.md
+      # - HTTP, HTTPS: learn/tour/http.md
       - Scripts: learn/tour/scripts.md
       - IDE: learn/tour/ide.md
     - Q for quants: learn/brief-introduction.md

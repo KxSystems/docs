@@ -197,11 +197,11 @@ s1 p5 400
 ```
 
 In qSQL queries you can use q operators, keywords, and functions you define yourself. 
-
+<!-- 
 :fontawesome-regular-hand-point-right:
 [Functions](functions.md),
 [qSQL](queries.md)
-
+ -->
 
 
 ## Language
@@ -349,10 +349,10 @@ nail | 3.15
 bolt | 2.9925
 nut  | 0.55
 ```
-
+<!-- 
 :fontawesome-regular-hand-point-right:
 [Dictionaries](dictionaries.md)
-
+ -->
 A table is a list of dictionaries.
 
 ```q
@@ -386,7 +386,8 @@ s5 p3 159
 
 ### Functions
 
-[Function notation](functions.md) is simple.
+<!-- [Function notation](functions.md) is simple. -->
+Function notation is simple.
 A function can have up to eight arguments.
 Unless explicitly named, the first three arguments are assumed to be `x`, `y`, and `z`.
 
@@ -399,9 +400,10 @@ q)el["a";"href";"https://example.com/";"link text"]
 "<a href=\"https://example.com/\">link text</a>"
 ```
 
+<!-- 
 :fontawesome-regular-hand-point-right:
 [Functions](functions.md)
-
+ -->
 
 ### Iteration
 
@@ -439,9 +441,10 @@ q)8 {x,sum -2#x}\1 1                            / 10 Fibonacci numbers
 1 1 2 3 5 8 13 21 34 55
 ```
 
+<!-- 
 :fontawesome-regular-hand-point-right:
 [Iteration](iteration.md)
-
+ -->
 
 ## Communication
 
