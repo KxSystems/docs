@@ -1,6 +1,6 @@
 ---
 title: Cond – Reference – kdb+ and q documentation
-description: Cond is a q ternary operator that enables conditional evaluation.
+description: Cond is a q control construct for conditional evaluation.
 author: Stephen Taylor
 keywords: cond, conditional, control, dollar, kdb+, q
 ---
@@ -15,7 +15,7 @@ _Conditional evaluation_
 Syntax: `$[x;y;z]`
 
 
-Where `x` evaluates to zero, returns `z`, otherwise `y`.
+Where `x` evaluates to zero, returns `z`, otherwise `y`. 
 
 ```q
 q)$[0b;`true;`false]
@@ -25,6 +25,13 @@ q)$[1b;`true;`false]
 ```
 
 Only the first argument is certain to be evaluated.
+
+??? warning "Cond is a control-flow construct, not an operator."
+
+    Although it looks like a ternary (or variadic) operator and returns a result, Cond is a control-flow construct, not an operator. 
+
+    An operator evaluates all its arguments; not Cond.
+    An operator can be projected onto a subset of its arguments; not Cond.
 
 ```q
 q)$[1b;`true;x:`false]
@@ -56,6 +63,13 @@ q)    $[r;b;c]
 !!! warning "Cond is not supported inside [qSQL queries](../basics/qsql.md)."
 
     Instead, use [Vector Conditional](vector-conditional.md).
+
+
+## Left domain
+
+The domain of the first argument, `x`, is any integer-based type. 
+
+!!! warning "In future versions Cond may signal an error with non-integer types."
 
 
 ## Assigning a local variable within a code branch

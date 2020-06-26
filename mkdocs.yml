@@ -277,6 +277,7 @@ nav:
       - eval, reval: ref/eval.md
       - except: ref/except.md
       - exec: ref/exec.md
+      - exit: ref/exit.md
       - exp, xexp: ref/exp.md
       - fby: ref/fby.md
       - fills: ref/fill.md
@@ -371,7 +372,6 @@ nav:
       - Cast: ref/cast.md
       - Coalesce: ref/coalesce.md
       - Compose: ref/compose.md
-      - Cond: ref/cond.md
       - Cut: ref/cut.md
       - Deal, Roll, Permute: ref/deal.md
       - Delete: ref/delete.md
@@ -412,9 +412,9 @@ nav:
       - Tok: ref/tok.md
       - Update: ref/update.md
       - Vector Conditional: ref/vector-conditional.md
-    - Control words:
+    - Control constructs:
+      - Cond: ref/cond.md
       - do: ref/do.md
-      - exit: ref/exit.md
       - if: ref/if.md
       - while: ref/while.md
     - Namespaces:

@@ -47,10 +47,11 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <table markdown="1">
 <tr>
 <td class="kx-glyph">[`@`](overloads.md#at)<br>[`.`](overloads.md#dot)</td><td>[Apply](apply.md)<br>[Index](apply.md#index)<br>[Trap](apply.md#trap)<br>[Amend](amend.md)</td>
-<td class="kx-glyph">[`$`](overloads.md#dollar)</td><td>[Cond](cond.md)<br>[Cast](cast.md)<br>[Tok](tok.md)<br>[Enumerate](enumerate.md)<br>[Pad](pad.md)<br>[`mmu`](mmu.md)</td>
+<td class="kx-glyph">[`$`](overloads.md#dollar)</td><td>[Cast](cast.md)<br>[Tok](tok.md)<br>[Enumerate](enumerate.md)<br>[Pad](pad.md)<br>[`mmu`](mmu.md)</td>
 <td class="kx-glyph">[`!`](overloads.md#bang)</td><td>[Dict](dict.md)<br>[Enkey](enkey.md)<br>[Unkey](enkey.md#unkey)<br>[Enumeration](enumeration.md)<br>[Flip Splayed](flip-splayed.md)<br>[Display](display.md)<br>[internal](../basics/internal.md)<br>[Update](../basics/funsql.md#update)<br>[Delete](../basics/funsql.md#delete)</td>
 <td class="kx-glyph">[`?`](overloads.md#query)</td><td>[Find](find.md)<br>[Roll, Deal](deal.md)<br>[Enum Extend](enum-extend.md)<br>[Select](../basics/funsql.md#select)<br>[Exec](../basics/funsql.md#exec)<br>[Simple Exec](../basics/funsql.md#simple-exec)<br>[Vector Conditional](vector-conditional.md)</td>
 </tr>
+<tr>
 <td class="kx-glyph">`+`</td><td>[Add](add.md)</td>
 <td class="kx-glyph">`-`</td><td>[Subtract](subtract.md)</td>
 <td class="kx-glyph">`*`</td><td>[Multiply](multiply.md)</td>
@@ -64,13 +65,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </tr>
 <tr>
 <td class="kx-glyph">`|`</td> <td>[Greater, OR](greater.md)</td>
-<td class="kx-glyph">`&`</td> <td>[Lesser, AND](lesser.md)</td>
+<td class="kx-glyph">`&`</td> <td colspan="5">[Lesser, AND](lesser.md)</td>
 </tr>
 <tr>
 <td class="kx-glyph">[`#`](overloads.md#hash)</td><td>[Take](take.md)<br>[Set&nbsp;Attribute](set-attribute.md)</td>
 <td class="kx-glyph">[`_`](overloads.md#_-underscore)</td><td>[Cut](cut.md)<br>[Drop](drop.md)</td>
-<td class="kx-glyph">`^`</td><td>[Fill](fill.md)</td>
-<td class="kx-glyph">`,`</td><td>[Join](join.md)</td>
+<td class="kx-glyph">`^`<br>`,`</td><td>[Fill](fill.md)<br>[Join](join.md)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)</td><td>[Compose](compose.md)</td>
 </tr>
 </table>
 
@@ -80,28 +81,59 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 ## [Iterators](iterators.md)
 
-<table markdown="1">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+[maps](maps.md)                                                    [accumulators](accumulators.md)
+[`'`](overloads.md#quote)   [Each](maps.md#each), [`each`](each.md), [Case](maps.md#case)       `/:`  [Each Right](maps.md#each-left-and-each-right)              [`/`](overloads.md#slash)  [Over](accumulators.md), [`over`](over.md)
+[`':`](overloads.md#quote-colon)  [Each Parallel](maps.md#each-parallel), [`peach`](each.md#peach)   `\:`  [Each Left](maps.md#each-left-and-each-right)               [`\`](overloads/#backslash)  [Scan](accumulators.md), [`scan`](over.md)
+[`':`](overloads.md#quote-colon)  [Each Prior](maps.md##each-prior), [`prior`](prior.md)
+</pre>
+
+<!-- <table markdown="1">
 <thead>
 <tr><th colspan="2">accumulators</th><th colspan="2">maps</th><th colspan="2">maps</th><th colspan="2"/></tr>
 </thead>
 <tbody>
 <tr>
-<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](accumulators.md)</td>
+<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over](accumulators.md), [`over`](over.md)<br>[Scan](accumulators.md), [`scan`](scan.md)</td>
 <td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](maps.md#each-left-and-each-right)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each)<br>[Each&nbsp;Parallel](maps.md#each-parallel)<br>[Each Prior](maps.md##each-prior)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](maps.md#case)<br>[Compose](compose.md)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each), [`each`](each.md)<br>[Each&nbsp;Parallel](maps.md#each-parallel), [`peach`](each.md#peach)<br>[Each Prior](maps.md##each-prior), [`prior`](prior.md)</td>
 </tr>
 </tbody>
 </table>
+ -->
+
+## [Execution control](../basics/control.md)
+
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+[.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)         [\$[x;y;z] Cond](../ref/cond.md)
+[@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)
+</pre>
+
+:fontawesome-solid-book-open:
+[Debugging](../basics/debug.md)
 
 
 
 ## Other
 
-<table markdown="1">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+[`   pop stack](../basics/debug.md#debugging)        [:    assign](../basics/syntax.md#colon)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
+[.   push stack](../basics/debug.md#debugging)       ::   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
+[\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/files.md)      [2:  Dynamic Load](dynamic-load.md)
+[\\   abort](../basics/debug.md#abort)                 global amend   [_n, -n_  handle](../basics/files.md)
+\\\\  quit q                set view
+
+()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)     {}  [lambda](../basics/function-notation.md)         \`   symbol
+(;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)      ;   separator      \`:  filepath
+(\[\]..) [table](../basics/syntax.md#table-notation)
+</pre>
+
+
+
+<!-- <table markdown="1">
 <tr>
-<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>[`'`](overloads.md#quote)</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[Signal](signal.md)</td>
-<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon), [return](../basics/control.md#explicit-return)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
+<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>`` ` ``<br>`.`</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[pop stack<br>push stack](../basics/debug.md#debugging)</td>
+<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
 <td class="kx-glyph">`0`<br><span class="nowrap">`1`, `-1`</span><br>`2`, `-2`<br>_n_, _-n_</td><td>[console<br>stdout<br>stderr<br>handle](../basics/files.md)</td>
 <td class="kx-glyph"><span class="nowrap">`0:`</span><br>`1:`<br>`2:`</td><td>[File Text](file-text.md)<br>[File Binary](file-binary.md)<br>[Dynamic&nbsp;Load](dynamic-load.md)</td>
 </tr>
@@ -112,14 +144,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <td class="kx-glyph"><code>&#96;</code><br><code>&#96;:</code></td><td>symbol<br>filepath</td>
 </tr>
 </table>
-
+ -->
 <!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
 ## [Attributes](../basics/syntax.md#attributes)
 
-<pre markdown="1" class="language-txt" style="font-size: 90%">
-s  sorted     u  unique
-p  parted     g  grouped
+<pre markdown="1" class="language-txt">
+**g** grouped     **p**  parted     **s** sorted     **u** unique
 </pre>
 
 :fontawesome-solid-book:
@@ -149,7 +180,7 @@ p  parted     g  grouped
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
-<!-- 
+<!--
 <pre markdown="1" class="language-txt">
 [file](../basics/cmdline.md#file)
 [`\a`](../basics/syscmds.md#a-tables)       tables                                                       [`\r`](../basics/syscmds.md#r-rename)                                                       rename
