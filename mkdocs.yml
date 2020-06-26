@@ -95,7 +95,7 @@ nav:
       - TLDR: learn/tour/tldr.md
       - Begin here: learn/tour/index.md
       - The q session: learn/tour/session.md
-      - Databases: learn/tour/databases.md
+      # - Databases: learn/tour/databases.md
       - Tables: learn/tour/tables.md
       - CSVs: learn/tour/csvs.md
       - Datatypes: learn/tour/datatypes.md
