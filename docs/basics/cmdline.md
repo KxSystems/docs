@@ -17,7 +17,7 @@ q [[file](#file)] [-option [parameters] … ]
 Options:
  [-b blocked](#-b-blocked)                    [-q quiet mode](#-q-quiet-mode)
  [-c console size](#-c-console-size)               [-r replicate](#-r-replicate)
- [-C HTTP size](#-c-http-size)                  [-s slaves](#-s-slaves)
+ [-C HTTP size](#-c-http-size)                  [-s secondary threads](#-s-secondary-threads)
  [-e error traps](#-e-error-traps)                [-t timer ticks](#-t-timer-ticks)
  [-E TLS Server Mode](#-e-tls-server-mode)            [-T timeout](#-t-timeout)
  [-g garbage collection](#-g-garbage-collection)         [-u disable syscmds](#-u-disable-syscmds)
