@@ -3,7 +3,7 @@ title: Working with sym files – White Papers – kdb+ and q documentation
 description: In this white paper, we discuss what the sym file is, suggestions for table setup, the maintenance of the sym file and safety measures that can be taken to protect the sym file.
 author: Paula Clarke
 date: March 2019
-keywords: ksb+, q, sym, symfile
+keywords: kdb+, q, sym, symfile
 ---
 # Working with sym files
 
