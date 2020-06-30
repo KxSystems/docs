@@ -17,7 +17,7 @@ Where `x` is:
 -   a lower-case letter, symbol or positive short atom (or list of such atoms), returns `y` cast according to `x`. A table of `x` values for Cast:
 
     <pre><code class="language-q">
-    q)flip{(x;.Q.t x;key'[x\$\:()])}5h\$where" "<>20#.Q.t
+    q)flip{(x;.Q.t x;key'[x\$\\:()])}5h\$where" "<>20#.Q.t
     1h  "b" \`boolean
     2h  "g" \`guid
     4h  "x" \`byte
@@ -43,7 +43,7 @@ Where `x` is:
     <pre><code class="language-q">
     q)("\*";0h)\$1
     1 1
-    q)("\*";0h)\$\:"2012-02-02"
+    q)("\*";0h)\$\\:"2012-02-02"
     "2012-02-02"
     "2012-02-02"
     </code></pre>
