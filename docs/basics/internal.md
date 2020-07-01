@@ -11,20 +11,21 @@ keywords: bang, functions, internal, kdb+, q
 The operator `!` with a negative integer as left argument calls an internal function.
 
 <pre markdown="1" class="language-txt">
-[-4!x](#-4x-tokens)        tokens                  Replaced:
-[-8!x](#-8x-to-bytes)        to bytes                 -1!   [hsym](../ref/hsym.md)
-[-9!x](#-9x-from-bytes)        from bytes               -2!   [attr](../ref/attr.md)
-[-10!x](#-10x-type-enum)       type enum                -3!   [.Q.s1](../ref/dotq.md#qs1-string-representation)
-[-11!](#-11-streaming-execute)        streaming execute        -5!   [parse](../ref/parse.md)
-[-14!x](#-14x-quote-escape)       quote escape             -6!   [eval](../ref/eval.md)
-[-16!x](#-16x-ref-count)       ref count                -7!   [hcount](../ref/hcount.md)
-[-18!x](#-18x-compress-byte)       compress byte            -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
-[-19!](#-19-compress-file)        compress file            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
-[-21!x](#-21x-compression-stats)       compression stats        -15!  [md5](../ref/md5.md)
-[-22!x](#-22x-uncompressed-length)       uncompressed length      -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
-[-23!x](#-23x-memory-map)       memory map               -24!  [reval](../ref/eval.md#reval)
-[-25!x](#-25x-async-broadcast)       async broadcast          -29!  [.j.k](../ref/dotj.md#jk-deserialize)
-[-26!x](#-26x-ssl)       SSL                      -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[0N!x](#0nx-show)        show                   Replaced:
+[-4!x](#-4x-tokens)        tokens                   -1!   [hsym](../ref/hsym.md)
+[-8!x](#-8x-to-bytes)        to bytes                 -2!   [attr](../ref/attr.md)
+[-9!x](#-9x-from-bytes)        from bytes               -3!   [.Q.s1](../ref/dotq.md#qs1-string-representation)
+[-10!x](#-10x-type-enum)       type enum                -5!   [parse](../ref/parse.md)
+[-11!](#-11-streaming-execute)        streaming execute        -6!   [eval](../ref/eval.md)
+[-14!x](#-14x-quote-escape)       quote escape             -7!   [hcount](../ref/hcount.md)
+[-16!x](#-16x-ref-count)       ref count                -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
+[-18!x](#-18x-compress-byte)       compress byte            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
+[-19!](#-19-compress-file)        compress file            -15!  [md5](../ref/md5.md)
+[-21!x](#-21x-compression-stats)       compression stats        -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
+[-22!x](#-22x-uncompressed-length)       uncompressed length      -24!  [reval](../ref/eval.md#reval)
+[-23!x](#-23x-memory-map)       memory map               -29!  [.j.k](../ref/dotj.md#jk-deserialize)
+[-25!x](#-25x-async-broadcast)       async broadcast          -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[-26!x](#-26x-ssl)       SSL                      
 [-27!(x;y)](#-27xy-format)   format
 [-30!x](#-30x-deferred-response)       deferred response
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash
@@ -45,6 +46,14 @@ The operator `!` with a negative integer as left argument calls an internal func
 
 [![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)
 _xkcd.com_
+
+
+## `0N!x` (show)
+
+The identity function. 
+Returns `x` after writing it to the console. 
+
+An essential tool for debugging.
 
 
 ## `-4!x` (tokens)

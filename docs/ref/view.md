@@ -1,5 +1,5 @@
 ---
-title: view, views – Reference – kdb+ and q documentation
+title: view, views | Reference | kdb+ and q documentation
 description: view and views are q keywords. view returns the expression defining a view. views lists views defined in the default namespace. 
 author: Stephen Taylor
 keywords: kdb+, metadata, q, view, views
@@ -45,6 +45,12 @@ q)views[]
 ```
 
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Metadata](../basics/metadata.md)  
-Tutorials: [Views](../learn/views.md)
+:fontawesome-solid-book-open:
+[Metadata](../basics/metadata.md) 
+<br>
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§4.11 Alias](/q4m3/4_Operators/#411-alias)

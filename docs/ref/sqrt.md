@@ -11,15 +11,27 @@ keywords: kdb+, math, mathematics, q, root, square root
 
 _Square root_
 
-Syntax: `sqrt[x]` (prefix, unary, atomic)
+Syntax: `sqrt x`, `sqrt[x]`
 
-Returns the square root of numeric `x`. Where `x` is negative or null, the result is null.
+Returns as a float where `x` is numeric and
+
+-   non-negative, the square root of `x`
+-   negative or null, null
+-   real or float infinity, `0w`
+-   any other infinity, the square root of the largest value for the datatype
 
 ```q
 q)sqrt -1 0n 0 25 50
 0n 0n 0 5 7.071068
+
+q)sqrt 12:00:00.000000000
+6572671f
+
+q)sqrt 0Wh
+181.0166
 ```
 
+An atomic function.
 
 ## Domain and range
 ```txt
@@ -29,9 +41,11 @@ range  f . f f f f f f f . f f f z f f f f
 
 Range: `fz`
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book: 
 [`exp`](exp.md), 
 [`log`](log.md), 
 [`xexp`](exp.md#xexp), 
-[`xlog`](log.md#xlog)  
-Basics: [Mathematics](../basics/math.md)
+[`xlog`](log.md#xlog) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)

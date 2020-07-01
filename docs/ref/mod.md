@@ -1,5 +1,5 @@
 ---
-title: mod – Reference – kdb+ and q documentation
+title: mod | Reference | kdb+ and q documentation
 description: mod is a q keyword that returns the modulus of a number.
 author: Stephen Taylor
 keywords: kdb+, math, mathematics, modulus, q
@@ -16,6 +16,13 @@ Where `x` and `y` are numeric, returns the remainder of `x%y`.
 ```q
 q)-3 -2 -1 0 1 2 3 4 mod 3
 0 1 2 0 1 2 0 1
+
+q)7 mod 2 3 4
+1 1 3
+
+q)-7 7 mod/:\:-2.5 -2 2 2.5
+-2   -1 1 0.5
+-0.5 -1 1 2
 ```
 
 `mod` is an atomic function.
@@ -48,5 +55,11 @@ t  | t . t t t t t f t . . . . . . . . .
 
 Range: `ijefpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Mathematics](../basics/math.md)
+:fontawesome-solid-book: 
+[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](/q4m3/4_Operators/#481-integer-division-div-and-modulus-mod)

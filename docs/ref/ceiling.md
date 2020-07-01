@@ -1,5 +1,5 @@
 ---
-title: ceiling – Reference – kdb+ and q documentation
+title: ceiling | Reference | kdb+ and q documentation
 description: ceiling is a q keyword that returns the least integer greater than its numeric argument.
 keywords: ceiling, floor, kdb+, math, mathematics, q
 ---
@@ -50,13 +50,13 @@ q)"d"$23:59:59.999+ 2010.05.13T12:30:59.999
 
 ```txt
 domain b g x h i j e f c s p m d z n u v t
-range  i . i . i j j j i . . . . . . . . .
+range  i . i h i j j j i . . . . . . . . .
 ```
-Range: `ij`
+Range: `hij`
 
 
-:fontawesome-regular-hand-point-right: 
-[`floor`](floor.md)  
-Basics: [Mathematics](../basics/math.md)
-
-
+:fontawesome-solid-book: 
+[`floor`](floor.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)

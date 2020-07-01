@@ -1,6 +1,6 @@
 ---
-title: Subtract – Reference – kdb+ and q documentation
-description: Subtract is a q operator that returns the difference of its arguments.
+title: Subtract | Reference | kdb+ and q documentation
+description: Subtract is a q operator that returns the difference of its arguments for a wide range of datatypes.
 author: Stephen Taylor
 keywords: difference, kdb+, math, mathematics, minus, subtract
 ---
@@ -15,11 +15,12 @@ Where `x` and `y` are numerics or temporals, returns their difference/s.
 ```q
 q)3 4 5-2
 1 2 3
+
 q)2000.11.22 - 03:44:55.666
 2000.11.21D20:15:04.334000000
 ```
 
-Subtract is an atomic function.
+An atomic function.
 
 [Add](add.md) is generally faster than Subtract.
 <!-- FIXME Examples with dictionaries and tables -->
@@ -54,9 +55,24 @@ Range: `ijefpmdznuvt`
 
 :fontawesome-regular-hand-point-right: 
 [Add](add.md), 
-[`differ`](differ.md)  
 .Q: [`.Q.addmonths`](dotq.md#qaddmonths)  
 Basics: [Datatypes](../basics/datatypes.md), 
+
+:fontawesome-solid-book: 
+[Add](add.md), 
+[`deltas`](deltas.md),
+[`differ`](differ.md),
+[`.Q.addmonths`](dotq.md#qaddmonths) 
+<br>
+:fontawesome-solid-book-open:
+[Datatypes](../basics/datatypes.md),
 [Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[How to handle temporal data in q](../kb/temporal-data.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)
 
 

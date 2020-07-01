@@ -756,7 +756,7 @@ A source of messages.
 
 Most binary operators have unary forms that take a single argument. Q provides more legible covers for these functions.  
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open:
 [Exposed infrastructure](exposed-infrastructure.md)
 
 
@@ -769,8 +769,16 @@ A value of rank 1, i.e. a function with 1 argument, or a list of depth ≥1.
 
 See **Iterator**.
 
-:fontawesome-regular-hand-point-right:
-Reference: [Iterators](../ref/iterators.md)
+:fontawesome-solid-book:
+[Iterators](../ref/iterators.md)
+
+
+## Underlying value
+
+Temporal and text data values are represented internally by numbers known as their _underlying value_. Comparisons – even between types – work on these underlying values. 
+
+:fontawesome-solid-book-open:
+[Comparisons](comparison.md)
 
 
 ## Uniform function 

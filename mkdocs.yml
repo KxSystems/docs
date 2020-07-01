@@ -364,8 +364,8 @@ nav:
       - xbar: ref/xbar.md
       - xgroup: ref/xgroup.md
       - xrank: ref/xrank.md
+    - Overloaded glyphs: ref/overloads.md
     - Operators:
-      - Overloaded glyphs: ref/overloads.md
       - Add: ref/add.md
       - Amend: ref/amend.md
       - Apply, Index, Trap: ref/apply.md

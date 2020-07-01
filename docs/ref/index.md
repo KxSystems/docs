@@ -76,7 +76,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </table>
 
 :fontawesome-solid-book:
-[Overloaded operator glyphs](overloads.md)
+[Overloaded glyphs](overloads.md)
 
 
 ## [Iterators](iterators.md)
@@ -117,11 +117,11 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Other
 
 <pre markdown="1" class="language-txt" style="font-size: 80%">
-[`   pop stack](../basics/debug.md#debugging)        [:    assign](../basics/syntax.md#colon)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
-[.   push stack](../basics/debug.md#debugging)       ::   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
+[`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../basics/syntax.md#colon)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
+[.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)       [::](overloads.md#colon-colon)   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
 [\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/files.md)      [2:  Dynamic Load](dynamic-load.md)
-[\\   abort](../basics/debug.md#abort)                 global amend   [_n, -n_  handle](../basics/files.md)
-\\\\  quit q                set view
+[\\   abort](../basics/debug.md#abort)                 [global amend](../basics/function-notation.md#name-scope)   [_n, -n_  handle](../basics/files.md)
+\\\\  quit q                [set view](../learn/views.md)
 
 ()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)     {}  [lambda](../basics/function-notation.md)         \`   symbol
 (;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)      ;   separator      \`:  filepath
@@ -316,31 +316,31 @@ milliseconds: time mod 1000
 Markup output for HTTP
 
 <pre markdown="1" class="language-txt" style="font-size: 80%">
-[`.h.br`](doth.md#hbr-linebreak)      linebreak                [`.h.cd`](doth.md#hcd-csv-from-data)      CSV from data
-[`.h.code`](doth.md#hcode-code-after-tab)    code after Tab           [`.h.d`](doth.md#hd-delimiter)       delimiter
-[`.h.fram`](doth.md#hfram-frame)    frame                    [`.h.ed`](doth.md#hed-excel-from-data)      Excel from data
-[`.h.ha`](doth.md#hha-anchor)      anchor                   [`.h.edsn`](doth.md#hedsn-excel-from-tables)    Excel from tables
-[`.h.hb`](doth.md#hhb-anchor-target)      anchor target            [`.h.hc`](doth.md#hhc-escape-lt)      escape lt
-[`.h.ht`](doth.md#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](doth.md#hhr-horizontal-rule)      horizontal rule
-[`.h.hta`](doth.md#hhta-start-tag)     start tag                [`.h.iso8601`](doth.md#hiso8601-iso-timestamp) ISO timestamp
-[`.h.htac`](doth.md#hhtac-element)    element                  [`.h.jx`](doth.md#hjx-table)      table
-[`.h.htc`](doth.md#hhtc-element)     element                  [`.h.td`](doth.md#htd-tsv-from-data)      TSV from data
-[`.h.html`](doth.md#hhtml-document)    document                 [`.h.tx`](doth.md#htx-filetypes)      filetypes
-[`.h.http`](doth.md#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](doth.md#hxd-xml)      XML
-[`.h.nbr`](doth.md#hnbr-no-break)     no break                 [`.h.xs`](doth.md#hxs-xml-escape)      XML escape
-[`.h.pre`](doth.md#hpre-pre)     pre                      [`.h.xt`](doth.md#hxt-json)      JSON
-[`.h.text`](doth.md#htext-paragraphs)    paragraphs
-[`.h.xmp`](doth.md#hxmp-xmp)     XMP
+[.h.br](doth.md#hbr-linebreak)      linebreak                [.h.cd](doth.md#hcd-csv-from-data)      CSV from data
+[.h.code](doth.md#hcode-code-after-tab)    code after Tab           [.h.d](doth.md#hd-delimiter)       delimiter
+[.h.fram](doth.md#hfram-frame)    frame                    [.h.ed](doth.md#hed-excel-from-data)      Excel from data
+[.h.ha](doth.md#hha-anchor)      anchor                   [.h.edsn](doth.md#hedsn-excel-from-tables)    Excel from tables
+[.h.hb](doth.md#hhb-anchor-target)      anchor target            [.h.hc](doth.md#hhc-escape-lt)      escape lt
+[.h.ht](doth.md#hht-marqdown-to-html)      Marqdown to HTML         [.h.hr](doth.md#hhr-horizontal-rule)      horizontal rule
+[.h.hta](doth.md#hhta-start-tag)     start tag                [.h.iso8601](doth.md#hiso8601-iso-timestamp) ISO timestamp
+[.h.htac](doth.md#hhtac-element)    element                  [.h.jx](doth.md#hjx-table)      table
+[.h.htc](doth.md#hhtc-element)     element                  [.h.td](doth.md#htd-tsv-from-data)      TSV from data
+[.h.html](doth.md#hhtml-document)    document                 [.h.tx](doth.md#htx-filetypes)      filetypes
+[.h.http](doth.md#hhttp-hyperlinks)    hyperlinks               [.h.xd](doth.md#hxd-xml)      XML
+[.h.nbr](doth.md#hnbr-no-break)     no break                 [.h.xs](doth.md#hxs-xml-escape)      XML escape
+[.h.pre](doth.md#hpre-pre)     pre                      [.h.xt](doth.md#hxt-json)      JSON
+[.h.text](doth.md#htext-paragraphs)    paragraphs
+[.h.xmp](doth.md#hxmp-xmp)     XMP
 
-[`.h.he`](doth.md#hhe-http-400)      HTTP 400                 [`.h.c0`](doth.md#hc0-web-color)    web color
-[`.h.hn`](doth.md#hhn-http-response)      HTTP response            [`.h.c1`](doth.md#hc1-web-color)    web color
-[`.h.hp`](doth.md#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](doth.md#hhome-webserver-root)  webserver root
-[`.h.hy`](doth.md#hhy-http-response-content)      HTTP response content    [`.h.logo`](doth.md#hlogo-kx-logo)  Kx logo
-                                    [`.h.sa`](doth.md#hsa-anchor-style)    anchor style
-[`.h.hu`](doth.md#hhu-uri-escape)      URI escape               [`.h.sb`](doth.md#hsb-body-style)    body style
-[`.h.hug`](doth.md#hhug-uri-map)     URI map                  [`.h.ty`](doth.md#hty-mime-types)    MIME types
-[`.h.sc`](doth.md#hsc-uri-safe)      URI-safe                 [`.h.val`](doth.md#hval-value)   value
-[`.h.uh`](doth.md#huh-uri-unescape)      URI unescape
+[.h.he](doth.md#hhe-http-400)      HTTP 400                 [.h.c0](doth.md#hc0-web-color)    web color
+[.h.hn](doth.md#hhn-http-response)      HTTP response            [.h.c1](doth.md#hc1-web-color)    web color
+[.h.hp](doth.md#hhp-http-response-pre)      HTTP response pre        [.h.HOME](doth.md#hhome-webserver-root)  webserver root
+[.h.hy](doth.md#hhy-http-response-content)      HTTP response content    [.h.logo](doth.md#hlogo-kx-logo)  Kx logo
+                                    [.h.sa](doth.md#hsa-anchor-style)    anchor style
+[.h.hu](doth.md#hhu-uri-escape)      URI escape               [.h.sb](doth.md#hsb-body-style)    body style
+[.h.hug](doth.md#hhug-uri-map)     URI map                  [.h.ty](doth.md#hty-mime-types)    MIME types
+[.h.sc](doth.md#hsc-uri-safe)      URI-safe                 [.h.val](doth.md#hval-value)   value
+[.h.uh](doth.md#huh-uri-unescape)      URI unescape
 </pre>
 
 

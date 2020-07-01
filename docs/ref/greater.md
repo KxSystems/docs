@@ -1,5 +1,5 @@
 ---
-title: Greater, or – Reference – kdb+ and q documentation
+title: Greater, or | Reference | kdb+ and q documentation
 description: Greater is a q operator that returns the greater of its arguments. or is a q keyword that performs a logical OR. 
 author: Stephen Taylor
 keywords: greater, kdb+, logic, maximum, or, q
@@ -14,7 +14,7 @@ _Greater, logical OR_
 Syntax: `x|y`, `|[x;y]`  
 Syntax: `x or y`, `or[x;y]` 
 
-Returns the greater of boolean, numeric, character, or temporal `x` and `y`. 
+Returns the [greater](../basics/comparison.md) of boolean, numeric, character, or temporal `x` and `y`. 
 
 ```q
 q)2|3
@@ -25,7 +25,12 @@ q)"sat"|"cow"
 "sow"
 ```
 
-Where `x` and `y` are a pair of dictionaries or keyed tables their maximum is equivalent to upserting `y` into `x` where the values of `y` exceed those in `x`.
+Greater and `or` are atomic functions. 
+
+
+## Dictionaries and keyed tables
+
+Where `x` and `y` are a pair of dictionaries or keyed tables the result is equivalent to upserting `y` into `x` where the values of `y` exceed those in `x`.
 
 ```q
 q)show a:([sym:`ibm`msoft`appl`goog]t:2017.05 2017.09 2015.03 2017.11m)
@@ -50,7 +55,17 @@ appl | 2015.03
 goog | 2017.12
 ```
 
-Greater and `or` are atomic functions. 
+
+## Mixed types
+
+Where `x` and `y` are of different types the greater of their underlying values is returned as the higher of the two types.
+
+```q
+q)98|"a"
+"b"
+```
+
+
 
 
 ## Domain and range
@@ -80,7 +95,13 @@ t| t . t t t t t t t . t . . t n t t t
 
 Range: `bxhijefcpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
-[`&` and Lesser](lesser.md), [`max`](max.md), [`min`](min.md)  
-Basics: [Comparison](../basics/comparison.md),
+:fontawesome-solid-book: 
+[`&` and Lesser](lesser.md), [`max`](max.md), [`min`](min.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Comparison](../basics/comparison.md),
 [Logic](../basics/logic.md)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser-amp)

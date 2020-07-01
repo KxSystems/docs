@@ -1,5 +1,5 @@
 ---
-title: Syntax – Basics – kdb+ and q documentation
+title: Syntax | Basics | kdb+ and q documentation
 description: Syntax of the q programming language
 author: Stephen Taylor
 keywords: attribute, bracket, colon, comment, composition, compound, conditional, control, empty, function, infix, iterators, kdb+, multiline, name, namespace, operator, parenthesis, precedence, prefix, projection, postfix, q, space, syntax, token, vector
@@ -89,7 +89,7 @@ Temporal constants
     00:00:00.000         / time    
     </code></pre>
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open: 
 [Datatypes](datatypes.md)
 
 Character constants
@@ -223,8 +223,11 @@ bob   SFO | 51
 alice SFO | 44
 ```
 
-:fontawesome-regular-hand-point-right:
-[`!` Key](dictsandtables.md#key)
+:fontawesome-solid-book: 
+[`!` Key](../ref/key.md)
+<br>
+:fontawesome-solid-book-open: 
+[Dictionaries and tables](dictsandtables.md)
 
 
 ## Attributes
@@ -232,8 +235,8 @@ alice SFO | 44
 Attributes are metadata that apply to lists of special form. 
 They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
 
-:fontawesome-regular-hand-point-right: 
-Reference: [Set Attribute](../ref/set-attribute.md), 
+:fontawesome-solid-book: 
+[Set Attribute](../ref/set-attribute.md), 
 [Step dictionaries](../ref/apply.md#step-dictionaries)
 
 <!-- 
@@ -281,9 +284,7 @@ Operators can also be evaluated with bracket notation. For example, `+[a;b]`mean
 
 Bracket pairs with nothing between them also have meaning; `m[]` selects all items of a list `m` and `f[]` evaluates the no-argument function `f`. 
 
-!!! tip 
-
-    The similarity of index and argument notation is not accidental.
+!!! tip "The similarity of index and argument notation is not accidental."
 
 
 ## Conditional evaluation and control statements
@@ -312,7 +313,7 @@ The first expression in a function expression can be a _signature_: an argument 
 
 Within a script, a function may be defined across [multiple lines](#multi-line-expressions).
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open: 
 [Function notation](function-notation.md)
 
 
@@ -337,8 +338,10 @@ q)"abcdef" 1 0 3
 "bad"
 ```
 
-:fontawesome-regular-hand-point-right: 
-[Application](application.md),
+:fontawesome-solid-book-open: 
+[Application](application.md)
+<br>
+:fontawesome-solid-book: 
 [Iterators](../ref/iterators.md)
 
 
@@ -348,10 +351,9 @@ An iterator applied to an [applicable value](glossary.md#applicable-value) deriv
 
 If the iterator is applied postfix, as it almost always is, the derived function has infix syntax.
 
-!!! warning "Holds for all ranks"
+!!! warning "This rule holds **regardless of the rank** of the derived function"
 
-    This rule holds **regardless of the rank** of the derived function.
-    For example, `count'` is unary but has infix syntax. 
+    For example, counterintuitively, `count'` is unary but has infix syntax. 
 
 A common consequence is that many derived functions must be parenthesized to be applied postfix. (See below.)
 
@@ -438,22 +440,48 @@ An empty expression occurs in a compound expression wherever the place of an ind
 
 ## Colon
 
-The colon has several uses. The principal use is denoting assignment. It can appear with a name to its left and a noun to its right, or a name followed by an index expression to its left and a noun to its right, as in `x:y` and x`[i]:y`. The former assigns the value of `y` to `x`; the latter to `x` at indexes `i`.
+### Simple assignment
 
-The colon can also have a primitive operator immediately to its left, with a name (or name and index expression) to the left of that, as in `x+:y `and `x[i],:y`. This is known as assignment _through_ the operator. For operator `f`, the expressions `x f:y` and `x:x f y` are equivalent.
+A colon can appear with a name to its left and a noun to its right, or a name followed by an index expression to its left and a noun to its right, as in `x:y` and `x[i]:y`. The former assigns the value of `y` to `x`; the latter to `x` at indexes `i`.
+
+The colon can also have a binary operator immediately to its left, with a name (or name and index expression) to the left of that, as in `x+:y `and `x[i],:y`. This is known as assignment _through_ the operator. For operator `f`, the expressions `x f:y` and `x:x f y` are equivalent.
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§4.6.2 Simple q Amend](/q4m3/4_Operators/#462-simple-q-amend)
+<br>
+:fontawesome-solid-book:
+[Amend, Amend At](../ref/amend.md)
+
+
+### Explicit return
+
+Within a lambda (function definition) a colon followed by a value terminates evaluation of the function, and the value is returned as its result. 
+
+The [explicit return](function-notation.md#explicit-return) is a common form when detecting edge cases, e.g.
+
+```q
+...
+if[type[x]<0; :x];  / if atom, return it
+...
+```
+
+
+### Colons in names
+
+The functions associated with I/O and [interprocess communication](ipc.md) are denoted by a colon following a digit, as in `0:` and `1:`.
+
+The q operators are all binary functions.
+They inherit unary forms from k, denoted by a colon suffix, e.g. (`#:`).
+Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary-forms). 
+
+
+## Colon colon
 
 A pair of colons with a name to its left and an expression on the right
 
 -   within a function expression, denotes global assignment, that is, assignment to a global name (`{… ; x::3 ; …}`)
 -   outside a function expression, defines a [view](../learn/views.md)
-
-The functions associated with I/O and [interprocess communication](ipc.md) are denoted by a colon following a digit, as in `0:` and `1:`.
-
-A colon used as a unary in a function expression, as in `:r` , means return from the function with the result `r`.
-
-The q operators are all binary functions.
-They inherit unary forms from k, denoted by a colon suffix, e.g. (`#:`).
-Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary-forms). 
 
 
 ## Iterators
@@ -483,7 +511,7 @@ q)16 + 1 2 3 4      / sum the list with starting value 16
 
 Any notation for a derived function without its arguments (e.g. `+/`) denotes a constant function atom. 
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open: 
 [Application](application.md) for how to apply iterators
 
 
