@@ -404,7 +404,7 @@ q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
 
 ### Over
 
-The function Over derives from a non-unary value is an aggregate: it reduces lists and dictionaries to atoms.
+The function that Over derives from a non-unary value is an aggregate: it reduces lists and dictionaries to atoms.
 
 For empty right argument/s the atom result depends on the value and, if the derived function is variadic, on how it is applied.
 
@@ -453,3 +453,6 @@ q){x+y*z}/[`foo;mt;mt]
 `foo
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.7.6 Over (/) for Accumulation](/q4m3/6_Functions/#676-over-for-accumulation)

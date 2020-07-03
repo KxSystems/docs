@@ -552,6 +552,9 @@ A derived function is _composed_ by any string of iterators with an applicable v
 
 If the left argument of an operator is present but the right argument is not, the argument and operator symbol together denote a _projection_. For example, `3 +` denotes the unary function “3 plus”, which in the expression `(3 +) 4` is applied to 4 to give 7.
 
+:fontawesome-solid-book-open:
+[Application and projection](application.md#projection)
+
 
 ## Precedence and order of evaluation
 

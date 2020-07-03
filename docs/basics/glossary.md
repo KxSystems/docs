@@ -67,7 +67,7 @@ A single instance of a [datatype](datatypes.md), eg `42`, `"a"`, `1b`, `2012.09.
 
 An atomic function is a uniform function such that for `r:f[x]`  `r[i]~f x[i]` is true for all `i`, e.g. `signum`. A function `f` is atomic if `f` is identical to `f'`. 
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book-open:
 [Atomic functions](atomic.md)
 
 

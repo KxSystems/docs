@@ -63,6 +63,9 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 1005000 1000000 1007000
 ```
 
+!!! warning "Each is redundant with [atomic functions](../basics/atomic.md). (Common qbie mistake.)"
+
+
 ### `each` keyword
 
 The mnemonic keyword [`each`](each.md) can be used to apply a unary value without parentheses or brackets.
@@ -258,6 +261,10 @@ If the derived function is applied as a unary, and the value is not an operator 
 q){x+2*y}':[2 3 4]
 0N 7 10
 ```
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.7.9 Each Prior](/q4m3/6_Functions/#679-each-prior)
 
 
 ### `prior` keyword
