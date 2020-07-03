@@ -44,6 +44,10 @@ a    b
 ,"3" "aapl"
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.3.1 Data to Strings](/q4m3/7_Transforming_Data/#731-data-to-strings)
+
 
 ## Domain and range 
 

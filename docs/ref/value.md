@@ -1,8 +1,7 @@
 ---
-title: value – Reference – kdb+ and q documentation
+title: value | Reference | kdb+ and q documentation
 description: value is a q keyword that returns the value of a named variable, or metadata.
 author: Stephen Taylor
-keywords: kdb+, metadata, q, value,
 ---
 <div style="float: right">
 <i class="fas fa-wrench fa-5x"></i>
@@ -209,6 +208,8 @@ q)b
 'b
 q).a.b
 2
+q)parse "{x*x}"
+{x*x}
 ```
 
 

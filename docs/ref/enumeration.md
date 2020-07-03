@@ -27,11 +27,15 @@ q)`x!1 2 3
 ```
 
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book: 
 [Enum Extend](enum-extend.md),
-[Enumeration](enumeration.md)  
-[`!` bang](overloads.md#bang)  
-Basics: [Enumerations](../basics/enumerations.md)  
-_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)
-
+[Enumeration](enumeration.md), 
+[`!` bang](overloads.md#bang) 
+<br>
+:fontawesome-solid-book-open: 
+[Enumerations](../basics/enumerations.md) 
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
 

@@ -47,9 +47,7 @@ time     | -19   T
 For positive short or lower-case letter values of `x`, see [Cast](cast.md).
 
 
-!!! Tip "String to symbol"
-
-    Use `` `$y`` as shorthand for `"S"$y`.
+!!! tip Use "`` `$y`` as shorthand for `"S"$y`"
 
     <pre><code class="language-q">
     q)"S"\$"hello"
@@ -79,7 +77,7 @@ q)"NT"$\:"123456123987654"  / since V3.4
 12:34:56.123
 ```
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book:
 [`.Q.addr`](dotq.md#qaddr-ip-address),
 [`.Q.host`](dotq.md#qhost-hostname)
 
@@ -138,11 +136,16 @@ yyyy/[mm|MMM]/dd
 dd/[mm|MMM]/[yy]yy  / \z 1
 ```
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book:
 [Cast](cast.md), 
 [`$` dollar](overloads.md#dollar),
-[`.h.iso8601`](doth.md#hiso8601-iso-timestamp)<br>
-Basics: 
+[`.h.iso8601`](doth.md#hiso8601-iso-timestamp)
+<br>
+:fontawesome-solid-book-open:
 [system command `\z` (date format)](../basics/syscmds.md#z-date-parsing),
-[Casting](../basics/casting.md)  
+[Casting](../basics/casting.md) 
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.3.3 Parsing Data from Strings](/q4m3/7_Transforming_Data/#733-parsing-data-from-strings)  
 
