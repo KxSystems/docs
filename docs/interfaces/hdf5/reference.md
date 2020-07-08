@@ -6,9 +6,10 @@ date: March 2020
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: HDF5, kdb+, file-format, 
 ---
-# :fontawesome-solid-share-alt: Function reference 
+# Function reference 
 
-:fontawesome-brands-github: [KxSystems/hdf5-kdb](https://github.com/KxSystems/hdf5-kdb)
+:fontawesome-brands-github: 
+[KxSystems/hdf5-kdb](https://github.com/KxSystems/hdf5-kdb)
 
 The kdb+/HDF5 interface is a wrapper for kdb+ around the [HDF Groups C API](https://support.hdfgroup.org/HDF5/doc/RM/RM_H5Front.html). 
 

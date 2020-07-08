@@ -6,7 +6,7 @@ date: April 2020
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: solace, interface, fusion , q
 ---
-# :fontawesome-solid-share-alt: Solace function reference
+# Solace function reference
 
 :fontawesome-brands-github:
 [KxSystems/solace](https://github.com/KxSystems/solace)

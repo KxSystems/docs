@@ -1,16 +1,15 @@
 ---
-title: User Guide | MQTT | Interfaces | Documentation for kdb+ and q
+title: Function reference | MQTT | Interfaces | Documentation for kdb+ and q
 keywords: mqtt, api, consumer, fusion, interface, broker, message, library, telemetry, producer, q
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
-# :fontawesome-solid-share-alt: Function reference
+# MQTT function reference
 
 :fontawesome-brands-github: 
 [KxSystems/mqtt](https://github.com/KxSystems/mqtt)
 <br>
 :fontawesome-solid-globe:
 [MQTT manual](https://mosquitto.org/man/mqtt-7.html)
-
 
 The following functions are exposed in the `.mqtt` namespace.
 They allow you to interact with MQTT brokers and send and receive messages.

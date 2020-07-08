@@ -3,7 +3,7 @@ title: Interface example | MQTT | Interfaces | Documentation for kdb+ and q
 keywords: mqtt, api, consumer, fusion, interface, broker, message, library, telemetry, producer, q
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
-# :fontawesome-solid-share-alt: MQTT interface example
+# MQTT interface example
 
 :fontawesome-brands-github:
 [KxSystems/mqtt](https://github.com/KxSystems/mqtt)

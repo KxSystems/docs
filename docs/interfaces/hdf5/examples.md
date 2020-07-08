@@ -6,7 +6,7 @@ date: March 2020
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: HDF5, kdb+, examples, read, write, link, group
 ---
-# :fontawesome-solid-share-alt: Example usage of interface 
+# Example usage of interface 
 
 Here is an example of how to read, write, modify and inspect a HDF5 dataset from a kdb+ session. The associated repository has examples with more functionality.
 

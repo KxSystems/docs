@@ -7,7 +7,8 @@ keywords: HDF5, api, fusion, interface, conversion, data formatting
 ---
 # ![HDF5](../img/hdf5.jpeg) Using HDF5 data with kdb+
 
-<i class="fab fa-github"></i> [KxSystems/hdf5](https://github.com/KxSystems/hdf5)
+:fontawesome-brands-github:
+[KxSystems/hdf5](https://github.com/KxSystems/hdf5)
 
 
 [Hierarchical Data Format 5 (HDF5)](https://portal.hdfgroup.org/display/HDF5/HDF5) is a file format designed specifically for the storage and organization of large amounts of data. It is supported by the HDF Group and free to use under a BSD-like licence. 

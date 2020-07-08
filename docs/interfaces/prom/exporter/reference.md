@@ -3,9 +3,10 @@ title: Function reference for the Prometheus Exporter | Interfaces | Documentati
 author: Conor McCarthy
 description: All functionality and options for the Prometheus Exporter for kdb+ metrics
 date: April 2020
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
 ---
-# Function reference
+# Prometheus function reference
 
 :fontawesome-brands-github:
 [KxSystems/prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)

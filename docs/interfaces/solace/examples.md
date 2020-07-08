@@ -1,183 +1,146 @@
 ---
-title: Example usage of the Solace kdb+ interface
+title: Example usage | Solace | Interfaces | Docuemntation for q and kdb+
 author: Conor McCarthy
 description: Examples showing the use of the Solace kdb+ interface
 date: March 2020
-keywords: Solace, PubSub+, publish, subscribe, request, reply, streaming 
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
+keywords: Solace, PubSub+, publish, subscribe, request, reply, streaming
 ---
 
-# <i class="fa fa-share-alt"></i> Solace Interface Examples
+# Solace interface examples
 
-<i class="fab fa-github"></i> [KxSystems/solace](https://github.com/KxSystems/solace)
+:fontawesome-brands-github:
+[KxSystems/solace](https://github.com/KxSystems/solace)
 
-The following page outlines the use of a number of scripts provided with this interface to highlight available functionality within the interface.
+The scripts below are in the `examples` folder of the [interface](https://github.com/KxSystems/solace/tree/master/examples). 
+They provide insight into the different capabilities of the interface.
+
 
 ## Requirements
 
-These examples require the following steps to be completed
+1. The Solace interface installed as described in the interface’s [`README.md`](https://github.com/kxsystems/solace/blob/master/README.md)
+2. The folder `script/` containing `solace.q` placed either in the examples folder or (preferably) in the your `QHOME` directory.
 
-1. The Solace interface to be installed following the steps outlined in the interfaces `README.md` [here](https://github.com/kxsystems/solace/blob/master/README.md)
-2. The folder `script/` containing `solace.q` be placed either in the examples folder or preferably in the users `$QHOME`/`%QHOME%` directory.
+## Parameters
 
-## Examples
+Pass parameters to the scripts as command-line arguments.
+Default values for all parameters are set in `sol_init.q`.
 
-Each of the scripts outlined below are contained in the `examples` folder of the interface [here](https://github.com/KxSystems/solace/tree/master/examples). These scripts provide an insight into to different capabilities within the Solace Interface.
+```txt
+-corr   correlation ID
+-data   message payload to send
+-dest   name of endpoint queue to use or create
+-dtype  type of destination: [queue (default) | topic]
+-host   broker hostname
+-name   name of the endpoint to create
+-pass   password
+-queue  name of the exiting queue endpoint to alter
+-topic  topic name  (Solace wildcard format supported)
+-user   username
+-vpn    VPN name
+```
 
-An outline is provided here as a guide for potential users, in order to showcase the parameters which can be passed to the scripts as command line arguments on initialisation of a q session.
 
-### Endpoint interactions
+## Endpoint interactions
 
-#### `sol_endpoint_create.q`
+### Create a queue
 
-Create a queue on a Solace PubSub+ broker (permission permitting)
+`q sol_endpoint_create.q -host -vpn -user -pass -name`
+
+Creates a queue on a Solace PubSub+ broker, subject to permission.
 
 ```bash
 q sol_endpoint_create.q -name "Q/test"
 ```
 
-Parameters:
 
-- `-host` = broker hostname
-- `-vpn`  = VPN name
-- `-user` = username
-- `-pass` = password
-- `-name` = name of the endpoint to be created
+### Remove an endpoint
 
-#### `sol_endpoint_destroy.q`
+`q sol_endpoint_destroy.q -host -vpn -user -pass -name`
 
-Remove a previously created endpoint on the Solace broker (permission permitting)
+Removes an existing endpoint on the Solace broker, subject to permission.
 
 ```bash
 q sol_endpoint_destroy.q -name "Q/test"
 ```
 
-Parameters:
 
-- `-host` = broker hostname
-- `-vpn`  = VPN name
-- `-user` = username
-- `-pass` = password
-- `-name` = name of the endpoint to be created
+### Add a topic subscription to a queue
 
-#### `sol_topic_to_queue_mapping.q`
+`q sol_topic_to_queue_mapping.q -host -vpn -user -pass -queue -topic`
 
-Add a topic subscription to an existing endpoint queue (permission permitting)
+Adds a topic subscription to an existing endpoint queue, subject to permission.
 
 ```bash
 q sol_topic_to_queue_mapping.q -queue "Q/test" -topic "Q/topic"
 ```
 
-Parameters:
 
-- `-host`  = Broker hostname
-- `-vpn`   = VPN name
-- `-user`  = username
-- `-pass`  = password
-- `-queue` = name of the exiting queue endpoint to alter
-- `-topic` = name of the topic to add to the existing queue
+## Pub/sub with direct messages
 
-### Pub/Sub with Direct Messages
 
-#### `sol_pub_direct.q`
+### Send a direct message via a topic
 
-Sends a direct message via a topic. This can be used in conjunction with the script `sol_sub_direct.q` or any solace example program.
+`q sol_pub_direct.q -host -vpn -user -pass -topic -data`
+
+This can be used in conjunction with `sol_sub_direct.q` or any Solace example program.
 
 ```bash
 q sol_pub_direct.q -topic "Q/1" -data "hello world"
 ```
 
-Parameters:
 
-- `-host`  = Broker hostname
-- `-vpn`   = VPN name
-- `-user`  = username
-- `-pass`  = password
-- `-topic` = topic name to publish the message to
-- `-data`  = message payload to send
+### Subscribe to a topic for direct messages
 
-#### `sol_sub_direct.q`
-
-Subscribe to a topic for the consumption of direct messages
+`q sol_sub_direct.q -host -vpn -user -pass -topic`
 
 ```bash
 q sol_sub_direct.q -host 192.168.65.2:55111 -topic "Q/>"
 ```
 
-Parameters:
 
-- `-host`  = Broker hostname
-- `-vpn`   = VPN name
-- `-user`  = username
-- `-pass`  = password
-- `-topic` = topic name to publish the subscribe to (Solace wildcard format supported)
+### Send a direct message via a topic, request a reply
 
-#### `sol_pub_directrequestor.q`
+`q sol_pub_directrequestor.q -host -vpn -user -pass -topic -data`
 
-Sends a direct message via a topic, with the additional requirement that the publisher request a reply as part of the publised message. This can be used in conjunction with the script `sol_sub_directreplier.q` or any solace example program.
+Sends a direct message via a topic, and requests a reply as part of the published message.
+
+This can be used in conjunction with `sol_sub_directreplier.q` or any Solace example program.
 
 ```bash
 q sol_pub_directrequestor.q -topic "Q/1" -data "hello world"
 ```
 
-Parameters:
+### Subscribe to a topic for direct messages, replying
 
-- `-host`  = Broker hostname
-- `-vpn`   = VPN name
-- `-user`  = username
-- `-pass`  = password
-- `-topic` = topic name to publish the message to
-- `-data`  = message payload to send
+`q sol_sub_directrequestor.q -host -vpn -user -pass -topic`
 
-#### `sol_sub_directrequestor.q`
-
-Subscribe to a topic for the consumption of direct messages, replying to any message received
+Subscribes to a topic for the consumption of direct messages, replying to any message received.
 
 ```bash
 q sol_sub_directreplier.q -host 192.168.65.2:55111 -topic "Q/>"
 ```
 
-Parameters:
 
-- `-host`  = Broker hostname
-- `-vpn`   = VPN name
-- `-user`  = username
-- `-pass`  = password
-- `-topic` = topic name to publish the subscribe to (Solace wildcard format supported)
+## Pub/sub with guaranteed messages
 
-### Pub/Sub With Guaranteed Messages
+### Send a persistent or guaranteed message
 
-#### `sol_pub_persist.q`
+`q sol_pub_persist.q -host -vpn -user -pass -data -dtype -dest -corr`
 
-Sends a persistent/guaranteed message to an existing endpoint (see sol_endpoint_create.q)
+Sends a persistent or guaranteed message to an existing endpoint.
+
+(See `sol_endpoint_create.q`.)
 
 ```bash
-q sol_pub_persist.q -desttype "queue" -destname "Q/1" -data "hello world"  -correlationid 555
+q sol_pub_persist.q -dtype "queue" -dest "Q/1" -data "hello world" -corr 555
 ```
 
-Parameters:
+### Subscribe while printing and acknowledging each message
 
-- `-host`  = Broker hostname
-- `-vpn`   = VPN name
-- `-user`  = username
-- `-pass`  = password
-- `-data`  = message payload to send
-- `-dtype` = (optional) type of the destination (can be 'queue' or 'topic'), defaults to queue
-- `-dest`  = (optional) name of the endpoint to be created
-- `-corr`  = (optional) correlation id
-
-#### `sol_sub_persist.q`
-
-Subscribes, while printing and acknowledging each message
+`q sol_sub_persist.q -host -vpn -user -pass -dest`
 
 ```bash
-q sol_sub_persist.q -destname "Q/1"
+q sol_sub_persist.q -dest "Q/1"
 ```
-
-Parameters:
-
-- `-host` = Broker hostname
-- `-vpn`  = VPN name
-- `-user` = username
-- `-pass` = password
-- `-dest` = (optional) name of the endpoint queue to be used
 
