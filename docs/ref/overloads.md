@@ -83,8 +83,8 @@ a:42   [assign](../basics/syntax.md)
 ## `:` colon colon
 
 <pre markdown="1" class="language-txt">
-v::select from t where a in b     [define a view](../learn/views)
-global::42                        [amend a global from within a lambda](../basics/function-notation/#name-scope)
+v::select from t where a in b     [define a view](../learn/views.md)
+global::42                        [amend a global from within a lambda](../basics/function-notation.md#name-scope)
 ::                                [Identity](identity.md)
 ::                                [Null](identity.md#null)
 </pre>

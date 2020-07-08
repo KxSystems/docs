@@ -85,4 +85,4 @@ Index 0 selects 2, index 4 selects 7, and index 2 selects -23.
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§6.6 Atomic Functions](6_Functions/#66-atomic-functions)
+[§6.6 Atomic Functions](/q4m3/6_Functions/#66-atomic-functions)
