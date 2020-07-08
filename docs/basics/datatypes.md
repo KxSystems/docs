@@ -69,10 +69,8 @@ The datatype of an object is given as a short int: negative for atom, positive f
 
 
 
+??? note "The default type for an integer is long (`7h` or `"j"`)."
 
-!!! note "Default integer type"
-
-    The default type for an integer is long (`7h` or `"j"`). 
     Before V3.0 it was int (`6h` or `"i"`).
 
 
