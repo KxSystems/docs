@@ -18,7 +18,7 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 .nlp   **Remove characters**
   [rmv_custom](#nlprmv_custom)         remove aspects of a string of text containing 
                      certain characters or expressions
-  [rmv_master](#nlprmv_master)         replace individual characters in a string
+  [rmv_main](#nlprmv_main)           replace individual characters in a string
   [ascii](#nlpascii)              remove non-ASCII characters from a string
 </pre>
 
@@ -191,11 +191,11 @@ q).nlp.rmv_custom[(jeffemails`text)100;rmv_list]
 ```
 
 
-## `.nlp.rmv_master`
+## `.nlp.rmv_main`
 
 _Remove certain individual characters from a string of text and replace them_
 
-Syntax: `.nlp.rmv_master[text;char;n]`
+Syntax: `.nlp.rmv_main[text;char;n]`
 
 Where
 
@@ -206,7 +206,7 @@ Where
 returns the string of text with the characters removed and replaced.
 
 ```q
-q).nlp.rmv_master[(jeffemails`text)100;",.:?!/@'\n";"??"]
+q).nlp.rmv_main[(jeffemails`text)100;",.:?!/@'\n";"??"]
 "Re????????How much to you have????  SRS??????????Kevin Hannon ?? ENRON COMMUNICATIONS on 04??20?..
 ```
 
