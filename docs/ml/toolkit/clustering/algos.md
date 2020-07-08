@@ -24,7 +24,7 @@ Cutting dendograms into
 </pre>
 
 <i class="fab fa-github"></i>
-[KxSystems/ml/clust/clust.q](https://github.com/kxsystems/ml/blob/master/clust/clust.q)
+[KxSystems/ml/clust](https://github.com/KxSystems/ml/tree/master/clust)
 
 The clustering library provides q implementations of a number of common clustering algorithms.
 

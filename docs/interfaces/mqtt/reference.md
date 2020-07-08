@@ -16,7 +16,8 @@ The following functions are exposed in the `.mqtt` namespace allowing you to int
 
 Broker interaction
   [conn](#mqttconn)      connect to a MQTT broker
-  [pub](#mqttpub)       publish a message to topic
+  [pub](#mqttpub)       publish a message to a topic
+  [pubx](#mqttpubx)     publish a message to a topic controlling qos and ret
   [sub](#mqttsub)       subscribe to a topic
   [unsub](#mqttunsub)     unsubscribe from a topic
 
@@ -47,6 +48,9 @@ returns a failure notice if connnection to host could not be established otherwi
 
 !!! detail "`opts`"
 	At present the `opts` parameter can allow a user to specify a username and password for brokers that require this flexibility. Further options will be added.
+
+!!! Note
+	Within MQTT the Client Identifier identifies a client to the server. This must be unique to ensure connections are appropriately established. Within this interface the parameter `name` maps to `ClientID` and as such each defined `name` must be unique across all processes connecting to a broker.
 
 ```q
 // In this example Mosquitto is not started on the defined host
@@ -147,8 +151,41 @@ returns a callback to the process stating that the message has been sent to the 
 // Connect to the host broker
 q).mqtt.conn[`$"tcp://localhost:1883";`src]
 
-// Publish a message to a topic names `topic1
+// Publish a message to a topic named `topic1
 q).mqtt.pub[`topic1;"This is a test message"];
+(`msgsent;1)
+```
+
+!!!Note
+	This function is a projection of the function `.mqtt.pubx` defined below. Where 
+
+	1. kqos is set to 1. The broker/client will deliver the message at least once, with confirmation required.
+
+	2. kret is set to 0b. Messages are not retained after sending.
+
+	More information on these variables are available [here](https://mosquitto.org/man/mqtt-7.html)
+
+## `.mqtt.pubx`
+
+_Publish a message to a Mosquitto broker, controlling quality of service and message retention_
+
+Syntax: `.mqtt.pubx[topic;msg;qos;ret]`
+
+Where
+
+- `topic` is a symbol denoting the topic that the message is to be sent to
+- `msg` is a string of the message being sent to the broker
+- `kqos` is an long denoting the quality of service to be used
+- `kret` is a boolean denoting if published messages are to be retained
+
+returns a callback to the process stating that the message has been sent to the broker.
+
+```q
+// Connect to the host broker
+q).mqtt.conn[`$"tcp://localhost:1883";`src]
+
+// Publish a message to topic named topic2 with kqos=2, kret=1b
+q).mqtt.pubx[`topic2;"Sending test message";2;1b]
 (`msgsent;1)
 ```
 
