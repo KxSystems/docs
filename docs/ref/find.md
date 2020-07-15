@@ -15,7 +15,7 @@ Syntax: `x?y`, `?[x;y]`
 
 where `x` is a list or a null, returns for 
 
--   atom `y` the smallest index of `y`
+1.  atom `y` the smallest index of `y`
 -   list `y` the smallest index of each item of `y`
 
 Where `y` or an item of it is not found in `x`, the smallest index is the smallest integer not found in `key x`, i.e. `count x`. Comparisons are exact and are not subject to to [comparison tolerance](../basics/precision.md). 
@@ -41,17 +41,22 @@ q)"abcde"?"d"
 
 Find is type-specific relative to `x`. Where:
 
--   `x` is a simple list and `y` a list whose atoms are all the same type as `x`, the result corresponds to `x` item-by-item.
+1.  `x` is a simple list and `y` a list whose atoms are all the same type as `x`, and whose first item is a list, the result corresponds to `x` item-by-item; i.e. Find is right-atomic.
 <pre><code class="language-q">
 q)rt:(10 5 -1;-8;3 17)
 q)i:w?rt
 q)i
-(0 3 4;1;2 7)
+0 3 4
+7
+2 7
 q)w[i]
-(10 5 -1;-8;3 0N)
+10 5 -1
+0N
+3 0N
 </code></pre>
+(If the first item of `y` is an atom, a `type` error is signalled.)
 
--   `x` is a list of lists and `y` is a simple list, items of `x` are matched with the whole of `y`.
+1.  `x` is a list of lists and `y` is a simple list, items of `x` are matched with the whole of `y`.
 <pre><code class="language-q">
 q)u:("abcde";10 2 -6;(2 3;`ab))
 q)u?10 2 -6
@@ -60,7 +65,7 @@ q)u?"abcde"
 0
 </code></pre>
 
--   where `x` is a mixed list then items of `x` are matched with items of `y`.
+1.  `x` is a list of lists and `y` is a mixed list then items of `x` are matched with items of `y`.
 <pre><code class="language-q">
 q)u?(2 3;`ab)
 3 3

@@ -14,6 +14,8 @@ keywords: attribute, bracket, colon, comment, composition, compound, conditional
 
 
 
+!!! info "The q-SQL query templates `select`, `exec`, `update`, and `delete` have their [own syntax](qsql.md)."
+
 
 ## Elements
 
@@ -211,6 +213,39 @@ goog 300
 
 The names assigned become the column names. The values assigned must conform: be lists of the same count, or atoms. The empty brackets indicate that the table is _simple_: it has no key. 
 
+You if you specify the column values as variables without specifying column names, the names of the variables will be used.
+
+```q
+q)sym:`aapl`msft`goog
+q)price:100 200 300
+q)([] sym; price)
+sym  price
+----------
+aapl 100
+msft 200
+goog 300
+```
+
+Some columns can be specified as atoms.
+
+```q
+q)([] sym:`aapl`msft`goog; price: 300)
+sym  price
+----------
+aapl 300
+msft 300
+goog 300
+```
+
+But not all. To define a 1-row table, enlist at least one of the column values.
+
+```q
+q)([] sym:enlist`aapl; price:100)
+sym  price
+----------
+aapl 100
+```
+
 The initial expression list can declare one or more columns as a _key_. The values of the key column/s of a table should be unique. 
 
 ```q
@@ -228,6 +263,10 @@ alice SFO | 44
 <br>
 :fontawesome-solid-book-open: 
 [Dictionaries and tables](dictsandtables.md)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§8. Tables](/q4m3/8_Tables/)
 
 
 ## Attributes
@@ -440,18 +479,9 @@ An empty expression occurs in a compound expression wherever the place of an ind
 
 ## Colon
 
-### Simple assignment
+### Assign
 
-A colon can appear with a name to its left and a noun to its right, or a name followed by an index expression to its left and a noun to its right, as in `x:y` and `x[i]:y`. The former assigns the value of `y` to `x`; the latter to `x` at indexes `i`.
-
-The colon can also have a binary operator immediately to its left, with a name (or name and index expression) to the left of that, as in `x+:y `and `x[i],:y`. This is known as assignment _through_ the operator. For operator `f`, the expressions `x f:y` and `x:x f y` are equivalent.
-
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§4.6.2 Simple q Amend](/q4m3/4_Operators/#462-simple-q-amend)
-<br>
-:fontawesome-solid-book:
-[Amend, Amend At](../ref/amend.md)
+The most common use of colon is to [name values](../ref/assign.md).
 
 
 ### Explicit return

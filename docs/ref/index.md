@@ -70,8 +70,8 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr>
 <td class="kx-glyph">[`#`](overloads.md#hash)</td><td>[Take](take.md)<br>[Set&nbsp;Attribute](set-attribute.md)</td>
 <td class="kx-glyph">[`_`](overloads.md#_-underscore)</td><td>[Cut](cut.md)<br>[Drop](drop.md)</td>
-<td class="kx-glyph">`^`<br>`,`</td><td>[Fill](fill.md)<br>[Join](join.md)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)</td><td>[Compose](compose.md)</td>
+<td class="kx-glyph">`^`</td><td>[Fill](fill.md)<br>[Coalesce](coalesce.md)</td>
+<td class="kx-glyph">`,`<br>[`'`](overloads.md#quote)</td><td>[Join](join.md)<br>[Compose](compose.md)</td>
 </tr>
 </table>
 
@@ -117,7 +117,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Other
 
 <pre markdown="1" class="language-txt" style="font-size: 80%">
-[`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../basics/syntax.md#colon)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
+[`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../ref/assign.md)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
 [.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)       [::](overloads.md#colon-colon)   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
 [\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/files.md)      [2:  Dynamic Load](dynamic-load.md)
 [\\   abort](../basics/debug.md#abort)                 [global amend](../basics/function-notation.md#name-scope)   [_n, -n_  handle](../basics/files.md)

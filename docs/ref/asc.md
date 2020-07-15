@@ -270,11 +270,15 @@ a 43 2
 !!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
 
-
+----
 :fontawesome-solid-book:
 [`desc`, `idesc`, `xdesc`](desc.md),
-[Set Attribute](set-attribute.md)<br>
+[Set Attribute](set-attribute.md)
+<br>
 :fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md), 
 [Sorting](../basics/sort.md)
-
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§8.8 Attributes](/q4m3/8_Tables#88-attributes)

@@ -9,7 +9,7 @@ author: Stephen Taylor
 
 Syntax: `x$y`, `$[x;y]`
 
-Where 
+Where
 
 -   `x` and `y` are lists
 -   `x~distinct x`
@@ -69,14 +69,15 @@ error | cause
 cast  | item/s of `y` not in `x`
 
 
-:fontawesome-solid-book: 
+:fontawesome-solid-book:
 [Enum Extend](enum-extend.md),
-[Enumeration](enumeration.md), 
-[`$` dollar](overloads.md#dollar) 
+[Enumeration](enumeration.md),
+[`$` dollar](overloads.md#dollar)
 <br>
-:fontawesome-solid-book-open: 
-[Enumerations](../basics/enumerations.md) 
+:fontawesome-solid-book-open:
+[Enumerations](../basics/enumerations.md)
 <br>
-:fontawesome-solid-street-view: 
+:fontawesome-solid-street-view:
 _Q for Mortals_
-[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations) ,
+[§8.5 Foreign Keys and Virtual Columns](/q4m3/8_Tables/#84-foreign-keys-and-virtual-columns)

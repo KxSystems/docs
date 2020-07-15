@@ -13,9 +13,11 @@ dictionaries:
 
 tables:
  [cols](../ref/cols.md)    column names              [xasc](../ref/asc.md#xasc)     sort ascending 
+ [meta](../ref/meta.md)    metadata                  [xdesc](../ref/desc.md#xdesc)    sort descending 
  [xcol](../ref/cols.md#xcol)    rename cols               [xgroup](../ref/xgroup.md)   group by values in selected cols
  [xcols](../ref/cols.md#xcols)   re-order cols             [xdesc](../ref/desc.md#xdesc)    sort descending
  [xkey](../ref/keys.md#xkey)    set cols as primary keys  [ungroup](../ref/ungroup.md)  normalize
+ [! Enkey, Unkey](../ref/enkey.md)  add/remove keys
 </pre>
 
 Operators and keywords for working with dictionaries and tables.
@@ -557,3 +559,8 @@ brown m
 <br>
 :fontawesome-solid-book:
 [Step dictionaries](../ref/apply.md#step-dictionaries)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§5. Dictionaries](/q4m3/5_Dictionaries/),
+[§8. Tables](/q4m3/8_Tables/)

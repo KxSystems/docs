@@ -43,7 +43,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>hop</td><td/><td>Request to `hopen` a handle fails; includes message from OS</td> </tr>
 <tr><td>hwr</td><td/><td>Handle write error, can't write inside a [`peach`](peach.md)</td> </tr>
 <tr><td>IJS</td> <td class="nowrap">`"D=\001"0:"0=hello\0011=world"`</td> <td>[Key type](../ref/file-text.md#key-value-pairs) is not `I`, `J`, or `S`.</td> </tr>
-<tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to insert a record with an existing key into a keyed table</td> </tr>
+<tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to [`insert`](../ref/insert.md) a record with an existing key into a keyed table</td> </tr>
 <tr><td>invalid</td> <td class="nowrap">`q -e 3`</td> <td>Invalid command-line option value</td> </tr>
 <tr><td>invalid password</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Invalid keyfile password</td> </tr>
 <tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
@@ -94,7 +94,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](glossary.md#rank)</td> </tr> 
 <tr><td>rb</td> <td/> <td>Encountered a problem while doing a blocking read</td> </tr> 
 <tr><td>restricted</td> <td>`0"2+3"`</td> <td>in a kdb+ process which was started with [`-b` cmd line](cmdline.md#-b-blocked). Also for a kdb+ process using the username:password authentication file, or the `-b` cmd line option, `\x` cannot be used to reset handlers to their default. e.g. `\x .z.pg`</td> </tr> 
-<tr><td>s-fail</td> <td class="nowrap">`` `s#3 2``</td> <td>Invalid attempt to set “sorted” [attribute](syntax.md#attributes). Also encountered with `` `s#enums`` when loading a database (`\l db`) and enum target is not already loaded.</td> </tr>
+<tr><td>s-fail</td> <td class="nowrap">`` `s#3 2``</td> <td>Invalid attempt to set sorted [attribute](../ref/set-attribute.md). Also encountered with `` `s#enums`` when loading a database (`\l db`) and enum target is not already loaded.</td> </tr>
 <tr><td>splay</td> <td/> <td>nyi op on [splayed table](../kb/splayed-tables.md)</td> </tr>
 <tr>
 <td>stack</td>
@@ -112,7 +112,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>trunc</td> <td/> <td>The log had a partial transaction at the end but q couldn’t truncate the file</td> </tr>
 <tr><td>type</td> <td class="nowrap">`til 2.2`</td> <td>Wrong [type](datatypes.md). Also see `'limit`</td> </tr>
 <tr><td>type/attr error amending file</td> <td/> <td>Direct update on disk for this type or attribute is not allowed</td> </tr>
-<tr><td>u-fail</td> <td class="nowrap">`` `u#2 2``</td> <td>Invalid attempt to set “unique” [attribute](syntax.md#attributes)</td> </tr>
+<tr><td>u-fail</td> <td class="nowrap">`` `u#2 2``</td> <td>Invalid attempt to set unique or parted [attribute](../ref/set-attribute.md)</td> </tr>
 <tr><td>unmappable</td> <td>``t:([]sym:`a`b;a:(();()))``<br/>``.Q.dpft[`:thdb;.z.d;`sym;`t]``</td> <td>When saving partitioned data each column must be mappable. `()` and `("";"";"")` are OK</td> </tr>
 <tr><td>unrecognized key format</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Master keyfile format not recognized</td> </tr>
 <tr><td>upd</td> <td/> <td>Function `upd` is undefined (sometimes encountered during ``-11!`:logfile``) _or_ [license error](#license-errors)</td> </tr>

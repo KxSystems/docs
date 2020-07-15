@@ -224,7 +224,6 @@ nav:
       - Parallel processing: basics/peach.md
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
-      - QSQL: basics/qsql.md
       - Regular Expressions: basics/regex.md
       - Search: basics/search.md
       - Selection: basics/selection.md
@@ -369,6 +368,7 @@ nav:
       - Add: ref/add.md
       - Amend: ref/amend.md
       - Apply, Index, Trap: ref/apply.md
+      - Assign: ref/assign.md
       - Cast: ref/cast.md
       - Coalesce: ref/coalesce.md
       - Compose: ref/compose.md
@@ -423,6 +423,7 @@ nav:
       - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
+    - QSQL queries: basics/qsql.md
     - Release notes:
       - History: releases/index.md
       - Changes in 4.0: releases/ChangesIn4.0.md
