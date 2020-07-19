@@ -5,6 +5,8 @@ keywords: exec, delete, kdb+, q, query, select, sql, update, upsert
 ---
 # QSQL query templates
 
+
+
 <pre markdown="1" class="language-txt">
 [delete](../ref/delete.md)  delete rows or columns from a table
 [exec](../ref/exec.md)    return columns from a table, possibly with new columns
@@ -43,7 +45,7 @@ A template is evaluated in the following order.
 Table expression   _t<sub>exp</sub>_
 [Where phrase](#where-phrase)       _p<sub>w</sub>_
 [By phrase](#by-phrase)          _p<sub>b</sub>_
-[Select phrase](#select-phrase)      _p<sub>s</sub>_
+[Select phrase](../ref/select.md#select-phrase)      _p<sub>s</sub>_
 [Limit expression](../ref/select.md#limit-expression)   _L<sub>exp</sub>_
 </pre>
 
@@ -90,7 +92,6 @@ q)t1~t2
 ```
 
 
-
 ### Phrases and subphrases
 
 _p<sub>s</sub>_, _p<sub>b</sub>_, and _p<sub>w</sub>_ are 
@@ -120,6 +121,37 @@ A name in a subphrase is resolved (in order) as the name of
 1.  column or key name
 1.  local name in (or argument of) the encapsulating function
 1.  global name in the current working namespace – not necessarily the space in which the function was defined
+
+Dot notation allows you to refer to foreign keys. 
+
+:fontawesome-brands-github:
+[Suppliers and parts database `sp.q`](https://github.com/KxSystems/kdb/blob/master/sp.q)
+
+```q
+q)\l sp.q
++`p`city!(`p$`p1`p2`p3`p4`p5`p6`p1`p2;`london`london`london`london`london`lon..
+(`s#+(,`color)!,`s#`blue`green`red)!+(,`qty)!,900 1000 1200
++`s`p`qty!(`s$`s1`s1`s1`s2`s3`s4;`p$`p1`p4`p6`p2`p2`p4;300 200 100 400 200 300)
+
+q)select sname:s.name, qty from sp
+sname qty
+---------
+smith 300
+smith 200
+smith 400
+smith 200
+clark 100
+smith 100
+jones 300
+jones 400
+blake 200
+clark 200
+clark 300
+smith 400
+```
+
+:fontawesome-solid-book-open:
+[Implicit joins](joins.md#implicit-joins)
 
 ??? tip "You can refer explicitly to [namespaces](../basics/glossary.md#name-namespace)."
 
@@ -171,10 +203,7 @@ a b
 ```
 
 
-
-### Select phrase
-
-#### Computed columns
+### Computed columns
 
 In a subphrase, a q expression computes a new column or key, and a colon names it. 
 
@@ -210,7 +239,7 @@ c  c   60 33.3 "3.3"
 ```
 
 
-#### Virtual column `i`
+### Virtual column `i`
 
 A virtual column `i` represents the index of each record, i.e., the row number. 
 
@@ -389,6 +418,25 @@ a       b
 ```
 
 or use the [Vector Conditional](../ref/vector-conditional.md) instead.
+
+
+## Stored procedures
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.10 Parameterized Queries](/q4m3/9_Queries_q-sql/#999-parameterized-queries)
+
+
+## Views
+
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.11 Views](/q4m3/9_Queries_q-sql/#9911-views)
+
+
 
 ----
 :fontawesome-solid-book:

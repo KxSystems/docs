@@ -1,5 +1,5 @@
 ---
-title: pj – Reference – kdb+ and q documentation
+title: pj – plus join | Reference | kdb+ and q documentation
 description: pj is a q keyword that performs a plus join.
 keywords: join, kdb+, pj,plus join, q
 ---
@@ -11,7 +11,9 @@ keywords: join, kdb+, pj,plus join, q
 
 _Plus join_
 
-Syntax: `x pj y`, `pj[x;y]`
+```txt
+x pj y     pj[x;y]
+```
 
 Where
 
@@ -35,11 +37,13 @@ a b c
 1 x 10
 2 y 20
 3 z 30
+
 q)show y:([a:1 3;b:`x`z]c:1 2;d:10 20)
 a b| c d
 ---| ----
 1 x| 1 10
 3 z| 2 20
+
 q)x pj y
 a b c  d
 ---------
@@ -50,7 +54,11 @@ a b c  d
 
 In the example above, `pj` is equivalent to `` x+0^y[`a`b#x] `` (compute the value of `y` on `a` and `b` columns of `x`, fill the result with zeros and add to `x`).
 
-
-:fontawesome-regular-hand-point-right: 
-Basics: [Joins](../basics/joins.md)
+---
+:fontawesome-solid-book-open:
+[Joins](../basics/joins.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.6 Plus Join](/q4m3/9_Queries_q-sql/#996-plus-join-pj)
 

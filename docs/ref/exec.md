@@ -32,9 +32,9 @@ exec _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w
 
 Where the [Select phrase](../basics/qsql.md#select phrase) 
 
--   is omitted, the result is the last record
--   contains a single column, the result is the value of that column
--   contains multiple columns, the result is a dictionary in which the column names are keys 
+-   is omitted, returns the last record
+-   contains a single column, returns the value of that column
+-   contains multiple columns or assigns a column name, returns a dictionary with column names as keys 
 
 ```q
 q)\l sp.q
@@ -46,6 +46,9 @@ qty| 400
 
 q)exec qty from sp  / list 
 300 200 400 200 100 100 300 400 200 200 300 400
+
+q)exec amount:qty from sp  / assigns column name
+amount| 300 200 400 200 100 100 300 400 200 200 300 400
 
 q)exec (qty;s) from sp  / list per column 
 300 200 400 200 100 100 300 400 200 200 300 400

@@ -1,5 +1,5 @@
 ---
-title: within – Reference – kdb+ and q documentation
+title: within keyword | Reference | kdb+ and q documentation
 description: within is a q keyword that tests whether one argument is within the bounds defined by the other.
 author: Stephen Taylor
 keywords: kdb+, ordered pair, q, search, within
@@ -44,12 +44,14 @@ q)(1 3 10 6 4;"acyxmpu") within ((2;"b");(6;"r"))
 0100110b
 ```
 
-
-:fontawesome-regular-hand-point-right: 
+----
+:fontawesome-solid-book: 
 [`except`](except.md), 
 [`in`](in.md), 
 [`inter`](inter.md), 
-[`union`](union.md)  
-Basics: [Search](../basics/search.md)
+[`union`](union.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Search](../basics/search.md)
 
 

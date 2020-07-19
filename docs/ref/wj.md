@@ -1,10 +1,10 @@
 ---
-title: Window join – Reference – kdb+ and q documentation
+title: Window join | Reference | kdb+ and q documentation
 description: wj and wj1 are q keywords that perform window joins.
 author: Stephen Taylor
 keywords: join, kdb+, q, window join, wj, wj1
 ---
-# `wj`, `wj1` 
+# `wj`, `wj1`
 
 
 
@@ -12,14 +12,16 @@ keywords: join, kdb+, q, window join, wj, wj1
 
 _Window join_
 
-Syntax: `wj[w;c;t;(q;(f0;c0);(f1;c1))]`  
-Syntax: `wj1[w;c;t;(q;(f0;c0);(f1;c1))]`
+```txt
+wj [w; c; t; (q; (f0;c0); (f1;c1))]
+wj1[w; c; t; (q; (f0;c0); (f1;c1))]
+```
 
-Where:
+Where
 
 -   `t` and `q` are simple tables to be joined (`q` should be sorted `` `sym`time `` with `` `p# `` on sym)
 -   `w` is a pair of lists of times/timestamps, begin and end
--   `c` are the names of the common columns, syms and times
+-   `c` are the names of the common columns, syms and times, which must have integral types
 -   `f0`, `f1` are aggregation functions applied to values in q columns `c0`,`c1` over the intervals
 
 returns for each record in `t`, a record with additional columns `c0` and `c1`, which are the results of the aggregation functions applied to values over the matching intervals in `w`.
@@ -32,30 +34,36 @@ wj[w;`sym`time;trade;(quote;(max;`ask);(min;`bid))]
 
 A quote is understood to be in existence until the next quote.
 
+!!! tip "To see all the values in each window, pass the identity function `::` in place of the aggregates"
 
-## Multi-column arguments 
+    E.g. `wj[w;c;t;(q;(::;c0);(::;c1))]`
+
+
+## Multi-column arguments
 
 Since 3.6 2018.12.24, `wj` and `wj1` support multi-col args, forming the resulting column name from the last argument e.g.
 
 ```q
-q)wj[w;f;t;(q;(wavg;`asize;`ask);(wavg;`bsize;`bid))]
+wj[w; f; t; (q; (wavg;`asize;`ask); (wavg;`bsize;`bid))]
 ```
 
 
 ## Interval behaviour
 
-Since V3.0, `wj` and `wj1` are both \[\] interval, i.e. they consider quotes ≥beginning and ≤end of the interval.
+`wj` and `wj1` are both \[\] interval, i.e. they consider quotes ≥beginning and ≤end of the interval.
 
 For `wj`, the prevailing quote on entry to the window is considered valid as quotes are a step function.
 
 `wj1` considers quotes on or after entry to the window. If the join is to consider quotes that arrive from the beginning of the interval, use `wj1`.
 
-Prior to V3.0, `wj1` considers only quotes in the window except for the window end (i.e. quotes ≥start and &lt;end of the interval).
+??? detail "Behavior prior to V3.0"
 
-| version | wj1  |  wj               |
-|---------|------|-------------------|
-| 3.0     | `[]` | prevailing + `[]` |
-| 2.7/2.8 | `[)` | prevailing + `[]` |
+    Prior to V3.0, `wj1` considered only quotes in the window except for the window end (i.e. quotes ≥start and &lt;end of the interval).
+
+    | version | wj1  |  wj               |
+    |---------|------|-------------------|
+    | 3.0+    | `[]` | prevailing + `[]` |
+    | 2.7/2.8 | `[)` | prevailing + `[]` |
 
 :fontawesome-brands-wikipedia-w:
 [Notation for intervals](https://en.wikipedia.org/wiki/Interval_(mathematics)#Notations_for_intervals "Wikipedia")
@@ -109,20 +117,25 @@ ibm 10:01:08 105   107 108 107 108 104 106 106 107
 ```
 
 
-!!! warning "Joining on multiple symbols"
+!!! tip "Window joins with multiple symbols should be used only with a `` `p#sym`` like schema." 
 
-    Window-joins with multiple symbols should be used only with a `` `p#sym`` like schema. (Typical RTD-like `` `g#`` gives undefined results.) 
+    Typical RTD-like `` `g#`` gives undefined results.
 
-!!! warning "Integral windows"
+!!! note "Window join is a generalization of as-of join"
 
-    Only integral types are supported for the column to do the windowing on – no reals, floats or datetimes.
-
-!!! note "A generalization of _asof-join_"
-
-    _Window-join_ is a generalization of _asof-join_, and is available from V2.6. _Asof-join_ takes a snapshot of the current state, while _window-join_ aggregates all values of specified columns within intervals. (Since V3.0, `wj` and `wj1` are both implemented with `ww`.)
+    An as-of join takes a snapshot of the current state, while a window join aggregates all values of specified columns within intervals. 
+    <!-- (Since V3.0, `wj` and `wj1` are both implemented with `ww`.) -->
 
 
-
-:fontawesome-regular-hand-point-right: 
-Basics: [Joins](../basics/joins.md)
+----
+:fontawesome-solid-book:
+[`aj`](aj.md),
+[`asof`](asof.md)
+<br>
+:fontawesome-solid-book-open:
+[Joins](../basics/joins.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.9 Window Joins](/q4m3/9_Queries_Q-sql/#999-window-join)
 
