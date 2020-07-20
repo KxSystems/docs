@@ -297,7 +297,7 @@ returns as a string an HTTP error response.
 q).h.hn["404";`txt;"Not found: favicon.ico"]
 "HTTP/1.1 404\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Len..
 ```
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.h.ty` MIME types](#hty-mime-types)
 
 

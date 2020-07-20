@@ -34,6 +34,6 @@ q)iasc idesc 2 7 3 2 5           / descending rank
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`iasc`](asc.md#iasc)  
 Basics: [Sorting](../basics/sort.md)

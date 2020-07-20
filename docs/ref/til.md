@@ -26,5 +26,5 @@ q)til 5f
        ^
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Mathematics](../basics/math.md)

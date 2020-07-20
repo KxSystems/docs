@@ -142,7 +142,7 @@ q)read0 `:data/foo
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`value`](value.md)<br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)

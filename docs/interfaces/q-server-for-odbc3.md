@@ -3,15 +3,15 @@ title: Kdb+ server for ODBC3 – Interfaces – kdb+ and q documentation
 description: The ODBC3 server allows applications to query kdb+ via the ODBC interface.  
 keywords: api, interface, kdb+, library, odbc, odbc3, q, SQL
 ---
-# <i class="fas fa-database"></i> Kdb+ server for ODBC3
+# :fontawesome-solid-database: Kdb+ server for ODBC3
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [ODBC](../kb/odbc.md)
 
 The ODBC3 server allows applications to query kdb+ via the ODBC interface.  
-<i class="fab fa-github"></i> [KxSystems/kdb/c/qodbc3.zip](https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip)
+:fontawesome-brands-github: [KxSystems/kdb/c/qodbc3.zip](https://github.com/KxSystems/kdb/blob/master/c/qodbc3.zip)
 
 Currently the applications may run on the following platforms: w64, w32, l64, l32. Primary compatibility target has been [Tableau](https://www.tableau.com/), although other uses are welcome.
 
@@ -39,7 +39,7 @@ Requirements: V3.2 or later.
 
 Requirements: [unixODBC](http://www.unixodbc.org) 2.3.4, [Binutils](https://www.gnu.org/software/binutils/) (ld)
 
-Download <i class="fab fa-github"></i> [KxSystems/kdb/l64/c.o](https://github.com/KxSystems/kdb/blob/master/l64/c.o) to qodbc/l64
+Download :fontawesome-brands-github: [KxSystems/kdb/l64/c.o](https://github.com/KxSystems/kdb/blob/master/l64/c.o) to qodbc/l64
 
 ```bash
 $ cd qodbc3/l64

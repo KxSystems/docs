@@ -47,7 +47,7 @@ q)1 2 3f$4 5 6f  /dot product of two vectors
 
 ## Working in parallel
 
-Use slave threads via `peach`.
+Use secondary threads via `peach`.
 
 ```q
 q)mmu[;b]peach a
@@ -55,7 +55,7 @@ q)mmu[;b]peach a
 81 99  117
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`$` dollar](overloads.md#dollar)  
 Basics: [Mathematics](../basics/math.md)  
 Wikipedia: [Matrix multiplication](https://en.wikipedia.org/wiki/Matrix_multiplication)

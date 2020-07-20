@@ -3,7 +3,7 @@ title: Internal functions – Basics – kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
 keywords: bang, functions, internal, kdb+, q
 ---
-# <i class="fas fa-exclamation-triangle"></i> Internal functions
+# :fontawesome-solid-exclamation-triangle: Internal functions
 
 
 
@@ -11,24 +11,26 @@ keywords: bang, functions, internal, kdb+, q
 The operator `!` with a negative integer as left argument calls an internal function.
 
 <pre markdown="1" class="language-txt">
-[-4!x](#-4x-tokens)        tokens                  Replaced:
-[-8!x](#-8x-to-bytes)        to bytes                 -1!   [hsym](../ref/hsym.md)
-[-9!x](#-9x-from-bytes)        from bytes               -2!   [attr](../ref/attr.md)
-[-10!x](#-10x-type-enum)       type enum                -3!   [.Q.s1](../ref/dotq.md#qs1-string-representation)
-[-11!](#-11-streaming-execute)        streaming execute        -5!   [parse](../ref/parse.md)
-[-14!x](#-14x-quote-escape)       quote escape             -6!   [eval](../ref/eval.md)
-[-16!x](#-16x-ref-count)       ref count                -7!   [hcount](../ref/hcount.md)
-[-18!x](#-18x-compress-byte)       compress byte            -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
-[-19!](#-19-compress-file)        compress file            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
-[-21!x](#-21x-compression-stats)       compression stats        -15!  [md5](../ref/md5.md)
-[-22!x](#-22x-uncompressed-length)       uncompressed length      -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
-[-23!x](#-23x-memory-map)       memory map               -24!  [reval](../ref/eval.md#reval)
-[-25!x](#-25x-async-broadcast)       async broadcast          -29!  [.j.k](../ref/dotj.md#jk-deserialize)
-[-26!x](#-26x-ssl)       SSL                      -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[0N!x](#0nx-show)        show                   Replaced:
+[-4!x](#-4x-tokens)        tokens                   -1!   [hsym](../ref/hsym.md)
+[-8!x](#-8x-to-bytes)        to bytes                 -2!   [attr](../ref/attr.md)
+[-9!x](#-9x-from-bytes)        from bytes               -3!   [.Q.s1](../ref/dotq.md#qs1-string-representation)
+[-10!x](#-10x-type-enum)       type enum                -5!   [parse](../ref/parse.md)
+[-11!](#-11-streaming-execute)        streaming execute        -6!   [eval](../ref/eval.md)
+[-14!x](#-14x-quote-escape)       quote escape             -7!   [hcount](../ref/hcount.md)
+[-16!x](#-16x-ref-count)       ref count                -12!  [.Q.host](../ref/dotq.md#qhost-hostname)
+[-18!x](#-18x-compress-byte)       compress byte            -13!  [.Q.addr](../ref/dotq.md#qaddr-ip-address)
+[-19!](#-19-compress-file)        compress file            -15!  [md5](../ref/md5.md)
+[-21!x](#-21x-compression-stats)       compression stats        -20!  [.Q.gc](../ref/dotq.md#qgc-garbage-collect)
+[-22!x](#-22x-uncompressed-length)       uncompressed length      -24!  [reval](../ref/eval.md#reval)
+[-23!x](#-23x-memory-map)       memory map               -29!  [.j.k](../ref/dotj.md#jk-deserialize)
+[-25!x](#-25x-async-broadcast)       async broadcast          -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
+[-26!x](#-26x-ssl)       SSL                      
 [-27!(x;y)](#-27xy-format)   format
 [-30!x](#-30x-deferred-response)       deferred response
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash
 [-36!(x;y)](#-36xy-load-master-key)   load master key
+[-38!x](#-38x-socket-table)       socket table
 [-120!x](#-120x-memory-domain)      memory domain
 </pre>
 
@@ -44,6 +46,14 @@ The operator `!` with a negative integer as left argument calls an internal func
 
 [![Neal Stephenson thinks it’s cute to name his labels 'dengo'](../img/goto.png "Neal Stephenson thinks it’s cute to name his labels 'dengo'")](https://xkcd.com/292/)
 _xkcd.com_
+
+
+## `0N!x` (show)
+
+The identity function. 
+Returns `x` after writing it to the console. 
+
+An essential tool for debugging.
 
 
 ## `-4!x` (tokens)
@@ -137,7 +147,7 @@ Where `n` is a non-negative integer and `x` is a logfile handle
 
 In replaying, if the logfile references an undefined function, the function name is signalled as an error.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Replaying logfiles](../kb/replay-log.md)
 
 
@@ -209,7 +219,7 @@ q)get[`:test]~get`:ztest
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` release available.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [File compression](../kb/file-compression.md)
 
 
@@ -228,7 +238,7 @@ logicalBlockSize  | 17i
 zipLevel          | 6i
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [File compression](../kb/file-compression.md)
 
 
@@ -305,7 +315,7 @@ Possible error scenarios:
 View TLS settings on a handle or current process `-26!handle` or `-26!()`.
 Since V3.4 2016.05.12.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [SSL](../kb/ssl.md)
 
 
@@ -352,7 +362,7 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 
 Since V3.6 2018.05.18.
 
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Deferred response](../kb/deferred-response.md)
 
 
@@ -367,7 +377,7 @@ q)raze string -33!"mypassword"
 "91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
 
 
@@ -382,7 +392,7 @@ Where
 
 loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk. 
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Create master key](../kb/dare.md#configuration)
 
 Expect this call to take about 500 milliseconds to execute.
@@ -399,6 +409,27 @@ Unrecognized key format         master key file format unrecognized
 ```
 
 
+## `-38!x` (socket table)
+
+Syntax: `-38!x`
+
+where `x` is a list of socket handles, returns a table with columns
+
+-   `p` (protocol): `q` (IPC) or `w` (WebSocket)
+-   `f` (family): `t` (TCP) or `u` (Unix domain socket)
+
+Since v4.0 2020.06.01.
+
+```q
+q){([]h)!-38!h:.z.H}[]
+h| p f
+-| ---
+8| q u
+9| q t
+```
+
+:fontawesome-solid-book:
+[`.z.H`](../ref/dotz.md#zh-active-sockets)
 ## `-120!x` (memory domain)
 
 Syntax `-120!x`
@@ -410,5 +441,5 @@ q)-120!'(1 2 3;.m.x:1 2 3)
 0 1
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.m` namespace](../ref/dotm.md)

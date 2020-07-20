@@ -10,7 +10,7 @@ keywords: kdb+, q, rdb, realtime database start, tutorial
 
 Kdb+tick is used to capture, store and analyze massive volumes of data in real time. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 
 
 A standard setup might consist of
@@ -29,7 +29,7 @@ Data feeds can be any market or other time-series data. A feedhandler converts t
 
 A Reuters RFA feedhandler is available. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/feed/rfa.zip](https://github.com/KxSystems/kdb/blob/master/c/feed/rfa.zip)
 
 In the example described here, the data feed is generated at random by a kdb+ process.
@@ -50,7 +50,7 @@ Other processes would subscribe to a tickerplant to receive new data, and each w
 
 The demo scripts run a simple tickerplant/RDB configuration. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/start/tick](https://github.com/KxSystems/cookbook/tree/master/start/tick) 
 
 The layout is:
@@ -90,28 +90,28 @@ show     | counts the updates, and displays the counts periodically
 
 Note that all the client processes load the same script file `cx.q`, with a parameter that selects the corresponding code for the process in that file. Alternatively, each process could load its own script file, but since the definitions tend to be very short, it is convenient to use a single script for all. More examples: 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/tick/c.q](https://github.com/KxSystems/kdb/blob/master/tick/c.q)  
-<i class="fab fa-github"></i> [KxSystems/kdb/e/c.q](https://github.com/KxSystems/kdb/blob/master/e/c.q) 
+:fontawesome-brands-github: [KxSystems/kdb/e/c.q](https://github.com/KxSystems/kdb/blob/master/e/c.q) 
 
 
 ## Running the demo
 
 Install kdb+tick. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 
 
 Install the demo scripts. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/start/tick](https://github.com/KxSystems/cookbook/tree/master/start/tick)  
 
 The demo displays each kdb+ process in its own window. 
 
--   <i class="fab fa-windows"></i> `start/tick/run.bat` 
--   <i class="fab fa-linux"></i> `start/tick/run.sh`
--   <i class="fab fa-apple"></i> Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
+-   :fontawesome-brands-windows: `start/tick/run.bat` 
+-   :fontawesome-brands-linux: `start/tick/run.sh`
+-   :fontawesome-brands-apple: Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
 
 The calls starting each process are essentially:
 
@@ -235,8 +235,8 @@ upd:{[t;x].[t;();,;select by sym from x]}]
 
 ## More information
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/d/tick.htm](https://github.com/KxSystems/kdb/blob/master/d/tick.htm)  
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [Kxsystems/kdb/d/FD_kdb+tick_manual_1.0.doc](https://github.com/KxSystems/kdb/blob/master/d/FD_kdb%2Btick_manual_1.0.doc)
 

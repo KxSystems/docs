@@ -4,11 +4,11 @@ description: Errors signalled by the interpreter, and what triggers them
 keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 ---
 
-# <i class="fas fa-bomb"></i> Errors 
+# :fontawesome-solid-bomb: Errors 
 
 
 
-<!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="far fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- :fontawesome-regular-hand-point-right: Simon’s list :fontawesome-regular-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 
 ## Runtime errors
@@ -35,7 +35,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
 <tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V4.0 2020.03.17)</td> </tr>
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
-<tr><td>enable slave threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
+<tr><td>enable secondary threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>encryption lib unavailable</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Failed to load OpenSSL libraries</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
 <tr><td>from</td> <td class="nowrap">`select price trade`</td> <td>Badly formed select statement</td> </tr>
@@ -43,7 +43,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>hop</td><td/><td>Request to `hopen` a handle fails; includes message from OS</td> </tr>
 <tr><td>hwr</td><td/><td>Handle write error, can't write inside a [`peach`](peach.md)</td> </tr>
 <tr><td>IJS</td> <td class="nowrap">`"D=\001"0:"0=hello\0011=world"`</td> <td>[Key type](../ref/file-text.md#key-value-pairs) is not `I`, `J`, or `S`.</td> </tr>
-<tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to insert a record with an existing key into a keyed table</td> </tr>
+<tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to [`insert`](../ref/insert.md) a record with an existing key into a keyed table</td> </tr>
 <tr><td>invalid</td> <td class="nowrap">`q -e 3`</td> <td>Invalid command-line option value</td> </tr>
 <tr><td>invalid password</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Invalid keyfile password</td> </tr>
 <tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
@@ -51,10 +51,10 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>limit</td>
 <td class="nowrap">`0W#2`</td>
 <td>
-    Tried to generate a list longer than 2<sup>40</sup>-1 (2e+09 until V3.0), 
-    or serialized object is &gt; 1TB (2GB until V3.4), 
+    Tried to generate a list longer than <span class="nowrap">2<sup>40</sup>-1</span>, 
+    or serialized object is &gt; 1TB, 
     or `'type` if trying to serialize a nested object which has &gt; 2 billion elements,
-    or <i class="far fa-hand-point-right"></i> [Parse errors](#parse-errors)
+    or :fontawesome-regular-hand-point-right: [Parse errors](#parse-errors)
 </td>
 </tr>
 <tr><td>loop</td> <td class="nowrap">`a::a`</td> <td>Dependency loop</td> </tr>
@@ -68,7 +68,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr>
 <td>no `` `g#``</td>
 <td class="nowrap">``{`g#x}peach 2#enlist 0 1``</td>
-<td>A thread other than the main q thread has attempted to add a group [attribute](syntax.md#attributes) to a vector. Seen with [`peach`](peach.md)+slave threads or multithreaded input queue</td>
+<td>A thread other than the main q thread has attempted to add a group [attribute](syntax.md#attributes) to a vector. Seen with [`peach`](peach.md)+secondary threads or multithreaded input queue</td>
 </tr>
  <tr>
 <td>noupdate</td>
@@ -76,7 +76,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <td>
 Updates blocked by the [`-b` cmd line arg](cmdline.md#-b-blocked), 
 or [`reval`](../ref/eval.md#reval) code or a thread other than the main thread has attempted to update a global variable 
-when in [`peach`](peach.md)+slave threads or multithreaded input queue. 
+when in [`peach`](peach.md)+secondary threads or multithreaded input queue. 
 Update not allowed when using [negative port number](syscmds.md#p-listening-port).
 </td>
 </tr>
@@ -89,12 +89,12 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
 <tr><td>PKCS5_PBKDF2_HMAC</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Library invocation failed</td> </tr>
 <tr><td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
-<tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install/linux.md#64-bit-or-32-bit).)</td> </tr>
+<tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install.md#step-2-put-kdb-in-qhome).)</td> </tr>
 <tr><td>Q7</td><td/><td>nyi op on file nested array</td></tr>
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](glossary.md#rank)</td> </tr> 
 <tr><td>rb</td> <td/> <td>Encountered a problem while doing a blocking read</td> </tr> 
 <tr><td>restricted</td> <td>`0"2+3"`</td> <td>in a kdb+ process which was started with [`-b` cmd line](cmdline.md#-b-blocked). Also for a kdb+ process using the username:password authentication file, or the `-b` cmd line option, `\x` cannot be used to reset handlers to their default. e.g. `\x .z.pg`</td> </tr> 
-<tr><td>s-fail</td> <td class="nowrap">`` `s#3 2``</td> <td>Invalid attempt to set “sorted” [attribute](syntax.md#attributes). Also encountered with `` `s#enums`` when loading a database (`\l db`) and enum target is not already loaded.</td> </tr>
+<tr><td>s-fail</td> <td class="nowrap">`` `s#3 2``</td> <td>Invalid attempt to set sorted [attribute](../ref/set-attribute.md). Also encountered with `` `s#enums`` when loading a database (`\l db`) and enum target is not already loaded.</td> </tr>
 <tr><td>splay</td> <td/> <td>nyi op on [splayed table](../kb/splayed-tables.md)</td> </tr>
 <tr>
 <td>stack</td>
@@ -112,20 +112,20 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>trunc</td> <td/> <td>The log had a partial transaction at the end but q couldn’t truncate the file</td> </tr>
 <tr><td>type</td> <td class="nowrap">`til 2.2`</td> <td>Wrong [type](datatypes.md). Also see `'limit`</td> </tr>
 <tr><td>type/attr error amending file</td> <td/> <td>Direct update on disk for this type or attribute is not allowed</td> </tr>
-<tr><td>u-fail</td> <td class="nowrap">`` `u#2 2``</td> <td>Invalid attempt to set “unique” [attribute](syntax.md#attributes)</td> </tr>
+<tr><td>u-fail</td> <td class="nowrap">`` `u#2 2``</td> <td>Invalid attempt to set unique or parted [attribute](../ref/set-attribute.md)</td> </tr>
 <tr><td>unmappable</td> <td>``t:([]sym:`a`b;a:(();()))``<br/>``.Q.dpft[`:thdb;.z.d;`sym;`t]``</td> <td>When saving partitioned data each column must be mappable. `()` and `("";"";"")` are OK</td> </tr>
 <tr><td>unrecognized key format</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Master keyfile format not recognized</td> </tr>
 <tr><td>upd</td> <td/> <td>Function `upd` is undefined (sometimes encountered during ``-11!`:logfile``) _or_ [license error](#license-errors)</td> </tr>
 <tr><td>utf8</td> <td/> <td>The websocket requires that text is UTF-8 encoded</td> </tr>
 <tr><td>value</td> <td/> <td>No value</td> </tr>
 <tr><td>vd1</td> <td/> <td>Attempted multithread update</td> </tr>
-<tr><td>view</td> <td/> <td>Trying to re-assign a [view](../learn/views.md) to something else</td> </tr>
+<tr><td>view</td> <td/> <td>Tried to re-assign a [view](../learn/views.md) to something else</td> </tr>
+<tr><td>-w abort</td> <td/> <td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) hit [`-w` limit](cmdline.md#-w-workspace) or [`\w` limit](syscmds.md#w-workspace)</td> </tr>
 <tr><td>-w init via cmd line</td> <td/> <td>Trying to allocate memory with [`\w`](syscmds.md#w-workspace) without `-w` on command line</td> </tr>
 <tr>
 <td>wsfull</td>
 <td class="nowrap">`999999999#0`</td>
-<td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, ran out of swap (or addressability on 32-bit), or hit [`-w` limit](cmdline.md#-w-workspace)
-</td>
+<td>[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, or ran out of swap (or addressability on 32-bit). The params also reported are intended to help Kx diagnose when assisting clients, and are subject to change.</td>
 </tr> 
 <tr><td>wsm</td> <td class="nowrap">`010b wsum 010b`</td> <td>Alias for nyi for `wsum` prior to V3.2</td> </tr>
 <tr><td>XXX</td> <td class="nowrap">`delete x from system "d";x`</td> <td>Value error (`XXX` undefined)</td> </tr>
@@ -167,7 +167,7 @@ On execute or load
     <td class="nowrap">`a:";"sv string 2+til 241;`<br/>`value"{",a,"}"`</td> 
     <td>
         Too many [constants](function-notation.md#variables-and-constants),
-        or <i class="far fa-hand-point-right"></i> [limit error](#runtime-errors)
+        or :fontawesome-regular-hand-point-right: [limit error](#runtime-errors)
     </td> 
 </tr>
 <tr> 
@@ -206,7 +206,7 @@ which will cause a `'host` error.
 <td>k4.lic</td>
 <td>
 `k4.lic` file not found, check contents of environment variables 
-[`QHOME`../learn/install.md#installing-elsewhere) and 
+[`QHOME`../learn/install.md#step-2-put-kdb-in-qhome) and 
 [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
 </td>
 </tr>
@@ -219,7 +219,7 @@ which will cause a `'host` error.
 </tbody>
 </table>
 
-<i class="fas fa-graduation-cap"></i> 
+:fontawesome-solid-graduation-cap: 
 [Licensing](../learn/licensing.md)
 
 
@@ -235,10 +235,10 @@ Use [Signal](../ref/signal.md) to signal errors.
 
 Use [Trap and Trap At](../ref/apply.md#trap) to trap errors.
 
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Debugging](debug.md)
 
 
-<!-- <i class="far fa-hand-point-right"></i> Simon’s list <i class="fab fa-github"></i> [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
+<!-- :fontawesome-regular-hand-point-right: Simon’s list :fontawesome-brands-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
 
 

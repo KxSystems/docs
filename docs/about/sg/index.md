@@ -5,9 +5,10 @@ description: Typographical, spelling, markup and lexical conventions for the q a
 author: Stephen Taylor
 keywords: convention, kdb+, q, style, spelling, typography
 ---
+# :fontawesome-solid-pen-nib: Style guide
 
-# <i class="fas fa-pen-nib"></i> Style guide
 
+[![Dilbert and slides](../../img/dilbert-slides.gif)](https://dilbert.com/strip/2020-05-11 "dilbert.com")
 
 Here are typographical, spelling and lexical conventions for the content of this site.
 
@@ -16,7 +17,7 @@ Here are typographical, spelling and lexical conventions for the content of this
 
 They apply to 
 
--   Markdown source files for code.kx.com, hosted at <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/kxsystems/docs)
+-   Markdown source files for code.kx.com, hosted at :fontawesome-brands-github: [KxSystems/docs](https://github.com/kxsystems/docs)
 -   Technical White papers prepared for code.kx.com 
 
 ## White papers
@@ -26,7 +27,7 @@ Image files should be ≤500px wide.
 
 Use the source files for published papers as models: 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/docs/docs/wp](https://github.com/KxSystems/docs/tree/master/docs/wp).
 
 
@@ -54,6 +55,19 @@ For example:
     
     Consistent observation of the conventions relieves the reader of the cognitive load of resolving ambiguities, and raises the value of the documentation. 
 
+
+## Writing is hard 
+
+Help is available. 
+
+[_Plain Words: A guide to the use of English_](https://www.amazon.co.uk/Plain-Words-Rebecca-Gowers/dp/0241960347/) by Sir Ernest Gowers 
+
+[_Politics and the English Language_](https://www.amazon.co.uk/Politics-English-Language-Penguin-Classics-ebook/dp/B00AZQTM5I/) by George Orwell
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OV5J6BfToSw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+> It’s a nervous tic of analytical philosophy to be forever wishing to clarify distinctions that nobody is actually confused about.
+> <br>— _Jerry Fodor_
 
 ## Summary
 

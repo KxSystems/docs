@@ -3,7 +3,7 @@ title: Frequently-asked questions for the automated machine learning | Machine L
 description: Frequently-asked questions about the automated machine learning interface/framework
 keywords: embedpy, machine learning, automation, distribution, cross validation, preprocessing, ml
 ---
-# <i class="fas fa-share-alt"></i> Frequently-asked questions
+# :fontawesome-solid-share-alt: Frequently-asked questions
 
 
 
@@ -12,9 +12,9 @@ keywords: embedpy, machine learning, automation, distribution, cross validation,
 As outlined within the documentation for the [Machine-Learning Toolkit](../toolkit/index.md), procedures for the application of distributed multiprocessed cross-validation, grid-search and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
 
 ```q
-// Initialize your process with multiple slave processes and an associated port
+// Initialize your process with multiple secondary processes and an associated port
 $q -s -8 -p 4321
-// load the automl framework
+// load the AutoML framework
 q)\l automl/automl.q
 q).automl.loadfile`:init.q
 ```
@@ -111,7 +111,7 @@ The addition of custom keras models is slightly more involved than that performe
     customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
     </code></pre>
 
-    To ensure the behavior of the system is consistent with the framework, it is vital to follows the above instructions, particularly ensuring that models take as arguments the defined parameters and returning an appropriate result, in particular at the model-definition phase, where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
+    To ensure the behavior of the system is consistent with the framework, it is vital to follow the above instructions, particularly ensuring that models take as arguments the defined parameters and return an appropriate result, in particular at the model-definition phase, where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
 
     For the fitting and prediction of Keras models through embedPy, it is important that the feature data is a NumPy array. Omission of this conversion can cause issues. As seen above within `kerasmdls.q` this is done through application of `` `npa:.p.import[`numpy]`:array`` to the data.
 

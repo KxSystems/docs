@@ -40,4 +40,4 @@ q)0 1 -1 rotate' 3 4#til 12
 
 `rotate` is a uniform function. 
 
-<i class="far fa-hand-point-right"></i> [`reverse`](reverse.md)
+:fontawesome-regular-hand-point-right: [`reverse`](reverse.md)

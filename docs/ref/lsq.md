@@ -81,7 +81,7 @@ lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`inv`](inv.md), 
 [`mmu`](mmu.md)  
 Basics: [Mathematics](../basics/math.md)  

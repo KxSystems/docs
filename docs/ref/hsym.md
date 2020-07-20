@@ -29,9 +29,9 @@ q)hsym `host:port`localhost:8001
 `:host:port`:localhost:8001
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)
 [Interprocess communication](../basics/ipc.md)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](hopen.md)

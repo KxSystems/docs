@@ -5,7 +5,7 @@ author: Fionnuala Carr
 date: August 2018
 keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, comparison, corpora, corpus, document, email, feature, file, k-mean, kdbplus, learning, library, machine, machine learning, mbox, message, ml, nlp, parse, parsing, q, sentiment, similarity, string function, vector
 ---
-# <i class="fas fa-share-alt"></i> Natural-language processing 
+# :fontawesome-solid-share-alt: Natural-language processing 
 
 
 
@@ -20,7 +20,7 @@ The following requirements cover those needed to initialize running of the NLP l
 -   [embedPy](../embedpy/index.md)
 
 A number of Python dependencies also exist for this library. These can be installed using Pip as outlined at 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/nlp](https://github.com/kxsystems/nlp).
 
 ```bash
@@ -47,9 +47,9 @@ $ python -m spacy download en
 ## Installation
 
 The library is available from
-<i class="fab fa-github"></i> [KxSystems/nlp](https://github.com/kxsystems/nlp).
+:fontawesome-brands-github: [KxSystems/nlp](https://github.com/kxsystems/nlp).
 
-<i class="fab fa-docker"></i>
+:fontawesome-brands-docker:
 Alternatively the library is available as a Docker image.
 
 If you have [Docker installed](https://www.docker.com/products/container-runtime) you can run:
@@ -83,5 +83,5 @@ q).nlp.findTimes"I went to work at 9:00am and had a coffee at 10:20"
 10:20:00.000 "10:20"  45 50
 ```
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [Build instructions for the NLP Docker image](https://github.com/KxSystems/nlp/blob/master/docker/README.md)

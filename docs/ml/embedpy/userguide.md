@@ -3,7 +3,7 @@ title: embedPy user guide – Machine Learning – kdb+ and q documentation
 description: embedPy user guide
 keywords: embedpy, interface, kdb+, python
 ---
-# <i class="fab fa-python"></i> embedPy user guide
+# :fontawesome-brands-python: embedPy user guide
 
 
 
@@ -68,7 +68,7 @@ q).p.qeval"1+2"
 
 **Side effects** Python evaluation (unlike Python _execution_) does not allow side effects. Any attempt at variable assignment or class definition will signal an error. To execute a string performing side effects, use `.p.e`. 
 
-<i class="fab fa-stack-overflow"></i>
+:fontawesome-brands-stack-overflow:
 [Difference between `eval` and `exec` in Python](https://stackoverflow.com/questions/2220699/whats-the-difference-between-eval-exec-and-compile)
 
 
@@ -396,7 +396,7 @@ q)add2[1;oarg]
 <!-- 
 ### Further examples 
 
-Further examples can be found in the `examples` folder of the <i class="fab fa-github"></i> [KxSystems/embedPy](https://github.com/kxsystems/embedpy) repository. 
+Further examples can be found in the `examples` folder of the :fontawesome-brands-github: [KxSystems/embedPy](https://github.com/kxsystems/embedpy) repository. 
 
 This includes an example of creating simple charts in Matplotlib either by running Python code in a kdb+ process, or importing the `matplotlib.pyplot` module into kdb+ and using functions from it in q code.
  -->

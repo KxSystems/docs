@@ -78,7 +78,7 @@ q)\dir *.q
     ...
     </code></pre>
 
-    <i class="far fa-hand-point-right"></i> [Command-line parameters](../../basics/cmdline.md) e.g.
+    :fontawesome-regular-hand-point-right: [Command-line parameters](../../basics/cmdline.md) e.g.
     `$ q profile.q -p 5001`
 
     + loads script `profile.q` at startup. This can in turn load other scripts.
@@ -125,7 +125,7 @@ The usual prompt is `q)`. Sometimes a different prompt is given; you need to und
     q)
     </code></pre>
 
-    <i class="far fa-hand-point-right"></i> 
+    :fontawesome-regular-hand-point-right: 
     Basics: [System command `\d`](../../basics/syscmds.md#d-directory)
 
 
@@ -140,7 +140,7 @@ q)2 + "hello"                / cannot add number to character
 'type
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Errors](../../basics/errors.md)
 
 

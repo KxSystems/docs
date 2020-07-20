@@ -7,7 +7,7 @@ keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q
 # ![Jupyter](../../interfaces/img/jupyter.png) JupyterQ
 
 <div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../../interfaces/fusion.md)
+:fontawesome-brands-superpowers: [Fusion for kdb+](../../interfaces/fusion.md)
 </div>
 
 
@@ -32,7 +32,7 @@ keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q
 
 ## Build and install
 
-<i class="fas fa-download"></i> Download the code from <i class="fab fa-github"></i> [KxSystems/JupyterQ](https://github.com/kxsystems/jupyterq) and follow the instructions there.
+:fontawesome-solid-download: Download the code from :fontawesome-brands-github: [KxSystems/JupyterQ](https://github.com/kxsystems/jupyterq) and follow the instructions there.
 
 JupyterQ can also be downloaded through Conda install as follows
 

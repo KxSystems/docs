@@ -78,5 +78,5 @@ q)x,:`a  / ok
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`null`](null.md)

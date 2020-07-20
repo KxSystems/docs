@@ -40,7 +40,7 @@ Where
 -   `v` is a value of rank $n$ (or a handle to one) and `vx` a list of count $n$ with items in the domains of `v`
 -   `u` is a unary value (or a handle to one) and `ux` in its domain
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Amend, Amend At](amend.md)
 
 
@@ -82,6 +82,10 @@ If `v` has 1 argument then `vx` has 1 item and `v` is applied to the argument `v
 ```q
 v[vx[0]]
 ```
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.5.3 Indexing at Depth](/q4m3/6_Functions/#653-indexing-at-depth)
 
 
 ## Nullaries
@@ -292,7 +296,7 @@ q)es 80 35 20 -10
 8 3 2 0N
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Set Attribute](set-attribute.md)  
 q-rious kdb+: [Step Dictionaries](https://qriouskdb.wordpress.com/2019/01/01/step-dictionaries/)
 

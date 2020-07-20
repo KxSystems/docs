@@ -10,7 +10,7 @@ keywords: api, bloomberg, interface, kdb+, library, q
 
 Marshall Wace has kindly contributed a Linux-based Bloomberg Feed Handler, written by Sufian Al-Qasem & Attila Vrabecz, using the [Bloomberg Open Api](https://www.bloomberg.com/professional/support/api-library/). 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/bloomberg](https://github.com/KxSystems/cookbook/tree/master/bloomberg)
 
 

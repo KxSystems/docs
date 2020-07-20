@@ -99,7 +99,7 @@ Each slave will read, transform, map and upsert data to a relevant schema and to
 
 Once all files of a batch are loaded, the slaves will be tasked with merging a list of specific columns, sorting based on the index from the files saved and if necessary include any existing data from the HDB during the sort and merge. Once the merge is complete the table will be moved to the HDB, during which all queries to the HDB will be temporarily disabled using a lockfile.
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White paper: [“Intraday writedown solutions”](../intraday-writedown/index.md)
 for similar solutions
 
@@ -155,7 +155,7 @@ The following section has an example of a dynamic approach.
 
 ### Ingestion-flow example
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
 
 The master process will act as a file watcher. It will check for specific batches of files and add any valid files to the `.mi.tasks` table along with the relevant tasks to apply. The master process starts up and pings the staging area for batches and constituent files. It has view of all available slaves in the `.mi.slaves` table:
@@ -447,7 +447,7 @@ In order to maintain sym file integrity the following method is used to ensure a
       string symFile:` sv .mi.hdbDir,`sym] }
 ```
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White paper: [Working with symfiles](../symfiles.md)
 
 
@@ -546,7 +546,7 @@ In order to reduce downtime between batches, each slave is killed and restarted 
 
 Once the batch successfully completes, any post-ingestion event-driven tasks can be run. These can include any scheduled reporting, regulatory reporting for surveillance, transaction analysis, or ad-hoc queries.
 
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White papers:<br>
 [Surveillance techniques to effectively monitor algo- and high-frequency trading](../surveillance/index.md)<br>
 [Transaction-cost analysis using kdb+](../transaction-cost.md)
@@ -591,7 +591,7 @@ For use cases where real-time feeds are unfeasible (due to cost, technical limit
 
 In this paper we discussed batch processing and use cases where it may be most appropriate: high volumes and throughput, large number of files, hardware constraints. We then described a proposed mass ingestion framework using kdb+, discussing the technical aspects of the framework such as the number of slaves to utilize, maintaining sym file integrity and task allocation. Finally, we went through an example ingestion scenario and concluded by outlining the benefits of the framework.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
 
 The framework outlined in this paper is a simplified version of a framework that has been used in several Kx implementations for batch ingestion. It has proven to be fast, efficient and scalable.

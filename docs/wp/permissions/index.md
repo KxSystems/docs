@@ -489,7 +489,7 @@ time         sym  price    size   ex   vwap
 09:00:05.878 GOOG 875.2613 190000 BATS 876.9627
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`reval`](../../ref/eval.md#reval) for read-only access
 
 <!-- 
@@ -499,9 +499,9 @@ The standard way to prevent clients from writing to a kdb+ process is to start t
 
 One such approach would be to parse every single incoming query and implement some logic that will determine if the query is attempting to write to the process. This is a very complex approach that would involve recursively stepping through the parse tree to analyse if a variable is being updated.
 
-Instead, we will take advantage of a restriction that is built into kdb+ processes that are started with slave threads: that is, only the main thread in a kdb+ process can update global variables. Slave threads are restricted to updating local variables only. Thus, if we want to revoke write access from particular users, all we need to do is start our process with some slave threads and then encapsulate their queries inside a function which then uses [`peach`](../../ref/each.md) to iterate over a list, forcing kdb+ to use slave threads.
+Instead, we will take advantage of a restriction that is built into kdb+ processes that are started with secondary threads: that is, only the main thread in a kdb+ process can update global variables. Secondary threads are restricted to updating local variables only. Thus, if we want to revoke write access from particular users, all we need to do is start our process with some secondary threads and then encapsulate their queries inside a function which then uses [`peach`](../../ref/each.md) to iterate over a list, forcing kdb+ to use secondary threads.
 
-If `peach` is used with a one-item list, by default it will use the main thread. To force kdb+ to use its slave threads, we have to iterate over at least two items, but we don’t want to have to execute each incoming query twice. To avoid this, we’ll iterate over a two-item boolean list where the first item is true and the second false. We use the items in this list to determine whether or not the query will be executed.
+If `peach` is used with a one-item list, by default it will use the main thread. To force kdb+ to use its secondary threads, we have to iterate over at least two items, but we don’t want to have to execute each incoming query twice. To avoid this, we’ll iterate over a two-item boolean list where the first item is true and the second false. We use the items in this list to determine whether or not the query will be executed.
 
 ```q
 .perm.readOnly:{[x]
@@ -533,7 +533,7 @@ And also to the function that verifies table operations:
   .perm.readOnly[(eval;query)] }
 ```
 
-Server – start with slave threads:
+Server – start with secondary threads:
 
 ```bash
 $ q permissions.q -p 5001 –s 1

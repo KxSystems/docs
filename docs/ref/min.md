@@ -79,7 +79,7 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 `mmin` is a uniform function.
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: 
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 Basics: 

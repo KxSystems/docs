@@ -49,6 +49,6 @@ q)\echo $RTMP
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`get`, `set`](get.md)  
 Basics: [Environment](../basics/environment.md) 

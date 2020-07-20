@@ -4,7 +4,7 @@ description: We are proud to provide industry-acclaimed support for our customer
 author: Stephen Taylor
 keywords: contact, customer, github, googlegroup, interface, kdb+, knowledge, license, mortal, q, reference, repo, repository, sales, stackoverflow, support, technicalsupport, textbook, white paper
 ---
-# <i class="fas fa-life-ring"></i> Support
+# :fontawesome-solid-life-ring: Support
 
 
 
@@ -22,10 +22,10 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
 
 ## Licensed customers
 
-<i class="far fa-comments"></i> kdb+ Topicbox
+:fontawesome-regular-comments: kdb+ Topicbox
 : If you work at a company that has licensed kdb+, you can join the [k4 Topicbox group](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106).
 
-<i class="far fa-handshake"></i> Designated Contacts
+:fontawesome-regular-handshake: Designated Contacts
 : Licensed customers designate to Kx staff members whom they have authorised to deal with kdb+ licenses, downloads and bug reports. Designated Contacts can reach us at the following addresses:
 
     <table>
@@ -41,7 +41,7 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
     </table>
 
 
-<i class="fas fa-life-ring"></i> Technical support
+:fontawesome-solid-life-ring: Technical support
 : If you work at a company that has licensed kdb+, please refer to your internal support team, your Designated Contact, or the kdb+ Listbox. 
 
 
@@ -49,34 +49,34 @@ Write to sales@kx.com or visit our [Contact page](https://kx.com/about-kx/#conta
 
 This site is the primary resource for kdb+ developers.
 
-<i class="fas fa-question-circle"></i> Reference
+:fontawesome-solid-question-circle: Reference
 : The complete reference for q and kdb+, with a [reference card](ref/index.md), and formal definitions of q primitives, grouped by semantic topic.
 
-<i class="fas fa-book"></i> [_Q for Mortals 3_](/q4m3/)
+:fontawesome-solid-book: [_Q for Mortals 3_](/q4m3/)
 : An online edition of the classic textbook, now in its third edition. 
 
-<i class="far fa-map"></i> [Technical White papers](wp/index.md)
+:fontawesome-regular-map: [Technical White papers](wp/index.md)
 : An occasional series of white papers on developing systems with kdb+.
 
-<i class="fas fa-glasses"></i> [Knowledge Base](kb/index.md)
+:fontawesome-solid-glasses: [Knowledge Base](kb/index.md)
 : A collection of shorter articles on developing systems with kdb+.
 
-<i class="far fa-handshake"></i> [Interfaces](interfaces/index.md)
+:fontawesome-regular-handshake: [Interfaces](interfaces/index.md)
 : Interfaces between kdb+ and other languages, services and editors.
 
 
 ## Web and Real-World
 
-<i class="far fa-comments"></i> [kdb+ personal developers](https://groups.google.com/forum/?fromgroups#!forum/personal-kdbplus)
+:fontawesome-regular-comments: [kdb+ personal developers](https://groups.google.com/forum/?fromgroups#!forum/personal-kdbplus)
 : An open Google discussion group for users of the Personal Developer edition of kdb+.
 
-<i class="fab fa-stack-overflow"></i> [Stack Overflow](https://stackoverflow.com/search?q=kdb%2B)
+:fontawesome-brands-stack-overflow: [Stack Overflow](https://stackoverflow.com/search?q=kdb%2B)
 : Stackoverflow has a substantial collection of kdb+ questions and answers.
 
-<i class="fab fa-github"></i> [Kx on GitHub](https://kxsystems.github.io)
+:fontawesome-brands-github: [Kx on GitHub](https://kxsystems.github.io)
 : Developers from around the world share some of their best kdb+ code, libraries, and frameworks on GitHub, and Kx [indexes](github.md) them. Please send your kdb+ repository URLs to librarian@kx.com.
 
-<i class="fab fa-meetup"></i> [Meetup](https://www.meetup.com)
+:fontawesome-brands-meetup: [Meetup](https://www.meetup.com)
 : Use [meetup.com](https://www.meetup.com) to find Kx events round the world. 
 
 

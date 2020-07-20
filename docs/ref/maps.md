@@ -63,6 +63,9 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 1005000 1000000 1007000
 ```
 
+!!! warning "Each is redundant with [atomic functions](../basics/atomic.md). (Common qbie mistake.)"
+
+
 ### `each` keyword
 
 The mnemonic keyword [`each`](each.md) can be used to apply a unary value without parentheses or brackets.
@@ -162,16 +165,16 @@ q)raze[a] ~ b
 ![Each Parallel](../img/each-parallel.png)
 </div>
 
-_Assign sublists of the argument list to slave tasks, in which the unary value is applied to each item of the sublist._
+_Assign sublists of the argument list to secondary tasks, in which the unary value is applied to each item of the sublist._
 
 ```txt
 (v1':)x   v1':[x]   v1 peach x
 ```
 
-The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available slave tasks](../basics/cmdline.md#-s-slaves). Each slave task applies `v1` to each item of its sublist. 
+The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available secondary tasks](../basics/cmdline.md#-s-secondary-threads). Each secondary task applies `v1` to each item of its sublist. 
 
-<i class="fas fa-book-open"></i> 
-[Command-line option `-s`](../basics/cmdline.md#-s-slaves), 
+:fontawesome-solid-book-open: 
+[Command-line option `-s`](../basics/cmdline.md#-s-secondary-threads), 
 [Parallel processing](../basics/peach.md)
 
 ```bash
@@ -190,7 +193,14 @@ q)\t ({sum exp x?1.0}':)2#1000000  / peach
 
 ### `peach` keyword
 
-The mnemonic keyword [`peach`](each.md) can be used as a mnemonic alternative: e.g. instead of  `(v1:')` write `v1 peach list`.
+The binary keyword [`peach`](each.md) can be used as a mnemonic alternative.
+The following are equivalent.
+
+```q
+v1':[list]
+(v1':)list
+v1 peach list
+```
 
 !!! tip "Higher-rank values"
 
@@ -251,6 +261,10 @@ If the derived function is applied as a unary, and the value is not an operator 
 q){x+2*y}':[2 3 4]
 0N 7 10
 ```
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.7.9 Each Prior](/q4m3/6_Functions/#679-each-prior)
 
 
 ### `prior` keyword
@@ -351,7 +365,7 @@ q)i'[a;b;c]
 `Kuh`chien`Katte`fish
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 
 

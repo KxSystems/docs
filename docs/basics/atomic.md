@@ -1,5 +1,5 @@
 ---
-title: Atomic functions – Basics – kdb+ and q documentation
+title: Atomic functions | Basics | kdb+ and q documentation
 description: There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
 author: Stephen Taylor
 keywords: atomic, function, kdb+, q, scalar extension
@@ -83,4 +83,6 @@ Index 0 selects 2, index 4 selects 7, and index 2 selects -23.
 
     It is common in descriptions of atomic functions to restrict attention to atom arguments and assume that the reader understands how the descriptions extend to list arguments.
 
-
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.6 Atomic Functions](/q4m3/6_Functions/#66-atomic-functions)

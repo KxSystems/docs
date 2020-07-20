@@ -59,4 +59,4 @@ Don’t send complete applications, or commercially sensitive code or data!
 Don’t send core-dumps unless requested, they’re typically meaningful only on the machine where they were generated. If you know how to generate a backtrace from a core-dump, please do send us the backtrace.
 
 
-<i class="far fa-hand-point-right"></i> [Simon Tatham, How to Report Bugs Effectively](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html)
+:fontawesome-regular-hand-point-right: [Simon Tatham, How to Report Bugs Effectively](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html)

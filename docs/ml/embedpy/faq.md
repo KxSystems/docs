@@ -3,7 +3,7 @@ title: Frequently-asked questions about embedPy – Machine Learning – kdb+ an
 description: Frequently-asked questions about embedPy
 keywords: dates, embedpy, interface, kdb+, pandas, python, q
 ---
-# <i class="fab fa-python"></i> Frequently-asked questions about embedPy
+# :fontawesome-brands-python: Frequently-asked questions about embedPy
 
 ## Installing embedPy on system with Python installed from source?
 

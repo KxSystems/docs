@@ -1,0 +1,81 @@
+/* https://codepen.io/epainter/pen/jdLvG */
+
+/* generated for 6 slides at 2020.04.20 11:46 */
+
+.container {
+  width:600px;
+	height:300px;
+	position:relative;
+  overflow:hidden;
+  margin: 0 auto;
+}
+
+.container > p {
+  display: none;
+}
+
+.css-carousel {
+  width: 900%;
+  -webkit-animation: css-carousel 30s linear infinite;
+	-moz-animation: css-carousel 30s linear infinite;
+	-ms-animation: css-carousel 30s linear infinite;
+	animation: css-carousel 30s linear infinite;
+}
+
+.css-carousel .css-img{
+  display:inline-block;
+  width: 600px;
+  height: 300px;
+}
+.css-carousel img:not(:first-child){
+  float:left;
+}
+
+@-webkit-keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
+  100% { margin-left:0;}
+}
+@-moz-keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
+  100% { margin-left:0;}
+}
+@-ms-keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
+  100% { margin-left:0;}
+}
+@keyframes css-carousel {
+  0%, 10% {margin-left:0;}
+  11%, 21% {margin-left:-100%;}
+  22%, 32% {margin-left:-200%;}
+  33%, 43% {margin-left:-300%;}
+  44%, 54% {margin-left:-400%;}
+  55%, 65% {margin-left:-500%;}
+  66%, 76% {margin-left:-600%;}
+  77%, 88% {margin-left:-700%;}
+  89%, 99.99% {margin-left:-800%;}
+  100% { margin-left:0;}
+}

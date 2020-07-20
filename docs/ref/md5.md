@@ -21,5 +21,5 @@ q)md5 "this is a not so secret message"
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Strings](../basics/strings.md)

@@ -64,7 +64,7 @@ Firstly, when saving data, multiple partitions can be written
 concurrently, potentially reducing the time required to load data from
 flat files or persist it from memory. Secondly, when running queries
 against the database, data from multiple partitions can be read in
-parallel using slave threads. In the same way as queries on a database
+parallel using secondary threads. In the same way as queries on a database
 with a single partition per date can read data for multiple days in
 parallel, now data for the same date can be read in parallel. A third
 advantage related to database maintenance is that since the size of
@@ -147,7 +147,7 @@ below.
 Here we assume some familiarity with loading large data files by
 splitting the file and loading in chunks using `.Q.fs` and `.Q.fsn`. 
 
-<i class="far fa-hand-point-right"></i> [Knowledge Base](../../kb/index.md)
+:fontawesome-regular-hand-point-right: [Knowledge Base](../../kb/index.md)
 
 
 ### Striping data over multiple partitions per date
@@ -511,7 +511,7 @@ The use of compression for all or part of the dataset here is outside
 the scope of this white paper, however, this is undoubtedly an
 important feature to consider using for options data. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [File compression](../../kb/file-compression.md)
 
 

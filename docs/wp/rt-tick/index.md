@@ -20,7 +20,7 @@ It is hoped this white paper will help dispel any notion of tick being a black b
 All tests were run using kdb+ V3.1 (2013.09.19) on Windows.
 The tickerplant and real-time database scripts can be obtained from GitHub.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb+tick](https://github.com/KxSystems/kdb-tick)
 
 The tickerplant and real-time database scripts used are dated 2014.03.12 and 2008.09.09 respectively. These are the most up-to-date versions as of the writing of this white paper.

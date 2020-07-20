@@ -313,7 +313,7 @@ James Corcoran has worked as a kdb+ consultant in some of the world’s largest 
 
 ## Appendix
 
-The code in this appendix can be found on Github at <i class="fab fa-github"></i> [kxcontrib/market-fragmentation](https://github.com/kxcontrib/market-fragmentation).
+The code in this appendix can be found on Github at :fontawesome-brands-github: [kxcontrib/market-fragmentation](https://github.com/kxcontrib/market-fragmentation).
 
 ```q
 ////////////////////////////////

@@ -27,5 +27,5 @@ q)tables `.work   / tables in work
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Metadata](../basics/metadata.md)

@@ -453,7 +453,7 @@ OS version | `.z.o`
 process ID | `.z.i`
 user ID | `.z.u`
 kdb+ version | `.z.K`
-number of slave tasks | `\s`
+number of secondary tasks | `\s`
 port number | `\p`
 license | `.z.l`
 CPU mask | `sched_getaffinity(2)`

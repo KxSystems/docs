@@ -24,6 +24,6 @@ q)-10$"foo"
 "       foo"
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Strings](../basics/strings.md)  
 [`$` dollar](overloads.md#dollar)

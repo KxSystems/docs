@@ -7,7 +7,7 @@ keywords: api, c, interface, kdb+, library, q, reference
 # C API Reference
 
 
-<i class="far fa-hand-point-right"></i> [C client for kdb+](c-client-for-q.md)
+:fontawesome-regular-hand-point-right: [C client for kdb+](c-client-for-q.md)
 
 
 ## Overview
@@ -264,7 +264,7 @@ Tags: `c.o`
 
 Converts a q date to a `yyyymmdd` integer.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`ymd` – numbers to date](#ymd-numbers-to-date)
 
 
@@ -460,7 +460,7 @@ Signature: `I khp(const S hostname, I port)`
 Standalone apps only.
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpu(hostname, port, "")`
+:fontawesome-regular-hand-point-right: `khpu(hostname, port, "")`
 
 
 ### `khpu` – connect, no timeout
@@ -470,7 +470,7 @@ Signature: `I khpu(const S hostname, I port, const S credentials)`
 Standalone apps only.
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpun(hostname, port, credentials, 0)`
+:fontawesome-regular-hand-point-right: `khpun(hostname, port, credentials, 0)`
 
 
 ### `khpun` – connect
@@ -502,24 +502,38 @@ Signature: `I khpunc(S hostname, I port, S credentials, I timeout, I capability)
 2    use TLS
 ```
 
-A return value of -3 indicates the OpenSSL initialisation failed.
+??? detail "Messages larger than 2GB"
+
+    During the initial handshake of a connection, each side’s capability is exchanged, and the common maximum is chosen for the connection. By setting the capability parameter for `khpunc`, the default message-size limit for this connection can be raised from 2GB to 1TB. e.g.
+
+    ```
+    int handle=khpunc("hostname",5000,"user:password",timeout,1);
+    ```
+
+    A TLS-enabled connection supporting upto 1TB messages can be achieved via bit-or of the TLS and 1TB bits, e.g.
+
+    ```
+    int handle=khpunc("hostname",5000,"user:password",timeout,1|2);
+    ```
+
+A return value of -3 indicates the OpenSSL initialization failed.
 
 ```txt
  0   Authentication error
 -1   Connection error
 -2   Timeout error
--3   OpenSSL initialisation failed
+-3   OpenSSL initialization failed
 ```
 
-<i class="far fa-hand-point-right"></i> [`sslInfo`](#sslinfo-ssl-info)
+:fontawesome-regular-hand-point-right: [`sslInfo`](#sslinfo-ssl-info)
 
 !!! tip "Unix domain socket"
 
     For `khp`, `khpu`, `khpun`, and `khpunc` a Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
 
-    <pre><code class="language-c">
+    ```
     int handle=khpu("0.0.0.0",5000,"user:password");
-    </code></pre>
+    ```
 
 
 ### `ki` – create int
@@ -614,7 +628,7 @@ K f(K x){
 }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Error signaling and catching](c-client-for-q.md#error-signaling-and-catching)
 
 
@@ -777,6 +791,9 @@ Shared library only.
 
 On success, returns int K object containing `d`. On error, `NULL` is returned, `d` is closed.
 
+:fontawesome-regular-hand-point-right:
+[Callbacks](c-client-for-q.md#callbacks)
+
 
 ### `setm` – toggle symbol lock
 
@@ -838,7 +855,7 @@ included by `k.h`
 
 These are `va_list` versions of the `K k(I,const S,…)` and `K knk(I,…)` functions, useful for writing variadic utility functions that can forward the K objects.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 comp.lang.c: [How can I write a function which takes a variable number of arguments and passes them to some other function (which takes a variable number of arguments)?](http://c-faq.com/varargs/handoff.html)
 
 
@@ -880,6 +897,6 @@ Tags: `c.o`
 
 Encode a year/month/day as a q date, e.g. `0==ymd(2000, 1, 1)`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`dj` – date to number](#dj-date-to-number)
 

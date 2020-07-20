@@ -44,6 +44,10 @@ a    b
 ,"3" "aapl"
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.3.1 Data to Strings](/q4m3/7_Transforming_Data/#731-data-to-strings)
+
 
 ## Domain and range 
 
@@ -55,7 +59,7 @@ range  c c c c c c c c c c c c c c c c c c
 Range: `c`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Namespace [`.h`](doth.md)  
 .Q: [`.Q.addr`](dotq.md#qaddr-ip-address) (IP address), 
 [`.Q.f`](dotq.md#qf-format) (format), 

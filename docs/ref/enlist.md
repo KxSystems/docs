@@ -6,12 +6,14 @@ keywords: kdb+,list, q
 ---
 # `enlist`
 
-_Make a list._
+_Make a single-item list._
 
 
 
 
 Syntax: `enlist x`, `enlist[x]`
+
+Returns a list with `x` as its sole item. 
 
 An atom is not a one-item list. `enlist` and `first` convert between the two.
 
@@ -56,4 +58,13 @@ a b   c
 
     For example, `{(),x} each foo` converts any atoms in list `foo` into singleton lists.
 
+!!! tip "Assign a 1-item list"
 
+    While `enlist` returns a 1-item list, if all you need to do is assign it to a name not presently defined, you can exploit the fact that `foo,:` does not require `foo` to be defined.
+
+    <pre><code class="language-q">
+    q)a:enlist[3]
+    q)b,:3
+    q)a~b
+    1b
+    </code></pre>

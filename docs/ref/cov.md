@@ -52,7 +52,7 @@ q)select price scov size by sym from trade
 `scov` is an aggregate function.
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`var, svar`](var.md)  
 Wikipedia: [Covariance](https://en.wikipedia.org/wiki/Covariance)  
 Basics: [Mathematics](../basics/math.md)

@@ -57,7 +57,7 @@ Both domains are `b g x h i j e f c s p m d z n u v t`.
 
 The result is always a float.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`div`](div.md), 
 [`ratios`](ratios.md)  
 Basics: [Mathematics](../basics/math.md)  

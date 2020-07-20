@@ -7,25 +7,24 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 # <i class="fa fa-share-alt"></i> Data preprocessing 
 
 
-The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
+<pre markdown="1" class="language-txt">
+.ml   **Data preprocessing**
+  [dropconstant](#mldropconstant)      Columns with zero variance removed
+  [filltab](#mlfilltab)           Tailored filling of null values for a simple matrix
+  [freqencode](#mlfreqencode)        Numerically encode frequency of category occurance
+  [infreplace](#mlinfreplace)        Replace +/- infinities with max/min of column
+  [lexiencode](#mllexiencode)        Label categories based on lexigraphical order
+  [minmaxscaler](#mlminmaxscaler)      Data scaled between 0-1
+  [onehot](#mlonehot)            One-hot encoding of table or array
+  [polytab](#mlpolytab)           Polynomial features of degree n from a table
+  [stdscaler](#mlstdscaler)         Standard scaler transform-based representation of a table
+  [timesplit](#mltimesplit)         Decompose time columns into constituent parts
+</pre>
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/util/preproc.q](https://github.com/kxsystems/ml/blob/master/util/preproc.q)
 
-The following functions are defined in the file `preproc.q` in the Machine Learning Toolkit.
-
-```txt
-  .ml.dropconstant         Columns with zero variance removed
-  .ml.filltab              Tailored filling of null values for a simple matrix
-  .ml.freqencode           Numerically encode frequency of category occurance
-  .ml.infreplace           Replace +/- infinities with max/min of column
-  .ml.lexiencode           Label categories based on lexigraphical order
-  .ml.minmaxscaler         Data scaled between 0-1
-  .ml.onehot               One-hot encoding of table or array
-  .ml.polytab              Polynomial features of degree n from a table
-  .ml.stdscaler            Standard scaler transform-based representation of a table
-  .ml.timesplit            Decompose time columns into constituent parts
-```
+The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
 
 ## `.ml.dropconstant`

@@ -3,7 +3,7 @@ title: Kdb+ server for ODBC – Interfaces – kdb+ and q documentation
 description: The ODBC interface for kdb+is no longer supported. See instead the SImba Magnitude ODBC drivers.
 keywords: api, interface, kdb+, library, odbc, q, server
 ---
-# <i class="fas fa-database"></i> Kdb+ server for ODBC
+# :fontawesome-solid-database: Kdb+ server for ODBC
 
 
 
@@ -20,7 +20,7 @@ keywords: api, interface, kdb+, library, odbc, q, server
 
 
 In Windows only, you can use ODBC to connect to a q database from a non-q client.  
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [ODBC](../kb/odbc.md)
 
 
@@ -29,14 +29,14 @@ Knowledge Base: [ODBC](../kb/odbc.md)
 To install:
 
 Ensure your q process has loaded the SQL interpreter.  
-<i class="fab fa-github"></i> [KxSystems/kdb/s.k](https://github.com/KxSystems/kdb/blob/master/s.k)
+:fontawesome-brands-github: [KxSystems/kdb/s.k](https://github.com/KxSystems/kdb/blob/master/s.k)
 
 !!! warning "Windows 2003 hotfix KB948459"
 
     If using Windows 2003, before installing ensure you have hotfix [KB948459](https://www.microsoft.com/en-gb/download/details.aspx?id=20065) applied. 
 
--   in W32, download <i class="fab fa-github"></i> [KxSystems/kdb/w32/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w32/odbc.zip) and run it to install the q ODBC driver
--   in W64, download <i class="fab fa-github"></i> [KxSystems/kdb/w64/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w64/odbc.zip) and extract it to a temporary directory. Run `d0.exe` to install the q ODBC driver.
+-   in W32, download :fontawesome-brands-github: [KxSystems/kdb/w32/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w32/odbc.zip) and run it to install the q ODBC driver
+-   in W64, download :fontawesome-brands-github: [KxSystems/kdb/w64/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w64/odbc.zip) and extract it to a temporary directory. Run `d0.exe` to install the q ODBC driver.
 
 !!! tip "Troubleshooting"
 

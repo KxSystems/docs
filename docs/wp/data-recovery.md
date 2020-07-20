@@ -40,7 +40,7 @@ Historical database
 
 : The historical database (HDB) consists of on-disk kdb+ data, typically split into date partitions. A kdb+ process can read this data and memory-map it, allowing for fast queries across a large volume of data. The RDB is instructed to save its data to the HDB at EOD.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: 
 [Kdb+ tick profiling for throughput optimization](tick-profiling.md)
 
@@ -61,7 +61,7 @@ accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$()
 
 Kdb+tick is freely available  and contains a few short, yet powerful scripts.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 
 script     | purpose
@@ -70,7 +70,7 @@ script     | purpose
 `tick/r.q` | runs a standard real-time database
 `tick/u.q` | contains functions for subscription and publication
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Starting kdb+: [Realtime database](../learn/startingkdb/tick.md)
 
 
@@ -175,7 +175,7 @@ q)\ts value each get `:sym2014.05.07
 1690 296580768
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [`\ts` system command](../basics/syscmds.md#ts-time-and-space)
 
 The return value from ``-11!`:logfile`` is the number of tplog lines executed.
@@ -488,7 +488,7 @@ upd:{[t;x]                  / redefine upd with error trapping
   };
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Trap](../ref/apply.md#trap)
 
 We now replay the original tplog.

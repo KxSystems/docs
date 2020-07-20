@@ -55,7 +55,7 @@ write | [`hopen` `hclose`](../ref/hopen.md)<br>write with handle | [`hopen` `hcl
 read | [`read0`](../ref/read0.md) | [`read1`](../ref/read1.md)
  | [`0:` Load CSV](../ref/file-text.md#load-csv)<br>[`0:` Load Fixed](../ref/file-text.md#load-fixed) | [`1:` Read Binary](../ref/file-binary.md#read-binary)
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Writing with handles](handles.md)
 
 !!! tip "File Text operator"

@@ -40,7 +40,7 @@ $(function() {
 	var gsSearch = 'https://www.google.com/search?q=site%3Acode.kx.com+';
 	var srchHandler = function( evt ) {
 		if( evt.which===13 ) {
-			var qry = $("[data-md-component=query]").val().trim();
+			var qry = $("[data-md-component=search-query]").val().trim();
 			if( qry !== "" ) {
 				var tryThis = function( str, keys, vals, pfx, sfx ){
 					var i = jQuery.inArray(str,keys);
@@ -107,19 +107,4 @@ $(function() {
 	// disable MkDocs keypress listener/s on Search form
 	$('.md-search__form').replaceWith($('.md-search__form').clone());
 	$(".md-search__form").on('keydown', srchHandler);
-	// replace Close button with link to Search tips
-	var btn = $("button.md-icon.md-search__icon");
-	$(btn).text("?");
-	$(btn).attr("title","Search help");
-	$(btn).css({
-		color:"white",
-		fontFamily:'Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif',
-		opacity:"1",
-		transform:"none","-webkit-transform":"none"
-	});
-	$(btn).click(function() {
-		var host = window.location.host;
-		var dest = (test ? "" : "/q") + "/about/search/";
-		window.location = dest;
-	});
 });

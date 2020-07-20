@@ -1,10 +1,10 @@
 ---
-title: select, Select – Reference – kdb+ and q documentation
+title: select keyword, Select operator | Reference | kdb+ and q documentation
 description: select and Select are (respectively) a q keyword and operator that select all or part of a table, possibly with new columns.
 author: Stephen Taylor
 keywords: column, kdb+, q, qsql, query, select, sql, table
 ---
-# `select`, `?` Select
+# `select`
 
 
 
@@ -12,28 +12,75 @@ keywords: column, kdb+, q, qsql, query, select, sql, table
 
 _Select all or part of a table, possibly with new columns_
 
+!!! info "`select` is a qSQL query template and varies from regular q syntax."
 
-## `select`
+For the Select operator `?`, see 
+:fontawesome-solid-book-open:
+[Functional SQL](../basics/funsql.md)
 
-Syntax: `select [cols] [by groups] from t [where filters]`
 
-`select` retrieves specified columns from a table. It has many forms; not all are described here. 
+## Syntax
 
-A `by` clause with no `cols` specified returns the last row in each group.
+
+<pre markdown="1" class="language-txt">
+select [_L<sub>exp</sub>_] [distinct|_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+</pre>
+
+:fontawesome-solid-book-open:
+[qSQL syntax](../basics/qsql.md)
+
+
+The `select` query returns a table for both [call-by-name and call-by-value](../basics/qsql.md#from-phrase).
+
+
+## Minimal form 
+
+The minimal form of the query returns the evaluated table expression.
 
 ```q
 q)tbl:([] id:1 1 2 2 2;val:100 200 300 400 500)
-q)select by id from tbl
-id| val
---| ---
-1 | 200
-2 | 500
+q)select from tbl
+id val
+------
+1  100
+1  200
+2  300
+2  400
+2  500
 ```
 
 
-### Limiting results
+## Select phrase
 
-To limit the returned results you can also use these forms:
+The [Select phrase](../basics/qsql.md#select-phrase) specifies the columns of the result table, one per subphrase. 
+
+Absent a Select phrase, all the columns of the table expression are returned.
+(Unlike SQL, no `*` wildcard is required.)
+
+```q
+q)t:([] c1:`a`b`c; c2:10 20 30; c3:1.1 2.2 3.3)
+
+q)select c3, c1 from t
+c3  c1
+------
+1.1 a
+2.2 b
+3.3 c
+
+q)select from t
+c1 c2 c3
+---------
+a  10 1.1
+b  20 2.2
+c  30 3.3
+```
+
+A [computed column](../basics/qsql.md#computed-columns) in the Select phrase cannot be referred to in another subphrase. 
+
+
+## Limit expression
+
+To limit the returned results you can include a limit expression _L<sub>exp</sub>_
 
 ```q
 select[n]
@@ -56,142 +103,112 @@ This would return the three best prices for symbol `s` with a size greater than 
 
 This construct works on in-memory tables but not on memory-mapped tables loaded from splayed or partitioned files. 
 
-Where there is a by-clause, and no sort order is specified, the result is sorted ascending by its key.
-
-!!! tip "Performance characteristic"
-
-    `select[n]` applies the where-clause on all rows of the table, and takes the first `n` rows, before applying the select-clause. So if you are paging it is better to store the result of the query somewhere and `select[n,m]` from there, rather than run the filter again.
+Performance characteristic: `select[n]` applies the where-clause on all rows of the table, and takes the first `n` rows, before applying the select-clause. So if you are paging it is better to store the result of the query somewhere and `select[n,m]` from there, rather than run the filter again.
 
 
-### Performance 
+## Distinct
 
--   Select only the columns you will use.
--   Use the most restrictive constraint first.
--   Ensure you have a suitable attribute on the first non-virtual constraint (e.g.`` `p`` or `` `g`` on sym).
--   Constraints should have the unmodified column name on the left of the constraint operator (e.g. where sym in syms,…)
--   When aggregating, use the virtual field first in the by-clause. (E.g. `select .. by date,sym from …`)
-
-!!! tip 
-
-    ``…where `g=,`s  within …``  
-    Maybe rare to get much speedup, but if the `` `g `` goes to 100,000 and then `` `s `` is 1 hour of 24 you might see some overall improvement (with overall table of 30 million). 
+`select distinct` returns only unique records in the result.
 
 
-### Multithreading
+## By phrase
 
-The following pattern will make use of slave threads via `peach`
+A `select` query that includes a By phrase returns a keyed table.
+The key columns are those in the By phrase; values from other columns are grouped, i.e. nested. 
 
 ```q
-select … by sym, … from t where sym in …, … 
+q)k:`a`b`a`b`c
+q)v:10 20 30 40 50
+
+q)select c2 by c1 from ([]c1:k;c2:v)
+c1| c2
+--| -----
+a | 10 30
+b | 20 40
+c | ,50
+
+q)v group k   / compare the group keyword
+a| 10 30
+b| 20 40
+c| ,50
 ```
 
-when `sym` has a `` `g`` or `` `p`` attribute. (Since V3.2 2014.05.02)
+Unlike in SQL, columns in the By phrase 
 
-It uses [`peach`](../ref/maps.md#each-parallel) for both in-memory and on-disk tables. For single-threaded, this is approx 6&times; faster in memory, 2&times; faster on disk, and uses less memory than previous releases – but mileage will vary. This is also applicable for partitioned DBs as
+-   are included in the result and need not be specified in the Select phrase
+-   can include computed columns
+
+:fontawesome-solid-globe:
+[The SQL `GROUP BY` statement](https://www.w3schools.com/sql/sql_groupby.asp)
+
+The [`ungroup`](ungroup.md) keyword reverses the grouping, though the original order is lost. 
 
 ```q
-select … by sym, … from t where date …, sym in …, …
+q)ungroup select c2 by c1 from ([]c1:k;c2:v)
+c1 c2
+-----
+a  10
+a  30
+b  20
+b  40
+c  50
 ```
-
-<i class="fas fa-graduation-cap"></i>
-[Table counts in a partitioned database](../kb/partition.md#table-counts)
-
-
-### Special functions
-
-The following functions (essentially `.Q.a0` in `q.k`) receive special treatment within `select`:
-
-`count`, `first`, `last`, `sum`, `prd`, `min`, `max`, `med`, `avg`, `wsum`, `wavg`, `var`, `dev`, `cov`, `cor`
-
-When used explicitly, such that it can recognize the usage, q will perform additional steps, such as enlisting results or aggregating across partitions. However, when wrapped inside another function, q does not know that it needs to perform these additional steps, and it is then left to the programmer to insert them.
 
 ```q
-q)select sum a from ([]a:1 2 3)
-a
--
-6
-q)select {(),sum x}a from ([]a:1 2 3)
-a
--
-6
+q)t:([] name:`tom`dick`harry`jack`jill;sex:`m`m`m`m`f;eye:`blue`green`blue`blue`gray)
+q)t
+name  sex eye
+---------------
+tom   m   blue
+dick  m   green
+harry m   blue
+jack  m   blue
+jill  f   gray
+
+q)select name,eye by sex from t
+sex| name                 eye
+---| ------------------------------------------
+f  | ,`jill               ,`gray
+m  | `tom`dick`harry`jack `blue`green`blue`blue
+
+q)select name by sex,eye from t
+sex eye  | name
+---------| ---------------
+f   gray | ,`jill
+m   blue | `tom`harry`jack
+m   green| ,`dick
 ```
 
-
-!!! warning "Cond is not supported inside q-SQL expressions"
-
-    Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
-
-    <i class="far fa-hand-point-right"></i>
-    [q-SQL](../basics/qsql.md#cond)
-
-
-
-### Name resolution
-
-Resolution of a name within `select`, `exec`, and `update` is as follows:
-
-1.  column name
-1.  local name in (or argument of) the encapsulating function
-1.  global name in the current working namespace – not necessarily the space in which the function was defined
-
-!!! tip 
-
-    You can [refer explicitly to namespaces](../basics/glossary.md#name-namespace):
-
-    <pre><code class="language-q">
-    select (\`. \`toplevel) x from t
-    </code></pre>
-
-!!! warning "Duplicate names for columns or groups"
-
-    `select` auto-aliases colliding duplicate column names for either `select az,a from t`, or `select a by c,c from t`, but not for `select a,a by a from t`.
-
-    Such a collision throws a `'dup names for cols/groups a` error during parse, indicating the first column name which collides. 
-    (Since V4.0 2020.03.17.)
-
-    <pre><code class="language-q">
-    q)parse"select b by b from t"
-    'dup names for cols/groups b
-      [2]  select b by b from t
-           ^
-    </code></pre>
-
-    The easiest way to resolve this conflict is to explicitly rename columns. e.g. `select a,b by c:a from t`.
-
-
-### Implicit arguments
-
-When compiling functions, the implicit args `x`, `y`, `z` are visible to the compiler only when they are not inside the Select, By, and Where clauses. The From clause is not masked. This can be observed by taking the [`value`](value.md) of the function and observing the second item: the args.
+A By phrase with no Select phrase returns the last row in each group.
 
 ```q
-q)args:{(value x)1}
-q)args{} / no explicit args, so x is a default implicit arg of identity (::)
-,`x
-q)/from clause is not masked, y is detected as an implicit arg here
-q)args{select from y where a=x,b=z}
-`x`y
-q)args{[x;y;z]select from y where a=x,b=z} / x,y,z are now explicit args
-`x`y`z
-q)/call with wrong number of args results in rank error
-q){select from ([]a:0 1;b:2 3) where a=x,b=y}[0;2]
-'rank
-  [0]  {select from ([]a:0 1;b:2 3) where a=x,b=y}[0;2]
-       ^
-q)/works with explicit args
-q){[x;y]select from ([]a:0 1;b:2 3) where a=x,b=y}[0;2]
-a b
----
-0 2
+q)select by sex from t
+sex| name eye
+---| ---------
+f  | jill gray
+m  | jack blue
 ```
 
-<i class="far fa-hand-point-right"></i>
-_Q for Mortals_: [§9.3 The `select` Template](/q4m3/9_Queries_q-sql/#93-the-select-template)  
-Basics: [qSQL](../basics/qsql.md)
+Where there is a [By phrase](../basics/qsql.md#by-phrase), and no sort order is specified, the result is sorted ascending by its key.
+
+
+## Cond
+
+[Cond](cond.md) is not supported inside query templates: 
+see [qSQL](../basics/qsql.md#cond).
 
 
 
-## `?` Select
-
-<i class="far fa-hand-point-right"></i>
-For functional Select, see Basics: [Functional qSQL](../basics/funsql.md#select)
-
+----
+:fontawesome-solid-book:
+[`delete`](delete.md),
+[`exec`](exec.md),
+[`update`](update.md)
+<br>
+:fontawesome-solid-book-open:
+[qSQL](../basics/qsql.md),
+[Functional SQL](../basics/funsql.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.3 The `select` Template](/q4m3/9_Queries_q-sql/#93-the-select-template) 

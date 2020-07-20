@@ -154,5 +154,5 @@ q)s like "*the*the"
 ```
 
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Using regular expressions](../kb/regex.md)

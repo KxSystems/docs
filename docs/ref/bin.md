@@ -81,7 +81,7 @@ q)\t t bin t
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`aj`](aj.md), [`lj`](lj.md)  
 Basics: [Search](../basics/search.md)
 

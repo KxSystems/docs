@@ -25,7 +25,7 @@ All tests were run using kdb+ version 3.1 (2013.09.05)
 
 There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`set`](../../ref/get.md#set), 
 [`-19!`](../../basics/internal.md#-19x-compress-file)
 
@@ -69,7 +69,7 @@ The various combinations of arguments will be discussed further in the following
 
 If this approach is used to compress data, it is preferable to have the source and target files on separate physical disks. This will reduce the number of disk seeks required to move the data iteratively in chunks. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/compress/cutil.q](https://github.com/simongarland/compress/blob/master/cutil.q) for migrating uncompressed databases to compressed format
 
 
@@ -187,7 +187,7 @@ The focus of our tests will be on the impact to downstream users of the data rat
 
 Each system will have its own performance characteristics, and experimentation with the compression parameters should be done on a case-by-case basis. We will measure the impact of using compressed rather than uncompressed data across a range of query types. The tests will be run first with the data present in the OS cache, and then with the cache completely cold, having been emptied before each test using the cache-flush functionality of the `io.q` script.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/io](https://github.com/simongarland/io/)
 
 Each test will be performed 10 times (with the cache being fully flushed before each iteration of the cold-cache tests) and timings will be averaged. For hot-cache results, the first query time will not be included in the average. This is to allow for initial caching from disk.

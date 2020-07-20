@@ -81,7 +81,7 @@ q)` vs `:/home/kdb/data/mywork.dat
 `:/home/kdb/data`mywork.dat
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [sv](sv.md#join) join
 
 
@@ -153,7 +153,7 @@ q)10 vs(1995;1996 1997)
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`sv`](sv.md#decode) decode  
 [`.Q.j10`](dotq.md#qj10-encode-binhex) encode binhex   
 [`.Q.x10`](dotq.md#qx10-decode-binhex) decode binhex   

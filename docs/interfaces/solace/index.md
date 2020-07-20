@@ -1,27 +1,50 @@
 ---
-title: Solace interface to kdb+ – Interfaces
+title: Solace | Interfaces | Documentation for kdb+ and q
 description: Interface between kdb+ and Solace 
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
-keywords: Solace, visualisation, q
+keywords: Solace, publish, subscribe, request, reply, streaming, qos, q
 ---
-# ![Solace](../../img/prometheus.png) Solace interface to kdb+
+# ![Solace](../img/solace.jpeg) Solace interface to kdb+
+
+:fontawesome-brands-github:
+[KxSystems/solace](https://github.com/KxSystems/solace)
 
 
-<i class="fab fa-github"></i> [KxSystems/solace](https://github.com/KxSystems/solace)
 
-## Introduction
+The [Solace PubSub+ Event Broker](https://solace.com/products/event-broker/software/) can be used to efficiently stream events and information across cloud, on-premises and within IoT environments. The “+” in PubSub+ indicates its support of wide-ranging functionality beyond publish-subscribe. This includes request-reply, streaming and replay, as well as different qualities of service, such as best-effort and guaranteed delivery.
 
-The purpose of this interface is to:
 
-The following caveats should be made regarding where this interface in its current iteration can be used:
+## Use cases
 
-### Example Use cases
+The event broker is used across a number of sectors including
 
-## Quick Start
+-   airline industry (air-traffic control)
+-   financial services (payment processing)
+-   retail (supply-chain/warehouse management)
 
-## Example Demonstration
+:fontawesome-solid-globe:
+[Other sectors](https://solace.com/use-cases/)
 
-### Requirements
 
-### Setup
+## Kdb+/Solace Integration
+
+This interface lets you communicate with a Solace PubSub+ event broker from a kdb+ session. The interface follows closely the [Solace C API](https://docs.solace.com/Solace-PubSub-Messaging-APIs/C-API/c-api-home.htm). Exposed functionality includes
+
+-   subscription to topics on Solace brokers
+-   direct/persistent/guaranteed messaging functionality
+-   endpoint management
+
+:fontawesome-brands-github:
+[Install guide](https://github.com/KxSystems/solace#installation)
+
+
+## Status
+
+The interface is currently available as a beta version under an Apache 2.0 licence and is supported on a best effort basis by the Fusion team. This interface is currently in active development, with additional functionality to be released on an ongoing basis.
+
+:fontawesome-brands-github: 
+[Issues and feature requests](https://github.com/KxSystems/solace/issues) 
+<br>
+:fontawesome-brands-github: 
+[Guide to contributing](https://github.com/KxSystems/solace/blob/master/CONTRIBUTING.md)
 

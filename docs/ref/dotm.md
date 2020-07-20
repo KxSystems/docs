@@ -12,6 +12,9 @@ Since V4.0 2020.03.17
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
+:fontawesome-solid-graduation-cap:
+[Optane Memory and kdb+](../kb/optane.md)
+
 [Command-line option `-m path`](../basics/cmdline.md#-m-memory-domain) directs kdb+ to use the filesystem path specified as a separate memory domain. This splits every thread’s heap into two:
 
 domain | description

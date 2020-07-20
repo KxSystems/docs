@@ -61,7 +61,7 @@ q)keys trade         / sym is now primary key of trade
 ,`sym
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`.Q.ff`](dotq.md#qff-append-columns) (append columns)  
 Basics: [Dictionaries & tables](../basics/dictsandtables.md),
 [Metadata](../basics/metadata.md)

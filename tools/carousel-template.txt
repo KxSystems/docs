@@ -1,0 +1,42 @@
+/* https://codepen.io/epainter/pen/jdLvG */
+
+/* generated for {{SLIDES}} slides at {{TIMESTAMP}} */
+
+.container {
+  width:600px;
+	height:300px;
+	position:relative;
+	overflow:hidden;
+}
+
+.css-carousel {
+  width:{{EXTENT}}%;
+  -webkit-animation: css-carousel {{DURATION}} linear infinite;
+	-moz-animation: css-carousel {{DURATION}} linear infinite;
+	-ms-animation: css-carousel {{DURATION}} linear infinite;
+	animation: css-carousel {{DURATION}} linear infinite;
+}
+
+.css-carousel .css-img{
+  display:inline-block;
+}
+.css-carousel img:not(:first-child){
+  float:left;
+}
+
+@-webkit-keyframes css-carousel {
+  100% { margin-left:0;}
+{{SEQUENCE}}
+}
+@-moz-keyframes css-carousel {
+  100% { margin-left:0;}
+{{SEQUENCE}}
+}
+@-ms-keyframes css-carousel {
+  100% { margin-left:0;}
+{{SEQUENCE}}
+}
+@keyframes css-carousel {
+{{SEQUENCE}}
+  100% { margin-left:0;}
+}

@@ -133,7 +133,7 @@ q)-':[1 1 2 3 5 8 13 21 34]     / Subtract Each Prior
 1 0 1 1 2 3 5 8 13
 ```
 
-[**Each Parallel**](../../ref/maps.md#each-parallel) takes a unary argument and applies it, as Each does, to each item in the derived function’s argument. Unlike Each, it partitions its work between any available slave processes. Suppose `analyze` is CPU-intensive and takes a single symbol atom as argument.
+[**Each Parallel**](../../ref/maps.md#each-parallel) takes a unary argument and applies it, as Each does, to each item in the derived function’s argument. Unlike Each, it partitions its work between any available secondary processes. Suppose `analyze` is CPU-intensive and takes a single symbol atom as argument.
 
 ```q
 q)analyze':[`ibm`msoft`googl`aapl]
@@ -349,7 +349,7 @@ q)1 2 1 1 1 0 0 m' 3 1 2 3 4 2 0        / scattered indexing
 "cricket"
 ```
 
-The Each Parallel iterator takes unary values. It derives functions that perform exactly the same computation as functions derived by Each, but delegates computation to slave tasks, if any are available. 
+The Each Parallel iterator takes unary values. It derives functions that perform exactly the same computation as functions derived by Each, but delegates computation to secondary tasks, if any are available. 
 
 Good q style prefers use of the `peach` keyword.
 

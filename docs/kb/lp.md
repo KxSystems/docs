@@ -15,9 +15,9 @@ _Linear Programming is a large topic, of which this article reviews just a few a
 
     Like other descendants of Iverson Notation (e.g. [A+](http://www.aplusdev.org/index.html), [APL](https://en.wikipedia.org/wiki/APL_(programming_language)), [J](https://en.wikipedia.org/wiki/J_(programming_language))), q inherits compact and powerful expression of linear algebra. 
 
-    Q Math Library: <i class="fab fa-github"></i> [zholos/qml](https://github.com/zholos/qml)
+    Q Math Library: :fontawesome-brands-github: [zholos/qml](https://github.com/zholos/qml)
 
-    <i class="fas fa-camera"></i> [Ken Iverson & Arthur Whitney, APL89, New York City](../img/keiandatw89.png "photo courtesy Rob Hodgkinson")
+    :fontawesome-solid-camera: [Ken Iverson & Arthur Whitney, APL89, New York City](../img/keiandatw89.png "photo courtesy Rob Hodgkinson")
 
 
 
@@ -100,7 +100,7 @@ cm:{[n;d;nopath]
 
     The last two lines of `cm` both use `./` for assignment with a _scattered index_. The second argument is a list of index pairs – co-ordinates in `res`. The fourth argument is a corresponding list of values. The third argument is the assignment function. 
 
-    <i class="far fa-hand-point-right"></i> [Over](../ref/accumulators.md) for how the iterator `/` specifies the iteration here.
+    :fontawesome-regular-hand-point-right: [Over](../ref/accumulators.md) for how the iterator `/` specifies the iteration here.
 
 
 `tview` adds row and column labels.
@@ -330,7 +330,7 @@ bridgefc:{x & .Q.fc[{{{min x+y}[x] each y}[;y] each x}[;flip x];x]}
 A colleague, Ryan Sparks, is presently experimenting with further (significant) performance improvements by using [CUDA](../interfaces/gpus.md) on a graphics coprocessor for the inner-product function `bridge`.
 This work is evolving and looks very promising.  I look forward to Ryan presenting a paper and/or presentation on his results when complete as perhaps a sequel to this article.
 
-<i class="fas fa-download"></i> 
+:fontawesome-solid-download: 
 [Script with examples from this article](assets/mp.q)
 
 

@@ -55,5 +55,5 @@ UTC   | [`.z.z`](dotz.md#zz-utc-datetime)   | [`.z.p`](dotz.md#zp-utc-timestamp)
 local | [`.z.Z`](dotz.md#zz-local-datetime) | [`.z.P`](dotz.md#zp-local-timestamp) 
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Environment](../basics/environment.md) 

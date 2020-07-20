@@ -344,9 +344,9 @@ q))                 / the server is suspended in a debug session
 
 ## See also
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book: 
 [Display](../ref/display.md),
 [`show`](../ref/show.md)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 _Q for Mortals 3:_ [§10.2 Debugging](/q4m3/10_Execution_Control/#102-debugging)

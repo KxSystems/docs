@@ -17,16 +17,15 @@ One caution: you can learn kdb+ reasonably well by independent study, but for se
 
 ## Kdb+
 
-The kdb+ system is both a database and a programming language:
+The kdb+ system is both a database and a programming language.
   
-**kdb+** the database (_k database plus_).
-
-**q** the programming language for working with kdb+
+-   **kdb+**: the database (_k database plus_)
+-   **q**: a general-purpose programming language integrated with kdb+
 
 
 ## Resources
 
-### <i class="fas fa-globe"></i> code.kx.com
+### :fontawesome-solid-globe: code.kx.com
 
 The best resource for learning q. It includes:
 
@@ -36,7 +35,7 @@ The best resource for learning q. It includes:
 -   [interfaces](../../interfaces/index.md) with other languages and processes
 
 
-### <i class="fab fa-github"></i> GitHub
+### :fontawesome-brands-github: GitHub
 
 - the [KxSystems](https://github.com/KxSystems) repositories
 - [user-contributed repositories](https://kxsystems.github.io)
@@ -53,12 +52,12 @@ Several background articles and links can be found in the [Archive](../archive.m
 -   The [Kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
 
 
-## <i class="fas fa-download"></i> Install free system
+## :fontawesome-solid-download: Install free system
 
 If you do not already have access to a licensed copy, go to [Get started](../index.md) to download and install q.
 
 
-## <i class="fas fa-file"></i> Example files
+## :fontawesome-solid-file: Example files
 
 Two sets of scripts are referenced in this guide:
 
@@ -68,10 +67,10 @@ Two sets of scripts are referenced in this guide:
     -   `trade.q` – a stock trades sample database
 
     If you do not have these scripts, get them from 
-    <i class="fab fa-github"></i> [KxSystems/kdb](https://github.com/KxSystems/kdb) 
+    :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) 
     and save them in your `QHOME` directory.
 
-2. Other example files are in the <i class="fab fa-github"></i> [KxSystems/cookbook/start](https://github.com/KxSystems/cookbook/tree/master/start) directory. 
+2. Other example files are in the :fontawesome-brands-github: [KxSystems/cookbook/start](https://github.com/KxSystems/cookbook/tree/master/start) directory. 
 
     Move the `start` directory under your `QHOME` directory, e.g. `q/start`. For example, there should be a file:
 
@@ -79,7 +78,7 @@ Two sets of scripts are referenced in this guide:
     ~/q/start/buildhdb.q          / Linux and macOS
     </code></pre>
 
-!!! tip "Text editor for <i class="fab fa-windows"></i> Windows"
+!!! tip "Text editor for :fontawesome-brands-windows: Windows"
 
     Since q source is in plain text files, it is worth installing a good text editor such as Notepad++ or Notepad2.
 
@@ -92,13 +91,3 @@ When q is run, it displays a console where you can enter commands and see the re
 
 As you become more familiar with q, you may prefer to work in the interactive development environment [**Kx Developer**](/developer/). ([_Kx Analyst_](/analyst/) is the enterprise version of Developer.)
 
-<!--
--   Most popular is Charlie Skelton’s **Studio for kdb+**, a cross-platform execution environment – worth having available even if you use another interface  
-<i class="fab fa-github"></i> [CharlesSkelton/studio](https://github.com/CharlesSkelton/studio)
--   [**qStudio**](http://www.timestored.com/qstudio/), a cross-platform IDE with charting and autocompletion by TimeStored 
--   [First Derivatives](https://www.firstderivatives.com) offer their clients the **qIDE** development system
--   [Q and K Development Tools](http://www.qkdt.org) has an Eclipse plugin
--   [**Q Insight Pad**](http://www.qinsightpad.com) is an IDE for Windows
--   [**Qconsole**](https://github.com/kxcontrib/cburke/tree/master/qconsole) is an IDE using GTK
--   [**JupyterQ**](../../ml/jupyterq/index.md) lets you run q inside a [Jupyter](https://jupyter.org) notebook 
--->

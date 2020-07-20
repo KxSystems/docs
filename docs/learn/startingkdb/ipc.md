@@ -97,4 +97,4 @@ There are examples in the [Realtime Database](tick.md) chapter, where a process 
 
 ## HTTP connections
 
-A ksb+ server can also be accessed via HTTP. To try this, run a kdb+ server on your machine with port 5001. Then, load a Web browser, and go to `http://localhost:5001`. You can now see the names defined in the base context.
+A kdb+ server can also be accessed via HTTP. To try this, run a kdb+ server on your machine with port 5001. Then, load a Web browser, and go to `http://localhost:5001`. You can now see the names defined in the base context.

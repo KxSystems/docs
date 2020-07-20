@@ -5,11 +5,11 @@ description: Optional behavior available from the Kx automated machine learning 
 date: March 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
-# <i class="fas fa-share-alt"></i> Advanced options
+# :fontawesome-solid-share-alt: Advanced options
 
 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 The other sections of the AutoML documentation describe the default behavior of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behavior. The two methods to complete this are by inputting
@@ -28,14 +28,14 @@ The following lists the parameters which can be altered by users to modify the f
 aggcols     Aggregation columns for FRESH
 funcs       Functions to be applied for feature extraction
 gs          Grid search function and no. of folds/percentage of data in validation set
-hld         Size of holdout set on which the final model is tested
+hld         Size of the testing set on which the final model is tested
 saveopt     Saving options outlining what is to be saved to disk from a run
 scf         Scoring functions for classification/regression tasks
 seed        Random seed to be used
 sigfeats    Feature significance procedure to be applied to the data
-sz          Size of test set for train-test split function
+sz          Size of validation set used.
 tts         Train-test split function to be applied
-xv          Cross-validation function and no. of folds/percentage of data in validation set
+xv          Cross-validation function and # of folds/percentage of data in validation set
 ```
 
 
@@ -90,7 +90,7 @@ _Grid search procedure_
 
 In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
 
-The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in the validation set.
+The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
 
 For simplicity of implementation, a user should where possible use the functions within the `.ml.gs` namespace for this task.
 
@@ -104,23 +104,23 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
 
 !!! warning "Custom grid-search function"
 
-    To add a custom grid search function, follow the [guidelines for function definition](/../../toolkit/xval.md). 
+    To add a custom grid search function, follow the [guidelines for function definition](../../toolkit/xval.md).
 
     If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework this can become a complicated procedure.
 
 
 ### `hld`
 
-_Size of the holdout set_
+_Size of the testing set_
 
-By default the holdout set across all problem types is set to 20%. For problems with a small number of data points, a user may wish to increase the number of datapoints being trained on. The opposite may be true on larger datasets.
+By default the testing set across all problem types is set to 20%. For problems with a small number of data points, a user may wish to increase the number of datapoints being trained on. The opposite may be true on larger datasets.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Set holdout set to contain 10% of the dataset
-q)hldout:0.1
-q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist hldout]
+// Set the testing set to contain 10% of the dataset
+q)tst:0.1
+q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist tst]
 ```
 
 
@@ -154,19 +154,19 @@ The scoring metric used to calculate the performance of each classifier is defin
 
 The following functions are supported within the platform at present with the ordering which allows the best model to be chosen displayed below and defined in `code/mdldef/scoring.txt`
 
-```
-.ml - Statistical analysis metrics with automl score order
-  .accuracy         Accuracy of classification results        desc
-  .mae              Mean absolute error                       asc
-  .mape             Mean absolute percentage error            desc
-  .matcorr          Matthews correlation coefficient          desc
-  .mse              Mean square error                         asc
-  .rmse             Root mean square error                    asc
-  .rmsle            Root mean square logarithmic error        asc
-  .r2score          R2-score                                  desc
-  .smape            Symmetric mean absolute error             desc
-  .sse              Sum squared error                         asc
-```
+<pre markdown="1" class="language-txt">
+.ml   **Statistical analysis metrics with AutoML score order**
+  accuracy         accuracy of classification results        desc
+  mae              mean absolute error                       asc
+  mape             mean absolute percentage error            desc
+  matcorr          matthews correlation coefficient          desc
+  mse              mean square error                         asc
+  rmse             root mean square error                    asc
+  rmsle            root mean square logarithmic error        asc
+  r2score          r2-score                                  desc
+  smape            symmetric mean absolute error             desc
+  sse              sum squared error                         asc
+</pre>
 
 The following is an example implementation
 
@@ -228,12 +228,12 @@ The result of this function should be a simple table with unimportant features (
 
 _Size of the validation set on which the non grid-searched best model is tested_
 
-By default the validation set for testing prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on. The ooposite may be required for larger data sets.
+By default the validation set prior to the application of a grid search across all problem types is set to 20%. For problems with a small number of data points a user may wish to modify this to increase the number of datapoints being trained on. The ooposite may be required for larger data sets.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
 q)tgt:100?1f
-// Set holdout set to contain 10% of the dataset
+// Set the size of the validation set to contain 10% of the dataset
 q)size:0.1
 q).automl.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 ```
@@ -245,7 +245,7 @@ _Function used to split the data into training and testing sets_
 
 The default functions used for splitting the data into a training and testing set are as follows
 
-problem type | function | description 
+problem type | function | description
 -------------|----------|-------------
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage
@@ -261,11 +261,11 @@ q).automl.run[tab;tgt;`normal;`class;enlist[`tts]!enlist `.ml.ttstrat]
 ```
 
 A user-defined function for this must take the following arguments.
-	
+
 -   `x`, a simple table
 -   `y`, the target vector
--   `z`, the size-splitting criteria used (number folds/percentage of data in holdout)
-	
+-   `z`, the size-splitting criteria used (number folds/percentage of data in validating model)
+
 The result from this function must be a dictionary with keys `` `xtrain`ytrain`xtest`ytest`` where the `x` components are tables containing the split data and `y` components are the associated target vector components
 
 
@@ -273,9 +273,9 @@ The result from this function must be a dictionary with keys `` `xtrain`ytrain`x
 
 _Cross-validation procedure_
 
-By default the cross-validation procedure being implemented is a 5-fold shuffled cross validation. This can be augmented by a user for different use cases, for example, more timeseries-specific cross validations. 
+By default the cross-validation procedure being implemented is a 5-fold shuffled cross validation. This can be augmented by a user for different use cases, for example, more timeseries-specific cross validations.
 
-The argumemnt for this parameter is a mixed list containing the cross-validation function name as a symbol and the number of cross-validation folds to split the data into or percentage of data within the validation set.
+The argumment for this parameter is a mixed list containing the cross-validation function name as a symbol and the number of cross-validation folds to split the data into or percentage of data within the validation set.
 
 For simplicity of implementation, where possible use the functions within the `.ml.xv` namespace for this task.
 
@@ -287,7 +287,7 @@ q)chain:(`.ml.xv.tschain;3)
 q).automl.run[tab;tgt;`normal;`reg;enlist[`xv]!enlist chain]
 ```
 
-To add a custom cross-validation function outside of those provided follow the [guidelines for function definition](../../toolkit/xval.md). 
+To add a custom cross-validation function outside of those provided follow the [guidelines for function definition](../../toolkit/xval.md).
 
 If you have any questions on this please contact ai@kx.com. When compared to other custom functionality within the AutoML framework this can become a complicated procedure.
 

@@ -54,8 +54,8 @@ Behaves as if command-line options [`-u 1`](../basics/cmdline.md#-u-usr-pwd) and
 That is, all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
 (Since V4.0 2020.03.17.)
 
-<i class="fas fa-book-reader"></i>
+:fontawesome-solid-book-reader:
 [Internal function `-6!`](../basics/internal.md#-6x-eval)<br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 

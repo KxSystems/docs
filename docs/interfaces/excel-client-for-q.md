@@ -68,7 +68,7 @@ q)save `:output.csv
 
 With Automation add-ins for Excel, you can use a C\# function in a cell formula. This function can communicate with a kdb+ server process.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Writing Custom Excel Worksheet Functions in C\#](https://blogs.msdn.microsoft.com/gabhan_berry/2008/04/07/writing-custom-excel-worksheet-functions-in-c/)
 
 
@@ -82,7 +82,7 @@ This server is a .NET application, and it communicates directly with a q Ticker 
 ### Downloading
 
 The RTD server can be downloaded from 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [CharlesSkelton/excelrtd](https://github.com/CharlesSkelton/excelrtd)
 
 To install, run the `setup.exe` program and follow the instructions. You will need the Microsoft .NET Runtime installed.

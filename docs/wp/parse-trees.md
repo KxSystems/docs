@@ -283,7 +283,7 @@ tree. We know the first item of a parse tree is to be applied to the
 remaining items. Here `/` (the Over iterator) is applied to `+` to
 produce a new function which sums the items of a list.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Iterators](iterators/index.md)
 
 
@@ -305,7 +305,7 @@ Here
 -   `b` is a dictionary of group-bys
 -   `a` is a dictionary of aggregates
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§9.12 Functional forms of queries](/q4m3/9_Queries_q-sql/#912-functional-forms)
 
 The q interpreter parses the syntactic forms of `select`, `exec`, `update`
@@ -581,7 +581,7 @@ These instances are rare and a developer should be able to spot when they occur.
 
 Functional select also has ranks 5 and 6; i.e. fifth and sixth arguments.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§9.12.1 Functional queries](/q4m3/9_Queries_q-sql/#9121-functional-select)
 
 We also cover these with the `buildQuery` function.

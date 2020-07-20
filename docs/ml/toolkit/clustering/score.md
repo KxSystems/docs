@@ -1,221 +1,149 @@
 ---
+title: Scoring metrics reference | Clustering | Machine Learning Toolkit | Documentation for kdb+ and q
 author: Deanna Morgan
 date: May 2019
 keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure, scoring, davies-bouldin, dunn, silhouette, homogeneity, elbow
 ---
 
-# <i class="fas fa-share-alt"></i> Scoring Metrics
+# :fontawesome-solid-share-alt: Scoring metrics reference
 
-<i class="fab fa-github"></i>
-[KxSystems/ml/clust/score.q](https://github.com/kxsystems/ml/clust/score.q)
+<pre markdown="1" class="language-txt">
+.ml.clust   **Scoring metrics**
 
-# Unsupervised Learning
+Unsupervised learning
+  [daviesbouldin](#mlclustdaviesbouldin)      Davies-Bouldin index
+  [dunn](#mlclustdunn)               Dunn index
+  [silhouette](#mlclustsilhouette)         silhouette score
 
-Each of the scoring metrics described below are used in unsupervised learning to analyze how well groups of data have been assigned to clusters. The metrics measure the intra-cluster similarity (cohesion) and inter-cluster differences (separation) of data. It is therefore preferred that clusters are well-spaced and densely packed.
+Supervised learning
+  [homogeneity](#mlclusthomogeneity)         homogeneity score between predictions and actual value
 
-## Davies-Bouldin Index
+Optimum number of clusters
+  [elbow](#mlclustelbow)               distortion scores for increasing numbers of clusters
+</pre>
 
-### `.ml.clust.daviesbouldin`
+:fontawesome-brands-github:
+[KxSystems/ml/clust/score.q](https://github.com/KxSystems/ml/blob/master/clust/score.q)
 
-_Calculate the Davies-Bouldin index for clustered data. Minimum value of zero, where lower values indicate better clustering._
+Scoring metrics allow you to validate the performance of your clustering algorithms in three distinct use cases.
 
-Syntax: `.ml.clust.daviesbouldin[x]`
+use case | analysis
+---------|---------
+Unsupervised learning | These metrics analyze how well data has been assigned to clusters, measuring intra-cluster similarity (cohesion) and differences (separation). In general, clustering is said to be successful if clusters are well spaced and densely packed. Used when the true cluster assignment is not known.
+Supervised learning | If the true and predicted labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
+Optimum number of clusters | The optimum number of clusters can be found manually in a number of ways using techniques above. If the required number of clusters is not known prior to clustering, the Elbow Method is used to estimate the optimum number of clusters within the dataset using K-means clustering.
+
+
+## `.ml.clust.daviesbouldin`
+
+_Davies-Bouldin index_
+
+Syntax: `.ml.clust.daviesbouldin[data;clt]`
 
 Where
 
-- `x` is the results table (`idx`, `clt`, `pts`) produced by `.clust.ml.cure/dbscan/hc/kmeans`
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
+-   `clt` is the list of clusters returned by one of the clustering algorithms in `.ml.clust`
 
-returns the Davies-Bouldin index.
+returns the Davies-Bouldin index, where a lower value indicates better clustering, with well-separated, tightly-packed clusters.
 
 ```q
-q)show d:10 2#20?10.
-0.891041  6.348263  
-8.345194  7.66752   
-3.621949  9.281844  
-9.99934   2.035925  
-3.837986  7.747888  
-8.619188  9.667728  
-0.9183638 8.225125  
-2.530883  9.088765  
-2.504566  6.458066  
-7.517286  0.08962677
-q)show r1:.ml.clust.hc[d;3;`edist;`single;0b]
-idx clt pts                 
-----------------------------
-0   0   0.891041  6.348263  
-1   1   8.345194  7.66752   
-2   0   3.621949  9.281844  
-3   2   9.99934   2.035925  
-4   0   3.837986  7.747888  
-5   1   8.619188  9.667728  
-6   0   0.9183638 8.225125  
-7   0   2.530883  9.088765  
-8   0   2.504566  6.458066  
-9   2   7.517286  0.08962677
-q)show r2:.ml.clust.kmeans[d;3;3;0b;`e2dist]
-idx clt pts                 
-----------------------------
-0   0   0.891041  6.348263  
-1   1   8.345194  7.66752   
-2   1   3.621949  9.281844  
-3   2   9.99934   2.035925  
-4   0   3.837986  7.747888  
-5   1   8.619188  9.667728  
-6   0   0.9183638 8.225125  
-7   0   2.530883  9.088765  
-8   0   2.504566  6.458066  
-9   2   7.517286  0.08962677
-q).ml.clust.daviesbouldin[r2]
-0.6920524
-q).ml.clust.daviesbouldin[r1]    / lower values indicate better clustering
-0.3970272
+q)show d:2 10#20?10.
+4.126605 8.429965 6.214154 5.365242 7.470449 6.168275 6.876426 6.123797 9.363..
+4.45644  7.274244 1.301704 2.018829 1.451855 9.819545 7.490215 6.372719 5.856..
+q)show r1:10?3
+0 1 2 0 1 0 0 1 0 1
+q)show r2:10?3
+2 2 1 0 2 2 1 2 0 0
+
+q)// lower values indicate better clustering
+q).ml.clust.daviesbouldin[d;r1]
+9.014795
+q).ml.clust.daviesbouldin[d;r2]
+5.890376
 ```
 
-!!! note
-	The Davies-Bouldin index can only be used with Euclidean distances.
-    
-## Dunn Index
+The Davies-Bouldin index works by calculating the ratio of how scattered data points are within a cluster, to the separation that exists between clusters.
 
-### `.ml.clust.dunn`
 
-_Calculate the Dunn index for clustered data. Minimum value of 0, where higher values indicate better clustering._
+## `.ml.clust.dunn`
 
-Syntax: `.ml.clust.dunn[x;y]`
+Syntax: `.ml.clust.dunn[data;df;clt]`
 
 Where
 
-- `x` is the results table (`idx`, `clt`, `pts`) produced by `.clust.ml.cure/dbscan/hc/kmeans`
-- `y` is the distance function as a symbol: `e2dist` `edist` `mdist`
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
+-   `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist`
+-   `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
 
-returns the Dunn index.
+returns the Dunn index, where a higher value indicates better clustering, with well-separated, tightly-packed clusters.
 
 ```q
-q)d
-0.891041  6.348263
-8.345194  7.66752
-3.621949  9.281844
-9.99934   2.035925
-3.837986  7.747888
-8.619188  9.667728
-0.9183638 8.225125
-2.530883  9.088765
-2.504566  6.458066
-7.517286  0.08962677
-q)r1
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   0   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
-q)r2
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   1   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
-q).ml.clust.dunn[r1;`edist]
-1.124743
-q).ml.clust.dunn[r2;`edist]
-0.221068
+q)show d:2 10#20?10.
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
+
+q)show r1:10?3
+0 0 1 1 0 0 2 0 1 0
+q)show r2:10?3
+0 0 1 1 0 2 0 2 1 2
+
+q)// higher values indicate better clustering
+q).ml.clust.dunn[d;`edist;r1]
+0.5716933
+q).ml.clust.dunn[d;`e2dist;r2]
+0.03341283
 ```
 
-## Silhouette Coefficient
+The Dunn index is calculated based on the minimum inter-cluster distance divided by the maximum size of a cluster. 
 
-### `.ml.clust.silhouette`
 
-_Calculate the Silhouette coefficient for clustered data. `+1` indicates correct clustering, `0` indicates that clusters are close to each other, if not overlapping and `-1` indicates incorrect clustering._
+## `.ml.clust.elbow`
 
-Syntax: `.ml.clust.silhouette[x;y]`
+_The elbow method: a distortion score for each value of k applied to data, using k-means clustering._
+
+Syntax: `.ml.clust.elbow[data;df;kmax]`
 
 Where
 
-- `x` is the results table (`idx`, `clt`, `pts`) produced by `.clust.ml.cure/dbscan/hc/kmeans`
-- `y` is the distance function as a symbol: `e2dist` `edist` `mdist`
-- `z` is a boolean, `1b` indicates that the user wants to return the average coefficient
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
+-   `df` is the distance function as a symbol, e.g. `e2dist` `edist`
+-   `kmax` is the maximum number of clusters
 
-returns the Silhouette coefficient.
+returns distortion scores for each set of clusters produced by k-means, with increasing values of k up to `kmax`.
 
 ```q
-q)d
-0.891041  6.348263
-8.345194  7.66752
-3.621949  9.281844
-9.99934   2.035925
-3.837986  7.747888
-8.619188  9.667728
-0.9183638 8.225125
-2.530883  9.088765
-2.504566  6.458066
-7.517286  0.08962677
-q)r1
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   0   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
-q)r2
-idx clt pts
-----------------------------
-0   0   0.891041  6.348263
-1   1   8.345194  7.66752
-2   1   3.621949  9.281844
-3   2   9.99934   2.035925
-4   0   3.837986  7.747888
-5   1   8.619188  9.667728
-6   0   0.9183638 8.225125
-7   0   2.530883  9.088765
-8   0   2.504566  6.458066
-9   2   7.517286  0.08962677
-q).ml.clust.silhouette[r1;`edist;1b]
-0.6180839
-q).ml.clust.silhouette[r2;`edist;1b]
-0.4330343
+q)show d:2 10#20?10.
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099.. 
+q).ml.clust.elbow[d;`edist;5]
+16.74988 13.01954 10.91546 9.271871
 ```
 
-# Supervised Learning
+If the values produced by `.ml.clust.elbow` are plotted, it is possible to determine the optimum number of clusters. The above example produces the following graph
 
-If the correct cluster is known for each data point in a chosen dataset, the problem of clustering the data can be treated as supervised learning. The true and predicted labels can be compared using scores such as the homogeneity score detailed below.
+![elbow_graph](img/elbow_example.png)
 
-## Homogeneity Score
+It is clear that the elbow score occurs when the data should be grouped into 3 clusters.
 
-### `.ml.clust.homogeneity`
 
-_Returns a score between 0 and 1, where 1 indicates correct clustering_
+## `.ml.clust.homogeneity`
 
-Syntax: `.ml.clust.homogeneity[x;y]`
+_Homogeneity score_
+
+Syntax: `.ml.clust.homogeneity[pred;true]`
 
 Where
 
--  `x` is the predicted cluster labels
--  `y` is the true cluster labels
+-  `pred` is the predicted cluster labels
+-  `true` is the true cluster labels
 
-returns the homogeneity score.
+returns the homogeneity score, bounded between 0 and 1, with a high value indicating a more accurate labeling of clusters.
 
 ```q
-q)true
+q)show true:10?3
 2 1 0 0 0 0 2 0 1 2
-q)pred
+q)show pred:10?3
 2 1 2 0 1 0 1 2 0 1
 q).ml.clust.homogeneity[pred;true]
 0.225179
@@ -223,48 +151,44 @@ q).ml.clust.homogeneity[true;true]
 1f
 ```
 
-# Optimum Number of Clusters
+Homogeneity score works on the basis that a cluster should contain only samples belonging to a single class.
 
-## Elbow Method
 
-The elbow method is used to find the optimum number of clusters for data grouped using k-means clustering. k-means is applied to a dataset for a range of k values and the average score for each set of clusters is calculated. Traditionally, the distortion score is used in the elbow method. This score calculates the sum of square distances from each point to its assigned center.
+## `.ml.clust.silhouette`
 
-Plotting the average cluster score against the k values, the line graph produced will resemble an arm, where the value at the elbow indicates the optimum number of clusters for the chosen dataset.
+_Silhouette coefficient_
 
-### `.ml.clust.elbow`
-
-_Returns a distortion score for each value of k applied to data using k-means clustering_
-
-Syntax: `.ml.clust.elbow[x;y;z]`
+Syntax: `.ml.clust.silhouette[data;df;clt;isavg]`
 
 Where
 
--   `x` is data in matrix form
--   `y` is the distance metric
--   `z` is the maximum number of clusters
+-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
+-   `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist`
+-   `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
+-   `isavg` is a boolean - `1b` to return the average coefficient, `0b` to return a list of coefficients
 
-returns the distortion score for each set of clusters produced in k-means with a different value of k.
+returns the Silhouette coefficient, ranging from -1 (overlapping clusters) to +1 (separated clusters).
 
 ```q
-q)show d:100 2#200?10. 
-4.784272  9.534398 
-6.30036   3.165436 
-6.549844  2.643322 
-3.114316  9.103693 
-0.7540168 7.423834 
-7.414441  7.074521 
-8.872926  3.763147 
-3.88313   4.84379  
-0.7841939 1.943085 
-3.213079  4.090672 
-..
-q).ml.clust.elbow[d;`mdist;5]
-365.4611 262.1237 239.9233 196.0932
+q)show d:2 10#20?10.
+3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
+4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
+
+q)show r1:10?3
+0 0 1 1 0 0 2 0 1 0
+q)show r2:10?3
+0 0 1 1 0 2 0 2 1 2
+
+q)// Return the averaged coefficients across all points
+q).ml.clust.silhouette[d;`edist;r1;1b]
+0.3698386
+q).ml.clust.silhouette[d;`e2dist;r2;1b]
+0.2409856
+
+q)// Return the individual coefficients for each point
+q).ml.clust.silhouette[d;`e2dist;r2;0b]
+-0.4862092 -0.6652588 0.8131323 0.595948 -0.2540023 0.5901292 -0.2027718 0.61..
 ```
 
-!!! note
-	If the values produced by `.ml.clust.elbow` are plotted it is possible to determine the optimum number of clusters. The above example produces the following graph
+The Silhouette coefficient measures how similar an object is to the members of its own cluster when compared to other clusters.
 
-	![elbow_graph](img/elbow_example.png)
-
-	It is clear that the elbow score occurs when the data has been clustered into 3 distinct clusters.

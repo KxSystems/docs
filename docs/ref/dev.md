@@ -76,7 +76,7 @@ q)select sdev price by sym from trade
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [`var`, `svar`](var.md)  
 Wikipedia: [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation),
 [Variance](https://en.wikipedia.org/wiki/Variance)  

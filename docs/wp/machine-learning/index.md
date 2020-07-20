@@ -19,7 +19,7 @@ Class attributes are collected in n-dimensional arrays. This means that the perf
 
 The UCI website contains several examples of such datasets; an interesting example is the [Pen-Based Recognition of Handwritten Digits](https://archive.ics.uci.edu/ml/datasets/Pen-Based%2BRecognition%2Bof%2BHandwritten%2BDigits). 
 
-<i class="far fa-hand-point-right"></i> Lichman, M. (2013). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
+:fontawesome-regular-hand-point-right: Lichman, M. (2013). [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science.
 
 This dataset contains two disjointed collections:
 
@@ -30,7 +30,7 @@ Class features for each instance are represented via one-dimensional arrays of 1
 
 Due to its compute-heavy features, k-NN has limited industry application compared to other machine-learning methods. In this paper, we will analyze an alternative implementation of the k-NN, using the array-processing power of kdb+. Kdb+ has powerful built-in functions designed and optimized for tables and lists. Together with qSQL, these functions can be used to great effect for machine-learning purposes, especially with compute-heavy implementations like k-NN.
 
-All tests were run using kdb+ version 3.5 2017.06.15, on a Virtual Machine with four allocated 4.2GHz cores. Code used can be found at <i class="fab fa-github"></i> [kxcontrib/wp-knn](https://github.com/kxcontrib/wp-knn).
+All tests were run using kdb+ version 3.5 2017.06.15, on a Virtual Machine with four allocated 4.2GHz cores. Code used can be found at :fontawesome-brands-github: [kxcontrib/wp-knn](https://github.com/kxcontrib/wp-knn).
 
 
 ## Loading the dataset in q
@@ -444,9 +444,9 @@ Accuracy
 ## Further approaches
 
 
-### Use slave threads
+### Use secondary threads
 
-Testing and validation phases will benefit significantly from the use of slave threads in kdb+, applied through the use of the `peach` keyword: 
+Testing and validation phases will benefit significantly from the use of secondary threads in kdb+, applied through the use of the `peach` keyword: 
 
 `-s 0` (0 slaves) – Run time: ~13s
 
@@ -569,7 +569,7 @@ Manhattan distance:
 ```q
 q)apply_dist:apply_dist_manh // Manhattan Distance
 
-q)// 2 cores, 4 slave threads (-s 4)
+q)// 2 cores, 4 secondary threads (-s 4)
 q)\ts show select Accuracy:avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -590,7 +590,7 @@ q)4892%count tes
 1.398513  
 q)// ~1.4 ms average to classify one instance
 
-q)// 4 cores, 8 slave threads (-s 8)
+q)// 4 cores, 8 secondary threads (-s 8)
 q)\ts show select Accuracy:avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -617,7 +617,7 @@ Euclidean distance:
 ```q
 q)apply_dist:apply_dist_eucl // Euclidean Distance
 
-q)// 2 cores, 4 slave threads (-s 4)
+q)// 2 cores, 4 secondary threads (-s 4)
 q)\ts show select Accuracy: avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -636,7 +636,7 @@ k | Accuracy
 
 q)6717%count tes
 1.92  // ~1.9ms average to classify one instance
-// 4 cores, 8 slave threads (-s 8)
+// 4 cores, 8 secondary threads (-s 8)
 q)\ts show select Accuracy:avg Hit by k from 
     raze test_harness[tra;1+til 10]peach 0!tes
 k | Accuracy
@@ -665,11 +665,11 @@ q)// ~1.1ms average to classify one instance
 ## Conclusions
 
 In this paper, we saw how trivial it is to implement a k-NN classification algorithm with kdb+. Using tables and qSQL it can be implemented with three select statements at most, as shown in the util library at
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/wp-knn](https://www.github.com/kxcontrib/wp-knn).
 We also briefly saw how to use iterators to optimize the classification time, and how data structures can influence performance comparing tables and vectors.
 
-Benchmarking this lazy implementation, with a random dataset available on the UCI website and using the Euclidean distance metric showed an average prediction accuracy of ~97.7%. The classification time can vary greatly, based on the number of cores and slave threads used. With 2 cores and 4 slaves (`-s 4`) the classification time of a single instance after optimization of the code was ~1.9ms per instance and the total validation time decreased significantly when using 4 cores and 8 slave threads (`-s 8`), showing how kdb+ can be used to great effect for machine-learning purposes, even with heavy-compute implementations such as the k-NN.
+Benchmarking this lazy implementation, with a random dataset available on the UCI website and using the Euclidean distance metric showed an average prediction accuracy of ~97.7%. The classification time can vary greatly, based on the number of cores and secondary threads used. With 2 cores and 4 secondary threads (`-s 4`) the classification time of a single instance after optimization of the code was ~1.9ms per instance and the total validation time decreased significantly when using 4 cores and 8 secondary threads (`-s 8`), showing how kdb+ can be used to great effect for machine-learning purposes, even with heavy-compute implementations such as the k-NN.
 
 
 ## Author

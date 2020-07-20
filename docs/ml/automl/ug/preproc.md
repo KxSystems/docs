@@ -5,11 +5,11 @@ description: Default behavior of the Kx automated machine learning tools; common
 date: October 2019
 keywords: machine learning, ml, automated, preprocessing, feature extraction, feature selection, time-series, cleansing
 ---
-# <i class="fas fa-share-alt"></i> Automated data preprocessing
+# :fontawesome-solid-share-alt: Automated data preprocessing
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
 The preprocessing of data is of critical importance in all machine-learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.

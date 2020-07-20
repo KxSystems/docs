@@ -37,7 +37,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>X</td><td>[`xasc`](asc.md#xasc "table sorted ascending by columns") [`xbar`](xbar.md "interval bar") [`xcol`](cols.md#xcol "rename table columns") [`xcols`](cols.md#xcols "re-order table columns") [`xdesc`](desc.md#xdesc "table sorted descending by columns") [`xexp`](exp.md#xexp "raised to a power") [`xgroup`](xgroup.md "table grouped by keys") [`xkey`](keys.md#xkey "set primary keys of a table") [`xlog`](log.md#xlog "base-x logarithm") [`xprev`](next.md#xprev "previous items") [`xrank`](xrank.md "items assigned to buckets")</td></tr>
 </table>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.Q.id`](dotq.md#qid-sanitize) (sanitize),
 [`.Q.res`](dotq.md#qres-keywords) (reserved words)
 
@@ -47,10 +47,11 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <table markdown="1">
 <tr>
 <td class="kx-glyph">[`@`](overloads.md#at)<br>[`.`](overloads.md#dot)</td><td>[Apply](apply.md)<br>[Index](apply.md#index)<br>[Trap](apply.md#trap)<br>[Amend](amend.md)</td>
-<td class="kx-glyph">[`$`](overloads.md#dollar)</td><td>[Cond](cond.md)<br>[Cast](cast.md)<br>[Tok](tok.md)<br>[Enumerate](enumerate.md)<br>[Pad](pad.md)<br>[`mmu`](mmu.md)</td>
+<td class="kx-glyph">[`$`](overloads.md#dollar)</td><td>[Cast](cast.md)<br>[Tok](tok.md)<br>[Enumerate](enumerate.md)<br>[Pad](pad.md)<br>[`mmu`](mmu.md)</td>
 <td class="kx-glyph">[`!`](overloads.md#bang)</td><td>[Dict](dict.md)<br>[Enkey](enkey.md)<br>[Unkey](enkey.md#unkey)<br>[Enumeration](enumeration.md)<br>[Flip Splayed](flip-splayed.md)<br>[Display](display.md)<br>[internal](../basics/internal.md)<br>[Update](../basics/funsql.md#update)<br>[Delete](../basics/funsql.md#delete)</td>
 <td class="kx-glyph">[`?`](overloads.md#query)</td><td>[Find](find.md)<br>[Roll, Deal](deal.md)<br>[Enum Extend](enum-extend.md)<br>[Select](../basics/funsql.md#select)<br>[Exec](../basics/funsql.md#exec)<br>[Simple Exec](../basics/funsql.md#simple-exec)<br>[Vector Conditional](vector-conditional.md)</td>
 </tr>
+<tr>
 <td class="kx-glyph">`+`</td><td>[Add](add.md)</td>
 <td class="kx-glyph">`-`</td><td>[Subtract](subtract.md)</td>
 <td class="kx-glyph">`*`</td><td>[Multiply](multiply.md)</td>
@@ -64,44 +65,75 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 </tr>
 <tr>
 <td class="kx-glyph">`|`</td> <td>[Greater, OR](greater.md)</td>
-<td class="kx-glyph">`&`</td> <td>[Lesser, AND](lesser.md)</td>
+<td class="kx-glyph">`&`</td> <td colspan="5">[Lesser, AND](lesser.md)</td>
 </tr>
 <tr>
 <td class="kx-glyph">[`#`](overloads.md#hash)</td><td>[Take](take.md)<br>[Set&nbsp;Attribute](set-attribute.md)</td>
 <td class="kx-glyph">[`_`](overloads.md#_-underscore)</td><td>[Cut](cut.md)<br>[Drop](drop.md)</td>
-<td class="kx-glyph">`^`</td><td>[Fill](fill.md)</td>
-<td class="kx-glyph">`,`</td><td>[Join](join.md)</td>
+<td class="kx-glyph">`^`</td><td>[Fill](fill.md)<br>[Coalesce](coalesce.md)</td>
+<td class="kx-glyph">`,`<br>[`'`](overloads.md#quote)</td><td>[Join](join.md)<br>[Compose](compose.md)</td>
 </tr>
 </table>
 
-<i class="fas fa-book"></i>
-[Overloaded operator glyphs](overloads.md)
+:fontawesome-solid-book:
+[Overloaded glyphs](overloads.md)
 
 
 ## [Iterators](iterators.md)
 
-<table markdown="1">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+[maps](maps.md)                                                    [accumulators](accumulators.md)
+[`'`](overloads.md#quote)   [Each](maps.md#each), [`each`](each.md), [Case](maps.md#case)       `/:`  [Each Right](maps.md#each-left-and-each-right)              [`/`](overloads.md#slash)  [Over](accumulators.md), [`over`](over.md)
+[`':`](overloads.md#quote-colon)  [Each Parallel](maps.md#each-parallel), [`peach`](each.md#peach)   `\:`  [Each Left](maps.md#each-left-and-each-right)               [`\`](overloads/#backslash)  [Scan](accumulators.md), [`scan`](over.md)
+[`':`](overloads.md#quote-colon)  [Each Prior](maps.md##each-prior), [`prior`](prior.md)
+</pre>
+
+<!-- <table markdown="1">
 <thead>
 <tr><th colspan="2">accumulators</th><th colspan="2">maps</th><th colspan="2">maps</th><th colspan="2"/></tr>
 </thead>
 <tbody>
 <tr>
-<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over<br>Scan](accumulators.md)</td>
+<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over](accumulators.md), [`over`](over.md)<br>[Scan](accumulators.md), [`scan`](scan.md)</td>
 <td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](maps.md#each-left-and-each-right)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each)<br>[Each&nbsp;Parallel](maps.md#each-parallel)<br>[Each Prior](maps.md##each-prior)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`'`](overloads.md#quote)</td><td>[Case](maps.md#case)<br>[Compose](compose.md)</td>
+<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each), [`each`](each.md)<br>[Each&nbsp;Parallel](maps.md#each-parallel), [`peach`](each.md#peach)<br>[Each Prior](maps.md##each-prior), [`prior`](prior.md)</td>
 </tr>
 </tbody>
 </table>
+ -->
+
+## [Execution control](../basics/control.md)
+
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+[.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)         [\$[x;y;z] Cond](../ref/cond.md)
+[@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)
+</pre>
+
+:fontawesome-solid-book-open:
+[Debugging](../basics/debug.md)
 
 
 
 ## Other
 
-<table markdown="1">
+<pre markdown="1" class="language-txt" style="font-size: 80%">
+[`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../ref/assign.md)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
+[.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)       [::](overloads.md#colon-colon)   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
+[\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/files.md)      [2:  Dynamic Load](dynamic-load.md)
+[\\   abort](../basics/debug.md#abort)                 [global amend](../basics/function-notation.md#name-scope)   [_n, -n_  handle](../basics/files.md)
+\\\\  quit q                [set view](../learn/views.md)
+
+()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)     {}  [lambda](../basics/function-notation.md)         \`   symbol
+(;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)      ;   separator      \`:  filepath
+(\[\]..) [table](../basics/syntax.md#table-notation)
+</pre>
+
+
+
+<!-- <table markdown="1">
 <tr>
-<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>[`'`](overloads.md#quote)</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[Signal](signal.md)</td>
-<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon), [return](../basics/control.md#explicit-return)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
+<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>`` ` ``<br>`.`</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[pop stack<br>push stack](../basics/debug.md#debugging)</td>
+<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
 <td class="kx-glyph">`0`<br><span class="nowrap">`1`, `-1`</span><br>`2`, `-2`<br>_n_, _-n_</td><td>[console<br>stdout<br>stderr<br>handle](../basics/files.md)</td>
 <td class="kx-glyph"><span class="nowrap">`0:`</span><br>`1:`<br>`2:`</td><td>[File Text](file-text.md)<br>[File Binary](file-binary.md)<br>[Dynamic&nbsp;Load](dynamic-load.md)</td>
 </tr>
@@ -112,17 +144,16 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <td class="kx-glyph"><code>&#96;</code><br><code>&#96;:</code></td><td>symbol<br>filepath</td>
 </tr>
 </table>
-
+ -->
 <!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
 ## [Attributes](../basics/syntax.md#attributes)
 
-<pre markdown="1" class="language-txt" style="font-size: 90%">
-s  sorted     u  unique
-p  parted     g  grouped
+<pre markdown="1" class="language-txt">
+**g** grouped     **p**  parted     **s** sorted     **u** unique
 </pre>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
 
 ## Command-line options and system commands
@@ -137,7 +168,7 @@ p  parted     g  grouped
 <tr><td>[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td>change directory</td><td>[`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)</td><td>timeout</td></tr>
 <tr><td>[`\d`](../basics/syscmds.md#d-directory)</td><td>directory</td><td>[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td>usr-pwd</td></tr>
 <tr><td>[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td>error traps</td><td>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td>disable syscmds</td></tr>
-<tr><td>[`-E`](../basics/cmdline.md#-e-error-traps)</td><td>TLS Server Mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
+<tr><td>[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)</td><td>TLS server mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
 <tr><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td><td>[`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)</td><td>memory</td></tr>
 <tr><td>[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td>garbage collection</td><td>[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td>week offset</td></tr>
 <tr><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
@@ -149,7 +180,30 @@ p  parted     g  grouped
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
-<i class="far fa-hand-point-right"></i>
+<!--
+<pre markdown="1" class="language-txt">
+[file](../basics/cmdline.md#file)
+[`\a`](../basics/syscmds.md#a-tables)       tables                                                       [`\r`](../basics/syscmds.md#r-rename)                                                       rename
+[`-b`](../basics/cmdline.md#-b-blocked)       blocked                                                       [`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)                                                       slaves
+[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)    views                                                       [`\S`](../basics/syscmds.md#s-random-seed)                                                       random seed
+[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)    console size                                                       [`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)                                                       timer ticks
+[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)    HTTP size                                                       [`\ts`](../basics/syscmds.md#ts-time-and-space)                                                       time and space
+[`\cd`](../basics/syscmds.md#cd-change-directory)      change directory                                                       [`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)                                                       timeout
+[`\d`](../basics/syscmds.md#d-directory)       directory                                                       [`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)                                                       usr-pwd
+[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)    error traps                                                       [`-u`](../basics/cmdline.md#-u-disable-syscmds)                                                       disable syscmds
+[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)    TLS server mode             [`\v`](../basics/syscmds.md#v-variables)                                                       variables
+[`\f`](../basics/syscmds.md#f-functions)       functions                  [`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)                                                       memory
+[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)    garbage collection         [`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)                                                       week offset
+[`\l`](../basics/syscmds.md#l-load-file-or-directory)       load file or directory      [`\x`](../basics/syscmds.md#x-expunge)                                                       expunge
+[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)    log sync                                                       [`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)                                                       date format
+[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)    UTC offset                                                       [`\1` `\2`](../basics/syscmds.md#1-2-redirect)                                                       redirect
+[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)    listening port                                                       [`\_`](../basics/syscmds.md#_-hide-q-code)                                                       hide q code
+[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)    display precision                                                       [`\`](../basics/syscmds.md#terminate)                                                       terminate
+[`-q`](../basics/cmdline.md#-q-quiet-mode)       quiet mode                                                       [`\`](../basics/syscmds.md#toggle-qk)                                                       toggle q/k
+[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)    replicate                                                       [`\\`](../basics/syscmds.md#quit)                                                       quit
+</pre>
+ -->
+:fontawesome-regular-hand-point-right:
 [Command-line options](../basics/cmdline.md),
 [System commands](../basics/syscmds.md),
 [OS Commands](../basics/syscmds.md#os-commands),
@@ -262,31 +316,31 @@ milliseconds: time mod 1000
 Markup output for HTTP
 
 <pre markdown="1" class="language-txt" style="font-size: 80%">
-[`.h.br`](doth.md#hbr-linebreak)      linebreak                [`.h.cd`](doth.md#hcd-csv-from-data)      CSV from data
-[`.h.code`](doth.md#hcode-code-after-tab)    code after Tab           [`.h.d`](doth.md#hd-delimiter)       delimiter
-[`.h.fram`](doth.md#hfram-frame)    frame                    [`.h.ed`](doth.md#hed-excel-from-data)      Excel from data
-[`.h.ha`](doth.md#hha-anchor)      anchor                   [`.h.edsn`](doth.md#hedsn-excel-from-tables)    Excel from tables
-[`.h.hb`](doth.md#hhb-anchor-target)      anchor target            [`.h.hc`](doth.md#hhc-escape-lt)      escape lt
-[`.h.ht`](doth.md#hht-marqdown-to-html)      Marqdown to HTML         [`.h.hr`](doth.md#hhr-horizontal-rule)      horizontal rule
-[`.h.hta`](doth.md#hhta-start-tag)     start tag                [`.h.iso8601`](doth.md#hiso8601-iso-timestamp) ISO timestamp
-[`.h.htac`](doth.md#hhtac-element)    element                  [`.h.jx`](doth.md#hjx-table)      table
-[`.h.htc`](doth.md#hhtc-element)     element                  [`.h.td`](doth.md#htd-tsv-from-data)      TSV from data
-[`.h.html`](doth.md#hhtml-document)    document                 [`.h.tx`](doth.md#htx-filetypes)      filetypes
-[`.h.http`](doth.md#hhttp-hyperlinks)    hyperlinks               [`.h.xd`](doth.md#hxd-xml)      XML
-[`.h.nbr`](doth.md#hnbr-no-break)     no break                 [`.h.xs`](doth.md#hxs-xml-escape)      XML escape
-[`.h.pre`](doth.md#hpre-pre)     pre                      [`.h.xt`](doth.md#hxt-json)      JSON
-[`.h.text`](doth.md#htext-paragraphs)    paragraphs
-[`.h.xmp`](doth.md#hxmp-xmp)     XMP
+[.h.br](doth.md#hbr-linebreak)      linebreak                [.h.cd](doth.md#hcd-csv-from-data)      CSV from data
+[.h.code](doth.md#hcode-code-after-tab)    code after Tab           [.h.d](doth.md#hd-delimiter)       delimiter
+[.h.fram](doth.md#hfram-frame)    frame                    [.h.ed](doth.md#hed-excel-from-data)      Excel from data
+[.h.ha](doth.md#hha-anchor)      anchor                   [.h.edsn](doth.md#hedsn-excel-from-tables)    Excel from tables
+[.h.hb](doth.md#hhb-anchor-target)      anchor target            [.h.hc](doth.md#hhc-escape-lt)      escape lt
+[.h.ht](doth.md#hht-marqdown-to-html)      Marqdown to HTML         [.h.hr](doth.md#hhr-horizontal-rule)      horizontal rule
+[.h.hta](doth.md#hhta-start-tag)     start tag                [.h.iso8601](doth.md#hiso8601-iso-timestamp) ISO timestamp
+[.h.htac](doth.md#hhtac-element)    element                  [.h.jx](doth.md#hjx-table)      table
+[.h.htc](doth.md#hhtc-element)     element                  [.h.td](doth.md#htd-tsv-from-data)      TSV from data
+[.h.html](doth.md#hhtml-document)    document                 [.h.tx](doth.md#htx-filetypes)      filetypes
+[.h.http](doth.md#hhttp-hyperlinks)    hyperlinks               [.h.xd](doth.md#hxd-xml)      XML
+[.h.nbr](doth.md#hnbr-no-break)     no break                 [.h.xs](doth.md#hxs-xml-escape)      XML escape
+[.h.pre](doth.md#hpre-pre)     pre                      [.h.xt](doth.md#hxt-json)      JSON
+[.h.text](doth.md#htext-paragraphs)    paragraphs
+[.h.xmp](doth.md#hxmp-xmp)     XMP
 
-[`.h.he`](doth.md#hhe-http-400)      HTTP 400                 [`.h.c0`](doth.md#hc0-web-color)    web color
-[`.h.hn`](doth.md#hhn-http-response)      HTTP response            [`.h.c1`](doth.md#hc1-web-color)    web color
-[`.h.hp`](doth.md#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](doth.md#hhome-webserver-root)  webserver root
-[`.h.hy`](doth.md#hhy-http-response-content)      HTTP response content    [`.h.logo`](doth.md#hlogo-kx-logo)  Kx logo
-                                    [`.h.sa`](doth.md#hsa-anchor-style)    anchor style
-[`.h.hu`](doth.md#hhu-uri-escape)      URI escape               [`.h.sb`](doth.md#hsb-body-style)    body style
-[`.h.hug`](doth.md#hhug-uri-map)     URI map                  [`.h.ty`](doth.md#hty-mime-types)    MIME types
-[`.h.sc`](doth.md#hsc-uri-safe)      URI-safe                 [`.h.val`](doth.md#hval-value)   value
-[`.h.uh`](doth.md#huh-uri-unescape)      URI unescape
+[.h.he](doth.md#hhe-http-400)      HTTP 400                 [.h.c0](doth.md#hc0-web-color)    web color
+[.h.hn](doth.md#hhn-http-response)      HTTP response            [.h.c1](doth.md#hc1-web-color)    web color
+[.h.hp](doth.md#hhp-http-response-pre)      HTTP response pre        [.h.HOME](doth.md#hhome-webserver-root)  webserver root
+[.h.hy](doth.md#hhy-http-response-content)      HTTP response content    [.h.logo](doth.md#hlogo-kx-logo)  Kx logo
+                                    [.h.sa](doth.md#hsa-anchor-style)    anchor style
+[.h.hu](doth.md#hhu-uri-escape)      URI escape               [.h.sb](doth.md#hsb-body-style)    body style
+[.h.hug](doth.md#hhug-uri-map)     URI map                  [.h.ty](doth.md#hty-mime-types)    MIME types
+[.h.sc](doth.md#hsc-uri-safe)      URI-safe                 [.h.val](doth.md#hval-value)   value
+[.h.uh](doth.md#huh-uri-unescape)      URI unescape
 </pre>
 
 
@@ -302,7 +356,7 @@ De/serialize as JSON
 
 ### `.m`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Memory backed by files](dotm.md)
 
 
