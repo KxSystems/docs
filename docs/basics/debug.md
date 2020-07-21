@@ -308,11 +308,11 @@ q).Q.trp[parse;"2+2;+2";{1@.Q.sbt 2#y}];
 
 At any point during execution, the behavior of [Signal](../ref/signal.md) (`'`) is determined by the internal error-trap mode:
 
-mode | behavior
-:---:|------------------------------------------------
-0    | abort execution (set by Trap: `@` or `.`)
-1    | suspend execution and run the debugger
-2    | collect stack trace and abort (set by `.Q.trp`)
+```txt
+0    abort execution (set by Trap: @ or .)
+1    suspend execution and run the debugger
+2    collect stack trace and abort (set by .Q.trp)
+```
 
 Mode 2 (dump stack trace) is now default for loading scripts non-interactively (e.g. with [`-q`](cmdline.md#-q-quiet-mode)). 
 
@@ -342,8 +342,8 @@ q))                 / the server is suspended in a debug session
     Q is an embedded domain-specific language. Many of its keywords are defined as lambdas or projections, and can suspend as described. 
     
 
-## See also
 
+----
 :fontawesome-solid-book: 
 [Display](../ref/display.md),
 [`show`](../ref/show.md)

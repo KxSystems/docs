@@ -395,15 +395,18 @@ q)b // not evaluated
 
 For most purposes, you will want `e` to be a function.
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§10.1.8 Protected Evaluation](/q4m3/10_Execution_Control/#1018-protected-evaluation)
+
 
 ## Errors signalled
 
-error  | cause
--------|-----------------------------------------------------------------------
-domain | the symbol `d` is not a handle
-index  | an atom in `vx` or `ux` is not an index to an item-at-depth in `d`
-rank   | the count of `vx` is greater than the rank of `v`
-type   | `v` or `u` is a symbol atom, but not a handle to an value
-type   | an atom of `vx` or `ux` is not an integer, symbol or null
-
+```txt
+domain   the symbol d is not a handle
+index    an atom in vx or ux is not an index to an item-at-depth in d
+rank     the count of vx is greater than the rank of v
+type     v or u is a symbol atom, but not a handle to an value
+type     an atom of vx or ux is not an integer, symbol or null
+```
 

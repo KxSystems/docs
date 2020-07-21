@@ -68,7 +68,7 @@ Certain expressions recur often enough to be abbreviated as utilities.
 ```q
 ce:count each
 le:last each
-tc:til count ::
+tc:('[til;count])
 ```
 
 Syntactically, `ce` and `le`  are projections of the `each` keyword.

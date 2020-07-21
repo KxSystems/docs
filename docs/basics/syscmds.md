@@ -296,6 +296,10 @@ q)\a                 / with tables quote and trade
 
 :fontawesome-solid-book:
 [`.Q.l`](../ref/dotq.md#ql-load) (load)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§10.3 Scripts](/q4m3/10_Execution_Control/#103-scripts)
 
 
 ## `\o` (offset from UTC)
