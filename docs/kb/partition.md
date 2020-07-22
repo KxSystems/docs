@@ -1,5 +1,5 @@
 ---
-title: Partitioning data bases | Knowledge Base | kdb+ and q documentation
+title: Partitioning databases | Knowledge Base | kdb+ and q documentation
 description: File par.txt in the main database directory defines a top-level partitioning of a database into directories. 
 keywords: database, kdb+, q, par.txt, partitioning
 ---
@@ -23,7 +23,7 @@ A partitioned table is a splayed table that is further decomposed by grouping re
 
 :fontawesome-solid-street-view:
 _Q for Mortals_ 
-[§14.4 Partitioned Tables](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
+[§14.3 Partitioned Tables](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables)
 
 
 ## Segmented databases

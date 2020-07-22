@@ -101,7 +101,7 @@ Find one that suits your experience and learning style.
 ![q for Mortals Version 3](../img/funq.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
 ### _Fun Q_
 **A Functional Introduction to Machine Learning in Q**
-by Nick Psaris, available from [Amazon.com](https://www.amazon.com/dp/1734467509). 
+by Nick Psaris, available from [Amazon](https://www.amazon.com/dp/1734467509). 
 
 :fontawesome-solid-quote-left:
 Whether you are a data scientist looking to learn q, or a kdb+ developer looking to learn machine learning, there is something for everyone.

@@ -1,6 +1,6 @@
 ---
-title: key – Reference – kdb+ and q documentation
-description: key is a q keyword that returns the keys of a dictionary; the key columns of a keyed table; files in a folder; whether a fileexists; whether a name is defined; the tareget of a foreign key, the type of a vector; or the enumerator of a list.
+title: key keyword | Reference | kdb+ and q documentation
+description: Keys of a dictionary; key columns of a keyed table; files in a folder; whether a file or name exists; target of a foreign key, type of a vector; or the enumerator of a list.
 author: Stephen Taylor
 keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
 ---
@@ -14,13 +14,15 @@ keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, k
 
 
 
-Syntax `key x`, `key[x]`
+```txt
+key x     key[x]
+```
 
 
 
-## Entries of a dictionary
+## Key of a dictionary
 
-Where `x` is a dictionary (or a handle to one), returns its entries as a symbol vector.
+Where `x` is a dictionary (or the name of one), returns its key.
 
 ```q
 q)D:`q`w`e!(1 2;3 4;5 6)
@@ -47,9 +49,9 @@ q)key `           /list namespaces in the root
 ```
 
 
-## Keys of a table
+## Keys of a keyed table
 
-Where `x` is a keyed table (or a handle to one), returns its key column/s.
+Where `x` is a keyed table (or the name of one), returns its key column/s.
 
 ```q
 q)K:([s:`q`w`e]g:1 2 3;h:4 5 6)
@@ -64,7 +66,7 @@ e
 
 ## Files in a folder
 
-Where `x` is a directory handle returns a list of objects in the directory.
+Where `x` is a directory handle returns a list of objects in the directory, sorted ascending.
 
 ```q
 q)key`:c:/q
@@ -82,7 +84,7 @@ q)f where f like "*.q"
 
 ## Whether a file exists
 
-Where `x` is a file handle returns the descriptor if the file exists, otherwise an empty list.
+Where `x` is a file handle, returns the descriptor if the file exists, otherwise an empty list.
 
 ```q
 q)key`:c:/q/sp.q
@@ -91,7 +93,10 @@ q)key`:c:/q/notfound.q
 ()
 ```
 
-Note that an empty directory returns an empty symbol vector, while a non-existent directory returns an empty general list.
+Note that 
+
+-   an empty directory returns an empty symbol vector
+-   a non-existent directory returns an empty general list
 
 ```q
 q)\ls foo
@@ -179,6 +184,6 @@ q)key 10
 0 1 2 3 4 5 6 7 8 9
 ```
 
-
-:fontawesome-regular-hand-point-right:
-Basics: [Metadata](../basics/metadata.md)
+----
+:fontawesome-solid-book-open:
+[Metadata](../basics/metadata.md)
