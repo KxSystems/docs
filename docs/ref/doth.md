@@ -1,5 +1,5 @@
 ---
-title: The .h namespace – Reference – kdb+ and q documentation
+title: The .h namespace | Reference | kdb+ and q documentation
 description: The .h namespace contains objects useful for marking up data for an HTTP response.
 author: Stephen Taylor
 keywords: html, kdb+, markup, q
@@ -46,9 +46,9 @@ The `.h` [namespace](../basics/namespaces.md) contains objects for
 -   composing HTTP responses
 -   web-console display
 
-!!! warning "The `.h` namespace is reserved for use by Kx, as are all single-letter namespaces."
+??? warning "The `.h` namespace is reserved for use by Kx, as are all single-letter namespaces."
 
-    Consider all undocumented functions in the namespace as its private API – and do not use them.
+    Consider all undocumented functions in the namespace as its private API | and do not use them.
 
 
 

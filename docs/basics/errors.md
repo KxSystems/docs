@@ -22,15 +22,18 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>adict</td> <td class="nowrap">`d[::]:x`</td> <td>Blocked assignment (`'nyi`)</td> </tr>
 <tr><td>arch</td> <td class="nowrap">`:test set til 100`<br/>``-17!`:test``</td> <td>Attempt to load file of wrong endian format</td> </tr>
 <tr><td>assign</td> <td class="nowrap">`cos:12`</td> <td>Attempt to redefine a reserved word</td> </tr>
+<tr><td>bad lambda</td> <td class="nowrap">`h{select x by x from x}`</td> <td>lambda from an older version of kdb+ over IPC that no longer parses</td> </tr>
 <tr><td>badtail</td> <td/> <td>Incomplete transaction at end of file, get good (count;length) with ``-11!(-2;`:file)``</td> </tr>
 <tr><td>binary mismatch</td> <td/> <td>Wrong process for [code profiler](../kb/profiler.md)</td> </tr>
 <tr><td>can't </td> <td/> <td>Only commercially licensed kdb+ instances can encrypt code in a script</td> </tr>
 <tr><td>cast</td> <td class="nowrap">``s:`a`b; c:`s$`a`e``</td> <td>Value not in enumeration</td> </tr>
+<tr><td>close</td> <td/> <td>content-length header missing from HTTP response</td> </tr>
 <tr><td>con</td> <td/> <td>qcon client is not supported when kdb+ is in [multithreaded input mode](../kb/multithreaded-input.md)</td> </tr>
 <tr><td>cond</td> <td/> <td>Even number of arguments to `$` (until V3.6 2018.12.06)</td> </tr>
 <tr><td>conn</td> <td/> <td>Too many connections (1022 max)</td> </tr>
 <tr><td>Could not initialize ssl</td><td/><td>[`(-26!)[]`](internal.md#-26x-ssl) found SSL/TLS not enabled</td></tr>
 <tr><td>d8</td><td/><td>The log had a partial transaction at the end but q couldn’t truncate the file</td></tr>
+<tr><td>decompression error at block _b_ in _f_</td> <td/> <td>Error signalled by underlying decompression routine</td> </tr>
 <tr><td>domain</td> <td class="nowrap">`til -1`</td> <td>Out of domain</td> </tr>
 <tr><td>dup</td> <td class="nowrap">`` `a`b xasc flip`a`b`a!()``</td> <td>Duplicate column in table (since V3.6 2019.02.19)</td> </tr>
 <tr><td>dup names for cols/groups</td> <td class="nowrap">`select a,a by a from t`</td> <td>Name collision (since V4.0 2020.03.17)</td> </tr>
@@ -63,6 +66,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>Mlim</td> <td/> <td>Too many nested columns in [splayed tables](../kb/splayed-tables.md). (Prior to V3.0, limited to 999; from V3.0, 251; from V3.3, 65530)</td> </tr>
 <tr><td>mq</td> <td/> <td>Multi-threading not allowed</td> </tr>
 <tr><td>name&nbsp;too&nbsp;long</td> <td/> <td>Filepath ≥100 chars (until V3.6 2018.09.26)</td> </tr>
+<tr><td>need zlib to compress</td> <td/> <td>zlib not available</td> </tr>
 <tr><td>noamend</td> <td class="nowrap">`t:([]a:1 2 3)`<br />``n:`a`b`c``<br />``update b:{`n?`d;:`n?`d}[]``<br/>`` from `t``</td> <td>Cannot change global state from within an amend</td> </tr>
 <tr><td>no append to zipped enums</td> <td class="nowrap">V2:<br/>`.z.zd:17 2 6`<br/>`` `:sym?`a`b``<br/>V3:<br/>`` `:sym?`c``</td> <td>Cannot append to zipped enum (from V3.0)</td> </tr>
 <tr>

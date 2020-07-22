@@ -1,5 +1,5 @@
 ---
-title: lj - left join | Reference | kdb+ and q documentation
+title: lj – left join keyword | Reference | kdb+ and q documentation
 description: lj is a q keyword that performs a left join.
 keywords: join, kdb+, left, left join, lj, ljf, q
 ---
@@ -17,11 +17,10 @@ x ljf y     ljf[x;y]
 
 Where 
 
--   `x` and `y` are tables
--   `y` is keyed
--   the key column/s of `y` are columns of `x`
-
-returns `x` and `y` joined on the key columns of `y`. 
+-   `x` is a table
+-   `y` is 
+    -   a keyed table whose key column/s are columns of `x`, returns `x` and `y` joined on the key columns of `y`
+    -   or the general empty list `()`, returns `x`
 
 For each record in `x`, the result has one record with the columns of `y` joined to columns of `y`:
 

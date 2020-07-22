@@ -1,5 +1,5 @@
 ---
-title: the .z namespace – Reference – kdb+ and q documentation
+title: the .z namespace | Reference | kdb+ and q documentation
 description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
 author: Stephen Taylor
 keywords: callbacks, environment, kdb+, q
@@ -41,10 +41,7 @@ System information                 Callbacks
 </pre>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
-
-!!! warning "Reserved"
-
-    The `.z` namespace is reserved for use by Kx, as are all single-letter namespaces.
+??? warning "The `.z` namespace is reserved for use by Kx, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
@@ -56,7 +53,10 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 [Callbacks](../kb/callbacks.md),
 [Using `.z`](../kb/using-dotz.md)
 <br>
-_Q for Mortals:_ [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
+:fontawesome-solid-street-view:
+_Q for Mortals:_ 
+[§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
+
 
 
 
