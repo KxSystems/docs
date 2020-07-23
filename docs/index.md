@@ -6,85 +6,107 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 ---
 # Developing with kdb+ and the q language
 
+<!-- 
 <div markdown="1" class="container"><div class="css-carousel">[![Kdb+ 4.0](img/carousel/kdb4.jpg){.css-img}](releases/ChangesIn4.0.md)[![Kx Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Parallelism](img/carousel/parallelism-600.jpg){.css-img}](kb/mt-primitives.md)[![Encryption](img/carousel/encryption-600.jpg){.css-img}](kb/dare.md)[![Optane](img/carousel/optane-memory-600.jpg){.css-img}](kb/optane.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
 </div>
+ -->
 
-??? tip "New on code.kx.com"
+<div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
-    :fontawesome-brands-python:&nbsp;
-    [PyQ 5.0 released](https://github.com/KxSystems/pyq/blob/pyq-5.0.0/HISTORY.md)
+<div style="display: inline-flex;" markdown="1">
+Kdb+, from [Kx](https://kx.com), is
 
-    :fontawesome-solid-chart-line:&nbsp;
-    [White paper: Implementing trend indicators](wp/trend-indicators/index.md)
+-   a high-performance cross-platform historical time-series columnar database 
+-   an in-memory compute engine
+-   a real-time streaming processor
+-   an expressive query and programming language called q
+</div>
 
-    :fontawesome-solid-book-reader:&nbsp;
-    [Example Python programs translated to q](learn/python/examples/index.md)
+<div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
+!!! tip "New"
 
-    :fontawesome-solid-bolt:&nbsp;
-    [kdb+ 4.0: more speed, more security](releases/ChangesIn4.0.md)
+    <p class="nowrap" markdown="1"><i class="fab fa-fw fa-python"></i> [PyQ 5.0 released](https://github.com/KxSystems/pyq/blob/pyq-5.0.0/HISTORY.md)</p>
 
-    :fontawesome-solid-chart-line:&nbsp;
-    [Kx Dashboards: visualize, stream, and share](/dashboards/)
+    <p class="nowrap" markdown="1"><i class="far fa-fw fa-map"></i> [Trend indicators](wp/trend-indicators/index.md)</p>
 
-    :fontawesome-solid-cloud:&nbsp;
-    [Go serverless with AWS Lambda](cloud/aws-lambda/index.md)
+    <p class="nowrap" markdown="1"><i class="fab fa-fw fa-python"></i> [Python examples](learn/python/examples/index.md)</p>
 
-    :fontawesome-solid-share-alt:&nbsp;
-    [AutoML](ml/automl/index.md)
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [kdb+ 4.0](releases/ChangesIn4.0.md)</p>
 
-    :fontawesome-solid-bolt:&nbsp;
-    [Multithreading primitives and implicit parallelism](cloud/aws-lambda/index.md)</li>
+    <!-- <p class="nowrap" markdown="1"><i class="fas fa-fw fa-chart-line"></i> [Kx Dashboards](/dashboards/)</p> -->
 
-    :fontawesome-solid-lock:&nbsp;
-    [DARE: data-at-rest encryption](kb/dare.md)</li>
+</div>
 
-    :fontawesome-solid-bolt:&nbsp;
-    [Support for Optane Memory](kb/optane.md)</li>
-
-    :fontawesome-solid-handshake:&nbsp;
-    [New Fusion interfaces: HDF5, MQTT, Prometheus, Solace](interfaces/hdf5/index.md)</li>
-
-    :fontawesome-solid-book-reader:&nbsp;
-    [The Reading Room: q code to study](learn/reading/index.md)</li>
-
+</div>
 
 <div style="clear: both">&nbsp;</div>
 
+## Get started
+
 <div class="kx-flex-grid" markdown="1">
-<!-- <div>
-    [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
-    Download<br/>
-    :fontawesome-brands-apple:
-    :fontawesome-brands-linux:
-    :fontawesome-brands-windows:](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
-</div>
- -->
 <div>
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
-    Get started](learn/index.md "Learn how to install and start using kdb+")
+    Install](learn/install.md)
 </div>
 <div>
-    [<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
-    Reference<br>and basics](ref/index.md "Reference card for the q language")
+    [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
+    Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
 </div>
+<div>
+    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+    Learn](learn/index.md "Learn q")
+</div>
+</div>
+
+## Code
+
+<div class="kx-flex-grid" markdown="1">
 <div>
     [<i class="fas fa-fw fa-dollar-sign fa-border fa-5x"></i><br/>
     Data types](basics/datatypes.md "Datatypes in kdb+")
 </div>
 <div>
+    [<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
+    Reference](ref/index.md "Reference card for the q language")
+</div>
+<div>
+    [<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
+    Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
+</div>
+</div>
+
+## Use with Python
+
+<div class="kx-flex-grid" markdown="1">
+<div>
+    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
+    Python to q](learn/python/examples/index.md "Python programs and their q equivalents")
+</div>
+<div>
+    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
+    PyQ](interfaces/pyq/index.md "Using Python with kdb+")
+</div>
+<div>
+    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
+    embedPy](interfaces/embedpy.md "Calling Python from q")
+</div>
+</div>
+
+## Develop
+
+<div class="kx-flex-grid" markdown="1">
+<div>
+    [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
+    Fusion<br/>interfaces](interfaces/ "Interfaces to other technologies")
+</div>
+<div>
     [<i class="fas fa-fw fa-share-alt fa-border fa-5x"></i><br/>
     Machine<br>learning](ml/index.md "Machine learning with kdb+")
 </div>
-<!--
 <div>
-    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
-    Phrasebook](/phrases/ "Power expressions in q")
+    [<i class="fas fa-fw fa-cloud fa-border fa-5x"></i><br/>
+    Cloud](cloud/index.md "Deploy on the cloud")
 </div>
-<div>
-    [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
-    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
-</div>
- -->
 <div>
     [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
     White papers](wp/index.md "Technical white papers on using kdb+")
@@ -94,16 +116,8 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
     Knowledge<br/>Base](kb/index.md)
 </div>
 <div>
-    [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
-    Fusion<br/>interfaces](interfaces/ "Interfaces to other technologies")
-</div>
-<div>
     [<i class="fab fa-fw fa-github fa-border fa-5x"></i><br/>
-    Share code](http://kxsystems.github.io/ "Kdb+ repositories on GitHub")
-</div>
-<div>
-    [<i class="fas fa-fw fa-life-ring fa-border fa-5x"></i><br/>
-    Support](support.md "Support contacts")
+    Community](http://kxsystems.github.io/ "Kdb+ repositories on GitHub")
 </div>
 </div>
 
