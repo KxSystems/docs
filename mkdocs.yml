@@ -186,7 +186,7 @@ nav:
       - Shifts & scans: learn/shifts-scans.md
       - Technical articles: learn/blogs.md
       - Views: learn/views.md
-      - Archive: learn/archive.md
+      - Origins: learn/archive.md
     - Starting kdb+: 
       - Overview: learn/startingkdb/index.md
       - The q language: learn/startingkdb/language.md
