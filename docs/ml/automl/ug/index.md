@@ -109,9 +109,6 @@ true_3| 0      0      5      0      0
 true_4| 0      0      5      0      2
 
 Saving down procedure report to /outputs/2020.07.20/run_12.38.51.152/report/
-
-Transcript written on q_automl_report_MLPClassifier_12.38.51.152.log.
-
 Saving down MLPClassifier model to /outputs/2020.07.20/run_12.38.51.152/models/
 Saving down model parameters to /outputs/2020.07.20/run_12.38.51.152/config/
 2020.07.20
