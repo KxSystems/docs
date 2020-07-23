@@ -75,6 +75,9 @@ Unzip the downloaded ZIP to produce a folder `q` in your install location.
 
     On Linux and macOS the `rlwrap` command allows the Up arrow to retrieve earlier expressions in the q session. It is very useful and we recommend installing it. 
 
+    :fontawesome-solid-globe:
+    [Unwrapping rlwrap](https://kx.com/blog/unwrapping-rlwrap/)
+
     Ask for its version number: `rlwrap -v`. If you see one, `rlwrap` is already installed. Otherwise, you will see `rlwrap: command not found`. 
 
     Install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). (Common package managers: `apt`, `dnf` and `yum` for Linux; [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.) 
