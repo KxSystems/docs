@@ -15,10 +15,18 @@ _Read or set the value of a variable or a kdb+ data file_
 
 _Read or memory-map a variable or kdb+ data file_
 
-Syntax: `get x`, `get[x]`
+```txt
+get x     get[x]
+```
 
-Reads or memory maps kdb+ data file `x`. 
-A type error is signalled if the file is not a kdb+ data file.
+Where `x` is
+
+-   the name of a global variable as a symbol atom
+-   one or more [files or folders](../basics/glossary.md#file-symbol) named as a symbol atom or vector
+
+returns its value.
+
+Signals a type error if the file is not a kdb+ data file.
 
 Used to map columns of databases in and out of memory when querying splayed databases, and can be used to read q log files, etc.
 
@@ -36,9 +44,9 @@ q)`:SNewTrade/ set .Q.en[`:.;trade]     / save splayed table
 q)s:get`:SNewTrade/                     / s has columns mapped on demand
 ```
 
-!!! Note "`get` and `value`"
+??? note "`value` is a synonym for `get`"
 
-    `get` has several other uses. The function [`value`](value.md) is a synonym for `get`. By convention, it is used for other purposes. But the two are completely interchangeable.
+    By convention, [`value`](value.md) is used for other purposes. But the two are completely interchangeable.
 
     <pre><code class="language-q">
     q)value "2+3"
@@ -56,14 +64,16 @@ q)s:get`:SNewTrade/                     / s has columns mapped on demand
 
 _Assign a value to a variable or file_
 
-Syntax: `x set y`, `set[x;y]`
+```txt
+x set y     set[x;y]
+```
 
 Where `x` is 
 
--   a [file symbol](../basics/glossary.md#file-symbol) 
--   a symbol naming a variable
+-   a global variable named as a symbol atom
+-   a [file or folder](../basics/glossary.md#file-symbol) named as a symbol atom 
 
-assigns the value of `y` to variable name or filename `x`.
+assigns the value of `y` to `x`.
 
 ```q
 q)`a set 1 2 3            / set name a
@@ -134,15 +144,14 @@ q)read0 `:data/foo
 "\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\036\000..
 ```
 
-
-!!! warning "Avoid Kx namespaces"
-
-    Avoid setting variables in the Kx namespaces, as undesired and confusing behavior can result.
+??? warning "Avoid setting variables in the Kx namespaces, as undesired and confusing behavior can result."
 
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 
-
+----
 :fontawesome-solid-book:
-[`value`](value.md)<br>
+[`eval`](eval.md),
+[`value`](value.md)
+<br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)
