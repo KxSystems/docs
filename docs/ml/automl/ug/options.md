@@ -29,15 +29,17 @@ aggcols     Aggregation columns for FRESH
 funcs       Functions to be applied for feature extraction
 gs          Grid search function and no. of folds/percentage of data in validation set
 hld         Size of the testing set on which the final model is tested
+hp          Type of hyperparameter search to perform
+rs          Random search function and no. of folds/percentage of data in validation set
 saveopt     Saving options outlining what is to be saved to disk from a run
 scf         Scoring functions for classification/regression tasks
 seed        Random seed to be used
 sigfeats    Feature significance procedure to be applied to the data
 sz          Size of validation set used.
+trials      Number of random/Sobol-random hyperparameters to generate
 tts         Train-test split function to be applied
 xv          Cross-validation function and # of folds/percentage of data in validation set
 ```
-
 
 ### `aggcols`
 
@@ -123,6 +125,47 @@ q)tst:0.1
 q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist tst]
 ```
 
+### `hp`
+
+_Type of hyperparameter search to perform_
+
+By default, grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the hp parameter.
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Random search - change hp parameter from default
+q).automl.run[tab;tgt;`normal;`reg;enlist[`hp]!enlist`random]
+// Sobol search - change hp parameter from default
+q).automl.run[tab;tgt;`normal;`reg;enlist[`hp]!enlist`sobol]
+```
+
+### `rs`
+
+_Random search procedure_
+
+Assuming `hp` has been changed to `random` or `sobol`, shuffled 5-fold cross validation will be implemented by default. This can be augmented by a user for different use cases, for example in the case of applying random/sobol search to time series data.
+
+The input for this parameter is a mixed list containing the random-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
+
+For simplicity of implementation, a user should where possible use the functions within the `.ml.rs` namespace for this task.
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Random search - roll forward random search with 6 folds
+q)roll_forward:(`.ml.rs.tsrolls;6)
+q).automl.run[tab;tgt;`normal;`reg;`hp`rs!(random;roll_forward)]
+// Sobol search - chain forward sobol search with 4 folds
+q)chain_forward:(`.ml.rs.tschain;4)
+q).automl.run[tab;tgt;`normal;`reg;`hp`rs!(sobol;chain_forward)]
+```
+
+!!! warning "Custom random/sobol search function"
+
+    To add a custom random/sobol search function, follow the [guidelines for function definition](../../toolkit/xval.md).
+
+    If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework this can become a complicated procedure.
 
 ### `saveopt`
 
@@ -213,7 +256,7 @@ q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;asc 100?1f)
 q)tgt:desc 100?1f
 // Define the function to be applied for feature significance tests
 q).automl.newsigfeat:{.ml.fresh.significantfeatures[x;y;.ml.fresh.ksigfeat 2]}
-q).automl.run[tab;tgt;`normal;`reg;enlist[`sigfeats]!enlist `.automl.newsigfeat]
+q).automl.run[tab;tgt;`normal;`reg;enlist[`sigfeats]!enlist`.automl.newsigfeat]
 ```
 
 The function that replaces the default feature-significance tests should take arguments
@@ -238,6 +281,27 @@ q)size:0.1
 q).automl.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 ```
 
+### `trials`
+
+_Number of random/Sobol-random hyperparameters to generate_
+
+For the random and Sobol-random hyperparameter methods, a specific number of hyperparameter sets are generated for a given hyperparameter space. 
+
+For sobol, the number of trials must equal 2^n, while for random, any number of distinct sets can be generated.
+
+The default for both cases is 264.
+
+```q
+q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+q)tgt:100?1f
+// Random - set number of hp sets
+q)n:100
+q).automl.run[tab;tgt;`normal;`reg;`hp`trials!(`random;n)]
+// Sobol - set number of hp sets to equal 2^n
+q)show n:"j"$xexp[2;9]
+512
+q).automl.run[tab;tgt;`normal;`reg;`hp`trials!(`sobol;n)]
+```
 
 ### `tts`
 
@@ -302,6 +366,9 @@ aggcols  |{first cols x}
 funcs    |`.ml.fresh.params
 xv       |.ml.xv.kfshuff;5
 gs       |.ml.gs.kfshuff;5
+rs       |.ml.rs.kfshuff;5
+hp       |`grid
+trials   |256
 prf      |`.automl.xv.fitpredict
 scf      |class=.ml.accuracy;reg=.ml.mse
 seed     |`rand_val
@@ -314,6 +381,9 @@ sigfeats |`.automl.prep.freshsignificance
 // Normal parameter file
 xv       |.ml.xv.kfshuff;5
 gs       |.ml.gs.kfshuff;5
+rs       |.ml.rs.kfshuff;5
+hp       |`grid
+trials   |256
 funcs    |`.automl.prep.i.default
 prf      |`.automl.xv.fitpredict
 scf      |class=.ml.accuracy;reg=.ml.mse

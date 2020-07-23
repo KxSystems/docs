@@ -21,7 +21,7 @@ The following are the procedures completed when the default system configuration
 3. Data is split into training, validation and testing sets.
 4. Cross-validation procedures are performed on a selection of models.
 5. Models are scored using a predefined performance metric, based on the problem type (classification/regression), with the best model selected and scored on the validation set.
-6. Best model saved following optimization using grid search procedures.
+6. Best model saved following optimization using hyperparameter searching procedures.
 
 
 ## Feature extraction
@@ -250,12 +250,12 @@ Score for validation predictions using best model = 0.1263564
 
 ## Optimization
 
-In order to optimize the best model, grid-search procedures are implemented. Similarly to the cross validation methods above, this grid search functionality is sourced from within the ML-Toolkit.
+In order to optimize the best model, hyperparameter searching procedures are implemented. Similarly to the cross validation methods above, this includes the grid search functionality contained within the ML-Toolkit, along with new random and Sobol-random search functionality.
 
-In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the flat file `hyperparam.txt` and can be altered by the user if required. 
+In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the q script `grid/random_hyperparameters.q` and can be altered by the user if required. 
 
 ```txt
-Models and default grid search hyperparameters:
+Models and default grid/random search hyperparameters:
   AdaBoost Regressor               learning_rate, n_estimators
   Gradient Boosting Regressor      criterion, learning_rate, loss
   KNeighbors Regressor             n_neighbors, weights
@@ -272,7 +272,7 @@ Models and default grid search hyperparameters:
   SVC                              C, degree, tol
 ```
 
-Once the grid search has been performed, the optimized model is tested using the testing set, with the final score returned and the best model saved down. A normal classification example is shown below.
+Once the hyperparameter search has been performed, the optimized model is tested using the testing set, with the final score returned and the best model saved down. A normal classification example is shown below.
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)
