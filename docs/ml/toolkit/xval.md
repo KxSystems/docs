@@ -41,7 +41,7 @@ keywords: time-series, cross validation, grid search, random search, Sobol seque
 :fontawesome-brands-github:
 [KxSystems/ml/xval](https://github.com/kxsystems/ml/tree/master/xval/)
 
-The `.ml.xv`, `.ml.gs` and `.ml.rs` namespaces contain functions related to cross validation, grid search, random search and sobol-random search algorithms. These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
+The `.ml.xv`, `.ml.gs` and `.ml.rs` namespaces contain functions related to cross validation, grid search, random search and sobol-random search algorithms (more information on [Sobol sequences](https://en.wikipedia.org/wiki/Sobol_sequence)). These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
 
 For grid search, users must specify values for a number of hyperparameters, where a model will be build using every possible combination. In the case of random and sobol, a user only needs to specify the type of hyperparameter search space, along with the lower and upper bounds and the number of hyperparameter sets to generate. These sets are then randomly chosen within the given hyperparameter space using either pseudo-random or sobol-random numbers.
 
@@ -52,6 +52,20 @@ As of toolkit version 0.1.3, the distribution of cross-validation functions is i
 !!! tip "Interactive notebook implementations"
 
   	Interactive notebook implementations of a large number of the functions outlined here are available within :fontawesome-brands-github: [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
+    
+
+## Grid Search Functions
+
+### Grid Search Hyperparameter Dictionary
+
+For grid search functions provided in the toolkit, users must provide a dictionary containing hyperparameter names and all the possible values they wish to search. An example is provided below.
+
+```q
+/ grid search hyperparameter dictionary for an AdaBoostRegressor
+q)p:`n_estimators`learning_rate!(10 20 50 100;0.1 0.5 0.9)
+/ grid search hyperparameter dictionary for a DecisionTreeClassifier
+q)p:enlist[`max_depth]!enlist(::;1;2;3;4;5)
+```
 
 
 ## `.ml.gs.kfshuff`
@@ -67,7 +81,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -109,7 +123,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -159,7 +173,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -203,7 +217,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -245,7 +259,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -292,7 +306,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -342,7 +356,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -378,7 +392,9 @@ This works as shown in the following image:
 
 Successive equi-sized bins are taken as training and validation sets at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
 
-## Random hyperparameter dictionary
+## Random Search Functions
+
+### Random Search Hyperparameter Dictionary
 
 The random and sobol searching methods follow the same syntax as grid search, with the exception of the `p` parameter. In order to perfom these two searching methods extra information is needed, where the parameter dictionary must have the format:
 
@@ -387,27 +403,27 @@ The random and sobol searching methods follow the same syntax as grid search, wi
 -   `n` is the number of hyperparameter sets to produce. **Note**: for sobol this number must equal $2^n$, e.g. $4$, $8$, $16$, etc.
 -   `p` is a dictionary of hyperparameters to be searched which must have the following forms:
 
-Numerical:
+    Numerical:
         
-```q
-enlist[`hyperparam_name]!enlist(space_type;lower_bound;upper_bound;hp_type)
-``` 
+    ```
+    enlist[`hyperparam_name]!enlist(space_type;lower_bound;upper_bound;hp_type)
+    ``` 
 
-where `space_type` is `uniform` or `loguniform`, `lower_upper` and `upper_bound` are the limits of the hyperparameter space and `hp_typ` is the type to cast the hyperparameters to.
+    where `space_type` is `uniform` or `loguniform`, `lower_upper` and `upper_bound` are the limits of the hyperparameter space and `hp_typ` is the type to cast the hyperparameters to.
 
-Symbol: 
+    Symbol: 
 
-```q
-enlist[`hyperparam_name]!enlist(`symbol;symbols_to_search)
-``` 
+    ```
+    enlist[`hyperparam_name]!enlist(`symbol;symbols_to_search)
+    ``` 
 
-where `symbol` is given as the type followed by the list of possible symbol values.
+    where `symbol` is given as the type followed by the list of possible symbol values.
 
-Boolean: 
+    Boolean: 
 
-```q
-enlist[`hyperparam_name]!enlist`boolean
-```
+    ```
+    enlist[`hyperparam_name]!enlist`boolean
+    ```
 
 A practical example is provided below.
         
@@ -439,7 +455,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random hyperparameter dictionary](#Random-hyperparameter-dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -487,7 +503,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -544,7 +560,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -593,7 +609,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -644,7 +660,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -698,7 +714,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -755,7 +771,7 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
@@ -796,6 +812,8 @@ This works as shown in the following image:
 ![Figure 2](img/rollforward.png)
 
 Successive equi-sized bins are taken as training and validation sets at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
+
+## Cross Validation Functions
 
 ## `.ml.xv.kfshuff`
 
