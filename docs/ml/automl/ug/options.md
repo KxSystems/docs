@@ -29,7 +29,7 @@ aggcols     Aggregation columns for FRESH
 funcs       Functions to be applied for feature extraction
 gs          Grid search function and no. of folds/percentage of data in validation set
 hld         Size of the testing set on which the final model is tested
-hp          Type of hyperparameter search to perform
+hp          Type of hyperparameter search to perform - `grid`random`sobol
 rs          Random search function and no. of folds/percentage of data in validation set
 saveopt     Saving options outlining what is to be saved to disk from a run
 scf         Scoring functions for classification/regression tasks
