@@ -10,9 +10,11 @@ keywords: asof, join, kdb+, q
 
 _As-of join_
 
-Syntax: `t1 asof t2`, `asof[t1;t2]`
+```txt
+t1 asof t2     asof[t1;t2]
+```
 
-Where 
+Where
 
 -   `t1` is a table
 -   `t2` is a table or dictionary
@@ -28,6 +30,7 @@ stop | 0b
 corr | 0
 cond | "T"
 ex   | "D"
+
 q)show trade asof([]sym:`AAPL`IBM;ex:"TD";time:09:30:00.0)
 price size stop corr cond
 -------------------------
@@ -66,7 +69,15 @@ A   2000.08.04| 00846U101 AGILENT TECHNOLOGIES  INC      0  N  100
 ```
 
 
-:fontawesome-regular-hand-point-right: 
-[`aj`, `aj0`, `ajf`, `ajf0`](aj.md)  
-Basics: [Joins](../basics/joins.md)
+----
+:fontawesome-solid-book:
+[`aj`](aj.md), 
+[`wj`](wj.md)
+<br>
+:fontawesome-solid-book-open:
+[Joins](../basics/joins.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.8 As-of Joins](/q4m3/9_Queries_q-sql/#998-as-of-joins)
 

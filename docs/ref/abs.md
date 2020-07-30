@@ -22,7 +22,8 @@ q)abs 10 -43 0N
 10 43 0N
 ```
 
-`abs` is an atomic function.
+An atomic function.
+
 
 ## Domain and range
 
@@ -33,6 +34,8 @@ range  i . i h i j e f i . p m d z n u v t
 
 Range: `ihjefpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
-[`signum`](signum.md)  
-Basics: [Mathematics](../basics/math.md)
+:fontawesome-solid-book: 
+[`signum`](signum.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)

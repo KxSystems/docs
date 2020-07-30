@@ -1,11 +1,13 @@
 ---
-title: Example usage of the Prometheus kdb+ interface
+title: Example usage | Prometheus Exporter | Interfaces | q and kdb+ documentation
 author: Conor McCarthy
 description: Minimal examples showing the use of the Prometheus kdb interface
 date: March 2020
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: Prometheus, Grafana, kdb+, examples, metrics, monitoring, 
 ---
-# Example usage of interface
+# Example usage of Prometheus Exporter interface
+
 
 The demonstration described below uses [Docker Compose](https://docs.docker.com/compose/install/) to run an instance of Prometheus and [Grafana](https://grafana.com/) to gather and present them to a pre-configured interactive dashboard respectively.
 

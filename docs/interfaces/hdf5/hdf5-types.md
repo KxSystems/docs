@@ -6,9 +6,10 @@ hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 date: March 2020
 keywords: HDF5, kdb+, file-format, 
 ---
-# :fontawesome-solid-share-alt: Type mapping between kdb+ and HDF5 
+# Type mapping between kdb+ and HDF5 
 
- <i class="fab fa-github"></i> [KxSystems/hdf5-kdb](https://github.com/KxSystems/hdf5-kdb)
+:fontawesome-brands-github:
+[KxSystems/hdf5-kdb](https://github.com/KxSystems/hdf5-kdb)
 
 The following page outlines how kdb+ numeric and string types are represented in HDF5, how HDF5 native types are mapped to kdb+ and how more complex structures such as compound types in HDF5 and tables in kdb+ are mapped to the kdb+ and HDF5 respectively.
 

@@ -1,5 +1,5 @@
 ---
-title: Fill, fills – Reference – kdb+ and q documentation
+title: Fill operator, fills keyword | Reference | kdb+ and q documentation
 description: Fill is a q operator that replaces nulls in a vector. fills is a q keyword that replaces nulls in a vector with preceding non-nulls.
 author: Stephen Taylor
 keywords: fill, fills, kdb+, null, q, replace
@@ -7,9 +7,6 @@ keywords: fill, fills, kdb+, null, q, replace
 # `^` Fill, `fills`
 
 _Replace nulls_
-
-
-
 
 
 
@@ -58,6 +55,8 @@ c| 30
 
 Fill is an atomic function.
 
+:fontawesome-solid-book: 
+[`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
 
 
 ## `fills`
@@ -88,10 +87,4 @@ For a similar function on infinities, first replace them with nulls:
 q)fills {(x where x=0W):0N;x} 0N 2 3 0W 0N 7 0W
 0N 2 3 3 3 7 7
 ```
-
-
-
-:fontawesome-regular-hand-point-right: 
-[`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
-
 

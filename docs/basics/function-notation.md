@@ -44,6 +44,10 @@ q){(x*x)+(y*y)+2*x*y}[20;4]       / unsigned lambda
 576
 ```
 
+!!! tip "Use `x`, `y`, and `z` only as names of the first three arguments"
+
+    Using other names for the first arguments of a lambda often helps the reader. But using `x`, `y`, or `z` for any other argument sows confusion.
+
 
 ## Rank
 
@@ -109,7 +113,10 @@ q)c
 
 ## Name scope
 
-Within the context of a function, name assignments with `:` are _local_ to it and end after evaluation. Assignments with `::` are _global_ (in the session root) and persist after evaluation.
+Within the context of a function, 
+
+-   name assignments with `:` are _local_ to it and end after evaluation
+-   assignments with `::` are _global_ (in the session root) and persist after evaluation _unless_ the name assigned is an argument or already defined as a local 
 
 ```q
 q)a:b:0                      / set globals a and b to 0
@@ -119,6 +126,16 @@ q)a                          / global a is unchanged
 0
 q)b                          / global b is updated
 113 116 119
+
+q)b:42
+q){[a;b]b::99;a+b}[10;20]    / assignment is local
+109
+q)b
+42
+q){b:x=y;b::99;x+b}[10;20]   / assignment is local
+109
+q)b
+42
 ```
 
 References to names _not_ assigned locally are resolved in the session root. Local assignments are _strictly local_: invisible to other functions applied during evaluation. 
@@ -152,6 +169,12 @@ q) {if[x;t:([]`a`b)];select from t} 0b     / local t is ()
                          ^
 ```
 
+!!! tip "Within lambdas, read and set global variables with `get` and `set`"
+
+:fontawesome-solid-book:
+[`get`, `set`](../ref/get.md)
+
+
 ## Multiline definition
 
 In scripts function definitions can straddle multiple lines.
@@ -165,7 +188,7 @@ sqsum:{[a;b]   / square of sum
 ```
 
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book-open:
 [Multiline expressions](syntax.md#multiline-expressions)
 
 
@@ -180,6 +203,6 @@ locals    | $m$    | 110         | 23
 globals   | $n$    | 110         | 31
 constants |        | $240-(m+n)$ | $95-(m+n)$
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book-open:
 [Parse errors](errors.md#parse-errors)
 

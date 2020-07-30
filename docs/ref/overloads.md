@@ -1,10 +1,9 @@
 ---
-title: Overloaded operators – Reference – kdb+ and q documentation
+title: Overloaded glyphs | Reference | kdb+ and q documentation
 description: Many non-alphabetic keyboard characters are overloaded by q. This page tabulates their different forms. 
 author: Stephen Taylor
-keywords: at, backslash, bang, dash, dot, dollar, hash, kdb+, operator, overload, pound, q, query, quote, quote-colon, slash, underscore, unary
 ---
-# Overloaded operators
+# Overloaded glyphs
 
 
 
@@ -73,6 +72,24 @@ x,y: same-length lists
 ```
 
 
+## `:` colon
+
+<pre markdown="1" class="language-txt">
+a:42   [assign](../basics/syntax.md) 
+:42    [explicit return](../basics/function-notation.md#explicit-return)
+</pre>
+
+
+## `:` colon colon
+
+<pre markdown="1" class="language-txt">
+v::select from t where a in b     [define a view](../learn/views.md)
+global::42                        [amend a global from within a lambda](../basics/function-notation.md#name-scope)
+::                                [Identity](identity.md)
+::                                [Null](identity.md#null)
+</pre>
+
+
 ## `-` dash
 
 Syntax: immediately left of a number, indicates its negative.
@@ -98,6 +115,7 @@ rank | syntax              | semantics
 4    | `.[d;i;m;my]`       | [Amend](amend.md)
 4    | `.[d;i;:;y]`        | [Replace](amend.md)
 
+In the [Debugger](../basics/debug.md), push the stack.
 
 
 ## `$` dollar

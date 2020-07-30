@@ -51,13 +51,14 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
 <div style="clear: both">&nbsp;</div>
 
 <div class="kx-flex-grid" markdown="1">
-<div>
+<!-- <div>
     [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
     Download<br/>
     :fontawesome-brands-apple:
     :fontawesome-brands-linux:
     :fontawesome-brands-windows:](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 </div>
+ -->
 <div>
     [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
     Get started](learn/index.md "Learn how to install and start using kdb+")
@@ -67,10 +68,18 @@ keywords: code, cloud, contact, cookbook, developer, documentation, download, fd
     Reference<br>and basics](ref/index.md "Reference card for the q language")
 </div>
 <div>
+    [<i class="fas fa-fw fa-dollar-sign fa-border fa-5x"></i><br/>
+    Data types](basics/datatypes.md "Datatypes in kdb+")
+</div>
+<div>
+    [<i class="fas fa-fw fa-share-alt fa-border fa-5x"></i><br/>
+    Machine<br>learning](ml/index.md "Machine learning with kdb+")
+</div>
+<!--
+<div>
     [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
     Phrasebook](/phrases/ "Power expressions in q")
 </div>
-<!--
 <div>
     [<i class="fab fa-fw fa-quora fa-border fa-5x"></i><br/>
     _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")

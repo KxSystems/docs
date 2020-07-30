@@ -100,7 +100,7 @@ Your Designated Contact sends a copy of the banner to licadmin@kx.com to request
 ## Install the license key file
 
 Save a copy of the license key file (`k4.lic` or `kc.lic`) in the `QHOME` folder. 
-(See [installation instructions](install/index.md#install) for your operating system.) 
+(See [installation instructions](install.md#install) for your operating system.) 
 Restart your kdb+ session and note the change in the banner. 
 
 ```txt

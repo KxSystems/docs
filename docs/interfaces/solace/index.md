@@ -34,15 +34,8 @@ This interface lets you communicate with a Solace PubSub+ event broker from a kd
 -   direct/persistent/guaranteed messaging functionality
 -   endpoint management
 
-:fontawesome-regular-hand-point-right:
-[Reference](reference.md), 
-[Example implementation](examples.md)
-<br>
 :fontawesome-brands-github:
 [Install guide](https://github.com/KxSystems/solace#installation)
-<br>
-:fontawesome-solid-globe:
-[Solace RESTful API](solacerest.md) for integrating with Solace PubSub+ brokers
 
 
 ## Status
@@ -51,7 +44,7 @@ The interface is currently available as a beta version under an Apache 2.0 licen
 
 :fontawesome-brands-github: 
 [Issues and feature requests](https://github.com/KxSystems/solace/issues) 
-
+<br>
 :fontawesome-brands-github: 
 [Guide to contributing](https://github.com/KxSystems/solace/blob/master/CONTRIBUTING.md)
 

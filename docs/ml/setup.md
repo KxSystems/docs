@@ -109,6 +109,6 @@ Allows Jupyter notebooks to be used within a Docker container.
 
 ## Do it yourself
 
-1.  Install [kdb+](../learn/install/index.md) 
+1.  Install [kdb+](../learn/install.md) 
 2.  Install [embedPy](embedpy/index.md)
 3.  Install [JupyterQ](jupyterq/index.md)

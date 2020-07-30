@@ -61,6 +61,9 @@ a  b
 11 e
 ```
 
+:fontawesome-solid-globe:
+[SQL UNION ALL](https://www.w3schools.com/sql/sql_union.asp)
+
 Tables of the same count can be joined column-wise with `,'` (Join Each).
 
 ```q
@@ -76,8 +79,10 @@ a b c  d
 
 Join for keyed tables is strict; both the key and data columns must match in names and datatypes.
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Joins](../basics/joins.md)  
+:fontawesome-solid-book: 
 [`.Q.dd`](dotq.md#qdd-join-symbols) join symbols
+<br>
+:fontawesome-solid-book-open: 
+[Joins](../basics/joins.md) 
 
 

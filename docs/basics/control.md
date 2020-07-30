@@ -9,9 +9,8 @@ keywords: control, control words, distributive, evaluation, iterate, kdb+, opera
 
 
 <pre markdown="1" class="language-txt">
-
-[' ': /: \:   each peach prior](../ref/maps.md "maps")     [\$[x;y;z] Cond](../ref/cond.md)
-[\\ /          scan over](../ref/accumulators.md "accumulators")            [?[x;y;z] Vector Conditional](../ref/vector-conditional.md)
+[' ': /: \\:   each peach prior](../ref/maps.md "maps")          [\$[x;y;z] Cond](../ref/cond.md)
+[\\ /          scan over](../ref/accumulators.md "accumulators")
 
 [.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)
 [@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)
@@ -24,6 +23,8 @@ Evaluation is controlled by
 -   explicit return from a lambda
 -   signalling and trapping errors
 -   control words
+-   `exit`
+
 
 :fontawesome-solid-book-open:
     [Debugging](debug.md)
@@ -102,12 +103,20 @@ See also the [Case](../ref/maps.md#case) iterator.
 
 Syntax: `$[x;y;z]`
 
-[Cond](../ref/cond.md) returns `z` when `x` is zero; else `y`.
+Cond returns `z` when `x` is zero; else `y`.
 
-Two arguments are evaluated: `x` and either `y` or `z`.
+In the ternary form, two arguments are evaluated: `x` and either `y` or `z`. 
+With more arguments, Cond implements if/then/elseif… control structures.
 
-[Vector Conditional](../ref/vector-conditional.md) does something similar for lists of arguments, but evaluates all three arguments.
-It should be used in [qSQL queries](qsql.md), which do not support Cond.
+:fontawesome-solid-book:
+[Cond](../ref/cond.md)
+
+!!! tip "Vector Conditional"
+
+    [Vector Conditional](../ref/vector-conditional.md) does something similar for lists of arguments, but evaluates all three arguments.
+    It should be used in [qSQL queries](qsql.md), which do not support Cond.
+
+    Vector Conditional is an example of a whole class of data-oriented q solutions to problems other languages typically solve with control structures. Data-oriented solutions are typically more efficient and  parallelize well.
 
 
 ## Explicit return
@@ -156,10 +165,6 @@ q)goo 3
 
 : evaluate some expression/s some number of times
 
-[`exit`](../ref/exit.md)
-
-: terminate kdb+
-
 [`if`](../ref/if.md)
 
 : evaluate some expression/s if some condition holds
@@ -185,6 +190,14 @@ q)goo 3
 
 A common error is forgetting to terminate with a semi-colon.
 
-The result of `if`, `do`, and `while` is [Identity](../ref/identity.md), `(::)`, which allows one mistakenly to write code such as `a:if[1b;42]43` (instead use [Cond](../ref/cond.md)), or `a:0b;if[a;0N!42]a:1b` – the sequence is not as intended!
+The result of `if`, `do`, and `while` is [Identity](../ref/identity.md), `(::)`, which allows one mistakenly to write code such as 
 
+```q
+a:if[1b;42]43               / instead use Cond
+a:0b;if[a;0N!42]a:1b        / the sequence is not as intended!
+```
+
+## `exit`
+
+The [`exit`](../ref/exit.md) keyword terminates kdb+ with the specified return code.
 

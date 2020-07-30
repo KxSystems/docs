@@ -1,5 +1,5 @@
 ---
-title: lj – Reference – kdb+ and q documentation
+title: lj - left join | Reference | kdb+ and q documentation
 description: lj is a q keyword that performs a left join.
 keywords: join, kdb+, left, left join, lj, ljf, q
 ---
@@ -10,9 +10,10 @@ _Left join_
 
 
 
-
-Syntax: `x lj y`, `lj[x;y]`  
-Syntax: `x ljf y`, `ljf[x;y]`
+<pre markdown="1" class="language-txt">
+x lj  y     lj [x;y]
+x ljf y     ljf[x;y]
+</pre>
 
 Where 
 
@@ -34,11 +35,13 @@ a b c
 1 I 10
 2 J 20
 3 K 30
+
 q)show y:([a:1 3;b:`I`K]c:1 2;d:10 20)
 a b| c d
 ---| ----
 1 I| 1 10
 3 K| 2 20
+
 q)x lj y
 a b c  d
 ---------
@@ -93,38 +96,43 @@ q)t1 lj t2
 ```
 
 
-## Changes in V3.0
+??? detail "Changes in V3.0"
 
-Since V3.0, the `lj` operator is a cover for `,\:` (Join Each Left) that allows the left argument to be a keyed table. `,\:` was introduced in V2.7 2011.01.24.
+    Since V3.0, the `lj` operator is a cover for `,\:` (Join Each Left) that allows the left argument to be a keyed table. `,\:` was introduced in V2.7 2011.01.24.
 
-Prior to V3.0, `lj` had similar behavior, with one difference - when there are nulls in the right argument, `lj` in V3.0 uses the right-argument null, while the earlier version left the corresponding value in the left argument unchanged:
+    Prior to V3.0, `lj` had similar behavior, with one difference - when there are nulls in the right argument, `lj` in V3.0 uses the right-argument null, while the earlier version left the corresponding value in the left argument unchanged:
 
-```q
-q)show x:([]a:1 2;b:`x`y;c:10 20)
-a b c
-------
-1 x 10
-2 y 20
-q)show y:([a:1 2]b:``z;c:1 0N)
-a| b c
--| ---
-1|   1
-2| z
-q)x lj y        / kdb+ 3.0
-a b c
------
-1   1
-2 z
-q)x lj y        / kdb+ 2.8 
-a b c
-------
-1 x 1
-2 z 20
-```
+    <pre><code class="language-q">
+    q)show x:([]a:1 2;b:`x`y;c:10 20)
+    a b c
+    ------
+    1 x 10
+    2 y 20
+    q)show y:([a:1 2]b:``z;c:1 0N)
+    a| b c
+    -| ---
+    1|   1
+    2| z
+    q)x lj y        / kdb+ 3.0
+    a b c
+    -----
+    1   1
+    2 z
+    q)x lj y        / kdb+ 2.8 
+    a b c
+    ------
+    1 x 1
+    2 z 20
+    </code></pre>
 
-Since 2014.05.03, the earlier version is available in all V3.x versions as `ljf`.
+    Since 2014.05.03, the earlier version is available in all V3.x versions as `ljf`.
 
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Joins](../basics/joins.md)
+----
+:fontawesome-solid-book-open: 
+[Joins](../basics/joins.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.2 Ad Hoc Left Join](/q4m3/9_Queries_q-sql/#992-ad-hoc-left-join-lj)
 

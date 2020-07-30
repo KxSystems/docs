@@ -1,10 +1,9 @@
 ---
-title: Application and projection – Basics – kdb+ and q documentation
-description: Everything in q is a value and almost everything can be applied to some other values. To apply a value means to evaluate a function on its arguments, to select items from a list or dictionary, or to write to a file or process handle. Projection (or currying) is a partial application in which one or more values is bound.
+title: Application, projection, and indexing | Basics | kdb+ and q documentation
+description: Everything in q is a value and almost everything can be applied to some other values. Projection (or currying) is a partial application in which one or more values is bound.
 author: Stephen Taylor
-keywords: apply, curry, domain, function, index, kdb+, list, project, projection, q, value
 ---
-# Application and projection
+# Application, projection, and indexing
 
 
 ## Values
@@ -12,6 +11,7 @@ keywords: apply, curry, domain, function, index, kdb+, list, project, projection
 Everything in q is a value, and almost all values can be applied.
 
 -   A list can be applied to its indexes to get its items.
+-   A list with an elided item or items can be applied to a fill item or list of items
 -   A dictionary can be applied to its keys to get its values.
 -   A matrix can be applied its row indexes to get its rows; 
 or to its row and column indexes to get its items. 
@@ -30,11 +30,21 @@ By extension,
 -   the domain of a dictionary is its keys; its range is its values
 -   the domains of a table are its row indexes and column names
 
-!!! info "Atoms need not apply."
+!!! info "Atoms need not apply"
 
-    The only values that cannot be applied are atoms that are not file or process handles.
+    The only values that cannot be applied are atoms that are not file or process handles, or the name of a variable or lambda.
 
     In what follows, _value_ means _applicable value_.
+
+!!! tip "Application and indexing"
+
+    Most programming languages treat the indexing of arrays and the application of functions as separate. Q conflates them. This is deliberate, and fundamental to the design of the language. 
+
+    It also provides useful alternatives to control structures. See [_Application and indexing_](#application-and-indexing) below.
+
+    :fontawesome-solid-street-view:
+    _Q for Mortals_
+    [§6.5 Everything Is a Map](/q4m3/6_Functions/#everything-is-a-map)
 
 
 ## Application
@@ -73,6 +83,7 @@ q)m[3 1]                            / m is a list (unary)
 "def"
 q)m[0;2 0 1]                        / and also a matrix (binary)
 "cab"
+q)main[]                            / nullary lambda
 ```
 
 
@@ -366,7 +377,19 @@ q)m["quick";"brown"]               / binary
 "fox"
 ```
 
-!!! tip "Make projections explicit"
+The function definition in a projection is set at the time of projection.
+If the function is subsequently redefined, the projection is unaffected.
+
+```q
+q)f:{x*y}
+q)g:f[3;]   / triple
+q)g 5
+15
+q)f:{x%y}
+q)g 5       / still triple
+15
+```
+??? tip "Make projections explicit"
 
     When projecting a function onto an argument list, make the argument list full-length.
     This is not always necessary but it is good style, because it makes it clear the value is being projected, not applied. 
@@ -390,4 +413,155 @@ q)m["quick";"brown"]               / binary
 
 When projecting a [variadic function](variadic.md) the argument list must always be full-length.
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.4 Projection](/q4m3/6_Functions/#64-projection)
+<br>
+:fontawesome-brands-wikipedia-w:
+[Currying](https://en.wikipedia.org/wiki/Currying)
 
+
+## Applying a list with elided items
+
+A list with elided items can be applied as if it were a function of the same rank as the number of elided items. 
+
+```q
+q)("the";"quick";;"fox")"brown"
+"the"
+"quick"
+"brown"
+"fox"
+
+q)("the";"quick";;"fox") @ "brown"
+"the"
+"quick"
+"brown"
+"fox"
+
+q)("the";;;"fox") . ("quick";"brown")
+"the"
+"quick"
+"brown"
+"fox"
+```
+
+This is subject to the same limitation as [function notation](function-notation.md). 
+If there are more than eight elided items, a rank error is signalled. 
+
+
+## Indexing
+
+Indexing a list employs the same syntax as applying a function to arguments and works similarly.
+
+```q
+q)show m:4 3#.Q.a
+"abc"
+"def"
+"ghi"
+"jkl"
+
+q)m[3][1]
+"k"
+
+q)m[3;1]
+"k"
+
+q)m[3 1;1]
+"ke"
+
+q)m[3 1;]       / eliding an index means all positions
+"jkl"
+"def"
+
+q)m[3 1]        / trailing indexes can be elided
+"jkl"
+"def"
+
+q)m 3 1         / brackets can be elided for a single index
+"jkl"
+"def"
+
+q)m @ 3 1       / Index At (top level)
+"jkl"
+"def"
+
+q)m . 3 1       / Index (at depth)
+"k"
+
+q)m . (3 1;1)   / Index (at depth)
+"ke"
+```
+
+
+### Indexing out of bounds
+
+Indexing a list at a non-existent position returns a null of the type of the first item/s.
+
+```q
+q)(til 5) 99
+0N
+q)(`a`b`c!1.414214 2.718282 3.141593) `x
+0n
+
+q)t
+name dob        sex
+-------------------
+dick 1980.05.24 m
+jane 1990.09.03 f
+q)t 2
+name| `
+dob | 0Nd
+sex | `
+
+q)kt
+name city | eye   sex
+----------| ---------
+Tom  NYC  | green m
+Jo   LA   | blue  f
+Tom  Lagos| brown m
+q)kt `Jack`London
+eye|
+sex|
+```
+
+
+## The thing and the name of the thing
+
+> What’s in a name? That which we call a rose  
+> By any other name would smell as sweet;  
+> —_Romeo and Juliet_
+
+In all of the above you can use the name of a value (as a symbol) as an alternative.
+
+```q
+q)f:{x+y*3}
+q)f[5;3]              / the rose
+14
+q)`f[5;3]             / the name of the rose
+14
+q)`f . 5 3
+14
+q)g:`f[5;]
+q)`g 3
+14
+```
+
+This applies to values you define in the default or other namespaces. 
+It does not apply to system names, nor to names local to lambdas.
+
+
+## Application and indexing
+
+The conflation of application and indexing is deliberate and useful. 
+
+```q
+q)(sum;dev;var)[1;til 5]
+1.414214
+```
+
+Above, the list of three keywords is applied to (indexed by) the first argument, selecting `dev`, which is then applied to the second argument, `til 5`.
+
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.8 General Application](/q4m3/6_Functions/#68-general-application)

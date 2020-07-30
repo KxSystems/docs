@@ -1,5 +1,5 @@
 ---
-title: Lesser, and – Reference – kdb+ and q documentation
+title: Lesser, and | Reference | kdb+ and q documentation
 description: Lesser is a q operator that returns the lesser of its arguments. and is a q keyword that performs a logical AND. 
 author: Stephen Taylor
 keywords: and, kdb+, lesser of, logic, minimum, q
@@ -14,7 +14,7 @@ _Lesser of two values; logical AND_
 Syntax: `x & y`, `&[x;y]`
 Syntax: `x and y`, `and[x;y]` 
 
-Returns the lesser of boolean, numeric, character, or temporal `x` and `y`. 
+Returns the [lesser](../basics/comparison.md) of boolean, numeric, character, or temporal `x` and `y`. 
 
 ```q
 q)2&3
@@ -53,6 +53,16 @@ ibm  | 2016.12
 msoft| 2017.08
 appl | 2015.03
 goog | 2017.11
+```
+
+
+## Mixed types
+
+Where `x` and `y` are of different types the lesser of their underlying values is returned as the higher of the two types.
+
+```q
+q)98&"c"
+"b"
 ```
 
 

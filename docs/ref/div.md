@@ -1,5 +1,5 @@
 ---
-title: div – Reference – kdb+ and q documentation
+title: div | Reference | kdb+ and q documentation
 description: div is a q keyword that performs integer division. 
 author: Stephen Taylor
 keywords: div, divide, division, in, integer, kdb+, math, mathematics, q
@@ -17,6 +17,13 @@ Integer division: returns the greatest whole number that does not exceed `x%y`.
 ```q
 q)7 div 3
 2
+
+q)7 div 2 3 4
+3 2 1
+
+q)-7 7 div/:\:-2.5 -2 2 2.5
+2  3  -4 -3
+-3 -4 3  2
 ```
 
 <!-- FIXME Examples with dictionaries and tables -->
@@ -69,8 +76,11 @@ t  | t . t t t t t t t . t t t t t t t t
 
 Range: `ijfpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
-[`%` Divide](divide.md), [`reciprocal`](reciprocal.md)  
-Basics: [Mathematics](../basics/math.md)
-
-
+:fontawesome-solid-book: 
+[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_: [§4.8.1 Integer Division `div` and Modulus `mod`](/q4m3/4_Operators/#481-integer-division-div-and-modulus-mod)

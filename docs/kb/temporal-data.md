@@ -159,5 +159,5 @@ q)tab.timeStamp>09:29
 000011b
 ```
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Comparison](../basics/comparison.md)
+:fontawesome-solid-book-open:
+[Comparison](../basics/comparison.md)

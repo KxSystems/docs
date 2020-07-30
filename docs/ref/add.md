@@ -1,5 +1,5 @@
 ---
-title: Add – Reference – kdb+ and q documentation
+title: Add | Reference | kdb+ and q documentation
 description: A q operator that returns the sum of two numeric, boolean or temporal arguments
 keywords: add, kdb+, mathematics, plus, q, sum
 ---
@@ -14,12 +14,15 @@ Where `x` and `y` are conformable numerics or temporals, returns their sum/s.
 ```q
 q)2+3 4 5
 5 6 7
+
 q)2000.11.22 + 03:44:55.666  / date + time
 2000.11.22T03:44:55.666
+
 q)5+`a`b`c!100 200 300       / int + dict
 a| 105
 b| 205
 c| 305
+
 q)([sym:`ibm`goog`msoft]qty:1000 2000 3000;p:1550 375 98)+5  / table + int
 sym  | qty  p
 -----| ---------
@@ -59,9 +62,16 @@ t| t . t t t t t f t . p p p z n t t t
 
 Range: `ijefpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book: 
 [Subtract](subtract.md), 
-[`sum`](sum.md)  
-.Q; [`.Q.addmonths`](dotq.md#qaddmonths)  
-Basics: [Datatypes](../basics/datatypes.md)
+[`sum`](sum.md),
+[`.Q.addmonths`](dotq.md#qaddmonths) 
+<br>
+:fontawesome-solid-book-open:
+[Datatypes](../basics/datatypes.md),
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)
 

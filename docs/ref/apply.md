@@ -83,6 +83,10 @@ If `v` has 1 argument then `vx` has 1 item and `v` is applied to the argument `v
 v[vx[0]]
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.5.3 Indexing at Depth](/q4m3/6_Functions/#653-indexing-at-depth)
+
 
 ## Nullaries
 

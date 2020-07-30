@@ -75,5 +75,3 @@ keywords: kdb+, q, technical, white paper
 -   [**Surveillance** latency and efficiency](surveillance-latency/index.md)
 -   [**Time-series simplification** in kdb+: a method for dynamically shrinking Big Data](ts-shrink/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
 -   [Kdb+tick profiling for **throughput optimization**](tick-profiling.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)
-
-

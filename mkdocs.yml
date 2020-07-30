@@ -89,28 +89,23 @@ nav:
   - Wiki: wiki.md
   - Learn: 
     - Get started: learn/index.md
-    - Install:
-      - Begin here: learn/install/index.md
-      - Linux: learn/install/linux.md
-      - macOS: learn/install/macos.md
-      - Windows: learn/install/windows.md
-      - DigitalOcean: learn/install/digitalocean.md
+    - Install: learn/install.md
     - Licenses: learn/licensing.md
     - Mountain tour:
       - TLDR: learn/tour/tldr.md
       - Begin here: learn/tour/index.md
       - The q session: learn/tour/session.md
-      - Databases: learn/tour/databases.md
+      # - Databases: learn/tour/databases.md
       - Tables: learn/tour/tables.md
       - CSVs: learn/tour/csvs.md
       - Datatypes: learn/tour/datatypes.md
-      - Dictionaries: learn/tour/dictionaries.md
-      - Queries: learn/tour/queries.md
-      - Functions: learn/tour/functions.md
-      - Iteration: learn/tour/iteration.md
-      - Files: learn/tour/files.md
-      - TCP/IP: learn/tour/tcp-ip.md
-      - HTTP, HTTPS: learn/tour/http.md
+      # - Dictionaries: learn/tour/dictionaries.md
+      # - Queries: learn/tour/queries.md
+      # - Functions: learn/tour/functions.md
+      # - Iteration: learn/tour/iteration.md
+      # - Files: learn/tour/files.md
+      # - TCP/IP: learn/tour/tcp-ip.md
+      # - HTTP, HTTPS: learn/tour/http.md
       - Scripts: learn/tour/scripts.md
       - IDE: learn/tour/ide.md
     - Q for quants: learn/brief-introduction.md
@@ -229,7 +224,6 @@ nav:
       - Parallel processing: basics/peach.md
       - Parse trees: basics/parsetrees.md
       - Precision: basics/precision.md
-      - QSQL: basics/qsql.md
       - Regular Expressions: basics/regex.md
       - Search: basics/search.md
       - Selection: basics/selection.md
@@ -282,6 +276,7 @@ nav:
       - eval, reval: ref/eval.md
       - except: ref/except.md
       - exec: ref/exec.md
+      - exit: ref/exit.md
       - exp, xexp: ref/exp.md
       - fby: ref/fby.md
       - fills: ref/fill.md
@@ -368,15 +363,15 @@ nav:
       - xbar: ref/xbar.md
       - xgroup: ref/xgroup.md
       - xrank: ref/xrank.md
+    - Overloaded glyphs: ref/overloads.md
     - Operators:
-      - Overloaded glyphs: ref/overloads.md
       - Add: ref/add.md
       - Amend: ref/amend.md
       - Apply, Index, Trap: ref/apply.md
+      - Assign: ref/assign.md
       - Cast: ref/cast.md
       - Coalesce: ref/coalesce.md
       - Compose: ref/compose.md
-      - Cond: ref/cond.md
       - Cut: ref/cut.md
       - Deal, Roll, Permute: ref/deal.md
       - Delete: ref/delete.md
@@ -417,9 +412,9 @@ nav:
       - Tok: ref/tok.md
       - Update: ref/update.md
       - Vector Conditional: ref/vector-conditional.md
-    - Control words:
+    - Control constructs:
+      - Cond: ref/cond.md
       - do: ref/do.md
-      - exit: ref/exit.md
       - if: ref/if.md
       - while: ref/while.md
     - Namespaces:
@@ -428,6 +423,7 @@ nav:
       - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
+    - QSQL queries: basics/qsql.md
     - Release notes:
       - History: releases/index.md
       - Changes in 4.0: releases/ChangesIn4.0.md
@@ -584,6 +580,7 @@ nav:
     - Daemon: kb/daemon.md
     - Data-At-Rest Encryption: kb/dare.md
     - Deferred response: kb/deferred-response.md
+    - DigitalOcean: kb/digitalocean.md
     - FAQ: kb/faq.md
     - FAQ from k4 listbox: kb/faq-listbox.md
     - File compression: kb/file-compression.md
@@ -597,6 +594,7 @@ nav:
     - Load balancing: kb/load-balancing.md
     - Loading from large files: kb/loading-from-large-files.md
     - Logging: kb/logging.md
+    - Multiple versions: kb/versions.md
     - Multithreaded input: kb/multithreaded-input.md
     - Multithreaded primitives: kb/mt-primitives.md
     - Named pipes: kb/named-pipes.md

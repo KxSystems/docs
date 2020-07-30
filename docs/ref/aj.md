@@ -1,5 +1,5 @@
 ---
-title: aj, aj0, ajf, ajf0 – Reference – kdb+ and q documentation
+title: aj, aj0, ajf, ajf0 – as-of join | Reference | kdb+ and q documentation
 description: As-of joins join two tables taking from the second the most recent records prior to the times in the first
 keywords: as-of, join, kdb+, q
 ---
@@ -8,14 +8,14 @@ keywords: as-of, join, kdb+, q
 
 
 
-
-
 _As-of join_
 
-Syntax: <code>aj[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
-Syntax: <code>aj0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
-Syntax: <code>ajf[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>  
-Syntax: <code>ajf0[c<sub>1</sub>…c<sub>n</sub>;t1;t2]</code>
+<pre markdown="1" class="language-txt">
+aj  [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
+aj0 [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
+ajf [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
+ajf0[c<sub>1</sub>…c<sub>n</sub>; t1; t2]
+</pre>
 
 Where 
 
@@ -25,7 +25,7 @@ Where
 -   column <code>c<sub>n</sub></code> is of a sortable type (typically time)
 
 returns a table with records from the left-join of `t1` and `t2`.
-In the join, the last value (most recent time) is taken.
+In the join, columns <code>c<sub>1</sub>…c<sub>n-1</sub></code> are matched for equality, and the last value of <code>c<sub>n</sub></code> (most recent time) is taken.
 For each record in `t1`, the result has one record with the items in `t1`, and
 
 -   if there are matching records in `t2`, the items of the last (in row order) matching record are appended to those of `t1`;
@@ -57,15 +57,17 @@ time       sym  qty px
 10:01:04 ge   150
 ```
 
+!!! tip "There is no requirement for any of the join columns to be keys but the join will be faster on keys."
+
 
 ## `aj`, `aj0`
 
 `aj` and `aj0` return different times in their results:
 
-join  | time in result
-------|------------------------
-`aj`  | boundary time from `t1`
-`aj0` | actual time from `t2`
+```txt
+aj    boundary time from t1
+aj0   actual time from t2
+```
 
 
 ## `ajf`, `ajf0`
@@ -100,9 +102,7 @@ Departure from this incurs a severe performance penalty.
 
 Note that, on disk, the `g#` attribute does not help.
 
-!!! warning "Virtual partition column"
-
-    Select the virtual partition column only if you need it. It is fabricated on demand, which can be slow for large partitions.
+!!! warning "Select the virtual partition column only if you need it. It is fabricated on demand, which can be slow for large partitions."
 
 
 ## `select` from `t2`
@@ -135,16 +135,19 @@ aj[`sym`time;select … from trade where …;
              select … from quote where date = …]
 ```
 
-!!! warning "Further `where` constraints"
-
-    If further `where` constraints are used, the columns will be _copied_ instead of mapped into memory, slowing down the join.
+!!! warning "If further `where` constraints are used, the columns will be _copied_ instead of mapped into memory, slowing down the join."
 
 If you are using a database where an individual day’s data is spread over multiple partitions the on-disk `p#` will be lost when retrieving data with a constraint such as `…date=2011.08.05`. 
 In this case you will have to reduce the number of quotes retrieved by applying further constraints – or by re-applying the attribute.
 
 
-
-:fontawesome-regular-hand-point-right: 
-[`asof`](asof.md)  
-Basics: [Joins](../basics/joins.md)
-
+----
+:fontawesome-solid-book:
+[`asof`](asof.md) 
+<br>
+:fontawesome-solid-book-open:
+[Joins](../basics/joins.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.8 As-of Joins](/q4m3/9_Queries_q-sql/#998-as-of-joins)

@@ -17,7 +17,7 @@ Where `x` is:
 -   a lower-case letter, symbol or positive short atom (or list of such atoms), returns `y` cast according to `x`. A table of `x` values for Cast:
 
     <pre><code class="language-q">
-    q)flip{(x;.Q.t x;key'[x\$\:()])}5h\$where" "<>20#.Q.t
+    q)flip{(x;.Q.t x;key'[x\$\\:()])}5h\$where" "<>20#.Q.t
     1h  "b" \`boolean
     2h  "g" \`guid
     4h  "x" \`byte
@@ -43,7 +43,7 @@ Where `x` is:
     <pre><code class="language-q">
     q)("\*";0h)\$1
     1 1
-    q)("\*";0h)\$\:"2012-02-02"
+    q)("\*";0h)\$\\:"2012-02-02"
     "2012-02-02"
     "2012-02-02"
     </code></pre>
@@ -132,6 +132,8 @@ q)`$"   IBM   "
 
 !!! warning "Casting an infinity from a narrower to a wider datatype does not always return another infinity."
 
+When an integral infinity is are cast to an integer of wider type, it **is** its underlying bit patterns, reinterpreted. Since this bit pattern is a legitimate value for the wider type, the cast results in a finite value.
+
 ```q
 q)`float$0Wh
 32767f
@@ -139,7 +141,14 @@ q)`float$0Wh
 
 !!! tip "The infinity corresponding to numeric `x` is `min 0#x`."
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book:
 [Tok](tok.md), 
-[dollar `$`](overloads.md#dollar)<br>
-Basics: [Casting and encoding](../basics/casting.md)
+[dollar `$`](overloads.md#dollar)
+<br>
+:fontawesome-solid-book-open:
+[Casting and encoding](../basics/casting.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.2 Cast](/q4m3/7_Transforming_Data/#731-data-to-strings)
+

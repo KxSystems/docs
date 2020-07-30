@@ -1,6 +1,6 @@
 ---
-title: Coalesce – Reference – kdb+ and q documentation
-description: Coalesce is a q operator that merge keyed tables.
+title: Coalesce operator | Reference | kdb+ and q documentation
+description: Coalesce is a q operator that merges keyed tables.
 keywords: coalesce, join, kdb+,q
 ---
 # `^` Coalesce
@@ -9,25 +9,16 @@ keywords: coalesce, join, kdb+,q
 
 
 
+_Merge keyed tables ignoring nulls_
 
-_Merge keyed tables_
+Syntax: `x^y`, `^[x;y]`
 
-Syntax: `t1 ^ t2`, `^[t1;t2]`
-
-Where `t1` and `t2` are keyed tables, 
-returns them merged.
+Where `x` and `y` are keyed tables, returns them merged.
+With no nulls in `y`, the result is the same as for [Join](join.md).
 
 ```q
 q)kt1:([k:1 2 3] c1:10 20 30;c2:`a`b`c)
 q)kt2:([k:3 4 5] c1:300 400 500;c2:`cc`dd`ee)
-q)kt1,kt2
-k| c1  c2
--| ------
-1| 10  a
-2| 20  b
-3| 300 cc
-4| 400 dd
-5| 500 ee
 
 q)kt1^kt2
 k| c1  c2
@@ -37,9 +28,15 @@ k| c1  c2
 3| 300 cc
 4| 400 dd
 5| 500 ee
+
+q)(kt1^kt2) ~ kt1,kt2
+1b
 ```
 
-When `t2` has null column values, the column values of `t1` are only updated with non-null values of the right operand.
+:fontawesome-solid-book: 
+[`^` Fill](fill.md) where `x` and `y` are lists or dictionaries
+
+When `y` has null column values, the column values of `x` are updated only with non-null values of `y`.
 
 ```q
 q)kt3:([k:2 3] c1:0N 3000;c2:`bbb`)
@@ -64,13 +61,9 @@ k| c1   c2
 3| 3000 c
 ```
 
+The performance of Coalesce is slower than that of Join since each column value of `y` must be checked for null.
 
-!!! note "Speed"
-
-    The performance of `^` is slower than that of `,` since each column value of the right operand must be checked for null.
-
-
-:fontawesome-regular-hand-point-right: 
-Basics: [Joins](../basics/joins.md)  
-[`^` Fill](fill.md) where `x` and `y` are lists or dictionaries
+----
+:fontawesome-solid-book-open: 
+[Joins](../basics/joins.md) 
 

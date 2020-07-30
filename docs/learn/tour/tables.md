@@ -48,9 +48,9 @@ country| `UK
 pop    | 9126366
 ```
 
-:fontawesome-regular-hand-point-right:
+<!-- :fontawesome-regular-hand-point-right:
 [Dictionaries](dictionaries.md)
-
+ -->
 And a list of dictionaries with the same keys is – a table.
 
 ```q
@@ -119,9 +119,9 @@ London       9126366
 StPetersburg 5383890
 ```
 
-:fontawesome-regular-hand-point-right:
+<!-- :fontawesome-regular-hand-point-right:
 [qSQL](queries.md)
-
+ -->
 Or you can think in terms of the underlying q objects. 
 
 The [Join](../../ref/join.md) operator `,` catenates lists.
@@ -149,6 +149,13 @@ StPetersburg Russia  5383890
 ```
 
 
+## Keys
+
+Setting one or more columns of a table as its key divides it into two tables (the keyed and non-keyed columns) and from them makes a dictionary.
+
+The dictionary’s key is the key column/s of the table. Its value is the unkeyed column/s. Both key and value are tables. 
+
+
 ## Persist
 
 Any object can be persisted to a file.
@@ -171,18 +178,31 @@ London       UK      9126366
 StPetersburg Russia  5383890
 ```
 
-Large tables can be splayed (one file for each column) across directories and/or partitioned by time periods. 
+
+## Go large
+
+Flat tables are limited by the absolute maximum size of a vector in kdb+.
+
+Tables up to 100 million rows can be _splayed_ (one file for each column) across directories.
+
+If your table is larger – or grows – you can _partition_ it; usually by time period. 
+
+If your table exceeds disk size, you can _segment_ it. (This can also improve I/O performance of a partitioned table.)
+
 
 :fontawesome-regular-hand-point-right:
-[Files](files.md)
+<!-- [Files](files.md)
 <br>
-:fontawesome-solid-book:
+ -->:fontawesome-solid-book:
 [`get`, `set`](../../ref/get.md),
 [`save`](../../ref/save.md)
 <br>
 :fontawesome-solid-graduation-cap:
 [Splayed tables](../../kb/splayed-tables.md),
 [Partitioned tables](../../kb/partition.md)
-
+<br>
+:fontawesome-solid-graduation-cap:
+_Q for Mortals_ [§8. Tables](/q4m3/8_Tables/), 
+[§14. Introduction to kdb+](/q4m3/14_Introduction_to_Kdb%2B)
 
 

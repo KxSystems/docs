@@ -1,11 +1,12 @@
 ---
-title: Guide for using the Prometheus exporter with kdb+
+title: Prometheus Exporter metric event handlers | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
 description: List all functionality and options for the Prometheus Exporter for kdb+ metrics 
 date: April 2020
+hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
 ---
-# Metric event handlers 
+# Prometheus metric event handlers 
 
 :fontawesome-brands-github:
 [KxSystems/prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)
@@ -15,24 +16,24 @@ Metric updates are generally carried out inside event handlers. By overwriting t
 The functions outlined below can be modified to allow a user to monitor events outside those exposed in `exporter.q` 
 
 <pre markdown="1" class="language-txt">
-.prom.       **event handlers**
-[on_poll](#promon_poll)      Prometheus poll request
-[on_pc](#promon_pc)        IPC socket connection closing
-[on_po](#promon_po)        IPC socket connection opening
-[on_wc](#promon_wc)        Websocket connection closing
-[on_wo](#promon_wo)        Websocket connection opening
-[afer_pg](#promafer_pg)      Syncronous IPC socket request handler, call after execution
-[before_pg](#prombefore_pg)    Syncronous IPC socket request handler, call before execution
-[after_ps](#promafter_ps)     Asynchronous IPC socket request handler, call after execution
-[before_ps](#prombefore_ps)    Asynchronous IPC socket request handler, call before execution
-[after_ph](#promafter_ph)     HTTP GET request handler, call after execution
-[before_ph](#prombefore_ph)    HTTP GET request handler, call before execution
-[after_pp](#promafter_pp)     HTTP POST request handler, call after execution
-[before_pp](#prombefore_pp)    HTTP POST request handler, call before execution
-[after_ws](#promafter_ws)     Websocket request handler, call after execution
-[before_ws](#prombefore_ws)    Websocket request handler, call before execution
-[after_ts](#promafter_ts)     Timer event handler, call after execution
-[before_ts](#prombefore_ts)    Timer event handler, call after execution
+.prom.      **event handlers**
+ [on_poll](#promon_poll)      Prometheus poll request
+ [on_pc](#promon_pc)        IPC socket connection closing
+ [on_po](#promon_po)        IPC socket connection opening
+ [on_wc](#promon_wc)        Websocket connection closing
+ [on_wo](#promon_wo)        Websocket connection opening
+ [afer_pg](#promafer_pg)      Syncronous IPC socket request handler, call after execution
+ [before_pg](#prombefore_pg)    Syncronous IPC socket request handler, call before execution
+ [after_ps](#promafter_ps)     Asynchronous IPC socket request handler, call after execution
+ [before_ps](#prombefore_ps)    Asynchronous IPC socket request handler, call before execution
+ [after_ph](#promafter_ph)     HTTP GET request handler, call after execution
+ [before_ph](#prombefore_ph)    HTTP GET request handler, call before execution
+ [after_pp](#promafter_pp)     HTTP POST request handler, call after execution
+ [before_pp](#prombefore_pp)    HTTP POST request handler, call before execution
+ [after_ws](#promafter_ws)     Websocket request handler, call after execution
+ [before_ws](#prombefore_ws)    Websocket request handler, call before execution
+ [after_ts](#promafter_ts)     Timer event handler, call after execution
+ [before_ts](#prombefore_ts)    Timer event handler, call after execution
 </pre>
 
 :fontawesome-regular-hand-point-right: 

@@ -42,7 +42,7 @@ Solaris is supported, but has not been tested recently.
 V2.8+
 
 -   :fontawesome-solid-download: [Download](https://kx.com/download/)
--   :fontawesome-regular-hand-point-right: [Install](../../learn/install/index.md)
+-   :fontawesome-regular-hand-point-right: [Install](../../learn/install.md)
 
 ### Python
 

@@ -32,6 +32,9 @@ if `d` is a
 -   **variable**, returns a copy of it with the items at `i` modified
 -   **handle**, modifies the items of its reference at `i`, and returns the handle
 
+See also
+:fontawesome-solid-book-open:
+[Syntax – Colon](../basics/syntax.md#colon)
 
 ## Selection
 
