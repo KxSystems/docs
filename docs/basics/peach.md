@@ -13,7 +13,7 @@ keywords: kdb+, parallel, parallel each, peach, q, uniform
 The iterator [Each Parallel](../ref/maps.md#each-parallel) `':` (or its mnemonic keyword `peach`) delegates processing to secondary tasks for parallel execution. 
 This can be useful, for example, for computationally expensive functions, or for accessing several drives at once from a single CPU.
 
-To execute in parallel, start kdb+ with multiple slaves, using [`-s` in the command line](cmdline.md#-s-slaves), and (since V3.5) the [`\s`](syscmds.md#s-number-of-slaves) system command.
+To execute in parallel, start kdb+ with multiple secondary processes, using [`-s` in the command line](cmdline.md#-s-secondary-processes), and (since V3.5) the [`\s`](syscmds.md#s-number-of-secondary-processes) system command.
 
 Each Parallel iterates a unary value: the argument list of the derived function is divided between secondary processes for evaluation. 
 
@@ -45,7 +45,7 @@ q)\ts .[g;]peach flip(2#1000000;2 3)
 32 1744
 ```
 
-The slaves used by Parallel Each and `peach` are either threads or processes according to the sign of the [value used in the command line](cmdline.md#-s-slaves).
+The secondary processes used by Parallel Each and `peach` are either threads or processes according to the sign of the [value used in the command line](cmdline.md#-s-secondary-processes).
 
 
 ## Threads
@@ -53,7 +53,7 @@ The slaves used by Parallel Each and `peach` are either threads or processes acc
 
 ### Globals
 
-The function `f` is executed within the slaves, unless the list `x` is a single-item list, in which case the function is executed within the main kdb+ thread. 
+The function `f` is executed within the secondary processes, unless the list `x` is a single-item list, in which case the function is executed within the main kdb+ thread. 
 
 !!! info "Only the main kdb+ thread may update global variables"
 
@@ -108,7 +108,7 @@ Perfect scaling may not be achieved, because of resource clashes.
 
 ### Number of cores/secondary threads
 
-A vector with _n_ items peached with function `f` with _s_ slaves on _m_ cores is distributed such that threads are preassigned which items they will be responsible for processing, e.g. for 9 jobs over 4 threads, thread \#0 will be assigned elements 0, 4, 8; if each job takes the same time to complete, then the total execution time of jobs will be quantized according to \#jobs _mod_ \#cores, i.e. with 4 cores, 12 jobs should execute in a similar time as 9 jobs (assuming \#slaves≥\#cores).
+A vector with _n_ items peached with function `f` with _s_ secondary processes on _m_ cores is distributed such that threads are preassigned which items they will be responsible for processing, e.g. for 9 jobs over 4 threads, thread \#0 will be assigned elements 0, 4, 8; if each job takes the same time to complete, then the total execution time of jobs will be quantized according to \#jobs _mod_ \#cores, i.e. with 4 cores, 12 jobs should execute in a similar time as 9 jobs (assuming \#secondary processes≥\#cores).
 
 
 ### Sockets and handles 
@@ -145,7 +145,7 @@ Symbols are internalized from a single memory area common to all threads.
 
 ## Processes (distributed each)
 
-Since V3.1, `peach` can use multiple processes instead of threads, configured through the startup [command-line option `-s`](cmdline.md#-s-slaves) with a negative integer, e.g. `-s -4`. 
+Since V3.1, `peach` can use multiple processes instead of threads, configured through the startup [command-line option `-s`](cmdline.md#-s-secondary-processes) with a negative integer, e.g. `-s -4`. 
 
 Unlike multiple threads, the distribution of the workload is not precalculated, and is distributed to the secondary processes as soon as they complete their allocated items. All data required by the peached function must either already exist on all secondary processes, or be passed as an argument. Argument sizes should be minimised because of IPC costs. 
 

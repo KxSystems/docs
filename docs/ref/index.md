@@ -130,21 +130,6 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 
 
-<!-- <table markdown="1">
-<tr>
-<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>`` ` ``<br>`.`</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[pop stack<br>push stack](../basics/debug.md#debugging)</td>
-<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
-<td class="kx-glyph">`0`<br><span class="nowrap">`1`, `-1`</span><br>`2`, `-2`<br>_n_, _-n_</td><td>[console<br>stdout<br>stderr<br>handle](../basics/files.md)</td>
-<td class="kx-glyph"><span class="nowrap">`0:`</span><br>`1:`<br>`2:`</td><td>[File Text](file-text.md)<br>[File Binary](file-binary.md)<br>[Dynamic&nbsp;Load](dynamic-load.md)</td>
-</tr>
-<tr>
-<td class="kx-glyph nowrap">`()`<br>`(;)`<br>`([]…)`</td><td>[precedence](../basics/syntax.md#precedence-and-order-of-evaluation)<br>[list](../basics/syntax.md#list-notation)<br>[table](../basics/syntax.md#table-notation)</td>
-<td class="kx-glyph nowrap">`[;]`</td><td>[expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)<br>[argt list](../basics/syntax.md#bracket-notation)</td>
-<td class="kx-glyph">`{}`<br>`;`</td><td>[lambda](../basics/function-notation.md)<br>separator</td>
-<td class="kx-glyph"><code>&#96;</code><br><code>&#96;:</code></td><td>symbol<br>filepath</td>
-</tr>
-</table>
- -->
 <!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
 ## [Attributes](../basics/syntax.md#attributes)
@@ -156,12 +141,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 :fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
 
+
 ## Command-line options and system commands
 
 <table markdown="1" class="kx-shrunk kx-tight">
 <tr><td>[file](../basics/cmdline.md#file)</td></tr>
 <tr><td>[`\a`](../basics/syscmds.md#a-tables)</td><td>tables</td><td>[`\r`](../basics/syscmds.md#r-rename)</td><td>rename</td></tr>
-<tr><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td><td>[`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)</td><td>slaves</td></tr>
+<tr><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td><td>[`-s`](../basics/cmdline.md#-s-secondary-processes) [`\s`](../basics/syscmds.md#s-number-of-secondary-processes)</td><td>secondary processes</td></tr>
 <tr><td>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td>views</td><td>[`\S`](../basics/syscmds.md#s-random-seed)</td><td>random seed</td></tr>
 <tr><td>[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td>console size</td><td>[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td>timer ticks</td></tr>
 <tr><td>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td>HTTP size</td><td>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td>time and space</td></tr>
@@ -180,34 +166,14 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
-<!--
-<pre markdown="1" class="language-txt">
-[file](../basics/cmdline.md#file)
-[`\a`](../basics/syscmds.md#a-tables)       tables                                                       [`\r`](../basics/syscmds.md#r-rename)                                                       rename
-[`-b`](../basics/cmdline.md#-b-blocked)       blocked                                                       [`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)                                                       slaves
-[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)    views                                                       [`\S`](../basics/syscmds.md#s-random-seed)                                                       random seed
-[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)    console size                                                       [`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)                                                       timer ticks
-[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)    HTTP size                                                       [`\ts`](../basics/syscmds.md#ts-time-and-space)                                                       time and space
-[`\cd`](../basics/syscmds.md#cd-change-directory)      change directory                                                       [`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)                                                       timeout
-[`\d`](../basics/syscmds.md#d-directory)       directory                                                       [`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)                                                       usr-pwd
-[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)    error traps                                                       [`-u`](../basics/cmdline.md#-u-disable-syscmds)                                                       disable syscmds
-[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)    TLS server mode             [`\v`](../basics/syscmds.md#v-variables)                                                       variables
-[`\f`](../basics/syscmds.md#f-functions)       functions                  [`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)                                                       memory
-[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)    garbage collection         [`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)                                                       week offset
-[`\l`](../basics/syscmds.md#l-load-file-or-directory)       load file or directory      [`\x`](../basics/syscmds.md#x-expunge)                                                       expunge
-[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)    log sync                                                       [`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)                                                       date format
-[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)    UTC offset                                                       [`\1` `\2`](../basics/syscmds.md#1-2-redirect)                                                       redirect
-[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)    listening port                                                       [`\_`](../basics/syscmds.md#_-hide-q-code)                                                       hide q code
-[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)    display precision                                                       [`\`](../basics/syscmds.md#terminate)                                                       terminate
-[`-q`](../basics/cmdline.md#-q-quiet-mode)       quiet mode                                                       [`\`](../basics/syscmds.md#toggle-qk)                                                       toggle q/k
-[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)    replicate                                                       [`\\`](../basics/syscmds.md#quit)                                                       quit
-</pre>
- -->
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book:
+[`system`](../ref/system.md)
+<br>
+:fontawesome-solid-book-open:
 [Command-line options](../basics/cmdline.md),
 [System commands](../basics/syscmds.md),
-[OS Commands](../basics/syscmds.md#os-commands),
-[`system`](../ref/system.md)
+[OS commands](../basics/syscmds.md#os-commands)
+
 
 <!--
 ## Environment variables
@@ -308,8 +274,8 @@ time.(minute second mm ss)
 milliseconds: time mod 1000
 ```
 
-## Namespaces
 
+## Namespaces
 
 ### `.h`
 

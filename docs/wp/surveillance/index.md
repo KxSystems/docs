@@ -215,7 +215,7 @@ getPriceFadesProbability:{[sd;ed;psym;timeThreshold;qtyThreshold;keycols]
     dtlist where 1<(dtlist: sd+til 1+ed-sd) mod 7;
 ```
 
-Above we run the `priceFades` data on a list of dates using `peach` (with the process having started with `–s` set to enable slaves).
+Above we run the `priceFades` data on a list of dates using `peach` (with the process having started with `–s` set to enable secondary processes).
 
 ```q
 ...

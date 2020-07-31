@@ -245,7 +245,7 @@ The default database contains 9.6M records per day, 586M rows in total.
 A set of example queries are provided, and a tutorial to step through the queries and test the performance of q.
 Users are encouraged to experiment with:
 
--   using slaves to boost performance
+-   using secondary processes to boost performance
 -   running queries with different parameters
 -   modifying or writing their own queries
 -   compression to reduce the size of on-disk data

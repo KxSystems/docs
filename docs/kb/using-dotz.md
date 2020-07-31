@@ -246,7 +246,7 @@ Q provides a a list of handles in use with the keys of `.z.W`. These clients pro
 
 Tracking of clients can be automated using this script, `.z.po` and `.z.pc` maintain the list automatically.
 
-By default, the table of clients just uses information provided by `.z.po` like `.z.u` and `.z.w`, but if `.clients.INTRUSIVE` is set, the server will ask the clients for more details like their q versions, number of slaves etc.
+By default, the table of clients just uses information provided by `.z.po` like `.z.u` and `.z.w`, but if `.clients.INTRUSIVE` is set, the server will ask the clients for more details like their q versions, number of secondary processes etc.
 
 Output from a session where a client did three `hopen 5001`s, and one `hclose`.
 

@@ -289,7 +289,7 @@ Syntax: `-s N`
 Number of secondary threads or processes available for parallel processing.
 
 :fontawesome-solid-book-open:
-[`\s` system command](syscmds.md#s-number-of-slaves) for detail
+[`\s` system command](syscmds.md#s-number-of-secondary-threads) for detail
 
 
 
