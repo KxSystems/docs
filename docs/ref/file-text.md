@@ -98,6 +98,12 @@ q)`:status.txt 0: string system "w"
 `:status.txt
 ```
 
+If `filesymbol`
+
+-   does not exist, it is created, with any missing containing directories
+-   exists, it is overwritten
+
+
 :fontawesome-solid-book:
 [`save`, `rsave`](save.md)
 
@@ -237,13 +243,16 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 (`a`b;("hello,world";,"1"))
 ```
 
+
+----
 :fontawesome-solid-book: 
 [`.j` namespace](../ref/dotj.md) for JSON 
 <br>
 :fontawesome-solid-book-open: 
 [Casting](../basics/casting.md), 
 [Datatypes](../basics/datatypes.md), 
-[File system](../basics/files.md)<br>
+[File system](../basics/files.md)
+<br>
 :fontawesome-solid-graduation-cap:
 [How do I import a CSV file into a table?](../kb/faq.md#how-do-i-import-a-csv-file-into-a-table)
 

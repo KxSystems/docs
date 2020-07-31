@@ -332,16 +332,16 @@ Syntax:
 Where
 
 -   `d` is a directory handle
--   `p` is a partition of a database sorted (``p#´``) on
+-   `p` is a partition of a database
 -   `f` a field of the table named by
 -   `t`, a table handle
 -   `s` is the handle of a symtable
 
 saves `t` splayed to partition `p`.
 
-!!! warning "Simple tables only"
+!!! warning "The table cannot be keyed."
 
-    The table cannot be keyed. This would signal an `'unmappable` error if there are columns which are not vectors or simple nested columns (e.g. char vectors for each row).
+    This would signal an `'unmappable` error if there are columns which are not vectors or simple nested columns (e.g. char vectors for each row).
 
 It also rearranges the columns of the table so that the column specified by `f` is second in the table (the first column in the table will be the virtual column determined by the partitioning e.g. date).
 

@@ -13,127 +13,63 @@ keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, fil
 </pre>
 
 
-Kdb+ communicates with the file system and other processes through [handles](../basics/handles.md).
+Kdb+ communicates with the [file system](../basics/files.md) and other processes through 
 
-:fontawesome-solid-book-open:
-[File system](../basics/files.md),
-[Interprocess communication](../basics/ipc.md)
+-   one-shot functions 
+-   [handles](../basics/handles.md) to persistent connections
+
+Connections are opened and closed respectively by `hopen` and `hclose`.
 
 
 ## `hopen`
 
-Syntax: `hopen x`, `hopen[x]`
-
-Where `x` is one of 
-
--   a _process symbol_
--   a 2-item list of a process symbol and a timeout in milliseconds
--   a [file symbol](../basics/glossary.md#file-symbol) or (since V3.6 2017.09.26) [filename](../basics/glossary.md#filename)
-
-opens communication to a file or a process, and returns a handle.
-
-!!! warning "Do not use colons in a file-path as it conflicts with the pattern used to identify a process."
-
-
-### Processes
-
-A _process symbol_ has the form:
-
-TCP
-: `` `:host:port[:user:password]`` 
-: `host` can be a hostname or IP address; omitted, it denotes the localhost
-
-Unix domain socket
-: `` `:unix://port[:user:password] `` 
-: (Since V3.4.) Unix domain sockets can have significantly lower latency and higher throughput than a localhost TCP connection
-
-SSL/TLS
-: `` `:tcps://host:port[:user:password] `` 
-: :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
-
-User and password are required if the server session has been started with the [`-u`](../basics/cmdline.md#-u-usr-pwd-local) or [`-U`](../basics/cmdline.md#-u-usr-pwd) command line options, and are passed to [`.z.pw`](dotz.md#zpw-validate-user) for (optional) additional processing.
-
-The optional timeout applies to the initial connection, not subsequent use of it.
-
-```q
-q)h:hopen `:10.43.23.198:5010                    / IP address
-q)h:hopen `:mydb.us.com:5010                     / hostname
-q)h:hopen `::5010                                / localhost
-q)h:hopen 5010                                   / localhost
-q)h:hopen `:unix://5010                          / localhost, Unix domain socket
-q)h:hopen `:tcps://mydb.us.com:5010              / SSL/TLS with hostname
-q)h:hopen (`:mydb.us.com:5010:elmo:sesame;10000) / full arg list, 10s timeout
+```txt
+hopen filehandle
+hopen processhandle
+hopen (processhandle;timeout)
+hopen port
 ```
 
-To send messages to the remote process:
+Where 
+
+-   `filehandle` is a symbol atom (or string since V3.6 2017.09.26)
+-   `processhandle` is a symbol atom (or string since V3.6 2017.09.26)
+-   `timeout` is milliseconds as an integer
+-   `port` is a local port number as an integer atom
+
+opens communication to a file or a process, and returns a handle as an int. 
 
 ```q
-q)h"2+2"          / synchronous (GET)   
-4
-q)(neg h)"a:2"    / asynchronous (SET)
+hopen ":path/to/file.txt"                   / filehandle
+hopen `:unix://5010                         / localhost, Unix domain socket
+hopen(":10.43.23.198:5010";10000)           / IP address and timeout
+hopen 5010                                  / local port number
 ```
 
-If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to open a connection, send the query, get the results, then close the connection. It is more efficient to keep a connection open if there is an opportunity to re-use it for other queries.
+For IPC compatibility, it serializes to `{hopen x}.` e.g.
 
 ```q
-q)`:mydb.us.com:5010:elmo:sesame "1+1"
-2
+hopen each(`:mysymbol;
+        ":mycharvector";
+        `:localhost:5000;
+        ":localhost:5000";
+        (`:localhost:5000;1000);
+        (":localhost:5000";1000))
 ```
-
-:fontawesome-solid-book: 
-[`.Q.Xf`](dotq.md#qxf-create-file) (create file)
-<br>
-:fontawesome-solid-graduation-cap: 
-[Client-server](../kb/client-server.md)
-
-
-### Files
-
-```q
-q)hdat:hopen `:f.dat             / data file (bytes)
-q)htxt:hopen `:c:/q/test.txt     / text file
-```
-
-Passing char vectors instead of symbols avoids interning of such symbols.
-This is useful if embedding frequently-changing tokens in the username or password fields.
-
-For IPC compatibility, it serializes to `{hopen x}`. e.g.
-
-```q
-q)hopen each(`:mysymbol;":mycharvector";`:localhost:5000;":localhost:5000";(`:localhost:5000;1000);(":localhost:5000";1000))
-```
-
-To append to these files, the syntax is the same as for IPC:
-
-```q
-q)r:hdat 0x2324
-q)r:htxt "some text\n"
-q)r:htxt ` sv("asdf";"qwer")
-```
-
-
-### Fifo/named pipes
-
-V3.4 Unix builds have support for reading from a Fifo/named pipe, where the `hopen` argument has the form `` `:fifo://filename``.
-
-:fontawesome-solid-book-open:
-[File system](../basics/files.md),
-[Client-server](../kb/client-server.md), 
-[Named pipes](../kb/named-pipes.md)<br>
-:fontawesome-solid-graduation-cap:
-[SSL/TLS](../kb/ssl.md)
-
 
 
 ## `hclose`
 
-Syntax: `hclose x`, `hclose[x]`
+```txt
+hclose x     hclose[x]
+```
 
 Where `x` is a file or process handle, closes communication to it and destroys the handle. 
-(The corresponding integer can no longer be applied to an argument.)
+The corresponding integer can then no longer be applied to an argument.
 
 ```q
-q)h:hopen `::5001
+q)show h:hopen `::5001
+3i
 q)h"til 5"
 0 1 2 3 4
 q)hclose h
@@ -149,7 +85,102 @@ If flushing is required prior to close, this must be done explicitly.
 q)neg[h][];hclose h; 
 ```
 
-!!! warning "Before V3.6 2019.09.19"
+!!! info "`hclose` before V3.6 2019.09.19"
 
-    If the handle refers to a websocket, `hclose` blocks until any pending data on the handle has been sent.
+    If the handle refers to a WebSocket, `hclose` blocks until any pending data on the handle has been sent.
+
+
+## Files
+
+If a filehandle specifies a non-existent filepath, it is created, including directories. 
+
+```q
+q)hdat:hopen ":f.dat"             / data file (bytes)
+q)htxt:hopen ":c:/q/test.txt"     / text file
+```
+
+??? tip "Passing strings instead of symbols avoids interning of such symbols."
+
+    This is useful if embedding frequently-changing tokens in the username or password fields.
+
+!!! warning "Do not use colons in a file-path as it conflicts with the pattern used to identify a process."
+
+To append to these files, the syntax is the same as for IPC:
+
+```q
+q)r:hdat 0x2324
+q)r:htxt "some text\n"
+q)r:htxt ` sv("asdf";"qwer")
+```
+
+
+## Processes
+
+A _process handle_ has the form:
+
+TCP
+: `` `:host:port[:user:password]`` 
+: `host` can be a hostname or IP address; omitted, it denotes the localhost
+
+Unix domain socket
+: `` `:unix://port[:user:password] `` 
+: (Since V3.4.) Unix domain sockets can have significantly lower latency and higher throughput than a localhost TCP connection
+
+SSL/TLS
+: `` `:tcps://host:port[:user:password] `` 
+: :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
+
+```q
+hopen `:10.43.23.198:5010                    / IP address
+hopen ":mydb.us.com:5010"                    / hostname
+hopen `::5010                                / localhost
+hopen 5010                                   / localhost
+hopen `:unix://5010                          / localhost, Unix domain socket
+hopen `:tcps://mydb.us.com:5010              / SSL/TLS with hostname
+hopen (`:mydb.us.com:5010:elmo:sesame;10000) / full arg list, 10s timeout
+```
+
+User and password are required if the server session has been started with the [`-u`](../basics/cmdline.md#-u-usr-pwd-local) or [`-U`](../basics/cmdline.md#-u-usr-pwd) command line options, and are passed to [`.z.pw`](dotz.md#zpw-validate-user) for (optional) additional processing.
+
+The optional timeout applies to the initial connection, not subsequent use of it.
+
+To send messages to the remote process:
+
+```q
+q)h"2+2"          / synchronous (GET)   
+4
+q)(neg h)"a:2"    / asynchronous (SET)
+```
+
+
+### One-shot request
+
+If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to open a connection, send the query, get the results, then close the connection. 
+
+```q
+q)`:mydb.us.com:5010:elmo:sesame "1+1"
+2
+```
+
+It is more efficient to keep a connection open if there is an opportunity to re-use it for other queries.
+
+
+### Fifo/named pipes
+
+V3.4 Unix builds have support for reading from a Fifo/named pipe, where the `hopen` argument has the form `` `:fifo://filename``.
+
+
+
+----
+:fontawesome-solid-book: 
+[`.Q.Xf`](dotq.md#qxf-create-file) (create file)
+<br>
+:fontawesome-solid-book-open:
+[File system](../basics/files.md),
+[Interprocess communication](../basics/ipc.md)
+<br>
+:fontawesome-solid-graduation-cap: 
+[Client-server](../kb/client-server.md),
+[Named pipes](../kb/named-pipes.md),
+[SSL/TLS](../kb/ssl.md)
 

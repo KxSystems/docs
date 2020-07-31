@@ -10,28 +10,29 @@ date: December 2019
 
 _Symbol/s to file or process symbol/s_
 
-Syntax: `hsym x`, `hsym[x]`
-
-Where `x` is a symbol atom or vector (since V3.1) representing a
-
--   file name
--   valid hostname
--   IP address
-
-returns a [file symbol](../basics/glossary.md#file-symbol) or process symbol.
-
-```q
-q)hsym`c:/q/test.txt
-`:c:/q/test.txt
-q)hsym`10.43.23.197
-`:10.43.23.197
-q)hsym `host:port`localhost:8001
-`:host:port`:localhost:8001
+```txt
+hsym x     hsym[x]
 ```
 
-:fontawesome-solid-book-open:
-[File system](../basics/files.md)
-[Interprocess communication](../basics/ipc.md)
-<br>
+Where `x` is a symbol atom or vector (since V3.1) returns the symbol/s prefixed with a colon if it does begin with one.
+
+
+```q
+q)hsym`c:/q/test.txt                / file path to symbolic file handle
+`:c:/q/test.txt
+q)hsym`10.43.23.197                 / IP address to symbolic handle
+`:10.43.23.197
+q)hsym `host:port`localhost:8001    / hostname to symbolic handle
+`:host:port`:localhost:8001
+
+q)hsym `abc`:def`::ghi
+`:abc`:def`::ghi
+```
+
+----
 :fontawesome-solid-book:
 [`hopen`](hopen.md)
+<br>
+:fontawesome-solid-book-open:
+[File system](../basics/files.md),
+[Interprocess communication](../basics/ipc.md)

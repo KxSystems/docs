@@ -1,5 +1,5 @@
 ---
-title: File Binary – Reference – kdb+ and q documentation
+title: File Binary | Reference | kdb+ and q documentation
 description: File Binary is a q operator that reads or writes a binary file.
 author: Stephen Taylor
 keywords: binary, file, kdb+, q, read, write
@@ -15,7 +15,9 @@ _Read or write bytes_
 
 ## Read Binary
 
-Syntax: `x 1: y`, `1:[x;y]`
+```txt
+x 1: y     1:[x;y]
+```
 
 Where 
 
@@ -25,11 +27,11 @@ Where
 returns the content of `y` as atom, list or matrix.
 
 ```q
-q)(enlist 4;enlist"i")1:0x01000000 / big endian
+q)(enlist 4;enlist"i")1:0x01000000          / big endian
 16777216
-q)(enlist"i";enlist 4)1:0x01000000 / little endian
+q)(enlist"i";enlist 4)1:0x01000000          / little endian
 1
-q)(enlist"f";enlist 8)1:0x7fbdc282fb210940 / pi as little endian 64bit float
+q)(enlist"f";enlist 8)1:0x7fbdc282fb210940  / pi as little endian 64bit float
 3.141593
 ```
 
@@ -57,16 +59,23 @@ q)d:raze{("ii";4 4)1:(`:/tmp/data;x;100000)}each 100000*til 5
 
 ## Save Binary
 
-Syntax: `file symbol 1: bytes`, `1:[file symbol;bytes]`
-
-writes `bytes` to [`file symbol`](../basics/glossary.md#file-symbol).
-
-```q
-`:hello 1: 0x68656c6c6f776f726c64
+```txt
+filesymbol 1: bytes     1:[filesymbol;bytes]
 ```
 
+writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns `filesymbol`. If `filesymbol`
 
-:fontawesome-regular-hand-point-right:
-[`0:` File Text](file-text.md)<br>
+-   does not exist, it is created, with any missing containing directories
+-   exists, it is overwritten
+
+```q
+q)`:hello 1: 0x68656c6c6f776f726c64
+`:hello
+```
+
+----
+:fontawesome-solid-book:
+[`0:` File Text](file-text.md)
+<br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)

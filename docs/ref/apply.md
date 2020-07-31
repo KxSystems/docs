@@ -1,6 +1,6 @@
 ---
-title: Apply (At), Index (At), Trap (At) – Reference – kdb+ and q documentation
-description: Operators Apply (At), Index (At), and Trap (At) apply a funcxtion to one ormore arguments, get items at depth in a list, and trap errors.
+title: Apply (At), Index (At), Trap (At) | Reference | kdb+ and q documentation
+description: Operators Apply (At), Index (At), and Trap (At) apply a funcxtion to one or more arguments, get items at depth in a list, and trap errors.
 author: Stephen Taylor
 keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
 ---
@@ -40,7 +40,7 @@ Where
 -   `v` is a value of rank $n$ (or a handle to one) and `vx` a list of count $n$ with items in the domains of `v`
 -   `u` is a unary value (or a handle to one) and `ux` in its domain
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book:
 [Amend, Amend At](amend.md)
 
 
@@ -296,8 +296,10 @@ q)es 80 35 20 -10
 8 3 2 0N
 ```
 
-:fontawesome-regular-hand-point-right:
-[Set Attribute](set-attribute.md)  
+:fontawesome-solid-book:
+[Set Attribute](set-attribute.md) 
+<br>
+:fontawesome-solid-globe:
 q-rious kdb+: [Step Dictionaries](https://qriouskdb.wordpress.com/2019/01/01/step-dictionaries/)
 
 
@@ -357,7 +359,7 @@ Use Trap At as a simpler form of Trap, for unary values.
 
 Trap catches only errors signalled in the applications of `f` or `g`. Errors in the evaluation of `fx` or `gg` themselves are not caught.
 
-```a
+```q
 q)@[2+;"42";`err]
 `err
 q)@[2+;"42"+3;`err]
@@ -410,3 +412,7 @@ type     v or u is a symbol atom, but not a handle to an value
 type     an atom of vx or ux is not an integer, symbol or null
 ```
 
+
+----
+:fontawesome-solid-book:
+[Amend, Amend At](amend.md)

@@ -12,10 +12,12 @@ keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, r
 
 _Read text from a file or process handle_
 
-Syntax: `read0 f`, `read0[f]`<br>
-Syntax: `read0 (f;o;n)`, `read0[(f;o;n)]`<br>
-Syntax: `read0 h`, `read0[h]`<br>
-Syntax: `read0 (fifo;n)`, `read0[(fifo;n)]`
+```txt
+read0 f           read0[f]
+read0 (f;o;n)     read0[(f;o;n)]
+read0 h           read0[h]
+read0 (fifo;n)    read0[(fifo;n)]
+```
 
 where
 
@@ -88,7 +90,7 @@ q)read0(h;8)
 "Enterpri"
 ```
 
-
+----
 :fontawesome-solid-book-open:
 [Connection handles](../basics/handles.md),
 [File system](../basics/files.md),
