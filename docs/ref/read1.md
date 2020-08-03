@@ -4,7 +4,7 @@ description: read1 is a q keyword that reads bytes from a file or named pipe
 author: Stephen Taylor
 keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
 ---
-# `read1`
+# :fontawesome-solid-database: `read1`
 
 
 
@@ -25,7 +25,7 @@ Where
 -   `f` is a [file symbol](../basics/glossary.md#file-symbol)
 -   `(f;o;n)` is a [file descriptor](../basics/glossary.md#file-descriptor)
 -   `h` is a [system or process handle](../basics/handles.md)
--   `fifo` is a handle to a [Fifo](hopen.md#fifonamed-pipes)
+-   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
 -   `n` is a non-negative integer
 
 returns bytes from the source, as follows.

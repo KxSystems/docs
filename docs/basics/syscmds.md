@@ -1,9 +1,9 @@
 ---
-title: System commands – Basics – kdb+ and q documentation
+title: System commands in q | Basics | kdb+ and q documentation
 description: System commands control the q environment.
 keywords: command, kdb+, q, system
 ---
-# System commands
+# :fontawesome-solid-bullhorn: System commands
 
 
 
@@ -36,10 +36,6 @@ System commands control the q environment. They have the form:
 ```
 
 for some command `cmd`, and optional parameter list `p`.
-
-:fontawesome-solid-book:
-[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters),
-[`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
 
 Commands with optional parameters that set values, will show the current values if the parameters are omitted.
 
@@ -294,7 +290,10 @@ q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
 
+!!! warning "Operating systems may create hidden files, such as `DS_Store`, that block `\l` on a directory."
+
 :fontawesome-solid-book:
+[`load`](../ref/load.md),
 [`.Q.l`](../ref/dotq.md#ql-load) (load)
 <br>
 :fontawesome-solid-street-view:

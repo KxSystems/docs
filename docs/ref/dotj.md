@@ -4,8 +4,10 @@ description: the .j namespace contains objects useful for converting between JSO
 author: Stephen Taylor
 keywords: json, kdb+, markup, q
 ---
-# The `.j` namespace
+# :fontawesome-brands-js: The `.j` namespace
 
+
+_JSON serialization_
 
 <pre markdown="1" class="language-txt">
 [.j.j   serialize](#jj-serialize)                [.j.k   deserialize](#jk-deserialize)

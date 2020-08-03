@@ -3,7 +3,7 @@ title: File system | Basics | kdb+ and q documentation
 description: Operators and keywords for using the file system
 keywords: file, kdb+, q
 ---
-# File system
+# :fontawesome-solid-database: File system
 
 
 Kdb+ communicates with the filesystem through
@@ -16,7 +16,7 @@ Handles are more efficient for repeated operations on a file.
 !!! info "File paths are displayed separated with forward slashes, regardless of the operating system."
 
 
-## One-shot operations
+## :fontawesome-solid-thumbs-up: One-shot operations
 
 <pre markdown="1" class="language-txt">
 [get set](../ref/get.md)       read/write or memory-map a data file¹
@@ -30,7 +30,7 @@ Handles are more efficient for repeated operations on a file.
 [1: File Binary](../ref/file-binary.md)    read/write bytes¹       [read1](../ref/read1.md)  read bytes¹
 [2: Dynamic Load](../ref/dynamic-load.md)   load shared object
 
-[save](../ref/save.md#save)   [load](../ref/load.md)   a table
+[save](../ref/save.md#save)   [load](../ref/load.md)   a variable
 [rsave](../ref/save.md#rsave)  [rload](../ref/load.md#rload)  a splayed table
 [dsave](../ref/dsave.md)         tables
 [?  Enum Extend](../ref/enum-extend.md#filepath)
@@ -94,7 +94,7 @@ Kdb+ uses files and directories to persist database tables.
 [Splaying a table](../kb/splayed-tables.md) stores each column as a separate file.
 
 
-## Connections
+## :fontawesome-solid-hands-helping: Connections
 
 Persistent connections enable repeated operations on a file without repeatedly opening and closing it. 
 
@@ -113,7 +113,7 @@ Opening a connection to a non-existent file creates it and any missing ancestor 
 
 Applying the handle to data appends it to the file as bytes.
 Applying the `neg` of the handle to char data appends it as text. 
-
+The result of a successful operation is the positive or negative handle.
 
 ### Text
 

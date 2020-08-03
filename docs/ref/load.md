@@ -3,7 +3,7 @@ title: load a table | Reference | kdb+ and q documentation
 description: load is q keyword that loads binary data from a file or directory.
 keywords: directory, file, kdb+, load, q, rload, splayed, table
 ---
-# `load`, `rload`
+# :fontawesome-solid-database: `load`, `rload`
 
 _Load binary data from a file or directory_
 
@@ -14,9 +14,20 @@ _Load binary data from a file or directory_
 
 _Load binary data from a file_
 
-Syntax: `load x`, `load[x]`
+```txt
+load x     load[x]
+```
 
-Loads binary data from the filesystem and returns the name of the table loaded.
+Where `x` is 
+
+-   a symbol atom or vector matching the name/s of datafile/s (with no extension) in the current directory, reads the datafile/s and assigns the value/s to global variable/s of the same name, which it returns
+-   a filesymbol atom or vector for datafile/s (with no extension), reads the datafile/s and assigns the value/s to global variable/s of the same name, which it returns
+-   a filesymbol for a directory, creates a global dictionary of the same name and within that dictionary recurses on any datafiles the directory contains
+
+!!! tip "Signals a `type` error if the file is not a kdb+ data file"
+
+    There are no text formats corresponding to [` save`](save.md). Instead, use [File Text](file-text.md).
+
 
 ```q
 q)t:([]x: 1 2 3; y: 10 20 30)
@@ -36,8 +47,6 @@ x y
 2 20
 3 30
 ```
-
-If `x` is a directory, a dictionary of that name is created and all data files are loaded into that dictionary, keyed by file name.
 
 ```q
 q)\l sp.q
@@ -62,16 +71,20 @@ s4| clark 20     london
 s5| adams 30     athens
 ```
 
+!!! warning "Operating systems may create hidden files, such as `.DS_Store`, that block `load`."
+
 
 ## `rload`
 
 _Load a splayed table from a directory_
 
-Syntax: `rload x`, `rload[x]`
+```txt
+rload x     rload[x]
+```
 
 Where `x` is the table name as a symbol, the table is read from a directory of the same name. `rload` is the converse of [`rsave`](save.md#rsave). 
 
-The usual, and more general, way of doing this is to use [`get`](get.md), which allows a table to be defined with a different name than the source directory.
+!!! tip "The usual, and more general, way of doing this is to use [`get`](get.md), which allows a table to be defined with a different name than the source directory."
 
 ```q
 q)\l sp.q
@@ -92,7 +105,7 @@ s1 p3 400
 q)sp:get `:sp/        / equivalent to rload `sp
 ```
 
-
+----
 :fontawesome-solid-book: 
 [`save`, `rsave`](save.md)  
 [`.Q.dsftg`](dotq.md#qdsftg-load-process-save) (load process save), 
@@ -103,4 +116,8 @@ q)sp:get `:sp/        / equivalent to rload `sp
 <br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.2 Save and Load on Tables](/q4m3/1_IO/#112-save-and-load-on-tables)
 

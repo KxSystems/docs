@@ -4,10 +4,10 @@ description: The .Q namespace contains utility objects for q programming
 author: Stephen Taylor
 keywords: database, decode, encode, kdb+, namespace, partitioned, q, segmented, utilities
 ---
-# The `.Q` namespace
+# :fontawesome-solid-wrench: The `.Q` namespace
 
 
-
+_Tools_
 
 <pre markdown="1" class="language-txt">
 General                           Datatype
@@ -1162,9 +1162,14 @@ checked against [`.z.K`](dotz.md#zk-version) at startup.
 
 ## `.Q.l` (load)
 
-Syntax: ==FIXME==
+```txt
+.Q.l x
+```
 
-Implements [`\l`](../basics/syscmds.md#l-load-file-or-directory).
+Where `x` is a symbol atom naming a directory in the current directory, loads
+it recursively as in [`load`](load.md), but into the default namespace.
+
+(Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
 
 
 ## `.Q.M` (long infinity)

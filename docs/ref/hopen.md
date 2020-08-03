@@ -2,7 +2,6 @@
 title: Connect and disconnect files and processes | Reference | kdb+ and q documentation
 description: hopen and hclose are q keywords for connecting and disconnecting files and processes.
 author: Stephen Taylor
-keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, filehandle, filepath, filesize, filesystem, folder, handle, hclose, hcount, hdel, hopen, hostname, hsym, ip address, ipc, kdb+, named pipe, open, os, pipe, port, process, q, query, request, size, socket, ssl, symbol, timeout, tls
 ---
 # `hopen`, `hclose`
 
@@ -13,31 +12,31 @@ keywords: asynchronous, bytes, close, compressed, delete, erase, fifo, file, fil
 </pre>
 
 
-Kdb+ communicates with the [file system](../basics/files.md) and other processes through 
+Kdb+ communicates with the [file system](../basics/files.md) and other processes through
 
--   one-shot functions 
+-   one-shot functions
 -   [handles](../basics/handles.md) to persistent connections
 
 Connections are opened and closed respectively by `hopen` and `hclose`.
 
 
-## `hopen`
+## :fontawesome-solid-handshake: `hopen`
 
 ```txt
 hopen filehandle
 hopen processhandle
-hopen (processhandle;timeout)
+hopen (communicationhandle;timeout)
 hopen port
 ```
 
-Where 
+Where
 
 -   `filehandle` is a symbol atom (or string since V3.6 2017.09.26)
--   `processhandle` is a symbol atom (or string since V3.6 2017.09.26)
+-   `communicationhandle` is a symbol atom (or string since V3.6 2017.09.26)
 -   `timeout` is milliseconds as an integer
 -   `port` is a local port number as an integer atom
 
-opens communication to a file or a process, and returns a handle as an int. 
+conencts to a file object or a communication handle, and returns a connection handle as an int.
 
 ```q
 hopen ":path/to/file.txt"                   / filehandle
@@ -58,13 +57,13 @@ hopen each(`:mysymbol;
 ```
 
 
-## `hclose`
+## :fontawesome-solid-handshake-slash: `hclose`
 
 ```txt
 hclose x     hclose[x]
 ```
 
-Where `x` is a file or process handle, closes communication to it and destroys the handle. 
+Where `x` is a connection handle, closes the connection, and destroys the handle.
 The corresponding integer can then no longer be applied to an argument.
 
 ```q
@@ -77,22 +76,22 @@ q)h"til 5"
 ': Bad file descriptor
 ```
 
-Async connections: pending data on the handle is not sent prior to closing. 
-If flushing is required prior to close, this must be done explicitly. 
+Async connections: pending data on the connection handle is not sent prior to closing.
+If flushing is required prior to close, this must be done explicitly.
 (Since V3.6 2019.09.19)
 
 ```q
-q)neg[h][];hclose h; 
+q)neg[h][];hclose h;
 ```
 
 !!! info "`hclose` before V3.6 2019.09.19"
 
-    If the handle refers to a WebSocket, `hclose` blocks until any pending data on the handle has been sent.
+    If the handle refers to a WebSocket, `hclose` blocks until any pending data on the connection handle has been sent.
 
 
-## Files
+## :fontawesome-solid-database: Files
 
-If a filehandle specifies a non-existent filepath, it is created, including directories. 
+If a filehandle specifies a non-existent filepath, it is created, including directories.
 
 ```q
 q)hdat:hopen ":f.dat"             / data file (bytes)
@@ -103,7 +102,7 @@ q)htxt:hopen ":c:/q/test.txt"     / text file
 
     This is useful if embedding frequently-changing tokens in the username or password fields.
 
-!!! warning "Do not use colons in a file-path as it conflicts with the pattern used to identify a process."
+!!! warning "Do not use colons in a file-path. It conflicts with the pattern used to identify a process."
 
 To append to these files, the syntax is the same as for IPC:
 
@@ -114,21 +113,29 @@ q)r:htxt ` sv("asdf";"qwer")
 ```
 
 
-## Processes
+## :fontawesome-solid-handshake: Processes
 
-A _process handle_ has the form:
+### Communication handles
+
+A communication handle specifies a network resource, and may include authentication credentials for it. There are four forms.
 
 TCP
-: `` `:host:port[:user:password]`` 
+: `` `:host:port[:user:password]``
 : `host` can be a hostname or IP address; omitted, it denotes the localhost
 
 Unix domain socket
-: `` `:unix://port[:user:password] `` 
+: `` `:unix://port[:user:password] ``
 : (Since V3.4.) Unix domain sockets can have significantly lower latency and higher throughput than a localhost TCP connection
 
 SSL/TLS
-: `` `:tcps://host:port[:user:password] `` 
+: `` `:tcps://host:port[:user:password] ``
 : :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
+
+Fifo/named pipe
+
+: `` `:fifo://filename``
+: On Unix builds since V3.4.
+
 
 ```q
 hopen `:10.43.23.198:5010                    / IP address
@@ -147,15 +154,15 @@ The optional timeout applies to the initial connection, not subsequent use of it
 To send messages to the remote process:
 
 ```q
-q)h"2+2"          / synchronous (GET)   
+q)h"2+2"          / synchronous (GET)
 4
 q)(neg h)"a:2"    / asynchronous (SET)
 ```
 
 
-### One-shot request
+### :fontawesome-solid-thumbs-up: One-shot request
 
-If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to open a connection, send the query, get the results, then close the connection. 
+If only one synchronous query/request is to be run, then the one-shot synchronous request can be used to connect, send the query, get the results, then disconnect.
 
 ```q
 q)`:mydb.us.com:5010:elmo:sesame "1+1"
@@ -165,22 +172,22 @@ q)`:mydb.us.com:5010:elmo:sesame "1+1"
 It is more efficient to keep a connection open if there is an opportunity to re-use it for other queries.
 
 
-### Fifo/named pipes
-
-V3.4 Unix builds have support for reading from a Fifo/named pipe, where the `hopen` argument has the form `` `:fifo://filename``.
-
-
 
 ----
-:fontawesome-solid-book: 
+:fontawesome-solid-book:
 [`.Q.Xf`](dotq.md#qxf-create-file) (create file)
 <br>
 :fontawesome-solid-book-open:
+[Communication handle](../basics/glossary.md#communication-handle),
+[Connection handle](../basics/glossary.md#connection-handle),
 [File system](../basics/files.md),
 [Interprocess communication](../basics/ipc.md)
 <br>
-:fontawesome-solid-graduation-cap: 
+:fontawesome-solid-graduation-cap:
 [Client-server](../kb/client-server.md),
 [Named pipes](../kb/named-pipes.md),
 [SSL/TLS](../kb/ssl.md)
-
+<br>
+:fontawesome-solid-street-view:
+_Q for mortals_
+[§11.6.2 Opening a Connection Handle](/q4m3/11_IO/#1162-opening-a-connection-handle)

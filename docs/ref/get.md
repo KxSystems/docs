@@ -4,7 +4,7 @@ description: get and set are q keywords that read or set value of a variable or 
 author: Stephen Taylor
 keywords: get, kdb+, q, set
 ---
-# `get`, `set`
+# :fontawesome-solid-database: `get`, `set`
 
 _Read or set the value of a variable or a kdb+ data file_
 
@@ -22,11 +22,11 @@ get x     get[x]
 Where `x` is
 
 -   the name of a global variable as a symbol atom
--   one or more [files or folders](../basics/glossary.md#file-symbol) named as a symbol atom or vector
+-   a [file or folder](../basics/glossary.md#file-symbol) named as a symbol atom or vector
 
 returns its value.
 
-Signals a type error if the file is not a kdb+ data file.
+Signals a `type` error if the file is not a kdb+ data file.
 
 Used to map columns of databases in and out of memory when querying splayed databases, and can be used to read q log files, etc.
 
@@ -55,7 +55,7 @@ q)s:get`:SNewTrade/                     / s has columns mapped on demand
     5
     </code></pre>
 
-<!-- FIXME: describe other uses. -->
+    <!-- FIXME: describe other uses. -->
 
 
 
@@ -92,6 +92,7 @@ q)a set 1 2 3             / fails, as name must be a symbol
 :["type"]
 ```
 
+
 If `x` is a file symbol, the values are written to file.
 
 ```q
@@ -101,7 +102,8 @@ q)get `:work.dat
 1 2 3
 ```
 
-Write a table to a single file:
+
+### Table to file
 
 ```q
 q)\l sp.q
@@ -116,7 +118,15 @@ s1 p3 400
 ..
 ```
 
-To save a table splayed across a directory, `x` must be a path (i.e. ends with a `/`), and the table must be fully enumerated, with no primary keys:
+
+### Table to directory
+
+To save a table `y` splayed across a directory `x`
+
+-   `x` must be a path that ends with a `/`
+-   `y` must have no primary keys
+-   columns of `y` must be vectors or [compound lists](../basics/glossary.md#compound-list)
+-   symbol columns in `y` must be fully enumerated
 
 ```q
 q)`:mydata/ set sp
@@ -133,6 +143,9 @@ s1 p2 200
 s1 p3 400
 ..
 ```
+
+
+### Format 
 
 `set` saves the data in a binary format akin to tag+value, retaining the structure of the data in addition to its value.
 

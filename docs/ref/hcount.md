@@ -5,7 +5,7 @@ author: Stephen Taylor
 date: December 2019
 keywords: file, size
 ---
-# `hcount`
+# :fontawesome-solid-database: `hcount`
 
 
 

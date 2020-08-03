@@ -4,11 +4,11 @@ description: The .h namespace contains objects useful for marking up data for an
 author: Stephen Taylor
 keywords: html, kdb+, markup, q
 ---
-# The `.h` namespace
+# :fontawesome-brands-html5: The `.h` namespace
 
 
 
-
+_Markup tools_
 
 
 <pre markdown="1" class="language-txt">
@@ -638,7 +638,9 @@ q).h.td ([]a:1 2 3;b:`x`y`z)
 
 ## `.h.text` (paragraphs)
 
-Syntax: `.h.text x`
+```txt
+.h.text x
+```
 
 Where `x` is a list of strings, returns as a string, `x` with each item as the content of a `p` element.
 
@@ -650,7 +652,9 @@ q).h.text("foo";"bar")
 
 ## `.h.tx` (filetypes)
 
-Syntax: `.h.tx`
+```txt
+.h.tx
+```
 
 Returns a dictionary of file types and corresponding conversion functions (`.h.cd`, `.h.td`, `.h.xd`, `.h.ed`).
 

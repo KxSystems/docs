@@ -4,7 +4,7 @@ description: Keyword hdel deletes a file or folder
 author: Stephen Taylor
 date: December 2019
 ---
-# `hdel`
+# :fontawesome-solid-database: `hdel`
 
 
 _Delete a file or folder_

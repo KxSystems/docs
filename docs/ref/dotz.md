@@ -4,14 +4,14 @@ description: The .z namespace contains objects that return or set system informa
 author: Stephen Taylor
 keywords: callbacks, environment, kdb+, q
 ---
-# The `.z` namespace
+# :fontawesome-regular-clock: The `.z` namespace
 
 
 
-
+_Environment and callbacks_
 
 <pre markdown="1" class="language-txt">
-System information                 Callbacks
+Environment                        Callbacks
  [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth from cookie](#zac-http-auth-from-cookie)
  [.z.b    dependencies](#zb-dependencies)               [.z.bm    msg validator](#zbm-msg-validator)
  [.z.c    cores](#zc-cores)                      [.z.exit  action on exit](#zexit-action-on-exit)

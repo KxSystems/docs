@@ -122,16 +122,33 @@ _String_ is another name for character vector.
 
 Characters ignored by the interpreter.
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book-open:
 [Comment syntax](syntax.md#comments)
+
+
+## Communication handle
+
+A communication handle specifies a network resource.
+
+:fontawesome-solid-book:
+[Communication handles](../ref/hopen.md#Communication-handles)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.6.1 Communication Handle](/q4m3/11_IO/1161-communication-handle)
 
 
 ## Comparison tolerance
 
 Because floating-point values resulting from computations are usually only approximations to the true mathematical values, the Equal operator is defined so that `x = y` is `1b` (true) for two floating-point values that are either near one another or identical. 
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open:
 [Precision](precision.md)
+
+
+## Compound list
+
+A list of vectors of uniform type, e.g. `("quick";"brown";"fox")`.
 
 
 ## Conform
@@ -144,8 +161,11 @@ Lists, dictionaries and tables conform if they are either atoms or have the same
 
 ## Connection handle
 
-A handle to the communication path to a process or object in the file system.
+A handle to a connection opened to a communication handle or object in the file system.
 
+:fontawesome-solid-book:
+[`hclose`, `hopen`](../ref/hopen.md)
+<br>
 :fontawesome-solid-book-open:
 [Connection handles](handles.md),
 [File system](files.md),
@@ -154,14 +174,14 @@ A handle to the communication path to a process or object in the file system.
 
 ## Console
 
-Console refers to the source of messages to q and their responses that are typed in a q session.
+Console refers to the source of messages to q and their responses that are typed in a q session. It is denoted by system handle `0`.
 
 
 ## Control word
 
 Control words `do`, `if`, and `while` interrupt the usual evaluation rules, e.g. by omitting expressions, terminating evaluation.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open:
 [Evaluation control](control.md)
 
 
@@ -209,15 +229,15 @@ names| bob carol ted alice
 ages | 42  39    51  44
 ```
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book:
 [`!` Dict](../ref/dict.md)
 
 
 ## Domain
 
 The domain of a function is all the possible values of its argument.  
-:fontawesome-regular-hand-point-right: 
-intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+:fontawesome-solid-globe: 
+[Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php "intmath.com")
 
 Functions with multiple arguments have multiple domains. 
 A function’s first domain is known as its _left domain_. 
@@ -294,14 +314,22 @@ Either:
 -   a 3-list `(filesymbol;offset;length)` where `offset` and `length` are non-zero integers
 
 
+## Filehandle
+
+Either a filename or a filesymbol.
+
+
 ## Filename
 
-An absolute or relative filepath as a string, e.g. `":path/to/data"`.
+An absolute or relative path in the filesystem to a file or directory as a string, e.g. `":path/to/data"`.
+
+:fontawesome-solid-book-open:
+[File system](files.md)
 
 
 ## File symbol
 
-A symbol atom denoting a file or folder in the file system, e.g. `` `:path/to/data``
+An absolute or relative path in the filesystem to a file or directory as a symbol atom, e.g. `` `:path/to/data``
 
 :fontawesome-solid-book-open:
 [File system](files.md)

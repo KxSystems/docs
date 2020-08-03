@@ -49,6 +49,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to [`insert`](../ref/insert.md) a record with an existing key into a keyed table</td> </tr>
 <tr><td>invalid</td> <td class="nowrap">`q -e 3`</td> <td>Invalid command-line option value</td> </tr>
 <tr><td>invalid password</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Invalid keyfile password</td> </tr>
+<tr><td>\l</td> <td/> <td>Not a [data file](syscmds.md#l-load-file-or-directory)</td> </tr>
 <tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
 <tr>
 <td>limit</td>
@@ -60,6 +61,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
     or :fontawesome-regular-hand-point-right: [Parse errors](#parse-errors)
 </td>
 </tr>
+<tr><td>load</td> <td/> <td>Not a [data file](../ref/load.md)</td> </tr>
 <tr><td>loop</td> <td class="nowrap">`a::a`</td> <td>Dependency loop</td> </tr>
 <tr><td>main thread only</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Not executed from main thread</td> </tr>
 <tr><td>mismatch</td> <td class="nowrap">`([]a:til 4),([]b:til 3)`</td> <td>Columns that can't be aligned for R,R or K,K</td> </tr>

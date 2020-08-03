@@ -4,9 +4,9 @@ description: File Binary is a q operator that reads or writes a binary file.
 author: Stephen Taylor
 keywords: binary, file, kdb+, q, read, write
 ---
-# `1:` File Binary 
+# :fontawesome-solid-database: `1:` File Binary 
 
-_Read or write bytes_
+_Read and parse, or write bytes_
 
 
 
@@ -21,7 +21,7 @@ x 1: y     1:[x;y]
 
 Where 
 
--   `x` is a 2-item list of types (char vector) and widths (int vector), of which the order determines whether the data is parsed as little-endian or big-endian
+-   `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or string, or byte sequence
 
 returns the content of `y` as atom, list or matrix.
@@ -57,15 +57,44 @@ q)d:raze{("ii";4 4)1:(`:/tmp/data;x;100000)}each 100000*til 5
 ```
 
 
+### Column types and widths
+
+```txt
+b        boolean         1
+g        guid            16
+x        byte            1
+h        short           2
+i        int             4
+j        long            8
+e        real            4
+f        float           8
+c        char            1
+s        symbol          n
+p        timestamp       8
+m        month           4
+d        date            4
+z        datetime        8
+n        timespan        8
+u        minute          4
+v        second          4
+t        time            4
+(blank)  skip           
+```
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.5.1 Fixed-Width Records](/q4m3/11_IO/#1151-fixed-width-records)
+
+
 ## Save Binary
 
 ```txt
 filesymbol 1: bytes     1:[filesymbol;bytes]
 ```
 
-writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns `filesymbol`. If `filesymbol`
+writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns it. If `filesymbol`
 
--   does not exist, it is created, with any missing containing directories
+-   does not exist, it is created, with any required directories
 -   exists, it is overwritten
 
 ```q
