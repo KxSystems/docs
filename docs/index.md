@@ -71,7 +71,7 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 <div>
     [<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
-    Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
+    Visual environment:<br>Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
 </div>
 </div>
 
@@ -117,7 +117,7 @@ Kdb+, from [Kx](https://kx.com), is
 </div>
 <div>
     [<i class="fab fa-fw fa-github fa-border fa-5x"></i><br/>
-    Community](http://kxsystems.github.io/ "Kdb+ repositories on GitHub")
+    Open source](github.md "Kdb+ repositories on GitHub")
 </div>
 </div>
 
