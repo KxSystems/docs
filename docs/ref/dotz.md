@@ -903,6 +903,15 @@ Sending a websocket message is limited to async messages only (sync is `'nyi`). 
 
 The default definition is to echo the message back to the client, i.e. `{neg[.z.w]x}`
 
+:fontawesome-solid-book-open:
+[Interprocess communication ](../basics/ipc.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[WebSockets](../kb/websockets.md)
+<br>
+:fontawesome-regular-map:
+[Kdb+ and WebSockets](../wp/websockets/index.md)
+
 
 ## `.z.X` (raw command line)
 

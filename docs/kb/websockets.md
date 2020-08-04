@@ -3,7 +3,7 @@ title: WebSockets – Knowledge Base – kdb+ and q documentation
 description: How to work with WebSockets in q
 keywords: browser, json, kdb+, q, websockets
 ---
-# WebSockets
+# :fontawesome-solid-handshake: WebSockets
 
 
 
@@ -12,10 +12,11 @@ keywords: browser, json, kdb+, q, websockets
 
 [V3.0](../releases/ChangesIn3.0.md) supports the WebSocket protocol.
 
-To get your browser and kdb+ talking on a WebSocket, start a q session listening on port 5000:
+To get your browser and kdb+ talking on a WebSocket, start a q session listening on port 5000, and set its WebSocket handler `.z.ws` to echo whatever it receives.
 
-```bash
-q -p 5000
+```q
+q)\p 5000
+q).z.ws:{neg[.z.w] x}
 ```
 
 Download 
@@ -32,7 +33,7 @@ Now click _connect_ and type e.g. `4+til 3` in the edit box. Hit Enter or click 
 
 ### How it works
 
-Kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The default behaviour is `{neg[.z.w]x}`, which echoes the message back to the client – so kdb+ is an echoing WebSocket server when you start it listening.
+Kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The handler `{neg[.z.w]x}` echoes the message back to the client.
 
 
 ## Doing something useful

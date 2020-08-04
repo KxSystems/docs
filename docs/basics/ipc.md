@@ -240,6 +240,12 @@ The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indica
 :fontawesome-solid-graduation-cap:
 [Serialization examples](../kb/serialization.md)
 <br>
+:fontawesome-solid-graduation-cap:
+[WebSockets](../kb/websockets.md)
+<br>
+:fontawesome-regular-map:
+[Kdb+ and WebSockets](../wp/websockets.md)
+<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
