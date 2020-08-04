@@ -1,17 +1,14 @@
 ---
-title: Errors – Basics – kdb+ and q documentation
+title: Errors | Basics | kdb+ and q documentation
 description: Errors signalled by the interpreter, and what triggers them
-keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 ---
 
 # :fontawesome-solid-bomb: Errors 
 
 
 
-<!-- :fontawesome-regular-hand-point-right: Simon’s list :fontawesome-regular-github: [simongarland/help/texts/errors.txt](https://github.com/simongarland/help/blob/master/texts/errors.txt) -->
-
-
 ## Runtime errors
+
 <table class="kx-ruled kx-shrunk kx-tight" markdown="1">
 <thead>
 <tr><th>error</th><th>example</th><th>explanation</th></tr>
@@ -40,6 +37,7 @@ keywords: abort, catch, error, exit, handle, kdb+, q, signal, trap
 <tr><td>elim</td> <td class="nowrap">``((-58?`3) set\:(),`a)$`a``</td> <td>Too many enumerations (max: 57)</td> </tr>
 <tr><td>enable secondary threads via cmd line -s only</td> <td class="nowrap">`\s 4`</td> <td>Command line enabled processes for parallel processing</td> </tr>
 <tr><td>encryption lib unavailable</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Failed to load OpenSSL libraries</td> </tr>
+<tr><td>expected response</td> <td/> <td>One-shot request did not receive response</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
 <tr><td>from</td> <td class="nowrap">`select price trade`</td> <td>Badly formed select statement</td> </tr>
 <tr><td>glim</td> <td/> <td>`` `g#`` limit (99 prior to V3.2, now unlimited</td> </tr>
