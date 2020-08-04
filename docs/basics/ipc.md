@@ -244,7 +244,7 @@ The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indica
 [WebSockets](../kb/websockets.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+ and WebSockets](../wp/websockets.md)
+[Kdb+ and WebSockets](../wp/websockets/index.md)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

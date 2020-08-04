@@ -13,7 +13,7 @@ keywords: code, github, kdb+, q, repo, repository
 
 Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
 
-<div style="background-color: #efefef; border: 1px solid #005499; border-radius: 10px; display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
+<div style="background-color: #efefef; border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.2);  display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
 
 :fontawesome-brands-github: 
@@ -98,7 +98,6 @@ The Fusion interface libraries are maintained and supported by Kx.
 
 
 ## Other repos maintained by Kx
-
 
 <table class="kx-compact" markdown="1">
 <tr>
