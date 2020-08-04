@@ -82,7 +82,7 @@ theme:
 nav:
   - Home: index.md
   - Reference: https://code.kx.com/q/ref/
-  - Community: github.md
+  - Open source: github.md
   - Support: support.md
   - Developer tools: devtools.md
   - Corporate site: https://kx.com
@@ -146,7 +146,7 @@ nav:
       - Phrasebook: /phrases/
       - Scrabble: learn/reading/scrabble.md
     - Advanced q:
-      - Overview: learn/advanced.md
+      # - Overview: learn/advanced.md
       - Remarks on Style:
         - Preface: style/index.md
         - Maxims: style/maxims.md
@@ -213,7 +213,6 @@ nav:
       - Function notation: basics/function-notation.md
       - Functional SQL: basics/funsql.md
       - Iteration: basics/iteration.md
-      - Interprocess communication: basics/ipc.md
       - Joins: basics/joins.md
       - Listening port: basics/listening-port.md
       - Logic: basics/logic.md
@@ -238,6 +237,7 @@ nav:
     - File system: basics/files.md
     - Glossary: basics/glossary.md
     - Internal functions: basics/internal.md
+    - Interprocess communication: basics/ipc.md
     - Iterators:
       - Overview: ref/iterators.md
       - Maps: ref/maps.md
@@ -485,7 +485,7 @@ nav:
         - Reference: interfaces/solace/reference.md
         - RESTful API: interfaces/solace/solacerest.md
         - Examples: interfaces/solace/examples.md
-    - From: 
+    - Clients for kdb+: 
       - C: interfaces/c-client-for-q.md
       - C API reference: interfaces/capiref.md
       - C#: interfaces/csharp-client-for-q.md
@@ -497,7 +497,7 @@ nav:
       - ODBC3: interfaces/q-server-for-odbc3.md 
       - Perl: interfaces/perl-client-for-q.md 
       - Scala: interfaces/scala-client-for-q.md 
-    - To: 
+    - Q clients: 
       - Bloomberg: interfaces/q-client-for-bloomberg.md
       - C/C++ functions: interfaces/using-c-functions.md
       - GPUs: interfaces/gpus.md
@@ -609,6 +609,7 @@ nav:
     - Publish and subscribe: kb/publish-subscribe.md
     - Regular expressions: kb/regex.md
     - Replay logfile: kb/replay-log.md
+    - Serialization examples: kb/serialization.md
     - Server calling client: kb/server-calling-client.md
     - Splayed schema change: kb/splayed-schema-change.md
     - Splayed tables: kb/splayed-tables.md

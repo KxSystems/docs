@@ -893,7 +893,9 @@ The argument is the handle and is typically used to build a dictionary of handle
 
 ## `.z.ws` (websockets)
 
-Syntax: `z.ws:f`
+```txt
+z.ws:f
+```
 
 Where `f` is a unary function, `.z.ws` is evaluated on a message arriving at a websocket. If the incoming message is a text message the argument is a string; if a binary message, a byte vector.
 

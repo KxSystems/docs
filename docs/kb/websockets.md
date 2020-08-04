@@ -54,7 +54,7 @@ To enable error reporting, try:
 ```
 
 
-## c.js (no AJAX required)
+## `c.js` (no AJAX required)
 
 `c.js` provides functions `serialize` and `deserialize` to simplify IPC between the browser and a kdb+ server. An example, `wslogin.htm` shows how to send a JavaScript dictionary to kdb+. It receives an echo of the dictionary and turns it back into a JavaScript dictionary.
 
@@ -227,6 +227,13 @@ Both client and server support permessage-deflate compression.
 
 The WebSocket requires that text is UTF-8 encoded. If you try to send invalidly encoded text it will signal `'utf8`.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book: 
 [Namespace `.h`](../ref/doth.md)
 
+----
+:fontawesome-regular-map:
+[Kdb+ and WebSockets](../wp/websockets/index.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.7.2 Basic WebSockets](/q4m3/11_IO/#1172-basic-websockets)
