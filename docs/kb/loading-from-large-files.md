@@ -1,7 +1,6 @@
 ---
-title:  Loading from large files – Knowledge Base – kdb+ and q documentation
-description: Elsewhere we show how to load a CSV file into a table in memory and save a table to disk in native format. However, when the data in the CSV file is too large to fit into memory, those techniques fail. Instead, we need to break the large CSV file into manageable chunks and process them in sequence. Doing this by hand is quite tiresome. 
-keywords: file, large, load, kdb+, q
+title:  Loading from large files | Knowledge Base | kdb+ and q documentation
+description: When data in the CSV file is too large to fit into memory, we need to break it into manageable chunks and process them in sequence. 
 ---
 # Loading from large files
 
@@ -11,7 +10,7 @@ keywords: file, large, load, kdb+, q
 
 [Elsewhere](faq.md#how-do-i-import-a-csv-file-into-a-table) we show how to load a CSV file into a table in memory and save a table to disk in native format. However, when the data in the CSV file is too large to fit into memory, those techniques fail. 
 
-Instead, we need to break the large CSV file into manageable chunks and process them in sequence. Doing this by hand is quite tiresome. Fortunately, q provides a function ([`.Q.fs`]](../ref/dotq.md#qfs-streaming-algorithm)) that automates part of this process. `.Q.fs` loops over a file and grabs conveniently-sized lumps of complete records (`\n` delimited) and allows you to apply a function to each record. This allows you to implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding the data in memory all at once.
+Instead, we need to break the large CSV file into manageable chunks and process them in sequence. Doing this by hand is quite tiresome. Fortunately, q provides a function ([`.Q.fs`](../ref/dotq.md#qfs-streaming-algorithm)) that automates part of this process. `.Q.fs` loops over a file and grabs conveniently-sized lumps of complete records (`\n` delimited) and allows you to apply a function to each record. This allows you to implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding the data in memory all at once.
 
 
 ## Using `.Q.fs`
