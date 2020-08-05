@@ -370,8 +370,8 @@ Environment                        [pf     partition field](dotq.md#qpf-partitio
                                    [pv     modified partition values](dotq.md#qpv-modified-partition-values)
 IPC                                [vp     missing partitions](dotq.md#qvp-missing-partitions)
  [addr     IP address](dotq.md#qaddr-ip-address)
- [fps      streaming algorithm](dotq.md#qfps-streaming-algorithm)     Segmented database state
- [fsn      streaming algorithm](dotq.md#qfsn-streaming-algorithm)      [D      partitions](dotq.md#qd-partitions)
+ [fps fpn  streaming algorithm](dotq.md#qfps-streaming-algorithm)     Segmented database state
+ [fs  fsn  streaming algorithm](dotq.md#qfsn-streaming-algorithm)      [D      partitions](dotq.md#qd-partitions)
  [hg       HTTP get](dotq.md#qhg-http-get)                 [P      segments](dotq.md#qp-segments)
  [host     hostname](dotq.md#qhost-hostname)                 [u      date based](dotq.md#qu-date-based)
  [hp       HTTP post](dotq.md#qhp-http-post)
