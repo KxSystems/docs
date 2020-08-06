@@ -10,63 +10,129 @@ author: Stephen Taylor
 # `value`
 
 
-_Various metadata_
+_Recurse the interpreter_
 
 
 
-Syntax: `value x`, `value[x]`
+```txt
+value x     value[x]
+```
 
-Where `x` is a:
+Returns the value of `x`:
+
+<pre markdown="1" class="language-txt">
+dictionary           value of the dictionary
+symbol atom          value of the variable it names
+enumeration          corresponding symbol vector
+
+string               result of evaluating it in current context
+list                 result of evaluating list as a [parse tree](../basics/parsetrees.md)
+
+projection           list: function followed by argument/s
+composition          list of composed values
+derived function     argument of the iterator
+operator             internal code
+
+view                 [list of metadata](#view)
+lambda               [structure](#lambda)
+
+file symbol          [content of datafile](#get)
+</pre>
 
 
-## Dictionary
-
-returns its values.
+Examples
 
 ```q
-q)d:`q`w`e!(1 2;3 4;5 6)
-q)value d
+q)value `q`w`e!(1 2;3 4;5 6)        / dictionary
 1 2
 3 4
 5 6
-```
 
-
-## Symbol
-
-returns the value of the variable it names.
-
-```q
 q)a:1 2 3
-q)`a
-`a
-q)value `a
+q)value `a                          / symbol
 1 2 3
-```
 
-:fontawesome-regular-hand-point-right: 
-[`.Q.v`](dotq.md#qv-value) (value)
-
-
-## Enumeration
-
-returns the corresponding symbol vector.
-
-```q
 q)e:`a`b`c
 q)x:`e$`a`a`c`b
 q)x
 `e$`a`a`c`b
-q)value x
+q)value x                           / enumeration
 `a`a`c`b
+
+q)value "enlist a:til 5"            / string
+0 1 2 3 4
+q)value "{x*x}"
+{x*x}
+q)value "iasc 2 7 3 1"
+3 0 2 1
+q)\d .a
+q.a)value"b:2"
+2
+q.a)b
+2
+q.a)\d .
+q)b
+'b
+q).a.b
+2
+
+q)value(+;1;2)                      / list - evaluated as parse tree
+3
+q)/ if the first item is a string or symbol, it is evaluated first
+q)value(`.q.neg;2)
+-2
+q)value("{x+y}";1;2)
+3
+
+q)value +[2]                        / projection
++
+2
+q)value differ                      / composition
+~:
+~':
+q)f:,/:\:                           / derived function
+q)value f
+,/:
+q)value each (::;+;-;*;%)           / operator
+0 1 2 3 4
+```
+
+!!! tip "The string form can be useful as a kind of ‘prepared statement’ from the Java client API since the Java serializer doesn’t support lambdas and keywords."
+
+
+## View
+
+returns a list of metadata:
+
+-   cached value
+-   parse tree
+-   dependencies
+-   definition
+
+When the view is _pending_, the cached value is `::`.
+
+```q
+q)a:1
+q)b::a+1
+q)get`. `b
+::
+(+;`a;1)
+,`a
+"a+1"
+q)b
+2
+q)get`. `b
+2
+(+;`a;1)
+,`a
+"a+1"
+q)
 ```
 
 
 ## Lambda
 
-!!! warning "Subject to change"
-
-    The structure of the result of `value` on a lambda, e.g. `value {x+y}`, is subject to change between versions.
+!!! warning "The structure of the result of `value` on a lambda is subject to change between versions."
 
 As of V3.5 the structure is:
 
@@ -114,133 +180,30 @@ q.test)value f
 ```
 
 
-## View
 
-returns a list of metadata:
+## Local values in suspended functions
 
--   cached value
--   parse tree
--   dependencies
--   definition
+See changes since V3.5 that support [debugging](../basics/debug.md#debugger).
 
-When the view is _pending_, the cached value is `::`.
+
+## `get`
+
+The function `value` is the same as [`get`](get.md)
+
+By convention `get` is used for file I/O but the two are interchangeable.
 
 ```q
-q)a:1
-q)b::a+1
-q)get`. `b
-::
-(+;`a;1)
-,`a
-"a+1"
-q)b
-2
-q)get`. `b
-2
-(+;`a;1)
-,`a
-"a+1"
-q)
+q)get "2+3"                / same as value
+5
+q)value each (get;value)   / same internal code
+19 19
 ```
 
 
-## Projection
-
-returns a list of the function followed by the given arguments.
-
-```q
-q)value +[2]
-+
-2
-```
-
-
-## Composition
-
-returns a list of the composed functions.
-
-```q
-q)value differ
-~:
-~':
-```
-
-
-## Primitive
-
-returns the internal code for the primitive.
-
-```q
-q)value each (::;+;-;*;%)
-0 1 2 3 4
-```
-
-
-## Derived function
-
-returns the original [applicable value](../basics/glossary.md#applicable-value).
-
-```q
-q)f:+/
-q)f 1 2 3
-6
-q)value f
-+
-```
-
-
-## String
-
-returns the result of evaluating it in the current context.
-
-```q
-q)value "enlist a:til 5"
-0 1 2 3 4
-q)value "k)<2 7 3 1"
-3 0 2 1
-q)\d .a
-q.a)value"b:2"
-2
-q.a)b
-2
-q.a)\d .
-q)b
-'b
-q).a.b
-2
-q)parse "{x*x}"
-{x*x}
-```
-
-
-## List
-
-returns the result of applying the first item to the rest. If the first item is a symbol, it is evaluated first.
-
-```q
-q)value(+;1;2)
-3
-q)value(`.q.neg;2)
--2
-q)value("{x+y}";1;2)
-3
-```
-
-The string form can be useful as a kind of ‘prepared statement’ from the Java client API since the Java serializer doesn’t support lambdas and keywords.
-
-!!! note "`value` and `get`"
-
-    The function `value` is the same as [`get`](get.md). By convention `get` is used for file I/O but the two are interchangeable.
-
-    <pre><code class="language-q">
-    q)get "2+3"                / same as value
-    5
-    q)value each (get;value)   / same internal code
-    19 19
-    </code></pre>
-
-
-!!! tip "Local values in suspended functions"
-
-    See changes since V3.5 that support [debugging](../basics/debug.md#debugger).
+----
+:fontawesome-solid-book: 
+[`eval`](eval.md),
+[`get`](get.md),
+[`parse`](parse.md),
+[`.Q.v`](dotq.md#qv-value)
 

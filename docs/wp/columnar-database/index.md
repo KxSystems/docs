@@ -241,7 +241,7 @@ When we look at the performance of the requests, we can see that due to map-redu
 
 <small>_Figure 4: Map-reduce execution times as database grows_</small>
 
-It is possible to take advantage of this behavior with kdb+’s slaves, where the map calculation components are distributed to slaves in parallel, which can lead to very fast performance. The use of slaves is outside the scope of this paper.
+It is possible to take advantage of this behavior with kdb+’s secondary processes, where the map calculation components are distributed to secondary processes in parallel, which can lead to very fast performance. The use of secondary processes is outside the scope of this paper.
 
 
 ## Use of attributes

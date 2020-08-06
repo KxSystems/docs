@@ -448,7 +448,7 @@ Accuracy
 
 Testing and validation phases will benefit significantly from the use of secondary threads in kdb+, applied through the use of the `peach` keyword: 
 
-`-s 0` (0 slaves) – Run time: ~13s
+`-s 0` (0 secondary processes) – Run time: ~13s
 
 ```q
 q)\ts:1000 test_harness[tra;1;] each 0!test
@@ -456,7 +456,7 @@ q)\ts:1000 test_harness[tra;1;] each 0!test
 q)// ~ 13.4s
 ```
 
-`-s 4` (4 slaves) – Run time: ~4s
+`-s 4` (4 secondary processes) – Run time: ~4s
 
 ```q
 q)\ts:1000 test_harness[tra;1;] peach 0!test
@@ -464,7 +464,7 @@ q)\ts:1000 test_harness[tra;1;] peach 0!test
 q)// ~3.9s
 ```
 
-The following sections will make use of four slaves when benchmarking.
+The following sections will make use of four secondary processes when benchmarking.
 
 
 ### Euclidean or Manhattan distance?

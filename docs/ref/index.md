@@ -130,21 +130,6 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 
 
-<!-- <table markdown="1">
-<tr>
-<td class="kx-glyph nowrap">`\\`<br>`\`<br>`\x`<br>`` ` ``<br>`.`</td><td>quit<br>[abort](../basics/debug.md#abort)<br>[system cmd](../basics/syscmds.md)<br>[pop stack<br>push stack](../basics/debug.md#debugging)</td>
-<td class="kx-glyph">`:`<br><code class="nowrap">::</code></td><td>[assign](../basics/syntax.md#colon)<br>[identity<br>generic null](identity.md)<br>global amend<br>set view</td>
-<td class="kx-glyph">`0`<br><span class="nowrap">`1`, `-1`</span><br>`2`, `-2`<br>_n_, _-n_</td><td>[console<br>stdout<br>stderr<br>handle](../basics/files.md)</td>
-<td class="kx-glyph"><span class="nowrap">`0:`</span><br>`1:`<br>`2:`</td><td>[File Text](file-text.md)<br>[File Binary](file-binary.md)<br>[Dynamic&nbsp;Load](dynamic-load.md)</td>
-</tr>
-<tr>
-<td class="kx-glyph nowrap">`()`<br>`(;)`<br>`([]…)`</td><td>[precedence](../basics/syntax.md#precedence-and-order-of-evaluation)<br>[list](../basics/syntax.md#list-notation)<br>[table](../basics/syntax.md#table-notation)</td>
-<td class="kx-glyph nowrap">`[;]`</td><td>[expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)<br>[argt list](../basics/syntax.md#bracket-notation)</td>
-<td class="kx-glyph">`{}`<br>`;`</td><td>[lambda](../basics/function-notation.md)<br>separator</td>
-<td class="kx-glyph"><code>&#96;</code><br><code>&#96;:</code></td><td>symbol<br>filepath</td>
-</tr>
-</table>
- -->
 <!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
 ## [Attributes](../basics/syntax.md#attributes)
@@ -156,12 +141,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 :fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
 
+
 ## Command-line options and system commands
 
 <table markdown="1" class="kx-shrunk kx-tight">
 <tr><td>[file](../basics/cmdline.md#file)</td></tr>
 <tr><td>[`\a`](../basics/syscmds.md#a-tables)</td><td>tables</td><td>[`\r`](../basics/syscmds.md#r-rename)</td><td>rename</td></tr>
-<tr><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td><td>[`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)</td><td>slaves</td></tr>
+<tr><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td><td>[`-s`](../basics/cmdline.md#-s-secondary-processes) [`\s`](../basics/syscmds.md#s-number-of-secondary-processes)</td><td>secondary processes</td></tr>
 <tr><td>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td>views</td><td>[`\S`](../basics/syscmds.md#s-random-seed)</td><td>random seed</td></tr>
 <tr><td>[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td>console size</td><td>[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td>timer ticks</td></tr>
 <tr><td>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td>HTTP size</td><td>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td>time and space</td></tr>
@@ -180,34 +166,14 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 <tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
 </table>
 
-<!--
-<pre markdown="1" class="language-txt">
-[file](../basics/cmdline.md#file)
-[`\a`](../basics/syscmds.md#a-tables)       tables                                                       [`\r`](../basics/syscmds.md#r-rename)                                                       rename
-[`-b`](../basics/cmdline.md#-b-blocked)       blocked                                                       [`-s`](../basics/cmdline.md#-s-slaves) [`\s`](../basics/syscmds.md#s-number-of-slaves)                                                       slaves
-[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)    views                                                       [`\S`](../basics/syscmds.md#s-random-seed)                                                       random seed
-[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)    console size                                                       [`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)                                                       timer ticks
-[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)    HTTP size                                                       [`\ts`](../basics/syscmds.md#ts-time-and-space)                                                       time and space
-[`\cd`](../basics/syscmds.md#cd-change-directory)      change directory                                                       [`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)                                                       timeout
-[`\d`](../basics/syscmds.md#d-directory)       directory                                                       [`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)                                                       usr-pwd
-[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)    error traps                                                       [`-u`](../basics/cmdline.md#-u-disable-syscmds)                                                       disable syscmds
-[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)    TLS server mode             [`\v`](../basics/syscmds.md#v-variables)                                                       variables
-[`\f`](../basics/syscmds.md#f-functions)       functions                  [`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)                                                       memory
-[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)    garbage collection         [`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)                                                       week offset
-[`\l`](../basics/syscmds.md#l-load-file-or-directory)       load file or directory      [`\x`](../basics/syscmds.md#x-expunge)                                                       expunge
-[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)    log sync                                                       [`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)                                                       date format
-[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)    UTC offset                                                       [`\1` `\2`](../basics/syscmds.md#1-2-redirect)                                                       redirect
-[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)    listening port                                                       [`\_`](../basics/syscmds.md#_-hide-q-code)                                                       hide q code
-[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)    display precision                                                       [`\`](../basics/syscmds.md#terminate)                                                       terminate
-[`-q`](../basics/cmdline.md#-q-quiet-mode)       quiet mode                                                       [`\`](../basics/syscmds.md#toggle-qk)                                                       toggle q/k
-[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)    replicate                                                       [`\\`](../basics/syscmds.md#quit)                                                       quit
-</pre>
- -->
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book:
+[`system`](../ref/system.md)
+<br>
+:fontawesome-solid-book-open:
 [Command-line options](../basics/cmdline.md),
 [System commands](../basics/syscmds.md),
-[OS Commands](../basics/syscmds.md#os-commands),
-[`system`](../ref/system.md)
+[OS commands](../basics/syscmds.md#os-commands)
+
 
 <!--
 ## Environment variables
@@ -308,8 +274,8 @@ time.(minute second mm ss)
 milliseconds: time mod 1000
 ```
 
-## Namespaces
 
+## Namespaces
 
 ### `.h`
 
@@ -365,53 +331,55 @@ De/serialize as JSON
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
 <pre markdown="1" class="language-txt" style="font-size: 80%">
-General                               Datatype
-[.Q.a        lowercase alphabet](dotq.md#qa-lower-case-alphabet)        [.Q.btoa   b64 encode](dotq.md#qbtoa-b64-encode)
-[.Q.A        uppercase alphabet](dotq.md#qa-upper-case-alphabet)        [.Q.j10    encode binhex](dotq.md#qj10-encode-binhex)
-[.Q.addmonths](dotq.md#qaddmonths)                          [.Q.j12    encode base64](dotq.md#qj12-encode-base64)
-[.Q.bt       backtrace](dotq.md#qbt-backtrace)                 [.Q.M      long infinity](dotq.md#qm-long-infinity)
-[.Q.dd       join symbols](dotq.md#qdd-join-symbols)              [.Q.ty     type](dotq.md#qty-type)
-[.Q.def](dotq.md#qdef)                                [.Q.x10    decode binhex](dotq.md#qx10-decode-binhex)
-[.Q.f        format](dotq.md#qf-format)                    [.Q.x12    decode base64](dotq.md#qx12-decode-base64)
-[.Q.fc       parallel on cut](dotq.md#qfc-parallel-on-cut)
-[.Q.ff       append columns](dotq.md#qff-append-columns)            Database
-[.Q.fmt      format](dotq.md#qfmt-format)                    [.Q.chk    fill HDB](dotq.md#qchk-fill-hdb)
-[.Q.ft       apply simple](dotq.md#qft-apply-simple)              [.Q.dpft   save table](dotq.md#qdpft-save-table)
-[.Q.fu       apply unique](dotq.md#qfu-apply-unique)              [.Q.dpfts  save table with sym](dotq.md#qdpfts-save-table-with-symtable)
-[.Q.gc       garbage collect](dotq.md#qgc-garbage-collect)           [.Q.dsftg  load process save](dotq.md#qdsftg-load-process-save)
-[.Q.id       sanitize](dotq.md#qid-sanitize)                  [.Q.en     enumerate varchar cols](dotq.md#qen-enumerate-varchar-cols)
-[.Q.qt       is table](dotq.md#qqt-is-table)                  [.Q.ens    enumerate against domain](dotq.md#qens-enumerate-against-domain)
-[.Q.res      keywords](dotq.md#qres-keywords)                  [.Q.fk     foreign key](dotq.md#qfk-foreign-key)
-[.Q.s        plain text](dotq.md#qs-plain-text)                [.Q.hdpf   save tables](dotq.md#qhdpf-save-tables)
-[.Q.s1       string representation](dotq.md#qs1-string-representation)     [.Q.qt     is table](dotq.md#qqt-is-table)
-[.Q.sbt      string backtrace](dotq.md#qsbt-string-backtrace)          [.Q.qp     is partitioned](dotq.md#qqp-is-partitioned)
-[.Q.sha1     SHA-1 encode](dotq.md#qsha1-sha-1-encode)
-[.Q.trp      extend trap](dotq.md#qtrp-extend-trap)               Partitioned database state
-[.Q.ts       time and space](dotq.md#qts-time-and-space)            [.Q.bv     build vp](dotq.md#qbv-build-vp)
-[.Q.u        date based](dotq.md#qu-date-based)                [.Q.cn     count partitioned table](dotq.md#qcn-count-partitioned-table)
-[.Q.V        table to dict](dotq.md#qv-table-to-dict)             [.Q.D      partitions](dotq.md#qd-partitions)
-[.Q.v        value](dotq.md#qv-value)                     [.Q.ind    partitioned index](dotq.md#qind-partitioned-index)
-[.Q.view     subview](dotq.md#qview-subview)                   [.Q.MAP    maps partitions](dotq.md#qmap-maps-partitions)
-                                      [.Q.par    locate partition](dotq.md#qpar-locate-partition)
-Environment                           [.Q.PD     partition locations](dotq.md#qpd-partition-locations)
-[.Q.k        version](dotq.md#qk-version)                   [.Q.pd     modified partition locns](dotq.md#qpd-modified-partition-locations)
-[.Q.opt      command parameters](dotq.md#qopt-command-parameters)        [.Q.pf     partition field](dotq.md#qpf-partition-field)
-[.Q.w        memory stats](dotq.md#qw-memory-stats)              [.Q.pn     partition counts](dotq.md#qpn-partition-counts)
-[.Q.x        non-command parameters](dotq.md#qx-non-command-parameters)    [.Q.qp     is partitioned](dotq.md#qqp-is-partitioned)
-                                      [.Q.pt     partitioned tables](dotq.md#qpt-partitioned-tables)
-IPC                                   [.Q.PV     partition values](dotq.md#qpv-partition-values)
-[.Q.addr     IP address](dotq.md#qaddr-ip-address)                [.Q.pv     modified partition values](dotq.md#qpv-modified-partition-values)
-[.Q.fps      streaming algorithm](dotq.md#qfps-streaming-algorithm)       [.Q.vp     missing partitions](dotq.md#qvp-missing-partitions)
-[.Q.fs       streaming algorithm](dotq.md#qfs-streaming-algorithm)
-[.Q.fsn      streaming algorithm](dotq.md#qfsn-streaming-algorithm)       Segmented database state
-[.Q.hg       HTTP get](dotq.md#qhg-http-get)                  [.Q.D      partitions](dotq.md#qd-partitions)
-[.Q.host     hostname](dotq.md#qhost-hostname)                  [.Q.P      segments](dotq.md#qp-segments)
-[.Q.hp       HTTP post](dotq.md#qhp-http-post)                 [.Q.u      date based](dotq.md#qu-date-based)
-[.Q.l        load](dotq.md#ql-load)
+General                           Datatype
+ [addmonths](dotq.md#qaddmonths)                         [btoa   b64 encode](dotq.md#qbtoa-b64-encode)
+ [bt       backtrace](dotq.md#qbt-backtrace)                [j10    encode binhex](dotq.md#qj10-encode-binhex)
+ [dd       join symbols](dotq.md#qdd-join-symbols)             [j12    encode base 36](dotq.md#qj12-encode-base-36)
+ [def](dotq.md#qdef)                               [M      long infinity](dotq.md#qm-long-infinity)
+ [f        format](dotq.md#qf-format)                   [ty     type](dotq.md#qty-type)
+ [ff       append columns](dotq.md#qff-append-columns)           [x10    decode binhex](dotq.md#qx10-decode-binhex)
+ [fmt      format](dotq.md#qfmt-format)                   [x12    decode base 36](dotq.md#qx12-decode-base-36)
+ [ft       apply simple](dotq.md#qft-apply-simple)
+ [fu       apply unique](dotq.md#qfu-apply-unique)            Database
+ [gc       garbage collect](dotq.md#qgc-garbage-collect)          [chk    fill HDB](dotq.md#qchk-fill-hdb)
+ [gz       GZip](dotq.md#qgz-gzip)                     [dpft   save table](dotq.md#qdpft-save-table)
+ [id       sanitize](dotq.md#qid-sanitize)                 [dpfts  save table with sym](dotq.md#qdpfts-save-table-with-symtable)
+ [qt       is table](dotq.md#qqt-is-table)                 [dsftg  load process save](dotq.md#qdsftg-load-process-save)
+ [res      keywords](dotq.md#qres-keywords)                 [en     enumerate varchar cols](dotq.md#qen-enumerate-varchar-cols)
+ [s        plain text](dotq.md#qs-plain-text)               [ens    enumerate against domain](dotq.md#qens-enumerate-against-domain)
+ [s1       string representation](dotq.md#qs1-string-representation)    [fk     foreign key](dotq.md#qfk-foreign-key)
+ [sbt      string backtrace](dotq.md#qsbt-string-backtrace)         [hdpf   save tables](dotq.md#qhdpf-save-tables)
+ [trp      extend trap](dotq.md#qtrp-extend-trap)              [qt     is table](dotq.md#qqt-is-table)
+ [ts       time and space](dotq.md#qts-time-and-space)           [qp     is partitioned](dotq.md#qqp-is-partitioned)
+ [u        date based](dotq.md#qu-date-based)
+ [V        table to dict](dotq.md#qv-table-to-dict)
+ [v        value](dotq.md#qv-value)                   Partitioned database state
+ [view     subview](dotq.md#qview-subview)                  [bv     build vp](dotq.md#qbv-build-vp)
+                                   [ind    partitioned index](dotq.md#qind-partitioned-index)
+Constants                          [cn     count partitioned table](dotq.md#qcn-count-partitioned-table)
+ [A        uppercase alphabet](dotq.md#qa-upper-case-alphabet)       [MAP    maps partitions](dotq.md#qmap-maps-partitions)
+ [a        lowercase alphabet](dotq.md#qa-lower-case-alphabet)       [D      partitions](dotq.md#qd-partitions)
+ [b6       bicameral alphanums](dotq.md#qb6-bicameral-alphanums)      [par    locate partition](dotq.md#qpar-locate-partition)
+ [nA       alphanums](dotq.md#qna-alphanums)                [PD     partition locations](dotq.md#qpd-partition-locations)
+                                   [pd     modified partition locns](dotq.md#qpd-modified-partition-locations)
+Environment                        [pf     partition field](dotq.md#qpf-partition-field)
+ [k        version](dotq.md#qk-version)                  [pn     partition counts](dotq.md#qpn-partition-counts)
+ [opt      command parameters](dotq.md#qopt-command-parameters)       [qp     is partitioned](dotq.md#qqp-is-partitioned)
+ [w        memory stats](dotq.md#qw-memory-stats)             [pt     partitioned tables](dotq.md#qpt-partitioned-tables)
+ [x        non-command parameters](dotq.md#qx-non-command-parameters)   [PV     partition values](dotq.md#qpv-partition-values)
+                                   [pv     modified partition values](dotq.md#qpv-modified-partition-values)
+IPC                                [vp     missing partitions](dotq.md#qvp-missing-partitions)
+ [addr     IP address](dotq.md#qaddr-ip-address)
+ [fps      streaming algorithm](dotq.md#qfps-streaming-algorithm)     Segmented database state
+ [fsn      streaming algorithm](dotq.md#qfsn-streaming-algorithm)      [D      partitions](dotq.md#qd-partitions)
+ [hg       HTTP get](dotq.md#qhg-http-get)                 [P      segments](dotq.md#qp-segments)
+ [host     hostname](dotq.md#qhost-hostname)                 [u      date based](dotq.md#qu-date-based)
+ [hp       HTTP post](dotq.md#qhp-http-post)
+ [l        load](dotq.md#ql-load)
 
-File I/O
-[.Q.Cf       create empty nested char file](dotq.md#qcf-create-empty-nested-char-file)
-[.Q.Xf       create file](dotq.md#qxf-create-file)
+ File I/O
+ [Cf       create empty nested char file](dotq.md#qcf-create-empty-nested-char-file)
+ [Xf       create file](dotq.md#qxf-create-file)
 </pre>
 
 

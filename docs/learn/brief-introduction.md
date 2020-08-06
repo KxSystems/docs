@@ -3,7 +3,7 @@ title: A brief introduction to q and kdb+ – Learn – kdb+ and q documentation
 description: Kdb+ is a powerful database that can be used for streaming, real-time and historical data. Q is the SQL-like, general-purpose programming language built on top of kdb+. It offers high-performance, in-database analytic capabilities.
 keywords: introduction, kdb+, q, tutorial
 ---
-# A brief introduction to q and kdb+
+# A brief introduction to q and kdb+ for analysts
 
 
 
@@ -506,7 +506,7 @@ KDB+ 3.1 2014.05.03 Copyright (C) 1993-2014 Kx Systems
 DATABASE INFO
 -------------
 This database consists of 5 tables.
-It is using 0 slaves.
+It is using 0 secondary processes.
 There are 61 date partitions. 
 ```
 
@@ -578,7 +578,7 @@ Experiment! There are lots of things to try:
 
 -   Run each query several times – does the performance change? (Q doesn’t use explicit caching, it relies on the OS file-system caches.)
 -   Run the queries with different parameters.
--   If you have multiple cores available, restart the database with [slaves](../basics/cmdline.md#-s-slaves). See if some of the query performance changes.
+-   If you have multiple cores available, restart the database with [secondary processes](../basics/cmdline.md#-s-secondary-processes). See if some of the query performance changes.
 -   Rebuild the database and change the number of days of data in the database, and the number of records per day. How is the query performance affected?
 -   Rebuild the database with [compression](../kb/file-compression.md) turned on. How does the size vary? And the performance?
 

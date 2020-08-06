@@ -98,6 +98,7 @@ The following files use a new file format. They are therefore unreadable by the 
 - 64-bit enumerations use a new file format. 3.5 enum files are read-only.
 - Mapped list type (77h) deprecates old mapped nested types (77h+t). 77h+t files are read-only.
 - Guids with `u`, `p` or `g` attribute use a new file format. 
+- Accepts a websocket connection only if `.z.ws` is defined, otherwise returns HTTP 501 code
 
 Added `ajf` and `ajf0`, to behave as V2.8 `aj` and `aj0`, i.e. they fill from LHS if RHS is null. e.g.
 ```q

@@ -4,7 +4,7 @@ description: read0 is a q keyword that reads text from a file or process handle
 author: Stephen Taylor
 keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, read, read0, text
 ---
-# `read0`
+# :fontawesome-solid-database: `read0`
 
 
 
@@ -12,17 +12,19 @@ keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, r
 
 _Read text from a file or process handle_
 
-Syntax: `read0 f`, `read0[f]`<br>
-Syntax: `read0 (f;o;n)`, `read0[(f;o;n)]`<br>
-Syntax: `read0 h`, `read0[h]`<br>
-Syntax: `read0 (fifo;n)`, `read0[(fifo;n)]`
+```txt
+read0 f           read0[f]
+read0 (f;o;n)     read0[(f;o;n)]
+read0 h           read0[h]
+read0 (fifo;n)    read0[(fifo;n)]
+```
 
 where
 
 -   `f` is a [file symbol](../basics/glossary.md#file-symbol)
 -   `(f;o;n)` is a [file descriptor](../basics/glossary.md#file-descriptor)
--   `h` is a [system or process handle](../basics/handles.md)
--   `fifo` is a handle to a [Fifo](hopen.md#fifonamed-pipes)
+-   `h` is a [system or connection handle](../basics/handles.md)
+-   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
 -   `n` is a non-negative integer
 
 returns character data from the source as follows. 
@@ -88,8 +90,12 @@ q)read0(h;8)
 "Enterpri"
 ```
 
-
+----
 :fontawesome-solid-book-open:
 [Connection handles](../basics/handles.md),
 [File system](../basics/files.md),
 [Interprocess communication](../basics/ipc.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

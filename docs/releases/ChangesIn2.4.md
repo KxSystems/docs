@@ -31,7 +31,7 @@ if, however a negative port number is given the input queue is multithreaded
 q .. -p -5001 / multithreaded input queue
 ```
 
-The number of slaves set with `-s` are still dedicated to running queries over the partitions in parallel. However the number of threads used to handle the input queue is not user-settable. For now, each query gets an own thread – later it is probably going to change to a pool of threads, one per CPU.
+The number of secondary processes set with `-s` are still dedicated to running queries over the partitions in parallel. However the number of threads used to handle the input queue is not user-settable. For now, each query gets an own thread – later it is probably going to change to a pool of threads, one per CPU.
 
 ## `hopen`
 

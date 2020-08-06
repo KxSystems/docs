@@ -336,7 +336,7 @@ This work is evolving and looks very promising.  I look forward to Ryan presenti
 
 ### Test results
 
-Ryan Sparks reports the following test results running V3.5 2017.05.02 using 6 slaves:
+Ryan Sparks reports the following test results running V3.5 2017.05.02 using 6 secondary processes:
 
 function   | \ts:1000  20×20  | \ts:100 100×100    | 1000×1000              | 2000×2000                | 4000×4000
 -----------|-----------------:|-------------------:|-----------------------:|-------------------------:|-------------------------:

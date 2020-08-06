@@ -27,7 +27,7 @@ The File Text operator `0:` has five forms:
 [Key-Value Pairs](#key-value-pairs)  delimited string as key-value pairs
 </pre>
 
-## Prepare Text
+## :fontawesome-solid-align-left: Prepare Text
 
 _Represent a table as a list of delimited strings_
 
@@ -74,9 +74,12 @@ qu"ux
 "fred"",barney"
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.4.3 Preparing Text](/q4m3/11_IO/#1143-preparing-text)
 
 
-## Save Text
+## :fontawesome-solid-database: Save Text
 
 _Write a list of strings to file_
 
@@ -98,11 +101,17 @@ q)`:status.txt 0: string system "w"
 `:status.txt
 ```
 
+If `filesymbol`
+
+-   does not exist, it is created, with any missing containing directories
+-   exists, it is overwritten
+
+
 :fontawesome-solid-book:
 [`save`, `rsave`](save.md)
 
 
-## Load CSV
+## :fontawesome-solid-database: Load CSV
 
 _Interpret a field-delimited string, list of strings, or file as a list or matrix_
 
@@ -114,11 +123,11 @@ _Interpret a field-delimited string, list of strings, or file as a list or matri
 Where 
 
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor), string, or a list of strings
--   `types` is a list of [types](../basics/datatypes.md#primitive-datatypes) in upper case,
--   `delimiter` is a char atom or 1-item list,
--   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`. 
+-   `types` is a string of [column type codes](#column-types) in upper case
+-   `delimiter` is a char atom or 1-item list
+-   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`
 
-returns a vector or matrix interpreted from the content of `y`.
+returns a vector, matrix, or table interpreted from the content of `y`.
 
 If `delimiter` is enlisted, the first row of the content of `y` is read as column names and the result is a table; otherwise the result is a list of values for each column.
 
@@ -144,7 +153,7 @@ q)("DT";",")0:"20130315,185540686"
 ```
 
 
-## Load Fixed
+## :fontawesome-solid-database: Load Fixed
 
 _Interpret a fixed-format list of strings or file as a list or matrix_
 
@@ -155,7 +164,7 @@ _Interpret a fixed-format list of strings or file as a list or matrix_
 Where 
 
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or a list of strings
--   `types` is a list of [types](../basics/datatypes.md#primitive-datatypes) in upper case
+-   `types` is a list of [column types](#column-types) in upper case
 -   `widths` is an int vector of field widths
 
 returns a vector or matrix interpreted from the content of `y`.
@@ -184,7 +193,7 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
     -   To omit a field from the load use `" "`.
 
 
-## Key-Value Pairs
+## :fontawesome-solid-book: Key-Value Pairs
 
 _Interpret a delimited string as key-value pairs_
 
@@ -237,13 +246,49 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 (`a`b;("hello,world";,"1"))
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.5.3 Key-Value Records](/q4m3/11_IO/#1153-key-value-records)
+
+
+## Column types and formats
+
+```txt
+B        boolean     /[01tfyn]/i
+G        guid        /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/i
+X        byte      
+H        short       [0-9][0-9]
+I        int    
+J        long   
+E        real   
+F        float  
+C        char   
+S        symbol     
+P        timestamp   date?timespan
+M        month       [yy]yy[?]mm
+D        date        [yy]yy[?]mm[?]dd or [m]m/[d]d/[yy]yy
+Z        datetime    date?time
+N        timespan    hh[:]mm[:]ss[[.]ddddddddd]
+U        minute      hh[:]mm
+V        second      hh[:]mm[:]ss
+T        time        hh[:]mm[:]ss[[.]ddd]
+(blank)  skip           
+*                    literal chars
+```
+
+
+----
 :fontawesome-solid-book: 
 [`.j` namespace](../ref/dotj.md) for JSON 
 <br>
 :fontawesome-solid-book-open: 
 [Casting](../basics/casting.md), 
 [Datatypes](../basics/datatypes.md), 
-[File system](../basics/files.md)<br>
+[File system](../basics/files.md)
+<br>
 :fontawesome-solid-graduation-cap:
 [How do I import a CSV file into a table?](../kb/faq.md#how-do-i-import-a-csv-file-into-a-table)
-
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

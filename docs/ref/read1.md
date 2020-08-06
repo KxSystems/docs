@@ -4,7 +4,7 @@ description: read1 is a q keyword that reads bytes from a file or named pipe
 author: Stephen Taylor
 keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, read, read1
 ---
-# `read1`
+# :fontawesome-solid-database: `read1`
 
 
 
@@ -13,25 +13,31 @@ keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, r
 
 _Read bytes from a file or named pipe_
 
-Syntax: `read1 x`, `read1[x]`
+```txt
+read1 f           read1[f]
+read1 (f;o;n)     read1[(f;o;n)]
+read1 h           read1[h]
+read1 (fifo;n)    read1[(fifo;n)]
+```
 
-Where `x` is a
+Where
 
--   [file symbol](../basics/glossary.md#file-symbol)
--   [file descriptor](../basics/glossary.md#file-descriptor)
--   [handle](../basics/handles.md) to a [fifo](hopen.md#fifonamed-pipes)
--   2-list: a handle to a fifo, and a byte count (int)
+-   `f` is a [file symbol](../basics/glossary.md#file-symbol)
+-   `(f;o;n)` is a [file descriptor](../basics/glossary.md#file-descriptor)
+-   `h` is a [system or process handle](../basics/handles.md)
+-   `fifo` is a communication handle to a [Fifo](hopen.md#communication-handles)
+-   `n` is a non-negative integer
 
 returns bytes from the source, as follows.
 
 
 ## File
 
-Where `x` is 
+Where the argument is 
 
--   an file symbol, returns the entire content of the file
--   a list `(file;offset;length)`, returns up to `length` bytes from `file` starting at `offset`
--   a list `(file;offset)`, returns the entire content of `file` from `offset` onwards
+-   a file symbol, returns the entire content of the file
+-   a file descriptor `(f;o;n)`, returns up to `n` bytes from `f` starting at `o`
+-   a file descriptor `(f;o)`, returns the entire content of `f` from `o` onwards
 
 ```q
 q)`:test.txt 0:("hello";"goodbye")      / write some text to a file
@@ -43,9 +49,6 @@ q)"c"$read1`:test.txt                   / convert from bytes to char
 q)/ read 500000 lines, chunks of (up to) 100000 at a time
 q)d:raze{read1(`:/tmp/data;x;100000)}each 100000*til 5 
 ```
-
-:fontawesome-solid-book-open:
-[File system](../basics/files.md)
 
 
 ## Named pipe
@@ -64,6 +67,8 @@ q)"c"$read1(h;8)
 q)system"mkfifo somefifo";h:hopen`fifo:somefifo; 0N!read1 h; hclose h
 ```
 
+----
 :fontawesome-solid-book-open:
+[File system](../basics/files.md),
 [Interprocess communicaion](../basics/ipc.md)
 

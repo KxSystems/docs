@@ -1,17 +1,17 @@
 ---
-title: the .z namespace – Reference – kdb+ and q documentation
+title: the .z namespace | Reference | kdb+ and q documentation
 description: The .z namespace contains objects that return or set system information, and callbacks for IPC.
 author: Stephen Taylor
 keywords: callbacks, environment, kdb+, q
 ---
-# The `.z` namespace
+# :fontawesome-regular-clock: The `.z` namespace
 
 
 
-
+_Environment and callbacks_
 
 <pre markdown="1" class="language-txt">
-System information                 Callbacks
+Environment                        Callbacks
  [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth from cookie](#zac-http-auth-from-cookie)
  [.z.b    dependencies](#zb-dependencies)               [.z.bm    msg validator](#zbm-msg-validator)
  [.z.c    cores](#zc-cores)                      [.z.exit  action on exit](#zexit-action-on-exit)
@@ -41,10 +41,7 @@ System information                 Callbacks
 </pre>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
-
-!!! warning "Reserved"
-
-    The `.z` namespace is reserved for use by Kx, as are all single-letter namespaces.
+??? warning "The `.z` namespace is reserved for use by Kx, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
@@ -56,7 +53,10 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 [Callbacks](../kb/callbacks.md),
 [Using `.z`](../kb/using-dotz.md)
 <br>
-_Q for Mortals:_ [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
+:fontawesome-solid-street-view:
+_Q for Mortals:_ 
+[§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
+
 
 
 
@@ -893,13 +893,24 @@ The argument is the handle and is typically used to build a dictionary of handle
 
 ## `.z.ws` (websockets)
 
-Syntax: `z.ws:f`
+```txt
+z.ws:f
+```
 
 Where `f` is a unary function, `.z.ws` is evaluated on a message arriving at a websocket. If the incoming message is a text message the argument is a string; if a binary message, a byte vector.
 
 Sending a websocket message is limited to async messages only (sync is `'nyi`). A string will be sent as a text message; a byte vector as a binary message.
 
 The default definition is to echo the message back to the client, i.e. `{neg[.z.w]x}`
+
+:fontawesome-solid-book-open:
+[Interprocess communication ](../basics/ipc.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[WebSockets](../kb/websockets.md)
+<br>
+:fontawesome-regular-map:
+[Kdb+ and WebSockets](../wp/websockets/index.md)
 
 
 ## `.z.X` (raw command line)

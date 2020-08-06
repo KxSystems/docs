@@ -407,7 +407,7 @@ q)el["a";"href";"https://example.com/";"link text"]
 
 ### Iteration
 
-Function notation has [control words](../../basics/control.md#control-words), including `while`, but they are rarely used for iteration.
+[Control structures](../../basics/control.md#control-structures) such as `do` and `while` are rarely used for iteration.
 
 Much iteration is implicit in the operators.
 

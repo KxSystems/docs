@@ -97,6 +97,16 @@ Find one that suits your experience and learning style.
 
 ## :fontawesome-solid-book: Books
 
+<div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
+![q for Mortals Version 3](../img/funq.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
+### _Fun Q_
+**A Functional Introduction to Machine Learning in Q**
+by Nick Psaris, available from [Amazon](https://www.amazon.com/dp/1734467509). 
+
+:fontawesome-solid-quote-left:
+Whether you are a data scientist looking to learn q, or a kdb+ developer looking to learn machine learning, there is something for everyone.
+:fontawesome-solid-quote-right:
+</div>
 
 <div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
 ![q for Mortals Version 3](../img/qfm3.jpg){:style="box-shadow: 10px 10px 5px #888888;"}

@@ -1,5 +1,5 @@
 ---
-title: Iterators – Reference – kdb+ and q documentation
+title: Iterators | Reference | kdb+ and q documentation
 description: The iterators (earlier known as adverbs) are native higher-order operators. They take applicable values as arguments and return derived functions.
 keywords: adverb, iterator, infix, iterate, iteration, kdb+, operator, postfix, unary, value, variadic
 date: March 2019
@@ -13,7 +13,7 @@ author: Stephen Taylor
 ['  Each](maps.md#each)           [each](maps.md#each-keyword)      / [Over](accumulators.md#binary-application)  [over](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
 [': Each Parallel](maps.md#each-parallel)  [peach](maps.md#peach-keyword)     \\ [Scan](accumulators.md#binary-application)  [scan](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
 [': Each Prior](maps.md#each-prior)     [prior](maps.md#prior-keyword)
-[\: Each Left](maps.md#each-left-and-each-right)
+[\\: Each Left](maps.md#each-left-and-each-right)
 [/: Each Right](maps.md#each-left-and-each-right)
 ['  Case](maps.md#case)
 </pre>
@@ -76,10 +76,7 @@ q)count'[("The";"quick";"brown";"fox")]     / ' applied postfix
 Only iterators can be applied postfix.
 
 
-!!! important "Postfix returns an infix"
-
-    Regardless of its rank,
-    **a function derived by postfix application is always an infix**. 
+!!! important "Regardless of its rank, **a function derived by postfix application is always an infix**."
 
 To apply an infix derived function in any way besides infix, you can use bracket notation, as you can with any function.
 

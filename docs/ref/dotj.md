@@ -4,8 +4,10 @@ description: the .j namespace contains objects useful for converting between JSO
 author: Stephen Taylor
 keywords: json, kdb+, markup, q
 ---
-# The `.j` namespace
+# :fontawesome-brands-js: The `.j` namespace
 
+
+_JSON serialization_
 
 <pre markdown="1" class="language-txt">
 [.j.j   serialize](#jj-serialize)                [.j.k   deserialize](#jk-deserialize)
@@ -14,9 +16,7 @@ keywords: json, kdb+, markup, q
 
 The `.j` [namespace](../basics/namespaces.md) contains functions for converting between JSON and q dictionaries.
 
-!!! warning "Reserved"
-
-    The `.j` namespace is reserved for use by Kx, as are all single-letter namespaces.
+??? warning "The `.j` namespace is reserved for use by Kx, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as its private API – and do not use them.
 

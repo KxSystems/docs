@@ -40,7 +40,7 @@ q)`foo$`g#y
 ```
 
 
-## Filepath
+## :fontawesome-solid-database: Filepath
 
 fills in any missing items in file `x`, loads it into the session as a variable of the same name, and returns `y` as an enumeration of it.
 
@@ -90,9 +90,9 @@ fcntl(1024, F_SETLKW, {type=F_WRLCK, whence=SEEK_CUR, start=0, len=0}) = 0
 If that return value is not 0, then the lock failed and may not be supported by the chosen filesystem.
 Kdb+ does not report an error if that lock call fails.
 
-
 Enum Extend is a uniform function. 
 
+----
 :fontawesome-solid-book: 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
@@ -109,3 +109,4 @@ Enum Extend is a uniform function.
 :fontawesome-solid-street-view: 
 _Q for Mortals_
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
+

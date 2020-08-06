@@ -4,7 +4,7 @@ description: An index of q and kdb+ repositories on GitHub.
 author: Stephen Taylor
 keywords: code, github, kdb+, q, repo, repository
 ---
-# :fontawesome-brands-github: Repositories on GitHub
+# Open-source libraries
 
 
 
@@ -13,7 +13,7 @@ keywords: code, github, kdb+, q, repo, repository
 
 Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
 
-<div style="background-color: #efefef; border: 1px solid #005499; border-radius: 10px; display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
+<div style="background-color: #efefef; border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.2);  display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
 
 :fontawesome-brands-github: 
@@ -23,9 +23,81 @@ GitHub topic queries:&nbsp;&nbsp;
 [`kdb-q`](https://github.com/search?q=topic%3Akdb-q "Search GitHub for repositories with topic kdb-q")
 
 
-## Kx
+## :fontawesome-brands-superpowers: Fusion interfaces
 
-<small>Repositories maintained by Kx</small>
+The Fusion interface libraries are maintained and supported by Kx.
+
+<table class="kx-compact" markdown="1">
+<tr>
+	<td class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
+	<td>
+		[call Python from q](ml/embedpy/index.md) 
+		[:fontawesome-solid-share-alt:](./ml/index.md "Machine learning")
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[hdf5](https://github.com/KxSystems/hdf5)</td>
+	<td>
+		[Hierarchical Data Format 5](interfaces/hdf5/index.md)
+		==new==
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
+	<td>
+		[Java client for kdb+](interfaces/java-client-for-q.md) 
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
+	<td>
+		[Jupyter kernel for kdb+](ml/jupyterq/index.md)
+		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[kafka](https://github.com/KxSystems/kafka)</td>
+	<td>
+		kdb+ client for [Apache Kafka](https://kafka.apache.org)
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[mqtt](https://github.com/KxSystems/mqtt)</td>
+	<td>
+		[Message Queuing Telemetry Transport](interfaces/mqtt/index.md)
+		==new==
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)</td>
+	<td>
+		[Expose metrics to Prometheus](interfaces/prom/exporter/index.md)
+		==new==
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[pyq](https://github.com/KxSystems/pyq)</td>
+	<td>
+		[call Python from q](interfaces/pyq/index.md)
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[rkdb](https://github.com/KxSystems/rkdb)</td>
+	<td>
+		[R client for q](interfaces/r/index.md)
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[solace](https://github.com/KxSystems/solace)</td>
+	<td>
+		[Solace pub/sub brokers](interfaces/solace/index.md)
+		==new==
+	</td>
+</tr>
+</table>
+
+
+## Other repos maintained by Kx
 
 <table class="kx-compact" markdown="1">
 <tr>
@@ -41,38 +113,8 @@ GitHub topic queries:&nbsp;&nbsp;
 	<td>source files for [this site](about/thissite.md)</td>
 </tr>
 <tr>
-	<td class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
-	<td>
-		[calling Python from q](ml/embedpy/index.md) 
-		[:fontawesome-solid-share-alt:](./ml/index.md "Machine learning")
-		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
-	</td>
-</tr>
-<tr>
 	<td class="nowrap">[help](https://github.com/KxSystems/help)</td>
 	<td>online help for q</td>
-</tr>
-<tr>
-	<td class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
-	<td>
-		[Java client for kdb+](interfaces/java-client-for-q.md) 
-		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
-	</td>
-</tr>
-<tr>
-	<td class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
-	<td>
-		[Jupyter kernel for kdb+](ml/jupyterq/index.md)
-		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
-		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
-	</td>
-</tr>
-<tr>
-	<td class="nowrap">[kafka](https://github.com/KxSystems/kafka)</td>
-	<td>
-		kdb+ client for [Apache Kafka](https://kafka.apache.org)
-		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
-	</td>
 </tr>
 <tr>
 	<td class="nowrap">[kdb](https://github.com/KxSystems/kdb)</td>
@@ -88,7 +130,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </tr>
 <tr>
 	<td class="nowrap">[man](https://github.com/KxSystems/man)</td>
-	<td>[man.q](about/man.md) ==new==</td>
+	<td>[man-style reference](about/man.md) ==new==</td>
 </tr>
 <tr>
 	<td class="nowrap">[ml](https://github.com/KxSystems/ml)</td>
@@ -109,20 +151,6 @@ GitHub topic queries:&nbsp;&nbsp;
 	<td>
 		demonstration notebook for [natural-language processing](ml/nlp/index.md)
 		[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
-	</td>
-</tr>
-<tr>
-	<td class="nowrap">[pyq](https://github.com/KxSystems/pyq)</td>
-	<td>
-		[calling Python from q](interfaces/pyq/index.md)
-		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
-	</td>
-</tr>
-<tr>
-	<td class="nowrap">[rkdb](https://github.com/KxSystems/rkdb)</td>
-	<td>
-		[R client for q](interfaces/r/index.md)
-		[:fontawesome-brands-superpowers:](interfaces/fusion.md "Fusion interfaces")
 	</td>
 </tr>
 </table>

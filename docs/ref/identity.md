@@ -8,13 +8,23 @@ keywords: identity, kdb+, null, q
 
 
 
+When the generic null is applied to another value, it is the Identity function.
+
+Indexing with the generic null has the same effect.
+
+
 ## `::` Identity
 
-_Return an argument unchanged_
+_Return a value unchanged_
 
-Syntax: `(::) x`, `::[x]`
+
+### Applying null to a value
+
+```txt
+(::) x     ::[x]
+```
   
-Returns `x`.
+Where `x` is any value, returns `x`.
 
 ```q
 q)(::)1
@@ -29,7 +39,14 @@ q)(::;avg)@\:1 2 3
 2f
 ```
 
-Similarly, the identity can also be achieved via indexing.
+
+### Applying a value to null
+
+```txt
+x ::      x[::]
+```
+  
+Identity can also be achieved via indexing.
 
 ```q
 q)1 2 3 ::
@@ -43,17 +60,29 @@ q)@[til 10;(::;2 3);2+]
 2 3 6 7 6 7 8 9 10 11
 ```
 
+When prefix notation is used, `x` does not have to be an applicable value.
+
+```q
+q)q:3[::]       / not an applicable value
+'type
+  [0]  q:3[::]
+         ^
+q)q:3 ::
+q)q~3
+1b
+```
+
 
 ## `::` Null
 
-Q does not have a dedicated null type. Instead `::` is used to denote a generic null value. For example, functions that return no value, return `::`.
+Q does not have a dedicated null type. Instead `::` is used to denote a generic null value. For example, functions that ‘return no value’, actually return `::`.
 
 ```q
 q)enlist {1;}[]
 ::
 ```
 
-We use `enlist` to force display of a null result: a pure `::` is not displayed.
+!!! tip "We use `enlist` above to force display of a null result – a pure `::` is not displayed."
 
 When a unary function is called with no arguments, `::` is passed in.
 
@@ -61,6 +90,8 @@ When a unary function is called with no arguments, `::` is passed in.
 q)enlist {x}[]
 ::
 ```
+
+!!! tip "Use `::` to prevent a mixed list changing type."
 
 Since `::` has a type for which no vector variant exists, it is useful to prevent a mixed list from being coerced into a vector when all items happen to be of the same type. (This is important when you need to preserve the ability to add non-conforming items later.)
 
@@ -77,6 +108,6 @@ q)x:(::;1;2)
 q)x,:`a  / ok
 ```
 
-
-:fontawesome-regular-hand-point-right:
+----
+:fontawesome-solid-book:
 [`null`](null.md)

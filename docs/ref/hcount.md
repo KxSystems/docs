@@ -5,15 +5,17 @@ author: Stephen Taylor
 date: December 2019
 keywords: file, size
 ---
-# `hcount`
+# :fontawesome-solid-database: `hcount`
 
 
 
 _Size of a file in bytes_
 
-Syntax: `hcount x`, `hcount[x]`
+```txt
+hcount x     hcount[x]
+```
 
-Where `x` is a [file symbol](../basics/glossary.md#file-symbol) 
+Where `x` is a [file symbol](../basics/glossary.md#file-symbol), 
 returns as a long the size of the file.
 
 ```q
@@ -23,5 +25,6 @@ q)hcount`:c:/q/test.txt
 
 On a compressed file returns the size of the original uncompressed file.
 
+----
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)

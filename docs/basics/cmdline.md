@@ -4,7 +4,7 @@ description: Command-line syntax for invoking q and list of the command-line opt
 author: Stephen Taylor
 keywords: command, file, kdb+, line, option, q
 ---
-# Command line
+# :fontawesome-solid-terminal: Command line
 
 
 
@@ -50,6 +50,8 @@ m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
 +`s`p`qty!(`s$`s1`s1`s1`s2`s3`s4;`p$`p1`p4`p6`p2`p2`p4;300 200 100 400 200 300)
 q)
 ```
+
+!!! warning "Operating systems may create hidden files, such as `.DS_Store`, that block loading of a directory."
 
 
 ## `-b` (blocked)
@@ -289,7 +291,7 @@ Syntax: `-s N`
 Number of secondary threads or processes available for parallel processing.
 
 :fontawesome-solid-book-open:
-[`\s` system command](syscmds.md#s-number-of-slaves) for detail
+[`\s` system command](syscmds.md#s-number-of-secondary-threads) for detail
 
 
 
