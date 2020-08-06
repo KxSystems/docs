@@ -16,7 +16,7 @@ The procedures outlined below describe the steps required to prepare extracted f
 
 The following are the procedures completed when the default system configuration is deployed:
 
-1. Feature extraction is performed using either FRESH or normal feature extraction methods.
+1. Feature extraction is performed using FRESH, normal or NLP feature extraction methods.
 2. Significance tests are applied to extracted features to determine those most relevant for model training.
 3. Data is split into training, validation and testing sets.
 4. Cross-validation procedures are performed on a selection of models.
@@ -26,7 +26,7 @@ The following are the procedures completed when the default system configuration
 
 ## Feature extraction
 
-Feature extraction is the process of building derived or aggregate features from a dataset in order to provide a more suitable or useful input for machine learning algorithms. Within the automated machine learning framework, there are currently 2 types of feature extraction available, FRESH and normal feature extraction.
+Feature extraction is the process of building derived or aggregate features from a dataset in order to provide a more suitable or useful input for machine learning algorithms. Within the automated machine learning framework, there are currently 3 types of feature extraction available, FRESH, normal and NLP feature extraction.
 
 
 ### FRESH
@@ -101,6 +101,41 @@ q)count normfeat
 8
 ```
 
+### NLP
+
+Using the [NLP library](../nlp/index.md), columns containing text are parsed using `nlp.newParser` to extract features such as stop words , tokens and part-of-speech attributes, along with applying named entity recognition tagging, regular expression searching and sentiment analysis to the text data. The text is then vectorized using a `Word2Vec` model and concatenated with the created features, transforming it an appropriate format for input to a machine learning model. If any other non textual columns are present, normal feature extraction is also applied to those remaining columns.
+
+Below is an example of NLP feature extraction being applied to a dataset containing strictly text.
+
+```q
+q)5#tb
+comment                                                                      ..
+-----------------------------------------------------------------------------..
+"If you like plot turns, this is your movie. It is impossible at any moment t..
+"It's a real challenge to make a movie about a baby being devoured by wild ca..
+"What a good film! Made Men is a great action movie with lots of twists and t..
+"This is a movie that is bad in every imaginable way. Sure we like to know wh..
+"There is something special about the Austrian movies not only by Seidl, but ..
+// no. of features before feature extraction
+p)count cols tb
+1
+// Define dictionary to be passed to nlp feature creation
+q)dict:enlist[`seed]!enlist 1234
+// apply nlp feature creation
+q)show nlpfeat:.automl.prep.nlpcreate[tb;dict;0b]`preptab
+ADJ        ADP        ADV        AUX        CCONJ      DET       INTJ        ..
+-----------------------------------------------------------------------------..
+0.1037736  0.04716981 0.0754717  0.0754717  0.02830189 0.1509434 0           ..
+0.07643312 0.1210191  0.02547771 0.06369427 0.06369427 0.1719745 0.006369427 ..
+0.06153846 0.09230769 0.01538462 0.07692308 0.04615385 0.1384615 0           ..
+0.1515152  0.05050505 0.06060606 0.1212121  0.02020202 0.1111111 0.02020202  ..
+0.09195402 0.1310345  0.05747126 0.05747126 0.04137931 0.1632184 0           ..
+0.07211538 0.08173077 0.09615385 0.07692308 0.0625     0.1442308 0           ..
+// no. of features after feature extraction
+q)count cols nlpfeat
+346
+```
+
 The early-stage releases of this repository limit the feature extraction procedures that are performed by default on the tabular data for a number of reasons.
 
 1.  The naïve application of many relevant feature-extraction procedures (truncated singular-value decomposition/bulk transforms) while potentially informative can expand the memory usage and computation time beyond an acceptable level.
@@ -159,6 +194,7 @@ problem type | function | description |
 -------------|----------|-------------|
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage.
+NLP          |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 
 An example shows `.ml.traintestsplit` being used within the automated pipeline.
 

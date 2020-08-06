@@ -20,7 +20,7 @@ The following are the procedures completed when the default system configuration
 
 1. Appropriate models are chosen for the use-case type being explored (classification/regression).
 2. Inappropriate columns within the dataset are removed based on their types.
-3. A check is applied to ensure that the number of targets is appropriate for the dataset type (`FRESH`/`normal`).
+3. A check is applied to ensure that the number of targets is appropriate for the dataset type (`FRESH`/`normal`/`nlp`).
 4. Symbol data columns are encoded via either one-hot or frequency encoding.
 5. Constant columns are removed from the data.
 6. Nulls are replaced and an additional column is added to encode their original position
@@ -127,12 +127,12 @@ Given the automated nature of the machine-learning pipeline, it is important to 
 The following lists show the restricted types for each problem type. In each case these types are not handled gracefully within the feature extraction workflow and thus are omitted
 
 ```txt
-Normal Feature Extraction        FRESH Feature Extraction
-  - guid                           - guid
-  - byte                           - byte
-  - list                           - list
-  - character                      - character
-                                   - time/date types
+Normal Feature Extraction        FRESH Feature Extraction           NLP Feature Extraction
+  - guid                           - guid                                  - guid
+  - byte                           - byte                                  - byte
+  - list                           - list                                  - list
+  - character                      - character			 
+                                   - time/date types		
 ```
 
 The following example shows a truncated output from a normal feature-creation procedure where columns containing byte objects and lists are removed.
@@ -164,6 +164,7 @@ problem type | description
 :------------|:-----------
 FRESH        | The number of unique configurations of aggregate columns must equal the number of targets
 Normal       | The number of rows in the input table must equal the number of target values
+NLP          | The number of rows in the input table must equal the number of target values
 
 The example below show a failure for each problem type.
 

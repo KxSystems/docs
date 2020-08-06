@@ -26,11 +26,11 @@ At present the machine-learning frameworks supported for this are based on:
 
 1. One-to-one feature to target non time-series
 2. [FRESH](../toolkit/fresh.md)-based feature extraction and model production
+3. [NLP](../nlp/index.md)-based feature creation and word2vec transformation. 
 
 Over time the functionality available and the problems which can be solved using this library will be extended to include;
 
 -   Time-series use-cases and architectures
--   Natural Language Processing frameworks
 -   Broader workflow flexibility
 -   More detailed outputs describing the steps taken
 
@@ -64,7 +64,7 @@ or Conda
 ```bash
 conda install --file requirements.txt
 ```
-
+The requirements needed in order to avail of the NLP functionality, can be found on [Github](https://github.com/kxsystems/automl#optional-requirements-for-advanced-modules)
 
 ## Installation and loading
 
@@ -82,4 +82,3 @@ Then:
 ```q
 q)\l automl/init.q
 ```
-
