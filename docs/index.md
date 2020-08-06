@@ -25,15 +25,13 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 200px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" markdown="1"><i class="fab fa-fw fa-github"></i> [vscode-q](https://github.com/jshinonome/vscode-q)</p>
+
     <p class="nowrap" markdown="1"><i class="fab fa-fw fa-python"></i> [PyQ 5.0 released](https://github.com/KxSystems/pyq/blob/pyq-5.0.0/HISTORY.md)</p>
 
     <p class="nowrap" markdown="1"><i class="far fa-fw fa-map"></i> [Trend indicators](wp/trend-indicators/index.md)</p>
 
     <p class="nowrap" markdown="1"><i class="fab fa-fw fa-python"></i> [Python examples](learn/python/examples/index.md)</p>
-
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-bolt"></i> [kdb+ 4.0](releases/ChangesIn4.0.md)</p>
-
-    <!-- <p class="nowrap" markdown="1"><i class="fas fa-fw fa-chart-line"></i> [Kx Dashboards](/dashboards/)</p> -->
 
 </div>
 

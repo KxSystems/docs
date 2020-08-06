@@ -286,7 +286,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>IntelliJ IDEA</td>
     <td>
 :fontawesome-brands-github: [a2ndrade/k-intellij-plugin](https://github.com/a2ndrade/q-intellij-plugin)<br/>
-:fontawesome-brands-gitlab: [shupakabras/kdb-intellij-plugin](https://gitlab.com/shupakabras/kdb-intellij-plugin) ==new==
+:fontawesome-brands-gitlab: [shupakabras/kdb-intellij-plugin](https://gitlab.com/shupakabras/kdb-intellij-plugin) 
     </td>
 </tr>
 <tr><td>Jupyter</td>
@@ -299,7 +299,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr>
     <td>Sublime Text</td>
     <td>
-:fontawesome-brands-github: [smbody-mipt/kdb](https://github.com/smbody-mipt/kdb) ==new==<br/>
+:fontawesome-brands-github: [smbody-mipt/kdb](https://github.com/smbody-mipt/kdb) <br/>
 :fontawesome-brands-github: [kimtang/QStudio](https://github.com/kimtang/QStudio)<br/>
 :fontawesome-brands-github: [kimtang/sublime-q](https://github.com/kimtang/sublime-q)<br/>
 :fontawesome-brands-github: [kimtang/Q](https://github.com/kimtang/Q)<br/>
@@ -307,7 +307,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td>TextMate</td><td>:fontawesome-brands-github: [psaris/KX.tmbundle](https://github.com/psaris/KX.tmbundle) ==new==</td>
+    <td>TextMate</td><td>:fontawesome-brands-github: [psaris/KX.tmbundle](https://github.com/psaris/KX.tmbundle) </td>
 </tr>
 <tr>
     <td>vim</td>
@@ -318,10 +318,14 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td>Visual Studio Code</td><td>:fontawesome-brands-github: [lwshang/vscode-q](https://github.com/lwshang/vscode-q)</td>
+    <td>Visual Studio Code</td>
+    <td>
+:fontawesome-brands-github: [jshinonome/vscode-q](https://github.com/jshinonome/vscode-q) ==new==<br>
+:fontawesome-brands-github: [lwshang/vscode-q](https://github.com/lwshang/vscode-q)
+    </td>
 </tr>
 <tr>
-    <td>:fontawesome-brands-wordpress: WordPress</td><td>:fontawesome-brands-github: [simongarland/Syntaxhighlighter-for-q](https://github.com/simongarland/Syntaxhighlighter-for-q) ==new==</td>
+    <td>:fontawesome-brands-wordpress: WordPress</td><td>:fontawesome-brands-github: [simongarland/Syntaxhighlighter-for-q](https://github.com/simongarland/Syntaxhighlighter-for-q) </td>
 </tr>
 </table>
 
