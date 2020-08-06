@@ -21,7 +21,7 @@ The top-level functions in the repository are:
 
 Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](options.md).
 
-The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non-timeseries-specific machine-learning examples and implementations making use of the [FRESH algorithm](../../toolkit/fresh).
+The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non-timeseries-specific machine-learning examples and implementations making use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
 
 
 ## `.automl.run`
@@ -34,8 +34,8 @@ Where
 
 -   `tab` is unkeyed tabular data from which the models will be created
 -   `tgt` is the target vector
--   `ftype` type of feature extraction being completed on the dataset as a symbol (`` `fresh/`normal``)
--   `ptype` type of problem, regression/class, as a symbol (` `reg/`class ``)
+-   `ftype` type of feature extraction being completed on the dataset as a symbol (`` `fresh/`normal/`nlp ``)
+-   `ptype` type of problem, regression/class, as a symbol (`` `reg/`class ``)
 -   `dict` is one of `::` for default behavior, a kdb+ dictionary or path to a user-defined flat file for modifying default parameters.
 
 returns the date and time at which the run was initiated.

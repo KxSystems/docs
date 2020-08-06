@@ -1,12 +1,11 @@
 ---
-title: Advanced options for automated machine-learning | Machine Lea`rning | Documentation for q and kdb+
+title: Advanced options for automated machine-learning | Machine Learning | Documentation for q and kdb+
 author: Deanna Morgan
 description: Optional behavior available from the Kx automated machine learning platform; the effect of changing the input parameters
 date: March 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
 # :fontawesome-solid-share-alt: Advanced options
-
 
 
 :fontawesome-brands-github:
@@ -38,6 +37,7 @@ sigfeats    Feature significance procedure to be applied to the data
 sz          Size of validation set used.
 trials      Number of random/Sobol-random hyperparameters to generate
 tts         Train-test split function to be applied
+w2v         Word2Vec method used for NLP models
 xv          Cross-validation function and # of folds/percentage of data in validation set
 ```
 
@@ -62,10 +62,13 @@ q).automl.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 _Functions to be applied for feature extraction_
 
 **FRESH**
-By default the feature extraction functions applied for any FRESH-based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A user who wishes to augment these functions or choose a subsection therein contained, can do so as seen in the below example.
+By default, the feature extraction functions applied for any FRESH-based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A user who wishes to augment these functions or choose a subsection therein contained, can do so as seen in the below example.
 
 **Normal**
 By default, feature extraction for Normal feature-extraction procedures is the decomposition of time/date types into their component parts, this can be augmented by a user to add new functionality. Functions supported are any that take as input a simple table and return a simple table.
+
+**NLP**
+By default, feature extraction steps taken for NLP models include parsing the text data using `.nlp.newParser` and applying sentiment anaylsis, regular expression searching and named entity recognition tagging. The text is then vectorized using a `Word2Vec` model and concatenated with the created features. Normal feature extraction is also applied to any remaining non textual columns. Similar to above, the normal feature extraction applied to the data can be augmented by a user.
 
 ```q
 q)uval:100?50
@@ -303,6 +306,24 @@ q)show n:"j"$xexp[2;9]
 q).automl.run[tab;tgt;`normal;`reg;`hp`trials!(`sobol;n)]
 ```
 
+### `w2v`
+
+_Word2Vec method used for NLP models_
+
+When applying word2vec vectorization to text, the skip-gram(1) or Continuous-Bag-of-Words(0) method can be applied. By default this value is 0.
+
+```q
+q)3#tab
+comment                                                                      ..
+-----------------------------------------------------------------------------..
+"If you like plot turns, this is your movie. It is impossible at any moment t..
+"It's a real challenge to make a movie about a baby being devoured by wild ca..
+"What a good film! Made Men is a great action movie with lots of twists and t..
+q)tgt:count[tab]?0b
+q)sg:1
+q).automl.run[tab;tgt;`normal;`reg;enlist[`w2v]!enlist sg;
+
+
 ### `tts`
 
 _Function used to split the data into training and testing sets_
@@ -313,6 +334,7 @@ problem type | function | description
 -------------|----------|-------------
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage
+NLP          |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 
 For specific use cases this may not be sufficient, for example if a user wishes to split the data such that an equal distribution of target classes occur in the training and testing sets this could be implemented as follows.
 
@@ -393,13 +415,31 @@ hld      |0.2
 tts      |`.ml.traintestsplit
 sz       |0.2
 sigfeats |`.automl.prep.freshsignificance
-```
+
+// NLP parameter file 
+xv       |.ml.xv.kfshuff;5
+gs       |.ml.gs.kfshuff;5
+rs       |.ml.rs.kfshuff;5
+hp       |`grid
+trials   |256
+funcs    |`.automl.prep.i.default
+prf      |`.automl.xv.fitpredict
+scf      |class=.ml.accuracy;reg=.ml.mse
+seed     |`rand_val
+saveopt  |2
+hld      |0.2
+tts      |`.ml.traintestsplit
+sz       |0.2
+sigfeats |`.automl.prep.freshsignificance
+w2v      |0
+``
 
 These files can be generated in the folder `code/models/` using the following functions
 
 ```q
 q).automl.savedefault["fresh_params.txt";`fresh]
 q).automl.savedefault["normal_params.txt";`normal]
+q).automl.savedefault["nlp_params.txt";`nlp]
 ```
 
 Once modified the function `.automl.run` can be used with one of these files as follows
