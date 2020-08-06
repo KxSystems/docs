@@ -637,16 +637,9 @@ The Fusion interface libraries are maintained and supported by Kx.
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q</a></td>
+<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q ==new==</a></td>
 <td>CI and test runners <span class="author"><a href="https://github.com/prodrive11?tab=repositories">
 						(Patryk Bukowinski)
-					</a></span>
-</td>
-</tr>
-<tr>
-<td class="nowrap"><a href="https://github.com/caolanraff/xls">xls ==new==</a></td>
-<td>Format cells in an Excel document <span class="author"><a href="https://github.com/caolanraff?tab=repositories">
-						(Caolan Rafferty)
 					</a></span>
 </td>
 </tr>
@@ -1061,6 +1054,13 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td class="nowrap"><a href="https://github.com/jonathonmcmurray/ws.q">ws.q</a></td>
 <td>Simple library for websockets. <span class="author"><a href="https://github.com/jonathonmcmurray?tab=repositories">
 						(Jonathon McMurray)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/caolanraff/xls">xls ==new==</a></td>
+<td>Format cells in an Excel document <span class="author"><a href="https://github.com/caolanraff?tab=repositories">
+						(Caolan Rafferty)
 					</a></span>
 </td>
 </tr>
