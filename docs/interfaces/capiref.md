@@ -308,7 +308,7 @@ Since V3.5 2017.02.16, V3.4 2017.03.13
     ​K x=ee(dot(a,b));if(xt==-128)printf("error %s\n", x->s?x->s:"");
     ```
 
-    Otherwise the error status within the interpreter may still set set, resulting in the error being signalled incorrectly elsewhere in kdb+.
+    Otherwise the error status within the interpreter may still be set, resulting in the error being signalled incorrectly elsewhere in kdb+.
 
     Calling `ee(…)` has the side effect of clearing the interpreter’s error status for the NULL result path.
 
