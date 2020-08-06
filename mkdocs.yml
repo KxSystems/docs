@@ -82,10 +82,10 @@ theme:
 nav:
   - Home: index.md
   - Reference: https://code.kx.com/q/ref/
+  - Developer tools: devtools.md
   - Open source: github.md
   - Support: support.md
   - Community: community.md
-  - Developer tools: devtools.md
   - Corporate site: https://kx.com
   - Wiki: wiki.md
   - Learn: 
