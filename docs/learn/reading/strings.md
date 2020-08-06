@@ -206,18 +206,16 @@ q)f "FLAPJACKS"
 q)f "Several normal words"
 "S_v_r_l n_rm_l w_rds"
 ```
-??? success "Answer"
+???+ success "Answer"
 
-    `{?[x in raze 1 lower\"AEIOUY";"_";x]}`
-
-    `{@[x;where lower[x]in"aeiouy";:;"_"]}`
-
-    `{("j"$in[lower x;"aeiouy"])'[x;"_"]}`
-
-    `{(x;"_")x in "aeiouyAEIOUY"} each`
-
-    `{@[x;;:;"_"]where 12>"aeiouyAEIOUY"?x}`  / AR
-
+    <pre><code class="language-q">C:"AEIOUYaeiouy"           / consonants
+    {?[x in C;"_";x]}           / Vector Conditional; in
+    {@[x;where x in C;:;"_"]}   / Amend At; in
+    {$["j";x in C]'[x;"_"]}     / Case
+    {(x;"_")x in C} each        / index
+    {@[x;;:;"_"]where 12>C?x}   / Amend At; Find (AR)
+    ssr/[;C;"_"]                / ssr (AV)
+    </code></pre>
 
 
 ## Cnsnnts rdx
@@ -231,7 +229,7 @@ q)f "FLAPJACKS"
 "FLPJCKS"
 ```
 ??? success "Answer"
-    `except[;"AEIOUYaeiouy"]`
+    `except[;C]`
 
 
 ## Title redacted
@@ -268,7 +266,7 @@ q)f "xyz"
 
     `{(1 0#x) {raze({raze reverse 0 1 _ x}\)each x,'y}/ x}` / AR
 
-See 
+See
 :fontawesome-brands-python:
 Examples from Python: [Permute a string](../python/examples/string.md#permute-a-string) for a recursive method
 
@@ -297,9 +295,10 @@ q)f "   abc def  "
 
 ## :fontawesome-brands-redhat: Contributors
 
-Tip of the trilby to  
+Tip of the trilby to
 
 ```txt
 AR   Ajay Rathore
+AV   Attila Vrabecz
 ```
 
