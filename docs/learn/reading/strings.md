@@ -33,7 +33,7 @@ q)f["life";"."]
 ??? success "Answer"
     `{sum x=y}`
 
-    `{count group[x]y}`  / AR
+    `{count group[x]y}`  / (AR)
 
 
 ## Trapeze part
@@ -114,7 +114,7 @@ q)f["abcde";"deabc"]
 ??? success "Answer"
     `{x in (1 rotate)scan y}`
 
-    `{y in{raze reverse 0 1 _ x}scan x}`  / AR
+    `{y in{raze reverse 0 1 _ x}scan x}`  / (AR)
 
 
 ## Size matters
@@ -147,7 +147,7 @@ q)f "CCCBBBBAA"
 "B"
 ```
 ??? success "Answer"
-    `{first key desc count each group x}`
+    `{first desc count each group x}  / (AV)` 
 
 
 ## esreveR a ecnetnes
@@ -193,7 +193,7 @@ q)f["bigger";0011110011b]
 ??? success "Answer"
     `{("_",x)y*sums y}`
 
-    `{"_"^x -1+y*sums y}`  / AR
+    `{"_"^x -1+y*sums y}`  / (AR)
 
 
 ## C_ns_n_nts
@@ -208,16 +208,14 @@ q)f "Several normal words"
 ```
 ??? success "Answer"
 
-    `{?[x in raze 1 lower\"AEIOUY";"_";x]}`
-
-    `{@[x;where lower[x]in"aeiouy";:;"_"]}`
-
-    `{("j"$in[lower x;"aeiouy"])'[x;"_"]}`
-
-    `{(x;"_")x in "aeiouyAEIOUY"} each`
-
-    `{@[x;;:;"_"]where 12>"aeiouyAEIOUY"?x}`  / AR
-
+    <pre><code class="language-q">C:"AEIOUYaeiouy"           / consonants
+    {?[x in C;"_";x]}           / Vector Conditional; in
+    {@[x;where x in C;:;"_"]}   / Amend At; in
+    {$["j";x in C]'[x;"_"]}     / Case
+    {(x;"_")x in C} each        / index
+    {@[x;;:;"_"]where 12>C?x}   / Amend At; Find (AR)
+    ssr/[;C;"_"]                / ssr (AV)
+    </code></pre>
 
 
 ## Cnsnnts rdx
@@ -231,7 +229,7 @@ q)f "FLAPJACKS"
 "FLPJCKS"
 ```
 ??? success "Answer"
-    `except[;"AEIOUYaeiouy"]`
+    `except[;C]`
 
 
 ## Title redacted
@@ -266,9 +264,9 @@ q)f "xyz"
 ??? success "Answer"
     `{x {flip[y]where x=sum y}[s;] s vs til"j"$s xexp s:count x}`
 
-    `{(1 0#x) {raze({raze reverse 0 1 _ x}\)each x,'y}/ x}` / AR
+    `{(1 0#x) {raze({raze reverse 0 1 _ x}\)each x,'y}/ x}` / (AR)
 
-See 
+See
 :fontawesome-brands-python:
 Examples from Python: [Permute a string](../python/examples/string.md#permute-a-string) for a recursive method
 
@@ -282,7 +280,7 @@ q)f "   abc def  "
 "abc def"
 ```
 ??? success "Answer"
-    `{{y _ x}/[x;] 1 -1*?'[;0b]1 reverse\" "=x}`
+    `{{y _ x}/[x;] 1 -1*?'[;0b]1 reverse\null x}`
 
     The form `1 f\x` applies `f` to `x` 0 and 1 times.
 
@@ -293,13 +291,16 @@ q)f "   abc def  "
 
     Note how `{y f x}/` applies `f` to successive _left_ arguments. (`{y f x}` is sometimes said to _commute_ `f`.)
 
+    `{(neg reverse[a]?0b)_(?[;0b]a:" "=x)_x}  / (AV)`
+
 
 
 ## :fontawesome-brands-redhat: Contributors
 
-Tip of the trilby to  
+Tip of the trilby to
 
 ```txt
 AR   Ajay Rathore
+AV   Attila Vrabecz
 ```
 
