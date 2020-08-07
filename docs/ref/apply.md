@@ -443,7 +443,6 @@ _Q for Mortals_
 ## Errors signalled
 
 ```txt
-domain   the symbol d is not a handle
 index    an atom in vx or ux is not an index to an item-at-depth in d
 rank     the count of vx is greater than the rank of v
 type     v or u is a symbol atom, but not a handle to an value
