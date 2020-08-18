@@ -41,9 +41,7 @@ keywords: time-series, cross validation, grid search, random search, Sobol seque
 :fontawesome-brands-github:
 [KxSystems/ml/xval](https://github.com/kxsystems/ml/tree/master/xval/)
 
-The `.ml.xv`, `.ml.gs` and `.ml.rs` namespaces contain functions related to cross validation, grid search, random search and sobol-random search algorithms (more information on [Sobol sequences](https://en.wikipedia.org/wiki/Sobol_sequence)). These algorithms test how robust or stable a model is to changes in the volume of data or the specific subsets of data used for validation.
-
-For grid search, users must specify values for a number of hyperparameters, where a model will be build using every possible combination. In the case of random and sobol, a user only needs to specify the type of hyperparameter search space, along with the lower and upper bounds and the number of hyperparameter sets to generate. These sets are then randomly chosen within the given hyperparameter space using either pseudo-random or sobol-random numbers.
+The `.ml.xv`, `.ml.gs` and `.ml.rs` namespaces contain functions related to cross validation, grid search, random/sobol-random search algorithms respectively. These algorithms are used in machine learning to test how robust or stable a model is to changes in the volume of data or to the specific subsets of data used for model generation.
 
 Within the following examples, `.ml.xv.fitscore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, e.g. a function to fit on training data and predict outputs for new data.
 
@@ -54,11 +52,13 @@ As of toolkit version 0.1.3, the distribution of cross-validation functions is i
   	Interactive notebook implementations of a large number of the functions outlined here are available within :fontawesome-brands-github: [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
     
 
-## Grid Search Functions
+## Grid Search
 
-### Grid Search Hyperparameter Dictionary
+The most common method of perfoming hyperparameter optimization in machine learning is through the use of a grid search. Grid search is an exhaustive searching method across all possible combinations of a hyperparameters provided by a user.
 
-For grid search functions provided in the toolkit, users must provide a dictionary containing hyperparameter names and all the possible values they wish to search. An example is provided below.
+#### Grid Search Hyperparameter Dictionary
+
+When applying the grid search functionality provided within the toolkit, a user must provide a dictionary mapping the names of all the hyperparameters to be searched with the possible values to be considered for the hyperparameter. The following example shows a set of valid hyperparameter dictionaries for an `sklearn` AdaBoostRegressor and `DecisionTreeClassifier`
 
 ```q
 / grid search hyperparameter dictionary for an AdaBoostRegressor
@@ -68,7 +68,7 @@ q)p:enlist[`max_depth]!enlist(::;1;2;3;4;5)
 ```
 
 
-## `.ml.gs.kfshuff`
+### `.ml.gs.kfshuff`
 
 _Cross-validated parameter grid search applied to data with shuffled split indices_
 
@@ -81,10 +81,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -110,7 +110,7 @@ q).ml.gs.kfshuff[5;1;x;yr;.ml.xv.fitscore rf;pr;.2]
 ```
 
 
-## `.ml.gs.kfsplit`
+### `.ml.gs.kfsplit`
 
 _Cross-validated parameter grid search applied to data with ascending split indices_
 
@@ -123,10 +123,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -160,7 +160,7 @@ q).ml.gs.kfsplit[10;1;x;yc;.ml.xv.fitscore cf;pc;-.1]
 ```
 
 
-## `.ml.gs.kfstrat`
+### `.ml.gs.kfstrat`
 
 _Cross-validated parameter grid search applied to data with an equi-distributions of targets per fold_
 
@@ -173,10 +173,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -204,7 +204,7 @@ q).ml.gs.kfstrat[4;1;x;yc;.ml.xv.fitscore cf;pc;.2]
 ```
 
 
-## `.ml.gs.mcsplit`
+### `.ml.gs.mcsplit`
 
 _Cross-validated parameter grid search applied to randomly shuffled data and validated on a percentage holdout set_
 
@@ -217,10 +217,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -246,7 +246,7 @@ q).ml.gs.mcsplit[0.1;3;x;yr;.ml.xv.fitscore rf;pr;.2]
 ```
 
 
-## `.ml.gs.pcsplit`
+### `.ml.gs.pcsplit`
 
 _Cross-validated parameter grid search applied to percentage split dataset_
 
@@ -259,10 +259,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -293,7 +293,7 @@ This form of cross validation is also known as _repeated random sub-sampling val
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation)
 
 
-## `.ml.gs.tschain`
+### `.ml.gs.tschain`
 
 _Cross-validated parameter grid search applied to chain forward time-series sets_
 
@@ -306,10 +306,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -343,7 +343,7 @@ This works as shown in the following image:
 The data is split into equi-sized bins with increasing amounts of the data incorporated into the testing set at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting. It also allows users to test the robustness of the model when passed increasing volumes of data.
 
 
-## `.ml.gs.tsrolls`
+### `.ml.gs.tsrolls`
 
 _Cross-validated parameter grid search applied to roll forward time-series sets_
 
@@ -356,10 +356,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#Grid-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -392,39 +392,56 @@ This works as shown in the following image:
 
 Successive equi-sized bins are taken as training and validation sets at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
 
-## Random Search Functions
+## Random Search
 
-### Random Search Hyperparameter Dictionary
+Random and quasi-random search methods replace the need exhaustive searching across a hyperparameter space used by [grid-search](#grid-search) by selecting combinations of hyperparameters randomly. This random selection can take place across a discrete space as would be the case if choosing randomly from a list of possible values or over a continuous space bounded based on user input. 
+
+Such methods commonly outperform grid search both with respect to finding the optimal parameters in particular in cases where a small number of parameters disproportionately affect the performance of the machine learning algorithm. This library contains two different implementations following the ethos of random search namely
+
+1. Random search
+	
+	The completely random selection of hyperparameters across a defined continuous or discreet search space. 
+
+2. Quasi-random sobol sequence search
+	
+	The selection of hyperparameters across a user defined continuous or discreet space using a quasi-random selection method based on Sobol sequences. This method ensures that the hyperparameters searched encompass a more even representation of the hyperparameter space than is the case in purely random or grid search methods. More information can be found [here](https://en.wikipedia.org/wiki/Sobol_sequence)
+
+
+
+#### Random Search Hyperparameter Dictionary
 
 The random and sobol searching methods follow the same syntax as grid search, with the exception of the `p` parameter. In order to perfom these two searching methods extra information is needed, where the parameter dictionary must have the format:
 
 -   `typ` is the type of random search to perform as a symbol - `random` or `sobol`
 -   `random_state` is the seed to apply during cross validation. If a null character, `(::)`, is passed the default seed, `42`, will be applied.
--   `n` is the number of hyperparameter sets to produce. **Note**: for sobol this number must equal $2^n$, e.g. $4$, $8$, $16$, etc.
+-   `n` is the number of hyperparameter sets to produce. 
+	
+	* **Note**: for sobol this number must equal $2^n$, e.g. $4$, $8$, $16$, etc.
+
 -   `p` is a dictionary of hyperparameters to be searched which must have the following forms:
 
-    Numerical:
-        
-    ```
-    enlist[`hyperparam_name]!enlist(space_type;lower_bound;upper_bound;hp_type)
-    ``` 
+	* **Numerical:**
+		
+		```
+		enlist[`hyperparam_name]!enlist(space_type;lower_bound;upper_bound;hp_type)
+		``` 
+		
+		where `space_type` is `uniform` or `loguniform`, `lower_upper` and `upper_bound` are the limits of the hyperparameter space and `hp_typ` is the type to cast the hyperparameters to.
 
-    where `space_type` is `uniform` or `loguniform`, `lower_upper` and `upper_bound` are the limits of the hyperparameter space and `hp_typ` is the type to cast the hyperparameters to.
+	* **Symbol:**
 
-    Symbol: 
+		```
+		enlist[`hyperparam_name]!enlist(`symbol;symbols_to_search)
+		``` 
+		
+		where `symbol` is given as the type followed by the list of possible symbol values.
 
-    ```
-    enlist[`hyperparam_name]!enlist(`symbol;symbols_to_search)
-    ``` 
-
-    where `symbol` is given as the type followed by the list of possible symbol values.
-
-    Boolean: 
-
-    ```
-    enlist[`hyperparam_name]!enlist`boolean
-    ```
-
+	* **Boolean:**
+		
+		```
+		enlist[`hyperparam_name]!enlist`boolean
+		```
+		
 A practical example is provided below.
         
 ```q
@@ -442,7 +459,7 @@ q)prms:`average`l1_ratio`alpha!(`boolean;(`uniform;0;1;"f");(`loguniform;-5;2;"f
 q)ps:`typ`random_state`n`p!(typ;random_state;n;p)
 ```
         
-## `.ml.rs.kfshuff`
+### `.ml.rs.kfshuff`
 
 _Cross-validated parameter random search applied to data with shuffled split indices_
 
@@ -455,10 +472,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -490,7 +507,7 @@ q).ml.rs.kfshuff[5;1;x;yc;.ml.xv.fitscore cf;pr;.2]
 ```
 
 
-## `.ml.rs.kfsplit`
+### `.ml.rs.kfsplit`
 
 _Cross-validated parameter random search applied to data with ascending split indices_
 
@@ -503,10 +520,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -547,7 +564,7 @@ q).ml.rs.kfsplit[10;1;x;yc;.ml.xv.fitscore cf;ps;-.1]
 ```
 
 
-## `.ml.rs.kfstrat`
+### `.ml.rs.kfstrat`
 
 _Cross-validated parameter random search applied to data with an equi-distributions of targets per fold_
 
@@ -560,10 +577,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -596,7 +613,7 @@ q).ml.rs.kfstrat[4;1;x;yc;.ml.xv.fitscore cf;pr;.2]
 ```
 
 
-## `.ml.rs.mcsplit`
+### `.ml.rs.mcsplit`
 
 _Cross-validated parameter random search applied to randomly shuffled data and validated on a percentage holdout set_
 
@@ -609,10 +626,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -647,7 +664,7 @@ q).ml.rs.mcsplit[0.1;3;x;yr;.ml.xv.fitscore dt;ps;.2]
 ```
 
 
-## `.ml.rs.pcsplit`
+### `.ml.rs.pcsplit`
 
 _Cross-validated parameter random search applied to percentage split dataset_
 
@@ -660,10 +677,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -701,7 +718,7 @@ This form of cross validation is also known as _repeated random sub-sampling val
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation)
 
 
-## `.ml.rs.tschain`
+### `.ml.rs.tschain`
 
 _Cross-validated parameter random search applied to chain forward time-series sets_
 
@@ -714,10 +731,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -758,7 +775,7 @@ This works as shown in the following image:
 The data is split into equi-sized bins with increasing amounts of the data incorporated into the testing set at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting. It also allows users to test the robustness of the model when passed increasing volumes of data.
 
 
-## `.ml.rs.tsrolls`
+### `.ml.rs.tsrolls`
 
 _Cross-validated parameter random search applied to roll forward time-series sets_
 
@@ -771,10 +788,10 @@ Where
 -   `x` is a matrix of features
 -   `y` is a vector of targets
 -   `f` is a function that takes parameters and data as input and returns a score
--   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#Random-Search-Hyperparameter-Dictionary)
+-   `p` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
 -   `h` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
-returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <=1`.
+returns the scores for hyperparameter sets on each of the `k` folds for all values of `h` and additionally returns the best hyperparameters and score on the holdout set for `0 < h <= 1`.
 
 ```q
 q)m:10000
@@ -813,9 +830,12 @@ This works as shown in the following image:
 
 Successive equi-sized bins are taken as training and validation sets at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
 
-## Cross Validation Functions
 
-## `.ml.xv.kfshuff`
+## Cross Validation
+
+Cross-validation is a technique used to gain a statistical understanding of how well a machine learning model generalizes to independent datasets. This is used to limit overfitting and selection bias, especially when dealing with small datasets.
+
+### `.ml.xv.kfshuff`
 
 _K-Fold cross validation for randomized non-repeating indices_
 
@@ -844,7 +864,7 @@ q).ml.xv.kfshuff[k;n;x;yr;mdlfn]
 ```
 
 
-## `.ml.xv.kfsplit`
+### `.ml.xv.kfsplit`
 
 _K-Fold cross-validation for ascending indices split into K-folds_
 
@@ -873,7 +893,7 @@ q).ml.xv.kfsplit[k;n;x;yr;mdlfn]
 ```
 
 
-## `.ml.xv.kfstrat`
+### `.ml.xv.kfstrat`
 
 _Stratified K-Fold cross-validation with an approximately equal distribution of classes per fold_
 
@@ -904,7 +924,7 @@ q).ml.xv.kfsplit[k;n;x;yc;mdlfn]
 This is used extensively where the distribution of classes in the data is unbalanced.
 
 
-## `.ml.xv.mcsplit`
+### `.ml.xv.mcsplit`
 
 _Monte-Carlo cross validation using randomized non-repeating indices_
 
@@ -938,7 +958,7 @@ This form of cross validation is also known as _repeated random sub-sampling val
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation "Wikipedia")
 
 
-## `.ml.xv.pcsplit`
+### `.ml.xv.pcsplit`
 
 _Percentage split cross-validation procedure_
 
@@ -967,7 +987,7 @@ q).ml.xv.pcsplit[p;n;x;yr;mdlfn]
 ```
 
 
-## `.ml.xv.tschain`
+### `.ml.xv.tschain`
 
 _Chain-forward cross-validation procedure_
 
@@ -1002,7 +1022,7 @@ This works as shown in the following image.
 The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting. It also allows users to test the robustness of the model with data of increasing volumes.
 
 
-## `.ml.xv.tsrolls`
+### `.ml.xv.tsrolls`
 
 _Roll-forward cross-validation procedure_
 
