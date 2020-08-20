@@ -17,7 +17,7 @@ The top-level functions in the repository are:
 
 `.automl.new`
 
-: Using a previously fit model and set of instructions derived from `.automl.run`, return predicted values for new tabular data.
+: Using a previously fit model along with the date and time from a previous execution of `.automl.run`, return predicted values for new tabular data.
 
 Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](options.md).
 
@@ -46,6 +46,7 @@ The default setup saves the following items from an individual run:
 2. A saved report indicating the procedure taken and scores achieved.
 3. A saved binary encoded dictionary denoting, the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
 4. Results from each step of the pipeline published to console.
+5. On application NLP techniques a word2vec model is saved outlining the text to numerical mapping for a specific run.
 
 The following shows the execution of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity, output is displayed in full for one example only.
 
@@ -118,10 +119,13 @@ Saving down model parameters to /outputs/2020.07.20/run_12.38.51.152/config/
 q)bin_target:asc 100?0b
 q)multi_target:desc 100?3
 q)fresh_data:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+q)nlp_data:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
 // FRESH regression example
 q).automl.run[fresh_data;reg_tgt;`fresh;`reg;::]
 // non-time series/FRESH binary classification example
 q).automl.run[tab;bin_target;`normal;`class;::]
+// NLP binary classification example
+q).automl.run[nlp_data;bin_target;`nlp;`class;::]
 ```
 
 
@@ -140,16 +144,16 @@ Where
 returns the target predictions for new data based on a previously fitted model and workflow.
 
 !!!Note
-	In the below example the date and time are related to a previous run and taken from the return of `.automl.new` the below examples should be run based on your run date and time.
+	In the below example the date and time are related to a previous run and taken from the return of `.automl.new` the below examples should be run based on a users own run date and time.
 
 ```q
 // New dataset
 q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
 // string date/time input
-q).automl.new[new_tab;2020.01.02;"11.21.47.763"]
+q).automl.new[new_tab;"2020.01.02";"11.21.47.763"]
 0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
 // q date/time input
-q).automl.new[new_tab;"2020.01.02";11:21:47.763]
+q).automl.new[new_tab;2020.01.02;11:21:47.763]
 0.1953181 0.449196 0.6708352 0.5842918 0.230593 0.4713597 0.1953181 0.0576498..
 ```
 

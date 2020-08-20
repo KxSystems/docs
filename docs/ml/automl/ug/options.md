@@ -11,7 +11,7 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The other sections of the AutoML documentation describe the default behavior of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behavior. The two methods to complete this are by inputting
+The other sections of the AutoML documentation describe the default behavior of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behavior. The two methods to complete this based on modifiying the final parameter with
 
 1. q dictionary outlining the changes to default behavior that are to be made
 2. The path to a flat file containing human-readable updates to the parameter set.
@@ -95,7 +95,7 @@ _Grid search procedure_
 
 In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
 
-The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
+The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold depending on the procedure undertaken.
 
 For simplicity of implementation, a user should where possible use the functions within the `.ml.gs` namespace for this task.
 
@@ -132,7 +132,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist tst]
 
 _Type of hyperparameter search to perform_
 
-By default, grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the hp parameter.
+By default, an exhaustive grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the hp parameter.
 
 ```q
 q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
@@ -147,7 +147,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`hp]!enlist`sobol]
 
 _Random search procedure_
 
-Assuming `hp` has been changed to `random` or `sobol`, shuffled 5-fold cross validation will be implemented by default. This can be augmented by a user for different use cases, for example in the case of applying random/sobol search to time series data.
+Assuming `hp` has been changed to `random` or `sobol`, shuffled 5-fold cross validation will be implemented by default. This can be modified by a user for different use cases, for example in the case a user wishes to apply random/sobol search to time series data.
 
 The input for this parameter is a mixed list containing the random-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
 
@@ -288,7 +288,7 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`sz]!enlist size]
 
 _Number of random/Sobol-random hyperparameters to generate_
 
-For the random and Sobol-random hyperparameter methods, a specific number of hyperparameter sets are generated for a given hyperparameter space. 
+For the random and Sobol-random hyperparameter methods, a user specified number of hyperparameter sets are generated for a given hyperparameter space. 
 
 For sobol, the number of trials must equal 2^n, while for random, any number of distinct sets can be generated.
 
@@ -310,7 +310,7 @@ q).automl.run[tab;tgt;`normal;`reg;`hp`trials!(`sobol;n)]
 
 _Word2Vec method used for NLP models_
 
-When applying word2vec vectorization to text, the skip-gram(1) or Continuous-Bag-of-Words(0) method can be applied. By default this value is 0.
+When applying word2vec embedding to text, the Continuous-Bag-of-Words(0) or skip-gram(1) methods can be applied. The default algorithm used is Continuous-Bag-of-Words.
 
 ```q
 q)3#tab
@@ -321,7 +321,7 @@ comment                                                                      ..
 "What a good film! Made Men is a great action movie with lots of twists and t..
 q)tgt:count[tab]?0b
 q)sg:1
-q).automl.run[tab;tgt;`normal;`reg;enlist[`w2v]!enlist sg;
+q).automl.run[tab;tgt;`normal;`reg;enlist[`w2v]!enlist sg]
 
 
 ### `tts`
