@@ -28,28 +28,28 @@ function                           | rank | ƒ | semantics
 [`cor`](../ref/cor.md)             | 2    | A | correlation
 [`cos`](../ref/cos.md)             | 1    | a | cosine
 [`cov`](../ref/cov.md)             | 2    | A | covariance
-[`deltas`](../ref/deltas.md)       | 2    | u | differences
+[`deltas`](../ref/deltas.md)       | 1    | u | differences
 [`dev`](../ref/dev.md#dv)          | 1    | A | standard deviation
 [`div`](../ref/div.md)             | 2    | a | integer division
-[`ema`](../ref/ema.md)             | 1    | m | exponential moving average
+[`ema`](../ref/ema.md)             | 2    | m | exponential moving average
 [`exp`](../ref/exp.md#exp)         | 1    | a | _e_<sup>x</sup>
 [`floor`](../ref/floor.md)         | 1    | a | round down to integer
 [`inv`](../ref/inv.md)             | 1    | u | matrix inverse
 [`log`](../ref/log.md#log)         | 1    | a | natural logarithm
 [`lsq`](../ref/lsq.md)             | 2    |   | matrix divide
-[`mavg`](../ref/avg.md#mavg)       | 1    | m | moving average
+[`mavg`](../ref/avg.md#mavg)       | 2    | m | moving average
 [`max`](../ref/max.md#max)         | 1    | A | greatest
 [`maxs`](../ref/max.md#maxs)       | 1    | u | maximums
-[`mcount`](../ref/count.md#mcount) | 1    | m | moving count
-[`mdev`](../ref/dev.md#mdev)       | 1    | m | moving deviation
+[`mcount`](../ref/count.md#mcount) | 2    | m | moving count
+[`mdev`](../ref/dev.md#mdev)       | 2    | m | moving deviation
 [`med`](../ref/med.md)             | 1    | A | median
 [`min`](../ref/min.md#min)         | 1    | A | least
 [`mins`](../ref/min.md#mins)       | 1    | u | minimums
-[`mmax`](../ref/max.md#mmax)       | 1    | m | moving maximum
-[`mmin`](../ref/min.md#mmin)       | 1    | m | moving minimum
+[`mmax`](../ref/max.md#mmax)       | 2    | m | moving maximum
+[`mmin`](../ref/min.md#mmin)       | 2    | m | moving minimum
 [`mmu`](../ref/mmu.md)             | 2    |   | matrix multiply
 [`mod`](../ref/mod.md)             | 2    | a | modulo
-[`msum`](../ref/sum.md#msum)       | 1    | m | moving sum
+[`msum`](../ref/sum.md#msum)       | 2    | m | moving sum
 [`prd`](../ref/prd.md)             | 1    | A | product
 [`prds`](../ref/prd.md#prds)       | 1    | u | products
 [`ratios`](../ref/ratios.md)       | 1    | u | ratios
@@ -67,7 +67,7 @@ function                           | rank | ƒ | semantics
 [`var`](../ref/var.md#var)         | 1    | A | variance
 [`wavg`](../ref/avg.md#wavg)       | 2    | A | weighted average
 [`wsum`](../ref/sum.md#wsum)       | 2    | A | weighted sum
-[`xbar`](../ref/xbar.md)           | 2    |   | round down
+[`xbar`](../ref/xbar.md)           | 2    | A | round down
 [`xexp`](../ref/exp.md#xexp)       | 2    | a | x<sup>y</sup>
 [`xlog`](../ref/log.md#xlog)       | 2    | a | base-x logarithm of y
 

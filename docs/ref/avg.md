@@ -7,14 +7,17 @@ keywords: arithmetic mean, average, avg, avgs, kdb+, mean, moving, q, statistics
 # `avg`, `avgs`, `mavg`, `wavg`
 
 
+_Average_
 
 
-
-_Arithmetic mean_
 
 ## `avg` 
 
-Syntax: `avg x`, `avg[x]`
+_Arithmetic mean_
+
+```txt
+avg x     avg[x]
+```
 
 Where `x` is a numeric list, returns its arithmetic mean. 
 
@@ -45,7 +48,11 @@ a  | 10.75
 
 ## `avgs` 
 
-Syntax: `avgs x`, `avgs[x]`
+_Running averages_
+
+```txt
+avgs x     avgs[x]
+```
 
 Where `x` is a numeric list, returns the running averages, i.e. applies function `avg` to successive prefixes of `x`.
 
@@ -59,9 +66,11 @@ q)avgs 1 2 3 0n 4 -0w 0w
 
 ## `mavg`
 
-_Moving average_
+_Moving averages_
 
-Syntax: `x mavg y`, `mavg[x;y]`
+```txt
+x mavg y     mavg[x;y]
+```
 
 Where 
 
@@ -86,7 +95,9 @@ q)5 mavg 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
 
 _Weighted average_
 
-Syntax: `x wavg y`, `wavg[x;y]`
+```txt
+x wavg y     wavg[x;y]
+```
 
 Where 
 
@@ -114,11 +125,13 @@ a  | 10.75
 `wavg` is an aggregate function.
 
 
-
-:fontawesome-regular-hand-point-right:
-Basics: [Mathematics](../basics/math.md)<br>
-:fontawesome-brands-wikipedia-w: Wikipedia:<br>
+----
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-brands-wikipedia-w:
 [Weighted average mean](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean)<br>
+:fontawesome-brands-wikipedia-w:
 [Volume-weighted average price (VWAP)](https://en.wikipedia.org/wiki/Volume-weighted_average_price)  
 
 

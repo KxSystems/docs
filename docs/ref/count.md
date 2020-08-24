@@ -14,7 +14,11 @@ _Count the items of a list or dictionary_
 
 ## `count`
 
-Syntax: `count x`, `count[x]`  
+_Number of items_
+
+```txt
+count x     count[x]
+```
 
 Where `x` is an atom or list, returns
 
@@ -67,7 +71,9 @@ q)count sp
 
 _Moving counts_
 
-Syntax: `x mcount y`, `mcount[x;y]`
+```txt
+x mcount y     mcount[x;y]
+```
 
 Where
 
@@ -85,6 +91,10 @@ q)3 mcount 0N 1 2 3 0N 5
 
 `mcount` is a uniform function. 
 
-:fontawesome-regular-hand-point-right:
-Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: [Mathematics](../basics/math.md)
+:fontawesome-solid-graduation-cap:
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
+
+
