@@ -1,194 +1,159 @@
 ---
-title: Scoring metrics reference | Clustering | Machine Learning Toolkit | Documentation for kdb+ and q
-author: Deanna Morgan
-date: May 2019
-keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure, scoring, davies-bouldin, dunn, silhouette, homogeneity, elbow
+title: Pipeline | Machine Learning Toolkit | Documentation for kdb+ and q
+author: Conor McCarthy
+date: August 2020
+keywords: machine learning, ml, pipeline, execution, optimization
 ---
 
-# :fontawesome-solid-share-alt: Scoring metrics reference
+# :fontawesome-solid-share-alt: Pipeline
+
+## Outline
+
+Following the generation of a graph as outlined [here](./graph.md), a user must convert this graph into an executable code structure described in this library as a pipeline. For this library a pipeline can be generated and executed as follows 
+
+### Graph Validation
+
+1. For a graph to be valid all inputs to a node must be connected to an output either sourced from a configuration node or another functional node in the graph.
+2. The inputs to a node and the outputs to which they connect must have the same 'type' defined at the time the graph was created.
+
+### Pipeline Structure
+
+1. Once the graph has been validated, generate the optimal execution path for the graph. This path is created according to the following algorithm.
+	1. Generate all paths required by each node to be executed.
+	2. Retrieve the longest path for each node in the graph.
+	3. Find all dependencies for each of the longest paths.
+	4. Reverse the ordering of the longest paths to ensure they are in the correct execution order.
+	5. Retrieve the optimal execution order of nodes defined by 'razing' the ordered longest paths together and taking the distinct elements.
+2. Based on the graph structure generate a schema containing the following information
+	1. Boolean highlighting if the node been executed successfully.
+	2. Any issues arisen in execution and what was the error.
+	3. The outputs of individual nodes at intermediate steps in execution and following complete execution of the pipeline.
+	4. The inputs required for the execution of a node in the order they are to be applied to the functionality contained within the node.
+	5. The expected input and output types of a node.
+	6. The function to be applied on the relevant datasets.
+	7. The expected ordering of inputs to the node to ensure that the variable ordering is correct on node execution.
+3. Populate the pipeline schema with the node function, inputs and outputs with rows populated based on ordering retrieved from the generation of the optimal path.
+
+### Pipeline Execution
+
+1. Retrieve the first incomplete node within the pipeline.
+2. Apply the required inputs to the node function, stop execution if this results in an error and highlight the error to the user.
+3. Add the outputs from the current node execution to any rows that require this data for future executions.
+4. Repeat steps 1 -> 3 stopping either on condition that all rows in the graph have been successfully executed or an error has arisen.
+
+
+## Functionality
 
 <pre markdown="1" class="language-txt">
-.ml.clust   **Scoring metrics**
-
-Unsupervised learning
-  [daviesbouldin](#mlclustdaviesbouldin)      Davies-Bouldin index
-  [dunn](#mlclustdunn)               Dunn index
-  [silhouette](#mlclustsilhouette)         silhouette score
-
-Supervised learning
-  [homogeneity](#mlclusthomogeneity)         homogeneity score between predictions and actual value
-
-Optimum number of clusters
-  [elbow](#mlclustelbow)               distortion scores for increasing numbers of clusters
+Pipeline
+  [.ml.createPipeline](#mlcreatepipeline)      Generate a pipeline from a graph
+  [.ml.execPipeline](#mlexecpipeline)        Execute a valid pipeline
 </pre>
 
-:fontawesome-brands-github:
-[KxSystems/ml/clust/score.q](https://github.com/KxSystems/ml/blob/master/clust/score.q)
 
-Scoring metrics allow you to validate the performance of your clustering algorithms in three distinct use cases.
+### `.ml.createPipeline`
 
-use case | analysis
----------|---------
-Unsupervised learning | These metrics analyze how well data has been assigned to clusters, measuring intra-cluster similarity (cohesion) and differences (separation). In general, clustering is said to be successful if clusters are well spaced and densely packed. Used when the true cluster assignment is not known.
-Supervised learning | If the true and predicted labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
-Optimum number of clusters | The optimum number of clusters can be found manually in a number of ways using techniques above. If the required number of clusters is not known prior to clustering, the Elbow Method is used to estimate the optimum number of clusters within the dataset using K-means clustering.
+_Generate a execution pipeline based on a valid graph_
 
+Syntax: `.ml.createPipeline[graph]`
 
-## `.ml.clust.daviesbouldin`
+Where:
 
-_Davies-Bouldin index_
+* `graph` is a graph originally generated using `.ml.createGraph`, which has all relevant input edges validly connected.
 
-Syntax: `.ml.clust.daviesbouldin[data;clt]`
-
-Where
-
--   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `clt` is the list of clusters returned by one of the clustering algorithms in `.ml.clust`
-
-returns the Davies-Bouldin index, where a lower value indicates better clustering, with well-separated, tightly-packed clusters.
+returns an optimal execution pipeline containing populated inputs required for the execution of the pipeline in its entirety
 
 ```q
-q)show d:2 10#20?10.
-4.126605 8.429965 6.214154 5.365242 7.470449 6.168275 6.876426 6.123797 9.363..
-4.45644  7.274244 1.301704 2.018829 1.451855 9.819545 7.490215 6.372719 5.856..
-q)show r1:10?3
-0 1 2 0 1 0 0 1 0 1
-q)show r2:10?3
-2 2 1 0 2 2 1 2 0 0
+// Generate a simple valid graph
+q)graph:.ml.createGraph[]
 
-q)// lower values indicate better clustering
-q).ml.clust.daviesbouldin[d;r1]
-9.014795
-q).ml.clust.daviesbouldin[d;r2]
-5.890376
+// Configuration containing x data
+q)graph:.ml.addCfg[graph;`xData;enlist[`xData]!enlist desc 100?1f]
+
+// Configuration containing y data
+q)graph:.ml.addCfg[graph;`yData;enlist[`yData]!enlist asc 100?1f]
+
+// Node to randomize y dataset
+q)yRandInput:"!"
+q)yRandOutput:"F"
+q)yRandFunction:{yData:x`yData;neg[count yData]?yData}
+q)yRandNode:`inputs`outputs`function!(yRandInput;yRandOutput;yRandFunction)
+q)graph:.ml.addNode[graph;`yRand;yRandNode]
+
+// Node to calculate correlation between two float vectors
+q)corrInput:`xData`yData!"!F"
+q)corrOutput:"f"
+q)corrFunction:{x[`xData] cor y}
+q)corrNode:`inputs`outputs`function!(corrInput;corrOutput;corrFunction)
+q)graph:.ml.addNode[graph;`corr;corrNode]
+
+// Connect edges together
+q)graph:.ml.connectEdge[graph;`xData;`output;`corr;`xData]
+q)graph:.ml.connectEdge[graph;`yData;`output;`yRand;`input]
+q)graph:.ml.connectEdge[graph;`yRand;`output;`corr;`yData]
+
+// Generate pipeline
+q)show pipeline:.ml.createPipeline[graph]
+nodeId| complete error function                                              ..
+------| ---------------------------------------------------------------------..
+yData | 0              @[;(,`yData)!,`s#0.00969842 0.01596794 0.02054163 0.02..
+yRand | 0              ![,`output]@[enlist]{yData:x`yData;neg[count yData]?yD..
+xData | 0              @[;(,`xData)!,0.9988041 0.9936284 0.9880844 0.9789487 ..
+corr  | 0              ![,`output]@[enlist]{x[`xData] cor y}                 ..
 ```
 
-The Davies-Bouldin index works by calculating the ratio of how scattered data points are within a cluster, to the separation that exists between clusters.
+### `.ml.execPipeline`
 
+_Execute a generated pipeline_
 
-## `.ml.clust.dunn`
+Syntax: `.ml.execPipeline[pipeline]`
 
-Syntax: `.ml.clust.dunn[data;df;clt]`
+Where:
 
-Where
+* `pipeline` is a pipeline created in using the function [`.ml.createPipeline`](#mlcreatepipeline)
 
--   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist`
--   `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
+returns, on valid execution, the pipeline with each node executed and appropriate `outputs` populated allowing a user to retrieve relevant data from execution. In the case that an issue arises in execution highlight this to a user in the pipeline. 
 
-returns the Dunn index, where a higher value indicates better clustering, with well-separated, tightly-packed clusters.
+The below example uses the pipeline generated in the [`.ml.createPipeline`](#mlcreatepipeline) example above.
 
 ```q
-q)show d:2 10#20?10.
-3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
-4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
+// Valid pipeline execution
+q)pipeline:.ml.execPipeline[pipeline]
+Executing node: yData
+Executing node: yRand
+Executing node: xData
+Executing node: corr
 
-q)show r1:10?3
-0 0 1 1 0 0 2 0 1 0
-q)show r2:10?3
-0 0 1 1 0 2 0 2 1 2
+// Display the pipeline
+q)show pipeline
+nodeId| complete error function                                              ..
+------| ---------------------------------------------------------------------..
+yData | 1              @[;(,`yData)!,`s#0.00969842 0.01596794 0.02054163 0.02..
+yRand | 1              ![,`output]@[enlist]{yData:x`yData;neg[count yData]?yD..
+xData | 1              @[;(,`xData)!,0.9988041 0.9936284 0.9880844 0.9789487 ..
+corr  | 1              ![,`output]@[enlist]{x[`xData] cor y}                 ..
 
-q)// higher values indicate better clustering
-q).ml.clust.dunn[d;`edist;r1]
-0.5716933
-q).ml.clust.dunn[d;`e2dist;r2]
-0.03341283
+// Retrieve the outputs of the pipeline
+q)exec outputs from pipeline
+(,`)!,::
+(,`)!,::
+(,`)!,::
+``output!(::;0.225908)
+
+// Invalid example modifying the corr node the produce improper execution
+q)pipeline:.ml.execPipeline[invalidPipeline]
+Executing node: yData
+Executing node: yRand
+Executing node: xData
+Executing node: corr
+Error: rank
+
+// Display the pipeline
+q)show pipeline
+nodeId| complete error function                                              ..
+------| ---------------------------------------------------------------------..
+yData | 1              @[;(,`yData)!,`s#0.004194243 0.006855978 0.01139698 0...
+yRand | 1              ![,`output]@[enlist]{yData:x`yData;neg[count yData]?yD..
+xData | 1              @[;(,`xData)!,0.9847626 0.9823238 0.9796802 0.9788011 ..
+corr  | 0        rank  ![,`output]@[enlist]{x[`xData] cor string y}          ..
 ```
-
-The Dunn index is calculated based on the minimum inter-cluster distance divided by the maximum size of a cluster. 
-
-
-## `.ml.clust.elbow`
-
-_The elbow method: a distortion score for each value of k applied to data, using k-means clustering._
-
-Syntax: `.ml.clust.elbow[data;df;kmax]`
-
-Where
-
--   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `df` is the distance function as a symbol, e.g. `e2dist` `edist`
--   `kmax` is the maximum number of clusters
-
-returns distortion scores for each set of clusters produced by k-means, with increasing values of k up to `kmax`.
-
-```q
-q)show d:2 10#20?10.
-3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
-4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099.. 
-q).ml.clust.elbow[d;`edist;5]
-16.74988 13.01954 10.91546 9.271871
-```
-
-If the values produced by `.ml.clust.elbow` are plotted, it is possible to determine the optimum number of clusters. The above example produces the following graph
-
-![elbow_graph](img/elbow_example.png)
-
-It is clear that the elbow score occurs when the data should be grouped into 3 clusters.
-
-
-## `.ml.clust.homogeneity`
-
-_Homogeneity score_
-
-Syntax: `.ml.clust.homogeneity[pred;true]`
-
-Where
-
--  `pred` is the predicted cluster labels
--  `true` is the true cluster labels
-
-returns the homogeneity score, bounded between 0 and 1, with a high value indicating a more accurate labeling of clusters.
-
-```q
-q)show true:10?3
-2 1 0 0 0 0 2 0 1 2
-q)show pred:10?3
-2 1 2 0 1 0 1 2 0 1
-q).ml.clust.homogeneity[pred;true]
-0.225179
-q).ml.clust.homogeneity[true;true]
-1f
-```
-
-Homogeneity score works on the basis that a cluster should contain only samples belonging to a single class.
-
-
-## `.ml.clust.silhouette`
-
-_Silhouette coefficient_
-
-Syntax: `.ml.clust.silhouette[data;df;clt;isavg]`
-
-Where
-
--   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `df` is the distance function as a symbol, e.g. `e2dist` `edist` `mdist`
--   `clt` is the list of clusters returned by the clustering algorithms in `.ml.clust`
--   `isavg` is a boolean - `1b` to return the average coefficient, `0b` to return a list of coefficients
-
-returns the Silhouette coefficient, ranging from -1 (overlapping clusters) to +1 (separated clusters).
-
-```q
-q)show d:2 10#20?10.
-3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
-4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
-
-q)show r1:10?3
-0 0 1 1 0 0 2 0 1 0
-q)show r2:10?3
-0 0 1 1 0 2 0 2 1 2
-
-q)// Return the averaged coefficients across all points
-q).ml.clust.silhouette[d;`edist;r1;1b]
-0.3698386
-q).ml.clust.silhouette[d;`e2dist;r2;1b]
-0.2409856
-
-q)// Return the individual coefficients for each point
-q).ml.clust.silhouette[d;`e2dist;r2;0b]
--0.4862092 -0.6652588 0.8131323 0.595948 -0.2540023 0.5901292 -0.2027718 0.61..
-```
-
-The Silhouette coefficient measures how similar an object is to the members of its own cluster when compared to other clusters.
-

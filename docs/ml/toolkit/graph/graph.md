@@ -70,8 +70,8 @@ Nodes
   [.ml.updNode](#mlupdcfg)          Update the content of a functional node
 
 Edges
-  [.ml.connectEdge](#mlconnectEdge)      Connect the output of one node to the input of another
-  [.ml.disconnectEdge](#mldisconnectEdge)   Disconnect an edge connected to a specified node
+  [.ml.connectEdge](#mlconnectedge)      Connect the output of one node to the input of another
+  [.ml.disconnectEdge](#mldisconnectedge)   Disconnect an edge connected to a specified node
 
 </pre>
 
@@ -387,6 +387,5 @@ nodeId  |    function                inputs            outputs
         | :: ::                      ::                ::
 srcNode | :: {x+1}                   (,`input)!,"!"    (,`srcName)!,"!"
 destNode| :: ![,`output]@[enlist]{x} (,`destName)!,"!" (,`output)!,"F"
-
 ```
 
