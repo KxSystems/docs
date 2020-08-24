@@ -7,22 +7,22 @@ keywords: machine learning, ml, graph, edges, nodes, vertices
 
 # :fontawesome-solid-share-alt: Graph
 
-As outlined [here](index.md) the graph structure described and outlined below follows the basic structure of a directed mathematical graph consisting of nodes which contain the core functionality of a pipeline and edges which describe the connections between nodes. The image below shows a basic representation of a graph containing multiple nodes connected together by relevant edges within this structure
+As outlined [here](index.md) the graph structure described below follows the basic structure of a directed mathematical graph consisting of nodes which contain the core functionality of a pipeline and edges which describe the connections between nodes. The image below shows a basic representation of a graph containing multiple nodes connected together by relevant edges within this structure
 
 ![Basic Graph](./imgs/pipeline_example_confluence.png)
 
 ## Structure
 
-Prior to the outline of functionality which describes the method by which a user can generate, update and remove components of a graph a number of notes on the structure of these components must be outlined
+Prior to the description of the functionality which allows a user can generate, update and remove components of a graph, a number notes on the technical aspects on the structure of these components must be outlined 
 
 ### Functional node
 
 A functional node as defined in this library is a dictionary containing 3 constituent parts,
 
-1. Inputs: There are two accepted forms of entry which can be provided in this case
+1. Inputs: This is either
 	1. A singular character representing the data type of input in the case of a node recieving a single input
 	2. A dictionary mapping a named parameter input to its associated type
-2. Outputs: There are two accepted forms of entry which can be provided in this case
+2. Outputs: This is either
 	1. A singular character representing the data type of output in the case of a node returning a single output
 	2. A dictionary mapping a named output to its associated type
 3. Function: This is a function containing the logic to be executed by the node. This function should take as input the same number of inputs as defined by the inputs key of the node dictionary and return either a single value of any type in the case of a single return or a dictionary with keys which map to the outputs key of the node dictionary.
@@ -51,7 +51,7 @@ Configuration nodes in this library are a subset of the functional nodes describ
 
 ### Edges
 
-An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output of another node within the graph, output nodes do not need to be connected to anything for a graph to be valid, in this case the return of an executed graph will store the output data for later use.
+An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output of another node within the graph, output nodes do not need to be connected to anything for a graph to be valid, in this case the return of an executed graph will store the output data for later use. A user must ensure that the type allocated to the input coincides with the type allocated to the output.
 
 ## Functionality
 
@@ -84,7 +84,7 @@ Syntax: `.ml.addCfg[graph;nodeId;config]`
 Where:
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a unique symbol denoting the name to be associated with the configuration node.
+* `nodeId` is a symbol unique to the graph denoting the name to be associated with the configuration node.
 * `config` is dictionary containing any configuration information to be supplied to other nodes in the graph.
 
 ```q
@@ -115,7 +115,7 @@ Syntax: `.ml.addNode[graph;nodeId;config]`
 Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a unique symbol denoting the name to be associated with the configuration node.
+* `nodeId` is a symbol unique to the graph denoting the name to be associated with the functional node.
 * `config` is dictionary containing the following information
 	* `inputs` Either a single character representing the expected data input type in the case of a node recieving one input, or a dictionary mapping named inputs to their associate types.
 	* `outputs` Either a single character representing the expected ouput type in the case of a node outputting one item, or a dictionary mapping named outputs to their associate types.
@@ -239,7 +239,7 @@ _Delete a named configuration node_
 Syntax: `.ml.delCfg[graph;nodeId]`
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a unique symbol denoting the name of a configuration node to be deleted.
+* `nodeId` is a symbol denoting the name of a configuration node to be deleted.
 
 returns the graph with the named node removed
 
@@ -268,7 +268,7 @@ Syntax: `.ml.delNode[graph;nodeId]`
 Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a unique symbol denoting the name of a functional node to be deleted.
+* `nodeId` is a symbol denoting the name of a functional node to be deleted.
 
 returns the graph with the named node removed
 
@@ -330,10 +330,10 @@ Syntax: `.ml.updCfg[graph;nodeId;config]`
 Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a unique symbol denoting the name of a configuration node to be updated.
+* `nodeId` is a symbol denoting the name of a configuration node to be updated.
 * `config` is dictionary containing any configuration information to be supplied to other nodes in the graph.
 
-returns the input graph with the named configuration node overwritten
+returns the graph with the named configuration node contents overwritten
 
 ```q
 // Display the node prior to overwriting the configuration contents
@@ -360,11 +360,13 @@ Syntax: `.ml.updNode[graph;nodeId;config]`
 Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a unique symbol denoting the name of a functional node to be updated.
+* `nodeId` is a symbol denoting the name of a functional node to be updated.
 * `config` is a dictionary containing the following information
 	* `inputs` Either a single character representing the expected data input type in the case of a node recieving one input, or a dictionary mapping named inputs to their associate types.
 	* `outputs` Either a single character representing the expected ouput type in the case of a node outputting one item, or a dictionary mapping named outputs to their associate types.
 	* `function` is a function containing the logic to be executed by the node. This function should take as input the same number of inputs as defined by the inputs key of the node dictionary and return either a single value of any type in the case of a single return or a dictionary with keys which map to the outputs key of the node dictionary.
+
+returns the graph with the named functional node contents overwritten
 
 ```q
 // Display the node prior to overwriting node content

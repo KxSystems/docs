@@ -14,23 +14,22 @@ By defining code using this core idea a user can develop independent sections of
 
 Writing code in this way allows for:
 
-1. Maintenance of the code base is easier due to the individual elements being independent of each other prior to the connection and validation of the graph. 
-2. Once a 'wire' version of the graph has been defined by a team individual nodes can be developed completely independently. This reduces the chance of parallel lines of development causing issues when merging independent sections of code in a large team.
+1. The maintenance of a code base is easier due to the individual elements being independent of each other prior to the connection and validation of the graph. 
+2. Once a 'wire' version of the graph has been defined by a team individual nodes can be developed completely independently. This reduces the chance of parallel lines of development causing issues when merging independent sections of code within a large team.
 3. Testing of the code can also be structured on a per node basis or by connecting chains of nodes together. This allows for complex code bases to be tested at a more granular level than may otherwise be feasible.
 4. Producing fundamental changes to the code base is less cumbersome than in a less modular framework. In the case that a new piece of functionality is to be added this requires the addition of a new node, and the removal and reattaching of associated edges.
 
-This addition to the Machine Learning toolkit is provided in three sections:
+This addition to the Machine Learning toolkit is provided in two connected sections:
 
-1. [Graphing](graph.md) functionality defining how a user can create, modify and remove nodes or edges.
-2. [Pipeline](pipeline.md) functionality providing a mechanism by which to convert a valid graph into an optimised framework which can be executed to evaluate the graph logic.
-3. A set of [modules](modules/index.md) which provide general use nodes that may be useful to all users when generating a graph based workflow.
+1. [Graphing](graph.md) functionality defining how a user can create, modify and remove nodes or edges to a graph.
+2. [Pipelining](pipeline.md) functionality providing a mechanism by which to convert a valid graph into an optimised framework which can be executed to evaluate the graph logic.
 
 Notebooks showing examples of the graph and pipline library described above can be found at
 
 :fontawesome-brands-github:
 [KxSystems/mlnotebooks](https://github.com/kxsystems/mlnotebooks)
 
-All code relating to the clustering section of the Machine Learning Toolkit is available at
+All code relating to the graph and pipeline section of the Machine Learning Toolkit is available at
 
 :fontawesome-brands-github:
 [KxSystems/ml/graph/](https://github.com/kxsystems/ml/graph)

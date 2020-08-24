@@ -9,7 +9,7 @@ keywords: machine learning, ml, pipeline, execution, optimization
 
 ## Outline
 
-Following the generation of a graph as outlined [here](./graph.md), a user must convert this graph into an executable code structure described in this library as a pipeline. For this library a pipeline can be generated and executed as follows 
+Following the generation of a graph as outlined [here](./graph.md), a user must convert this graph into an executable code structure, described in this library as a pipeline. For this library a pipeline can be validated, generated and executed as follows 
 
 ### Graph Validation
 
@@ -23,16 +23,17 @@ Following the generation of a graph as outlined [here](./graph.md), a user must 
 	2. Retrieve the longest path for each node in the graph.
 	3. Find all dependencies for each of the longest paths.
 	4. Reverse the ordering of the longest paths to ensure they are in the correct execution order.
-	5. Retrieve the optimal execution order of nodes defined by 'razing' the ordered longest paths together and taking the distinct elements.
+	5. Retrieve the optimal execution order of nodes defined by 'razing' the longest paths (longest first) together and taking the distinct elements.
 2. Based on the graph structure generate a schema containing the following information
-	1. Boolean highlighting if the node been executed successfully.
-	2. Any issues arisen in execution and what was the error.
+	1. Boolean highlighting if the node has been executed successfully.
+	2. Any issues which arise in execution and what was the error.
 	3. The outputs of individual nodes at intermediate steps in execution and following complete execution of the pipeline.
 	4. The inputs required for the execution of a node in the order they are to be applied to the functionality contained within the node.
 	5. The expected input and output types of a node.
 	6. The function to be applied on the relevant datasets.
-	7. The expected ordering of inputs to the node to ensure that the variable ordering is correct on node execution.
-3. Populate the pipeline schema with the node function, inputs and outputs with rows populated based on ordering retrieved from the generation of the optimal path.
+	7. The mapping required to correctly populate the inputs to a node with required outputs from another node.
+	8. The expected ordering of inputs to the node to ensure that the variable ordering is correct on node execution.
+3. Populate the pipeline schema with the node function, inputs, outputs and output mapping, with rows populated based on ordering retrieved from the generation of the optimal path.
 
 ### Pipeline Execution
 
@@ -59,9 +60,9 @@ Syntax: `.ml.createPipeline[graph]`
 
 Where:
 
-* `graph` is a graph originally generated using `.ml.createGraph`, which has all relevant input edges validly connected.
+* `graph` is a graph originally generated using `.ml.createGraph`, which has all relevant input edges connected validly.
 
-returns an optimal execution pipeline containing populated inputs required for the execution of the pipeline in its entirety
+returns an optimal execution pipeline with all required information to allow successful execution of the pipeline appropriately populated
 
 ```q
 // Generate a simple valid graph
@@ -110,11 +111,12 @@ Syntax: `.ml.execPipeline[pipeline]`
 
 Where:
 
-* `pipeline` is a pipeline created in using the function [`.ml.createPipeline`](#mlcreatepipeline)
+* `pipeline` is a pipeline created using the function [`.ml.createPipeline`](#mlcreatepipeline)
 
-returns, on valid execution, the pipeline with each node executed and appropriate `outputs` populated allowing a user to retrieve relevant data from execution. In the case that an issue arises in execution highlight this to a user in the pipeline. 
+returns, on valid execution, the pipeline with each node executed and appropriate `outputs` populated allowing a user to retrieve relevant data from execution. In the case that an issue arises in execution highlight this to the user. 
 
-The below example uses the pipeline generated in the [`.ml.createPipeline`](#mlcreatepipeline) example above.
+!!!Note
+	The below example uses the pipeline generated in the [`.ml.createPipeline`](#mlcreatepipeline) example above.
 
 ```q
 // Valid pipeline execution
