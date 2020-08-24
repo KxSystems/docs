@@ -1,6 +1,6 @@
 ---
 title: Application, projection, and indexing | Basics | kdb+ and q documentation
-description: Everything in q is a value and almost everything can be applied to some other values. Projection (or currying) is a partial application in which one or more values is bound.
+description: Everything in q is a value and almost everything can be applied to some other values. Projection (or currying) is a partial application in which one or more values are bound.
 author: Stephen Taylor
 ---
 # Application, projection, and indexing
@@ -32,7 +32,7 @@ By extension,
 
 !!! info "Atoms need not apply"
 
-    The only values that cannot be applied are atoms that are not file or process handles, or the name of a variable or lambda.
+    The only values that cannot be applied are atoms that are not file or process handles, nor the name of a variable or lambda.
 
     In what follows, _value_ means _applicable value_.
 
@@ -56,12 +56,12 @@ To _apply a value_ means
 -  to select items from a list or dictionary
 -  to write to a file or process handle
 
-There are several ways to do it.
+The syntax provides several ways to apply a value.
 
 
 ## Bracket application
 
-All applicable values can be applied with bracket notation. 
+All values can be applied with bracket notation. 
 
 ```q
 q)"abcdef"[1 4 3]
@@ -89,7 +89,7 @@ q)main[]                            / nullary lambda
 
 ## Infix application
 
-Operators, and some keywords and derived functions can also be applied infix.
+Operators, and some binary keywords and derived functions can also be applied infix.
 
 ```q
 q)2+3                           / operator
@@ -103,44 +103,41 @@ q)1000+\2 3 4                   / derived function
 
 ## Apply operator
 
-All applicable values can be applied by the [Apply](../ref/apply.md) operator. 
+Any applicable value can be applied by the [Apply](../ref/apply.md) operator to a list of its arguments: one item per argument. 
 
 ```q
-q)"abcdef" . 1 4 3                  / list to its indexes
-"bed"
-q)count . 1 4 3                     / unary keyword to its argument
-3
-q)(+) . 2 3                         / binary operator to its arguments
+q)(+) . 2 3                         / apply + to a list of its 2 arguments
 5
-q).[+;2 3]                          / binary operator to its arguments
+q).[+;2 3]                          / apply + to a list of its 2 arguments
 5
-q)d . `cow`sheep                    / dictionary to its keys
-`vache`mouton
-q).[d;`cow`sheep]                   / dictionary to its keys
-`vache`mouton
-q)ssr . ("Hello word!";"rd";"rld")  / ternary function to its arguments
+q)ssr . ("Hello word!";"rd";"rld")  / apply ssr to a list of its 3 arguments
 "Hello world!"
+q)count . enlist 1 4 3              / apply count to a list of its 1 argument
+3
 ```
 
 
 ## Apply At operator
 
-Lists, dictionaries and unary functions can be applied with the [Apply At](../ref/apply.md#apply-at) operator. 
+Lists, dictionaries and unary functions can be applied more conveniently with the [Apply At](../ref/apply.md#apply-at) operator. 
 
 ```q
 q)"abcdef"@1 4 3
 "bed"
 q)@[count;1 4 3]
 3
-q)d@`cow`sheep
+q)d @ `cow`sheep                    / dictionary to its keys
+`vache`mouton
+q)@[d;`cow`sheep]                   / dictionary to its keys
 `vache`mouton
 ```
+
+Apply At is syntactic sugar: `x@y` is equivalent to `x . enlist y`.
 
 
 ## Prefix application
 
-Lists, dictionaries and unary functions can also be applied prefix. 
-(But not iterators.)
+Lists, dictionaries and unary keywords and lambdas can also be applied prefix. 
 As this is equivalent to simply omitting the Apply At operator, the `@` is mostly redundant.
 
 ```q
@@ -157,7 +154,9 @@ q)d`cow`sheep
 
 ## Postfix application
 
-Iterators are unary operators that can be (and almost always are) applied postfix. They derive functions from their value arguments. Some derived functions are variadic: they can be applied either unary or binary. 
+Iterators are unary operators that can be (and almost always are) applied postfix. They derive functions from their value arguments. 
+
+Some derived functions are variadic: they can be applied either unary or binary. 
 
 ```q
 q)+\[2 3 4]                             / derived fn applied unary
@@ -182,13 +181,18 @@ q)(count')("the";"quick";"brown";"fox")
 3 5 5 3
 ```
 
-rank of<br/>value f | bracket<br/>notation | Apply            | Apply At | other<br/>syntax | note 
-:---:|-----------------------|------------------|----------|-------------|-----
-0    | `f[]`                 | `f . enlist(::)` | `f@(::)` |             |
-1    | `f[x]`                | `f . enlist x`   | `f@x`    | `f x`, `xf` | prefix, postfix
-2    | `f[x;y]`              | `f . (x;y)`      |          | `x f y`     | infix
-≥3   | `f[x;y;z;…]`          | `f . (x;y;z;…)`  |          |             |
 
+## Application syntax
+
+```txt
+rank   bracket                                     other
+of f   notation       Apply             Apply At   syntax        note 
+................................................................................
+0      f[]            f . enlist(::)    f@(::)               
+1      f[x]           f . enlist x      f@x        f x,  x f     prefix, postfix
+2      f[x;y]         f . (x;y)                    x f y         infix
+3-8    f[x;y;z;…]     f . (x;y;z;…)                           
+```
 
 
 ## Long right scope
@@ -246,7 +250,7 @@ In the last example, the derived function `count'` is the argument of the second
 
 Only iterators can be applied postfix. 
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book:
 [Apply/Index and Apply/Index At](../ref/apply.md) for how to apply functions and index lists
 
 
@@ -255,7 +259,7 @@ Only iterators can be applied postfix.
 The _rank_ of a value is the number of 
 
 -   arguments it evaluates, if it is a function
--   indexes required to select an atom, if it is a list
+-   indexes required to select an atom, if it is a list or dictionary
 
 A value is _variadic_ if it can be used with more than one rank.
 All matrixes and some derived functions are variadic.
@@ -338,7 +342,7 @@ q)1000/[+]til 5           / but not infix
              ^
 ```
 
-!!! tip "Applying a unary operator with bracket notation is unusual and discouraged."
+!!! danger "Applying a unary operator with bracket notation is unusual and discouraged."
 
 
 ## Projection
@@ -389,6 +393,7 @@ q)f:{x%y}
 q)g 5       / still triple
 15
 ```
+
 ??? tip "Make projections explicit"
 
     When projecting a function onto an argument list, make the argument list full-length.
