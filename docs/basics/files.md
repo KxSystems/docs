@@ -11,7 +11,7 @@ Kdb+ communicates with the filesystem through
 -   one-shot operations
 -   handles to persistent connections
 
-Handles are more efficient for repeated operations on a file.
+Handles are more efficient for multiple operations on a file.
 
 !!! info "File paths are displayed separated with forward slashes, regardless of the operating system."
 
@@ -96,7 +96,7 @@ Kdb+ uses files and directories to persist database tables.
 
 ## :fontawesome-solid-hands-helping: Connections
 
-Persistent connections enable repeated operations on a file without repeatedly opening and closing it. 
+A persistent connection enables multiple operations on a file without repeatedly opening and closing it. 
 
 Opening a connection to a file returns a handle to the connection. The handle takes the form of an int that is also an applicable value. 
 
