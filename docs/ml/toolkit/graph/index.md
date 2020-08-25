@@ -8,7 +8,7 @@ keywords: machine learning, ml, graph, pipeline, modular, code execution
 
 The work presented here outlines a structural framework for developing q/kdb+ solutions which is based on a mathematical directed graph. In mathematics, and more specifically in graph theory, a directed graph is a set of vertices/nodes/points connected by edges, where the edges have an associated direction as shown in the below example:
 
-![Directed graph](imgs/Directed_Graph.png) 
+![Directed graph](imgs/directed_graph.png) 
 
 By defining code using this core idea a user can develop independent sections of code defined by the nodes and connect them together logically to form a full data analysis pipeline. 
 
