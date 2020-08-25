@@ -202,52 +202,52 @@ q)`VARNAME setenv "NEWVALUE"
 ```
  -->
 
-## Datatypes
-<table class="kx-tight" markdown="1" style="font-size:80%">
-<thead>
-<tr><th>n</th><th>c</th><th>name</th><th>sz</th><th>literal</th><th>null</th><th>inf</th><th>SQL</th><th>Java</th><th>.Net</th></tr>
-</thead>
-<tbody>
-<tr><td class="nowrap">0</td><td>*</td><td>list</td><td/><td/><td/><td/><td/><td/><td/></tr>
-<tr><td class="nowrap">1</td><td>b</td><td>boolean</td><td>1</td><td>`0b`</td><td/><td/><td/><td>Boolean</td><td>boolean</td></tr>
-<tr><td class="nowrap">2</td><td>g</td><td>guid</td><td>16</td><td/><td>`0Ng`</td><td/><td/><td>UUID</td><td>GUID</td></tr>
-<tr><td class="nowrap">4</td><td>x</td><td>byte</td><td>1</td><td>`0x00`</td><td/><td/><td/><td>Byte</td><td>byte</td></tr>
-<tr><td class="nowrap">5</td><td>h</td><td>short</td><td>2</td><td>`0h`</td><td>`0Nh`</td><td>`0Wh`</td><td>smallint</td><td>Short</td><td>int16</td></tr>
-<tr><td class="nowrap">6</td><td>i</td><td>int</td><td>4</td><td>`0i`</td><td>`0Ni`</td><td>`0Wi`</td><td>int</td><td>Integer</td><td>int32</td></tr>
-<tr><td class="nowrap">7</td><td>j</td><td>long</td><td>8</td><td>`0j` or `0`</td><td>`0Nj`<br>or `0N`</td><td>`0Wj`<br>or `0W`</td><td>bigint</td><td>Long</td><td>int64</td></tr>
-<tr><td class="nowrap">8</td><td>e</td><td>real</td><td>4</td><td>`0e`</td><td>`0Ne`</td><td>`0We`</td><td>real</td><td>Float</td><td>single</td></tr>
-<tr><td class="nowrap">9</td><td>f</td><td>float</td><td>8</td><td>`0.0` or `0f`</td><td>`0n`</td><td>`0w`</td><td>float</td><td>Double</td><td>double</td></tr>
-<tr><td class="nowrap">10</td><td>c</td><td>char</td><td>1</td><td>`" "`</td><td>`" "`</td><td/><td/><td>Character</td><td>char</td></tr>
-<tr><td class="nowrap">11</td><td>s</td><td>symbol</td><td>.</td><td>`` ` ``</td><td>`` ` ``</td><td/><td>varchar</td><td>String</td><td>string</td></tr>
-<tr><td class="nowrap">12</td><td>p</td><td>timestamp</td><td>8</td><td>dateDtimespan</td><td>`0Np`</td><td>`0Wp`</td><td/><td>Timestamp</td><td>DateTime (RW)</td></tr>
-<tr><td class="nowrap">13</td><td>m</td><td>month</td><td>4</td><td>`2000.01m`</td><td>`0Nm`</td><td/><td/><td/><td/></tr>
-<tr><td class="nowrap">14</td><td>d</td><td>date</td><td>4</td><td>`2000.01.01`</td><td>`0Nd`</td><td>`0Wd`</td><td>date</td><td>Date</td><td/></tr>
-<tr><td class="nowrap">15</td><td>z</td><td>datetime</td><td>8</td><td>dateTtime</td><td>`0Nz`</td><td>`0wz`</td><td>timestamp</td><td>Timestamp</td><td>DateTime (RO)</td></tr>
-<tr><td class="nowrap">16</td><td>n</td><td>timespan</td><td>8</td><td>`00:00:00.000000000`</td><td>`0Nn`</td><td>`0Wn`</td><td/><td>Timespan</td><td>TimeSpan</td></tr>
-<tr><td class="nowrap">17</td><td>u</td><td>minute</td><td>4</td><td>`00:00`</td><td>`0Nu`</td><td>`0Wu`</td><td/><td/><td/></tr>
-<tr><td class="nowrap">18</td><td>v</td><td>second</td><td>4</td><td>`00:00:00`</td><td>`0Nv`</td><td>`0Nv`</td><td/><td/><td/></tr>
-<tr><td class="nowrap">19</td><td>t</td><td>time</td><td>4</td><td>`00:00:00.000`</td><td>`0Nt`</td><td>`0Wt`</td><td>time</td><td>Time</td><td>TimeSpan</td></tr>
-<tr><td class="nowrap" colspan="2">20-76</td><td>enums</td><td/><td/><td/><td/><td/><td/></tr>
-<tr><td class="nowrap">77</td><td/><td colspan="7">anymap</td><td/><td/><td/></tr>
-<tr><td class="nowrap" colspan="2">78-96</td><td colspan="7">77+t – mapped list of lists of type t</td><td/><td/><td/></tr>
-<tr><td class="nowrap">97</td><td/><td colspan="7">nested sym enum</td><td/><td/><td/></tr>
-<tr><td class="nowrap">98</td><td/><td colspan="7">table</td><td/><td/><td/></tr>
-<tr><td class="nowrap">99</td><td/><td colspan="7">dictionary</td><td/><td/><td/></tr>
-<tr><td class="nowrap">100</td><td/><td colspan="7">[lambda](../basics/function-notation.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">101</td><td/><td colspan="7">unary primitive</td><td/><td/><td/></tr>
-<tr><td class="nowrap">102</td><td/><td colspan="7">operator</td><td/><td/><td/></tr>
-<tr><td class="nowrap">103</td><td/><td colspan="7">[iterator](iterators.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">104</td><td/><td colspan="7">projection</td><td/><td/><td/></tr>
-<tr><td class="nowrap">105</td><td/><td colspan="7">[composition](compose.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">106</td><td/><td colspan="7">[`v'`](maps.md#each)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">107</td><td/><td colspan="7">[`v/`](accumulators.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">108</td><td/><td colspan="7">[`v\`](accumulators.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">109</td><td/><td colspan="7">[`v':`](maps.md)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">110</td><td/><td colspan="7">[`v/:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">111</td><td/><td colspan="7">[`v\:`](maps.md#each-left-and-each-right)</td><td/><td/><td/></tr>
-<tr><td class="nowrap">112</td><td/><td colspan="7">dynamic load</td><td/><td/><td/></tr>
-</tbody>
-</table>
+## [Datatypes](../basics/datatypes.md)
+
+<pre markdown="1" class="language-txt" style="font-size:80%">
+n   c   name      sz  literal            null inf SQL       Java      .Net
+\------------------------------------------------------------------------------------
+0   *   list
+1   b   boolean   1   0b                                    Boolean   boolean
+2   g   guid      16                     0Ng                UUID      GUID
+4   x   byte      1   0x00                                  Byte      byte
+5   h   short     2   0h                 0Nh  0Wh smallint  Short     int16
+6   i   int       4   0i                 0Ni  0Wi int       Integer   int32
+7   j   long      8   0j                 0Nj  0Wj bigint    Long      int64
+                      0                  0N   0W
+8   e   real      4   0e                 0Ne  0We real      Float     single
+9   f   float     8   0.0                0n   0w  float     Double    double
+                      0f                 0Nf
+10  c   char      1   " "                " "                Character char
+11  s   symbol        \`                  \`        varchar   String    string
+12  p   timestamp 8   dateDtimespan      0Np  0Wp           Timestamp DateTime (RW)
+13  m   month     4   2000.01m           0Nm
+14  d   date      4   2000.01.01         0Nd  0Wd date      Date
+15  z   datetime  8   dateTtime          0Nz  0wz timestamp Timestamp DateTime (RO)
+16  n   timespan  8   00:00:00.000000000 0Nn  0Wn           Timespan  TimeSpan
+17  u   minute    4   00:00              0Nu  0Wu
+18  v   second    4   00:00:00           0Nv  0Nv
+19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan
+20-76   enums
+77      anymap
+78-96   77+t – mapped list of lists of type t
+97      nested sym enum
+98      table
+99      dictionary
+100     [lambda](../basics/function-notation.md)
+101     unary primitive
+102     operator
+103     [iterator](../ref/iterators.md)
+104     [projection](../basics/application.md#projection)
+105     [composition](../ref/compose.md)
+106     [f'](../ref/maps.md#each)
+107     [f/](../ref/accumulators.md)
+108     [f\\](../ref/accumulators.md)
+109     [f':](../ref/maps.md)
+110     [f/:](../ref/maps.md#each-left-and-each-right)
+111     [f\\:](../ref/maps.md#each-left-and-each-right)
+112     [dynamic load](../ref/dynamic-load.md)
+</pre>
 
 _n_: short int returned by [`type`](type.md) and used for [casting](../basics/casting.md), e.g. `9h$3`
 <br>
