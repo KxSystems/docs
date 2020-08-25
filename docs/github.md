@@ -459,6 +459,13 @@ The Fusion interface libraries are maintained and supported by Kx.
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://shahdee.gitlab.io/miq/#/">miQ ==new==</a></td>
+<td>Divide an application into modules <span class="author"><a href="https://gitlab.com/Shahdee">
+						(Michal Širochman)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/aa1024/nexusQ">nexusQ</a></td>
 <td>Visualizer for q process network. <span class="author"><a href="https://github.com/aa1024/?tab=repositories">
 						(Ali Kapadiya)
@@ -637,7 +644,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q</a></td>
 <td>CI and test runners <span class="author"><a href="https://github.com/prodrive11?tab=repositories">
 						(Patryk Bukowinski)
 					</a></span>
