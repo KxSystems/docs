@@ -30,7 +30,7 @@ The Machine Learning Toolkit contains functions used regularly within pipelines 
 
 ## `.ml.applylabelencode`
 
-_Transform a list of integers to based on a previously generated label encoding_
+_Transform a list of integers based on a previously generated label encoding_
 
 Syntax: `.ml.applylabelencode[x;y]`
 
@@ -39,7 +39,7 @@ Where
 - `x` is a list of integers
 - `y` is a dictionary mapping true representation to associated integer or the return from `.ml.labelencode`
 
-returns a list with the integer values of `x` replaced by their appropriate 'true' representation, values that do not appear in the mapping supplied by `y` are returned as null values
+returns a list with the integer values of `x` replaced by their appropriate 'true' representation. Values that do not appear in the mapping supplied by `y` are returned as null values
 
 !!!Note
 	This function is primarily used when attempting to convert classification predictions from a fitted model to their underlying representation. It is often the case that a user will convert a symbol list to an integer list in order to allow their machine learning model to fit the data appropriately.
