@@ -13,6 +13,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
   [filltab](#mlfilltab)           Tailored filling of null values for a simple matrix
   [freqencode](#mlfreqencode)        Numerically encode frequency of category occurance
   [infreplace](#mlinfreplace)        Replace +/- infinities with max/min of column
+  [labelencode](#mllabelencode)       Encode list of symbols to integer values
   [lexiencode](#mllexiencode)        Label categories based on lexigraphical order
   [minmaxscaler](#mlminmaxscaler)      Data scaled between 0-1
   [onehot](#mlonehot)            One-hot encoding of table or array
@@ -220,6 +221,26 @@ A B  C
 9 50 3
 ```
 
+##`.ml.labelencode`
+
+_Encode list of symbols to integer values_
+
+Syntax:`.ml.labelencode[x]`
+
+Where
+
+-  `x` is a list of symbols
+
+returns list of symbols transformed to integer values
+
+```q
+q)sym:`a`b`c`c`b`a`b`b`c
+q)syms:`cab`acb`abc`bac`bca
+q).ml.labelencode[sym]
+0 1 2 2 1 0 1 1 2
+q).ml.labelencode[syms]
+4 1 0 2 3
+```
 
 ## `.ml.lexiencode`
 
