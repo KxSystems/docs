@@ -77,7 +77,9 @@ Here is an excellent example: clear, plain instructions from a snake catcher in 
 > 
 > “If you get bitten, bandage on your arm, straight to hospital.
 > 
-> “Without treatment you’re likely to die. With treatment you probably won’t die.”
+> “Without treatment you’re likely to die. With treatment you probably won’t die.” 
+
+— _The Guardian_ 2020.09.01
 
 
 ## Summary

@@ -146,6 +146,7 @@ From file ops and [IPC](ipc.md)
 <tr><th>error</th><th>explanation</th></tr>
 </thead>
 <tbody>
+<tr><td>Bad CPU Type</td><td>Tried to run 32-bit interpreter in macOS 10.15+</td></tr>
 <tr><td>`XXX:YYY`</td><td>`XXX` is from kdb+, `YYY` from the OS</td></tr>
 </tbody>
 </table>
