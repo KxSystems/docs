@@ -108,6 +108,15 @@ q)\ls /tmp/kxuds
 "kx.5000"
 ```
 
+
+## Security
+
+Once you open a port in q session, it is open to all connections, including HTTP requests. 
+
+!!! tip "In a production environment secure any process with an open port."
+
+
+---
 :fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
 <br>

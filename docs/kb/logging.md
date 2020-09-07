@@ -11,7 +11,7 @@ keywords: kdb+, log, logging, q, replication
 
 Software or hardware problems can cause a kdb+ server process to fail, possibly resulting in loss of data not saved to disk at the time of the failure. A kdb+ server can use logging of updates to avoid data loss when failures occur; note that the message is logged only if it changes the state of the process’ data.
 
-Logging is enabled by using the `-l` or `-L` command-line arguments.
+Logging is enabled by using the [`-l` or `-L` command-line arguments](../basics/cmdline.md#-l-log-updates).
 
 ```bash
 $ q logTest -l
@@ -48,10 +48,9 @@ sym  | `intel
 price| 88.5
 size | 1625
 ```
+??? warning "Updates done locally in the server process are logged to disk only if they are sent as messages to self"
 
-!!! warning 
-
-    Updates done locally in the server process are logged to disk only if they are sent as messages to self. The syntax for this uses `0` as the handle:
+    The syntax for this uses `0` as the handle:
 
     <pre><code class="language-q">
     q) // in server
@@ -192,9 +191,13 @@ If the replicating process loses its connection to the logging process, you can 
 
 Currently, only a single replicating process can subscribe to the primary process. If another kdb+ process attempts to replicate from the primary, the previous replicating process will no longer receive updates. If you need multiple replicating processes, you might like to consider [kdb+tick](../learn/startingkdb/tick.md).
 
-!!! tip "log4q"
 
-    A concise implementation of logger for q applications.
+---
 
-    :fontawesome-brands-github: 
-    [prodrive11/log4q](https://github.com/prodrive11/log4q)
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§13.2.6 Logging `-l` and `-L`](/q4m3/13_Commands_and_System_Variables/#1326-logging-l-and-l)
+<br>
+:fontawesome-brands-github: 
+[prodrive11/log4q](https://github.com/prodrive11/log4q)
+A concise implementation of logger for q applications
