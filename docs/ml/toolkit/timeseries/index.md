@@ -6,11 +6,19 @@ keywords: machine learning, ml, time series forecasting, ar, arima, sarima
 ---
 # :fontawesome-solid-share-alt: Time Series Forecasting
 
-Time series forecasting is a supervised machine learning method in which meaningful statistical values are extracted from a time series data set in order to predict how the time series will preform in future events. It is implemented in a variety of use cases such as weather predictions, future sales forecasting in business planning and stock price forecasting amoung many others.
+In time series analysis, time series forecasting is the use of a model to predict the future values of a dataset based on historical observations. Forecasting can be achieved using a wide range of techniques from simple linear regression to complex neural network constructs. Use cases for time series forecasting vary from its use in the prediction of weather patterns, the forecasting of future product sales and the applications in the stock market.
 
-The Machine Learning Toolkit contains a number of time series forecasting statistical methods such as AR, ARIMA, SARIMA along with time series feature extraction methods.
+The Machine Learning Toolkit contains a number of implementations of commonly used statistical [forecasting algorithms](arima.md). These include the following models
 
-Notebooks showing examples of time series forecasting can be fount at 
+1. AutoRegressive (AR)
+2. AutoRegressive Moving Average (ARMA)
+3. AutoRegressive Integrated Moving Average (ARIMA)
+4. Seasonal AutoRegressive Moving Average (SARIMA)
+5. AutoRegressive Conditional Heteroskedasticity (ARCH)
+
+In addition to this a number of feature extraction techniques to generate lagged values and apply moving calculations. These techniques are provided as they can be used to convert a time series dataset into a format which may be more suited to the application of traditional machine learning algorithms.
+
+Notebooks showing examples of time series forecasting can be found at 
 
 :fontawesome-brands-github:
 [KxSystems/mlnotebooks](https://github.com/kxsystems/mlnotebooks)
@@ -23,7 +31,7 @@ All code relating to the time series section of the Machine Learning Toolkit is 
 
 ## Loading
 
-The clustering library can be loaded independently of the ML Toolkit:
+The time series extension can be loaded independently of the ML Toolkit:
 
 ```q
 q)\l ml/ml.q

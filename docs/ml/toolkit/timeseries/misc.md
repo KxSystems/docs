@@ -2,38 +2,44 @@
 title: Time Series Feature Engineering | Time Series | Machine Learning Toolkit | Documentation for kdb+ and q
 author: Diane O'Donoghue
 date: September 2020
-keywords: machine learning, ml, time series, feature engineering, lag, window
+keywords: machine learning, ml, time series, feature engineering, lag, window, stationality
 ---
 
-# :fontawesome-solid-share-alt: Time Series Feature Engineering
+# :fontawesome-solid-share-alt: Miscellaneous Time Series Functionality
 
 <pre markdown="1" class="language-txt">
-.ml.tm   **Feature Engineering**
+.ml.ts
 
-[tslag](#mltmtslag)    Create lagged features from a time series
-[tswindow](#mltswindow) Create windowed features from a time series
+**Feature Engineering**
+[laggedFeatures](#mltslaggedfeatures) Create lagged features from a time series
+[windowFeatures](#mltswindowfeatures) Create windowed features from a time series
 
+**Miscellaneous Functionality**
+[stationality](#mltsstationality)   Test that time-series data is stationary
 </pre>
 
 <i class="fab fa-github"></i>
-[KxSystems/ml/tm](https://github.com/KxSystems/ml/tree/master/timeseries)
+[KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
-## `.ml.tm.tslag`
+## `.ml.ts.laggedFeatures`
 
-_Create lagged features from a equispaced time series table_
+_Create lagged features from an equispaced tabular time series dataset_
 
-Syntax: `.ml.tm.tslag[tab;col_names;lags]
+Syntax: `.ml.ts.laggedFeatures[tab;colNames;lags]`
 
 Where
  
 -  `tab` is a table containing equispaced time series data
--  `col_names` is a list of columns to extract the lag values from
+-  `colNames` is a list of columns to extract the lag values from
 -  `lags` is a list of historic lags to be added as columns to the dataset
 
 returns a table with additional columns containing the historical values for each row
 
+!!!Warning
+	The original data contained within the time series is not removed from the table. As such null values are present in any lagged columns. A user wishing to apply a machine learning algorithm shoud handle this data as appropriate to their use case.
+
 ```q
-q)show ts_tab:([]"p"$"d"$til 100;100?10f;100?100)
+q)show tab:([]"p"$"d"$til 100;100?10f;100?100)
 x                             x1       x2
 -----------------------------------------
 2000.01.01D00:00:00.000000000 1.018678 15
@@ -48,7 +54,7 @@ x                             x1       x2
 2000.01.10D00:00:00.000000000 4.389455 32
 2000.01.11D00:00:00.000000000 4.622394 31
 ..
-q).tm.tslag[ts_tab;`x1`x2;1 7]
+q).ml.ts.laggedFeatures[tab;`x1`x2;1 7]
 x                             x1       x2 x1_xprev_1 x2_xprev_1 x1_xprev_7 x2..
 -----------------------------------------------------------------------------..
 2000.01.01D00:00:00.000000000 1.018678 15                                    ..
@@ -73,20 +79,24 @@ x                             x1       x2 x1_xprev_1 x2_xprev_1 x1_xprev_7 x2..
 2000.01.20D00:00:00.000000000 6.135786 2  7.177445   41         7.07042    74..
 ```
 
-## `.ml.tm.tswindow`
-_Syntax: `.ml.tm.tswindow[tab;col_names;funcs;wins]
+## `.ml.ts.windowFeatures`
+
+_Create windowed features from an equispaced tabular time series_
+
+Syntax: `.ml.ts.windowFeatures[tab;colNames;funcs;wins]`
 
 Where
  
 -  `tab` is a table containing equispaced time series data
--  `col_names` is a list of columns to apply the windowing to
+-  `colNames` is a list of columns to apply the windowed functions to
 -  `funcs` list of function names (as symbols) which are to be applied to the time series
 -  `wins` list of window sized on which to apply these functions
 
 returns a table with additional columns containing the functions applied over appropriate window lengths
 
 !!! Note
-	The first `max[wins]` rows in the table are removed as these are produced with insufficient information
+	The first `max[wins]` rows of the table are removed as these are produced with insufficient data to provide accurate results
+
 ```q
 q)show ts_tab:([]"p"$"d"$til 100;100?10f;100?100)
 x                             x1        x2
@@ -104,7 +114,7 @@ x                             x1        x2
 2000.01.11D00:00:00.000000000 1.013315  87
 q)funcs:`avg`max`med
 q)wins:7 14
-q).tm.tswindow[ts_tab;`x1`x2;funcs;wins]
+q).ml.ts.windowFeatures[ts_tab;`x1`x2;funcs;wins]
 x                             x1        x2 avg_7_x1  avg_7_x2 avg_14_x1 avg_1..
 -----------------------------------------------------------------------------..
 2000.01.01D00:00:00.000000000 5.230753  23 0.7472505 3.285714 0.3736252 1.642..
@@ -119,4 +129,39 @@ x                             x1        x2 avg_7_x1  avg_7_x2 avg_14_x1 avg_1..
 2000.01.10D00:00:00.000000000 8.093424  94 7.266001  51       4.603379  33.5 ..
 2000.01.11D00:00:00.000000000 1.013315  87 6.247287  54.28571 4.675759  39.71..
 ```
- 
+
+## `.ml.ts.stationality`
+
+_Summary of the stationality of a set of time series data using an augmented dickey-filler test_
+
+Syntax: `.ml.ts.stationality[dset]`
+
+Where
+
+-  `dset` is a dictionary, table or vector of time series data. All data should be numerical.
+
+returns a keyed table outlining the stationality of each key, column or vector of the provided dataset
+
+```q
+q)vec:1000?1f
+q).ml.ts.stationality[vec]
+    | ADFstat   pvalue stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
+----| -------------------------------------------------------------------------------
+data| -30.77781 0      1          -3.436913        -2.864437        -2.568313        
+
+q)tab:([]1000?1f;til 1000;1000?5)
+q).ml.ts.stationality[tab]
+  | ADFstat   pvalue stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
+- | -------------------------------------------------------------------------------
+x | -32.40113 0      1          -3.436913        -2.864437        -2.568313        
+x1| 19.27252  1      0          -3.436999        -2.864476        -2.568333        
+x2| -31.5352  0      1          -3.436913        -2.864437        -2.568313        
+
+q)dict:`x`x1`x2!(100?1f;100?1f;asc 100?1f)
+q).ml.ts.stationality[dict]
+  | ADFstat   pvalue       stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
+- | -------------------------------------------------------------------------------------
+x | -9.522067 3.046044e-16 1          -3.498198        -2.891208        -2.582596        
+x1| -8.763674 2.632545e-14 1          -3.498198        -2.891208        -2.582596        
+x2| 0.3685454 0.9802798    0          -3.498198        -2.891208        -2.582596        
+```
