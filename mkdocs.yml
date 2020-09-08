@@ -548,9 +548,9 @@ nav:
         - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
         - Scoring metrics: ml/toolkit/clustering/score.md
       - Time Series:
-          - Overview: ml/toolkit/timeseries/index.md
-          - Arima: ml/toolkit/timeseries/arima.md
-          - Feature Engineering: ml/toolkit/timeseries/feat.md
+        - Overview: ml/toolkit/timeseries/index.md
+        - Models: ml/toolkit/timeseries/models.md
+        - Miscellaneous: ml/toolkit/timeseries/misc.md
       - Graph and Pipeline:
         - Overview: ml/toolkit/graph/index.md
         - Graph: ml/toolkit/graph/graph.md
