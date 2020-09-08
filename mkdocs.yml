@@ -551,6 +551,7 @@ nav:
         - Overview: ml/toolkit/timeseries/index.md
         - Models: ml/toolkit/timeseries/models.md
         - Miscellaneous: ml/toolkit/timeseries/misc.md
+      - Optimization: ml/toolkit/optimize.md
       - Graph and Pipeline:
         - Overview: ml/toolkit/graph/index.md
         - Graph: ml/toolkit/graph/graph.md
