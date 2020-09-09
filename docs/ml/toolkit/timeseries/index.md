@@ -11,12 +11,12 @@ In time series analysis, time series forecasting is the use of a model to predic
 The Machine Learning Toolkit contains a number of implementations of commonly used statistical [forecasting algorithms](arima.md). These include the following models
 
 1. AutoRegressive (AR)
-2. AutoRegressive Moving Average (ARMA)
-3. AutoRegressive Integrated Moving Average (ARIMA)
-4. Seasonal AutoRegressive Moving Average (SARIMA)
-5. AutoRegressive Conditional Heteroskedasticity (ARCH)
+2. AutoRegressive Conditional Heteroskedasticity (ARCH)
+3. AutoRegressive Moving Average (ARMA)
+4. AutoRegressive Integrated Moving Average (ARIMA)
+5. Seasonal AutoRegressive Moving Average (SARIMA)
 
-In addition to this a number of feature extraction techniques to generate lagged values and apply moving calculations. These techniques are provided as they can be used to convert a time series dataset into a format which may be more suited to the application of traditional machine learning algorithms.
+In addition to this, a number of feature extraction techniques to generate lagged values and apply moving calculations are also included. These techniques are provided as they can be used to convert a time series dataset into a format which may be more suited to the application of traditional machine learning algorithms.
 
 Notebooks showing examples of time series forecasting can be found at 
 
