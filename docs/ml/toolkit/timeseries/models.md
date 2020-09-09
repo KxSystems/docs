@@ -16,7 +16,7 @@ AR Model
 
 ARCH Model
   [ARCH.fit](#mltsarchfit)       Fit an AutoRegressive Conditional Heteroskedasticity model
-  [ARCH.predict](#mltsarchpredict)   Predict future values using a fitted AutoRegressive Conditional Heteroskedasticity model
+  [ARCH.predict](#mltsarchpredict)   Predict future volatility values using a fitted AutoRegressive Conditional Heteroskedasticity model
 
 ARMA Model
   [ARMA.fit](#mltsarmafit)       Fit an AutoRegressive Moving Average model
@@ -38,7 +38,7 @@ SARIMA Model
 
 ## AutoRegressive (AR) model
 
-A autoregressive model is a form of time series model where the output values of the model depend linearly on previous values in the series and a stochastic term. This model is suitable for use cases where there is a correlation between values in the past and future behaviour of the system. An AR model uses historical lag values `p` to calculate future values.
+An AR model is a form of time series modelling where the output values of the model depend linearly on previous values in the series and a stochastic term. This model is suitable for use cases where there is a correlation between values in the past and future behaviour of the system. An AR model uses `p` historical lag values to calculate future values.
 
 The equation for an AR model is given by:
 
@@ -65,7 +65,7 @@ Where:
 -  `p`     number of lag values to include
 -  `tr`   is a trend to be accounted for?
 
-returns a dictionary containing the model parameters and data required for the forecasting future values. This dictionary contains the following information
+returns a dictionary containing the model parameters and data required for the forecasting of future values. This dictionary contains the following information
 
 key        |  Explanation
 -----------|---------------------------
@@ -100,7 +100,7 @@ lags      | 0.8175513 2.401967 5.784208
 
 ### `.ml.ts.AR.predict`
 
-_Predict future values of a time series used a fitted AR model_
+_Predict future values of a time series using a fitted AR model_
 
 Syntax:`.ml.ts.AR.predict[mdl;exog;len]`
 
@@ -132,10 +132,75 @@ q).ml.ts.AR.predict[ARmdl;exogFuture;10]
 3.822056 3.727468 4.99475 3.499939 3.844594 4.326576 5.916375 4.12185 3.85929
 ```
 
+## AutoRegressive Conditional Heteroskedasticity (ARCH) model
+
+An ARCH model is used to describe the volatility of a time series data. In this model, the variance within the time series is modelled as the sum of the past residual errors squared and follows the same pattern as an AR model  mentioned [above](#autoregressive-ar-model). ARCH models are used in time series data that experience time-varying volatility.
+
+The formula for an ARCH model is given by:
+
+$$\hat{\epsilon}_{t}^{2}=\hat{\alpha}_{0}+\sum_{i=1}^{q} \hat{\alpha}_{i} \hat{\epsilon}_{t-i}^2$$
+
+Where:
+
+-  $\hat{\epsilon}_{t}$ is the residual error term
+-  $\hat{\alpha}_{0}$ is the mean term
+-  $\hat{\alpha}_{i}$ is past error squared coefficient
+
+### `.ml.ts.ARCH.fit`
+
+_Fit an AutoRegressive Conditional Heteroskedasticity model to provided residual errors from a fitted AR model_
+
+Syntax: `.ml.ts.ARCH.fit[resid;lags]`
+
+Where
+
+-  `resid` is the residual errors obtained from the results of a fitted AR model
+-  `lags` the number of previous error terms to include
+
+returns a dictionary containing the model parameters and data to be used for the forecasting of future volatility values 
+
+key        |  Explanation
+-----------|---------------------------
+params     | model paramaters for future predictions
+tr_param   | trend paramaters
+exog_param | exog paramaters
+p_param    | lag value paramaters
+resid      | lagged residual errors from the input training set
+
+```q
+q)residuals:100?10f
+q).ml.ts.ARCH.fit[residuals;2]
+params  | 30.55546 0.05927539 0.0799694
+tr_param| 30.55546
+p_param | 0.05927539 0.0799694
+resid   | 9.187684 39.17214
+```
+
+### `.ml.ts.ARCH.predict`
+
+_Predict the future volatility of a time series using a fitted ARCH model_
+
+Syntax:`.ml.ts.ARCH.pred[mdl;len]`
+
+Where
+
+-  `mdl` dictionary returned from a fitted ARCH model
+-  `len` number of future volatility values that are to be predicted
+
+```q
+q)residuals:100?10f
+q)show ARCHmdl:.ml.ts.ARCH.fit[residuals;1]
+params  | 37.38337 -0.07879272
+tr_param| 37.38337
+p_param | ,-0.07879272
+resid   | ,26.18578
+q).ml.ts.ARCH.predict[ARCHmdl;10]
+35.32012 34.6004 34.65711 34.65264 34.65299 34.65296 34.65296 34.65296 34.652.
+```
 
 ## AutoRegressive Moving Average (ARMA) model
 
-A ARMA model is a time series model which is an extension of the AR model described [above](#autoregressive-ar-model). An ARMA model can be used to describe any weakly stationary stochastic time series in terms of two polynomials, the first of these is for autoregression based on lag values `p`, the second for the moving average based on past residual errors `q`.
+An ARMA model is a time series model which is an extension of the AR model described [above](#autoregressive-ar-model). An ARMA model can be used to describe any weakly stationary stochastic time series in terms of two polynomials, the first of these is for autoregression based on `p` lag values, the second for the moving average based on `q` past residual errors.
 
 The equation for the ARMA model is given by:
 
@@ -199,7 +264,7 @@ pred_dict | `p`q`tr!(2;1;0b)
 
 ### `.ml.ts.ARMA.predict`
 
-_Predict future values of a time series used a fitted ARMA model_
+_Predict future values of a time series using a fitted ARMA model_
 
 Syntax:`.ml.ts.ARMA.predict[mdl;exog;len]`
 
@@ -235,7 +300,7 @@ q).ml.ts.ARMA.predict[ARMAmdl;();10]
 
 **ARIMA model**
 
-A ARIMA model is an extension of the ARMA model described [above](#autoregressive-moving-average-arma-model). As with the ARMA model this takes into account lagged values and past residual errors when generating the model and predictions. The integrated aspect of the model is the result of differencing the time series `d` times in order to generate a 'stationary' time series. Once differenced and stationary an ARMA model can be generated and applied to forecast future values. Any time series which has non seasonal components (daily/annual cycles) can be modelled using this method.
+An ARIMA model is an extension of the ARMA model described [above](#autoregressive-moving-average-arma-model). As with the ARMA model, this takes into account lagged values and past residual errors when generating the model and predictions. The integrated aspect of the model is the result of differencing the time series `d` times in order to generate a 'stationary' time series. Once differenced and stationary, an ARMA model can be generated and applied to forecast future values. Any time series which has non seasonal components (daily/annual cycles) can be modelled using this method.
 
 The equation for an ARIMA model is given by
 
@@ -251,6 +316,7 @@ Where:
   - $\phi_{i}$ is the lag parameter at time t-i
   - $\epsilon_{t-i}$ is the residual error term at time t-i
   - $\theta_{i}$ is the residual error parameter at time t-i
+
 
 **Stationary Time Series**
 
@@ -273,12 +339,12 @@ Where:
 
 _Use AIC score to determine the optimal model parameters for an ARIMA model_
 
-Syntax:`.ml.ts.ARIMA.aicParam[train;test;len;dict]
+Syntax:`.ml.ts.ARIMA.aicParam[train;test;len;dict]`
 
 Where
 
 -  `train` training data dictionary with keys ``` `endog`exog ```
--  `test` testing data dictionry with keys ``` `engod`exog ```
+-  `test` testing data dictionary with keys ``` `endog`exog ```
 -  `len` the number of values that are to be predicted
 -  `dict` dictionary of different input parameters to score
 
@@ -339,7 +405,7 @@ origs       | original values to be used to transform seasonal differencing to o
 pred_dict   | a dictionary containing information about the model used for fitting
 
 !!! Note
-	In general, differencing (`d`) of order 2 is generally sufficient to make a time series stationary for an ARIMA model.
+	In general, differencing (`d`) of order 2 or less is generally sufficient to make a time series stationary for an ARIMA model.
 
 ```q
 q)timeSeries:100?10f
@@ -359,7 +425,7 @@ origd     | ,5.784208
 
 ### `.ml.ts.ARIMA.predict`
 
-_Predict future values of a time series used a fitted ARIMA model_
+_Predict future values of a time series using a fitted ARIMA model_
 
 Syntax:`.ml.ts.ARIMA.predict[mdl;exog;len]`
 
@@ -455,7 +521,7 @@ P| 2
 D| 0
 Q| 1
 m| 10
-.ml.ts.SARIMA.fit[timeSeries;exogVar;3;0;1;s]
+q).ml.ts.SARIMA.fit[timeSeries;exogVar;3;0;1;s]
 params    | 7.884855 0.06814395 -1.941512 0.07451696 0.06945657 -0.02878508 0..
 tr_param  | 7.884855
 exog_param| 0.06814395 -1.941512

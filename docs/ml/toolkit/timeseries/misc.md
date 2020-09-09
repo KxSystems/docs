@@ -36,7 +36,7 @@ Where
 returns a table with additional columns containing the historical values for each row
 
 !!!Warning
-	The original data contained within the time series is not removed from the table. As such null values are present in any lagged columns. A user wishing to apply a machine learning algorithm shoud handle this data as appropriate to their use case.
+	The original data contained within the time series is not removed from the table. As such, null values are present in any lagged columns. A user wishing to apply a machine learning algorithm shoud handle this data as appropriate to their use case.
 
 ```q
 q)show tab:([]"p"$"d"$til 100;100?10f;100?100)
@@ -90,7 +90,7 @@ Where
 -  `tab` is a table containing equispaced time series data
 -  `colNames` is a list of columns to apply the windowed functions to
 -  `funcs` list of function names (as symbols) which are to be applied to the time series
--  `wins` list of window sized on which to apply these functions
+-  `wins` list of window sizes on which to apply these functions
 
 returns a table with additional columns containing the functions applied over appropriate window lengths
 
