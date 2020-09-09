@@ -19,7 +19,7 @@ keywords: time-series, numerical optimization, quasi-Newton, nonlinear, kdb+, q
 The `.ml.optimize` namespace contains functions which relate to the application of numerical optimization techniques. Such techniques are used to find local or global minima of user provided objective functions and are central to many statistical models.
 
 !!! Note
-	Version 1.1.0 provides the initial versions of numerical optimization tools to the machine learning toolkit. the Broyden-Fletcher-Goldfarb-Shanno algorithm is provided initially due to its use in the generation of the SARIMA model provided with the toolkit. This functionality will be expanded over time to include more diverse optimization algorithms
+	Version 1.1.0 provides the initial versions of numerical optimization tools to the machine learning toolkit. The Broyden-Fletcher-Goldfarb-Shanno algorithm is provided initially due to its use in the generation of the SARIMA model provided with the toolkit. This functionality will be expanded over time to include more diverse optimization algorithms
     
 
 ## Broyden-Fletcher-Goldfarb-Shanno Algorithm
@@ -41,7 +41,7 @@ Where
 
 key          |  type   | default  | explanation
 -------------|---------|----------|--------
-`display`    | boolean |    0b    | are the results at each optimization iteration to be printed to standard out
+`display`    | boolean |    0b    | are the results at each optimization iteration to be printed to standard output
 `optimIter`  | integer |    0W    | maximum number of iterations before optimization procedure is terminated
 `zoomIter`   | integer |    10    | maximum number of iterations when finding optimal zoom position
 `wolfeIter`  | integer |    10    | maximum number of iterations when attempting to calculate strong Wolfe conditions
