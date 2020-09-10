@@ -109,7 +109,7 @@ Test minimization on a function which has multiple minima, demonstrate functiona
 
 ```q
 // function definition
-q)func:{xexp[x[0];2]-4*x[0]}
+q)func:{sin x 0}
 // define initial starting condition as x0
 q)x0:enlist 7f
 // apply the BFGS optimization algorithm
