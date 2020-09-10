@@ -12,21 +12,21 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize the best model using grid search. These steps follow on from the [data preprocessing methods](preproc.md).
+The procedures outlined below describe the steps required to prepare extracted features for training a model, perform cross validation to determine the most generalizable model and optimize this model using grid search. These steps follow on from the [data preprocessing methods](preproc.md).
 
 The following are the procedures completed when the default system configuration is deployed:
 
-1. Feature extraction is performed using either FRESH or normal feature extraction methods.
-2. Significance tests are applied to extracted features to determine those most relevant for model training.
+1. Feature extraction is performed using FRESH, normal or NLP feature extraction methods.
+2. Feature significance tests are applied to extracted features in order to determine those features most relevant for model training.
 3. Data is split into training, validation and testing sets.
 4. Cross-validation procedures are performed on a selection of models.
 5. Models are scored using a predefined performance metric, based on the problem type (classification/regression), with the best model selected and scored on the validation set.
-6. Best model saved following optimization using grid search procedures.
+6. Best model saved following optimization using hyperparameter searching procedures.
 
 
 ## Feature extraction
 
-Feature extraction is the process of building derived or aggregate features from a dataset in order to provide a more suitable or useful input for machine learning algorithms. Within the automated machine learning framework, there are currently 2 types of feature extraction available, FRESH and normal feature extraction.
+Feature extraction is the process of building derived or aggregate features from a dataset in order to provide the most useful inputs for a machine learning algorithms. Within the automated machine learning framework, there are currently 3 types of feature extraction available, FRESH, normal and NLP feature extraction.
 
 
 ### FRESH
@@ -65,8 +65,51 @@ q)count 1_cols freshfeats
 
     When running `.automl.run` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
 
-    See instructions on [how to amend this](options.md)
+    See instructions on [how to modify this](options.md)
 
+
+### Natural Language Processing
+
+NLP feature extraction within AutoML makes use of the Kx [NLP library](../nlp/index.md) in addition to the python `gensim` library for data preprocessing. The following are the steps applied independently to all columns containing text data.
+
+1. Using `.nlp.findRegex` retrieve information surrounding the occurrances of various expressions, for example references to urls, money, the presence of phone numbers etc.
+2. Apply named entity recognition to detect references to products, individuals, references to art etc.
+3. Apply sentiment analysis to the dataset to extract information about the positive/negative/neutral and compound nature of the text.
+4. Apply the function `.nlp.newParser` to extract stop words, tokens and any references to numbers. Using this data calculate the percentage of a sentence that are numeric values, stop words or a particular part of speech.
+5. Using the corpus tokens extracted in 4, use the python library `gensim` to create a word2vec encoding of the dataset such that we have a numerical representation of the 'meaning' of a sentence.
+
+If any other non text based columns are present, normal feature extraction is applied to those remaining columns in order to ensure no relevant information is ignored.
+
+Below is an example of NLP feature extraction being applied to a dataset containing strictly text data.
+
+```q
+q)5#tb
+comment                                                                      ..
+-----------------------------------------------------------------------------..
+"If you like plot turns, this is your movie. It is impossible at any moment t..
+"It's a real challenge to make a movie about a baby being devoured by wild ca..
+"What a good film! Made Men is a great action movie with lots of twists and t..
+"This is a movie that is bad in every imaginable way. Sure we like to know wh..
+"There is something special about the Austrian movies not only by Seidl, but ..
+// no. of features before feature extraction
+p)count cols tb
+1
+// Define dictionary to be passed to nlp feature creation
+q)dict:enlist[`seed]!enlist 1234
+// apply nlp feature creation
+q)show nlpfeat:.automl.prep.nlpcreate[tb;dict;0b]`preptab
+ADJ        ADP        ADV        AUX        CCONJ      DET       INTJ        ..
+-----------------------------------------------------------------------------..
+0.1037736  0.04716981 0.0754717  0.0754717  0.02830189 0.1509434 0           ..
+0.07643312 0.1210191  0.02547771 0.06369427 0.06369427 0.1719745 0.006369427 ..
+0.06153846 0.09230769 0.01538462 0.07692308 0.04615385 0.1384615 0           ..
+0.1515152  0.05050505 0.06060606 0.1212121  0.02020202 0.1111111 0.02020202  ..
+0.09195402 0.1310345  0.05747126 0.05747126 0.04137931 0.1632184 0           ..
+0.07211538 0.08173077 0.09615385 0.07692308 0.0625     0.1442308 0           ..
+// no. of features after feature extraction
+q)count cols nlpfeat
+346
+```
 
 ### Normal
 
@@ -108,6 +151,7 @@ The early-stage releases of this repository limit the feature extraction procedu
 2. Procedures being applied in one field of use may not be relevant in another field. As such the framework is provided to allow a user to complete feature extractions which are domain-specific if required, rather than assuming procedures to be applied are ubiquitous in all cases.
 
 Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations and where general frameworks can be assummed to be informative.
+
 
 
 ## Feature selection
@@ -159,6 +203,7 @@ problem type | function | description |
 -------------|----------|-------------|
 Normal       |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 FRESH        |.ml.ttsnonshuff    | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage.
+NLP          |.ml.traintestsplit | Shuffle the dataset and split into training and testing set with defined percentage in each
 
 An example shows `.ml.traintestsplit` being used within the automated pipeline.
 
@@ -250,12 +295,12 @@ Score for validation predictions using best model = 0.1263564
 
 ## Optimization
 
-In order to optimize the best model, grid-search procedures are implemented. Similarly to the cross validation methods above, this grid search functionality is sourced from within the ML-Toolkit.
+In order to optimize the best model, hyperparameter searching procedures are implemented. Similarly to the cross validation methods above, this includes the grid search functionality contained within the ML-Toolkit, along with new random and Sobol-random search functionality.
 
-In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the flat file `hyperparam.txt` and can be altered by the user if required. 
+In the default configuration, grid search is applied to the best model using the combined training and validation data. The parameters changed for each model in the default configuration are those listed below. The specific values for each parameter are contained within the q script `grid/random_hyperparameters.q` and can be altered by the user if required. 
 
 ```txt
-Models and default grid search hyperparameters:
+Models and default grid/random search hyperparameters:
   AdaBoost Regressor               learning_rate, n_estimators
   Gradient Boosting Regressor      criterion, learning_rate, loss
   KNeighbors Regressor             n_neighbors, weights
@@ -272,7 +317,7 @@ Models and default grid search hyperparameters:
   SVC                              C, degree, tol
 ```
 
-Once the grid search has been performed, the optimized model is tested using the testing set, with the final score returned and the best model saved down. A normal classification example is shown below.
+Once the hyperparameter search has been performed, the optimized model is tested using the testing set, with the final score returned and the best model saved down. A normal classification example is shown below.
 
 ```q
 q)5#tb:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f);100?`A`B`C;100?10)

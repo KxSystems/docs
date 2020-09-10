@@ -9,10 +9,12 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 <pre markdown="1" class="language-txt">
 .ml   **Data preprocessing**
+  [applylabelencode](#mlapplylabelencode)  Transform integer data to label encode representation
   [dropconstant](#mldropconstant)      Columns with zero variance removed
   [filltab](#mlfilltab)           Tailored filling of null values for a simple matrix
   [freqencode](#mlfreqencode)        Numerically encode frequency of category occurance
   [infreplace](#mlinfreplace)        Replace +/- infinities with max/min of column
+  [labelencode](#mllabelencode)       Encode list of symbols to integer values and produce mapping
   [lexiencode](#mllexiencode)        Label categories based on lexigraphical order
   [minmaxscaler](#mlminmaxscaler)      Data scaled between 0-1
   [onehot](#mlonehot)            One-hot encoding of table or array
@@ -26,6 +28,40 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
+## `.ml.applylabelencode`
+
+_Transform a list of integers based on a previously generated label encoding_
+
+Syntax: `.ml.applylabelencode[x;y]`
+
+Where
+
+- `x` is a list of integers
+- `y` is a dictionary mapping true representation to associated integer or the return from `.ml.labelencode`
+
+returns a list with the integer values of `x` replaced by their appropriate 'true' representation. Values that do not appear in the mapping supplied by `y` are returned as null values
+
+!!!Note
+	This function is primarily used when attempting to convert classification predictions from a fitted model to their underlying representation. It is often the case that a user will convert a symbol list to an integer list in order to allow their machine learning model to fit the data appropriately.
+
+```q
+// List of symbols to be encoded
+q)symList:`a`a`a`b`a`b`b`c`c`c`c
+
+// Produced and display a symbol encoding schema
+q)show schema:.ml.labelencode[symList]
+mapping | `s#`a`b`c!0 1 2
+encoding| 0 0 0 1 0 1 1 2 2 2 2
+
+// Generate a list of integers to apply the schema to
+q)newList:0 0 1 2 2 2 0 1 4
+
+// Apply the schema completely and the mapping itself to the new list
+q).ml.applylabelencode[newList;schema]
+`a`a`b`c`c`c`a`b`
+q).ml.applylabelencode[newList;schema`mapping]
+`a`a`b`c`c`c`a`b`
+```
 
 ## `.ml.dropconstant`
 
@@ -220,6 +256,58 @@ A B  C
 9 50 3
 ```
 
+##`.ml.labelencode`
+
+_Encode a list to an integer value representation, with associated mapping schema_
+
+Syntax:`.ml.labelencode[x]`
+
+Where
+
+-  `x` is a list of any type
+
+returns a dictionary providing the schema mapping values in the list to associated integers and the original list encoded based on this schema
+
+```q
+q)sym:`cab`acb`abc`bac`bca
+q)show symencode:.ml.labelencode[sym]
+mapping | `s#`abc`acb`bac`bca`cab!0 1 2 3 4
+encoding| 4 1 0 2 3
+q)symencode.mapping
+abc| 0
+acb| 1
+bac| 2
+bca| 3
+cab| 4
+q)symencode.encoding
+4 1 0 2 3
+
+q)guids:5?0Ng
+q)show guidencode:.ml.labelencode[guids]
+mapping | `s#580d8c87-e557-0db1-3a19-cb3a44d623b1 5a580fb6-656b-5e69-d445-417..
+encoding| 3 2 1 4 0
+q)guidencode.mapping
+580d8c87-e557-0db1-3a19-cb3a44d623b1| 0
+5a580fb6-656b-5e69-d445-417ebfe71994| 1
+5ae7962d-49f2-404d-5aec-f7c8abbae288| 2
+8c6b8b64-6815-6084-0a3e-178401251b68| 3
+ddb87915-b672-2c32-a6cf-296061671e9d| 4
+q)guidencode.encoding
+3 2 1 4 0
+
+q)floats:5?1f
+q)show floatencode:.ml.labelencode[floats]
+mapping | `s#0.2306385 0.4707883 0.6346716 0.949975 0.9672398!0 1 2 3 4
+encoding| 1 2 4 0 3
+q)floatencode.mapping
+0.2306385| 0
+0.4707883| 1
+0.6346716| 2
+0.949975 | 3
+0.9672398| 4
+q)floatencode.encoding
+1 2 4 0 3
+```
 
 ## `.ml.lexiencode`
 
