@@ -21,28 +21,22 @@ For many use cases involving ordered data it is significantly more expressive.
 [Structured Query Language](https://en.wikipedia.org/wiki/SQL "Wikipedia")
 
 
-## Functional SQL
-
-The interpreter translates the query templates into [functional SQL](funsql.md) for evaluation. The functional forms are more general, and some complex queries require their use. 
-But the query templates are powerful, readable, and there is no performance penalty for using them. 
-
-Wherever possible, prefer the query templates to functional forms.
-
-
 ## Template syntax
 
+Below, square brackets mark optional elements; a slash begins a trailing comment.
+
 <pre markdown="1" class="language-txt">
-select [_L<sub>exp</sub>_] [[distinct|_p<sub>s</sub>_]] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-exec                    [_p<sub>s</sub>_]  [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-update                   _p<sub>s</sub>_   [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-delete                                from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-delete                   _p<sub>s</sub>_           from _t<sub>exp</sub>_
+select [_L<sub>exp</sub>_]     [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+exec   [distinct] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+update             _p<sub>s</sub>_  [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+delete                         from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]        / rows
+delete             _p<sub>s</sub>_          from _t<sub>exp</sub>_                   / columns
 </pre>
 
 A template is evaluated in the following order.
 
 <pre markdown="1" class="language-txt">
-Table expression   _t<sub>exp</sub>_
+[From phrase](#from-phrase)        _t<sub>exp</sub>_
 [Where phrase](#where-phrase)       _p<sub>w</sub>_
 [By phrase](#by-phrase)          _p<sub>b</sub>_
 [Select phrase](../ref/select.md#select-phrase)      _p<sub>s</sub>_
@@ -60,19 +54,34 @@ The table expression _t<sub>exp</sub>_ is
 
 -   a table or dictionary (call-by-value)
 -   the name of a table or dictionary, in memory or on disk, as a symbol atom (call-by-name)
--   an expression which evaluates to either of the above
+
+Examples:
+
+```txt
+update c:b*2 from ([]a:1 2;b:3 4)   / call by value
+select a,b from t                   / call by value
+select a,b from `t                  / call by name
+update c:b*2 from `:path/to/db      / call by name
+```
+
+
+### Limit expressions
+
+Limit expressions restrict the results returned by `select` or `exec`. 
+(For `exec` there is only one: `distinct`).
+They are described in the articles for [`select`](../ref/select.md) and [`exec`](../ref/exec.md).
 
 
 ### Result and side effects
 
 In a `select` query, the result is a table or dictionary. 
 
-In an `exec` query the result is a list or dictionary.
+In an `exec` query the result is a list of column values, or dictionary.
 
 In an `update` or `delete` query, where the table expression is a call
 
-- by value, the query returns the modified table or dictionary 
-- by name, the table or dictionary is amended in place (in memory or on disk) as a side effect, and its name returned as the result
+-   by value, the query returns the modified table or a dictionary 
+-   by name, the table or dictionary is amended in place (in memory or on disk) as a side effect, and its name returned as the result
 
 ```q
 q)t1:t2:([]a:1 2;b:3 4)
@@ -82,12 +91,12 @@ a  b
 ----
 -1 3
 -2 4
-q)t1~t2
+q)t1~t2   / t1 unchanged
 1b
 
 q)update a:neg a from `t1
 `t1
-q)t1~t2
+q)t1~t2   / t1 changed
 0b
 ```
 
@@ -273,7 +282,7 @@ a  10 1.1
 c  30 3.3
 ```
 
-Subphrases in the Where phrase are implicitly joined with AND. 
+Subphrases specify _successive_ filters.
 
 ```q
 q)select from t where c2>15,c3<3.0
@@ -281,7 +290,7 @@ c1 c2 c3
 ---------
 b  20 2.2
 
-q)select from t where (c2>15)|c3<3.0
+q)select from t where (c2>15) and c3<3.0
 c1 c2 c3
 ---------
 a  10 1.1
@@ -289,9 +298,13 @@ b  20 2.2
 c  30 3.3
 ```
 
-In the second example above, the expressions `c2>15` and `c3<3.0` are evaluated for the entire table. Not so in the first.
+The examples above return the same result but have different performance characteristics.
 
-In `where c2>15,c3<3.0` the leftmost subphrase `c2>15` is evaluated first. When the next subphrase is evaluated, only items at indexes which passed the first test are tested. And so on.
+In the second example, all `c2` values are compared to 15, and all `c3` values are compared to 3.0. The two result vectors are ANDed together. 
+
+In the first example, only `c3` values corresponding to `c2` values greater than 15 are tested. 
+
+Efficient Where phrases start with their most stringent tests.
 
 !!! tip "Use [`fby`](../ref/fby.md) to filter on groups."
 
@@ -418,6 +431,14 @@ a       b
 ```
 
 or use the [Vector Conditional](../ref/vector-conditional.md) instead.
+
+
+## Functional SQL
+
+The interpreter translates the query templates into [functional SQL](funsql.md) for evaluation. The functional forms are more general, and some complex queries require their use. 
+But the query templates are powerful, readable, and there is no performance penalty for using them. 
+
+!!! tip "Wherever possible, prefer the query templates to functional forms."
 
 
 ## Stored procedures

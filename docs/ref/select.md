@@ -22,8 +22,10 @@ For the Select operator `?`, see
 ## Syntax
 
 
+Below, square brackets mark optional elements.
+
 <pre markdown="1" class="language-txt">
-select [_L<sub>exp</sub>_] [distinct|_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+select [_L<sub>exp</sub>_] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 </pre>
 
 :fontawesome-solid-book-open:
@@ -87,6 +89,7 @@ select[n]
 select[m n]
 select[order]
 select[n;order]
+select distinct
 ```
 
 where 
@@ -103,10 +106,11 @@ This would return the three best prices for symbol `s` with a size greater than 
 
 This construct works on in-memory tables but not on memory-mapped tables loaded from splayed or partitioned files. 
 
-Performance characteristic: `select[n]` applies the where-clause on all rows of the table, and takes the first `n` rows, before applying the select-clause. So if you are paging it is better to store the result of the query somewhere and `select[n,m]` from there, rather than run the filter again.
+!!! tip "Performance"
 
+    `select[n]` applies the Where phrase on all rows of the table, and takes the first `n` rows, before applying the Select phrase. 
 
-## Distinct
+    So if you are paging it is better to store the result of the query somewhere and `select[n,m]` from there, rather than run the filter again.
 
 `select distinct` returns only unique records in the result.
 
