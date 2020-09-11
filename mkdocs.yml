@@ -197,48 +197,6 @@ nav:
       - Realtime database: learn/startingkdb/tick.md
   - Reference:
     - Reference card: ref/index.md
-    - Basics:
-      # - Functions: basics/functions.md
-      - Application: basics/application.md
-      - Atomic functions: basics/atomic.md
-      - Casting & encoding: basics/casting.md
-      - Connection handles: basics/handles.md
-      - Comparison: basics/comparison.md
-      - Conformability: basics/conformable.md
-      - Control: basics/control.md
-      - Dictionaries & tables: basics/dictsandtables.md
-      # - Elements: basics/elements.md
-      - Enumerations: basics/enumerations.md
-      - Environment: basics/environment.md
-      - Exposed infrastructure: basics/exposed-infrastructure.md
-      - Function notation: basics/function-notation.md
-      - Functional SQL: basics/funsql.md
-      - Iteration: basics/iteration.md
-      - Joins: basics/joins.md
-      - Listening port: basics/listening-port.md
-      - Logic: basics/logic.md
-      - Mathematics: basics/math.md
-      - Memory backed by files: basics/memory-backed.md
-      - Metadata: basics/metadata.md
-      - Namespaces: basics/namespaces.md
-      - Parallel processing: basics/peach.md
-      - Parse trees: basics/parsetrees.md
-      - Precision: basics/precision.md
-      - Regular Expressions: basics/regex.md
-      - Search: basics/search.md
-      - Selection: basics/selection.md
-      - Sorting: basics/sort.md
-      - Strings: basics/strings.md
-      - Syntax: basics/syntax.md
-      - Variadic syntax: basics/variadic.md
-    - Command line: basics/cmdline.md
-    - Datatypes: basics/datatypes.md
-    - Debugging: basics/debug.md
-    - Errors: basics/errors.md
-    - File system: basics/files.md
-    - Glossary: basics/glossary.md
-    - Internal functions: basics/internal.md
-    - Interprocess communication: basics/ipc.md
     - Iterators:
       - Overview: ref/iterators.md
       - Maps: ref/maps.md
@@ -424,7 +382,6 @@ nav:
       - .m: ref/dotm.md
       - .Q: ref/dotq.md
       - .z: ref/dotz.md
-    - QSQL queries: basics/qsql.md
     - Release notes:
       - History: releases/index.md
       - Changes in 4.0: releases/ChangesIn4.0.md
@@ -441,7 +398,50 @@ nav:
       - Changes in 2.5: releases/ChangesIn2.5.md
       - Changes in 2.4: releases/ChangesIn2.4.md
       - Withdrawn: releases/withdrawn.md
+  - Basics:
+    # - Functions: basics/functions.md
+    # - Elements: basics/elements.md
+    - Application: basics/application.md
+    - Atomic functions: basics/atomic.md
+    - Casting & encoding: basics/casting.md
+    - Command line: basics/cmdline.md
+    - Comparison: basics/comparison.md
+    - Conformability: basics/conformable.md
+    - Connection handles: basics/handles.md
+    - Control: basics/control.md
+    - Datatypes: basics/datatypes.md
+    - Debugging: basics/debug.md
+    - Dictionaries & tables: basics/dictsandtables.md
+    - Enumerations: basics/enumerations.md
+    - Environment: basics/environment.md
+    - Errors: basics/errors.md
+    - Exposed infrastructure: basics/exposed-infrastructure.md
+    - File system: basics/files.md
+    - Function notation: basics/function-notation.md
+    - Functional qSQL: basics/funsql.md
+    - Glossary: basics/glossary.md
+    - Internal functions: basics/internal.md
+    - Interprocess communication: basics/ipc.md
+    - Iteration: basics/iteration.md
+    - Joins: basics/joins.md
+    - Listening port: basics/listening-port.md
+    - Logic: basics/logic.md
+    - Mathematics: basics/math.md
+    - Memory backed by files: basics/memory-backed.md
+    - Metadata: basics/metadata.md
+    - Namespaces: basics/namespaces.md
+    - Parallel processing: basics/peach.md
+    - Parse trees: basics/parsetrees.md
+    - Precision: basics/precision.md
+    - QSQL queries: basics/qsql.md
+    - Regular Expressions: basics/regex.md
+    - Search: basics/search.md
+    - Selection: basics/selection.md
+    - Sorting: basics/sort.md
+    - Strings: basics/strings.md
+    - Syntax: basics/syntax.md
     - System commands: basics/syscmds.md
+    - Variadic syntax: basics/variadic.md
   - Interfaces:
     - Index: interfaces/index.md
     - Fusion for kdb+:
