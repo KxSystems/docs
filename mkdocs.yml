@@ -408,13 +408,13 @@ nav:
     - Comparison: basics/comparison.md
     - Conformability: basics/conformable.md
     - Connection handles: basics/handles.md
-    - Control: basics/control.md
     - Datatypes: basics/datatypes.md
     - Debugging: basics/debug.md
     - Dictionaries & tables: basics/dictsandtables.md
     - Enumerations: basics/enumerations.md
     - Environment: basics/environment.md
     - Errors: basics/errors.md
+    - Evaluation control: basics/control.md
     - Exposed infrastructure: basics/exposed-infrastructure.md
     - File system: basics/files.md
     - Function notation: basics/function-notation.md
