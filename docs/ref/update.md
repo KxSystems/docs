@@ -29,6 +29,11 @@ update _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub
 [qSQL syntax](../basics/qsql.md)
 
 
+## From phrase
+
+!!! warning "`update` will not modify a splayed table on disk."
+
+
 ## Select phrase
 
 Names in the [Select phrase](../basics/qsql.md#select-phrase) refer to new or modified columns in the table expression. 

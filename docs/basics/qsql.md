@@ -252,6 +252,10 @@ c  c   60 33.3 "3.3"
 
 A virtual column `i` represents the index of each record, i.e., the row number. 
 
+??? detail "Partitioned tables"
+
+    In a partitioned table `i` is the index (row number) relative to the partition, not the whole table.
+
 Because it is implicit in every table, it never appears as a column or key name in the result. 
 
 ```q
@@ -305,6 +309,12 @@ In the second example, all `c2` values are compared to 15, and all `c3` values a
 In the first example, only `c3` values corresponding to `c2` values greater than 15 are tested. 
 
 Efficient Where phrases start with their most stringent tests.
+
+??? danger "Querying a partitioned table"
+
+    When querying a partitioned table, the first Where subphrase should select from the value/s used to partition the table. 
+
+    Otherwise, kdb+ will (attempt to) load into memory all partitions for the column/s in the first subphrase.
 
 !!! tip "Use [`fby`](../ref/fby.md) to filter on groups."
 
@@ -360,6 +370,9 @@ s4 p5 100
     ``…where `g=,`s  within …``  
     Maybe rare to get much speedup, but if the `` `g `` goes to 100,000 and then `` `s `` is 1 hour of 24 you might see some overall improvement (with overall table of 30 million). 
 
+  :fontawesome-solid-street-view:
+  _Q for Mortals_
+  [§14.3.6 Query Execution on Partitioned Tables](/q4m3/14_Introduction_to_Kdb%2B/#1436-query-execution-on-partitioned-tables)
 
 ## Multithreading
 

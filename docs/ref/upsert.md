@@ -21,6 +21,9 @@ Where
 
 If `x` is the name of a table, it is updated in place. Otherwise the updated table is returned.
 
+If `x` is the name of a table as a symbol atom (or the name of a splayed table as a directory handle) that does not exits in the file system, it is written.
+
+
 ## Simple table
 
 ```q

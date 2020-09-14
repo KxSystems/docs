@@ -15,10 +15,12 @@ Syntax: `meta x`, `meta[x]`
 
 Where `x` is a table (by value or reference) returns a table keyed by column name, with columns:
 
--   `c` – column name
--   `t` – data type
--   `f` – foreign key (enums)
--   `a` – attribute
+```txt
+c   column name
+t   data type
+f   foreign key (enums)
+a   attribute
+```
 
 ```q
 q)\l trade.q
@@ -69,6 +71,15 @@ code| s
 vr  | F
 ```
 
+!!! warning "Only the first item in each column is examined"
+
+    The result of `meta` does not tell you whether a table can be [splayed](../kb/splayed-tables.md).
+
+---
 
 :fontawesome-solid-book-open:
 [Metadata](../basics/metadata.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Splayed tables](../kb/splayed-tables.md)
+

@@ -15,7 +15,7 @@ Syntax: `` `x insert y``, ``insert[`x;y]``
 
 Where 
 
--  `x` is a table 
+-  `x` is a table, or a symbol atom naming a non-splayed table
 -  `y` is one or more records that match the columns of `x`; **or** if `x` is undefined, a table
 
 inserts `y` into `x` and returns the new row indexes. 
