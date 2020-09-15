@@ -457,6 +457,10 @@ nav:
       - Kafka:
         - Overview: interfaces/kafka/index.md
         - Reference: interfaces/kafka/reference.md
+      - LDAP:
+        - Overview: interfaces/ldap/index.md
+        - Reference: interfaces/ldap/reference.md
+        - Examples: interfaces/ldap/examples.md
       - MQTT:
         - Overview: interfaces/mqtt/index.md
         - Reference: interfaces/mqtt/reference.md

@@ -62,6 +62,13 @@ The Fusion interface libraries are maintained and supported by Kx.
 	</td>
 </tr>
 <tr>
+	<td class="nowrap">[ldap](https://github.com/KxSystems/ldap)</td>
+	<td>
+		[Solace pub/sub brokers](interfaces/ldap/index.md)
+		==new==
+	</td>
+</tr>
+<tr>
 	<td class="nowrap">[mqtt](https://github.com/KxSystems/mqtt)</td>
 	<td>
 		[Message Queuing Telemetry Transport](interfaces/mqtt/index.md)

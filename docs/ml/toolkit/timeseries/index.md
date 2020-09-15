@@ -8,7 +8,7 @@ keywords: machine learning, ml, time series forecasting, ar, arima, sarima
 
 In time series analysis, time series forecasting is the use of a model to predict the future values of a dataset based on historical observations. Forecasting can be achieved using a wide range of techniques from simple linear regression to complex neural network constructs. Use cases for time series forecasting vary from its use in the prediction of weather patterns, the forecasting of future product sales and the applications in the stock market.
 
-The Machine Learning Toolkit contains a number of implementations of commonly used statistical [forecasting algorithms](arima.md). These include the following models
+The Machine Learning Toolkit contains a number of implementations of commonly used statistical [forecasting algorithms](models.md). These include the following models
 
 1. AutoRegressive (AR)
 2. AutoRegressive Conditional Heteroskedasticity (ARCH)
