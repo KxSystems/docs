@@ -471,6 +471,11 @@ nav:
           - Reference: interfaces/prom/exporter/reference.md
           - Event handlers: interfaces/prom/exporter/event-handlers.md
           - Examples: interfaces/prom/exporter/examples.md
+      - Protobuf:
+        - Overview: interfaces/protobuf/index.md
+        - Type mapping: interfaces/protobuf/protobuf-types.md
+        - Reference: interfaces/protobuf/reference.md
+        - Examples: interfaces/protobuf/examples.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md

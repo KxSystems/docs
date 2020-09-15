@@ -39,7 +39,6 @@ The Fusion interface libraries are maintained and supported by Kx.
 	<td class="nowrap">[hdf5](https://github.com/KxSystems/hdf5)</td>
 	<td>
 		[Hierarchical Data Format 5](interfaces/hdf5/index.md)
-		==new==
 	</td>
 </tr>
 <tr>
@@ -72,13 +71,18 @@ The Fusion interface libraries are maintained and supported by Kx.
 	<td class="nowrap">[mqtt](https://github.com/KxSystems/mqtt)</td>
 	<td>
 		[Message Queuing Telemetry Transport](interfaces/mqtt/index.md)
-		==new==
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)</td>
 	<td>
 		[Expose metrics to Prometheus](interfaces/prom/exporter/index.md)
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[protobuf](https://github.com/KxSystems/protobufkdb)</td>
+	<td>
+		[Protobuf](interfaces/protobuf/index.md)
 		==new==
 	</td>
 </tr>
@@ -98,7 +102,6 @@ The Fusion interface libraries are maintained and supported by Kx.
 	<td class="nowrap">[solace](https://github.com/KxSystems/solace)</td>
 	<td>
 		[Solace pub/sub brokers](interfaces/solace/index.md)
-		==new==
 	</td>
 </tr>
 </table>
