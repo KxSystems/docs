@@ -1,13 +1,12 @@
 ---
-title: Environment – Basics – kdb+ and q documentation
+title: Environment | Basics | kdb+ and q documentation
 description: Environment variables in kdb+ and q keywords for getting and setting them. 
-keywords: environment, kdb+, q, variable
 ---
 # Environment 
 
 
 
-Environment variables in kdb+ and q keywords for getting and setting them. 
+_Environment variables in the operating system, and q keywords for getting and setting them_
 
 ## Variables
 
@@ -15,19 +14,27 @@ Kdb+ refers to the following environment variables.
 
 `QHOME` 
 
-: `$HOME` folder searched for `q.k` and unqualified script names
+: folder searched for `q.k` and unqualified script names
+
+: defaults to `$HOME/q` (LInux, macOS) or `C:\q` (Windows)
 
 `QLIC` 
 
-: `$HOME` folder searched for `k4.lic` or `kc.lic` license key file
+: folder searched for `k4.lic` or `kc.lic` license key file
+
+: defaults to `QHOME`
 
 `QINIT`
 
-: `q.q` additional file loaded after `q.k` has initialised
+: additional file loaded after `q.k` has initialized, executed in the default namespace
+
+: defaults to `$QHOME/q.q`.
 
 `LINES`, `COLUMNS`
 
-: supplied by OS, used to set [`\c`](syscmds.md#c-console-size)
+: used to set [`\c`](syscmds.md#c-console-size)
+
+: default to 25 and 80
 
 
 ## Keywords
@@ -48,9 +55,9 @@ Kdb+ refers to the following environment variables.
 
 : Set the value of an environment variable
 
+----
 
-
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-hand-point-right: 
 environment sections in namespaces
 [`.Q`](../ref/dotq.md),
 [`.z`](../ref/dotz.md) 

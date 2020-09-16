@@ -241,21 +241,33 @@ A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
 
 ## `.Q.chk` (fill HDB)
 
-Syntax: `.Q.chk x`
+```txt
+.Q.chk x
+```
 
-Where `x` is a HDB as a filepath, fills tables missing from partitions using the most recent partition as a template.
+Where `x` is a HDB as a filepath, fills tables missing from partitions using the most recent partition as a template, and reports which partitions (but not which tables) it is fixing.
 
 ```q
 q).Q.chk[`:hdb]
+()
+()
+,`:/db/2009.01.04
+,`:/db/2009.01.03
 ```
 
-Note that q must have write permission for the HDB area so that it can create missing tables. If it signals an error similar to
+??? tip "Q must have write permission for the HDB area to create missing tables"
 
-```q
-'./2010.01.05/tablename/.d: No such file or directory
-```
+    If it signals an error similar to
 
-then check that the process has write permissions for that filesystem.
+    <pre><code class="language-q">
+    './2010.01.05/tablename/.d: No such file or directory
+    </code></pre>
+
+    check the process has write permissions for that filesystem.
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§14.5.2 `.Q.chk`](/q4m3/14_Introduction_to_Kdb%2B/#1457-qchk)
 
 
 ## `.Q.cn` (count partitioned table)
@@ -334,7 +346,7 @@ Where
 -   `d` is a directory handle
 -   `p` is a partition of a database
 -   `f` a field of the table named by
--   `t`, a table handle
+-   `t`, the name (as a symbol) of a simple table whose columns are vectors or compound lists
 -   `s` is the handle of a symtable
 
 saves `t` splayed to partition `p`.
@@ -437,7 +449,9 @@ q).Q.dsftg[d;s;f;t;g]
 
 ## `.Q.en` (enumerate varchar cols)
 
-Syntax: `.Q.en[dir;table]`
+```txt
+.Q.en[dir;table]
+```
 
 Where
 
@@ -446,33 +460,38 @@ Where
 
 the function
 
--   assigns to variable `sym` the list of unique symbols in `table`
 -   creates if necessary the folder `dir`
--   writes in `dir` a file `sym` with the same contents
--   returns `table` with columns enumerated.
+-   gets `sym` from `dir` if it exists
+-   enumerates against `sym` the symbols in `table`
+-   writes `sym` in `dir`
+-   returns `table` with columns enumerated
 
-Tables that are splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
+Tables splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
 
-!!! warning "Locking"
+!!! warning "Locking ensures two processes do not write to the sym file at the same time"
 
-    Enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage.
+    Apart from that, it is up to you to manage.
 
-<i class="fas fa-book""></i>
+:fontawesome-solid-book:
 [`dsave`](dsave.md),
 [Enum Extend](enum-extend.md),
 [`save`](save.md)
 <br>
-<i class="fas fa-graduation-cap""></i>
+:fontawesome-solid-graduation-cap:
 [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
 <br>
-<i class="fas fa-graduation-cap""></i>
+:fontawesome-solid-graduation-cap:
 [Splaying large files](../kb/splaying-large-files.md#enumerating-using-qen)
 <br>
-<i class="far fa-map""></i>
+:fontawesome-regular-map:
 [Data-management techniques](../wp/data-management.md#multiple-enumeration-files)
 <br>
-<i class="far fa-map""></i>
+:fontawesome-regular-map:
 [Working with sym files](../wp/symfiles.md#qen)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb%2B/#1428_working-with-sym-files)
 
 
 ## `.Q.ens` (enumerate against domain)
@@ -1059,7 +1078,9 @@ Where `x` is
 
 ## `.Q.ind` (partitioned index)
 
-Syntax: `.Q.ind[x;y]`
+```txt
+.Q.ind[x;y]
+```
 
 Where
 
@@ -1074,7 +1095,7 @@ When picking individual records from an in-memory table you can simply use the s
 select from table where i<100
 ```
 
-But you can’t do that directly for a partitioned table.
+But you cannot do that directly for a partitioned table.
 
 `.Q.ind` comes to the rescue here, it takes a table and indexes into the table – and returns the appropriate rows.
 
@@ -1376,9 +1397,17 @@ Returns a list of partitioned tables.
 
 ## `.Q.pv` (modified partition values)
 
-Syntax: `.Q.pv`
+```txt
+.Q.pv
+```
+
+A list of the values of the partition domain: the values corresponding to the slice directories actually found in the root.
 
 In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§14.5.3 `.Q.pv`](q4m3/14_Introduction_to_Kdb%2B/#1453_qpv)
 
 
 ## `.Q.PV` (partition values)
@@ -1658,7 +1687,9 @@ Where `x` is
 
 ## `.Q.view` (subview)
 
-Syntax: `.Q.view x`
+```txt
+.Q.view x
+```
 
 Where `x` is a list of partition values that serves as a filter for all queries against any partitioned table in the database, `x` is added as a constraint in the first sub-phrase of the where-clause of every query.
 
@@ -1668,8 +1699,9 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 .Q.view 2#date
 ```
 
-:fontawesome-regular-hand-point-right:
-_Q for Mortals_: [§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
+:fontawesome-solid-hand-point-right:
+_Q for Mortals_
+[§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 
 ## `.Q.vp` (missing partitions)
