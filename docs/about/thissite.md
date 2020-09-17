@@ -64,6 +64,7 @@ We gratefully acknowledge contributions by pull requests from
 -   Rikesh
 -   Thomas Smyth
 -   Sergey Vidyuk
+-   Simon Shanks
 -   William Da Silva
 
 
