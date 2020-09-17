@@ -32,14 +32,15 @@ Functions
 
 _Synchronous bind operations are used to authenticate clients (and the users or applications behind them) to the directory server, to establish an authorization identity that will be used for subsequent operations processed on that connection, and to specify the LDAP protocol version that the client will use. See [here](https://ldap.com/the-ldap-bind-operation/) for reference documentation._
 
-Syntax: `.ldap.bind[sess;dn;cred;mech]`
+Syntax: `.ldap.bind[sess;opts]`
 
 Where
 
 - `sess` is an int/long that represents the session previously created via `.ldap.init`
-- `dn` is a string/symbol. The DN of the user to authenticate. This should be an empty string/symbol or generic null for anonymous simple authentication, and is typically empty for SASL authentication because most SASL mechanisms identify the target account in the encoded credentials. It must be non-empty for non-anonymous simple authentication.
-- `cred` is a char/byte array or symbol. LDAP credentials (e.g. password). Pass empty string/symbol or generic null when no password is required for connection.
-- `mech` is a string/symbol. Pass an empty string/symbol or generic null to use the default LDAP_SASL_SIMPLE mechanism. Query the attribute 'supportedSASLMechanisms' from the  server's rootDSE for the list of SASL mechanisms the server supports.
+- `opts` is a dictionary/generic null defining any non default options which should be considered when performing a bind operation. The following are the possible options (keys) and their associated defaults (values) called using a generic null.
+	- `dn` is a string/symbol. This denotes the user to authenticate. The default behaviour is to operate anonymous simple authentication, this is typical for SASL authentication as most SASL mechanisms identify the target account within the encoded credentials. This should be non-default for non-anonymous simple authentication.
+	- `cred` is a char/byte array or symbol. This denotes the LDAP credentials (e.g. password) to be used. The default behaviour is to assume that no password is required for connection.
+	- `mech` is a string/symbol. This denotes the SASL mechanism which is to be used for authentication. The default mechanism used for this is `LDAP_SASL_SIMPLE`. Query the attribute 'supportedSASLMechanisms' from the  server's rootDSE for the list of SASL mechanisms the server supports.
 
 Returns a dict consisting of
 
@@ -49,7 +50,13 @@ key           | type       | explanation
 `Credentials` | byte array | the credentials returned by the server. Contents are empty for LDAP_SASL_SIMPLE, though for other SASL mechanisms, the credentials may need to be used with other security related functions (which may be external to LDAP). See [here](#security-mechanisms) for more information.
 
 ```q
-q).ldap.bind[0i;`;`;`]
+// Complete a default bind to the server
+q).ldap.bind[0i;::]
+ReturnCode | 0i
+Credentials| `byte$()
+
+// Complete a bind to the server with non default parameters
+q).ldap.bind[0i;enlist[`dn]!enlist `Tom]
 ReturnCode | 0i
 Credentials| `byte$()
 ```
@@ -145,23 +152,23 @@ q).ldap.err2string[-9i]
 
 _Synchronous search for partial or complete copies of entries based on a search criteria._
 
-Syntax: `.ldap.search[sess;baseDn;scope;filter;attrs;attrsOnly;timeLimit;sizeLimit]`
+Syntax: `.ldap.search[sess;scope;filter;opts]`
 
 Where
 
 - `sess` is an int/long that represents the session previously created via .ldap.init
-- `baseDn` is a string/symbol. The base of the subtree to search from. An empty string/symbol or generic null can be used to search from the root (or when a DN is not known).
 - `scope`  is an int/long. The scope value defining the search logic are outlined [here](#scope-reference).
-- filter is a string/symbol. The filter to be applied to the search ([reference](https://ldap.com/ldap-filters/))
-- `attrs` is a symbol list. The set of attributes to include in the result. If a specific set of attribute descriptions are listed, then only those attributes should be included in matching entries. The following special characters and patterns can be used in searches.
-	- The special value `“*”` indicates that all user attributes should be included in matching entries.
-	- The special value `“+”` indicates that all operational attributes should be included in matching entries.
-	- The special value `“1.1”` indicates that no attributes should be included in matching entries.
-	- Some servers may also support the ability to use the `“@”` symbol followed by an object class name (e.g., `“@inetOrgPerson”`) to request all attributes associated with that object class.
-	- If the set of attributes to request is empty, then the server should behave as if the value `“*”` was specified to request that all user attributes be included in entries that are returned.
-- `attrsOnly` is an int/long. Should be set to a non-zero value if only attribute descriptions are wanted. It should be set to zero (0) if both attributes descriptions and attribute values are wanted.
-- `timeLimit` is an int/long. Max number of microseconds to wait for a result. 0 represents no limit. Note that the server may impose its own limit.
-- `sizeLimit` is an int/long. Max number of entries to use in the result. 0 represents no limit. Note that the server may impose its own limit.
+- `filter` is a string/symbol. The filter to be applied to the search ([reference](https://ldap.com/ldap-filters/))
+- `opts` is a dictionary/generic null defining any non default options which should be considered when performing a search operation. The following are the possible options (keys) and their associated defaults (values) called using a generic null.
+	- `baseDn` is a string/symbol. The base of the subtree to search from. The default behaviour is to search from the root (or when a DN is not known).
+	- `attr` is a symbol list. The set of attributes to include in the result. The default behaviour is to assume that `“*”` was specified and all user attributes are to be included in entries that are returned. If a specific set of attribute descriptions are listed, then only those attributes should be included in matching entries. The following special characters and patterns can be used in searches.
+		- The special value `“*”` indicates that all user attributes should be included in matching entries.
+		- The special value `“+”` indicates that all operational attributes should be included in matching entries.
+		- The special value `“1.1”` indicates that no attributes should be included in matching entries.
+		- Some servers may also support the ability to use the `“@”` symbol followed by an object class name (e.g., `“@inetOrgPerson”`) to request all attributes associated with that object class.
+	- `attrsOnly` is an int/long. Denotes if both attributes descriptions and attribute values are to be returned. The default behaviour is to return both attributes descriptions and attribute values. If only attribute descriptions are required then this should be set such that ``` dict[`attrsOnly]>0````
+	- `timeLimit` is an int/long. Max number of microseconds to wait for a result. The default behaviour is to set no time limit i.e. `timeLimit = 0`. Note that the server may impose its own limit.
+	- `sizeLimit` is an int/long. Max number of entries to use in the result. The default behaviour is to set no size limit i.e. `sizeLimit = 0`. Note that the server may impose its own limit.
 
 Returns a dict consisting of
 
@@ -172,10 +179,23 @@ key         | type    | explanation
 `Referrals` | list    | list of strings providing the referrals that can be searched to gain access to the required info (if server supports referrals)
 
 ```q
-// Run a blind search at base level
-q).ldap.search[globalSession;`$"";.ldap.LDAP_SCOPE_BASE;`$"(objectClass=*)";`$();0;0;0]
+// Run a blind/default search at base level
+q)session:0i
+q)scope  :.ldap.LDAP_SCOPE_BASE
+q)filter :"(objectClass=*)"
+q).ldap.search[session;scope;filter;::]
 ReturnCode| 0i
 Entries   | +`DN`Attributes!(,"";,(,`objectClass)!,("top";"OpenLDAProotDSE"))
+Referrals | ()
+
+// Run a non default search
+q)session:0i
+q)scope  :.ldap.LDAP_SCOPE_SUBTREE
+q)filter :"(cn=Amy Wong)"
+q)options:`baseDN`attr!(`$"ou=people,dc=planetexpress,dc=com";`mail`givenName)
+q).ldap.search[session;scope;filter;options]
+ReturnCode| 0i
+Entries   | +`DN`Attributes!(,"cn=Amy Wong+sn=Kroker,ou=people,dc=planetexpress,dc=com";,`givenName`mail!(,"Amy";,"amy@planetexpress.com"))
 Referrals | ()
 ```
 
