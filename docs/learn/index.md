@@ -99,7 +99,7 @@ Other sections:
 section | content
 --------|--------
 :fontawesome-solid-book: [Reference](../ref/index.md) | formal definition of  language elements
-:fontawesome-solid-book-open: [Basics](../ref/basics/application.md)  | core aspects of writing q and using kdb+, such as [using the filesystem](../basics/files.md), [interprocess communication](../basics/ipc.md) 
+:fontawesome-solid-book-open: [Basics](../basics/application.md)  | core aspects of writing q and using kdb+, such as [using the filesystem](../basics/files.md), [interprocess communication](../basics/ipc.md) 
 :fontawesome-solid-street-view: _Q for Mortals_ [<span class="nowrap">§14 Introduction to kdb+</span>](/q4m3/14_Introduction_to_Kdb%2B/) | persisting tables in the filesystem 
 :fontawesome-solid-graduation-cap: [Knowledge Base](../kb/index.md)  | topics in building systems using kdb+ processes 
 :fontawesome-regular-map: [White papers](../wp/index.md) | extended treatments of topics in q programming and in building kdb+ systems
