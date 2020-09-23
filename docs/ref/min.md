@@ -1,8 +1,7 @@
 ---
-title: min, mins, mmin – Reference – kdb+ and q documentation
+title: min, mins, mmin – minima of a list | Reference | kdb+ and q documentation
 description: min, mins and mmin are q keywords that return respectively the smallest item, the cumulative minimums, and the moving minimums of the argument.
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, minimum, moving, q, statistics
 ---
 # `min`, `mins`, `mmin`
 
@@ -15,7 +14,9 @@ _Minimum/s_
 
 _Minimum_
 
-Syntax: `min x`, `min[x]`
+```txt
+min x     min[x]
+```
 
 Where `x` is a sortable list, returns its minimum. 
 The minimum of an atom is itself. Applies to any datatype except symbol. Nulls are ignored, except that if the argument has only nulls, the result is infinity.
@@ -32,7 +33,7 @@ q)min 0N 0N                        / infinity if all null
 q)select min price by sym from t   / use in a select statement
 ```
 
-`min` is an aggregate function.
+`min` is an aggregate function, equivalent to `&/`.
 
 
 
@@ -40,7 +41,9 @@ q)select min price by sym from t   / use in a select statement
 
 _Minimums_
 
-Syntax: `mins x`, `mins[x]`
+```txt
+mins x     mins[x]
+```
 
 Where `x` is a sortable list, returns the running minimums of the prefixes. The minimum of an atom is itself. Applies to any datatype except symbol. Nulls are ignored, except that initial nulls are returned as infinity.
 
@@ -53,21 +56,21 @@ q)mins 0N 5 0N 1 3         / initial nulls return infinity
 0W 5 5 1 1
 ```
 
-`mins` is a uniform function.
+`mins` is a uniform function, equivalent to `&\`.
 
 
 ## `mmin`
 
 _Moving minimums_
 
-Syntax: `x mmin y`, `mmin[x;y]`
+```txt
+x mmin y     mmin[x;y]
+```
 
-Where
+Where `y` is a numeric list and `x` is a 
 
--   `x` is a positive int atom
--   `y` is a numeric list
-
-returns the `x`-item moving minimums of `y`, with nulls treated as the minimum value. The first `x` items of the result are the minimums of the terms so far, and thereafter the result is the moving minimum.
+-   positive int atom, returns the `x`-item moving minimums of `y`, with nulls treated as the minimum value; the first `x` items of the result are the minimums of the terms so far, and thereafter the result is the moving minimum
+-   0 or a negative int, returns `y`
 
 ```q
 q)3 mmin 0N -3 -2 1 -0W 0
@@ -79,11 +82,11 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 `mmin` is a uniform function.
 
 
-:fontawesome-regular-hand-point-right: 
-Knowledge Base: 
-[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: 
+:fontawesome-solid-book-open:
 [Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 
 
 ## Aggregating nulls

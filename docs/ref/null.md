@@ -1,8 +1,7 @@
 ---
-title: null – Reference – kdb+ and q documentation
+title: mark nulls in a list | Reference | kdb+ and q documentation
 description: null is a q keyword that flags where its argument is null.
 author: Stephen Taylor
-keywords: kdb+, null, q
 ---
 # `null`
 
@@ -12,7 +11,9 @@ keywords: kdb+, null, q
 
 _Is null_
 
-Syntax: `null x`, `null[x]`
+```txt
+null x     null[x]
+```
 
 Returns `1b` where `x` is null.
 

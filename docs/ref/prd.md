@@ -1,8 +1,7 @@
 ---
-title: prd, prds – Reference – kdb+ and q documentation
+title: prd, prds – product and running products | Reference | kdb+ and q documentation
 description: prd and prds are q keywords that return respectively the product and the cumulating products of their arguments.
 author: Stephen Taylor
-keywords: aggregate, kdb+, multiply, product, products, q, statistics, uniform
 ---
 # `prd`, `prds`
 
@@ -16,7 +15,9 @@ _Product/s_
 
 _Product_
 
-Syntax: `prd x`, `prd[x]` (aggregate)
+```txt
+prd x    prd[x]
+```
 
 Product: where `x` is
 
@@ -39,14 +40,16 @@ q)prd "abc"
 'type
 ```
 
-`prd` is an aggregate function.
+`prd` is an aggregate function, equivalent to `*/`.
 
 
 ## `prds`
 
 _Products_
 
-Syntax: `prds x`, `prds[x]`
+```txt
+prds x    prds[x]
+```
 
 Where `x` is a numeric list, returns the cumulative products of its items. The product of an atom is itself. Nulls are treated as 1s.
 
@@ -64,7 +67,10 @@ q)prds "abc"                 / type error if list is not numeric
 'type
 ```
 
-`prds` is a uniform function. 
+`prds` is a uniform function, equivalent to `*\`.
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Mathematics](../basics/math.md)
+
+----
+
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)

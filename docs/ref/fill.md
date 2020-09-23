@@ -1,8 +1,7 @@
 ---
-title: Fill operator, fills keyword | Reference | kdb+ and q documentation
+title: Fill operator, fills keyword – replace nulls in a vector | Reference | kdb+ and q documentation
 description: Fill is a q operator that replaces nulls in a vector. fills is a q keyword that replaces nulls in a vector with preceding non-nulls.
 author: Stephen Taylor
-keywords: fill, fills, kdb+, null, q, replace
 ---
 # `^` Fill, `fills`
 
@@ -14,7 +13,9 @@ _Replace nulls_
 
 _Replace nulls_
 
-Syntax: `x^y`, `^[x;y]`
+```txtr
+x^y    ^[x;y]
+```
 
 Where `x` and `y` are conforming lists or dictionaries
 returns `y` with any nulls replaced by the corresponding item of `x`.
@@ -63,7 +64,9 @@ Fill is an atomic function.
 
 _Replace nulls with preceding non-nulls_
 
-Syntax: `fills x`, `fills[x]` 
+```txt
+fills x     fills[x]
+```
 
 Where `x` is a list, returns `x` with any null items replaced by their preceding non-null values, if any.
 
@@ -86,5 +89,32 @@ For a similar function on infinities, first replace them with nulls:
 ```q
 q)fills {(x where x=0W):0N;x} 0N 2 3 0W 0N 7 0W
 0N 2 3 3 3 7 7
+```
+
+The keyword `fills` is defined as  `^\`, which fills forward, meaning that non-null items are filled over succeeding null items.
+
+```q
+q)fills 1 0N 3 0N 0N 5
+1 1 3 3 3 5
+q)fills `x``y```z
+`x`x`y`y`y`z
+q)update fills c2 from ([] `a`b`c`d`e`f; c2:1 0N 3 0N 0N 5)
+x c2
+----
+a 1
+b 1
+c 3
+d 3
+e 3
+f 5
+```
+
+To fill initial nulls apply the derived function as a binary.
+
+```q
+q)fills 0N 0N 3 0N 5
+0N 0N 3 3 5
+q)0 ^\ 0N 0N 3 0N 5
+0 0 3 3 5
 ```
 

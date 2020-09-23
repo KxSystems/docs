@@ -1,32 +1,33 @@
 ---
-title: over, scan – Reference – kdb+ and q documentation
+title: over, scan – wrappers for the Over and Scan accumulating iterators | Reference | kdb+ and q documentation
 description: over and scan are q keywords that are wrappers for the Over and Scan accumulating iterators.
 author: Stephen Taylor
 date: March 2019
-keywords: accumulator, iterator, kdb+, operator, over, q, scan
 ---
 # `over`, `scan`
 
 
 
 
-The keywords `over` and `scan` are covers for the accumulating iterators, [Over and Scan](accumulators.md). 
+The keywords `over` and `scan` are covers for the accumulating iterators, [Over and Scan](accumulators.md).
 It is good style to use `over` and `scan` with unary and binary values.
 
 Just as with Over and Scan, `over` and `scan` share the same syntax and perform the same computation; but while `scan` returns the result of each evaluation, `over` returns only the last.
 
-See the [Accumulators](accumulators.md) for a more detailed discussion. 
+See the [Accumulators](accumulators.md) for a more detailed discussion.
 
 
 ## Converge
 
-Syntax: `v1 over x`, `over[v1;x]`, `v1 scan x`, `scan[v1;x]`  
-Syntax: `(vv)over x`, `over[vv;x]`, `(vv)scan x`, `scan[vv;x]` 
+```txt
+ v1 over x    over[v1;x]        v1 scan x    scan[v1;x]
+(vv)over x    over[vv;x]       (vv)scan x    scan[vv;x]
+```
 
-Where 
+Where
 
 -   `v1` is a unary [applicable value](../basics/glossary.md#applicable-value)
--   `vv` is a [variadic](../basics/variadic.md) applicable value 
+-   `vv` is a [variadic](../basics/variadic.md) applicable value
 
 applies the value progressively to `x`, then to `v1[x]` (or `vv[x]`), and so on, until the result matches (within [comparison tolerance](../basics/precision.md#comparison-tolerance)) either
 
@@ -43,14 +44,16 @@ q){x*x} scan .01
 0.01 0.0001 1e-08 1e-16 1e-32 1e-64 1e-128 1e-256 0
 ```
 
-See the [Accumulators](accumulators.md) for more detail, 
+See the [Accumulators](accumulators.md) for more detail,
 and for the related forms Do and While.
 
 
 
-## MapReduce, Fold 
+## MapReduce, Fold
 
-Syntax: `v2 over x`, `over[v2;x]`, `v2 scan x`, `scan[v2;x]`  
+```txt
+v2 over x   over[v2;x]        v2 scan x   scan[v2;x]
+```
 
 Where `v2` is a binary [applicable value](../basics/glossary.md#applicable-value), applies `v2` progressively between successive items.
 
@@ -63,16 +66,16 @@ q)(*) over 1 2 3 4 5
 120
 ```
 
-See the [Accumulators](accumulators.md) for a more detailed discussion. 
+See the [Accumulators](accumulators.md) for a more detailed discussion.
 
 
 ## Keywords
 
-Q has keywords for common projections of `scan` and `over`. 
+Q has keywords for common projections of `scan` and `over`.
 For example, `sums` is `scan[+;]` and `prd` is `over[*;]`.
 
-Good q style prefers these keywords; 
-i.e. `prd` rather than `over[*;]` or `*/`. 
+Good q style prefers these keywords;
+i.e. `prd` rather than `over[*;]` or `*/`.
 
 ```txt
 keyword  equivalents
@@ -91,4 +94,6 @@ sums     scan[+;]     +\  Add Scan
 ```
 
 
-
+----
+:fontawesome-solid-book:
+[Accumulators](accumulators.md)

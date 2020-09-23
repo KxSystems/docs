@@ -1,12 +1,11 @@
 ---
-title: dev, mdev, sdev – Reference – kdb+ and q documentation
-description: dev, mdev, and sdev are q keywords that return, respectively, the standard deviation, moving deviation, and sample standard deviation of their argument. 
+title: dev, mdev, sdev – standard, moving, and sample standard deviations | Reference | kdb+ and q documentation
+description: dev, mdev, and sdev are q keywords that return, respectively, the standard deviation, moving deviation, and sample standard deviation of their argument.
 author: Stephen Taylor
-keywords: dev, deviation, kdb+, math, mathematics, moving, q, sdev, standard deviation, statistics
 ---
 # `dev`, `mdev`, `sdev`
 
-_Deviation_
+_Deviations_
 
 
 
@@ -15,9 +14,11 @@ _Deviation_
 
 _Standard deviation_
 
-Syntax: `dev x` , `dev[x]`
+```txt
+dev x    dev[x]
+```
 
-Where `x` is a numeric list, returns its [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia") (as the square root of the variance). 
+Where `x` is a numeric list, returns its [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia") (as the square root of the variance).
 Applies to all numeric data types and signals an error with temporal types, char and sym.
 
 ```q
@@ -28,19 +29,23 @@ q)select dev price by sym from trade
 
 `dev` is an aggregate function.
 
+The function `dev` is equivalent to `{sqrt var x}`.
+
 
 ## `mdev`
 
 _Moving deviations_
 
-Syntax: `x mdev y`, `mdev[x;y]`
+```txt
+x mdev y    mdev[x;y]
+```
 
 Where
 
 -   `x` is a positive int atom
 -   `y` is a numeric list
 
-returns the floating-point `x`-item moving deviations of `y`, with any nulls after the first item replaced by zero. The first `x` items of the result are the deviations of the terms so far, and thereafter the result is the moving deviation. 
+returns the floating-point `x`-item moving deviations of `y`, with any nulls after the first item replaced by zero. The first `x` items of the result are the deviations of the terms so far, and thereafter the result is the moving deviation.
 
 ```q
 q)2 mdev 1 2 3 5 7 10
@@ -51,14 +56,16 @@ q)5 mdev 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
 0n 0 0 1.5 2.054805 2.054805
 ```
 
-`mdev` is a uniform function. 
+`mdev` is a uniform function.
 
 
-## `sdev` 
+## `sdev`
 
 _Sample standard deviation_
 
-Syntax: `sdev x`, `sdev[x]`
+```txt
+sdev x    sdev[x]
+```
 
 Where `x` is a numeric list, returns its sample standard deviation as the square root of the [sample variance](var.md#svar).
 
@@ -75,11 +82,18 @@ q)select sdev price by sym from trade
 `sdev` is an aggregate function.
 
 
+----
 
-:fontawesome-regular-hand-point-right: 
-[`var`, `svar`](var.md)  
-Wikipedia: [Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation),
-[Variance](https://en.wikipedia.org/wiki/Variance)  
-financereference.com: [Standard deviation](http://financereference.com/learn/standard-deviation)  
-Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: [Mathematics](../basics/math.md)
+:fontawesome-solid-book:
+[`var`, `svar`](var.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Mathematics](../basics/math.md),
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+<br>
+:fontawesome-brands-wikipedia-w:
+[Standard deviation](https://en.wikipedia.org/wiki/Standard_deviation "Wikipedia"),
+[Variance](https://en.wikipedia.org/wiki/Variance "Wikipedia")
+<br>
+:fontawesome-solid-globe:
+[Standard deviation](http://financereference.com/learn/standard-deviation "financereference.com")

@@ -1,16 +1,16 @@
 ---
-title: in – Reference – kdb+ and q documentation
+title: in | Reference | kdb+ and q documentation
 description: in is a q keyword that flags whether its left argument is an item in its right argument.
 author: Stephen Taylor
 date: June 2019
-keywords: in, kdb+, q, search
 ---
 # `in`
 
 
 
-
-Syntax: `x in y`, `in[x;y]`
+```txt
+x in y    in[x;y]
+```
 
 Where
 
@@ -89,9 +89,14 @@ q)any ` ~/: (1 2;`)
 1b
 ```
 
-:fontawesome-regular-hand-point-right:
+
+----
+
+:fontawesome-solid-book:
 [`except`](except.md),
 [`inter`](inter.md),
-[`union`](union.md)  
-Basics: [Search](../basics/search.md)
+[`union`](union.md)
+<br>
+:fontawesome-solid-book-open:
+[Search](../basics/search.md)
 

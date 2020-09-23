@@ -1,5 +1,5 @@
 ---
-title: Roll, Deal, Permute – Reference – kdb+ and q documentation
+title: Roll, Deal, Permute | Reference | kdb+ and q documentation
 description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
 author: Stephen Taylor
 date: July 2019
@@ -18,10 +18,12 @@ _Random selections, with or without duplicates_
 
 _A list of random selections._
 
-Syntax: `x?y`, `?[x;y]` (Roll)  
-Syntax: `neg[x]?y`, `?[neg[x];y]` (Deal) 
+```txt
+    x?y     ?[x;y]          / Roll
+neg[x]?y    ?[neg[x];y]     / Deal
+```
 
-Where `x` is an int atom, returns a list of `x` randomly selected items, without duplication if `x` is negative. 
+Where `x` is an int atom, returns a list of `x` randomly selected items, without duplication if `x` is negative.
 
 Where `y` is
 
@@ -36,40 +38,38 @@ Where `y` is
     \`brown\`quick\`fox
     </code></pre>
 
--   an **atom**, the result items have the same type as `y` and are generated as follows
-
-y                       | range        | operator
-:----------------------:|--------------|----------
-integer                 | `til y`      | Roll, Deal
-`0Ng`                   | GUIDs        | Roll, Deal
-float, temporal         | 0 to `y`     | Roll 
-`0i`                    | ints         | Roll 
-`0`                     | longs        | Roll 
-`0b`                    | `01b`        | Roll 
-`" "`                   | `.Q.a`       | Roll 
-`0x0`                   | bytes        | Roll
-numeric symbol `` `n``  | symbols, each of `n` chars (`n≤8`) from `abcdefghijklmnop` | Roll 
-
+-   an **atom**, the result items have the same type as `y` and are generated as follows <pre><code class="language-txt">y                    range                            operator
+\----------------------------------------------------------------
+integer              til y                            Roll, Deal
+0Ng                  GUIDs                            Roll, Deal
+float, temporal      0 to y                           Roll
+0i                   ints                             Roll
+0                    longs                            Roll
+0b                   01b                              Roll
+" "                  .Q.a                             Roll
+0x0                  bytes                            Roll
+numeric symbol `n    symbols, each of n chars (n≤8)   Roll
+                     from abcdefghijklmnop </code></pre>
 
 ```q
 q)10?5                                        / roll 10 (5-sided dice)
-4 2 1 1 3 2 0 0 2 2   
-q)-5?20                                       / deal 5 
-13 11 8 12 19   
+4 2 1 1 3 2 0 0 2 2
+q)-5?20                                       / deal 5
+13 11 8 12 19
 q)-10?10                                      / first 10 ints in random order
 9 3 5 7 2 0 6 1 4 8
 q)(asc -10?10)~asc -10?10
 1b
-   
+
 q)-1?0Ng                                      / deal 1 GUID
 ,fd2db048-decb-0008-0176-01714e5eeced
 q)count distinct -1000?0Ng                    / deal 1000 GUIDs
 1000
 
 q)5?4.5                                       / roll floats
-3.13239 1.699364 2.898484 1.334554 3.085937 
+3.13239 1.699364 2.898484 1.334554 3.085937
 
-q)4?2012.09m                                  / roll months    
+q)4?2012.09m                                  / roll months
 2006.02 2007.07 2007.07 2008.06m
 
 q)30?" "
@@ -87,10 +87,7 @@ q)rand `6
 `nemoad
 ```
 
-
-!!! warning "Successive calls of Deal"
-
-    Deal of GUID uses a mix of process ID, current time and IP address to generate the GUID, and successive calls may not allow enough time for the current time reading to change. 
+??? danger "Deal of GUID uses a mix of process ID, current time and IP address to generate the GUID, and successive calls may not allow enough time for the current time reading to change."
 
     <pre><code class="language-q">
     q)count distinct {-1?0ng}each til 10
@@ -100,7 +97,9 @@ q)rand `6
 
 ## Permute
 
-Syntax: `0N?x`
+```txt
+0N?x
+```
 
 Where `x` is
 
@@ -158,9 +157,10 @@ Roll uses the current seed (`\S 0N`). Deal uses a seed based on process properti
 
 error  | cause
 -------|-----------------------------
-length | `neg x` exceeds `count y` 
+length | `neg x` exceeds `count y`
 type   | `x` is negative (Roll only)
 
+----
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-hand-point-right:
 [`rand`](rand.md)

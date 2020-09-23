@@ -1,8 +1,7 @@
 ---
 title: sin, asin – Reference – kdb+ and q documentation
-description: sin and asin are q keywords that return (respectively) the sin and arcsine of their argument. 
+description: sin and asin are q keywords that return (respectively) the sin and arcsine of their argument.
 author: Stephen Taylor
-keywords: asin, arcsine, sin, sine, kdb+, math, mathematics, q, trigonometry
 ---
 # `sin`, `asin`
 
@@ -16,7 +15,9 @@ _Sine, Arcsine_
 
 _Sine_
 
-Syntax: `sin x`, `sin[x]`
+```txt
+sin x    sin[x]
+```
 
 Returns the [sine](https://en.wikipedia.org/wiki/Sine) of `x`, taken to be in radians. The result is between `-1` and `1`, or null if the argument is null or infinity.
 
@@ -30,7 +31,11 @@ q)sin 1%0
 
 ## `asin`
 
-Syntax: `asin x`, `asin[x]`
+_Arcsine_
+
+```txt
+asin x    asin[x]
+```
 
 Returns the [arcsine](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose sine is `x`. The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. (The range is approximate due to rounding errors).
 
@@ -42,8 +47,10 @@ q)asin 0.8
 ```
 
 
-
-:fontawesome-regular-hand-point-right:
-[`cos`, `acos`](cos.md)  
-Basics: [Mathematics](../basics/math.md)
+----
+:fontawesome-solid-book:
+[`cos`, `acos`](cos.md)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
 

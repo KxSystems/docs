@@ -1,8 +1,7 @@
 ---
-title: sum, sums, msum, wsum – Reference – kdb+ and q documentation
-description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument. 
+title: sum, sums, msum, wsum – sum, cumulative sums, moving sums, and weighted sum of a list | Reference | kdb+ and q documentation
+description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument.
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, moving, q, sum, sums, statistics, weight, weighted sum
 ---
 # `sum`, `sums`, `msum`, `wsum`
 
@@ -15,14 +14,16 @@ _Sums_
 
 _Total_
 
-Syntax: `sum x`, `sum[x]`
+```txt
+sum x    sum[x]
+```
 
 Where `x` is
 
-- a simple numeric list, returns the sums of its items
-- an atom, returns `x`
-- a list of numeric lists, returns their sums
-- a dictionary with numeric values
+-   a simple numeric list, returns the sums of its items
+-   an atom, returns `x`
+-   a list of numeric lists, returns their sums
+-   a dictionary with numeric values
 
 Nulls are treated as zeros.
 
@@ -55,7 +56,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
 8 8f
 ```
 
-`sum` is an aggregate function.
+`sum` is an aggregate function, equivalent to `+/`.
 
 
 ## `sums`
@@ -64,7 +65,7 @@ _Running totals_
 
 Syntax: `sums x`, `sums[x]`
 
-Where `x` is a numeric or temporal list, returns the cumulative sums of the items of `x`. 
+Where `x` is a numeric or temporal list, returns the cumulative sums of the items of `x`.
 
 The sum of an atom is itself. Nulls are treated as zeros.
 
@@ -90,7 +91,7 @@ q)sums "abc"                    / type error if list is not numeric
 'type
 ```
 
-`sums` is a uniform function.
+`sums` is a uniform function, equivalent to `+\`.
 
 
 
@@ -117,7 +118,7 @@ q)3 msum 0N 2 3 5 0N 11     / nulls treated as zero
 `msum` is a uniform function.
 
 
-## `wsum` 
+## `wsum`
 
 _Weighted sum_
 
@@ -134,10 +135,14 @@ q)2 wsum 1 2 4       / equivalent to sum 2 * 1 2 4
 
 `wsum` is an aggregate function.
 
-:fontawesome-regular-hand-point-right: 
-Wikipedia: [Weighted sum](https://en.wikipedia.org/wiki/Weight_function)  
-Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: [Mathematics](../basics/math.md)
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+<br>
+:fontawesome-brands-wikipedia-w:
+[Weighted sum](https://en.wikipedia.org/wiki/Weight_function "Wikipedia")
 
 
 ## Aggregating nulls

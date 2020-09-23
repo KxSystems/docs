@@ -10,11 +10,13 @@ keywords: cut, kdb+, keyword, operator, q
 
 
 
-## Cut operator
+## Cut (operator)
 
 _Cut a list or table into sub-arrays_
 
-Syntax: `x _ y`, `_[x;y]`
+```txt
+x _ y     _[x;y]
+```
 
 Where 
 
@@ -60,13 +62,16 @@ s4 p4 300
 s1 p5 400
 ```
 
+!!! tip "Avoid confusion with underscores in names: separate the Cut operator with spaces."
 
 
-## `cut` keyword
+## `cut` (keyword)
 
 _Cut a list or table into a matrix of `x` columns_
 
-Syntax: `x cut y`, `cut[x;y]`
+```txt
+x cut y     cut[x;y]
+```
 
 Where 
 
@@ -82,10 +87,10 @@ q)4 cut til 10
 8 9
 ```
 
-- otherwise `cut` is synonymous with `_` Cut.
+Otherwise `cut` behaves as `_` Cut.
 
 
+----
 
-
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book:
 [Drop](drop.md)

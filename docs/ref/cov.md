@@ -1,6 +1,6 @@
 ---
-title: cov – Reference – kdb+ and q documentation
-description: cov and scov are q keyword, that return respectively the covariance and dsample covariance of two conforming numeric lists.
+title: covariance and sample covariance | Reference | kdb+ and q documentation
+description: cov and scov are q keyword, that return respectively the covariance and sample covariance of two conforming numeric lists.
 keywords: cov, covariance, kdb+, q, statistical covariance, statistics
 ---
 # `cov`, `scov`
@@ -12,7 +12,9 @@ _Covariance_
 
 ## `cov` 
 
-Syntax: `x cov y`, `cov[x;y]`
+```txt
+x cov y    cov[x;y]
+```
 
 Where `x` and `y` are conforming numeric lists returns their [covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia") as a floating-point number. Applies to all numeric data types and signals an error with temporal types, char and sym.
 
@@ -26,6 +28,8 @@ q)select price cov size by sym from trade
 
 
 `cov` is an aggregate function.
+
+The function `cov` is equivalent to `{avg[x*y]-avg[x]*avg y}`.
 
 
 

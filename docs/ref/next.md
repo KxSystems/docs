@@ -1,8 +1,7 @@
 ---
-title: next, prev, xprev – Reference – kdb+ and q documentation
+title: next, prev, xprev – immediate or near neighbours of the items of a list | Reference | kdb+ and q documentation
 description: next, prev, and xprev are q keywords that return the immediate or near neighbours of the items of a list.
 author: Stephen Taylor
-keywords: item, kdb+, list, next, prev, previous, prior, q, select, xprev
 ---
 # `next`, `prev`, `xprev`
 
@@ -15,7 +14,9 @@ _Immediate or near neighbours_
 
 _Next item/s in a list_
 
-Syntax: `next x`, `next[x]`
+```txt
+next x      next[x]
+```
 
 Where `x` is a list, for each item in `x`, returns the next item. 
 
@@ -44,7 +45,9 @@ q)update (next time)-time by sym from quote
 
 _Immediately preceding item/s in a list_
 
-Syntax: `prev x`, `prev[x]`
+```txt
+prev x     prev[x]
+```
 
 Where `x` is a list, for each item, returns the previous item. 
 
@@ -72,15 +75,17 @@ q)update time:prev time by sym from t
 
 _Nearby items in a list_
 
-Syntax: `x xprev y`, `xprev[x;y]`
+```txt
+x xprev y     xprev[x;y]
+```
 
 Where `x` is an integer atom and `y` is a list, returns for each item of `y` the item `x` indices before it. 
 
 The first `x` items of the result are null, empty or blank as appropriate.
 
-!!! tip "`xnext`"
+!!! tip "There is no `xnext` function."
 
-    There is no `xnext` function. Fortunately `xprev` with a negative number on the left can achieve this.
+    Fortunately `xprev` with a negative number on the left can achieve this.
 
 ```q
 q)2 xprev 2 7 5 3 11
@@ -94,8 +99,11 @@ q)1 xprev "abcde"
 
 `xprev` is a right-uniform function.
 
+----
 
-:fontawesome-regular-hand-point-right:
-[Each Prior](../ref/maps.md#each-prior)  
-Basics: [Select](../basics/selection.md)
+:fontawesome-solid-book:
+[Each Prior](../ref/maps.md#each-prior)
+<br>
+:fontawesome-solid-book-open:
+[Selection](../basics/selection.md)
 

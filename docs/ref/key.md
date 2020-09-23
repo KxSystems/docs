@@ -44,8 +44,10 @@ q)key `.q
 So is the default namespace.
 
 ```q
-q)key `           /list namespaces in the root
+q)key `                 / namespaces in the default namespace
 `q`Q`h`o`util`rx
+q)key `.                / obects in the default namespace
+`a`s`b`t`deltas0`x`c
 ```
 
 
@@ -80,6 +82,11 @@ q)f:key`:c:/q
 q)f where f like "*.q"
 `profile.q`sp.q`trade.q
 ```
+
+
+## Whether a folder exists
+
+An empty folder returns an empty symbol vector; a non-existent folder returns an empty general list. 
 
 
 ## Whether a file exists
@@ -185,5 +192,7 @@ q)key 10
 ```
 
 ----
+
 :fontawesome-solid-book-open:
 [Metadata](../basics/metadata.md)
+

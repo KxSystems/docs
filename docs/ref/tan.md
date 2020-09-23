@@ -1,8 +1,7 @@
 ---
-title: tan, atan – Reference – kdb+ and q documentation
-description: tand and atan are q keyowsrd that return the tangent or arctangent of their argument.
+title: tan, atan – tangent and arctangent | Reference | kdb+ and q documentation
+description: tan and atan are q keywords that return the tangent or arctangent of their argument.
 author: Stephen Taylor
-keywords: atan, arctan, tan, tangent, kdb+, math, mathematics, q, trigonometry
 ---
 # `tan`, `atan`
 
@@ -14,7 +13,9 @@ _Tangent and arctangent_
 
 _Tangent_
 
-Syntax: `tan x`, `tan[x]`
+```txt
+tan x    tan[x]
+```
 
 Returns the [tangent](https://en.wikipedia.org/wiki/Tangent) of `x`, taken to be in radians. Integer arguments are promoted to floating point. Null is returned if the argument is null or infinity.
 
@@ -28,7 +29,9 @@ q)tan 0 0.5 1 1.5707963 2 0w
 
 _Arctangent_
 
-Syntax: `atan x`, `atan[x]`
+```txt
+atan x    atan[x]
+```
 
 Returns the [arctangent](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose tangent is `x`. The result is in radians and lies between $-{\pi}{2}$ and ${\pi}{2}$. The range is approximate due to rounding errors.
 
@@ -40,6 +43,8 @@ q)atan 42
 ```
 
 
-:fontawesome-regular-hand-point-right:
-Basics: [Mathematics](../basics/math.md)
+----
+
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
 

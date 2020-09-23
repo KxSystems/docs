@@ -1,16 +1,16 @@
 ---
-title: Join – Reference – kdb+ and q documentation
+title: Join atoms, lists, dictionaries or tables | Reference | kdb+ and q documentation
 description: Join is a q operator that joins atoms, lists, dictionaries or tables.
 author: Stephen Taylor
-keywords: atom, dictionary, join, kdb+, list, q
 ---
 # `,` Join
 
-
-
-Syntax: `x,y` `,[x;y]`
-
 _Join atoms, lists, dictionaries or tables_
+
+
+```txt
+x,y    ,[x;y]
+```
 
 Where `x` and `y` are atoms, lists, dictionaries or tables returns `x` joined to `y`. 
 
@@ -23,7 +23,7 @@ q)(0;1 2.5;01b),(`a;"abc")
 (0;1.00 2.50;01b;`a;"abc")
 ```
 
-The result is a vector if both arguments are vectors or atoms of the same type.
+The result is a vector if both arguments are vectors or atoms of the same type; otherwise a mixed list.
 
 ```q
 q)1 2.4 5,-7.9 10               /float vectors
@@ -46,6 +46,22 @@ q)v,(type v)$0xab
 1.00 2.34 -567.1 20.00 171e
 ```
 
+
+## Dictionaries
+
+When both arguments are dictionaries, Join has upsert semantics.
+
+```q
+q)(`a`b`c!1 2 3),`c`d!4 5
+a| 1
+b| 2
+c| 4
+d| 5
+```
+
+
+## Tables 
+
 Tables can be joined row-wise. 
 
 ```q
@@ -61,6 +77,9 @@ a  b
 11 e
 ```
 
+:fontawesome-solid-book:
+[`uj`](uj.md) union join
+<br>
 :fontawesome-solid-globe:
 [SQL UNION ALL](https://www.w3schools.com/sql/sql_union.asp)
 
@@ -78,6 +97,8 @@ a b c  d
 ```
 
 Join for keyed tables is strict; both the key and data columns must match in names and datatypes.
+
+----
 
 :fontawesome-solid-book: 
 [`.Q.dd`](dotq.md#qdd-join-symbols) join symbols

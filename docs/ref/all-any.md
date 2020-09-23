@@ -2,7 +2,6 @@
 title: all, any – Reference – kdb+ and q documentation
 description: all and any are q keywords that invoke aggregator functions for vectors of flags
 author: Stephen Taylor
-keywords: all, any, boolean, kdb+, logic, q
 ---
 # `all`, `any`
 
@@ -13,16 +12,19 @@ keywords: all, any, boolean, kdb+, logic, q
 
 _Everything is true_
 
-Syntax: `all x`, `all[x]`
 
-Returns a boolean atom `0b`; or `1b` where `x` is 
+```txt
+all x    all[x]
+```
+
+Returns a boolean atom `0b`; or `1b` where `x` is
 
 -   a list and all items are non-zero
 -   a non-zero atom
 -   an empty list
 
-Applies to all datatypes except symbols and GUIDs. 
-Strings are [cast](cast.md) to boolean. 
+Applies to all datatypes except symbols and GUIDs.
+Strings are [cast](cast.md) to boolean.
 
 `all` is an aggregate function.
 
@@ -45,19 +47,21 @@ q)if[all x in y;....]   / use in control structure
 
 
 
-# `any`
+## `any`
 
 _Something is true_
 
-Syntax: `any x`, `any[x]`
+```txt
+any x    any[x]
+```
 
-Returns a boolean atom `0b`; or `1b` where `x` is 
+Returns a boolean atom `0b`; or `1b` where `x` is
 
 -   a list with at least one non-zero item
 -   a non-zero atom
 
-Applies to all datatypes except symbols and GUIDs. 
-Strings are [cast](cast.md) to boolean. 
+Applies to all datatypes except symbols and GUIDs.
+Strings are [cast](cast.md) to boolean.
 
 `any` is an aggregate function.
 
@@ -78,11 +82,14 @@ q)any 2000.01.01 2000.01.02
 q)if[any x in y;....]   / use in control structure
 ```
 
+----
 
-:fontawesome-regular-hand-point-right:
+:fontawesome-solid-book:
 [Cast](cast.md),
-[`&` `and`](lesser.md), 
-[`|` `or`](greater.md), 
-[`max`](max.md), 
-[`min`](min.md)  
-Basics: [Logic](../basics/logic.md)
+[`&` `and`](lesser.md),
+[`|` `or`](greater.md),
+[`max`](max.md),
+[`min`](min.md)
+<br>
+:fontawesome-solid-book-open:
+[Logic](../basics/logic.md)

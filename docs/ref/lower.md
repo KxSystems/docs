@@ -14,9 +14,11 @@ _Shift case_
 
 ## `lower`
 
-_Lower case_
+_Shift to lower case_
 
-Syntax: `lower x`, `lower[x]`
+```txt
+lower x     lower[x]
+```
 
 Returns symbol or string `x` with any bicameral characters in the lower case. 
 
@@ -30,9 +32,11 @@ q)lower`IBM
 
 ## `upper`
 
-_Upper case_
+_Shift to upper case_
 
-Syntax: `upper x`, `upper[x]`
+```txt
+upper x     upper[x]
+```
 
 Returns symbol or string `x` with any bicameral characters in the upper case. 
 
@@ -44,5 +48,7 @@ q)upper`ibm
 ```
 
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Strings](../basics/strings.md)
+----
+
+:fontawesome-solid-book-open:
+[Strings](../basics/strings.md)

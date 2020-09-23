@@ -2,7 +2,6 @@
 title: Count the items of a list or dictionary | Reference | kdb+ and q documentation
 description: count and mcount are q keywords count returns the number of items in a list. mcount returns a moving count of the non-null items of a list. 
 author: Stephen Taylor
-keywords: count, kdb+, length, list, q, shape, table
 ---
 # `count`, `mcount`
 
@@ -20,10 +19,11 @@ _Number of items_
 count x     count[x]
 ```
 
-Where `x` is an atom or list, returns
+Where `x` is
 
--   for a list, the number of its items
--   for an atom, 1
+-   a list, returns the number of its items
+-   a dictionary, the number of items in its value
+-   anything else, 1
 
 ```q
 q)count 0                            / atom
@@ -41,6 +41,11 @@ q)count ([]city:`London`Paris`Berlin; country:`England`France`Germany)
 3
 q)count each ([]city:`London`Paris`Berlin; country:`England`France`Germany)
 2 2 2
+
+q)count ({x+y})
+1
+q)count (+/)
+1
 ```
 
 Use with [`each`](maps.md#each) to count the number of items at each level of a list or dictionary.
@@ -93,7 +98,10 @@ q)3 mcount 0N 1 2 3 0N 5
 
 :fontawesome-solid-graduation-cap:
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
-<br>
+
+
+----
+
 :fontawesome-solid-book-open:
 [Mathematics](../basics/math.md)
 

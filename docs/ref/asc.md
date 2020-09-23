@@ -2,7 +2,6 @@
 title: asc, iasc, xasc – ascending sort | Reference | kdb+ and q documentation
 description: Ascending sorts in q; asc returns a sortable argument in ascending order; iasc grades its items into ascending order; xasc sorts a table by columns.
 author: Stephen Taylor
-keywords: asc, ascending, grade, iasc, kdb+, q, sort, table, xasc
 ---
 # `asc`, `iasc`, `xasc`
 
@@ -18,12 +17,14 @@ _Sort and grade: ascending_
 
 _Ascending sort_
 
-Syntax: `asc x`, `asc[x]`
+```txt
+asc x     asc[x]
+```
 
 Where `x` is a:
 
 -   **vector**, returns its items in ascending order of value, with the [sorted attribute](set-attribute.md) set, indicating the list is sorted; where the argument vector is found to be in ascending order already, it is assigned the sorted attribute
--   **mixed list**, returns the items sorted within datatype
+-   **mixed list**, returns the items sorted within datatype and with the sorted attribute set
 -   **dictionary**, returns it sorted by the values and with the sorted attribute set
 -   **table**, returns it sorted by the first non-key column and with the partitioned attribute set on it
 
@@ -132,7 +133,9 @@ c2 | j
 
 _Ascending grade_
 
-Syntax: `iasc x`, `iasc[x]`
+```txt
+iasc x    iasc[x]
+```
 
 Where `x` is a list or dictionary, returns the indexes needed to sort list `x` in ascending order. 
 
@@ -148,6 +151,15 @@ q)iasc `a`c`b!1 2 3
 `a`c`b
 ```
 
+Reverse a sort with `iasc iasc`:
+
+```q
+q)x:100?100
+q)b:100?.Q.a
+q)c:b iasc x
+q)b~c iasc iasc x
+1b
+```
 
 
 ## `xasc`
@@ -159,7 +171,9 @@ _Sort a table in ascending order of specified columns._
 ![xasc](../img/xasc.png) 
 </div>
 
-Syntax: `x xasc y`, `xasc[x;y]`
+```txt
+x xasc y     xasc[x;y]
+```
 
 Where `x` is a symbol vector of column names defined in table `y`, which is passed by
 
@@ -267,7 +281,7 @@ a 43 2
 ```
 
 
-!!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
+!!! warning "Duplicate keys in a dictionary or duplicate column names in a table cause sorts and grades to return unpredictable results."
 
 
 ----

@@ -2,7 +2,6 @@
 title: neg | Reference | kdb+ and q documentation
 description: neg is a q keyword that returns the negation of its argument. 
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, neg, negate, negative, q
 ---
 # `neg`
 
@@ -10,7 +9,9 @@ _Negate_
 
 
 
-Syntax: `neg x`, `neg[x]`
+```txt
+neg x    neg[x]
+```
 
 Returns the negation of boolean or numeric `x`. 
 A null has no sign, so is its own negation. 
@@ -44,6 +45,7 @@ range  i . i h i j e f i . p m d z n u v t
 Range: `ihjefpmdznuvt`
 
 
+---- 
 :fontawesome-solid-book:
 [`not`](not.md), 
 [Subtract](subtract.md) 
@@ -53,5 +55,8 @@ Range: `ihjefpmdznuvt`
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§4.3.2 Not Zero `not`](/q4m3//4_Operators/#431-equality-and-disequality), 
+[§4.3.2 Not Zero `not`](/q4m3//4_Operators/#431-equality-and-disequality)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
 [§4.9.2 Temporal Arithmetic](/q4m3/4_Operators/#492-temporal-arithmetic)

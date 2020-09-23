@@ -51,6 +51,10 @@ It is good q style to use `each` and `peach` for unary values.
 <br>
 :fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[A.68 `peach`](/q4m3/A_Built-in_Functions/#a68-peach)
 
 
 ## Higher-rank values

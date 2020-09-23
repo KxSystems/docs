@@ -1,16 +1,16 @@
 ---
-title: md5 – Reference – kdb+ and q documentation
+title: md5 – message Digest Algorithm 5 hash | Reference | kdb+ and q documentation
 description: md5 is a q keyword that returns the Message Digest (MD5 hash) of a string.
 author: Stephen Taylor
-keywords: cryptography, hash, kdb+, md5, q, string
 ---
 # `md5`
 
 _Message Digest hash_
 
 
-
-Syntax `md5 x`, `md5[x]` 
+```txt
+md5 x    md5[x]
+```
 
 Returns the [MD5 (Message-Digest algorithm 5)](https://en.wikipedia.org/wiki/MD5) of string `x`. 
 
@@ -21,5 +21,7 @@ q)md5 "this is a not so secret message"
 ```
 
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Strings](../basics/strings.md)
+----
+
+:fontawesome-solid-book-open:
+[Strings](../basics/strings.md)

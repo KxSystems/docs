@@ -1,5 +1,5 @@
 ---
-title: Enum Extend  – Reference – kdb+ and q documentation
+title: Enum Extend | Reference | kdb+ and q documentation
 description: Enum Extend is a q operator that extends an enumeration.
 author: Stephen Taylor
 ---
@@ -10,7 +10,10 @@ author: Stephen Taylor
 
 _Extend an enumeration_
 
-Syntax: `x?y`, `?[x;y]` 
+
+```txt
+x?y    ?[x;y]
+```
 
 Where 
 
@@ -20,7 +23,7 @@ Where
 
 ## Variable
 
-fills in any missing items in `x`, returns `y` as an enumeration of the variable named in `x` with filling in missing items in it. (Unlike [Enumerate](enumerate.md).)
+fills in any missing items in `x`, then returns `y` as an enumeration of it. (Unlike [Enumerate](enumerate.md).)
 
 ```q
 q)foo:`a`b
@@ -40,7 +43,7 @@ q)`foo$`g#y
 ```
 
 
-## :fontawesome-solid-database: Filepath
+## Filepath
 
 fills in any missing items in file `x`, loads it into the session as a variable of the same name, and returns `y` as an enumeration of it.
 

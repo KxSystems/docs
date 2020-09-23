@@ -1,20 +1,21 @@
 ---
-title: enlist – Reference – kdb+ and q documentation
+title: enlist – make a 1-item list | Reference | kdb+ and q documentation
 description: enlist is a q keyword that makes a 1-list from its arguments.
 author: Stephen taylor
-keywords: kdb+,list, q
 ---
 # `enlist`
 
-_Make a single-item list._
+_Make a list._
 
 
 
+```txt
+enlist x    enlist[x]    enlist[x;y;z;…]
+```
 
-Syntax: `enlist x`, `enlist[x]`
+Returns a list with its argument/s as items.
 
-Returns a list with `x` as its sole item. 
-
+The most common use is to make a 1-item list. 
 An atom is not a one-item list. `enlist` and `first` convert between the two.
 
 ```q
@@ -33,7 +34,7 @@ q)b~first c
 1b
 ```
 
-With multiple arguments returns a single list.
+The result has as many items as the keyword is applied to.
 
 ```q
 q)show a:enlist[til 5;`ibm`goog;"hello"]
@@ -44,7 +45,14 @@ q)count a
 3
 ```
 
-Where `x` is a dictionary, the result is the corresponding table.
+Unlike user-defined functions, `enlist` is not limited to 8 arguments.
+
+```q
+q)count b:enlist[0;`1;"two";3;`four;5;`6;"seven";8;`nine]
+10
+```
+
+Where `x` is a dictionary, the result is a 1-item table.
 
 ```q
 q)enlist `a`b`c!(1;2 3; 4)
@@ -54,7 +62,8 @@ a b   c
 ```
 
 !!! tip "Atoms to lists"
-    If you need to ensure, say, all items in a list are themselves lists and not atoms, use `(),`, which leaves lists unchanged. 
+
+    To ensure all items in a list are themselves lists and not atoms, use `(),`, which leaves lists unchanged. 
 
     For example, `{(),x} each foo` converts any atoms in list `foo` into singleton lists.
 
