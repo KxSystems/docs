@@ -1,5 +1,5 @@
 ---
-title: Te worldwide community of q and kdb+ developers | kdb+ and q documentation
+title: The worldwide community of q and kdb+ developers | kdb+ and q documentation
 description: The community of kdb+ developers is active around the world and around the clock.
 author: Stephen Taylor
 ---
@@ -37,7 +37,7 @@ Please send your kdb+ repository URLs to librarian@kx.com.
 
 Use [meetup.com](https://www.meetup.com) to find Kx events round the world. 
 
-If you have a suggestion for a Meetup presentation, please write to [Rebecca Kelly](mailto:rebecca@kx.com). 
+If you have a suggestion for a Meetup presentation, please write to [evangelism@kx.com](mailto:evangelism@kx.com). 
 
 
 ## :fontawesome-brands-twitter: Twitter
