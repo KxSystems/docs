@@ -34,7 +34,7 @@ The following image shows a graphical representation of such a node followed by 
 ```q
 // Node taking one input of float type and outputting one dictionary
 q)nodeInputs:"f"
-q)nodeOutputs:"!"
+q)nodeOutputs:"f"
 q)nodeFunction:{x wsum x}
 q)node:`inputs`outputs`function!(nodeInputs;nodeOutputs;nodeFunction)
 
@@ -177,9 +177,9 @@ Syntax: `.ml.connectEdge[graph;srcNode;srcName;destNode;destName]`
 Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`
-* `srcNode` is a symbol denoting the name of a node in the graph which contains a relevant output.
+* `srcNode` is a symbol denoting the name of a node in the graph which contains the relevant output.
 * `srcName` is a symbol denoting the name of the output to be connected to an associated input node.
-* `destNode` is a symbol denoting the name of a node in the graph which contains a relevant input to be connected to.
+* `destNode` is a symbol denoting the name of a node in the graph which contains the relevant input to be connected to.
 * `destName` is a symbol denoting the name of the input which is connected to the output defined by `srcNode` and `srcName`.
 
 returns the graph with the relevant connection made between the inputs and outputs of two nodes
@@ -250,8 +250,11 @@ nodeId       |    function                                                   ..
 -------------| --------------------------------------------------------------..
              | :: ::                                                         ..
 configuration| :: @[;`xdata`ydata!(+`x`x1!(0.06165008 0.285799 0.6684724 0.91..
+
 // Delete the configuration node
 q)graph:.ml.delCfg[graph;`configuration]
+
+
 // Display the graph nodes 
 q)show graph.nodes
 nodeId|    function inputs outputs
@@ -279,8 +282,10 @@ nodeId |    function inputs         outputs
 -------| -------------------------------------------
        | :: ::       ::             ::              
 newNode| :: {x}      (,`input)!,"!" (,`srcName)!,"!"
+
 // Delete the configuration node
 q)graph:.ml.delNode[graph;`newNode]
+
 // Display the graph nodes 
 q)show graph.nodes
 nodeId|    function inputs outputs
@@ -300,7 +305,7 @@ Where
 * `destNode` is the name as a symbol of the node containing the edge to be deleted.
 * `destName` is the name as a symbol of the edge associated with a specific input to be deleted.
 
-returns the graph with the edge connected to the destination input deleted from the graph
+returns the graph with the edge connected to the destination input removed from the graph
 
 ```q
 // Display the graph prior to disconnection of an edge
@@ -310,8 +315,10 @@ dstNode  dstName | srcNode srcName valid
                  |                 0    
 srcNode  input   |                 0    
 destNode destName| srcNode srcName 1    
+
 // Disconnect an edge
 q)graph:.ml.disconnectEdge[graph;`destNode;`destName]
+
 // Display the graph edges post disconnection
 q)graph.edges
 dstNode  dstName | srcNode srcName valid
@@ -342,6 +349,7 @@ nodeId       |    function                                                inp..
 -------------| --------------------------------------------------------------..
              | :: ::                                                      :: ..
 configuration| :: ![,`output]@[enlist]@[;`xdata`ydata!(,0.3138309;`test)] (`s..
+
 // Update the configuration node content
 q)graph:.ml.updCfg[graph;`configuration;enlist[`xdata]!enlist 2?1f]
 q)graph.nodes
@@ -376,11 +384,14 @@ nodeId  |    function                inputs            outputs
         | :: ::                      ::                ::
 srcNode | :: {x}                     (,`input)!,"!"    (,`srcName)!,"!"
 destNode| :: ![,`output]@[enlist]{x} (,`destName)!,"!" (,`output)!,"F" 
+
+
 // Generate node content to overwrite the function for srcNode
 q)updSrcInput:"!"
 q)updSrcOutput:enlist[`srcName]!enlist "!"
 q)updSrcFunction:{x+1}
 q)updSrc:`inputs`outputs`function!(updSrcInput;updSrcOutput;updSrcFunction)
+
 // Overwrite the functional node
 q)graph:.ml.updNode[graph;`srcNode;updSrc]
 q)show graph.nodes

@@ -35,6 +35,12 @@ SARIMA Model
 <i class="fab fa-github"></i>
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
+When dealing with time series statistical models it is important to define endogenous and exogenous variables as they are used widely within the literature
+
+| Type       | Definition|
+|------------|:----------|
+| Endogenous | The values of this variable are determined by the model i.e. form the basis for a 'target' variable to be predicted |
+| Exogenous  | This is any variable whose value is determined outside of the model and which may impose an effect on the endogenous variable i.e. if there is a national holiday this may effect the endogenous variable but is completely independent of its behaviour.|
 
 ## AutoRegressive (AR) model
 
@@ -134,7 +140,7 @@ q).ml.ts.AR.predict[ARmdl;exogFuture;10]
 
 ## AutoRegressive Conditional Heteroskedasticity (ARCH) model
 
-An ARCH model is used to describe the volatility of a time series data. In this model, the variance within the time series is modelled as the sum of the past residual errors squared and follows the same pattern as an AR model  mentioned [above](#autoregressive-ar-model). ARCH models are used in time series data that experience time-varying volatility.
+An ARCH model is a statistical model used to describe the volatility of a time series. This models the variance of a point in the data series as a function of the sum the past residual errors squared. This model is appropriate to use when the error variance in the time series follows an AR model as described [above](#autoregressive-ar-model). ARCH models are used in time series data that experience time-varying volatility and as such are commonly employed in the modeling of financial time series exhibiting varying volatility.
 
 The formula for an ARCH model is given by:
 
@@ -148,7 +154,7 @@ Where:
 
 ### `.ml.ts.ARCH.fit`
 
-_Fit an AutoRegressive Conditional Heteroskedasticity model to provided residual errors from a fitted AR model_
+_Fit an ARCH model based on a provided set of residual errors retrieved from a fitted AR model_
 
 Syntax: `.ml.ts.ARCH.fit[resid;lags]`
 
@@ -157,7 +163,7 @@ Where
 -  `resid` is the residual errors obtained from the results of a fitted AR model
 -  `lags` the number of previous error terms to include
 
-returns a dictionary containing the model parameters and data to be used for the forecasting of future volatility values 
+returns a dictionary containing the model parameters and data to be used for the forecasting of future volatility
 
 key        |  Explanation
 -----------|---------------------------
@@ -184,16 +190,19 @@ Syntax:`.ml.ts.ARCH.pred[mdl;len]`
 
 Where
 
--  `mdl` dictionary returned from a fitted ARCH model
--  `len` number of future volatility values that are to be predicted
+-  `mdl` is a dictionary returned from a fitting an ARCH model
+-  `len` number of future volatility values to be predicted
 
 ```q
+// Generate an ARCH model for use in prediction
 q)residuals:100?10f
 q)show ARCHmdl:.ml.ts.ARCH.fit[residuals;1]
 params  | 37.38337 -0.07879272
 tr_param| 37.38337
 p_param | ,-0.07879272
 resid   | ,26.18578
+
+// Predict volatility based on a fitted model
 q).ml.ts.ARCH.predict[ARCHmdl;10]
 35.32012 34.6004 34.65711 34.65264 34.65299 34.65296 34.65296 34.65296 34.652.
 ```
@@ -521,7 +530,7 @@ P| 2
 D| 0
 Q| 1
 m| 10
-q).ml.ts.SARIMA.fit[timeSeries;exogVar;3;0;1;s]
+q).ml.ts.SARIMA.fit[timeSeries;exogVar;3;0;1;1b;s]
 params    | 7.884855 0.06814395 -1.941512 0.07451696 0.06945657 -0.02878508 0..
 tr_param  | 7.884855
 exog_param| 0.06814395 -1.941512

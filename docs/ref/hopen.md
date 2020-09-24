@@ -22,6 +22,8 @@ Connections are opened and closed respectively by `hopen` and `hclose`.
 
 ## :fontawesome-solid-handshake: `hopen`
 
+_Open a connection to a file or process_
+
 ```txt
 hopen filehandle
 hopen processhandle
@@ -58,6 +60,8 @@ hopen each(`:mysymbol;
 
 
 ## :fontawesome-solid-handshake-slash: `hclose`
+
+_Close a connection to a file or process_
 
 ```txt
 hclose x     hclose[x]
@@ -189,5 +193,5 @@ It is more efficient to keep a connection open if there is an opportunity to re-
 [SSL/TLS](../kb/ssl.md)
 <br>
 :fontawesome-solid-street-view:
-_Q for mortals_
+_Q for Mortals_
 [§11.6.2 Opening a Connection Handle](/q4m3/11_IO/#1162-opening-a-connection-handle)

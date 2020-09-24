@@ -49,8 +49,8 @@ Environment                        [pf     partition field](#qpf-partition-field
                                    [pv     modified partition values](#qpv-modified-partition-values)
 IPC                                [vp     missing partitions](#qvp-missing-partitions)
  [addr     IP address](#qaddr-ip-address)
- [fps      streaming algorithm](#qfps-streaming-algorithm)     Segmented database state
- [fsn      streaming algorithm](#qfsn-streaming-algorithm)      [D      partitions](#qd-partitions)
+ [fps fpn  streaming algorithm](#qfpn-streaming-algorithm)     Segmented database state
+ [fs  fsn  streaming algorithm](#qfs-streaming-algorithm)       [D      partitions](#qd-partitions)
  [hg       HTTP get](#qhg-http-get)                 [P      segments](#qp-segments)
  [host     hostname](#qhost-hostname)                 [u      date based](#qu-date-based)
  [hp       HTTP post](#qhp-http-post)
@@ -671,39 +671,45 @@ q)fmt[9] each 34.4 343434.358
 ```
 
 
-<!-- FIXME
-## `.Q.fpn` (streaming algorithm?)
-
-Syntax:
-
-Blah blah blah
-
-:fontawesome-regular-graduation-cap:
-[Named Pipes](../kb/named-pipes.md)
- -->
-
+## `.Q.fpn` (streaming algorithm)
 ## `.Q.fps` (streaming algorithm)
 
-Syntax: `.Q.fps[x;y]`
+_`.Q.fs` for pipes_
 
-`.Q.fs` for pipes. (Since V3.4)
+```txt
+.Q.fps[x;y]
+.Q.fpn[x;y;z]
+```
 
-Reads conveniently sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
+(Since V3.4)
+
+Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
 
 :fontawesome-solid-graduation-cap:
 [Named Pipes](../kb/named-pipes.md)
 
+!!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
+
 
 ## `.Q.fs` (streaming algorithm)
+## `.Q.fsn` (streaming algorithm)
 
-Syntax: `.Q.fs[x;y]`
+```txt
+.Q.fs[x;y]
+.Q.fsn[x;y;z]
+```
 
 Where
 
 -   `x` is a unary value
 -   `y` is a filepath
+-   `z` is an integer
 
-loops through `y` (grabbing conveniently sized lumps of complete `"\n"`-delimited records) and applies `x` to each record. This enables you to implement a streaming algorithm to load a large CSV file into an on-disk database without holding the data in memory all at once.
+loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk database without holding the data in memory all at once.
+
+`.Q.fsn` is almost identical to `.Q.fs` but takes an extra argument `z`, the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and RAM usage.
+
+!!! tip "`.Q.fsn` is a projection of `.Q.fs` with the chunk size set to 131000 bytes."
 
 For example, assume that the file `potamus.csv` contains the following:
 
@@ -730,23 +736,6 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 
 :fontawesome-solid-graduation-cap:
 [Loading large CSV files](../kb/loading-from-large-files.md)
-
-
-## `.Q.fsn` (streaming algorithm)
-
-Syntax: `.Q.fsn[x;y;z]`
-
-Where
-
--   `x` is a unary value
--   `y` is a filepath
--   `z` is an integer
-
-loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk database without holding the data in memory all at once.
-
-`.Q.fsn` is almost identical to `.Q.fs` but takes an extra argument `z`, the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and RAM usage.
-
-!!! tip "`.Q.fs` is a projection of `.Q.fsn` with the chunk size set to 131000 bytes."
 
 
 ## `.Q.ft` (apply simple)

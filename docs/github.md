@@ -39,7 +39,6 @@ The Fusion interface libraries are maintained and supported by Kx.
 	<td class="nowrap">[hdf5](https://github.com/KxSystems/hdf5)</td>
 	<td>
 		[Hierarchical Data Format 5](interfaces/hdf5/index.md)
-		==new==
 	</td>
 </tr>
 <tr>
@@ -62,16 +61,28 @@ The Fusion interface libraries are maintained and supported by Kx.
 	</td>
 </tr>
 <tr>
+	<td class="nowrap">[ldap](https://github.com/KxSystems/ldap)</td>
+	<td>
+		[Solace pub/sub brokers](interfaces/ldap/index.md)
+		==new==
+	</td>
+</tr>
+<tr>
 	<td class="nowrap">[mqtt](https://github.com/KxSystems/mqtt)</td>
 	<td>
 		[Message Queuing Telemetry Transport](interfaces/mqtt/index.md)
-		==new==
 	</td>
 </tr>
 <tr>
 	<td class="nowrap">[prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)</td>
 	<td>
 		[Expose metrics to Prometheus](interfaces/prom/exporter/index.md)
+	</td>
+</tr>
+<tr>
+	<td class="nowrap">[protobuf](https://github.com/KxSystems/protobufkdb)</td>
+	<td>
+		[Protobuf](interfaces/protobuf/index.md)
 		==new==
 	</td>
 </tr>
@@ -91,7 +102,6 @@ The Fusion interface libraries are maintained and supported by Kx.
 	<td class="nowrap">[solace](https://github.com/KxSystems/solace)</td>
 	<td>
 		[Solace pub/sub brokers](interfaces/solace/index.md)
-		==new==
 	</td>
 </tr>
 </table>
@@ -459,6 +469,13 @@ The Fusion interface libraries are maintained and supported by Kx.
 </td>
 </tr>
 <tr>
+<td class="nowrap"><a href="https://shahdee.gitlab.io/miq/#/">miQ ==new==</a></td>
+<td>Divide an application into modules <span class="author"><a href="https://gitlab.com/Shahdee">
+						(Michal Širochman)
+					</a></span>
+</td>
+</tr>
+<tr>
 <td class="nowrap"><a href="https://github.com/aa1024/nexusQ">nexusQ</a></td>
 <td>Visualizer for q process network. <span class="author"><a href="https://github.com/aa1024/?tab=repositories">
 						(Ali Kapadiya)
@@ -565,7 +582,14 @@ The Fusion interface libraries are maintained and supported by Kx.
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/ktsr42/qtb">qtb ==new==</a></td>
+<td class="nowrap"><a href="https://github.com/ktsr42/qtb">qtb</a></td>
+<td>Unit testing framework. <span class="author"><a href="https://github.com/ktsr42?tab=repositories">
+						(Klaas Teschauer)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/ktsr42/qtb">qtb</a></td>
 <td>Unit testing framework. <span class="author"><a href="https://github.com/ktsr42?tab=repositories">
 						(Klaas Teschauer)
 					</a></span>
@@ -630,7 +654,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 </td>
 </tr>
 <tr>
-<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q</a> ==new==</td>
+<td class="nowrap"><a href="https://github.com/prodrive11/yATF.q">yATF.q</a></td>
 <td>CI and test runners <span class="author"><a href="https://github.com/prodrive11?tab=repositories">
 						(Patryk Bukowinski)
 					</a></span>
@@ -1047,6 +1071,13 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td class="nowrap"><a href="https://github.com/jonathonmcmurray/ws.q">ws.q</a></td>
 <td>Simple library for websockets. <span class="author"><a href="https://github.com/jonathonmcmurray?tab=repositories">
 						(Jonathon McMurray)
+					</a></span>
+</td>
+</tr>
+<tr>
+<td class="nowrap"><a href="https://github.com/caolanraff/xls">xls ==new==</a></td>
+<td>Format cells in an Excel document <span class="author"><a href="https://github.com/caolanraff?tab=repositories">
+						(Caolan Rafferty)
 					</a></span>
 </td>
 </tr>

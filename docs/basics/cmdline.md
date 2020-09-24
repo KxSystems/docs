@@ -56,7 +56,9 @@ q)
 
 ## `-b` (blocked)
 
-Syntax: `-b`
+```txt
+-b
+```
 
 Block write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
 
@@ -94,7 +96,9 @@ q)\_
 
 ## `-c` (console size)
 
-Syntax: `-c r c`
+```txt
+-c r c
+```
 
 Set console maximum rows and columns, default 25 80.
 
@@ -104,7 +108,9 @@ Set console maximum rows and columns, default 25 80.
 
 ## `-C` (HTTP size)
 
-Syntax: `-C r c`
+```txt
+-C r c
+```
 
 Set HTTP display maximum rows and columns.
 
@@ -115,7 +121,9 @@ Set HTTP display maximum rows and columns.
 
 ## `-e` (error traps)
 
-Syntax: `-e [0|1|2]`
+```txt
+-e [0|1|2]
+```
 
 Sets error-trapping mode.
 The default is 0 (off).
@@ -127,13 +135,13 @@ The default is 0 (off).
 
 ## `-E` (TLS Server Mode)
 
-Syntax: `-E x` (since V3.4)
+```txt
+-E 0        / plain
+-E 1        / plain & TLS
+-E 2        / TLS only
+```
 
-x   | mode
---- | ----
-0   | plain
-1   | plain & TLS
-2   | TLS only
+Since V3.4.
 
 :fontawesome-solid-book-open:
 [`\E` system command](syscmds.md#e-tls-server-mode)
@@ -144,12 +152,12 @@ x   | mode
 
 ## `-g` (garbage collection)
 
-Syntax: `-g [0|1]`
+```txt
+-g 0        / deferred (default)
+-g 1        / immediate
+```
 
-Sets garbage-collection mode:
-
--   0 for deferred (default)
--   1 for immediate
+Sets garbage-collection mode.
 
 :fontawesome-solid-book-open:
 [`\g` system command](syscmds.md#g-garbage-collection-mode) for detail
@@ -158,7 +166,9 @@ Sets garbage-collection mode:
 
 ## `-l` (log updates)
 
-Syntax: `-l`
+```txt
+-l
+```
 
 Log updates to filesystem.
 
@@ -168,7 +178,9 @@ Log updates to filesystem.
 
 ## `-L` (log sync)
 
-Syntax: `-L`
+```txt
+-L
+```
 
 As `-l`, but sync logging.
 
@@ -178,16 +190,20 @@ As `-l`, but sync logging.
 
 ## `-m` (memory-domain)
 
-Syntax: `-m path`
+```txt
+-m path
+```
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
 This command-line option directs kdb+ to use the filesystem path specified as a separate memory domain. This splits every thread’s heap into two:
 
-domain | description
--------|------------
-0      | regular anonymous memory, active and used for all allocs by default
-1      | filesystem-backed memory
+```txt
+domain description
+--------------------------------------------------------------------------
+0      regular anonymous memory, active and used for all allocs by default
+1      filesystem-backed memory
+```
 
 The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1, however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`
 
@@ -195,7 +211,9 @@ The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1,
 
 ## `-o` (UTC offset)
 
-Syntax: `-o N`
+```txt
+-o N
+```
 
 Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 (Affects [`.z.Z`](../ref/dotz.md#zz-local-datetime))
@@ -233,7 +251,9 @@ See
 
 ## `-P` (display precision)
 
-Syntax: `-P N`
+```txt
+-P N
+```
 
 Display precision for floating-point numbers, i.e. the number of digits shown.
 
@@ -243,7 +263,9 @@ Display precision for floating-point numbers, i.e. the number of digits shown.
 
 ## `-q` (quiet mode)
 
-Syntax: `-q`
+```txt
+-q
+```
 
 Quiet, i.e. no startup banner text or session prompts. Typically used where no console is required.
 
@@ -276,7 +298,9 @@ and with `-q`
 
 ## `-r` (replicate)
 
-Syntax: `-r :host:port[:user[:password]]`
+```txt
+-r :host:port[:user[:password]]
+```
 
 Replicate from `:host:port`.
 
@@ -286,7 +310,9 @@ Replicate from `:host:port`.
 
 ## `-s` (secondary threads)
 
-Syntax: `-s N`
+```txt
+-s N
+```
 
 Number of secondary threads or processes available for parallel processing.
 
@@ -297,7 +323,9 @@ Number of secondary threads or processes available for parallel processing.
 
 ## `-t` (timer ticks)
 
-Syntax: `-t N`
+```txt
+-t N
+```
 
 Period in milliseconds between timer ticks. Default is 0, for no timer.
 
@@ -307,7 +335,9 @@ Period in milliseconds between timer ticks. Default is 0, for no timer.
 
 ## `-T` (timeout)
 
-Syntax: `-T N`
+```txt
+-T N
+```
 
 Timeout in seconds for client queries, i.e. maximum time a client call will execute. Default is 0, for no timeout.
 
@@ -317,20 +347,22 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 
 ## `-u` (disable syscmds)
 
-Syntax: `-u 1`
+```txt
+-u 1
+```
 
 Disables system commands from a remote (signals `'access`). As such, this includes disabling exit via `"\\"` from a remote.
 
-!!! warning "Weak protection"
+!!! warning "Provides only a simple protection against “wrong” queries"
 
-This option offers only a simple protection against “wrong” queries.
-
-For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
+    For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
 
 
 ## `-u` (usr-pwd local)
 
-Syntax: `-u file`
+```txt
+-u file
+```
 
 Sets a password file; blocks access above start directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
 
@@ -361,14 +393,18 @@ Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
 ## `-U` (usr-pwd)
 
-Syntax: `-U file`
+```txt
+-U file
+```
 
 As `-u`, but without access restrictions.
 
 
 ## `-w` (workspace)
 
-Syntax: `-w N`
+```txt
+-w N
+```
 
 Workspace limit in MB for the heap per thread. Default is 0: no limit.
 
@@ -389,7 +425,9 @@ Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain
 
 ## `-W` (start week)
 
-Syntax: `-W N`
+```txt
+-W N
+```
 
 Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 
@@ -399,7 +437,9 @@ Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 
 ## `-z` (date format)
 
-Syntax: `-z [0|1]`
+```txt
+-z [0|1]
+```
 
 Set the format for `"D"$` date parsing: 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
 

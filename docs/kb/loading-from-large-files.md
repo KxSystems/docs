@@ -89,6 +89,19 @@ date       open  high  low   close volume   sym
 2006.10.06 27.76 28    27.65 27.87 36452200 MSFT
 ```
 
+
+### Variants
+
+Variants of `.Q.fs` extend it to [named pipes](named-pipes.md) and control chunk size.
+
+:fontawesome-solid-book:
+[`.Q.fsn`](../ref/dotq.md#qfsn-streaming-algorithm) for chunk size
+<br>
+:fontawesome-solid-book:
+[`.Q.fps`](../ref/dotq.md#qfps-streaming-algorithm),
+[`.Q.fpn`](../ref/dotq.md#qfpn-streaming-algorithm) for named pipes
+
+<!-- 
 To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](../ref/dotq.md#qdpft-save-table) are useful.
 
 ```q
@@ -135,7 +148,7 @@ date       sym  open  high  low   close volume
 2006.10.06 AMD  24.66 24.8  23.96 24.01 17299800
 2006.10.06 MSFT 27.76 28    27.65 27.87 36452200
 ```
-
+ -->
 
 ## Data-loading example
 
@@ -143,7 +156,7 @@ Q makes it easy to load data from files (CSV, TXT, binary etc.) into a database.
 
 In an ideal scenario, data should be presented in a way consistent with how it is stored in the database and in file sizes which can be easily read into memory all at once. The loading performance is maximized when the number of different writes to different database partitions is minimized. An example of this in a date-partitioned database with financial data would be a single file per date and per instrument, or a single file per date. A slightly different example might have many small files to be loaded (e.g. minutely bucketed data per date and per instrument), in which case the performance would be maximized by reading many files for the same date at once, and writing in one block to a single date partition.
 
-Unfortunately it is not always possible or is too expensive to structure the input data in a convenient way. The example below will consider the techniques required to load data from multiple large CSV files. Each CSV file contains one month of trade data for all instruments, sorted by time. We want to load it into a date partitioned database with the data parted by instrument. We will assume that we cannot read the full file into memory.
+Unfortunately it is not always possible or is too expensive to structure the input data in a convenient way. The example below will consider the techniques required to load data from multiple large CSV files. Each CSV file contains one month of trade data for all instruments, sorted by time. We want to load it into a date-partitioned database with the data parted by instrument. We will assume that we cannot read the full file into memory.
 
 The example will require us to
 
@@ -304,13 +317,16 @@ With some loader scripts the enumeration step can become a bottleneck. One appro
 enm:{@[x;f where 11h=type each x f:key flip 0!x;`sym?]}  
 ```
 
-This may improve performance, but has the side effects that the loading is no longer parallelizable, and if the loader fails before it completes then all the newly loaded data must be deleted (as the enumerations will have been lost).
+This may improve performance, but has the side effect that the loading is no longer parallelizable, and if the loader fails before it completes then all the newly loaded data must be deleted (as the enumerations will have been lost).
 
 
 ## Utilities
 
 A utility script 
 :fontawesome-brands-github: 
-[simongarland/csvguess](https://github.com/simongarland/csvguess) 
+[KxSystems/kdb/utils/csvguess.q](https://github.com/KxSystems/kdb/blob/master/utils/csvguess.q) 
 allows CSV loader scripts to be generated automatically. This is especially useful for very wide or long CSV files where it is time-consuming to specify the correct types for each column. This also includes an optimized on-disk sorter, and the ability to create a loader to load and enumerate quickly all the symbol columns, allowing parallel loading processes to have only to read the sym file.
 
+----
+:fontawesome-regular-map:
+[Mass ingestion through data loaders](../wp/data-loaders/index.md)

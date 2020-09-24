@@ -1,8 +1,7 @@
 ---
-title: xrank – Reference – kdb+ and q documentation
+title: xrank – group by value | Reference | kdb+ and q documentation
 description: xrank is a q keyword that groups its argument by value.
 author: Stephen Taylor
-keywords: group, kdb+, q, sort
 ---
 # `xrank`
 
@@ -12,14 +11,20 @@ keywords: group, kdb+, q, sort
 
 _Group by value_
 
-Syntax: `x xrank y`, `xrank[x;y]`
+```txt
+x xrank y     xrank[x;y]
+```
 
-Where 
+Where
 
 -   `x` is an integer
 -   `y` is of sortable type
 
-returns a list of length `x` containing the items of `y` grouped by value. If the total number of items is evenly divisible by `x`, then each item of the result will have the same length; otherwise the first items of the result are longer.
+returns for each item in `y` the bucket into which it falls, represented as a number from 0 to `x-1`.
+
+If the total number of items is evenly divisible by `x`, then each bucket will have the same number of items; otherwise the first items of the result are longer.
+
+`xrank` is right-uniform.
 
 ```q
 q)4 xrank til 8          / equal size buckets
@@ -56,11 +61,9 @@ bucket| Min Max Count
 3     | 15  17  5
 ```
 
-
-!!! warning "Duplicate keys or column names"
-
-    Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+!!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
 
-:fontawesome-regular-hand-point-right:
-Basics: [Sorting](../basics/sort.md)
+----
+:fontawesome-solid-book-open:
+[Sorting](../basics/sort.md)

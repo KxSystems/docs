@@ -27,19 +27,21 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
-<tr><td>HDF5</td><td>[Handling HDF5 data with kdb+](hdf5/index.md) ==new==</td></tr>
+<tr><td>HDF5</td><td>[Handling HDF5 data with kdb+](hdf5/index.md)</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
 <tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [:fontawesome-brands-superpowers:](../ml/index.md "Machine learning") ==new==</td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
-<tr><td>MQTT</td><td>[Q client for MQTT](mqtt/index.md) ==new==</td></tr>
-<tr><td>Prometheus-Exporter</td><td>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md) ==new==</td></tr>
+<tr><td>MQTT</td><td>[Q client for MQTT](mqtt/index.md)</td></tr>
+<tr><td>Prometheus-Exporter</td><td>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md)</td></tr>
+<tr><td>Protobuf</td><td>[Protobuf](protobuf/index.md) ==new==</td></tr>
+<tr><td>LDAP</td><td>[Q client for LDAP](ldap/index.md) ==new==</td></tr>
 <tr><td>Python</td>
     <td>
 </i> [Using kdb+ within Python (PyQ)](pyq/index.md)<br/>
 [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [:fontawesome-brands-superpowers:](../ml/ "Machine learning")
     </td></tr>
 <tr><td>R</td><td>[Using R with kdb+](r/index.md)</td>
-<tr><td>Solace</td><td>[Interface to Solace PubSub+ broker](solace/index.md) ==new==</td></tr>
+<tr><td>Solace</td><td>[Interface to Solace PubSub+ broker](solace/index.md)</td></tr>
 </tr>
 </table>
 
@@ -286,7 +288,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr><td>IntelliJ IDEA</td>
     <td>
 :fontawesome-brands-github: [a2ndrade/k-intellij-plugin](https://github.com/a2ndrade/q-intellij-plugin)<br/>
-:fontawesome-brands-gitlab: [shupakabras/kdb-intellij-plugin](https://gitlab.com/shupakabras/kdb-intellij-plugin) ==new==
+:fontawesome-brands-gitlab: [shupakabras/kdb-intellij-plugin](https://gitlab.com/shupakabras/kdb-intellij-plugin) 
     </td>
 </tr>
 <tr><td>Jupyter</td>
@@ -299,7 +301,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr>
     <td>Sublime Text</td>
     <td>
-:fontawesome-brands-github: [smbody-mipt/kdb](https://github.com/smbody-mipt/kdb) ==new==<br/>
+:fontawesome-brands-github: [smbody-mipt/kdb](https://github.com/smbody-mipt/kdb) <br/>
 :fontawesome-brands-github: [kimtang/QStudio](https://github.com/kimtang/QStudio)<br/>
 :fontawesome-brands-github: [kimtang/sublime-q](https://github.com/kimtang/sublime-q)<br/>
 :fontawesome-brands-github: [kimtang/Q](https://github.com/kimtang/Q)<br/>
@@ -307,7 +309,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td>TextMate</td><td>:fontawesome-brands-github: [psaris/KX.tmbundle](https://github.com/psaris/KX.tmbundle) ==new==</td>
+    <td>TextMate</td><td>:fontawesome-brands-github: [psaris/KX.tmbundle](https://github.com/psaris/KX.tmbundle) </td>
 </tr>
 <tr>
     <td>vim</td>
@@ -318,10 +320,14 @@ The [Fusion interfaces](fusion.md) to kdb+ are
     </td>
 </tr>
 <tr>
-    <td>Visual Studio Code</td><td>:fontawesome-brands-github: [lwshang/vscode-q](https://github.com/lwshang/vscode-q)</td>
+    <td>Visual Studio Code</td>
+    <td>
+:fontawesome-brands-github: [jshinonome/vscode-q](https://github.com/jshinonome/vscode-q) ==new==<br>
+:fontawesome-brands-github: [lwshang/vscode-q](https://github.com/lwshang/vscode-q)
+    </td>
 </tr>
 <tr>
-    <td>:fontawesome-brands-wordpress: WordPress</td><td>:fontawesome-brands-github: [simongarland/Syntaxhighlighter-for-q](https://github.com/simongarland/Syntaxhighlighter-for-q) ==new==</td>
+    <td>:fontawesome-brands-wordpress: WordPress</td><td>:fontawesome-brands-github: [simongarland/Syntaxhighlighter-for-q](https://github.com/simongarland/Syntaxhighlighter-for-q) </td>
 </tr>
 </table>
 

@@ -1,37 +1,42 @@
 ---
-title: trim, ltrim, rtrim – Reference – kdb+ and q documentation
+title: trim, ltrim, rtrim | Reference | kdb+ and q documentation
 description: trim, ltrim, and rtrim are q keywords that remove leading or trailing spaces from a string.
 author: Stephen Taylor
-keywords: kdb+, ltrim, q, rtrim, string, trim
 ---
 # `trim`, `ltrim`, `rtrim`
 
-_Remove leading or trailing spaces from a string_
+_Remove leading or trailing nulls from a list_
 
 
 
 
 ## `trim`
 
-_Trim leading and trailing spaces_
+_Trim leading and trailing nulls_
 
-Syntax: `trim x`, `trim[x]`
+```txt
+trim x     trim[x]
+```
 
-Returns string `x` with any leading or trailing spaces removed.
+Returns vector `x` with any leading or trailing nulls removed.
 
 ```q
 q)trim"   IBM   "
 "IBM"
+q)trim 0N 0N 1 2 3 0N 0N  4 5 0N 0N
+1 2 3 0N 0N 4 5
 ```
 
 
 ## `ltrim`
 
-_Trim leading spaces_
+_Trim leading nulls_
 
-Syntax: `ltrim x`, `ltrim[x]`
+```txt
+ltrim x     ltrim[x]
+```
 
-Left trim: returns string `x` with any leading space/s removed.
+Left trim: returns vector `x` with any leading nulls removed.
 
 ```q
 q)ltrim"   IBM   "
@@ -41,11 +46,13 @@ q)ltrim"   IBM   "
 
 ## `rtrim`
 
-_Trim trailing spaces_
+_Trim trailing nulls_
 
-Syntax: `rtrim x`, `rtrim[x]`
+```txt
+rtrim x`, `rtrim[x]
+```
 
-Right trim: returns string `x` with any trailing space/s removed. 
+Right trim: returns vector `x` with any trailing nulls removed.
 
 ```q
 q)rtrim"   IBM   "
@@ -53,8 +60,10 @@ q)rtrim"   IBM   "
 ```
 
 
-
-:fontawesome-regular-hand-point-right: 
-[`_` Drop](drop.md)  
-Basics: [Strings](../basics/strings.md)
+----
+:fontawesome-solid-book:
+[`_` Drop](drop.md)
+<br>
+:fontawesome-solid-book-open:
+[Strings](../basics/strings.md)
 

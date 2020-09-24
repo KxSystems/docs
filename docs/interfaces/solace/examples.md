@@ -19,7 +19,7 @@ They provide insight into the different capabilities of the interface.
 ## Requirements
 
 1. The Solace interface installed as described in the interface’s [`README.md`](https://github.com/kxsystems/solace/blob/master/README.md)
-2. The folder `script/` containing `solace.q` placed either in the examples folder or (preferably) in the your `QHOME` directory.
+2. The folder `q/` containing `solace.q` placed either in the examples folder or (preferably) in the your `QHOME` directory.
 
 ## Parameters
 

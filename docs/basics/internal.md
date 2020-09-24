@@ -25,16 +25,16 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-22!x](#-22x-uncompressed-length)       uncompressed length      -24!  [reval](../ref/eval.md#reval)
 [-23!x](#-23x-memory-map)       memory map               -29!  [.j.k](../ref/dotj.md#jk-deserialize)
 [-25!x](#-25x-async-broadcast)       async broadcast          -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
-[-26!x](#-26x-ssl)       SSL                      
-[-27!(x;y)](#-27xy-format)   format
-[-30!x](#-30x-deferred-response)       deferred response
-[-33!x](#-33x-sha-1-hash)       SHA-1 hash
+[-26!x](#-26x-ssl)       SSL                      -32!  [.Q.btoa](../ref/dotq.md#qbtoa-b64-encode)
+[-27!(x;y)](#-27xy-format)   format                   -34!  [.Q.ts](../ref/dotq.md#qts-time-and-space)
+[-30!x](#-30x-deferred-response)       deferred response        -35!  [.Q.gz](../ref/dotq.md#qgz-gzip)
+[-33!x](#-33x-sha-1-hash)       SHA-1 hash               -37!  [.Q.prf0](../ref/dotq.md#qprf0-code-profiler)
 [-36!(x;y)](#-36xy-load-master-key)   load master key
 [-38!x](#-38x-socket-table)       socket table
 [-120!x](#-120x-memory-domain)      memory domain
 </pre>
 
-!!! warning 
+!!! warning
 
     Internal functions are for use by language implementors.
     They are [exposed infrastructure](exposed-infrastructure.md)
@@ -50,8 +50,8 @@ _xkcd.com_
 
 ## `0N!x` (show)
 
-The identity function. 
-Returns `x` after writing it to the console. 
+The identity function.
+Returns `x` after writing it to the console.
 
 An essential tool for debugging.
 
@@ -362,7 +362,7 @@ Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 
 Since V3.6 2018.05.18.
 
-:fontawesome-solid-graduation-cap: 
+:fontawesome-solid-graduation-cap:
 [Deferred response](../kb/deferred-response.md)
 
 
@@ -383,14 +383,14 @@ Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-
 
 ## `-36!(x;y)` Load master key
 
-Syntax: `-36!(x;y)` 
+Syntax: `-36!(x;y)`
 
 Where
 
 -   `x` is a master-key file as a [file symbol](glossary.md#file-symbol)
 -   `y` is a password as a string
 
-loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk. 
+loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk.
 
 :fontawesome-solid-graduation-cap:
 [Create master key](../kb/dare.md#configuration)
@@ -398,10 +398,10 @@ loads and validates the master key into memory as the key to use when decrypting
 Expect this call to take about 500 milliseconds to execute.
 It can be executed from handle 0 only.
 
-Signals errors: 
+Signals errors:
 ```txt
 Encryption lib unavailable      failed to load OpenSSL libs
-Invalid password                
+Invalid password
 Main thread only                can be executed from the main thread only
 PKCS5_PBKDF2_HMAC               library invocation failed
 Restricted                      must be executed under handle 0

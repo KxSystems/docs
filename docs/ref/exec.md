@@ -20,8 +20,10 @@ For the Exec operator `?`, see
 
 ## Syntax
 
+Below, square brackets mark optional elements.
+
 <pre markdown="1" class="language-txt">
-exec _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+exec [distinct] _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 </pre>
 
 :fontawesome-solid-book-open:
@@ -128,6 +130,17 @@ name| `tom`dick`harry`jack`jill
 eye | `blue`green`gray
 ```
 
+
+## Limit expression
+
+`exec distinct` returns only unique items in the first item of the result.
+
+```q
+q)exec distinct s,p,s from sp
+s | `s$`s1`s4`s2`s3
+p | `p$`p1`p2`p3`p4`p5`p6`p1`p2`p2`p2`p4`p5
+s1| `s$`s1`s1`s1`s1`s4`s1`s2`s2`s3`s4`s4`s1
+```
 
 
 ## Cond

@@ -339,6 +339,28 @@ c| 22
 ```
 
 
+## Composition
+
+A sequence of unaries `u`, `v`, `w`… can be composed with Apply At as `u@v@w@`.
+All but the last `@` may be elided: `u v w@`. 
+
+```q
+q)tc:til count@  / indexes of a list
+q)tc "abc"
+"0 1 2"
+```
+
+The last value in the sequence can have higher rank if projected as a unary by Apply.
+
+```q
+q)di:reciprocal(%).  / divide into
+q)di 2 3             / divide 2 into 3
+1.5
+```
+
+:fontawesome-solid-book:
+[Compose](compose.md)
+
 ## Trap
 
 In the ternary, if evaluation of the function fails, the expression is evaluated.
@@ -421,7 +443,6 @@ _Q for Mortals_
 ## Errors signalled
 
 ```txt
-domain   the symbol d is not a handle
 index    an atom in vx or ux is not an index to an item-at-depth in d
 rank     the count of vx is greater than the rank of v
 type     v or u is a symbol atom, but not a handle to an value

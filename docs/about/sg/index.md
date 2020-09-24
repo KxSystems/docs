@@ -69,6 +69,19 @@ Help is available.
 > It’s a nervous tic of analytical philosophy to be forever wishing to clarify distinctions that nobody is actually confused about.
 > <br>— _Jerry Fodor_
 
+Here is an excellent example: clear, plain instructions from a snake catcher in Australia.
+
+> Hoser warned that snakes could be dangerous, and not to deal with them without professional help.
+> 
+> “If you see a snake don’t go near it. Nine times out of 10 if they’re in your garden they’re passing through,” he said.
+> 
+> “If you get bitten, bandage on your arm, straight to hospital.
+> 
+> “Without treatment you’re likely to die. With treatment you probably won’t die.” 
+
+— _The Guardian_ 2020.09.01
+
+
 ## Summary
 
 Here are the most important – or most commonly neglected – rules.

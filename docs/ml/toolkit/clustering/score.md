@@ -11,15 +11,15 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 .ml.clust   **Scoring metrics**
 
 Unsupervised learning
-  [daviesbouldin](#mlclustdaviesbouldin)      Davies-Bouldin index
-  [dunn](#mlclustdunn)               Dunn index
-  [silhouette](#mlclustsilhouette)         silhouette score
+  [daviesbouldin](#mlclustdaviesbouldin)          Davies-Bouldin index
+  [dunn](#mlclustdunn)                   Dunn index
+  [silhouette](#mlclustsilhouette)             Silhouette score
 
 Supervised learning
-  [homogeneity](#mlclusthomogeneity)         homogeneity score between predictions and actual value
+  [homogeneity](#mlclusthomogeneity)            Homogeneity score between predictions and actual value
 
 Optimum number of clusters
-  [elbow](#mlclustelbow)               distortion scores for increasing numbers of clusters
+  [elbow](#mlclustelbow)                  Distortion scores for increasing numbers of clusters
 </pre>
 
 :fontawesome-brands-github:
@@ -102,15 +102,15 @@ The Dunn index is calculated based on the minimum inter-cluster distance divided
 
 _The elbow method: a distortion score for each value of k applied to data, using k-means clustering._
 
-Syntax: `.ml.clust.elbow[data;df;kmax]`
+Syntax: `.ml.clust.elbow[data;df;k]`
 
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `df` is the distance function as a symbol, e.g. `e2dist` `edist`
--   `kmax` is the maximum number of clusters
+-   `k` is the maximum number of clusters
 
-returns distortion scores for each set of clusters produced by k-means, with increasing values of k up to `kmax`.
+returns distortion scores for each set of clusters produced by k-means, with increasing values of k up to the user defined value.
 
 ```q
 q)show d:2 10#20?10.

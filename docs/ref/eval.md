@@ -2,18 +2,22 @@
 title: eval, reval | Reference | kdb+ and q documentation
 description: eval and reval are q keywords that evaluate parse trees.
 author: Stephen Taylor
-keywords: eval, kdb+, q, reval
 ---
 # `eval`, `reval`
 
-_Evaluate a parse tree_
+_Evaluate parse trees_
+
 
 
 
 
 ## `eval`
 
-Syntax: `eval x`, `eval[x]`
+_Evaluate a parse tree_
+
+```txt
+eval x     eval[x]
+```
 
 Where `x` is a parse tree, returns the result of evaluating it. 
 
@@ -36,8 +40,11 @@ q)eval (+;2;3)      / constructed explicitly
 
 ## `reval`
 
+_Restricted evaluation of a parse tree_
 
-Syntax: `reval x`, `reval[x]`
+```txt
+reval x     reval[x]
+```
 
 The `reval` function is similar to [`eval`](eval.md), and behaves as if the [command-line option `-b`](../basics/cmdline.md#-b-blocked) were active during evaluation.
 
@@ -54,8 +61,10 @@ Behaves as if command-line options [`-u 1`](../basics/cmdline.md#-u-usr-pwd) and
 That is, all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
 (Since V4.0 2020.03.17.)
 
-:fontawesome-solid-book-reader:
-[Internal function `-6!`](../basics/internal.md#-6x-eval)<br>
+----
+:fontawesome-solid-book-open:
+[Internal function `-6!`](../basics/internal.md#-6x-eval)
+<br>
 :fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
 

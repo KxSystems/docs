@@ -54,7 +54,7 @@ The addition of Sklearn models can be completed through the modification of a nu
     To understand the above structure take for example the following embedPy code
 
     <pre><code class="language-q">q)seed:42
-    q)mdl:.p.import[`sklearn.ensemble][`:AdaBoostRegressor][`random_state pykw seed]
+    q)mdl:.p.import[\`sklearn.ensemble][\`:AdaBoostRegressor][\`random_state pykw seed]
     </code></pre>
 
     This defines a model from Python’s `sklearn` library, with the associated submodule `ensemble`, named `AdaBoostRegressor` which can be seeded with a random state `seed`, to ensure that runs of the model can be reproducible. If the model does not take a `random_state`, the input to this is set to `::`.
@@ -94,21 +94,21 @@ The addition of custom keras models is slightly more involved than that performe
       nps[s];if[not 1~checkimport[];tfs[s]];
       m:seq[];
       // define the model
-      layer1_nm :`input_dim`kernel_initializer`activation;
-      layer1_val:(count first d[0]0;`normal;`relu);
-      m[`:add]dns[13;pykwargs layer1_nm!layer1_val];
-      m[`:add]dns[1;`kernel_initializer pykw `normal];
-      m[`:compile][pykwargs `loss`optimizer!`mean_squared_error`adam];
+      layer1_nm :\`input_dim\`kernel_initializer\`activation;
+      layer1_val:(count first d[0]0;\`normal;\`relu);
+      m[\`:add]dns[13;pykwargs layer1_nm!layer1_val];
+      m[\`:add]dns[1;\`kernel_initializer pykw \`normal];
+      m[\`:compile][pykwargs \`loss\`optimizer!\`mean_squared_error\`adam];
       // ensure that the model is returned separate to compilation
       m
      }
 
     // Custom fit function
     /* m = model object from customregmdl
-    customregfit:{[d;m]m[`:fit][npa d[0]0;d[0]1;`batch_size pykw 16;`verbose pykw 0];m}
+    customregfit:{[d;m]m[\`:fit][npa d[0]0;d[0]1;\`batch_size pykw 16;\`verbose pykw 0];m}
 
     // Custom predict function
-    customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
+    customregpredict:{[d;m]raze m[\`:predict][npa d[1]0]`\$}
     </code></pre>
 
     To ensure the behavior of the system is consistent with the framework, it is vital to follow the above instructions, particularly ensuring that models take as arguments the defined parameters and return an appropriate result, in particular at the model-definition phase, where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
@@ -119,7 +119,7 @@ The addition of custom keras models is slightly more involved than that performe
 3.  Update the list `.automl.i.keraslist` defined at the top of the `code/models/keramdls.q` file. The name of the model here must coincide with the naming convention to be used for displays to console and that defined in the next step as the `display-name`. At present grid search procedures are _not_ completed on Keras models.
 
     <pre><code class="language-q">\d .automl
-    i.keraslist:`regkeras`multikeras`binarykeras`customregkeras</code></pre>
+    i.keraslist:\`regkeras\`multikeras\`binarykeras\`customregkeras</code></pre>
 
 4.  Open the file `code/models/regmodels.txt` or `classmodels.txt` depending on use case and add a row associated with the new model.
 
