@@ -35,6 +35,12 @@ SARIMA Model
 <i class="fab fa-github"></i>
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
+When dealing with time series statistical models it is important to define endogenous and exogenous variables as they are used widely within the literature
+
+| Type       | Definition|
+|------------|:----------|
+| Endogenous | The values of this variable are determined by the model i.e. form the basis for a 'target' variable to be predicted |
+| Exogenous  | This is any variable whose value is determined outside of the model and which may impose an effect on the endogenous variable i.e. if there is a national holiday this may effect the endogenous variable but is completely independent of its behaviour.|
 
 ## AutoRegressive (AR) model
 
