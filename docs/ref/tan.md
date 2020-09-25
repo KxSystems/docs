@@ -24,6 +24,8 @@ q)tan 0 0.5 1 1.5707963 2 0w
 0 0.5463025 1.557408 3.732054e+07 -2.18504 0n
 ```
 
+The function is atomic, and equivalent to `{(sin x)%cos x}`.
+
 
 ## `atan`
 

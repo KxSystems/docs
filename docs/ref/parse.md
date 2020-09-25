@@ -12,7 +12,9 @@ author: Stephen Taylor
 
 _Parse a string_
 
-Syntax: `parse x`, `parse[x]`
+```txt
+parse x     parse[x]
+```
 
 Where `x` is a string representing 
 
@@ -68,10 +70,12 @@ k){x'y}
 (k){$[-6h=@x;!x;'`type]};5)
 ```
 
+!!! tip "The composition of `eval` after `parse` is essentially the q interpreter."
 
-## Q-SQL
 
-Q-SQL statements are parsed to the corresponding functional form.
+## QSQL
+
+QSQL queries are parsed to the corresponding functional form.
 
 ```q
 q)\l sp.q
@@ -104,7 +108,12 @@ q)views[]
 ```
 
 
-
-:fontawesome-regular-hand-point-right:
-[`eval` and `reval`](eval.md),  
-Basics: [Internal function `-5!`](../basics/internal.md)
+----
+:fontawesome-solid-book:
+[`eval` and `reval`](eval.md)
+<br>
+:fontawesome-solid-book-open:
+[Parse trees](../basics/parsetrees.md)
+<br>
+:fontawesome-regular-map:
+[Parse trees and functional forms](../wp/parse-trees.md)

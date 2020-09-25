@@ -23,7 +23,7 @@ Product: where `x` is
 
 -   a simple numeric list, returns the product of the items of `x`
 -   an atom, returns `x`
--   a list of numeric lists, returns their products
+-   a list of conforming numeric lists, returns their products
 
 Nulls are treated as 1s.
 

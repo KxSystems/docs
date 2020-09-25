@@ -1,8 +1,7 @@
 ---
-title: string – Reference – kdb+ and q documentation
+title: string casts its argument to a string | Reference | kdb+ and q documentation
 description: string is a q keyword that casts its argument to a string.
 author: Stephen Taylor
-keywords: kdb+, q , string, text
 ---
 # `string`
 
@@ -11,8 +10,9 @@ _Cast to string_
 
 
 
-
-Syntax: `string x`, `string[x]` 
+```txt
+string x    string[x]
+```
 
 Returns each item in list or atom `x` as a string; applies to all data types.
 
@@ -24,9 +24,19 @@ q)string 2 7 15
 ,"2"
 ,"7"
 "15"
+```
+
+Although `string` is not atomic, it recurses through a list.
+
+```q
 q)string (2 3;"abc")
 (,"2";,"3")
 (,"a";,"b";,"c")
+
+q)string "cat"        / not the no-op you might expect
+,"c"
+,"a"
+,"t"
 ```
 
 It applies to the values of a dictionary, and the columns of a table:
@@ -44,12 +54,8 @@ a    b
 ,"3" "aapl"
 ```
 
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§7.3.1 Data to Strings](/q4m3/7_Transforming_Data/#731-data-to-strings)
 
-
-## Domain and range 
+## Domain and range
 
 ```txt
 domain b g x h i j e f c s p m d z n u v t
@@ -58,11 +64,17 @@ range  c c c c c c c c c c c c c c c c c c
 
 Range: `c`
 
-
-:fontawesome-regular-hand-point-right: 
-Namespace [`.h`](doth.md)  
-.Q: [`.Q.addr`](dotq.md#qaddr-ip-address) (IP address), 
-[`.Q.f`](dotq.md#qf-format) (format), 
+----
+:fontawesome-solid-book: 
+[`.h` namespace](doth.md)
+<br>
+[`.Q.addr`](dotq.md#qaddr-ip-address) (IP address),
+[`.Q.f`](dotq.md#qf-format) (format),
 [`.Q.fmt`](dotq.md#qfmt-format) (format)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.3.1 Data to Strings](/q4m3/7_Transforming_Data/#731-data-to-strings)
+
 
 

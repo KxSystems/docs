@@ -103,13 +103,20 @@ Where
 -   `x` is a numeric list
 -   `y` is a numeric list
 
-returns the average of numeric list `y` weighted by numeric list `x`. The result is a float atom. The calculation is `(sum x*y) % sum x`.
+returns the average of numeric list `y` weighted by numeric list `x`. The result is a float atom. 
 
 ```q
 q)2 3 4 wavg 1 2 4
 2.666667
 q)2 0N 4 5 wavg 1 2 0N 8  / nulls in either argument ignored
 6f
+```
+
+Where `x` and `y` conform, the result has an atom for each sublist.
+
+```q
+q)(1 2;3 4) wavg (500 400; 300 200)
+350 266.6667
 ```
 
 The financial analytic known as VWAP (volume-weighted average price) is a weighted average.
@@ -121,7 +128,7 @@ sym| price
 a  | 10.75
 ```
 
-`wavg` is an aggregate function.
+`wavg` is an aggregate function, equivalent to `{(sum x*y)%sum x}`.
 
 
 ----

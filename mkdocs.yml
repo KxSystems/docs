@@ -520,6 +520,11 @@ nav:
       - J. Quobyte: cloud/aws/app-j-quobyte.md
     - AWS Lambda: cloud/aws-lambda/index.md
     - Google CPM: cloud/gcpm/index.md
+    - Auto Scaling:
+      - Overview: cloud/autoscale/index.md
+      - Amazon Web Services: cloud/autoscale/aws.md
+      - Realtime data cluster: cloud/autoscale/rdc.md
+      - Costs and risks: cloud/autoscale/cost-risk.md
   - Machine learning:
     - Overview: ml/index.md
     - Set up: ml/setup.md

@@ -55,8 +55,7 @@ keywords: kdb+, q, technical, white paper
 
 ## Managing data and systems
 
-<!-- -   [Migrating a kdb+ HDB to **Amazon EC2**](../cloud/aws/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](../cloud/aws/aws-ec2-a4.pdf), [US&nbsp;Letter](../cloud/aws/aws-ec2-us.pdf)</small> -->
-<!-- -   ==new== [Serverless kdb+ on **AWS Lambda**](aws-lambda/index.md)  -->
+-   ==new== [**Auto Scaling** for a kdb+ realtime database](../cloud/autoscale/index.md) :fontawesome-solid-cloud:
 -   [**Compression** in kdb+](compress/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/compression_in_kdb.pdf)
 -   [Temporal data: a kdb+ framework for **corporate actions**](corporate-actions.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 -   [Mass ingestion through **data loaders**](data-loaders/index.md) 

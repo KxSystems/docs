@@ -24,13 +24,13 @@ Kdb+, from [Kx](https://kx.com), is
 <div style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-cloud"></i> [Auto Scaling](cloud/autoscale/index.md)</p>
+
     <p class="nowrap" markdown="1"><i class="fab fa-fw fa-gitlab"></i> [Modularization tools](https://shahdee.gitlab.io/miq/#/)</p>
 
     <p class="nowrap" markdown="1"><i class="fab fa-fw fa-github"></i> [Excel formats](https://github.com/caolanraff/xls)</p>
 
     <p class="nowrap" markdown="1"><i class="fab fa-fw fa-github"></i> [Visual Studio](https://github.com/jshinonome/vscode-q)</p>
-
-    <p class="nowrap" markdown="1"><i class="fab fa-fw fa-python"></i> [PyQ 5.0 released](https://github.com/KxSystems/pyq/blob/pyq-5.0.0/HISTORY.md)</p>
 
 </div>
 

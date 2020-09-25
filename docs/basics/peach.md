@@ -1,5 +1,5 @@
 ---
-title: Parallel processing – Basics – kdb+ and q documentation
+title: Parallel processing | Basics | kdb+ and q documentation
 description: The iterator Each Parallel (or its mnemonic keyword peach) delegates processing to secondary tasks for parallel execution. This can be useful, for example, for computationally expensive functions, or for accessing several drives at once from a single CPU.
 keywords: kdb+, parallel, parallel each, peach, q, uniform
 ---
@@ -13,7 +13,7 @@ keywords: kdb+, parallel, parallel each, peach, q, uniform
 The iterator [Each Parallel](../ref/maps.md#each-parallel) `':` (or its mnemonic keyword `peach`) delegates processing to secondary tasks for parallel execution. 
 This can be useful, for example, for computationally expensive functions, or for accessing several drives at once from a single CPU.
 
-To execute in parallel, start kdb+ with multiple secondary processes, using [`-s` in the command line](cmdline.md#-s-secondary-processes), and (since V3.5) the [`\s`](syscmds.md#s-number-of-secondary-processes) system command.
+To execute in parallel, start kdb+ with multiple secondary processes, using [`-s` in the command line](cmdline.md#-s-secondary-threads), and (since V3.5) the [`\s`](syscmds.md#s-number-of-secondary-processes) system command.
 
 Each Parallel iterates a unary value: the argument list of the derived function is divided between secondary processes for evaluation. 
 
@@ -145,7 +145,7 @@ Symbols are internalized from a single memory area common to all threads.
 
 ## Processes (distributed each)
 
-Since V3.1, `peach` can use multiple processes instead of threads, configured through the startup [command-line option `-s`](cmdline.md#-s-secondary-processes) with a negative integer, e.g. `-s -4`. 
+Since V3.1, `peach` can use multiple processes instead of threads, configured through the startup [command-line option `-s`](cmdline.md#-s-secondary-threads) with a negative integer, e.g. `-s -4`. 
 
 Unlike multiple threads, the distribution of the workload is not precalculated, and is distributed to the secondary processes as soon as they complete their allocated items. All data required by the peached function must either already exist on all secondary processes, or be passed as an argument. Argument sizes should be minimised because of IPC costs. 
 
@@ -163,7 +163,12 @@ q).z.pc:{handles::`u#handles except x;}
 q)handles:`u#`int$();
 ```
 
-
+----
 :fontawesome-solid-book: 
 [`.Q.fc`](../ref/dotq.md#qfc-parallel-on-cut) (parallel on cut)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§A.68 `peach`](/q4m3/A_Built-in_Functions/#a68-peach)
 
+<!-- FIXME replicate discussion in Q4M §A.68 -->

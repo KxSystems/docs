@@ -5,7 +5,7 @@ author: Stephen Taylor
 ---
 # `sum`, `sums`, `msum`, `wsum`
 
-_Sums_
+_Totals – simple, running, moving, and weighted_
 
 
 
@@ -63,7 +63,9 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
 
 _Running totals_
 
-Syntax: `sums x`, `sums[x]`
+```txt
+sums x    sums[x]
+```
 
 Where `x` is a numeric or temporal list, returns the cumulative sums of the items of `x`.
 
@@ -99,7 +101,9 @@ q)sums "abc"                    / type error if list is not numeric
 
 _Moving sums_
 
-Syntax: `x msum y`, `msum[x;y]`
+```txt
+x msum y    msum[x;y]
+```
 
 Where
 
@@ -122,22 +126,25 @@ q)3 msum 0N 2 3 5 0N 11     / nulls treated as zero
 
 _Weighted sum_
 
-Syntax: `x wsum y`, `wsum[x;y]`
+```txt
+x wsum y    wsum[x;y]
+```
 
-Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats. The calculation is `sum x *y`.
+Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats. 
 
 ```q
 q)2 3 4 wsum 1 2 4   / equivalent to sum 2 3 4 * 1 2 4f
 24f
+
 q)2 wsum 1 2 4       / equivalent to sum 2 * 1 2 4
 14
+
+q)(1 2;3 4) wsum (500 400;300 200)
+1400 1600
 ```
 
-`wsum` is an aggregate function.
+`wsum` is an aggregate function, equivalent to `{sum x*y}`.
 
-:fontawesome-solid-book-open:
-[Mathematics](../basics/math.md)
-<br>
 :fontawesome-solid-graduation-cap:
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
 <br>
@@ -154,3 +161,7 @@ But for nested `x` these functions preserve the nulls.
 q)sum (1 2;0N 4)
 0N 6
 ```
+
+----
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)

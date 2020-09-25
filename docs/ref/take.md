@@ -1,8 +1,7 @@
 ---
-title: Take – Reference – kdb+ and q documentation
+title: Take selects leading or trailing items | Reference | kdb+ and q documentation
 description: Take is a q operator that selects leading or trailing items from a list or dictionary, named entries from a dictionary, or named columns from a table.
 author: Stephen Taylor
-keywords: kdb+, operator, q, take
 ---
 # `#` Take
 
@@ -12,14 +11,17 @@ keywords: kdb+, operator, q, take
 
 _Select leading or trailing items from a list or dictionary, named entries from a dictionary, or named columns from a table_
 
-Syntax: `x#y`, `#[x;y]`
+
+```txt
+x#y     #[x;y]
+```
 
 Where 
 
 -   `x` is an int atom or vector, or a table
 -   `y` is an atom, list, dictionary, table, or keyed table
 
-Returns `y` as a list, dictionary or table described or selected by `x`. 
+returns `y` as a list, dictionary or table described or selected by `x`. 
 
 
 ## Atom or list
@@ -269,8 +271,10 @@ s2| jones 10     paris
 ```
 
 
-:fontawesome-regular-hand-point-right: 
-_Q for Mortals_: [§8.4.5 Retrieving Multiple Records](/q4m3/8_Tables/#845-retrieving-multiple-records)
+----
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§8.4.5 Retrieving Multiple Records](/q4m3/8_Tables/#845-retrieving-multiple-records)
 
 
 

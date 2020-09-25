@@ -1,7 +1,6 @@
 ---
-title: reverse – Reference – kdb+ and q documentation
-description: reverse is a q keyword that reverses the order of a list or dictionary.
-keywords: dictionary, entry, item, list, kdb+, q, reverse
+title: reverse the order of items in a list or dictionary | Reference | kdb+ and q documentation
+description: reverse is a q keyword that reverses the order of items in a list or dictionary.
 ---
 # `reverse`
 
@@ -9,9 +8,11 @@ keywords: dictionary, entry, item, list, kdb+, q, reverse
 
 
 
-_Reverse the order of a list or dictionary_
+_Reverse the order of items of a list or dictionary_
 
-Syntax: `reverse x`, `reverse[x]`
+```txt
+reverse x    reverse[x]
+```
 
 Returns the items of `x` in reverse order.
 
@@ -38,6 +39,6 @@ a b
 1 x
 ```
 
-
-:fontawesome-regular-hand-point-right: 
+----
+:fontawesome-solid-book: 
 [`rotate`](rotate.md)

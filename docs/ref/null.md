@@ -1,5 +1,5 @@
 ---
-title: mark nulls in a list | Reference | kdb+ and q documentation
+title: Flag nulls in a list or dictionary | Reference | kdb+ and q documentation
 description: null is a q keyword that flags where its argument is null.
 author: Stephen Taylor
 ---
@@ -24,6 +24,9 @@ Applies to all data types except enums, and to items of lists, dict values and t
 ```q
 q)null 0 0n 0w 1 0n
 01001b
+
+q)where all null ([] c1:`a`b`c; c2:0n 0n 0n; c3:10 0N 30)
+,`c2
 ```
 
 Enums always show as non-null.

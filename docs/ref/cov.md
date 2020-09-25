@@ -1,7 +1,6 @@
 ---
 title: covariance and sample covariance | Reference | kdb+ and q documentation
 description: cov and scov are q keyword, that return respectively the covariance and sample covariance of two conforming numeric lists.
-keywords: cov, covariance, kdb+, q, statistical covariance, statistics
 ---
 # `cov`, `scov`
 
@@ -10,7 +9,7 @@ _Covariance_
 
 
 
-## `cov` 
+## `cov`
 
 ```txt
 x cov y    cov[x;y]
@@ -33,11 +32,13 @@ The function `cov` is equivalent to `{avg[x*y]-avg[x]*avg y}`.
 
 
 
-## `scov` 
+## `scov`
 
 _Sample covariance_
 
-Syntax: `x scov y`, `scov[x;y]`
+```txt
+x scov y    scov[x;y]
+```
 
 Where `x` and `y` are conforming numeric lists returns their [sample covariance](https://en.wikipedia.org/wiki/Covariance#Calculating_the_sample_covariance "Wikipedia") as a float atom.
 
@@ -55,8 +56,15 @@ q)select price scov size by sym from trade
 
 `scov` is an aggregate function.
 
+The function `scov` is equivalent to `{cov[x;y]*count[x]%-1+count x}`.
 
-:fontawesome-regular-hand-point-right:
-[`var, svar`](var.md)  
-Wikipedia: [Covariance](https://en.wikipedia.org/wiki/Covariance)  
-Basics: [Mathematics](../basics/math.md)
+
+----
+:fontawesome-solid-book:
+[`var, svar`](var.md)
+<br>
+:fontawesome-solid-book:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-brands-wikipedia-w: 
+[Covariance](https://en.wikipedia.org/wiki/Covariance)

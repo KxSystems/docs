@@ -1,8 +1,7 @@
 ---
-title: raze – Reference – kdb+ and q documentation
+title: raze joins the items of a list, collapsing one level of nesting | Reference | kdb+ and q documentation
 description: raze is a q keyword that returns the items of a list joined, collapsing one level of nesting.
 author: Stephen Taylor
-keywords: items, join, kdb+, list, q
 ---
 # `raze`
 
@@ -11,7 +10,9 @@ keywords: items, join, kdb+, list, q
 _Return the items of `x` joined, collapsing one level of nesting_
 
 
-Syntax: `raze x`, `raze[x]`
+```txt
+raze x    raze[x]
+```
 
 To collapse all levels, use [Converge](accumulators.md#converge) i.e. `raze/[x]`.
 
@@ -57,5 +58,6 @@ q)raze (10;d)   / raze will not work
 ```
 
 
-:fontawesome-regular-hand-point-right:
+----
+:fontawesome-solid-book:
 [Join](join.md)

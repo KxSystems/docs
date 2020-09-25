@@ -79,7 +79,7 @@ _Nearby items in a list_
 x xprev y     xprev[x;y]
 ```
 
-Where `x` is an integer atom and `y` is a list, returns for each item of `y` the item `x` indices before it. 
+Where `x` is a long atom and `y` is a list, returns for each item of `y` the item `x` indices before it. 
 
 The first `x` items of the result are null, empty or blank as appropriate.
 

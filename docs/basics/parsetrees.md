@@ -33,6 +33,33 @@ q)eval ((/;+);(til;(+;2;2)))
 ```
 
 
-:fontawesome-regular-hand-point-right: 
-Technical White paper: [Parse trees and functional forms](../wp/parse-trees.md)
+## Functional form of a qSQL query
+
+Sometimes you need to translate a [qSQL query](qsql.md) into its [functional form](funsql.md), for example, so you can pass column names as arguments. 
+Translation can be non-trivial. 
+
+!!! tip "Use `parse` to reveal the functional form of a qSQL query"
+
+> The result will often include [k code](exposed-infrastructure.md) but it is usually recognizable and you can use it in functional form. — _Q for Mortals_ §A.67
+
+Remove one level for the functional form.
+
+```q
+q)t:([]c1:`a`b`c; c2:10 20 30)
+q)parse "select c2:2*c2 from t where c1=`c"
+?
+`t
+,,(=;`c1;,`c)
+0b
+(,`c2)!,(*;2;`c2)
+
+q)?[`t; enlist (=;`c1;enlist `c); 0b; (enlist `c2)!enlist (*;2;`c2)]
+c2
+--
+60
+```
+
+----
+:fontawesome-regular-map: 
+[Parse trees and functional forms](../wp/parse-trees.md)
 

@@ -12,7 +12,9 @@ keywords: kdb+, q, selection, where
 
 _Copies of indexes of a list or keys of a dictionary_
 
-Syntax: `where x`, `where[x]`
+```txt
+where x    where[x]
+```
 
 Where `x` is a:
 
@@ -43,7 +45,8 @@ q)x where 0 = x mod 2      / select even numbers from list
 
 ## Dictionary whose values are non-negative integers
 
-returns a list of keys repeated as many times as the corresponding value. (If a list is viewed as a mapping from indices to entries, than the definition for the integer list above is a special case.)
+returns a list of keys repeated as many times as the corresponding value. 
+
 
 ```q
 q)d:`amr`ibm`msft!2 3 1
@@ -55,8 +58,12 @@ q)where 0 1 2 3 ! 2 3 0 1     / same on dictionary with indices as keys
 0 0 1 1 1 3
 ```
 
+!!! tip "Insight"
+
+    If a list is viewed as a mapping from indexes to entries, than the definition for the integer list above is merely a special case.
 
 
+----
 :fontawesome-solid-book-open:
 [`where` in q-SQL](../basics/qsql.md), 
 [Selection](../basics/selection.md)

@@ -1,8 +1,7 @@
 ---
-title: lower, upper – Reference – kdb+ and q documentation
-description: lower and upper are q keywords that shift text to lower or upper case respectively. 
+title: Shift to lower or upper case | Reference | kdb+ and q documentation
+description: lower and upper are q keywords that shift text to lower or upper case respectively.
 author: Stephen Taylor
-keywords: case, kdb+, lower, q, string, text, upper
 ---
 # `lower`, `upper`
 
@@ -10,45 +9,27 @@ _Shift case_
 
 
 
-
-
-## `lower`
-
-_Shift to lower case_
-
 ```txt
 lower x     lower[x]
+upper x     upper[x]
 ```
 
-Returns symbol or string `x` with any bicameral characters in the lower case. 
+Where `x` is a character or symbol atom or vector, returns it with any bicameral characters in the lower/upper case.
+
 
 ```q
 q)lower"IBM"
 "ibm"
 q)lower`IBM
 `ibm
-```
 
-
-## `upper`
-
-_Shift to upper case_
-
-```txt
-upper x     upper[x]
-```
-
-Returns symbol or string `x` with any bicameral characters in the upper case. 
-
-```q
 q)upper"ibm"
 "IBM"
-q)upper`ibm
-`IBM
+q)upper`ibm`msft
+`IBM`MSFT
 ```
 
 
 ----
-
 :fontawesome-solid-book-open:
 [Strings](../basics/strings.md)

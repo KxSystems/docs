@@ -81,6 +81,8 @@ q)select sdev price by sym from trade
 
 `sdev` is an aggregate function.
 
+The function `sdev` is equivalent to `{sqrt var[x]*count[x]%-1+count x}`.
+
 
 ----
 

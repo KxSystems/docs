@@ -1,8 +1,7 @@
 ---
-title: ss, ssr – Reference – kdb+ and q documentation
+title: ss, ssr – string search and replacement | Reference | kdb+ and q documentation
 description: ss and ssr are q keywords that perform string search and replacement.
 author: Stephen Taylor
-keywords: kdb+, match, pattern, q, regex, regular expression, replace, search, ss, ssr, string
 ---
 # `ss`, `ssr`
 
@@ -15,9 +14,11 @@ _String search – and replace_
 
 _String search_
 
-Syntax: `x ss y`, `ss[x;y]` 
+```txt
+x ss y     ss[x;y]
+```
 
-Where 
+Where
 
 -   `x` is a string
 -   `y` is a string of plain text, or a [pattern](../kb/regex.md)
@@ -45,19 +46,21 @@ q)s ss "t?r"
 
 ## `ssr`
 
-_String search and replace_ 
+_String search and replace_
 
-Syntax: `ssr[x;y;z]`
+```txt
+ssr[x;y;z]
+```
 
 Where
 
-- `x` is a string
-- `y` is a pattern
-- `z` is a string or a function
+-   `x` is a string
+-   `y` is a string of plain text, or a [pattern](../kb/regex.md) without an asterisk
+-   `z` is a string or a function
 
 returns `x` with each substring matching `y` replaced by:
 
--   `z` if `z` is a string 
+-   `z` if `z` is a string
 -   `z[Y]` where `z` is a function and `Y` is the matched substring
 
 ```q
@@ -69,10 +72,16 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 ```
 
 
-:fontawesome-solid-book: 
-[`like`](like.md),
-[Regular Expressions in q](../basics/regex.md),
-[Strings](../basics/strings.md)<br>
+----
+:fontawesome-solid-book:
+[`like`](like.md)
+<br>
+:fontawesome-solid-book-open:
+[Regular Expressions in q](../basics/regex.md)
+<br>
+:fontawesome-solid-book-open:
+[Strings](../basics/strings.md)
+<br>
 :fontawesome-solid-graduation-cap:
 [Using regular expressions](../kb/regex.md)
 

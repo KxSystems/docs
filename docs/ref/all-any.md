@@ -24,6 +24,16 @@ Returns a boolean atom `0b`; or `1b` where `x` is
 -   an empty list
 
 Applies to all datatypes except symbols and GUIDs.
+
+Where `x` is a table, `all` iterates over its columns and returns a dictionary.
+
+```q
+q)all null ([] c1:`a`b`c; c2:0n 0n 0n; c3:10 0N 30)
+c1| 0
+c2| 1
+c3| 0
+```
+
 Strings are [cast](cast.md) to boolean.
 
 `all` is an aggregate function.

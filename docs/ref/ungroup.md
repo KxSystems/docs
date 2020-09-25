@@ -1,15 +1,15 @@
 ---
-title: ungroup | Reference | kdb+ and q documentation
+title: ungroup normalizes a table | Reference | kdb+ and q documentation
 description: ungroup is a q keyword that, where x is a table, in which some cells are lists, but for any row, all lists are of the same length, returns the normalized table, with one row for each item of a lists.
 author: Stephen Taylor
-keywords: kdb+, q, qsql, query, select, sql, table, ungroup
 ---
 # `ungroup`
 
 
 
-
-Syntax: `ungroup x`, `ungroup[x]`
+```txt
+ungroup x    ungroup[x]
+```
 
 Where `x` is a table, in which some cells are lists, but for any row, all lists are of the same length, returns the normalized table, with one row for each item of a lists.
 
@@ -57,6 +57,11 @@ s2 p2 400
 s4 p4 300
 ```
 
+!!! warning "`ungroup` is not the exact inverse of grouping"
+
+    Grouping sorts on the keys, so a subsequent `ungroup` returns the original records sorted by the grouped column/s.
+
+----
 :fontawesome-solid-book:
 [`group`](group.md),
 [`select`](select.md),

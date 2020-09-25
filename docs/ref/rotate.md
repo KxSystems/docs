@@ -1,8 +1,7 @@
 ---
-title: rotate – Reference – kdb+ and q documentation
+title: rotate shifts the items of a list to the left or right | Reference | kdb+ and q documentation
 description: rotate is a q keyword that shifts the items of a list to the left or right.
 author: Stephen Taylor
-keywords: item, kdb+, q, rotate, shift
 ---
 # `rotate`
 
@@ -10,7 +9,9 @@ keywords: item, kdb+, q, rotate, shift
 
 _Shift the items of a list to the left or right_
 
-Syntax: `x rotate y`, `rotate[x;y]` 
+```txt
+x rotate y    rotate[x;y]
+```
 
 Where 
 
@@ -40,4 +41,7 @@ q)0 1 -1 rotate' 3 4#til 12
 
 `rotate` is a uniform function. 
 
-:fontawesome-regular-hand-point-right: [`reverse`](reverse.md)
+
+----
+:fontawesome-solid-book: 
+[`reverse`](reverse.md)

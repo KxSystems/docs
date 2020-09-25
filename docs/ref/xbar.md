@@ -1,8 +1,7 @@
 ---
-title: xbar – Reference – kdb+ and q documentation
-description: xbar is a q keyword that returns one argument rounded down to the nearest multiple of the other. 
+title: xbar rounds one argument rounded down to the nearest multiple of the other | Reference | kdb+ and q documentation
+description: xbar is a q keyword that returns one argument rounded down to the nearest multiple of the other.
 author: Stephen Taylor
-keywords: bar, group, interval, kdb+, math, mathematics, q, xbar
 ---
 # `xbar`
 
@@ -10,11 +9,13 @@ keywords: bar, group, interval, kdb+, math, mathematics, q, xbar
 
 _Round down_
 
-Syntax: `x xbar y`, `xbar[x;y]`
+```txt
+x xbar y    xbar[x;y]
+```
 
 Where
 
--   `x` is a numeric atom
+-   `x` is a non-negative numeric atom
 -   `y` is numeric or temporal
 
 returns `y` rounded down to the nearest multiple of `x`.
@@ -28,7 +29,7 @@ q)5 xbar 11:00 + 0 2 3 5 7 11 13
 11:00 11:00 11:00 11:05 11:05 11:10 11:10
 ```
 
-`xbar` is an atomic function. 
+`xbar` is a right-atomic function.
 
 Interval bars are useful in aggregation queries. To get last price and total size in 10-minute bars:
 
@@ -55,24 +56,33 @@ close| sym
 ...
 ```
 
-!!! tip "Grouping at irregular intervals"
-
-    To group at irregular intervals, one solution is to use [`bin`](bin.md).
+??? tip "You can use `bin` to group at irregular intervals."
 
     <pre><code class="language-q">
     q)x:\`s#10:00+00:00 00:08 00:13 00:27 00:30 00:36 00:39 00:50
     q)select count i by x x bin time.minute from ([]time:\`s#10:00:00+asc 100?3600)
-    minute| x 
+    minute| x
     ------| --
-    10:00 | 8 
+    10:00 | 8
     10:08 | 13
     10:13 | 24
-    10:27 | 4 
-    10:30 | 9 
-    10:36 | 3 
+    10:27 | 4
+    10:30 | 9
+    10:36 | 3
     10:39 | 19
     10:50 | 20
     </code></pre>
+
+A month is (internally) the count of months since 2000, so you can use `3 xbar` to calculate quarters.
+
+```q
+q)`date$3 xbar `month$2019.11.19       / beginning of a quarter
+2019.10.01
+q)`date$3+3 xbar `month$2019.11.19     / beginning of next quarter
+2020.01.01
+q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
+2019.12.31
+```
 
 
 !!! warning "Duplicate keys or column names"
@@ -107,7 +117,10 @@ t   | t . t t t t f f t . . . . . . . . .
 
 Range: `ijfpmdznuvte`
 
-:fontawesome-regular-hand-point-right: 
-[`bin`](bin.md), [`floor`](floor.md)  
-Basics: [Mathematics](../basics/math.md)
+----
+:fontawesome-solid-book:
+[`bin`](bin.md), [`floor`](floor.md)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
 

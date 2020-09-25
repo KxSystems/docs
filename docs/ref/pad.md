@@ -1,14 +1,14 @@
 ---
-title: Pad – Reference – kdb+ and q documentation
+title: Pad a string to a specified length | Reference | kdb+ and q documentation
 description: Pad is a q operator that pads a string to a specified length.
 author: Stephen Taylor
-keywords: fill, dollar, kdb+, pad, q
 ---
 # `$` Pad
 
 
-
-Syntax: `x$y`, `$[x;y]` 
+```txt
+x$y    $[x;y]
+```
 
 Where 
 
@@ -24,6 +24,10 @@ q)-10$"foo"
 "       foo"
 ```
 
-:fontawesome-regular-hand-point-right: 
-Basics: [Strings](../basics/strings.md)  
-[`$` dollar](overloads.md#dollar)
+
+----
+:fontawesome-solid-book:
+[dollar](overloads.md#dollar)
+<br>
+:fontawesome-solid-book-open:
+[Strings](../basics/strings.md)  

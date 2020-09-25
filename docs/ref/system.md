@@ -2,7 +2,6 @@
 title: system keyword executes a system command | Reference | kdb+ and q documentation
 description: system is a q keyword that executes a system command.
 author: Stephen Taylor
-keywords: command, kdb+, q, system, system command
 ---
 # :fontawesome-solid-bullhorn: `system`
 
@@ -16,6 +15,8 @@ system x     system[x]
 ```
 
 Where `x` is a string representing a [system command](../basics/syscmds.md) and any parameters to it, executes the command and returns any result.
+
+!!! note "The system command does not include a leading `\`."
 
 ```q
 q)\l sp.q
@@ -38,7 +39,7 @@ q)system "pwd"
 ```
 
 
-## Directing output to a file
+## :fontawesome-solid-database: Directing output to a file
 
 When redirecting output to a file, for efficiency purposes, avoiding using `>tmpout` needlessly; append a semi-colon to the command.
 
@@ -77,7 +78,7 @@ the shell interpreter considers it as two statements
 $ cat x > y; > tmpout
 ```
 
-## Capture stderr output
+## :fontawesome-solid-exclamation-triangle: Capture stderr output
 
 You cannot capture the stderr output from the system call directly, but a workaround is
 
@@ -92,7 +93,7 @@ ls: egg: No such file or directory
 ```
 
 
-## Changing working directory
+## :fontawesome-brands-windows: Changing working directory
 
 In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
 

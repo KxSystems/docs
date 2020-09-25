@@ -1,9 +1,8 @@
 ---
-title: prior – Reference – kdb+ and q documentation
+title: prior – a wrapper for the Each Prior iterator | Reference | kdb+ and q documentation
 description: prior is a q keyword that is a wrapper for the Each Prior iterator.
 author: Stephen Taylor
 date: March 2019
-keywords: each prior, iterator, kdb+, map, prior, q
 ---
 # `prior`
 
@@ -32,11 +31,9 @@ q){x+y%10}prior til 10
 
 `prior` is a wrapper for the [Each Prior](maps.md#each-prior) iterator.
 
-!!! tip "First!"
+See the [iterator](maps.md#each-prior) for how the first item of the result is determined.
 
-    See the [iterator](maps.md#each-prior) for detail of how the first item of the result is determined.
-
-It is good q style to use `prior` rather than the iterator, except where iterators are composed and brevity helps.
+!!! tip "It is good q style to use `prior` rather than the iterator, except where iterators are composed and brevity helps."
 
 ----
 
