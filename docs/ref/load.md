@@ -119,5 +119,5 @@ q)sp:get `:sp/        / equivalent to rload `sp
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§11.2 Save and Load on Tables](/q4m3/1_IO/#112-save-and-load-on-tables)
+[§11.2 Save and Load on Tables](/q4m3/11_IO/#112-save-and-load-on-tables)
 

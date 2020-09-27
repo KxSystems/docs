@@ -2,7 +2,6 @@
 title: save, rsave keywaords save tables to file | Reference | kdb+ and q documentation
 description: save and rsave are q keywords that save global data to file or splayed to a directory.
 author: Stephen Taylor
-keywords: directory, global, kdb+, q, rsave, save, splayed, table
 ---
 # :fontawesome-solid-database: `save`, `rsave`
 
@@ -170,10 +169,10 @@ q)`:sp/ set sp        / equivalent to rsave `sp
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§11.2 Save and Load on Tables](/q4m3/1_IO/#112-save-and-load-on-tables)
+[§11.2 Save and Load on Tables](/q4m3/11_IO/#112-save-and-load-on-tables)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§11.3 Splayed Tables](/q4m3/1_IO/#113-splayed-tables)
+[§11.3 Splayed Tables](/q4m3/11_IO/#113-splayed-tables)
 
 
