@@ -14,11 +14,11 @@ description: Errors signalled by the interpreter, and what triggers them
 <tr><th>error</th><th>example</th><th>explanation</th></tr>
 </thead>
 <tbody>
-<tr><td>access</td> <td/> <td>Attempt to read files above directory, run system commands or failed usr/pwd</td> </tr>
+<tr><td>access</td> <td/> <td>Tried to read files above directory, run system commands or failed usr/pwd</td> </tr>
 <tr><td>accp</td> <td/> <td>Tried to accept an incoming TCP/IP connection but failed to do so</td> </tr>
 <tr><td>adict</td> <td class="nowrap">`d[::]:x`</td> <td>Blocked assignment (`'nyi`)</td> </tr>
-<tr><td>arch</td> <td class="nowrap">`:test set til 100`<br/>``-17!`:test``</td> <td>Attempt to load file of wrong endian format</td> </tr>
-<tr><td>assign</td> <td class="nowrap">`cos:12`</td> <td>Attempt to redefine a reserved word</td> </tr>
+<tr><td>arch</td> <td class="nowrap">`:test set til 100`<br/>``-17!`:test``</td> <td>Tried to load file of wrong endian format</td> </tr>
+<tr><td>assign</td> <td class="nowrap">`cos:12`</td> <td>Tried to redefine a reserved word</td> </tr>
 <tr><td>bad lambda</td> <td class="nowrap">`h{select x by x from x}`</td> <td>lambda from an older version of kdb+ over IPC that no longer parses</td> </tr>
 <tr><td>badtail</td> <td/> <td>Incomplete transaction at end of file, get good (count;length) with ``-11!(-2;`:file)``</td> </tr>
 <tr><td>binary mismatch</td> <td/> <td>Wrong process for [code profiler](../kb/profiler.md)</td> </tr>
@@ -40,15 +40,15 @@ description: Errors signalled by the interpreter, and what triggers them
 <tr><td>expected response</td> <td/> <td>One-shot request did not receive response</td> </tr>
 <tr><td>failed to load TLS certificates</td><td/><td>Started kdb+ [with `-E 1` or `-E 2`](cmdline.md#-e-tls-server-mode) but without SSL/TLS enabled</td> </tr>
 <tr><td>from</td> <td class="nowrap">`select price trade`</td> <td>Badly formed select statement</td> </tr>
-<tr><td>glim</td> <td/> <td>`` `g#`` limit (99 prior to V3.2, now unlimited</td> </tr>
+<!-- <tr><td>glim</td> <td/> <td>`` `g#`` limit (99 prior to V3.2, now unlimited</td> </tr> -->
 <tr><td>hop</td><td/><td>Request to `hopen` a handle fails; includes message from OS</td> </tr>
 <tr><td>hwr</td><td/><td>Handle write error, can't write inside a [`peach`](peach.md)</td> </tr>
 <tr><td>IJS</td> <td class="nowrap">`"D=\001"0:"0=hello\0011=world"`</td> <td>[Key type](../ref/file-text.md#key-value-pairs) is not `I`, `J`, or `S`.</td> </tr>
-<tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Attempt to [`insert`](../ref/insert.md) a record with an existing key into a keyed table</td> </tr>
+<tr><td>insert</td> <td class="nowrap">``t:([k:0 1]a:2 3);`t insert(0;3)``</td> <td>Tried to [`insert`](../ref/insert.md) a record with an existing key into a keyed table</td> </tr>
 <tr><td>invalid</td> <td class="nowrap">`q -e 3`</td> <td>Invalid command-line option value</td> </tr>
 <tr><td>invalid password</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Invalid keyfile password</td> </tr>
 <tr><td>\l</td> <td/> <td>Not a [data file](syscmds.md#l-load-file-or-directory)</td> </tr>
-<tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Incompatible lengths</td> </tr>
+<tr><td>length</td> <td class="nowrap">`()+til 1`</td> <td>Arguments do not [conform](conformable.md)</td> </tr>
 <tr>
 <td>limit</td>
 <td class="nowrap">`0W#2`</td>
@@ -60,10 +60,10 @@ description: Errors signalled by the interpreter, and what triggers them
 </td>
 </tr>
 <tr><td>load</td> <td/> <td>Not a [data file](../ref/load.md)</td> </tr>
-<tr><td>loop</td> <td class="nowrap">`a::a`</td> <td>Dependency loop</td> </tr>
+<tr><td>loop</td> <td class="nowrap">`a::b::a`</td> <td>Dependency loop</td> </tr>
 <tr><td>main thread only</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Not executed from main thread</td> </tr>
 <tr><td>mismatch</td> <td class="nowrap">`([]a:til 4),([]b:til 3)`</td> <td>Columns that can't be aligned for R,R or K,K</td> </tr>
-<tr><td>Mlim</td> <td/> <td>Too many nested columns in [splayed tables](../kb/splayed-tables.md). (Prior to V3.0, limited to 999; from V3.0, 251; from V3.3, 65530)</td> </tr>
+<tr><td>mlim</td> <td/> <td>Too many nested columns in [splayed tables](../kb/splayed-tables.md). (Prior to V3.0, limited to 999; from V3.0, 251; from V3.3, 65530)</td> </tr>
 <tr><td>mq</td> <td/> <td>Multi-threading not allowed</td> </tr>
 <tr><td>name&nbsp;too&nbsp;long</td> <td/> <td>Filepath ≥100 chars (until V3.6 2018.09.26)</td> </tr>
 <tr><td>need zlib to compress</td> <td/> <td>zlib not available</td> </tr>
@@ -92,7 +92,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr><td>part</td> <td/> <td>Something wrong with the partitions in the HDB; or [`med`](../ref/med.md) applied over partitions or segments</td> </tr> 
 <tr><td>path too long</td> <td>``(`$":",1000#"a") set 1 2 3``</td> <td>File path ≥255 chars (100 before V3.6 2018.09.26)</td> </tr> 
 <tr><td>PKCS5_PBKDF2_HMAC</td> <td class="nowrap">``-36!(`:kf;"pwd")``</td> <td>Library invocation failed</td> </tr>
-<tr><td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr>
+<!-- <tr><td>pl</td> <td/> <td>[`peach`](peach.md) can’t handle parallel lambdas (V2.3 only)</td> </tr> -->
 <tr><td>pwuid</td> <td/> <td>OS is missing libraries for `getpwuid`. (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install.md#step-2-put-kdb-in-qhome).)</td> </tr>
 <tr><td>Q7</td><td/><td>nyi op on file nested array</td></tr>
 <tr><td>rank</td> <td class="nowrap">`+[2;3;4]`</td> <td>Invalid [rank](glossary.md#rank)</td> </tr> 
@@ -105,7 +105,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <td class="nowrap">`{.z.s[]}[]`</td>
 <td>Ran out of stack space. Consider using [Converge `\` `/`](../ref/accumulators.md#unary-values) instead of recursion.</td>
 </tr>
-<tr><td>step</td> <td class="nowrap">``d:`s#`a`b!1 2;`d upsert `c`d!3 4``</td> <td>Attempt to upsert a step dictionary in place</td> </tr>
+<tr><td>step</td> <td class="nowrap">``d:`s#`a`b!1 2;`d upsert `c`d!3 4``</td> <td>Tried to upsert a step dictionary in place</td> </tr>
 <tr><td>stop</td> <td/> <td>User interrupt (Ctrl-c) or [time limit (`-T`)](cmdline.md#-t-timeout)</td> </tr>
 <tr><td>stype</td> <td class="nowrap">`'42`</td> <td>Invalid [type](datatypes.md) used for [Signal](../ref/signal.md)</td> </tr>
 <tr><td>sys</td> <td>`{system "ls"}peach 0 1`</td> <td>Using system call from thread other than main thread</td> </tr>
