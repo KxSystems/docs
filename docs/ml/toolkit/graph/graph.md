@@ -13,7 +13,7 @@ As outlined [here](index.md) the graph structure described below follows the bas
 
 ## Structure
 
-Prior to the description of the functionality which allows a user can generate, update and remove components of a graph, a number notes on the technical aspects on the structure of these components must be outlined 
+Prior to the description of the functionality which allows a user to generate, update and remove components of a graph, a number of notes on the technical aspects on the structure of these components must be outlined 
 
 ### Functional node
 
@@ -51,7 +51,7 @@ Configuration nodes in this library are a subset of the functional nodes describ
 
 ### Edges
 
-An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output of another node within the graph, output nodes do not need to be connected to anything for a graph to be valid, in this case the return of an executed graph will store the output data for later use. A user must ensure that the type allocated to the input coincides with the type allocated to the output.
+An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output from another node within the graph. Output nodes do not need to be connected to anything for a graph to be valid, in this case the return of an executed graph will store the output data for later use. A user must ensure that the type allocated to the input coincides with the type allocated to the output to which it is connected.
 
 ## Functionality
 
@@ -211,7 +211,7 @@ _Generate an empty graph_
 
 Syntax: `.ml.createGraph[]`
 
-returns a dictionary containing the structure required for the generation of a connected graph including information on the nodes present within the graph and how nodes within the graph are interconnected.
+returns a dictionary containing the structure required for the generation of a connected. This includes a key for information on the nodes present within the graph and edges outlining how the nodes within the graph are connected.
 
 ```q
 // Generate an empty graph
@@ -303,7 +303,7 @@ Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
 * `destNode` is the name as a symbol of the node containing the edge to be deleted.
-* `destName` is the name as a symbol of the edge associated with a specific input to be deleted.
+* `destName` is the name as a symbol of the edge associated with a specific input to be disconnected.
 
 returns the graph with the edge connected to the destination input removed from the graph
 

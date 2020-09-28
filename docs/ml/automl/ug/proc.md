@@ -70,7 +70,7 @@ q)count 1_cols freshfeats
 
 ### Natural Language Processing
 
-NLP feature extraction within AutoML makes use of the Kx [NLP library](../nlp/index.md) in addition to the python `gensim` library for data preprocessing. The following are the steps applied independently to all columns containing text data.
+NLP feature extraction within AutoML makes use of the Kx [NLP library](../../nlp/index.md) in addition to the python `gensim` library for data preprocessing. The following are the steps applied independently to all columns containing text data.
 
 1. Using `.nlp.findRegex` retrieve information surrounding the occurrances of various expressions, for example references to urls, money, the presence of phone numbers etc.
 2. Apply named entity recognition to detect references to products, individuals, references to art etc.
