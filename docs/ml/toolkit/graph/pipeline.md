@@ -9,7 +9,7 @@ keywords: machine learning, ml, pipeline, execution, optimization
 
 ## Outline
 
-Following the generation of a graph as outlined [here](./graph.md), a user must convert this graph into an executable code structure, described in this library as a pipeline. For this library a pipeline can be validated, generated and executed as follows 
+Following the generation of a graph as outlined [here](./graph.md), a user must convert this graph into an executable code structure, described in this library as a pipeline. Using this library a pipeline can be validated, generated and executed as follows 
 
 ### Graph Validation
 

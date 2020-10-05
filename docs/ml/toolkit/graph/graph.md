@@ -7,13 +7,13 @@ keywords: machine learning, ml, graph, edges, nodes, vertices
 
 # :fontawesome-solid-share-alt: Graph
 
-As outlined [here](index.md) the graph structure described below follows the basic structure of a directed mathematical graph consisting of nodes which contain the core functionality of a pipeline and edges which describe the connections between nodes. The image below shows a basic representation of a graph containing multiple nodes connected together by relevant edges within this structure
+As outlined [here](index.md) the graph structure described below follows the basic structure of a directed mathematical graph consisting of nodes which contain the core functionality of a pipeline and edges which describe the connections between nodes. The image below shows a basic representation of a graph containing multiple nodes connected together by relevant edges within this structure.
 
 ![Basic Graph](./imgs/pipeline_example_confluence.png)
 
 ## Structure
 
-Prior to the description of the functionality which allows a user to generate, update and remove components of a graph, a number of notes on the technical aspects on the structure of these components must be outlined 
+Prior to the description of the functionality which allows a user to generate, update and remove components of a graph, a number of notes on the technical aspects on the structure of these components must be outlined.
 
 ### Functional node
 
@@ -25,7 +25,7 @@ A functional node as defined in this library is a dictionary containing 3 consti
 2. Outputs: This is either
 	1. A singular character representing the data type of output in the case of a node returning a single output
 	2. A dictionary mapping a named output to its associated type
-3. Function: This is a function containing the logic to be executed by the node. This function should take as input the same number of inputs as defined by the inputs key of the node dictionary and return either a single value of any type in the case of a single return or a dictionary with keys which map to the outputs key of the node dictionary.
+3. Function: This is a function containing the logic to be executed by the node. This function should take, as input, the same number of inputs as defined by the inputs key. This function should return either a single value of any type in the case of a single return or a dictionary with keys which map to the outputs defined above.
 
 The following image shows a graphical representation of such a node followed by a number of examples showing the basic structure of these nodes.
 
@@ -51,7 +51,7 @@ Configuration nodes in this library are a subset of the functional nodes describ
 
 ### Edges
 
-An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output from another node within the graph. Output nodes do not need to be connected to anything for a graph to be valid, in this case the return of an executed graph will store the output data for later use. A user must ensure that the type allocated to the input coincides with the type allocated to the output to which it is connected.
+An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output from another node within the graph. Output nodes do not need to be connected to anything for a graph to be valid. In the case an output node is not connected, the return of a fully executed graph will store the output data for retrieval by the user. A user must ensure that the type allocated to the input coincides with the type allocated to the output to which it is connected, this is currently not checked by pipeline execution.
 
 ## Functionality
 
@@ -85,7 +85,7 @@ Where:
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
 * `nodeId` is a symbol unique to the graph denoting the name to be associated with the configuration node.
-* `config` is dictionary containing any configuration information to be supplied to other nodes in the graph.
+* `config` is a dictionary containing any configuration information to be supplied to other nodes in the graph.
 
 ```q
 // Add a configuration node to the graph
@@ -104,6 +104,10 @@ q)graph.edges
 dstNode dstName| srcNode srcName valid
 ---------------| ---------------------
                |                 0    
+
+// Attempt to add a node with non unique name
+show graph:.ml.addCfg[graph;`config;`a`b!1 2]
+'invalid nodeId
 ```
 
 ### `.ml.addNode`
@@ -116,7 +120,7 @@ Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
 * `nodeId` is a symbol unique to the graph denoting the name to be associated with the functional node.
-* `config` is dictionary containing the following information
+* `config` is a dictionary containing the following information
 	* `inputs` Either a single character representing the expected data input type in the case of a node recieving one input, or a dictionary mapping named inputs to their associate types.
 	* `outputs` Either a single character representing the expected ouput type in the case of a node outputting one item, or a dictionary mapping named outputs to their associate types.
 	* `function` is a function containing the logic to be executed by the node. This function should take as input the same number of inputs as defined by the inputs key of the node dictionary and return either a single value of any type in the case of a single return or a dictionary with keys which map to the outputs key of the node dictionary.
@@ -338,7 +342,7 @@ Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`.
 * `nodeId` is a symbol denoting the name of a configuration node to be updated.
-* `config` is dictionary containing any configuration information to be supplied to other nodes in the graph.
+* `config` is a dictionary containing any configuration information to be supplied to other nodes in the graph.
 
 returns the graph with the named configuration node contents overwritten
 
