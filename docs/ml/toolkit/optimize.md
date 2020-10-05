@@ -199,5 +199,5 @@ funcRet| 10.38552
 numIter| 3
 ```
 
-
-
+!!! Warning
+	A precision error may occur between results obtained on Linux/Mac/Windows operating systems, depending on the size of `geps` that is used in the implementation. This is due to the fact that a smaller value of `geps` may result in a floating point rounding difference. See [here](../../../../basics/precision) for more information
