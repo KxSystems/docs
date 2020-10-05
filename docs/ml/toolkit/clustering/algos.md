@@ -72,7 +72,7 @@ Where
 -   `df` is the distance function as a symbol: `nege2dist` is recommended for this algorithm. (see [Distance Metrics](#distance-metrics))
 -   `dmp` is the damping coefficient to be applied to the availability and responsibility matrices
 -   `diag` is the preference function for the diagonal of the similarity matrix (e.g.  `min` `med` `max` etc.)
--   `iter` is a dictionary containing the max allowed iterations and the max iterations without a change in clusters, with default values ``` `maxrun`maxmatch!200 50```. To use the defaults, pass in `(::)`.
+-   `iter` is a dictionary containing the max allowed iterations and the max iterations without a change in clusters, with default values ``` `total`nochange!200 50```. To use the defaults, pass in `(::)`.
 
 returns a dictionary with data, input variables and the cluster each data point belongs to.
 
@@ -84,7 +84,7 @@ q)show d:2 10#20?10.
 // fit to AP algorithm
 q)show APfit:.ml.clust.ap.fit[d;`nege2dist;.3;med;(::)]
 data  | (7.833686 4.099561 6.108817 4.976492 4.087545 4.49731 0.1392076 7.148..
-inputs| `df`dmp`diag`iter!(`nege2dist;0.3;k){avg x(<x)@_.5*-1 0+#x,:()};`maxrun`maxmatch!200 50)
+inputs| `df`dmp`diag`iter!(`nege2dist;0.3;k){avg x(<x)@_.5*-1 0+#x,:()};`total`nochange!200 50)
 clt   | 0 1 0 0 0 0 2 0 1 1
 
 // group indices into their calculated clusters
@@ -116,7 +116,7 @@ q)show trn:2 10#20?10.
 // fit AP algorithm
 q)show APfit:.ml.clust.ap.fit[trn;`nege2dist;.3;med;(::)]
 data  | (1.627662 6.884756 8.177547 7.520102 1.086824 9.598964 0.3668341 6.43..
-inputs| `df`dmp`diag`iter!(`nege2dist;0.3;k){avg x(<x)@_.5*-1 0+#x,:()};`maxrun`maxmatch!200 50)
+inputs| `df`dmp`diag`iter!(`nege2dist;0.3;k){avg x(<x)@_.5*-1 0+#x,:()};`total`nochange!200 50)
 clt   | 0 1 2 1 0 1 0 1 2 1
 
 // testing data
