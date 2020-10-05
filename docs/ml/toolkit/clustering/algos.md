@@ -699,13 +699,17 @@ The distance metrics that can be used with the K-Means algorithm are the Euclide
 
 _Fit K-Means Algorithm_
 
-Syntax: `.ml.clust.kmeans.fit[data;df;k;iter;kpp]`
+Syntax: `.ml.clust.kmeans.fit[data;df;k;cfg]`
 
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual data point
 -   `df` is the distance function: ``` `e2dist`edist ``` (see [section](##Distance Metrics))
 -   `k` is the number of clusters
+-   `cfg` is a dictionary allowing a user to change the following model parameters (for entirely default values use `(::)`)
+	- `iter` the number of iterations to be completed. Default = `100`
+	- `init` the algorithm used to initialise cluster centers. This is either random (`0b`) or uses [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`). Default = `1b`
+	- `thresh` if a cluster center moves by more than this value along any axis continue algorithm, otherwise stop. Default = `1e-5`.
 -   `iter` is the number of iterations to be completed
 -   `kpp` is a boolean flag indicating the initializaton type: random (`0b`) or using [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`)
 
@@ -716,8 +720,8 @@ q)show d:2 10#20?5.
 3.885652 0.4113437 2.566009 2.473914 4.332783   3.207488  4.541356 4.898047 1..
 4.795588 2.060933  3.165205 2.876346 0.04505872 0.7240285 3.853066 1.848057 0..
 
-// initialize using the k++ algorithm
-q)show kmeansfit:.ml.clust.kmeans.fit[d;`e2dist;3;10;1b]
+// initialize using default arguments
+q)show kmeansfit:.ml.clust.kmeans.fit[d;`e2dist;3;::]
 reppts| (3.058613 3.86148;0.9750445 1.324305;4.146106 0.8723815)
 clt   | 0 1 0 0 2 2 0 2 1 0
 data  | (3.885652 0.4113437 2.566009 2.473914 4.332783 3.207488 4.541356 4.89..
@@ -725,8 +729,8 @@ inputs| `df`k`iter`kpp!(`e2dist;3;10;1b)
 q)kmeansfit`clt
 0 1 0 0 2 2 0 2 1 0
 
-// initialize using random centers
-q)show kmeansfit:.ml.clust.kmeans.fit[d;`e2dist;3;10;0b]
+// initialize using random centers and maximum 10 iterations
+q)show kmeansfit:.ml.clust.kmeans.fit[d;`e2dist;3;`init`iter!(0b;10)]
 reppts| (3.058613 3.86148;0.9750445 1.324305;4.146106 0.8723815)
 clt   | 0 1 0 0 2 2 0 2 1 0
 data  | (3.885652 0.4113437 2.566009 2.473914 4.332783 3.207488 4.541356 4.89..
@@ -734,7 +738,7 @@ inputs| `df`k`iter`kpp!(`e2dist;3;10;0b)
 q)kmeansfit`clt
 0 1 0 0 2 2 0 2 1 0
 
-q).ml.clust.kmeans.fit[d;`mdist;3;10;1b]
+q).ml.clust.kmeans.fit[d;`mdist;3;::]
 'kmeans must be used with edist/e2dist
 ```
 
@@ -758,7 +762,7 @@ q)show trn:2 10#20?10.
 8.187707 6.506965 0.3492196 0.3283839 9.675763 3.01404   6.919292 9.471555 3...
 
 // fit kmeans algorithm
-q)show kmeansfit:.ml.clust.kmeans.fit[trn;`e2dist;3;10;1b]
+q)show kmeansfit:.ml.clust.kmeans.fit[trn;`e2dist;3;::]
 reppts| (7.753766 7.360869;1.060996 1.230548;0.9982673 9.614594)
 clt   | 0 0 1 1 0 1 0 0 0 2
 data  | (5.794801 9.029713 2.011578 0.6832366 5.989167 0.4881728 9.006991 8.5..
@@ -794,7 +798,7 @@ q)show trn:2 10#20?10.
 8.725027 6.568734 9.625156 3.714973  1.744659 5.897202 9.550901 6.158515 7.02..
 
 // fit kmeans algorithm
-q)show kmeansfit:.ml.clust.kmeans.fit[trn;`e2dist;3;15;0b]
+q)show kmeansfit:.ml.clust.kmeans.fit[trn;`e2dist;3;::]
 reppts| (7.600187 5.440753;4.903161 8.733536;0.7757332 3.714973)
 clt   | 0 0 1 2 0 0 1 0 1 0
 data  | (8.639591 8.439807 5.426371 0.7757332 6.374637 9.761246 5.396816 7.16..
