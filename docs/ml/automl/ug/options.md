@@ -247,6 +247,8 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 q).automl.run[tab;tgt;`normal;`reg;enlist[`seed]!enlist seed]
 ```
 
+!!! Note
+	For full reproducibility between q processes of the NLP [word2vec](#w2v) implementation, the [PYTHONHASHSEED](https://docs.python.org/3.3/using/cmdline.html#envvar-PYTHONHASHSEED) environment variable must be set upon initializing q. `$ PYTHONHASHSEED=0 q`. More information can be found [here](https://radimrehurek.com/gensim/models/word2vec.html)
 
 ### `sigfeats`
 
