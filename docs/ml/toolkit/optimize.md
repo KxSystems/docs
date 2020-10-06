@@ -62,6 +62,9 @@ key       |  explanation
 
 The following examples outline the optimization algorithm in use across a number of functions and with various starting points in 1-D and 2-D space.
 
+!!! Warning
+	When applying optimization algorithms in kdb+, subtracting small values from large to generate deltas to find the optimization direction may result in inconsistent results across operating systems. This is due to potential floating point precision differences at the machine level and issues with subtractions of floating point numbers more generally. These issues may be seen in the application of `.ml.ts.SARIMA` and `.ml.optimize.BFGS`. See [here](../../../../basics/precision) for more details on floating point precision.
+
 **Example 1:**
 
 Test minimization on a function with a single global minimum
@@ -199,5 +202,3 @@ funcRet| 10.38552
 numIter| 3
 ```
 
-!!! Warning
-	A precision error may occur between results obtained on Linux/Mac/Windows operating systems, depending on the size of `geps` that is used in the implementation. This is due to the fact that a smaller value of `geps` may result in a floating point rounding difference. See [here](../../../../basics/precision) for more information
