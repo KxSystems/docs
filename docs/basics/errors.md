@@ -224,6 +224,8 @@ which will cause a `'host` error.
 </tbody>
 </table>
 
+License-related errors are reported with the prefix `licence error: ` since V4.0 2019.10.22.
+
 :fontawesome-solid-graduation-cap: 
 [Licensing](../learn/licensing.md)
 
