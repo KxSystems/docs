@@ -46,7 +46,7 @@ So is the default namespace.
 ```q
 q)key `                 / namespaces in the default namespace
 `q`Q`h`o`util`rx
-q)key `.                / obects in the default namespace
+q)key `.                / objects in the default namespace
 `a`s`b`t`deltas0`x`c
 ```
 
