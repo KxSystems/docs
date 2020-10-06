@@ -153,19 +153,17 @@ Confirm kdb+ is working: launch your first q session.
 
 ??? warning ":fontawesome-brands-apple: Authorizing macOS Catalina to run kdb+"
 
-    MacOS Catalina (10.15) introduced tighter security rules. 
+    MacOS Catalina (10.15) introduced tighter security. 
     At this point it may display a warning that it does not recognize the software.
 
     ![Catalina warning](../img/catalina-warning.png)
 
-    The `spctl` and `xattr` commands above should authorize the OS to run q.
-    If not, these articles may help.
+    If the `spctl` and `xattr` commands above have not authorized the OS to run q, open _System Preferences > Security & Privacy_.
+    
+    You should see a notification that q has been blocked – and a button to override the block.
 
-    :fontawesome-solid-globe:
-    [Can’t launch your apps on macOS Catalina? Here’s the fix](https://www.cultofmac.com/672576/cant-launch-your-apps-on-macos-catalina-heres-the-fix/)
-    <br>
-    :fontawesome-solid-globe:
-    [How to open apps from unidentified developers on Mac in macOS Catalina](https://www.imore.com/how-open-apps-anywhere-macos-catalina-and-mojave)
+    :fontawesome-brands-apple:
+    [Safely open apps on your Mac](https://support.apple.com/en-us/HT202491)
 
 The q session opens with a banner like this. 
 
