@@ -2,15 +2,15 @@
 title: Atomic functions | Basics | kdb+ and q documentation
 description: There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
 author: Stephen Taylor
-keywords: atomic, function, kdb+, q, scalar extension
 ---
-# Atomic functions
+# :fontawesome-solid-sitemap: Atomic functions
 
 
 
 
 
-There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
+There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. 
+Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
 
 A unary is atomic if it applies to both atoms and lists, and in the case of a list, applies independently to every atom in the list. For example, the unary `neg` is atomic. A result of `neg` is just like its argument, except that each atom in an argument is replaced by its negation. 
 
@@ -82,6 +82,8 @@ Index 0 selects 2, index 4 selects 7, and index 2 selects -23.
 !!! warning "The items of `x` do not have to be atoms."
 
     It is common in descriptions of atomic functions to restrict attention to atom arguments and assume that the reader understands how the descriptions extend to list arguments.
+
+----
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
