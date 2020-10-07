@@ -19,7 +19,7 @@ Where
 
 -   `x` is a boolean vector
 -   `y` and `z` are lists of the same type
--   `x`, `y`, and `z` conform
+-   `x`, `y`, and `z` [conform](../basics/conformable.md)
 
 returns a new list by replacing elements of `y` with the elements of `z` when `x` is false. 
 
@@ -30,7 +30,7 @@ q)?[11001b;1 2 3 4 5;10 20 30 40 50]
 1 2 30 40 5
 ```
 
-If `x`, `y`, or `z` are atomic, they repeated.
+If `x`, `y`, or `z` are atomic, they are repeated.
 
 ```q
 q)?[11001b;1;10 20 30 40 50]
