@@ -417,11 +417,11 @@ This value is checked against `.Q.k` as part of the startup to make sure that th
 Returns the license information as a list of strings; `()` for non-commercial 32-bit versions.
 
 ```q
-q)``maxCoresAllowed`expiryDate`updateDate````bannerText`!.z.l
-               | ""
-maxCoresAllowed| "2021.05.27"
+q)`maxCoresAllowed`expiryDate`updateDate`````bannerText`!.z.l
+maxCoresAllowed| ""
 expiryDate     | "2021.05.27"
-updateDate     | ,"1"
+updateDate     | "2021.05.27"
+               | ,"1"
                | ,"1"
                | ,"1"
                | ,"0"
