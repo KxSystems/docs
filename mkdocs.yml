@@ -457,6 +457,10 @@ nav:
       - Kafka:
         - Overview: interfaces/kafka/index.md
         - Reference: interfaces/kafka/reference.md
+      - LDAP:
+        - Overview: interfaces/ldap/index.md
+        - Reference: interfaces/ldap/reference.md
+        - Examples: interfaces/ldap/examples.md
       - MQTT:
         - Overview: interfaces/mqtt/index.md
         - Reference: interfaces/mqtt/reference.md
@@ -467,6 +471,11 @@ nav:
           - Reference: interfaces/prom/exporter/reference.md
           - Event handlers: interfaces/prom/exporter/event-handlers.md
           - Examples: interfaces/prom/exporter/examples.md
+      - Protobuf:
+        - Overview: interfaces/protobuf/index.md
+        - Type mapping: interfaces/protobuf/protobuf-types.md
+        - Reference: interfaces/protobuf/reference.md
+        - Examples: interfaces/protobuf/examples.md
       - Python (embedPy): interfaces/embedpy.md
       - Python (PyQ):
         - Quick start: interfaces/pyq/index.md
@@ -552,6 +561,15 @@ nav:
         - Algorithms: ml/toolkit/clustering/algos.md
         - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
         - Scoring metrics: ml/toolkit/clustering/score.md
+      - Time Series:
+        - Overview: ml/toolkit/timeseries/index.md
+        - Models: ml/toolkit/timeseries/models.md
+        - Miscellaneous: ml/toolkit/timeseries/misc.md
+      - Optimization: ml/toolkit/optimize.md
+      - Graph and Pipeline:
+        - Overview: ml/toolkit/graph/index.md
+        - Graph: ml/toolkit/graph/graph.md
+        - Pipeline: ml/toolkit/graph/pipeline.md
     - Natural language processing:
       - Overview: ml/nlp/index.md
       - User guide:

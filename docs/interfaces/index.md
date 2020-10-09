@@ -27,19 +27,21 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr><td>FFI</td><td>[Using foreign functions with kdb+](ffi.md)</td></tr>
-<tr><td>HDF5</td><td>[Handling HDF5 data with kdb+](hdf5/index.md) ==new==</td></tr>
+<tr><td>HDF5</td><td>[Handling HDF5 data with kdb+](hdf5/index.md)</td></tr>
 <tr><td>Java</td><td> [Java client for kdb+](java-client-for-q.md)</td>
 <tr><td>Jupyter</td><td>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [:fontawesome-brands-superpowers:](../ml/index.md "Machine learning") ==new==</td>
 <tr><td>Kafka</td><td>[Q client for Kafka](kafka/index.md)</td></tr>
-<tr><td>MQTT</td><td>[Q client for MQTT](mqtt/index.md) ==new==</td></tr>
-<tr><td>Prometheus-Exporter</td><td>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md) ==new==</td></tr>
+<tr><td>MQTT</td><td>[Q client for MQTT](mqtt/index.md)</td></tr>
+<tr><td>Prometheus-Exporter</td><td>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md)</td></tr>
+<tr><td>Protobuf</td><td>[Protobuf](protobuf/index.md) ==new==</td></tr>
+<tr><td>LDAP</td><td>[Q client for LDAP](ldap/index.md) ==new==</td></tr>
 <tr><td>Python</td>
     <td>
 </i> [Using kdb+ within Python (PyQ)](pyq/index.md)<br/>
 [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [:fontawesome-brands-superpowers:](../ml/ "Machine learning")
     </td></tr>
 <tr><td>R</td><td>[Using R with kdb+](r/index.md)</td>
-<tr><td>Solace</td><td>[Interface to Solace PubSub+ broker](solace/index.md) ==new==</td></tr>
+<tr><td>Solace</td><td>[Interface to Solace PubSub+ broker](solace/index.md)</td></tr>
 </tr>
 </table>
 

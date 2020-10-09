@@ -20,7 +20,7 @@ The following are the procedures completed when the default system configuration
 
 1. Appropriate models are chosen for the use-case type being explored (classification/regression).
 2. Inappropriate columns within the dataset are removed based on their types.
-3. A check is applied to ensure that the number of targets is appropriate for the dataset type (`FRESH`/`normal`).
+3. A check is applied to ensure that the number of targets is appropriate for the dataset type (`FRESH`/`normal`/`nlp`).
 4. Symbol data columns are encoded via either one-hot or frequency encoding.
 5. Constant columns are removed from the data.
 6. Nulls are replaced and an additional column is added to encode their original position
@@ -127,12 +127,12 @@ Given the automated nature of the machine-learning pipeline, it is important to 
 The following lists show the restricted types for each problem type. In each case these types are not handled gracefully within the feature extraction workflow and thus are omitted
 
 ```txt
-Normal Feature Extraction        FRESH Feature Extraction
-  - guid                           - guid
-  - byte                           - byte
-  - list                           - list
-  - character                      - character
-                                   - time/date types
+Normal Feature Extraction    FRESH Feature Extraction    NLP Feature Extraction
+  - guid                       - guid                      - guid
+  - byte                       - byte                      - byte
+  - list                       - list                      - list
+  - character                  - character			 
+                               - time/date types		
 ```
 
 The following example shows a truncated output from a normal feature-creation procedure where columns containing byte objects and lists are removed.
@@ -162,8 +162,9 @@ Given the requirement for a one-to-one mapping between the rows output after fea
 
 problem type | description
 :------------|:-----------
-FRESH        | The number of unique configurations of aggregate columns must equal the number of targets
+FRESH        | The number of unique combinations of aggregate columns must equal the number of targets
 Normal       | The number of rows in the input table must equal the number of target values
+NLP          | The number of rows in the input table must equal the number of target values
 
 The example below show a failure for each problem type.
 
@@ -231,10 +232,18 @@ x          x2
 
 ## Null and infinity replacement
 
-Both null values and infinities are removed from the data due to the inability of machine-learning models in both sklearn and keras to handle this form of data. In the case of `+/-0w`, the values are replaced by the minimum/maximum value of the column, while `0n`'s are replaced by the median value of the column. In cases where nulls are present, an additional column is added denoting the location of the null prior to filling of the dataset, thus encoding the null location in the case that this is an important signal for prediction.
+Both null values and infinities are removed from the data due to the inability of machine-learning models in both sklearn and keras to handle this form of data. In the case of `+/-0w`, the values are replaced by the minimum/maximum value of the column, while `0n`'s are replaced by the median value of the column in order to limit changes to the data distribution. 
+
+In any cases where nulls are present, an additional column is added denoting the location of the null prior to filling of the dataset, thus encoding the null location in the case that this is an important signal for prediction.
 
 ```q
 q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)
+x         x1        x2       
+-----------------------------
+0.5347096 0.1780839 0.3927524
+0.7111716 0.3017723 0.5170911
+0.411597  0.785033  0.5159796
+          -0w       0.4066642
 q).automl.prep.i.nullencode[.ml.infreplace data;med]
 x         x1        x2         x_null
 -------------------------------------

@@ -68,14 +68,12 @@ Sample metrics
 
 : When updating a sample metric, a list of numeric values will be appended to. On request, this list will be used to construct the metric values, depending on the metric type and params.
 
-
 ## Status
 
-The interface is currently available as a beta version under an Apache 2.0 licence and is supported on a best-efforts basis by the Fusion team. The interface is currently in active development, with additional functionality to be released on an ongoing basis.
+The interface is currently available under an Apache 2.0 licence and is supported on a best-efforts basis by the Fusion team. The interface is currently in active development, with additional functionality to be released on an ongoing basis.
 
 :fontawesome-brands-github: 
 [Issues and feature requests](https://github.com/KxSystems/prometheus-kdb-exporter/issues) 
 
 :fontawesome-brands-github: 
 [Guide to contributing](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/CONTRIBUTING.md)
-
