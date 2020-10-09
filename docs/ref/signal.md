@@ -2,7 +2,6 @@
 title: Signal | Reference | kdb+ and q documentation
 description: Signal is a q operator that signals an error. 
 author: Stephen Taylor
-keywords: error, exception, kdb+, message, q, signal
 ---
 # `'` Signal
 

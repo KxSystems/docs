@@ -1,24 +1,29 @@
 ---
-title: Multiply – Reference – kdb+ and q documentation
+title: Multiply | Reference | kdb+ and q documentation
 description: Multiply is a q operator that returns the product of its arguments.
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, multiply, product, q, times
 ---
 # `*` Multiply
 
 
 
 
-Syntax: `x*y`, `*[x;y]` 
+```txt
+x*y     *[x;y]
+```
 
-Where `x` and `y` are conformable numerics or temporals, returns their product.
+Where `x` and `y` are [conformable](../basics/conformable.md) numerics or temporals, returns their 
+product.
+
 ```q
 q)3 4 5*2.2
 6.6 8.8 11
+
 q)1.1*`a`b`c!5 10 20
 a| 5.5
 b| 11
 c| 22
+
 q)t:([]price:10 20 30;qty:200 150 17)
 q)t*\:1.15 1 /raise all prices 15%
 price qty
@@ -26,16 +31,55 @@ price qty
 11.5  200
 23    150
 34.5  17
+
 q)update price:price*1+.15*qty<50 from t /raise prices 15% where stock<50
 price qty
 ---------
 10    200
 20    150
 34.5  17
-q)
 ```
 
-Multiply is an atomic function.
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+Multiply is an [atomic function](../basics/atomic.md).
+
+```q
+q)(10;20 30)*(2;3 4)
+20
+60 120
+```
+
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)d*2
+a| 20 -42 6
+b| 8  10  -12
+
+q)d*`b`c!(10 20 30;1000*1 2 3)  / upsert semantics
+a| 10   -21  3
+b| 40   100  -180
+c| 1000 2000 3000
+
+q)t*100
+a     b
+----------
+1000  400
+-2100 500
+300   -600
+
+q)k*k
+k  | a   b
+---| ------
+abc| 100 16
+def| 441 25
+ghi| 9   36
+```
+
 
 ## Range and domains
 
@@ -64,11 +108,13 @@ t| t . t t t t t f t . . . . . . . . .
 
 Range: `ijefpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
+----
+:fontawesome-solid-book:
 [Divide](divide.md),
-[`prd`, `prds`](prd.md)  
-.Q: [`.Q.addmonths`](dotq.md#qaddmonths)  
-Basics: [Datatypes](../basics/datatypes.md),
+[`prd`, `prds`](prd.md),
+[`.Q.addmonths`](dotq.md#qaddmonths)
+<br>
+:fontawesome-solid-book-open:
+[Datatypes](../basics/datatypes.md),
 [Mathematics](../basics/math.md)
-
 

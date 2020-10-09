@@ -1,15 +1,15 @@
 ---
 title: ceiling | Reference | kdb+ and q documentation
 description: ceiling is a q keyword that returns the least integer greater than its numeric argument.
-keywords: ceiling, floor, kdb+, math, mathematics, q
 ---
 # `ceiling`
 
 
 _Round up_
 
-
-Syntax: `ceiling x`, `ceiling[x]`
+```txt
+ceiling x      ceiling[x]
+```
 
 Returns the least integer greater than or equal to boolean or numeric `x`. 
 
@@ -20,25 +20,39 @@ q)ceiling 01b
 0 1i
 ```
 
-`ceiling` is an atomic function.
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`ceiling` is an [atomic function](../basics/atomic.md).
+
+```q
+q)ceiling(1.2;3.4 5.6)
+2
+4 6
+
+q)ceiling`a`b!(1.2;3.4 5.6)
+a| 2
+b| 4 6
+
+q)ceiling([]a:1.2 3.4;b:5.6 7.8)
+a b
+---
+2 6
+4 8
+```
 
 
-## Comparison tolerance
+## :fontawesome-solid-exclamation-triangle: Prior to V3.0
 
-Prior to V3.0, `ceiling` used [comparison tolerance](../basics/precision.md#comparison-tolerance).
+Prior to V3.0, `ceiling` 
+
+-    used [comparison tolerance](../basics/precision.md#comparison-tolerance)
+-    accepted datetime (Since V3.0, use `"d"$23:59:59.999+` instead.)
 
 ```q
 q)ceiling 2 + 10 xexp -12 -13
 3 2
-```
 
-
-## Datetime
-
-Prior to V3.0, `ceiling` accepted datetime. 
-Since V3.0, use `"d"$23:59:59.999+` instead.
-
-```q
 q)ceiling 2010.05.13T12:30:59.999 /type error since V3.0
 2010.05.14
 q)"d"$23:59:59.999+ 2010.05.13T12:30:59.999
@@ -55,6 +69,7 @@ range  i . i h i j j j i . . . . . . . . .
 Range: `hij`
 
 
+----
 :fontawesome-solid-book: 
 [`floor`](floor.md) 
 <br>

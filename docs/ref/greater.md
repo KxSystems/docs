@@ -1,20 +1,21 @@
 ---
 title: Greater, or | Reference | kdb+ and q documentation
-description: Greater is a q operator that returns the greater of its arguments. or is a q keyword that performs a logical OR. 
+description: Greater is a q operator that returns the greater of its arguments. or is a q keyword that performs a logical OR.
 author: Stephen Taylor
-keywords: greater, kdb+, logic, maximum, or, q
 ---
 # `|` Greater, `or`
 
-_Greater, logical OR_
+_Greater; logical OR_
 
 
 
+```txt
+x|y       |[x;y]
+x or y    or[x;y]
+```
 
-Syntax: `x|y`, `|[x;y]`  
-Syntax: `x or y`, `or[x;y]` 
-
-Returns the [greater](../basics/comparison.md) of boolean, numeric, character, or temporal `x` and `y`. 
+Where `x` and `y` are [conformable](../basics/conformable.md) numerics or temporals, returns their 
+the [greater](../basics/comparison.md) of them.
 
 ```q
 q)2|3
@@ -25,7 +26,13 @@ q)"sat"|"cow"
 "sow"
 ```
 
-Greater and `or` are atomic functions. 
+
+## Booleans
+
+Where `x` and `y` are flags, Greater is logical OR.
+
+While Greater and `or` are synonyms, it helps readers to apply `or` only and wherever flag arguments are expected. 
+There is no performance implication.
 
 
 ## Dictionaries and keyed tables
@@ -40,6 +47,7 @@ ibm  | 2017.05
 msoft| 2017.09
 appl | 2015.03
 goog | 2017.11
+
 q)show b:([sym:`msoft`goog`ibm]t:2017.08 2017.12 2016.12m)
 sym  | t
 -----| -------
@@ -66,7 +74,15 @@ q)98|"a"
 ```
 
 
+## :fontawesome-solid-sitemap: Implicit iteration
 
+Greater and `or` are [atomic functions](../basics/atomic.md).
+
+```q
+q)(10;20 30)|(2;3 4)
+10
+20 30
+```
 
 ## Domain and range
 
@@ -95,13 +111,14 @@ t| t . t t t t t t t . t . . t n t t t
 
 Range: `bxhijefcpmdznuvt`
 
-:fontawesome-solid-book: 
-[`&` and Lesser](lesser.md), [`max`](max.md), [`min`](min.md) 
+----
+:fontawesome-solid-book:
+[`&` and Lesser](lesser.md), [`max`](max.md), [`min`](min.md)
 <br>
-:fontawesome-solid-book-open: 
+:fontawesome-solid-book-open:
 [Comparison](../basics/comparison.md),
 [Logic](../basics/logic.md)
 <br>
-:fontawesome-solid-street-view: 
+:fontawesome-solid-street-view:
 _Q for Mortals_
 [§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser-amp)

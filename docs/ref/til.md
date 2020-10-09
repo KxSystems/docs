@@ -14,7 +14,7 @@ _First x natural numbers_
 til x    til[x]
 ```
 
-Where `x` is a non-negative integer, returns a vector of the first `x` integers. 
+Where `x` is a non-negative integer atom, returns a vector of the first `x` integers. 
 
 ```q
 q)til 0

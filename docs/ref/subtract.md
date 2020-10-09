@@ -2,15 +2,16 @@
 title: Subtract | Reference | kdb+ and q documentation
 description: Subtract is a q operator that returns the difference of its arguments for a wide range of datatypes.
 author: Stephen Taylor
-keywords: difference, kdb+, math, mathematics, minus, subtract
 ---
 # `-` Subtract
 
 
+```txt
+x-y     -[x;y]
+```
 
-Syntax: `x-y`, `-[x;y]`
-
-Where `x` and `y` are numerics or temporals, returns their difference/s.
+Where `x` and `y` are numerics or temporals, returns their 
+difference.
 
 ```q
 q)3 4 5-2
@@ -20,10 +21,47 @@ q)2000.11.22 - 03:44:55.666
 2000.11.21D20:15:04.334000000
 ```
 
-An atomic function.
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+Subtract is an [atomic function](../basics/atomic.md).
+
+```q
+q)(10;20 30)-(2;3 4)
+8
+17 26
+```
+
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)d-1
+a| 9 -22 2
+b| 3 4   -7
+
+q)d-`b`c!(10 20 30;1000*1 2 3)  / upsert semantics
+a| 10    -21   3
+b| -6    -15   -36
+c| -1000 -2000 -3000
+
+q)t-100
+a    b
+---------
+-90  -96
+-121 -95
+-97  -106
+
+q)k-k
+k  | a b
+---| ---
+abc| 0 0
+def| 0 0
+ghi| 0 0
+```
 
 [Add](add.md) is generally faster than Subtract.
-<!-- FIXME Examples with dictionaries and tables -->
 
 
 ## Range and domains
@@ -53,16 +91,12 @@ t| t . t t t t t f t . p p p z n t t t
 
 Range: `ijefpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
-[Add](add.md), 
-.Q: [`.Q.addmonths`](dotq.md#qaddmonths)  
-Basics: [Datatypes](../basics/datatypes.md), 
-
-:fontawesome-solid-book: 
-[Add](add.md), 
+----
+:fontawesome-solid-book:
+[Add](add.md),
 [`deltas`](deltas.md),
 [`differ`](differ.md),
-[`.Q.addmonths`](dotq.md#qaddmonths) 
+[`.Q.addmonths`](dotq.md#qaddmonths)
 <br>
 :fontawesome-solid-book-open:
 [Datatypes](../basics/datatypes.md),

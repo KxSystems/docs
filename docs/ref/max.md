@@ -1,8 +1,7 @@
 ---
-title: kdb+ and q documentation
+title: Maximums | Reference | kdb+ and q documentation
 description: max, maxs, and mmax are q keywords that return respectively the largest item from a list or dictionary, the cumulative maximums, and the moving maximums.
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, maximum, maximums, moving, q, statistics
 ---
 # `max`, `maxs`, `mmax`
 
@@ -18,8 +17,10 @@ _Maximum_
 max x    max[x]
 ```
 
-Where `x` is a sortable list, returns the maximum of its items.
-The maximum of an atom is itself. Applies to any datatype except symbol. Nulls are ignored, except that if the items of `x` are all nulls, the result is negative infinity.
+Where `x` is a non-symbol sortable list, returns the maximum of its items.
+The maximum of an atom is itself. 
+
+Nulls are ignored, except that if the items of `x` are all nulls, the result is negative infinity.
 
 ```q
 q)max 2 5 7 1 3
@@ -45,8 +46,9 @@ _Maximums_
 maxs x    maxs[x]
 ```
 
-Where `x` is a sortable list, returns the running maximums of its prefixes.
-The maximum of an atom is itself. Applies to any datatype except symbol. Nulls are ignored, except that initial nulls are returned as negative infinity.
+Where `x` is a non-symbol sortable list, returns the running maximums of its prefixes. 
+
+Nulls are ignored, except that initial nulls are returned as negative infinity.
 
 ```q
 q)maxs 2 5 7 1 3
@@ -71,7 +73,7 @@ x mmax y    mmax[x;y]
 Where
 
 -   `x` is a positive int atom
--   `y` is a numeric list
+-   `y` is a non-symbol sortable list
 
 returns the `x`-item moving maximums of `y`, with nulls after the first replaced by the preceding maximum. The first `x` items of the result are the maximums of the items so far, and thereafter the result is the moving maximum.
 
@@ -85,15 +87,44 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 `mmax` is a uniform function.
 
 
-:fontawesome-solid-book:
-[Greater Than](greater-than.md)
-<br>
-:fontawesome-solid-book-open:
-[Comparison](../basics/comparison.md),
-[Mathematics](../basics/math.md)
-<br>
-:fontawesome-solid-graduation-cap:
-[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`max`, `maxs`, and `mmax` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)max`a`b!(10 21 3;4 5 6)
+10 21 6
+q)max flip`a`b!(10 21 3;4 5 6)
+a| 21
+b| 6
+
+q)maxs`a`b!(10 21 3;4 5 6)
+a| 10 21 3
+b| 10 21 6
+q)maxs flip`a`b!(10 21 3;4 5 6)
+a  b
+----
+10 4
+21 5
+21 6
+
+q)2 mmax flip`a`b!(10 21 3;4 5 6)
+a  b
+----
+10 4
+21 5
+21 6
+q)2 mmax`a`b!(10 21 3;4 5 6)
+a| 10 21 3
+b| 10 21 6
+
+q)2 mmax ([k:`abc`def`ghi]a:10 21 3;b:4 5 6)
+k  | a  b
+---| ----
+abc| 10 4
+def| 21 5
+ghi| 21 6
+```
 
 
 ## Aggregating nulls
@@ -105,3 +136,16 @@ But for nested `x` these functions preserve the nulls.
 q)max (1 2;0N 4)
 1 4
 ```
+
+
+----
+:fontawesome-solid-book:
+[Greater Than](greater-than.md)
+<br>
+:fontawesome-solid-book-open:
+[Comparison](../basics/comparison.md),
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+

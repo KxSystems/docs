@@ -6,10 +6,12 @@ keywords: add, kdb+, mathematics, plus, q, sum
 # `+` Add
 
 
+```txt
+x+y     +[x;y]
+```
 
-Syntax: `x+y`, `+[x;y]` 
-
-Where `x` and `y` are conformable numerics or temporals, returns their sum/s.
+Where `x` and `y` are numerics or temporals, returns their 
+sum.
 
 ```q
 q)2+3 4 5
@@ -33,7 +35,46 @@ msoft| 3005 103
 
 Add is generally faster than [Subtract](subtract.md).
 
-Add is an atomic function. 
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+Add is an [atomic function](../basics/atomic.md).
+
+```q
+q)(10;20 30)+(2;3 4)
+12
+23 34
+```
+
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)d+10
+a| 20 -11 13
+b| 14 15  4
+
+q)d+`b`c!(10 20 30;1000*1 2 3)  / upsert semantics
+a| 10   -21  3
+b| 14   25   24
+c| 1000 2000 3000
+
+q)t+100
+a   b
+-------
+110 104
+79  105
+103 94
+
+q)k+k
+k  | a   b
+---| -------
+abc| 20  8
+def| -42 10
+ghi| 6   -12
+```
+
 
 ### Range and domains
 
@@ -62,10 +103,11 @@ t| t . t t t t t f t . p p p z n t t t
 
 Range: `ijefpmdznuvt`
 
-:fontawesome-solid-book: 
-[Subtract](subtract.md), 
+----
+:fontawesome-solid-book:
+[Subtract](subtract.md),
 [`sum`](sum.md),
-[`.Q.addmonths`](dotq.md#qaddmonths) 
+[`.Q.addmonths`](dotq.md#qaddmonths)
 <br>
 :fontawesome-solid-book-open:
 [Datatypes](../basics/datatypes.md),

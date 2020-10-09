@@ -96,8 +96,39 @@ q)3 mcount 0N 1 2 3 0N 5
 
 `mcount` is a uniform function. 
 
+
+### :fontawesome-solid-sitemap: Implicit iteration
+
+`mcount` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+
+q)2 mcount d
+a| 1 1 1
+b| 2 2 2
+
+q)2 mcount t
+a b
+---
+1 1
+2 2
+2 2
+
+q)2 mcount k
+k  | a b
+---| ---
+abc| 1 1
+def| 2 2
+ghi| 2 2
+```
+
+
 :fontawesome-solid-graduation-cap:
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+
+
+
 
 
 ----

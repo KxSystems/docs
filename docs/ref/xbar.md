@@ -29,8 +29,6 @@ q)5 xbar 11:00 + 0 2 3 5 7 11 13
 11:00 11:00 11:00 11:05 11:05 11:10 11:10
 ```
 
-`xbar` is a right-atomic function.
-
 Interval bars are useful in aggregation queries. To get last price and total size in 10-minute bars:
 
 ```q
@@ -88,6 +86,31 @@ q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
 !!! warning "Duplicate keys or column names"
 
     Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
+
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`xbar` is an [atomic functiom](../basics/atomic.md).
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
+
+```q
+q)(3;4 5)xbar(10;20 -30)
+9
+20 -30
+
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)3 xbar d
+a| 9 -21 3
+b| 3 3   -6
+
+q)3 xbar k
+k  | a   b
+---| ------
+abc| 9   3
+def| -21 3
+ghi| 3   -6
+```
 
 
 ## Domain and range

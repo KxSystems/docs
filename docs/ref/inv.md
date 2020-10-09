@@ -37,8 +37,8 @@ q)1=a mmu inv a
 Since V3.6 2017.09.26 `inv` uses LU decomposition.
 Previously it used Cholesky decomposition as well.
 
----- 
 
+---- 
 :fontawesome-solid-book:
 [`lsq`](lsq.md)
 <br>

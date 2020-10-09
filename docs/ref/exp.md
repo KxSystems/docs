@@ -1,8 +1,7 @@
 ---
-title: exp, xexp | Reference | kdb+ and q documentation
+title: exp, xexp – raise to a power | Reference | kdb+ and q documentation
 description: exp and xexp are q keywords. exp raises e to the power of its argument; xexp raises its left argument to the power of its right.
 author: Stephen Taylor
-keywords: e, kdb+, mathematics, power, q
 ---
 # `exp`, `xexp`
 
@@ -15,14 +14,16 @@ _Raise to a power_
 
 _Raise e to a power_
 
-Syntax: `exp x`, `exp[x]`
+```txt
+exp x     exp[x]
+```
 
 Where 
 
 -   `x` is numeric 
 -   _e_ is the base of natural logarithms
 
-returns _e_<sup>x</sup>, or null if `x` is null.
+returns as a float _e_<sup>x</sup>, or null if `x` is null.
 
 ```q
 q)exp 1
@@ -38,7 +39,37 @@ q)exp 00:00:00 00:00:12 12:00:00
 1 162754.8 0w
 ```
 
-`exp` is an atomic function.
+
+### :fontawesome-solid-sitemap: Implicit iteration
+
+`exp` is an [atomic](../basics/atomic.md) function.
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables)
+
+```q
+q)exp(1;2 3)
+2.718282
+7.389056 20.08554
+
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)exp d
+a| 22026.47 7.58256e-10 20.08554
+b| 54.59815 148.4132    0.002478752
+
+q)exp t
+a           b
+-----------------------
+22026.47    54.59815
+7.58256e-10 148.4132
+20.08554    0.002478752
+
+q)exp k
+k  | a           b
+---| -----------------------
+abc| 22026.47    54.59815
+def| 7.58256e-10 148.4132
+ghi| 20.08554    0.002478752
+```
 
 
 ### Domain and range
@@ -50,12 +81,15 @@ range  f . f f f f f f f . f f f z f f f f
 
 Range: `fz`
 
+----
 
 ## `xexp`
 
 _Raise x to a power_
 
-Syntax: `x xexp y`, `xexp[x;y]`
+```txt
+x xexp y    xexp[x;y]
+```
 
 Where `x` and `y` are numerics, returns as a float where `x` is
 
@@ -73,7 +107,6 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
 0.1821448 1 1.04138 0n 0w
 ```
 
-`exp` is an atomic function.
 
 !!! warning "The calculation is performed as `exp y * log x`." 
 
@@ -88,6 +121,31 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
     q)exp 3 * log 2
     7.9999999999999982
     </code></pre>
+
+
+### :fontawesome-solid-sitemap: Implicit iteration
+
+`xexp` is an [atomic](../basics/atomic.md) function.
+It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
+
+```q
+q)3 xexp(1;2 3)
+3f
+9 27f
+
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)3 xexp d
+a| 59049 9.559907e-11 27
+b| 81    243          0.001371742
+
+q)3 xexp k
+k  | a            b
+---| ------------------------
+abc| 59049        81
+def| 9.559907e-11 243
+ghi| 27           0.001371742
+```
 
 
 ### Domain and range
@@ -117,5 +175,6 @@ t   | . . . . . . . . . . . . . . . . . .
 
 Range: `f`
 
+----
 :fontawesome-solid-book: 
 [`log`, `xlog`](log.md) 

@@ -5,7 +5,7 @@ author: Stephen Taylor
 ---
 # `var`, `svar`
 
-_Variance, Sample variance_
+_Variance, sample variance_
 
 
 
@@ -33,6 +33,7 @@ q)select var price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 ```q
 {avg[sqr x]-sqr[avg x]}
 ```
+
 
 
 ## `svar`

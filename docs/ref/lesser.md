@@ -1,8 +1,7 @@
 ---
 title: Lesser, and | Reference | kdb+ and q documentation
-description: Lesser is a q operator that returns the lesser of its arguments. and is a q keyword that performs a logical AND. 
+description: Lesser is a q operator that returns the lesser of its arguments. and is a q keyword that performs a logical AND.
 author: Stephen Taylor
-keywords: and, kdb+, lesser of, logic, minimum, q
 ---
 # `&` Lesser, `and`
 
@@ -11,10 +10,13 @@ keywords: and, kdb+, lesser of, logic, minimum, q
 
 _Lesser of two values; logical AND_
 
-Syntax: `x & y`, `&[x;y]`
-Syntax: `x and y`, `and[x;y]` 
+```txt
+x & y         &[x;y]
+x and y       and[x;y]
+```
 
-Returns the [lesser](../basics/comparison.md) of boolean, numeric, character, or temporal `x` and `y`. 
+Where `x` and `y` are values of sortable type, returns 
+the [lesser](../basics/comparison.md) of them.
 
 ```q
 q)2&3
@@ -24,8 +26,6 @@ q)1010b and 1100b  /logical AND with booleans
 q)"sat"&"cow"
 "cat"
 ```
-
-Lesser and `and` are atomic functions. 
 
 
 ## Dictionaries and keyed tables
@@ -40,6 +40,7 @@ ibm  | 2017.05
 msoft| 2017.09
 appl | 2015.03
 goog | 2017.11
+
 q)show b:([sym:`msoft`goog`ibm]t:2017.08 2017.12 2016.12m)
 sym  | t
 -----| -------
@@ -56,6 +57,14 @@ goog | 2017.11
 ```
 
 
+## Booleans
+
+Where `x` and `y` are flags, Lesser is logical AND.
+
+While Lesser and `and` are synonyms, it helps readers to apply `and` only and wherever flag arguments are expected. 
+There is no performance implication.
+
+
 ## Mixed types
 
 Where `x` and `y` are of different types the lesser of their underlying values is returned as the higher of the two types.
@@ -63,6 +72,17 @@ Where `x` and `y` are of different types the lesser of their underlying values i
 ```q
 q)98&"c"
 "b"
+```
+
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+Lesser and `and` are [atomic functions](../basics/atomic.md).
+
+```q
+q)(10;20 30)&(2;3 4)
+2
+3 4
 ```
 
 
@@ -93,10 +113,17 @@ t| t . t t t t t t t . t . . t n t t t
 
 Range: `bxhijefcpmdznuvt`
 
-:fontawesome-regular-hand-point-right: 
-[`or` `|` Greater](greater.md), 
-[`max`](max.md), [`min`](min.md)  
-Basics: [Comparison](../basics/comparison.md),
-[Logic](../basics/logic.md) 
+----
+:fontawesome-solid-book:
+[`or`, `|`, Greater](greater.md),
+[`max`](max.md), [`min`](min.md)
+<br>
+:fontawesome-solid-book-open:
+[Comparison](../basics/comparison.md),
+[Logic](../basics/logic.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§4.5 Greater and Lesser](/q4m3/4_Operators/#45-greater-and-lesser-amp)
 
 

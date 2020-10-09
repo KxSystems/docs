@@ -152,6 +152,39 @@ q)(1 2;3 4) wsum (500 400;300 200)
 [Weighted sum](https://en.wikipedia.org/wiki/Weight_function "Wikipedia")
 
 
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`sum`, `sums`, and `msum` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+`wsum` applies to dictionaries.
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+
+q)sum d
+14 26 9
+q)sum t
+a| 34
+b| 15
+q)sum k
+a| 34
+b| 15
+
+q)sums d
+a| 10 21 3
+b| 14 26 9
+
+q)2 msum t
+a  b
+-----
+10 4
+31 9
+24 11
+
+q)1 2 wsum d
+18 31 15
+```
+
+
 ## Aggregating nulls
 
 `avg`, `min`, `max` and `sum` are special: they ignore nulls, in order to be similar to SQL92.

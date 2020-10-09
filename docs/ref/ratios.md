@@ -13,39 +13,89 @@ author: Stephen Taylor
 _Ratios between items_
 
 ```txt
-  ratios y     ratios[y]
-x ratios y     ratios[x;y]
+ratios y     ratios[y]
 ```
 
-Where
-
--   `x` is a numeric atom
--   `y` is a numeric list
-
-returns the ratios of consecutive pairs of items of numeric list `y`.
+Where `y` is a non-symbolic sortable list, returns the ratios of the underlying values of consecutive pairs of items of `y`.
 
 `ratios` is an aggregate function.
 
-
-Where applied as:
-
-- a binary function, the result is
-<pre><code class="language-txt">(%[y 0;x];%[y 1;y 0];%[y 2;y 1];…;%[y n-1;y n-2])</code></pre>
-<pre><code class="language-q">q)ratios[5;1 2 4 6 7 10]
-0.2 2 2 1.5 1.166667 1.428571
-</code></pre>
-
-- a unary function, `y[0]` replaces the `x` in the binary application.
-<pre><code class="language-q">q)ratios 1 2 4 6 7 10
-1 2 2 1.5 1.166667 1.428571
-</code></pre>
-
-Example: a query to get returns on prices:
+Examples: queries to get returns on prices:
 
 ```q
-q)update ret:ratios price by sym from trade
-q)select log ratios price from trade
+update ret:ratios price by sym from trade
+select log ratios price from trade
 ```
+
+In a query to get price movements:
+
+```q
+update diff:deltas price by sym from trade
+```
+
+With [`signum`](signum.md) to count the number of up/down/same ticks:
+
+```q
+q)select count i by signum deltas price from trade
+price| x
+-----| ----
+-1   | 247
+0    | 3
+1    | 252
+```
+
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`ratios` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+
+q)ratios d
+a| 10  21        3
+b| 0.4 0.2380952 2
+
+q)ratios t
+a         b
+--------------
+10        4
+2.1       1.25
+0.1428571 1.2
+
+q)ratios k
+k  | a         b
+---| --------------
+abc| 10        4
+def| 2.1       1.25
+ghi| 0.1428571 1.2
+```
+
+## First predecessor
+
+The predecessor of the first item is 1. 
+
+```q
+q)ratios 2000 2005 2007 2012 2020
+2000 1.0025 1.000998 1.002491 1.003976
+```
+
+It may be more convenient to have 1 as the first item of the result.
+
+```q
+q)ratios0:{first[x]%':x}
+q)ratios0 2000 2005 2007 2012 2020
+1 1.0025 1.000998 1.002491 1.003976
+```
+
+!!! warning "Subtract Each Divide"
+
+    The derived function `%':` (Divide Each Prior) used to define `ratios` is variadic and can be applied as either a unary or a binary.
+
+    However, `ratios` is supported only as a unary function.
+    For binary application, use the derived function.
+
+
 
 
 ----

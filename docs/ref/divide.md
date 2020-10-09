@@ -1,8 +1,7 @@
 ---
-title: Divide – Reference – kdb+ and q documentation
+title: Divide | Reference | kdb+ and q documentation
 description: Divide is a q operator that returns the ratio of its arguments.
 author: Stephen Taylor
-keywords: div, divide, division, divisor,kdb+, math, mathematics, numerator, percent, q, ratio
 ---
 # `%` Divide
 
@@ -10,9 +9,12 @@ keywords: div, divide, division, divisor,kdb+, math, mathematics, numerator, per
 
 
 
-Syntax: `x%y`, `%[x;y]` 
+```txt
+x%y     %[x;y]
+```
 
-Where `x` and `y` are conformable numerics or (both) timespans, returns their ratio as a float. 
+Where `x` and `y` are values of sortable type, returns the
+ratio of their underlying values as a float.
 
 Note that this is different from some other programming languages, e.g. C++.
 
@@ -22,17 +24,12 @@ q)2%3
 q)halve:%[;2]                              /projection
 q)halve til 5
 0 0.5 1 1.5 2
-q)(`a`b`c!100 200 300)%2                   /dictionary
-a| 50
-b| 100
-c| 150
-q)t:([]price:10 20 30;qty:200 150 17)
-q)t%\:1 2                                  /halve the quantities
-price qty
----------
-10    100
-20    75
-30    8.5
+
+q)"z"%"a"
+1.257732
+q)1b%0b
+0w
+
 q)00:00:10.000000000 % 00:00:05.000000000  /ratio of timespans
 2f
 ```
@@ -48,7 +45,45 @@ q)2010.01.01 % 2005.01.01
 1.999453
 ```
 
-Divide is an atomic function. 
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+Divide is an [atomic function](../basics/atomic.md).
+
+```q
+q)(10;20 30)%(2;3 4)
+5f
+6.666667 7.5
+```
+
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)d%2
+a| 5 -10.5 1.5
+b| 2 2.5   -3
+
+q)d%`b`c!(10 20 30;1000*1 2 3)             /upsert semantics
+a| 10   -21  3
+b| 0.4  0.25 -0.2
+c| 1000 2000 3000
+
+q)t%100
+a     b
+-----------
+0.1   0.04
+-0.21 0.05
+0.03  -0.06
+
+q)k%k
+k  | a b
+---| ---
+abc| 1 1
+def| 1 1
+ghi| 1 1
+```
 
 
 ## Range and domains
@@ -57,16 +92,23 @@ Both domains are `b g x h i j e f c s p m d z n u v t`.
 
 The result is always a float.
 
-:fontawesome-regular-hand-point-right: 
-[`div`](div.md), 
-[`ratios`](ratios.md)  
-Basics: [Mathematics](../basics/math.md)  
-_Q for Mortals_: [§4.4 Basic Arithmetic](/q4m3/4_Operators/#44-basic-arithmetic-)
-
 
 ## Errors
 
-error  | cause
--------|--------------------------------------------------
-length | the arguments are not conformable
-type   | an atom of an argument is not numeric or temporal
+```txt
+length  the arguments are not conformable
+type    an atom of an argument is not numeric or temporal
+```
+
+----
+:fontawesome-solid-book:
+[`div`](div.md),
+[Multiply](multiply.md),
+[`ratios`](ratios.md)
+<br>
+:fontawesome-solid-street-view:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-solid-book-open:
+_Q for Mortals_
+[§4.4 Basic Arithmetic](/q4m3/4_Operators/#44-basic-arithmetic-)
