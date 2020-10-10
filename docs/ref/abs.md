@@ -36,6 +36,8 @@ q)abs(10;20 -30)
 20 30
 ```
 
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
 
 ## Domain and range
 

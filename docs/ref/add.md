@@ -79,29 +79,30 @@ ghi| 6   -12
 ### Range and domains
 
 ```txt
-+| b g x h i j e f c s p m d z n u v t
--| -----------------------------------
-b| i . i i i j e f . . p m d z n u v t
-g| . . . . . . . . . . . . . . . . . .
-x| i . i i i j e f . . p m d z n u v t
-h| i . i i i j e f . . p m d z n u v t
-i| i . i i i j e f . . p m d z n u v t
-j| j . j j j j e f . . p m d z n u v t
-e| e . e e e e e f . . p m d z n u v t
-f| f . f f f f f f f . f f z z f f f f
-c| . . . . . . . f . . p m d z n u v t
-s| . . . . . . . . . . . . . . . . . .
-p| p . p p p p p f p . n . . . p p p p
-m| m . m m m m m f m . . i . . p p p p
-d| d . d d d d d z d . . . i . p p p p
-z| z . z z z z z z z . . . . f p z z z
-n| n . n n n n n f n . p p p p n n n n
-u| u . u u u u u f u . p p p z n u v t
-v| v . v v v v v f v . p p p z n v v t
-t| t . t t t t t f t . p p p z n t t t
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | i . i i i j e f . . p m d z n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | i . i i i j e f . . p m d z n u v t
+h | i . i i i j e f . . p m d z n u v t
+i | i . i i i j e f . . p m d z n u v t
+j | j . j j j j e f . . p m d z n u v t
+e | e . e e e e e f . . p m d z n u v t
+f | f . f f f f f f f . f f z z f f f f
+c | . . . . . . . f . . p m d z n u v t
+s | . . . . . . . . . . . . . . . . . .
+p | p . p p p p p f p . n . . . p p p p
+m | m . m m m m m f m . . i . . p p p p
+d | d . d d d d d z d . . . i . p p p p
+z | z . z z z z z z z . . . . f p z z z
+n | n . n n n n n f n . p p p p n n n n
+u | u . u u u u u f u . p p p z n u v t
+v | v . v v v v v f v . p p p z n v v t
+t | t . t t t t t f t . p p p z n t t t
 ```
 
-Range: `ijefpmdznuvt`
+Range: `defijmnptuvz`
+
 
 ----
 :fontawesome-solid-book:

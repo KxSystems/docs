@@ -29,6 +29,26 @@ q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 ```
 
 
+## Implicit iteration
+
+`med` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)med d
+7 -8 -1.5
+
+q)med t
+a| 3
+b| -6
+
+q)med k
+a| 3
+b| -6
+```
+
+
 ## Partitions and segments
 
 `med` signals a part error when running a median over partitions, or segments. 

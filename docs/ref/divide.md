@@ -13,8 +13,8 @@ author: Stephen Taylor
 x%y     %[x;y]
 ```
 
-Where `x` and `y` are values of sortable type, returns the
-ratio of their underlying values as a float.
+Returns the
+ratio of the underlying values of `x` and `y` as a float.
 
 Note that this is different from some other programming languages, e.g. C++.
 
@@ -88,17 +88,30 @@ ghi| 1 1
 
 ## Range and domains
 
-Both domains are `b g x h i j e f c s p m d z n u v t`.
-
-The result is always a float.
-
-
-## Errors
-
 ```txt
-length  the arguments are not conformable
-type    an atom of an argument is not numeric or temporal
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | f . f f f f f f f . f f f f f f f f
+g | . . . . . . . . . . . . . . . . . .
+x | f . f f f f f f f . f f f f f f f f
+h | f . f f f f f f f . f f f f f f f f
+i | f . f f f f f f f . f f f f f f f f
+j | f . f f f f f f f . f f f f f f f f
+e | f . f f f f f f f . f f f f f f f f
+f | f . f f f f f f f . f f f f f f f f
+c | f . f f f f f f f . f f f f f f f f
+s | . . . . . . . . . . . . . . . . . .
+p | f . f f f f f f f . f f f f f f f f
+m | f . f f f f f f f . f f f f f f f f
+d | f . f f f f f f f . f f f f f f f f
+z | f . f f f f f f f . f f f f f f f f
+n | f . f f f f f f f . f f f f f f f f
+u | f . f f f f f f f . f f f f f f f f
+v | f . f f f f f f f . f f f f f f f f
+t | f . f f f f f f f . f f f f f f f f
 ```
+
+Range: `f`
 
 ----
 :fontawesome-solid-book:

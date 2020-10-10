@@ -84,29 +84,29 @@ ghi| 9   36
 ## Range and domains
 
 ```txt
-*| b g x h i j e f c s p m d z n u v t
--| -----------------------------------
-b| i . i i i j e f . . p m d z n u v t
-g| . . . . . . . . . . . . . . . . . .
-x| i . i i i j e f . . p m d z n u v t
-h| i . i i i j e f . . p m d z n u v t
-i| i . i i i j e f . . p m d z n u v t
-j| j . j j j j e f . . p m d z n u v t
-e| e . e e e e e f . . p m d z n u v t
-f| f . f f f f f f f . f f z z f f f f
-c| . . . . . . . f . . p m d z n u v t
-s| . . . . . . . . . . . . . . . . . .
-p| p . p p p p p f p . . . . . . . . .
-m| m . m m m m m f m . . . . . . . . .
-d| d . d d d d d z d . . . . . . . . .
-z| z . z z z z z z z . . . . . . . . .
-n| n . n n n n n f n . . . . . . . . .
-u| u . u u u u u f u . . . . . . . . .
-v| v . v v v v v f v . . . . . . . . .
-t| t . t t t t t f t . . . . . . . . .
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | i . i i i j e f . . p m d z n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | i . i i i j e f . . p m d z n u v t
+h | i . i i i j e f . . p m d z n u v t
+i | i . i i i j e f . . p m d z n u v t
+j | j . j j j j e f . . p m d z n u v t
+e | e . e e e e e f . . p m d z n u v t
+f | f . f f f f f f f . f f z z f f f f
+c | . . . . . . . f . . p m d z n u v t
+s | . . . . . . . . . . . . . . . . . .
+p | p . p p p p p f p . . . . . . . . .
+m | m . m m m m m f m . . . . . . . . .
+d | d . d d d d d z d . . . . . . . . .
+z | z . z z z z z z z . . . . . . . . .
+n | n . n n n n n f n . . . . . . . . .
+u | u . u u u u u f u . . . . . . . . .
+v | v . v v v v v f v . . . . . . . . .
+t | t . t t t t t f t . . . . . . . . .
 ```
 
-Range: `ijefpmdznuvt`
+Range: `defijmnptuvz`
 
 ----
 :fontawesome-solid-book:

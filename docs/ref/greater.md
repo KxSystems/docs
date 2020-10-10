@@ -14,8 +14,7 @@ x|y       |[x;y]
 x or y    or[x;y]
 ```
 
-Where `x` and `y` are [conformable](../basics/conformable.md) numerics or temporals, returns their 
-the [greater](../basics/comparison.md) of them.
+Returns the [greater](../basics/comparison.md) of the underlying values of `x` and `y`.
 
 ```q
 q)2|3
@@ -27,12 +26,15 @@ q)"sat"|"cow"
 ```
 
 
-## Booleans
+## Flags
 
-Where `x` and `y` are flags, Greater is logical OR.
+Where `x` and `y` are both [flags](../basics/glossary.md#flag), Greater is logical OR.
 
-While Greater and `or` are synonyms, it helps readers to apply `or` only and wherever flag arguments are expected. 
-There is no performance implication.
+!!! tip "Use `or` for flags"
+
+    While Greater and `or` are synonyms, it helps readers to apply `or` only and wherever flag arguments are expected. 
+
+    There is no performance implication.
 
 
 ## Dictionaries and keyed tables
@@ -84,36 +86,66 @@ q)(10;20 30)|(2;3 4)
 20 30
 ```
 
+They apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)d|5
+a| 10 5 5
+b| 5  5 5
+
+q)d|`b`c!(10 20 30;1000*1 2 3)  / upsert semantics
+a| 10   -21  3
+b| 10   20   30
+c| 1000 2000 3000
+
+q)t|5
+a  b
+----
+10 5
+5  5
+5  5
+
+q)k|5
+k  | a  b
+---| ----
+abc| 10 5
+def| 5  5
+ghi| 5  5
+```
+
+
 ## Domain and range
 
 ```txt
-|| b g x h i j e f c s p m d z n u v t
--| -----------------------------------
-b| b . x h i j e f c . p m d z n u v t
-g| . . . . . . . . . . . . . . . . . .
-x| x . x h i j e f c . p m d z n u v t
-h| h . h h i j e f c . p m d z n u v t
-i| i . i i i j e f c . p m d z n u v t
-j| j . j j j j e f c . p m d z n u v t
-e| e . e e e e e f c . p m d z n u v t
-f| f . f f f f f f c . p m d z n u v t
-c| c . c c c c c c c . p m d z n u v t
-s| . . . . . . . . . . . . . . . . . .
-p| p . p p p p p p p . p p p p n u v t
-m| m . m m m m m m m . p m d . . . . .
-d| d . d d d d d d d . p d d z . . . .
-z| z . z z z z z z z . p . z z n u v t
-n| n . n n n n n n n . n . . n n n n n
-u| u . u u u u u u u . u . . u n u v t
-v| v . v v v v v v v . v . . v n v v t
-t| t . t t t t t t t . t . . t n t t t
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b . x h i j e f c . p m d z n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | x . x h i j e f c . p m d z n u v t
+h | h . h h i j e f c . p m d z n u v t
+i | i . i i i j e f c . p m d z n u v t
+j | j . j j j j e f c . p m d z n u v t
+e | e . e e e e e f c . p m d z n u v t
+f | f . f f f f f f c . p m d z n u v t
+c | c . c c c c c c c . p m d z n u v t
+s | . . . . . . . . . . . . . . . . . .
+p | p . p p p p p p p . p p p p n u v t
+m | m . m m m m m m m . p m d . . . . .
+d | d . d d d d d d d . p d d z . . . .
+z | z . z z z z z z z . p . z z n u v t
+n | n . n n n n n n n . n . . n n n n n
+u | u . u u u u u u u . u . . u n u v t
+v | v . v v v v v v v . v . . v n v v t
+t | t . t t t t t t t . t . . t n t t t
 ```
 
-Range: `bxhijefcpmdznuvt`
+Range: `bcdefhijmnptuvxz`
 
 ----
 :fontawesome-solid-book:
-[`&` and Lesser](lesser.md), [`max`](max.md), [`min`](min.md)
+[`and`, `&`, Lesser](lesser.md), [`max`](max.md), [`min`](min.md)
 <br>
 :fontawesome-solid-book-open:
 [Comparison](../basics/comparison.md),
