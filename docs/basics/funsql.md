@@ -244,7 +244,7 @@ a  40
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12.1 Functional select](/q4m3/9_Queries_q-sql)
+[§9.12.1 Functional select](/q4m3/9_Queries_q-sql/#9121-functional-select)
 
 
 ## `?` Exec

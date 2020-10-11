@@ -1,21 +1,21 @@
 ---
-title: Time Series Feature Engineering | Time Series | Machine Learning Toolkit | Documentation for kdb+ and q
+title: Feature engineering | Time Series | Toolkit | Machine Learning | Documentation for kdb+ and q
+description: Feature-engineering and miscellaneous functions in the kdb+ Machine Leraning Toolkit
 author: Diane O'Donoghue
 date: September 2020
-keywords: machine learning, ml, time series, feature engineering, lag, window, stationarity
 ---
+# :fontawesome-solid-share-alt: Miscellaneous timeseries functionality
 
-# :fontawesome-solid-share-alt: Miscellaneous Time Series Functionality
 
 <pre markdown="1" class="language-txt">
 .ml.ts
 
-**Feature Engineering**
-[laggedFeatures](#mltslaggedfeatures) Create lagged features from a time series
-[windowFeatures](#mltswindowfeatures) Create windowed features from a time series
+**Feature engineering**
+  [laggedFeatures](#mltslaggedfeatures)   Create lagged features from a time series
+  [windowFeatures](#mltswindowfeatures)   Create windowed features from a time series
 
-**Miscellaneous Functionality**
-[stationarity](#mltsstationarity)   Test that time-series data is stationary
+**Miscellaneous**
+  [stationarity](#mltsstationarity)     Whether timeseries data is stationary
 </pre>
 
 <i class="fab fa-github"></i>
@@ -25,18 +25,23 @@ keywords: machine learning, ml, time series, feature engineering, lag, window, s
 
 _Create lagged features from an equispaced tabular time series dataset_
 
-Syntax: `.ml.ts.laggedFeatures[tab;colNames;lags]`
+```txt
+.ml.ts.laggedFeatures[tab;colNames;lags]
+```
 
 Where
  
--  `tab` is a table containing equispaced time series data
--  `colNames` is a list of columns to extract the lag values from
--  `lags` is a list of historic lags to be added as columns to the dataset
+-   `tab` is a table containing equispaced timeseries data
+-   `colNames` is a symbol list of columns to extract the lag values from
+-   `lags` is an int list of historic lags to be added as columns to the dataset
 
-returns a table with additional columns containing the historical values for each row
+returns a table with additional columns containing the historical values for each row.
 
-!!!Warning
-	The original data contained within the time series is not removed from the table. As such, null values are present in any lagged columns. A user wishing to apply a machine learning algorithm shoud handle this data as appropriate to their use case.
+!!! warning "Null values present in any lagged columns"
+
+	The original data contained within the timeseries remains in the table. As such, null values are present in any lagged columns.
+    To apply a machine-learning algorithm, handle this data appropriately to the use case.
+
 
 ```q
 q)show tab:([]"p"$"d"$til 100;100?10f;100?100)
@@ -79,23 +84,26 @@ x                             x1       x2 x1_xprev_1 x2_xprev_1 x1_xprev_7 x2..
 2000.01.20D00:00:00.000000000 6.135786 2  7.177445   41         7.07042    74..
 ```
 
+
 ## `.ml.ts.windowFeatures`
 
-_Create windowed features from an equispaced tabular time series_
+_Create windowed features from an equispaced tabular timeseries_
 
-Syntax: `.ml.ts.windowFeatures[tab;colNames;funcs;wins]`
+```txt
+.ml.ts.windowFeatures[tab;colNames;funcs;wins]
+```
 
 Where
  
--  `tab` is a table containing equispaced time series data
--  `colNames` is a list of columns to apply the windowed functions to
--  `funcs` list of function names (as symbols) which are to be applied to the time series
--  `wins` list of window sizes on which to apply these functions
+-   `tab` is a table containing equispaced timeseries data
+-   `colNames` is a symbol list of columns to apply the windowed functions to
+-   `funcs` is a symbol list of function names to be applied to the timeseries
+-   `wins` is an int list of window sizes on which to apply these functions
 
-returns a table with additional columns containing the functions applied over appropriate window lengths
+returns a table with additional columns containing the functions applied over appropriate window lengths.
 
-!!! Note
-	The first `max[wins]` rows of the table are removed as these are produced with insufficient data to provide accurate results
+!!! detail "The first `max[wins]` rows of the table are removed as these are produced with insufficient data to provide accurate results"
+
 
 ```q
 q)show ts_tab:([]"p"$"d"$til 100;100?10f;100?100)
@@ -130,17 +138,16 @@ x                             x1        x2 avg_7_x1  avg_7_x2 avg_14_x1 avg_1..
 2000.01.11D00:00:00.000000000 1.013315  87 6.247287  54.28571 4.675759  39.71..
 ```
 
+
 ## `.ml.ts.stationarity`
 
-_Summary of the stationarity of a set of time series data using an augmented dickey-filler test_
+_Summary of the stationarity of a set of timeseries data using an augmented dickey-filler test_
 
-Syntax: `.ml.ts.stationarity[dset]`
+```txt
+.ml.ts.stationarity[dset]
+```
 
-Where
-
--  `dset` is a dictionary, table or vector of time series data. All data should be numerical.
-
-returns a keyed table outlining the stationarity of each key, column or vector of the provided dataset
+Where `dset` is a dictionary, table or vector of numerical timeseries data, returns a keyed table outlining the stationarity of each key, column or vector of the provided dataset.
 
 ```q
 q)vec:1000?1f
@@ -165,3 +172,4 @@ x | -9.522067 3.046044e-16 1          -3.498198        -2.891208        -2.58259
 x1| -8.763674 2.632545e-14 1          -3.498198        -2.891208        -2.582596        
 x2| 0.3685454 0.9802798    0          -3.498198        -2.891208        -2.582596        
 ```
+

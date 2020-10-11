@@ -3,9 +3,8 @@ author: Conor McCarthy
 title: Optimization functionality - Machine Learning – Machine Learning – kdb+ and q documentation
 description: Functionality for the numerical optimization of user defined q functions.
 date: September 2020
-keywords: time-series, numerical optimization, quasi-Newton, nonlinear, kdb+, q
 ---
-# <i class="fa fa-share-alt"></i> Numerical optimization
+# :fontawesome-solid-share-alt: Numerical optimization
 
 
 <pre markdown="1" class="language-txt">
@@ -16,57 +15,77 @@ keywords: time-series, numerical optimization, quasi-Newton, nonlinear, kdb+, q
 :fontawesome-brands-github:
 [KxSystems/ml/optimize](https://github.com/kxsystems/ml/tree/master/optimize/)
 
-The `.ml.optimize` namespace contains functions which relate to the application of numerical optimization techniques. Such techniques are used to find local or global minima of user provided objective functions and are central to many statistical models.
+The `.ml.optimize` namespace contains functions that relate to the application of numerical optimization techniques. Such techniques are used to find local or global minima of user-provided objective functions and are central to many statistical models.
 
-!!! Note
-	Version 1.1.0 provides the initial versions of numerical optimization tools to the machine learning toolkit. The Broyden-Fletcher-Goldfarb-Shanno algorithm is provided initially due to its use in the generation of the SARIMA model provided with the toolkit. This functionality will be expanded over time to include more diverse optimization algorithms
+??? note "Version 1.1.0"
+
+	Version 1.1.0 provides the initial versions of numerical optimization tools to the Machine Learning Toolkit. 
+
+    The Broyden-Fletcher-Goldfarb-Shanno algorithm is provided initially due to its use in the generation of the SARIMA model provided with the toolkit. 
+
+    This functionality will be expanded over time to include more diverse optimization algorithms
     
 
-## Broyden-Fletcher-Goldfarb-Shanno Algorithm
 
-In numerical optimization, the Broyden-Fletcher-Goldfarb-Shanno(BFGS) algorithm is a quasi-Newton iterative method for solving unconstrained nonlinear optimization problems. This is a class of hill-climbing optimization technique which seeks to find a stationary, preferably twice differentiable solution to the objective function. An outline of the algorithm and the rationale behind its implementation can be found [here](https://en.wikipedia.org/wiki/Broyden-Fletcher-Goldfarb-Shanno_algorithm#Rationale).
+## Broyden-Fletcher-Goldfarb-Shanno algorithm
+
+In numerical optimization, the Broyden-Fletcher-Goldfarb-Shanno(BFGS) algorithm is a quasi-Newton iterative method for solving unconstrained non-linear optimization problems. This is a class of hill-climbing optimization techniques that seek a stationary, preferably twice-differentiable, solution to the objective function. 
+
+:fontawesome-brands-wikipedia-w:
+[Rationale behind the algorithm](https://en.wikipedia.org/wiki/Broyden-Fletcher-Goldfarb-Shanno_algorithm#Rationale "Wikipedia")
+
 
 ### `.ml.optimize.BFGS`
 
 _Optimize an objective function based on a provided intial guess using the BFGS algorithm_
 
-Syntax: `.ml.optimize.BFGS[func;x0;args;params]`
+```txt
+.ml.optimize.BFGS[func;x0;args;params]
+```
 
 Where
 
-* `func` is a lambda/projection defining the objective function to be optimized. This function should take as input 1 or 2 items depending on if non changing additional arguments `args` are required.
-* `x0` is a numerical list denoting the initial guess for the numerical function arguments which are to be optimized.
-* `args` any additional non changing arguments required by the function, this can be a list or dictionary in the case that additional arguments are required, or a `(::)`/`()` in the case they are not.
-* `params` optional parameters which can be used to modify the behaviour of the algorithm. In the case that no modifications are to be made this should be `(::)`. Otherwise this should be a dictionary. The following keys outline all possible changes which can be made to the default system behaviour and the currently accepted default values
-
-key          |  type   | default  | explanation
--------------|---------|----------|--------
-`display`    | boolean |    0b    | are the results at each optimization iteration to be printed to standard output
-`optimIter`  | integer |    0W    | maximum number of iterations before optimization procedure is terminated
-`zoomIter`   | integer |    10    | maximum number of iterations when finding optimal zoom position
-`wolfeIter`  | integer |    10    | maximum number of iterations when attempting to calculate strong Wolfe conditions
-`norm`       | integer |    0W    | order of function used to calculate the gradient norm. This can be `0W = maximum value`, `-0W = minimum value` otherwise calculated via `sum[abs[vec]xexp norm]xexp 1%norm`
-`gtol`       |  float  |   1e-5   | gradient norm must be less than this value before successful termination
-`geps`       |  float  |  1.5e-8  | the absolute step size used for numerical approximation of the jacobian via forward differencing 
-`stepSize`   |  float  |    0W    | the maximum allowable 'alpha' step size between calculations during the Wolfe condition search
-`c1`         |  float  |   1e-4   | Armijo rule condition used in calculation of strong Wolfe conditions.
-`c2`         |  float  |   0.9    | curvature rule condition used in calculation of the strong Wolfe condition search
+-   `func` is a lambda/projection defining the objective function to be optimized. This function should take as input 1 or 2 arguments depending on if non-changing additional arguments `args` are required.
+-   `x0` is a numerical list denoting the initial guess for the numerical function arguments which are to be optimized.
+-   `args` any additional non-changing arguments required by the function, this can be a list or dictionary in the case that additional arguments are required, or a `(::)` or `()` if they are not.
+-   `params` optional parameters which can be used to modify the behavior of the algorithm. If no modifications are to be made this should be `(::)`. Otherwise this should be a dictionary. The following keys outline all possible changes which can be made to the default system behavior and the currently-accepted default values
 
 returns a dictionary containing the following information
 
-key       |  explanation
-----------|-----------------------
-`xVals`   | optimized input arguments for the functions based on initial guess `x0`
-`funcRet` | return from the objective function at position `xVals`
-`numIter` | number of iterations to reach the optimal values
+```txt
+xVals    optimized input arguments for the functions based on initial guess `x0`
+funcRet  return from the objective function at position `xVals`
+numIter  number of iterations to reach the optimal values
+```
+
+Optional entries for `params`:
+
+key        |  type   | default  | explanation
+-----------|---------|----------|--------
+display    | boolean |    0b    | are the results at each optimization iteration to be printed to standard output
+optimIter  | integer |    0W    | maximum number of iterations before optimization procedure is terminated
+zoomIter   | integer |    10    | maximum number of iterations when finding optimal zoom position
+wolfeIter  | integer |    10    | maximum number of iterations when attempting to calculate strong Wolfe conditions
+norm       | integer |    0W    | order of function used to calculate the gradient norm. This can be `0W = maximum value`, `-0W = minimum value` otherwise calculated via `sum[abs[vec]xexp norm]xexp 1%norm`
+gtol       |  float  |   1e-5   | gradient norm must be less than this value before successful termination
+geps       |  float  |  1.5e-8  | the absolute step size used for numerical approximation of the jacobian via forward differencing 
+stepSize   |  float  |    0W    | the maximum allowable ‘alpha’ step size between calculations during the Wolfe condition search
+c1         |  float  |   1e-4   | Armijo rule condition used in calculation of strong Wolfe conditions
+c2         |  float  |   0.9    | curvature rule condition used in calculation of the strong Wolfe condition search
 
 The following examples outline the optimization algorithm in use across a number of functions and with various starting points in 1-D and 2-D space.
 
-!!! Warning
-	When applying optimization algorithms in kdb+, subtracting small values from large to generate deltas to find the optimization direction may result in inconsistent results across operating systems. This is due to potential floating point precision differences at the machine level and issues with subtractions of floating point numbers more generally. These issues may be seen in the application of `.ml.ts.SARIMA` and `.ml.optimize.BFGS`. See [here](../../../../basics/precision) for more details on floating point precision.
+!!! warning "Consistency across platforms"
 
-**Example 1:**
+    When applying optimization algorithms in kdb+, subtracting small values from large to generate deltas to find the optimization direction may result in inconsistent results across operating systems. 
 
+    This is due to potential floating-point precision differences at the machine level and issues with subtractions of floating point numbers more generally. These issues may be seen in the application of `.ml.ts.SARIMA` and `.ml.optimize.BFGS`. 
+
+    :fontawesome-solid-book-open:
+    [Precision](../../basics/precision.md)
+
+
+**Example**
 Test minimization on a function with a single global minimum
 
 1. Define a quadratic equation to be minimized: 
@@ -96,10 +115,9 @@ funcRet| -4f
 numIter| 3
 ```
 
-![example1](img/example1_BFGS.png)
+![example 1](img/example1_BFGS.png)
 
-**Example 2:**
-
+**Example** 
 Test minimization on a function which has multiple minima, demonstrate functionality to print optimization information on a per iteration basis.
 
 1. Define a sinusoidal equation to be minimized:
@@ -171,11 +189,10 @@ numIter| 3
 
 ![example2](img/example2_BFGS.png)
 
-**Example 3:**
+**Example**
+Test minimization of a multi-dimensional function, showing the effect of modifying the number of allowed iterations in the application of optimization
 
-Test minimization of a multidimensional function, showing the effect of modifying the number of allowed iterations in the application of optimization
-
-1. Define a function which optimizes on 2 arguments
+1. Define a function which optimizes on two arguments
 
 	$$f(x) = (x[0]-1)^2 + (x[1]-2.5)^2$$
 

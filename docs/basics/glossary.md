@@ -135,7 +135,7 @@ A communication handle specifies a network resource.
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§11.6.1 Communication Handle](/q4m3/11_IO/1161-communication-handle)
+[§11.6.1 Communication Handle](/q4m3/11_IO/#1161-communication-handle)
 
 
 ## Comparison tolerance

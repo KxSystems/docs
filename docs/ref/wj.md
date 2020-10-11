@@ -47,7 +47,7 @@ wj[w; f; t; (q; (wavg;`asize;`ask); (wavg;`bsize;`bid))]
 ```
 
 
-## Interval behaviour
+## Interval behavior
 
 `wj` and `wj1` are both \[\] interval, i.e. they consider quotes ≥beginning and ≤end of the interval.
 

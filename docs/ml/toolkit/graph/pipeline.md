@@ -1,49 +1,12 @@
 ---
-title: Pipeline | Machine Learning Toolkit | Documentation for kdb+ and q
+title: Pipeline | Toolkit | Machine Learning  | Documentation for kdb+ and q
+description: How to convert a Graph into an executable code structure.
 author: Conor McCarthy
 date: August 2020
-keywords: machine learning, ml, pipeline, execution, optimization
 ---
-
 # :fontawesome-solid-share-alt: Pipeline
 
-## Outline
 
-Following the generation of a graph as outlined [here](./graph.md), a user must convert this graph into an executable code structure, described in this library as a pipeline. Using this library a pipeline can be validated, generated and executed as follows 
-
-### Graph Validation
-
-1. For a graph to be valid all inputs to a node must be connected to an output either sourced from a configuration node or another functional node in the graph.
-2. The inputs to a node and the outputs to which they connect must have the same 'type' defined at the time the graph was created.
-
-### Pipeline Structure
-
-1. Once the graph has been validated, generate the optimal execution path for the graph. This path is created according to the following algorithm.
-	1. Generate all paths required by each node to be executed.
-	2. Retrieve the longest path for each node in the graph.
-	3. Find all dependencies for each of the longest paths.
-	4. Reverse the ordering of the longest paths to ensure they are in the correct execution order.
-	5. Retrieve the optimal execution order of nodes defined by 'razing' the longest paths (longest first) together and taking the distinct elements.
-2. Based on the graph structure generate a schema containing the following information
-	1. Boolean highlighting if the node has been executed successfully.
-	2. Any issues which arise in execution and what was the error.
-	3. The outputs of individual nodes at intermediate steps in execution and following complete execution of the pipeline.
-	4. The inputs required for the execution of a node in the order they are to be applied to the functionality contained within the node.
-	5. The expected input and output types of a node.
-	6. The function to be applied on the relevant datasets.
-	7. The mapping required to correctly populate the inputs to a node with required outputs from another node.
-	8. The expected ordering of inputs to the node to ensure that the variable ordering is correct on node execution.
-3. Populate the pipeline schema with the node function, inputs, outputs and output mapping, with rows populated based on ordering retrieved from the generation of the optimal path.
-
-### Pipeline Execution
-
-1. Retrieve the first incomplete node within the pipeline.
-2. Apply the required inputs to the node function, stop execution if this results in an error and highlight the error to the user.
-3. Add the outputs from the current node execution to any rows that require this data for future executions.
-4. Repeat steps 1 -> 3 stopping either on condition that all rows in the graph have been successfully executed or an error has arisen.
-
-
-## Functionality
 
 <pre markdown="1" class="language-txt">
 Pipeline
@@ -52,17 +15,60 @@ Pipeline
 </pre>
 
 
-### `.ml.createPipeline`
+After [generating a graph](graph.md), convert it into an executable code structure, a _pipeline_. Use this library to validate the graph, then generate and execute a pipeline as follows.
+
+
+## Graph validation
+
+For a graph to be valid all inputs to a node must be connected to an output  sourced either from a configuration node or another functional node in the graph.
+
+The inputs to a node and the outputs to which they connect must have the same type, defined when the graph was created.
+
+
+## Pipeline structure
+
+Once the graph has been validated, generate the optimal execution path for the graph. 
+
+??? detail "Algorithm for creating the path"
+
+    1. Generate all paths required by each node to be executed.
+    1. Retrieve the longest path for each node in the graph.
+    1. Find all dependencies for each of the longest paths.
+    1. Reverse the ordering of the longest paths to ensure they are in the correct execution order.
+    1. Retrieve the optimal execution order of nodes defined by 'razing' the longest paths (longest first) together and taking the distinct elements.
+
+Generate a schema, based on the graph structure, containing the following information.
+
+-   Boolean highlighting if the node has been executed successfully.
+-   Any issues which arise in execution and what was the error.
+-   The outputs of individual nodes at intermediate steps in execution and following complete execution of the pipeline.
+-   The inputs required for the execution of a node in the order they are to be applied to the functionality contained within the node.
+-   The expected input and output types of a node.
+-   The function to be applied on the relevant datasets.
+-   The mapping required to correctly populate the inputs to a node with required outputs from another node.
+-   The expected ordering of inputs to the node to ensure that the variable ordering is correct on node execution.
+
+Populate the pipeline schema with the node function, inputs, outputs and output mapping, with rows populated based on ordering retrieved from the generation of the optimal path.
+
+
+## Pipeline execution
+
+1. Retrieve the first incomplete node within the pipeline.
+2. Apply the required inputs to the node function, stop execution if this results in an error and highlight the error to the user.
+3. Add the outputs from the current node execution to any rows that require this data for future executions.
+
+Repeat steps 1 to 3 until either all rows in the graph have been successfully executed or an error is encountered.
+
+
+## `.ml.createPipeline`
 
 _Generate a execution pipeline based on a valid graph_
 
-Syntax: `.ml.createPipeline[graph]`
+```txt
+.ml.createPipeline[graph]
+```
 
-Where:
-
-* `graph` is a graph originally generated using `.ml.createGraph`, which has all relevant input edges connected validly.
-
-returns an optimal execution pipeline with all required information to allow successful execution of the pipeline appropriately populated
+Where `graph` is a graph originally generated by `.ml.createGraph`, which has all relevant input edges connected validly, returns as a keyed table an optimal execution pipeline populated with all information required to allow its successful execution.
 
 ```q
 // Generate a simple valid graph
@@ -103,20 +109,21 @@ xData | 0              @[;(,`xData)!,0.9988041 0.9936284 0.9880844 0.9789487 ..
 corr  | 0              ![,`output]@[enlist]{x[`xData] cor y}                 ..
 ```
 
-### `.ml.execPipeline`
+
+## `.ml.execPipeline`
 
 _Execute a generated pipeline_
 
-Syntax: `.ml.execPipeline[pipeline]`
+```txt
+.ml.execPipeline[pipeline]
+```
 
-Where:
+Where `pipeline` is a pipeline created  by `.ml.createPipeline`, returns the pipeline with each node executed and appropriate `outputs` populated.
 
-* `pipeline` is a pipeline created using the function [`.ml.createPipeline`](#mlcreatepipeline)
+This allows you to retrieve relevant data from execution. 
+<!-- FIXME In the case that an issue arises in execution highlight this to the user. -->
 
-returns, on valid execution, the pipeline with each node executed and appropriate `outputs` populated allowing a user to retrieve relevant data from execution. In the case that an issue arises in execution highlight this to the user. 
-
-!!!Note
-	The below example uses the pipeline generated in the [`.ml.createPipeline`](#mlcreatepipeline) example above.
+This example uses the pipeline generated in the `.ml.createPipeline` example above:
 
 ```q
 // Valid pipeline execution

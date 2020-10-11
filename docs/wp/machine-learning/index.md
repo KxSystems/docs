@@ -318,7 +318,7 @@ qpredict:{
     where ((count;i)fby class)=max(count;i)fby class }
 ```
 
-For k&gt;1, it is possible that `fby` can return more than one instance, should there not be a prevailing class. Given that `fby` returns entries in the same order they are aggregated, class labels are returned in the same order they are found. Thus, designing the classifier to take only the first row of the results has the side effect of defaulting the behaviour of `predict` to k=1. Consider this example:
+For k&gt;1, it is possible that `fby` can return more than one instance, should there not be a prevailing class. Given that `fby` returns entries in the same order they are aggregated, class labels are returned in the same order they are found. Thus, designing the classifier to take only the first row of the results has the side effect of defaulting the behavior of `predict` to k=1. Consider this example:
 
 ```q
 foo1:{

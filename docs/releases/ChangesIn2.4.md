@@ -19,7 +19,7 @@ This release builds on the existing V2.3. The non upward-compatible changes (NUC
 
 ## Multi-threaded input
 
-Although 2.3 used multithreading to farm out queries to multiple partitions using the number of threads set via the `-s` parameter, the input queue was still single-threaded. In 2.4 it is possible to multithread that queue as well. Starting a kdb+ task with a positive `-p` parameter like before preserves the single-threaded behaviour.
+Although 2.3 used multithreading to farm out queries to multiple partitions using the number of threads set via the `-s` parameter, the input queue was still single-threaded. In 2.4 it is possible to multithread that queue as well. Starting a kdb+ task with a positive `-p` parameter like before preserves the single-threaded behavior.
 
 ```q
 q .. -p 5001 / single-threaded input queue as before
@@ -77,7 +77,7 @@ In addition to the close events previously handled `.z.pc` is now also called wh
 
 ## `\x`
 
-By default, callbacks like `.z.po` are not defined in the session, which makes it awkward to revert to the default behaviour after modifying them – for example when debugging or tracing. `\x` allows deleting their definitions to force default behaviour.
+By default, callbacks like `.z.po` are not defined in the session, which makes it awkward to revert to the default behavior after modifying them – for example when debugging or tracing. `\x` allows deleting their definitions to force default behavior.
 
 ## `.Q` `.q` visibility
 
@@ -247,7 +247,7 @@ Unfortunately that meant useful information like the client's browser or preferr
 
 With 2.4 the header information is passed back as a dictionary in addition to the body text as before.
 
-This is a change in behaviour, but will only affect those who have customised `.z.ph` or `.z.pp` directly. The previous value is now the first item of a 2-item list, the new header dictionary is the second item.
+This is a change in behavior, but will only affect those who have customised `.z.ph` or `.z.pp` directly. The previous value is now the first item of a 2-item list, the new header dictionary is the second item.
 
 
 ## Scalars

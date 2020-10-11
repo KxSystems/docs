@@ -561,7 +561,7 @@ nav:
         - Algorithms: ml/toolkit/clustering/algos.md
         - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
         - Scoring metrics: ml/toolkit/clustering/score.md
-      - Time Series:
+      - Timeseries:
         - Overview: ml/toolkit/timeseries/index.md
         - Models: ml/toolkit/timeseries/models.md
         - Miscellaneous: ml/toolkit/timeseries/misc.md

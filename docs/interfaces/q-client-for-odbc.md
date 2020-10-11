@@ -171,7 +171,7 @@ q).odbc.views h
 ## Tracing
 
 ODBC has the capability to trace the ODBC API calls to a log file; 
-sometimes this can be helpful in resolving unusual or erroneous behaviour. 
+sometimes this can be helpful in resolving unusual or erroneous behavior. 
 On Unix, you can activate the tracing by adding
 
 ```ini

@@ -489,7 +489,7 @@ Where
 -   `x` are predicted continuous values
 -   `y` are true continuous values
 
-returns the R2-score between the true and predicted values. Values close to 1 indicate good prediction, while negative values indicate poor predictors of the system behaviour.
+returns the R2-score between the true and predicted values. Values close to 1 indicate good prediction, while negative values indicate poor predictors of the system behavior.
 
 ```q
 q)xg:asc 1000?50f           / 'good values'

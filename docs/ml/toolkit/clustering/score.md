@@ -38,7 +38,9 @@ Optimum number of clusters | The optimum number of clusters can be found manuall
 
 _Davies-Bouldin index_
 
-Syntax: `.ml.clust.daviesbouldin[data;clt]`
+```txt
+.ml.clust.daviesbouldin[data;clt]
+```
 
 Where
 
@@ -68,7 +70,9 @@ The Davies-Bouldin index works by calculating the ratio of how scattered data po
 
 ## `.ml.clust.dunn`
 
-Syntax: `.ml.clust.dunn[data;df;clt]`
+```txt
+.ml.clust.dunn[data;df;clt]
+```
 
 Where
 
@@ -102,7 +106,9 @@ The Dunn index is calculated based on the minimum inter-cluster distance divided
 
 _The elbow method: a distortion score for each value of k applied to data, using k-means clustering._
 
-Syntax: `.ml.clust.elbow[data;df;k]`
+```txt
+.ml.clust.elbow[data;df;k]
+```
 
 Where
 
@@ -131,7 +137,9 @@ It is clear that the elbow score occurs when the data should be grouped into 3 c
 
 _Homogeneity score_
 
-Syntax: `.ml.clust.homogeneity[pred;true]`
+```txt
+.ml.clust.homogeneity[pred;true]
+```
 
 Where
 
@@ -158,7 +166,9 @@ Homogeneity score works on the basis that a cluster should contain only samples 
 
 _Silhouette coefficient_
 
-Syntax: `.ml.clust.silhouette[data;df;clt;isavg]`
+```txt
+.ml.clust.silhouette[data;df;clt;isavg]
+```
 
 Where
 

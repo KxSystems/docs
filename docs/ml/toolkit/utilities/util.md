@@ -161,7 +161,7 @@ q)print dttab:.p.get[`dtdf]
 0  12:10:30.000500 -1 days +19:00:00 2005-02-25 03:30:00 2005-02-25 03:30:00+01:00
 1  12:13:30.000200          00:16:40 2015-12-22 00:00:00 2015-12-22 00:00:00+01:00
 
-/ default behaviour (tz -> UTC, time -> foreign)
+/ default behavior (tz -> UTC, time -> foreign)
 q).ml.df2tab_tz[dttab;0b;0b]
 time    timed                 datetime                      dt_with_tz                   
 -----------------------------------------------------------------------------------------

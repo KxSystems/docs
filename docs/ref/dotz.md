@@ -235,7 +235,7 @@ q)exit 0
 os>..
 ```
 
-If the exit behaviour has an error (disk full for example if exit tries to save the current state), the session is suspended and exits after completion or manual exit from the suspension.
+If the exit behavior has an error (disk full for example if exit tries to save the current state), the session is suspended and exits after completion or manual exit from the suspension.
 
 ```q
 q).z.exit:{`thiswontwork+x}

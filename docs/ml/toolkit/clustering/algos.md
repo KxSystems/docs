@@ -11,39 +11,39 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 <pre markdown="1" class="language-txt">
 .ml.clust   **Clustering**
 
-Algorithms
+**Algorithms**
     
-  Affinity Propagation (AP):
+\  Affinity Propagation (AP):
     [ap.fit](#mlclustapfit)                   Fit AP algorithm
     [ap.predict](#mlclustappredict)               Make predictions using a fitted AP model
     
-  Clustering Using REpresentatives (CURE):
+\  Clustering Using REpresentatives (CURE):
     [cure.fit](#mlclustcurefit)                 Fit CURE algorithm
     [cure.predict](#mlclustcurepredict)             Make predictions using a fitted CURE model
     
-  Density-Based Spatial Clustering of Applications with Noise (DBSCAN):
+\  Density-Based Spatial Clustering of Applications with Noise (DBSCAN):
     [dbscan.fit](#mlclustdbscanfit)               Fit DBSCAN algorithm
     [dbscan.predict](#mlclustdbscanpredict)           Make predictions using a fitted DBSCAN model
     [dbscan.update](#mlclustdbscanupdate)            Update DBSCAN model
     
-  Hierarchical Clustering (HC):
+\  Hierarchical Clustering (HC):
     [hc.fit](#mlclusthcfit)                   Fit HC algorithm
     [hc.predict](#mlclusthcpredict)               Make predictions using a fitted HC model
     
-  K-Means:
+\  K-Means:
     [kmeans.fit](#mlclustkmeansfit)               Fit K-Means algorithm
     [kmeans.predict](#mlclustkmeanspredict)           Make predictions using a fitted K-Means model
     [kmeans.update](#mlclustkmeansupdate)            Update K-Means model
 
-Dendrogram Cutting Functionality
+**Dendrogram cutting functionality**
 
-  Clustering Using REpresentatives (CURE):
-    [cure.cutk](#mlclustcurecutk)                Cut CURE dendrogram into k clusters
-    [cure.cutdist](#mlclustcurecutdist)             Cut CURE dendrogram into clusters based on a distance threshold
+\  Clustering Using REpresentatives (CURE):
+    [cure.cutk](#mlclustcurecutk)                Cut dendrogram to k clusters
+    [cure.cutdist](#mlclustcurecutdist)             Cut dendrogram to clusters based on distance threshold
     
-   Hierarchical Clustering (HC):
-    [hc.cutk](#mlclusthccutk)                  Cut HC dendrogram into k clusters
-    [hc.cutdist](#mlclusthccutdist)               Cut HC dendrogram into clusters based on a distance threshold
+\  Hierarchical Clustering (HC):
+    [hc.cutk](#mlclusthccutk)                  Cut dendrogram to k clusters
+    [hc.cutdist](#mlclusthccutdist)               Cut dendrogram to clusters based on distance threshold
     
 </pre>
 
@@ -60,11 +60,14 @@ Affinity Propagation groups data based on the similarity between points and subs
 
 The algorithm uses a user-specified damping coefficient to reduce the availability and responsibility of messages passed between points, while a preference value is used to set the diagonal values of the similarity matrix. A more detailed explanation of the algorithm can be found [here](https://towardsdatascience.com/unsupervised-machine-learning-affinity-propagation-algorithm-explained-d1fef85f22c8).
 
+
 ### `.ml.clust.ap.fit`
 
 _Fit AP algorithm_
 
-Syntax: `.ml.clust.ap.fit[data;df;dmp;diag;iter]`
+```txt
+.ml.clust.ap.fit[data;df;dmp;diag;iter]
+```
 
 Where
 
@@ -94,11 +97,14 @@ q)group APfit`clt
 2| ,6
 ```
 
+
 ### `.ml.clust.ap.predict`
 
 _Make predictions using a fitted AP model_
 
-Syntax: `.ml.clust.ap.predict[data;cfg]`
+```txt
+.ml.clust.ap.predict[data;cfg]
+```
 
 Where
 
@@ -129,15 +135,19 @@ q).ml.clust.ap.predict[tst;APfit]
 2 2 2 2 0
 ```
 
+
 ## Clustering Using Representatives
 
 Clustering Using REpresentatives (CURE) is a technique used to deal with datasets containing outliers and clusters of varying sizes and shapes. Each cluster is represented by a specified number of representative points. These points are chosen by taking the most scattered points in each cluster and shrinking them towards the cluster center using a compression ratio. An in-depth explanation of the CURE algorithm can be found [here](http://infolab.stanford.edu/~ullman/mmds/ch7a.pdf) on page 242.
+
 
 ### `.ml.clust.cure.fit`
 
 _Fit CURE algorithm_
 
-Syntax: `.ml.clust.cure.fit[data;df;n;c]`
+```txt
+.ml.clust.cure.fit[data;df;n;c]
+```
 
 Where
 
@@ -193,11 +203,14 @@ i1 i2 dist     n
 16 17 13.5457  10
 ```
 
+
 ### `.ml.clust.cure.cutdist`
 
 _Cut a dendrogram into clusters based on a threshold distance_
 
-Syntax: `.ml.clust.cure.cutdist[cfg;dist]`
+```txt
+.ml.clust.cure.cutdist[cfg;dist]
+```
 
 Where
 
@@ -230,11 +243,14 @@ q)group r`clt
 2| ,8
 ```
 
+
 ### `.ml.clust.cure.cutk`
 
 _Cut a dendrogram into k clusters_
 
-Syntax: `.ml.clust.hc.cutk[cfg;k]`
+```txt
+.ml.clust.hc.cutk[cfg;k]
+```
 
 Where
 
@@ -267,11 +283,14 @@ q)group r`clt
 2| ,3
 ```
 
+
 ### `.ml.clust.cure.predict`
 
 _Make predictions using a fitted CURE model_
 
-Syntax: `.ml.clust.cure.predict[data;cfg]`
+```txt
+.ml.clust.cure.predict[data;cfg]
+```
 
 Where
 
@@ -323,20 +342,24 @@ q).ml.clust.cure.predict[tst;clt]
 2 1 2 1 1
 ```
 
+
 ## Density-Based Spatial Clustering of Applications with Noise
 
-The Density-Based Spatial Clustering of Applications with Noise ([DBSCAN](https://en.wikipedia.org/wiki/DBSCAN)) algorithm, groups points that are closely packed in areas of high density. Any points in low-density regions are seen as outliers.
+The Density-Based Spatial Clustering of Applications with Noise ([DBSCAN](https://en.wikipedia.org/wiki/DBSCAN)) algorithm groups points that are closely packed in areas of high density. Any points in low-density regions are seen as outliers.
 
 Unlike many clustering algorithms, which require the user to input the desired number of clusters, DBSCAN calculates how many clusters are in the dataset based on two criteria.
 
 1. The minimum number of points required within a neighborhood in order for a cluster to be defined.
 2. The epsilon radius: The distance from each point within which points will be defined as being part of the same cluster.
 
+
 ### `.ml.clust.dbscan.fit`
 
 _Fit DBSCAN algorithm_
 
-Syntax: `.ml.clust.dbscan.fit[data;df;minpts;eps]`
+```txt
+.ml.clust.dbscan.fit[data;df;minpts;eps]
+```
 
 Where
 
@@ -372,11 +395,14 @@ q).ml.clust.dbscan.fit[d;`e2dist;3;.1]`clt
 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 ```
 
+
 ### `.ml.clust.dbscan.predict`
 
 _Make predictions using a fitted DBSCAN model_
 
-Syntax: `.ml.clust.dbscan.predict[data;cfg]`
+```txt
+.ml.clust.dbscan.predict[data;cfg]
+```
 
 Where
 
@@ -408,11 +434,14 @@ q).ml.clust.dbscan.predict[tst;DBSCANfit]
 0 0 1 1 0
 ```
 
+
 ### `.ml.clust.dbscan.update`
 
 _Update DBSCAN model_
 
-Syntax: `.ml.clust.dbscan.update[data;cfg]`
+```txt
+.ml.clust.dbscan.update[data;cfg]
+```
 
 Where
 
@@ -453,6 +482,7 @@ q)group DBSCANupd`clt
 -1| ,11
 ```
 
+
 ## Hierarchical Clustering
 
 Agglomerative hierarchical clustering iteratively groups data, using a bottom-up approach that initially treats all data points as individual clusters. An explanation of the hierarchical methods described below can be found [here](http://infolab.stanford.edu/~ullman/mmds/ch7a.pdf) on page 225.
@@ -488,13 +518,17 @@ q)plt[`:show][];
 ![dendro_plot](img/dendrogram_example.png)
 
 !!! warning "Ward linkage"
+
     Ward linkage only works in conjunction with Euclidean squared distances (`e2dist`), while centroid linkage only works with Euclidean distances (`e2dist`, `edist`). If the user tries to input a different distance metric an error will result, as shown below.
+
 
 ### `.ml.clust.hc.fit`
 
 _Fit HC Algorithm_
 
-Syntax: `.ml.clust.hc.fit[data;df;lf]`
+```txt
+.ml.clust.hc.fit[data;df;lf]
+```
 
 Where
 
@@ -554,11 +588,14 @@ q).ml.clust.hc.fit[d;`mdist;`ward]
 'ward must be used with e2dist
 ```
 
+
 ### `.ml.clust.hc.cutdist`
 
 _Cut a dendrogram into clusters based on a threshold distance_
 
-Syntax: `.ml.clust.hc.cutdist[cfg;dist]`
+```txt
+.ml.clust.hc.cutdist[cfg;dist]
+```
 
 Where
 
@@ -592,11 +629,14 @@ q)group r`clt
 2| 7 9
 ```
 
+
 ### `.ml.clust.hc.cutk`
 
 _Cut a dendrogram into k clusters_
 
-Syntax: `.ml.clust.hc.cutk[cfg;k]`
+```txt
+.ml.clust.hc.cutk[cfg;k]
+```
 
 Where
 
@@ -629,11 +669,14 @@ q)group r`clt
 2| ,6
 ```
 
+
 ### `.ml.clust.hc.predict`
 
 _Make predictions using a fitted HC model_
 
-Syntax: `.ml.clust.hc.predict[data;cfg]`
+```txt
+.ml.clust.hc.predict[data;cfg]
+```
 
 Where
 
@@ -685,21 +728,25 @@ q).ml.clust.hc.predict[tst;clt]
 0 0 0 2 0
 ```
 
-## K-Means
 
-K-means clustering begins by selecting k data points as cluster centers and assigning data to the cluster with the nearest center. 
+## K-means
+
+K-means clustering begins by selecting $k$ data points as cluster centers and assigning data to the cluster with the nearest center. 
 
 The algorithm follows an iterative refinement process which runs a specified number of times, updating the cluster centers and assigned points to a cluster at each iteration based on the nearest cluster center.
 
-Futher background on the K-Means algorithm can be found [here](https://www.edureka.co/blog/k-means-clustering/).
+:fontawesome-solid-globe:
+[The K-means algorithm](https://www.edureka.co/blog/k-means-clustering/)
 
-The distance metrics that can be used with the K-Means algorithm are the Euclidean distances (`e2dist`,`edist`). The use of any other distance metric will result in an error.
+The distance metrics that can be used with the K-means algorithm are the Euclidean distances (`e2dist`,`edist`). The use of any other distance metric will result in an error.
 
 ### `.ml.clust.kmeans.fit`
 
-_Fit K-Means Algorithm_
+_Fit K-means Algorithm_
 
-Syntax: `.ml.clust.kmeans.fit[data;df;k;cfg]`
+```txt
+.ml.clust.kmeans.fit[data;df;k;cfg]
+```
 
 Where
 
@@ -742,11 +789,14 @@ q).ml.clust.kmeans.fit[d;`mdist;3;::]
 'kmeans must be used with edist/e2dist
 ```
 
+
 ### `.ml.clust.kmeans.predict`
 
-_Make predictions using a fitted K-Means model_
+_Make predictions using a fitted K-means model_
 
-Syntax: `.ml.clust.kmeans.predict[data;cfg]`
+```txt
+.ml.clust.kmeans.predict[data;cfg]
+```
 
 Where
 
@@ -778,11 +828,14 @@ q).ml.clust.kmeans.predict[tst;kmeansfit]
 0 2 0 1 2
 ```
 
+
 ### `.ml.clust.kmeans.update`
 
-_Update K-Means model_
+_Update K-means model_
 
-Syntax: `.ml.clust.kmeans.update[data;cfg]`
+```txt
+.ml.clust.kmeans.update[data;cfg]
+```
 
 Where
 
@@ -824,7 +877,7 @@ q)group kmeansupd`clt
 ```
 
 
-## Distance Metrics
+## Distance metrics
 
 The distance functions available in the clustering library are:
 
@@ -835,4 +888,6 @@ nege2dist   negative squared Euclidean distance (predominantly for affinity prop
 mdist       Manhattan distance
 ```
 
-!!! warning "If you use  an invalid distance metric, an error will occur."
+!!! danger "If you use  an invalid distance metric, an error will occur."
+
+

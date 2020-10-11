@@ -33,6 +33,6 @@ The contents of the notebooks are as follows:
 
 9. **K-Nearest Neighbours**: The notebook details the steps to follow in a machine learning problem, prior to model training. These include feature scaling, data splitting and parameter tuning - performed by measuring the accuracy of a k-nearest neighbours model for different values of parameter k.
 
-10. **Automated Machine Learning**: The notebook looks at predicting how likely a telecommunications customer is to churn based on behaviour. The data and associated target is used throughout the notebook and is passed into the AutoML pipeline in both its default configuration and custom user-defined configuration, with the steps in the pipeline explained throughout.
+10. **Automated Machine Learning**: The notebook looks at predicting how likely a telecommunications customer is to churn based on behavior. The data and associated target is used throughout the notebook and is passed into the AutoML pipeline in both its default configuration and custom user-defined configuration, with the steps in the pipeline explained throughout.
 
 11. **Clustering**: Examples of how to use the k-means, DBSCAN, affinity propagation, hierarchical and CURE algorithms available within the ML-Toolkit are provided. The notebook demonstrates how to effectively visualize results produced and make use of scoring functions contained within the toolkit. A real-world application is also included.

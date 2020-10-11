@@ -1,6 +1,6 @@
 ---
 title: Write-only RDB – Knowledge Base – kdb+ and q documentation
-description: The default behaviour of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. This makes sense if it’s actually queried during the day – but if the only reason for having an RDB is to be able to save the historical partition the amount of memory required to keep the in-memory database can be excessive.
+description: The default behavior of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. This makes sense if it’s actually queried during the day – but if the only reason for having an RDB is to be able to save the historical partition the amount of memory required to keep the in-memory database can be excessive.
 keywords: kdb+, q, rdb, write-only
 ---
 # Write-only RDB
@@ -9,7 +9,7 @@ keywords: kdb+, q, rdb, write-only
 
 
 
-The default behaviour of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. This makes sense if it’s actually queried during the day – but if the only reason for having an RDB is to be able to save the historical partition the amount of memory required to keep the in-memory database can be excessive.
+The default behavior of the RDB is to collect data to an in-memory database during the day and then to save it to disk as an historical partition at day end. This makes sense if it’s actually queried during the day – but if the only reason for having an RDB is to be able to save the historical partition the amount of memory required to keep the in-memory database can be excessive.
 
 :fontawesome-brands-github: 
 [simongarland/tick/w.q](https://github.com/simongarland/tick/blob/master/w.q) 
@@ -33,4 +33,4 @@ e.g.
 $ q tick/w.q :5010 :5012
 ```
 
-The `-koe` or `-keeponexit` parameter governs the behaviour when a `w.q` task is exited at user request – i.e. `.z.exit` is called. By default the data saved so far is deleted, as if the task were restarted it would be difficult to ensure it restarted from exactly the right place – it’s easier to replay the log and (re)write the data. If the flag is provided – or the `KEEPONEXIT` global set to `1b` – the data will not be removed.
+The `-koe` or `-keeponexit` parameter governs the behavior when a `w.q` task is exited at user request – i.e. `.z.exit` is called. By default the data saved so far is deleted, as if the task were restarted it would be difficult to ensure it restarted from exactly the right place – it’s easier to replay the log and (re)write the data. If the flag is provided – or the `KEEPONEXIT` global set to `1b` – the data will not be removed.

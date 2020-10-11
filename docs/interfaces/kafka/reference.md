@@ -924,14 +924,14 @@ returns a null on successful execution and augments the dictionary `.kfk.errclie
 
 ```q
 // Assignment prior to registration of new callback
-// this is the default behaviour invoked
+// this is the default behavior invoked
 q).kfk.errclient
  |{[cid;err_int;reason]}
 // Attempt to create a consumer which will fail
 q).kfk.Consumer[`metadata.broker.list`group.id!`foobar`0]
 0i
 
-// Update the default behaviour to show the output
+// Update the default behavior to show the output
 q).kfk.errclient[`]:{[cid;err_int;reason]show(cid;err_int;reason);}
 
 // Attempt to create another failing consumer
@@ -975,11 +975,11 @@ o callback
 
 ```q
 // Assignment prior to registration of new callback 
-// this is the default behaviour invoked
+// this is the default behavior invoked
 q).kfk.throttleclient
  |{[cid;bname;bid;throttle_time]}
 
-// Update the default behaviour to show the output
+// Update the default behavior to show the output
 q).kfk.throttleclient[`]:{[cid;bname;bid;throttle_time]show(cid;bid);}
 
 // Add a throttle client associated specifically with client 0

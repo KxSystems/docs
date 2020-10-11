@@ -1,16 +1,16 @@
 ---
 title: Interface example | Protobuf | Interfaces | Documentation for kdb+ and q
-keywords: protobuf, protocol buffers, api, fusion, interface, q
+description: Examples of interfacing kdb+ and Protobuf
 hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
-# Protobuf/Protocol Buffers Interface Example
+# Protobuf/Protocol Buffers interface example
 
 :fontawesome-brands-github:
 [KxSystems/protobufkdb](https://github.com/KxSystems/protobufkdb)
 
-It is assumed in the below example that a user is executing logic the root of the protobufkdb repository. The file structure for the required components from this location is as follows:
+It is assumed in the example that you are executing logic in the root of the `protobufkdb` repository. The file structure for the required components from this location is:
  
-```bash
+```txt
 .
 ├── proto
 │   ├── google
@@ -22,7 +22,7 @@ It is assumed in the below example that a user is executing logic the root of th
 
 Here `sample.proto` is defined as follows:
 
-```bash
+```proto
 syntax = "proto3";
 
 option cc_enable_arenas = true;
@@ -42,29 +42,32 @@ message Region {
 }
 ```
 
-## Load Protobufkdb Library
 
-From the root of the repository load the protobufkdb library
+## Load Protobufkdb library
+
+From the root of the repository load the `protobufkdb` library
 
 ```q
 q)\l q/protobufkdb.q
 ```
 
-## Import Schema File
 
-When using dynamic import functionality you need to specify the path of your proto (schema) files first. As such we tell protobufkdb the location of schema files of interest specifying its path (`"./proto"`) and importing the relevant file (`"sample.proto"`).
+## Import schema file
 
-!!!Note
-	This step is not necessary when using a library built from source, where schema files are linked appropriately.
+When using dynamic import functionality, specify the path of your Proto (schema) files first. As such we tell `protobufkdb` the location of schema files of interest, specifying its path (`"./proto"`) and importing the relevant file (`"sample.proto"`).
+
+!!! detail "This step is not necessary when using a library built from source, where schema files are linked appropriately."
 
 ```q
 q).protobufkdb.addProtoImportPath["proto"]
 q).protobufkdb.importProtoFile["sample.proto"]
 ```
 
-## Checking Schema File
 
-Ensure the schema file has been imported appropriately and display the schemas therein.
+## Check schema file
+
+Ensure the schema file has been imported appropriately. 
+Display the schemas in it.
 
 ```q
 q).protobufkdb.displayMessageSchema[`Office]
@@ -83,7 +86,8 @@ message Region {
 
 ```
 
-## Serialize Data
+
+## Serialize data
 
 A Protobuf message is expressed in a mixed list in q. This data can be serialized to Protobuf provided the message content matches the format of a named target schema.
 
@@ -103,7 +107,8 @@ q)encodedEMEA
 "\n\004EMEA\022<\n\002HQ\0226\n\013Head_Office\n\022Brian_Conlon_House\021Qj/..
 ```
 
-## Deserialize Data
+
+## Deserialize data
 
 Retrieve the contents of a Protobuf message serialized in the above example
 
@@ -121,17 +126,19 @@ q).protobufkdb.parseArrayArena[`Region; encodedEMEA]
 `HQ`Newry`Belfast!((`Head_Office`Brian_Conlon_House;54.17913;-6.337371;2020.0..
 ```
 
-## Save Serialized Data
 
-You can serialize and save data to a file sepcifying a target schema and the target file name.
+## Save serialized data
+
+You can serialize and save data to a file by specifying a target schema and the target file name.
 
 ```q
 q).protobufkdb.saveMessage[`Office; "proto/record_HQ"; HQ]
 ```
 
-## Load Serialized Data
 
-Retrieve data serialized and saved to a file based on a specified schema
+## Load serialized data
+
+Retrieve data serialized and saved to a file based on a specified schema.
 
 ```q
 q).protobufkdb.loadMessage[`Office; "proto/record_HQ"]
@@ -141,4 +148,9 @@ q).protobufkdb.loadMessage[`Office; "proto/record_HQ"]
 2020.03.23
 ```
 
-You can find more examples in :fontawesome-brands-github: [protobufkdb/examples](https://github.com/KxSystems/protobufkdb/tree/master/examples).
+
+More examples:
+:fontawesome-brands-github: 
+[protobufkdb/examples](https://github.com/KxSystems/protobufkdb/tree/master/examples)
+
+

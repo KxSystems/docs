@@ -1,50 +1,55 @@
 ---
-title: Time Series ARIMA models | Time Series | Machine Learning Toolkit | Documentation for kdb+ and q
+title: Models | Timeseries | Toolkit | Machine Learning | Documentation for kdb+ and q
+description: The kdb+ Machine Learning Toolkit implements commonly-used statistical forecasting algorithms
 author: Diane O'Donoghue
 date: August 2020
-keywords: machine learning, ml, time series, ar, arima, sarima, aic
 ---
+# :fontawesome-solid-share-alt: Timeseries models
 
-# :fontawesome-solid-share-alt: Time Series Models
 
 <pre markdown="1" class="language-txt">
-.ml.ts   **Time series models**
+.ml.ts   **Timeseries models**
 
-AR Model
-  [AR.fit](#mltsarfit)         Fit an AutoRegressive model
-  [AR.predict](#mltsarpredict)     Predict future values using a fitted AutoRegressive model
+**AR**: AutoRegressive 
+  [AR.fit](#mltsarfit)         Fit an AR model
+  [AR.predict](#mltsarpredict)     Predict future values using a fitted AR model
 
-ARCH Model
-  [ARCH.fit](#mltsarchfit)       Fit an AutoRegressive Conditional Heteroskedasticity model
-  [ARCH.predict](#mltsarchpredict)   Predict future volatility values using a fitted AutoRegressive Conditional Heteroskedasticity model
+**ARCH**: AutoRegressive Conditional Heteroskedasticity 
+  [ARCH.fit](#mltsarchfit)       Fit an ARCH model
+  [ARCH.predict](#mltsarchpredict)   Predict future volatility values using a fitted ARCH model
 
-ARMA Model
-  [ARMA.fit](#mltsarmafit)       Fit an AutoRegressive Moving Average model
-  [ARMA.predict](#mltsarmapredict)   Predict future values using a fitted AutoRegressive Moving Average model  
+**ARMA**: AutoRegressive Moving Average 
+  [ARMA.fit](#mltsarmafit)       Fit an ARMA model
+  [ARMA.predict](#mltsarmapredict)   Predict future values using a fitted ARMA model  
 
-ARIMA Model
-  [ARIMA.aicParam](#mltsarimaaicparam) Determine optimal input parameters for ARIMA model based on Akaike Information Criterion score
-  [ARIMA.fit](#mltsarimafit)      Fit an AutoRegressive Integrated Moving Average model
-  [ARIMA.predict](#mltsarimapredict)  Predict future values using a fitted AutoRegressive Integrated Moving Average model
+**ARIMA**: AutoRegressive Integrated Moving Average 
+  [ARIMA.aicParam](#mltsarimaaicparam) Optimal input parameters for an ARIMA model 
+                 based on Akaike Information Criterion score
+  [ARIMA.fit](#mltsarimafit)      Fit an ARIMA model
+  [ARIMA.predict](#mltsarimapredict)  Predict future values using a fitted ARIMA model
 
-SARIMA Model
-  [SARIMA.fit](#mltssarimafit)     Fit a Seasonal AutoRegressive Integrated Moving Average model
-  [SARIMA.predict](#mltssarimapredict) Predict future values using a fitted Seasonal AutoRegressive Integrated Moving Average model
+**SARIMA**: Seasonal AutoRegressive Integrated Moving Average 
+  [SARIMA.fit](#mltssarimafit)     Fit a SARIMA model
+  [SARIMA.predict](#mltssarimapredict) Predict future values using a fitted SARIMA model
 </pre>
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
-When dealing with time series statistical models it is important to define endogenous and exogenous variables as they are used widely within the literature
+Distinguish _endogenous_ and _exogenous_ variables.
 
-| Type       | Definition|
-|------------|:----------|
-| Endogenous | The values of this variable are determined by the model i.e. form the basis for a 'target' variable to be predicted |
-| Exogenous  | This is any variable whose value is determined outside of the model and which may impose an effect on the endogenous variable i.e. if there is a national holiday this may effect the endogenous variable but is completely independent of its behaviour.|
+Endogenous 
+
+: The values of the variable are determined by the model, i.e. form the basis for predicting a ‘target’ variable
+
+Exogenous  
+
+: Any variable whose value is determined outside of the model and which may impose an effect on the endogenous variable, i.e. if there is a national holiday this may affect the endogenous variable, but is completely independent of its behavior.
+
 
 ## AutoRegressive (AR) model
 
-An AR model is a form of time series modelling where the output values of the model depend linearly on previous values in the series and a stochastic term. This model is suitable for use cases where there is a correlation between values in the past and future behaviour of the system. An AR model uses `p` historical lag values to calculate future values.
+An AR model is a form of timeseries modelling where the output values of the model depend linearly on previous values in the series and a stochastic term. This model is suitable for use cases where there is a correlation between values in the past and future behavior of the system. An AR model uses $p$ historical lag values to calculate future values.
 
 The equation for an AR model is given by:
 
@@ -52,37 +57,40 @@ $$y_t= \mu  + \sum_{i=1}^{p} \phi_{i} y_{t-i}$$
 
 Where:
 
-  - $y_t$ is the value of the time series at time t
-  - $y_{t-i}$ is the value of the time series at time t-i
-  - $\mu$ is the trend value
-  - $\phi_{i}$ is the lag parameter at time t-i
+-   $y_t$ is the value of the timeseries at time $t$
+-   $y_{t-i}$ is the value of the timeseries at time $t-i$
+-   $\mu$ is the trend value
+-   $\phi_{i}$ is the lag parameter at time $t-i$
 
 
 ### `.ml.ts.AR.fit`
 
-_Fit an AR forecasting model based on a provided time series dataset_
+_Fit an AR forecasting model based on a timeseries dataset_
 
-Syntax:`.ml.ts.AR.fit[endog;exog;p;tr]`
+```txt
+.ml.ts.AR.fit[endog;exog;p;tr]
+```
 
 Where:
 
--  `endog` endogenous variable as a list (time-series)
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `p`     number of lag values to include
--  `tr`   is a trend to be accounted for?
+-   `endog` is an endogenous variable as a list (timeseries)
+-   `exog`  is a table of exogenous variables; if `(::)/()`, then exogenous variables ignored 
+-   `p` is the number of lag values to include (integer)
+-   `tr` whether a trend is to be accounted for (boolean)
 
-returns a dictionary containing the model parameters and data required for the forecasting of future values. This dictionary contains the following information
+returns a dictionary containing the model parameters and data required for the forecasting of future values:
 
-key        |  Explanation
------------|---------------------------
-params     | model paramaters for future predictions
-tr_param   | trend paramaters
-exog_param | exog paramaters
-p_param    | lag value paramaters
-lags       | lagged values from the training set
+```txt
+params       model paramaters for future predictions
+tr_param     trend paramaters
+exog_param   exog paramaters
+p_param      lag value paramaters
+lags         lagged values from the training set
+```
+
 
 ```q
-// Example time series
+// Example timeseries
 q)timeSeries:100?10f
 
 // Fit an AR model with no exogenous variables
@@ -106,20 +114,21 @@ lags      | 0.8175513 2.401967 5.784208
 
 ### `.ml.ts.AR.predict`
 
-_Predict future values of a time series using a fitted AR model_
+_Predict future values of a timeseries using a fitted AR model_
 
-Syntax:`.ml.ts.AR.predict[mdl;exog;len]`
+```txt
+.ml.ts.AR.predict[mdl;exog;len]
+```
 
 Where
 
--  `mdl` dictionary returned from a fitted AR model
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `len` number of values that are to be predicted
+-   `mdl` is a dictionary returned from a fitted AR model
+-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-   `len` is the number of values that are to be predicted (integer)
 
-returns the future predicted values
+returns the predicted values.
 
-!!! Note
-        Future `exog` variables should be in the same format as the `exog` variables used when fitting the model, and also must have the same length as the number of values to be predicted (`len`)
+Future `exog` variables should be in the same format as the `exog` variables used when fitting the model, and also must have the same length as the number of values to be predicted (`len`)
 
 ```q
 // Generate an AR model
@@ -138,9 +147,11 @@ q).ml.ts.AR.predict[ARmdl;exogFuture;10]
 3.822056 3.727468 4.99475 3.499939 3.844594 4.326576 5.916375 4.12185 3.85929
 ```
 
+
+
 ## AutoRegressive Conditional Heteroskedasticity (ARCH) model
 
-An ARCH model is a statistical model used to describe the volatility of a time series. This models the variance of a point in the data series as a function of the sum the past residual errors squared. This model is appropriate to use when the error variance in the time series follows an AR model as described [above](#autoregressive-ar-model). ARCH models are used in time series data that experience time-varying volatility and as such are commonly employed in the modeling of financial time series exhibiting varying volatility.
+An ARCH model is a statistical model used to describe the volatility of a timeseries. This models the variance of a point in the data series as a function of the sum the past residual errors squared. This model is appropriate to use when the error variance in the timeseries follows an AR model as described [above](#autoregressive-ar-model). ARCH models are used in timeseries data that experience time-varying volatility and as such are commonly employed in the modeling of financial timeseries exhibiting varying volatility.
 
 The formula for an ARCH model is given by:
 
@@ -152,26 +163,29 @@ Where:
 -  $\hat{\alpha}_{0}$ is the mean term
 -  $\hat{\alpha}_{i}$ is past error squared coefficient
 
+
 ### `.ml.ts.ARCH.fit`
 
-_Fit an ARCH model based on a provided set of residual errors retrieved from a fitted AR model_
+_Fit an ARCH model based on a set of residual errors from a fitted AR model_
 
-Syntax: `.ml.ts.ARCH.fit[resid;lags]`
+```txt
+.ml.ts.ARCH.fit[resid;lags]
+```
 
 Where
 
--  `resid` is the residual errors obtained from the results of a fitted AR model
--  `lags` the number of previous error terms to include
+-   `resid` is the residual errors obtained from the results of a fitted AR model
+-   `lags` the number of previous error terms to include
 
-returns a dictionary containing the model parameters and data to be used for the forecasting of future volatility
+returns a dictionary containing the model parameters and data to be used for the forecasting of future volatility:
 
-key        |  Explanation
------------|---------------------------
-params     | model paramaters for future predictions
-tr_param   | trend paramaters
-exog_param | exog paramaters
-p_param    | lag value paramaters
-resid      | lagged residual errors from the input training set
+```txt
+params       model paramaters for future predictions
+tr_param     trend paramaters
+exog_param   exog paramaters
+p_param      lag value paramaters
+resid        lagged residual errors from the input training set
+```
 
 ```q
 q)residuals:100?10f
@@ -182,16 +196,19 @@ p_param | 0.05927539 0.0799694
 resid   | 9.187684 39.17214
 ```
 
+
 ### `.ml.ts.ARCH.predict`
 
-_Predict the future volatility of a time series using a fitted ARCH model_
+_Predict the future volatility of a timeseries using a fitted ARCH model_
 
-Syntax:`.ml.ts.ARCH.pred[mdl;len]`
+```txt
+.ml.ts.ARCH.pred[mdl;len]
+```
 
 Where
 
--  `mdl` is a dictionary returned from a fitting an ARCH model
--  `len` number of future volatility values to be predicted
+-   `mdl` is a dictionary from fitting an ARCH model
+-   `len` is the number of future volatility values to be predicted (integer)
 
 ```q
 // Generate an ARCH model for use in prediction
@@ -207,9 +224,11 @@ q).ml.ts.ARCH.predict[ARCHmdl;10]
 35.32012 34.6004 34.65711 34.65264 34.65299 34.65296 34.65296 34.65296 34.652.
 ```
 
+
+
 ## AutoRegressive Moving Average (ARMA) model
 
-An ARMA model is a time series model which is an extension of the AR model described [above](#autoregressive-ar-model). An ARMA model can be used to describe any weakly stationary stochastic time series in terms of two polynomials, the first of these is for autoregression based on `p` lag values, the second for the moving average based on `q` past residual errors.
+An ARMA model is a timeseries model that is an extension of the [AR model](#autoregressive-ar-model). An ARMA model can be used to describe any weakly stationary stochastic timeseries in terms of two polynomials, the first of these is for autoregression based on `p` lag values, the second for the moving average based on `q` past residual errors.
 
 The equation for the ARMA model is given by:
 
@@ -217,43 +236,45 @@ $$y_t= \mu  + \sum_{i=1}^{p} \phi_{i} y_{t-i} + \sum_{i=1}^{q} \theta_{i} \epsil
 
 Where:
 
-  - $y_t$ is the value of the time series at time t
-  - $\mu$ is the trend value
-  - $p$ is the order of lagged values to be accounted for in model generation
-  - $q$ is the order of residual errors to be accounted for in model generation
-  - $y_{t-i}$ is the value of the time series at time t-i
-  - $\phi_{i}$ is the lag parameter at time t-i
-  - $\epsilon_{t-i}$ is the residual error term at time t-i
-  - $\theta_{i}$ is the residual error parameter at time t-i 
+-   $y_t$ is the value of the timeseries at time $t$
+-   $\mu$ is the trend value
+-   $p$ is the order of lagged values to be accounted for in model generation
+-   $q$ is the order of residual errors to be accounted for in model generation
+-   $y_{t-i}$ is the value of the timeseries at time $t-i$
+-   $\phi_{i}$ is the lag parameter at time $t-i$
+-   $\epsilon_{t-i}$ is the residual error term at time $t-i$
+-   $\theta_{i}$ is the residual error parameter at time $t-i$ 
 
 
 ### `.ml.ts.ARMA.fit`
 
-_Fit an ARMA forecasting model based on a provided time series dataset_
+_Fit an ARMA forecasting model based on a provided timeseries dataset_
 
-Syntax:`.ml.ts.ARMA.fit[endog;exog;p;q;tr]`
+```txt
+.ml.ts.ARMA.fit[endog;exog;p;q;tr]
+```
 
 Where
 
--  `endog` endogenous variable as a list (time-series)
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `p`     number of lag values to include
--  `q`     number of residual errors to include
--  `tr`   is a trend to be accounted for?
+-   `endog` is an endogenous variable as a list (time-series)
+-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-   `p` is the number of lag values to include (integer)
+-   `q` is the number of residual errors to include (integer)
+-   `tr` is whether a trend is to be accounted for (boolean)
 
-returns a dictionary containing the model parameters and data to be used for the forecasting of future values. This dictionary contains the following information
+returns a dictionary containing the model parameters and data to be used for the forecasting of future values:
 
-key        |  Explanation
------------|---------------------------
-params     | model paramaters for future predictions
-tr_param   | trend paramaters
-exog_param | exog paramaters
-p_param    | lag value paramaters
-q_param    | error paramaters
-lags       | lagged values from the training set
-resid      | q residual errors calculated from training set using the params
-estresid   | coefficients used to estimate resid errors
-pred_dict  | a dictionary containing information about the model used for fitting
+```txt
+params      model paramaters for future predictions
+tr_param    trend paramaters
+exog_param  exog paramaters
+p_param     lag value paramaters
+q_param     error paramaters
+lags        lagged values from the training set
+resid       q residual errors calculated from training set using the params
+estresid    coefficients used to estimate resid errors
+pred_dict   a dictionary containing information about the model used for fitting
+```
 
 ```q
 q)timeSeries:100?10f
@@ -273,17 +294,19 @@ pred_dict | `p`q`tr!(2;1;0b)
 
 ### `.ml.ts.ARMA.predict`
 
-_Predict future values of a time series using a fitted ARMA model_
+_Predict future values of a timeseries using a fitted ARMA model_
 
-Syntax:`.ml.ts.ARMA.predict[mdl;exog;len]`
+```txt
+.ml.ts.ARMA.predict[mdl;exog;len]
+```
 
 Where
 
--  `mdl` dictionary returned from a fitted ARMA model
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `len` number of values that are to be predicted
+-   `mdl` is a dictionary returned from a fitted ARMA model
+-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-   `len` is the number of values that are to be predicted (integer)
 
-returns the future predicted values
+returns the future predicted values.
 
 ```q
 // Generate an ARMA model 
@@ -305,11 +328,14 @@ q).ml.ts.ARMA.predict[ARMAmdl;();10]
 ```
 
 
+
 ## AutoRegressive Integrated Moving Average (ARIMA) model
 
-**ARIMA model**
+An ARIMA model is an extension of the [ARMA model](#autoregressive-moving-average-arma-model). As with the ARMA model, this takes into account lagged values and past residual errors when generating the model and predictions. The integrated aspect of the model is the result of differencing the timeseries `d` times in order to generate a ‘stationary’ timeseries. 
 
-An ARIMA model is an extension of the ARMA model described [above](#autoregressive-moving-average-arma-model). As with the ARMA model, this takes into account lagged values and past residual errors when generating the model and predictions. The integrated aspect of the model is the result of differencing the time series `d` times in order to generate a 'stationary' time series. Once differenced and stationary, an ARMA model can be generated and applied to forecast future values. Any time series which has non seasonal components (daily/annual cycles) can be modelled using this method.
+Once differenced and stationary, an ARMA model can be generated and applied to forecast future values. 
+
+Any timeseries which has non seasonal components (daily/annual cycles) can be modelled using this method.
 
 The equation for an ARIMA model is given by
 
@@ -317,50 +343,59 @@ $$\hat{y}_{t}= \mu  + \sum_{i=1}^{p} \phi_{i} y_{t-i} + \sum_{i=1}^{q} \theta_{i
 
 Where:
 
-  - $\hat{y}_{t}$ is the differenced time series at time t
-  - $\mu$ is the trend value
-  - $p$ is the order of lagged values to be accounted for in model generation
-  - $q$ is the order of residual errors to be accounted for in model generation
-  - $y_{t-i}$ is the value of the time series at time t-i
-  - $\phi_{i}$ is the lag parameter at time t-i
-  - $\epsilon_{t-i}$ is the residual error term at time t-i
-  - $\theta_{i}$ is the residual error parameter at time t-i
+-   $\hat{y}_{t}$ is the differenced timeseries at time $t$
+-   $\mu$ is the trend value
+-   $p$ is the order of lagged values to be accounted for in model generation
+-   $q$ is the order of residual errors to be accounted for in model generation
+-   $y_{t-i}$ is the value of the timeseries at time $t-i$
+-   $\phi_{i}$ is the lag parameter at time $t-i$
+-   $\epsilon_{t-i}$ is the residual error term at time $t-i$
+-   $\theta_{i}$ is the residual error parameter at time $t-i$
 
 
-**Stationary Time Series**
+Stationary timeseries
 
-A time series is described as stationary if its statistical properties such as mean, variance and autocorrelation do not change over time. A time series with trends or seasonality are not stationary. Differencing can be applied to a non stationary time series in order to make it stationary. This involves computing the difference between consecutive observations in the time series a number of times. A function to test if a time series or set of time series are stationary is provided [here](misc.md)
+: A timeseries is _stationary_ if its statistical properties such as mean, variance and autocorrelation do not change over time. A timeseries with trends or seasonality are not stationary. 
 
-**Akaike Information Criterion**
+: Differencing can be applied to a non-stationary timeseries in order to make it stationary. This involves computing the difference between consecutive observations in the timeseries a number of times. 
 
-The Akaike Information Criterion (AIC) is an estimator of in-sample prediction error. It is often used as a means of model selection. Given a collection of models for a dataset, AIC estimates the quality of each model relative to each of the other models and chooses that which minimizes the AIC score. In cases where the out-of-sample prediction error is expected to differ from in-sample prediction error it is better to use [cross-validation](../xval.md).
+: [`stationarity`](misc.md#mltsstationarity) is a function to test if a timeseries or set of timeseries are stationary.
 
-The equation for calculation of the AIC score for a large sample size is given by:
 
-$$AIC = 2(k - \hat{L})$$
+Akaike Information Criterion
 
-Where:
+: The Akaike Information Criterion (AIC) is an estimator of in-sample prediction error. It is often used as a means of model selection. Given a collection of models for a dataset, AIC estimates the quality of each model relative to each of the other models and chooses that which minimizes the AIC score. 
 
-  - `k` is the number of estimated parameters for the model.
-  - $\hat{L}$ is the maximum value of the likelihood function for the model being fitted.
+: In cases where the out-of-sample prediction error is expected to differ from in-sample prediction error it is better to use [cross-validation](../xval.md).
+
+: The equation for calculation of the AIC score for a large sample size is given by:
+
+    $$AIC = 2(k - \hat{L})$$
+
+: Where
+
+    -   `k` is the number of estimated parameters for the model.
+    -   $\hat{L}$ is the maximum value of the likelihood function for the model being fitted.
+
 
 ### `.ml.ts.ARIMA.aicParam`
 
 _Use AIC score to determine the optimal model parameters for an ARIMA model_
 
-Syntax:`.ml.ts.ARIMA.aicParam[train;test;len;dict]`
+```txt
+.ml.ts.ARIMA.aicParam[train;test;len;dict]
+```
 
 Where
 
--  `train` training data dictionary with keys ``` `endog`exog ```
--  `test` testing data dictionary with keys ``` `endog`exog ```
--  `len` the number of values that are to be predicted
--  `dict` dictionary of different input parameters to score
+-   `train` is a training-data dictionary with keys ``` `endog`exog ```
+-   `test` is a testing data dictionary with keys ``` `endog`exog ```
+-   `len` is the number of values that are to be predicted (integer)
+-   `dict` is a dictionary of different input parameters to score
 
-returns a dictionary indicating the optimal input model parameters to use for an ARIMA model along with the associated AIC score
+returns a dictionary indicating the optimal input model parameters to use for an ARIMA model along with the associated AIC score.
 
 ```q
-
 // Generate data for AIC parameter example
 q)timeSeriesTrain:100?10f
 q)timeSeriesTest:10?10f
@@ -383,38 +418,40 @@ tr   | 0b
 score| 30.69017
 ```
 
+
 ### `.ml.ts.ARIMA.fit`
 
-_Fit an ARIMA forecasting model based on a provided time series dataset_
+_Fit an ARIMA forecasting model based on a provided timeseries dataset_
 
-Syntax:`.ml.ts.ARIMA.fit[endog;exog;p;d;q;tr]`
+```txt
+.ml.ts.ARIMA.fit[endog;exog;p;d;q;tr]
+```
 
 Where
 
--  `endog` endogenous variable as a list (time-series)
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `p`     number of lag values to include
--  `d`     order of differencing being used
--  `q`     number of residual errors to include
--  `tr`   is a trend to be accounted for?
+-   `endog` is an endogenous variable as a list (time-series)
+-   `exog`  is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-   `p` is the number of lag values to include (integer)
+-   `d` is the order of differencing being used (integer)
+-   `q` is the number of residual errors to include (integer)
+-   `tr` is whether a trend is to be accounted for (boolean)
 
-returns a dictionary containing the model parameters and data required for the forecasting of future values. This dictionary contains the following information
+returns a dictionary containing the model parameters and data required for the forecasting of future values:
 
-key         |  Explanation
-------------|---------------------------
-params      | model paramaters for future predictions
-tr_param    | trend paramaters
-exog_param  | exog paramaters
-p_param     | lag value paramaters
-q_param     | error paramaters
-lags        | lagged values from the training set
-resid       | q residual errors calculated from training set using the params
-estresid    | coefficients used to estimate resid errors
-origs       | original values to be used to transform seasonal differencing to original format
-pred_dict   | a dictionary containing information about the model used for fitting
+```txt
+params      model paramaters for future predictions
+tr_param    trend paramaters
+exog_param  exog paramaters
+p_param     lag value paramaters
+q_param     error paramaters
+lags        lagged values from the training set
+resid       q residual errors calculated from training set using the params
+estresid    coefficients used to estimate resid errors
+origs       original values to use to transform seasonal differencing to original format
+pred_dict   a dictionary containing information about the model used for fitting
+```
 
-!!! Note
-	In general, differencing (`d`) of order 2 or less is generally sufficient to make a time series stationary for an ARIMA model.
+!!! tip "In general, differencing (`d`) of order 2 or less suffices to make a timeseries stationary for an ARIMA model."
 
 ```q
 q)timeSeries:100?10f
@@ -432,19 +469,22 @@ pred_dict | `p`q`tr!(3;2;1b)
 origd     | ,5.784208
 ```
 
+
 ### `.ml.ts.ARIMA.predict`
 
-_Predict future values of a time series using a fitted ARIMA model_
+_Predict future values of a timeseries using a fitted ARIMA model_
 
-Syntax:`.ml.ts.ARIMA.predict[mdl;exog;len]`
+```txt
+.ml.ts.ARIMA.predict[mdl;exog;len]
+```
 
 Where
 
--  `mdl` dictionary returned from fitting an ARIMA model
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `len` number of values that are to be predicted
+-   `mdl` is a dictionary returned from fitting an ARIMA model
+-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-   `len` is the number of values to be predicted (integer)
 
-returns the future predicted values
+returns the future predicted values.
 
 ```q
 // Generate an ARIMA model
@@ -466,65 +506,78 @@ q).ml.ts.ARIMA.predict[ARIMAmdl;exogFuture;10]
 2.540794 3.437806 4.324895 2.921683 3.768364 2.919457 3.347546 3.741517 3.715..
 ```
 
+
+
 ## Seasonal AutoRegressive Integrated Moving Average (SARIMA)
 
-A SARIMA model is an extension of the ARIMA model described [above](#autoregressive-integrated-moving-average-arima-model). As noted previously, ARIMA models cannot be used in cases where there is cyclical variability in the behaviour of the time series. Examples of cyclic variability in a time series are as follows:
+A SARIMA model is an extension of the [ARIMA model](#autoregressive-integrated-moving-average-arima-model). As noted previously, ARIMA models cannot be used in cases where there is cyclical variability in the behavior of the timeseries. 
 
-1. Sales in many retail stores have yearly cycles with increases in demand around the holidays and during annual sales.
-2. The use of electricity in a household has both a yearly and daily cycle with more use during the evening than at night and similarly more use in winter than summer.
-3. Weather patterns also contain daily and yearly cycles with temperature changing from day to night and winter to summer
+Examples of cyclic variability in a timeseries:
 
-Similar to the ARIMA model which accounts for historical lag components `p`, residual errors `q` and a set of time series differencing `d`, the seasonal component of a SARIMA model has equivalent components.
+-   Sales in many retail stores have yearly cycles with increases in demand around the holidays and during annual sales.
+-   The use of electricity in a household has both a yearly and daily cycle with more use during the evening than at night and similarly more use in winter than summer.
+-   Weather patterns also contain daily and yearly cycles with temperature changing from day to night and winter to summer
 
-* `P` is the autoregressive lag term of the seasonal component of the model
-* `Q` is the residual moving average term of the seasonal component model
-* `D` is the seasonal differencing term of the model
+Similar to the ARIMA model which accounts for historical lag components $p$, residual errors $q$ and a set of timeseries differencing $d$, the seasonal component of a SARIMA model has equivalent components.
+
+-   $P$ is the autoregressive lag term of the seasonal component of the model
+-   $Q$ is the residual moving average term of the seasonal component model
+-   $D$ is the seasonal differencing term of the model
 
 SARIMA models are usually denoted by the following definition
 
 $$ARIMA(p,d,q)(P,D,Q)_{m}$$
 
-where the upper case components are defined above and $m$ refers to the number of periods in each season.
+where the upper-case components are as defined above, and $m$ refers to the number of periods in each season.
 
-A further outline of SARIMA model generation and use can be found [here](https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_sarimax_stata.html#ARIMA-Example-3:-Airline-Model).
+:fontawesome-solid-globe:
+[Outline of SARIMA model generation and use](https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_sarimax_stata.html#ARIMA-Example-3:-Airline-Model "www.statsmodels.org")
+
 
 ### `.ml.ts.SARIMA.fit`
 
-_Fit an SARIMA forecasting model based on a provided time series dataset_
+_Fit an SARIMA forecasting model based on a provided timeseries dataset_
 
-Syntax:`.ml.ts.SARIMA.fit[endog;exog;p;d;q;tr;s]`
+```txt
+.ml.ts.SARIMA.fit[endog;exog;p;d;q;tr;s]
+```
 
 Where
 
--  `endog` endogenous variable as a list (time-series)
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `p`     number of lag values to include
--  `d`     order of differencing being used
--  `q`     number of residual errors to include
--  `tr`   is a trend to be accounted for?
--  `s`    dictionary of seasonal `P`,`D`,`Q` and `m`(periodicity) components
+-   `endog` is an endogenous variable as a list (time-series)
+-  `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-  `p` is the number of lag values to include (integer)
+-  `d` is the order of differencing being used (integer)
+-  `q` is the number of residual errors to include (integer)
+-  `tr` is whether a trend is to be accounted for (boolean)
+-  `s` is a dictionary of seasonal `P`,`D`,`Q` and `m` (periodicity) components
 
-returns a dictionary containing the model parameters and data required for the forecasting of future values. This dictionary contains the following information
+returns a dictionary containing the model parameters and data required for the forecasting of future values:
 
-key         |  Explanation
-------------|---------------------------
-params      | model paramaters for future predictions
-tr_param    | trend paramaters
-exog_param  | exog paramaters
-p_param     | lag value paramaters
-q_param     | error paramaters
-P_param     | seasonal lag value paramaters
-Q_param     | seasonal error paramaters
-lags        | lagged values from the training set
-resid       | q residual errors calculated from training set using the params
-estresid    | coefficients used to estimate resid errors
-origd       | original values of input values before being differenciated
-origs       | original values to be used to transform seasonal differencing to original format
-pred_dict   | a dictionary containing information about the model used for fitting
+```txt
+params       model paramaters for future predictions
+tr_param     trend paramaters
+exog_param   exog paramaters
+p_param      lag value paramaters
+q_param      error paramaters
+P_param      seasonal lag value paramaters
+Q_param      seasonal error paramaters
+lags         lagged values from the training set
+resid        q residual errors calculated from training set using the params
+estresid     coefficients used to estimate resid errors
+origd        original values of input values before being differenciated
+origs        original values to transform seasonal differencing to original format
+pred_dict    a dictionary containing information about the model used for fitting
+```
 
+!!! warning "Consistency across platforms"
 
-!!! Warning
-	When applying optimization algorithms in kdb+, subtracting small values from large to generate deltas to find the optimization direction may result in inconsistent results across operating systems. This is due to potential floating point precision differences at the machine level and issues with subtractions of floating point numbers more generally. These issues may be seen in the application of `.ml.ts.SARIMA` and `.ml.optimize.BFGS`. See [here](../../../../basics/precision) for more details on floating point precision.
+    When applying optimization algorithms in kdb+, subtracting small values from large to generate deltas to find the optimization direction may result in inconsistent results across operating systems. 
+
+    This is due to potential floating-point precision differences at the machine level and issues with subtractions of floating point numbers more generally. These issues may be seen in the application of `.ml.ts.SARIMA` and `.ml.optimize.BFGS`. 
+
+    :fontawesome-solid-book-open:
+    [Precision](../../../basics/precision.md)
 
 ```q
 q)timeSeries:100?10f
@@ -552,17 +605,19 @@ origs     | `float$()
 
 ### `.ml.ts.SARIMA.predict`
 
-_Predict future values of a time series using a fitted SARIMA model_
+_Predict future values of a timeseries using a fitted SARIMA model_
 
-Syntax:`.ml.ts.SARIMA.predict[mdl;exog;len]`
+```txt
+.ml.ts.SARIMA.predict[mdl;exog;len]
+```
 
 Where
 
--  `mdl` dictionary returned from fiting a SARIMA model
--  `exog`  table of exogenous variables, if (::)/() then exogenous variables ignored
--  `len` number of values that are to be predicted
+-   `mdl` is a dictionary returned from fitting a SARIMA model
+-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+-   `len` is the number of values to be predicted (integer)
 
-returns the future predicted values
+returns the future predicted values.
 
 ```q
 // Generate a SARIMA model
@@ -589,3 +644,5 @@ q)exogFuture:([]10?1f;10?1f)
 q).ml.ts.SARIMA.predict[SARIMAmdl;exogFuture;10]
 4.120073 4.828971 5.943532 3.411156 4.342353 2.056176 4.707504 4.516458 6.316
 ```
+
+

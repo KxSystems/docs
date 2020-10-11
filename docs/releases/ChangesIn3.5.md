@@ -101,7 +101,7 @@ q)hopen(`:tcps://myhost:5000:username:password;30000)
 
 We have tried to make the process of upgrading seamless, however please pay attention to the following NUCs to consider whether they impact your particular installation
 
-- added `ujf` (new keyword) which mimics the behaviour of `uj` from V2.x, i.e. that it fills from lhs, e.g.
+- added `ujf` (new keyword) which mimics the behavior of `uj` from V2.x, i.e. that it fills from lhs, e.g.
 <pre><code class="language-q">
 q)([a:1 2 3]b:2 3 7;c:10 20 30;d:"WEC")~([a:1 2]b:2 3;c:5 7;d:"WE")ujf([a:1 2 3]b:2 3 7;c:10 20 30;d:"  C")
 </code></pre>

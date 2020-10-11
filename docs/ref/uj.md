@@ -68,7 +68,7 @@ a b| c  d
 
     The union join of two keyed tables is equivalent to a [left join](lj.md) of the two tables with the catenation of unmatched rows from the second table.
 
-    As a result a change in the behaviour of `lj` causes a change in the behaviour of `uj`:
+    As a result a change in the behavior of `lj` causes a change in the behavior of `uj`:
 
     <pre><code class="language-q">
     q)show x:([a:1 2]b:`x`y;c:10 20)

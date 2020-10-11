@@ -108,7 +108,7 @@ Where
 -   `t` is a table
 -   `gcol` is a grouping column for the fill
 -   `tcol` is a time column in the data
--   `dict` is a dictionary defining fill behaviour, setting this to `::` will result in forward followed by reverse filling
+-   `dict` is a dictionary defining fill behavior, setting this to `::` will result in forward followed by reverse filling
 
 returns a table with columns filled according to assignment of keys in the dictionary `dict`, the null values are also encoded within a new column to maintain knowledge of the null positions. 
 
@@ -192,7 +192,7 @@ a 8.452182  1
 a 0.4821576 0 
 b 4.755664  0 
 c 8.35521   0 
-q).ml.freqencode[tab;::]    / default behaviour
+q).ml.freqencode[tab;::]    / default behavior
 x1        x2 x_freq
 -------------------
 4.429712  1  0.2   
@@ -332,7 +332,7 @@ x        x1 x2
 3.163946 a  g
 7.851531 b  g
 
-q).ml.lexiencode[tab;::]  / default behaviour
+q).ml.lexiencode[tab;::]  / default behavior
 x        x1_lexi x2_lexi
 ------------------------
 3.122149 1       1
@@ -341,7 +341,7 @@ x        x1_lexi x2_lexi
 3.163946 0       2
 7.851531 1       2
 
-q).ml.lexiencode[tab;`x1] / custom behaviour
+q).ml.lexiencode[tab;`x1] / custom behavior
 x        x2 x1_lexi
 -------------------
 3.122149 f  1
@@ -424,7 +424,7 @@ a 0  2.084756
 b 0  9.450667
 c 1  7.8567  
 c 1  5.898786
-q).ml.onehot[tab;::]      / default behaviour
+q).ml.onehot[tab;::]      / default behavior
 x1 x2       x_a x_b x_c
 -----------------------
 0  3.21158  1   0   0  
@@ -432,7 +432,7 @@ x1 x2       x_a x_b x_c
 0  9.450667 0   1   0  
 1  7.8567   0   0   1  
 1  5.898786 0   0   1  
-q).ml.onehot[tab;`x`x1]   / custom behaviour
+q).ml.onehot[tab;`x`x1]   / custom behavior
 x2       x_a x_b x_c x1_0 x1_1
 ------------------------------
 3.21158  1   0   0   1    0   
@@ -569,7 +569,7 @@ x                             x1    x2 x3
 2000.01.03D00:00:00.000000000 09:48 7  6 
 2000.01.04D00:00:00.000000000 16:50 7  5 
 2000.01.05D00:00:00.000000000 13:50 4  5 
-q).ml.timesplit[timetab;::]  / default behaviour
+q).ml.timesplit[timetab;::]  / default behavior
 x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss x1_hh x1_uu
 ------------------------------------------------------------------
 7  6  0     2000   1    1    1     0    0    0    0    21    51   

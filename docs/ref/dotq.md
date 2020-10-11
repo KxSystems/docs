@@ -210,7 +210,7 @@ In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables
 
 If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. ``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
 
-Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behaviour.
+Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior.
 
 ```q
 q)n:100
@@ -1407,7 +1407,7 @@ In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§14.5.3 `.Q.pv`](q4m3/14_Introduction_to_Kdb%2B/#1453_qpv)
+[§14.5.3 `.Q.pv`](/q4m3/14_Introduction_to_Kdb%2B/#1453-qpv)
 
 
 ## `.Q.PV` (partition values)

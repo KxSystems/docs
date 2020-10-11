@@ -3,7 +3,6 @@ title: FRESH – a feature-extraction and feature-significance toolkit – Machi
 author: Conor McCarthy
 description: Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
 date: August 2018
-keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, interpolation
 ---
 # :fontawesome-solid-share-alt: FRESH: a feature-extraction and feature-significance toolkit
 
@@ -130,7 +129,9 @@ As of version 0.1.3 the creation of features using the function `.ml.fresh.creat
 
 _Applies functions to subsets of initial data to create features_
 
-Syntax: `.ml.fresh.createfeatures[t;aggs;cnames;ptab]`
+```txt
+.ml.fresh.createfeatures[t;aggs;cnames;ptab]
+```
 
 Where
 
@@ -250,12 +251,14 @@ Modifications to the file `hyperparam.txt` within the FRESH folder allows fine t
 
 Statistical significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
 
-feature type       | target type       | significance test 
-:------------------|:------------------|:------------------
-Binary             | Real              | Kolmogorov-Smirnov
-Binary             | Binary            | Fisher-Exact      
-Real               | Real              | Kendall Tau-b     
-Real               | Binary            | Kolmogorov-Smirnov
+```txt
+feature type    target type   significance test 
+------------------------------------------------
+Binary          Real          Kolmogorov-Smirnov
+Binary          Binary        Fisher-Exact      
+Real            Real          Kendall Tau-b     
+Real            Binary        Kolmogorov-Smirnov
+```
 
 Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
 
@@ -269,7 +272,9 @@ Each of these procedures can be implemented by modifying parameter input to the 
 
 _Return statistically significant features based on defined selection procedure_
 
-Syntax: `.ml.fresh.significantfeatures[t;tgt;f]`
+```txt
+.ml.fresh.significantfeatures[t;tgt;f]
+```
 
 Where
 
@@ -301,6 +306,6 @@ q)count each (sigBH;sigK;sigP)
 
 !!! warning "Change from version 0.1"
 
-	The input behaviour of `.ml.fresh.significantfeatures` has changed to accommodate an increased number of feature-selection methods.
+	The input behavior of `.ml.fresh.significantfeatures` has changed to accommodate an increased number of feature-selection methods.
 
 

@@ -9,7 +9,8 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 
 <pre markdown="1" class="language-txt">
 .ml.clust.kd   **k-d tree functions**
-  [newtree](#mlclustkdnewtree)       build a k-d tree
+
+\  [newtree](#mlclustkdnewtree)       build a k-d tree
   [nn](#mlclustkdnn)            find the nearest neighbor for a datapoint
   [findleaf](#mlclustkdfindleaf)      find the leaf node to which a datapoint belongs
 </pre>
@@ -26,7 +27,9 @@ At each non-leaf node, the dataset is split roughly in two. A splitting dimensio
 
 _Find the tree index of the leaf that a datapoint belongs to_
 
-Syntax: `.ml.clust.kd.findleaf[tree;pt;node]`
+```txt
+.ml.clust.kd.findleaf[tree;pt;node]
+```
 
 Where
 
@@ -67,14 +70,21 @@ midval  | 0n
 idxs    | 2 3 4
 ```
 
-Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or C code in their implementations (See [instructions](https://github.com/kxsystems/ml/clust/README.md) to build C code). To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `b` is a boolean indicating whether to use the q (`1b`) or C (`0b`) code. If the C code is not available, the function will default to q regardless of the input.
+Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or C code in their implementations. 
+
+:fontawesome-brands-github:
+[Instructions to build C code](https://github.com/KxSystems/ml/blob/master/clust/README.md)
+
+To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `b` is a boolean indicating whether to use the q (`1b`) or C (`0b`) code. If the C code is not available, the function will default to q regardless of the input.
 
 
 ## `.ml.clust.kd.newtree`
 
 _Build k-d tree_
 
-Syntax: `.ml.clust.kd.newtree[data;leafsz]`
+```txt
+.ml.clust.kd.newtree[data;leafsz]
+```
 
 Where
 
@@ -125,7 +135,9 @@ leaf left self parent children axis midval  idxs
 
 _Find the nearest neighbor for a data point_
 
-Syntax: `.ml.clust.kd.nn[tree;data;df;xidxs;pt]`
+```txt
+.ml.clust.kd.nn[tree;data;df;xidxs;pt]
+```
 
 Where
 
