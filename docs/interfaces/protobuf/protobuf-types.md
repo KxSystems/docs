@@ -19,7 +19,7 @@ We describe how kdb+ numeric and string types are represented in Protobuf, how P
 
 A Protobuf message is composed of a number of fields where each field can be scalar, repeated scalar, sub-message, repeated sub-message, enum or map. For example:
 
-```txt
+```proto
 message MyMessage {
   int32 scalar_int = 1;
   repeated double repeated_double = 2;
