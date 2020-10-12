@@ -398,22 +398,16 @@ nav:
       - Changes in 2.5: releases/ChangesIn2.5.md
       - Changes in 2.4: releases/ChangesIn2.4.md
       - Withdrawn: releases/withdrawn.md
-  - Basics:
-    # - Functions: basics/functions.md
-    # - Elements: basics/elements.md
+  - Language:
     - Application: basics/application.md
     - Atomic functions: basics/atomic.md
     - Casting & encoding: basics/casting.md
-    - Command line: basics/cmdline.md
     - Comparison: basics/comparison.md
     - Conformability: basics/conformable.md
     - Connection handles: basics/handles.md
     - Datatypes: basics/datatypes.md
-    - Debugging: basics/debug.md
     - Dictionaries & tables: basics/dictsandtables.md
     - Enumerations: basics/enumerations.md
-    - Environment: basics/environment.md
-    - Errors: basics/errors.md
     - Evaluation control: basics/control.md
     - Exposed infrastructure: basics/exposed-infrastructure.md
     - File system: basics/files.md
@@ -421,27 +415,86 @@ nav:
     - Functional qSQL: basics/funsql.md
     - Glossary: basics/glossary.md
     - Internal functions: basics/internal.md
-    - Interprocess communication: basics/ipc.md
     - Iteration: basics/iteration.md
     - Joins: basics/joins.md
-    - Listening port: basics/listening-port.md
     - Logic: basics/logic.md
     - Mathematics: basics/math.md
-    - Memory backed by files: basics/memory-backed.md
     - Metadata: basics/metadata.md
     - Namespaces: basics/namespaces.md
-    - Parallel processing: basics/peach.md
     - Parse trees: basics/parsetrees.md
-    - Precision: basics/precision.md
+    - Parse trees, functional SQL: wp/parse-trees.md
     - QSQL queries: basics/qsql.md
     - Regular Expressions: basics/regex.md
+    - Regex: kb/regex.md
     - Search: basics/search.md
     - Selection: basics/selection.md
     - Sorting: basics/sort.md
     - Strings: basics/strings.md
     - Syntax: basics/syntax.md
-    - System commands: basics/syscmds.md
     - Variadic syntax: basics/variadic.md
+    - Iterators: wp/iterators/index.md
+  - Development:
+    - Callbacks: kb/callbacks.md
+    - Code profiler: kb/profiler.md
+    - Command line: basics/cmdline.md
+    - Custom web server: kb/custom-web.md
+    - Daemon: kb/daemon.md
+    - Data visualization: wp/data-visualization/index.md
+    - Debugging: basics/debug.md
+    - Deferred response: kb/deferred-response.md
+    - Environment: basics/environment.md
+    - Errors: basics/errors.md
+    - FAQ from k4 listbox: kb/faq-listbox.md
+    - Geospatial indexing: kb/geospatial.md
+    - Interprocess communication: basics/ipc.md
+    - Listening port: basics/listening-port.md
+    - Multi-threading: wp/multi-thread/index.md
+    - Multithreaded primitives: kb/mt-primitives.md
+    - Multiple versions: kb/versions.md
+    - Named pipes: kb/named-pipes.md
+    - Parallel processing: basics/peach.md
+    - Performance tips: kb/performance-tips.md
+    - Precision: basics/precision.md
+    - Programming examples: kb/programming-examples.md
+    - Programming idioms: kb/programming-idioms.md
+    - Replay logfile: kb/replay-log.md
+    - Serialization examples: kb/serialization.md
+    - Server calling client: kb/server-calling-client.md
+    - Socket sharding: wp/socket-sharding/index.md
+    - SSL/TLS: kb/ssl.md
+    - Surveillance latency: wp/surveillance-latency/index.md
+    - System commands: basics/syscmds.md
+    - Temporal data: kb/temporal-data.md
+    - Timezones: kb/timezones.md
+    - Unicode: kb/unicode.md
+    - Unit tests: kb/unit-tests.md
+    - Using .z: kb/using-dotz.md
+    - WebSockets: kb/websockets.md
+  - Database:
+    - Bulk Copy Program: kb/bcp.md
+    - Columnar database: wp/columnar-database/index.md
+    - Compacting HDB sym: kb/compacting-hdb-sym.md
+    - Compression: wp/compress/index.md
+    - Data-At-Rest Encryption: kb/dare.md
+    - Data loaders: wp/data-loaders/index.md
+    - Data management: wp/data-management.md
+    - FAQ: kb/faq.md
+    - File compression: kb/file-compression.md
+    - Foreign keys: wp/foreign-keys.md
+    - Linking columns: kb/linking-columns.md
+    - Loading from large files: kb/loading-from-large-files.md
+    - Multiple partitions: wp/multi-partitioned-dbs/index.md
+    - ODBC: kb/odbc.md
+    - Partitioning: kb/partition.md
+    - Permissions: wp/permissions/index.md
+    - Pivoting tables: kb/pivoting-tables.md
+    - Query optimization: wp/columnar-database/index.md
+    - Query scaling: wp/query-scaling.md
+    - Splayed schema change: kb/splayed-schema-change.md
+    - Splayed tables: kb/splayed-tables.md
+    - Splaying large files: kb/splaying-large-files.md
+    - Time-series simplification: wp/ts-shrink/index.md
+    - Working with sym files: wp/symfiles.md
   - Interfaces:
     - Index: interfaces/index.md
     - Fusion for kdb+:
@@ -452,7 +505,10 @@ nav:
         - Type mapping: interfaces/hdf5/hdf5-types.md
         - Reference: interfaces/hdf5/reference.md
         - Examples: interfaces/hdf5/examples.md
-      - Java: interfaces/java-client-for-q.md
+      - Java: 
+        # FIXME: combine articles?
+        - Java API: wp/java-api/index.md
+        - Quick guide: interfaces/java-client-for-q.md
       - Jupyter: interfaces/jupyterq.md
       - Kafka:
         - Overview: interfaces/kafka/index.md
@@ -496,9 +552,13 @@ nav:
         - RESTful API: interfaces/solace/solacerest.md
         - Examples: interfaces/solace/examples.md
     - Clients for kdb+: 
-      - C: interfaces/c-client-for-q.md
-      - C API reference: interfaces/capiref.md
-      - C#: interfaces/csharp-client-for-q.md
+      - C: 
+        - Quick guide: interfaces/c-client-for-q.md
+        - Full guide: wp/capi/index.md
+        - API reference: interfaces/capiref.md
+      - C#: 
+        - API: interfaces/csharp-client-for-q.md
+        - GUIs: wp/gui/index.md
       - Excel: interfaces/excel-client-for-q.md
       - J: interfaces/j-client-for-q.md
       - JDBC: interfaces/jdbc-client-for-kdb.md
@@ -542,6 +602,7 @@ nav:
       - User guide: ml/embedpy/userguide.md
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
+      - embedPy and LASSO:  wp/embedpy-lasso/index.md
     - JupyterQ: 
       - Overview: ml/jupyterq/index.md
       - User guide: ml/jupyterq/notebooks.md
@@ -588,117 +649,60 @@ nav:
         - Data postprocessing: ml/automl/ug/postproc.md
         - Advanced parameter modifications: ml/automl/ug/options.md
       - FAQ: ml/automl/faq.md
-  - Knowledge Base:
-    - Overview: kb/index.md
+    - Neural networks: wp/neural-networks/index.md
+    - Pattern recognition: wp/machine-learning/index.md
+  - Architecture:
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
     - Authentication and access: kb/authentication.md
-    - Bulk Copy Program: kb/bcp.md
-    - Callbacks: kb/callbacks.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
-    - Code profiler: kb/profiler.md
-    - Compacting HDB sym: kb/compacting-hdb-sym.md
     - Corporate actions: kb/corporate-actions.md
     - CPU affinity: kb/cpu-affinity.md
-    - Custom web server: kb/custom-web.md
-    - Daemon: kb/daemon.md
-    - Data-At-Rest Encryption: kb/dare.md
-    - Deferred response: kb/deferred-response.md
-    - DigitalOcean: kb/digitalocean.md
-    - FAQ: kb/faq.md
-    - FAQ from k4 listbox: kb/faq-listbox.md
-    - File compression: kb/file-compression.md
-    - Firewalling: kb/firewalling.md
-    - Geospatial indexing: kb/geospatial.md
-    - inetd, xinetd: kb/inetd.md
-    - Kdb+tick configuration: kb/kdb-tick.md
-    - Linear programming: kb/lp.md
-    - Linking columns: kb/linking-columns.md
-    - Linux production notes: kb/linux-production.md
-    - Load balancing: kb/load-balancing.md
-    - Loading from large files: kb/loading-from-large-files.md
-    - Logging: kb/logging.md
-    - Multiple versions: kb/versions.md
-    - Multithreaded input: kb/multithreaded-input.md
-    - Multithreaded primitives: kb/mt-primitives.md
-    - Named pipes: kb/named-pipes.md
-    - ODBC: kb/odbc.md
-    - Optane Memory: kb/optane.md
-    - Partitioning: kb/partition.md
-    - Performance tips: kb/performance-tips.md
-    - Pivoting tables: kb/pivoting-tables.md
-    # - Precision: kb/precision.md
-    - Programming examples: kb/programming-examples.md
-    - Programming idioms: kb/programming-idioms.md
-    - Publish and subscribe: kb/publish-subscribe.md
-    - Regular expressions: kb/regex.md
-    - Replay logfile: kb/replay-log.md
-    - Serialization examples: kb/serialization.md
-    - Server calling client: kb/server-calling-client.md
-    - Splayed schema change: kb/splayed-schema-change.md
-    - Splayed tables: kb/splayed-tables.md
-    - Splaying large files: kb/splaying-large-files.md
-    - SSL/TLS: kb/ssl.md
-    - Temporal data: kb/temporal-data.md
-    - Timezones: kb/timezones.md
-    - Unicode: kb/unicode.md
-    - Unit tests: kb/unit-tests.md
-    - Using .z: kb/using-dotz.md
-    - Write-only RDB: kb/w-q.md
-    - WebSockets: kb/websockets.md
-    - Windows service: kb/windows-service/index.md
-  - White papers: 
-    - Index: wp/index.md
-    - Astronomy: wp/astronomy.md
-    - Bitcoin blockchains: wp/blockchain/index.md
-    - C API: wp/capi/index.md
-    - C# GUIs: wp/gui/index.md
-    - Card counters: wp/card-counters/index.md
-    - Columnar database: wp/columnar-database/index.md
-    - Corporate actions: wp/corporate-actions.md
-    - Gateway design: wp/gateway-design/index.md
-    - Compression: wp/compress/index.md
-    - Data loaders: wp/data-loaders/index.md
-    - Data management: wp/data-management.md
     - Data recovery for kdb+tick: wp/data-recovery.md
-    - Data visualization: wp/data-visualization/index.md
-    - Disaster management: wp/disaster-management/index.md
+    - DigitalOcean: kb/digitalocean.md
     - Disaster recovery: wp/disaster-recovery/index.md
     - Distributed systems: wp/query-interface.md
-    - EmbedPy and LASSO:  wp/embedpy-lasso/index.md
+    - Gateway design: wp/gateway-design/index.md
+    - Firewalling: kb/firewalling.md
+    - inetd, xinetd: kb/inetd.md
+    - Intraday writedown: wp/intraday-writedown/index.md
+    - Kdb+tick configuration: kb/kdb-tick.md
+    - Kdb+tick profiling: wp/tick-profiling.md
+    - Linux production notes: kb/linux-production.md
+    - Load balancing: kb/load-balancing.md
+    - Logging: kb/logging.md
+    - Memory backed by files: basics/memory-backed.md
+    - Multithreaded input: kb/multithreaded-input.md
+    - Optane Memory: kb/optane.md
+    # - Precision: kb/precision.md
+    - Publish and subscribe: kb/publish-subscribe.md
+    - Query Routing: wp/query-routing/index.md
+    - Real-time tick subscribers: wp/rt-tick/index.md
+    - WebSockets: wp/websockets/index.md
+    - Windows service: kb/windows-service/index.md
+    - Write-only RDB: kb/w-q.md
+  # - White papers: 
+  #   - Index: wp/index.md
+  - Applications:
+    - Astronomy: wp/astronomy.md
+    - Bitcoin blockchains: wp/blockchain/index.md
+    - Card counters: wp/card-counters/index.md
+    - Corporate actions: wp/corporate-actions.md
+    - Disaster management: wp/disaster-management/index.md
     - Exoplanets: wp/exoplanets/index.md
     - FIX messaging: wp/fix-messaging.md
-    - Foreign keys: wp/foreign-keys.md
-    - Intraday writedown: wp/intraday-writedown/index.md
-    - Iterators: wp/iterators/index.md
-    - Java API: wp/java-api/index.md
-    - Kdb+tick profiling: wp/tick-profiling.md
     - Lightning tickerplants: wp/lightning-tickerplants/index.md
-    - Machine learning: wp/machine-learning/index.md
+    - Linear programming: kb/lp.md
     - Market depth: wp/market-depth/index.md
     - Market fragmentation: wp/market-fragmentation/index.md
-    - Multi partitions: wp/multi-partitioned-dbs/index.md
-    - Multi-threading: wp/multi-thread/index.md
-    - Neural networks: wp/neural-networks/index.md
     - Option pricing: wp/option-pricing/index.md
     - Order Book: wp/order-book.md
-    - Parse trees, functional SQL: wp/parse-trees.md
-    - Permissions: wp/permissions/index.md
     - Predicting floods: wp/disaster-floods/index.md
-    - Query optimization: wp/columnar-database/index.md
-    - Query Routing: wp/query-routing/index.md
-    - Query scaling: wp/query-scaling.md
-    - Real-time tick subscribers: wp/rt-tick/index.md
-    - Time-series simplification: wp/ts-shrink/index.md
+    - Signal processing: wp/signal-processing/index.md
+    - Space weather: wp/space-weather/index.md
+    - Trading surveillance: wp/surveillance/index.md
     - Transaction-cost analysis: wp/transaction-cost.md
     - Trend indicators: wp/trend-indicators/index.md
-    - Signal processing and q: wp/signal-processing/index.md
-    - Socket sharding: wp/socket-sharding/index.md
-    - Space weather: wp/space-weather/index.md
-    - Surveillance latency: wp/surveillance-latency/index.md
-    - Surveillance techniques: wp/surveillance/index.md
-    - Working with sym files: wp/symfiles.md
-    - WebSockets: wp/websockets/index.md
   - About: 
     - Kx technology: about/kxtechnology.md
     - Search: about/search.md
