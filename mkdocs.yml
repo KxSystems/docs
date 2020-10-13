@@ -195,12 +195,14 @@ nav:
       - Tables: learn/startingkdb/tables.md
       - Historical database: learn/startingkdb/hdb.md
       - Realtime database: learn/startingkdb/tick.md
-  - Reference:
+  - Language:
     - Reference card: ref/index.md
+    - By topic: basics/by-topic.md
     - Iterators:
       - Overview: ref/iterators.md
       - Maps: ref/maps.md
       - Accumulators: ref/accumulators.md
+      - Guide: wp/iterators/index.md
     - Keywords:
       - abs: ref/abs.md
       - aj, aj0, ajf, ajf0: ref/aj.md
@@ -398,10 +400,9 @@ nav:
       - Changes in 2.5: releases/ChangesIn2.5.md
       - Changes in 2.4: releases/ChangesIn2.4.md
       - Withdrawn: releases/withdrawn.md
-  - Language:
     - Application: basics/application.md
     - Atomic functions: basics/atomic.md
-    - Casting & encoding: basics/casting.md
+    # - Casting & encoding: basics/casting.md
     - Comparison: basics/comparison.md
     - Conformability: basics/conformable.md
     - Connection handles: basics/handles.md
@@ -417,7 +418,7 @@ nav:
     - Internal functions: basics/internal.md
     - Iteration: basics/iteration.md
     - Joins: basics/joins.md
-    - Logic: basics/logic.md
+    # - Logic: basics/logic.md
     - Mathematics: basics/math.md
     - Metadata: basics/metadata.md
     - Namespaces: basics/namespaces.md
@@ -426,23 +427,48 @@ nav:
     - QSQL queries: basics/qsql.md
     - Regular Expressions: basics/regex.md
     - Regex: kb/regex.md
-    - Search: basics/search.md
-    - Selection: basics/selection.md
-    - Sorting: basics/sort.md
-    - Strings: basics/strings.md
+    # - Search: basics/search.md
+    # - Selection: basics/selection.md
+    # - Sorting: basics/sort.md
+    # - Strings: basics/strings.md
     - Syntax: basics/syntax.md
     - Variadic syntax: basics/variadic.md
-    - Iterators: wp/iterators/index.md
-  - Development:
+  - Database:
+    - Overview: database/index.md
+    - Bulk Copy Program: kb/bcp.md
+    - Columnar database: wp/columnar-database/index.md
+    - Compacting HDB sym: kb/compacting-hdb-sym.md
+    - Compression: wp/compress/index.md
+    - Data-At-Rest Encryption: kb/dare.md
+    - Data loaders: wp/data-loaders/index.md
+    - Data management: wp/data-management.md
+    - FAQ: kb/faq.md
+    - File compression: kb/file-compression.md
+    - Foreign keys: wp/foreign-keys.md
+    - Linking columns: kb/linking-columns.md
+    - Loading from large files: kb/loading-from-large-files.md
+    - Multiple partitions: wp/multi-partitioned-dbs/index.md
+    - ODBC: kb/odbc.md
+    - Partitioning: kb/partition.md
+    - Permissions: wp/permissions/index.md
+    - Pivoting tables: kb/pivoting-tables.md
+    - Query optimization: wp/columnar-database/index.md
+    - Query scaling: wp/query-scaling.md
+    - Splayed schema change: kb/splayed-schema-change.md
+    - Splayed tables: kb/splayed-tables.md
+    - Splaying large files: kb/splaying-large-files.md
+    - Time-series simplification: wp/ts-shrink/index.md
+    - Working with sym files: wp/symfiles.md
+  - Developing:
+    - Overview: develop/index.md
     - Callbacks: kb/callbacks.md
     - Code profiler: kb/profiler.md
-    - Command line: basics/cmdline.md
     - Custom web server: kb/custom-web.md
     - Daemon: kb/daemon.md
     - Data visualization: wp/data-visualization/index.md
     - Debugging: basics/debug.md
     - Deferred response: kb/deferred-response.md
-    - Environment: basics/environment.md
+    # - Environment: basics/environment.md
     - Errors: basics/errors.md
     - FAQ from k4 listbox: kb/faq-listbox.md
     - Geospatial indexing: kb/geospatial.md
@@ -470,31 +496,6 @@ nav:
     - Unit tests: kb/unit-tests.md
     - Using .z: kb/using-dotz.md
     - WebSockets: kb/websockets.md
-  - Database:
-    - Bulk Copy Program: kb/bcp.md
-    - Columnar database: wp/columnar-database/index.md
-    - Compacting HDB sym: kb/compacting-hdb-sym.md
-    - Compression: wp/compress/index.md
-    - Data-At-Rest Encryption: kb/dare.md
-    - Data loaders: wp/data-loaders/index.md
-    - Data management: wp/data-management.md
-    - FAQ: kb/faq.md
-    - File compression: kb/file-compression.md
-    - Foreign keys: wp/foreign-keys.md
-    - Linking columns: kb/linking-columns.md
-    - Loading from large files: kb/loading-from-large-files.md
-    - Multiple partitions: wp/multi-partitioned-dbs/index.md
-    - ODBC: kb/odbc.md
-    - Partitioning: kb/partition.md
-    - Permissions: wp/permissions/index.md
-    - Pivoting tables: kb/pivoting-tables.md
-    - Query optimization: wp/columnar-database/index.md
-    - Query scaling: wp/query-scaling.md
-    - Splayed schema change: kb/splayed-schema-change.md
-    - Splayed tables: kb/splayed-tables.md
-    - Splaying large files: kb/splaying-large-files.md
-    - Time-series simplification: wp/ts-shrink/index.md
-    - Working with sym files: wp/symfiles.md
   - Interfaces:
     - Index: interfaces/index.md
     - Fusion for kdb+:
@@ -652,6 +653,7 @@ nav:
     - Neural networks: wp/neural-networks/index.md
     - Pattern recognition: wp/machine-learning/index.md
   - Architecture:
+    - Overview: architecture/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
     - Authentication and access: kb/authentication.md
     - Chained tickerplant: kb/chained-tickerplant.md
@@ -684,6 +686,7 @@ nav:
   # - White papers: 
   #   - Index: wp/index.md
   - Applications:
+    - Overview: applications/index.md
     - Astronomy: wp/astronomy.md
     - Bitcoin blockchains: wp/blockchain/index.md
     - Card counters: wp/card-counters/index.md
