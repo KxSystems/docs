@@ -1,8 +1,7 @@
 ---
-title: String functions – Basics – kdb+ and q documentation
+title: String functions | Basics | kdb+ and q documentation
 description: Operators and keywords for handling strings (character vectors)
 author: Stephen Taylor
-keywords: kdb+, like, lower, ltrim, md5, pad, q, rtrim, ss, ssr, trim, upper
 ---
 # String functions
 
@@ -21,6 +20,7 @@ function                         | semantics
 [`rtrim`](../ref/trim.md#rtrim)  | trim trailing space
 [`ss`](../ref/ss.md#ss)          | string search
 [`ssr`](../ref/ss.md#ssr)        | string search and replace
+[`string`](../ref/string.md)     | cast to string
 [`trim`](../ref/trim.md)         | trim leading and trailing space
 [`upper`](../ref/lower.md#upper) | shift to upper case
 

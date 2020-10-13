@@ -46,7 +46,7 @@ sym| ap
 a  | 10.75
 ```
 
-`avg` is an aggregate function.
+`avg` is an aggregate function, equivalent to `{sum[x]%count x}`.
 
 
 
@@ -66,7 +66,7 @@ q)avgs 1 2 3 0n 4 -0w 0w
 1 1.5 2 2 2.5 -0w 0n
 ```
 
-`avgs` is a uniform function.
+`avgs` is a uniform function, equivalent to `(avg\)`.
 
 
 ## `mavg`

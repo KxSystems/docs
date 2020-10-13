@@ -21,18 +21,14 @@ x ss y     ss[x;y]
 Where
 
 -   `x` is a string
--   `y` is a string of plain text, or a [pattern](../kb/regex.md)
+-   `y` is a [pattern](../kb/regex.md) as a string (no asterisk)
 
-returns position/s of substring `y` within string `x`.
+returns an int vector of position/s within `x` of substrings that match pattern `y`.
 
 ```q
 q)"We the people of the United States" ss "the"
 3 17
-```
 
-It also supports some of the pattern-matching capabilities of `like`.
-
-```q
 q)s:"toronto ontario"
 q)s ss "ont"
 3 8
@@ -41,7 +37,6 @@ q)s ss "[ir]o"
 q)s ss "t?r"
 0 10
 ```
-
 
 
 ## `ssr`
@@ -55,7 +50,7 @@ ssr[x;y;z]
 Where
 
 -   `x` is a string
--   `y` is a string of plain text, or a [pattern](../kb/regex.md) without an asterisk
+-   `y` is a [pattern](../kb/regex.md) as a string (no asterisk)
 -   `z` is a string or a function
 
 returns `x` with each substring matching `y` replaced by:

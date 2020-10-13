@@ -11,11 +11,11 @@ Keywords [`like`](../ref/like.md), [`ss`, and `ssr`](../ref/ss.md) interpret the
 
 In a q regex pattern certain characters have special meaning:
 
-char | meaning
----- | -----------------------------------------------------------
-`?`  | matches any character
-`*`  | matches any sequence of characters
-`[]` | embraces a list of alternatives, any of which matches
+```txt
+?    wildcard: matches any character
+*    matches any sequence of characters
+[]   embraces a list of alternatives, any of which matches
+```
 
 
 ## Wildcard
@@ -32,10 +32,11 @@ q)"the brown duck drowned" ss "?rown"
 
 ## List of alternatives
 
-A list of alternatives is embraced by square brackets. 
+A list of alternatives is embraced by square brackets and consists of:
 
-Syntax: `[^] + [char|range]{1,}`
-
+```txt
+[^] + [char|range]{1,} 
+```
 where
 
 -   `char` is a character atom

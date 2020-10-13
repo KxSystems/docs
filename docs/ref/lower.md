@@ -30,6 +30,18 @@ q)upper`ibm`msft
 ```
 
 
+## Implicit iteration
+
+`lower` and `upper` are [atomic functions](../basics/atomic.md).
+
+```q
+q)upper(`The;(`quick`brown;(`fox;`jumps`over));`a;`lazy`dog)
+`THE
+(`QUICK`BROWN;(`FOX;`JUMPS`OVER))
+`A
+`LAZY`DOG
+```
+
 ----
 :fontawesome-solid-book-open:
 [Strings](../basics/strings.md)
