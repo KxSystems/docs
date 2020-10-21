@@ -605,7 +605,7 @@ _Q for Mortals_
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12 Functional Forms](9_Queries_q-sql/#912-functional-forms)
+[§9.12 Functional Forms](/q4m3/9_Queries_q-sql/#912-functional-forms)
 <br>
 :fontawesome-solid-globe:
-\[q-ist\] [Functional Query Functions](http://www.q-ist.com/2012/10/functional-query-functions.html)
+[Functional Query Functions](http://www.q-ist.com/2012/10/functional-query-functions.html "q-ist")
