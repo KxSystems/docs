@@ -25,7 +25,7 @@ Where `x` is a numeric, returns
 `atan`
 : the [arctangent](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties) of `x`; that is, the value whose tangent is `x`. 
 
-: The result is in radians and lies between $-{\pi}{2}$ and ${\pi}{2}$. The range is approximate due to rounding errors.
+: The result is in radians and lies between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. The range is approximate due to rounding errors.
 
 ```q
 q)tan 0 0.5 1 1.5707963 2 0w                    / tangent
