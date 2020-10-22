@@ -12,13 +12,14 @@ _Message Digest hash_
 md5 x    md5[x]
 ```
 
-Returns the [MD5 (Message-Digest algorithm 5)](https://en.wikipedia.org/wiki/MD5) of string `x`. 
+Where `x` is a string, returns as a bytestream its [MD5 (Message-Digest algorithm 5)](https://en.wikipedia.org/wiki/MD5) hash.
 
-MD5 is a widely used, Internet standard (RFC 1321), hash function that computes a 128-bit hash, commonly used to check the integrity of files. It is not recommended for serious cryptographic protection, for which strong hashes should be used.
 ```q
 q)md5 "this is a not so secret message"
 0x6cf192c1938b79012c323fa30e62787e
 ```
+
+MD5 is a widely used, Internet standard (RFC 1321), hash function that computes a 128-bit hash, commonly used to check the integrity of files. It is not recommended for serious cryptographic protection, for which strong hashes should be used.
 
 
 ----

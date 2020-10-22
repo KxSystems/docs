@@ -38,7 +38,7 @@ The linked pages document some of the objects in these namespaces.
 
 ## Names
 
-Apart from the leadi g dot, nmespace names follow the same rules as names for q objects.
+Apart from the leading dot, namespace names follow the same rules as names for q objects.
 
 Outside its containing namespace, an object is known by the full name of its containing namespace followed by a dot and its own name. 
 

@@ -47,4 +47,4 @@ AAPL 2
 ```
 
 
-The function `cross` is equivalent to `{raze x,\:/:y}`.
+The function `cross` is equivalent to `{raze x,/:\:y}`.

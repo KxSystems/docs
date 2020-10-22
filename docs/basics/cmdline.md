@@ -346,25 +346,28 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 
 
 ## `-u` (disable syscmds)
+## `-u` (usr-pwd local)
+## `-U` (usr-pwd)
 
 ```txt
--u 1
+-u 1        / blocks system functions and file access
+-U file     / sets password file, blocks \x
+-u file     / both the above
 ```
 
-Disables system commands from a remote (signals `'access`). As such, this includes disabling exit via `"\\"` from a remote.
+`-u 1` disables 
 
-!!! warning "Provides only a simple protection against “wrong” queries"
+-   system commands from a remote (signals `'access`), including exit via `"\\"` 
+-   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0
+
+??? danger "Only a simple protection against “wrong” queries"
 
     For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
 
+`-U file`
 
-## `-u` (usr-pwd local)
-
-```txt
--u file
-```
-
-Sets a password file; blocks access above start directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
+-   sets a password file
+-   disables [`\x`](syscmds.md#x-expunge) (even on the local console)
 
 The password file is a text file with one credential on each line.
 (No trailing blank line/s.)
@@ -390,14 +393,7 @@ q)raze string -33!"mypassword" / -33! calculates sha1
 :fontawesome-solid-book-open:
 Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
-
-## `-U` (usr-pwd)
-
-```txt
--U file
-```
-
-As `-u`, but without access restrictions.
+`-u file` combines the above, i.e. `-u file` is equivalent to `-u 1 -U file`.
 
 
 ## `-w` (workspace)

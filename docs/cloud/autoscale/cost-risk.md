@@ -315,6 +315,14 @@ The `.u.asg` functionality in the tickerplant also gives the opportunity to run 
 Highly important data can be placed in a cluster with a low scale threshold or larger instance size.
 If certain data sources do not need to be available with a low latency clusters with smaller instances and higher scale thresholds can be used to reduce costs.
 
+
+## Author
+
+Jack Stapleton is a kdb+ consultant for Kx who has worked for some the world’s largest financial institutions. 
+
+Based in Dublin, Jack is currently working on the design, development, and maintenance of a range of kdb+ solutions in the cloud for a leading financial institution.
+
+
 ----
 :fontawesome-brands-github:
 [kxcontrib/cloud-autoscaling](https://github.com/kxcontrib/cloud-autoscaling)

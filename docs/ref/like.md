@@ -1,34 +1,60 @@
 ---
-title: like – Reference – kdb+ and q documentation
+title: like – matches patterns | Reference | kdb+ and q documentation
 description: like is a q keyword that matches text to a pattern.
 author: Stephen Taylor
 ---
 # `like`
 
 
+_Whether text matches a pattern_
+
 ```txt
 x like y    like[x;y]
 ```
 
-Match text/s `x` to pattern in string `y`. Where `x` is
+Where 
 
--   a symbol atom or list
--   a string or list of strings
--   a dictionary whose `value` is a symbol list, or list of strings
+-   `x` is a symbol or string 
+-   `y` is a pattern as a string
 
-The result is a boolean list indicating which items in `x` match the pattern `y`.
+returns a boolean: whether `x` matches the pattern of `y`.
 
-In pattern `y` certain characters have special meaning:
+```q
+q)`quick like "qu?ck"
+1b
+q)`brown like "br[ao]wn"
+1b
+q)`quickly like "quick*"
+1b
+```
 
--   `?` matches any character
--   `*` matches any sequence of characters
--   `[]` embraces a list of alternatives, any of which matches
--   `^` at the beginning of a list of alternatives indicates characters that are _not_ to be matched
+Absent [pattern characters](../basics/regex.md) in `y`, `like` is equivalent to `{y~string x}`.
 
-Special characters can be matched by bracketing them.
+```q
+q)`quick like "quick"
+1b
+q)`quick like "quickish"
+0b
+```
+
+
+## Implicit iteration
+
+`like` applies to lists of strings or symbols; and to dictionaries with them as values.
+
+```q
+q)`brawn`brown like "br[^o]wn"
+10b
+
+q)(`a`b`c!`quick`brown`fox)like "brown"
+a| 0
+b| 1
+c| 0
+```
+
+
 
 ----
-
 :fontawesome-solid-book:
 [`ss`, `ssr`](ss.md),
 <br>
