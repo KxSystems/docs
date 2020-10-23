@@ -1,8 +1,7 @@
 ---
-title: meta | Reference | kdb+ and q documentation
+title: meta – metadata for a table| Reference | kdb+ and q documentation
 description: meta is a q keyword that returns metadata for a table.
 author: Stephen Taylor
-keywords: kdb+, meta, metadata, q, table
 ---
 # `meta`
 
@@ -11,9 +10,16 @@ keywords: kdb+, meta, metadata, q, table
 
 _Metadata for a table_
 
-Syntax: `meta x`, `meta[x]`
+```txt
+meta x    meta[x]
+```
 
-Where `x` is a table (by value or reference) returns a table keyed by column name, with columns:
+Where `x` is a 
+
+-   table in memory or memory mapped (by value or reference) 
+-   filesymbol for a splayed table
+
+returns a table keyed by column name, with columns:
 
 ```txt
 c   column name
@@ -70,13 +76,51 @@ c   | t f a
 code| s
 vr  | F
 ```
+??? warning "The result of `meta` does not tell you whether a table in memory can be [splayed](../kb/splayed-tables.md)."
 
-!!! warning "Only the first item in each column is examined"
+    Only the first item in each column is examined.
 
-    The result of `meta` does not tell you whether a table can be [splayed](../kb/splayed-tables.md).
+A splayed table with a symbol column needs its corresponding sym list.
+
+```q
+KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
+m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE ..
+
+q)load `:db/sym  / required for meta to describe db/tr
+`sym
+q)meta `:db/tr
+c    | t f a
+-----| -----
+date | d
+time | u
+vol  | j
+inst | s
+price| f
+```
+
+Loading (memory mapping) a database handles this. 
+
+```bash
+❯ q db
+```
+```q
+KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
+m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE 2021.05.27 stephen@kx.com #59875
+
+q)\v
+`s#`sym`tr
+q)meta tr
+c    | t f a
+-----| -----
+date | d
+time | u
+vol  | j
+inst | s
+price| f
+```
+
 
 ---
-
 :fontawesome-solid-book-open:
 [Metadata](../basics/metadata.md)
 <br>
