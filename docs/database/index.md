@@ -30,12 +30,13 @@ segmented database | partitioned tables distributed across disks | tables larger
 
 Q will [serialize and file](object.md) any object as a single binary file – the simplest way to persist a table. 
 
-A database with tables `trades` and `quotes`:
+A database with tables `trades` and `quotes`, and a sym list:
 
 ```txt
-/db
-  quotes
-  trades
+db
+├── quotes
+├── sym
+└── trades
 ```
 
 !!! tip "By specifying the extension (e.g. CSV, XLS) you can also export the table in another format."
@@ -48,16 +49,16 @@ If most queries on a table do not need all the columns for each query consider s
 A table is [splayed](https://en.wiktionary.org/wiki/splay "Wiktionary") by storing each of its columns as a single file. The table is represented by a directory.
 
 ```txt
-/db
-  /quotes
-    time
-    sym
-    price
-  /trades
-    time
-    sym
-    price
-    volume
+db
+├── quotes
+|   ├── time
+|   ├── sym
+|   └── price
+└── trades
+    ├── time
+    ├── sym
+    ├── price
+    └── vol
 ```
 
 With a [splayed table](../kb/splayed-tables.md), a query deserializes into memory only files for the column/s it requires.
@@ -76,16 +77,26 @@ consider partitioning it.
 The records of a [partitioned table](../kb/partition.md) are divided in its root directory between multiple partition directories. The table is partitioned by the values of a single column. Each partition contains records that have the same value in the partitioning column. With timeseries data, this is most commonly a date or time.
 
 ```txt
-/db
-  /2020.10.03
-    /trades
-    /quotes
-  /2020.10.04
-    /trades
-    /quotes
-  /2020.10.05
-    /trades
-    /quotes
+db
+├── 2020.10.03
+│   ├── quotes
+│   │   ├── price
+│   │   ├── sym
+│   │   └── time
+│   └── trades
+│       ├── price
+│       ├── sym
+│       ├── time
+│       └── vol
+├── 2020.10.05
+│   ├── quotes
+│   │   ├── price
+│   │   ├── sym
+│   │   └── time
+│   └── trades
+│       ├── price
+..
+└── sym
 ```
 
 The partition directory is named for its partition value and contains a splayed table with just the records that have that value.
@@ -109,18 +120,36 @@ The root directory of a [segmented database](segment.md) contains only two files
 Segments are stored outside the root, usually on various volumes. Each segment contains a partitioned table.
 
 ```txt
-DISK 0     |   DISK 1         |   DISK 2  
-/db        |   /segment1      |   /segment2  
-  [sym]    |     /2020.10.03  |     /2020.11.02  
-  par.txt  |       /trades    |       /trades  
-           |       /quotes    |       /quotes  
-           |     /2020.10.04  |     /2020.11.03  
-           |       /trades    |       /trades  
-           |       /quotes    |       /quotes  
-           |     /2020.10.05  |     /2020.11.04  
-           |       /trades    |       /trades  
-           |       /quotes    |       /quotes  
+DISK 0             DISK 1                     DISK 2  
+db                 db                        db             
+├── par.txt        ├── 2020.10.03            ├── 2020.10.04                         
+└── sym            │   ├── quotes            │   ├── quotes                         
+                   │   │   ├── price         │   │   ├── price                            
+                   │   │   ├── sym           │   │   ├── sym                          
+                   │   │   └── time          │   │   └── time                           
+                   │   └── trades            │   └── trades                         
+                   │       ├── price         │       ├── price                            
+                   │       ├── sym           │       ├── sym                          
+                   │       ├── time          │       ├── time                           
+                   │       └── vol           │       └── vol                          
+                   ├── 2020.10.05            ├── 2020.10.06                         
+                   │   ├── quotes            │   ├── quotes      
+               ..                    ..
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Dividing the table between storage devices lets you
 

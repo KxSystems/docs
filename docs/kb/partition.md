@@ -11,14 +11,23 @@ date: October 2020
 A partitioned table is a [splayed table](splayed-tables.md) that is further decomposed by grouping records having common values along a column of special type. The allowable special column types have underlying integer values: date, month, year and long.
 
 ```txt
-/db
-    /2015.01.01
-        /trade
-        /quote
-    /2015.01.02
-        /trade
-        /quote
-    ...
+db
+├── 2020.10.04
+│   ├── quotes
+│   │   ├── .d
+│   │   ├── price
+│   │   ├── sym
+│   │   └── time
+│   └── trades
+│       ├── .d
+│       ├── price
+│       ├── sym
+│       ├── time
+│       └── vol
+├── 2020.10.06
+│   ├── quotes
+..
+└── sym
 ```
 
 !!! tip "Partition data correctly: data for a particular date must reside in the partition for that date."

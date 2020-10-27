@@ -21,17 +21,21 @@ File `par.txt` defines the top-level partitioning of the database into directori
 <!-- The `par.txt` file should be created in the main database directory. -->
 
 ```txt
-DISK 0     |   DISK 1         |   DISK 2  
-/db        |   /segment1      |   /segment2  
-  [sym]    |     /2020.10.03  |     /2020.11.02  
-  par.txt  |       /trades    |       /trades  
-           |       /quotes    |       /quotes  
-           |     /2020.10.04  |     /2020.11.03  
-           |       /trades    |       /trades  
-           |       /quotes    |       /quotes  
-           |     /2020.10.05  |     /2020.11.04  
-           |       /trades    |       /trades  
-           |       /quotes    |       /quotes  
+DISK 0             DISK 1                     DISK 2  
+db                 db                        db             
+├── par.txt        ├── 2020.10.03            ├── 2020.10.04                         
+└── sym            │   ├── quotes            │   ├── quotes                         
+                   │   │   ├── price         │   │   ├── price                            
+                   │   │   ├── sym           │   │   ├── sym                          
+                   │   │   └── time          │   │   └── time                           
+                   │   └── trades            │   └── trades                         
+                   │       ├── price         │       ├── price                            
+                   │       ├── sym           │       ├── sym                          
+                   │       ├── time          │       ├── time                           
+                   │       └── vol           │       └── vol                          
+                   ├── 2020.10.05            ├── 2020.10.06                         
+                   │   ├── quotes            │   ├── quotes      
+               ..                    ..
 ```
 
 

@@ -11,11 +11,11 @@ date: October 2020
 Medium-sized tables (up to 100 million rows) are best stored on disk [splayed](https://en.wiktionary.org/wiki/splay "Wiktionary"): each column is stored as a separate file, rather than using a single file for the whole table.
 
 ```txt
-/table
-  .d
-  column1
-  column2
-  column3
+quotes
+├── .d
+├── price
+├── sym
+└── time
 ```
 
 Hidden file `.d` lists the columns in the order they appear in the table.
