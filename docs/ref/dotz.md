@@ -568,7 +568,7 @@ For evaluating the function passed to `peach` or `':`, kdb+ gets the handles to 
 
 ??? danger "The processes with these handles must not be used for other messaging."
 
-    Parallel Each will close them if it receives anything other than a response message.
+    Each Parallel will close them if it receives anything other than a response message.
 
 ```q
 q)/open connections to 4 processes on the localhost
@@ -1129,53 +1129,30 @@ Returns UTC time as a datetime atom.
 q).z.z
 2006.11.13T21:16:14.601
 ```
+??? detail "`z.z` calls `gettimeofday` and so has microsecond precision"
 
-!!! note "Precision"
-
-    `z.z` calls `gettimeofday` and so has microsecond precision. (Unfortunately shoved into a 64-bit float.)
+    Unfortunately shoved into a 64-bit float.
 
 
 ## `.z.zd` (zip defaults)
 
 ```txt
-.z.zd:x
+.z.zd:(lbs;alg;lvl)
 ```
 
-Where `x` is an int vector of default parameters for logical block size, compression algorithm and compression level that apply when saving to files with no file extension.
+Longs `lbs`, `alg`, and `lvl` correspond to the last three arguments of [`-19!`](../basics/internal.md#-19-compress-file)
+and set default values for logical block size, compression algorithm and compression level that apply when saving to files with no file extension.
 
 ```q
 q).z.zd:17 2 6        / set zip defaults
-q)\x .z.zd            / unset
+q)\x .z.zd            / clear zip defaults
 ```
 
-<i class="fas fa-graduation-cap""></i>
+:fontawesome-solid-book:
+[`-19!` compress file](../basics/internal.md#-19-compress-file)
+<br>
+:fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
-
-Logical block size
-
-: A power of 2 between 12 and 20: pageSize or allocation granularity to 1MB
-
-: PageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB.
-
-: When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `disk compression - bad logicalBlockSize`. 
-
-: This value affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
-
-Compression algorithm
-
-: One of:
-
-    <pre markdown="1" class="language-txt">
-    0  none
-    1  q IPC
-    2  gzip
-    3  [snappy](http://google.github.io/snappy/) (since V3.4)
-    4  lz4hc (since V3.6)
-    </pre>
-
-Compression level
-
-: For `gzip`, an integer between 0 and 9; otherwise 0.
 
 
 ## `.z.T` `.z.t` `.z.D` `.z.d` (time/date shortcuts)

@@ -7,15 +7,25 @@ keywords: compact, hdb, kdb+, q
 
 
 
-Under some scenarios, the sym enum file in a HDB can become bloated – this is the sym file sitting in the root of the HDB folder. This is due to symbols no longer being used as earlier parts of a HDB may have been archived.
+Under some scenarios, the sym enum file sitting in the root of the HDB folder can become bloated with symbols no longer used since earlier parts of a HDB were archived.
 
-Some users have expressed interest in being able to compact this sym enum file. This essentially requires re-enumeration of all enumerated columns against a new empty sym file. It can take some time to execute, and nothing else should try to read or write to the HDB area whilst this is running.
+To compact the file requires re-enumeration of all enumerated columns against a new empty sym file. That can take some time to execute; nothing else should  read or write to the HDB whilst this is running.
 
-The code below is for a vanilla HDB, with date partitions, a single enumeration (sym), and only splayed tables present.
+The code below is for a simple HDB, with 
 
-This is an all-or-nothing approach. If you choose to run the code below, it is at your own risk, and you should make sure you understand everything it is doing, and test it against a dev HDB that you are happy to destroy in the event that it goes wrong.
+-   date partitions
+-   a single sym list
+-   only splayed tables
 
-This should really ever only be a one-off process. If you find that your sym file is growing beyond reasonable sizes, you very likely have non-repeating strings which would be better stored as char vectors than symbols. This process is not a fix for a poor choice of schema!
+!!! danger "Use at your own risk"
+
+    This is an all-or-nothing approach. Run the code below at your own risk. 
+
+    Ensure you understand what it does, and test it against a dev HDB you are happy to destroy in the event of an error.
+
+This should really ever only be a one-time process. If you find your sym file growing beyond reasonable size, you very likely have non-repeating strings which would be better stored as char vectors than symbols. 
+
+This process is not a fix for a poor choice of schema!
 
 ```q
 /cd hdb
@@ -47,9 +57,7 @@ dates:files where files like "????.??.??";
  }each dates
 ```
 
-!!! tip
-
-    Remember to `rm` the zym file at the end of processing.
+!!! tip "Remember to `rm` the zym file at the end of processing."
 
 
 ## Back up the sym file
@@ -64,33 +72,55 @@ It is the key to the default enums.
 
 Here’s some multi-threaded (can run single threaded) and more memory-intensive but hugely faster sym file rewrite code that handles partitioned and splayed tables and `par.txt`. 
 
-Note you lose the `` `g#``, which isn’t supported in threads, so you’ll have to apply it later.
+Note you lose the `` `g#``, which isn’t supported in threads, so you have to apply it later.
 
 ```q
-system"l ." /load the HDB - can change this if you don't start Q from your hdb root
-allpaths:{[dbdir;table] / from dbmaint.q + an extra check for paths that exist (to support .Q.bv)
- files:key dbdir;
- if[any files like"par.txt";:raze allpaths[;table]each hsym each`$read0(`)sv dbdir,`par.txt];
- files@:where files like"[0-9]*";
- files:(`)sv'dbdir,'files,'table;
- files where 0<>(count key@)each files}
+system"l ." /load the HDB - can change this if you don't start q from your HDB root
+
+allpaths:{[dbdir;table] 
+  / from dbmaint.q + an extra check for paths that exist (to support .Q.bv)
+  files:key dbdir;
+  if[any files like"par.txt";
+    :raze allpaths[;table]each hsym each`$read0(`)sv dbdir,`par.txt];
+  files@:where files like"[0-9]*";
+  files:(`)sv'dbdir,'files,'table;
+  files where 0<>(count key@)each files}
+
 sym:oldSym:get`:sym /to unenumerate
-symFiles:raze` sv/:/:raze{allpaths[`:.;x],/:\:exec c from meta[x] where t in "s"}peach tables[] where {1b~.Q.qp value x}each tables[] /sym files from parted tables
-symFiles,:raze{` sv/: hsym[x],/:exec c from meta x where t in "s"}each tables[] where {0b~.Q.qp value x}each tables[] /sym files from splayed tables
-allsyms:distinct raze{[file] :distinct @[value get@;file;`symbol$()] } peach symFiles; /symbol files we're dealing with - memory intensive
+
+/sym files from parted tables
+symFiles:raze` sv/:/:raze
+  {allpaths[`:.;x],/:\:exec c from meta[x] where t in "s"} peach tables[] 
+  where {1b~.Q.qp value x}each tables[]
+
+/sym files from splayed tables
+symFiles,:raze{` sv/: hsym[x],/:exec c from meta x where t in "s"}each tables[] 
+  where {0b~.Q.qp value x}each tables[]
+
+/symbol files we're dealing with - memory intensive
+allsyms:distinct raze {[file] distinct @[value get@;file;`symbol$()]} peach symFiles
+
 .Q.gc[] /memory intensive so gc
-/*** the part above this line doesn't make changes to the HDB. You can estimate the savings with
-/count[allsyms]%count sym
-/*** the rest of the script makes changes so there is no going back once you start. There shouldn't be anything writing to the HDB while the script is in progress
-system"mv sym zym" /make backup of sym file
-`:sym set `symbol$() /reset sym file - scary part
+
+/
+  The preceding code makes no changes to the HDB. 
+  You can estimate the savings with count[allsyms]%count sym.
+  The rest of the script makes changes; there is no going back once you start. 
+  Let nothing write to the HDB while the script runs.
+\
+
+system"mv sym zym"      / make backup of sym file
+`:sym set `symbol$()    / reset sym file - scary part
 `sym set get`:sym 
-.Q.en[`:.;([]allsyms)] /enumerate all syms at once
+.Q.en[`:.;([]allsyms)]  / enumerate all syms at once
+
 {[file]
-  s:get file; /file contents
-  a:first `p`s inter attr s; /attributes - due to no`g# error in threads - this can be just a:attr s if your version of kdb+ does support setting `g# in threads
-  s:oldSym`int$s; /unenumerate against old sym file
-  file set a#`sym$s; /enumerate against new sym file & add attrib & write to disk
+  s:get file;                       / file contents
+  a:first `p`s inter attr s;        / attributes - due to no`g# error in threads
+                                    / can be just a:attr s if your version of kdb+ 
+                                    / supports setting `g# in threads
+  s:oldSym`int$s;                   / unenumerate against old sym file
+  file set a#`sym$s;                / enumerate against new sym; add attrib; write
   0N!"re-enumerated ", string file;
   } peach symFiles
 ```
@@ -120,7 +150,8 @@ Multi-threaded sym rewrite code](assets/multi-threaded-sym-rewrite-code.q)
     would print the file and error.
 
 
-!!! tip 
-    The script deliberately has no `;` at the end of lines. 
-    It’s important you understand what’s going on, not just run the whole thing blindly.
+!!! tip "It’s important to understand what’s going on, not just run the whole thing blindly."
 
+----
+:fontawesome-regular-map:
+[Working with sym files](../wp/symfiles.md)

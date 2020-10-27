@@ -166,8 +166,11 @@ Relative filepaths are sought in the following locations, in order.
 1.  [`QHOME`](../basics/environment.md)
 1.  [`QLIC`](../basics/environment.md)
 
----
 
+---
+:fontawesome-solid-database:
+[File compression](../kb/file-compression.md)
+<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§14 Introduction to kdb+](https://code.kx.com/q4m3/14_Introduction_to_Kdb%2B/)

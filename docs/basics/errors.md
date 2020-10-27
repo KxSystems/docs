@@ -165,7 +165,7 @@ On execute or load
 <tbody>
 <tr> <td class="nowrap">`[({])}"`</td> <td class="nowrap">`"hello`</td> <td>Open `([{` or `"`</td> </tr>
 <tr> <td>branch</td> <td class="nowrap">`a:"1;",65024#"0;"`<br/>`value "{if[",a,"]}"`</td> <td>A branch (`if`;`do`;`while`;`$[.;.;.]`) more than 65025 byte codes away (255 before V3.6 2017.09.26)</td> </tr>
-<tr> <td>char</td> <td class="nowrap">`value "\000"`</td> <td>Invalid character</td> </tr>
+<tr> <td>char</td> <td class="nowrap">`value "\000"`</td> <td>Invalid character (watch out for non-breaking spaces in copied expressions)</td> </tr>
 <tr> <td>globals</td> <td class="nowrap">`a:"::a"sv string til 111;`<br/>`value"{a",a,"::0}"`</td> <td>Too many [global variables](function-notation.md#variables-and-constants)</td> </tr>
 <tr> 
     <td>limit</td> 

@@ -1,7 +1,6 @@
 ---
 title: Internal functions – Basics – kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
-keywords: bang, functions, internal, kdb+, q
 ---
 # :fontawesome-solid-exclamation-triangle: Internal functions
 
@@ -176,42 +175,57 @@ Returns compressed IPC byte representation of `x`, see notes about network compr
 
 ## `-19!` (compress file)
 
-Syntax: `-19!(src;tgt;lbs;alg;lvl)`
+```txt
+-19!(src;tgt;lbs;alg;lvl)
+```
 
 Where
 
--   `src` is a handle to a source file
--   `tgt` is a handle to the target file
--   `lbs` is logical block size: a power of 2 between 12 and 20 (pageSize or allocation granularity to 1MB – pageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB). When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `"disk compression - bad logicalBlockSize"`. Note that this argument affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
--   `alg` is compression algorithm
--   `lvl` is compression level
+-   `src` is the source file (filesymbol)
+-   `tgt` is the target file or folder (filesymbol)
+-   `lbs` is logical block size (long)
+-   `alg` is compression algorithm (long)
+-   `lvl` is compression level (long)
 
-returns the target file as a file symbol.
-
-Compression algorithms and levels:
-
-alg | algorithm | level
-:--:|-----------|:-------:
-0   | none      | 0
-1   | q IPC     | 0
-2   | gzip      | 0-9
-3   | [snappy](http://google.github.io/snappy/) (since V3.4) | 0
-4   | `lz4hc` (since V3.6) | 1-12
+reads `src`, writes it compressed to `tgt`, and returns `tgt`.
 
 ```q
 q)`:test set asc 10000000?100; / create a test data file
-q) / compress input file test, to output file ztest
-q) / using a block size of 128kB (2 xexp 17), gzip level 6
+`:test
+q)/ compress input file test, to output file ztest
+q)/ using a block size of 128kB (2 xexp 17), gzip level 6
 q)-19!(`:test;`:ztest;17;2;6)
 99.87667
-q) / check the compressed data is the same as the uncompressed data
+q)/ check the compressed data is the same as the uncompressed data
 q)get[`:test]~get`:ztest
 1b
 ```
 
-!!! warning "`lz4` compression"
+Logical block size 
 
-    Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+.
+: A power of 2 between 12 and 20: pageSize or allocation granularity to 1MB
+
+: PageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB.
+
+: When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `disk compression - bad logicalBlockSize`. 
+
+: This value affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
+
+Compression algorithms and levels
+
+: Pick from:
+
+<pre markdown="1" class="language-txt">
+alg  algorithm  level  since
+\----------------------------
+0    none       0
+1    q IPC      0
+2    gzip       0-9
+3    [snappy](http://google.github.io/snappy/)     0      V3.4
+4    lz4hc      1-12   V3.6
+</pre>
+
+??? danger "Certain [releases](https://github.com/lz4/lz4/releases) of `lz4` do not function correctly within kdb+"
 
     Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process.
 
@@ -219,26 +233,31 @@ q)get[`:test]~get`:ztest
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` release available.
 
-:fontawesome-solid-graduation-cap:
+:fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
+<br>
+:fontawesome-solid-book:
+[`.z.zd` zip defaults](../ref/dotz.md#zzd-zip-defaults)
 
 
 ## `-21!x` (compression stats)
 
-Syntax: `-21! x`
-
 Where `x` is a file symbol, returns a dictionary of compression statistics for it.
+The dictionary is empty if the file is not compressed.
 
 ```q
-q)-21!`:ztest
+q)-21!`:ztest       / compressed
 compressedLength  | 137349
 uncompressedLength| 80000016
 algorithm         | 2i
 logicalBlockSize  | 17i
 zipLevel          | 6i
+q)-21!`:test        / not compressed
+q)count -21!`:test
+0
 ```
 
-:fontawesome-solid-graduation-cap:
+:fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
 
 
