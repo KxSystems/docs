@@ -1140,8 +1140,8 @@ q).z.z
 .z.zd:(lbs;alg;lvl)
 ```
 
-Longs `lbs`, `alg`, and `lvl` correspond to the last three arguments of [`-19!`](../basics/internal.md#-19-compress-file)
-and set default values for logical block size, compression algorithm and compression level that apply when saving to files with no file extension.
+Integers `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parameters).
+They set default values for logical block size, compression algorithm and compression level that apply when saving to files with no file extension.
 
 ```q
 q).z.zd:17 2 6        / set zip defaults
@@ -1149,10 +1149,13 @@ q)\x .z.zd            / clear zip defaults
 ```
 
 :fontawesome-solid-book:
-[`-19!` compress file](../basics/internal.md#-19-compress-file)
+[`set`](get.md#set)
 <br>
 :fontawesome-solid-database:
 [File compression](../kb/file-compression.md)
+<br>
+:fontawesome-regular-map:
+[Compression in kdb+](../wp/compress/index.md)
 
 
 ## `.z.T` `.z.t` `.z.D` `.z.d` (time/date shortcuts)

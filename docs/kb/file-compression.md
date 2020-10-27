@@ -1,125 +1,148 @@
 ---
-title: File compression – Knowledge Base – kdb+ and q documentation
-description: How to work with compressed files in kdb+.
-keywords: compress, decompress, file, kdb+, log, q, streaming
+title: File compression | Database | kdb+ and q documentation
+description: How to work with compressed files in kdb+
+author: Stephen Taylor
+date: October 2020
 ---
 # File compression
 
 
 
-_Q has built-in optional file compression._
+
+Kdb+ can compress data as it is written to disk.
+Q operators and keywords read both compressed and uncompressed files.
 
 
-## Installation 
+## Write compressed files
 
-Libraries for gzip and snappy may already be installed on your system.
-Kdb+ binds dynamically to [zlib](http://zlib.net) and looks for certain files for snappy.
-
-!!! detail "64-bit and 32-bit kdb+ require corresponding 64-bit and 32-bit libs"
-
-If in doubt, consult your system administrator for assistance.
-
-algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
----|---|---|---|---
-2 (gzip) | [zlib.net](http://zlib.net) | zlib | (pre-installed) | [winimage.com](http://www.winimage.com/zLibDll/index.html "winimage.com")
-3 (snappy) | [GitHub](http://google.github.io/snappy/) | `libsnappy.so.1` | `libsnappy.dylib` | `snappy.dll`
-
-To install snappy on macOS, use a package manager such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/):
-
-```bash
-> # install with MacPorts
-> sudo port install snappy +universal
-> export LD_LIBRARY_PATH=/opt/local/lib
-```
-
-## Compress a file
-
-Use the [`-19!` internal function](../basics/internal.md#-19x-compress-file).
-
-When a nested data column file, e.g. `name`, is compressed, its companion file `name#` or `name##` is also compressed; do not try to compress it explicitly.
+Use [`set`](../ref/get.md#set) with a left argument that specifies the file or splay target, and the [compression parameters](#compression-parameters).
+(For a splayed table, you can [specify the compression of each column](../ref/get.md#compression).)
 
 ```q
-q)`:a set 1000#enlist asc 1000?10
+q)`:a set 1000#enlist asc 1000?10  / uncompressed file
 `:a
-q)-19!(`:a;`:za;17;2;9)
+q)(`:za;17;2;9)set get`:a          / compressed file
 `:za
 q)get[`:a]~get`:za
 1b
 ```
 
-The compressed file allows random access to the data.
-
-??? warning "Use `-19!` and not gzip"
-
-    They produce different results.
-
 Using real NYSE trade data, we observed the `gzip` algorithm at level 9 compressing to 15% of original size, and the IPC compression algorithm compressing to 33% of original size.
 
-
-### Partitioned tables
-
-You can choose which files to compress, and which algorithm/level to use per file; the same kdb+ process can read compressed and uncompressed files. So files that do not compress well, or have an access pattern that does not perform well with compression, can be left uncompressed.
-
-
-## Streaming file compression
-
-Kdb+ can compress data as it is written to disk.
-
-Use [`set`](../ref/get.md#set) with a left argument that specifies the file or splay target, and the compression parameters.
-For a splayed table, you can specify the compression of each column.
+The compressed file allows random access to the data.
 
 ??? tip "Source and target file on the same drive might run slowly"
 
-    Compression reads from the source file, compresses the data and writes to the target file. The disk is likely receiving many seek requests. If you move the target file to a different physical disk, you will reduce the number of seeks needed.
+    Compression reads from the source file, compresses the data and writes to the target file. The disk is likely receiving many seek requests.
 
-You can append to a compressed file or splay.
+    If you move the target file to a different physical disk, you will reduce the number of seeks needed.
+
+Cautions:
+
+-   Do not use streaming compression with **log files**. After a crash, the log file would be unusable as it will be missing meta information from the end of the file. Streaming compression maintains the last block in memory and compresses/purges it as needed or latest on close of file handle.
+-   When a **nested data** column file, e.g. `name`, is compressed, its companion file `name#` or `name##` is also compressed: do not try to compress it explicitly.
+-   Use `set` and not **gzip**: they produce different results.
+
+
+
+### Compression parameters
+
+Compression is specified by three integers representing logical block size,   algorithm, and compression level.
+
+
+Logical block size
+
+: A power of 2 between 12 and 20: pageSize or allocation granularity to 1MB.
+
+: PageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB.
+
+: When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `disk compression - bad logicalBlockSize`.
+
+: This value affects both compression speed and compression ratio: larger blocks can be slower and better compressed.
+
+
+Algorithm and compression level
+
+: Pick from: <pre markdown="1" class="language-txt">
+alg  algorithm  level  since
+\----------------------------
+0    none       0
+1    q IPC      0
+2    gzip       0-9
+3    [snappy](http://google.github.io/snappy/)     0      V3.4
+4    lz4hc      1-12   V3.6
+</pre>
+
+
+### Selective compression
+
+You can choose which files to compress, and which algorithm/level to use per file.
+
+Q operators read both compressed and uncompressed files.
+So files that do not compress well, or have an access pattern that does not perform well with compression, can be left uncompressed.
+
+
+### Compression statistics
+
+The [`21!` internal function](../basics/internal.md#-21x-compression-stats) returns a dictionary of compression statistics, or an empty dictionary if the file is not compressed.
+
+[`hcount`](../ref/hcount.md) returns the uncompressed file length.
+
+
+### Compression by default
+
+Kdb+ can write compressed files by default.
+
+This is governed by the [zip defaults `.z.zd`](../ref/dotz.md#zzd-zip-defaults).
+Set this as an integer vector, e.g.
 
 ```q
-(`:zippedTest;17;2;6) set 100000?10;`:zippedTest upsert 100000?10;-21!`:zippedTest
+.z.zd:17 2 6
+```
+
+and [`set`](../ref/get.md#set) will write files (with no extension) compressed in this way unless given different parameters.
+
+To disable compression by default, set `.z.zd` to `3#0`, or expunge it.
+
+```q
+.z.zd:3#0   / no compression
+\x .z.zd    / no compression
+```
+
+By default, `.z.zd` is undefined and q writes files uncompressed.
+
+
+### Append to a compressed file or splay
+
+```q
+q)(`:zippedTest;17;2;6) set 100000?10
+`:zippedTest
+q)`:zippedTest upsert 100000?10
+`:zippedTest
+
+q)-21!`:zippedTest
+compressedLength  | 148946
+uncompressedLength| 1600016
+algorithm         | 2i
+logicalBlockSize  | 17i
+zipLevel          | 6i
 ```
 
 Appending to files with an attribute (e.g. `` `p#`` on sym) causes the whole file to be read and rewritten.
-
-!!! warning "The rewrite is governed by zip defaults"
-
-    The default value of [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) would have the file rewritten without compression regardless of its original format.
 
 ??? warning "Appending to compressed enum files in V3.0 2012.05.17"
 
     Appending to compressed enum files was blocked in V3.0 2012.05.17 due to potential concurrency issues, hence these files should not be compressed.
 
 
-## Compress new files by default
-
-If [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) (zip defaults) is defined and valid, new files (with no extension) are written compressed by default.
-
-```q
-q).z.zd:17 2 6
-q)`:zfile set asc 10000?`3
-`:zfile
-```
-
-[`-19!x`](../basics/internal.md#-19x-compress-file) and ``(`:file;lbs;alg;lvl) set x`` override `.z.zd`.
-
-To reset so as not to compress new files, use `\x`.
-
-```q
-q)\x .z.zd   / remove zip defaults
-```
-
-??? danger "Do not use streaming compression with log files"
-
-    After a crash, the log file would be unusable as it will be missing meta information from the end of the file.
-
-    Streaming compression maintains the last block in memory and compresses/purges it as needed or latest on close of file handle.
-
-
 ## Decompression
 
-Decompression is implicit.
+Decompression is implicit: q operators and keywords read both compressed and uncompressed files.
 
 ```q
 get`:compressedFile
+
+\x .z.zd                                    / write uncompressed by default
 `:uncompressedFile set get `:compressedFile / store again decompressed
 ```
 
@@ -131,8 +154,7 @@ For example, say you are querying by date and sum over a date-partitioned table,
 
 ### Concurrently open files
 
-
-The number of concurrently open files is limited by the environment/OS only (e.g. `ulimit -n`). 
+The number of concurrently open files is limited by the environment/OS only (e.g. `ulimit -n`).
 
 ??? detail "Prior to V3.2"
 
@@ -154,13 +176,6 @@ If you experience `wsfull` even with sufficient swap space configured, check whe
 ??? tip "Memory overcommit settings on Linux"
 
     `/proc/sys/vm/overcommit\_memory` and `/proc/sys/vm/overcommit\_ratio` – these control how careful Linux is when allocating address space with respect to available physical memory plus swap.
-
-
-## Compression statistics
-
-The [`21!` internal function](../basics/internal.md#-21x-compression-stats) returns a dictionary of compression statistics, or an empty dictionary if the file is not compressed.
-
-[`hcount`](../ref/hcount.md) returns the uncompressed file length. 
 
 
 ## Performance
@@ -187,19 +202,12 @@ and on macOS, the OS command `purge` can be used.
 
 ### Compression parameters
 
-The `logicalBlockSize` represents how much data is taken as a compression unit, and consequently the minimum size of a block to decompress. E.g. using a `logicalBlockSize` of 128kB, a file of size 128000kB would be cut into 100 blocks, and each block compressed independently of the others. Later, if a single byte is requested from that compressed file, a minimum of 128kB would be decompressed to access that byte. Fortunately those types of access patterns are rare, and typically you would be extracting clumps of data that make a logical block size of 128kB quite reasonable. 
+The `logicalBlockSize` represents how much data is taken as a compression unit, and consequently the minimum size of a block to decompress. E.g. using a `logicalBlockSize` of 128kB, a file of size 128000kB would be cut into 100 blocks, and each block compressed independently of the others. Later, if a single byte is requested from that compressed file, a minimum of 128kB would be decompressed to access that byte. Fortunately those types of access patterns are rare, and typically you would be extracting clumps of data that make a logical block size of 128kB quite reasonable.
 
-Ultimately, you should experiment with what suits your data, hardware and access patterns best. A good balance for TAQ data and typical TAQ queries is to use algorithm 1 (the same algorithm as used for IPC compression) with 128kB `logicalBlockSize`. For those who can accept slower performance but better compression, they can choose gzip with compression level 6.
-
-
-## Multithreading
-
-The reading or writing of a compressed file must _not_ be performed concurrently from multiple threads. 
-
-However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [segmented](../database/segment.md) historical database with secondary threads will be using the decompression in a multithreaded mode.
+Experiment to discover what suits your data, hardware and access patterns best. A good balance for TAQ data and typical TAQ queries is to use algorithm 1 (the same algorithm as used for IPC compression) with 128kB `logicalBlockSize`. To trade performance for better compression, choose gzip with compression level 6.
 
 
-## Hardware acceleration
+### Hardware acceleration
 
 A hardware accelerator card can improve compression performance.
 
@@ -249,7 +257,7 @@ Installation is very straightforward: unpack and plug in the card, compile and l
     and select the 367 card option.
 
 
-## Kernel settings
+### Kernel settings
 
 Tweaking the kernel settings on Linux may help – it really depends on the size and number of compressed files you have open at any time, and the access patterns used. For example, random access to a compressed file will use many more kernel resources than sequential access.
 
@@ -257,11 +265,50 @@ Tweaking the kernel settings on Linux may help – it really depends on the size
 [Linux production notes/Compression](linux-production.md#compression)
 
 
+## Multithreading
+
+!!! danger "Do not read or write a compressed file concurrently from multiple threads."
+
+However, multiple files can be read or written from their own threads concurrently (one file per thread). For example, a [segmented](../database/segment.md) historical database with secondary threads will be using the decompression in a multithreaded mode.
+
+
+## Requirements
+
+Libraries for gzip and snappy may already be installed on your system.
+Kdb+ binds dynamically to [zlib](http://zlib.net) and looks for certain files for snappy.
+
+!!! detail "64-bit and 32-bit kdb+ require corresponding 64-bit and 32-bit libs"
+
+If in doubt, consult your system administrator for assistance.
+
+algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
+---|---|---|---|---
+2 (gzip) | [zlib.net](http://zlib.net) | zlib | (pre-installed) | [winimage.com](http://www.winimage.com/zLibDll/index.html "winimage.com")
+3 (snappy) | [GitHub](http://google.github.io/snappy/) | `libsnappy.so.1` | `libsnappy.dylib` | `snappy.dll`
+
+:fontawesome-brands-apple:
+To install snappy on macOS, use a package manager such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/):
+
+```bash
+> # install with MacPorts
+> sudo port install snappy +universal
+> export LD_LIBRARY_PATH=/opt/local/lib
+```
+
+??? danger "Certain releases of `lz4` do not function correctly within kdb+"
+
+    Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process.
+
+    Kdb+ requires at least `lz4-r129`.
+    `lz4-1.8.3` works.
+    We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
+
+
 ## Running kdb+ under gdb
 
-You should only ever need to run `gdb` (the GNU debugger)if you are debugging your own custom shared libs loaded into kdb+.
+You should only ever need to run gdb (the GNU debugger) if you are debugging your own custom shared libs loaded into kdb+.
 
-`gdb` will intercept SIGSEGV which should be passed to q. To tell it to do so, issue the following command at the gdb prompt
+Gdb will intercept SIGSEGV which should be passed to q. To tell it to do so, issue the following command at the gdb prompt
 
 ```txt
 (gdb) handle SIGSEGV nostop noprint
@@ -272,14 +319,17 @@ You should only ever need to run `gdb` (the GNU debugger)if you are debugging yo
 
 R Server for Q loads R into q as a shared library.
 
-R uses signal handling to detect stack overflows. This conflicts with kdb+’s use of signals for handling compressed files, causing kdb+ to crash. 
+R uses signal handling to detect stack overflows. This conflicts with kdb+’s use of signals for handling compressed files, causing kdb+ to crash.
 
 R’s use of signals can be suppressed by setting the variable `R_SignalHandlers` (declared in Rinterface.h) to 0 when compiling the relevant R library.
  -->
 
 -----
+:fontawesome-solid-book:
+[`set`](../ref/get.md#set)
+<br>
 :fontawesome-regular-map:
-[Compression in kdb+](../wp/compression.md)
+[Compression in kdb+](../wp/compress/index.md)
 <br>
 :fontawesome-solid-graduation-cap:
 [Linux production notes: Huge Pages and Transparent Huge Pages](linux-production.md#huge-pages-and-transparent-huge-pages-thp)

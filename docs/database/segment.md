@@ -86,10 +86,10 @@ The same subdirectory name may be in multiple `par.txt` partitions. For example,
 [Multithreading primitives](../kb/mt-primitives.md)
 <br>
 :fontawesome-solid-database:
-[Multipartitioned kdb+ databases](../wp/multi-partitioned-dbs.md)
+[Multipartitioned kdb+ databases](../wp/multi-partitioned-dbs/index.md)
 <br>
 :fontawesome-regular-map:
-[Multithreading in kdb+](../wp/multi-thread.md)
+[Multithreading in kdb+](../wp/multi-thread/index.md)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_ 

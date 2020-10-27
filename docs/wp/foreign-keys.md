@@ -12,7 +12,7 @@ keywords: foreign key, kdb+, link, linked columns, q, sym file, symlink
 !!! tip "Background reading"
 
     :fontawesome-solid-database:
-    [Linked columns](../kb/linked-columns.md)
+    [Linking columns](../kb/linking-columns.md)
 
     :fontawesome-solid-street-view:
     _Q for Mortals_
