@@ -86,8 +86,8 @@ nav:
   - Open source: github.md
   - Support: support.md
   - Community: community.md
+  - White papers: wp/index.md
   - Corporate site: https://kx.com
-  - White papers*: wp/index.md
   - Learn: 
     - Get started: learn/index.md
     - Install: learn/install.md
@@ -419,7 +419,7 @@ nav:
     - Tables: kb/faq.md
     - Variadic syntax: basics/variadic.md
   - Database:
-    - Overview: database/index.md
+    - Tables in the filesystem: database/index.md
     - Populating tables:
       - Loading from large files: kb/loading-from-large-files.md
       - Foreign keys*: wp/foreign-keys.md
