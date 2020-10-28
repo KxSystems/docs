@@ -136,8 +136,13 @@
 	text-align: right;
 }
 #wp-brand {
-	color: rgba(0,0,0,.4);
+	background-color: rgba(0,112,205,.5);
+	color: white;
+	font-size: 80%;
+	font-weight: bold;
 	letter-spacing: .5em;
+	margin: 0 0 2rem 0;
+	padding: .5em 0;
 	text-align: center;
 	text-transform: uppercase;
 }
