@@ -560,7 +560,7 @@ It also considered joins, in particular the left join, window join and as-of joi
 All tests were run using kdb+ 3.1 (2013.12.27)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Ian Lester is a financial engineer who has worked as a consultant for some of the world’s largest financial institutions. Based in New York, Ian is currently working on a trading application at a US investment bank.
 

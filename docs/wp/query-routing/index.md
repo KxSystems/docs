@@ -625,7 +625,7 @@ All tests were run using kdb+ version 3.3 (2015.11.03)
 
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Kevin Holsgrove is a kdb+ consultant based in New York. He has
 developed data and analytic systems for some of the world’s largest

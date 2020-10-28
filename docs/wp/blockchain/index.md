@@ -987,7 +987,7 @@ with data retrieval and storage, and potential for application
 development using the technology within the domain.
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 Daniel Irwin is a kdb+ consultant based in Singapore. 
 He worked on a global cross-asset _Kx for Surveillance_ implementation 

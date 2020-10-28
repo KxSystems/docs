@@ -107,4 +107,13 @@ $(function() {
 	// disable MkDocs keypress listener/s on Search form
 	$('.md-search__form').replaceWith($('.md-search__form').clone());
 	$(".md-search__form").on('keydown', srchHandler);
+	// White paper branding
+	if( $('link[rel=canonical]').attr('href').includes('/wp/') ) {
+		var auth = $('meta[name=author]').attr('content');
+		if( auth !== 'Kx Systems' ) { // default
+			$('h1').before('<p id="wp-brand">White paper</p>');
+			var s = $('#authors').length ? 's' : ''; // plural?
+			$('h1').after('<p class="wp-author"><a href="#author'+s+'">by '+auth+'</a></p>');
+		}
+	}
 });

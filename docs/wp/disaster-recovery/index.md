@@ -736,7 +736,7 @@ downtime (i.e. high availability), recover quickly and accurately from
 these events, and most importantly prevent and minimize data loss.
 
 
-### Author
+### :fontawesome-solid-user: Author
 
 Stewart Robinson is a kdb+ consultant currently based in Belfast. He
 has developed various kdb+ tick applications, focusing on market

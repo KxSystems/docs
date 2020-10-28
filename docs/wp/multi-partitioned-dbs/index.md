@@ -533,7 +533,7 @@ database. Here we have presented several different schema choices and
 examples of several simple queries implemented for each schema.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 James Hanna has helped design and develop kdb+ implementations and
 proof of concepts for more than 40 customers. Based in New York, James

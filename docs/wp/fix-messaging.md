@@ -588,6 +588,6 @@ It is an essential requirement to be able to view the current and final state of
 All tests were run using kdb+ version 3.1 (2013.12.27)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Damien Barker is a financial engineer who has worked as a consultant for some of the world's largest financial institutions. Based in London, Damien is currently working on trading and analytics application at a US investment bank.

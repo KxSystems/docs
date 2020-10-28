@@ -616,7 +616,7 @@ This white paper introduced how foreign keys and linked columns may be establish
 A drawback to using foreign keys is that keyed tables cannot be splayed to disk. This is circumvented using linked columns that can establish permanent mappings between tables whether they are both in memory or on disk. Although not featuring the benefits of enumeration, linked columns are useful for establishing mappings between tables in large-scale historical databases, allowing users to either map data within partition slices in a single database or map each table in a particular partition slice in one database to the corresponding partition slice in another.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Kevin Smyth has worked as a consultant for some of the world's leading
 financial institutions. Based in London, Kevin has implemented data

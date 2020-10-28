@@ -757,7 +757,7 @@ underlying data stored within Kx and other databases.
 All tests were run using kdb+ version 3.5 (2017.11.30)
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 **Version 1.0**
 Chris Scott worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.

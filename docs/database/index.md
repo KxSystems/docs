@@ -28,7 +28,7 @@ segmented database | partitioned tables distributed across disks | tables larger
 
 ## Object
 
-Q will [serialize and file](object.md) any object as a single binary file – the simplest way to persist a table. 
+Q will [serialize and file](object.md) any object as a single binary file – the simplest way to persist a table.
 
 A database with tables `trades` and `quotes`, and a sym list:
 
@@ -120,36 +120,24 @@ The root directory of a [segmented database](segment.md) contains only two files
 Segments are stored outside the root, usually on various volumes. Each segment contains a partitioned table.
 
 ```txt
-DISK 0             DISK 1                     DISK 2  
-db                 db                        db             
-├── par.txt        ├── 2020.10.03            ├── 2020.10.04                         
-└── sym            │   ├── quotes            │   ├── quotes                         
-                   │   │   ├── price         │   │   ├── price                            
-                   │   │   ├── sym           │   │   ├── sym                          
-                   │   │   └── time          │   │   └── time                           
-                   │   └── trades            │   └── trades                         
-                   │       ├── price         │       ├── price                            
-                   │       ├── sym           │       ├── sym                          
-                   │       ├── time          │       ├── time                           
-                   │       └── vol           │       └── vol                          
-                   ├── 2020.10.05            ├── 2020.10.06                         
-                   │   ├── quotes            │   ├── quotes      
-               ..                    ..
+DISK 0             DISK 1                     DISK 2
+db                 db                        db
+├── par.txt        ├── 2020.10.03            ├── 2020.10.04
+└── sym            │   ├── quotes            │   ├── quotes
+                   │   │   ├── .d            │   │   ├── .d
+                   │   │   ├── price         │   │   ├── price
+                   │   │   ├── sym           │   │   ├── sym
+                   │   │   └── time          │   │   └── time
+                   │   └── trades            │   └── trades
+                   │       ├── .d            │       ├── .d
+                   │       ├── price         │       ├── price
+                   │       ├── sym           │       ├── sym
+                   │       ├── time          │       ├── time
+                   │       └── vol           │       └── vol
+                   ├── 2020.10.05            ├── 2020.10.06
+                   │   ├── quotes            │   ├── quotes
+                   ..                        ..
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Dividing the table between storage devices lets you
 
@@ -186,7 +174,7 @@ Brazil | South America 55
 
 Some operators and keywords work on some serialized tables.
 
-For example, [`cols`](../ref/cols.md) works on tables in memory or mapped to memory, and on filesymbols for splayed tables but not tables serialized as an object. 
+For example, [`cols`](../ref/cols.md) works on tables in memory or mapped to memory, and on filesymbols for splayed tables but not tables serialized as an object.
 
 
 ----
@@ -194,6 +182,6 @@ For example, [`cols`](../ref/cols.md) works on tables in memory or mapped to mem
 [Serialize as an object](object.md)
 <br>
 :fontawesome-solid-street-view:
-_Q for Mortals_ 
+_Q for Mortals_
 [§14. Introduction to kdb+](/q4m3/14_Introduction_to_Kdb%2B/)
 

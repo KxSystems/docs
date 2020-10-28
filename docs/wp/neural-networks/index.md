@@ -760,7 +760,7 @@ and deep networks to be developed.
 All tests were run using kdb+ version 3.2 (2015.05.07) 
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 James Neill works as a kdb+ consultant for one of the world’s largest
 investment banks, developing a range of applications. James has also

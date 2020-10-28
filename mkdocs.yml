@@ -87,7 +87,6 @@ nav:
   - Support: support.md
   - Community: community.md
   - Corporate site: https://kx.com
-  - Wiki: wiki.md
   - White papers*: wp/index.md
   - Learn: 
     - Get started: learn/index.md
@@ -592,53 +591,51 @@ nav:
     - Authentication and access: kb/authentication.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
+    - Cloud deployment: 
+      - Overview: cloud/index.md
+      - Amazon EC2: 
+        - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
+        - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
+        - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
+        - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
+        - D. MapR-FS: cloud/aws/app-d-mapr.md
+        - E. Goofys: cloud/aws/app-e-goofys.md
+        - F. S3FS: cloud/aws/app-f-s3fs.md
+        - G. S3QL: cloud/aws/app-g-s3ql.md
+        - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
+        - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
+        - J. Quobyte: cloud/aws/app-j-quobyte.md
+      - AWS Lambda: cloud/aws-lambda/index.md
+      - Google CPM: cloud/gcpm/index.md
+      - Auto Scaling:
+        - Overview: cloud/autoscale/index.md
+        - Amazon Web Services: cloud/autoscale/aws.md
+        - Realtime data cluster: cloud/autoscale/rdc.md
+        - Costs and risks: cloud/autoscale/cost-risk.md
+      - DigitalOcean: kb/digitalocean.md
     - Corporate actions: kb/corporate-actions.md
     - CPU affinity: kb/cpu-affinity.md
-    - DigitalOcean: kb/digitalocean.md
+    - Data recovery for kdb+tick*: wp/data-recovery.md
+    - Disaster recovery*: wp/disaster-recovery/index.md
+    - Distributed systems*: wp/query-interface.md
     - Firewalling: kb/firewalling.md
+    - Gateway design*: wp/gateway-design/index.md
     - inetd, xinetd: kb/inetd.md
+    - Intraday writedown*: wp/intraday-writedown/index.md
     - Kdb+tick configuration: kb/kdb-tick.md
+    - Kdb+tick profiling*: wp/tick-profiling.md
     - Linux production notes: kb/linux-production.md
     - Load balancing: kb/load-balancing.md
     - Logging: kb/logging.md
     - Memory backed by files: basics/memory-backed.md
     - Multithreaded input: kb/multithreaded-input.md
     - Optane Memory: kb/optane.md
-    # - Precision: kb/precision.md
     - Publish and subscribe: kb/publish-subscribe.md
+    - Query Routing*: wp/query-routing/index.md
+    - Real-time tick subscribers*: wp/rt-tick/index.md
+    - WebSockets*: wp/websockets/index.md
     - Windows service: kb/windows-service/index.md
     - Write-only RDB: kb/w-q.md
-    - White papers:
-      - Data recovery for kdb+tick*: wp/data-recovery.md
-      - Disaster recovery*: wp/disaster-recovery/index.md
-      - Distributed systems*: wp/query-interface.md
-      - Gateway design*: wp/gateway-design/index.md
-      - Intraday writedown*: wp/intraday-writedown/index.md
-      - Kdb+tick profiling*: wp/tick-profiling.md
-      - Query Routing*: wp/query-routing/index.md
-      - Real-time tick subscribers*: wp/rt-tick/index.md
-      - WebSockets*: wp/websockets/index.md
-  - Cloud: 
-    - Overview: cloud/index.md
-    - Amazon EC2: 
-      - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
-      - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
-      - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
-      - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
-      - D. MapR-FS: cloud/aws/app-d-mapr.md
-      - E. Goofys: cloud/aws/app-e-goofys.md
-      - F. S3FS: cloud/aws/app-f-s3fs.md
-      - G. S3QL: cloud/aws/app-g-s3ql.md
-      - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
-      - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
-      - J. Quobyte: cloud/aws/app-j-quobyte.md
-    - AWS Lambda: cloud/aws-lambda/index.md
-    - Google CPM: cloud/gcpm/index.md
-    - Auto Scaling:
-      - Overview: cloud/autoscale/index.md
-      - Amazon Web Services: cloud/autoscale/aws.md
-      - Realtime data cluster: cloud/autoscale/rdc.md
-      - Costs and risks: cloud/autoscale/cost-risk.md
   - Machine learning:
     - Overview: ml/index.md
     - Set up: ml/setup.md
@@ -730,3 +727,4 @@ nav:
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md
+    - Wiki: wiki.md

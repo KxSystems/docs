@@ -597,7 +597,7 @@ In this paper we discussed batch processing and use cases where it may be most a
 The framework outlined in this paper is a simplified version of a framework that has been used in several Kx implementations for batch ingestion. It has proven to be fast, efficient and scalable.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Enda Gildea is a senior kdb+ consultant for Kx who has implemented several eFX post-trade analytics and cross-asset surveillance solutions in Singapore and Sydney.
 

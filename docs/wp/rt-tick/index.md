@@ -1076,7 +1076,7 @@ It is the aim of the author that the reader will now have the understanding of h
 All tests were run using kdb+ version V3.1 (2013.09.19) on Windows.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Nathan Perrem has worked onsite as a kdb+ developer at a range of investment banks and brokerage firms in New York and London. He has designed and delivered all client kdb+ training courses since 2009.
 

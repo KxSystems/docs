@@ -1,6 +1,6 @@
 ---
 title: Dynamically shrinking big data using time-series database kdb+ – White papers – q and kdb+ documentation
-authors: Sean Keevey and Kevin Smyth
+authos: Sean Keevey and Kevin Smyth
 description: Two implementations of the Ramer-Douglas-Peucker algorithm for curve simplification applied to financial time-series data without distortion.
 date: February 2015
 keywords: compression, distortion, iterative, kdb+, q, Ramer-Douglas-Peucker, recursive, simplification, time series
@@ -281,7 +281,7 @@ This type of data-reduction trades off an increased runtime cost on the server a
 While for many utilities simple bucket-based summaries are more than adequate and undeniably more performant, we propose that for some uses a more discerning simplification as discussed above can prove invaluable. This is particularly the case with certain time-series and combinations thereof where complex and volatile behaviors must be studied.
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 Sean Keevey is a kdb+ consultant and has developed data and analytic systems for some of the world's largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
 

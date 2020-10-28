@@ -765,7 +765,7 @@ methods to reduce the size of the sym file.
 All tests performed using kdb+ version 3.6 (2018.05.17).
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Paula Clarke is a kdb+ consultant for Kx who has worked for some the
 world’s largest financial institutions. Currently based in New York, she

@@ -872,7 +872,7 @@ can be found on GitHub at :fontawesome-brands-github:
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
 

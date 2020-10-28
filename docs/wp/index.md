@@ -1,7 +1,7 @@
 ---
 title: Technical white papers
 description: Index to technical white papers (formerly published as q for Gods)
-author: Stephen Taylor
+brand-exclude: true
 ---
 # :fontawesome-regular-map: Technical white papers
 

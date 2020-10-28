@@ -306,7 +306,7 @@ A script is provided in the Appendix below so that users can work through the im
 All tests were performed with kdb+ 3.0 (2012.09.26)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 James Corcoran has worked as a kdb+ consultant in some of the world’s largest financial institutions and has experience in implementing global software and data solutions in all major asset classes. He has delivered talks and presentations on various aspects of kdb+ and most recently spoke at the annual Kx user conference in London. As a qualified professional risk manager he is also involved in various ongoing risk-management projects at Kx.
 

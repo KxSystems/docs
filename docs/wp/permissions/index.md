@@ -1098,7 +1098,7 @@ We have described a number of methods of securing a kdb+ process. We examined th
 While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firm’s authentication infrastructure. One should also consider out-of-the-box solutions like [Kx Control](../../devtools.md#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Tom Martin is a financial engineer who has developed data-management systems for some of the world’s leading financial institutions. Tom is currently based in London, where he maintains a firm-wide risk database at a top-tier investment bank.
 

@@ -646,7 +646,7 @@ To further help those learning how to construct functional statements, and also 
 All tests were run using kdb+ version 3.2 (2015.01.14).
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 Peter Storeng is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
 
