@@ -632,7 +632,7 @@ The production of a framework to ‘live’ score data was also outlined. As men
 However, this system shows the potential for the use of kdb+ in the sphere of machine learning when applied to natural language processing tasks.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Conor McCarthy joined First Derivatives in March 2018 as a Data Scientist in the Capital Markets Training Program and currently works as a machine learning engineer and interfaces architect in London. 
 

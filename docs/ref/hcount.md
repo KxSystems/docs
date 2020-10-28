@@ -3,7 +3,6 @@ title: hcount returns file size | Reference | q and kdb+ documentation
 description: Keyword hcount returns the size in bytes of a file
 author: Stephen Taylor
 date: December 2019
-keywords: file, size
 ---
 # :fontawesome-solid-database: `hcount`
 
@@ -28,3 +27,6 @@ On a compressed file returns the size of the original uncompressed file.
 ----
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)
+<br>
+:fontawesome-solid-database:
+[File compression](../kb/file-compression.md)

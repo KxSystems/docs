@@ -566,7 +566,7 @@ described in this paper to work around limitations, to connect a Tableau
 visualization front-end to a kdb+ back end.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Michaela Woods is a kdb+ consultant for Kx. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
 

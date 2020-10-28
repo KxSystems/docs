@@ -413,7 +413,7 @@ The results shown here not representative of kdb+ systems as a whole. Results fo
 All tests were run using kdb+ version 3.1 (2014.02.08)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Ian Kilpatrick has worked on several kdb+ systems. Based in Belfast,
 Ian is a technical architect for high-performance data-management, event-processing and trading platforms.

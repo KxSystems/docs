@@ -681,7 +681,7 @@ Looking at the results produced, it is clear that both the option price produced
 Additionally, by plotting results we have shown that the q implementation replicates the original results produced in C++, presented in the paper by [S. Kucherenko et al. 2007](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott").
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Deanna Morgan joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and currently works as a machine-learning engineer in London.
 

@@ -1,17 +1,21 @@
 ---
 title: Technical white papers
 description: Index to technical white papers (formerly published as q for Gods)
-author: Stephen Taylor
-keywords: kdb+, q, technical, white paper
+brand-exclude: true
 ---
 # :fontawesome-regular-map: Technical white papers
 
 
+Our white papers are an occasional series of in-depth treatments of technical topics, written by senior staff.
+
+In the site navigation links, white paper titles are marked with stars.
+
+
 ## Programming in q
 
--   ==new== [**Iterators**](iterators/index.md) (previously _Efficient use of adverbs_)
+-   [**Iterators**](iterators/index.md) (previously _Efficient use of adverbs_)
 -   [The application of **foreign keys** and linked columns in kdb+](foreign-keys.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)
--   ==revised== [**Parse trees** and functional forms](parse-trees.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/parse_trees_and_functional_forms.pdf)
+-   [**Parse trees** and functional forms](parse-trees.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/parse_trees_and_functional_forms.pdf)
 -   [Columnar database and **query optimization**](columnar-database/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/columnar_database_and_query_optimization.pdf)
 -   [Kdb+ **query scaling**](query-scaling.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/kdb_query_scaling.pdf)
 
@@ -24,7 +28,7 @@ keywords: kdb+, q, technical, white paper
 -   [Common design principles for kdb+ **gateways**](gateway-design/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/common_design_principles_for_kdb_gateways.pdf)
 -   [An introduction to **graphical interfaces** for kdb+ using C#](gui/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/csharp-gui-a4.pdf), [US&nbsp;Letter](/download/wp/csharp-gui-us.pdf)</small>
 -   [**Java API** for kdb+](java-api/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/java-api-a4.pdf), [US&nbsp;Letter](/download/wp/java-api-us.pdf)</small>
--   ==new== [**Lightning tickerplants**: Pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/lightning-a4.pdf), [US&nbsp;Letter](/download/wp/lightning-us.pdf)</small>
+-   [**Lightning tickerplants**: Pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/lightning-a4.pdf), [US&nbsp;Letter](/download/wp/lightning-us.pdf)</small>
 -   [Building **real-time tick subscribers**](rt-tick/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/building_real_time_tick_subscribers.pdf)
 -   [Kdb+ and **WebSockets**](websockets/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/websockets-a4.pdf), [US&nbsp;Letter](/download/wp/websockets-us.pdf)</small>
 
@@ -40,7 +44,7 @@ keywords: kdb+, q, technical, white paper
 -   [**Signal processing and q**](signal-processing/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/signal-processing-a4.pdf), [US&nbsp;Letter](/download/wp/signal-processing-us.pdf)</small>
 -   [**Surveillance** techniques to effectively monitor algo and high-frequency trading](surveillance/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
 -   [**Transaction-cost** analysis using kdb+](transaction-cost.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/transaction_cost_analysis_using_kdb.pdf)
--   ==new== [Implementing **trend indicators** in kdb+](trend-indicators/index.md) 
+-   [Implementing **trend indicators** in kdb+](trend-indicators/index.md) 
 
 ## Machine learning
 
@@ -48,14 +52,14 @@ keywords: kdb+, q, technical, white paper
 -   [**K-Nearest Neighbor classification** and pattern recognition with q](machine-learning/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/machine_learning_in_kdb.pdf)
 -   [An introduction to **neural networks** with kdb+](neural-networks/index.md) &nbsp; :fontawesome-solid-print: <small>[A4](/download/wp/an_introduction_to_neural_networks_with_kdb.pdf)</small>
 -   [NASA Frontier Development Lab **Exoplanets** Challenge](exoplanets/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/exoplanets-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/exoplanets-us.pdf)
--   ==new== [NASA Frontier Development Lab **Predicting floods** with q and machine learning](disaster-floods/index.md)
+-   [NASA Frontier Development Lab **Predicting floods** with q and machine learning](disaster-floods/index.md)
 -   [NASA Frontier Development Lab **Space Weather** Challenge](space-weather/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/space-weather-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/space-weather-us.pdf)
 -   [**Using embedPy to apply LASSO regression**](embedpy-lasso/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/embedpy-lasso-a4.pdf), [<small>US&nbsp;Letter</small>](/download/wp/embedpy-lasso-us.pdf)
 
 
 ## Managing data and systems
 
--   ==new== [**Auto Scaling** for a kdb+ realtime database](../cloud/autoscale/index.md) :fontawesome-solid-cloud:
+-   [**Auto Scaling** for a kdb+ realtime database](../cloud/autoscale/index.md) :fontawesome-solid-cloud:
 -   [**Compression** in kdb+](compress/index.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/compression_in_kdb.pdf)
 -   [Temporal data: a kdb+ framework for **corporate actions**](corporate-actions.md) &nbsp; :fontawesome-solid-print: [<small>A4</small>](/download/wp/temporal_data_a_kdb_framework_for_corporate_actions.pdf)
 -   [Mass ingestion through **data loaders**](data-loaders/index.md) 

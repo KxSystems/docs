@@ -266,7 +266,7 @@ As outlined in the initial overview, the implementation of any particular gatewa
 All code included is using kdb+ 3.0 (2012.11.12).
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Michael McClintock has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data capture and analytics platforms across a number of different asset classes.
 

@@ -641,7 +641,7 @@ It is important to point out that any of these solutions come with their own dra
 Tests performed using kdb+ version 3.1 (2014.02.08)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Colm McCarthy is a kdb+ consultant who has developed data management
 systems for some the world's largest financial institutions. Colm is

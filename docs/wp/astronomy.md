@@ -271,7 +271,7 @@ We believe this will be a very attractive solution to the field of astronomy goi
 
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 Andrew Magowan is a kdb+ consultant who has developed data and analytic systems for some of the world's largest financial institutions. Andrew is currently based in New York where he maintains a global tick capture application across a range of asset classes at a major investment bank.
 

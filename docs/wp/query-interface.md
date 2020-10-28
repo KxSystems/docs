@@ -339,7 +339,7 @@ It could be integrated with a load balancer, a permissions arbiter, a logging fr
 All tests were run using kdb+ version 3.2 (2014.10.04).
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Sean Keevey is a kdb+ consultant and has developed data and analytic systems for some of the world’s largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
 

@@ -1231,7 +1231,7 @@ Knowing the features that contribute to flood susceptibility and the length of t
 The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model, meant that weighting the classes was an important feature to experiment with. This was particularly important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Diane O’Donoghue joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London.
 

@@ -1237,7 +1237,7 @@ applications with contemporary technologies, often to the benefit of
 both.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Peter Lyness joined First Derivatives as a software engineer in 2015. During this time he has implemented a number of Java-based technical solutions for clients, including kdb+ interface logic for upstream static and real time data feeds. 
 

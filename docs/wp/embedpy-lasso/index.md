@@ -654,7 +654,7 @@ by kdb+ can be found under _Featured Resources_ at
 [kx.com/machine-learning](https://kx.com/discover/machine-learning/).
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Samantha Gallagher is a kdb+ consultant for Kx and has worked in leading
 financial institutions for a range of asset classes. Currently based in

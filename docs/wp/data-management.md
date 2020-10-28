@@ -448,7 +448,7 @@ This document has outlined practical options available to system managers for ad
 As mentioned in the introduction, a key feature of kdb+ is that it is a flexible offering that allows users to extend the functionality of their applications through the versatility of the q language. There are vanilla intraday- and historical-data processing architectures presented in existing documentation that cover many standard use cases. However, it is also common for a kdb+ system to quickly establish itself as a success within the firm, resulting in the need to process more types of data and requests from downstream users and applications. It is at this point that a systems manager is often faced with balancing how to ensure performance and scalability goals are met, while at the same time dealing with resource constraints and the need for maintainability. The seven cases and customization techniques covered in this paper provided examples of what you can do to help reach those goals.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Simon Mescal is based in New York. Simon is a financial engineer who has designed and developed kdb+-related data-management solutions for top-tier investment banks and trading firms, across multiple asset classes. Simon has extensive experience implementing a range of applications in both object-oriented and vector-programming languages.
 

@@ -2,7 +2,6 @@
 title: cols, xcol, xcols | Reference | kdb+ and q documentation
 description: cols, xcol and xcols are q keywords. cols returns the column names of a table. xcol renames tablecolumns. xcols reorders table columns. 
 author: Stephen Taylor
-keywords: cols, column, kdb+, q, table, xcol, xcols
 ---
 # `cols`, `xcol`, `xcols`
 
@@ -15,11 +14,17 @@ _Table columns_
 
 _Column names of a table_
 
-Syntax: `cols x`, `cols[x]`
+```txt
+cols x    cols[x]
+```
 
-Where `x` is a table, returns as a symbol vector its column names. 
+Where `x` is a 
 
-`x` can be passed by reference or by value.
+-    table
+-    the name of a table as a symbol atom
+-    a filesymbol for a splayed table
+
+returns as a symbol vector its column names. 
 
 ```q
 q)\l trade.q
@@ -34,7 +39,9 @@ q)cols`trade            /reference
 
 _Rename table columns_
 
-Syntax: `x xcol y`, `xcol[x;y]`
+```txt
+x xcol y    xcol[x;y]
+```
 
 Where `y` is a table, passed by value, and `x` is 
 
@@ -66,7 +73,9 @@ _Q for Mortals_
 
 _Reorder table columns_
 
-Syntax: `x xcols y`, `xcols[x;y]`
+```txt
+x xcols y    xcols[x;y]
+```
 
 Where 
 

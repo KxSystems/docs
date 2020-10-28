@@ -126,7 +126,18 @@
 	color: white;
 }
 
-md-typeset .admonition pre,
-md-typeset .admonition pre code {
+.md-typeset .admonition pre,
+.md-typeset .admonition pre code {
 	font-size: 110%;
+}
+
+.wp-author {
+	font-size: 100%;
+	text-align: right;
+}
+#wp-brand {
+	color: rgba(0,0,0,.4);
+	letter-spacing: .5em;
+	text-align: center;
+	text-transform: uppercase;
 }

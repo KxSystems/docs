@@ -376,7 +376,7 @@ Insurance Correlation (IC)
 Source: [www.qfit.com](http://www.qfit.com/)
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 Caolan Rafferty works for Kx as a kdb+ consultant. Based in Hong Kong, he maintains an eFx trading platform at a major investment bank. He has developed a range of applications for some of the world’s largest financial institutions. Caolan also helped in building the data-science training program within First Derivatives.
 

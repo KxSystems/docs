@@ -774,7 +774,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 ```
 
 :fontawesome-solid-graduation-cap:
-[Loading large CSV files](../kb/loading-from-large-files.md)
+[Loading from large files](../kb/loading-from-large-files.md)
 
 
 ## `.Q.ft` (apply simple)

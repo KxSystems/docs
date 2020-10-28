@@ -316,7 +316,7 @@ Highly important data can be placed in a cluster with a low scale threshold or l
 If certain data sources do not need to be available with a low latency clusters with smaller instances and higher scale thresholds can be used to reduce costs.
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Jack Stapleton is a kdb+ consultant for Kx who has worked for some the world’s largest financial institutions. 
 

@@ -1,6 +1,6 @@
 ---
 title: Surveillance techniques to effectively monitor algo and high-frequency trading
-authors: Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan & Rob Hodgkinson
+author: Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan & Rob Hodgkinson
 description: Describes surveillance techniques using kdb+ to monitor algorithmic and high-frequency trading, with examples from the Australian financial markets
 date: March 2014
 keywords: algorithmic, australia, high-frequency, regulator, surveillance
@@ -511,6 +511,6 @@ Stuffing and Manipulation.* Business Insider.
 -   University of Pennsylvania. (2009). *The Impact of High-frequency Trading: Manipulation, Distoring or a Better-functioning Market?* USA.
 
 
-## Authors
+## :fontawesome-solid-user: Authors
 
 Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan and Rob Hodgkinson

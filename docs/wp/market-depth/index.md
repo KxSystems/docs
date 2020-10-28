@@ -372,6 +372,6 @@ Reference: [Set Attribute](../../ref/set-attribute)
 
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Stephen Dempsey is based in Dublin. Stephen works for First Derivatives’ R&D team on a variety of different applications in Kx technology. He has been involved in the design and implementation of a wide range of applications, including tick-capture and algorithmic-trading platforms.

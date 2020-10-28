@@ -734,7 +734,7 @@ Overall, this paper provides an insight into the capabilities of kdb+ regarding 
 All tests were run using kdb+ version 3.1 (2014.02.08)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Sean Rodgers is a kdb+ consultant based in London. He works for a top-tier investment bank on a global tick-capture and analytic application for a range of different asset classes.
 

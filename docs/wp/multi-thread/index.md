@@ -485,7 +485,7 @@ System-management solutions are available to assist with administering multi-pro
 All tests performed using kdb+ version 3.1 (2013.06.25)
 
 
-## Author
+## :fontawesome-solid-user: Author
 
 Edward Cormack is a financial engineer who has worked on developing financial data solutions for a range of clients. Edward is currently based at a top-tier investment bank in London, developing a kdb+ platform for global equity risk.
 
