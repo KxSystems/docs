@@ -783,7 +783,7 @@ values[2;] = ABC DEF GHI JKL
 
 ### Tables
 
-Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x-k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
+Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x->k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
 extracted.
 
 ```c
