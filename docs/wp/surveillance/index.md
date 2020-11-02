@@ -1,7 +1,11 @@
 ---
-title: Surveillance techniques to effectively monitor algo and high-frequency trading
-authors: Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan & Rob Hodgkinson
-description: Describes surveillance techniques using kdb+ to monitor algorithmic and high-frequency trading, with examples from the Australian financial markets
+title: Surveillance techniques to effectively monitor algo and high-frequency trading | White Papers | kdb+ and q documentation
+authors: 
+  - Sam Stanton-Cook
+  - Ryan Sparks
+  - Dan O’Riordan
+  - Rob Hodgkinson
+description: Surveillance techniques using kdb+ to monitor algorithmic and high-frequency trading, with examples from the Australian financial markets
 date: March 2014
 keywords: algorithmic, australia, high-frequency, regulator, surveillance
 ---

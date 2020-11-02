@@ -1,5 +1,5 @@
 ---
-title: Kdb+ data-management techniques – White papers – q and kdb+ documentation
+title: Kdb+ data-management techniques | White papers | q and kdb+ documentation
 description: Examines implementation options and data-management techniques in seven scenarios
 author: Simon Mescal
 date: January 2013

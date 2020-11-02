@@ -1,8 +1,7 @@
 ---
-title: Multi-threading in kdb+ – White Papers – kdb+ and q documentation
+title: Multi-threading in kdb+ | White Papers | kdb+ and q documentation
 description: How to use parallel processing in kdb+ processes, and what the limitations are
 author: Edward Cormack
-date: 
 keywords: kdb+, multi-core, multi-threading, parallel, parallelize, performance, q, vector
 ---
 # Multi-threading in kdb+<br>Performance optimizations and use cases

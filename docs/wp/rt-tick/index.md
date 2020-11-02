@@ -1,6 +1,6 @@
 ---
-title: Building real-time tick subscribers – White Papers – kdb+ and q documentation
-description: 
+title: Building real-time tick subscribers | White Papers | kdb+ and q documentation
+description: How to build a custom real-time tick subscriber
 author: Nathan Perrem
 date: August 2014
 keywords: kdb+, q, real-time, subscribe, tick

@@ -1,5 +1,5 @@
 ---
-title: Machine Learning in kdb+ – k-Nearest Neighbor classification and pattern recognition with q
+title: "Machine Learning in kdb+: k-Nearest Neighbor classification and pattern recognition with q | White papers | kdb+ and q documentation"
 description: How to implement a k-NN classification algorithm with kdb+, using tables and qSQL, and iterators to optimize the classification time
 author: Emanuele Melis
 date: July 2017

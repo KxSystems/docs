@@ -1,5 +1,5 @@
 ---
-title: A natural query interface for distributed systems
+title: A natural query interface for distributed systems | White papers | kdb+ and q documentation
 description: An interface similar to q for queries to kdb+ tables distributed across multiple systems, implemented in q, trading some q optimizations for convenience 
 author: Sean Keevey
 date: November 2014

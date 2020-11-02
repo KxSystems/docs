@@ -1,5 +1,5 @@
 ---
-title: Temporal data – A kdb+ framework for corporate actions
+title: "Temporal data: a kdb+ framework for corporate actions | White Papers | documentation for q and kdb+"
 author: Sean Rodgers
 date: March 2014
 description: Examines a kdb+ framework which can be used to apply corporate action adjustments on the fly to equity tick data

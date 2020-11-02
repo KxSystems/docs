@@ -1,7 +1,9 @@
 ---
-title: Kdb+ and WebSockets – White Papers – kdb+ and q documentation
-description: This paper introduces what WebSockets are and what benefits they hold over standard HTTP. It takes the reader through the set-up of a simple web page that uses WebSockets to connect to a kdb+ process, the steps involved in passing data through the connection, and the various methods for converting data between kdb+ and JavaScript.
-author: Chris Scott and Michael Gracey
+title: Kdb+ and WebSockets | White Papers | kdb+ and q documentation
+description: What WebSockets are, what benefits they hold over standard HTTP; how to set up a simple web page that uses WebSockets to connect to a kdb+ process
+authors: 
+    - Chris Scott
+    - Michael Gracey
 date: March 2018
 hero: Interfaces
 keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSockets

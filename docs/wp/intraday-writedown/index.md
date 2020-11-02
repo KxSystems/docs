@@ -1,5 +1,5 @@
 ---
-title: Intraday writedown solutions – White papers – q and kdb+ documentation
+title: Intraday writedown solutions | White papers | q and kdb+ documentation
 description: Compares two methods for dealing with insufficient RAM on a server, when a full day’s worth of data cannot be held in memory. 
 author: Colm McCarthy
 date: March 2014
@@ -643,8 +643,5 @@ Tests performed using kdb+ version 3.1 (2014.02.08)
 
 ## Author
 
-Colm McCarthy is a kdb+ consultant who has developed data management
-systems for some the world's largest financial institutions. Colm is
-currently based in London, where he maintains an FX analytics
-application a major investment bank.
+Colm McCarthy is a kdb+ consultant who has developed data management systems for some the world's largest financial institutions. Colm is currently based in London, where he maintains an FX analytics application a major investment bank.
 

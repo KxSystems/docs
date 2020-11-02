@@ -1,5 +1,5 @@
 ---
-title: Kdb+tick profiling for throughput optimization – White Papers – kdb+ and q documentation
+title: Kdb+tick profiling for throughput optimization | White Papers | kdb+ and q documentation
 description: Key factors that influence the performance and throughput of a kdb+ tickerplant, a methodology to profile its performance, and four key areas to control.
 author: Ian Kilpatrick
 date: March 2014
@@ -415,6 +415,5 @@ All tests were run using kdb+ version 3.1 (2014.02.08)
 
 ## Author
 
-Ian Kilpatrick has worked on several kdb+ systems. Based in Belfast,
-Ian is a technical architect for high-performance data-management, event-processing and trading platforms.
+Ian Kilpatrick has worked on several kdb+ systems. Based in Belfast, Ian is a technical architect for high-performance data-management, event-processing and trading platforms.
 

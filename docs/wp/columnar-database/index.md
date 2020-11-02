@@ -1,5 +1,5 @@
 ---
-title: Columnar database and query optimization
+title: Columnar database and query optimization | White Papers | documentation for q and kdb+
 description: Methods available to developers for optimizing queries to a kdb+ database
 date: June 2012
 author: Ciáran Gorman
@@ -661,7 +661,6 @@ Tests performed using kdb+ version 2.8 (2012.05.29)
 
 ## Author
 
-Ciarán Gorman is a financial engineer who has designed and developed
-data-management systems across a wide range of asset classes for top-tier investment banks.
+Ciarán Gorman is a financial engineer who has designed and developed data-management systems across a wide range of asset classes for top-tier investment banks.
 
 

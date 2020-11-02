@@ -1,6 +1,6 @@
 ---
-title: Disaster-recovery planning for kdb+ tick systems – White Papers – kdb+ and q documentation
-description: Disasters are inevitable; hardware failure, network problems, and data corruption are all events that could play havoc with a system. If these events are not fully understood and planned for they may lead to significant downtime and potentially severe business impact, including revenue loss, legal and financial implications, and impact to business reputation and brand. Recent high-profile systems failures of a large cloud computing provider and an international airline highlight the importance for IT systems to have a comprehensive disaster recovery plan in place.
+title: Disaster-recovery planning for kdb+ tick systems | White Papers | kdb+ and q documentation
+description: Disaster recovery (DR) and failover concepts from the perspective of the gateway layer accessing a typical kdb+ tick system used in capital-markets applications
 author: Stewart Robinson
 keywords: disaster, failover, kdb+, planning, recovery, tick
 ---

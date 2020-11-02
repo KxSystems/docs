@@ -1,6 +1,8 @@
 ---
-title: Streaming analytics with kdb+ – Detecting card counters in Blackjack
-author: Caolan Rafferty and Krishan Subherwal
+title: "Streaming analytics with kdb+: Detecting card counters in Blackjack | White Papers | q and kdb+ documentation"
+authors: 
+    - Caolan Rafferty
+    - Krishan Subherwal
 description: Using kdb+ event-stream processing analytics in real time to detect card counters in Blackjack
 date: May 2017
 keywords: analytics, blackjack, card counting, event-stream, kdb+, q

@@ -1,5 +1,5 @@
 ---
-title: Lightning tickerplants – Pay-per-ticker with micropayments on the Lightning network – White Papers – kdb+ and q documentation
+title: "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network | White Papers | kdb+ and q documentation"
 description: Use Lightning to monetize streaming data. Use the qlnd library to create payment channels, generate invoices, and route payments across the network.
 author: Jeremy Lucid
 date: May 2019
@@ -1109,8 +1109,7 @@ it is hoped that this paper has at least helped explain some of the key concepts
 
 ## Author
 
-Jeremy Lucid is a kdb+ consultant, based in Ireland, who has worked on real-time Best Execution projects for a major multinational 
-banking institution and a _Kx for Surveillance_ implementation at a leading options and futures exchange. 
+Jeremy Lucid is a kdb+ consultant, based in Ireland, who has worked on real-time Best Execution projects for a major multinational banking institution and a _Kx for Surveillance_ implementation at a leading options and futures exchange.
 
 
 ## Acknowledgments

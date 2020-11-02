@@ -1,7 +1,9 @@
 ---
-title: Kdb+ in astronomy
+title: Kdb+ in astronomy | White papers | kdb+ and q documentation
 description: Imports FITS data to kdb+, loads C functions and calculates recessional velocity
-author: Andrew Magowan and James Neill
+authors: 
+    - Andrew Magowan
+    - James Neill
 keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar objects, recessional velocity, red shift, telescope
 ---
 # Kdb+ in astronomy

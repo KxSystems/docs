@@ -1,6 +1,6 @@
 ---
-title: Signal processing and q – White Papers – kdb+ and q documentation
-description: Signal processing is the analysis, interpretation and manipulation of signals to reveal important information. Signals of interest include human speech, seismic waves, images of faces or handwriting, brainwaves, radar, traffic counts and many others. This processing reveals information in a signal that can be obscured by non-useful information, commonly called ‘noise’.
+title: Signal processing and q | White Papers | kdb+ and q documentation
+description: How statistical signal-processing operations can be implemented within q to remove noise, extract useful information, and quickly identify anomalies
 keywords: kdb+, processing, q, signal
 author: Callum Biggs
 date: August 2018
@@ -851,8 +851,7 @@ p)print (t1 - t0)
 
 ## Author
 
-Callum Biggs joined First Derivatives in 2017 as a data scientist
-in its Capital Markets Training Program.
+Callum Biggs joined First Derivatives in 2017 as a data scientist in its Capital Markets Training Program.
 
 ## Acknowledgments
 

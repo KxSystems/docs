@@ -1,5 +1,5 @@
 ---
-title: Predicting floods | White paper | kdb+ and q documentation
+title: Predicting floods with q and machine learning | White paper | kdb+ and q documentation
 description: Machine-learning methods in q to predict flood susceptibility in an area and the time for a river to reach its peak height after a rainfall event.
 author: Diane O’Donoghue
 date: October 2019

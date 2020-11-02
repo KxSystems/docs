@@ -1,7 +1,9 @@
 ---
-title: Storing and exploring the Bitcoin blockchain – White Papers – kdb+ and q documentation
+title: Storing and exploring the Bitcoin blockchain | White Papers | kdb+ and q documentation
 description: A blockchain explorer uses kdb+ to store and query Bitcoin transactions using partitioned databases, splayed tables, intraday write-downs, and in-memory joins.
-author: Jeremy Lucid and Daniel Irwin
+authors: 
+    - Jeremy Lucid
+    - Daniel Irwin
 date: December 2018
 keywords: bitcoin, blockchain, kdb+, q
 ---
@@ -998,7 +1000,7 @@ best execution and transaction-cost analysis.
 Jeremy Lucid is a kdb+ consultant based in Belfast. 
 He has worked on real-time Best Execution projects for a major multinational 
 banking institution, and a _Kx for Surveillance_ implementation 
-at a leading options and futures exchange 
+at a leading options and futures exchange.
 
 
 ## Appendix

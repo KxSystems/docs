@@ -1,5 +1,5 @@
 ---
-title: Sample aggregation engine for market depth
+title: Sample aggregation engine for market depth | White papers | kdb+ and q documentation
 description: A framework for aggregating market depth and managing multiple subscriptions, using FX data as an example
 author: Stephen Dempsey
 date: January 2014

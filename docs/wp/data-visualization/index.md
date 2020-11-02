@@ -1,6 +1,7 @@
 ---
-title: Data visualization with kdb+ using ODBC <br/>a Tableau case study – White Papers – kdb+ and q documentation
-description: Business intelligence (BI) tools are widely used across many industries for their interactive nature, which enables users to create and customize dynamic data visualizations easily. Kx provides its own visualization tool, Dashboards for Kx, but clients might have incumbent solutions they wish to connect to kdb+.
+title: "Data visualization with kdb+ using ODBC: a Tableau case study | White Papers | kdb+ and q documentation"
+description: Illustrates the flexibility with which kdb+ data can be
+accessed by Tableau using ODBC
 author: Michaela Woods
 date: July 2018
 keywords: data, kdb+, ODBC, Tableau, visualization

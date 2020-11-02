@@ -1,5 +1,5 @@
 ---
-title: Permissions with kdb+ – White papers – q and kdb+ documentation
+title: Permissions with kdb+ | White papers | q and kdb+ documentation
 description: An introduction to permissioning in kdb+ without using LDAP or any other external entitlements system
 author: Tom Martin
 date: May 2013

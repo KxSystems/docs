@@ -1,5 +1,5 @@
 ---
-title: C API for kdb+ – White Papers – kdb+ and q documentation
+title: C API for kdb+ | White Papers | kdb+ and q documentation
 description: How to connect a C program to a kdb+ database
 author: Jeremy Lucid
 date: December 2018

@@ -1,5 +1,5 @@
 ---
-title: Common design principles in kdb+ gateways – White paper – q and kdb+ documentation
+title: Common design principles in kdb+ gateways | White paper | q and kdb+ documentation
 description: The most common technical challenges associated with gateways and the reasoning behind various design options
 date: December 2012
 author: Michael McClintock

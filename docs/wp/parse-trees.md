@@ -1,7 +1,9 @@
 ---
-title: Parse trees and functional forms – White Paper – code.kx.com
+title: Parse trees and functional forms | White Paper | kdb+ and q documentation
 description: How to understand parse trees and use functional forms in q queries; how to convert qSQL expressions to functional form.
-author: Peter Storeng and Stephen Taylor
+authors: 
+    - Peter Storeng
+    - Stephen Taylor
 keywords: functional, kdb+, parse, parse tree, q, qSQL, query, SQL
 ---
 # Parse trees and functional forms

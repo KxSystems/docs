@@ -1,5 +1,5 @@
 ---
-title: Compression in kdb+ – White papers – q and kdb+ documentation
+title: Compression in kdb+ | White papers | q and kdb+ documentation
 description: introduction to compression in kdb+, contributing factors to compression ratios and performance, and how the use of compressed data can affect performance 
 author: Eoin Killeen
 date: October 2013

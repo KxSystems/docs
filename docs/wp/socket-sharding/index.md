@@ -1,5 +1,5 @@
 ---
-title: Socket sharding with kdb+ and Linux
+title: Socket sharding with kdb+ and Linux | White Papers | kdb+ and q documentation
 description: Set-up and use of socket sharding in kdb+, with several example scenarios
 author: Marcus Clarke
 date: January 2018

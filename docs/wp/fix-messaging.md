@@ -1,5 +1,5 @@
 ---
-title: Kdb+ and FIX messaging
+title: Kdb+ and FIX messaging | White Papers | q and kdb+ documentation
 description: A guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an order-management system
 author: Damien Barker
 date: January 2014

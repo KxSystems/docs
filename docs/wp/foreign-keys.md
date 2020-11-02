@@ -1,5 +1,5 @@
 ---
-title: The application of foreign keys and linked columns in kdb+ – White papers – q and kdb+ documentation
+title: The application of foreign keys and linked columns in kdb+ | White papers | q and kdb+ documentation
 description: How foreign keys and linked columns may be established and applied in kdb+ databases, and a review of the advantages and penalties
 author: Kevin Smyth
 date: April 2013
@@ -607,8 +607,5 @@ A drawback to using foreign keys is that keyed tables cannot be splayed to disk.
 
 ## Author
 
-Kevin Smyth has worked as a consultant for some of the world's leading
-financial institutions. Based in London, Kevin has implemented data
-capture and high-frequency data analysis projects across a large
-number of mainstream and alternative asset classes.
+Kevin Smyth has worked as a consultant for some of the world's leading financial institutions. Based in London, Kevin has implemented data capture and high-frequency data analysis projects across a large number of mainstream and alternative asset classes.
 
