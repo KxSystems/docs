@@ -4,7 +4,13 @@ author: James Galligan
 date: April 2020
 description: Using kdb+ to produce trade analytics – indicators and oscillators traders commonly use to trigger buy/sell signals and clarify their picture of the market.
 ---
+White paper
+{: #wp-brand}
+
 # Implementing trend indicators in kdb+
+
+by [James Galligan](#author)
+{: .wp-author}
 
 ![Kraken Candle](krakencandlestick.png)
 
@@ -580,6 +586,6 @@ This paper also demonstrates [Kx Analyst](https://kx.com/solutions/the-enterpris
 The combination of this library of functions and Kx Analyst provides the user faster development and processing times to gain meaningful insights from the data.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-James Galligan is a kdb+ consultant who has designed and implemented data-capture and data-analytics platforms across a number of different asset classes. He has worked at tier-one investment banks across the world, including the US and Asia. Based in Singapore, James is currently working on the design, development and maintenance of a range of kdb+ solutions for trading and analytics across multiple asset classes in a leading financial institution.
+**James Galligan** is a kdb+ consultant who has designed and implemented data-capture and data-analytics platforms across a number of different asset classes. He has worked at tier-one investment banks across the world, including the US and Asia. Based in Singapore, James is currently working on the design, development and maintenance of a range of kdb+ solutions for trading and analytics across multiple asset classes in a leading financial institution.

@@ -1,12 +1,19 @@
 ---
-title: An introduction to graphical interfaces for kdb+ using C# – White Papers – kdb+ and q documentation
-description: Over the course of fifteen years, C# has become one of the most common programming languages in the world. It has been used in applications ranging from computer games to medical systems to storage systems. When deployed in an environment which requires database connections, it is traditional for C# to use a form of SQL for the back end, be it MySQL or SQLite to provide data storage and the ability to execute queries. Though functional, kdb+ offers substantial improvements in performance and processing power over this standard method of operation.
+title: An introduction to graphical interfaces for kdb+ using C# | White Papers | kdb+ and q documentation
+description: Basics of using C# to open connections to kdb+ processes running on remote servers as well as setting up a basic API that will allow for authentication, error recovery and basic queries through an interface
 author: Michael Reynolds
 date: May 2013
 hero: Interfaces
 keywords: analytics, connections, csharp, gui, kdb+, queries, validation
 ---
+White paper
+{: #wp-brand}
+
 # An introduction to graphical interfaces for kdb+ using C&#35;
+
+by [Michael Reynolds](#author)
+{: .wp-author}
+
 
 
 
@@ -872,8 +879,8 @@ can be found on GitHub at :fontawesome-brands-github:
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
+**Michael Reynolds** works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
 
 

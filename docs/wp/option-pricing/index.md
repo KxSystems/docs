@@ -5,7 +5,14 @@ author: Deanna Morgan
 date: October 2019
 keywords: asian, black-scholes, c++, european, kdb+, monte carlo, option pricing, q, sobol,
 ---
+White paper
+{: #wp-brand}
+
 # Comparing option pricing methods in q
+
+by [Deanna Morgan](#author)
+{: .wp-author}
+
 
 
 
@@ -681,10 +688,16 @@ Looking at the results produced, it is clear that both the option price produced
 Additionally, by plotting results we have shown that the q implementation replicates the original results produced in C++, presented in the paper by [S. Kucherenko et al. 2007](http://www.broda.co.uk/gsa/wilmott_GSA_SK.pdf "Wilmott").
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Deanna Morgan joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and currently works as a machine-learning engineer in London.
+**Deanna Morgan** joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and currently works as a machine-learning engineer in London.
 
+Other papers by Deanna Morgan
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [NASA Frontier Development Lab Space Weather Challenge](../space-weather/index.md){: .publications}
+</ul>
 
 ## Acknowledgements
 

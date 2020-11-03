@@ -1,11 +1,18 @@
 ---
-title: NASA Frontier Development Lab Space Weather Challenge – White Papers – kdb+ and q documentation
-description: In this paper, we examine the use of ML models to predict scintillation events, using historical GNSS data. Initially, a Support Vector Machine (SVM) was used to recreate the baseline model outlined in McGranaghan et al., 2018. We then implemented a neural network model in an attempt to improve upon the baseline results and accurately predict events as far as 24 hours ahead. Both methods used the strength of kdb+/q to deal with time-series data and embedPy to import the necessary python ML libraries.
+title: NASA Frontier Development Lab Space Weather Challenge | White Papers | kdb+ and q documentation
+description: Examines the use of ML models to predict scintillation events, using historical GNSS data
 author: Deanna Morgan
 date: November 2018
 keywords: kdb+, q, space, NASA, machine learning
 ---
+White paper
+{: #wp-brand}
+
 # NASA Frontier Development Lab Space Weather Challenge
+
+by [Deanna Morgan](#author)
+{: .wp-author}
+
 
 
 
@@ -588,10 +595,16 @@ The neural network method vastly improved results compared to the baseline model
 For 24-hour prediction, both accuracy and TSS results increased by an average of 27% and 0.39 respectively. We were therefore able to create a machine-learning model, which reliably predicts phase scintillation events as far as 24 hours ahead. 
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Deanna Morgan joined First Derivatives in June 2018 as a Data Scientist
-in the Capital Markets Training Program.
+**Deanna Morgan** joined First Derivatives in June 2018 as a Data Scientist in the Capital Markets Training Program.
+
+Other papers by Deanna Morgan
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Sobol’ option pricing in q](../option-pricing/index.md){: .publications}
+</ul>
 
 
 ## References and data sources

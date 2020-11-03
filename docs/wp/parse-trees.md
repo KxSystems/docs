@@ -1,10 +1,16 @@
 ---
-title: Parse trees and functional forms – White Paper – code.kx.com
+title: Parse trees and functional forms | White Paper | kdb+ and q documentation
 description: How to understand parse trees and use functional forms in q queries; how to convert qSQL expressions to functional form.
-author: Peter Storeng and Stephen Taylor
+author: [Peter Storeng, Stephen Taylor]
 keywords: functional, kdb+, parse, parse tree, q, qSQL, query, SQL
 ---
+White paper
+{: #wp-brand}
+
 # Parse trees and functional forms
+
+by [Peter Storeng &amp; Stephen Taylor](#authors)
+{: .wp-author}
 
 
 
@@ -646,11 +652,27 @@ To further help those learning how to construct functional statements, and also 
 All tests were run using kdb+ version 3.2 (2015.01.14).
 
 
-## :fontawesome-solid-user: Authors
+## Authors
 
-Peter Storeng is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
+**Peter Storeng** is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
 
-Stephen Taylor is the Kx Librarian. He revised this paper in 2019 to use the revised terminology for q. 
+![Stephen Taylor](../../img/faces/stephentaylor.png)
+{: .small-face}
+
+**Stephen Taylor** FRSA is the Kx Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
+<br>
+[:fontawesome-solid-envelope:](mailto:stephen@kx.com?subject=White paper: Parse trees and functional forms) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
+[:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)
+
+Other papers by Stephen Taylor
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Iterators](iterators/index.md)
+-   :fontawesome-solid-globe: [Pair programming with the users](http://archive.vector.org.uk/art10009900)
+-   :fontawesome-solid-globe: [Three principles of coding clarity](http://archive.vector.org.uk/art10009750)
+</ul>
 
 
 ## Appendix

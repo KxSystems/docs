@@ -1,22 +1,20 @@
 ---
-title: The application of foreign keys and linked columns in kdb+ – White papers – q and kdb+ documentation
+title: The application of foreign keys and linked columns in kdb+ | White papers | q and kdb+ documentation
 description: How foreign keys and linked columns may be established and applied in kdb+ databases, and a review of the advantages and penalties
 author: Kevin Smyth
 date: April 2013
 keywords: foreign key, kdb+, link, linked columns, q, sym file, symlink
 ---
+White paper
+{: #wp-brand}
+
 # The application of foreign keys and linked columns in kdb+
 
+by [Kevin Smyth](#author)
+{: .wp-author}
 
 
-!!! tip "Background reading"
 
-    :fontawesome-solid-database:
-    [Linking columns](../kb/linking-columns.md)
-
-    :fontawesome-solid-street-view:
-    _Q for Mortals_
-    [§8.5 Foreign Keys and Virtual Columns](/q4m3/8_Tables/#85-foreign-keys-and-virtual-columns)
 
 Tables in a database define a relationship between different types of data, whether that relationship is static, dynamic (i.e. fluctuating as part of a time series) or a mixture of both. In general, it is regularly the case that database queries will require data from multiple tables for enrichment and aggregation purposes and so a key aspect of database design is developing ways in which data from several tables is mapped together quickly and efficiently. Although kdb+ contains a very rich set of functions for joining tables in real time, if permanent and well-defined relationships between different tables can be established in advance then data-retrieval latency and related memory usage may be significantly reduced.
 
@@ -32,18 +30,16 @@ Tests performed using kdb+ 3.0 (2013.04.05).
 
 The concept behind a foreign key is analogous to that of an enumerated list. While enumerating a list involves separating it into its distinct elements and their associated indexes within the list, here we take an arbitrary table column and enumerate it across a keyed column, which may be either in the same table as itself or a different table in the same database. Behind the scenes, a pointer to the associated key column replaces the enumerated column’s values essentially creating a parent-child relationship if they are in the same table or a data link if they are in different tables.
 
-:fontawesome-solid-book:
-Reference: [Enumerate `$`](../ref/enumerate.md),
-[Enumeration `!`](../ref/enumeration.md),
-[Enum Extend `?`](../ref/enum-extend.md)
-<br>
-:fontawesome-solid-book:
-[Enumerations](../basics/enumerations.md)
+:fontawesome-regular-hand-point-right:
+Reference: [Enumerate `$`](../ref/enumerate.md), 
+[Enumeration `!`](../ref/enumeration.md), 
+[Enum Extend `?`](../ref/enum-extend.md)  
+Basics: [Enumerations](../basics/enumerations.md)
 
 In the case of a single key enumeration, creating a foreign key is very straightforward and is specified either within the initial table definition or on the fly through an update statement:
 
 ```q
-//Keyed table that will be used for enumeration; values in the keyed
+//Keyed table that will be used for enumeration; values in the keyed 
 //column must completely encapsulate the values in the column being enumerated
 financials:(
   [sym:`A`B`C]
@@ -53,13 +49,13 @@ financials:(
 //Schema of trade table prior to enumeration
 trade:([]time:`time$();sym:`$();price:`float$())
 
-//Use the ‘$’ operator to create an enumerated list within the trade
+//Use the ‘$’ operator to create an enumerated list within the trade 
 //table by casting to the keyed table ‘financials’
 update sym:`financials$sym from `trade
 ```
 ```q
 //Alternatively the foreign key may be defined at the outset
-q)trade:([]time:`time$();sym:`financials$();price:`float$())
+q)trade:([]time:`time$();sym:`financials$();price:`float$()) 
 q)`trade insert (.z.T;`A;20.3)
 ,0
 ```
@@ -71,7 +67,7 @@ q)exec sym from trade
 `financials$,`A
 ```
 
-!!! note "Technical note"
+!!! note "Technical note" 
 
     The first enumeration defined in a database will have type `20h`, with each additional enumeration incrementing this value by 1 up to a maximum of `76h`. In effect, 57 is the maximum number of enumerations/foreign keys that may exist in a single database, else the session will throw an elim error.
 
@@ -111,7 +107,7 @@ The above example demonstrates a key benefit of using foreign keys, it ensures t
 //Display the Price-Earnings and Price-Book ratios by sym
 q)select priceEarningsRatio:last price%sym.earningsPerShare,priceBookRatio:last price%sym.bookValPerShare by sym from trade
 sym| priceEarningsRatio priceBookRatio
----| ---------------------------------
+---| --------------------------------- 
 B  | 8.826087           8.12
 D  | 9.307692           3.025
 ```
@@ -120,12 +116,12 @@ Similar to the case of kdb+ column attributes only a single foreign key can be r
 
 ```q
 //Create a new table holding exchange information
-q)exchange:([id:101 102 103 104];ex:`LSE`NDQ`NYSE`AMEX)
-q)update exchangeID:`exchange$101 101 102 from `financials
+q)exchange:([id:101 102 103 104];ex:`LSE`NDQ`NYSE`AMEX) 
+q)update exchangeID:`exchange$101 101 102 from `financials 
 `financials
 
 //Compound dot notation
-q)select time,sym,sym.exchangeID.ex from trade
+q)select time,sym,sym.exchangeID.ex from trade 
 time         sym ex
 --------------------
 09:06:24.849 B   LSE
@@ -138,18 +134,18 @@ time         sym ex
 A foreign key link across two or more columns is possible in kdb+. In this case to allow the usage of dot notation an extra column is appended to the referencing table storing the index link of the table being referenced:
 
 ```q
-q)t1:([sym:`A`B`C;ex:`NYSE`NYSE`NDQ];sharesInIssue:3?1000)
+q)t1:([sym:`A`B`C;ex:`NYSE`NYSE`NDQ];sharesInIssue:3?1000) 
 q)t2:([]time:2?.z.T;sym:`A`B;exchange:`NYSE`NYSE;price:2?10.)
 
 //Append columns together using Each
 q)update t1fkey:`t1$(t2[`sym],'t2[`exchange]) from `t2
 q)t2
-time         sym exchange price    t1fkey
------------------------------------------
-02:31:39.330 A   NYSE     7.043314 0
+time         sym exchange price    t1fkey 
+----------------------------------------- 
+02:31:39.330 A   NYSE     7.043314 0 
 04:25:17.604 B   NYSE     9.441671 1
 
-q)select sym, marketCap:price*t1fkey.sharesInIssue from t2
+q)select sym, marketCap:price*t1fkey.sharesInIssue from t2 
 sym marketCap
 -------------
 A   401.0
@@ -161,7 +157,7 @@ All future inserts into `t2` must enumerate across `t1` as below to avoid an err
 ```q
 q)`t2 insert (.z.T;`C;`NDQ;4.05;`t1$`C`NDQ) ,2
 q)t2
-time         sym exchange price    t1fkey
+time         sym exchange price    t1fkey 
 -----------------------------------------
 02:31:39.330 A   NYSE     7.043314 0
 04:25:17.604 B   NYSE     9.441671 1
@@ -179,15 +175,15 @@ q)`t2 insert (.z.T;`C;`NDQ;4.05;`t1$`C`NDQ)
 Note that since the enumerated column stores the row index lookup value and not the actual value. The column type is converted to an integer and not a symbol list. Once again all inserts must enumerate the foreign key values:
 
 ```q
-q)meta t2
-c     | t f  a
-------| ------
-time  | t
-t1fkey| i t1
+q)meta t2 
+c     | t f  a 
+------| ------ 
+time  | t 
+t1fkey| i t1 
 price | f
 q)t2
-time         sym exchange price t1fkey
---------------------------------------
+time         sym exchange price t1fkey 
+-------------------------------------- 
 09:17:22.771 C   NDQ      4.05  2
 ```
 
@@ -205,12 +201,12 @@ If a table has a large number of foreign keys then the following function may be
 
 ```q
 removeKeys:{[x]
-  v[i]:value each (v:value flip x)i:where not null(0!meta x)`f;
+  v[i]:value each (v:value flip x)i:where not null(0!meta x)`f; 
   flip (cols x)!v }
 ```
 ```q
-q)meta removeKeys t2
-c     | t f a
+q)meta removeKeys t2 
+c     | t f a 
 ------| -----
 time  | t
 t1fkey| i
@@ -225,7 +221,7 @@ Calling the `value` function on a complex foreign key column will remove the tab
 We start with a fresh `trade` table and another table, `exInfo`, which maps each symbol to its traded exchange:
 
 ```q
-trade:([]time:`time$();sym:`$();price:`float$();size:`int$());
+trade:([]time:`time$();sym:`$();price:`float$();size:`int$()); 
 exInfo:([sym:`$()]exID:`int$();exSym:`$();location:`$())
 
 //One million row entries
@@ -254,7 +250,7 @@ insert[`trade;tdata]
 Simple select statements from the database take much longer using a left join and require more memory since the table mappings must be built up from scratch and the entire lookup table must be expanded to match the length of the source table prior to the output columns being specified:
 
 ```q
-q)\ts select time,sym,exSym from trade lj exInfo
+q)\ts select time,sym,exSym from trade lj exInfo 
 68 469762928
 
 q)update sym:`exInfo$sym from `trade
@@ -266,7 +262,7 @@ q)\ts select time,sym,sym.exSym from trade
 The difference above is even more evident in higher dimensions:
 
 ```q
-q)//Remove the existing foreign key from the trade table and add the
+q)//Remove the existing foreign key from the trade table and add the 
 q)//exchange ID for joining across two columns
 q)update sym:value sym from `trade
 q)update exID:exInfo[;`exID] each sym from `trade
@@ -274,7 +270,7 @@ q)update exID:exInfo[;`exID] each sym from `trade
 q)//Re-key exInfo to key on exchange ID as well as sym
 q)exInfo:`sym`exID xkey 0!exInfo
 
-q)//Left join on two columns, takes almost twenty times longer
+q)//Left join on two columns, takes almost twenty times longer 
 q)\ts select time,sym,exSym from trade lj exInfo
 1324 402654032
 
@@ -282,7 +278,7 @@ q)//Now create a complex foreign key
 q)update exfKey:`exInfo$(trade[`sym],'trade[`exID]) from `trade
 
 q)//Same results as above in simple case
-q)\ts select time,sym,exfKey.exSym from trade
+q)\ts select time,sym,exfKey.exSym from trade 
 36 268436016
 ```
 
@@ -300,22 +296,22 @@ corresponding row number in the referenced table `financials`:
 
 ```q
 q)equityPositions:([]sym:5#`A`B`C`D`E;size:5?10000;mtm:5?2.)
-q)//Look up where the entries in the symbol column correspond to the
-q)//rows in the now unkeyed ‘financials’ table, then store the
+q)//Look up where the entries in the symbol column correspond to the 
+q)//rows in the now unkeyed ‘financials’ table, then store the 
 q)//references in the column ‘finLink’
 q)financials:0!financials
 q)update finLink:`financials!financials.sym?sym from `equityPositions
 ```
 
-Much as before, the `finLink` column in the `equityPositions` table is identified as a foreign key to the `financials` table within the table metadata (even though it is not _strictly_ a foreign key as before) and `select`, `exec`, `update`, and `delete` statements incorporating dot notation may again be used.
+Much as before, the `finLink` column in the `equityPositions` table is identified as a foreign key to the `financials` table within the table metadata (even though it is not _strictly_ a foreign key as before) and `select`, `exec`, `update`, and `delete` statements incorporating dot notation may again be used. 
 
 Appending additional rows to the `equityPositions` table must maintain the link to the `financials` table by providing the `finLink` column with the row index in the `financials` table that will be mapped to in each case. In contrast to a foreign-key mapping, no enumeration is present and there are therefore no restrictions on what row numbers are inserted:
 
 ```q
-q)`equityPositions insert (`A;200;2.;`financials!0)
+q)`equityPositions insert (`A;200;2.;`financials!0) 
 ,5
 q)equityPositions
-sym size mtm        finLink
+sym size mtm        finLink 
 ---------------------------
 A   6927 1.266082   0
 B   3700 1.150539   1
@@ -325,11 +321,11 @@ E   1666 1.541226   3
 A   200  2          0
 
 q)//Insert a sym not in the financials table, link to column 0
-q)`equityPositions insert (`S;200;2.;`financials!0)
+q)`equityPositions insert (`S;200;2.;`financials!0) 
 ,6
 
 q)//Insert the same sym again, link to an index not in the financials table
-q)`equityPositions insert (`S;200;2.;`financials!6)
+q)`equityPositions insert (`S;200;2.;`financials!6) 
 ,7
 
 q)equityPositions
@@ -340,21 +336,21 @@ B      3700 1.150539   1
 C      5588 0.01802349 2
 D      5607 0.2896114  3
 E      1666 1.541226   3
-A      200  2          0
-S      200  2          0
+A      200  2          0 
+S      200  2          0 
 S      200  2          6
 
 q)//Unmapped data results in missing entries
-q)select sym,finLink.earningsPerShare from equityPositions
+q)select sym,finLink.earningsPerShare from equityPositions 
 sym earningsPerShare
 --------------------
 A
-B   2.3
+B   2.3 
 C   1.5
 D   1.3
 E
-A   2.3
-S   2.3
+A   2.3 
+S   2.3 
 S
 ```
 
@@ -365,10 +361,10 @@ It is possible to create linked columns on tables that have already been splayed
 
 ```q
 //Create two tables and splay to disk
-companyInfo:([]
+companyInfo:([] 
   sym:`a`b`c`d;
-  exchange:`NYSE`NDQ`NYSE`TSE;
-  sector:4?("Banking";"Retail";"Food Producers");
+  exchange:`NYSE`NDQ`NYSE`TSE; 
+  sector:4?("Banking";"Retail";"Food Producers"); 
   MarketCap:30000000+4?1000000 )
 ```
 ```q
@@ -380,7 +376,7 @@ q)`:db/t/ set .Q.en[`:db] t
 `:db/t/
 
 q)//Create a new column in ‘t’ linking to ‘companyInfo’ via the sym column
-q)`:db/t/cLink set `companyInfo!(companyInfo`sym)?(t`sym)
+q)`:db/t/cLink set `companyInfo!(companyInfo`sym)?(t`sym) 
 `:db/t/cLink
 
 //Update the .d file on disk so that it picks up the new column
@@ -393,7 +389,7 @@ q)//Load the table to update the changes in memory
 q)\l db/t
 
 //Sample query
-q)select sym,cLink.sector,cLink.MarketCap from t
+q)select sym,cLink.sector,cLink.MarketCap from t 
 sym sector    MarketCap
 -----------------------
 a   "Retail"  30886470
@@ -408,12 +404,12 @@ a   "Retail"  30886470
 Only a small adjustment to the single-column case is required to link tables together based on multiple columns. We demonstrate this by continuing with the above tables:
 
 ```q
-q)//We need to reload companyInfo otherwise the link example below will
-q)//not execute properly since the enumerated sym columns from the
+q)//We need to reload companyInfo otherwise the link example below will 
+q)//not execute properly since the enumerated sym columns from the 
 q)//splayed table ‘t’ have type 20h rather than 11h
 q)\l db/companyInfo
 
-q)//Initiate the mapping by flipping the columns to lists and searching
+q)//Initiate the mapping by flipping the columns to lists and searching 
 q)//on each sym/exchange combination
 q)`:db/t/cLink2 set `companyInfo!(flip companyInfo`sym`exchange)?flip t`sym`ex
 `:db/t/cLink2
@@ -423,7 +419,7 @@ q).[`:db/t/.d;();,;`cLink2]
 q)\l db/t
 
 //Sample query, double link means sym 'c' does not map this time
-q)select sym,cLink2.sector,cLink2.MarketCap from t
+q)select sym,cLink2.sector,cLink2.MarketCap from t 
 sym sector    MarketCap
 -----------------------
 a   "Banking" 30450974
@@ -488,19 +484,19 @@ buildHDB[“/root/db1”;;`trade] each .z.D-til 3
 buildHDB[“/root/db2”;;`quote] each .z.D-til 3
 ```
 
-The first utility function creates a symlink in a directory `basePath` to a table `rTab` that exists in a remote directory `remotePath`. The symlink name will be the same name as `rTab`. For our purposes
+The first utility function creates a symlink in a directory `basePath` to a table `rTab` that exists in a remote directory `remotePath`. The symlink name will be the same name as `rTab`. For our purposes 
 
 -   `basePath` is the path to each `trade` table
 -   `remotePath` the path to each `quote` table
--   `rTab` is the `quote` table name
+-   `rTab` is the `quote` table name 
 
 All arguments are passed as strings.
 
 ```q
-//Check if the symlink exists and use Unix command ‘ln –s’ to create
+//Check if the symlink exists and use Unix command ‘ln –s’ to create 
 //the symlink if not
 .lc.createSymLink:{[basePath;remotePath;rTab]
-  remoteTablePath:remotePath,"/",rTab;
+  remoteTablePath:remotePath,"/",rTab; 
   baseTablePath:basePath,"/",rTab;
   if[not(`$rTab) in key hsym `$basePath;
     system "ln -s ",remoteTablePath," ",baseTablePath]; }
@@ -510,18 +506,18 @@ In order to avoid sym file clashes when loading tables from different kdb+ datab
 
 ```q
 //d is the database directory the table will be saved to
-//a is the name of the alternative sym file name used to avoid clashes
+//a is the name of the alternative sym file name used to avoid clashes 
 //p is the database partition slice
 //f is the table partition field
 //t is the table name
 q).lc.dpft:{[d;a;p;f;t]
-  if[not all .Q.qm each r:flip .lc.en[d;a]`. t;'`unmappable];
+  if[not all .Q.qm each r:flip .lc.en[d;a]`. t;'`unmappable]; 
     {[d;t;i;x] @[d;x;:;t[x]i]}[d:.Q.par[d;p;t];r;iasc r f] each key r;
   @[;f;`p#]@[d;`.d;:;f,(r:key r) except f]; }
 
 //The following function is called above when splaying the table
 .lc.en:{[d;a;x]
-  if[not -11h=type a;'`$"expected symbol parameter type for a"];
+  if[not -11h=type a;'`$"expected symbol parameter type for a"]; 
   @[x; cs@where 11h=type each x cs:key flip x; (` sv (hsym d),a)?] }
 ```
 
@@ -533,19 +529,19 @@ The next utility function maps the entries in the `trade` table to those in the 
   remoteTable:`$remoteTable;
   baseTable:`$baseTable;
 
-  //Force-load the asof join columns from remote table into memory
-  remoteFileHandle:` sv (hsym `$basePath),(`$string dt),remoteTable;
+  //Force-load the asof join columns from remote table into memory 
+  remoteFileHandle:` sv (hsym `$basePath),(`$string dt),remoteTable; 
   remoteTable set select sym,time from (get remoteFileHandle);
 
   //Re-apply attributes of original table to the in-memory copy
-  ![remoteTable;();0b;a[`c]!{(#;enlist x;y)} .'
+  ![remoteTable;();0b;a[`c]!{(#;enlist x;y)} .' 
     flip value a:exec a,c from meta get remoteFileHandle where c in ajCols];
 
-  //Join tables and set the link column to be the point at which the
+  //Join tables and set the link column to be the point at which the 
   //tables map together
   baseTable set aj[
-    ajCols;
-    value baseTable;
+    ajCols; 
+    value baseTable; 
     ?[value remoteTable; (); 0b; (ajCols!ajCols),(enlist `id)!enlist `i] ];
   update link:remoteTable!
     (exec i from select i from value remoteTable)?id from baseTable;
@@ -559,7 +555,7 @@ Now that we have all the prerequisite utility functions defined, the following m
 ```q
 .lc.createPart:{[basePath;baseTable;remotePath; remoteTable;ajCols;dt]
   .lc.createSymLink[raze basePath,"/",string dt;
-  raze remotePath,"/",string dt;remoteTable];
+  raze remotePath,"/",string dt;remoteTable]; 
   .lc.joinSaveTables[ajCols;basePath;dt;baseTable;remoteTable]; }
 ```
 
@@ -576,11 +572,11 @@ q)\l db1
 q)tables[]
 `quote`trade
 
-q)meta trade
-c    | t f     a
------| ---------
-date | d
-sym  | s       p
+q)meta trade 
+c    | t f     a 
+-----| --------- 
+date | d 
+sym  | s       p 
 time | t
 price| f
 size | i
@@ -592,7 +588,7 @@ Aggregations may be carried out using a single table; queries will be very effic
 
 ```q
 // First run
-q)\ts res:select size wavg price,bsize wavg bid,asize wavg ask by sym,10 xbar time.minute from select time,sym,size,price,link.ask,link.asize,link.bid,link.bsize from trade where date=max date
+q)\ts res:select size wavg price,bsize wavg bid,asize wavg ask by sym,10 xbar time.minute from select time,sym,size,price,link.ask,link.asize,link.bid,link.bsize from trade where date=max date 
 3030 1117552
 
 // Second run
@@ -600,11 +596,11 @@ q)\ts res:select size wavg price,bsize wavg bid,asize wavg ask by sym,10 xbar ti
 9 1116656
 
 q)res
-sym minute| price    bid      ask
-----------| --------------------------
-A   08:00 | 50.87719 49.76909 48.63532
-A   08:10 | 48.9346  49.99889 52.01281
-A   08:20 | 47.48985 49.68657 53.01129
+sym minute| price    bid      ask 
+----------| -------------------------- 
+A   08:00 | 50.87719 49.76909 48.63532 
+A   08:10 | 48.9346  49.99889 52.01281 
+A   08:20 | 47.48985 49.68657 53.01129 
 A   08:30 | 50.03407 51.82779 47.96814
 ```
 
@@ -616,10 +612,7 @@ This white paper introduced how foreign keys and linked columns may be establish
 A drawback to using foreign keys is that keyed tables cannot be splayed to disk. This is circumvented using linked columns that can establish permanent mappings between tables whether they are both in memory or on disk. Although not featuring the benefits of enumeration, linked columns are useful for establishing mappings between tables in large-scale historical databases, allowing users to either map data within partition slices in a single database or map each table in a particular partition slice in one database to the corresponding partition slice in another.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Kevin Smyth has worked as a consultant for some of the world's leading
-financial institutions. Based in London, Kevin has implemented data
-capture and high-frequency data analysis projects across a large
-number of mainstream and alternative asset classes.
+**Kevin Smyth** has worked as a consultant for some of the world's leading financial institutions. Based in London, Kevin has implemented data capture and high-frequency data analysis projects across a large number of mainstream and alternative asset classes.
 

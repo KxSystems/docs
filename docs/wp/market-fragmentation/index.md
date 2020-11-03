@@ -1,11 +1,17 @@
 ---
-title: Market Fragmentation – A kdb+ framework for multiple liquidity sources – White Papers – kdb+ and q documentation
-description: Kdb+ plays a large part in the trading and risk management activities of many financial institutions around the world. For a large-scale kdb+ system to be effective, it must be designed efficiently so that it can capture and store colossal amounts of data. However, it is equally important that the system provides intelligent and useful functionality to end-users. In the financial world, increasing participation and advances in technology are resulting in a progressively more fragmented market with liquidity being spread across many trading venues. It is therefore crucial that a kdb+ system can store and analyze information for a financial security from all available sources. This paper presents an approach to the challenge of consolidating share price information for equities that trade on multiple venues.
+title: "Market Fragmentation:  A kdb+ framework for multiple liquidity sources | White Papers | kdb+ and q documentation"
+description: An approach to the challenge of consolidating share price information for equities that trade on multiple venues.
 author: James Corcoran
-date: Jan 2013
+date: January 2013
 keywords: analytics, fragmentation, kdb+, market
 ---
+White paper
+{: #wp-brand}
+
 # Market Fragmentation:<br/>A kdb+ framework for multiple liquidity sources
+
+by [James Corcoran](#author)
+{: .wp-author}
 
 
 
@@ -306,9 +312,12 @@ A script is provided in the Appendix below so that users can work through the im
 All tests were performed with kdb+ 3.0 (2012.09.26)
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-James Corcoran has worked as a kdb+ consultant in some of the world’s largest financial institutions and has experience in implementing global software and data solutions in all major asset classes. He has delivered talks and presentations on various aspects of kdb+ and most recently spoke at the annual Kx user conference in London. As a qualified professional risk manager he is also involved in various ongoing risk-management projects at Kx.
+![James Corcoran](../../../img/faces/jamescorcoran.jpg)
+{: .small-face}
+
+**James Corcoran** has worked as a kdb+ consultant in some of the world’s largest financial institutions and has experience in implementing global software and data solutions in all major asset classes. He has delivered talks and presentations on various aspects of kdb+ and most recently spoke at the annual Kx user conference in London. As a qualified professional risk manager he is also involved in various ongoing risk-management projects at Kx.
 
 
 ## Appendix

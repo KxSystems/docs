@@ -1,10 +1,17 @@
 ---
-title: Compression in kdb+ – White papers – q and kdb+ documentation
+title: Compression in kdb+ | White papers | q and kdb+ documentation
 description: introduction to compression in kdb+, contributing factors to compression ratios and performance, and how the use of compressed data can affect performance 
 author: Eoin Killeen
 date: October 2013
+keywords: compress, compression ratio, datatype, get, gzip, kdb+, logical block size, performance, q, set, 
 ---
+White paper
+{: #wp-brand}
+
 # Compression in kdb+
+
+by [Eoin Killeen](#author)
+{: .wp-author}
 
 
 
@@ -22,19 +29,21 @@ All tests were run using kdb+ version 3.1 (2013.09.05)
 
 ## Compression options
 
-There are two broad approaches to saving data on disk in compressed format. 
-Both use [`set`](../../ref/get.md#set).
+There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
 
--  Two steps: save to disk in the regular uncompressed format, then compress it. 
--  Stream data directly from memory to compressed format on disk.
+:fontawesome-regular-hand-point-right:
+Reference: [`set`](../../ref/get.md#set), 
+[`-19!`](../../basics/internal.md#-19x-compress-file)
+
+The first approach is useful for archiving existing historical data, or in cases where it is significantly faster to save the data to disk uncompressed, without the overhead of first compressing the data. In many other cases, it can be more convenient and/or performant to compress the data on the fly while saving.
 
 
-### Convert saved data to compressed format
+### Converting saved data to compressed format using `-19!`
 
-This approach is useful for archiving existing historical data, or where it is significantly faster to save the data to disk uncompressed, without the overhead of first compressing it. 
+The syntax of `-19!` is:
 
 ```q
-(`:targetFile; blockSize; alg; level)set get`:sourceFile
+-19! (`:sourceFile; `:targetFile; blockSize; alg; level) 
 ```
 
 where
@@ -51,9 +60,6 @@ where
 
 : Compression level: for `gzip`, an integer between 0 and 9; else 0.
 
-:fontawesome-solid-database:
-[Compression parameters](../../kb/file-compression.md#compression-parameters)
-
 !!! tip "Logical block size"
 
     Page size for AMD64 is 4KB, Sparc is 8KB. Windows seems to have a default allocation granularity of 64KB.
@@ -64,7 +70,7 @@ The various combinations of arguments will be discussed further in the following
 
 ```q
 `:/db/trade_uncompressed set trade
-(`:/db/trade_compressed; 16; 1; 0)set get`:/db/trade_uncompressed
+-19! (`:/db/trade_uncompressed; `:/db/trade_compressed; 16; 1; 0)
 ```
 
 If this approach is used to compress data, it is preferable to have the source and target files on separate physical disks. This will reduce the number of disk seeks required to move the data iteratively in chunks. 
@@ -73,7 +79,7 @@ If this approach is used to compress data, it is preferable to have the source a
 [simongarland/compress/cutil.q](https://github.com/simongarland/compress/blob/master/cutil.q) for migrating uncompressed databases to compressed format
 
 
-### Save from memory directly to compressed format on disk
+### Saving in-memory data directly to compressed format on disk
 
 In many cases, it is preferable to save data to disk in compressed format in a single step. This is more convenient than having a separate process to convert uncompressed on-disk data to compressed format after it has been saved. It can also be faster than the two-step method, depending on the compression algorithm and level used, and on system CPU and disk characteristics. Direct streaming compression has been implemented by overriding the left argument to `set`:
 
@@ -300,7 +306,7 @@ The final test is a highly CPU-intensive as-of join of the trade and quote recor
 In any given application, the metrics which will determine if and how compression should be used will be informed by the individual use case. Our tests have shown that for this particular setup, assuming some OS caching, the more CPU-intensive queries will see significantly less overall impact than simple reads on small, randomly distributed pieces of data. This implies that we could expect to see acceptable performance levels for intensive queries, while achieving worthwhile reductions in disk usage, i.e. our compression ratio of 1.5. Experimenting with logical block sizes suggested that we should keep this parameter at the low end of the spectrum for our queries, or we will see a fall-off in performance. This is reinforced by the relative lack of change in compression ratio across logical block sizes. Depending on the individual use case, other applications may choose to optimize for overall compression ratio or time taken to save the data.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Eoin Killeen is based in New York. Eoin has worked as a kdb+ consultant on the design and development of a wide range of high-performance trading and analytics applications. He is currently working on a global real-time electronic trading visualization platform and an equity derivatives analytics portal at a US investment bank.
+**Eoin Killeen** is based in New York. Eoin has worked as a kdb+ consultant on the design and development of a wide range of high-performance trading and analytics applications. He is currently working on a global real-time electronic trading visualization platform and an equity derivatives analytics portal at a US investment bank.
 

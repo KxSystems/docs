@@ -17,14 +17,15 @@ extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
   - 'https://code.jquery.com/jquery-3.1.1.min.js'
   - 'https://code.kx.com/scripts/prism.js'
-  - 'https://tracker.mrpfd.com/tracker.js'
+  # - 'https://tracker.mrpfd.com/tracker.js'
   - 'https://use.fontawesome.com/releases/v5.8.0/js/all.js'
   - 'scripts/theme.js'
 google_analytics:
-  - 'UA-3462586-1'
+  - 'UA-180968370-1'
   - 'auto'
 markdown_extensions:
   - admonition
+  - attr_list
   # - codehilite(guess_lang=false)
   - extra
   # - fenced_code
@@ -607,7 +608,7 @@ nav:
         - J. Quobyte: cloud/aws/app-j-quobyte.md
       - AWS Lambda: cloud/aws-lambda/index.md
       - Google CPM: cloud/gcpm/index.md
-      - Auto Scaling:
+      - Auto Scaling*:
         - Overview: cloud/autoscale/index.md
         - Amazon Web Services: cloud/autoscale/aws.md
         - Realtime data cluster: cloud/autoscale/rdc.md

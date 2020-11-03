@@ -4,9 +4,14 @@ description: How to autoscale a cloud deployment of kdb+ realtime database
 author: Jack Stapleton
 date: September 2020
 ---
+White paper
+{: #wp-brand}
+
 # Auto Scaling for a kdb+ realtime database
 
 
+by [Jack Stapleton](cost-risk.md#author)
+{: .wp-author}
 
 :fontawesome-brands-github:
 [kxcontrib/cloud-autoscaling](https://github.com/kxcontrib/cloud-autoscaling)

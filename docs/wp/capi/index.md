@@ -1,11 +1,17 @@
 ---
-title: C API for kdb+ – White Papers – kdb+ and q documentation
+title: C API for kdb+ | White Papers | kdb+ and q documentation
 description: How to connect a C program to a kdb+ database
 author: Jeremy Lucid
 date: December 2018
 keywords: kdb+, q, real-time, streaming, subscribe, tick
 ---
+White paper
+{: #wp-brand}
+
 # C API for kdb+
+
+by [Jeremy Lucid](#author)
+{: .wp-author}
 
  
 
@@ -783,7 +789,7 @@ values[2;] = ABC DEF GHI JKL
 
 ### Tables
 
-Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x-k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
+Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x->k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
 extracted.
 
 ```c
@@ -1722,6 +1728,17 @@ int main() {
 This document covered multiple aspects of the C API interface for connecting with the kdb+  database. Topics covered included the creation of socket connections, execution of queries, error handling, memory management, and the creation and extraction of data from `K` objects such as lists, dictionaries and tables. Practical examples formed the basis for the construction of a C subscriber process, capable of consuming a kdb+ data feed, and a feedhandler process designed to publish data to a kdb+ tickerplant. Finally, the use of shared C libraries to extend the functionality of kdb+ was also demonstrated.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Jeremy Lucid, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
+![Jeremy Lucid](../../../img/faces/jeremylucid.jpg)
+{: .small-face}
+
+**Jeremy Lucid**, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
+
+Other papers by Jeremy Lucid
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Storing and exploring the Bitcoin blockchain](../blockchain/index.md)
+-   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md)
+</ul>

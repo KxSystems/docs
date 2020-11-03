@@ -1,11 +1,17 @@
 ---
-title: A natural query interface for distributed systems
+title: A natural query interface for distributed systems | White papers | kdb+ and q documentation
 description: An interface similar to q for queries to kdb+ tables distributed across multiple systems, implemented in q, trading some q optimizations for convenience 
 author: Sean Keevey
 date: November 2014
 keywords: distributed systems, kdb+, natural, q, query
 ---
+White paper
+{: #wp-brand}
+
 # A natural query interface for distributed systems
+
+by [Sean Keevey](#author)
+{: .wp-author}
 
 
 
@@ -339,7 +345,14 @@ It could be integrated with a load balancer, a permissions arbiter, a logging fr
 All tests were run using kdb+ version 3.2 (2014.10.04).
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Sean Keevey is a kdb+ consultant and has developed data and analytic systems for some of the world’s largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
+**Sean Keevey** is a kdb+ consultant and has developed data and analytic systems for some of the world’s largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
+
+Other papers by Sean Keevey
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [A natural query interface for distributed systems](../query-interface.md)
+</ul>
 

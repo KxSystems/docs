@@ -5,7 +5,13 @@ author: Jason Quinn
 date: November 2019
 keywords: alerts, latency, realtime alert logic, surveillance  
 ---
+White paper
+{: #wp-brand}
+
 # Latency and efficiency considerations for a real-time surveillance system
+
+by [Jason Quinn](#author)
+{: .wp-author}
 
 
 
@@ -346,10 +352,12 @@ In conclusion, between what appears to be an acceptable guaranteed cap on the la
     All tests ran with 16 alert engines at a time and were performed using the 64-bit kdb+ 3.6 2019.06.09 build on a Linux machine with an Intel Core i7-7700K, 4.2 GHz 4 core processor with 64GB RAM running Ubuntu 16.04.
 
 
-## :fontawesome-solid-user: Author 
+## Author 
 
-Jason Quinn is a kdb+ consultant based in London. He worked on a global cross asset Kx for Surveillance implementation for a major international banking group before 
-joining our Kx for Surveillance product team.
+![Jason Quinn](../../../img/faces/jasonquinn.jpg)
+{: .small-face}
+
+**Jason Quinn** is a kdb+ consultant based in London. He worked on a global cross asset _Kx for Surveillance_ implementation for a major international banking group before joining our _Kx for Surveillance_ product team.
 
 
 ## Appendix – Surveillance framework example

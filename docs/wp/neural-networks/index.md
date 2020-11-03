@@ -1,10 +1,18 @@
 ---
-title: An introduction to neural networks with kdb+ – White Papers – kdb+ and q documentation
-description: A number of different algorithms have been developed around neural networks, and this paper is going to focus on the implementation of a feedforward neural network in kdb+. A feedforward network (also known as a _multi-layer perceptron_) is a type of supervised machine-learning algorithm which uses a series of nonlinear functions layered together with an output. It can be used for classification or regression purposes and has been shown to be a universal approximator – an algorithm that can model any smooth function given enough hidden units.
+title: An introduction to neural networks with kdb+ | White Papers | kdb+ and q documentation
+description: Implementation of a feedforward neural network in kdb+
 author: James Neill
 keywords: kdb+, neural network
 ---
+White paper
+{: #wp-brand}
+
 # An introduction to neural networks with kdb+
+
+by [James Neill](#author)
+{: .wp-author}
+
+
 
 
 
@@ -760,12 +768,9 @@ and deep networks to be developed.
 All tests were run using kdb+ version 3.2 (2015.05.07) 
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-James Neill works as a kdb+ consultant for one of the world’s largest
-investment banks, developing a range of applications. James has also
-been involved in the design of training courses in data science and
-machine learning as part of the First Derivatives training programme.
+**James Neill** works as a kdb+ consultant for one of the world’s largest investment banks, developing a range of applications. James has also been involved in the design of training courses in data science and machine learning as part of the First Derivatives training programme.
 
 
 ## References

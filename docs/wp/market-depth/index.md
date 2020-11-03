@@ -1,11 +1,17 @@
 ---
-title: Sample aggregation engine for market depth
+title: Sample aggregation engine for market depth | White papers | kdb+ and q documentation
 description: A framework for aggregating market depth and managing multiple subscriptions, using FX data as an example
 author: Stephen Dempsey
 date: January 2014
 keywords: aggregation, ask, attribute, bid, book, depth, fx, kdb+, market depth, order book, price,publish, q, quote, schema, sort, subscribe, top of book
 ---
+White paper
+{: #wp-brand}
+
 # Sample aggregation engine for market depth
+
+by [Stephen Dempsey](#author)
+{: .wp-author}
 
 
 
@@ -372,6 +378,6 @@ Reference: [Set Attribute](../../ref/set-attribute)
 
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Stephen Dempsey is based in Dublin. Stephen works for First Derivatives’ R&D team on a variety of different applications in Kx technology. He has been involved in the design and implementation of a wide range of applications, including tick-capture and algorithmic-trading platforms.
+**Stephen Dempsey** is based in Dublin. Stephen works for First Derivatives’ R&D team on a variety of different applications in Kx technology. He has been involved in the design and implementation of a wide range of applications, including tick-capture and algorithmic-trading platforms.

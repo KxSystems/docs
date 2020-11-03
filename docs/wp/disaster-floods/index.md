@@ -1,11 +1,19 @@
 ---
-title: Predicting floods | White paper | kdb+ and q documentation
+title: Predicting floods with q and machine learning | White paper | kdb+ and q documentation
 description: Machine-learning methods in q to predict flood susceptibility in an area and the time for a river to reach its peak height after a rainfall event.
 author: Diane O’Donoghue
 date: October 2019
 keywords: embedpy, flash, flood, kdb+, machine learning, model, nasa, nhdplus, nlcd, noaa, prism, q, random forest, space, usgs, xgboost
 ---
+White paper
+{: #wp-brand}
+
 # Predicting floods with q and machine learning
+
+by [Diane O’Donoghue](#author)
+{: .wp-author}
+
+
 
 
 
@@ -1231,9 +1239,9 @@ Knowing the features that contribute to flood susceptibility and the length of t
 The best results from the models above were obtained by continuously adjusting the hyper-parameters of the model. The unbalanced target data in the monthly model, meant that weighting the classes was an important feature to experiment with. This was particularly important when trying to obtain high precision and recall results. Between the two models, balance in the recall and precision was better for the XGBoost model.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Diane O’Donoghue joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London.
+**Diane O’Donoghue** joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London.
 
 
 ## Code

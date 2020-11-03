@@ -1,12 +1,17 @@
 ---
-title: Kdb+ and WebSockets – White Papers – kdb+ and q documentation
-description: This paper introduces what WebSockets are and what benefits they hold over standard HTTP. It takes the reader through the set-up of a simple web page that uses WebSockets to connect to a kdb+ process, the steps involved in passing data through the connection, and the various methods for converting data between kdb+ and JavaScript.
-author: Chris Scott and Michael Gracey
+title: Kdb+ and WebSockets | White Papers | kdb+ and q documentation
+description: What WebSockets are, what benefits they hold over standard HTTP; how to set up a simple web page that uses WebSockets to connect to a kdb+ process
+author: [Chris Scott, Michael Gracey]
 date: March 2018
-hero: Interfaces
 keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSockets
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ and WebSockets 
+
+by [Chris Scott &amp; Michael Gracey](#authors)
+{: .wp-author}
 
 
 
@@ -757,13 +762,13 @@ underlying data stored within Kx and other databases.
 All tests were run using kdb+ version 3.5 (2017.11.30)
 
 
-## :fontawesome-solid-user: Authors
+## Authors
 
-**Version 1.0**
-Chris Scott worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.
+<!-- Version 1.0 -->
+**Chris Scott** worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.
 
-**Version 1.1 (March 2018)**
-Michael Gracey also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the Kx platform.
+<!-- **Version 1.1 (March 2018)** -->
+**Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the Kx platform.
 
 
 ## Appendixes 

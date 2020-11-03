@@ -5,7 +5,14 @@ date: December 2012
 description: Using kdb+to analyze transaction costs from high-frequency data that often overwhelms traditional database and event-processing systems
 keywords: analysis, performance, schema, transaction cost
 ---
+White paper
+{: #wp-brand}
+
 # Transaction-cost analysis using kdb+
+
+by [Colm Earley](#author)
+{: .wp-author}
+
 
 
 
@@ -432,7 +439,10 @@ Overall, the paper provides a snapshot of the type of TCA queries that can be ru
 All tests performed with kdb+ V3.0 (2012.11.12).
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Colm Earley has worked on kdb+ tick-database and algorithmic-trading systems related to both the equity and FX markets. Based in New York, Colm is a senior kdb+ consultant at a leading brokerage firm, implementing a global tick database.
+![Colm Earley](../../img/faces/colmearley.jpg)
+{: .small-face}
+
+**Colm Earley** has worked on kdb+ tick-database and algorithmic-trading systems related to both the equity and FX markets. Based in New York, Colm is a senior kdb+ consultant at a leading brokerage firm, implementing a global tick database.
 

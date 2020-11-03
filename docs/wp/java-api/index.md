@@ -1,11 +1,17 @@
 ---
-title: Java API for kdb+ – White Papers – kdb+ and q documentation
-description: This paper illustrates how the Java API for kdb+ can be used to enable a Java program to interact with a kdb+ process. It first explores the API itself – how it is structured, and how it might be included in a development project. Examples are then provided for core use cases for the API in a standard setup. Particular consideration is given to how the API facilitates subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system.
+title: Java API for kdb+ | White Papers | kdb+ and q documentation
+description: This paper illustrates how the Java API for kdb+ can be used to enable a Java program to interact with a kdb+ process. 
 author: Peter Lyness
 date: May 2018
 keywords: API, Java, interface, connection
 ---
+White paper
+{: #wp-brand}
+
 # :fontawesome-brands-java: Java API for kdb+
+
+by [Peter Lyness](#author)
+{: .wp-author}
 
 
 
@@ -1237,8 +1243,8 @@ applications with contemporary technologies, often to the benefit of
 both.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Peter Lyness joined First Derivatives as a software engineer in 2015. During this time he has implemented a number of Java-based technical solutions for clients, including kdb+ interface logic for upstream static and real time data feeds. 
+**Peter Lyness** joined First Derivatives as a software engineer in 2015. During this time he has implemented a number of Java-based technical solutions for clients, including kdb+ interface logic for upstream static and real time data feeds. 
 
 

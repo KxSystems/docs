@@ -1,13 +1,17 @@
 ---
-title: Permissions with kdb+ – White papers – q and kdb+ documentation
+title: Permissions with kdb+ | White papers | q and kdb+ documentation
 description: An introduction to permissioning in kdb+ without using LDAP or any other external entitlements system
 author: Tom Martin
 date: May 2013
 keywords: access, authentication, code injection, database, entitlement, http, ipc, kdb+, kerberos, ldap, password, permission, poweruser, q, query, security, single sign-on, superuser, user
 ---
+White paper
+{: #wp-brand}
+
 # Permissions with kdb+
 
-
+by [Tom Martin](#author)
+{: .wp-author}
 
 
 Due to its efficiency in storing and retrieving large volumes of data, kdb+ is the data-storage technology of choice for many financial institutions. Kdb+ processes thus often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. Kdb+ offers a number of in-built access functions, though in a default kdb+ instance these are not activated. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
@@ -1098,8 +1102,8 @@ We have described a number of methods of securing a kdb+ process. We examined th
 While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firm’s authentication infrastructure. One should also consider out-of-the-box solutions like [Kx Control](../../devtools.md#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Tom Martin is a financial engineer who has developed data-management systems for some of the world’s leading financial institutions. Tom is currently based in London, where he maintains a firm-wide risk database at a top-tier investment bank.
+**Tom Martin** is a financial engineer who has developed data-management systems for some of the world’s leading financial institutions. Tom is currently based in London, where he maintains a firm-wide risk database at a top-tier investment bank.
 
 

@@ -1,13 +1,17 @@
 ---
-title: Storing and exploring the Bitcoin blockchain – White Papers – kdb+ and q documentation
+title: Storing and exploring the Bitcoin blockchain | White Papers | kdb+ and q documentation
 description: A blockchain explorer uses kdb+ to store and query Bitcoin transactions using partitioned databases, splayed tables, intraday write-downs, and in-memory joins.
-author: Jeremy Lucid and Daniel Irwin
+author: [Jeremy Lucid, Daniel Irwin]
 date: December 2018
 keywords: bitcoin, blockchain, kdb+, q
 ---
+White paper
+{: #wp-brand}
+
 # Storing and exploring the Bitcoin blockchain
 
-
+by [Jeremy Lucid &amp; Daniel Irwin](#authors)
+{: .wp-author}
 
 
 
@@ -987,18 +991,27 @@ with data retrieval and storage, and potential for application
 development using the technology within the domain.
 
 
-## :fontawesome-solid-user: Authors
+## Authors
 
-Daniel Irwin is a kdb+ consultant based in Singapore. 
+**Daniel Irwin** is a kdb+ consultant based in Singapore. 
 He worked on a global cross-asset _Kx for Surveillance_ implementation 
 for a major international banking group before moving to one of 
 Asia’s largest sovereign-wealth funds to develop a solution for 
 best execution and transaction-cost analysis.
 
-Jeremy Lucid is a kdb+ consultant based in Belfast. 
+![Jeremy Lucid](../../../img/faces/jeremylucid.jpg)
+{: .small-face}
+
+**Jeremy Lucid** is a kdb+ consultant based in Belfast. 
 He has worked on real-time Best Execution projects for a major multinational 
 banking institution, and a _Kx for Surveillance_ implementation 
-at a leading options and futures exchange 
+at a leading options and futures exchange.
+
+Other papers by Jeremy Lucid
+{: .publications}
+
+-   :fontawesome-regular-map: [C API for kdb+](../capi/index.md){: .publications}
+-   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md){: .publications}
 
 
 ## Appendix

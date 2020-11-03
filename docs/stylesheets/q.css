@@ -131,6 +131,8 @@
 	font-size: 110%;
 }
 
+/* White Paper branding
+--------------------------------------------- */
 .wp-author {
 	font-size: 100%;
 	text-align: right;
@@ -145,4 +147,23 @@
 	padding: .5em 0;
 	text-align: center;
 	text-transform: uppercase;
+}
+p.publications {
+	font-size: 80%;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+}
+.publications li {
+	list-style: none;
+}
+p.small-face {
+	float: left;
+	margin: 0 1em 0 0;
+}
+.small-face img {
+	border-radius: 35px;
+	width: 70px;
+}
+.md-typeset h2 {
+	clear: both;
 }

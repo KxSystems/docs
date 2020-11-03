@@ -1,11 +1,17 @@
 ---
-title: Kdb+ and FIX messaging
+title: Kdb+ and FIX messaging | White Papers | q and kdb+ documentation
 description: A guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an order-management system
 author: Damien Barker
 date: January 2014
 keywords: analytics, fix, kdb+, last order, order-management system, order processing, order status, 
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ and FIX messaging
+
+by [Damien Barker](#author)
+{: .wp-author}
 
 
 
@@ -588,6 +594,6 @@ It is an essential requirement to be able to view the current and final state of
 All tests were run using kdb+ version 3.1 (2013.12.27)
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Damien Barker is a financial engineer who has worked as a consultant for some of the world's largest financial institutions. Based in London, Damien is currently working on trading and analytics application at a US investment bank.
+**Damien Barker** is a financial engineer who has worked as a consultant for some of the world's largest financial institutions. Based in London, Damien is currently working on trading and analytics application at a US investment bank.

@@ -1,11 +1,17 @@
 ---
-title: Temporal data – A kdb+ framework for corporate actions
+title: "Temporal data: a kdb+ framework for corporate actions | White Papers | documentation for q and kdb+"
 author: Sean Rodgers
 date: March 2014
 description: Examines a kdb+ framework which can be used to apply corporate action adjustments on the fly to equity tick data
 keywords: adjustment, corporate action, cash dividend, dividend, framework, name change, reference data, spin off, stock split, temporal data
 ---
+White paper
+{: #wp-brand}
+
 # Temporal data:<br>A kdb+ framework for corporate actions
+
+by [Sean Rodgers](#author)
+{: .wp-author}
 
 
 
@@ -734,7 +740,7 @@ Overall, this paper provides an insight into the capabilities of kdb+ regarding 
 All tests were run using kdb+ version 3.1 (2014.02.08)
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Sean Rodgers is a kdb+ consultant based in London. He works for a top-tier investment bank on a global tick-capture and analytic application for a range of different asset classes.
+**Sean Rodgers** is a kdb+ consultant based in London. He works for a top-tier investment bank on a global tick-capture and analytic application for a range of different asset classes.
 

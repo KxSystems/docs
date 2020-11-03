@@ -4,7 +4,13 @@ description: A fast, efficient and scalable kdb+ framework for receiving large a
 author: Enda Gildea
 keywords: attribute, batch, data, disk, file, format, ingest, loader, sort
 ---
+White paper
+{: #wp-brand}
+
 # Mass ingestion through data loaders
+
+by [Enda Gildea](#author)
+{: .wp-author}
 
 
 
@@ -597,7 +603,14 @@ In this paper we discussed batch processing and use cases where it may be most a
 The framework outlined in this paper is a simplified version of a framework that has been used in several Kx implementations for batch ingestion. It has proven to be fast, efficient and scalable.
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Enda Gildea is a senior kdb+ consultant for Kx who has implemented several eFX post-trade analytics and cross-asset surveillance solutions in Singapore and Sydney.
+![Enda Gildea](../../img/faces/endeagildea.jpg)
+{: .small-face}
+
+**Enda Gildea** is a senior kdb+ consultant for Kx who has implemented several eFX post-trade analytics and cross-asset surveillance solutions in Singapore and Sydney.
+<br>
+[:fontawesome-solid-envelope:](mailto:egildea@kx.com?subject=White paper: Mass ingestion through kdb+ data loaders) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/endagildea/) 
+
 

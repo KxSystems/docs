@@ -1,7 +1,7 @@
 /*
  * Custom script for code.kx.com
  * Author: stephen@kx.com
- * Version: 2020.02.05
+ * Version: 2020.11.02
  * https://gist.github.com/wpscholar/4637176#file-jquery-external-links-new-window-js-L4
  */
 $(function() {
@@ -107,13 +107,48 @@ $(function() {
 	// disable MkDocs keypress listener/s on Search form
 	$('.md-search__form').replaceWith($('.md-search__form').clone());
 	$(".md-search__form").on('keydown', srchHandler);
-	// White paper branding
-	if( $('link[rel=canonical]').attr('href').includes('/wp/') ) {
-		var auth = $('meta[name=author]').attr('content');
-		if( auth !== 'Kx Systems' ) { // default
-			$('h1').before('<p id="wp-brand">White paper</p>');
-			var s = $('#authors').length ? 's' : ''; // plural?
-			$('h1').after('<p class="wp-author"><a href="#author'+s+'">by '+auth+'</a></p>');
-		}
-	}
+	// // White paper branding
+	// var authorList = function( authors ) { // author list as string
+	// 	var res = '', lst = authors.length - 1;
+	// 	authors.forEach(function(author,i){
+	// 		res += author+(i==lst?'':(i==lst-1?' &amp; ':', '));
+	// 	});
+	// 	return res;
+	// };
+	// if( $('link[rel=canonical]').attr('href').includes('/wp/') ) {
+	// 	var auth = $('meta[name=author]').attr('content');
+	// 	// console.log(authorPubs(pubs[auth]));
+	// 	if( auth !== 'Kx Systems' ) { // default
+	// 		var ttl = $('title').text();
+	// 		ttl = ttl.slice(0,ttl.indexOf('|')).trim();
+	// 		var authors = auth.charAt(0)==='[' ? JSON.parse(auth.replace(/'/g,'"')) : [auth];
+	// 		// Other papers by the authors
+	// 		// var pubs = {};
+	// 		// authors.forEach(function(author){
+	// 		// 	pubs[author] = '';
+	// 		// });
+	// 		// $.getJSON("/data/white-papers.json", function( papers ) { 
+	// 		// 	papers.forEach(function(paper){
+	// 		// 		if( paper.title !== ttl ){
+	// 		// 			var uri = encodeURI('/wp/'+paper.slug+'/');
+	// 		// 			var li = '<li><i class="far fa-map"></i> <a href="'+uri+'">'+paper.title+'</a></li>';
+	// 		// 			authors.forEach(function(author){
+	// 		// 				if( paper.authors.indexOf(author) != -1 ){
+	// 		// 					pubs[author] += li;
+	// 		// 				}
+	// 		// 			});
+	// 		// 		}
+	// 		// 	});
+	// 		// 	Object.keys(pubs).forEach(author => {
+	// 		// 		if( pubs[author].length ){
+	// 		// 			$('#author'+s).nextAll('p:contains("'+author+'")').first()
+	// 		// 				.after('<p class="publications">Other papers by '+author+'</p><ul class="publications">'+pubs[author]+'</ul>');
+	// 		// 		}
+	// 		// 	});
+	// 		// });
+	// 		// $('h1').before('<p id="wp-brand">White paper</p>'); // WP heading
+	// 		var s = authors.length > 1 ? 's' : ''; // plural?
+	// 		$('h1').after('<p class="wp-author"><a href="#author'+s+'">by '+authorList(authors)+'</a></p>');
+	// 	}
+	// }
 });

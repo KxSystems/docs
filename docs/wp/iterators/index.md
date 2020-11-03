@@ -1,11 +1,17 @@
 ---
-title: Iterators – White Papers – kdb+ and q documentation
-description: Iterators (formerly known as adverbs) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. Loops are rare in q programs and are almost always candidates for optimization. Mastery of iterators is a core q skill. The first part of this paper introduces iterators informally. This provides ready access to the two principal forms of iteration – maps and accumulators. The second part of the paper reviews iterators more formally and with greater attention to syntax. We see how iterators apply not only to functions but also to lists, dictionaries and tables. From their syntax we see when parentheses are required, and why.
-author: Stephen Taylor
+title: Iterators | White Papers | kdb+ and q documentation
+description: Iterators (formerly known as adverbs) are the primary means of iteration in q, and in almost all cases the most efficient way to iterate. 
+author: [Conor Slattery, Stephen Taylor]
 date: March 2019
 keywords: accumulator, adverb, applicable value, converge, dictionary, do, iteration, iterator, kdb+, list, loop, map, operator, q, value, while
 ---
+White paper
+{: #wp-brand}
+
 # Iterators
+
+by [Conor Slattery &amp; Stephen Taylor](#authors)
+{: .wp-author}
 
 
 
@@ -1024,11 +1030,27 @@ All tests were run using kdb+ 3.6 (2018.10.23).
 
 
 
-## :fontawesome-solid-user: Authors 
+## Authors 
 
-Conor Slattery is a financial engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
-
-Stephen Taylor is the Kx librarian. 
+**Conor Slattery** is a financial engineer who has designed kdb+ applications for a range of asset classes. Conor is currently working with a New York-based investment firm, developing kdb+ trading platforms for the US equity markets.
 
 An earlier version of this paper by Slattery was published in 2013 as [“Efficient use of adverbs”](/download/wp/efficient_use_of_adverbs.pdf).
+
+![Stephen Taylor](../../img/faces/stephentaylor.png)
+{: .small-face}
+
+**Stephen Taylor** FRSA is the Kx Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
+<br>
+[:fontawesome-solid-envelope:](mailto:stephen@kx.com?subject=White paper: Iterators) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
+[:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)
+
+Other papers by Stephen Taylor
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Parse trees and functional forms](../parse-trees.md)
+-   :fontawesome-solid-globe: [Pair programming with the users](http://archive.vector.org.uk/art10009900)
+-   :fontawesome-solid-globe: [Three principles of coding clarity](http://archive.vector.org.uk/art10009750)
+</ul>
 

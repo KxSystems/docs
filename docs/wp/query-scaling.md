@@ -1,11 +1,17 @@
 ---
-title: Kdb+ query scaling
+title: Kdb+ query scaling | White papers | kdb+ and q documentation
 description: How to take advantage of multiple kdb+ query structures  to achieve optimal query performance for large volumes of data
 author: Ian Lester
-date: Jan 2014
+date: January 2014
 keywords: find, join, kdb+, optimize, performance, q, query, scale, select
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ query scaling
+
+by [Ian lester](#author)
+{: .wp-author}
 
 
 
@@ -560,8 +566,8 @@ It also considered joins, in particular the left join, window join and as-of joi
 All tests were run using kdb+ 3.1 (2013.12.27)
 
 
-## :fontawesome-solid-user: Author
+## Author
 
-Ian Lester is a financial engineer who has worked as a consultant for some of the world’s largest financial institutions. Based in New York, Ian is currently working on a trading application at a US investment bank.
+**Ian Lester** is a financial engineer who has worked as a consultant for some of the world’s largest financial institutions. Based in New York, Ian is currently working on a trading application at a US investment bank.
 
 

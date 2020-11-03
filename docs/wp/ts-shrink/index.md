@@ -1,10 +1,13 @@
 ---
-title: Dynamically shrinking big data using time-series database kdb+ – White papers – q and kdb+ documentation
-author: Sean Keevey and Kevin Smyth
+title: Dynamically shrinking big data using timeseries database kdb+ | White papers | q and kdb+ documentation
+author: [Sean Keevey, Kevin Smyth]
 description: Two implementations of the Ramer-Douglas-Peucker algorithm for curve simplification applied to financial time-series data without distortion.
 date: February 2015
 keywords: compression, distortion, iterative, kdb+, q, Ramer-Douglas-Peucker, recursive, simplification, time series
 ---
+White paper
+{: #wp-brand}
+
 # Dynamically shrinking big data using time-series database kdb+
 
 
@@ -281,11 +284,18 @@ This type of data-reduction trades off an increased runtime cost on the server a
 While for many utilities simple bucket-based summaries are more than adequate and undeniably more performant, we propose that for some uses a more discerning simplification as discussed above can prove invaluable. This is particularly the case with certain time-series and combinations thereof where complex and volatile behaviors must be studied.
 
 
-## :fontawesome-solid-user: Authors
+## Authors
 
-Sean Keevey is a kdb+ consultant and has developed data and analytic systems for some of the world's largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
+**Sean Keevey** is a kdb+ consultant and has developed data and analytic systems for some of the world's largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
 
-Kevin Smyth has worked as a kdb+ consultant for some of the world’s leading exchanges and financial institutions. Based in London, Kevin has experience with data capture and high-frequency data-analysis projects across a range of asset classes.
+Other papers by Sean Keevey
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Dynamically shrinking big data using timeseries database kdb+](../ts-shrink/index.md)
+</ul>
+
+**Kevin Smyth** has worked as a kdb+ consultant for some of the world’s leading exchanges and financial institutions. Based in London, Kevin has experience with data capture and high-frequency data-analysis projects across a range of asset classes.
 
 
 ## References
