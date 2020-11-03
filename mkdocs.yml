@@ -86,8 +86,7 @@ nav:
   - Open source: github.md
   - Support: support.md
   - Community: community.md
-  - Corporate site: https://kx.com
-  - Wiki: wiki.md
+  - Kx Systems: https://kx.com
   - Learn: 
     - Get started: learn/index.md
     - Install: learn/install.md
@@ -716,3 +715,4 @@ nav:
     - License agreements:
       - AWS: license/aws.md
       - GCP: license/gcp.md
+    - Wiki: wiki.md
