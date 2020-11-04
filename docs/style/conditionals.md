@@ -1,7 +1,6 @@
 ---
 title: The right conditional | Remarks on Style | q and kdb+ documentation
 description: Consistent use of if and the conditional will make your code more readable. Indexing and dictionaries are often faster and more expressive forms. 
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter and Stephen Taylor
 keywords: conditional, default, dictionary, else, if, indexing, result, switch
 ---

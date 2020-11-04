@@ -3,7 +3,6 @@ title: Goofys – Appendix E of Migrating a kdb+ HDB to Amazon EC2 – Cloud –
 description: Goofys is an open-source Linux client distribution. It uses an AWS S3 storage backend, behind a running and a normal Linux AWS EC2 instance. It presents a POSIX file system layer to kdb+ using the FUSE layer. It is distributed in binary form for RHEL/CentOS and others, or can be built from source.
 author: Glenn Wright
 date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud, goofys, kdb+
 ---
 # Appendix E - Goofys

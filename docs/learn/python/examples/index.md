@@ -3,7 +3,6 @@ title: Q versions of Python basic programming examples| Documentation for kdb+ a
 description: Python programming examples and their q equivalents
 author: Stephen Taylor
 date: February 2020
-hero: <i class="fab fa-python"></i> Python programming examples in q
 ---
 # Basic programs
 

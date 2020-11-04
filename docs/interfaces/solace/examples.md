@@ -3,7 +3,6 @@ title: Example usage | Solace | Interfaces | Docuemntation for q and kdb+
 author: Conor McCarthy
 description: Examples showing the use of the Solace kdb+ interface
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: Solace, PubSub+, publish, subscribe, request, reply, streaming
 ---
 

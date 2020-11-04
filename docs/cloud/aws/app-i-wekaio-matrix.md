@@ -3,7 +3,6 @@ title: WekaIO Matrix – Appendix I of Migrating a kdb+ HDB to Amazon EC2 – Cl
 description: WekaIO Matrix is a commercial product from WekaIO. Version 3.1.2 was used for testing. Matrix uses a VFS driver, enabling Weka to support POSIX semantics with lockless queues for I/O. The WekaIO POSIX system has the same runtime semantics as a local Linux file system.
 author: Glenn Wright
 date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, wekaio
 ---
 # Appendix I – WekaIO Matrix

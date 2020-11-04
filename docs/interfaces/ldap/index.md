@@ -1,7 +1,6 @@
 ---
 title: LDAP interface for kdb+ | Interfaces | kdb+ and q documentation
 description: This interface allows KDB+ to interact with the Lightweight Directory Access Protocol (LDAP).
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # LDAP interface for kdb+
 

@@ -2,7 +2,6 @@
 title: Using HDF5 with kdb+ | Interfaces | Documentation for kdb+ and q
 description: Interface to allow the reading and writing of HDF5 data to and from kdb+  
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: HDF5, api, fusion, interface, conversion, data formatting
 ---
 # ![HDF5](../img/hdf5.jpeg) Using HDF5 data with kdb+

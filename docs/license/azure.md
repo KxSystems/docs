@@ -1,7 +1,6 @@
 ---
 title: Kdb+ license for Microsoft Azure Marketplace | kdb+ and q documentation
 description: Software End User Agreement for Microsoft Azure Marketplace
-hero: <i class="fas fa-cloud"></i> Microsoft Azure Marketplace
 date: Oct 2020
 ---
 # Kdb+ software end user agreement

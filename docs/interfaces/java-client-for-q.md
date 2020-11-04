@@ -1,7 +1,6 @@
 ---
 title: Using Java with kdb+ – Interfaces – kdb+ and q documentation
 description: How to enable a Java client to query kdb+, subscribe to a kdb+ publisher, and publish to a kdb+ consumer
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: fusion, interface, java, kdb+, q
 ---
 # :fontawesome-brands-java: Using Java with kdb+

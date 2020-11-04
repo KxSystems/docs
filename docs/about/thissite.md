@@ -1,17 +1,47 @@
 ---
-title: About this site – About – kdb+ and q documentation
+title: About this site | kdb+ and q documentation
 description: Origin and content of the Kx documentation site
 author: Stephen Taylor
-keywords: blog, kdb+, news, q, site
 ---
 # About this site
 
 
-This site is the successor to the Mediawiki site. 
+This site is the official documentation for [kdb+](../database/index.md) and the [q programming language](../ref/index.md).
 
 It reflects the work of the Kx community since 1993, has many authors, 
 and continues to evolve.  
 
+This site is a project of the Kx Librarian: librarian@kx.com.
+
+> A librarian’s job is to put information where people can find it. 
+
+
+## :fontawesome-solid-search: Search
+
+The Search Box on this site is customized for the q language. 
+Some examples:
+
+```txt
+Operator glyphs            $  ^  .  <>  /:  ':
+ and their names           dollar  bang  at
+Operator names             Drop  roll  Enum Extend  
+Keywords                   xbar  like  ajf0  uj
+Namespace objects          .z.pd  .Q.dpfts
+System commands            \d  \ts  \_  \\
+Command-line options       -b  -p
+Internal functions         -11!
+Popular queries            types  datatypes
+```
+
+Queries not matched by the Search Box are handled by Google Search.
+
+!!! tip "Install `man.q` to open the Reference direct from the q session."
+
+:fontawesome-brands-github:
+[KxSystems/man](https://github.com/KxSystems/man)
+
+:fontawesome-solid-question:
+[`man.q`](man.md)
 
 
 ## :fontawesome-brands-github: GitHub
@@ -21,17 +51,6 @@ Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-gith
 For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
 
-## :fontawesome-regular-life-ring: Reference
-
-The wiki’s Reference section, organised by glyphs, was a good tool for _reading_ q. It was easy to find, for example, all the possible meanings of `$`. On the other hand, a writer looking for tools to convert between datatypes and representations would have to explore most of the Reference section to be confident she had found them all. 
-
-The new site reference has three aims:
-
-- to be a _fast prompt_ for things already learned 
-- to help _reading_ by showing what terms mean
-- to help _writing_ by categorising the tools by semantic topic 
-
-
 ## :fontawesome-regular-handshake: Contribute
 
 > A finished work is exactly that, requires resurrection.  
@@ -39,39 +58,29 @@ The new site reference has three aims:
 
 The repository for this site is :fontawesome-brands-github: [KxSystems/docs](https://github.com/KxSystems/docs). 
 The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow). 
-
 To contribute, submit a pull request. 
 
-### Honor roll
+The repo includes a style guide for contributors.
 
-We gratefully acknowledge contributions by pull requests from
 
--   Alexander Belopolsky
--   Aleks Bunin
--   Angus Wilson
--   Andrew in New York
--   Chris Shucksmith
--   Cillian Reilly
--   Conor McCarthy
--   David Z. Han
--   Esperanza Lopez Aguilera
--   Geo Carncross
--   James Hanna
--   kylenarocroc
--   Sean Keevey
--   Sean O’Hagan
--   Rian O’Cuinneagain
--   Rikesh
--   Thomas Smyth
--   Sergey Vidyuk
--   Simon Shanks
--   William Da Silva
+We gratefully acknowledge pull requests from
 
+```txt
+Alexander Belopolsky            James Hanna
+Aleks Bunin                     kylenarocroc
+Angus Wilson                    Sean Keevey
+Andrew in New York              Sean O’Hagan
+Chris Shucksmith                Rian O’Cuinneagain
+Cillian Reilly                  Rikesh
+Conor McCarthy                  Thomas Smyth
+David Z. Han                    Sergey Vidyuk
+Esperanza Lopez Aguilera        Simon Shanks
+Geo Carncross                   William Da Silva
+```
 
 ## :fontawesome-solid-balance-scale: License 
 This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
 ## :fontawesome-solid-camera-retro: Images
@@ -83,9 +92,51 @@ We understand this to be fair use.
 If you are a copyright holder and object to this use, please write to librarian@kx.com. 
 
 
-## :fontawesome-solid-envelope: Contact
+## :fontawesome-solid-book-dead: Terminology
 
-This site is a project of the [Librarian](mailto:librarian@kx.com).
+In 2018 and 2019 we made changes to the [terminology](terminology.md) used to describe the q language.
 
-> A librarian’s job is to put information where people can find it. 
 
+## :fontawesome-solid-pen-nib: Citations
+
+How to cite the q programming language:
+
+Bibtex format
+
+```txt
+@misc{OMS,
+    author= {{Kx Systems, Inc.}},
+    year  = {2020},
+    title = {Documentation for kdb+ and q},
+    note  = {\url{https://code.kx.com/q/ref/}, 
+             Last accessed on 2020-04-15},
+}
+```
+
+
+Chicago style
+
+: “Reference Card.” Documentation for kdb and q . Kx Systems, Inc. Accessed April 15, 2020. https://code.kx.com/q/ref/.
+
+
+Harvard style
+
+: _Documentation for kdb+ and q._ 2020. Reference Card. [online] Available at: <https://code.kx.com/q/ref/> [Accessed 15 April 2020].
+
+
+Vancouver style
+
+: Reference Card [Internet]. Documentation for kdb and q. Kx Systems, Inc.; 2020 [cited 2020Apr15]. Available from: https://code.kx.com/q/ref/
+
+
+:fontawesome-solid-globe:
+[Citation Machine](https://www.citationmachine.net/) for other citation styles
+
+
+## :fontawesome-solid-users: Wiki
+
+The Kx wiki was the primary documentation for q and kdb+ until January 2017.
+
+The content, which runs on [Mediawiki](http://mediawiki.org), 
+has 
+been [archived on GitHub](https://github.com/kxsystems/wiki).

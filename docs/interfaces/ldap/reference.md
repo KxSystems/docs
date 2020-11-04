@@ -3,7 +3,6 @@ title: LDAP function reference | Interfaces Documentation for kdb+ and q
 author: Simon Shanks
 description: List all functionality and options for the kdb+ interface to LDAP
 date: September 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # LDAP function reference
 

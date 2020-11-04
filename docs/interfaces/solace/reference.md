@@ -3,7 +3,6 @@ title: Solace function reference | Interfaces Documentation for kdb+ and q
 author: Conor McCarthy
 description: List all functionality and options for the kdb+ interface to Solace
 date: April 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: solace, interface, fusion , q
 ---
 # Solace function reference

@@ -3,7 +3,6 @@ title: Example usage | LDAP | Interfaces | Docuemntation for q and kdb+
 author: Simon Shanks
 description: Examples showing the use of the LDAP kdb+ interface
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # LDAP interface examples
 

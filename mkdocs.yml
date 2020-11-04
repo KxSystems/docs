@@ -82,13 +82,16 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
-  - Reference: https://code.kx.com/q/ref/
+  - Reference: ref/index.md
   - Developer tools: devtools.md
   - Open source: github.md
   - Support: support.md
   - Community: community.md
   - White papers: wp/index.md
-  - Corporate site: https://kx.com
+  # - Site news: about/site-news.md
+  - About this site: about/thissite.md
+  # - Citations: about/citations.md
+  - Kx Systems: https://kx.com
   - Learn: 
     - Get started: learn/index.md
     - Install: learn/install.md
@@ -147,6 +150,22 @@ nav:
       - Klondike: learn/reading/klondike.md
       - Phrasebook: /phrases/
       - Scrabble: learn/reading/scrabble.md
+    - Application examples:
+      - Astronomy*: wp/astronomy.md
+      - Bitcoin blockchains*: wp/blockchain/index.md
+      - Card counters*: wp/card-counters/index.md
+      - Corporate actions*: wp/corporate-actions.md
+      - Disaster management*: wp/disaster-management/index.md
+      - Exoplanets*: wp/exoplanets/index.md
+      - Market depth*: wp/market-depth/index.md
+      - Market fragmentation*: wp/market-fragmentation/index.md
+      - Option pricing*: wp/option-pricing/index.md
+      - Predicting floods*: wp/disaster-floods/index.md
+      - Signal processing*: wp/signal-processing/index.md
+      - Space weather*: wp/space-weather/index.md
+      - Trading surveillance*: wp/surveillance/index.md
+      - Transaction-cost analysis*: wp/transaction-cost.md
+      - Trend indicators*: wp/trend-indicators/index.md
     - Advanced q:
       # - Overview: learn/advanced.md
       - Remarks on Style:
@@ -189,6 +208,8 @@ nav:
       - Technical articles: learn/blogs.md
       - Views: learn/views.md
       - Related languages: learn/archive.md
+      # - Kx technology: about/kxtechnology.md
+      - Terminology: about/terminology.md
     - Starting kdb+: 
       - Overview: learn/startingkdb/index.md
       - The q language: learn/startingkdb/language.md
@@ -448,9 +469,21 @@ nav:
     # - Splayed schema change: kb/splayed-schema-change.md
     # - Splaying large files: kb/splaying-large-files.md
   - Developing:
-    - Programming:
+    - Tools:
+      - Code profiler: kb/profiler.md
+      - Debugging: basics/debug.md
+      - Errors: basics/errors.md
+      - man.q: about/man.md
+      - System commands: basics/syscmds.md
+      - Unit tests: kb/unit-tests.md
+      - Using .z: kb/using-dotz.md
+    - Coding:
+      - Data visualization*: wp/data-visualization/index.md
+      - Deferred response: kb/deferred-response.md
       - Geospatial indexing: kb/geospatial.md
       - Linear programming: kb/lp.md
+      - Multithreaded input: kb/multithreaded-input.md
+      - Multithreaded primitives: kb/mt-primitives.md
       - Pivoting tables: kb/pivoting-tables.md
       - Precision: basics/precision.md
       - Programming examples: kb/programming-examples.md
@@ -458,36 +491,22 @@ nav:
       - Temporal data: kb/temporal-data.md
       - Timezones: kb/timezones.md
       - Unicode: kb/unicode.md
-    - Tools:
-      - Code profiler: kb/profiler.md
-      - Debugging: basics/debug.md
-      - Errors: basics/errors.md
-      - Multiple versions: kb/versions.md
-      - System commands: basics/syscmds.md
-      - Unit tests: kb/unit-tests.md
-      - Using .z: kb/using-dotz.md
-    - Techniques:
+    - DevOps:
+      - Authentication and access: kb/authentication.md
+      - CPU affinity: kb/cpu-affinity.md
       - Custom web server: kb/custom-web.md
       - Daemon: kb/daemon.md
-      - Data visualization*: wp/data-visualization/index.md
-      - Deferred response: kb/deferred-response.md
-    - Interprocess communication: 
-      - Overview: basics/ipc.md
-      - Callbacks: kb/callbacks.md
-      - Listening port: basics/listening-port.md
-      - Named pipes: kb/named-pipes.md
-      - Serialization examples: kb/serialization.md
-      - Server calling client: kb/server-calling-client.md
-      - Socket sharding*: wp/socket-sharding/index.md
-      - SSL/TLS: kb/ssl.md
-      - WebSockets: kb/websockets.md
-    - Performance:
-      - Multithreaded primitives: kb/mt-primitives.md
+      - Firewalling: kb/firewalling.md
+      - inetd, xinetd: kb/inetd.md
+      - Linux production notes: kb/linux-production.md
+      - Logging: kb/logging.md
+      - Multi-threading*: wp/multi-thread/index.md
+      - Multiple versions: kb/versions.md
       - Parallel processing: basics/peach.md
       - Performance tips: kb/performance-tips.md
-      - Multi-threading*: wp/multi-thread/index.md
       - Replay logfile: kb/replay-log.md
       - Surveillance latency*: wp/surveillance-latency/index.md
+      - Windows service: kb/windows-service/index.md
     - Release notes:
       - History: releases/index.md
       - Changes in 4.0: releases/ChangesIn4.0.md
@@ -507,7 +526,17 @@ nav:
     # - Environment: basics/environment.md
     - FAQ: kb/faq-listbox.md
   - Interfaces:
-    - Index: interfaces/index.md
+    - Overview: interfaces/index.md
+    - IPC:
+      - Introduction: basics/ipc.md
+      - Callbacks: kb/callbacks.md
+      - Listening port: basics/listening-port.md
+      - Named pipes: kb/named-pipes.md
+      - Serialization examples: kb/serialization.md
+      - Server calling client: kb/server-calling-client.md
+      - Socket sharding*: wp/socket-sharding/index.md
+      - SSL/TLS: kb/ssl.md
+      - WebSockets: kb/websockets.md
     - Fusion for kdb+:
       - Overview: interfaces/fusion.md
       - FFI: interfaces/ffi.md
@@ -589,54 +618,51 @@ nav:
   - Architecture:
     - Overview: architecture/index.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
-    - Authentication and access: kb/authentication.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
-    - Cloud deployment: 
-      - Overview: cloud/index.md
-      - Amazon EC2: 
-        - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
-        - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
-        - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
-        - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
-        - D. MapR-FS: cloud/aws/app-d-mapr.md
-        - E. Goofys: cloud/aws/app-e-goofys.md
-        - F. S3FS: cloud/aws/app-f-s3fs.md
-        - G. S3QL: cloud/aws/app-g-s3ql.md
-        - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
-        - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
-        - J. Quobyte: cloud/aws/app-j-quobyte.md
-      - AWS Lambda: cloud/aws-lambda/index.md
-      - Google CPM: cloud/gcpm/index.md
-      - Auto Scaling*:
-        - Overview: cloud/autoscale/index.md
-        - Amazon Web Services: cloud/autoscale/aws.md
-        - Realtime data cluster: cloud/autoscale/rdc.md
-        - Costs and risks: cloud/autoscale/cost-risk.md
-      - DigitalOcean: kb/digitalocean.md
     - Corporate actions: kb/corporate-actions.md
-    - CPU affinity: kb/cpu-affinity.md
     - Data recovery for kdb+tick*: wp/data-recovery.md
     - Disaster recovery*: wp/disaster-recovery/index.md
-    - Distributed systems*: wp/query-interface.md
-    - Firewalling: kb/firewalling.md
     - Gateway design*: wp/gateway-design/index.md
-    - inetd, xinetd: kb/inetd.md
-    - Intraday writedown*: wp/intraday-writedown/index.md
     - Kdb+tick configuration: kb/kdb-tick.md
     - Kdb+tick profiling*: wp/tick-profiling.md
-    - Linux production notes: kb/linux-production.md
     - Load balancing: kb/load-balancing.md
-    - Logging: kb/logging.md
     - Memory backed by files: basics/memory-backed.md
-    - Multithreaded input: kb/multithreaded-input.md
     - Optane Memory: kb/optane.md
+    - Order Book*: wp/order-book.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Query Routing*: wp/query-routing/index.md
     - Real-time tick subscribers*: wp/rt-tick/index.md
     - WebSockets*: wp/websockets/index.md
-    - Windows service: kb/windows-service/index.md
     - Write-only RDB: kb/w-q.md
+    - Advanced:
+      - Distributed systems*: wp/query-interface.md
+      - Intraday writedown*: wp/intraday-writedown/index.md
+  - Cloud: 
+    - Overview: cloud/index.md
+    - Amazon EC2: 
+      - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
+      - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
+      - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
+      - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
+      - D. MapR-FS: cloud/aws/app-d-mapr.md
+      - E. Goofys: cloud/aws/app-e-goofys.md
+      - F. S3FS: cloud/aws/app-f-s3fs.md
+      - G. S3QL: cloud/aws/app-g-s3ql.md
+      - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
+      - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
+      - J. Quobyte: cloud/aws/app-j-quobyte.md
+    - AWS Lambda: cloud/aws-lambda/index.md
+    - Google CPM: cloud/gcpm/index.md
+    - Auto Scaling*:
+      - Overview: cloud/autoscale/index.md
+      - Amazon Web Services: cloud/autoscale/aws.md
+      - Realtime data cluster: cloud/autoscale/rdc.md
+      - Costs and risks: cloud/autoscale/cost-risk.md
+    - DigitalOcean: kb/digitalocean.md
+    - License agreements:
+      - AWS: license/aws.md
+      - GCP: license/gcp.md
   - Machine learning:
     - Overview: ml/index.md
     - Set up: ml/setup.md
@@ -694,38 +720,14 @@ nav:
       - FAQ: ml/automl/faq.md
     - Neural networks*: wp/neural-networks/index.md
     - Pattern recognition*: wp/machine-learning/index.md
-  - In practice:
-    - Astronomy*: wp/astronomy.md
-    - Bitcoin blockchains*: wp/blockchain/index.md
-    - Card counters*: wp/card-counters/index.md
-    - Corporate actions*: wp/corporate-actions.md
-    - Disaster management*: wp/disaster-management/index.md
-    - Exoplanets*: wp/exoplanets/index.md
-    - Market depth*: wp/market-depth/index.md
-    - Market fragmentation*: wp/market-fragmentation/index.md
-    - Option pricing*: wp/option-pricing/index.md
-    - Order Book*: wp/order-book.md
-    - Predicting floods*: wp/disaster-floods/index.md
-    - Signal processing*: wp/signal-processing/index.md
-    - Space weather*: wp/space-weather/index.md
-    - Trading surveillance*: wp/surveillance/index.md
-    - Transaction-cost analysis*: wp/transaction-cost.md
-    - Trend indicators*: wp/trend-indicators/index.md
-  - About: 
-    - Kx technology: about/kxtechnology.md
-    - Search: about/search.md
-    - Site news: about/site-news.md
-    - This site: about/thissite.md
-    - Style guide:
-      - Introduction: about/sg/index.md
-      - Characters: about/sg/characters.md
-      - Miscellaneous: about/sg/miscellaneous.md
-      - Style: about/sg/style.md
-      - Code blocks: about/sg/code.md
-      - Typography: about/sg/typography.md
-    - Terminology: about/terminology.md
-    - Citations: about/citations.md
-    - License agreements:
-      - AWS: license/aws.md
-      - GCP: license/gcp.md
-    - Wiki: wiki.md
+  # - About: 
+    # - Search: about/search.md
+    # - Style guide:
+    #   - Introduction: about/sg/index.md
+    #   - Characters: about/sg/characters.md
+    #   - Miscellaneous: about/sg/miscellaneous.md
+    #   - Style: about/sg/style.md
+    #   - Code blocks: about/sg/code.md
+    #   - Typography: about/sg/typography.md
+    # - Wiki: wiki.md
+  

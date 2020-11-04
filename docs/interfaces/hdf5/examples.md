@@ -3,7 +3,6 @@ title: Example usage | HDF5 | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
 description: Minimal examples showing the use of the HDF5 kdb+ interface 
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: HDF5, kdb+, examples, read, write, link, group
 ---
 # Example usage of interface 

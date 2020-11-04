@@ -1,6 +1,5 @@
 ---
 title: Style guide for code.kx.com – About – kdb+ and q documentation
-hero: Site style guide
 description: Typographical, spelling, markup and lexical conventions for the q and kdb+ documentation site
 author: Stephen Taylor
 keywords: convention, kdb+, q, style, spelling, typography

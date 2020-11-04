@@ -3,7 +3,6 @@ title: MapR-FS – Appendix D of Migrating a kdb+ HDB to Amazon EC2 – Cloud �
 description: MapR is a commercial implementation of the Apache Hadoop open-source stack. Solutions such as MapR-FS were originally driven by the need to support Hadoop clusters alongside high-performance file-system capabilities. In this regard, MapR improved on the original HDFS implementation found in Hadoop distributions. MapR-FS is a core component of their stack. MapR AMIs are freely available on the Amazon marketplace. 
 author: Glenn Wright
 date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, mapr-fs
 ---
 # Appendix D – MapR-FS

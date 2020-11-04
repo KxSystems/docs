@@ -7,6 +7,9 @@ date: February 2020
 # Help for `man.q`
 
 
+The `man.q` script mimics the Unix `man` command.
+
+
 :fontawesome-brands-github:
 [KxSystems/man](https://github.com/kxsystems/man)
 
@@ -42,7 +45,7 @@ man "--list"
 man "--help"
 ```
 
-
+---
 :fontawesome-solid-book:
 [Reference](../ref/index.md)
 <br>

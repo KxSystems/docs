@@ -3,7 +3,6 @@ title:  EFS (NFS) – Appendix B of Migrating a kdb+ HDB to Amazon EC2 – Cloud
 description: EFS is an NFS service owned and run by AWS that offers NFS service for nodes in the same availability zone, and can run across zones, or can be exposed externally. The location of where the storage is kept is owned by Amazon and is not made transparent to the user. The only access to the data is via using the service by name (NFS service), and there is no block or object access to said data.
 author: Glenn Wright
 date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud, efs, kdb+, nfs
 ---
 # Appendix B – EFS (NFS)

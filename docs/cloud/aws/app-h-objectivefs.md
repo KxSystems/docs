@@ -3,7 +3,6 @@ title: ObjectiveFS – Appendix H of Migrating a kdb+ HDB to Amazon EC2 – Clou
 description: ObjectiveFS is a commercial Linux client/kernel package. It arbitrates between S3 storage (each S3 bucket is presented as a FS) and each AWS EC2 instance running ObjectiveFS. It presents a POSIX file system layer to kdb+. This is distinct from the EFS NFS service from AWS, which is defined independently from the S3 service. With this approach, you pay storage fees only for the S3 element, alongside a usage fee for ObjectiveFS.
 author: Glenn Wright
 date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, objectivefs
 ---
 # Appendix H - ObjectiveFS

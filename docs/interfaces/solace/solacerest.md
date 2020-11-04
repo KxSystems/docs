@@ -3,7 +3,6 @@ title: Outline of the use of REST messaging with Solace
 author: Conor McCarthy
 description: Messaging solace broker via REST api
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: Solace, PubSub+, publish, subscribe, REST, streaming 
 ---
 

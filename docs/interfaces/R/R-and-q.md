@@ -1,7 +1,6 @@
 ---
 title: Using R with kdb+ – Non-Fusion Interfaces
 description: Enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely; and enable q to load the R maths library and invoke R math routines locally.
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: interface, kdb+, library, q, r
 ---
 # :fontawesome-brands-r-project: Using R and kdb+

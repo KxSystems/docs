@@ -1,7 +1,6 @@
 ---
 title: Solace | Interfaces | Documentation for kdb+ and q
 description: Interface between kdb+ and Solace 
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: Solace, publish, subscribe, request, reply, streaming, qos, q
 ---
 # ![Solace](../img/solace.jpeg) Solace interface to kdb+

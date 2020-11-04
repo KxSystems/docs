@@ -1,7 +1,6 @@
 ---
 title: Q language – Starting kdb+ – Learn – kdb+ and q documentation
 description: Introduction to the q programming language
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 keywords: kdb+, language, q, tutorial
 ---
 # The q language

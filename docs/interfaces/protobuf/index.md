@@ -1,7 +1,6 @@
 ---
 title: Protobufkdb | Interfaces | Documentation for kdb+ and q
 description: Protobuf/Google Protocol Buffers is a flexible data-interchange mechanism for serializing/deserializing structured data wherever programs or services have to store or exchange data via interfaces 
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 
 # Protobufkdb

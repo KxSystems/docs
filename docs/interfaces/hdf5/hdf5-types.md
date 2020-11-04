@@ -2,7 +2,6 @@
 title: Datatype mappings | HDF5 | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
 description: Datatype mappings between kdb+ and HDF5 
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 date: March 2020
 keywords: HDF5, kdb+, file-format, 
 ---

@@ -3,7 +3,6 @@ title: Function reference | HDF5 | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
 description: Lists functions available for use within the HDF5 API for kdb+ and gives limitations as well as examples of each being used 
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: HDF5, kdb+, file-format, 
 ---
 # Function reference 

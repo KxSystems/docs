@@ -1,7 +1,6 @@
 ---
 title: Function reference | Protobuf | Interfaces | Documentation for kdb+ and q
 description: Protobuf/Protocol Buffers kdb+ interface function reference
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # Protobuf/Protocol Buffers function reference
 

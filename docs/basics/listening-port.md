@@ -47,6 +47,9 @@ q)\p
 
 Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
+:fontawesome-solid-graduation-cap:
+[A load-balancing kdb+ server](../kb/load-balancing.md)
+
 
 ## Ephemeral port
 

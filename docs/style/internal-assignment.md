@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
 keywords: kdb+, q, style
 ---

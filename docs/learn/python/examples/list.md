@@ -3,7 +3,6 @@ title: Q versions of Python list programming examples| Documentation for kdb+ an
 description: Python list programming examples and their q equivalents
 author: Stephen Taylor
 date: April 2020
-hero: <i class="fab fa-python"></i> Python programming examples in q
 ---
 # List programs
 

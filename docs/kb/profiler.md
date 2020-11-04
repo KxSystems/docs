@@ -9,9 +9,9 @@ date: March 2020
 
 
 
-!!! info "Experimental feature :fontawesome-brands-linux:"
+??? info "Experimental feature :fontawesome-brands-linux:"
 
-    This is currently implemented for x86\_64 Linux (kdb+ `l64`).
+    Currently implemented for x86\_64 Linux (kdb+ `l64`).
 
 Kdb+ 4.0 includes an experimental built-in call-stack snapshot primitive that allows building a sampling profiler.
 
@@ -30,14 +30,14 @@ Time per call is mostly independent of call-stack depth. You should be able to d
 
 The profiler has mostly the same view of the call stack as the debugger. `.Q.prf0` returns a table with the following columns:
 
-column  |description
---------|-
-**name**|assigned name of the function
-**file**|path to the file containing the definition
-**line**|line number of the definition
-**col** |column offset of the definition, 0-based
-**text**|function definition or source string
-**pos** |execution position (caret) within text
+```txt
+name    assigned name of the function
+file    path to the file containing the definition
+line    line number of the definition
+col     column offset of the definition, 0-based
+text    function definition or source string
+pos     execution position (caret) within text
+```
 
 For example, given the following `/w/p.q`:
 
@@ -65,8 +65,8 @@ name  file     line col text          pos
 
 By default on most Linux systems, a non-root process can only profile (using `ptrace`) its direct children. 
 
-:fontawesome-regular-hand-point-right:
-[Yama documentation](https://www.kernel.org/doc/Documentation/security/Yama.txt) for details
+:fontawesome-solid-globe::
+[Yama documentation](https://www.kernel.org/doc/Documentation/security/Yama.txt"kernel.org")
 
 `\q` starts a child process, so you should be able to profile these with no system changes.
 

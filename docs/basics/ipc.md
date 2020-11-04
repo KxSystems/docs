@@ -15,6 +15,8 @@ _Simple, powerful, fast_
 [.z](../ref/dotz.md)              handle message (callbacks)
 </pre>
 
+A kdb+ process can communicate with other processes through TCP/IP, which is baked in to the q language. 
+
 :fontawesome-brands-superpowers: 
 [Fusion interfaces](../interfaces/fusion.md)
 <br>

@@ -3,7 +3,6 @@ title: Q versions of Python string programming examples| Documentation for kdb+ 
 description: Python programming examples for strings and their q equivalents
 author: Stephen Taylor
 date: March 2020
-hero: <i class="fab fa-python"></i> Python programming examples in q
 ---
 # String programs
 

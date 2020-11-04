@@ -2,7 +2,6 @@
 title: Kx and the cloud
 author: P.J. O’Kane
 date: March 2020
-hero: <i class="fas fa-cloud"></i> Cloud
 ---
 # Kx and the cloud
 

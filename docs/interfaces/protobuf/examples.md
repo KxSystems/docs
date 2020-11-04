@@ -1,7 +1,6 @@
 ---
 title: Interface example | Protobuf | Interfaces | Documentation for kdb+ and q
 description: Examples of interfacing kdb+ and Protobuf
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
 # Protobuf/Protocol Buffers interface example
 

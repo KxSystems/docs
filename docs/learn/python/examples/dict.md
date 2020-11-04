@@ -3,7 +3,6 @@ title: Q versions of Python dictionary programming examples| Documentation for k
 description: Python programming examples for dictionaries and their q equivalents
 author: Stephen Taylor
 date: March 2020
-hero: <i class="fab fa-python"></i> Python programming examples in q
 ---
 # Dictionary programs
 

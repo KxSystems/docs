@@ -1,7 +1,6 @@
 ---
 title: Kdb+ license for Google Cloud – kdb+ and q documentation
 description: Kdb+ software end-user agreement for Google Cloud Platform Marketplace
-hero: <i class="fas fa-cloud"></i> Google Cloud Platform Marketplace
 date: July 2018
 ---
 

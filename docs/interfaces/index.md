@@ -5,6 +5,12 @@ keywords: editor, github, integration, interface, kdb+, q, repository
 ---
 # :fontawesome-regular-handshake: Interfaces and editor integrations
 
+
+
+A kdb+ process can communicate with other processes through [TCP/IP](../basics/ipc.md), which is baked in to the q language. 
+
+
+
 :fontawesome-regular-hand-point-right: [General index](../github.md) of other kdb+ repositories
 
 Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. 

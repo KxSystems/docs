@@ -3,7 +3,6 @@ title: Prometheus Exporter metric event handlers | Interfaces | Documentation fo
 author: Conor McCarthy
 description: List all functionality and options for the Prometheus Exporter for kdb+ metrics 
 date: April 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
 ---
 # Prometheus metric event handlers 

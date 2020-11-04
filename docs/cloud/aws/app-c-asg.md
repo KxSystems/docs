@@ -3,7 +3,6 @@ title: Amazon Storage Gateway (File mode) – Appendix C of Migrating a kdb+ HDB
 description: Amazon Storage Gateway is a pre-prepared AMI/instance that can be provisioned on-demand. It allows you to present an NFS layer to the application with S3 as a backing store. The difference between this and EFS is that the S3 bucket is owned and named by you. But fundamentally the drawback with this approach will be the operational latencies. These appear much more significant than the latencies gained for the EFS solution, and may reflect the communication between the file gateway instance and a single declared instance of S3. It is likely that the S3 buckets used by EFS are run in a more distributed fashion.
 author: Glenn Wright
 date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
 keywords: Amazon, AWS, EC2, HDB, cloud, file, gateway, kdb+, storage
 ---
 # Appendix C – Amazon Storage Gateway (File mode)

@@ -1,7 +1,6 @@
 ---
 title: Prometheus Exporter | Interfaces | Documentation for kdb+ and q
 description: Prometheus Exporter for kdb+ metrics 
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
 ---
 # ![Prometheus](../../img/prometheus.png) Prometheus Exporter

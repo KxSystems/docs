@@ -3,7 +3,6 @@ title: Example usage | Prometheus Exporter | Interfaces | q and kdb+ documentati
 author: Conor McCarthy
 description: Minimal examples showing the use of the Prometheus kdb interface
 date: March 2020
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 keywords: Prometheus, Grafana, kdb+, examples, metrics, monitoring, 
 ---
 # Example usage of Prometheus Exporter interface

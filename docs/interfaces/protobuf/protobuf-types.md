@@ -2,7 +2,6 @@
 title: Datatype mappings | Protobuf | Interfaces | Documentation for kdb+ and q
 author: Conor McCarthy
 description: Datatype mappings between kdb+ and Protobuf
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 date: September 2020
 ---
 # Type mapping between kdb+ and Protobuf 

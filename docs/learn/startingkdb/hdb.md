@@ -1,7 +1,6 @@
 ---
 title: Historical database – Starting kdb+ – Learn – kdb+ and q documentation
 description: How to build and use an historical database in kdb+
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 keywords: hdb, historical database, kdb+, q, tutorial 
 ---
 # Historical database

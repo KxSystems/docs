@@ -1,6 +1,5 @@
 ---
 title: Code blocks | Style Guide | Style | About | kdb+ and q documentation
-hero: Site style guide
 description: Usage and markup rules for code blocks
 author: Stephen Taylor
 keywords: 

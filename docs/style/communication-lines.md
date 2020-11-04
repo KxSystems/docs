@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 title: Lines of communication – Remarks on Style – kdb+ and q documentation
 description: A variable is a line of communication between where it is set and where it is read. The length of that line affects clarity. 
 author: Stephen Taylor
