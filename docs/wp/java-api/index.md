@@ -42,7 +42,7 @@ broad range of problem domains. They are available on
 
 ## API overview  
 
-The API is contained in a :fontawesome-brands-github: [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
+The API is contained in a :fontawesome-brands-github: [single source file](https://github.com/KxSystems/javakdb/) on GitHub.
 Inclusion in a development project is, therefore, a straightforward matter
 of including the file with other source code under the package `kx`, and
 ensuring it is properly imported and referenced by other classes. If
