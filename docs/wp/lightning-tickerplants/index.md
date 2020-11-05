@@ -1114,7 +1114,7 @@ it is hoped that this paper has at least helped explain some of the key concepts
 
 ## Author
 
-![Jeremy Lucid](../../../img/faces/jeremylucid.jpg)
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
 {: .small-face}
 
 **Jeremy Lucid** is a kdb+ consultant, based in Ireland, who has worked on real-time Best Execution projects for a major multinational banking institution and a _Kx for Surveillance_ implementation at a leading options and futures exchange.

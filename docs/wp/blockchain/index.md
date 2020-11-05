@@ -999,7 +999,7 @@ for a major international banking group before moving to one of
 Asia’s largest sovereign-wealth funds to develop a solution for 
 best execution and transaction-cost analysis.
 
-![Jeremy Lucid](../../../img/faces/jeremylucid.jpg)
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
 {: .small-face}
 
 **Jeremy Lucid** is a kdb+ consultant based in Belfast. 

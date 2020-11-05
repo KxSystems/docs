@@ -441,7 +441,7 @@ All tests performed with kdb+ V3.0 (2012.11.12).
 
 ## Author
 
-![Colm Earley](../../img/faces/colmearley.jpg)
+![Colm Earley](../img/faces/colmearley.jpg)
 {: .small-face}
 
 **Colm Earley** has worked on kdb+ tick-database and algorithmic-trading systems related to both the equity and FX markets. Based in New York, Colm is a senior kdb+ consultant at a leading brokerage firm, implementing a global tick database.

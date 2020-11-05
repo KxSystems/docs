@@ -82,7 +82,7 @@ theme:
     title: "On this page"
 nav:
   - Home: index.md
-  - Reference: ref/index.md
+  - Reference card: ref/index.md
   - Developer tools: devtools.md
   - Open source: github.md
   - Support: support.md

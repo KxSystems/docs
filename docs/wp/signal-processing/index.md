@@ -857,7 +857,7 @@ p)print (t1 - t0)
 
 ## Author
 
-![Callum Biggs](../../../img/faces/callumbiggs.jpg)
+![Callum Biggs](../../img/faces/callumbiggs.jpg)
 {: .small-face}
 
 **Callum Biggs** joined First Derivatives in 2017 as a data scientist in its Capital Markets Training Program.

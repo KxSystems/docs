@@ -353,6 +353,6 @@ Other papers by Sean Keevey
 {: .publications}
 
 <ul markdown="1" class="publications">
--   :fontawesome-regular-map: [A natural query interface for distributed systems](../query-interface.md)
+-   :fontawesome-regular-map: [Dynamically shrinking big data using timeseries database kdb+](ts-shrink/index.md)
 </ul>
 

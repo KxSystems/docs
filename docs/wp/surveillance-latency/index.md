@@ -354,7 +354,7 @@ In conclusion, between what appears to be an acceptable guaranteed cap on the la
 
 ## Author 
 
-![Jason Quinn](../../../img/faces/jasonquinn.jpg)
+![Jason Quinn](../../img/faces/jasonquinn.jpg)
 {: .small-face}
 
 **Jason Quinn** is a kdb+ consultant based in London. He worked on a global cross asset _Kx for Surveillance_ implementation for a major international banking group before joining our _Kx for Surveillance_ product team.

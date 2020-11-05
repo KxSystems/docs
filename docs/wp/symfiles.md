@@ -773,7 +773,7 @@ All tests performed using kdb+ version 3.6 (2018.05.17).
 
 ## Author
 
-![Paula Clarke](../../../img/faces/paulaclarke.jpg)
+![Paula Clarke](../img/faces/paulaclarke.jpg)
 {: .small-face}
 
 **Paula Clarke** is a kdb+ consultant for Kx who has worked for some the world’s largest financial institutions. Currently based in New York, she is working for a major investment bank where she is part of a team responsible for designing, developing and maintaining a reporting and global tick-capture kdb+ system.

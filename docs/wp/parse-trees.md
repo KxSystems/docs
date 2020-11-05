@@ -656,7 +656,7 @@ All tests were run using kdb+ version 3.2 (2015.01.14).
 
 **Peter Storeng** is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
 
-![Stephen Taylor](../../img/faces/stephentaylor.png)
+![Stephen Taylor](../img/faces/stephentaylor.png)
 {: .small-face}
 
 **Stephen Taylor** FRSA is the Kx Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.

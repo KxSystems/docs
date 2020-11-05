@@ -1730,7 +1730,7 @@ This document covered multiple aspects of the C API interface for connecting wit
 
 ## Author
 
-![Jeremy Lucid](../../../img/faces/jeremylucid.jpg)
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
 {: .small-face}
 
 **Jeremy Lucid**, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
