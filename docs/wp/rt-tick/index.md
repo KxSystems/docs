@@ -1082,6 +1082,8 @@ It is the aim of the author that the reader will now have the understanding of h
 
 All tests were run using kdb+ version V3.1 (2013.09.19) on Windows.
 
+[:fontawesome-solid-print: PDF](/download/wp/building_real_time_tick_subscribers.pdf)
+
 
 ## Author
 

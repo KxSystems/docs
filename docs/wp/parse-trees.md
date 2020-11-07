@@ -651,10 +651,15 @@ To further help those learning how to construct functional statements, and also 
 
 All tests were run using kdb+ version 3.2 (2015.01.14).
 
+:fontawesome-solid-print:
+[An earlier version of this paper](/download/wp/parse_trees_and_functional_forms.pdf)
+by Peter Storeng
+
 
 ## Authors
 
 **Peter Storeng** is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
+
 
 ![Stephen Taylor](../img/faces/stephentaylor.png)
 {: .small-face}

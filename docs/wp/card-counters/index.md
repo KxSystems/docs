@@ -330,6 +330,15 @@ Firstly we showed how an ESP could be implemented in a real-world scenario using
 
 ESP has evolved from an emerging technology to an essential platform of various industry verticals. The technology's most consistent growth has been in banking, serving fraud detection, algorithmic trading and surveillance. There has also been considerable growth in other industries including healthcare, telecommunications, manufacturing, utilities and aerospace.
 
+[:fontawesome-solid-print: PDF](/download/wp/card-counters-in-blackjack.pdf)
+
+
+## Authors
+
+**Caolan Rafferty** works for Kx as a kdb+ consultant. Based in Hong Kong, he maintains an eFx trading platform at a major investment bank. He has developed a range of applications for some of the world’s largest financial institutions. Caolan also helped in building the data-science training program within First Derivatives.
+
+**Krishan Subherwal** works for Kx as a kdb+ consultant and has developed data and analytics systems in a range of asset classes for some of the world’s largest financial institutions. Currently based in London, Krishan is working with an investment-management firm within their Data Engineering team.
+
 
 ## Appendix – Card counting strategies
 
@@ -382,8 +391,3 @@ Insurance Correlation (IC)
 Source: [www.qfit.com](http://www.qfit.com/)
 
 
-## Authors
-
-**Caolan Rafferty** works for Kx as a kdb+ consultant. Based in Hong Kong, he maintains an eFx trading platform at a major investment bank. He has developed a range of applications for some of the world’s largest financial institutions. Caolan also helped in building the data-science training program within First Derivatives.
-
-**Krishan Subherwal** works for Kx as a kdb+ consultant and has developed data and analytics systems in a range of asset classes for some of the world’s largest financial institutions. Currently based in London, Krishan is working with an investment-management firm within their Data Engineering team.

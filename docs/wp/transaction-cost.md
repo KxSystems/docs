@@ -438,6 +438,8 @@ Overall, the paper provides a snapshot of the type of TCA queries that can be ru
 
 All tests performed with kdb+ V3.0 (2012.11.12).
 
+[:fontawesome-solid-print: PDF](/download/wp/transaction_cost_analysis_using_kdb.pdf)
+
 
 ## Author
 

@@ -877,6 +877,8 @@ The C# source code for this paper
 can be found on GitHub at :fontawesome-brands-github:
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
+[:fontawesome-solid-print: PDF](/download/wp/csharp-gui-a4.pdf)
+
 
 ## Author
 

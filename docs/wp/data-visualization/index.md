@@ -571,6 +571,7 @@ effective way?” the answer is “Yes”, and by applying the functionality
 described in this paper to work around limitations, to connect a Tableau
 visualization front-end to a kdb+ back end.
 
+[:fontawesome-solid-print: PDF](/download/wp/data-visualization-a4.pdf)
 
 ## Author
 

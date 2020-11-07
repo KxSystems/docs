@@ -990,6 +990,8 @@ better understanding blockchain data, the unique challenges associated
 with data retrieval and storage, and potential for application
 development using the technology within the domain.
 
+[:fontawesome-solid-print:](/download/wp/blockchain-a4.pdf)
+
 
 ## Authors
 

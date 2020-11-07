@@ -376,6 +376,7 @@ It is worth noting that the `u` attribute is applied to the majority of data str
 _Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)<br>
 Reference: [Set Attribute](../../ref/set-attribute)
 
+[:fontawesome-solid-print: PDF](/download/wp/sample_aggregation_engine_for_market_depth.pdf)
 
 
 ## Author

@@ -375,6 +375,8 @@ How data is received and accessed can vary depending on each individual use case
 
 All tests performed with kdb+ 2.8 (2012.03.21).
 
+[:fontawesome-solid-print: PDF](/download/wp/order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
+
 
 ## Author
 

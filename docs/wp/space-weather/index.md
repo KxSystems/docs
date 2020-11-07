@@ -594,6 +594,8 @@ The neural network method vastly improved results compared to the baseline model
 
 For 24-hour prediction, both accuracy and TSS results increased by an average of 27% and 0.39 respectively. We were therefore able to create a machine-learning model, which reliably predicts phase scintillation events as far as 24 hours ahead. 
 
+[:fontawesome-solid-print: PDF](/download/wp/space-weather-a4.pdf)
+
 
 ## Author
 

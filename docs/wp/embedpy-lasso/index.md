@@ -659,6 +659,8 @@ fuse into a powerful tool. Further machine-learning techniques powered
 by kdb+ can be found under _Featured Resources_ at 
 [kx.com/machine-learning](https://kx.com/discover/machine-learning/).
 
+[:fontawesome-solid-print: PDF](/download/wp/embedpy-lasso-a4.pdf)
+
 
 ## Author
 

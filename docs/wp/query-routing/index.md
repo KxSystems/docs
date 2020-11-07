@@ -630,6 +630,7 @@ protected and efficient kdb+ system.
 
 All tests were run using kdb+ version 3.3 (2015.11.03)
 
+[:fontawesome-solid-print: PDF](/download/wp/query-routing-a4.pdf)
 
 
 ## Author

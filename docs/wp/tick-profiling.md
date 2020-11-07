@@ -419,6 +419,8 @@ The results shown here not representative of kdb+ systems as a whole. Results fo
 
 All tests were run using kdb+ version 3.1 (2014.02.08)
 
+[:fontawesome-solid-print: PDF](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)
+
 
 ## Author
 

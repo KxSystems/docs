@@ -453,6 +453,8 @@ This document has outlined practical options available to system managers for ad
 
 As mentioned in the introduction, a key feature of kdb+ is that it is a flexible offering that allows users to extend the functionality of their applications through the versatility of the q language. There are vanilla intraday- and historical-data processing architectures presented in existing documentation that cover many standard use cases. However, it is also common for a kdb+ system to quickly establish itself as a success within the firm, resulting in the need to process more types of data and requests from downstream users and applications. It is at this point that a systems manager is often faced with balancing how to ensure performance and scalability goals are met, while at the same time dealing with resource constraints and the need for maintainability. The seven cases and customization techniques covered in this paper provided examples of what you can do to help reach those goals.
 
+[:fontawesome-solid-print: PDF](/download/wp/kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
+
 
 ## Author
 

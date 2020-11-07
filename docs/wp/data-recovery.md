@@ -534,6 +534,8 @@ The log file can, however, become corrupted. For instance, the tickerplant proce
 
 All tests were run using kdb+ V3.1 (2014.03.27).
 
+[:fontawesome-solid-print: PDF](/download/wp/data_recovery_for_kdb_tick.pdf)
+
 
 ## Author
 

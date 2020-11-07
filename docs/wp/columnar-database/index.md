@@ -674,3 +674,6 @@ Tests performed using kdb+ version 2.8 (2012.05.29)
 **Ciarán Gorman** is a financial engineer who has designed and developed data-management systems across a wide range of asset classes for top-tier investment banks.
 
 
+:fontawesome-solid-print:
+[PDF](/download/wp/columnar_database_and_query_optimization.pdf)
+

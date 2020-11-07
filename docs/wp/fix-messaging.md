@@ -581,18 +581,19 @@ OrderID    SecurityID Side MsgType OrdStatus OrderQty CumQty AvgPx    CommValue
 ```
 
 
-### Conclusion
+## Conclusion
 
 This paper has provided a guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an OMS. We focused on some key FIX fields to provide an understanding of the valid entries and an insight into how they should be handled. 
 
-:fontawesome-regular-hand-point-right:
-[fixwiki.org/fixwiki](http://fixwiki.org/fixwiki/FIXwiki)
+:fontawesome-solid-globe:
+[fixwiki.org/fixwiki](http://fixwiki.org/fixwiki/FIXwiki "fixwiki.org")
 for a comprehensive list of all fields for each FIX version
 
 It is an essential requirement to be able to view the current and final state of each order received from the OMS. We provided an example to show how to generate an order state. This process can be extended to also derive the latest execution state. Additional fields need to be extracted to identity the execution type, amendments, cancellations etc, similar to the order state. An execution state enables complex analytics, including risk benchmarking and transaction cost analysis to be computed efficiently on every execution.
 
 All tests were run using kdb+ version 3.1 (2013.12.27)
 
+[:fontawesome-solid-print: PDF](/download/wp/kdb_and_fix_messaging.pdf)
 
 ## Author
 

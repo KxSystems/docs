@@ -767,6 +767,8 @@ and deep networks to be developed.
 
 All tests were run using kdb+ version 3.2 (2015.05.07) 
 
+[:fontawesome-solid-print: PDF](/download/wp/an_introduction_to_neural_networks_with_kdb.pdf)
+
 
 ## Author
 

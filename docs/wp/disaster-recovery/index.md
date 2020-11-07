@@ -741,6 +741,8 @@ specifications design a solution which can minimize
 downtime (i.e. high availability), recover quickly and accurately from
 these events, and most importantly prevent and minimize data loss.
 
+[fontawesome-solid-print: PDF](/download/wp/disaster-recovery-a4.pdf)
+
 
 ### Author
 

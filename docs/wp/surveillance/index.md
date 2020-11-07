@@ -448,6 +448,26 @@ In September of 2013 the Australian market regulator ASIC upgraded their market-
 
 All tests performed using kdb+ version 3.1 (2014.02.08)
 
+[:fontawesome-solid-print: PDF](/download/wp/surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
+
+
+## Bibliography
+
+-   ASIC. (2013). *Report 331 - Dark liquidity and high-frequency trading.* Australian Securities and Investments Commission.
+-   Comstock, C. (2010). *First High Frequency Firm is Fined for Quote
+Stuffing and Manipulation.* Business Insider.
+-   Credit Suisse. (2012). *High Frequency Trading – Measurement, Detection and Response.*
+-   Finextra. (2014). *ASIC hits out at 'Flash Boys' hysteria.*
+-   fixglobal. (2014). *The Challenge Of Global Market Surveillance.*
+-   Knowledge@Wharton. (2009). *The Impact of High-frequency Trading: Manipulation, Distortion or a Better-functioning Market?*
+-   Sydney Morning Herald. (2014). *High-speed trading costs investors \$2b, say industry super.*
+-   University of Pennsylvania. (2009). *The Impact of High-frequency Trading: Manipulation, Distoring or a Better-functioning Market?* USA.
+
+
+## Authors
+
+**Sam Stanton-Cook**, **Ryan Sparks**, **Dan O’Riordan** and **Rob Hodgkinson**
+
 
 ## Appendix A – Kx solutions
 
@@ -504,19 +524,3 @@ aggressorIndicator| c      aggressor indicator
 ```
 
 
-## Bibliography
-
--   ASIC. (2013). *Report 331 - Dark liquidity and high-frequency trading.* Australian Securities and Investments Commission.
--   Comstock, C. (2010). *First High Frequency Firm is Fined for Quote
-Stuffing and Manipulation.* Business Insider.
--   Credit Suisse. (2012). *High Frequency Trading – Measurement, Detection and Response.*
--   Finextra. (2014). *ASIC hits out at 'Flash Boys' hysteria.*
--   fixglobal. (2014). *The Challenge Of Global Market Surveillance.*
--   Knowledge@Wharton. (2009). *The Impact of High-frequency Trading: Manipulation, Distortion or a Better-functioning Market?*
--   Sydney Morning Herald. (2014). *High-speed trading costs investors \$2b, say industry super.*
--   University of Pennsylvania. (2009). *The Impact of High-frequency Trading: Manipulation, Distoring or a Better-functioning Market?* USA.
-
-
-## Authors
-
-**Sam Stanton-Cook**, **Ryan Sparks**, **Dan O’Riordan** and **Rob Hodgkinson**

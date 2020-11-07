@@ -1242,6 +1242,8 @@ common role of these developers in helping to reconcile longstanding
 applications with contemporary technologies, often to the benefit of
 both.
 
+[:fontawesome-solid-print: PDF](/download/wp/java-api-a4.pdf)
+
 
 ## Author
 
