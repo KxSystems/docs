@@ -35,9 +35,10 @@ The kdb+ database and q language were introduced in 2003 as part of a 64-bit rew
 
 The q programming language evolved from its ancestor languages APL, J and k.
 
+-   [Kx Systems: A historical need for speed](https://www.datanami.com/2020/10/29/kx-systems-a-historical-need-for-speed/) _Datanami_, October 2020
 -   [APL Since 1978](/download/3386319.pdf), Proc. ACM Program. Lang., Vol. 4, No. HOPL, Article 69. June 2020
 -   [Stages of Denial](http://beyondloom.com/blog/denial.html), John Earnest, March 2020
--   [A conversation with Arthur Whitney](https://queue.acm.org/detail.cfm?id=1531242) 2009
+-   [A conversation with Arthur Whitney](https://queue.acm.org/detail.cfm?id=1531242) ACM, 2009
 -   [An interview with Arthur Whitney](https://kx.com/blog/arthur-whitney-talks/) 2004
 -   [Vector processing languages: the future of Big Data analytics and real-time business intelligence](http://conceptualorigami.blogspot.com/2010/12/vector-processing-languages-future-of.html) _Conceptual Origami_
 

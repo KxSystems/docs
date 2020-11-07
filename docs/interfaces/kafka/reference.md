@@ -51,12 +51,6 @@ Kafka interface functionality
   [.kfk.AssignDel](#kfkassigndel)               Remove topic partition assignments from the current assignments
   [.kfk.Assignment](#kfkassignment)              Return the current assignment 
 
-  // Assignment functionality
-  .kfk.Assign                  Create a new assignment from which data will be consumed
-  .kfk.AssignAdd               Add new assignments to the current assignment
-  .kfk.AssignDel               Remove topic partition assignments from the current assignments
-  .kfk.Assignment              Return the current assignment 
-
   // system infomation
   [.kfk.Metadata](#kfkmetadata)                Broker Metadata
   [.kfk.Version](#kfkversion)                 Librdkafka version
@@ -478,7 +472,7 @@ q).kfk.OutQLen[producer]
 
 ### `.kfk.Sub`
 
-_Subscribe from a consumer process to a topic_
+_High level subscription from a consumer process to a topic_
 
 Syntax: `.kfk.Sub[clid;topic;partid]`
 
@@ -486,7 +480,7 @@ Where
 
 -   `clid` is an integer value denoting the client id
 -   `topic` is a symbol denoting the topic being subscribed to
--   `partid` is an enlisted integer denoting the target partition
+-   `partid` is an enlisted integer denoting the target partition (UNUSED)
 
 returns a null on successful execution.
 
@@ -497,6 +491,10 @@ returns a null on successful execution.
 !!! note "Multiple subscriptions"
 
     As of v1.4.0 multiple calls to `.kfk.Sub` for a given client will allow for consumption from multiple topics rather than overwriting the subscribed topic.
+
+!!! warning "Partition ID"
+
+	The parameter `partid` is a legacy argument to the function and with recent versions of librdkafka does not have any effect on the subscription. On subscription Kafka handles organisation of consumers based on the active members of a `group.id` to efficiently distribute consumption amongst the group. If you require a consumer to specify consumption from a specific topic and a specific partition please use the [Assignment api](#assignment-functionality). An independent outline of the differences between assignment and subscription can be found [here](https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/).
 
 ```q
 q)client:.kfk.Consumer[kfk_cfg]
@@ -517,11 +515,15 @@ Where
 
 -   `clid` is an integer value denoting the client id
 -   `topic` is a symbol denoting the topic being subscribed to
--   `partid` is an enlisted integer denoting the target partition
+-   `partid` is an enlisted integer denoting the target partition (UNUSED)
 -   `callback` is a callback function defined related to the subscribed topic. This function should take as input a single parameter
     - `msg` the content of a message received from any calls to the subscription on the topic.
 
 returns a null on successful execution and augments `.kfk.consumetopic` with a new callback function for the consumer.
+
+!!! warning "Partition ID"
+
+	The parameter `partid` is a legacy argument to the function and with recent versions of librdkafka does not have any effect on the subscription. On subscription Kafka handles organisation of consumers based on the active members of a `group.id` to efficiently distribute consumption amongst the group. If you require a consumer to specify consumption from a specific topic and a specific partition please use the [Assignment api](#assignment-functionality). An independent outline of the differences between assignment and subscription can be found [here](https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/).
 
 ```q
 // create a client with a user created config kfk_cfg

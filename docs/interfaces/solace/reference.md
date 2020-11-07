@@ -32,7 +32,8 @@ Direct messaging
   [sendDirectRequest](#solacesenddirectrequest)          Send a direct message requiring a sync response
 
 Topic subscription
-  [setTopicMsgCallback](#solacesettopicmsgcallback)        Set callback for messages from topic subscriptions
+  [setTopicMsgCallback](#solacesettopicmsgcallback)        Set callback for messages from topic subscriptions (provides binary payload)
+  [setTopicRawMsgCallback](#solacesettopicrawmsgcallback)        Set callback for messages from topic subscriptions (provides original msg)
   [subscribeTopic](#solacesubscribetopic)             Subscribe to a topic
   [unSubscribeTopic](#solaceunsubscribetopic)           Unsubscribe from a topic
 
@@ -41,10 +42,16 @@ Guaranteed/persistent messaging
   [sendPersistentRequest](#solacesendpersistentrequest)      Send a guaranteed message for a synchronous reply
 
 Flow bindings
-  [setQueueMsgCallback](#solacesetqueuemsgcallback)        Set callback for when message sent to an endpoint
+  [setQueueMsgCallback](#solacesetqueuemsgcallback)        Set callback for when message sent to an endpoint (provides binary payload)
+  [setQueueRawMsgCallback](#solacesetrawqueuemsgcallback)        Set callback for when message sent to an endpoint (provides original msg)
   [bindQueue](#solacebindqueue)                  Bind to a queue
   [sendAck](#solacesendack)                    Acknowledge processing of a message
   [unBindQueue](#solaceunbindqueue)                Remove subscription/binding created with bindQueue
+
+Message functions
+  .solace.getPayloadAsXML                Get the XML part of the Solace message
+  .solace.getPayloadAsString                Get the string part of the Solace message
+  .solace.getPayloadAsBinary                Get the binary part of the Solace message
 
 Utility functions
   .solace.getCapability      Value of the specified capability for the session
@@ -298,6 +305,29 @@ replyDest      topic/queue to reply to (string)
 correlationId  original message’s correlation ID (string)
 msgId          used for [sending acks](#solacesendack) (long)
 </pre>
+:fontawesome-regular-hand-point-right:
+[Values for `destType` and `replyType`](#solacesendpersistentrequest) 
+
+## `.solace.setQueueRawMsgCallback`
+
+_Set a callback function for when a message is sent to an endpoint_. *This is an alternative to `.solace.setQueueMsgCallback`.*
+
+Syntax: `.solace.setQueueRawMsgCallback[callbackFunction]`
+
+Where `callbackFunction` is a q function taking three arguments:
+
+1.  `destination` is a symbol denoting the flow destination (queue from which the subscription originated)
+2.  `msg` as a long pointing to the underlying solace msg (can be used within the callback with the functions to get the payload based on the senders type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc).
+3.  `msg values` is a dictionary specifying message information as follows:
+
+<pre markdown="1" class="language-txt">
+destType       type of destination (integer)
+destName       destination name (string)
+replyType      reply destination type (integer)
+replyDest      topic/queue to reply to (string)
+correlationId  original message’s correlation ID (string)
+msgId          used for [sending acks](#solacesendack) (long)
+</pre>
 
 :fontawesome-regular-hand-point-right:
 [Values for `destType` and `replyType`](#solacesendpersistentrequest) 
@@ -325,7 +355,30 @@ Syntax: `.solace.setTopicMsgCallback[callbackFunction]`
 Where `callbackFunction` is a function taking three arguments:
 
 1.  `destination` as a symbol
-2.  `payload` as a byte array containing the message payload
+2.  `payload` as a byte array containing the message binary payload
+3.  `msg values` as a dictionary: see below
+
+```txt
+isRedeliv  whether redelivered (boolean)
+isDiscard  whether messages have been discarded prior to the current message (boolean)
+           (Indicates congestion discards only; not affected by message eliding.)
+isRequest  whether client expects a reply (boolean) 
+           (In this case the function should return a byte array.)
+sendTime   client’s send time, if populated (timestamp)
+```
+
+registers a q function to be called on receipt of messages from topic subscriptions. If the `msg values` contains a value of `1b` for the key `isRequest`, the function should return with the response message contents (type byte list) as this indicate the sender requests a reply.
+
+## `.solace.setTopicRawMsgCallback`
+
+_Set callback for messages received from topic subscriptions_. *This is an alternative to `.solace.setTopicMsgCallback`.*
+
+Syntax: `.solace.setTopicRawMsgCallback[callbackFunction]`
+
+Where `callbackFunction` is a function taking three arguments:
+
+1.  `destination` as a symbol
+2.  `msg` as a long pointing to the underlying solace msg (can be used within the callback with the functions to get the payload based on the senders type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc).
 3.  `msg values` as a dictionary: see below
 
 ```txt
@@ -390,6 +443,36 @@ _Current version of the build/deployment_
 Syntax: `.solace.version[]`
 
 Returns Solace API version info as a dictionary.
+
+## `.solace.getPayloadAsXML`
+
+_Get XML part of a Solace msg_
+
+Syntax: `.solace.getPayloadAsXML[msg]`
+
+Where `msg` is a msg provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`. This corresponds to the Solace sender setting the payload using the solace function to set the payload as XML (there is no conversion to XML by this API).
+
+Returns byte array (or long representing the solace error code if the payload wasnt an XML solace type)
+
+## `.solace.getPayloadAsString
+
+_Get string part of a Solace msg_
+
+Syntax: `.solace.getPayloadAsString[msg]`
+
+Where `msg` is a msg provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`. This corresponds to the Solace sender setting the payload using the solace function to set the payload as string (there is no conversion to string by this API).
+
+Returns char array (or long representing the solace error code if the payload wasnt an string solace type)
+
+## `.solace.getPayloadAsBinary
+
+_Get binary part of a Solace msg_
+
+Syntax: `.solace.getPayloadAsBinary[msg]`
+
+Where `msg` is a msg provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`.
+
+Returns char array (or long representing the solace error code if the payload could be retrieved as binary). This API defaults to sending msgs as binary (of which string/xml/etc can be used).
 
 
 
