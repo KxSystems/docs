@@ -21,16 +21,16 @@ Kdb+, from [Kx](https://kx.com), is
 -   an expressive query and programming language called q
 </div>
 
-<div style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
+<div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-database"></i> [Tables in the filesystem](database/index.md)</p>
+    :fontawesome-solid-database: [Tables in the filesystem](database/index.md)
 
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-book"></i> [Q language by topic](basics/by-topic.md)</p>
+    :fontawesome-solid-book: [Q language by topic](basics/by-topic.md)
 
-    <p class="nowrap" markdown="1"><i class="fas fa-fw fa-cloud"></i> [Auto Scaling](cloud/autoscale/index.md)</p>
+    :fontawesome-solid-cloud: [Auto Scaling](cloud/autoscale/index.md)
 
-    <p class="nowrap" markdown="1"><i class="fab fa-fw fa-gitlab"></i> [Modularization tools](https://shahdee.gitlab.io/miq/#/)</p>
+    :fontawesome-brands-gitlab: [Modularization tools](https://shahdee.gitlab.io/miq/#/)
 
 </div>
 
@@ -38,6 +38,32 @@ Kdb+, from [Kx](https://kx.com), is
 
 <div style="clear: both">&nbsp;</div>
 
+<div id="kx-home-page-grid" markdown="1">
+
+[Get started](learn/install.md)
+{: #kx-get-started .md-button}
+
+[<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
+Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
+
+[<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+Learn q](learn/index.md)
+
+[<i class="fas fa-fw fa-dollar-sign fa-border fa-5x"></i><br/>
+Data types](basics/datatypes.md "Datatypes in kdb+")
+
+[<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
+Reference card](ref/index.md "Reference card for the q language")
+
+[<i class="fas fa-fw fa-database fa-border fa-5x"></i><br/>
+Database](database/index.md "Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.")
+
+[<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
+Visual environment:<br>Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
+
+</div>
+
+<!-- 
 ## Get started
 
 <div class="kx-flex-grid" markdown="1">
@@ -71,7 +97,6 @@ Kdb+, from [Kx](https://kx.com), is
     Visual environment:<br>Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
 </div>
 </div>
-
 ## Use with Python
 
 <div class="kx-flex-grid" markdown="1">
@@ -117,6 +142,7 @@ Kdb+, from [Kx](https://kx.com), is
     Open source](github.md "Kdb+ repositories on GitHub")
 </div>
 </div>
+ -->
 
 :fontawesome-solid-comment-medical:
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)

@@ -167,3 +167,40 @@ p.small-face {
 .md-typeset h2 {
 	clear: both;
 }
+
+/* What’s New panel on front page */
+#kx-whats-new p {
+	white-space: nowrap;
+}
+
+#kx-home-page-grid {
+	display: grid; 
+	grid:
+	'get_started get_started . .'
+	'. . . .';
+	grid-gap: 10px;
+	background-color: #white;
+	padding:10px;
+}
+#kx-home-page-grid > p {
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	padding: 5px 0;
+}
+#kx-home-page-grid a {
+	color: #0070cd;
+	margin: 0 auto;
+}
+#kx-home-page-grid #kx-get-started {
+	background-color: #0070cd;
+	border-radius: 10px;
+	color: white;
+	font-family: "Proxima Nova",Roboto,sans-serif;
+	font-size: 3em;
+	font-weight: bold;
+	grid-area: get_started;
+	vertical-align: middle;
+}
+#kx-get-started a {
+	color: white;
+}
