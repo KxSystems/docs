@@ -36,20 +36,11 @@ $       [Tok](../ref/tok.md): interpret string as value
 [Precision](precision.md)
 
 
-## [Dictionaries and tables](dictsandtables.md)
+## [Dictionaries](dictsandtables.md)
 
 <pre markdown="1" class="language-txt">
-dictionaries:
- [! Dict](../ref/dict.md)  make a dictionary         [key](../ref/key.md)      key list
- [group](../ref/group.md)   group list by values      [value](../ref/value.md)    value list
-
-tables:
- [cols](../ref/cols.md)    column names              [xasc](../ref/asc.md#xasc)     sort ascending 
- [meta](../ref/meta.md)    metadata                  [xdesc](../ref/desc.md#xdesc)    sort descending 
- [xcol](../ref/cols.md#xcol)    rename cols               [xgroup](../ref/xgroup.md)   group by values in selected cols
- [xcols](../ref/cols.md#xcols)   re-order cols             [xdesc](../ref/desc.md#xdesc)    sort descending
- [xkey](../ref/keys.md#xkey)    set cols as primary keys  [ungroup](../ref/ungroup.md)  normalize
- [! Enkey, Unkey](../ref/enkey.md)  add/remove keys
+[! Dict](../ref/dict.md)  make a dictionary         [key](../ref/key.md)      key list
+[group](../ref/group.md)   group list by values      [value](../ref/value.md)    value list
 </pre>
 
 
@@ -248,7 +239,8 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 !!! warning "Re-sorting compressed data on disk decompresses it."
 
 :fontawesome-solid-book-open:
-[Dictionaries & tables](dictsandtables.md)
+[Dictionaries](dictsandtables.md),
+[Tables](../kb/faq.md)
 
 
 ## Strings
@@ -266,4 +258,18 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [upper](../ref/lower.md#upper)   shift to upper case
 </pre>
 
+
+## [Tables](../kb/faq.md)
+
+<pre markdown="1" class="language-txt">
+[cols](../ref/cols.md)     column names             [ungroup](../ref/ungroup.md)  normalize
+[meta](../ref/meta.md)     metadata                 [xasc](../ref/asc.md#xasc)     sort ascending
+[xcol](../ref/cols.md#xcol)     rename cols              [xdesc](../ref/desc.md#xdesc)    sort descending
+[xcols](../ref/cols.md#xcols)    re-order cols            [xgroup](../ref/xgroup.md)   group by values in selected cols
+[insert](../ref/insert.md)   insert records           [xkey](../ref/keys.md#xkey)     sset cols as primary keys
+[upsert](../ref/upsert.md)   add/insert records       [xdesc](../ref/desc.md#xdesc)    sort descending
+[! Enkey, Unkey](../ref/enkey.md)  add/remove keys
+
+[**qSQL query templates**](../basics/qsql.md):   [select](../ref/select.md)   [exec](../ref/exec.md)   [update](../ref/update.md)   [delete](../ref/delete.md)
+</pre>
 

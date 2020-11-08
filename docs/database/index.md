@@ -10,7 +10,7 @@ date: October 2020
 
 > Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.<br>— Jeffry A. Borror, _Q for Mortals_
 
-Tables are first-class entities in q. Large q tables can be held in memory, but memory is finite and every process eventually terminates.
+[Tables](../kb/faq.md) are first-class entities in q. Large q tables can be held in memory, but memory is finite and every process eventually terminates.
 
 Sooner or later we need to persist tables in the filesystem. We will also need to perform operations on tables that are too large to hold in memory.
 

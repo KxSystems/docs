@@ -20,6 +20,9 @@ date: October 2020
 [**qSQL query templates**](../basics/qsql.md):   [select](../ref/select.md)   [exec](../ref/exec.md)   [update](../ref/update.md)   [delete](../ref/delete.md)
 </pre>
 
+
+Tables are first-class objects in q.
+
 ??? important "A table is an ordered list of its rows."
 
     Relations in SQL are sets. There are no duplicate rows, and rows are not ordered. It is possible to define a cursor on a result set and then manipulate the cursor rows in order. (Not in ANSI SQL.)
@@ -79,7 +82,7 @@ Jill  black green 9
 Janet fair  hazel 14
 ```
 
-Each row is a dictionary.
+Each row is a [dictionary](../basics/dictsandtables.md).
 
 ```q
 q)first t
