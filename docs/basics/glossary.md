@@ -150,6 +150,9 @@ Because floating-point values resulting from computations are usually only appro
 
 A list of vectors of uniform type, e.g. `("quick";"brown";"fox")`.
 
+:fontawesome-solid-book-open:
+[Compound columns in tables](../kb/faq.md#compound-columns)
+
 
 ## Conform
 

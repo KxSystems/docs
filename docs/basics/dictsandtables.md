@@ -1,31 +1,49 @@
 ---
-title: Dictionaries & tables | Basics | kdb+ and q documentation
-description: Operators and keywords for working with dictionaries and tables
+title: Dictionaries | Basics | kdb+ and q documentation
+description: Operators and keywords for working with dictionaries 
 author: Stephen Taylor
 keywords: dictionary, group, kdb+, q, sort, table
 ---
-# Dictionaries and tables
+# Dictionaries
 
 <pre markdown="1" class="language-txt">
-dictionaries:
- [! Dict](../ref/dict.md)  make a dictionary         [key](../ref/key.md)      key list
- [group](../ref/group.md)   group list by values      [value](../ref/value.md)    value list
-
-tables:
- [cols](../ref/cols.md)    column names              [xasc](../ref/asc.md#xasc)     sort ascending 
- [meta](../ref/meta.md)    metadata                  [xdesc](../ref/desc.md#xdesc)    sort descending 
- [xcol](../ref/cols.md#xcol)    rename cols               [xgroup](../ref/xgroup.md)   group by values in selected cols
- [xcols](../ref/cols.md#xcols)   re-order cols             [xdesc](../ref/desc.md#xdesc)    sort descending
- [xkey](../ref/keys.md#xkey)    set cols as primary keys  [ungroup](../ref/ungroup.md)  normalize
- [! Enkey, Unkey](../ref/enkey.md)  add/remove keys
+[! Dict](../ref/dict.md)  make a dictionary         [key](../ref/key.md)      key list
+[group](../ref/group.md)   group list by values      [value](../ref/value.md)    value list
 </pre>
 
-Operators and keywords for working with dictionaries and tables.
+
+## Lists and dictionaries
+
+A list is a mapping from its indexes to its items: `v:1040 59 27` maps 
+
+```txt
+0 -> 1040
+1 -> 59
+2 -> 27
+```
+
+A dictionary is a mapping from a list of keys to a list of values.
+
+```q
+q)show d:`tom`dick`harry!1040 59 27
+tom  | 1040
+dick | 59
+harry| 27
+```
+
+The indexes of `v` are `0 1 2`. The indexes of `d` are `` `tom`dick`harry``. 
+
+The values of `v` and `d` are the same.
+
+```q
+q)value d
+1040 59 27
+q)value `v
+1040 59 27
+```
 
 
-## Dictionaries
-
-### Keys and values
+## Construction 
 
 Use [Dict](../ref/dict.md) to make a dictionary from a list of keys and a list of values.
 
@@ -34,18 +52,11 @@ q)show d:`a`b`c!1 2 3
 a| 1
 b| 2
 c| 3
-
-q)key d
-`a`b`c
-q)value d
-1 2 3
 ```
-
-Keywords [`key`](../ref/key.md) and [`value`](../ref/value.md) return the key and value lists respectively.
 
 The lists must be the same length. The keys should be unique (no duplicates) but no error is signalled if duplicates are present.
 
-??? warning "Avoid duplicating keys in a dictionary or (column names in a) table."
+??? danger "Avoid duplicating keys in a dictionary or (column names in a) table."
 
     Q does not reject duplicate keys, but operations on dictionaries and tables with duplicate keys are **undefined**.
 
@@ -61,12 +72,24 @@ The lists must be the same length. The keys should be unique (no duplicates) but
 Items of the key and value lists can be of any datatype, including dictionaries or tables.
 
 
-### Indexing a dictionary
+## Keys and values
+
+```q
+q)key d
+`a`b`c
+q)value d
+1 2 3
+```
+
+Keywords [`key`](../ref/key.md) and [`value`](../ref/value.md) return the key and value lists respectively.
+
+
+## Indexing 
 
 A dictionary is a mapping from its key items to its value items.
 
 A list is a mapping from its indexes to its items.
-If the indexes of a list are its keys, it is unsurprising to find a dictionary is indexed the same way,
+If the indexes of a list are its keys, it is unsurprising to find a dictionary is indexed by its keys.
 
 ```q
 q)k:`a`b`c`d`e
@@ -120,7 +143,7 @@ x| 42
 ```
 
 
-### `where` and Find
+## `where` and Find
 
 [Find](../ref/find.md) and [`where`](../ref/where.md) both return indexes from lists. Also from dictionaries.
 
@@ -150,7 +173,7 @@ q)where dns=`$"17.172.224.47"
 ```
 
 
-### Order
+## Order
 
 Dictionaries are ordered.
 
@@ -167,7 +190,7 @@ q)(k!v) ~ reverse[k]!reverse v
 ```
 
 
-### Taking and dropping from a dictionary
+## Taking and dropping from a dictionary
 
 Dictionaries are ordered, so you can take and drop items from either end of them.
 
@@ -202,7 +225,7 @@ d| 10
 ```
 
 
-### Joining dictionaries
+## Joining dictionaries
 
 Join on dictionaries has upsert semantics.
 
@@ -215,7 +238,7 @@ d| 500
 ```
 
 
-### Empty and singleton dictionaries
+## Empty and singleton dictionaries
 
 Just like a list, a dictionary may be empty or have a single item.
 But its key and value must still be lists.
@@ -233,7 +256,7 @@ q)value sd
 ```
 
 
-### Column dictionaries
+## Column dictionaries
 
 When a dictionary’s value items are all same-length lists, it is a _column dictionary_.
 
@@ -256,311 +279,13 @@ john 1990.11.16 m
 ```
 
 
-## Simple tables
-
-Flipping a column dictionary produces a table.
-Think of a table as a list of named same-length lists.
-The lists can be of any type; they are usually simple lists, i.e. vectors.
-
-
-### Notation for a simple table
-
-Table notation allows direct definition of a table as a list of named columns.
-
-```q
-q)show t:([] name:`dick`jane; dob:1980.05.24 1990.09.03; sex:`m`f)
-name dob        sex
--------------------
-dick 1980.05.24 m
-jane 1990.09.03 f
-```
-
-
-### Indexing a simple table
-
-If a table is a flipped dictionary, it is unsurprising that we can index the table by column names
-
-```q
-q)t `sex`dob
-m          f
-1980.05.24 1990.09.03
-```
-
-much as we index the column dictionary above.
-
-```q
-q)bd `sex`dob
-m          f          m
-1982.09.15 1984.07.05 1990.11.16
-```
-
-But a table is also ordered.
-
-```q
-q)reverse t
-name dob        sex
--------------------
-jane 1990.09.03 f
-dick 1980.05.24 m
-
-q)count t
-2
-```
-
-So an item is not a column, but – a row?
-
-```q
-q)first t
-name| `dick
-dob | 1980.05.24
-sex | `m
-```
-
-Oh, a dictionary.
-
-We see at last the dual nature of a table.
-It is _both_
-
--   a list of named same-length columns
--   a list of like (same-key) dictionaries
-
-And we can index it either way or both.
-
-```q
-q)t 1
-name| `jane
-dob | 1990.09.03
-sex | `f
-
-q)t `dob
-1980.05.24 1990.09.03
-
-q)t[1 0;`dob`sex]
-1990.09.03 `f
-1980.05.24 `m
-```
-
-Its items are dictionaries and, as a table is a list of like dictionaries, any sublist of the table is – also a table.
-
-```q
-q)t 1 0
-name dob        sex
--------------------
-jane 1990.09.03 f
-dick 1980.05.24 m
-```
-
-
-### Taking and dropping from a simple table
-
-A table is ordered, so you can take and drop from either end of it.
-
-```q
-q)caps:([]country:`France`Nigeria`UK`USA;
-        city:`Paris`Lagos`London`Washington;
-        continent:`Europe`Africa`Europe`NorthAmerica)
-
-q)-2#caps
-country city       continent
--------------------------------
-UK      London     Europe
-USA     Washington NorthAmerica
-
-q)-2 _ caps
-country city  continent
------------------------
-France  Paris Europe
-Nigeria Lagos Africa
-```
-
-You can also take selected columns.
-
-```q
-q)`city`country#caps
-city       country
-------------------
-Paris      France
-Lagos      Nigeria
-London     UK
-Washington USA
-```
-
-
-### Joining simple tables
-
-With tables, Join appends the second to the first.
-
-```q
-q)t,flip bd
-name dob        sex
--------------------
-dick 1980.05.24 m
-jane 1990.09.03 f
-jack 1982.09.15 m
-jill 1984.07.05 f
-john 1990.11.16 m
-```
-
-Join Each has upsert semantics.
-
-```q
-q)t,'([] eye:`blue`green; city:`Tokyo`London; sex:`m`m)
-name dob        sex eye   city
---------------------------------
-dick 1980.05.24 m   blue  Tokyo
-jane 1990.09.03 m   green London
-```
-
-There are many other [join keywords](joins.md).
-
-
-### Dict Each
-
-Because tables are collections of like dictionaries, `x!` applied to each member of a list returns a table of that list. For example:
-
-```q
-q)`a`b`c!/:(0 0 0;1 2 3;2 4 6)
-a b c
------
-0 0 0
-1 2 3
-2 4 6
-```
-
-The same result may be achieved with a pair of flips:
-
-```q
-q)flip`a`b`c!flip(0 0 0;1 2 3;2 4 6)
-a b c
------
-0 0 0
-1 2 3
-2 4 6
-```
-
-
-## Keyed tables
-
-A table is a list of rows, each one a dictionary.
-
-A keyed table uses one or more of the columns as a key.
-It is a dictionary. Its key is the key columns; its value, the other columns.
-
-Here we use [Dict](../ref/dict.md) to make a key from the first column of a simple table.
-
-```q
-q)show kt:1!t,flip bd
-name| dob        sex
-----| --------------
-dick| 1980.05.24 m
-jane| 1990.09.03 f
-jack| 1982.09.15 m
-jill| 1984.07.05 f
-john| 1990.11.16 m
-
-q)key kt
-name
-----
-dick
-jane
-jack
-jill
-john
-
-q)value kt
-dob        sex
---------------
-1980.05.24 m
-1990.09.03 f
-1982.09.15 m
-1984.07.05 f
-1990.11.16 m
-```
-
-
-
-### Notation for a keyed table
-
-Table notation allows direct definition of a keyed table.
-
-```q
-q)show ku:([name:`Tom`Jo`Tom; city:`NYC`LA`Lagos] eye:`green`blue`brown; sex:`m`f`m)
-name city | eye   sex
-----------| ---------
-Tom  NYC  | green m
-Jo   LA   | blue  f
-Tom  Lagos| brown m
-
-q)key ku
-name city
-----------
-Tom  NYC
-Jo   LA
-Tom  Lagos
-
-q)value ku
-eye   sex
----------
-green m
-blue  f
-brown m
-```
-
-
-### Indexing a keyed table
-
-There are two ways to index a keyed table.
-
-First, with a single row from its key, returning a dictionary.
-
-```q
-q)flip{x cols x}key kt
-dick
-jane
-jack
-jill
-john
-q)kt `john
-dob| 1990.11.16
-sex| `m
-
-q)flip{x cols x}key ku
-Tom NYC
-Jo  LA
-Tom Lagos
-q)ku `Tom`Lagos
-eye| brown
-sex| m
-```
-
-Second, with a sublist from its key, returning a list of dictionaries, which is a table.
-
-```q
-q)ku ([]city:`LA`Lagos; name:`Jo`Tom)
-eye   sex
----------
-blue  f
-brown m
-```
-
-
-!!! tip "qSQL and Functional SQL"
-
-    The foregoing describes dictionaries and tables in terms of lists and indexes.
-    [Functional SQL](funsql.md) extends the concepts through the query operators `?` and `!`.
-
-    If you are familiar with SQL, you will find [qSQL queries](qsql.md) more readable.
-
-----
-
-:fontawesome-solid-book-open:
-[Functional SQL](funsql.md),
-[qSQL](qsql.md)
-<br>
+---
 :fontawesome-solid-book:
 [Step dictionaries](../ref/apply.md#step-dictionaries)
+<br>
+:fontawesome-solid-book-open:
+[Tables](../kb/faq.md)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§5. Dictionaries](/q4m3/5_Dictionaries/),
-[§8. Tables](/q4m3/8_Tables/)

@@ -7,7 +7,7 @@ keywords: kdb+, q,view
 
 
 
-A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation. 
+A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation.
 
 
 ## Why use a view?
@@ -39,7 +39,7 @@ q)viewname::[expression;expression;…]expression
     q)vv ~ (::)
     1b
     q)vv ~ {[];}[]
-    1b 
+    1b
     </code></pre>
 
 The following defines a view called `myview` which depends on vars `a` and `b`.
@@ -111,9 +111,9 @@ q)views`
 ```
 
 
-## How to list invalidated views 
+## How to list invalidated views
 
-Invalidated (pending) views are awaiting recalculation. 
+Invalidated (pending) views are awaiting recalculation.
 
 Invoking `\B` will return a list of pending views.
 
@@ -153,7 +153,7 @@ q)`. `d
 b+a
 ```
 
-`value` on that reveals the underlying representation: 
+`value` on that reveals the underlying representation:
 
 - (last result|::)
 - parse-tree
@@ -278,11 +278,16 @@ q){a}peach 0 1
 
 Views are not parsable, e.g. `eval parse "a::b+c"`
 
-:fontawesome-regular-hand-point-right: 
-[`view`](../ref/view.md), [`views`](../ref/view.md)  
-System commands: [`\b`](../basics/syscmds.md#b-views "views"), 
-[`\B`](../basics/syscmds.md#b-pending-views "pending views")  
-Namespaces: [`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"), 
+---
+:fontawesome-solid-book:
+[`view`](../ref/view.md), [`views`](../ref/view.md),
+[`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"),
 [`.z.vs`](../ref/dotz.md#zvs-value-set "value set")
-
-
+<br>
+:fontawesome-solid-book-open:
+[`\b`](../basics/syscmds.md#b-views "views"),
+[`\B`](../basics/syscmds.md#b-pending-views "pending views")
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.11 Views](/q4m3/9_Queries_q-sql/#9911-views)

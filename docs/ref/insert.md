@@ -2,7 +2,6 @@
 title: insert keyword | Reference | kdb+ and q documentation
 description: insert is a q keyword that inserts or appends records to a table.
 author: Stephen Taylor
-keywords: append, insert, kdb+, q, qsql, query, record, sql, table
 ---
 # `insert`
 
@@ -11,14 +10,16 @@ keywords: append, insert, kdb+, q, qsql, query, record, sql, table
 
 _Insert or append records to a table_
 
-Syntax: `` `x insert y``, ``insert[`x;y]``
+```txt
+x insert y    insert[x;y]
+```
 
 Where 
 
--  `x` is a table, or a symbol atom naming a non-splayed table
+-  `x` is a symbol atom naming a non-splayed table
 -  `y` is one or more records that match the columns of `x`; **or** if `x` is undefined, a table
 
-inserts `y` into `x` and returns the new row indexes. 
+inserts `y` into the table named by `x` and returns the new row indexes. 
 
 !!! warning "The left argument is the name of a table as a symbol atom."
 
@@ -119,10 +120,18 @@ type     y value wrong type
 
 ----
 :fontawesome-solid-book: 
-[`,` Join](join.md),
+[Join](join.md)
+<br>
+:fontawesome-solid-book: 
 [`upsert`](upsert.md)
 <br>
 :fontawesome-solid-book-open: 
-[q-SQL](../basics/qsql.md)
+[Functional qSQL](../basics/funsql.md)
+<br>
+:fontawesome-solid-book-open: 
+[qSQL query templates](../basics/qsql.md)
+<br>
+:fontawesome-solid-book-open: 
+[Tables](../kb/faq.md) 
 
 

@@ -129,6 +129,9 @@ Where
 
 returns a vector, matrix, or table interpreted from the content of `y`.
 
+
+### With column names
+
 If `delimiter` is enlisted, the first row of the content of `y` is read as column names and the result is a table; otherwise the result is a list of values for each column.
 
 ```q
@@ -151,6 +154,34 @@ q)("DT";",")0:"20130315,185540686"
 2013.03.15
 18:55:40.686
 ```
+
+
+### Without column names
+
+If the CSV file contains data but no column names:
+
+```csv
+0,hea,481
+10,dfi,579
+20,oil,77
+```
+
+We can read the columns:
+
+```q
+q)("ISI";",") 0:`data.csv
+0   10  20
+hea dfi oil
+481 579 77
+```
+
+Create a column dictionary and flip it:
+
+```q
+table: flip `a`b`c!("ISI";",") 0:`data.csv
+```
+
+!!! warning "Column names must not be the null symbol <code>&#96;</code>"
 
 
 ## :fontawesome-solid-database: Load Fixed

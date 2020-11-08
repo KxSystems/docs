@@ -414,7 +414,7 @@ nav:
     - Conformability: basics/conformable.md
     - Connection handles: basics/handles.md
     - Datatypes: basics/datatypes.md
-    - Dictionaries & tables: basics/dictsandtables.md
+    - Dictionaries: basics/dictsandtables.md
     - Enumerations: basics/enumerations.md
     - Evaluation control: basics/control.md
     - Exposed infrastructure: basics/exposed-infrastructure.md
@@ -432,7 +432,7 @@ nav:
     - Parse trees, functional SQL*: wp/parse-trees.md
     - QSQL queries: basics/qsql.md
     - Regular Expressions: basics/regex.md
-    - Regex: kb/regex.md
+    # - Regex: kb/regex.md
     # - Search: basics/search.md
     # - Selection: basics/selection.md
     # - Sorting: basics/sort.md
@@ -447,6 +447,7 @@ nav:
       - Foreign keys*: wp/foreign-keys.md
       - Linking columns: kb/linking-columns.md
       - Data loaders*: wp/data-loaders/index.md
+      - From MDB via ODBC: database/mdb-odbc.md
     - Persisting tables:
       - Serializing an object: database/object.md
       - Splayed tables: kb/splayed-tables.md
@@ -505,6 +506,7 @@ nav:
       - Parallel processing: basics/peach.md
       - Performance tips: kb/performance-tips.md
       - Replay logfile: kb/replay-log.md
+      - Shebang script: develop/shebang.md
       - Surveillance latency*: wp/surveillance-latency/index.md
       - Windows service: kb/windows-service/index.md
     - Release notes:

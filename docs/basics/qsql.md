@@ -319,6 +319,31 @@ Efficient Where phrases start with their most stringent tests.
 !!! tip "Use [`fby`](../ref/fby.md) to filter on groups."
 
 
+## Aggregates
+
+In SQL:
+
+```sql
+SELECT stock, SUM(amount) AS total FROM trade GROUP BY stock
+```
+
+In q:
+
+```q
+q)select total:sum amt by stock from trade
+stock| total
+-----| -----
+bac  | 1000
+ibm  | 2000
+usb  | 815
+```
+
+The column `stock` is a key in the result table.
+
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md) for more aggregate functions
+
+
 ## Sorting
 
 Unlike SQL, the query templates make no provision for sorting. 
@@ -456,20 +481,43 @@ But the query templates are powerful, readable, and there is no performance pena
 
 ## Stored procedures
 
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§9.9.10 Parameterized Queries](/q4m3/9_Queries_q-sql/#999-parameterized-queries)
+Any suitable lambda can be used in a query.
+
+```q
+q)f:{[x] x+42}
+q)select stock, f amount from trade
+stock amount
+------------
+ibm   542
+...
+```
 
 
-## Views
+## Parameterized queries
 
-:fontawesome-solid-graduation-cap:
-[Views](../learn/views.md)
-<br>
-:fontawesome-solid-street-view:
-_Q for Mortals_
-[§9.9.11 Views](/q4m3/9_Queries_q-sql/#9911-views)
+Query template expressions can be evaluated in lambdas.
 
+```q
+q)myquery:{[tbl; amt] select stock, time from tbl where amount > amt}
+q)myquery[trade; 100]
+stock time
+------------------
+ibm   09:04:59.000
+...
+```
+
+Column names cannot be parameters of a qSQL query. Use [functional qSQL](../basics/funsql.md) in such cases.
+
+
+## Queries using SQL syntax
+
+Q implements a translation layer from SQL. The syntax is to prepend `s)` to the SQL query.
+
+```q
+q)s)select * from trade
+```
+
+!!! warning "Only a subset of SQL is supported."
 
 
 ----
@@ -481,6 +529,13 @@ _Q for Mortals_
 :fontawesome-solid-book-open:
 [Functional SQL](funsql.md)
 <br>
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
+<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§9.0 Queries: q-sql](/q4m3/9_Queries_q-sql/#90-overview)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.10 Parameterized Queries](/q4m3/9_Queries_q-sql/#999-parameterized-queries)
