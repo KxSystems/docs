@@ -24,13 +24,13 @@ Kdb+, from [Kx](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-solid-book: [Tables in memory](kb/faq.md)
+
     :fontawesome-solid-database: [Tables in the filesystem](database/index.md)
 
     :fontawesome-solid-book: [Q language by topic](basics/by-topic.md)
 
     :fontawesome-solid-cloud: [Auto Scaling](cloud/autoscale/index.md)
-
-    :fontawesome-brands-gitlab: [Modularization tools](https://shahdee.gitlab.io/miq/#/)
 
 </div>
 
@@ -43,23 +43,29 @@ Kdb+, from [Kx](https://kx.com), is
 [Get started](learn/install.md)
 {: #kx-get-started .md-button}
 
-[<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
+[<i class="fas fa-fw fa-hiking fa-5x"></i><br/>
 Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
+{: .md-button}
 
-[<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
+[<i class="fas fa-fw fa-book-reader fa-5x"></i><br/>
 Learn q](learn/index.md)
+{: .md-button}
 
-[<i class="fas fa-fw fa-dollar-sign fa-border fa-5x"></i><br/>
+[<i class="fas fa-fw fa-dollar-sign fa-5x"></i><br/>
 Data types](basics/datatypes.md "Datatypes in kdb+")
+{: .md-button}
 
-[<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
-Reference card](ref/index.md "Reference card for the q language")
+[<i class="fas fa-fw fa-book fa-5x"></i><br/>
+Q reference](ref/index.md "Reference card for the q language")
+{: .md-button}
 
-[<i class="fas fa-fw fa-database fa-border fa-5x"></i><br/>
+[<i class="fas fa-fw fa-database fa-5x"></i><br/>
 Database](database/index.md "Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.")
+{: .md-button}
 
-[<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
-Visual environment:<br>Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
+[<i class="fas fa-fw fa-laptop-code fa-5x"></i><br/>
+IDE: Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
+{: .md-button}
 
 </div>
 
@@ -142,14 +148,41 @@ Visual environment:<br>Kx Developer](/developer/ "Download and install the free 
     Open source](github.md "Kdb+ repositories on GitHub")
 </div>
 </div>
- -->
 
 :fontawesome-solid-comment-medical:
 [Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
+-->
+
+??? quote "How we are responding to the pandemic"
+
+    ![Seamus Keating](img/seamus-keating.jpg)
+    {: style="float:right; margin:0 0 0 1em; width:150px;"}
+
+    As we face these challenging times brought on by the coronavirus pandemic, I wanted to share how we are addressing the situation for our employees and customers.
+    We understand this is a stressful time, especially for anyone who is affected directly by the coronavirus, or has family members or friends impacted.
+
+    From early on, we set up a global committee of cross-functional leaders meeting daily to review the information coming from governments, the medical community and our employees in the field.
+    This committee developed a multi-level plan covering a range of recommendations and has been communicating with our employees multiple times per week to keep everyone up to date.
+
+    The safety and well-being of our team, customers and partners has been our priority and we are taking all pragmatic measures to ensure that continues in an ever-evolving situation.
+    These measures include staff working from home as they continue delivering services and support to clients across the globe.
+    We are also leveraging virtual and digital communication methods as much as possible to keep the lines open and teamwork internally and externally going forward.
+
+    We recognize that many of our customers are at the front line of maintaining confidence in the global economy and we are supporting them with their business continuity plans to ensure mission-critical work continues to get done.
+
+    I am personally proud of the speed, agility and commitment demonstrated by our team despite the disruptions to our lives and work routines.
+    We value the confidence our customers have put in us and are committed to working together to deliver for you throughout this unprecedented situation – and in better times ahead.
+
+
+    **Seamus Keating**
+    <br>
+    CEO, First Derivatives plc
 
 The source code for this site is on GitHub at
 :fontawesome-brands-github:
 [KxSystems/docs](https://github.com/kxsystems/docs/).
 
-!!! info "[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)"
+---
+:fontawesome-solid-globe:
+[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)
 

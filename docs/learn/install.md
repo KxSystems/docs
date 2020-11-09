@@ -1,15 +1,14 @@
 ---
 title: Installing kdb+ | Learn | kdb+ and q documentation
-description: How to install kdb+
+description: How to install kdb+ on Linux, macOS, or Windows
 author: Stephen Taylor
-date: June 2020
-keywords: install, kdb+, q
+date: November 2020
 ---
-# Installing kdb+
+# :fontawesome-solid-power-off: Installing kdb+
 
 
 You can run kdb+ on Linux, macOS, or Windows.
-There are three scenarios for installing kdb+.
+There are three installation scenarios.
 
 -   You are a commercial user, with a `k4.lic` file.
 -   You have the 64-bit On Demand Personal Edition for non-commercial use. This is enabled by a `kc.lic` license-key file and requires an always-on Internet connection. (This version of kdb+ is not licensed for use on cloud servers.)
@@ -129,7 +128,7 @@ Your `QHOME` directory will then contain:
 
 Kdb+ looks for a license file in `QHOME`. To keep your license file elsewhere, set its path in environment variable `QLIC`. 
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-laptop-code:
 [Working with multiple versions of kdb+](../kb/versions.md)
 
 
@@ -174,7 +173,7 @@ m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE…
 q)
 ```
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-book-open: 
 [License errors](../basics/errors.md#license-errors), 
 [Licensing](licensing.md)
 
@@ -234,13 +233,28 @@ m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE…
 q)
 ```
 
-:fontawesome-solid-graduation-cap:
+:fontawesome-solid-laptop-code:
 [Installing multiple versions of kdb+](../kb/versions.md)
 <br>
-:fontawesome-solid-graduation-cap:
+:fontawesome-solid-cloud:
 [Installing kdb+ on DigitalOcean](../kb/digitalocean.md)
 
-## :fontawesome-regular-hand-point-right: What’s next?
 
-[Learn the q programming language](index.md), look through the [reference card](../ref/index.md), or see in the [Knowledge Base](../kb/index.md) what you can do with kdb+.
+## :fontawesome-solid-laptop-code: Interactive development environments
+
+If you are a solo student, we recommend learning q by running it from a command shell, as a REPL, writing scripts in a text editor. 
+The examples on this site are produced that way; visual fidelity should help you as you learn. 
+
+[Jupyter notebooks](https://jupyter.org/) are an interactive publishing format.
+We are producing lessons in this form and the library  is growing. 
+The [JupyterQ interface](../ml/jupyterq/index.md) lets you run q code in notebooks.
+
+Notebooks are not, however, an IDE, and are unsuitable for studying features such as event handlers. 
+
+For more advanced study, use either the bare q REPL, or download and install our interactive development environment, [Kx Developer](/developer/).
+
+
+## :fontawesome-solid-hand-point-right: What’s next?
+
+[Learn the q programming language](index.md), look through the [reference card](../ref/index.md), or see in the [Database](../database/index.md) what you can do with kdb+.
 

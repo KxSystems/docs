@@ -183,9 +183,8 @@ p.small-face {
 	padding:10px;
 }
 #kx-home-page-grid > p {
-	background-color: rgba(255, 255, 255, 0.8);
+	padding: 20px 5px;
 	text-align: center;
-	padding: 5px 0;
 }
 #kx-home-page-grid a {
 	color: #0070cd;
@@ -199,6 +198,7 @@ p.small-face {
 	font-size: 3em;
 	font-weight: bold;
 	grid-area: get_started;
+	padding: 5px 0;
 	vertical-align: middle;
 }
 #kx-get-started a {
