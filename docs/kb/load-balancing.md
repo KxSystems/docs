@@ -1,7 +1,6 @@
 ---
-title: A load-balancing kdb+ server – Knowledge Base – kdb+ and q documentation
+title: A load-balancing kdb+ server | Knowledge Base | kdb+ and q documentation
 description: The primary server starts secondary servers; clients send requests to the primary server which chooses a secondary server with low CPU load, and forwards the request there. 
-keywords: balance, kdb+, java, load, q, swing
 ---
 # A load-balancing kdb+ server
 

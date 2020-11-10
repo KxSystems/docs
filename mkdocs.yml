@@ -619,6 +619,7 @@ nav:
     - Lightning tickerplants*: wp/lightning-tickerplants/index.md
   - Architecture:
     - Overview: architecture/index.md
+    - Examples: architecture/examples.md
     - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
     - Chained tickerplant: kb/chained-tickerplant.md
     - Client-server: kb/client-server.md
