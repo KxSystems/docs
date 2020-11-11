@@ -539,6 +539,10 @@ nav:
       - Socket sharding*: wp/socket-sharding/index.md
       - SSL/TLS: kb/ssl.md
       - WebSockets: kb/websockets.md
+    - C/C++: 
+      - Quick guide: interfaces/c-client-for-q.md
+      - White paper*: wp/capi/index.md
+      - API reference: interfaces/capiref.md
     - Fusion for kdb+:
       - Overview: interfaces/fusion.md
       - FFI: interfaces/ffi.md
@@ -594,10 +598,6 @@ nav:
         - RESTful API: interfaces/solace/solacerest.md
         - Examples: interfaces/solace/examples.md
     - Clients for kdb+: 
-      - C: 
-        - Quick guide: interfaces/c-client-for-q.md
-        - Full guide*: wp/capi/index.md
-        - API reference: interfaces/capiref.md
       - C#: 
         - API: interfaces/csharp-client-for-q.md
         - GUIs*: wp/gui/index.md

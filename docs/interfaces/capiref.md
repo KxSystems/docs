@@ -1,13 +1,12 @@
 ---
-title: C API reference – Interfaces – kdb+ and q documentation
+title: C API reference | Interfaces | kdb+ and q documentation
 description: A reference guide to the API for connecting a C program to a kdb+ server process
 author: Charles Skelton
-keywords: api, c, interface, kdb+, library, q, reference
 ---
 # C API Reference
 
 
-:fontawesome-regular-hand-point-right: [C client for kdb+](c-client-for-q.md)
+:fontawesome-regular-hand-point-right: [Quick guide](c-client-for-q.md)
 
 
 ## Overview

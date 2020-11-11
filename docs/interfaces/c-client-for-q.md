@@ -1,15 +1,15 @@
 ---
-title: C client for kdb+ – Interfaces – kdb+ and q documentation
+title: C client for kdb+ | Interfaces | kdb+ and q documentation
 description: How to connect a C client program to a kdb+ server process
 author: Charles Skelton
-keywords: api, c, interface, kdb+, library, q
 ---
-# ![C](img/c.png) C client for kdb+
+# C client for kdb+
 
 
+_The C interface is part of the kdb+ core product and is fully supported by Kx_
 
 :fontawesome-regular-hand-point-right: 
-[C API reference](capiref.md)
+[API reference](capiref.md)
 
 There are three cases in which to to use the C API for kdb+:
 
