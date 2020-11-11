@@ -6,7 +6,6 @@ author: Charles Skelton
 # C client for kdb+
 
 
-_The C interface is part of the kdb+ core product and is fully supported by Kx_
 
 :fontawesome-regular-hand-point-right: 
 [API reference](capiref.md)
