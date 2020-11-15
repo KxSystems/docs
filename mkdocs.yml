@@ -634,6 +634,7 @@ nav:
     - Optane Memory: kb/optane.md
     - Order Book*: wp/order-book.md
     - Publish and subscribe: kb/publish-subscribe.md
+    - Pub/sub with Solace*: wp/solace/index.md
     - Query Routing*: wp/query-routing/index.md
     - Real-time tick subscribers*: wp/rt-tick/index.md
     - WebSockets*: wp/websockets/index.md

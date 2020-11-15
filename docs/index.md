@@ -24,13 +24,13 @@ Kdb+, from [Kx](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-regular-map: [Pub/sub with Solace](wp/solace/index.md)
+
     :fontawesome-solid-book: [Tables in memory](kb/faq.md)
 
     :fontawesome-solid-database: [Tables in the filesystem](database/index.md)
 
     :fontawesome-solid-book: [Q language by topic](basics/by-topic.md)
-
-    :fontawesome-solid-cloud: [Auto Scaling](cloud/autoscale/index.md)
 
 </div>
 

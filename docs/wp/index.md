@@ -8,6 +8,20 @@ description: Index to technical white papers (formerly published as q for Gods)
 White papers are starred in the navigation menus.
 
 
+## :fontawesome-solid-handshake: Interfaces
+
+-   ==new== [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
+-   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
+-   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
+-   [**Data visualization with kdb+ using ODBC:** a Tableau case study](data-visualization/index.md)<br>Michaela&nbsp;Woods, 2018.07
+-   [**Java API for kdb+**](java-api/index.md)<br>Peter&nbsp;Lyness, 2018.05
+-   [**Kdb+ and WebSockets**](websockets/index.md)<br>Chris&nbsp;Scott &amp; Michael&nbsp;Gracey, 2018.03
+-   [**Building real-time tick subscribers**](rt-tick/index.md)<br>Nathan&nbsp;Perrem, 2014.08
+-   [**Kdb+ and FIX messaging**](fix-messaging.md)<br>Damien&nbsp;Barker, 2014.01
+-   [**An introduction to graphical interfaces for kdb+ using C#**](gui/index.md)<br>Michael&nbsp;Reynolds, 2013.05
+-   [**Common design principles for kdb+ gateways**](gateway-design/index.md)<br>Michael&nbsp;McClintock, 2012.12
+
+
 ## :fontawesome-solid-database: Managing data and systems
 
 -   [**Auto Scaling for a kdb+ realtime database**](../cloud/autoscale/index.md) :fontawesome-solid-cloud:<br>Jack Stapleton, 2020.09
@@ -54,19 +68,6 @@ White papers are starred in the navigation menus.
 -   [**NASA FDL: Space Weather Challenge**](space-weather/index.md)<br>Deanna Morgan, 2018.11
 -   [**Using embedPy to apply LASSO regression**](embedpy-lasso/index.md)<br>Samantha Gallagher, 2018.10
 -   [**K-Nearest Neighbor classification and pattern recognition with q**](machine-learning/index.md)<br>Emanuele Melis, 2017.07
-
-
-## :fontawesome-solid-handshake: Interfaces
-
--   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
--   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
--   [**Data visualization with kdb+ using ODBC:** a Tableau case study](data-visualization/index.md)<br>Michaela&nbsp;Woods, 2018.07
--   [**Java API for kdb+**](java-api/index.md)<br>Peter&nbsp;Lyness, 2018.05
--   [**Kdb+ and WebSockets**](websockets/index.md)<br>Chris&nbsp;Scott &amp; Michael&nbsp;Gracey, 2018.03
--   [**Building real-time tick subscribers**](rt-tick/index.md)<br>Nathan&nbsp;Perrem, 2014.08
--   [**Kdb+ and FIX messaging**](fix-messaging.md)<br>Damien&nbsp;Barker, 2014.01
--   [**An introduction to graphical interfaces for kdb+ using C#**](gui/index.md)<br>Michael&nbsp;Reynolds, 2013.05
--   [**Common design principles for kdb+ gateways**](gateway-design/index.md)<br>Michael&nbsp;McClintock, 2012.12
 
 
 ## :fontawesome-solid-code: Programming in q
