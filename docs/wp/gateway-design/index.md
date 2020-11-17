@@ -275,7 +275,10 @@ All code included is using kdb+ 3.0 (2012.11.12).
 
 ## Author
 
-**Michael McClintock** has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data capture and analytics platforms across a number of different asset classes.
+![Michael McClintock](../../img/faces/michaelmcclintock.png)
+{: .small-face}
+
+**Michael McClintock** has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data-capture and analytics platforms across a number of different asset classes.
 &nbsp;
 [:fontawesome-solid-envelope:](mailto:mmcclintock@kx.com?subject=White paper: Gateway design) 
 &nbsp;
