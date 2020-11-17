@@ -1247,7 +1247,8 @@ q)0Wj~.Q.M
 .Q.MAP[]
 ```
 
-Added in V3.1, keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
+Keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
+(Since V3.1.)
 
 For use with partitioned HDBS, used in tandem with `\l dir`
 
@@ -1256,17 +1257,18 @@ q)\l .
 q).Q.MAP[]
 ```
 
+<!-- 
 When using `.Q.MAP[]` you can’t access the date column outside of the usual:
 
 ```q
 select … [by date,…] from … where [date …]
 ```
-
+ -->
 NOT recommended for use with compressed files, as the decompressed maps will be retained, using physical memory|swap.
 
-!!! note "File handles and maps"
+??? detail "You may need to increase the number of available file handles, and also the number of available file maps"
 
-    You may need to increase the number of available file handles, and also the number of available file maps. For Linux see `vm.max_map_count`.
+    For Linux see `vm.max_map_count`.
 
 
 ## `.Q.n` (nums)
