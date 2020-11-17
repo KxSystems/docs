@@ -125,7 +125,7 @@ With so many messaging patterns to choose from, why invest time and resources in
 
 Data is the lifeline of your kdb+ stack. It flows from feed handlers to tickerplants to downstream subscribers and then eventually to historical databases. However, kdb+ stacks do not operate in isolation. Depending on how the company is structured, there might be a central Market Data team responsible for managing connectivity with external data vendors and writing Java feed handlers to capture market data and then distributing it over an event broker for other teams to consume. 
 
-The Tick Data team can be just one of many downstream consumers interested in all or subset of the data published by the *market data* team. Similarily, the Tick Data team can enrich the raw data by generating stats and distributing it to other downstream consumers via the same event broker. 
+The Tick Data team can be just one of many downstream consumers interested in all or subset of the data published by the Market Data team. Similarily, the Tick Data team can enrich the raw data by generating stats and distributing it to other downstream consumers via the same event broker. 
 
 The key idea here is that the publisher only has to worry about publishing data to the event broker and not get bogged down in the details of how many downstream consumers there are, what their subscription interests are, what protocol they want to use and so forth. This is all responsibility of the event broker. Similarly, the subscribers do not need to worry about which publisher they need to connect to. They continue to connect to the same event broker and get access to real-time data. 
 
@@ -160,7 +160,7 @@ Using an event broker puts the kdb+ estate at the center of your big data ecosys
 
 Not all events are equal. Some events do not matter at all and are not worth capturing. Some, such as market data, are important but there is tolerance for some loss. Then there are some events, such as order data, that are extremely important and cannot be dropped.  A PNL dashboard can tolerate some loss of  data, but an an execution management system losing order data can result in monetary loss. 
 
-Whereb there is zero tolerance for message loss, using an event broker provides that guarantee. Event brokers use local persistence and acknowledgements to provide a guaranteed flow between publishers and subscribers. Publishers can publish data to the event broker and receive an acknowledgement back when broker has persisted the data locally. When a subscriber comes online and requests that data, it will receive it and will provide an acknowledgement back to the broker letting it know it is safe to delete the data from its local storage. 
+Where there is zero tolerance for message loss, using an event broker provides that guarantee. Event brokers use local persistence and acknowledgements to provide a guaranteed flow between publishers and subscribers. Publishers can publish data to the event broker and receive an acknowledgement back when broker has persisted the data locally. When a subscriber comes online and requests that data, it will receive it and will provide an acknowledgement back to the broker letting it know it is safe to delete the data from its local storage. 
 
 
 ### Global data distribution and data consolidation via event mesh
@@ -205,7 +205,7 @@ If you have worked with market data before, you know how expensive it can be and
 
 Only the applications that require the data and are authorized to access the data should be able to consume that data. This is where Access Control Lists (ACLs) help. Event brokers allow you to lock down exactly which applications have access to the data in a transparent manner. You can control what topics publishers can publish to and what topics subscribers can subscribe from to make sure no one is accessing any data they are not authorized to access. For example, if all the market data in our organization is published to topics of this topology: `EQ/{region}/{exchange}/{stock}` we can restrict applications to US equities data by limiting them to the `EQ/US/>` hierarchy. Additionally, I can grant a subscriber access to only data from the New York Stock Exchange (NYSE) as: `EQ/US/NYSE/>`. 
 
-Having strong ACL profiles provides transparency and strong security. And in with market data, it helps avoid an expensive bill from exchanges and market data vendors!
+Having strong ACL profiles provides transparency and strong security. And with market data, it helps avoid an expensive bill from exchanges and market data vendors!
 
 
 ## Implement with kdb+ and Solace
@@ -379,7 +379,7 @@ Similarly, we can publish a guaranteed message by calling the function `.solace.
 
 ### Create a queue and map topics to it 
 
-Just as you can publish data to either topics or queues, you can also consume data by either subscribing to a topic or instead mapping one or more topics to a queue and binding to that queue. Subscribing directly to a topic corresponds to direct messaging and is used in high0throughput, low-latency use cases, since there is no additional overhead of persistence and acknowledgements. 
+Just as you can publish data to either topics or queues, you can also consume data by either subscribing to a topic or instead mapping one or more topics to a queue and binding to that queue. Subscribing directly to a topic corresponds to direct messaging and is used in high-throughput, low-latency use cases, since there is no additional overhead of persistence and acknowledgements. 
 
 For a higher service quality, promote direct messages to persistent messages by using _topic-to-queue mapping_. Topic-to-queue mapping is simply using a queue and mapping one or more topics to that queue to enqueue all of the messages sent to its topics. Queues provide persistence and ordering across topics so if the subscriber disconnects, no data is lost. 
 
@@ -643,7 +643,7 @@ subUpdate:{[dest;payload;dict]
     `prices  insert b; }
 ```
 
-Of the three arguments, `payload` is the actual pricing data. `subUpdate` converts the binary payload to characters and loads JSON data into a kdb+ row using `.j.k`; then will updates some of the column types and inserts the row in the `prices` table. 
+Of the three arguments, `payload` is the actual pricing data. `subUpdate` converts the binary payload to characters and loads JSON data into a kdb+ row using `.j.k`; then updates some of the column types and inserts the row in the `prices` table. 
 
 Register the callback function and subscribe to the topic.
 
