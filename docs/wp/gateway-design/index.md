@@ -3,7 +3,6 @@ title: Common design principles in kdb+ gateways | White paper | q and kdb+ docu
 description: The most common technical challenges associated with gateways and the reasoning behind various design options
 date: December 2012
 author: Michael McClintock
-keywords: architecture, gateway, interface, kdb+, load balance, q, resilience, service
 ---
 White paper
 {: #wp-brand}
@@ -277,4 +276,7 @@ All code included is using kdb+ 3.0 (2012.11.12).
 ## Author
 
 **Michael McClintock** has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data capture and analytics platforms across a number of different asset classes.
-
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:mmcclintock@kx.com?subject=White paper: Gateway design) 
+&nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/michael-mcclintock-93488841/)
