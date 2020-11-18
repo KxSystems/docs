@@ -20,7 +20,7 @@ For example:
 > 1983’s hit “Oobop Shebam” was her best work in the 1980s, and perhaps the 1980s’ favorite song.
 
 
-Acronyms, abbreviations and truncations
+Acronyms, abbreviations, and truncations
 ---------------------------------------
 
 Set acronyms (pronounceable or not) in upper case without periods, e.g. _IBM_ not _I.B.M._, _HTTP_ not _http_. 
@@ -63,4 +63,4 @@ Use sparingly, not simply as a synonym for _and_, but to mark an association clo
 
 Thus, _Kernigan & Ritchie_ and _Proctor & Gamble_, but _authentication and access control_.
 
-**Exception** Where an ampersand is part of a label on a UI control, reproduce it faithfully.
+**Exception**: Where an ampersand is part of a label on a UI control, reproduce it faithfully.

@@ -24,13 +24,33 @@ Do not use single asterisks for italic, nor double underscores for bold, even th
 Lists
 -----
 
-Where a list item spans multiple paragraphs, or includes a code block, use indentation to keep all the list item’s children subordinate to it. 
+Where a list item spans multiple paragraphs, or includes a code block, use indentation to keep all the list item’s children subordinate to it.
+
+```markdown
+-   Now is the time for all good men to come to the aid of the party.
+
+    ![Party](party.jpg)
+
+-   The quick brown fox jumps over the lazy dog. 
+```
 
 
 Headings
 --------
 
 Use hash characters, not underlines, to mark H1s and H2s.
+That is,
+
+```markdown
+## Good heading style
+```
+
+and not 
+
+```markdown
+Bad heading style
+-----------------
+```
 
 
 Code blocks
@@ -84,7 +104,7 @@ as described in [_Q for Mortals_ §8.3](/q4m3/8_Tables/#83-basic-select-and-upda
 Only links to **external sites** are absolute URIs.
 
 ```markdown
-[How to avoid excessive stat(/etc/localtime) calls in strftime() on Linux](https://stackoverflow.com/questions/4554271/how-to-avoid-excessive-stat-etc-localtime-calls-in-strftime-on-linux/4554302#4554302 "stackoverflow.com")
+[Advanced event broker](https://solace.com/ "solace.com")
 ```
 
 Note above use of the `title` attribute to produce a helpful popup on hover. 
@@ -103,7 +123,7 @@ Where an external hyperlink is set as its own para, prefix it with a solid globe
 
 ```markdown
 :fontawesome-solid-globe:
-[How to avoid excessive stat(/etc/localtime) calls in strftime() on Linux](https://stackoverflow.com/questions/4554271/how-to-avoid-excessive-stat-etc-localtime-calls-in-strftime-on-linux/4554302#4554302 "stackoverflow.com")
+[Advanced event broker](https://solace.com/ "solace.com")
 ```
 
 
@@ -165,4 +185,16 @@ Embrace a LaTeX expression in single dollar signs, e.g. `$n-1$`.
 Escape dollar signs in plain text, e.g. `this costs \$4.99 or less`.
 
 
+Non-breaking spaces
+-------------------
 
+Avoid non-breaking spaces, which disrupt the HTML renderer’s ability to flow the text. Where one is necessary, use the HTML entity `&nbsp;` so that it is visible to a reader of the source file.
+
+
+Hard line breaks
+----------------
+
+Markdown interprets a double space at the end of a line as a hard line break.
+This convention is invisible to a reader of the source code and vulnerable to text editors that trim line ends.
+
+Where a hard line break is unavoidable, use the HTML: `<br>`.

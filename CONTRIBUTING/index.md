@@ -43,7 +43,7 @@ Conventions
 The site conventions govern 
 
 -   [spelling and grammar](spelling.md)
--   [terminology: use the [revised terminology](../docs/about/terminology.md) 
+-   [terminology: use the [revised terminology](https://code.kx.com/q/about/terminology/) 
 -   [typography](typography.md)
 -   [use of Markdown](markdown.md)
 -   [writing style](style.md)

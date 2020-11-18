@@ -7,13 +7,11 @@ Writing style
 
 Writing is hard. Get help.
 
-[_Plain Words: A guide to the use of English_](https://www.amazon.co.uk/Plain-Words-Rebecca-Gowers/dp/0241960347/) by Sir Ernest Gowers 
+-   [_Plain Words: A guide to the use of English_](https://www.amazon.co.uk/Plain-Words-Rebecca-Gowers/dp/0241960347/) by Sir Ernest Gowers
+-   [_Politics and the English Language_](https://www.amazon.co.uk/Politics-English-Language-Penguin-Classics-ebook/dp/B00AZQTM5I/) by George Orwell
+-   [Grammarly](https://www.grammarly.com) checks spelling and grammar
 
-[_Politics and the English Language_](https://www.amazon.co.uk/Politics-English-Language-Penguin-Classics-ebook/dp/B00AZQTM5I/) by George Orwell
-
-[Grammarly](https://www.grammarly.com) checks spelling and grammar
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OV5J6BfToSw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Linguistics, Style and Writing in the 21st Century](http://img.youtube.com/vi/OV5J6BfToSw/0.jpg)](http://www.youtube.com/watch?v=OV5J6BfToSw "Stephen Pinker at the Royal Institute")
 
 > It’s a nervous tic of analytical philosophy to be forever wishing to clarify distinctions that nobody is actually confused about.
 > <br>— _Jerry Fodor_

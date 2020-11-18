@@ -92,7 +92,9 @@ Use real ellipses (…) because three periods can be broken across lines or page
 
 ## Ligatures
 
-[Ligatures](https://en.wikipedia.org/wiki/Glyph) are typesetters’ tools for setting two letters together. Reserve _æ_ for languages, such as Danish and Norwegian, in which it is a distinct character, not for words such as _mediaeval_. (Wrong in American spelling anyway.)
+[Ligatures](https://en.wikipedia.org/wiki/Glyph) are typesetters’ tools for setting two letters together. 
+
+Sequences such as ae and oe are uncommon in American spellings, but reserve ligatures such as _æ_ and _œ_ for languages in which they are distinct characters. _Det glæder mig…_ (Danish)
 
 
 ### Quotation marks
@@ -108,7 +110,8 @@ Use **single typographer’s quotes**
 -   to remove emphasis
 
 Removing emphasis is the opposite of emphasis. 
-The words de-emphasised are not to be understood as carrying their literal sense. 
+The words de-emphasised are understood as not carrying their literal sense. 
+(The convention is sometimes called “scare quotes”.)
 
 > At the conference he said, “Today I’d like to talk to you about the ‘vision thing’ you’ve heard so much about.”
 
@@ -121,11 +124,15 @@ ssr'[x;y;z]
 ```
 
 
-
 ### Dashes
 
-Use spaced endashes for parenthetical phrases – such as this – not spaced hyphens and not emdashes, spaced or unspaced. 
-(The longer emdash—like this—is the more common style in American typography.)
+Use spaced endashes for parenthetical breaks – such as this – and not
+
+-   doubled hyphens -- such as this--or this
+-   spaced hyphens - such as this
+-   emdashes, spaced — such as this — or unspaced—such as this—even though it is the usual style in American typography
+
+The endash is Ctl+- on a Mac keyboard.
 
 
 Block elements
