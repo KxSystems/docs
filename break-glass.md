@@ -1,4 +1,7 @@
-# In emergency, break glass
+In emergency, break glass
+=========================
+
+
 
 How to update code.kx.com with the contents of this repo. 
 
@@ -6,41 +9,22 @@ How to update code.kx.com with the contents of this repo.
 
 ## Get server access
 
-You will need SSH access to the code.kx.com server. 
+You will need SSH access to the code.kx.com server, and `sudo` privileges. 
 (Consult the Chief Technical Officer.) 
 
-## Install MkDocs
-
-Follow instructions at [mkdocs.org](https://mkdocs.org/). This may entail installing Python and `pip`. 
+Below, for illustration, your user name on the server is `mruser`.
 
 
-## Install Material for MkDocs
+## Install MkDocs and run locally
 
-Follow instructions at [squidfunk.github.io/mkdocs-material/](http://squidfunk.github.io/mkdocs-material/)
+Follow [local installation instructions](CONTRIBUTING/install.md).
 
-
-## Install the PyMdown Extensions
-
-Follow instructions at [facelessuser.github.io/pymdown-extensions/](http://facelessuser.github.io/pymdown-extensions/)
-
-
-## Clone this repo
-
-Standard GitHub procedures – whichever of them work for you 
-
-
-## Initialise the repo
-
-As a MkDocs project
-
-## Run MkDocs
-
-Bringing the site to life on your local machine (follow MkDocs instructions) 
+Requires Python and `pip`. 
 
 
 ## Edit the source
 
-Edit MDs and mkdocs.yml; and manage assets such as PDFs and PNGs
+Edit MDs and `mkdocs.yml`; manage assets such as PDFs and PNGs.
 
 
 ## Build the site
@@ -50,28 +34,50 @@ For export: `mkdocs build --clean`
 
 ## Push to server
 
-In my home folder `/home/stephen`on the server:
-```bash
-$ sudo cp -r /var/www/q .
-$ sudo chmod -R stephen:stephen q
-```
-On my local machine:
-```bash
-$ rsync -ruv --delete site/ stephen@code.kx.com:/home/stephen/q/
-```
-On the server:
-```bash
-$ sudo chmod -R www-data:www-data q
-$ sudo mv /var/www/q archive/q0 && sudo mv q /var/www
-```
-In my home folder I keep in folder `archive` the last several versions of `/var/www/q`. In the example above the previous version is saved as `q0` – substitute your own naming scheme. 
-
-
-## Push source to GitHub
+On your local machine:
 
 ```bash
-$ git commit -am "what this change was about"
-$ git push origin master
+#!/usr/bin/env bash
+OUT=site;
+SRVR=code.kx.com;
+USR=mruser;
+mkdocs build --clean;
+rsync -rv --delete $OUT/ $USR@$SRVR:/home/$USR/q;
 ```
 
-The procedure can be adapted for updating code.kx.com/q4m3. The source for this is not on GitHub but in a private repository shared with the author, Jeffry Borror. 
+```bash
+$ rsync -ruv --delete site/ mruser@code.kx.com:/home/mruser/q/
+```
+
+Your home folder on the server needs folders `q` and `archive`.
+
+
+### Publish on server
+
+Script `post.q`:
+
+```bash
+#!/usr/bin/env bash
+# Title: Push q content from staging area at /home/stephen/q to web root
+#        and update site map and search index table
+# Author: stephen@kx.com
+# Date: 2020.05.07
+# Note: Needs root privilege
+# Usage: sudo ./post-q
+rm -r archive/q;
+TGT=/var/www/q;
+cp -r $TGT archive;
+rsync -r --delete q/ $TGT;
+```
+
+
+### Roll back on server
+
+The previous version of the site is saved in `~/archive/q` in case a fast roll-back is needed.
+
+```bash
+sudo cp -r ~/archive/q/ /var/www/q
+```
+
+
+The above procedure can be adapted for updating code.kx.com/q4m3. The source for this is not on GitHub but in a private repository shared with the author, Jeffry Borror. 

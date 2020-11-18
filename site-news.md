@@ -1,10 +1,21 @@
----
-title: Site news – code.kx.com  – About – kdb+ and q documentation
-description: News of changes to the Kx documentation site
-author: Stephen Taylor
-keywords: blog, kdb+, news, q, site
----
-# :fontawesome-solid-newspaper: Site news
+Site news
+=========
+
+
+## Navigation
+
+<small>2020.11.15</small>
+
+We revised site navigation to group content more clearly, with new sections:
+
+section | content
+Language | combines what was previously Reference and Basics; now holds all content describing the q programming language.
+Database | kdb+ is what happens when q tables get persisted to, and loaded from, the filesystem.
+Developing | Tools for developers; advanced programming techniques; tips for DevOps with kdb+.
+Architecture | The typical kdb+ application has multiple kdb+ processes collaborating with other processes. Here is how to put them together.
+
+Most articles and their URLs remain the same. 
+White papers now appear with their LHS nav showing related articles. 
 
 
 
@@ -16,6 +27,7 @@ The old wiki has now been taken off life support at /oldwiki.
 _Requiescat in pacem_. 
 
 If this causes you a problem, please contact the [Librarian](mailto:librarian@kx.com).
+
 
 ## V1
 
@@ -48,7 +60,7 @@ Version 2 of this site has
 The Kx wiki, frozen in 2016, has been retired to code.kx.com/oldwiki.
 
 
-## :fontawesome-solid-birthday-cake:  Kx@25
+## Kx@25
 
 <small>2018.05.18</small>
 
@@ -63,7 +75,7 @@ Announcements to mark our 25th birthday:
 
 
 
-## :fontawesome-brands-github: New development tools
+## New development tools
 
 <small>2018.03.01</small>
 
@@ -72,28 +84,28 @@ Listed on [GitHub](../github.md#development-tools): three new development tools 
 :fontawesome-regular-hand-point-right: [Kx blog](https://kx.com/blog/kdb-utilities-essential-utility-identifying-performance-problems/)
 
 
-## :fontawesome-brands-github: Jupyter kernel for kdb+
+## Jupyter kernel for kdb+
 
 <small>2018.01.30</small>
 
 In beta on [GitHub](https://github.com/KxSystems/jupyterq): a Jupyter kernel for kdb+ 
 
 
-## :fontawesome-regular-map: Socket sharding on Linux
+##  Socket sharding on Linux
 
 <small>2018.01.25</small>
 
 New white paper [Socket sharding with kdb+ on Linux](../wp/socket-sharding/index.md)
 
 
-## :fontawesome-solid-share-alt: Machine learning
+## Machine learning
 
 <small>2018.01.24</small>
 
 New section on [Machine Learning](../ml/index.md) opens with the [embedPy](../ml/embedpy/index.md) library.
 
 
-## :fontawesome-solid-search: Custom search engine
+## Custom search engine
 
 <small>2018.01.14</small>
 
@@ -105,7 +117,7 @@ The engine is still being developed.
 Please send your comments, suggestions and requests to librarian@kx.com. 
 
 
-## :fontawesome-brands-superpowers: Fusion interfaces
+## Fusion interfaces
 
 <small>2017.11.06</small>
 
@@ -119,7 +131,7 @@ The [Fusion interfaces](../interfaces/fusion.md) are libraries for connecting kd
 
 
 
-## :fontawesome-solid-code: Syntax highlighting
+## Syntax highlighting
 
 <small>2017.08.09</small>
 
@@ -129,7 +141,7 @@ Replaced standard [MkDocs](https://www.mkdocs.org) [Pygments](http://pygments.or
 -   a _Copy to Clipboard_ button on all code blocks
 
 
-## :fontawesome-solid-balance-scale: Creative Commons license
+## Creative Commons license
 
 <small>2017.08.05</small>
 
@@ -138,7 +150,7 @@ The site content is now licensed under a <a rel="license" href="https://creative
 <div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
-## :fontawesome-regular-comment: Terminology
+## Terminology
 
 <small>2017.06.15</small>
 
