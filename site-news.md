@@ -8,10 +8,11 @@ Site news
 
 We revised site navigation to group content more clearly, with new sections:
 
-section | content
-Language | combines what was previously Reference and Basics; now holds all content describing the q programming language.
-Database | kdb+ is what happens when q tables get persisted to, and loaded from, the filesystem.
-Developing | Tools for developers; advanced programming techniques; tips for DevOps with kdb+.
+section      | content
+-------------|---------
+Language     | combines what was previously Reference and Basics; now holds all content describing the q programming language.
+Database     | kdb+ is what happens when q tables get persisted to, and loaded from, the filesystem.
+Developing   | Tools for developers; advanced programming techniques; tips for DevOps with kdb+.
 Architecture | The typical kdb+ application has multiple kdb+ processes collaborating with other processes. Here is how to put them together.
 
 Most articles and their URLs remain the same. 

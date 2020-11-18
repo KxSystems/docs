@@ -33,11 +33,11 @@ Second-person imperative
 
 When saying what to do, write as you would speak – in the second-person imperative. Address your reader as _you_.
 
-```txt
-👎 At this point the foo should be barred.
-👎 The user should take care to bar the foo.
-👍 Bar the foo.
-```
+> ~~At this point the foo should be barred.~~
+
+> ~~The user should be sure to bar the foo.~~
+
+> Bar the foo.
 
 An excellent example from a snake catcher in Australia.
 
@@ -58,5 +58,96 @@ Humor
 Despite all you do, much technical writing is necessarily repetitive and tedious. Occasional humor can lighten it, but a little goes a long way – a _very_ long way. 
 
 ![Ice-cream wrapper](ice-cream.jpg)
+
+
+Refactor
+--------
+
+Refactor your prose as you would your code:
+
+-   prefer terser expressions where they do not obstruct readability
+-   remove duplication, for example, moving repeated phrasing from list items to the list’s preamble 
+-   find ways to simplify expressions 
+
+
+Mood 
+----
+
+Prefer the active mood. For example, prefer
+
+> Prefer the active mood.
+
+to
+
+> The active mood is to be preferred. 
+
+
+
+Numbers 
+-------
+
+Use words for small numbers of things, e.g. “there are three ways to achieve this”, up to twenty. 
+
+Use numbers to refer to numbers themselves, e.g. “and adds 2 to the total”.
+
+
+Place names
+-----------
+
+Use English place names. Thus _Copenhagen_ not _København_; _Milan_ not _Milano_, and _Zurich_ not _Zürich_.
+
+Using place names correctly in a foreign language is a mark of competence.
+Using them in English is showing off. 
+
+
+Only
+----
+
+_Only_ is a crucial qualifier in documentation. Place it beside what you want to qualify.
+
+The reader can usually resolve any ambiguity by eliminating unlikely interpretations. Not always. 
+Placing _only_ in the right place relieves her of this work. 
+
+The function will… | semantics | _only_ qualifies
+-------------------|-----------|------------------
+**only return** 0 if an error occurs | If an error occurs, the function will do nothing but _return_ the result of 0. It won’t also _set_ 0 as the value of a variable, _write_ 0 to file… | _return_
+return **only 0** if an error occurs | If an error occurs, the function returns nothing but a solitary _zero_. Otherwise it may return anything. (Including a zero.) | _0_
+return 0 **only if** an error occurs | _If_ an error occurs the function will return a zero. Otherwise it will return something else. | _if_
+
+
+Linking
+-------
+
+Take opportunities to link to the Reference, the Knowledge Base, _Q for Mortals_,etc. 
+
+
+Function reference
+------------------
+
+In documenting library functions, follow the format of the Reference, e.g.
+
+
+### `.foo.bar` (example)
+
+```txt
+.foo.bar[abc;def;ghi;klm]
+```
+
+Where
+
+-   `abc` is a boolean vector
+-   `def` is blah blah blah
+-   `ghi` is blah blah blah
+-   `klm` is blah blah blah
+
+returns the gorabeezer of hoojamaflip as a table with columns
+
+```txt
+this    the first thing
+that    something like this
+other   and the rest
+```
+
+Narrative, exceptions, errors, tips, and so on.
 
 
