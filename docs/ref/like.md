@@ -60,9 +60,9 @@ c| 0
 <br>
 :fontawesome-solid-book-open:
 [Regular expressions in q](../basics/regex.md),
-[Strings](../basics/strings.md)
+[Strings](../basics/by-topic.md#strings)
 <br>
 :fontawesome-solid-graduation-cap:
-[Using regular expressions](../kb/regex.md)
+[Using regular expressions](../basics/regex.md)
 
 

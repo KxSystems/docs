@@ -128,5 +128,5 @@ q)any ` ~/: (1 2;`)
 [`union`](union.md)
 <br>
 :fontawesome-solid-book-open:
-[Search](../basics/search.md)
+[Search](../basics/by-topic.md#search)
 

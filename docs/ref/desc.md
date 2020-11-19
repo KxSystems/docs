@@ -142,5 +142,5 @@ city  | s
 [`asc`, `iasc`, `xasc`](asc.md)  
 :fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md),
-[Sorting](../basics/sort.md)
+[Sorting](../basics/by-topic.md#sort)
 

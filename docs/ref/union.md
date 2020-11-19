@@ -42,6 +42,6 @@ q)(distinct t0,t1)~t0 union t1
 [`in`](in.md), [`inter`](inter.md), [`within`](within.md)
 <br>
 :fontawesome-solid-book:
-[Select](../basics/selection.md)
+[Select](../basics/by-topic.md#selection)
 
 

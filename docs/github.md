@@ -116,7 +116,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 </tr>
 <tr>
 	<td class="nowrap">[cookbook](https://github.com/KxSystems/cookbook)</td>
-	<td>companion files to the [Knowledge Base](kb/index.md)</td>
+	<td>companion files to the Knowledge Base</td>
 </tr>
 <tr>
 	<td class="nowrap">[docs](https://github.com/KxSystems/docs)</td>

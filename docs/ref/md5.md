@@ -25,4 +25,4 @@ MD5 is a widely used, Internet standard (RFC 1321), hash function that computes 
 ----
 
 :fontawesome-solid-book-open:
-[Strings](../basics/strings.md)
+[Strings](../basics/by-topic.md#strings)

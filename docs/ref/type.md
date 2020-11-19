@@ -38,7 +38,7 @@ q)type (+)                       / function atom
 [.Q.ty](dotq.md#qty-type)
 <br>
 :fontawesome-solid-book-open:
-[Casting and encoding](../basics/casting.md),
+[Casting and encoding](../basics/by-topic.md#casting),
 [Datatypes](../basics/datatypes.md)
 
 

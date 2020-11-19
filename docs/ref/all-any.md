@@ -102,4 +102,4 @@ q)if[any x in y;....]   / use in control structure
 [`min`](min.md)
 <br>
 :fontawesome-solid-book-open:
-[Logic](../basics/logic.md)
+[Logic](../basics/by-topic.md#logic)

@@ -39,4 +39,4 @@ q)iasc idesc 2 7 3 2 5           / descending rank
 [`iasc`](asc.md#iasc) 
 <br>
 :fontawesome-solid-book-open:
-[Sorting](../basics/sort.md)
+[Sorting](../basics/by-topic.md#sort)

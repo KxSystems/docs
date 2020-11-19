@@ -44,4 +44,4 @@ q)upper(`The;(`quick`brown;(`fox;`jumps`over));`a;`lazy`dog)
 
 ----
 :fontawesome-solid-book-open:
-[Strings](../basics/strings.md)
+[Strings](../basics/by-topic.md#strings)

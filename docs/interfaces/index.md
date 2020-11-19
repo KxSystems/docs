@@ -253,7 +253,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 :fontawesome-brands-github: [kxcontrib/zuoqianxu/qpython](https://github.com/kxcontrib/zuoqianxu/tree/master/qpython)
 </td></tr>
 <tr markdown="1"><td markdown="1">Non-linear least squares</td><td markdown="1">:fontawesome-brands-github: [brogar/nls](https://github.com/brogar/nls)</td></tr>
-<tr markdown="1"><td markdown="1">Regular Expressions</td><td markdown="1">[Regex libraries](../kb/regex.md#regex-libraries)</td></tr>
+<tr markdown="1"><td markdown="1">Regular Expressions</td><td markdown="1">[Regex libraries](../basics/regex.md#regex-libraries)</td></tr>
 <tr markdown="1"><td markdown="1">:fontawesome-brands-r-project: R</td><td markdown="1">:fontawesome-brands-github: [kimtang/rinit](https://github.com/kimtang/rinit)<br/>
 :fontawesome-brands-github: [rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)</td></tr>
 <tr markdown="1">

@@ -153,8 +153,6 @@ below.
 Here we assume some familiarity with loading large data files by
 splitting the file and loading in chunks using `.Q.fs` and `.Q.fsn`. 
 
-:fontawesome-regular-hand-point-right: [Knowledge Base](../../kb/index.md)
-
 
 ### Striping data over multiple partitions per date
 

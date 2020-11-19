@@ -60,5 +60,5 @@ a                b
 [Drop](drop.md)
 <br>
 :fontawesome-solid-book-open:
-[Strings](../basics/strings.md)
+[Strings](../basics/by-topic.md#strings)
 

@@ -77,4 +77,4 @@ q)last 42
 ```
 
 <i class="fare fa-hand-point-right"></i>
-Basics: [Selection](../basics/selection.md)
+Basics: [Selection](../basics/by-topic.md#selection)

@@ -51,8 +51,8 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 112     [dynamic load](../ref/dynamic-load.md)
 </pre>
 
-_n_: short int returned by [`type`](../ref/type.md) and used for [casting](casting.md), e.g. `9h$3`<br>
-_c_: character used lower-case for [casting](casting.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)<br>
+_n_: short int returned by [`type`](../ref/type.md) and used for [Cast](../ref/cast.md), e.g. `9h$3`<br>
+_c_: character used lower-case for [Cast](../ref/cast.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)<br>
 _sz_: size in bytes<br>
 _inf_: infinity (no math on temporal types); `0Wh` is `32767h`<br>
 RO: read only; RW: read-write
@@ -66,8 +66,6 @@ The datatype of an object is given as a short int: negative for atom, positive f
 [`.Q.ty`](../ref/dotq.md#qty-type) (type)
 <br>
 :fontawesome-solid-book-open:
-[Casting](casting.md)
-<br>
 :fontawesome-solid-graduation-cap:
 [Temporal data](../kb/temporal-data.md),
 [Timezones](../kb/timezones.md)

@@ -55,4 +55,4 @@ rank  | `x` is an atom
 <br>
 :fontawesome-solid-book-open:
 [Precision](../basics/precision.md), 
-[Search](../basics/search.md) 
+[Search](../basics/by-topic.md#search) 

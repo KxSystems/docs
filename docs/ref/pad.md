@@ -69,4 +69,4 @@ q)9h$("quick";"brown";"fox")
 
 ----
 :fontawesome-solid-book-open:
-[Strings](../basics/strings.md)  
+[Strings](../basics/by-topic.md#strings)  

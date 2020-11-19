@@ -61,4 +61,4 @@ local   [`.z.Z`](dotz.md#zz-local-datetime)         [`.z.P`](dotz.md#zp-local-ti
 ----
 
 :fontawesome-solid-book-open:
-[Environment](../basics/environment.md)
+[Environment](../basics/by-topic.md#environment)

@@ -62,4 +62,4 @@ t 40
 
 :fontawesome-regular-hand-point-right: 
 [`in`](in.md), [`within`](within.md)  
-Basics: [Selection](../basics/selection.md)
+Basics: [Selection](../basics/by-topic.md#selection)

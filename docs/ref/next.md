@@ -105,5 +105,5 @@ q)1 xprev "abcde"
 [Each Prior](../ref/maps.md#each-prior)
 <br>
 :fontawesome-solid-book-open:
-[Selection](../basics/selection.md)
+[Selection](../basics/by-topic.md#selection)
 

@@ -163,8 +163,8 @@ q)read1 `:foo/hello.dat
 Relative filepaths are sought in the following locations, in order.
 
 1.  current directory
-1.  [`QHOME`](../basics/environment.md)
-1.  [`QLIC`](../basics/environment.md)
+1.  [`QHOME`](../basics/by-topic.md#environment)
+1.  [`QLIC`](../basics/by-topic.md#environment)
 
 
 ---

@@ -203,7 +203,7 @@ dd/[mm|MMM]/[yy]yy  / \z 1
 [`.h.iso8601`](doth.md#hiso8601-iso-timestamp) ISO 8601 timestamp
 <br>
 :fontawesome-solid-book-open:
-[Casting](../basics/casting.md)
+[Casting](../basics/by-topic.md#casting)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

@@ -313,7 +313,6 @@ T        time        hh[:]mm[:]ss[[.]ddd]
 [`.j` namespace](../ref/dotj.md) for JSON 
 <br>
 :fontawesome-solid-book-open: 
-[Casting](../basics/casting.md), 
 [Datatypes](../basics/datatypes.md), 
 [File system](../basics/files.md)
 <br>

@@ -174,9 +174,6 @@ q)`float$0Wh
 :fontawesome-solid-book:
 [Overloads of `$`](overloads.md#dollar)
 <br>
-:fontawesome-solid-book-open:
-[Casting and encoding](../basics/casting.md)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§7.2 Cast](/q4m3/7_Transforming_Data/#731-data-to-strings)

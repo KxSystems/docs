@@ -290,7 +290,7 @@ a 43 2
 <br>
 :fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md), 
-[Sorting](../basics/sort.md)
+[Sorting](../basics/by-topic.md#sort)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

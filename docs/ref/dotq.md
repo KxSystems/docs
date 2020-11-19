@@ -518,8 +518,8 @@ Tables splayed across a directory must be fully enumerated and not keyed. The so
 :fontawesome-solid-graduation-cap:
 [Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
 <br>
-:fontawesome-solid-graduation-cap:
-[Splaying large files](../kb/splaying-large-files.md#enumerating-using-qen)
+:fontawesome-solid-database:
+[Splayed tables](../kb/splayed-tables.md)
 <br>
 :fontawesome-regular-map:
 [Data-management techniques](../wp/data-management.md)

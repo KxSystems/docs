@@ -20,8 +20,6 @@ keywords: api, interface, kdb+, library, odbc, q, server
 
 
 In Windows only, you can use ODBC to connect to a q database from a non-q client.  
-:fontawesome-regular-hand-point-right: 
-Knowledge Base: [ODBC](../kb/odbc.md)
 
 
 ## Installation

@@ -49,7 +49,7 @@ An atomic function.
 [`neg`](neg.md) 
 <br>
 :fontawesome-solid-book-open:
-[Logic](../basics/logic.md)
+[Logic](../basics/by-topic.md#logic)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

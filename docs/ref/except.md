@@ -35,7 +35,7 @@ q)1 2 3 4 1 3 except 2 3
 [`within`](within.md)
 <br>
 :fontawesome-solid-book-open:
-[Selection](../basics/selection.md)
+[Selection](../basics/by-topic.md#selection)
 
 
 

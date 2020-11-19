@@ -124,9 +124,8 @@ q)-2?0Ng
 cf74afa1-6c49-8e11-d599-736eba641207 6080b044-aa79-2d30-62a4-34390a4c81d1
 ```
 
-
+----
 :fontawesome-solid-book-open:
-[Casting](../../basics/casting.md),
 [Datatypes](../../basics/datatypes.md)
 <br>
 :fontawesome-solid-book:

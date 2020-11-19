@@ -66,6 +66,6 @@ q)where 0 1 2 3 ! 2 3 0 1     / same on dictionary with indices as keys
 ----
 :fontawesome-solid-book-open:
 [`where` in q-SQL](../basics/qsql.md), 
-[Selection](../basics/selection.md)
+[Selection](../basics/by-topic.md#selection)
 
 

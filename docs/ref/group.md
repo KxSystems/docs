@@ -51,4 +51,4 @@ p| 8
 [`xgroup`](xgroup.md)
 <br>
 :fontawesome-solid-book:
-[Sorting](../basics/sort.md)
+[Sorting](../basics/by-topic.md#sort)

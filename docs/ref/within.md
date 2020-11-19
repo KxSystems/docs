@@ -54,6 +54,6 @@ q)(1 3 10 6 4;"acyxmpu") within ((2;"b");(6;"r"))
 [`union`](union.md) 
 <br>
 :fontawesome-solid-book-open: 
-[Search](../basics/search.md)
+[Search](../basics/by-topic.md#search)
 
 

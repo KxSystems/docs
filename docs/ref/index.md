@@ -237,9 +237,9 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 112     [dynamic load](../ref/dynamic-load.md)
 </div>
 
-_n_: short int returned by [`type`](type.md) and used for [casting](../basics/casting.md), e.g. `9h$3`
+_n_: short int returned by [`type`](type.md) and used for [Cast](cast.md), e.g. `9h$3`
 <br>
-_c_: character used lower-case for [casting](../basics/casting.md) and upper-case for [Load CSV](file-text.md#load-csv)
+_c_: character used lower-case for [Cast](cast.md) and upper-case for [Load CSV](file-text.md#load-csv)
 <br>
 _sz_: size in bytes
 <br>

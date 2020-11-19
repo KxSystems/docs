@@ -66,4 +66,4 @@ bucket| Min Max Count
 
 ----
 :fontawesome-solid-book-open:
-[Sorting](../basics/sort.md)
+[Sorting](../basics/by-topic.md#sort)

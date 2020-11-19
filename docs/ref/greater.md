@@ -149,7 +149,7 @@ Range: `bcdefhijmnptuvxz`
 <br>
 :fontawesome-solid-book-open:
 [Comparison](../basics/comparison.md),
-[Logic](../basics/logic.md)
+[Logic](../basics/by-topic.md#logic)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
