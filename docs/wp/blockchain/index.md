@@ -995,11 +995,16 @@ development using the technology within the domain.
 
 ## Authors
 
+![Daniel Irwin](../../img/faces/danielirwin.png)
+{: .small-face}
+
 **Daniel Irwin** is a kdb+ consultant based in Singapore. 
 He worked on a global cross-asset _Kx for Surveillance_ implementation 
 for a major international banking group before moving to one of 
 Asia’s largest sovereign-wealth funds to develop a solution for 
 best execution and transaction-cost analysis.
+&nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/irwin-daniel)
 
 ![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
 {: .small-face}
