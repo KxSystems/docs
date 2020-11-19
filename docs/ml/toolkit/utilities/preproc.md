@@ -7,7 +7,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 # <i class="fa fa-share-alt"></i> Data preprocessing 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml   **Data preprocessing**
   [applylabelencode](#mlapplylabelencode)  Transform integer data to label encode representation
   [dropconstant](#mldropconstant)      Columns with zero variance removed
@@ -21,7 +21,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
   [polytab](#mlpolytab)           Polynomial features of degree n from a table
   [stdscaler](#mlstdscaler)         Standard scaler transform-based representation of a table
   [timesplit](#mltimesplit)         Decompose time columns into constituent parts
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/util/preproc.q](https://github.com/kxsystems/ml/blob/master/util/preproc.q)

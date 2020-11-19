@@ -10,7 +10,7 @@ keywords: solace, interface, fusion , q
 :fontawesome-brands-github:
 [KxSystems/solace](https://github.com/KxSystems/solace)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .solace   **Solace interface**
 
 Event notifications
@@ -56,7 +56,7 @@ Message functions
 Utility functions
   .solace.getCapability      Value of the specified capability for the session
   .solace.version            Current version of the build/deployment
-</pre>
+</div>
 
 Endpoint-management functions may be used to create or destroy endpoints from the kdb+ session. In some deployments, endpoints may already be created for you by an admin.
 
@@ -297,14 +297,14 @@ Where `callbackFunction` is a q function taking three arguments:
 2.  `payload` is a byte array containing the message payload
 3.  `msg values` is a dictionary specifying message information as follows:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 destType       type of destination (integer)
 destName       destination name (string)
 replyType      reply destination type (integer)
 replyDest      topic/queue to reply to (string)
 correlationId  original message’s correlation ID (string)
 msgId          used for [sending acks](#solacesendack) (long)
-</pre>
+</div>
 :fontawesome-regular-hand-point-right:
 [Values for `destType` and `replyType`](#solacesendpersistentrequest) 
 
@@ -320,14 +320,14 @@ Where `callbackFunction` is a q function taking three arguments:
 2.  `msg` as a long pointing to the underlying solace msg (can be used within the callback with the functions to get the payload based on the senders type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc).
 3.  `msg values` is a dictionary specifying message information as follows:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 destType       type of destination (integer)
 destName       destination name (string)
 replyType      reply destination type (integer)
 replyDest      topic/queue to reply to (string)
 correlationId  original message’s correlation ID (string)
 msgId          used for [sending acks](#solacesendack) (long)
-</pre>
+</div>
 
 :fontawesome-regular-hand-point-right:
 [Values for `destType` and `replyType`](#solacesendpersistentrequest) 

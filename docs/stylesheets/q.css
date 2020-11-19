@@ -204,3 +204,15 @@ p.small-face {
 #kx-get-started a {
 	color: white;
 }
+
+div.typewriter p {
+	background-color: #fdf6e3;
+	font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+	font-size: 80%;
+	margin: 0;
+	padding: 1em;
+	white-space: pre-wrap;
+}
+div.typewriter a {
+	background-color: #fdf6e3;
+}

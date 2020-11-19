@@ -7,7 +7,7 @@ date: September 2020
 # :fontawesome-solid-share-alt: Miscellaneous timeseries functionality
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.ts
 
 **Feature engineering**
@@ -16,9 +16,9 @@ date: September 2020
 
 **Miscellaneous**
   [stationarity](#mltsstationarity)     Whether timeseries data is stationary
-</pre>
+</div>
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
 ## `.ml.ts.laggedFeatures`

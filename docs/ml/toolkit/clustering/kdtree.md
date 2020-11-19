@@ -7,13 +7,13 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 
 # :fontawesome-solid-share-alt: K-D tree reference
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.clust.kd   **k-d tree functions**
 
 \  [newtree](#mlclustkdnewtree)       build a k-d tree
   [nn](#mlclustkdnn)            find the nearest neighbor for a datapoint
   [findleaf](#mlclustkdfindleaf)      find the leaf node to which a datapoint belongs
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/clust/kdtree.q](https://github.com/kxsystems/ml/blob/master/clust/kdtree.q)

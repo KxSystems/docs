@@ -11,7 +11,7 @@ keywords: html, kdb+, markup, q
 _Markup tools_
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [`.h.br`](#hbr-linebreak)      linebreak                [`.h.cd`](#hcd-csv-from-data)      CSV from data
 [`.h.code`](#hcode-code-after-tab)    code after Tab           [`.h.d`](#hd-delimiter)       delimiter
 [`.h.fram`](#hfram-frame)    frame                    [`.h.ed`](#hed-excel-from-data)      Excel from data
@@ -37,7 +37,7 @@ _Markup tools_
 [`.h.hug`](#hhug-uri-map)     URI map                  [`.h.ty`](#hty-mime-types)    MIME types
 [`.h.sc`](#hsc-uri-safe)      URI-safe                 [`.h.val`](#hval-value)   value
 [`.h.uh`](#huh-uri-unescape)      URI unescape
-</pre>
+</div>
 
 The `.h` [namespace](../basics/namespaces.md) contains objects for 
 

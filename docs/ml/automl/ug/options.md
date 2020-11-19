@@ -200,7 +200,7 @@ The scoring metric used to calculate the performance of each classifier is defin
 
 The following functions are supported within the platform at present with the ordering which allows the best model to be chosen displayed below and defined in `code/mdldef/scoring.txt`
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml   **Statistical analysis metrics with AutoML score order**
   accuracy         accuracy of classification results        desc
   mae              mean absolute error                       asc
@@ -212,7 +212,7 @@ The following functions are supported within the platform at present with the or
   r2score          r2-score                                  desc
   smape            symmetric mean absolute error             desc
   sse              sum squared error                         asc
-</pre>
+</div>
 
 The following is an example implementation
 

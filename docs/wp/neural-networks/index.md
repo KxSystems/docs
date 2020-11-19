@@ -88,25 +88,7 @@ A _threshold function_ represents the activation of the perceptron based
 on its inputs. A common choice for this function is the sigmoid
 function. 
 
-<div markdown="1" style="text-align: center">
-
-<!-- FIXME Get inline CMN to render in PDF.
-LaTeX not currently rendered. 
-Workaround: (1) use image files for equations, (2) replace inline expressions with HTML.
-(2) fails to render
-
-- combined subscripts and superscripts
-- &beta; character
-
-Currently using MathJAX for best results in HTML, but fails to compile in PDF.
-2018.07.26
- -->
-
 $$\sigma(x) = \frac{1}{1+e^{-x}}$$
-
-<!-- ![](img/formula1.png) -->
-<!-- 𝜎(𝑥) = 1 ÷ (1 + 𝑒<sup>−𝑥</sup>) -->
-</div>
 
 ```q
 q)sigmoid:{1%1+exp neg x}
@@ -182,12 +164,11 @@ to the input layer and one to each of the hidden layers. The value it
 passes to neurons in the next layer is always 1 and it receives no
 inputs from previous layers (see Figure 4). The purpose of bias
 neurons is analogous to the intercept parameter of a simple linear
-model – commonly written as $y=mx+c=\beta_{1}x_{1}+\beta_{0}x_{0}$.
+model – commonly written as 
 
-<!-- _y_ = _mx_ + _c_ = <i>&#223;</i>₁<i>x</i>₁ + <i>&beta;</i>₀<i>x</i>₀. -->
-<!-- 𝑦 = 𝑚𝑥 + 𝑐 = 𝛽₁𝑥₁ + 𝛽₀𝑥₀. -->
+$$y=mx+c=\beta_{1}x_{1}+\beta_{0}x_{0}$$
 
-The absence of <!-- 𝛽₀𝑥₀ -->$\beta_{0}x_{0}$ in the simple linear model results in the
+The absence of $\beta_{0}x_{0}$ in the simple linear model results in the
 predicted line always passing through (0, 0) and the model will
 perform poorly when attempting to predict unknown values. Hence we
 always set <!-- 𝑥₀ -->$x_{0}$ to 1 and alter <!-- 𝛽₀ -->$\beta_{0}$ as we find the line of best fit. 
@@ -303,36 +284,18 @@ weights of the connecting neurons. For an output node that applies the
 sigmoid function the error function is the cross-entropy error
 function defined as:
 
-<div markdown="1" style="text-align: center">
-  
 $$-\sum_{t}y^t\log \widehat{y}^t + (1-y^t)\log(1-\widehat{y}^t)$$
-
-<!-- ![](img/formula2.png) -->
-</div>
-
-<!-- − ∑ 𝑦<sup>𝑡</sup> log 𝑦̂<sup>𝑡</sup> + (1 − 𝑦<sup>𝑡</sup>) log(1 −
-𝑦̂<sup>𝑡</sup>)
-𝑡
- -->
+  
 This gives us the following update rule for adjusting the weights
 between the output node and the hidden layer:
-
-<div markdown="1" style="text-align: center">
 
 $$\Delta v_{h}=\sum_{t}z_{h}^t(y^t-\widehat{y}^t)$$
 
 $$v_h \leftarrow v_h + \alpha\Delta v_h$$
 
-<!-- ![](img/formula3.png) -->
-<!-- ∆𝑣ℎ = ∑ 𝑧<sup>𝑡</sup> (𝑦<sup>𝐭</sup> − 𝑦̂<sup>𝑡</sup>)
-𝑡
-𝑣ℎ ← 𝑣ℎ + 𝛼∆𝑣ℎ
- -->
-</div>
-
 where: 
 
-$z^{t}_h$ <!-- 𝑧<sup>𝑡</sup><sub>_h_</sub>  -->
+$z^{t}_h$
 
 : the output after evaluating the hidden neuron $h$ for input sample $t$
 
@@ -360,19 +323,10 @@ Once the change in the above weights has been calculated we propagate
 the error to the hidden layer and generate the update rule for the
 weights between the input layer and the hidden layer:
 
-<div markdown="1" style="text-align: center">
 
 $$\Delta w_{hj} = \sum_t(y^t-\widehat{y}^t) v_h z^t_h(1-z^t_h)x^t_j$$
 
 $$w_{hj} \leftarrow w_{hj}+\alpha\Delta w_{hj}$$
-
-<!-- ![](img/formula4.png) -->
-<!-- ∆𝑤ℎ𝑗 = ∑(𝑦<sup>𝑡</sup> − 𝑦̂<sup>𝑡</sup>) 𝑣ℎ𝑧<sup>𝑡</sup>(1 − 𝑧<sup>𝑡</sup> )𝑥<sup>𝑡</sup>
-ℎ ℎ 𝑗
-𝑡
-𝑤ℎ𝑗 ← 𝑤ℎ𝑗 + 𝛼∆𝑤ℎ𝑗
- -->
-</div>
 
 where:
 
@@ -517,36 +471,19 @@ will be assigned a value of 1 and the other neurons a value of 0
 resulting in a match to one of the one-hot encoded classifications.
 The cross-entropy error function in this case is:
 
-<div markdown="1" style="text-align: center;">
 
 $$-\sum_t\sum_i y^t_i\log\widehat{y}^t_i$$
-
-<!-- − ∑ ∑ 𝑦<sup>𝑡</sup> log 𝑦̂<sup>𝑡</sup>
-𝑖 𝑖
-𝑡 𝑖
- --></div>
 
 where $\widehat{y}^t_i$ is the target value for output neuron $i$ with
 sample $t$.
 
 The update rules are:
 
-<div markdown="1" style="text-align: center;">
 
 $$\Delta v_{ih} = \sum_t(y^t_i - \widehat{y}^t_i)z^t_h$$
 
 $$\Delta w_{hj} = \sum_t\left[\sum_i(y^t_i-\widehat{y}^t_i)v_{ih}\right]z^t_h(1-z^t_h)x^t_j$$
 
-<!-- ∆𝑣<sub>𝑖ℎ</sub> = ∑(𝑦<sup>𝑡</sup> − 𝑦̂<sup>𝑡</sup>)𝑧<sup>𝑡</sup>
-𝑖 𝑖 ℎ
-𝑡
-∆𝑤<sub>ℎ𝑗</sub> = ∑ \[∑(𝑦<sup>𝑡</sup> −
-𝑦̂<sup>𝑡</sup>)𝑣<sub>𝑖ℎ</sub>\] 𝑧<sup>𝑡</sup> (1 −
-𝑧<sup>𝑡</sup> )𝑥<sup>𝑡</sup>
-𝑖 𝑖
-𝑡 𝑖
-ℎ ℎ 𝑗
- --></div>
 where $v_{ih}$ is the weight between output neuron $i$ and hidden neuron
 $h$.
 
@@ -561,13 +498,8 @@ within the boundaries imposed by a threshold function, the output
 function is just the linear combination of the outputs from the hidden
 layer.
 
-<div markdown="1" style="text-align: center;">
 
 $$\widehat{y}^t=\textbf{v}\cdot\textbf{z}^t$$
-
-<!-- ![](img/formula8.png) -->
-<!-- 𝑦̂<sup>𝑡</sup> = 𝐯 ∙ 𝐳<sup>𝑡</sup> -->
-</div>
 
 where 
 
@@ -582,34 +514,15 @@ $\textbf{z}^t$
 In this case we change the error function from cross-entropy to the
 sum-of-squared errors:
 
-<div markdown="1" style="text-align: center;">
 
 $$\frac{1}{2}\sum_t(y^t-\widehat{y}^t)^2$$
 
-<!-- ![](img/formula9.png) -->
-<!-- 1 ∑(𝑦<sup>𝑡</sup> − 𝑦̂<sup>𝑡</sup>)<sup>2</sup>
-2
-𝑡
- -->
-</div>
-
 The update rules for a regression output are:
 
-<div markdown="1" style="text-align: center;">
 
 $$\Delta v_h = \sum_t(y^t-\widehat{y}^t)z^t_h$$
 
 $$\Delta w_{hj} = \sum_t (y^t-\widehat{y}^t) v_h z^t_h (1-z^t_h) x^t_j$$
-
-<!-- ![](img/formula10.png) -->
-<!-- ∆𝑣ℎ = ∑(𝑦<sup>𝑡</sup> − 𝑦̂<sup>𝑡</sup>)𝑧<sup>𝑡</sup>
-𝑡
-∆𝑤ℎ𝑗 = ∑(𝑦<sup>𝑡</sup> − 𝑦̂<sup>𝑡</sup>)𝑣ℎ𝑧<sup>𝑡</sup>(1 −
-𝑧<sup>𝑡</sup> )𝑥<sup>𝑡</sup>
-ℎ ℎ 𝑗
-𝑡
--->
-</div>
 
 ```q
 q)lin:{x}

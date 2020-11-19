@@ -24,9 +24,9 @@ For the Select operator `?`, see
 
 Below, square brackets mark optional elements.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 select [_L<sub>exp</sub>_] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-</pre>
+</div>
 
 :fontawesome-solid-book-open:
 [qSQL syntax](../basics/qsql.md)

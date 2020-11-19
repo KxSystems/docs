@@ -8,11 +8,11 @@ date: August 2020
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 Pipeline
   [.ml.createPipeline](#mlcreatepipeline)      Generate a pipeline from a graph
   [.ml.execPipeline](#mlexecpipeline)        Execute a valid pipeline
-</pre>
+</div>
 
 
 After [generating a graph](graph.md), convert it into an executable code structure, a _pipeline_. Use this library to validate the graph, then generate and execute a pipeline as follows.

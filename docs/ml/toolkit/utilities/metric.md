@@ -7,7 +7,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
 # <i class="fa fa-share-alt"></i> Metrics 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml   **Statistical analysis metrics**
   [accuracy](#mlaccuracy)      Accuracy of classification results
   [classreport](#mlclassreport)   Statistical information about classification results
@@ -39,7 +39,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [sse](#mlsse)           Sum squared error
   [tscore](#mltscore)        One-sample t-test score
   [tscoreeq](#mltscoreeq)      T-test for independent samples with unequal variances
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/util/metrics.q](https://github.com/KxSystems/ml/blob/master/util/metrics.q)

@@ -14,10 +14,11 @@ keywords: ij, ijf, inner join, join, kdb+, q
 _Inner join_
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 x ij  y     ij [x;y]
 x ijf y     ijf[x;y]
-</pre>
+</div>
+
 Where
 
 -   `x` and `y` are tables

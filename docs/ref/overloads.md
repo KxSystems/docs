@@ -74,20 +74,20 @@ x,y: same-length lists
 
 ## `:` colon
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 a:42   [assign](../basics/syntax.md) 
 :42    [explicit return](../basics/function-notation.md#explicit-return)
-</pre>
+</div>
 
 
 ## `:` colon colon
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 v::select from t where a in b     [define a view](../learn/views.md)
 global::42                        [amend a global from within a lambda](../basics/function-notation.md#name-scope)
 ::                                [Identity](identity.md)
 ::                                [Null](identity.md#null)
-</pre>
+</div>
 
 
 ## `-` dash

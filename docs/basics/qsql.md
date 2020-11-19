@@ -7,12 +7,12 @@ keywords: exec, delete, kdb+, q, query, select, sql, update, upsert
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [delete](../ref/delete.md)  delete rows or columns from a table
 [exec](../ref/exec.md)    return columns from a table, possibly with new columns
 [select](../ref/select.md)  return part of a table, possibly with new columns
 [update](../ref/update.md)  add rows or columns to a table
-</pre>
+</div>
 
 The query templates of qSQL share a query syntax that varies from the [syntax of q](syntax.md) and closely resembles [conventional SQL](https://www.w3schools.com/sql/).
 For many use cases involving ordered data it is significantly more expressive.
@@ -25,23 +25,23 @@ For many use cases involving ordered data it is significantly more expressive.
 
 Below, square brackets mark optional elements; a slash begins a trailing comment.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 select [_L<sub>exp</sub>_]     [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 exec   [distinct] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 update             _p<sub>s</sub>_  [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 delete                         from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]        / rows
 delete             _p<sub>s</sub>_          from _t<sub>exp</sub>_                   / columns
-</pre>
+</div>
 
 A template is evaluated in the following order.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [From phrase](#from-phrase)        _t<sub>exp</sub>_
 [Where phrase](#where-phrase)       _p<sub>w</sub>_
 [By phrase](#by-phrase)          _p<sub>b</sub>_
 [Select phrase](../ref/select.md#select-phrase)      _p<sub>s</sub>_
 [Limit expression](../ref/select.md#limit-expression)   _L<sub>exp</sub>_
-</pre>
+</div>
 
 
 ### From phrase

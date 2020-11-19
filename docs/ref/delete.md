@@ -17,10 +17,10 @@ For the Delete operator `!`, see
 
 ## Syntax
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 delete    from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 delete _p<sub>s</sub>_ from _t<sub>exp</sub>_ 
-</pre>
+</div>
 
 :fontawesome-solid-book-open:
 [qSQL syntax](../basics/qsql.md)

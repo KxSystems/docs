@@ -9,7 +9,7 @@ date: September 2020
 :fontawesome-brands-github:
 [KxSystems/ldap](https://github.com/KxSystems/ldap)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ldap   **LDAP interface**
 
 \  [bind](#ldapbind)             Synchronous bind to authenticate client
@@ -21,7 +21,7 @@ date: September 2020
   [setOption](#ldapsetoption)        Set session LDAP option
   [setGlobalOption](#ldapsetglobaloption)  Set global LDAP option
   [unbind](#ldapunbind)           Synchronous unbind from the directory
-</pre>
+</div>
 
 
 ## `.ldap.bind`
@@ -494,7 +494,7 @@ LDAP error codes are positive integers.
 
 API error codes are negative integers.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 -1  LDAP_SERVER_DOWN              LDAP library can't contact the LDAP server
 -2  LDAP_LOCAL_ERROR              local error (failed dynamic memory allocation?)
 -3  LDAP_ENCODING_ERROR           error encoding parameters for LDAP server
@@ -514,7 +514,7 @@ API error codes are negative integers.
 -16 LDAP_CLIENT_LOOP              processing loop detected by library
 -17 LDAP_REFERRAL_LIMIT_EXCEEDED  referral limit exceeded
 -18 LDAP_X_CONNECTING             an async connect attempt is ongoing
-</pre>
+</div>
 
 
 ## Security mechanisms

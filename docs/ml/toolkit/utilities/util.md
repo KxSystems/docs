@@ -8,7 +8,7 @@ keywords: pandas manipulation, dataframe, train test split, .
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml   **Utility functions**
   [arange](#mlarange)             Evenly-spaced values within a range
   [combs](#mlcombs)              n linear combinations of k numbers
@@ -21,7 +21,7 @@ keywords: pandas manipulation, dataframe, train test split, .
   [shape](#mlshape)              Shape of a matrix
   [tab2df](#mltab2df)             Pandas dataframe from a q table
   [traintestsplit](#mltraintestsplit)     Split into training and test sets
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/blob/master/util/util.q)

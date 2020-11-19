@@ -10,7 +10,7 @@ keywords: callbacks, environment, kdb+, q
 
 _Environment and callbacks_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 Environment                        Callbacks
  [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth from cookie](#zac-http-auth-from-cookie)
  [.z.b    dependencies](#zb-dependencies)               [.z.bm    msg validator](#zbm-msg-validator)
@@ -38,16 +38,16 @@ Environment                        Callbacks
  [.z.X/x  raw/parsed command line](#zx-raw-command-line)
  [.z.Z/z  local/UTC datetime](#zz-local-datetime)
  [.z.zd   zip defaults](#zzd-zip-defaults)
-</pre>
+</div>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
 ??? warning "The `.z` namespace is reserved for use by Kx, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
-!!! tip "Resetting callback defaults"
+??? tip "By default, callbacks are not defined in the session" 
 
-    By default, callbacks are not defined in the session. After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
+    After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
 :fontawesome-solid-graduation-cap:
 [Callbacks](../kb/callbacks.md),

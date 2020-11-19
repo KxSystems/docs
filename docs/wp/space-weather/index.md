@@ -171,13 +171,8 @@ As only 3% of the data represented scintillation occurring, it would have been e
 
 In addition to accuracy, the True Skill Statistic (TSS) has been used throughout this paper to evaluate model performance. The TSS calculates the difference between recall and the false positive rate and produces values ranging from -1 to 1, with 1 being the perfect score. [8]
 
-<div style="text-align: center" markdown="1">
-_TSS_ = (_TP_ &divide; (_TP_+_FN_)) – (_FP_ &divide; (_FP_+_TN_))
-</div>
-
-<!--
 $$\begin{equation}TSS=\frac{TP}{TP+FN}-\frac{FP}{FP+TN}\end{equation}$$
--->
+
 where _TP_, _TN_, _FP_ and _FN_ are true positives, true negatives, false positives and false negatives respectively.
 
 
@@ -185,16 +180,6 @@ where _TP_, _TN_, _FP_ and _FN_ are true positives, true negatives, false positi
 
 Scintillation events are subject to diurnal and seasonal variations, caused by the inclination of the Earth in relation to the Sun. When either hemisphere of the Earth is tilted towards the Sun, increased solar radiation causes greater ionization in the upper atmosphere. This leads to higher scintillation indices and thus more scintillation events.[9] To account for such variations, the sine and cosine local time of day and day of year were added to the dataset. For the baseline, only the cosine day of year was added.
 
-<div style="text-align: center" markdown="1">
-_cosdoy_ = _cos_ ( (2&pi;_doy_) &div; _D<sub>tot</sub>_ )
-
-_sindoy_ = _sin_ ( (2&pi;_doy_) &div; _D<sub>tot</sub>_ )
-
-_costime_ = _cos_ ( (2&pi;_dt_) &div; _T<sub>tot</sub>_ )
-
-_sintime_ = _sin_ ( (2&pi;_dt_) &div; _T<sub>tot</sub>_ )
-</div>
-<!-- 
 $$cosdoy = cos{\frac{2 \pi doy}{D_{tot}}}$$
 
 $$sindoy = sin{\frac{2 \pi doy}{D_{tot}}}$$
@@ -202,9 +187,8 @@ $$sindoy = sin{\frac{2 \pi doy}{D_{tot}}}$$
 $$costime = cos{\frac{2 \pi dt}{T_{tot}}}$$
 
 $$sintime = sin{\frac{2 \pi dt}{T_{tot}}}$$
--->
 
-where _doy_ is the day of year,  _D<sub>tot</sub>_ is the number of days in the year (365 for the SVM model, 365.25 for the neural network model), _dt_ is the time in minutes and _T<sub>tot</sub>_ is the total number of minutes in a day.
+where $doy$ is the day of year,  $D_{tot}$ is the number of days in the year (365 for the SVM model, 365.25 for the neural network model), $dt$ is the time in minutes and $T_{tot}$ is the total number of minutes in a day.
 
 ```q
 q)completeSVM:update cosdoy:cos 2*pi*doy%365 from completeSVM

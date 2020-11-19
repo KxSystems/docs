@@ -15,7 +15,7 @@ As outlined in the overview for this API, the kdb+/Kafka interface is a thin wra
 
 The following functions are those exposed within the `.kfk` namespace allowing users to interact with Kafka from a kdb+ instance.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 Kafka interface functionality
   // client functionality 
   [.kfk.ClientDel](#kfkclientdel)               Close consumer and destroy Kafka handle to client
@@ -65,7 +65,7 @@ Kafka interface functionality
   // callback modifications
   [.kfk.errcbreg](#kfkerrcbreg)                Register an error callback associated with a specific client
   [.kfk.throttlecbreg](#kfkthrottlecbreg)           Register a throttle callback associated with a specific client
-</pre>
+</div>
 
 
 For simplicity in each of the examples below it should be assumed that the user’s system is configured correctly, unless otherwise specified. For example:

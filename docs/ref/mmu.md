@@ -4,9 +4,8 @@ description: Matrix Multiply is a q operator that performs matrix multiplication
 author: Stephen Taylor
 ---
 
-<div markdown="1" style="float:right">
 ![Matrix multiplication](../img/matrix-multiplication.png)
-</div>
+{: style="float:right"}
 
 # `$` Matrix Multiply, `mmu`
 
@@ -19,6 +18,7 @@ _Matrix multiply, dot product_
 x mmu y    mmu[x;y]
 x$y        $[x;y]
 ```
+
 Where `x` and `y` are both float vectors or matrixes, returns their  matrix- or dot-product.
 
 `count y` must match

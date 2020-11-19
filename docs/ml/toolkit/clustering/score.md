@@ -7,7 +7,7 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 
 # :fontawesome-solid-share-alt: Scoring metrics reference
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.clust   **Scoring metrics**
 
 Unsupervised learning
@@ -20,7 +20,7 @@ Supervised learning
 
 Optimum number of clusters
   [elbow](#mlclustelbow)                  Distortion scores for increasing numbers of clusters
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/clust/score.q](https://github.com/KxSystems/ml/blob/master/clust/score.q)

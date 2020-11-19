@@ -7,7 +7,7 @@ date: August 2020
 # :fontawesome-solid-share-alt: Timeseries models
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.ts   **Timeseries models**
 
 **AR**: AutoRegressive 
@@ -31,7 +31,7 @@ date: August 2020
 **SARIMA**: Seasonal AutoRegressive Integrated Moving Average 
   [SARIMA.fit](#mltssarimafit)     Fit a SARIMA model
   [SARIMA.predict](#mltssarimapredict) Predict future values using a fitted SARIMA model
-</pre>
+</div>
 
 <i class="fab fa-github"></i>
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)

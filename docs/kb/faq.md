@@ -8,7 +8,7 @@ date: October 2020
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [cols](../ref/cols.md)     column names             [ungroup](../ref/ungroup.md)  normalize
 [meta](../ref/meta.md)     metadata                 [xasc](../ref/asc.md#xasc)     sort ascending
 [xcol](../ref/cols.md#xcol)     rename cols              [xdesc](../ref/desc.md#xdesc)    sort descending
@@ -18,7 +18,7 @@ date: October 2020
 [! Enkey, Unkey](../ref/enkey.md)  add/remove keys
 
 [**qSQL query templates**](../basics/qsql.md):   [select](../ref/select.md)   [exec](../ref/exec.md)   [update](../ref/update.md)   [delete](../ref/delete.md)
-</pre>
+</div>
 
 
 Tables are first-class objects in q.

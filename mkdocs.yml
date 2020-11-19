@@ -68,7 +68,7 @@ theme:
   custom_dir: custom_theme/
   favicon: ./img/favicon.ico
   features:
-    - tabs
+    - navigation.tabs
   name: 'material'
   language: en
   logo: 'img/kx.jpeg'
@@ -81,17 +81,18 @@ theme:
   toc:
     title: "On this page"
 nav:
-  - Home: index.md
-  - Reference card: ref/index.md
-  - Developer tools: devtools.md
-  - Open source: github.md
-  - Support: support.md
-  - Community: community.md
-  - White papers: wp/index.md
-  # - Site news: about/site-news.md
-  - About this site: about/thissite.md
-  # - Citations: about/citations.md
-  - Kx Systems: https://kx.com
+  - Home: 
+    - kdb+ and q: index.md
+    - Reference card: ref/index.md
+    - Developer tools: devtools.md
+    - Open source: github.md
+    - Support: support.md
+    - Community: community.md
+    - White papers: wp/index.md
+    # - Site news: about/site-news.md
+    - About this site: about/thissite.md
+    # - Citations: about/citations.md
+    - Kx Systems: https://kx.com
   - Learn: 
     - Get started: learn/index.md
     - Install: learn/install.md

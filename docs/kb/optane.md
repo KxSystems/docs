@@ -7,9 +7,8 @@ date: March 2020
 # :fontawesome-solid-bolt: Optane Memory and kdb+
 
 
-<div markdown="1" style="text-align: center;">
 ![Optane Memory](../img/optane-memory.jpg)
-</div>
+{: style="text-align: center"}
 
 Intel Optane DC persistent memory, herein called Optane Memory, is a new
 hardware technology from Intel. 

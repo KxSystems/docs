@@ -13,7 +13,7 @@ keywords: mqtt, api, consumer, fusion, interface, broker, message, library, tele
 The following functions are exposed in the `.mqtt` namespace.
 They allow you to interact with MQTT brokers and send and receive messages.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .mqtt   **MQTT interface**
 
 Broker interaction
@@ -27,7 +27,7 @@ Callback functions
   [disconn](#mqttdisconn)   manage disconnection events
   [msgrecv](#mqttmsgrecv)   manage receipt of messages
   [msgsent](#mqttmsgsent)   manage sending of messages
-</pre>
+</div>
 
 The callbacks here to handle disconnections and the sending and receipt of messages are minimal implementations. 
 

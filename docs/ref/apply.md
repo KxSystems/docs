@@ -5,15 +5,10 @@ author: Stephen Taylor
 keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
 ---
 
-<div markdown="1" style="float: right; max-width: 200px">
 [![Kandinsky: circles in a circle](../img/kandinsky-circles-in-a-circle.jpg)](https://en.wikipedia.org/wiki/Wassily_Kandinsky "Wikipedia")
 <br>
-<small>
-_Circles in a Circle, 1923_
-
-Everything begins with a dot.<br>— W.W. Kandinsky
-</small>
-</div>
+<small>_Circles in a Circle, 1923_<br><br>Everything begins with a dot.<br>— W.W. Kandinsky</small>
+{: style="float: right; max-width: 200px"}
 
 # `.` Apply, Index, Trap<br>`@` Apply At, Index At, Trap At
 

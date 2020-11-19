@@ -10,12 +10,12 @@ keywords: as-of, join, kdb+, q
 
 _As-of join_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 aj  [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
 aj0 [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
 ajf [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
 ajf0[c<sub>1</sub>…c<sub>n</sub>; t1; t2]
-</pre>
+</div>
 
 Where 
 

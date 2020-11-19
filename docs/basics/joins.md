@@ -7,7 +7,7 @@ keywords: aj, asof, coalesce, equi-join, inner join, join, kdb+, keyed, left joi
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 Keyed:                As of:
  [ej](../ref/ej.md)        equi        [aj aj0](../ref/aj.md)      as-of
  [ij ijf](../ref/ij.md)    inner       [ajf ajf0](../ref/aj.md)
@@ -15,7 +15,7 @@ Keyed:                As of:
  [pj](../ref/pj.md)        plus        [wj wj1](../ref/wj.md)      window
  [uj ujf](../ref/uj.md)    union
  [upsert](../ref/upsert.md)                [, Join](../ref/join.md)               [^ Coalesce](../ref/coalesce.md)
-</pre>
+</div>
 
 
 A _join_ combines data from two tables, or from a table and a dictionary.

@@ -5,9 +5,8 @@ author: Stephen Taylor
 keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, keyed table, q, symbol, til, vector
 ---
 
-<div markdown="1" style="float: right; max-width: 300px">
 [![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
-</div>
+{: style="float: right; max-width: 300px"}
 
 # `key`
 

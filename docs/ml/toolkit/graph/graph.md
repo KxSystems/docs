@@ -64,7 +64,7 @@ An edge is a connection between the output of one functional or configuration no
 
 ## Functionality
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 Graph
   [.ml.createGraph](#mlcreategraph)      Generate an empty graph
 
@@ -82,7 +82,7 @@ Edges
   [.ml.connectEdge](#mlconnectedge)      Connect the output of one node to the input of another
   [.ml.disconnectEdge](#mldisconnectedge)   Disconnect an edge connected to a specified node
 
-</pre>
+</div>
 
 ### `.ml.addCfg`
 

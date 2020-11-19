@@ -11,7 +11,7 @@ keywords: command, file, kdb+, line, option, q
 
 The command line for invoking kdb+ has the form:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 q [[file](#file)] [-option [parameters] … ]
 
 Options:
@@ -27,7 +27,7 @@ Options:
  [-o UTC offset](#-o-utc-offset)                 [-W start week](#-w-start-week)
  [-p listening port](#-p-listening-port)             [-z date format](#-z-date-format)
  [-P display precision](#-p-display-precision)                                            
-</pre>
+</div>
 
 :fontawesome-solid-book:
 [`.z.x`](../ref/dotz.md#zx-argv) (argv),

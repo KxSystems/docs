@@ -11,23 +11,23 @@ keywords: comparison, differ, equal, greater-than, greater-than-or-equal, kdb+, 
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [<     Less Than](../ref/less-than.md)            [>     Greater Than](../ref/greater-than.md)             [deltas  differences](../ref/deltas.md)
 [<=    Up To](../ref/less-than.md)                [>=    At Least](../ref/greater-than.md)                 [differ  flag changes](../ref/differ.md)
 [&     Lesser](../ref/lesser.md)               [|     Greater](../ref/greater.md)
 [min   least, minimum](../ref/min.md)       [max   greatest, maximum](../ref/max.md)
 [mins  running minimums](../ref/min.md#mins)     [maxs  running maximums](../ref/max.md#maxs)
 [mmin  moving minimums](../ref/min.md#mmin)      [mmax  moving maximums](../ref/max.md#mmax)
-</pre>
+</div>
 
 
 ## Six comparison operators
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [=  Equal](../ref/equal.md)            [<>  Not Equal](../ref/not-equal.md)
 [\>  Greater Than](../ref/greater-than.md)     [>=  At Least](../ref/greater-than.md)
 [<  Less Than](../ref/less-than.md)        [<=  Up To](../ref/less-than.md)
-</pre>
+</div>
 
 Syntax: (e.g.) `x = y`, `=[x;y]`
 

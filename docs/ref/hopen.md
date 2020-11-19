@@ -6,10 +6,10 @@ author: Stephen Taylor
 # `hopen`, `hclose`
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [`hopen`](#hopen)   connect a process or file
 [`hclose`](#hclose)  disconnect a process or file
-</pre>
+</div>
 
 
 Kdb+ communicates with the [file system](../basics/files.md) and other processes through

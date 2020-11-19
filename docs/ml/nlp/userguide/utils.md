@@ -7,7 +7,7 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 # :fontawesome-solid-share-alt: Utility functions
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .nlp   **Utility functions**
   [findTimes](#nlpfindtimes)          all the times in a document
   [findDates](#nlpfinddates)          all the dates in a document
@@ -20,7 +20,7 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
                      certain characters or expressions
   [rmv_main](#nlprmv_main)           replace individual characters in a string
   [ascii](#nlpascii)              remove non-ASCII characters from a string
-</pre>
+</div>
 
 
 The NLP library contains functions useful for in-depth document analysis. They extract elements of the text that can be applied to NLP algorithms, or that can help you with your analysis.

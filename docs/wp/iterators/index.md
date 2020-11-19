@@ -332,10 +332,10 @@ q)reverse each x
 "xof"
 ```
 
-<div markdown="1" style="float: right; margin-left: 1em; text-align: center;">
-![each-both](../../img/each-both.png)  
+![each-both](../../img/each-both.png)
+<br>
 <small>_Each Both_</small>
-</div>
+{: style="float: right; margin-left: 1em; text-align: center;"}
 
 With a binary value, the iterator is sometimes known as _each both_. 
 You can think of it as a zip fastener, applying the value between pairs of items from its arguments. 
@@ -383,10 +383,10 @@ q)2 m' 0 2 1 2 4
 "boron"
 ```
 
-<div markdown="1" style="float: right; margin-left: 1em; text-align: center;">
-![each-right](../../img/each-right.png)  
+![each-right](../../img/each-right.png) 
+<br>
 <small>_Each Right_</small>
-</div>
+{: style="float: right; margin-left: 1em; text-align: center;"}
 
 To extend this behavior to non-atom arguments, use Each Left or Each Right.
 

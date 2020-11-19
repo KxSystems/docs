@@ -20,7 +20,7 @@ value x     value[x]
 
 Returns the value of `x`:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 dictionary           value of the dictionary
 symbol atom          value of the variable it names
 enumeration          corresponding symbol vector
@@ -37,10 +37,10 @@ view                 [list of metadata](#view)
 lambda               [structure](#lambda)
 
 file symbol          [content of datafile](#get)
-</pre>
+</div>
 
 
-Examples
+Examples:
 
 ```q
 q)value `q`w`e!(1 2;3 4;5 6)        / dictionary

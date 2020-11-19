@@ -7,9 +7,8 @@ keywords: interface, kdb+, q, r,
 ---
 # embedR, an interface for calling R from q
 
-<div class="fusion" markdown="1">
 :fontawesome-brands-superpowers: [Fusion for kdb+](../fusion.md)
-</div>
+{: .fusion}
 
 :fontawesome-brands-github:
 [kxsystems/embedr](https://github.com/kxsystems/embedr)

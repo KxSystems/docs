@@ -18,7 +18,7 @@ Handles are more efficient for multiple operations on a file.
 
 ## :fontawesome-solid-thumbs-up: One-shot operations
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [get set](../ref/get.md)       read/write or memory-map a data file¹
 [value](../ref/value.md)         read a data file¹
 
@@ -34,7 +34,7 @@ Handles are more efficient for multiple operations on a file.
 [rsave](../ref/save.md#rsave)  [rload](../ref/load.md#rload)  a splayed table
 [dsave](../ref/dsave.md)         tables
 [?  Enum Extend](../ref/enum-extend.md#filepath)
-</pre>
+</div>
 
 ¹ Has application beyond the file system.
 
@@ -55,11 +55,11 @@ q)get `:data/bar
 
 ### File utilities
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [hcount](../ref/hcount.md)        file size
 [hdel](../ref/hdel.md)          delete a file or folder
 [hsym](../ref/hsym.md)          symbol/s to file symbol/s
-</pre>
+</div>
 
 
 ### Writing and reading
@@ -69,25 +69,25 @@ Text-file primitives handle text files.
 
 `0` associates with text; `1` with bytes.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [read0](../ref/read0.md)               [read1](../ref/read1.md)
 [0: Load CSV](../ref/file-text.md#load-csv)         [1: Read Binary](../ref/file-binary.md#read-binary)
 [0: Load Fixed](../ref/file-text.md#load-fixed)
 
 [0: Save Text](../ref/file-text.md#save-text)        [1: Save Binary](../ref/file-binary.md#save-binary)
-</pre>
+</div>
 
 !!! tip "The [File Text operator `0:`](../ref/file-text.md) can also represent a table as strings, and interpret key-value pairs."
 
 
 ### Tables
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [save](../ref/save.md#save)   [load](../ref/load.md)   a table
 [rsave](../ref/save.md#rsave)  [rload](../ref/load.md#rload)  a splayed table
 [dsave](../ref/dsave.md)         tables
 [?  Enum Extend](../ref/enum-extend.md#filepath)
-</pre>
+</div>
 
 Kdb+ uses files and directories to persist database tables.
 [Partitioning a table](../kb/partition.md) divides its rows across multiple directories.
@@ -103,11 +103,11 @@ Opening a connection to a file returns a handle to the connection. The handle ta
 System handles 0, 1, and 2 are to the console, stdout, and stderr.
 They are always open.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 0 console          [hopen](../ref/hopen.md)   open a file¹
 1 stdout           [hclose](../ref/hopen.md#hclose)  close a file¹
 2 stderr
-</pre>
+</div>
 
 Opening a connection to a non-existent file creates it and any missing ancestor directories.
 

@@ -164,7 +164,7 @@ wf         -log(0.0) in Windows or (1/0.0) on Linux   float infinity
 
 ### Constructors
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [ka](#ka-create-atom)  atom        [kj](#kj-create-long)   long            [ktj](#ktj-create-timespan)    timespan
 [kb](#kb-create-boolean)  boolean     [knk](#knk-create-list)  list            [ktn](#ktn-create-vector)    vector
 [kc](#kc-create-char)  char        [knt](#knt-create-keyed-table)  keyed table     [ku](#ku-create-guid)     guid
@@ -174,14 +174,14 @@ wf         -log(0.0) in Windows or (1/0.0) on Linux   float infinity
 [kg](#kg-create-byte)  byte        [kt](#kt-create-time)   time            [xT](#xt-table-from-dictionary)     table
 [kh](#kh-create-short)  short       [ktd](#ktd-create-simple-table)  simple table
 [ki](#ki-create-int)  int         [ktj](#ktj-create-timestamp)  timestamp
-</pre>
+</div>
 
 ### Joins
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [ja](#ja-join-value)  raw value to list    [js](#js-join-string)  interned string to symbol vector
 [jk](#jk-join-k-object)  K object to list     [jv](#jv-join-k-lists)  K list to first of same type
-</pre>
+</div>
 
 When appending to a list, if the capacity of the list is
 insufficient to accommodate the new data, the list is reallocated with the contents of `x` updated. The new data is always appended, unless the reallocation causes an out-of-memory condition which is then fatal; these functions never return `NULL`. The reallocation of the list will cause the initial list’s reference count to be decremented. The target list passed to join functions should not have an attribute, and the caller should consider that modifications to that target object will be visible to all references to that object unless a reallocation occurred.
@@ -189,7 +189,7 @@ insufficient to accommodate the new data, the list is reallocated with the conte
 
 ### Other functions
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [b9](#b9-serialize)   serialize               [r0](#r0-decrement-refcount)    decrement ref count
 [d9](#d9-deserialize)   deserialize             [r1](#r1-increment-refcount)    increment ref count
 [dj](#dj-date-to-number)   date to integer         [sd0](#sd0-remove-callback)   remove callback
@@ -201,17 +201,17 @@ insufficient to accommodate the new data, the list is reallocated with the conte
 [m9](#m9-release-memory)   release memory          [vak](#vak-vaknk-va_list-versions-of-k-knk)   va_list version of k
 [okx](#okx-verify-ipc-message)  verify IPC message      [ymd](#ymd-numbers-to-date)   encode q date
 [orr](#orr-signal-system-error)  signal system error
-</pre>
+</div>
 
 
 ### Standalone applications
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [kclose](#kclose-disconnect)  disconnect from host
 [khp](#khp-connect-anonymously)     connect to host without credentials
 [khpu](#khpu-connect-no-timeout)    connect to host without timeout
 [khpun](#khpun-connect)   connect to host
-</pre>
+</div>
 
 !!! warning "Unless otherwise specified, no function accepting K objects should be passed `NULL`."
 

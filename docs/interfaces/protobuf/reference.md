@@ -10,7 +10,7 @@ description: Protobuf/Protocol Buffers kdb+ interface function reference
 
 Functions exposed in the `.protobufkdb` namespace allow you to generate and parse Protobuf messages.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .protobufkdb   **Protobuf/Protocol Buffers interface**
 
 Library Information
@@ -36,7 +36,7 @@ Serialize / Deserialize
 Save / Load
   [loadMessage](#protobufkdbloadmessage)               Load a file and deserialize it to a kdb+ object
   [saveMessage](#protobufkdbsavemessage)               Serialize kdb+ object with a message, save it to file
-</pre>
+</div>
 
 
 ??? detail "Message types"

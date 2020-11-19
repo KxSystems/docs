@@ -14,7 +14,7 @@ Metric updates are generally carried out inside event handlers. By overwriting t
 
 The functions outlined below can be modified to allow a user to monitor events outside those exposed in `exporter.q` 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .prom.      **event handlers**
  [on_poll](#promon_poll)      Prometheus poll request
  [on_pc](#promon_pc)        IPC socket connection closing
@@ -33,9 +33,9 @@ The functions outlined below can be modified to allow a user to monitor events o
  [before_ws](#prombefore_ws)    Websocket request handler, call before execution
  [after_ts](#promafter_ts)     Timer event handler, call after execution
  [before_ts](#prombefore_ts)    Timer event handler, call after execution
-</pre>
+</div>
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-brands-github: 
 [Example invocations of these event handlers](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/exporter.q)
 
 Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to [`.prom.init`](reference.md#initialize-library)

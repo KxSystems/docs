@@ -6,10 +6,10 @@ keywords: dictionary, group, kdb+, q, sort, table
 ---
 # Dictionaries
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [! Dict](../ref/dict.md)  make a dictionary         [key](../ref/key.md)      key list
 [group](../ref/group.md)   group list by values      [value](../ref/value.md)    value list
-</pre>
+</div>
 
 
 ## Lists and dictionaries

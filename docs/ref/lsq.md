@@ -3,9 +3,8 @@ title: lsq – least-squares matrix equation solution |Reference | kdb+ and q do
 description: lsq is a q keyword that performs least squares fitting, matrix division.
 author: Stephen Taylor
 ---
-<div markdown="1" style="float: right">
 ![Linear regression](../img/linear-regression.png)
-</div>
+{: style="float: right"}
 
 # `lsq`
 

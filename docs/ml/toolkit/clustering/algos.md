@@ -8,7 +8,7 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 # :fontawesome-solid-share-alt: Clustering algorithms reference
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.clust   **Clustering**
 
 **Algorithms**
@@ -45,9 +45,9 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
     [hc.cutk](#mlclusthccutk)                  Cut dendrogram to k clusters
     [hc.cutdist](#mlclusthccutdist)               Cut dendrogram to clusters based on distance threshold
     
-</pre>
+</div>
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/clust](https://github.com/KxSystems/ml/tree/master/clust)
 
 The clustering library provides q implementations of a number of common clustering algorithms, with fit and predict functions provided for each. Update functions are also available for K-Means and DBSCAN.

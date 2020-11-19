@@ -7,9 +7,8 @@ keywords: embedpy, interface, kdb+, python
 
 
 
-<div class="fusion" markdown="1">
 :fontawesome-brands-superpowers: [Fusion for kdb+](../../interfaces/fusion.md)
-</div>
+{: .fusion}
 
 
 

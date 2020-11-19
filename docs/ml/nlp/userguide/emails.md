@@ -6,12 +6,12 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 # :fontawesome-solid-share-alt: Emails
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .nlp.email   **Emails**
   loadEmails   an MBOX file as a table of parsed metadata
   getGraph     graph of who emailed whom, and how often
   parseMail    an email parsed in string format
-</pre>
+</div>
 
 One of the most important document formats for analysis in natural-language processing is emails, particularly for surveillance, and spam detection. The following functions form a basis for the handling of email-format data.
 

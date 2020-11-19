@@ -63,13 +63,13 @@ Logical block size
 
 Algorithm and compression level
 
-: Pick from: <pre markdown="1" class="language-txt">
+: Pick from: <pre class="language-txt">
 alg  algorithm  level  since
 \----------------------------
 0    none       0
 1    q IPC      0
 2    gzip       0-9
-3    [snappy](http://google.github.io/snappy/)     0      V3.4
+3    snappy     0      V3.4
 4    lz4hc      1-12   V3.6
 </pre>
 

@@ -7,10 +7,10 @@ keywords: adverb, case, dictionary, each, each both, each left, each parallel, e
 ---
 # Map iterators
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 map                        rank
  [Each](#each)           v'       same as v    [each](#each-keyword)
- [Each Left](#each-left-and-each-right)      v2\:        2
+ [Each Left](#each-left-and-each-right)      v2\:         2
  [Each Right](#each-left-and-each-right)     v2/:        2
  [Each Parallel](#each-parallel)  v1':        1         [peach](#peach-keyword)
  [Each Prior](#each-prior)     v2':     variadic     [prior](#prior-keyword)
@@ -19,7 +19,7 @@ map                        rank
 -------------------------------------------------------------------
 v1: value (rank 1)         v: value (rank 1-8)
 v2: value (rank 2)         i: vector of ints≥0
-</pre>
+</div>
 
 The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
 
@@ -44,10 +44,10 @@ c| 4
 ```
 
 
-<div markdown="1" style="float: right; margin-left: 1em; text-align: center;">
-![each-both](../img/each-both.png)  
+![each-both](../img/each-both.png)
+<br>
 <small>_Each Both_</small>
-</div>
+{: style="float: right; margin-left: 1em; text-align: center;"}
 
 Each applied to a binary value is sometimes called _each both_ and can be applied infix.
 
@@ -161,9 +161,8 @@ q)raze[a] ~ b
 
 ## Each Parallel
 
-<div markdown="1" style="float: right; margin-left: 1em;">
 ![Each Parallel](../img/each-parallel.png)
-</div>
+{: style="float: right; margin-left: 1em;"}
 
 _Assign sublists of the argument list to secondary tasks, in which the unary value is applied to each item of the sublist._
 
@@ -211,9 +210,8 @@ v1 peach list
 
 ## Each Prior
 
-<div markdown="1" style="float: right; margin-left: 1em; z-index: 3">
 ![Each Prior](../img/each-prior.png)
-</div>
+{: style="float: right; margin-left: 1em; z-index: 3"}
 
 _Apply a binary value between each item of a list and its preceding item._
 

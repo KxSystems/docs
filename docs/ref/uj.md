@@ -3,23 +3,20 @@ title: uj – union join | Reference | kdb+ and q documentation
 description: uj and ujf are q keywords that perform a union join on two tables.
 keywords: join, kdb+, q, uj, ujf, union join
 ---
-<div markdown="1" style="float:right; margin-left: 3em; max-width: 250px;">
 ![Union join animation](../img/uj.gif)
-</div>
+{: style="float:right; margin-left: 3em; max-width: 250px;"}
 
 # `uj`, `ujf`
 
 
 
 
-
-
 _Union join_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 x uj  y     uj [x;y]
 x ujf y     ujf[x;y]
-</pre>
+</div>
 
 
 Where `x` and `y` are both keyed or both unkeyed tables, returns the union of the columns, filled with nulls where necessary:

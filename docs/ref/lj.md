@@ -10,10 +10,10 @@ _Left join_
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 x lj  y     lj [x;y]
 x ljf y     ljf[x;y]
-</pre>
+</div>
 
 Where 
 

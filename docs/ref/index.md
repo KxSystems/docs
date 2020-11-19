@@ -13,28 +13,28 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Keywords
 
 <table class="kx-shrunk kx-tight" markdown="1">
-<tr><td>A</td><td>[`abs`](abs.md "absolute value") [`acos`](cos.md "arccosine") [`aj` `aj0` `ajf` `ajf0`](aj.md "as-of join") [`all`](all-any.md#all "all nonzero") [`and`](lesser.md "lesser") [`any`](all-any.md#any "any item is non-zero") [`asc`](asc.md "ascending sort") [`asin`](sin.md "arcsine") [`asof`](asof.md "as-of join") [`atan`](tan.md "arctangent") [`attr`](attr.md "attributes") [`avg`](avg.md#avg "arithmetic mean") [`avgs`](avg.md#avgs "running averages")</td></tr>
-<tr><td>B</td><td>[`bin` `binr`](bin.md "binary search")</td></tr>
-<tr><td>C</td><td>[`ceiling`](ceiling.md "lowest integer above") [`cols`](cols.md#cols "column names of a table") [`cor`](cor.md "correlation") [`cos`](cos.md "cosine") [`count`](count.md "number of items") [`cov`](cov.md "covariance") [`cross`](cross.md "cross product") [`csv`](csv.md "comma delimiter") [`cut`](cut.md "cut array into pieces")</td></tr>
-<tr><td>D</td><td>[`delete`](delete.md#delete-keyword "delete rows or columns from a table") [`deltas`](deltas.md "differences between consecutive pairs") [`desc`](desc.md "descending sort") [`dev`](dev.md "standard deviation") [`differ`](differ.md "flag differences in consecutive pairs") [`distinct`](distinct.md "unique items") [`div`](div.md "integer division") [`do`](do.md) [`dsave`](dsave.md "save global tables to disk")</td></tr>
-<tr><td>E</td><td>[`each`](each.md "apply to each item") [`ej`](ej.md "equi-join") [`ema`](ema.md "exponentially-weighted moving average") [`enlist`](enlist.md "arguments as a list") [`eval`](eval.md "evaluate a parse tree") [`except`](except.md "left argument without items in right argument") [`exec`](exec.md) [`exit`](exit.md "terminate q") [`exp`](exp.md "power of e")</td></tr>
-<tr><td>F</td><td>[`fby`](fby.md "filter-by") [`fills`](fill.md#fills "forward-fill nulls") [`first`](first.md "first item") [`fkeys`](fkeys.md "foreign-key columns mapped to their tables") [`flip`](flip.md "transpose") [`floor`](floor.md "greatest integer less than argument")</td></tr>
-<tr><td>G</td><td>[`get`](get.md "get a q data file") [`getenv`](getenv.md "value of an environment variable") [`group`](group.md "dictionary of distinct items") [`gtime`](gtime.md "UTC timestamp")</td></tr>
-<tr><td>H</td><td>[`hclose`](hopen.md#hclose "close a file or process") [`hcount`](hcount.md "size of a file") [`hdel`](hdel.md "delete a file") [`hopen`](hopen.md "open a file") [`hsym`](hsym.md "convert symbol to filename or IP address")</td></tr>
-<tr><td>I</td><td>[`iasc`](asc.md#iasc "indices of ascending sort") [`idesc`](desc.md#idesc "indices of descending sort") [`if`](if.md) [`ij` `ijf`](ij.md "inner join") [`in`](in.md "membership") [`insert`](insert.md "append records to a table") [`inter`](inter.md "items common to both arguments") [`inv`](inv.md "matrix inverse")</td></tr>
-<tr><td>K</td><td>[`key`](key.md "keys of a dictionary etc.") [`keys`](keys.md "names of a table's columns")</td></tr>
-<tr><td>L</td><td>[`last`](first.md#last "last item") [`like`](like.md "pattern matching") [`lj` `ljf`](lj.md "left join") [`load`](load.md "load binary data") [`log`](log.md "natural logarithm") [`lower`](lower.md "lower case") [`lsq`](lsq.md "least squares – matrix divide") [`ltime`](gtime.md#ltime "local timestamp") [`ltrim`](trim.md#ltrim "function remove leading spaces")</td></tr>
-<tr><td>M</td><td>[`mavg`](avg.md#mavg "moving average") [`max`](max.md "maximum") [`maxs`](max.md#maxs "maxima of preceding items") [`mcount`](count.md#mcount "moving count") [`md5`](md5.md "MD5 hash") [`mdev`](dev.md#mdev "moving deviation") [`med`](med.md "median") [`meta`](meta.md "metadata of a table") [`min`](min.md "minimum") [`mins`](min.md#mins "minimum of preceding items") [`mmax`](max.md#mmax "moving maxima") [`mmin`](min.md#mmin "moving minima") [`mmu`](mmu.md "matrix multiplication") [`mod`](mod.md "remainder") [`msum`](sum.md#msum "moving sum")</td></tr>
-<tr><td>N</td><td>[`neg`](neg.md "negate") [`next`](next.md "next items") [`not`](not.md "logical not") [`null`](null.md "is argument a null")</td></tr>
-<tr><td>O</td><td>[`or`](greater.md "greater") [`over`](over.md "reduce an array with a value")</td></tr>
-<tr><td>P</td><td>[`parse`](parse.md "parse a string") [`peach`](each.md "parallel each") [`pj`](pj.md "plus join") [`prd` `prds`](prd.md "product, unning products") [`prev`](next.md#prev "previous items") [`prior`](prior.md "apply function between each item and its predecessor")</td></tr>
-<tr><td>R</td><td>[`rand`](rand.md "random number") [`rank`](rank.md "grade up") [`ratios`](ratios.md "ratios of consecutive pairs") [`raze`](raze.md "join items") [`read0`](read0.md "read file as lines") [`read1`](read1.md "read file as bytes") [`reciprocal`](reciprocal.md "reciprocal of a number") [`reval`](eval.md#reval "variation of eval") [`reverse`](reverse.md "reverse the order of items") [`rload`](load.md#rload "load a splayed table") [`rotate`](rotate.md "rotate items") [`rsave`](save.md#rsave) [`rtrim`](trim.md#rtrim "remove trailing spaces")</td></tr>
-<tr><td>S</td><td>[`save`](save.md "save global data to file") [`scan`](over.md "apply value to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv.md "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
-<tr><td>T</td><td>[`tables`](tables.md "sorted list of tables") [`tan`](tan.md "tangent") [`til`](til.md "integers up to x") [`trim`](trim.md "remove leading and trailing spaces") [`type`](type.md "data type")</td></tr>
-<tr><td>U</td><td>[`uj` `ujf`](uj.md "union join") [`ungroup`](ungroup.md "flattened table") [`union`](union.md "distinct items of combination of two lists") [`update`](update.md "insert or replace table records") [`upper`](lower.md#upper "upper-case") [`upsert`](upsert.md "add table records")</td></tr>
-<tr><td>V</td><td>[`value`](value.md "value of a variable or dictionary key; value of an executed sting") [`var`](var.md "variance") [`view`](view.md "definition of a dependency") [`views`](view.md#views "list of defined views") [`vs`](vs.md "encode, split")</td></tr>
-<tr><td>W</td><td>[`wavg`](avg.md#wavg "weighted average") [`where`](where.md "replicated items") [`while`](while.md) [`within`](within.md "flag items within range") [`wj` `wj1`](wj.md "window join") [`wsum`](sum.md#wsum "weighted sum")</td></tr>
-<tr><td>X</td><td>[`xasc`](asc.md#xasc "table sorted ascending by columns") [`xbar`](xbar.md "interval bar") [`xcol`](cols.md#xcol "rename table columns") [`xcols`](cols.md#xcols "re-order table columns") [`xdesc`](desc.md#xdesc "table sorted descending by columns") [`xexp`](exp.md#xexp "raised to a power") [`xgroup`](xgroup.md "table grouped by keys") [`xkey`](keys.md#xkey "set primary keys of a table") [`xlog`](log.md#xlog "base-x logarithm") [`xprev`](next.md#xprev "previous items") [`xrank`](xrank.md "items assigned to buckets")</td></tr>
+<tr markdown="1"><td markdown="1">A</td><td markdown="1">[`abs`](abs.md "absolute value") [`acos`](cos.md "arccosine") [`aj` `aj0` `ajf` `ajf0`](aj.md "as-of join") [`all`](all-any.md#all "all nonzero") [`and`](lesser.md "lesser") [`any`](all-any.md#any "any item is non-zero") [`asc`](asc.md "ascending sort") [`asin`](sin.md "arcsine") [`asof`](asof.md "as-of join") [`atan`](tan.md "arctangent") [`attr`](attr.md "attributes") [`avg`](avg.md#avg "arithmetic mean") [`avgs`](avg.md#avgs "running averages")</td></tr>
+<tr markdown="1"><td markdown="1">B</td><td markdown="1">[`bin` `binr`](bin.md "binary search")</td></tr>
+<tr markdown="1"><td markdown="1">C</td><td markdown="1">[`ceiling`](ceiling.md "lowest integer above") [`cols`](cols.md#cols "column names of a table") [`cor`](cor.md "correlation") [`cos`](cos.md "cosine") [`count`](count.md "number of items") [`cov`](cov.md "covariance") [`cross`](cross.md "cross product") [`csv`](csv.md "comma delimiter") [`cut`](cut.md "cut array into pieces")</td></tr>
+<tr markdown="1"><td markdown="1">D</td><td markdown="1">[`delete`](delete.md#delete-keyword "delete rows or columns from a table") [`deltas`](deltas.md "differences between consecutive pairs") [`desc`](desc.md "descending sort") [`dev`](dev.md "standard deviation") [`differ`](differ.md "flag differences in consecutive pairs") [`distinct`](distinct.md "unique items") [`div`](div.md "integer division") [`do`](do.md) [`dsave`](dsave.md "save global tables to disk")</td></tr>
+<tr markdown="1"><td markdown="1">E</td><td markdown="1">[`each`](each.md "apply to each item") [`ej`](ej.md "equi-join") [`ema`](ema.md "exponentially-weighted moving average") [`enlist`](enlist.md "arguments as a list") [`eval`](eval.md "evaluate a parse tree") [`except`](except.md "left argument without items in right argument") [`exec`](exec.md) [`exit`](exit.md "terminate q") [`exp`](exp.md "power of e")</td></tr>
+<tr markdown="1"><td markdown="1">F</td><td markdown="1">[`fby`](fby.md "filter-by") [`fills`](fill.md#fills "forward-fill nulls") [`first`](first.md "first item") [`fkeys`](fkeys.md "foreign-key columns mapped to their tables") [`flip`](flip.md "transpose") [`floor`](floor.md "greatest integer less than argument")</td></tr>
+<tr markdown="1"><td markdown="1">G</td><td markdown="1">[`get`](get.md "get a q data file") [`getenv`](getenv.md "value of an environment variable") [`group`](group.md "dictionary of distinct items") [`gtime`](gtime.md "UTC timestamp")</td></tr>
+<tr markdown="1"><td markdown="1">H</td><td markdown="1">[`hclose`](hopen.md#hclose "close a file or process") [`hcount`](hcount.md "size of a file") [`hdel`](hdel.md "delete a file") [`hopen`](hopen.md "open a file") [`hsym`](hsym.md "convert symbol to filename or IP address")</td></tr>
+<tr markdown="1"><td markdown="1">I</td><td markdown="1">[`iasc`](asc.md#iasc "indices of ascending sort") [`idesc`](desc.md#idesc "indices of descending sort") [`if`](if.md) [`ij` `ijf`](ij.md "inner join") [`in`](in.md "membership") [`insert`](insert.md "append records to a table") [`inter`](inter.md "items common to both arguments") [`inv`](inv.md "matrix inverse")</td></tr>
+<tr markdown="1"><td markdown="1">K</td><td markdown="1">[`key`](key.md "keys of a dictionary etc.") [`keys`](keys.md "names of a table's columns")</td></tr>
+<tr markdown="1"><td markdown="1">L</td><td markdown="1">[`last`](first.md#last "last item") [`like`](like.md "pattern matching") [`lj` `ljf`](lj.md "left join") [`load`](load.md "load binary data") [`log`](log.md "natural logarithm") [`lower`](lower.md "lower case") [`lsq`](lsq.md "least squares – matrix divide") [`ltime`](gtime.md#ltime "local timestamp") [`ltrim`](trim.md#ltrim "function remove leading spaces")</td></tr>
+<tr markdown="1"><td markdown="1">M</td><td markdown="1">[`mavg`](avg.md#mavg "moving average") [`max`](max.md "maximum") [`maxs`](max.md#maxs "maxima of preceding items") [`mcount`](count.md#mcount "moving count") [`md5`](md5.md "MD5 hash") [`mdev`](dev.md#mdev "moving deviation") [`med`](med.md "median") [`meta`](meta.md "metadata of a table") [`min`](min.md "minimum") [`mins`](min.md#mins "minimum of preceding items") [`mmax`](max.md#mmax "moving maxima") [`mmin`](min.md#mmin "moving minima") [`mmu`](mmu.md "matrix multiplication") [`mod`](mod.md "remainder") [`msum`](sum.md#msum "moving sum")</td></tr>
+<tr markdown="1"><td markdown="1">N</td><td markdown="1">[`neg`](neg.md "negate") [`next`](next.md "next items") [`not`](not.md "logical not") [`null`](null.md "is argument a null")</td></tr>
+<tr markdown="1"><td markdown="1">O</td><td markdown="1">[`or`](greater.md "greater") [`over`](over.md "reduce an array with a value")</td></tr>
+<tr markdown="1"><td markdown="1">P</td><td markdown="1">[`parse`](parse.md "parse a string") [`peach`](each.md "parallel each") [`pj`](pj.md "plus join") [`prd` `prds`](prd.md "product, unning products") [`prev`](next.md#prev "previous items") [`prior`](prior.md "apply function between each item and its predecessor")</td></tr>
+<tr markdown="1"><td markdown="1">R</td><td markdown="1">[`rand`](rand.md "random number") [`rank`](rank.md "grade up") [`ratios`](ratios.md "ratios of consecutive pairs") [`raze`](raze.md "join items") [`read0`](read0.md "read file as lines") [`read1`](read1.md "read file as bytes") [`reciprocal`](reciprocal.md "reciprocal of a number") [`reval`](eval.md#reval "variation of eval") [`reverse`](reverse.md "reverse the order of items") [`rload`](load.md#rload "load a splayed table") [`rotate`](rotate.md "rotate items") [`rsave`](save.md#rsave) [`rtrim`](trim.md#rtrim "remove trailing spaces")</td></tr>
+<tr markdown="1"><td markdown="1">S</td><td markdown="1">[`save`](save.md "save global data to file") [`scan`](over.md "apply value to successive items") [`scov`](cov.md#scov "statistical covariance") [`sdev`](dev.md#sdev "statistical standard deviation") [`select`](select.md "select columns from a table") [`set`](get.md#set "assign a value to a name") [`setenv`](getenv.md#setenv "set an environment variable") [`show`](show.md "format to the console") [`signum`](signum.md "sign of its argument/s") [`sin`](sin.md "sine") [`sqrt`](sqrt.md "square root") [`ss`](ss.md "string search") [`ssr`](ss.md#ssr "string search and replace") [`string`](string.md "cast to string") [`sublist`](sublist.md "sublist of a list") [`sum`](sum.md "sum of a list") [`sums`](sum.md#sums "cumulative sums") [`sv`](sv.md "decode, consolidate") [`svar`](var.md#svar "statistical variance") [`system`](system.md "execute system command")</td></tr>
+<tr markdown="1"><td markdown="1">T</td><td markdown="1">[`tables`](tables.md "sorted list of tables") [`tan`](tan.md "tangent") [`til`](til.md "integers up to x") [`trim`](trim.md "remove leading and trailing spaces") [`type`](type.md "data type")</td></tr>
+<tr markdown="1"><td markdown="1">U</td><td markdown="1">[`uj` `ujf`](uj.md "union join") [`ungroup`](ungroup.md "flattened table") [`union`](union.md "distinct items of combination of two lists") [`update`](update.md "insert or replace table records") [`upper`](lower.md#upper "upper-case") [`upsert`](upsert.md "add table records")</td></tr>
+<tr markdown="1"><td markdown="1">V</td><td markdown="1">[`value`](value.md "value of a variable or dictionary key; value of an executed sting") [`var`](var.md "variance") [`view`](view.md "definition of a dependency") [`views`](view.md#views "list of defined views") [`vs`](vs.md "encode, split")</td></tr>
+<tr markdown="1"><td markdown="1">W</td><td markdown="1">[`wavg`](avg.md#wavg "weighted average") [`where`](where.md "replicated items") [`while`](while.md) [`within`](within.md "flag items within range") [`wj` `wj1`](wj.md "window join") [`wsum`](sum.md#wsum "weighted sum")</td></tr>
+<tr markdown="1"><td markdown="1">X</td><td markdown="1">[`xasc`](asc.md#xasc "table sorted ascending by columns") [`xbar`](xbar.md "interval bar") [`xcol`](cols.md#xcol "rename table columns") [`xcols`](cols.md#xcols "re-order table columns") [`xdesc`](desc.md#xdesc "table sorted descending by columns") [`xexp`](exp.md#xexp "raised to a power") [`xgroup`](xgroup.md "table grouped by keys") [`xkey`](keys.md#xkey "set primary keys of a table") [`xlog`](log.md#xlog "base-x logarithm") [`xprev`](next.md#xprev "previous items") [`xrank`](xrank.md "items assigned to buckets")</td></tr>
 </table>
 
 :fontawesome-solid-book:
@@ -45,33 +45,33 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Operators
 
 <table markdown="1">
-<tr>
-<td class="kx-glyph">[`@`](overloads.md#at)<br>[`.`](overloads.md#dot)</td><td>[Apply](apply.md)<br>[Index](apply.md#index)<br>[Trap](apply.md#trap)<br>[Amend](amend.md)</td>
-<td class="kx-glyph">[`$`](overloads.md#dollar)</td><td>[Cast](cast.md)<br>[Tok](tok.md)<br>[Enumerate](enumerate.md)<br>[Pad](pad.md)<br>[`mmu`](mmu.md)</td>
-<td class="kx-glyph">[`!`](overloads.md#bang)</td><td>[Dict](dict.md)<br>[Enkey](enkey.md)<br>[Unkey](enkey.md#unkey)<br>[Enumeration](enumeration.md)<br>[Flip Splayed](flip-splayed.md)<br>[Display](display.md)<br>[internal](../basics/internal.md)<br>[Update](../basics/funsql.md#update)<br>[Delete](../basics/funsql.md#delete)</td>
-<td class="kx-glyph">[`?`](overloads.md#query)</td><td>[Find](find.md)<br>[Roll, Deal](deal.md)<br>[Enum Extend](enum-extend.md)<br>[Select](../basics/funsql.md#select)<br>[Exec](../basics/funsql.md#exec)<br>[Simple Exec](../basics/funsql.md#simple-exec)<br>[Vector Conditional](vector-conditional.md)</td>
+<tr markdown="1">
+<td markdown="1" class="kx-glyph">[`@`](overloads.md#at)<br>[`.`](overloads.md#dot)</td><td markdown="1">[Apply](apply.md)<br>[Index](apply.md#index)<br>[Trap](apply.md#trap)<br>[Amend](amend.md)</td>
+<td markdown="1" class="kx-glyph">[`$`](overloads.md#dollar)</td><td markdown="1">[Cast](cast.md)<br>[Tok](tok.md)<br>[Enumerate](enumerate.md)<br>[Pad](pad.md)<br>[`mmu`](mmu.md)</td>
+<td markdown="1" class="kx-glyph">[`!`](overloads.md#bang)</td><td markdown="1">[Dict](dict.md)<br>[Enkey](enkey.md)<br>[Unkey](enkey.md#unkey)<br>[Enumeration](enumeration.md)<br>[Flip Splayed](flip-splayed.md)<br>[Display](display.md)<br>[internal](../basics/internal.md)<br>[Update](../basics/funsql.md#update)<br>[Delete](../basics/funsql.md#delete)</td>
+<td markdown="1" class="kx-glyph">[`?`](overloads.md#query)</td><td markdown="1">[Find](find.md)<br>[Roll, Deal](deal.md)<br>[Enum Extend](enum-extend.md)<br>[Select](../basics/funsql.md#select)<br>[Exec](../basics/funsql.md#exec)<br>[Simple Exec](../basics/funsql.md#simple-exec)<br>[Vector Conditional](vector-conditional.md)</td>
 </tr>
-<tr>
-<td class="kx-glyph">`+`</td><td>[Add](add.md)</td>
-<td class="kx-glyph">`-`</td><td>[Subtract](subtract.md)</td>
-<td class="kx-glyph">`*`</td><td>[Multiply](multiply.md)</td>
-<td class="kx-glyph">`%`</td><td>[Divide](divide.md)</td>
+<tr markdown="1">
+<td markdown="1" class="kx-glyph">`+`</td><td markdown="1">[Add](add.md)</td>
+<td markdown="1" class="kx-glyph">`-`</td><td markdown="1">[Subtract](subtract.md)</td>
+<td markdown="1" class="kx-glyph">`*`</td><td markdown="1">[Multiply](multiply.md)</td>
+<td markdown="1" class="kx-glyph">`%`</td><td markdown="1">[Divide](divide.md)</td>
 </tr>
-<tr>
-<td class="kx-glyph">`=`<br><code class="nowrap">&lt;&gt;</code></td><td>[Equals](../basics/comparison/#six-comparison-operators)<br>[Not Equals](../basics/comparison/#six-comparison-operators)</td>
-<td class="kx-glyph">`<`<br>`<=`</td><td>[Less Than](../basics/comparison/#six-comparison-operators)<br>[Up To](../basics/comparison/#six-comparison-operators)</td>
-<td class="kx-glyph">`>`<br>`>=`</td><td>[Greater Than](../basics/comparison/#six-comparison-operators)<br>[At Least](../basics/comparison/#six-comparison-operators)</td>
-<td class="kx-glyph">`~`</td><td>[Match](../basics/comparison/#match)</td>
+<tr markdown="1">
+<td markdown="1" class="kx-glyph">`=`<br><code class="nowrap">&lt;&gt;</code></td><td markdown="1">[Equals](../basics/comparison/#six-comparison-operators)<br>[Not Equals](../basics/comparison/#six-comparison-operators)</td>
+<td markdown="1" class="kx-glyph">`<`<br>`<=`</td><td markdown="1">[Less Than](../basics/comparison/#six-comparison-operators)<br>[Up To](../basics/comparison/#six-comparison-operators)</td>
+<td markdown="1" class="kx-glyph">`>`<br>`>=`</td><td markdown="1">[Greater Than](../basics/comparison/#six-comparison-operators)<br>[At Least](../basics/comparison/#six-comparison-operators)</td>
+<td markdown="1" class="kx-glyph">`~`</td><td markdown="1">[Match](../basics/comparison/#match)</td>
 </tr>
-<tr>
-<td class="kx-glyph">`|`</td> <td>[Greater, OR](greater.md)</td>
-<td class="kx-glyph">`&`</td> <td colspan="5">[Lesser, AND](lesser.md)</td>
+<tr markdown="1">
+<td markdown="1" class="kx-glyph">`|`</td> <td markdown="1">[Greater, OR](greater.md)</td>
+<td markdown="1" class="kx-glyph">`&`</td> <td markdown="1" colspan="5">[Lesser, AND](lesser.md)</td>
 </tr>
-<tr>
-<td class="kx-glyph">[`#`](overloads.md#hash)</td><td>[Take](take.md)<br>[Set&nbsp;Attribute](set-attribute.md)</td>
-<td class="kx-glyph">[`_`](overloads.md#_-underscore)</td><td>[Cut](cut.md)<br>[Drop](drop.md)</td>
-<td class="kx-glyph">`^`</td><td>[Fill](fill.md)<br>[Coalesce](coalesce.md)</td>
-<td class="kx-glyph">`,`<br>[`'`](overloads.md#quote)</td><td>[Join](join.md)<br>[Compose](compose.md)</td>
+<tr markdown="1">
+<td markdown="1" class="kx-glyph">[`#`](overloads.md#hash)</td><td markdown="1">[Take](take.md)<br>[Set&nbsp;Attribute](set-attribute.md)</td>
+<td markdown="1" class="kx-glyph">[`_`](overloads.md#_-underscore)</td><td markdown="1">[Cut](cut.md)<br>[Drop](drop.md)</td>
+<td markdown="1" class="kx-glyph">`^`</td><td markdown="1">[Fill](fill.md)<br>[Coalesce](coalesce.md)</td>
+<td markdown="1" class="kx-glyph">`,`<br>[`'`](overloads.md#quote)</td><td markdown="1">[Join](join.md)<br>[Compose](compose.md)</td>
 </tr>
 </table>
 
@@ -81,33 +81,19 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 ## [Iterators](iterators.md)
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 [maps](maps.md)                                                    [accumulators](accumulators.md)
 [`'`](overloads.md#quote)   [Each](maps.md#each), [`each`](each.md), [Case](maps.md#case)       `/:`  [Each Right](maps.md#each-left-and-each-right)              [`/`](overloads.md#slash)  [Over](accumulators.md), [`over`](over.md)
 [`':`](overloads.md#quote-colon)  [Each Parallel](maps.md#each-parallel), [`peach`](each.md#peach)   `\:`  [Each Left](maps.md#each-left-and-each-right)               [`\`](overloads/#backslash)  [Scan](accumulators.md), [`scan`](over.md)
 [`':`](overloads.md#quote-colon)  [Each Prior](maps.md##each-prior), [`prior`](prior.md)
-</pre>
-
-<!-- <table markdown="1">
-<thead>
-<tr><th colspan="2">accumulators</th><th colspan="2">maps</th><th colspan="2">maps</th><th colspan="2"/></tr>
-</thead>
-<tbody>
-<tr>
-<td class="kx-glyph">[`/`](overloads.md#slash)<br>[`\`](overloads/#backslash)</td><td>[Over](accumulators.md), [`over`](over.md)<br>[Scan](accumulators.md), [`scan`](scan.md)</td>
-<td class="kx-glyph">`/:`<br>`\:`</td><td>[Each Right<br>Each Left](maps.md#each-left-and-each-right)</td>
-<td class="kx-glyph">[`'`](overloads.md#quote)<br>[`':`](overloads.md#quote-colon)<br>[`':`](overloads.md#quote-colon)</td><td>[Each](maps.md#each), [`each`](each.md)<br>[Each&nbsp;Parallel](maps.md#each-parallel), [`peach`](each.md#peach)<br>[Each Prior](maps.md##each-prior), [`prior`](prior.md)</td>
-</tr>
-</tbody>
-</table>
- -->
+</div>
 
 ## [Execution control](../basics/control.md)
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 [.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](../basics/function-notation.md#explicit-return)        [do](../ref/do.md)  [exit](../ref/exit.md)         [\$[x;y;z] Cond](../ref/cond.md)
 [@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        [if](../ref/if.md)  [while](../ref/while.md)
-</pre>
+</div>
 
 :fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
@@ -116,7 +102,7 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 
 ## Other
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 [`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../ref/assign.md)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
 [.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)       [::](overloads.md#colon-colon)   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
 [\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/files.md)      [2:  Dynamic Load](dynamic-load.md)
@@ -126,17 +112,17 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)     {}  [lambda](../basics/function-notation.md)         \`   symbol
 (;)    [list](../basics/syntax.md#list-notation)               [argt list](../basics/syntax.md#bracket-notation)      ;   separator      \`:  filepath
 (\[\]..) [table](../basics/syntax.md#table-notation)
-</pre>
+</div>
 
 
 
-<!-- <td class="kx-glyph">`:`</td><td>[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
+<!-- <td markdown="1" class="kx-glyph">`:`</td><td markdown="1">[Amend](amend.md)<br>[unary form](../basics/exposed-infrastructure.md#unary-forms)</td> -->
 
 ## [Attributes](../basics/syntax.md#attributes)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 **g** grouped     **p**  parted     **s** sorted     **u** unique
-</pre>
+</div>
 
 :fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
@@ -145,25 +131,25 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Command-line options and system commands
 
 <table markdown="1" class="kx-shrunk kx-tight">
-<tr><td>[file](../basics/cmdline.md#file)</td></tr>
-<tr><td>[`\a`](../basics/syscmds.md#a-tables)</td><td>tables</td><td>[`\r`](../basics/syscmds.md#r-rename)</td><td>rename</td></tr>
-<tr><td>[`-b`](../basics/cmdline.md#-b-blocked)</td><td>blocked</td><td>[`-s`](../basics/cmdline.md#-s-secondary-processes) [`\s`](../basics/syscmds.md#s-number-of-secondary-processes)</td><td>secondary processes</td></tr>
-<tr><td>[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td>views</td><td>[`\S`](../basics/syscmds.md#s-random-seed)</td><td>random seed</td></tr>
-<tr><td>[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td>console size</td><td>[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td>timer ticks</td></tr>
-<tr><td>[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td>HTTP size</td><td>[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td>time and space</td></tr>
-<tr><td>[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td>change directory</td><td>[`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)</td><td>timeout</td></tr>
-<tr><td>[`\d`](../basics/syscmds.md#d-directory)</td><td>directory</td><td>[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td>usr-pwd</td></tr>
-<tr><td>[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td>error traps</td><td>[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td>disable syscmds</td></tr>
-<tr><td>[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)</td><td>TLS server mode</td><td>[`\v`](../basics/syscmds.md#v-variables)</td><td>variables</td></tr>
-<tr><td>[`\f`](../basics/syscmds.md#f-functions)</td><td>functions</td><td>[`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)</td><td>memory</td></tr>
-<tr><td>[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td>garbage collection</td><td>[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td>week offset</td></tr>
-<tr><td>[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td>load file or directory</td><td>[`\x`](../basics/syscmds.md#x-expunge)</td><td>expunge</td></tr>
-<tr><td>[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td>log sync</td><td>[`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)</td><td>date format</td></tr>
-<tr><td>[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)</td><td>UTC offset</td><td>[`\1` `\2`](../basics/syscmds.md#1-2-redirect)</td><td>redirect</td></tr>
-<tr><td>[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td>listening port</td><td>[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td>hide q code</td></tr>
-<tr><td>[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)</td><td>display precision</td><td>[`\`](../basics/syscmds.md#terminate)</td><td>terminate</td></tr>
-<tr><td>[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td>quiet mode</td><td>[`\`](../basics/syscmds.md#toggle-qk)</td><td>toggle q/k</td></tr>
-<tr><td>[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td>replicate</td><td>[`\\`](../basics/syscmds.md#quit)</td><td>quit</td></tr>
+<tr markdown="1"><td markdown="1">[file](../basics/cmdline.md#file)</td></tr>
+<tr markdown="1"><td markdown="1">[`\a`](../basics/syscmds.md#a-tables)</td><td markdown="1">tables</td><td markdown="1">[`\r`](../basics/syscmds.md#r-rename)</td><td markdown="1">rename</td></tr>
+<tr markdown="1"><td markdown="1">[`-b`](../basics/cmdline.md#-b-blocked)</td><td markdown="1">blocked</td><td markdown="1">[`-s`](../basics/cmdline.md#-s-secondary-processes) [`\s`](../basics/syscmds.md#s-number-of-secondary-processes)</td><td markdown="1">secondary processes</td></tr>
+<tr markdown="1"><td markdown="1">[`\b`](../basics/syscmds.md#b-views) [`\B`](../basics/syscmds.md#b-pending-views)</td><td markdown="1">views</td><td markdown="1">[`\S`](../basics/syscmds.md#s-random-seed)</td><td markdown="1">random seed</td></tr>
+<tr markdown="1"><td markdown="1">[`-c`](../basics/cmdline.md#-c-console-size) [`\c`](../basics/syscmds.md#c-console-size)</td><td markdown="1">console size</td><td markdown="1">[`-t`](../basics/cmdline.md#-t-timer-ticks) [`\t`](../basics/syscmds.md#t-timer)</td><td markdown="1">timer ticks</td></tr>
+<tr markdown="1"><td markdown="1">[`-C`](../basics/cmdline.md#-c-http-size) [`\C`](../basics/syscmds.md#c-http-size)</td><td markdown="1">HTTP size</td><td markdown="1">[`\ts`](../basics/syscmds.md#ts-time-and-space)</td><td markdown="1">time and space</td></tr>
+<tr markdown="1"><td markdown="1">[`\cd`](../basics/syscmds.md#cd-change-directory)</td><td markdown="1">change directory</td><td markdown="1">[`-T`](../basics/cmdline.md#-t-timeout) [`\T`](../basics/syscmds.md#t-timeout)</td><td markdown="1">timeout</td></tr>
+<tr markdown="1"><td markdown="1">[`\d`](../basics/syscmds.md#d-directory)</td><td markdown="1">directory</td><td markdown="1">[`-u`](../basics/cmdline.md#-u-usr-pwd-local) [`-U`](../basics/cmdline.md#-u-usr-pwd) [`\u`](../basics/syscmds.md#u-reload-user-password-file)</td><td markdown="1">usr-pwd</td></tr>
+<tr markdown="1"><td markdown="1">[`-e`](../basics/cmdline.md#-e-error-traps) [`\e`](../basics/syscmds.md#e-error-trap-clients)</td><td markdown="1">error traps</td><td markdown="1">[`-u`](../basics/cmdline.md#-u-disable-syscmds)</td><td markdown="1">disable syscmds</td></tr>
+<tr markdown="1"><td markdown="1">[`-E`](../basics/cmdline.md#-e-tls-server-mode) [`\E`](../basics/syscmds.md#e-tls-server-mode)</td><td markdown="1">TLS server mode</td><td markdown="1">[`\v`](../basics/syscmds.md#v-variables)</td><td markdown="1">variables</td></tr>
+<tr markdown="1"><td markdown="1">[`\f`](../basics/syscmds.md#f-functions)</td><td markdown="1">functions</td><td markdown="1">[`-w`](../basics/cmdline.md#-w-workspace) [`\w`](../basics/syscmds.md#w-workspace)</td><td markdown="1">memory</td></tr>
+<tr markdown="1"><td markdown="1">[`-g`](../basics/cmdline.md#-g-garbage-collection) [`\g`](../basics/syscmds.md#g-garbage-collection-mode)</td><td markdown="1">garbage collection</td><td markdown="1">[`-W`](../basics/cmdline.md#-w-start-week) [`\W`](../basics/syscmds.md#w-week-offset)</td><td markdown="1">week offset</td></tr>
+<tr markdown="1"><td markdown="1">[`\l`](../basics/syscmds.md#l-load-file-or-directory)</td><td markdown="1">load file or directory</td><td markdown="1">[`\x`](../basics/syscmds.md#x-expunge)</td><td markdown="1">expunge</td></tr>
+<tr markdown="1"><td markdown="1">[`-l`](../basics/cmdline.md#-l-log-updates) [`-L`](../basics/cmdline.md#-l-log-sync)</td><td markdown="1">log sync</td><td markdown="1">[`-z`](../basics/cmdline.md#-z-date-format) [`\z`](../basics/syscmds.md#z-date-parsing)</td><td markdown="1">date format</td></tr>
+<tr markdown="1"><td markdown="1">[`-o`](../basics/cmdline.md#-o-utc-offset) [`\o`](../basics/syscmds.md#o-offset-from-utc)</td><td markdown="1">UTC offset</td><td markdown="1">[`\1` `\2`](../basics/syscmds.md#1-2-redirect)</td><td markdown="1">redirect</td></tr>
+<tr markdown="1"><td markdown="1">[`-p`](../basics/cmdline.md#-p-listening-port) [`\p`](../basics/syscmds.md#p-listening-port)</td><td markdown="1">listening port</td><td markdown="1">[`\_`](../basics/syscmds.md#_-hide-q-code)</td><td markdown="1">hide q code</td></tr>
+<tr markdown="1"><td markdown="1">[`-P`](../basics/cmdline.md#-p-display-precision) [`\P`](../basics/syscmds.md#p-precision)</td><td markdown="1">display precision</td><td markdown="1">[`\`](../basics/syscmds.md#terminate)</td><td markdown="1">terminate</td></tr>
+<tr markdown="1"><td markdown="1">[`-q`](../basics/cmdline.md#-q-quiet-mode)</td><td markdown="1">quiet mode</td><td markdown="1">[`\`](../basics/syscmds.md#toggle-qk)</td><td markdown="1">toggle q/k</td></tr>
+<tr markdown="1"><td markdown="1">[`-r`](../basics/cmdline.md#-r-replicate) [`\r`](../basics/syscmds.md#r-replication-master)</td><td markdown="1">replicate</td><td markdown="1">[`\\`](../basics/syscmds.md#quit)</td><td markdown="1">quit</td></tr>
 </table>
 
 :fontawesome-solid-book:
@@ -179,13 +165,13 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Environment variables
 
 <table class="kx-tight">
-<thead><tr><th>var</th><th>default</th><th>use</th></tr></thead>
+<thead><tr markdown="1"><th>var</th><th>default</th><th>use</th></tr></thead>
 <tbody>
-<tr><td><code>QHOME</code></td><td><code>$HOME/q</code></td><td>folder searched for q.k and unqualified script names</td></tr>
-<tr><td><code>QLIC</code></td><td><code>$HOME</code></td><td>folder searched for k4.lic license file</td></tr>
-<tr><td><code>QINIT</code></td><td><code>q.q</code></td><td>additional file loaded after q.k has initialised</td></tr>
-<tr><td><code>LINES</code></td><td/><td>supplied by OS, used to set <code>\c</code></td></tr>
-<tr><td><code>COLUMNS</code></td><td/><td><code>\c $LINES $COLUMNS</code></td></tr>
+<tr markdown="1"><td markdown="1"><code>QHOME</code></td><td markdown="1"><code>$HOME/q</code></td><td markdown="1">folder searched for q.k and unqualified script names</td></tr>
+<tr markdown="1"><td markdown="1"><code>QLIC</code></td><td markdown="1"><code>$HOME</code></td><td markdown="1">folder searched for k4.lic license file</td></tr>
+<tr markdown="1"><td markdown="1"><code>QINIT</code></td><td markdown="1"><code>q.q</code></td><td markdown="1">additional file loaded after q.k has initialised</td></tr>
+<tr markdown="1"><td markdown="1"><code>LINES</code></td><td markdown="1"/><td markdown="1">supplied by OS, used to set <code>\c</code></td></tr>
+<tr markdown="1"><td markdown="1"><code>COLUMNS</code></td><td markdown="1"/><td markdown="1"><code>\c $LINES $COLUMNS</code></td></tr>
 </tbody>
 </table>
 
@@ -203,10 +189,9 @@ q)`VARNAME setenv "NEWVALUE"
  -->
 
 ## [Datatypes](../basics/datatypes.md)
-
-<pre markdown="1" class="language-txt" style="font-size:80%">
+<pre class="language-txt" style="font-size:80%">
 n   c   name      sz  literal            null inf SQL       Java      .Net
-\------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
 0   *   list
 1   b   boolean   1   0b                                    Boolean   boolean
 2   g   guid      16                     0Ng                UUID      GUID
@@ -219,7 +204,7 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 9   f   float     8   0.0                0n   0w  float     Double    double
                       0f                 0Nf
 10  c   char      1   " "                " "                Character char
-11  s   symbol        \`                  \`        varchar   String    string
+11  s   symbol        `                  `        varchar   String    string
 12  p   timestamp 8   dateDtimespan      0Np  0Wp           Timestamp DateTime (RW)
 13  m   month     4   2000.01m           0Nm
 14  d   date      4   2000.01.01         0Nd  0Wd date      Date
@@ -228,6 +213,9 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 17  u   minute    4   00:00              0Nu  0Wu
 18  v   second    4   00:00:00           0Nv  0Nv
 19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan
+</pre>
+
+<div markdown="1" class="typewriter">
 20-76   enums
 77      anymap
 78-96   77+t – mapped list of lists of type t
@@ -247,7 +235,7 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 110     [f/:](../ref/maps.md#each-left-and-each-right)
 111     [f\\:](../ref/maps.md#each-left-and-each-right)
 112     [dynamic load](../ref/dynamic-load.md)
-</pre>
+</div>
 
 _n_: short int returned by [`type`](type.md) and used for [casting](../basics/casting.md), e.g. `9h$3`
 <br>
@@ -281,7 +269,7 @@ milliseconds: time mod 1000
 
 Markup output for HTTP
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 [.h.br](doth.md#hbr-linebreak)      linebreak                [.h.cd](doth.md#hcd-csv-from-data)      CSV from data
 [.h.code](doth.md#hcode-code-after-tab)    code after Tab           [.h.d](doth.md#hd-delimiter)       delimiter
 [.h.fram](doth.md#hfram-frame)    frame                    [.h.ed](doth.md#hed-excel-from-data)      Excel from data
@@ -307,17 +295,17 @@ Markup output for HTTP
 [.h.hug](doth.md#hhug-uri-map)     URI map                  [.h.ty](doth.md#hty-mime-types)    MIME types
 [.h.sc](doth.md#hsc-uri-safe)      URI-safe                 [.h.val](doth.md#hval-value)   value
 [.h.uh](doth.md#huh-uri-unescape)      URI unescape
-</pre>
+</div>
 
 
 ### `.j`
 
 De/serialize as JSON
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 [.j.j   serialize](dotj.md#jj-serialize)                [.j.k   deserialize](dotj.md#jk-deserialize)
 [.j.jd  serialize infinity](dotj.md#jjd-serialize-infinity)
-</pre>
+</div>
 
 
 ### `.m`
@@ -330,7 +318,7 @@ De/serialize as JSON
 
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 General                           Datatype
  [addmonths](dotq.md#qaddmonths)                         [btoa   b64 encode](dotq.md#qbtoa-b64-encode)
  [bt       backtrace](dotq.md#qbt-backtrace)                [j10    encode binhex](dotq.md#qj10-encode-binhex)
@@ -380,14 +368,14 @@ IPC                                [vp     missing partitions](dotq.md#qvp-missi
  File I/O
  [Cf       create empty nested char file](dotq.md#qcf-create-empty-nested-char-file)
  [Xf       create file](dotq.md#qxf-create-file)
-</pre>
+</div>
 
 
 ### `.z`
 
 System variables, callbacks
 
-<pre markdown="1" class="language-txt" style="font-size: 80%">
+<div markdown="1" class="typewriter">
 System information                 Callbacks
 [.z.a    IP address](dotz.md#za-ip-address)                 [.z.ac    HTTP auth from cookie](dotz.md#zac-http-auth-from-cookie)
 [.z.b    dependencies](dotz.md#zb-dependencies)               [.z.bm    msg validator](dotz.md#zbm-msg-validator)
@@ -414,4 +402,4 @@ System information                 Callbacks
 [.z.X/x  raw/parsed command line](dotz.md#zx-raw-command-line)
 [.z.Z/z  local/UTC datetime](dotz.md#zz-local-datetime)
 [.z.zd   zip defaults](dotz.md#zzd-zip-defaults)
-</pre>
+</div>

@@ -8,10 +8,10 @@ author: Stephen Taylor
 
 _JSON serialization_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [.j.j   serialize](#jj-serialize)                [.j.k   deserialize](#jk-deserialize)
 [.j.jd  serialize infinity](#jjd-serialize-infinity)
-</pre>
+</div>
 
 The `.j` [namespace](../basics/namespaces.md) contains functions for converting between JSON and q dictionaries.
 

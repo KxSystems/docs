@@ -43,115 +43,32 @@ Kdb+, from [Kx](https://kx.com), is
 [Get started](learn/install.md)
 {: #kx-get-started .md-button}
 
-[<i class="fas fa-fw fa-hiking fa-5x"></i><br/>
+[<i class="fas fa-fw fa-hiking fa-2x"></i><br/>
 Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
 {: .md-button}
 
-[<i class="fas fa-fw fa-book-reader fa-5x"></i><br/>
+[<i class="fas fa-fw fa-book-reader fa-2x"></i><br/>
 Learn q](learn/index.md)
 {: .md-button}
 
-[<i class="fas fa-fw fa-dollar-sign fa-5x"></i><br/>
+[<i class="fas fa-fw fa-dollar-sign fa-2x"></i><br/>
 Data types](basics/datatypes.md "Datatypes in kdb+")
 {: .md-button}
 
-[<i class="fas fa-fw fa-book fa-5x"></i><br/>
+[<i class="fas fa-fw fa-book fa-2x"></i><br/>
 Q reference](ref/index.md "Reference card for the q language")
 {: .md-button}
 
-[<i class="fas fa-fw fa-database fa-5x"></i><br/>
+[<i class="fas fa-fw fa-database fa-2x"></i><br/>
 Database](database/index.md "Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.")
 {: .md-button}
 
-[<i class="fas fa-fw fa-laptop-code fa-5x"></i><br/>
+[<i class="fas fa-fw fa-laptop-code fa-2x"></i><br/>
 IDE: Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
 {: .md-button}
 
 </div>
 
-<!-- 
-## Get started
-
-<div class="kx-flex-grid" markdown="1">
-<div>
-    [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
-    Install](learn/install.md)
-</div>
-<div>
-    [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
-    Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
-</div>
-<div>
-    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
-    Learn](learn/index.md "Learn q")
-</div>
-</div>
-
-## Code
-
-<div class="kx-flex-grid" markdown="1">
-<div>
-    [<i class="fas fa-fw fa-dollar-sign fa-border fa-5x"></i><br/>
-    Data types](basics/datatypes.md "Datatypes in kdb+")
-</div>
-<div>
-    [<i class="fas fa-fw fa-book fa-border fa-5x"></i><br/>
-    Reference](ref/index.md "Reference card for the q language")
-</div>
-<div>
-    [<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
-    Visual environment:<br>Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
-</div>
-</div>
-## Use with Python
-
-<div class="kx-flex-grid" markdown="1">
-<div>
-    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
-    Python to q](learn/python/examples/index.md "Python programs and their q equivalents")
-</div>
-<div>
-    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
-    PyQ](interfaces/pyq/index.md "Using Python with kdb+")
-</div>
-<div>
-    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
-    embedPy](interfaces/embedpy.md "Calling Python from q")
-</div>
-</div>
-
-## Develop
-
-<div class="kx-flex-grid" markdown="1">
-<div>
-    [<i class="fab fa-fw fa-superpowers fa-border fa-5x"></i><br/>
-    Fusion<br/>interfaces](interfaces/ "Interfaces to other technologies")
-</div>
-<div>
-    [<i class="fas fa-fw fa-share-alt fa-border fa-5x"></i><br/>
-    Machine<br>learning](ml/index.md "Machine learning with kdb+")
-</div>
-<div>
-    [<i class="fas fa-fw fa-cloud fa-border fa-5x"></i><br/>
-    Cloud](cloud/index.md "Deploy on the cloud")
-</div>
-<div>
-    [<i class="far fa-fw fa-map fa-border fa-5x"></i><br/>
-    White papers](wp/index.md "Technical white papers on using kdb+")
-</div>
-<div>
-    [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
-    Knowledge<br/>Base](kb/index.md)
-</div>
-<div>
-    [<i class="fab fa-fw fa-github fa-border fa-5x"></i><br/>
-    Open source](github.md "Kdb+ repositories on GitHub")
-</div>
-</div>
-
-:fontawesome-solid-comment-medical:
-[Covid-19: A message from Seamus Keating, First Derivatives CEO](coronavirus.md)
--->
 
 ??? quote "How we are responding to the pandemic"
 
@@ -178,11 +95,11 @@ IDE: Kx Developer](/developer/ "Download and install the free IDE, Kx Developer"
     <br>
     CEO, First Derivatives plc
 
+:fontawesome-solid-globe:
+[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)
+
+---
 The source code for this site is on GitHub at
 :fontawesome-brands-github:
 [KxSystems/docs](https://github.com/kxsystems/docs/).
-
----
-:fontawesome-solid-globe:
-[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)
 

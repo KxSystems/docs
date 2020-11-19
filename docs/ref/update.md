@@ -21,12 +21,12 @@ For the Update operator `!`, see
 
 ## Syntax
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 update _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-</pre>
+</div>
 
 :fontawesome-solid-book-open:
-[qSQL syntax](../basics/qsql.md)
+[qSQL query templates](../basics/qsql.md)
 
 
 ## From phrase

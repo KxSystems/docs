@@ -8,7 +8,7 @@ author: Stephen Taylor
 
 _Tools_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 **General**                           **Datatype**
  [addmonths](#qaddmonths)                         [btoa        b64 encode](#qbtoa-b64-encode)
  [bt       backtrace](#qbt-backtrace)                [j10         encode binhex](#qj10-encode-binhex)
@@ -56,7 +56,7 @@ _Tools_
  [hp       HTTP post](#qhp-http-post)                [Cf          create empty nested char file](#qcf-create-empty-nested-char-file)
  [l        load](#ql-load)                     [Xf          create file](#qxf-create-file)
 
-</pre>
+</div>
 
 
 Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
@@ -1163,10 +1163,10 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 ## `.Q.x12` (decode base-36)
 
 Syntax:
-<pre markdown="1" class="language-txt">
+```txt
 .Q.j10 s     .Q.j12 s
 .Q.x10 s     .Q.x12 s
-</pre>
+```
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 

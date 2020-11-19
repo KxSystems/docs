@@ -7,7 +7,7 @@ keywords: debug, errors, kdb+, q, trap
 # Debugging 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 q))       extra right parens mark suspended execution/s
 'myerror  [Signal](../ref/signal.md) error, cut back stack
 :r        [exit suspended function](#resume) with r as result

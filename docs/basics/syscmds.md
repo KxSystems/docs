@@ -9,7 +9,7 @@ keywords: command, kdb+, q, system
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [\a  tables](#a-tables)                           [\s       number of secondary threadss](#s-number-of-secondary-threads)
 [\b  views](#b-views)                            [\S       random seed](#s-random-seed)
 [\B  pending views](#b-pending-views)                    [\t       timer](#t-timer)
@@ -27,13 +27,13 @@ keywords: command, kdb+, q, system
 [\P  precision](#p-precision)                        [\\        toggle q/k](#toggle-qk)
 [\r  replication master](#r-replication-primary)               [\\\\       quit](#quit)
 [\r  rename](#r-rename)                                              
-</pre>
+</div>
 
 System commands control the q environment. They have the form:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \cmd [_p_]
-</pre>
+</div>
 
 for some command `cmd`, and optional parameter list _`p`_.
 
@@ -46,9 +46,9 @@ Some system commands have equivalent command-line parameters.
 
 ## `\a` (tables)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \a [_namespace_]
-</pre>
+</div>
 
 Lists tables in _namespace_; default: current namespace.
 
@@ -82,9 +82,9 @@ q.nn)
 
 ## `\b` (views)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \b [_namespace_]
-</pre>
+</div>
 
 Lists dependencies (views) in _namespace_.
 Defaults to current namespace.
@@ -105,9 +105,9 @@ q)\b
 
 ## `\B` (pending views)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \B [_namespace_]
-</pre>
+</div>
 
 Lists pending dependencies (views) in _namespace_, i.e. dependencies not yet referenced, or not referenced after their referents have changed.
 Defaults to current namespace.
@@ -128,9 +128,9 @@ q)\B              / no longer pending
 
 ## `\c` (console size)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \c [_size_]
-</pre>
+</div>
 
 Show or set console maximum rows and columns.
 _size_ is a pair of integers: rows and columns.
@@ -167,9 +167,9 @@ q)til each 20+til 10
 
 ## `\C` (HTTP size)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \C [_size_]
-</pre>
+</div>
 
 Show or set HTTP display maximum rows and columns.
 _size_ is a pair of integers: rows and columns.
@@ -181,9 +181,9 @@ The default is `36 2000`; values are coerced to the range \[10,2000\].
 
 ## `\cd` (change directory)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \cd [_name_]
-</pre>
+</div>
 
 Changes the current directory.
 
@@ -201,9 +201,9 @@ q)\cd
 
 ## `\d` (directory)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \d [_namespace_]
-</pre>
+</div>
 
 Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The q session prompt indicates the current namespace.
 
@@ -231,9 +231,9 @@ _Q for Mortals_
 
 ## `\e` (error trap clients)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \e [_mode_]
-</pre>
+</div>
 
 This enables error trapping for client requests. The default mode is 0 (off).
 
@@ -267,9 +267,9 @@ Displays TLS server mode as an int:
 
 ## `\f` (functions)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \f [_namespace_]
-</pre>
+</div>
 
 Lists functions in _namespace_, default current namespace.
 
@@ -286,9 +286,9 @@ q){x where x like"ht??"}system"f .h"
 
 ## `\g` (garbage collection mode)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \g [_mode_]
-</pre>
+</div>
 
 Show or set garbage-collection mode.
 The default mode is 0.
@@ -308,10 +308,10 @@ _Q for Mortals_
 
 ## `\l` (load file or directory)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \l _name_
 \l .
-</pre>
+</div>
 
 Where _name_ is the name of a 
 
@@ -350,9 +350,9 @@ _Q for Mortals_
 
 ## `\o` (offset from UTC)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \o [_n_]
-</pre>
+</div>
 
 Show or set the local time offset, as integer _n_ hours from UTC, or as minutes if `abs[n]>23`.
 The initial value of `0N` means the machine’s offset is used.
@@ -382,9 +382,9 @@ This corresponds to the `-o` command line parameter.
 
 _Show or set listening port_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \p [_rp_,][_hostname_:][_portnumber_|_servicename_]
-</pre>
+</div>
 
 See 
 :fontawesome-solid-book-open:
@@ -406,9 +406,9 @@ See
 
 ## `\P` (precision)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \P [_n_]
-</pre>
+</div>
 
 Show or set display precision for floating-point numbers, i.e. the number of digits shown.
 
@@ -478,9 +478,9 @@ This should not be executed manually otherwise it can disrupt replication. It is
 
 ## `\r` (rename)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \r _src dst_
-</pre>
+</div>
 
 Rename file _`src`_ to _`dst`_. 
 

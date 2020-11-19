@@ -5,9 +5,8 @@ keywords: interface, kdb+, library, q, r
 ---
 # :fontawesome-brands-r-project: rkdb 
 
-<div class="fusion" markdown="1">
 :fontawesome-brands-superpowers: [Fusion for kdb+](../fusion.md)
-</div>
+{: .fusion}
 
 Connects R to a kdb+ database to extract partially analyzed data into R
 for further local manipulation, analysis and display.

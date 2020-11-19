@@ -9,11 +9,11 @@ keywords: async, block, buffer, communication, flush, hopen, interprocess, ip, i
 
 _Simple, powerful, fast_
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [\p](syscmds.md#listening-port)  [-p](cmdline.md#listening-port)          listen to port
 [hopen hclose](../ref/hopen.md)    open/close connection
 [.z](../ref/dotz.md)              handle message (callbacks)
-</pre>
+</div>
 
 A kdb+ process can communicate with other processes through TCP/IP, which is baked in to the q language. 
 

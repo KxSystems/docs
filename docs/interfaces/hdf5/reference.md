@@ -14,7 +14,7 @@ The kdb+/HDF5 interface is a wrapper for kdb+ around the [HDF Groups C API](http
 
 The following functions are exposed within the `.hdf5` namespace, allowing users to convert data between the HDF5 data format and kdb+.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .hdf5 - **HDF5 interface functionality**
 
 Create
@@ -49,7 +49,7 @@ Utility
   [isObject](#hdf5isobject)          Whether object exists
   [ls](#hdf5ls)                ls-like representation of the structure of a HDF5 file
   [version](#hdf5version)           Version of the HDF5 C API being used
-</pre>
+</div>
 
 For simplicity in each of the examples below it should be assumed that unless otherwise specified a file/group/dataset/attribute that is being manipulated exists and is valid and the results displayed coincide with correct execution in that example.
 

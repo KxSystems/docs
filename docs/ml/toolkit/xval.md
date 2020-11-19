@@ -9,7 +9,7 @@ keywords: time-series, cross validation, grid search, random search, Sobol seque
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.gs   **Grid-search functions**
   [kfshuff](#mlgskfshuff)      K-Fold cross validation with randomized indices
   [kfsplit](#mlgskfsplit)      K-Fold cross validation with sequential indices
@@ -36,7 +36,7 @@ keywords: time-series, cross validation, grid search, random search, Sobol seque
   [pcsplit](#mlxvpcsplit)      Percentage-split cross validation
   [tschain](#mlxvtschain)      Chain-forward cross validation
   [tsrolls](#mlxvtsrolls)      Roll-forward cross validation
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/xval](https://github.com/kxsystems/ml/tree/master/xval/)

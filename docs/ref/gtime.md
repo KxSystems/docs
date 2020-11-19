@@ -51,12 +51,12 @@ q)ltime .z.p                  / same timezone as .z.P
 
 UTC and local datetime/timestamps are available as
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 scope   datetime     timestamp
 \------------------------------
 UTC     [`.z.z`](dotz.md#zz-utc-datetime)         [`.z.p`](dotz.md#zp-utc-timestamp)
 local   [`.z.Z`](dotz.md#zz-local-datetime)         [`.z.P`](dotz.md#zp-local-timestamp)
-</pre>
+</div>
 
 ----
 

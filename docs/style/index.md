@@ -7,9 +7,8 @@ keywords: kdb+, q, style
 
 ![Remarks on Style](img/qros.png)
 
-<div style="font-size: .9em; margin-bottom: 5em" markdown="1">
 _Stevan Apter’s classic [“K: Remarks on Style”](http://www.nsl.com/papers/style.pdf), adapted for q._ 
-</div>
+{: style="font-size: .9em; margin-bottom: 5em" markdown="1"}
 
 
 

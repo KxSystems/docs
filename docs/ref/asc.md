@@ -167,9 +167,8 @@ q)b~c iasc iasc x
 
 _Sort a table in ascending order of specified columns._ 
 
-<div markdown="1" style="float: right; margin: 0 0 0 1em; padding: 0;">
 ![xasc](../img/xasc.png) 
-</div>
+{: style="float: right; margin: 0 0 0 1em; padding: 0;"}
 
 ```txt
 x xasc y     xasc[x;y]

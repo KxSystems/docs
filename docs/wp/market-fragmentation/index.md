@@ -203,9 +203,8 @@ Having dispatched the query to the database/s, we now have our data held in memo
 The method of aggregation is dependent on the analytic in question. Therefore it is necessary for us to define these rules in a q file. For a volume analytic, the consolidated volume is simply the sum of the volume on all venues. The consolidated figure for a maximum or minimum analytic will be the maximum or minimum of all data points. We need to do a little more work however for a weighted-average analytic such as a VWAP. Given a set of VWAPs and volumes for a stock from different venues, the consolidated VWAP is given by the formula:
 
 
-<div markdown="1" style="text-align: center">
 ( &Sigma; _vwap_ × _volume_ ) &divide; ( &Sigma; _volume_ )
-</div>
+{: style="text-align: center"}
 
 It is evident that we need access to the venue volumes as well as the individually-calculated VWAPs in order to weight the consolidated analytic correctly. This means that when a consolidated VWAP is requested, we need the query to return a `volume` column as well as a `vwap` column to our gateway.
 

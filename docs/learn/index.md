@@ -10,76 +10,56 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 
 <div style="clear: both">&nbsp;</div>
 
-<div class="kx-flex-grid" markdown="1">
-<div>
-    [<i class="fas fa-fw fa-download fa-border fa-5x"></i><br/>
-    Download<br/>
-    :fontawesome-brands-apple:
-    :fontawesome-brands-linux:
-    :fontawesome-brands-windows:](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
-</div>
-<div>
-    [<i class="fas fa-fw fa-power-off fa-border fa-5x"></i><br/>
-    Install](install.md "How to install kdb+")
-</div>
-<div>
-    [<i class="fas fa-fw fa-hiking fa-border fa-5x"></i><br/>
-    Mountain tour](tour/index.md "A one-page rapid tour of the q language")
-</div>
-<div>
-    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
-    Examples<br>from Python](python/examples/index.md "Examples from Python")
-</div>
-<div>
-    [<i class="fab fa-fw fa-youtube fa-border fa-5x"></i><br/>
-    Q for All](q-for-all.md "Video tutorials by Jeffry Borror")
-</div>
-<!--
-<div>
-    [<i class="fab fa-fw fa-python fa-border fa-5x"></i><br/>
-    Python to q](python/basic.md "Python programs and their q equivalents")
-</div>
--->
-<div>
-    [<i class="fas fa-fw fa-street-view fa-border fa-5x"></i><br/>
-    _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
-</div>
-<div>
-    [<i class="fas fa-fw fa-chart-line fa-border fa-5x"></i><br/>
-    Q for quants](brief-introduction.md "A q tutorial for analysts and quants")
-</div>
-<div>
-    [<i class="fas fa-fw fa-code fa-border fa-5x"></i><br/>
-    Q by examples](q-by-examples.md "An introduction to q through examples")
-</div>
-<div>
-    [<i class="fas fa-fw fa-database fa-border fa-5x"></i><br/>
-    Starting kdb+](startingkdb/index.md "Getting started on real-time and historical database")
-</div>
-<!--
-<div>
-    [<i class="fas fa-fw fa-bolt fa-border fa-5x"></i><br/>
-    Brief intro](brief-introduction/index.md "A brief introduction to the q language and kdb+ databases")
-</div>
--->
-<div>
-    [<i class="fas fa-fw fa-book-reader fa-border fa-5x"></i><br/>
-    Reading room](reading/index.md "Example programs for study")
-</div>
-<div>
-    [<i class="fas fa-fw fa-laptop-code fa-border fa-5x"></i><br/>
-    Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
-</div>
-<!--
-<div>
-    [<i class="fas fa-fw fa-chalkboard-teacher fa-border fa-5x"></i><br/>
-    learn.kx.com](https://learn.kx.com/ "Online classroms")
-</div>
--->
-<div>
-    [<i class="fas fa-fw fa-graduation-cap fa-border fa-5x"></i><br/>
-    Advanced q](advanced.md "Advanced topics in q")
-</div>
+<div id="kx-home-page-grid" markdown="1">
+
+[<i class="fas fa-fw fa-download fa-3x"></i><br/>
+Download<br/>
+:fontawesome-brands-linux: :fontawesome-brands-apple: :fontawesome-brands-windows: ](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
+{: .md-button}
+
+[<i class="fas fa-fw fa-power-off fa-3x"></i><br/>
+Install](install.md "How to install kdb+")
+{: .md-button}
+
+[<i class="fas fa-fw fa-hiking fa-3x"></i><br/>
+Mountain tour](tour/index.md "A one-page rapid tour of the q language")
+{: .md-button}
+
+[<i class="fab fa-fw fa-python fa-3x"></i><br/>
+Examples<br>from Python](python/examples/index.md "Examples from Python")
+{: .md-button}
+
+[<i class="fab fa-fw fa-youtube fa-3x"></i><br/>
+Q for All](q-for-all.md "Video tutorials by Jeffry Borror")
+{: .md-button}
+
+[<i class="fas fa-fw fa-street-view fa-3x"></i><br/>
+_Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
+{: .md-button}
+
+[<i class="fas fa-fw fa-chart-line fa-3x"></i><br/>
+Q for quants](brief-introduction.md "A q tutorial for analysts and quants")
+{: .md-button}
+
+[<i class="fas fa-fw fa-code fa-3x"></i><br/>
+Q by examples](q-by-examples.md "An introduction to q through examples")
+{: .md-button}
+
+[<i class="fas fa-fw fa-database fa-3x"></i><br/>
+Starting kdb+](startingkdb/index.md "Getting started on real-time and historical database")
+{: .md-button}
+
+[<i class="fas fa-fw fa-book-reader fa-3x"></i><br/>
+Reading room](reading/index.md "Example programs for study")
+{: .md-button}
+
+[<i class="fas fa-fw fa-laptop-code fa-3x"></i><br/>
+Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
+{: .md-button}
+
+[<i class="fas fa-fw fa-graduation-cap fa-3x"></i><br/>
+Advanced q](advanced.md "Advanced topics in q")
+{: .md-button}
 
 </div>
 
@@ -99,8 +79,8 @@ Other sections:
 section | content
 --------|--------
 :fontawesome-solid-book: [Reference](../ref/index.md) | formal definition of  language elements
-:fontawesome-solid-book-open: [Basics](../basics/application.md)  | core aspects of writing q and using kdb+, such as [using the filesystem](../basics/files.md), [interprocess communication](../basics/ipc.md) 
-:fontawesome-solid-street-view: _Q for Mortals_ [<span class="nowrap">§14 Introduction to kdb+</span>](/q4m3/14_Introduction_to_Kdb%2B/) | persisting tables in the filesystem 
+:fontawesome-solid-book-open:  [Basics](../basics/application.md)  | core aspects of writing q and using kdb+, such as [using the filesystem](../basics/files.md), [interprocess communication](../basics/ipc.md) 
+:fontawesome-solid-street-view:  _Q for Mortals_ [<span class="nowrap">§14 Introduction to kdb+</span>](/q4m3/14_Introduction_to_Kdb%2B/) | persisting tables in the filesystem 
 :fontawesome-solid-graduation-cap: [Knowledge Base](../kb/index.md)  | topics in building systems using kdb+ processes 
 :fontawesome-regular-map: [White papers](../wp/index.md) | extended treatments of topics in q programming and in building kdb+ systems
 

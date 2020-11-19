@@ -6,9 +6,8 @@ keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q
 
 # ![Jupyter](../../interfaces/img/jupyter.png) JupyterQ
 
-<div class="fusion" markdown="1">
 :fontawesome-brands-superpowers: [Fusion for kdb+](../../interfaces/fusion.md)
-</div>
+{: .fusion}
 
 
 

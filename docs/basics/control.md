@@ -8,13 +8,13 @@ keywords: control, control words, distributive, evaluation, iterate, kdb+, opera
 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [' ': /: \\:   each peach prior](../ref/maps.md "maps")          [\$[test;et;ef;…] Cond](../ref/cond.md)
 [\\ /          scan over](../ref/accumulators.md "accumulators")                 [do](../ref/do.md)  [if](../ref/if.md)  [while](../ref/while.md)
 
 [.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](function-notation.md#explicit-return)        [exit](../ref/exit.md)
 [@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        
-</pre>
+</div>
 
 Evaluation is controlled by
 

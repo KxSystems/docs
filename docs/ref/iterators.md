@@ -1,14 +1,13 @@
 ---
 title: Iterators | Reference | kdb+ and q documentation
 description: The iterators (earlier known as adverbs) are native higher-order operators. They take applicable values as arguments and return derived functions.
-keywords: adverb, iterator, infix, iterate, iteration, kdb+, operator, postfix, unary, value, variadic
 date: March 2019
 author: Stephen Taylor
 ---
 # Iterators
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 --------- [maps](maps.md) --------     --------- [accumulators](accumulators.md) ----------
 ['  Each](maps.md#each)           [each](maps.md#each-keyword)      / [Over](accumulators.md#binary-application)  [over](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
 [': Each Parallel](maps.md#each-parallel)  [peach](maps.md#peach-keyword)     \\ [Scan](accumulators.md#binary-application)  [scan](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
@@ -16,7 +15,7 @@ author: Stephen Taylor
 [\\: Each Left](maps.md#each-left-and-each-right)
 [/: Each Right](maps.md#each-left-and-each-right)
 ['  Case](maps.md#case)
-</pre>
+</div>
 
 The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
 They are the primary means of iterating in q.

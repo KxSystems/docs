@@ -13,7 +13,7 @@ _Read or write text_
 
 The File Text operator `0:` has five forms:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [Prepare Text](#prepare-text)     table as a list of delimited strings
 
 [Save Text](#save-text)        write a list of strings to file
@@ -25,7 +25,7 @@ The File Text operator `0:` has five forms:
                  as a list or matrix
 
 [Key-Value Pairs](#key-value-pairs)  delimited string as key-value pairs
-</pre>
+</div>
 
 ## :fontawesome-solid-align-left: Prepare Text
 

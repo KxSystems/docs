@@ -66,11 +66,11 @@ q)word
 
 At any point during execution, the behavior of _signal_ (`'`) is determined by the internal error-trap mode:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 0   abort execution (set by [Trap or Trap At](apply.md#trap)) 
 1   suspend execution and run the debugger
 2   collect stack trace and abort (set by [.Q.trp](dotq.md#qtrp-extend-trap))
-</pre>
+</div>
 
 During abort, the stack is unwound up to the nearest [trap](apply.md#trap) (`@` or `.` or [`.Q.trp`](dotq.md#qtrp-extend-trap)). The error-trap mode is always initially set to 
 

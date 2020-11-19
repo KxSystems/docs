@@ -6,7 +6,7 @@ keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, 
 ---
 # Accumulators
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [Converge  (v1\\)x    v1\\[x]](#converge)       [v1 scan x](#keywords-scan-and-over)
           [(v1/)x    v1/[x]](#converge)       [v1 over x](#keywords-scan-and-over)
 
@@ -30,7 +30,7 @@ v1, v2, v3: applicable value (rank 1-3)
 n:          integer≥0
 t:          unary truth map
 x, y:       arguments/indexes of v
-</pre>
+</div>
 
 An accumulator is an [iterator](iterators.md) that takes an [applicable value](../basics/glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
 

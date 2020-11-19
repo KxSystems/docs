@@ -7,10 +7,10 @@ date: September 2020
 # :fontawesome-solid-share-alt: Numerical optimization
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 .ml.optimize   **Optimization functions**
   [BFGS](#mloptimizebfgs)      The Broyden-Fletcher-Goldfarb-Shanno algorithm
-</pre>
+</div>
 
 :fontawesome-brands-github:
 [KxSystems/ml/optimize](https://github.com/kxsystems/ml/tree/master/optimize/)

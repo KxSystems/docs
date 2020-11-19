@@ -9,7 +9,7 @@ date: October 2020
 
 ## Casting and encoding
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 $       [Cast](../ref/cast.md) between datatypes
 $       [Tok](../ref/tok.md): interpret string as value
 !       [Enumeration](../ref/enumeration.md)
@@ -18,19 +18,19 @@ $       [Tok](../ref/tok.md): interpret string as value
 [sv](../ref/sv.md)      decode to integer
 [value](../ref/value.md)   parse string to function 
 [vs](../ref/vs.md)      encode
-</pre>
+</div>
 
 
 ## [Comparison](comparison.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [<     Less Than](../ref/less-than.md)            [>     Greater Than](../ref/greater-than.md)             [deltas  differences](../ref/deltas.md)
 [<=    Up To](../ref/less-than.md)                [>=    At Least](../ref/greater-than.md)                 [differ  flag changes](../ref/differ.md)
 [&     Lesser](../ref/lesser.md)               [|     Greater](../ref/greater.md)
 [min   least, minimum](../ref/min.md)       [max   greatest, maximum](../ref/max.md)
 [mins  running minimums](../ref/min.md#mins)     [maxs  running maximums](../ref/max.md#maxs)
 [mmin  moving minimums](../ref/min.md#mmin)      [mmax  moving maximums](../ref/max.md#mmax)
-</pre>
+</div>
 
 :fontawesome-solid-book-open:
 [Precision](precision.md)
@@ -38,10 +38,10 @@ $       [Tok](../ref/tok.md): interpret string as value
 
 ## [Dictionaries](dictsandtables.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [! Dict](../ref/dict.md)  make a dictionary         [key](../ref/key.md)      key list
 [group](../ref/group.md)   group list by values      [value](../ref/value.md)    value list
-</pre>
+</div>
 
 
 ## Environment 
@@ -54,28 +54,28 @@ QHOME    | folder searched for q.k and unqualified script names | `$HOME/q` :fon
 QINIT    | additional file loaded after `q.k` has initialized,<br>executed in the default namespace | `$QHOME/q.q`:fontawesome-brands-apple: :fontawesome-brands-linux:<br>`%QHOME%\q.q` :fontawesome-brands-windows:
 QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:fontawesome-brands-apple: :fontawesome-brands-linux:<br>`%QHOME%` :fontawesome-brands-windows:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [getenv](../ref/getenv.md)      get value of an environment variable
 [gtime](../ref/gtime.md)       UTC equivalent of local timestamp
 [ltime](../ref/gtime.md#ltime)       local equivalent of UTC timestamp
 [setenv](../ref/getenv.md#setenv)      set value of an environment variable
-</pre>
+</div>
 
 
 ## [Evaluation control](control.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [' ': /: \\:   each peach prior](../ref/maps.md "maps")          [\$[test;et;ef;…] Cond](../ref/cond.md)
 [\\ /          scan over](../ref/accumulators.md "accumulators")                 [do](../ref/do.md)  [if](../ref/if.md)  [while](../ref/while.md)
 
 [.[f;x] Apply](../ref/apply.md#apply-index)          [.[f;x;e] Trap](../ref/apply.md#trap)          [: Return](function-notation.md#explicit-return)        [exit](../ref/exit.md)
 [@[f;x] Apply-At](../ref/apply.md#apply-at-index-at)       [@[f;x;e] Trap-At](../ref/apply.md#trap)       [' Signal](../ref/signal.md)        
-</pre>
+</div>
 
 
 ## [File system](files.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [get set](../ref/get.md)       read/write or memory-map a data file¹
 [value](../ref/value.md)         read a data file¹
 
@@ -91,7 +91,7 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [rsave](../ref/save.md#rsave)  [rload](../ref/load.md#rload)  a splayed table
 [dsave](../ref/dsave.md)         tables
 [?  Enum Extend](../ref/enum-extend.md#filepath)
-</pre>
+</div>
 
 ¹ Has application beyond the file system.
 
@@ -111,16 +111,16 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 
 ## [Interprocess communication](ipc.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [\p](syscmds.md#listening-port)  [-p](cmdline.md#listening-port)          listen to port
 [hopen hclose](../ref/hopen.md)    open/close connection
 [.z](../ref/dotz.md)              callbacks
-</pre>
+</div>
 
 
 ## Joins
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 **Keyed**                 **As of**
  [ej](../ref/ej.md)        equi        [aj aj0](../ref/aj.md)      as-of
  [ij ijf](../ref/ij.md)    inner       [ajf ajf0](../ref/aj.md)
@@ -128,28 +128,28 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
  [pj](../ref/pj.md)        plus        [wj wj1](../ref/wj.md)      window
  [uj ujf](../ref/uj.md)    union
  [upsert](../ref/upsert.md)                [, Join](../ref/join.md)               [^ Coalesce](../ref/coalesce.md)
-</pre>
+</div>
 
 
 ## Logic
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [all](../ref/all-any.md#all)     whether all items are non-zero
 [& and](../ref/lesser.md)   lesser of two values; logical AND
 [any](../ref/all-any.md#any)     whether any item is zero
 [not](../ref/not.md)     whether if argument is zero 
 [null](../ref/null.md)    whether is null
 [| or](../ref/greater.md)    greater of two values; logical OR
-</pre>
+</div>
 
 
 ## [Math and statistics](math.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 \+ [Add](../ref/add.md)      \- [Subtract](../ref/subtract.md)   \* [Multiply](../ref/multiply.md)    % [Divide](../ref/divide.md)
 & [Lesser](../ref/lesser.md)   | [Greater](../ref/greater.md)    $ [dot product, Matrix Multiply](../ref/mmu.md)
-</pre>
-<pre markdown="1" class="language-txt">
+</div>
+<div markdown="1" class="typewriter">
 [abs](../ref/abs.md)         absolute value                [mins](../ref/min.md#mins)        minimums
 [acos](../ref/cos.md)        arccosine                     [mmax](../ref/max.md#mmax)        moving maximum
 [asin](../ref/sin.md)        arcsine                       [mmin](../ref/min.md#mmin)        moving minimum
@@ -176,35 +176,35 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [mdev](../ref/dev.md#mdev)        moving deviation              [xbar](../ref/xbar.md)        round down
 [med](../ref/med.md)         median                        [xexp](../ref/exp.md#xexp)        x<sup>y</sup>
 [min](../ref/min.md#min)         least                         [xlog](../ref/log.md#xlog)        base-x logarithm of y
-</pre>
+</div>
 
 
 ## [QSQL query templates](qsql.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [delete](../ref/delete.md)  delete rows or columns from a table
 [exec](../ref/exec.md)    return columns from a table, possibly with new columns
 [select](../ref/select.md)  return part of a table, possibly with new columns
 [update](../ref/update.md)  add rows or columns to a table
-</pre>
+</div>
 
 
 ## Search 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [bin, binr](../ref/bin.md)    binary search
 [distinct](../ref/distinct.md)     unique items of a list
 [? Find](../ref/find.md)       find x in y
 [in](../ref/in.md)           which items of x are items of y
 [within](../ref/within.md)       whether x are items of list y
-</pre>
+</div>
 
 
 ## Selection
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [except](../ref/except.md)       exclude items of one list or dictionary from another
-[first](../ref/first.md)        first item of a list or first entry of a dictionary
+[first](../ref/first.md)         first item of a list or first entry of a dictionary
 [. Index](../ref/apply.md#index)      select item at depth from a list or entries from a dictionary
 [@ Index At](../ref/apply.md#index)   select items from a list or entries from a dictionary
 [inter](../ref/inter.md)        intersection of two lists or dictionaries
@@ -215,12 +215,12 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [union](../ref/union.md)        union of two lists or dictionaries
 [where](../ref/where.md)        copies of indexes of a list, or keys or of a dictionary
 [xprev](../ref/next.md#xprev)        nearby list items
-</pre>
+</div>
 
 
 ## Sort
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [asc](../ref/asc.md)       sort ascending 
 [desc](../ref/desc.md#desc)      sort descending
 [group](../ref/group.md)     group a list by values
@@ -231,7 +231,7 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [xrank](../ref/xrank.md)     group by value
 [xasc](../ref/asc.md#xasc)      sort table ascending
 [xdesc](../ref/desc.md#xdesc)     sort table descending
-</pre>
+</div>
 
 !!! danger "Duplicate dictionary keys or table column names cause unpredictable results from sorts, grades, and groups."
 
@@ -245,7 +245,7 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 
 ## Strings
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [$ Pad](../ref/pad.md)   pad with spaces
 [like](../ref/like.md)    match pattern
 [lower](../ref/lower.md)   shift to lower case
@@ -256,12 +256,12 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [ssr](../ref/ss.md#ssr)     string search and replace
 [trim](../ref/trim.md)    trim leading and trailing space
 [upper](../ref/lower.md#upper)   shift to upper case
-</pre>
+</div>
 
 
 ## [Tables](../kb/faq.md)
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [cols](../ref/cols.md)     column names             [ungroup](../ref/ungroup.md)  normalize
 [meta](../ref/meta.md)     metadata                 [xasc](../ref/asc.md#xasc)     sort ascending
 [xcol](../ref/cols.md#xcol)     rename cols              [xdesc](../ref/desc.md#xdesc)    sort descending
@@ -271,5 +271,5 @@ QLIC     | folder searched for `k4.lic` or `kc.lic` license key file | `$QHOME`:
 [! Enkey, Unkey](../ref/enkey.md)  add/remove keys
 
 [**qSQL query templates**](../basics/qsql.md):   [select](../ref/select.md)   [exec](../ref/exec.md)   [update](../ref/update.md)   [delete](../ref/delete.md)
-</pre>
+</div>
 

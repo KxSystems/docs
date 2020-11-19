@@ -9,7 +9,7 @@ description: The operator ! with a negative integer as left-argument calls an in
 
 The operator `!` with a negative integer as left argument calls an internal function.
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [0N!x](#0nx-show)        show                   Replaced:
 [-4!x](#-4x-tokens)        tokens                   -1!   [hsym](../ref/hsym.md)
 [-8!x](#-8x-to-bytes)        to bytes                 -2!   [attr](../ref/attr.md)
@@ -30,7 +30,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-36!(x;y)](#-36xy-load-master-key)   load master key          -35!  [.Q.gz](../ref/dotq.md#qgz-gzip)
 [-38!x](#-38x-socket-table)       socket table             -37!  [.Q.prf0](../ref/dotq.md#qprf0-code-profiler)
 [-120!x](#-120x-memory-domain)      memory domain
-</pre>
+</div>
 
 !!! warning "Internal functions are for use by language implementors."
 
