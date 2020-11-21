@@ -866,17 +866,7 @@ q)r1~r2
 Returns the amount of memory that was returned to the OS.
 <!-- (Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in secondary threads since V2.7 2011.09.21) -->
 
-??? detail "How it works"
-
-    Kdb+ uses reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation).
-    The chosen buddy algorithm dices bucket sizes according to powers of 2, and the heap expands in powers of 64MB.
-
-    Reference counting means there is never any garbage (so `.Q.gc` is not accurately named) and memory is returned to the heap as soon as it is no longer referenced; if that memory is a vector using >=64MB it may be returned immediately to the OS depending on the command-line option `-g`.
-    `.Q.gc` attempts to coalesce diced blocks into their original 64MB block, and then returns blocks >=64MB to the OS.
-
-    Coalescing is always deferred, i.e. can only be triggered by a call to `.Q.gc`.
-    When secondary threads are used, `.Q.gc` in the main thread also executes `.Q.gc` in the secondary threads.
-    `.Q.gc` can take several seconds to execute on large memory systems that have a fragmented heap, and hence is not recommended for frequent use in a time-critical path of code. Consider running with the command-line option `-g 1`, which will return larger blocks of memory to the OS without trying to coalesce the smaller blocks.
+!!! detail "How it works: reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)"
 
 ```q
 q)a:til 10000000
