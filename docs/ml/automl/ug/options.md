@@ -1,8 +1,8 @@
 ---
-title: Advanced options for automated machine-learning | Machine Learning | Documentation for q and kdb+
+title: Advanced options for automated machine learning | Machine Learning | Documentation for q and kdb+
 author: Deanna Morgan
 description: Optional behavior available from the Kx automated machine learning platform; the effect of changing the input parameters
-date: March 2020
+date: November 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
 # :fontawesome-solid-share-alt: Advanced options
@@ -11,10 +11,12 @@ keywords: machine learning, ml, automated, processing, cross validation, grid se
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The other sections of the AutoML documentation describe the default behavior of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behavior. The two methods to complete this based on modifiying the final parameter with
+The other sections of the AutoML documentation describe the default behavior of the platform, where `(::)` is passed in as the final parameter to `.automl.run`. This section will focus on how this final parameter can be modified to apply changes to the default behavior.
 
-1. q dictionary outlining the changes to default behavior that are to be made
-2. The path to a flat file containing human-readable updates to the parameter set.
+Within the platform, there are two available methods to alter the final parameter:
+
+1. q dictionary outlining the changes to default behaviour that are to be made.
+2. The path to a flat-file containing human-readable updates to the parameter set.
 
 Given that both options allow for the same modifications to be made, the full list of parameters which can be modified are outlined here first and an implementation of each is described at the end of this page.
 
@@ -24,36 +26,46 @@ Given that both options allow for the same modifications to be made, the full li
 The following lists the parameters which can be altered by users to modify the functionality of the AutoML platform. In each case, the parameter name corresponds to the kdb+ dictionary key which would be passed, alongside its user defined value, to the `.automl.run` function in order to update functionality.
 
 ```txt
-aggcols     Aggregation columns for FRESH
-funcs       Functions to be applied for feature extraction
-gs          Grid search function and no. of folds/percentage of data in validation set
-hld         Size of the testing set on which the final model is tested
-hp          Type of hyperparameter search to perform - `grid`random`sobol
-rs          Random search function and no. of folds/percentage of data in validation set
-saveopt     Saving options outlining what is to be saved to disk from a run
-scf         Scoring functions for classification/regression tasks
-seed        Random seed to be used
-sigfeats    Feature significance procedure to be applied to the data
-sz          Size of validation set used.
-trials      Number of random/Sobol-random hyperparameters to generate
-tts         Train-test split function to be applied
-w2v         Word2Vec method used for NLP models
-xv          Cross-validation function and # of folds/percentage of data in validation set
+aggcols       (FRESH only) Aggregation columns
+funcs         Functions to be applied for feature extraction
+gs            Grid search function and no. of folds/percentage of data in validation set
+hld           Size of the testing set on which the final model is tested
+hp            Type of hyperparameter search to perform - `grid`random`sobol
+prf           Fit-predict function to be applied 
+rs            Random search function and no. of folds/percentage of data in validation set
+saveModelName File name for saving best model to disk
+saveopt       Saving options outlining what is to be saved to disk from a run
+scf           Scoring functions for classification/regression tasks
+seed          Random seed to be used
+sigFeats      Feature significance procedure to be applied to the data
+sz            Size of validation set used
+trials        Number of random/Sobol-random hyperparameters to generate
+tts           Train-test split function to be applied
+w2v           (NLP only) Word2Vec method used
+xv            Cross validation function and # of folds/percentage of data in validation set
 ```
 
 ### `aggcols`
 
 _Columns to be used for aggregations in FRESH_
 
-By default the aggregation column for any FRESH based feature extraction is assumed to be the first column in the dataset. In certain circumstances this may not be sufficient and a more complex aggregation setup may be required as outlined below.
+By default the aggregation column for any FRESH based feature extraction is assumed to be the first column in the dataset. In certain circumstances, this may not be sufficient and a more complex aggregation setup may be required, as outlined below.
 
 ```q
-q)uval:100?50
-q)tab:([]tstamp:"p"$uval;val:uval;100?1f;100?1f;100?1f)
-q)tgt:count[distinct uval]?1f
-// In this case we wish to have tstamp and val as aggregation columns
-// all other parameters are left as default
-q).automl.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
+// Characteristic vector
+q)v:100?50
+// FRESH feature table
+q)table:([]timestamp:"p"$v;v:v;100?1f;100?1f;100?1f)
+// Target vector
+q)target:count[distinct v]?1f
+// Feature extraction type
+q)ftype:`fresh
+// Problem type
+q)ptype:`reg
+// In this example we want `timestamp`v as aggregation columns
+q)dict:enlist[`aggcols]!enlist`timestamp`v
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
 
@@ -62,113 +74,170 @@ q).automl.run[tab;tgt;`fresh;`reg;enlist[`aggcols]!enlist `tstamp`val]
 _Functions to be applied for feature extraction_
 
 **FRESH**
-By default, the feature extraction functions applied for any FRESH-based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions. A user who wishes to augment these functions or choose a subsection therein contained, can do so as seen in the below example.
+By default, the feature extraction functions applied for any FRESH-based problem are all those contained in `.ml.fresh.params`. This incorporates approximately 60 functions in total. A user who wishes to augment or apply a subset of these functions can do so as seen in the below example.
 
 **Normal**
-By default, feature extraction for Normal feature-extraction procedures is the decomposition of time/date types into their component parts, this can be augmented by a user to add new functionality. Functions supported are any that take as input a simple table and return a simple table.
+By default, normal feature extraction simply entails the decomposition of any time/date types into their component parts. This can be augmented by a user to add new functionality where functions must input/output a simple table.
 
 **NLP**
-By default, feature extraction steps taken for NLP models include parsing the text data using `.nlp.newParser` and applying sentiment anaylsis, regular expression searching and named entity recognition tagging. The text is then vectorized using a `Word2Vec` model and concatenated with the created features. Normal feature extraction is also applied to any remaining non textual columns. Similar to above, the normal feature extraction applied to the data can be augmented by a user.
+By default, feature extraction steps taken for NLP models include parsing the text data using `.nlp.newParser` and applying sentiment anaylsis, regular expression searching and named entity recognition tagging. The text is then vectorized using a `Word2Vec` model and concatenated with the created features. Normal feature extraction is then applied to any remaining non-textual columns. Similar to above, the normal feature extraction applied to the data can be augmented by a user.
 
 ```q
-q)uval:100?50
-q)tab:([]tm:"t"$uval;asc 100?1f;100?1f;100?1f;100?1f)
-q)fresh_tgt:count[distinct uval]?1f
-q)norm_tgt :asc 100?1f
-// Select only functions which take < 1 argument for a FRESH based problem
-q).automl.newfuncs:select from .ml.fresh.params where pnum<1
+// Characteristic vector
+q)v:100?50
+// Feature table
+q)table:([]tm:"t"$v;asc 100?1f;100?1f;100?1f;100?1f)
+// FRESH target vector
+q)target:count[distinct v]?1f
+// Feature extraction type
+q)ftype:`fresh
+// Problem type
+q)ptype:`reg
+// Select functions which only take data as input with no extra parameters
+q)dataFuncs:select from .ml.fresh.params where pnum=0
+q)dict:enlist[`funcs]!enlist dataFuncs
 // Run feature extraction using user defined function table for FRESH
-q).automl.run[tab;fresh_tgt;`fresh;`reg;enlist[`funcs]!enlist `.automl.newfuncs]
-// Run feature extraction on Normal data using a set of functions provided by a user
-q)funcs:`.automl.prep.i.truncsvd`.automl.prep.i.bulktransform
-q).automl.run[tab;norm_tgt;`normal;`reg;enlist[`funcs]!enlist funcs]
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
 !!! warning "Do not add data rows"
 
-    Any user-defined function should take as input a simple table and return a simple table with the desired feature extraction procedures applied. These features should not augment the number of rows in the dataset as this will result in errors within the pipeline
+    Any user-defined function should take a simple table as input and then return a simple table with the desired feature extraction procedures applied. These features should not augment the number of rows in the dataset as this will result in errors within the pipeline.
 
 
 ### `gs`
 
 _Grid search procedure_
 
-In each case, the default grid search procedure being implemented is a shuffled 5-fold cross validation. This can be augmented by a user for different use cases, for example in the case of applying grid search to time series data.
+In the default case, 5-fold shuffled grid search is applied to the best model. Users can augment AutoML to use different grid searching procedures. For example, when using timeseries data, users may look to use a method like chain-forward grid search, `.ml.gs.tschain`, provided within the ML Toolkit.
 
-The input for this parameter is a mixed list containing the grid-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold depending on the procedure undertaken.
+The input for the `gs` parameter is a mixed list containing the grid search function name as a symbol and either the number of folds or the percentage of holdout data depending on the procedure chosen.
 
-For simplicity of implementation, a user should where possible use the functions within the `.ml.gs` namespace for this task.
+For simplicity, users are advised to use the functions within the `.ml.gs` namespace for this task.
 
 ```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
-// Roll forward grid search with 6 folds
-q)roll_forward:(`.ml.gs.tsrolls;6)
-q).automl.run[tab;tgt;`normal;`reg;enlist[`gs]!enlist roll_forward]
+// Normal feature table
+q)table:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Use roll-forward grid search with 6 folds
+q)rollForwardGS:(`.ml.gs.tsrolls;6)
+q)dict:enlist[`gs]!enlist rollForwardGS
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
-!!! warning "Custom grid-search function"
+!!! warning "Custom grid search function"
 
     To add a custom grid search function, follow the [guidelines for function definition](../../toolkit/xval.md).
 
-    If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework this can become a complicated procedure.
+    If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework, this can become a complicated procedure.
 
 
 ### `hld`
 
-_Size of the testing set_
+_Size of the testing set on which the final model is tested_
 
 By default the testing set across all problem types is set to 20%. For problems with a small number of data points, a user may wish to increase the number of datapoints being trained on. The opposite may be true on larger datasets.
 
 ```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
+// Normal feature table
+q)table:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
 // Set the testing set to contain 10% of the dataset
-q)tst:0.1
-q).automl.run[tab;tgt;`normal;`reg;enlist[`hld]!enlist tst]
+q)testingSize:.1
+q)dict:enlist[`hld]!enlist testingSize
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
 ### `hp`
 
 _Type of hyperparameter search to perform_
 
-By default, an exhaustive grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the hp parameter.
+By default, an exhaustive grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the `hp` parameter.
 
 ```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
-// Random search - change hp parameter from default
-q).automl.run[tab;tgt;`normal;`reg;enlist[`hp]!enlist`random]
-// Sobol search - change hp parameter from default
-q).automl.run[tab;tgt;`normal;`reg;enlist[`hp]!enlist`sobol]
+// Normal feature table
+q)table:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+
+// Change to random search
+q)searchType:`random
+q)dict:enlist[`hp]!enlist searchType
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
+
+// Change to Sobol-random search
+q)searchType:`sobol
+q)dict:enlist[`hp]!enlist searchType
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
+
+
+### `prf`
+
+...
 
 ### `rs`
 
 _Random search procedure_
 
-Assuming `hp` has been changed to `random` or `sobol`, shuffled 5-fold cross validation will be implemented by default. This can be modified by a user for different use cases, for example in the case a user wishes to apply random/sobol search to time series data.
+Assuming `hp` has been changed to `random` or `sobol`, shuffled 5-fold random search will be implemented by default. As with grid search, this can be modified by a user for different use cases.
 
-The input for this parameter is a mixed list containing the random-search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
+The input for this parameter is a mixed list containing the random search function name as a symbol and the number of folds to split the data into or the percentage of data in each fold.
 
-For simplicity of implementation, a user should where possible use the functions within the `.ml.rs` namespace for this task.
+For simplicity, users are advised to use the functions within the `.ml.rs` namespace for this task.
 
 ```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
-// Random search - roll forward random search with 6 folds
-q)roll_forward:(`.ml.rs.tsrolls;6)
-q).automl.run[tab;tgt;`normal;`reg;`hp`rs!(random;roll_forward)]
-// Sobol search - chain forward sobol search with 4 folds
-q)chain_forward:(`.ml.rs.tschain;4)
-q).automl.run[tab;tgt;`normal;`reg;`hp`rs!(sobol;chain_forward)]
+// Normal feature table
+q)table:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+
+// Use percentage split random search function with 20% holdout set
+q)searchType:`random
+q)searchFunc:(`.ml.rs.pcsplit;.2)
+q)dict:`hp`rs!(searchType;searchFunc)
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
+
+// Use chain-forward Sobol-random search function with 6-folds
+q)searchType:`sobol
+q)searchFunc:(`.ml.rs.tschain;6)
+q)dict:`hp`rs!(searchType;searchFunc)
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
-!!! warning "Custom random/sobol search function"
+!!! warning "Custom random/Sobol-random search function"
 
-    To add a custom random/sobol search function, follow the [guidelines for function definition](../../toolkit/xval.md).
+    To add a custom random/Sobol-random search function, follow the [guidelines for function definition](../../toolkit/xval.md).
 
-    If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework this can become a complicated procedure.
+    If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework, this can become a complicated procedure.
+
+### `saveModelName`
+
+...
 
 ### `saveopt`
 
@@ -176,19 +245,33 @@ _Save options_
 
 By default, the system will save all outputs to disk (reports, images, config file, models). Where a user does not wish for all outputs to be saved, there are currently three options:
 
-option | effect
+Option | Effect
 :-----:|:--
-0 | Nothing is saved, the models will run and display results to console, but nothing is persisted to disk
-1 | Save the model and configuration file only, will not generate a report for the user or any images
-2 | Save all possible outputs to disk for the user including reports, images, config and models
+0      | Nothing is saved - the models will run, but nothing is persisted to disk
+1      | Save model/config only - images and report will not be generated
+2      | Save all - reports, images, config file and models will be saved to disk
+
+An normal example of how to modify the `saveopt` parameter is shown below.
 
 ```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
+// Normal feature table
+q)table:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+
 // Save only the minimal outputs
-q).automl.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 1]
+q)dict:enlist[`saveopt]!enlist 1
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
+
 // No outputs saved
-q).automl.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
+q)dict:enlist[`saveopt]!enlist 0
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
 
@@ -196,9 +279,9 @@ q).automl.run[tab;tgt;`normal;`reg;enlist[`saveopt]!enlist 0]
 
 _Scoring functions used in model validation and optimization_
 
-The scoring metric used to calculate the performance of each classifier is defined by this parameter, which is a dictionary containing a scoring metric for both regression and classification problems. The default behavior is to use `.ml.accuracy` for classification tasks and `.ml.mse` for regression tasks. Modifying these may be required in order to correctly optimize a model for a specific use case.
+The scoring metric used to calculate the performance of each classifier is defined by this parameter, which is a dictionary containing a scoring metric for both regression and classification problems. The default behaviour is to use `.ml.accuracy` for classification tasks and `.ml.mse` for regression tasks. Modifying these may be required in order to correctly optimize a model for a specific use case.
 
-The following functions are supported within the platform at present with the ordering which allows the best model to be chosen displayed below and defined in `code/mdldef/scoring.txt`
+The following functions are supported within the platform at present with the ordering which allows the best model to be chosen displayed below and defined in `automl/code/customization/scoring/scoring.txt`
 
 <div markdown="1" class="typewriter">
 .ml   **Statistical analysis metrics with AutoML score order**
@@ -214,19 +297,27 @@ The following functions are supported within the platform at present with the or
   sse              sum squared error                         asc
 </div>
 
-The following is an example implementation
+The following is an example implementation:
 
 ```q
-q)tab:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
-q)tgt:100?1f
-q)reg_scf:enlist[`reg]!enlist `.ml.mae
-q).automl.run[tab;tgt;`normal;`reg;enlist[`scf]!enlist reg_scf]
+// Normal feature table
+q)table:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Use Mean Average Error as scoring function
+q)reg_scf:enlist[`reg]!enlist`.ml.mae
+// Run AutoML
+q).automl.run[table;target;ftype;ptype;dict]
 ```
 
-To use a custom scoring metric this function must be defined within the central process and added to `code/mdldef/scoring.txt` in order to define how optimization is completed. This function must take arguments
+To use a custom scoring metric this function must be defined within the central process and added to `automl/code/customization/scoring/scoring.txt` in order to define how optimization is completed. This function must take arguments
 
--   `x`, a vector of predicted labels
--   `y`, a vector of true labels
+-   `x` - a vector of predicted labels
+-   `y` - a vector of true labels
 
 The function should return the score as defined by the user-defined metric. Functions within the ML Toolkit which take additional parameters such as `.ml.f1score` can be accessed in this way and could be defined as a projection.
 
