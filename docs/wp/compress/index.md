@@ -310,5 +310,12 @@ In any given application, the metrics which will determine if and how compressio
 
 ## Author
 
-**Eoin Killeen** is based in New York. Eoin has worked as a kdb+ consultant on the design and development of a wide range of high-performance trading and analytics applications. He is currently working on a global real-time electronic trading visualization platform and an equity derivatives analytics portal at a US investment bank.
+![Eoin Killeen](../../img/faces/eoinkilleen.jpg)
+{: .small-face}
+
+**Eoin Killeen** has worked with Kx technology for over ten years, designing and building real-time trading and analytics systems for clients in New York and London.
+Eoin’s current focus is Solution Architecture for EMEA-based clients.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:ekilleen@kx.com?subject=White paper: Compression in kdb+) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/eoin-killeen/)
 
