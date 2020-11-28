@@ -34,7 +34,8 @@ man "debug"
 man "interfaces"
 man "internal"
 man "iterators"
-man "kb"              / Knowledge Base
+man "db"              / database
+man "database"        / database
 man "syscmds"         / system commands
 man "wp"              / White Papers
 ```
