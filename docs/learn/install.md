@@ -14,7 +14,7 @@ There are three installation scenarios.
 -   You have the 64-bit On Demand Personal Edition for non-commercial use. This is enabled by a `kc.lic` license-key file and requires an always-on Internet connection. (This version of kdb+ is not licensed for use on cloud servers.)
 -   You have the 32-bit Personal Edition for non-commercial use. It does not require a license-key file.
 
-!!! warning "macOS Catalina (10.15) does not run 32-bit applications."
+    !!! warning "32-bit applications will not run in macOS 10.15+ (Catalina and later)"
 
 :fontawesome-regular-hand-point-right: 
 [More about licensing](licensing.md)
