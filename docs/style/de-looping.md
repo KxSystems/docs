@@ -119,8 +119,7 @@ q)search2[L;S]
 0 4
 ```
 
-<i class="fas fa-exclamation-circle fa-2x"></i>
-**Derive non-looping solutions from well-designed looping solutions.**
+!!! important "Derive non-looping solutions from well-designed looping solutions."
 
 [^1]: Not strictly true: the problem can be solved with Each, but the converging solution using Over is both faster and more readable.
 

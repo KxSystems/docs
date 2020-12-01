@@ -55,28 +55,24 @@ The `.h` [namespace](../basics/namespaces.md) contains objects for
 
 ## `.h.br` (linebreak)
 
-Syntax: `.h.br`
-
 HTML linebreak (string), defaults to `"<br>"`.
 
 
 ## `.h.c0` (web color)
-
-Syntax: `.h.c0`
 
 Color used by the web console (symbol), defaults to `` `024C7E``.
 
 
 ## `.h.c1` (web color)
 
-Syntax: `.h.c1`
-
 Color used by the web console (symbol), defaults to `` `958600``.
 
 
 ## `.h.cd` (CSV from data)
 
-Syntax: `.h.cd x`
+```txt
+.h.cd x
+```
 
 Where `x` is a table or a list of columns returns a matrix of comma-separated values.
 
@@ -99,7 +95,9 @@ Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to 
 
 ## `.h.code` (code after Tab)
 
-Syntax: `.h.code x`
+```txt
+.h.code x
+```
 
 Where `x` is a string with embedded Tab characters, returns the string with alternating segments marked up as
 
@@ -117,8 +115,6 @@ q).h.code "foo"
 
 
 ## `.h.d` (delimiter)
-
-Syntax: `.h.d`
 
 Delimiter used by [`.h.cd`](#hcd-csv-from-data) to join subitems of nested lists. Default is `" "`.
 
@@ -149,7 +145,9 @@ q).h.cd t
 
 ## `.h.ed` (Excel from data)
 
-Syntax: `.h.ed x`
+```txt
+.h.ed x
+```
 
 Where `x` is a table, returns as a list of strings the XML for an Excel workbook.
 
@@ -162,7 +160,9 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 
 ## `.h.edsn` (Excel from tables)
 
-Syntax: `.h.edsn x!y`
+```txt
+.h.edsn x!y
+```
 
 Where
 
@@ -205,7 +205,9 @@ q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
 
 _HTML page with two frames_
 
-Syntax: `.h.fram[t;s;(l;r)]`
+```txt
+.h.fram[t;s;(l;r)]
+```
 
 Where
 
@@ -233,7 +235,9 @@ src=\"tmp.htm\"><frame name=v src=\"tmp.txt\"></frameset></head></html>"
 
 ## `.h.ha` (anchor)
 
-Syntax: `.h.ha[x;y]`
+```txt
+.h.ha[x;y]
+```
 
 Where `x` is the `href` attribute as a symbol atom or a string, and `y` is the link text as a string, returns as a string an HTML `A` element.
 
@@ -247,7 +251,9 @@ q).h.ha["http://www.example.com";"Example.com Main Page"]
 
 ## `.h.hb` (anchor target)
 
-Syntax: `.h.hb[x;y]`
+```txt
+.h.hb[x;y]
+```
 
 Same as `.h.ha`, but adds a `target=v` attribute to the tag.
 
@@ -259,7 +265,9 @@ q).h.hb["http://www.example.com";"Example.com Main Page"]
 
 ## `.h.hc` (escape lt)
 
-Syntax: `.h.hc x`
+```txt
+.h.hc x
+```
 
 Where `x` is a string, returns `x` with any `<` chars escaped.
 
@@ -271,7 +279,9 @@ q).h.hc "<foo>"
 
 ## `.h.he` (HTTP 400)
 
-Syntax: `.h.he x`
+```txt
+.h.he x
+```
 
 Where `x` is a string, escapes `"<"` characters, adds a `"'"` at the front, and returns an HTTP 400 error (Bad Request) with that content.
 
@@ -283,7 +293,9 @@ q).h.he "<rubbish>"
 
 ## `.h.hn` (HTTP response)
 
-Syntax: `.h.hn[x;y;z]`
+```txt
+.h.hn[x;y;z]
+```
 
 Where
 
@@ -303,7 +315,9 @@ q).h.hn["404";`txt;"Not found: favicon.ico"]
 
 ## `.h.hp` (HTTP response pre)
 
-Syntax: `.h.hp x`
+```txt
+.h.hp x
+```
 
 Where `x` is a list of strings, returns as a string a valid HTTP response displaying them as a `pre` element in an HTML document.
 
@@ -325,7 +339,9 @@ Content-Length: 257
 
 ## `.h.hr` (horizontal rule)
 
-Syntax: `.h.hr x`
+```txt
+.h.hr x
+```
 
 Where `x` is a string, returns a string of the same length filled with `"-"`.
 ```q
@@ -336,7 +352,9 @@ q).h.hr "foo"
 
 ## `.h.ht` (Marqdown to HTML)
 
-Syntax: `.h.ht x`
+```txt
+.h.ht x
+```
 
 HTML documentation generator: <!-- for <https://kx.com/q/d/> -->
 where `x` is a symbol atom, reads file `:src/x.txt` and writes file `:x.htm`.
@@ -358,7 +376,9 @@ Basic Marqdown formatting rules:
 
 ## `.h.hta` (start tag)
 
-Syntax: `.h.hta[x;y]`
+```txt
+.h.hta[x;y]
+```
 
 Where `x` is the element as a symbol atom, and `y` is a dictionary of attributes and values, returns as a string an opening HTML tag for element `x`.
 
@@ -370,7 +390,9 @@ q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 
 ## `.h.htac` (element)
 
-Syntax: `.h.htac[x;y;z]`
+```txt
+.h.htac[x;y;z]
+```
 
 Where `x` is the element as a symbol atom, `y` is a dictionary of attributes and their values, and `z` is the content of the node as a string, returns as a string the HTML element.
 
@@ -382,7 +404,9 @@ q).h.htac[`a;(`href`target)!("http://www.example.com";"_blank");"Example.com Mai
 
 ## `.h.htc` (element)
 
-Syntax: `.h.htc[x;y]`
+```txt
+.h.htc[x;y]
+```
 
 Where `x` is the HTML element as a symbol atom, and `y` is the content of the node as a string, returns as a string the HTML node.
 
@@ -394,7 +418,9 @@ q).h.htc[`tag;"value"]
 
 ## `.h.html` (document)
 
-Syntax: `.h.html x`
+```txt
+.h.html x
+```
 
 Where `x` is the body of an HTML document as a string, returns as a string an HTML document with fixed style rules.
 
@@ -419,7 +445,9 @@ q).h.html "<p>Hello world!</p>"
 
 ## `.h.http` (hyperlinks)
 
-Syntax: `.h.http x`
+```txt
+.h.http x
+```
 
 Where `x` is a string, returns `x` with embedded URLs beginning `"http://"` converted to HTML hyperlinks.
 
@@ -431,7 +459,9 @@ q).h.http "The main page is http://www.example.com"
 
 ## `.h.hu` (URI escape)
 
-Syntax: `.h.hu x`
+```txt
+.h.hu x
+```
 
 Where `x` is a string, returns `x` with URI-unsafe characters replaced with safe equivalents.
 
@@ -443,14 +473,18 @@ q).h.hu "http://www.kx.com"
 
 ## `.h.hug` (URI map)
 
-Syntax: `.h.hug x`
+```txt
+.h.hug x
+```
 
 Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape sequences *except* for the chars in `x`, which get mapped to themselves.
 
 
 ## `.h.hy` (HTTP response content)
 
-Syntax: `.h.hy[x;y]`
+```txt
+.h.hy[x;y]
+```
 
 Where
 
@@ -488,17 +522,17 @@ q)\head test.txt
 
 ## `.h.HOME` (webserver root)
 
-Syntax: `.h.HOME`
-
 String: location of the webserver root.
 
-<i class="fas fa-graduation-cap""></i>
+:fontawesome-solid-graduation-cap:
 [Customizing the default webserver](../kb/custom-web.md)
 
 
 ## `.h.iso8601` (ISO timestamp)
 
-Syntax: `.h.iso8601 x`
+```txt
+.h.iso8601 x
+```
 
 Where `x` is nanoseconds since 2000.01.01 as an int atom, returns as a string a timestamp in ISO-8601 format.
 
@@ -510,7 +544,9 @@ q).h.iso8601 100
 
 ## `.h.jx` (table)
 
-Syntax: `.h.jx[x;y]`
+```txt
+.h.jx[x;y]
+```
 
 Where `x` is an int atom, and `y` is the name of a table, returns a list of strings representing the records of `y`, starting from row `x`.
 
@@ -554,14 +590,14 @@ q)1_.h.jx[5;`a]
 
 ## `.h.logo` (Kx logo)
 
-Syntax: `.h.logo`
-
 String: defaults to the Kx logo in HTML format.
 
 
 ## `.h.nbr` (no break)
 
-Syntax: `.h.nbr x`
+```txt
+.h.nbr x
+```
 
 Where `x` is a string, returns `x` as the content of a `nobr` element.
 
@@ -573,7 +609,9 @@ q).h.nbr "foo bar"
 
 ## `.h.pre` (pre)
 
-Syntax: `.h.pre x`
+```txt
+.h.pre x
+```
 
 Where `x` is a list of strings, returns `x` as a string with embedded newlines with a `pre` HTML element.
 
@@ -585,9 +623,7 @@ q).h.pre("foo";"bar")
 
 ## `.h.sa` (anchor style)
 
-Syntax: `.h.sa`
-
-Returns CSS style rules used in the web console for anchor elements.
+String: CSS style rules used in the web console for anchor elements.
 
 ```q
 q).h.sa
@@ -597,9 +633,8 @@ q).h.sa
 
 ## `.h.sb` (body-style)
 
-Syntax: `.h.sb`
+String: CSS style rules used in the web console for the HTML body.
 
-Returns CSS style rules used in the web console for the HTML body.
 ```q
 q).h.sb
 "body{font:10pt verdana;text-align:justify}"
@@ -608,22 +643,22 @@ q).h.sb
 
 ## `.h.sc` (URI-safe)
 
-Syntax: `.h.sc`
-
-A list of characters that do not need to be escaped in URIs.
+String: characters that do not need to be escaped in URIs.
 
 ```q
 q).h.sc
 "$-.+!*'(),abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
 
-<i class="fa-hand-point-right"></i>
+:fontawesome-solid-hand-point-right:
 [`.h.hu`](#hhu-uri-escape)
 
 
 ## `.h.td` (TSV from data)
 
-Syntax: `.h.td x`
+```txt
+.h.td x
+```
 
 Where `x` is a table, returns it as a list of tab-separated value strings
 
@@ -652,11 +687,7 @@ q).h.text("foo";"bar")
 
 ## `.h.tx` (filetypes)
 
-```txt
-.h.tx
-```
-
-Returns a dictionary of file types and corresponding conversion functions (`.h.cd`, `.h.td`, `.h.xd`, `.h.ed`).
+Dictionary of file types and corresponding conversion functions (`.h.cd`, `.h.td`, `.h.xd`, `.h.ed`).
 
 ```q
 q).h.tx
@@ -668,7 +699,7 @@ xml | k){g:{(#*y)#'(,,"<",x),y,,,"</",x:($x),">"};(,"<R>"),(,/'+g[`r]@,/(!x)g..
 xls | k){ex eb es[`Sheet1]x}
 ```
 
-!!! tip "Streaming and static JSON"
+??? detail "Streaming and static JSON"
 
     The result of ``.h.tx[`json]`` is designed for streaming as [JSON Lines](http://jsonlines.org/). For static JSON, enlist its argument:
 
@@ -697,9 +728,7 @@ xls | k){ex eb es[`Sheet1]x}
 
 ## `.h.ty` (MIME types)
 
-Syntax: `.h.ty`
-
-Returns a dictionary of content types (e.g. `` `csv``, `` `bmp``, `` `doc``) and corresponding [Media Types](https://en.wikipedia.org/wiki/MIME).
+Dictionary of content types and corresponding [media types](https://en.wikipedia.org/wiki/MIME "Wikipedia").
 
 ```q
 q).h.ty
@@ -716,7 +745,9 @@ gif | "image/gif"
 
 ## `.h.uh` (URI unescape)
 
-Syntax: `.h.uh x`
+```txt
+.h.uh x
+```
 
 Where `x` is a string, returns `x` with `%`*xx* hex sequences replaced with character equivalents.
 
@@ -728,7 +759,9 @@ q).h.uh "http%3a%2f%2fwww.kx.com"
 
 ## `.h.val` (value)
 
-Syntax: `.h.val x`
+```txt
+.h.val x
+```
 
 `.h.val` is called by [`.z.ph`](dotz.md#zph-http-get) to evaluate a request to the server.
 
@@ -741,7 +774,9 @@ Since V3.6 and V3.5 2019.11.13.
 
 ## `.h.xd` (XML)
 
-Syntax: `.h.xd x`
+```txt
+.h.xd x
+```
 
 Where `x` is a table, returns as a list of strings, `x` as an XML table.
 
@@ -757,7 +792,9 @@ q).h.xd ([]a:1 2 3;b:`x`y`z)
 
 ## `.h.xmp` (XMP)
 
-Syntax: `.h.xmp x`
+```txt
+.h.xmp x
+```
 
 Where `x` is a list of strings, returns as a string `x` as the newline-separated content of an HTML `xmp` element.
 
@@ -769,7 +806,9 @@ q).h.xmp("foo";"bar")
 
 ## `.h.xs` (XML escape)
 
-Syntax: `.h.xs x`
+```txt
+.h.xs x
+```
 
 Where `x` is a string, returns `x` with characters XML-escaped where necessary.
 
@@ -781,7 +820,9 @@ q).h.xs "Arthur & Co."
 
 ## `.h.xt` (JSON)
 
-Syntax: `.h.xt[x;y]`
+```txt
+.h.xt[x;y]
+```
 
 Where `x` is `` `json`` and `y` is a list of JSON strings, returns `y` as a list of dictionaries.
 

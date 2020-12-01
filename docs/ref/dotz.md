@@ -63,11 +63,7 @@ _Q for Mortals:_
 
 ## `.z.a` (IP address)
 
-```txt
-.z.a
-```
-
-Returns the IP address as a 32-bit integer
+The IP address as a 32-bit integer
 
 ```q
 q).z.a
@@ -89,8 +85,6 @@ q)"i"$0x0 vs .z.a
 
 
 ## `.z.ac` (HTTP auth from cookie)
-
-_HTTP authenticate from cookie_
 
 ```txt
 .z.ac:(requestText;requestHeaderAsDictionary)
@@ -120,11 +114,7 @@ Note that if `.z.ac` is defined, `.z.pw` will _not_ be called for HTTP connectio
 
 ## `.z.b` (dependencies)
 
-```txt
-.z.b
-```
-
-Returns the dependency dictionary.
+The dependency dictionary.
 
 ```q
 q)a::x+y
@@ -163,20 +153,12 @@ after a bad msg has been received, the global var `msg` will contain the timesta
 
 ## `.z.c` (cores)
 
-```txt
-.z.c
-```
-
-Returns number of physical cores.
+The number of physical cores.
 
 
 ## `.z.e` (TLS connection status)
 
-```txt
-.z.e
-```
-
-TLS connection status now reported via `.z.e`
+TLS connection status.
 
 ```q
 q)0N!h".z.e";
@@ -187,10 +169,6 @@ Since V3.4 2016.05.16.
 
 
 ## `.z.ex` (failed primitive)
-
-```txt
-.z.ex
-```
 
 In a [debugger](../basics/debug.md#debugger) session, `.z.ex` is set to the failed primitive.
 
@@ -255,6 +233,7 @@ q))'`up
 ```bash
 os>..
 ```
+
 :fontawesome-solid-hand-point-right:
 [`.z.pc` port close](#zpc-close)
 <br>
@@ -267,10 +246,6 @@ os>..
 
 ## `.z.ey` (argument to failed primitive)
 
-```txt
-.z.ey
-```
-
 In a [debugger](../basics/debug.md#debugger) session, `.z.ey` is set to the argument to failed primitive.
 
 Since V3.5 2017.03.15.
@@ -278,11 +253,7 @@ Since V3.5 2017.03.15.
 
 ## `.z.f` (file)
 
-```txt
-.z.f
-```
-
-Returns the name of the q script as a symbol.
+Name of the q script as a symbol.
 
 ```q
 $ q test.q
@@ -296,11 +267,7 @@ q).z.f
 
 ## `.z.H` (active sockets)
 
-```txt
-.z.H
-```
-
-Returns the active sockets as a list. A low-cost method.
+Active sockets as a list. (A low-cost method.)
 
 Since v4.0 2020.06.01.
 
@@ -315,11 +282,7 @@ q).z.H~key .z.W
 
 ## `.z.h` (host)
 
-```txt
-.z.h
-```
-
-Returns the host name as a symbol
+The host name as a symbol
 
 ```q
 q).z.h
@@ -357,11 +320,7 @@ q).Q.host .z.a
 
 ## `.z.i` (PID)
 
-```txt
-.z.i
-```
-
-Returns the process ID as an integer.
+The process ID as an integer.
 
 ```q
 q).z.i
@@ -371,11 +330,8 @@ q).z.i
 
 ## `.z.K` (version)
 
-```txt
-.z.K
-```
-
-Returns as a float the major version number of the version of kdb+ being used (so a test version of 2.4t will be reported as 2.4)
+The major version number, as a float, of the version of kdb+ being used.
+(A test version of 2.4t is reported as 2.4)
 
 ```q
 q).z.K
@@ -390,11 +346,7 @@ q).z.k
 
 ## `.z.k` (release date)
 
-```txt
-.z.k
-```
-
-Returns the date on which the version of kdb+ being used was released.
+Date on which the version of kdb+ being used was released.
 
 ```q
 q).z.k
@@ -410,11 +362,7 @@ This value is checked against `.Q.k` as part of the startup to make sure that th
 
 ## `.z.l` (license)
 
-```txt
-.z.l
-```
-
-Returns the license information as a list of strings; `()` for non-commercial 32-bit versions.
+License information as a list of strings; `()` for non-commercial 32-bit versions.
 
 ```q
 q)`maxCoresAllowed`expiryDate`updateDate`````bannerText`!.z.l
@@ -434,11 +382,7 @@ bannerText     | "stephen@kx.com #59875"
 
 ## `.z.N` (local timespan)
 
-```txt
-.z.N
-```
-
-Returns system local time as timespan in nanoseconds.
+System local time as timespan in nanoseconds.
 <!-- (V2.6 upwards.) -->
 
 ```q
@@ -449,11 +393,7 @@ q).z.N
 
 ## `.z.n` (UTC timespan)
 
-```txt
-.z.n
-```
-
-Returns system UTC time as timespan in nanoseconds.
+System UTC time as timespan in nanoseconds.
 <!-- (V2.6 upwards.) -->
 
 ```q
@@ -464,11 +404,7 @@ q).z.n
 
 ## `.z.o` (OS version)
 
-```txt
-.z.o
-```
-
-Returns the kdb+ operating system version as a symbol.
+Kdb+ operating system version as a symbol.
 
 ```q
 q).z.o
@@ -491,11 +427,7 @@ You might run both 32-bit and 64-bit versions of kdb+ on the same machine to sup
 
 ## `.z.P` (local timestamp)
 
-```txt
-.z.P
-```
-
-Returns system localtime timestamp in nanoseconds.
+System localtime timestamp in nanoseconds.
 <!-- (Since V2.6.) -->
 
 ```q
@@ -506,11 +438,7 @@ q).z.P
 
 ## `.z.p` (UTC timestamp)
 
-```txt
-.z.p
-```
-
-Returns UTC timestamp in nanoseconds.
+UTC timestamp in nanoseconds.
 <!-- (Since V2.6.) -->
 
 ```q
@@ -587,7 +515,7 @@ q)handles:`u#`int$();
 
 Note that (since V3.1) the worker processes are not started automatically by kdb+.
 
-<i class="fas fa-graduation-cap""></i>
+:fontawesome-graduation-cap:
 [Load balancing](../kb/load-balancing.md)
 
 
@@ -808,11 +736,7 @@ The default definition is `{[user;pswd]1b}`
 
 ## `.z.q` (quiet mode)
 
-```txt
-.z.q
-```
-
-Returns `1b` if Quiet Mode is set, else `0b`.
+`1b` if Quiet Mode is set, else `0b`.
 
 :fontawesome-solid-book-open:
 [Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
@@ -820,11 +744,7 @@ Returns `1b` if Quiet Mode is set, else `0b`.
 
 ## `.z.s` (self)
 
-```txt
-.z.s
-```
-
-Returns a reference to the current function.
+A reference to the current function.
 
 ```q
 q){.z.s}[]
@@ -871,11 +791,7 @@ When kdb+ has completed executing a script passed as a command-line argument, an
 
 ## `.z.u` (user ID)
 
-```txt
-.z.u
-```
-
-Returns the userid associated with the current handle.
+User ID, as a symbol, associated with the current handle.
 
 ```q
 q).z.u
@@ -923,11 +839,7 @@ q)m[1;1]:0
 
 ## `.z.W` (handles)
 
-```txt
-.z.W
-```
-
-Returns a dictionary of IPC handles with the number of bytes waiting in their output queues.
+Dictionary of IPC handles with the number of bytes waiting in their output queues.
 <!-- (Since V2.5 2008.12.31.) In V2.6 this was changed to a list of bytes per handle, see [Changes in V2.6](../releases/ChangesIn2.6.md#zw) -->
 
 ```q
@@ -943,11 +855,7 @@ q)sum each .z.W
 
 ## `.z.w` (handle)
 
-```txt
-.z.w
-```
-
-Returns the connection handle, 0 for current session console.
+Connection handle; 0 for current session console.
 
 ```q
 q).z.w
@@ -1044,11 +952,7 @@ q).z.X
 
 ## `.z.x` (argv)
 
-```txt
-.z.x
-```
-
-Returns the command line arguments as a list of strings
+Command-line arguments as a list of strings
 
 ```q
 $ q test.q -P 0 -abc 123
@@ -1101,11 +1005,7 @@ efg| `foo
 
 ## `.z.Z` (local datetime)
 
-```txt
-.z.Z
-```
-
-Returns local time as a datetime atom.
+Local time as a datetime atom.
 
 ```q
 q).z.Z
@@ -1119,11 +1019,7 @@ Which avoids problems like [this](https://it.slashdot.org/story/07/02/25/2038217
 
 ## `.z.z` (UTC datetime)
 
-```txt
-.z.z
-```
-
-Returns UTC time as a datetime atom.
+UTC time as a datetime atom.
 
 ```q
 q).z.z

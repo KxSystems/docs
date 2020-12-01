@@ -1,12 +1,11 @@
 ---
-title: sv – csalar from vector | Reference | kdb+ and q documentation
+title: sv – scalar from vector | Reference | kdb+ and q documentation
 description: sv is a q keyword that performs a variety of functions under the general scheme of scalar (atom) from vector – join strings or filepath elements; decode a vector to an atom.
 author: Stephen Taylor
-keywords: atom, decode, kdb+, keyword, q, scalar, sv, vector
 ---
-<div style="float: right">
-<i class="fas fa-wrench fa-5x"></i>
-</div>
+
+[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
+{: style="float: right; max-width: 200px"}
 
 # `sv`
 

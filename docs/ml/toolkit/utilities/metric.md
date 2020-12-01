@@ -4,7 +4,7 @@ description: The toolkit contains an extensive list of commonly used metrics for
 date: April 2019
 keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statistics, roc, auc, precision, logloss, cross entropy.
 ---
-# <i class="fa fa-share-alt"></i> Metrics 
+# :fontawesome-solid-share-alt: Metrics 
 
 
 <div markdown="1" class="typewriter">

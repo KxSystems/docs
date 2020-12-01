@@ -33,7 +33,7 @@ date: August 2020
   [SARIMA.predict](#mltssarimapredict) Predict future values using a fitted SARIMA model
 </div>
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
 Distinguish _endogenous_ and _exogenous_ variables.

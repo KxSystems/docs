@@ -5,7 +5,7 @@ description: Lists functions available for use within the Kafka API for kdb+ and
 date: September 2019
 keywords: broker, consumer, kafka, producer, publish, subscribe, subscription, topic
 ---
-# <i class="fa fa-share-alt"></i> Function reference 
+# :fontawesome-solid-share-alt: Function reference 
 
 
 As outlined in the overview for this API, the kdb+/Kafka interface is a thin wrapper for kdb+ around the [`librdkafka`](https://github.com/edenhill/librdkafka) C API for [Apache Kafka](https://kafka.apache.org/). 

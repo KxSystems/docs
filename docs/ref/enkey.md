@@ -15,9 +15,11 @@ _Simple to keyed table and vice-versa_
 
 _Make a keyed table from a simple table._
 
-Syntax: `i!t`, `![i;t]` 
+```txt
+i!t    ![i;t]
+```
 
-Where 
+Where
 
 -   `i` is a **positive integer**
 -   `t` is a **simple table**, or a handle to one
@@ -38,7 +40,9 @@ a b | c
 
 _Remove the key/s from a table._
 
-Syntax: `0!t`, `![0;t]` 
+```txt
+0!t    ![0;t]
+```
 
 Where `t` is a **keyed table**, or a handle to one, returns `t` as a simple table, with no keys.
 ```q
@@ -52,7 +56,7 @@ a b  c
 ```
 
 
-## Amending in place 
+## Amending in place
 
 For both Enkey and Unkey, if `t` is a table-name, `!` amends the table and returns the name.
 
@@ -67,9 +71,16 @@ a b  c
 2 20 y
 ```
 
-
-:fontawesome-regular-hand-point-right: 
-[`key`](key.md), 
-[`keys`](keys.md), 
-[`xkey`](keys.md#xkey)  
-[`!` bang](overloads.md#bang)
+----
+:fontawesome-solid-book:
+[`key`](key.md)
+<br>
+:fontawesome-solid-book:
+[`keys`](keys.md),
+[`xkey`](keys.md#xkey)
+<br>
+:fontawesome-solid-book:
+[`!` bang](overloads.md#bang) overloads
+<br>
+:fontawesome-solid-book-open:
+[Tables](../kb/faq.md)

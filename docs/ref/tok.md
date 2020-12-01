@@ -49,8 +49,7 @@ time     | -19   T
 
 A left argument of `0h` or "*" returns the `y` string unchanged.
 
-:fontawesome-solid-book:
-Where `x` is a positive or zero short, a lower-case char, `"*"`, or a non-null symbol, see [Cast](cast.md).
+Where `x` is a **positive or zero short**, a **lower-case char**, **`"*"`**, or a non-null **symbol**, see [Cast](cast.md).
 
 
 ```q

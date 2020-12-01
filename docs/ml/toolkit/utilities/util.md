@@ -4,7 +4,7 @@ description: The toolkit contains utility functions, used in many applications a
 date: April 2019
 keywords: pandas manipulation, dataframe, train test split, .
 ---
-# <i class="fa fa-share-alt"></i> Utility functions 
+# :fontawesome-solid-share-alt: Utility functions 
 
 
 

@@ -6,7 +6,7 @@ date: April 2019
 keywords: anaconda, jupyter, kdb+, kernel, notebook, python, q, faq
 ---
 
-# <i class="fa fa-share-alt"></i> Frequently-asked questions about JupyterQ
+# :fontawesome-solid-share-alt: Frequently-asked questions about JupyterQ
 
 
 

@@ -428,7 +428,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td>General object display with type and structure <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
-	<i class="fas fa-star" title="Featured repository"></i>
+	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -458,7 +458,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 						(Mohammad Noor)
 					</a>
 				</span>
-<i class="fas fa-star" title="Featured repository"></i>
+:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -550,7 +550,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td>Code profiler <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
-	<i class="fas fa-star" title="Featured repository"></i>
+	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -621,7 +621,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td>A rapid-development environment for q. <span class="author"><a href="https://github.com/CharlesSkelton/?tab=repositories">
 						(Charles Skelton)
 					</a></span>
-	<i class="fas fa-star" title="Featured repository"></i>
+	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -650,7 +650,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td>Workspace utilities <span class="author"><a href="https://github.com/LeslieGoldsmith?tab=repositories">
 						(Leslie Goldsmith)
 					</a></span>
-	<i class="fas fa-star" title="Featured repository"></i>
+	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -685,7 +685,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td>Recursive aggregating treetable and 3-D pivot table for hypergrid. <span class="author"><a href="https://github.com/stevanapter?tab=repositories">
 						(Stevan Apter)
 					</a></span>
-	<i class="fas fa-star" title="Featured repository"></i>
+	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -735,7 +735,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 <td>The Q Phrasebook <span class="author"><a href="https://github.com/kxcontrib?tab=repositories">
 						(kxcontrib)
 					</a></span>
-	<i class="fas fa-star" title="Featured repository"></i>
+	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
 <tr>
@@ -1084,7 +1084,7 @@ The Fusion interface libraries are maintained and supported by Kx.
 </table>
 
 
-## <i class="fab fa-html5"></i> Web
+## :fontawesome-brands-html5: Web
 
 <table class="kx-compact" markdown="1">
 <tr>

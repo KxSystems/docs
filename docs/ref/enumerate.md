@@ -7,7 +7,9 @@ author: Stephen Taylor
 
 
 
-Syntax: `x$y`, `$[x;y]`
+```txt
+x$y    $[x;y]
+```
 
 Where
 

@@ -4,7 +4,7 @@ description: The Machine Learning Toolkit contains functions used regularly with
 date: April 2019
 keywords: preprocessing, linear combinations, polynomial creation, infinite replace, scaler, data filling, encoding, one-hot, frequency, lexigraphical, time splitting 
 ---
-# <i class="fa fa-share-alt"></i> Data preprocessing 
+# :fontawesome-solid-share-alt: Data preprocessing 
 
 
 <div markdown="1" class="typewriter">

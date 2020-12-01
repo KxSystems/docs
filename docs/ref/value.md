@@ -3,9 +3,9 @@ title: value | Reference | kdb+ and q documentation
 description: value is a q keyword that returns the value of a named variable, or metadata.
 author: Stephen Taylor
 ---
-<div style="float: right">
-<i class="fas fa-wrench fa-5x"></i>
-</div>
+[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
+{: style="float: right; max-width: 200px"}
+
 
 # `value`
 
