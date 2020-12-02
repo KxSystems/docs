@@ -603,6 +603,7 @@ nav:
     - Gateway design*: wp/gateway-design/index.md
     - Kdb+tick configuration: kb/kdb-tick.md
     - Kdb+tick profiling*: wp/tick-profiling.md
+    - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Load balancing: kb/load-balancing.md
     - Memory backed by files: basics/memory-backed.md
     - Optane Memory: kb/optane.md
