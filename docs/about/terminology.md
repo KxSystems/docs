@@ -6,17 +6,13 @@ date: October 2019
 ---
 # :fontawesome-solid-pen-nib: Terminology
 
+[![Bob Dylan](../img/faces/bobdylan.jpg)](https://prruk.org/how-prophetic-was-bob-dylan-when-he-said-the-times-were-a-changing/)
+{: .small-face}
 
-<blockquote style="border: none;">
-    <p style="display: inline-block;">
-        And the words that are used for to get this ship confused<br>  
-        Will not be understood as they are spoken<br>
-        — <i>Bob Dylan</i> “When the ship comes in” 
-    </p>
-    <p style="display: inline-block; padding: 0 1em;">
-        <a href="https://www.bobdylan.com/albums/the-times-they-are-a-changin/" title="The Times they Are A’Changin’"><img alt="Bob Dylan" src="//code.kx.com/q/img/dylan.png" style="height: 70px"/></a>
-    </p>
-</blockquote>
+And the words that are used for to get this ship confused<br>
+Will not be understood as they are spoken<br>
+— _Bob Dylan_ “When the ship comes in”
+{: style="opacity:.5"}
 
 In 2018 and 2019 the vocabulary used to describe the q language changed. Why?
 
@@ -91,7 +87,8 @@ input, parameter | argument
 matrices         | matrixes
 output           | result
 
-:fontawesome-regular-hand-point-right:
+----
+:fontawesome-solid-book-open:
 [Glossary](../basics/glossary.md)
 
 
