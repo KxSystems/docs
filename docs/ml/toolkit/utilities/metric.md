@@ -51,7 +51,9 @@ The toolkit contains an extensive list of commonly used metrics for the evaluati
 
 _Accuracy of classification results_
 
-Syntax: `.ml.accuracy[x;y]`
+```syntax
+.ml.accuracy[x;y]
+```
 
 Where
 
@@ -74,7 +76,9 @@ q).ml.accuracy[10 2#20?10;10 2#20?10] / support for matrices of predictions and 
 
 _Statistical information about classification results_
 
-Syntax: `.ml.classreport[x;y]`
+```syntax
+.ml.classreport[x;y]
+```
 
 Where
 
@@ -120,7 +124,9 @@ avg/total 0.33      0.33   0.33     1000
 
 _True/false positives and true/false negatives_
 
-Syntax: `.ml.confdict[x;y;z]`
+```syntax
+.ml.confdict[x;y;z]
+```
 
 Where
 
@@ -152,7 +158,9 @@ tp| 3
 
 _Confusion matrix_
 
-Syntax: `.ml.confmat[x;y]`
+```syntax
+.ml.confmat[x;y]
+```
 
 Where
 
@@ -180,7 +188,9 @@ q).ml.confmat[100?5;100?5]              / supports multiclass by converting to b
 
 _Table-like correlation matrix for a simple table_
 
-Syntax: `.ml.corrmat[x]`
+```syntax
+.ml.corrmat[x]
+```
 
 Where 
 
@@ -203,7 +213,9 @@ C| -0.2273659 0.2287606  1
 
 _Categorical cross entropy_
 
-Syntax: `.ml.crossentropy[x;y]`
+```syntax
+.ml.crossentropy[x;y]
+```
 
 Where
 
@@ -227,7 +239,9 @@ q).ml.crossentropy[b;p]
 
 _Covariance of a matrix_
 
-Syntax: `.ml.cvm[x]`
+```syntax
+.ml.cvm[x]
+```
 
 Where
 
@@ -251,7 +265,9 @@ q).ml.cvm[mat]
 
 _Descriptive information_
 
-Syntax: `.ml.describe[x]`
+```syntax
+.ml.describe[x]
+```
 
 Where 
 
@@ -280,7 +296,9 @@ max  | 9994.308 1000     999      99.98165
 
 _F-1 score for classification results_
 
-Syntax: `.ml.f1score[x;y;z]`
+```syntax
+.ml.f1score[x;y;z]
+```
 
 Where
 
@@ -306,7 +324,9 @@ q).ml.f1score[xb;yb;0b]
 
 _F-beta score for classification results_
 
-Syntax: `.ml.fbscore[x;y;z;b]`
+```syntax
+.ml.fbscore[x;y;z;b]
+```
 
 Where
 
@@ -333,7 +353,9 @@ q).ml.fbscore[xb;yb;1b;.5]
 
 _Logarithmic loss_
 
-Syntax: `.ml.logloss[x;y]`
+```syntax
+.ml.logloss[x;y]
+```
 
 Where
 
@@ -357,7 +379,9 @@ q).ml.logloss[v;b]
 
 _Mean absolute error_
 
-Syntax: `.ml.mae[x;y]`
+```syntax
+.ml.mae[x;y]
+```
 
 Where
 
@@ -378,7 +402,9 @@ q).ml.mae[100?5;100?5]
 
 _Mean absolute percentage error_
 
-Syntax: `.ml.mape[x;y]`
+```syntax
+.ml.mape[x;y]
+```
 
 Where
 
@@ -397,7 +423,9 @@ q).ml.mape[100?5.0;100?5.0]
 
 _Matthews-correlation coefficient_
 
-Syntax: `.ml.matcorr[x;y]`
+```syntax
+.ml.matcorr[x;y]
+```
 
 Where
 
@@ -418,7 +446,9 @@ q).ml.matcorr[100?5;100?5]
 
 _Mean square error_
 
-Syntax: `.ml.mse[x;y]`
+```syntax
+.ml.mse[x;y]
+```
 
 Where
 
@@ -439,7 +469,9 @@ q).ml.mse[asc 100?1f;desc 100?1f]
 
 _Percentile calculation for an array_
 
-Syntax: `.ml.percentile[x;y]`
+```syntax
+.ml.percentile[x;y]
+```
 
 Where
 
@@ -460,7 +492,9 @@ q).ml.percentile[10000?1f;0.6]
 
 _Precision of a binary classifier_
 
-Syntax: `.ml.precision[x;y;z]`
+```syntax
+.ml.precision[x;y;z]
+```
 
 Where
 
@@ -482,7 +516,9 @@ q).ml.precision[1000?"AB";1000?"AB";"B"]
 
 _R2-score for regression model validation_
 
-Syntax: `.ml.r2score[x;y]`
+```syntax
+.ml.r2score[x;y]
+```
 
 Where
 
@@ -507,7 +543,9 @@ q).ml.r2score[xb;yb]
 
 _Range of values_
 
-Syntax: `.ml.range[x]`
+```syntax
+.ml.range[x]
+```
 
 Where 
 
@@ -530,7 +568,9 @@ q).ml.range mat
 
 _Root mean squared error for regression model validation_
 
-Syntax: `.ml.rmse[x;y]`
+```syntax
+.ml.rmse[x;y]
+```
 
 Where
 
@@ -555,7 +595,9 @@ q).ml.rmse[xb;yg]
 
 _Root mean squared log error_
 
-Syntax: `.ml.rmsle[x;y]`
+```syntax
+.ml.rmsle[x;y]
+```
 
 Where
 
@@ -576,7 +618,9 @@ q).ml.rmsle[100?5;100?5]
 
 _X- and Y-axis values for an ROC curve_
 
-Syntax: `.ml.roc[x;y]`
+```syntax
+.ml.roc[x;y]
+```
 
 Where
 
@@ -598,7 +642,9 @@ q).ml.roc[v;p]
 
 _Area under an ROC curve_
 
-Syntax: `.ml.rocaucscore[x;y]`
+```syntax
+.ml.rocaucscore[x;y]
+```
 
 Where
 
@@ -619,7 +665,9 @@ q).ml.rocaucscore[v;p]
 
 _Sensitivity of a binary classifier_
 
-Syntax: `.ml.sensitivity[x;y;z]`
+```syntax
+.ml.sensitivity[x;y;z]
+```
 
 Where
 
@@ -641,7 +689,9 @@ q).ml.sensitivity[1000?`class1`class2;1000?`class1`class2;`class1]
 
 _Symmetric mean absolute percentage error_
 
-Syntax: `.ml.smape[x;y]`
+```syntax
+.ml.smape[x;y]
+```
 
 Where
 
@@ -662,7 +712,9 @@ q).ml.smape[100?5;100?5]
 
 _Specificity of a binary classifier_
 
-Syntax: `.ml.specificity[x;y;z]`
+```syntax
+.ml.specificity[x;y;z]
+```
 
 Where
 
@@ -684,7 +736,9 @@ q).ml.specificity[1000?100 200;1000?100 200;200]
 
 _Sum squared error_
 
-Syntax: `.ml.mse[x;y]`
+```syntax
+.ml.mse[x;y]
+```
 
 Where
 
@@ -705,7 +759,9 @@ q).ml.sse[asc 100?1f;desc 100?1f]
 
 _One-sample t-test score_
 
-Syntax: `.ml.tscore[x;y]`
+```syntax
+.ml.tscore[x;y]
+```
 
 Where
 
@@ -721,20 +777,20 @@ q).ml.tscore[x;y]
 7.634824
 ```
 
-!!! tip "One-sample t-score"
-
-    Above 30 samples a one-sample t-score is not statistically significant.
+!!! tip "Above 30 samples a one-sample t-score is not statistically significant."
 
 
 ## `.ml.tscoreeq`
 
 _T-test for independent samples with equal variances and equal sample size_
 
-Syntax: `.ml.tscoreeq[x;y]`
+```syntax
+.ml.tscoreeq[x;y]
+```
 
 Where 
 
-- `x` & `y` are independent sample sets with equal variance and sample size
+-   `x` and `y` are independent sample sets with equal variance and sample size
 
 returns their t-test score.
 
