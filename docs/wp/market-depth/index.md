@@ -372,13 +372,22 @@ EURUSD FeedC 1.2343 3000
 
 It is worth noting that the `u` attribute is applied to the majority of data structures. This is used to ensure quick lookup times on the structure keys as they grow. 
 
-:fontawesome-regular-hand-point-right:
-_Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)<br>
-Reference: [Set Attribute](../../ref/set-attribute)
+:fontawesome-solid-street-view:
+_Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
+<br>
+:fontawesome-solid-book:
+[Set Attribute](../../ref/set-attribute)
 
 [:fontawesome-solid-print: PDF](/download/wp/sample_aggregation_engine_for_market_depth.pdf)
 
 
 ## Author
 
-**Stephen Dempsey** is based in Dublin. Stephen works for First Derivatives’ R&D team on a variety of different applications in Kx technology. He has been involved in the design and implementation of a wide range of applications, including tick-capture and algorithmic-trading platforms.
+![Stephen Empsey](../../img/faces/stephendempsey.jpg)
+{: .small-face}
+
+**Stephen Dempsey** is senior kdb+ developer on the Kx R&D team. His core responsibility has been developing the [Kx Platform](../../devtools.md#kx-platform) and supporting the wide range of applications built upon it. Earlier he implemented various kdb+ applications including large-volume exchange backtesting, and eFX trading.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:sdemspey@kx.com?subject=White paper: Market Depth) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-dempsey-6b1b5319/)
+
