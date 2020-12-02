@@ -2,8 +2,6 @@
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.firstderivatives.com/">First Derivatives plc</a>.'
 dev_addr: '0.0.0.0:9000'
 docs_dir: 'docs'
-extra:
-  version: 2.0
 extra_css: 
   - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
   - 'https://code.kx.com/stylesheets/extra.css'
@@ -65,8 +63,6 @@ theme:
   static_templates:
     - 401.html
     - 404.html
-  toc:
-    title: "On this page"
 nav:
   - Home: 
     - kdb+ and q: index.md
@@ -397,7 +393,6 @@ nav:
       - .z: ref/dotz.md
     - Application: basics/application.md
     - Atomic functions: basics/atomic.md
-    # - Casting & encoding: basics/casting.md
     - Comparison: basics/comparison.md
     - Conformability: basics/conformable.md
     - Connection handles: basics/handles.md
@@ -412,7 +407,6 @@ nav:
     - Glossary: basics/glossary.md
     - Internal functions: basics/internal.md
     - Joins: basics/joins.md
-    # - Logic: basics/logic.md
     - Mathematics: basics/math.md
     - Metadata: basics/metadata.md
     - Namespaces: basics/namespaces.md
@@ -420,11 +414,6 @@ nav:
     - Parse trees, functional SQL*: wp/parse-trees.md
     - QSQL queries: basics/qsql.md
     - Regular Expressions: basics/regex.md
-    # - Regex: kb/regex.md
-    # - Search: basics/search.md
-    # - Selection: basics/selection.md
-    # - Sorting: basics/sort.md
-    # - Strings: basics/strings.md
     - Syntax: basics/syntax.md
     - Tables: kb/faq.md
     - Variadic syntax: basics/variadic.md
@@ -453,10 +442,6 @@ nav:
       - Time-series simplification*: wp/ts-shrink/index.md
       - Compacting HDB sym: kb/compacting-hdb-sym.md
       - Working with sym files*: wp/symfiles.md
-      # - Columnar database*: wp/columnar-database/index.md
-    # - Bulk Copy Program: kb/bcp.md
-    # - Splayed schema change: kb/splayed-schema-change.md
-    # - Splaying large files: kb/splaying-large-files.md
   - Developing:
     - Tools:
       - Code profiler: kb/profiler.md
@@ -713,14 +698,3 @@ nav:
       - FAQ: ml/automl/faq.md
     - Neural networks*: wp/neural-networks/index.md
     - Pattern recognition*: wp/machine-learning/index.md
-  # - About: 
-    # - Search: about/search.md
-    # - Style guide:
-    #   - Introduction: about/sg/index.md
-    #   - Characters: about/sg/characters.md
-    #   - Miscellaneous: about/sg/miscellaneous.md
-    #   - Style: about/sg/style.md
-    #   - Code blocks: about/sg/code.md
-    #   - Typography: about/sg/typography.md
-    # - Wiki: wiki.md
-  
