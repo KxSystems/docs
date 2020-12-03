@@ -32,10 +32,6 @@ Kdb+, from [Kx](https://kx.com), is
 
     :fontawesome-solid-book: [Tables in memory](kb/faq.md)
 
-<!--     :fontawesome-solid-database: [Tables in the filesystem](database/index.md)
-
-    :fontawesome-solid-book: [Q language by topic](basics/by-topic.md)
- -->
 </div>
 
 </div>
