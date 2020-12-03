@@ -24,14 +24,18 @@ Kdb+, from [Kx](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-brands-youtube: [Autoscaling in the cloud](https://youtu.be/3YFhoL9Rw6k)
+
+    :fontawesome-brands-youtube: [Kubernetes and kdb+](https://youtu.be/jqtkkCqBvr4)
+
     :fontawesome-regular-map: [Pub/sub with Solace](wp/solace/index.md)
 
     :fontawesome-solid-book: [Tables in memory](kb/faq.md)
 
-    :fontawesome-solid-database: [Tables in the filesystem](database/index.md)
+<!--     :fontawesome-solid-database: [Tables in the filesystem](database/index.md)
 
     :fontawesome-solid-book: [Q language by topic](basics/by-topic.md)
-
+ -->
 </div>
 
 </div>
@@ -43,27 +47,27 @@ Kdb+, from [Kx](https://kx.com), is
 [Get started](learn/install.md)
 {: #kx-get-started .md-button}
 
-[<i class="fas fa-fw fa-hiking fa-2x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-hiking:</span><br/>
 Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
 {: .md-button}
 
-[<i class="fas fa-fw fa-book-reader fa-2x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-book-reader:</span><br/>
 Learn q](learn/index.md)
 {: .md-button}
 
-[<i class="fas fa-fw fa-dollar-sign fa-2x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-dollar-sign:</span><br/>
 Data types](basics/datatypes.md "Datatypes in kdb+")
 {: .md-button}
 
-[<i class="fas fa-fw fa-book fa-2x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-book:</span><br/>
 Q reference](ref/index.md "Reference card for the q language")
 {: .md-button}
 
-[<i class="fas fa-fw fa-database fa-2x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-database:</span><br/>
 Database](database/index.md "Roughly speaking, kdb+ is what happens when q tables are persisted and then mapped back into memory for operations.")
 {: .md-button}
 
-[<i class="fas fa-fw fa-laptop-code fa-2x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-laptop-code:</span><br/>
 IDE: Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
 {: .md-button}
 

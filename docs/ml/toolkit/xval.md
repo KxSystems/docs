@@ -5,7 +5,7 @@ description: The .ml.xv, .ml.gs and .ml.rs namespaces contain functions related 
 date: March 2019
 keywords: time-series, cross validation, grid search, random search, Sobol sequences, sobol-random search, roll-forward, chain-forward, grid search fit, data splitting, stratified splitting, kdb+, q
 ---
-# <i class="fa fa-share-alt"></i> Cross validation procedures 
+# :fontawesome-solid-share-alt: Cross validation procedures 
 
 
 

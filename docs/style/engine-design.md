@@ -59,5 +59,5 @@ Most tools contain functionality which is never used. Avoid using tools which ar
 
 If you want one tool out of a pre-packaged set of twenty, extract that tool and tuck it into your application. If you want a single piece of functionality built into a larger system, consult the author and learn how to implement it yourself. Remember that in q, ideas are worth more than code. 
 
-<i class="fas fa-exclamation-circle fa-2x"></i>
-**Minimize the number of moving parts.**
+
+!!! important "Minimize the number of moving parts."

@@ -11,7 +11,8 @@ keywords: Python, Jupyter, natural language processing, nlp, machine learning, m
 
 **Machine-learning** capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 
-:fontawesome-regular-hand-point-right: [How to set up](setup.md) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build.
+:fontawesome-regular-hand-point-right: 
+[How to set up](setup.md) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build
 
 ## Anaconda
 
@@ -27,7 +28,9 @@ Users can now install kdb+/q along with our supported Python and Machine Learnin
 -   Python code and files can be embedded within q code.
 -   Python functions can be called as q functions.
 
-:fontawesome-regular-hand-point-right: [Example notebooks using embedPy](https://github.com/KxSystems/mlnotebooks)
+Example notebooks using embedPy:
+:fontawesome-brands-github:
+[KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
 
 ## JupyterQ
@@ -50,20 +53,27 @@ The [Machine Learning Toolkit](toolkit/index.md) is at the core of kdb+/q center
 -  [Cross-Validation](toolkit/xval.md) functions, used to verify how robust and stable a machine-learning model is to changes in the data being interrogated and the volume of this data.
 - [Clustering algorithms](toolkit/clustering/algos.md) used to group data points and to identify patterns in their distributions. The algorithms make use of a [k-dimensional tree](toolkit/clustering/kdtree.md) to store points and [scoring functions](toolkit/clustering/score.md) to analyze how well they performed.
 
-The library is available [here](https://github.com/KxSystems/ml).
-
-:fontawesome-regular-hand-point-right: [Example notebooks showing FRESH and various aspects of toolkit functionality](https://github.com/KxSystems/mlnotebooks). 
+:fontawesome-brands-github:
+[KxSystems/ml](https://github.com/KxSystems/ml)
+<br>
+Example notebooks showing FRESH and various aspects of toolkit functionality:
+<br>
+:fontawesome-brands-github:
+[KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
 
 ## Natural Language Processing 
 
 [NLP](nlp/index.md) was the first module within the machine-learning suite, it manages the common functions associated with processing unstructured text. Functions for searching, clustering, keyword extraction and sentiment are included in the library, available [here](https://github.com/KxSystems/nlp).
 
-:fontawesome-regular-hand-point-right: [Demonstration notebook](https://github.com/KxSystems/mlnotebooks)
+Demonstration notebook:
+:fontawesome-brands-github:
+[KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
+
 
 ## Automated Machine Learning
 
-[AutoML](automl/index.md) is a framework to automate the process of machine learning using kdb+. This is build largely on the machine learning toolkit and handles the following aspects of a traditional machine learning pipeline:
+[AutoML](automl/index.md) is a framework to automate the process of machine learning using kdb+. This is build largely on the machine learning toolkit and handles the following aspects of a traditional machine-learning pipeline:
 
 1. Data preprocessing
 2. Feature engineering and feature selection
@@ -71,9 +81,14 @@ The library is available [here](https://github.com/KxSystems/ml).
 4. Hyperparameter tuning
 5. Report generation and model persistence
 
-The library is available [here](https://github.com/KxSystems/automl)
+AutoML library:
+:fontawesome-brands-github:
+[KxSystems/automl](https://github.com/KxSystems/automl)
+<br>
+Demonstration notebook:
+:fontawesome-brands-github:
+[KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
 
-<i class="far fa-hand-point-right"></i> Example notebook showing the use of AutoML available [here](https://github.com/KxSystems/mlnotebooks).
 
 ## Useful information
 

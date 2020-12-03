@@ -1,24 +1,17 @@
+# Documentation for kdb+ and q
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.firstderivatives.com/">First Derivatives plc</a>.'
-# dev_addr: '159.65.88.218:8000'
 dev_addr: '0.0.0.0:9000'
 docs_dir: 'docs'
-extra:
-  version: 2.0
 extra_css: 
   - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
   - 'https://code.kx.com/stylesheets/extra.css'
-  # - 'stylesheets/extra.css'
   - 'stylesheets/q.css'
-  - 'stylesheets/carousel-6.css'
+  # - 'stylesheets/carousel-6.css'
 extra_javascript: 
   # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
-  # Prism script includes plugin Copy to Clipboard http://prismjs.com/download.html
-  - 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
-  - 'https://code.jquery.com/jquery-3.1.1.min.js'
   - 'https://code.kx.com/scripts/prism.js'
-  # - 'https://tracker.mrpfd.com/tracker.js'
-  - 'https://use.fontawesome.com/releases/v5.8.0/js/all.js'
+  - 'scripts/jquery-3.5.1.min.js' # jQuery for theme.js
   - 'scripts/theme.js'
 google_analytics:
   - 'UA-180968370-1'
@@ -26,25 +19,17 @@ google_analytics:
 markdown_extensions:
   - admonition
   - attr_list
-  # - codehilite(guess_lang=false)
   - extra
-  # - fenced_code
   - meta
   - pymdownx.arithmatex
-  # - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
-  # - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-  # - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
-  # - pymdownx.smartsymbols
-  # - pymdownx.superfences
   - pymdownx.tabbed
-  # - pymdownx.tasklist(custom_checkbox=true)
   - pymdownx.tilde
   - toc:
       permalink: false
@@ -78,8 +63,6 @@ theme:
   static_templates:
     - 401.html
     - 404.html
-  toc:
-    title: "On this page"
 nav:
   - Home: 
     - kdb+ and q: index.md
@@ -410,7 +393,6 @@ nav:
       - .z: ref/dotz.md
     - Application: basics/application.md
     - Atomic functions: basics/atomic.md
-    # - Casting & encoding: basics/casting.md
     - Comparison: basics/comparison.md
     - Conformability: basics/conformable.md
     - Connection handles: basics/handles.md
@@ -425,7 +407,6 @@ nav:
     - Glossary: basics/glossary.md
     - Internal functions: basics/internal.md
     - Joins: basics/joins.md
-    # - Logic: basics/logic.md
     - Mathematics: basics/math.md
     - Metadata: basics/metadata.md
     - Namespaces: basics/namespaces.md
@@ -433,11 +414,6 @@ nav:
     - Parse trees, functional SQL*: wp/parse-trees.md
     - QSQL queries: basics/qsql.md
     - Regular Expressions: basics/regex.md
-    # - Regex: kb/regex.md
-    # - Search: basics/search.md
-    # - Selection: basics/selection.md
-    # - Sorting: basics/sort.md
-    # - Strings: basics/strings.md
     - Syntax: basics/syntax.md
     - Tables: kb/faq.md
     - Variadic syntax: basics/variadic.md
@@ -466,10 +442,6 @@ nav:
       - Time-series simplification*: wp/ts-shrink/index.md
       - Compacting HDB sym: kb/compacting-hdb-sym.md
       - Working with sym files*: wp/symfiles.md
-      # - Columnar database*: wp/columnar-database/index.md
-    # - Bulk Copy Program: kb/bcp.md
-    # - Splayed schema change: kb/splayed-schema-change.md
-    # - Splaying large files: kb/splaying-large-files.md
   - Developing:
     - Tools:
       - Code profiler: kb/profiler.md
@@ -631,6 +603,7 @@ nav:
     - Gateway design*: wp/gateway-design/index.md
     - Kdb+tick configuration: kb/kdb-tick.md
     - Kdb+tick profiling*: wp/tick-profiling.md
+    - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Load balancing: kb/load-balancing.md
     - Memory backed by files: basics/memory-backed.md
     - Optane Memory: kb/optane.md
@@ -726,14 +699,3 @@ nav:
       - FAQ: ml/automl/faq.md
     - Neural networks*: wp/neural-networks/index.md
     - Pattern recognition*: wp/machine-learning/index.md
-  # - About: 
-    # - Search: about/search.md
-    # - Style guide:
-    #   - Introduction: about/sg/index.md
-    #   - Characters: about/sg/characters.md
-    #   - Miscellaneous: about/sg/miscellaneous.md
-    #   - Style: about/sg/style.md
-    #   - Code blocks: about/sg/code.md
-    #   - Typography: about/sg/typography.md
-    # - Wiki: wiki.md
-  

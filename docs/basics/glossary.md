@@ -6,8 +6,8 @@ author: Stephen Taylor
 # Glossary
 
 
-> Ontology asks, _What exists?_,  
-> to which the answer is _Everything_.  
+> Ontology asks, _What exists?_,
+> to which the answer is _Everything_.
 > — W.V.O. Quine, _Word and Object_
 
 
@@ -20,14 +20,14 @@ A function that reduces its argument, typically a list to an atom, e.g. `sum`
 ## Applicable value
 
 A function, file- or process-handle, list, or dictionary: an object that can be applied to its [argument/s or index/es](#argument).
-<!-- :fontawesome-regular-hand-point-right: 
+<!-- :fontawesome-regular-hand-point-right:
 [Iterables](../tutorials/uq/values.md)
  -->
 
 
 ## Apply
 
-As in _apply a function to its arguments_:  evaluate a function on values corresponding to its arguments.  
+As in _apply a function to its arguments_:  evaluate a function on values corresponding to its arguments.
 :fontawesome-regular-hand-point-right: [Application](application.md)
 
 
@@ -36,21 +36,21 @@ As in _apply a function to its arguments_:  evaluate a function on values corres
 In the expression `10%4` the operator `%` is evaluated on the arguments 10 and 4. 10 is the _left argument_ and 4 is the _right argument_.
 
 By extension, the first and second arguments of a binary function are called its left argument and right argument regardless of whether it is applied infix.
-In the expression `%[10;4]` 10 and 4 are still referred to as the left and right arguments. 
+In the expression `%[10;4]` 10 and 4 are still referred to as the left and right arguments.
 
 By extension, where a function has rank >2, its left argument is its first argument, and its _right arguments_ are the remaining arguments.
 
-Correspondingly, the _left domain_ and _right domain_ of a binary function are the domains of its first and second arguments, regardless of whether or not the function may be applied infix. 
+Correspondingly, the _left domain_ and _right domain_ of a binary function are the domains of its first and second arguments, regardless of whether or not the function may be applied infix.
 
 By extension, where a function has rank >2, its _left domain_ is the domain of its first argument, and its _right domains_ are the domains of the remaining arguments.
 
-The terminology generalizes to values. 
+The terminology generalizes to values.
 
 -   The left domain of a matrix `m` is `til count m`.
 -   The right domain of a matrix is `til count first m`.
 -   The right domains of a list `m` of depth `n` are `1_n{til count first x}\m`. <!-- FIXME Check -->
 
-The single argument of a unary function is sometimes referred to as its _right argument_. 
+The single argument of a unary function is sometimes referred to as its _right argument_.
 
 
 ## Argument list
@@ -60,12 +60,12 @@ A pair of square brackets enclosing zero or more items separated by semicolons. 
 
 ## Atom
 
-A single instance of a [datatype](datatypes.md), eg `42`, `"a"`, `1b`, `2012.09.15`. The [`type`](../ref/type.md) of an atom is always negative. 
+A single instance of a [datatype](datatypes.md), eg `42`, `"a"`, `1b`, `2012.09.15`. The [`type`](../ref/type.md) of an atom is always negative.
 
 
-## :fontawesome-solid-sitemap: Atomic function 
+## :fontawesome-solid-sitemap: Atomic function
 
-An atomic function is a uniform function such that for `r:f[x]`  `r[i]~f x[i]` is true for all `i`, e.g. `signum`. A function `f` is atomic if `f` is identical to `f'`. 
+An atomic function is a uniform function such that for `r:f[x]`  `r[i]~f x[i]` is true for all `i`, e.g. `signum`. A function `f` is atomic if `f` is identical to `f'`.
 
 :fontawesome-solid-book-open:
 [Atomic functions](atomic.md)
@@ -77,12 +77,12 @@ Attributes are metadata associated primarily with tables and dictionaries to imp
 
 The attributes are: sorted, unique, grouped, and partitioned.
 
-:fontawesome-regular-hand-point-right: 
-Reference: [Set Attribute](../ref/set-attribute.md), 
+:fontawesome-regular-hand-point-right:
+Reference: [Set Attribute](../ref/set-attribute.md),
 [Step dictionaries](../ref/apply.md#step-dictionaries)
 
 
-## Binary  
+## Binary
 
 A value of rank 2, i.e. a function that takes 2 arguments, or a list of depth ≥2.
 (The terms _dyad_ and _dyadic_ are now deprecated.)
@@ -92,26 +92,26 @@ A value of rank 2, i.e. a function that takes 2 arguments, or a list of depth �
 
 Applying a value to its argument/s or indexes by writing it to the left of an argument list, e.g. `+[2;3]` or `count["zero"]`.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Application](application.md)
 
 
 ## Chained tickerplant
 
-A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn. 
+A [chained tickerplant](../kb/chained-tickerplant.md) subscribes to the master tickerplant and receives updates like any other subscriber, and then serves that data to its subscribers in turn.
 
 
 ## Character constant
 
-A character constant is defined by entering the characters between double-quotes, as in `"abcdefg"`. If only one character is entered the constant is an atom, otherwise the constant is a list. For example, `"a"` is an atom. The expression `enlist "a"` is required to indicate a one character list. 
+A character constant is defined by entering the characters between double-quotes, as in `"abcdefg"`. If only one character is entered the constant is an atom, otherwise the constant is a list. For example, `"a"` is an atom. The expression `enlist "a"` is required to indicate a one character list.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Escape sequences](#escape-sequence) for entering non-graphic characters in character constants.
 
 
 ## Character vector
 
-A character vector is a simple list whose items are all character atoms. When displayed in a session, it appears as a string of characters surrounded by double-quotes, as in: `"abcdefg"`, not as individual characters separated by semicolons and surrounded by parentheses (that is, not in list notation). 
+A character vector is a simple list whose items are all character atoms. When displayed in a session, it appears as a string of characters surrounded by double-quotes, as in: `"abcdefg"`, not as individual characters separated by semicolons and surrounded by parentheses (that is, not in list notation).
 
 When a character vector contains only one character, the display is distinguished from the atomic character by prepending a comma, as in `,"x"`.
 
@@ -140,7 +140,7 @@ _Q for Mortals_
 
 ## Comparison tolerance
 
-Because floating-point values resulting from computations are usually only approximations to the true mathematical values, the Equal operator is defined so that `x = y` is `1b` (true) for two floating-point values that are either near one another or identical. 
+Because floating-point values resulting from computations are usually only approximations to the true mathematical values, the Equal operator is defined so that `x = y` is `1b` (true) for two floating-point values that are either near one another or identical.
 
 :fontawesome-solid-book-open:
 [Precision](precision.md)
@@ -158,7 +158,7 @@ A list of vectors of uniform type, e.g. `("quick";"brown";"fox")`.
 
 Lists, dictionaries and tables conform if they are either atoms or have the same count.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Conformability](conformable.md)
 
 
@@ -188,14 +188,14 @@ Control words `do`, `if`, and `while` interrupt the usual evaluation rules, e.g.
 [Evaluation control](control.md)
 
 
-## Count 
+## Count
 
 The number of items in a list, keys in a dictionary or rows in a table. The count of an atom is 1.
 
 
 ## Depth
 
-The depth of a list is the number of levels of nesting. For example, an atom has depth 0, a list of atoms has depth 1, a list of lists of atoms has depth 2, and so on. 
+The depth of a list is the number of levels of nesting. For example, an atom has depth 0, a list of atoms has depth 1, a list of lists of atoms has depth 2, and so on.
 
 The following function computes the depth of any data object:
 
@@ -203,7 +203,7 @@ The following function computes the depth of any data object:
 q)depth:{$[0>type x; 0; 1 + max depth'[x]]}
 ```
 
-That is, an atom has depth 0 and a list has depth equal to 1 plus the maximum depth of its items. 
+That is, an atom has depth 0 and a list has depth equal to 1 plus the maximum depth of its items.
 
 ```q
 q)depth 10             / atom
@@ -238,14 +238,14 @@ ages | 42  39    51  44
 
 ## Domain
 
-The domain of a function is all the possible values of its argument.  
-:fontawesome-solid-globe: 
+The domain of a function is all the possible values of its argument.
+:fontawesome-solid-globe:
 [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php "intmath.com")
 
-Functions with multiple arguments have multiple domains. 
-A function’s first domain is known as its _left domain_. 
-Its second domain is its _right domain_. 
-For example, the left domain of `rotate` is integer atoms and its right domain is lists. 
+Functions with multiple arguments have multiple domains.
+A function’s first domain is known as its _left domain_.
+Its second domain is its _right domain_.
+For example, the left domain of `rotate` is integer atoms and its right domain is lists.
 
 ```q
 q)3 rotate "abcde"
@@ -265,9 +265,9 @@ q)ssr["a";"a";"-"]   / left domain doesn't include atoms
   [0]  ssr["a";"a";"-"]
 ```
 
-All applicable values have domains. 
+All applicable values have domains.
 The domain of a dictionary is its keys.
-The domain of a list is its indexes. 
+The domain of a list is its indexes.
 The left domain of a matrix is its row numbers. Its right domain is its column numbers.
 The left domain of a table is its row numbers. Its right domain is its column names.
 
@@ -275,42 +275,42 @@ All applicable values are mappings from their domains to their [ranges](#range).
 
 ## Empty list
 
-The generic empty list has no items, has count 0, and is denoted by `()`. The empty character vector may be written `""`, the empty integer vector `0#0`, the empty floating-point vector `0#0.0`, and the empty symbol vector ``0#` `` or `` `$()``. 
+The generic empty list has no items, has count 0, and is denoted by `()`. The empty character vector may be written `""`, the empty integer vector `0#0`, the empty floating-point vector `0#0.0`, and the empty symbol vector ``0#` `` or `` `$()``.
 
 The distinction between `()` and the typed empty lists is relevant to certain operators (e.g. Match) and also to formatting data on the screen.
 
 
 ## Enumeration
 
-A representation of a list as indexes of the items in its nub or another list.  
-:fontawesome-regular-hand-point-right: 
+A representation of a list as indexes of the items in its nub or another list.
+:fontawesome-regular-hand-point-right:
 [Enumerations](enumerations.md)
 
 
 ## Entry
 
-The items of a dictionary are its entries. 
-Each entry consists of a key and a corresponding value. 
+The items of a dictionary are its entries.
+Each entry consists of a key and a corresponding value.
 
 
 ## Escape sequence
 
-An escape sequence is a special sequence of characters representing a character atom. An escape sequence usually has some non-graphic meaning, for example the tab character. An escape sequence can be entered in a character constant and displayed in character data. 
+An escape sequence is a special sequence of characters representing a character atom. An escape sequence usually has some non-graphic meaning, for example the tab character. An escape sequence can be entered in a character constant and displayed in character data.
 
 
 ## Expression block, expression list
 
-A pair of square brackets enclosing zero or more expressions separated by semicolons. 
+A pair of square brackets enclosing zero or more expressions separated by semicolons.
 
 
 ## Feedhandler
 
-A process that receives and processes, typically high volumes of, messages from a source such as a financial exchange. 
+A process that receives and processes, typically high volumes of, messages from a source such as a financial exchange.
 
 
 ## File descriptor
 
-Either: 
+Either:
 
 -   a _file symbol_
 -   a 2-list `(filesymbol;offset)`
@@ -374,9 +374,9 @@ A boolean or an integer in the range (0,1).
 
 A mapping from input/s to result defined by an algorithm.
 
-Operators, keywords, compositions, projections and lambdas are all functions. 
+Operators, keywords, compositions, projections and lambdas are all functions.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [`.Q.res`](../ref/dotq.md#qres-keywords) returns a list of keywords
 
 
@@ -386,7 +386,7 @@ Operators, keywords, compositions, projections and lambdas are all functions.
 A function can appear in an expression as data, and not be subject to immediate evaluation when the expression is executed, in which case it is an atom. For example:
 
 ```q
-q)f: +            / f is assigned Add 
+q)f: +            / f is assigned Add
 q)(f;102)         / an item in a list
 +
 102
@@ -402,29 +402,29 @@ x: .[ x; i; f; y]
    .[`x; i; f; y]
 ```
 
-In the first, referencing `x` as the first argument causes its entire value to be constructed, even though only a small part may be needed. In the second, the symbol `` `x`` is used as the first argument. In this case, only the parts of `x` referred to by the index `i` will be referenced and reassigned. The second case is usually more efficient than the first, sometimes significantly so. 
+In the first, referencing `x` as the first argument causes its entire value to be constructed, even though only a small part may be needed. In the second, the symbol `` `x`` is used as the first argument. In this case, only the parts of `x` referred to by the index `i` will be referenced and reassigned. The second case is usually more efficient than the first, sometimes significantly so.
 
 Where `x` is a directory, referencing the global variable `x` causes the entire dictionary value to be constructed, even though only a small part of it may be needed. Consequently, in the description of [Amend](../ref/amend.md), the symbol atoms holding global variable names are referred to as handles.
 
 
 ## HDB
 
-Historical database: a database that represents past states of affairs. 
+Historical database: a database that represents past states of affairs.
 
 
 ## Identity element
 
-For function `f` the value `x` such that `y~f[x;y]` for any `y`. 
+For function `f` the value `x` such that `y~f[x;y]` for any `y`.
 
-Q knows the identity elements of some functions, e.g. `+` (zero), but not others, e.g. {x+y} (also zero). 
+Q knows the identity elements of some functions, e.g. `+` (zero), but not others, e.g. {x+y} (also zero).
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-solid-hand-point-right:
 [Variadic syntax](variadic.md)
 
 
 ## Infix
 
-Applying an operator by writing it between its arguments, e.g.  
+Applying an operator by writing it between its arguments, e.g.
 `2+3`  applies `+` to 2 and 3
 
 
@@ -439,24 +439,27 @@ An iterator is a higher-order operator. It takes a value as its argument and ret
 
 All the iterators are unary operators. They are the only operators that can be applied postfix. They almost invariably are.
 
-<i class="fa-hand-point-right"></i>
-Reference: [Iterators](../ref/iterators.md)  
-Wikipedia: 
+:fontawesome-solid-book:
+[Iterators](../ref/iterators.md)
+<br>
+:fontawesome-brands-wikipedia-w:
 [Iterator pattern](https://en.wikipedia.org/wiki/Iterator_pattern),
-[Iterator](https://en.wikipedia.org/wiki/Iterator)  
-StackOverflow:
-[What exactly are iterator, iterable, and iteration?](https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration)  
-Dictionaries: 
-[Wiktionary](https://en.wiktionary.org/wiki/iterable),
+[Iterator](https://en.wikipedia.org/wiki/Iterator)
+<br>
+:fontawesome-brands-stack-exchange:
+[What exactly are iterator, iterable, and iteration?](https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration)
+<br>
+:fontawesome-solid-globe:
+[Wiktionary](https://en.wiktionary.org/wiki/iterable), 
 [Lexico](https://www.lexico.com/en/definition/iterate)
 
 
 
 ## K-tree
 
-The K-tree is the hierarchical name space containing all global variables created in a session. The initial state of the K-tree when kdb+ is started is a working directory whose absolute path name is `` `.`` together with a set of other top-level directories containing various utilities. The working directory is for interactive use and is the default active, or current, directory. 
+The K-tree is the hierarchical name space containing all global variables created in a session. The initial state of the K-tree when kdb+ is started is a working directory whose absolute path name is `` `.`` together with a set of other top-level directories containing various utilities. The working directory is for interactive use and is the default active, or current, directory.
 
-An application should define its own top-level directory that serves as its logical root, using a name which will not conflict with any other top-level application or utility directories present. Every subdirectory in the K-tree is a dictionary that can be accessed like any other variable, simply by its name. 
+An application should define its own top-level directory that serves as its logical root, using a name which will not conflict with any other top-level application or utility directories present. Every subdirectory in the K-tree is a dictionary that can be accessed like any other variable, simply by its name.
 
 
 ## Keyed table
@@ -466,12 +469,12 @@ See [Table](#table).
 
 ## Lambda
 
-Functions are defined in the _lambda notation_: an optional signature followed by a list of expressions, separated by semicolons, and all embraced by curly braces, e.g.  
-`{[a;b](a*a)+(b*b)+2*a*b}`. 
+Functions are defined in the _lambda notation_: an optional signature followed by a list of expressions, separated by semicolons, and all embraced by curly braces, e.g.
+`{[a;b](a*a)+(b*b)+2*a*b}`.
 
 A defined function is also known as a _lambda_.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Lambda notation](function-notation.md)
 
 
@@ -505,10 +508,10 @@ A list in which all items are lists of the same count.
 
 ## Name, namespace
 
-A [namespace](https://en.wikipedia.org/wiki/Namespace) is a container or context within which a name resolves to a unique value. 
-Namespaces are children of the _default namespace_ and are designated by a dot prefix. 
-Names in the default namespace have no prefix. 
-The default namespace of a q session is parent to multiple namespaces, e.g. `.h`, `.Q` and `.z`. 
+A [namespace](https://en.wikipedia.org/wiki/Namespace) is a container or context within which a name resolves to a unique value.
+Namespaces are children of the _default namespace_ and are designated by a dot prefix.
+Names in the default namespace have no prefix.
+The default namespace of a q session is parent to multiple namespaces, e.g. `.h`, `.Q` and `.z`.
 (Namespaces with 1-character names – of either case – are reserved for use by Kx.)
 
 ```q
@@ -549,7 +552,7 @@ Reference: [`distinct`](../ref/distinct.md)
 
 ## Null
 
-Null is the value of an unspecified item in a list formed with parentheses and semicolons. For example, null is the item at index position 2 of ``(1 2;"abc";;`xyz)``. 
+Null is the value of an unspecified item in a list formed with parentheses and semicolons. For example, null is the item at index position 2 of ``(1 2;"abc";;`xyz)``.
 
 Null is an atom; its value is `::` <!-- , or `first()` -->. Nulls have special meaning in the right argument of the operator Index and in the bracket form of function application.
 
@@ -561,15 +564,15 @@ A function of rank 0, i.e. that takes no arguments.
 
 ## Operator
 
-A primitive binary function that may be applied infix as well as prefix, e.g. `+`, `&`.  
+A primitive binary function that may be applied infix as well as prefix, e.g. `+`, `&`.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Application](application.md)
 
 
 ## Partitioned file
 
-To limit the size of files in an HDB it is common to partition them by time period, for example, calendar day. 
+To limit the size of files in an HDB it is common to partition them by time period, for example, calendar day.
 
 The partitioning scheme is described to kdb+ in the `par.txt` file.
 
@@ -583,9 +586,9 @@ Applying an iterator to its argument by writing it to the right, e.g. `+/` appli
 
 ## Prefix
 
-Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `vx` is equivalent to `v[x]`. 
+Prefix notation applies a unary value `v` to its argument or indices `x`; i.e. `vx` is equivalent to `v[x]`.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Application](application.md)
 
 
@@ -604,9 +607,9 @@ A symbol defining the communication path to a process.
 
 ## Project, projection
 
-A function passed fewer arguments than its rank projects those arguments and returns a projection: a function of the unspecified argument/s. 
+A function passed fewer arguments than its rank projects those arguments and returns a projection: a function of the unspecified argument/s.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [Projection](application.md#projection)
 
 
@@ -615,19 +618,19 @@ A function passed fewer arguments than its rank projects those arguments and ret
 A value with rank 4.
 
 
-## Range 
+## Range
 
-The range of a function is the complete set of all its possible results. 
+The range of a function is the complete set of all its possible results.
 
-All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges. 
+All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges.
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
 
 
 ## Rank
 
-Of a **function**, the number of arguments it takes. 
+Of a **function**, the number of arguments it takes.
 
 rank | adjective  | example
 -----|------------|---------------------------------------------
@@ -640,13 +643,13 @@ rank | adjective  | example
 :fontawesome-regular-hand-point-right:
 [Function notation](function-notation.md#rank)
 
-Of a **list**, the depth to which it is nested. 
+Of a **list**, the depth to which it is nested.
 A vector has rank 1; a matrix, rank 2.
 
 
 ## RDB
 
-Real-time database: a database that aims to represent a state of affairs in real time. 
+Real-time database: a database that aims to represent a state of affairs in real time.
 
 
 ## Reference, pass by
@@ -671,7 +674,7 @@ See _Argument_
 
 ## Script
 
-A script is a text file; its lines a list of expressions and/or system commands, to be executed in sequence. 
+A script is a text file; its lines a list of expressions and/or system commands, to be executed in sequence.
 By convention, a script file has the extension `q`.
 
 Within a script
@@ -685,21 +688,21 @@ Within a script
 The argument list that (optionally) begins a lambda, e.g. in `{[a;b](a*a)+(b*b)+2*a*b}`, the signature is  `[a;b]`.
 
 
-## Simple table 
+## Simple table
 
 See [Table](#table).
 
 
 ## Splayed table
 
-To limit the size of individual files, and to speed searches, it is common to _splay_ a large table by storing its columns as separate files. 
+To limit the size of individual files, and to speed searches, it is common to _splay_ a large table by storing its columns as separate files.
 
 The files may also be [partitioned](#partitioned-file).
 
 
 ## String
 
-There is no string datatype in q. _String_ in q means a char vector, e.g. "abc". 
+There is no string datatype in q. _String_ in q means a char vector, e.g. "abc".
 
 
 ## Symbol
@@ -758,7 +761,7 @@ bob   SFO | 51
 alice SFO | 44
 ```
 
-A _keyed table_ is a table of which one or more columns have been defined as its key. A table’s key/s (if any) are supposed to be distinct: updating the table with rows with existing keys overwrites the previous records with those keys. A table without keys is a simple table. 
+A _keyed table_ is a table of which one or more columns have been defined as its key. A table’s key/s (if any) are supposed to be distinct: updating the table with rows with existing keys overwrites the previous records with those keys. A table without keys is a simple table.
 
 A keyed table is a dictionary. Its key is a table.
 
@@ -780,12 +783,12 @@ A value of rank 3, i.e. a function with three arguments; or a list of depth ≥3
 
 ## Ticker plant
 
-A source of messages. 
+A source of messages.
 
 
 ## Unary form
 
-Most binary operators have unary forms that take a single argument. Q provides more legible covers for these functions.  
+Most binary operators have unary forms that take a single argument. Q provides more legible covers for these functions.
 
 :fontawesome-solid-book-open:
 [Exposed infrastructure](exposed-infrastructure.md)
@@ -806,13 +809,13 @@ See **Iterator**.
 
 ## Underlying value
 
-Temporal and text data values are represented internally by numbers known as their _underlying value_. Comparisons – even between types – work on these underlying values. 
+Temporal and text data values are represented internally by numbers known as their _underlying value_. Comparisons – even between types – work on these underlying values.
 
 :fontawesome-solid-book-open:
 [Comparisons](comparison.md)
 
 
-## Uniform function 
+## Uniform function
 
 A uniform function `f` such that `count[x]~count f x`, e.g. `deltas`
 
@@ -824,7 +827,7 @@ A list in which all items are of the same datatype. See also _vector_.
 
 ## Unsigned function
 
-A lambda without a signature, e.g. `{x*x}`.  
+A lambda without a signature, e.g. `{x*x}`.
 
 
 ## Value, pass by
@@ -832,18 +835,18 @@ A lambda without a signature, e.g. `{x*x}`.
 _Pass by value_ means passing an object (not its name) as an argument to a function, e.g. `key .q`.
 
 
-## Variadic 
+## Variadic
 
-A value that may be applied to a variable number arguments is variadic. For example, a matrix, the operator `@`, or the derived function `+/`. 
+A value that may be applied to a variable number arguments is variadic. For example, a matrix, the operator `@`, or the derived function `+/`.
 
-:fontawesome-regular-hand-point-right: 
-[Each Prior](../ref/maps.md#each-prior), 
-[Over, Scan](../ref/accumulators.md) 
+:fontawesome-regular-hand-point-right:
+[Each Prior](../ref/maps.md#each-prior),
+[Over, Scan](../ref/accumulators.md)
 
 
 ## Vector
 
-A uniform list of basic types that has a special shorthand notation. A char vector is known as a _string_. 
+A uniform list of basic types that has a special shorthand notation. A char vector is known as a _string_.
 
 
 ## `x`
@@ -874,9 +877,9 @@ The act of defining a view does not trigger its evaluation.
 
 A view should not have side effects, i.e. should not update global variables.
 
-:fontawesome-regular-hand-point-right: 
-[`view`, `views`](../ref/view.md)  
-[`.Q.view`](../ref/dotq.md#qview-subview) (subview)  
+:fontawesome-regular-hand-point-right:
+[`view`, `views`](../ref/view.md)
+[`.Q.view`](../ref/dotq.md#qview-subview) (subview)
 Tutorial: [Views](../learn/views.md)
 
 

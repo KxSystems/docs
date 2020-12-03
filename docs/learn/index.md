@@ -1,8 +1,7 @@
 ---
-title: Get started  – Learn – kdb+ and q documentation
+title: Get started | Learn | kdb+ and q documentation
 description: How to get started installing and using kdb+
 author: Stephen Taylor
-keywords: download, install, introduction, license, kdb+, q, tutorial
 ---
 # Get started with q and kdb+
 
@@ -12,52 +11,53 @@ keywords: download, install, introduction, license, kdb+, q, tutorial
 
 <div id="kx-home-page-grid" markdown="1">
 
-[<i class="fas fa-fw fa-download fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-download:</span>
+<br/>
 Download<br/>
 :fontawesome-brands-linux: :fontawesome-brands-apple: :fontawesome-brands-windows: ](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
 {: .md-button}
 
-[<i class="fas fa-fw fa-power-off fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-power-off:</span><br/>
 Install](install.md "How to install kdb+")
 {: .md-button}
 
-[<i class="fas fa-fw fa-hiking fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-hiking:</span><br/>
 Mountain tour](tour/index.md "A one-page rapid tour of the q language")
 {: .md-button}
 
-[<i class="fab fa-fw fa-python fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-brands-python:</span><br/>
 Examples<br>from Python](python/examples/index.md "Examples from Python")
 {: .md-button}
 
-[<i class="fab fa-fw fa-youtube fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-brands-youtube:</span><br/>
 Q for All](q-for-all.md "Video tutorials by Jeffry Borror")
 {: .md-button}
 
-[<i class="fas fa-fw fa-street-view fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-street-view:</span><br/>
 _Q for Mortals_](/q4m3/ "The classic textboox for kdb+, now in its 3rd edition")
 {: .md-button}
 
-[<i class="fas fa-fw fa-chart-line fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-chart-line:</span><br/>
 Q for quants](brief-introduction.md "A q tutorial for analysts and quants")
 {: .md-button}
 
-[<i class="fas fa-fw fa-code fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-code:</span><br/>
 Q by examples](q-by-examples.md "An introduction to q through examples")
 {: .md-button}
 
-[<i class="fas fa-fw fa-database fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-database:</span><br/>
 Starting kdb+](startingkdb/index.md "Getting started on real-time and historical database")
 {: .md-button}
 
-[<i class="fas fa-fw fa-book-reader fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-book-reader:</span><br/>
 Reading room](reading/index.md "Example programs for study")
 {: .md-button}
 
-[<i class="fas fa-fw fa-laptop-code fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-laptop-code:</span><br/>
 Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
 {: .md-button}
 
-[<i class="fas fa-fw fa-graduation-cap fa-3x"></i><br/>
+[<span style="font-size: 3em">:fontawesome-solid-graduation-cap:</span><br/>
 Advanced q](advanced.md "Advanced topics in q")
 {: .md-button}
 
@@ -78,10 +78,9 @@ Other sections:
 
 section | content
 --------|--------
-:fontawesome-solid-book: [Reference](../ref/index.md) | formal definition of  language elements
-:fontawesome-solid-book-open:  [Basics](../basics/application.md)  | core aspects of writing q and using kdb+, such as [using the filesystem](../basics/files.md), [interprocess communication](../basics/ipc.md) 
-:fontawesome-solid-street-view:  _Q for Mortals_ [<span class="nowrap">§14 Introduction to kdb+</span>](/q4m3/14_Introduction_to_Kdb%2B/) | persisting tables in the filesystem 
-:fontawesome-solid-graduation-cap: [Architecture](../architecture/index.md) | topics in building systems using kdb+ processes 
+:fontawesome-solid-book: [Language](../ref/index.md) | formal definition of  language elements
+:fontawesome-solid-database:  [Database](../database/index.md)  | persisting tables in the filesystem 
+:fontawesome-solid-university: [Architecture](../architecture/index.md) | topics in building systems using kdb+ processes 
 :fontawesome-regular-map: [White papers](../wp/index.md) | extended treatments of topics in q programming and in building kdb+ systems
 
 

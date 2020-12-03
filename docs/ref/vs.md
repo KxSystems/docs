@@ -4,16 +4,16 @@ description: vs is a q keyword that performs variousn functions under the scheme
 author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
-<div style="float: right">
-<i class="fas fa-wrench fa-5x"></i>
-</div>
+[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
+{: style="float: right; max-width: 200px"}
+
 
 # `vs`
 
 
 
 
-_Vector from scalar_
+_“Vector from scalar”_
 
 -   _partition a list_
 -   _encode a vector from an atom_
@@ -155,7 +155,6 @@ q)10 vs(1995;1996 1997)
 ```
 
 
-----
 :fontawesome-solid-book:
 [`sv`](sv.md#decode) decode
 <br>
