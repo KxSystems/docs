@@ -175,7 +175,14 @@ q)`:mydb.us.com:5010:elmo:sesame "1+1"
 
 It is more efficient to keep a connection open if there is an opportunity to re-use it for other queries.
 
+One-shot sync queries can now execute via `` `::[(":host:port";timeout);query]``.
+(Since V4.0 2020.03.09.)
 
+```q
+`::[(":localhost:5000:username:password";5000);"2+3"]
+```
+
+`":host:port"` can also be a symbol as `` `:host:port``.
 
 ----
 :fontawesome-solid-book:
