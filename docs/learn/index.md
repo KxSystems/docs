@@ -91,6 +91,9 @@ section | content
 ### _Fun Q_
 **A Functional Introduction to Machine Learning in Q**
 by Nick Psaris, available from [Amazon](https://www.amazon.com/dp/1734467509). 
+<br>
+:fontawesome-solid-globe: 
+[Review](https://vector.org.uk/book-review-fun-q-a-functional-introduction-to-machine-learning-in-q/) in _Vector_
 
 :fontawesome-solid-quote-left:
 Whether you are a data scientist looking to learn q, or a kdb+ developer looking to learn machine learning, there is something for everyone.
@@ -104,6 +107,14 @@ Whether you are a data scientist looking to learn q, or a kdb+ developer looking
 by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-Version-Introduction-Programming/dp/0692573674/) or [Amazon.co.uk](https://www.amazon.co.uk/d/Books/q-Mortals-Version-3-Introduction-Programming/0692573674/). Covers up to kdb+ V3.3. If you are a new kdb+ user, this is the book for you!
 
 [HTML edition](/q4m3/) now online
+</div>
+
+<div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
+![Q Tips](../img/kdbcn.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
+### kdb+中文教程 
+**kdb+ Tutorial in Chinese**
+by Richard Zwz, available from [kdbcn.gitee.io](https://kdbcn.gitee.io/)
+
 </div>
 
 <div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
