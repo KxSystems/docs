@@ -113,7 +113,7 @@ by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-
 ![Q Tips](../img/kdbcn.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
 ### kdb+中文教程 
 **kdb+ Tutorial in Chinese**
-by Richard Zwz, available from [kdbcn.gitee.io](https://kdbcn.gitee.io/)
+by Kdbcn Workshop, available from [kdbcn.gitee.io](https://kdbcn.gitee.io/)
 
 </div>
 
