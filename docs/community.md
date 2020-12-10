@@ -37,11 +37,16 @@ The community of kdb+ developers is active around the world and around the clock
 : [kdb+/k/q discussion](https://www.linkedin.com/groups/3921915/): Code, blog posts, job ads
 
 
-## :fontawesome-brands-meetup: Meetup.com
+## :fontawesome-brands-meetup: Meetup
 
 : Use [meetup.com](https://www.meetup.com) to find Kx events round the world. 
 
 : If you have a suggestion for a Meetup presentation, please write to [evangelism@kx.com](mailto:evangelism@kx.com). 
+
+
+## :fontawesome-brands-youtube: YouTube
+
+: _Analytics At Speed_ presentations are on our [YouTube channel](https://www.youtube.com/playlist?list=PLypX5sYuDqvq3PRQWkgVu3Y5kSQD9Lkc4 "YouTube").
 
 
 ## :fontawesome-brands-twitter: Twitter
@@ -53,6 +58,8 @@ The community of kdb+ developers is active around the world and around the clock
 <div markdown="1" style="padding-top:5px;">
 [@RebeccaK_kx](https://twitter.com/RebeccaK_kx)
 is the Kx Evangelist.
+<br>
+Voted [Tech Evangelist of the Year](https://firstderivatives.com/careers/blogs/tech-evangelist-of-the-year/), NYC, 2020.
 </div>
 
 [#kdb/q](https://twitter.com/search?q=%23kdb%2Fq)
