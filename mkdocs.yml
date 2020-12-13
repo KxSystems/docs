@@ -3,13 +3,15 @@ copyright: 'This work is licensed under a <a rel="license" href="https://creativ
 dev_addr: '0.0.0.0:9000'
 docs_dir: 'docs'
 extra_css: 
-  - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
+  # - 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism-solarizedlight.min.css'
   - 'https://code.kx.com/stylesheets/extra.css'
+  - 'https://code.kx.com/stylesheets/prism.css'
   - 'stylesheets/q.css'
   # - 'stylesheets/carousel-6.css'
 extra_javascript: 
   # Omits plugins Command Line, Line highlight, and Line Numbers: no effect
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'
+  # - 'https://code.kx.com/scripts/prism.js'
   - 'https://code.kx.com/scripts/prism.js'
   - 'scripts/jquery-3.5.1.min.js' # jQuery for theme.js
   - 'scripts/theme.js'
@@ -632,7 +634,9 @@ nav:
       - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
       - J. Quobyte: cloud/aws/app-j-quobyte.md
     - AWS Lambda: cloud/aws-lambda/index.md
-    - Google CPM: cloud/gcpm/index.md
+    - Google CPM: 
+      - Cloud Platform Marketplace: cloud/gcpm/index.md
+      - Reference architecture: cloud/gcpm/architecture.md
     - Auto Scaling*:
       - Overview: cloud/autoscale/index.md
       - Amazon Web Services: cloud/autoscale/aws.md

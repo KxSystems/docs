@@ -46,7 +46,8 @@ In this article we explain how to write functions in C that can be used in this 
 ## Compiling extension modules
 
 ### Windows
-```powershell
+
+```shell
 cl /LD bar.c bar.def q.lib
 ```
 

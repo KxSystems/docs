@@ -374,13 +374,13 @@ Requirements are:
 
 Install PyQ:
 
-```powershell
+```shell
 pip install -U pyq
 ```
 
 You can start PyQ by running
 
-```powershell
+```shell
 c:\q\w32\q.exe python.q
 ```
 
@@ -390,13 +390,13 @@ c:\q\w32\q.exe python.q
 
 You can run tests too: first install the required packages:
 
-```powershell
+```shell
 pip install pytest pytest-pyq
 ```
 
 Then run:
 
-```powershell
+```shell
 set QBIN=c:\q\w32\q.exe
 %QBIN% python.q -mpytest --pyargs pyq < nul
 ```
