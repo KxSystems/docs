@@ -47,7 +47,7 @@ White papers are starred in the navigation menus.
 
 ## :fontawesome-solid-desktop: Applications of kdb+
 
--   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>Kraken Candle, 2020.04
+-   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>James Galligan, 2020.04
 -   [**Comparing option-pricing methods in q**](option-pricing/index.md)<br>Deanna Morgan, 2019.10
 -   [**Kdb+ in astronomy**](astronomy.md)<br>Andrew Magowan &amp; James Neill, 2019.09
 -   [**Storing and exploring the Bitcoin blockchain**](blockchain/index.md)<br>Jeremy Lucid &amp; Daniel Irwin, 2018.12
