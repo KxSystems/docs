@@ -11,7 +11,7 @@ keywords: keywords: machine learning, automated, ml, feature extraction, feature
 
 The top-level functions in the repository are:
 
-`.automl.run`
+`.automl.fit`
 
 : Run the automated machine learning pipeline on user-defined data and target.
 
