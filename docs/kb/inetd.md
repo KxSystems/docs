@@ -57,9 +57,9 @@ kdbtaq   stream  tcp   nowait kdbuser  /home/kdb/q/l64/q   q /home/kdb/taq -s 4
 …
 ```
 
-For `xinetd`, you'll need to create a configuration file (`kdbtaq` for example) for the new service in the `/etc/xinetd.d` directory (see the  xinetd.conf man page for more details).
+For `xinetd`, you’ll need to create a configuration file (`kdbtaq` for example) for the new service in the `/etc/xinetd.d` directory (see the  `xinetd.conf` man page for more details).
 
-`/etc/xinet.d/kdbtaq`:
+`/etc/xinetd.d/kdbtaq`:
 
 ```txt
 # default: on
