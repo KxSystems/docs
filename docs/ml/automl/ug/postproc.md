@@ -1,13 +1,11 @@
 ---
 title: Data post-processing procedures for automated machine learning | Machine Learning | Documentation for kdb+ and q
-author: Deanna Morgan
 description: Default behavior of automated machine learning; common processes completed across all forms of automated machine learning
-date: November 2020
+author: 
+date: 
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
 # :fontawesome-solid-share-alt: Automated Post-Processing
-
-
 
 :fontawesome-brands-github: 
 [KxSystems/automl](https://github.com/kxsystems/automl)
@@ -22,6 +20,115 @@ In its default configuration, the pipeline returns:
 4. A report outlining the steps taken and results achieved at each step of a run.
 
 These outputs are contained within subfolders for `images`, `models`, `config`, and `reports` respectively, contained within a directory specific to the date and time of the run. The folder structure for each unique run is as follows: `automl/outputs/date/run_time/...`.
+
+
+## Processing nodes
+
+<div markdown="1" class="typewriter">
+.automl.x.node.function   **Top-level processing node functions**
+  preprocParams  Collect relevant parameters for report/graph generation from the preprocessing nodes in the workflow
+  predictParams  Collect relevant parameters for report/graph generation from the prediction stages in the workflow
+  pathConstruct  Construct save paths for generated graphs/reports
+  saveGraph      Save all the graphs required for report generation
+  saveMeta       Save relevant metadata for use with a persisted model on new data
+  saveReport     Save a Python generated report summarizing the current run via pyLatex/reportlab
+  saveModels     Save encoded representation of best model retrieved during run of AutoML
+</div>
+
+## `.automl.preprocParams.node.function`
+
+__
+
+Syntax: `.automl.preprocParams.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+## `.automl.predictParams.node.function`
+
+__
+
+Syntax: `.automl.predictParams.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+## `.automl.pathConstruct.node.function`
+
+__
+
+Syntax: `.automl.pathConstruct.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+## `.automl.saveGraph.node.function`
+
+__
+
+Syntax: `.automl.saveGraph.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+## `.automl.saveMeta.node.function`
+
+__
+
+Syntax: `.automl.saveMeta.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+## `.automl.saveReport.node.function`
+
+__
+
+Syntax: `.automl.saveReport.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+## `.automl.saveModels.node.function`
+
+__
+
+Syntax: `.automl.saveModels.node.function[]`
+
+Where
+
+returns 
+
+```q
+```
+
+
+
+===============================
 
 
 ## Visualizations

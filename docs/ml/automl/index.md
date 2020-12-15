@@ -2,12 +2,10 @@
 title: Automated Machine Learning | Machine Learning | Documentation for q and kdb+
 description: The kdb+/q automated machine learning platform helps find models to predict a target of interest, and handles preprocessing data, export of models, images and reports.
 author: Deanna Morgan
-date: November 2020
-keywords: machine learning, ml, ai, automated, preprocessing, postprocessing, feature extraction, feature selection, statistics, interpretability, kdb+, q
+date: December 2020
+keywords: machine learning, ml, ai, automated, automl, preprocessing, processing, postprocessing, feature extraction, feature selection, statistics, interpretability, kdb+, q
 ---
 # :fontawesome-solid-share-alt: Automated Machine Learning in kdb+/q
-
-
 
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl/)
@@ -20,15 +18,15 @@ The automated machine learning platform described here is built largely on the t
 4. Model Optimization
 5. Report generation and model persistence
 
-Each of these steps is described in detail. This allows users to understand the processes by which decisions are being made and the transformations which their data undergo during the production of the output models.
+Each of these steps are described in detail. This allows users to understand the processes by which decisions are being made and the transformations which their data undergo during the production of the output models.
 
 At present the machine learning frameworks supported for this are based on:
 
-1. One-to-one feature to target non-time series
-2. [FRESH](../toolkit/fresh.md)-based feature extraction and model production
+1. One-to-one feature to target non-time series.
+2. [FRESH](../toolkit/fresh.md)-based feature extraction and model production.
 3. [NLP](../nlp/index.md)-based feature creation and word2vec transformation. 
 
-Over time the functionality available and the problems which can be solved using this library will be extended to include:
+Over time, the functionality available and the problems which can be solved using this library will be extended to include:
 
 -   Time series use cases and architectures 
 -   Broader workflow flexibility
@@ -36,10 +34,9 @@ Over time the functionality available and the problems which can be solved using
 
 !!! note
 
-	This should not necessarily be seen as a replacement to commercially available automated machine learning platforms. The work outlined here is intended to allow kdb+ users to explore the use of machine learning on their data and highlight automation techniques which can be deployed through kdb+ for various workflows. 
+    This should not necessarily be seen as a replacement to commercially available automated machine learning platforms. The work outlined here is intended to allow kdb+ users to explore the use of machine learning on their data and highlight automation techniques which can be deployed through kdb+ for various workflows. 
 
     This platform is currently in beta and feedback on the interface is requested. Please write to ai@kx.com. 
-
 
 ## Requirements
 
@@ -48,8 +45,7 @@ The following requirements cover all those needed to run the libraries in the cu
 -   [embedPy](../embedpy/index.md)
 -   [ML-Toolkit](../toolkit/index.md)
 
-A number of Python dependencies also exist for the running of embedPy functions within both the machine learning utilities and FRESH libraries.
-These can be installed as outlined at
+A number of Python dependencies also exist for the running of embedPy functions within both the machine learning utilities and FRESH libraries. These can be installed as outlined at:
 
 :fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/automl)
@@ -64,7 +60,7 @@ or Conda
 ```bash
 conda install --file requirements.txt
 ```
-The requirements needed in order to avail of the NLP functionality, can be found on [Github](https://github.com/kxsystems/automl#optional-requirements-for-advanced-modules)
+The requirements needed in order to avail of the NLP functionality, can be found on [Github](https://github.com/kxsystems/automl#optional-requirements-for-advanced-modules).
 
 ## Installation and loading
 
