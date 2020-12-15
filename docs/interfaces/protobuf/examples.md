@@ -9,19 +9,19 @@ description: Examples of interfacing kdb+ and Protobuf
 
 It is assumed in the example that you are executing logic in the root of the `protobufkdb` repository. The file structure for the required components from this location is:
  
-```txt
-.
-├── proto
+```treeview
+./
+├── proto/
 │   ├── google
 │   ├── kdb_type_specifier.proto
 │   └── sample.proto
-└── q
+└── q/
     └── protobufkdb.q
 ```
 
 Here `sample.proto` is defined as follows:
 
-```proto
+```protobuf
 syntax = "proto3";
 
 option cc_enable_arenas = true;

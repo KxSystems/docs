@@ -18,7 +18,7 @@ We describe how kdb+ numeric and string types are represented in Protobuf, how P
 
 A Protobuf message is composed of a number of fields where each field can be scalar, repeated scalar, sub-message, repeated sub-message, enum or map. For example:
 
-```proto
+```protobuf
 message MyMessage {
   int32 scalar_int = 1;
   repeated double repeated_double = 2;
@@ -153,7 +153,7 @@ Unset              Empty mixed list
 
 To support the use of the kdb+ temporal types and GUIDs which do not have an equivalent representation in Protobuf, a field option extension is provided in `src/kdb_type_specifier.proto` (for compiled in message definitions) and `proto/kdb_type_specified.proto` (for dynamically imported message definitions). This allows a kdb+ specific context to be applied to fields, map-keys and map-values:
 
-```proto
+```protobuf
 syntax = "proto2";
 
 import "google/protobuf/descriptor.proto";
@@ -192,7 +192,7 @@ extend google.protobuf.FieldOptions {
 
 In order to apply a `KdbTypeSpecifier` to a field you must import `kdb_type_specifier.proto` into your `.proto` file, then specify the `KdbTypeSpecifier` field option as, for example:
 
-```proto
+```protobuf
 syntax = "proto3";
 
 import "kdb_type_specifier.proto";

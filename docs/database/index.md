@@ -32,8 +32,8 @@ Q will [serialize and file](object.md) any object as a single binary file – th
 
 A database with tables `trades` and `quotes`, and a sym list:
 
-```txt
-db
+```treeview
+db/
 ├── quotes
 ├── sym
 └── trades
@@ -48,13 +48,13 @@ If most queries on a table do not need all the columns for each query consider s
 
 A table is [splayed](https://en.wiktionary.org/wiki/splay "Wiktionary") by storing each of its columns as a single file. The table is represented by a directory.
 
-```txt
-db
-├── quotes
+```treeview
+db/
+├── quotes/
 |   ├── time
 |   ├── sym
 |   └── price
-└── trades
+└── trades/
     ├── time
     ├── sym
     ├── price
@@ -76,26 +76,28 @@ consider partitioning it.
 
 The records of a [partitioned table](../kb/partition.md) are divided in its root directory between multiple partition directories. The table is partitioned by the values of a single column. Each partition contains records that have the same value in the partitioning column. With timeseries data, this is most commonly a date or time.
 
-```txt
-db
-├── 2020.10.03
-│   ├── quotes
+```tree
+db/
+├── 2020.10.03/
+│   ├── quotes/
 │   │   ├── price
 │   │   ├── sym
 │   │   └── time
-│   └── trades
+│   └── trades/
 │       ├── price
 │       ├── sym
 │       ├── time
 │       └── vol
-├── 2020.10.05
-│   ├── quotes
+├── 2020.10.05/
+│   ├── quotes/
 │   │   ├── price
 │   │   ├── sym
 │   │   └── time
-│   └── trades
+│   └── trades/
 │       ├── price
-..
+│       ├── sym
+│       ├── time
+│       └── vol
 └── sym
 ```
 
@@ -119,23 +121,23 @@ The root directory of a [segmented database](segment.md) contains only two files
 
 Segments are stored outside the root, usually on various volumes. Each segment contains a partitioned table.
 
-```txt
+```tree
 DISK 0             DISK 1                     DISK 2
-db                 db                        db
-├── par.txt        ├── 2020.10.03            ├── 2020.10.04
-└── sym            │   ├── quotes            │   ├── quotes
+db/                db/                       db/
+├── par.txt        ├── 2020.10.03/           ├── 2020.10.04/
+└── sym            │   ├── quotes/           │   ├── quotes/
                    │   │   ├── .d            │   │   ├── .d
                    │   │   ├── price         │   │   ├── price
                    │   │   ├── sym           │   │   ├── sym
                    │   │   └── time          │   │   └── time
-                   │   └── trades            │   └── trades
+                   │   └── trades/           │   └── trades/
                    │       ├── .d            │       ├── .d
                    │       ├── price         │       ├── price
                    │       ├── sym           │       ├── sym
                    │       ├── time          │       ├── time
                    │       └── vol           │       └── vol
-                   ├── 2020.10.05            ├── 2020.10.06
-                   │   ├── quotes            │   ├── quotes
+                   ├── 2020.10.05/           ├── 2020.10.06/
+                   │   ├── quotes/           │   ├── quotes/
                    ..                        ..
 ```
 

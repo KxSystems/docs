@@ -6,7 +6,7 @@ keywords: atom, boolean, character, datatype, date, datetime, double, float, int
 ---
 # Datatypes
 
-<pre markdown="1" class="language-txt" style="font-size:80%">
+<div markdown="1" class="typewriter">
 n   c   name      sz  literal            null inf SQL       Java      .Net
 \------------------------------------------------------------------------------------
 0   *   list
@@ -49,7 +49,7 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 110     [f/:](../ref/maps.md#each-left-and-each-right)
 111     [f\\:](../ref/maps.md#each-left-and-each-right)
 112     [dynamic load](../ref/dynamic-load.md)
-</pre>
+</div>
 
 _n_: short int returned by [`type`](../ref/type.md) and used for [Cast](../ref/cast.md), e.g. `9h$3`<br>
 _c_: character used lower-case for [Cast](../ref/cast.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)<br>

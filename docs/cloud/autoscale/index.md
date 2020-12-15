@@ -13,6 +13,9 @@ White paper
 by [Jack Stapleton](cost-risk.md#author)
 {: .wp-author}
 
+:fontawesome-brands-youtube:
+[Autoscaling the Real-time Database in the Cloud](https://youtu.be/3YFhoL9Rw6k "YouTube presentation")
+<br>
 :fontawesome-brands-github:
 [kxcontrib/cloud-autoscaling](https://github.com/kxcontrib/cloud-autoscaling)
 
