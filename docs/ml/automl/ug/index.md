@@ -1,8 +1,8 @@
 ---
 title: Automated machine learning user guide | Machine Learning | Documentation for kdb+ and q
 description: How to interact with the automated machine learning interface
-author: Deanna Morgan
-date: December 2020
+author: 
+date: 
 keywords: keywords: machine learning, automated, ml, automl, graphing, cli, user interface
 ---
 
