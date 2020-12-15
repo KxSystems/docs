@@ -1,9 +1,9 @@
 ---
-title: Automated machine-learning user guide | Machine Learning | Documentation for kdb+ and q
-author: Conor McCarthy
-description: How to call the top-level functions in the automated machine-learning repository. 
-date: March 2020
-keywords: machine learning, automated, ml, feature extraction, feature selection, data cleansing
+title: Automated machine learning user guide | Machine Learning | Documentation for kdb+ and q
+author: Deanna Morgan
+description: How to call the top-level functions in the automated machine learning repository. 
+date: November 2020
+keywords: keywords: machine learning, automated, ml, feature extraction, feature selection, data cleansing, model selection, optimization, time series
 ---
 # User interface
 
@@ -11,17 +11,17 @@ keywords: machine learning, automated, ml, feature extraction, feature selection
 
 The top-level functions in the repository are:
 
-`.automl.run`
+`.automl.fit`
 
-: Run the automated machine -learning pipeline on user-defined data and target.
+: Run the automated machine learning pipeline on user-defined data and target.
 
 `.automl.new`
 
-: Using a previously fit model along with the date and time from a previous execution of `.automl.run`, return predicted values for new tabular data.
+: Using a previously fit model, along with the date and time from a previous execution of `.automl.run`, return predicted values for new tabular data.
 
-Both of these functions are modifiable by a user to suit specific use cases and have been designed where possible to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](options.md).
+Both of these functions are modifiable by a user to suit specific use cases. Where possible, they have been designed to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](options.md).
 
-The following examples and function descriptions outline the most basic implementations of each of the above functions for each of the use cases to which this platform can currently be applied. Namely non-timeseries-specific machine-learning examples and implementations making use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
+The following examples and function descriptions outline the most basic vanilla implementations of AutoML specific to each supported use case. Namely, non-time series specific machine learning examples, along with time series examples which make use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
 
 
 ## `.automl.run`
@@ -44,88 +44,123 @@ The default setup saves the following items from an individual run:
 
 1. The best model, saved as a HDF5 file, or ‘pickled’ byte object.
 2. A saved report indicating the procedure taken and scores achieved.
-3. A saved binary encoded dictionary denoting, the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
-4. Results from each step of the pipeline published to console.
+3. A saved binary encoded dictionary denoting the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
+4. Results from each step of the pipeline saved to the generated report.
 5. On application NLP techniques a word2vec model is saved outlining the text to numerical mapping for a specific run.
 
-The following shows the execution of the function `.automl.run` in a regression task for a non-time series application. Data and implementation code is provided for other problem types however for brevity, output is displayed in full for one example only.
+The following examples demonstrate how to apply data in various use cases to `.automl.run`. Note that while only one example is shown for each feature extraction type, datasets with binary-classification, multi-classification and regression targets can all be used in each case. Additionally, the terminal output has only been displayed for the last example.
 
 ```q
-// Non time-series regression example table
-q)tab:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+// Non-time series (normal) regression example table
+q)table:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
 // Regression target
-q)reg_tgt:asc 100?1f
+q)regTarget:asc 100?1f
 // Feature extraction type
-q)ftype:`normal
+q)featExtractType:`normal
 // Problem type
-q)ptype:`reg
+q)problemType:`reg
 // Use default system parameters
 q)dict:(::)
 // Run example
-q).automl.run[tab;reg_tgt;ftype;ptype;dict]
+q).automl.run[table;regTarget;featExtractType;problemType;dict]
 
-// Non time-series multi-classification example
-q).automl.run[([]100?1f;100?1f);100?5;`normal;`class;::]
+// Non-time series (normal) multi-classification example table
+q)table:([]100?1f;100?1f)
+// Multi-classification target
+q)classTarget:100?5
+// Feature extraction type
+q)featExtractType:`normal
+// Problem type
+q)problemType:`class
+// Use default system parameters
+q)dict:(::)
+// Run example
+q).automl.run[table;classTarget;featExtractType;problemType;dict]
 
-The following is a breakdown of information for each of the relevant columns in the dataset
+// FRESH regression example table
+q)table:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+// Regression target
+q)regTarget:desc 100?1f
+// Feature extraction type
+q)featExtractType:`fresh
+// Problem type
+q)problemType:`reg
+// Use default system parameters
+q)dict:(::)
+// Run example
+q).automl.run[table;regTarget;featExtractType;problemType;dict]
 
-  | count unique mean      std       min        max       type
-- | -------------------------------------------------------------
-x | 100   100    0.4742613 0.2656773 0.02455057 0.9953159 numeric
-x1| 100   100    0.4885036 0.272643  0.01589433 0.9696383 numeric
+// NLP binary-classification example table
+q)table:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
+// Binary-classification target
+q)classTarget:asc 100?0b
+// Feature extraction type
+q)featExtractType:`nlp
+// Problem type
+q)ptype:`class
+// Use default system parameters
+q)dict:(::)
+// Run example
+q).automl.run[table;classTarget;featExtractType;ptype;dict]
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+Executing node: featureDescription
+Executing node: dataPreprocessing
+Executing node: featureCreation
+Executing node: labelEncode
+Executing node: featureSignificance
+Executing node: trainTestSplit
+Executing node: modelGeneration
+Executing node: selectModels
+Executing node: runModels
 
-Data preprocessing complete, starting feature creation
+Scores for all models using .ml.accuracy:
+AdaBoostClassifier        | 0.9384615
+RandomForestClassifier    | 0.9384615
+GaussianNB                | 0.9384615
+KNeighborsClassifier      | 0.9384615
+LinearSVC                 | 0.9384615
+GradientBoostingClassifier| 0.9371795
+SVC                       | 0.9371795
+MLPClassifier             | 0.8128205
+LogisticRegression        | 0.6910256
 
-Feature creation and significance testing complete
-Starting initial model selection - allow ample time for large datasets
+Best scoring model = AdaBoostClassifier
 
-Total features being passed to the models = 1
-
-Scores for all models, using .ml.accuracy
-MLPClassifier             | 0.2487179
-AdaBoostClassifier        | 0.2346154
-RandomForestClassifier    | 0.2051282
-GradientBoostingClassifier| 0.2051282
-KNeighborsClassifier      | 0.2051282
-
-Best scoring model = MLPClassifier
-
-Score for validation predictions using best model = 0.3125
-
-Feature impact calculated for features associated with MLPClassifier model
-Plots saved in /outputs/2020.07.20/run_12.38.51.152/images/
-
-Continuing to hyperparameter search and final model fitting on testing set
-
-Best model fitting now complete - final score on testing set = 0.3
+Executing node: optimizeModels
 
 Confusion matrix for testing set:
 
-      | pred_0 pred_1 pred_2 pred_3 pred_4
-------| ----------------------------------
-true_0| 0      0      3      0      0
-true_1| 0      0      0      0      1
-true_2| 0      0      4      0      0
-true_3| 0      0      5      0      0
-true_4| 0      0      5      0      2
+      | true_0 true_1
+------| -------------
+pred_0| 10     0
+pred_1| 0      10
+Executing node: predictParams
 
-Saving down procedure report to /outputs/2020.07.20/run_12.38.51.152/report/
-Saving down MLPClassifier model to /outputs/2020.07.20/run_12.38.51.152/models/
-Saving down model parameters to /outputs/2020.07.20/run_12.38.51.152/config/
-2020.07.20
-12:38:51.152
+Best model fitting now complete - final score on testing set = 1
 
-// Example data for various problem types
-q)bin_target:asc 100?0b
-q)multi_target:desc 100?3
-q)fresh_data:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
-q)nlp_data:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
-// FRESH regression example
-q).automl.run[fresh_data;reg_tgt;`fresh;`reg;::]
-// non-time series/FRESH binary classification example
-q).automl.run[tab;bin_target;`normal;`class;::]
-// NLP binary classification example
-q).automl.run[nlp_data;bin_target;`nlp;`class;::]
+Executing node: preprocParams
+Executing node: pathConstruct
+Executing node: saveGraph
+Executing node: saveReport
+
+Saving down procedure report to automl/outputs/date/run_time/report/
+
+Executing node: saveMeta
+
+Saving down model parameters to automl/outputs/date/run_time/config/
+
+Executing node: saveModels
+
+Saving down AdaBoostClassifier model to automl/outputs/date/run_time/models/
+
+2020.11.23
+09:57:27.894
 ```
 
 
@@ -148,12 +183,11 @@ returns the target predictions for new data based on a previously fitted model a
 
 ```q
 // New dataset
-q)new_tab:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
+q)newTable:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
 // string date/time input
-q).automl.new[new_tab;"2020.01.02";"11.21.47.763"]
+q).automl.new[newTable;"2020.01.02";"11.21.47.763"]
 0.1404663 0.255114 0.255114 0.2683779 0.2773197 0.487862 0.6659926 0.8547356 ..
 // q date/time input
-q).automl.new[new_tab;2020.01.02;11:21:47.763]
-0.1953181 0.449196 0.6708352 0.5842918 0.230593 0.4713597 0.1953181 0.0576498..
+q).automl.new[newTable;2020.01.02;11:21:47.763]
+0.1953181 0.449196 0.6708352 0.5842918 0.230593 0.4713597 0.1953181 ..
 ```
-
