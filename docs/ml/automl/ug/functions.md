@@ -9,21 +9,20 @@ keywords: keywords: machine learning, automated, ml, automl, fit, predict, persi
 # :fontawesome-solid-share-alt: Top-level user-callable functions
 
 :fontawesome-brands-github:
-[KxSystems/automl](https://github.com/kxsystems/automl)
 
 The top-level functions in the repository are:
 
 <div markdown="1" class="typewriter">
 .automl   **Top-level functions**
-  fit                   Apply AutoML to provided features and associated targets
-  getModel              Retrieve a previously fit AutoML model and use for predictions
-  newConfig             Generate a new JSON parameter file for use with .automl.fit
-  updateIgnoreWarnings  Update print warning severity level
-  updateLogging         Update logging state
-  updatePrinting        Update printing state
+  [fit](#automlfit)                   Apply AutoML to provided features and associated targets
+  [getModel](#automlgetmodel)              Retrieve a previously fit AutoML model
+  [newConfig](#automlnewconfig)             Generate a new JSON parameter file for use with .automl.fit
+  [updateIgnoreWarnings](#automlupdateignorewarnings)  Update print warning severity level
+  [updateLogging](#automlupdatelogging)         Update logging state
+  [updatePrinting](#automlupdateprinting)        Update printing state
 </div>
 
-`.automl.fit` can be modified by a user to suit specific use cases. Where possible, the functions listed above have been designed to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](options.md).
+`.automl.fit` can be modified by a user to suit specific use cases. Where possible, the functions listed above have been designed to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](advanced.md).
 
 The following examples and function descriptions outline the most basic vanilla implementations of AutoML specific to each supported use case. Namely, non-time series specific machine learning examples, along with time series examples which make use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
 
@@ -59,9 +58,9 @@ The following examples demonstrate how to apply data in various use cases to `.a
 
 ```q
 // Non-time series (normal) regression example table
-q)table:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+q)features:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
 // Regression target
-q)regTarget:asc 100?1f
+q)target:asc 100?1f
 // Feature extraction type
 q)featExtractType:`normal
 // Problem type
@@ -69,12 +68,12 @@ q)problemType:`reg
 // Use default system parameters
 q)params:(::)
 // Run example
-q).automl.fit[table;regTarget;featExtractType;problemType;params]
+q).automl.fit[features;target;featExtractType;problemType;params]
 
 // Non-time series (normal) multi-classification example table
-q)table:([]100?1f;100?1f)
+q)features:([]100?1f;100?1f)
 // Multi-classification target
-q)classTarget:100?5
+q)target:100?5
 // Feature extraction type
 q)featExtractType:`normal
 // Problem type
@@ -82,12 +81,12 @@ q)problemType:`class
 // Use default system parameters
 q)params:(::)
 // Run example
-q).automl.fit[table;classTarget;featExtractType;problemType;params]
+q).automl.fit[features;target;featExtractType;problemType;params]
 
 // NLP binary-classification example table
-q)table:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
+q)features:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
 // Binary-classification target
-q)classTarget:asc 100?0b
+q)target:asc 100?0b
 // Feature extraction type
 q)featExtractType:`nlp
 // Problem type
@@ -95,12 +94,12 @@ q)ptype:`class
 // Use default system parameters
 q)params:(::)
 // Run example
-q).automl.fit[table;classTarget;featExtractType;ptype;params]
+q).automl.fit[features;target;featExtractType;ptype;params]
 
 // FRESH regression example table
-q)table:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+q)features:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
 // Regression target
-q)regTarget:desc 100?1f
+q)target:desc 100?1f
 // Feature extraction type
 q)featExtractType:`fresh
 // Problem type
@@ -108,7 +107,7 @@ q)problemType:`reg
 // Use default system parameters
 q)params:(::)
 // Run example
-q)outputs:.automl.fit[table;regTarget;featExtractType;problemType;params]
+q)outputs:.automl.fit[features;target;featExtractType;problemType;params]
 Executing node: automlConfig
 Executing node: configuration
 Executing node: targetDataConfig
@@ -188,16 +187,27 @@ Saving down model to automl/outputs/2020.12.15/run_16.58.46.400/models/
     Predictions can be made using the model output by `.automl.fit`. Users simply need to pass in the new feature data as shown below:
     
     ```q
+    
     // Non-time series (normal) regression example table - training features
+    
     q)xtrain:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+    
     // Regression target - training target
+    
     q)ytrain:asc 100?1f
+    
     // Generate model
+    
     q)outputModel:.automl.fit[xtrain;ytrain;`normal;`reg;(::)]
+    
     // Testing features
+    
     q)xtest:([]asc 10?0t;10?1f;desc 10?0b;10?1f;asc 10?1f)
+    
     // Make predicts on generated model
+    
     q)outputModel.predict[xtest]
+    
     0.02526887 0.2412723 0.2432483 0.3049373 0.330132 0.3727415 0.4536485..
     ```
 

@@ -15,18 +15,18 @@ The below details the nodes that are used to preprocess data within the pipeline
 ## Preprocessing nodes
 
 <div markdown="1" class="typewriter">
-.automl.x.node.function   **Top-level preprocessing node functions**
-  configuration        Entry point used to pass run configuration into AutoML graph
-  featureData          Loading of feature dataset from process/alternative data source
-  targetData           Loading of the target dataset from process/alternative data source
-  dataCheck            Add default parameters to configuration while checking dataset is suitable for AutoML
-  modelGeneration      Create list of models to apply based on problem type and user configuration
-  featureDescription   Retrieve initial information needed for report generation or running on new data
-  labelEncode          Encode symbol label data
-  dataPreprocessing    Preprocess data prior to application of ML algorithms
-  featureCreation      Generate appropriate features based on problem type
-  featureSignificance  Apply feature significance logic to data and return the columns deemed to be significant
-  trainTestSplit       Split features and target into training and testing sets
+.automl.X.node.function    **Top-level preprocessing node functions**
+  [configuration](#automlconfigurationnodefunction)        Pass run configuration into AutoML graph
+  [featureData](#automlfeaturedatanodefunction)          Load feature data from process/alternative data source
+  [targetData](#automltargetdatanodefunction)           Load target vector from process/alternative data source
+  [dataCheck](#automldatachecknodefunction)            Build configuration dictionary and check dataset is suitable
+  [modelGeneration](#automlmodelgenerationnodefunction)      Create list of models to apply
+  [featureDescription](#automlfeaturedescriptionnodefunction)   Retrieve information needed for report generation or new data
+  [labelEncode](#automllabelencodenodefunction)          Encode symbol label data
+  [dataPreprocessing](#automldatapreprocessingnodefunction)    Preprocess data prior to application of ML algorithms
+  [featureCreation](#automlfeaturecreationnodefunction)      Generate appropriate features based on problem type
+  [featureSignificance](#automlfeaturesignificancenodefunction)  Apply feature significance tests and return significant features
+  [trainTestSplit](#automltraintestsplitnodefunction)       Split features and target into training and testing sets
 </div>
 
 ## `.automl.configuration.node.function`
@@ -54,6 +54,29 @@ Where
 returns feature data as a table.
 
 ```q
+// Dictionary with information for .ml.i.loaddset
+q)config:`directory`fileName`typ`schema`separator!
+  ("home/data";"features.csv";`csv;"FFSJ";enlist",")
+// Load in feature dataset
+q).automl.featureData.node.function config
+x          x1         x2 x3
+---------------------------
+0.831001   0.06119115 b  0
+0.2386444  0.5510458  c  4
+0.4626596  0.456294   a  5
+0.7125073  0.6581265  b  0
+0.4478417  0.9841029  b  1
+0.236602   0.5767729  a  7
+0.6568185  0.05316387 c  8
+0.9114983  0.6573407  c  3
+0.01380875 0.987491   b  2
+0.4625509  0.8070207  b  1
+0.6369492  0.7927667  b  8
+0.5779229  0.8195301  a  7
+0.1649935  0.2466953  a  6
+0.9628137  0.3021382  c  0
+0.8119738  0.3621913  c  7
+..
 ```
 
 ## `.automl.targetData.node.function`
@@ -69,6 +92,12 @@ Where
 returns a numerical or symbol target vector.
 
 ```q
+// Dictionary with information for .ml.i.loaddset
+q)config:`typ`directory`fileName`schema!
+  (`splay;system"cd";"target";"B")
+// Load in target vector
+q).automl.targetData.node.function config
+11001100110011000100100001100110010011100100001010010011110100110010010110000..
 ```
 
 ## `.automl.dataCheck.node.function`
@@ -81,18 +110,15 @@ Given the automated nature of the pipeline, it is important to ensure that only 
 
 The following lists the restricted types for each problem type. In each case, these types are not handled gracefully within the feature extraction workflow and thus are omitted.
 
-```txt
-Normal Feature Extraction    FRESH Feature Extraction    NLP Feature Extraction
-  - guid                       - guid                      - guid
-  - byte                       - byte                      - byte
-  - list                       - list                      - list
-  - character                  - character 
-                               - time/date types
-```
+Problem type | Restricted types
+:------------|:-----------
+FRESH        | guid, byte, list, character, time/date
+Normal       | guid, byte, list, character
+NLP          | guid, byte, list
 
 Additionally, given the requirement that feature data produced in the feature extraction process must have a 1-to-1 mapping to the input target vector, target consistency is checked prior to the application of feature extraction. The logic behind this check varies for each problem type and is specified below.
 
-problem type | description
+Problem type | Accepted data structure
 :------------|:-----------
 FRESH        | The number of unique combinations of aggregate columns must equal the number of targets
 Normal       | The number of rows in the input table must equal the number of target values
@@ -109,6 +135,20 @@ Where
 returns modified configuration, feature and target datasets. The function will error on issues with configuration, setup, target or feature dataset.
 
 ```q
+// Non-time series (normal) regression example table
+q)features:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+// Regression target
+q)target:asc 100?1f
+// Create run configuration dictionary
+q)config:`startDate`startTime`featureExtractionType`problemType`savedModelName!
+  (.z.D;.z.T;`normal;`reg;`)
+// Join onto default dictionaries
+q)config:.automl.paramDict[`general],.automl.paramDict[`normal],config
+// Perform data checks
+q).automl.dataCheck.node.function[config;features;target]
+config  | `startDate`startTime`featureExtractionType`problemType`saveOption`s..
+features| +`x`x1`x2`x3`x4!(`s#00:06:00.139 00:12:17.160 00:43:43.460 00:45:23..
+target  | `s#0.009530776 0.01837959 0.0244211 0.0269967 0.03035461 0.05011425..
 ```
 
 ## `.automl.modelGeneration.node.function`
@@ -119,19 +159,18 @@ _Create list of models to apply based on problem type and user configuration_
 
 The models applied in an individual run of AutoML are selected based on the user-defined problem type, paired with additional information about the target data. The models available within the framework for each problem type are as follows:
 
-```txt
-Binary-classification models      Multi-classification models       Regression models
-  - AdaBoostClassifier              - AdaBoostClassifier              - AdaBoostRegressor
-  - RandomForestClassifier          - RandomForestClassifier          - RandomForestRegressor
-  - GradientBoostingClassifier      - GradientBoostingClassifier      - GradientBoostingRegressor
-  - KNeighborsClassifier            - KNeighborsClassifier            - KNeighborsRegressor
-  - MLPClassifier                   - MLPClassifier                   - MLPRegressor
-  - Keras binary-classifier         - Keras multi-classifier          - Keras regressor
-  - LogisticRegression                                                - LinearRegression
-  - GaussianNB                                                        - Lasso
-  - SVC 
-  - LinearSVC
-```
+Binary-classification models |  Multi-classification models |    Regression models
+:----------------------------|:-----------------------------|:--------------------------------
+AdaBoostClassifier           | AdaBoostClassifier           | AdaBoostRegressor
+RandomForestClassifier       | RandomForestClassifier       | RandomForestRegressor
+GradientBoostingClassifier   | GradientBoostingClassifier   | GradientBoostingRegressor
+KNeighborsClassifier         | KNeighborsClassifier         | KNeighborsRegressor
+MLPClassifier                | MLPClassifier                | MLPRegressor
+Keras binary-classifier      | Keras multi-classifier       | Keras regressor
+LogisticRegression           |                              | LinearRegression
+GaussianNB                   |                              | Lasso
+SVC                          |                              |     
+LinearSVC                    |                              |          
 
 These models can be augmented through modification of `models.json` contained within the folder `automl/code/customization/models/modelConfig/` within the repository.
 
@@ -152,29 +191,25 @@ Where
 returns a table containing information needed to apply appropriate models to data.
 
 ```q
-```
-
-
-```q
-// Regression target
-q)5#regTarget:100?1f
-0.3927524 0.5170911 0.5159796 0.4066642 0.1780839
-// Problem type
-q)problemType:`reg
-// Configuration dictionary
-q)config:enlist[`problemType]!enlist problemType
+// Binary-classification target
+q)show target:100?0b
+11110000000100001010111101101000100111101110011000000010100100111100011101011..
+// Configuration with problem type
+q)config:enlist[`problemType]!enlist`class
 // Generate model table
-q).automl.modelGeneration.node.function[config;regTarget]
-model                     lib     fnc            seed typ minit              ..
+q).automl.modelGeneration.node.function[config;target]
+model                      lib     fnc            seed  typ    apply minit   ..
 -----------------------------------------------------------------------------..
-AdaBoostRegressor         sklearn ensemble       seed reg {[x;y;z].p.import[x..
-RandomForestRegressor     sklearn ensemble       seed reg {[x;y;z].p.import[x..
-GradientBoostingRegressor sklearn ensemble       seed reg {[x;y;z].p.import[x..
-KNeighborsRegressor       sklearn neighbors      ::   reg {[x;y;z].p.import[x..
-MLPRegressor              sklearn neural_network seed reg {[x;y;z].p.import[x..
-Lasso                     sklearn linear_model   seed reg {[x;y;z].p.import[x..
-LinearRegression          sklearn linear_model   ::   reg {[x;y;z].p.import[x..
-regkeras                  keras   reg            seed reg {[x;y;z].p.import[x..
+AdaBoostClassifier         sklearn ensemble       `seed multi  1     {[x;y;z]..
+RandomForestClassifier     sklearn ensemble       `seed multi  1     {[x;y;z]..
+GradientBoostingClassifier sklearn ensemble       `seed multi  1     {[x;y;z]..
+LogisticRegression         sklearn linear_model   `seed binary 1     {[x;y;z]..
+GaussianNB                 sklearn naive_bayes    ::    binary 1     {[x;y;z]..
+KNeighborsClassifier       sklearn neighbors      ::    multi  1     {[x;y;z]..
+MLPClassifier              sklearn neural_network `seed multi  1     {[x;y;z]..
+SVC                        sklearn svm            `seed binary 1     {[x;y;z]..
+LinearSVC                  sklearn svm            `seed binary 1     {[x;y;z]..
+BinaryKeras                keras   binary         `seed binary 1     {[x;y;z]..
 ```
 
 The model table produced contains the following columns:
@@ -185,6 +220,7 @@ lib     Python library from which the model is derived
 fnc     sub module within the python library from which a model is derived
 seed    is the model capable of being seeded (seed for yes, null for no)
 typ     type of problem being solved
+apply   if model is to be applied within the pipeline
 minit   definition of the model which will to be applied within the workflow
 ```
 
@@ -202,6 +238,31 @@ Where
 returns a dictionary with symbol encoding, feature data and description.
 
 ```q
+// FRESH regression example table
+q)5#features:([]idx:100?`4;100?1f;100?`4;100?`a`b`c;100?1f)
+idx  x          x1   x2 x3
+------------------------------------
+phmi 0.9851347  lmbj a  0.0003268395
+cilm 0.04419439 jaae b  0.8559089
+gdle 0.1956085  lnak a  0.6192602
+fmmh 0.2506874  gaid c  0.44129
+idap 0.7449439  oacf b  0.1841632
+// Configuration with logging function and feature extraction type
+q)config:`logFunc`featureExtractionType!(.automl.utils.printFunction;`fresh)
+// Run node
+q)show output:.automl.featureDescription.node.function[config;features]
+symEncode      | `freq`ohe!(`idx`x1;,`x2)
+dataDescription| `x`x3`idx`x1`x2!+`count`unique`mean`std`min`max`type!(100 10..
+features       | +`idx`x`x1`x2`x3!(`phmi`cilm`gdle`fmmh`idap`emdi`kdha`bfce`m..
+// Show description
+q)output`dataDescription
+   | count unique mean      std       min          max       type
+-  | -------------------------------------------------------------------
+x  | 100   100    0.5045778 0.301461  0.008167515  0.9991788 numeric
+x3 | 100   100    0.5402803 0.3009842 0.0003268395 0.9961115 numeric
+idx| 100   100    ::        ::        ::           ::        categorical
+x1 | 100   100    ::        ::        ::           ::        categorical
+x2 | 100   3      ::        ::        ::           ::        categorical
 ```
 
 ## `.automl.labelEncode.node.function`
@@ -217,6 +278,13 @@ Where
 returns a dictionary mapping between symbol encoding and the encoded target data.
 
 ```q
+// Multi-classification target
+q)show target:100?`a`b`c
+`a`a`b`a`c`c`a`a`b`a`c`a`b`c`c`a`b`c`c`b`c`b`c`b`c`b`b`b`a`c`b`c`a`b`b`c`c`a`..
+// Encode target vector
+q).automl.labelEncode.node.function target
+symMap| `s#`a`b`c!0 1 2
+target| 0 0 1 0 2 2 0 0 1 0 2 0 1 2 2 0 1 2 2 1 2 1 2 1 2 1 1 1 0 2 1 2 0 1 1..
 ```
 
 ## `.automl.dataPreprocessing.node.function`
@@ -282,7 +350,7 @@ The feature extraction functions applied within the FRESH procedure are defined 
 
     When running `.automl.fit` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
 
-    See instructions on [how to modify this](options.md).
+    See instructions on [how to modify this](advanced.md).
 
 **NLP**
 
