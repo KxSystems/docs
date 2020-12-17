@@ -147,40 +147,40 @@ Executing node: runModels
 
 Scores for all models using .ml.mse
 
-AdaBoostRegressor        | 0.04068134
-RandomForestRegressor    | 0.04209565
-Lasso                    | 0.04291184
-GradientBoostingRegressor| 0.04677987
-KNeighborsRegressor      | 0.05348689
-LinearRegression         | 0.3415033
-MLPRegressor             | 1624.88
+RandomForestRegressor    | 0.04202918
+GradientBoostingRegressor| 0.04534999
+Lasso                    | 0.04583557
+KNeighborsRegressor      | 0.04822146
+AdaBoostRegressor        | 0.05129247
+LinearRegression         | 0.4422226
+MLPRegressor             | 848.683
 
-Best scoring model = AdaBoostRegressor
+Best scoring model = RandomForestRegressor
 
 Executing node: optimizeModels
 
 Continuing to hyperparameter search and final model fitting on testing set
 
-Best model fitting now complete - final score on testing set = 0.1974598
+Best model fitting now complete - final score on testing set = 0.2106325
 
 Executing node: predictParams
 Executing node: preprocParams
 Executing node: pathConstruct
 Executing node: saveGraph
 
-Saving down graphs to automl/outputs/2020.12.15/run_16.58.46.400/images/
+Saving down graphs to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/images/
 
 Executing node: saveReport
 
-Saving down procedure report to automl/outputs/2020.12.15/run_16.58.46.400/report/
+Saving down procedure report to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/report/
 
 Executing node: saveMeta
 
-Saving down model parameters to automl/outputs/2020.12.15/run_16.58.46.400/config/
+Saving down model parameters to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/config/
 
 Executing node: saveModels
 
-Saving down model to automl/outputs/2020.12.15/run_16.58.46.400/models/
+Saving down model to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/models/
 ```
 
 !!! note Predict on new data
@@ -225,7 +225,7 @@ returns the predict function (generated using `.automl.utils.generatePredict`) a
 
 ```q
 // Persisted model details
-q)modelDetails:`startDate`startTime!(2020.12.15;16:58:46.400)
+q)modelDetails:`startDate`startTime!(2020.12.17;14:57:20.206)
 // Retrieve model
 q).automl.getModel[modelDetails]
 modelInfo| `modelLib`modelFunc`startDate`startTime`featureExtractionType`prob..

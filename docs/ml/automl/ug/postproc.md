@@ -1,8 +1,8 @@
 ---
 title: Data post-processing procedures for automated machine learning | Machine Learning | Documentation for kdb+ and q
 description: Default behavior of automated machine learning; common processes completed across all forms of automated machine learning
-author: 
-date: 
+author: Deanna Morgan
+date: December 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models
 ---
 # :fontawesome-solid-share-alt: Automated Post-Processing
@@ -15,70 +15,80 @@ This section describes the outputs produced following model selection and optimi
 In its default configuration, the pipeline returns:
 
 1. Visualizations - data split, target distribution, feature impact, confusion matrix (classification only) and regression analysis (regression only) plots.
-2. The best model saved as a H5/binary file 
+2. The best model saved as a H5/binary file.
 3. A configuration file outlining the procedure carried out for a run which can be used in re-running a pipeline.
 4. A report outlining the steps taken and results achieved at each step of a run.
 
 These outputs are contained within subfolders for `images`, `models`, `config`, and `reports` respectively, contained within a directory specific to the date and time of the run. The folder structure for each unique run is as follows: `automl/outputs/date/run_time/...`.
 
-
 ## Processing nodes
 
 <div markdown="1" class="typewriter">
-.automl.x.node.function   **Top-level processing node functions**
-  preprocParams  Collect relevant parameters for report/graph generation from the preprocessing nodes in the workflow
-  predictParams  Collect relevant parameters for report/graph generation from the prediction stages in the workflow
-  pathConstruct  Construct save paths for generated graphs/reports
-  saveGraph      Save all the graphs required for report generation
-  saveMeta       Save relevant metadata for use with a persisted model on new data
-  saveReport     Save a Python generated report summarizing the current run via pyLatex/reportlab
-  saveModels     Save encoded representation of best model retrieved during run of AutoML
+.automl.X.node.function   **Top-level processing node functions**
+  [preprocParams](#automlpreprocparamsnodefunction)  Collect parameters for report/graph generation from preprocessing nodes
+  [predictParams](#automlpredictparamsnodefunction)  Collect parameters for report/graph generation from prediction stages
+  [pathConstruct](#automlpathconstructnodefunction)  Construct save paths for generated graphs/reports
+  [saveGraph](#automlsavegraphnodefunction)      Save all the graphs required for report generation
+  [saveMeta](#automlsavemetanodefunction)       Save relevant metadata for use with a persisted model on new data
+  [saveReport](#automlsavereportnodefunction)     Save Python generated report summarizing current run via pyLatex/reportlab
+  [saveModels](#automlsavemodelsnodefunction)     Save encoded representation of best model retrieved during run of AutoML
 </div>
 
 ## `.automl.preprocParams.node.function`
 
-__
+_Collect parameters for report/graph generation from preprocessing nodes_
 
-Syntax: `.automl.preprocParams.node.function[]`
+Syntax: `.automl.preprocParams.node.function[config;descrip;cTime;sigFeats;symEncode;symMap;featModel;tts]`
 
 Where
 
-returns 
+-   `config` is a dictionary with location and method by which to retrieve the data
+-   `descrip` is a table with symbol encoding, feature data and description
+-   `cTime` is the time taken for feature creation
+-   `sigFeats` is a symbol list of significant features
+-   `symEncode` is a dictionary with columns to symbol encode and their required encoding
+-   `symMap` is a dictionary with a mapping of symbol encoded target data
+-   `featModel` is the embedPy NLP feature creation model used (if required)
+-   `tts` is a dictionary with feature and target data split into training/testing sets
 
-```q
-```
+returns dictionary of consolidated parameters to be used to generate reports/graphs.
 
 ## `.automl.predictParams.node.function`
 
-__
+_Collect parameters for report/graph generation from prediction stages_
 
-Syntax: `.automl.predictParams.node.function[]`
+Syntax: `.automl.predictParams.node.function[bestModel;hyperParams;modelName;testScore;analyzeModel;modelMetaData]`
 
 Where
 
-returns 
+-   `bestModel` is the best fitted model as an embedPy object
+-   `hyperParmams` is a dictionary of hyperparameters used for the best model (if any)
+-   `modelName` is the name of the best model as a string
+-   `testScore` is the floating point score of the best model on used on testing data
+-   `modelMetaData` is a dictionary with the metadata produced in finding the best model
 
-```q
-```
+returns a dictionary with consolidated parameters to be used to generate reports/graphs.
 
 ## `.automl.pathConstruct.node.function`
 
-__
+_Construct save paths for generated graphs/reports_
 
-Syntax: `.automl.pathConstruct.node.function[]`
+Syntax: `.automl.pathConstruct.node.function[preProcParams;predictionStore]`
 
 Where
 
-returns 
+-   `preProcParams` is a dictionary with data generated during the preprocess stage
+-   `predictionStore` is a dictionary with data generated during the prediction stage
 
-```q
-```
+returns a dictionary containing all the data collected along the entire process along with paths to where graphs/reports will be generated.
 
 ## `.automl.saveGraph.node.function`
 
-__
+_Save all the graphs required for report generation_
 
 ### Visualizations
+
+A number of visualizations are produced within the pipeline and are saved to disk (in the default setting of AutoML) to be used within the run report, or otherwise. The specific images produced are detailed below and depend on the problem type of the current run.
 
 **Data split**
 
@@ -116,18 +126,17 @@ For regression problems, plots of true vs predicted targets and their residuals 
 
 ### Functionality
 
-Syntax: `.automl.saveGraph.node.function[]`
+Syntax: `.automl.saveGraph.node.function[params]`
 
 Where
 
-returns 
+-   params {dict} All data generated during the preprocessing and  prediction stages
 
-```q
-```
+returns a null on success, where all graphs needed for reports will have been saved to appropriate locations. 
 
 ## `.automl.saveMeta.node.function`
 
-__
+_Save relevant metadata for use with a persisted model on new data_
 
 ### Configuration
 
@@ -136,49 +145,63 @@ Once the pipeline has been completed a configuration dictionary is saved down as
 The following is an example of the config file produced for a single run of AutoML which used FRESH classification data.
 
 ```q
-q)get`:metadata
-modelLib       | `sklearn
-mdlType        | `multi
-startDate      | 2020.11.02
-startTime      | 18:02:42.644
-featExtractType| `fresh
-problemType    | `class
-aggcols        | `n
-funcs          | `.ml.fresh.params
-xv             | (`.ml.xv.kfshuff;5)
-gs             | (`.automl.gs.kfshuff;5)
-rs             | (`.automl.rs.kfshuff;5)
-hp             | `grid
-trials         | 256
-prf            | `.automl.utils.fitPredict
-scf            | `class`reg!`.ml.accuracy`.ml.mse
-seed           | 64962667
-saveopt        | 2
-hld            | 0.2
-tts            | `.automl.utils.ttsNonShuff
-sz             | 0.2
-sigFeats       | `.automl.featureSignificance.significance
-tf             | 1b
-configSavePath | ("automl/outputs/2020.11.02/run_18.02.42.644/config/"...
-modelsSavePath | ("automl/outputs/2020.11.02/run_18.02.42.644/models/"...
-imagesSavePath | ("automl/outputs/2020.11.02/run_18.02.42.644/images/"...
-reportSavePath | ("automl/outputs/2020.11.02/run_18.02.42.644/report/"...
+q)get`:automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/config/metadata
+modelLib                     | `sklearn
+modelFunc                    | `ensemble
+startDate                    | 2020.12.17
+startTime                    | 14:57:20.206
+featureExtractionType        | `fresh
+problemType                  | `reg
+saveOption                   | 2
+seed                         | 53840238
+crossValidationFunction      | `.ml.xv.kfshuff
+crossValidationArgument      | 5
+gridSearchFunction           | `.automl.gs.kfshuff
+gridSearchArgument           | 5
+randomSearchFunction         | `.automl.rs.kfshuff
+randomSearchArgument         | 5
+hyperparameterSearchType     | `grid
+holdoutSize                  | 0.2
+testingSize                  | 0.2
+numberTrials                 | 256
+significantFeatures          | `.automl.featureSignificance.significance
+predictionFunction           | `.automl.utils.fitPredict
+scoringFunctionClassification| `.ml.accuracy
+scoringFunctionRegression    | `.ml.mse
+loggingDir                   | `
+loggingFile                  | `
+pythonWarning                | 0
+overWriteFiles               | 0
+targetLimit                  | 10000
+savedModelName               | `
+functions                    | `.ml.fresh.params
+trainTestSplit               | `.automl.utils.ttsNonShuff
+aggregationColumns           | `x
+configSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
+modelsSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
+imagesSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
+reportSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
+mainSavePath                 | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
+logFunc                      | {[filename;val;nline1;nline2]
+savedWord2Vec                | 0b
+modelName                    | `RandomForestRegressor
+symEncode                    | `freq`ohe!``
+sigFeats                     | `x1_countbelowmean`x1_mean2dercentral`x1_med`x..
 ```
 
 ### Functionality
 
-Syntax: `.automl.saveMeta.node.function[]`
+Syntax: `.automl.saveMeta.node.function[params]`
 
 Where
 
-returns 
+-   `params` is a dictionary with all the data generated during the preprocessing and prediction stages
 
-```q
-```
+returns is a dictionary containing all metadata information needed to generate predict function.
 
 ## `.automl.saveReport.node.function`
 
-__
+_Save Python generated report summarizing current run via pyLatex/reportlab_
 
 ### Report
 
@@ -191,18 +214,17 @@ A report is generated containing the following information:
 - Best model and holdout score
 - Runtimes for each section
 
-Syntax: `.automl.saveReport.node.function[]`
+Syntax: `.automl.saveReport.node.function[params]`
 
 Where
 
-returns 
+-   `params` is a dictionary with all the data generated during the preprocessing and prediction stages
 
-```q
-```
+returns null on success, where a report will have been saved to a location defined by run date and time.
 
 ## `.automl.saveModels.node.function`
 
-__
+_Save encoded representation of best model retrieved during run of AutoML_
 
 ### Models
 
@@ -215,11 +237,10 @@ Keras         | hdf5 file containing model information
 
 ### Functionality
 
-Syntax: `.automl.saveModels.node.function[]`
+Syntax: `.automl.saveModels.node.function[params]`
 
 Where
 
-returns 
+-   `params` is a dictionary with all the data generated during the preprocessing and prediction stages
 
-```q
-```
+returns null on success, where all models have been saved to an appropriate location.
