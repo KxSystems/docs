@@ -124,6 +124,8 @@ FRESH        | The number of unique combinations of aggregate columns must equal
 Normal       | The number of rows in the input table must equal the number of target values
 NLP          | The number of rows in the input table must equal the number of target values
 
+### Functionality
+
 Syntax: `.automl.dataCheck.node.function[config;features;target]`
 
 Where
@@ -180,6 +182,7 @@ These models can be augmented through modification of `models.json` contained wi
 
     A user can [define more complex Keras architectures](../faq.md) as desired for the use case in question if an appropriate architecture is known.
 
+### Functionality
 
 Syntax: `.automl.modelGeneration.node.function[config;target]`
 
@@ -240,29 +243,34 @@ returns a dictionary with symbol encoding, feature data and description.
 ```q
 // FRESH regression example table
 q)5#features:([]idx:100?`4;100?1f;100?`4;100?`a`b`c;100?1f)
-idx  x          x1   x2 x3
-------------------------------------
-phmi 0.9851347  lmbj a  0.0003268395
-cilm 0.04419439 jaae b  0.8559089
-gdle 0.1956085  lnak a  0.6192602
-fmmh 0.2506874  gaid c  0.44129
-idap 0.7449439  oacf b  0.1841632
+idx  x           x1   x2 x3
+----------------------------------
+fjcj 0.1252898   ggfk c  0.6136512
+pnoj 0.5655123   ghlj a  0.9441251
+cphm 0.2613049   nega b  0.603996
+cedn 0.004608619 dmad c  0.3888924
+kihe 0.5062673   lkaj c  0.0486924
 // Configuration with logging function and feature extraction type
-q)config:`logFunc`featureExtractionType!(.automl.utils.printFunction;`fresh)
+q)config:`logFunc`featureExtractionType!
+  (.automl.utils.printFunction[`testLog;;1;1];`fresh)
 // Run node
 q)show output:.automl.featureDescription.node.function[config;features]
+
+The following is a breakdown of information for each of the relevant columns in the dataset
+
+
+   | count unique mean      std       min        max       type
+-  | -----------------------------------------------------------------
+x  | 100   100    0.4860504 0.3116851 0.0035863  0.9785984 numeric
+x3 | 100   100    0.5086307 0.276274  0.00969842 0.9988041 numeric
+idx| 100   100    ::        ::        ::         ::        categorical
+x1 | 100   100    ::        ::        ::         ::        categorical
+x2 | 100   3      ::        ::        ::         ::        categorical
+
+
 symEncode      | `freq`ohe!(`idx`x1;,`x2)
 dataDescription| `x`x3`idx`x1`x2!+`count`unique`mean`std`min`max`type!(100 10..
-features       | +`idx`x`x1`x2`x3!(`phmi`cilm`gdle`fmmh`idap`emdi`kdha`bfce`m..
-// Show description
-q)output`dataDescription
-   | count unique mean      std       min          max       type
--  | -------------------------------------------------------------------
-x  | 100   100    0.5045778 0.301461  0.008167515  0.9991788 numeric
-x3 | 100   100    0.5402803 0.3009842 0.0003268395 0.9961115 numeric
-idx| 100   100    ::        ::        ::           ::        categorical
-x1 | 100   100    ::        ::        ::           ::        categorical
-x2 | 100   3      ::        ::        ::           ::        categorical
+features       | +`idx`x`x1`x2`x3!(`fjcj`pnoj`cphm`cedn`kihe`gcbf`gidn`jcen`i..
 ```
 
 ## `.automl.labelEncode.node.function`
@@ -312,6 +320,8 @@ Null              | `0n`    | Median column value
 
 It should be noted that in cases where nulls are present, an additional column is added to the feature table denoting the location of the null prior to filling of the dataset, thus encoding the null location in the case that this is an important signal for prediction.
 
+### Functionality
+
 Syntax: `.automl.dataPreprocessing.node.function[config;features;symEncode]`
 
 Where
@@ -323,15 +333,41 @@ Where
 returns the feature table with the data preprocessed appropriately.
 
 ```q
+// Non-time series (normal) example table
+q)5#features:([]0n,99?1f;0.5,0n,98?1f;100?`5;100#10?`a`b`c)
+x         x1        x2    x3
+----------------------------
+          0.5       kgnje b
+0.9484394           fengd b
+0.8146544 0.6096089 mmocm b
+0.3859185 0.9320707 dmfif a
+0.1676035 0.9610061 kmlcf b
+// Configuration dictionary
+q)config:`featureExtractionType`logFunc!
+  (`normal;.automl.utils.printFunction[`testLog;;1;1])
+// Columns to symbol encode
+q)symEncode:`freq`ohe!(`x2;`x3)
+// Apply preprocessing
+q)5#.automl.dataPreprocessing.node.function[config;features;symEncode]
+
+Data preprocessing complete, starting feature creation
+
+x         x1        x2_freq x3_a x3_b x3_c x_null x1_null
+---------------------------------------------------------
+0.5359828 0.5       0.01    0    1    0    1      0
+0.9484394 0.5366546 0.01    0    1    0    0      1
+0.8146544 0.6096089 0.01    0    1    0    0      0
+0.3859185 0.9320707 0.01    1    0    0    0      0
+0.1676035 0.9610061 0.01    0    1    0    0      0
 ```
 
 ## `.automl.featureCreation.node.function`
 
 _Generate appropriate features based on problem type_
 
-### FRESH, NLP and normal feature extraction
+### Normal, NLP and FRESH feature extraction
 
-Feature extraction is the process of building derived or aggregate features from a dataset in order to provide the most useful inputs for a machine learning algorithms. Within the AutoML framework, there are currently 3 types of feature extraction available - FRESH, normal and NLP feature extraction.
+Feature extraction is the process of building derived or aggregate features from a dataset in order to provide the most useful inputs for a machine learning algorithms. Within the AutoML framework, there are currently 3 types of feature extraction available - normal, NLP and FRESH feature extraction.
 
 The early-stage releases of this repository limit the feature extraction procedures that are performed by default on the tabular data for a number of reasons:
 
@@ -340,17 +376,9 @@ The early-stage releases of this repository limit the feature extraction procedu
 
 Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations and where general frameworks can be assumed to be informative.
 
-**FRESH**
+**Normal**
 
-The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time series into subsets, from which features can be extracted. Note that each subset will have an associated target.
-
-The feature extraction functions applied within the FRESH procedure are defined within the [ML Toolkit](../../toolkit/fresh.md). A full explanation of this algorithm is also provided there.
-
-!!! note
-
-    When running `.automl.fit` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
-
-    See instructions on [how to modify this](advanced.md).
+Normal feature extraction can be applied to non-time series problems that have a 1-to-1 mapping between features and targets. The current implementation of normal feature extraction splits time/date type columns into their component parts.
 
 **NLP**
 
@@ -366,9 +394,19 @@ The following are the steps applied independently to all columns containing text
 
 If any other non-text based columns are present, normal feature extraction is applied to those remaining columns in order to ensure no relevant information is ignored.
 
-**Normal feature extraction**
+**FRESH**
 
-Normal feature extraction can be applied to non-time series problems that have a 1-to-1 mapping between features and targets. The current implementation of normal feature extraction splits time/date type columns into their component parts.
+The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time series into subsets, from which features can be extracted. Note that each subset will have an associated target.
+
+The feature extraction functions applied within the FRESH procedure are defined within the [ML Toolkit](../../toolkit/fresh.md). A full explanation of this algorithm is also provided there.
+
+!!! note
+
+    When running `.automl.fit` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
+
+    See instructions on [how to modify this](advanced.md).
+
+### Functionality
 
 Syntax: `.automl.featureCreation.node.function[config;features]`
 
@@ -380,6 +418,52 @@ Where
 returns a dictionary containing original features with any additional ones created, along with time taken and any saved models. 
 
 ```q
+// Non-time series (normal) example table
+q)3#features:([]asc 100?0t;100?1f;100?2;100?1f;asc 100?1f)
+x            x1        x2 x3        x4
+-----------------------------------------------
+00:07:28.748 0.3852334 0  0.6497915 0.005637949
+00:11:06.877 0.6474614 0  0.848094  0.009473082
+00:14:38.117 0.2007083 0  0.1653044 0.009778301
+// Configuration dictionary
+q)config:`featureExtractionType`functions!(`normal;`.automl.featureCreation.normal.default)
+// Run feature creation
+q).automl.featureCreation.node.function[config;features]
+creationTime| 00:00:00.001
+features    | +`x1`x2`x3`x4`x_hh`x_uu`x_ss!(0.3852334 0.6474614 0.2007083 0.0..
+featModel   | ()
+
+// NLP example table
+q)3#features:([]100?1f;100?("Testing the application of nlp";"With different characters"))
+x         x1
+------------------------------------------
+0.173315  "With different characters"
+0.2901047 "With different characters"
+0.8082814 "Testing the application of nlp"
+// Configuration dictionary
+q)config:`featureExtractionType`functions`w2v`savedWord2Vec`seed!
+  (`nlp;`.automl.featureCreation.normal.default;0;0b;42)
+// Run feature creation
+q).automl.featureCreation.node.function[config;features]
+creationTime| 00:00:05.978
+features    | +`ADJ`ADP`DET`NOUN`VERB`col0`col1`col2`col3`col4`col5`col6`col7..
+featModel   | {[f;x]embedPy[f;x]}[foreign]enlist
+
+// FRESH example table
+q)3#features:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+x                             x1           x2        x3       x4
+----------------------------------------------------------------
+2001.12.07D11:54:52.182176560 0.000267104  0.3443026 9.99641  0
+2000.08.06D11:21:24.919296204 0.0004898147 0.6505359 9.996256 0
+2002.09.06D00:33:11.276746992 0.001093083  0.5621585 9.995282 1
+// Configuration dictionary
+q)config:`featureExtractionType`functions`aggregationColumns!
+  `fresh`.ml.fresh.params`x
+// Run feature creation
+q).automl.featureCreation.node.function[config;features]
+creationTime| 00:00:06.176
+features    | +`x1_absenergy`x1_abssumchange`x1_count`x1_countabovemean`x1_co..
+featModel   | ()
 ```
 
 ## `.automl.featureSignificance.node.function`
@@ -389,6 +473,8 @@ _Apply feature significance logic to data and return the columns deemed to be si
 ### Feature selection procedures
 
 In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](../../toolkit/fresh.md) function contained within the ML Toolkit. The default procedure will use the Benjamini-Hochberg-Yekutieli (BHY) procedure to identify significant features within the dataset. If no significant columns are returned, the top 25th percentile of features will be selected.
+
+### Functionality
 
 Syntax: `.automl.featureSignificance.node.function[config;features;target]`
 
@@ -401,39 +487,40 @@ Where
 returns a dictionary containing a symbol list of significant features and the feature data post-feature extraction.
 
 ```q
-```
-
-```q
 // Normal feature table
-q)5#table:([]asc 100?1f;100?1f;100?1f;100?10;100?5?1f;100?10)
-x           x1         x2         x3 x4        x5
--------------------------------------------------
-0.003918537 0.141434   0.6194124  6  0.4620557 6
-0.01164076  0.1468753  0.06252215 8  0.9667906 4
-0.01278544  0.563207   0.4760213  5  0.3847399 9
-0.02044124  0.09405027 0.7666556  4  0.6893925 9
-0.06234204  0.8794027  0.4539865  6  0.6893925 7
+q)5#features:([]asc 100?1f;100?1f;100?1f;100?10;100?5?1f;100?10)
+x          x1        x2         x3 x4         x5
+------------------------------------------------
+0.01976295 0.831001  0.06119115 2  0.3520493  7
+0.03947309 0.2386444 0.5510458  2  0.05040009 3
+0.0486924  0.4626596 0.456294   8  0.5467665  1
+0.06382153 0.7125073 0.6581265  9  0.7096579  4
+0.06708218 0.4478417 0.9841029  0  0.05040009 0
 // Regression target
 q)target:asc 100?1f
 // Configuration dictionary containing functions to apply (below is default)
-q)config:enlist[`sigFeats]!enlist`.automl.featureSignificance.significance
+q)config:`logFunc`significantFeatures!
+  (.automl.utils.printFunction[`testLog;;1;1];`.automl.featureSignificance.significance)
 // Number of features before feature selection
-q)count cols table
+q)count cols features
 6
 // Apply feature selection
-q)show 5#sigFeats:.automl.featureSignificance.node.function[config;table;target][`sigFeats]#table
+q)show 5#sigFeats:.automl.featureSignificance.node.function[config;features;target][`sigFeats]#features
+
+Total number of significant features being passed to the models = 1
+
 x
------------
-0.003918537
-0.01164076
-0.01278544
-0.02044124
-0.06234204
+----------
+0.01976295
+0.03947309
+0.0486924
+0.06382153
+0.06708218
+
 // Number of features after feature selection
 q)count cols sigFeats
 1
 ```
-
 
 ## `.automl.trainTestSplit.node.function`
 
@@ -468,6 +555,8 @@ Test set does not contain examples of each class. Removed any multi-keras models
 
 At this stage it is possible to begin model training and validation using cross-validation procedures. To do so, the data which is currently in the training set must be further split into training and validation sets. Following the same process as before, the Keras check must be applied again if Keras models are still present.
 
+### Functionality
+
 Syntax: `.automl.trainTestSplit.node.function[]`
 
 Where
@@ -480,4 +569,25 @@ Where
 returns a dictionary containing data separated into training and testing sets.
 
 ```q
+// Non-time series (normal) multi-classification example table
+q)5#features:([]asc 100?1f;desc 100?1f;100?1f;100?1f)
+x          x1        x2         x3
+------------------------------------------
+0.02242087 0.9955855 0.05310517 0.168436
+0.02380346 0.9833302 0.2166502  0.9325573
+0.02425821 0.9758116 0.1526076  0.7633987
+0.04089465 0.9730643 0.7080534  0.5577644
+0.05110413 0.9657049 0.5551035  0.05737207
+// Multi-classification target
+q)target:asc 100?5
+// Significant features
+q)sigFeats:`x`x1
+// Configuration dictionary with TTS function and testing size
+q)config:`trainTestSplit`testingSize!(`.ml.traintestsplit;.2)
+// Split data
+q).automl.trainTestSplit.node.function[config;features;target;sigFeats]
+xtrain| (0.9587189 0.08810016;0.8257742 0.2153339;0.1260167 0.8713021;0.94780..
+ytrain| 4 3 0 4 0 3 1 4 3 3 4 2 2 2 3 4 3 4 2 2 4 0 3 0 0 4 4 0 2 0 3 1 2 0 2..
+xtest | (0.7512502 0.3852997;0.3269671 0.6824045;0.9601101 0.05887977;0.66922..
+ytest | 3 1 4 2 0 3 2 0 3 4 4 2 2 1 3 0 2 3 2 1
 ```
