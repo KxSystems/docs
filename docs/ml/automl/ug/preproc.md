@@ -1,117 +1,180 @@
 ---
-title: Data prepocessing for the Kx automated machine-learning platform | Machine Learning | Documentation for q and kdb+
-author: Conor McCarthy
+title: Data preprocessing for the Kx automated machine learning platform | Machine Learning | Documentation for q and kdb+
 description: Default behavior of the Kx automated machine learning tools; common processes completed across all forms of automated machine learning and the differences between offerings
-date: October 2019
-keywords: machine learning, ml, automated, preprocessing, feature extraction, feature selection, time-series, cleansing
+author: Deanna Morgan
+date: December 2020
+keywords: machine learning, automated, ml, model definition, type checking, symbol encoding, infinity replace, null encoding, data cleansing
 ---
 # :fontawesome-solid-share-alt: Automated data preprocessing
-
-
 
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The preprocessing of data is of critical importance in all machine-learning applications, particularly within automated pipelines where the majority of control is, by definition, removed from the user.
+The below details the nodes that are used to preprocess data within the pipeline. Data preprocessing is a necessary step in any robust machine learning application. It is particularly important when it comes to automated pipelines where, by definition, the majority of the control is removed from the user. 
 
-Running the function [`.automl.run`](index.md) in its default configuration is achieved by setting the final parameter `dict` to `::`. 
+## Preprocessing nodes
 
-The following are the procedures completed when the default system configuration is deployed:
+<div markdown="1" class="typewriter">
+.automl.X.node.function    **Top-level preprocessing node functions**
+  [configuration](#automlconfigurationnodefunction)        Pass run configuration into AutoML graph
+  [featureData](#automlfeaturedatanodefunction)          Load feature data from process/alternative data source
+  [targetData](#automltargetdatanodefunction)           Load target vector from process/alternative data source
+  [dataCheck](#automldatachecknodefunction)            Build configuration dictionary and check dataset is suitable
+  [modelGeneration](#automlmodelgenerationnodefunction)      Create list of models to apply
+  [featureDescription](#automlfeaturedescriptionnodefunction)   Retrieve information needed for report generation or new data
+  [labelEncode](#automllabelencodenodefunction)          Encode symbol label data
+  [dataPreprocessing](#automldatapreprocessingnodefunction)    Preprocess data prior to application of ML algorithms
+  [featureCreation](#automlfeaturecreationnodefunction)      Generate appropriate features based on problem type
+  [featureSignificance](#automlfeaturesignificancenodefunction)  Apply feature significance tests and return significant features
+  [trainTestSplit](#automltraintestsplitnodefunction)       Split features and target into training and testing sets
+</div>
 
-1. Appropriate models are chosen for the use-case type being explored (classification/regression).
-2. Inappropriate columns within the dataset are removed based on their types.
-3. A check is applied to ensure that the number of targets is appropriate for the dataset type (`FRESH`/`normal`/`nlp`).
-4. Symbol data columns are encoded via either one-hot or frequency encoding.
-5. Constant columns are removed from the data.
-6. Nulls are replaced and an additional column is added to encode their original position
-7. Positive/negative infinities are replaced by the non-infinite max/min value of the column
+## `.automl.configuration.node.function`
 
+_Entry point used to pass run configuration into AutoML graph_
 
-## Applied models
+Syntax: `.automl.configuration.node.function[config]`
 
-Models applied are chosen based on user definition of the type of machine learning task being explored, paired with additional information about the target data. For clarity, the models available are listed below:
+Where
 
+-   `config` is a dictionary with custom configuration information relevant to the present run
 
-### Binary classification models
+returns the configuration dictionary ready to be passed to the relevant nodes within the pipeline.
 
-```txt
-AdaBoostClassifier
-RandomForestClassifier
-GradientBoostingClassifier
-LogisticRegression
-GaussianNB                 
-KNeighborsClassifier
-MLPClassifier
-SVC 
-LinearSVC
-Keras binary-classification model
-```
+## `.automl.featureData.node.function`
 
+_Loading of feature dataset from process/alternative data source_
 
-### Multi-class classification models
+Syntax: `.automl.featureData.node.function[config]`
 
-```txt
-AdaBoostClassifier
-RandomForestClassifier
-GradientBoostingClassifier
-KNeighborsClassifier
-MLPClassifier
-Keras multi-classification model
-```
+Where
 
+-   `config` is a dictionary with the location and method by which to retrieve the data
 
-### Regression models
-
-```txt
-AdaBoostRegressor
-RandomForestRegressor
-GradientBoostingRegressor
-KNeighborsRegressor
-MLPRegressor
-Lasso
-LinearRegression
-Keras regression model
-```
-
-These models can be augmented through modification of `regmodels.txt` and `classmodels.txt` within the `mdldef` folder of the repository.
-
-The following examples show how these models are defined within the workflow for a regression example with an explanation of the meaning of the columns provided for completeness
+returns feature data as a table.
 
 ```q
-// Tabular dataset
-q)2#tab:([]100?1f;100?1f;100?1f)
-x         x1        x2        
-------------------------------
-0.7250709 0.724948  0.06165008
-0.481804  0.8112026 0.285799  
-
-// Regression task
-q)5#tgt:100?1f
-0.3927524 0.5170911 0.5159796 0.4066642 0.1780839
-// .automl.run[tab;tgt;`normal;`reg;::]
-q).automl.i.models[`reg;tgt;::]
-model                     lib     fnc            seed typ minit              ..
------------------------------------------------------------------------------..
-AdaBoostRegressor         sklearn ensemble       seed reg {[x;y;z].p.import[x..
-RandomForestRegressor     sklearn ensemble       seed reg {[x;y;z].p.import[x..
-GradientBoostingRegressor sklearn ensemble       seed reg {[x;y;z].p.import[x..
-KNeighborsRegressor       sklearn neighbors      ::   reg {[x;y;z].p.import[x..
-MLPRegressor              sklearn neural_network seed reg {[x;y;z].p.import[x..
-Lasso                     sklearn linear_model   seed reg {[x;y;z].p.import[x..
-LinearRegression          sklearn linear_model   ::   reg {[x;y;z].p.import[x..
-RegKeras                  keras   reg            seed reg {[d;s;mtype]
+// Dictionary with information for .ml.i.loaddset
+q)config:`directory`fileName`typ`schema`separator!
+  ("home/data";"features.csv";`csv;"FFSJ";enlist",")
+// Load in feature dataset
+q).automl.featureData.node.function config
+x          x1         x2 x3
+---------------------------
+0.831001   0.06119115 b  0
+0.2386444  0.5510458  c  4
+0.4626596  0.456294   a  5
+0.7125073  0.6581265  b  0
+0.4478417  0.9841029  b  1
+0.236602   0.5767729  a  7
+0.6568185  0.05316387 c  8
+0.9114983  0.6573407  c  3
+0.01380875 0.987491   b  2
+0.4625509  0.8070207  b  1
+0.6369492  0.7927667  b  8
+0.5779229  0.8195301  a  7
+0.1649935  0.2466953  a  6
+0.9628137  0.3021382  c  0
+0.8119738  0.3621913  c  7
+..
 ```
 
-In the above example the following describe the columns for the defined tables.
+## `.automl.targetData.node.function`
 
-```txt
-model   name of the model to be applied
-lib     Python library from which the model is derived
-fnc     sub module within the python library from which a model is derived
-seed    is a model capable of being seeded allowing for consistent rerunning?
-typ     type of problem being solved
-minit   definition of the model which will to be applied in the workflow
+_Loading of the target dataset from process/alternative data source_
+
+Syntax: `.automl.targetData.node.function[config]`
+
+Where
+
+-   `config` is a dictionary with the location and method by which to retrieve the data
+
+returns a numerical or symbol target vector.
+
+```q
+// Dictionary with information for .ml.i.loaddset
+q)config:`typ`directory`fileName`schema!
+  (`splay;system"cd";"target";"B")
+// Load in target vector
+q).automl.targetData.node.function config
+11001100110011000100100001100110010011100100001010010011110100110010010110000..
 ```
+
+## `.automl.dataCheck.node.function`
+
+_Add default parameters to configuration while checking dataset is suitable for AutoML_
+
+### Data checking within AutoML
+
+Given the automated nature of the pipeline, it is important to ensure that only those datatypes handled by the current feature extraction procedures are passed through the workflow. If any columns within the user-defined dataset contain inappropriate types, they will be removed and this will be communicated to the user via the console.
+
+The following lists the restricted types for each problem type. In each case, these types are not handled gracefully within the feature extraction workflow and thus are omitted.
+
+Problem type | Restricted types
+:------------|:-----------
+FRESH        | guid, byte, list, character, time/date
+Normal       | guid, byte, list, character
+NLP          | guid, byte, list
+
+Additionally, given the requirement that feature data produced in the feature extraction process must have a 1-to-1 mapping to the input target vector, target consistency is checked prior to the application of feature extraction. The logic behind this check varies for each problem type and is specified below.
+
+Problem type | Accepted data structure
+:------------|:-----------
+FRESH        | The number of unique combinations of aggregate columns must equal the number of targets
+Normal       | The number of rows in the input table must equal the number of target values
+NLP          | The number of rows in the input table must equal the number of target values
+
+### Functionality
+
+Syntax: `.automl.dataCheck.node.function[config;features;target]`
+
+Where
+
+-   `config` is a dictionary information related to the current run of AutoML
+-   `features` is the feature data as a table 
+-   `target` is a numerical or symbol target vector
+
+returns modified configuration, feature and target datasets. The function will error on issues with configuration, setup, target or feature dataset.
+
+```q
+// Non-time series (normal) regression example table
+q)features:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+// Regression target
+q)target:asc 100?1f
+// Create run configuration dictionary
+q)config:`startDate`startTime`featureExtractionType`problemType`savedModelName!
+  (.z.D;.z.T;`normal;`reg;`)
+// Join onto default dictionaries
+q)config:.automl.paramDict[`general],.automl.paramDict[`normal],config
+// Perform data checks
+q).automl.dataCheck.node.function[config;features;target]
+config  | `startDate`startTime`featureExtractionType`problemType`saveOption`s..
+features| +`x`x1`x2`x3`x4!(`s#00:06:00.139 00:12:17.160 00:43:43.460 00:45:23..
+target  | `s#0.009530776 0.01837959 0.0244211 0.0269967 0.03035461 0.05011425..
+```
+
+## `.automl.modelGeneration.node.function`
+
+_Create list of models to apply based on problem type and user configuration_
+
+### Applied models
+
+The models applied in an individual run of AutoML are selected based on the user-defined problem type, paired with additional information about the target data. The models available within the framework for each problem type are as follows:
+
+Binary-classification models |  Multi-classification models |    Regression models
+:----------------------------|:-----------------------------|:--------------------------------
+AdaBoostClassifier           | AdaBoostClassifier           | AdaBoostRegressor
+RandomForestClassifier       | RandomForestClassifier       | RandomForestRegressor
+GradientBoostingClassifier   | GradientBoostingClassifier   | GradientBoostingRegressor
+KNeighborsClassifier         | KNeighborsClassifier         | KNeighborsRegressor
+MLPClassifier                | MLPClassifier                | MLPRegressor
+Keras binary-classifier      | Keras multi-classifier       | Keras regressor
+LogisticRegression           |                              | LinearRegression
+GaussianNB                   |                              | Lasso
+SVC                          |                              |     
+LinearSVC                    |                              |          
+
+These models can be augmented through modification of `models.json` contained within the folder `automl/code/customization/models/modelConfig/` within the repository.
 
 !!! note "Keras architectures"
 
@@ -119,136 +182,412 @@ minit   definition of the model which will to be applied in the workflow
 
     A user can [define more complex Keras architectures](../faq.md) as desired for the use case in question if an appropriate architecture is known.
 
+### Functionality
 
-## Automatic type checking
+Syntax: `.automl.modelGeneration.node.function[config;target]`
 
-Given the automated nature of the machine-learning pipeline, it is important to ensure that only types which can be handled by the feature extraction procedures are passed through the workflow. These types are problem-type specific, as outlined below. Note that when a column of an incompatible type is removed, its omission will be communicated to the user via the console output.
+Where
 
-The following lists show the restricted types for each problem type. In each case these types are not handled gracefully within the feature extraction workflow and thus are omitted
+-   `config` is a dictionary information related to the current run of AutoML
+-   `target` is a numerical or symbol target vector
+
+returns a table containing information needed to apply appropriate models to data.
+
+```q
+// Binary-classification target
+q)show target:100?0b
+11110000000100001010111101101000100111101110011000000010100100111100011101011..
+// Configuration with problem type
+q)config:enlist[`problemType]!enlist`class
+// Generate model table
+q).automl.modelGeneration.node.function[config;target]
+model                      lib     fnc            seed  typ    apply minit   ..
+-----------------------------------------------------------------------------..
+AdaBoostClassifier         sklearn ensemble       `seed multi  1     {[x;y;z]..
+RandomForestClassifier     sklearn ensemble       `seed multi  1     {[x;y;z]..
+GradientBoostingClassifier sklearn ensemble       `seed multi  1     {[x;y;z]..
+LogisticRegression         sklearn linear_model   `seed binary 1     {[x;y;z]..
+GaussianNB                 sklearn naive_bayes    ::    binary 1     {[x;y;z]..
+KNeighborsClassifier       sklearn neighbors      ::    multi  1     {[x;y;z]..
+MLPClassifier              sklearn neural_network `seed multi  1     {[x;y;z]..
+SVC                        sklearn svm            `seed binary 1     {[x;y;z]..
+LinearSVC                  sklearn svm            `seed binary 1     {[x;y;z]..
+BinaryKeras                keras   binary         `seed binary 1     {[x;y;z]..
+```
+
+The model table produced contains the following columns:
 
 ```txt
-Normal Feature Extraction    FRESH Feature Extraction    NLP Feature Extraction
-  - guid                       - guid                      - guid
-  - byte                       - byte                      - byte
-  - list                       - list                      - list
-  - character                  - character			 
-                               - time/date types		
+model   name of the model to be applied
+lib     Python library from which the model is derived
+fnc     sub module within the python library from which a model is derived
+seed    is the model capable of being seeded (seed for yes, null for no)
+typ     type of problem being solved
+apply   if model is to be applied within the pipeline
+minit   definition of the model which will to be applied within the workflow
 ```
 
-The following example shows a truncated output from a normal feature-creation procedure where columns containing byte objects and lists are removed.
+## `.automl.featureDescription.node.function`
+
+_Retrieve initial information needed for report generation or running on new data_
+
+Syntax: `.automl.featureDescription.node.function[config;features]`
+
+Where
+
+-   `config` is a dictionary containing information related to the current run of AutoML
+-   `features` is feature data as a table 
+
+returns a dictionary with symbol encoding, feature data and description.
 
 ```q
-q)5#data:([]100?1f;100?1f;100?1f;100?0x;100?(5?1f;5?1f))
-x         x1        x2         x3 x4                                                
-------------------------------------------------------------------------------------
-0.2777906 0.377558  0.9743168  00 0.3603064  0.1821269 0.7626891 0.6216393 0.3886478
-0.9461053 0.6467861 0.08110583 00 0.03301238 0.3722512 0.2911225 0.7153449 0.2740865
-0.1837247 0.8117767 0.7526589  00 0.3603064  0.1821269 0.7626891 0.6216393 0.3886478
-0.3238577 0.6004456 0.9495261  00 0.03301238 0.3722512 0.2911225 0.7153449 0.2740865
-0.6081598 0.8784222 0.3745857  00 0.03301238 0.3722512 0.2911225 0.7153449 0.2740865
-q)tgt:100?1f
-// output truncated to only include appropriate information
-q).automl.run[data;tgt;`normal;`reg;::]
-...
-Removed the following columns due to type restrictions for normal
-`x3`x4
-...
+// FRESH regression example table
+q)5#features:([]idx:100?`4;100?1f;100?`4;100?`a`b`c;100?1f)
+idx  x           x1   x2 x3
+----------------------------------
+fjcj 0.1252898   ggfk c  0.6136512
+pnoj 0.5655123   ghlj a  0.9441251
+cphm 0.2613049   nega b  0.603996
+cedn 0.004608619 dmad c  0.3888924
+kihe 0.5062673   lkaj c  0.0486924
+// Configuration with logging function and feature extraction type
+q)config:`logFunc`featureExtractionType!
+  (.automl.utils.printFunction[`testLog;;1;1];`fresh)
+// Run node
+q)show output:.automl.featureDescription.node.function[config;features]
+
+The following is a breakdown of information for each of the relevant columns in the dataset
+
+
+   | count unique mean      std       min        max       type
+-  | -----------------------------------------------------------------
+x  | 100   100    0.4860504 0.3116851 0.0035863  0.9785984 numeric
+x3 | 100   100    0.5086307 0.276274  0.00969842 0.9988041 numeric
+idx| 100   100    ::        ::        ::         ::        categorical
+x1 | 100   100    ::        ::        ::         ::        categorical
+x2 | 100   3      ::        ::        ::         ::        categorical
+
+
+symEncode      | `freq`ohe!(`idx`x1;,`x2)
+dataDescription| `x`x3`idx`x1`x2!+`count`unique`mean`std`min`max`type!(100 10..
+features       | +`idx`x`x1`x2`x3!(`fjcj`pnoj`cphm`cedn`kihe`gcbf`gidn`jcen`i..
 ```
 
+## `.automl.labelEncode.node.function`
 
-## Target consistency
+_Encode symbol label data_
 
-Given the requirement for a one-to-one mapping between the rows output after feature extraction and the number of target values, target consistency is checked prior to the application of feature extraction or machine learning algorithms. The logic behind this check varies for different problem types.
+Syntax: `.automl.labelEncode.node.function[target]`
 
-problem type | description
-:------------|:-----------
-FRESH        | The number of unique combinations of aggregate columns must equal the number of targets
-Normal       | The number of rows in the input table must equal the number of target values
-NLP          | The number of rows in the input table must equal the number of target values
+Where
 
-The example below show a failure for each problem type.
+-   `target` is a numerical or symbol target vector
+
+returns a dictionary mapping between symbol encoding and the encoded target data.
 
 ```q
-q)data:([]100?1f;100?1f;100?1f)
-q)tgt:50?1f
-q)fresh_dict:enlist[`aggcols]!enlist `x
-q)norm_dict:(::)
-q).automl.prep.i.lencheck[data;tgt;`fresh;fresh_dict]
-'Target count must equal count of unique agg values for fresh
-q).automl.prep.i.lencheck[data;tgt;`normal;norm_dict]
-'Must have the same number of targets as values in table
+// Multi-classification target
+q)show target:100?`a`b`c
+`a`a`b`a`c`c`a`a`b`a`c`a`b`c`c`a`b`c`c`b`c`b`c`b`c`b`b`b`a`c`b`c`a`b`b`c`c`a`..
+// Encode target vector
+q).automl.labelEncode.node.function target
+symMap| `s#`a`b`c!0 1 2
+target| 0 0 1 0 2 2 0 0 1 0 2 0 1 2 2 0 1 2 2 1 2 1 2 1 2 1 1 1 0 2 1 2 0 1 1..
 ```
 
+## `.automl.dataPreprocessing.node.function`
 
-## Symbol encoding
+_Preprocess data prior to application of ML algorithms_
 
-In the FRESH and all non-FRESH example symbol columns are encoded as follows:
+### Preprocessing procedures
+
+Within the pipeline, symbol columns are encoded as follows:
 
 -  If there are fewer than 10 unique symbols in a particular column the data is one-hot encoded.
--  If a column contains more than 10 unique symbols the values are frequency encoded
+-  If a column contains more than 10 unique symbols the values are frequency encoded.
 
 !!! note
 
-    In the case of FRESH the above limitations are performed on an aggregation-bucket basis for frequency encoding rather than for an entire column. This ensures that encoding on new data is as fair as possible in the case of FRESH since each aggregation bucket is associated with an individual target
+    In the case of FRESH, the above limitations are performed on an aggregation-bucket basis for frequency encoding rather than for an entire column. This ensures that encoding on new data is as fair as possible where each aggregation bucket is associated with an individual target.
+    
+Additionally, both null and infinite values are replaced within the feature data, due to the inability of both sklearn and keras machine learning models to handle this form of data. The below table highlights the values used to replace each of these values where the process aims to limit changes to the data distribution.
 
-The following example shows the application of this encoding for on two columns one of which will be one-hot encoded while the other is frequency encoded.
+value             | symbol  | replacement
+:-----------------|:--------|:-------------
+Positive infinity | `0w`    | Maximum column value
+Negative infinity | `-0w`   | Minimum column value
+Null              | `0n`    | Median column value
+
+It should be noted that in cases where nulls are present, an additional column is added to the feature table denoting the location of the null prior to filling of the dataset, thus encoding the null location in the case that this is an important signal for prediction.
+
+### Functionality
+
+Syntax: `.automl.dataPreprocessing.node.function[config;features;symEncode]`
+
+Where
+
+-   `config` is a dictionary information related to the current run of AutoML
+-   `features` is the feature data as a table 
+-   `symEncode` is a dictionary containing columns to symbol encode and their required encoding
+
+returns the feature table with the data preprocessed appropriately.
 
 ```q
-q)tab:([]1000?`1;1000?`a`b`c;1000?1f)
-q).automl.prep.i.symencode[tab;10;0b;::;::]
-x2         x_freq x1_a x1_b x1_c
---------------------------------
-0.7701313  0.06   0    1    0   
-0.9673079  0.058  0    0    1   
-0.5634727  0.048  1    0    0   
-0.1465967  0.071  0    0    1   
-0.6474446  0.071  0    1    0 
+// Non-time series (normal) example table
+q)5#features:([]0n,99?1f;0.5,0n,98?1f;100?`5;100#10?`a`b`c)
+x         x1        x2    x3
+----------------------------
+          0.5       kgnje b
+0.9484394           fengd b
+0.8146544 0.6096089 mmocm b
+0.3859185 0.9320707 dmfif a
+0.1676035 0.9610061 kmlcf b
+// Configuration dictionary
+q)config:`featureExtractionType`logFunc!
+  (`normal;.automl.utils.printFunction[`testLog;;1;1])
+// Columns to symbol encode
+q)symEncode:`freq`ohe!(`x2;`x3)
+// Apply preprocessing
+q)5#.automl.dataPreprocessing.node.function[config;features;symEncode]
+
+Data preprocessing complete, starting feature creation
+
+x         x1        x2_freq x3_a x3_b x3_c x_null x1_null
+---------------------------------------------------------
+0.5359828 0.5       0.01    0    1    0    1      0
+0.9484394 0.5366546 0.01    0    1    0    0      1
+0.8146544 0.6096089 0.01    0    1    0    0      0
+0.3859185 0.9320707 0.01    1    0    0    0      0
+0.1676035 0.9610061 0.01    0    1    0    0      0
 ```
 
+## `.automl.featureCreation.node.function`
 
-## Constant-column removal
+_Generate appropriate features based on problem type_
 
-Constant columns are those within the dataset which contain only one unique value. These columns are removed as they do not provide useful information in the prediction of a target. This is due to a lack of signal within the data. The following is the implemented code to achieve this.
+### Normal, NLP and FRESH feature extraction
+
+Feature extraction is the process of building derived or aggregate features from a dataset in order to provide the most useful inputs for a machine learning algorithms. Within the AutoML framework, there are currently 3 types of feature extraction available - normal, NLP and FRESH feature extraction.
+
+The early-stage releases of this repository limit the feature extraction procedures that are performed by default on the tabular data for a number of reasons:
+
+1. The naïve application of many relevant feature extraction procedures (truncated singular-value decomposition/bulk transforms) while potentially informative can expand the memory usage and computation time beyond an acceptable level.
+2. Procedures being applied in one field of use may not be relevant in another. As such, the framework is provided to allow a user to complete feature extractions which are domain-specific if required, rather than assuming procedures to be applied are ubiquitous in all cases.
+
+Over time the system will be updated to perform tasks in a way which is cognizant of the above limitations and where general frameworks can be assumed to be informative.
+
+**Normal**
+
+Normal feature extraction can be applied to non-time series problems that have a 1-to-1 mapping between features and targets. The current implementation of normal feature extraction splits time/date type columns into their component parts.
+
+**NLP**
+
+The NLP (Natural Language Processing) feature extraction within AutoML makes use of the Kx [NLP library](../../nlp/index.md) in addition to the python `gensim` library for data preprocessing.
+
+The following are the steps applied independently to all columns containing text data:
+
+1. Use `.nlp.findRegex` to retrieve information surrounding the occurrances of various expressions, e.g. references to urls, money, the presence of phone numbers, etc.
+2. Apply named entity recognition to detect references to products, individuals, references to art, etc.
+3. Apply sentiment analysis to the dataset to extract information about the positive/negative/neutral and compound nature of the text.
+4. Apply the function `.nlp.newParser` to extract stop words, tokens and any references to numbers. Using this data, calculate the percentages of a sentence that are numeric values, stop words or particular parts of speech.
+5. Using the corpus tokens extracted in 4, use the Python library `gensim` to create a word2vec encoding of the dataset, such that we have a numerical representation of the 'meaning' of a sentence.
+
+If any other non-text based columns are present, normal feature extraction is applied to those remaining columns in order to ensure no relevant information is ignored.
+
+**FRESH**
+
+The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time series into subsets, from which features can be extracted. Note that each subset will have an associated target.
+
+The feature extraction functions applied within the FRESH procedure are defined within the [ML Toolkit](../../toolkit/fresh.md). A full explanation of this algorithm is also provided there.
+
+!!! note
+
+    When running `.automl.fit` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
+
+    See instructions on [how to modify this](advanced.md).
+
+### Functionality
+
+Syntax: `.automl.featureCreation.node.function[config;features]`
+
+Where
+
+-   `config` is a dictionary containing information related to the current run of AutoML
+-   `features` is feature data as a table 
+
+returns a dictionary containing original features with any additional ones created, along with time taken and any saved models. 
 
 ```q
-q)5#data:([]100?1f;100#0f;100?1f)
-x         x1 x2       
-----------------------
-0.4774146 0  0.4286866
-0.4041947 0  0.3158067
-0.7717654 0  0.9003969
-0.3876964 0  0.719155 
-0.1433602 0  0.6433137
-q).ml.dropconstant[data]
-x          x2       
---------------------
-0.4774146  0.4286866
-0.4041947  0.3158067
-0.7717654  0.9003969
-0.3876964  0.719155 
-0.1433602  0.6433137
+// Non-time series (normal) example table
+q)3#features:([]asc 100?0t;100?1f;100?2;100?1f;asc 100?1f)
+x            x1        x2 x3        x4
+-----------------------------------------------
+00:07:28.748 0.3852334 0  0.6497915 0.005637949
+00:11:06.877 0.6474614 0  0.848094  0.009473082
+00:14:38.117 0.2007083 0  0.1653044 0.009778301
+// Configuration dictionary
+q)config:`featureExtractionType`functions!(`normal;`.automl.featureCreation.normal.default)
+// Run feature creation
+q).automl.featureCreation.node.function[config;features]
+creationTime| 00:00:00.001
+features    | +`x1`x2`x3`x4`x_hh`x_uu`x_ss!(0.3852334 0.6474614 0.2007083 0.0..
+featModel   | ()
+
+// NLP example table
+q)3#features:([]100?1f;100?("Testing the application of nlp";"With different characters"))
+x         x1
+------------------------------------------
+0.173315  "With different characters"
+0.2901047 "With different characters"
+0.8082814 "Testing the application of nlp"
+// Configuration dictionary
+q)config:`featureExtractionType`functions`w2v`savedWord2Vec`seed!
+  (`nlp;`.automl.featureCreation.normal.default;0;0b;42)
+// Run feature creation
+q).automl.featureCreation.node.function[config;features]
+creationTime| 00:00:05.978
+features    | +`ADJ`ADP`DET`NOUN`VERB`col0`col1`col2`col3`col4`col5`col6`col7..
+featModel   | {[f;x]embedPy[f;x]}[foreign]enlist
+
+// FRESH example table
+q)3#features:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+x                             x1           x2        x3       x4
+----------------------------------------------------------------
+2001.12.07D11:54:52.182176560 0.000267104  0.3443026 9.99641  0
+2000.08.06D11:21:24.919296204 0.0004898147 0.6505359 9.996256 0
+2002.09.06D00:33:11.276746992 0.001093083  0.5621585 9.995282 1
+// Configuration dictionary
+q)config:`featureExtractionType`functions`aggregationColumns!
+  `fresh`.ml.fresh.params`x
+// Run feature creation
+q).automl.featureCreation.node.function[config;features]
+creationTime| 00:00:06.176
+features    | +`x1_absenergy`x1_abssumchange`x1_count`x1_countabovemean`x1_co..
+featModel   | ()
 ```
 
+## `.automl.featureSignificance.node.function`
 
-## Null and infinity replacement
+_Apply feature significance logic to data and return the columns deemed to be significant_
 
-Both null values and infinities are removed from the data due to the inability of machine-learning models in both sklearn and keras to handle this form of data. In the case of `+/-0w`, the values are replaced by the minimum/maximum value of the column, while `0n`'s are replaced by the median value of the column in order to limit changes to the data distribution. 
+### Feature selection procedures
 
-In any cases where nulls are present, an additional column is added denoting the location of the null prior to filling of the dataset, thus encoding the null location in the case that this is an important signal for prediction.
+In order to reduce dimensionality in the data following feature extraction, significance tests are performed by default using the FRESH [feature significance](../../toolkit/fresh.md) function contained within the ML Toolkit. The default procedure will use the Benjamini-Hochberg-Yekutieli (BHY) procedure to identify significant features within the dataset. If no significant columns are returned, the top 25th percentile of features will be selected.
+
+### Functionality
+
+Syntax: `.automl.featureSignificance.node.function[config;features;target]`
+
+Where
+
+-   `config` is a dictionary information related to the current run of AutoML
+-   `features` is the feature data as a table 
+-   `target` is a numerical or symbol target vector
+
+returns a dictionary containing a symbol list of significant features and the feature data post-feature extraction.
 
 ```q
-q)show data:([](3?1f),0n;(3?1f),-0w;4?1f)
-x         x1        x2       
------------------------------
-0.5347096 0.1780839 0.3927524
-0.7111716 0.3017723 0.5170911
-0.411597  0.785033  0.5159796
-          -0w       0.4066642
-q).automl.prep.i.nullencode[.ml.infreplace data;med]
-x         x1        x2         x_null
--------------------------------------
-0.9764793 0.8737778 0.02064306 0     
-0.5706695 0.4463957 0.9888238  0     
-0.4079939 0.7378628 0.5247357  0     
-0.4893317 0.4463957 0.4674091  1     
+// Normal feature table
+q)5#features:([]asc 100?1f;100?1f;100?1f;100?10;100?5?1f;100?10)
+x          x1        x2         x3 x4         x5
+------------------------------------------------
+0.01976295 0.831001  0.06119115 2  0.3520493  7
+0.03947309 0.2386444 0.5510458  2  0.05040009 3
+0.0486924  0.4626596 0.456294   8  0.5467665  1
+0.06382153 0.7125073 0.6581265  9  0.7096579  4
+0.06708218 0.4478417 0.9841029  0  0.05040009 0
+// Regression target
+q)target:asc 100?1f
+// Configuration dictionary containing functions to apply (below is default)
+q)config:`logFunc`significantFeatures!
+  (.automl.utils.printFunction[`testLog;;1;1];`.automl.featureSignificance.significance)
+// Number of features before feature selection
+q)count cols features
+6
+// Apply feature selection
+q)show 5#sigFeats:.automl.featureSignificance.node.function[config;features;target][`sigFeats]#features
+
+Total number of significant features being passed to the models = 1
+
+x
+----------
+0.01976295
+0.03947309
+0.0486924
+0.06382153
+0.06708218
+
+// Number of features after feature selection
+q)count cols sigFeats
+1
+```
+
+## `.automl.trainTestSplit.node.function`
+
+_Split features and target into training and testing sets_
+
+### Preparing training and testing sets
+
+Once the most significant features have been selected, the data is split into training and testing sets, where the testing set is required later in the process for optimizing the best model.
+
+In order to split the data, a number of train-test split procedures are implemented for the different problem types:
+
+problem type | function                | description 
+-------------|-------------------------|-------------
+Normal       |.ml.traintestsplit       | Shuffle the dataset and split into training and testing set with defined percentage in each
+FRESH        |.automl.utils.ttsNonShuff| Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage.
+NLP          |.ml.traintestsplit       | Shuffle the dataset and split into training and testing set with defined percentage in each
+
+For classification problems, it cannot be guaranteed that all of the distinct target classes will appear in both the training and testing sets. This is an issue for the Keras neural network models which requires that a sample from each target class is present in both splits of the data.
+
+For this reason, the function `.automl.selectModels.targetKeras` must be applied to the data split prior to model training. The function determines if all classes are present in each split of the data. If not, the Keras models will be removed from the list of models to be tested.
+
+Below shows the expected output `.automl.fit` should the same number of classes not be present in each dataset.
+
+```q
+q).automl.fit[table;target;`normal;`class;(::)]
+...
+Executing node: selectModels
+
+Test set does not contain examples of each class. Removed any multi-keras models.
+...
+```
+
+At this stage it is possible to begin model training and validation using cross-validation procedures. To do so, the data which is currently in the training set must be further split into training and validation sets. Following the same process as before, the Keras check must be applied again if Keras models are still present.
+
+### Functionality
+
+Syntax: `.automl.trainTestSplit.node.function[]`
+
+Where
+
+-   `config` is a dictionary information related to the current run of AutoML
+-   `features` is the feature data as a table 
+-   `target` is a numerical or symbol target vector
+-   `sigFeats` is a symbol list of significant features
+
+returns a dictionary containing data separated into training and testing sets.
+
+```q
+// Non-time series (normal) multi-classification example table
+q)5#features:([]asc 100?1f;desc 100?1f;100?1f;100?1f)
+x          x1        x2         x3
+------------------------------------------
+0.02242087 0.9955855 0.05310517 0.168436
+0.02380346 0.9833302 0.2166502  0.9325573
+0.02425821 0.9758116 0.1526076  0.7633987
+0.04089465 0.9730643 0.7080534  0.5577644
+0.05110413 0.9657049 0.5551035  0.05737207
+// Multi-classification target
+q)target:asc 100?5
+// Significant features
+q)sigFeats:`x`x1
+// Configuration dictionary with TTS function and testing size
+q)config:`trainTestSplit`testingSize!(`.ml.traintestsplit;.2)
+// Split data
+q).automl.trainTestSplit.node.function[config;features;target;sigFeats]
+xtrain| (0.9587189 0.08810016;0.8257742 0.2153339;0.1260167 0.8713021;0.94780..
+ytrain| 4 3 0 4 0 3 1 4 3 3 4 2 2 2 3 4 3 4 2 2 4 0 3 0 0 4 4 0 2 0 3 1 2 0 2..
+xtest | (0.7512502 0.3852997;0.3269671 0.6824045;0.9601101 0.05887977;0.66922..
+ytest | 3 1 4 2 0 3 2 0 3 4 4 2 2 1 3 0 2 3 2 1
 ```
