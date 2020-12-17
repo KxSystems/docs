@@ -271,14 +271,55 @@ Syntax: `.automl.updateIgnoreWarnings[warningLevel]`
 Where
 
 -   warningLevel is 0, 1 or 2 long denoting how severely warnings are to be handled, where:
-      0. Ignore warnings completely and continue evaluation
-      1. Highlight to a user that a warning was being flagged but continue
-      2. Exit evaluation of AutoML highlighting to the user why this happened
+      - `0` Ignore warnings completely and continue evaluation
+      - `1` Highlight to a user that a warning was being flagged but continue
+      - `2` Exit evaluation of AutoML highlighting to the user why this happened
 
 returns null on success, with `.automl.utils.ignoreWarnings` updated to new level.
 
 ```q
+q).automl.updateIgnoreWarnings[2]
 
+q).automl.fit[features;target;featExtractType;problemType;params];
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+Error: The savePath chosen already exists, this run will be exited
+
+q).automl.updateIgnoreWarnings[1]
+
+
+q).automl.fit[features;target;featExtractType;problemType;params];
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+
+The savePath chosen already exists and will be overwritten
+
+Executing node: featureDescription
+....
+
+q).automl.updateIgnoreWarnings[0]
+
+
+q).automl.fit[features;target;featExtractType;problemType;params];
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+Executing node: featureDescription
+....
 ```
 
 ## `.automl.updateLogging`
@@ -289,8 +330,20 @@ Syntax: `.automl.updateLogging[]`
 
 Function takes no parameters and returns null on success when the boolean representating `.automl.utils.logging` has been inverted.
 
-```q
+  - `0b` No log file is created
+  - `1b` Print statements from `automl.fit` are saved to a log file
 
+!!! note
+	The default value of `automl.utils.logging` is 0b
+
+```q
+q).automl.utils.logging
+0b
+
+q).automl.updateLogging[]
+
+q).automl.utils.logging
+1b
 ```
 
 ## `.automl.updatePrinting`
@@ -300,7 +353,18 @@ _Update printing state_
 Syntax: `.automl.updatePrinting[]`
 
 Function takes no parameters and returns null on success when the boolean representating `.automl.utils.printing` has been inverted.
+  - `0b` Print statements to console are disabled
+  - `1b` Print statements are displayed to console
+
+!!! note
+	The default value of `automl.utils.printing` is 1b
 
 ```q
+q).automl.utils.printing
+1b
 
+q).automl.updatePrinting[]
+
+q).automl.utils.printing
+0b
 ```
