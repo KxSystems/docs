@@ -85,23 +85,22 @@ In order to optimize the best model, hyperparameter searching procedures are imp
 
 The hyperparameters searched for each model contained within the default configuration of AutoML are listed below.
 
-```txt
-Models and default grid/random search hyperparameters:
-  AdaBoost Regressor               learning_rate, n_estimators
-  Gradient Boosting Regressor      criterion, learning_rate, loss
-  KNeighbors Regressor             n_neighbors, weights
-  Lasso                            alpha, max_iter, normalize, tol
-  MLP Regressor                    activation, alpha, learning_rate_init, solver
-  Random Forest Regressor          criterion, min_samples_leaf, n_estimators
-  AdaBoost Classifier              learning_rate, n_estimators
-  Gradient Boosting Classifier     criterion, learning_rate, loss, n_estimators
-  KNeighbors Classifier            leaf_size, metric, n_neighbors
-  Linear SVC                       C, tol
-  Logistic Regression              C, penalty, tol
-  MLP Classifier                   activation, alpha, learning_rate_init, solver
-  Random Forest Classifier         criterion, min_samples_leaf, min_samples_split
-  SVC                              C, degree, tol
-```
+Models                         | Default grid/random search hyperparameters
+:------------------------------|:-----------------------------------------------
+AdaBoost Regressor             |   learning_rate, n_estimators
+Gradient Boosting Regressor    |   criterion, learning_rate, loss
+KNeighbors Regressor           |   n_neighbors, weights
+Lasso                          |   alpha, max_iter, normalize, tol
+MLP Regressor                  |   activation, alpha, learning_rate_init, solver
+Random Forest Regressor        |   criterion, min_samples_leaf, n_estimators
+AdaBoost Classifier            |   learning_rate, n_estimators
+Gradient Boosting Classifier   |   criterion, learning_rate, loss, n_estimators
+KNeighbors Classifier          |   leaf_size, metric, n_neighbors
+Linear SVC                     |   C, tol
+Logistic Regression            |   C, penalty, tol
+MLP Classifier                 |   activation, alpha, learning_rate_init, solver
+Random Forest Classifier       |   criterion, min_samples_leaf, min_samples_split
+SVC                            |   C, degree, tol
 
 The values to search for each model and their hyperparameters are specified in the JSON scripts `gsHyperParameters.json` and `rsHyperParameters.json` contained within `automl/code/customization/hyperParameters/`. These can be modified by the user if required.
 
