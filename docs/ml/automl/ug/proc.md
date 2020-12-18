@@ -23,9 +23,9 @@ The following are the procedures completed when the default system configuration
 
 <div markdown="1" class="typewriter">
 .automl.x.node.function   **Top-level processing node functions**
-  [selectModels](#automlselectModelsnodefunction)    Select subset of models based on limitations imposed by the dataset
-  [runModels](#automlrunModelsnodefunction)       Select most promising model from list of models provided for the user defined problem
-  [optimizeModels](#automloptimizeModelsnodefunction)  Apply user defined optimization method (grid/random/sobol) if feasible
+  [selectModels](#automlselectmodelsnodefunction)    Select subset of models based on limitations imposed by the dataset
+  [runModels](#automlrunmodelsnodefunction)       Select most promising model from list of models provided for the user defined problem
+  [optimizeModels](#automloptimizemodelsnodefunction)  Apply user defined optimization method (grid/random/sobol) if feasible
 </div>
 
 ## `.automl.selectModels.node.function`
