@@ -24,7 +24,7 @@ Kdb+, from [Kx](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
-    :fontawesome-solid-user-friends: [Iverson centenary event](https://www.eventbrite.co.uk/e/ken-iverson-centenary-tickets-132578131761)
+    :fontawesome-solid-book-reader: [Fizz buzz in q](learn/reading/fizzbuzz.md)
 
     :fontawesome-solid-cloud: [GCPM architecture](cloud/gcpm/architecture.md)
 
