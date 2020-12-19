@@ -32,9 +32,11 @@ The community of kdb+ developers is active around the world and around the clock
 
 ## :fontawesome-brands-linkedin: Linked-In
 
-: [Iversonians](https://www.linkedin.com/groups/44369/): Users of the Iversonian languages APL, J, k, and q.
-
 : [kdb+/k/q discussion](https://www.linkedin.com/groups/3921915/): Code, blog posts, job ads
+
+: :fontawesome-solid-microphone: Podcast: [Algorithms + Data Structures = Programs](https://www.linkedin.com/company/algorithms-data-structures-programs-podcast/) 
+
+: [Iversonians](https://www.linkedin.com/groups/44369/): Users of the Iversonian languages APL, J, k, and q.
 
 
 ## :fontawesome-brands-meetup: Meetup
