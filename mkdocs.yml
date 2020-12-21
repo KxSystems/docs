@@ -696,7 +696,8 @@ nav:
       - Overview: ml/automl/index.md
       - User guide:
         - Overview: ml/automl/ug/index.md
-        - User-callable functions: ml/automl/ug/functions.md
+        - Configuration: ml/automl/ug/config.md
+        - Framework Interaction: ml/automl/ug/functions.md
         - Data pre-processing: ml/automl/ug/preproc.md
         - Data processing: ml/automl/ug/proc.md
         - Data post-processing: ml/automl/ug/postproc.md

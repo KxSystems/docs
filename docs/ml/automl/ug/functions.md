@@ -6,9 +6,19 @@ date: December 2020
 keywords: keywords: machine learning, automated, ml, automl, fit, predict, persisted models
 ---
 
-# :fontawesome-solid-share-alt: Top-level user-callable functions
+# :fontawesome-solid-share-alt: Interacting with the framework
 
 :fontawesome-brands-github:
+[KxSystems/automl](https://github.com/kxsystems/automl/)
+
+There are two primary methods of interacting with this framework
+
+1. Applying function and manipulating models within a q process
+2. Interacting with the interface using command line arguments and customized configuration
+
+The following page outlines each of these methods
+
+## Interacting within a q process
 
 The top-level functions in the repository are:
 
@@ -27,7 +37,7 @@ The top-level functions in the repository are:
 The following examples and function descriptions outline the most basic vanilla implementations of AutoML specific to each supported use case. Namely, non-time series specific machine learning examples, along with time series examples which make use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
 
 
-## `.automl.fit`
+### `.automl.fit`
 
 _Apply AutoML to provided features and associated targets_
 
@@ -211,7 +221,7 @@ Saving down model to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/m
     0.02526887 0.2412723 0.2432483 0.3049373 0.330132 0.3727415 0.4536485..
     ```
 
-## `.automl.getModel`
+### `.automl.getModel`
 
 _Retrieve a previously fit AutoML model and use for predictions_
 
@@ -237,7 +247,7 @@ predict  | {[config;features]
 !!! note Predict on new data
     The model retrieved using `.automl.getModel` can be used to make predictions on new data using the same method detailed above for `.automl.fit`.
 
-## `.automl.newConfig`
+### `.automl.newConfig`
 
 _Generate a new JSON parameter file for use with .automl.fit_
 
@@ -262,9 +272,9 @@ q)key configPath
 ,`newConfigFile
 ```
 
-## `.automl.updateIgnoreWarnings`
+### `.automl.updateIgnoreWarnings`
 
-_Update print wanring severity level_
+_Update print warning severity level_
 
 Syntax: `.automl.updateIgnoreWarnings[warningLevel]`
 
@@ -281,7 +291,7 @@ returns null on success, with `.automl.utils.ignoreWarnings` updated to new leve
 
 ```
 
-## `.automl.updateLogging`
+### `.automl.updateLogging`
 
 _Update logging state_
 
@@ -293,7 +303,7 @@ Function takes no parameters and returns null on success when the boolean repres
 
 ```
 
-## `.automl.updatePrinting`
+### `.automl.updatePrinting`
 
 _Update printing state_
 
@@ -304,3 +314,5 @@ Function takes no parameters and returns null on success when the boolean repres
 ```q
 
 ```
+
+
