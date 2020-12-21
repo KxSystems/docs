@@ -37,18 +37,18 @@ The following lists the parameters which can be altered by users to modify the f
 [loggingDir](#loggingdir)                       Directory to save logs in
 [loggingFile](#loggingfile)                      Name of logging file produced for run
 [numberTrials](#numbertrials)                     Number of random/sobol hyperparameters to generate
-[overWriteFiles](#overwritefiles)                   
+[overWriteFiles](#overwritefiles)                   Overwrite any saved models or log files that exist
 [predictionFunction](#predictionfunction)               Fit-predict function to be applied 
 [pythonWarning](#pythonwarning)                    Python warning severity
 [randomSearchFunction](#randomsearchfunctionargument)             Random search function
 [randomSearchArgument](#randomsearchfunctionargument)             Number of folds/percentage of data in validation set
 [savedModelName](#savedmodelname)                   File name for saving best model to disk
 [saveOption](#saveoption)                       Option for what is to be saved to disk during a run
-[scoringFunctionClassification](#scoringfunctionclassificationregression)    Scoring functions for classification tasks
+[scoringFunctionClassification](#scoringfunctionclassificationregression)     Scoring functions for classification tasks
 [scoringFunctionRegression](#scoringfunctionclassificationregression)        Scoring functions for regression tasks
 [seed](#seed)                             Random seed to be used
-[significantFeatures](#significantfeatures)              Feature significance procedure to be applied to data
-[targetLimit](#targetlimit)                      
+[significantFeatures](#significantfeatures)               Feature significance procedure to be applied to data
+[targetLimit](#targetlimit)                      Target limit in which models are removed if exceeded 
 [testingSize](#testingsize)                      Size of testing set on which final model is tested
 [trainTestSplit](#traintestsplit)                   Train-test split function to be applied
 [w2v](#w2v)                              (NLP only) Word2Vec method used
@@ -207,7 +207,7 @@ q).automl.fit[features;target;ftype;ptype;params]
 
 _Type of hyperparameter search to perform_
 
-By default, an exhaustive grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the `hp` parameter.
+By default, an exhaustive grid search is applied to the best model found for a given dataset. Random or Sobol-random methods are also available within AutoML and can be applied by changing the `hyperparameterSearchType` parameter.
 
 ```q
 // Non-timeseries (normal) feature table
@@ -234,11 +234,59 @@ q).automl.fit[features;target;ftype;ptype;params]
 
 ### `loggingDir`
 
-__
+_Directory to store logging files_
+
+If `.automl.utils.logging` is set to `1b`, this defines the directory in which the log file is stored. 
+
+By default, the log file is saved to the same directory that the reports, models, meta and images are stored. 
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Update logging function
+q).automl.updateLogging[]
+// Check to ensure logging is enabled
+q).automl.utils.logging
+1b
+// Set the logging directory to logDir
+q)params:enlist[`loggingDir]!enlist"logDir"
+// Run AutoML
+q).automl.fit[features;target;ftype;ptype;params]
+```
 
 ### `loggingFile`
 
-__
+_Name of saved logging file_
+
+If `.automl.utils.logging` is set to `1b`, this defines the name of the saved log file. 
+
+By default, the log file is saved in the following format `logFile_date_time.txt`.
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Update logging function
+q).automl.updateLogging[]
+// Check to ensure logging is enables
+q).automl.utils.logging
+1b
+// Define the name of the logging file
+q)params:enlist[`loggingFile]!enlist"logFileNew"
+// Run AutoML
+q).automl.fit[features;target;ftype;ptype;params]
+``` 
 
 ### `numberTrials`
 
@@ -277,15 +325,115 @@ q).automl.fit[features;target;ftype;ptype;params]
 
 ### `overWriteFiles`
 
-__
+_Overwrite any saved models or log files that exist_
+
+If a defined `savedModelName` or `loggingFile` of the same name already exists in the system, setting this parameter to `1b` will allow `.automl.fit` to overwrite these files.
+
+By default this value is `0b` and the code will exit with a warning message if the files already exist
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Multi-classification target
+q)target:100?0b
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`class
+
+// Use a `savedModelName` that already exists
+q)params:enlist[`savedModelName]!enlist"test"
+// AutoML returns an error because the savePath already exists
+q).automl.fit[features;target;ftype;ptype;params]
+Error: The savePath chosen already exists, this run will be exited
+
+// Set overWriteFiles to 1b
+q)show params,:enlist[`overWriteFiles]!enlist 1b
+savedModelName| "test"
+overWriteFiles| 1b
+// Run AutoML
+q).automl.fit[features;target;ftype;ptype;params]
+modelInfo| `startDate`startTime`featureExtractionType`problemType`..
+predict  | {[config;features]
+  original_print:utils.printing;
+  utils.printi..
+```  
 
 ### `predictionFunction`
 
 _Fit-predict function to be applied_
 
+Fitting and prediction functions for cross validation and hyperparameter search. Both models fit on a training set and return the predicted scores based on supplied scoring function. Must take the following as inputs 
+
+-   `func` Scoring function that takes parameters and data as input and returns appropriate score
+-   `hyperParam` Dictionary of hyperparameters to be searched
+-   `data` Data split into training and testing sets of format ((xtrn;ytrn);(xval;yval))
+
+and returns the predicted and true validation values
+
+By default `.automl.utils.fitPredict` is used
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Define updated predition function
+q)fitPredictUpd:{[func;hyperParam;data]
+  numpyArray:.p.import[`numpy]`:Array;
+  preds:@[.[func[][hyperParam]`:fit;numpyArray data 0]`:predict;data[1]0]`;
+  (preds;data[1]1)
+  }
+q)params:enlist[predictionFunction]!enlist firPredictUpd
+// Run AutoML
+q).automl.fit[features;target;ftype;ptype;params]
+```
+
 ### `pythonWarning`
 
-_Python warning severity_
+_Display python warnings_
+
+Indicate whether python warning messages are to be displayed to standard output (`1b`) or suppressed (`0b`)
+
+By default this is set to `0b`
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?0b
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`class
+// Set python warnings to display to standard output
+q)params:enlist[`pythonWarnings]!enlist 1b
+q).automl.fit[features;target;ftype;ptype;params]
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+Executing node: featureDescription
+Executing node: dataPreprocessing
+Executing node: featureCreation
+Executing node: labelEncode
+Executing node: featureSignificance
+Executing node: trainTestSplit
+Executing node: modelGeneration
+Executing node: selectModels
+Executing node: runModels
+Executing node: optimizeModels
+/lib/python3.7/site-packages/sklearn/neural_network/_multilayer_perceptron...
+/lib/python3.7/site-packages/sklearn/neural_network/_multilayer_perceptron...
+...
+``` 
 
 ### `randomSearchFunction/Argument`
 
@@ -329,9 +477,28 @@ q).automl.fit[features;target;ftype;ptype;params]
 
     If you have any questions on this please contact ai@kx.com. When compared to other custom function definitions within the AutoML framework, this can become a complicated procedure.
 
-### `saveModelName`
+### `savedModelName`
 
-_File name for saving best model to disk_                   
+_Folder name where all outputs will be saved to disk_ 
+
+The folder created will be saved within `/outputs/namedModels/`. 
+
+By default, the outputs are saved using the following format `/outputs/dateTimeModels/date/run_time`
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Define the folder name where outputs are to be saved
+q)params:enlist[`savedModelName]!enlist"exampleModel"
+// Run AutoML
+q).automl.fit[features;target;ftype;ptype;params]
+```
 
 ### `saveOption`
 
@@ -472,7 +639,26 @@ The result of this function should be a list of those columns in `x` deemed to b
 
 ### `targetLimit`
 
-__
+_Target limit which requires specific models to be removed if exceeded_
+
+If the number of targets in the dataset exceeds this amount, the following models will be removed from the processing stage: `keras`, `svm`, `neuralNetwork`
+
+By default this value is 10,000
+
+```q
+// Non-timeseries (normal) feature table
+q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+// Regression target
+q)target:100?1f
+// Feature extraction type
+q)ftype:`normal
+// Problem type
+q)ptype:`reg
+// Lower the target limit
+q)params:enlist[`targetLimit]!enlist 1000
+// Run AutoML
+q).automl.fit[features;target;ftype;ptype;params]
+```
 
 ### `testingSize`
 
