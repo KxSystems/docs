@@ -24,13 +24,13 @@ Kdb+, from [Kx](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-solid-user-friends: [Iverson centenary event](https://www.eventbrite.co.uk/e/ken-iverson-centenary-tickets-132578131761)
+
     :fontawesome-solid-cloud: [GCPM architecture](cloud/gcpm/architecture.md)
 
     :fontawesome-solid-book-reader: [kdb+中文教程](https://kdbcn.gitee.io/)
 
     :fontawesome-brands-youtube: [Autoscaling in the cloud](https://youtu.be/3YFhoL9Rw6k)
-
-    :fontawesome-brands-youtube: [Kubernetes and kdb+](https://youtu.be/jqtkkCqBvr4)
 
 </div>
 
