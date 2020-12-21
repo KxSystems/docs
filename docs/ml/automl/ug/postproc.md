@@ -15,11 +15,11 @@ This section describes the outputs produced following model selection and optimi
 In its default configuration, the pipeline returns:
 
 1. Visualizations - data split, target distribution, feature impact, confusion matrix (classification only) and regression analysis (regression only) plots.
-2. The best model saved as a H5/binary file.
+2. The best model saved as a binary, '.h5' or '.pt' file depending on the type of model returned.
 3. A configuration file outlining the procedure carried out for a run which can be used in re-running a pipeline.
 4. A report outlining the steps taken and results achieved at each step of a run.
 
-These outputs are contained within subfolders for `images`, `models`, `config`, and `reports` respectively, contained within a directory specific to the date and time of the run. The folder structure for each unique run is as follows: `automl/outputs/date/run_time/...`.
+These outputs are contained within subfolders for `images`, `models`, `config`, and `reports` respectively, contained within a directory specific to the date and time of the run. The folder structure for each unique run is as follows: `automl/outputs/dateTimeModels/date/run_time/...`.
 
 ## Processing nodes
 
@@ -46,8 +46,8 @@ Where
 -   `descrip` is a table with symbol encoding, feature data and description
 -   `cTime` is the time taken for feature creation
 -   `sigFeats` is a symbol list of significant features
--   `symEncode` is a dictionary with columns to symbol encode and their required encoding
--   `symMap` is a dictionary with a mapping of symbol encoded target data
+-   `symEncode` is a dictionary containing the columns to symbol encode and their required encoding
+-   `symMap` is a dictionary with a mapping initial symbol representations of a target to the underlying integer returned in prediction.
 -   `featModel` is the embedPy NLP feature creation model used (if required)
 -   `tts` is a dictionary with feature and target data split into training/testing sets
 
@@ -64,8 +64,8 @@ Where
 -   `bestModel` is the best fitted model as an embedPy object
 -   `hyperParmams` is a dictionary of hyperparameters used for the best model (if any)
 -   `modelName` is the name of the best model as a string
--   `testScore` is the floating point score of the best model on used on testing data
--   `modelMetaData` is a dictionary with the metadata produced in finding the best model
+-   `testScore` is the floating point score of the best model when applied on the testing data
+-   `modelMetaData` is a dictionary containing the metadata produced when finding the best model
 
 returns a dictionary with consolidated parameters to be used to generate reports/graphs.
 
@@ -88,7 +88,7 @@ _Save all the graphs required for report generation_
 
 ### Visualizations
 
-A number of visualizations are produced within the pipeline and are saved to disk (in the default setting of AutoML) to be used within the run report, or otherwise. The specific images produced are detailed below and depend on the problem type of the current run.
+A number of visualizations are produced within the pipeline and are saved to disk (in the default setting of AutoML) to be used within report generation, or for posterity. The specific images produced are detailed below and depend on the problem type of the current run.
 
 **Data split**
 
@@ -106,7 +106,7 @@ A target distribution plot it generated for both classification and regression t
 
 The feature impact plot identifies the features which have the highest impact when predicting the outcomes of a model. Within the framework, the impact of a single feature column is determined by shuffling the values in that column and running the best model again with this new, scrambled feature.
 
-It should be expected that if a feature is an important contributor to the output of a model, then scrambling or shuffling that feature will cause the model to not perform as well. Conversely, if the model performs better on the shuffled data, which is effectively noise, it is safe to say that the feature is not relevant for model training.
+It should be expected that if a feature is an important contributor to the output of a model, then scrambling or shuffling that feature will cause the model to perform poorly due to removal of signal for a model. Conversely, if the model performs better, or results don't change shuffling the data, it could be inferred that the feature is not relevant for model training.
 
 A score is produced by the model for each shuffled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML Toolkit. An example plot is shown below for a table containing four features, using a Gradient Boosting Regressor.
 
@@ -120,7 +120,7 @@ A confusion matrix is produced for classification problems and highlights how we
 
 **Regression analysis**
 
-For regression problems, plots of true vs predicted targets and their residuals values are produced. Users can use these plots to determine how well their model performed given that a model which produced perfect predictions would show a perfect correlation between predicted and true values, with all residuals equal to zero. An example is shown below for a Random Forest Regressor model. 
+For regression problems, plots of true vs predicted targets and their residuals values are produced. Users can use these plots to determine how well their model performed by mapping predicted values to actual values and plotting the difference as a residual plot. The article provided [here](https://www.qualtrics.com/support/stats-iq/analyses/regression-guides/interpreting-residual-plots-improve-regression/) some insight into the usefulness of this method in analysing model results.
 
 ![Regression Analysis](img/rfr_regression.png)
 
@@ -130,13 +130,13 @@ Syntax: `.automl.saveGraph.node.function[params]`
 
 Where
 
--   params {dict} All data generated during the preprocessing and  prediction stages
+-   `params` is a dictionary containing all data generated during the preprocessing and prediction stages
 
-returns a null on success, where all graphs needed for reports will have been saved to appropriate locations. 
+returns a null on success, where all graphs needed for reports will have been saved to an appropriate locations.
 
 ## `.automl.saveMeta.node.function`
 
-_Save relevant metadata for use with a persisted model on new data_
+_Save relevant metadata for model oversight and use when retrieving saved models from disk_
 
 ### Configuration
 
@@ -177,11 +177,11 @@ savedModelName               | `
 functions                    | `.ml.fresh.params
 trainTestSplit               | `.automl.utils.ttsNonShuff
 aggregationColumns           | `x
-configSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
-modelsSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
-imagesSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
-reportSavePath               | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
-mainSavePath                 | "C:/Users/dmorgan1/AppData/Local/Continuum/ana..
+configSavePath               | "C:/Users/foobar/AppData/Local/Continuum/ana..
+modelsSavePath               | "C:/Users/foobar/AppData/Local/Continuum/ana..
+imagesSavePath               | "C:/Users/foobar/AppData/Local/Continuum/ana..
+reportSavePath               | "C:/Users/foobar/AppData/Local/Continuum/ana..
+mainSavePath                 | "C:/Users/foobar/AppData/Local/Continuum/ana..
 logFunc                      | {[filename;val;nline1;nline2]
 savedWord2Vec                | 0b
 modelName                    | `RandomForestRegressor
@@ -195,13 +195,13 @@ Syntax: `.automl.saveMeta.node.function[params]`
 
 Where
 
--   `params` is a dictionary with all the data generated during the preprocessing and prediction stages
+-   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
 
-returns is a dictionary containing all metadata information needed to generate predict function.
+returns a dictionary containing all metadata information needed to the predict function.
 
 ## `.automl.saveReport.node.function`
 
-_Save Python generated report summarizing current run via pyLatex/reportlab_
+_Save a Python generated report summarizing current run via pyLatex/reportlab_
 
 ### Report
 
@@ -218,7 +218,7 @@ Syntax: `.automl.saveReport.node.function[params]`
 
 Where
 
--   `params` is a dictionary with all the data generated during the preprocessing and prediction stages
+-   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
 
 returns null on success, where a report will have been saved to a location defined by run date and time.
 
@@ -233,7 +233,8 @@ The best performing model produced by the pipeline is saved to disk such that it
 Model library | Save type 
 --------------|-----------
 Sklearn       | Pickled binary file
-Keras         | hdf5 file containing model information
+Keras         | HDF5 file containing model information
+PyTorch       | A serialized `.pt` file
 
 ### Functionality
 
@@ -241,6 +242,6 @@ Syntax: `.automl.saveModels.node.function[params]`
 
 Where
 
--   `params` is a dictionary with all the data generated during the preprocessing and prediction stages
+-   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
 
 returns null on success, where all models have been saved to an appropriate location.

@@ -10,22 +10,22 @@ keywords: machine learning, automated, ml, model definition, type checking, symb
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-The below details the nodes that are used to preprocess data within the pipeline. Data preprocessing is a necessary step in any robust machine learning application. It is particularly important when it comes to automated pipelines where, by definition, the majority of the control is removed from the user. 
+The below documentation details the nodes that are used to preprocess data within the AutoML framework. Data preprocessing is a necessary step in any robust machine learning application. It is particularly important when it comes to automated pipelines where, by definition, the majority of the control is removed from the user. 
 
 ## Preprocessing nodes
 
 <div markdown="1" class="typewriter">
 .automl.X.node.function    **Top-level preprocessing node functions**
-  [configuration](#automlconfigurationnodefunction)        Pass run configuration into AutoML graph
+  [configuration](#automlconfigurationnodefunction)         Pass run configuration into AutoML graph
   [featureData](#automlfeaturedatanodefunction)          Load feature data from process/alternative data source
   [targetData](#automltargetdatanodefunction)           Load target vector from process/alternative data source
   [dataCheck](#automldatachecknodefunction)            Build configuration dictionary and check dataset is suitable
-  [modelGeneration](#automlmodelgenerationnodefunction)      Create list of models to apply
-  [featureDescription](#automlfeaturedescriptionnodefunction)   Retrieve information needed for report generation or new data
-  [labelEncode](#automllabelencodenodefunction)          Encode symbol label data
+  [modelGeneration](#automlmodelgenerationnodefunction)      Create table of models to apply
+  [featureDescription](#automlfeaturedescriptionnodefunction)   Information needed for report generation or running on new data
+  [labelEncode](#automllabelencodenodefunction)          Encode symbol target data
   [dataPreprocessing](#automldatapreprocessingnodefunction)    Preprocess data prior to application of ML algorithms
   [featureCreation](#automlfeaturecreationnodefunction)      Generate appropriate features based on problem type
-  [featureSignificance](#automlfeaturesignificancenodefunction)  Apply feature significance tests and return significant features
+  [featureSignificance](#automlfeaturesignificancenodefunction)   Apply feature significance tests and return significant features
   [trainTestSplit](#automltraintestsplitnodefunction)       Split features and target into training and testing sets
 </div>
 
@@ -130,7 +130,7 @@ Syntax: `.automl.dataCheck.node.function[config;features;target]`
 
 Where
 
--   `config` is a dictionary information related to the current run of AutoML
+-   `config` is a dictionary containing information related to the current run of AutoML
 -   `features` is the feature data as a table 
 -   `target` is a numerical or symbol target vector
 
@@ -155,7 +155,7 @@ target  | `s#0.009530776 0.01837959 0.0244211 0.0269967 0.03035461 0.05011425..
 
 ## `.automl.modelGeneration.node.function`
 
-_Create list of models to apply based on problem type and user configuration_
+_Create the table of models to apply based on problem type and user configuration_
 
 ### Applied models
 
@@ -174,7 +174,7 @@ GaussianNB                   |                              | Lasso
 SVC                          |                              |     
 LinearSVC                    |                              |          
 
-These models can be augmented through modification of `models.json` contained within the folder `automl/code/customization/models/modelConfig/` within the repository.
+These models can be augmented through modification of `models.json` contained within the folder `automl/code/customization/models/modelConfig/` within the repository. Information regarding the content of this file can be found [here](config.md#models).
 
 !!! note "Keras architectures"
 
@@ -188,7 +188,7 @@ Syntax: `.automl.modelGeneration.node.function[config;target]`
 
 Where
 
--   `config` is a dictionary information related to the current run of AutoML
+-   `config` is a dictionary containing information related to the current run of AutoML
 -   `target` is a numerical or symbol target vector
 
 returns a table containing information needed to apply appropriate models to data.
@@ -217,19 +217,19 @@ BinaryKeras                keras   binary         `seed binary 1     {[x;y;z]..
 
 The model table produced contains the following columns:
 
-```txt
-model   name of the model to be applied
-lib     Python library from which the model is derived
-fnc     sub module within the python library from which a model is derived
-seed    is the model capable of being seeded (seed for yes, null for no)
-typ     type of problem being solved
-apply   if model is to be applied within the pipeline
-minit   definition of the model which will to be applied within the workflow
-```
+ Column Name | Desciption
+-------------|------------
+ model       | name of the model to be applied
+ lib         | Python library from which the model is derived
+ fnc         | sub module within the python library from which a model is derived
+ seed        | is the model capable of being seeded (seed for yes, null for no)
+ typ         | type of problem being solved
+ apply       | if model is to be applied within the pipeline
+ minit       |definition of the model which will to be applied within the workflow
 
 ## `.automl.featureDescription.node.function`
 
-_Retrieve initial information needed for report generation or running on new data_
+_Retrieve information needed for report generation and running on new data_
 
 Syntax: `.automl.featureDescription.node.function[config;features]`
 
@@ -275,7 +275,7 @@ features       | +`idx`x`x1`x2`x3!(`fjcj`pnoj`cphm`cedn`kihe`gcbf`gidn`jcen`i..
 
 ## `.automl.labelEncode.node.function`
 
-_Encode symbol label data_
+_Encode non numeric target data_
 
 Syntax: `.automl.labelEncode.node.function[target]`
 
@@ -283,7 +283,7 @@ Where
 
 -   `target` is a numerical or symbol target vector
 
-returns a dictionary mapping between symbol encoding and the encoded target data.
+returns a dictionary containing a mapping between symbols and associated labels if necessary and the numerical representation of the encoded target used throughout the framework.
 
 ```q
 // Multi-classification target
@@ -293,6 +293,14 @@ q)show target:100?`a`b`c
 q).automl.labelEncode.node.function target
 symMap| `s#`a`b`c!0 1 2
 target| 0 0 1 0 2 2 0 0 1 0 2 0 1 2 2 0 1 2 2 1 2 1 2 1 2 1 1 1 0 2 1 2 0 1 1..
+
+// Multi-classification non symbol target
+q)show target:100?3
+2 2 2 2 2 1 0 2 1 0 0 1 2 2 1 0 2 1 2 0 2 1 0 2 0 1 2 2 2 0 2 0 1 2 2 2 1 0 2..
+// Encode target vector
+q).automl.labelEncode.node.function target
+symMap| ()!()
+target| 2 2 2 2 2 1 0 2 1 0 0 1 2 2 1 0 2 1 2 0 2 1 0 2 0 1 2 2 2 0 2 0 1 2 2..
 ```
 
 ## `.automl.dataPreprocessing.node.function`
@@ -310,7 +318,7 @@ Within the pipeline, symbol columns are encoded as follows:
 
     In the case of FRESH, the above limitations are performed on an aggregation-bucket basis for frequency encoding rather than for an entire column. This ensures that encoding on new data is as fair as possible where each aggregation bucket is associated with an individual target.
     
-Additionally, both null and infinite values are replaced within the feature data, due to the inability of both sklearn and keras machine learning models to handle this form of data. The below table highlights the values used to replace each of these values where the process aims to limit changes to the data distribution.
+Additionally, both null and infinite values are replaced within the feature data, due to the inability of both sklearn and keras machine learning models to handle this form of data. The below table highlights the values used to replace each of these values, the aim is to as much as possible limit changes to the data distribution.
 
 value             | symbol  | replacement
 :-----------------|:--------|:-------------
@@ -326,7 +334,7 @@ Syntax: `.automl.dataPreprocessing.node.function[config;features;symEncode]`
 
 Where
 
--   `config` is a dictionary information related to the current run of AutoML
+-   `config` is a dictionary containing information related to the current run of AutoML
 -   `features` is the feature data as a table 
 -   `symEncode` is a dictionary containing columns to symbol encode and their required encoding
 
@@ -378,7 +386,7 @@ Over time the system will be updated to perform tasks in a way which is cognizan
 
 **Normal**
 
-Normal feature extraction can be applied to non-time series problems that have a 1-to-1 mapping between features and targets. The current implementation of normal feature extraction splits time/date type columns into their component parts.
+Normal feature extraction can be applied to non-time series problems that have a 1-to-1 mapping between features and targets. The current implementation of normal feature extraction splits time/date type columns into their component parts. No further feature extraction is applied by default.
 
 **NLP**
 
@@ -387,7 +395,7 @@ The NLP (Natural Language Processing) feature extraction within AutoML makes use
 The following are the steps applied independently to all columns containing text data:
 
 1. Use `.nlp.findRegex` to retrieve information surrounding the occurrances of various expressions, e.g. references to urls, money, the presence of phone numbers, etc.
-2. Apply named entity recognition to detect references to products, individuals, references to art, etc.
+2. Apply named entity recognition to detect references to products, individuals, art, etc.
 3. Apply sentiment analysis to the dataset to extract information about the positive/negative/neutral and compound nature of the text.
 4. Apply the function `.nlp.newParser` to extract stop words, tokens and any references to numbers. Using this data, calculate the percentages of a sentence that are numeric values, stop words or particular parts of speech.
 5. Using the corpus tokens extracted in 4, use the Python library `gensim` to create a word2vec encoding of the dataset, such that we have a numerical representation of the 'meaning' of a sentence.
@@ -396,15 +404,16 @@ If any other non-text based columns are present, normal feature extraction is ap
 
 **FRESH**
 
-The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time series into subsets, from which features can be extracted. Note that each subset will have an associated target.
+The FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm is used specifically for time series datasets. The data passed to FRESH should contain an identifying (ID) column, which groups the time series into subsets, from which features can be extracted. Note that each subset must have an associated target.
 
 The feature extraction functions applied within the FRESH procedure are defined within the [ML Toolkit](../../toolkit/fresh.md). A full explanation of this algorithm is also provided there.
 
-!!! note
+!!! note "Default setup"
+	
+	1. When running `.automl.fit` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column.
+	2. By default all functions defined within `.ml.fresh.params` are applied during the feature extraction phase.
 
-    When running `.automl.fit` for FRESH data, by default the first column of the dataset is defined as the identifying (ID) column. 
-
-    See instructions on [how to modify this](advanced.md).
+	Each of the above can be modified on a per run basis following instructions outlined [here](advanced.md).
 
 ### Functionality
 
@@ -415,7 +424,7 @@ Where
 -   `config` is a dictionary containing information related to the current run of AutoML
 -   `features` is feature data as a table 
 
-returns a dictionary containing original features with any additional ones created, along with time taken and any saved models. 
+returns a dictionary containing original features with any additional ones created, along with time taken and any saved models in the case of generation of a word2vec model. 
 
 ```q
 // Non-time series (normal) example table
@@ -480,7 +489,7 @@ Syntax: `.automl.featureSignificance.node.function[config;features;target]`
 
 Where
 
--   `config` is a dictionary information related to the current run of AutoML
+-   `config` is a dictionary containing information related to the current run of AutoML
 -   `features` is the feature data as a table 
 -   `target` is a numerical or symbol target vector
 
@@ -557,11 +566,11 @@ At this stage it is possible to begin model training and validation using cross-
 
 ### Functionality
 
-Syntax: `.automl.trainTestSplit.node.function[]`
+Syntax: `.automl.trainTestSplit.node.function[config;features;target;sigFeats]`
 
 Where
 
--   `config` is a dictionary information related to the current run of AutoML
+-   `config` is a dictionary containing information related to the current run of AutoML
 -   `features` is the feature data as a table 
 -   `target` is a numerical or symbol target vector
 -   `sigFeats` is a symbol list of significant features

@@ -30,7 +30,7 @@ There are at present five files adhering to this formatting style.
 Index | Folder name        | Relevant file                                       | File Description
 ------|--------------------|-----------------------------------------------------|-----------
 1.    | scoring            | [scoringFunctions.json](#scoring-functions)         | Definitions of all the scoring functions which can be used in optimization and if the optimal model requires ascending/descending data.
-2.    | configuration      | [default.json](#default-configuration)              | Default values for all the modifiable parameters outlined within [Advanced parameter modifications](advanced.md).
+2.    | configuration      | [default.json](#default-configuration)              | Default values for all the modifiable parameters outlined within [Advanced parameter modifications](advanced.md) and all information needed when running AutoML from command line only.
 3.    | models/modelConfig | [models.json](#mdoels)                              | Definition of all models supported for classification and regression tasks.
 4.    | hyperParameters    | [gsHyperparameters.json](#grid-search-parameters)   | Definition of hyperparameter sets used by each model when using an exhaustive search method.
 5.    | hyperParameters    | [rsHyperparameters.json](#random-search-parameters) | Definition of hyperparameter sets used by each model when using a random/pseudo-random search method.
@@ -165,7 +165,7 @@ Input         | Type   | Description | Example
  separator    | char   | The field separator is the item within each line of a CSV that splits the data into its constituent fields. | ","/"/\t"
  directory    | string | The directory relative to the directory that AutoML was loaded containing the appropriate CSV file. | "testDirectory/test1"
  fileName     | string | The name of the CSV file to be loaded | "testFile.csv"
- targetColumn | string | In the case that the feature and target datasets are both from the same port and retrieved using the same select statement, retrieve the data once and select the appropriate target column. | "target"
+ targetColumn | string | In the case that the feature and target datasets are both to be retrieved from the same CSV file, data is only loaded once and the appropriate target data is selected. | "target"
 
 __*binary:*__
 
@@ -175,7 +175,7 @@ Input         | Type   | Description | Example
 --------------|--------|-------------|---------
  directory    | string | The directory relative to the directory that AutoML was loaded containing the appropriate kdb+ binary file. | "testDirectory/test1"
  fileName     | string | The name of the kdb+ binary file to be loaded | "testFile.csv"
- targetColumn | string | In the case that the feature and target datasets are both from the same port and retrieved using the same select statement, retrieve the data once and select the appropriate target column. | "target"
+ targetColumn | string | In the case that the feature and target datasets are both from the same kdb+ bindary file, data is only loaded once and the appropriate target data is selected. | "target"
 
 #### problemParameters
 
@@ -183,7 +183,7 @@ The `problemParameters` section of the default.json file contains the definition
 
 Section  | Description                                                                          | Example
 ---------|--------------------------------------------------------------------------------------|---------
- general | Parameters configurable for each use case                                            | 'seed'/'testingSize'
+ general | Parameters applicable for all use cases                                              | 'seed'/'testingSize'
  normal  | Parameters configurable for the application of 'normal' feature extraction/use cases | 'trainTestSplit'/'functions'
  fresh   | Parameters configurable for the application of 'fresh' feature extraction/use cases  | 'aggregationColumns'
  nlp     | Parameters configurable for the application of 'nlp' feature extraction/use cases    | 'w2v'
@@ -246,7 +246,7 @@ The following table outlines the expected inputs for each of the models defined 
  library    | Is the library from which the model is generated `sklearn`/`keras`/`torch`/`theano` this defines the logic used for model retrieval.
  module     | In the case of `sklearn` this defines the module from which the model is retrieved, for `keras`/`theano`/`torch` however this defines the name of the model being retrieved i.e. in the case of `BinaryKeras` above the model to be retrieved must be defined as `.automl.keras.binary.x` where `x` defines `fit`/`predict`/`model` definitions within the library.
  seed       | Is the model to be seeded for reproducibility or not? Models such as simple linear regressors are deterministic and as such do not need to be seeded
- type       | Is the model `binary/`multi` class in the case of a classification problem, otherwise define it as `reg` for a regression model
+ type       | Is the model `binary`/`multi` class in the case of a classification problem, otherwise define it as `reg` for a regression model
  apply      | Is this model to be applied or not in a given run? If set to false this model definition will be ignored.
 
 ### Grid search parameters
@@ -316,8 +316,8 @@ The following table outlines the expected behaviour of each of the sections of t
 
  Input               | Description
 ---------------------|-------------
- Model-Name          | The model name defined within 'models.json' to which the defined hyperparameters are to be applied
- Parameters          | The specific hyperparameters/range of over which hyperparameters to be applied are defined.
+ Model-Name          | The model name defined within 'models.json' to which the defined hyperparameters are to be applied.
+ Parameters          | The specific hyperparameters/range over which hyperparameters to be applied are defined.
  meta -> randomType  | This defines the type of randomization which is to be used within the random search. This can be one of `boolean`, `uniform`, `loguniform` or `symbol`, the definitions outlining expected behaviour for each are provided [here](../../../../toolkit/xval#random-search-hyperparameter-dictionary).
  meta -> typeConvert | The type conversion of each of the parameters to be searched. For example in the case of the `Lass` model, the parameter `alpha` must be cast to a float, while the `normalize` parameter is a boolean value.
 
