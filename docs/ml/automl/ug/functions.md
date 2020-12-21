@@ -6,9 +6,19 @@ date: December 2020
 keywords: keywords: machine learning, automated, ml, automl, fit, predict, persisted models
 ---
 
-# :fontawesome-solid-share-alt: Top-level user-callable functions
+# :fontawesome-solid-share-alt: Interacting with the framework
 
 :fontawesome-brands-github:
+[KxSystems/automl](https://github.com/kxsystems/automl/)
+
+There are two primary methods of interacting with this framework
+
+1. Applying function and manipulating models within a q process
+2. Interacting with the interface using command line arguments and customized configuration
+
+The following page outlines each of these methods
+
+## Interacting within a q process
 
 The top-level functions in the repository are:
 
@@ -27,7 +37,7 @@ The top-level functions in the repository are:
 The following examples and function descriptions outline the most basic vanilla implementations of AutoML specific to each supported use case. Namely, non-time series specific machine learning examples, along with time series examples which make use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
 
 
-## `.automl.fit`
+### `.automl.fit`
 
 _Apply AutoML to provided features and associated targets_
 
@@ -209,9 +219,11 @@ Saving down model to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/m
     q)outputModel.predict[xtest]
     
     0.02526887 0.2412723 0.2432483 0.3049373 0.330132 0.3727415 0.4536485..
+        "port"  :"",
+        "select":""
     ```
 
-## `.automl.getModel`
+### `.automl.getModel`
 
 _Retrieve a previously fit AutoML model and use for predictions_
 
@@ -237,7 +249,7 @@ predict  | {[config;features]
 !!! note Predict on new data
     The model retrieved using `.automl.getModel` can be used to make predictions on new data using the same method detailed above for `.automl.fit`.
 
-## `.automl.newConfig`
+### `.automl.newConfig`
 
 _Generate a new JSON parameter file for use with .automl.fit_
 
@@ -262,9 +274,9 @@ q)key configPath
 ,`newConfigFile
 ```
 
-## `.automl.updateIgnoreWarnings`
+### `.automl.updateIgnoreWarnings`
 
-_Update print wanring severity level_
+_Update print warning severity level_
 
 Syntax: `.automl.updateIgnoreWarnings[warningLevel]`
 
@@ -321,7 +333,7 @@ Executing node: featureDescription
 ..
 ```
 
-## `.automl.updateLogging`
+### `.automl.updateLogging`
 
 _Update logging state_
 
@@ -335,7 +347,7 @@ Function takes no parameters and returns null on success when the boolean repres
 !!! note 
     The default value of `automl.utils.logging` is `0b`.
 
-## `.automl.updatePrinting`
+### `.automl.updatePrinting`
 
 _Update printing state_
 
@@ -348,3 +360,55 @@ Function takes no parameters and returns null on success when the boolean repres
 
 !!! note
     The default value of `automl.utils.printing` is `1b`.
+
+## Interacting via command line
+
+There are at present two circumstances under which users may wish to interact with the AutoML framework via optional command line arguments
+
+1. When a user wishes to overwrite the default parameters of a process running AutoML such that each run uses these parameters.
+2. When running the entirety of the framework in a 'one-shot' manner. fitting a model and saving it to disk and exiting the process immediately.
+
+Both of the above examples rely on users making use of custom JSON files, in particular a customized version of `default.json` oulined [here](config.md#default-configuration). To generate a named custom version of the `default.json` file use the function [`.automl.newConfig`](#automlnewconfig). When editing this file a user should follow the instructions outlined [here](config.md#default-configuration).
+
+???Note "Location of JSON files"
+	It should be noted in the examples presented below that the custom JSON files used can be in one of two locations.
+
+	1. Within the folder `code/customization/configuration/customConfig` relative to `.automl.path`.
+	2. Relative to the location that the user is currently positioned within their file system.
+
+### Overwriting default parameters
+
+The following is the command line input used to overwrite default parameters with a custom configuration.
+
+```bash
+$ q automl.q -config newConfig.json
+```
+
+In the below example a custom JSON file `myConfig.json` exists within the folder `code/customization/configuration/customConfig` which sets the testing set size to 0.3 and modifies the target limit to 1000.
+
+```q
+// Start automl in a q process normally and retrieve the appropriate defaults
+$ q automl.q
+q).automl.loadfile`:init.q
+q).automl.paramDict[`general;`testingSize`targetLimit]
+0.2
+10000
+
+// Start automl using the new configuration file
+$ q automl.q -config myConfig.json
+q).automl.loadfile`:init.q
+q).automl.paramDict[`general;`testingSize`targetLimit]
+0.3
+1000
+```
+
+### Running AutoML from command line
+
+The following is the command line input used when running the entirety of `.automl.fit` from command line.
+
+```bash
+$ q automl.q -config newConfig.json -run
+```
+
+In the above example invocation it should be noted that the file `newConfig.json` can exist either relative to the users current location within their file system or in the folder `code/customization/configuration/customConfig`.
+
