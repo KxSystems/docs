@@ -219,6 +219,8 @@ Saving down model to automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/m
     q)outputModel.predict[xtest]
     
     0.02526887 0.2412723 0.2432483 0.3049373 0.330132 0.3727415 0.4536485..
+        "port"  :"",
+        "select":""
     ```
 
 ### `.automl.getModel`
@@ -280,15 +282,55 @@ Syntax: `.automl.updateIgnoreWarnings[warningLevel]`
 
 Where
 
--   warningLevel is 0, 1 or 2 long denoting how severely warnings are to be handled, where:
-      0. Ignore warnings completely and continue evaluation
-      1. Highlight to a user that a warning was being flagged but continue
-      2. Exit evaluation of AutoML highlighting to the user why this happened
+-   `warningLevel` is `0`, `1` or `2` long denoting how severely warnings are to be handled:
+      - `0` - Ignore warnings completely and continue evaluation
+      - `1` - Highlight to a user that a warning was being flagged but continue
+      - `2` - Exit evaluation of AutoML highlighting to the user why this happened
 
 returns null on success, with `.automl.utils.ignoreWarnings` updated to new level.
 
 ```q
+// Exit pipeline on error
+q).automl.updateIgnoreWarnings 2
+// Fit AutoML
+q).automl.fit[features;target;featExtractType;problemType;params]
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+Error: The savePath chosen already exists, this run will be exited
+// Highlight warnings
+q).automl.updateIgnoreWarnings 1
+// Fit AutoML
+q).automl.fit[features;target;featExtractType;problemType;params]
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
 
+The savePath chosen already exists and will be overwritten
+
+Executing node: featureDescription
+..
+// Ignore warnings
+q).automl.updateIgnoreWarnings 0
+// Fit AutoML
+q).automl.fit[features;target;featExtractType;problemType;params]
+Executing node: automlConfig
+Executing node: configuration
+Executing node: targetDataConfig
+Executing node: targetData
+Executing node: featureDataConfig
+Executing node: featureData
+Executing node: dataCheck
+Executing node: featureDescription
+..
 ```
 
 ### `.automl.updateLogging`
@@ -297,11 +339,13 @@ _Update logging state_
 
 Syntax: `.automl.updateLogging[]`
 
-Function takes no parameters and returns null on success when the boolean representating `.automl.utils.logging` has been inverted.
+Function takes no parameters and returns null on success when the boolean representating `.automl.utils.logging` has been inverted, where:
 
-```q
+  - `0b` - No log file is created
+  - `1b` - Print statements from `.automl.fit` are saved to a log file
 
-```
+!!! note 
+    The default value of `automl.utils.logging` is `0b`.
 
 ### `.automl.updatePrinting`
 
@@ -309,10 +353,62 @@ _Update printing state_
 
 Syntax: `.automl.updatePrinting[]`
 
-Function takes no parameters and returns null on success when the boolean representating `.automl.utils.printing` has been inverted.
+Function takes no parameters and returns null on success when the boolean representating `.automl.utils.printing` has been inverted, where:
 
-```q
+  - `0b` - Print statements to console are disabled
+  - `1b` - Print statements are displayed to console
 
+!!! note
+    The default value of `automl.utils.printing` is `1b`.
+
+## Interacting via command line
+
+There are at present two circumstances under which users may wish to interact with the AutoML framework via optional command line arguments
+
+1. When a user wishes to overwrite the default parameters of a process running AutoML such that each run uses these parameters.
+2. When running the entirety of the framework in a 'one-shot' manner. fitting a model and saving it to disk and exiting the process immediately.
+
+Both of the above examples rely on users making use of custom JSON files, in particular a customized version of `default.json` oulined [here](config.md#default-configuration). To generate a named custom version of the `default.json` file use the function [`.automl.newConfig`](#automlnewconfig). When editing this file a user should follow the instructions outlined [here](config.md#default-configuration).
+
+???Note "Location of JSON files"
+	It should be noted in the examples presented below that the custom JSON files used can be in one of two locations.
+
+	1. Within the folder `code/customization/configuration/customConfig` relative to `.automl.path`.
+	2. Relative to the location that the user is currently positioned within their file system.
+
+### Overwriting default parameters
+
+The following is the command line input used to overwrite default parameters with a custom configuration.
+
+```bash
+$ q automl.q -config newConfig.json
 ```
 
+In the below example a custom JSON file `myConfig.json` exists within the folder `code/customization/configuration/customConfig` which sets the testing set size to 0.3 and modifies the target limit to 1000.
+
+```q
+// Start automl in a q process normally and retrieve the appropriate defaults
+$ q automl.q
+q).automl.loadfile`:init.q
+q).automl.paramDict[`general;`testingSize`targetLimit]
+0.2
+10000
+
+// Start automl using the new configuration file
+$ q automl.q -config myConfig.json
+q).automl.loadfile`:init.q
+q).automl.paramDict[`general;`testingSize`targetLimit]
+0.3
+1000
+```
+
+### Running AutoML from command line
+
+The following is the command line input used when running the entirety of `.automl.fit` from command line.
+
+```bash
+$ q automl.q -config newConfig.json -run
+```
+
+In the above example invocation it should be noted that the file `newConfig.json` can exist either relative to the users current location within their file system or in the folder `code/customization/configuration/customConfig`.
 
