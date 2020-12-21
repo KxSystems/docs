@@ -44,10 +44,10 @@ The following lists the parameters which can be altered by users to modify the f
 [randomSearchArgument](#randomsearchfunctionargument)             Number of folds/percentage of data in validation set
 [savedModelName](#savedmodelname)                   File name for saving best model to disk
 [saveOption](#saveoption)                       Option for what is to be saved to disk during a run
-[scoringFunctionClassification](#scoringfunctionclassificationregression)     Scoring functions for classification tasks
+[scoringFunctionClassification](#scoringfunctionclassificationregression)    Scoring functions for classification tasks
 [scoringFunctionRegression](#scoringfunctionclassificationregression)        Scoring functions for regression tasks
 [seed](#seed)                             Random seed to be used
-[significantFeatures](#significantfeatures)               Feature significance procedure to be applied to data
+[significantFeatures](#significantfeatures)              Feature significance procedure to be applied to data
 [targetLimit](#targetlimit)                      Target limit in which models are removed if exceeded 
 [testingSize](#testingsize)                      Size of testing set on which final model is tested
 [trainTestSplit](#traintestsplit)                   Train-test split function to be applied
