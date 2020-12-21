@@ -6,7 +6,7 @@ date:
 keywords: keywords: machine learning, automated, ml, automl, graphing, cli, user interface
 ---
 
-# :fontawesome-solid-share-alt: Overview - Code infrastructure and interacting with the Kx AutoML framework
+# :fontawesome-solid-share-alt: Overview
 
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
@@ -19,8 +19,14 @@ The documentation presented for this framework provides a number of entry points
 	2. [Data processing](proc.md) (model selection and optimization)
 	3. [Data post-processing](postproc.md) (saving reports, models, graphs and metadata)
 3. Users who need to make changes to the underlying functionality by changing tunable parameters can find this information in the [Advanced parameter modifications](advanced.md) section.
-This is done 
+
 
 ## Graphing structure
 
-... 
+Version `0.3.0` of the AutoML framework changed fundamentally the approach to code structure used by the framework. In particular moving from a small number of closely dependent functions to a coding pattern which separates the individual pieces of required functionality into separated and distinct sections. This is facilitated by the directed acyclic graph structure outlined [here](../../toolkit/graph/index.md).
+
+Understanding of this underlying structure provides insights into the functionality provided and the interdependencies of individual pieces of functionality. It also allows a user to understand the documentation breakdown within the [data pre-processing](preproc.md), [data processing](proc.md) and [data post-processing](postproc.md) sections which reference the applied functions within each of these sections based on their `node` within the graph i.e. `.automl.trainTestSplit.node.function`, `.automl.saveGraph.node.function` or `.automl.featureData.node.function`.
+
+The following image provides a full understanding of the interconnection between sections of the framework
+
+[![](img/Automl_Graph.png)](img/Automl_Graph.png)
