@@ -18,7 +18,7 @@ The automated machine learning platform described here is built largely on the t
 4. Model Optimization
 5. Report generation and model persistence
 
-Each of these steps are described in detail. This allows users to understand the processes by which decisions are being made and the transformations which their data undergo during the production of the output models.
+Each of these steps are described in detail throughout this documentation. This allows users to understand the processes by which decisions are being made and the transformations which their data undergo during the production of the output models.
 
 At present the machine learning frameworks supported for this are based on:
 
@@ -71,9 +71,7 @@ q)\l automl/automl.q
 q).automl.loadfile`:init.q
 ```
 
-This can be achieved by one command.
-Copy a link to the library into `QHOME`.
-Then:
+This can be achieved by one command. Assuming the `automl` repository is located in `QHOME`, execute the following from a q session:
 
 ```q
 q)\l automl/init.q
