@@ -1,6 +1,8 @@
 ---
 title: Automated machine learning user guide | Machine Learning | Documentation for kdb+ and q
 description: Configuring AutoML
+author: Conor McCarthy
+date: December 2020
 keywords: keywords: machine learning, automated, ml, automl, configuration, config
 ---
 
@@ -9,7 +11,7 @@ keywords: keywords: machine learning, automated, ml, automl, configuration, conf
 :fontawesome-brands-github:
 [KxSystems/automl](https://github.com/kxsystems/automl)
 
-While AutoML provides a solid foundation for the generation of machine learning models, for many users there may be significant desire to modify or extend the frameworks capabilities to suit their specific use case. To facilitate this there are two principle ways a user can configure their system.
+While AutoML provides a solid foundation for the generation of machine learning models, for many users there may be significant desire to modify or extend the capabilities of the framework to suit their specific use-case. To facilitate this, there are two ways a user can configure their system:
 
 1. A number of JSON files are provided to allow users to add custom scoring functions, add or remove models, update hyperparameters and change general configuration of an autoML run.
 2. When running within a q session users can update general configuration by passing a dictionary containing suitable key value pairs as input.
@@ -18,11 +20,11 @@ For the purpose of this outline each of the above options is outlined separately
 
 ## JSON configuration files
 
-From an ease of use perspective one of the key additions of `v0.3.0` of the framework was to move all configuration definitions to JSON file format as opposed to the previous q style configuration.
+From an ease of use perspective, one of the key additions of `v0.3.0` of the framework was to move all configuration definitions to JSON file format as opposed to the previous q style configuration.
 
-There are at present five files adhering to this formatting style
+There are at present five files adhering to this formatting style.
 
-??? Note "Relevant file paths"
+!!! Note "Relevant file paths" fvf 
 	For ease of navigation within the code base the names in the below table are paths to the appropriate files relative to the `code/customization` directory of the repository.
 
 Index | Folder name        | Relevant file                                       | File Description
@@ -54,7 +56,7 @@ Users are unlikely to need to change the currently defined functions however in 
 
 ### Default Configuration
 
-The default configuration JSON file, `default.json` file is used in two situations
+The default configuration JSON file, `default.json` file is used in two situations:
 
 1. As the source for the default parameters used when executing `.automl.fit` and using default parameters.
 2. As the reference file for generation of custom configuration files, these custom files can be used in two settings.
@@ -66,7 +68,7 @@ The following are the major sections of the JSON file, each of these will be out
 Section Name      | Description
 ------------------|------------
 problemDetails    | Required when using the command line interface to run the entirety of the [`.automl.fit`](functions.md#automlfit) function, this defines the information about the problem being solved which is required to generate a full run.
-retrievalMethods  | Required when using the command line interface to run the entirety of the [`.automl.fit`](functions.md#automlfit) function, this defines instructions for the retrieving the target vector and feature data using various methods.
+retrievalMethods  | Required when using the command line interface to run the entirety of the [`.automl.fit`](functions.md#automlfit) function, this defines instructions for retrieving the target vector and feature data using various methods.
 problemParameters | This defines all default parameters to be used when a configuration file of this type is loaded, problem type specific parameters and parameters which are generally applicable are separated to avoid confusion.
 
 #### problemDetails
@@ -93,9 +95,9 @@ problemType           | What form of problem is being solved?                   
 modelName             | What unique name is to be associated with the model?      | Any [optional]
 dataRetrievalMethod   | How are the feature data and target data to be retrieved? | "ipc"/"csv"/"binary"
 
-??? Note "Usage"
+!!! Note "Usage"
 
-	Each of entries above apart from `modelName` can only be envoked when running the entirety of the AutoML framework via command line. These entries are ignored when running from q directly, or updating the default configuration on command line.
+	Each of the entries above (apart from `modelName`) can only be invoked when running the entirety of the AutoML framework via command line. These entries are ignored when running from q directly, or updating the default configuration on command line.
 
 #### retrievalMethods
 
@@ -205,12 +207,12 @@ In each case the JSON configuration defined takes the following form, where valu
 
 ### Models
 
-The `models.json` file defines information surrounding the machine learning models which are to be applied when running AutoML. Any model which is to be added to the framework must be defined in this file. The JSON file contains two sections
+The `models.json` file defines information surrounding the machine learning models which are to be applied when running AutoML. Any model which is to be added to the framework must be defined in this file. The JSON file contains two sections:
 
 1. classification
 2. regression
 
-Users who wish to add custom models, in accordance with the instructions outlined within the [FAQ](#../faq.md) section for `pytorch`/`sklearn`/`keras`/`theano` must define their models within this section. The following provides an example definition of a `sklearn`, `keras` and `torch` model
+Users who wish to add custom models, in accordance with the instructions outlined within the [FAQ](#../faq.md) section for `pytorch`/`sklearn`/`keras`/`theano` must define their models within this section. The following provides an example definition of a `sklearn`, `keras` and `torch` model.
 
 ```json
 "LinearSVC":{
@@ -236,11 +238,11 @@ Users who wish to add custom models, in accordance with the instructions outline
 }
 ```
 
-The following table outlines the expected inputs for each of the models defined above
+The following table outlines the expected inputs for each of the models defined above:
 
  Input      | Description
 ------------|-------------
- Model-Name | In the examples above 'LinearSVC', 'BinaryKeras' and 'Torch' are the names which will be associated with the models when printing to standard out, in the case of Keras/Torch, this has no physical representation however when using sklearn this defines the model name to be retrieved. for example the model defined here is `sklearn.svm.LinearSVC`.
+ Model-Name | In the examples above 'LinearSVC', 'BinaryKeras' and 'Torch' are the names which will be associated with the models when printing to standard out, in the case of Keras/Torch, this has no physical representation however when using sklearn this defines the model name to be retrieved. For example, the model defined here is `sklearn.svm.LinearSVC`.
  library    | Is the library from which the model is generated `sklearn`/`keras`/`torch`/`theano` this defines the logic used for model retrieval.
  module     | In the case of `sklearn` this defines the module from which the model is retrieved, for `keras`/`theano`/`torch` however this defines the name of the model being retrieved i.e. in the case of `BinaryKeras` above the model to be retrieved must be defined as `.automl.keras.binary.x` where `x` defines `fit`/`predict`/`model` definitions within the library.
  seed       | Is the model to be seeded for reproducibility or not? Models such as simple linear regressors are deterministic and as such do not need to be seeded
@@ -273,7 +275,7 @@ This defines the hyperparameters which are used when running the AutoML such tha
 }
 ```
 
-The following table outlines the expected behaviour of each of the sections of the above JSON
+The following table outlines the expected behaviour of each of the sections of the above JSON:
 
  Input               | Description
 ---------------------|-------------
@@ -310,14 +312,14 @@ This defines the hyperparameter search space when applying a random/sobol sequen
 }
 ```
 
-The following table outlines the expected behaviour of each of the sections of the above JSON
+The following table outlines the expected behaviour of each of the sections of the above JSON:
 
  Input               | Description
 ---------------------|-------------
  Model-Name          | The model name defined within 'models.json' to which the defined hyperparameters are to be applied.
  Parameters          | The specific hyperparameters/range over which hyperparameters to be applied are defined.
  meta -> randomType  | This defines the type of randomization which is to be used within the random search. This can be one of `boolean`, `uniform`, `loguniform` or `symbol`, the definitions outlining expected behaviour for each are provided [here](../../../../toolkit/xval#random-search-hyperparameter-dictionary).
- meta -> typeConvert | The type conversion of each of the parameters to be searched. For example in the case of the `Lass` model, the parameter `alpha` must be cast to an float, while the `normalize` parameter is a boolean value.
+ meta -> typeConvert | The type conversion of each of the parameters to be searched. For example in the case of the `Lass` model, the parameter `alpha` must be cast to a float, while the `normalize` parameter is a boolean value.
 
 ## In process configuration
 
