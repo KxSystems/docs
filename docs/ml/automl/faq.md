@@ -67,9 +67,9 @@ The addition of Sklearn models can be completed through the modification of the 
     
     </code></pre>
 
-    This defines a model from Python’s `sklearn` library, with the associated submodule `ensemble`, named `AdaBoostRegressor` which can be seeded with a random state `seed`, to ensure that runs of the model can be reproducible. If the model does not take a `random_state`, the input to this is set to `::`.
+    This defines a model from Python’s `sklearn` library, with the associated submodule `ensemble`, named `AdaBoostRegressor` which can be seeded with a random state `seed` to ensure that runs of the model are reproducible. If the model does not take a `random_state`, the input to this is set to `::`.
 
-    The following would be the table modified to include a Bayesian ridge regressor (not included by default).
+    The following would be the required changes to the JSON file to include a Bayesian ridge regressor (not included by default).
     
     <pre><code class="language-json">"regression":{
       "AdaBoostRegressor":{
@@ -96,7 +96,9 @@ The addition of Sklearn models can be completed through the modification of the 
     }</code></pre>
 
 
-3.  If a hyperparameter search is to be performed on the model, a user must add the model's associated hyperparameters over which to perform the search to the [JSON](ug/config/#json-configuration-files) files `gsHyperParameters.json` or `rsHyperParameters.json`. If a hypperparameter search is not required, then the model name must be added to `.automl.utils.excludeList` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor using grid search methods. Within `gsHyperParameters`, add the following key to the dictionary:
+3.  If a hyperparameter search is to be performed on the model, a user must add the associated hyperparameters over which to perform the search to the [JSON](ug/config/#json-configuration-files) files `gsHyperParameters.json` or `rsHyperParameters.json`.
+
+    If a hyperparameter search is not required, then the model name must be added to `.automl.utils.excludeList` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor using grid search methods. Within `gsHyperParameters.json`, add the following to the dictionary:
 
     <pre><code class="language-q">"BayesianRidge":{
      "Parameters":{
@@ -108,12 +110,12 @@ The addition of Sklearn models can be completed through the modification of the 
      }
     }</code></pre>
 
-    * The hyperparameters to perform the search over along with their associated values are contained within the `Parameters` key, and the type of each hyperparameter is contained under `typeConvert` within `meta`.
+    * Details on the structure of this JSON file can be found [here](ug/config/#grid-search-parameters).
 
 
 ### Keras, Torch, Theano Models
 
-The addition of custom Keras, Torch and Theano models are slightly more involved than that performed for scikit-learn models. The following steps demonstrate in their entirety the procedures taken to add a custom classification or regression model to the workflow. The examples displayed below will use a custom Torch model, but the same structure can also be followed to construct both Keras and Theano models.
+The addition of custom Keras, Torch and Theano models is slightly more involved than the procedure for scikit-learn models. The following steps demonstrate in their entirety the procedures taken to add a custom classification or regression model to the workflow. The examples displayed below will use a custom Torch model, but the same structure can also be followed to construct both Keras and Theano models.
 
 1.   Within the folder `code/customization/models/libSupport/` there are two files associated with each model - **[keras/torch/theano].q** and **[keras/torch/theano].p**. These files should contain the following information
     * `.p` = Any Python code required to define the appropriate model.
@@ -154,7 +156,19 @@ The addition of custom Keras, Torch and Theano models are slightly more involved
         return model</code></pre>
 
 
-3.   When constructing the `.q` file, the following naming convention is used `models.[library].[module].{model/fit/predict}` to create functions which define the model to be used, fit the model to the training data and predict the value of the target. The `[library].[module]` part of the namespace are defined within the dictionaries found in `models.json`, which will be explained in detail below. Any functions defined within the associated python script are also loaded in. Ensure the functions are defined in the root of the `.automl` namespace (this is already handled if within the `keras.q` file). Below is an example of `torch.q`.
+3.   When constructing the `.q` file, the following naming convention is used to define the model, fit function and prediction function.
+
+    `models.[library].[module].{model/fit/predict}`
+
+    Where `library` and `module` are defined within `models.json` and map to the following:
+
+     Entity  | Description
+    ---------|-------------
+     library | Defines if the model is a 'keras'/'theano'/'torch' model, this is used when retrieving models and using appropriate evaluation logic
+     module  | Is the name associated to the model, this has no underlying meaning other than as an indicator of which model is to be retrieved.
+
+    Any functions required by the associated Python script should also be loaded in. Ensure the functions are defined in the `.automl` namespace (this is already handled if within the `keras.q` file). Below is an example of `torch.q`.
+	
     <pre><code class="language-q">$vi torch.q
 
     \d .automl
@@ -217,12 +231,17 @@ The addition of custom Keras, Torch and Theano models are slightly more involved
     models.torch.torchModel:.p.get[`classifier]
     </code></pre>
 
-    To ensure the behavior of the system is consistent with the framework, it is vital to follow the above instructions, particularly ensuring that models take as arguments the defined parameters and return an appropriate result, in particular at the model-definition phase, where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
-
     For the fitting and predicting these models through embedPy, it is important that the feature data is a NumPy array. Omission of this conversion can cause issues. As seen above within `keras.q` this is done through application of `` models.i.npArray`` to the data.
 
 
-4.     Another function called `models.[library].fitScore` must be defined within the `.q` file. This function is used when applying cross validation during the `runModels` processing stage of the pipeline in which the model is fitted on the training data and the predictions made on the testing data is returned. The arguments and outputs to the model must be consistent with the below example.
+    ??? Warning "Ensuring consistency"
+        To ensure the behavior of the system is consistent with the framework, it is vital to follow the above instructions, particularly ensuring that models take as arguments the defined parameters and return an appropriate result.This is particular important when defining the model as an explicit return of the model is required. 
+
+    ??? Warning "Reproducibility"
+        Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
+
+
+4. Another function called `.automl.models.[library].fitScore` must be defined within the `.q` file. This function is used when applying cross validation during the `runModels` processing stage of the pipeline. In this phase the model is fitted on the training data and the predictions made on the testing data is returned. The arguments and outputs to the model must be consistent with the below example.
     <pre><code class="language-q">// @kind function
     // @category models
     // @fileoverview Fit model on training data and score using test data
@@ -238,7 +257,7 @@ The addition of custom Keras, Torch and Theano models are slightly more involved
         get[".automl.models.torch.",string[mname],".predict"][dataDict;model]
         }</code></pre>
 
-5.  Go to [models.json](ug/config/#json-configuration-files) and include the model under the appropriate problem type `classification` or `regression` as described above. In this case, the model will be added within the classification section.
+5.  Go to [models.json](ug/config/#json-configuration-files) and include the model under the appropriate problem type `classification` or `regression`. In this case, the model will be added within the classification section.
 
     <pre><code class="language-txt">"ClassTorch":{
           "library":"torch",
