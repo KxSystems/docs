@@ -84,44 +84,80 @@ section | content
 :fontawesome-regular-map: [White papers](../wp/index.md) | extended treatments of topics in q programming and in building kdb+ systems
 
 
-## :fontawesome-solid-book: Books
+## Books
 
-<div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
-![q for Mortals Version 3](../img/funq.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
-### _Fun Q_
-**A Functional Introduction to Machine Learning in Q**
-by Nick Psaris, available from [Amazon](https://www.amazon.com/dp/1734467509). 
+![kdb+ Tutorial in Chinese](../img/kdbcn.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+
+### kdb+中文教程 
+
+**kdb+ Tutorial in Chinese**
 <br>
-:fontawesome-solid-globe: 
-[Review](https://vector.org.uk/book-review-fun-q-a-functional-introduction-to-machine-learning-in-q/) in _Vector_
+by Kdbcn Workshop
+
+[kdbcn.gitee.io](https://kdbcn.gitee.io/)
+
+<hr style="clear: both">
+
+![q for Mortals Version 3](../img/funq.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+
+### Fun Q
+
+**A Functional Introduction to Machine Learning in Q**
+<br>
+by Nick Psaris
 
 :fontawesome-solid-quote-left:
 Whether you are a data scientist looking to learn q, or a kdb+ developer looking to learn machine learning, there is something for everyone.
 :fontawesome-solid-quote-right:
-</div>
 
-<div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
-![q for Mortals Version 3](../img/qfm3.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
-### _Q for Mortals_
+:fontawesome-solid-globe: 
+[Review](https://vector.org.uk/book-review-fun-q-a-functional-introduction-to-machine-learning-in-q/) in _Vector_
+<br>
+:fontawesome-brands-amazon:
+[Amazon](https://www.amazon.com/dp/1734467509)
+
+<hr style="clear: both">
+
+![Machine Learning and Big Data with kdb+/q](../img/mlabd.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+
+### Machine Learning and Big Data with kdb+/q
+
+by Jan Novotny, Paul A. Bilokon, Aris Galiotos, and Frederic Deleze
+
+:fontawesome-solid-quote-left:
+Offers quants, programmers and algorithmic traders a practical entry into the powerful but non-intuitive kdb+ database and q programming language. 
+:fontawesome-solid-quote-right:
+
+:fontawesome-brands-amazon:
+[Amazon](https://www.amazon.co.uk/Machine-Learning-Data-Wiley-Finance/dp/1119404754/ref=sr_1_1?dchild=1&keywords=Machine+Learning+and+Big+data+with+kdb%2B%2Fq)
+
+<hr style="clear: both">
+
+![q for Mortals Version 3](../img/qfm3.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+
+### Q for Mortals
+
 **Version 3**
-by Jeffry A. Borror, available from [Amazon.com](https://www.amazon.com/Mortals-Version-Introduction-Programming/dp/0692573674/) or [Amazon.co.uk](https://www.amazon.co.uk/d/Books/q-Mortals-Version-3-Introduction-Programming/0692573674/). Covers up to kdb+ V3.3. If you are a new kdb+ user, this is the book for you!
+<br>
+by Jeffry A. Borror
 
-[HTML edition](/q4m3/) now online
-</div>
+Covers up to kdb+ V3.3. 
 
-<div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
-![Q Tips](../img/kdbcn.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
-### kdb+中文教程 
-**kdb+ Tutorial in Chinese**
-by Kdbcn Workshop, available from [kdbcn.gitee.io](https://kdbcn.gitee.io/)
+If you are a new kdb+ user, this is the book for you!
 
-</div>
+:fontawesome-brands-amazon:
+[Amazon](https://www.amazon.com/Mortals-Version-Introduction-Programming/dp/0692573674/)
+<br>:fontawesome-solid-street-view:
+[HTML edition](/q4m3/) online
 
-<div style="display: inline-block; padding: 1em; vertical-align: top; width: 250px;" markdown="1">
-![Q Tips](../img/qtips.jpg){:style="box-shadow: 10px 10px 5px #888888;"}
-### _Q Tips_
+<hr style="clear: both">
+
+![Q Tips](../img/qtips.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+
+### Q Tips
+
 **Fast, scalable and maintainable kdb+**
-by Nick Psaris, available from [Amazon.co.uk](https://www.amazon.co.uk/d/Books/Tips-Fast-Scalable-Maintainable-Kdb/9881389909/).
+by Nick Psaris
 
 :fontawesome-solid-quote-left:
 :fontawesome-solid-star:
@@ -131,9 +167,11 @@ by Nick Psaris, available from [Amazon.co.uk](https://www.amazon.co.uk/d/Books/T
 :fontawesome-solid-star:
 There is information that if you were learning by yourself, would take years to work out.
 :fontawesome-solid-quote-right:
-</div>
 
+:fontawesome-brands-amazon:
+[Amazon](https://www.amazon.co.uk/d/Books/Tips-Fast-Scalable-Maintainable-Kdb/9881389909/)
 
+<hr style="clear: both">
 
 
 See the [Archive](archive.md) for older documents.
