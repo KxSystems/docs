@@ -868,21 +868,26 @@ q).automl.fit[features;target;ftype;ptype;params]
 
 In each of the above examples, kdb+ dictionaries have been used as the final parameter of `.automl.fit`. Some users may find this method of altering the default behaviours of the platform easiest to use, while other users may benefit from using a more human-readable option. 
 
-Within the framework, a JSON file `default.json` has been provided in `automl/code/customization/configuration`, which users can modify in order to change the behaviour of AutoML - (more information [here](config.md/#JSON-configuration-files)). Users can also add their own JSON files to `automl/code/customization/configuration/customConfig` as long as they follow the same format as the default file provided.
+Within the framework, a JSON file `default.json` has been provided in `automl/code/customization/configuration`, which users can modify in order to change the behaviour of AutoML - (more information [here](config/#json-configuration-files)). Users can also add their own JSON files to `automl/code/customization/configuration/customConfig` as long as they follow the same format as the default file provided.
 
 Once created, users can pass in the name of the new JSON parameter files (as a symbol, string or file symbol) as the last parameter for `.automl.fit`.
 
 ```q
 // Non-timeseries (normal) feature table
 q)features:([]100?1f;asc 100?1f;100?1f;100?1f;100?1f)
+
 // Multi-classification target
 q)target:100?5
+
 // Feature extraction type
 q)ftype:`normal
+
 // Problem type
 q)ptype:`class
+
 // Custom configuration file
 q)params:"newConfigFile.json"
+
 // Run AutoML
 q).automl.run[features;target;ftype;ptype;params]
 ```

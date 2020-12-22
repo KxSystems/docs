@@ -24,7 +24,8 @@ From an ease of use perspective, one of the key additions of `v0.3.0` of the fra
 
 There are at present five files adhering to this formatting style.
 
-!!! Note "Relevant file paths" fvf 
+!!! Note "Relevant file paths"
+
 	For ease of navigation within the code base the names in the below table are paths to the appropriate files relative to the `code/customization` directory of the repository.
 
 Index | Folder name        | Relevant file                                       | File Description
@@ -52,7 +53,7 @@ The scoring functions JSON file, `scoringFunctions.json` contains a set of scori
 
 This structure provides a mapping between a function `.ml.accuracy` and the expected ordering of results in order to find the best model, in this case descending as the best model is the one returning the largest result. Alternatively for the function `.ml.mse` the best model is found when the mean squared error is minimized hence using the ordering function `asc`.
 
-Users are unlikely to need to change the currently defined functions however in order to use a custom model optimization function this function must be defined within this file. 
+Users are unlikely to need to change the currently defined functions, however in order to use a custom model optimization function this function must be defined within this file. 
 
 ### Default Configuration
 
