@@ -39,7 +39,7 @@ Within the current version of this framework it is possible for a user to add Sk
 
 ### Sklearn Models
 
-The addition of Sklearn models can be completed through the modification of the `models.json` file found within `code/customization/models/modelConfig/`. The steps to do so are as follows.
+The addition of Sklearn models can be completed through the modification of the [models.json](ug/config/#json-configuration-files) file. The steps to do so are as follows.
 
 1.  Within the JSON file, place the new model under the appropriate dictionary key depending on the problem type (i.e - `classification` or `regression`)
 
@@ -98,7 +98,7 @@ The addition of Sklearn models can be completed through the modification of the 
     }</code></pre>
 
 
-3.  If a hyperparameter search is to be performed on the model, a user must add the model's associated hyperparameters over which to perform the search to the JSON files `gsHyperParameters.json` or `rsHyperParameters.json` contained within `code/customization/hyperParameters/`. If a hypperparameter search is not required, then the model name must be added to `.automl.utils.excludeList` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor using grid search methods. Within `gsHyperParameters`, add the following key to the dictionary:
+3.  If a hyperparameter search is to be performed on the model, a user must add the model's associated hyperparameters over which to perform the search to the [JSON](ug/config/#json-configuration-files) files `gsHyperParameters.json` or `rsHyperParameters.json`. If a hypperparameter search is not required, then the model name must be added to `.automl.utils.excludeList` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor using grid search methods. Within `gsHyperParameters`, add the following key to the dictionary:
 
     <pre><code class="language-q">"BayesianRidge":{
      "Parameters":{
@@ -249,7 +249,7 @@ The addition of custom Keras, Torch and Theano models are slightly more involved
 	  }</code></pre>
 
 
-5.  Go to `code/customization/models/modelConfig/` and include the model under the appropriate problem type `classification` or `regression` as described above. In this case, the model will be added within the classification section.
+5.  Go to [models.json](ug/config/#json-configuration-files) and include the model under the appropriate problem type `classification` or `regression` as described above. In this case, the model will be added within the classification section.
 
 	<pre><code class="language-txt">"ClassTorch":{
           "library":"torch",
