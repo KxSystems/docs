@@ -327,7 +327,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr markdown="1">
 <td markdown="1">Visual Studio Code</td>
 <td markdown="1">
-:fontawesome-brands-github: [jshinonome/vscode-q](https://github.com/jshinonome/vscode-q) ==new==<br>
+:fontawesome-brands-windows: [kdb+/q extension](https://marketplace.visualstudio.com/items?itemName=jshinonome.vscode-q) ==new==<br>
 :fontawesome-brands-github: [lwshang/vscode-q](https://github.com/lwshang/vscode-q)
 </td>
 </tr>
