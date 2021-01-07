@@ -129,6 +129,14 @@ nav:
       - Strings: learn/python/examples/string.md
       - Dictionaries: learn/python/examples/dict.md
     - Q for Mortals 3: /q4m3/
+    - Playbook:
+      - Overview: learn/pb/index.md
+      - 12 Days of Xmas: learn/pb/xmas-days.md
+      - ABC problem: learn/pb/abc-problem.md
+      - Abundant odds: learn/pb/abundant-odds.md
+      - Four is magic: learn/pb/four-magic.md
+      - Name Game: learn/pb/name-game.md
+      - Summarize and Say: learn/pb/sum-say.md
     - Reading room:
       - Information desk: learn/reading/index.md
       - Boggle: learn/reading/boggle.md
