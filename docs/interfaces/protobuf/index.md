@@ -16,7 +16,7 @@ Protocol Buffers is supported across a wide variety of programming languages (in
 [Google developers’ page](https://developers.google.com/protocol-buffers/)
 
 
-## Protobuf/kdb+ Integration
+## Protobuf/kdb+ integration
 
 This interface allows a user to serialize/deserialize Protobuf messages from a kdb+ session via reference to loaded schema files. This interface supports two methods of loading a schema file which have associated pros and cons:
 
@@ -26,7 +26,7 @@ Incorporate the schema into a shared library at compile time
 
 Load a schema file from a kdb+ session dynamically
 
-: This is an extremely flexible option giving the option to modify schema files without re-compiling the library. This option is approximately 10% to 20% less performant than the compiled version.
+: This is a more flexible option giving the option to modify schema files without re-compiling the library. This option is approximately 10% to 20% less performant than the compiled version.
 
 In addition to this a user can also assign serialized data to a kdb+ variable or save it to a file. Similarly you can deserialize Protobuf data from a kdb+ variable or a file.
 
