@@ -14,12 +14,13 @@ This section describes the outputs produced following model selection and optimi
 
 In its default configuration, the pipeline returns:
 
-1. Visualizations - data split, target distribution, feature impact, confusion matrix (classification only) and regression analysis (regression only) plots.
-2. The best model saved as a binary, '.h5' or '.pt' file depending on the type of model returned.
-3. A configuration file outlining the procedure carried out for a run which can be used in re-running a pipeline.
-4. A report outlining the steps taken and results achieved at each step of a run.
+-   visualizations: data split, target distribution, feature impact, confusion matrix (classification only) and regression analysis (regression only) plots
+-   best model saved as a binary, `.h5` or `.pt` file depending on the type of model returned
+-   configuration file outlining the procedure carried out for a run which can be used in re-running a pipeline
+-   report outlining the steps taken and results achieved at each step of a run.
 
-These outputs are contained within subfolders for `images`, `models`, `config`, and `reports` respectively, contained within a directory specific to the date and time of the run. The folder structure for each unique run is as follows: `automl/outputs/dateTimeModels/date/run_time/...`.
+The outputs are in subfolders `images`, `models`, `config`, and `reports` respectively, in a directory named as the date and time of the run. The folder structure for each unique run is as follows: `automl/outputs/dateTimeModels/date/run_time/...`.
+
 
 ## Processing nodes
 
@@ -34,11 +35,106 @@ These outputs are contained within subfolders for `images`, `models`, `config`, 
   [saveModels](#automlsavemodelsnodefunction)     Save encoded representation of best model retrieved during run of AutoML
 </div>
 
+
+## Visualizations
+
+A number of visualizations are produced within the pipeline and are saved to disk (in the default setting of AutoML) to be used within report generation, or for posterity. The specific images produced are detailed below and depend on the problem type of the current run.
+
+### Data split
+
+Every run generates an image showing the specific split applied to the data. 
+In the default case depicted below, 20% of the data is used as the testing set, then 20% of the remaining data is used as a holdout set, wth the rest of the data used as the training set.
+
+![Data Split](img/5fold.png)
+
+
+### Target distribution
+
+A target distribution plot it generated for both classification and regression tasks. For classification, the plot simply shows the split between the classes within the target vector. While in the regression case, the target values are separated into 10 bins, as demonstrated in the example below.
+
+![Target Distribution](img/targetdistribution.png)
+
+
+### Feature impact
+
+The feature-impact plot identifies the features with the highest impact on predicting the outcomes of a model. Within the framework, the impact of a single feature column is determined by shuffling the values in that column and running the best model again with this new, scrambled feature.
+
+It should be expected that if a feature is an important contributor to the output of a model, then scrambling or shuffling that feature will cause the model to perform poorly due to removal of signal for a model. Conversely, if the model performs better, or results do  not change, it could be inferred that the feature is not relevant for model training.
+
+A score is produced by the model for each shuffled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML Toolkit. An example plot is shown below for a table containing four features, using a Gradient Boosting Regressor.
+
+![Feature Impact](img/featureimpact.png)
+
+
+### Confusion matrix
+
+A confusion matrix shows how well the predictions produced by a model predict the actual class. This gives you a visual representation of the success or otherwise of the model.
+
+![Confusion Matrix](img/confusion.png)
+
+
+### Regression analysis
+
+For regression problems, plotting true vs predicted targets and their residuals values show how well your model performed, by mapping predicted values to actual values and plotting the difference as a residual plot. 
+
+:fontawesome-solid-globe:
+[Interpreting Residual Plots to Improve Your Regression](https://www.qualtrics.com/support/stats-iq/analyses/regression-guides/interpreting-residual-plots-improve-regression/ "qualtrics.com")
+
+![Regression Analysis](img/rfr_regression.png)
+
+
+## Configuration
+
+Once the pipeline has been completed, a configuration dictionary is saved as a binary file. 
+
+This file is used for running on new data and can be used for oversight where configuration data is important for regulation.
+
+---
+
+## `.automl.pathConstruct.node.function`
+
+_Construct save paths for generated graphs/reports_
+
+```syntax
+.automl.pathConstruct.node.function[preProcParams;predictionStore]
+```
+
+Where
+
+-   `preProcParams` is a dictionary with data generated during the preprocess stage
+-   `predictionStore` is a dictionary with data generated during the prediction stage
+
+returns a dictionary containing all the data collected along the entire process along with paths to where graphs/reports will be generated.
+
+
+## `.automl.predictParams.node.function`
+
+_Collect parameters for report/graph generation from prediction stages_
+
+```syntax
+.automl.predictParams.node.function
+  [bestModel;hyperParams;modelName;testScore;analyzeModel;modelMetaData]
+```
+
+Where
+
+-   `bestModel` is the best fitted model as an embedPy object
+-   `hyperParmams` is a dictionary of hyperparameters used for the best model (if any)
+-   `modelName` is the name of the best model as a string
+-   `testScore` is the floating point score of the best model when applied on the testing data
+-   `modelMetaData` is a dictionary containing the metadata produced when finding the best model
+
+returns a dictionary with consolidated parameters to be used to generate reports/graphs.
+
+
 ## `.automl.preprocParams.node.function`
 
 _Collect parameters for report/graph generation from preprocessing nodes_
 
-Syntax: `.automl.preprocParams.node.function[config;descrip;cTime;sigFeats;symEncode;symMap;featModel;tts]`
+```syntax
+.automl.preprocParams.node.function
+  [config;descrip;cTime;sigFeats;symEncode;symMap;featModel;tts]
+```
 
 Where
 
@@ -53,96 +149,34 @@ Where
 
 returns dictionary of consolidated parameters to be used to generate reports/graphs.
 
-## `.automl.predictParams.node.function`
-
-_Collect parameters for report/graph generation from prediction stages_
-
-Syntax: `.automl.predictParams.node.function[bestModel;hyperParams;modelName;testScore;analyzeModel;modelMetaData]`
-
-Where
-
--   `bestModel` is the best fitted model as an embedPy object
--   `hyperParmams` is a dictionary of hyperparameters used for the best model (if any)
--   `modelName` is the name of the best model as a string
--   `testScore` is the floating point score of the best model when applied on the testing data
--   `modelMetaData` is a dictionary containing the metadata produced when finding the best model
-
-returns a dictionary with consolidated parameters to be used to generate reports/graphs.
-
-## `.automl.pathConstruct.node.function`
-
-_Construct save paths for generated graphs/reports_
-
-Syntax: `.automl.pathConstruct.node.function[preProcParams;predictionStore]`
-
-Where
-
--   `preProcParams` is a dictionary with data generated during the preprocess stage
--   `predictionStore` is a dictionary with data generated during the prediction stage
-
-returns a dictionary containing all the data collected along the entire process along with paths to where graphs/reports will be generated.
 
 ## `.automl.saveGraph.node.function`
 
 _Save all the graphs required for report generation_
 
-### Visualizations
+```syntax
+.automl.saveGraph.node.function params
+```
 
-A number of visualizations are produced within the pipeline and are saved to disk (in the default setting of AutoML) to be used within report generation, or for posterity. The specific images produced are detailed below and depend on the problem type of the current run.
+Where `params` is a dictionary containing all data generated during the preprocessing and prediction stages, saves all graphs needed for reports, and returns a null.
 
-**Data split**
 
-Within any run, an image showing the specific split applied to the data will be generated. In the default case (depicted below), 20% of the data is used as the testing set, then 20% of the remaining data is used as a holdout set, while the rest of the data used as the training set.
-
-![Data Split](img/5fold.png)
-
-**Target distribution**
-
-A target distribution plot it generated for both classification and regression tasks. For classification, the plot simply shows the split between the classes within the target vector. While in the regression case, the target values are separated into 10 bins, as demonstrated in the example below.
-
-![Target Distribution](img/targetdistribution.png)
-
-**Feature impact**
-
-The feature impact plot identifies the features which have the highest impact when predicting the outcomes of a model. Within the framework, the impact of a single feature column is determined by shuffling the values in that column and running the best model again with this new, scrambled feature.
-
-It should be expected that if a feature is an important contributor to the output of a model, then scrambling or shuffling that feature will cause the model to perform poorly due to removal of signal for a model. Conversely, if the model performs better, or results don't change shuffling the data, it could be inferred that the feature is not relevant for model training.
-
-A score is produced by the model for each shuffled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML Toolkit. An example plot is shown below for a table containing four features, using a Gradient Boosting Regressor.
-
-![Feature Impact](img/featureimpact.png)
-
-**Confusion matrix**
-
-A confusion matrix is produced for classification problems and highlights how well the predictions produced by a model predict the actual class. This gives a user a visual representation of the success or otherwise of their produced model.
-
-![Confusion Matrix](img/confusion.png)
-
-**Regression analysis**
-
-For regression problems, plots of true vs predicted targets and their residuals values are produced. Users can use these plots to determine how well their model performed by mapping predicted values to actual values and plotting the difference as a residual plot. The article provided [here](https://www.qualtrics.com/support/stats-iq/analyses/regression-guides/interpreting-residual-plots-improve-regression/) some insight into the usefulness of this method in analysing model results.
-
-![Regression Analysis](img/rfr_regression.png)
-
-### Functionality
-
-Syntax: `.automl.saveGraph.node.function[params]`
-
-Where
-
--   `params` is a dictionary containing all data generated during the preprocessing and prediction stages
-
-returns a null on success, where all graphs needed for reports will have been saved to an appropriate locations.
 
 ## `.automl.saveMeta.node.function`
 
 _Save relevant metadata for model oversight and use when retrieving saved models from disk_
 
-### Configuration
+```syntax
+.automl.saveMeta.node.function params
+```
 
-Once the pipeline has been completed a configuration dictionary is saved down as a binary file. This file is used for running on new data and can be used for oversight purposes in cases where configuration data is important for regulation.
+Where
 
-The following is an example of the config file produced for a single run of AutoML which used FRESH classification data.
+-   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
+
+returns a dictionary containing all metadata information needed to the predict function.
+
+Example config file produced for a single run of AutoML which used FRESH classification data:
 
 ```q
 q)get`:automl/outputs/dateTimeModels/2020.12.17/run_14.57.20.206/config/metadata
@@ -189,59 +223,40 @@ symEncode                    | `freq`ohe!``
 sigFeats                     | `x1_countbelowmean`x1_mean2dercentral`x1_med`x..
 ```
 
-### Functionality
-
-Syntax: `.automl.saveMeta.node.function[params]`
-
-Where
-
--   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
-
-returns a dictionary containing all metadata information needed to the predict function.
-
-## `.automl.saveReport.node.function`
-
-_Save a Python generated report summarizing current run via pyLatex/reportlab_
-
-### Report
-
-A report is generated containing the following information:
-
-- Total extracted features
-- Cross validation scores
-- Scoring metrics
-- Above listed plots
-- Best model and holdout score
-- Runtimes for each section
-
-Syntax: `.automl.saveReport.node.function[params]`
-
-Where
-
--   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
-
-returns null on success, where a report will have been saved to a location defined by run date and time.
 
 ## `.automl.saveModels.node.function`
 
 _Save encoded representation of best model retrieved during run of AutoML_
 
-### Models
+```syntax
+.automl.saveModels.node.function params
+```
 
-The best performing model produced by the pipeline is saved to disk such that it can be used on new data and maintained for a production environment. The following describes the format models are saved in based on their library:
+Where `params` is a dictionary containing all the data generated during the preprocessing and prediction stages, saves the best-performing model to disk in the following model file format, and returns null.
 
-Model library | Save type 
---------------|-----------
-Sklearn       | Pickled binary file
-Keras         | HDF5 file containing model information
-PyTorch       | A serialized `.pt` file
+```txt
+Sklearn      pickled binary 
+Keras        HDF5 
+PyTorch      serialized .pt
+```
 
-### Functionality
 
-Syntax: `.automl.saveModels.node.function[params]`
+## `.automl.saveReport.node.function`
 
-Where
+_Save a Python generated report summarizing current run via pyLatex/reportlab_
 
--   `params` is a dictionary containing all the data generated during the preprocessing and prediction stages
+```syntax
+.automl.saveReport.node.function params
+```
 
-returns null on success, where all models have been saved to an appropriate location.
+Where `params` is a dictionary of data generated during the preprocessing and prediction stages, saves a report to a location named by run date and time, and returns null.
+
+The reports contains
+
+-   total extracted features
+-   cross validation scores
+-   scoring metrics
+-   above listed plots
+-   best model and holdout score
+-   run times for each section
+

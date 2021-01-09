@@ -3,7 +3,7 @@ title: Automated machine learning user guide | Machine Learning | Documentation 
 description: Top-level user-callable functions within the automated machine learning platform
 author: Deanna Morgan
 date: December 2020
-keywords: keywords: machine learning, automated, ml, automl, fit, predict, persisted models
+keywords: machine learning, automated, ml, automl, fit, predict, persisted models
 ---
 
 # :fontawesome-solid-share-alt: Interacting with the framework
@@ -13,53 +13,153 @@ keywords: keywords: machine learning, automated, ml, automl, fit, predict, persi
 
 There are two primary methods of interacting with this framework:
 
-1. Applying function and manipulating models within a q process.
-2. Interacting with the interface using command line arguments and customized configuration.
+1. Apply a function and manipulate models within a q process
+2. With command-line arguments and customized configuration
 
-The following page outlines each of these methods.
 
-## Interacting within a q process
+## Run within a q process
 
 The top-level functions in the repository are:
 
 <div markdown="1" class="typewriter">
 .automl   **Top-level functions**
-  Model Generation/Retrieval
-    [fit](#automlfit)                   Apply AutoML to provided features and associated targets
-    [getModel](#automlgetmodel)              Retrieve a previously fit AutoML model
-  Configuration Generation
-    [newConfig](#automlnewconfig)             Generate a new JSON parameter file for use with .automl.fit
-  Output updates
-    [updateIgnoreWarnings](#automlupdateignorewarnings)  Update print warning severity level
-    [updateLogging](#automlupdatelogging)         Update logging state
-    [updatePrinting](#automlupdateprinting)        Update printing state
+
+Generate, retrieve, delete models
+  [fit](#automlfit)                   Apply AutoML to provided features and associated targets
+  [getModel](#automlgetmodel)              Retrieve a previously fit AutoML model
+  [deleteModels](#deletemodels)          Delete model/s
+
+Generate configuration 
+  [newConfig](#automlnewconfig)             Generate a new JSON parameter file for use with .automl.fit
+
+Updates
+  [updateIgnoreWarnings](#automlupdateignorewarnings)  Update print warning severity level
+  [updateLogging](#automlupdatelogging)         Update logging state
+  [updatePrinting](#automlupdateprinting)        Update printing state
 </div>
 
-`.automl.fit` can be modified by a user to suit specific use cases. Where possible, the functions listed above have been designed to cover a wide range of functional options and to be extensible to a users needs. Details regarding all available modifications which can be made are outlined in the [advanced section](advanced.md).
+You can call `.automl.fit` with arguments to suit a specific use case. 
+The functions listed above cover a wide range of options. 
+You can also extend them.
 
-The following examples and function descriptions outline the most basic vanilla implementations of AutoML specific to each supported use case. Namely, non-time series specific machine learning examples, along with time series examples which make use of the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
+:fontawesome-solid-hand-point-right:
+[Advanced section](advanced.md)
+
+The examples following outline the most basic applications of AutoML: non-timeseries-specific machine-learning examples, and timeseries examples which use the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
 
 
-### Model Generation, Retrieval and Deletion
+### Model prediction
 
-The following sections outline how models are generated, retrieved from disk and deleted within AutoML.
+The AutoML library contains no explicit predict function callable as a standalone entity. 
+Instead, predictions are made based on the output of a previously fit model. As for `.automl.fit` and `.automl.getModel`, there are two methods by which such models can be made available to a user.
 
-#### `.automl.fit`
+1. As the output of an in process run of the AutoML framework.
+2. By retrieving the model information and its associated prediction function from disk.
+
+In each case the output is a dictionary containing the `predict` function required to make predictions based on newly-retrieved data. Below are example invocations.
+For simplicity, any unnecessary text which would normally be printed to screen is ignored.
+
+```q
+q)trainingFeatures:([]1000?1f;asc 1000?1f)
+q)trainingTargets:desc 1000?1f
+q)testingFeatures:([]100?1f;100?1f)
+
+q)// Fit a regression model within the current process
+q)fitModel:.automl.fit[trainingFeatures;trainingTargets;`normal;`reg;::]
+q)fitModel
+modelInfo| `startDate`startTime`featureExtractionType`problemType`saveO..
+predict  | {[config;features]
+  original_print:utils.printing;
+  utils.printi..
+
+q)// Predict targets for the testing features
+q)show fitPredictions:fitModel.predict[testingFeatures]
+0.7963151 0.734172 0.9847206 0.9817364 0.9709857 0.2008781 0.9781675 0...
+
+q)// Retrieve the same model from disk (latest fit model)
+q)retrievedModel:.automl.getModel[`startDate`startTime!(.z.D;.z.t)]
+q)retrievedModel
+modelInfo| `startDate`startTime`featureExtractionType`problemType`saveO..
+predict  | {[config;features]
+  original_print:utils.printing;
+  utils.printi..
+
+q)// Predict targets for the testing features
+q)show retrievedPredictions:retrievedModel.predict[testingFeatures]
+0.7963151 0.734172 0.9847206 0.9817364 0.9709857 0.2008781 0.9781675 0...
+
+q)// Show that both methods are the same
+q)fitPredictions~retrievedPredictions
+1b
+```
+
+
+### `.automl.deleteModels`
+
+_Delete a model/set of models from disk_
+
+```syntax
+.automl.deleteModels modelDetails
+```
+
+Where `modelDetails` is a dictionary containing information related to previously fit models to facilitate models being deleted from disk, returns null on successful invocation, otherwise errors with an appropriate response
+
+Options for `modelDetails`:
+
+-   A `startDate` and `startTime` to denote the dates/times to be deleted: either an exact match or a regex string matching appropriate saved model dates/times
+-   In the case of a model saved according to a specified name models can be deleted individually by passing in an exact match denoting the model name or a regex string where multiple models are to be deleted.
+
+```q
+q)// Delete a single dated/timed model
+q)modelDetails:`startDate`startTime!(2020.08.01;14:10:10.100)
+q).automl.deleteModels[modelDetails]
+
+q)// Delete all models on a specific date any time between 4pm and 5pm
+q)modelDetails:`startDate`startTime!(2020.08.01;"16:*")
+q).automl.deleteModels[modelDetails]
+
+q)// Delete all models for dates within a certain range
+q)modelDetails:`startDate`startTime!("2020.08.0[1-9]";"*")
+q).automl.deleteModels[modelDetails]
+
+q)// Attempt to delete a model that does not exist
+q)modelDetails:`startDate`startTime!(2000.01.01;10:10:10.100)
+q).automl.deleteModels[modelDetails]
+'startDate provided was not present within the list of available dates
+
+q)// Delete a model based on its exact name
+q)modelDetails:enlist[`savedModelName]!enlist "testModel"
+q).automl.deleteModels[modelDetails]
+
+q)// Delete a set of models matching an appropriate regex string
+q)modelDetails:enlist[`savedModelName]!enlist "test*"
+q).automl.deleteModels[modelDetails]
+
+q)// Attempt to delete a named model that does not exist
+q)modelDetails:enlist[`savedModelName]!enlist "myModel"
+q).automl.deleteModels[modelDetails]
+'No files matching the user provided savedModelName were found for deletion
+```
+
+
+### `.automl.fit`
 
 _Apply AutoML to provided features and associated targets_
 
-Syntax: `.automl.fit[features;target;ftype;ptype;params]`
+```syntax
+.automl.fit[features;target;ftype;ptype;params]
+```
 
 Where
 
 -   `features` is an unkeyed tabular feature data or a dictionary outlining how to retrieve the data in accordance with `.ml.i.loaddset`
 -   `target` is target vector of any type or a dictionary outlining how to retrieve the target vector in accordance with `.ml.i.loaddset`
--   `ftype` is the feature extraction type as a symbol (``` `nlp/`normal/`fresh ```)
--   `ptype` is the problem type being solved as a symbol (``` `reg/`class ```)
--   `params` is one of the following:
-      1. Path to an appropriate JSON configuration file, either relative to a users current file location or within `code/customization/configuration/customConfig`
-      2. Dictionary containing the default behaviours to be overwritten
-      3. Null `(::)` indicating to run AutoML using default parameters 
+-   `ftype` is the feature-extraction type as a symbol (`` `nlp``, `` `normal``, or `` `fresh``)
+-   `ptype` is the problem type as a symbol (`` `reg`` or `` `class``)
+-   `params` is one of
+  -   Path to a JSON configuration file, either relative to the working directory or in `code/customization/configuration/customConfig`
+  -   Dictionary of non-default behaviors
+  -   Generic null `(::)` – run AutoML with default parameters 
 
 returns the configuration produced within the current run of AutoML along with a prediction function which can be used to make predictions using the best model produced.
 
@@ -67,64 +167,68 @@ The default setup saves the following items from an individual run:
 
 1. The best model, saved as a HDF5 file, or ‘pickled’ byte object.
 2. A saved report indicating the procedure taken and scores achieved.
-3. A saved binary encoded dictionary denoting the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
+3. A saved binary-encoded dictionary denoting the procedure to be taken for reproducing results, running on new data and outlining all important information relating to a run.
 4. Results from each step of the pipeline saved to the generated report.
 5. On application NLP techniques a word2vec model is saved outlining the text to numerical mapping for a specific run.
 
-The following examples demonstrate how to apply data in various use cases to `.automl.fit`. Note that while only one example is shown for each feature extraction type, datasets with binary-classification, multi-classification and regression targets can all be used in each case. Additionally, the terminal output has only been displayed for the last example.
+The following examples demonstrate how to apply data in various use cases to `.automl.fit`. Note that while only one example is shown for each feature-extraction type, datasets with binary-classification, multi-classification and regression targets can all be used in each case. 
+The terminal output is shown here only for the last example.
 
 ```q
 // Non-time series (normal) regression example table
-q)features:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
+features:([]asc 100?0t;100?1f;desc 100?0b;100?1f;asc 100?1f)
 // Regression target
-q)target:asc 100?1f
+target:asc 100?1f
 // Feature extraction type
-q)featExtractType:`normal
+featExtractType:`normal
 // Problem type
-q)problemType:`reg
+problemType:`reg
 // Use default system parameters
-q)params:(::)
+params:(::)
 // Run example
-q).automl.fit[features;target;featExtractType;problemType;params]
+.automl.fit[features;target;featExtractType;problemType;params]
 
 // Non-time series (normal) multi-classification example table
-q)features:([]100?1f;100?1f)
+features:([]100?1f;100?1f)
 // Multi-classification target
-q)target:100?5
+target:100?5
 // Feature extraction type
-q)featExtractType:`normal
+featExtractType:`normal
 // Problem type
-q)problemType:`class
+problemType:`class
 // Use default system parameters
-q)params:(::)
+params:(::)
 // Run example
-q).automl.fit[features;target;featExtractType;problemType;params]
+.automl.fit[features;target;featExtractType;problemType;params]
 
 // NLP binary-classification example table
-q)features:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
+features:([]100?1f;asc 100?("Testing the application of nlp";"With different characters"))
 // Binary-classification target
-q)target:asc 100?0b
+target:asc 100?0b
 // Feature extraction type
-q)featExtractType:`nlp
+featExtractType:`nlp
 // Problem type
-q)ptype:`class
+ptype:`class
 // Use default system parameters
-q)params:(::)
+params:(::)
 // Run example
-q).automl.fit[features;target;featExtractType;ptype;params]
+.automl.fit[features;target;featExtractType;ptype;params]
 
 // FRESH regression example table
-q)features:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
+features:([]5000?100?0p;asc 5000?1f;5000?1f;desc 5000?10f;5000?0b)
 // Regression target
-q)target:desc 100?1f
+target:desc 100?1f
 // Feature extraction type
-q)featExtractType:`fresh
+featExtractType:`fresh
 // Problem type
-q)problemType:`reg
+problemType:`reg
 // Use default system parameters
-q)params:(::)
+params:(::)
+
 // Run example
-q).automl.fit[features;target;featExtractType;problemType;params]
+.automl.fit[features;target;featExtractType;problemType;params]
+```
+```txt
 Executing node: automlConfig
 Executing node: configuration
 Executing node: targetDataConfig
@@ -205,31 +309,33 @@ predict  | {[config;features]
   utils.printi..
 ```
 
-#### `.automl.getModel`
+
+### `.automl.getModel`
 
 _Retrieve a previously fit AutoML model to use for prediction_
 
-Syntax: `.automl.getModel[modelDetails]`
+```syntax
+.automl.getModel modelDetails
+```
 
-Where
+Where `modelDetails` is a dictionary containing information related to a previously fit model to facilitate model retrieval from disk, returns relevant model metadata and the prediction function associated with the model.
 
--   `modelDetails` a dictionary containing information related to a previously fit model to facilitate model retrieval from disk. There are two possible options for this
-	1. Provide a `startDate` and `startTime` to retrieve the closest prevailing model i.e. nearest model before this time
-	2. In the case of a model saved according to a specified name retrieve this by providing a `savedModelName`
+Options for `modelDetails`:
 
-returns relevant model metadata and the prediction function associated with the model.
+-   Provide a `startDate` and `startTime` to retrieve the closest prevailing model i.e. nearest model before this time
+-   In the case of a model saved according to a specified name, retrieve this by providing a `savedModelName`
 
 ```q
-// Persisted model at a specific date/time
+q)// Persisted model at a specific date/time
 q)modelDetails:`startDate`startTime!(2020.12.17;14:57:20.206)
-// Retrieve model
+q)// Retrieve model
 q).automl.getModel[modelDetails]
 modelInfo| `modelLib`modelFunc`startDate`startTime`featureExt..
 predict  | {[config;features]
   original_print:utils.printing;
   utils.printi..
 
-// Retrieve the most recent saved model
+q)// Retrieve the most recent saved model
 q)modelDetails:`startDate`startTime(.z.D;.z.t)
 q).automl.getModel[modelDetails]
 modelInfo| `modelLib`modelFunc`startDate`startTime`featureExt..
@@ -237,7 +343,7 @@ predict  | {[config;features]
   original_print:utils.printing;
   utils.printi..
 
-// Retrieve the earliest model saved
+q)// Retrieve the earliest model saved
 q)modelDetails:`startDate`startTime("d"$0;"t"$0)
 q).automl.getModel[modelDetails]
 modelInfo| `modelLib`modelFunc`startDate`startTime`featureExt..
@@ -245,7 +351,7 @@ predict  | {[config;features]
   original_print:utils.printing;
   utils.printi..
 
-// Retrieve a model based on a name associated with the model
+q)// Retrieve a model based on a name associated with the model
 q)modelDetails:enlist[`savedModelName]!enlist "testModel"
 q).automl.getModel[modelDetails]
 modelInfo| `modelLib`modelFunc`startDate`startTime`featureExt..
@@ -254,144 +360,53 @@ predict  | {[config;features]
   utils.printi..
 ```
 
-#### `.automl.deleteModels`
 
-_Delete a model/set of models from disk_
+### `.automl.newConfig`
 
-Syntax: `.automl.deleteModels[modelDetails]`
+_Generate a new JSON parameter file for use with `.automl.fit`_
 
-Where
-
--   `modelDetails` a dictionary containing information related to previously fit models to facilitate models being deleted from disk. There are two possible options for this
-	1. Provide a `startDate` and `startTime` to denote the dates/times to be deleted, these can be either an exact match or a regex string matching appropriate saved model dates/times.
-	2. In the case of a model saved according to a specified name models can be deleted individually by passing in an exact match denoting the model name or a regex string in the case that multiple models are to be deleted.
-
-returns null on successful invocation, otherwise errors with an appropriate response
-
-```q
-// Delete a single dated/timed model
-q)modelDetails:`startDate`startTime!(2020.08.01;14:10:10.100)
-q).automl.deleteModels[modelDetails]
-
-// Delete all models on a specific date any time between 4pm and 5pm
-q)modelDetails:`startDate`startTime!(2020.08.01;"16:*")
-q).automl.deleteModels[modelDetails]
-
-// Delete all models for dates within a certain range
-q)modelDetails:`startDate`startTime!("2020.08.0[1-9]";"*")
-q).automl.deleteModels[modelDetails]
-
-// Attempt to delete a model that does not exist
-q)modelDetails:`startDate`startTime!(2000.01.01;10:10:10.100)
-q).automl.deleteModels[modelDetails]
-'startDate provided was not present within the list of available dates
-
-// Delete a model based on its exact name
-q)modelDetails:enlist[`savedModelName]!enlist "testModel"
-q).automl.deleteModels[modelDetails]
-
-// Delete a set of models matching an appropriate regex string
-q)modelDetails:enlist[`savedModelName]!enlist "test*"
-q).automl.deleteModels[modelDetails]
-
-// Attempt to delete a named model that does not exist
-q)modelDetails:enlist[`savedModelName]!enlist "myModel"
-q).automl.deleteModels[modelDetails]
-'No files matching the user provided savedModelName were found for deletion
+```syntax
+.automl.newConfig fileName
 ```
 
-
-### Model Prediction
-
-Within the AutoML library there is no explicit predict function which is callable as a standalone entity. Instead predictions are made based on the output of a previously fit model. As highlighted by `.automl.fit` and `.automl.getModel` above there are two methods by which such models can be made available to a user.
-
-1. As the output of an in process run of the AutoML framework.
-2. By retrieving the model information and its associated prediction function from disk.
-
-In each case the output is a dictionary containing the `predict` function required to make predictions based on newly retrieved data. Below are an example invocation of each of these methods, for simplicity any unnecessary text which would normally be printed to screen is ignored.
+Where `fileName` is the name of a new JSON configuration file as a string, symbol or symbolic file handle, in `code/customization/configuration` saves a copy of `default.json` to `customConfig/fileName` and returns generic null.
 
 ```q
-q)trainingFeatures:([]1000?1f;asc 1000?1f)
-q)trainingTargets:desc 1000?1f
-q)testingFeatures:([]100?1f;100?1f)
-
-// Fit a regression model within the current process
-q)fitModel:.automl.fit[trainingFeatures;trainingTargets;`normal;`reg;::]
-q)fitModel
-modelInfo| `startDate`startTime`featureExtractionType`problemType`saveO..
-predict  | {[config;features]
-  original_print:utils.printing;
-  utils.printi..
-
-// Predict targets for the testing features
-q)show fitPredictions:fitModel.predict[testingFeatures]
-0.7963151 0.734172 0.9847206 0.9817364 0.9709857 0.2008781 0.9781675 0...
-
-// Retrieve the same model from disk (latest fit model)
-q)retrievedModel:.automl.getModel[`startDate`startTime!(.z.D;.z.t)]
-q)retrievedModel
-modelInfo| `startDate`startTime`featureExtractionType`problemType`saveO..
-predict  | {[config;features]
-  original_print:utils.printing;
-  utils.printi..
-
-// Predict targets for the testing features
-q)show retrievedPredictions:retrievedModel.predict[testingFeatures]
-0.7963151 0.734172 0.9847206 0.9817364 0.9709857 0.2008781 0.9781675 0...
-
-// Show that both methods are the same
-q)fitPredictions~retrievedPredictions
-1b
-```
-
-### Configuration Generation
-
-#### `.automl.newConfig`
-
-_Generate a new JSON parameter file for use with .automl.fit_
-
-Syntax: `.automl.newConfig[fileName]`
-
-Where
-
--   `fileName` is the name to call the newly generated JSON configuration file as a string, symbol or symbolic file handle. This file is stored in 'code/customization/configuration/customConfig'.
-
-returns generic null on successful invocation and saves a copy of the file 'code/customization/configuration/default.json' to the appropriately named file.
-
-```q
-// Path where new JSON configuration file will be saved
+q)// Path where new JSON configuration file will be saved
 q)configPath:hsym`$.automl.path,"/code/customization/configuration/customConfig/"
-// Check files present in directory at present
+q)// Check files present in directory at present
 q)key configPath
 `symbol$()
-// Generate new configuration file called "newConfigFile"
+q)// Generate new configuration file called "newConfigFile"
 q).automl.newConfig[`newConfigFile]
-// Check files present in directory - new configuration file has been generated
+q)// Check files present in directory - new configuration file has been generated
 q)key configPath
 ,`newConfigFile
 ```
 
-### Output Behaviour Updates
 
-#### `.automl.updateIgnoreWarnings`
+### `.automl.updateIgnoreWarnings`
 
 _Update print warning severity level_
 
-Syntax: `.automl.updateIgnoreWarnings[warningLevel]`
+```syntax
+.automl.updateIgnoreWarnings warningLevel
+```
 
-Where
+Where  `warningLevel` is `0j`, `1j` or `2j`, updates `.automl.utils.ignoreWarnings` and returns null.
 
--   `warningLevel` is `0`, `1` or `2` long denoting how severely warnings are to be handled:
-      - `0` - Ignore warnings completely and continue evaluation
-      - `1` - Highlight to a user that a warning was being flagged but continue
-      - `2` - Exit evaluation of AutoML highlighting to the user why this happened
+Warning levels:
 
-returns null on success, with `.automl.utils.ignoreWarnings` updated to new level.
+```txt
+0   ignore warnings completely and continue evaluation
+1   alert user a warning was flagged and continue
+2   exit evaluation of AutoML, telling the user why 
+```
 
 ```q
-// Exit pipeline on error
+q)// Exit pipeline on error
 q).automl.updateIgnoreWarnings 2
-// Fit AutoML
+q)// Fit AutoML
 q).automl.fit[features;target;featExtractType;problemType;params]
 Executing node: automlConfig
 Executing node: configuration
@@ -402,9 +417,9 @@ Executing node: featureData
 Executing node: dataCheck
 Error: The savePath chosen already exists, this run will be exited
 
-// Highlight warnings
+q)// Highlight warnings
 q).automl.updateIgnoreWarnings 1
-// Fit AutoML
+q)// Fit AutoML
 q).automl.fit[features;target;featExtractType;problemType;params]
 Executing node: automlConfig
 Executing node: configuration
@@ -419,9 +434,9 @@ The savePath chosen already exists and will be overwritten
 Executing node: featureDescription
 ..
 
-// Ignore warnings
+q)// Ignore warnings
 q).automl.updateIgnoreWarnings 0
-// Fit AutoML
+q)// Fit AutoML
 q).automl.fit[features;target;featExtractType;problemType;params]
 Executing node: automlConfig
 Executing node: configuration
@@ -434,68 +449,76 @@ Executing node: featureDescription
 ..
 ```
 
-#### `.automl.updateLogging`
 
-_Update logging state_
+### `.automl.updateLogging`
 
-Syntax: `.automl.updateLogging[]`
+_Toggle logging state_
 
-Function takes no parameters and returns null on success when the boolean representating `.automl.utils.logging` has been inverted, where:
+```syntax
+.automl.updateLogging[]
+```
 
-  - `0b` - No log file is created
-  - `1b` - Print statements from `.automl.fit` are saved to a log file
+Toggles the flag `.automl.utils.logging` and returns null.
 
-!!! note 
-    The default value of `automl.utils.logging` is `0b`.
+`.automl.utils.logging` is a boolean: whether to print statements from `.automl.fit` to a log file. 
+Its default value is `0b`.
 
-#### `.automl.updatePrinting`
 
-_Update printing state_
+### `.automl.updatePrinting`
 
-Syntax: `.automl.updatePrinting[]`
+_Toggle printing state_
 
-Function takes no parameters and returns null on success when the boolean representating `.automl.utils.printing` has been inverted, where:
+```syntax
+.automl.updatePrinting[]
+```
 
-  - `0b` - Print statements to console are disabled
-  - `1b` - Print statements are displayed to console
+Toggles the flag `.automl.utils.printing` and returns null.
 
-!!! note
-    The default value of `automl.utils.printing` is `1b`.
+`.automl.utils.printing` is a boolean: whether to print statements to the console.
+Its default value is `1b`.
 
-## Interacting via command line
 
-There are at present two circumstances under which users may wish to interact with the AutoML framework via optional command line arguments
+## Run from the command line
 
-1. When a user wishes to overwrite the default parameters of a process running AutoML such that each run uses these parameters.
-2. When running the entirety of the framework in a 'one-shot' manner. fitting a model and saving it to disk and exiting the process immediately.
+You may wish to run the AutoML framework from the command line:
 
-Both of the above examples rely on users making use of custom JSON files, in particular a customized version of `default.json` oulined [here](config.md#default-configuration). To generate a named custom version of the `default.json` file use the function [`.automl.newConfig`](#automlnewconfig). When editing this file a user should follow the instructions outlined [here](config.md#default-configuration).
+-   to overwrite the default parameters of a process running AutoML such that each run uses these parameters
+-   when running the entirety of the framework in a ‘one-shot’ manner, fitting a model and saving it to disk and exiting the process immediately
 
-???Note "Location of JSON files"
-	It should be noted in the examples presented below that the custom JSON files used can be in one of two locations.
+Both of the above require custom JSON files, in particular a customized version of [`default.json`](config.md#default-configuration). 
+Use [`.automl.newConfig`](#automlnewconfig) to generate a named custom version of the `default.json` file. 
+When editing it follow [these instructions](config.md#default-configuration).
 
-	1. Within the folder `code/customization/configuration/customConfig` relative to `.automl.path`.
-	2. Relative to the location that the user is currently positioned within their file system.
+In the examples the custom JSON files used can be in either of two locations:
+
+-   Within folder `code/customization/configuration/customConfig` relative to `.automl.path`
+-   Relative to the working directory
+
 
 ### Overwriting default parameters
 
-The following is the command line input used to overwrite default parameters with a custom configuration.
+Command to run with a custom configuration:
 
 ```bash
 $ q automl.q -config newConfig.json
 ```
 
-In the below example a custom JSON file `myConfig.json` exists within the folder `code/customization/configuration/customConfig` which sets the testing set size to 0.3 and modifies the target limit to 1000.
+In the example following, a custom JSON file `myConfig.json` in folder `code/customization/configuration/customConfig` sets the testing set size to 0.3 and modifies the target limit to 1000.
+
+First, start AutoML in a q process and display defaults.
 
 ```q
-// Start automl in a q process normally and retrieve the appropriate defaults
 $ q automl.q
 q).automl.loadfile`:init.q
 q).automl.paramDict[`general;`testingSize`targetLimit]
 0.2
 10000
+q)\\
+```
 
-// Start automl using the new configuration file
+Next, start AutoML using the new configuration file
+
+```q
 $ q automl.q -config myConfig.json
 q).automl.loadfile`:init.q
 q).automl.paramDict[`general;`testingSize`targetLimit]
@@ -503,7 +526,8 @@ q).automl.paramDict[`general;`testingSize`targetLimit]
 1000
 ```
 
-### Running AutoML from command line
+
+### Full run from command line
 
 The following is the command line input used when running the entirety of `.automl.fit` from command line.
 
@@ -511,5 +535,4 @@ The following is the command line input used when running the entirety of `.auto
 $ q automl.q -config newConfig.json -run
 ```
 
-In the above example invocation it should be noted that the file `newConfig.json` can exist either relative to the users current location within their file system or in the folder `code/customization/configuration/customConfig`.
 
