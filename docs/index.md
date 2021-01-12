@@ -24,13 +24,13 @@ Kdb+, from [Kx](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-solid-book-reader: [Monte-Carlo methods](learn/blogs.md#programming-in-q)
+
     :fontawesome-solid-book-reader: [The Q Playbook](learn/pb/index.md)
 
     :fontawesome-solid-cloud: [GCPM architecture](cloud/gcpm/architecture.md)
 
     :fontawesome-solid-book-reader: [kdb+中文教程](https://kdbcn.gitee.io/)
-
-    :fontawesome-brands-youtube: [Autoscaling in the cloud](https://youtu.be/3YFhoL9Rw6k)
 
 </div>
 
