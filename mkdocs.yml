@@ -54,14 +54,16 @@ use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
   favicon: ./img/favicon.ico
+  font: false
   features:
     - navigation.tabs
   name: 'material'
   language: en
-  logo: 'img/kx.jpeg'
+  logo: 'img/kx.png'
   palette: 
-    primary: 'blue'
-    accent: 'deep orange'
+    accent: 'pink'
+    primary: 'black'
+    scheme: default
   static_templates:
     - 401.html
     - 404.html

@@ -5,6 +5,60 @@
 	Note: Read with https://code.kx.com/stylesheets/extra.css
  */
 
+
+
+/* rebrand 2021.01
+--------------------------------------------- */
+/* typefaces TRIAL
+--------------------------------------------- */
+@font-face {
+	font-family: euclid;
+	src: url(/fonts/euclid-square-italic.woff);
+	font-style: italic;
+}
+@font-face {
+	font-family: euclid;
+	src: url(/fonts/euclid-square-bold.woff);
+	font-weight: bold;
+}
+@font-face {
+	font-family: euclid;
+	src: url(/fonts/euclid-square.woff);
+}
+
+body, input, 
+article h1, article h2, article h3, 
+.wp-author, #wp-brand, .publications, .admonition-title,
+article details>summary {
+  font-family: euclid, -apple-system, Helvetica, Arial, sans-serif;
+}
+/*article {
+  font-family: "Roboto", -apple-system, Helvetica, Arial, sans-serif;
+}
+*/
+
+ /* palette
+ FROM common/extra.css
+--------------------------------------------- */
+[data-md-color-primary=blue] .md-header,
+[data-md-color-primary=blue] .md-container .md-hero,
+[data-md-color-primary=blue] .md-tabs
+ {
+ 	background: #0061ff; /* hsl(207, 100%, 40%) */
+ }
+ /* override accent background colour on repo download and star buttons */
+.scrollable .wrapper .repo a {
+ 	background: #8099fd;
+ }
+ /* override theme link color */
+ [data-md-color-primary=blue] .md-typeset a {
+ 	color: #005499; /* hsl(207, 100%, 30%) */
+ }
+ [data-md-color-primary=blue] .md-typeset a:hover {
+  color: hsla(14deg, 100%, 63%, 1); /* hsl(207, 100%, 30%) */
+ }
+
+
 /* suppress nav footer
 --------------------------------------------- */
 .md-footer-nav {
@@ -26,7 +80,7 @@
 	width: 200px;
 }
 .kx-flex-grid a {
-	color: #0070cd;
+	color: #0061ff;
 	margin: 0 auto;
 }
 
@@ -74,7 +128,7 @@
 
 .fusion {
     background-color: #c6c9ff; 
-    border: 1px solid #0070cd; 
+    border: 1px solid #0061ff; 
     border-radius: 10px; 
     display: inline-block;
     font-size: .8em; 
@@ -138,7 +192,7 @@
 	text-align: right;
 }
 #wp-brand {
-	background-color: rgba(0,112,205,.5);
+	background-color: rgba(0,97,255,.5);
 	color: white;
 	font-size: 80%;
 	font-weight: bold;
@@ -183,15 +237,16 @@ p.small-face {
 	padding:10px;
 }
 #kx-home-page-grid > p {
+	background-color: #dbdcde;
 	padding: 20px 5px;
 	text-align: center;
 }
 #kx-home-page-grid a {
-	color: #0070cd;
+	color: #101820;
 	margin: 0 auto;
 }
 #kx-home-page-grid #kx-get-started {
-	background-color: #0070cd;
+	background-color: #0061ff;
 	border-radius: 10px;
 	color: white;
 	font-family: "Proxima Nova",Roboto,sans-serif;
