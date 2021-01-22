@@ -10,9 +10,9 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 <div markdown="1" class="typewriter">
 .ml.clust.kd   **k-d tree functions**
 
-\  [newtree](#mlclustkdnewtree)       build a k-d tree
+\  [findLeaf](#mlclustkdfindleaf)      find the leaf node to which a datapoint belongs
+  [newTree](#mlclustkdnewtree)       build a k-d tree
   [nn](#mlclustkdnn)            find the nearest neighbor for a datapoint
-  [findleaf](#mlclustkdfindleaf)      find the leaf node to which a datapoint belongs
 </div>
 
 :fontawesome-brands-github:
@@ -23,28 +23,28 @@ A k-dimensional tree (k-d tree) is a special case of a binary search tree, commo
 At each non-leaf node, the dataset is split roughly in two. A splitting dimension is chosen to reflect the axis with highest variance, and the median value for the dataset is used to split the data along this axis. The placement of each node in the tree is determined by whether the node is less than (to the left of) or greater than (to the right of) the proceeding median value. This splitting process repeats recursively throughout the tree, until a small enough number of points remain to form a leaf.
 
 
-## `.ml.clust.kd.findleaf`
+## `.ml.clust.kd.findLeaf`
 
 _Find the tree index of the leaf that a datapoint belongs to_
 
 ```txt
-.ml.clust.kd.findleaf[tree;pt;node]
+.ml.clust.kd.findLeaf[tree;pt;node]
 ```
 
 Where
 
--   `tree` is a k-d tree
+-   `tree` is a k-d tree table
 -   `pt` is the point to search
 -   `node` is a node in the k-d tree to start the search
 
 returns the index (row) of the kd-tree that the datapoint belongs to.
 
 ```q
-q)show d:2 10#20?10.
+q)show data:2 10#20?10.
 8.132478 1.291938  1.477547 2.74227  5.635053 8.83823 ...
 5.426371 0.7757332 6.374637 9.761246 5.396816 7.162858...
 
-q)show tree:.ml.clust.kd.newtree[d;2]
+q)show tree:.ml.clust.kd.newTree[data;2]
 leaf left self parent children axis midval   idxs
 -----------------------------------------------------
 0    0    0           1 4      0    6.718125 `long$()
@@ -59,7 +59,7 @@ q)// Point to search
 q)show pt:2?10f
 3.414991 9.516746
 
-q).ml.clust.kd.findleaf[tree;pt;first tree]
+q).ml.clust.kd.findLeaf[tree;pt;first tree]
 leaf    | 1b
 left    | 0b
 self    | 3
@@ -70,7 +70,7 @@ midval  | 0n
 idxs    | 2 3 4
 ```
 
-Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or C code in their implementations. 
+Both `.ml.clust.kd.nn` and `.ml.clust.kd.findLeaf` functions can use either q or C code in their implementations. 
 
 :fontawesome-brands-github:
 [Instructions to build C code](https://github.com/KxSystems/ml/blob/master/clust/README.md)
@@ -78,18 +78,18 @@ Both `.ml.clust.kd.nn` and `.ml.clust.kd.findleaf` functions can use either q or
 To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `b` is a boolean indicating whether to use the q (`1b`) or C (`0b`) code. If the C code is not available, the function will default to q regardless of the input.
 
 
-## `.ml.clust.kd.newtree`
+## `.ml.clust.kd.newTree`
 
 _Build k-d tree_
 
 ```txt
-.ml.clust.kd.newtree[data;leafsz]
+.ml.clust.kd.newTree[data;leafSize]
 ```
 
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `leafsz` is the minimum number of datapoints contained within each leaf of the tree.
+-   `leafSize` is the minimum number of datapoints contained within each leaf of the tree.
 
 returns a k-d tree table with columns:
 
@@ -105,11 +105,11 @@ idxs        indexes (column in data) of datapoints contained in a leaf
 ```
 
 ```q
-q)show d:2 10#20?10.
+q)show data:2 10#20?10.
 5.497936 1.958467   5.615261 0.7043811 2.124007 7.77882 ...
 4.57328  0.08062521 1.039343 1.044512  3.380097 4.861546...
 
-q).ml.clust.kd.newtree[d;2]
+q).ml.clust.kd.newTree[data;2]
 leaf left self parent children axis midval   idxs
 -----------------------------------------------------
 0    0    0           1 4      1    4.57328  `long$()
@@ -120,7 +120,7 @@ leaf left self parent children axis midval   idxs
 1    1    5    4      `long$()               6 8
 1    0    6    4      `long$()               0 5 7
 
-q).ml.clust.kd.newtree[d;4]
+q).ml.clust.kd.newTree[data;4]
 leaf left self parent children axis midval  idxs
 -----------------------------------------------------
 0    0    0           1 2      1    4.57328 `long$()
@@ -128,7 +128,7 @@ leaf left self parent children axis midval  idxs
 1    0    2    0      `long$()              0 5 6 7 8
 ```
 
-!!! tip "The value of `leafsz` can affect the speed when searching for nearest neighbors."
+!!! tip "The value of `leafSize` can affect the speed when searching for nearest neighbors."
 
 
 ## `.ml.clust.kd.nn`
@@ -150,24 +150,22 @@ Where
 returns a dictionary containing the distance (`closestDist`) and the column index in `data` (`closestPoint`) of the nearest neighbor.
 
 ```q
-q)show d:2 10#20?10.
+q)show data:2 10#20?10.
 3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 ..
 4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 ..
 
-q)show tree:.ml.clust.kd.newtree[d;3]
+q)show tree:.ml.clust.kd.newTree[data;3]
 leaf left self parent children axis midval   idxs
 ------------------------------------------------------
 0    0    0           1 2      1    5.294808 `long$()
 1    1    1    0      `long$()               0 2 3 4 8
 1    0    2    0      `long$()               1 5 6 7 9
-q).ml.clust.kd.nn[tree;d;`e2dist;();1 2f]
+q).ml.clust.kd.nn[tree;data;`e2dist;();1 2f]
 closestPoint| 4
 closestDist | 3.694579
 
 q)// finds nearest neighbor excluding point 4
-q).ml.clust.kd.nn[tree;d;`e2dist;4;1 2f]
+q).ml.clust.kd.nn[tree;data;`e2dist;4;1 2f]
 closestPoint| 3
 closestDist | 9.4059
 ```
-
-

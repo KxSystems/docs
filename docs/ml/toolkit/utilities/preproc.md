@@ -9,18 +9,34 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 <div markdown="1" class="typewriter">
 .ml   **Data preprocessing**
-  [applylabelencode](#mlapplylabelencode)  Transform integer data to label encode representation
-  [dropconstant](#mldropconstant)      Columns with zero variance removed
-  [filltab](#mlfilltab)           Tailored filling of null values for a simple matrix
-  [freqencode](#mlfreqencode)        Numerically encode frequency of category occurance
-  [infreplace](#mlinfreplace)        Replace +/- infinities with max/min of column
-  [labelencode](#mllabelencode)       Encode list of symbols to integer values and produce mapping
-  [lexiencode](#mllexiencode)        Label categories based on lexigraphical order
-  [minmaxscaler](#mlminmaxscaler)      Data scaled between 0-1
-  [onehot](#mlonehot)            One-hot encoding of table or array
-  [polytab](#mlpolytab)           Polynomial features of degree n from a table
-  [stdscaler](#mlstdscaler)         Standard scaler transform-based representation of a table
-  [timesplit](#mltimesplit)         Decompose time columns into constituent parts
+  [applyLabelEncode](#mlapplylabelencode)  Transform integer data to label encode representation
+  [dropConstant](#mldropconstant)      Columns with zero variance removed
+  [fillTab](#mlfilltab)           Tailored filling of null values for a simple matrix
+  [freqEncode](#mlfreqencode)        Numerically encode frequency of category occurance
+  [infrePlace](#mlinfreplace)        Replace +/- infinities with max/min of column
+
+  labelEncode       Encode list of symbols to integer values and produce mapping
+	[labelEncode.fit](#mllabelencodefit)  Fit a label encoder model
+	[labelEncode.fitPredict](#mllabelencodefitpredict) Encode categorical data to an integer value representation
+
+  lexiEncode        Label categories based on lexigraphical order
+	[lexiEncode.fit](#mllexiencodefit)  Fit lexigraphical ordering model to cateogorical data
+	[lexiEncode.fitPredict](#mllexiencodefitpredict) Encode categorical features based on lexigraphical order
+
+  minMaxScaler      Data scaled between 0-1
+	[minMaxScaler.fit](#mlminmaxscalerfit)  Fit min max scaling model
+	[minMaxScaler.fitPredict](#mlminmaxscalerfitpredict) Scale data between 0-1 based on fitted model
+
+  oneHot            One-hot encoding of table or array
+	[oneHot.fit](#mlonehotfit)  Fit one-hot encoding model to categorical data
+	[oneHot.fitPredict](#mlonehotfitpredict) Encode categorical features using one-hot encoding
+  polyTab           Polynomial features of degree n from a table
+
+  stdScaler         Standard scaler transform-based representation of a table
+	[stdScaler.fit](#mlstdscalerfit)  Fit standard scaler model
+	[stdScaler.fitPredict](#mlstdscalerfitpredict) Standard scaler transform-based representation of data
+
+  timeSplit         Decompose time columns into constituent parts
 </div>
 
 :fontawesome-brands-github:
@@ -28,18 +44,20 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
-## `.ml.applylabelencode`
+## `.ml.applyLabelEncode`
 
 _Transform a list of integers based on a previously generated label encoding_
 
-Syntax: `.ml.applylabelencode[x;y]`
+```txt
+.ml.applyLabelEncode[data;map]
+```
 
 Where
 
-- `x` is a list of integers
-- `y` is a dictionary mapping true representation to associated integer or the return from `.ml.labelencode`
+- `data` is a list of integers to be reverted to its original representation
+- `map` is a dictionary mapping true representation to associated integer or the return from `.ml.labelEncode.fit`
 
-returns a list with the integer values of `x` replaced by their appropriate 'true' representation. Values that do not appear in the mapping supplied by `y` are returned as null values
+returns a list with the integer values of `data` replaced by their appropriate 'true' representation. Values that do not appear in the mapping supplied by `map` are returned as null values
 
 !!!Note
 	This function is primarily used when attempting to convert classification predictions from a fitted model to their underlying representation. It is often the case that a user will convert a symbol list to an integer list in order to allow their machine learning model to fit the data appropriately.
@@ -49,31 +67,37 @@ returns a list with the integer values of `x` replaced by their appropriate 'tru
 q)symList:`a`a`a`b`a`b`b`c`c`c`c
 
 // Produced and display a symbol encoding schema
-q)show schema:.ml.labelencode[symList]
-mapping | `s#`a`b`c!0 1 2
-encoding| 0 0 0 1 0 1 1 2 2 2 2
+q)show schema:.ml.labelEncode.fit[symList]
+modelInfo| `s#`a`b`c!0 1 2
+predict  | {[data;map]
+  -1^map data
+  }[;`s#`a`b`c!0 1 2]
 
 // Generate a list of integers to apply the schema to
 q)newList:0 0 1 2 2 2 0 1 4
 
 // Apply the schema completely and the mapping itself to the new list
-q).ml.applylabelencode[newList;schema]
+q).ml.applyLabelEncode[newList;schema]
 `a`a`b`c`c`c`a`b`
-q).ml.applylabelencode[newList;schema`mapping]
+q).ml.applyLabelEncode[newList;schema`mapping]
 `a`a`b`c`c`c`a`b`
 ```
+!!! warning "`.ml.applylabelencode` deprecated"
+    The above function was previously defined as `.ml.applylabelencode`.
+    It is still callable but will be deprecated after version 3.0.
 
-## `.ml.dropconstant`
+## `.ml.dropConstant`
 
 _Remove columns with zero variance_
 
-Syntax: `.ml.dropconstant[x]`
-
+```txt
+.ml.dropConstant[data]
+```
 Where 
 
--  `x` is a numerical table
+-  `data` is a numerical table/dict
 
-returns `x` without columns of zero variance.
+returns `data` without columns of zero variance.
 
 ```q
 q)5#tab:([]1000?100f;1000#10;1000#0N)
@@ -84,7 +108,7 @@ x        x1 x2
 98.80532 10
 54.5461  10
 51.7746  10
-q)5#.ml.dropconstant tab	/ tabular input
+q)5#.ml.dropConstant tab	// tabular input
 x
 --------
 95.25017
@@ -92,22 +116,27 @@ x
 98.80532
 54.5461
 51.7746
-q).ml.dropconstant flip tab	/ dictionary input
-x| 33.35067 23.52469 95.13262 64.67595 57.13359 4.249854 34.68608 63.04755 76..
+q).ml.dropConstant flip tab	// dictionary input
+x| 33.35067 23.52469 95.13262 64.67595 57.13359 4.249854 34.68608 6..
 ```
 
+!!! warning "`.ml.dropconstant` deprecated"
+    The above function was previously defined as `.ml.dropconstant`.
+    It is still callable but will be deprecated after version 3.0.
 
-## `.ml.filltab`
+## `.ml.fillTab`
 
 _Tunable filling of null data for a simple table_
 
-Syntax: `.ml.filltab[t;gcol;tcol;dict]`
+```txt 
+.ml.fillTab[tab;groupCol;timeCol;dict]
+```
 
 Where
 
--   `t` is a table
--   `gcol` is a grouping column for the fill
--   `tcol` is a time column in the data
+-   `tab` is a table containing numerical and non numerical data
+-   `groupCol` is a grouping column for the fill
+-   `timeCol` is a time column in the data
 -   `dict` is a dictionary defining fill behavior, setting this to `::` will result in forward followed by reverse filling
 
 returns a table with columns filled according to assignment of keys in the dictionary `dict`, the null values are also encoded within a new column to maintain knowledge of the null positions. 
@@ -129,7 +158,7 @@ B   23:10:44.297            0.5513535 0.2213819
 q)gc:`sym
 q)tc:`time
 q)dict:`x`x1`x2!`linear`median`mean
-q).ml.filltab[tab;gc;tc;dict] / tailored fills
+q).ml.fillTab[tab;gc;tc;dict] / tailored fills
 sym time         x          x1        x2          x_null x1_null x2_null
 ------------------------------------------------------------------------
 B   03:27:54.715 0.8117071  0.9976543 0.09021085  1      0       1      
@@ -142,7 +171,7 @@ B   17:38:28.322 0.6288875  0.8751704 0.09021085  0      0       1
 A   17:44:20.022 0.02301354 0.4503539 0.8472568   0      0       0      
 B   18:16:47.740 0.6206502  0.4052153 0.09021085  1      0       1      
 B   23:10:44.297 0.5574701  0.5513535 0.2213819   1      0       0      
-q).ml.filltab[tab;gc;tc;::]  / default forward-backward filling
+q).ml.fillTab[tab;gc;tc;::]  / default forward-backward filling
 sym time         x          x1        x2          x_null x1_null x2_null
 ------------------------------------------------------------------------
 B   03:27:54.715 0.7505538  0.9976543 0.004250957 1      0       1      
@@ -156,6 +185,9 @@ A   17:44:20.022 0.02301354 0.4503539 0.8472568   0      0       0
 B   18:16:47.740 0.6288875  0.4052153 0.04499967  1      0       1      
 B   23:10:44.297 0.6288875  0.5513535 0.2213819   1      0       0      
 ```
+!!! warning "`.ml.filltab` deprecated"
+    The above function was previously defined as `.ml.filltab`.
+    It is still callable but will be deprecated after version 3.0.
 
 !!! note "Form of the `dict` argument"
 
@@ -165,16 +197,18 @@ B   23:10:44.297 0.6288875  0.5513535 0.2213819   1      0       0
     In version `0.2.0` this is has become `` `x`x1`x2`x3!(2#`linear),2#`median ``. 
 
 
-## `.ml.freqencode`
+## `.ml.freqEncode`
 
 _Encoded frequency of individual category occurences_
 
-Syntax:.`.ml.frequencode[t;c]`
+```txt
+.ml.freqEncode[tab;symCols]
+```
 
 Where
 
--  `t` is a simple table
--  `c` is a list of columns to apply encoding to, setting as `::` encodes all sym columns.
+-  `tab` is a simple table
+-  `symCols` is a list of columns to apply encoding to, setting as `::` encodes all sym columns.
 
 returns table with frequency of occurrance of individual symbols within a column.
 
@@ -192,7 +226,7 @@ a 8.452182  1
 a 0.4821576 0 
 b 4.755664  0 
 c 8.35521   0 
-q).ml.freqencode[tab;::]    / default behavior
+q).ml.freqEncode[tab;::]    // default behavior
 x1        x2 x_freq
 -------------------
 4.429712  1  0.2   
@@ -205,7 +239,7 @@ x1        x2 x_freq
 0.4821576 0  0.7   
 4.755664  0  0.1   
 8.35521   0  0.2   
-q).ml.freqencode[tab;`x`x2] / customised encoding
+q).ml.freqEncode[tab;`x`x2] // customised encoding
 x1        x_freq x2_freq
 ------------------------
 4.429712  0.2    0.5    
@@ -219,17 +253,21 @@ x1        x_freq x2_freq
 4.755664  0.1    0.4    
 8.35521   0.2    0.4    
 ```
+!!! warning "`.ml.freqencode` deprecated"
+    The above function was previously defined as `.ml.freqencode`.
+    It is still callable but will be deprecated after version 3.0.
 
-
-## `.ml.infreplace`
+## `.ml.infReplace`
 
 _Replace +/- infinities with data min/max_
 
-Syntax: `.ml.infreplace[x]`
+```txt
+.ml.infReplace[data]
+```
 
 Where 
 
--  `x` is a dictionary/table/list of numeric values
+-  `data` is a dictionary/table/list of numeric values
 
 returns the data with positive/negative infinities replaced by max/min values for the given key.
 
@@ -238,16 +276,13 @@ q)show d:`A`B`C!(5 6 9 0w;10 -0w 0 50;0w 1 2 3)
 A| 5  6   9 0w
 B| 10 -0w 0 50
 C| 0w 1   2 3
-
-q).ml.infreplace d`A
+q).ml.infReplace d`A
 5 6 9 9f
-
-q).ml.infreplace d
+q).ml.infReplace d
 A| 5  6 9 9
 B| 10 0 0 50
 C| 3  1 2 3
-
-q).ml.infreplace flip d
+q).ml.infReplace flip d
 A B  C
 ------
 5 10 3
@@ -256,202 +291,461 @@ A B  C
 9 50 3
 ```
 
-##`.ml.labelencode`
+!!! warning "`.ml.infreplace` deprecated"
+    The above function was previously defined as `.ml.infreplace`.
+    It is still callable but will be deprecated after version 3.0.
 
-_Encode a list to an integer value representation, with associated mapping schema_
+##`.ml.labelEncode.fit`
 
-Syntax:`.ml.labelencode[x]`
+_Fit a label encoder model_
+
+```txt
+.ml.labelEncode.fit[data]
+```
 
 Where
 
--  `x` is a list of any type
+-  `data` is a list of any type to encode
 
-returns a dictionary providing the schema mapping values in the list to associated integers and the original list encoded based on this schema
+returns a dictionary providing the schema mapping values for the input data (`modelInfo`) and a predict function to be used on new data (`predict`)
+
+The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation
+```txt
+`a`b`c!0 1 2
+```
+
+The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
+
+- `data` is a list of any type to be encoded
+
+and returns the data encoded to an integer representation based on the mapping schema created during the fitting of the model. Any values not contained within the schema mapping return -1
 
 ```q
 q)sym:`cab`acb`abc`bac`bca
-q)show symencode:.ml.labelencode[sym]
-mapping | `s#`abc`acb`bac`bca`cab!0 1 2 3 4
-encoding| 4 1 0 2 3
-q)symencode.mapping
+q)show symEncode:.ml.labelEncode.fit[sym]
+modelInfo| `s#`abc`acb`bac`bca`cab!0 1 2 3 4
+predict  | {[data;map]
+  -1^map data
+  }[;`s#`abc`acb`bac`bca`cab!0 1 2 3 4]
+// Extract the schema mapping
+q)symEncode.modelInfo
 abc| 0
 acb| 1
 bac| 2
 bca| 3
 cab| 4
-q)symencode.encoding
-4 1 0 2 3
 
-q)guids:5?0Ng
-q)show guidencode:.ml.labelencode[guids]
-mapping | `s#580d8c87-e557-0db1-3a19-cb3a44d623b1 5a580fb6-656b-5e69-d445-417..
-encoding| 3 2 1 4 0
-q)guidencode.mapping
-580d8c87-e557-0db1-3a19-cb3a44d623b1| 0
-5a580fb6-656b-5e69-d445-417ebfe71994| 1
-5ae7962d-49f2-404d-5aec-f7c8abbae288| 2
-8c6b8b64-6815-6084-0a3e-178401251b68| 3
-ddb87915-b672-2c32-a6cf-296061671e9d| 4
-q)guidencode.encoding
-3 2 1 4 0
-
-q)floats:5?1f
-q)show floatencode:.ml.labelencode[floats]
-mapping | `s#0.2306385 0.4707883 0.6346716 0.949975 0.9672398!0 1 2 3 4
-encoding| 1 2 4 0 3
-q)floatencode.mapping
-0.2306385| 0
-0.4707883| 1
-0.6346716| 2
-0.949975 | 3
-0.9672398| 4
-q)floatencode.encoding
-1 2 4 0 3
+// Predict on new values using fitted model
+q)newSym:`acb`acb`bca`bac
+q)symEncode.predict[newSym]
+1 1 3 2
+// Values not included in the mapping return -1
+q)symEncode.predict[newSym,`aaa]
+1 1 3 2 -1
 ```
 
-## `.ml.lexiencode`
+##`.ml.labelEncode.fitPredict`
 
-_Label symbol columns based on lexigraphical order_
+_Encode categorical data to an integer value representation_
 
-Syntax:`.ml.lexiencode[t;c]`
+```txt
+.ml.labelEncode.fitPredict[data]
+```
 
 Where
 
--  `t` is a simple table
--  `c` is a list of columns to apply encoding to, setting as `::` encodes all sym columns
+-  `data` is a list of any type to encode
 
-returns table with lexigraphical order of letters column.
+returns a list encoded to an integer representation
+
+```q
+q)sym:`cab`acb`abc`bac`bca
+q)show symEncode:.ml.labelEncode.fitPredict[sym]
+4 1 0 2 3
+
+q)show floats:5?1f
+0.439081 0.5759051 0.5919004 0.8481567 0.389056
+q)show floatEncode:.ml.labelEncode.fitPredict[floats]
+1 2 3 4 0
+```
+!!! warning "`.ml.labelencode` deprecated"
+    The above function was previously defined as `.ml.labelencode`.
+    It is still callable but will be deprecated after version 3.0.
+
+## `.ml.lexiEncode.fit`
+
+_Fit lexigraphical ordering model to cateogorical data_
+
+```txt
+.ml.lexiEncode.fit[tab;symCols]
+```
+Where
+
+-  `tab` is a simple table
+-  `symCols` is a list of columns to apply encoding to, setting as `::` encodes all sym columns
+
+returns dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be used on new data (`predict`)
+
+The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation for each column in the input table
+```txt
+`col1!`a`b`c!0 1 2
+`col2!`e`f`g!0 1 2
+```
+
+The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
+
+-  `tab` is a simple table
+-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping from the fitted data to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
+
+and returns the table with lexigraphical ordering of symbol column. Any values not contained within the schema mapping return -1
 
 ```q
 q)show tab:([]5?10f;5?`a`b`c;5?`e`f`g)
 x        x1 x2
 --------------
-3.122149 b  f
-1.165431 b  g
-2.244198 b  e
-3.163946 a  g
-7.851531 b  g
+6.768181 b  g 
+9.949169 b  f 
+9.716633 c  g 
+4.593937 b  e 
+4.081315 a  g 
 
-q).ml.lexiencode[tab;::]  / default behavior
-x        x1_lexi x2_lexi
-------------------------
-3.122149 1       1
-1.165431 1       2
-2.244198 1       0
-3.163946 0       2
-7.851531 1       2
+q)show lexi:.ml.lexiEncode.fit[tab;::]
+modelInfo| `x1`x2!(`s#`a`b`c!0 1 2;`s#`e`f`g!0 1 2)
+predict  | {[tab;symDict;mapDict]
+  symDict:i.mappingCheck[tab;symDict;mapDic..
 
-q).ml.lexiencode[tab;`x1] / custom behavior
-x        x2 x1_lexi
--------------------
-3.122149 f  1
-1.165431 g  1
-2.244198 e  1
-3.163946 g  0
-7.851531 g  1
+// Extract the schema mapping
+q)lexi.modelInfo
+x1| `s#`a`c!0 1
+x2| `s#`e`f`g!0 1 2
+
+// Predict on new data
+show tab2:([]5?10f;5?`a`b`c;5?`e`f`g)
+x         x1 x2
+---------------
+8.946904  c  f 
+0.3035461 b  g 
+5.039259  c  g 
+4.913808  b  e 
+0.6653002 a  f 
+q)lexi.predict[tab2;::]
+x         x1_lexi x2_lexi
+-------------------------
+8.946904  2       1      
+0.3035461 1       2      
+5.039259  2       2      
+4.913808  1       0      
+0.6653002 0       1 
+
+q)show tab3:([]5?10f;5?`e`f`g)
+x         x1
+------------
+7.69514   e 
+2.18553   f 
+0.6951899 g 
+6.086995  e 
+6.389854  e 
+// Define the columns to encode and what mapping to use
+q)lexi.predict[tab3;enlist[`x1]!enlist`x2]
+x         x1_lexi
+-----------------
+7.69514   0      
+2.18553   1      
+0.6951899 2      
+6.086995  0      
+6.389854  0   
 ```
 
+## `.ml.lexiEncode.fitPredict`
 
-## `.ml.minmaxscaler`
+_Encode categorical features based on lexigraphical order_
 
-_Scale data between 0-1_
-
-Syntax: `.ml.minmaxscaler[x]`
+```txt
+.ml.lexiEncode.fitPredict[tab;symCols]
+```
 
 Where
 
--  `x` is a numerical table, matrix or list
+-  `tab` is a simple table
+-  `symCols` is a list of columns to apply encoding to, setting as `::` encodes all sym columns
 
-returns a min-max scaled representation with values scaled between 0 and 1f.
+returns table with lexigraphical ordering of symbol columns
+
+```q
+q)show tab:([]5?10f;5?`a`b`c;5?`e`f`g)
+x         x1 x2
+---------------
+2.144001  a  e 
+8.20994   c  e 
+0.7424075 a  e 
+8.202035  b  g 
+6.618763  b  f 
+q).ml.lexiEncode.fitPredict[tab;::] / default behaviour
+x         x1_lexi x2_lexi
+-------------------------
+2.144001  0       0      
+8.20994   2       0      
+0.7424075 0       0      
+8.202035  1       2      
+6.618763  1       1      
+
+q).ml.lexiEncode.fitPredict[tab;`x1] /custom behaviour
+x         x2 x1_lexi
+--------------------
+2.144001  e  0      
+8.20994   e  2      
+0.7424075 e  0      
+8.202035  g  1      
+6.618763  f  1   
+```
+
+!!! warning "`.ml.lexiencode` deprecated"
+    The above function was previously defined as `.ml.lexiencode`.
+    It is still callable but will be deprecated after version 3.0.
+
+## `.ml.minMaxScaler.fit`
+
+_Fit min max scaling model_
+
+```txt 
+.ml.minMaxScaler.fit[data]
+```
+
+Where
+
+-  `data` is a numerical table, matrix or list
+
+returns a dictionary containing the min and max values of the fitted data (`modelInfo`) along with a predict function projection (`predict`)
+
+The min/max value of the data calculated during the fitting process is contained within `modelInfo`
+
+```txt
+`minData`maxData!5 10
+```
+
+The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
+
+-  `data` is a numerical table, matrix or list
+
+and returns the min-max scaled representation of the new data based on the values of the fitted model
 
 ```q
 q)n:5
 q)show tab:([]n?100f;n?1000;n?100f;n?50f)
-x        x1  x2       x3
+x        x1  x2       x3      
 ------------------------------
-12.48134 837 42.83142 7.597138
-18.019   591 77.97026 46.69185
-98.8875  860 73.44471 28.72854
-30.70513 599 80.56178 39.70485
-42.17381 187 75.26142 38.26483
+54.97936 745 6.165008 3.673904
+19.58467 362 28.5799  15.79763
+56.15261 637 66.84724 17.05243
+7.043811 494 91.33033 43.08986
+21.24007 725 14.85357 27.74432
 
-q).ml.minmaxscaler[tab]
-x         x1        x2        x3
----------------------------------------
-0          0.9658247 0         0
-0.06408864 0.6002972 0.9313147 1
-1          1         0.8113701 0.5405182
-0.2109084  0.6121842 1         0.8212801
-0.3436384  0         0.85952   0.7844459
+q)show minMax:.ml.minMaxScaler.fit[tab]
+modelInfo| `minData`maxData!+`x`x1`x2`x3!(7.043811 56.15261;362 745..
+predict  | {[func;data]
+  $[0=type data;
+      func data;
+    98=type data;
+// Extract the min/max values calculated
+q)minMax.modelInfo
+       | x        x1  x2       x3      
+-------| ------------------------------
+minData| 7.043811 362 6.165008 3.673904
+maxData| 56.15261 745 91.33033 43.08986
 
-q)show mat:value flip tab
-12.48134 18.019   98.8875  30.70513 42.17381
-837      591      860      599      187
-42.83142 77.97026 73.44471 80.56178 75.26142
-7.597138 46.69185 28.72854 39.70485 38.26483
-
-q).ml.minmaxscaler[mat]
-0         0.06408864 1         0.2109084 0.3436384
-0.9658247 0.6002972  1         0.6121842 0
-0         0.9313147  0.8113701 1         0.85952
-0         1          0.5405182 0.8212801 0.7844459
-
-q)list:100?100
-q).ml.minmaxscaler[list]
-0.7835052 0.2886598 0.5463918 0.443299 1 0.09278351 0.1030928 0 0.9175258 0.9..
+// Use the fitted model to scale new data
+q)show tab2:([]n?100f;n?1000;n?100f;n?50f)
+x        x1  x2       x3      
+------------------------------
+65.68734 879 84.39807 28.17527
+96.25156 459 54.26371 44.19115
+37.14973 494 7.757332 12.19597
+17.44659 518 63.74637 33.59063
+58.97202 457 97.61246 43.19796
+q)minMax.predict tab2
+x         x1        x2         x3       
+----------------------------------------
+1.194155  1.349869  0.9186024  0.6216103
+1.816533  0.2532637 0.5647686  1.02794  
+0.6130453 0.3446475 0.01869686 0.2162085
+0.2118313 0.4073107 0.6761128  0.7590003
+1.057411  0.2480418 1.073764   1.002742 
 ```
 
+## `.ml.minMaxScaler.fitPredict`
 
-## `.ml.onehot`
+_Scale data between 0-1_
 
-_One-hot encoding_
-
-Syntax: `.ml.onehot[t;c]`
+```txt 
+.ml.minMaxScaler.fitPredict[data]
+```
 
 Where
 
--  `t` simple table
--  `c` is a list of columns as symbols to apply encoding to. Setting as `::` will encode all symbol columns
+-  `data` is a numerical table, matrix or list
 
-returns one-hot encoded representation as a table.
+returns a min-max scaled representation with values scaled between 0 and 1f
+
+```q
+q)n:5
+q)show tab:([]n?100f;n?1000;n?100f;n?50f)
+x        x1  x2       x3      
+------------------------------
+95.16746 744 90.89531 47.75451
+11.69475 701 20.62569 30.79257
+81.58957 779 48.1821  35.12275
+60.91539 340 20.65625 17.7519 
+98.30794 153 52.29178 18.07572
+q).ml.minMaxScaler.fitPredict[tab]
+x         x1        x2           x3        
+-------------------------------------------
+0.9637413 0.9440895 1            1         
+0         0.8753994 0            0.4346513 
+0.8069766 1         0.3921525    0.578978  
+0.5682811 0.298722  0.0004348562 0         
+1         0         0.450637     0.01079286
+
+q)show mat:value flip tab
+95.16746 11.69475 81.58957 60.91539 98.30794
+744      701      779      340      153     
+90.89531 20.62569 48.1821  20.65625 52.29178
+47.75451 30.79257 35.12275 17.7519  18.07572
+q).ml.minMaxScaler.fitPredict[mat]
+0.9637413 0         0.8069766 0.5682811    1         
+0.9440895 0.8753994 1         0.298722     0         
+1         0         0.3921525 0.0004348562 0.450637  
+1         0.4346513 0.578978  0            0.01079286
+
+q)list:100?100
+q).ml.minMaxScaler.fitPredict[list]
+0.2525253 0.7373737 0 0.06060606 0.3838384 0.7272727 0.1313131 0.7777778 0.64..
+```
+
+!!! warning "`.ml.minmaxscaler` deprecated"
+    The above function was previously defined as `.ml.minmaxscaler`.
+    It is still callable but will be deprecated after version 3.0.
+
+## `.ml.oneHot.fit`
+
+_Fit one-hot encoding model to categorical data_
+
+```txt
+oneHot.fit[tab;symCols]
+```
+
+Where
+
+-  `tab` a table containing numeric and non numerical data
+-  `symCols` is a list of columns as symbols to apply encoding to, setting as `::` will encode all symbol columns
+
+returns a dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be applied to new data (`predict`)
+
+The mapping values are contained within `modelInfo`. These values map the distinct symbol values found within each column
+```txt
+`col1`col2!(`a`b;`c`d)
+```
+The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
+
+-  `tab` is a simple table
+-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
+
+and returns the one hot encoded version of the data based on the values of the fitted model. Any values not contained within the schema mapping return -1
 
 ```q
 q)5#tab:([]5?`a`b`c;5?2;5?10f)
+x x1 x2       
+--------------
+b 0  2.032099 
+a 1  2.310648 
+a 1  3.138309 
+a 0  0.1974141
+a 0  5.611439 
+q)show oneHot:.ml.oneHot.fit[tab;::]
+modelInfo| (,`x)!,`s#`a`b
+predict  | {[tab;symDict;mapDict]
+  symDict:i.mappingCheck[tab;symDict;mapDic..
+// Extract the mapping info per column
+q)oneHot.modelInfo
+x| a b
+
+// One hot encode new data
+q)5#tab2:([]5?2;5?`a`b`c;5?10f)
 x x1 x2      
 -------------
-a 0  3.21158 
-a 0  2.084756
-b 0  9.450667
-c 1  7.8567  
-c 1  5.898786
-q).ml.onehot[tab;::]      / default behavior
-x1 x2       x_a x_b x_c
------------------------
-0  3.21158  1   0   0  
-0  2.084756 1   0   0  
-0  9.450667 0   1   0  
-1  7.8567   0   0   1  
-1  5.898786 0   0   1  
-q).ml.onehot[tab;`x`x1]   / custom behavior
-x2       x_a x_b x_c x1_0 x1_1
-------------------------------
-3.21158  1   0   0   1    0   
-2.084756 1   0   0   1    0   
-9.450667 0   1   0   1    0   
-7.8567   0   0   1   0    1   
-5.898786 0   0   1   0    1   
+1 a  6.168275
+0 b  6.876426
+0 c  6.123797
+0 a  9.363029
+1 c  2.188574
+// The x1 column in the new data will be encoded
+// based off the mapping from `x in the fitted model
+q)oneHot.predict[tab2;enlist[`x1]!enlist `x]
+x x2       x1_a x1_b
+--------------------
+1 6.168275 1    0   
+0 6.876426 0    1   
+0 6.123797 0    0   
+0 9.363029 1    0   
+1 2.188574 0    0 
 ```
 
+## `.ml.oneHot.fitPredict`
 
-## `.ml.polytab`
+_Encode categorical features using one-hot encoded fitted model_
 
-_Tunable polynomial features from an input table_
-
-Syntax: `.ml.polytab[t;n]`
+```txt
+oneHot.fitPredict[tab;symCols]
+```
 
 Where
 
--   `t` is a table of numerical values
+-  `tab` a table containing numeric and non numerical data
+-  `symCols` is a list of columns as symbols to apply encoding to, setting as `::` will encode all symbol columns
+
+returns a one-hot encoded representation of categorical data as a table
+
+```q
+q)5#tab:([]5?`a`b`c;5?2;5?10f)
+x x1 x2       
+--------------
+b 0  2.032099 
+a 1  2.310648 
+a 1  3.138309 
+a 0  0.1974141
+a 0  5.611439 
+q).ml.oneHot.fitPredict[tab;::]
+x1 x2        x_a x_b
+--------------------
+0  2.032099  0   1  
+1  2.310648  1   0  
+1  3.138309  1   0  
+0  0.1974141 1   0  
+0  5.611439  1   0  
+q).ml.oneHot.fitPredict[tab;`x`x1]
+x2        x_a x_b x1_0 x1_1
+---------------------------
+2.032099  0   1   1    0   
+2.310648  1   0   0    1   
+3.138309  1   0   0    1   
+0.1974141 1   0   1    0   
+5.611439  1   0   1    0 
+```
+
+!!! warning "`.ml.onehot` deprecated"
+    The above function was previously defined as `.ml.onehot`.
+    It is still callable but will be deprecated after version 3.0.
+
+## `.ml.polyTab`
+
+_Tunable polynomial features from an input table_
+
+```txt
+.ml.polyTab[tab;n]
+```
+
+Where
+
+-   `tab` is a table of numerical values
 -   `n` is the order of the polynomial feature being created
 
 returns the polynomial derived features of degree `n` in the form of a table.
@@ -467,101 +761,176 @@ val          n  x        x1       x2
 0.002999996  3  76.81172 463.5728 3
 0.003999989  4  45.02587 694.5211 8
 
-q)5#.ml.polytab[tab;2]
-val_n        val_x      val_x1    val_x2       n_x      n_x1     n_x2 x_x1   ..
------------------------------------------------------------------------------..
-0            0          0         0            0        0        0    1418.35..
-0.0009999998 0.04160587 0.7526715 0.0009999998 41.60588 752.6717 1    31315.5..
-0.003999997  0.03935058 0.9590862 0.005999996  39.35061 959.0868 6    9435.16..
-0.008999987  0.2304348  1.390716  0.008999987  230.4352 1390.719 9    35607.8..
-0.01599996   0.180103   2.778077  0.03199991   180.1035 2778.084 32   31271.4..
+q)5#.ml.polyTab[tab;2]
+val_n        val_x      val_x1    val_x2       n_x      n_x1     n_x2..
+---------------------------------------------------------------------..
+0            0          0         0            0        0        0   ..
+0.0009999998 0.04160587 0.7526715 0.0009999998 41.60588 752.6717 1   ..
+0.003999997  0.03935058 0.9590862 0.005999996  39.35061 959.0868 6   ..
+0.008999987  0.2304348  1.390716  0.008999987  230.4352 1390.719 9   ..
+0.01599996   0.180103   2.778077  0.03199991   180.1035 2778.084 32  ..
 
-q)5#.ml.polytab[tab;3]
-val_n_x    val_n_x1  val_n_x2     val_x_x1 val_x_x2   val_x1_x2 n_x_x1   n_x_..
------------------------------------------------------------------------------..
-0          0         0            0        0          0         0        0   ..
-0.04160587 0.7526715 0.0009999998 31.31556 0.04160587 0.7526715 31315.57 41.6..
-0.07870116 1.918172  0.01199999   18.87031 0.1180517  2.877259  18870.32 118...
-0.6913044  4.172149  0.02699996   106.8233 0.6913044  4.172149  106823.5 691...
-0.7204121  11.11231  0.1279997    125.0853 1.440824   22.22462  125085.7 1440..
+q)5#.ml.polyTab[tab;3]
+val_n_x    val_n_x1  val_n_x2     val_x_x1 val_x_x2   val_x1_x2 n_x_x..
+---------------------------------------------------------------------..
+0          0         0            0        0          0         0    ..
+0.04160587 0.7526715 0.0009999998 31.31556 0.04160587 0.7526715 31315..
+0.07870116 1.918172  0.01199999   18.87031 0.1180517  2.877259  18870..
+0.6913044  4.172149  0.02699996   106.8233 0.6913044  4.172149  10682..
+0.7204121  11.11231  0.1279997    125.0853 1.440824   22.22462  12508..
 
 /this can be integrated with the original data via the syntax
-q)5#newtab:tab^.ml.polytab[tab;2]^.ml.polytab[tab;3]
-val          n  x        x1       x2 val_n        val_x      val_x1    val_x2..
------------------------------------------------------------------------------..
-0            0  68.5896  20.67882 2  0            0          0         0     ..
-0.0009999998 1  41.60588 752.6717 1  0.0009999998 0.04160587 0.7526715 0.0009..
-0.001999999  2  19.6753  479.5434 3  0.003999997  0.03935058 0.9590862 0.0059..
-0.002999996  3  76.81172 463.5728 3  0.008999987  0.2304348  1.390716  0.0089..
-0.003999989  4  45.02587 694.5211 8  0.01599996   0.180103   2.778077  0.0319..
+q)5#newTab:tab^.ml.polyTab[tab;2]^.ml.polyTab[tab;3]
+val          n  x        x1       x2 val_n        val_x      val_x1  ..
+---------------------------------------------------------------------..
+0            0  68.5896  20.67882 2  0            0          0       ..
+0.0009999998 1  41.60588 752.6717 1  0.0009999998 0.04160587 0.752671..
+0.001999999  2  19.6753  479.5434 3  0.003999997  0.03935058 0.959086..
+0.002999996  3  76.81172 463.5728 3  0.008999987  0.2304348  1.390716..
+0.003999989  4  45.02587 694.5211 8  0.01599996   0.180103   2.778077..
 ```
+!!! warning "`.ml.polytab` deprecated"
+    The above function was previously defined as `.ml.polytab`.
+    It is still callable but will be deprecated after version 3.0.
 
+## `.ml.stdScaler.fit`
 
-## `.ml.stdscaler`
+_Fit standard scaler model_
 
-_Standard scaler transform-based representation_
-
-Syntax: `.ml.stdscaler[x]`
-
+```txt
+.ml.stdScaler.fit[data]
+```
 Where
 
--  `x` is a simple numerical table, matrix or list
+-  `data` is a simple numerical table, matrix or list
 
-returns a table where each column has undergone a standard scaling given by the formula `(x-avg x)%dev x`.
+returns a dictionary containing average and deviation values of the fitted data (`modelInfo`) along with a predict function projection to be used on new data (`predict`)
+
+The avg/dev value of the data used during the fitting process is contained within `modelInfo`
+
+```txt
+`avgData`devData!8 2
+```
+
+The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
+
+-  `data` is a numerical table, matrix or list
+
+and returns the standard scaled representation of the data based on the input values of the fitted model
 
 ```q
 q)n:5
 q)show tab:([]n?100f;n?1000;n?100f;n?50f)
-x        x1  x2       x3
+x        x1  x2       x3      
 ------------------------------
-12.48134 837 42.83142 7.597138
-18.019   591 77.97026 46.69185
-98.8875  860 73.44471 28.72854
-30.70513 599 80.56178 39.70485
-42.17381 187 75.26142 38.26483
+63.0036  503 70.51033 11.2785 
+31.65436 102 14.97004 42.62871
+65.49844 34  24.00771 38.60175
+26.43322 809 10.39355 39.7236 
+31.14316 415 23.53326 48.96199
 
-q).ml.stdscaler[tab]
-x          x1         x2         x3
----------------------------------------
--0.9029555 0.9173914   -1.969172 -1.813095
--0.7241963 -0.09826245 0.5763785 1.068269
-1.886294   1.012351    0.2485354 -0.2556652
--0.3146793 -0.06523305 0.764115  0.5533119
-0.0555375  -1.766247   0.380143  0.4471792
+q)show stdScale:.ml.stdScaler.fit[tab]
+modelInfo| `avgData`devData!+`x`x1`x2`x3!(43.54656 17.02114;372.6 281..
+predict  | {[func;data]
+  $[0=type data;
+      func data;
+    98=type data;
+ ..
+// Extract the avg/dev information per column
+q)stdScale.modelInfo
+       | x        x1       x2       x3      
+-------| -----------------------------------
+avgData| 43.54656 372.6    28.68298 36.23891
+devData| 17.02114 281.8231 21.54276 12.9881 
 
-q)show mat:value flip tab
-12.48134 18.019   98.8875  30.70513 42.17381
-837      591      860      599      187
-42.83142 77.97026 73.44471 80.56178 75.26142
-7.597138 46.69185 28.72854 39.70485 38.26483
-
-q).ml.stdscaler[mat]
--0.9029555 -0.7241963  1.886294   -0.3146793  0.0555375
-0.9173914  -0.09826245 1.012351   -0.06523305 -1.766247
--1.969172  0.5763785   0.2485354  0.764115    0.380143
--1.813095  1.068269    -0.2556652 0.5533119   0.4471792
-
-q)list:100?100
-q).ml.stdscaler[list]
-0.8394957 -0.7121328 0.09600701 -0.2272489 1.518333 -1.326319 -1.293993 -1.61..
+// Scale new data based on fitted model
+1)show tab2:([]n?100f;n?1000;n?100f;n?50f)
+x        x1  x2       x3      
+------------------------------
+35.20493 557 19.43085 44.36463
+70.96579 296 32.13079 18.81573
+46.24471 288 40.90672 19.41565
+8.077328 421 63.22979 24.21895
+5.367945 760 49.65883 3.92097 
+q)stdScale.predict[tab2]
+x          x1         x2         x3        
+-------------------------------------------
+-0.4900747 0.6543112  -0.4294775 0.625628  
+1.610893   -0.2718017 0.1600452  -1.341472 
+0.1585179  -0.3001883 0.5674178  -1.295282 
+-2.083834  0.171739   1.603639   -0.9254592
+-2.243011  1.374621   0.9736847  -2.488272 
 ```
 
+## `.ml.stdScaler.fitPredict`
 
-## `.ml.timesplit`
+_Standard scaler transform-based representation of data_
+
+```txt
+.ml.stdScaler.fitPredict[data]
+```
+Where
+
+-  `data` is a simple numerical table, matrix or list
+
+returns a table, matrix or list where all data has undergone standard scaling.
+
+```q
+q)n:5
+q)show tab:([]n?100f;n?1000;n?100f;n?50f)
+x        x1  x2       x3      
+------------------------------
+63.0036  503 70.51033 11.2785 
+31.65436 102 14.97004 42.62871
+65.49844 34  24.00771 38.60175
+26.43322 809 10.39355 39.7236 
+31.14316 415 23.53326 48.96199
+q).ml.stdScaler.fitPredict[tab]
+x          x1         x2         x3       
+------------------------------------------
+1.14311    0.4627017  1.941597   -1.92179 
+-0.698672  -0.9601769 -0.6365448 0.4919733
+1.289683   -1.201463  -0.2170228 0.1819231
+-1.005416  1.548489   -0.8489826 0.2682987
+-0.7287051 0.150449   -0.2390463 0.9795947
+
+q)show mat:value flip tab
+63.0036  31.65436 65.49844 26.43322 31.14316
+503      102      34       809      415     
+70.51033 14.97004 24.00771 10.39355 23.53326
+11.2785  42.62871 38.60175 39.7236  48.96199
+q).ml.stdScaler.fitPredict[mat]
+1.14311   -0.698672  1.289683   -1.005416  -0.7287051
+0.4627017 -0.9601769 -1.201463  1.548489   0.150449  
+1.941597  -0.6365448 -0.2170228 -0.8489826 -0.2390463
+-1.92179  0.4919733  0.1819231  0.2682987  0.9795947
+
+q)list:100?100
+q).ml.stdScaler.fitPredict[list]
+-0.1968835 1.653525 0.06217373 -1.455161 0.2842228 -1.418153 1.542501 -0.5669..
+```
+
+!!! warning "`.ml.stdscaler` deprecated"
+    The above function was previously defined as `.ml.stdscaler`.
+    It is still callable but will be deprecated after version 3.0.
+
+## `.ml.timeSplit`
 
 _Break specified time columns into constituent components_
 
-Syntax: `.ml.timesplit[t;c]`
+```txt
+.ml.timeSplit[tab;timeCols]
+```
 
 Where
 
--  `t` is a simple table
--  `c` is a list of columns as symbols to apply encoding to, if set to `::` all columns with date/time types will be encoded
+-  `tab` is a simple table containing time columns
+-  `symCols` is a list of columns as symbols to apply encoding to, if set to `::` all columns with date/time types will be encoded
 
 returns a table with the columns with all time or date types broken into labeled versions of their constituent components.
 
 ```q
-q)show timetab:([]`timestamp$(2000.01.01+til 5);5?0u;5?10;5?10)
+q)show timeTab:([]`timestamp$(2000.01.01+til 5);5?0u;5?10;5?10)
 x                             x1    x2 x3
 -----------------------------------------
 2000.01.01D00:00:00.000000000 21:51 7  6 
@@ -569,7 +938,7 @@ x                             x1    x2 x3
 2000.01.03D00:00:00.000000000 09:48 7  6 
 2000.01.04D00:00:00.000000000 16:50 7  5 
 2000.01.05D00:00:00.000000000 13:50 4  5 
-q).ml.timesplit[timetab;::]  / default behavior
+q).ml.timeSplit[timeTab;::]  / default behavior
 x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss x1_hh x1_uu
 ------------------------------------------------------------------
 7  6  0     2000   1    1    1     0    0    0    0    21    51   
@@ -577,7 +946,7 @@ x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss x1_hh x1_uu
 7  6  2     2000   1    3    1     1    0    0    0    9     48   
 7  5  3     2000   1    4    1     1    0    0    0    16    50   
 4  5  4     2000   1    5    1     1    0    0    0    13    50   
-q).ml.timesplit[timetab;`x]  / tailored application of encoding
+q).ml.timeSplit[timeTab;`x]  / tailored application of encoding
 x1    x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss
 ------------------------------------------------------------
 21:51 7  6  0     2000   1    1    1     0    0    0    0   
@@ -586,3 +955,7 @@ x1    x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss
 16:50 7  5  3     2000   1    4    1     1    0    0    0   
 13:50 4  5  4     2000   1    5    1     1    0    0    0   
 ```
+
+!!! warning "`.ml.timesplit` deprecated"
+    The above function was previously defined as `.ml.timesplit`.
+    It is still callable but will be deprecated after version 3.0.
