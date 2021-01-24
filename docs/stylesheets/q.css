@@ -1,62 +1,10 @@
 /*
 	Title: Extra CSS for code.kx.com in MkDocs
 	Author: stephen@kx.com
-	Version: 2020.04.24
+	Version: 2021.01.24
 	Note: Read with https://code.kx.com/stylesheets/extra.css
  */
 
-
-
-/* rebrand 2021.01
---------------------------------------------- */
-/* typefaces TRIAL
---------------------------------------------- */
-@font-face {
-	font-family: euclid;
-	src: url(/fonts/euclid-square-italic.woff);
-	font-style: italic;
-}
-@font-face {
-	font-family: euclid;
-	src: url(/fonts/euclid-square-bold.woff);
-	font-weight: bold;
-}
-@font-face {
-	font-family: euclid;
-	src: url(/fonts/euclid-square.woff);
-}
-
-body, input, 
-article h1, article h2, article h3, 
-.wp-author, #wp-brand, .publications, .admonition-title,
-article details>summary {
-  font-family: euclid, -apple-system, Helvetica, Arial, sans-serif;
-}
-/*article {
-  font-family: "Roboto", -apple-system, Helvetica, Arial, sans-serif;
-}
-*/
-
- /* palette
- FROM common/extra.css
---------------------------------------------- */
-[data-md-color-primary=blue] .md-header,
-[data-md-color-primary=blue] .md-container .md-hero,
-[data-md-color-primary=blue] .md-tabs
- {
- 	background: #0061ff; /* hsl(207, 100%, 40%) */
- }
- /* override accent background colour on repo download and star buttons */
-.scrollable .wrapper .repo a {
- 	background: #8099fd;
- }
- /* override theme link color */
- [data-md-color-primary=blue] .md-typeset a {
- 	color: #005499; /* hsl(207, 100%, 30%) */
- }
- [data-md-color-primary=blue] .md-typeset a:hover {
-  color: hsla(14deg, 100%, 63%, 1); /* hsl(207, 100%, 30%) */
- }
 
 
 /* suppress nav footer
@@ -138,30 +86,6 @@ article details>summary {
 	font-weight: bold;
 }
 
-/* tweak Prism.js styles 
---------------------------------------------- */
-
-.md-typeset pre code[class*="language"],
-.md-typeset pre[class*="language"] {
-	/*background-color: yellow;*/
-	background-color: #eee7d4;
-}
-.md-typeset pre code[class*="language-q"],
-.md-typeset pre code[class*="language-txt"],
-.md-typeset pre[class*="language-q"],
-.md-typeset pre[class*="language-txt"] {
-	/*background-color: azure;*/
-	background-color: #fdf6e3;
-}
-.md-typeset pre code[class*="language-answer"],
-.md-typeset pre[class*="language-answer"] {
-    background-color: #657b83;
-}
-.md-typeset pre code[class*="language-answer"]:hover,
-.md-typeset pre[class*="language-answer"]:hover {
-    background-color: transparent;
-}
-
 /* alert message on front page
 --------------------------------------------- */
 .md-typeset .alert-message {
@@ -192,8 +116,10 @@ article details>summary {
 	text-align: right;
 }
 #wp-brand {
-	background-color: rgba(0,97,255,.5);
-	color: white;
+	background-color: rgba(219,220,222,.3);
+	border: 2px solid rgba(16,24,32,.5);
+	color: rgba(16,24,32,.5);
+	/*color: white;*/
 	font-size: 80%;
 	font-weight: bold;
 	letter-spacing: .5em;
@@ -249,7 +175,7 @@ p.small-face {
 	background-color: #0061ff;
 	border-radius: 10px;
 	color: white;
-	font-family: "Proxima Nova",Roboto,sans-serif;
+	font-family: euclid,Roboto,sans-serif;
 	font-size: 3em;
 	font-weight: bold;
 	grid-area: get_started;
@@ -260,14 +186,3 @@ p.small-face {
 	color: white;
 }
 
-div.typewriter p {
-	background-color: #fdf6e3;
-	font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
-	font-size: 80%;
-	margin: 0;
-	padding: 1em;
-	white-space: pre-wrap;
-}
-div.typewriter a {
-	background-color: #fdf6e3;
-}
