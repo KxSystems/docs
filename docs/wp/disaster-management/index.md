@@ -229,7 +229,7 @@ This indicates that while words such as _flood_ and _kashmir_ are prominent in t
 
 ### Sentiment analysis
 
-The final step in the data-exploration phase was to look at the positive and negative sentiment of tweets within the corpus. This was achieved using functionality within the NLP library released by Kx. The code for it is as follows.
+The final step in the data-exploration phase was to look at the positive and negative sentiment of tweets within the corpus. This was achieved using functionality within the NLP library released by KX. The code for it is as follows.
 
 ```q
 q)sentiment:.nlp.sentiment each data_m`tweet_text
@@ -654,4 +654,4 @@ The code presented in this paper is available on GitHub.
 
 ## Acknowledgements
 
-I gratefully acknowledge the help of all those at FDL Europe for their support and guidance in this project and my colleagues on the Kx Machine Learning team for their help vetting technical aspects of this paper.
+I gratefully acknowledge the help of all those at FDL Europe for their support and guidance in this project and my colleagues on the KX Machine Learning team for their help vetting technical aspects of this paper.

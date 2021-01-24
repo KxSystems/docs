@@ -11,7 +11,7 @@ keywords: code, github, kdb+, q, repo, repository
 :fontawesome-regular-hand-point-right: [Interfaces](interfaces/index.md) to feeds, services and other languages  
 :fontawesome-regular-hand-point-right: [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
 
-Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. Other repositories are maintained by their owners. 
+Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by KX. Other repositories are maintained by their owners. 
 
 <div style="background-color: #efefef; border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.2);  display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
@@ -25,7 +25,7 @@ GitHub topic queries:&nbsp;&nbsp;
 
 ## :fontawesome-brands-superpowers: Fusion interfaces
 
-The Fusion interface libraries are maintained and supported by Kx.
+The Fusion interface libraries are maintained and supported by KX.
 
 <table class="kx-compact" markdown="1">
 <tr markdown="1">
@@ -107,12 +107,12 @@ kdb+ client for [Apache Kafka](https://kafka.apache.org)
 </table>
 
 
-## Other repos maintained by Kx
+## Other repos maintained by KX
 
 <table class="kx-compact" markdown="1">
 <tr markdown="1">
 <td markdown="1" class="nowrap">[analyst-training](https://github.com/kxsystems/analyst-training)</td>
-<td markdown="1">training for [Kx Analyst](/analyst/) and [Kx Developer](/developer/) ==new==</td>
+<td markdown="1">training for [KX Analyst](/analyst/) and [KX Developer](/developer/) ==new==</td>
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap">[cookbook](https://github.com/KxSystems/cookbook)</td>
@@ -405,7 +405,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md">dbmaint</a></td>
 <td markdown="1">Database maintenance utilities. <span class="author"><a href="https://github.com/kxsystems?tab=repositories">
-						(Kx)
+						(KX)
 					</a></span>
 </td>
 </tr>
@@ -717,8 +717,8 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </td>
 </tr>
 <tr markdown="1">
-<td markdown="1" class="nowrap"><a href="https://github.com/StephenTaylor-Kx/klondike">klondike  ==new==</a></td>
-<td markdown="1">Klondike solitaire <span class="author"><a href="https://github.com/StephenTaylor-Kx?tab=repositories">
+<td markdown="1" class="nowrap"><a href="https://github.com/StephenTaylor-KX/klondike">klondike  ==new==</a></td>
+<td markdown="1">Klondike solitaire <span class="author"><a href="https://github.com/StephenTaylor-KX?tab=repositories">
 						(Stephen Taylor)
 					</a></span>
 </td>
@@ -832,7 +832,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 
 <small>
 	:fontawesome-regular-hand-point-right:
-	[Repositories maintained by Kx](#kx)
+	[Repositories maintained by KX](#kx)
 </small>
 
 <table class="kx-compact" markdown="1">
@@ -1148,6 +1148,6 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 <table class="kx-compact" markdown="1">
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/kxcontrib/kxblog">kxblog</a></td>
-<td markdown="1">Code shared on the Kx blog</td>
+<td markdown="1">Code shared on the KX blog</td>
 </tr>
 </table>

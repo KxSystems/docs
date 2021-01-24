@@ -61,7 +61,7 @@ _Tools_
 
 Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
 
-??? warning "The `.Q` namespace is reserved for use by Kx, as are all single-letter namespaces."
+??? warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as [exposed infrastructure](../basics/exposed-infrastructure.md) – and do not use them.
 

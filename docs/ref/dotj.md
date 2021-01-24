@@ -15,7 +15,7 @@ _JSON serialization_
 
 The `.j` [namespace](../basics/namespaces.md) contains functions for converting between JSON and q dictionaries.
 
-??? warning "The `.j` namespace is reserved for use by Kx, as are all single-letter namespaces."
+??? warning "The `.j` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as its private API – and do not use them.
 

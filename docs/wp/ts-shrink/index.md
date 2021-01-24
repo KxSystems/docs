@@ -224,7 +224,7 @@ trade:([] time:09:00:00.000+asc 20000?(15:00:00.000-09:00:00.000);
           price:abs 100f + sums rcauchy[20000;0.0;0.001] )
 ```
 
-The initial price chart is plotted below using [Kx Dashboards](../../devtools.md#kx-dashboards).
+The initial price chart is plotted below using [KX Dashboards](../../devtools.md#kx-dashboards).
 
 ![Figure 5](img/image7.jpeg)
 

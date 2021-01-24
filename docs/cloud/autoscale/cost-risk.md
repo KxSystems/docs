@@ -318,7 +318,7 @@ If certain data sources do not need to be available with a low latency clusters 
 
 ## Author
 
-**Jack Stapleton** is a kdb+ consultant for Kx who has worked for some the world’s largest financial institutions. 
+**Jack Stapleton** is a kdb+ consultant for KX who has worked for some the world’s largest financial institutions. 
 Based in Dublin, Jack is currently working on the design, development, and maintenance of a range of kdb+ solutions in the cloud for a leading financial institution.
 
 

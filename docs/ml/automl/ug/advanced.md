@@ -1,6 +1,6 @@
 ---
 title: Advanced options for automated machine learning | Machine Learning | Documentation for q and kdb+
-description: Optional behavior available from the Kx automated machine learning framework; the effect of changing the input parameters
+description: Optional behavior available from the KX automated machine learning framework; the effect of changing the input parameters
 author: Deanna Morgan
 date: December 2020
 keywords: machine learning, ml, automated, processing, cross validation, grid search, models

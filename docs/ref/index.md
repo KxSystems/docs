@@ -289,7 +289,7 @@ Markup output for HTTP
 [.h.he](doth.md#hhe-http-400)      HTTP 400                 [.h.c0](doth.md#hc0-web-color)    web color
 [.h.hn](doth.md#hhn-http-response)      HTTP response            [.h.c1](doth.md#hc1-web-color)    web color
 [.h.hp](doth.md#hhp-http-response-pre)      HTTP response pre        [.h.HOME](doth.md#hhome-webserver-root)  webserver root
-[.h.hy](doth.md#hhy-http-response-content)      HTTP response content    [.h.logo](doth.md#hlogo-kx-logo)  Kx logo
+[.h.hy](doth.md#hhy-http-response-content)      HTTP response content    [.h.logo](doth.md#hlogo-kx-logo)  KX logo
                                     [.h.sa](doth.md#hsa-anchor-style)    anchor style
 [.h.hu](doth.md#hhu-uri-escape)      URI escape               [.h.sb](doth.md#hsb-body-style)    body style
 [.h.hug](doth.md#hhug-uri-map)     URI map                  [.h.ty](doth.md#hty-mime-types)    MIME types

@@ -1,6 +1,6 @@
 ---
 title: "Machine learning: Using embedPy to apply LASSO regression | White Papers | kdb+ and q documentation"
-description: From its deep roots in financial technology Kx is expanding into new fields. It is important for q to communicate seamlessly with other technologies. The embedPy interface allows this to be done with Python.
+description: From its deep roots in financial technology KX is expanding into new fields. It is important for q to communicate seamlessly with other technologies. The embedPy interface allows this to be done with Python.
 author: Samantha Gallagher
 date: October 2018
 keywords: analysis, categorical, clean, coefficient, csv, data, embedpy, engineering, error, feature, foreign, house, install, jupyter, kdb+, lasso, learning, library, log, machine, matrix, mean, model, mse, notebook, numerical, polynomial, predict, price, python, q, regression, split, standardize, transform
@@ -17,7 +17,7 @@ by [Samantha Gallagher](#author)
 
 
 
-From its deep roots in financial technology Kx is expanding into new fields.
+From its deep roots in financial technology KX is expanding into new fields.
 It is important for q to communicate seamlessly with other technologies. 
 The [embedPy interface](../../ml/embedpy/index.md) allows this to be done with Python.
 
@@ -664,5 +664,5 @@ by kdb+ can be found under _Featured Resources_ at
 
 ## Author
 
-**Samantha Gallagher** is a kdb+ consultant for Kx and has worked in leading financial institutions for a range of asset classes. Currently based in London, she is designing, developing and maintaining a kdb+ system for corporate bonds at a top-tier investment bank.
+**Samantha Gallagher** is a kdb+ consultant for KX and has worked in leading financial institutions for a range of asset classes. Currently based in London, she is designing, developing and maintaining a kdb+ system for corporate bonds at a top-tier investment bank.
 

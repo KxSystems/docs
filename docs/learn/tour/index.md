@@ -554,7 +554,7 @@ In scripts, q expressions can be written across multiple lines.
 
 ### IDE
 
-[Kx Developer](/developer/) is a free interactive development environment (IDE) for q.
+[KX Developer](/developer/) is a free interactive development environment (IDE) for q.
 
-![Kx Developer](../../img/kxdeveloper.png)
+![KX Developer](../../img/kxdeveloper.png)
 

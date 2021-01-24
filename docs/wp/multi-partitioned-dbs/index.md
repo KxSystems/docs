@@ -541,5 +541,5 @@ examples of several simple queries implemented for each schema.
 
 ## Author
 
-James Hanna has helped design and develop kdb+ implementations and proof of concepts for more than 40 customers. Based in New York, James is a Technical Architect for Kx, a high-performance data-management, event-processing and trading platform.
+James Hanna has helped design and develop kdb+ implementations and proof of concepts for more than 40 customers. Based in New York, James is a Technical Architect for KX, a high-performance data-management, event-processing and trading platform.
 

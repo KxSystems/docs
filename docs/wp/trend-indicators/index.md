@@ -22,7 +22,7 @@ In this paper, we show examples of functions commonly used in finance, built on 
 
 Cryptocurrency data for Bitcoin and Ethereum from multiple exchanges are used in the examples. 
 
-Charts are displayed using the :fontawesome-solid-laptop-code: [Kx Analyst](https://kx.com/solutions/the-enterprise/analyst/) IDE.
+Charts are displayed using the :fontawesome-solid-laptop-code: [KX Analyst](https://kx.com/solutions/the-enterprise/analyst/) IDE.
 
 The code used in this paper can be found at
 :fontawesome-brands-github:
@@ -142,7 +142,7 @@ date       sym     exch   high   low    open   close  vol      sma2    sma5
 2019.05.18 BTC_USD KRAKEN 7494.2 7205   7353.9 7266.8 6258.585 7308.4  7738.84
 ```
 
-The graph in Figure 2 was created using Kx Analyst. A sample for this code can be seen below. All Graphics of Grammar code can be found in the repository for this project. The following is an example.
+The graph in Figure 2 was created using KX Analyst. A sample for this code can be seen below. All Graphics of Grammar code can be found in the repository for this project. The following is an example.
 
 ```q
 sma:{[x]
@@ -581,9 +581,9 @@ The functions shown range from moving averages to more complex functions like Re
 This touches the tip of the iceberg of what can be done in analytics and emphasizes the power of kdb+ in a data-analytics solution. Libraries of custom-built analytic functions can be created with ease, and in a short space of time applied to realtime and historical data.
 
 :fontawesome-solid-laptop-code:
-This paper also demonstrates [Kx Analyst](https://kx.com/solutions/the-enterprise/analyst/), an IDE for creating analytical functions and visualizing their output.
+This paper also demonstrates [KX Analyst](https://kx.com/solutions/the-enterprise/analyst/), an IDE for creating analytical functions and visualizing their output.
 
-The combination of this library of functions and Kx Analyst provides the user faster development and processing times to gain meaningful insights from the data.
+The combination of this library of functions and KX Analyst provides the user faster development and processing times to gain meaningful insights from the data.
 
 
 ## Author

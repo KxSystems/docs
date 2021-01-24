@@ -35,7 +35,7 @@ A well-understood problem domain, small but non-trivial, is a good subject for c
 
 Code and instructions at
 :fontawesome-brands-github:
-[StephenTaylor-Kx/klondike](https://github.com/StephenTaylor-Kx/klondike).
+[StephenTaylor-KX/klondike](https://github.com/StephenTaylor-KX/klondike).
 
 
 ## Cards

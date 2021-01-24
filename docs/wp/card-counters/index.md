@@ -335,9 +335,9 @@ ESP has evolved from an emerging technology to an essential platform of various 
 
 ## Authors
 
-**Caolan Rafferty** works for Kx as a kdb+ consultant. Based in Hong Kong, he maintains an eFx trading platform at a major investment bank. He has developed a range of applications for some of the world’s largest financial institutions. Caolan also helped in building the data-science training program within First Derivatives.
+**Caolan Rafferty** works for KX as a kdb+ consultant. Based in Hong Kong, he maintains an eFx trading platform at a major investment bank. He has developed a range of applications for some of the world’s largest financial institutions. Caolan also helped in building the data-science training program within First Derivatives.
 
-**Krishan Subherwal** works for Kx as a kdb+ consultant and has developed data and analytics systems in a range of asset classes for some of the world’s largest financial institutions. Currently based in London, Krishan is working with an investment-management firm within their Data Engineering team.
+**Krishan Subherwal** works for KX as a kdb+ consultant and has developed data and analytics systems in a range of asset classes for some of the world’s largest financial institutions. Currently based in London, Krishan is working with an investment-management firm within their Data Engineering team.
 
 
 ## Appendix – Card counting strategies

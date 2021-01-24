@@ -26,7 +26,7 @@ The biggest difference being a simple but sometimes difficult problem to solve; 
 
 In this paper we shall discuss how mass ingestion of data can be done efficiently and quickly through kdb+, using a batch-processing model. This approach aims to optimize I/O, reduce time and memory consumption from re-sorting and maintaining on disk attributes.
 
-These challenges will be outlined and a simplified framework, which has been deployed in several Kx implementations, will be shown as an example. The framework will show how these issues can be navigated leveraging kdb+ functionality, along with suggested further enhancements.
+These challenges will be outlined and a simplified framework, which has been deployed in several KX implementations, will be shown as an example. The framework will show how these issues can be navigated leveraging kdb+ functionality, along with suggested further enhancements.
 
 
 ## Batch processing
@@ -600,7 +600,7 @@ In this paper we discussed batch processing and use cases where it may be most a
 :fontawesome-brands-github:
 [kxcontrib/massIngestionDataloader](https://github.com/kxcontrib/massIngestionDataloader)
 
-The framework outlined in this paper is a simplified version of a framework that has been used in several Kx implementations for batch ingestion. It has proven to be fast, efficient and scalable.
+The framework outlined in this paper is a simplified version of a framework that has been used in several KX implementations for batch ingestion. It has proven to be fast, efficient and scalable.
 
 
 ## Author
@@ -608,7 +608,7 @@ The framework outlined in this paper is a simplified version of a framework that
 ![Enda Gildea](../../img/faces/endeagildea.jpg)
 {: .small-face}
 
-**Enda Gildea** is a senior kdb+ consultant for Kx who has implemented several eFX post-trade analytics and cross-asset surveillance solutions in Singapore and Sydney.
+**Enda Gildea** is a senior kdb+ consultant for KX who has implemented several eFX post-trade analytics and cross-asset surveillance solutions in Singapore and Sydney.
 <br>
 [:fontawesome-solid-envelope:](mailto:egildea@kx.com?subject=White paper: Mass ingestion through kdb+ data loaders) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/endagildea/) 

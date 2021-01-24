@@ -48,20 +48,20 @@ _A selection of technical articles of interest to kdb+ developers_
 ## Applications and case studies
 
 -   [Data visualization with kdb+ using ODBC: A Tableau case study](https://kx.com/blog/data-visualization-with-kdb-using-odbc-a-tableau-case-study/)
--   [Kx 1.1 billion taxi ride benchmark highlights advantages of kdb+ architecture](https://kx.com/blog/kx-1-1-billion-taxi-ride-benchmark-highlights-advantages-kdb-architecture/)
+-   [KX 1.1 billion taxi ride benchmark highlights advantages of kdb+ architecture](https://kx.com/blog/kx-1-1-billion-taxi-ride-benchmark-highlights-advantages-kdb-architecture/)
 -   [Kdb+ integral to BitMEX Bitcoin derivatives exchange growth strategy](https://kx.com/blog/use-case-kdb-integral-bitmex-bitcoin-derivatives-exchange-growth-strategy/)
 -   [Combining high-frequency cryptocurrency venue data using kdb+](https://kx.com/blog/combining-high-frequency-cryptocurrency-venue-data-using-kdb/)
 -   [Template of Fortnite gamer visualizations using Dashboards](https://kx.com/blog/kx-product-insights-template-of-fortnite-visualizations-in-destruction-using-dashboards/)
--   [Kx for Love!!](https://kx.com/blog/kx-for-love/)
+-   [KX for Love!!](https://kx.com/blog/kx-for-love/)
 -   [Storing and exploring the Bitcoin blockchain](https://kx.com/blog/kdb-storing-and-exploring-the-bitcoin-blockchain/)
 -   [eFX: Data and analytics are the next arms race](https://kx.com/blog/current-trends-in-efx-data-and-analytics-are-the-next-arms-race/)
--   [Kx for IoT: Industry 4.0 manufacturing](https://kx.com/blog/kx-iot-industry-4-0-manufacturing/)
+-   [KX for IoT: Industry 4.0 manufacturing](https://kx.com/blog/kx-iot-industry-4-0-manufacturing/)
 -   [IIoT for predictive maintenance and Big Data](https://kx.com/blog/kx-insights-iiot-predictive-maintenance-big-data/)
 -   [Quantile Technologies](https://kx.com/blog/powered-by-kx-quantile-technologies-limited/)
 -   [MIT Motorsports’ kdb+ Vehicle Telemetry System](https://kx.com/blog/kx-use-case-mit-motorsports-kdb-vehicle-telemetry-system/)
 -   [Consolidated audit trail go-live is now a certainty](https://kx.com/blog/kx-insights-consolidated-audit-trail-cat-go-live-now-appears-a-certainty/)
 -   [Signal processing with kdb+](https://kx.com/blog/signal-processing-with-kdb/)
--   [Kx fueling IoT revolution with manufacturing win](https://kx.com/blog/kx-fueling-iot-revolution-manufacturing-win/)
+-   [KX fueling IoT revolution with manufacturing win](https://kx.com/blog/kx-fueling-iot-revolution-manufacturing-win/)
 -   [Overview of kdb+tick](https://kx.com/blog/overview-kdb-tick/)
 -   [Web scraping](https://kx.com/blog/web-scraping-a-kdb-use-case/)
 -   [The exploration of space weather at NASA FDL](https://kx.com/blog/nasa-frontier-development-lab-space-weather-challenge/)
@@ -74,7 +74,7 @@ _A selection of technical articles of interest to kdb+ developers_
 -   [Kdb+ on Anaconda and Google Cloud](https://kx.com/blog/kdb-on-anaconda-and-google-cloud/)
 -   [Migrating a kdb+ historical database to the Amazon Cloud](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
 -   [Interface to R](https://kx.com/blog/kdb-interface-r/)
--   [Kx Analyst IDE](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)
+-   [KX Analyst IDE](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)
 -   [Momentum Ignition Alert](https://kx.com/blog/kx-product-insights-momentum-ignition-alert/)
 
 

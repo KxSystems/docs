@@ -1,9 +1,11 @@
 /*
 	Title: Extra CSS for code.kx.com in MkDocs
 	Author: stephen@kx.com
-	Version: 2020.04.24
+	Version: 2021.01.24
 	Note: Read with https://code.kx.com/stylesheets/extra.css
  */
+
+
 
 /* suppress nav footer
 --------------------------------------------- */
@@ -26,7 +28,7 @@
 	width: 200px;
 }
 .kx-flex-grid a {
-	color: #0070cd;
+	color: #0061ff;
 	margin: 0 auto;
 }
 
@@ -74,7 +76,7 @@
 
 .fusion {
     background-color: #c6c9ff; 
-    border: 1px solid #0070cd; 
+    border: 1px solid #0061ff; 
     border-radius: 10px; 
     display: inline-block;
     font-size: .8em; 
@@ -82,30 +84,6 @@
 }
 .fusion a {
 	font-weight: bold;
-}
-
-/* tweak Prism.js styles 
---------------------------------------------- */
-
-.md-typeset pre code[class*="language"],
-.md-typeset pre[class*="language"] {
-	/*background-color: yellow;*/
-	background-color: #eee7d4;
-}
-.md-typeset pre code[class*="language-q"],
-.md-typeset pre code[class*="language-txt"],
-.md-typeset pre[class*="language-q"],
-.md-typeset pre[class*="language-txt"] {
-	/*background-color: azure;*/
-	background-color: #fdf6e3;
-}
-.md-typeset pre code[class*="language-answer"],
-.md-typeset pre[class*="language-answer"] {
-    background-color: #657b83;
-}
-.md-typeset pre code[class*="language-answer"]:hover,
-.md-typeset pre[class*="language-answer"]:hover {
-    background-color: transparent;
 }
 
 /* alert message on front page
@@ -138,8 +116,10 @@
 	text-align: right;
 }
 #wp-brand {
-	background-color: rgba(0,112,205,.5);
-	color: white;
+	background-color: rgba(219,220,222,.3);
+	border: 2px solid rgba(16,24,32,.5);
+	color: rgba(16,24,32,.5);
+	/*color: white;*/
 	font-size: 80%;
 	font-weight: bold;
 	letter-spacing: .5em;
@@ -183,18 +163,19 @@ p.small-face {
 	padding:10px;
 }
 #kx-home-page-grid > p {
+	background-color: #dbdcde;
 	padding: 20px 5px;
 	text-align: center;
 }
 #kx-home-page-grid a {
-	color: #0070cd;
+	color: #101820;
 	margin: 0 auto;
 }
 #kx-home-page-grid #kx-get-started {
-	background-color: #0070cd;
+	background-color: #0061ff;
 	border-radius: 10px;
 	color: white;
-	font-family: "Proxima Nova",Roboto,sans-serif;
+	font-family: euclid,Roboto,sans-serif;
 	font-size: 3em;
 	font-weight: bold;
 	grid-area: get_started;
@@ -205,14 +186,3 @@ p.small-face {
 	color: white;
 }
 
-div.typewriter p {
-	background-color: #fdf6e3;
-	font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
-	font-size: 80%;
-	margin: 0;
-	padding: 1em;
-	white-space: pre-wrap;
-}
-div.typewriter a {
-	background-color: #fdf6e3;
-}

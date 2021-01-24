@@ -232,7 +232,7 @@ Event mesh
 
 ![Open APIs and Protocols supported by Solace PubSub+](img/open_apis_protocols.png)
 
-Kx recently published an open-source [kdb+ interface to Solace](../../interfaces/solace/) as one of its Fusion interfaces. This interface, or API, makes it extremely easy to use PubSub+ event broker from within your q code. 
+KX recently published an open-source [kdb+ interface to Solace](../../interfaces/solace/) as one of its Fusion interfaces. This interface, or API, makes it extremely easy to use PubSub+ event broker from within your q code. 
 
 Currently, the API supports:
 
@@ -931,7 +931,7 @@ In designing your architecture, you need to consider how your applications will 
 
 The pub/sub messaging pattern via an event broker allows you to efficiently distribute data at scale and take advantages of loose coupling, dynamic filtering, easy integration and event mesh.
 
-The Solace PubSub+ event broker and the Kx open-source API brings the power of pub/sub messaging to kdb+.
+The Solace PubSub+ event broker and the KX open-source API brings the power of pub/sub messaging to kdb+.
 
 
 ## Author

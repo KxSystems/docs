@@ -20,7 +20,7 @@ The time between transaction execution and transaction monitoring against regula
 
 Running analytics in real-time has the benefit of alerting on transactions as soon as possible, but runs the risk of generating alerts that subsequent, but unforeseeable, amendments/cancellations or positions may render as false positives. Running analytics on an intraday/end-of-day basis provides the benefit of hindsight to prevent such potential false positives, but delays the detection, remediation and damage limitation of real trading violations.
 
-In general, alerts on trading abuses like Momentum Ignition or Ping Orders in the Kx for Surveillance system, fire in real-time on real-time streaming data. While it may be simpler to operate on intraday data by looking across, say, fixed 15-minute buckets of data in isolation, such an approach risks missing alerts. For example, a trader might not violate Ping Orders alert logic within bucket $N$ or bucket $N+1$ in isolation but might violate it if they were combined.
+In general, alerts on trading abuses like Momentum Ignition or Ping Orders in the KX for Surveillance system, fire in real-time on real-time streaming data. While it may be simpler to operate on intraday data by looking across, say, fixed 15-minute buckets of data in isolation, such an approach risks missing alerts. For example, a trader might not violate Ping Orders alert logic within bucket $N$ or bucket $N+1$ in isolation but might violate it if they were combined.
 
 :fontawesome-regular-hand-point-right:
 Blog:<br>
@@ -64,7 +64,7 @@ This is just an example of the need for hindsight. Different organizations may h
 
 ### Syntax and arguments
 
-In such cases, when transactional data is received through a feed, and needs to be analyzed against real-time logic, Kx has a built-in function called a window join ([wj1](../../ref/wj.md)) to perform the required aggregations of a lookback cached in-memory table in moving time windows in one go. It takes four arguments, which we describe with long names to illustrate their meaning as follows:
+In such cases, when transactional data is received through a feed, and needs to be analyzed against real-time logic, KX has a built-in function called a window join ([wj1](../../ref/wj.md)) to perform the required aggregations of a lookback cached in-memory table in moving time windows in one go. It takes four arguments, which we describe with long names to illustrate their meaning as follows:
 
 ```q
 wj1[

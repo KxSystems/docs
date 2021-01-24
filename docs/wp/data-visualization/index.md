@@ -19,7 +19,7 @@ by [Michaela Woods](#author)
 
 Business intelligence (BI) tools are widely used across many industries
 for their interactive nature, which enables users to create and
-customize dynamic data visualizations easily. Kx provides its own
+customize dynamic data visualizations easily. KX provides its own
 visualization tool, [_Dashboards for Kx_](/dashboards/), but clients might have incumbent solutions they wish to connect to kdb+.
 
 Alternatively, many organizations might wish to migrate their back-end
@@ -45,7 +45,7 @@ optimizing repeated queries.
 Keep in mind that there
 will always be limitations on third-party solutions not
 designed from the outset for processing real-time streaming data. 
-Kx’s own visualization tool _Dashboards for Kx_ is optimized for
+KX’s own visualization tool _Dashboards for Kx_ is optimized for
 streaming queries and inherits functionality such as user management, load
 balancing, access control, caching and queuing from the underlying
 platform as well as direct access to q for comprehensive querying
@@ -545,11 +545,11 @@ multiple environments and DSNs.
 
 ## Conclusion
 
-Kdb+ is well known as the world’s fastest time-series database. Kx’s
+Kdb+ is well known as the world’s fastest time-series database. KX’s
 own visualization tool, _Dashboards for Kx_, is optimized for this
 technology. However, kdb+ is flexible enough to connect with a
 range of different visualization tools. This white paper demonstrates how to connect to one such visualization tool,
-Tableau, by means of the Kx ODBC driver.
+Tableau, by means of the KX ODBC driver.
 
 You have seen how to set up a connection between kdb+ and Tableau
 using ODBC, with detailed instructions on how best to use Tableau’s query
@@ -565,7 +565,7 @@ limitations that occur when combining the two technologies.
 If the question is “Is Tableau the best, and best performing visualization
 tool when combining with kdb+?”, the answer is “No. There are other
 visualization tools better tailored to the kdb+
-technology, for example Kx’s visualization solution _Dashboards for Kx_.”
+technology, for example KX’s visualization solution _Dashboards for Kx_.”
 But if the question is “Can you combine these two technologies in an
 effective way?” the answer is “Yes”, and by applying the functionality
 described in this paper to work around limitations, to connect a Tableau
@@ -575,7 +575,7 @@ visualization front-end to a kdb+ back end.
 
 ## Author
 
-**Michaela Woods** is a kdb+ consultant for Kx. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
+**Michaela Woods** is a kdb+ consultant for KX. Based in London for the past three years, she is now an industry leader in combining kdb+ with Tableau through her development of a data visualization platform currently used at one of the world’s leading investment banks.
 
 
 ## Appendix A

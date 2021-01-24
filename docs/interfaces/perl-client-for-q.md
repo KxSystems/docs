@@ -7,12 +7,12 @@ keywords: api, interface, kdb+, library, perl, q
 
 
 
-:fontawesome-regular-hand-point-right: [cpan.org/~markpf/Kx-0.039/](https://metacpan.org/release/MARKPF/Kx-0.039)
+:fontawesome-regular-hand-point-right: [cpan.org/~markpf/KX-0.039/](https://metacpan.org/release/MARKPF/KX-0.039)
 
 !!! note "From Mark Pfeiffer"
 
     So far:
 
     - `$k->cmd()` doesn’t handle keyed tables well. Use `$k->Tget()` then `$k->val` to get the underlying value as a Perl hash.
-    - Use Kx-0.36: it is the most stable.
+    - Use KX-0.36: it is the most stable.
 

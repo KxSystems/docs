@@ -82,6 +82,64 @@ to
 > The active mood is to be preferred. 
 
 
+Tone
+----
+
+From the 2021 _Brand Guidelines_:
+
+> Our tone of voice determines how we sound to our audience when they hear us speak. It expresses and embodies our brand, everything we say or write should sound like KX.
+
+> Our tone is always:
+
+-   Confident & Clear 
+-   Smart & Straightforward 
+-   Insightful & Inspirational 
+-   Professional & Positive 
+-   Empathetic & Human
+
+> It is never: Brash, Arrogant, Confrontational, Patronizing or Flippant.
+
+
+1. Use U.S. English.
+2. KX is always written in upper case.
+3. We always talk to our reader as “you” (not users or clients).
+4. Always talk about KX as “we”.
+
+**Think before you speak**
+Who are we talking to – a potential new client or a captive audience? 
+Bold, confident statements create an impactful first impression and build strong brand awareness. 
+Once we have moved beyond the headline, we share our deep understanding of the challenges their businesses face and how our unrivaled technology can help solve them – in a way that they can relate and respond to.
+
+**Be smart – the people we’re talking to are**
+Our audience knows data – but not necessarily about streaming analytics or what we can do with it. 
+Never over complicate the challenges we solve or how our services work. 
+Speak simply, clearly and confidently. 
+We are more innovative than our competitors – on speed, accuracy and actionability but we are on the same level as our clients. 
+Share our insightful intelligence, without being intimidating – always be original, caring and invested in our clients’ success.
+
+**Keep it clear, concise and compelling**
+Just like our technology, we are experts in volume and velocity. 
+We pride ourselves on sharing insights in an instant, so always get the point quickly, explain technical features clearly and don’t hold back on the benefits. 
+Be concise where you can – even within long copy – to stay continuously compelling. 
+The power and performance of our technology is amazing and we want to express this in every possible way.
+
+Our brand principles underpin everything KX says and does. When creating any new pieces of content or collateral it is vital to consider our three brand principles.
+
+-   Elegantly Simple 
+-   Highly Efficient 
+-   Performance Focused
+
+KX stands for simplicity, efficiency and performance. 
+Anything superfluous that doesn’t contribute positively – or isn't critical – should be avoided. 
+No fluff. Get straight to the point – visually and verbally.
+
+**Always question and challenge yourself**
+
+-   Could 30 words do the job of 300?
+-   It’s a longer read – could subheads help to make your document digestible?
+-   Do I really need to use a third colour here?
+-   Is it essential in order to tell a compelling story?
+
 
 Numbers 
 -------

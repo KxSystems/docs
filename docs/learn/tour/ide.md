@@ -23,17 +23,17 @@ This is all you need to follow the tutorials, and if you just want to learn a li
 As you become more familiar with q, you may prefer to work in an interactive development environment. 
 
 
-## [Kx Developer](/developer/)
+## [KX Developer](/developer/)
 
-An interactive development environment for kdb+ produced and maintained by Kx.
+An interactive development environment for kdb+ produced and maintained by KX.
 Free for all use.
 
-[![Kx Developer](../../img/kxdeveloper.png)](/developer/ "Kx Developer")
+[![KX Developer](../../img/kxdeveloper.png)](/developer/ "KX Developer")
 
-[Kx Analyst](/analyst/) is the enterprise version of Developer.
+[KX Analyst](/analyst/) is the enterprise version of Developer.
 
 
-## [Kx Dashboards](/dashboards/)
+## [KX Dashboards](/dashboards/)
 
 An interactive development environment for graphical displays from q scripts. 
 Free for all use.
@@ -43,7 +43,7 @@ Free for all use.
 
 ## Jupyter notebooks
 
-[**JupyterQ**](../../ml/jupyterq/index.md), from Kx, lets you run q inside a [Jupyter](https://jupyter.org) notebook.
+[**JupyterQ**](../../ml/jupyterq/index.md), from KX, lets you run q inside a [Jupyter](https://jupyter.org) notebook.
 
 
 ## Third-party IDEs

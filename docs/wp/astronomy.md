@@ -44,7 +44,7 @@ FITS files consist of segments called Header Data Units (HDUs). Every FITS file 
 
 ## Processing the data – linking FITS and kdb+ using C
 
-Kx provides a header file, `k.h`, for interacting with C from kdb+. It provides the link between kdb+ and C by converting the different data types and structures between the two languages. Using this header file, we created a shared object that could natively parse a FITS file and load the data into a kdb+ database. This C extension can read metadata in HDUs and extract columns from binary tables, converting the information into a format usable by kdb+. The C functions are loaded into kdb+ from the shared object by using the [Dynamic Load](../ref/dynamic-load.md) operator `2:`, which is described in more detail later.
+KX provides a header file, `k.h`, for interacting with C from kdb+. It provides the link between kdb+ and C by converting the different data types and structures between the two languages. Using this header file, we created a shared object that could natively parse a FITS file and load the data into a kdb+ database. This C extension can read metadata in HDUs and extract columns from binary tables, converting the information into a format usable by kdb+. The C functions are loaded into kdb+ from the shared object by using the [Dynamic Load](../ref/dynamic-load.md) operator `2:`, which is described in more detail later.
 
 :fontawesome-regular-hand-point-right:
 Interfaces: [C client for kdb+](../interfaces/c-client-for-q.md)<br>

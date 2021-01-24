@@ -100,7 +100,7 @@ A FIX message is comprised of a header, body and trailer. All messages must begi
 
 ### Feed handler
 
-A feed handler may be used to deliver the messages to kdb+. The feed handler should receive the flow of FIX messages from the OMS, parse the messages to extract the required fields and send them to the kdb+ tickerplant. Feed handlers are generally written in Java or C++ and are widely available, for example from Kx.
+A feed handler may be used to deliver the messages to kdb+. The feed handler should receive the flow of FIX messages from the OMS, parse the messages to extract the required fields and send them to the kdb+ tickerplant. Feed handlers are generally written in Java or C++ and are widely available, for example from KX.
 
 For the example provided in this white paper we load a file of FIX messages to a q feed handler. Our feed handler reads each FIX message from the file, extracts the tags and casts to the desired q type.
 

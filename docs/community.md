@@ -20,7 +20,7 @@ The community of kdb+ developers is active around the world and around the clock
 
 ## :fontawesome-solid-code: Open source 
 
-: Developers from around the world share some of their best kdb+ code, libraries, and frameworks on GitHub, and Kx [indexes](github.md) a selection of them. 
+: Developers from around the world share some of their best kdb+ code, libraries, and frameworks on GitHub, and KX [indexes](github.md) a selection of them. 
 
 : :fontawesome-brands-github: GitHub topic queries:&nbsp;&nbsp;
     [`q`](https://github.com/search?q=topic%3Aq "Search GitHub for repositories with topic q")&nbsp;&nbsp;
@@ -41,7 +41,7 @@ The community of kdb+ developers is active around the world and around the clock
 
 ## :fontawesome-brands-meetup: Meetup
 
-: Use [meetup.com](https://www.meetup.com) to find Kx events round the world. 
+: Use [meetup.com](https://www.meetup.com) to find KX events round the world. 
 
 : If you have a suggestion for a Meetup presentation, please write to [evangelism@kx.com](mailto:evangelism@kx.com). 
 
@@ -54,12 +54,12 @@ The community of kdb+ developers is active around the world and around the clock
 ## :fontawesome-brands-twitter: Twitter
 
 <div markdown="1" style="float:left; margin-right:10px;">
-![Rebecca Kelly, Kx Evangelist](img/rebeccakelly.jpg)
+![Rebecca Kelly, KX Evangelist](img/rebeccakelly.jpg)
 </div>
 
 <div markdown="1" style="padding-top:5px;">
 [@RebeccaK_kx](https://twitter.com/RebeccaK_kx)
-is the Kx Evangelist.
+is the KX Evangelist.
 <br>
 Voted [Tech Evangelist of the Year](https://firstderivatives.com/careers/blogs/tech-evangelist-of-the-year/), NYC, 2020.
 </div>
@@ -69,4 +69,4 @@ Voted [Tech Evangelist of the Year](https://firstderivatives.com/careers/blogs/t
 
 ----
 :fontawesome-solid-life-ring:
-Kx provides [direct support](support.md)  to licensed customers
+KX provides [direct support](support.md)  to licensed customers

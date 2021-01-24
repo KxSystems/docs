@@ -46,7 +46,7 @@ There are four ways to interface q with R:
 3.  **Q can connect to a remote instance of R** via TCP/IP and invoke R routines remotely
 4.  **Q can load the R maths library** and invoke the R math routines locally
 
-The first and second methods on interfacing between q and R are covered by the Fusion interfaces [rkdb](rkdb.md) and [embedR](embedr.md). The remaining methods are not supported or owned by Kx but are desbut are described [here](r-and-q.md), the packages and methods outlined here are kdb-Rmath, RServe and RODBC
+The first and second methods on interfacing between q and R are covered by the Fusion interfaces [rkdb](rkdb.md) and [embedR](embedr.md). The remaining methods are not supported or owned by KX but are desbut are described [here](r-and-q.md), the packages and methods outlined here are kdb-Rmath, RServe and RODBC
 
 A number of considerations will affect which of the above interfaces are used.
 

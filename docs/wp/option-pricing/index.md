@@ -701,5 +701,5 @@ Other papers by Deanna Morgan
 
 ## Acknowledgements
 
-I gratefully acknowledge Sergei Kucherenko for allowing us to create a version of the C++ Option Pricing library in q and for providing technical knowledge throughout the project. I would additionally like to acknowledge my colleagues in the Kx Machine Learning team for their guidance in the technical aspects of this paper.
+I gratefully acknowledge Sergei Kucherenko for allowing us to create a version of the C++ Option Pricing library in q and for providing technical knowledge throughout the project. I would additionally like to acknowledge my colleagues in the KX Machine Learning team for their guidance in the technical aspects of this paper.
 

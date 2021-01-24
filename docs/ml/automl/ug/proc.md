@@ -1,5 +1,5 @@
 ---
-title: Processing procedures Kx automated machine-learning | Machine Learning | Documentation for q and kdb+
+title: Processing procedures KX automated machine-learning | Machine Learning | Documentation for q and kdb+
 description: Default behavior of automated machine learning; common processes completed across all forms of automated machine learning
 author: Diane O’7Donoghue
 date: December 2020

@@ -28,7 +28,7 @@ This is a source of real-time data; for example, financial quotes and trades fro
 
 Parses data from the data feed to a format that can be ingested by kdb+.
 
-Kx’s [Fusion interfaces](../interfaces/fusion.md) connect kdb+ to a range of other technologies, such as [R](../interfaces/r/index.md), [Apache Kafka](../interfaces/kafka/index.md), [Java](../interfaces/java-client-for-q.md), [Python](../interfaces/embedpy.md) and [C](../interfaces/c-client-for-q.md).
+KX’s [Fusion interfaces](../interfaces/fusion.md) connect kdb+ to a range of other technologies, such as [R](../interfaces/r/index.md), [Apache Kafka](../interfaces/kafka/index.md), [Java](../interfaces/java-client-for-q.md), [Python](../interfaces/embedpy.md) and [C](../interfaces/c-client-for-q.md).
 
 
 ## Tickerplant

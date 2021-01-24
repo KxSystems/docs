@@ -16,7 +16,7 @@ q))       extra right parens mark suspended execution/s
 [&](#where)         current frame information
 [.Q.trp](../ref/dotq.md#qtrp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
 [-e](cmdline.md#-e-error-traps) [\e](syscmds.md#e-error-trap-clients)     error-trap mode
-</pre>
+</div>
 
 
 

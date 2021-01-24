@@ -335,7 +335,7 @@ Be sure to record the 24-word seed, which is essential for wallet recovery.
 
 The [qlnd](https://github.com/jlucid/qlnd) library enables a q process to communicate with a locally running `lnd` node
 via the [LND REST API](https://api.lightning.community/rest/index.html#lnd-rest-api-reference). Moreover, the library makes
-use of the powerful embedPy interface, recently released by Kx, which allows the kdb+ interpreter to manipulate Python objects, call Python functions and load Python libraries. This is particularly useful for this application given that the REST API Reference documentation has explicit and well-tested examples using Python. (There are many other applications of embedPy and kdb+.)
+use of the powerful embedPy interface, recently released by KX, which allows the kdb+ interpreter to manipulate Python objects, call Python functions and load Python libraries. This is particularly useful for this application given that the REST API Reference documentation has explicit and well-tested examples using Python. (There are many other applications of embedPy and kdb+.)
 
 
 ### EmbedPy setup

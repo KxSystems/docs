@@ -985,7 +985,7 @@ Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Sta
 
 When trying to use the library, the problem manifests itself as a crash during the `khpu()` call.
 
-Hence Kx also provides at :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) a single-threaded version of this library as `w32/cst.dll` and `w64/cst.dll`, which do _not_ use TLS. 
+Hence KX also provides at :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) a single-threaded version of this library as `w32/cst.dll` and `w64/cst.dll`, which do _not_ use TLS. 
 To use this library:
 
 -    download `cst.dll` and `cst.lib` 

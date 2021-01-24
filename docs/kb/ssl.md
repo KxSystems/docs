@@ -40,7 +40,7 @@ $ export SSL_CERT_FILE=$HOME/certs/server-crt.pem
 $ export SSL_KEY_FILE=$HOME/certs/server-key.pem
 ```
 
-!!! info "Kx first"
+!!! info "KX first"
 
     Since V3.6, kdb+ gives preference to the `KX_` prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products. 
 

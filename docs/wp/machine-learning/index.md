@@ -682,5 +682,5 @@ Benchmarking this lazy implementation, with a random dataset available on the UC
 
 ## Author
 
-**Emanuele Melis** works for Kx as kdb+ consultant. Currently based in the UK, he has been involved in designing, developing and maintaining solutions for equities data at a world-leading financial institution. Keen on machine learning, Emanuele has delivered talks and presentations on pattern-recognition implementations using kdb+.
+**Emanuele Melis** works for KX as kdb+ consultant. Currently based in the UK, he has been involved in designing, developing and maintaining solutions for equities data at a world-leading financial institution. Keen on machine learning, Emanuele has delivered talks and presentations on pattern-recognition implementations using kdb+.
 

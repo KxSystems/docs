@@ -12,7 +12,7 @@ keywords: Amazon, AWS, EC2, HDB, cloud
 
 ![Amazon Elastic Compute Cloud](img/media/ec2.png)
 
-Kx has an ongoing project of evaluating different cloud technologies to see how they interact with kdb+. 
+KX has an ongoing project of evaluating different cloud technologies to see how they interact with kdb+. 
 If you are assessing migrating a kdb+ historical database (HDB) and analytics workloads into the 
 [Amazon Elastic Compute Cloud](https://aws.amazon.com/ec2/) 
 (EC2), here are key considerations:
@@ -75,7 +75,7 @@ As long as the speed of deployment and ease of use is coupled with similar or _g
 
 ## :fontawesome-solid-user: Author
 
-Glenn Wright, Systems Architect, Kx, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At Kx, Glenn supports partners and solutions vendors to further exploit the industry- leading performance and enterprise aspects of kdb+.
+Glenn Wright, Systems Architect, KX, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At KX, Glenn supports partners and solutions vendors to further exploit the industry- leading performance and enterprise aspects of kdb+.
 
 ## In-house vs EC2
 
@@ -90,7 +90,7 @@ In financial services this data is kept for research (quant analytics or back-te
 
 !!! warning "Low latency and the Cloud"
 
-    In the current state of cloud infrastructure, Kx does not recommend keeping the high-performance, low-latency part of market data – or streaming data collection – applications in the Cloud.
+    In the current state of cloud infrastructure, KX does not recommend keeping the high-performance, low-latency part of market data – or streaming data collection – applications in the Cloud.
 
     When speed translates to competitive advantage, using AWS (or cloud in general) needs to be considered carefully.
 
@@ -519,7 +519,7 @@ itself.
 
 -   S3 employs an **eventual-consistency** model, meaning there is no guaranteed service time for placement of the object, or replication of the object, for access by other processes or threads.
 
--   S3 exhibits relatively low **streaming-read performance**. A RESTful, single S3 reader process is limited to a [read throughput](http://blog.zachbjornson.com/2015/12/29/cloud-storage-performance.html) of circa 0.07&nbsp;GB/sec. Some of the solutions reviewed in this paper use strategies to improve these numbers within one instance (e.g. raising that figure to the 100s&nbsp;MB/sec – GB/sec range). There is also throughput scalability gained by reading the same bucket across multiple nodes. There is no theoretical limit on this bandwidth, but this has not been exhaustively tested by Kx.
+-   S3 exhibits relatively low **streaming-read performance**. A RESTful, single S3 reader process is limited to a [read throughput](http://blog.zachbjornson.com/2015/12/29/cloud-storage-performance.html) of circa 0.07&nbsp;GB/sec. Some of the solutions reviewed in this paper use strategies to improve these numbers within one instance (e.g. raising that figure to the 100s&nbsp;MB/sec – GB/sec range). There is also throughput scalability gained by reading the same bucket across multiple nodes. There is no theoretical limit on this bandwidth, but this has not been exhaustively tested by KX.
 
 -   Certain **metadata operations**, such as kdb+’s append function, cause significant latency vs that observed on EBS or local attached storage, and your mileage depends on the file system under review.
 
@@ -544,7 +544,7 @@ Where S3 definitely plays to its strengths, is that it can
 be considered for an **off-line deep archive** of your kdb+ formatted market
 data.
 
-Kx does not make recommendations with respect to
+KX does not make recommendations with respect to
 the merits, or otherwise, of storing kdb+ HDB market data in a data
 retention type “WORM” model, as required by the regulations [SEC 17-a4](https://en.wikipedia.org/wiki/SEC_Rule_17a-4 "Wikipedia").
 
@@ -601,8 +601,8 @@ Where a third-party provider supplies or uses encryption or compression to store
 
 
 For testing raw storage performance, we used a
-lightweight test script developed by Kx, called `nano`, based on
-the script `io.q` written by Kx’s Chief Customer Officer, Simon Garland. 
+lightweight test script developed by KX, called `nano`, based on
+the script `io.q` written by KX’s Chief Customer Officer, Simon Garland. 
 The scripts used for this benchmarking are freely available
 for use and are published on Github at
 :fontawesome-brands-github: [KxSystems/nano](https://github.com/KxSystems/nano)
