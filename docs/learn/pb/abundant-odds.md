@@ -1,5 +1,5 @@
 ---
-title: Abundant Odds | Playbook | Learn | kdb+ and q documentation
+title: Abundant Odds | Q by Puzzles | Learn | kdb+ and q documentation
 description: Use the Do and Converge iterators to explore an integer sequence
 author: Stephen Taylor
 date: December 2020

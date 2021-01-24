@@ -1,10 +1,10 @@
 ---
-title: Playbook | Learn | kdb+ and q documentation
+title: Q by Puzzles | Learn | kdb+ and q documentation
 description: The Q Playbook is a collection of simple problems with which to study features of the q language
 author: Stephen Taylor
 date: December 2020
 ---
-# The Q Playbook
+# Q by Puzzles
 
 ![Play chess](../../img/alamy/2C9PF21.jpg)
 
@@ -14,7 +14,7 @@ _Accustomed to analyze problems into loops, tests, and cases?_
 The shift to array thinking can be a challenge. 
 Play is an excellent way to explore new techniques. 
 
-The playbook studies array-oriented programming techniques in the context of simple problems.
+Q by Puzzles studies array-oriented programming techniques in the context of simple problems.
 They explore distinctive language features in some depth.
 
 Use them to train your brain for q. 

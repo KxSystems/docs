@@ -1,5 +1,5 @@
 ---
-title: ABC Problem | Playbook | Learn | kdb+ and q documentation
+title: ABC Problem | Q by Puzzles | Learn | kdb+ and q documentation
 description: A simple problem with a short tree-searching solution in q
 author: Stephen Taylor
 date: December 2020

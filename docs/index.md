@@ -26,7 +26,7 @@ Kdb+, from [KX](https://kx.com), is
 
     :fontawesome-solid-book-reader: [Monte-Carlo methods](learn/blogs.md#programming-in-q)
 
-    :fontawesome-solid-book-reader: [The Q Playbook](learn/pb/index.md)
+    :fontawesome-solid-book-reader: [Q by Puzzles](learn/pb/index.md)
 
     :fontawesome-solid-cloud: [GCPM architecture](cloud/gcpm/architecture.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Four is magic | Playbook | Learn | kdb+ and q documentation
+title: Four is magic | Q by Puzzles | Learn | kdb+ and q documentation
 description: A simple problem with a short solution that illustrates powerful q programming techniques
 author: Stephen Taylor
 date: December 2020

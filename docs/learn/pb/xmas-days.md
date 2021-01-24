@@ -1,5 +1,5 @@
 ---
-title: 12 Days of Christmas | Playbook | Learn | kdb+ and q documentation
+title: 12 Days of Christmas | Q by Puzzles | Learn | kdb+ and q documentation
 description: Write q code to printthe lyrics to the Christmas carol, The Twelve Days of Christmas
 author: Stephen Taylor
 date: December 2020

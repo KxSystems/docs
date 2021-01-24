@@ -1,5 +1,5 @@
 ---
-title: Summarize and Say | Playbook | Learn | kdb+ and q documentation
+title: Summarize and Say | Q by Puzzles | Learn | kdb+ and q documentation
 description: A
 author: Stephen Taylor
 date: December 2020

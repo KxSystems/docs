@@ -1,5 +1,5 @@
 ---
-title: Name Game | Playbook | Learn | kdb+ and q documentation 
+title: Name Game | Q by Puzzles | Learn | kdb+ and q documentation 
 description: A simple substitution problem leads to an exploration of projections, Amend At, and the Do and Over iterators
 author: Stephen Taylor
 date: December 2020
