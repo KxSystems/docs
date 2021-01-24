@@ -6,9 +6,9 @@ date: November 2020
 ---
 # Example architectures
 
-## Kx for Surveillance
+## KX for Surveillance
 
-![Kx for Surveillance architecture](../img/surveillance-architecture.png)
+![KX for Surveillance architecture](../img/surveillance-architecture.png)
 {: style="width:100%"}
 
 Feedhandlers ingest the tick ata received directly from trading venues and market data sources.
@@ -20,7 +20,7 @@ The real-time database captures all intraday data; and writes it to disk at end 
 The historical database processes read historical data from disk and provide them to other processes. 
 
 
-## Kx Data Refinery 
+## KX Data Refinery 
 
 ![Refinery architecture](../img/refinery-architecture.png)
 <br>
@@ -44,6 +44,6 @@ APIs
 
 : Native kdb+ APIs; direct IPC and binary communication for HPC.
 
-Kx visualization tools
+KX visualization tools
 
-: HTML5, Kx Dashboards, Kx Analyst
+: HTML5, KX Dashboards, KX Analyst

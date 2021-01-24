@@ -235,7 +235,7 @@ improvements for both in-memory and on-disk datasets. From version 4.0
 onwards App Direct Mode gives users control over Intel Optane PMem,
 taking optimal advantage of the technology to suit their applications.
 
-Kx has created a new technology and marketing partnership with Intel,
+KX has created a new technology and marketing partnership with Intel,
 around Optane Memory. By working closely with Intel’s engineers, we ensure kdb+ takes full advantage of the features of Intel Optane PMem.
 We also have a team of engineers ready to help customers evaluate 
 Intel Optane PMem. Through a POC, we can determine the optimal way to deploy

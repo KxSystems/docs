@@ -18,7 +18,7 @@ Due to its efficiency in storing and retrieving large volumes of data, kdb+ is t
 
 !!! tip "Commercial-grade products"
 
-    Kx offers [commercial-grade products](../../devtools.md) to manage entitlements as well as other aspects of administration for kdb+. While this paper attempts to shed some light on the various approaches available to developers wishing to implement a permissioning system in kdb+, the approach presented here is merely intended as a starting point, and as such it should not be considered secure. Some workarounds to the system described here are discussed in the paper.
+    KX offers [commercial-grade products](../../devtools.md) to manage entitlements as well as other aspects of administration for kdb+. While this paper attempts to shed some light on the various approaches available to developers wishing to implement a permissioning system in kdb+, the approach presented here is merely intended as a starting point, and as such it should not be considered secure. Some workarounds to the system described here are discussed in the paper.
 
 Tests performed using kdb+ 3.0 (2013.04.05)
 
@@ -1099,14 +1099,14 @@ This paper was an introduction to permissioning in kdb+ without using LDAP or an
 
 We have described a number of methods of securing a kdb+ process. We examined the concept of splitting clients into separate groups or classes, each with different permission levels. We examined how to block write access on a kdb+ process, and how to restrict certain users from viewing proprietary code. While the system described in the paper offers a broad coverage, including blocking some forms of code injection, it is not intended to be complete.
 
-While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firm’s authentication infrastructure. One should also consider out-of-the-box solutions like [Kx Control](../../devtools.md#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
+While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firm’s authentication infrastructure. One should also consider out-of-the-box solutions like [KX Control](../../devtools.md#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
 
 [:fontawesome-solid-print: PDF](/download/wp/permissions_with_kdb.pdf)
 
 
 ## Author
 
-**Tom Martin** is a senior kdb+ consultant for Kx who has built kdb+ systems for some of the world’s leading financial institutions. Tom is currently based in London, where he works on FX auto-hedging and client algos at a top-tier investment bank.
+**Tom Martin** is a senior kdb+ consultant for KX who has built kdb+ systems for some of the world’s leading financial institutions. Tom is currently based in London, where he works on FX auto-hedging and client algos at a top-tier investment bank.
 &nbsp;
 [:fontawesome-solid-envelope:](mailto:tmartin@kx.com?subject=White paper: Permissions with kdb+) 
 &nbsp;

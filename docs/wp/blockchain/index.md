@@ -15,7 +15,7 @@ by [Jeremy Lucid &amp; Daniel Irwin](#authors)
 
 
 
-For over a decade, Kx technology has played an important role in the
+For over a decade, KX technology has played an important role in the
 growing financial system by providing an integrated platform consisting
 of a high-performance kdb+ database, in-memory compute engines and
 real-time streaming processes. For example, across the largest financial
@@ -32,7 +32,7 @@ is blockchain, primarily peer-to-peer cryptocurrency systems built on
 public blockchains. Just as traditional financial institutions in the
 past faced scaling challenges, cryptocurrency businesses, such as
 exchanges and wallet providers, face many of the same growing pains
-associated with an increasing user base. Kx technology can help meet
+associated with an increasing user base. KX technology can help meet
 these challenges and deliver scalability confidence. As a case in point,
 kdb+ is currently utilized to meet these scaling demands at the
 Bitcoin-denominated trading platform,

@@ -31,7 +31,7 @@ _Markup tools_
 [`.h.he`](#hhe-http-400)      HTTP 400                 [`.h.c0`](#hc0-web-color)    web color
 [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.c1`](#hc1-web-color)    web color
 [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](#hhome-webserver-root)  webserver root
-[`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  Kx logo
+[`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  KX logo
                                     [`.h.sa`](#hsa-anchor-style)    anchor style
 [`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.sb`](#hsb-body-style)    body style
 [`.h.hug`](#hhug-uri-map)     URI map                  [`.h.ty`](#hty-mime-types)    MIME types
@@ -46,7 +46,7 @@ The `.h` [namespace](../basics/namespaces.md) contains objects for
 -   composing HTTP responses
 -   web-console display
 
-??? warning "The `.h` namespace is reserved for use by Kx, as are all single-letter namespaces."
+??? warning "The `.h` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as its private API | and do not use them.
 
@@ -588,9 +588,9 @@ q)1_.h.jx[5;`a]
 ```
 
 
-## `.h.logo` (Kx logo)
+## `.h.logo` (KX logo)
 
-String: defaults to the Kx logo in HTML format.
+String: defaults to the KX logo in HTML format.
 
 
 ## `.h.nbr` (no break)

@@ -146,7 +146,7 @@ q)read0 `:data/foo
 "\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\036\000..
 ```
 
-??? danger "Setting variables in the Kx namespaces can result in undesired and confusing behavior."
+??? danger "Setting variables in the KX namespaces can result in undesired and confusing behavior."
 
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 

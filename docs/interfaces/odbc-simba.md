@@ -80,7 +80,7 @@ Windows
 
 The license for the driver itself is presented during installation.
 One can then choose to accept the license or abort the installation.
-The driver is sponsored by Kx, at no cost to the end user.
+The driver is sponsored by KX, at no cost to the end user.
 
 <!--
 ## Prior releases

@@ -686,7 +686,7 @@ Knowledge Base: [Logging](../../kb/logging.md)
 for full details on these options
 
 
-## Control for Kx
+## Control for KX
 
 _Control for Kx_ is a code- and process-management system that provides
 robust failover management along with standardized logging, error

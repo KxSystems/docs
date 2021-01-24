@@ -33,7 +33,7 @@ namespace       | contents
 The linked pages document some of the objects in these namespaces. 
 (Undocumented objects are part of the namespace infrastructure and should not be used in kdb+ applications.) 
 
-!!! warning "These and all single-character namespaces are reserved for use by Kx."
+!!! warning "These and all single-character namespaces are reserved for use by KX."
 
 
 ## Names

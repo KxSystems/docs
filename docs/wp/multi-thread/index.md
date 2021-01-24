@@ -485,7 +485,7 @@ Used incorrectly, parallel processing can be less efficient than the equivalent 
 
 The use of multi-threading in kdb+ should therefore be treated on a case-by-case basis. It is a feature which should often be considered by developers, but performance testing is recommended before implementation.
 
-System-management solutions are available to assist with administering multi-process environments, like [Kx Control](../../devtools.md#kx-control) which provides a range of tools for visualizing process workflow, task scheduling and system-resource monitoring. These features are especially helpful at managing primary/replica configurations, where client queries or the loading of data is divided between processes in order to increase throughput.
+System-management solutions are available to assist with administering multi-process environments, like [KX Control](../../devtools.md#kx-control) which provides a range of tools for visualizing process workflow, task scheduling and system-resource monitoring. These features are especially helpful at managing primary/replica configurations, where client queries or the loading of data is divided between processes in order to increase throughput.
 
 All tests performed using kdb+ version 3.1 (2013.06.25)
 

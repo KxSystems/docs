@@ -1,19 +1,19 @@
 ---
-title: Documentation for kdb+ and the q programming language from Kx
+title: Documentation for kdb+ and the q programming language from KX
 description: Documentation, white papers and developer resources for kdb+ and the q programming language
 author: Stephen Taylor
 ---
 # Developing with kdb+ and the q language
 
 <!-- 
-<div markdown="1" class="container"><div class="css-carousel">[![Kdb+ 4.0](img/carousel/kdb4.jpg){.css-img}](releases/ChangesIn4.0.md)[![Kx Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Parallelism](img/carousel/parallelism-600.jpg){.css-img}](kb/mt-primitives.md)[![Encryption](img/carousel/encryption-600.jpg){.css-img}](kb/dare.md)[![Optane](img/carousel/optane-memory-600.jpg){.css-img}](kb/optane.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
+<div markdown="1" class="container"><div class="css-carousel">[![Kdb+ 4.0](img/carousel/kdb4.jpg){.css-img}](releases/ChangesIn4.0.md)[![KX Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Parallelism](img/carousel/parallelism-600.jpg){.css-img}](kb/mt-primitives.md)[![Encryption](img/carousel/encryption-600.jpg){.css-img}](kb/dare.md)[![Optane](img/carousel/optane-memory-600.jpg){.css-img}](kb/optane.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
 </div>
  -->
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
 <div style="display: inline-flex;" markdown="1">
-Kdb+, from [Kx](https://kx.com), is
+Kdb+, from [KX](https://kx.com), is
 
 -   a high-performance cross-platform historical time-series columnar database 
 -   an in-memory compute engine
@@ -64,7 +64,7 @@ Database](database/index.md "Roughly speaking, kdb+ is what happens when q table
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-laptop-code:</span><br/>
-IDE: Kx Developer](/developer/ "Download and install the free IDE, Kx Developer")
+IDE: KX Developer](/developer/ "Download and install the free IDE, KX Developer")
 {: .md-button}
 
 </div>
@@ -96,7 +96,7 @@ IDE: Kx Developer](/developer/ "Download and install the free IDE, Kx Developer"
     CEO, First Derivatives plc
 
 :fontawesome-solid-globe:
-[Careers at Kx and First Derivatives](http://www.firstderivatives.com/careers/)
+[Careers at KX and First Derivatives](http://www.firstderivatives.com/careers/)
 
 ---
 The source code for this site is on GitHub at

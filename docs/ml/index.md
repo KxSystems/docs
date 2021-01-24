@@ -1,6 +1,6 @@
 ---
 title: Machine learning - code.kx.com – Machine Learning – kdb+ and q documentation
-description: Machine-learning capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
+description: Machine-learning capabilities are at the heart of future technology development at KX. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 keywords: Python, Jupyter, natural language processing, nlp, machine learning, ml, sentiment, Anaconda, Docker
 ---
 # :fontawesome-solid-share-alt: Machine learning
@@ -9,7 +9,7 @@ keywords: Python, Jupyter, natural language processing, nlp, machine learning, m
 ![Machine learning](../img/ml.png)
 
 
-**Machine-learning** capabilities are at the heart of future technology development at Kx. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
+**Machine-learning** capabilities are at the heart of future technology development at KX. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 
 :fontawesome-regular-hand-point-right: 
 [How to set up](setup.md) kdb+/q to create a machine-learning environment using either Anaconda, Docker or a manual build
@@ -92,10 +92,10 @@ Demonstration notebook:
 
 ## Useful information
 
-All of the Kx machine-learning libraries are:
+All of the KX machine-learning libraries are:
 
 -   well **documented**, with understandable and useful examples
--   maintained and **supported** by Kx on a best-efforts basis, at no cost to customers
+-   maintained and **supported** by KX on a best-efforts basis, at no cost to customers
 -   released under the **Apache 2 license**
 -   **free** for all use cases, including 64-bit and commercial use
 

@@ -41,7 +41,7 @@ Environment                        Callbacks
 </div>
 
 The `.z` [namespace](../basics/namespaces.md) contains environment variables and functions, and hooks for callbacks.
-??? warning "The `.z` namespace is reserved for use by Kx, as are all single-letter namespaces."
+??? warning "The `.z` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
@@ -938,7 +938,7 @@ $ q somefile.q -customarg 42 -p localhost:17200
 ```
 
 ```q
-KDB+ 3.4 2016.09.22 Copyright (C) 1993-2016 Kx Systems
+KDB+ 3.4 2016.09.22 Copyright (C) 1993-2016 KX Systems
 m64/ 4()core 8192MB ...
 q).z.X
 ,"q"

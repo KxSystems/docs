@@ -36,7 +36,7 @@ Implementing this idea in full generality would rely on being able to solve a di
 
 Before describing the implementation, it is worth noting two important caveats:
 
--   This implementation uses a single-letter namespace. Single-letter namespaces are reserved for use by Kx and should not be used in a production system.
+-   This implementation uses a single-letter namespace. Single-letter namespaces are reserved for use by KX and should not be used in a production system.
 
 -   The implementation uses an undocumented feature of kdb+ which allows a handler for a custom language to be defined. This feature is not guaranteed to be present in future kdb+ versions.
 

@@ -475,7 +475,7 @@ past, it is reasonable to provide the client-side JavaScript code with
 some extra workload.
 
 This approach requires a little more understanding of JavaScript.
-However, Kx provides the script `c.js` which contains the functionality to
+However, KX provides the script `c.js` which contains the functionality to
 serialize and deserialize data on the client side. The `deserialize`
 function converts kdb+ binary data into JSON, while the `serialize`
 function will convert our message into kdb+ binary format before sending
@@ -743,7 +743,7 @@ server-side and client-side methods. Both of these methods have their
 benefits and drawbacks so it is important to consider the application
 infrastructure when deciding which method will be most suitable.
 Serialising data across the connection is easy to achieve using the `-8!`
-and `-9!` functions on the kdb+ server and the `c.js` code provided by Kx
+and `-9!` functions on the kdb+ server and the `c.js` code provided by KX
 on the JavaScript client. Alternatively, the kdb+ `.j.j` and `.j.k`
 functions can be used in conjunction with a browser’s native JSON parser
 to achieve the same result.
@@ -757,7 +757,7 @@ to achieve the same result.
 provides a range of great ways to visualize and analyze
 both real-time streaming data and highly-optimized polled queries on
 intra-day and historical data. Completely configurable, _Kx Dashboards_ enables clients to quickly build powerful grids and charts of the
-underlying data stored within Kx and other databases. 
+underlying data stored within KX and other databases. 
 
 All tests were run using kdb+ version 3.5 (2017.11.30)
 
@@ -770,7 +770,7 @@ All tests were run using kdb+ version 3.5 (2017.11.30)
 **Chris Scott** worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.
 
 <!-- **Version 1.1 (March 2018)** -->
-**Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the Kx platform.
+**Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the KX platform.
 
 
 ## Appendixes 

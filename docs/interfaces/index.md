@@ -13,7 +13,7 @@ A kdb+ process can communicate with other processes through [TCP/IP](../basics/i
 
 :fontawesome-regular-hand-point-right: [General index](../github.md) of other kdb+ repositories
 
-Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by Kx. 
+Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by KX. 
 Other repositories are maintained by their owners. 
 
 <div style="background-color: #efefef; border: 1px solid #005499; border-radius: 10px; display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
@@ -26,7 +26,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 -   written for non-kdb+ programmers to use
 -   well documented, with understandable and useful examples
--   maintained and supported by Kx on a best-efforts basis, at no cost to customers
+-   maintained and supported by KX on a best-efforts basis, at no cost to customers
 -   released under the [Apache 2 license](https://www.apache.org/licenses/LICENSE-2.0)
 -   free for all use cases, including 64-bit and commercial use
 

@@ -54,7 +54,7 @@ Reading room](reading/index.md "Example programs for study")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-laptop-code:</span><br/>
-Kx Developer](/developer/ "Download and install the free IDE, KX Developer")
+KX Developer](/developer/ "Download and install the free IDE, KX Developer")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-graduation-cap:</span><br/>

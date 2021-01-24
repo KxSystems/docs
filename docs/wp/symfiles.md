@@ -778,7 +778,7 @@ All tests performed using kdb+ version 3.6 (2018.05.17).
 ![Paula Clarke](../img/faces/paulaclarke.jpg)
 {: .small-face}
 
-**Paula Clarke** is a senior kdb+ consultant for Kx who has worked for some of the world’s largest financial institutions designing, developing and maintaining global tick-capture kdb+ systems.
+**Paula Clarke** is a senior kdb+ consultant for KX who has worked for some of the world’s largest financial institutions designing, developing and maintaining global tick-capture kdb+ systems.
 &nbsp;
 [:fontawesome-solid-envelope:](mailto:pclarke1@kx.com?subject=White paper: Working with sym files)
 &nbsp;

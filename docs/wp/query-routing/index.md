@@ -22,7 +22,7 @@ important to build solid foundations so that as the number of users
 and size of databases increase, the system is able to easily absorb
 the extra capacity.
 
-Distributed kdb+ systems have been covered in a number of Kx Technical
+Distributed kdb+ systems have been covered in a number of KX Technical
 White papers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
@@ -623,7 +623,7 @@ As an example framework focused on network routing, this paper covers
 much of the core functionality, but the scope of this paper does not
 encompass some desirable production features a system architect should
 consider, such as permissions, query validation and capacity
-management. Where topics haven’t been covered previously, the Kx
+management. Where topics haven’t been covered previously, the KX
 Technical White paper series will continue to drill down on important
 components that provide the building blocks for a stable, scalable,
 protected and efficient kdb+ system.

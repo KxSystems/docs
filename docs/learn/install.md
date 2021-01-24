@@ -251,7 +251,7 @@ The [JupyterQ interface](../ml/jupyterq/index.md) lets you run q code in noteboo
 
 Notebooks are not, however, an IDE, and are unsuitable for studying features such as event handlers. 
 
-For more advanced study, use either the bare q REPL, or download and install our interactive development environment, [Kx Developer](/developer/).
+For more advanced study, use either the bare q REPL, or download and install our interactive development environment, [KX Developer](/developer/).
 
 
 ## :fontawesome-solid-hand-point-right: What’s next?

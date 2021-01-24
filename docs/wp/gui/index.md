@@ -39,7 +39,7 @@ implementation of the .NET environment into applications and can be
 utilised in the creation of websites using PHP and ASP.NET as well as
 stand-alone Windows applications.
 
-The paper makes use of the standard `c.cs` file offered by Kx to enable
+The paper makes use of the standard `c.cs` file offered by KX to enable
 connections to C#. This can be found at :fontawesome-brands-github:
 [KxSystems/kdb](https://github.com/KxSystems/kdb/blob/master/c/c.cs).
 
@@ -60,7 +60,7 @@ To connect from C# to a running kdb+ process, it is first necessary
 to import the `c.cs` file mentioned in the introduction. While it is
 possible to construct a bespoke plugin for use between kdb+ and C#,
 and may be required depending on the requirements of the project, for
-basic connections and queries, the default Kx plug-in will be
+basic connections and queries, the default KX plug-in will be
 satisfactory. This must then be called by referencing the namespace
 provided (in this case, it is `kx`). After importing `c.cs` into a C#
 project, it can then be called via the `using` directive:
@@ -76,7 +76,7 @@ will also permit querying and updates to be performed on the same kdb+
 process.
 
 To open a connection between C# and the kdb+ process, an object of
-class `c` needs to be called and instantiated. This is a Kx-provided
+class `c` needs to be called and instantiated. This is a KX-provided
 class that will act as an interface between kdb+ and C#. This will be
 used in a method called `OpenConnection`. In the below example, a
 server and process will be hard-coded to private variables though these
@@ -208,7 +208,7 @@ user1    | "password2"
 user2    | "password3"
 ```
 
-This involves changing the `c.cs` file provided by Kx as this is not set
+This involves changing the `c.cs` file provided by KX as this is not set
 up to accept customised usernames (it instead takes the username
 stored in `Environment.UserName`) or any passwords at all. We will also
 need to modify the `OpenConnection` method and define `.z.pw`.

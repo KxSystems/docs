@@ -434,7 +434,7 @@ Having this ability to capture massive volumes of high- and low-frequency market
 
 Later in the paper, the benefits of market-data source-agnostic schema are discussed. Here there are two main advantages in that such a schema will offer run-time query speed-ups and a shortened development cycle. The built-in functions kdb+ provides are very powerful, but the data must also be stored intelligently so that the queries can access it in an efficient manner.
 
-Overall, the paper provides a snapshot of the type of TCA queries that can be run. It aims to highlight the capabilities of kdb+ to offer a best-of-breed high-performance data analysis layer. When combined with either in-house or Kx’s visualization tools, it provides all the components of a TCA application to ensure that investment strategies can be executed more efficiently.
+Overall, the paper provides a snapshot of the type of TCA queries that can be run. It aims to highlight the capabilities of kdb+ to offer a best-of-breed high-performance data analysis layer. When combined with either in-house or KX’s visualization tools, it provides all the components of a TCA application to ensure that investment strategies can be executed more efficiently.
 
 All tests performed with kdb+ V3.0 (2012.11.12).
 

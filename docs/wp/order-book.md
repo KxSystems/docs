@@ -380,5 +380,5 @@ All tests performed with kdb+ 2.8 (2012.03.21).
 
 ## Author
 
-**Niall Coulter** has worked on many kdb+ algorithmic-trading systems related to both the equity and FX markets. Based in New York, Niall is a technical architect for [Kx Platform](/platform/index.html), a suite of high-performance data-management, event-processing and trading platforms.
+**Niall Coulter** has worked on many kdb+ algorithmic-trading systems related to both the equity and FX markets. Based in New York, Niall is a technical architect for [KX Platform](/platform/index.html), a suite of high-performance data-management, event-processing and trading platforms.
 

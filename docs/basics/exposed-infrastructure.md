@@ -13,7 +13,7 @@ keywords: embedded, domain-specific language, dsl, k, kdb+, q
 Q is an embedded domain-specific language for time-series analysis, implemented in the proprietary programming language k. 
 As such, q leaves features of k exposed. They should be avoided.
 
-The k language has no public documentation and is for use by Kx system programmers only. 
+The k language has no public documentation and is for use by KX system programmers only. 
 It changes from version to version of q.
 These changes are not documented. 
 

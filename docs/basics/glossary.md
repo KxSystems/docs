@@ -512,7 +512,7 @@ A [namespace](https://en.wikipedia.org/wiki/Namespace) is a container or context
 Namespaces are children of the _default namespace_ and are designated by a dot prefix.
 Names in the default namespace have no prefix.
 The default namespace of a q session is parent to multiple namespaces, e.g. `.h`, `.Q` and `.z`.
-(Namespaces with 1-character names – of either case – are reserved for use by Kx.)
+(Namespaces with 1-character names – of either case – are reserved for use by KX.)
 
 ```q
 q).z.p                         / UTC timestamp

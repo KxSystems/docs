@@ -75,7 +75,7 @@ following steps:
 
 This paper will focus on the last three steps listed above, as the first
 topic of data capture has already been covered extensively in previous
-Kx white papers, including 
+KX white papers, including 
 
 -   [Kdb+tick profiling for throughput optimization](../tick-profiling.md)
 -   [Disaster recovery for kdb+tick](../disaster-recovery/index.md) 

@@ -38,7 +38,7 @@ q.stat)stdv:{sqrt var x}
 Directory names should be as short as can be managed, to minimize the length of the absolute paths. 
 The minimum is a dot followed by two characters. 
 
-!!! warning "Directories named with a dot and a single character are reserved for Kx."
+!!! warning "Directories named with a dot and a single character are reserved for KX."
 
 We use the term _dictionary_ for local dictionary-valued variables, and for global dictionaries when used as structured data. For example, 
 

@@ -183,7 +183,7 @@ Enhancements
 - !544 – #919: Remove x2l objects
 - !520 – #615: BUG: Empty symbol list converts to float array.
 
-Kx
+KX
 
 - !539, !569 – Updated k.h.
 - !566 – #937 Add Apache 2.0 license for kx owned components.

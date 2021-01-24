@@ -129,7 +129,7 @@ Update not allowed when using [negative port number](syscmds.md#p-listening-port
 <tr markdown="1">
 <td markdown="1">wsfull</td>
 <td markdown="1" class="nowrap">`999999999#0`</td>
-<td markdown="1">[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, or ran out of swap (or addressability on 32-bit). The params also reported are intended to help Kx diagnose when assisting clients, and are subject to change.</td>
+<td markdown="1">[`malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) failed, or ran out of swap (or addressability on 32-bit). The params also reported are intended to help KX diagnose when assisting clients, and are subject to change.</td>
 </tr> 
 <tr markdown="1"><td markdown="1">wsm</td> <td markdown="1" class="nowrap">`010b wsum 010b`</td> <td markdown="1">Alias for nyi for `wsum` prior to V3.2</td> </tr>
 <tr markdown="1"><td markdown="1">XXX</td> <td markdown="1" class="nowrap">`delete x from system "d";x`</td> <td markdown="1">Value error (`XXX` undefined)</td> </tr>
@@ -195,7 +195,7 @@ On launch
 <tr markdown="1"><th markdown="1">error</th><th markdown="1">explanation</th></tr>
 </thead>
 <tbody markdown="1">
-<tr markdown="1"> <td markdown="1">{timestamp} couldn't connect to license daemon</td> <td markdown="1">Could not connect to Kx license server ([kdb+ On Demand](../learn/licensing.md#licensing-server-for-kdb-on-demand))</td> </tr>
+<tr markdown="1"> <td markdown="1">{timestamp} couldn't connect to license daemon</td> <td markdown="1">Could not connect to KX license server ([kdb+ On Demand](../learn/licensing.md#licensing-server-for-kdb-on-demand))</td> </tr>
 <tr markdown="1"> <td markdown="1">cores</td> <td markdown="1">The license is for [fewer cores than available](../kb/cpu-affinity.md)</td> </tr>
 <tr markdown="1"> <td markdown="1">cpu</td> <td markdown="1">The license is for fewer CPUs than available</td> </tr>
 <tr markdown="1"> <td markdown="1">exp</td> <td markdown="1">License expiry date is prior to system date</td> </tr>

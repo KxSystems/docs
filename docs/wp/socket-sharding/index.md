@@ -349,5 +349,5 @@ Finally, we explored easy rolling upgrades of existing processes while keeping d
 
 ## Author
 
-**Marcus Clarke** is a kdb+ consultant for Kx and has worked at a number of leading financial institutions in both the UK and Asia. Currently based in New York, he is designing, developing and maintaining a kdb+ system for multiple asset classes at a top-tier investment bank.
+**Marcus Clarke** is a kdb+ consultant for KX and has worked at a number of leading financial institutions in both the UK and Asia. Currently based in New York, he is designing, developing and maintaining a kdb+ system for multiple asset classes at a top-tier investment bank.
 

@@ -1,6 +1,6 @@
 ---
-title: Data preprocessing for the Kx automated machine learning platform | Machine Learning | Documentation for q and kdb+
-description: Default behavior of the Kx automated machine-learning tools; common processes completed across all forms of automated machine learning and the differences between offerings
+title: Data preprocessing for the KX automated machine learning platform | Machine Learning | Documentation for q and kdb+
+description: Default behavior of the KX automated machine-learning tools; common processes completed across all forms of automated machine learning and the differences between offerings
 author: Deanna Morgan
 date: December 2020
 keywords: machine learning, automated, ml, model definition, type checking, symbol encoding, infinity replace, null encoding, data cleansing
@@ -131,7 +131,7 @@ Normal feature extraction can be applied to non-timeseries problems that have a 
 
 ### NLP
 
-The NLP (Natural Language Processing) feature extraction within AutoML makes use of the Kx [NLP library](../../nlp/index.md) in addition to the Python `gensim` library for data preprocessing.
+The NLP (Natural Language Processing) feature extraction within AutoML makes use of the KX [NLP library](../../nlp/index.md) in addition to the Python `gensim` library for data preprocessing.
 
 The following steps are applied independently to all columns containing text data:
 

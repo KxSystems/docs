@@ -29,8 +29,8 @@ All tests were run using kdb+ version 3.2 (2015.01.14).
 
 Kdb+ is a database management system which ships with the general-purpose and database language q. Q is an embedded domain-specific language implemented in the k programming language, sometimes known as k4. The q interpreter can switch between q and k modes and evaluate expressions written in k as well as q.
 
-The k language is for Kx implementors. 
-It is not documented or supported for use outside Kx. 
+The k language is for KX implementors. 
+It is not documented or supported for use outside KX. 
 All the same functionality is available in the much more readable q language. However in certain cases, such as debugging, a basic understanding of some k syntax can be useful.
 
 The `q.k` file is part of the standard installation of q and loads into each q session on startup. It defines many of the q keywords in terms of k. To see how a q keyword is defined in terms of k we could check the `q.k` file or simply enter it into the q prompt:
@@ -664,7 +664,7 @@ by Peter Storeng
 ![Stephen Taylor](../img/faces/stephentaylor.png)
 {: .small-face}
 
-**Stephen Taylor** FRSA is the Kx Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
+**Stephen Taylor** FRSA is the KX Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
 <br>
 [:fontawesome-solid-envelope:](mailto:stephen@kx.com?subject=White paper: Parse trees and functional forms) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;

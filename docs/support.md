@@ -7,7 +7,7 @@ author: Stephen Taylor
 
 
 
-We are proud to provide industry-acclaimed support for our customers, starting with free, onsite evaluations for qualified prospects with application requirements well-suited for Kx technology.
+We are proud to provide industry-acclaimed support for our customers, starting with free, onsite evaluations for qualified prospects with application requirements well-suited for KX technology.
 
 We pride ourselves on being highly responsive to customer needs, typically responding to technical inquiries within minutes, and offering solutions within the day; these are responses from knowledgeable staff who are familiar with the code at a very deep level, not scripted responses from an outsourced support center.
 
@@ -26,7 +26,7 @@ If you work at a company that has licensed kdb+, you can join the [k4 Topicbox g
 
 ## :fontawesome-solid-hands-helping: Designated Contacts
 
-Licensed customers designate to Kx staff members whom they have authorized to deal with kdb+ licenses, downloads and bug reports. Designated Contacts can reach us at the following addresses.
+Licensed customers designate to KX staff members whom they have authorized to deal with kdb+ licenses, downloads and bug reports. Designated Contacts can reach us at the following addresses.
 
 topic                               | address
 ------------------------------------|---------------------
@@ -43,7 +43,7 @@ If you work at a company that has licensed kdb+, please refer to your internal s
 
 ## :fontawesome-solid-bug: Reporting bugs
 
-!!! important "Licensed customers of Kx should report bugs in Kx products to the email group <tech@kx.com>."
+!!! important "Licensed customers of KX should report bugs in KX products to the email group <tech@kx.com>."
 
 Other application errors or programming assistance requests should be referred to your company’s internal support groups or via the [community support channels](https://kx.com/connect-with-us/#support).
 
@@ -63,7 +63,7 @@ Include in the bug report:
 -   information about the **OS being used**, machine configuration and file system (if relevant).
 -   details of any **external code** (DLLs, user-written primitives) loaded into the problem session.
 If external code is being loaded into the session verify that the problem still occurs when it is _not_ loaded.
--   every Kx customer has a designated **technical contact** –  please copy them on the email.
+-   every KX customer has a designated **technical contact** –  please copy them on the email.
 -   if appropriate, include **contact details**, and information about when it’s convenient to contact you.
 -   detailed list of steps to be taken to **reproduce the error**. Try to isolate the problem to a few lines of q and a tiny sample of data.
 

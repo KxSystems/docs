@@ -24,7 +24,7 @@ Competition in this risk-averse domain drives it to push against boundaries.
 Production systems inevitably mix contemporary and legacy code. 
 Because of this, developers need tools for communication and integration.
 Implementation risks must be kept to a strict minimum.
-Kx technology is well-equipped for this issue.
+KX technology is well-equipped for this issue.
 By design kdb+’s communication with external processes is kept simple, and reinforced with interface libraries for other languages.
 
 The Java API for kdb+ is a Java library. 
@@ -298,7 +298,7 @@ API is that a `RuntimeException` will be thrown if an attempt is made to
 serialize and pass a UUID object to a kdb+ instance with a version lower
 than 3.0.
 
-More information on these identifier types can be found in the [Kx documentation](../../basics/datatypes.md#guid) as well as the
+More information on these identifier types can be found in the [KX documentation](../../basics/datatypes.md#guid) as well as the
 [core Java documentation](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html).
 
 
@@ -857,7 +857,7 @@ Of interest in this white paper are the Java publisher and subscriber processes.
 ### Test tickerplant and feedhandler setup
 
 To facilitate the testing of Java subscriber processes we can implement
-example q processes freely available in the Kx repository. Simulation of
+example q processes freely available in the KX repository. Simulation of
 a tickerplant can be achieved with
 [`tick.q`](https://github.com/KxSystems/kdb-tick/blob/master/tick.q);
 Trade data, using the trade schema defined in `sym.q`, can then be

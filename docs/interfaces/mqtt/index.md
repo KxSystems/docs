@@ -42,7 +42,7 @@ This interface lets you communicate with an MQTT broker from a kdb+ session. The
 
 ## Status
 
-The interface is currently available under an Apache 2.0 license and is supported on a best-efforts basis by the Kx Fusion team. The interface is currently in active development, with additional functionality released on an ongoing basis.
+The interface is currently available under an Apache 2.0 license and is supported on a best-efforts basis by the KX Fusion team. The interface is currently in active development, with additional functionality released on an ongoing basis.
 
 :fontawesome-brands-github: 
 [Issues and feature requests](https://github.com/KxSystems/mqtt/issues) 

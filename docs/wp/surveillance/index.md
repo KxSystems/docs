@@ -38,7 +38,7 @@ To ease the effects of rogue algorithms and to stop crash events from reoccurrin
 
 ## Detecting high-frequency traders
 
-To understand the nature of high-frequency trading, a surveillance solution as sophisticated as the trading systems is required to monitor the HFT behavior in real time. A kdb+ system can capture and analyze live data to efficiently track these traders using a handful of common metrics. The metrics serve two purposes. Firstly, the goal is to identify potential high-frequency traders. The aim is then to determine whether any of the identified traders are negatively impacting the market. For a description of the tables and columns referred to in the following sections refer to Appendix B. All images in the document have been created using Kx Dashboards, that visualizes the historic and real-time data by interfacing with kdb+.
+To understand the nature of high-frequency trading, a surveillance solution as sophisticated as the trading systems is required to monitor the HFT behavior in real time. A kdb+ system can capture and analyze live data to efficiently track these traders using a handful of common metrics. The metrics serve two purposes. Firstly, the goal is to identify potential high-frequency traders. The aim is then to determine whether any of the identified traders are negatively impacting the market. For a description of the tables and columns referred to in the following sections refer to Appendix B. All images in the document have been created using KX Dashboards, that visualizes the historic and real-time data by interfacing with kdb+.
 
 
 ### Order-to-trade ratio (OTR)
@@ -47,7 +47,7 @@ The order-to-trade ratio metric calculates the total number of order messages di
 
 ![Figure 1](img/image3.jpeg)<br>
 <small>_Figure 1: Heat map of the Order to Trade ratio (OTR) for 200 brokers
-visualized via Kx Dashboards. Approximate color scheme: red &gt;
+visualized via KX Dashboards. Approximate color scheme: red &gt;
 1000 &gt; orange &gt; 15 &gt; blue &gt; 0. All codes have been scrambled._</small>
 
 
@@ -57,7 +57,7 @@ This metric is designed to detect a technique known as ‘fishing’ whereby HF 
 
 ![Figure 2](img/image4.png)<br>
 <small>_Figure 2: Column chart displaying the number of orders per broker that were held for less than 1 millisecond visualized via Dashboards
-for Kx. The selection only shows brokers that had at least 750 orders
+for KX. The selection only shows brokers that had at least 750 orders
 cancelled within the specified holding time. All codes have been
 scrambled._</small>
 
@@ -82,10 +82,10 @@ Huge traded volumes and short holding times are a major indicator for high-frequ
 The image below illustrates a range of brokers that bought and sold equal parts of at least 14 stocks in the same day. The size of the bubble represents the number of stocks that were completely closed out and the color indicates the turnover within the day. This value can be adjusted to look for traders that partially closed out positions. By drilling into the activities of a specific trader (i.e. the highlighted green bubble below) the total volume bought and sold within the day can be examined.
 
 ![Figure 3](img/image5.jpeg)<br>
-<small>_Figure 3: Turnover ratio to identify traders with high close-out positions (typically day traders). The bubble size indicates the number of stocks that were entirely closed out within the day while the color represents the daily profit and loss. Image visualized via Kx Dashboards._</small>
+<small>_Figure 3: Turnover ratio to identify traders with high close-out positions (typically day traders). The bubble size indicates the number of stocks that were entirely closed out within the day while the color represents the daily profit and loss. Image visualized via KX Dashboards._</small>
 
 ![Figure 4](img/image6.png)<br>
-<small>_Figure 4: Volume bought and sold for a broker that had a very high turnover ratio visualized via Kx Dashboards. In this example it is clear to see almost all of the stocks were close-outs (equal bought/sold)._</small>
+<small>_Figure 4: Volume bought and sold for a broker that had a very high turnover ratio visualized via KX Dashboards. In this example it is clear to see almost all of the stocks were close-outs (equal bought/sold)._</small>
 
 
 ### Message profiling
@@ -93,7 +93,7 @@ The image below illustrates a range of brokers that bought and sold equal parts 
 HF Traders can be further categorized by tracking the types of messages and the rate that a person of interest can send them. By calculating the time in between each message from a person of interest a profile can be drawn that details the messaging capabilities of a trader. Traders that demonstrate a left-skewed message rate histogram (majority of orders under 20ms) are likely to be high-frequency traders. Order distribution of a trader or participant assists in identifying frequent cancellations and ‘intent to trade’ but perhaps with very few trades actually generated.
 
 ![Figure 5a](img/image7.jpeg) ![Figure 5b](img/image8.jpeg)<br>
-<small>_Figure 5: Message profiling. First chart shows proportion by orderType (New, cancelled, replaced etc.) and second chart shows the message rates as a frequency histogram by message latencies (sub-second). Images visualized via Kx Dashboards._</small>
+<small>_Figure 5: Message profiling. First chart shows proportion by orderType (New, cancelled, replaced etc.) and second chart shows the message rates as a frequency histogram by message latencies (sub-second). Images visualized via KX Dashboards._</small>
 
 ```q
 // - Time profiling code. Bucket sizes and labels
@@ -141,7 +141,7 @@ quoteFluctuationSym[2013.10.08;`BHP;60;5]
 ```
 
 ![Figure 6](img/image9.png)<br>
-<small>_Figure 6: Quote stuffing example for BHP (AUD) in 2013 visualized via Kx Dashboards. The burst is comprised of over 60 alterations to the best bid over a period of 0.12 seconds._</small>
+<small>_Figure 6: Quote stuffing example for BHP (AUD) in 2013 visualized via KX Dashboards. The burst is comprised of over 60 alterations to the best bid over a period of 0.12 seconds._</small>
 
 Detecting instances of quote stuffing allows for market analysis around the time of the burst. Further analysis is used to determine market impact of the behavior and could result in a warning or fine.
 
@@ -469,7 +469,7 @@ Stuffing and Manipulation.* Business Insider.
 **Sam Stanton-Cook**, **Ryan Sparks**, **Dan O’Riordan** and **Rob Hodgkinson**
 
 
-## Appendix A – Kx solutions
+## Appendix A – KX solutions
 
 A detailed list of the products referred to and demonstrated in this paper can be viewed at [Development tools](../../devtools.md)
 

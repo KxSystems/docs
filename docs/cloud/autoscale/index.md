@@ -49,7 +49,7 @@ Scaling storage for our kdb+ databases can be relatively simple in the cloud.
 As the database grows we can provision extra storage volumes for our instances, or increase the size of the ones currently in use.
 
 Reading and writing data are prime use cases for scaling compute power within a kdb+ application.
-Scaling compute for reading has been covered by Rebecca Kelly in her blog post [Kx in the Public Cloud: Autoscaling using kdb+](https://kx.com/blog/kx-in-the-public-cloud-auto-scaling-using-kdb).
+Scaling compute for reading has been covered by Rebecca Kelly in her blog post [KX in the Public Cloud: Autoscaling using kdb+](https://kx.com/blog/kx-in-the-public-cloud-auto-scaling-using-kdb).
 Here Rebecca demonstrates how to scale the number of historical database (HDB) servers to handle an increasing or decreasing number of queries.
 
 Dynamically scaling the compute needed for writing can be a bit more complicated.

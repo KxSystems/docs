@@ -35,7 +35,7 @@ Many powerful techniques for programming in q originally appeared in earlier Ive
 -   [Stages of Denial](http://beyondloom.com/blog/denial.html), John Earnest, March 2020
 -   [Vector processing languages: the future of Big Data analytics and real-time business intelligence](http://conceptualorigami.blogspot.com/2010/12/vector-processing-languages-future-of.html), _Conceptual Origami_, 2010
 -   [A conversation with Arthur Whitney](https://queue.acm.org/detail.cfm?id=1531242), ACM, 2009
--   [An interview with Arthur Whitney](https://kx.com/blog/arthur-whitney-talks/), Kx, 2004
+-   [An interview with Arthur Whitney](https://kx.com/blog/arthur-whitney-talks/), KX, 2004
 
 
 ## :fontawesome-solid-archive: Archive

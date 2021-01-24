@@ -16,7 +16,7 @@ There are three methods available to set up an environment in which to work on M
 
 ## Download via Anaconda
 
-The three Kx packages can be downloaded from [anaconda.org/kx](https://anaconda.org/kx):
+The three KX packages can be downloaded from [anaconda.org/kx](https://anaconda.org/kx):
 
 -   `kdb`
 -   `embedpy`
@@ -51,7 +51,7 @@ Please provide your name:
 If applicable please provide your company name (press enter for none):
 ```
 
-This will then contact the Kx license server, which will generate a `kc.lic` and send an email confirmation link to validate it.
+This will then contact the KX license server, which will generate a `kc.lic` and send an email confirmation link to validate it.
 
 
 

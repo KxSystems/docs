@@ -45,7 +45,7 @@ Welcome to kdb+ 32bit edition
 
 ### Commercial kdb+
 
-Use of commercial kdb+ is covered by your license agreement with Kx.
+Use of commercial kdb+ is covered by your license agreement with KX.
 
 Your copy of kdb+ will need access to a valid license key file.
 
@@ -94,7 +94,7 @@ Your Designated Contact sends a copy of the banner to licadmin@kx.com to request
 
 !!! info "Designated Contact"
 
-    Each Kx customer designates to licadmin@kx.com a couple of technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
+    Each KX customer designates to licadmin@kx.com a couple of technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
 
 
 ## Install the license key file
@@ -132,10 +132,10 @@ The default location for the license key file is the `QHOME` folder. You do not 
 
 ## Licensing server for kdb+ On Demand
 
-As well as a license key file, kdb+ On Demand also requires frequent contact with the Kx licensing server. 
+As well as a license key file, kdb+ On Demand also requires frequent contact with the KX licensing server. 
 For this you need an always-on Net connection.
 
-If kdb+ cannot contact the Kx server it will abort with a timestamped message.
+If kdb+ cannot contact the KX server it will abort with a timestamped message.
 
 ```q
 '2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting

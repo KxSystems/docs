@@ -1,6 +1,6 @@
 ---
 title: About this site | kdb+ and q documentation
-description: Origin and content of the Kx documentation site
+description: Origin and content of the KX documentation site
 author: Stephen Taylor
 ---
 # About this site
@@ -8,10 +8,10 @@ author: Stephen Taylor
 
 This site is the official documentation for [kdb+](../database/index.md) and the [q programming language](../ref/index.md).
 
-It reflects the work of the Kx community since 1993, has many authors, 
+It reflects the work of the KX community since 1993, has many authors, 
 and continues to evolve.  
 
-This site is a project of the Kx Librarian: librarian@kx.com.
+This site is a project of the KX Librarian: librarian@kx.com.
 
 > A librarian’s job is to put information where people can find it. 
 
@@ -85,7 +85,7 @@ This work is licensed under a <a rel="license" href="https://creativecommons.org
 
 ## :fontawesome-solid-camera-retro: Images
 
-This site includes images for which Kx holds neither copyright nor permission. 
+This site includes images for which KX holds neither copyright nor permission. 
 These images serve as links to their original sites. 
 We understand this to be fair use. 
 
@@ -135,7 +135,7 @@ Vancouver style
 
 ## :fontawesome-solid-users: Wiki
 
-The Kx wiki was the primary documentation for q and kdb+ until January 2017.
+The KX wiki was the primary documentation for q and kdb+ until January 2017.
 
 The content, which runs on [Mediawiki](http://mediawiki.org), 
 has 
