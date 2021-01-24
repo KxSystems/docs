@@ -41,7 +41,7 @@ Within the framework you can add Sklearn, Keras, PyTorch and Theano models to be
 
 ### Sklearn models
 
-Sklearn models can be included by modifying the [`models.json`](ug/config/#json-configuration-files) file:
+Sklearn models can be included by modifying the [`models.json`](ug/config.md#json-configuration-files) file:
 
 **Step 1**
 Place the new model under the appropriate dictionary key depending on the problem type (i.e - `classification` or `regression`)
@@ -106,7 +106,7 @@ The following changes to the JSON file would include a Bayesian ridge regressor 
 ```
 
 **Step 3**
-To perform a hyperparameter search on the model, add the associated hyperparameters over which to perform the search to the [JSON](ug/config/#json-configuration-files) files `gsHyperParameters.json` or `rsHyperParameters.json`.
+To perform a hyperparameter search on the model, add the associated hyperparameters over which to perform the search to the [JSON](ug/config.md#json-configuration-files) files `gsHyperParameters.json` or `rsHyperParameters.json`.
 
 If a hyperparameter search is not required, then add the model name to `.automl.utils.excludeList` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor using gridsearch methods. Within `gsHyperParameters.json`, add the following to the dictionary:
 
@@ -123,7 +123,7 @@ If a hyperparameter search is not required, then add the model name to `.automl.
 ```
 
 :fontawesome-solid-hand-point-right:
-[Structure of the JSON file](ug/config/#grid-search-parameters)
+[Structure of the JSON file](ug/config.md#grid-search-parameters)
 
 
 ### Keras, Torch, and Theano models
@@ -275,7 +275,7 @@ models.torch.fitScore:{[data;seed;mname]
 ```
 
 **Step 5**
-Go to [models.json](ug/config/#json-configuration-files) and include the model under the problem type `classification` or `regression`. 
+Go to [models.json](ug/config.md#json-configuration-files) and include the model under the problem type `classification` or `regression`. 
 
 Example for the classification section:
 
