@@ -53,7 +53,7 @@ site_url: 'https://code.kx.com/q/'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
-  favicon: ./img/favicon.ico
+  favicon: '/2021.ico'
   font: false
   features:
     - navigation.tabs

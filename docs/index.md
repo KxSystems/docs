@@ -1,6 +1,6 @@
 ---
-title: Documentation for kdb+ and the q programming language from KX
-description: Documentation, white papers and developer resources for kdb+ and the q programming language
+title: Developing with kdb+ and the q language
+description: Documentation, white papers and developer resources for kdb+ and the q programming language from KX
 author: Stephen Taylor
 ---
 # Developing with kdb+ and the q language
