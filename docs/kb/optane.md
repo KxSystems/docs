@@ -13,11 +13,10 @@ date: March 2020
 Intel® Optane™ persistent memory, herein called Intel Optane PMem, is a new
 hardware technology from Intel. 
 <!--Compared to recent emerging memory technologies,-->
-Intel Optane PMem has the potential to substantially disrupt
-the memory and storage landscape.
+<!-- Intel Optane PMem has the potential to substantially disrupt the memory and storage landscape. -->
 
-Intel Optane PMem is based on a new silicon technology, 3DX Point, which is
-significantly faster and more durable than existing storage media.
+Intel Optane PMem is based on a new silicon technology, 3D XPoint, which is
+significantly faster and more durable than NAND Flash.
 
 Intel Optane technology was first unveiled in 2017, in the form of Intel Optane
 SSD. By packaging 3DX Point in a Solid State Drive (SSD), Intel created
@@ -156,8 +155,8 @@ There are three modes by which Intel Optane PMem can be used by kdb+
 ### Memory mode
 
 In Memory mode, the DRAM acts as a cache for frequently-accessed data, while
-the Intel Optane PMem provides large memory capacity. When confiured for Memory Mode, 
-the applications and operating system perceive a pool of colatile meemory, no 
+the Intel Optane PMem provides large memory capacity. When configured for Memory Mode, 
+the applications and operating system perceive a pool of volatile memory, no 
 differently than on DRAM-only systems. In this mode, no specific persistent memory 
 programming is required in the applications. This dramatically increases the amount 
 of memory seen by the kernel and hence available to kdb+. 
