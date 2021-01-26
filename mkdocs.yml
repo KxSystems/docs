@@ -53,13 +53,13 @@ site_url: 'https://code.kx.com/q/'
 use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
-  favicon: '/2021.ico'
+  favicon: 'https://code.kx.com/2021.ico'
   font: false
   features:
     - navigation.tabs
   name: 'material'
   language: en
-  logo: 'img/kx.png'
+  logo: 'https://code.kx.com/img/kx.png'
   palette: 
     accent: 'pink'
     primary: 'black'
