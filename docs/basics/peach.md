@@ -149,8 +149,6 @@ Since V3.1, `peach` can use multiple processes instead of threads, configured th
 
 Unlike multiple threads, the distribution of the workload is not precalculated, and is distributed to the secondary processes as soon as they complete their allocated items. All data required by the peached function must either already exist on all secondary processes, or be passed as an argument. Argument sizes should be minimised because of IPC costs. 
 
-If any of the secondary processes are restarted, the primary process must also restart to reconnect. 
-
 The motivating use case for this mode is multiprocess HDBs, combined with non-compressed data and [`.Q.MAP[]`](../ref/dotq.md#qmap-maps-partitions).
 
 Secondary processes must be started explicitly and [`.z.pd`](../ref/dotz.md#zpd-peach-handles) set to a vector of their connection handles, or a function that returns it.
