@@ -323,6 +323,56 @@ a60e1654-88b0-473c-9700-4094a795b8e6 a2ed21a5-eab6-4950-aa8c-41f444601f6f 587..
 
 EmbedPy is **not** thread-safe. Functions executed on Python threads via embedPy should not call back to execute q functions. This behavior is not supported.
 
+
 ## Can embedPy functions make use of Python multithreading?
 
 Yes, provided the defined Python function does not break the thread-safety consideration above. Assuming that Python is guaranteed not to call q from any job on the threads, these Python threads can safely do work and the result can be returned to q.
+
+## Issues with loading `.p` files
+
+To load `.p` files, embedPy uses the same parsing rules as those used when loading `.q` files into a q session using the syntax `\l test.q`. This imposes some limitations on the Python structures which can be present within a `.p` file.
+
+For example, defining functions using `def` and classes using `class` are supported as the need for indentation in their definitions can be appropriately handled by treating them in the same manner as a q function or select statement which can be multi lined.
+
+However the use of docstrings or unindented comments within a class or function definition are not supported, as in the following examples:
+
+### Docstring 
+
+`docstring.p`
+
+```python
+"""
+This is a docstring
+"""
+def func():
+        return 1+1
+```
+
+When this is loaded into q using embedPy the following occurs.
+
+```q
+q)\l p.q
+q)\l docstring.p
+'e: EOF while scanning triple-quoted string literal (, line 1)
+```
+
+
+### Unindented comments
+
+`unindent.p`
+```python
+def func():
+        value1 = 1
+        value2 = 2
+# This is a valid comment in python
+        return(value1+value2)
+```
+When this is loaded into q using embedPy the following occurs.
+
+```q
+q)\l p.q
+q)\l unindent.p
+'e: unexpected indent (, line 2)
+```
+
+In this case the statement after the comment is being treated as an individual line for evaluation, not as part of the `func` definition.
