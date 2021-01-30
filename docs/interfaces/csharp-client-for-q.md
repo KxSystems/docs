@@ -6,7 +6,11 @@ keywords: api, c#, c sharp, interface, kdb+, library, q
 # C&#035;
 
 
-The C\# interface to kdb+ is implemented in the `c` class available from :fontawesome-brands-github: [KxSystems/kdb/c/c.cs](https://github.com/KxSystems/kdb/blob/master/c/c.cs). The `c` class implements the protocol to interact with a kdb+ server. The interface is similar, but not exactly the same as that for [interfacing with Java](java-client-for-q.md).
+:fontawesome-brands-github: 
+[KxSystems/csharpkdb](https://github.com/KxSystems/csharpkdb) 
+
+The C\# interface to kdb+ is implemented in the `c` class, which implements the protocol to interact with a kdb+ server. 
+The interface closely resembles that for [interfacing with Java](java-client-for-q.md).
 
 Instances may be constructed with one of the following constructors:
 
