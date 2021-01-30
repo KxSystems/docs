@@ -204,7 +204,7 @@ nav:
       - Shifts & scans: learn/shifts-scans.md
       - Technical articles: learn/blogs.md
       - Views: learn/views.md
-      - Related languages: learn/archive.md
+      - Origins: learn/archive.md
       # - Kx technology: about/kxtechnology.md
       - Terminology: about/terminology.md
     - Starting kdb+: 

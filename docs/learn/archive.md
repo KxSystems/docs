@@ -30,6 +30,7 @@ Many powerful techniques for programming in q originally appeared in earlier Ive
 
 ## :fontawesome-solid-graduation-cap: History
 
+-   [AKQJ大师](https://mp.weixin.qq.com/s/QPaDWavuZzCQIPSZ9FrACQ)
 -   [Kx Systems: A Historical Need for Speed](https://www.datanami.com/2020/10/29/kx-systems-a-historical-need-for-speed/), _Datanami_, October 2020
 -   [APL Since 1978](/download/3386319.pdf), Proc. ACM Program. Lang., Vol. 4, No. HOPL, Article 69. June 2020
 -   [Stages of Denial](http://beyondloom.com/blog/denial.html), John Earnest, March 2020
