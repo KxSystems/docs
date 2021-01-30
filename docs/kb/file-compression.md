@@ -84,7 +84,7 @@ So files that do not compress well, or have an access pattern that does not perf
 
 ### Compression statistics
 
-The [`21!` internal function](../basics/internal.md#-21x-compression-stats) returns a dictionary of compression statistics, or an empty dictionary if the file is not compressed.
+The [`-21!` internal function](../basics/internal.md#-21x-compression-stats) returns a dictionary of compression statistics, or an empty dictionary if the file is not compressed.
 
 [`hcount`](../ref/hcount.md) returns the uncompressed file length.
 
