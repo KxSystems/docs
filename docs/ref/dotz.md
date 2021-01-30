@@ -515,7 +515,7 @@ q)handles:`u#`int$();
 
 Note that (since V3.1) the worker processes are not started automatically by kdb+.
 
-:fontawesome-graduation-cap:
+:fontawesome-solid-graduation-cap:
 [Load balancing](../kb/load-balancing.md)
 
 
