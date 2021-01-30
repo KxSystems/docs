@@ -759,8 +759,6 @@ Signature: `V sd0(I d)`
 
 Remove the callback on `d` and call `kclose`.
 
-Returns null if the socket descriptor arg `d` is invalid or was not registered via `sd1`.
-
 Shared library only.
 
 
@@ -769,8 +767,6 @@ Shared library only.
 Signature: `V sd0x(I d, I f)`<br>
 
 Remove the callback on `d` and call `kclose` on `d` if `f` is 1.
-
-Returns null if the socket descriptor arg `d` is invalid or was not registered via `sd1`.
 
 Shared library only. Since V3.0 2013.04.04.
 
