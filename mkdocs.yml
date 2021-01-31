@@ -619,7 +619,9 @@ nav:
     - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Load balancing: kb/load-balancing.md
     - Memory backed by files: basics/memory-backed.md
-    - Optane Memory: kb/optane.md
+    - Optane Memory: 
+      - Optane Memory and kdb+: kb/optane.md
+      - Performance tests: architecture/optane-tests.md
     - Order Book (WP): wp/order-book.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Pub/sub with Solace (WP): wp/solace/index.md
