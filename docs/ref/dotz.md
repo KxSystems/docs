@@ -871,12 +871,17 @@ q).z.w
 .z.wc:f
 ```
 
-Where `f` is a unary function, `.z.wc` is evaluated _after_ a websocket connection has been closed.
+Where 
+
+-   `f` is a unary function
+-   `h` is the handle to a websocket connection to a kdb+ session
+
+`f[h]` is evaluated _after_ a websocket connection has been closed.
 (Since V3.3t 2014.11.26.)
 
-As the connection has been closed by the time `.z.wc` is called there are strictly no remote values that can be put into `.z.a`, `.z.u` or `.z.w` so the local values are returned.
+As the connection has been closed by the time `.z.wc` is called, there are strictly no remote values that can be put into `.z.a`, `.z.u` or `.z.w` so the local values are returned.
 
-To allow you to clean up things like tables of users keyed by handle the handle that _was_ being used is passed as a parameter to `.z.wc`.
+This allows you to clean up things like tables of users keyed by handle.
 
 :fontawesome-solid-hand-point-right:
 [`.z.po` port open](#zpo-open),
@@ -890,10 +895,15 @@ To allow you to clean up things like tables of users keyed by handle the handle 
 .z.wo:f
 ```
 
-Where `f` is a unary function, `.z.wo` is evaluated when a websocket connection to a kdb+ session has been initialized, i.e. _after_ it's been validated against any `-u`/`-U` file and `.z.pw` checks.
+Where 
+
+-   `f` is a unary function
+-   `h` is the handle to a websocket connection to a kdb+ session
+
+`f[h]` is evaluated when the connection has been initialized, i.e. _after_ it has been validated against any `-u`/`-U` file and `.z.pw` checks.
 (Since V3.3t 2014.11.26)
 
-The argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`.
+The handle argument is typically used by `f` to build a dictionary of handles to session information such as the value of `.z.a`, `.z.u`.
 
 :fontawesome-solid-hand-point-right:
 [`.z.wc` websocket close](#zwc-websocket-close),
@@ -908,7 +918,7 @@ The argument is the handle and is typically used to build a dictionary of handle
 z.ws:f
 ```
 
-Where `f` is a unary function, `.z.ws` is evaluated on a message arriving at a websocket. If the incoming message is a text message the argument is a string; if a binary message, a byte vector.
+Where `f` is a unary function, it is evaluated on a message arriving at a websocket. If the incoming message is a text message the argument is a string; if a binary message, a byte vector.
 
 Sending a websocket message is limited to async messages only (sync is `'nyi`). A string will be sent as a text message; a byte vector as a binary message.
 
@@ -1064,9 +1074,11 @@ Shorthand forms:
 ```
 
 
-
-
-
-
-
-
+---
+:fontawesome-solid-graduation-cap:
+[Callbacks](../kb/callbacks.md),
+[Using `.z`](../kb/using-dotz.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals:_ 
+[§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
