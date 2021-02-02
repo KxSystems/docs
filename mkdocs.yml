@@ -50,7 +50,6 @@ site_description: "Kx documentation for kdb+ and the q programming language"
 # config.site_name: 'code.kx.com'
 site_name: 'Kdb+ and q documentation'
 site_url: 'https://code.kx.com/q/'
-use_directory_urls: true
 theme: 
   custom_dir: custom_theme/
   favicon: 'https://code.kx.com/2021.ico'
@@ -67,6 +66,7 @@ theme:
   static_templates:
     - 401.html
     - 404.html
+use_directory_urls: true
 nav:
   - Home: 
     - kdb+ and q: index.md
