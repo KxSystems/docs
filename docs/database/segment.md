@@ -38,6 +38,18 @@ db                 db                        db
                ..                    ..
 ```
 
+`par.txt` for the above:
+
+```txt
+/1/db
+/2/db
+```
+
+??? danger "Do not end the paths with a folder delimiter"
+
+      `/0/db` is good, but `/0/db/` can be bad, depending on the filesystem.
+
+
 
 ## Multithreading
 
