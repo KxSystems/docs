@@ -75,7 +75,7 @@ We configured two systems:
 
 We configured a KX Streaming Analytics system operating in a high-availability (HA) cluster, processing and analyzing semiconductor manufacturing data as follows. We ran tests on both configurations for ingestion, processing, and analytics. Tests were run with the same data and durations.
 
-![](img/image2.png)
+![Environment setup](img/image2.png)
 
 
 ### Publishing and ingestion
@@ -109,11 +109,11 @@ The data model workload involved multiple tables representing reference or maste
 This relational model is used in fulfilling streaming analytics and queries spanning real-time and historical data.
 KX ingests raw data streams, processes and persists data into the following structure.
 For efficient queries and analytics, KX batches and stores data for similar time ranges together, using one or more sensor or streaming data loaders.
-
+<!-- 
 The tables and fields used in our configuration are illustrated below.
 
 ![](img/image3.png)
-
+ -->
 
 ## Test results
 
@@ -133,7 +133,7 @@ Note the cache is cleared after each test, unless otherwise specified.
 
     This improves overall system performances and lowers demand on the Linux kernel for moving data in/out of page cache and for overall memory management.
 
-Read performance (Intel Optane persistent memory as block device vs.
+Read performance (Intel Optane persistent memory as block device vs
 NVMe storage):
 
 -   2× to 9× faster reading data from 36 different files in parallel
@@ -158,6 +158,9 @@ Write performance:
   .results tbody tr:first-child td {
     padding-top: .3em;
   }
+  .results td {
+    font-weight: bold;
+  }
   .results td,
   .results th {
     padding: 0 .8em;
@@ -168,6 +171,7 @@ Write performance:
   }
   .results td.lbl {
     font-family: 'EuclidSquare', -apple-system, Helvetica, Arial, sans-serif;
+    font-weight: normal;
     padding-right: 1em;
     text-align: left;
     white-space: nowrap;
@@ -175,10 +179,17 @@ Write performance:
   .results td.subhead {
     border-bottom: 1px solid rgba(219,222,223,.5);
     font-family: 'EuclidSquare', -apple-system, Helvetica, Arial, sans-serif;
-    font-weight: bold;
+    font-weight: normal;
+    letter-spacing: .2em;
+    opacity: .5;
     padding-bottom: .3em;
     padding-top: .3em;
     text-align: center;
+    text-transform: uppercase;
+  }
+  .results td.subhead:before,
+  .results td.subhead:after {
+    content: " — ";
   }
 </style>
 
@@ -246,7 +257,7 @@ Query response times using Intel Optane persistent memory were
 <tbody>
 <tr><td class="subhead" colspan="6">1 query at a time</td></tr>
 <tr><td class="lbl">Mean response time (ms)</td><td>23</td><td>26</td><td>319</td><td>1.17</td><td>12.10</td></tr>
-<tr><td class="lbl">Mean Payload Size (KB)</td><td>778</td><td>778</td><td>668</td><td>1</td><td>1</td></tr>
+<tr><td class="lbl">Mean payload size (KB)</td><td>778</td><td>778</td><td>668</td><td>1</td><td>1</td></tr>
 <tr><td class="subhead" colspan="6">100 queries at a time</td></tr>
 <tr><td class="lbl">Mean response time (ms)</td><td>100</td><td>82</td><td>310</td><td>0.82</td><td>3.77</td></tr>
 <tr><td class="lbl">Mean payload size (KB)</td><td>440</td><td>440</td><td>525</td><td>1</td><td>1</td></tr>
