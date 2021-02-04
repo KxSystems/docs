@@ -80,7 +80,7 @@ We configured a KX Streaming Analytics system operating in a high-availability (
 
 ### Publishing and ingestion
 
--   Publish and ingest over 755K sensor readings in 894 messages per second, 2.5 TB per day
+-   Publish and ingest over 2.25M sensor readings in 894 messages per second, 2.5 TB per day
 -   Ingest sensor trace, aggregation, event, and IoT data using four publishing clients from a semiconductor front-end processing environment
 
 
