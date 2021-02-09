@@ -3,13 +3,12 @@ title: embedPy – Machine Learning – kdb+ and q documentation
 description: embedPy allows the kdb+ interpreter to manipulate Python objects and call Python functions.
 keywords: embedpy, interface, kdb+, python
 ---
-# <i class="fab fa-python"></i> embedPy
+# :fontawesome-brands-python: embedPy
 
 
 
-<div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../../interfaces/fusion.md)
-</div>
+:fontawesome-brands-superpowers: [Fusion for kdb+](../../interfaces/fusion.md)
+{: .fusion}
 
 
 
@@ -21,9 +20,9 @@ keywords: embedpy, interface, kdb+, python
 
 ## Build and install
 
-<i class="fas fa-download"></i>
+:fontawesome-solid-download:
 Download the code from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/embedPy](https://github.com/kxsystems/embedpy) and follow installation instructions there.
 
 EmbedPy can also be downloaded through a Conda install as follows

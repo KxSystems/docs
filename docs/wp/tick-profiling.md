@@ -1,17 +1,24 @@
 ---
-title: Kdb+tick profiling for throughput optimization – White Papers – kdb+ and q documentation
+title: Kdb+tick profiling for throughput optimization | White Papers | kdb+ and q documentation
 description: Key factors that influence the performance and throughput of a kdb+ tickerplant, a methodology to profile its performance, and four key areas to control.
 author: Ian Kilpatrick
 date: March 2014
 keywords: chained tickerplant, frequency, kdb+, performance, publish, q, rdb, subscribers, tick, tickerplant, update
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+tick profiling for throughput optimization
+
+by [Ian Kilpatrick](#author)
+{: .wp-author}
+
 
 
 
 Kdb+ is seen as the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data. The core of a kdb+ tick capture system is the tickerplant. 
 
-Kx’s source code for kdb+tick will form the basis of this paper. The purpose of this white paper is to discuss factors which influence messaging and throughput performance for a kdb+-based tick-capture system and to present a methodology with which this performance can be profiled to assist in optimizing the tick system configuration.
+KX’s source code for kdb+tick will form the basis of this paper. The purpose of this white paper is to discuss factors which influence messaging and throughput performance for a kdb+-based tick-capture system and to present a methodology with which this performance can be profiled to assist in optimizing the tick system configuration.
 
 Some of the possible factors are:
 
@@ -26,7 +33,7 @@ Some of the possible factors are:
 
 This paper examines the first four of these. All tests were performed on 64-bit Linux with eight CPUs, using kdb+ version 3.1 (2014.02.08).
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Starting kdb+: [Tick](../learn/startingkdb/tick.md)
 
 !!! note "Your mileage will vary"
@@ -388,7 +395,7 @@ We can see that increasing the number of subscribers increases the tickerplant p
 
 If there are multiple subscribers to a tickerplant it might be worth considering a chained tickerplant to reduce the number of subscribers. Only the chained tickerplant and the subscribers which need the data as quickly as possible would subscribe to the main tickerplant. Then other subscribers would subscribe to the chained tickerplant to get the data.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Chained tickerplant](../kb/chained-tickerplant.md)
 
 
@@ -412,9 +419,10 @@ The results shown here not representative of kdb+ systems as a whole. Results fo
 
 All tests were run using kdb+ version 3.1 (2014.02.08)
 
+[:fontawesome-solid-print: PDF](/download/wp/kdbtick_profiling_for_throughput_optimization.pdf)
+
 
 ## Author
 
-Ian Kilpatrick has worked on several kdb+ systems. Based in Belfast,
-Ian is a technical architect for high-performance data-management, event-processing and trading platforms.
+**Ian Kilpatrick** has worked on several kdb+ systems. Based in Belfast, Ian is a technical architect for high-performance data-management, event-processing and trading platforms.
 

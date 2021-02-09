@@ -1,11 +1,18 @@
 ---
-title: Columnar database and query optimization
+title: Columnar database and query optimization | White Papers | documentation for q and kdb+
 description: Methods available to developers for optimizing queries to a kdb+ database
 date: June 2012
 author: Ciáran Gorman
 keywords: attribute, columnar, database, grouped, kdb+, optimize, partitioned, performance, q, query, sorted, unique
 ---
+White paper
+{: #wp-brand}
+
 # Columnar database and query optimization
+
+by [Ciáran Gorman](#author)
+{: .wp-author}
+
 
 
 
@@ -15,13 +22,13 @@ Kdb+ has a well deserved reputation as a high-performance database, appropriate 
 
 Adjustments to column attributes are made using the `dbmaint.q` library.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb/utils/dbmaint.q](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md)
 
 Where appropriate, OS disk cache has been flushed using Simon
 Garland’s `io.q` script. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/io](https://github.com/simongarland/io)
 
 Tests performed using kdb+ version 2.8 (2012.05.29)
@@ -241,7 +248,7 @@ When we look at the performance of the requests, we can see that due to map-redu
 
 <small>_Figure 4: Map-reduce execution times as database grows_</small>
 
-It is possible to take advantage of this behavior with kdb+’s slaves, where the map calculation components are distributed to slaves in parallel, which can lead to very fast performance. The use of slaves is outside the scope of this paper.
+It is possible to take advantage of this behavior with kdb+’s secondary processes, where the map calculation components are distributed to secondary processes in parallel, which can lead to very fast performance. The use of secondary processes is outside the scope of this paper.
 
 
 ## Use of attributes
@@ -574,12 +581,12 @@ To illustrate this, consider the following methods for calculating the last pric
 //create simulated realtime trade table sorted on time
 q)rttrade:update `#time from `time xasc select from trade where date=first date
 q)\ts select last price by sym from rttrade
-24 33561280j
+24 33561280
 
 //create simulated realtime trade table sorted on time
 q)rttrade:update `g#sym, `#time from `time xasc select from trade where date=first date
 q)\ts select last price by sym from rttrade
-15 33559232j
+15 33559232
 
 //create simulated realtime trade table sorted on time
 q)rttrade:update `g#sym, `#time from `time xasc select from trade where date=first date
@@ -588,7 +595,7 @@ q)rttrade:update `g#sym, `#time from `time xasc select from trade where date=fir
 //last value in each vector. Use these index values to directly index 
 //into the price vector, then create a table with the results
 q)\ts {1!([]sym:key x;price::value x)} rttrade[`price] last each group[rttrade`sym]
-0 15072j
+0 15072
 ```
 
 As we can see in the results above, using the same form of query with the attribute applied results in a significant speedup. However, using an alternative approach in which we retrieve the individual indexes for each security, then find the last, results in a much faster calculation, and usage of much less data.
@@ -596,7 +603,7 @@ As we can see in the results above, using the same form of query with the attrib
 
 #### Grouped attribute as query grows
 
-This example will examine the behaviour of the grouped attribute as the requested universe grows. We will use more than one query format, and observe whether the format of the request impacts performance. The data used for the example is quote data drawn from our example database, and sorted on time to simulate real-time data. Kdb+ will be restarted between tests.
+This example will examine the behavior of the grouped attribute as the requested universe grows. We will use more than one query format, and observe whether the format of the request impacts performance. The data used for the example is quote data drawn from our example database, and sorted on time to simulate real-time data. Kdb+ will be restarted between tests.
 
 ```q
 //make dictionary containing groups of distinct syms 
@@ -661,7 +668,12 @@ Tests performed using kdb+ version 2.8 (2012.05.29)
 
 ## Author
 
-Ciarán Gorman is a financial engineer who has designed and developed
-data-management systems across a wide range of asset classes for top-tier investment banks.
+![Ciarán Gorman](../../img/faces/ciarangorman.jpg)
+{: .small-face}
 
+**Ciarán Gorman** is a financial engineer who has designed and developed data-management systems across a wide range of asset classes for top-tier investment banks.
+
+
+:fontawesome-solid-print:
+[PDF](/download/wp/columnar_database_and_query_optimization.pdf)
 

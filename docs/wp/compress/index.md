@@ -1,11 +1,17 @@
 ---
-title: Compression in kdb+ – White papers – q and kdb+ documentation
+title: Compression in kdb+ | White papers | q and kdb+ documentation
 description: introduction to compression in kdb+, contributing factors to compression ratios and performance, and how the use of compressed data can affect performance 
 author: Eoin Killeen
 date: October 2013
 keywords: compress, compression ratio, datatype, get, gzip, kdb+, logical block size, performance, q, set, 
 ---
+White paper
+{: #wp-brand}
+
 # Compression in kdb+
+
+by [Eoin Killeen](#author)
+{: .wp-author}
 
 
 
@@ -25,7 +31,7 @@ All tests were run using kdb+ version 3.1 (2013.09.05)
 
 There are two high-level approaches to saving on-disk data in compressed format. The first is a two-step approach: save data to disk in the regular uncompressed format using `set`, then convert it to a compressed format using the `-19!` operator. The second approach is to stream data directly from memory to compressed format on disk by modifying the left argument to `set`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`set`](../../ref/get.md#set), 
 [`-19!`](../../basics/internal.md#-19x-compress-file)
 
@@ -69,7 +75,7 @@ The various combinations of arguments will be discussed further in the following
 
 If this approach is used to compress data, it is preferable to have the source and target files on separate physical disks. This will reduce the number of disk seeks required to move the data iteratively in chunks. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/compress/cutil.q](https://github.com/simongarland/compress/blob/master/cutil.q) for migrating uncompressed databases to compressed format
 
 
@@ -187,7 +193,7 @@ The focus of our tests will be on the impact to downstream users of the data rat
 
 Each system will have its own performance characteristics, and experimentation with the compression parameters should be done on a case-by-case basis. We will measure the impact of using compressed rather than uncompressed data across a range of query types. The tests will be run first with the data present in the OS cache, and then with the cache completely cold, having been emptied before each test using the cache-flush functionality of the `io.q` script.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/io](https://github.com/simongarland/io/)
 
 Each test will be performed 10 times (with the cache being fully flushed before each iteration of the cold-cache tests) and timings will be averaged. For hot-cache results, the first query time will not be included in the average. This is to allow for initial caching from disk.
@@ -299,8 +305,17 @@ The final test is a highly CPU-intensive as-of join of the trade and quote recor
 
 In any given application, the metrics which will determine if and how compression should be used will be informed by the individual use case. Our tests have shown that for this particular setup, assuming some OS caching, the more CPU-intensive queries will see significantly less overall impact than simple reads on small, randomly distributed pieces of data. This implies that we could expect to see acceptable performance levels for intensive queries, while achieving worthwhile reductions in disk usage, i.e. our compression ratio of 1.5. Experimenting with logical block sizes suggested that we should keep this parameter at the low end of the spectrum for our queries, or we will see a fall-off in performance. This is reinforced by the relative lack of change in compression ratio across logical block sizes. Depending on the individual use case, other applications may choose to optimize for overall compression ratio or time taken to save the data.
 
+[:fontawesome-solid-print: PDF](/download/wp/compression_in_kdb.pdf)
+
 
 ## Author
 
-Eoin Killeen is based in New York. Eoin has worked as a kdb+ consultant on the design and development of a wide range of high-performance trading and analytics applications. He is currently working on a global real-time electronic trading visualization platform and an equity derivatives analytics portal at a US investment bank.
+![Eoin Killeen](../../img/faces/eoinkilleen.jpg)
+{: .small-face}
+
+**Eoin Killeen** has worked with KX technology for over ten years, designing and building real-time trading and analytics systems for clients in New York and London.
+Eoin’s current focus is Solution Architecture for EMEA-based clients.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:ekilleen@kx.com?subject=White paper: Compression in kdb+) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/eoin-killeen/)
 

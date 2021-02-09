@@ -5,7 +5,13 @@ author: Jason Quinn
 date: November 2019
 keywords: alerts, latency, realtime alert logic, surveillance  
 ---
+White paper
+{: #wp-brand}
+
 # Latency and efficiency considerations for a real-time surveillance system
+
+by [Jason Quinn](#author)
+{: .wp-author}
 
 
 
@@ -14,9 +20,9 @@ The time between transaction execution and transaction monitoring against regula
 
 Running analytics in real-time has the benefit of alerting on transactions as soon as possible, but runs the risk of generating alerts that subsequent, but unforeseeable, amendments/cancellations or positions may render as false positives. Running analytics on an intraday/end-of-day basis provides the benefit of hindsight to prevent such potential false positives, but delays the detection, remediation and damage limitation of real trading violations.
 
-In general, alerts on trading abuses like Momentum Ignition or Ping Orders in the Kx for Surveillance system, fire in real-time on real-time streaming data. While it may be simpler to operate on intraday data by looking across, say, fixed 15-minute buckets of data in isolation, such an approach risks missing alerts. For example, a trader might not violate Ping Orders alert logic within bucket $N$ or bucket $N+1$ in isolation but might violate it if they were combined.
+In general, alerts on trading abuses like Momentum Ignition or Ping Orders in the KX for Surveillance system, fire in real-time on real-time streaming data. While it may be simpler to operate on intraday data by looking across, say, fixed 15-minute buckets of data in isolation, such an approach risks missing alerts. For example, a trader might not violate Ping Orders alert logic within bucket $N$ or bucket $N+1$ in isolation but might violate it if they were combined.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Blog:<br>
 [Momentum Ignition Alert](https://kx.com/blog/kx-product-insights-momentum-ignition-alert/)<br>
 [Ping Order Alerts](https://kx.com/blog/kx-product-insights-ping-order-alerts/)
@@ -58,7 +64,7 @@ This is just an example of the need for hindsight. Different organizations may h
 
 ### Syntax and arguments
 
-In such cases, when transactional data is received through a feed, and needs to be analyzed against real-time logic, Kx has a built-in function called a window join ([wj1](../../ref/wj.md)) to perform the required aggregations of a lookback cached in-memory table in moving time windows in one go. It takes four arguments, which we describe with long names to illustrate their meaning as follows:
+In such cases, when transactional data is received through a feed, and needs to be analyzed against real-time logic, KX has a built-in function called a window join ([wj1](../../ref/wj.md)) to perform the required aggregations of a lookback cached in-memory table in moving time windows in one go. It takes four arguments, which we describe with long names to illustrate their meaning as follows:
 
 ```q
 wj1[
@@ -238,10 +244,10 @@ In the intraday cases, when we say every $x$ minutes, we mean every $x$ minutes 
 
 For each case, we run the alert analytic twenty times to simulate twenty such logic checks running in an alert-engine process within the system.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Appendix](#appendix-surveillance-framework-example) for how to install and configure the code.
 
 
@@ -331,13 +337,13 @@ These results show that the use of event ID windows instead of timestamp windows
 
 ## Conclusions
 
-There are other factors that we have not experimented with – the distribution of the twenty runs of the alert analytics out to different slave threads, implementing intraday memory management techniques in the alert engines or varying the hard-coded lookback threshold of five minutes on top of varying the intraday execution point frequency.
+There are other factors that we have not experimented with – the distribution of the twenty runs of the alert analytics out to different secondary threads, implementing intraday memory management techniques in the alert engines or varying the hard-coded lookback threshold of five minutes on top of varying the intraday execution point frequency.
 
 Whether on the minimal grouping by sym or on an estimated realistic grouping of sym and member ID, the real-time execution results appear not to discount the possibility of the alert engine being regularly occupied while it attempts to catch up with the live streaming data. More careful examination of bucket-by-bucket results is required though, to truly qualify that finding. If so, this would affect the implementation of memory-management techniques or the scheduling of intraday/end-of-day activities within the alert engines as the lag could continuously build up over time (more applicable in the case of 24 streaming data as is used in these experiments). This ties in with the conclusions in the “[Kdb+tick profiling for throughput optimization](../tick-profiling.md)” white paper, where it is found more efficient to deal with messages in bulk rather than in isolation – further justifying our dismissal of the iterative approach.
 
-On the other hand, the results suggest that the intraday approaches always finish their task in ample time before the next intraday milestone is reached – giving plenty of time for any memory management tasks or intraday/end-of-day job scheduling to complete in an expected timeframe. For example, the results suggest that any EOD job scheduled in an alert engine running on an intraday 1-minute basis will start at most at 00:07 after the last intraday bucket of the day has been analyzed by the 20 alert calls. This short delay could be further reduced by memory-management techniques and the use of slave threads.
+On the other hand, the results suggest that the intraday approaches always finish their task in ample time before the next intraday milestone is reached – giving plenty of time for any memory management tasks or intraday/end-of-day job scheduling to complete in an expected timeframe. For example, the results suggest that any EOD job scheduled in an alert engine running on an intraday 1-minute basis will start at most at 00:07 after the last intraday bucket of the day has been analyzed by the 20 alert calls. This short delay could be further reduced by memory-management techniques and the use of secondary threads.
 
-On the use of the ad-hoc function, the granularity of grouping values has considerable impact on how better or worse it performs over the window-join approaches, where it seems the more granularity, the better. If viewing the very small case of fifteen possible values as being in the spectrum of worst cases, then it performs slightly slower but still within the safe lag limits of the window-join approaches. It does have a much higher memory usage over the window joins though. Again, however, the use of slave threads could mitigate that increase. If viewing the simulation of member IDs and grouping on sym+memberID as being on the spectrum of realistic or even best cases (with over 75,000 possible values), the ad-hoc approach performs best. Regardless, all intraday results suggest that grouping on a higher granularity of values increases execution times.
+On the use of the ad-hoc function, the granularity of grouping values has considerable impact on how better or worse it performs over the window-join approaches, where it seems the more granularity, the better. If viewing the very small case of fifteen possible values as being in the spectrum of worst cases, then it performs slightly slower but still within the safe lag limits of the window-join approaches. It does have a much higher memory usage over the window joins though. Again, however, the use of secondary threads could mitigate that increase. If viewing the simulation of member IDs and grouping on sym+memberID as being on the spectrum of realistic or even best cases (with over 75,000 possible values), the ad-hoc approach performs best. Regardless, all intraday results suggest that grouping on a higher granularity of values increases execution times.
 
 In conclusion, between what appears to be an acceptable guaranteed cap on the lag behind the live-streaming data and with the advantages of having the ability to perform hindsight analysis to prevent possible false positives, implementing a surveillance solution that runs in the form of highly frequent intraday execution points for the live streaming data appears to be a very safe choice.
 
@@ -348,8 +354,10 @@ In conclusion, between what appears to be an acceptable guaranteed cap on the la
 
 ## Author 
 
-Jason Quinn is a kdb+ consultant based in London. He worked on a global cross asset Kx for Surveillance implementation for a major international banking group before 
-joining our Kx for Surveillance product team.
+![Jason Quinn](../../img/faces/jasonquinn.jpg)
+{: .small-face}
+
+**Jason Quinn** is a kdb+ consultant based in London. He worked on a global cross asset _Kx for Surveillance_ implementation for a major international banking group before joining our _Kx for Surveillance_ product team.
 
 
 ## Appendix – Surveillance framework example
@@ -369,7 +377,7 @@ Tickerplant | Receives messages in q format, typically from a feed handler, writ
 RDB | Receives messages from a ticker plant and stores them in in-memory tables which are written to disk at the end of the day 
 HDB | Stores historical messages in date partitions
 
-In addition, we have introduced a number of alert-engine processes subscribing to the tickerplant into the standard TP framework. Altogether, we have 16 alert engines, performing the tests on the four different coding approaches running at four different execution points. They all publish any discovered violations to an Alert Monitor process where the alerts can be viewed. Over all of these processes, we have made a master process that starts the rest of the processes up, monitors their responsiveness and shuts them down at the end of the test and constructs a summary of timings and stores them in csv format so that they can be inspected afterwards.
+In addition, we have introduced a number of alert-engine processes subscribing to the tickerplant into the standard TP framework. Altogether, we have 16 alert engines, performing the tests on the four different coding approaches running at four different execution points. They all publish any discovered violations to an Alert Monitor process where the alerts can be viewed. Over all of these processes, we have made a primary process that starts the rest of the processes up, monitors their responsiveness and shuts them down at the end of the test and constructs a summary of timings and stores them in CSV format so that they can be inspected afterwards.
 
 This framework is for the purposes of experimenting only and we do not suggest that this is an optimal TP setup for the above processes. Potentially we could have placed chained ticker plants between the main parent ticker plant and the alert engines.
 
@@ -407,7 +415,7 @@ We set a similar but simpler schema for `dxTradePublic`. Other adjustments to th
 
 We assume the reader is installing on a Linux platform.
 
-1.  Clone the repository <i class="fab fa-github"></i> [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
+1.  Clone the repository :fontawesome-brands-github: [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
 
     <pre><code class="language-bash">
     $ cd $HOME
@@ -444,7 +452,7 @@ The system can be started by loading the `startUp.q` script in `kdbAlertTP`.
 $ q startUp.q
 ```
 
-This will start up the master process with the default settings on. A table called `processStatus` will be available with process port numbers, PIDs and last heartbeat received time. The reader can query `dxOrderPublic` or `dxTradePublic` in the RDB. We can query any alerts in `dxAlert` in the alert monitor process. To shut down the test framework, from within the master process, we can simply call
+This will start up the primary process with the default settings on. A table called `processStatus` will be available with process port numbers, PIDs and last heartbeat received time. The reader can query `dxOrderPublic` or `dxTradePublic` in the RDB. We can query any alerts in `dxAlert` in the alert monitor process. To shut down the test framework, from within the primary process, we can simply call
 
 ```q
 \l shutDown.q
@@ -491,7 +499,7 @@ upd:{[t;x]
   /Convert to tabular form from list of replayed directly from log file
   if[0=type x;x:enlist cols[t]!x;];
 
-  /Pass to master alert upd function
+  /Pass to primary alert upd function
   .ae.alert_upd[t;x];
 
   /Push any alerts sitting in dxAlert to the alert monitor
@@ -505,7 +513,7 @@ upd:{[t;x]
   ] }
 ```
 
-It then defines a master `alert_upd` function to behave appropriately whether the run time is real-time or intraday and behaves as follows:
+It then defines a primary `alert_upd` function to behave appropriately whether the run time is real-time or intraday and behaves as follows:
 
 It only proceeds if 
 

@@ -1,17 +1,17 @@
 ---
-title: group – Reference – kdb+ and q documentation
+title: group | Reference | kdb+ and q documentation
 description: group is a q keyword that returns a dictionary in which the keys are the distinct items of its argument, and the values the indexes where the distinct items occur.
 author: Stephen Taylor
-keywords: group, kdb+, q, qsql, sql, sort
 ---
 # `group`
 
 
 
+```txt
+group x     group[x]
+```
 
-Syntax: `group x`, `group[x]`
-
-Returns a dictionary in which the keys are the distinct items of `x`, and the values the indexes where the distinct items occur. 
+Returns a dictionary in which the keys are the distinct items of `x`, and the values the indexes where the distinct items occur.
 
 The order of the keys is the order in which they appear in `x`.
 
@@ -44,7 +44,11 @@ p| 8
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
-[`ungroup`](ungroup.md), 
-[`xgroup`](xgroup.md)  
-Basics: [Sorting](../basics/sort.md) 
+----
+
+:fontawesome-solid-book:
+[`ungroup`](ungroup.md),
+[`xgroup`](xgroup.md)
+<br>
+:fontawesome-solid-book:
+[Sorting](../basics/by-topic.md#sort)

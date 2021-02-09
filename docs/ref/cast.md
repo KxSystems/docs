@@ -1,7 +1,6 @@
 ---
 title: Cast converts data to another datatype | Reference | kdb+ and q documentation
 description: Cast is a q operator that converts a data argument to another datatype.
-keywords: cast, datatype, dollar, kdb+, q, tok
 ---
 
 # `$` Cast
@@ -10,14 +9,15 @@ keywords: cast, datatype, dollar, kdb+, q, tok
 
 _Convert to another datatype_
 
-Syntax: `x$y`, `$[x;y]`
+```txt
+x$y     $[x;y]
+```
 
 Where `x` is: 
 
--   a lower-case letter, symbol or positive short atom (or list of such atoms), returns `y` cast according to `x`. A table of `x` values for Cast:
+-   a **positive short, lower-case letter, or symbol** from the following table, returns `y` cast according to `x`
 
-    <pre><code class="language-q">
-    q)flip{(x;.Q.t x;key'[x\$\:()])}5h\$where" "<>20#.Q.t
+    <pre><code class="txt">
     1h  "b" \`boolean
     2h  "g" \`guid
     4h  "x" \`byte
@@ -27,7 +27,6 @@ Where `x` is:
     8h  "e" \`real
     9h  "f" \`float
     10h "c" \`char
-    11h "s" \`symbol
     12h "p" \`timestamp
     13h "m" \`month
     14h "d" \`date
@@ -38,17 +37,45 @@ Where `x` is:
     19h "t" \`time
     </code></pre>
 
--   `0h` or `"*"`, returns `y` ([Identity](identity.md)).
+-   a symbol from the list **`` `year`dd`mm`hh`uu`ss``** and `y` is a temporal type, returns the year, day, month, hour, minute, or seconds value from `y` as [tabulated below](#temporal)
 
-    <pre><code class="language-q">
-    q)("\*";0h)\$1
-    1 1
-    q)("\*";0h)\$\:"2012-02-02"
-    "2012-02-02"
-    "2012-02-02"
-    </code></pre>
+-   **`0h` or `"*"`**, and `y` is not a string, returns `y` ([Identity](#identity))
 
-Where `x` is an upper-case letter or a negative short int, and `y` is a string, see [Tok](tok.md).
+-   an **upper-case letter** or a **negative short int**, see [Tok](tok.md)
+
+Casting does not change the underlying bit pattern of the data, only how it is represented.
+
+
+## :fontawesome-solid-sitemap: Iteration
+
+Cast is an [atomic function](../basics/atomic.md).
+
+```q
+q)12 13 14 15 16 17 18 19h$42
+2000.01.01D00:00:00.000000042
+2003.07m
+2000.02.12
+2000.02.12T00:00:00.000
+0D00:00:00.000000042
+00:42
+00:00:42
+00:00:00.042
+
+q)(12h;"m";`date)$42
+2000.01.01D00:00:00.000000042
+2003.07m
+2000.02.12
+
+q)(12h;"m";`date)$42 43 44
+2000.01.01D00:00:00.000000042
+2003.08m
+2000.02.14
+
+q)(12h;13 14h)$(42;42 42)
+2000.01.01D00:00:00.000000042
+(2003.07m;2000.02.12)
+```
+
 
 ## Integer
 
@@ -115,22 +142,22 @@ nanoseconds: "i"$timestamp mod 1000000000
 ```
 
 
-## String to symbol
-
-When converting a string to a symbol, leading and trailing blanks are automatically trimmed:
+## Identity
 
 ```q
-q)`$"   IBM   "
-`IBM
+q)("*";0h)$1
+1 1
 ```
 
-
-!!! tip "Use [Tok](tok.md) to cast a string to numeric or temporal"
-
+For string values of `y`, see [Tok](tok.md).
 
 ## Infinities and beyond
 
-!!! warning "Casting an infinity from a narrower to a wider datatype does not always return another infinity."
+!!! danger "Casting an infinity from a narrower to a wider datatype returns a finite value."
+
+When an integral infinity is cast to an integer of wider type, it is the _same underlying bit pattern_, reinterpreted. 
+
+Since this bit pattern is a legitimate value for the wider type, the cast returns a finite value.
 
 ```q
 q)`float$0Wh
@@ -139,7 +166,14 @@ q)`float$0Wh
 
 !!! tip "The infinity corresponding to numeric `x` is `min 0#x`."
 
-<i class="far fa-hand-point-right"></i> 
-[Tok](tok.md), 
-[dollar `$`](overloads.md#dollar)<br>
-Basics: [Casting and encoding](../basics/casting.md)
+----
+:fontawesome-solid-book:
+[Tok](tok.md)
+<br> 
+:fontawesome-solid-book:
+[Overloads of `$`](overloads.md#dollar)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.2 Cast](/q4m3/7_Transforming_Data/#731-data-to-strings)
+

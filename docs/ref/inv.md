@@ -1,8 +1,7 @@
 ---
-title: inv – Reference – kdb+ and q documentation
+title: inv – matrix inverse | Reference | kdb+ and q documentation
 description: inv is a q keyword that returns the matrix inverse of its argument.
 author: Stephen Taylor
-keywords: inv, inverse, kdb+, matrix, q
 ---
 # `inv`
 
@@ -10,8 +9,9 @@ _Matrix inverse_
 
 
 
-
-Syntax: `inv x`, `inv[x]`
+```txt
+inv x     inv[x]
+```
 
 Returns the inverse of non-singular float matrix `x`.
 
@@ -34,12 +34,17 @@ q)1=a mmu inv a
 
 `lsq` solves a normal equations matrix via Cholesky decomposition – solving systems is more robust than matrix inversion and multiplication.
 
-Since V3.6 2017.09.26 `inv` uses LU decomposition. 
+Since V3.6 2017.09.26 `inv` uses LU decomposition.
 Previously it used Cholesky decomposition as well.
 
 
-<i class="far fa-hand-point-right"></i>
-[`lsq`](lsq.md)  
-Basics: [Mathematics](../basics/math.md)  
-Wikipedia: [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition),
-[Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion)
+---- 
+:fontawesome-solid-book:
+[`lsq`](lsq.md)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-brands-wikipedia-w:
+[LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition "Wikipedia"),
+[Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion "Wikipedia")

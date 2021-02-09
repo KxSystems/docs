@@ -4,7 +4,7 @@ date: August 2018
 keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, comparison, corpora, corpus, document, email, feature, file, k-mean, kdbplus, learning, machine, machine learning, mbox, message, ml, nlp, parse, parsing, q, sentiment, similarity, string function, vector
 ---
 
-# <i class="fas fa-share-alt"></i> Data preparation
+# :fontawesome-solid-share-alt: Data preparation
 
 ## Preparing text
 
@@ -74,7 +74,7 @@ cols corpus
 !!! Note "Language support"
 
 	`.nlp.newParser` also supports Chinese (`zh`) and Japanese (`ja`) tokenization. These languages are only in the alpha stage of developement within Spacy so all functionality may not be available. Instructions on how to install these languages can be found at
-    <i class="fab fa-github"></i> 
+    :fontawesome-brands-github: 
     [KxSystems/nlp](https://github.com/KxSystems/nlp).
 
 

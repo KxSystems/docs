@@ -1,7 +1,6 @@
 ---
 title: PyQ user guide – Interfaces – kdb+ and q documentation
 description: PyQ lets you enjoy the power of kdb+ in a Python environment.
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
 ---
@@ -976,7 +975,7 @@ When the Each iterator is applied to an **integer vector**, it derives a n-ary f
 k('1 100 30')
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Case](../../ref/maps.md#case) iterator
 
 Note that atoms passed to `v.each` are treated as infinitely repeated values. Vector arguments must all be of the same length.

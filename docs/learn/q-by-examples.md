@@ -377,9 +377,9 @@ q)sum D=/:S                                 / where items of D are in S
 
 ## Source
 
-Source code <i class="fab fa-github"></i> [kxcontrib/avrabecz/qybeg.q](https://github.com/kxcontrib/avrabecz/blob/master/qbyeg.q)
+Source code :fontawesome-brands-github: [kxcontrib/avrabecz/qybeg.q](https://github.com/kxcontrib/avrabecz/blob/master/qbyeg.q)
 
 Based on [J by Example](http://olegykj.sourceforge.net) 06/11/2005 © Oleg Kobchenko 
 
-<!-- <i class="far fa-hand-point-right"></i> <http://vrabi.web.elte.hu/k> for older k3 and k4 versions -->
+<!-- :fontawesome-regular-hand-point-right: <http://vrabi.web.elte.hu/k> for older k3 and k4 versions -->
 

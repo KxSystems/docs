@@ -1,8 +1,7 @@
 ---
-title: gtime, ltime – Reference – kdb+ and q documentation
+title: gtime, ltime – global and local time | Reference | kdb+ and q documentation
 description: gtime and ltime are q keywords that return, respectively, global and local time.
 author: Stephen Taylor
-keywords: clock, environment, global, gtime, local, ltime, kdb+, os, q, system, time, timestamp, utc
 ---
 # `gtime`, `ltime`
 
@@ -15,10 +14,11 @@ _Global and local time_
 
 _UTC equivalent of local timestamp_
 
+```txt
+gtime ts    gtime[ts]
+```
 
-Syntax: `gtime ts`, `gtime[ts]`
-
-Where `ts` is a datetime/timestamp, returns the UTC datetime/timestamp. 
+Where `ts` is a datetime/timestamp, returns the UTC datetime/timestamp.
 
 ```q
 q).z.p
@@ -33,9 +33,11 @@ q)gtime .z.P                      / same timezone as .z.p
 
 _Local equivalent of UTC timestamp_
 
-Syntax: `ltime ts`, `ltime[ts]`
+```txt
+ltime ts    ltime[ts]
+```
 
-Wwhere `ts` is a datetime/timestamp, returns the local datetime/timestamp. 
+Where `ts` is a datetime/timestamp, returns the local datetime/timestamp.
 
 ```q
 q).z.P
@@ -47,13 +49,16 @@ q)ltime .z.p                  / same timezone as .z.P
 
 ## System clocks
 
-UTC and local datetime/timestamps are available as 
+UTC and local datetime/timestamps are available as
 
-scope | datetime                            | timestamp
-------|-------------------------------------|----------------------------------
-UTC   | [`.z.z`](dotz.md#zz-utc-datetime)   | [`.z.p`](dotz.md#zp-utc-timestamp)
-local | [`.z.Z`](dotz.md#zz-local-datetime) | [`.z.P`](dotz.md#zp-local-timestamp) 
+<div markdown="1" class="typewriter">
+scope   datetime     timestamp
+\------------------------------
+UTC     [`.z.z`](dotz.md#zz-utc-datetime)         [`.z.p`](dotz.md#zp-utc-timestamp)
+local   [`.z.Z`](dotz.md#zz-local-datetime)         [`.z.P`](dotz.md#zp-local-timestamp)
+</div>
 
+----
 
-<i class="far fa-hand-point-right"></i>
-Basics: [Environment](../basics/environment.md) 
+:fontawesome-solid-book-open:
+[Environment](../basics/by-topic.md#environment)

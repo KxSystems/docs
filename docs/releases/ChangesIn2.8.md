@@ -45,7 +45,7 @@ q)\x .z.zd
 
 ## Mac OSX multithreaded
 
-OSX build now supports multithreaded modes (slave threads, `peach`, multithreaded input)
+OSX build now supports multithreaded modes (secondary threads, `peach`, multithreaded input)
 
 ## Improved MMU performance
 

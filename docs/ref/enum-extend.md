@@ -1,8 +1,7 @@
 ---
-title: Enum Extend  – Reference – kdb+ and q documentation
+title: Enum Extend | Reference | kdb+ and q documentation
 description: Enum Extend is a q operator that extends an enumeration.
 author: Stephen Taylor
-keywords: enumerate, enumeration, enum extend, extend, kdb+, list, q, query
 ---
 # `?` Enum Extend
 
@@ -11,7 +10,10 @@ keywords: enumerate, enumeration, enum extend, extend, kdb+, list, q, query
 
 _Extend an enumeration_
 
-Syntax: `x?y`, `?[x;y]` 
+
+```txt
+x?y    ?[x;y]
+```
 
 Where 
 
@@ -21,7 +23,7 @@ Where
 
 ## Variable
 
-fills in any missing items in `x`, returns `y` as an enumeration of the variable named in `x` with filling in missing items in it. (Unlike [Enumerate](enumerate.md).)
+fills in any missing items in `x`, then returns `y` as an enumeration of it. (Unlike [Enumerate](enumerate.md).)
 
 ```q
 q)foo:`a`b
@@ -91,19 +93,23 @@ fcntl(1024, F_SETLKW, {type=F_WRLCK, whence=SEEK_CUR, start=0, len=0}) = 0
 If that return value is not 0, then the lock failed and may not be supported by the chosen filesystem.
 Kdb+ does not report an error if that lock call fails.
 
-
 Enum Extend is a uniform function. 
 
-<i class="far fa-hand-point-right"></i> 
+----
+:fontawesome-solid-book: 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
 [`.Q.en` (enumerate varchar cols)](dotq.md#qen-enumerate-varchar-cols),
-[`?` query overloads](overloads.md#query)<br>
-<i class="fas fa-book-open"></i>
+[`?` query overloads](overloads.md#query)
+<br>
+:fontawesome-solid-book-open:
 [Enumerations](../basics/enumerations.md),
-[File system](../basics/files.md)<br>
-<i class="fas fa-graduation-cap"></i>
-[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)<br>
-_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations) 
-
+[File system](../basics/files.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
 

@@ -1,8 +1,7 @@
 ---
-title: cols, xcol, xcols – Reference – kdb+ and q documentation
+title: cols, xcol, xcols | Reference | kdb+ and q documentation
 description: cols, xcol and xcols are q keywords. cols returns the column names of a table. xcol renames tablecolumns. xcols reorders table columns. 
 author: Stephen Taylor
-keywords: cols, column, kdb+, q, table, xcol, xcols
 ---
 # `cols`, `xcol`, `xcols`
 
@@ -15,11 +14,17 @@ _Table columns_
 
 _Column names of a table_
 
-Syntax: `cols x`, `cols[x]`
+```txt
+cols x    cols[x]
+```
 
-Where `x` is a table, returns as a symbol vector its column names. 
+Where `x` is a 
 
-`x` can be passed by reference or by value.
+-    table
+-    the name of a table as a symbol atom
+-    a filesymbol for a splayed table
+
+returns as a symbol vector its column names. 
 
 ```q
 q)\l trade.q
@@ -34,9 +39,11 @@ q)cols`trade            /reference
 
 _Rename table columns_
 
-Syntax: `x xcol y`, `xcol[x;y]`
+```txt
+x xcol y    xcol[x;y]
+```
 
-Where `y` is a table (passed by value) and `x` is 
+Where `y` is a table, passed by value, and `x` is 
 
 -   a **symbol vector** of length no greater than `count cols y` returns `y` with its first `count x` columns renamed
 -   a **dictionary** (since V3.6 2018.08.24) formed from two symbol vectors, of which the keys are all the names of columns of `y`, returns `y` with columns renamed according to the dictionary
@@ -57,17 +64,22 @@ A b C
 -----
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.8.1 `xcol`](/q4m3/9_Queries_q-sql/#981-xcol)
 
 
 ## `xcols`
 
 _Reorder table columns_
 
-Syntax: `x xcols y`, `xcols[x;y]`
+```txt
+x xcols y    xcols[x;y]
+```
 
 Where 
 
--   `y` is a simple table (passed by value) 
+-   `y` is a simple table, passed by value
 -   `x` is a symbol vector of some or all of `y`’s column names
 
 returns `y` with `x` as its first column/s.
@@ -84,9 +96,13 @@ q)cols trade
 `sym`size`price`time
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.8.2 `xcols`](/q4m3/9_Queries_q-sql/#982-xcols)
 
 
-<i class="far fa-hand-point-right"></i> 
+----
+:fontawesome-regular-hand-point-right: 
 [`meta`](meta.md)  
 .Q: [`.Q.V`](dotq.md#qv-table-to-dict) (table to dictionary)  
 Basics: [Dictionaries & tables](../basics/dictsandtables.md), 

@@ -1,11 +1,16 @@
 ---
-title: Multi-threading in kdb+ – White Papers – kdb+ and q documentation
+title: Multi-threading in kdb+ | White Papers | kdb+ and q documentation
 description: How to use parallel processing in kdb+ processes, and what the limitations are
 author: Edward Cormack
-date: 
 keywords: kdb+, multi-core, multi-threading, parallel, parallelize, performance, q, vector
 ---
+White paper
+{: #wp-brand}
+
 # Multi-threading in kdb+<br>Performance optimizations and use cases
+
+by [Edward Cormack](#author)
+{: .wp-author}
 
 
 
@@ -24,7 +29,7 @@ We will also address use cases where parallel processing may not be appropriate 
 
 The OS disk cache is flushed when required using the `io.q` script, available from GitHub.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/io](https://github.com/simongarland/io/blob/master/io.q)
 
 All tests performed using kdb+ version 3.1 (2013.06.25)
@@ -32,19 +37,19 @@ All tests performed using kdb+ version 3.1 (2013.06.25)
 
 ## Setting up kdb+ for parallel processing
 
-Kdb+ starts in single-threaded mode by default. This ensures data consistency and that there are no race conditions, as all commands are executed in the order they are received. Multi-threading in kdb+ is achieved by spawning multiple slave threads.
+Kdb+ starts in single-threaded mode by default. This ensures data consistency and that there are no race conditions, as all commands are executed in the order they are received. Multi-threading in kdb+ is achieved by spawning multiple secondary threads.
 
-To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-slaves). When called with a value of `n`>1, kdb+ will start `n` slave threads. For optimal performance when using multi-threading, the number of slaves should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of slaves to allocate.
+To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-secondary-processes). When called with a value of `n`>1, kdb+ will start `n` secondary threads. For optimal performance when using multi-threading, the number of secondary processes should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of secondary processes to allocate.
 
 Parallel execution is explicitly invoked by using two built-in functions: [`peach`](../../ref/each/) and [`.Q.fc`](../../ref/dotq.md#qfc-parallel-on-cut). Parallel execution is also implicitly invoked in kdb+ when used as part of a multi-threaded HDB. This mode of operation will be reviewed in more detail below.
 
 
 ### Functions for parallel execution
 
-`peach` is used in the same way as the [`each`](../../ref/each.md) keyword. It will execute the function over multiple slaves, passing the arguments and results between the slaves and the main thread using IPC serialization.
+`peach` is used in the same way as the [`each`](../../ref/each.md) keyword. It will execute the function over multiple secondary processes, passing the arguments and results between the secondary processes and the main thread using IPC serialization.
 
 ```q
-q)f peach x // execute function f on x over slave threads
+q)f peach x // execute function f on x over secondary threads
 ```
 
 Additionally, there is the parallel-on-cut function `.Q.fc`. This modifies an existing function such that a vector argument is distributed across multiple threads. The differences between `peach` and `.Q.fc` and the various use cases are covered in more detail below.
@@ -55,7 +60,7 @@ q).Q.fc[f] z // cuts z into n parts and executes f in parallel
 
 There are however, some limitations on what operations can be executed in parallel. In order to maintain thread safety, kdb+ uses thread-local storage. Global variables may be read directly from the main thread but each thread maintains its own copy of local variables and arguments.
 
-To avoid concurrency issues, only the main thread may update global variables. Attempting to set or modify a global while in a slave thread will result in a noupdate error. There are also restrictions on calling system commands while using `peach`.
+To avoid concurrency issues, only the main thread may update global variables. Attempting to set or modify a global while in a secondary thread will result in a `noupdate` error. There are also restrictions on calling system commands while using `peach`.
 
 ```q
 q){update ex:”N” from `trade where sym=x} peach `GOOG`AAPL`YHOO 
@@ -65,7 +70,7 @@ q){update ex:”N” from `trade where sym=x} peach `GOOG`AAPL`YHOO
 
 ## Vector operations in parallel
 
-In this section, we will look in more detail at the use of `peach` and `.Q.fc` for operations on vectors. We analyse the performance of a range of use cases using `\t` to time execution on a process with six slaves for both sequential and parallel operations.
+In this section, we will look in more detail at the use of `peach` and `.Q.fc` for operations on vectors. We analyze the performance of a range of use cases using `\t` to time execution on a process with six secondary threads for both sequential and parallel operations.
 
 Consider the lambda shown below. This will create a list of floats of the same length as the argument and raise it to a specific power, then return the sum of the result.
 
@@ -81,7 +86,7 @@ q)\t { sum (x?1.0) xexp 1.7 } peach 6#1000000
 
 The advantage of using `peach` in this case is clear. Distributing the operation over all six threads increases the speed by a factor of approximately 5.9.
 
-Data and results are copied between slaves and the main thread using IPC serialization. As such, there is an associated overhead cost with transferring data, which should be taken into account. If we modify the existing function so that it returns the entire vector instead of the sum then we can see this effect.
+Data and results are copied between secondary threads and the main thread using IPC serialization. As such, there is an associated overhead cost with transferring data, which should be taken into account. If we modify the existing function so that it returns the entire vector instead of the sum then we can see this effect.
 
 ```q
 // Returning the full result is worse as the overhead is increased
@@ -93,7 +98,7 @@ q)\t { (x?1.0) xexp 1.7 } peach 6#1000000
 
 Now, the single-threaded operation is slightly faster than before as it does not need to compute the sum. The parallel operation must now return a 1-million item vector to the main thread, and it is slower as a result. The performance scaling is now reduced to 5.2.
 
-The parallel overhead from copying data to slave threads can be
+The parallel overhead from copying data to secondary threads can be
 estimated by using the [`-8!` operator](../../basics/internal.md#-8x-to-bytes) to serialize the argument and then de-serializing with the [`-9!` operator](../../basics/internal.md#-9x-from-bytes).
 
 ```q
@@ -136,9 +141,9 @@ q)\t { sum x xexp 1.7 } a
 132
 ```
 
-To carry out vector operations in parallel we use `.Q.fc`, or parallel cut. As the name suggests, this will break a vector argument into `n` parts, and pass each part to a slave thread for execution.
+To carry out vector operations in parallel we use `.Q.fc`, or parallel cut. As the name suggests, this will break a vector argument into `n` parts, and pass each part to a secondary thread for execution.
 
-In the worst-case example below, `peach` is used over a long list of atomic values so that each value must be passed to the slave thread and the value returned. This maximizes the data-transfer overhead. Using `.Q.fc` is much more efficient as the function is only executed six times – once on each thread.
+In the worst-case example below, `peach` is used over a long list of atomic values so that each value must be passed to the secondary thread and the value returned. This maximizes the data-transfer overhead. Using `.Q.fc` is much more efficient as the function is only executed six times – once on each thread.
 
 ```q
 // Performance of peach is slower than single-thread each
@@ -154,9 +159,9 @@ q)\t .Q.fc[{ sum x xexp 1.7 }] a
 
 Another factor to take into consideration when using multi-threading is the distribution of work across the threads. This is particularly important when the process is handling a large number of tasks of uneven size.
 
-The way in which kdb+ splits work between threads depends on which mode of parallel execution is used. Both parallel functions use pre-assignment, but with slightly different behavior. When using `peach` over two slaves the first slave will get arguments 0, 2, 4… and the second slave gets arguments at position 1, 3, 5… etc.
+The way in which kdb+ splits work between threads depends on which mode of parallel execution is used. Both parallel functions use pre-assignment, but with slightly different behavior. When using `peach` over two secondary processes the first secondary thread will get arguments 0, 2, 4… and the second secondary thread gets arguments at position 1, 3, 5… etc.
 
-This allocation can be shown in q using the number of slaves and the modulus function `mod`.
+This allocation can be shown in q using the number of secondary processes and the modulus function `mod`.
 
 ```q
 // 6 input arguments over 2 cores
@@ -179,7 +184,7 @@ q)\t f[1000]
 1053
 ```
 
-A kdb+ process is now started up with two slaves; this makes it clearer to follow the operation. The test function is executed over a list of varying input arguments. We demonstrate with the examples below that the ordering of the large and small arguments can have a significant effect on performance.
+A kdb+ process is now started up with two secondary processes; this makes it clearer to follow the operation. The test function is executed over a list of varying input arguments. We demonstrate with the examples below that the ordering of the large and small arguments can have a significant effect on performance.
 
 ```q
 // Single threaded
@@ -198,7 +203,7 @@ q)\t f peach 10 10 10 10 1000 1000 1000 1000
 
 Executing in single-threaded mode, we find the total time is similar to the sum of the arguments, as we would expect. In the second case however, there is little to no improvement from using `peach`. This is because the fast and slow jobs alternate in the input list, which means all the slow tasks are assigned to a single thread. The main process must wait for the second thread to execute all four slow jobs even though the first thread is finished. The final case is a balanced distribution, with fast and slow jobs assigned evenly to each thread. Now we see a parallel speed-up factor of approximately 2 as expected.
 
-For `.Q.fc`, the situation is reversed. This function splits a vector argument evenly along its length and assigns one slice to each slave. Alternating values in the list will result in balanced threads but contiguous blocks of large or small values will not.
+For `.Q.fc`, the situation is reversed. This function splits a vector argument evenly along its length and assigns one slice to each secondary thread. Alternating values in the list will result in balanced threads but contiguous blocks of large or small values will not.
 
 ```q
 // Unbalanced – first 4 fast arguments sent to first thread
@@ -224,13 +229,13 @@ q)\t f peach x[0 1 4], x[2 3 5]
 
 The partitioned database structure in kdb+ is well suited to parallel processing. In a standard date-partitioned DB, the data is arranged such that all data for a given day resides in a specific directory under the root. The advantage of this is that the kdb+ process is only required to read data from the partitions specified in the date constraint.
 
-This ability to access sections of the database independently can be extended using slaves, with each slave being assigned a date from the Where clause to process. Considering the following query.
+This ability to access sections of the database independently can be extended using secondary processes, with each secondary thread being assigned a date from the Where clause to process. Considering the following query.
 
 ```q
 q) { select from trade where date = x } peach d
 ```
 
-We can see how `peach` will assign each date in the list `d` to a slave thread for processing. In practice, kdb+ handles multi-threaded HDB queries under the covers without the need for any additional functions. It will automatically distribute work across slaves and aggregate the results back to the main thread.
+We can see how `peach` will assign each date in the list `d` to a secondary thread for processing. In practice, kdb+ handles multi-threaded HDB queries under the covers without the need for any additional functions. It will automatically distribute work across secondary processes and aggregate the results back to the main thread.
 
 This section discusses various applications for the multi-threaded HDB and what performance improvements can be achieved.
 
@@ -269,7 +274,7 @@ The use of attributes to optimize datasets has been reviewed in another white pa
 In each of the test cases outlined in this section, the kdb+ session is restarted between each test and the disk cache flushed using `io.q`.
 
 
-### Performance effects of standard queries with slaves
+### Performance effects of standard queries with secondary processes
 
 If we consider a normal select from the quote table, for a range of
 symbols:
@@ -278,10 +283,10 @@ symbols:
 q)select from quote where date in d, sym in `GOOG`AAPL`YHOO`AMZN`EBAY
 ```
 
-This query will return approximately 100,000 rows per day. The query is executed for an increasing number of days, and the performance measured. The test is then repeated on a process using additional slave threads for comparison. The results are shown in Table 1 below.
+This query will return approximately 100,000 rows per day. The query is executed for an increasing number of days, and the performance measured. The test is then repeated on a process using additional secondary threads for comparison. The results are shown in Table 1 below.
 
 
-days in query | 0 slaves | 6 slaves | 12 slaves
+days in query | 0 secondary processes | 6 secondary processes | 12 secondary processes
 :------------:|---------:|---------:|---------:
 5             | 195.8    | 162.5    | 160.5
 10            | 384.6    | 328.0    | 317.9 
@@ -291,9 +296,9 @@ days in query | 0 slaves | 6 slaves | 12 slaves
 <small>Table 1: Execution time (ms) of normal select_</small>
 
 ![Figure 1](img/figure1.png)  
-<small>_Figure 1: Effect of number of slave threads on query time_</small>
+<small>_Figure 1: Effect of number of secondary threads on query time_</small>
 
-The results in Figure 1 show a gradual increase in performance as we add  slave threads. The relation between execution time and query time remains roughly linear; however the factor by which it increases is reduced.
+The results in Figure 1 show a gradual increase in performance as we add  secondary threads. The relation between execution time and query time remains roughly linear; however the factor by which it increases is reduced.
 
 
 ### Map-reduce with multi-threading
@@ -332,23 +337,23 @@ days in query | map-reduce | non map-reduce
 
 It can be seen in Figure 2 that there is a significant slowdown when not using map-reduce operations. The execution time increases more rapidly with query size than the map-reduced version.
 
-The multi-day VWAP query above is now repeated using slaves. In this case, kdb+ will distribute the map calculations to its slaves. Again, this functionality is automatic and requires no specific functions to be called.
+The multi-day VWAP query above is now repeated using secondary processes. In this case, kdb+ will distribute the map calculations to its secondary processes. Again, this functionality is automatic and requires no specific functions to be called.
 
-days in query | 0 slaves  | 6 slaves | 12 slaves
+days in query | 0 secondary processes  | 6 secondary processes | 12 secondary processes
 :------------:|----------:|---------:|---------:
 5             |  692.4    | 233.6    | 221.2
 10            | 1370.2    | 477.6    | 477.8
 15            | 2053.0    | 720.8    | 737.6
 20            | 2726.6    | 954.6    | 898.2
 
-<small>_Table 3: Map-reduce performance using slaves_</small>
+<small>_Table 3: Map-reduce performance using secondary processes_</small>
 
 ![Figure 3](img/figure3.png)  
 <small>_Figure 3: Execution time of multi-threaded map-reduce queries with date range_</small>
 
-Figure 3 shows that there is a significant increase in the performance of the map-reduce query when used in multi-threaded mode. This is in line with our expectations, as the calculations can be spread across slaves and executed in parallel.
+Figure 3 shows that there is a significant increase in the performance of the map-reduce query when used in multi-threaded mode. This is in line with our expectations, as the calculations can be spread across secondary processes and executed in parallel.
 
-It is notable that there is little increase in performance from using 12 slaves instead of 6. A slight increase can be observed for the maximum number of dates in this sample database, although we can extrapolate that a greater number of slaves will perform better as the size of the query increases. The likely explanation for this behavior is I/O saturation. Increasing the number of slaves available for calculation does not improve performance significantly as reading the data from disk becomes the limiting factor. Adding additional slaves will only increase the number of processes attempting to read from the disk simultaneously.
+It is notable that there is little increase in performance from using 12 secondary processes instead of 6. A slight increase can be observed for the maximum number of dates in this sample database, although we can extrapolate that a greater number of secondary processes will perform better as the size of the query increases. The likely explanation for this behavior is I/O saturation. Increasing the number of secondary processes available for calculation does not improve performance significantly as reading the data from disk becomes the limiting factor. Adding additional secondary processes will only increase the number of processes attempting to read from the disk simultaneously.
 
 !!! tip "Your mileage will vary"
 
@@ -361,7 +366,7 @@ Kdb+ supports parallel I/O to address the disk-contention issue outlined earlier
 
 To allow simultaneous access across partitions, the database structure is modified to use segments. Segmentation adds an additional layer above the partitioned structure. A simple example of this structure would be to split a date-partitioned database across two disks, by saving alternating days on each segment.
 
-When using a segmented database for parallel queries, it is recommended to have at least one slave thread per disk array. This will allow maximum access for date-range queries. In the case of computationally expensive queries, e.g. calculating VWAP, then two threads can be assigned per core. In this case, one thread is performing the calculations while another is loading the data.
+When using a segmented database for parallel queries, it is recommended to have at least one secondary thread per disk array. This will allow maximum access for date-range queries. In the case of computationally expensive queries, e.g. calculating VWAP, then two threads can be assigned per core. In this case, one thread is performing the calculations while another is loading the data.
 
 A fully multi-threaded segmented database requires a custom hardware set up and is generally tailored to the needs of a specific system. As such, benchmarking the performance of this sort of database is beyond the scope of this paper.
 
@@ -376,7 +381,7 @@ Adding or modifying a column to a partitioned database can be slow when carried 
 
 In the example below, we have added a column to the quote table on the test database. This is done using the functions in the `dbmaint.q` script.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb/utils/dbmaint.md](https://github.com/KxSystems/kdb/blob/master/utils/dbmaint.md)
 
 ```q
@@ -408,7 +413,7 @@ The disk-maintenance operation is now measured to take less than half the time w
 
 ### Writing flat files
 
-Reading and writing data from disk, particularly in comma- or tab-delimited format, can be a time-consuming operation. We can use slaves to speed up this process, particularly when we need to write multiple files from one process.
+Reading and writing data from disk, particularly in comma- or tab-delimited format, can be a time-consuming operation. We can use secondary processes to speed up this process, particularly when we need to write multiple files from one process.
 
 For example, we may wish to save the result of a kdb+ query which spans several days in CSV format, creating a separate file for each date. Alternatively, there may be a number of flat files which we want to load into a kdb+ session.
 
@@ -472,7 +477,7 @@ Again, the parallel operation is more than twice as fast at reading the data. Co
 
 ## Conclusion
 
-This paper has summarized a range of applications for multi-threading in kdb+. These included optimization of queries, parallel execution of algorithms, vector operations and file operations. The mechanism behind slave threads has been introduced and the relevant functions explained.
+This paper has summarized a range of applications for multi-threading in kdb+. These included optimization of queries, parallel execution of algorithms, vector operations and file operations. The mechanism behind secondary threads has been introduced and the relevant functions explained.
 
 For each of these cases, the potential improvements have been measured and any limitations or potential problems identified. While there is a lot to be gained from using parallel operation appropriately, it is far from a catch-all solution to performance problems. Prior to attempting parallelization, operations should be fully vectorized to ensure maximum benefit.
 
@@ -480,12 +485,14 @@ Used incorrectly, parallel processing can be less efficient than the equivalent 
 
 The use of multi-threading in kdb+ should therefore be treated on a case-by-case basis. It is a feature which should often be considered by developers, but performance testing is recommended before implementation.
 
-System-management solutions are available to assist with administering multi-process environments, like [Kx Control](../../devtools.md#kx-control) which provides a range of tools for visualizing process workflow, task scheduling and system-resource monitoring. These features are especially helpful at managing master/slave configurations, where client queries or the loading of data is divided between processes in order to increase throughput.
+System-management solutions are available to assist with administering multi-process environments, like [KX Control](../../devtools.md#kx-control) which provides a range of tools for visualizing process workflow, task scheduling and system-resource monitoring. These features are especially helpful at managing primary/replica configurations, where client queries or the loading of data is divided between processes in order to increase throughput.
 
 All tests performed using kdb+ version 3.1 (2013.06.25)
+
+[:fontawesome-solid-print: PDF](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
 
 
 ## Author
 
-Edward Cormack is a financial engineer who has worked on developing financial data solutions for a range of clients. Edward is currently based at a top-tier investment bank in London, developing a kdb+ platform for global equity risk.
+**Edward Cormack** is a financial engineer who has worked on developing financial data solutions for a range of clients. Edward is currently based at a top-tier investment bank in London, developing a kdb+ platform for global equity risk.
 

@@ -4,20 +4,20 @@ description: Command-line syntax for invoking q and list of the command-line opt
 author: Stephen Taylor
 keywords: command, file, kdb+, line, option, q
 ---
-# Command line
+# :fontawesome-solid-terminal: Command line
 
 
 
 
 The command line for invoking kdb+ has the form:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 q [[file](#file)] [-option [parameters] … ]
 
 Options:
  [-b blocked](#-b-blocked)                    [-q quiet mode](#-q-quiet-mode)
  [-c console size](#-c-console-size)               [-r replicate](#-r-replicate)
- [-C HTTP size](#-c-http-size)                  [-s slaves](#-s-slaves)
+ [-C HTTP size](#-c-http-size)                  [-s secondary threads](#-s-secondary-threads)
  [-e error traps](#-e-error-traps)                [-t timer ticks](#-t-timer-ticks)
  [-E TLS Server Mode](#-e-tls-server-mode)            [-T timeout](#-t-timeout)
  [-g garbage collection](#-g-garbage-collection)         [-u disable syscmds](#-u-disable-syscmds)
@@ -27,9 +27,9 @@ Options:
  [-o UTC offset](#-o-utc-offset)                 [-W start week](#-w-start-week)
  [-p listening port](#-p-listening-port)             [-z date format](#-z-date-format)
  [-P display precision](#-p-display-precision)                                            
-</pre>
+</div>
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](../ref/dotz.md#zx-argv) (argv),
 [`.z.X`](../ref/dotz.md#zx-raw-command-line) (raw command line)
 
@@ -51,12 +51,16 @@ m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
 q)
 ```
 
+!!! warning "Operating systems may create hidden files, such as `.DS_Store`, that block loading of a directory."
+
 
 ## `-b` (blocked)
 
-Syntax: `-b`
+```txt
+-b
+```
 
-Block client write-access to a kdb+ database.
+Block write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
 
 ```bash
 ~/q$ q -b
@@ -92,97 +96,114 @@ q)\_
 
 ## `-c` (console size)
 
-Syntax: `-c r c`
+```txt
+-c r c
+```
 
 Set console maximum rows and columns, default 25 80.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\c` system command](syscmds.md#c-console-size) for detail
 
 
 ## `-C` (HTTP size)
 
-Syntax: `-C r c`
+```txt
+-C r c
+```
 
 Set HTTP display maximum rows and columns.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\C` system command](syscmds.md#c-http-size) for detail
 
 
 
 ## `-e` (error traps)
 
-Syntax: `-e [0|1|2]`
+```txt
+-e [0|1|2]
+```
 
 Sets error-trapping mode.
 The default is 0 (off).
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\e` system command](syscmds.md#e-error-trap-clients) for detail
 
 
 
 ## `-E` (TLS Server Mode)
 
-Syntax: `-E x` (since V3.4)
+```txt
+-E 0        / plain
+-E 1        / plain & TLS
+-E 2        / TLS only
+```
 
-x   | mode
---- | ----
-0   | plain
-1   | plain & TLS
-2   | TLS only
+Since V3.4.
 
-<i class="fas fa-book-open"></i>
-Knowledge Base: [SSL/TLS](../kb/ssl.md#tls-server-mode)
+:fontawesome-solid-book-open:
+[`\E` system command](syscmds.md#e-tls-server-mode)
+<br>
+:fontawesome-solid-graduation-cap:
+[SSL/TLS](../kb/ssl.md#tls-server-mode)
 
 
 ## `-g` (garbage collection)
 
-Syntax: `-g [0|1]`
+```txt
+-g 0        / deferred (default)
+-g 1        / immediate
+```
 
-Sets garbage-collection mode:
+Sets garbage-collection mode.
 
--   0 for deferred (default)
--   1 for immediate
-
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\g` system command](syscmds.md#g-garbage-collection-mode) for detail
 
 
 
 ## `-l` (log updates)
 
-Syntax: `-l`
+```txt
+-l
+```
 
 Log updates to filesystem.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)
 
 
 ## `-L` (log sync)
 
-Syntax: `-L`
+```txt
+-L
+```
 
 As `-l`, but sync logging.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)
 
 
 ## `-m` (memory-domain)
 
-Syntax: `-m path`
+```txt
+-m path
+```
 
 Memory can be backed by a filesystem, allowing use of DAX-enabled filesystems (e.g. AppDirect) as a non-persistent memory extension for kdb+.
 
 This command-line option directs kdb+ to use the filesystem path specified as a separate memory domain. This splits every thread’s heap into two:
 
-domain | description
--------|------------
-0      | regular anonymous memory, active and used for all allocs by default
-1      | filesystem-backed memory
+```txt
+domain description
+--------------------------------------------------------------------------
+0      regular anonymous memory, active and used for all allocs by default
+1      filesystem-backed memory
+```
 
 The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1, however names from other namespaces can reference them too, e.g. `a:.m.a:1 2 3`
 
@@ -190,12 +211,14 @@ The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1,
 
 ## `-o` (UTC offset)
 
-Syntax: `-o N`
+```txt
+-o N
+```
 
 Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 (Affects [`.z.Z`](../ref/dotz.md#zz-local-datetime))
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\o` system command](syscmds.md#o-offset-from-utc) for detail
 
 
@@ -208,37 +231,41 @@ _Set listening port_
 ```
 
 See 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Listening port](listening-port.md) for detail.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\p` system command](syscmds.md#p-listening-port)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Multithreaded input mode](../kb/multithreaded-input.md),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
 
 ## `-P` (display precision)
 
-Syntax: `-P N`
+```txt
+-P N
+```
 
 Display precision for floating-point numbers, i.e. the number of digits shown.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\P` system command](syscmds.md#p-precision) for detail
 
 
 ## `-q` (quiet mode)
 
-Syntax: `-q`
+```txt
+-q
+```
 
 Quiet, i.e. no startup banner text or session prompts. Typically used where no console is required.
 
@@ -265,69 +292,82 @@ and with `-q`
 4
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.q`](../ref/dotz.md#zq-quiet-mode) (quiet mode)
 
 
 ## `-r` (replicate)
 
-Syntax: `-r :host:port[:user[:password]]`
+```txt
+-r :host:port[:user[:password]]
+```
 
 Replicate from `:host:port`.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\r` system command](syscmds.md#r-replication-master)
 
 
-## `-s` (slaves)
+## `-s` (secondary threads)
 
-Syntax: `-s N`
+```txt
+-s N
+```
 
-Number of slave threads or processes available for parallel processing.
+Number of secondary threads or processes available for parallel processing.
 
-<i class="fas fa-book-open"></i>
-[`\s` system command](syscmds.md#s-number-of-slaves) for detail
+:fontawesome-solid-book-open:
+[`\s` system command](syscmds.md#s-number-of-secondary-threads) for detail
 
 
 
 ## `-t` (timer ticks)
 
-Syntax: `-t N`
+```txt
+-t N
+```
 
 Period in milliseconds between timer ticks. Default is 0, for no timer.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\t` system command](syscmds.md#t-timer) for detail
 
 
 ## `-T` (timeout)
 
-Syntax: `-T N`
+```txt
+-T N
+```
 
 Timeout in seconds for client queries, i.e. maximum time a client call will execute. Default is 0, for no timeout.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\T` system command](syscmds.md#t-timeout) for detail
 
 
 ## `-u` (disable syscmds)
-
-Syntax: `-u 1`
-
-Disables system commands from a remote (signals `'access`). As such, this includes disabling exit via `"\\"` from a remote.
-
-!!! warning "Weak protection"
-
-This option offers only a simple protection against “wrong” queries.
-
-For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
-
-
 ## `-u` (usr-pwd local)
+## `-U` (usr-pwd)
 
-Syntax: `-u file`
+```txt
+-u 1        / blocks system functions and file access
+-U file     / sets password file, blocks \x
+-u file     / both the above
+```
 
-Sets a password file; no access above start directory
+`-u 1` disables 
+
+-   system commands from a remote (signals `'access`), including exit via `"\\"` 
+-   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0
+
+??? danger "Only a simple protection against “wrong” queries"
+
+    For example, setting a system command in `.z.ts` and starting the timer still works. The right system command could for example expose a terminal, so the user running the database could be fully impersonated and compromised from then on.
+
+`-U file`
+
+-   sets a password file
+-   disables [`\x`](syscmds.md#x-expunge) (even on the local console)
 
 The password file is a text file with one credential on each line.
 (No trailing blank line/s.)
@@ -341,7 +381,7 @@ The password can be
 
 -   plain text
 -   an MD5 hash of the password
--   an SHA-1 hash of the password (since V3.7t 2019.10.22)
+-   an SHA-1 hash of the password (since V4.0 2020.03.17)
 
 ```q
 q)raze string md5 "this is my password"
@@ -350,29 +390,26 @@ q)raze string -33!"mypassword" / -33! calculates sha1
 "91dfd9ddb4198affc5c194cd8ce6d338fde470e2"
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
-
-## `-U` (usr-pwd)
-
-Syntax: `-U file`
-
-As `-u`, but without access restrictions.
+`-u file` combines the above, i.e. `-u file` is equivalent to `-u 1 -U file`.
 
 
 ## `-w` (workspace)
 
-Syntax: `-w N`
+```txt
+-w N
+```
 
 Workspace limit in MB for the heap per thread. Default is 0: no limit.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\w` system command](syscmds.md#w-workspace) for detail
 Reference: [`.Q.w`](../ref/dotq.md#qw-memory-stats)
 
 **Domain-local**
-Since V3.7t 2019.10.22 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
+Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
 
 
 !!! tip "Other ways to limit resources"
@@ -384,21 +421,25 @@ Since V3.7t 2019.10.22 this command is no longer thread-local, but [memory domai
 
 ## `-W` (start week)
 
-Syntax: `-W N`
+```txt
+-W N
+```
 
 Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\W` system command](syscmds.md#w-week-offset) for detail
 
 
 ## `-z` (date format)
 
-Syntax: `-z [0|1]`
+```txt
+-z [0|1]
+```
 
 Set the format for `"D"$` date parsing: 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`\z` system command](syscmds.md#z-date-parsing)
 
 

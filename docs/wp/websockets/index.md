@@ -1,12 +1,17 @@
 ---
-title: Kdb+ and WebSockets – White Papers – kdb+ and q documentation
-description: This paper introduces what WebSockets are and what benefits they hold over standard HTTP. It takes the reader through the set-up of a simple web page that uses WebSockets to connect to a kdb+ process, the steps involved in passing data through the connection, and the various methods for converting data between kdb+ and JavaScript.
-author: Chris Scott and Michael Gracey
+title: Kdb+ and WebSockets | White Papers | kdb+ and q documentation
+description: What WebSockets are, what benefits they hold over standard HTTP; how to set up a simple web page that uses WebSockets to connect to a kdb+ process
+author: [Chris Scott, Michael Gracey]
 date: March 2018
-hero: Interfaces
 keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSockets
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ and WebSockets 
+
+by [Chris Scott &amp; Michael Gracey](#authors)
+{: .wp-author}
 
 
 
@@ -37,9 +42,8 @@ for converting data between kdb+ and JavaScript.
 
 An earlier version of this paper was published in October 2014. Kdb+ has been enhanced since then to support the growing popularity of WebSockets and JSON. As part of
 this revision, the paper now also documents new message handlers for
-opening and closing WebSocket connections in section 3.3, and debugging
-techniques that can be used to view traffic over these connections in
-section 5.
+opening and closing WebSocket connections, and debugging
+techniques that can be used to view traffic over these connections.
 
 The paper finishes with a full working example (including
 code) of a simple Web application which uses kdb+ to provide real-time
@@ -134,7 +138,7 @@ during the initial handshake.
 
 ### The handshake 
 
-In order to initialise a WebSocket connection, a WebSocket ‘handshake’
+In order to initialize a WebSocket connection, a WebSocket ‘handshake’
 must be successfully made between the client and server processes.
 First, the client sends a HTTP request to the server to upgrade from the
 HTTP protocol to the WebSocket protocol:
@@ -471,12 +475,12 @@ past, it is reasonable to provide the client-side JavaScript code with
 some extra workload.
 
 This approach requires a little more understanding of JavaScript.
-However, Kx provides the script `c.js` which contains the functionality to
-serialize and deserialize data on the client side. The deserialize
-function converts kdb+ binary data into JSON, while the serialize
+However, KX provides the script `c.js` which contains the functionality to
+serialize and deserialize data on the client side. The `deserialize`
+function converts kdb+ binary data into JSON, while the `serialize`
 function will convert our message into kdb+ binary format before sending
 it to the server. `c.js` can be found on GitHub at:
-<i class="fab fa-github"></i> [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
+:fontawesome-brands-github: [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
 
 The previous section showed how we can parse q structures into JSON strings and
 send them to our client. In this example, we will instead do all of the
@@ -505,14 +509,14 @@ ws.binaryType = 'arraybuffer';
 ```
 Next, we need to edit the `ws.onmessage` function. As we are deserializing
 the message straight into JSON, we do not need to use the `JSON.parse`
-function. Instead, we simply replace it with the deserialize function
+function. Instead, we simply replace it with the `deserialize` function
 provided in `c.js`.
 ```js
 var outputHTML,data = deserialize(e.data);
 ```
 The rest of `ws.onmessage` should be identical to the example in the previous section and should work exactly as it did before. We could also decide we
 want to serialize the message that we send to the server from the client
-using the serialize function.
+using the `serialize` function.
 ```js
 ws.send(serialize(input.value)); 
 ```
@@ -522,8 +526,11 @@ back into a string using `-9!` so that it can then be evaluated.
 q).z.ws:{neg[.z.w] -8! @[value;-9!x;{`$ "'",x}]} 
 ```
 
-<i class="far fa-hand-point-right"></i> 
-Reference: [IPC](../../basics/ipc.md) for more on serialization 
+:fontawesome-solid-book-open: 
+[Interprocess communication](../../basics/ipc.md) 
+<br>
+:fontawesome-solid-graduation-cap: 
+[Serialization examples](../../kb/serialization.md)
 
 
 ## Viewing traffic over a WebSocket connection
@@ -614,8 +621,8 @@ connections using OpenSSL. This process will secure any WebSocket server
 and upgrade its connection protocols to `wss://` and `https://`
 respectively. 
 
-<i class="far fa-hand-point-right"></i> 
-Knowledge Base: [Secure sockets stunnel](../../kb/websockets.md#secure-sockets-stunnel)
+:fontawesome-solid-graduation-cap: 
+[Secure sockets stunnel](../../kb/websockets.md#secure-sockets-stunnel)
 
 
 ## A simple example – real-time data 
@@ -736,35 +743,41 @@ server-side and client-side methods. Both of these methods have their
 benefits and drawbacks so it is important to consider the application
 infrastructure when deciding which method will be most suitable.
 Serialising data across the connection is easy to achieve using the `-8!`
-and `-9!` functions on the kdb+ server and the `c.js` code provided by Kx
+and `-9!` functions on the kdb+ server and the `c.js` code provided by KX
 on the JavaScript client. Alternatively, the kdb+ `.j.j` and `.j.k`
 functions can be used in conjunction with a browser’s native JSON parser
 to achieve the same result.
 
-_Dashboards for Kx_ provide a range of great ways to visualize and analyze
+:fontawesome-solid-chart-line: 
+:fontawesome-solid-chart-pie: 
+:fontawesome-solid-chart-bar: 
+:fontawesome-solid-chart-area: 
+<br>
+[_Kx Dashboards_](/dashboards/)
+provides a range of great ways to visualize and analyze
 both real-time streaming data and highly-optimized polled queries on
-intra-day and historical data. Completely configurable, _Dashboards for
-Kx_ enable clients to quickly build powerful grids and charts of the
-underlying data stored within Kx and other databases. 
-
-<i class="far fa-hand-point-right"></i> [Dashboards for Kx](https://kx.com/solutions/the-enterprise/dashboards/)
+intra-day and historical data. Completely configurable, _Kx Dashboards_ enables clients to quickly build powerful grids and charts of the
+underlying data stored within KX and other databases. 
 
 All tests were run using kdb+ version 3.5 (2017.11.30)
+
+[:fontawesome-solid-print: PDF](/download/wp/websockets-us.pdf)
 
 
 ## Authors
 
-**Version 1.0**
-Chris Scott worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.
+<!-- Version 1.0 -->
+**Chris Scott** worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.
 
-**Version 1.1 (March 2018)**
-Michael Gracey also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the Kx platform.
+<!-- **Version 1.1 (March 2018)** -->
+**Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the KX platform.
 
 
-## Appendices 
+## Appendixes 
 
 The following code is also available on GitHub at
-<i class="fab fa-github"></i> [kxcontrib/websocket](https://github.com/kxcontrib/websocket).
+:fontawesome-brands-github: 
+[kxcontrib/websocket](https://github.com/kxcontrib/websocket).
 
 
 ### A. `SimpleDemo.html`

@@ -1,8 +1,7 @@
 ---
-title: within – Reference – kdb+ and q documentation
+title: within tests whether one argument is within the bounds defined by the other | Reference | kdb+ and q documentation
 description: within is a q keyword that tests whether one argument is within the bounds defined by the other.
 author: Stephen Taylor
-keywords: kdb+, ordered pair, q, search, within
 ---
 # `within`
 
@@ -13,12 +12,14 @@ keywords: kdb+, ordered pair, q, search, within
 _Check bounds_
 
 
-Syntax: `x within y`, `within[x;y]`
+```txt
+x within y    within[x;y]
+```
 
 Where 
 
 -   `x` is an atom or list of sortable type/s
--   `y` is an ordered pair (i.e. `(</)y` is true), or the flip of a list of ordered pairs of the same count and type/s as `x`, the result is a boolean for each item of `x` indicating whether it is within the inclusive bounds given by `y`.
+-   `y` is an ordered pair (i.e. `(<). y` is true), or the flip of a list of ordered pairs of the same count and type/s as `x`, the result is a boolean for each item of `x` indicating whether it is within the inclusive bounds given by `y`.
 
 ```q
 q)1 3 10 6 4 within 2 6
@@ -45,11 +46,14 @@ q)(1 3 10 6 4;"acyxmpu") within ((2;"b");(6;"r"))
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+----
+:fontawesome-solid-book: 
 [`except`](except.md), 
 [`in`](in.md), 
 [`inter`](inter.md), 
-[`union`](union.md)  
-Basics: [Search](../basics/search.md)
+[`union`](union.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Search](../basics/by-topic.md#search)
 
 

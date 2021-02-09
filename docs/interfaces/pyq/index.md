@@ -2,7 +2,6 @@
 title: Using Python with kdb+ (PyQ) – Interfaces – kdb+ and q documentation
 description: PyQ brings the Python programming language to the kdb+ database. It allows developers to integrate Python and q code seamlessly in one application. This is achieved by bringing the Python and q interpreters into the same process, so that code written in either of the languages operates on the same data.
 author: Alex Belopolsky, Aleks Bunin
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 keywords: fusion, interface, kdb+, library, pyq, python, q
 ---
 # ![PyQ](../img/pyq.png) Using Python with kdb+ (PyQ)

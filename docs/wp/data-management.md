@@ -1,11 +1,17 @@
 ---
-title: Kdb+ data-management techniques – White papers – q and kdb+ documentation
+title: Kdb+ data-management techniques | White papers | q and kdb+ documentation
 description: Examines implementation options and data-management techniques in seven scenarios
 author: Simon Mescal
 date: January 2013
 keywords: attribute, data management, grouped, intra-day, historical, kdb+, partitioned, performance, q, real-time, sorted, unique
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ data-management techniques
+
+by [Simon Mescal](#author)
+{: .wp-author}
 
 
 
@@ -20,20 +26,22 @@ Where appropriate, sample code snippets are provided to illustrate how the techn
 
 Sample on-disk test databases can be created using the `tq.q` script.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-taq](https://github.com/KxSystems/kdb-taq)
 
 Code examples are intended for readers with at least a beginner-level knowledge of kdb+ and the q language. However we encourage any interested reader to contact us at [lectureseries@firstderivatives.com](mailto:lectureseries@firstderivatives.com) with questions regarding code syntax or any other aspect of the paper.
 
-
+<!--
 ## Multiple enumeration files
 
 In splayed databases, the default behavior is that all columns of type symbol are enumerated using the same list, a file called `sym`. Enumerating in this context means that rather than containing the actual symbol values, the column, when saved to disk, will consist of a list of integers each of which is the index of the actual value in the list (file) called `sym`.
 
-<i class="far fa-hand-point-right"></i>
-Reference: [Enumerate](../ref/enumerate.md),
+:fontawesome-solid-book:
+[Enumerate](../ref/enumerate.md),
 [Enumeration](../ref/enumeration.md),
-[Enum Extend](../ref/enum-extend.md)<br>
+[Enum Extend](../ref/enum-extend.md)
+<br>
+:fontawesome-solid-book-open:
 Basics: [Enumerations](../basics/enumerations.md)<br>
 _Q for Mortals_: [§7.2 Cast](/q4m3/7_Transforming_Data/#72-cast),
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)
@@ -86,13 +94,13 @@ enumerate:{[d;t] /directory,table
     }[d]'[cols t;value flip t];
   flip t }
 ```
-
+-->
 
 ## Automating schema changes
 
 In some kdb+ installations, table schemas change frequently. This can be difficult to manage if the installation consists of a splayed partitioned database, since each time the schema changes you have to manually change all the historical data to comply with the new schema. This is time-consuming and prone to error. `dbmaint.q` is a useful tool for performing these manual changes.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb/utils](https://github.com/KxSystems/kdb/tree/master/utils)
 
 To reduce the administrative overhead, the historical database schema can be updated programmatically as intra-day data is persisted. This can be achieved by invoking function `updateHistoricalSchema` (below), which connects to the historical database and runs locally-defined functions to add and remove tables, add and remove columns, reorder columns and change their types. It does this by comparing the table schemas in the last partition with those of the other partitions, and making the necessary adjustments to the other partitions.
@@ -104,7 +112,7 @@ To reduce the administrative overhead, the historical database schema can be upd
 Note also that column type conversion (function `changeColumnTypes`) will not work when changing to or from nested types or symbols – this functionality is beyond the scope of this paper.
 
 The `updateHistoricalSchema` function should be invoked once the in-memory data is fully persisted. If
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 is being used, the function should be called as the last line of the `.u.end` function in `r.q` – the real-time database. `updateHistoricalSchema` takes the port of the historical database as an argument, opens a connection to the historical database and calls functions that perform changes to the historical data. Note that the functions are defined in the calling process. This avoids having to load functionality into the historical process, which usually has no functionality defined in it.
 
@@ -208,8 +216,8 @@ g  grouped    u  unique
 p  parted     s  sorted
 ```
 
-<i class="far fa-hand-point-right"></i>
-Reference: [Set Attribute](../ref/set-attribute.md)
+:fontawesome-solid-book:
+[Set Attribute](../ref/set-attribute.md)
 
 To apply the parted attribute to a list, all occurrences in the list of each value $n$ must be adjacent to one another. For example, the following list is not of the required structure and attempting to apply the parted attribute to it will fail:
 
@@ -262,14 +270,16 @@ grouped    (24*u)+4*n
 
 It is often the case that a kdb+ application receives an ID field which does not repeat and contains characters that are not numbers. The question is which datatype should be used for such a field. The problem with using enumerated symbols in this case is that the enumeration file becomes too large, slowing down searches and resulting in too much memory being consumed by the enumeration list.
 
-<i class="far fa-hand-point-right"></i>
-Basics: [Enumerations](../basics/enumerations.md)<br>
-Knowledge Base: [Splayed tables](../kb/splayed-tables.md)
+:fontawesome-solid-book-open:
+[Enumerations](../basics/enumerations.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Splayed tables](../kb/splayed-tables.md)
 
 The problem with using char vector is that it is not an atom, so attributes cannot be applied, and searches on char vectors are very slow. In this case, it is worth considering GUID, which can be used for storing 16-byte values.
 
-<i class="far fa-hand-point-right"></i>
-Basics: [Datatypes](../basics/datatypes.md)
+:fontawesome-solid-book-open:
+[Datatypes](../basics/datatypes.md)
 
 As the data is persisted to disk, or written to an intra-day in-memory instance, the ID field can be converted to GUID and persisted along with the original ID. The following code shows how this would be done in memory. It assumes that the original ID is a char vector of no more than 16 characters in length.
 
@@ -359,7 +369,7 @@ The above `flush` function does not sort or set the parted attribute on the data
 
 If the component which feeds the process is a tickerplant (see kdb+tick) it is necessary to truncate the tickerplant log file (file containing all records received) each time `flush` is called, otherwise the historical data could end up with duplicates. This can happen if the process saves to disk and then restarts, retrieving those same records from the log file, which will subsequently be saved again. The call to the `flush` function can be initiated from the tickerplant in the same way it calls the end-of-day function. If the source of the data is something other than a component which maintains a file of records received, such as a tickerplant, then calling the `flush` function from within the process is usually the best approach.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 
 
@@ -443,7 +453,16 @@ This document has outlined practical options available to system managers for ad
 
 As mentioned in the introduction, a key feature of kdb+ is that it is a flexible offering that allows users to extend the functionality of their applications through the versatility of the q language. There are vanilla intraday- and historical-data processing architectures presented in existing documentation that cover many standard use cases. However, it is also common for a kdb+ system to quickly establish itself as a success within the firm, resulting in the need to process more types of data and requests from downstream users and applications. It is at this point that a systems manager is often faced with balancing how to ensure performance and scalability goals are met, while at the same time dealing with resource constraints and the need for maintainability. The seven cases and customization techniques covered in this paper provided examples of what you can do to help reach those goals.
 
+[:fontawesome-solid-print: PDF](/download/wp/kdb_data_management_sample_customisation_techniques_with_amendments.pdf)
+
 
 ## Author
 
-Simon Mescal is based in New York. Simon is a financial engineer who has designed and developed kdb+-related data-management solutions for top-tier investment banks and trading firms, across multiple asset classes. Simon has extensive experience implementing a range of applications in both object-oriented and vector-programming languages.
+**Simon Mescal** is based in New York. Simon is a financial engineer who has designed and developed kdb+-related data-management solutions for top-tier investment banks and trading firms, across multiple asset classes. Simon has extensive experience implementing a range of applications in both object-oriented and vector-programming languages.
+
+
+## Related articles
+
+:fontawesome-regular-map:
+[Working with sym files](symfiles.md)
+

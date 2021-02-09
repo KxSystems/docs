@@ -5,7 +5,14 @@ date: December 2012
 description: Using kdb+to analyze transaction costs from high-frequency data that often overwhelms traditional database and event-processing systems
 keywords: analysis, performance, schema, transaction cost
 ---
+White paper
+{: #wp-brand}
+
 # Transaction-cost analysis using kdb+
+
+by [Colm Earley](#author)
+{: .wp-author}
+
 
 
 
@@ -41,7 +48,7 @@ The point-in-time query is commonly used by analysts to compare performance agai
 
 A powerful built-in function in q makes this point-in-time query a trivial operation – the `aj` or as-of join.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`aj`](../ref/aj.md)
 
 It takes three arguments:
@@ -110,7 +117,7 @@ FDP 11:20:00.000 100.55  200    100.03 100
 
 Depending on whether your table is in-memory or on disk, correct attribute usage should be employed.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`aj`](../ref/aj.md#performance)
 
 
@@ -336,15 +343,15 @@ q)\ts aj[
         time:`time$time.minute 
         from trade where date=d, sym in `FDP1`FDP2`FDP3`FDP4; 
     select date, sym, time, openBid:bid, openAsk:ask from quote where date=d]
-2691 2155880464j
+2691 2155880464
 
 q)/ retrieving bars from native bar table
 q)\ts select date, sym, bar, firstTradePrice, volume, openBid, openAsk 
     from bar where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-1090 183184j
+1090 183184
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Performance tips](../kb/performance-tips.md)
 
 On subsequent runs, when the data is now in the operating-system cache, the speed-up is even more pronounced at almost 500×. If this is a calculation, which is repeatedly performed, the argument to pre-calculate is even stronger.
@@ -362,12 +369,12 @@ q)\ts aj[
         time:`time$time.minute 
         from trade where date=d, sym in `FDP1`FDP2`FDP3`FDP4; 
     select date, sym, time, openBid:bid, openAsk:ask from quote where date=d]
-489 2155880464j
+489 2155880464
 
 q)/ retrieving bars from native bar table
 q)\ts select date, sym, bar, firstTradePrice, volume, openBid, openAsk 
     from bar where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-1 183184j
+1 183184
 ```
 
 Taking this a step further, one should also store data, which can be aggregated by day and accessed regularly in a separate table for optimal access. In the example below, only a small number of columns are included, but this could be easily expanded. Other useful daily data may include auction volumes, block trades, trade count and average quote size to name but a few.
@@ -383,12 +390,12 @@ q)\ts select
     closeTime:first time where closeAuc 
     by date, sym 
     from trade where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-671 5246432j
+671 5246432
 
 q)/ retrieving from dedicated daily table
 q)\ts select date, sym, open, openTime, close, closeTime 
     from daily where date=d, sym in `FDP1`FDP2`FDP3`FDP4
-28 2622528j
+28 2622528
 ```
 
 The partitioning structure you choose will depend on your access pattern, number of columns and records. If you are retrieving data for multiple dates at once and the number of records and columns is small, a plain vanilla splayed table may suffice. Otherwise, partitioning by month or by year should investigated.
@@ -427,12 +434,17 @@ Having this ability to capture massive volumes of high- and low-frequency market
 
 Later in the paper, the benefits of market-data source-agnostic schema are discussed. Here there are two main advantages in that such a schema will offer run-time query speed-ups and a shortened development cycle. The built-in functions kdb+ provides are very powerful, but the data must also be stored intelligently so that the queries can access it in an efficient manner.
 
-Overall, the paper provides a snapshot of the type of TCA queries that can be run. It aims to highlight the capabilities of kdb+ to offer a best-of-breed high-performance data analysis layer. When combined with either in-house or Kx’s visualization tools, it provides all the components of a TCA application to ensure that investment strategies can be executed more efficiently.
+Overall, the paper provides a snapshot of the type of TCA queries that can be run. It aims to highlight the capabilities of kdb+ to offer a best-of-breed high-performance data analysis layer. When combined with either in-house or KX’s visualization tools, it provides all the components of a TCA application to ensure that investment strategies can be executed more efficiently.
 
 All tests performed with kdb+ V3.0 (2012.11.12).
+
+[:fontawesome-solid-print: PDF](/download/wp/transaction_cost_analysis_using_kdb.pdf)
 
 
 ## Author
 
-Colm Earley has worked on kdb+ tick-database and algorithmic-trading systems related to both the equity and FX markets. Based in New York, Colm is a senior kdb+ consultant at a leading brokerage firm, implementing a global tick database.
+![Colm Earley](../img/faces/colmearley.jpg)
+{: .small-face}
+
+**Colm Earley** has worked on kdb+ tick-database and algorithmic-trading systems related to both the equity and FX markets. Based in New York, Colm is a senior kdb+ consultant at a leading brokerage firm, implementing a global tick database.
 

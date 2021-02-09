@@ -1,11 +1,17 @@
 ---
-title: Java API for kdb+ – White Papers – kdb+ and q documentation
-description: This paper illustrates how the Java API for kdb+ can be used to enable a Java program to interact with a kdb+ process. It first explores the API itself – how it is structured, and how it might be included in a development project. Examples are then provided for core use cases for the API in a standard setup. Particular consideration is given to how the API facilitates subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system.
+title: Java API for kdb+ | White Papers | kdb+ and q documentation
+description: This paper illustrates how the Java API for kdb+ can be used to enable a Java program to interact with a kdb+ process. 
 author: Peter Lyness
 date: May 2018
 keywords: API, Java, interface, connection
 ---
-# <i class="fab fa-java"></i> Java API for kdb+
+White paper
+{: #wp-brand}
+
+# :fontawesome-brands-java: Java API for kdb+
+
+by [Peter Lyness](#author)
+{: .wp-author}
 
 
 
@@ -18,7 +24,7 @@ Competition in this risk-averse domain drives it to push against boundaries.
 Production systems inevitably mix contemporary and legacy code. 
 Because of this, developers need tools for communication and integration.
 Implementation risks must be kept to a strict minimum.
-Kx technology is well-equipped for this issue.
+KX technology is well-equipped for this issue.
 By design kdb+’s communication with external processes is kept simple, and reinforced with interface libraries for other languages.
 
 The Java API for kdb+ is a Java library. 
@@ -36,13 +42,13 @@ Particular consideration is given to how the API facilitates subscription and pu
 The examples presented here form a set of practical templates complementary to the [primary source of information](../../interfaces/java-client-for-q.md) on code.kx.com.
 These templates can be combined and adapted to apply kdb+ across a
 broad range of problem domains. They are available on 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [GitHub](https://github.com/kxcontrib/java-for-kdb-examples).
 
 
 ## API overview  
 
-The API is contained in a <i class="fab fa-github"></i> [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
+The API is contained in a :fontawesome-brands-github: [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
 Inclusion in a development project is, therefore, a straightforward matter
 of including the file with other source code under the package `kx`, and
 ensuring it is properly imported and referenced by other classes. If
@@ -54,7 +60,7 @@ As the API is provided as source, it is perfectly possible to customize code to 
 However, without prior knowledge of how the interactions work, this is not advised unless the solution to these requirements or issues are known.
 It is also possible, and in some contexts encouraged, to wrap the
 functionality of this class within a model suitable for your framework.
-An example might be the open-source <i class="fab fa-github"></i> [qJava library](https://github.com/exxeleron/qJava). 
+An example might be the open-source :fontawesome-brands-github: [qJava library](https://github.com/exxeleron/qJava). 
 Although it is not compatible with the most recent kdb+ version at the time of writing, it shows how to use `c.java` as a core over which an object-oriented framework of q types and functionality has been applied.
 
 The source file is structured as a single outer class, `c`. 
@@ -292,7 +298,7 @@ API is that a `RuntimeException` will be thrown if an attempt is made to
 serialize and pass a UUID object to a kdb+ instance with a version lower
 than 3.0.
 
-More information on these identifier types can be found in the [Kx documentation](../../basics/datatypes.md#guid) as well as the
+More information on these identifier types can be found in the [KX documentation](../../basics/datatypes.md#guid) as well as the
 [core Java documentation](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html).
 
 
@@ -842,7 +848,7 @@ simple dataflow of a potential kdb+ tick system:
 
 ![Simple dataflow of a potential kdb+ tick system](media/image2.png)
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [_Building Real-time Tick Subscribers_](../rt-tick/index.md) regarding the above vanilla setup
 
 Of interest in this white paper are the Java publisher and subscriber processes. As the kdb+ tick system is very widely used, both of these kinds of processes are highly likely to come up in development tasks involving kdb+ interfacing.
@@ -851,7 +857,7 @@ Of interest in this white paper are the Java publisher and subscriber processes.
 ### Test tickerplant and feedhandler setup
 
 To facilitate the testing of Java subscriber processes we can implement
-example q processes freely available in the Kx repository. Simulation of
+example q processes freely available in the KX repository. Simulation of
 a tickerplant can be achieved with
 [`tick.q`](https://github.com/KxSystems/kdb-tick/blob/master/tick.q);
 Trade data, using the trade schema defined in `sym.q`, can then be
@@ -1074,7 +1080,7 @@ int[] aSize = new int[]{1000, 2000};
 In order to maximize tickerplant throughput and efficiency, it is
 generally recommended to publish multiple rows in one go. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 White paper [_Kdb+tick Profiling for Throughput Optimization_](../tick-profiling.md).
 
 Care has to be taken here to ensure that all typed arrays maintain
@@ -1236,9 +1242,11 @@ common role of these developers in helping to reconcile longstanding
 applications with contemporary technologies, often to the benefit of
 both.
 
+[:fontawesome-solid-print: PDF](/download/wp/java-api-a4.pdf)
+
 
 ## Author
 
-Peter Lyness joined First Derivatives as a software engineer in 2015. During this time he has implemented a number of Java-based technical solutions for clients, including kdb+ interface logic for upstream static and real time data feeds. 
+**Peter Lyness** joined First Derivatives as a software engineer in 2015. During this time he has implemented a number of Java-based technical solutions for clients, including kdb+ interface logic for upstream static and real time data feeds. 
 
 

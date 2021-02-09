@@ -4,55 +4,56 @@ description: The toolkit contains an extensive list of commonly used metrics for
 date: April 2019
 keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statistics, roc, auc, precision, logloss, cross entropy.
 ---
-# <i class="fa fa-share-alt"></i> Metrics 
+# :fontawesome-solid-share-alt: Metrics 
 
+
+<div markdown="1" class="typewriter">
+.ml   **Statistical analysis metrics**
+  [accuracy](#mlaccuracy)      Accuracy of classification results
+  [classreport](#mlclassreport)   Statistical information about classification results
+  [confdict](#mlconfdict)      True/false positives and true/false negatives as dictionary
+  [confmat](#mlconfmat)       Confusion matrix
+  [corrmat](#mlcorrmat)       Table-like correlation matrix for a simple table
+  [crossentropy](#mlcrossentropy)  Categorical cross entropy
+  [crm](#mlcrm)           Correlation matrix
+  [cvm](#mlcvm)           Covariance matrix
+  [describe](#mldescribe)      Descriptive information about a table
+  [f1score](#mlf1score)       F1-score on classification results
+  [fbscore](#mlfbscore)       Fbeta-score on classification results
+  [logloss](#mllogloss)       Logarithmic loss
+  [mae](#mlmae)           Mean absolute error
+  [mape](#mlmape)          Mean absolute percentage error
+  [matcorr](#mlmatcorr)       Matthews correlation coefficient
+  [mse](#mlmse)           Mean square error
+  [percentile](#mlpercentile)    Percentile calculation for an array
+  [precision](#mlprecision)     Precision of a binary classifier
+  [r2score](#mlr2score)       R2-score
+  [range](#mlrange)         Range of values
+  [rmse](#mlrmse)          Root mean square error
+  [rmsle](#mlrmsle)         Root mean square logarithmic error
+  [roc](#mlroc)           X- and Y-axis values for an ROC curve
+  [rocaucscore](#mlrocaucscore)   Area under an ROC curve
+  [sensitivity](#mlsensitivity)   Sensitivity of a binary classifier
+  [smape](#mlsmape)         Symmetric mean absolute error
+  [specificity](#mlspecificity)   Specificity of a binary classifier
+  [sse](#mlsse)           Sum squared error
+  [tscore](#mltscore)        One-sample t-test score
+  [tscoreeq](#mltscoreeq)      T-test for independent samples with unequal variances
+</div>
+
+:fontawesome-brands-github:
+[KxSystems/ml/util/metrics.q](https://github.com/KxSystems/ml/blob/master/util/metrics.q)
 
 The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
 
-<i class="fab fa-github"></i>
-[KxSystems/ml/util/metrics.q](https://github.com/KxSystems/ml/blob/master/util/metrics.q)
-
-The following functions are those at present that are contained within the `metrics.q` file of the Machine Learning Toolkit.
-
-```txt
-Statistical analysis metrics
-  .ml.accuracy      Accuracy of classification results
-  .ml.classreport   Statistical information about classification results
-  .ml.confdict      True/false positives and true/false negatives as dictionary
-  .ml.confmat       Confusion matrix
-  .ml.corrmat       Table-like correlation matrix for a simple table
-  .ml.crossentropy  Categorical cross entropy
-  .ml.crm           Correlation matrix
-  .ml.cvm           Covariance matrix
-  .ml.describe      Descriptive information about a table
-  .ml.f1score       F1-score on classification results
-  .ml.fbscore       Fbeta-score on classification results
-  .ml.logloss       Logarithmic loss
-  .ml.mae           Mean absolute error
-  .ml.mape          Mean absolute percentage error
-  .ml.matcorr       Matthews correlation coefficient
-  .ml.mse           Mean square error
-  .ml.percentile    Percentile calculation for an array
-  .ml.precision     Precision of a binary classifier
-  .ml.r2score       R2-score
-  .ml.range         Range of values
-  .ml.rmse          Root mean square error
-  .ml.rmsle         Root mean square logarithmic error
-  .ml.roc           X- and Y-axis values for an ROC curve
-  .ml.rocaucscore   Area under an ROC curve
-  .ml.sensitivity   Sensitivity of a binary classifier
-  .ml.smape         Symmetric mean absolute error
-  .ml.specificity   Specificity of a binary classifier
-  .ml.sse           Sum squared error
-  .ml.tscore        One-sample t-test score
-  .ml.tscoreeq      T-test for independent samples with unequal variances
-```
 
 ## `.ml.accuracy`
 
 _Accuracy of classification results_
 
-Syntax: `.ml.accuracy[x;y]`
+```syntax
+.ml.accuracy[x;y]
+```
 
 Where
 
@@ -75,7 +76,9 @@ q).ml.accuracy[10 2#20?10;10 2#20?10] / support for matrices of predictions and 
 
 _Statistical information about classification results_
 
-Syntax: `.ml.classreport[x;y]`
+```syntax
+.ml.classreport[x;y]
+```
 
 Where
 
@@ -121,12 +124,14 @@ avg/total 0.33      0.33   0.33     1000
 
 _True/false positives and true/false negatives_
 
-Syntax: `.ml.confdict[x;y;z]`
+```syntax
+.ml.confdict[x;y;z]
+```
 
 Where
 
--   `x` is a vector of (binary) predicted labels
--   `y` is a vector of (binary) true labels
+-   `x` is a vector of (binary or multi-class) predicted labels
+-   `y` is a vector of (binary or multi-class) true labels
 -   `z` is an atom denoting the positive class label
 
 returns a dictionary giving the count of true positives (tp), true negatives (tn), false positives (fp) and false negatives (fn).
@@ -149,12 +154,43 @@ fn| 19
 tp| 3
 ```
 
+## `.ml.confmat`
+
+_Confusion matrix_
+
+```syntax
+.ml.confmat[x;y]
+```
+
+Where
+
+-   `x` is a vector of (binary or multi-class) predicted labels
+-   `y` is a vector of (binary or multi-class) true labels
+
+returns a confusion matrix.
+
+```q 
+q).ml.confmat[100?"AB";100?"AB"]        / non-numeric inputs
+A| 22 30
+B| 22 26
+q).ml.confmat[100?0b;100?0b]            / boolean input
+0| 20 26
+1| 26 28
+q).ml.confmat[100?5;100?5]              / supports multiclass by converting to boolean representation
+0| 5 6 2 2 1
+1| 1 6 5 4 3
+2| 3 5 2 4 4
+3| 6 5 9 2 8
+4| 3 5 4 2 3
+```
 
 ## `.ml.corrmat`
 
 _Table-like correlation matrix for a simple table_
 
-Syntax: `.ml.corrmat[x]`
+```syntax
+.ml.corrmat[x]
+```
 
 Where 
 
@@ -177,7 +213,9 @@ C| -0.2273659 0.2287606  1
 
 _Categorical cross entropy_
 
-Syntax: `.ml.crossentropy[x;y]`
+```syntax
+.ml.crossentropy[x;y]
+```
 
 Where
 
@@ -201,7 +239,9 @@ q).ml.crossentropy[b;p]
 
 _Covariance of a matrix_
 
-Syntax: `.ml.cvm[x]`
+```syntax
+.ml.cvm[x]
+```
 
 Where
 
@@ -225,7 +265,9 @@ q).ml.cvm[mat]
 
 _Descriptive information_
 
-Syntax: `.ml.describe[x]`
+```syntax
+.ml.describe[x]
+```
 
 Where 
 
@@ -254,7 +296,9 @@ max  | 9994.308 1000     999      99.98165
 
 _F-1 score for classification results_
 
-Syntax: `.ml.f1score[x;y;z]`
+```syntax
+.ml.f1score[x;y;z]
+```
 
 Where
 
@@ -280,7 +324,9 @@ q).ml.f1score[xb;yb;0b]
 
 _F-beta score for classification results_
 
-Syntax: `.ml.fbscore[x;y;z;b]`
+```syntax
+.ml.fbscore[x;y;z;b]
+```
 
 Where
 
@@ -307,7 +353,9 @@ q).ml.fbscore[xb;yb;1b;.5]
 
 _Logarithmic loss_
 
-Syntax: `.ml.logloss[x;y]`
+```syntax
+.ml.logloss[x;y]
+```
 
 Where
 
@@ -331,7 +379,9 @@ q).ml.logloss[v;b]
 
 _Mean absolute error_
 
-Syntax: `.ml.mae[x;y]`
+```syntax
+.ml.mae[x;y]
+```
 
 Where
 
@@ -352,7 +402,9 @@ q).ml.mae[100?5;100?5]
 
 _Mean absolute percentage error_
 
-Syntax: `.ml.mape[x;y]`
+```syntax
+.ml.mape[x;y]
+```
 
 Where
 
@@ -371,7 +423,9 @@ q).ml.mape[100?5.0;100?5.0]
 
 _Matthews-correlation coefficient_
 
-Syntax: `.ml.matcorr[x;y]`
+```syntax
+.ml.matcorr[x;y]
+```
 
 Where
 
@@ -392,7 +446,9 @@ q).ml.matcorr[100?5;100?5]
 
 _Mean square error_
 
-Syntax: `.ml.mse[x;y]`
+```syntax
+.ml.mse[x;y]
+```
 
 Where
 
@@ -413,7 +469,9 @@ q).ml.mse[asc 100?1f;desc 100?1f]
 
 _Percentile calculation for an array_
 
-Syntax: `.ml.percentile[x;y]`
+```syntax
+.ml.percentile[x;y]
+```
 
 Where
 
@@ -434,7 +492,9 @@ q).ml.percentile[10000?1f;0.6]
 
 _Precision of a binary classifier_
 
-Syntax: `.ml.precision[x;y;z]`
+```syntax
+.ml.precision[x;y;z]
+```
 
 Where
 
@@ -456,14 +516,16 @@ q).ml.precision[1000?"AB";1000?"AB";"B"]
 
 _R2-score for regression model validation_
 
-Syntax: `.ml.r2score[x;y]`
+```syntax
+.ml.r2score[x;y]
+```
 
 Where
 
 -   `x` are predicted continuous values
 -   `y` are true continuous values
 
-returns the R2-score between the true and predicted values. Values close to 1 indicate good prediction, while negative values indicate poor predictors of the system behaviour.
+returns the R2-score between the true and predicted values. Values close to 1 indicate good prediction, while negative values indicate poor predictors of the system behavior.
 
 ```q
 q)xg:asc 1000?50f           / 'good values'
@@ -481,7 +543,9 @@ q).ml.r2score[xb;yb]
 
 _Range of values_
 
-Syntax: `.ml.range[x]`
+```syntax
+.ml.range[x]
+```
 
 Where 
 
@@ -504,7 +568,9 @@ q).ml.range mat
 
 _Root mean squared error for regression model validation_
 
-Syntax: `.ml.rmse[x;y]`
+```syntax
+.ml.rmse[x;y]
+```
 
 Where
 
@@ -529,7 +595,9 @@ q).ml.rmse[xb;yg]
 
 _Root mean squared log error_
 
-Syntax: `.ml.rmsle[x;y]`
+```syntax
+.ml.rmsle[x;y]
+```
 
 Where
 
@@ -550,7 +618,9 @@ q).ml.rmsle[100?5;100?5]
 
 _X- and Y-axis values for an ROC curve_
 
-Syntax: `.ml.roc[x;y]`
+```syntax
+.ml.roc[x;y]
+```
 
 Where
 
@@ -572,7 +642,9 @@ q).ml.roc[v;p]
 
 _Area under an ROC curve_
 
-Syntax: `.ml.rocaucscore[x;y]`
+```syntax
+.ml.rocaucscore[x;y]
+```
 
 Where
 
@@ -593,7 +665,9 @@ q).ml.rocaucscore[v;p]
 
 _Sensitivity of a binary classifier_
 
-Syntax: `.ml.sensitivity[x;y;z]`
+```syntax
+.ml.sensitivity[x;y;z]
+```
 
 Where
 
@@ -615,7 +689,9 @@ q).ml.sensitivity[1000?`class1`class2;1000?`class1`class2;`class1]
 
 _Symmetric mean absolute percentage error_
 
-Syntax: `.ml.smape[x;y]`
+```syntax
+.ml.smape[x;y]
+```
 
 Where
 
@@ -636,7 +712,9 @@ q).ml.smape[100?5;100?5]
 
 _Specificity of a binary classifier_
 
-Syntax: `.ml.specificity[x;y;z]`
+```syntax
+.ml.specificity[x;y;z]
+```
 
 Where
 
@@ -658,7 +736,9 @@ q).ml.specificity[1000?100 200;1000?100 200;200]
 
 _Sum squared error_
 
-Syntax: `.ml.mse[x;y]`
+```syntax
+.ml.mse[x;y]
+```
 
 Where
 
@@ -679,7 +759,9 @@ q).ml.sse[asc 100?1f;desc 100?1f]
 
 _One-sample t-test score_
 
-Syntax: `.ml.tscore[x;y]`
+```syntax
+.ml.tscore[x;y]
+```
 
 Where
 
@@ -695,20 +777,20 @@ q).ml.tscore[x;y]
 7.634824
 ```
 
-!!! tip "One-sample t-score"
-
-    Above 30 samples a one-sample t-score is not statistically significant.
+!!! tip "Above 30 samples a one-sample t-score is not statistically significant."
 
 
 ## `.ml.tscoreeq`
 
 _T-test for independent samples with equal variances and equal sample size_
 
-Syntax: `.ml.tscoreeq[x;y]`
+```syntax
+.ml.tscoreeq[x;y]
+```
 
 Where 
 
-- `x` & `y` are independent sample sets with equal variance and sample size
+-   `x` and `y` are independent sample sets with equal variance and sample size
 
 returns their t-test score.
 

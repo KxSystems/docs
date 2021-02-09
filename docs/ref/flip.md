@@ -1,15 +1,15 @@
 ---
-title: flip – Reference – kdb+ and q documentation
+title: flip – transpose a matrix or column disctionary | Reference | kdb+ and q documentation
 description: flip is a q keyword that transposes its argument.
 author: Stephen Taylor
-keywords: dictionary, flip, kdb+, list, q, table
 ---
 # `flip`
 
 
 
-
-Syntax: `flip x`, `flip[x]`
+```txt
+flip x     flip[x]
+```
 
 Returns `x` transposed, where `x` may be a list of lists, a dictionary or a table. 
 

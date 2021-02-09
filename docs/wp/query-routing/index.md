@@ -1,12 +1,19 @@
 ---
-title: Query Routing – a kdb+ framework for a scalable, load balanced system – White Papers – kdb+ and q documentation
-description: This paper focuses on the design principle of the Connection Manager Load Balancer schematic whilst providing an asynchronous-only method of communication between processes. In this paper, our Load Balancer will also act as a Connection Manager with distributing access to all services whilst minimizing the waiting time for gateways.
+title: "Query Routing: a kdb+ framework for a scalable, load balanced system | White Papers | kdb+ and q documentation"
+description: The design principle of the Connection Manager Load Balancer schematic whilst providing an asynchronous-only method of communication between processes.
 author: Kevin Holsgrove
 date: November 2015
-hero: Technical White paper
 keywords: query, routing, load, balancing, kdb+, gateway
 ---
+White paper
+{: #wp-brand}
+
 # Query Routing: A kdb+ framework for a scalable, load balanced system
+
+by [Kevin Holsgrove](#author)
+{: .wp-author}
+
+
 
 
 
@@ -15,7 +22,7 @@ important to build solid foundations so that as the number of users
 and size of databases increase, the system is able to easily absorb
 the extra capacity.
 
-Distributed kdb+ systems have been covered in a number of Kx Technical
+Distributed kdb+ systems have been covered in a number of KX Technical
 White papers. The primary objective of this paper is to expand on
 routing, query tagging and connectivity management of a large
 distributing kdb+ system. The basic architecture used in this paper is
@@ -522,7 +529,7 @@ Note that in the `execRequest` function, `nh` is the asynchronous handle
 to the gateway. Calling `nh[]` after sending the result causes the
 outgoing message queue for this handle to be flushed immediately. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Interprocess communications](../../basics/ipc.md)
 
 Like our gateway, the `.z.pc` handle is set to reconnect to the Load
@@ -616,20 +623,18 @@ As an example framework focused on network routing, this paper covers
 much of the core functionality, but the scope of this paper does not
 encompass some desirable production features a system architect should
 consider, such as permissions, query validation and capacity
-management. Where topics haven’t been covered previously, the Kx
+management. Where topics haven’t been covered previously, the KX
 Technical White paper series will continue to drill down on important
 components that provide the building blocks for a stable, scalable,
 protected and efficient kdb+ system.
 
 All tests were run using kdb+ version 3.3 (2015.11.03)
 
+[:fontawesome-solid-print: PDF](/download/wp/query-routing-a4.pdf)
 
 
 ## Author
 
-Kevin Holsgrove is a kdb+ consultant based in New York. He has
-developed data and analytic systems for some of the world’s largest
-financial institutions in a range of asset classes.
-
+**Kevin Holsgrove** is a kdb+ consultant based in New York. He has developed data and analytic systems for some of the world’s largest financial institutions in a range of asset classes.
 
 

@@ -1,11 +1,18 @@
 ---
-title: FDL Europe – Analyzing social media data for disaster management | White papers | q and kdb+ documentation
+title: "FDL Europe: Analyzing social media data for disaster management | White papers | q and kdb+ documentation"
 description: Deep-learning methods to classify tweets relating to flooding events – training a binary classifier to discern relevance; a categorical model to classify tweets into finer-grained buckets.
 author: Conor McCarthy
 date: October 2019
 keywords: disaster, kdb+, machine-learning, nasa, q, space, social media
 ---
+White paper
+{: #wp-brand}
+
 # FDL Europe: Analyzing social media data for disaster management
+
+by [Conor McCarthy](#author)
+{: .wp-author}
+
 
 
 
@@ -222,7 +229,7 @@ This indicates that while words such as _flood_ and _kashmir_ are prominent in t
 
 ### Sentiment analysis
 
-The final step in the data-exploration phase was to look at the positive and negative sentiment of tweets within the corpus. This was achieved using functionality within the NLP library released by Kx. The code for it is as follows.
+The final step in the data-exploration phase was to look at the positive and negative sentiment of tweets within the corpus. This was achieved using functionality within the NLP library released by KX. The code for it is as follows.
 
 ```q
 q)sentiment:.nlp.sentiment each data_m`tweet_text
@@ -634,17 +641,17 @@ However, this system shows the potential for the use of kdb+ in the sphere of ma
 
 ## Author
 
-Conor McCarthy joined First Derivatives in March 2018 as a Data Scientist in the Capital Markets Training Program and currently works as a machine learning engineer and interfaces architect in London. 
+**Conor McCarthy** joined First Derivatives in March 2018 as a Data Scientist in the Capital Markets Training Program and currently works as a machine learning engineer and interfaces architect in London. 
 
 
 ## Code
 
 The code presented in this paper is available on GitHub.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/fdl_europe_2019](https://github.com/kxcontrib/fdl_europe_2019)
 
 
 ## Acknowledgements
 
-I gratefully acknowledge the help of all those at FDL Europe for their support and guidance in this project and my colleagues on the Kx Machine Learning team for their help vetting technical aspects of this paper.
+I gratefully acknowledge the help of all those at FDL Europe for their support and guidance in this project and my colleagues on the KX Machine Learning team for their help vetting technical aspects of this paper.

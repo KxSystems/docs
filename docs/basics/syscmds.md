@@ -1,59 +1,56 @@
 ---
-title: System commands – Basics – kdb+ and q documentation
+title: System commands in q | Basics | kdb+ and q documentation
 description: System commands control the q environment.
 keywords: command, kdb+, q, system
 ---
-# System commands
+# :fontawesome-solid-bullhorn: System commands
 
 
 
 
 
-<pre markdown="1" class="language-txt">
-[\a  tables](#a-tables)                      [\s       number of slaves](#s-number-of-slaves)
-[\b  views](#b-views)                       [\S       random seed](#s-random-seed)
-[\B  pending views](#b-pending-views)               [\t       timer](#t-timer)
-[\c  console size](#c-console-size)                [\T       timeout](#t-timeout)
-[\cd change directory](#cd-change-directory)            [\ts      time and space](#ts-time-and-space)
-[\C  HTTP size](#c-http-size)                   [\u       reload user password file](#u-reload-user-password-file)
-[\d  directory](#d-directory)                   [\v       variables](#v-variables)
-[\e  error trap clients](#e-error-trap-clients)          [\w       workspace](#w-workspace)
-[\f  functions](#f-functions)                   [\W       week offset](#w-week-offset)
-[\g  garbage collection mode](#g-garbage-collection-mode)     [\x       expunge](#x-expunge)
-[\l  load file or directory](#l-load-file-or-directory)      [\z       date parsing](#z-date-parsing)
-[\o  offset from UTC](#o-offset-from-utc)             [\1 & \2  redirect](#1-2-redirect)
-[\p  listening port](#p-listening-port)              [\\_       hide q code](#_-hide-q-code)
-[\P  precision](#p-precision)                   [\\        terminate](#terminate)
-[\r  replication master](#r-replication-master)          [\\        toggle q/k](#toggle-qk)
-[\r  rename](#r-rename)                      [\\\\       quit](#quit)
-</pre>
+<div markdown="1" class="typewriter">
+[\a  tables](#a-tables)                           [\s       number of secondary threadss](#s-number-of-secondary-threads)
+[\b  views](#b-views)                            [\S       random seed](#s-random-seed)
+[\B  pending views](#b-pending-views)                    [\t       timer](#t-timer)
+[\c  console size](#c-console-size)                     [\T       timeout](#t-timeout)
+[\cd change directory](#cd-change-directory)                 [\ts      time and space](#ts-time-and-space)
+[\C  HTTP size](#c-http-size)                        [\u       reload user password file](#u-reload-user-password-file)
+[\d  directory](#d-directory)                        [\v       variables](#v-variables)
+[\e  error trap clients](#e-error-trap-clients)               [\w       workspace](#w-workspace)
+[\E  TLS server mode](#e-tls-server-mode)                  [\W       week offset](#w-week-offset)
+[\f  functions](#f-functions)                        [\x       expunge](#x-expunge)
+[\g  garbage collection mode](#g-garbage-collection-mode)          [\z       date parsing](#z-date-parsing)
+[\l  load file or directory](#l-load-file-or-directory)           [\1 & \2  redirect](#1-2-redirect)
+[\o  offset from UTC](#o-offset-from-utc)                  [\\_       hide q code](#_-hide-q-code)
+[\p  listening port](#p-listening-port)                   [\\        terminate](#terminate)
+[\P  precision](#p-precision)                        [\\        toggle q/k](#toggle-qk)
+[\r  replication master](#r-replication-primary)               [\\\\       quit](#quit)
+[\r  rename](#r-rename)                                              
+</div>
 
 System commands control the q environment. They have the form:
 
-```txt
-\cmd [p]
-```
+<div markdown="1" class="typewriter">
+\cmd [_p_]
+</div>
 
-for some command `cmd`, and optional parameter list `p`.
-
-<i class="fas fa-book"></i>
-[`.Q.opt`](../ref/dotq.md#qopt-command-parameters) (command parameters),
-[`.Q.x`](../ref/dotq.md#qx-non-command-parameters) (non-command parameters)
+for some command `cmd`, and optional parameter list _`p`_.
 
 Commands with optional parameters that set values, will show the current values if the parameters are omitted.
 
 Some system commands have equivalent command-line parameters.
 
-!!! tip "`system`"
-
-    The [`system`](../ref/system.md) keyword executes a string representation of a system command – and allows its result to be captured.
+!!! tip "The [`system`](../ref/system.md) keyword executes a string representation of a system command and returns its result."
 
 
 ## `\a` (tables)
 
-Syntax: `\a [namespace]`
+<div markdown="1" class="typewriter">
+\a [_namespace_]
+</div>
 
-Lists tables in `namespace`; default: current namespace.
+Lists tables in _namespace_; default: current namespace.
 
 ```q
 q)\a
@@ -85,9 +82,11 @@ q.nn)
 
 ## `\b` (views)
 
-Syntax: `\b [namespace]`
+<div markdown="1" class="typewriter">
+\b [_namespace_]
+</div>
 
-Lists dependencies (views) in `namespace`.
+Lists dependencies (views) in _namespace_.
 Defaults to current namespace.
 
 ```q
@@ -97,15 +96,20 @@ q)\b
 `s#`a`b
 ```
 
-<i class="fas fa-book"></i>
-[`.z.b`](../ref/dotz.md#zb-dependencies).
+:fontawesome-solid-book:
+[`.z.b`](../ref/dotz.md#zb-dependencies)
+<br>
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
 
 
 ## `\B` (pending views)
 
-Syntax: `\B [namespace]`
+<div markdown="1" class="typewriter">
+\B [_namespace_]
+</div>
 
-Lists pending dependencies (views) in `namespace`, i.e. dependencies not yet referenced, or not referenced after their referents have changed.
+Lists pending dependencies (views) in _namespace_, i.e. dependencies not yet referenced, or not referenced after their referents have changed.
 Defaults to current namespace.
 
 ```q
@@ -124,10 +128,12 @@ q)\B              / no longer pending
 
 ## `\c` (console size)
 
-Syntax: `\c [size]`
+<div markdown="1" class="typewriter">
+\c [_size_]
+</div>
 
 Show or set console maximum rows and columns.
-`size` is a pair of integers: rows and columns.
+_size_ is a pair of integers: rows and columns.
 The default `25 80`; values are coerced to the range \[10,2000\].
 
 These settings determine when q truncates output with `..`
@@ -153,7 +159,7 @@ q)til each 20+til 10
 ..
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-c` command-line option](cmdline.md#-c-console-size)
 
 
@@ -161,21 +167,26 @@ q)til each 20+til 10
 
 ## `\C` (HTTP size)
 
-Syntax: `\C [size]`
+<div markdown="1" class="typewriter">
+\C [_size_]
+</div>
 
 Show or set HTTP display maximum rows and columns.
-`size` is a pair of integers: rows and columns.
+_size_ is a pair of integers: rows and columns.
 The default is `36 2000`; values are coerced to the range \[10,2000\].
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-C` command-line option](cmdline.md#-c-http-size)
 
 
 ## `\cd` (change directory)
 
-Syntax: `\cd [name]`
+<div markdown="1" class="typewriter">
+\cd [_name_]
+</div>
 
 Changes the current directory.
+
 ```q
 ~/q$ q
 KDB+ 2.6 2010.05.10 Copyright (C) 1993-2010 Kx Systems
@@ -190,9 +201,11 @@ q)\cd
 
 ## `\d` (directory)
 
-Syntax: `\d [namespace]`
+<div markdown="1" class="typewriter">
+\d [_namespace_]
+</div>
 
-Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The prompt indicates the current namespace.
+Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The q session prompt indicates the current namespace.
 
 ```q
 q)\d                  / default namespace
@@ -211,10 +224,16 @@ q.s)key`
 `q`Q`o`h`s
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§12.7 Working in a Context](/q4m3/12_Workspace_Organization/#127-working-in-a-context)
+
 
 ## `\e` (error trap clients)
 
-Syntax: `\e [mode]`
+<div markdown="1" class="typewriter">
+\e [_mode_]
+</div>
 
 This enables error trapping for client requests. The default mode is 0 (off).
 
@@ -224,22 +243,42 @@ mode | behavior
 1    | The server suspends on an error, and does not process other requests until the stack is cleared. Appropriate for development: enables debugging on the server.
 2    | Dumps stack to stderr for untrapped errors during request from a remote. (Since V3.5 2016.10.03)
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line option `-e`](cmdline.md#-e-error-traps)
+
+
+## `\E` (TLS server mode)
+
+```txt
+\E
+```
+
+Displays TLS server mode as an int:
+
+```txt
+0i   plain
+1i   plain and TLS
+2i   TLS only
+```
+
+:fontawesome-solid-book-open:
+[Command-line option `-E`](cmdline.md#-e-tls-server-mode) to set the mode
 
 
 ## `\f` (functions)
 
-Syntax: `\f [namespace]`
+<div markdown="1" class="typewriter">
+\f [_namespace_]
+</div>
 
-Lists functions in the given namespace, default current namespace.
+Lists functions in _namespace_, default current namespace.
 
 ```q
 q)f:g:h:{x+2*y}
 q)\f
 `f`g`h
 q)\f .h
-`cd`code`data`eb`ec`ed`es`estr`fram`ha`hb`hc`he`hn`hp`hr`ht`hta`htac`htc`html`http`hu`hug`hy`jx`nbr`pre`td`text`uh`xd`xmp`xs`xt
+`cd`code`data`eb`ec`ed`es`estr`fram`ha`hb`hc`he`hn`hp`hr`ht`hta`htac`htc`html`http`hu`hu..
 q){x where x like"ht??"}system"f .h"
 `htac`html`http
 ```
@@ -247,27 +286,46 @@ q){x where x like"ht??"}system"f .h"
 
 ## `\g` (garbage collection mode)
 
-Syntax: `\g [mode]`
+<div markdown="1" class="typewriter">
+\g [_mode_]
+</div>
 
 Show or set garbage-collection mode.
-The default mode is 0 (deferred) since V2.7 2011.02.04.
+The default mode is 0.
 
 B | mode      | behavior
 --|-----------|------------------------------------------------------
 0 | deferred  | returns memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
 1 | immediate | returns (certain types of) memory to the OS as soon as no longer referenced; has an associated performance overhead.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line option `-g`](cmdline.md#-g-garbage-collection)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§13.1.10 Garbage Collection `\g`](/q4m3/13_Commands_and_System_Variables/#13110-garbage-collection-g)
 
 
 ## `\l` (load file or directory)
 
-Syntax: `\l name`
+<div markdown="1" class="typewriter">
+\l _name_
+\l .
+</div>
 
-The parameter can be a script filename or a directory. A script is loaded, and a directory database is opened. When q opens a directory, it changes its current directory to it. This allows reloading the current database using `\l .`. If the directory is specified as `.`, any scripts in that directory will be ignored; this is to allow (re)loading of data only.
+Where _name_ is the name of a 
 
-If a file or directory under the path being loaded has a dollar-sign suffix then it is also ignored. e.g. `db/tickdata/myfile$` and `db/tickdata/mydir$` would be ignored on `\l db/tickdata` or on `\l .` if `db/tickdata` is the current directory.
+-   q script, executes the script
+-   serialized object, deserializes it into memory as variable `name`
+-   directory of a splayed table, maps the table to variable `name`, without loading any columns into memory
+-   directory and the value of one of the permitted partition types, the most recent partition directory is inspected for splayed directories and each such directory mapped into memory with the name of the splayed directory
+-   directory containing a kdb+ database, recursively loads whatever it finds there: serialized objects, scripts, splayed tables, etc.
+
+**Current directory** When a directory is opened, it becomes the  current directory. 
+
+**Reload current directory** You can reload the current database with `\l .`. This will ignore scripts and reload only data. 
+
+**Never mind the dollars** If a file or directory under the path being loaded has a dollar-sign suffix then it is ignored. e.g. `db/tickdata/myfile$` and `db/tickdata/mydir$` would be ignored on `\l db/tickdata` or on `\l .` if `db/tickdata` is the current directory.
 
 ```q
 q)\l sp.q            / load sp.q script
@@ -279,15 +337,24 @@ q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
 
-<i class="fas fa-book"></i>
+!!! danger "Operating systems may create hidden files, such as `DS_Store`, that block `\l` on a directory."
+
+:fontawesome-solid-book:
+[`load`](../ref/load.md),
 [`.Q.l`](../ref/dotq.md#ql-load) (load)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§10.3 Scripts](/q4m3/10_Execution_Control/#103-scripts)
 
 
 ## `\o` (offset from UTC)
 
-Syntax: `\o [n]`
+<div markdown="1" class="typewriter">
+\o [_n_]
+</div>
 
-Show or set the local time offset, as `n` hours from UTC, or as minutes if `abs[n]>23`.
+Show or set the local time offset, as integer _n_ hours from UTC, or as minutes if `abs[n]>23`.
 The initial value of `0N` means the machine’s offset is used.
 
 ```q
@@ -307,7 +374,7 @@ q).z.P
 
 This corresponds to the `-o` command line parameter.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line option `-o`](cmdline.md#-o-utc-offset)
 
 
@@ -315,35 +382,37 @@ This corresponds to the `-o` command line parameter.
 
 _Show or set listening port_
 
-```txt
-\p [rp,][hostname:][portnumber|servicename]
-```
+<div markdown="1" class="typewriter">
+\p [_rp_,][_hostname_:][_portnumber_|_servicename_]
+</div>
 
 See 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Listening port](listening-port.md) for detail.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-p` command-line option ](cmdline.md#-p-listening-port)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Multithreaded input mode](../kb/multithreaded-input.md),
 [Changes in 3.5](../releases/ChangesIn3.5.md#socket-sharding)
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 [Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
 
 
 ## `\P` (precision)
 
-Syntax: `\P [n]`
+<div markdown="1" class="typewriter">
+\P [_n_]
+</div>
 
 Show or set display precision for floating-point numbers, i.e. the number of digits shown.
 
-The default value is 7 and possible values are in the range \[0,17\].
+The default value of _n_ is 7 and possible values are integers in the range \[0,17\].
 A value of 0 means use maximum precision.
 This is used when exporting to CSV files.
 
@@ -370,90 +439,96 @@ q)1%3
 0.3333333333
 ```
 
-!!! tip "`.Q.fmt` and `.q.f`"
+??? tip "Use `.Q.fmt` and `.q.f` to format numbers to given width and precision"
 
-    Use `.Q.fmt` to format numbers to given width and precision.
     <pre><code class="language-q">
     q).Q.fmt[8;6]a            / format to width 8, 6 decimal places
     "0.142857"
-    </code></pre>
-
-    Use `.Q.f` to format numbers to given precision after the decimal.
-
-    <pre><code class="language-q">
     q).Q.f[2;]each 9.996 34.3445 7817047037.90  / format to 2 decimal places
     "10.00"
     "34.34"
     "7817047037.90"
     </code></pre>
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book:
+[`.Q.f`](../ref/dotq.md#qf-format),
+[`.Q.fmt`](../ref/dotq.md#qfmt-format)
+<br>
+:fontawesome-solid-book-open:
 [Precision](precision.md),
 [`-P` command-line option](cmdline.md#-p-display-precision),
 [`-27!` internal function](internal.md#-27xy-format)
 <br>
-<i class="fas fa-book"></i>
-[`.Q.f`](../ref/dotq.md#qf-format),
-[`.Q.fmt`](../ref/dotq.md#qfmt-format)
-
-<i class="fas fa-globe"></i>
+:fontawesome-solid-globe:
 [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
 
 
 
-## `\r` (replication master)
+## `\r` (replication primary)
 
-Syntax: `\r`
+```txt
+\r
+```
 
-This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the master process, and returns the log file name and log file count.
+This should not be executed manually otherwise it can disrupt replication. It is executed automatically by the replicating process on the primary process, and returns the log file name and log file count.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-r` command-line option](cmdline.md#-r-replicate)
 
 
 ## `\r` (rename)
 
-Syntax: `\r src dst`
+<div markdown="1" class="typewriter">
+\r _src dst_
+</div>
 
-This renames file `src` to `dst`. It is equivalent to the Unix `mv` command, or the windows `move` command (except that it will not rename to a different disk drive).
+Rename file _`src`_ to _`dst`_. 
+
+It is equivalent to the Unix `mv` command, or the windows `move` command (except that it will not rename to a different disk drive).
 
 
-## `\s` (number of slaves)
+## `\s` (number of secondary threads)
 
-Syntax: `\s [N]`
+```txt
+\s [N]
+```
 
-Show or set the number of slaves available for parallel processing, within the limit set by the [`-s` command-line option](cmdline.md#-s-slaves).
+Show or , where `N` is an integer, set the number of secondary threads available for parallel processing, within the limit set by the [`-s` command-line option](cmdline.md#-s-secondary-threads).
+`N` is an integer.
 
-Since V3.5 2017.05.02, slave threads can be adjusted dynamically up to the maximum specified on the command line. A negative `N` indicates processes should be used, instead of threads.
+Since V3.5 2017.05.02, secondary threads can be adjusted dynamically up to the maximum specified on the command line. A negative `N` indicates processes should be used, instead of threads.
 
 ```q
-q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
-("current slave threads";0i)
-("current,max slave threads";4i;8i)
-q)system"s 0" / disable slave threads
-q)system"s 0N" / show max slave threads
+q)0N!("current secondary threads";system"s");system"s 4";0N!("current,max secondary threads";system"s";system"s 0N"); / q -s 8
+("current secondary threads";0i)
+("current,max secondary threads";4i;8i)
+q)system"s 0" / disable secondary threads
+q)system"s 0N" / show max secondary threads
 8i
 ```
 
-
-N   | parallel processing uses
-:--:|-------------------------
-\>0 | `N` threads
-<0 | processes with handles in `.z.pd`
+```txt
+N    parallel processing uses
+------------------------------------
+>0   N threads
+<0   processes with handles in .z.pd
+```
 
 For processes:
 
 -   `peach` or `':` will call [`.z.pd`](../ref/dotz.md#zpd-peach-handles) for a list of handles to the processes, which must have been started previously
 -   the absolute value of `-N` in the command line is ignored
 
-<i class="fas fa-book-open"></i>
-[`-s` command-line option](cmdline.md#-s-slaves),
+:fontawesome-solid-book-open:
+[`-s` command-line option](cmdline.md#-s-secondary-threads),
 [Parallel processing](peach.md)
 
 
 ## `\S` (random seed)
 
-Syntax: `\S [n]`
+```txt
+\S [n]
+```
 
 Where `n` is
 
@@ -493,15 +568,18 @@ q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
 
     Since V3.1 2013.08.19 random-number generation (rng) is thread-local.
     `\S 1234` sets the seed for the rng for the main thread only.
-    The rng in a slave thread is assigned a seed based on the slave thread number.
+    The rng in a secondary thread is assigned a seed based on the secondary thread number.
 
     In multithreaded input mode, the seed is based on the socket descriptor.
-    Instances started on ports 20000 through 20099 (slave procs, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
+    
+    Instances started on ports 20000 through 20099 (secondary threads, used with e.g. `q -s -4` have the main thread’s default seed based on the port number.
 
 
 ## `\t` (timer)
 
-Syntax: `\t [ [N|[:n ]e] ]`
+```txt
+\t [ [N|[:n ]e] ]
+```
 
 This command has two different uses, according to the parameter.
 If the parameter is omitted, it shows the number of milliseconds between timer ticks: 0 means the timer is off.
@@ -534,30 +612,37 @@ q)\t:100 log til 100000        / timing for 100 repetitions
 186
 ```
 
+!!! warning "Actual timer tick frequency"
+
+    The actual timer tick frequency is determined by the timing granularity supported by the underlying operating system. This can be considerably different from a millisecond.
 
 
 ## `\T` (timeout)
 
-Syntax: `\T [n]`
+```txt
+\T [n]
+```
 
 Show or set the client execution timeout, as `n` (integer) number of seconds a client call will execute before timing out.
 The default is 0: no timeout.
 Note this is in seconds, not milliseconds like `\t`.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-T` command-line option](cmdline.md#-t-timeout)
 
 
 
 ## `\ts` (time and space)
 
-Syntax: `\ts[:n] exp`
+```txt
+\ts[:n] exp
+```
 
 Executes the expression `exp` and shows the execution time in milliseconds and the space used in bytes.
 
 ```q
 q)\ts log til 100000
-7 2621568j
+7 2621568
 ```
 
 Since 3.1 2014.02.07
@@ -570,17 +655,21 @@ q)\ts:10000 log til 1000           /same as \ts do[10000; log til 1000]
 
 ## `\u` (reload user password file)
 
-Syntax: `\u`
+```txt
+\u
+```
 
 When q is invoked with the `-u` parameter specifying a user password file, then `\u` will reload the password file. This allows updates to the password file while the server is running.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-u` command-line option](cmdline.md#-u-usr-pwd-local)
 
 
 ## `\v` (variables)
 
-Syntax: `\v [namespace]`
+```txt
+\v [namespace]
+```
 
 Lists the variables in the given namespace, default current namespace.
 
@@ -594,38 +683,45 @@ q){x where x like"????"}system"v .h"
 `HOME`logo
 ```
 
-!!! tip "Expunging variables"
+To expunge `a` from the default namespace
 
-    To expunge `a` from the workspace root, ``delete a from `.``
-    <i class="far fa-hand-point-right"></i> _Q for Mortals_: [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
+```q
+delete a from `.
+```
+
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
 
 ## `\w` (workspace)
 
-Syntax: `\w [0|1|n]`
+```txt
+\w [0|1|n]
+```
 
-If there is no parameter, returns current memory usage, as a list of 6 long integers.
+With no parameter, returns current memory usage, as a list of 6 long integers.
 
-index | meaning
-:----:|--------
-0     | number of bytes allocated
-1     | bytes available in heap
-2     | maximum heap size so far
-3     | limit on thread heap size, given in [`-w` command-line parameter](cmdline.md#-w-workspace)
-4     | mapped bytes
-5     | physical memory
+```txt
+0   number of bytes allocated
+1   bytes available in heap
+2   maximum heap size so far
+3   limit on thread heap size, from -w command-line option
+4   mapped bytes
+5   physical memory
+```
 
 ```q
 q)\w
 168144 67108864 67108864 0 0 8589934592
 ```
 
-`\w 0` or `\w 1` returns a pair.
+`\w 0` and `\w 1` return a pair of longs:
 
-index | meaning
-:----:|--------
-0     | number of internalized symbols
-1     | corresponding memory usage
+```txt
+0   number of internalized symbols
+1   corresponding memory usage
+```
 
 ```q
 q)\w 0
@@ -639,6 +735,8 @@ The utility [`.Q.w`](../ref/dotq.md#qw-memory-stats) formats all this informatio
 Since 2017.11.06, `\w` allows the workspace limit to be increased at run-time, if it was initialized via the
 [`-w` command-line option](cmdline.md#-w-workspace).
 E.g. `system "w 128"` sets the `-w` limit to the larger of 128 MB and the current setting and returns it.
+
+If the system tries to allocate more memory than allowed, it signals `-w abort` and terminates with exit code 1. 
 
 Specifying too large a number will fall back to the same behavior as `\w 0` or `\w 1`.
 
@@ -663,7 +761,7 @@ q)\w 3
 ```
 
 **Domain-local**
-Since V3.7t 2019.10.22 returns information for the [current memory domain](../ref/dotm.md) only.
+Since V4.0 2020.03.17 returns information for the [current memory domain](../ref/dotm.md) only.
 
 ```q
 q)value each ("\\d .m";"\\w";"\\d .";"\\w")
@@ -673,25 +771,29 @@ q)value each ("\\d .m";"\\w";"\\d .";"\\w")
 354032 67108864 67108864 0 0 8589934592
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-w` command-line option](cmdline.md#-w-workspace)<br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.m` namespace](../ref/dotm.md)
 
 
 ## `\W` (week offset)
 
-Syntax: `\W [n]`
+```txt
+\W [n]
+```
 
 Show or set the start-of-week offset `n`, where 0 is Saturday. The default is 2, i.e Monday.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-W` command-line option](cmdline.md#-w-start-week)
 
 
 ## `\x` (expunge)
 
-Syntax: `\x .z.p\*`
+```txt
+\x .z.p*
+```
 
 By default, callbacks like `.z.po` are not defined in the session. After they have been assigned, you can restore the default using `\x` to delete the definition that was made.
 
@@ -704,12 +806,16 @@ q)2+3
 q)\x .z.pi                    / restore default
 ```
 
-N.B. This works only for `.z.p*` variables defined in k before q.k is loaded. e.g. as `.z.ph` is defined in `q.k`, there is no default for it to be reset to.
+??? warning "Works only for `.z.p*` variables defined in k before `q.k` is loaded"
+
+    For example, as `.z.ph` is defined in `q.k`, there is no default for it to be reset to.
 
 
 ## `\z` (date parsing)
 
-Syntax: `\z [B]`
+```txt
+\z [0|1]
+```
 
 Show or set the format for `"D"$` date parsing. `B` is 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
 
@@ -723,16 +829,17 @@ q)"D"$"06/01/2010"
 2010.01.06
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-z` command-line option](cmdline.md#-z-date-format)
 
 
 ## `\1` & `\2` (redirect)
 
-Syntax: `\1 filename`
-Syntax: `\2 filename`
+```txt
+\[1|2] filename
+```
 
-`\1` and `\2` allow redirecting stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary.
+`\1` and `\2` let you redirect stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary.
 
 ```bash
 ~/q$ rm -f t1.txt t2.txt
@@ -761,21 +868,23 @@ On macOS and Linux `\1 /dev/stdin` returns output to the default.
 
 ## `\_` (hide q code)
 
-Syntax: `\_ [scriptname]`
+```txt
+\_ [scriptname]
+```
 
 This command has two different uses depending on whether a parameter is given.
 
-If no parameter, then `\_` checks if client write access is blocked.
+If no parameter, then `\_` checks if client write-access is blocked.
 
 ```q
 q)\_
 0b
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`-b` command-line option](cmdline.md#-b-blocked)
 
-If a parameter is given, it should be a scriptname and `\_ f.q` makes a runtime script `f.q_`. The q code cannot be viewed or serialized.
+If a parameter is given, it should be a scriptname and `\_ f.q` makes a runtime script `f.q_`. The q code loaded from a runtime script cannot be viewed or serialized.
 
 ```q
 q)`:t1.q 0:enlist "a:123;f:{x+2*y}"
@@ -817,7 +926,7 @@ q))\
 q)
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Debugging](debug.md)
 
 
@@ -852,18 +961,20 @@ q)
 
 !!! warning "The k programming language is exposed infrastructure."
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Exposed infrastructure](exposed-infrastructure.md)
 
 
 ## `\\` (quit)
 
-Syntax: `\\`
+```txt
+\\
+```
 
 -   In the interactive session type `\\` at the prompt to quit the session.
 -   Inside a function, use `value"\\\\"` or `exit 0` for the same result.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`exit`](../ref/exit.md),
 [`value`](../ref/value.md),
 [`.z.exit`](../ref/dotz.md#zexit-action-on-exit)
@@ -873,10 +984,20 @@ Syntax: `\\`
     The text following `\\` and white space is ignored by q. This is often useful in scripts where `\\` can be followed by comments or usage examples.
 
 
+## Interrupt and terminate
+
+Ctl-c signals an interrupt to the interpreter. 
+
+Some operations are coded so tightly the interrupt might not be registered. 
+
+Ctl-z will kill the q session. Nothing in memory is saved. 
+
 
 ## OS commands
 
 If an expression begins with `\` but is not recognized as a system command, then it is executed as an OS command.
+
+!!! danger "Typos can get passed to the OS"
 
 ```q
 q)\ls                 / usual ls command
@@ -889,9 +1010,7 @@ q)\ls                 / usual ls command
 ..
 ```
 
-!!! warning "Typos can get passed to the OS"
-
-> When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [<i class="fab fa-twitter"></i> DevOps Borat](https://twitter.com/devops_borat)
+> When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [:fontawesome-brands-twitter: DevOps Borat](https://twitter.com/devops_borat)
 
 
 

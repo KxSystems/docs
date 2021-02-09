@@ -1,17 +1,21 @@
 ---
-title: Storing and exploring the Bitcoin blockchain – White Papers – kdb+ and q documentation
+title: Storing and exploring the Bitcoin blockchain | White Papers | kdb+ and q documentation
 description: A blockchain explorer uses kdb+ to store and query Bitcoin transactions using partitioned databases, splayed tables, intraday write-downs, and in-memory joins.
-author: Jeremy Lucid and Daniel Irwin
+author: [Jeremy Lucid, Daniel Irwin]
 date: December 2018
 keywords: bitcoin, blockchain, kdb+, q
 ---
+White paper
+{: #wp-brand}
+
 # Storing and exploring the Bitcoin blockchain
 
+by [Jeremy Lucid &amp; Daniel Irwin](#authors)
+{: .wp-author}
 
 
 
-
-For over a decade, Kx technology has played an important role in the
+For over a decade, KX technology has played an important role in the
 growing financial system by providing an integrated platform consisting
 of a high-performance kdb+ database, in-memory compute engines and
 real-time streaming processes. For example, across the largest financial
@@ -28,7 +32,7 @@ is blockchain, primarily peer-to-peer cryptocurrency systems built on
 public blockchains. Just as traditional financial institutions in the
 past faced scaling challenges, cryptocurrency businesses, such as
 exchanges and wallet providers, face many of the same growing pains
-associated with an increasing user base. Kx technology can help meet
+associated with an increasing user base. KX technology can help meet
 these challenges and deliver scalability confidence. As a case in point,
 kdb+ is currently utilized to meet these scaling demands at the
 Bitcoin-denominated trading platform,
@@ -513,7 +517,7 @@ same size after 2016 when Bitcoin blocks are more consistently full.
 However, the size of partitions containing data prior to then are much
 smaller. Having partitions of roughly equal size is an advantage when it
 comes to multi-threaded queries, as it makes it easier to allocate an
-equal amount of data to each slave for processing. Below is a sample of
+equal amount of data to each secondary thread for processing. Below is a sample of
 the `txInfo` table, containing the partition column `int`.
 
 ```q
@@ -687,7 +691,7 @@ heightToPartition:{[Height;Width]
   }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Intraday Writedown Solutions](../intraday-writedown/index.md)
 
 
@@ -724,7 +728,7 @@ q).z.zd:17 2 6
 
 The above setting resulted in a compression ratio of 2.7 on average. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Compression in kdb+](../compress/index.md)
 
 
@@ -986,19 +990,35 @@ better understanding blockchain data, the unique challenges associated
 with data retrieval and storage, and potential for application
 development using the technology within the domain.
 
+[:fontawesome-solid-print:](/download/wp/blockchain-a4.pdf)
+
 
 ## Authors
 
-Daniel Irwin is a kdb+ consultant based in Singapore. 
+![Daniel Irwin](../../img/faces/danielirwin.png)
+{: .small-face}
+
+**Daniel Irwin** is a kdb+ consultant based in Singapore. 
 He worked on a global cross-asset _Kx for Surveillance_ implementation 
 for a major international banking group before moving to one of 
 Asia’s largest sovereign-wealth funds to develop a solution for 
 best execution and transaction-cost analysis.
+&nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/irwin-daniel)
 
-Jeremy Lucid is a kdb+ consultant based in Belfast. 
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
+{: .small-face}
+
+**Jeremy Lucid** is a kdb+ consultant based in Belfast. 
 He has worked on real-time Best Execution projects for a major multinational 
 banking institution, and a _Kx for Surveillance_ implementation 
-at a leading options and futures exchange 
+at a leading options and futures exchange.
+
+Other papers by Jeremy Lucid
+{: .publications}
+
+-   :fontawesome-regular-map: [C API for kdb+](../capi/index.md){: .publications}
+-   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md){: .publications}
 
 
 ## Appendix

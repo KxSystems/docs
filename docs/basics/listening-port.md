@@ -47,6 +47,9 @@ q)\p
 
 Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
+:fontawesome-solid-graduation-cap:
+[A load-balancing kdb+ server](../kb/load-balancing.md)
+
 
 ## Ephemeral port
 
@@ -108,13 +111,22 @@ q)\ls /tmp/kxuds
 "kx.5000"
 ```
 
-<i class="fas fa-book"></i>
+
+## Security
+
+Once you open a port in q session, it is open to all connections, including HTTP requests. 
+
+!!! tip "In a production environment secure any process with an open port."
+
+
+---
+:fontawesome-solid-book:
 [`hopen`](../ref/hopen.md)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 Command-line options [`-e`](cmdline.md#-e-tls-server-mode),
 [`-p`](cmdline.md#-p-listening-port); 
 system command [`\p`](syscmds.md#p-listening-port)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Multithreaded input mode](../kb/multithreaded-input.md)

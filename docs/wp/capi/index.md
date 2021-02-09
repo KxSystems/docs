@@ -1,11 +1,17 @@
 ---
-title: C API for kdb+ – White Papers – kdb+ and q documentation
+title: C API for kdb+ | White Papers | kdb+ and q documentation
 description: How to connect a C program to a kdb+ database
 author: Jeremy Lucid
 date: December 2018
 keywords: kdb+, q, real-time, streaming, subscribe, tick
 ---
+White paper
+{: #wp-brand}
+
 # C API for kdb+
+
+by [Jeremy Lucid](#author)
+{: .wp-author}
 
  
 
@@ -18,7 +24,7 @@ For example, in a recent white paper “[Kdb+ in astronomy](../astronomy.md)” 
 
 While [Interfaces: C](../../interfaces/c-client-for-q.md) remains the primary source for up-to-date information on the C API, the examples presented here provide a complementary set of practical templates. These templates can be combined and used to apply kdb+ across a broad range of problem domains. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/capi](https://github.com/kxcontrib/capi)
 
 
@@ -268,14 +274,14 @@ In general, there are two common types of errors; those generated during the soc
 
 As an example of an initialization error, the ”Authentication Error” will occur when the user name or password credentials passed to `khpu` are invalid. In kdb+, a process can be started in a restricted access mode where only users with valid credentials can connect.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 White paper: [WebSockets](../websockets/index.md)
 
 Similarly, the ”Connection error” can result for incorrect hostname or port numbers being passed to `khpu`.
 
 Evaluation errors occur from invalid queries being passed to the kdb+ process using `k`. In this case, the type element (`x->t`) of the `K` object, `x`, returned by `k` should be checked, see [_Object type element t_](#object-type-element-t). If the type value is 0 (null), then a network error has occurred. If the type value is `-128`, then `x->s` will give the error message resulting from the invalid query. In `error.c`, below, three invalid queries are passed to a kdb+ process and their associated error messages printed. For all subsequent examples in this paper, the function `isRemoteErr` will be used to capture such errors. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Errors](../../basics/errors.md) for the complete list of error codes 
 
 ```c
@@ -357,7 +363,7 @@ k(-handle, "1.0 + 2.0", (K)0);
 
 The asynchronous option is recommended when maximum data throughput is desired and the sender does not require an acknowledgment. Greater technical details on synchronous vs asynchronous requests can be found in the following white papers.
 
-<i class="far fa-hand-point-right"></i> White papers:  
+:fontawesome-regular-hand-point-right: White papers:  
 [Common design principles for kdb+ gateways](../gateway-design/index.md)  
 [Query Routing: A kdb+ framework for a scalable, load balanced system](../query-routing/index.md)
 
@@ -783,7 +789,7 @@ values[2;] = ABC DEF GHI JKL
 
 ### Tables
 
-Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x-k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
+Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x->k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
 extracted.
 
 ```c
@@ -1312,7 +1318,7 @@ A kdb+ tickerplant is a kdb+ process speciﬁcally designed to handle incoming, 
 
 ![Architecture](img/architecture.png)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Building real-time tick subscribers](../rt-tick/index.md)
 
 
@@ -1320,7 +1326,7 @@ White paper: [Building real-time tick subscribers](../rt-tick/index.md)
 
 To facilitate testing of a C subscriber process, the following kdb+ tickerplant will be used.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick/blob/master/tick.q)
 
 For the sake of demonstration, the publisher will be conﬁgured to send a mock market-data feed in the form of trade records to the tickerplant. The trade table schema to be used is deﬁned below.
@@ -1369,7 +1375,7 @@ Once the tickerplant and feedhandler processes are up and running the C subscrib
 
 Subscriber processes are required to make an initial subscribe request to the tickerplant in order to receive data.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Publish and subscribe](../../kb/publish-subscribe.md)
 
 This request involves calling the `.u.sub` function with two parameter arguments. The ﬁrst argument is the table name, and the second is the list of symbols to subscribe to.
@@ -1721,7 +1727,20 @@ int main() {
 
 This document covered multiple aspects of the C API interface for connecting with the kdb+  database. Topics covered included the creation of socket connections, execution of queries, error handling, memory management, and the creation and extraction of data from `K` objects such as lists, dictionaries and tables. Practical examples formed the basis for the construction of a C subscriber process, capable of consuming a kdb+ data feed, and a feedhandler process designed to publish data to a kdb+ tickerplant. Finally, the use of shared C libraries to extend the functionality of kdb+ was also demonstrated.
 
+[:fontawesome-solid-print: PDF](/download/wp/c_api_for_kdb.pdf)
+
 
 ## Author
 
-Jeremy Lucid, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
+{: .small-face}
+
+**Jeremy Lucid**, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
+
+Other papers by Jeremy Lucid
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Storing and exploring the Bitcoin blockchain](../blockchain/index.md)
+-   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md)
+</ul>

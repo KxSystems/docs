@@ -1,16 +1,17 @@
 ---
-title: Enumerate – Reference – kdb+ and q documentation
+title: Enumerate | Reference | kdb+ and q documentation
 description: Enumerate is a q operator that returns one list as an enumeration of another.
 author: Stephen Taylor
-keywords: dollar, enumerate, list, kdb+, q, vector
 ---
 # `$` Enumerate
 
 
 
-Syntax: `x$y`, `$[x;y]`
+```txt
+x$y    $[x;y]
+```
 
-Where 
+Where
 
 -   `x` and `y` are lists
 -   `x~distinct x`
@@ -70,11 +71,15 @@ error | cause
 cast  | item/s of `y` not in `x`
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-book:
 [Enum Extend](enum-extend.md),
-[Enumeration](enumeration.md)  
-Basics: [Enumerations](../basics/enumerations.md)  
-_Q for Mortals:_ [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  
-[`$` dollar](overloads.md#dollar)  
-
-
+[Enumeration](enumeration.md),
+[`$` dollar](overloads.md#dollar)
+<br>
+:fontawesome-solid-book-open:
+[Enumerations](../basics/enumerations.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations) ,
+[§8.5 Foreign Keys and Virtual Columns](/q4m3/8_Tables/#84-foreign-keys-and-virtual-columns)

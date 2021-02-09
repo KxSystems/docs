@@ -1,12 +1,11 @@
 ---
-title: sum, sums, msum, wsum – Reference – kdb+ and q documentation
-description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument. 
+title: sum, sums, msum, wsum – sum, cumulative sums, moving sums, and weighted sum of a list | Reference | kdb+ and q documentation
+description: sum, sums, msum, and wsum are q keywords athat return (respectively) the sum, cumulative sums, moving sums, and weighted sum of their argument.
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, moving, q, sum, sums, statistics, weight, weighted sum
 ---
 # `sum`, `sums`, `msum`, `wsum`
 
-_Sums_
+_Totals – simple, running, moving, and weighted_
 
 
 
@@ -15,14 +14,16 @@ _Sums_
 
 _Total_
 
-Syntax: `sum x`, `sum[x]`
+```txt
+sum x    sum[x]
+```
 
 Where `x` is
 
-- a simple numeric list, returns the sums of its items
-- an atom, returns `x`
-- a list of numeric lists, returns their sums
-- a dictionary with numeric values
+-   a simple numeric list, returns the sums of its items
+-   an atom, returns `x`
+-   a list of numeric lists, returns their sums
+-   a dictionary with numeric values
 
 Nulls are treated as zeros.
 
@@ -55,16 +56,18 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
 8 8f
 ```
 
-`sum` is an aggregate function.
+`sum` is an aggregate function, equivalent to `+/`.
 
 
 ## `sums`
 
 _Running totals_
 
-Syntax: `sums x`, `sums[x]`
+```txt
+sums x    sums[x]
+```
 
-Where `x` is a numeric or temporal list, returns the cumulative sums of the items of `x`. 
+Where `x` is a numeric or temporal list, returns the cumulative sums of the items of `x`.
 
 The sum of an atom is itself. Nulls are treated as zeros.
 
@@ -90,7 +93,7 @@ q)sums "abc"                    / type error if list is not numeric
 'type
 ```
 
-`sums` is a uniform function.
+`sums` is a uniform function, equivalent to `+\`.
 
 
 
@@ -98,7 +101,9 @@ q)sums "abc"                    / type error if list is not numeric
 
 _Moving sums_
 
-Syntax: `x msum y`, `msum[x;y]`
+```txt
+x msum y    msum[x;y]
+```
 
 Where
 
@@ -117,27 +122,67 @@ q)3 msum 0N 2 3 5 0N 11     / nulls treated as zero
 `msum` is a uniform function.
 
 
-## `wsum` 
+## `wsum`
 
 _Weighted sum_
 
-Syntax: `x wsum y`, `wsum[x;y]`
+```txt
+x wsum y    wsum[x;y]
+```
 
-Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats. The calculation is `sum x *y`.
+Where `x` and `y` are numeric lists, returns the weighted sum of the products of `x` and `y`. When both `x` and `y` are integer lists, they are first converted to floats. 
 
 ```q
 q)2 3 4 wsum 1 2 4   / equivalent to sum 2 3 4 * 1 2 4f
 24f
+
 q)2 wsum 1 2 4       / equivalent to sum 2 * 1 2 4
 14
+
+q)(1 2;3 4) wsum (500 400;300 200)
+1400 1600
 ```
 
-`wsum` is an aggregate function.
+`wsum` is an aggregate function, equivalent to `{sum x*y}`.
 
-<i class="far fa-hand-point-right"></i> 
-Wikipedia: [Weighted sum](https://en.wikipedia.org/wiki/Weight_function)  
-Knowledge Base: [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
-Basics: [Mathematics](../basics/math.md)
+:fontawesome-solid-graduation-cap:
+[Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)
+<br>
+:fontawesome-brands-wikipedia-w:
+[Weighted sum](https://en.wikipedia.org/wiki/Weight_function "Wikipedia")
+
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`sum`, `sums`, and `msum` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+`wsum` applies to dictionaries.
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+
+q)sum d
+14 26 9
+q)sum t
+a| 34
+b| 15
+q)sum k
+a| 34
+b| 15
+
+q)sums d
+a| 10 21 3
+b| 14 26 9
+
+q)2 msum t
+a  b
+-----
+10 4
+31 9
+24 11
+
+q)1 2 wsum d
+18 31 15
+```
 
 
 ## Aggregating nulls
@@ -149,3 +194,7 @@ But for nested `x` these functions preserve the nulls.
 q)sum (1 2;0N 4)
 0N 6
 ```
+
+----
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)

@@ -80,7 +80,7 @@ q)(`a`b`c!1 2 3) _ `a`b
 'type
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 _Q for Mortals_: [§5. Dictionaries](/q4m3/5_Dictionaries/#522-extracting-a-sub-dictionary)
 
 !!! warning "Dropping dictionary entries with integer arguments"

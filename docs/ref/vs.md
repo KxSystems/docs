@@ -4,9 +4,9 @@ description: vs is a q keyword that performs variousn functions under the scheme
 author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
-<div style="float: right">
-<i class="fas fa-wrench fa-5x"></i>
-</div>
+[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
+{: style="float: right; max-width: 200px"}
+
 
 # `vs`
 
@@ -18,7 +18,9 @@ _“Vector from scalar”_
 -   _partition a list_
 -   _encode a vector from an atom_
 
-Syntax: `x vs y`,`vs[x;y]`
+```txt
+x vs y    vs[x;y]
+```
 
 
 ## Partition
@@ -64,10 +66,10 @@ q)` vs "abc\r\ndef\r\nghi"
 
 ### Symbol by dot
 
-Where `x` is the empty symbol `` ` ``, and `y` is a symbol, returns as a symbol vector `y` split on `` `.` ``.
+Where `x` is the null symbol `` ` ``, and `y` is a symbol, returns as a symbol vector `y` split on `` `.` ``.
 
 ```q
-q)` vs `mywork.dat 
+q)` vs `mywork.dat
 `mywork`dat
 ```
 
@@ -81,7 +83,7 @@ q)` vs `:/home/kdb/data/mywork.dat
 `:/home/kdb/data`mywork.dat
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-solid-book:
 [sv](sv.md#join) join
 
 
@@ -133,7 +135,7 @@ q)"." sv string 256 vs .z.a / ip address string from .z.a
 "192.168.1.213"
 ```
 
-Where `y` is an integer vector the result is a matrix with `count[x]` items whose `i`-th column `(x vs y)[;i]` is identical to `x vs y[i]`. 
+Where `y` is an integer vector the result is a matrix with `count[x]` items whose `i`-th column `(x vs y)[;i]` is identical to `x vs y[i]`.
 More generally, `y` can be any list of integers, and each item of the result is identical to `y` in structure.
 
 ```q
@@ -153,11 +155,15 @@ q)10 vs(1995;1996 1997)
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
-[`sv`](sv.md#decode) decode  
-[`.Q.j10`](dotq.md#qj10-encode-binhex) encode binhex   
-[`.Q.x10`](dotq.md#qx10-decode-binhex) decode binhex   
-[`.Q.j12`](dotq.md#qj12-encode-base64) encode base64   
-[`.Q.x12`](dotq.md#qx12-decode-base64) decode base64  
+:fontawesome-solid-book:
+[`sv`](sv.md#decode) decode
+<br>
+:fontawesome-solid-book:
+[`.Q.j10`](dotq.md#qj10-encode-binhex) encode binhex, 
+[`.Q.j12`](dotq.md#qj12-encode-base64) encode base64
+<br>
+:fontawesome-solid-book:
+[`.Q.x10`](dotq.md#qx10-decode-binhex) decode binhex,
+[`.Q.x12`](dotq.md#qx12-decode-base64) decode base64
 
 

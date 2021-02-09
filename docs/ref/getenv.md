@@ -1,8 +1,7 @@
 ---
-title: getenv, setenv – Reference – kdb+ and q documentation
+title: getenv, setenv – get and set environment variables | Reference | kdb+ and q documentation
 description: getenv and setenv are q keywords that get or set an environment variable.
 author: Stephen Taylor
-keywords: environment, get, getenv, kdb+, q, set, setenv, variable
 ---
 # `getenv`
 
@@ -15,7 +14,9 @@ _Get or set an environment variable_
 
 _Get the value of an environment variable_
 
-Syntax: `getenv x`, `getenv[x]`
+```txt
+getenv x     getenv[x]
+```
 
 where `x` is a symbol atom naming an environment variable, returns its value.
 
@@ -31,9 +32,11 @@ q)getenv `UNKNOWN      / returns empty if variable not defined
 
 _Set the value of an environment variable_
 
-Syntax: `x setenv y`, `setenv[x;y]`
+```txt
+x setenv y     setenv[x;y]
+```
 
-where 
+where
 
 -   `x` is a symbol atom
 -   `y` is a string
@@ -49,6 +52,10 @@ q)\echo $RTMP
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
-[`get`, `set`](get.md)  
-Basics: [Environment](../basics/environment.md) 
+----
+
+:fontawesome-solid-book:
+[`get`, `set`](get.md)
+<br>
+:fontawesome-solid-book-open:
+[Environment](../basics/by-topic.md#environment)

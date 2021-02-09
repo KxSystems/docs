@@ -2,9 +2,8 @@
 title: Examples of using R from q
 description: Examples showing the use of the Fusion interfaces between R and q
 keywords: interface, kdb+, library, q, r
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
-# <i class="fab fa-r-project"></i> Examples using rkdb/embedR
+# :fontawesome-brands-r-project: Examples using rkdb/embedR
 
 
 The following examples make use of the Fusion interfaces between q/kdb+ and R and show their versatility.
@@ -156,7 +155,7 @@ timebucketedpivot:{[startdate; enddate; symbols; timebucket]
   () xkey 1^exec colheaders#(sym!return) by time:time from data }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Pivoting tables](../../kb/pivoting-tables.md)
 
 An example is:
@@ -237,7 +236,7 @@ This solution executes quickest and with the least network usage, as the resulta
 
 To demonstrate the power of q, an example using randomly-generated smart-meter data has been developed.
 This can be downloaded from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial).
 By following the instructions in the README, an example database can be built.
 The default database contains information on 100,000 smart-meter customers from different sectors and regions over 61 days.
@@ -245,7 +244,7 @@ The default database contains 9.6M records per day, 586M rows in total.
 A set of example queries are provided, and a tutorial to step through the queries and test the performance of q.
 Users are encouraged to experiment with:
 
--   using slaves to boost performance
+-   using secondary processes to boost performance
 -   running queries with different parameters
 -   modifying or writing their own queries
 -   compression to reduce the size of on-disk data
@@ -299,5 +298,5 @@ q)Rget "date()"
 "Fri Feb  3 01:33:57 2012"
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Timezones and Daylight Saving Time](../../kb/timezones.md)

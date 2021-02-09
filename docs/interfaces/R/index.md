@@ -2,9 +2,8 @@
 title: Using R with kdb+ – Interfaces – kdb+ and q documentation
 description: How to enable R to connect to kdb+ and extract data; embed R inside q and invoke R routines; enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely; and enable q to load the R maths library and invoke R math routines locally.
 keywords: interface, kdb+, library, q, r
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
-# <i class="fab fa-r-project"></i> Using R with kdb+
+# :fontawesome-brands-r-project: Using R with kdb+
 
 ## Introduction
 
@@ -47,7 +46,7 @@ There are four ways to interface q with R:
 3.  **Q can connect to a remote instance of R** via TCP/IP and invoke R routines remotely
 4.  **Q can load the R maths library** and invoke the R math routines locally
 
-The first and second methods on interfacing between q and R are covered by the Fusion interfaces [rkdb](rkdb.md) and [embedR](embedr.md). The remaining methods are not supported or owned by Kx but are desbut are described [here](r-and-q.md), the packages and methods outlined here are kdb-Rmath, RServe and RODBC
+The first and second methods on interfacing between q and R are covered by the Fusion interfaces [rkdb](rkdb.md) and [embedR](embedr.md). The remaining methods are not supported or owned by KX but are desbut are described [here](r-and-q.md), the packages and methods outlined here are kdb-Rmath, RServe and RODBC
 
 A number of considerations will affect which of the above interfaces are used.
 

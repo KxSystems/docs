@@ -12,7 +12,9 @@ keywords: each, enlist, first, last kdb+, q, select
 
 _First item of a list_
 
-Syntax: `first x`, `first[x]`
+```txt
+first x    first[x]
+```
 
 Where `x` is a list or dictionary, returns its first item, else `x`.
 
@@ -63,7 +65,9 @@ q)a~first first enlist enlist 10
 
 _Last item of a list_
 
-Syntax: `last x`, `last[x]`
+```txt
+last x    last[x]
+```
 
 Where `x` is a list or dictionary, returns its last item; otherwise `x`.
 
@@ -76,5 +80,6 @@ q)last 42
 42
 ```
 
-<i class="fare fa-hand-point-right"></i>
-Basics: [Selection](../basics/selection.md)
+----
+:fontawesome-solid-book-open:
+[Selection](../basics/by-topic.md#selection)

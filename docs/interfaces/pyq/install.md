@@ -3,15 +3,13 @@ title: Installing PyQ – Interfaces – kdb+ and q documentation
 description: How to install the PyQ interface between kdb+ and Python
 author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 ---
-
 # ![PyQ](../img/pyq.png)  Installation
 
 
 PyQ can be installed using the standard Python package management tool `pip`.
 
-<i class="far fa-hand-point-right"></i> [Installing Python Modules](https://docs.python.org/3/installing/)
+:fontawesome-regular-hand-point-right: [Installing Python Modules](https://docs.python.org/3/installing/)
 
 To install the latest version, run the following command
 
@@ -31,25 +29,25 @@ $ pip install pyq
 
 ### Operating system
 
-<i class="fab fa-linux"></i> Linux,
-<i class="fab fa-apple"></i> macOS 10.11+
+:fontawesome-brands-linux: Linux,
+:fontawesome-brands-apple: macOS 10.11+
 
 Solaris is supported, but has not been tested recently.
 
-<i class="fab fa-windows"></i> Windows is [supported as an experiment](#installing-on-windows)
+:fontawesome-brands-windows: Windows is [supported as an experiment](#installing-on-windows)
 
 ### kdb+
 
 V2.8+
 
--   <i class="fas fa-download"></i> [Download](https://kx.com/download/)
--   <i class="far fa-hand-point-right"></i> [Install](../../learn/install/index.md)
+-   :fontawesome-solid-download: [Download](https://kx.com/download/)
+-   :fontawesome-regular-hand-point-right: [Install](../../learn/install.md)
 
 ### Python
 
 2.7, or 3.5+
 
--    <i class="fas fa-download"></i> [Download](https://www.python.org/downloads/)
+-    :fontawesome-solid-download: [Download](https://www.python.org/downloads/)
 
 ### Compiler
 
@@ -376,13 +374,13 @@ Requirements are:
 
 Install PyQ:
 
-```powershell
+```shell
 pip install -U pyq
 ```
 
 You can start PyQ by running
 
-```powershell
+```shell
 c:\q\w32\q.exe python.q
 ```
 
@@ -392,13 +390,13 @@ c:\q\w32\q.exe python.q
 
 You can run tests too: first install the required packages:
 
-```powershell
+```shell
 pip install pytest pytest-pyq
 ```
 
 Then run:
 
-```powershell
+```shell
 set QBIN=c:\q\w32\q.exe
 %QBIN% python.q -mpytest --pyargs pyq < nul
 ```
@@ -450,5 +448,5 @@ jupyter-notebook
 
 and select _PyQ 3_ from the _New_ menu.
 
-<i class="fab fa-youtube"></i> 
+:fontawesome-brands-youtube: 
 _YouTube_: [What can be done in a PyQ notebook](https://youtu.be/v2UoP0l6mOw "YouTube")

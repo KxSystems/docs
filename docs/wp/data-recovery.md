@@ -1,15 +1,22 @@
 ---
-title: Data recovery for kdb+tick – White Papers – kdb+ and q documentation
+title: Data recovery for kdb+tick | White Papers | kdb+ and q documentation
 description: Tickerplant logfiles can be replayed to recover service, even after they have been corrupted. 
 author: Fionnbharr Gaston
 date: July 2014
 keywords: corrupt, data, data recovery, error, kdb+, log, logfile, q, real-time, recovery, replay, subscribe, tick, tickerplant, trap
 ---
+White paper
+{: #wp-brand}
+
 # Data recovery for kdb+tick
 
+by [Fionnbharr Gaston](#author)
+{: .wp-author}
 
 
-Kx freely offers a complete tick-capture product which allows for the processing, analysis and historical storage of huge volumes of tick data in real time. This product, known as kdb+tick, is extremely powerful, lightweight and forms the core of most kdb+ architectures. 
+
+
+KX freely offers a complete tick-capture product which allows for the processing, analysis and historical storage of huge volumes of tick data in real time. This product, known as kdb+tick, is extremely powerful, lightweight and forms the core of most kdb+ architectures. 
 
 The tickerplant lies at the heart of this structure. It is responsible for receiving data from external feedhandlers and publishing to downstream subscribers. 
 
@@ -40,7 +47,7 @@ Historical database
 
 : The historical database (HDB) consists of on-disk kdb+ data, typically split into date partitions. A kdb+ process can read this data and memory-map it, allowing for fast queries across a large volume of data. The RDB is instructed to save its data to the HDB at EOD.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: 
 [Kdb+ tick profiling for throughput optimization](tick-profiling.md)
 
@@ -61,7 +68,7 @@ accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$()
 
 Kdb+tick is freely available  and contains a few short, yet powerful scripts.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
 
 script     | purpose
@@ -70,7 +77,7 @@ script     | purpose
 `tick/r.q` | runs a standard real-time database
 `tick/u.q` | contains functions for subscription and publication
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Starting kdb+: [Realtime database](../learn/startingkdb/tick.md)
 
 
@@ -170,12 +177,12 @@ q)\ts value each get`:sym2014.05.07
 q)\ts -11!`:sym2014.05.07
 1 4195344
 q)\ts -11!`:sym2014.05.07
-1204 4257168j
+1204 4257168
 q)\ts value each get `:sym2014.05.07
-1690 296580768j
+1690 296580768
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [`\ts` system command](../basics/syscmds.md#ts-time-and-space)
 
 The return value from ``-11!`:logfile`` is the number of tplog lines executed.
@@ -207,7 +214,7 @@ Should a tplog be corrupted in some way, running ``-11!(-2;`:tplog)`` will retur
 ```q
 q)-11!(-2;`:sym2013.10.29)
 46333621
-46756601608j
+46756601608
 ```
 
 This means that there are 46,333,621 valid chunks in the tplog, and 467,56,601,608 valid bytes. Anything after this point is considered corrupt and not replayable.
@@ -242,7 +249,7 @@ q)-11!(`:sym2013.10.29)
 ```q
 q)-11!(-2;`:sym2013.10.29)
 46333621
-46756601608j
+46756601608
 ```
 
 There are 46,333,621 valid chunks in the tplog, and the valid portion of the log file is 46,756,601,608 bytes in size.
@@ -304,7 +311,7 @@ time sym side size price
 
 //recover new tplog
 q) -11! new
-46333621j
+46333621
 
 q)trade
 time                 sym    side size price
@@ -488,7 +495,7 @@ upd:{[t;x]                  / redefine upd with error trapping
   };
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Trap](../ref/apply.md#trap)
 
 We now replay the original tplog.
@@ -527,8 +534,10 @@ The log file can, however, become corrupted. For instance, the tickerplant proce
 
 All tests were run using kdb+ V3.1 (2014.03.27).
 
+[:fontawesome-solid-print: PDF](/download/wp/data_recovery_for_kdb_tick.pdf)
+
 
 ## Author
 
-Fionnbharr Gaston is a kdb+ consultant currently based in Singapore. He has worked with a number of top-tier investment banks and exchanges in the UK, Asia, and Australia, on applications ranging from market-data capture to market surveillances.
+**Fionnbharr Gaston** is a kdb+ consultant currently based in Singapore. He has worked with a number of top-tier investment banks and exchanges in the UK, Asia, and Australia, on applications ranging from market-data capture to market surveillances.
 

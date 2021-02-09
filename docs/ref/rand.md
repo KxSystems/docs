@@ -48,5 +48,5 @@ rand each 100#6
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Roll and Deal](deal.md) for random seed

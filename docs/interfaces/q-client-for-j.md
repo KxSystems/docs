@@ -9,7 +9,7 @@ keywords: api, client, interface, j, kdb+, q
 
 QJ is a C extension for q, working as a frontend of [J](https://www.jsoftware.com/#/) engine DLL, so we can use the [J engine](https://www.jsoftware.com/help/dictionary/vocabul.htm) and the [J Application Library](https://code.jsoftware.com/wiki/JAL/j701) within q. It has been tested on l64 with j701beta. 
 
-<i class="fab fa-github"></i> [kxcontrib/zuoqianxu/qj](https://github.com/kxcontrib/zuoqianxu/tree/master/qj) 
+:fontawesome-brands-github: [kxcontrib/zuoqianxu/qj](https://github.com/kxcontrib/zuoqianxu/tree/master/qj) 
 
 
 ## Install
@@ -77,7 +77,7 @@ q)initj["/opt/j64-701/bin"];
 Set data to J:
 
 ```q
-q)q2j["a";(01b;2 3 4j;5;1 0n 0w -0w -2f;"abcd")]
+q)q2j["a";(01b;2 3 4;5;1 0n 0w -0w -2f;"abcd")]
 ```
 
 Get data from J:
@@ -85,8 +85,8 @@ Get data from J:
 ```q
 q)2jq["a"]
 01b
-2 3 4j
-5j
+2 3 4
+5
 1 0n 0w -0w -2
 "abcd"
 ```
@@ -102,8 +102,8 @@ q)jedo "i.2 3 4"
 Call J monads:
 
 ```q
-q)jemv["q:"] 1234567890j
-2 3 3 5 3607 3803j
+q)jemv["q:"] 1234567890
+2 3 3 5 3607 3803
 ```
 
 Call J dyads:

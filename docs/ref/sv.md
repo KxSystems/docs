@@ -1,12 +1,11 @@
 ---
-title: sv – Reference – kdb+ and q documentation
+title: sv – scalar from vector | Reference | kdb+ and q documentation
 description: sv is a q keyword that performs a variety of functions under the general scheme of scalar (atom) from vector – join strings or filepath elements; decode a vector to an atom.
 author: Stephen Taylor
-keywords: atom, decode, kdb+, keyword, q, scalar, sv, vector
 ---
-<div style="float: right">
-<i class="fas fa-wrench fa-5x"></i>
-</div>
+
+[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
+{: style="float: right; max-width: 200px"}
 
 # `sv`
 
@@ -15,10 +14,13 @@ keywords: atom, decode, kdb+, keyword, q, scalar, sv, vector
 
 _“Scalar from vector”_
 
--   _join strings or filepath elements_
+-   _join strings, symbols, or filepath elements_
 -   _decode a vector to an atom_
 
-Syntax: `x sv y`, `sv[x;y]`
+
+```txt
+x sv y    sv[x;y]
+```
 
 
 ## Join
@@ -26,16 +28,16 @@ Syntax: `x sv y`, `sv[x;y]`
 
 ### Strings
 
-Where 
+Where
 
 -   `y` is a list of strings
 -   `x` is a char atom, string, or the empty symbol
 
-returns the strings in `y`, separated by `x`. 
+returns as a string the strings in `y` joined by `x`.
 
 Where `x` is the empty symbol `` ` ``, the strings are separated by the host line separator: `\n` on Unix, `\r\n` on Windows.
 
-```q 
+```q
 q)"," sv ("one";"two";"three")    / comma-separated
 "one,two,three"
 q)"\t" sv ("one";"two";"three")   / tab-separated
@@ -49,6 +51,23 @@ q)` sv ("one";"two";"three")      / use host line separator
 ```
 
 
+### Symbols
+
+Where
+
+-   `x` is the empty symbol `` ` ``
+-   `y` is a symbol list
+
+returns a symbol atom in which the items of `y` are joined by periods, i.e. 
+
+```q
+q)` sv `quick`brown`fox
+`quick.brown.fox
+q)`$"."sv string `quick`brown`fox
+`quick.brown.fox
+```
+
+
 ### Filepath components
 
 Where
@@ -58,20 +77,20 @@ Where
 
 returns a file handle where the items of the list are joined, separated by slashes. (This is useful when building file paths.)
 
-```q 
+```q
 q)` sv `:/home/kdb/q`data`2010.03.22`trade
 `:/home/kdb/q/data/2010.03.22/trade
 ```
 
 If the first item is not a file handle, returns a symbol where the items are joined, separated by `.` (dot). This is useful for building filenames with a given extension:
 
-```q 
+```q
 q)` sv `mywork`dat
 `mywork.dat
 ```
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-book:
 [`vs`](vs.md#partition) partition
 
 
@@ -102,7 +121,7 @@ q)baseval[0 24 60 60;2 3 5 7]
 
 ### Bytes to integer
 
-Where 
+Where
 
 -   `x` is `0x0`
 -   `y` is a vector of bytes of length 2, 4 or 8
@@ -117,12 +136,12 @@ q)0x0 sv "x" $128 255
 q)0x0 sv "x" $0 64 128 255    / int
 4227327
 q)0x0 sv "x" $til 8           / long
-283686952306183j
-q)256j sv til 8               / same calculation
-283686952306183j
+283686952306183
+q)256 sv til 8                / same calculation
+283686952306183
 ```
 
-!!! tip "Converting non-integers" 
+!!! tip "Converting non-integers"
 
     Use [File Binary](file-binary.md) – e.g.:
 
@@ -136,7 +155,7 @@ q)256j sv til 8               / same calculation
 
 ### Bits to integer
 
-Where 
+Where
 
 -   `x` is `0b`
 -   `y` is a boolean vector of length 8, 16, 32, or 64
@@ -154,10 +173,14 @@ q)0b sv 8#1b
 0xff
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[`vs`](vs.md#encode) encode  
-[`.Q.j10`](dotq.md#qj10-encode-binhex) (encode binhex)   
-[`.Q.x10`](dotq.md#qx10-decode-binhex) (decode binhex)   
-[`.Q.j12`](dotq.md#qj12-encode-base64) (encode base64)   
+:fontawesome-solid-book:
+[`vs`](vs.md#encode) encode
+<br>
+:fontawesome-solid-book:
+[`.Q.j10`](dotq.md#qj10-encode-binhex) (encode binhex), 
+[`.Q.x10`](dotq.md#qx10-decode-binhex) (decode binhex)
+<br>
+:fontawesome-solid-book:
+[`.Q.j12`](dotq.md#qj12-encode-base64) (encode base64), 
 [`.Q.x12`](dotq.md#qx12-decode-base64) (decode base64)
 

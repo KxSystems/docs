@@ -1,8 +1,7 @@
 ---
-title: parse – Reference – kdb+ and q documentation
+title: parse | Reference | kdb+ and q documentation
 description: parse is a q keyword that returns a parse tree for a string expression.
 author: Stephen Taylor
-keywords: eval, evaluate, kdb+, parse, q, reval, string
 ---
 # parse 
 
@@ -13,20 +12,26 @@ keywords: eval, evaluate, kdb+, parse, q, reval, string
 
 _Parse a string_
 
-Syntax: `parse x`, `parse[x]`
+```txt
+parse x     parse[x]
+```
 
-Where `x` is a string representing a well-formed q expression, returns a parse tree. (V3.4 can accept newlines within the string; previous versions cannot.)
+Where `x` is a string representing 
 
-The resulting parse tree can be executed with [`eval`](eval.md).
+-   a well-formed q expression, returns a parse tree (V3.4 can accept newlines within the string; earlier versions cannot.)
+-   a function, returns the function
 
 ```q
 q)parse "1 2 3 + 5"            / the list 1 2 3 is parsed as a single item
 +
 1 2 3
 5
+
+q)parse "{x*x}"
+{x*x}
 ```
 
-This can clarify order of execution.
+!!! tip "A parse tree can clarify order of execution."
 
 ```q
 q)parse "1 2 3 +/: 5 7"        / Each Right has postfix syntax
@@ -39,6 +44,8 @@ q)parse "1 2 3 +neg 5 7"       / neg is applied before +
 (-:;5 7)
 ```
 
+A parse tree can be executed with [`eval`](eval.md).
+
 <!-- 
 K expressions should be prefixed with `"k)"`, e.g.
 ```q
@@ -47,8 +54,6 @@ q)parse "k)!10"
 10
 ```
  -->
-Use `eval` to evaluate the parse tree:
-
 ```q
 q)eval parse "1 2 3 +/: 5 7"
 6 7 8
@@ -65,10 +70,12 @@ k){x'y}
 (k){$[-6h=@x;!x;'`type]};5)
 ```
 
+!!! tip "The composition of `eval` after `parse` is essentially the q interpreter."
 
-## Q-SQL
 
-Q-SQL statements are parsed to the corresponding functional form.
+## QSQL
+
+QSQL queries are parsed to the corresponding functional form.
 
 ```q
 q)\l sp.q
@@ -101,7 +108,12 @@ q)views[]
 ```
 
 
-
-<i class="far fa-hand-point-right"></i>
-[`eval` and `reval`](eval.md),  
-Basics: [Internal function `-5!`](../basics/internal.md)
+----
+:fontawesome-solid-book:
+[`eval` and `reval`](eval.md)
+<br>
+:fontawesome-solid-book-open:
+[Parse trees](../basics/parsetrees.md)
+<br>
+:fontawesome-regular-map:
+[Parse trees and functional forms](../wp/parse-trees.md)

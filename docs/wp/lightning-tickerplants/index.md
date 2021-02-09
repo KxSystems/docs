@@ -1,12 +1,17 @@
 ---
-title: Lightning tickerplants – Pay-per-ticker with micropayments on the Lightning network – White Papers – kdb+ and q documentation
+title: "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network | White Papers | kdb+ and q documentation"
 description: Use Lightning to monetize streaming data. Use the qlnd library to create payment channels, generate invoices, and route payments across the network.
 author: Jeremy Lucid
 date: May 2019
 keywords: bitcoin, lightning, blockchain, kdb+, q, tickerplant
 ---
+White paper
+{: #wp-brand}
+
 # Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network
 
+by [Jeremy Lucid](#author)
+{: .wp-author}
 
 
 
@@ -330,7 +335,7 @@ Be sure to record the 24-word seed, which is essential for wallet recovery.
 
 The [qlnd](https://github.com/jlucid/qlnd) library enables a q process to communicate with a locally running `lnd` node
 via the [LND REST API](https://api.lightning.community/rest/index.html#lnd-rest-api-reference). Moreover, the library makes
-use of the powerful embedPy interface, recently released by Kx, which allows the kdb+ interpreter to manipulate Python objects, call Python functions and load Python libraries. This is particularly useful for this application given that the REST API Reference documentation has explicit and well-tested examples using Python. (There are many other applications of embedPy and kdb+.)
+use of the powerful embedPy interface, recently released by KX, which allows the kdb+ interpreter to manipulate Python objects, call Python functions and load Python libraries. This is particularly useful for this application given that the REST API Reference documentation has explicit and well-tested examples using Python. (There are many other applications of embedPy and kdb+.)
 
 
 ### EmbedPy setup
@@ -683,7 +688,7 @@ trade:([]
 The main library functions this tickerplant implementation uses are shown below, and they will
 form the basis for subsequent modifications. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: 
 [Building Real-Time Tick Subscribers](../rt-tick/index.md)
 
@@ -1106,11 +1111,20 @@ could be monetized with the creation of a pay-per-request system utilizing Light
 While Lightning remains an experimental and rapidly changing technology, with many outstanding challenges, 
 it is hoped that this paper has at least helped explain some of the key concepts and techniques, and also showcased some synergies between the technology and kdb+ for potential integrations.
 
+[:fontawesome-solid-print: PDF](/download/wp/lightning-a4.pdf)
+
 
 ## Author
 
-Jeremy Lucid is a kdb+ consultant, based in Ireland, who has worked on real-time Best Execution projects for a major multinational 
-banking institution and a _Kx for Surveillance_ implementation at a leading options and futures exchange. 
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
+{: .small-face}
+
+**Jeremy Lucid** is a kdb+ consultant, based in Ireland, who has worked on real-time Best Execution projects for a major multinational banking institution and a _Kx for Surveillance_ implementation at a leading options and futures exchange.
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Storing and exploring the Bitcoin blockchain](../blockchain/index.md)
+-   :fontawesome-regular-map: [C API for kdb+](../capi/index.md)
+</ul>
 
 
 ## Acknowledgments

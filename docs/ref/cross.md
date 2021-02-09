@@ -1,15 +1,15 @@
 ---
-title: cross – Reference – kdb+ and q documentation
+title: cross product | Reference | kdb+ and q documentation
 description: cross is a q keyword that returns the cross-product (all possible combinations) of the items of its arguments.
 author: Stephen Taylor
-keywords: cross, dot product, kdb+, list, product, q, vector
 ---
-
 # `cross`
 
 
 
-Syntax: `x cross y`, `cross[x;y]`
+```txt
+x cross y    cross[x;y]
+```
 
 Returns the cross-product (i.e. all possible combinations) of `x` and `y`.
 
@@ -47,3 +47,4 @@ AAPL 2
 ```
 
 
+The function `cross` is equivalent to `{raze x,/:\:y}`.

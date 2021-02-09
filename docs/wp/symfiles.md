@@ -1,11 +1,17 @@
 ---
-title: Working with sym files – White Papers – kdb+ and q documentation
-description: In this white paper, we discuss what the sym file is, suggestions for table setup, the maintenance of the sym file and safety measures that can be taken to protect the sym file.
+title: Working with sym files | White Papers | kdb+ and q documentation
+description: What the sym file is, suggestions for table setup, the maintenance of the sym file and safety measures that can be taken to protect the sym file.
 author: Paula Clarke
 date: March 2019
-keywords: ksb+, q, sym, symfile
+keywords: kdb+, q, sym, symfile
 ---
+White paper
+{: #wp-brand}
+
 # Working with sym files
+
+by [Paula Clarke](#author)
+{: .wp-author}
 
 
 
@@ -377,8 +383,8 @@ q)`:db/ set .Q.en[`:db] t
             ^
 ```
 
-<i class="far fa-hand-point-right"></i>
-White paper: [“Compression in kdb+”](compress/index.md)
+:fontawesome-regular-map:
+[Compression in kdb+](compress/index.md)
 
 
 ## Datatype considerations
@@ -411,10 +417,13 @@ pool.
 
 If queries against an ID column are required, use the guid type. A guid
 is a 16-byte type, and can be used for storing arbitrary 16-byte values.
-As data is persisted to disk,the ID field can be converted to guid and
+As data is persisted to disk, the ID field can be converted to guid and
 persisted along with the original ID. IDs requiring lookup should not be
-char vectors. Guids are faster (much faster for =) than the 16-byte char
+char vectors. Guids are faster (much faster for `=`) than the 16-byte char
 vectors and take 2.5 times less storage (16 per instead of 40 per).
+
+:fontawesome-regular-map:
+[Kdb+ data-management techniques](data-management.md#id-fields-the-guid-datatype)
 
 
 ### Encoding/decoding
@@ -761,15 +770,26 @@ methods to reduce the size of the sym file.
 
 All tests performed using kdb+ version 3.6 (2018.05.17).
 
+[:fontawesome-solid-print: PDF](/download/wp/symfiles-a4.pdf)
+
 
 ## Author
 
-Paula Clarke is a kdb+ consultant for Kx who has worked for some the
-world’s largest financial institutions. Currently based in New York, she
-is working for a major investment bank where she is part of a team
-responsible for designing, developing and maintaining a reporting and
-global tick-capture kdb+ system.
+![Paula Clarke](../img/faces/paulaclarke.jpg)
+{: .small-face}
 
+**Paula Clarke** is a senior kdb+ consultant for KX who has worked for some of the world’s largest financial institutions designing, developing and maintaining global tick-capture kdb+ systems.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:pclarke1@kx.com?subject=White paper: Working with sym files)
+&nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/paulaclarke6/)
+
+
+
+## Related articles
+
+:fontawesome-regular-map:
+[Kdb+ data-management techniques](data-management.md)
 
 
 ## Appendix – for versions of kdb+ earlier than 3.6

@@ -4,29 +4,64 @@ description: The Machine Learning Toolkit contains functions used regularly with
 date: April 2019
 keywords: preprocessing, linear combinations, polynomial creation, infinite replace, scaler, data filling, encoding, one-hot, frequency, lexigraphical, time splitting 
 ---
-# <i class="fa fa-share-alt"></i> Data preprocessing 
+# :fontawesome-solid-share-alt: Data preprocessing 
 
+
+<div markdown="1" class="typewriter">
+.ml   **Data preprocessing**
+  [applylabelencode](#mlapplylabelencode)  Transform integer data to label encode representation
+  [dropconstant](#mldropconstant)      Columns with zero variance removed
+  [filltab](#mlfilltab)           Tailored filling of null values for a simple matrix
+  [freqencode](#mlfreqencode)        Numerically encode frequency of category occurance
+  [infreplace](#mlinfreplace)        Replace +/- infinities with max/min of column
+  [labelencode](#mllabelencode)       Encode list of symbols to integer values and produce mapping
+  [lexiencode](#mllexiencode)        Label categories based on lexigraphical order
+  [minmaxscaler](#mlminmaxscaler)      Data scaled between 0-1
+  [onehot](#mlonehot)            One-hot encoding of table or array
+  [polytab](#mlpolytab)           Polynomial features of degree n from a table
+  [stdscaler](#mlstdscaler)         Standard scaler transform-based representation of a table
+  [timesplit](#mltimesplit)         Decompose time columns into constituent parts
+</div>
+
+:fontawesome-brands-github:
+[KxSystems/ml/util/preproc.q](https://github.com/kxsystems/ml/blob/master/util/preproc.q)
 
 The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
-<i class="fab fa-github"></i>
-[KxSystems/ml/util/preproc.q](https://github.com/kxsystems/ml/blob/master/util/preproc.q)
+## `.ml.applylabelencode`
 
-The following functions are defined in the file `preproc.q` in the Machine Learning Toolkit.
+_Transform a list of integers based on a previously generated label encoding_
 
-```txt
-  .ml.dropconstant         Columns with zero variance removed
-  .ml.filltab              Tailored filling of null values for a simple matrix
-  .ml.freqencode           Numerically encode frequency of category occurance
-  .ml.infreplace           Replace +/- infinities with max/min of column
-  .ml.lexiencode           Label categories based on lexigraphical order
-  .ml.minmaxscaler         Data scaled between 0-1
-  .ml.onehot               One-hot encoding of table or array
-  .ml.polytab              Polynomial features of degree n from a table
-  .ml.stdscaler            Standard scaler transform-based representation of a table
-  .ml.timesplit            Decompose time columns into constituent parts
+Syntax: `.ml.applylabelencode[x;y]`
+
+Where
+
+- `x` is a list of integers
+- `y` is a dictionary mapping true representation to associated integer or the return from `.ml.labelencode`
+
+returns a list with the integer values of `x` replaced by their appropriate 'true' representation. Values that do not appear in the mapping supplied by `y` are returned as null values
+
+!!!Note
+	This function is primarily used when attempting to convert classification predictions from a fitted model to their underlying representation. It is often the case that a user will convert a symbol list to an integer list in order to allow their machine learning model to fit the data appropriately.
+
+```q
+// List of symbols to be encoded
+q)symList:`a`a`a`b`a`b`b`c`c`c`c
+
+// Produced and display a symbol encoding schema
+q)show schema:.ml.labelencode[symList]
+mapping | `s#`a`b`c!0 1 2
+encoding| 0 0 0 1 0 1 1 2 2 2 2
+
+// Generate a list of integers to apply the schema to
+q)newList:0 0 1 2 2 2 0 1 4
+
+// Apply the schema completely and the mapping itself to the new list
+q).ml.applylabelencode[newList;schema]
+`a`a`b`c`c`c`a`b`
+q).ml.applylabelencode[newList;schema`mapping]
+`a`a`b`c`c`c`a`b`
 ```
-
 
 ## `.ml.dropconstant`
 
@@ -73,7 +108,7 @@ Where
 -   `t` is a table
 -   `gcol` is a grouping column for the fill
 -   `tcol` is a time column in the data
--   `dict` is a dictionary defining fill behaviour, setting this to `::` will result in forward followed by reverse filling
+-   `dict` is a dictionary defining fill behavior, setting this to `::` will result in forward followed by reverse filling
 
 returns a table with columns filled according to assignment of keys in the dictionary `dict`, the null values are also encoded within a new column to maintain knowledge of the null positions. 
 
@@ -157,7 +192,7 @@ a 8.452182  1
 a 0.4821576 0 
 b 4.755664  0 
 c 8.35521   0 
-q).ml.freqencode[tab;::]    / default behaviour
+q).ml.freqencode[tab;::]    / default behavior
 x1        x2 x_freq
 -------------------
 4.429712  1  0.2   
@@ -221,6 +256,58 @@ A B  C
 9 50 3
 ```
 
+##`.ml.labelencode`
+
+_Encode a list to an integer value representation, with associated mapping schema_
+
+Syntax:`.ml.labelencode[x]`
+
+Where
+
+-  `x` is a list of any type
+
+returns a dictionary providing the schema mapping values in the list to associated integers and the original list encoded based on this schema
+
+```q
+q)sym:`cab`acb`abc`bac`bca
+q)show symencode:.ml.labelencode[sym]
+mapping | `s#`abc`acb`bac`bca`cab!0 1 2 3 4
+encoding| 4 1 0 2 3
+q)symencode.mapping
+abc| 0
+acb| 1
+bac| 2
+bca| 3
+cab| 4
+q)symencode.encoding
+4 1 0 2 3
+
+q)guids:5?0Ng
+q)show guidencode:.ml.labelencode[guids]
+mapping | `s#580d8c87-e557-0db1-3a19-cb3a44d623b1 5a580fb6-656b-5e69-d445-417..
+encoding| 3 2 1 4 0
+q)guidencode.mapping
+580d8c87-e557-0db1-3a19-cb3a44d623b1| 0
+5a580fb6-656b-5e69-d445-417ebfe71994| 1
+5ae7962d-49f2-404d-5aec-f7c8abbae288| 2
+8c6b8b64-6815-6084-0a3e-178401251b68| 3
+ddb87915-b672-2c32-a6cf-296061671e9d| 4
+q)guidencode.encoding
+3 2 1 4 0
+
+q)floats:5?1f
+q)show floatencode:.ml.labelencode[floats]
+mapping | `s#0.2306385 0.4707883 0.6346716 0.949975 0.9672398!0 1 2 3 4
+encoding| 1 2 4 0 3
+q)floatencode.mapping
+0.2306385| 0
+0.4707883| 1
+0.6346716| 2
+0.949975 | 3
+0.9672398| 4
+q)floatencode.encoding
+1 2 4 0 3
+```
 
 ## `.ml.lexiencode`
 
@@ -245,7 +332,7 @@ x        x1 x2
 3.163946 a  g
 7.851531 b  g
 
-q).ml.lexiencode[tab;::]  / default behaviour
+q).ml.lexiencode[tab;::]  / default behavior
 x        x1_lexi x2_lexi
 ------------------------
 3.122149 1       1
@@ -254,7 +341,7 @@ x        x1_lexi x2_lexi
 3.163946 0       2
 7.851531 1       2
 
-q).ml.lexiencode[tab;`x1] / custom behaviour
+q).ml.lexiencode[tab;`x1] / custom behavior
 x        x2 x1_lexi
 -------------------
 3.122149 f  1
@@ -337,7 +424,7 @@ a 0  2.084756
 b 0  9.450667
 c 1  7.8567  
 c 1  5.898786
-q).ml.onehot[tab;::]      / default behaviour
+q).ml.onehot[tab;::]      / default behavior
 x1 x2       x_a x_b x_c
 -----------------------
 0  3.21158  1   0   0  
@@ -345,7 +432,7 @@ x1 x2       x_a x_b x_c
 0  9.450667 0   1   0  
 1  7.8567   0   0   1  
 1  5.898786 0   0   1  
-q).ml.onehot[tab;`x`x1]   / custom behaviour
+q).ml.onehot[tab;`x`x1]   / custom behavior
 x2       x_a x_b x_c x1_0 x1_1
 ------------------------------
 3.21158  1   0   0   1    0   
@@ -482,7 +569,7 @@ x                             x1    x2 x3
 2000.01.03D00:00:00.000000000 09:48 7  6 
 2000.01.04D00:00:00.000000000 16:50 7  5 
 2000.01.05D00:00:00.000000000 13:50 4  5 
-q).ml.timesplit[timetab;::]  / default behaviour
+q).ml.timesplit[timetab;::]  / default behavior
 x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss x1_hh x1_uu
 ------------------------------------------------------------------
 7  6  0     2000   1    1    1     0    0    0    0    21    51   

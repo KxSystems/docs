@@ -1,75 +1,158 @@
 ---
-title: Frequently-asked questions about kdb+ – Knowledge Base – kdb+ and q documentation
-description: Frequently-asked questions about kdb+
-keywords: aggregate, csv, delete, export, faq, kdb+, mdb, null, odbc, q, script, shebang, sql, update, upsert
+title: Tables in kdb+ | Language | kdb+ and q documentation
+description: Tables in kdb+
+author: Stephen Taylor
+date: October 2020
 ---
-# Frequently-asked questions about kdb+
+# Tables
 
 
 
-## How do q tables differ from SQL relations ?
+<div markdown="1" class="typewriter">
+[cols](../ref/cols.md)     column names             [ungroup](../ref/ungroup.md)  normalize
+[meta](../ref/meta.md)     metadata                 [xasc](../ref/asc.md#xasc)     sort ascending
+[xcol](../ref/cols.md#xcol)     rename cols              [xdesc](../ref/desc.md#xdesc)    sort descending
+[xcols](../ref/cols.md#xcols)    re-order cols            [xgroup](../ref/xgroup.md)   group by values in selected cols
+[insert](../ref/insert.md)   insert records           [xkey](../ref/keys.md#xkey)     sset cols as primary keys
+[upsert](../ref/upsert.md)   add/insert records       [xdesc](../ref/desc.md#xdesc)    sort descending
+[! Enkey, Unkey](../ref/enkey.md)  add/remove keys
 
-Relations in SQL are sets. That is, there are no duplicate rows and rows are not ordered. It is possible to define a cursor on a result set and then manipulate the cursor rows in order, but that can’t be done in ANSI SQL. Kdb+ tables are ordered and may contain duplicates. The order allows a class of very useful [aggregates](../basics/glossary.md#aggregate-function) that are unavailable to the relational database programmer without the cumbersome and poorly performing temporal extensions. Because kdb+ tables are ordered, the functions `first` and `last` give open and close prices. Where `trade` is a table: 
+[**qSQL query templates**](../basics/qsql.md):   [select](../ref/select.md)   [exec](../ref/exec.md)   [update](../ref/update.md)   [delete](../ref/delete.md)
+</div>
+
+
+Tables are first-class objects in q.
+
+??? important "A table is an ordered list of its rows."
+
+    Relations in SQL are sets. There are no duplicate rows, and rows are not ordered. It is possible to define a cursor on a result set and then manipulate the cursor rows in order. (Not in ANSI SQL.)
+
+    Kdb+ tables are ordered and may contain duplicates. The order allows a class of very useful [aggregates](../basics/glossary.md#aggregate-function) that are unavailable to the relational database programmer without the cumbersome and poorly-performing temporal extensions.
+
+Because kdb+ tables are ordered, for a table `trade` in timestamp order, the functions `first` and `last` give open and close prices:
 
 ```q
 q)first trade
-```
+stock| `ibm
+price| 121.3
+amt  | 1000
+time | 09:03:06.000
 
-and
-
-```q
 q)last trade
+stock| `msft
+price| 78.52
+amt  | 200
+time | 16:59:39.000
 ```
 
 
-## How do I create a table?
+## Construction
 
-Following the SQL convention, tables are created by naming the items and initializing the items as empty lists. For example, the following expression creates a table with four columns (stock, price, amount and time), and assigns it to `trade`.
+
+### Flip a column dictionary
+
+Here is a matrix: a list of four vectors.
 
 ```q
-q)trade:([] stock:(); price:(); amount:(); time:())
+q)show mat:(`Jack`Jill`Janet;`brown`black`fair;`blue`green`hazel;12 9 14)
+Jack  Jill  Janet
+brown black fair
+blue  green hazel
+12    9     14
 ```
 
-Each of the table columns is defined to be an empty list: `()`. 
-
-In this table, the [datatype](../basics/datatypes.md) of the columns is not defined. The first record inserted into the table determines the datatype of each column. Subsequent inserts may only insert values of this type, or else a type error is signalled.
-
-This creates a table in memory. 
-
-<i class="far fa-hand-point-right"></i> 
-[How do I write a table to disk?](#how-do-i-write-a-table-to-disk)
-
-Tables can also be created functionally with q primitive functions. 
-
-<i class="far fa-hand-point-right"></i> 
-Basics: [Dictionaries and tables](../basics/dictsandtables.md), 
-[Q-SQL](../basics/qsql.md), 
-[Functional SQL](../basics/funsql.md)
-
-
-## Can I define the type of the columns when I create a table?
-
-Yes. A type descriptor can be specified for each column:
+The same information as a [column dictionary](../basics/dictsandtables.md#column-dictionaries): each value is a 3-vector.
 
 ```q
-q)trade:([] stock:`symbol$(); price:`float$(); amount:`int$(); time:`time$())
+q)`name`hair`eye`age!mat
+name| Jack  Jill  Janet
+hair| brown black fair
+eye | blue  green hazel
+age | 12    9     14
 ```
 
-<i class="far fa-hand-point-right"></i> 
-Basics: [Datatypes](../basics/datatypes.md)
+Flipped, it is a table.
+
+```q
+q)show t:flip`name`hair`eye`age!mat
+name  hair  eye   age
+---------------------
+Jack  brown blue  12
+Jill  black green 9
+Janet fair  hazel 14
+```
+
+Each row is a [dictionary](../basics/dictsandtables.md).
+
+```q
+q)first t
+name| `Jack
+hair| `brown
+eye | `blue
+age | 12
+```
+
+!!! important "A table is an ordered list of same-key dictionaries."
+
+Like any list, its length – the number of its records – is given by `count`.
+
+```q
+q)count t
+3
+```
 
 
-## Can I give the column values when creating a table?
+### Table notation
 
-Yes, you can give values to initialize the items. By default, item names are taken from corresponding variable names.
+The same table can be defined with table notation:
+
+```q
+q)t~([]name:`Jack`Jill`Janet;hair:`brown`black`fair;eye:`blue`green`hazel;age:12 9 14)
+1b
+```
+
+By default, column names are taken from corresponding variable names.
 
 ```q
 q)stock:`ibm`bac`usb
 q)price:121.3 5.76 8.19
 q)amount:1000 500 800
 q)time:09:03:06.000 09:03:23.000 09:04:01.000
-q)trade:([]stock;price;amt:amount;time)
-q)trade
+
+q)show trade:([]stock;price;amt:amount;time)
+stock price amt  time
+-----------------------------
+ibm   121.3 1000 09:03:06.000
+bac   5.76  500  09:03:23.000
+usb   8.19  800  09:04:01.000
+```
+
+Columns get the datatypes of the values assigned them.
+
+```q
+q)meta trade
+c    | t f a
+-----| -----
+stock| s
+price| f
+amt  | j
+time | t
+```
+
+Unlike SQL, there is no need to first declare the types of the columns.
+
+
+### Dict Each Right
+
+If your records are in a row-order matrix, Dict Each Right (`!/:`) will make each row a like dictionary – and a table is a list of like dictionaries.
+
+```q
+q)mat
+`ibm 121.3 1000 09:03:06.000
+`bac 5.76  500  09:03:23.000
+`usb 8.19  800  09:04:01.000
+
+q)`stock`price`amt`time !/: mat
 stock price amt  time
 -----------------------------
 ibm   121.3 1000 09:03:06.000
@@ -78,78 +161,489 @@ usb   8.19  800  09:04:01.000
 ```
 
 
-## How do I define a table with a primary key field?
+### Read from disk
 
-Just write the field definition inside the square brackets. For instance, this is a simple table of financial markets and their addresses (such as the NYSE, the LSE, etc).
+Use [Load CSV](../ref/file-text.md#load-csv) to load a CSV file as a table; more generally, [File Text](../ref/file-text.md) for reading data from text files.
+
+For reading tables persisted to the filesystem, see [Database: persisting tables in the filesystem](../database/index.md)
+
+
+
+### Compound columns
+
+Any list of the right length can become a column of a table, and its items can be any kdb+ objects – including tables.
+
+Most table columns are vectors: simple lists of uniform type.
+This is generally most efficient for storage and query execution.
+
+A table column of uniform type but with vector items is called a _compound list_. A book index is a familiar example.
+
+```q
+q)term:`$("analytical engine";"Babbage, Charles";"difference engine")
+q)pages:(5 17 324;1 5 17;17 359)
+q)([]term;pages)
+term              pages
+--------------------------
+analytical engine 5 17 324
+Babbage, Charles  1 5 17
+difference engine 17 359
+```
+
+Above, the `term` column is a symbol vector and the `pages` column is a compound list.
+
+In the result of [`meta`](../ref/meta.md) its compound nature is indicated by its type code in upper case.
+
+```q
+q)meta([]term;pages)
+c    | t f a
+-----| -----
+term | s
+pages| J
+```
+
+??? danger "`meta` does not read the entire table."
+
+    The `meta` keyword samples only the top of each column.
+    You cannot rely on it to determine whether a column is simple, compound or mixed.
+
+
+### Table schema
+
+An empty table can be created by initializing each column as the general empty list.
+
+```q
+q)meta trade:([] stock:(); price:(); amount:(); time:())
+c     | t f a
+------| -----
+stock |
+price |
+amount|
+time  |
+```
+
+In this table, the [datatype](../basics/datatypes.md) of each column is _mixed_. The first record then inserted into the table sets the datatypes of the columns. Subsequent inserts may only insert values of the same type; otherwise a `type` error is signalled, which can be trapped and handled.
+
+This requires the table to start with the correct column types, so it is often better to initialize a table with empty columns of the correct type.
+
+```q
+q)meta trade:([] stock:`$(); price:`float$(); `long$amount:(); `time$time:())
+c     | t f a
+------| -----
+stock | s
+price | f
+amount| j
+time  | t
+```
+
+
+### Keyed tables
+
+A kdb+ table is a list and it can contain duplicates.
+
+A kdb+ keyed table is a [dictionary](../basics/dictsandtables.md).
+
+-   Its key is a table of the key column/s.
+-   Its value is a table of the non-key columns.
+
+In table notation, write the key field/s inside the square brackets.
+For a simple table of financial markets and their addresses:
 
 ```q
 q)market:([name:`symbol$()] address:())
 ```
 
+??? danger "When constructing a table key, ensure its items are unique."
 
-## Can the primary key consist of more than one field?
+    To protect performance, kdb+ does not ensure key items are unique.
 
-Yes. For instance, if market names are not unique, the country name can be part of the primary key.
+    But there is no use case for duplicate key items, which make operation results unpredictable.
+
+If market names are not unique, the country name could be part of the primary key.
 
 ```q
 q)market:([name:`symbol$(); country:`symbol$()] address:())
 ```
 
-!!! tip
+!!! tip "An alternative to using multiple columns as a primary key is a column of unique integer IDs"
 
-    An alternative to using multiple columns as a primary key is to add to the table a column of unique values (e.g. integers).
+:fontawesome-solid-book:
+[`keys`](../ref/keys.md), [`xkey`](../ref/keys.md) get, set key columns of a table
 
 
-## Can I specify foreign keys for a table?
+### Foreign keys
 
-Yes.
+Foreign keys in SQL provide referential integrity: an attempt to insert a foreign key value that is not in the primary key will fail. This is also true in q.
 
-Foreign keys in SQL provide referential integrity. Namely, an attempt to insert a foreign key value that is not in the primary key will fail. This is also true in q.
+Suppose we want to record in our `trades` table the market (NYSE, LSE, etc) where each trade has been executed.
 
-Imagine that we want to record in our trades table the market (NYSE, LSE, etc) where each trade has been done.
-
-The primary key of the markets table is a foreign key in the trades table.
+We make the primary key of the `markets` table a foreign key in the `trades` table.
 
 ```q
-q)trade:([] stock:`symbol$(); market:`market$(); price:`float$(); amount:`int$(); time:`time$())
+q)name:`$("Stock Exchange";"Boersen";"NYSE")
+q)country:`$("United Kingdom";"Denmark";"United States")
+q)city:`$("London";"Copenhagen";"New York")
+q)id:1001 1002 1003
+q)show market:([id]name;country;city)
+id  | name           country        city
+----| ----------------------------------------
+1001| Stock Exchange United Kingdom London
+1002| Boersen        Denmark        Copenhagen
+1003| NYSE           United States  New York
+
+q)trade:([]
+    stock:`symbol$();
+    market:`market$();
+    price:`float$();
+    amount:`int$();
+    time:`time$() )
+```
+
+Only primary keys of keyed tables can be used as a foreign key.
+But there are other ways to link table columns.
+
+:fontawesome-solid-database:
+[Linking columns](../kb/linking-columns.md)
+<br>
+:fontawesome-regular-map:
+[The application of foreign keys and linked columns in kdb+](../wp/foreign-keys.md)
+
+
+## Indexing a table
+
+
+### Column indexing
+
+If a table is a flipped dictionary, it is unsurprising we can also index the table by column names.
+
+```q
+q)trade `stock`amt
+ibm  bac usb ibm  bac usb
+1000 500 800 1000 500 800
 ```
 
 
-## How do I insert a record into a table?
+### Row indexing
 
+Selecting the i<sup>th</sup> row in a table is complex in SQL, but easy in q.
+
+The pseudo column `i` represents the row index.
+It can be used in [queries](../basics/qsql.md).
+
+The `select` expression returns a table with a single row.
 ```q
-q)`trade insert (`ibm; 122.5; 500; 09:04:59:000)
+q)select from trade where i=5
+stock price amt time
+----------------------------
+usb   8.19  800 09:04:01.000
 ```
 
-An alternative syntax for insertions is
+Indexing a table with an atom returns a dictionary.
 
 ```q
-q)insert [`trade](`ibm; 122.5; 500; 09:04:59:000)
+q)trade[5]
+stock| `usb
+price| 8.19
+amt  | 800
+time | 09:04:01.000
 ```
 
-and
+!!! detail "Row indexing cannot be used on a keyed table, which is a dictionary."
+
+It is also easy to access, say, the second-to-last row.
 
 ```q
-q)insert [`trade; (`ibm; 122.5; 500; 09:04:59:000)]
+q)trade[(count trade) - 2]
+stock| `bac
+price| 5.76
+amt  | 500
+time | 09:03:23.000
+```
+
+We see at last the dual nature of a table.
+It is _both_
+
+-   a list of named same-length columns
+-   a list of like (same-key) dictionaries
+
+And we can index it either way – or both, which is indexing at depth.
+
+```q
+q)trade 1                   / index by row
+stock| `bac
+price| 5.76
+amt  | 500
+time | 09:03:23.000
+
+q)trade `price              / index by column
+121.3 5.76 8.19
+
+q)trade[1 0;`stock`amt]     / index at depth
+`bac 500
+`ibm 1000
+```
+
+Its items are dictionaries and, as a table is a list of like dictionaries, any sublist of the table is – also a table.
+
+```q
+q)trade 1 0
+stock price amt  time
+-----------------------------
+bac   5.76  500  09:03:23.000
+ibm   121.3 1000 09:03:06.000
 ```
 
 
-## Can I insert multiple records into a table?
+### Indexing at depth
 
-Yes. This is called a _bulk insert_. The second argument to `insert` in the previous question is a list. It can also be a table having the same column names as the first argument.
+Indexing at depth can be used to read a column within a specific row.
+
+```q
+trade[5;`stock]
+`usb
+```
+
+Also useful for updates.
+
+```q
+trade[5;`amt]:15
+```
+
+:fontawesome-solid-book:
+[Apply/Index at depth](../ref/apply.md)
+
+
+### Index out of range
+
+If we use `select`, the result is a table with no rows.
+
+```q
+q)select from trade where i = 300000
+stock price amount time
+---------------------------------------
+```
+
+If we use indexing, the result is a dictionary containing null values.
+
+```q
+q)trade 30000
+stock| `
+price| 0n
+amt  | 0N
+time | 0Nt
+```
+
+
+### Indexing a keyed table
+
+There are two ways to index a keyed table.
+
+First, with a single row from its key, returning a dictionary.
+
+```q
+q)flip{x cols x}key kt
+dick
+jane
+jack
+jill
+john
+q)kt `john
+dob| 1990.11.16
+sex| `m
+
+q)flip{x cols x}key ku
+Tom NYC
+Jo  LA
+Tom Lagos
+q)ku `Tom`Lagos
+eye| brown
+sex| m
+```
+
+Second, with a sublist from its key, returning a list of dictionaries, which is a table.
+
+```q
+q)ku ([]city:`LA`Lagos; name:`Jo`Tom)
+eye   sex
+---------
+blue  f
+brown m
+```
+
+
+!!! tip "qSQL and Functional SQL"
+
+    The foregoing describes dictionaries and tables in terms of lists and indexes.
+    [Functional SQL](../basics/funsql.md) extends the concepts through the query operators `?` and `!`.
+
+    If you are familiar with SQL, you will find [qSQL queries](../basics/qsql.md) more readable.
+
+----
+
+:fontawesome-solid-book-open:
+[Functional SQL](../basics/funsql.md),
+[qSQL](../basics/qsql.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§8. Tables](/q4m3/8_Tables/)
+
+
+## List operations
+
+A table is an ordered list.
+Many list operators work.
+
+
+### Take and Drop
+
+For the head and tail of a table use the [Take](../ref/take.md) operator `#`.
+
+```q
+q)2#trade                       / take first two records
+stock price amt  time
+-----------------------------
+ibm   121.3 1000 09:03:06.000
+bac   5.76  500  09:03:23.000
+
+q)-2#trade                      / take last two records
+stock price amt time
+----------------------------
+bac   5.76  500 09:03:23.000
+usb   8.19  15  09:04:01.000
+
+q)-2 _ trade                    / drop last two records
+stock price amt  time
+-----------------------------
+ibm   121.3 1000 09:03:06.000
+bac   5.76  500  09:03:23.000
+usb   8.19  800  09:04:01.000
+ibm   121.3 1000 09:03:06.000
+```
+
+Note that Take treats a list as circular if the number of items to take is longer than the list.
+
+```q
+q)7#2 3 5
+2 3 5 2 3 5 2
+```
+
+An alternative is to use [`sublist`](../ref/sublist.md), which takes only as many rows as are available.
+
+```q
+q)count trade
+6
+q)count 3 sublist trade
+3
+q)count 30 sublist trade
+6
+```
+
+:fontawesome-solid-book:
+[Limit expressions in `select`](../ref/select.md#limit-expression)
+
+You can also take selected columns.
+
+```q
+q)`price`amt#trade
+price amt
+----------
+121.3 1000
+5.76  500
+8.19  800
+121.3 1000
+5.76  500
+8.19  15
+```
+
+
+### Join and Join Each
+
+The [Join](../ref/join.md) operator `,` catenates two lists – and tables are lists.
+The table columns need not be in the same order.
+
+```q
+q)trade,([]time:10:32:17.000 10:35:45.000;stock:`msft`aapl;amt:1500 750;price:17.5 103.2)
+stock price amt  time
+-----------------------------
+ibm   121.3 1000 09:03:06.000
+bac   5.76  500  09:03:23.000
+usb   8.19  800  09:04:01.000
+ibm   121.3 1000 09:03:06.000
+bac   5.76  500  09:03:23.000
+usb   8.19  15   09:04:01.000
+msft  17.5  1500 10:32:17.000
+aapl  103.2 750  10:35:45.000
+```
+
+Join Each joins pairs of dictionaries and so has upsert semantics.
+
+```q
+q)trade,'([]year:2019+til 6;exch:6?`NYSE`LSE;amt:999)
+stock price amt time         year exch
+--------------------------------------
+ibm   121.3 999 09:03:06.000 2019 NYSE
+bac   5.76  999 09:03:23.000 2020 LSE
+usb   8.19  999 09:04:01.000 2021 NYSE
+ibm   121.3 999 09:03:06.000 2022 LSE
+bac   5.76  999 09:03:23.000 2023 NYSE
+usb   8.19  999 09:04:01.000 2024 LSE
+```
+
+There are many other [join keywords](../basics/joins.md).
+
+
+### List alternatives to queries
+
+Many qSQL queries are equivalent to simple list operations.
+
+```q
+select from trade where i=5           / trade[5]
+select stock,amt from trade           / `stock`amt#trade
+select from trade where stock=`ibm    / trade where `ibm=trade`stock
+```
+
+
+## Amending a table
+
+### Inserting records
+
+```q
+`trade insert (`ibm; 1001; 122.5; 500; 09:04:59:000)
+```
+
+Alternative syntax:
+
+```q
+insert [`trade] (`ibm; 1001; 122.5; 500; 09:04:59:000)
+insert [`trade; (`ibm; 1001; 122.5; 500; 09:04:59:000)]
+
+q)table:([stock:()] price:())
+q)insert[`table; (`intel; enlist (123.2; 120.4; 131.0))]
+q)table
+stock| price
+-----| ---------------
+intel| 123.2 120.4 131
+```
+
+
+### Bulk insert
+
+The right argument to `insert` above is a list. It can also be a table having the same column names as the first argument.
 
 ```q
 q)`trade insert trade
 ```
 
 
-## What is an `upsert`?
+
+### Upsert
 
 ```q
 q)`trade upsert (`ibm; 122.5; 50; 09:04:59:000)
 ```
 
-If the table is not keyed, the above is equivalent to an _insert_. For a keyed table, it’s an _update_ if the key exists in the table and an _insert_ otherwise.
+For a simple table (not keyed) the above is equivalent to an `insert`.
+For a keyed table, it is an `update` if the key exists in the table and an `insert` otherwise.
 
 An alternative syntax for `upsert` is to use the operator `,:`
 
@@ -164,244 +658,22 @@ trade ,: trade
 ```
 
 
-## Can a column contain list values?
-
-Yes.
+### Delete rows
 
 ```q
-q)table:([stock:()] price:())
-q)insert[`table; (`intel; enlist (123.2; 120.4; 131.0))]
-q)table
-stock| price
------| ---------------
-intel| 123.2 120.4 131
+trade: delete from trade where stock=`ibm
 ```
 
+`delete` returns a table, but does not modify the `trade` table in place. The assignment accomplishes that.
 
-## How do I find out how many rows are in a table?
-
-Use the function `count`.
+An alternative that updates the table in place:
 
 ```q
-q)count trade
+delete from `trade where stock=`ibm
 ```
 
 
-## How can I access the i<sup>th</sup> row in a table?
-
-This is complex in SQL, but easy in q. The keyword `i` represents the row index, which can be used in queries.
-
-```q
-q)select from trade where i=17
-stock price amount time
----------------------------------------
-ibm   122.5 50     09:04:59.000
-```
-
-The `select` expression returns a table with a single row. 
-
-```q
-q)trade[17]
-stock | `ibm
-price | 122.5
-amount| 500
-time  | 09:04:59.000
-```
-
-Indexing a table with an atom returns a dictionary.
-
-Indexing cannot be used on a keyed table, as the following example demonstrates.
-
-```q
-q)tab: ([stock:()] price:())
-q)insert[`tab; (`ibm; 109.5)]
-,0
-q)tab
-stock| price
------| -----
-ibm  | 109.5
-q)tab[0]
-'type
-```
-
-It’s also easy to access, say, the second-to-last row.
-
-```q
-q)trade[(count trade) - 2]
-```
-
-Indexing at depth can be used to read a column within a specific row
-
-```q
-q)trade[17; `stock]
-```
-
-This is useful for updates too:
-
-```q
-q)trade[17; `amount] : 15
-```
-
-
-## When accessing the i-th row in a table, what happens if the index is invalid?
-
-If we use `select`, the result is a table with no rows.
-
-```q
-q)select from trade where i = 300000
-stock price amount time
----------------------------------------
-```
-
-If we use indexing, the result is a dictionary containing null values.
-
-```q
-q)trade 300000
-stock | `
-market| `market$`
-price | 0n
-amount| 0N
-time  | 0Nt
-```
-
-
-## How can I access the first or last n rows in a table?
-
-One way is to use the Take operator `#`.
-
-```q
-q)3#trade
-stock market price amount time
----------------------------------------
-ibm   nyse   122.5 50     09:04:59.000
-...
-```
-
-gives the first 3 rows, and
-
-```q
-q)-3#trade
-stock market price    amount time
----------------------------------------
-intel lse    130.3029 45     09:34:29.000 0
-...
-```
-
-gives the last three rows.
-
-Note that Take treats a list as circular if the number of items to take is longer than the list.
-
-```q
-q)7#2 3 5
-2 3 5 2 3 5 2
-```
-
-An alternative is to use [`sublist`](../ref/sublist.md), which takes only as many rows as are available.
-
-```q
-q)count trade
-10
-q)count 3 sublist trade
-3
-q)count 30 sublist trade
-10
-```
-
-
-## How do I get the rows in a table as a set (no duplicates)?
-
-Use the function [`distinct`](../ref/distinct.md).
-
-```q
-q)distinct trade
-```
-
-And the following gives the number of distinct rows
-
-```q
-q)count distinct trade
-```
-
-
-## What is the syntax of `select` in q?
-
-`select` expressions have the following general form.
-
-```q
-select [columns] [by columns] from table [where conditions] 
-```
-
-The result of a select expression is a table. For instance:
-
-```q
-q)select stock, amount from trade
-stock amount
-------------
-ibm   500
-...
-```
-
-In their simplest form, select expressions extract subtables. However, it is also possible for them to compute new columns or rename existing ones.
-
-```q
-q)select stock,newamount:amount+10 from trade where price>100
-stock newamount
----------------
-ibm   510
-...
-```
-
-
-## How do I aggregate column values?
-
-In SQL:
-
-```sql
-select stock, sum(amount) as total from trade group by stock
-```
-
-In q:
-
-```q
-q)select total:sum amount by stock from trade
-stock| total
------| -----
-ibm  | 1550
-intel| 75
-```
-
-The column `stock` is a key in the result table.
-
-
-## How can I add a column with the row number to a table?
-
-The keyword `i` represents the row index.
-
-```q
-q)select rowno:i, stock from trade
-rowno stock
------------
-0     intel
-1     ibm
-2     ibm
-...
-```
-
-
-## How do I delete rows from a table?
-
-```q
-q)trade: delete from trade where stock=`ibm     
-```
-
-`delete` returns a table, but does not modify the `trade` table in place. The assignment accomplishes that. An alternative that updates the table in place is the following:
-
-```q
-q)delete from `trade where stock=`ibm       
-```
-
-
-## How do I update values in a table?
+### Update values
 
 In SQL:
 
@@ -412,220 +684,48 @@ UPDATE trade SET amount=42+amount WHERE stock='ibm'
 In q:
 
 ```q
-q)trade: update amount:42+amount from trade where stock=`ibm
+trade: update amount:42+amount from trade where stock=`ibm
 ```
 
-`update` returns a table, but does not modify the underlying table. The assignment accomplishes that. Or more simply:
+`update` returns a table, but does not modify the underlying table. The assignment accomplishes that. Alternatively:
 
 ```q
-q)update amount+42 from `trade where stock=`ibm
+update amount+42 from `trade where stock=`ibm
 ```
 
-`update` modifies the table in place like `delete` deletes in place if a symbol is given as the table name. Also note the default column names. 
-
-<i class="far fa-hand-point-right"></i> 
-Basics: [qSQL](../basics//qsql.md)
+`update` modifies the table in place much like `delete` deletes in place if a symbol is given as the table name. Also note the default column names.
 
 
-## How do I replace null values by something else?
+### Replace null values
 
-Use the [Fill](../ref/fill.md) operator `^`. For instance, the following replaces all nulls in column `amount` by zeroes.
+Use the [Fill](../ref/fill.md) operator `^`.
+For example, the following replaces all nulls in column `amount` by zeroes.
 
 ```q
-q)trade.amount: 0^trade.amount      
+trade.amount: 0^trade.amount
 ```
 
 
-## What are parameterized queries?
+### Table to set
 
-Select, update and delete expressions can be evaluated in defined functions. 
+Use [`distinct`](../ref/distinct.md) to remove duplicate records, and `count` to count them.
 
 ```q
-q)myquery:{[tbl; amt] select stock, time from tbl where amount > amt}
-q)myquery[trade; 100]
-stock time
-------------------
-ibm   09:04:59.000
-...
-```
-
-Column names cannot be parameters of a qSQL query. Use [functional queries](../basics/funsql.md) in such cases.
-
-
-## Does q use stored procedures?
-
-Any suitable user-defined function can be used in a query. 
-
-```q
-q)f:{[x] x+42}
-q)select stock, f amount from trade
-stock amount
-------------
-ibm   542
-...
+distinct trade
+count distinct trade
 ```
 
 
-## Can I write a query using SQL syntax against q tables?
-
-Yes. Q implements a translation layer from SQL. The syntax is to prepend `s)` to the SQL query. 
-
-```q
-q)s)select * from trade
-```
-
-Only a subset of SQL is supported.
-<!--FIXME link to definition of subset.-->
-
-
-## How do I write a table to disk?
-
-```q
-q)`:filename set trade
-```
-
-Or alternatively
-
-```q
-q)save `:trade
-```
-
-You can also specify a directory:
-
-```q
-q)`:../filename set trade
-```
-
-
-## How do I read a table from disk?
-
-```q
-q)trade: get `:filename
-```
-
-Or alternatively,
-
-```q
-q)trade: value `:filename
-```
-
-
-## How do I export a table to a CSV file?
-
-```q
-q)save `:trade.csv
-```
-
-
-## How do I import a CSV file into a table?
-
-Assume a file data.csv with columns of type int, string and int.
-
-```csv
-a,b,c
-0,hea,481
-10,dfi,579
-20,oil,77
-```
-
-Then, the following expression does the trick:
-
-```q
-q)table: ("ISI"; enlist ",") 0:`data.csv
-q)table
-a   b   c
------------
-0   hea 481
-10  dfi 579
-20  oil 77
-```
-
-<i class="far fa-hand-point-right"></i> 
-[`0:` File Text](../ref/file-text.md) 
-
-
-## What if the CSV file contains data but no column names?
-
-For instance:
-
-```csv
-0,hea,481
-10,dfi,579
-20,oil,77
-```
-
-We can read the columns like this:
-
-```q
-q)Cols: ("ISI";",") 0:`data.csv
-q)Cols
-0   10  20
-hea dfi oil
-481 579 77
-```
-
-And we can create the table by first creating a dictionary and flipping it:
-
-```q
-q)table: flip `a`b`c!Cols
-```
-
-!!! warning
-
-    Column names must not be the null symbol <code>&#96;</code>.
-
-
-## How do I export a table to a text file?
-
-```q
-q)save `:trade.txt
-```
-
-<i class="far fa-hand-point-right"></i> 
-[`save`](../ref/save.md)
-
-
-## How do I access a table from an MDB file via ODBC?
-
-From Windows, load `odbc.k` into your q session, and then load the MDB file.
-
-```dos
-C:>q w32\odbc.k
-```
-
-```q
-q)h: .odbc.load `mydb.mdb
-```
-
-This loads the entire database, which may consist of several tables. Use `.odbc.tables` to list the tables.
-
-```q
-q).odbc.tables  h
-`aa`bb`cc`dd`ii`nn      
-```
-
-Use `.odbc.eval` to evaluate SQL commands via ODBC.
-
-```q
-q).odbc.eval[h;"select * from aa"]
-```
-
-
-## Can I execute q as a shebang script?
-
-Yes. Since V2.4, q ignores the first line if it begins with `#!`.
-
-```bash
-$ more ./test.q
-#!/usr/bin/env q
-2+3
-\\
-$ chmod +x ./test.q
-$ ./test.q
-KDB+ 3.1 2013.11.20 Copyright (C) 1993-2013 Kx Systems
-l64/ ...
-5
-```
-
-<i class="fas fa-external-link-alt"></i> 
-[Shebang (Unix)](https://en.wikipedia.org/wiki/Shebang_(Unix))
+---
+:fontawesome-solid-book-open:
+[qSQL query templates](../basics/qsql.md)
+<br>
+:fontawesome-solid-book-open:
+[Functional qSQL](../basics/funsql.md)
+<br>
+:fontawesome-solid-database:
+[Database: persisting tables to the filesystem](../database/index.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§8. Tables](/q4m3/8_Tables/)

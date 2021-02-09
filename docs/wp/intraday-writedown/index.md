@@ -1,11 +1,17 @@
 ---
-title: Intraday writedown solutions – White papers – q and kdb+ documentation
+title: Intraday writedown solutions | White papers | q and kdb+ documentation
 description: Compares two methods for dealing with insufficient RAM on a server, when a full day’s worth of data cannot be held in memory. 
 author: Colm McCarthy
 date: March 2014
 keywords: end of day, eod, hdb, intraday, kdb+, partition, performance, q, query speed, rdb, save, tick, write
 ---
+White paper
+{: #wp-brand}
+
 # Intraday writedown solutions
+
+by [Colm McCarthy](#author)
+{: .wp-author}
 
 
 
@@ -34,7 +40,7 @@ One solution is to write down some of the data from the RDB to a temporary direc
 
 ## `w.q`
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/tick](https://github.com/simongarland/tick)
 
 This script can easily be modified to work with any standard kdb+ setup. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.
@@ -640,11 +646,10 @@ It is important to point out that any of these solutions come with their own dra
 
 Tests performed using kdb+ version 3.1 (2014.02.08)
 
+[:fontawesome-solid-print: PDF](/download/wp/intraday_writedown_solutions.pdf)
+
 
 ## Author
 
-Colm McCarthy is a kdb+ consultant who has developed data management
-systems for some the world's largest financial institutions. Colm is
-currently based in London, where he maintains an FX analytics
-application a major investment bank.
+**Colm McCarthy** is a kdb+ consultant who has developed data management systems for some the world's largest financial institutions. Colm is currently based in London, where he maintains an FX analytics application a major investment bank.
 

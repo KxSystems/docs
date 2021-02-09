@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
 keywords: kdb+, q, style
 ---
@@ -55,10 +54,10 @@ Don’t design tools prematurely, or with too general a purpose in mind. Keep th
 
 Most tools contain functionality which is never used. Avoid using tools which are too heavy for the job in hand. Don’t overpopulate the tree with utility functions and variables which your application [will not use](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it "Wikipedia: You aren’t going to need it"). 
 
-<i class="fab fa-youtube"></i> 
+:fontawesome-brands-youtube: 
 [The design of Software Tools](https://www.youtube.com/watch?v=qSVR4Z3DA24): A developer pleads for simple tools 
 
 If you want one tool out of a pre-packaged set of twenty, extract that tool and tuck it into your application. If you want a single piece of functionality built into a larger system, consult the author and learn how to implement it yourself. Remember that in q, ideas are worth more than code. 
 
-<i class="fas fa-exclamation-circle fa-2x"></i>
-**Minimize the number of moving parts.**
+
+!!! important "Minimize the number of moving parts."

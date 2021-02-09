@@ -4,7 +4,7 @@ date: August 2018
 keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, comparison, corpora, corpus, document, email, feature, file, k-mean, kdbplus, learning, machine, machine learning, mbox, message, ml, nlp, parse, parsing, q, sentiment, similarity, string function, vector
 ---
 
-# <i class="fas fa-share-alt"></i> Text comparison
+# :fontawesome-solid-share-alt: Text comparison
 
 Following the application of [data-processing procedures](preproc.md), it is possible to compare feature vectors, corpora and documents.
 

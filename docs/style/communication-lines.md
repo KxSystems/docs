@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 title: Lines of communication – Remarks on Style – kdb+ and q documentation
 description: A variable is a line of communication between where it is set and where it is read. The length of that line affects clarity. 
 author: Stephen Taylor
@@ -77,5 +76,5 @@ And even better: `F:'[H;G]` where the distances between symbols `F`, `G` and `H`
 **Shorten lines of communication.**
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [“Three Principles of Coding Clarity”](http://archive.vector.org.uk/art10009750)

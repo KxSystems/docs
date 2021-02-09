@@ -1,11 +1,17 @@
 ---
-title: Sample aggregation engine for market depth
+title: Sample aggregation engine for market depth | White papers | kdb+ and q documentation
 description: A framework for aggregating market depth and managing multiple subscriptions, using FX data as an example
 author: Stephen Dempsey
 date: January 2014
 keywords: aggregation, ask, attribute, bid, book, depth, fx, kdb+, market depth, order book, price,publish, q, quote, schema, sort, subscribe, top of book
 ---
+White paper
+{: #wp-brand}
+
 # Sample aggregation engine for market depth
+
+by [Stephen Dempsey](#author)
+{: .wp-author}
 
 
 
@@ -20,7 +26,7 @@ Due to the large data volume most applications won’t want to consume or proces
 
 Using TOB calculation as a use case, we will describe a flexible framework for approaching the problem and touch on some possible enhancements. Kdb+ is highly optimized for vector operations so the framework will use this strength. For example, instead of re-running the same code multiple times, it will use vector operations and shared code where possible. We will also introduce the concept of filtering data sources so multiple downstream consumers can see different views on the same quote landscape. For the purpose of this paper the examples use FX data, which requires price aggregation across liquidity sources. However, this requirement to aggregate across venues is also increasingly becoming the case in the equity market, where the large exchanges are losing volume and liquidity is more fragmented across pools and alternative sources.
 
-For simplicity it is assumed the engine operates in a pub/sub framework where updates are received from upstream liquidity sources through a `upd` function and published downstream using a `pub` function. The `upd` function is a generic callback for incoming data and is called with the schema name and table of updates. The definition of these functions will be implementation-specific and is deliberately ignored for the purpose of this paper. The logic will not be applicable in every case and there are a few caveats, which will be discussed at the end. It should be noted that this paper assumes the consumers of depth information are computer programs. However, human consumers including traders and surveillance personnel also find it useful to visualize the book. While this paper does not focus on the visualization of market depth, there are visualization tools available that can assist in viewing the full depth of the order book. [Kx Dashboards](/dashboards/index.html), seen above in Figure 1, is one example of such tools.
+For simplicity it is assumed the engine operates in a pub/sub framework where updates are received from upstream liquidity sources through a `upd` function and published downstream using a `pub` function. The `upd` function is a generic callback for incoming data and is called with the schema name and table of updates. The definition of these functions will be implementation-specific and is deliberately ignored for the purpose of this paper. The logic will not be applicable in every case and there are a few caveats, which will be discussed at the end. It should be noted that this paper assumes the consumers of depth information are computer programs. However, human consumers including traders and surveillance personnel also find it useful to visualize the book. While this paper does not focus on the visualization of market depth, there are visualization tools available that can assist in viewing the full depth of the order book. [KX Dashboards](/dashboards/index.html), seen above in Figure 1, is one example of such tools.
 
 All code was run using kdb+ version 3.1 (2013.11.20).
 
@@ -366,12 +372,22 @@ EURUSD FeedC 1.2343 3000
 
 It is worth noting that the `u` attribute is applied to the majority of data structures. This is used to ensure quick lookup times on the structure keys as they grow. 
 
-<i class="far fa-hand-point-right"></i>
-_Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)<br>
-Reference: [Set Attribute](../../ref/set-attribute)
+:fontawesome-solid-street-view:
+_Q for Mortals_: [§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
+<br>
+:fontawesome-solid-book:
+[Set Attribute](../../ref/set-attribute)
 
+[:fontawesome-solid-print: PDF](/download/wp/sample_aggregation_engine_for_market_depth.pdf)
 
 
 ## Author
 
-Stephen Dempsey is based in Dublin. Stephen works for First Derivatives’ R&D team on a variety of different applications in Kx technology. He has been involved in the design and implementation of a wide range of applications, including tick-capture and algorithmic-trading platforms.
+![Stephen Empsey](../../img/faces/stephendempsey.jpg)
+{: .small-face}
+
+**Stephen Dempsey** is senior kdb+ developer on the KX R&D team. His core responsibility has been developing the [KX Platform](../../devtools.md#kx-platform) and supporting the wide range of applications built upon it. Earlier he implemented various kdb+ applications including large-volume exchange backtesting, and eFX trading.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:sdemspey@kx.com?subject=White paper: Market Depth) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-dempsey-6b1b5319/)
+

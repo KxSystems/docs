@@ -1,7 +1,6 @@
 ---
 title: Historical database – Starting kdb+ – Learn – kdb+ and q documentation
 description: How to build and use an historical database in kdb+
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 keywords: hdb, historical database, kdb+, q, tutorial 
 ---
 # Historical database
@@ -26,13 +25,13 @@ A historical database (HDB) holds data before today, and its tables would be sto
 
 Typically, large tables in the HDB (such as daily tick data) are stored splayed, i.e. each column is stored in its own file.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Knowledge Base: [Splayed tables](../../kb/splayed-tables.md)  
 _Q for Mortals_: [§11.3 Splayed Tables](/q4m3/11_IO/#113-splayed-tables)
 
 Typically also, large tables are stored [partitioned]/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables) by date. Very large databases may be further partitioned into segments, using [`par.txt`](../../kb/partition.md).
 
-These storage strategies give best efficiency for searching and retrieval. For example, the database can be written over several drives. Also, partitions can be allocated to slave threads so that queries over a range of dates can be run in parallel. The exact set-up would be customized for each installation.
+These storage strategies give best efficiency for searching and retrieval. For example, the database can be written over several drives. Also, partitions can be allocated to secondary threads so that queries over a range of dates can be run in parallel. The exact set-up would be customized for each installation.
 
 For example, a simple partitioning scheme on a single disk might be as shown right. Here, the daily and master tables are small enough to be written to single files, while the trade and quote tables are splayed and partitioned by date.
 
@@ -41,7 +40,7 @@ For example, a simple partitioning scheme on a single disk might be as shown rig
 
 The script `buildhdb.q` will build a sample HDB. It builds a month’s random data in directory `start/db`, and takes a few seconds to run. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/start/buildhdb.q](https://github.com/KxSystems/cookbook/blob/master/start/buildhdb.q) 
 
 Load q, then:

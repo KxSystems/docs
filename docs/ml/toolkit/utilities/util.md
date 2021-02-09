@@ -4,28 +4,29 @@ description: The toolkit contains utility functions, used in many applications a
 date: April 2019
 keywords: pandas manipulation, dataframe, train test split, .
 ---
-# <i class="fa fa-share-alt"></i> Utility functions 
+# :fontawesome-solid-share-alt: Utility functions 
 
 
 
-The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
+<div markdown="1" class="typewriter">
+.ml   **Utility functions**
+  [arange](#mlarange)             Evenly-spaced values within a range
+  [combs](#mlcombs)              n linear combinations of k numbers
+  [df2tab](#mldf2tab)             kdb+ table from a pandas dataframe
+  [df2tab_tz](#mldf2tab_tz)          Pandas dataframe to kdb+ conversion handling dates/times/timezones
+  [eye](#mleye)                Identity matrix
+  [imax](#mlimax)               Index of maximum element of a list
+  [imin](#mlimin)               Index of minimum element of a list
+  [linspace](#mllinspace)           List of evenly-spaced values
+  [shape](#mlshape)              Shape of a matrix
+  [tab2df](#mltab2df)             Pandas dataframe from a q table
+  [traintestsplit](#mltraintestsplit)     Split into training and test sets
+</div>
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/blob/master/util/util.q)
 
-The following functions are defined in the `util.q` file of the Machine Learning Toolkit.
-
-```txt
-  .ml.arange             Evenly-spaced values within a range
-  .ml.combs              n linear combinations of k numbers
-  .ml.df2tab             kdb+ table from a pandas dataframe
-  .ml.df2tab_tz          Pandas dataframe to kdb+ conversion handling dates/times/timezones
-  .ml.eye                Identity matrix
-  .ml.linspace           List of evenly-spaced values
-  .ml.shape              Shape of a matrix
-  .ml.tab2df             Pandas dataframe from a q table
-  .ml.traintestsplit     Split into training and test sets
-```
+The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 
 
 ## `.ml.arange`
@@ -160,7 +161,7 @@ q)print dttab:.p.get[`dtdf]
 0  12:10:30.000500 -1 days +19:00:00 2005-02-25 03:30:00 2005-02-25 03:30:00+01:00
 1  12:13:30.000200          00:16:40 2015-12-22 00:00:00 2015-12-22 00:00:00+01:00
 
-/ default behaviour (tz -> UTC, time -> foreign)
+/ default behavior (tz -> UTC, time -> foreign)
 q).ml.df2tab_tz[dttab;0b;0b]
 time    timed                 datetime                      dt_with_tz                   
 -----------------------------------------------------------------------------------------
@@ -195,6 +196,41 @@ q).ml.eye 5
 0 0 0 1 0
 0 0 0 0 1
 ```
+
+## `.ml.imax`
+
+_Index of maximum element of a list_
+
+Where `x` is a numerical list, returns the index of the maximum element of `x`.
+
+```q
+q)show a:8?5.
+3.883438 4.96977 2.447749 3.253555 4.246108 4.54695 1.381171 2.273137
+q).ml.imax a
+1
+q)show b:8?100
+23 8 12 24 6 36 68 37
+q).ml.imax b
+6
+```
+
+## `.ml.imin`
+
+_Index of maximum element of a list_
+
+Where `x` is a numerical list, returns the index of the maximum element of `x`.
+
+```q
+q)show a:8?10.
+0.6916353 8.045142 7.619755 4.599266 0.3341879 6.43216 6.177459 4.751895
+q).ml.imin a
+4
+q)show b:8?50
+22 45 3 22 3 5 40 26
+q).ml.imin b
+2
+```
+
 
 ## `.ml.linspace`
 

@@ -40,7 +40,7 @@ $ export SSL_CERT_FILE=$HOME/certs/server-crt.pem
 $ export SSL_KEY_FILE=$HOME/certs/server-key.pem
 ```
 
-!!! info "Kx first"
+!!! info "KX first"
 
     Since V3.6, kdb+ gives preference to the `KX_` prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products. 
 
@@ -214,7 +214,7 @@ Currently we would recommend TLS be considered only for long-standing, latency-i
 The following associated features are not yet implemented for TLS:
 
 1.   multithreaded input mode
-1.   use within slave threads
+1.   use within secondary threads
 1.   `hopen` timeout (implemented in V3.5)
 
-OpenSSL 1.1 is supported since V3.7t 2019.10.22.
+OpenSSL 1.1 is supported since V4.0 2020.03.17.

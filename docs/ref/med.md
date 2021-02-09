@@ -1,9 +1,8 @@
 ---
-title: med – Reference – kdb+ and q documentation
+title: median of a numeric list | Reference | kdb+ and q documentation
 description: med is a q keyword that returns the median of its argument.
 keywords: kdb+, median, q, statistics
 ---
-
 # `med` 
 
 
@@ -11,7 +10,9 @@ keywords: kdb+, median, q, statistics
 
 _Median_
 
-Syntax: `med x`, `med[x]`
+```txt
+med x    med[x]
+```
 
 Where `x` is a numeric list returns its [median](https://en.wikipedia.org/wiki/Median "Wikipedia").
 
@@ -21,7 +22,31 @@ q)med 10 34 23 123 5 56
 q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 ```
 
-`med` is an aggregate function.
+`med` is an aggregate function, equivalent to 
+
+```q
+{avg x (iasc x)@floor .5*-1 0+count x,:()}
+```
+
+
+## Implicit iteration
+
+`med` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
+
+q)med d
+7 -8 -1.5
+
+q)med t
+a| 3
+b| -6
+
+q)med k
+a| 3
+b| -6
+```
 
 
 ## Partitions and segments
@@ -38,6 +63,6 @@ select med price by sym from
 ```
 
 
-
-<i class="far fa-hand-point-right"></i> 
-Basics: [Mathematics](../basics/math.md)
+----
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)

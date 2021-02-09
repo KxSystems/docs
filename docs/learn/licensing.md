@@ -4,7 +4,7 @@ description: How to ensure your kdb+ processes have thelicenses they need.
 author: Stephen Taylor
 keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
 ---
-# <i class="fas fa-certificate"></i> Licensing
+# :fontawesome-solid-certificate: Licensing
 
 
 
@@ -15,7 +15,7 @@ Everyone. All use of kdb+ is governed by a license.
 
 64-bit installations require a **license key file**: `k4.lic` or `kc.lic`.
 
-<i class="far fa-hand-point-right"></i> [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com
+:fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com
 
 
 ### Free, non-commercial, 64-bit kdb+ on demand
@@ -45,7 +45,7 @@ Welcome to kdb+ 32bit edition
 
 ### Commercial kdb+
 
-Use of commercial kdb+ is covered by your license agreement with Kx.
+Use of commercial kdb+ is covered by your license agreement with KX.
 
 Your copy of kdb+ will need access to a valid license key file.
 
@@ -79,7 +79,7 @@ License key files (`kc.lic`) are distributed by email.
 
 <button style="background: #0088ff; padding: 10px;" type="button">
     <a href="https://ondemand.kx.com/" style="color: white">
-        <i class="fas fa-certificate"></i>
+        :fontawesome-solid-certificate:
         Request an On-Demand license key file
     </a>
 </button>
@@ -94,13 +94,13 @@ Your Designated Contact sends a copy of the banner to licadmin@kx.com to request
 
 !!! info "Designated Contact"
 
-    Each Kx customer designates to licadmin@kx.com a couple of technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
+    Each KX customer designates to licadmin@kx.com a couple of technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
 
 
 ## Install the license key file
 
 Save a copy of the license key file (`k4.lic` or `kc.lic`) in the `QHOME` folder. 
-(See [installation instructions](install/index.md#install) for your operating system.) 
+(See [installation instructions](install.md#install) for your operating system.) 
 Restart your kdb+ session and note the change in the banner. 
 
 ```txt
@@ -132,10 +132,10 @@ The default location for the license key file is the `QHOME` folder. You do not 
 
 ## Licensing server for kdb+ On Demand
 
-As well as a license key file, kdb+ On Demand also requires frequent contact with the Kx licensing server. 
+As well as a license key file, kdb+ On Demand also requires frequent contact with the KX licensing server. 
 For this you need an always-on Net connection.
 
-If kdb+ cannot contact the Kx server it will abort with a timestamped message.
+If kdb+ cannot contact the KX server it will abort with a timestamped message.
 
 ```q
 '2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting
@@ -163,7 +163,7 @@ You can see the number of cores entitled to a q process:
 
 The number of licensed cores is always 16 for the on-demand license. 
 
-<i class="far fa-hand-point-right"></i> [License errors](../basics/errors.md#license-errors)
+:fontawesome-regular-hand-point-right: [License errors](../basics/errors.md#license-errors)
 
 
 !!! warning "On the road"

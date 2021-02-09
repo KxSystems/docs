@@ -1,19 +1,22 @@
 ---
-title: system – Reference – kdb+ and q documentation
+title: system keyword executes a system command | Reference | kdb+ and q documentation
 description: system is a q keyword that executes a system command.
 author: Stephen Taylor
-keywords: command, kdb+, q, system, system command
 ---
-# `system`
+# :fontawesome-solid-bullhorn: `system`
 
 
 
 
 _Execute a system command_
 
-Syntax: `system x`, `system[x]`
+```txt
+system x     system[x]
+```
 
 Where `x` is a string representing a [system command](../basics/syscmds.md) and any parameters to it, executes the command and returns any result.
+
+!!! note "The system command does not include a leading `\`."
 
 ```q
 q)\l sp.q
@@ -36,9 +39,9 @@ q)system "pwd"
 ```
 
 
-### Directing output to a file
+## :fontawesome-solid-database: Directing output to a file
 
-When redirecting output to a file, for efficiency purposes, avoiding using `>&nbsp;tmpout` needlessly; append a semi-colon to the command.
+When redirecting output to a file, for efficiency purposes, avoiding using `>tmpout` needlessly; append a semi-colon to the command.
 
 ```q
 q)system"cat x"
@@ -75,9 +78,9 @@ the shell interpreter considers it as two statements
 $ cat x > y; > tmpout
 ```
 
-### Capture stderr output
+## :fontawesome-solid-exclamation-triangle: Capture stderr output
 
-Can I capture the stderr output from the system call? Not directly, but a workaround is
+You cannot capture the stderr output from the system call directly, but a workaround is
 
 ```q
 / force capture to a file, and cat the file
@@ -89,7 +92,8 @@ ls: egg: No such file or directory
 "error - os"
 ```
 
-!!! warning "Changing working directory in Windows"
 
-    In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
+## :fontawesome-brands-windows: Changing working directory
+
+In the event of an unexpected change to the working directory, Windows users please note <https://devblogs.microsoft.com/oldnewthing/?p=24433>
 

@@ -1,0 +1,284 @@
+[
+{
+    "title": "Kdb+ in astronomy",
+    "slug": "astronomy",
+    "authors": ["Andrew Magowan", "James Neill"]
+},
+{
+    "title": "Storing and exploring the Bitcoin blockchain",
+    "slug": "blockchain",
+    "date": "December 2018",
+    "authors": ["Daniel Irwin", "Jeremy Lucid"]
+},
+{
+    "title": "C API for kdb+",
+    "slug": "capi",
+    "date": "December 2018",
+    "authors": ["Jeremy Lucid"]
+},
+{
+    "title": "Streaming analytics with kdb+: Detecting card counters in Blackjack",
+    "slug": "card-counters",
+    "date": "May 2017",
+    "authors": ["Caolan Rafferty", "Krishan Subherwal"]
+},
+{
+    "title": "Columnar database and query optimization",
+    "slug": "columnar-database",
+    "date": "June 2012",
+    "authors": ["Ciáran Gorman"]
+},
+{
+    "title": "Compression in kdb+",
+    "slug": "compress",
+    "date": "October 2013",
+    "authors": ["Eoin Killeen"]
+},
+{
+    "title": "Temporal data: A kdb+ framework for corporate actions",
+    "slug": "corporate-actions",
+    "date": "March 2014",
+    "authors": ["Sean Rodgers"]
+},
+{
+    "title": "Mass ingestion through data loaders",
+    "slug": "data-loaders",
+    "authors": ["Enda Gildea"]
+},
+{
+    "title": "Kdb+ data-management techniques",
+    "slug": "Simon Mescal",
+    "date": "January 2013",
+    "authors": ["Simon Mescal"]
+},
+{
+    "title": "Data recovery for kdb+tick",
+    "slug": "data-recovery",
+    "date": "July 2014",
+    "authors": ["Fionnbharr Gaston"]
+},
+{
+    "title": "Data visualization with kdb+ using ODBC: a Tableau case study",
+    "slug": "data-visualization",
+    "date": "July 2018",
+    "authors": ["Michaela Woods"]
+},
+{
+    "title": "Predicting floods with q and machine learning",
+    "slug": "disaster-floods",
+    "date": "October 2019",
+    "authors": ["Diane O’Donoghue"]
+},
+{
+    "title": "FDL Europe: Analyzing social media data for disaster management",
+    "slug": "disaster-management",
+    "date": "October 2019",
+    "authors": ["Conor McCarthy"]
+},
+{
+    "title": "Machine learning: Using embedPy to apply LASSO regression",
+    "slug": "embedpy-lasso",
+    "date": "October 2018",
+    "authors": ["Samantha Gallagher"]
+},
+{
+    "title": "NASA Frontier Development Lab Exoplanets Challenge",
+    "slug": "exoplanets",
+    "date": "December 2018",
+    "authors": ["Esperanza López Aguilera"]
+},
+{
+    "title": "Kdb+ and FIX messaging",
+    "slug": "fix-messaging",
+    "date": "January 2014",
+    "authors": ["Damien Barker"]
+},
+{
+    "title": "The application of foreign keys and linked columns in kdb+",
+    "slug": "foreign-keys",
+    "date": "April 2013",
+    "authors": ["Kevin Smyth"]
+},
+{
+    "title": "Common design principles in kdb+ gateways",
+    "slug": "gateway-design",
+    "date": "December 2012",
+    "authors": ["Michael McClintock"]
+},
+{
+    "title": "An introduction to graphical interfaces for kdb+ using C#",
+    "slug": "gui",
+    "date": "May 2013",
+    "authors": ["Michael Reynolds"]
+},
+{
+    "title": "Intraday writedown solutions",
+    "slug": "intraday-writedown",
+    "date": "March 2014",
+    "authors": ["Colm McCarthy"]
+},
+{
+    "title": "Iterators",
+    "slug": "iterators",
+    "date": "March 2019",
+    "authors": ["Conor Slattery", "Stephen Taylor"]
+},
+{
+    "title": "Java API for kdb+",
+    "slug": "java-api",
+    "date": "May 2018",
+    "authors": ["Peter Lyness"]
+},
+{
+    "title": "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network",
+    "slug": "lightning-tickerplants",
+    "date": "May 2019",
+    "authors": ["Jeremy Lucid"]
+},
+{
+    "title": "Machine Learning in kdb+: k-Nearest Neighbor classification and pattern recognition with q",
+    "slug": "machine-learning",
+    "date": "July 2017",
+    "authors": ["Emanuele Melis"]
+},
+{
+    "title": "Sample aggregation engine for market depth",
+    "slug": "market-depth",
+    "date": "January 2014",
+    "authors": ["Stephen Dempsey"]
+},
+{
+    "title": "Market Fragmentation:  A kdb+ framework for multiple liquidity sources",
+    "slug": "market-fragmentation",
+    "date": "January 2013",
+    "authors": ["James Corcoran"]
+},
+{
+    "title": "Multi-partitioned kdb+ databases: an equity options case study",
+    "slug": "multi-partitioned-dbs",
+    "authors": ["James Hanna"]
+},
+{
+    "title": "Multi-threading in kdb+",
+    "slug": "multi-thread",
+    "authors": ["Edward Corcoran"]
+},
+{
+    "title": "An introduction to neural networks with kdb+",
+    "slug": "neural-networks",
+    "authors": ["James Neill"]
+},
+{
+    "title": "Sobol’ option pricing in q",
+    "slug": "option-pricing",
+    "date": "October 2019",
+    "authors": ["Deanna Morgan"]
+},
+{
+    "title": "Permissions with kdb+",
+    "slug": "permissions",
+    "date": "May 2013",
+    "authors": ["Tom Martin"]
+},
+{
+    "title": "Query Routing: a kdb+ framework for a scalable, load balanced system",
+    "slug": "query-routing",
+    "date": "November 2015",
+    "authors": ["Kevin Holgrove"]
+},
+{
+    "title": "Building real-time tick subscribers",
+    "slug": "rt-tick",
+    "date": "August 2014",
+    "authors": ["Nathan Perrem"]
+},
+{
+    "title": "Signal processing and q",
+    "slug": "signal-processing",
+    "date": "August 2018",
+    "authors": ["Callum Biggs"]
+},
+{
+    "title": "Socket sharding with kdb+ and Linux",
+    "slug": "socket-sharding",
+    "date": "January 2018",
+    "authors": ["Marcus Clarke"]
+},
+{
+    "title": "NASA Frontier Development Lab Space Weather Challenge",
+    "slug": "space-weather",
+    "date": "November 2018",
+    "authors": ["Deanna Morgan"]
+},
+{
+    "title": "Surveillance techniques to effectively monitor algo- and high-frequency trading",
+    "slug": "surveillance",
+    "date": "March 2014",
+    "authors": ["Sam Stanton-Cook", "Dan O’Riordan"]
+},
+{
+    "title": "Latency and efficiency considerations for a real-time surveillance system",
+    "slug": "surveillance-latency",
+    "date": "November 2019",
+    "authors": ["Jason Quinn"]
+},
+{
+    "title": "Implementing trend indicators in kdb+",
+    "slug": "trend-indicators",
+    "date": "April 2020",
+    "authors": ["James Galligan"]
+},
+{
+    "title": "Dynamically shrinking big data using timeseries database kdb+",
+    "slug": "ts-shrink",
+    "date": "February 2015",
+    "authors": ["Sean Keevey", "Kevin Smyth"]
+},
+{
+    "title": "Kdb+ and WebSockets ",
+    "slug": "websockets",
+    "date": "March 2018",
+    "authors": ["Chris Scott", "Michael Gracey"]
+},
+{
+    "title": "Order Book: a kdb+ intraday storage and access methodology",
+    "slug": "order-book",
+    "date": "April 2012",
+    "authors": ["Niall Coulter"]
+},
+{
+    "title": "Parse trees and functional forms",
+    "slug": "parse-trees",
+    "date": "February 2015",
+    "authors": ["Peter Storeng", "Stephen Taylor"]
+},
+{
+    "title": "A natural query interface for distributed systems",
+    "slug": "query-interface",
+    "date": "November 2014",
+    "authors": ["Sean Keevey"]
+},
+{
+    "title": "Kdb+ query scaling",
+    "slug": "query-scaling",
+    "date": "January 2014",
+    "authors": ["Ian Lester"]
+},
+{
+    "title": "Working with sym files",
+    "slug": "symfiles",
+    "date": "March 2019",
+    "authors": ["Paula Clarke"]
+},
+{
+    "title": "Kdb+tick profiling for throughput optimization",
+    "slug": "tick-profiling",
+    "date": "March 2014",
+    "authors": ["Ian Kilpatrick"]
+},
+{
+    "title": "Transaction-cost analysis using kdb+",
+    "slug": "transaction-cost",
+    "date": "December 2012",
+    "authors": ["Colm Earley"]
+}]

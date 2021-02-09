@@ -31,3 +31,6 @@ operator | name                                 | semantics
 `!`      | [Enumeration](../ref/enumeration.md) | resolve values from an enumeration
 
 
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)  

@@ -4,32 +4,43 @@ date: August 2018
 keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, comparison, corpora, corpus, document, email, feature, file, k-mean, kdbplus, learning, machine, machine learning, mbox, message, ml, nlp, parse, parsing, q, sentiment, similarity, string function, vector
 ---
 
-# <i class="fas fa-share-alt"></i> Utility functions
+# :fontawesome-solid-share-alt: Utility functions
+
+
+<div markdown="1" class="typewriter">
+.nlp   **Utility functions**
+  [findTimes](#nlpfindtimes)          all the times in a document
+  [findDates](#nlpfinddates)          all the dates in a document
+  [findRegex](#nlpfindregex)          find regular expressions within a string
+  [getSentences](#nlpgetsentences)       partition a document into sentences
+  [loadTextFromDir](#nlploadtextfromdir)    all the files in a direc tory, imported recursively
+
+.nlp   **Remove characters**
+  [rmv_custom](#nlprmv_custom)         remove aspects of a string of text containing 
+                     certain characters or expressions
+  [rmv_main](#nlprmv_main)           replace individual characters in a string
+  [ascii](#nlpascii)              remove non-ASCII characters from a string
+</div>
+
 
 The NLP library contains functions useful for in-depth document analysis. They extract elements of the text that can be applied to NLP algorithms, or that can help you with your analysis.
 
 
-### `.nlp.findTimes`
+## `.nlp.ascii`
 
-_All the times in a document_
+_Remove non-ASCII characters from a string of text_
 
-Syntax: `.nlp.findTimes x`
+Syntax: `.nlp.ascii[text]`
 
-Where `x` is a string, returns a general list:
-
-1.  time
-1.  text of the time (string)
-1.  start index (long)
-1.  index after the end index (long)
+Where `text` is a string of text returns the string of text with all non-ASCII characters removed.
 
 ```q
-q).nlp.findTimes "I went to work at 9:00am and had a coffee at 10:20"
-09:00:00.000 "9:00am" 18 24
-10:20:00.000 "10:20"  45 50
+q).nlp.ascii["This is ä senteñcê"]
+"This is  sentec"
 ```
 
 
-### `.nlp.findDates`
+## `.nlp.findDates`
 
 _All the dates in a document_
 
@@ -50,15 +61,15 @@ q).nlp.findDates "I am going on holidays on the 12/04/2018 to New York and come 
 ```
 
 
-### `.nlp.findRegex`
+## `.nlp.findRegex`
 
 _Find regular expressions within a string of text_
 
 Syntax: `.nlp.findRegex[text;expr]`
 
-Where 
+Where
 
--  `text` is the string of text to extract the regular expressions from 
+-  `text` is the string of text to extract the regular expressions from
 -  `expr` is the expression type to be searched for within the text
 
 returns a dictionary, extracting the expression along with the indices within the expression occurs.
@@ -80,7 +91,7 @@ The optional expressions that can be searched for within the text are as follows
 ```
 
 ```q
-q)txt:"You can call the number 123 456 7890 or email us on name@email.com in book an 
+q)txt:"You can call the number 123 456 7890 or email us on name@email.com in book an
    appoinment for January,February and March for £30.00"
 q).nlp.findRegex[txt;`phoneNumber`emailAddress`yearmonthList`money]
 phoneNumber  | ,(" 123 456 7890";23;36)
@@ -90,7 +101,27 @@ money        | ,("\302\24330.00";128;134)
 ```
 
 
-### `.nlp.getSentences`
+## `.nlp.findTimes`
+
+_All the times in a document_
+
+Syntax: `.nlp.findTimes x`
+
+Where `x` is a string, returns a general list:
+
+1.  time
+1.  text of the time (string)
+1.  start index (long)
+1.  index after the end index (long)
+
+```q
+q).nlp.findTimes "I went to work at 9:00am and had a coffee at 10:20"
+09:00:00.000 "9:00am" 18 24
+10:20:00.000 "10:20"  45 50
+```
+
+
+## `.nlp.getSentences`
 
 _A document partitioned into sentences._
 
@@ -118,7 +149,7 @@ q) .nlp.getSentences corpus[0]
 ```
 
 
-### `.nlp.loadTextFromDir`
+## `.nlp.loadTextFromDir`
 
 _All the files in a directory, imported recursively_
 
@@ -138,11 +169,7 @@ fileName path                                           text                 ..
 ```
 
 
-## Remove characters
-
-_Remove characters from a string of text_
-
-### `.nlp.rmv_custom`
+## `.nlp.rmv_custom`
 
 _Remove aspects of a string of text containing certain characters or expressions_
 
@@ -163,35 +190,23 @@ q).nlp.rmv_custom[(jeffemails`text)100;rmv_list]
 "much to you  SRS\n\n\n\n\nKevin Hannon ENRON COMMUNICATIONS on  \n\n\nOK Sherri how much do you ..
 ```
 
-### `.nlp.rmv_master`
+
+## `.nlp.rmv_main`
 
 _Remove certain individual characters from a string of text and replace them_
 
-Syntax: `.nlp.rmv_master[text;char;n]`
+Syntax: `.nlp.rmv_main[text;char;n]`
 
 Where
 
 - `text` is a string of text
-- `char` is the string of characters to be removed 
+- `char` is the string of characters to be removed
 - `n` is the character which will replace the removed character
 
 returns the string of text with the characters removed and replaced.
 
 ```q
-q).nlp.rmv_master[(jeffemails`text)100;",.:?!/@'\n";"??"]
+q).nlp.rmv_main[(jeffemails`text)100;",.:?!/@'\n";"??"]
 "Re????????How much to you have????  SRS??????????Kevin Hannon ?? ENRON COMMUNICATIONS on 04??20?..
-```
-
-### `.nlp.ascii`
-
-_Remove any non-ASCII characters from a string of text_
-
-Syntax: `.nlp.ascii[text]`
-
-Where `text` is a string of text returns the string of text with all non-ASCII characters removed.
-
-```q
-q).nlp.ascii["This is ä senteñcê"]
-"This is  sentec"
 ```
 

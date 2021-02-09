@@ -1,13 +1,12 @@
 ---
-title: C API reference – Interfaces – kdb+ and q documentation
+title: C API reference | Interfaces | kdb+ and q documentation
 description: A reference guide to the API for connecting a C program to a kdb+ server process
 author: Charles Skelton
-keywords: api, c, interface, kdb+, library, q, reference
 ---
 # C API Reference
 
 
-<i class="far fa-hand-point-right"></i> [C client for kdb+](c-client-for-q.md)
+:fontawesome-regular-hand-point-right: [Quick guide](c-client-for-q.md)
 
 
 ## Overview
@@ -165,7 +164,7 @@ wf         -log(0.0) in Windows or (1/0.0) on Linux   float infinity
 
 ### Constructors
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [ka](#ka-create-atom)  atom        [kj](#kj-create-long)   long            [ktj](#ktj-create-timespan)    timespan
 [kb](#kb-create-boolean)  boolean     [knk](#knk-create-list)  list            [ktn](#ktn-create-vector)    vector
 [kc](#kc-create-char)  char        [knt](#knt-create-keyed-table)  keyed table     [ku](#ku-create-guid)     guid
@@ -175,14 +174,14 @@ wf         -log(0.0) in Windows or (1/0.0) on Linux   float infinity
 [kg](#kg-create-byte)  byte        [kt](#kt-create-time)   time            [xT](#xt-table-from-dictionary)     table
 [kh](#kh-create-short)  short       [ktd](#ktd-create-simple-table)  simple table
 [ki](#ki-create-int)  int         [ktj](#ktj-create-timestamp)  timestamp
-</pre>
+</div>
 
 ### Joins
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [ja](#ja-join-value)  raw value to list    [js](#js-join-string)  interned string to symbol vector
 [jk](#jk-join-k-object)  K object to list     [jv](#jv-join-k-lists)  K list to first of same type
-</pre>
+</div>
 
 When appending to a list, if the capacity of the list is
 insufficient to accommodate the new data, the list is reallocated with the contents of `x` updated. The new data is always appended, unless the reallocation causes an out-of-memory condition which is then fatal; these functions never return `NULL`. The reallocation of the list will cause the initial list’s reference count to be decremented. The target list passed to join functions should not have an attribute, and the caller should consider that modifications to that target object will be visible to all references to that object unless a reallocation occurred.
@@ -190,7 +189,7 @@ insufficient to accommodate the new data, the list is reallocated with the conte
 
 ### Other functions
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [b9](#b9-serialize)   serialize               [r0](#r0-decrement-refcount)    decrement ref count
 [d9](#d9-deserialize)   deserialize             [r1](#r1-increment-refcount)    increment ref count
 [dj](#dj-date-to-number)   date to integer         [sd0](#sd0-remove-callback)   remove callback
@@ -202,17 +201,17 @@ insufficient to accommodate the new data, the list is reallocated with the conte
 [m9](#m9-release-memory)   release memory          [vak](#vak-vaknk-va_list-versions-of-k-knk)   va_list version of k
 [okx](#okx-verify-ipc-message)  verify IPC message      [ymd](#ymd-numbers-to-date)   encode q date
 [orr](#orr-signal-system-error)  signal system error
-</pre>
+</div>
 
 
 ### Standalone applications
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [kclose](#kclose-disconnect)  disconnect from host
 [khp](#khp-connect-anonymously)     connect to host without credentials
 [khpu](#khpu-connect-no-timeout)    connect to host without timeout
 [khpun](#khpun-connect)   connect to host
-</pre>
+</div>
 
 !!! warning "Unless otherwise specified, no function accepting K objects should be passed `NULL`."
 
@@ -264,7 +263,7 @@ Tags: `c.o`
 
 Converts a q date to a `yyyymmdd` integer.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`ymd` – numbers to date](#ymd-numbers-to-date)
 
 
@@ -308,7 +307,7 @@ Since V3.5 2017.02.16, V3.4 2017.03.13
     ​K x=ee(dot(a,b));if(xt==-128)printf("error %s\n", x->s?x->s:"");
     ```
 
-    Otherwise the error status within the interpreter may still set set, resulting in the error being signalled incorrectly elsewhere in kdb+.
+    Otherwise the error status within the interpreter may still be set, resulting in the error being signalled incorrectly elsewhere in kdb+.
 
     Calling `ee(…)` has the side effect of clearing the interpreter’s error status for the NULL result path.
 
@@ -460,7 +459,7 @@ Signature: `I khp(const S hostname, I port)`
 Standalone apps only.
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpu(hostname, port, "")`
+:fontawesome-regular-hand-point-right: `khpu(hostname, port, "")`
 
 
 ### `khpu` – connect, no timeout
@@ -470,7 +469,7 @@ Signature: `I khpu(const S hostname, I port, const S credentials)`
 Standalone apps only.
 Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
-<i class="far fa-hand-point-right"></i> `khpun(hostname, port, credentials, 0)`
+:fontawesome-regular-hand-point-right: `khpun(hostname, port, credentials, 0)`
 
 
 ### `khpun` – connect
@@ -502,24 +501,38 @@ Signature: `I khpunc(S hostname, I port, S credentials, I timeout, I capability)
 2    use TLS
 ```
 
-A return value of -3 indicates the OpenSSL initialisation failed.
+??? detail "Messages larger than 2GB"
+
+    During the initial handshake of a connection, each side’s capability is exchanged, and the common maximum is chosen for the connection. By setting the capability parameter for `khpunc`, the default message-size limit for this connection can be raised from 2GB to 1TB. e.g.
+
+    ```
+    int handle=khpunc("hostname",5000,"user:password",timeout,1);
+    ```
+
+    A TLS-enabled connection supporting upto 1TB messages can be achieved via bit-or of the TLS and 1TB bits, e.g.
+
+    ```
+    int handle=khpunc("hostname",5000,"user:password",timeout,1|2);
+    ```
+
+A return value of -3 indicates the OpenSSL initialization failed.
 
 ```txt
  0   Authentication error
 -1   Connection error
 -2   Timeout error
--3   OpenSSL initialisation failed
+-3   OpenSSL initialization failed
 ```
 
-<i class="far fa-hand-point-right"></i> [`sslInfo`](#sslinfo-ssl-info)
+:fontawesome-regular-hand-point-right: [`sslInfo`](#sslinfo-ssl-info)
 
 !!! tip "Unix domain socket"
 
     For `khp`, `khpu`, `khpun`, and `khpunc` a Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
 
-    <pre><code class="language-c">
+    ```
     int handle=khpu("0.0.0.0",5000,"user:password");
-    </code></pre>
+    ```
 
 
 ### `ki` – create int
@@ -614,7 +627,7 @@ K f(K x){
 }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Error signaling and catching](c-client-for-q.md#error-signaling-and-catching)
 
 
@@ -746,8 +759,6 @@ Signature: `V sd0(I d)`
 
 Remove the callback on `d` and call `kclose`.
 
-Returns null if the socket descriptor arg `d` is invalid or was not registered via `sd1`.
-
 Shared library only.
 
 
@@ -756,8 +767,6 @@ Shared library only.
 Signature: `V sd0x(I d, I f)`<br>
 
 Remove the callback on `d` and call `kclose` on `d` if `f` is 1.
-
-Returns null if the socket descriptor arg `d` is invalid or was not registered via `sd1`.
 
 Shared library only. Since V3.0 2013.04.04.
 
@@ -776,6 +785,9 @@ The function `f` should return `NULL` or a pointer to a K object, and its refere
 Shared library only.
 
 On success, returns int K object containing `d`. On error, `NULL` is returned, `d` is closed.
+
+:fontawesome-regular-hand-point-right:
+[Callbacks](c-client-for-q.md#callbacks)
 
 
 ### `setm` – toggle symbol lock
@@ -838,7 +850,7 @@ included by `k.h`
 
 These are `va_list` versions of the `K k(I,const S,…)` and `K knk(I,…)` functions, useful for writing variadic utility functions that can forward the K objects.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 comp.lang.c: [How can I write a function which takes a variable number of arguments and passes them to some other function (which takes a variable number of arguments)?](http://c-faq.com/varargs/handoff.html)
 
 
@@ -880,6 +892,6 @@ Tags: `c.o`
 
 Encode a year/month/day as a q date, e.g. `0==ymd(2000, 1, 1)`
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`dj` – date to number](#dj-date-to-number)
 

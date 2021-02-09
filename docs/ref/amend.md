@@ -8,93 +8,80 @@ keywords: amend, amend at, at, dot, kdb+, q
 
 
 
-_Modify one or more items in a list._
+_Modify one or more items in a list, dictionary or datafile._
 
-syntax           | rank | semantics
------------------|:----:|----------------------------------------
-`.[d; i; v; my]` | 4    | amend items at depth with value `v` rank ≥2
-`@[d; i; v; my]` | 4    | amend items at depth 1 with value `v` rank ≥2
-`.[d; i; u]`     | 3    | amend items at depth with unary value `u`
-`@[d; i; u]`     | 3    | amend items at depth 1  with unary value `u`
-`.[d; i; :; y]`  | 4    | replace items at depth 
-`@[d; i; :; y]`  | 4    | replace items at depth 1
+```txt
+Amend             Amend At         values (d . i) or (d @ i) become
 
-Where 
+.[d; i; u]        @[d; i; u]       u[d . i]       u'[d @ i]
+.[d; i; v; vy]    @[d; i; v; vy]   v[d . i;vy]    v'[d @ i;vy]
+```
 
--   `d` is a list or a dictionary or a handle to one
--   `i` is a list of items in the domain of `d`
--   `v` is a value of rank $n$, and `my` an atom, or list conformable to `i`, of rank $n-1$ with items in the right domain/s of `m`
--   `u` is a unary value
--   `y` is an atom or list conformable to `i`
+Where
 
-if `d` is a 
+-   `d` is an atom, list, or a dictionary (**value**); or a **handle** to a list, dictionary or datafile
+-   `i` is a list of the indexes of `d` to be amended:
+    -   if empty (for `.`) or the general null `::` (for `@`), or if `d` is a non-handle atom, the selection $S$ is `d` ([Amend Entire](#amend-entire))
+    -   otherwise $S$ is [`.[d;i]` or `@[d;i]`](apply.md#index)
+-   `u` is a unary
+-   `v` is a binary, and `vy` is
+    -   in the right domain of `v`
+    -   unless $S$ is `d`, conformable to $S$ and of the same type
 
--   **variable**, returns a copy of it with the items at `i` modified
--   **handle**, modifies the items of its reference at `i`, and returns the handle
+the items in `d` of the selection $S$ are replaced
+
+-   in the ternary, by `u[`$S$`]` for `.` and by `u'[`$S$`]` for `@`
+-   in the quaternary, by `v[`$S$`;vy]` for `.` and by `v'[`$S$`;vy]` for `@`
+
+and if `d` is a
+
+-   **value**, returns a copy of it with the item/s at `i` modified
+-   **handle**, modifies the item/s of its reference at `i`, and returns the handle
+
+!!! tip "If `v` is Assign (`:`) each item in the selection is replaced by the corresponding item in `vy`."
+
+!!! tip "`u` and `v` can be replaced with values of higher rank using projection or by enlisting their arguments and using [Apply](apply.md)."
+
+See also binary and ternary forms of `.` and `@`
+<br>
+:fontawesome-solid-book:
+[Apply, Apply At, Index, Index At](apply.md)
 
 
-## Selection
-
-The items in `d` that are to be replaced are selected by `i` just as in [**Apply**](apply.md), i.e. `d . i` and `d@i`. 
-
-Call the items selected by `d . i` or `d@i` the _selection_.
+## Examples
 
 
 ### Amend Entire
 
-If `d` is an **atom** other than a dictionary or a handle and `i` is an empty list, then all of `d` is modified.
+If `i` is 
 
-If `d` is a **list** and `i` is **nil**, then all of `d` is amended, but one item at a time, as if `i` were `key d`. 
-<!-- FIXME Confirm. Example -->
+-   the empty list (for `.`)
+-   the general null (for `@`)
 
-In the case of a non-empty list `i`, the value `u` or `v` is evaluated once for every path generated from `i`, just as the above definition indicates. 
+the selection is the entire value in `d`.
 
-However, if the index `i` is the empty list, i.e. `()`, then Amend is Amend Entire. That is, the entire value in `d` is replaced, in the quaternary `.[d;();v;y]` with `v[d;y]`, or in `.[d;();:;y]` with `y`, as in `d:y`, and in the ternary `.[d;();u]` with `u[d]`. 
-
-```q
-.[2 3; (); ,; 4 5 6]
-2 3 4 5 6
+```txt
+.[d;();u]     <=>   u[d]            @[d;::;u]     <=>   u'[d]      
+.[d;();v;y]   <=>   v[d;y]          @[d;::;v;y]   <=>   v'[d;y]    
 ```
 
+```q
+q).[1 2; (); 3 4 5]
+4 5
+q).[1 2; (); :; 3 4 5]
+3 4 5
+q).[1 2; (); ,; 3 4 5]
+1 2 3 4 5
+q)@[1 2; ::; ,; 3 4 5]
+1 2 3 4 5
 
-## Amend At
-
-Exactly as for [Apply At](apply.md#apply-at-index-ats), `@[d;i;…` is everywhere [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for `.[d;enlist i;…`.
-
-In the general case of a one-item list `i`
-
--   `.[d;i;u;y]` is identical to `@[d;first i;u;y]`
--   `.[d;i;u]` is identical to `@[d;first i;u]`
-
-Definitions and examples that follow are written for `.` – adapt them for `@`. 
-
-
-
-## Modification
-
-In the quaternary, each item in the selection is replaced by the result of evaluating `v` on itself as the left argument and the corresponding item in `y` as the right argument.
-
-In the Replace form (with the colon as third argument) each item in the selection is replaced by the corresponding item in `y`. 
-
-!!! note "Replacement"
-
-    The colon `:` acts here as syntactic sugar for the the function `{[x;y] y}` or, more simply, `{y}`.
-
-In the ternary, each item in the selection is replaced by the result of evaluating `u` on it. 
-
-The new value/s of `d . i` are determined by the third argument, and whether `i` denotes a single path:
-
-3rd argument | single path       | general
-:-----------:|-------------------|--------------------
-`:`          | `y`               | `y . i`
-`u`          | `u[d . i]`        | `u'[d . i]`
-`v`          | `v[d . i; y . i]` | `v'[d . i; y . i]`
-
-
-<!-- FIXME Replace `'` in definition with recursion? -->
-
-
-## Examples
+q)@[1 2; ::; *; 3 4]
+3 8
+q)@[1 2; ::; 3 4*]
+'type
+  [0]  @[1 2; ::; 3 4*]
+       ^
+```
 
 
 ### Single path
@@ -102,9 +89,9 @@ The new value/s of `d . i` are determined by the third argument, and whether `i`
 If `i` is a non-negative integer vector then the selection is a single item at depth `count i` in `d`.
 
 ```q
-q)(5 2.14; "abc") . 1 2              / Index at depth 2
+q)(5 2.14; "abc") . 1 2              / index at depth 2
 "c"
-q).[(5 2.14; "abc"); 1 2; :; "x"]    / replace at depth 2 
+q).[(5 2.14; "abc"); 1 2; :; "x"]    / replace at depth 2
 5 2.14
 "abx"
 ```
@@ -125,7 +112,7 @@ q)y:(100 200 300; 400 500 600)
 q)r:.[d; i; ,; y]
 ```
 
-The following display of `d` adjacent to `r` provides easy comparison:
+Compare `d` and `r`:
 
 ```q
 q)d                              q)r
@@ -146,7 +133,7 @@ d: .[d; (i . 0 0; i . 1 0); ,; y . 0 0]
 d: .[d; 2 0; ,; 100]
 ```
 
-and item `d . 2 0` becomes `13 14,100`, or `13 14 100`. 
+and item `d . 2 0` becomes `13 14,100`, or `13 14 100`.
 The next single-path Amend is:
 
 ```q
@@ -159,7 +146,7 @@ or
 d: .[d; 2 1; ,; 200]
 ```
 
-and item `d . 2 1` becomes `15 16 17 18 200`. 
+and item `d . 2 1` becomes `15 16 17 18 200`.
 
 Continuing in this manner:
 
@@ -180,7 +167,7 @@ y:(100 200 300; 400 500 600)
 r:.[d; i; :; y]
 ```
 
-The following display of `d` next to `r` provides easy comparison.
+Compare `d` and `r`:
 
 ```q
 q)d                           q)r
@@ -192,7 +179,7 @@ q)d                           q)r
 Note multiple replacements of some items-at-depth in `d`, corresponding to the multiple updates in the earlier example.
 
 
-## Unary value
+### Unary value
 
 The ternary replaces the selection with the results of applying `u` to them.
 
@@ -210,7 +197,7 @@ q)y
 q)r:.[d; i; neg]
 ```
 
-The following display of `d` next to `r` provides easy comparison.
+Compare `d` and `r`:
 
 ```q
 q)d                            q)r
@@ -222,6 +209,20 @@ q)d                            q)r
 Note multiple applications of `neg` to some items-at-depth in `d`, corresponding to the multiple updates in the first example.
 
 
+### On disk
+Certain vectors can be updated directly on disk without the need to fully rewrite the file.
+(Since V3.4)
+
+Such vectors must have no attribute, be of a mappable type, not nested, and not compressed.
+
+```q
+q)`:data set til 20
+q)@[`:data;3 6 8;:;100 200 300]
+q)get `:data
+0 1 2 100 4 5 200 7 300 9 10 11 12 13 14 15 16 17 18 19
+```
+
+<!--
 ## The general case
 
 In general, `i` can be
@@ -229,21 +230,21 @@ In general, `i` can be
 -   an atom that is a valid index of `d`, e.g. one of `key d`
 -   a list representing paths to items at depth `count i` in `d`
 
-The function proceeds recursively through `i[0]` and `y` as if they were the arguments of a binary atomic function, except that when arriving at an atom in `i[0]`, that value is retained as the first item in a path and the recursion continues on with `i[1]` and the item-at-depth in `y` that had been arrived at the same time as the atom in `i[0]`. 
+The function proceeds recursively through `i[0]` and `y` as if they were the arguments of a binary atomic function, except that when arriving at an atom in `i[0]`, that value is retained as the first item in a path and the recursion continues on with `i[1]` and the item-at-depth in `y` that had been arrived at the same time as the atom in `i[0]`.
 
 And so on, until arriving at an atom in the last item of `i`. At that point a path `p` into `d` has been created and the item at depth `count i` selected by `p`, namely `d . p`, is replaced by `m[d . p;z]` for binary `m`, or `u[d . p]` for unary `u`, where `z` is the item-at-depth in `y` that had been arrived at the same time as the atom in the last item of `i`.
 
 The general case for binary `v` can be defined recursively by partitioning the index list into its first item and the rest:
 
 ```q
-Amend:{[d;F;R;v;y] 
+Amend:{[d;F;R;v;y]
   $[ nil ~ F; Amend[d; key d; R; v; y];
     0 = count R; @[d; F; v; y];
         @ F; Amend[d @ F; first R; 1_R; v; y];
              Amend[;; R;;]/[d; F; v; y]}
 ```
 
-<!-- FIXME Revise definition: Atom; nil -->
+FIXME Revise definition: Atom; nil
 
 Note the application of [Over](accumulators.md) to Amend, which requires that whenever `F` is not an atom, either `y` is an atom or `count F` equals `count y`. Over is used to accumulate all changes in the first argument `d`.
 
@@ -251,24 +252,33 @@ Note the application of [Over](accumulators.md) to Amend, which requires that wh
 ## Accumulate
 
 Cases of Amend with a value `u` or `v` are sometimes called Accumulate because the new items-at-depth are computed in terms of the old, as in `.[x; 2 6; +; 1]`, where item 6 of item 2 is incremented by 1.
-
+ -->
 
 ## Errors
 
-error  | cause
--------|--------------------------------------------------------------------
-domain | `d` is a symbol atom but not a handle
-index  | a path in `i` is not a valid path of `d`
-length | `i` and `y` are not conformable 
-type   | an atom of `i` is not an integer, symbol or nil
+```txt
+domain   d is a symbol atom but not a handle
+index    a path in i is not a valid path of d
+length   i and y are not conformable
+type     an atom of i is not an integer, symbol or nil
+type     replacement items of different type than selection
+```
 
+----
+:fontawesome-solid-book:
+[Apply, Apply At, Index, Index At](apply.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.8.3 General Form of Function Application](/q4m3/6_Functions/#683-general-form-of-function-application)
 
+<!--
 ## Functional Amend
 
 ==Integrate following with preceding!==
 
-Syntax: `@[x;i;f]`  
-Syntax: `@[x;i;f;a]`  
+Syntax: `@[x;i;f]`
+Syntax: `@[x;i;f;a]`
 Syntax: `@[x;i;f;v]`
 
 Where
@@ -286,7 +296,7 @@ For `ind` in `til count i`, `x[i ind]` becomes
 ```txt
 expression   x[i ind]
 -----------------------------
-@[x;i;f]     f[x i ind] 
+@[x;i;f]     f[x i ind]
 @[x;i;f;a]   f[x i ind][a]
 @[x;i;f;v]   f[x i ind][v ind]
 ```
@@ -303,7 +313,6 @@ q)@[d;1 1 1;+;3] / binary f
 ((1 2 3;4 5 6 7);(17 18;19;20 21);(13 14;15 16 17 18;19 20))
 ```
 
-Functions of rank higher than 2 can be applied by enlisting their arguments and using [Apply](apply.md).
 
 !!! warning "Projections"
 
@@ -313,15 +322,4 @@ Functions of rank higher than 2 can be applied by enlisting their arguments and 
     q)0N!@[("ssd";"bsd");0;+];
     (+["ssd"];"bsd")
     </code></pre>
-
-!!! tip "Do it on disk"
-
-    Since V3.4 certain vectors can be updated directly on disk without the need to fully rewrite the file. Such vectors must have no attribute, be of a mappable type, not nested, and not compressed. e.g.
-
-    <pre><code class="language-q">
-    q)\`:data set til 20;
-    q)@[\`:data;3 6 8;:;100 200 300]; 
-    q)get\`:data 
-    0 1 2 100 4 5 200 7 300 9 10 11 12 13 14 15 16 17 18 19
-    </code></pre>
-
+ -->

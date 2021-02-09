@@ -8,7 +8,7 @@ keywords: kdb+, publish, q, subscribe
 
 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 
 contains functionality to allow processes to publish data and subscribe to it. It is worth highlighting how the publish-and-subscribe code can be used by any process on a standalone basis. The pubsub functionality is supplied in the `u.q` script of kdb+tick.
 
@@ -34,7 +34,7 @@ The example scripts below can be downloaded from GitHub. Each script should be r
 $ q publisher.q
 $ q subscriber.q
 ```
- <i class="fab fa-github"></i> 
+ :fontawesome-brands-github: 
  [KxSystems/cookbook/pubsub](https://github.com/KxSystems/cookbook/tree/master/pubsub)
 
 
@@ -53,7 +53,7 @@ The code below will generate some random data and publish it periodically on a t
 
 // create some test data to be published
 // this could also be read from a csv file (for example)
-meterdata:([]sym:10000?200j; reading:10000?500i)
+meterdata:([]sym:10000?200; reading:10000?500i)
 griddata:([]sym:2000?100?`3; capacity:2000?100f; flowrate:2000?3000i)
 
 // utility functions to get the next set of data to publish
@@ -128,7 +128,7 @@ Subscribe to 10 syms of meter data:
 h(`.u.sub;`meter;`long$til 10)
 
 Add subscriptions
-h(`.u.add;`meter;20 21 22j)
+h(`.u.add;`meter;20 21 22)
 ```
 
 

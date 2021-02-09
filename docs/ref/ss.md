@@ -1,8 +1,7 @@
 ---
-title: ss, ssr – Reference – kdb+ and q documentation
+title: ss, ssr – string search and replacement | Reference | kdb+ and q documentation
 description: ss and ssr are q keywords that perform string search and replacement.
 author: Stephen Taylor
-keywords: kdb+, match, pattern, q, regex, regular expression, replace, search, ss, ssr, string
 ---
 # `ss`, `ssr`
 
@@ -15,23 +14,21 @@ _String search – and replace_
 
 _String search_
 
-Syntax: `x ss y`, `ss[x;y]` 
+```txt
+x ss y     ss[x;y]
+```
 
-Where 
+Where
 
 -   `x` is a string
--   `y` is a string of plain text, or a [pattern](../kb/regex.md)
+-   `y` is a [pattern](../basics/regex.md) as a string (no asterisk)
 
-returns position/s of substring `y` within string `x`.
+returns an int vector of position/s within `x` of substrings that match pattern `y`.
 
 ```q
 q)"We the people of the United States" ss "the"
 3 17
-```
 
-It also supports some of the pattern-matching capabilities of `like`.
-
-```q
 q)s:"toronto ontario"
 q)s ss "ont"
 3 8
@@ -42,22 +39,23 @@ q)s ss "t?r"
 ```
 
 
-
 ## `ssr`
 
-_String search and replace_ 
+_String search and replace_
 
-Syntax: `ssr[x;y;z]`
+```txt
+ssr[x;y;z]
+```
 
 Where
 
-- `x` is a string
-- `y` is a pattern
-- `z` is a string or a function
+-   `x` is a string
+-   `y` is a [pattern](../basics/regex.md) as a string (no asterisk)
+-   `z` is a string or a function
 
 returns `x` with each substring matching `y` replaced by:
 
--   `z` if `z` is a string 
+-   `z` if `z` is a string
 -   `z[Y]` where `z` is a function and `Y` is the matched substring
 
 ```q
@@ -69,11 +67,17 @@ q)ssr[s;"t?r";upper]    / replace matches by their uppercase
 ```
 
 
-<i class="fas fa-book"></i> 
-[`like`](like.md),
-[Regular Expressions in q](../basics/regex.md),
-[Strings](../basics/strings.md)<br>
-<i class="fas fa-graduation-cap"></i>
-[Using regular expressions](../kb/regex.md)
+----
+:fontawesome-solid-book:
+[`like`](like.md)
+<br>
+:fontawesome-solid-book-open:
+[Regular Expressions in q](../basics/regex.md)
+<br>
+:fontawesome-solid-book-open:
+[Strings](../basics/by-topic.md#strings)
+<br>
+:fontawesome-solid-graduation-cap:
+[Using regular expressions](../basics/regex.md)
 
 

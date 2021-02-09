@@ -1,11 +1,17 @@
 ---
-title: Signal processing and q – White Papers – kdb+ and q documentation
-description: Signal processing is the analysis, interpretation and manipulation of signals to reveal important information. Signals of interest include human speech, seismic waves, images of faces or handwriting, brainwaves, radar, traffic counts and many others. This processing reveals information in a signal that can be obscured by non-useful information, commonly called ‘noise’.
+title: Signal processing and q | White Papers | kdb+ and q documentation
+description: How statistical signal-processing operations can be implemented within q to remove noise, extract useful information, and quickly identify anomalies
 keywords: kdb+, processing, q, signal
 author: Callum Biggs
 date: August 2018
 ---
+White paper
+{: #wp-brand}
+
 # Signal processing and q
+
+by [Callum Biggs](#author)
+{: .wp-author}
 
 
 
@@ -69,7 +75,7 @@ following steps:
 
 This paper will focus on the last three steps listed above, as the first
 topic of data capture has already been covered extensively in previous
-Kx white papers, including 
+KX white papers, including 
 
 -   [Kdb+tick profiling for throughput optimization](../tick-profiling.md)
 -   [Disaster recovery for kdb+tick](../disaster-recovery/index.md) 
@@ -680,6 +686,8 @@ natively integrated into q/kdb+ data systems. This allows for q/kdb+ to
 be used as a platform for the capture, processing, storage and querying
 of sensors based signal information.
 
+[:fontawesome-solid-print: PDF](/download/wp/signal-processing-a4.pdf)
+
 
 ## References
 
@@ -692,6 +700,77 @@ of sensors based signal information.
 [4] K. Jones, _The Regularized Fast Hartley Transform_, Springer Netherlands, 2010. 
 
 [5] L. Debnath and D. _Bhatta, Integral Transforms and Their Applications_, Chapman and Hall/CRC, 2017.
+
+
+## Author
+
+![Callum Biggs](../../img/faces/callumbiggs.jpg)
+{: .small-face}
+
+**Callum Biggs** joined First Derivatives in 2017 as a data scientist in its Capital Markets Training Program.
+
+
+## Acknowledgments
+
+I would like to acknowledge the Machine Learning Repository 
+hosted by the University of California, Irvine, for providing the
+real-world data sets used as sample input data sets for the
+methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.php) has an enormous number of freely-available datasets.
+
+
+## Notes
+
+1.  A stochastic process is one where at least part of the process is
+    defined by random variables. It can be analyzed but not predicted
+    with certainty, although Autoregressive based models can achieve a
+    modest prediction capability.
+
+2.  Internet of Things is the networking and data sharing between
+    devices with embedded electronics, sensors, software and even
+    actuators. Common household examples include devices such as
+    Fitbits, Amazon Echo’s and Wi-Fi connected security systems.
+
+3.  An everyday example of the superpositioning principle in action is
+    through Noise-Cancelling headphones, which measure the outside
+    soundwave, and then produce an exact opposite wave internally, that
+    nullifies the outside noise.
+
+4.  The ‘domain’ is the variable on which a signal is changing. Humans
+    naturally tend to consider changes in a time-domain, such as how a
+    singer’s loudness varies during a song. In this case, the
+    frequency-domain analysis would be to consider how often the singer
+    hit particular notes.
+
+5.  Here complex is used in a mathematical sense, each vector contains a
+    real and imaginary part.
+
+6.  Technically, a Fourier Transformation decomposes a signal into
+    complex exponentials (called “cissoids”).
+
+7.  This is a result of the Nyquist-Shannon sampling theorem.
+
+8.  A comprehensive explanation for how sampling discontinuities can
+    result in spectral leakage would require an in-depth discussion of
+    the underlying mathematics of a Fourier Transformation. An excellent
+    discussion of this phenomena (which avoids the heavy math) can be
+    found at [Windows and Spectral
+    Leakage](https://community.sw.siemens.com/s/article/windows-and-spectral-leakage)
+
+9.  This is because the result of a real valued FFT is conjugate
+    symmetric, or Hermitian, with the exception of the first value.
+
+10. Designing a filter to smooth the data in this manner is very
+    simplistic and does not account for key filtering criteria such as
+    frequency and impulse response, phase shifting, causality or
+    stability. Application of more rigorous design methods such as a
+    Parks-McClellan algorithm would be beyond the scope and intention of
+    this paper.
+
+11. The smoothing that was performed may have highlighted the longer
+    term trends, but the background noise remained present. It was
+    therefore necessary to decrease the sampling frequency (and
+    therefore reduce the largest frequency captured) in order to better
+    highlight the low frequency/high period trends.
 
 
 ## Appendix
@@ -849,69 +928,3 @@ p)print (t1 - t0)
 ```
 
 
-## Author
-
-Callum Biggs joined First Derivatives in 2017 as a data scientist
-in its Capital Markets Training Program.
-
-## Acknowledgments
-
-I would like to acknowledge the Machine Learning Repository 
-hosted by the University of California, Irvine, for providing the
-real-world data sets used as sample input data sets for the
-methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.php) has an enormous number of freely-available datasets.
-
-
-## Notes
-
-1.  A stochastic process is one where at least part of the process is
-    defined by random variables. It can be analyzed but not predicted
-    with certainty, although Autoregressive based models can achieve a
-    modest prediction capability.
-
-2.  Internet of Things is the networking and data sharing between
-    devices with embedded electronics, sensors, software and even
-    actuators. Common household examples include devices such as
-    Fitbits, Amazon Echo’s and Wi-Fi connected security systems.
-
-3.  An everyday example of the superpositioning principle in action is
-    through Noise-Cancelling headphones, which measure the outside
-    soundwave, and then produce an exact opposite wave internally, that
-    nullifies the outside noise.
-
-4.  The ‘domain’ is the variable on which a signal is changing. Humans
-    naturally tend to consider changes in a time-domain, such as how a
-    singer’s loudness varies during a song. In this case, the
-    frequency-domain analysis would be to consider how often the singer
-    hit particular notes.
-
-5.  Here complex is used in a mathematical sense, each vector contains a
-    real and imaginary part.
-
-6.  Technically, a Fourier Transformation decomposes a signal into
-    complex exponentials (called “cissoids”).
-
-7.  This is a result of the Nyquist-Shannon sampling theorem.
-
-8.  A comprehensive explanation for how sampling discontinuities can
-    result in spectral leakage would require an in-depth discussion of
-    the underlying mathematics of a Fourier Transformation. An excellent
-    discussion of this phenomena (which avoids the heavy math) can be
-    found at [Windows and Spectral
-    Leakage](https://community.sw.siemens.com/s/article/windows-and-spectral-leakage)
-
-9.  This is because the result of a real valued FFT is conjugate
-    symmetric, or Hermitian, with the exception of the first value.
-
-10. Designing a filter to smooth the data in this manner is very
-    simplistic and does not account for key filtering criteria such as
-    frequency and impulse response, phase shifting, causality or
-    stability. Application of more rigorous design methods such as a
-    Parks-McClellan algorithm would be beyond the scope and intention of
-    this paper.
-
-11. The smoothing that was performed may have highlighted the longer
-    term trends, but the background noise remained present. It was
-    therefore necessary to decrease the sampling frequency (and
-    therefore reduce the largest frequency captured) in order to better
-    highlight the low frequency/high period trends.
