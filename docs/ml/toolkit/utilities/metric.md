@@ -15,14 +15,13 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [confMatrix](#mlconfmatrix)    Confusion matrix
   [corrMatrix](#mlcorrmatrix)    Table-like correlation matrix for a simple table
   [crossEntropy](#mlcrossentropy)  Categorical cross entropy
-  [crm](#mlcrm)           Correlation matrix
   [covMatrix](#mlcovMatrix)     Covariance matrix
   [describe](#mldescribe)      Descriptive information about a table
   [fBetaScore](#mlfbetascore)    Fbeta-score on classification results
   [logLoss](#mllogloss)       Logarithmic loss
   [mae](#mlmae)           Mean absolute error
   [mape](#mlmape)          Mean absolute percentage error
-  [matcorr](#mlmatcorr)       Matthews correlation coefficient
+  [matthewCorr](#mlmatcorr)       Matthews correlation coefficient
   [mse](#mlmse)           Mean square error
   [percentile](#mlpercentile)    Percentile calculation for an array
   [precision](#mlprecision)     Precision of a binary classifier
@@ -193,17 +192,17 @@ q).ml.confMatrix[100?5;100?5]        / supports multiclass by converting to bool
 
 ## `.ml.corrMatrix`
 
-_Table-like correlation matrix for a simple table_
+_Calculate the correlation of a matrix or table_
 
 ```txt
-.ml.corrMatrix[matrix]
+.ml.corrMatrix[data]
 ```
 
 Where 
 
--  `matrix`  is a sample from a distribution
+-  `data`  is a sample from a distribution as a matrix or simple simple
 
-returns a table representing a correlation matrix.
+returns the covariance of the data
 
 ```q
 q)tab:([]A:asc 100?1f;B:desc 100?1000f;C:100?100)

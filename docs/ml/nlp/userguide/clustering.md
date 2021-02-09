@@ -13,7 +13,7 @@ Clusters can be summarized by their centroids, which are the sum of the feature 
 
 ## Markox Cluster algorithm
 
-MCL clustering, which takes document similarity as its only parameter other than the documents. This algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. It then runs a graph-clustering algorithm on the dataset.
+The MCL clustering algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. It then runs a graph-clustering algorithm on the dataset.
 
 
 #### `.nlp.cluster.MCL`
@@ -24,9 +24,9 @@ Syntax: `.nlp.cluster.MCL[docs;minimum;sample]`
 
 Where
 
--   `docs` is a list of documents or document keywords (table or list of dictionaries)
+-   `docs` is a table or list of dictionaries containing the documents keywords and their associated significance
 -   `minimum` is the minimum similarity (float)
--   `sample` a sample of `sqrt(n)` documents is used if this is trur
+-   `sample` indicate whether a sample of `sqrt(n)` documents are used `(1b)`, otherwise all documents are used `(0b)`
 
 returns the documents’ indexes, grouped into clusters.
 
@@ -46,14 +46,14 @@ This clustering algorithm finds the top ten keywords in each document, finds the
 
 #### `.nlp.cluster.summarize`
 
-_A clustering algorithm that works like many summarizing algorithms, by finding the most representative elements, then subtracting them from the centroid and iterating until the number of clusters has been reached_
+_Uses the top ten keywords of each document as centoid values in order to cluster similar documents together_
 
-Syntax: `.nlp.cluster.summarize[docs;n]`
+Syntax: `.nlp.cluster.summarize[docs;k]`
 
 Where
 
--   `docs` is a list of documents or document keywords (table or list of dictionaries)
--   `n` is the number of clusters to return (long)
+-   `docs` is a table or list of dictionaries containing the documents keywords and their associated significance
+-   `k` is the number of clusters to return (long)
 
 returns the documents’ indexes, grouped into clusters.
 
@@ -81,7 +81,7 @@ Syntax: `.nlp.cluster.kmeans[docs;k;iters]`
 
 Where
 
--   `docs` is a list of documents or document keywords (table or list of dictionaries)
+-   `docs` is a table or list of dictionaries containing the documents keywords and their associated significance
 -   `k` is the number of clusters to return (long)
 -   `iters` is the number of times to iterate the refining step (long)
 
@@ -103,15 +103,15 @@ Bisecting K-means adopts the K-means algorithm and splits a cluster in two. This
 
 #### `.nlp.cluster.bisectingKMeans` 
 
-_The Bisecting K-means algorithm uses K-means repeatedly to split the most cohesive clusters into two clusters_
+_Uses K-means repeatedly to split the most cohesive clusters into two clusters_
 
 Syntax: `.nlp.cluster.bisectingKMeans[docs;k;iters]`
 
 Where
 
--    `docs` is a list of document keywords (table or list of dictionaries)
--    `k` is the number of clusters (long)
--    `iters` is the number of times to iterate the refining step
+-   `docs` is a table or list of dictionaries containing the documents keywords and their associated significance
+-   `k` is the number of clusters (long)
+-   `iters` is the number of times to iterate the refining step
 
 returns, as a list of lists of longs, the documents’ indexes, grouped into clusters.
 
@@ -139,12 +139,12 @@ Hard Clustering means that each datapoint either belongs to a cluster completely
 
 _Uses the Radix clustering algorithm and bins by the most significant term_
 
-Syntax: `.nlp.cluster.fastRadix[docs;n]`
+Syntax: `.nlp.cluster.fastRadix[docs;k]`
 
 Where
 
--   `docs` is a list of documents or document keywords (table or a list of dictionaries)
--   `n` is the number of clusters (long), though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
+-   `docs` is a table or list of dictionaries containing the documents keywords and their associated significance
+-   `k` is the number of clusters (long), though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
 
 returns a list of longs, the documents’ indexes, grouped into clusters.
 
@@ -165,12 +165,12 @@ In Soft Clustering, a probability or likelihood of a data point to be in a clust
 
 _Uses the Radix clustering algorithm and bins are taken from the top 3 terms of each document_
 
-Syntax: `.nlp.cluster.radix[docs;n]`
+Syntax: `.nlp.cluster.radix[docs;k]`
 
 Where
 
--   `docs` is a list of documents or document keywords (table or a list of dictionaries)
--   `n` is the number of clusters (long), though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
+-   `docs` is a table or list of dictionaries containing the documents keywords and their associated significance
+-   `k` is the number of clusters (long), though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
 
 returns the documents’ indexes (as a list of longs), grouped into clusters.
 
@@ -196,7 +196,7 @@ Syntax: `.nlp.cluster.groupByCentroids[centroid;docs]`
 Where
 
 -   `centroid` is a list of the centroids as keyword dictionaries
--   `documents` is a list of document feature vectors
+-   `docs` is a list of document feature vectors
 
 returns, as a list of lists of longs, document indexes where each list is a cluster.
 
@@ -222,4 +222,3 @@ q).nlp.cluster.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
 18 20
 ,22
 ```
-

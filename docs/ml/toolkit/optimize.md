@@ -48,8 +48,8 @@ Where
 
 -   `func` is a lambda/projection defining the objective function to be optimized. This function should take as input 1 or 2 arguments depending on if non-changing additional arguments `args` are required.
 -   `x0` is a numerical list denoting the initial guess for the numerical function arguments which are to be optimized.
--   `args` any additional non-changing arguments required by the function, this can be a list or dictionary in the case that additional arguments are required, or a `(::)` or `()` if they are not.
--   `params` optional parameters which can be used to modify the behavior of the algorithm. If no modifications are to be made this should be `(::)`. Otherwise this should be a dictionary. The following keys outline all possible changes which can be made to the default system behavior and the currently-accepted default values
+-   `args` are any additional non-changing arguments required by the function, this can be a list or dictionary in the case that additional arguments are required, or a `(::)` or `()` if they are not.
+-   `params` are optional parameters which can be used to modify the behavior of the algorithm. If no modifications are to be made this should be `(::)`. Otherwise this should be a dictionary. The following keys outline all possible changes which can be made to the default system behavior and the currently-accepted default values
 
 returns a dictionary containing the following information
 

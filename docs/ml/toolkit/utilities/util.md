@@ -14,12 +14,10 @@ keywords: pandas manipulation, dataframe, train test split, .
   [combs](#mlcombs)              n linear combinations of k numbers
   [df2tab](#mldf2tab)             kdb+ table from a pandas dataframe
   [df2tabTimezone](#mldf2tabTimezone)    Pandas dataframe to kdb+ conversion handling dates/times/timezones
-  [describe](#mldescribe)         Descriptive information about a table
   [eye](#mleye)                Identity matrix
   [iMax](#mlimax)               Index of maximum element of a list
   [iMin](#mlimin)               Index of minimum element of a list
   [linearSpace](#mllinearspace)        List of evenly-spaced values
-  [percentile](#mlpercentile)        Percentile calculation for an array
   [range](#mlrange)                Range of values
   [shape](#mlshape)              Shape of a matrix
   [tab2df](#mltab2df)             Pandas dataframe from a q table
@@ -93,36 +91,6 @@ q)m .ml.combs[count m;3]
 0 1 2 2 3 4 6 7 8
 0 1 2 4 5 6 6 7 8
 2 3 4 4 5 6 6 7 8
-```
-
-## `.ml.describe`
-
-_Descriptive information_
-
-```txt
-.ml.describe[tab]
-```
-
-Where 
-
--  `tab` is a simple table
-
-returns a tabular description of aggregate information (count, standard deviation, quartiles etc) for each numeric column.
-
-```q
-q)n:1000
-q)tab:([]sym:n?`4;x:n?10000f;x1:1+til n;x2:reverse til n;x3:n?100f)
-q).ml.describe tab
-     | x        x1       x2       x3
------| ------------------------------------
-count| 1000     1000     1000     1000
-mean | 4953.491 500.5    499.5    49.77201
-std  | 2890.066 288.8194 288.8194 28.91279
-min  | 7.908894 1        0        0.1122762
-q1   | 2491.828 250.75   249.75   24.38531
-q2   | 5000.222 500.5    499.5    49.96016
-q3   | 7453.287 750.25   749.25   74.98685
-max  | 9994.308 1000     999      99.98165
 ```
 
 ## `.ml.df2tab`
@@ -340,27 +308,6 @@ q).ml.linearSpace[0.5;15.25;12]
     The above function was previously defined as `.ml.linspace`.
     It is still callable but will be deprecated after version 3.0.
 
-## `.ml.percentile`
-
-_Percentile calculation for an array_
-
-```txt
-.ml.percentile[array;perc]
-```
-
-Where
-
--  `array` is a numerical array
--  `perc` is the percentile of interest
-
-returns the value below which `perc` percent of the observations within the array are found.
-
-```q
-q).ml.percentile[10000?1f;0.2]
-0.2030272
-q).ml.percentile[10000?1f;0.6]
-0.5916521
-```
 
 ## `.ml.range`
 
