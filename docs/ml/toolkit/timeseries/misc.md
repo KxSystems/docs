@@ -144,10 +144,14 @@ x                             x1        x2 avg_7_x1  avg_7_x2 avg_14_x1 avg_1..
 _Summary of the stationarity of a set of timeseries data using an augmented dickey-filler test_
 
 ```txt
-.ml.ts.stationarity[dset]
+.ml.ts.stationarity[data]
 ```
 
-Where `dset` is a dictionary, table or vector of numerical timeseries data, returns a keyed table outlining the stationarity of each key, column or vector of the provided dataset.
+Where 
+
+-  `data` is a dictionary, table or vector of numerical timeseries data
+
+returns a keyed table outlining the stationarity of each key, column or vector of the provided dataset.
 
 ```q
 q)vec:1000?1f
@@ -172,4 +176,3 @@ x | -9.522067 3.046044e-16 1          -3.498198        -2.891208        -2.58259
 x1| -8.763674 2.632545e-14 1          -3.498198        -2.891208        -2.582596        
 x2| 0.3685454 0.9802798    0          -3.498198        -2.891208        -2.582596        
 ```
-

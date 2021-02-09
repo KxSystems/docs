@@ -88,6 +88,7 @@ Edges
 
 _Add a configuration node to a graph_
 
+
 ```txt
 .ml.addCfg[graph;nodeId;config]
 ```
@@ -98,23 +99,25 @@ Where:
 * `nodeId` is a symbol unique to the graph denoting the name to be associated with the configuration node.
 * `config` is a dictionary containing any configuration information to be supplied to other nodes in the graph.
 
+returns a graph with the the new configuration added to the graph structure
+
 ```q
 // Add a configuration node to the graph
 q)show graph:.ml.addCfg[graph;`config;`a`b!1 2]
 nodes| (+(,`nodeId)!,``config)!+``function`inputs`outputs!((::;::);(::;![,`ou..
-edges| (+`dstNode`dstName!(,`;,`))!+`srcNode`srcName`valid!(,`;,`;,0b)
+edges| (+`destNode`destName!(,`;,`))!+`sourceNode`sourceName`valid!(,`;,`;,0b)
 
 // Display the nodes
 q)graph.nodes
 nodeId|    function                             inputs          outputs
-------| -----------------------------------------------------------------------
+------| ---------------------------------------------------------------
       | :: ::                                   ::              ::
-config| :: ![,`output]@[enlist]@[;`a`b`c!1 2 3] (`symbol$())!"" (,`output)!,"!"
+config| :: ![,`output]@[enlist]@[;`a`b`c!1 2 3] (`symbol$())!"" (,`out..
 
 q)graph.edges
-dstNode dstName| srcNode srcName valid
----------------| ---------------------
-               |                 0
+destNode destName| sourceNode sourceName valid
+-----------------| ---------------------------
+                 |                       0
 
 // Attempt to add a node with non unique name
 show graph:.ml.addCfg[graph;`config;`a`b!1 2]
@@ -124,6 +127,7 @@ show graph:.ml.addCfg[graph;`config;`a`b!1 2]
 ### `.ml.addNode`
 
 _Add a functional node to a graph_
+
 
 ```txt
 .ml.addNode[graph;nodeId;config]
@@ -145,99 +149,97 @@ q)newFunction:{[dict]dict`floatVector}
 // Generate relevant configuration and add to an empty graph
 q)newNode:`inputs`outputs`function!(newInput;newOutput;newFunction)
 q)show graph:.ml.addNode[graph;`newNode;newNode]
-nodes| (+(,`nodeId)!,``newNode)!+``function`inputs`outputs!((::;::);(::;![,`o..
-edges| (+`dstNode`dstName!(``newNode;``input))!+`srcNode`srcName`valid!(``;``..
+nodes| (+(,`nodeId)!,``newNode)!+``function`inputs`outputs!((::;::);(::..
+edges| (+`destNode`destName!(``newNode;``input))!+`sourceNode`sourceNam..
 q)graph.nodes
-nodeId |    function                                     inputs         outpu..
--------| --------------------------------------------------------------------..
-       | :: ::                                           ::             ::   ..
-newNode| :: ![,`output]@[enlist]{[dict]dict`floatVector} (,`input)!,"!" (,`ou..
+nodeId |    function                                     inputs        ..
+-------| --------------------------------------------------------------..
+       | :: ::                                           ::            ..
+newNode| :: ![,`output]@[enlist]{[dict]dict`floatVector} (,`input)!,"!"..
 q)graph.edges
-dstNode dstName| srcNode srcName valid
----------------| ---------------------
-               |                 0
-newNode input  |                 0
+destNode destName| sourceNode sourceName valid
+-----------------| ----------------------------
+                 |                       0
+newNode  input   |                       0
 
 // Define a node with multiple inputs and outputs
 q)multiInput:`input1`input2!"!+"
 q)multiOutput:`output1`output2!"!+"
 q)multiFunction:{[input1;input2]`output1`output2!(input1;input2)}
 // Generate the node with multiple inputs and outputs
-q)multiNode:`inputs`outputs`function!(multiInput;multiOutput;multiFunction)
+q)multiNode:`inputs`outputs`function!(multiInput;multiOutput;multiFunct..
 q)show graph:.ml.addNode[graph;`multiNode;multiNode]
-nodes| (+(,`nodeId)!,``newNode`multiNode)!+``function`inputs`outputs!((::;::;..
-edges| (+`dstNode`dstName!(``newNode`multiNode`multiNode;``input`input1`input..
+nodes| (+(,`nodeId)!,``newNode`multiNode)!+``function`inputs`outputs!((..
+edges| (+`destNode`destName!(``newNode`multiNode`multiNode;``input`inpu..
 q)graph.nodes
-nodeId   |    function                                          inputs       ..
----------| ------------------------------------------------------------------..
-         | :: ::                                                ::           ..
-newNode  | :: ![,`output]@[enlist]{[dict]dict`floatVector}      (,`input)!,"!..
-multiNode| :: {[input1;input2]`output1`output2!(input1;input2)} `input1`input..
+nodeId   |    function                                          inputs ..
+---------| ------------------------------------------------------------..
+         | :: ::                                                ::     ..
+newNode  | :: ![,`output]@[enlist]{[dict]dict`floatVector}      (,`inpu..
+multiNode| :: {[input1;input2]`output1`output2!(input1;input2)} `input1..
 q)graph.edges
-dstNode   dstName| srcNode srcName valid
------------------| ---------------------
-                 |                 0
-newNode   input  |                 0
-multiNode input1 |                 0
-multiNode input2 |                 0
+destNode   destName| sourceNode sourceName valid
+-------------------| -----------------------------
+                   |                       0
+newNode    input   |                       0
+multiNode  input1  |                       0
+multiNode  input2  |                       0
 ```
-
 
 ### `.ml.connectEdge`
 
 _Connect the output of one node to the input to another_
 
+
 ```txt
-.ml.connectEdge[graph;srcNode;srcName;destNode;destName]
+.ml.connectEdge[graph;sourceNode;sourceName;destNode;destName]
 ```
 
 Where
 
 * `graph` is a graph originally generated using `.ml.createGraph`
-* `srcNode` is a symbol denoting the name of a node in the graph which contains the relevant output
-* `srcName` is a symbol denoting the name of the output to be connected to an associated input node
+* `sourceNode` is a symbol denoting the name of a node in the graph which contains the relevant output
+* `sourceName` is a symbol denoting the name of the output to be connected to an associated input node
 * `destNode` is a symbol denoting the name of a node in the graph which contains the relevant input to be connected to
-* `destName` is a symbol denoting the name of the input which is connected to the output defined by `srcNode` and `srcName`
+* `destName` is a symbol denoting the name of the input which is connected to the output defined by `sourceNode` and `sourceName`
 
 returns the graph with the relevant connection made between the inputs and outputs of two nodes.
 
 ```q
 // Graph edges prior to connection
 q)graph.edges
-dstNode  dstName | srcNode srcName valid
------------------| ---------------------
-                 |                 0
-srcNode  input   |                 0
-destNode destName|                 0
-// Connect a suitable output from one node to suitable input of another
-q)graph:.ml.connectEdge[graph;`srcNode;`srcName;`destNode;`destName]
+destNode  destName | sourceNode sourceName valid
+-------------------| ----------------------------
+                   |                       0
+sourceNode input   |                       0
+destNode   destName|                       0
+// Connect a suitable output from one node to suitable input of anoth..
+q)graph:.ml.connectEdge[graph;`sourceNode;`sourceName;`destNode;`dest..
 // Display edges following appropriate connection
 q)graph.edges
-dstNode  dstName | srcNode srcName valid
------------------| ---------------------
-                 |                 0
-srcNode  input   |                 0
-destNode destName| srcNode srcName 1
-
-
+destNode  destName | sourceNode sourceName valid
+-------------------| ---------------------------
+                   |                       0
+sourceNode input   |                       0
+destNode   destName| sourceNode sourceName 1
 ```
-
 
 ### `.ml.createGraph`
 
 _Generate an empty graph_
 
+
 ```txt
 .ml.createGraph[]
 ```
 
-returns a dictionary containing the structure required for the generation of a connected. This includes a key for information on the nodes present within the graph and edges outlining how the nodes within the graph are connected.
+returns a dictionary containing the structure required for the generation of a connected graph. This includes a key for information on the nodes present within the graph and edges outlining how the nodes within the graph are connected.
 
 ```q
 // Generate an empty graph
 q)show graph:.ml.createGraph[]
 nodes| (+(,`nodeId)!,,`)!+``function`inputs`outputs!(,::;,::;,::;,::)
-edges| (+`dstNode`dstName!(,`;,`))!+`srcNode`srcName`valid!(,`;,`;,0b)
+edges| (+`destNode`destName!(,`;,`))!+`sourceNode`sourceName`valid!(..
 
 // Retrieve the nodes schema
 q)graph.nodes
@@ -247,15 +249,15 @@ nodeId|    function inputs outputs
 
 // Retrieve the edges schema
 q)graph.edges
-dstNode dstName| srcNode srcName valid
----------------| ---------------------
-               |                 0
+destNode destName| sourceNode sourceName valid
+-----------------| -----------------------------
+                 |                       0
 ```
-
 
 ### `.ml.delCfg`
 
 _Delete a named configuration node_
+
 
 ```txt
 .ml.delCfg[graph;nodeId]
@@ -269,10 +271,10 @@ returns the graph with the named node removed.
 ```q
 // Display the graph nodes prior to deletion of a configuration node
 q)show graph.nodes
-nodeId       |    function                                                   ..
--------------| --------------------------------------------------------------..
-             | :: ::                                                         ..
-configuration| :: @[;`xdata`ydata!(+`x`x1!(0.06165008 0.285799 0.6684724 0.91..
+nodeId       |    function                                            ..
+-------------| -------------------------------------------------------..
+             | :: ::                                                  ..
+configuration| :: @[;`xdata`ydata!(+`x`x1!(0.06165008 0.285799 0.66847..
 
 // Delete the configuration node
 q)graph:.ml.delCfg[graph;`configuration]
@@ -290,6 +292,7 @@ nodeId|    function inputs outputs
 
 _Delete a named function node_
 
+
 ```txt
 .ml.delNode[graph;nodeId]
 ```
@@ -299,7 +302,7 @@ Where
 -   `graph` is a graph originally generated using `.ml.createGraph`
 -   `nodeId` is a symbol denoting the name of a functional node to be deleted
 
-returns the graph with the named node removed.
+returns the graph with the named functional node removed.
 
 ```q
 // Display the graph nodes prior to deletion of a configuration node
@@ -307,7 +310,7 @@ q)show graph.nodes
 nodeId |    function inputs         outputs
 -------| -------------------------------------------
        | :: ::       ::             ::
-newNode| :: {x}      (,`input)!,"!" (,`srcName)!,"!"
+newNode| :: {x}      (,`input)!,"!" (,`sourceName)!,"!"
 
 // Delete the configuration node
 q)graph:.ml.delNode[graph;`newNode]
@@ -324,6 +327,7 @@ nodeId|    function inputs outputs
 
 _Disconnect an edge from the input of a node_
 
+
 ```txt
 .ml.disconnectEdge[graph;destNode;destName]
 ```
@@ -339,28 +343,29 @@ returns the graph with the edge connected to the destination input removed from 
 ```q
 // Display the graph prior to disconnection of an edge
 q)graph.edges
-dstNode  dstName | srcNode srcName valid
------------------| ---------------------
-                 |                 0
-srcNode  input   |                 0
-destNode destName| srcNode srcName 1
+destNode  destName | sourceNode sourceName valid
+-------------------| ---------------------------
+                   |                       0
+sourceNode input   |                       0
+destNode   destName| sourceNode sourceName 1
 
 // Disconnect an edge
 q)graph:.ml.disconnectEdge[graph;`destNode;`destName]
 
 // Display the graph edges post disconnection
 q)graph.edges
-dstNode  dstName | srcNode srcName valid
------------------| ---------------------
-                 |                 0
-srcNode  input   |                 0
-destNode destName|                 0
+destNode  destName | sourceNode sourceName valid
+-------------------| ---------------------
+                   |                 0
+sourceNode input   |                 0
+destNode   destName|                 0
 ```
 
 
 ### `.ml.updCfg`
 
 _Update the contents of a configuration node_
+
 
 ```txt
 .ml.updCfg[graph;nodeId;config]
@@ -377,24 +382,25 @@ returns the graph with the named configuration node contents overwritten.
 ```q
 // Display the node prior to overwriting the configuration contents
 q)graph.nodes
-nodeId       |    function                                                inp..
--------------| --------------------------------------------------------------..
-             | :: ::                                                      :: ..
-configuration| :: ![,`output]@[enlist]@[;`xdata`ydata!(,0.3138309;`test)] (`s..
+nodeId       |    function                                            ..
+-------------| -------------------------------------------------------..
+             | :: ::                                                  :: ..
+configuration| :: ![,`output]@[enlist]@[;`xdata`ydata!(,0.3138309;`tes..
 
 // Update the configuration node content
 q)graph:.ml.updCfg[graph;`configuration;enlist[`xdata]!enlist 2?1f]
 q)graph.nodes
-nodeId       |               function                                        ..
--------------| --------------------------------------------------------------..
-             | ::            ::                                              ..
-configuration| (,`xdata)!,:: (,`xdata)!,![,`output]@[enlist](,`xdata)!,0.0197..
+nodeId       |               function                                  ..
+-------------| --------------------------------------------------------..
+             | ::            ::                                        ..
+configuration| (,`xdata)!,:: (,`xdata)!,![,`output]@[enlist](,`xdata)!,..
 ```
 
 
 ### `.ml.updNode`
 
 _Update the contents of a functional node_
+
 
 ```txt
 .ml.updNode[graph;nodeId;config]
@@ -411,26 +417,25 @@ returns the graph with the named functional node contents overwritten.
 ```q
 // Display the node prior to overwriting node content
 q)graph.nodes
-nodeId  |    function                inputs            outputs
---------| -------------------------------------------------------------
-        | :: ::                      ::                ::
-srcNode | :: {x}                     (,`input)!,"!"    (,`srcName)!,"!"
-destNode| :: ![,`output]@[enlist]{x} (,`destName)!,"!" (,`output)!,"F"
+nodeId    |    function                inputs            outputs
+----------| ------------------------------------------------------------
+          | :: ::                      ::                ::
+sourceNode| :: {x}                     (,`input)!,"!"    (,`sourceName)!..
+destNode  | :: ![,`output]@[enlist]{x} (,`destName)!,"!" (,`output)!,"F"
 
 
-// Generate node content to overwrite the function for srcNode
+// Generate node content to overwrite the function for sourceNode
 q)updSrcInput:"!"
-q)updSrcOutput:enlist[`srcName]!enlist "!"
+q)updSrcOutput:enlist[`sourceName]!enlist "!"
 q)updSrcFunction:{x+1}
 q)updSrc:`inputs`outputs`function!(updSrcInput;updSrcOutput;updSrcFunction)
 
 // Overwrite the functional node
-q)graph:.ml.updNode[graph;`srcNode;updSrc]
+q)graph:.ml.updNode[graph;`sourceNode;updSrc]
 q)show graph.nodes
-nodeId  |    function                inputs            outputs
---------| -------------------------------------------------------------
-        | :: ::                      ::                ::
-srcNode | :: {x+1}                   (,`input)!,"!"    (,`srcName)!,"!"
-destNode| :: ![,`output]@[enlist]{x} (,`destName)!,"!" (,`output)!,"F"
+nodeId    |    function                inputs            outputs
+----------| ----------------------------------------------------------
+          | :: ::                      ::                ::
+sourceNode| :: {x+1}                   (,`input)!,"!"    (,`sourceName)!..
+destNode  | :: ![,`output]@[enlist]{x} (,`destName)!,"!" (,`output)!,"F"
 ```
-

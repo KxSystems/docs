@@ -9,44 +9,54 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 <div markdown="1" class="typewriter">
 .nlp   **Utility functions**
+  [detectLang](#nlpdetectlang)         Detect the language within a text
   [findTimes](#nlpfindtimes)          all the times in a document
   [findDates](#nlpfinddates)          all the dates in a document
   [findRegex](#nlpfindregex)          find regular expressions within a string
   [getSentences](#nlpgetsentences)       partition a document into sentences
   [loadTextFromDir](#nlploadtextfromdir)    all the files in a direc tory, imported recursively
+  
 
 .nlp   **Remove characters**
-  [rmv_custom](#nlprmv_custom)         remove aspects of a string of text containing 
+  [removeCustom](#nlpremoveCustom)         remove aspects of a string of text containing 
                      certain characters or expressions
-  [rmv_main](#nlprmv_main)           replace individual characters in a string
-  [ascii](#nlpascii)              remove non-ASCII characters from a string
+  [removeReplace](#nlpremoveReplace)           replace individual characters in a string
+  [removeNonAscii](#nlpremoveNonAscii)              remove non-ASCII characters from a string
 </div>
 
 
 The NLP library contains functions useful for in-depth document analysis. They extract elements of the text that can be applied to NLP algorithms, or that can help you with your analysis.
 
 
-## `.nlp.ascii`
+## `.nlp.removeNonAscii`
 
 _Remove non-ASCII characters from a string of text_
 
-Syntax: `.nlp.ascii[text]`
+Syntax: `.nlp.removeNonAscii[text]`
 
-Where `text` is a string of text returns the string of text with all non-ASCII characters removed.
+Where 
+
+- `text` is a string of text 
+
+returns the string of text with all non-ASCII characters removed.
 
 ```q
-q).nlp.ascii["This is ä senteñcê"]
+q).nlp.removeNonAscii["This is ä senteñcê"]
 "This is  sentec"
 ```
 
 
 ## `.nlp.findDates`
 
-_All the dates in a document_
+_Find all the dates in a document_
 
-Syntax: `.nlp.findDates x`
+Syntax: `.nlp.findDates[text]`
 
-Where `x` is a string, returns a general list:
+Where 
+
+- `text` is a string of text,potentially containing many dates 
+
+returns a general list:
 
 1.  start date of the range
 1.  end date of the range
@@ -70,7 +80,7 @@ Syntax: `.nlp.findRegex[text;expr]`
 Where
 
 -  `text` is the string of text to extract the regular expressions from
--  `expr` is the expression type to be searched for within the text
+-  `expr` is the expression type as a symbol to be searched for within the text
 
 returns a dictionary, extracting the expression along with the indices within the expression occurs.
 
@@ -100,14 +110,17 @@ yearmonthList| (("January";97;104);("February";105;113);("March";118;123);("30";
 money        | ,("\302\24330.00";128;134)
 ```
 
-
 ## `.nlp.findTimes`
 
-_All the times in a document_
+_Find any times in a string_
 
-Syntax: `.nlp.findTimes x`
+Syntax: `.nlp.findTimes[text]`
 
-Where `x` is a string, returns a general list:
+Where 
+
+- `text` is a string of text potentially containing many times
+
+returns a general list:
 
 1.  time
 1.  text of the time (string)
@@ -123,11 +136,15 @@ q).nlp.findTimes "I went to work at 9:00am and had a coffee at 10:20"
 
 ## `.nlp.getSentences`
 
-_A document partitioned into sentences._
+_Get all the sentences for a document_
 
-Syntax: `.nlp.getSentences x`
+Syntax: `.nlp.getSentences[doc]`
 
-Where `x` is a dictionary or a table of document records or subcorpus, returns a list of strings.
+Where 
+
+- `doc` is a dictionary or a table of document records
+
+returns a list of strings of all the sentences from a document.
 
 ```q
 /finds the sentences in the first chapter of MobyDick
@@ -148,14 +165,39 @@ q) .nlp.getSentences corpus[0]
 ..
 ```
 
+## `.nlp.sentiment`
+
+_Calculate the sentiment of a sentence or short message_
+
+Syntax: `.nlp.sentiment[text]`
+
+Where 
+
+- `text` is string of text to score 
+
+returns a dictionary containing the sentiment score split up into compound, positive, negative and neutral components.
+
+An run of sentences from _Moby Dick_:
+
+```q
+q).nlp.sentiment each ("Three cheers,men--all hearts alive!";"No,no! shame upon all cowards-shame upon them!")
+compound   pos       neg       neu
+----------------------------------------
+0.7177249  0.5996797 0         0.4003203
+-0.8802318 0         0.6910529 0.3089471
+```
 
 ## `.nlp.loadTextFromDir`
 
-_All the files in a directory, imported recursively_
+_Import all files in a directory recursively_
 
-Syntax: `.nlp.loadTextFromDir x`
+Syntax: `.nlp.loadTextFromDir[filepath]`
 
-Where `x` is the directory’s filepath as a string, returns a table of filenames, paths and texts.
+Where 
+
+- `filepath` is the directory’s filepath as a string
+
+returns a table of filenames, paths and texts contained within the filepath.
 
 ```q
 q).nlp.loadTextFromDir["./datasets/maildir/skilling-j"]
@@ -169,11 +211,11 @@ fileName path                                           text                 ..
 ```
 
 
-## `.nlp.rmv_custom`
+## `.nlp.removeCustom`
 
-_Remove aspects of a string of text containing certain characters or expressions_
+_Remove certain characters from a string of text_
 
-Syntax: `.nlp.rmv_custom[text;char]`
+Syntax: `.nlp.removeCustom[text;char]`
 
 Where
 
@@ -186,27 +228,26 @@ returns the string a text without anything that contains the defined characters.
 q)rmv_list   :("*\n*";"*?!*";"*,";"*&*";"*[0-9]*")
 q)(jeffemails`text)100
 "Re:\n\nHow much to you have?!  SRS\n\n\n\n\nKevin Hannon @ ENRON COMMUNICATIONS on 04/20/2001 08..
-q).nlp.rmv_custom[(jeffemails`text)100;rmv_list]
+q).nlp.removeCustom[(jeffemails`text)100;rmv_list]
 "much to you  SRS\n\n\n\n\nKevin Hannon ENRON COMMUNICATIONS on  \n\n\nOK Sherri how much do you ..
 ```
 
 
-## `.nlp.rmv_main`
+## `.nlp.removeReplace`
 
-_Remove certain individual characters from a string of text and replace them_
+_Remove and replace certain characters from a string of text_
 
-Syntax: `.nlp.rmv_main[text;char;n]`
+Syntax: `.nlp.removeReplace[text;char;replace]`
 
 Where
 
 - `text` is a string of text
 - `char` is the string of characters to be removed
-- `n` is the character which will replace the removed character
+- `replace` is the characters or expressions which will replace the removed character
 
 returns the string of text with the characters removed and replaced.
 
 ```q
-q).nlp.rmv_main[(jeffemails`text)100;",.:?!/@'\n";"??"]
+q).nlp.removeReplace[(jeffemails`text)100;",.:?!/@'\n";"??"]
 "Re????????How much to you have????  SRS??????????Kevin Hannon ?? ENRON COMMUNICATIONS on 04??20?..
 ```
-

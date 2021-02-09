@@ -700,7 +700,7 @@ nav:
         - Data preparation: ml/nlp/userguide/preproc.md
         - Text comparison: ml/nlp/userguide/comparisons.md
         - Clustering: ml/nlp/userguide/clustering.md
-        - Data interrogation: ml/nlp/userguide/analysis.md
+        - Feature Vectors: ml/nlp/userguide/featVector.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
     - AutoML:
