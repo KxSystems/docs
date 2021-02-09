@@ -18,11 +18,13 @@ One of the most important document formats for analysis in natural-language proc
 
 ## `.nlp.email.getGraph`
 
-_Graph of who emailed whom, with the number of times they emailed_
+_Get the graph of who emailed who, including the number of times they emailed_
 
-Syntax: `.nlp.email.getGraph x`
+Syntax: `.nlp.email.getGraph[emails]`
 
-Where `x` is a table (result from `.nlp.email.i.parseMbox`), returns a table of to-from pairing.
+Where `emails` is a table (result from `.nlp.email.loadEmails`)
+
+returns a table of to-from pairing.
 
 ```q
 q).nlp.email.getGraph[emails]
@@ -51,14 +53,15 @@ ricardo@tdwg.org                 tdwg-tapir@lists.tdwg.org        3
 roger@tdwg.org                   Tdwg-img@lists.tdwg.org          1
 ```
 
-
 ## `.nlp.email.loadEmails`
 
-_An MBOX file as a table of parsed metadata_
+_Convert an mbox file to a table of parsed metadata_
 
-Syntax: `.nlp.email.loadEmails x`
+Syntax: `.nlp.email.loadEmails[filepath]`
 
-Where `x` is a string of the filepath, returns a table.
+Where `filepath` is a string of the path to the mbox file
+
+returns a table containing parsed metadata and content of the mbox file.
 
 column      | type                           | content
 ------------|--------------------------------|---------------------------
@@ -78,18 +81,18 @@ q)cols email
 `sender`to`date`subject`contentType`payload`text
 ```
 
-!!! warning "`.nlp.loadEmails` deprecated"
-    The above function was previously defined as `.nlp.loadEmails`.
-    It is still callable but will be deprecated with the next major release.  
-
 
 ## `.nlp.email.parseMail`
 
-_Parses an email in string format_
+_Extract meta information from an email_
 
-Syntax: `.nlp.email.parseMail x`
+Syntax: `.nlp.email.parseMail[filepath]`
 
-Where `x` is an email in a string format, returns a dictionary of the headers and content.
+Where 
+
+`filepath` is the path to where the email is stored
+
+returns a dictionary containing meta information from the email.
 
 ```q
 q)emailstring:"/home/kx/nlp/datasets/tdwg.mbox"
@@ -97,8 +100,3 @@ q)table:.nlp.email.parseMail emailString
 q)cols table
 `sender`to`date`subject`contentType`payload
 ```
-
-!!! warning "`.nlp.i.parseMail` deprecated"
-    The above function was previously defined as `.nlp.i.parseMail`.
-    It is still callable but will be deprecated with the next major release.  
-

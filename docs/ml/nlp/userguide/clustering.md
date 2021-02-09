@@ -20,15 +20,15 @@ MCL clustering, which takes document similarity as its only parameter other than
 
 _Cluster a subcorpus using graph clustering_
 
-Syntax: `.nlp.cluster.MCL[document;min;sample]`
+Syntax: `.nlp.cluster.MCL[docs;minimum;sample]`
 
 Where
 
--   `document` is a table of documents
--   `min` is the minimum similarity (float)
--   `sample` is whether a sample of `sqrt[n]` documents is to be used (boolean)
+-   `docs` is a list of documents or document keywords (table or list of dictionaries)
+-   `minimum` is the minimum similarity (float)
+-   `sample` a sample of `sqrt(n)` documents is used if this is trur
 
-returns as a list of longs the document’s indexes, grouped into clusters.
+returns the documents’ indexes, grouped into clusters.
 
 Setting a minimum similarity of 0.25 results in 370 clusters out of Jeff Skillings 2603 emails:
 
@@ -48,18 +48,17 @@ This clustering algorithm finds the top ten keywords in each document, finds the
 
 _A clustering algorithm that works like many summarizing algorithms, by finding the most representative elements, then subtracting them from the centroid and iterating until the number of clusters has been reached_
 
-Syntax: `.nlp.cluster.summarize[docs;noOfClusters]`
+Syntax: `.nlp.cluster.summarize[docs;n]`
 
 Where
 
 -   `docs` is a list of documents or document keywords (table or list of dictionaries)
--   `noOfClusters` is the number of clusters to return (long)
+-   `n` is the number of clusters to return (long)
 
 returns the documents’ indexes, grouped into clusters.
 
 ```q
 q).nlp.cluster.summarize[jeffcorpus;30]
-
 0 18 22 25 32 33 38 51 54 66 83 87 92 95 100 101 111 112 142 150..
 1 79 120 175 176 177 179 180 208 217 281 290 294 295 302 303 306..
 2 5 6 12 13 14 16 17 21 26 28 36 46 48 56 60 62 72 73 75 78 85 89..
@@ -82,7 +81,7 @@ Syntax: `.nlp.cluster.kmeans[docs;k;iters]`
 
 Where
 
--   `docs` is a table or a list of dictionaries
+-   `docs` is a list of documents or document keywords (table or list of dictionaries)
 -   `k` is the number of clusters to return (long)
 -   `iters` is the number of times to iterate the refining step (long)
 
@@ -140,12 +139,12 @@ Hard Clustering means that each datapoint either belongs to a cluster completely
 
 _Uses the Radix clustering algorithm and bins by the most significant term_
 
-Syntax: `.nlp.cluster.fastRadix[docs;numOfClusters]`
+Syntax: `.nlp.cluster.fastRadix[docs;n]`
 
 Where
 
 -   `docs` is a list of documents or document keywords (table or a list of dictionaries)
--   `numOfClusters` is the number of clusters (long)
+-   `n` is the number of clusters (long), though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
 
 returns a list of longs, the documents’ indexes, grouped into clusters.
 
@@ -166,12 +165,12 @@ In Soft Clustering, a probability or likelihood of a data point to be in a clust
 
 _Uses the Radix clustering algorithm and bins are taken from the top 3 terms of each document_
 
-Syntax: `.nlp.cluster.radix[docs;numOfClusters]`
+Syntax: `.nlp.cluster.radix[docs;n]`
 
 Where
 
 -   `docs` is a list of documents or document keywords (table or a list of dictionaries)
--   `numOfClusters` is the number of clusters (long), which should be large to cover the substantial amount of the corpus, as the clusters are small
+-   `n` is the number of clusters (long), though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
 
 returns the documents’ indexes (as a list of longs), grouped into clusters.
 
@@ -181,3 +180,46 @@ Group Jeff Skilling’s emails into 60 clusters:
 q)count each .nlp.cluster.radix[jeffcorpus;60]
 37 9 13 21 7 7 12 13 7 11 6 9 6 6 5 6 5 8 22 7 12..
 ```
+
+
+### Grouping documents to centroids
+
+When you have a set of centroids and you would like to find out which centroid is closest to the documents, you can use this function.
+
+
+#### `.nlp.cluster.groupByCentroids`
+
+_Documents matched to their nearest centroid_
+
+Syntax: `.nlp.cluster.groupByCentroids[centroid;docs]`
+
+Where
+
+-   `centroid` is a list of the centroids as keyword dictionaries
+-   `documents` is a list of document feature vectors
+
+returns, as a list of lists of longs, document indexes where each list is a cluster.
+
+!!! Note
+	These don't line up with the number of centroids passed in, and the number of lists returned may not equal the number of centroids. There can be documents which match no centroids (all of which will end up in the same group), and centroids with no matching documents.
+
+Matches the first centroid of the clusters with the rest of the corpus:
+
+```q
+q).nlp.cluster.groupByCentroids[[corpus clusters][0][`keywords];corpus`keywords]
+,0
+1 2 4 9 10
+,3
+,5
+6 7
+8 95 96
+11 12
+,13
+,14
+15 19 21
+,16
+,17
+18 20
+,22
+```
+
