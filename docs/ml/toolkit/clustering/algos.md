@@ -25,7 +25,7 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
     
 \  Hierarchical Clustering (HC):
     [hc.fit](#mlclusthcfit)                   Fit HC algorithm
-    [hc.fitPredict](#mlclustcurefitpredict)          Fit HC algorithm to data and convert dendrogram to clusters
+    [hc.fitPredict](#mlclustcurefitpredict)   	       Fit HC algorithm to data and convert dendrogram to clusters
     
 \  K-Means:
     [kmeans.fit](#mlclustkmeansfit)               Fit K-Means algorithm
@@ -74,7 +74,7 @@ Where
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`) along with a projection of the prediction function to use on new data (`predict`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 
 ```txt
 data       The original data used to fit the model
@@ -82,7 +82,7 @@ inputs     The original input parameters to the fitted model
 clust      The cluster index each data point belongs to
 exemplers  The indices of the exempler points
 ```
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 
@@ -137,14 +137,14 @@ Where
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), along with a projection of the prediction function to use on new data (`predict`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 ```txt
 data       The original data used to fit the model
 inputs     The original input parameters to the fitted model
 dgram      The dendrogram generated during the fitting process
 ```
 
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
@@ -198,7 +198,7 @@ q)CUREfit.predict[test;enlist[`dist]!enlist 1]
 
 ### `.ml.clust.cure.cutDist`
 
-_Cut a dendrogram into clusters based on a threshold distance_
+_Function to generate clusters - cutting the dendrogram based on a threshold distance_
 
 ```txt
 .ml.clust.cure.cutDist[config;dist]
@@ -248,7 +248,7 @@ q)cutDgram`clust
 
 ### `.ml.clust.cure.cutK`
 
-_Cut a dendrogram into k clusters_
+_Function to generate clusters - cutting dendrogram into k clusters_
 
 ```txt
 .ml.clust.hc.cutK[config;k]
@@ -302,7 +302,7 @@ q)cutDgram`clust
 _Fit CURE algorithm to data and convert dendrogram to clusters_
 
 ```txt
-.ml.clust.cure.fit[data;df;n;c]
+.ml.clust.cure.fitPredict[data;df;n;c;cutDict]
 ```
 
 Where
@@ -315,14 +315,14 @@ Where
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) and the cluster to which each data point belongs (`clust`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 ```txt
 data       The original data used to fit the model
 inputs     The original input parameters to the fitted model
 dgram      The dendrogram generated during the fitting process
 ```
 
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `cutDict` is a dictionary where The key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
@@ -365,13 +365,13 @@ _Fit DBSCAN algorithm_
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual data point
--   `df` is the distance function as a symbol: ``` `e2dist`edist`mdist ``` (see [section](##Distance Metrics))
+-   `df` is the distance function as a symbol: ``` `e2dist`edist`mdist ``` (see [Distance Metrics](##Distance Metrics))
 -   `minPts` is the minimum number of points required in a given neighborhood to define a cluster
 -   `eps` is the epsilon radius, the distance from each point within which points are defined as being in the same cluster
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) along with a projection of the update function (`update`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 
 ```txt
 data       The original data used to fit the model
@@ -379,13 +379,13 @@ inputs     The original input parameters to the fitted model
 clust      The cluster index each data point belongs to. Any outliers in the data will return a value of -1 as their cluster.
 tab        The neighbourhood table defining information about the clusters
 ```
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 
 and returns the predicted clusters of the new data
 
-The `update` function can be used to update the cluster centres such that the model can react to new data. The function takes the following inputs:
+The `update` function can be used to update the cluster centres such that the model can react to new data. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 
@@ -488,19 +488,19 @@ _Fit HC Algorithm_
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `df` is the distance function as a symbol: ``` `e2dist`edist`mdist ``` (see [section](##Distance Metrics))
+-   `df` is the distance function as a symbol: ``` `e2dist`edist`mdist ``` (see [Distance Metrics](##Distance Metrics))
 -   `lf` is the linkage function as a symbol: ``` `single`complete`average`centroid`ward ```
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), along with a projection of the prediction function to use on new data (`predict`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 ```txt
 data       The original data used to fit the model
 inputs     The original input parameters to the fitted model
 dgram      The dendrogram generated during the fitting process
 ```
 
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `cutDict` is a dictionary where The key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
@@ -571,7 +571,7 @@ idx1 idx2 dist      n
 
 ### `.ml.clust.hc.cutDist`
 
-_Cut a dendrogram into clusters based on a threshold distance_
+_Function to generate clusters - cutting the dendrogram based on a threshold distance_
 
 ```txt
 .ml.clust.hc.cutDist[config;dist]
@@ -621,7 +621,7 @@ q)cutDgram`clust
 
 ### `.ml.clust.hc.cutK`
 
-_Cut a dendrogram into k clusters_
+_Function to generate clusters - cutting the dendrogram into k clusters_
 
 ```txt
 .ml.clust.hc.cutK[config;k]
@@ -681,19 +681,19 @@ _Fit HC algorithm to data and convert dendrogram to clusters_
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
--   `df` is the distance function as a symbol: ``` `e2dist`edist`mdist ``` (see [section](##Distance Metrics))
+-   `df` is the distance function as a symbol: ``` `e2dist`edist`mdist ``` (see [Distance Metrics](##Distance Metrics))
 -   `lf` is the linkage function as a symbol: ``` `single`complete`average`centroid`ward ```
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) and the cluster to which each data point belongs (`clust`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 ```txt
 data       The original data used to fit the model
 inputs     The original input parameters to the fitted model
 dgram      The dendrogram generated during the fitting process
 ```
 
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `cutDict` is a dictionary where The key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
@@ -737,7 +737,7 @@ _Fit K-means Algorithm_
 Where
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual data point
--   `df` is the distance function: ``` `e2dist`edist ``` (see [section](##Distance Metrics))
+-   `df` is the distance function: ``` `e2dist`edist ``` (see [Distance Metrics](##Distance Metrics))
 -   `k` is the number of clusters
 -   `config` is a dictionary allowing a user to change the following model parameters (for entirely default values use `(::)`)
 	- `iter` the number of iterations to be completed. Default = `100`
@@ -748,20 +748,20 @@ Where
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) along with a projection of the update function (`update`)
 
-All relevent information needed to fit the model is contained within `modelInfo`. This includes the following information:
+All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
 ```txt
 data       The original data used to fit the model
 df         The distance metric used
 repPts     The calculated k centers 
 clust      The cluster index each data point belongs to.
 ```
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
+The predict functionality is contained within the `predict` attribute. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 
 and returns the predicted clusters of the new data
 
-The `update` function can be used to update the cluster centres such that the model can react to new data. The function takes the following inputs:
+The `update` function can be used to update the cluster centres such that the model can react to new data. This function takes the following inputs:
 
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 

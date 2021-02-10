@@ -34,7 +34,7 @@ The following image shows a graphical representation of such a node followed by 
 ![Basic Node](./imgs/Basic_node.png)
 
 ```q
-// Node taking one input of float type and outputting one dictionary
+// Node taking one input of float type and outputting one float type 
 q)nodeInputs:"f"
 q)nodeOutputs:"f"
 q)nodeFunction:{x wsum x}
