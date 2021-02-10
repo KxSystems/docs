@@ -24,13 +24,13 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-solid-bolt: [Optane tests](architecture/optane-tests.md)
+
     :fontawesome-solid-book-reader: [Monte-Carlo methods](learn/blogs.md#programming-in-q)
 
     :fontawesome-solid-book-reader: [Q by Puzzles](learn/pb/index.md)
 
     :fontawesome-solid-cloud: [GCPM architecture](cloud/gcpm/architecture.md)
-
-    :fontawesome-solid-book-reader: [kdb+中文教程](https://kdbcn.gitee.io/)
 
 </div>
 

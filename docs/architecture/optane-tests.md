@@ -75,7 +75,7 @@ We configured two systems:
 
 We configured a KX Streaming Analytics system operating in a high-availability (HA) cluster, processing and analyzing semiconductor manufacturing data as follows. We ran tests on both configurations for ingestion, processing, and analytics. Tests were run with the same data and durations.
 
-![Environment setup](img/image2.png)
+![Environment setup](img/optane-tests2.png)
 
 
 ### Publishing and ingestion
@@ -105,15 +105,14 @@ We configured a KX Streaming Analytics system operating in a high-availability (
 
 ### Data model and ingestion
 
-The data model workload involved multiple tables representing reference or master data, sensor reading, event and aggregation data.
+The data-model workload involved multiple tables representing reference or master data, sensor reading, event and aggregation data.
 This relational model is used in fulfilling streaming analytics and queries spanning real-time and historical data.
 KX ingests raw data streams, processes and persists data into the following structure.
 For efficient queries and analytics, KX batches and stores data for similar time ranges together, using one or more sensor or streaming data loaders.
-<!-- 
 The tables and fields used in our configuration are illustrated below.
 
-![](img/image3.png)
- -->
+![](img/optane-tests3.png)
+
 
 ## Test results
 
