@@ -10,6 +10,25 @@ keywords: amazon, anaconda, analytics, audit trail, benchmark, bitcoin, blockcha
 _A selection of technical articles of interest to kdb+ developers_
 
 
+## Programming in q
+
+<!-- - [Real-world examples of adverbs](https://kx.com/blog/enhancing-kdbq-toolkit-real-world-examples-adverbs/) -->
+-   [Monte-Carlo methods with kdb+](https://armantee.github.io/sampling-with-kdb-p1/), by Arman Tadjrishi ==new==
+-   [Memory mapping in kdb+](https://kx.com/blog/memory-mapping-in-kdb/), by Adam Bonham
+-   [Logging best practices](https://kx.com/blog/logging-best-practices/), by Jamie McKeown
+-   [Advanced pattern matching and text manipulation in kdb+ with embedPy](https://kx.com/blog/advanced-pattern-matching-and-text-manipulation-in-kdb-with-embedpy/), Jun Bing Neo
+-   Single-page applications and kdb+: [AngularJS](https://kx.com/blog/single-page-applications-and-kdb-angularjs/), [Angular](https://kx.com/blog/single-page-applications-and-kdb-angular/), [React](https://kx.com/blog/single-page-applications-and-kdb-react/), by Stephen Trainor
+-   [Partitioning data in kdb+](https://kx.com/blog/partitioning-data-in-kdb/), by Rian O’Cuinneagain 
+-   [Tables with calculated columns](http://archive.vector.org.uk/art10500650), by Stevan Apter, _Vector_ **25**:1
+-   [Treetable: a case-study in q](http://archive.vector.org.uk/art10500340), by Stevan Apter, _Vector_ **24**:4
+-   [Parsing data in kdb+](https://kx.com/blog/kx-product-insights-parsing-data-in-kdb/), by Rian O’Cuinneagain
+-   [Server-as-a-Function: Providing RESTful JSON APIs in q](https://kx.com/blog/server-as-a-function-providing-restful-json-apis-in-q/), by Rob Moore
+-   [Deferred response](https://kx.com/blog/kdb-q-insights-deferred-response/), by Gopala Bhat
+-   [qSQL vs standard SQL queries](https://kx.com/blog/kdb-qsql-versus-standard-sql-queries/), by Ryan Hamilton
+-   [Scripting with q](https://kx.com/blog/kdb-q-insights-scripting-with-q/), by David Crossey
+-   [Thoughts on tables in kdb+](https://kx.com/blog/tech-talk-thoughts-tables-kdb/), by Paul Kerrigan
+
+
 ## Machine learning
 
 -   [Kdb+ and Python](https://kx.com/blog/kdb-python-embedpy-pyq/)
@@ -29,20 +48,6 @@ _A selection of technical articles of interest to kdb+ developers_
 -   [Transitive comparisons](https://kx.com/blog/kdb-transitive-comparisons/)
 -   [Why the recent kdb+ wins matter](https://kx.com/blog/2018-benchmark-wrap-up-why-the-recent-kdb-wins-matter/)
 -   [Benchmarking kdb+ on Raspberry Pi](https://kx.com/blog/benchmarking-kdb-raspberry-pi/)
-
-
-## Programming in q
-
-<!-- - [Real-world examples of adverbs](https://kx.com/blog/enhancing-kdbq-toolkit-real-world-examples-adverbs/) -->
--   [Monte-Carlo methods with kdb+](https://armantee.github.io/sampling-with-kdb-p1/), by Arman Tadjrishi ==new==
--   [Tables with calculated columns](http://archive.vector.org.uk/art10500650), by Stevan Apter, _Vector_ **25**:1
--   [Treetable: a case-study in q](http://archive.vector.org.uk/art10500340), by Stevan Apter, _Vector_ **24**:4
--   [Parsing data in kdb+](https://kx.com/blog/kx-product-insights-parsing-data-in-kdb/), by Rian O’Cuinneagain
--   [Server-as-a-Function: Providing RESTful JSON APIs in q](https://kx.com/blog/server-as-a-function-providing-restful-json-apis-in-q/), by Rob Moore
--   [Deferred response](https://kx.com/blog/kdb-q-insights-deferred-response/), by Gopala Bhat
--   [qSQL vs standard SQL queries](https://kx.com/blog/kdb-qsql-versus-standard-sql-queries/), by Ryan Hamilton
--   [Scripting with q](https://kx.com/blog/kdb-q-insights-scripting-with-q/), by David Crossey
--   [Thoughts on tables in kdb+](https://kx.com/blog/tech-talk-thoughts-tables-kdb/), by Paul Kerrigan
 
 
 ## Applications and case studies
