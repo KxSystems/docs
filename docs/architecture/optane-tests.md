@@ -299,8 +299,8 @@ By reading data from PMem and writing to NVMe-backed storage, Optane cut data pr
 ### Analytics
 
 -   Performed within 10% of DRAM for queries involving table joins
--   Performed 4× to 12× faster than 24 NVMe storage
--   DRAM performed 3× to 10× faster when performing single-    threaded calculations and aggregations on data
+-   Performed 4× to 12× faster than 24 NVMe storage in RAID configuration
+-   DRAM performed 3× to 10× faster when performing single-threaded calculations and aggregations on data
 
 
 ### Data processing and I/O operations
