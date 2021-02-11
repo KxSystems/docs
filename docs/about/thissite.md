@@ -66,16 +66,17 @@ The repo includes a style guide for contributors.
 We gratefully acknowledge pull requests from
 
 ```txt
-Alexander Belopolsky            James Hanna
-Aleks Bunin                     kylenarocroc
-Angus Wilson                    Sean Keevey
-Andrew in New York              Sean O’Hagan
-Chris Shucksmith                Rian O’Cuinneagain
-Cillian Reilly                  Rikesh
-Conor McCarthy                  Thomas Smyth
-David Z. Han                    Sergey Vidyuk
-Esperanza Lopez Aguilera        Simon Shanks
+Alexander Belopolsky            kylenarocroc
+Aleks Bunin                     Sean Keevey
+Angus Wilson                    Sean O’Hagan
+Andrew in New York              Rian O’Cuinneagain
+Chris Shucksmith                Rikesh
+Cillian Reilly                  Thomas Smyth
+Conor McCarthy                  Sergey Vidyuk
+David Z. Han                    Simon Shanks
+Esperanza Lopez Aguilera        Vincent Bernardoff
 Geo Carncross                   William Da Silva
+James Hanna
 ```
 
 ## :fontawesome-solid-balance-scale: License 
