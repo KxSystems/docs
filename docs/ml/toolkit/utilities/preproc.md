@@ -927,7 +927,7 @@ _Break specified time columns into constituent components_
 Where
 
 -  `tab` is a simple table containing time columns
--  `symCols` is a list of columns as symbols to apply encoding to, if set to `::` all columns with date/time types will be encoded
+-  `timeCols` is a list of columns as symbols to apply encoding to, if set to `::` all columns with date/time types will be encoded
 
 returns a table with the columns with all time or date types broken into labeled versions of their constituent components.
 

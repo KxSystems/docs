@@ -55,7 +55,7 @@ Where
 - `n` is the number of processes open
 - `func` is a string of the function to be passed to the process
 
-has each of the `n` worker processes evaluate `x`.
+has each of the `n` worker processes evaluate `func`.
 
 Example: create the following file as `$QHOME/ml/multip.q` or `%QHOME%\ml\multip.q`.
 

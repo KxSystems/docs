@@ -112,7 +112,7 @@ q)graph.nodes
 nodeId|    function                             inputs          outputs
 ------| ---------------------------------------------------------------
       | :: ::                                   ::              ::
-config| :: ![,`output]@[enlist]@[;`a`b`c!1 2 3] (`symbol$())!"" (,`out..
+config| :: ![,`output]@[enlist]@[;`a`b!1 2]     (`symbol$())!"" (,`out..
 
 q)graph.edges
 destNode destName| sourceNode sourceName valid

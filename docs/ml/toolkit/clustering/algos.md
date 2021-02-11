@@ -198,7 +198,7 @@ q)CUREfit.predict[test;enlist[`dist]!enlist 1]
 
 ### `.ml.clust.cure.cutDist`
 
-_Function to generate clusters - cutting the dendrogram based on a threshold distance_
+_Generate clusters - cutting the dendrogram based on a threshold distance_
 
 ```txt
 .ml.clust.cure.cutDist[config;dist]
@@ -248,7 +248,7 @@ q)cutDgram`clust
 
 ### `.ml.clust.cure.cutK`
 
-_Function to generate clusters - cutting dendrogram into k clusters_
+_Generate clusters - cutting dendrogram into k clusters_
 
 ```txt
 .ml.clust.hc.cutK[config;k]
@@ -571,7 +571,7 @@ idx1 idx2 dist      n
 
 ### `.ml.clust.hc.cutDist`
 
-_Function to generate clusters - cutting the dendrogram based on a threshold distance_
+_Generate clusters - cutting the dendrogram based on a threshold distance_
 
 ```txt
 .ml.clust.hc.cutDist[config;dist]
@@ -579,7 +579,7 @@ _Function to generate clusters - cutting the dendrogram based on a threshold dis
 
 Where
 
--   `config` is the output dictionary produced by the CURE fit function
+-   `config` is the output dictionary produced by the hierarchical clustering fit function
 -   `dist` is the threshold distance applied when cutting the dendrogram into clusters
 
 returns an updated `config` containing a new key ``` `clust ``` indicating the cluster to which each data point belongs.
@@ -621,7 +621,7 @@ q)cutDgram`clust
 
 ### `.ml.clust.hc.cutK`
 
-_Function to generate clusters - cutting the dendrogram into k clusters_
+_Generate clusters - cutting the dendrogram into k clusters_
 
 ```txt
 .ml.clust.hc.cutK[config;k]
@@ -629,7 +629,7 @@ _Function to generate clusters - cutting the dendrogram into k clusters_
 
 Where
 
--   `config` is the output dictionary produced by the CURE fit function
+-   `config` is the output dictionary produced by the hierarchical clustering fit function
 -   `k` is the number of clusters to be produced from cutting the dendrogram
 
 returns an updated `config` containing a new key ``` `clust ``` indicating the cluster to which each data point belongs.
