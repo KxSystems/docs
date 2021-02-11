@@ -16,7 +16,7 @@ Graph and Pipeline is a structural framework for developing q/kdb+ solutions, ba
 
 By defining code using this core idea a user can develop independent sections of code defined by the nodes and connect them together logically to form a full data analysis pipeline. 
 
-Writing code this way allows for:
+Writing code this way means that:
 
 -   Maintenance of a code base is easier due to the individual elements being independent of each other prior to the connection and validation of the graph. 
 -   Once a ‘wire’ version of the graph has been defined by a team, individual nodes can be developed completely independently. This reduces the chance of parallel lines of development causing issues when merging independent sections of code within a large team.
@@ -40,7 +40,7 @@ All code relating to the graph and pipeline section of the Machine Learning Tool
 
 ## Loading
 
-The graph library can be loaded independently of the remaining sections of the ML Toolkit:
+The graph library can be loaded independently of the other sections of the ML Toolkit:
 
 ```q
 q)\l ml/ml.q

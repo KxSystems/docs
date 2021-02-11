@@ -34,12 +34,12 @@ Supervised learning | If the true and predicted labels of the dataset are known,
 Optimum number of clusters | The optimum number of clusters can be found manually in a number of ways using techniques above. If the required number of clusters is not known prior to clustering, the Elbow Method is used to estimate the optimum number of clusters within the dataset using K-means clustering.
 
 
-## `.ml.clust.daviesbouldin`
+## `.ml.clust.daviesBouldin`
 
 _Davies-Bouldin index_
 
 ```txt
-.ml.clust.daviesbouldin[data;clusts]
+.ml.clust.daviesBouldin[data;clusts]
 ```
 
 Where
@@ -53,15 +53,15 @@ returns the Davies-Bouldin index, where a lower value indicates better clusterin
 q)show data:2 10#20?10.
 4.126605 8.429965 6.214154 5.365242 7.470449 6.168275 6.876426 6.123797 9.363..
 4.45644  7.274244 1.301704 2.018829 1.451855 9.819545 7.490215 6.372719 5.856..
-q)show r1:10?3
+q)show clusts1:10?3
 0 1 2 0 1 0 0 1 0 1
-q)show r2:10?3
+q)show clusts2:10?3
 2 2 1 0 2 2 1 2 0 0
 
 q)// Lower values indicate better clustering
-q).ml.clust.daviesbouldin[data;r1]
+q).ml.clust.daviesBouldin[data;clusts1]
 9.014795
-q).ml.clust.daviesbouldin[data;r2]
+q).ml.clust.daviesBouldin[data;clusts2]
 5.890376
 ```
 
@@ -88,15 +88,15 @@ q)show data:2 10#20?10.
 3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
 4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
 
-q)show r1:10?3
+q)show clusts1:10?3
 0 0 1 1 0 0 2 0 1 0
-q)show r2:10?3
+q)show clusts2:10?3
 0 0 1 1 0 2 0 2 1 2
 
 q)// Higher values indicate better clustering
-q).ml.clust.dunn[data;`edist;r1]
+q).ml.clust.dunn[data;`edist;clusts1]
 0.5716933
-q).ml.clust.dunn[data;`e2dist;r2]
+q).ml.clust.dunn[data;`e2dist;clusts2]
 0.03341283
 ```
 
@@ -185,19 +185,19 @@ q)show data:2 10#20?10.
 3.927524 5.170911 5.159796  4.066642 1.780839 3.017723 7.85033  5.347096..
 4.931835 5.785203 0.8388858 1.959907 3.75638  6.137452 5.294808 6.916099..
 
-q)show r1:10?3
+q)show clusts1:10?3
 0 0 1 1 0 0 2 0 1 0
-q)show r2:10?3
+q)show clusts2:10?3
 0 0 1 1 0 2 0 2 1 2
 
 q)// Return the averaged coefficients across all points
-q).ml.clust.silhouette[data;`edist;r1;1b]
+q).ml.clust.silhouette[data;`edist;clusts1;1b]
 0.3698386
-q).ml.clust.silhouette[data;`e2dist;r2;1b]
+q).ml.clust.silhouette[data;`e2dist;clusts2;1b]
 0.2409856
 
 q)// Return the individual coefficients for each point
-q).ml.clust.silhouette[data;`e2dist;r2;0b]
+q).ml.clust.silhouette[data;`e2dist;clusts2;0b]
 -0.4862092 -0.6652588 0.8131323 0.595948 -0.2540023 0.5901292 -0.2027718 0.61..
 ```
 

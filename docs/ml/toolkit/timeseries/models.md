@@ -75,11 +75,11 @@ Where:
 
 returns a dictionary containing all information collected during the fitting of a model (`modelInfo`), along with a prediction function which forecasts future values of the timeseries (`predict`)
 
-The information collected during the fitting of the model are contained within `modelInfo` include:
+The information collected during the fitting of the model is contained within `modelInfo` and includes:
 
 ```txt
 coefficients  model coefficients for future predictions
-trendCoeff    trend coefficients
+trendCoeff    trend coefficient
 exogCoeff     exog coefficients
 pCoeff        p value coefficients
 lagVals       lagged values from the training set
@@ -160,11 +160,11 @@ Where
 
 returns a dictionary containing all information collected during the fitting of a model (`modelInfo`), along with a prediction function which forecasts future values of the timeseries (`predict`)
 
-The information collected during the fitting of the model are contained within `modelInfo` include:
+The information collected during the fitting of the model is contained within `modelInfo` and includes:
 
 ```txt
 params        model coefficients for future predictions
-trendCoeff    trend coefficients
+trendCoeff    trend coefficient
 exogCoeff     exog coefficients
 pCoeff        lag value coefficients
 residualVals  lagged residual errors from the input training set
@@ -240,7 +240,7 @@ The information collected during the fitting of the model are contained within `
 
 ```txt
 coefficients    model coefficients for future predictions
-trendCoeff      trend coefficients
+trendCoeff      trend coefficient
 exogCoeff       exog coefficients
 pCoeff          p value coefficients
 qCoeff          q coefficients
@@ -398,7 +398,7 @@ The information collected during the fitting of the model are contained within `
 
 ```txt
 coefficients    model coefficients for future predictions
-trendCoeff      trend coefficients
+trendCoeff      trend coefficient
 exogCoeff       exog coefficients
 pCoeff          lag value coefficients
 qCoeff          error coefficients
@@ -497,7 +497,7 @@ The information collected during the fitting of the model are contained within `
 
 ```txt
 coefficients     model coefficients for future predictions
-trendCoeff       trend coefficients
+trendCoeff       trend coefficient
 exogCoeff        exog coefficients
 pCoeff           lag value coefficients
 qCoeff           error coefficients

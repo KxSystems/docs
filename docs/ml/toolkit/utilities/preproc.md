@@ -10,7 +10,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 <div markdown="1" class="typewriter">
 .ml   **Data preprocessing**
   [applyLabelEncode](#mlapplylabelencode)  Transform integer data to label encode representation
-  [dropConstant](#mldropconstant)      Columns with zero variance removed
+  [dropConstant](#mldropconstant)      Constant columns removed
   [fillTab](#mlfilltab)           Tailored filling of null values for a simple matrix
   [freqEncode](#mlfreqencode)        Numerically encode frequency of category occurance
   [infrePlace](#mlinfreplace)        Replace +/- infinities with max/min of column
@@ -30,7 +30,9 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
   oneHot            One-hot encoding of table or array
 	[oneHot.fit](#mlonehotfit)  Fit one-hot encoding model to categorical data
 	[oneHot.fitPredict](#mlonehotfitpredict) Encode categorical features using one-hot encoding
+	
   polyTab           Polynomial features of degree n from a table
+	[polyTab](#mlpolytab) Polynomial feature generation  
 
   stdScaler         Standard scaler transform-based representation of a table
 	[stdScaler.fit](#mlstdscalerfit)  Fit standard scaler model
@@ -88,7 +90,7 @@ q).ml.applyLabelEncode[newList;schema`mapping]
 
 ## `.ml.dropConstant`
 
-_Remove columns with zero variance_
+_Remove constant columns_
 
 ```txt
 .ml.dropConstant[data]
@@ -97,7 +99,7 @@ Where
 
 -  `data` is a numerical table/dict
 
-returns `data` without columns of zero variance.
+returns `data` without constant columns.
 
 ```q
 q)5#tab:([]1000?100f;1000#10;1000#0N)
@@ -259,7 +261,7 @@ x1        x_freq x2_freq
 
 ## `.ml.infReplace`
 
-_Replace +/- infinities with data min/max_
+_Replace +/- infinities with data max/min_
 
 ```txt
 .ml.infReplace[data]
@@ -649,7 +651,7 @@ The predict functionality is contained within the `predict` attribute. The funct
 -  `tab` is a simple table
 -  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
 
-and returns the one hot encoded version of the data based on the values of the fitted model. Any values not contained within the schema mapping return -1
+and returns the one hot encoded version of the data based on the values of the fitted model. Any values not contained within the schema mapping return a zero vector in the ohe feature space. 
 
 ```q
 q)5#tab:([]5?`a`b`c;5?2;5?10f)
@@ -925,7 +927,7 @@ _Break specified time columns into constituent components_
 Where
 
 -  `tab` is a simple table containing time columns
--  `symCols` is a list of columns as symbols to apply encoding to, if set to `::` all columns with date/time types will be encoded
+-  `timeCols` is a list of columns as symbols to apply encoding to, if set to `::` all columns with date/time types will be encoded
 
 returns a table with the columns with all time or date types broken into labeled versions of their constituent components.
 
