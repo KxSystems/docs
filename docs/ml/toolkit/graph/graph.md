@@ -34,7 +34,7 @@ The following image shows a graphical representation of such a node followed by 
 ![Basic Node](./imgs/Basic_node.png)
 
 ```q
-// Node taking one input of float type and outputting one dictionary
+// Node taking one input of float type and outputting one float type 
 q)nodeInputs:"f"
 q)nodeOutputs:"f"
 q)nodeFunction:{x wsum x}
@@ -112,7 +112,7 @@ q)graph.nodes
 nodeId|    function                             inputs          outputs
 ------| ---------------------------------------------------------------
       | :: ::                                   ::              ::
-config| :: ![,`output]@[enlist]@[;`a`b`c!1 2 3] (`symbol$())!"" (,`out..
+config| :: ![,`output]@[enlist]@[;`a`b!1 2]     (`symbol$())!"" (,`out..
 
 q)graph.edges
 destNode destName| sourceNode sourceName valid

@@ -29,7 +29,7 @@ The `.ml.optimize` namespace contains functions that relate to the application o
 
 ## Broyden-Fletcher-Goldfarb-Shanno algorithm
 
-In numerical optimization, the Broyden-Fletcher-Goldfarb-Shanno(BFGS) algorithm is a quasi-Newton iterative method for solving unconstrained non-linear optimization problems. This is a class of hill-climbing optimization techniques that seek a stationary, preferably twice-differentiable, solution to the objective function. 
+In numerical optimization, the Broyden-Fletcher-Goldfarb-Shanno (BFGS) algorithm is a quasi-Newton iterative method for solving unconstrained non-linear optimization problems. This is a class of hill-climbing optimization techniques that seek a stationary, preferably twice-differentiable, solution to the objective function. 
 
 :fontawesome-brands-wikipedia-w:
 [Rationale behind the algorithm](https://en.wikipedia.org/wiki/Broyden-Fletcher-Goldfarb-Shanno_algorithm#Rationale "Wikipedia")

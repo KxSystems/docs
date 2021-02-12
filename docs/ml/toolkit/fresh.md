@@ -293,7 +293,7 @@ q)show sigP:.ml.fresh.significantFeatures[value feats;target;.ml.fresh.percentil
 
 // Check the count of each method to show differences in outputs
 q)count each (sigBH;sigK;sigP)
-40 20 22
+30 20 22
 ```
 
 !!! warning "`.ml.fresh.significantfeatures` deprecated"

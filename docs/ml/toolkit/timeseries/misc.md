@@ -141,7 +141,7 @@ x                             x1        x2 avg_7_x1  avg_7_x2 avg_14_x1 avg_1..
 
 ## `.ml.ts.stationarity`
 
-_Summary of the stationarity of a set of timeseries data using an augmented dickey-filler test_
+_Summary of the stationarity of a set of timeseries data using an augmented Dickey-Fuller test_
 
 ```txt
 .ml.ts.stationarity[data]

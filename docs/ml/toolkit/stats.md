@@ -9,12 +9,12 @@ date: February 2021
 .ml.stats   **Statistical functions**
 
 **Descriptive statistics**
-  [describe](#mlstatsdescribe)  Descriptive information about a table
-  [percentile](#mlstatspercentile)    Percentile calculation for an array
+  [describe](#mlstatsdescribe)          Descriptive information about a table
+  [percentile](#mlstatspercentile)        Percentile calculation for an array
 
 **Statistical Estimation methods**
-  [ols.fit](#mlstatsolsfit) Train an ordinary least squares model on data
-  [wls.fit](#mlstatswlsfit)  Train a weighted least squares model on data
+  [ols.fit](#mlstatsolsfit)           Train an ordinary least squares model on data
+  [wls.fit](#mlstatswlsfit)           Train a weighted least squares model on data
 
 </div>
 
@@ -150,7 +150,7 @@ _Percentile calculation for an array_
 Where
 
 -  `array` is a numerical array
--  `perc` is the percentile of interest
+-  `perc` is the percentile of interest between 0-1
 
 returns the value below which `perc` percent of the observations within the array are found.
 
@@ -172,7 +172,7 @@ _Train an ordinary least squares model on data_
 Where 
 
 -  `endog` is the numerical endogenous variable
--  `exog` is the numerical exogenous variable in `n` dimensions 
+-  `exog` are the numerical exogenous variables in `n` dimensions 
 -  `trend` indicates whether a trend is included or not when calculating the parameters
 
 returns the coefficients and statistical values calculated during the fitting process (`modelInfo`) and a projection of the fit function allowing for prediction on new data (`predict`)
@@ -246,7 +246,7 @@ _Train a weighted least squares model on data_
 Where 
 
 -  `endog` is the numerical endogenous variable
--  `exog` is the exogenous variable in `n` dimensions 
+-  `exog` are the exogenous variables in `n` dimensions 
 -  `weights` are the weights to be applied to the endog variable (must be the same length as the endog variable). If `()/(::)` is passed, the model deduces the weights by using the inverse of the residuals calculated from fitting the data on an ordinary OLS model
 -  `trend` indicates whether a trend is included or not when calculating the parameters
 

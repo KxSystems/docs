@@ -293,7 +293,7 @@ _Array of evenly-spaced values_
 Where
 
 -  `start` is the start of the interval (inclusive)
--  `end` is the end of the interval (non-inclusive)
+-  `end` is the end of the interval (inclusive)
 -  `n` indicates how many spaces are to be created 
 
 returns a vector of `n` evenly-spaced values between `start` and `end`.
@@ -405,7 +405,7 @@ q)print pdf
 _Split into training and test sets_
 
 ```txt
-.ml.traintestsplit[data;target;size]
+.ml.trainTestSplit[data;target;size]
 ```
 
 Where
@@ -418,22 +418,22 @@ returns a dictionary containing the data matrix and target values, split into a 
 
 ```q
 q)mat:(30 20)#1000?10f
-q)y:rand each 30#0b
-q).ml.trainTestSplit[mat;y;0.2] / split the data such that 20% is contained in the test set
+q)target:rand each 30#0b
+q).ml.trainTestSplit[mat;target;0.2] / split the data such that 20% is contained in the test set
 xtrain| (2.02852 2.374546 1.083376 2.59378 6.698505 6.675959 4.120228 2.63468..
 ytrain| 110010100101111001110000b
 xtest | (8.379916 8.986609 7.06074 2.067817 5.468488 4.103195 0.1590803 0.259..
 ytest | 000001b
 
 q)tab:([]30?1f;30?`1;30?10)
-q).ml.trainTestSplit[tab;y;0.2]
+q).ml.trainTestSplit[tab;target;0.2]
 xtrain| +`x`x1`x2!(0.1659182 0.5316555 0.9658597 0.6659117 0.4921318 0.580703..
 ytrain| 0.4449418 0.6637015 0.77852 0.8229043 0.5678825 0.9534722 0.2448434 0..
 xtest | +`x`x1`x2!(0.6913239 0.3921862 0.2904501 0.6536423 0.6517715 0.961030..
 ytest | 0.9861457 0.752895 0.2695986 0.122979 0.4412847 0.4952119
 
 q)list:asc 30?1f
-q).ml.trainTestSplit[list;y;0.2]
+q).ml.trainTestSplit[list;target;0.2]
 xtrain| 0.4251052 0.6419072 0.5701215 0.4231011 0.327041 0.1573152 0.3414573 ..
 ytrain| 0.5029018 0.05230331 0.628313 0.5766565 0.6314705 0.3266584 0.9624403..
 xtest | 0.3692275 0.4192985 0.1573064 0.9121564 0.28237 0.07992544

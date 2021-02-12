@@ -487,8 +487,8 @@ _R2-score for regression model validation_
 
 Where
 
--   `pred` are predicted continuous values
--   `true` are true continuous values
+-   `pred` are (continuous) predicted values
+-   `true` are (continuous) true values
 
 returns the R2-score between the `true` and predicted values. Values close to 1 indicate good prediction, while negative values indicate poor predictors of the system behavior.
 
@@ -721,8 +721,6 @@ q).ml.tScore[x;y]
 7.634824
 ```
 
-!!! tip "Above 30 samples a one-sample t-score is not statistically significant."
-
 !!! warning "`.ml.tscore` deprecated"
     The above function was previously defined as `.ml.tscore`.
     It is still callable but will be deprecated after version 3.0.
@@ -732,7 +730,7 @@ q).ml.tScore[x;y]
 _T-test for independent samples with equal variances and equal sample size_
 
 ```txt
-.ml.tScoreEqual[x;y]
+.ml.tScoreEqual[pred;true]
 ```
 
 Where 
