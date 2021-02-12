@@ -6,6 +6,16 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 # :fontawesome-solid-share-alt: Data preparation
 
+<div markdown="1" class="typewriter">
+.nlp   **Data Preperation functions**
+\  Preparing Text
+  [newParser](#nlpnewparser)    Creates a parser
+  [parseURLs](#nlpparseurls)    Parse URLs into dictionaries containing their constituent components
+
+\  Finding part-of-speech tags in a corpus
+  [findPOSRuns](#nlpfindposruns)  Find tokens of specific POS types in a text
+</div>
+
 ## Preparing text
 
 Operations can be pre-run on a corpus, with the results cached to a table, which can be persisted thus allowing for manipulation in q.
@@ -14,12 +24,12 @@ Operations undertaken to parse the dataset:
 
 operation               | effect
 ------------------------|-------------------------------------------------
-Tokenization            | splits the words; e.g. `John’s` becomes `John` as one token, and `‘s` as a second
-Sentence detection      | characters at which a sentence starts and ends
-Part of speech tagger   | parses the sentences into tokens and gives each token a label e.g. `lemma`, `pos`, `tag` etc.
-Lemmatization           | converts to a base form e.g. `ran` (verb) to `run` (verb)
+Tokenization            | Splits the words; e.g. `John’s` becomes `John` as one token, and `‘s` as a second
+Sentence detection      | Characters at which a sentence starts and ends
+Part of speech tagger   | Parses the sentences into tokens and gives each token a label e.g. `lemma`, `pos`, `tag` etc.
+Lemmatization           | Converts to a base form e.g. `ran` (verb) to `run` (verb)
 
-In the below examples, the text of `Moby Dick` was used. This [text](https://github.com/KxSystems/mlnotebooks/blob/master/data/mobydick.txt) can be found in the data folder of the mlnotebooks, along with a [notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/08%20Natural%20Language%20Processing.ipynb) demonstrating how the functions described in this section can be implemented.
+In the below examples, the text of `Moby Dick` was used. This text can be found at :fontawesome-brands-github: [KxSystems/mlnotebooks/data/mobydick.txt](https://github.com/KxSystems/mlnotebooks/data/mobydick.txt), along with a [notebook](https://github.com/KxSystems/mlnotebooks/blob/master/notebooks/08%20Natural%20Language%20Processing.ipynb) demonstrating how the functions described in this section can be implemented.
 
 ```txt
 // Read in data
@@ -43,7 +53,7 @@ _Creates a parser_
 
 Where
 
--   `spacyModel` is a [model or language](https://spacy.io/usage/models) (symbol)
+-   `spacyModel` is a spaCy [model or language](https://spacy.io/usage/models) (symbol)
 -   `fields` is the field/s you want in the output (symbol atom or vector)
 
 returns a function to parse the text.
@@ -75,10 +85,10 @@ Parsing the novel _Moby Dick_:
 
 ```q
 // Creating a parsed table
-fields:`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
-myparser:.nlp.newParser[`en;fields]
-parsedTab:myparser mobyDick
-cols parsedTab
+q)fields:`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
+q)myparser:.nlp.newParser[`en;fields]
+q)parsedTab:myparser mobyDick
+q)cols parsedTab
 `text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
 ```
 
@@ -92,7 +102,7 @@ cols parsedTab
 
 #### `.nlp.parseURLs`
 
-_Parse URLs into dictionaries containing the constituent components_
+_Parse URLs into dictionaries containing their constituent components_
 
 ```txt
 .nlp.parseURLs[url]
@@ -121,7 +131,7 @@ This is a quick way to find all of the nouns, adverbs, etc. in a corpus. There a
 
 #### `.nlp.findPOSRuns`
 
-_Find tokens of specific POS types_
+_Find tokens of specific POS types in a text_
 
 ```txt
 .nlp.findPOSRuns[tagtype;tags;parsedDict]
@@ -135,13 +145,13 @@ Where
 
 returns a two item list containing :
 
-1. The token of POS type indicated within `tag` (symbol vector)
+1. The token in the text of type `tag` (symbol vector)
 2. Indexes of the first occurrence of each token (long vector)
 
 Importing a novel from a plain text file, and finding all the proper nouns in the first chapter of _Moby Dick_:
 
 ```q
-fields:`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
+q)fields:`text`tokens`lemmas`pennPOS`isStop`sentChars`starts`sentIndices`keywords
 q)myparser:.nlp.newParser[`en;fields]
 q)parsedTab:myparser mobyDick
 q)parsedDict:parsedTab 0;
@@ -155,6 +165,4 @@ q).nlp.findPOSRuns[`pennPOS;`NNP`NNPS;parsedDict]
 ```
 
 !!! Note
-	The `parsedDict` input value must contain the following attributes: ``` `tokens`pennPOS/`uniPOS ```
-
-	
+	The `parsedDict` input value must contain the following attributes: ``` `tokens`pennPOS/`uniPOS ```	

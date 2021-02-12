@@ -8,9 +8,9 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 <div markdown="1" class="typewriter">
 .nlp.email   **Emails**
-  getGraph     Get the graph of who emailed who, including the number of times they emailed
-  loadEmails   Convert an mbox file to a table of parsed metadata
-  parseMail    Extract meta information from an email
+  [getGraph](#nlpemailgetgraph)    Get the graph of who emailed who
+  [loadEmails](#nlpemailloademails)  Convert an mbox file to a table of parsed metadata
+  [parseMail](#nlpemailparsemail)   Extract meta information from an email
 </div>
 
 One of the most important document formats for analysis in natural-language processing is emails, particularly for surveillance, and spam detection. The following functions form a basis for the handling of email-format data.

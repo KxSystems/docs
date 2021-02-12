@@ -5,6 +5,18 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 ---
 
 # :fontawesome-solid-share-alt: Feature Vectors
+<div markdown="1" class="typewriter">
+.nlp   **Feature Vector functions**
+\  Calculating feature vectors for documents
+  [keywordsContinuous](#nlpkeywordscontinuous)  Calculate relevance scores for tokens in a text
+  [TFIDF](#nlptfidf)               TF-IDF scores for terms in each document of a corpus
+
+\  Calculating feature vectors for words
+  [biGram](#nlpbigram)            Determine the probability of a word appearing next in a sequence
+  [extractPhrases](#nlpextractphrases)    Find tokens that contain the term where each consecutive word has an above-average co-occurrence
+  [findRelatedTerms](#nlpfindrelatedterms)  Find related terms and their significance to a word
+  [nGram](#nlpngram)             Determine the probability of n tokens appearing together
+</div>
 
 ## Feature vectors
 
@@ -21,36 +33,6 @@ The values associated with each term in a feature vector are how significant tha
 Sorting the terms in a feature vector by their significance, you get the keywords that distinguish a document most from the corpus, forming a terse summary of the document. This shows the most significant terms in the feature vector for one of the chapters in Moby Dick is `whale`.
 
 TF-IDF is an algorithm that weighs a term’s frequency (TF) and its inverse document frequency (IDF). Each word or term has its respective TF and IDF score. The product of the TF and IDF scores of a term is called the TF-IDF weight of that term.
-
-
-#### `.nlp.TFIDF`
-
-_TF-IDF scores for terms in each document of a corpus_
-
-```txt
-.nlp.TFIDF[parsedTab]
-```
-
-Where 
-
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
-
-returns for each document, a dictionary with the tokens as keys, and relevance as values.
-
-Extract a specific document and find the most significiant words in that document:
-
-```q
-q)5#desc .nlp.TFIDF[parsedTab]100
-whales | 0.02578393
-straits| 0.02454199
-herd   | 0.01933972
-java   | 0.01729666
-sunda  | 0.01675828
-```
-
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `tokens`isStop ```
-
 
 #### `.nlp.keywordsContinuous`
 
@@ -83,79 +65,39 @@ For an input which is conceptually a single document, such as a book, this will 
 	The `parsedTab` input must contain the following attributes: ``` `tokens`isStop ```
 
 
+
+#### `.nlp.TFIDF`
+
+_TF-IDF scores for terms in each document of a corpus_
+
+```txt
+.nlp.TFIDF[parsedTab]
+```
+
+Where 
+
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+
+returns for each document, a dictionary with the tokens as keys, and relevance as values.
+
+Extract a specific document and find the most significiant words in that document:
+
+```q
+q)5#desc .nlp.TFIDF[parsedTab]100
+whales | 0.02578393
+straits| 0.02454199
+herd   | 0.01933972
+java   | 0.01729666
+sunda  | 0.01675828
+```
+
+!!! Note
+	The `parsedTab` input must contain the following attributes: ``` `tokens`isStop ```
+
+
 ### Calculating feature vectors for words
 
 The feature vector for a word can be calculated as a collection of how well other words predict the given keyword. The weight given to these words is a function of how much higher the actual co-occurrence rate is from the expected co-occurrence rate the terms would have if they were randomly distributed.
-
-
-
-#### `.nlp.findRelatedTerms`
-
-_Feature vector for a term_
-
-```txt
-.nlp.findRelatedTerms[parsedTab;term]
-```
-
-Where
-
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
--  `term` is a symbol which is the token for which to find related terms
-
-returns a dictionary of the related tokens and their relevances.
-
-```q
-q).nlp.findRelatedTerms[parsedTab;`captain]
-peleg   | 1.665086
-bildad  | 1.336501
-ahab    | 1.236744
-ship    | 1.154238
-cabin   | 0.9816231
-```
-
-Phrases can be found by looking for runs of words with an above-average significance to the query term.
-
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `tokens`isStop`sentIndices ```
-
-
-#### `.nlp.extractPhrases`
-
-_Runs of tokens that contain the term where each consecutive word has an above-average co-occurrence with the term_
-
-```txt
-.nlp.extractPhrases[parsedTab;term]
-```
-
-Where
-
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
--  `term` is the term as a symbol to extract phrases around
-
-returns a dictionary with phrases as the keys and their relevance as the values.
-
-Search for the phrases that contain `captain` and see which phrase has the largest occurrence; we find `captain ahab` occurs most often in the book: 50 times.
-
-```q
-q).nlp.extractPhrases[parsedTab;`captain]
-`captain`ahab      | 50
-`captain`peleg     | 25
-`captain`bildad    | 10
-`stranger`captain  | 6
-`captain`sleet     | 5
-`sea`captain       | 3
-`captain`pollard   | 3
-`captain`mayhew    | 3
-`whaling`captain   | 2
-`captain`ahab`stood| 2
-`captain`stood     | 2
-`captain`d'wolf    | 2
-`way`captain       | 2
-```
-
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `tokens ```
-
 
 #### `.nlp.biGram`
 
@@ -188,6 +130,69 @@ purse       particular | 0.1428571
 
 !!! Note
 	The `parsedTab` input must contain the following attributes: ``` `tokens`isStop ```
+
+
+#### `.nlp.extractPhrases`
+
+_Find tokens that contain the term where each consecutive word has an above-average co-occurrence with the term_
+
+```txt
+.nlp.extractPhrases[parsedTab;term]
+```
+
+Where
+
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+-  `term` is the term as a symbol to extract phrases around
+
+returns a dictionary with phrases as the keys and their relevance as the values.
+
+Search for the phrases that contain `captain` and see which phrase has the largest occurrence; we find `captain ahab` occurs most often in the book: 50 times.
+
+```q
+q).nlp.extractPhrases[parsedTab;`captain]
+`captain`ahab      | 50
+`captain`peleg     | 25
+`captain`bildad    | 10
+`stranger`captain  | 6
+`captain`sleet     | 5
+`sea`captain       | 3
+...
+```
+
+!!! Note
+	The `parsedTab` input must contain the following attributes: ``` `tokens ```
+
+
+#### `.nlp.findRelatedTerms`
+
+_Find related terms and their significance to a word_
+
+```txt
+.nlp.findRelatedTerms[parsedTab;term]
+```
+
+Where
+
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+-  `term` is a symbol which is the token for which to find related terms
+
+returns a dictionary of the related tokens and their relevances.
+
+```q
+q).nlp.findRelatedTerms[parsedTab;`captain]
+peleg   | 1.665086
+bildad  | 1.336501
+ahab    | 1.236744
+ship    | 1.154238
+cabin   | 0.9816231
+```
+
+Phrases can be found by looking for runs of words with an above-average significance to the query term.
+
+!!! Note
+	The `parsedTab` input must contain the following attributes: ``` `tokens`isStop`sentIndices ```
+
 
 #### `.nlp.nGram`
 

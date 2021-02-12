@@ -6,13 +6,24 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 # :fontawesome-solid-share-alt: Text comparison
 
+<div markdown="1" class="typewriter">
+.nlp   **Comparison functions**
+  [cosineSimilarity](#nlpcosinesimilarity)     Calculates the cosine similarity of two vectors
+  [compareCorpora](#nlpcomparecorpora)       Calculates the affinity between terms in two corpus'
+  [compareDocs](#nlpcomparedocs)          Cosine similarity of two documents
+  [compareDocToCorpus](#nlpcomparedoctocorpus)   Cosine similarity between a document and other documents
+  [jaroWinkler](#nlpjarowinkler)          Calculate the Jaro-Winkler distance of two strings
+  [compareDocToCentroid](#nlpcompareDocToCentroid) Cosine similarity of a document and a centroid
+  [explainSimilarity](#nlpexplainSimilarity)    Calculate how much each term contributes to the cosine similarity
+</div>
+
 Following the application of [data-processing procedures](preproc.md), it is possible to compare feature vectors, corpora and documents.
 
 In the below examples, the `parsedTab` variable is the output from the `.nlp.newParser` [example](#preproc/nlpnewparser) defined in the data-preprocessing section.  
 
 ## Comparing feature vectors  
 
-By extracting the keywords in a corpus and calculating their associated significance scores, we are able to treat pieces of text as feature vectors to further analyze the content. Feature vectors in NLP are explained [here](featVector.md)
+By extracting the keywords in a corpus and calculating their associated significance scores, we are able to treat pieces of text as feature vectors to further analyze the content. Feature vectors in NLP are explained in more detail [here](featVector.md)
 
 A vector can be thought of either as
 
@@ -33,12 +44,24 @@ _Calculates the cosine similarity of two vectors_
 
 Where 
 
-- `keywords1` is a dictionary of keywords and their significance scores in the corpus
-- `keywords2` is a dictionary of keywords and their significance scores in the corpus
+- `keywords1` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
+- `keywords2` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 
 ```q
-q).nlp.compareDocs[first parsedTab`keywords;last parsedTab`keywords]
-0.03635309
+q)show 5#keywords1:first parsedTab`keywords
+chapter | 0.001145475
+loomings| 0.006885035
+ishmael | 0.00849496
+years   | 0.002474785
+ago     | 0.006219469
+q)show 5#keywords2:last parsedTab`keywords
+chapter | 0.0125
+whaling | 0.02481605
+ribs    | 0.04515925
+trucks  | 0.05780426
+occasion| 0.04635063
+q).nlp.cosineSimilarity[keywords1;keywords2]
+98.17588
 ```
 
 ## Comparing corpora
@@ -68,7 +91,6 @@ Below we can compare the chapters in the novel that contain the term "whale" wit
 // Seperate text containing the term "whale"
 q)whaleText:parsedTab i:where (parsedTab[`text] like "*whale*")
 q)remaining:parsedTab til[count parsedTab]except i
-
 q)show compare:.nlp.compareCorpora[whaleText;remaining]
 `whale`whales`sperm`fish`boat`white`boats`great`oil`far`..
 `night`queequeg`bed`man`aye`sleeping`ahab`morning`sat`th..
@@ -103,13 +125,25 @@ _Cosine similarity of two documents_
 
 Where 
 
-- `keywords1` is a dictionary of keywords and their significance scores in the corpus
-- `keywords2` is a dictionary of keywords and their significance scores in the corpus
+- `keywords1` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
+- `keywords2` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 
 returns the cosine similarity of two documents.
 
 ```q
-q).nlp.compareDocs[first parsedTab`keywords;last parsedTab`keywords]
+q)show 5#keywords1:first parsedTab`keywords
+chapter | 0.001145475
+loomings| 0.006885035
+ishmael | 0.00849496
+years   | 0.002474785
+ago     | 0.006219469
+q)show 5#keywords2:last parsedTab`keywords
+chapter | 0.0125
+whaling | 0.02481605
+ribs    | 0.04515925
+trucks  | 0.05780426
+occasion| 0.04635063
+q).nlp.compareDocs[keywords1;keywords2]
 0.0362958
 ```
 
@@ -118,7 +152,7 @@ q).nlp.compareDocs[first parsedTab`keywords;last parsedTab`keywords]
 
 ### `.nlp.compareDocToCorpus`
 
-_Cosine similarity between a document and other documents in the corpus_
+_Cosine similarity between a document and other documents in a corpus_
 
 ```txt
 .nlp.compareDocToCorpus[keywords;idx]
@@ -126,7 +160,7 @@ _Cosine similarity between a document and other documents in the corpus_
 
 Where
 
-- `keywords` is a list of dictionaries containing keywords and their significance scores in the corpus
+- `keywords` is a list of dictionaries containing keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 - `idx` is the index of the `keywords` to compare with the rest of the corpus' keywords
 
 returns as a float the document’s significance to the rest of the corpus.
@@ -141,7 +175,7 @@ q).nlp.compareDocToCorpus[parsedTab`keywords;0]
 
 ### `.nlp.jaroWinkler`
 
-_Calculate the Jaro-Winkler distance of two sctrinfs, scored between 0 and 1_
+_Calculate the Jaro-Winkler distance of two strings, scored between 0 and 1_
 
 Syntax:`.nlp.jaroWinkler[str1;str2]`
 
@@ -173,7 +207,7 @@ _Cosine similarity of a document and a centroid_
 Where
 
 -  `centroid` is the sum of all the keywords significance scores as a dictionary
--  `keywords` is a dictionary of keywords and their significance scores in the corpus
+-  `keywords` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 
 returns the cosine similarity of the two documents as a float.
 
@@ -208,8 +242,8 @@ _Calculate how much each term contributes to the cosine similarity_
 
 Where 
 
--  `keywords1` is a  dictionary of keywords and their significance scores
--  `keywords2` is a  dictionary of keywords and their significance scores
+- `keywords1` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
+- `keywords2` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 
 returns a dictionary of how much of the similarity score each token is responsible for.
 

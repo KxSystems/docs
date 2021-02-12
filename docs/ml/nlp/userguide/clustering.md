@@ -6,6 +6,31 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 # :fontawesome-solid-share-alt: Clustering 
 
+<div markdown="1" class="typewriter">
+.nlp.cluster   **Clustering functions**
+\  Markox Cluster algorithm
+  [MCL](#nlpclustermcl)  Cluster a subcorpus using graph clustering
+
+\  Summarizing Cluster algorithm
+  [summarize](#nlpclustersummarize)  Uses centoid values in order to cluster similar documents together
+
+\  K-means clustering
+  [kmeans](#nlpclusterkmeans)  K-means clustering for documents
+
+\  Bisecting K-means
+  [bisectingKMeans](#nlpclusterbisectingkmeans)  Uses K-means repeatedly to split the most cohesive clusters into two clusters 
+
+\  Radix algorithm 
+  [fastRadix](#nlpclusterfastradix)  Uses the Radix algorithm and bins by the most significant term
+  [radix](#nlpclusterradix)      Uses the Radix algorithm and bins are taken from the top 3 terms of each document
+
+\  Grouping documents to centroids
+  [groupByCentroids](#nlpclustergroupbycentroids)  Documents matched to their nearest centroid
+
+\  Cohesion
+  [MSE](#nlpclustermse)  Calculate the cohesiveness as measured by the mean sum of squares
+</div>
+
 Following the application of [data-processing procedures](preproc.md), it is possible to apply clustering methods to text.
 
 The NLP library contains a variety of clustering algorithms, with different parameters and performance characteristics. Some of these are very fast on large data sets, though they look only at the most salient features of each document, and will create many small clusters. Others, such as bisecting k-means, look at all features present in the document, and allow you to specify the number of clusters. Other parameters can include a threshold for the minimum similarity to consider, or how many iterations the algorithm should take to refine the clusters. Some clustering algorithms are randomized, and will produce different clusters every time they are run. This can be very useful, as a data set will have many possible, equally valid, clusterings. Some algorithms will put every document in a cluster, whereas others will increase cluster cohesion by omitting outliers.
@@ -238,7 +263,7 @@ returns the documents’ indexes, grouped into clusters.
 Matches the first centroid of the clusters with the rest of the corpus:
 
 ```q
-show centroids:parsedTab[til 3]`keywords
+q)show centroids:parsedTab[til 3]`keywords
 `chapter`loomings`ishmael`years`ago`mind`long`precise..
 `chapter`carpet`bag`stuffed`shirt`old`tucked`arm`star..
 `chapter`spouter`inn`entering`gable`ended`found`wide`..
@@ -261,11 +286,11 @@ q).nlp.cluster.groupByCentroids[centroids;3_parsedTab`keywords]
 
 ### Cohesion
 
-In clustering, cohesion measures how close the objects in the cluster are to each other. A higher cohesion score indicates that the documents in the corpus share similar keywords.
+In clustering, cohesion measures how close objects in a cluster are to each other. A higher cohesion score indicates that the documents in the corpus share similar keywords.
 
 #### `.nlp.cluster.MSE`
 
-_Use the top 50 keywords of each document to calculate the cohesiveness as measured by the mean sum of sqaures_
+_Uses the top 50 keywords of each document to calculate the cohesiveness as measured by the mean sum of squares_
 
 ```txt
 .nlp.cluster.MSE[keywords]
@@ -273,7 +298,7 @@ _Use the top 50 keywords of each document to calculate the cohesiveness as measu
 
 Where
 
-- `keywords` is a dictionary of keywords and their significance scores in the corpus
+- `keywords` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 
 returns the cohesion of the cluster
 
