@@ -7,7 +7,13 @@ date: February 202
 # Word wheels
 
 
-<!-- ![Carol singers](../../img/alamy/CN6580.jpg) -->
+<table>
+  <tr><td>N</td><td>D</td><td>E</td></tr>
+  <tr><td>O</td><td><b>K</b></td><td>G</td></tr>
+  <tr><td>E</td><td>L</td><td>W</td></tr>
+</table>
+
+Find all the words containing K that can be composed from the letters in the grid. Use letters no more times than they appear in the grid.
 
 ??? summary "Multiple levels of iteration and nested indexes"
 
@@ -25,45 +31,29 @@ date: February 202
     :fontawesome-solid-check-circle:
     No loops, no counters, no control structures.
 
-!!! question "Write a program to solve the word-wheel puzzle"
+???+ question "Write a program to solve the word-wheel puzzle"
 
-:fontawesome-solid-globe:
-from [Rosetta Code](http://rosettacode.org/wiki/Word_wheel) 
+    Words must contain at least three letters and appear in the [National Puzzlers’ League dictionary](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt).
 
-Example:
+    Write programs to
 
-<table>
-  <tr><td>N</td><td>D</td><td>E</td></tr>
-  <tr><td>O</td><td><b>K</b></td><td>G</td></tr>
-  <tr><td>E</td><td>L</td><td>W</td></tr>
-</table>
+    1. Solve a grid: find all the words that can be composed from it that contain its middle letter
+    2.  Find the grids with the longest solutions that include a 9-letter word
 
-Find all the words containing K that can be composed from the letters in the grid. Letters may be used only as many times as they appear in the grid.
-
-Words must contain at least three letters and appear in 
-
-:fontawesome-solid-download:
-[The National Puzzlers’ League dictionary](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt)
-
-The problem asks for two programs, to:
-
-1. Solve a grid: find all the words that can be composed from it that contain its middle letter
-2.  Find the grids with the longest solutions that include a 9-letter word
+    :fontawesome-solid-globe:
+    from [Rosetta Code](http://rosettacode.org/wiki/Word_wheel) 
 
 
 ## Get a vocabulary
 
 !!! info "Dictionaries and vocabularies"
 
-    To avoid confusion between _dictionary_ as a q data structure, and as a list of words, we refer to the latter as a _vocabulary_.
+    To avoid confusion between _dictionary_ as a q data structure, and as a list of words, we refer here to the latter as a _vocabulary_.
 
 Reading the vocabulary is straightforward enough, but we discover words we do not want.
 
 ```q
-q)show vocab:system"curl http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  201k  100  201k    0     0   133k      0  0:00:01  0:00:01 --:--:--  133k
+q)show vocab:"\n"vs .Q.hg "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"
 "10th"
 "1st"
 "2nd"
@@ -95,7 +85,7 @@ We want only words with 3-9 letters composed of the letters a-z.
 !!! note "Sometimes we display lists of strings as symbols just to save space"
 
 ```q
-q).Q.A in raze dict           / any upper-case letters here?
+q).Q.A in raze vocab          / any upper-case letters here?
 00000000000000000000000000b
 q)ce:count each
 q)`$v39:{x where(ce x)within 3 9}{x where all each x in .Q.a}vocab
@@ -105,7 +95,7 @@ q)count v39
 20664
 ```
 
-List `v39` are all the words we might find from a word wheel. 
+List `v39` is all the words we might find from a word wheel. 
 
 
 ## Match on the mid letter
@@ -194,8 +184,8 @@ Putting that all together:
 
 ```q
 ce:count each
-lc:count each group@
-vocab:system"curl http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"
+lc:ce group@
+vocab:"\n"vs .Q.hg "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"
 v39:{x where(ce x)within 3 9}{x where all each x in .Q.a}vocab
 
 solve:{[g;v]
