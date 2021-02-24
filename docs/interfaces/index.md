@@ -31,6 +31,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 -   free for all use cases, including 64-bit and commercial use
 
 <table class="kx-compact" markdown="1">
+<tr markdown="1"><td markdown="1">Arrow</td><td markdown="1">[Using Apache Arrow/Parquet data with kdb+](arrow/index.md)</td></tr>
 <tr markdown="1"><td markdown="1">FFI</td><td markdown="1">[Using foreign functions with kdb+](ffi.md)</td></tr>
 <tr markdown="1"><td markdown="1">HDF5</td><td markdown="1">[Handling HDF5 data with kdb+](hdf5/index.md)</td></tr>
 <tr markdown="1"><td markdown="1">Java</td><td markdown="1"> [Java client for kdb+](java-client-for-q.md)</td>
