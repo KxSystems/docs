@@ -36,7 +36,7 @@ The functions outlined below can be modified to allow a user to monitor events o
 </div>
 
 :fontawesome-brands-github: 
-[Example invocations of these event handlers](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/exporter.q)
+[Example invocations of these event handlers](https://github.com/KxSystems/prometheus-kdb-exporter/blob/master/examples/kdb_user_example.q)
 
 Once the relevant event handlers have been defined to update the metric values, the library can by initialized with a call to [`.prom.init`](reference.md#initialize-library)
 

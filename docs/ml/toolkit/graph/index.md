@@ -35,7 +35,7 @@ Find example notebooks at
 All code relating to the graph and pipeline section of the Machine Learning Toolkit is at
 <br>
 :fontawesome-brands-github:
-[KxSystems/ml/graph/](https://github.com/kxsystems/ml/graph).
+[KxSystems/ml/graph/](https://github.com/KxSystems/ml/tree/master/graph).
 
 
 ## Loading
