@@ -74,7 +74,7 @@ q).ml.accuracy[10 2#20?10;10 2#20?10] / support for matrices of predictions and 
 _Statistical information about classification results_
 
 ```txt
-.ml.classreport[pred;true]
+.ml.classReport[pred;true]
 ```
 
 Where
@@ -745,7 +745,7 @@ q)y:20+(-.5+avg each 0N 20#1000?1f)*sqrt 20*12 / ~N(20,1)
 q)(avg;dev)@\:/:(x;y) / check dist
 9.87473  1.010691
 19.84484 0.9437789
-q).ml.tEcoreEqual[x;y]
+q).ml.tScoreEqual[x;y]
 50.46957
 ```
 
