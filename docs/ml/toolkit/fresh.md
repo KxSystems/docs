@@ -85,7 +85,7 @@ lastMax[data]                                 | Position of the last occurrence 
 lastMin[data]                                 | Position of the last occurrence of the minimum value in the series relative to the series length
 linTrend[data]                                | Slope, intercept and r-value associated with the series
 longStrikeAboveMean[data]                     | Length of the longest subsequence in the series greater than the series mean
-longStrikeLowermean[data]                     | Length of the longest subsequence in the series less than the series mean
+longStrikeBelowMean[data]                     | Length of the longest subsequence in the series less than the series mean
 max[data]                                     | Maximum value of the series
 mean[data]                                    | Mean value of the series
 meanAbsChange[data]                           | Mean over the absolute difference between subsequent series values
@@ -101,7 +101,7 @@ perRecurToAllData[data]                       | Ratio of count of values occurri
 perRecurToAllVal[data]                        | Ratio of count of values occurring more than once to count of data
 quantile[data;quantile]                       | The value of series greater than the `quantile` percent of the ordered series
 rangeCount[data;minVal;maxVal]                | The number of values greater than or equal to `minval` and less than `maxval`
-ratioVeyondRSigma[data;r]                     | Ratio of values more than `r*dev[x]` from the mean
+ratioBeyondRSigma[data;r]                     | Ratio of values more than `r*dev[x]` from the mean
 ratioValNumToSeriesLength[data]               | Ratio of number of unique values to total number of values
 skewness[data]                                | Skew of the series indicating asymmetry within the series
 spktWelch[data;coeff]                         | Cross power spectral density of the series at given `coeff`
