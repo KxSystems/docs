@@ -13,12 +13,12 @@ keywords: pandas manipulation, dataframe, train test split, .
   [arange](#mlarange)             Evenly-spaced values within a range
   [combs](#mlcombs)              n linear combinations of k numbers
   [df2tab](#mldf2tab)             kdb+ table from a pandas dataframe
-  [df2tabTimezone](#mldf2tabTimezone)    Pandas dataframe to kdb+ conversion handling dates/times/timezones
+  [df2tabTimezone](#mldf2tabTimezone)     Pandas dataframe to kdb+ conversion handling dates/times/timezones
   [eye](#mleye)                Identity matrix
   [iMax](#mlimax)               Index of maximum element of a list
   [iMin](#mlimin)               Index of minimum element of a list
   [linearSpace](#mllinearspace)        List of evenly-spaced values
-  [range](#mlrange)                Range of values
+  [range](#mlrange)              Range of values
   [shape](#mlshape)              Shape of a matrix
   [tab2df](#mltab2df)             Pandas dataframe from a q table
   [trainTestSplit](#mltraintestsplit)     Split into training and test sets

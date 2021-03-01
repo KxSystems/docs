@@ -21,7 +21,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [logLoss](#mllogloss)       Logarithmic loss
   [mae](#mlmae)           Mean absolute error
   [mape](#mlmape)          Mean absolute percentage error
-  [matthewCorr](#mlmatcorr)       Matthews correlation coefficient
+  [matthewCorr](#mlmatcorr)   Matthews correlation coefficient
   [mse](#mlmse)           Mean square error
   [percentile](#mlpercentile)    Percentile calculation for an array
   [precision](#mlprecision)     Precision of a binary classifier
@@ -32,7 +32,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [rocAucScore](#mlrocaucscore)   Area under an ROC curve
   [sensitivity](#mlsensitivity)   Sensitivity of a binary classifier
   [smape](#mlsmape)         Symmetric mean absolute error
-  [specificity](#mlspecificity)    Specificity of a binary classifier
+  [specificity](#mlspecificity)   Specificity of a binary classifier
   [sse](#mlsse)           Sum squared error
   [tScore](#mltscore)        One-sample t-test score
   [tScoreEqual](#mltscoreeq)   T-test for independent samples with unequal variances
@@ -41,7 +41,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
 :fontawesome-brands-github:
 [KxSystems/ml/util/metrics.q](https://github.com/KxSystems/ml/blob/master/util/metrics.q)
 
-The toolkit contains an extensive list of commonly used metrics for the evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
+The toolkit contains an extensive list of commonly used metrics for evaluating the performance of machine-learning algorithms. These cover the testing of both regression and classification results.
 
 
 ## `.ml.accuracy`
@@ -222,13 +222,13 @@ C| -0.2273659 0.2287606  1
 _Categorical cross entropy_
 
 ```txt
-.ml.crossEntropy[pred;true]
+.ml.crossEntropy[pred;prob]
 ```
 
 Where
 
 -   `pred` is a vector of indices representing class labels
--   `true` is a list of vectors representing the probability of belonging to each class
+-   `prob` is a list of vectors representing the probability of belonging to each class
 
 returns the categorical cross entropy for each class.
 
@@ -339,13 +339,13 @@ q).ml.fBetaScore[xb;yb;1b;.5]
 _Logarithmic loss_
 
 ```txt
-.ml.logLoss[pred;true]
+.ml.logLoss[pred;prob]
 ```
 
 Where
 
 -   `pred` is a vector of class labels 0/1
--   `true` is a list of vectors representing the probability of belonging to each class
+-   `prob` is a list of vectors representing the probability of belonging to each class
 
 returns the total logarithmic loss.
 
@@ -704,13 +704,13 @@ q).ml.sse[asc 100?1f;desc 100?1f]
 _One-sample t-test score_
 
 ```txt
-.ml.tScore[pred;true]
+.ml.tScore[sample;mu]
 ```
 
 Where
 
--   `pred` is a set of samples from a distribution
--   `true` is the population mean
+-   `sample` is a set of samples from a distribution
+-   `mu` is the population mean
 
 returns the one sample t-score for a distribution with less than 30 samples.
 
@@ -730,12 +730,12 @@ q).ml.tScore[x;y]
 _T-test for independent samples with equal variances and equal sample size_
 
 ```txt
-.ml.tScoreEqual[pred;true]
+.ml.tScoreEqual[sample1;sample2]
 ```
 
 Where 
 
--   `pred` and `true` are independent sample sets with equal variance and sample size
+-   `sample1` and `sample2` are independent sample sets with equal variance and sample size
 
 returns their t-test score.
 
