@@ -20,7 +20,7 @@ A critical component of Apache Arrow is its **in-memory columnar format**, a sta
 
 ## Arrow and Parquet
 
-Apache Parquet is a storage format designed for maximum space efficiency, using advanced compression and encoding techniques. It is ideal for minimizing disk usage while storing gigabytes of data, or perhaps more. The efficiency comes at the cost of relatively expensive reading into memory, as Parquet data cannot be directly operated on but must be  decoded in large chunks.
+[Apache Parquet](https://parquet.apache.org/) is a storage format designed for maximum space efficiency, using advanced compression and encoding techniques. It is ideal for minimizing disk usage while storing gigabytes of data, or perhaps more. The efficiency comes at the cost of relatively expensive reading into memory, as Parquet data cannot be directly operated on but must be  decoded in large chunks.
 
 Conversely, Apache Arrow is an in-memory format meant for direct and efficient use for computational purposes. Arrow data is not compressed but laid out in  natural format for the CPU, so that data can be accessed at arbitrary places at full speed. 
 
