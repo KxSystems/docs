@@ -144,7 +144,7 @@ returns a graph with the the new node added to the graph structure.
 ```q
 // Define a node with one input and one output
 q)newInput:"!"
-q)newOuput:"F"
+q)newOutput:"F"
 q)newFunction:{[dict]dict`floatVector}
 // Generate relevant configuration and add to an empty graph
 q)newNode:`inputs`outputs`function!(newInput;newOutput;newFunction)
