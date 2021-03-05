@@ -314,7 +314,7 @@ Since V3.4 2016.05.12.
 Where
 
 -   `x` is an int atom
--   `y` is numeric
+-   `y` is a float
 
 returns `y` as a string or strings formatted as a float to `x` decimal places.
 (Since V3.6 2018.09.26.)

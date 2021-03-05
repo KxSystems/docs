@@ -343,7 +343,7 @@ Model name
 
 `meta` -> `randomType`  
 
-: Defines the type of randomization to be used within the random search. This can be one of `boolean`, `uniform`, `loguniform` or `symbol`, as [defined](../../../../toolkit/xval#random-search-hyperparameter-dictionary) for the Machine Learning Toolkit.
+: Defines the type of randomization to be used within the random search. This can be one of `boolean`, `uniform`, `loguniform` or `symbol`, as [defined](../../../toolkit/xval#random-search-hyperparameter-dictionary) for the Machine Learning Toolkit.
 
 `meta` -> `typeConvert` 
 

@@ -139,6 +139,7 @@ nav:
       - Four is magic: learn/pb/four-magic.md
       - Name Game: learn/pb/name-game.md
       - Summarize and Say: learn/pb/sum-say.md
+      - Word wheel: learn/pb/word-wheel.md
     - Reading room:
       - Information desk: learn/reading/index.md
       - Boggle: learn/reading/boggle.md
@@ -532,6 +533,11 @@ nav:
       - API reference: interfaces/capiref.md
     - Fusion for kdb+:
       - Overview: interfaces/fusion.md
+      - Arrow:
+        - Overview: interfaces/arrow/index.md
+        - Type mapping: interfaces/arrow/arrow-types.md
+        - Reference: interfaces/arrow/reference.md
+        - Examples: interfaces/arrow/examples.md       
       - FFI: interfaces/ffi.md
       - HDF5:
         - Overview: interfaces/hdf5/index.md
@@ -619,7 +625,9 @@ nav:
     - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Load balancing: kb/load-balancing.md
     - Memory backed by files: basics/memory-backed.md
-    - Optane Memory: kb/optane.md
+    - Optane Memory: 
+      - Optane Memory and kdb+: kb/optane.md
+      - Performance tests: architecture/optane-tests.md
     - Order Book (WP): wp/order-book.md
     - Publish and subscribe: kb/publish-subscribe.md
     - Pub/sub with Solace (WP): wp/solace/index.md

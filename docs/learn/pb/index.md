@@ -27,3 +27,4 @@ problem | solution features | code lines
 [Four is Magic](four-magic.md) | _Convergence and finite-state machines_<br>Converge iterator<br>composition<br>Index, Index At | 7
 [The Name Game](name-game.md) | _Make substitutions in a string or list of strings_<br>projection<br>`ssr`<br>Amend At<br>Do and Over iterators | 5
 [Summarize and Say](sum-say.md) | _Analyze a dictionary of results; map between dictionaries_<br>composition<br>hash dictionary<br>Do iterator<br>reverse lookup<br>iterator syntax | 7
+[Word Wheel](word-wheel.md) | _Examine the differences between dictionaries_<br>compile test results, and index into them<br>composition<br>parallelization | 12

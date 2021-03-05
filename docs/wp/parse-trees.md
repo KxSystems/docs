@@ -658,14 +658,24 @@ by Peter Storeng
 
 ## Authors
 
-**Peter Storeng** is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
+**Peter Storeng** is a mathematician and software developer who has been using kdb+ since&nbsp;2012.
+
+Other papers by Peter Storeng
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-solid-file-pdf: [Implementing Marked Nulls in PostgreSQL](https://project-archive.inf.ed.ac.uk/msc/20161877/msc_proj.pdf)
+</ul>
+
+&nbsp;
+{: style="clear: both"}
 
 
 ![Stephen Taylor](../img/faces/stephentaylor.png)
 {: .small-face}
 
 **Stephen Taylor** FRSA is the KX Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
-<br>
+&nbsp;
 [:fontawesome-solid-envelope:](mailto:stephen@kx.com?subject=White paper: Parse trees and functional forms) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
 [:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)

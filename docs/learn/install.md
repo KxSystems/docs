@@ -23,7 +23,7 @@ There are three installation scenarios.
 ## :fontawesome-solid-download: Step 1: Download
 
 <button style="background: #0088ff; border-radius: 5px; box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); padding: 10px;" type="button">
-  <a href="https://kx.com/connect-with-us/download/" style="color: white">
+  <a href="https://kx.com/developers/download-licenses/" style="color: white">
     <span style="font-size: 2em;">:fontawesome-solid-download: Get kdb+</span><br/>Personal, non-commercial
       :fontawesome-brands-linux:
       :fontawesome-brands-apple:
