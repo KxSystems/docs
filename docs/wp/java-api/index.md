@@ -48,7 +48,7 @@ broad range of problem domains. They are available on
 
 ## API overview  
 
-The API is contained in a :fontawesome-brands-github: [single source file](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java) on GitHub.
+The API is contained in a :fontawesome-brands-github: [single source file](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java) on GitHub.
 Inclusion in a development project is, therefore, a straightforward matter
 of including the file with other source code under the package `kx`, and
 ensuring it is properly imported and referenced by other classes. If
@@ -174,7 +174,7 @@ practical detail through the use-case examples below.
 
 The majority of q data types are represented in the API through mapping
 to standard Java objects. This is best seen in the method
-[`c.r()`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L709),
+[`c.r()`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L709),
 which reads bytes from an incoming message and converts those bytes into
 representative Java types.
 ../../interfaces/java-client-for-q.md#type-mapping) is on code.kx.com.
@@ -207,10 +207,10 @@ datetime | 15 | `java.util.Date` | This Java class stores times as milliseconds 
 date | 14 | java.sql.Date | While this Java class extends the `java.util` date object it is used specifically for the date type as it restricts usage and output of time data.
 time | 19 | `java.sql.Time` | This also extends `java.util.Date`, restricting usage and output of date data this time.
 timestamp | 12 | <span class="nowrap">`java.sql.Timestamp`</span> | This comes yet again from the base date class, extended this time to include nanoseconds storage (which is done separately from the underlying date object, which only has millisecond accuracy). This makes it directly compatible with the q timestamp type.
-month | 13 | inner class [`c.Month`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L300) |
-timespan | 16 | inner class [`c.Timespan`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L376) |
-minute | 17 | inner class [`c.Minute`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L326) |
-second | 18 | inner class [`c.Second`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L351) |
+month | 13 | inner class [`c.Month`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L300) |
+timespan | 16 | inner class [`c.Timespan`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L376) |
+minute | 17 | inner class [`c.Minute`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L326) |
+second | 18 | inner class [`c.Second`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L351) |
 
 When manipulating date, time and datetime data from kdb+ it is important
 to note that while `java.sql.Date` and `Time` extend `java.util.Date`, and can
@@ -241,7 +241,7 @@ internal classes Dict and Flip respectively. The makeup of these models
 is simple but effective, and useful in determining how best to
 manipulate them.
 
-[The Dict class](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L427)
+[The Dict class](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L427)
 consists of two public `java.lang.Object` fields (`x` for keys, `y` for
 values) and a basic constructor, which allows any of the represented
 data types to be used. However, while from a Java perspective any object
@@ -265,7 +265,7 @@ single key or pair, multi-dimensional arrays should be used:
 ```java
 new c.Dict(new String[] {"Key"}, new String[][] {{"Value1","Value2","Value3"}});
 ```
-[Flip (table) objects](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L440)
+[Flip (table) objects](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L440)
 consist of a String array for columns, an Object array for values, a
 constructor and a method for returning the Object array for a given
 column. The constructor takes a dictionary as its parameter, which is
@@ -275,7 +275,7 @@ the class being public, the columns and values can be assigned manually.
 
 Keyed tables in q are dictionaries in terms of type, and therefore will
 be represented as a Dict object in Java. The method
-[`td(Object)`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L1396)
+[`td(Object)`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L1396)
 will create a Flip object from a keyed table Dict, but will remove its
 keyed nature in the process.
 
@@ -344,7 +344,7 @@ Java. Month, minute, second and timespan, each with custom model
 classes, use the same null value as ints.
 
 The method
-[`c.qn(Object)`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L1355)
+[`c.qn(Object)`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L1355)
 can assist with checking and identifying null value representations, as
 it will check both the `Object` type and value against the `NULL` list.
 
@@ -356,7 +356,7 @@ respectively.
 
 ### Exceptions
 
-[`KException`](https://github.com/KxSystems/javakdb/blob/master/src/kx/c.java#L457)
+[`KException`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L457)
 is the single custom exception defined and thrown by the API. It is
 fairly safe to assume that a thrown `KException` denotes a q error signal,
 which will be included in the exception message when thrown.

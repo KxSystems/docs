@@ -45,7 +45,7 @@ You can also extend them.
 :fontawesome-solid-hand-point-right:
 [Advanced section](advanced.md)
 
-The examples following outline the most basic applications of AutoML: non-timeseries-specific machine-learning examples, and timeseries examples which use the [FRESH algorithm](../../toolkit/fresh) and [NLP Library](../../nlp/index.md).
+The examples following outline the most basic applications of AutoML: non-timeseries-specific machine-learning examples, and timeseries examples which use the [FRESH algorithm](../../toolkit/fresh.md) and [NLP Library](../../nlp/index.md).
 
 
 ### Model prediction

@@ -13,7 +13,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
   [dropConstant](#mldropconstant)      Constant columns removed
   [fillTab](#mlfilltab)           Tailored filling of null values for a simple matrix
   [freqEncode](#mlfreqencode)        Numerically encode frequency of category occurance
-  [infrePlace](#mlinfreplace)        Replace +/- infinities with max/min of column
+  [infReplace](#mlinfreplace)        Replace +/- infinities with max/min of column
 
   labelEncode       Encode list of symbols to integer values and produce mapping
 	[labelEncode.fit](#mllabelencodefit)  Fit a label encoder model

@@ -748,7 +748,7 @@ loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records,
 
 `.Q.fsn` is almost identical to `.Q.fs` but takes an extra argument `z`, the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and RAM usage.
 
-!!! tip "`.Q.fsn` is a projection of `.Q.fs` with the chunk size set to 131000 bytes."
+!!! tip "`.Q.fs` is a projection of `.Q.fsn` with the chunk size set to 131000 bytes."
 
 For example, assume that the file `potamus.csv` contains the following:
 

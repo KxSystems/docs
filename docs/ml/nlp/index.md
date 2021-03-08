@@ -71,13 +71,13 @@ l64/ 4()core 7905MB kx 0123456789ab 172.17.0.2 EXPIRE 2018.12.04 bob@example.com
 Loading code/utils.q
 Loading code/regex.q
 Loading code/sent.q
+Loading code/parser.p
 Loading code/parser.q
-Loading code/time.q
-Loading code/date.q
+Loading code/dateTime.q
+Loading code/extractRtf.p
 Loading code/email.q
 Loading code/cluster.q
-Loading code/nlp_code.q
-Loading code/tensorflow.q
+Loading code/nlpCode.q
 q).nlp.findTimes"I went to work at 9:00am and had a coffee at 10:20"
 09:00:00.000 "9:00am" 18 24
 10:20:00.000 "10:20"  45 50

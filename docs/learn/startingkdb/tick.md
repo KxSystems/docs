@@ -50,7 +50,7 @@ Other processes would subscribe to a tickerplant to receive new data, and each w
 The demo scripts run a simple tickerplant/RDB configuration. 
 
 :fontawesome-brands-github: 
-[KxSystems/cookbook/start/tick](https://github.com/KxSystems/cookbook/tree/master/start/tick) 
+[KxSystems/cookbook/start/tick](https://github.com/KxSystems/kdb/blob/master/d/a/tick.htm) 
 
 The layout is:
 
@@ -236,6 +236,4 @@ upd:{[t;x].[t;();,;select by sym from x]}]
 
 :fontawesome-brands-github: 
 [KxSystems/kdb/d/tick.htm](https://github.com/KxSystems/kdb/blob/master/d/tick.htm)  
-:fontawesome-brands-github: 
-[Kxsystems/kdb/d/FD_kdb+tick_manual_1.0.doc](https://github.com/KxSystems/kdb/blob/master/d/FD_kdb%2Btick_manual_1.0.doc)
 
