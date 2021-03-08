@@ -75,22 +75,23 @@ Where:
 
 returns a dictionary containing all information collected during the fitting of a model (`modelInfo`), along with a prediction function which forecasts future values of the timeseries (`predict`)
 
-The information collected during the fitting of the model is contained within `modelInfo` and includes:
-
-```txt
-coefficients  model coefficients for future predictions
-trendCoeff    trend coefficient
-exogCoeff     exog coefficients
-pCoeff        p value coefficients
-lagVals       lagged values from the training set
-```
-
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
-
--   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
--   `len` is the number of values that are to be predicted (integer)
-
-and returns the predicted values
+??? "Dictionary return"
+	The information collected during the fitting of the model is contained within `modelInfo` and includes:
+	
+	key         | description
+	------------|-------------
+	coefficients| model coefficients for future predictions
+	trendCoeff  | trend coefficient
+	exogCoeff   | exog coefficients
+	pCoeff      | p value coefficients
+	lagVals     | lagged values from the training set
+	
+	The predict functionality is contained within the `predict` key. The function takes the following inputs:
+	
+	-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+	-   `len` is the number of values that are to be predicted (integer)
+	
+	returns the predicted values
 
 ```q
 // Example timeseries
@@ -160,21 +161,22 @@ Where
 
 returns a dictionary containing all information collected during the fitting of a model (`modelInfo`), along with a prediction function which forecasts future values of the timeseries (`predict`)
 
-The information collected during the fitting of the model is contained within `modelInfo` and includes:
-
-```txt
-params        model coefficients for future predictions
-trendCoeff    trend coefficient
-exogCoeff     exog coefficients
-pCoeff        lag value coefficients
-residualVals  lagged residual errors from the input training set
-```
-
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
-
--   `len` is the number of values that are to be predicted (integer)
-
-and returns the predicted values
+??? "Dictionary return"
+	The information collected during the fitting of the model is contained within `modelInfo` and includes:
+	
+	key         | description
+	------------|---------------
+	params      | model coefficients for future predictions
+	trendCoeff  | trend coefficient
+	exogCoeff   | exog coefficients
+	pCoeff      | lag value coefficients
+	residualVals| lagged residual errors from the input training set
+	
+	The predict functionality is contained within the `predict` key. The function takes the following inputs:
+	
+	-   `len` is the number of values that are to be predicted (integer)
+	
+	returns the predicted values
 
 ```q
 q)residuals:100?10f
@@ -236,25 +238,27 @@ Where
 
 returns a dictionary containing all information collected during the fitting of a model, along with a prediction function which forecasts future values of the timeseries
 
-The information collected during the fitting of the model are contained within `modelInfo` and include:
-
-```txt
-coefficients    model coefficients for future predictions
-trendCoeff      trend coefficient
-exogCoeff       exog coefficients
-pCoeff          p value coefficients
-qCoeff          q coefficients
-lagVals         lagged values from the training set
-residualVals    q residual errors calculated from training set using the params
-residualCoeffs  coefficients used to estimate resid errors
-paramDict       a dictionary containing information about the model used for fitting
-```
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
-
--   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
--   `len` is the number of values that are to be predicted (integer)
-
-and returns the predicted values
+??? "Dictionary return"
+	The information collected during the fitting of the model are contained within `modelInfo` and include:
+	
+	key           |  description
+	--------------|--------	
+	coefficients  | model coefficients for future predictions
+	trendCoeff    |  trend coefficient
+	exogCoeff     | exog coefficients
+	pCoeff        | p value coefficients
+	qCoeff        | q coefficients
+	lagVals       | lagged values from the training set
+	residualVals  | q residual errors calculated from training set using the params
+	residualCoeffs| coefficients used to estimate resid errors
+	paramDict     | a dictionary containing information about the model used for fitting
+	
+	The predict functionality is contained within the `predict` key. The function takes the following inputs:
+	
+	-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+	-   `len` is the number of values that are to be predicted (integer)
+	
+	returns the predicted values
 
 ```q
 q)timeSeries:100?10f
@@ -394,27 +398,29 @@ Where
 
 returns a dictionary containing all information collected during the fitting of a model (`modelInfo`), along with a prediction function which forecasts future values of the timeseries (`predict`)
 
-The information collected during the fitting of the model are contained within `modelInfo` and include:
+??? "Dictionary return"
 
-```txt
-coefficients    model coefficients for future predictions
-trendCoeff      trend coefficient
-exogCoeff       exog coefficients
-pCoeff          lag value coefficients
-qCoeff          error coefficients
-lagVals         lagged values from the training set
-residualVals    q residual errors calculated from training set using the params
-residualCoeffs  coefficients used to estimate resid errors
-originalData    original values to use to transform seasonal differencing to original format
-paramDict       a dictionary containing information about the model used for fitting
-```
+	The information collected during the fitting of the model are contained within `modelInfo` and include:
+	
+	key           | description
+	--------------|------------
+	coefficients  | model coefficients for future predictions
+	trendCoeff    | trend coefficient
+	exogCoeff     | exog coefficients
+	pCoeff        | lag value coefficients
+	qCoeff        | error coefficients
+	lagVals       | lagged values from the training set
+	residualVals  | q residual errors calculated from training set using the params
+	residualCoeffs| coefficients used to estimate resid errors
+	originalData  | original values to use to transform seasonal differencing to original format
+	paramDict     | a dictionary containing information about the model used for fitting
 
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
-
--   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
--   `len` is the number of values that are to be predicted (integer)
-
-and returns the predicted values
+	The predict functionality is contained within the `predict` key. The function takes the following inputs:
+	
+	-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+	-   `len` is the number of values that are to be predicted (integer)
+	
+	returns the predicted values
 
 !!! tip "In general, differencing (`d`) of order 2 or less suffices to make a timeseries stationary for an ARIMA model."
 
@@ -493,29 +499,31 @@ Where
 
 returns a dictionary containing all information collected during the fitting of a model (`modelInfo`), along with a prediction function which forecasts future values of the timeseries (`predict`)
 
-The information collected during the fitting of the model are contained within `modelInfo` and include:
-
-```txt
-coefficients     model coefficients for future predictions
-trendCoeff       trend coefficient
-exogCoeff        exog coefficients
-pCoeff           lag value coefficients
-qCoeff           error coefficients
-PCoeff           seasonal lag value coefficients
-QCoeff           seasonal error coefficients
-lagVals          lagged values from the training set
-residualVals     q residual errors calculated from training set using the params
-residualCoeffs   coefficients used to estimate resid errors
-originalData     original values of input values before being differenciated
-seasonData       original values to transform seasonal differencing to original format
-paramDict        a dictionary containing information about the model used for fitting
-```
-The predict functionality is contained within the `predict` attribute. The function takes the following inputs:
-
--   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
--   `len` is the number of values that are to be predicted (integer)
-
-and returns the predicted values
+??? "Dictionary return"
+	The information collected during the fitting of the model are contained within `modelInfo` and include:
+	
+	key           | description
+	--------------|------------
+	coefficients  |  model coefficients for future predictions
+	trendCoeff    |  trend coefficient
+	exogCoeff     |  exog coefficients
+	pCoeff        |  lag value coefficients
+	qCoeff        |  error coefficients
+	PCoeff        |  seasonal lag value coefficients
+	QCoeff        |  seasonal error coefficients
+	lagVals       |  lagged values from the training set
+	residualVals  |  q residual errors calculated from training set using the params
+	residualCoeffs|  coefficients used to estimate resid errors
+	originalData  |  original values of input values before being differenciated
+	seasonData    |  original values to transform seasonal differencing to original format
+	paramDict     |  a dictionary containing information about the model used for fitting
+	
+	The predict functionality is contained within the `predict` key. The function takes the following inputs:
+	
+	-   `exog` is a table of exogenous variables; if `(::)/()` then exogenous variables ignored
+	-   `len` is the number of values that are to be predicted (integer)
+	
+	returns the predicted values
 
 !!! warning "Consistency across platforms"
 

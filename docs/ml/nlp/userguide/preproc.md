@@ -13,7 +13,7 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
   [parseURLs](#nlpparseurls)    Parse URLs into dictionaries containing their constituent components
 
 \  Finding part-of-speech tags in a corpus
-  [findPOSRuns](#nlpfindposruns)  Find tokens of specific POS types in a text
+  [findPOSRuns](#nlpfindposruns)   Find tokens of specific POS types in a text
 </div>
 
 ## Preparing text

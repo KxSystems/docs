@@ -13,8 +13,8 @@ date: February 2021
   [percentile](#mlstatspercentile)        Percentile calculation for an array
 
 **Statistical Estimation methods**
-  [ols.fit](#mlstatsolsfit)           Train an ordinary least squares model on data
-  [wls.fit](#mlstatswlsfit)           Train a weighted least squares model on data
+  [OLS.fit](#mlstatsolsfit)           Train an ordinary least squares model on data
+  [WLS.fit](#mlstatswlsfit)           Train a weighted least squares model on data
 
 </div>
 
@@ -78,9 +78,16 @@ countDistinct| 100                     5
 mode         | 2000.03.09T00:00:00.000 2000.01.05
 freq         | 3                       187
 ```
+
+!!! warning "`.ml.describe` deprecated"
+    The above function was previously defined as `.ml.describe`.
+    It is still callable but will be deprecated after version 3.0.
+
+### Modifying description functionality
+
 The statistical functions applied to the data can be altered via two methods:
 
--  Modifying `stats/describe.json`
+#### Modifying `stats/describe.json`
 
 The file follows the following format :
 
@@ -107,7 +114,7 @@ The file follows the following format :
   }
 ```  
 
-- Modifying `.ml.stats.describeFuncs`
+#### Modifying `.ml.stats.describeFuncs`
 
 `.ml.stats.describeFuncs` loads the dictionary defined in `stats/describe.json` and returns it as a table 
 
@@ -133,11 +140,6 @@ num      "hijef"
 temporal "pmdznuvt"
 other    All other remaining types
 ```
-
-!!! warning "`.ml.describe` deprecated"
-    The above function was previously defined as `.ml.describe`.
-    It is still callable but will be deprecated after version 3.0.
-
 
 ## `.ml.stats.percentile`
 
@@ -177,28 +179,30 @@ Where
 
 returns the coefficients and statistical values calculated during the fitting process (`modelInfo`) and a projection of the fit function allowing for prediction on new data (`predict`)
 
-The information contained within `modelInfo` is broken into 3 parts
-
--  `coef` The coefficients calculated during the fitting process
--  `variables` Statistical values calculated for each coefficient 
--  `statsDict` Descriptive statistics for the regression model. These include: 
-
-```txt
-dfTotal     Total degrees of freedom
-dfModel     The degrees of freedom of the model
-dfResidual  The degrees of freedom of the residuals
-sumSquares  Sum of squares between the true and predicted values
-meanSquares Mean squares between the true and predicted values using degrees of freedom
-fStat       F statistic
-r2          r2 score
-r2Adj       r2 Adjusted score
-mse         Mean squared error
-rse         Residual squared error
-pValue      p Value
-logLike     log liklihood
-```
-
 More info on endogenous and exogenous variables can be found within the [timeseries](#../timeseries/models/) section of the toolkit
+
+??? "Dictionary return"
+	The information contained within `modelInfo` is broken into 3 parts
+	
+	-  `coef` The coefficients calculated during the fitting process
+	-  `variables` Statistical values calculated for each coefficient 
+	-  `statsDict` Descriptive statistics for the regression model. These include: 
+
+	key        | description
+	-----------|------------
+	dfTotal    | Total degrees of freedom
+	dfModel    | The degrees of freedom of the model
+	dfResidual | The degrees of freedom of the residuals
+	sumSquares | Sum of squares between the true and predicted values
+	meanSquares| Mean squares between the true and predicted values using degrees of freedom
+	fStat      | F statistic
+	r2         | r2 score
+	r2Adj      | r2 Adjusted score
+	mse        | Mean squared error
+	rse        | Residual squared error
+	pValue     | p Value
+	logLike    | log liklihood
+
 
 ```q
 q)exog:til 10
@@ -252,27 +256,28 @@ Where
 
 returns the coefficients and statistical values calculated during the fitting process (`modelInfo`) and a projection of the fit function allowing for prediction on new data (`predict`)
 
-The information contained within `modelInfo` is broken into 4 parts
-
--  `coef` The coefficients calculated during the fitting process
--  `variables` Statistical values calculated for each coefficient 
--  `statsDict` Descriptive statistics for the regression model. These include: 
-
-```txt
-dfTotal     Total degrees of freedom
-dfModel     The degrees of freedom of the model
-dfResidual  The degrees of freedom of the residuals
-sumSquares  Sum of squares between the true and predicted values
-meanSquares Mean squares between the true and predicted values using degrees of freedom
-fStat       F statistic
-r2          r2 score
-r2Adj       r2 Adjusted score
-mse         Mean squared error
-rse         Residual squared error
-pValue      p Value
-logLike     log liklihood
-```
-- `weights` The weights used for fitting the model
+??? "Dictionary return"
+	The information contained within `modelInfo` is broken into 4 parts
+	
+	-  `coef` The coefficients calculated during the fitting process
+	-  `variables` Statistical values calculated for each coefficient 
+	-  `weights` The weights used for fitting the model
+	-  `statsDict` Descriptive statistics for the regression model. These include: 
+	
+	key        | description
+	-----------|------------
+	dfTotal    | Total degrees of freedom
+	dfModel    | The degrees of freedom of the model
+	dfResidual | The degrees of freedom of the residuals
+	sumSquares | Sum of squares between the true and predicted values
+	meanSquares| Mean squares between the true and predicted values using degrees of freedom
+	fStat      | F statistic
+	r2         | r2 score
+	r2Adj      | r2 Adjusted score
+	mse        | Mean squared error
+	rse        | Residual squared error
+	pValue     | p Value
+	logLike    | log liklihood
 
 ```q
 q)exog:til 10
@@ -296,7 +301,7 @@ q)mdl.modelInfo.variables
 name| coef    stdErr    tStat    pValue      C195    
 ----| -----------------------------------------------
 x0  | 2.50289 0.1012509 24.71968 2.68138e-10 0.233485
-nfo.statsDict
+q)mdl.modelInfo.statsDict
 dfTotal   | 9
 dfModel   | 1
 dfResidual| 8

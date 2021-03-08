@@ -1,11 +1,11 @@
 ---
-title: Graph | Machine Learning Toolkit | Documentation for kdb+ and q
+title: ML Graph | Machine Learning Toolkit | Documentation for kdb+ and q
 author: Conor McCarthy
 date: August 2020
 keywords: machine learning, ml, graph, edges, nodes, vertices
 ---
 
-# :fontawesome-solid-share-alt: Graph
+# :fontawesome-solid-share-alt: ML Graph
 
 As outlined [here](index.md) the graph structure described below follows the basic structure of a directed mathematical graph consisting of nodes which contain the core functionality of a pipeline and edges which describe the connections between nodes. The image below shows a basic representation of a graph containing multiple nodes connected together by relevant edges within this structure.
 

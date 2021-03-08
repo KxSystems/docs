@@ -13,7 +13,8 @@ keywords: pandas manipulation, dataframe, train test split, .
   [arange](#mlarange)             Evenly-spaced values within a range
   [combs](#mlcombs)              n linear combinations of k numbers
   [df2tab](#mldf2tab)             kdb+ table from a pandas dataframe
-  [df2tabTimezone](#mldf2tabTimezone)     Pandas dataframe to kdb+ conversion handling dates/times/timezones
+  [df2tabTimezone](#mldf2tabTimezone)     Pandas dataframe to kdb+ conversion handling
+                     dates/times/timezones
   [eye](#mleye)                Identity matrix
   [iMax](#mlimax)               Index of maximum element of a list
   [iMin](#mlimin)               Index of minimum element of a list
@@ -143,11 +144,11 @@ jcol| fcol
 **Index columns** This function assumes a single unnamed Python index column is to be removed. It returns an unkeyed table. All other variants of Python index columns map to q key columns. For example any instance with two or more indexes will map to two or more Python keys, while any named single-index Python column be associated with a q key in a keyed table.
 
 !!!note
-	This function is a wrapper around `.ml.df2tabTimezone`, conversions within this function will default to convert datetime.date and datetime.time types to foreign objects, numpy timezone types are converted to their UTC representation. These conversion choices have been made due to python related computational inefficiencies in converting to native q types and local-time representations respectively.
+	This function is a wrapper around `.ml.df2tabTimezone`, conversions within this function will default to convert `datetime.date` and `datetime.time` types to foreign objects, numpy timezone types are converted to their UTC representation. These conversion choices have been made due to python related computational inefficiencies in converting to native q types and local-time representations respectively.
 
 ## `.ml.df2tabTimezone`
 
-_Convert a pandas dataframe containing datetime timezones and datetime objects (datetime.datetime, datetime.time) to a q table_
+_Convert a pandas dataframe containing datetime objects to a q table_
 
 ```txt
 .ml.df2tabTimezone[tab;local;qObj]
