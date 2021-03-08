@@ -355,11 +355,11 @@ Model name
 Instead of modifying the above JSON files, you may prefer to modify the system behavior on explicit invocation of the function [`.automl.fit`](functions.md#automlfit). 
 When calling this function the final argument `params` can be configured to take as input any of the parameters in [`problemParameters`](#problemparameters). 
 
-Example: a dictionary to set the random seed to a value of 75, testing size to 25 percent of the total dataset, and the cross validation function to `.ml.xv.kfsplit`.
+Example: a dictionary to set the random seed to a value of 75, testing size to 25 percent of the total dataset, and the cross validation function to `.ml.xv.kfSplit`.
 
 ```q
 q)paramKeys:`seed`testingSize`crossValidationFunction
-q)paramVals:(75;0.25;.ml.xv.kfshuff)
+q)paramVals:(75;0.25;.ml.xv.kfShuff)
 q)paramDict:paramKeys!paramVals
 q).automl.fit[([]100?1f;100?1f);100?1f;`normal;`reg;paramDict]
 ```

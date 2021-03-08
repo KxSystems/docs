@@ -140,9 +140,9 @@ _Cross validation function and number of folds/percentage of data in validation 
 
 `crossValidationFunction` is the name of the cross-validation function to apply as a symbol and `crossValidationArgument` is the associated argument – either the number of folds to apply or the percentage of data in the validation set.
 
-By default, the cross-validation procedure being implemented is a 5-fold shuffled cross validation using the function `.ml.xv.kfshuff`. You can augment this for different use cases.
+By default, the cross-validation procedure being implemented is a 5-fold shuffled cross validation using the function `.ml.xv.kfShuff`. You can augment this for different use cases.
 
-For example, you could change `crossValidationFunction` to `.ml.xv.tsrolls` to suit a more timeseries-specific problem and change `crossValidationArgument` to 7 to split the data into more folds than the default configuration.
+For example, you could change `crossValidationFunction` to `.ml.xv.tsRolls` to suit a more timeseries-specific problem and change `crossValidationArgument` to 7 to split the data into more folds than the default configuration.
 
 For simplicity, where possible, use the functions within the `.ml.xv` namespace for this task.
 
@@ -162,7 +162,7 @@ ptype:`reg
 // Change cross validation procedure
 // Use percentage split, with 20% data in the testing set
 params:`crossValidationFunction`crossValidationArgument!
-  (`.ml.xv.pcsplit;.2)
+  (`.ml.xv.pcSplit;.2)
 
 // Run AutoML
 .automl.fit[features;target;ftype;ptype;params]
@@ -251,7 +251,7 @@ ptype:`reg
 // Change hyperparameter search procedure
 // Use roll-forward grid search with 6 folds
 params:`gridSearchFunction`gridSearchArgument!
-  (`.ml.gs.tsrolls;6)
+  (`.ml.gs.tsRolls;6)
 
 // Run AutoML
 .automl.fit[features;target;ftype;ptype;params]
@@ -597,13 +597,13 @@ ptype:`reg
 // Change hyperparameter search procedure
 // Use percentage split random search with 20% validation set
 params:`hyperparameterSearchType`randomSearchFunction`randomSearchArgument!
-  (`random;`.ml.rs.pcsplit;.2)
+  (`random;`.ml.rs.pcSplit;.2)
 // Run AutoML
 .automl.fit[features;target;ftype;ptype;params]
 
 // Use chain-forward Sobol-random search function with 6-folds
 params:`hyperparameterSearchType`randomSearchFunction`randomSearchArgument!
-  (`sobol;`.ml.rs.tschain;6)
+  (`sobol;`.ml.rs.tsChain;6)
 // Run AutoML
 .automl.fit[features;target;ftype;ptype;params]
 ```
@@ -707,11 +707,11 @@ automl/code/customization/scoring/scoring.json
   accuracy         accuracy of classification results       desc
   mae              mean absolute error                      asc
   mape             mean absolute percentage error           desc
-  matcorr          matthews correlation coefficient         desc
+  matthewCorr      matthews correlation coefficient          desc
   mse              mean square error                        asc
   rmse             root mean square error                   asc
   rmsle            root mean square logarithmic error       asc
-  r2score          r2-score                                 desc
+  r2Score          r2-score                                 desc
   smape            symmetric mean absolute error            desc
   sse              sum squared error                        asc
 </div>
@@ -754,7 +754,7 @@ The function must be a binary with vector arguments:
 
 and return the score. 
 
-Functions within the ML Toolkit which take additional parameters, such as `.ml.f1score`, can be accessed in this way and could be defined as a projection.
+Functions within the ML Toolkit which take additional parameters, such as `.ml.f1Score`, can be accessed in this way and could be defined as a projection.
 
 
 ## `seed`
@@ -824,7 +824,7 @@ ftype:`normal
 ptype:`reg
 
 // Define the function to be applied for feature significance tests
-newSigFeats:{.ml.fresh.significantfeatures[x;y;.ml.fresh.ksigfeat 2]}
+newSigFeats:{.ml.fresh.significantFeatures[x;y;.ml.fresh.kSigFeat 2]}
 
 // Pass in new function as a symbol
 params:enlist[`significantFeatures]!enlist`newSigFeats
@@ -906,9 +906,9 @@ Default functions for splitting the data into training and testing sets:
 
 problem type | function            | description
 -------------|---------------------|-------------
-Normal       | .ml.traintestsplit  | Shuffle the dataset and split into training and testing set with a defined percentage in each
+Normal       | .ml.trainTestSplit  | Shuffle the dataset and split into training and testing set with a defined percentage in each
 FRESH        | .automl.ttsNonShuff | Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage
-NLP          | .ml.traintestsplit  | Shuffle the dataset and split into training and testing set with a defined percentage in each
+NLP          | .ml.trainTestSplit  | Shuffle the dataset and split into training and testing set with a defined percentage in each
 
 For specific use cases this may not be sufficient. For example if you wish to split the data such that an equal distribution of target classes occur in the training and testing sets, this could be implemented as follows.
 

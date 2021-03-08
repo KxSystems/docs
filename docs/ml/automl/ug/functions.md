@@ -25,7 +25,7 @@ The top-level functions in the repository are:
 .automl   **Top-level functions**
 
 Generate, retrieve, delete models
-  [fit](#automlfit)                   Apply AutoML to provided features and associated targets
+  [fit](#automlfit)                    Apply AutoML to provided features and associated targets
   [getModel](#automlgetmodel)              Retrieve a previously fit AutoML model
   [deleteModels](#deletemodels)          Delete model/s
 
@@ -152,8 +152,8 @@ _Apply AutoML to provided features and associated targets_
 
 Where
 
--   `features` is an unkeyed tabular feature data or a dictionary outlining how to retrieve the data in accordance with `.ml.i.loaddset`
--   `target` is target vector of any type or a dictionary outlining how to retrieve the target vector in accordance with `.ml.i.loaddset`
+-   `features` is an unkeyed tabular feature data or a dictionary outlining how to retrieve the data in accordance with `.ml.i.loadDataset`
+-   `target` is target vector of any type or a dictionary outlining how to retrieve the target vector in accordance with `.ml.i.loadDataset`
 -   `ftype` is the feature-extraction type as a symbol (`` `nlp``, `` `normal``, or `` `fresh``)
 -   `ptype` is the problem type as a symbol (`` `reg`` or `` `class``)
 -   `params` is one of

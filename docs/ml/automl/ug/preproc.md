@@ -21,7 +21,7 @@ It is particularly important when it comes to automated pipelines where, by defi
 
 <div markdown="1" class="typewriter">
 .automl.X.node.function    **Top-level preprocessing node functions**
-  [configuration](#automlconfigurationnodefunction)        Pass run configuration into AutoML graph
+  [configuration](#automlconfigurationnodefunction)         Pass run configuration into AutoML graph
   [featureData](#automlfeaturedatanodefunction)          Load feature data from process/alternative data source
   [targetData](#automltargetdatanodefunction)           Load target vector from process/alternative data source
   [dataCheck](#automldatachecknodefunction)            Build configuration dictionary and check dataset is suitable
@@ -30,7 +30,7 @@ It is particularly important when it comes to automated pipelines where, by defi
   [labelEncode](#automllabelencodenodefunction)          Encode symbol target data
   [dataPreprocessing](#automldatapreprocessingnodefunction)    Preprocess data prior to application of ML algorithms
   [featureCreation](#automlfeaturecreationnodefunction)      Generate appropriate features based on problem type
-  [featureSignificance](#automlfeaturesignificancenodefunction)  Apply feature-significance tests and return significant features
+  [featureSignificance](#automlfeaturesignificancenodefunction)   Apply feature-significance tests and return significant features
   [trainTestSplit](#automltraintestsplitnodefunction)       Split features and target into training and testing sets
 </div>
 
@@ -166,9 +166,9 @@ To split the data, a number of train-test split procedures are implemented for t
 
 problem type | function                | description 
 -------------|-------------------------|-------------
-Normal       |.ml.traintestsplit       | Shuffle the dataset and split into training and testing set with defined percentage in each
+Normal       |.ml.trainTestSplit       | Shuffle the dataset and split into training and testing set with defined percentage in each
 FRESH        |.automl.utils.ttsNonShuff| Without shuffling, the dataset is split into training and testing set with defined percentage in each to ensure no time leakage.
-NLP          |.ml.traintestsplit       | Shuffle the dataset and split into training and testing set with defined percentage in each
+NLP          |.ml.trainTestSplit       | Shuffle the dataset and split into training and testing set with defined percentage in each
 
 For classification problems, not all the distinct target classes will necessarily appear in both the training and testing sets. This is an issue for the Keras neural-network models, which require a sample from each target class present in both splits of the data.
 
@@ -374,7 +374,7 @@ _Loading of feature dataset from process/alternative data source_
 Where `config` is a dictionary with the location and method by which to retrieve the data, returns feature data as a table.
 
 ```q
-q)// Dictionary with information for .ml.i.loaddset
+q)// Dictionary with information for .ml.i.loadDataset
 q)config:`directory`fileName`typ`schema`separator!
     ("home/data";"features.csv";`csv;"FFSJ";enlist",")
 q)// Load in feature dataset
@@ -600,7 +600,7 @@ _Load the target dataset from process/alternative data source_
 Where `config` is a dictionary with the location and method by which to retrieve the data, returns a numerical or symbol target vector.
 
 ```q
-q)// Dictionary with information for .ml.i.loaddset
+q)// Dictionary with information for .ml.i.loadDataset
 q)config:`typ`directory`fileName`schema!
     (`splay;system"cd";"target";"B")
 
@@ -645,7 +645,7 @@ q)// Significant features
 q)sigFeats:`x`x1
 
 q)// Configuration dictionary with TTS function and testing size
-q)config:`trainTestSplit`testingSize!(`.ml.traintestsplit;.2)
+q)config:`trainTestSplit`testingSize!(`.ml.trainTestSplit;.2)
 
 q)// Split data
 q).automl.trainTestSplit.node.function[config;features;target;sigFeats]

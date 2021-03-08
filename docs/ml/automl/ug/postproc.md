@@ -61,7 +61,7 @@ The feature-impact plot identifies the features with the highest impact on predi
 
 It should be expected that if a feature is an important contributor to the output of a model, then scrambling or shuffling that feature will cause the model to perform poorly due to removal of signal for a model. Conversely, if the model performs better, or results do  not change, it could be inferred that the feature is not relevant for model training.
 
-A score is produced by the model for each shuffled column, with all scores ordered and scaled using `.ml.minmaxscaler` contained within the ML Toolkit. An example plot is shown below for a table containing four features, using a Gradient Boosting Regressor.
+A score is produced by the model for each shuffled column, with all scores ordered and scaled using `.ml.minMaxScaler.fit` contained within the ML Toolkit. An example plot is shown below for a table containing four features, using a Gradient Boosting Regressor.
 
 ![Feature Impact](img/featureimpact.png)
 
@@ -188,11 +188,11 @@ featureExtractionType        | `fresh
 problemType                  | `reg
 saveOption                   | 2
 seed                         | 53840238
-crossValidationFunction      | `.ml.xv.kfshuff
+crossValidationFunction      | `.ml.xv.kfShuff
 crossValidationArgument      | 5
-gridSearchFunction           | `.automl.gs.kfshuff
+gridSearchFunction           | `.automl.gs.kfShuff
 gridSearchArgument           | 5
-randomSearchFunction         | `.automl.rs.kfshuff
+randomSearchFunction         | `.automl.rs.kfShuff
 randomSearchArgument         | 5
 hyperparameterSearchType     | `grid
 holdoutSize                  | 0.2

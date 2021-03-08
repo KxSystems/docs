@@ -112,7 +112,7 @@ config:(`seed`problemType`logFunc`scoringFunctionRegression,
 
 // Grid search hyperparameters
 gsConfig:`gridSearchFunction`gridSearchArgument`hyperparameterSearchType!
-  (`.automl.gs.kfshuff;2;`grid)
+  (`.automl.gs.kfShuff;2;`grid)
 
 // Join grid search config to default dictionary
 config:config,gsConfig
@@ -124,7 +124,7 @@ features:100 10#100?10f
 target:asc 100?10f
 
 // Features and target data split into training and testing sets
-tts:.ml.traintestsplit[features;targets;.2]
+tts:.ml.trainTestSplit[features;targets;.2]
 
 // Generate model table
 modelTab:.automl.modelGeneration.node.function[config;target]
@@ -189,8 +189,8 @@ configKeys:`seed`trainTestSplit`holdoutSize`predictionFunction,
   `crossValidationFunction`crossValidationArgument`logFunc
 
 // Configuration values
-configVals:(1234;`.ml.traintestsplit;.2;`.automl.utils.fitPredict;
-  `.ml.accuracy;`.automl.gs.kfshuff;5;`.ml.xv.kfshuff;5;
+configVals:(1234;`.ml.trainTestSplit;.2;`.automl.utils.fitPredict;
+  `.ml.accuracy;`.automl.gs.kfShuff;5;`.ml.xv.kfShuff;5;
   .automl.utils.printFunction[`testLog;;1;1])
 
 // Configuration dictionary
@@ -203,7 +203,7 @@ features:100 10#1000?10f
 target:100?0b
 
 // Features and target data split into training and testing sets
-tts:.ml.traintestsplit[features;target;.2]
+tts:.ml.trainTestSplit[features;target;.2]
 
 // Problem type
 ptype:enlist[`problemType]!enlist`class
@@ -284,7 +284,7 @@ q)// Binary-classification target
 q)target:100?0b
 
 q)// Features and target data split into training and testing sets
-q)show tts:.ml.traintestsplit[features;target;.2]
+q)show tts:.ml.trainTestSplit[features;target;.2]
 xtrain| (9.424804 8.974053 5.086379 2.880684 4.077511 1.007649 9.96666..
 ytrain| 01100001110100001100010010000111111111011101010011001010000000..
 xtest | (3.349253 9.660613 0.6159866 2.613222 8.485587 4.333356 4.1628..
@@ -315,5 +315,3 @@ AdaBoostClassifier     sklearn ensemble seed 1
 RandomForestClassifier sklearn ensemble seed 1    
 RandomForestClassifier sklearn ensemble seed 1 
 ```
-
-
