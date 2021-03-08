@@ -9,16 +9,17 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 
 <div markdown="1" class="typewriter">
 .nlp   **Utility functions**
-  [detectLang](#nlpdetectlang)        Detect the language within a text
-  [findDates](#nlpfinddates)         Find all the dates in a string of text
-  [findRegex](#nlpfindregex)         Find regular expressions within a string
-  [findTimes](#nlpfindtimes)         Find all the times in a string of text
-  [getSentences](#nlpgetsentences)      Extract all sentences for a document
-  [loadTextFromDir](#nlploadtextfromdir)   Import all files in a director
-  [removeCustom](#nlpremoveCustom)      Remove aspects of a string of text containing certain characters or expressions
-  [removeNonAscii](#nlpremoveNonAscii)    Remove non-ASCII characters from a string
-  [removeReplace](#nlpremoveReplace)      Replace individual characters in a string
-  [sentiment](#nlpsentiment)          Calculate the sentiment of a sentence
+  [detectLang](#nlpdetectlang)      Detect the language within a text
+  [findDates](#nlpfinddates)        Find all the dates in a string of text
+  [findRegex](#nlpfindregex)        Find regular expressions within a string
+  [findTimes](#nlpfindtimes)        Find all the times in a string of text
+  [getSentences](#nlpgetsentences)    Extract all sentences for a document
+  [loadTextFromDir](#nlploadtextfromdir) Import all files in a director
+  [removeCustom](#nlpremoveCustom)    Remove aspects of a string of text containing certain characters
+                  or expressions
+  [removeNonAscii](#nlpremoveNonAscii)  Remove non-ASCII characters from a string
+  [removeReplace](#nlpremoveReplace)   Replace individual characters in a string
+  [sentiment](#nlpsentiment)       Calculate the sentiment of a sentence
 </div>
 
 

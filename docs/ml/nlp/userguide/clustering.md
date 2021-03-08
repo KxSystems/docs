@@ -9,26 +9,30 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 <div markdown="1" class="typewriter">
 .nlp.cluster   **Clustering functions**
 \  Markox Cluster algorithm
-  [MCL](#nlpclustermcl)  Cluster a subcorpus using graph clustering
+    [MCL](#nlpclustermcl)               Cluster a subcorpus using graph clustering
 
 \  Summarizing Cluster algorithm
-  [summarize](#nlpclustersummarize)  Uses centoid values in order to cluster similar documents together
+    [summarize](#nlpclustersummarize)         Uses centroid values in order to cluster similar documents
+                      together
 
 \  K-means clustering
-  [kmeans](#nlpclusterkmeans)  K-means clustering for documents
+    [kmeans](#nlpclusterkmeans)            K-means clustering for documents
 
 \  Bisecting K-means
-  [bisectingKMeans](#nlpclusterbisectingkmeans)  Uses K-means repeatedly to split the most cohesive clusters into two clusters 
+    [bisectingKMeans](#nlpclusterbisectingkmeans)   Uses K-means repeatedly to split the most
+                      cohesive clusters into two clusters 
 
 \  Radix algorithm 
-  [fastRadix](#nlpclusterfastradix)  Uses the Radix algorithm and bins by the most significant term
-  [radix](#nlpclusterradix)      Uses the Radix algorithm and bins are taken from the top 3 terms of each document
+    [fastRadix](#nlpclusterfastradix)         Uses the Radix algorithm and bins by the most significant term
+    [radix](#nlpclusterradix)             Uses the Radix algorithm and bins are taken from the
+                      top 3 terms of each document
 
 \  Grouping documents to centroids
-  [groupByCentroids](#nlpclustergroupbycentroids)  Documents matched to their nearest centroid
+    [groupByCentroids](#nlpclustergroupbycentroids)  Documents matched to their nearest centroid
 
 \  Cohesion
-  [MSE](#nlpclustermse)  Calculate the cohesiveness as measured by the mean sum of squares
+    [MSE](#nlpclustermse)               Calculate the cohesiveness as measured by the mean sum
+                      of squared error
 </div>
 
 Following the application of [data-processing procedures](preproc.md), it is possible to apply clustering methods to text.

@@ -8,14 +8,15 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 <div markdown="1" class="typewriter">
 .nlp   **Feature Vector functions**
 \  Calculating feature vectors for documents
-  [keywordsContinuous](#nlpkeywordscontinuous)  Calculate relevance scores for tokens in a text
-  [TFIDF](#nlptfidf)               TF-IDF scores for terms in each document of a corpus
+  [keywordsContinuous](#nlpkeywordscontinuous) Calculate relevance scores for tokens in a text
+  [TFIDF](#nlptfidf)              TF-IDF scores for terms in each document of a corpus
 
 \  Calculating feature vectors for words
-  [biGram](#nlpbigram)            Determine the probability of a word appearing next in a sequence
-  [extractPhrases](#nlpextractphrases)    Find tokens that contain the term where each consecutive word has an above-average co-occurrence
-  [findRelatedTerms](#nlpfindrelatedterms)  Find related terms and their significance to a word
-  [nGram](#nlpngram)             Determine the probability of n tokens appearing together
+  [biGram](#nlpbigram)             Determine the probability of a word appearing next in a sequence
+  [extractPhrases](#nlpextractphrases)     Find tokens that contain the term where each consecutive word
+                     has an above-average co-occurrence
+  [findRelatedTerms](#nlpfindrelatedterms)    Find related terms and their significance to a word
+  [nGram](#nlpngram)              Determine the probability of n tokens appearing together
 </div>
 
 ## Feature vectors

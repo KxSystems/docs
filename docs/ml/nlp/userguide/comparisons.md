@@ -14,7 +14,8 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
   [compareDocToCorpus](#nlpcomparedoctocorpus)   Cosine similarity between a document and other documents
   [jaroWinkler](#nlpjarowinkler)          Calculate the Jaro-Winkler distance of two strings
   [compareDocToCentroid](#nlpcompareDocToCentroid) Cosine similarity of a document and a centroid
-  [explainSimilarity](#nlpexplainSimilarity)    Calculate how much each term contributes to the cosine similarity
+  [explainSimilarity](#nlpexplainSimilarity)    Calculate how much each term contributes to the cosine
+                       similarity
 </div>
 
 Following the application of [data-processing procedures](preproc.md), it is possible to compare feature vectors, corpora and documents.

@@ -139,9 +139,9 @@ _Applies functions to subsets of initial data to create features_
 Where
 
 -   `data` is the input data in the form of a simple table.
--   `idCol` is the Id column name (syms).
+-   `idCol` is the ID column name (syms).
 -   `cols2Extract` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
--   `params` is a table containing the functions/parameters to be applied to cols2Extract. This should be a modified version of .ml.fresh.params
+-   `params` is a table containing the functions/parameters to be applied to cols2Extract. This should be a modified version of `.ml.fresh.params`
 
 This returns a table keyed by ID column and containing the features extracted from the subset of the data identified by the `ID` column.
 
@@ -231,12 +231,6 @@ q)update valid:0b from `.ml.fresh.params where f in funcs
 
 Modifications to the file `hyperparameters.json` within the FRESH folder allows fine tuning of the number and variety of calculations to be made. Users can create their own features by defining a function within the `.ml.fresh.feat` namespace within `feat.q` and, if necessary, providing relevant hyperparameters in `.ml.fresh.params`.
 
-!!! warning "Change from version 0.1"
-
-	The operating principal of this function has changed relative to that in versions `0.1.x`. In the previous version parameter #4 was a dictionary denoting the functions to be applied to the table. This worked well for producing features from functions that only took the data as input (using `.ml.fresh.getsingleinputfeatures`). 
-
-    To account for multi-parameter functions the structure outlined above has been used as it provides more versatility to function application.
-
 
 ## Feature significance
 
@@ -273,7 +267,7 @@ Where
 -   `target` is a list of targets corresponding to the rows of table `tab` 
 -   `func` is a projection with example syntax `.ml.fresh.kSigFeat 10`
 
-returns a list of features deemed statistically significant according to the userdefined procedure within parameter `func`.
+returns a list of features deemed statistically significant according to the user defined procedure within parameter `func`.
 
 ```q
 // Combination of col avgs
@@ -303,9 +297,4 @@ q)count each (sigBH;sigK;sigP)
 !!! warning "`.ml.fresh.ksigfeat` deprecated"
     The above function was previously defined as `.ml.fresh.ksigfeat`.
     It is still callable but will be deprecated after version 3.0.
-
-!!! warning "Change from version 0.1"
-
-	The input behavior of `.ml.fresh.significantFeatures` has changed to accommodate an increased number of feature-selection methods.
-
 

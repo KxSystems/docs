@@ -9,36 +9,37 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 <div markdown="1" class="typewriter">
 .ml   **Data preprocessing**
-  [applyLabelEncode](#mlapplylabelencode)  Transform integer data to label encode representation
-  [dropConstant](#mldropconstant)      Constant columns removed
-  [fillTab](#mlfilltab)           Tailored filling of null values for a simple matrix
-  [freqEncode](#mlfreqencode)        Numerically encode frequency of category occurance
-  [infReplace](#mlinfreplace)        Replace +/- infinities with max/min of column
+  [applyLabelEncode](#mlapplylabelencode)        Transform integer data to label encode representation
+  [dropConstant](#mldropconstant)            Constant columns removed
+  [fillTab](#mlfilltab)                  Tailored filling of null values for a simple matrix
+  [freqEncode](#mlfreqencode)              Numerically encode frequency of category occurance
+  [infReplace](#mlinfreplace)              Replace +/- infinities with max/min of column
 
   labelEncode       Encode list of symbols to integer values and produce mapping
-	[labelEncode.fit](#mllabelencodefit)  Fit a label encoder model
+	[labelEncode.fit](#mllabelencodefit)        Fit a label encoder model
 	[labelEncode.fitPredict](#mllabelencodefitpredict) Encode categorical data to an integer value representation
 
   lexiEncode        Label categories based on lexigraphical order
-	[lexiEncode.fit](#mllexiencodefit)  Fit lexigraphical ordering model to cateogorical data
-	[lexiEncode.fitPredict](#mllexiencodefitpredict) Encode categorical features based on lexigraphical order
+	[lexiEncode.fit](#mllexiencodefit)          Fit lexigraphical ordering model to cateogorical data
+	[lexiEncode.fitPredict](#mllexiencodefitpredict)   Encode categorical features based on lexigraphical order
 
   minMaxScaler      Data scaled between 0-1
-	[minMaxScaler.fit](#mlminmaxscalerfit)  Fit min max scaling model
+	[minMaxScaler.fit](#mlminmaxscalerfit)        Fit min max scaling model
 	[minMaxScaler.fitPredict](#mlminmaxscalerfitpredict) Scale data between 0-1 based on fitted model
 
   oneHot            One-hot encoding of table or array
-	[oneHot.fit](#mlonehotfit)  Fit one-hot encoding model to categorical data
-	[oneHot.fitPredict](#mlonehotfitpredict) Encode categorical features using one-hot encoding
+	[oneHot.fit](#mlonehotfit)              Fit one-hot encoding model to categorical data
+	[oneHot.fitPredict](#mlonehotfitpredict)       Encode categorical features using one-hot encoding
 	
   polyTab           Polynomial features of degree n from a table
-	[polyTab](#mlpolytab) Polynomial feature generation  
+	[polyTab](#mlpolytab)               Polynomial feature generation  
 
   stdScaler         Standard scaler transform-based representation of a table
-	[stdScaler.fit](#mlstdscalerfit)  Fit standard scaler model
-	[stdScaler.fitPredict](#mlstdscalerfitpredict) Standard scaler transform-based representation of data
+	[stdScaler.fit](#mlstdscalerfit)           Fit standard scaler model
+	[stdScaler.fitPredict](#mlstdscalerfitpredict)    Standard scaler transform based representation of data
 
   timeSplit         Decompose time columns into constituent parts
+    [timeSplit](#mltimesplit)              Split Time series data into constituent parts
 </div>
 
 :fontawesome-brands-github:
@@ -97,7 +98,7 @@ _Remove constant columns_
 ```
 Where 
 
--  `data` is a numerical table/dict
+-  `data` is a numerical table/dictionary
 
 returns `data` without constant columns.
 
@@ -190,14 +191,6 @@ B   23:10:44.297 0.6288875  0.5513535 0.2213819   1      0       0
 !!! warning "`.ml.filltab` deprecated"
     The above function was previously defined as `.ml.filltab`.
     It is still callable but will be deprecated after version 3.0.
-
-!!! note "Form of the `dict` argument"
-
-  	The form of the `dict` argument changed in version 0.2. 
-    Previously, it had the form `` `linear`median!(`x`x1;`x2`x3) ``. 
-    
-    In version `0.2.0` this is has become `` `x`x1`x2`x3!(2#`linear),2#`median ``. 
-
 
 ## `.ml.freqEncode`
 
@@ -311,16 +304,18 @@ Where
 
 returns a dictionary providing the schema mapping values for the input data (`modelInfo`) and a predict function to be used on new data (`predict`)
 
-The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation
-```txt
-`a`b`c!0 1 2
-```
-
-The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
-
-- `data` is a list of any type to be encoded
-
-and returns the data encoded to an integer representation based on the mapping schema created during the fitting of the model. Any values not contained within the schema mapping return -1
+??? "Dictionary return"
+	The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation
+	
+	```
+	`a`b`c!0 1 2
+	```
+	
+	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	
+	- `data` is a list of any type to be encoded
+	
+	returns the data encoded to an integer representation based on the mapping schema created during the fitting of the model. Any values not contained within the schema mapping return -1
 
 ```q
 q)sym:`cab`acb`abc`bac`bca
@@ -386,20 +381,22 @@ Where
 -  `tab` is a simple table
 -  `symCols` is a list of columns to apply encoding to, setting as `::` encodes all sym columns
 
-returns dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be used on new data (`predict`)
+returns a dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be used on new data (`predict`)
 
-The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation for each column in the input table
-```txt
-`col1!`a`b`c!0 1 2
-`col2!`e`f`g!0 1 2
-```
-
-The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
-
--  `tab` is a simple table
--  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping from the fitted data to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
-
-and returns the table with lexigraphical ordering of symbol column. Any values not contained within the schema mapping return -1
+??? "Dictionary return"
+	The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation for each column in the input table
+	
+	```
+	`col1!`a`b`c!0 1 2
+	`col2!`e`f`g!0 1 2
+	```
+	
+	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	
+	-  `tab` is a simple table
+	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping from the fitted data to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
+	
+	returns the table with lexigraphical ordering of symbol column. Any values not contained within the schema mapping return -1
 
 ```q
 q)show tab:([]5?10f;5?`a`b`c;5?`e`f`g)
@@ -519,17 +516,18 @@ Where
 
 returns a dictionary containing the min and max values of the fitted data (`modelInfo`) along with a predict function projection (`predict`)
 
-The min/max value of the data calculated during the fitting process is contained within `modelInfo`
-
-```txt
-`minData`maxData!5 10
-```
-
-The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
-
--  `data` is a numerical table, matrix or list
-
-and returns the min-max scaled representation of the new data based on the values of the fitted model
+??? "Dictionary return"
+	The min/max value of the data calculated during the fitting process is contained within `modelInfo`
+	
+	```
+	`minData`maxData!5 10
+	```
+	
+	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	
+	-  `data` is a numerical table, matrix or list
+	
+	returns the min-max scaled representation of the new data based on the values of the fitted model
 
 ```q
 q)n:5
@@ -642,16 +640,19 @@ Where
 
 returns a dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be applied to new data (`predict`)
 
-The mapping values are contained within `modelInfo`. These values map the distinct symbol values found within each column
-```txt
-`col1`col2!(`a`b;`c`d)
-```
-The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
+??? "Dictionary return"
+	The mapping values are contained within `modelInfo`. These values map the distinct symbol values found within each column
+	
+	```
+	`col1`col2!(`a`b;`c`d)
+	```
+	
+	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	
+	-  `tab` is a simple table
+	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same 
 
--  `tab` is a simple table
--  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
-
-and returns the one hot encoded version of the data based on the values of the fitted model. Any values not contained within the schema mapping return a zero vector in the ohe feature space. 
+	returns the one hot encoded version of the data based on the values of the fitted model. Any values not contained within the schema mapping return a zero vector in the ohe feature space. 
 
 ```q
 q)5#tab:([]5?`a`b`c;5?2;5?10f)
@@ -808,17 +809,18 @@ Where
 
 returns a dictionary containing average and deviation values of the fitted data (`modelInfo`) along with a predict function projection to be used on new data (`predict`)
 
-The avg/dev value of the data used during the fitting process is contained within `modelInfo`
-
-```txt
-`avgData`devData!8 2
-```
-
-The predict functionality is contained within the `predict` attribute. The function takes the following as inputs:
-
--  `data` is a numerical table, matrix or list
-
-and returns the standard scaled representation of the data based on the input values of the fitted model
+??? "Dictionary return"
+	The avg/dev value of the data used during the fitting process is contained within `modelInfo`
+	
+	```
+	`avgData`devData!8 2
+	```
+	
+	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	
+	-  `data` is a numerical table, matrix or list
+	
+	returns the standard scaled representation of the data based on the input values of the fitted model
 
 ```q
 q)n:5

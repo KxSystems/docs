@@ -1,16 +1,12 @@
 ---
-title: Graph and Pipeline | Toolkit | Machine Learning | Documentation for kdb+ and q
+title: ML Graph and Pipeline | Toolkit | Machine Learning | Documentation for kdb+ and q
 description: Graph and Pipeline is a structural framework for developing q/kdb+ solutions, based on a mathematical directed graph.
 author: Conor McCarthy
 date: October 2020
 ---
-# :fontawesome-solid-share-alt: Graph and Pipeline
+# :fontawesome-solid-share-alt: ML Graph and Pipeline
 
-
-
-
-
-Graph and Pipeline is a structural framework for developing q/kdb+ solutions, based on a mathematical directed graph. In mathematics, and more specifically in graph theory, a directed graph is a set of vertices/nodes/points connected by edges, where the edges have an associated direction as shown in the below example:
+The ML Graph and Pipeline library is a structural framework for developing q/kdb+ solutions, based on a mathematical directed graph. In mathematics, and more specifically in graph theory, a directed graph is a set of vertices/nodes/points connected by edges, where the edges have an associated direction as shown in the below example:
 
 ![Directed graph](imgs/directed_graph.png) 
 

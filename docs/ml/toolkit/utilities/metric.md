@@ -32,7 +32,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [rocAucScore](#mlrocaucscore)   Area under an ROC curve
   [sensitivity](#mlsensitivity)   Sensitivity of a binary classifier
   [smape](#mlsmape)         Symmetric mean absolute error
-  [specificity](#mlspecificity)   Specificity of a binary classifier
+  [specificity](#mlspecificity)    Specificity of a binary classifier
   [sse](#mlsse)           Sum squared error
   [tScore](#mltscore)        One-sample t-test score
   [tScoreEqual](#mltscoreeq)   T-test for independent samples with unequal variances
@@ -200,7 +200,7 @@ _Calculate the correlation of a matrix or table_
 
 Where 
 
--  `data`  is a sample from a distribution as a matrix or simple simple
+-  `data`  is a sample from a distribution as a matrix or simple table
 
 returns the covariance of the data
 
@@ -536,7 +536,7 @@ q).ml.rmse[xb;yg]
 
 ## `.ml.rmsle`
 
-_Root mean squared log error_
+_Root mean squared logarithmic error_
 
 ```txt
 .ml.rmsle[pred;true]
@@ -547,7 +547,7 @@ Where
 -   `pred` is a vector of predicted values
 -   `true` is a vector of true values
 
-returns the root mean squared log error between predicted and true values.
+returns the root mean squared logarithmic error between predicted and true values.
 
 ```q
 q).ml.rmsle[100?0b;100?0b]
@@ -559,7 +559,7 @@ q).ml.rmsle[100?5;100?5]
 
 ## `.ml.roc`
 
-_X- and Y-axis values for an ROC curve_
+_X and Y axis values for an ROC curve_
 
 ```txt
 .ml.roc[label;prob]
@@ -643,7 +643,7 @@ Where
 -   `pred` is a vector of predicted values
 -   `true` is a vector of true values
 
-returns the symmetric-mean absolute percentage between predicted and true values.
+returns the symmetric mean absolute percentage error between predicted and true values.
 
 ```q
 q).ml.smape[100?0b;100?0b]
