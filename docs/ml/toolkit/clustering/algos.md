@@ -18,14 +18,16 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
     
 \  Clustering Using REpresentatives (CURE):
     [cure.fit](#mlclustcurefit)                 Fit CURE algorithm
-    [cure.fitPredict](#mlclustcurefitpredict)          Fit CURE algorithm to data and convert dendrogram to clusters
+    [cure.fitPredict](#mlclustcurefitpredict)          Fit CURE algorithm to data and convert dendrogram to 
+                            clusters
     
 \  Density-Based Spatial Clustering of Applications with Noise (DBSCAN):
     [dbscan.fit](#mlclustdbscanfit)               Fit DBSCAN algorithm
     
 \  Hierarchical Clustering (HC):
     [hc.fit](#mlclusthcfit)                   Fit HC algorithm
-    [hc.fitPredict](#mlclustcurefitpredict)   	       Fit HC algorithm to data and convert dendrogram to clusters
+    [hc.fitPredict](#mlclustcurefitpredict)   	       Fit HC algorithm to data and convert dendrogram to 
+                            clusters
     
 \  K-Means:
     [kmeans.fit](#mlclustkmeansfit)               Fit K-Means algorithm
@@ -33,12 +35,12 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 **Dendrogram cutting functionality**
 
 \  Clustering Using REpresentatives (CURE):
-    [cure.cutK](#mlclustcurecutk)                Cut dendrogram to k clusters
-    [cure.cutDist](#mlclustcurecutdist)             Cut dendrogram to clusters based on distance threshold
+    [cure.cutK](#mlclustcurecutk)               Cut dendrogram to k clusters
+    [cure.cutDist](#mlclustcurecutdist)            Cut dendrogram to clusters based on distance threshold
     
 \  Hierarchical Clustering (HC):
-    [hc.cutK](#mlclusthccutk)                  Cut dendrogram to k clusters
-    [hc.cutDist](#mlclusthccutdist)               Cut dendrogram to clusters based on distance threshold
+    [hc.cutK](#mlclusthccutk)                 Cut dendrogram to k clusters
+    [hc.cutDist](#mlclusthccutdist)              Cut dendrogram to clusters based on distance threshold
     
 </div>
 
@@ -98,7 +100,7 @@ q)show data:2 10#20?10.
 // Fit an Affinity model
 q)show APfit:.ml.clust.ap.fit[data;`nege2dist;.3;med;(::)]
 modelInfo| `data`inputs`clust`exemplars!((4.353367 2.253873 0.3467 ..
-predict  | {[data;config]
+predict  | {[config;data]
   config:config`modelInfo;
   data:clust.i.floatConv..
 
@@ -151,7 +153,7 @@ returns a dictionary containing information collected during the fitting process
 	The predict functionality is contained within the `predict` key. This function takes the following inputs:
 	
 	-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-	-   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
+	-   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k`/`dist`) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
 	
 	returns the predicted clusters of the new data
 
@@ -163,7 +165,7 @@ q)show data:2 10#20?10.
 // Fit a CURE model
 q)show CUREfit:.ml.clust.cure.fit[data;`e2dist;2;0.]
 modelInfo| `data`inputs`dgram!((6.12576 9.773429 6.538218 2.012211 1...
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 
 // Information generated during the fitting of the model
@@ -223,7 +225,7 @@ q)show data:2 10#20?10.
 // Fit CURE algorithm
 q)show CUREfit:.ml.clust.cure.fit[data;`e2dist;2;0.]
 modelInfo| `data`inputs`dgram!((0.8501293 9.66548 9.718821 9.04914 0..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 
 // Dendrogram created
@@ -243,7 +245,7 @@ idx1 idx2 dist     n
 // Cut the dendrogram using a distance threshold of 5
 q)show cutDgram:.ml.clust.cure.cutDist[CUREfit;5]
 modelInfo| `data`inputs`dgram!((0.8501293 9.66548 9.718821 9.04914 0..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 clust    | 3 2 0 0 5 0 0 1 4 0
 q)cutDgram`clust
@@ -273,7 +275,7 @@ q)show data:2 10#20?10.
 // Fit CURE algorithm
 q)show CUREfit:.ml.clust.cure.fit[data;`e2dist;2;0.]
 modelInfo| `data`inputs`dgram!((0.8501293 9.66548 9.718821 9.04914 0..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 
 // Dendrogram created
@@ -293,7 +295,7 @@ idx1 idx2 dist     n
 // Cut the dendrogram into 3 clusters
 q)show cutDgram:.ml.clust.cure.cutK[CUREfit;3]
 modelInfo| `data`inputs`dgram!((0.8501293 9.66548 9.718821 9.04914 0..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 clust    | 1 0 0 0 2 0 0 0 0 0
 q)cutDgram`clust
@@ -315,7 +317,7 @@ Where
 -   `df`  is the distance function as a symbol: ``` `e2dist`edist`mdist ``` – see [Distance Metrics](#distance-metrics)
 -   `n` is the number of representative points
 -   `c` is the compression ratio
--   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
+-   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k`/`dist`) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) and the cluster to which each data point belongs (`clust`)
 
@@ -331,7 +333,7 @@ returns a dictionary containing information collected during the fitting process
 	The predict functionality is contained within the `predict` key. This function takes the following inputs:
 	
 	-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-	-   `cutDict` is a dictionary where The key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
+	-   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k`/`dist`) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
 	
 	returns the predicted clusters of the new data
 
@@ -345,7 +347,7 @@ q)show data:2 10#20?10.
 // Fit a CURE model and cut the dendrogram into 3 clusters
 q).ml.clust.cure.fitPredict[data;`e2dist;2;0.;enlist[`k]!enlist 3]
 modelInfo| `data`inputs`dgram!((1.473702 4.080537 3.03448 9.659883 ..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 clust    | 0 0 0 1 1 2 1 0 1 0
 ```
@@ -405,12 +407,12 @@ q)show data:2 10#20?10.
 3.247794 7.064748 5.497131 1.792938 5.106208 2.162566 7.440406 3.08..
 
 // Fit a DBSCAN model
-q)show DBSCANfit:.ml.clust.dbscan.fit[d;`e2dist;2;1]
+q)show DBSCANfit:.ml.clust.dbscan.fit[data;`e2dist;2;1]
 modelInfo| `data`inputs`clust`tab!((5.17263 5.250215 3.552399 1.58..
-predict  | {[data;config]
+predict  | {[config;data]
   config:config[`modelInfo];
   data:clust.i.floatCo..
-update   | {[data;config]
+update   | {[config;data]
   modelConfig:config[`modelInfo];
   data:clust.i.fl..
 
@@ -429,10 +431,10 @@ q)show newData:2 10#20?10.
 3.415333 0.03463214 6.797509 6.255361 7.520247 5.643469 7.430837 9..
 q)show updDBSCAN:DBSCANfit.update[newData]
 modelInfo| `data`inputs`clust`tab!((5.17263 5.250215 3.552399 1.58..
-predict  | {[data;config]
+predict  | {[config;data]
   config:config[`modelInfo];
   data:clust.i.floatCo..
-update   | {[data;config]
+update   | {[config;data]
   modelConfig:config[`modelInfo];
   data:clust.i.fl..
 
@@ -514,7 +516,7 @@ returns a dictionary containing information collected during the fitting process
 	The predict functionality is contained within the `predict` key. This function takes the following inputs:
 	
 	-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-	-   `cutDict` is a dictionary where The key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
+	-   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k`/`dist`) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
 	
 	returns the predicted clusters of the new data
 
@@ -524,9 +526,9 @@ q)show data:2 10#20?10.
 1.897236 6.968966 2.173592 4.644757 8.286445 3.946073 1.496389  8.0..
 
 // Fit single hierarchial model
-q)show HCfit:.ml.clust.hc.fit[d;`e2dist;`single]
+q)show HCfit:.ml.clust.hc.fit[data;`e2dist;`single]
 modelInfo| `data`inputs`dgram!((5.17263 5.250215 3.552399 1.588559 ..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 
 // Information generated during the fitting of the model
@@ -559,9 +561,9 @@ q)HCfit.predict[newData;enlist[`k]!enlist 3]
 2 1 1 1 2 2 1 0 2 0
 
 // Fit complete hierarchial model
-q)show HCfitComp:.ml.clust.hc.fit[d;`e2dist;`complete]
+q)show HCfitComp:.ml.clust.hc.fit[data;`e2dist;`complete]
 modelInfo| `data`inputs`dgram!((5.17263 5.250215 3.552399 1.588559 5..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict.
 
 // Dendrogram created
@@ -601,9 +603,9 @@ q)show data:2 10#20?10.
 4.637059 7.549387 2.165773 7.280013 4.368342 5.276732 4.636653 1.0..
 
 // Fit HC algorithm
-q)show HCfit:.ml.clust.hc.fit[d;`e2dist;`single]
+q)show HCfit:.ml.clust.hc.fit[data;`e2dist;`single]
 modelInfo| `data`inputs`dgram!((5.17263 5.250215 3.552399 1.588559..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 
 // Dendrogram of data
@@ -623,7 +625,7 @@ idx1 idx2 dist      n
 // Cut the dendrogram using a distance threshold of 3
 q)show cutDgram:.ml.clust.hc.cutDist[HCfit;3]
 modelInfo| `data`inputs`dgram!((5.17263 5.250215 3.552399 1.588559 ..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 clust    | 1 3 0 4 2 5 0 1 2 1
 q)cutDgram`clust
@@ -651,9 +653,9 @@ q)show data:2 10#20?10.
 4.637059 7.549387 2.165773 7.280013 4.368342 5.276732 4.636653 1.0..
 
 // Fit HC algorithm
-q)show HCfit:.ml.clust.hc.fit[d;`e2dist;`single]
+q)show HCfit:.ml.clust.hc.fit[data;`e2dist;`single]
 modelInfo| `data`inputs`dgram!((5.17263 5.250215 3.552399 1.588559..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 
 // Dendrogram of data
@@ -673,7 +675,7 @@ idx1 idx2 dist      n
 // Cut the dendrogram into 4 clusters
 q)show cutDgram:.ml.clust.hc.cutK[HCfit;4]
 modelInfo| `data`inputs`dgram!((5.17263 5.250215 3.552399 1.588559..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 clust    | 1 0 0 2 0 3 0 1 0 1
 q)cutDgram`clust
@@ -699,6 +701,7 @@ returns a dictionary containing information collected during the fitting process
 
 ??? "Dictionary return"
 	All relevent information needed to evaluate the model is contained within `modelInfo`. This includes the following information:
+
 	key    | description
 	-------|------------
 	data   | The original data used to fit the model
@@ -708,7 +711,7 @@ returns a dictionary containing information collected during the fitting process
 	The predict functionality is contained within the `predict` key. This function takes the following inputs:
 	
 	-   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
-	-   `cutDict` is a dictionary where The key defines what cutting algo to use when splitting the data into clusters (`k/`dist) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
+	-   `cutDict` is a dictionary where the key defines what cutting algo to use when splitting the data into clusters (`k`/`dist`) and the value defines the cutting threshold. (See [cutDist](#mlclustcurecutDist) and [cutK](#mlclustcurecutK))
 	
 	returns the predicted clusters of the new data
 
@@ -722,7 +725,7 @@ q)show data:2 10#20?10.
 // Fit a HC model and cut the dendrogram into 4 clusters
 q).ml.clust.hc.fitPredict[data;`e2dist;`single;enlist[`k]!enlist 4]
 modelInfo| `data`inputs`dgram!((6.01551 9.775468 9.809354 4.237163 5..
-predict  | {[data;config;cutDict]
+predict  | {[config;data;cutDict]
   updConfig:clust.i.prepPred[config;cutDict..
 clust    | 0 2 2 0 1 3 0 0 0 1
 ```
@@ -755,8 +758,6 @@ Where
 	- `iter` the number of iterations to be completed. Default = `100`
 	- `init` the algorithm used to initialise cluster centers. This is either random (`0b`) or uses [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`). Default = `1b`
 	- `thresh` if a cluster center moves by more than this value along any axis continue algorithm, otherwise stop. Default = `1e-5`.
--   `iter` is the number of iterations to be completed
--   `kpp` is a boolean flag indicating the initializaton type: random (`0b`) or using [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`)
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) along with a projection of the update function (`update`)
 
@@ -788,12 +789,12 @@ show data:2 10#20?10.
 0.2663305 7.935343 1.485224 8.540814 5.74697 2.619185 1.379876 3.23..
 
 // Fit a kmeans model
-show kmeansFit:.ml.clust.kmeans.fit[d;`e2dist;3;::]
+show kmeansFit:.ml.clust.kmeans.fit[data;`e2dist;3;::]
 modelInfo| `repPts`clust`data`inputs!((4.888017 5.941845;7.367534 ..
-predict  | {[data;config]
+predict  | {[config;data]
   config:config[`modelInfo];
   data:clust.i.floatCo..
-update   | {[data;config]
+update   | {[config;data]
   modelConfig:config[`modelInfo];
   data:clust.i.fl..
 
@@ -812,10 +813,10 @@ q)show newData:2 10#20?10.
 8.593928 2.928818 8.618995 4.764543 0.1244285 0.1204939 0.8363438 8..
 q)show updKmeans:kmeansFit.update[newData]
 modelInfo| `repPts`clust`data`inputs!((5.10427 6.862332;7.057065 1..
-predict  | {[data;config]
+predict  | {[config;data]
   config:config[`modelInfo];
   data:clust.i.floatCo..
-update   | {[data;config]
+update   | {[config;data]
   modelConfig:config[`modelInfo];
   data:clust.i.fl..
 

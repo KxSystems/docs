@@ -146,13 +146,11 @@ Where
 This returns a table keyed by ID column and containing the features extracted from the subset of the data identified by the `ID` column.
 
 ```q 
-m:30;n:100
-tab:([]date:raze m#'"d"$til n;
+q)m:30;n:100
+q)tab:([]date:raze m#'"d"$til n;
   time:(m*n)#"t"$til m;
   col1:50*1+(m*n)?20;
   col2:(m*n)?1f )
-```
-```q
 q)10#tab
 date       time         col1 col2       
 ----------------------------------------

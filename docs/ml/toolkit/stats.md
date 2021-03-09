@@ -9,8 +9,8 @@ date: February 2021
 .ml.stats   **Statistical functions**
 
 **Descriptive statistics**
-  [describe](#mlstatsdescribe)          Descriptive information about a table
-  [percentile](#mlstatspercentile)        Percentile calculation for an array
+  [describe](#mlstatsdescribe)         Descriptive information about a table
+  [percentile](#mlstatspercentile)       Percentile calculation for an array
 
 **Statistical Estimation methods**
   [OLS.fit](#mlstatsolsfit)           Train an ordinary least squares model on data
@@ -261,8 +261,8 @@ returns the coefficients and statistical values calculated during the fitting pr
 	
 	-  `coef` The coefficients calculated during the fitting process
 	-  `variables` Statistical values calculated for each coefficient 
-	-  `weights` The weights used for fitting the model
 	-  `statsDict` Descriptive statistics for the regression model. These include: 
+	-  `weights` The weights used for fitting the model
 	
 	key        | description
 	-----------|------------

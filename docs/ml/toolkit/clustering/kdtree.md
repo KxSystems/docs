@@ -10,9 +10,9 @@ keywords: machine learning, ml, clustering, k-means, dbscan, hierarchical, cure,
 <div markdown="1" class="typewriter">
 .ml.clust.kd   **k-d tree functions**
 
-\  [findLeaf](#mlclustkdfindleaf)      find the leaf node to which a datapoint belongs
-  [newTree](#mlclustkdnewtree)       build a k-d tree
-  [nn](#mlclustkdnn)            find the nearest neighbor for a datapoint
+\  [findLeaf](#mlclustkdfindleaf)       Find the leaf node to which a datapoint belongs
+  [newTree](#mlclustkdnewtree)       Build a k-d tree
+  [nn](#mlclustkdnn)            Find the nearest neighbor for a datapoint
 </div>
 
 :fontawesome-brands-github:
@@ -91,18 +91,21 @@ Where
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `leafSize` is the minimum number of datapoints contained within each leaf of the tree.
 
-returns a k-d tree table with columns:
+returns a k-d tree table
 
-```txt
-leaf        whether leaf (boolean)
-left        whether node/leaf is to the left of its parent node (boolean)
-self        tree index of current node
-parent      tree index of the parent node
-children    tree indexes of any child nodes
-axis        splitting dimension of current node (null if leaf node)
-midval      splitting value of current node (null if leaf node)
-idxs        indexes (column in data) of datapoints contained in a leaf
-```
+??? "Table return"
+	The kd-tree table contains the following columns
+	
+	column    | description
+        ----------|-------------------------------
+	leaf      |  Whether this is a leaf in the tree (boolean)
+	left      |  Whether node/leaf is to the left of its parent node (boolean)
+	self      |  Tree index of current node
+	parent    |  Tree index of the parent node
+	children  |  Tree indexes of any child nodes
+	axis      |  Splitting dimension of current node (null if leaf node)
+	midval    |  Splitting value of current node (null if leaf node)
+	idxs      |  Indexes (column in data) of datapoints contained in a leaf
 
 ```q
 q)show data:2 10#20?10.

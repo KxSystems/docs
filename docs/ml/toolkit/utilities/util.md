@@ -102,7 +102,9 @@ _Convert pandas dataframe to q table_
 .ml.df2tab[tab]
 ```
 
-Where  `tab` is an embedPy representation of a Pandas dataframe
+Where  
+
+-  `tab` is an embedPy representation of a Pandas dataframe
 
 returns `tab` as a q table.
 

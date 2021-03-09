@@ -11,21 +11,21 @@ date: August 2020
 .ml.ts   **Timeseries models**
 
 **AR**: AutoRegressive 
-  [AR.fit](#mltsarfit)         Fit an AR model
+  [AR.fit](#mltsarfit)          Fit an AR model
 
 **ARCH**: AutoRegressive Conditional Heteroskedasticity 
-  [ARCH.fit](#mltsarchfit)       Fit an ARCH model
+  [ARCH.fit](#mltsarchfit)        Fit an ARCH model
 
 **ARMA**: AutoRegressive Moving Average 
-  [ARMA.fit](#mltsarmafit)       Fit an ARMA model
+  [ARMA.fit](#mltsarmafit)        Fit an ARMA model
 
 **ARIMA**: AutoRegressive Integrated Moving Average 
   [ARIMA.aicParam](#mltsarimaaicparam) Optimal input parameters for an ARIMA model 
                  based on Akaike Information Criterion score
-  [ARIMA.fit](#mltsarimafit)      Fit an ARIMA model
+  [ARIMA.fit](#mltsarimafit)       Fit an ARIMA model
 
 **SARIMA**: Seasonal AutoRegressive Integrated Moving Average 
-  [SARIMA.fit](#mltssarimafit)     Fit a SARIMA model
+  [SARIMA.fit](#mltssarimafit)      Fit a SARIMA model
 </div>
 
 :fontawesome-brands-github:
@@ -80,11 +80,11 @@ returns a dictionary containing all information collected during the fitting of 
 	
 	key         | description
 	------------|-------------
-	coefficients| model coefficients for future predictions
-	trendCoeff  | trend coefficient
-	exogCoeff   | exog coefficients
+	coefficients| Model coefficients for future predictions
+	trendCoeff  | Trend coefficient
+	exogCoeff   | Exog coefficients
 	pCoeff      | p value coefficients
-	lagVals     | lagged values from the training set
+	lagVals     | Lagged values from the training set
 	
 	The predict functionality is contained within the `predict` key. The function takes the following inputs:
 	
@@ -100,9 +100,9 @@ q)timeSeries:100?10f
 // Fit an AR model with no exogenous variables
 q)show AR:.ml.ts.AR.fit[timeSeries;();3;1b]
 modelInfo| `coefficients`trendCoeff`exogCoeff`pCoeff`lagVals!(4.616603 0.0877..
-predict  | {[model;exog;len]
-  exog:ts.i.predDataCheck[model;exog];
-  model[`..
+predict  | {[config;exog;len]
+  model:config`modelInfo;
+  exog:ts.i.predDataC..
 
 // Information generated during the fitting of the model
 q)AR.modelInfo
@@ -166,11 +166,11 @@ returns a dictionary containing all information collected during the fitting of 
 	
 	key         | description
 	------------|---------------
-	params      | model coefficients for future predictions
-	trendCoeff  | trend coefficient
-	exogCoeff   | exog coefficients
-	pCoeff      | lag value coefficients
-	residualVals| lagged residual errors from the input training set
+	params      | Model coefficients for future predictions
+	trendCoeff  | Trend coefficient
+	exogCoeff   | Exog coefficients
+	pCoeff      | Lag value coefficients
+	residualVals| Lagged residual errors from the input training set
 	
 	The predict functionality is contained within the `predict` key. The function takes the following inputs:
 	
@@ -184,9 +184,9 @@ q)residuals:100?10f
 // Fit an ARCH model
 q)show ARCH:.ml.ts.ARCH.fit[residuals;2]
 modelInfo| `coefficients`trendCoeff`pCoeff`residualVals!(31.3159 0.2171911 -0..
-predict  | {[model;len]
-  last{x>count y 1}[len;]ts.i.ARCH.singlePredict
-    ..
+predict  | {[config;len]
+  model:config`modelInfo;
+  last{x>count y 1}[len;]t.
 
 // Information generated during the fitting of the model
 q)ARCH.modelInfo
@@ -243,15 +243,15 @@ returns a dictionary containing all information collected during the fitting of 
 	
 	key           |  description
 	--------------|--------	
-	coefficients  | model coefficients for future predictions
-	trendCoeff    |  trend coefficient
-	exogCoeff     | exog coefficients
+	coefficients  | Model coefficients for future predictions
+	trendCoeff    | Trend coefficient
+	exogCoeff     | Exog coefficients
 	pCoeff        | p value coefficients
 	qCoeff        | q coefficients
-	lagVals       | lagged values from the training set
+	lagVals       | Lagged values from the training set
 	residualVals  | q residual errors calculated from training set using the params
-	residualCoeffs| coefficients used to estimate resid errors
-	paramDict     | a dictionary containing information about the model used for fitting
+	residualCoeffs| Coefficients used to estimate resid errors
+	paramDict     | A dictionary containing information about the model used for fitting
 	
 	The predict functionality is contained within the `predict` key. The function takes the following inputs:
 	
@@ -267,9 +267,9 @@ q)exogVar:([]100?10f;100?1f)
 // Fit an ARMA model with exogenous variables
 q)show ARMA:.ml.ts.ARMA.fit[timeSeries;exogVar;2;1;0b]
 modelInfo| `coefficients`trendCoeff`exogCoeff`pCoeff`qCoeff`lagVals`residualV..
-predict  | {[model;exog;len]
-  exog:ts.i.predDataCheck[model;exog];
-  ts.i.pr..
+predict  | {[config;exog;len]
+  model:config`modelInfo;
+  exog:ts.i.predDataC..
 
 // Information generated during the fitting of the model
 q)ARMA.modelInfo
@@ -404,16 +404,16 @@ returns a dictionary containing all information collected during the fitting of 
 	
 	key           | description
 	--------------|------------
-	coefficients  | model coefficients for future predictions
-	trendCoeff    | trend coefficient
-	exogCoeff     | exog coefficients
-	pCoeff        | lag value coefficients
-	qCoeff        | error coefficients
-	lagVals       | lagged values from the training set
+	coefficients  | Model coefficients for future predictions
+	trendCoeff    | Trend coefficient
+	exogCoeff     | Exog coefficients
+	pCoeff        | Lag value coefficients
+	qCoeff        | Error coefficients
+	lagVals       | Lagged values from the training set
 	residualVals  | q residual errors calculated from training set using the params
-	residualCoeffs| coefficients used to estimate resid errors
-	originalData  | original values to use to transform seasonal differencing to original format
-	paramDict     | a dictionary containing information about the model used for fitting
+	residualCoeffs| Coefficients used to estimate resid errors
+	paramDict     | A dictionary containing information about the model used for fitting
+	originalData  | Original values to use to transform seasonal differencing to original format
 
 	The predict functionality is contained within the `predict` key. The function takes the following inputs:
 	
@@ -430,9 +430,9 @@ q)exogVar:([]100?10f;100?1f)
 // Fit an ARIMA model with exogenous variables
 q)show ARIMA:.ml.ts.ARIMA.fit[timeSeries;exogVar;3;1;2;1b]
 modelInfo| `coefficients`trendCoeff`exogCoeff`pCoeff`qCoeff`lagVals`residualV..
-predict  | {[model;exog;len]
-  exog:ts.i.predDataCheck[model;exog];
-  // Calc..
+predict  | {[config;exog;len]
+  model:config`modelInfo;
+  exog:ts.i.predDataC..
 
 // Information generated during the fitting of the model
 q)ARIMA.modelInfo
@@ -504,19 +504,19 @@ returns a dictionary containing all information collected during the fitting of 
 	
 	key           | description
 	--------------|------------
-	coefficients  |  model coefficients for future predictions
-	trendCoeff    |  trend coefficient
-	exogCoeff     |  exog coefficients
-	pCoeff        |  lag value coefficients
-	qCoeff        |  error coefficients
-	PCoeff        |  seasonal lag value coefficients
-	QCoeff        |  seasonal error coefficients
-	lagVals       |  lagged values from the training set
+	coefficients  |  Model coefficients for future predictions
+	trendCoeff    |  Trend coefficient
+	exogCoeff     |  Exog coefficients
+	pCoeff        |  Lag value coefficients
+	qCoeff        |  Error coefficients
+	PCoeff        |  Seasonal lag value coefficients
+	QCoeff        |  Leasonal error coefficients
+	lagVals       |  Lagged values from the training set
 	residualVals  |  q residual errors calculated from training set using the params
-	residualCoeffs|  coefficients used to estimate resid errors
-	originalData  |  original values of input values before being differenciated
-	seasonData    |  original values to transform seasonal differencing to original format
-	paramDict     |  a dictionary containing information about the model used for fitting
+	residualCoeffs|  Coefficients used to estimate resid errors
+	paramDict     |  A dictionary containing information about the model used for fitting
+	originalData  |  Original values of input values before being differenciated
+	seasonData    |  Original values to transform seasonal differencing to original format
 	
 	The predict functionality is contained within the `predict` key. The function takes the following inputs:
 	
@@ -547,9 +547,9 @@ m| 10
 // Fit an AR model with no exogenous variables
 q)show SARIMA:.ml.ts.SARIMA.fit[timeSeries;();3;0;1;1b;s]
 modelInfo| `coefficients`trendCoeff`exogCoeff`pCoeff`qCoeff`PCoeff`QCoeff`lag..
-predict  | {[model;exog;len]
-  exog:ts.i.predDataCheck[model;exog];
-  // Calc..
+predict  | {[config;exog;len]
+  model:config`modelInfo;
+  exog:ts.i.predDataC..
 
 // Information generated during the fitting of the model
 q)SARIMA.modelInfo

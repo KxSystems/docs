@@ -9,37 +9,38 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 <div markdown="1" class="typewriter">
 .ml   **Data preprocessing**
-  [applyLabelEncode](#mlapplylabelencode)        Transform integer data to label encode representation
-  [dropConstant](#mldropconstant)            Constant columns removed
-  [fillTab](#mlfilltab)                  Tailored filling of null values for a simple matrix
-  [freqEncode](#mlfreqencode)              Numerically encode frequency of category occurance
-  [infReplace](#mlinfreplace)              Replace +/- infinities with max/min of column
+  [applyLabelEncode](#mlapplylabelencode)           Transform integer data to label encode representation
+  [dropConstant](#mldropconstant)               Constant columns removed
+  [fillTab](#mlfilltab)                     Tailored filling of null values for a simple matrix
+  [freqEncode](#mlfreqencode)                 Numerically encode frequency of category occurance
+  [infReplace](#mlinfreplace)                 Replace +/- infinities with max/min of column
 
   labelEncode       Encode list of symbols to integer values and produce mapping
-	[labelEncode.fit](#mllabelencodefit)        Fit a label encoder model
-	[labelEncode.fitPredict](#mllabelencodefitpredict) Encode categorical data to an integer value representation
+	[labelEncode.fit](#mllabelencodefit)           Fit a label encoder model
+	[labelEncode.fitTransform](#mllabelencodefittransform)  Encode categorical data to an integer value 
+                             representation
 
   lexiEncode        Label categories based on lexigraphical order
-	[lexiEncode.fit](#mllexiencodefit)          Fit lexigraphical ordering model to cateogorical data
-	[lexiEncode.fitPredict](#mllexiencodefitpredict)   Encode categorical features based on lexigraphical order
+	[lexiEncode.fit](#mllexiencodefit)            Fit lexigraphical ordering model to cateogorical data
+	[lexiEncode.fitTransform](#mllexiencodefittransform)   Encode categorical features based on lexigraphical order
 
   minMaxScaler      Data scaled between 0-1
-	[minMaxScaler.fit](#mlminmaxscalerfit)        Fit min max scaling model
-	[minMaxScaler.fitPredict](#mlminmaxscalerfitpredict) Scale data between 0-1 based on fitted model
+	[minMaxScaler.fit](#mlminmaxscalerfit)          Fit min max scaling model
+	[minMaxScaler.fitTransform](#mlminmaxscalerfittransform) Scale data between 0-1 based on fitted model
 
   oneHot            One-hot encoding of table or array
-	[oneHot.fit](#mlonehotfit)              Fit one-hot encoding model to categorical data
-	[oneHot.fitPredict](#mlonehotfitpredict)       Encode categorical features using one-hot encoding
+	[oneHot.fit](#mlonehotfit)                Fit one-hot encoding model to categorical data
+	[oneHot.fitTransform](#mlonehotfittransform)       Encode categorical features using one-hot encoding
 	
   polyTab           Polynomial features of degree n from a table
-	[polyTab](#mlpolytab)               Polynomial feature generation  
+	[polyTab](#mlpolytab)                  Polynomial feature generation  
 
   stdScaler         Standard scaler transform-based representation of a table
-	[stdScaler.fit](#mlstdscalerfit)           Fit standard scaler model
-	[stdScaler.fitPredict](#mlstdscalerfitpredict)    Standard scaler transform based representation of data
+	[stdScaler.fit](#mlstdscalerfit)             Fit standard scaler model
+	[stdScaler.fitTransform](#mlstdscalerfittransform)    Standard scaler transform based representation of data
 
   timeSplit         Decompose time columns into constituent parts
-    [timeSplit](#mltimesplit)              Split Time series data into constituent parts
+    [timeSplit](#mltimesplit)                Split Time series data into constituent parts
 </div>
 
 :fontawesome-brands-github:
@@ -72,9 +73,10 @@ q)symList:`a`a`a`b`a`b`b`c`c`c`c
 // Produced and display a symbol encoding schema
 q)show schema:.ml.labelEncode.fit[symList]
 modelInfo| `s#`a`b`c!0 1 2
-predict  | {[data;map]
+transform| {[config;data]
+  map:config`modelInfo;
   -1^map data
-  }[;`s#`a`b`c!0 1 2]
+  }[(,`modelI..
 
 // Generate a list of integers to apply the schema to
 q)newList:0 0 1 2 2 2 0 1 4
@@ -82,7 +84,7 @@ q)newList:0 0 1 2 2 2 0 1 4
 // Apply the schema completely and the mapping itself to the new list
 q).ml.applyLabelEncode[newList;schema]
 `a`a`b`c`c`c`a`b`
-q).ml.applyLabelEncode[newList;schema`mapping]
+q).ml.applyLabelEncode[newList;schema`modelInfo]
 `a`a`b`c`c`c`a`b`
 ```
 !!! warning "`.ml.applylabelencode` deprecated"
@@ -302,7 +304,7 @@ Where
 
 -  `data` is a list of any type to encode
 
-returns a dictionary providing the schema mapping values for the input data (`modelInfo`) and a predict function to be used on new data (`predict`)
+returns a dictionary providing the schema mapping values for the input data (`modelInfo`) and a transform function to be used on new data (`transform`)
 
 ??? "Dictionary return"
 	The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation
@@ -311,7 +313,7 @@ returns a dictionary providing the schema mapping values for the input data (`mo
 	`a`b`c!0 1 2
 	```
 	
-	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
 	
 	- `data` is a list of any type to be encoded
 	
@@ -321,9 +323,11 @@ returns a dictionary providing the schema mapping values for the input data (`mo
 q)sym:`cab`acb`abc`bac`bca
 q)show symEncode:.ml.labelEncode.fit[sym]
 modelInfo| `s#`abc`acb`bac`bca`cab!0 1 2 3 4
-predict  | {[data;map]
+transform| {[config;data]
+  map:config`modelInfo;
   -1^map data
-  }[;`s#`abc`acb`bac`bca`cab!0 1 2 3 4]
+  }[(,`modelI..
+
 // Extract the schema mapping
 q)symEncode.modelInfo
 abc| 0
@@ -332,21 +336,21 @@ bac| 2
 bca| 3
 cab| 4
 
-// Predict on new values using fitted model
+// Transform new values using fitted model
 q)newSym:`acb`acb`bca`bac
-q)symEncode.predict[newSym]
+q)symEncode.transform[newSym]
 1 1 3 2
 // Values not included in the mapping return -1
-q)symEncode.predict[newSym,`aaa]
+q)symEncode.transform[newSym,`aaa]
 1 1 3 2 -1
 ```
 
-##`.ml.labelEncode.fitPredict`
+##`.ml.labelEncode.fitTransform`
 
 _Encode categorical data to an integer value representation_
 
 ```txt
-.ml.labelEncode.fitPredict[data]
+.ml.labelEncode.fitTransform[data]
 ```
 
 Where
@@ -357,12 +361,12 @@ returns a list encoded to an integer representation
 
 ```q
 q)sym:`cab`acb`abc`bac`bca
-q)show symEncode:.ml.labelEncode.fitPredict[sym]
+q)show symEncode:.ml.labelEncode.fitTransform[sym]
 4 1 0 2 3
 
 q)show floats:5?1f
 0.439081 0.5759051 0.5919004 0.8481567 0.389056
-q)show floatEncode:.ml.labelEncode.fitPredict[floats]
+q)show floatEncode:.ml.labelEncode.fitTransform[floats]
 1 2 3 4 0
 ```
 !!! warning "`.ml.labelencode` deprecated"
@@ -381,7 +385,7 @@ Where
 -  `tab` is a simple table
 -  `symCols` is a list of columns to apply encoding to, setting as `::` encodes all sym columns
 
-returns a dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be used on new data (`predict`)
+returns a dictionary containing mapping information (`modelInfo`) and a projection of the transformation function to be used on new data (`transform`)
 
 ??? "Dictionary return"
 	The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation for each column in the input table
@@ -391,10 +395,10 @@ returns a dictionary containing mapping information (`modelInfo`) and a projecti
 	`col2!`e`f`g!0 1 2
 	```
 	
-	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
 	
 	-  `tab` is a simple table
-	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping from the fitted data to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same
+	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping from the fitted data to use when encoding. If (::) is used, it is assumed that the columns in the fit and transform table are the same
 	
 	returns the table with lexigraphical ordering of symbol column. Any values not contained within the schema mapping return -1
 
@@ -410,15 +414,16 @@ x        x1 x2
 
 q)show lexi:.ml.lexiEncode.fit[tab;::]
 modelInfo| `x1`x2!(`s#`a`b`c!0 1 2;`s#`e`f`g!0 1 2)
-predict  | {[tab;symDict;mapDict]
-  symDict:i.mappingCheck[tab;symDict;mapDic..
+transform| {[config;tab;symDict]
+  mapDict:config`modelInfo;
+  symDict:i.mapp..
 
 // Extract the schema mapping
 q)lexi.modelInfo
-x1| `s#`a`c!0 1
+x1| `s#`a`b`c!0 1 2
 x2| `s#`e`f`g!0 1 2
 
-// Predict on new data
+// Transform new data
 show tab2:([]5?10f;5?`a`b`c;5?`e`f`g)
 x         x1 x2
 ---------------
@@ -427,7 +432,7 @@ x         x1 x2
 5.039259  c  g 
 4.913808  b  e 
 0.6653002 a  f 
-q)lexi.predict[tab2;::]
+q)lexi.transform[tab2;::]
 x         x1_lexi x2_lexi
 -------------------------
 8.946904  2       1      
@@ -445,7 +450,7 @@ x         x1
 6.086995  e 
 6.389854  e 
 // Define the columns to encode and what mapping to use
-q)lexi.predict[tab3;enlist[`x1]!enlist`x2]
+q)lexi.transform[tab3;enlist[`x1]!enlist`x2]
 x         x1_lexi
 -----------------
 7.69514   0      
@@ -455,12 +460,12 @@ x         x1_lexi
 6.389854  0   
 ```
 
-## `.ml.lexiEncode.fitPredict`
+## `.ml.lexiEncode.fitTransform`
 
 _Encode categorical features based on lexigraphical order_
 
 ```txt
-.ml.lexiEncode.fitPredict[tab;symCols]
+.ml.lexiEncode.fitTransform[tab;symCols]
 ```
 
 Where
@@ -479,7 +484,7 @@ x         x1 x2
 0.7424075 a  e 
 8.202035  b  g 
 6.618763  b  f 
-q).ml.lexiEncode.fitPredict[tab;::] / default behaviour
+q).ml.lexiEncode.fitTransform[tab;::] / default behaviour
 x         x1_lexi x2_lexi
 -------------------------
 2.144001  0       0      
@@ -488,7 +493,7 @@ x         x1_lexi x2_lexi
 8.202035  1       2      
 6.618763  1       1      
 
-q).ml.lexiEncode.fitPredict[tab;`x1] /custom behaviour
+q).ml.lexiEncode.fitTransform[tab;`x1] /custom behaviour
 x         x2 x1_lexi
 --------------------
 2.144001  e  0      
@@ -514,7 +519,7 @@ Where
 
 -  `data` is a numerical table, matrix or list
 
-returns a dictionary containing the min and max values of the fitted data (`modelInfo`) along with a predict function projection (`predict`)
+returns a dictionary containing the min and max values of the fitted data (`modelInfo`) along with a transform function projection (`transform`)
 
 ??? "Dictionary return"
 	The min/max value of the data calculated during the fitting process is contained within `modelInfo`
@@ -523,7 +528,7 @@ returns a dictionary containing the min and max values of the fitted data (`mode
 	`minData`maxData!5 10
 	```
 	
-	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
 	
 	-  `data` is a numerical table, matrix or list
 	
@@ -542,7 +547,7 @@ x        x1  x2       x3
 
 q)show minMax:.ml.minMaxScaler.fit[tab]
 modelInfo| `minData`maxData!+`x`x1`x2`x3!(7.043811 56.15261;362 745..
-predict  | {[func;data]
+transform  | {[func;data]
   $[0=type data;
       func data;
     98=type data;
@@ -562,7 +567,7 @@ x        x1  x2       x3
 37.14973 494 7.757332 12.19597
 17.44659 518 63.74637 33.59063
 58.97202 457 97.61246 43.19796
-q)minMax.predict tab2
+q)minMax.transform tab2
 x         x1        x2         x3       
 ----------------------------------------
 1.194155  1.349869  0.9186024  0.6216103
@@ -572,12 +577,12 @@ x         x1        x2         x3
 1.057411  0.2480418 1.073764   1.002742 
 ```
 
-## `.ml.minMaxScaler.fitPredict`
+## `.ml.minMaxScaler.fitTransform`
 
 _Scale data between 0-1_
 
 ```txt 
-.ml.minMaxScaler.fitPredict[data]
+.ml.minMaxScaler.fitTransform[data]
 ```
 
 Where
@@ -596,7 +601,7 @@ x        x1  x2       x3
 81.58957 779 48.1821  35.12275
 60.91539 340 20.65625 17.7519 
 98.30794 153 52.29178 18.07572
-q).ml.minMaxScaler.fitPredict[tab]
+q).ml.minMaxScaler.fitTransform[tab]
 x         x1        x2           x3        
 -------------------------------------------
 0.9637413 0.9440895 1            1         
@@ -610,14 +615,14 @@ q)show mat:value flip tab
 744      701      779      340      153     
 90.89531 20.62569 48.1821  20.65625 52.29178
 47.75451 30.79257 35.12275 17.7519  18.07572
-q).ml.minMaxScaler.fitPredict[mat]
+q).ml.minMaxScaler.fitTransform[mat]
 0.9637413 0         0.8069766 0.5682811    1         
 0.9440895 0.8753994 1         0.298722     0         
 1         0         0.3921525 0.0004348562 0.450637  
 1         0.4346513 0.578978  0            0.01079286
 
 q)list:100?100
-q).ml.minMaxScaler.fitPredict[list]
+q).ml.minMaxScaler.fitTransform[list]
 0.2525253 0.7373737 0 0.06060606 0.3838384 0.7272727 0.1313131 0.7777778 0.64..
 ```
 
@@ -638,7 +643,7 @@ Where
 -  `tab` a table containing numeric and non numerical data
 -  `symCols` is a list of columns as symbols to apply encoding to, setting as `::` will encode all symbol columns
 
-returns a dictionary containing mapping information (`modelInfo`) and a projection of the prediction function to be applied to new data (`predict`)
+returns a dictionary containing mapping information (`modelInfo`) and a projection of the transformation function to be applied to new data (`transform`)
 
 ??? "Dictionary return"
 	The mapping values are contained within `modelInfo`. These values map the distinct symbol values found within each column
@@ -647,10 +652,10 @@ returns a dictionary containing mapping information (`modelInfo`) and a projecti
 	`col1`col2!(`a`b;`c`d)
 	```
 	
-	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
 	
 	-  `tab` is a simple table
-	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and predict table are the same 
+	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and transform table are the same 
 
 	returns the one hot encoded version of the data based on the values of the fitted model. Any values not contained within the schema mapping return a zero vector in the ohe feature space. 
 
@@ -658,31 +663,33 @@ returns a dictionary containing mapping information (`modelInfo`) and a projecti
 q)5#tab:([]5?`a`b`c;5?2;5?10f)
 x x1 x2       
 --------------
-b 0  2.032099 
-a 1  2.310648 
-a 1  3.138309 
-a 0  0.1974141
-a 0  5.611439 
+c 0  1.200717 
+b 1  4.089565 
+c 1  5.700753 
+b 1  0.8786376
+b 0  4.219038 
 q)show oneHot:.ml.oneHot.fit[tab;::]
-modelInfo| (,`x)!,`s#`a`b
-predict  | {[tab;symDict;mapDict]
-  symDict:i.mappingCheck[tab;symDict;mapDic..
+modelInfo| (,`x)!,`s#`b`c
+transform| {[config;tab;symDict]
+  mapDict:config`modelInfo;
+  symDict:i.mapp..
+
 // Extract the mapping info per column
 q)oneHot.modelInfo
-x| a b
+x| b c
 
 // One hot encode new data
 q)5#tab2:([]5?2;5?`a`b`c;5?10f)
 x x1 x2      
 -------------
-1 a  6.168275
-0 b  6.876426
-0 c  6.123797
-0 a  9.363029
-1 c  2.188574
+1 b  4.988226
+0 a  8.207332
+0 b  6.44946 
+1 b  3.695111
+0 b  6.620432
 // The x1 column in the new data will be encoded
 // based off the mapping from `x in the fitted model
-q)oneHot.predict[tab2;enlist[`x1]!enlist `x]
+q)oneHot.transform[tab2;enlist[`x1]!enlist `x]
 x x2       x1_a x1_b
 --------------------
 1 6.168275 1    0   
@@ -692,12 +699,12 @@ x x2       x1_a x1_b
 1 2.188574 0    0 
 ```
 
-## `.ml.oneHot.fitPredict`
+## `.ml.oneHot.fitTransform`
 
 _Encode categorical features using one-hot encoded fitted model_
 
 ```txt
-oneHot.fitPredict[tab;symCols]
+oneHot.fitTransform[tab;symCols]
 ```
 
 Where
@@ -716,7 +723,7 @@ a 1  2.310648
 a 1  3.138309 
 a 0  0.1974141
 a 0  5.611439 
-q).ml.oneHot.fitPredict[tab;::]
+q).ml.oneHot.fitTransform[tab;::]
 x1 x2        x_a x_b
 --------------------
 0  2.032099  0   1  
@@ -724,7 +731,7 @@ x1 x2        x_a x_b
 1  3.138309  1   0  
 0  0.1974141 1   0  
 0  5.611439  1   0  
-q).ml.oneHot.fitPredict[tab;`x`x1]
+q).ml.oneHot.fitTransform[tab;`x`x1]
 x2        x_a x_b x1_0 x1_1
 ---------------------------
 2.032099  0   1   1    0   
@@ -807,7 +814,7 @@ Where
 
 -  `data` is a simple numerical table, matrix or list
 
-returns a dictionary containing average and deviation values of the fitted data (`modelInfo`) along with a predict function projection to be used on new data (`predict`)
+returns a dictionary containing average and deviation values of the fitted data (`modelInfo`) along with a transform function projection to be used on new data (`transform`)
 
 ??? "Dictionary return"
 	The avg/dev value of the data used during the fitting process is contained within `modelInfo`
@@ -816,7 +823,7 @@ returns a dictionary containing average and deviation values of the fitted data 
 	`avgData`devData!8 2
 	```
 	
-	The predict functionality is contained within the `predict` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
 	
 	-  `data` is a numerical table, matrix or list
 	
@@ -835,7 +842,7 @@ x        x1  x2       x3
 
 q)show stdScale:.ml.stdScaler.fit[tab]
 modelInfo| `avgData`devData!+`x`x1`x2`x3!(43.54656 17.02114;372.6 281..
-predict  | {[func;data]
+transform| {[func;data]
   $[0=type data;
       func data;
     98=type data;
@@ -856,7 +863,7 @@ x        x1  x2       x3
 46.24471 288 40.90672 19.41565
 8.077328 421 63.22979 24.21895
 5.367945 760 49.65883 3.92097 
-q)stdScale.predict[tab2]
+q)stdScale.transform[tab2]
 x          x1         x2         x3        
 -------------------------------------------
 -0.4900747 0.6543112  -0.4294775 0.625628  
@@ -866,12 +873,12 @@ x          x1         x2         x3
 -2.243011  1.374621   0.9736847  -2.488272 
 ```
 
-## `.ml.stdScaler.fitPredict`
+## `.ml.stdScaler.fitTransform`
 
 _Standard scaler transform-based representation of data_
 
 ```txt
-.ml.stdScaler.fitPredict[data]
+.ml.stdScaler.fitTransform[data]
 ```
 Where
 
@@ -889,7 +896,7 @@ x        x1  x2       x3
 65.49844 34  24.00771 38.60175
 26.43322 809 10.39355 39.7236 
 31.14316 415 23.53326 48.96199
-q).ml.stdScaler.fitPredict[tab]
+q).ml.stdScaler.fitTransform[tab]
 x          x1         x2         x3       
 ------------------------------------------
 1.14311    0.4627017  1.941597   -1.92179 
@@ -903,14 +910,14 @@ q)show mat:value flip tab
 503      102      34       809      415     
 70.51033 14.97004 24.00771 10.39355 23.53326
 11.2785  42.62871 38.60175 39.7236  48.96199
-q).ml.stdScaler.fitPredict[mat]
+q).ml.stdScaler.fitTransform[mat]
 1.14311   -0.698672  1.289683   -1.005416  -0.7287051
 0.4627017 -0.9601769 -1.201463  1.548489   0.150449  
 1.941597  -0.6365448 -0.2170228 -0.8489826 -0.2390463
 -1.92179  0.4919733  0.1819231  0.2682987  0.9795947
 
 q)list:100?100
-q).ml.stdScaler.fitPredict[list]
+q).ml.stdScaler.fitTransform[list]
 -0.1968835 1.653525 0.06217373 -1.455161 0.2842228 -1.418153 1.542501 -0.5669..
 ```
 
