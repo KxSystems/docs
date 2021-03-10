@@ -44,7 +44,7 @@ Outside its containing namespace, an object is known by the full name of its con
 
 Namespaces can contain other namespaces.
 
-Thus `.fee.fi.fo`  is the name of object `fo` within namespace `fi` within namespace `foo`. 
+Thus `.fee.fi.fo`  is the name of object `fo` within namespace `fi` within namespace `fee`. 
 
 
 ## Dictionaries
