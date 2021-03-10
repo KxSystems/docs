@@ -53,16 +53,13 @@ The community of kdb+ developers is active around the world and around the clock
 
 ## :fontawesome-brands-twitter: Twitter
 
-<div markdown="1" style="float:left; margin-right:10px;">
-![Rebecca Kelly, KX Evangelist](img/rebeccakelly.jpg)
-</div>
+![Rebecca Kelly, KX Evangelist](img/faces/rebeccakelly.jpg)
+{: .small-face}
 
-<div markdown="1" style="padding-top:5px;">
 [@RebeccaK_kx](https://twitter.com/RebeccaK_kx)
 is the KX Evangelist.
 <br>
 Voted [Tech Evangelist of the Year](https://firstderivatives.com/careers/blogs/tech-evangelist-of-the-year/), NYC, 2020.
-</div>
 
 [#kdb/q](https://twitter.com/search?q=%23kdb%2Fq)
 
