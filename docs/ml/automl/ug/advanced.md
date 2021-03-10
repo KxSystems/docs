@@ -136,7 +136,7 @@ params:enlist[`aggregationColumns]!enlist`timestamp`v
 
 ## `crossValidationFunction/Argument`
 
-_Cross validation function and number of folds/percentage of data in validation set_
+_Cross-validation function and number of folds/percentage of data in validation set_
 
 `crossValidationFunction` is the name of the cross-validation function to apply as a symbol and `crossValidationArgument` is the associated argument – either the number of folds to apply or the percentage of data in the validation set.
 
@@ -168,7 +168,7 @@ params:`crossValidationFunction`crossValidationArgument!
 .automl.fit[features;target;ftype;ptype;params]
 ```
 
-!!! warning "Custom crossvalidation function"
+!!! warning "Custom cross-validation function"
 
     To add a custom cross-validation function to those provided, follow the [guidelines for function definition](../../toolkit/xval.md).
 
@@ -185,7 +185,7 @@ FRESH
 
 Normal
 
-: By default, normal feature extraction simply entails the decomposition of any temporal types into their component parts. you can augnment this to add new functionality where a list of supplied functions must input/output a simple table.
+: By default, normal feature extraction simply entails the decomposition of any temporal types into their component parts. you can augment this to add new functionality where a list of supplied functions must input/output a simple table.
 
 NLP
 

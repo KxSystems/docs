@@ -27,18 +27,26 @@ Optimum number of clusters
 
 Scoring metrics allow you to validate the performance of your clustering algorithms in three distinct use cases.
 
-use case | analysis
----------|---------
-Unsupervised learning | These metrics analyze how well data has been assigned to clusters, measuring intra-cluster similarity (cohesion) and differences (separation). In general, clustering is said to be successful if clusters are well spaced and densely packed. Used when the true cluster assignment is not known.
-Supervised learning | If the true and predicted labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
-Optimum number of clusters | The optimum number of clusters can be found manually in a number of ways using techniques above. If the required number of clusters is not known prior to clustering, the Elbow Method is used to estimate the optimum number of clusters within the dataset using K-means clustering.
 
+Unsupervised learning 
+
+: These metrics analyze how well data has been assigned to clusters, measuring intra-cluster similarity (cohesion) and differences (separation). In general, clustering is said to be successful if clusters are well spaced and densely packed. Used when the true cluster assignment is not known.
+
+Supervised learning 
+
+: If the true and predicted labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
+
+Optimum number of clusters 
+
+: The optimum number of clusters can be found manually in a number of ways using techniques above. If the required number of clusters is not known prior to clustering, the Elbow Method is used to estimate the optimum number of clusters within the dataset using K-means clustering.
+
+---
 
 ## `.ml.clust.daviesBouldin`
 
 _Davies-Bouldin index_
 
-```txt
+```syntax
 .ml.clust.daviesBouldin[data;clusts]
 ```
 
@@ -71,7 +79,7 @@ The Davies-Bouldin index works by calculating the ratio of how scattered data po
 ## `.ml.clust.dunn`
 _Dunn index_
 
-```txt
+```syntax
 .ml.clust.dunn[data;df;clusts]
 ```
 
@@ -107,7 +115,7 @@ The Dunn index is calculated based on the minimum inter-cluster distance divided
 
 _The elbow method_
 
-```txt
+```syntax
 .ml.clust.elbow[data;df;k]
 ```
 
@@ -138,7 +146,7 @@ It is clear that the elbow score occurs when the data should be grouped into 3 c
 
 _Homogeneity score_
 
-```txt
+```syntax
 .ml.clust.homogeneity[pred;true]
 ```
 
@@ -167,7 +175,7 @@ Homogeneity score works on the basis that a cluster should contain only samples 
 
 _Silhouette coefficient_
 
-```txt
+```syntax
 .ml.clust.silhouette[data;df;clusts;isAvg]
 ```
 

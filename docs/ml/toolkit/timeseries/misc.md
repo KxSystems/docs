@@ -21,11 +21,12 @@ date: September 2020
 :fontawesome-brands-github:
 [KxSystems/ml/timeseries](https://github.com/KxSystems/ml/tree/master/timeseries)
 
+
 ## `.ml.ts.laggedFeatures`
 
 _Create lagged features from an equispaced tabular time series dataset_
 
-```txt
+```syntax
 .ml.ts.laggedFeatures[tab;colNames;lags]
 ```
 
@@ -85,11 +86,49 @@ x                             x1       x2 x1_xprev_1 x2_xprev_1 x1_xprev_7 x2..
 ```
 
 
+
+
+## `.ml.ts.stationarity`
+
+_Summary of the stationarity of a set of timeseries data using an augmented Dickey-Fuller test_
+
+```syntax
+.ml.ts.stationarity data
+```
+
+Where `data` is a dictionary, table or vector of numerical timeseries data,
+returns a keyed table outlining the stationarity of each key, column or vector of the provided dataset.
+
+```q
+q)vec:1000?1f
+q).ml.ts.stationarity[vec]
+    | ADFstat   pvalue stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
+----| -------------------------------------------------------------------------------
+data| -30.77781 0      1          -3.436913        -2.864437        -2.568313        
+
+q)tab:([]1000?1f;til 1000;1000?5)
+q).ml.ts.stationarity[tab]
+  | ADFstat   pvalue stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
+- | -------------------------------------------------------------------------------
+x | -32.40113 0      1          -3.436913        -2.864437        -2.568313        
+x1| 19.27252  1      0          -3.436999        -2.864476        -2.568333        
+x2| -31.5352  0      1          -3.436913        -2.864437        -2.568313        
+
+q)dict:`x`x1`x2!(100?1f;100?1f;asc 100?1f)
+q).ml.ts.stationarity[dict]
+  | ADFstat   pvalue       stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
+- | -------------------------------------------------------------------------------------
+x | -9.522067 3.046044e-16 1          -3.498198        -2.891208        -2.582596        
+x1| -8.763674 2.632545e-14 1          -3.498198        -2.891208        -2.582596        
+x2| 0.3685454 0.9802798    0          -3.498198        -2.891208        -2.582596        
+```
+
+
 ## `.ml.ts.windowFeatures`
 
 _Create windowed features from an equispaced tabular timeseries_
 
-```txt
+```syntax
 .ml.ts.windowFeatures[tab;colNames;funcs;wins]
 ```
 
@@ -139,40 +178,3 @@ x                             x1        x2 avg_7_x1  avg_7_x2 avg_14_x1 avg_1..
 ```
 
 
-## `.ml.ts.stationarity`
-
-_Summary of the stationarity of a set of timeseries data using an augmented Dickey-Fuller test_
-
-```txt
-.ml.ts.stationarity[data]
-```
-
-Where 
-
--  `data` is a dictionary, table or vector of numerical timeseries data
-
-returns a keyed table outlining the stationarity of each key, column or vector of the provided dataset.
-
-```q
-q)vec:1000?1f
-q).ml.ts.stationarity[vec]
-    | ADFstat   pvalue stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
-----| -------------------------------------------------------------------------------
-data| -30.77781 0      1          -3.436913        -2.864437        -2.568313        
-
-q)tab:([]1000?1f;til 1000;1000?5)
-q).ml.ts.stationarity[tab]
-  | ADFstat   pvalue stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
-- | -------------------------------------------------------------------------------
-x | -32.40113 0      1          -3.436913        -2.864437        -2.568313        
-x1| 19.27252  1      0          -3.436999        -2.864476        -2.568333        
-x2| -31.5352  0      1          -3.436913        -2.864437        -2.568313        
-
-q)dict:`x`x1`x2!(100?1f;100?1f;asc 100?1f)
-q).ml.ts.stationarity[dict]
-  | ADFstat   pvalue       stationary CriticalValue_1% CriticalValue_5% CriticalValue_10%
-- | -------------------------------------------------------------------------------------
-x | -9.522067 3.046044e-16 1          -3.498198        -2.891208        -2.582596        
-x1| -8.763674 2.632545e-14 1          -3.498198        -2.891208        -2.582596        
-x2| 0.3685454 0.9802798    0          -3.498198        -2.891208        -2.582596        
-```

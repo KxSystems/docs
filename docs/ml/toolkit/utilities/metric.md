@@ -48,7 +48,7 @@ The toolkit contains an extensive list of commonly used metrics for evaluating t
 
 _Accuracy of classification results_
 
-```txt
+```syntax
 .ml.accuracy[pred;true]
 ```
 
@@ -73,7 +73,7 @@ q).ml.accuracy[10 2#20?10;10 2#20?10] / support for matrices of predictions and 
 
 _Statistical information about classification results_
 
-```txt
+```syntax
 .ml.classReport[pred;true]
 ```
 
@@ -115,15 +115,18 @@ B         0.33      0.36   0.35     331
 C         0.32      0.3    0.31     333
 avg/total 0.33      0.33   0.33     1000
 ```
-!!! warning "`.ml.classreport` deprecated"
-    The above function was previously defined as `.ml.classreport.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.classreport.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.confDict`
 
 _True/false positives and true/false negatives_
 
-```txt
+```syntax
 .ml.confDict[pred;true;posClass]
 ```
 
@@ -152,16 +155,18 @@ fp| 18
 fn| 19
 tp| 3
 ```
-!!! warning "`.ml.confdict` deprecated"
-    The above function was previously defined as `.ml.confdict`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.confdict`.
+    That is still callable but will be deprecated after version 3.0.
 
 
 ## `.ml.confMatrix`
 
 _Confusion matrix_
 
-```txt
+```syntax
 .ml.confMatrix[pred;true]
 ```
 
@@ -186,16 +191,19 @@ q).ml.confMatrix[100?5;100?5]        / supports multiclass by converting to bool
 3| 6 5 9 2 8
 4| 3 5 4 2 3
 ```
-!!! warning "`.ml.confmat` deprecated"
-    The above function was previously defined as `.ml.confmat`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.confmat`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.corrMatrix`
 
 _Calculate the correlation of a matrix or table_
 
-```txt
-.ml.corrMatrix[data]
+```syntax
+.ml.corrMatrix data
 ```
 
 Where 
@@ -213,15 +221,18 @@ A| 1          -0.9945903 -0.2273659
 B| -0.9945903 1          0.2287606
 C| -0.2273659 0.2287606  1
 ```
-!!! warning "`.ml.corrmat` deprecated"
-    The above function was previously defined as `.ml.corrmat`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.corrmat`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.crossEntropy`
 
 _Categorical cross entropy_
 
-```txt
+```syntax
 .ml.crossEntropy[pred;prob]
 ```
 
@@ -241,16 +252,19 @@ q).ml.crossEntropy[g;p]
 q).ml.crossEntropy[b;p]
 3.187829
 ```
-!!! warning "`.ml.crossentropy` deprecated"
-    The above function was previously defined as `.ml.crossentropy`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.crossentropy`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.covMatrix`
 
 _Covariance of a matrix_
 
-```txt
-.ml.covMatrix[matrix]
+```syntax
+.ml.covMatrix matrix
 ```
 
 Where
@@ -269,15 +283,18 @@ q).ml.covMatrix[mat]
 4    5.2 1.6
 0.04 1.6 1.36
 ```
-!!! warning "`.ml.cvm` deprecated"
-    The above function was previously defined as `.ml.cvm`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.cvm`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.f1Score`
 
 _F-1 score for classification results_
 
-```txt
+```syntax
 .ml.f1Score[pred;true;posClass]
 ```
 
@@ -299,15 +316,18 @@ q)yb:1000?0b
 q).ml.f1Score[xb;yb;0b]
 0.4655532
 ```
-!!! warning "`.ml.f1score` deprecated"
-    The above function was previously defined as `.ml.f1score`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.f1score`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.fBetaScore`
 
 _F-beta score for classification results_
 
-```txt
+```syntax
 .ml.fBetaScore[pred;true;posClass;beta]
 ```
 
@@ -330,15 +350,18 @@ q)yb:1000?0b
 q).ml.fBetaScore[xb;yb;1b;.5]
 0.5191595
 ```
-!!! warning "`.ml.fbscore` deprecated"
-    The above function was previously defined as `.ml.fbscore`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.fbscore`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.logLoss`
 
 _Logarithmic loss_
 
-```txt
+```syntax
 .ml.logLoss[pred;prob]
 ```
 
@@ -358,15 +381,18 @@ q).ml.logLoss[v;g]
 q).ml.logLoss[v;b]
 1.032062
 ```
-!!! warning "`.ml.logloss` deprecated"
-    The above function was previously defined as `.ml.logloss`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.logloss`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.mae`
 
 _Mean absolute error_
 
-```txt
+```syntax
 .ml.mae[pred;true]
 ```
 
@@ -388,7 +414,7 @@ q).ml.mae[100?5;100?5]
 
 _Mean absolute percentage error_
 
-```txt
+```syntax
 .ml.mape[pred;true]
 ```
 
@@ -409,7 +435,7 @@ q).ml.mape[100?5.0;100?5.0]
 
 _Matthews-correlation coefficient_
 
-```txt
+```syntax
 .ml.matthewCorr[pred;true]
 ```
 
@@ -427,15 +453,18 @@ q).ml.matthewCorr[100?5;100?5]
 7.880334e-06
 ```
 
-!!! warning "`.ml.matcorr` deprecated"
-    The above function was previously defined as `.ml.matcorr`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.matcorr`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.mse`
 
 _Mean square error_
 
-```txt
+```syntax
 .ml.mse[pred;true]
 ```
 
@@ -457,7 +486,7 @@ q).ml.mse[asc 100?1f;desc 100?1f]
 
 _Precision of a binary classifier_
 
-```txt
+```syntax
 .ml.precision[pred;true;posClass]
 ```
 
@@ -481,7 +510,7 @@ q).ml.precision[1000?"AB";1000?"AB";"B"]
 
 _R2-score for regression model validation_
 
-```txt
+```syntax
 .ml.r2Score[pred;true]
 ```
 
@@ -503,15 +532,18 @@ q).ml.r2Score[xb;yb]
 -2.981791
 ```
 
-!!! warning "`.ml.r2score` deprecated"
-    The above function was previously defined as `.ml.r2score`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.r2score`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.rmse`
 
 _Root mean squared error for regression model validation_
 
-```txt
+```syntax
 .ml.rmse[pred;true]
 ```
 
@@ -538,7 +570,7 @@ q).ml.rmse[xb;yg]
 
 _Root mean squared logarithmic error_
 
-```txt
+```syntax
 .ml.rmsle[pred;true]
 ```
 
@@ -561,7 +593,7 @@ q).ml.rmsle[100?5;100?5]
 
 _X and Y axis values for an ROC curve_
 
-```txt
+```syntax
 .ml.roc[label;prob]
 ```
 
@@ -585,7 +617,7 @@ q).ml.roc[v;p]
 
 _Area under an ROC curve_
 
-```txt
+```syntax
 .ml.rocAucScore[x;y]
 ```
 
@@ -602,15 +634,18 @@ q)p:asc count[v]?1f
 q).ml.rocAucScore[v;p]
 0.8696362
 ```
-!!! warning "`.ml.rocaucscore` deprecated"
-    The above function was previously defined as `.ml.rocaucscore`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.rocaucscore`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.sensitivity`
 
 _Sensitivity of a binary classifier_
 
-```txt
+```syntax
 .ml.sensitivity[pred;true;posClass]
 ```
 
@@ -634,7 +669,7 @@ q).ml.sensitivity[1000?`class1`class2;1000?`class1`class2;`class1]
 
 _Symmetric mean absolute percentage error_
 
-```txt
+```syntax
 .ml.smape[pred;true]
 ```
 
@@ -657,7 +692,7 @@ q).ml.smape[100?5;100?5]
 
 _Specificity of a binary classifier_
 
-```txt
+```syntax
 .ml.specificity[pred;true;posClass]
 ```
 
@@ -681,7 +716,7 @@ q).ml.specificity[1000?100 200;1000?100 200;200]
 
 _Sum squared error_
 
-```txt
+```syntax
 .ml.sse[pred;true]
 ```
 
@@ -703,7 +738,7 @@ q).ml.sse[asc 100?1f;desc 100?1f]
 
 _One-sample t-test score_
 
-```txt
+```syntax
 .ml.tScore[sample;mu]
 ```
 
@@ -721,15 +756,18 @@ q).ml.tScore[x;y]
 7.634824
 ```
 
-!!! warning "`.ml.tscore` deprecated"
-    The above function was previously defined as `.ml.tscore`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.tscore`.
+    That is still callable but will be deprecated after version 3.0.
+
 
 ## `.ml.tScoreEqual`
 
 _T-test for independent samples with equal variances and equal sample size_
 
-```txt
+```syntax
 .ml.tScoreEqual[sample1;sample2]
 ```
 
@@ -749,6 +787,8 @@ q).ml.tScoreEqual[x;y]
 50.46957
 ```
 
-!!! warning "`.ml.tscoreeq` deprecated"
-    The above function was previously defined as `.ml.tscoreeq`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.tscoreeq`.
+    That is still callable but will be deprecated after version 3.0.

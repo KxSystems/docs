@@ -39,20 +39,176 @@ Following the application of [data-processing procedures](preproc.md), it is pos
 
 The NLP library contains a variety of clustering algorithms, with different parameters and performance characteristics. Some of these are very fast on large data sets, though they look only at the most salient features of each document, and will create many small clusters. Others, such as bisecting k-means, look at all features present in the document, and allow you to specify the number of clusters. Other parameters can include a threshold for the minimum similarity to consider, or how many iterations the algorithm should take to refine the clusters. Some clustering algorithms are randomized, and will produce different clusters every time they are run. This can be very useful, as a data set will have many possible, equally valid, clusterings. Some algorithms will put every document in a cluster, whereas others will increase cluster cohesion by omitting outliers.
 
-Clusters can be summarized by their centroids, which are the sum of the feature vectors of all the documents they contain. Feature vectors in NLP are explained [here](featVector.md)
+Clusters can be summarized by their centroids, which are the sum of the [feature vectors](feature-vector.md) of all the documents they contain. 
 
-In the below examples, the `parsedTab` variable is the output from the `.nlp.newParser` [example](#preproc/nlpnewparser) defined in the data-preprocessing section. 
+!!! tip "`parsedTab`"
 
-## Markox Cluster algorithm
-
-The MCL clustering algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. It then runs a graph-clustering algorithm on the dataset.
+    In the examples, the `parsedTab` arguments are tables as returne by the `.nlp.newParser` [example](#preproc/nlpnewparser) in the data-preprocessing section. 
 
 
-#### `.nlp.cluster.MCL`
+Markox Cluster 
+
+: The MCL clustering algorithm first generates an undirected graph of documents by classifying document pairs as related or unrelated, depending on whether their similarity exceeds a given threshold. If they are related, an edge will be created between these documents. It then runs a graph-clustering algorithm on the dataset.
+
+
+Summarizing Cluster  
+
+: This clustering algorithm finds the top ten keywords in each document, calculates the average of these keywords and determines the top keyword. This is set to be the centroid and therefore finds the closest document. This process is repeated until the number of clusters are found.
+
+
+K-means clustering
+
+: Given a set of documents, K-means clustering aims to partition the documents into a number of sets. Its objective is to minimize the residual sum of squares, a measure of how well the centroids represent the members of their clusters.
+
+Bisecting K-means
+
+: Bisecting K-means adopts the K-means algorithm and splits a cluster in two. This algorithm is more efficient when _k_ is large. For the K-means algorithm, the computation involves every data point of the data set and _k_ centroids. On the other hand, in each bisecting step of Bisecting K-means, only the data points of one cluster and two centroids are involved in the computation. Thus the computation time is reduced. Secondly, Bisecting K-means produce clusters of similar sizes, while K-means is known to produce clusters of widely differing sizes.
+
+Radix  
+
+: The Radix clustering algorithms are a set of non-comparison, binning-based clustering algorithms. Because they do no comparisons, they can be much faster than other clustering algorithms. In essence, they cluster via topic modeling, but without the complexity.
+
+: Radix clustering is based on the observation that Bisecting K-means clustering gives the best cohesion when the centroid retains only its most significant dimension, and inspired by the canopy-clustering approach of pre-clustering using a very cheap distance metric.
+
+: At its simplest, Radix clustering just bins on most significant term. A more accurate version uses the most significant _n_ terms in each document in the corpus as bins, discarding infrequent bins. Related terms can also be binned, and documents matching some percent of a bins keyword go in that bin.
+
+: _Hard Clustering_ means that each datapoint either belongs to a cluster completely or not. 
+
+: In _Soft Clustering_, a probability or likelihood of a data point to be in a clusters is assigned. This means that some clusters can overlap.
+
+Cohesion
+
+: In clustering, cohesion measures how close objects in a cluster are to each other. A higher cohesion score indicates that the documents in the corpus share similar keywords.
+
+
+
+
+---
+
+
+## `.nlp.cluster.bisectingKMeans` 
+
+_Uses K-means repeatedly to split the most cohesive clusters into two clusters_
+
+```syntax
+.nlp.cluster.bisectingKMeans[parsedTab;k;iters]
+```
+
+Where
+
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+-  `k` is the number of clusters 
+-  `iters` is the number of times to iterate the refining step
+
+returns the documents’ indexes, grouped into clusters.
+
+```q
+q)count each .nlp.cluster.bisectingKMeans[parsedTab;15;30]
+16 54 8 11 39 3 1 1 1 1 1 1 1 10 2
+```
+
+!!! note "The `parsedTab` argument must contain a `keywords` column"
+
+
+## `.nlp.cluster.fastRadix`
+
+_Uses the Radix clustering algorithm and bins by the most significant term_
+
+```syntax
+.nlp.cluster.fastRadix[parsedTab;k]
+```
+
+Where
+
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+-  `k` is the number of clusters, though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
+
+returns the documents’ indexes, grouped into clusters.
+
+```q
+q)count each .nlp.cluster.fastRadix[parsedTab;60]
+3 3 3 5 8 2 6 2 2 2 2 2 3 2 2
+```
+
+!!! note "The `parsedTab` argument must contain a `keywords` column"
+
+
+## `.nlp.cluster.groupByCentroids`
+
+_Grouping documents to centroids_
+
+```syntax
+.nlp.cluster.groupByCentroids[centroid;parsedTab]
+```
+
+Where
+
+-  `centroid` is a list of the centroids as keyword dictionaries
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+
+returns the documents’ indexes, grouped into clusters.
+
+!!! warning
+
+    These do not line up with the number of centroids passed in, and the number of lists returned may not equal the number of centroids. There can be documents which match no centroids (all of which will end up in the same group), and centroids with no matching documents.
+
+Matches the first centroid of the clusters with the rest of the corpus:
+
+```q
+q)show centroids:parsedTab[til 3]`keywords
+`chapter`loomings`ishmael`years`ago`mind`long`precise..
+`chapter`carpet`bag`stuffed`shirt`old`tucked`arm`star..
+`chapter`spouter`inn`entering`gable`ended`found`wide`..
+
+q).nlp.cluster.groupByCentroids[centroids;3_parsedTab`keywords]
+,0
+1 2 4 9 10
+,3
+,5
+6 7
+8 95 96
+11 12
+,13
+...
+```
+
+!!! note "The `parsedTab` argument must contain a `keywords` column"
+
+When you have a set of centroids and you would like to find out which centroid is closest to the documents, you can use this function.
+
+
+## `.nlp.cluster.kmeans`
+
+_K-means clustering for documents_
+
+```syntax
+.nlp.cluster.kmeans[parsedTab;k;iters]
+```
+
+Where
+
+-  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+-  `k` is the number of clusters to return
+-  `iters` is the number of times to iterate the refining step
+
+returns the document’s indexes, grouped into clusters.
+
+Partition _Moby Dick_ into 15 clusters; we find there is one large cluster present in the book:
+
+``` q
+q)clusters:.nlp.cluster.kmeans[parsedTab;15;30]
+q)count each clusters
+7 4 4 17 49 17 30 4 2 6 3 1 4 1 1
+```
+
+!!! note "The `parsedTab` argument must contain a `keywords` column"
+
+
+## `.nlp.cluster.MCL`
 
 _Cluster a subcorpus using graph clustering_
 
-```txt
+```syntax
 .nlp.cluster.MCL[parsedTab;minimum;sample]
 ```
 
@@ -75,149 +231,30 @@ q)count cluster
 7
 ```
 
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
+!!! note "The `parsedTab` argument must contain a `keywords` column"
 
 
-### Summarizing Cluster algorithm 
+## `.nlp.cluster.MSE`
 
-This clustering algorithm finds the top ten keywords in each document, calculates the average of these keywords and determines the top keyword. This is set to be the centroid and therefore finds the closest document. This process is repeated until the number of clusters are found.
+_Uses the top 50 keywords of each document to calculate the cohesiveness as measured by the mean sum of squares_
 
-
-#### `.nlp.cluster.summarize`
-
-_Uses the top ten keywords of each document as centoid values in order to cluster similar documents together_
-
-```txt
-.nlp.cluster.summarize[parsedTab;k]
+```syntax
+.nlp.cluster.MSE[keywords]
 ```
 
 Where
 
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
--  `k` is the number of clusters to return
+- `keywords` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
 
-returns the documents’ indexes, grouped into clusters.
+returns the cohesion of the cluster
 
 ```q
-q)5#.nlp.cluster.summarize[parsedTab;30]
-0 13 71 124
-1 5 6 22 40 41 60..
-2 46 75
-3 4 9 10 11 12 14..
-7 65 128
+q).nlp.cluster.MSE[parsedTab[1 2 3]`keywords]
+0.07738149
 ```
 
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
 
-
-## K-means clustering
-
-Given a set of documents, K-means clustering aims to partition the documents into a number of sets. Its objective is to minimize the residual sum of squares, a measure of how well the centroids represent the members of their clusters.
-
-
-#### `.nlp.cluster.kmeans`
-
-_K-means clustering for documents_
-
-```txt
-.nlp.cluster.kmeans[parsedTab;k;iters]
-```
-
-Where
-
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
--  `k` is the number of clusters to return
--  `iters` is the number of times to iterate the refining step
-
-returns the document’s indexes, grouped into clusters.
-
-Partition _Moby Dick_ into 15 clusters; we find there is one large cluster present in the book:
-
-``` q
-q)clusters:.nlp.cluster.kmeans[parsedTab;15;30]
-q)count each clusters
-7 4 4 17 49 17 30 4 2 6 3 1 4 1 1
-```
-
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
-
-
-## Bisecting K-means
-
-Bisecting K-means adopts the K-means algorithm and splits a cluster in two. This algorithm is more efficient when _k_ is large. For the K-means algorithm, the computation involves every data point of the data set and _k_ centroids. On the other hand, in each bisecting step of Bisecting K-means, only the data points of one cluster and two centroids are involved in the computation. Thus the computation time is reduced. Secondly, Bisecting K-means produce clusters of similar sizes, while K-means is known to produce clusters of widely differing sizes.
-
-
-#### `.nlp.cluster.bisectingKMeans` 
-
-_Uses K-means repeatedly to split the most cohesive clusters into two clusters_
-
-```txt
-.nlp.cluster.bisectingKMeans[parsedTab;k;iters]
-```
-
-Where
-
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
--  `k` is the number of clusters 
--  `iters` is the number of times to iterate the refining step
-
-returns the documents’ indexes, grouped into clusters.
-
-```q
-q)count each .nlp.cluster.bisectingKMeans[parsedTab;15;30]
-16 54 8 11 39 3 1 1 1 1 1 1 1 10 2
-```
-
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
-
-
-## Radix algorithm 
-
-The Radix clustering algorithms are a set of non-comparison, binning-based clustering algorithms. Because they do no comparisons, they can be much faster than other clustering algorithms. In essence, they cluster via topic modeling, but without the complexity.
-
-Radix clustering is based on the observation that Bisecting K-means clustering gives the best cohesion when the centroid retains only its most significant dimension, and inspired by the canopy-clustering approach of pre-clustering using a very cheap distance metric.
-
-At its simplest, Radix clustering just bins on most significant term. A more accurate version uses the most significant _n_ terms in each document in the corpus as bins, discarding infrequent bins. Related terms can also be binned, and documents matching some percent of a bins keyword go in that bin.
-
-
-### Hard Clustering
-
-Hard Clustering means that each datapoint either belongs to a cluster completely or not.
-
-
-#### `.nlp.cluster.fastRadix`
-
-_Uses the Radix clustering algorithm and bins by the most significant term_
-
-```txt
-.nlp.cluster.fastRadix[parsedTab;k]
-```
-
-Where
-
--  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
--  `k` is the number of clusters, though fewer may be returned. This must be fairly high to cover a substantial amount of the corpus, as clusters are small
-
-returns the documents’ indexes, grouped into clusters.
-
-```q
-q)count each .nlp.cluster.fastRadix[parsedTab;60]
-3 3 3 5 8 2 6 2 2 2 2 2 3 2 2
-```
-
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
-
-### Soft Clustering
-
-In Soft Clustering, a probability or likelihood of a data point to be in a clusters is assigned. This means that some clusters can overlap.
-
-
-#### `.nlp.cluster.radix`
+## `.nlp.cluster.radix`
 
 _Uses the Radix clustering algorithm and bins are taken from the top 3 terms of each document_
 
@@ -237,76 +274,33 @@ q)count each .nlp.cluster.radix[parsedTab;60]
 5 17 9 10 23 8 6 7 5 6
 ```
 
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
+!!! note "The `parsedTab` argument must contain a `keywords` column"
 
 
-### Grouping documents to centroids
+## `.nlp.cluster.summarize`
 
-When you have a set of centroids and you would like to find out which centroid is closest to the documents, you can use this function.
+_Uses the top ten keywords of each document as centroid values in order to cluster similar documents together_
 
-
-#### `.nlp.cluster.groupByCentroids`
-
-_Documents matched to their nearest centroid_
-
-```txt
-.nlp.cluster.groupByCentroids[centroid;parsedTab]
+```syntax
+.nlp.cluster.summarize[parsedTab;k]
 ```
 
 Where
 
--  `centroid` is a list of the centroids as keyword dictionaries
 -  `parsedTab` is a table of parsed documents (return of `.nlp.newParser`)
+-  `k` is the number of clusters to return
 
 returns the documents’ indexes, grouped into clusters.
 
-!!! Note
-	These don't line up with the number of centroids passed in, and the number of lists returned may not equal the number of centroids. There can be documents which match no centroids (all of which will end up in the same group), and centroids with no matching documents.
-
-Matches the first centroid of the clusters with the rest of the corpus:
-
 ```q
-q)show centroids:parsedTab[til 3]`keywords
-`chapter`loomings`ishmael`years`ago`mind`long`precise..
-`chapter`carpet`bag`stuffed`shirt`old`tucked`arm`star..
-`chapter`spouter`inn`entering`gable`ended`found`wide`..
-
-q).nlp.cluster.groupByCentroids[centroids;3_parsedTab`keywords]
-,0
-1 2 4 9 10
-,3
-,5
-6 7
-8 95 96
-11 12
-,13
-...
+q)5#.nlp.cluster.summarize[parsedTab;30]
+0 13 71 124
+1 5 6 22 40 41 60..
+2 46 75
+3 4 9 10 11 12 14..
+7 65 128
 ```
 
-!!! Note
-	The `parsedTab` input must contain the following attributes: ``` `keywords ```
+!!! note "The `parsedTab` argument must contain a `keywords` column"
 
 
-### Cohesion
-
-In clustering, cohesion measures how close objects in a cluster are to each other. A higher cohesion score indicates that the documents in the corpus share similar keywords.
-
-#### `.nlp.cluster.MSE`
-
-_Uses the top 50 keywords of each document to calculate the cohesiveness as measured by the mean sum of squares_
-
-```txt
-.nlp.cluster.MSE[keywords]
-```
-
-Where
-
-- `keywords` is a dictionary of keywords and their significance scores in a corpus (return of `.nlp.newParser`)
-
-returns the cohesion of the cluster
-
-```q
-q).nlp.cluster.MSE[parsedTab[1 2 3]`keywords]
-0.07738149
-```

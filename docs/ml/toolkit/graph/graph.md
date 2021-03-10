@@ -4,20 +4,38 @@ author: Conor McCarthy
 date: August 2020
 keywords: machine learning, ml, graph, edges, nodes, vertices
 ---
-
 # :fontawesome-solid-share-alt: ML Graph
+
+
+<div markdown="1" class="typewriter">
+Graph
+  [.ml.createGraph](#mlcreategraph)      Generate an empty graph
+
+Configuration
+  [.ml.addCfg](#mladdcfg)           Add a configuration node to a graph
+  [.ml.delCfg](#mldelcfg)           Delete a configuration node from a graph
+  [.ml.updCfg](#mlupdcfg)           Update the content of a configuration node
+
+Nodes
+  [.ml.addNode](#mladdcfg)          Add a functional node to a graph
+  [.ml.delNode](#mldelcfg)          Delete a functional node from a graph
+  [.ml.updNode](#mlupdcfg)          Update the content of a functional node
+
+Edges
+  [.ml.connectEdge](#mlconnectedge)      Connect the output of one node to the input of another
+  [.ml.disconnectEdge](#mldisconnectedge)   Disconnect an edge connected to a specified node
+
+</div>
 
 As outlined [here](index.md) the graph structure described below follows the basic structure of a directed mathematical graph consisting of nodes which contain the core functionality of a pipeline and edges which describe the connections between nodes. The image below shows a basic representation of a graph containing multiple nodes connected together by relevant edges within this structure.
 
 ![Basic Graph](./imgs/pipeline_example_confluence.png)
 
 
-## Structure
-
 Prior to the description of the functionality which allows a user to generate, update and remove components of a graph, a number of notes on the technical aspects on the structure of these components must be outlined.
 
 
-### Functional node
+## Functional node
 
 A functional node is defined in this library as a dictionary.
 
@@ -48,12 +66,12 @@ q)node:`inputs`outputs`function!(nodeInputs;nodeOutputs;nodeFunction)
 ```
 
 
-### Configuration node
+## Configuration node
 
 Configuration nodes in this library are a subset of the functional nodes described above. A configuration node takes as input a dictionary provided by a user and outputs this unmodified adding the named node to the overall graph.
 
 
-### Edges
+## Edges
 
 An edge is a connection between the output of one functional or configuration node and the input of another node. In order to ensure that a graph is valid all input nodes must be connected to the output from another node within the graph. Output nodes do not need to be connected to anything for a graph to be valid. In the case an output node is not connected, the return of a fully executed graph will store the output data for retrieval by the user.
 
@@ -62,42 +80,22 @@ An edge is a connection between the output of one functional or configuration no
     This is currently not checked by pipeline execution.
 
 
-## Functionality
+---
 
-<div markdown="1" class="typewriter">
-Graph
-  [.ml.createGraph](#mlcreategraph)      Generate an empty graph
-
-Configuration
-  [.ml.addCfg](#mladdcfg)           Add a configuration node to a graph
-  [.ml.delCfg](#mldelcfg)           Delete a configuration node from a graph
-  [.ml.updCfg](#mlupdcfg)           Update the content of a configuration node
-
-Nodes
-  [.ml.addNode](#mladdcfg)          Add a functional node to a graph
-  [.ml.delNode](#mldelcfg)          Delete a functional node from a graph
-  [.ml.updNode](#mlupdcfg)          Update the content of a functional node
-
-Edges
-  [.ml.connectEdge](#mlconnectedge)      Connect the output of one node to the input of another
-  [.ml.disconnectEdge](#mldisconnectedge)   Disconnect an edge connected to a specified node
-
-</div>
-
-### `.ml.addCfg`
+## `.ml.addCfg`
 
 _Add a configuration node to a graph_
 
 
-```txt
+```syntax
 .ml.addCfg[graph;nodeId;config]
 ```
 
-Where:
+Where
 
-* `graph` is a graph originally generated using `.ml.createGraph`.
-* `nodeId` is a symbol unique to the graph denoting the name to be associated with the configuration node.
-* `config` is a dictionary containing any configuration information to be supplied to other nodes in the graph.
+-   `graph` is a graph originally generated using `.ml.createGraph`.
+-   `nodeId` is a symbol unique to the graph denoting the name to be associated with the configuration node.
+-   `config` is a dictionary containing any configuration information to be supplied to other nodes in the graph.
 
 returns a graph with the the new configuration added to the graph structure
 
@@ -124,12 +122,13 @@ show graph:.ml.addCfg[graph;`config;`a`b!1 2]
 'invalid nodeId
 ```
 
-### `.ml.addNode`
+
+## `.ml.addNode`
 
 _Add a functional node to a graph_
 
 
-```txt
+```syntax
 .ml.addNode[graph;nodeId;config]
 ```
 
@@ -186,22 +185,22 @@ multiNode  input1  |                       0
 multiNode  input2  |                       0
 ```
 
-### `.ml.connectEdge`
+
+## `.ml.connectEdge`
 
 _Connect the output of one node to the input to another_
 
-
-```txt
+```syntax
 .ml.connectEdge[graph;sourceNode;sourceName;destNode;destName]
 ```
 
 Where
 
-* `graph` is a graph originally generated using `.ml.createGraph`
-* `sourceNode` is a symbol denoting the name of a node in the graph which contains the relevant output
-* `sourceName` is a symbol denoting the name of the output to be connected to an associated input node
-* `destNode` is a symbol denoting the name of a node in the graph which contains the relevant input to be connected to
-* `destName` is a symbol denoting the name of the input which is connected to the output defined by `sourceNode` and `sourceName`
+-   `graph` is a graph originally generated using `.ml.createGraph`
+-   `sourceNode` is a symbol denoting the name of a node in the graph which contains the relevant output
+-   `sourceName` is a symbol denoting the name of the output to be connected to an associated input node
+-   `destNode` is a symbol denoting the name of a node in the graph which contains the relevant input to be connected to
+-   `destName` is a symbol denoting the name of the input which is connected to the output defined by `sourceNode` and `sourceName`
 
 returns the graph with the relevant connection made between the inputs and outputs of two nodes.
 
@@ -224,12 +223,12 @@ sourceNode input   |                       0
 destNode   destName| sourceNode sourceName 1
 ```
 
-### `.ml.createGraph`
+
+## `.ml.createGraph`
 
 _Generate an empty graph_
 
-
-```txt
+```syntax
 .ml.createGraph[]
 ```
 
@@ -254,12 +253,12 @@ destNode destName| sourceNode sourceName valid
                  |                       0
 ```
 
-### `.ml.delCfg`
+
+## `.ml.delCfg`
 
 _Delete a named configuration node_
 
-
-```txt
+```syntax
 .ml.delCfg[graph;nodeId]
 ```
 
@@ -288,12 +287,11 @@ nodeId|    function inputs outputs
 ```
 
 
-### `.ml.delNode`
+## `.ml.delNode`
 
 _Delete a named function node_
 
-
-```txt
+```syntax
 .ml.delNode[graph;nodeId]
 ```
 
@@ -323,12 +321,11 @@ nodeId|    function inputs outputs
 ```
 
 
-### `.ml.disconnectEdge`
+## `.ml.disconnectEdge`
 
 _Disconnect an edge from the input of a node_
 
-
-```txt
+```syntax
 .ml.disconnectEdge[graph;destNode;destName]
 ```
 
@@ -362,12 +359,12 @@ destNode   destName|                 0
 ```
 
 
-### `.ml.updCfg`
+## `.ml.updCfg`
 
 _Update the contents of a configuration node_
 
 
-```txt
+```syntax
 .ml.updCfg[graph;nodeId;config]
 ```
 
@@ -397,12 +394,12 @@ configuration| (,`xdata)!,:: (,`xdata)!,![,`output]@[enlist](,`xdata)!,..
 ```
 
 
-### `.ml.updNode`
+## `.ml.updNode`
 
 _Update the contents of a functional node_
 
 
-```txt
+```syntax
 .ml.updNode[graph;nodeId;config]
 ```
 

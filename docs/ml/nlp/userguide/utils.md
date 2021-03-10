@@ -10,12 +10,12 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 <div markdown="1" class="typewriter">
 .nlp   **Utility functions**
   [detectLang](#nlpdetectlang)      Detect the language within a text
-  [findDates](#nlpfinddates)        Find all the dates in a string of text
+  [findDates](#nlpfinddates)        Find all the dates in a string
   [findRegex](#nlpfindregex)        Find regular expressions within a string
-  [findTimes](#nlpfindtimes)        Find all the times in a string of text
+  [findTimes](#nlpfindtimes)        Find all the times in a string
   [getSentences](#nlpgetsentences)    Extract all sentences for a document
   [loadTextFromDir](#nlploadtextfromdir) Import all files in a director
-  [removeCustom](#nlpremoveCustom)    Remove aspects of a string of text containing certain characters
+  [removeCustom](#nlpremoveCustom)    Remove aspects of a string containing certain characters
                   or expressions
   [removeNonAscii](#nlpremoveNonAscii)  Remove non-ASCII characters from a string
   [removeReplace](#nlpremoveReplace)   Replace individual characters in a string
@@ -27,41 +27,39 @@ The NLP library contains functions useful for in-depth document analysis. They e
 
 In the below examples, the `parsedTab`/`parsedDict` variable is the output from the `.nlp.newParser` [example](#preproc/nlpnewparser) defined in the data-preprocessing section.
 
+
 ## `.nlp.detectLang`
 
-```text
-.nlp.detectLang[text]
+_Language of a text_
+
+```syntax
+.nlp.detectLang text
 ```
 
-Where
-
-- `text` is a string of text
-
-returns a symbol denoting the language of the text
+Where `text` is a string, returns a symbol denoting its language.
 
 ```q
-q).nlp.detectLang["This is a string of text"]
+q).nlp.detectLang "This is a string"
 `en
-q).nlp.detectLang["Ein, zwei, drei, vier"]
+q).nlp.detectLang "Ein, zwei, drei, vier"
 `de
 ```
 
-!!! Note
-	This function uses pythons [langdetect](#https://pypi.org/project/langdetect/) module. Information on the abbreviation codes used to classify the langugaes can be found [here](#https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+This function uses Python’s [`langdetect`](#https://pypi.org/project/langdetect/) module. 
+
+:fontawesome-brands-wikipedia-w:
+[Language codes](#https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+
 
 ## `.nlp.findDates`
 
-_Find all the dates in a string of text_
+_Find dates in a string_
 
 ```text
-.nlp.findDates[text]
+.nlp.findDates text
 ```
 
-Where 
-
-- `text` is a string of text, potentially containing many dates 
-
-returns a general list:
+Where `text` is a string, potentially containing multiple dates, returns a general list:
 
 1.  Start date of the range
 1.  End date of the range
@@ -75,22 +73,23 @@ q).nlp.findDates "I am going on holidays on the 12/04/2018 to New York and come 
 2018.04.18 2018.04.18 "18.04.2018" 74 84
 ```
 
+
 ## `.nlp.findRegex`
 
-_Find regular expressions within a string of text_
+_Find regular expressions within a string_
 
-```text
+```syntax
 .nlp.findRegex[text;expr]
 ```
 
 Where
 
--  `text` is the string of text to extract the regular expressions from
+-  `text` is a string
 -  `expr` is the expression type as a symbol to be searched for within the text
 
-returns a dictionary, extracting the expression along with the indices within the expression occurs.
+returns a dictionary, extracting the expression along with the indices for the expressions.
 
-The optional expressions that can be searched for within the text are as follows:
+The expression types that can be sought within the text are:
 
 ```txt
 `specialChars                 `year
@@ -116,19 +115,16 @@ yearmonthList| (("January";97;104);("February";105;113);("March";118;123);("30";
 money        | ,("\302\24330.00";128;134)
 ```
 
+
 ## `.nlp.findTimes`
 
-_Find any times in a string_
+_Find times in a string_
 
-```text
-.nlp.findTimes[text]
+```syntax
+.nlp.findTimes text
 ```
 
-Where 
-
-- `text` is a string of text potentially containing many times
-
-returns a general list:
+Where `text` is a string, returns a general list:
 
 1.  Time
 1.  Text of the time (string)
@@ -141,19 +137,16 @@ q).nlp.findTimes "I went to work at 9:00am and had a coffee at 10:20"
 10:20:00.000 "10:20"  45 50
 ```
 
+
 ## `.nlp.getSentences`
 
-_Extract all sentences for a document_
+_Extract sentences from a document_
 
-```text
-.nlp.getSentences[parsedDict]
+```syntax
+.nlp.getSentences parsedDict
 ```
 
-Where 
-
--  `parsedDict` is a dictionary containing a single parsed text (return of `.nlp.newParser`)
-
-returns a list of strings of all the sentences from a document.
+Where `parsedDict` is a dictionary containing a single parsed text (as returned by `.nlp.newParser`) returns the sentences from the text as a list of strings.
 
 ```q
 // Finds the sentences in the first chapter of MobyDick
@@ -168,19 +161,16 @@ q).nlp.getSentences parsedDict
 ..
 ```
 
+
 ## `.nlp.loadTextFromDir`
 
 _Import all files in a directory_
 
-```text
-.nlp.loadTextFromDir[filepath]
+```syntax
+.nlp.loadTextFromDir filepath
 ```
 
-Where 
-
-- `filepath` is the directory’s filepath as a string
-
-returns a table of filenames, paths and texts contained within the filepath.
+Where `filepath` is the directory’s filepath as a string, returns a table of filenames, paths and texts contained within the filepath.
 
 ```q
 q).nlp.loadTextFromDir["./datasets/maildir/skilling-j"]
@@ -193,84 +183,82 @@ fileName path                                           text                 ..
 101.     :./datasets/maildir/skilling-j/_sent_mail/101. "Message-ID: <2486283..
 ```
 
+
 ## `.nlp.removeCustom`
 
-_Remove certain characters from a string of text_
+_Remove characters from a string_
 
-```text
+```syntax
 .nlp.removeCustom[text;char]
 ```
 
 Where
 
-- `text` is a string of text
+- `text` is a string
 - `char` is a list of characters or expressions to be removed from the text
 
-returns the string a text without anything that contains the defined characters.
+returns the string without defined characters or expressions.
 
 ```q
 q)rmvList   :("*\n*";"*?!*";"*,";"*&*";"*[0-9]*")
+
 q)(jeffemails`text)100
 "Re:\n\nHow much to you have?!  SRS\n\n\n\n\nKevin Hannon @ ENRON COMMUNICATIONS on 04/20/2001 08..
+
 q).nlp.removeCustom[(jeffemails`text)100;rmvList]
 "much to you  SRS\n\n\n\n\nKevin Hannon ENRON COMMUNICATIONS on  \n\n\nOK Sherri how much do you ..
 ```
 
+
 ## `.nlp.removeNonAscii`
 
-_Remove non-ASCII characters from a string of text_
+_Remove non-ASCII characters from a string_
 
-```text
+```syntax
 .nlp.removeNonAscii[text]
 ```
 
-Where 
-
-- `text` is a string of text 
-
-returns the string of text with all non-ASCII characters removed.
+Where `text` is a string returns it with all non-ASCII characters removed.
 
 ```q
 q).nlp.removeNonAscii["This is ä senteñcê"]
 "This is  sentec"
 ```
 
+
 ## `.nlp.removeReplace`
 
-_Remove and replace certain characters from a string of text_
+_Remove and replace characters from a string_
 
-```text
+```syntax
 .nlp.removeReplace[text;char;replace]
 ```
 
 Where
 
-- `text` is a string of text
-- `char` is the string of characters to be removed
-- `replace` is the characters or expressions which will replace the removed character
+-   `text` is a string
+-   `char` is a string of characters to be removed
+-   `replace` is the characters or expressions which to replace the removed character/s
 
-returns the string of text with the characters removed and replaced.
+returns the string with the characters replaced.
 
 ```q
 q).nlp.removeReplace[(jeffemails`text)100;",.:?!/@'\n";"??"]
 "Re????????How much to you have????  SRS??????????Kevin Hannon ?? ENRON COMMUNICATIONS on 04??20?..
 ```
 
+
 ## `.nlp.sentiment`
 
-_Calculate the sentiment of a sentence_
+_Sentiment of a sentence_
 
-```text 
-.nlp.sentiment[text]
+```syntax 
+.nlp.sentiment text
 ```
 
-Where 
+Where `text` is string, returns a dictionary containing the sentiment score divided between compound, positive, negative and neutral components.
 
-- `text` is string of text to score 
-
-returns a dictionary containing the sentiment score split up into compound, positive, negative and neutral components.
-
-An run of sentences from _Moby Dick_:
+A run of sentences from _Moby Dick_:
 
 ```q
 q).nlp.sentiment each ("Three cheers,men--all hearts alive!";"No,no! shame upon all cowards-shame upon them!")

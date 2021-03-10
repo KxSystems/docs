@@ -48,11 +48,12 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
 
 The Machine Learning Toolkit contains functions used regularly within pipelines for the manipulation of data. Such functions are often applied prior to the application of algorithms. They ensure data is in the correct format and does not contain uninformative information or datatypes the algorithms cannot handle.
 
+
 ## `.ml.applyLabelEncode`
 
 _Transform a list of integers based on a previously generated label encoding_
 
-```txt
+```syntax
 .ml.applyLabelEncode[data;map]
 ```
 
@@ -87,21 +88,22 @@ q).ml.applyLabelEncode[newList;schema]
 q).ml.applyLabelEncode[newList;schema`modelInfo]
 `a`a`b`c`c`c`a`b`
 ```
-!!! warning "`.ml.applylabelencode` deprecated"
-    The above function was previously defined as `.ml.applylabelencode`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.applylabelencode`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.dropConstant`
 
 _Remove constant columns_
 
-```txt
-.ml.dropConstant[data]
+```syntax
+.ml.dropConstant data
 ```
-Where 
 
--  `data` is a numerical table/dictionary
-
+Where `data` is a numerical table/dictionary,
 returns `data` without constant columns.
 
 ```q
@@ -125,15 +127,17 @@ q).ml.dropConstant flip tab	// dictionary input
 x| 33.35067 23.52469 95.13262 64.67595 57.13359 4.249854 34.68608 6..
 ```
 
-!!! warning "`.ml.dropconstant` deprecated"
-    The above function was previously defined as `.ml.dropconstant`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.dropconstant`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.fillTab`
 
 _Tunable filling of null data for a simple table_
 
-```txt 
+```syntax 
 .ml.fillTab[tab;groupCol;timeCol;dict]
 ```
 
@@ -190,15 +194,18 @@ A   17:44:20.022 0.02301354 0.4503539 0.8472568   0      0       0
 B   18:16:47.740 0.6288875  0.4052153 0.04499967  1      0       1      
 B   23:10:44.297 0.6288875  0.5513535 0.2213819   1      0       0      
 ```
-!!! warning "`.ml.filltab` deprecated"
-    The above function was previously defined as `.ml.filltab`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.filltab`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.freqEncode`
 
 _Encoded frequency of individual category occurences_
 
-```txt
+```syntax
 .ml.freqEncode[tab;symCols]
 ```
 
@@ -250,22 +257,22 @@ x1        x_freq x2_freq
 4.755664  0.1    0.4    
 8.35521   0.2    0.4    
 ```
-!!! warning "`.ml.freqencode` deprecated"
-    The above function was previously defined as `.ml.freqencode`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.freqencode`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.infReplace`
 
 _Replace +/- infinities with data max/min_
 
-```txt
-.ml.infReplace[data]
+```syntax
+.ml.infReplace data
 ```
 
-Where 
-
--  `data` is a dictionary/table/list of numeric values
-
+Where `data` is a dictionary/table/list of numeric values,
 returns the data with positive/negative infinities replaced by max/min values for the given key.
 
 ```q
@@ -288,36 +295,33 @@ A B  C
 9 50 3
 ```
 
-!!! warning "`.ml.infreplace` deprecated"
-    The above function was previously defined as `.ml.infreplace`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.infreplace`.
+    That is still callable but will be removed after version 3.0.
+
 
 ##`.ml.labelEncode.fit`
 
 _Fit a label encoder model_
 
-```txt
-.ml.labelEncode.fit[data]
+```syntax
+.ml.labelEncode.fit data
 ```
 
-Where
+Where `data` is a list of any type to encode,
+returns a dictionary providing the schema mapping values for the input data (`modelInfo`) and a transform function to be used on new data (`transform`).
 
--  `data` is a list of any type to encode
+??? "Result dictionary"
 
-returns a dictionary providing the schema mapping values for the input data (`modelInfo`) and a transform function to be used on new data (`transform`)
-
-??? "Dictionary return"
 	The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation
 	
 	```
 	`a`b`c!0 1 2
 	```
 	
-	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
-	
-	- `data` is a list of any type to be encoded
-	
-	returns the data encoded to an integer representation based on the mapping schema created during the fitting of the model. Any values not contained within the schema mapping return -1
+	The transform functionality is contained within the `transform` key. The function takes as argument a list of any type to be encoded, and
+	returns the data encoded to an integer representation based on the mapping schema created during the fitting of the model. Any values not contained within the schema mapping return -1.
 
 ```q
 q)sym:`cab`acb`abc`bac`bca
@@ -345,19 +349,17 @@ q)symEncode.transform[newSym,`aaa]
 1 1 3 2 -1
 ```
 
+
 ##`.ml.labelEncode.fitTransform`
 
 _Encode categorical data to an integer value representation_
 
-```txt
-.ml.labelEncode.fitTransform[data]
+```syntax
+.ml.labelEncode.fitTransform data
 ```
 
-Where
-
--  `data` is a list of any type to encode
-
-returns a list encoded to an integer representation
+Where `data` is a list of any type to encode,
+returns a list encoded to an integer representation.
 
 ```q
 q)sym:`cab`acb`abc`bac`bca
@@ -369,15 +371,18 @@ q)show floats:5?1f
 q)show floatEncode:.ml.labelEncode.fitTransform[floats]
 1 2 3 4 0
 ```
-!!! warning "`.ml.labelencode` deprecated"
-    The above function was previously defined as `.ml.labelencode`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.labelencode`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.lexiEncode.fit`
 
 _Fit lexigraphical ordering model to cateogorical data_
 
-```txt
+```syntax
 .ml.lexiEncode.fit[tab;symCols]
 ```
 Where
@@ -387,7 +392,8 @@ Where
 
 returns a dictionary containing mapping information (`modelInfo`) and a projection of the transformation function to be used on new data (`transform`)
 
-??? "Dictionary return"
+??? "Result dictionary"
+
 	The schema mapping values are contained within `modelInfo` and map each symbol to its integer representation for each column in the input table
 	
 	```
@@ -395,7 +401,7 @@ returns a dictionary containing mapping information (`modelInfo`) and a projecti
 	`col2!`e`f`g!0 1 2
 	```
 	
-	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes as arguments
 	
 	-  `tab` is a simple table
 	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping from the fitted data to use when encoding. If (::) is used, it is assumed that the columns in the fit and transform table are the same
@@ -460,11 +466,12 @@ x         x1_lexi
 6.389854  0   
 ```
 
+
 ## `.ml.lexiEncode.fitTransform`
 
 _Encode categorical features based on lexigraphical order_
 
-```txt
+```syntax
 .ml.lexiEncode.fitTransform[tab;symCols]
 ```
 
@@ -503,36 +510,33 @@ x         x2 x1_lexi
 6.618763  f  1   
 ```
 
-!!! warning "`.ml.lexiencode` deprecated"
-    The above function was previously defined as `.ml.lexiencode`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.lexiencode`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.minMaxScaler.fit`
 
 _Fit min max scaling model_
 
-```txt 
-.ml.minMaxScaler.fit[data]
+```syntax 
+.ml.minMaxScaler.fit data
 ```
 
-Where
+Where `data` is a numerical table, matrix or list,
+returns a dictionary containing the min and max values of the fitted data (`modelInfo`) along with a transform function projection (`transform`).
 
--  `data` is a numerical table, matrix or list
+??? "Result dictionary"
 
-returns a dictionary containing the min and max values of the fitted data (`modelInfo`) along with a transform function projection (`transform`)
-
-??? "Dictionary return"
 	The min/max value of the data calculated during the fitting process is contained within `modelInfo`
 	
 	```
 	`minData`maxData!5 10
 	```
 	
-	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
-	
-	-  `data` is a numerical table, matrix or list
-	
-	returns the min-max scaled representation of the new data based on the values of the fitted model
+	The transform functionality is contained within the `transform` key. The function takes as argument a numerical table, matrix or list, and
+	returns the min-max scaled representation of the new data based on the values of the fitted model.
 
 ```q
 q)n:5
@@ -577,19 +581,17 @@ x         x1        x2         x3
 1.057411  0.2480418 1.073764   1.002742 
 ```
 
+
 ## `.ml.minMaxScaler.fitTransform`
 
 _Scale data between 0-1_
 
-```txt 
-.ml.minMaxScaler.fitTransform[data]
+```syntax 
+.ml.minMaxScaler.fitTransform data
 ```
 
-Where
-
--  `data` is a numerical table, matrix or list
-
-returns a min-max scaled representation with values scaled between 0 and 1f
+Where `data` is a numerical table, matrix or list,
+returns a min-max scaled representation with values scaled between 0 and 1f.
 
 ```q
 q)n:5
@@ -626,15 +628,17 @@ q).ml.minMaxScaler.fitTransform[list]
 0.2525253 0.7373737 0 0.06060606 0.3838384 0.7272727 0.1313131 0.7777778 0.64..
 ```
 
-!!! warning "`.ml.minmaxscaler` deprecated"
-    The above function was previously defined as `.ml.minmaxscaler`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.minmaxscaler`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.oneHot.fit`
 
 _Fit one-hot encoding model to categorical data_
 
-```txt
+```syntax
 oneHot.fit[tab;symCols]
 ```
 
@@ -643,16 +647,17 @@ Where
 -  `tab` a table containing numeric and non numerical data
 -  `symCols` is a list of columns as symbols to apply encoding to, setting as `::` will encode all symbol columns
 
-returns a dictionary containing mapping information (`modelInfo`) and a projection of the transformation function to be applied to new data (`transform`)
+returns a dictionary containing mapping information (`modelInfo`) and a projection of the transformation function to be applied to new data (`transform`).
 
-??? "Dictionary return"
+??? "Result dictionary"
+
 	The mapping values are contained within `modelInfo`. These values map the distinct symbol values found within each column
 	
 	```
 	`col1`col2!(`a`b;`c`d)
 	```
 	
-	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
+	The transform functionality is contained within the `transform` key. The function takes as arguments
 	
 	-  `tab` is a simple table
 	-  `symDict` is a dictionary where each key indicates the columns in `tab` to be encoded, while the values indicate what mapping to use when encoding. If (::) is used, it is assumed that the columns in the fit and transform table are the same 
@@ -699,11 +704,12 @@ x x2       x1_a x1_b
 1 2.188574 0    0 
 ```
 
+
 ## `.ml.oneHot.fitTransform`
 
 _Encode categorical features using one-hot encoded fitted model_
 
-```txt
+```syntax
 oneHot.fitTransform[tab;symCols]
 ```
 
@@ -741,15 +747,17 @@ x2        x_a x_b x1_0 x1_1
 5.611439  1   0   1    0 
 ```
 
-!!! warning "`.ml.onehot` deprecated"
-    The above function was previously defined as `.ml.onehot`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.onehot`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.polyTab`
 
 _Tunable polynomial features from an input table_
 
-```txt
+```syntax
 .ml.polyTab[tab;n]
 ```
 
@@ -799,34 +807,33 @@ val          n  x        x1       x2 val_n        val_x      val_x1  ..
 0.002999996  3  76.81172 463.5728 3  0.008999987  0.2304348  1.390716..
 0.003999989  4  45.02587 694.5211 8  0.01599996   0.180103   2.778077..
 ```
-!!! warning "`.ml.polytab` deprecated"
-    The above function was previously defined as `.ml.polytab`.
-    It is still callable but will be deprecated after version 3.0.
+
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.polytab`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.stdScaler.fit`
 
 _Fit standard scaler model_
 
-```txt
-.ml.stdScaler.fit[data]
+```syntax
+.ml.stdScaler.fit data
 ```
-Where
 
--  `data` is a simple numerical table, matrix or list
+Where `data` is a simple numerical table, matrix or list,
+returns a dictionary containing average and deviation values of the fitted data (`modelInfo`) along with a transform function projection to be used on new data (`transform`).
 
-returns a dictionary containing average and deviation values of the fitted data (`modelInfo`) along with a transform function projection to be used on new data (`transform`)
+??? "Result dictionary"
 
-??? "Dictionary return"
 	The avg/dev value of the data used during the fitting process is contained within `modelInfo`
 	
 	```
 	`avgData`devData!8 2
 	```
 	
-	The transform functionality is contained within the `transform` key. The function takes the following as inputs:
-	
-	-  `data` is a numerical table, matrix or list
-	
+	The transform functionality is contained within the `transform` key. The function takes as argument a numerical table, matrix or list, and
 	returns the standard scaled representation of the data based on the input values of the fitted model
 
 ```q
@@ -873,17 +880,16 @@ x          x1         x2         x3
 -2.243011  1.374621   0.9736847  -2.488272 
 ```
 
+
 ## `.ml.stdScaler.fitTransform`
 
 _Standard scaler transform-based representation of data_
 
-```txt
-.ml.stdScaler.fitTransform[data]
+```syntax
+.ml.stdScaler.fitTransform data
 ```
-Where
 
--  `data` is a simple numerical table, matrix or list
-
+Where `data` is a simple numerical table, matrix or list,
 returns a table, matrix or list where all data has undergone standard scaling.
 
 ```q
@@ -921,15 +927,17 @@ q).ml.stdScaler.fitTransform[list]
 -0.1968835 1.653525 0.06217373 -1.455161 0.2842228 -1.418153 1.542501 -0.5669..
 ```
 
-!!! warning "`.ml.stdscaler` deprecated"
-    The above function was previously defined as `.ml.stdscaler`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.stdscaler`.
+    That is still callable but will be removed after version 3.0.
+
 
 ## `.ml.timeSplit`
 
 _Break specified time columns into constituent components_
 
-```txt
+```syntax
 .ml.timeSplit[tab;timeCols]
 ```
 
@@ -967,6 +975,7 @@ x1    x2 x3 x_dow x_year x_mm x_dd x_qtr x_wd x_hh x_uu x_ss
 13:50 4  5  4     2000   1    5    1     1    0    0    0   
 ```
 
-!!! warning "`.ml.timesplit` deprecated"
-    The above function was previously defined as `.ml.timesplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.timesplit`.
+    That is still callable but will be removed after version 3.0.

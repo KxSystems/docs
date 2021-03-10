@@ -27,7 +27,7 @@ At each non-leaf node, the dataset is split roughly in two. A splitting dimensio
 
 _Find the tree index of the leaf that a datapoint belongs to_
 
-```txt
+```syntax
 .ml.clust.kd.findLeaf[tree;pt;node]
 ```
 
@@ -82,7 +82,7 @@ To switch between the implementations, `.ml.clust.kd.qC[b]` can be used, where `
 
 _Build k-d tree_
 
-```txt
+```syntax
 .ml.clust.kd.newTree[data;leafSize]
 ```
 
@@ -91,21 +91,18 @@ Where
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `leafSize` is the minimum number of datapoints contained within each leaf of the tree.
 
-returns a k-d tree table
+returns a k-d tree table:
 
-??? "Table return"
-	The kd-tree table contains the following columns
-	
-	column    | description
-        ----------|-------------------------------
-	leaf      |  Whether this is a leaf in the tree (boolean)
-	left      |  Whether node/leaf is to the left of its parent node (boolean)
-	self      |  Tree index of current node
-	parent    |  Tree index of the parent node
-	children  |  Tree indexes of any child nodes
-	axis      |  Splitting dimension of current node (null if leaf node)
-	midval    |  Splitting value of current node (null if leaf node)
-	idxs      |  Indexes (column in data) of datapoints contained in a leaf
+```txt
+leaf       whether this is a leaf in the tree (boolean)
+left       whether node/leaf is to the left of its parent node (boolean)
+self       tree index of current node
+parent     tree index of the parent node
+children   tree indexes of any child nodes
+axis       splitting dimension of current node (null if leaf node)
+midval     splitting value of current node (null if leaf node)
+idxs       indexes (column in data) of datapoints contained in a leaf
+```
 
 ```q
 q)show data:2 10#20?10.
@@ -138,7 +135,7 @@ leaf left self parent children axis midval  idxs
 
 _Find the nearest neighbor for a data point_
 
-```txt
+```syntax
 .ml.clust.kd.nn[tree;data;df;xidxs;pt]
 ```
 
@@ -147,7 +144,7 @@ Where
 -   `tree` is a k-d tree
 -   `data` represents the points being analyzed in matrix format, where each column is an individual datapoint
 -   `df` is the distance function: `e2dist` `edist` `mdist`
--   `xidxs` are the indices (columns in `data`) to be excluded from the nearest neighbor search (`()` if any point can be chosen)
+-   `xidxs` are the indices (columns in `data`) to be excluded from the nearest-neighbor search (use `()` if any point can be chosen)
 -   `pt` is the floating data point to be searched
 
 returns a dictionary containing the distance (`closestDist`) and the column index in `data` (`closestPoint`) of the nearest neighbor.

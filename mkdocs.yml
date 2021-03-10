@@ -691,7 +691,7 @@ nav:
       - Clustering:
         - Overview: ml/toolkit/clustering/index.md
         - Algorithms: ml/toolkit/clustering/algos.md
-        - K-Dimensional Tree: ml/toolkit/clustering/kdtree.md
+        - K-Dimensional tree: ml/toolkit/clustering/kdtree.md
         - Scoring metrics: ml/toolkit/clustering/score.md
       - Timeseries:
         - Overview: ml/toolkit/timeseries/index.md
@@ -709,7 +709,7 @@ nav:
         - Data preparation: ml/nlp/userguide/preproc.md
         - Text comparison: ml/nlp/userguide/comparisons.md
         - Clustering: ml/nlp/userguide/clustering.md
-        - Feature Vectors: ml/nlp/userguide/featVector.md
+        - Feature vectors: ml/nlp/userguide/feature-vector.md
         - Utilities: ml/nlp/userguide/utils.md
         - Emails: ml/nlp/userguide/emails.md
     - AutoML:
@@ -717,7 +717,7 @@ nav:
       - User guide:
         - Overview: ml/automl/ug/index.md
         - Configuration: ml/automl/ug/config.md
-        - Framework Interaction: ml/automl/ug/functions.md
+        - Framework interaction: ml/automl/ug/functions.md
         - Data pre-processing: ml/automl/ug/preproc.md
         - Data processing: ml/automl/ug/proc.md
         - Data post-processing: ml/automl/ug/postproc.md

@@ -6,6 +6,14 @@ date: August 2018
 ---
 # :fontawesome-solid-share-alt: FRESH: a feature-extraction and feature-significance toolkit
 
+<div markdown="1" class="typewriter">
+.ml.fresh **Feature extraction and significance**
+
+\  [.ml.fresh.createFeatures](#mlfreshcreateFeatures)       Apply functions to subsets of initial data 
+                                 to create features
+\  [.ml.fresh.significantFeatures](#mlfreshsignificantFeatures)   Statistically significant features
+</div>
+
 :fontawesome-brands-github: [KxSystems/ml](https://github.com/kxsystems/ml)
 
 Feature extraction and selection are vital components of many machine-learning pipelines. Here we outline an implementation of the [FRESH](https://arxiv.org/pdf/1610.07717v3.pdf) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm.
@@ -21,9 +29,7 @@ Feature selection can improve the accuracy of a machine-learning algorithm by
 -  Mitigating the curse of dimensionality
 -  Reducing variance in the dataset to reduce overfitting
 
-!!! tip "Examples"
-
-    Interactive notebook implementations showing examples of the FRESH algorithm used in different applications can be found at :fontawesome-brands-github: [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
+!!! example ":fontawesome-brands-github: [Notebook examples](https://github.com/KxSystems/mlnotebooks) of the FRESH algorithm used in different applications"
 
 
 ## Loading
@@ -46,9 +52,7 @@ The feature-extraction procedure supports columns of boolean, integer and floati
 
 In particular, data should not contain text (strings or symbols), other than within the ID column. If a text-based feature is thought to be important, one-hot, frequency or lexigraphical encoding can be used to convert the symbolic data to appropriate numerical values.
 
-!!! tip "Formatting"
-
-    A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [preprocessing section](utilities/preproc.md) of the toolkit.
+!!! tip "A range of formatting functions (e.g. null-filling and one-hot encoding) are supplied in the [preprocessing section](utilities/preproc.md) of the toolkit"
 
 
 ## Calculated features
@@ -115,8 +119,8 @@ valCount[data;val]                            | Number of occurrences of `val` w
 var[data]                                     | Variance of the series
 varAboveStdDev[data]                          | Boolean: the variance of the dataset is larger than the standard deviation
 
-!!! warning "deprecation warning"
-    Some of the above functions are deprecated.
+!!! warning "Some of the above functions are deprecated"
+
     They are still callable but will be removed after version 3.0.
 
 ## Feature extraction
@@ -128,9 +132,33 @@ The `.ml.fresh.createFeatures` function applies a set of aggregation functions t
 As of version 0.1.3 the creation of features using the function `.ml.fresh.createFeatures` is invoked at console initialization. If a process is started with `$q -s -4 -p 4321`, then four processes will automatically be used to process feature creation. 
 
 
-### `.ml.fresh.createFeatures`
+## Feature significance
 
-_Applies functions to subsets of initial data to create features_
+Statistical significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
+
+```txt
+feature type    target type   significance test 
+------------------------------------------------
+Binary          Real          Kolmogorov-Smirnov
+Binary          Binary        Fisher-Exact      
+Real            Real          Kendall Tau-b     
+Real            Binary        Kolmogorov-Smirnov
+```
+
+Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
+
+1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level. The recommended input is 5% (0.05).
+2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to allow us to predict the target vector.
+3. Percentile based selection: set a percentile threshold for p-values below which features are selected.
+
+Each of these procedures can be implemented by modifying parameter input to the following function;
+
+---
+
+
+## `.ml.fresh.createFeatures`
+
+_Apply functions to subsets of initial data to create features_
 
 ```txt
 .ml.fresh.createFeatures[data;idCol;cols2Extract;params]
@@ -143,7 +171,7 @@ Where
 -   `cols2Extract` are the column names (syms) on which extracted features will be calculated (these columns should contain only numerical values).
 -   `params` is a table containing the functions/parameters to be applied to cols2Extract. This should be a modified version of `.ml.fresh.params`
 
-This returns a table keyed by ID column and containing the features extracted from the subset of the data identified by the `ID` column.
+returns a table keyed by ID column and containing the features extracted from the subset of the data identified by the `ID` column.
 
 ```q 
 q)m:30;n:100
@@ -210,9 +238,10 @@ q)count 1_cols featsNew
 92
 ```
 
-!!! warning "`.ml.fresh.createfeatures` deprecated"
-    The above function was previously defined as `.ml.fresh.createfeatures`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.fresh.createfeatures`.
+    That is still callable but will be removed after version 3.0.
 
 The following functions contain some Python dependency.
 
@@ -230,30 +259,9 @@ q)update valid:0b from `.ml.fresh.params where f in funcs
 Modifications to the file `hyperparameters.json` within the FRESH folder allows fine tuning of the number and variety of calculations to be made. Users can create their own features by defining a function within the `.ml.fresh.feat` namespace within `feat.q` and, if necessary, providing relevant hyperparameters in `.ml.fresh.params`.
 
 
-## Feature significance
+## `.ml.fresh.significantFeatures`
 
-Statistical significance tests can be applied to the derived features to determine how useful each feature is in predicting a target vector. The specific significance test applied, depends on the characteristics of the feature and target. The following table outlines the test applied in each case.
-
-```txt
-feature type    target type   significance test 
-------------------------------------------------
-Binary          Real          Kolmogorov-Smirnov
-Binary          Binary        Fisher-Exact      
-Real            Real          Kendall Tau-b     
-Real            Binary        Kolmogorov-Smirnov
-```
-
-Each test returns a p-value, which can then be passed to a selection procedure chosen by the user. The feature selection procedures available at present are as follows;
-
-1. The Benjamini-Hochberg-Yekutieli (BHY) procedure: determines if the feature meets a defined False Discovery Rate (FDR) level. The recommended input is 5% (0.05).
-2. K-best features: choose the K features which have the lowest p-values and thus have been determined to be the most important features to allow us to predict the target vector.
-3. Percentile based selection: set a percentile threshold for p-values below which features are selected.
-
-Each of these procedures can be implemented by modifying parameter input to the following function;
-
-### `.ml.fresh.significantFeatures`
-
-_Return statistically significant features based on defined selection procedure_
+_Statistically significant features based on defined selection procedure_
 
 ```txt
 .ml.fresh.significantFeatures[tab;target;func]
@@ -288,11 +296,9 @@ q)count each (sigBH;sigK;sigP)
 30 20 22
 ```
 
-!!! warning "`.ml.fresh.significantfeatures` deprecated"
-    The above function was previously defined as `.ml.fresh.significantfeatures`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-!!! warning "`.ml.fresh.ksigfeat` deprecated"
-    The above function was previously defined as `.ml.fresh.ksigfeat`.
-    It is still callable but will be deprecated after version 3.0.
+    Earlier versions of this function were defined as `.ml.fresh.significantfeatures` and `.ml.fresh.ksigfeat`.
+
+    They are still callable but will be removed after version 3.0.
 

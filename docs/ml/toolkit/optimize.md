@@ -34,13 +34,14 @@ In numerical optimization, the Broyden-Fletcher-Goldfarb-Shanno (BFGS) algorithm
 :fontawesome-brands-wikipedia-w:
 [Rationale behind the algorithm](https://en.wikipedia.org/wiki/Broyden-Fletcher-Goldfarb-Shanno_algorithm#Rationale "Wikipedia")
 
+---
 
-### `.ml.optimize.BFGS`
+## `.ml.optimize.BFGS`
 
 _Optimize an objective function based on a provided intial guess using the BFGS algorithm_
 
 
-```txt
+```syntax
 .ml.optimize.BFGS[func;x0;args;params]
 ```
 

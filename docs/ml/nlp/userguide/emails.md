@@ -23,15 +23,11 @@ The MBOX file is the most common format for storing email messages on a hard dri
 
 _Get the graph of who emailed who, including the number of times they emailed_
 
-```txt
-.nlp.email.getGraph[emails]
+```syntax
+.nlp.email.getGraph emails
 ```
 
-Where 
-
-- `emails` is a table containing parsed metadata and content of an mbox file (result from `.nlp.email.loadEmails`)
-
-returns a table of to-from pairing.
+Where `emails` is a table containing parsed metadata and content of an mbox file (as returned by `.nlp.email.loadEmails`) returns a table of to-from pairing.
 
 ```q
 q)email:.nlp.email.loadEmails["/home/kx/nlp/datasets/tdwg-lit.mbox"]
@@ -52,30 +48,28 @@ ram@cs.umb.edu                   tdwg-img@lists.tdwg.org          2
 ...
 ```
 
+
 ## `.nlp.email.loadEmails`
 
-_Convert an mbox file to a table of parsed metadata_
+_Convert an MBOX file to a table of parsed metadata_
 
-```txt
-.nlp.email.loadEmails[filepath]
+```syntax
+.nlp.email.loadEmails filepath
 ```
 
-Where 
+Where `filepath` is a string of the path to the MBOX file returns a table containing parsed metadata and content of the MBOX file.
 
-- `filepath` is a string of the path to the mbox file
-
-returns a table containing parsed metadata and content of the mbox file.
-
-column      | type                           | content
-------------|--------------------------------|---------------------------
-sender      | string                         | name and address of sender
-to          | string                         | name and address of receiver/s
-date        | timestamp                      | date
-subject     | string                         | subject
-text        | string                         | original text
-contentType | string                         | content type
-payload     | string or list of dictionaries | payload
-
+```txt
+column      type                            content
+--------------------------------------------------------------------------
+sender      string                          name and address of sender
+to          string                          name and address of receiver/s
+date        timestamp                       date
+subject     string                          subject
+text        string                          original text
+contentType string                          content type
+payload     string or list of dictionaries  payload
+```
 
 ```q
 q)email:.nlp.email.loadEmails["/home/kx/nlp/datasets/tdwg-lit.mbox"]
@@ -88,15 +82,11 @@ q)cols email
 
 _Extract meta information from an email_
 
-```txt
-.nlp.email.parseMail[filepath]
+```syntax
+.nlp.email.parseMail filepath
 ```
 
-Where 
-
-`filepath` is  is a string of the path to the mbox file
-
-returns a dictionary containing meta information from the email.
+Where `filepath` is a string of the path to the MBOX file, returns a dictionary containing meta information from the email.
 
 ```q
 q)emailstring:"/home/kx/nlp/datasets/tdwg-lit.mbox"

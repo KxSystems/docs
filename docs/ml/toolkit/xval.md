@@ -5,7 +5,7 @@ description: The .ml.xv, .ml.gs and .ml.rs namespaces contain functions related 
 date: March 2019
 keywords: time-series, cross validation, grid search, random search, Sobol sequences, sobol-random search, roll-forward, chain-forward, grid search fit, data splitting, stratified splitting, kdb+, q
 ---
-# :fontawesome-solid-share-alt: Cross validation procedures 
+# :fontawesome-solid-share-alt: Cross validation procedures
 
 
 
@@ -41,7 +41,7 @@ keywords: time-series, cross validation, grid search, random search, Sobol seque
 :fontawesome-brands-github:
 [KxSystems/ml/xval](https://github.com/kxsystems/ml/tree/master/xval/)
 
-The `.ml.xv`, `.ml.gs` and `.ml.rs` namespaces contain functions related to cross validation, grid search, random/sobol-random search algorithms respectively. These algorithms are used in machine learning to test how robust or stable a model is to changes in the volume of data or to the specific subsets of data used for model generation.
+The `.ml.xv`, `.ml.gs` and `.ml.rs` namespaces contain functions related to cross validation, grid search, random/Sobol-random search algorithms respectively. These algorithms are used in machine learning to test how robust or stable a model is to changes in the volume of data or to the specific subsets of data used for model generation.
 
 Within the following examples, `.ml.xv.fitScore` is used extensively to fit models and return the score achieved on validation/test data. This function can be replaced by a user-defined alternative for tailored applications, e.g. a function to fit on training data and predict outputs for new data.
 
@@ -50,15 +50,15 @@ As of toolkit version 0.1.3, the distribution of cross-validation functions is i
 !!! tip "Interactive notebook implementations"
 
   	Interactive notebook implementations of a large number of the functions outlined here are available within :fontawesome-brands-github: [KxSystems/mlnotebooks](https://github.com/KxSystems/mlnotebooks)
-    
 
-## Grid Search
+
+## Grid search
 
 The most common method of perfoming hyperparameter optimization in machine learning is through the use of a grid search. Grid search is an exhaustive searching method across all possible combinations of a hyperparameters provided by a user.
 
-#### Grid Search Hyperparameter Dictionary
+### Hyperparameter dictionary
 
-When applying the grid search functionality provided within the toolkit, a user must provide a dictionary mapping the names of all the hyperparameters to be searched with the possible values to be considered for the hyperparameter. The following example shows a set of valid hyperparameter dictionaries for an `sklearn` AdaBoostRegressor and `DecisionTreeClassifier`
+When applying the grid-search functionality provided within the toolkit, a user must provide a dictionary mapping the names of all the hyperparameters to be searched with the possible values to be considered for the hyperparameter. The following example shows a set of valid hyperparameter dictionaries for an `sklearn` AdaBoostRegressor and `DecisionTreeClassifier`
 
 ```q
 / grid search hyperparameter dictionary for an AdaBoostRegressor
@@ -68,11 +68,83 @@ q)p:enlist[`max_depth]!enlist(::;1;2;3;4;5)
 ```
 
 
-### `.ml.gs.kfShuff`
+## Random search
+
+Random and quasi-random search methods replace the need for exhaustive searching across a hyperparameter space used by [grid-search](#grid-search) by selecting combinations of hyperparameters randomly. This random selection can take place across a discrete space as would be the case if choosing randomly from a list of possible values or over a continuous space bounded based on user input.
+
+Such methods commonly outperform grid search both with respect to finding the optimal parameters in particular in cases where a small number of parameters disproportionately affect the performance of the machine learning algorithm. This library contains two different implementations following the ethos of random search namely
+
+Random search
+
+: The completely random selection of hyperparameters across a defined continuous or discreet search space
+
+Quasi-random Sobol sequence search
+
+: The selection of hyperparameters across a user defined continuous or discreet space using a quasi-random selection method based on Sobol sequences. This method ensures that the hyperparameters searched encompass a more even representation of the hyperparameter space than is the case in purely random or grid search methods.
+
+    :fontawesome-brands-wikipedia-w:
+    [Sobol sequence](https://en.wikipedia.org/wiki/Sobol_sequence "Wikipedia")
+
+
+### Hyperparameter dictionary
+
+The random and Sobol searching methods follow the same syntax as grid search, with the exception of the `params` parameter. In order to perfom these two searching methods extra information is needed, where the parameter dictionary must have the format:
+
+-   `typ` is the type of random search to perform as a symbol - `random` or `sobol`
+-   `randomState` is the seed to apply during cross validation. If a null character, `(::)`, is passed the default seed, `42`, will be applied.
+-   `n` is the number of hyperparameter sets to produce.
+    For Sobol this number must be a power of 2, e.g. 4, 8, 16, etc.
+
+-   `params` is a dictionary of hyperparameters to search, which must have the following forms:
+
+Numerical
+
+:    ``enlist[`hyperparamName]!enlist(spaceType;loBound;hiBound;hpType)``
+
+:    where `spaceType` is `uniform` or `loguniform`, `loUpper` and `hiBound` are the limits of the hyperparameter space and `hpTyp` is the type to cast the hyperparameters to.
+
+Symbol
+
+:    ``enlist[`hyperparamName]!enlist(`symbol;symbolsToSearch)``
+
+:    where `symbol` is given as the type followed by the list of possible symbol values.
+
+Boolean
+
+:    ``enlist[`hyperparamName]!enlist`boolean``
+
+
+A practical example:
+
+```q
+// Example random dictionary for a Decision Tree Classifier
+q)typ:`random
+q)randomState:283
+q)n:10
+q)p:`max_depth`criterion!((`uniform;1;30;"j");(`symbol;`gini`entropy))
+q)pr:`typ`randomState`n`p!(typ;randomState;n;p)
+// Example Sobol dictionary for an SGD Classifier
+q)typ:`sobol
+q)randomState:93
+q)n:512  // must equal 2^n
+q)prms:`average`l1_ratio`alpha!(`boolean;(`uniform;0;1;"f");(`loguniform;-5;2;"f"))
+q)ps:`typ`randomState`n`p!(typ;randomState;n;p)
+```
+
+
+## Cross validation
+
+Cross-validation is a technique used to gain a statistical understanding of how well a machine-learning model generalizes to independent datasets. This is used to limit overfitting and selection bias, especially when dealing with small datasets.
+
+
+---
+
+
+## `.ml.gs.kfShuff`
 
 _Cross-validated parameter grid search applied to data with shuffled split indices_
 
-```txt
+```syntax
 .ml.gs.kfShuff[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -83,7 +155,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `functions` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a dictionary of hyperparameters to be searched - see section [Grid-search hyperparameter dictionary](#grid-search-hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -110,15 +182,18 @@ q).ml.gs.kfShuff[5;1;x;yr;.ml.xv.fitScore rf;pr;.2]
 `fit_intercept`normalize!11b
 0.9975171
 ```
-!!! warning "`.ml.gs.kfshuff` deprecated"
-    The above function was previously defined as `.ml.gs.kfshuff`.
-    It is still callable but will be deprecated after version 3.0.
 
-### `.ml.gs.kfSplit`
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.gs.kfshuff`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.gs.kfSplit`
 
 _Cross-validated parameter grid search applied to data with ascending split indices_
 
-```txt
+```syntax
 .ml.gs.kfSplit[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -129,7 +204,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `functions` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -138,11 +213,13 @@ returns the scores for hyperparameter sets on each of the `k` folds for all valu
 q)m:10000
 q)x:(m;10)#(m*10)?1f
 q)yc:(raze flip(0N;4)#m#`a`b`c`d)rank x[;0]
-// Algos
+q)// Algos
 q)cf:{.p.import[`sklearn.tree]`:DecisionTreeClassifier}
-// Params
+
+q)// Params
 q)pc:enlist[`max_depth]!enlist(::;1;2;3;4;5)
-// 5 fold cross-validation no holdout
+
+q)// 5 fold cross-validation no holdout
 q).ml.gs.kfSplit[5;1;x;yc;.ml.xv.fitScore cf;pc;0]
 max_depth|
 ---------| ---------------------------------
@@ -152,27 +229,32 @@ max_depth|
 3        | 1     0.999  1      1      0.9995
 4        | 1     0.999  1      1      0.9995
 5        | 1     0.999  1      1      0.9995
-// 5 fold cross-validated grid search fitted on 20% holdout set
+
+q)// 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.kfSplit[5;1;x;yc;.ml.xv.fitScore cf;pc;.2]
 (+(,`max_depth)!,(::;1;2;3;4;5))!(0.99875 1 0.999375 0.999375 1;0.500625 0.48..
 (,`max_depth)!,::
 1f
-// 10 fold cross-validated grid search fitted on 10% holdout 
-// with initial data shuffle
+
+q)// 10 fold cross-validated grid search fitted on 10% holdout
+q)// with initial data shuffle
 q).ml.gs.kfSplit[10;1;x;yc;.ml.xv.fitScore cf;pc;-.1]
 (+(,`max_depth)!,(::;1;2;3;4;5))!(1 1 1 1 1 1 1 1 0.9988889 0.9977778;0.48555..
 (,`max_depth)!,::
 0.998
 ```
-!!! warning "`.ml.gs.kfsplit` deprecated"
-    The above function was previously defined as `.ml.gs.kfsplit`.
-    It is still callable but will be deprecated after version 3.0.
 
-### `.ml.gs.kfStrat`
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.gs.kfsplit`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.gs.kfStrat`
 
 _Cross-validated parameter grid search applied to data with an equi-distributions of targets per fold_
 
-```txt
+```syntax
 .ml.gs.kfStrat[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -183,7 +265,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `functions` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -212,15 +294,18 @@ q).ml.gs.kfStrat[4;1;x;yc;.ml.xv.fitScore cf;pc;.2]
 (,`max_depth)!,3
 1f
 ```
-!!! warning "`.ml.gs.kfstrat` deprecated"
-    The above function was previously defined as `.ml.gs.kfstrat`.
-    It is still callable but will be deprecated after version 3.0.
 
-### `.ml.gs.mcSplit`
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.gs.kfstrat`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.gs.mcSplit`
 
 _Cross-validated parameter grid search applied to randomly shuffled data and validated on a percentage holdout set_
 
-```txt
+```syntax
 .ml.gs.mcSplit[pc;n;features;target;function;params;tstTyp]
 ```
 
@@ -231,7 +316,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -258,15 +343,18 @@ q).ml.gs.mcSplit[0.1;3;x;yr;.ml.xv.fitScore rf;pr;.2]
 `fit_intercept`normalize!10b
 0.997549
 ```
-!!! warning "`.ml.gs.mcsplit` deprecated"
-    The above function was previously defined as `.ml.gs.mcsplit`.
-    It is still callable but will be deprecated after version 3.0.
 
-### `.ml.gs.pcSplit`
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.gs.mcsplit`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.gs.pcSplit`
 
 _Cross-validated parameter grid search applied to percentage split dataset_
 
-```txt
+```syntax
 .ml.gs.pcSplit[pc;n;features;target;function;params;tstTyp]
 ```
 
@@ -277,7 +365,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -304,20 +392,22 @@ q).ml.gs.pcSplit[0.1;3;x;yr;.ml.xv.fitScore rf;pr;.2]
 `fit_intercept`normalize!10b
 0.9974919
 ```
-This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. 
+This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier.
 
 :fontawesome-brands-wikipedia-w:
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation)
 
-!!! warning "`.ml.gs.pcsplit` deprecated"
-    The above function was previously defined as `.ml.gs.pcsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.gs.tsChain`
+    This function was previously defined as `.ml.gs.pcsplit`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.gs.tsChain`
 
 _Cross-validated parameter grid search applied to chain forward time-series sets_
 
-```txt
+```syntax
 .ml.gs.tsChain[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -328,7 +418,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `functions` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -364,15 +454,16 @@ This works as shown in the following image:
 
 The data is split into equi-sized bins with increasing amounts of the data incorporated into the testing set at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting. It also allows users to test the robustness of the model when passed increasing volumes of data.
 
-!!! warning "`.ml.gs.tschain` deprecated"
-    The above function was previously defined as `.ml.gs.tschain`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.gs.tsRolls`
+    This function was previously defined as `.ml.gs.tschain`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.gs.tsRolls`
 
 _Cross-validated parameter grid search applied to roll forward time-series sets_
 
-```txt
+```syntax
 .ml.gs.tsRolls[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -383,7 +474,7 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `functions` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Grid Search Hyperparameter Dictionary](#grid-search-hyperparameter-dictionary)
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary)
 -   `tstTyp` is a float value denoting the size of the holdout set used in a fitted grid search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
@@ -405,7 +496,7 @@ max_depth|
 2        | 0.7438512 0.7492501 1         0.7582484 0.7378524
 3        | 0.9994001 0.9994001 1         0.9994001 0.9988002
 4        | 0.9994001 0.9994001 1         0.9994001 0.9988002
-5        | 0.9994001 0.9994001 1         0.9994001 0.9988002     
+5        | 0.9994001 0.9994001 1         0.9994001 0.9988002
 // 5 fold cross-validated grid search fitted on 20% holdout set
 q).ml.gs.tsRolls[4;1;x;yc;.ml.xv.fitScore cf;pc;.2]
 (+(,`max_depth)!,(::;1;2;3;4;5))!(1 0.999 0.999;0.486 0.4825 0.5005;0.7315 0...
@@ -418,81 +509,16 @@ This works as shown in the following image:
 
 Successive equi-sized bins are taken as training and validation sets at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
 
-!!! warning "`.ml.gs.tsrolls` deprecated"
-    The above function was previously defined as `.ml.gs.tsrolls`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-## Random Search
+    This function was previously defined as `.ml.gs.tsrolls`.
+    That is still callable but will be removed after version 3.0.
 
-Random and quasi-random search methods replace the need for exhaustive searching across a hyperparameter space used by [grid-search](#grid-search) by selecting combinations of hyperparameters randomly. This random selection can take place across a discrete space as would be the case if choosing randomly from a list of possible values or over a continuous space bounded based on user input. 
-
-Such methods commonly outperform grid search both with respect to finding the optimal parameters in particular in cases where a small number of parameters disproportionately affect the performance of the machine learning algorithm. This library contains two different implementations following the ethos of random search namely
-
-1. Random search
-	
-	The completely random selection of hyperparameters across a defined continuous or discreet search space. 
-
-2. Quasi-random sobol sequence search
-	
-	The selection of hyperparameters across a user defined continuous or discreet space using a quasi-random selection method based on Sobol sequences. This method ensures that the hyperparameters searched encompass a more even representation of the hyperparameter space than is the case in purely random or grid search methods. More information can be found [here](https://en.wikipedia.org/wiki/Sobol_sequence)
-
-
-#### Random Search Hyperparameter Dictionary
-
-The random and sobol searching methods follow the same syntax as grid search, with the exception of the `params` parameter. In order to perfom these two searching methods extra information is needed, where the parameter dictionary must have the format:
-
--   `typ` is the type of random search to perform as a symbol - `random` or `sobol`
--   `randomState` is the seed to apply during cross validation. If a null character, `(::)`, is passed the default seed, `42`, will be applied.
--   `n` is the number of hyperparameter sets to produce. 
-	
-	* **Note**: for sobol this number must equal $2^n$, e.g. $4$, $8$, $16$, etc.
-
--   `params` is a dictionary of hyperparameters to be searched which must have the following forms:
-
-	* **Numerical:**
-		
-		```
-		enlist[`hyperparamName]!enlist(spaceType;lowerBound;upperBound;hpType)
-		``` 
-		
-		where `spaceType` is `uniform` or `loguniform`, `lowerUpper` and `upperBound` are the limits of the hyperparameter space and `hpTyp` is the type to cast the hyperparameters to.
-
-	* **Symbol:**
-
-		```
-		enlist[`hyperparamName]!enlist(`symbol;symbolsToSearch)
-		``` 
-		
-		where `symbol` is given as the type followed by the list of possible symbol values.
-
-	* **Boolean:**
-		
-		```
-		enlist[`hyperparamName]!enlist`boolean
-		```
-		
-A practical example is provided below.
-        
-```q
-// Example random dictionary for a Decision Tree Classifier
-q)typ:`random
-q)randomState:283
-q)n:10
-q)p:`max_depth`criterion!((`uniform;1;30;"j");(`symbol;`gini`entropy))
-q)pr:`typ`randomState`n`p!(typ;randomState;n;p)
-// Example sobol dictionary for an SGD Classifier
-q)typ:`sobol
-q)randomState:93
-q)n:512  // must equal 2^n
-q)prms:`average`l1_ratio`alpha!(`boolean;(`uniform;0;1;"f");(`loguniform;-5;2;"f"))
-q)ps:`typ`randomState`n`p!(typ;randomState;n;p)
-```
-        
-### `.ml.rs.kfShuff`
+## `.ml.rs.kfShuff`
 
 _Cross-validated parameter random search applied to data with shuffled split indices_
 
-```txt
+```syntax
 .ml.rs.kfShuff[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -503,8 +529,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -536,15 +562,20 @@ q).ml.rs.kfShuff[5;1;x;yc;.ml.xv.fitScore cf;pr;.2]
 (,`max_depth)!,5
 1f
 ```
-!!! warning "`.ml.rs.kfshuff` deprecated"
-    The above function was previously defined as `.ml.rs.kfshuff`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.rs.kfSplit`
+    This function was previously defined as `.ml.rs.kfshuff`.
+    That is still callable but will be removed after version 3.0.
+
+
+---
+
+
+## `.ml.rs.kfSplit`
 
 _Cross-validated parameter random search applied to data with ascending split indices_
 
-```txt
+```syntax
 .ml.rs.kfSplit[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -555,8 +586,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -571,7 +602,7 @@ q)typ:`sobol
 q)randomState:374
 q)n:8  // must equal 2^n
 q)p:`average`l1_ratio`alpha!(`boolean;(`uniform;0;1;"f");(`loguniform;-5;2;"f"))
-// sobol hyperparameter dictionary
+// Sobol hyperparameter dictionary
 q)ps:`typ`randomState`n`p!(typ;randomState;n;p)
 // 4-fold cross validation no holdout
 q).ml.rs.kfSplit[4;1;x;yc;.ml.xv.fitScore cf;ps;0]
@@ -585,27 +616,28 @@ average l1_ratio alpha        |
 1       0.625    7.498942e-005| 0.898  0.9032 0.9108 0.9116
 1       0.125    0.2371374    | 0.5044 0.5148 0.5116 0.4888
 0       0.1875   0.001539927  | 0.646  0.6788 0.6476 0.6268
-// 5 fold cross-validated sobol search fitted on 20% holdout set
+// 5 fold cross-validated Sobol search fitted on 20% holdout set
 q).ml.rs.kfSplit[5;1;x;yc;.ml.xv.fitScore cf;ps;.2]
 (+`average`l1_ratio`alpha!(10010110b;0.5 0.75 0.25 0.375 0.875 0.625 0.125 0...
 `average`l1_ratio`alpha!(1b;0.625;7.498942e-005)
 0.9105
-// 10 fold cross-validated sobol search fitted on 10% holdout 
+// 10 fold cross-validated Sobol search fitted on 10% holdout
 // with initial data shuffle
 q).ml.rs.kfSplit[10;1;x;yc;.ml.xv.fitScore cf;ps;-.1]
 (+`average`l1_ratio`alpha!(10010110b;0.5 0.75 0.25 0.375 0.875 0.625 0.125 0...
 `average`l1_ratio`alpha!(1b;0.625;7.498942e-005)
 0.894
 ```
-!!! warning "`.ml.rs.kfsplit` deprecated"
-    The above function was previously defined as `.ml.rs.kfsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.rs.kfStrat`
+    This function was previously defined as `.ml.rs.kfsplit`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.rs.kfStrat`
 
 _Cross-validated parameter random search applied to data with an equi-distributions of targets per fold_
 
-```txt
+```syntax
 .ml.rs.kfStrat[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -616,8 +648,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -650,15 +682,16 @@ q).ml.rs.kfStrat[4;1;x;yc;.ml.xv.fitScore cf;pr;.2]
 `n_estimators`learning_rate!(1;0.007257519)
 0.491
 ```
-!!! warning "`.ml.rs.kfstrat` deprecated"
-    The above function was previously defined as `.ml.rs.kfstrat`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.rs.mcSplit`
+    This function was previously defined as `.ml.rs.kfstrat`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.rs.mcSplit`
 
 _Cross-validated parameter random search applied to randomly shuffled data and validated on a percentage holdout set_
 
-```txt
+```syntax
 .ml.rs.mcSplit[pc;n;features;target;function;params;tstTyp]
 ```
 
@@ -669,8 +702,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -685,7 +718,7 @@ q)typ:`sobol
 q)randomState:73
 q)n:8  // must equal 2^n
 q)p:enlist[`max_depth]!enlist(`uniform;1;20;"j")
-// sobol hyperparameter dictionary
+// Sobol hyperparameter dictionary
 q)ps:`typ`randomState`n`p!(typ;randomState;n;p)
 // 20% validation set with 5 repetitions, no fit on holdout
 q).ml.rs.mcSplit[0.2;5;x;yr;.ml.xv.fitScore dt;ps;0]
@@ -705,15 +738,16 @@ q).ml.rs.mcSplit[0.1;3;x;yr;.ml.xv.fitScore dt;ps;.2]
 (,`max_depth)!,6
 0.9970801
 ```
-!!! warning "`.ml.rs.mcsplit` deprecated"
-    The above function was previously defined as `.ml.rs.mcsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.rs.pcSplit`
+    This function was previously defined as `.ml.rs.mcsplit`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.rs.pcSplit`
 
 _Cross-validated parameter random search applied to percentage split dataset_
 
-```txt
+```syntax
 .ml.rs.pcSplit[pc;n;features;target;function;params;tstTyp]
 ```
 
@@ -724,8 +758,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -759,20 +793,21 @@ q).ml.rs.pcSplit[.1;3;x;yr;.ml.xv.fitScore dt;pr;.2]
 0.9972803
 ```
 
-This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier. 
+This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over K-fold when observations are not wanted in equi-sized bins or where outliers could heavily bias a classifier.
 
 :fontawesome-brands-wikipedia-w:
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation)
 
-!!! warning "`.ml.rs.pcsplit` deprecated"
-    The above function was previously defined as `.ml.rs.pcsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.rs.tsChain`
+    This function was previously defined as `.ml.rs.pcsplit`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.rs.tsChain`
 
 _Cross-validated parameter random search applied to chain forward time-series sets_
 
-```txt
+```syntax
 .ml.rs.tsChain[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -783,8 +818,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -826,15 +861,16 @@ This works as shown in the following image:
 
 The data is split into equi-sized bins with increasing amounts of the data incorporated into the testing set at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting. It also allows users to test the robustness of the model when passed increasing volumes of data.
 
-!!! warning "`.ml.rs.tschain` deprecated"
-    The above function was previously defined as `.ml.rs.tschain`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.rs.tsRolls`
+    This function was previously defined as `.ml.rs.tschain`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.rs.tsRolls`
 
 _Cross-validated parameter random search applied to roll forward time-series sets_
 
-```txt
+```syntax
 .ml.rs.tsRolls[k;n;features;target;functions;params;tstTyp]
 ```
 
@@ -845,8 +881,8 @@ Where
 -   `features` is a matrix of features
 -   `target` is a vector of targets
 -   `function` is a function that takes parameters and data as input and returns a score
--   `params` is a dictionary of hyperparameters to be searched - see section [Random Search Hyperparameter Dictionary](#random-search-hyperparameter-dictionary)
--   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
+-   `params` is a [dictionary of hyperparameters to search](#hyperparameter-dictionary_1)
+-   `tstTyp` is a float value denoting the size of the holdout set used in a fitted random or Sobol search, where the best model is fit to the holdout set. If 0 the function will return scores for each fold for the given hyperparameters. If negative the data will be shuffled prior to designation of the holdout set.
 
 returns the scores for hyperparameter sets on each of the `k` folds for all values of `tstTyp` and additionally returns the best hyperparameters and score on the holdout set for `0 < tstTyp <= 1`.
 
@@ -887,19 +923,18 @@ This works as shown in the following image:
 
 Successive equi-sized bins are taken as training and validation sets at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
 
-!!! warning "`.ml.rs.tsrolls` deprecated"
-    The above function was previously defined as `.ml.rs.tsrolls`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-## Cross Validation
+    This function was previously defined as `.ml.rs.tsrolls`.
+    That is still callable but will be removed after version 3.0.
 
-Cross-validation is a technique used to gain a statistical understanding of how well a machine learning model generalizes to independent datasets. This is used to limit overfitting and selection bias, especially when dealing with small datasets.
+---
 
-### `.ml.xv.kfShuff`
+## `.ml.xv.kfShuff`
 
 _K-Fold cross validation for randomized non-repeating indices_
 
-```txt
+```syntax
 .ml.xv.kfShuff[k;n;features;target;function]
 ```
 
@@ -924,15 +959,17 @@ q)mdlFunc:.ml.xv.fitScore[ar][]
 q).ml.xv.kfShuff[k;n;x;yr;mdlFunc]
 0.9999935 0.9999934 0.9999935 0.9999935 0.9999935
 ```
-!!! warning "`.ml.xv.kfshuff` deprecated"
-    The above function was previously defined as `.ml.xv.kfshuff`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.xv.kfSplit`
+    This function was previously defined as `.ml.xv.kfshuff`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.xv.kfSplit`
 
 _K-Fold cross-validation for ascending indices split into K-folds_
 
-```txt
+```syntax
 .ml.xv.kfSplit[k;n;features;target;function]
 ```
 
@@ -957,15 +994,17 @@ q)mdlFunc:.ml.xv.fitScore[ar][]
 q).ml.xv.kfSplit[k;n;x;yr;mdlFunc]
 0.9953383 0.9995422 0.9985156 0.9995144 0.9952133
 ```
-!!! warning "`.ml.xv.kfsplit` deprecated"
-    The above function was previously defined as `.ml.xv.kfsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.xv.kfStrat`
+    This function was previously defined as `.ml.xv.kfsplit`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.xv.kfStrat`
 
 _Stratified K-Fold cross-validation with an approximately equal distribution of classes per fold_
 
-```txt
+```syntax
 .ml.xv.kfStrat[k;n;features;target;function]
 ```
 
@@ -993,15 +1032,17 @@ q).ml.xv.kfSplit[k;n;x;yc;mdlFunc]
 
 This is used extensively where the distribution of classes in the data is unbalanced.
 
-!!! warning "`.ml.xv.kfstrat` deprecated"
-    The above function was previously defined as `.ml.xv.kfstrat`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.xv.mcSplit`
+    This function was previously defined as `.ml.xv.kfstrat`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.xv.mcSplit`
 
 _Monte-Carlo cross validation using randomized non-repeating indices_
 
-```txt
+```syntax
 .ml.xv.mcSplit[pc;n;features;target;function]
 ```
 
@@ -1027,20 +1068,22 @@ q).ml.xv.mcSplit[p;n;x;yr;mdlFunc]
 0.9999905 0.9999906 0.9999905 0.9999905 0.9999905
 ```
 
-This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over k-fold when equi-sized bins of observations are not wanted or where outliers could heavily bias the classifier. 
+This form of cross validation is also known as _repeated random sub-sampling validation_. This has advantages over k-fold when equi-sized bins of observations are not wanted or where outliers could heavily bias the classifier.
 
 :fontawesome-brands-wikipedia-w:
 [Repeated random sub-sampling validation](https://en.wikipedia.org/wiki/Cross-validation_(statistics)#Repeated_random_sub-sampling_validation "Wikipedia")
 
-!!! warning "`.ml.xv.mcsplit` deprecated"
-    The above function was previously defined as `.ml.xv.mcsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.xv.pcSplit`
+    This function was previously defined as `.ml.xv.mcsplit`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.xv.pcSplit`
 
 _Percentage split cross-validation procedure_
 
-```txt
+```syntax
 .ml.xv.pcSplit[pc;n;features;target;function]
 ```
 
@@ -1065,15 +1108,17 @@ q)mdlFunc:.ml.xv.fitScore[ar][]
 q).ml.xv.pcSplit[p;n;x;yr;mdlFunc]
 0.9975171 0.9975171 0.9975171 0.9975171
 ```
-!!! warning "`.ml.xv.pcsplit` deprecated"
-    The above function was previously defined as `.ml.xv.pcsplit`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.xv.tsChain`
+    This function was previously defined as `.ml.xv.pcsplit`.
+    That is still callable but will be removed after version 3.0.
+
+
+## `.ml.xv.tsChain`
 
 _Chain-forward cross-validation procedure_
 
-```txt
+```syntax
 .ml.xv.tsChain[k;n;features;target;function]
 ```
 
@@ -1105,15 +1150,16 @@ This works as shown in the following image.
 
 The data is split into equi-sized bins with increasing amounts of the data incorporated in the testing set at each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting. It also allows users to test the robustness of the model with data of increasing volumes.
 
-!!! warning "`.ml.xv.tschain` deprecated"
-    The above function was previously defined as `.ml.xv.tschain`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
 
-### `.ml.xv.tsRolls`
+    This function was previously defined as `.ml.xv.tschain`.
+    That is still callable but will be removed after version 3.0.
+
+## `.ml.xv.tsRolls`
 
 _Roll-forward cross-validation procedure_
 
-```txt
+```syntax
 .ml.xv.tsRolls[k;n;features;target;function]
 ```
 
@@ -1145,6 +1191,7 @@ This works as shown in the following image.
 
 Successive equi-sized bins are taken as validation and training sets for each step. This avoids testing a model on historical information which would be counter-productive for time-series forecasting.
 
-!!! warning "`.ml.xv.tsrolls` deprecated"
-    The above function was previously defined as `.ml.xv.tsrolls`.
-    It is still callable but will be deprecated after version 3.0.
+!!! warning "Deprecated"
+
+    This function was previously defined as `.ml.xv.tsrolls`.
+    That is still callable but will be removed after version 3.0.
