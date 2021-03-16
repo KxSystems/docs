@@ -51,12 +51,19 @@ Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-gith
 For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
 
+## :fontawesome-solid-download: Download
+
+[`site.zip`](https://code.kx.com/download/site.zip "Download 60MB") is a copy of the site you can run from your filesystem.
+
+
 ## :fontawesome-regular-handshake: Contribute
 
 > A finished work is exactly that, requires resurrection.  
 — _John Cage_, “Lecture on Nothing”, 1949
 
-The repository for this site is :fontawesome-brands-github: [KxSystems/docs](https://github.com/KxSystems/docs). 
+The repository for this site is 
+:fontawesome-brands-github: 
+[KxSystems/docs](https://github.com/KxSystems/docs). 
 The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow). 
 To contribute, submit a pull request. 
 

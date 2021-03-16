@@ -32,7 +32,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr markdown="1"><td markdown="1">Arrow</td><td markdown="1">[Using Apache Arrow/Parquet data with kdb+](arrow/index.md)</td></tr>
-<tr markdown="1"><td markdown="1">FFI</td><td markdown="1">[Using foreign functions with kdb+](ffi.md)</td></tr>
+<tr markdown="1"><td markdown="1">FFI</td><td markdown="1">[Using foreign functions with kdb+](ffi/index.md)</td></tr>
 <tr markdown="1"><td markdown="1">HDF5</td><td markdown="1">[Handling HDF5 data with kdb+](hdf5/index.md)</td></tr>
 <tr markdown="1"><td markdown="1">Java</td><td markdown="1"> [Java client for kdb+](java-client-for-q.md)</td>
 <tr markdown="1"><td markdown="1">Jupyter</td><td markdown="1">[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [:fontawesome-brands-superpowers:](../ml/index.md "Machine learning") ==new==</td>

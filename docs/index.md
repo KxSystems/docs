@@ -103,3 +103,5 @@ The source code for this site is on GitHub at
 :fontawesome-brands-github:
 [KxSystems/docs](https://github.com/kxsystems/docs/).
 
+:fontawesome-solid-download:
+[`site.zip`](https://code.kx.com/download/site.zip "Download 60MB") is a copy of the site you can run from your filesystem.
