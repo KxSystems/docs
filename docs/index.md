@@ -12,7 +12,7 @@ author: Stephen Taylor
 
 24 March 2021 | **Leverage the Microsecond Mindset in the Cloud** | 
 [Register](https://firstderivatives.zoom.us/webinar/register/WN_f0Sc5dXIQK-__Gda9GXSUw?)
-{: style="background-color:#FFC300;padding:.2em 1em;"}
+{: style="background-color:#FFC300;border-radius:7px;padding:.2em 1em;"}
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
