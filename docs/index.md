@@ -10,6 +10,10 @@ author: Stephen Taylor
 </div>
  -->
 
+24 March 2021 | **Leverage the Microsecond Mindset in the Cloud** | 
+[Register](https://firstderivatives.zoom.us/webinar/register/WN_f0Sc5dXIQK-__Gda9GXSUw?)
+{: style="background-color:#FFC300;padding:.2em 1em;"}
+
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
 <div style="display: inline-flex;" markdown="1">
@@ -99,9 +103,10 @@ IDE: KX Developer](/developer/ "Download and install the free IDE, KX Developer"
 [Careers at KX and First Derivatives](http://www.firstderivatives.com/careers/)
 
 ---
+:fontawesome-solid-download:
+[Download](https://code.kx.com/download/site.zip "60MB") a copy of this site you can run from your filesystem
+
 The source code for this site is on GitHub at
 :fontawesome-brands-github:
-[KxSystems/docs](https://github.com/kxsystems/docs/).
+[KxSystems/docs](https://github.com/kxsystems/docs/)
 
-:fontawesome-solid-download:
-[`site.zip`](https://code.kx.com/download/site.zip "Download 60MB") is a copy of the site you can run from your filesystem.
