@@ -14,17 +14,18 @@ extra_css:
   # - 'stylesheets/carousel-6.css'
 
 extra_javascript: 
-  - 'scripts/prism.js'
-  - 'scripts/jquery-3.5.1.min.js' # jQuery for theme.js
-  - 'scripts/theme.js'
+  - scripts/prism.js
+  - scripts/jquery-3.5.1.min.js # jQuery for theme.js
+  - scripts/theme.js
   # MathJax scripts
-  - 'scripts/mathjax.js' # configure MathJax object
-  - 'scripts/polyfill.min.js'
-  - 'scripts/tex-mml-chtml.js'
+  - scripts/mathjax.js # configure MathJax object
+  - scripts/polyfill.min.js
+  - scripts/tex-mml-chtml.js
+  - scripts/qsearch.js # client-side search engine
 
 google_analytics:
-  - 'UA-180968370-1'
-  - 'auto'
+  - UA-180968370-1
+  - auto
 
 markdown_extensions:
   - admonition
