@@ -1,5 +1,5 @@
 ---
-title: rand – Reference – kdb+ and q documentation
+title: rand | Reference | kdb+ and q documentation
 description: rand is a q keyword that randomly picks a number, or an item from a list.
 author: Stephen Taylor
 keywords: deal, kdb+, q, rand, random, roll
@@ -10,13 +10,26 @@ _Pick randomly_
 
 
 
-Syntax: `rand x`, `rand[x]`
+```syntax
+rand x   rand[x]
+```
 
 
+## Pick an item from a list
 
-## Pick a number at random
+Where `x` is a **list** returns one item chosen randomly from `x`
 
-Where `x` is a **positive numeric atom** returns a numeric atom in the range [0,x).
+```q
+q)rand 1 30 45 32
+32
+q)rand("abc";"def";"ghi")  / list of lists
+"ghi"
+```
+
+
+## Pick a value at random
+
+Where `x` is an **atom** returns an atom of the same type.
 
 ```q
 q)rand 100
@@ -27,26 +40,26 @@ q)rand 3.14159
 1.277572
 q)rand 2012.09.12
 2008.02.04
+q)rand `3
+`afe
 ```
 
+Right domain and range are as for [Roll and Deal](deal.md#generate).
 
-## Pick from a list
+!!! tip "Returns a single item"
 
-Where `x` is a **list** returns an item chosen randomly from `x`
+    `rand` is exactly equivalent to `{first 1?x}`. 
+    If you need a list result, use [Roll](deal.md). 
+    The following expressions all roll a million six-sided dice.
 
-```q
-q)rand 1 30 45 32
-32
-```
-
-`rand` is exactly equivalent to `{first 1?x}`. If you need a vector result, consider using Roll instead of `rand`. The following expressions all roll 100 six-sided dice.
-
-```q
-rand each 100#6
-{first 1?x} each 100#6
-100?6
-```
+        q)\ts rand each 1000000#6
+        264 41166192
+        q)\ts {first 1?x}each 1000000#6
+        210 41166496
+        q)\ts 1000000?6                     / Roll
+        6 8388800
 
 
-:fontawesome-regular-hand-point-right:
-[Roll and Deal](deal.md) for random seed
+---
+:fontawesome-solid-book:
+[Random seed](deal.md#seed)

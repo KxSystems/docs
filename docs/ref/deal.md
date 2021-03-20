@@ -3,11 +3,11 @@ title: Roll, Deal, Permute | Reference | kdb+ and q documentation
 description: Roll, Deal, and Permute are q operators that return ran dom selections, with or without duplicates
 author: Stephen Taylor
 date: July 2019
-keywords: deal, duplicate, kdb+, permute, q, rand, random, seed
+keywords: deal, duplicate, generate, permute, rand, random, seed
 ---
 # `?` Roll, Deal, Permute
 
-_Random selections, with or without duplicates_
+_Random lists, with or without duplicates_
 
 
 
@@ -16,40 +16,70 @@ _Random selections, with or without duplicates_
 
 ## Roll and Deal
 
-_A list of random selections._
+_Select items randomly, generate random values_
 
-```txt
+```syntax
     x?y     ?[x;y]          / Roll
 neg[x]?y    ?[neg[x];y]     / Deal
 ```
 
-Where `x` is an int atom, returns a list of `x` randomly selected items, without duplication if `x` is negative.
 
-Where `y` is
+### Select
 
--   a **list**, the result items are items of `y`
-    <pre><code class="language-q">
-    q)5?\`Arthur\`Steve\`Dennis
-    \`Arthur\`Arthur\`Steve\`Dennis\`Arthur
-    q)2?("a";0101b;\`abc;\`the\`quick;2012.06m)
-    \`abc
-    2012.06m
-    q)-3?\`the\`quick\`brown\`fox
-    \`brown\`quick\`fox
-    </code></pre>
+Where
 
--   an **atom**, the result items have the same type as `y` and are generated as follows <pre><code class="language-txt">y                    range                            operator
-\----------------------------------------------------------------
-integer              til y                            Roll, Deal
+-   `x` is an int atom
+-   `y` is a **list**
+
+returns `abs[x]` randomly selected items of `y`.
+Where `x` is
+
+-   **positive** items are selected independently (Roll)
+-   **negative** and `x>=neg count y`, items are selected from different indexes of `y` (Deal)
+
+```q
+q)5?`Arthur`Steve`Dennis
+`Arthur`Arthur`Steve`Dennis`Arthur
+q)2?("a";0101b;`abc;`the`quick;2012.06m)
+`abc
+2012.06m
+q)-3?`the`quick`brown`fox
+`brown`quick`fox
+```
+
+??? tip "Duplicate items in `y`"
+
+    If `y` contains duplicate items, so may the result of Deal.
+
+        q)-2?`bye`bye`blackbird
+        `bye`bye
+
+
+### Generate
+
+Where
+
+-   `x` is an int atom
+-   `y` is an **atom** &gt; 0
+
+returns a list of `abs[x]` items of the same type as `y`, generated as follows
+
+```txt
+right domain (y)     range                            operator
+----------------------------------------------------------------
+integer >0           til y                            Roll, Deal
 0Ng                  GUIDs                            Roll, Deal
-float, temporal      0 to y                           Roll
+float, temporal ≥0   0 to y                           Roll
 0i                   ints                             Roll
 0                    longs                            Roll
 0b                   01b                              Roll
 " "                  .Q.a                             Roll
 0x0                  bytes                            Roll
 numeric symbol `n    symbols, each of n chars (n≤8)   Roll
-                     from abcdefghijklmnop </code></pre>
+                     from abcdefghijklmnop
+```
+
+!!! detail "Where `x` is negative (Deal), `y` must have integer or GUID type"
 
 ```q
 q)10?5                                        / roll 10 (5-sided dice)
@@ -87,17 +117,33 @@ q)rand `6
 `nemoad
 ```
 
-??? danger "Deal of GUID uses a mix of process ID, current time and IP address to generate the GUID, and successive calls may not allow enough time for the current time reading to change."
+!!! tip "Roll and Deal return list results"
 
-    <pre><code class="language-q">
-    q)count distinct {-1?0ng}each til 10
-    5
-    </code></pre>
+    For an atom result, instead of `first 1?x`, use [`rand`](rand.md).
+
+
+### Deal of GUID atom
+
+Deal of GUID uses a mix of process ID, current time and IP address to generate the GUID, and successive calls may not allow enough time for the current time reading to change.
+
+```q
+q)count distinct {-1?0ng}each til 10  / Deal one GUID ten times
+5
+```
+
+The range of GUIDs is large enough that Roll and Deal often return the same result.
+
+```q
+q)count distinct 1000000000?0Ng  / Roll a billion GUIDs
+1000000000
+```
+
+!!! tip "For a set of distinct GUIDs, use Deal to generate them in one operation"
 
 
 ## Permute
 
-```txt
+```syntax
 0N?x
 ```
 
@@ -126,7 +172,7 @@ q)0N?("the";1 2 4;`ibm`goog)    / permute items
 
 Deal, Roll, Permute and [`rand`](rand.md) use a constant seed on kdb+ startup: scripts using them can be repeated with the same results. You can see and set the value of the seed with system command [`\S`](../basics/syscmds.md#s-random-seed).)
 
-!!! tip "To use GUIDs as identifiers, use Deal, not Roll."
+!!! tip "To use GUIDs as identifiers, use Deal, not Roll"
 
 ```q
 $ q
@@ -162,5 +208,11 @@ type   | `x` is negative (Roll only)
 
 ----
 
-:fontawesome-solid-hand-point-right:
+:fontawesome-solid-book:
 [`rand`](rand.md)
+<br>
+:fontawesome-solid-book-open:
+[system command `\S`](../basics/syscmds.md#s-random-seed)
+<br>
+:fontawesome-solid-book-open:
+[command-line option `-S`](../basics/cmdline.md#-s-random-seed)

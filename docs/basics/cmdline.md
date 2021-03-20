@@ -4,7 +4,7 @@ description: Command-line syntax for invoking q and list of the command-line opt
 author: Stephen Taylor
 keywords: command, file, kdb+, line, option, q
 ---
-# :fontawesome-solid-terminal: Command line
+# :fontawesome-solid-terminal: Command line options
 
 
 
@@ -14,19 +14,19 @@ The command line for invoking kdb+ has the form:
 <div markdown="1" class="typewriter">
 q [[file](#file)] [-option [parameters] … ]
 
-Options:
+**Options**
  [-b blocked](#-b-blocked)                    [-q quiet mode](#-q-quiet-mode)
  [-c console size](#-c-console-size)               [-r replicate](#-r-replicate)
  [-C HTTP size](#-c-http-size)                  [-s secondary threads](#-s-secondary-threads)
- [-e error traps](#-e-error-traps)                [-t timer ticks](#-t-timer-ticks)
- [-E TLS Server Mode](#-e-tls-server-mode)            [-T timeout](#-t-timeout)
- [-g garbage collection](#-g-garbage-collection)         [-u disable syscmds](#-u-disable-syscmds)
- [-l log updates](#-l-log-updates)                [-u usr-pwd local](#-u-usr-pwd-local)
- [-L log sync](#-l-log-sync)                   [-U usr-pwd](#-u-usr-pwd)
- [-m memory domain](#-m-memory-domain)              [-w workspace](#-w-workspace)
- [-o UTC offset](#-o-utc-offset)                 [-W start week](#-w-start-week)
- [-p listening port](#-p-listening-port)             [-z date format](#-z-date-format)
- [-P display precision](#-p-display-precision)                                            
+ [-e error traps](#-e-error-traps)                [-S random seed](#-s-random-seed)
+ [-E TLS Server Mode](#-e-tls-server-mode)            [-t timer ticks](#-t-timer-ticks)
+ [-g garbage collection](#-g-garbage-collection)         [-T timeout](#-t-timeout)
+ [-l log updates](#-l-log-updates)                [-u disable syscmds](#-u-disable-syscmds)
+ [-L log sync](#-l-log-sync)                   [-u usr-pwd local](#-u-usr-pwd-local)
+ [-m memory domain](#-m-memory-domain)              [-U usr-pwd](#-u-usr-pwd)
+ [-o UTC offset](#-o-utc-offset)                 [-w workspace](#-w-workspace)
+ [-p listening port](#-p-listening-port)             [-W start week](#-w-start-week)
+ [-P display precision](#-p-display-precision)          [-z date format](#-z-date-format)                                     
 </div>
 
 :fontawesome-solid-book:
@@ -56,7 +56,7 @@ q)
 
 ## `-b` (blocked)
 
-```txt
+```syntax
 -b
 ```
 
@@ -96,7 +96,7 @@ q)\_
 
 ## `-c` (console size)
 
-```txt
+```syntax
 -c r c
 ```
 
@@ -108,7 +108,7 @@ Set console maximum rows and columns, default 25 80.
 
 ## `-C` (HTTP size)
 
-```txt
+```syntax
 -C r c
 ```
 
@@ -121,7 +121,7 @@ Set HTTP display maximum rows and columns.
 
 ## `-e` (error traps)
 
-```txt
+```syntax
 -e [0|1|2]
 ```
 
@@ -135,7 +135,7 @@ The default is 0 (off).
 
 ## `-E` (TLS Server Mode)
 
-```txt
+```syntax
 -E 0        / plain
 -E 1        / plain & TLS
 -E 2        / TLS only
@@ -152,7 +152,7 @@ Since V3.4.
 
 ## `-g` (garbage collection)
 
-```txt
+```syntax
 -g 0        / deferred (default)
 -g 1        / immediate
 ```
@@ -166,7 +166,7 @@ Sets garbage-collection mode.
 
 ## `-l` (log updates)
 
-```txt
+```syntax
 -l
 ```
 
@@ -178,7 +178,7 @@ Log updates to filesystem.
 
 ## `-L` (log sync)
 
-```txt
+```syntax
 -L
 ```
 
@@ -190,7 +190,7 @@ As `-l`, but sync logging.
 
 ## `-m` (memory-domain)
 
-```txt
+```syntax
 -m path
 ```
 
@@ -211,7 +211,7 @@ The [`.m` namespace](../ref/dotm.md) is reserved for objects in memory domain 1,
 
 ## `-o` (UTC offset)
 
-```txt
+```syntax
 -o N
 ```
 
@@ -226,7 +226,7 @@ Sets local time offset as `N` hours from UTC, or minutes if `abs[N]>23`
 
 _Set listening port_
 
-```txt
+```syntax
 -p [rp,][hostname:](portnumber|servicename)
 ```
 
@@ -251,7 +251,7 @@ See
 
 ## `-P` (display precision)
 
-```txt
+```syntax
 -P N
 ```
 
@@ -263,7 +263,7 @@ Display precision for floating-point numbers, i.e. the number of digits shown.
 
 ## `-q` (quiet mode)
 
-```txt
+```syntax
 -q
 ```
 
@@ -298,7 +298,7 @@ and with `-q`
 
 ## `-r` (replicate)
 
-```txt
+```syntax
 -r :host:port[:user[:password]]
 ```
 
@@ -310,7 +310,7 @@ Replicate from `:host:port`.
 
 ## `-s` (secondary threads)
 
-```txt
+```syntax
 -s N
 ```
 
@@ -320,10 +320,24 @@ Number of secondary threads or processes available for parallel processing.
 [`\s` system command](syscmds.md#s-number-of-secondary-threads) for detail
 
 
+## `-S` (random seed)
+
+```syntax
+-S N
+```
+
+Sets `N` as value of random seed.
+
+:fontawesome-solid-book-open:
+[`\S` system command](syscmds.md#s-random-seed) for detail
+<br>
+:fontawesome-solid-book:
+[Roll, Deal](../ref/deal.md#seed)
+
 
 ## `-t` (timer ticks)
 
-```txt
+```syntax
 -t N
 ```
 
@@ -335,7 +349,7 @@ Period in milliseconds between timer ticks. Default is 0, for no timer.
 
 ## `-T` (timeout)
 
-```txt
+```syntax
 -T N
 ```
 
@@ -349,7 +363,7 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 ## `-u` (usr-pwd local)
 ## `-U` (usr-pwd)
 
-```txt
+```syntax
 -u 1        / blocks system functions and file access
 -U file     / sets password file, blocks \x
 -u file     / both the above
@@ -398,7 +412,7 @@ Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 
 ## `-w` (workspace)
 
-```txt
+```syntax
 -w N
 ```
 
@@ -406,7 +420,9 @@ Workspace limit in MB for the heap per thread. Default is 0: no limit.
 
 :fontawesome-solid-book-open:
 [`\w` system command](syscmds.md#w-workspace) for detail
-Reference: [`.Q.w`](../ref/dotq.md#qw-memory-stats)
+<br>
+:fontawesome-solid-book-open:
+[`.Q.w`](../ref/dotq.md#qw-memory-stats)
 
 **Domain-local**
 Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
@@ -421,7 +437,7 @@ Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain
 
 ## `-W` (start week)
 
-```txt
+```syntax
 -W N
 ```
 
@@ -433,7 +449,7 @@ Set the start-of-week offset, where 0 is Saturday. The default is 2, i.e Monday.
 
 ## `-z` (date format)
 
-```txt
+```syntax
 -z [0|1]
 ```
 
