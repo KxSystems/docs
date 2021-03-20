@@ -329,6 +329,10 @@ Business benefits
 Organizations should consider Intel Optane persistent memory where there is a need to accelerate analytic performance beyond what is available with NVMe or SSD storage.
 
 
+:fontawesome-solid-print:
+[PDF of this article](https://code.kx.com/download/wp/optane-tests.pdf "Download")
+
+
 ## Notes
 
 1.  We used software RAID from RAIDIX to deliver lower latency and

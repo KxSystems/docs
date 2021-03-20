@@ -199,3 +199,6 @@ KX has created a new technology and marketing partnership with Intel, around Opt
 ---
 :fontawesome-solid-book:
 [`.m` namespace](../ref/dotm.md)
+<br>
+:fontawesome-solid-bolt:
+[Performance of Intel Optane persistent memory](../architecture/optane-tests.md)
