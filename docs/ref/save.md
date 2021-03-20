@@ -1,5 +1,5 @@
 ---
-title: save, rsave keywaords save tables to file | Reference | kdb+ and q documentation
+title: save, rsave keywords save tables to file | Reference | kdb+ and q documentation
 description: save and rsave are q keywords that save global data to file or splayed to a directory.
 author: Stephen Taylor
 ---
@@ -13,7 +13,7 @@ _Write global data to file or splayed to a directory_
 
 _Write a global variable to file_
 
-```txt
+```syntax
 save x     save[x]
 ```
 
@@ -123,7 +123,7 @@ q)`:t.xls 0:.h.tx[`xls;t] / save in xls format
 
 _Write a table splayed to a directory_
 
-```txt
+```syntax
 rsave x     rsave[x]
 ```
 
