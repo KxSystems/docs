@@ -10,7 +10,7 @@ _Read and parse, or write bytes_
 
 
 
-
+> There are 10 types of people: those who use binary arithmetic and those who don’t. 
 
 
 ## Read Binary
