@@ -200,6 +200,49 @@ q)0w + 5
 :fontawesome-solid-book:
 [`.Q.M`](../ref/dotq.md#qm-long-infinity) (long infinity)
 
+??? detail "To infinity and beyond"
+
+    [![Buzz Lightyear](../img/faces/buzzlightyear.jpg)](https://toystory.disney.com/buzz-lightyear)
+    {: .small-face style="margin-top:1em"}
+
+    Floating-point arithmetic follows [IEEE754](https://en.wikipedia.org/wiki/IEEE_754 "Wikipedia").
+
+    Integer arithmetic does no checks for infinities, just treats them as a signed integer.
+
+        q)vs[0b]@/:0N!0W+til 3
+        0W 0N -0W
+        0111111111111111111111111111111111111111111111111111111111111111b
+        1000000000000000000000000000000000000000000000000000000000000000b
+        1000000000000000000000000000000000000000000000000000000000000001b
+
+    but it does check for nulls.
+
+        q)10+0W+til 3
+        -9223372036854775799 0N -9223372036854775797
+
+    This can be **abused** to push infinities on nulls which then become sticky and can be filtered out altogether, e.g.
+
+        q)1+-1+-1+1+ -0W 0N 0W 1 2 3
+        0N 0N 0N 1 2 3
+
+    There is no display for short infinity.
+
+        q)0Wh
+        32767h
+        q)-0Wh
+        -32767h
+
+    Integer promotion is documented for [Add](../ref/add/#range-and-domains).
+
+    Integer infinities 
+
+    -   do not promote, other than the signed bit; there is no special treatment over any other int value
+    -   map to int_min+1 and int_max, with `0N` as int_min; so there is no number smaller than `0N`
+
+    **Best practice is to view infinities as placeholders only, and not perform arithmetic on them.**
+
+    [![Infinity and beyond](../img/infinity-and-beyond.jpg)](https://toystory.disney.com/buzz-lightyear "Disney’s Toy Story")
+
 
 ### Guid
 
