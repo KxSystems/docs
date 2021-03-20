@@ -3,7 +3,7 @@ title: Kdb+ license for AWS | kdb+ and q documentation
 description: Software End User Agreement for Amazon Web Services
 date: Nov 2018
 ---
-# Kdb+ software end user agreement
+# :fontawesome-brands-aws:<br>Kdb+ software end-user agreement
 
 
 _Carefully read the following terms and conditions. By accessing the Kdb+

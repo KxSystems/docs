@@ -682,6 +682,7 @@ nav:
     - DigitalOcean: kb/digitalocean.md
     - License agreements:
       - AWS: license/aws.md
+      - Azure: license/azure.md
       - GCP: license/gcp.md
   - Machine learning:
     - Overview: ml/index.md

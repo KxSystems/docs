@@ -3,7 +3,7 @@ title: Kdb+ license for Microsoft Azure Marketplace | kdb+ and q documentation
 description: Software End User Agreement for Microsoft Azure Marketplace
 date: Oct 2020
 ---
-# Kdb+ software end user agreement
+# :fontawesome-brands-microsoft:<br>Kdb+ software end-user agreement
 
 _Carefully read the following terms and conditions.
 By accessing the kdb+ software via the Microsoft Azure Marketplace, you are agreeing to be bound by these terms and conditions (which may be updated from time to time) and to the extent you are acting on behalf of a permitted organization that you have authority to act on their behalf and bind them to these terms and conditions.
