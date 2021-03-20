@@ -210,16 +210,28 @@ Note multiple applications of `neg` to some items-at-depth in `d`, corresponding
 
 
 ### On disk
-Certain vectors can be updated directly on disk without the need to fully rewrite the file.
+Certain vectors (types 1-19) can be updated directly on disk without the need to fully rewrite the file.
 (Since V3.4)
+Such vectors must 
 
-Such vectors must have no attribute, be of a mappable type, not nested, and not compressed.
+-   have no attribute
+-   be of a mappable type
+-   not be nested, enumerated, or compressed
 
 ```q
 q)`:data set til 20
 q)@[`:data;3 6 8;:;100 200 300]
 q)get `:data
 0 1 2 100 4 5 200 7 300 9 10 11 12 13 14 15 16 17 18 19
+
+q)`:test set `:sym?9?`1
+`:test
+q)type get `:test
+20h
+q)@[`:test;0 1;:;`sym?`a`b]
+'type/attr error amending file test
+  [0]  @[`:test;0 1;:;`sym?`a`b]
+       ^
 ```
 
 <!--
@@ -262,6 +274,8 @@ index    a path in i is not a valid path of d
 length   i and y are not conformable
 type     an atom of i is not an integer, symbol or nil
 type     replacement items of different type than selection
+
+type/attr error amending file test
 ```
 
 ----
