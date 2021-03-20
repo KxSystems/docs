@@ -274,8 +274,8 @@ However, multiple files can be read or written from their own threads concurrent
 
 ## Requirements
 
-Libraries for gzip and snappy may already be installed on your system.
-Kdb+ binds dynamically to [zlib](http://zlib.net) and looks for certain files for snappy.
+Libraries for Gzip and Snappy may already be installed on your system.
+Kdb+ binds dynamically to [Zlib](http://zlib.net) and looks for certain files for Snappy.
 
 !!! detail "64-bit and 32-bit kdb+ require corresponding 64-bit and 32-bit libs"
 
@@ -283,17 +283,22 @@ If in doubt, consult your system administrator for assistance.
 
 algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-apple: macOS | :fontawesome-brands-windows: Windows
 ---|---|---|---|---
-2 (gzip) | [zlib.net](http://zlib.net) | zlib | (pre-installed) | [winimage.com](http://www.winimage.com/zLibDll/index.html "winimage.com")
-3 (snappy) | [GitHub](http://google.github.io/snappy/) | `libsnappy.so.1` | `libsnappy.dylib` | `snappy.dll`
+2 (Gzip) | [Zlib](http://zlib.net) | `zlib` | (pre-installed) | [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com")
+3 (Snappy) | [GitHub](http://google.github.io/snappy/) | `libsnappy.so.1` | `libsnappy.dylib` | `snappy.dll`
+4 (Lz4hc) | [GitHub](https://github.com/lz4/lz4) | `liblz4.so.1` | `liblz4.dylib` | `liblz4.dll`
 
-:fontawesome-brands-apple:
-To install snappy on macOS, use a package manager such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/):
+=== ":fontawesome-brands-apple: macOS"
 
-```bash
-> # install with MacPorts
-> sudo port install snappy +universal
-> export LD_LIBRARY_PATH=/opt/local/lib
-```
+    To install Snappy or Lz4 on macOS, use a package manager such as [Homebrew](https://brew.sh/) or [MacPorts](https://www.macports.org/):
+
+        # install with MacPorts
+        sudo port install snappy +universal
+        export LD_LIBRARY_PATH=/opt/local/lib
+
+=== ":fontawesome-brands-windows: Windows"
+
+    Build the `liblz4-dll` project on Windows as outlined in the [README at GitHub](https://github.com/lz4/lz4/tree/release/build).
+
 
 ??? danger "Certain releases of `lz4` do not function correctly within kdb+"
 
@@ -304,11 +309,11 @@ To install snappy on macOS, use a package manager such as [Homebrew](https://bre
     We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
 
 
-## Running kdb+ under gdb
+## Running kdb+ under Gdb
 
-You should only ever need to run gdb (the GNU debugger) if you are debugging your own custom shared libs loaded into kdb+.
+You should only ever need to run Gdb (the GNU debugger) if you are debugging your own custom shared libs loaded into kdb+.
 
-Gdb will intercept SIGSEGV which should be passed to q. To tell it to do so, issue the following command at the gdb prompt
+Gdb will intercept SIGSEGV which should be passed to q. To tell it to do so, issue the following command at the Gdb prompt
 
 ```txt
 (gdb) handle SIGSEGV nostop noprint
