@@ -98,7 +98,7 @@ Kdb+ uses files and directories to persist database tables.
 
 A persistent connection enables multiple operations on a file without repeatedly opening and closing it. 
 
-Opening a connection to a file returns a handle to the connection. The handle takes the form of an int that is also an applicable value. 
+Opening a connection to a file returns a [handle](../basics/handles.md) to the connection. The handle takes the form of an int that is also an applicable value. 
 
 System handles 0, 1, and 2 are to the console, stdout, and stderr.
 They are always open.

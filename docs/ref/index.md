@@ -103,10 +103,10 @@ keywords: card, index, kdb+, keywords, operators, q, reference
 ## Other
 
 <div markdown="1" class="typewriter">
-[`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../ref/assign.md)         [0      console](../basics/files.md)     [0:  File Text](file-text.md)
-[.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)       [::](overloads.md#colon-colon)   [identity](identity.md)       [1, -1  stdout](../basics/files.md)      [1:  File Binary](file-binary.md)
-[\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/files.md)      [2:  Dynamic Load](dynamic-load.md)
-[\\   abort](../basics/debug.md#abort)                 [global amend](../basics/function-notation.md#name-scope)   [_n, -n_  handle](../basics/files.md)
+[`   pop stack](../basics/debug.md#debugging)        [:](overloads.md#colon)    [assign](../ref/assign.md)         [0      console](../basics/handles.md)     [0:  File Text](file-text.md)
+[.](overloads.md#dot)   [push stack](../basics/debug.md#debugging)       [::](overloads.md#colon-colon)   [identity](identity.md)       [1, -1  stdout](../basics/handles.md)      [1:  File Binary](file-binary.md)
+[\x  system cmd](../basics/syscmds.md)            [generic null](identity.md)   [2, -2  stderr](../basics/handles.md)      [2:  Dynamic Load](dynamic-load.md)
+[\\   abort](../basics/debug.md#abort)                 [global amend](../basics/function-notation.md#name-scope)   [_n, -n_  handle](../basics/handles.md)
 \\\\  quit q                [set view](../learn/views.md)
 
 ()     [precedence](../basics/syntax.md#precedence-and-order-of-evaluation)    \[;\]  [expn block](../basics/syntax.md#conditional-evaluation-and-control-statements)     {}  [lambda](../basics/function-notation.md)         \`   symbol
