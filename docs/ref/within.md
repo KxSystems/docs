@@ -12,7 +12,7 @@ author: Stephen Taylor
 _Check bounds_
 
 
-```txt
+```syntax
 x within y    within[x;y]
 ```
 
@@ -44,6 +44,8 @@ q)(1 3 10 6 4;"acyxmpu") within ((2;"b");(6;"r"))
 01011b
 0100110b
 ```
+
+`within` uses [Find](find.md) to search for `x` in `y`.
 
 
 ----

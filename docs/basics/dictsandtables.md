@@ -142,6 +142,14 @@ e| 50
 x| 42
 ```
 
+Dictionary indexing uses [Find](../ref/find.md) to search the keys.
+
+```q
+q)d:k!v
+q)d[x] ~ v[k?x]
+1b
+```
+
 
 ## `where` and Find
 

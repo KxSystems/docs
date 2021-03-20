@@ -9,7 +9,7 @@ author: Stephen Taylor
 
 _Exclude items from a list_
 
-```txt
+```syntax
 x except y    except[x;y]
 ```
 
@@ -27,10 +27,12 @@ q)1 2 3 4 1 3 except 2 3
 1 4 1
 ```
 
+`except` uses [Find](find.md) to identify items of `x` in `y`.
 
 ----
 
 :fontawesome-solid-book:
+[Find](find.md),
 [`in`](in.md),
 [`within`](within.md)
 <br>

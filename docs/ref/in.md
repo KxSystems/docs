@@ -2,7 +2,7 @@
 title: in | Reference | kdb+ and q documentation
 description: in is a q keyword that flags whether its left argument is an item in its right argument.
 author: Stephen Taylor
-date: Noveber 2020
+date: November 2020
 ---
 # `in`
 
@@ -10,7 +10,7 @@ date: Noveber 2020
 _Whether x is an item of y_
 
 
-```txt
+```syntax
 x in y    in[x;y]
 ```
 
@@ -60,6 +60,8 @@ q)(1 2;3 4) in ((1 2;3 4);9)  / x is an item of y
 1b
 ```
 
+`in` uses [Find](find.md) to search for `x` in `y`.
+
 
 ## Queries
 
@@ -76,7 +78,7 @@ p5| cam   blue  12     paris
 ```
 
 
-## :fontawesome-solid-exclamation-triangle: Mixed argument types
+## :fontawesome-solid-exclamation-triangle:{: style="color:red"} Mixed argument types
 
 Optimized support for atom or 1-list `y` allows a wider input type mix.
 
@@ -125,6 +127,7 @@ q)any ` ~/: (1 2;`)
 :fontawesome-solid-book:
 [`except`](except.md),
 [`inter`](inter.md),
+[`within`](within.md),
 [`union`](union.md)
 <br>
 :fontawesome-solid-book-open:
