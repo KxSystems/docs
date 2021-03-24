@@ -8,11 +8,11 @@ author: Stephen Taylor
 <!-- 
 <div markdown="1" class="container"><div class="css-carousel">[![Kdb+ 4.0](img/carousel/kdb4.jpg){.css-img}](releases/ChangesIn4.0.md)[![KX Dashboards](img/carousel/dashboards-600.jpg){.css-img}](/dashboards/)[![AutoML](img/carousel/automl-600.png){.css-img}](ml/automl/index.md)[![AWS Lambda](img/carousel/lambda-600.jpg){.css-img}](cloud/aws-lambda/index.md)[![Parallelism](img/carousel/parallelism-600.jpg){.css-img}](kb/mt-primitives.md)[![Encryption](img/carousel/encryption-600.jpg){.css-img}](kb/dare.md)[![Optane](img/carousel/optane-memory-600.jpg){.css-img}](kb/optane.md)[![Interfaces](img/carousel/interfaces.png){.css-img}](interfaces/hdf5/index.md)[![Reading Room](img/carousel/reading.png){.css-img}](learn/reading/index.md)</div>
 </div>
- -->
 
 24 March 2021 | **Leverage the Microsecond Mindset in the Cloud** | 
 [Register](https://firstderivatives.zoom.us/webinar/register/WN_f0Sc5dXIQK-__Gda9GXSUw?)
 {: style="background-color:#FFC300;border-radius:7px;padding:.2em 1em;"}
+ -->
 
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
