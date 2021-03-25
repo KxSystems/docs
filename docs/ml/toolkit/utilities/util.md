@@ -26,7 +26,7 @@ keywords: pandas manipulation, dataframe, train test split, .
 </div>
 
 :fontawesome-brands-github:
-[KxSystems/ml/util/util.q](https://github.com/kxsystems/ml/blob/master/util/util.q)
+[KxSystems/ml/util/utilities.q](https://github.com/kxsystems/ml/blob/master/util/utilities.q)
 
 The toolkit contains utility functions, used in many applications and not limited to categories such as statistics or preprocessing.
 
