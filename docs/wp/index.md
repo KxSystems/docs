@@ -5,12 +5,13 @@ description: Index to technical white papers (formerly published as q for Gods)
 # :fontawesome-regular-map: Technical white papers
 
 
-White papers are starred in the navigation menus.
+White papers are flagged in the navigation menus.
 
 
 ## :fontawesome-solid-handshake: Interfaces
 
--   ==new== [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
+-   ==new== [**Interprocess communication**](ipc/index.md)<br>Katrina&nbsp;McCormack, 2021.04
+-   [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
 -   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
 -   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
 -   [**Data visualization with kdb+ using ODBC:** a Tableau case study](data-visualization/index.md)<br>Michaela&nbsp;Woods, 2018.07
