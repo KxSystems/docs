@@ -807,7 +807,7 @@ This was a short review of how IPC is implemented in the course of processing an
 ![Katrina McCormack](../../img/faces/katrinamccormack.jpg)
 {: .small-face}
 
-**Katrina McCormack** is a kdb+ developer.
+**Katrina McCormack** is a senior kdb+ consultant for KX. Katrina is currently based in London working for one of the world’s largest investment banks.
 <br>
 [:fontawesome-solid-envelope:](mailto:kmccormack@kx.com)
 &nbsp;
