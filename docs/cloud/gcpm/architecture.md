@@ -1,27 +1,41 @@
 ---
 title: Reference architecture | Google Cloud | kdb+ and q documentation
 description:
-date: December 2020
-author: Glenn Wright
+date: April 2021
+author: Ferenc Bodon
 ---
 # Reference architecture for Google Cloud
 
-
-
-
 Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
+
+KX clients can lift and shift their kdb+ plants to the cloud and make use of virtual machines (VM) and storage solutions. This is the classic approach that relies on the existing license. To benefit more from the cloud technology it is recommended to migrate to KX Insights.
+
+[KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on GCP.
+
+Deployment:
+
+-   [QPacker](https://code.kx.com/insights/qpacker/docs/quickstart/) – A packaging utility that supports q, Python and C libraries.
+-   [Detailed guide](https://code.kx.com/insights/kx-core-app-charts/docs/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud.
+
+Service integration:
+
+-   [QLog](https://code.kx.com/insights/qlog/docs/quickstart/) – Integrations with major cloud logging services
+-   [Kurl](https://code.kx.com/insights/kurl/docs/quickstart/) – Native kdb+ REST client with authentication to cloud services
+
+Storage
+-   [Kdb+ Object Store](https://code.kx.com/insights/objstor/docs/quickstart/) – Native support for reading and querying cloud object storage
 
 
 ## Architectural components
 
 The core of a kdb+ tick-capture system is called kdb+tick.
 
-[Kdb+tick](../../learn/startingkdb/tick.md) is an architecture which allows the capture, processing and querying of timeseries data against real-time, streaming and historical data. This reference architecture describes a full solution running kdb+tick within Google Cloud which consists of these bare-minimum functional components:
+[Kdb+tick](../../learn/startingkdb/tick.md) is an architecture which allows the capture, processing and querying of timeseries data against realtime, streaming and historical data. This reference architecture describes a full solution running kdb+tick within Google Cloud which consists of these bare-minimum functional components:
 
--   data feeds
+-   datafeeds
 -   feed handlers
 -   tickerplant
--   real-time database
+-   realtime database
 -   historical database
 -   KX gateway
 
@@ -62,15 +76,15 @@ There are a number of open-source (Apache 2 licensed) Fusion interfaces between 
 
 ### Tickerplant
 
-The Tickerplant (TP) is a specialized, single threaded kdb+ process that operates as a link between the client’s data feed and a number of subscribers. It implements a pub-sub pattern: specifically, it receives data from the feed handler, stores it locally in a table then saves it to a log file. It publishes this data to a real-time database (RDB) and any clients that have subscribed to it. It then purges its local tables of data.
+The tickerplant (TP) is a specialized, single threaded kdb+ process that operates as a link between the client’s data feed and a number of subscribers. It implements a pub-sub pattern: specifically, it receives data from the feed handler, stores it locally in a table then saves it to a log file. It publishes this data to a realtime database (RDB) and any clients that have subscribed to it. It then purges its local tables of data.
 
 Tickerplants can operate in two modes:
 
-Batch mode
+Batch 
 
-: Collects updates in its local tables. It batches up for a period of time and then forwards the update to real-time subscribers in a bulk update.
+: Collects updates in its local tables. It batches up for a period of time and then forwards the update to realtime subscribers in a bulk update.
 
-Real-time mode
+Realtime 
 
 : Forwards the input immediately. This requires smaller local tables but has higher CPU and network costs, bear in mind that each message has a fixed network overhead.
 
@@ -85,32 +99,32 @@ Events:
 
 End of Day
 
-: At midnight, the TP closes its log files, auto creates a new file, and notifies the real-time database (RDB) about the start of the new day.
+: At midnight, the TP closes its log files, auto creates a new file, and notifies the realtime database (RDB) about the start of the new day.
 
 
-### Real-time database
+### Realtime database
 
-The real-time database (RDB) holds all the intraday data in memory, to allow for fast powerful queries.
+The realtime database (RDB) holds all the intraday data in memory, to allow for fast powerful queries.
 
 For example, at the start of business day, the RDB sends a message to the tickerplant and receives a reply containing the data schema, the location of the log file, and the number of lines to read from the log file. It then receives subsequent updates from the tickerplant as they are published. One of the key design choices for Google Cloud will be the size of memory for this instance, as ideally we need to contain the entire business day/period of data in-memory.
 
 Purpose:
 
 -   Subscribed to the messages from the tickerplant
--   Stores (in-memory) the messages received
+-   Stores (in memory) the messages received
 -   Allows this data to be queried intraday
 
 Actions:
 
--   On message receipt inserts into local, in-memory tables.
--   At End of Day, usually writes intraday data down then sends a new End-of-Day message to the HDB; may sort certain tables (e.g. by sym and time) to speed up queries.
+-   On message receipt inserts into local, in-memory tables
+-   At End of Day (EOD), usually writes intraday data down then sends a new End-of-Day message to the HDB; may sort certain tables (e.g. by sym and time) to speed up queries
 
 An RDB can operate in single- or multi-input mode. The default mode is single input, in which user queries are served sequentially and queries are queued until an update from the TP is processed (inserted into the local table).
 In standard tick scripts, the RDB tables are indexed, typically by the product identifier.
 
 An index is a hash table behind the scene. Indexing has a significant impact on the speed of the queries at the cost of slightly slower ingestion. The insert function takes care of the indexing, i.e. during an update it also updates the hash table.
 
-Performance of the CPU and memory in the chosen Google Cloud instance will have some impact on the overall sustainable rates of ingest and queryable rate of this real-time kdb+ function.
+Performance of the CPU and memory in the chosen Google Cloud instance will have some impact on the overall sustainable rates of ingest and queryable rate of this realtime kdb+ function.
 
 
 ### Historical database
@@ -123,21 +137,21 @@ An HDB query is processed by multiple threads and map-reduce is applied if multi
 
 Purpose:
 
--   Provides a queryable data store of Historical Data.
--   In instances involving research and development or data analytics, customers can create customer reports on order execution times.
+-   Provides a queryable data store of historical data
+-   In instances involving research and development or data analytics, customers can create customer reports on order execution times
 
 Actions:
 
--   End of Day receipt: reloads the database to get the new days’ worth of data from the RDB write-down.
+-   End of Day receipt: reloads the database to get the new days’ worth of data from the RDB write-down
 
-HDBs are often expected to be mirrored locally. Some users, (e.g.  quants) need a subset of the data for heavy analysis and backtesting where the performance is critical.
+HDBs are often expected to be mirrored locally. Some users (e.g.  quants) need a subset of the data for heavy analysis and backtesting where the performance is critical.
 
 
 ### KX gateway
 
 In production, a kdb+ system may be accessing multiple timeseries data sets, usually each one representing a different market data source, or using the same data, refactored for different schemas. Process-wise, this can be seen as multiple TP, RDB and HDB processes.
 
-A KX gateway generally acts as a single point of contact for a client. A gateway collects data from the underlying services, combines data sets and may perform further data operations (e.g. aggregation, joins, pivoting, etc.) before it sends the result back to the user.
+A KX gateway generally acts as a single point of contact for a client. A gateway collects data from the underlying services, combines data sets and may perform further data operations (e.g. aggregation, joins, pivoting, etc.) before it sends the result back to the user. The gateway hides the data segregation, provides utility functions and implements business logic.
 
 The specific design of a gateway can vary in several ways according to expected use cases. For example, in a hot-hot set up, the gateway can be used to query services across availability zones.
 
@@ -156,37 +170,34 @@ The task of the gateway can be broken down into the following steps.
 -   Gain access to data in the required services (TP, RDB, HDB)
 -   Provide the best possible service and query performance
 
+Google BigQuery is a fully managed, serverless data warehouse that enables scalable analysis over petabytes of data. The KX Insights [BigQuery API](https://code.kx.com/insights/big-query/docs/md/) lets you easily interact with the REST API that Google exposes for BigQuery. This is particularly useful for the gateway. Data may reside in BigQuery that can be fetched by the gateway and users can enjoy the expressiveness of the q language to further analyze the data or join it with other data sources.
+
+
 ## Storage and filesystem
 
 Kdb+tick architecture needs storage space for three types of data:
 
-TP log
+Tickerplant log
 
-: If the Tickerplant (TP) needs to handle many updates, then writing to TP needs to be fast since slow I/O may delay updates and can even cause data loss. Optionally, you can write updates to TP log batched (e.g. in every second) as opposed to real-time. You will suffer data loss if TP or instance is halted unexpectedly or stops/restarts, as the recently received updates are not persisted. Nevertheless, you already suffer data loss if a TP process or the Google Cloud instance goes down or restarts. The extra second of data loss is probably marginal to the whole outage window.
+: If the tickerplant (TP) needs to handle many updates, then writing to TP needs to be fast since slow I/O may delay updates and can even cause data loss. Optionally, you can write updates to TP log batched (e.g. in every second) as opposed to realtime. You will suffer data loss if TP or instance is halted unexpectedly or stops/restarts, as the recently received updates are not persisted. Nevertheless, you already suffer data loss if a TP process or the Google Cloud instance goes down or restarts. The extra second of data loss is probably marginal to the whole outage window.
 
 : If the RDB process goes down, then it can replay data to recover from the TP log. The faster it can recover the less data is waiting in the TP output queue to be processed by the restarted RDB. Hence fast read operation is critical for resilience reasons.
 
-sym file (and `par.txt` for segmented databases)
+Sym file (and `par.txt` for segmented databases)
 
-: The sym file is written by the real-time database (RDB) after end-of-day, when new data is appended to the historical database (HDB). The HDB processes will then read the sym file to reload new data. Time to read and write the sym file is often marginal compared to other I/O operations.  Usually it is beneficial here to be able to write down to a shared filesystem, thereby adding huge flexibility in the Google Virtual Private Cloud (VPC). (For example, any other Google Cloud instance can assume this responsibility in a stateless fashion).
+: The sym file is written by the realtime database (RDB) after end-of-day, when new data is appended to the historical database (HDB). The HDB processes will then read the sym file to reload new data. Time to read and write the sym file is often marginal compared to other I/O operations.  Usually it is beneficial here to be able to write down to a shared filesystem, thereby adding huge flexibility in the Google Virtual Private Cloud (VPC). (For example, any other Google Cloud instance can assume this responsibility in a stateless fashion).
 
-HDB data
+Historical data
 
 : Performance of the file system solution will determine the speed and operational latency for kdb+ to read its historical (at rest) data. The solution needs to be designed to cater for good query execution times for the most important business queries. These may splay across many partitions or segments of data or may deeply query on few/single partitions of data. The time to write a new partition impacts RDB EOD work. For systems that are queried around the clock the RDB write time needs to be very short.
+
+Kdb+ supports tiering via `par.txt`. The file may contain multiple lines; each represents a location of the data. Hot, warm, and cold data may reside in storage solutions of different characteristics. Hot data probably requires low latency and high throughput, while the cost may be the primary goal for cold data.
 
 One real great value of storing your HDB within the Google Cloud ecosystem is the flexibility of storage. This is usually distinct from ‘on-prem’ storage, whereby you may start at one level of storage capacity and grow the solution to allow for dynamic capacity growth. One huge advantage of most Google Cloud storage solutions (e.g. Persistent Disks) is that disks can grow dynamically without the need to halt instances, this allows you to dynamically change resources. For example, start with small disk capacity and grow capacity over time.
 
 The reference architecture recommends replicating data. Either this can be tiered out to lower cost/lower performance object storage in Google Cloud or the data can be replicated across availability zones. The latter may be useful if there is client-side disconnection from other time zones. You may consider failover of service from Europe to North America, or vice-versa. Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX-style filesystem stored in persistent storage (Google Cloud’s Persistent Disk _et al._)
 There are many solutions that offer full operational functionality for the POSIX interface.
 
-
-### Google Cloud Storage
-
-[Google Cloud Storage](https://cloud.google.com/storage) (GCS) is an object store that scales to exabytes of data. There are different storage classes (standard, nearline, cold line, archive) for different availability. Infrequently used data can use cheaper but slower storage. The cloud storage interface supports PUT, GET, LIST, HEAD operations only so it cannot be used for its historical database (HDB) directly, and constitutes ‘eventual consistency’: and RESTful interfaces. There is an open-source adapter (e.g. [Cloud Storage FUSE](https://cloud.google.com/storage/docs/gcs-fuse)) which allows mounting a Cloud Storage bucket as a file system.
-
-GCS is great for archive, tiering, and backup purposes. The TP log file and the sym should be stored each day and archived for a period of time. The lifecycle management of the object store simplifies clean-up whereby one can set expiration time to any file. The [versioning feature](https://cloud.google.com/storage/docs/object-versioning) of GCS is particularly useful when a sym file bloat happens due to feed misconfiguration or upstream change. Migrating back to a previous version saves the health of the whole database.
-
-A kdb+ feed can subscribe to a GCS file update that the upstream drops into a bucket and can start its processing immediately. The data is available earlier compared to the solution when the feed is started periodically,e.g. in every hour.
 
 
 ### Persistent disk
@@ -197,36 +208,50 @@ Persistent Disk has a POSIX interface so it can be used to store historical data
 
 Persistent Disks in Google Cloud allow simultaneous readers, so they can be attached to multiple VMs running their own HDB processes. Frequently-used data that are sensitive to latency should use SSD disks that offer consistently high performance.
 
-Persistent Disk's automatic encryption helps protect sensitive data at the lowest level of the infrastructure.
+Persistent Disk’s automatic encryption helps protect sensitive data at the lowest level of the infrastructure.
 
 The limitation of Persistent Disks is that they can be mounted in read-write mode only to a single VM. When EOD [splaying](../../kb/splayed-tables.md) happens, the Persistent Disk needs to be unmounted from another VM, (i.e. all extra HDBs need to be shut down).
 
-Local Persistent Disk can be mounted to a single VM. They have higher throughput and lower latency (especially with NVMe interface) at the expense of functionality including redundancy and snapshots. Local Persistent Disk with write cache flushing disabled can be a great choice for TP logs. Mirrored HDBs for target groups like quants also require maximal speed and care less about redundancy and snapshots.
+Local SSD can be mounted to a single VM. They have higher throughput and lower latency (especially with NVMe interface) at the expense of functionality including redundancy and snapshots. Local SSD with write-cache-flushing disabled can be a great choice for TP logs. Mirrored HDBs for target groups like quants also require maximal speed; redundancy and snapshots are less important here.
 
 When considering selecting the right Persistent Disk, one needs to be aware of the relation between maximal IOP and number of CPUs.
 
 
 ### Filestore
 
-[Filestore](https://cloud.google.com/filestore) is a set of services from Google Cloud allowing you to load your HDB store into a fully managed service. All Filestore tiers use network-attached storage (NAS) for Google Compute Engine (GCE) instances to access the HDB data. Depending on which tier you choose, it can scale to 100s of TBs for high-performance workloads. Along with predictable performance, it is simple to provision and easy to mount on GCE VM instances. NFSv3 is fully supported.
+[Filestore](https://cloud.google.com/filestore) is a set of services from Google Cloud allowing you to load your HDB store into a fully managed service. All Filestore tiers use network-attached storage (NAS) for Google Compute Engine (GCE) instances to access the HDB data. Depending on which tier you choose, it can scale to a few 100s of TBs for high-performance workloads. Along with predictable performance, it is simple to provision and easy to mount on GCE VM instances. NFSv3 is fully supported.
+
+Filestore includes some other storage features such as: Deduplication, Compression, Snapshots, Cross-region replication, and Quotas. Kdb+ is qualified with any tier of Filestore. In using Filestore, you can take advantage of these built-in features when using it for all or some of your HDB segments and partitions. As well as performance, it allows for consolidation of RDB write down and HDB reads, due to its simultaneous read and write support within a single filesystem namespace.
+
+This makes it more convenient than Google Cloud Persistent Disks. You can simply add HDB capacity by setting up a new VM, mounting Filestore tier as if an NFS client to that service, and if needed, register the HDB to the HDB load balancer. RDB or any other data-writer processes can write HDB anytime, it just needs to notify the HDB processes to remap the HDB files to the backing store. Note that the VMs of your RDB and HDB instances need to be in the same zone as your Filestore.
+
+Each Filestore service tier provides performance of a different level. The Basic tiers offer consistent performance beyond a 10 TB instance capacity. For High Scale tier instances, performance grows or shrinks linearly as the capacity scales up or down.
+
+Filestore is not highly available. It is backed by VMs of a zone. If the complete zone suffers an outage, users can expect downtime. Filestore backups are regional resources, however. In the rare case of inaccessibility of a given zone, users can restore the data using the regional backup and continue working in any available zone.
+
+Prior to choosing this technology, check in via your Google Cloud console to find the currently supported regions, as e.g. High Scale SSD is gradually being deployed globally.
 
 
-### Filestore High Scale
+### Google Cloud Storage
 
-Filestore High Scale SSD Tier, as implied by its name, offers additional performance attributes and enterprise features into the Google Cloud Filestore service. It is designed to be a scalable, enterprise-grade shared file system, providing high-performance, POSIX-compliant NFS-presented file services.
+[Google Cloud Storage](https://cloud.google.com/storage) (GCS) is an object store that scales to exabytes of data. There are different storage classes (standard, nearline, cold line, archive) for different availability. Infrequently used data can use cheaper but slower storage. The cloud storage interface supports PUT, GET, LIST, HEAD operations only so it cannot be used for its historical database (HDB) directly, and constitutes ‘eventual consistency’ and RESTful interfaces. There is an open-source adapter (e.g. [Cloud Storage FUSE](https://cloud.google.com/storage/docs/gcs-fuse)) which allows mounting a Cloud Storage bucket as a file system.
 
-It includes some other storage features such as: Deduplication, Compression, Snapshots, Cross-region replication, and Quotas. Kdb+ is qualified with Filestore High Scale SSD tier. In using Filestore High Scale SSD tier, you can take advantage of these built-in features when using it for all or some of your HDB segments and partitions. As well as performance, it allows for consolidation of RDB write down and HDB reads, due to its simultaneous read and write support within a single filesystem namespace.
+The Kx Insights native object-store functionality outperforms open-source solutions and allows users to read HDB data from GCS. All you need do is add the URI of the bucket that stores HDB data to `par.txt`. Cloud object storage has a relatively high latency compared to local storage such as local SSD. However, the performance of kdb+ when working with GCS can be improved by caching GCS data. The results of requests to cloud storage can be cached on a local high-performance disk thus increasing performance. The cache directory is continuously monitored and a size limit is maintained by deleting files according to a LRU (least recently used) algorithm.
 
-This makes it more convenient than Google Cloud Persistent Disks. You can simply add HDB capacity by setting up a new VM, mounting Filestore High Scale SSD tier as if an NFS client to that service, and if needed, register the HDB to the HDB load balancer. RDB or any other data-writer processes can write HDB anytime, it just needs to notify the HDB processes to remap the HDB files to the backing store.
+Caching coupled with enabling secondary threads can increase the performance of queries against a HDB on cloud storage. The larger the number of secondary threads, irrespective of CPU core count, the better the performance of kdb+ object storage. Conversely the performance of cached data appears to be better if the secondary-thread count matches the CPU core count.
 
-We anticipate that you would deploy Filestore High Scale SSD tier as part of a tiered storage solution for your HDB. You may tier some data to local persistent disk or other Filestore tiers, including standard and premium tiers, or to object storage, according to the chosen deployment strategy.
+Each query to GCS has a financial cost and caching the resulting data can help to reduce it.
 
-Prior to choosing this technology, check in via your Google Cloud console to find the currently-supported regions for Filestore High Scale, as this is gradually being deployed globally.
+It is recommended to use compression on the HDB data residing on cloud storage. This can reduce the cost of object storage and possible egress costs and also counteract the relatively high-latency and low bandwidth associated with cloud object storage.
+
+Object store is great for archiving, tiering, and backup. The TP log file and the sym file should be stored each day and archived for a period of time. The lifecycle management of the object store simplifies clean-up whereby one can set expiration time to any file. The [versioning feature](https://cloud.google.com/storage/docs/object-versioning) of GCS is particularly useful when a sym file bloat happens due to feed misconfiguration or upstream change. Migrating back to a previous version saves the health of the whole database.
+
+A kdb+ feed can subscribe to a GCS file update that the upstream drops into a bucket and can start its processing immediately. The data is available earlier compared to the solution when the feed is started periodically, e.g. in every hour.
 
 
 ## Memory
 
-The tickerplant (TP) uses very little memory during normal operation in real-time mode, whilst a full record of intraday data is maintained in the real-time database. Abnormal operation occurs if a real-time subscriber (including RDB) is unable to process the updates. TP stores these updates in the output queue associated with the subscriber. Large output queue needs a large memory. TP may even hit memory limits and exit in extreme cases. Also, TP in batch mode needs to store data (e.g. for a second). This also increases memory need. Consequently, the memory requirement of the TP box depends on the set-up of the subscribers and the availability requirements of the tick system.
+The tickerplant (TP) uses very little memory during normal operation in realtime mode, whilst a full record of intraday data is maintained in the realtime database. Abnormal operation occurs if a realtime subscriber (including RDB) is unable to process the updates. TP stores these updates in the output queue associated with the subscriber. Large output queue needs a large memory. TP may even hit memory limits and exit in extreme cases. Also, TP in batch mode needs to store data (e.g. for a second). This also increases memory need. Consequently, the memory requirement of the TP box depends on the set-up of the subscribers and the availability requirements of the tick system.
 
 The main consideration for an instance hosting the RDB is to use a memory-optimized VM instance such as the `n1-highmem-16` (with 104 GB memory), `n1-highmem-32` (208 GB memory), etc. Google Cloud also offers VM with extremely large memory, `m1-ultramem-160`, with 3.75 TiB of memory, for clients who need to store large amounts of high-frequency data in memory, in the RDB, or even to keep more than one partition of data in the RDB form.
 
@@ -237,14 +262,14 @@ HDB boxes are recommended to have large memories. User queries may require large
 
 ## CPU
 
-The CPU load generated by the Tickerplant (TP) depends on the number of publishers and their verbosity (number of updates per second) and the number of subscribers. Subscribers may subscribe to partial data, but any filtering applied will consume further CPU cycles.
+The CPU load generated by the tickerplant (TP) depends on the number of publishers and their verbosity (number of updates per second) and the number of subscribers. Subscribers may subscribe to partial data, but any filtering applied will consume further CPU cycles.
 
-The CPU requirement of the real-time database (RDB) comes from
+The CPU requirement of the realtime database (RDB) comes from
 
 -   appending updates to local tables
 -   user queries
 
-Local table updates are very efficient especially if TP sends batch updates. User queries are often CPU intensive. They perform aggregation, joins, and call expensive functions. If the RDB is set up in multi-input mode (started with a negative port) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start in multi-process mode by [`-s` command-line parameter](../../basics/cmdline.md#-s-secondary-threads)). VMs with a lot of cores are recommended for RDB processes with large numbers of user queries.
+Local table updates are very efficient especially if TP sends batch updates. User queries are often CPU intensive. They perform aggregation, joins, and call expensive functions. If the RDB is set up in multi-input mode (started with a negative port) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start in multi-process mode by [`-s` command-line option](../../basics/cmdline.md#-s-secondary-threads)). VMs with a lot of cores are recommended for RDB processes with large numbers of user queries.
 
 If the infrastructure is sensitive to the RDB EOD work, then powerful CPUs are recommended. Sorting tables before splaying is a CPU-intensive task.
 
@@ -253,10 +278,17 @@ Historical databases (HDB) are used for user queries. In most cases the I/O domi
 
 ## Locality, latency and resilience
 
-The standard tick set-up on premises requires the components to be placed on the same server. The tickerplant (TP) and real-time database (RDB) are linked via the TP log file and the RDB and historical database (HDB) are bound due to RDB EOD splaying. Customized kdb+tick release this constraint in order to improve resilience. One motivation could be to avoid HDB queries impacting data capture in TP. You can set up an HDB writer on the HDB box and RDB can send its tables via IPC at midnight and delegate the I/O work together with the sorting and attribute handling.
+The standard tick set-up on premises requires the components to be placed on the same server. The tickerplant (TP) and realtime database (RDB) are linked via the TP log file and the RDB and historical database (HDB) are bound due to RDB EOD splaying. Customized kdb+tick release this constraint in order to improve resilience. One motivation could be to avoid HDB queries impacting data capture in TP. You can set up an HDB writer on the HDB box and RDB can send its tables via IPC at midnight and delegate the I/O work together with the sorting and attribute handling.
 
 The feed handlers are recommended to be placed outside the TP box on another VM between TP and data feed. This way malfunctioning of the feed handler has a smaller impact on TP stability.
 
+## VM Maintenance, live migration
+
+Virtual machines run on real physical machines. Occasionally physical machines suffer hardware failures. Google developed a suite of monitoring tools to detect hardware failure as early as possible. If the physical server is considered unreliable then the VM is moved to a healthy server. In most cases, the migration is unnoticed in Google Cloud, in contrast to to an on-premise solution where DevOps are involved and it takes time to replace the server. Improving business continuity is a huge value for all domains.
+
+Even Google Cloud cannot break the laws of physics. Thes migration step takes some time: data must be transferred over the network. The more memory you have, the longer it takes to migrate the VM. VMs that run the RDB are likely to have the largest memory. During migration, client queries are not ignored but delayed a bit. The connections are not dropped, the queries go into a buffer temporarily, and are executed after the migration.
+
+VM migration is not triggered solely by hardware failure. Google needs to perform maintenance that is integral to keeping infrastructure protected and reliable. Maintenance events are logged in Stackdriver and you can receive advance notice by monitoring the `/computeMetadata/v1/instance/maintenance-event metadata` value. Furthermore, Google provides `gcloud` command `compute instances simulate-maintenance-event` to simulate a maintenance event. You can use this function to measure the impact of live migration and provide an SLA for the kdb+tick.
 
 ## Recovery
 
@@ -292,7 +324,7 @@ Typically, kdb+ is deployed in a high-value system. Hence, downtime can impact b
 
 Usually, the secondary will run on separate infrastructure, with a separate file system, and save the data to a secondary database directory, separate from the primary. In this way, if the primary system or underlying infrastructure goes offline, the secondary would be able to take over completely.
 
-The usual strategy for failover is to have a complete mirror of the production system (feed handler, Tickerplant, and real-time subscriber), and when any critical process goes down, the secondary is able to take over. Switching from production to disaster recovery systems can be implemented seamlessly using kdb+ inter process communication.
+The usual strategy for failover is to have a complete mirror of the production system (feed handler, tickerplant, and realtime subscriber), and when any critical process goes down, the secondary is able to take over. Switching from production to disaster recovery systems can be implemented seamlessly using kdb+ inter process communication.
 
 :fontawesome-regular-map:
 [Disaster-recovery planning for kdb+tick systems](../../wp/disaster-recovery/index.md)
@@ -306,9 +338,9 @@ The usual strategy for failover is to have a complete mirror of the production s
 The network bandwidth needs to be considered if the tickerplant components are not located on the same VM. The network bandwidth between Google Cloud VMs depends on the type of the VMs. For example, a VM of type `n1-standard-8` has a maximum egress rate of 2 GBps. For a given update frequency you can calculate the required bandwidth by employing the [`-22!` internal function](../../basics/internal.md#-22x-uncompressed-length) that returns the length of the IPC byte representation of its argument. The tickerplant copes with large amounts of data if batch updates are sent. Make sure that the network is not your bottleneck in processing the updates.
 
 
-###  Network Load Balancer
+###  Network load balancer
 
-[Cloud Load Balancing](https://cloud.google.com/load-balancing/) is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, Network Load Balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
+[Cloud Load Balancing](https://cloud.google.com/load-balancing/) is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, network load balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
 
 Load balancers can distribute load among applications that offer the same service. Kdb+ is single threaded by default. With a negative [`-p` command-line option](../../basics/cmdline.md#-p-listening-port) you can set multithreaded input mode, in which requests are processed in parallel. This however, is not recommended for gateways (due to socket-usage limitation) and for kdb+ servers that process data from disk, like HDBs.
 
@@ -329,19 +361,21 @@ Consider three clients C1, C2, C3 and two servers HDB1 and HDB2. C1 is directed 
 
 Google Cloud provides a fully-managed logging service that performs at scale and can ingest applications and system log data. [Cloud Logging](https://cloud.google.com/logging) allows you to search and analyze the system log. It provides an easy-to-use and customizable interface so that DevOps can quickly troubleshoot applications. Log messages can be transferred to [BigQuery](https://cloud.google.com/bigquery) by a single click, where complex queries allow a more advanced log-data analysis. In this section we also illustrate how to easily interact with the Google Cloud API from a q process.
 
-The simplest way to send a log message from a kdb+ process is to use the [`system`](../../ref/system.md) keyword and the `gcloud logging` command-line tool.
+You can make use of cloud logging without any change in the code by setting up a [fluentd-based logging agent](https://cloud.google.com/logging/docs/agent). After installation, you simply add a config file to `/etc/google-fluentd/config.d` and restart service `google-fluentd`. At minimum, you need to set the path of the log files and specify a tag to derive the `logName` part of a log message.
+
+The simplest way to send a log message directly from a kdb+ process is to use the [`system`](../../ref/system.md) keyword and the `gcloud logging` command-line tool.
 
 ```q
-system "gcloud logging write kdb-log \"My first log message as text.\"&"
+system "gcloud logging write kdb-log \"My first log message as text.\" --severity INFO&"
 ```
 
-The ampersand is needed to avoid the logging blocking the main thread.
+The ampersand is needed to prevent the logging from blocking the main thread.
 
 Google Cloud allows sending structured log messages in JSON format. If you would like to send some key-value pair that is stored in a q dictionary then you can use the function `.j.j` to serialize the map into JSON.
 
 ```q
 m: `message`val!("a structured message"; 42)
-system "gcloud logging write --payload-type=json kdb-log '", .j.j[m], "'"
+system "gcloud logging write --severity=INFO --payload-type=json kdb-log '", .j.j[m], "'"
 ```
 
 Using system commands for logging is not convenient. A better approach is to use client libraries. There is no client library for the q programming language but you can use [embedPy](../..//ml/embedpy/index.md) and the Python API as a workaround.
@@ -353,15 +387,32 @@ p)logging_client = logging.Client()
 p)log_name = 'kdb-log-embedpy'
 p)logger = logging_client.logger(log_name)
 
-qlogger:.p.get[`logger]
+qlogger:.p.get `logger
 
-qlogger[`:log_text] "My kdb+ third log message as text"
+qlogger[`:log_text; "My kdb+ third log message as text"; `severity pykw `ERROR]
 
 m: `message`val!("another structured message"; 42)
-qlogger[`:log_struct] m
+qlogger[`:log_struct; m; `severity pykw `ERROR]
 ```
 
-Another way to interact with the Cloud Logging API is through the REST API. Kdb+ supports HTTP get and post requests by utilities [`.Q.hg`](../../ref/dotq.md#qhg-http-get) and [`.Q.hp`](../../ref/dotq.md#qhp-http-post). The advantage of this approach is that you don't need to install embedPy, instead you have a portable pure-q solution. KX plans to release an improved native solution that helps interaction with Google Cloud REST API.
+Another way to interact with the Cloud Logging API is through the REST API. Kdb+ supports HTTP get and post requests by utilities [`.Q.hg`](../../ref/dotq.md#qhg-http-get) and [`.Q.hp`](../../ref/dotq.md#qhp-http-post). The advantage of this approach is that you don’t need to install embedPy. Instead you have a portable pure-q solution. There is a long journey from `.Q.hp` till you have a fully featured cloud-logging library. The QLog library of KX Insights spares you the trip. Call unary function `msg` in namespace `.qlog` to log a message. The argument is a string or a dictionary, depending on the type (structured or unstructured) of the message.
+
+```q
+.log.msg "unstructured message via QLog"
+.log.msg `severity`labels`message!("ERROR"; `class`facility!`rdb`EOD; "Something went wrong")
+```
+
+QLog supports multiple endpoint types through a simple interface and lets you write to them concurrently. The logging endpoints in QLog are encoded as URLs with two main types: file descriptors and REST endpoints. The file descriptor endpoints supported are:
+
+```txt
+:fd://stdout
+:fd://stderr
+:fd:///path/to/file.log
+```
+
+REST endpoints are encoded as standard HTTP/S URLs such as: `https://logging.googleapis.com`. QLog generates structured, formatted log messages tagged with a severity level and component name. Routing rules can also be configured to suppress or route based on these tags.
+
+Existing q libraries that implement their own formatting can still use QLog via the base APIs. This enables them to do their own formatting but still take advantage of the QLog-supported endpoints. Integration with cloud logging application providers can easily be achieved using logging agents. These can be set up alongside running containers/virtual machines to capture their output and forward to logging endpoints, such as Cloud Logging API.
 
 Once the log messages are ingested you can search, sort and display them by
 
@@ -385,6 +436,15 @@ Key benefits of Cloud Logging:
 
 -   Cloud Logging integrates with [Cloud Monitoring](https://cloud.google.com/monitoring). You may also wish to integrate your [KX Monitoring](../../devtools.md#kx-monitoring) for kdb+ components into this Cloud Logging and Cloud Monitoring framework. The purpose is the same, to get insights into performance, uptime and overall health of the applications and the servers pool. You can visualize trends via dashboards and set rules to trigger alarms.
 
+Cloud Monitoring supports monitoring, alarming and creating dashboards. It is simple to create a Metric Filter based on a pattern and set an alarm (e.g. sending email) if a certain criterion holds. You may also wish to integrate your KX Monitoring for kdb+ components into this cloud logging and monitoring framework. The purpose is the same, to get insights into performance, uptime and overall health of the applications and the servers pool. You can visualize trends via dashboards.
+
+## Package, manage and deploy
+
+QPacker (`qp`) is a tool to help developers package, manage and deploy q/kdb+ applications to the cloud. It automates the creation of containers and virtual machines using a simple configuration file `qp.json`. It packages q/kdb+ applications with common shared code dependencies, such as Python and C. QPacker can build and run containers locally as well as push to container registries (DockerHub, GCP Container Registry etc.).
+
+Software is often built by disparate teams, who may individually have remit over a particular component, and package that component for consumption by others. QPacker will store all artifacts for a project in a QPK file. While this file is intended for binary dependencies, it is also designed to be portable across environments.
+
+QPacker can interface with Hashicorp Packer to generate virtual-machine (VM) images for GCP. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -gcp`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with `systemd` to allow the `startq.sh` launch script to start the application on boot.
 
 ## Google Cloud Functions
 
@@ -394,12 +454,21 @@ The function’s platform only supports Node.js, Java, Go, and Python programmin
 
 One use case for Cloud Functions is implementing feed handlers. An upstream can drop, for instance, a CSV file to a Google Filestore bucket. This event can trigger a Java or Go cloud function that reads the file, applies some filtering or other data transformation, then sends the data to a tickerplant (TP). The real benefit of not caring about the backend infrastructure becomes obvious when the number of kdb+ tables, hence the number of feed handlers, increases, and distributing the feed handler on available servers needs constant human supervision.
 
-A similar service, called [Cloud Run](https://cloud.google.com/run), can be leveraged to run kdb+ in a serverless architecture. The kdb+ binary and code can be containerized and deployed to Cloud Run. Cloud Run then provisions the containers and manages the underlying infrastructure.
+A similar service, called [Cloud Run](https://cloud.google.com/run), can be leveraged to run kdb+ in a serverless architecture. The kdb+ binary and code can be containerized and deployed to Cloud Run. QPacker helps you create images. Cloud Run then provisions the containers and manages the underlying infrastructure.
+
+## Service discovery
+
+Feeds and the RDB need to know the address of the tickerplant. The gateway and the RDB need to know the address of the HDB. In fact, there are multiple RDBs and HDBs connecting to a gateway in practice. In a microservice infrastructure like kdb+tick, these configuration details are best stored in a configuration-management service. This is especially true if the addresses are constantly changing and new services are added dynamically.
+
+Google offers [Service Directory](https://cloud.google.com/service-directory), a managed service, to reduce the complexity of management and operations by providing a single place to publish, discover, and connect services. Service Directory organizes services into namespaces. A service can have multiple attributes, called annotations, as key-value pairs. You can add several endpoints to
+a service. The IP address and a port is mandatory for each end point. Unfortunately Service Directory neither validates addresses nor performs health checks.
+
+Kdb+ can easily interact with the Service Directory using Kurl. Kurl can be extended to create or query namespaces, discover or add and remove endpoints to facilitate service discovery of your kdb+ processes running in your tick environment. For example a kdb+ gateway can fetch from Service Directory the addresses of RDBs and HDBs. The cloud console also comes with a simple web interface to e.g. list the endpoints and their addresses of any service.
 
 
 ## Access management
 
-We distinguish application and infrastructure level access control. Application-level access management controls who can access kdb+ components and run commands. Tickerplant (TP), real-time database (RDB) and historical database (HDB) are generally restricted to kdb+ infra admins only and the gateway is the access point for the users. One responsibility of the gateway is to check if the user can access the tables (columns and rows) s/he is querying. This generally requires checking user ID (returned by [`.z.u`](../../ref/dotz.md#zu-user-id)) against some organizational entitlement database, cached locally in the gateway and refreshed periodically.
+We distinguish application and infrastructure level access control. Application-level access management controls who can access kdb+ components and run commands. tickerplant (TP), realtime database (RDB) and historical database (HDB) are generally restricted to kdb+ infra admins only and the gateway is the access point for the users. One responsibility of the gateway is to check if the user can access the tables (columns and rows) s/he is querying. This generally requires checking user ID (returned by [`.z.u`](../../ref/dotz.md#zu-user-id)) against some organizational entitlement database, cached locally in the gateway and refreshed periodically.
 
 Google provides an enterprise-grade identity and access management referred to as Cloud IAM. It offers a unified way to administrate fine-grained actions on any Google Cloud resource including storage, VMs and logs.
 
@@ -409,7 +478,7 @@ Google provides an enterprise-grade identity and access management referred to a
 service | VM instance type | storage | CPU, memory, I/O
 --------|------------------|---------|-----------------
 Tickerplant | High CPU<br>`n1-highcpu-[16-96]`<br>`n2-highcpu-[8-80]` | PD<br>local PD | High-Perf<br>Medium<br>Medium
-Real Time Database | High Memory<br>`n1-highmem-[16-96]`<br>`n2-highmem-[8-80]` | | High-Perf<br>High-Capacity<br>Medium
+Realtime Database | High Memory<br>`n1-highmem-[16-96]`<br>`n2-highmem-[8-80]` | | High-Perf<br>High-Capacity<br>Medium
 Historical Database | High Memory<br>`n1-highmem-[16-96]`<br>`n2-highmem-[8-80]` | PD<br>ElastiFile | Medium Perf<br>Medium<br>High
 Complex Event Processing (CEP) | Standard<br>`n1-standard-[16-96]`<br>`n2-standard-[8-80]` | | Medium Perf<br>Medium<br>High
 Gateway | High CPU<br>`n1-highcpu-[16-96]`<br>`n2-highcpu-[8-80]` | | Medium-Perf<br>Medium<br>High
@@ -422,7 +491,7 @@ Gateway | High CPU<br>`n1-highcpu-[16-96]`<br>`n2-highcpu-[8-80]` | | Medium-Per
 standard `tick.q` scripts
 <br>
 :fontawesome-regular-map:
-[Building Real-time Tick Subscribers](../../wp/rt-tick/index.md)
+[Building Realtime Tick Subscribers](../../wp/rt-tick/index.md)
 <br>
 :fontawesome-regular-map:
 [Data Recovery for kdb+ tick](../../wp/data-recovery.md)
@@ -439,5 +508,4 @@ Disaster-recovery planning for kdb+ tick systems
 <br>
 :fontawesome-regular-map:
 [Kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
-
 
