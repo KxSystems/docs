@@ -71,6 +71,7 @@ error | cause
 cast  | item/s of `y` not in `x`
 
 
+---
 :fontawesome-solid-book:
 [Enum Extend](enum-extend.md),
 [Enumeration](enumeration.md),
