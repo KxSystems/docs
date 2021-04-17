@@ -549,51 +549,7 @@ r = k(c,(S)0);                 // Read incoming data (blocking call)
 
 Note that the object returned from an async set call must not be passed to `r0`.
 
-There is no timeout argument for the `k(handle,…,(K)0)` call, but you can use socket timeouts as described below, or if you are _reading incoming async msgs_ only, you can use `select` to determine whether the handle has data pending.
-
-```c
-#include"k.h"
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/socket.h>
-#include<netinet/in.h>
-#include<arpa/inet.h>
-int main(){
-  int retval;
-  K x,r;
-  int fd=khp("localhost",9999); // In a production system, check return value
-  fd_set fds;
-  struct timeval tv;
-  while(1){
-    tv.tv_sec=5;
-    tv.tv_usec=0;
-    FD_ZERO(&fds);
-    FD_SET(fd,&fds);
-    retval=select(fd+1,&fds,NULL,NULL,&tv);
-    if(retval==-1)
-      perror("select()"),exit(1);
-    else if(retval){
-      printf("Data is available now.\n");
-      if(FD_ISSET(fd,&fds)){
-        x=k(fd,(S)0);
-        if(x){
-          if(-128==x->t){printf("Error occurred:%s\n",x->s);r0(x);return;}
-          printf("%d\n",x->i);
-          r0(x);
-        }
-        //else connection closed
-      }
-    }
-    else
-      printf("No data within five seconds.\n");
-  }
-  kclose(fd);
-  return 0;
-}
-```
+There is no timeout argument for the `k(handle,…,(K)0)` call, but you can use socket timeouts as described below.
 
 
 ## Unix domain sockets
