@@ -58,6 +58,28 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
 
 `sum` is an aggregate function, equivalent to `+/`.
 
+??? warning "Floating-point addition is not associative"
+
+    Different results may be obtained by changing the order of the summation.
+
+        ❯ q -s 4
+        KDB+ 4.0 2021.01.20 Copyright (C) 1993-2021 Kx Systems
+        m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 ..
+
+        q)\s 0
+        q)a:100000000?1.
+        q)\P 0
+        q)sum a
+        49999897.181930684
+        q)sum reverse a
+        49999897.181931004
+
+    The order of summation changes when the primitive is able to use threads. 
+
+        q)\s 4
+        q)sum a
+        49999897.181933172
+
 
 ## `sums`
 
