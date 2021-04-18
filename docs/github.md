@@ -1012,6 +1012,13 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </td>
 </tr>
 <tr markdown="1">
+<td markdown="1" class="nowrap"><a href="https://github.com/manifoldfinance/qBigInt">qBigInt</a> ==new==</td>
+<td markdown="1">C library for Big Integer KDB+ Arithmetic <span class="author"><a href="https://github.com/manifoldfinance?tab=repositories">
+						(Sandy Bradley)
+					</a></span>
+</td>
+</tr>
+<tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/komsit37/qchart">qchart</a></td>
 <td markdown="1">Plot data directly from q (using JavaScript). Works well with sublime-q. Transform your data into [JSON](http://www.json.org/) and renders it into a HTML/JavaScript template. <span class="author"><a href="https://github.com/komsit37?tab=repositories">
 						(Eugene Kononov)
@@ -1075,7 +1082,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </td>
 </tr>
 <tr markdown="1">
-<td markdown="1" class="nowrap"><a href="https://github.com/caolanraff/xls">xls ==new==</a></td>
+<td markdown="1" class="nowrap"><a href="https://github.com/caolanraff/xls">xls</a></td>
 <td markdown="1">Format cells in an Excel document <span class="author"><a href="https://github.com/caolanraff?tab=repositories">
 						(Caolan Rafferty)
 					</a></span>
