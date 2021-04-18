@@ -695,7 +695,7 @@ The same is done for splayed tables – where `0b~.Q.qp` for a table.
 ```q
 /sym files from splayed tables
 symFiles,:raze{
-  ` sv/: hsym[x],/:exec c from meta x where t in > "s"
+  ` sv/: hsym[x],/:exec c from meta x where t in "s"
   }each tables[] where {0b~.Q.qp value x}each tables[]
 ```
 
