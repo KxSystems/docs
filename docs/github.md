@@ -431,9 +431,16 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 	:fontawesome-solid-star:{: title="Featured repository"}
 </td>
 </tr>
+</tr>
+<tr markdown="1">
+<td markdown="1" class="nowrap"><a href="https://github.com/adotsch/dqweb">dqweb</a> ==new==</td>
+<td markdown="1">Simple web interface for kdb+/q processes <span class="author"><a href="https://github.com/adotsch?tab=repositories">
+						(András Dőtsch)
+					</a></span>
+</td>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/simongarland/help">help</a></td>
-<td markdown="1">Create a helpfile from a directory of TXTs. <span class="author"><a href="https://github.com/simongarland?tab=repositories">
+<td markdown="1">Create a helpfile from a directory of TXTs <span class="author"><a href="https://github.com/simongarland?tab=repositories">
 						(Simon Garland)
 					</a></span>
 </td>
@@ -469,7 +476,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </td>
 </tr>
 <tr markdown="1">
-<td markdown="1" class="nowrap"><a href="https://shahdee.gitlab.io/miq/#/">miQ ==new==</a></td>
+<td markdown="1" class="nowrap"><a href="https://shahdee.gitlab.io/miq/#/">miQ</a></td>
 <td markdown="1">Divide an application into modules <span class="author"><a href="https://gitlab.com/Shahdee">
 						(Michal Širochman)
 					</a></span>
@@ -941,6 +948,14 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 ## :fontawesome-solid-cogs: Utilities
 
 <table class="kx-compact" markdown="1">
+</tr>
+<tr markdown="1">
+<td markdown="1" class="nowrap"><a href="https://github.com/adotsch/q-examples/blob/master/anim.q">anim.q</a> ==new==</td>
+<td markdown="1">In-browser 3D animation streaming from q<span class="author"><a href="https://github.com/adotsch?tab=repositories">
+						(András Dőtsch)
+					</a></span>
+</td>
+</tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/lmartinking/broq">broq</a></td>
 <td markdown="1">[Brotli file decompression](https://en.wikipedia.org/wiki/Brotli). <span class="author"><a href="https://github.com/lmartinking?tab=repositories">
