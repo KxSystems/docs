@@ -31,7 +31,7 @@ Ensure your q process has loaded the SQL interpreter.
 
 !!! warning "Windows 2003 hotfix KB948459"
 
-    If using Windows 2003, before installing ensure you have hotfix [KB948459](https://www.microsoft.com/en-gb/download/details.aspx?id=20065) applied. 
+    If using Windows 2003, before installing ensure you have hotfix KB948459 applied. 
 
 -   in W32, download :fontawesome-brands-github: [KxSystems/kdb/w32/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w32/odbc.zip) and run it to install the q ODBC driver
 -   in W64, download :fontawesome-brands-github: [KxSystems/kdb/w64/odbc.zip](https://github.com/KxSystems/kdb/blob/master/w64/odbc.zip) and extract it to a temporary directory. Run `d0.exe` to install the q ODBC driver.

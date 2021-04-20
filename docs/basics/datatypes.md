@@ -232,7 +232,7 @@ q)0w + 5
         q)-0Wh
         -32767h
 
-    Integer promotion is documented for [Add](../ref/add/#range-and-domains).
+    Integer promotion is documented for [Add](../../ref/add/#range-and-domains).
 
     Integer infinities 
 
