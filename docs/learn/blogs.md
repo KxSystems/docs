@@ -12,8 +12,8 @@ _A selection of technical articles of interest to kdb+ developers_
 
 ## Programming in q
 
-<!-- - [Real-world examples of adverbs](https://kx.com/blog/enhancing-kdbq-toolkit-real-world-examples-adverbs/) -->
--   [Monte-Carlo methods with kdb+](https://armantee.github.io/sampling-with-kdb-p1/), by Arman Tadjrishi ==new==
+- [Real-world examples of iterators](https://kx.com/blog/enhancing-your-kdb-q-toolkit-real-world-examples-of-iterators/) ==revised==
+-   [Monte-Carlo methods with kdb+](https://armantee.github.io/sampling-with-kdb-p1/), by Arman Tadjrishi 
 -   [Memory mapping in kdb+](https://kx.com/blog/memory-mapping-in-kdb/), by Adam Bonham
 -   [Logging best practices](https://kx.com/blog/logging-best-practices/), by Jamie McKeown
 -   [Advanced pattern matching and text manipulation in kdb+ with embedPy](https://kx.com/blog/advanced-pattern-matching-and-text-manipulation-in-kdb-with-embedpy/), Jun Bing Neo
