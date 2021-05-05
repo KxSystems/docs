@@ -8,27 +8,19 @@ keywords: delete, functional kdb+, q, query, qsql, sql
 
 _Delete rows or columns from a table, entries from a dictionary, or objects from a namespace_
 
-!!! info "`update` is a qSQL query template and varies from regular q syntax."
-
-For the Delete operator `!`, see 
-:fontawesome-solid-book-open:
-[Functional SQL](../basics/funsql.md)
-
-
-## Syntax
-
 <div markdown="1" class="typewriter">
 delete    from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
 delete _p<sub>s</sub>_ from _t<sub>exp</sub>_ 
 </div>
 
+!!! info "`delete` is a [qSQL query template](../basics/qsql.md) and varies from regular q syntax"
+
+For the Delete operator `!`, see 
 :fontawesome-solid-book-open:
-[qSQL syntax](../basics/qsql.md)
+[Functional SQL](../basics/funsql.md#delete)
 
 
-
-
-### Table rows
+## Table rows
 
 Where 
 
@@ -51,8 +43,10 @@ a 1
 b 2
 ```
 
+!!! warning "Attributes may or may not be dropped: reapply or remove as needed"
 
-### Table columns
+
+## Table columns
 
 Where
 
@@ -71,7 +65,7 @@ c
 ```
 
 
-### Dictionary entries
+## Dictionary entries
 
 Where
 
@@ -98,10 +92,10 @@ c| 2
     Enclose in a lambda or use [Vector Conditional](vector-conditional.md) instead.
 
     :fontawesome-regular-hand-point-right:
-    [q-SQL](../basics/qsql.md#cond)
+    [qSQL](../basics/qsql.md#cond)
 
 
-### Namespace objects
+## Namespace objects
 
 Where
 
@@ -120,15 +114,8 @@ q)\v
 `symbol$()
 ```
 
-
 :fontawesome-regular-hand-point-right:
 [qSQL](../basics/qsql.md)
-
-
-## `!` Delete operator
-
-:fontawesome-regular-hand-point-right:
-[Functional Delete](../basics/funsql.md#delete)
 
 
 [![DevOps Borat on delete](../img/borat_delete.jpg)](https://twitter.com/devops_borat)
