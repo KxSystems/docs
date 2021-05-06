@@ -24,10 +24,10 @@ For the Delete operator `!`, see
 
 Where 
 
--   `t` is a table
--   `{cond}` is a condition
+-   _t~exp~_ is a table
+-   _p~w~_ is a condition
 
-deletes from `t` rows matching `{cond}`.
+deletes from `t` rows matching _p~w~_.
 
 ```q
 q)show table: ([] a: `a`b`c; n: 1 2 3)
@@ -50,10 +50,10 @@ b 2
 
 Where
 
--   `t` is a table
--   `cols` a list of column names
+-   _t~exp~_ is a table
+-   _p~s~_ a list of column names
 
-deletes from `t` columns `cols`.
+deletes from `t` columns _p~s~_.
 
 ```q
 q)show delete n from table
@@ -69,10 +69,10 @@ c
 
 Where
 
--   `x` is a dictionary
--   `keys` a list of keys to it
+-   _t~exp~_ is a dictionary
+-   _p~s~_ a list of keys to it
 
-deletes from `x` entries for `keys`.
+deletes from _t~exp~_ entries for _p~s~_.
 
 ```q
 q)show d:`a`b`c!til 3
@@ -99,10 +99,10 @@ c| 2
 
 Where
 
--   `x` is a namespace
--   `keys` a symbol atom or vector of name/s defined in it
+-   _t~exp~_ is a namespace
+-   _p~s~_ a symbol atom or vector of name/s defined in it
 
-deletes from `x` the named objects.
+deletes the named objects from the namespace.
 
 ```q
 q)a:1
