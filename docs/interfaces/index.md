@@ -3,6 +3,9 @@ title: Interfaces and editor integrations | Interfaces | kdb+ and q documentatio
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---
+<span style="color: #009BAB; font-size: 2em">121</span><br><span style="font-size: .7em">interfaces &<br>connectors
+{: style="border: 1px solid #009BAB; border-radius: 10px; float: right; line-height: 1.2em; margin: 0; padding: 1em 1em .5em; text-align: center"}
+
 # :fontawesome-regular-handshake: Interfaces and editor integrations
 
 

@@ -4,19 +4,18 @@ description: An index of q and kdb+ repositories on GitHub.
 author: Stephen Taylor
 keywords: code, github, kdb+, q, repo, repository
 ---
-# Open-source libraries
+# :fontawesome-solid-code: Open-source libraries
 
-
-
-:fontawesome-regular-hand-point-right: [Interfaces](interfaces/index.md) to feeds, services and other languages  
+:fontawesome-regular-hand-point-right: [Interfaces](interfaces/index.md) to feeds, services and other languages
+<br>
 :fontawesome-regular-hand-point-right: [Integrations](interfaces/index.md#editor-integrations) with editors and IDEs
 
-Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by KX. Other repositories are maintained by their owners. 
+Repositories at :fontawesome-brands-github: [KxSystems](https://github.com/KxSystems) are maintained and supported by KX. Other repositories are maintained by their owners.
 
 <div style="background-color: #efefef; border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.2);  display: inline-block; padding: 0 1em;" markdown="1">Please tell [librarian@kx.com](mailto:librarian@kx.com)
 about new repositories.</div>
 
-:fontawesome-brands-github: 
+:fontawesome-brands-github:
 GitHub topic queries:&nbsp;&nbsp;
 [`q`](https://github.com/search?q=topic%3Aq "Search GitHub for repositories with topic q")&nbsp;&nbsp;
 [`kdb`](https://github.com/search?q=topic%3Akdb "Search GitHub for repositories with topic kdb")&nbsp;&nbsp;
@@ -31,7 +30,7 @@ The Fusion interface libraries are maintained and supported by KX.
 <tr markdown="1">
 <td markdown="1" class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
 <td markdown="1">
-[call Python from q](ml/embedpy/index.md) 
+[call Python from q](ml/embedpy/index.md)
 [:fontawesome-solid-share-alt:](./ml/index.md "Machine learning")
 </td>
 </tr>
@@ -44,7 +43,7 @@ The Fusion interface libraries are maintained and supported by KX.
 <tr markdown="1">
 <td markdown="1" class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
 <td markdown="1">
-[Java client for kdb+](interfaces/java-client-for-q.md) 
+[Java client for kdb+](interfaces/java-client-for-q.md)
 </td>
 </tr>
 <tr markdown="1">
@@ -173,7 +172,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 <table class="kx-compact" markdown="1">
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/stevanapter/hypertree">hypertree</a></td>
-<td markdown="1">Recursive aggregating treetable and 3-D pivot table for hypergrid. 
+<td markdown="1">Recursive aggregating treetable and 3-D pivot table for hypergrid.
 <span class="author"><a href="https://github.com/stevanapter?tab=repositories">(Stevan Apter)</a></span>
 </td>
 </tr>
@@ -193,7 +192,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/CharlesSkelton//studio">studio</a></td>
-<td markdown="1">A rapid-development environment for q. 
+<td markdown="1">A rapid-development environment for q.
 <span class="author"><a href="https://github.com/CharlesSkelton/?tab=repositories">(Charles Skelton)</a></span>
 </td>
 </tr>
@@ -205,13 +204,13 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 <table class="kx-compact" markdown="1">
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/srpeck/3dsim">3dsim</a></td>
-<td markdown="1">3-D world simulation using kdb+/k/q WebSocket server and three.js. 
+<td markdown="1">3-D world simulation using kdb+/k/q WebSocket server and three.js.
 <span class="author"><a href="https://github.com/srpeck?tab=repositories">(Stephen Peck)</a></span>
 </td>
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/picoDoc/betfair-data-capture">betfair-data-capture</a></td>
-<td markdown="1">Data capture and analysis system built on TorQ for sports exchange data from [Betfair](https://www.betfair.com). 
+<td markdown="1">Data capture and analysis system built on TorQ for sports exchange data from [Betfair](https://www.betfair.com).
 <span class="author"><a href="https://github.com/picoDoc?tab=repositories">(Matthew Doherty)</a></span>
 </td>
 </tr>
@@ -810,19 +809,19 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/josepablocam/symfun">symfun</a></td>
-<td markdown="1">Studies and classic problems. 
+<td markdown="1">Studies and classic problems.
 <span class="author"><a href="https://github.com/josepablocam?tab=repositories">(José Cambronero)</a></span>
 </td>
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/josepablocam/telescope">telescope</a></td>
-<td markdown="1">Simulate lexically scoped local variables in q functions. 
+<td markdown="1">Simulate lexically scoped local variables in q functions.
 <span class="author"><a href="https://github.com/josepablocam?tab=repositories">(José Cambronero)</a></span>
 </td>
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/eepgwde/ticker-planto">ticker-planto</a></td>
-<td markdown="1">Simplified version of kdb+tick. 
+<td markdown="1">Simplified version of kdb+tick.
 <span class="author"><a href="https://github.com/eepgwde?tab=repositories">(Walter Eaves)</a></span>
 </td>
 </tr>
@@ -1164,7 +1163,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 ## :fontawesome-solid-share-alt-square: kxcontrib
 
 !!! warning "Salvaged repositories"
-	:fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 
+	:fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained.
 
 
 <table class="kx-compact" markdown="1">
