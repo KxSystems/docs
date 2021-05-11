@@ -966,6 +966,8 @@ returns, for
 -   `cbv`, the inflated (unzipped) vector
 -   a 2-list, the deflated (zipped) vector
 
+since V4.0 2020.04.16.
+
 ```q
 q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 66
