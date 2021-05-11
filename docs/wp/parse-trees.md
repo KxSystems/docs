@@ -104,7 +104,7 @@ where every item could itself be a parse tree. In this way we see that every act
 
 ### `eval` and `value`
 
-`eval` can be thought of as the dual to `parse`. The following holds for all valid q statements put into a string. (Recall that `value` executes the command inside a string.)
+`eval` can be thought of as the dual to `parse`. The following holds for all valid q statements (without side effects) put into a string. (Recall that `value` executes the command inside a string.)
 
 ```q
 //a tautology (for all valid q expressions str)
@@ -136,7 +136,7 @@ q)value(+;7;(+;2;1))
 ```q
 q)value(,;`a;`b)
 `a`b
-q)eval(,;`a;`b)          //no variable b defined
+q)eval(,;`a;`b)                 //no variable b defined
 'b
 q)eval(,;enlist `a;enlist `b)
 `a`b
