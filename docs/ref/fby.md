@@ -69,7 +69,7 @@ c| 9
 d| 4
 ```
 
-The result is created by replacing each item of `group` with the result of applying `aggr` to its corresponding sublist. 
+The result is created by replacing each item of `grp` with the result of applying `aggr` to its corresponding sublist. 
 
 ```q
 q)(sum;dat) fby grp
@@ -144,7 +144,7 @@ s4 p4 300
 s1 p5 400
 ```
 
-To group on multiple columns, tabulate them in `group`.
+To group on multiple columns, tabulate them in `g`.
 
 ```q
 q)update x:12?3 from `sp
@@ -164,6 +164,7 @@ s3 p2 200 2
 s4 p2 200 2
 s4 p4 300 1
 s1 p5 400 1
+
 q)select from sp where qty = (max;qty) fby ([]s;x)
 s  p  qty x
 -----------
