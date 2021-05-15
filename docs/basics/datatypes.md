@@ -21,7 +21,7 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 9   f   float     8   0.0                0n   0w  float     Double    double
                       0f                 0Nf
 10  c   char      1   " "                " "                Character char
-11  s   symbol        \`                  \`        varchar   String    string
+11  s   symbol        \`                  \`        varchar
 12  p   timestamp 8   dateDtimespan      0Np  0Wp           Timestamp DateTime (RW)
 13  m   month     4   2000.01m           0Nm
 14  d   date      4   2000.01.01         0Nd  0Wd date      Date
