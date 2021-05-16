@@ -10,7 +10,8 @@ White papers are flagged in the navigation menus.
 
 ## :fontawesome-solid-handshake: Interfaces
 
--   ==new== [**Interprocess communication**](ipc/index.md)<br>Katrina&nbsp;McCormack, 2021.04
+-   ==new== [**Internet of Things with MQTT**](iot-mqtt/index.md)<br>Rian&nbsp;Ó&nbsp;Cuinneagáin, 2021.06
+-   [**Interprocess communication**](ipc/index.md)<br>Katrina&nbsp;McCormack, 2021.04
 -   [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
 -   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
 -   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
