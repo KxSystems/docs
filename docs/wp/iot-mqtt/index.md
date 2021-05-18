@@ -204,11 +204,12 @@ The final field is particularly important. This is a [checksum](https://en.wikip
 In kdb+ a function is needed to generate a checksum to compare against the one sent by the Arduino. If the two values do not match the data is rejected as it contains an error.
 
 To create the function the logic from C functions [`crc16_update`](https://www.nongnu.org/avr-libc/user-manual/group__util__crc.html#ga95371c87f25b0a2497d9cba13190847f) and [`calcCRC`](https://github.com/rianoc/Arduino/blob/39539f3352771bb879ec47dc2cdd6dc7aab369bc/EnvironmentalMonitor/EnvironmentalMonitor.ino#L58) was created as `crc16`. The [Over](../../ref/over.md) accumulator was used in place of for-loops:
+The [Over](../../ref/accumulators.md#over) and [Do](../../ref/accumulators.md#do) (`/` form) accumulators are used in place of for-loops:
 
 ```q
-rs:  {0b sv y xprev 0b vs x}    / right shift
-xor: {0b sv (<>/) 0b vs'(x;y)}  / XOR
-land:{0b sv (&). 0b vs'(x;y)}   / AND
+rs:  {0b sv y xprev 0b vs x}       / right shift
+xor: {0b sv (<>/)   0b vs'(x;y)}   / XOR
+land:{0b sv (&).    0b vs'(x;y)}   / AND
 
 crc16:{
   crc:0;
@@ -903,6 +904,7 @@ _KX POC Blog Series_:
 {: .small-face}
 
 **Rian Ó Cuinneagáin** is a manager at KX.
+Rian is currently based in Dublin working on industrial applications of kdb+.
 <br>
 [:fontawesome-solid-envelope:](mailto:rocuinneagain@kx.com?subject=White paper: IoT with MQTT) 
 &nbsp;
