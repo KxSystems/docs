@@ -203,8 +203,7 @@ The final field is particularly important. This is a [checksum](https://en.wikip
 
 In kdb+ a function is needed to generate a checksum to compare against the one sent by the Arduino. If the two values do not match the data is rejected as it contains an error.
 
-To create the function the logic from C functions [`crc16_update`](https://www.nongnu.org/avr-libc/user-manual/group__util__crc.html#ga95371c87f25b0a2497d9cba13190847f) and [`calcCRC`](https://github.com/rianoc/Arduino/blob/39539f3352771bb879ec47dc2cdd6dc7aab369bc/EnvironmentalMonitor/EnvironmentalMonitor.ino#L58) was created as `crc16`. The [Over](../../ref/over.md) accumulator was used in place of for-loops:
-The [Over](../../ref/accumulators.md#over) and [Do](../../ref/accumulators.md#do) (`/` form) accumulators are used in place of for-loops:
+To create the function the logic from C functions [`crc16_update`](https://www.nongnu.org/avr-libc/user-manual/group__util__crc.html#ga95371c87f25b0a2497d9cba13190847f) and [`calcCRC`](https://github.com/rianoc/Arduino/blob/39539f3352771bb879ec47dc2cdd6dc7aab369bc/EnvironmentalMonitor/EnvironmentalMonitor.ino#L58) was created as `crc16`. The [Over](../../ref/accumulators.md#over) and [Do](../../ref/accumulators.md#do) (`/` form) accumulators are used in place of for-loops:
 
 ```q
 rs:  {0b sv y xprev 0b vs x}       / right shift
@@ -218,7 +217,7 @@ crc16:{
   } over crc,`long$x }
 ```
 
-In this example pressure can be seen to have arrived incorrectly as 195 rather than 19.5:
+In this example temperature can be seen to have arrived incorrectly as 195 rather than 19.5:
 
 ```txt
 Error with data: "195,39,12,995,8804,21287" 'Failed checksum check
