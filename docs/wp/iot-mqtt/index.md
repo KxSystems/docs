@@ -8,6 +8,8 @@ date: May 2021
 
 ![Internet of Things](iot.jpg)
 
+by [Rian Ó Cuinneagáin ](#author)
+{: .wp-author}
 
 [MQTT](http://mqtt.org/) is a messaging protocol for the Internet of Things (IoT). It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium.
 
@@ -15,7 +17,7 @@ date: May 2021
 
     _Internet of Things_ denotes the network of things embedded with sensors, software, and other technologies that connect and exchange data with other devices and systems over the internet.
 
-KX have  released an [MQTT interface](../../interfaces/mqtt/index.md) with source code available on [GitHub](https://github.com/KXSystems/mqtt). The interface supports Linux, macOS, and Windows platforms.
+KX has released an [MQTT interface](../../interfaces/mqtt/index.md) with source code available on [GitHub](https://github.com/KXSystems/mqtt). The interface supports Linux, macOS, and Windows platforms.
 
 This interface can be used with the enterprise [KX Streaming Analytics](https://kx.com/platform/) platform. For this paper the underlying [kdb+](../../) language will be used to explore the core functionality available.
 
