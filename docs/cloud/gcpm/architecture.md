@@ -1,7 +1,7 @@
 ---
 title: Reference architecture | Google Cloud | kdb+ and q documentation
 description:
-date: April 2021
+date: June 2021
 author: Ferenc Bodon
 ---
 # Reference architecture for Google Cloud
@@ -10,7 +10,7 @@ Kdb+ is the technology of choice for many of the world’s top financial institu
 
 KX clients can lift and shift their kdb+ plants to the cloud and make use of virtual machines (VM) and storage solutions. This is the classic approach that relies on the existing license. To benefit more from the cloud technology it is recommended to migrate to KX Insights.
 
-[KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on GCP.
+[KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
 Deployment:
 
@@ -80,11 +80,11 @@ The tickerplant (TP) is a specialized, single threaded kdb+ process that operate
 
 Tickerplants can operate in two modes:
 
-Batch 
+Batch
 
 : Collects updates in its local tables. It batches up for a period of time and then forwards the update to realtime subscribers in a bulk update.
 
-Realtime 
+Realtime
 
 : Forwards the input immediately. This requires smaller local tables but has higher CPU and network costs, bear in mind that each message has a fixed network overhead.
 
@@ -275,20 +275,32 @@ If the infrastructure is sensitive to the RDB EOD work, then powerful CPUs are r
 
 Historical databases (HDB) are used for user queries. In most cases the I/O dominates execution times. If the box has large memory and OS-level caching reduces I/O operations efficiently, then CPU performance will directly impact execution times.
 
-
-## Locality, latency and resilience
-
-The standard tick set-up on premises requires the components to be placed on the same server. The tickerplant (TP) and realtime database (RDB) are linked via the TP log file and the RDB and historical database (HDB) are bound due to RDB EOD splaying. Customized kdb+tick release this constraint in order to improve resilience. One motivation could be to avoid HDB queries impacting data capture in TP. You can set up an HDB writer on the HDB box and RDB can send its tables via IPC at midnight and delegate the I/O work together with the sorting and attribute handling.
-
-The feed handlers are recommended to be placed outside the TP box on another VM between TP and data feed. This way malfunctioning of the feed handler has a smaller impact on TP stability.
-
 ## VM Maintenance, live migration
 
 Virtual machines run on real physical machines. Occasionally physical machines suffer hardware failures. Google developed a suite of monitoring tools to detect hardware failure as early as possible. If the physical server is considered unreliable then the VM is moved to a healthy server. In most cases, the migration is unnoticed in Google Cloud, in contrast to to an on-premise solution where DevOps are involved and it takes time to replace the server. Improving business continuity is a huge value for all domains.
 
-Even Google Cloud cannot break the laws of physics. Thes migration step takes some time: data must be transferred over the network. The more memory you have, the longer it takes to migrate the VM. VMs that run the RDB are likely to have the largest memory. During migration, client queries are not ignored but delayed a bit. The connections are not dropped, the queries go into a buffer temporarily, and are executed after the migration.
+Even Google Cloud cannot break the laws of physics. The migration step takes some time: data must be transferred over the network. The more memory you have, the longer it takes to migrate the VM. VMs that run the RDB are likely to have the largest memory. During migration, client queries are not ignored but delayed a bit. The connections are not dropped, the queries go into a buffer temporarily, and are executed after the migration.
 
-VM migration is not triggered solely by hardware failure. Google needs to perform maintenance that is integral to keeping infrastructure protected and reliable. Maintenance events are logged in Stackdriver and you can receive advance notice by monitoring the `/computeMetadata/v1/instance/maintenance-event metadata` value. Furthermore, Google provides `gcloud` command `compute instances simulate-maintenance-event` to simulate a maintenance event. You can use this function to measure the impact of live migration and provide an SLA for the kdb+tick.
+VM migration is not triggered solely by hardware failure. Google needs to perform maintenance that is integral to keeping infrastructure protected and reliable. The maintenance includes host OS and BIOS upgrades, security or compliance requirements, etc. Maintenance events are logged in Stackdriver and you can receive advance notice by monitoring value
+
+`/computeMetadata/v1/instance/maintenance-event metadata`
+
+Furthermore, Google provides `gcloud` command `compute instances simulate-maintenance-event` to simulate a maintenance event. You can use this function to measure the impact of live migration and provide an SLA for the kdb+tick. You can also instruct Google Cloud to avoid live migration during maintenance. The alternative is stopping the instance before live migration, and starting it up once the maintenance finished. For kdb+tick this is probably not the policy you need, since you need to provide continuous service.
+
+
+## Locality, latency and resilience
+
+The standard tick setup on premises requires the components to be placed on the same server. The tickerplant (TP) and realtime database (RDB) are linked via the TP log file and the RDB and historical database (HDB) are bound due to RDB EOD splaying. Customized kdb+tick release this constraint in order to improve resilience. One motivation could be to avoid HDB queries impacting data capture in TP. You can set up an HDB writer on the HDB box and RDB can send its tables via IPC at midnight and delegate the I/O work together with the sorting and attribute handling.
+
+We recommend placing the fhe feedhandlers outside the TP box, on another VM between TP and data feed. This way any feedhandler malfunctions have a smaller impact on TP stability.
+
+
+### Sole-tenant nodes
+
+Physical servers may run multiple VMs that may belong to different organizations. Sole-tenancy lets you have exclusive access to the physical server that is dedicated to hosting only your project’s VMs. Having this level of isolation is useful in performance-sensitive, business-critical applications or to meet security or compliance requirements.
+
+Another advantage of sole-tenant nodes is that you can define a maintenance window. This is particularly useful in business domains (e.g. exchanges that close for the weekend) where the data flow is not continuous.
+
 
 ## Recovery
 
@@ -337,10 +349,12 @@ The usual strategy for failover is to have a complete mirror of the production s
 
 The network bandwidth needs to be considered if the tickerplant components are not located on the same VM. The network bandwidth between Google Cloud VMs depends on the type of the VMs. For example, a VM of type `n1-standard-8` has a maximum egress rate of 2 GBps. For a given update frequency you can calculate the required bandwidth by employing the [`-22!` internal function](../../basics/internal.md#-22x-uncompressed-length) that returns the length of the IPC byte representation of its argument. The tickerplant copes with large amounts of data if batch updates are sent. Make sure that the network is not your bottleneck in processing the updates.
 
+You might want to use the premium network service tier for higher throughput and lower latencies. Premium tier delivers GCP traffic over Google’s well-provisioned, low-latency, highly reliable global network.
+
 
 ###  Network load balancer
 
-[Cloud Load Balancing](https://cloud.google.com/load-balancing/) is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, network load balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
+[Cloud Load Balancing](https://cloud.google.com/load-balancing/) is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, network load balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies. Standard network tier offers regional load balancing. The global load balancing is available as a premium tier feature.
 
 Load balancers can distribute load among applications that offer the same service. Kdb+ is single threaded by default. With a negative [`-p` command-line option](../../basics/cmdline.md#-p-listening-port) you can set multithreaded input mode, in which requests are processed in parallel. This however, is not recommended for gateways (due to socket-usage limitation) and for kdb+ servers that process data from disk, like HDBs.
 
@@ -444,7 +458,8 @@ QPacker (`qp`) is a tool to help developers package, manage and deploy q/kdb+ ap
 
 Software is often built by disparate teams, who may individually have remit over a particular component, and package that component for consumption by others. QPacker will store all artifacts for a project in a QPK file. While this file is intended for binary dependencies, it is also designed to be portable across environments.
 
-QPacker can interface with Hashicorp Packer to generate virtual-machine (VM) images for GCP. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -gcp`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with `systemd` to allow the `startq.sh` launch script to start the application on boot.
+QPacker can interface with Hashicorp Packer to generate virtual-machine (VM) images for Google Cloud. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -gcp`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with `systemd` to allow the `startq.sh` launch script to start the application on boot.
+
 
 ## Google Cloud Functions
 
