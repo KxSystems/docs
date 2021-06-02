@@ -28,13 +28,13 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-solid-graduation-cap: [Prime numbers](learn/pb/primes.md)
+
     :fontawesome-regular-map: [IoT with MQTT](wp/iot-mqtt/index.md)
 
     :fontawesome-regular-map: [Interprocess comms](wp/ipc/index.md)
 
     :fontawesome-solid-handshake: [Arrow/Parquet](interfaces/arrow/index.md)
-
-    :fontawesome-solid-book-reader: [Word wheel](learn/pb/word-wheel.md)
 
 </div>
 
