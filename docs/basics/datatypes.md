@@ -28,7 +28,7 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 15  z   datetime  8   dateTtime          0Nz  0wz timestamp Timestamp DateTime (RO)
 16  n   timespan  8   00:00:00.000000000 0Nn  0Wn           Timespan  TimeSpan
 17  u   minute    4   00:00              0Nu  0Wu
-18  v   second    4   00:00:00           0Nv  0Nv
+18  v   second    4   00:00:00           0Nv  0Wv
 19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan
 20-76   enums
 77      anymap
