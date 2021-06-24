@@ -535,7 +535,7 @@ For example, `+` is Add and `+/` is _sum_.
 ```q
 q)(+/)1 2 3 4       / sum the list 1 2 3 4
 10
-q)16 + 1 2 3 4      / sum the list with starting value 16
+q)16 +/ 1 2 3 4      / sum the list with starting value 16
 26
 ```
 
