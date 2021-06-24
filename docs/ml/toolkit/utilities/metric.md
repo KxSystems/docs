@@ -15,15 +15,13 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [confMatrix](#mlconfmatrix)    Confusion matrix
   [corrMatrix](#mlcorrmatrix)    Table-like correlation matrix for a simple table
   [crossEntropy](#mlcrossentropy)  Categorical cross entropy
-  [covMatrix](#mlcovMatrix)     Covariance matrix
-  [describe](#mldescribe)      Descriptive information about a table
+  [covMatrix](#mlcovmatrix)     Covariance matrix
   [fBetaScore](#mlfbetascore)    Fbeta-score on classification results
   [logLoss](#mllogloss)       Logarithmic loss
   [mae](#mlmae)           Mean absolute error
   [mape](#mlmape)          Mean absolute percentage error
-  [matthewCorr](#mlmatcorr)   Matthews correlation coefficient
+  [matthewCorr](#mlmatthewcorr)   Matthews correlation coefficient
   [mse](#mlmse)           Mean square error
-  [percentile](#mlpercentile)    Percentile calculation for an array
   [precision](#mlprecision)     Precision of a binary classifier
   [r2Score](#mlr2score)       R2-score
   [rmse](#mlrmse)          Root mean square error
@@ -35,7 +33,7 @@ keywords: confusion, correlation, accuracy, fscore, machine learning, ml, statis
   [specificity](#mlspecificity)    Specificity of a binary classifier
   [sse](#mlsse)           Sum squared error
   [tScore](#mltscore)        One-sample t-test score
-  [tScoreEqual](#mltscoreeq)   T-test for independent samples with unequal variances
+  [tScoreEqual](#mltscoreequal)   T-test for independent samples with unequal variances
 </div>
 
 :fontawesome-brands-github:

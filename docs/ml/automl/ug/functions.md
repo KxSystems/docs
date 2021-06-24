@@ -27,7 +27,7 @@ The top-level functions in the repository are:
 Generate, retrieve, delete models
   [fit](#automlfit)                    Apply AutoML to provided features and associated targets
   [getModel](#automlgetmodel)              Retrieve a previously fit AutoML model
-  [deleteModels](#deletemodels)          Delete model/s
+  [deleteModels](#automldeletemodels)          Delete model/s
 
 Generate configuration 
   [newConfig](#automlnewconfig)             Generate a new JSON parameter file for use with .automl.fit

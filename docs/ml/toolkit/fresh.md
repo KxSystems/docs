@@ -9,9 +9,9 @@ date: August 2018
 <div markdown="1" class="typewriter">
 .ml.fresh **Feature extraction and significance**
 
-\  [.ml.fresh.createFeatures](#mlfreshcreateFeatures)       Apply functions to subsets of initial data 
+\  [.ml.fresh.createFeatures](#mlfreshcreatefeatures)       Apply functions to subsets of initial data 
                                  to create features
-\  [.ml.fresh.significantFeatures](#mlfreshsignificantFeatures)   Statistically significant features
+\  [.ml.fresh.significantFeatures](#mlfreshsignificantfeatures)   Statistically significant features
 </div>
 
 :fontawesome-brands-github: [KxSystems/ml](https://github.com/kxsystems/ml)
