@@ -10,13 +10,13 @@ keywords: delete, exec, functional, kdb+, q, select, sql, update
 
 The functional forms of [`delete`](../ref/delete.md), [`exec`](../ref/exec.md), [`select`](../ref/select.md) and [`update`](../ref/update.md) are particularly useful for programmatically-generated queries, such as when column names are dynamically produced. 
 
-!!! info "Performance"
+??? info "Performance"
 
     The q interpreter parses `delete`, `exec`, `select`, and `update` into their equivalent functional forms, so there is no performance difference.
 
 The functional forms are
 
-```q
+```syntax
 ![t;c;b;a]              /update and delete
 
 ?[t;i;p]                /simple exec
@@ -115,7 +115,7 @@ dict       | table    vector/s   table   table
 
 ## `?` Select
 
-```txt
+```syntax
 ?[t;c;b;a]
 ```
 
@@ -181,17 +181,18 @@ c  2
 b  2
 ```
 
+
 ### Rank 5
 
 _Limit result rows_
 
-```txt
+```syntax
 ?[t;c;b;a;n]
 ```
 
 Returns as for rank 4, but where `n` is 
 
--   a non-negative integer or infinity, only the first `n` rows
+-   an integer or infinity, only the first `n` rows, or the last if `n` is negative
 -   a pair of non-negative integers, up to `n[1]` rows starting with row `n[0]`
 
 ```q
@@ -203,11 +204,11 @@ b  20
 c  30
 a  40
 
-q)?[t;();0b;();2]                   / select[2] from t
+q)?[t;();0b;();-2]                   / select[-2] from t
 c1 c2
 -----
-a  10
-b  20
+c  30
+a  40
 
 q)?[t;();0b;();1 2]                 / select[1 2] from t
 c1 c2
@@ -221,7 +222,7 @@ c  30
 
 _Limit result rows and sort by a column_
 
-```txt
+```syntax
 ?[t;c;b;a;n;(g;cn)]
 ```
 
@@ -249,9 +250,9 @@ _Q for Mortals_
 
 ## `?` Exec
 
-The functional form of `exec` is a simplified form of Select that returns a list or dictionary rather than a table.
+_A simplified form of Select that returns a list or dictionary rather than a table._
 
-```txt
+```syntax
 ?[t;c;b;a]
 ```
 
@@ -474,7 +475,7 @@ More complex examples of Exec <!-- seem to reduce to the equivalent Select.
 
 ## `?` Simple Exec
 
-```txt
+```syntax
 ?[t;i;p]
 ```
 
@@ -503,7 +504,7 @@ q)?[t;0 1 2;(*;(min;`a);(avg;`c))]
 
 ## `!` Update
 
-```txt
+```syntax
 ![t;c;b;a]
 ```
 
@@ -564,9 +565,9 @@ _Q for Mortals_
 
 ## `!` Delete
 
-The functional form of `delete` is a simplified form of Update.
+_A simplified form of Update_
 
-```q
+```syntax
 ![t;c;0b;a]
 ```
 
