@@ -8,23 +8,23 @@ author: Stephen Taylor
 
 This site is the official documentation for [kdb+](../database/index.md) and the [q programming language](../ref/index.md).
 
-It reflects the work of the KX community since 1993, has many authors, 
-and continues to evolve.  
+It reflects the work of the KX community since 1993, has many authors,
+and continues to evolve.
 
 This site is a project of the KX Librarian: librarian@kx.com.
 
-> A librarian’s job is to put information where people can find it. 
+> A librarian’s job is to put information where people can find it.
 
 
 ## :fontawesome-solid-search: Search
 
-The Search Box on this site is customized for the q language. 
+The Search Box on this site is customized for the q language.
 Some examples:
 
 ```txt
 Operator glyphs            $  ^  .  <>  /:  ':
  and their names           dollar  bang  at
-Operator names             Drop  roll  Enum Extend  
+Operator names             Drop  roll  Enum Extend
 Keywords                   xbar  like  ajf0  uj
 Namespace objects          .z.pd  .Q.dpfts
 System commands            \d  \ts  \_  \\
@@ -46,7 +46,7 @@ Queries not matched by the Search Box are handled by Google Search.
 
 ## :fontawesome-brands-github: GitHub
 
-Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-github: and omit the `https://github.com/` prefix. 
+Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-github: and omit the `https://github.com/` prefix.
 
 For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
@@ -58,14 +58,14 @@ For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github
 
 ## :fontawesome-regular-handshake: Contribute
 
-> A finished work is exactly that, requires resurrection.  
+> A finished work is exactly that, requires resurrection.
 — _John Cage_, “Lecture on Nothing”, 1949
 
-The repository for this site is 
-:fontawesome-brands-github: 
-[KxSystems/docs](https://github.com/KxSystems/docs). 
-The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow). 
-To contribute, submit a pull request. 
+The repository for this site is
+:fontawesome-brands-github:
+[KxSystems/docs](https://github.com/KxSystems/docs).
+The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow).
+To contribute, submit a pull request.
 
 The repo includes a style guide for contributors.
 
@@ -73,31 +73,33 @@ The repo includes a style guide for contributors.
 We gratefully acknowledge pull requests from
 
 ```txt
-Alexander Belopolsky            kylenarocroc
-Aleks Bunin                     Sean Keevey
-Angus Wilson                    Sean O’Hagan
-Andrew in New York              Rian O’Cuinneagain
-Chris Shucksmith                Rikesh
-Cillian Reilly                  Thomas Smyth
-Conor McCarthy                  Sergey Vidyuk
-David Z. Han                    Simon Shanks
-Esperanza Lopez Aguilera        Vincent Bernardoff
-Geo Carncross                   William Da Silva
-James Hanna
+Alexander Belopolsky            James Hanna
+Aleks Bunin                     Jason Quinn
+Angus Wilson                    kylenarocroc
+Andrew in New York              Mohammad Noor
+Chris Shucksmith                Sean Keevey
+Cillian Reilly                  Sean O’Hagan
+Conor McCarthy                  Rian O’Cuinneagain
+David Z. Han                    Rikesh
+Deanna Morgan                   Thomas Smyth
+Diane O’Donoghue                Sergey Vidyuk
+Esperanza Lopez Aguilera        Simon Shanks
+Geo Carncross                   Vincent Bernardoff
+Ian O’Dwyer                     William Da Silva
 ```
 
-## :fontawesome-solid-balance-scale: License 
+## :fontawesome-solid-balance-scale: License
 This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 
 
 ## :fontawesome-solid-camera-retro: Images
 
-This site includes images for which KX holds neither copyright nor permission. 
-These images serve as links to their original sites. 
-We understand this to be fair use. 
+This site includes images for which KX holds neither copyright nor permission.
+These images serve as links to their original sites.
+We understand this to be fair use.
 
-If you are a copyright holder and object to this use, please write to librarian@kx.com. 
+If you are a copyright holder and object to this use, please write to librarian@kx.com.
 
 
 ## :fontawesome-solid-book-dead: Terminology
@@ -116,7 +118,7 @@ Bibtex format
     author= {{Kx Systems, Inc.}},
     year  = {2020},
     title = {Documentation for kdb+ and q},
-    note  = {\url{https://code.kx.com/q/ref/}, 
+    note  = {\url{https://code.kx.com/q/ref/},
              Last accessed on 2020-04-15},
 }
 ```
@@ -145,6 +147,6 @@ Vancouver style
 
 The KX wiki was the primary documentation for q and kdb+ until January 2017.
 
-The content, which runs on [Mediawiki](http://mediawiki.org), 
-has 
+The content, which runs on [Mediawiki](http://mediawiki.org),
+has
 been [archived on GitHub](https://github.com/kxsystems/wiki).
