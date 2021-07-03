@@ -66,7 +66,7 @@ The header comment block contains a function description, author and timestamp d
 The same information could be packed into a help dictionary for the function.
 
 ```q
-\d sendLefth
+\d .sendLefth
 ds:"update from left to right link"
 ts:"sjt 2017.08.13"
 x:"+i or _n if _i is ()"
