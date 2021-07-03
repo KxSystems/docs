@@ -15,10 +15,10 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
   [findTimes](#nlpfindtimes)        Find all the times in a string
   [getSentences](#nlpgetsentences)    Extract all sentences for a document
   [loadTextFromDir](#nlploadtextfromdir) Import all files in a director
-  [removeCustom](#nlpremoveCustom)    Remove aspects of a string containing certain characters
+  [removeCustom](#nlpremovecustom)    Remove aspects of a string containing certain characters
                   or expressions
-  [removeNonAscii](#nlpremoveNonAscii)  Remove non-ASCII characters from a string
-  [removeReplace](#nlpremoveReplace)   Replace individual characters in a string
+  [removeNonAscii](#nlpremovenonascii)  Remove non-ASCII characters from a string
+  [removeReplace](#nlpremovereplace)   Replace individual characters in a string
   [sentiment](#nlpsentiment)       Calculate the sentiment of a sentence
 </div>
 

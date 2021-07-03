@@ -10,10 +10,10 @@ keywords: algorithm, analysis, bisecting, centroid, cluster, clustering, compari
 .nlp   **Comparison functions**
   [compareCorpora](#nlpcomparecorpora)       Compare corpora
   [compareDocs](#nlpcomparedocs)          Compare two documents
-  [compareDocToCentroid](#nlpcompareDocToCentroid) Find outliers and representative documents
+  [compareDocToCentroid](#nlpcomparedoctocentroid) Find outliers and representative documents
   [compareDocToCorpus](#nlpcomparedoctocorpus)   Compare document to corpus
   [cosineSimilarity](#nlpcosinesimilarity)     Compare two feature vectors
-  [explainSimilarity](#nlpexplainSimilarity)    How much each term contributes to cosine similarity
+  [explainSimilarity](#nlpexplainsimilarity)    How much each term contributes to cosine similarity
   [jaroWinkler](#nlpjarowinkler)          Compare two strings
 </div>
 

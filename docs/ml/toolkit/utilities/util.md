@@ -13,7 +13,7 @@ keywords: pandas manipulation, dataframe, train test split, .
   [arange](#mlarange)             Evenly-spaced values within a range
   [combs](#mlcombs)              n linear combinations of k numbers
   [df2tab](#mldf2tab)             kdb+ table from a pandas dataframe
-  [df2tabTimezone](#mldf2tabTimezone)     Pandas dataframe to kdb+ conversion handling
+  [df2tabTimezone](#mldf2tabtimezone)     Pandas dataframe to kdb+ conversion handling
                      dates/times/timezones
   [eye](#mleye)                Identity matrix
   [iMax](#mlimax)               Index of maximum element of a list
