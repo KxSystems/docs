@@ -9,7 +9,7 @@ description: Cast is a q operator that converts a data argument to another datat
 
 _Convert to another datatype_
 
-```txt
+```syntax
 x$y     $[x;y]
 ```
 

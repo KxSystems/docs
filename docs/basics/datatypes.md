@@ -6,7 +6,9 @@ keywords: atom, boolean, character, datatype, date, datetime, double, float, int
 ---
 # Datatypes
 
+
 <div markdown="1" class="typewriter">
+**Basic datatypes**
 n   c   name      sz  literal            null inf SQL       Java      .Net
 \------------------------------------------------------------------------------------
 0   *   list
@@ -30,34 +32,38 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 17  u   minute    4   00:00              0Nu  0Wu
 18  v   second    4   00:00:00           0Nv  0Wv
 19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan
-20-76   enums
-77      anymap
-78-96   77+t – mapped list of lists of type t
-97      nested sym enum
-98      table
-99      dictionary
-100     [lambda](../basics/function-notation.md)
-101     unary primitive
-102     operator
-103     [iterator](../ref/iterators.md)
-104     [projection](../basics/application.md#projection)
-105     [composition](../ref/compose.md)
-106     [f'](../ref/maps.md#each)
-107     [f/](../ref/accumulators.md)
-108     [f\\](../ref/accumulators.md)
-109     [f':](../ref/maps.md)
-110     [f/:](../ref/maps.md#each-left-and-each-right)
-111     [f\\:](../ref/maps.md#each-left-and-each-right)
-112     [dynamic load](../ref/dynamic-load.md)
-</div>
 
-_n_: short int returned by [`type`](../ref/type.md) and used for [Cast](../ref/cast.md), e.g. `9h$3`<br>
-_c_: character used lower-case for [Cast](../ref/cast.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)<br>
-_sz_: size in bytes<br>
-_inf_: infinity (no math on temporal types); `0Wh` is `32767h`<br>
+Columns:
+_n_    short int returned by [`type`](../ref/type.md) and used for [Cast](../ref/cast.md), e.g. `9h$3`
+_c_    character used lower-case for [Cast](../ref/cast.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)
+_sz_   size in bytes
+_inf_  infinity (no math on temporal types); `0Wh` is `32767h`
+
 RO: read only; RW: read-write
 
-The datatype of an object is given as a short int: negative for atom, positive for a vector, zero for a general list.
+**Other datatypes**
+20-76   enums
+77      anymap                                      104  [projection](application.md#projection)
+78-96   77+t – mapped list of lists of type t       105  [composition](../ref/compose.md)
+97      nested sym enum                             106  [f'](../ref/maps.md#each)
+98      table                                       107  [f/](../ref/accumulators.md)
+99      dictionary                                  108  [f\\](../ref/accumulators.md)
+100     [lambda](function-notation.md)                                      109  [f':](../ref/maps.md)
+101     unary primitive                             110  [f/:](../ref/maps.md#each-left-and-each-right)
+102     operator                                    111  [f\\:](../ref/maps.md#each-left-and-each-right)
+103     [iterator](../ref/iterators.md)                                    112  [dynamic load](../ref/dynamic-load.md)
+</div>
+
+Above, `f` is an [applicable value](glossary.md#applicable-value).
+
+Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
+
+The type is a short int: 
+
+-    zero for a general list
+-    negative for atoms of basic datatypes
+-    positive for everything else
+
 
 :fontawesome-solid-book:
 [Cast](../ref/cast.md),
@@ -70,6 +76,8 @@ The datatype of an object is given as a short int: negative for atom, positive f
 [Temporal data](../kb/temporal-data.md),
 [Timezones](../kb/timezones.md)
 
+
+## Basic types
 
 ??? note "The default type for an integer is long (`7h` or `"j"`)."
 

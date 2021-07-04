@@ -27,11 +27,12 @@ The File Text operator `0:` has five forms:
 [Key-Value Pairs](#key-value-pairs)  delimited string as key-value pairs
 </div>
 
+
 ## :fontawesome-solid-align-left: Prepare Text
 
 _Represent a table as a list of delimited strings_
 
-```txt
+```syntax
 delimiter 0: t                          0:[delimiter;t]
 ```
 
@@ -83,7 +84,7 @@ _Q for Mortals_
 
 _Write a list of strings to file_
 
-```txt
+```syntax
 filesymbol 0: strings                   0:[filesymbol;strings]
 ```
 
@@ -115,7 +116,7 @@ If `filesymbol`
 
 _Interpret a field-delimited string, list of strings, or file as a list or matrix_
 
-```txt
+```syntax
 (types;delimiter     ) 0: y             0:[(types;delimiter);y]
 (types;delimiter;flag) 0: y             0:[(types;delimiter;flag);y]
 ```
@@ -188,7 +189,7 @@ table: flip `a`b`c!("ISI";",") 0:`data.csv
 
 _Interpret a fixed-format list of strings or file as a list or matrix_
 
-```txt
+```syntax
 (types; widths) 0: y                    0:[(types;widths);y]
 ```
 
@@ -228,7 +229,7 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
 
 _Interpret a delimited string as key-value pairs_
 
-```txt
+```syntax
 x 0: string                             0:[x;string]
 ```
 

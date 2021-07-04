@@ -9,7 +9,7 @@ author: Stephen Taylor
 _Interpret a string as a data value_
 
 
-```txt
+```syntax
 x$y    $[x;y]
 ```
 

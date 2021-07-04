@@ -189,7 +189,9 @@ q)`VARNAME setenv "NEWVALUE"
  -->
 
 ## [Datatypes](../basics/datatypes.md)
-<pre class="language-txt" style="font-size:80%">
+
+<div markdown="1" class="typewriter">
+**Basic datatypes**
 n   c   name      sz  literal            null inf SQL       Java      .Net
 \------------------------------------------------------------------------------------
 0   *   list
@@ -204,7 +206,7 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 9   f   float     8   0.0                0n   0w  float     Double    double
                       0f                 0Nf
 10  c   char      1   " "                " "                Character char
-11  s   symbol        `                  `        varchar
+11  s   symbol        \`                  \`        varchar
 12  p   timestamp 8   dateDtimespan      0Np  0Wp           Timestamp DateTime (RW)
 13  m   month     4   2000.01m           0Nm
 14  d   date      4   2000.01.01         0Nd  0Wd date      Date
@@ -213,42 +215,29 @@ n   c   name      sz  literal            null inf SQL       Java      .Net
 17  u   minute    4   00:00              0Nu  0Wu
 18  v   second    4   00:00:00           0Nv  0Wv
 19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan
-</pre>
 
-<div markdown="1" class="typewriter">
-20-76   enums
-77      anymap
-78-96   77+t – mapped list of lists of type t
-97      nested sym enum
-98      table
-99      dictionary
-100     [lambda](../basics/function-notation.md)
-101     unary primitive
-102     operator
-103     [iterator](../ref/iterators.md)
-104     [projection](../basics/application.md#projection)
-105     [composition](../ref/compose.md)
-106     [f'](../ref/maps.md#each)
-107     [f/](../ref/accumulators.md)
-108     [f\\](../ref/accumulators.md)
-109     [f':](../ref/maps.md)
-110     [f/:](../ref/maps.md#each-left-and-each-right)
-111     [f\\:](../ref/maps.md#each-left-and-each-right)
-112     [dynamic load](../ref/dynamic-load.md)
-</div>
+Columns:
+_n_    short int returned by [`type`](type.md) and used for [Cast](cast.md), e.g. `9h$3`
+_c_    character used lower-case for [Cast](cast.md) and upper-case for [Tok](tok.md) and [Load CSV](file-text.md#load-csv)
+_sz_   size in bytes
+_inf_  infinity (no math on temporal types); `0Wh` is `32767h`
 
-_n_: short int returned by [`type`](type.md) and used for [Cast](cast.md), e.g. `9h$3`
-<br>
-_c_: character used lower-case for [Cast](cast.md) and upper-case for [Load CSV](file-text.md#load-csv)
-<br>
-_sz_: size in bytes
-<br>
-_inf_: infinity (no math on temporal types); `0Wh` is `32767h`
-<br>
-`v`: applicable value
-<br>
 RO: read only; RW: read-write
 
+**Other datatypes**
+20-76   enums
+77      anymap                                      104  [projection](../basics/application.md#projection)
+78-96   77+t – mapped list of lists of type t       105  [composition](compose.md)
+97      nested sym enum                             106  [f'](maps.md#each)
+98      table                                       107  [f/](accumulators.md)
+99      dictionary                                  108  [f\\](accumulators.md)
+100     [lambda](../basics/function-notation.md)                                      109  [f':](maps.md)
+101     unary primitive                             110  [f/:](maps.md#each-left-and-each-right)
+102     operator                                    111  [f\\:](maps.md#each-left-and-each-right)
+103     [iterator](iterators.md)                                    112  [dynamic load](dynamic-load.md)
+</div>
+
+Above, `f` is an [applicable value](../basics/glossary.md#applicable-value).
 
 Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
 
