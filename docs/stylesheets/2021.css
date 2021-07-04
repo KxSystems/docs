@@ -181,6 +181,7 @@ article details>summary {
 div.typewriter p {
   background-color: #fdf6e3;
   font-family: 'Consolas', SFMono-Regular, Menlo, 'Droid Sans Mono', monospace;
+  font-feature-settings: 'liga' 0;
   font-size: 80%;
   font-weight: 500;
   margin: 0;
