@@ -1,6 +1,6 @@
 ---
 title: inetd, xinetd – Knowledge Base – kdb+ and q documentation
-description: On *nix-like operating systems, a q server can work under inetd to provide a private server for each connexion established on a designated port.
+description: On *nix-like operating systems, a q server can work under inetd to provide a private server for each connection established on a designated port.
 keywords: cygwin, inetd, kdb+, linux, microsoft, q, sfu, xinetd, unix, windows
 ---
 # inetd, xinetd
@@ -10,11 +10,11 @@ keywords: cygwin, inetd, kdb+, linux, microsoft, q, sfu, xinetd, unix, windows
 
 On *nix-like operating systems, `inetd` (or its successor `xinetd`) maintains a list of passive sockets for various services configured to run on that particular machine.
 
-When a client attempts to connect to one of the service, `inetd` will start a program to handle the connexion based on the configuration files.
+When a client attempts to connect to one of the service, `inetd` will start a program to handle the connection based on the configuration files.
 
-This way, `inetd` will run the server programs as they are needed by spawning multiple processes to service multiple network connexions.
+This way, `inetd` will run the server programs as they are needed by spawning multiple processes to service multiple network connections.
 
-A kdb+ server can work under `inetd` to provide a private server for each connexion established on a designated port. (Since V2.4.)
+A kdb+ server can work under `inetd` to provide a private server for each connection established on a designated port. (Since V2.4.)
 
 For Windows you might be able to have kdb+ run under `inetd` using Cygwin.
 
