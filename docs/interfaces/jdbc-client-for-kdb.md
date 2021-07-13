@@ -55,6 +55,8 @@ import java.sql.*;
 //in kdb+3.x and above
 //init table with
 //Employees:([]id:0 1 2;firstName:`Charlie`Arthur`Simon;lastName:`Skelton`Whitney`Garland;age:10 20 30;timestamp:.z.p+til 3)
+//and q function with 
+//employeesYoungerThan:{[maxage]select from Employees where age<maxage}
 
 public class JDBCTest{
   static final String JDBC_DRIVER="jdbc";
@@ -65,6 +67,7 @@ public class JDBCTest{
   public static void main(String[] args){
     Connection conn=null;
     Statement stmt=null;
+    PreparedStatement pstmt=null;
     try{
       Class.forName(JDBC_DRIVER);
 
@@ -90,6 +93,26 @@ public class JDBCTest{
       }
       rs.close();
       stmt.close();
+    
+      System.out.println("Creating prepared statement...");
+      pstmt=conn.prepareStatement("{employeesYoungerThan . x}");
+      pstmt.setLong(1,25);
+      rs=pstmt.executeQuery();
+      while(rs.next()){
+        long id=rs.getLong("id");
+        long age=rs.getLong("age");
+        String first=rs.getString("firstName");
+        String last=rs.getString("lastName");
+        Timestamp timestamp=rs.getTimestamp("timestamp");
+
+        System.out.print("ID: "+id);
+        System.out.print(", Age: "+age);
+        System.out.print(", FirstName: "+first);
+        System.out.println(", LastName: "+last);
+        System.out.println(", Timestamp: "+timestamp);
+      }
+      rs.close();
+      pstmt.close();
       conn.close();
     }catch(SQLException se){
       se.printStackTrace();
@@ -99,6 +122,8 @@ public class JDBCTest{
       try{
         if(stmt!=null)
           stmt.close();
+        if(pstmt!=null)
+          pstmt.close();
       }catch(SQLException se2){
       }
       try{
@@ -110,6 +135,7 @@ public class JDBCTest{
     }
   }
 }
+
 ```
 
 when run should print something like
