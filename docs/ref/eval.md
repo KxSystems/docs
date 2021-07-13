@@ -15,7 +15,7 @@ _Evaluate parse trees_
 
 _Evaluate a parse tree_
 
-```txt
+```syntax
 eval x     eval[x]
 ```
 
@@ -42,7 +42,7 @@ q)eval (+;2;3)      / constructed explicitly
 
 _Restricted evaluation of a parse tree_
 
-```txt
+```syntax
 reval x     reval[x]
 ```
 
@@ -60,6 +60,9 @@ q)h"a:4"
 Behaves as if command-line options [`-u 1`](../basics/cmdline.md#-u-usr-pwd) and [`-b`](../basics/cmdline.md#-b-blocked) were active; also blocks all system calls which change state.
 That is, all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
 (Since V4.0 2020.03.17.)
+The [`exit`](exit.md) keyword is also blocked. (Since V4.1t 2021-07-12.)
+
+
 
 ----
 :fontawesome-solid-book-open:

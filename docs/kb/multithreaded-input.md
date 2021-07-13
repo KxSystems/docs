@@ -21,8 +21,12 @@ The switching in and out of this mode now checks to avoid the situation where th
 Multithreaded input queue mode is active when the port for incoming connections is specified as negative, e.g. for startup
 
 ```bash
-$ q -p -5000
+$ q -p -5000
 ```
+
+Multithreaded input mode supports WebSockets and HTTP (but not TLS).
+(Since V4.1t 2021.03.30.)
+A custom `.z.ph` which does not update global state should be used with HTTP. 
 
 
 ## Restrictions

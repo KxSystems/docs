@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Terminate kdb+_
 
-```txt
+```syntax
 exit x    exit[x]
 ```
 
@@ -28,6 +28,8 @@ $ echo $?
 ```
 
 !!! warning "No confirmation is requested from the console."
+
+Exit is blocked during [`reval`](eval.md#reval) or with [`-u` on the command line](../basics/cmdline.md#-u-disable-syscmds). (Since V4.1t 2021-07-12.)
 
 ----
 

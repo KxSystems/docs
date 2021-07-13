@@ -46,11 +46,14 @@ Some system commands have equivalent command-line parameters.
 
 ## `\a` (tables)
 
-<div markdown="1" class="typewriter">
-\a [_namespace_]
-</div>
+_List tables_
 
-Lists tables in _namespace_; default: current namespace.
+```syntax
+\a
+\a ns
+```
+
+Lists tables in namespace `ns` – defaults to current namespace.
 
 ```q
 q)\a
@@ -82,12 +85,14 @@ q.nn)
 
 ## `\b` (views)
 
-<div markdown="1" class="typewriter">
-\b [_namespace_]
-</div>
+_List dependencies_
 
-Lists dependencies (views) in _namespace_.
-Defaults to current namespace.
+```syntax
+\b
+\b ns
+```
+
+Lists dependencies (views) in namespace `ns` – defaults to current namespace.
 
 ```q
 q)a::x+y
@@ -105,11 +110,14 @@ q)\b
 
 ## `\B` (pending views)
 
-<div markdown="1" class="typewriter">
-\B [_namespace_]
-</div>
+_List pending dependencies_
 
-Lists pending dependencies (views) in _namespace_, i.e. dependencies not yet referenced, or not referenced after their referents have changed.
+```syntax
+\B
+\B ns
+```
+
+Lists pending dependencies (views) in namespace `ns`, i.e. dependencies not yet referenced, or not referenced after their referents have changed.
 Defaults to current namespace.
 
 ```q
@@ -128,19 +136,28 @@ q)\B              / no longer pending
 
 ## `\c` (console size)
 
-<div markdown="1" class="typewriter">
-\c [_size_]
-</div>
+_Console maximum rows and columns_
 
-Show or set console maximum rows and columns.
-_size_ is a pair of integers: rows and columns.
-The default `25 80`; values are coerced to the range \[10,2000\].
+```syntax
+\c 
+\c size
+```
 
-These settings determine when q truncates output with `..`
+Where `size` is a pair of integers: rows and columns,
+these values determine when q truncates output with `..`.
+The values are coerced to the range \[10,2000\].
 
-!!! tip "You do not usually need to set this"
+The default values are as set by environment variables `LINES` and `COLUMNS`.
+If the environment variables are undefined, the defaults are
 
-    If the environment variables `LINES` and `COLUMNS` are found they’ll be taken as the default value. See Bash documentation for `shopt` parameter `checkwinsize` to make sure they’re reset as needed.
+```txt
+V4.0 or less   25 80
+V4.1+          dimensions of the command-shell window
+```
+
+!!! tip "Environment variables `LINES` and `COLUMNS`"
+
+    See Bash documentation for `shopt` parameter `checkwinsize` to make sure they’re reset as needed.
 
 ```q
 q)\c
@@ -163,16 +180,17 @@ q)til each 20+til 10
 [`-c` command-line option](cmdline.md#-c-console-size)
 
 
-
-
 ## `\C` (HTTP size)
 
-<div markdown="1" class="typewriter">
-\C [_size_]
-</div>
+_HTTP display maximum rows and columns_
 
-Show or set HTTP display maximum rows and columns.
-_size_ is a pair of integers: rows and columns.
+```syntax
+\C 
+\C size
+```
+
+Where `size` is a pair of integers: rows and columns,
+the values determine when q truncates output with `..`.
 The default is `36 2000`; values are coerced to the range \[10,2000\].
 
 :fontawesome-solid-book-open:
@@ -181,31 +199,36 @@ The default is `36 2000`; values are coerced to the range \[10,2000\].
 
 ## `\cd` (change directory)
 
-<div markdown="1" class="typewriter">
-\cd [_name_]
-</div>
+_Current directory_
 
-Changes the current directory.
+```syntax
+\cd
+\cd fp
+```
+
+Where `fp` is a filepath, sets the current directory
 
 ```q
-~/q$ q
-KDB+ 2.6 2010.05.10 Copyright (C) 1993-2010 Kx Systems
-..
 q)\cd
 "/home/guest/q"
 q)\cd /home/guest/dev
 q)\cd
+"/home/guest/dev"
+q)\pwd
 "/home/guest/dev"
 ```
 
 
 ## `\d` (directory)
 
-<div markdown="1" class="typewriter">
-\d [_namespace_]
-</div>
+_Current namespace_
 
-Sets the current namespace (also known as directory or context). The namespace can be empty, and a new namespace is created when an object is defined in it. The q session prompt indicates the current namespace.
+```syntax
+\d
+\d ns
+```
+
+Where `ns` is the name of a namespace, shows or sets the current namespace, also known as directory or context. The namespace can be empty, and a new namespace is created when an object is defined in it. The q session prompt indicates the current namespace.
 
 ```q
 q)\d                  / default namespace
@@ -231,11 +254,14 @@ _Q for Mortals_
 
 ## `\e` (error trap clients)
 
-<div markdown="1" class="typewriter">
-\e [_mode_]
-</div>
+_Error trapping_
 
-This enables error trapping for client requests. The default mode is 0 (off).
+```syntax
+\e
+\e mode
+```
+
+Governs error trapping for client requests. The default mode is 0 (off).
 
 mode | behavior
 :---:|---------
@@ -249,7 +275,7 @@ mode | behavior
 
 ## `\E` (TLS server mode)
 
-```txt
+```syntax
 \E
 ```
 
@@ -267,11 +293,14 @@ Displays TLS server mode as an int:
 
 ## `\f` (functions)
 
-<div markdown="1" class="typewriter">
-\f [_namespace_]
-</div>
+_List functions_
 
-Lists functions in _namespace_, default current namespace.
+```syntax
+\f
+\f ns
+```
+
+Where `ns` is the name of a namespace, lists functions in it; defaults to current namespace.
 
 ```q
 q)f:g:h:{x+2*y}
@@ -286,9 +315,9 @@ q){x where x like"ht??"}system"f .h"
 
 ## `\g` (garbage collection mode)
 
-<div markdown="1" class="typewriter">
-\g [_mode_]
-</div>
+```syntax
+\g mode
+```
 
 Show or set garbage-collection mode.
 The default mode is 0.
@@ -308,12 +337,12 @@ _Q for Mortals_
 
 ## `\l` (load file or directory)
 
-<div markdown="1" class="typewriter">
-\l _name_
+```syntax
+\l name
 \l .
-</div>
+```
 
-Where _name_ is the name of a 
+Where `name` is the name of a 
 
 -   q script, executes the script
 -   serialized object, deserializes it into memory as variable `name`
@@ -350,11 +379,12 @@ _Q for Mortals_
 
 ## `\o` (offset from UTC)
 
-<div markdown="1" class="typewriter">
-\o [_n_]
-</div>
+```syntax
+\o
+\o n
+```
 
-Show or set the local time offset, as integer _n_ hours from UTC, or as minutes if `abs[n]>23`.
+Show or set the local time offset, as integer `n` hours from UTC, or as minutes if `abs[n]>23`.
 The initial value of `0N` means the machine’s offset is used.
 
 ```q
@@ -382,9 +412,9 @@ This corresponds to the `-o` command line parameter.
 
 _Show or set listening port_
 
-<div markdown="1" class="typewriter">
-\p [_rp_,][_hostname_:][_portnumber_|_servicename_]
-</div>
+```syntax
+\p [rp,][hostname:][portnumber|servicename]
+```
 
 See 
 :fontawesome-solid-book-open:
@@ -406,19 +436,16 @@ See
 
 ## `\P` (precision)
 
-<div markdown="1" class="typewriter">
-\P [_n_]
-</div>
+```syntax
+\P
+\P n
+```
 
 Show or set display precision for floating-point numbers, i.e. the number of digits shown.
 
-The default value of _n_ is 7 and possible values are integers in the range \[0,17\].
+The default value of `n` is 7 and possible values are integers in the range \[0,17\].
 A value of 0 means use maximum precision.
 This is used when exporting to CSV files.
-
-```bash
-$ q
-```
 
 ```q
 q)\P                       / default
@@ -466,7 +493,7 @@ q)1%3
 
 ## `\r` (replication primary)
 
-```txt
+```syntax
 \r
 ```
 
@@ -478,19 +505,20 @@ This should not be executed manually otherwise it can disrupt replication. It is
 
 ## `\r` (rename)
 
-<div markdown="1" class="typewriter">
-\r _src dst_
-</div>
+```syntax
+\r src dst
+```
 
-Rename file _`src`_ to _`dst`_. 
+Rename file `src` to `dst`. 
 
 It is equivalent to the Unix `mv` command, or the windows `move` command (except that it will not rename to a different disk drive).
 
 
 ## `\s` (number of secondary threads)
 
-```txt
-\s [N]
+```syntax
+\s
+\s N
 ```
 
 Show or , where `N` is an integer, set the number of secondary threads available for parallel processing, within the limit set by the [`-s` command-line option](cmdline.md#-s-secondary-threads).
@@ -526,8 +554,9 @@ For processes:
 
 ## `\S` (random seed)
 
-```txt
-\S [n]
+```syntax
+\S
+\S n
 ```
 
 Where `n` is
@@ -562,6 +591,7 @@ Allows user to save and restore state of the rng.
 
 ```q
 q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
+1b
 ```
 
 !!! note "Thread-local"
@@ -577,8 +607,11 @@ q)x:system"S 0N";r:10?10;system"S ",string x;r~10?10
 
 ## `\t` (timer)
 
-```txt
-\t [ [N|[:n ]e] ]
+```syntax
+\t         / show timer interval
+\t N       / set timer interval
+\t exp     / time expression
+\t:n exp   / time n repetitions of expression
 ```
 
 This command has two different uses, according to the parameter.
@@ -619,8 +652,9 @@ q)\t:100 log til 100000        / timing for 100 repetitions
 
 ## `\T` (timeout)
 
-```txt
-\T [n]
+```syntax
+\T
+\T n
 ```
 
 Show or set the client execution timeout, as `n` (integer) number of seconds a client call will execute before timing out.
@@ -631,23 +665,20 @@ Note this is in seconds, not milliseconds like `\t`.
 [`-T` command-line option](cmdline.md#-t-timeout)
 
 
-
 ## `\ts` (time and space)
 
-```txt
-\ts[:n] exp
+```syntax
+\ts exp
+\ts:n exp
 ```
 
 Executes the expression `exp` and shows the execution time in milliseconds and the space used in bytes.
+(Since 3.1 2014.02.07)
 
 ```q
 q)\ts log til 100000
 7 2621568
-```
 
-Since 3.1 2014.02.07
-
-```q
 q)\ts:10000 log til 1000           /same as \ts do[10000; log til 1000]
 329 24672
 ```
@@ -655,7 +686,7 @@ q)\ts:10000 log til 1000           /same as \ts do[10000; log til 1000]
 
 ## `\u` (reload user password file)
 
-```txt
+```syntax
 \u
 ```
 
@@ -667,11 +698,12 @@ When q is invoked with the `-u` parameter specifying a user password file, then 
 
 ## `\v` (variables)
 
-```txt
-\v [namespace]
+```syntax
+\v
+\v ns
 ```
 
-Lists the variables in the given namespace, default current namespace.
+Lists the variables in namespace `ns`; defaults to current namespace.
 
 ```q
 q)a:1+b:2
@@ -683,21 +715,23 @@ q){x where x like"????"}system"v .h"
 `HOME`logo
 ```
 
-To expunge `a` from the default namespace
+??? tip "To expunge `a` from the default namespace"
 
-```q
-delete a from `.
-```
+    ```q
+    delete a from `.
+    ```
 
-:fontawesome-solid-street-view: 
-_Q for Mortals_
-[§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
+    :fontawesome-solid-street-view: 
+    _Q for Mortals_
+    [§12.5 Expunging from a Context](/q4m3/12_Workspace_Organization/#125-expunging-from-a-context)
 
 
 ## `\w` (workspace)
 
-```txt
-\w [0|1|n]
+```syntax
+\w          / current memory usage
+\w 0|1      / internalized symbols
+\w n        / set workspace memory limit
 ```
 
 With no parameter, returns current memory usage, as a list of 6 long integers.
@@ -779,8 +813,9 @@ q)value each ("\\d .m";"\\w";"\\d .";"\\w")
 
 ## `\W` (week offset)
 
-```txt
-\W [n]
+```syntax
+\W
+\W n
 ```
 
 Show or set the start-of-week offset `n`, where 0 is Saturday. The default is 2, i.e Monday.
@@ -791,7 +826,7 @@ Show or set the start-of-week offset `n`, where 0 is Saturday. The default is 2,
 
 ## `\x` (expunge)
 
-```txt
+```syntax
 \x .z.p*
 ```
 
@@ -813,8 +848,9 @@ q)\x .z.pi                    / restore default
 
 ## `\z` (date parsing)
 
-```txt
-\z [0|1]
+```syntax
+\z
+\z 0|1
 ```
 
 Show or set the format for `"D"$` date parsing. `B` is 0 for mm/dd/yyyy and 1 for dd/mm/yyyy.
@@ -835,8 +871,9 @@ q)"D"$"06/01/2010"
 
 ## `\1` & `\2` (redirect)
 
-```txt
-\[1|2] filename
+```syntax
+\1 filename
+\2 filename
 ```
 
 `\1` and `\2` let you redirect stdout and stderr to files from within the q session. The files and intermediate directories are created if necessary.
@@ -844,7 +881,7 @@ q)"D"$"06/01/2010"
 ```bash
 ~/q$ rm -f t1.txt t2.txt
 ~/q$ l64/q
-KDB+ 2.6 2010.05.10 Copyright (C) 1993-2010 Kx Systems
+KDB+ 4.0 2021.04.26 Copyright (C) 1993-2021 Kx Systems
 ...
 ```
 
@@ -868,8 +905,9 @@ On macOS and Linux `\1 /dev/stdin` returns output to the default.
 
 ## `\_` (hide q code)
 
-```txt
-\_ [scriptname]
+```syntax
+\_               / show client write access
+\_ scriptname    / make runtime script
 ```
 
 This command has two different uses depending on whether a parameter is given.
@@ -967,7 +1005,7 @@ q)
 
 ## `\\` (quit)
 
-```txt
+```syntax
 \\
 ```
 
@@ -1010,7 +1048,12 @@ q)\ls                 / usual ls command
 ..
 ```
 
-> When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [:fontawesome-brands-twitter: DevOps Borat](https://twitter.com/devops_borat)
+---
+
+![Borat](../img/faces/borat.jpg)
+{: .small-face}
+
+When you are run `rm -r /` you are have of many problem, but Big Data is not of one of them. — [:fontawesome-brands-twitter: DevOps Borat](https://twitter.com/devops_borat)
 
 
 

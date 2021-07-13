@@ -23,14 +23,14 @@ Environment                        Callbacks
  [.z.H    active sockets](#zh-active-sockets)             [.z.po    open](#zpo-open)
  [.z.h    host](#zh-host)                       [.z.pp    HTTP post](#zpp-http-post)
  [.z.i    PID](#zi-pid)                        [.z.pq    qcon](#zpq-qcon)
- [.z.K    version](#zk-version)                    [.z.ps    set](#zps-set)
- [.z.k    release date](#zk-release-date)               [.z.pw    validate user](#zpw-validate-user)
- [.z.l    license](#zl-license)                    [.z.ts    timer](#zts-timer)
- [.z.N/n  local/UTC timespan](#zn-local-timespan)         [.z.vs    value set](#zvs-value-set)
- [.z.o    OS version](#zo-os-version)                 [.z.wc    WebSocket close](#zwc-websocket-close)
- [.z.P/p  local/UTC timestamp](#zp-local-timestamp)        [.z.wo    WebSocket open](#zwo-websocket-open)
- [.z.pm   HTTP options](#zpm-http-options)               [.z.ws    WebSockets](#zws-websockets)
- [.z.q    quiet mode](#zq-quiet-mode)
+ [.z.K    version](#zk-version)                    [.z.r     blocked](#zr-blocked) ==new==
+ [.z.k    release date](#zk-release-date)               [.z.ps    set](#zps-set)
+ [.z.l    license](#zl-license)                    [.z.pw    validate user](#zpw-validate-user)
+ [.z.N/n  local/UTC timespan](#zn-local-timespan)         [.z.ts    timer](#zts-timer)
+ [.z.o    OS version](#zo-os-version)                 [.z.vs    value set](#zvs-value-set)
+ [.z.P/p  local/UTC timestamp](#zp-local-timestamp)        [.z.wc    WebSocket close](#zwc-websocket-close)
+ [.z.pm   HTTP options](#zpm-http-options)               [.z.wo    WebSocket open](#zwo-websocket-open)
+ [.z.q    quiet mode](#zq-quiet-mode)                 [.z.ws    WebSockets](#zws-websockets)
  [.z.s    self](#zs-self)
  [.z.T/t  time shortcuts](#zt-zt-zd-zd-timedate-shortcuts)
  [.z.u    user ID](#zu-user-id)
@@ -45,7 +45,7 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 
     Consider all undocumented functions in the namespace as exposed infrastructure – and do not use them.
 
-??? tip "By default, callbacks are not defined in the session" 
+??? tip "By default, callbacks are not defined in the session"
 
     After they have been assigned, you can restore the default using [`\x`](../basics/syscmds.md#x-expunge) to delete the definition that was made.
 
@@ -54,7 +54,7 @@ The `.z` [namespace](../basics/namespaces.md) contains environment variables and
 [Using `.z`](../kb/using-dotz.md)
 <br>
 :fontawesome-solid-street-view:
-_Q for Mortals:_ 
+_Q for Mortals:_
 [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 
@@ -86,7 +86,7 @@ q)"i"$0x0 vs .z.a
 
 ## `.z.ac` (HTTP auth from cookie)
 
-```txt
+```syntax
 .z.ac:(requestText;requestHeaderAsDictionary)
 ```
 
@@ -102,11 +102,12 @@ where allowed return values are
 (0;"")              / return default 401
 (1;"username")      / authenticated username (.z.u becomes this)
 (2;"response text") / send raw response text to client
+(4;"")              / fallback to try authentication via .z.pw (V4.0 2021.07.12)
 ```
 
 and `mySSOAuthenticator` is your custom code that authenticates against your SSO library.
 
-Note that if `.z.ac` is defined, `.z.pw` will _not_ be called for HTTP connections for authentication.
+If `.z.ac` returns `(4;"")` then `.z.pw` will be called with the b64-decoded credentials from the http header when .z.ac returns (4;"").
 
 :fontawesome-solid-hand-point-right:
 [`.z.pw` password check](#zpw-validate-user)
@@ -130,7 +131,7 @@ y| ,`a
 
 ## `.z.bm` (msg validator)
 
-```txt
+```syntax
 .z.bm:x
 ```
 
@@ -177,7 +178,7 @@ Since V3.5 2017.03.15.
 
 ## `.z.exit` (action on exit)
 
-```txt
+```syntax
 .z.exit:f
 ```
 
@@ -294,14 +295,14 @@ On Linux this should return the same as the shell command `hostname`. If you req
 Non-working `/etc/host` looks like :
 
 ```txt
-127.0.0.1      localhost.localdomain localhost
+127.0.0.1    localhost.localdomain localhost
 192.168.1.1  myhost.mydomain.com myhost
 ```
 
 Working one has this ordering :
 
 ```txt
-127.0.0.1      localhost.localdomain localhost
+127.0.0.1    localhost.localdomain localhost
 192.168.1.1  myhost myhost.mydomain.com
 ```
 
@@ -421,7 +422,7 @@ Solaris          | s32     | s64
 Solaris on Intel | **v32** | **v64**
 Windows          | **w32** | **w64**
 
-Note this is the version of the kdb+ executable, NOT the OS itself. 
+Note this is the version of the kdb+ executable, NOT the OS itself.
 You might run both 32-bit and 64-bit versions of kdb+ on the same machine to support older external interfaces.
 
 
@@ -439,7 +440,7 @@ q).z.P
 ## `.z.p` (UTC timestamp)
 
 UTC timestamp in nanoseconds.
-<!-- (Since V2.6.) -->
+
 
 ```q
 q).z.p
@@ -449,7 +450,7 @@ q).z.p
 
 ## `.z.pc` (close)
 
-```txt
+```syntax
 .z.pc:f
 ```
 
@@ -483,7 +484,7 @@ q)
 
 ## `.z.pd` (peach handles)
 
-```txt
+```syntax
 .z.pd: x
 ```
 
@@ -515,13 +516,23 @@ q)handles:`u#`int$();
 
 Note that (since V3.1) the worker processes are not started automatically by kdb+.
 
+!!! warning "Disabled in V4.1t"
+
+    Using handles within peach is temporarily not supported, to be reviewed in the near future e.g.
+
+        q)H:hopen each 4#4000;{x""}peach H
+        3 4 5 6i
+
+    One-shot IPC requests can be used within `peach` instead.
+
+
 :fontawesome-solid-graduation-cap:
 [Load balancing](../kb/load-balancing.md)
 
 
 ## `.z.pg` (get)
 
-```txt
+```syntax
 .z.pg:f
 ```
 
@@ -537,7 +548,7 @@ The default behavior is equivalent to setting `.z.pg` to [`value`](value.md) and
 
 ## `.z.ph` (HTTP get)
 
-```txt
+```syntax
 .z.ph:f
 ```
 
@@ -588,7 +599,7 @@ _Q for Mortals_
 
 ## `.z.pi` (input)
 
-```txt
+```syntax
 .z.pi:f
 ```
 
@@ -620,7 +631,7 @@ q)\x .z.pi
 
 ## `.z.pm` (HTTP options)
 
-```txt
+```syntax
 .z.pm:f
 ```
 
@@ -630,11 +641,12 @@ HTTP OPTIONS method are passed to `f` as a 3-list:
 (OPTIONS;requestText;requestHeaderDict)
 ```
 
+Supports HTTP methods PATCH, PUT and DELETE since V4.1t 2021.03.30.
 
 
 ## `.z.po` (open)
 
-```txt
+```syntax
 .z.po:f
 ```
 
@@ -653,7 +665,7 @@ _Q for Mortals_
 
 ## `.z.pp` (HTTP post)
 
-```txt
+```syntax
 .z.pp:f
 ```
 
@@ -673,7 +685,7 @@ _Q for Mortals_
 
 ## `.z.pq` (qcon)
 
-```txt
+```syntax
 .z.pq:f
 ```
 
@@ -687,7 +699,7 @@ This allows a user to handle remote qcon connections (via `.z.pq`) without defin
 
 ## `.z.ps` (set)
 
-```txt
+```syntax
 .z.ps:f
 ```
 
@@ -713,7 +725,7 @@ q)0 "2+2"
 
 ## `.z.pw` (validate user)
 
-```txt
+```syntax
 .z.pw:f
 ```
 
@@ -742,6 +754,17 @@ The default definition is `{[user;pswd]1b}`
 [Command-line option `-q`](../basics/cmdline.md#-q-quiet-mode)
 
 
+## `.z.r` (blocked)
+
+A boolean, indicating whether an update in the current context would be blocked.
+
+Returns `1b`
+
+-   in `reval`
+-   where the [`-b` command-line option](../basics/cmdline.md#-b-blocked) has been set
+-   in a thread other than the main event thread
+
+
 ## `.z.s` (self)
 
 A reference to the current function.
@@ -764,7 +787,7 @@ Note this is purely an example; there are other ways to achieve the same result.
 
 ## `.z.ts` (timer)
 
-```txt
+```syntax
 .z.ts:f
 ```
 
@@ -820,7 +843,7 @@ q)h({.z.w".z.u"};::)    / client side returns null symbol
 
 ## `.z.vs` (value set)
 
-```txt
+```syntax
 .z.vs:f
 ```
 
@@ -867,11 +890,11 @@ q).z.w
 
 ## `.z.wc` (websocket close)
 
-```txt
+```syntax
 .z.wc:f
 ```
 
-Where 
+Where
 
 -   `f` is a unary function
 -   `h` is the handle to a websocket connection to a kdb+ session
@@ -891,11 +914,11 @@ This allows you to clean up things like tables of users keyed by handle.
 
 ## `.z.wo` (websocket open)
 
-```txt
+```syntax
 .z.wo:f
 ```
 
-Where 
+Where
 
 -   `f` is a unary function
 -   `h` is the handle to a websocket connection to a kdb+ session
@@ -914,7 +937,7 @@ The handle argument is typically used by `f` to build a dictionary of handles to
 
 ## `.z.ws` (websockets)
 
-```txt
+```syntax
 z.ws:f
 ```
 
@@ -936,7 +959,7 @@ The default definition is to echo the message back to the client, i.e. `{neg[.z.
 
 ## `.z.X` (raw command line)
 
-```txt
+```syntax
 .z.X
 ```
 
@@ -1042,7 +1065,7 @@ q).z.z
 
 ## `.z.zd` (zip defaults)
 
-```txt
+```syntax
 .z.zd:(lbs;alg;lvl)
 ```
 
@@ -1080,5 +1103,5 @@ Shorthand forms:
 [Using `.z`](../kb/using-dotz.md)
 <br>
 :fontawesome-solid-street-view:
-_Q for Mortals:_ 
+_Q for Mortals:_
 [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)

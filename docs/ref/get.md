@@ -15,7 +15,7 @@ _Read or set the value of a variable or a kdb+ data file_
 
 _Read or memory-map a variable or kdb+ data file_
 
-```txt
+```syntax
 get x     get[x]
 ```
 
@@ -70,7 +70,7 @@ _Assign a value to a global variable
 Persist an object as a file or directory_
 
 
-```txt
+```syntax
 nam set y                  set[nam;y]                     / set global variable nam
 fil set y                  set[fil;y]                     / serialize y to fil
 dir set t                  set[dir;t]                     / splay t to dir
@@ -119,6 +119,17 @@ q)(`:ztbl/;17;2;6) set t            / splay table compressed
 `:ztbl/
 ```
 
+Anymap write detects consecutive deduplicated (address matching) top-level objects, skipping them to save space; since V4.1t 2021.06.12.
+
+```q
+q)a:("hi";"there";"world")
+q)`:a0 set a
+`:a0
+q)`:a1 set a@where 1000 2000 3000
+`:a1
+q)(hcount`$":a0#")=hcount`$":a1#"
+0b
+```
 
 
 ### Splayed table
