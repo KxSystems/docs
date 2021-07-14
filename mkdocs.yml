@@ -661,21 +661,25 @@ nav:
       - Intraday writedown (WP): wp/intraday-writedown/index.md
   - Cloud: 
     - About: cloud/index.md
-    - Amazon EC2: 
-      - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
-      - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
-      - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
-      - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
-      - D. MapR-FS: cloud/aws/app-d-mapr.md
-      - E. Goofys: cloud/aws/app-e-goofys.md
-      - F. S3FS: cloud/aws/app-f-s3fs.md
-      - G. S3QL: cloud/aws/app-g-s3ql.md
-      - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
-      - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
-      - J. Quobyte: cloud/aws/app-j-quobyte.md
-    - AWS Lambda: cloud/aws-lambda/index.md
-    - Google CPM: 
-      - Cloud Platform Marketplace: cloud/gcpm/index.md
+    - KX Insights: 'https://code.kx.com/insights/'
+    - Amazon Web Services:
+      - AWS Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
+      - Reference architecture: cloud/aws/architecture.md
+      - Amazon EC2: 
+        - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
+        - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
+        - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
+        - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
+        - D. MapR-FS: cloud/aws/app-d-mapr.md
+        - E. Goofys: cloud/aws/app-e-goofys.md
+        - F. S3FS: cloud/aws/app-f-s3fs.md
+        - G. S3QL: cloud/aws/app-g-s3ql.md
+        - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
+        - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
+        - J. Quobyte: cloud/aws/app-j-quobyte.md
+      - AWS Lambda: cloud/aws-lambda/index.md
+    - Google Cloud: 
+      - Marketplace: cloud/gcpm/index.md
       - Reference architecture: cloud/gcpm/architecture.md
     - Auto Scaling (WP):
       - About: cloud/autoscale/index.md
