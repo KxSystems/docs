@@ -211,6 +211,7 @@ insufficient to accommodate the new data, the list is reallocated with the conte
 [khp](#khp-connect-anonymously)     connect to host without credentials
 [khpu](#khpu-connect-no-timeout)    connect to host without timeout
 [khpun](#khpun-connect)   connect to host
+[khpunc](#khpunc-connect-with-capability)  connect to host with capability
 </div>
 
 !!! warning "Unless otherwise specified, no function accepting K objects should be passed `NULL`."
@@ -349,7 +350,7 @@ Returns a pointer to the (potentially reallocated) K object.
 Signature: `K jv(K* x, K y)`<br>
 Tags: `c.o`
 
-Append a K list `y` to K list `x`.
+Append a K list `y` to K list `x`. Both lists must be of the same type.
 
 Returns a pointer to the (potentially reallocated) K object.
 
@@ -493,6 +494,9 @@ Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not 
 ### `khpunc` – connect with capability
 
 Signature: `I khpunc(S hostname, I port, S credentials, I timeout, I capability)`
+
+Standalone apps only.
+Available only from [the c/e libs](c-client-for-q.md#two-sets-of-files) and not as a shared library loaded into kdb+.
 
 `capability` is a bit field:
 
