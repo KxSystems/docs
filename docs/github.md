@@ -949,7 +949,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 <table class="kx-compact" markdown="1">
 </tr>
 <tr markdown="1">
-<td markdown="1" class="nowrap"><a href="https://github.com/adotsch/q-examples/blob/master/anim.q">anim.q</a> ==new==</td>
+<td markdown="1" class="nowrap"><a href="https://github.com/adotsch/q-examples/blob/master/anim.q">anim.q</a></td>
 <td markdown="1">In-browser 3D animation streaming from q<span class="author"><a href="https://github.com/adotsch?tab=repositories">
 						(András Dőtsch)
 					</a></span>
@@ -1024,9 +1024,22 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 						(Rob&nbsp;Moore)
 					</a></span>
 </td>
+<tr markdown="1">
+<td markdown="1" class="nowrap"><a href="https://github.com/gitrj95/q-fmt">q-fmt</a> ==new==</td>
+<td markdown="1">A simple format string lib. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
+						(RJ)
+					</a></span>
+</td>
 </tr>
 <tr markdown="1">
-<td markdown="1" class="nowrap"><a href="https://github.com/manifoldfinance/qBigInt">qBigInt</a> ==new==</td>
+<td markdown="1" class="nowrap"><a href="https://github.com/gitrj95/q-memo">q-memo</a> ==new==</td>
+<td markdown="1">A simple memo lib. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
+						(RJ)
+					</a></span>
+</td>
+</tr>
+<tr markdown="1">
+<td markdown="1" class="nowrap"><a href="https://github.com/manifoldfinance/qBigInt">qBigInt</a></td>
 <td markdown="1">C library for Big Integer KDB+ Arithmetic <span class="author"><a href="https://github.com/manifoldfinance?tab=repositories">
 						(Sandy Bradley)
 					</a></span>

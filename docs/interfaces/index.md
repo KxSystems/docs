@@ -3,8 +3,8 @@ title: Interfaces and editor integrations | Interfaces | kdb+ and q documentatio
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---
-<span style="color: #009BAB; font-size: 2em">121</span><br><span style="font-size: .7em">interfaces &<br>connectors
-{: style="border: 1px solid #009BAB; border-radius: 10px; float: right; line-height: 1.2em; margin: 0; padding: 1em 1em .5em; text-align: center"}
+<span style="color: #009BAB; font-size: 2em">123</span><br><span style="font-size: .7em">interfaces &<br>connectors
+{: style="border: 1px solid #009BAB; border-radius: 10px; float: right; line-height: 1.2em; margin: 0 1em 0 0; padding: 1em 1em .5em; text-align: center"}
 
 # :fontawesome-regular-handshake: Interfaces and editor integrations
 
@@ -59,7 +59,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 
 <table class="kx-compact" markdown="1">
 <tr markdown="1"><td markdown="1">Adobe Flex</td><td markdown="1">:fontawesome-brands-github: [quantbin/kdb](https://github.com/quantbin/kdb)</td></tr>
-<tr markdown="1"><td markdown="1">Apache Spark</td><td markdown="1">:fontawesome-brands-github: [hughhyndman/kdbspark](https://github.com/hughhyndman/kdbspark) ==new==</td></tr>
+<tr markdown="1"><td markdown="1">Apache Spark</td><td markdown="1">:fontawesome-brands-github: [hughhyndman/kdbspark](https://github.com/hughhyndman/kdbspark)</td></tr>
 <tr markdown="1">
 <td markdown="1">ADO.Net</td>
 <td markdown="1">
@@ -172,10 +172,11 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </td></tr>
 <tr markdown="1"><td markdown="1">:fontawesome-brands-r-project: R</td><td markdown="1">:fontawesome-brands-github: [yang-guo/qserver](https://github.com/yang-guo/qserver)</td></tr> 
 <tr markdown="1">
-<td markdown="1">Rust</td>
+<td markdown="1">:fontawesome-brands-rust: Rust</td>
 <td markdown="1">
 :fontawesome-brands-github: [adwhit/krust](https://github.com/adwhit/krust)<br/>
-:fontawesome-brands-github: [jnordwick/rik](https://github.com/jnordwick/rik)
+:fontawesome-brands-github: [jnordwick/rik](https://github.com/jnordwick/rik)<br/>
+:fontawesome-brands-rust: [kdbplus](https://docs.rs/kdbplus/0.1.4/kdbplus/) ==new==
 </td>
 </tr>
 <tr markdown="1"><td markdown="1">Scala</td><td markdown="1">[Scala client for kdb+](scala-client-for-q.md)</td></tr>

@@ -28,13 +28,16 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
-    :fontawesome-solid-graduation-cap: [Prime numbers](learn/pb/primes.md)
+    :fontawesome-brands-rust: [Rust interface](https://docs.rs/kdbplus/0.1.4/kdbplus/)
+
+    :fontawesome-brands-github: [q-fmt](https://github.com/gitrj95/q-fmt),
+    [q-memo](https://github.com/gitrj95/q-memo)
+
+    :fontawesome-solid-cloud: [AWS architecture](cloud/aws/architecture.md)
 
     :fontawesome-regular-map: [IoT with MQTT](wp/iot-mqtt/index.md)
 
     :fontawesome-regular-map: [Interprocess comms](wp/ipc/index.md)
-
-    :fontawesome-solid-handshake: [Arrow/Parquet](interfaces/arrow/index.md)
 
 </div>
 
