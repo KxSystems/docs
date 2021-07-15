@@ -12,7 +12,7 @@ Platform
 
 This site is generated with the [MkDocs](https://mkdocs.org/) static-site generator, with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme. 
 
-See [`break-glass.md`](break-glass.md) for how to compile the site. 
+See [`install.md`](CONTRIBUTING/install.md) for how to compile the site. 
 
 
 Local copy
