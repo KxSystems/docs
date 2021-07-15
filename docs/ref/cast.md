@@ -13,7 +13,7 @@ _Convert to another datatype_
 x$y     $[x;y]
 ```
 
-Where `x` is: 
+Where `x` is:
 
 -   a **positive short, lower-case letter, or symbol** from the following table, returns `y` cast according to `x`
 
@@ -118,9 +118,9 @@ Find parts of time:
 
 ```q
 q)`hh`uu`ss$03:55:58.11
-3 55 58i
+3 55 58i
 q)`year`dd`mm`hh`uu`ss$2015.10.28D03:55:58
-2015 28 10 3 55 58i
+2015 28 10 3 55 58i
 ```
 
 ```txt
@@ -142,11 +142,20 @@ nanoseconds: "i"$timestamp mod 1000000000
 ```
 
 
+!!! detail "Casting to narrower temporal type truncates rather than rounds"
+
+    Such conversions use floor, because the day, hour, minute, second… are all [) notions. (What hour are we in; what millisecond are we in…)
+
+    For example, `"d"$2017.08.23T23:50:12` is `2017.08.23` even though the datetime is closer to `2017.08.24`.
+
+    As a consequence `.z.t-.z.n` is typically negative. 
+
+
 ## Identity
 
 ```q
 q)("*";0h)$1
-1 1
+1 1
 ```
 
 For string values of `y`, see [Tok](tok.md).
@@ -155,7 +164,7 @@ For string values of `y`, see [Tok](tok.md).
 
 !!! danger "Casting an infinity from a narrower to a wider datatype returns a finite value."
 
-When an integral infinity is cast to an integer of wider type, it is the _same underlying bit pattern_, reinterpreted. 
+When an integral infinity is cast to an integer of wider type, it is the _same underlying bit pattern_, reinterpreted.
 
 Since this bit pattern is a legitimate value for the wider type, the cast returns a finite value.
 
@@ -169,7 +178,7 @@ q)`float$0Wh
 ----
 :fontawesome-solid-book:
 [Tok](tok.md)
-<br> 
+<br>
 :fontawesome-solid-book:
 [Overloads of `$`](overloads.md#dollar)
 <br>
