@@ -24,7 +24,7 @@ description: Errors signalled by the interpreter, and what triggers them
 <tr markdown="1"><td markdown="1">binary mismatch</td> <td markdown="1"/> <td markdown="1">Wrong process for [code profiler](../kb/profiler.md)</td> </tr>
 <tr markdown="1"><td markdown="1">can't </td> <td markdown="1"/> <td markdown="1">Only commercially licensed kdb+ instances can encrypt code in a script</td> </tr>
 <tr markdown="1"><td markdown="1">cast</td> <td markdown="1" class="nowrap">``s:`a`b; c:`s$`a`e``</td> <td markdown="1">Value not in enumeration</td> </tr>
-<tr markdown="1"><td markdown="1">close</td> <td markdown="1"/> <td markdown="1">content-length header missing from HTTP response</td> </tr>
+<tr markdown="1"><td markdown="1">close</td> <td markdown="1"/> <td markdown="1">(1) content-length header missing from HTTP response<br>(2) handle: n – handle was closed by the remote while a msg was expected</td> </tr>
 <tr markdown="1"><td markdown="1">con</td> <td markdown="1"/> <td markdown="1">qcon client is not supported when kdb+ is in [multithreaded input mode](../kb/multithreaded-input.md)</td> </tr>
 <tr markdown="1"><td markdown="1">cond</td> <td markdown="1"/> <td markdown="1">Even number of arguments to `$` (until V3.6 2018.12.06)</td> </tr>
 <tr markdown="1"><td markdown="1">conn</td> <td markdown="1"/> <td markdown="1">Too many connections (1022 max)</td> </tr>
