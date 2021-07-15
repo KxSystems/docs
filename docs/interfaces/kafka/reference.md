@@ -335,9 +335,9 @@ returns a null on successful execution.
 
 ```q
 q).kfk.OFFSET.END   // start consumption at end of partition
--2
-q).kfk.OFFSET.BEGINNING // start consumption at start of partition
 -1
+q).kfk.OFFSET.BEGINNING // start consumption at start of partition
+-2
 q).kfk.AssignOffsets[client;TOPIC;(1#0i)!1#.kfk.OFFSET.END]
 ```
 
