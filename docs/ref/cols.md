@@ -14,7 +14,7 @@ _Table columns_
 
 _Column names of a table_
 
-```txt
+```syntax
 cols x    cols[x]
 ```
 
@@ -39,7 +39,7 @@ q)cols`trade            /reference
 
 _Rename table columns_
 
-```txt
+```syntax
 x xcol y    xcol[x;y]
 ```
 
@@ -59,7 +59,7 @@ Time         Symbol price size
 q)trade:`Time`Symbol`Price`Size xcol trade  / rename all and assign
 q)cols trade
 `Time`Symbol`Price`Size
-q)cols(`a`c!`A`C)xcol([]a:();b:();c:())     / selected columns
+q)(`a`c!`A`C)xcol([]a:();b:();c:())         / rename selected columns
 A b C
 -----
 ```
@@ -73,7 +73,7 @@ _Q for Mortals_
 
 _Reorder table columns_
 
-```txt
+```syntax
 x xcols y    xcols[x;y]
 ```
 
@@ -88,11 +88,10 @@ returns `y` with `x` as its first column/s.
 q)\l trade.q
 q)cols trade
 `time`sym`price`size
-q)trade:xcols[reverse cols trade;trade] / reverse cols and reassign trade
+q)trade:xcols[reverse cols trade;trade]  / reverse cols and reassign trade
 q)cols trade
 `size`price`sym`time
-q)trade:`sym xcols trade                / move sym to the front
-q)cols trade
+q)cols trade:`sym xcols trade            / move sym to the front
 `sym`size`price`time
 ```
 
@@ -102,8 +101,13 @@ _Q for Mortals_
 
 
 ----
-:fontawesome-regular-hand-point-right: 
-[`meta`](meta.md)  
-.Q: [`.Q.V`](dotq.md#qv-table-to-dict) (table to dictionary)  
-Basics: [Dictionaries & tables](../basics/dictsandtables.md), 
-[Metadata](../basics/metadata.md) 
+:fontawesome-solid-book: 
+[`meta`](meta.md), 
+[`.Q.V`](dotq.md#qv-table-to-dict) (table to dictionary)
+<br>
+:fontawesome-solid-book-open:
+[Dictionaries](../basics/dictsandtables.md), 
+[Metadata](../basics/metadata.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Tables](../kb/faq.md)
