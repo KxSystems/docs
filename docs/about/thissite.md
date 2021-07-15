@@ -80,12 +80,13 @@ Andrew in New York              Mohammad Noor
 Chris Shucksmith                Sean Keevey
 Cillian Reilly                  Sean O’Hagan
 Conor McCarthy                  Rian O’Cuinneagain
-David Z. Han                    Rikesh
-Deanna Morgan                   Thomas Smyth
-Diane O’Donoghue                Sergey Vidyuk
-Esperanza Lopez Aguilera        Simon Shanks
-Geo Carncross                   Vincent Bernardoff
-Ian O’Dwyer                     William Da Silva
+David Crossey                   Rikesh
+David Z. Han                    Thomas Smyth
+Deanna Morgan                   Sergey Vidyuk
+Diane O’Donoghue                Simon Shanks
+Esperanza Lopez Aguilera        Vincent Bernardoff
+Geo Carncross                   William Da Silva
+Ian O’Dwyer                     
 ```
 
 ## :fontawesome-solid-balance-scale: License
