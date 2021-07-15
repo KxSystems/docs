@@ -4,7 +4,7 @@ description:
 date: June 2021
 author: Eric Cocoran
 ---
-# A reference architecture for AWS
+# Reference architecture for AWS
 
 
 
