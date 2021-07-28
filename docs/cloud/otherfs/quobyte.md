@@ -5,13 +5,13 @@ author: Glenn Wright
 date: March 2018
 keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, quobyte
 ---
-# Appendix J – Quobyte 
+# Appendix J – Quobyte
 
 
 
 !!! info "Quobyte is functionally qualified with kdb+."
 
-Quobyte offers a shared namespace solution based on either locally-provisioned or EBS-style storage. 
+Quobyte offers a shared namespace solution based on either locally-provisioned or EBS-style storage.
 It leverages an erasure-coding model around nodes of a Quobyte cluster.
 
 test | result
@@ -22,5 +22,5 @@ fileops attributes | _Test results to follow, please check back at code.kx.com f
 
 
 <div class="kx-nav" markdown="1">
-<div class="kx-nav-prev">[I. WekaIO Matrix](app-i-wekaio-matrix.md)</div>
+<div class="kx-nav-prev">[WekaIO Matrix](wekaio-matrix.md)</div>
 </div>

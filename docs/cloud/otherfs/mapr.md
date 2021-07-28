@@ -1,6 +1,6 @@
 ---
 title: MapR-FS – Appendix D of Migrating a kdb+ HDB to Amazon EC2 – Cloud – kdb+ and q documentation
-description: MapR is a commercial implementation of the Apache Hadoop open-source stack. Solutions such as MapR-FS were originally driven by the need to support Hadoop clusters alongside high-performance file-system capabilities. In this regard, MapR improved on the original HDFS implementation found in Hadoop distributions. MapR-FS is a core component of their stack. MapR AMIs are freely available on the Amazon marketplace. 
+description: MapR is a commercial implementation of the Apache Hadoop open-source stack. Solutions such as MapR-FS were originally driven by the need to support Hadoop clusters alongside high-performance file-system capabilities. In this regard, MapR improved on the original HDFS implementation found in Hadoop distributions. MapR-FS is a core component of their stack. MapR AMIs are freely available on the Amazon marketplace.
 author: Glenn Wright
 date: March 2018
 keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, mapr-fs
@@ -38,7 +38,7 @@ Locking semantics on files passed muster during testing, although thorough testi
 
 ![](img/media/image35.png)
 
-function       | latency (mSec) | function   | latency (mSec) 
+function       | latency (mSec) | function   | latency (mSec)
 ---------------|----------------|------------|---------------
 `hclose hopen` | 0.447          | `();,;2 3` | 6.77
 `hcount`       | 0.484          | `read1`    | 0.768
@@ -48,14 +48,14 @@ function       | latency (mSec) | function   | latency (mSec)
 
 ## Summary
 
-The operational latency of this solution is significantly lower than seen with EFS and Storage Gateway, which is good for an underlying NFS protocol, but is beaten by WekaIO Matrix. 
+The operational latency of this solution is significantly lower than seen with EFS and Storage Gateway, which is good for an underlying NFS protocol, but is beaten by WekaIO Matrix.
 
-By way of contrast however, this solution scales very well horizontally and vertically when looking at the accumulated throughput numbers. It also appears to do very well with random reads, however there we are likely to be hitting server-side caches in a significant way, so mileage will vary. 
+By way of contrast however, this solution scales very well horizontally and vertically when looking at the accumulated throughput numbers. It also appears to do very well with random reads, however there we are likely to be hitting server-side caches in a significant way, so mileage will vary.
 
 We plan to look at the POSIX MapR client in the future.
 
 
 
 <div class="kx-nav" markdown="1">
-<div class="kx-nav-prev">[C. Amazon Storage Gateway](app-c-asg.md)</div><div class="kx-nav-next">[E. Goofys](app-e-goofys.md)</div>
+<div class="kx-nav-next">[Goofys](goofys.md)</div>
 </div>
