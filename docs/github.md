@@ -1026,14 +1026,14 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </td>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/gitrj95/q-fmt">q-fmt</a> ==new==</td>
-<td markdown="1">A simple format string lib. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
+<td markdown="1">Format strings in q style as s-expressions or m-expressions. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
 						(RJ)
 					</a></span>
 </td>
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/gitrj95/q-memo">q-memo</a> ==new==</td>
-<td markdown="1">A simple memo lib. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
+<td markdown="1">Memoization tooling for functions in the q programming language. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
 						(RJ)
 					</a></span>
 </td>
