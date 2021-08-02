@@ -680,7 +680,7 @@ nav:
       - Amazon Web Services: cloud/autoscale/aws.md
       - Realtime data cluster: cloud/autoscale/rdc.md
       - Costs and risks: cloud/autoscale/cost-risk.md
-    - Other File Systems:
+    - Other file systems:
         - MapR-FS: cloud/otherfs/mapr.md
         - Goofys: cloud/otherfs/goofys.md
         - S3FS: cloud/otherfs/s3fs.md

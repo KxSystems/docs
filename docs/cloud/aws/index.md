@@ -20,7 +20,7 @@ If you are assessing migrating a kdb+ historical database (HDB) and analytics wo
 -   performance and functionality attributes expected from using kdb+, and the associated HDB, in EC2
 -   capabilities of several storage solutions working in the EC2
 environment, as of March 2018
--  performance attributes of EC2, and benchmark results
+-   performance attributes of EC2, and benchmark results
 
 You must weigh the pros and cons of each solution.
 The key issues of each approach are discussed in the Appendices. 
@@ -72,10 +72,6 @@ EC2 can achieve the best of both worlds:
 
 As long as the speed of deployment and ease of use is coupled with similar or _good enough_ runtime performance, EC2 can be a serious contender for hosting your market data.
 
-
-## :fontawesome-solid-user: Author
-
-Glenn Wright, Systems Architect, KX, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At KX, Glenn supports partners and solutions vendors to further exploit the industry- leading performance and enterprise aspects of kdb+.
 
 ## In-house vs EC2
 
@@ -189,7 +185,7 @@ There is one caveat to this, in testing kdb+ list creation speeds we observe a d
 As expected, we see more noticeable performance variations with the aspects of the system that are virtualized and shared in EC2, especially those which in principle are shared amongst others on the platform. For kdb+ users, the storage (I/O) and the networking access are virtualized/shared, being separated from the bare metal by the Xen hypervisor. Most of the AMIs deployed into EC2 today are based on the Hardware Virtual Machine layer (HVM). It seems that in recent instantiations of HVM, the performance for I/O aspects of the guest have improved. For the best performance, AWS recommends current-generation instance types and HVM AMIs when you launch your instances.
 Any storage solution that hosts historical market data must:
 
--   support the Linux-hosted [POSIX file system](https://en.wikipedia.org/wiki/POSIX) interfaces
+-   support the Linux-hosted [POSIX filesystem](https://en.wikipedia.org/wiki/POSIX) interfaces
 -   offer suitable performance for streaming and random I/O mapped read
 rates
 -   offer acceptable performance for random-region reads of a table (splayed) columns, constituting large record reads from random regions of the file
@@ -198,9 +194,9 @@ These aspects, and inspection of metadata performance, are summarized in the tes
 
 !!! warning "Using Amazon S3 as a data store"
 
-    Because kdb+ does not directly support the use of an object store for its stored data, it cannot support direct use of an object-store model such as the Amazon S3. If you wish to use Amazon S3 as a data store, kdb+ historical data must be hosted on a POSIX-based file system layer fronting S3.
+    Because kdb+ does not directly support the use of an object store for its stored data, it cannot support direct use of an object-store model such as the Amazon S3. If you wish to use Amazon S3 as a data store, kdb+ historical data must be hosted on a POSIX-based filesystem layer fronting S3.
 
-    Several solutions offer a POSIX interface layered over an underlying S3 storage bucket. These can be included alongside native file-system support that can also be hosted on EC2.
+    Several solutions offer a POSIX interface layered over an underlying S3 storage bucket. These can be included alongside native filesystem support that can also be hosted on EC2.
 
 Although EC2 offers both physical systems and virtual systems within the Elastic Cloud, it is most likely customers will opt for a virtualized environment. There is also a choice in EC2 between spot pricing of an EC2, and deployed virtual instances. We focus here on the attribute and results achieved with the deployed virtual instance model. These are represented by instances that are tested in one availability zone and one placement group.
 
@@ -217,11 +213,11 @@ Yes – mostly.
 
 When porting or hosting the HDB data to EC2, we expect our customers to:
 
-1.  Use one of the many POSIX-based file systems solutions available under EC2.
+1.  Use one of the many POSIX-based filesystems solutions available under EC2.
 
 1.  Use (partly or fully) the lower-cost object storage via a POSIX or POSIX-like access method.
 
-1.  Not store the historical data on Hadoop HDFS file systems.
+1.  Not store the historical data on Hadoop HDFS filesystems.
 
 If kdb+ runs alongside one of the solutions reviewed here, your HDB will function identically to any internally-hosted, bare-metal system. You can use this report as input to determine the performance and the relative costs for an HDB solution on EC2.
 
@@ -248,13 +244,13 @@ Usually, updates to the HDB are made by writing today’s or the last
 day’s in-memory columns of data to a new HDB partition. Q programmers
 can use a utility built into q for this which creates the files and
 directories organized as in the table above. Kdb+ requires the support
-of a POSIX-compliant file system in order to access and process HDB
+of a POSIX-compliant filesystem in order to access and process HDB
 data.
 
 Kdb+ maps the entire HDB into the runtime address space of kdb+. This
 means the Linux kernel is responsible for fetching HDB data. If,
 for example, you are expecting a query that scans an entire day’s trade
-price for a specific stock symbol range, the file system will load this
+price for a specific stock symbol range, the filesystem will load this
 data into the host memory as required. So, for porting this to EC2, if
 you expect it to match the performance you see on your in-house
 infrastructure you will need to look into the timing differences between
@@ -431,7 +427,7 @@ You can store your HDB on [EBS volumes](https://docs.aws.amazon.com/AWSEC2/lates
 
 By doing this, it allows you to start instances on demand, without the need to co-locate the HDB data alongside those nodes. This separation is always via the networking infrastructure built into EC2. In other words, your virtualized compute instance can be attached to a real physical instance of the storage via the EC2 network, and thereafter appears as block storage. This is referred to as _network attached storage_ (Elastic Block Storage). 
 
-Alternatively, you can place the files on a remote independent file system, which in turn is typically supported by EC2 instances stored on EBS or S3.
+Alternatively, you can place the files on a remote independent filesystem, which in turn is typically supported by EC2 instances stored on EBS or S3.
 
 
 ### Amazon S3 object store
@@ -451,7 +447,7 @@ The main limitation is the API.
 
 #### API limitations
 
-An S3 object store is organized differently from a POSIX file system. 
+An S3 object store is organized differently from a POSIX filesystem. 
 
 [![S3 object store](img/media/image7.png)](img/media/image7.png "Click to expand")
 
@@ -466,7 +462,7 @@ However, S3’s low cost, and its ability to scale performance horizontally when
 
 The second limitation is S3’s performance, as measured by the time taken to populate vectors in memory. 
 
-Kdb+ uses POSIX file-system semantics to manage HDB structure directly on disk. It exploits this feature to gain very high-performance memory management through Linux-based memory mapping functions built into the kernel, from the very inception of Linux.
+Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on disk. It exploits this feature to gain very high-performance memory management through Linux-based memory mapping functions built into the kernel, from the very inception of Linux.
 
 S3 uses none of this.
 
@@ -474,7 +470,7 @@ On EC2, kdb+ performance stacks up in this order (from slowest to faster):
 
 1.  S3
 2.  EBS
-3.  Third-party distributed or managed file system
+3.  Third-party distributed or managed filesystem
 4.  Local drives to the instance (typically cache only)
 
 Although the performance of S3 as measured from one node is not fast, S3 retains comparative performance for each new instance added to an HDB workload in each availability zone. Because of this, S3 can scale up its throughput when used across multiple nodes within one availability zone. This is useful if you are positioning large numbers of business functions against common sets of market data, or if you are widely distributing the workload of a single set of business queries. This is not so for EBS as, when deployed, the storage becomes owned by one, and only one, instance at a time.
@@ -494,13 +490,13 @@ purposes, if required. Replication is only for cross-region propagation
 (e.g. US-East to US-West). But, given that the kdb+ user can design this
 into the solution (i.e. end-of-day copies to replica sites, or multiple
 pub-sub systems), you may choose to deploy a custom solution within
-kdb+, across region, rather than relying on S3 or the file system
+kdb+, across region, rather than relying on S3 or the filesystem
 itself.
 
 
 #### Summary
 
--   The **POSIX file system interface** allows the Linux kernel to move data
+-   The **POSIX filesystem interface** allows the Linux kernel to move data
     from the blocks of the underlying physical hardware, directly into
     memory mapped space of the user process. This concept has been tuned
     and honed by over 20 years of Linux kernel refinement. In our case,
@@ -509,7 +505,7 @@ itself.
     protocol, which is typically transferred over TCP/IP LAN or WAN
     connection. Clearly, this is not directly suitable for a
     high-performance in-memory analytics engine such as kdb+. However,
-    all of the file-system plug-ins and middleware packages reviewed in
+    all of the filesystem plug-ins and middleware packages reviewed in
     this paper help mitigate this issue. The appendices list the main
     comparisons of all of the reviewed solutions.
 
@@ -521,10 +517,10 @@ itself.
 
 -   S3 exhibits relatively low **streaming-read performance**. A RESTful, single S3 reader process is limited to a [read throughput](http://blog.zachbjornson.com/2015/12/29/cloud-storage-performance.html) of circa 0.07&nbsp;GB/sec. Some of the solutions reviewed in this paper use strategies to improve these numbers within one instance (e.g. raising that figure to the 100s&nbsp;MB/sec – GB/sec range). There is also throughput scalability gained by reading the same bucket across multiple nodes. There is no theoretical limit on this bandwidth, but this has not been exhaustively tested by KX.
 
--   Certain **metadata operations**, such as kdb+’s append function, cause significant latency vs that observed on EBS or local attached storage, and your mileage depends on the file system under review.
+-   Certain **metadata operations**, such as kdb+’s append function, cause significant latency vs that observed on EBS or local attached storage, and your mileage depends on the filesystem under review.
 
 Performance enhancements, some of which are bundled into **third-party
-solutions** that layer between S3 and the POSIX file system layer, are
+solutions** that layer between S3 and the POSIX filesystem layer, are
 based around a combination of: multithreading read requests to the S3
 bucket; separation of large sequential regions of a file into individual
 objects within the bucket and read-ahead and caching strategies.
@@ -538,7 +534,7 @@ into a few objects of say 1&nbsp;MB, should be a lightweight operation, as
 there is no shared/locking required for previously written HDB data. So
 the HDB can easily tolerate this eventual consistency model. This does
 not apply to all use-cases for kdb+. For example, S3, with or without a
-file system layer, cannot be used to store a reliable ticker-plant log.
+filesystem layer, cannot be used to store a reliable ticker-plant log.
 
 Where S3 definitely plays to its strengths, is that it can
 be considered for an **off-line deep archive** of your kdb+ formatted market
@@ -558,12 +554,12 @@ elegant design.
 Kdb+ databases are stored as a series of files and directories on disk.
 This makes administering databases extremely easy because database files
 can be manipulated as operating-system files. Backing up a kdb+ database
-can be implemented using any standard file-system backup utility. This
+can be implemented using any standard filesystem backup utility. This
 is a key difference from traditional databases, which have to have their
 own cumbersome backup utilities and do not allow direct access to the
 database files and structure.
 
-Kdb+’s use of the native file system is also reflected in the way it
+Kdb+’s use of the native filesystem is also reflected in the way it
 uses standard operating-system features for accessing data
 (memory-mapped files), whereas traditional databases use proprietary
 techniques in an effort to speed up the reading and writing processes.
@@ -624,12 +620,12 @@ Metadata:<br/>(`read1`) | An atomic mapped map/read/unmap sequence open/stat/see
 This test suite ensures we cover several of the operational tasks undertaken during an HDB lifecycle.
 
 For example, one broad comparison between direct-attached storage
-and a networked/shared file system is that the networked file-system
+and a networked/shared filesystem is that the networked filesystem
 timings might reflect higher operational overheads vs. a Linux kernel
-block-based direct file system. Note that a shared file system will
+block-based direct filesystem. Note that a shared filesystem will
 scale up in-line with the implementation of horizontally distributed
-compute, which the block file systems will not easily do, if at all.
-Also note the networked file system may be able to leverage 100s or
+compute, which the block filesystems will not easily do, if at all.
+Also note the networked filesystem may be able to leverage 100s or
 1000s of storage targets, meaning it can sustain high levels of
 throughput even for a single reader thread.
 
@@ -661,14 +657,14 @@ alongside the CPU.
 #### Re-read from cache
 
 The MB/sec that can be re-read when the data
-is already held by the kernel buffer cache (or file-system cache, if
+is already held by the kernel buffer cache (or filesystem cache, if
 kernel buffer not used). It includes the time to map the pages back into
 the memory space of kdb+ as we effectively restart the instance here
-without flushing the buffer cache or file system cache.
+without flushing the buffer cache or filesystem cache.
 
 ![Re-read from cache](img/media/image9.png)
 
-Shows if there are any unexpected glitches with the file-system caching subsystem. This may not affect your product kdb+ code per-se, but may be of interest in your research.
+Shows if there are any unexpected glitches with the filesystem caching subsystem. This may not affect your product kdb+ code per-se, but may be of interest in your research.
 
 
 #### Streaming reads
@@ -707,9 +703,9 @@ Simulates queries that are searching around broadly different times or symbol re
 
 #### Metadata function response times
 
-We also look at metadata function response times for the file system. In the baseline results below, you can see what a theoretical lowest figure might be. 
+We also look at metadata function response times for the filesystem. In the baseline results below, you can see what a theoretical lowest figure might be. 
 
-We deliberately did not run metadata tests using very large data sets/files, so that they better represent just the overhead of the file system, the Linux kernel and target device.
+We deliberately did not run metadata tests using very large data sets/files, so that they better represent just the overhead of the filesystem, the Linux kernel and target device.
 
 
 function       | latency (mSec) | function   | latency (mSec) 
@@ -717,7 +713,7 @@ function       | latency (mSec) | function   | latency (mSec)
 `hclose hopen` | 0.006          | `();,;2 3` | 0.01
 `hcount`       | 0.003          | `read1`    | 0.022
 
-<small>_Physical server, metadata operational latencies - mSecs (headlines)_</small>
+<small>_Physical server, metadata operational latencies – mSecs (headlines)_</small>
 
 ![Metadata latency](img/media/image13.png)
 
@@ -766,8 +762,8 @@ The cost of instance-local SSD is embedded in the fixed price of the
 instance, so this pricing model needs to be considered. By contrast, the
 cost of EBS is fixed per GB per month, pro-rated. The data held on
 instance local SSD is not natively sharable. If this needs to be shared,
-this will require a shared file-system to be layered on top, i.e.
-demoting this node to be a file system server node. For the above
+this will require a shared filesystem to be layered on top, i.e.
+demoting this node to be a filesystem server node. For the above
 reasons, these storage types have been used by solutions such as [WekaIO](#appendix-i-wekaio-matrix), for their local instance of the erasure coded data cache.
 
 function                     | instance-local NVMe<br/>(4 × 1.9 TB) | physical node<br/>(1 NVMe)
@@ -777,7 +773,7 @@ random 1-MB read (MB/sec)    | 6422                        | 2750
 random 64-KB read (MB/sec)   | 1493                        | 1182
 metadata (`hclose`, `hopen`) | 0.0038 mSec                 | 0.0068 mSec
 
-The variation of absolute streaming rates is reflective of the device itself. These results are equivalent to the results seen on physical servers. What is interesting is that at high parallelism, the targets work quicker with random reads and for metadata service times than the physical server. These instances can be deployed as a high-performance persistent cache for some of the AWS-based file system solutions, such as used in ObjectiveFS and WekaIO Matrix and Quobyte.
+The variation of absolute streaming rates is reflective of the device itself. These results are equivalent to the results seen on physical servers. What is interesting is that at high parallelism, the targets work quicker with random reads and for metadata service times than the physical server. These instances can be deployed as a high-performance persistent cache for some of the AWS-based filesystem solutions, such as used in ObjectiveFS and WekaIO Matrix and Quobyte.
 
 
 ## Observations from kdb+ testing 
@@ -813,19 +809,19 @@ EBS results for the `st1` devices (low cost traditional disk drives, lower cost 
 
 ObjectiveFS and WekaIO Matrix are commercial products that offer full operational functionality for the POSIX interface, when compared to open-source S3 gateway products. These can be used to store and read your data from/to S3 buckets. 
 
-WekaIO Matrix offers an erasure-encoded clustered file-system, which works by sharing out pieces of the data around each of the members of the Matrix cluster. 
+WekaIO Matrix offers an erasure-encoded clustered filesystem, which works by sharing out pieces of the data around each of the members of the Matrix cluster. 
 
 ObjectiveFS works between kdb+ and S3 with a per-instance buffer cache plus distributed eventual consistency. It also allows you to cache files locally in RAM cache and/or on ephemeral drives within the instance. Caching to locally provisioned drives is likely to be more attractive vs. caching to another RAM cache.
 
 
-### POSIX file systems
+### POSIX filesystems
 
-Standalone file systems such as MapR-FS and Quobyte support POSIX fully. Other distributed file systems designed from the offset to support POSIX should fare equally well, as to some degree, the networking infrastructure is consistent when measured within one availability zone or placement group. Although these file system services are encapsulated in the AWS marketplace as AMI’s, you are obliged to run this estate alongside your HDB compute estate, as you would own and manage the HDB just the same as if it were in-house. Although the vendors supply AWS marketplace instances, you would own and running your own instances required for the file system.
+Standalone filesystems such as MapR-FS and Quobyte support POSIX fully. Other distributed filesystems designed from the outset to support POSIX should fare equally well as, to some degree, the networking infrastructure is consistent when measured within one availability zone or placement group. Although these filesystem services are encapsulated in the AWS marketplace as AMIs, you are obliged to run this estate alongside your HDB compute estate, as you would own and manage the HDB just the same as if it were in-house. Although the vendors supply AWS marketplace instances, you would own and run your own instances required for the filesystem.
 
 
 ### WekaIO and Quobyte
 
-WekaIO and Quobyte use a distributed file-system based on erasure-coding distribution of data amongst their quorum of nodes in the cluster. This may be appealing to customers wanting to provision the HDB data alongside the compute nodes. If, for example, you anticipate using eight or nine nodes in production these nodes could also be configured to fully own and manage the file system in a reliable way, and would not mandate the creation of distinct file-system services to be created in other AWS instances in the VPC. 
+WekaIO and Quobyte use a distributed filesystem based on erasure-coding distribution of data amongst their quorum of nodes in the cluster. This may be appealing to customers wanting to provision the HDB data alongside the compute nodes. If, for example, you anticipate using eight or nine nodes in production these nodes could also be configured to fully own and manage the filesystem in a reliable way, and would not mandate the creation of distinct filesystem services to be created in other AWS instances in the VPC. 
 
 What might not be immediately apparent is that for this style of product, they will scavenge at least one core on every participating node in order to run their erasure-coding algorithm most efficiently. This core will load at 100% CPU.
 
@@ -845,8 +841,6 @@ You might also want to avoid these, as performance of them is at best average, p
 
 ## Network configuration
 
-
-
 The network configuration used in the tests:
 
 The host build was CentOS 7.4, with Kernel 3.10.0-693.el7.x86\_64. The ENS module was installed but not configured. The default instance used in these test reports was `r4.4xlarge`. 
@@ -856,8 +850,13 @@ Total network bandwidth on this model is “up-to” 10&nbsp;Gbps.
 For storage, this is documented by AWS as provisioning up to 3,500&nbsp;Mbps, equivalent to 437&nbsp;MB/sec of EBS bandwidth, per node, bi-directional. We met these discrete values as seen in most of our individual kdb+ tests.
 
 
+## Author
+
+![Glenn Wright](../../img/faces/glennwright.jpg)
+{: .small-face}
+
+**Glenn Wright**, Systems Architect, KX, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At KX, Glenn supports partners and solutions vendors to further exploit the industry-leading performance and enterprise aspects of kdb+.
 
 
-<div class="kx-nav" markdown="1">
-<div class="kx-nav-next">[A. Elastic Block Store (EBS)](app-a-ebs.md)</div>
-</div>
+
+<style>.md-footer-nav {display: block; }</style>

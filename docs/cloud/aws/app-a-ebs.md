@@ -1,8 +1,9 @@
 ---
 title: Elastic Block Store (EBS) – Appendix A of Migrating a kdb+ HDB to Amazon EC2 – Cloud – kdb+ and q documentation
 description: Seven variants of the Elastic Block Service (EBS) are all qualified by kdb+. gp2, gp3, io1, io2, and io2 Block Express are SSD-based volumes that offer different price/performance points, st1 and sc1 are traditional HDD-based volumes. Unlike ephemeral SSD storage, EBS-based storage can be dynamically provisioned to any other EC2 instance via operator control. So this is a candidate for on-demand HDB storage.
-author: Glenn Wright, Boni Bruno
-Original date: March 2018, update: July 20, 2021
+authors: [Glenn Wright, Boni Bruno]
+date: March 2018
+update: 20 July 2021
 keywords: Amazon, AWS, EC2, HDB, cloud, ebs, kdb+
 ---
 # Appendix A - Elastic Block Store (EBS)
@@ -151,8 +152,7 @@ EBS for kdb+, take the following into consideration:
     throughput gained with the larger `r4.16xlarge` instance. Use this
     precept in your calculations.
 
--   There is a fixed throughput per GP2 volume, but multiple volumes will increment that value up until the peak achievable in the instance definition. Kdb+ achieves that instance
-    peak throughput.
+-   There is a fixed throughput per GP2 volume, but multiple volumes will increment that value up until the peak achievable in the instance definition. Kdb+ achieves that instance peak throughput.
 
 -   Server-side kdb+ in-line compression works very well for streaming
     and random 1-MB read throughputs, whereby the CPU essentially keeps
@@ -167,14 +167,4 @@ EBS for kdb+, take the following into consideration:
     considered for streaming reads only, e.g. older data.
 
 
-
-
-
-<div class="kx-nav" markdown="1">
-<div class="kx-nav-prev">[Migrating a kdb+ HDB to Amazon EC2](index.md)</div><div class="kx-nav-next">[B. EFS (NFS)](app-b-efs-nfs.md)</div>
-</div>
-
-
-
-
-
+<style>.md-footer-nav {display: block; }</style>

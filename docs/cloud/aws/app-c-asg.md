@@ -10,7 +10,7 @@ keywords: Amazon, AWS, EC2, HDB, cloud, file, gateway, kdb+, storage
 
 
 Amazon Storage Gateway is a pre-prepared AMI/instance that can be
-provisioned on-demand. It allows you to present an NFS layer to the
+provisioned on demand. It allows you to present an NFS layer to the
 application with S3 as a backing store. The difference between this and
 EFS is that the S3 bucket is owned and named by you. But fundamentally
 the drawback with this approach will be the operational latencies. These
@@ -40,6 +40,4 @@ The AWS gateway exhibits significantly high operational latency.
 This manifests as very long wait times when performing an interactive `ls -l` command from the root of the file system, while the file system is under load, sometimes taking several minutes to respond to the directory walk.
 
 
-<div class="kx-nav" markdown="1">
-<div class="kx-nav-prev">[B. EFS (NFS)](app-b-efs-nfs.md)</div>
-</div>
+<style>.md-footer-nav {display: block; }</style>
