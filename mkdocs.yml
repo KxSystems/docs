@@ -7,13 +7,13 @@ dev_addr: '0.0.0.0:9000'
 
 docs_dir: 'docs'
 
-extra_css: 
+extra_css:
   - 'stylesheets/2021.css'
   - 'stylesheets/prism.css'
   - 'stylesheets/q.css'
   # - 'stylesheets/carousel-6.css'
 
-extra_javascript: 
+extra_javascript:
   - scripts/prism.js
   - scripts/jquery-3.5.1.min.js # jQuery for theme.js
   - scripts/theme.js
@@ -48,7 +48,7 @@ markdown_extensions:
 
 # specifying a French search engine is a workaround for a missing file
 # /assets/javascripts/lunr/min/lunr..min.js
-plugins: 
+plugins:
   - search:
       lang: fr
   # - markdownextradata
@@ -63,7 +63,7 @@ site_description: "Kx documentation for kdb+ and the q programming language"
 site_name: 'Kdb+ and q documentation'
 site_url: 'https://code.kx.com/q/'
 
-theme: 
+theme:
   custom_dir: custom_theme/
   favicon: 'favicon.ico'
   font: false
@@ -72,7 +72,7 @@ theme:
   name: 'material'
   language: en
   logo: 'img/kx.svg'
-  palette: 
+  palette:
     accent: 'blue'
     primary: 'black'
     scheme: default
@@ -83,7 +83,7 @@ theme:
 use_directory_urls: true
 
 nav:
-  - Home: 
+  - Home:
     - kdb+ and q: index.md
     - Reference card: ref/index.md
     - Developer tools: devtools.md
@@ -95,7 +95,7 @@ nav:
     - About this site: about/thissite.md
     # - Citations: about/citations.md
     - Kx Systems: https://kx.com
-  - Learn: 
+  - Learn:
     - Get started: learn/index.md
     - Install: learn/install.md
     - Licenses: learn/licensing.md
@@ -200,11 +200,11 @@ nav:
         - Comments: style/comments.md
         - Conditionals: style/conditionals.md
         - De-looping: style/de-looping.md
-        # - Window scripts and function: 
-        # - Reference error hell: 
+        # - Window scripts and function:
+        # - Reference error hell:
         - Engine design: style/engine-design.md
         # - Window design:
-        # - Connections: 
+        # - Connections:
         # - Dependencies:
         # - Event code
         # - f and g:
@@ -224,7 +224,7 @@ nav:
       - Origins: learn/archive.md
       # - Kx technology: about/kxtechnology.md
       - Terminology: about/terminology.md
-    - Starting kdb+: 
+    - Starting kdb+:
       - Overview: learn/startingkdb/index.md
       - The q language: learn/startingkdb/language.md
       - IPC: learn/startingkdb/ipc.md
@@ -234,7 +234,7 @@ nav:
   - Language:
     - Reference card: ref/index.md
     - By topic: basics/by-topic.md
-    - Iteration: 
+    - Iteration:
       - Overview: basics/iteration.md
       - Iterators: ref/iterators.md
       - Maps: ref/maps.md
@@ -287,7 +287,7 @@ nav:
       - group: ref/group.md
       - gtime, ltime: ref/gtime.md
       - hcount: ref/hcount.md
-      - hdel: ref/hdel.md 
+      - hdel: ref/hdel.md
       - hopen, hclose: ref/hopen.md
       - hsym: ref/hsym.md
       - ij, ijf: ref/ij.md
@@ -331,8 +331,8 @@ nav:
       - rotate: ref/rotate.md
       - save, rsave: ref/save.md
       - select: ref/select.md
-      - show: ref/show.md 
-      - signum: ref/signum.md 
+      - show: ref/show.md
+      - signum: ref/signum.md
       - sin, asin: ref/sin.md
       - sqrt: ref/sqrt.md
       - ss, ssr: ref/ss.md
@@ -373,7 +373,7 @@ nav:
       - Cut: ref/cut.md
       - Deal, Roll, Permute: ref/deal.md
       - Delete: ref/delete.md
-      - Display: ref/display.md 
+      - Display: ref/display.md
       - Dict: ref/dict.md
       - Divide: ref/divide.md
       - Display: ref/display.md
@@ -544,7 +544,7 @@ nav:
       - SSL/TLS: kb/ssl.md
       - WebSockets: kb/websockets.md
       - Interprocess communication (WP): wp/ipc/index.md
-    - C/C++: 
+    - C/C++:
       - Quick guide: interfaces/c-client-for-q.md
       - White paper (WP): wp/capi/index.md
       - API reference: interfaces/capiref.md
@@ -554,7 +554,7 @@ nav:
         - About: interfaces/arrow/index.md
         - Type mapping: interfaces/arrow/arrow-types.md
         - Reference: interfaces/arrow/reference.md
-        - Examples: interfaces/arrow/examples.md       
+        - Examples: interfaces/arrow/examples.md
       - FFI:
         - About: interfaces/ffi/index.md
         - Reference: interfaces/ffi/reference.md
@@ -564,7 +564,7 @@ nav:
         - Type mapping: interfaces/hdf5/hdf5-types.md
         - Reference: interfaces/hdf5/reference.md
         - Examples: interfaces/hdf5/examples.md
-      - Java: 
+      - Java:
         # FIXME: combine articles?
         - Java API (WP): wp/java-api/index.md
         - Quick guide: interfaces/java-client-for-q.md
@@ -581,7 +581,7 @@ nav:
         - Reference: interfaces/mqtt/reference.md
         - Examples: interfaces/mqtt/examples.md
         - IoT with MQTT (WP): wp/iot-mqtt/index.md
-      - Prometheus: 
+      - Prometheus:
         - Exporter:
           - About: interfaces/prom/exporter/index.md
           - Reference: interfaces/prom/exporter/reference.md
@@ -611,8 +611,8 @@ nav:
         - Reference: interfaces/solace/reference.md
         - RESTful API: interfaces/solace/solacerest.md
         - Examples: interfaces/solace/examples.md
-    - Clients for kdb+: 
-      - C#: 
+    - Clients for kdb+:
+      - C#:
         - API: interfaces/csharp-client-for-q.md
         - GUIs (WP): wp/gui/index.md
       - Excel: interfaces/excel-client-for-q.md
@@ -620,10 +620,10 @@ nav:
       - JDBC: interfaces/jdbc-client-for-kdb.md
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC/Simba: interfaces/odbc-simba.md
-      - ODBC3: interfaces/q-server-for-odbc3.md 
-      - Perl: interfaces/perl-client-for-q.md 
-      - Scala: interfaces/scala-client-for-q.md 
-    - Q clients: 
+      - ODBC3: interfaces/q-server-for-odbc3.md
+      - Perl: interfaces/perl-client-for-q.md
+      - Scala: interfaces/scala-client-for-q.md
+    - Q clients:
       - Bloomberg: interfaces/q-client-for-bloomberg.md
       - C/C++ functions: interfaces/using-c-functions.md
       - GPUs: interfaces/gpus.md
@@ -646,7 +646,7 @@ nav:
     - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Load balancing: kb/load-balancing.md
     - Memory backed by files: basics/memory-backed.md
-    - Optane Memory: 
+    - Optane Memory:
       - Optane Memory and kdb+: kb/optane.md
       - Performance tests: architecture/optane-tests.md
     - Order Book (WP): wp/order-book.md
@@ -659,27 +659,20 @@ nav:
     - Advanced:
       - Distributed systems (WP): wp/query-interface.md
       - Intraday writedown (WP): wp/intraday-writedown/index.md
-  - Cloud: 
+  - Cloud:
     - About: cloud/index.md
     - KX Insights: 'https://code.kx.com/insights/'
     - Amazon Web Services:
       - AWS Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
       - Reference architecture: cloud/aws/architecture.md
-      - Amazon EC2: 
+      - Amazon EC2 & Storage Services:
         - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
-        - A. Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
-        - B. EFS (NFS): cloud/aws/app-b-efs-nfs.md
-        - C. Amazon Storage Gateway: cloud/aws/app-c-asg.md
-        - D. MapR-FS: cloud/aws/app-d-mapr.md
-        - E. Goofys: cloud/aws/app-e-goofys.md
-        - F. S3FS: cloud/aws/app-f-s3fs.md
-        - G. S3QL: cloud/aws/app-g-s3ql.md
-        - H. ObjectiveFS: cloud/aws/app-h-objectivefs.md
-        - I. WekaIO Matrix: cloud/aws/app-i-wekaio-matrix.md
-        - J. Quobyte: cloud/aws/app-j-quobyte.md
+        - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
+        - EFS (NFS): cloud/aws/app-b-efs-nfs.md
+        - Amazon Storage Gateway: cloud/aws/app-c-asg.md
       - AWS Lambda: cloud/aws-lambda/index.md
     - Azure Marketplace: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview
-    - Google Cloud: 
+    - Google Cloud:
       - Marketplace: cloud/gcpm/index.md
       - Reference architecture: cloud/gcpm/architecture.md
     - Auto Scaling (WP):
@@ -687,6 +680,15 @@ nav:
       - Amazon Web Services: cloud/autoscale/aws.md
       - Realtime data cluster: cloud/autoscale/rdc.md
       - Costs and risks: cloud/autoscale/cost-risk.md
+    - Other File Systems:
+        - MapR-FS: cloud/otherfs/mapr.md
+        - Goofys: cloud/otherfs/goofys.md
+        - S3FS: cloud/otherfs/s3fs.md
+        - S3QL: cloud/otherfs/s3ql.md
+        - ObjectiveFS: cloud/otherfs/objectivefs.md
+        - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
+        - Quobyte: cloud/otherfs/quobyte.md
+
     - DigitalOcean: kb/digitalocean.md
     - License agreements:
       - AWS: license/aws.md
@@ -695,13 +697,13 @@ nav:
   - Machine learning:
     - About: ml/index.md
     - Set up: ml/setup.md
-    - embedPy: 
+    - embedPy:
       - About: ml/embedpy/index.md
       - User guide: ml/embedpy/userguide.md
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
       - embedPy and LASSO:  wp/embedpy-lasso/index.md
-    - JupyterQ: 
+    - JupyterQ:
       - About: ml/jupyterq/index.md
       - User guide: ml/jupyterq/notebooks.md
       - FAQ: ml/jupyterq/faq.md
@@ -713,7 +715,7 @@ nav:
         - Preprocessing: ml/toolkit/utilities/preproc.md
         - Utils: ml/toolkit/utilities/util.md
         - Multiprocessing: ml/toolkit/utilities/multiprocess.md
-      - FRESH: ml/toolkit/fresh.md  
+      - FRESH: ml/toolkit/fresh.md
       - Cross validation: ml/toolkit/xval.md
       - Clustering:
         - About: ml/toolkit/clustering/index.md

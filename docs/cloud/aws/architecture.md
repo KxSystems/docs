@@ -2,7 +2,7 @@
 title: Reference architecture | AWS | KX documentation
 description:
 date: June 2021
-author: Eric Cocoran
+author: Eric Cocoran,Ferenc Bodon
 ---
 # Reference architecture for AWS
 
@@ -251,19 +251,11 @@ Each of these deployment options comes with 50 MB/s, 100 MB/s, or 200 MB/s basel
 :fontawesome-brands-aws:
 [Performance-tuning options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/performance.html)
 
-
-### ObjectiveFS
-
-[ObjectiveFS](app-h-objectivefs.md) can be used to store HDB data, and is fully compliant with kdb+. It is a simple and elegant solution for the retention of old data on a slower, lower-cost S3 archive, which can be replicated by AWS, geographically or within availability zones.
-
-
-### WekaIO Matrix
-
-[WekaIO Matrix](app-i-wekaio-matrix.md) can be used to store HDB data, and is fully compliant with kdb+. Metadata operational latency, while noticeably worse than EBS, is one or two orders of magnitude better than EFS, Storage Gateway, and all of the open-source products. The other elements that distinguish this solution from others are block-like low operational latencies for some metadata functions, and good aggregate throughputs for the small random reads with kdb+.
-
 :fontawesome-solid-hand-point-right:
 [Migrating a kdb+ historical database to the Amazon Cloud](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
 
+### Other Storage Solutions
+This document contains the storage solution provided by Amazon. There are other vendors that offer kdb+ compliant storage options - these are described in more details under the "Other File Systems" menu of https://code.kx.com/q/cloud.
 
 ## Memory
 
@@ -354,19 +346,19 @@ The usual strategy for failover is to have a complete mirror of the production s
 
 ## Network
 
-The network bandwidth needs to be considered if the tickerplant components are not located on the same VM. The network bandwidth between AWS VMs depends on the type of the VMs. For example, a VM of type `m5.2xlarge` has a maximum network bandwidth 10 Gbps and a larger instance `m5.16xlarge` can sustain between 10–25 Gbps. For a given update frequency you can calculate the required bandwidth by employing the [`-22!` internal function](../../basics/internal.md#-22x-uncompressed-length) that returns the length of the IPC byte representation of its argument. The tickerplant copes with large amounts of data if batch updates are sent. 
+The network bandwidth needs to be considered if the tickerplant components are not located on the same VM. The network bandwidth between AWS VMs depends on the type of the VMs. For example, a VM of type `m5.2xlarge` has a maximum network bandwidth 10 Gbps and a larger instance `m5.16xlarge` can sustain between 10–25 Gbps. For a given update frequency you can calculate the required bandwidth by employing the [`-22!` internal function](../../basics/internal.md#-22x-uncompressed-length) that returns the length of the IPC byte representation of its argument. The tickerplant copes with large amounts of data if batch updates are sent.
 
 !!! tip "Make sure the network is not your bottleneck in processing the updates."
 
 A network load balancer is a type of [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) by Amazon. It is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, Network Load Balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
 
-Load balancers can distribute load among applications that offer the same service. Kdb+ is single-threaded by default. You can set [multithreaded input mode](../../kb/multithreaded-input.md) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs. 
+Load balancers can distribute load among applications that offer the same service. Kdb+ is single-threaded by default. You can set [multithreaded input mode](../../kb/multithreaded-input.md) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
 
 A better approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway via async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then we recommend a gateway load balancer to avoid query contention in the gateway. Furthermore, there are other tickerplant components that enjoy the benefit of load balancers to handle simultaneous requests better.
 
-Adding a load balancer on top of an historical database (HDB) pool is quite simple, it needs only three steps. 
+Adding a load balancer on top of an historical database (HDB) pool is quite simple, it needs only three steps.
 
-1.  Create a network load balancer with protocol TCP. Set the name, availability zone, target group and security group. The security group needs to have an inbound rule to the HDB port. 
+1.  Create a network load balancer with protocol TCP. Set the name, availability zone, target group and security group. The security group needs to have an inbound rule to the HDB port.
 2.  Create a launch template. A key part here is the _User Data_ window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the load balancer so you need to set up an inbound firewall rule via a security group. You can also use an image (AMI) that you created earlier from an existing EC2.
 3.  Create an Auto Scale instance group (set of virtual machines) with autoscaling to better handle peak loads. Set the recently created instance group as a target group. All clients will access the HDB pool via the load balancer’s DNS name (together with the HDB port) and the load balancer will distribute the requests among the HDB servers seamlessly.
 
@@ -496,7 +488,7 @@ We distinguish application- and infrastructure-level access control. Application
     We would use this for permissioning access to the KX gateway. This is a key task for the administrators of the KX system and both user and API access to the entire system is controlled entirely through the KX gateway process.
 
 
-## Hardware 
+## Hardware
 
 It’s worth noting several EC2 instance types that are especially performant for kdb+ workloads. The `R5` family of EC2 instance types are memory-optimized. Although the `R5b` and `R5` CPU-to-memory ratio and network performance are the same, `R5b` instances support bandwidth up to 60 Gbps and EBS performance of 260K IOPS, providing 3× higher EBS-Optimized performance compared to `R5` instances.
 

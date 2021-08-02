@@ -21,7 +21,7 @@ With multiple kdb+ processes reading, the S3FS service effectively stalled.
 
 ![s3fs](img/media/image38.png)
 
-function       | latency (mSec) | function   | latency (mSec) 
+function       | latency (mSec) | function   | latency (mSec)
 ---------------|----------------|------------|---------------
 `hclose hopen` | 7.57           | `();,;2 3` | 91.1
 `hcount`       | 10.18          | `read1`    | 12.64
@@ -32,5 +32,5 @@ function       | latency (mSec) | function   | latency (mSec)
 
 
 <div class="kx-nav" markdown="1">
-<div class="kx-nav-prev">[E. Goofys](app-e-goofys.md)</div><div class="kx-nav-next">[G. S3QL](app-g-s3ql.md)</div>
+<div class="kx-nav-prev">[Goofys](goofys.md)</div><div class="kx-nav-next">[S3QL](s3ql.md)</div>
 </div>
