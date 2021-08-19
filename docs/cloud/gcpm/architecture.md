@@ -14,16 +14,16 @@ KX clients can lift and shift their kdb+ plants to the cloud and make use of vir
 
 Deployment:
 
--   [QPacker](https://code.kx.com/insights/qpacker/docs/quickstart/) – A packaging utility that supports q, Python and C libraries.
--   [Detailed guide](https://code.kx.com/insights/kx-core-app-charts/docs/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud.
+-   [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/quickstart/) – A packaging utility that supports q, Python and C libraries.
+<!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
 
 Service integration:
 
--   [QLog](https://code.kx.com/insights/qlog/docs/quickstart/) – Integrations with major cloud logging services
--   [Kurl](https://code.kx.com/insights/kurl/docs/quickstart/) – Native kdb+ REST client with authentication to cloud services
+-   [QLog](https://code.kx.com/insights/cloud-edition/qlog/quickstart/) – Integrations with major cloud logging services
+-   [Kurl](https://code.kx.com/insights/cloud-edition/kurl/quickstart/) – Native kdb+ REST client with authentication to cloud services
 
 Storage
--   [Kdb+ Object Store](https://code.kx.com/insights/objstor/docs/quickstart/) – Native support for reading and querying cloud object storage
+-   [Kdb+ Object Store](https://code.kx.com/insights/cloud-edition/objstor/quickstart/) – Native support for reading and querying cloud object storage
 
 
 ## Architectural components
@@ -170,7 +170,7 @@ The task of the gateway can be broken down into the following steps.
 -   Gain access to data in the required services (TP, RDB, HDB)
 -   Provide the best possible service and query performance
 
-Google BigQuery is a fully managed, serverless data warehouse that enables scalable analysis over petabytes of data. The KX Insights [BigQuery API](https://code.kx.com/insights/big-query/docs/md/) lets you easily interact with the REST API that Google exposes for BigQuery. This is particularly useful for the gateway. Data may reside in BigQuery that can be fetched by the gateway and users can enjoy the expressiveness of the q language to further analyze the data or join it with other data sources.
+Google BigQuery is a fully managed, serverless data warehouse that enables scalable analysis over petabytes of data. The KX Insights [BigQuery API](https://code.kx.com/insights/cloud-edition/big-query/api/) lets you easily interact with the REST API that Google exposes for BigQuery. This is particularly useful for the gateway. Data may reside in BigQuery that can be fetched by the gateway and users can enjoy the expressiveness of the q language to further analyze the data or join it with other data sources.
 
 
 ## Storage and filesystem

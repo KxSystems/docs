@@ -254,8 +254,9 @@ Each of these deployment options comes with 50 MB/s, 100 MB/s, or 200 MB/s basel
 :fontawesome-solid-hand-point-right:
 [Migrating a kdb+ historical database to the Amazon Cloud](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
 
-### Other Storage Solutions
-This document contains the storage solution provided by Amazon. There are other vendors that offer kdb+ compliant storage options - these are described in more details under the "Other File Systems" menu of https://code.kx.com/q/cloud.
+### Other storage solutions
+
+This document contains the storage solution provided by Amazon. There are other vendors who offer kdb+-compliant storage options - these are described in more details under _Other File Systems_ at https://code.kx.com/q/cloud.
 
 ## Memory
 
