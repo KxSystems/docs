@@ -39,6 +39,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - custom_theme/.icons
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.tabbed
@@ -664,9 +667,9 @@ nav:
     - KX Insights: 'https://code.kx.com/insights/'
     - Amazon Web Services:
       - AWS Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
-      - Reference architecture: cloud/aws/architecture.md
+      - Reference architecture: cloud/aws/index.md
       - Amazon EC2 & Storage Services:
-        - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/index.md
+        - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/migration.md
         - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
         - EFS (NFS): cloud/aws/app-b-efs-nfs.md
         - Amazon Storage Gateway: cloud/aws/app-c-asg.md

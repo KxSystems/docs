@@ -33,7 +33,7 @@ Kdb+, from [KX](https://kx.com), is
     :fontawesome-brands-github: [q-fmt](https://github.com/gitrj95/q-fmt),
     [q-memo](https://github.com/gitrj95/q-memo)
 
-    :fontawesome-solid-cloud: [AWS architecture](cloud/aws/architecture.md)
+    :fontawesome-solid-cloud: [AWS architecture](cloud/aws/index.md)
 
     :fontawesome-regular-map: [IoT with MQTT](wp/iot-mqtt/index.md)
 
