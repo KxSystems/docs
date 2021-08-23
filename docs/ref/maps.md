@@ -177,16 +177,17 @@ The Each Parallel map takes a **unary** value as argument and derives a unary fu
 [Parallel processing](../basics/peach.md)
 
 ```bash
-$ q -s 2
-KDB+ 3.4 2016.06.14 Copyright (C) 1993-2016 Kx Systems
-m32/ 2()core 4096MB sjt mark.local 192.168.0.17 NONEXPIRE
+❯ q -s 2
+KDB+ 4.1t 2021.07.12 Copyright (C) 1993-2021 Kx Systems
+m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE ..
 ```
-
 ```q
-q)\t ({sum exp x?1.0}' )2#1000000  / each
-185
-q)\t ({sum exp x?1.0}':)2#1000000  / peach
-79
+q)\s
+2i
+q)\t inv each 2 1000 1000#2000000?1f
+2601
+q)\t inv peach 2 1000 1000#2000000?1f
+1462
 ```
 
 
@@ -206,6 +207,19 @@ v1 peach list
     To parallelize a value of rank >1, use [Apply](apply.md) to evaluate it on a list of arguments.
 
     Alternatively, define the value as a function that takes a parameter dictionary as argument, and pass the derived function a table of parameters to evaluate.
+
+:fontawesome-solid-book:
+[`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)
+<br>
+:fontawesome-solid-book-open:
+[Parallel processing](../basics/peach.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[Table counts in a partitioned database](../kb/partition.md#table-counts)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[A.68 `peach`](/q4m3/A_Built-in_Functions/#a68-peach)
 
 
 ## Each Prior
