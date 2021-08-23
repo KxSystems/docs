@@ -2,7 +2,7 @@
 title: Reference architecture | AWS | KX documentation
 description:
 date: June 2021
-author: Eric Cocoran,Ferenc Bodon
+authors: Eric Corcoran, Ferenc Bodon
 ---
 # Reference architecture for AWS
 
@@ -12,21 +12,24 @@ Kdb+ is the technology of choice for many of the world’s top financial institu
 
 KX customers can lift and shift their kdb+ plants to the cloud and exploit virtual machines (VM) with storage. This is the classic approach that relies on the existing licence. To benefit more from the cloud technology we recommend migrating to KX Insights.
 
-[KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘devops’ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from S3 object storage, and a packaging utility, QPacker, to build and deploy kdb+ applications to the cloud. By taking advantage of the KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on AWS.
+!!! summary "KX Insights"
 
-Deployment:
+    [KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
--   QPacker: a packaging utility that supports q, Python and C libraries
--   Detailed guide to using Helm and Kubernetes to deploy kdb+ applications to the cloud
+    Deployment:
 
-Service integration:
+    -   [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/quickstart/) – A packaging utility that supports q, Python and C libraries
+    <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
+    -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
 
--   QLog: integrations with major cloud logging services
--   Kurl: native kdb+ REST client with authentication to cloud services
+    Service integration:
 
-Storage:
+    -   [QLog](https://code.kx.com/insights/cloud-edition/qlog/quickstart/) – Integrations with major cloud logging services
+    -   [Kurl](https://code.kx.com/insights/cloud-edition/kurl/quickstart/) – Native kdb+ REST client with authentication to cloud services
 
--   Kdb+ Object Store: native support for reading and querying S3 object storage
+    Storage:
+    
+    -   [Kdb+ Object Store](https://code.kx.com/insights/cloud-edition/objstor/quickstart/) – Native support for reading and querying cloud object storage
 
 
 ## Kdb+ architecture patterns
