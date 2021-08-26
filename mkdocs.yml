@@ -673,8 +673,8 @@ nav:
         - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
         - EFS (NFS): cloud/aws/app-b-efs-nfs.md
         - Amazon Storage Gateway: cloud/aws/app-c-asg.md
+        - FSx for Lustre: cloud/aws/lustre.md
       - AWS Lambda: cloud/aws-lambda/index.md
-      - FSx for Lustre: cloud/aws/lustre.md
     - Azure Marketplace: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview
     - Google Cloud:
       - Marketplace: cloud/gcpm/index.md
