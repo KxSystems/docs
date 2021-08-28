@@ -10,7 +10,7 @@ keywords: command, kdb+, q, system
 
 
 <div markdown="1" class="typewriter">
-[\a  tables](#a-tables)                           [\s       number of secondary threadss](#s-number-of-secondary-threads)
+[\a  tables](#a-tables)                           [\s       number of secondary threads](#s-number-of-secondary-threads)
 [\b  views](#b-views)                            [\S       random seed](#s-random-seed)
 [\B  pending views](#b-pending-views)                    [\t       timer](#t-timer)
 [\c  console size](#c-console-size)                     [\T       timeout](#t-timeout)
