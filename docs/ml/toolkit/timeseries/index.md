@@ -28,7 +28,7 @@ Find example notebooks at
 All code relating to the timeseries section of the Machine Learning Toolkit is available at
 <br>
 :fontawesome-brands-github:
-[KxSystems/ml/timeseries/](https://github.com/kxsystems/ml/timeseries)
+[KxSystems/ml/timeseries/](https://github.com/kxsystems/ml/tree/master/timeseries)
 
 
 ## Loading

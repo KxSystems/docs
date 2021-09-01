@@ -81,12 +81,11 @@ $ pip install pyq==4.1.2
     <pre><code class="language-bash">$ pip install path-to-the-source</path></code></pre>
 
 
-
 ## Installing into a virtual environment
 
 PyQ was designed to work inside virtual environments. You can set up your system to use different versions of Python and/or kdb+ by using separate virtual environments.
 
-To create a virtual environment, you need to install the [virtualenv](https://virtualenv.pypa.io/en/stable/installation/) package:
+To create a virtual environment, you need to install the [virtualenv](https://virtualenv.pypa.io/en/stable/installation.html) package:
 
 ```bash
 $ [sudo] pip install virtualenv

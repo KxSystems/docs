@@ -40,7 +40,7 @@ q root_dse.q
 Shows a search that works with the example LDAP server at: 
 
 :fontawesome-brands-github:
-[rroemhild/docker-test-openldapi](https://github.com/rroemhild/docker-test-openldapi)
+[rroemhild/docker-test-openldapi](https://github.com/rroemhild/docker-test-openldap)
 
 The script includes searches such as searching for a user’s email. 
 (This example server does not require a bind with user dn/password.)

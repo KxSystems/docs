@@ -257,7 +257,7 @@ q)\ts show first {not all first[x]=x-til 4}{1_x,next4PFs last x}/4#1
 **Noah Attrup** is a senior kdb+ developer in New York City.
 <br>
 [:fontawesome-solid-envelope:](mailto:nattrup@kx.com?subject=Prime numbers) &nbsp;
-[:fontawesome-brands-linkedin:](linkedin.com/in/noah-attrup-16a38483)
+[:fontawesome-brands-linkedin:](https://linkedin.com/in/noah-attrup-16a38483)
 
 
 <!-- 

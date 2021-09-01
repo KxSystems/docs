@@ -214,7 +214,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 <span class="author"><a href="https://github.com/picoDoc?tab=repositories">(Matthew Doherty)</a></span>
 </td>
 </tr>
-<tr markdown="1">
+<!-- <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/kimtang/btlib-bt">btlib-bt</a></td>
 <td markdown="1">Behavior-Tag Engine. <span class="author"><a href="https://github.com/kimtang?tab=repositories">
 						(Kim Tang)
@@ -235,6 +235,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 					</a></span>
 </td>
 </tr>
+ -->
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/Naoki-Yatsu/FX-AlgorithmTrading">FX-AlgorithmTrading</a></td>
 <td markdown="1">FX algorithm trading system. <span class="author"><a href="https://github.com/Naoki-Yatsu?tab=repositories">
@@ -906,12 +907,12 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 ## :fontawesome-solid-superscript: Mathematics
 
 <table class="kx-compact" markdown="1">
-<tr markdown="1">
+<!-- <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/kimtang/lib-math">lib-math</a></td>
 <td markdown="1">Math library. <span class="author"><a href="https://github.com/kimtang?tab=repositories">
 						(Kim Tang)
 					</a></span>
-</td>
+</td> -->
 </tr>
 <tr markdown="1">
 <td markdown="1" class="nowrap"><a href="https://github.com/zakoud/options">options</a></td>

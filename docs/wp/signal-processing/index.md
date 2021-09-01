@@ -845,9 +845,12 @@ So the q algorithm can determine the Fourier Transform of a million
 point dataset in about a second, a nice whole number to gauge the
 comparative performance.
 
+![Peter Hinch](https://avatars.githubusercontent.com/u/8437477?v=4)
+{: .small-face}
+
 In Python, the native complex-math definitions field can be used to
 build a similar radix-2 FFT Decimation in Time routine as was
-implemented above, from a publicly-available GitHub repo [github.com/peterhinch](https://github.com/peterhinch/micropython-fft/blob/master/algorithms.py).
+implemented by [Peter&nbsp;Hinch](https://github.com/peterhinch).
 
 ```python
 import pandas as pd

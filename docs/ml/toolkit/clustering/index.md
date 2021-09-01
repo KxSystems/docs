@@ -18,7 +18,7 @@ Notebooks showing examples of the clustering algorithms mentioned above can be f
 All code relating to the clustering section of the Machine Learning Toolkit is available at
 
 :fontawesome-brands-github:
-[KxSystems/ml/clust/](https://github.com/kxsystems/ml/clust)
+[KxSystems/ml/clust/](https://github.com/KxSystems/ml/tree/master/clust)
 
 
 ## Loading
