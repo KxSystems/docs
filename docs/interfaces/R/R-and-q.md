@@ -14,7 +14,7 @@ Outside the Fusion interfaces to R, a number of interfaces provide extremely use
 Although it is not the recommended method, if R is running on Windows, the q ODBC driver can be used to connect to kdb+ from R.
 
 :fontawesome-regular-hand-point-right:
-[Kdb+ server for ODBC](../q-server-for-odbc.md)
+[Kdb+ server for ODBC](../q-server-for-odbc3.md)
 
 The RODBC package should be installed in R. An example is given below.
 
@@ -30,9 +30,10 @@ The RODBC package should be installed in R. An example is given below.
 > res <- sqlQuery(ch, paste('q)select count i by date from trade'))
 ```
 
+
 ## R in q
 
-### Embedded R maths library
+### Embedded R maths library
 
 R contains a maths library which can be compiled standalone.
 The functions can then be exposed to q by wrapping them in C code which handles the mapping between R datatypes and q datatypes (K objects).

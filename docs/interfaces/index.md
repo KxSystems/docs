@@ -140,12 +140,10 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 :fontawesome-brands-github: [michaelwittig/node-q](https://github.com/michaelwittig/node-q)
 </td>
 </tr>
-<tr markdown="1"><td markdown="1">ODBC</td><td markdown="1">[Kdb+ server for ODBC](q-server-for-odbc.md)<br/>
-[Kdb+ server for ODBC3](q-server-for-odbc3.md)</td></tr>
+<tr markdown="1"><td markdown="1">ODBC</td><td markdown="1">[Kdb+ server for ODBC3](q-server-for-odbc3.md)</td></tr>
 <tr markdown="1">
 <td markdown="1">Perl</td>
 <td markdown="1">
-[Perl client for kdb+](perl-client-for-q.md)<br/>
 :fontawesome-brands-github: [wjackson/anyevent-k](https://github.com/wjackson/anyevent-k)<br/>
 :fontawesome-brands-github: [wjackson/k-perl](https://github.com/wjackson/k-perl)
 </td>
