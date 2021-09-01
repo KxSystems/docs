@@ -3,7 +3,7 @@ title: Interfaces and editor integrations | Interfaces | kdb+ and q documentatio
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
 keywords: editor, github, integration, interface, kdb+, q, repository
 ---
-<span style="color: #009BAB; font-size: 2em">123</span><br><span style="font-size: .7em">interfaces &<br>connectors
+<span style="color: #009BAB; font-size: 2em">121</span><br><span style="font-size: .7em">interfaces &<br>connectors
 {: style="border: 1px solid #009BAB; border-radius: 10px; float: right; line-height: 1.2em; margin: 0 1em 0 0; padding: 1em 1em .5em; text-align: center"}
 
 # :fontawesome-regular-handshake: Interfaces and editor integrations
@@ -167,8 +167,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 :fontawesome-brands-github: [eschnapp/q](https://github.com/eschnapp/q)<br/>
 :fontawesome-brands-github: [nugend/q](https://github.com/nugend/q)<br/>
 :fontawesome-brands-github: [nugend/qPython](https://github.com/nugend/qPython)<br/>
-:fontawesome-brands-github: [exxeleron/qPython](https://github.com/exxeleron/qPython)<br/>
-:fontawesome-brands-github: [kingan/mongodb_kdb_python_connection](https://github.com/kingan/mongodb_kdb_python_connection)
+:fontawesome-brands-github: [exxeleron/qPython](https://github.com/exxeleron/qPython)
 </td></tr>
 <tr markdown="1"><td markdown="1">:fontawesome-brands-r-project: R</td><td markdown="1">:fontawesome-brands-github: [yang-guo/qserver](https://github.com/yang-guo/qserver)</td></tr> 
 <tr markdown="1">
