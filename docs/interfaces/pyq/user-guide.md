@@ -1499,7 +1499,8 @@ $
 
 ## Calling Python from kdb+
 
-Kdb+ is designed as a platform for multiple programming languages. Out of the box, it comes with q, k, and a variant of ANSI SQL: the [s language](https://github.com/KxSystems/kdb/blob/master/s.k). Installing PyQ gives access to the p language, where "p" stands for "Python". In addition, PyQ provides a mechanism for exporting Python functions to q where they can be called as native q functions.
+Kdb+ is designed as a platform for multiple programming languages. 
+Installing PyQ gives access to the p language, where "p" stands for "Python". In addition, PyQ provides a mechanism for exporting Python functions to q where they can be called as native q functions.
 
 
 ### The p language
