@@ -2,7 +2,7 @@
 title: "Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network | White Papers | kdb+ and q documentation"
 description: Use Lightning to monetize streaming data. Use the qlnd library to create payment channels, generate invoices, and route payments across the network.
 author: Jeremy Lucid
-date: May 2019
+date: August 2021
 keywords: bitcoin, lightning, blockchain, kdb+, q, tickerplant
 ---
 White paper
@@ -16,7 +16,7 @@ by [Jeremy Lucid](#author)
 
 
 
-[Lightning](https://lightning.network/lightning-network-paper.pdf) is a technology designed to scale Bitcoin and other compatible blockchains by enabling high transaction throughput with greater privacy while preserving decentralized qualities. It is a layer two infrastructure which builds upon the security and [smart contract](https://en.wikipedia.org/wiki/Smart_contract) functionality of the underlying base blockchain, analogous to how the HTTP application layer protocol builds on an underlying and reliable TCP layer. 
+[Lightning](https://lightning.network/lightning-network-paper.pdf) is a technology designed to scale Bitcoin and other compatible blockchains by enabling high transaction throughput with greater privacy while preserving decentralized qualities. It is a layer two infrastructure which builds upon the security and [smart contract](https://www.ucl.ac.uk/computer-science/research/research-groups/financial-computing-and-analytics/research/smart-contracts) functionality of the underlying base blockchain, analogous to how the HTTP application layer protocol builds on an underlying and reliable TCP layer. 
 Lightning succeeds by allowing payments to be made off-chain through the technology of bidirectional [payment channels](#payment-channels), wherein the underlying network of nodes do not need to validate and record every transaction. Consequently, peer-to-peer payments made over the Lightning network can be performed in high volume, with micro value (order of cents and lower), with low or zero fees and with near instant settlement times. Today, Lightning is one of the most rapidly growing networks (see [Real-time Network Statistics](https://1ml.com/statistics)) and adopted technologies in the cryptocurrency space and is at the cutting edge of blockchain innovation.
 
 Lightning application (LApp) development is progressing quickly and includes [eCommerce integrations](https://blockstream.com/2018/01/16/lightning-charge/), [micropayment paywalls](https://github.com/ElementsProject/wordpress-lightning-publisher) for content creators, [micropayment tipping](https://tippin.me/) services (Twitter), and multiple Custodial and Non-Custodial [wallet](https://www.lopp.net/lightning-information.html) implementations. The micropayment application, in particular, has the potential to transform how online content
@@ -24,7 +24,7 @@ is monetized by facilitating a micro fee pay-per-view model, as opposed to an ad
 Lightning payments are also highly applicable to the **IoT space**, as the network can be used to implement a decentralized peer-to-peer payment layer for transactions between IoT devices, utilizing all of the networks key features, see [IoT and Lightning](https://medium.com/meetbitfury/the-internet-of-things-and-the-lightning-network-41b93dbb8456), [Bitcoin Payment-Channels for Resource Limited IoT Devices](https://arxiv.org/pdf/1812.10345.pdf) and [Micropayments between IoT devices](http://www.diva-portal.org/smash/get/diva2:1272048/FULLTEXT01.pdf).
 
 For cryptocurrency exchanges,
-integrating Lightning has the advantage of allowing clients to more rapidly deposit and withdraw funds, or move funds seamlessly between exchanges. Increasing the velocity of value transfer should, in turn, lead to greater market efficiency and reduce arbitrage opportunities. The exchange [ZebPay](https://blog.zebpay.com/zebpay-launches-lightning-network-payments-44cfaad0b1c7) has become the first to begin integrating the payment system. Lightning can also enable exchanges to monetize market data in a completely new way, as showcased in a recent [Suredbits](https://suredbits.com/) POC application, where streaming futures data from the BitMEX and Kraken exchanges was made available to users on-the-fly with Lightning micropayments.
+integrating Lightning has the advantage of allowing clients to more rapidly deposit and withdraw funds, or move funds seamlessly between exchanges. Increasing the velocity of value transfer should, in turn, lead to greater market efficiency and reduce arbitrage opportunities. The exchange [ZebPay](https://zebpay.com/lightning/) has become the first to begin integrating the payment system. Lightning can also enable exchanges to monetize market data in a completely new way, as showcased in a recent [Suredbits](https://suredbits.com/) POC application, where streaming futures data from the BitMEX and Kraken exchanges was made available to users on-the-fly with Lightning micropayments.
 
 This paper will explore Lightning network technology in the context of its application to the monetization of streaming data. 
 As an example of how Lightning can be integrated into kdb+ based applications, this paper will illustrate how a kdb+ tickerplant can be easily modified to communicate with a Lightning node to accept payments for market, or sensor data, on a per request (ticker) basis, with a fast settlement. In particular, the paper will describe how the [kdb+ qlnd](https://github.com/jlucid/qlnd) library can be used to communicate with a Lightning node to 
@@ -334,7 +334,7 @@ Be sure to record the 24-word seed, which is essential for wallet recovery.
 ## Interacting with Lightning using `qlnd`
 
 The [qlnd](https://github.com/jlucid/qlnd) library enables a q process to communicate with a locally running `lnd` node
-via the [LND REST API](https://api.lightning.community/rest/index.html#lnd-rest-api-reference). Moreover, the library makes
+via the [LND REST API](https://api.lightning.community/#lnd-rest-api-reference). Moreover, the library makes
 use of the powerful embedPy interface, recently released by KX, which allows the kdb+ interpreter to manipulate Python objects, call Python functions and load Python libraries. This is particularly useful for this application given that the REST API Reference documentation has explicit and well-tested examples using Python. (There are many other applications of embedPy and kdb+.)
 
 
@@ -377,7 +377,7 @@ q).lnd.setTLS "/new/path/to/.lnd/tls.cert"
 q).lnd.setMACAROON "/new/path/to/.lnd/data/chain/bitcoin/mainnet/admin.macaroon"
 ```
 
-To confirm that everything is set up correctly, run [`.lnd.getInfo`](https://api.lightning.community/rest/index.html#v1-getinfo) to return some basic information from the node.
+To confirm that everything is set up correctly, run [`.lnd.getInfo`](https://api.lightning.community/?python#v1-getinfo) to return some basic information from the node.
 
 ```q
 q).lnd.getInfo[][`version]
@@ -390,7 +390,7 @@ q).lnd.getInfo[][`identity_pubkey]
 
 ### Funding a Lightning wallet
 
-With the node running, and the qlnd functions returning as expected, the first step towards creating a payment channel is to fund the Lightning wallet with Bitcoin. To do this, instruct the wallet to first generate a new address with [`.lnd.newaddress`](https://api.lightning.community/rest/index.html#v1-newaddress).
+With the node running, and the qlnd functions returning as expected, the first step towards creating a payment channel is to fund the Lightning wallet with Bitcoin. To do this, instruct the wallet to first generate a new address with [`.lnd.newaddress`](https://api.lightning.community/?python#v1-newaddress).
 
 ```q
 q).lnd.newaddress[]
@@ -409,7 +409,7 @@ error | 0n
 id    | 0f
 ```
 
-To track the status of this wallet funding transaction, we can query either the `bitcoind` node using [`.bitcoind.gettransaction`](https://github.com/jlucid/qbitcoind/wiki/Transaction-IDs), or the `lnd` node using [`.lnd.getTransactions`](https://api.lightning.community/rest/index.html#v1-transactions), as shown below.
+To track the status of this wallet funding transaction, we can query either the `bitcoind` node using [`.bitcoind.gettransaction`](https://github.com/jlucid/qbitcoind/wiki/Transaction-IDs), or the `lnd` node using [`.lnd.getTransactions`](https://api.lightning.community/?python#v1-transactions), as shown below.
 
 
 ```q
@@ -438,7 +438,7 @@ dest_addresses   | ("bc1q3zy2zdyp77er7rc40xn2udxj888x2qjdun9zdm";"bc1qa4gjgfsufâ
 total_fees       | "1481"
 ```
 
-Once enough confirmations are received, the Lightning wallet can be instructed to display the balance by calling [`.lnd.walletBalance`](https://api.lightning.community/rest/index.html#v1-balance-blockchain), as shown below. 
+Once enough confirmations are received, the Lightning wallet can be instructed to display the balance by calling [`.lnd.walletBalance`](https://api.lightning.community/?python#v1-balance-blockchain), as shown below. 
 A confirmed balance means the deposit is complete and the node is ready to open channels.
 
 ```q
@@ -452,7 +452,7 @@ confirmed_balance| "1060000
 ### Connecting to peers
 
 Before a channel can be opened between Lightning nodes, both nodes need to be able to communicate
-with one another securely. This can be achieved using the [`.lnd.connectPeer`](https://api.lightning.community/rest/index.html#v1-peers) API. This API requires the user to pass the Lightning node address, which is of the format `publickey@host`, with a few examples 
+with one another securely. This can be achieved using the [`.lnd.connectPeer`](https://api.lightning.community/?python#v1-peers) API. This API requires the user to pass the Lightning node address, which is of the format `publickey@host`, with a few examples 
 shown below.
 
 ```q
@@ -466,7 +466,6 @@ Nodes can be found by browsing the node directory available at the various explo
 
 -   [1ml.com](https://1ml.com/)
 -   [explorer.acinq.co](https://explorer.acinq.co/)
--   [graph.lndexplorer.com](https://graph.lndexplorer.com/)
 
 For the purposes of this paper, a connection will be made with the node whose alias is [`TICKERPLANT`](https://1ml.com/node/023bc00c30acc34a5c9cbf78f84aa775cb63f578a69a6f8ec9a7600753d4f9067c), and
 whose details are as follows.
@@ -493,7 +492,7 @@ q)host:"217.160.185.97:9736"
 q).lnd.connectPeer[`addr`perm!(`pubkey`host!(tp_pubkey;host);1b)]
 ```
 
-Confirm the node was added as a connection by searching the list of connected peers using [`.lnd.listPeers`](https://api.lightning.community/rest/index.html#v1-peers). Below, the peer details
+Confirm the node was added as a connection by searching the list of connected peers using [`.lnd.listPeers`](https://api.lightning.community/?python#v1-peers). Below, the peer details
 are first converted into a more convenient kdb+ table format to make for easier selection.
 
 ```q
@@ -510,7 +509,7 @@ ping_time | "476"
 
 ### Opening a channel with a funding transaction
 
-To open a channel with the now connected `TICKERPLANT` `lnd` node, we can use the [`.lnd.openChannel`](https://api.lightning.community/rest/index.html#v1-channels) API.
+To open a channel with the now connected `TICKERPLANT` `lnd` node, we can use the [`.lnd.openChannel`](https://api.lightning.community/?python#v1-channels) API.
 
 In the example below, a channel can be opened by passing a dictionary with the following key-value pairs.
 
@@ -554,14 +553,14 @@ q).lnd.decodeTxid["D0qR7aU8bxzVXwtRSwe2GmgaZgyCnj+u0HNpQ8OvHdY="]
 This ID can then be tracked on a [block explorer](https://www.blockchain.com/btc/tx/d61dafc3436973d0ae3f9e820c661a681ab6074b510b5fd51c6f3ca5ed914a0f) or, as shown previously, by using `.lnd.getTransactions`.
 
 Opening a channel is an on-chain event, so it may take a few confirmations before the channel is open and ready for use.
-In the meantime, the channel details can be observed using [`.lnd.pendingChannels`](https://api.lightning.community/rest/index.html#v1-channels-pending).
+In the meantime, the channel details can be observed using [`.lnd.pendingChannels`](https://api.lightning.community/?python#v1-channels-pending).
 
 ```q
 q).lnd.pendingChannels[][`pending_open_channels][`channel]
 ```
 
 Once the channel is opened, its details should appear on the list of opened channels maintained by the node.
-This list can be accessed using the [`.lnd.listChannels`](https://api.lightning.community/rest/index.html#v1-channels-transactions-route) API. This is a good way to keep track of the local and remote balances associated with the channel.
+This list can be accessed using the [`.lnd.listChannels`](https://api.lightning.community/?python#v1-channels-transactions-route) API. This is a good way to keep track of the local and remote balances associated with the channel.
 
 ```q
 q)t:(uj/) enlist@'.lnd.listChannels[][`channels]
@@ -572,7 +571,7 @@ q)select from t where remote_pubkey like tp_pubkey
 ### Creating an invoice
 
 In order to receive payment for a service, a [Lightning network invoice](https://medium.com/suredbits/lightning-101-what-is-a-lightning-invoice-d527db1a77e6) should be generated by the payee and sent to the payer.
-The [`.lnd.addInvoice`](https://api.lightning.community/rest/index.html#v1-payreq) API provides a simple way to generate invoices.
+The [`.lnd.addInvoice`](https://api.lightning.community/?python#v1-payreq) API provides a simple way to generate invoices.
 In the example below, an invoice is generated by the `TICKERPLANT` `lnd` node, by passing the function a dictionary containing 
 the following information.
 
@@ -608,7 +607,7 @@ Here the `payment_request` string is presented along with its associated QR code
 
 ### Making a payment with a commitment transaction
 
-Once the payer has received the `payment_request` string, the message can be decoded using [`.lnd.decodePayReq`](https://api.lightning.community/rest/index.html#v1-payreq), as shown below. 
+Once the payer has received the `payment_request` string, the message can be decoded using [`.lnd.decodePayReq`](https://api.lightning.community/?python#v1-payreq), as shown below. 
 
 ```q
 q)paymentRequest:"lnbc1u1pwfvnzspp5yzys22d6yudcjq779pa254f8khc44c04ewtnzx0dd360hvâ€¦"
@@ -622,7 +621,7 @@ description | "Data Request Received: Pay 100Sat to receive"
 cltv_expiry | "144"
 ```
 
-If the payer is satisfied with the invoice details, the [`.lnd.sendPayment`](https://api.lightning.community/rest/index.html#v1-channels-transactions) API can be used to pay the invoice over Lightning. The payment below settles in milliseconds.
+If the payer is satisfied with the invoice details, the [`.lnd.sendPayment`](https://api.lightning.community/?python#v1-channels-transactions) API can be used to pay the invoice over Lightning. The payment below settles in milliseconds.
 
 ```q
 q)show d:.lnd.sendPayment[(enlist `payment_request)!(enlist paymentRequest)]
@@ -836,7 +835,7 @@ trade|
 
 ### Subscriber: making payment
 
-On the subscriber end, making a payment is straightforward using the [`.lnd.sendPayment`](https://api.lightning.community/rest/index.html#v1-channels-transactions) function.
+On the subscriber end, making a payment is straightforward using the [`.lnd.sendPayment`](https://api.lightning.community/?python#v1-channels-transactions) function.
 
 
 ```q
@@ -848,7 +847,7 @@ payment_route   | `total_time_lock`total_amt`hops`total_amt_msat!(563411f;,"2";+
 payment_hash    | "QZKFOR+nzeHwv53oPlnZTmZP7LmWKY3n4R1+wtemg4s="
 ```
 
-The list of all past transactions can also be accessed using [`.lnd.listPayments`](https://api.lightning.community/rest/index.html#v1-payments).
+The list of all past transactions can also be accessed using [`.lnd.listPayments`](https://api.lightning.community/?python#v1-payments).
 
 ```q
 q)select value_sat, path from .lnd.listPayments[][`payments]
@@ -870,7 +869,7 @@ value_sat path
 
 ### Tickerplant: confirming payment
 
-The Lightning node API provides a [SubscribeInvoices](https://api.lightning.community/rest/index.html#v1-invoices-subscribe)
+The Lightning node API provides a [SubscribeInvoices](https://api.lightning.community/?python#v1-invoices-subscribe)
 option which returns a uni-directional stream from the `lnd` server to the client, which can be used to notify the client of newly added/settled invoices. By subscribing to this stream the tickerplant can be notified immediately of payment.
 However, because this is a blocking call, we will instead use a dedicated q process to listen and push events onto
 the tickerplant immediately.
@@ -1111,7 +1110,7 @@ could be monetized with the creation of a pay-per-request system utilizing Light
 While Lightning remains an experimental and rapidly changing technology, with many outstanding challenges, 
 it is hoped that this paper has at least helped explain some of the key concepts and techniques, and also showcased some synergies between the technology and kdb+ for potential integrations.
 
-[:fontawesome-solid-print: PDF](/download/wp/lightning-a4.pdf)
+[:fontawesome-solid-print: PDF](https://code.kx.com/download/wp/lightning-a4.pdf)
 
 
 ## Author
@@ -1138,7 +1137,7 @@ many technical queries and issues.
 ### Setting channel fees
 
 Lightning node operators can charge a fee for routing payments for other peers. 
-The [`.lnd.updateChannelPolicy`](https://api.lightning.community/rest/index.html#v1-chanpolicy) API can be used to set the fee rate.
+The [`.lnd.updateChannelPolicy`](https://api.lightning.community/?python#v1-chanpolicy) API can be used to set the fee rate.
 For more info on the economics of fees on Lightning, see the recent article from [BitMEX research](https://blog.bitmex.com/the-lightning-network-part-2-routing-fee-economics/).
 
 ```q

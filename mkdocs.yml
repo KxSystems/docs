@@ -148,7 +148,7 @@ nav:
       - List: learn/python/examples/list.md
       - Strings: learn/python/examples/string.md
       - Dictionaries: learn/python/examples/dict.md
-    - Q for Mortals 3: /q4m3/
+    - Q for Mortals 3: https://code.kx.com/q4m3/
     - Q by Puzzles:
       - About: learn/pb/index.md
       - 12 Days of Xmas: learn/pb/xmas-days.md
@@ -165,7 +165,7 @@ nav:
       - Cats cradle: learn/reading/strings.md
       - Fizz buzz: learn/reading/fizzbuzz.md
       - Klondike: learn/reading/klondike.md
-      - Phrasebook: /phrases/
+      - Phrasebook: https://code.kx.com/phrases/
       - Scrabble: learn/reading/scrabble.md
     - Application examples:
       - Astronomy (WP): wp/astronomy.md
