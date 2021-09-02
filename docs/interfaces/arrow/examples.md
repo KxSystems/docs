@@ -41,7 +41,7 @@ tstamp                        temperature fill_level pump_status comment
 
 // Pretty print the Arrow table populated from a kdb+ table
 // The schema is inferred from the kdb+ table structure
-q).arrowkdb.tb.prettyPrintTableFromTable[table]
+q).arrowkdb.tb.prettyPrintTableFromTable[table;::]
 tstamp: timestamp[ns] not null
 temperature: double not null
 fill_level: int64 not null
@@ -131,7 +131,7 @@ Write the kdb+ table to an Arrow file then read it back
 
 ```q
 // Write the table to an arrow file
-q).arrowkdb.ipc.writeArrowFromTable["inferred_schema.arrow";table]
+q).arrowkdb.ipc.writeArrowFromTable["inferred_schema.arrow";table;::]
 q)show system "ls inferred_schema.arrow"
 "inferred_schema.arrow"
 
@@ -150,12 +150,12 @@ Write the kdb+ table to an Arrow stream then read it back
 
 ```q
 // Serialize the table to an arrow stream
-q)serialized:.arrowkdb.ipc.serializeArrowFromTable[table]
+q)serialized:.arrowkdb.ipc.serializeArrowFromTable[table;::]
 q)show serialized
 0xffffffff500100001000000000000a000c000600050008000a000000000104000c000000080..
 
 // Parse the arrow stream into another table
-q)new_table:.arrowkdb.ipc.parseArrowToTable[serialized]
+q)new_table:.arrowkdb.ipc.parseArrowToTable[serialized;::]
 
 // Compare the kdb+ tables
 q)show table~new_table
@@ -224,7 +224,7 @@ q)comment_data:N?("start";"stop";"alert";"acknowledge";"")
 q)array_data:(tstamp_data;temp_data;fill_data;pump_data;comment_data)
 
 // Pretty print the Arrow table populated from the array data
-q).arrowkdb.tb.prettyPrintTable[schema;array_data]
+q).arrowkdb.tb.prettyPrintTable[schema;array_data;::]
 tstamp: timestamp[ns] not null
 temperature: double not null
 fill_level: int64 not null
@@ -323,7 +323,7 @@ Write the schema and array data to an Arrow file then read them back
 
 ```q
 // Write the schema and array data to an arrow file
-q).arrowkdb.ipc.writeArrow["constructed_schema.arrow";schema;array_data]
+q).arrowkdb.ipc.writeArrow["constructed_schema.arrow";schema;array_data;::]
 q)show system "ls constructed_schema.arrow"
 "constructed_schema.arrow"
 
@@ -350,7 +350,7 @@ Write the schema and array data to an Arrow stream then read them back
 
 ```q
 // Serialize the schema and array data to an arrow stream
-q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data]
+q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data;::]
 q)show serialized
 0xffffffff500100001000000000000a000c000600050008000a000000000104000c000000080..
 
@@ -364,7 +364,7 @@ q)show schema~new_schema
 1b
 
 // Read the array data back from the arrow file
-q)new_array_data:.arrowkdb.ipc.parseArrowData[serialized]
+q)new_array_data:.arrowkdb.ipc.parseArrowData[serialized;::]
 
 // Compare the array data
 q)show array_data~new_array_data
@@ -450,7 +450,7 @@ q)while[x-:1;multi_comments_data:multi_comments_data,getCommentsSet[]]
 q)nested_array_data:(tstamp_data;sensors_data;pump_data;multi_comments_data)
 
 // Pretty print the Arrow table populated from the array data
-q).arrowkdb.tb.prettyPrintTable[nested_schema;nested_array_data]
+q).arrowkdb.tb.prettyPrintTable[nested_schema;nested_array_data;::]
 tstamp: timestamp[ns] not null
   -- field metadata --
   PARQUET:field_id: '1'

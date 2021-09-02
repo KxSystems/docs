@@ -28,10 +28,22 @@ The Fusion interface libraries are maintained and supported by KX.
 
 <table class="kx-compact" markdown="1">
 <tr markdown="1">
+<td markdown="1" class="nowrap">[arrowkdb](https://github.com/KxSystems/arrowkdb)</td>
+<td markdown="1">
+[read and write Arrow and Parquet data](interfaces/arrow/index.md)
+</td>
+</tr>
+<tr markdown="1">
 <td markdown="1" class="nowrap">[embedPy](https://github.com/KxSystems/embedPy)</td>
 <td markdown="1">
 [call Python from q](ml/embedpy/index.md)
 [:fontawesome-solid-share-alt:](./ml/index.md "Machine learning")
+</td>
+</tr>
+<tr markdown="1">
+<td markdown="1" class="nowrap">[ffi](https://github.com/kxsystems/ffi)</td>
+<td markdown="1">
+[use foreign functions in q](interfaces/ffi/index.md)
 </td>
 </tr>
 <tr markdown="1">

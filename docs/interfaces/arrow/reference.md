@@ -202,7 +202,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.na[]]
 null
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.na[];(();();())]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.na[];(();();());::]
 3 nulls
 ```
 
@@ -219,7 +219,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.boolean[]]
 bool
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.boolean[];(010b)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.boolean[];(010b);::]
 [
   false,
   true,
@@ -244,7 +244,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.int8[]]
 int8
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int8[];(0x102030)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int8[];(0x102030);::]
 [
   16,
   32,
@@ -265,7 +265,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.int16[]]
 int16
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int16[];(11 22 33h)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int16[];(11 22 33h);::]
 [
   11,
   22,
@@ -286,7 +286,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.int32[]]
 int32
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int32[];(11 22 33i)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int32[];(11 22 33i);::]
 [
   11,
   22,
@@ -307,7 +307,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.int64[]]
 int64
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int64[];(11 22 33j)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.int64[];(11 22 33j);::]
 [
   11,
   22,
@@ -328,7 +328,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.uint8[]]
 uint8
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint8[];(0x102030)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint8[];(0x102030);::]
 [
   16,
   32,
@@ -349,7 +349,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.uint16[]]
 uint16
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint16[];(11 22 33h)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint16[];(11 22 33h);::]
 [
   11,
   22,
@@ -374,7 +374,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.uint32[]]
 uint32
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint32[];(11 22 33i)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint32[];(11 22 33i);::]
 [
   11,
   22,
@@ -395,7 +395,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.uint64[]]
 uint64
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint64[];(11 22 33j)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.uint64[];(11 22 33j);::]
 [
   11,
   22,
@@ -420,7 +420,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.float16[]]
 halffloat
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.float16[];(11 22 33h)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.float16[];(11 22 33h);::]
 [
   11,
   22,
@@ -441,7 +441,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.float32[]]
 float
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.float32[];(1.1 2.2 3.3e)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.float32[];(1.1 2.2 3.3e);::]
 [
   1.1,
   2.2,
@@ -462,7 +462,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.float64[]]
 double
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.float64[];(1.1 2.2 3.3f)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.float64[];(1.1 2.2 3.3f);::]
 [
   1.1,
   2.2,
@@ -487,7 +487,7 @@ q).arrowkdb.dt.printDatatype[.arrowkdb.dt.time32[`MILLI]]
 time32[ms]
 q).arrowkdb.dt.getTimeUnit[.arrowkdb.dt.time32[`MILLI]]
 `MILLI
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.time32[`MILLI];(01:00:00.100 02:00:00.200 03:00:00.300)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.time32[`MILLI];(01:00:00.100 02:00:00.200 03:00:00.300);::]
 [
   01:00:00.100,
   02:00:00.200,
@@ -512,7 +512,7 @@ q).arrowkdb.dt.printDatatype[.arrowkdb.dt.time64[`NANO]]
 time64[ns]
 q).arrowkdb.dt.getTimeUnit[.arrowkdb.dt.time64[`NANO]]
 `NANO
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.time64[`NANO];(0D01:00:00.100000001 0D02:00:00.200000002 0D03:00:00.300000003)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.time64[`NANO];(0D01:00:00.100000001 0D02:00:00.200000002 0D03:00:00.300000003);::]
 [
   01:00:00.100000001,
   02:00:00.200000002,
@@ -541,7 +541,7 @@ q).arrowkdb.dt.printDatatype[.arrowkdb.dt.timestamp[`NANO]]
 timestamp[ns]
 q).arrowkdb.dt.getTimeUnit[.arrowkdb.dt.timestamp[`NANO]]
 `NANO
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.timestamp[`NANO];(2001.01.01D00:00:00.100000001 2002.02.02D00:00:00.200000002 2003.03.03D00:00:00.300000003)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.timestamp[`NANO];(2001.01.01D00:00:00.100000001 2002.02.02D00:00:00.200000002 2003.03.03D00:00:00.300000003);::]
 [
   2001-01-01 00:00:00.100000001,
   2002-02-02 00:00:00.200000002,
@@ -562,7 +562,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.date32[]]
 date32[day]
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.date32[];(2001.01.01 2002.02.02 2003.03.03)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.date32[];(2001.01.01 2002.02.02 2003.03.03);::]
 [
   2001-01-01,
   2002-02-02,
@@ -587,7 +587,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.date64[]]
 date64[ms]
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.date64[];(2001.01.01D00:00:00.000000000 2002.02.02D00:00:00.000000000 2003.03.03D00:00:00.000000000)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.date64[];(2001.01.01D00:00:00.000000000 2002.02.02D00:00:00.000000000 2003.03.03D00:00:00.000000000);::]
 [
   2001-01-01,
   2002-02-02,
@@ -612,7 +612,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.month_interval[]]
 month_interval
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.month_interval[];(2001.01m,2002.02m,2003.03m)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.month_interval[];(2001.01m,2002.02m,2003.03m);::]
 [
   12,
   25,
@@ -637,7 +637,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.day_time_interval[]]
 day_time_interval
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.day_time_interval[];(0D01:00:00.100000000 0D02:00:00.200000000 0D03:00:00.300000000)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.day_time_interval[];(0D01:00:00.100000000 0D02:00:00.200000000 0D03:00:00.300000000);::]
 [
   0d3600100ms,
   0d7200200ms,
@@ -666,7 +666,7 @@ q).arrowkdb.dt.printDatatype[.arrowkdb.dt.duration[`NANO]]
 duration[ns]
 q).arrowkdb.dt.getTimeUnit[.arrowkdb.dt.duration[`NANO]]
 `NANO
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.duration[`NANO];(0D01:00:00.100000000 0D02:00:00.200000000 0D03:00:00.300000000)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.duration[`NANO];(0D01:00:00.100000000 0D02:00:00.200000000 0D03:00:00.300000000);::]
 [
   3600100000000,
   7200200000000,
@@ -687,7 +687,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.binary[]]
 binary
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.binary[];(enlist 0x11;0x2222;0x333333)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.binary[];(enlist 0x11;0x2222;0x333333);::]
 [
   11,
   2222,
@@ -712,7 +712,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.utf8[]]
 string
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.utf8[];(enlist "a";"bb";"ccc")]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.utf8[];(enlist "a";"bb";"ccc");::]
 [
   "a",
   "bb",
@@ -737,7 +737,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.large_binary[]]
 large_binary
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.large_binary[];(enlist 0x11;0x2222;0x333333)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.large_binary[];(enlist 0x11;0x2222;0x333333);::]
 [
   11,
   2222,
@@ -762,7 +762,7 @@ Returns the datatype identifier
 ```q
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.large_utf8[]]
 large_string
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.large_utf8[];(enlist "a";"bb";"ccc")]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.large_utf8[];(enlist "a";"bb";"ccc");::]
 [
   "a",
   "bb",
@@ -791,7 +791,7 @@ q).arrowkdb.dt.printDatatype[.arrowkdb.dt.fixed_size_binary[2i]]
 fixed_size_binary[2]
 q).arrowkdb.dt.getByteWidth[.arrowkdb.dt.fixed_size_binary[2i]]
 2i
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.fixed_size_binary[2i];(0x1111;0x2222;0x3333)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.fixed_size_binary[2i];(0x1111;0x2222;0x3333);::]
 [
   1111,
   2222,
@@ -820,7 +820,7 @@ decimal(38, 2)
 q).arrowkdb.dt.getPrecisionScale[.arrowkdb.dt.decimal128[38i;2i]]
 38
 2
-q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.decimal128[38i;2i];(0x00000000000000000000000000000000; 0x01000000000000000000000000000000; 0x00000000000000000000000000000080)]
+q).arrowkdb.ar.prettyPrintArray[.arrowkdb.dt.decimal128[38i;2i];(0x00000000000000000000000000000000; 0x01000000000000000000000000000000; 0x00000000000000000000000000000080);::]
 [
   0.00,
   0.01,
@@ -847,7 +847,7 @@ q).arrowkdb.dt.printDatatype[list_datatype]
 list<item: int64>
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.getListDatatype[list_datatype]]
 int64
-q).arrowkdb.ar.prettyPrintArray[list_datatype;((enlist 1);(2 2);(3 3 3))]
+q).arrowkdb.ar.prettyPrintArray[list_datatype;((enlist 1);(2 2);(3 3 3));::]
 [
   [
     1
@@ -882,7 +882,7 @@ q).arrowkdb.dt.printDatatype[list_datatype]
 large_list<item: int64>
 q).arrowkdb.dt.printDatatype[.arrowkdb.dt.getListDatatype[list_datatype]]
 int64
-q).arrowkdb.ar.prettyPrintArray[list_datatype;((enlist 1);(2 2);(3 3 3))]
+q).arrowkdb.ar.prettyPrintArray[list_datatype;((enlist 1);(2 2);(3 3 3));::]
 [
   [
     1
@@ -926,7 +926,7 @@ q).arrowkdb.dt.printDatatype[.arrowkdb.dt.getListDatatype[list_datatype]]
 int64
 q).arrowkdb.dt.getListSize[list_datatype]
 2i
-q).arrowkdb.ar.prettyPrintArray[list_datatype;((1 1);(2 2);(3 3))]
+q).arrowkdb.ar.prettyPrintArray[list_datatype;((1 1);(2 2);(3 3));::]
 [
   [
     1,
@@ -967,7 +967,7 @@ int64
 double
 ::
 ::
-q).arrowkdb.ar.prettyPrintArray[map_datatype;((enlist 1)!(enlist 1f);(2 2)!(2 2f);(3 3 3)!(3 3 3f))]
+q).arrowkdb.ar.prettyPrintArray[map_datatype;((enlist 1)!(enlist 1f);(2 2)!(2 2f);(3 3 3)!(3 3 3f));::]
 [
   keys:
   [
@@ -1027,7 +1027,7 @@ int64
 string
 ::
 ::
-q).arrowkdb.ar.prettyPrintArray[struct_datatype;((1 2 3);("aa";"bb";"cc"))]
+q).arrowkdb.ar.prettyPrintArray[struct_datatype;((1 2 3);("aa";"bb";"cc"));::]
 -- is_valid: all not null
 -- child 0 type: int64
   [
@@ -1075,7 +1075,7 @@ int64
 string
 ::
 ::
-q).arrowkdb.ar.prettyPrintArray[union_datatype;((1 0 1h);(1 2 3);("aa";"bb";"cc"))]
+q).arrowkdb.ar.prettyPrintArray[union_datatype;((1 0 1h);(1 2 3);("aa";"bb";"cc"));::]
 -- is_valid: all not null
 -- type_ids:   [
     1,
@@ -1128,7 +1128,7 @@ int64
 string
 ::
 ::
-q).arrowkdb.ar.prettyPrintArray[union_datatype;((1 0 1h);(1 2 3);("aa";"bb";"cc"))]
+q).arrowkdb.ar.prettyPrintArray[union_datatype;((1 0 1h);(1 2 3);("aa";"bb";"cc"));::]
 -- is_valid: all not null
 -- type_ids:   [
     1,
@@ -1183,7 +1183,7 @@ string
 int64
 ::
 ::
-q).arrowkdb.ar.prettyPrintArray[dict_datatype;(("aa";"bb";"cc");(2 0 1 0 0))]
+q).arrowkdb.ar.prettyPrintArray[dict_datatype;(("aa";"bb";"cc");(2 0 1 0 0));::]
 
 -- dictionary:
   [
@@ -1845,18 +1845,23 @@ q).arrowkdb.sc.equalSchemas[.arrowkdb.sc.schema[(f1,f2)];.arrowkdb.sc.schema[(f2
 *Convert a kdb+ list to an Arrow array and pretty print the array*
 
 ```syntax
-.arrowkdb.ar.prettyPrintArray[datatype_id;list]
+.arrowkdb.ar.prettyPrintArray[datatype_id;list;options]
 ```
 
 Where:
 
 - `datatype_id` is the datatype identifier of the array
 - `list` is the kdb+ list data to be displayed
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 the function
 
 1.  prints array contents to stdout 
 1.  returns generic null
+
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ??? warning "For debugging use only"
 
@@ -1864,7 +1869,7 @@ the function
 
 ```q
 q)int_datatype:.arrowkdb.dt.int64[]
-q).arrowkdb.ar.prettyPrintArray[int_datatype;(1 2 3j)]
+q).arrowkdb.ar.prettyPrintArray[int_datatype;(1 2 3j);::]
 [
   1,
   2,
@@ -1877,10 +1882,13 @@ q).arrowkdb.ar.prettyPrintArray[int_datatype;(1 2 3j)]
 *Convert a kdb+ list to an Arrow array and pretty print the array, inferring the datatype from the kdb+ list type*
 
 ```syntax
-.arrowkdb.ar.prettyPrintArrayFromList[list]
+.arrowkdb.ar.prettyPrintArrayFromList[list;options]
 ```
 
-Where `list` is the kdb+ list data to be displayed
+Where:
+
+- `list` is the kdb+ list data to be displayed
+- `options` is reserved for future use - specify generic null (::)
 
 the function
 
@@ -1894,7 +1902,7 @@ The kdb+ list type is mapped to an Arrow datatype as described [here](#inferredd
     The information is generated by the `arrow::PrettyPrint()` functionality and displayed on stdout to preserve formatting and indentation.
 
 ```q
-q).arrowkdb.ar.prettyPrintArrayFromList[(1 2 3j)]
+q).arrowkdb.ar.prettyPrintArrayFromList[(1 2 3j);::]
 [
   1,
   2,
@@ -1909,13 +1917,14 @@ q).arrowkdb.ar.prettyPrintArrayFromList[(1 2 3j)]
 *Convert a kdb+ mixed list of array data to an Arrow table and pretty print the table*
 
 ```
-.arrowkdb.tb.prettyPrintTable[schema_id;array_data]
+.arrowkdb.tb.prettyPrintTable[schema_id;array_data;options]
 ```
 
 Where:
 
 - `schema_id` is the schema identifier of the table
 - `array_data` is a mixed list of array data
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 the function
 
@@ -1923,6 +1932,10 @@ the function
 1.  returns generic null
 
 The mixed list of Arrow array data should be ordered in schema field number and each list item representing one of the arrays must be structured according to the field’s datatype.
+
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ??? warning "For debugging use only"
 
@@ -1933,7 +1946,7 @@ q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
 q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
-q).arrowkdb.tb.prettyPrintTable[schema;((1 2 3j);(4 5 6f);("aa";"bb";"cc"))]
+q).arrowkdb.tb.prettyPrintTable[schema;((1 2 3j);(4 5 6f);("aa";"bb";"cc"));::]
 int_field: int64 not null
 float_field: double not null
 str_field: string not null
@@ -1969,10 +1982,13 @@ str_field:
 *Convert a kdb+ table to an Arrow table and pretty print the table, inferring the schema from the kdb+ table structure*
 
 ```syntax
-.arrowkdb.tb.prettyPrintTableFromTable[table]
+.arrowkdb.tb.prettyPrintTableFromTable[table;options]
 ```
 
-Where `table` is a kdb+ table
+Where:
+
+- `table` is a kdb+ table
+- `options` is reserved for future use - specify generic null (::)
 
 the function
 
@@ -1990,7 +2006,7 @@ Each column in the table is mapped to a field in the schema.  The column name is
     The information is generated by the `arrow::Table::ToString()` functionality and displayed on stdout to preserve formatting and indentation.
 
 ```q
-q).arrowkdb.tb.prettyPrintTableFromTable[([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"))]
+q).arrowkdb.tb.prettyPrintTableFromTable[([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"));::]
 int_field: int64
 float_field: double
 str_field: string
@@ -2036,7 +2052,7 @@ Where:
 - `parquet_file` is a string containing the Parquet file name
 - `schema_id` is the schema identifier to use for the table
 - `array_data` is a mixed list of array data
-- `options` is a dictionary of symbol options to long/symbol values (pass :: to use defaults)
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns generic null on success
 
@@ -2044,8 +2060,9 @@ The mixed list of Arrow array data should be ordered in schema field number and 
 
 Supported options:
 
-- `PARQUET_CHUNK_SIZE` - Controls the approximate size of encoded data pages within a column chunk (long, default: 1MB)
-- `PARQUET_VERSION` - Select the Parquet format version, either `V1.0` or `V2.0`.  `V2.0` is more fully featured but may be incompatible with older Parquet implementations (symbol, default `V1.0`)
+- `PARQUET_CHUNK_SIZE` - Controls the approximate size of encoded data pages within a column chunk.  Long, default 1MB.
+- `PARQUET_VERSION` - Select the Parquet format version, either `V1.0` or `V2.0`.  `V2.0` is more fully featured but may be incompatible with older Parquet implementations.  String, default `V1.0`
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ??? warning "The Parquet format is compressed and designed for for maximum space efficiency which may cause a performance overhead compared to Arrow.  Parquet is also less fully featured than Arrow which can result in schema limitations"
 
@@ -2075,14 +2092,14 @@ Where:
 
 - `parquet_file` is a string containing the Parquet file name
 - `table` is a kdb+ table
-- `options` is a dictionary of symbol options to long/symbol values (pass :: to use defaults)
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns generic null on success
 
 Supported options:
 
-- `PARQUET_CHUNK_SIZE` - Controls the approximate size of encoded data pages within a column chunk (long, default: 1MB)
-- `PARQUET_VERSION` - Select the Parquet format version, either `V1.0` or `V2.0`.  `V2.0` is more fully featured but may be incompatible with older Parquet implementations (symbol, default `V1.0`)
+- `PARQUET_CHUNK_SIZE` - Controls the approximate size of encoded data pages within a column chunk.  Long, default 1MB.
+- `PARQUET_VERSION` - Select the Parquet format version, either `V1.0` or `V2.0`.  `V2.0` is more fully featured but may be incompatible with older Parquet implementations.  String, default `V1.0`
 
 ??? warning "Inferred schemas only support a subset of the Arrow datatypes and is considerably less flexible than creating them with the datatype/field/schema constructors"
 
@@ -2130,14 +2147,15 @@ q).arrowkdb.sc.equalSchemas[schema;.arrowkdb.pq.readParquetSchema["file.parquet"
 Where:
 
 - `parquet_file` is a string containing the Parquet file name
-- `options` is a dictionary of symbol options to long values (pass :: to use defaults)
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the array data
 
 Supported options:
 
-- `PARQUET_MULTITHREADED_READ` - Flag indicating whether the Parquet reader should run in multithreaded mode.   This can improve performance by processing multiple columns in parallel (long, default: 0)
-- `USE_MMAP` - Flag indicating whether the Parquet file should be memory mapped in.  This can improve performance on systems which support mmap (long, default: 0)
+- `PARQUET_MULTITHREADED_READ` - Flag indicating whether the Parquet reader should run in multithreaded mode.   This can improve performance by processing multiple columns in parallel.  Long, default 0.
+- `USE_MMAP` - Flag indicating whether the Parquet file should be memory mapped in.  This can improve performance on systems which support mmap.  Long, default: 0.
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
@@ -2156,15 +2174,20 @@ q)array_data~read_data
 *Read a single column from a Parquet file and convert to a kdb+ list*
 
 ```syntax
-.arrowkdb.pq.readParquetColumn[parquet_file;column_index]
+.arrowkdb.pq.readParquetColumn[parquet_file;column_index;options]
 ```
 
 Where:
 
 - `parquet_file` is a string containing the Parquet file name
 - `column_index` is the index of the column to read, relative to the schema field order
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the array’s data
+
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
@@ -2173,7 +2196,7 @@ q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
 q).arrowkdb.pq.writeParquet["file.parquet";schema;array_data;::]
-q)col1:.arrowkdb.pq.readParquetColumn["file.parquet";1i]
+q)col1:.arrowkdb.pq.readParquetColumn["file.parquet";1i;::]
 q)col1~array_data[1]
 1b
 ```
@@ -2189,7 +2212,7 @@ q)col1~array_data[1]
 Where:
 
 - `parquet_file` is a string containing the Parquet file name
-- `options` is a dictionary of symbol options to long values (pass :: to use defaults)
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the kdb+ table
 
@@ -2197,8 +2220,9 @@ Each schema field name is used as the column name and the Arrow array data is us
 
 Supported options:
 
-- `PARQUET_MULTITHREADED_READ` - Flag indicating whether the Parquet reader should run in multithreaded mode.   This can improve performance by processing multiple columns in parallel (long, default: 0)
-- `USE_MMAP` - Flag indicating whether the Parquet file should be memory mapped in.  This can improve performance on systems which support mmap (long, default: 0)
+- `PARQUET_MULTITHREADED_READ` - Flag indicating whether the Parquet reader should run in multithreaded mode.   This can improve performance by processing multiple columns in parallel.  Long, default 0.
+- `USE_MMAP` - Flag indicating whether the Parquet file should be memory mapped in.  This can improve performance on systems which support mmap.  Long, default: 0.
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)table:([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"))
@@ -2215,7 +2239,7 @@ q)read_table~table
 *Convert a kdb+ mixed list of array data to an Arrow table and write to an Arrow file*
 
 ```syntax
-.arrowkdb.ipc.writeArrow[arrow_file;schema_id;array_data]
+.arrowkdb.ipc.writeArrow[arrow_file;schema_id;array_data;options]
 ```
 
 Where:
@@ -2223,10 +2247,15 @@ Where:
 - `arrow_file` is a string containing the Arrow file name
 - `schema_id` is the schema identifier to use for the table
 - `array_data` is a mixed list of array data
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns generic null on success
 
 The mixed list of Arrow array data should be ordered in schema field number and each list item representing one of the arrays must be structured according to the field’s datatype.
+
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
@@ -2234,7 +2263,7 @@ q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
-q).arrowkdb.ipc.writeArrow["file.arrow";schema;array_data]
+q).arrowkdb.ipc.writeArrow["file.arrow";schema;array_data;::]
 q)read_data:.arrowkdb.ipc.readArrowData["file.arrow";::]
 q)read_data~array_data
 1b
@@ -2245,13 +2274,14 @@ q)read_data~array_data
 *Convert a kdb+ table to an Arrow table and write to an Arrow file, inferring the schema from the kdb+ table structure*
 
 ```syntax
-.arrowkdb.ipc.writeArrowFromTable[arrow_file;table]
+.arrowkdb.ipc.writeArrowFromTable[arrow_file;table;options]
 ```
 
 Where:
 
 - `arrow_file` is a string containing the Arrow file name
 - `table` is a kdb+ table
+- `options` is reserved for future use - specify generic null (::)
 
 returns generic null on success
 
@@ -2261,7 +2291,7 @@ returns generic null on success
 
 ```q
 q)table:([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"))
-q).arrowkdb.ipc.writeArrowFromTable["file.arrow";table]
+q).arrowkdb.ipc.writeArrowFromTable["file.arrow";table;::]
 q)read_table:.arrowkdb.ipc.readArrowToTable["file.arrow";::]
 q)read_table~table
 1b
@@ -2285,7 +2315,7 @@ q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
-q).arrowkdb.ipc.writeArrow["file.arrow";schema;array_data]
+q).arrowkdb.ipc.writeArrow["file.arrow";schema;array_data;::]
 q).arrowkdb.sc.equalSchemas[schema;.arrowkdb.ipc.readArrowSchema["file.arrow"]]
 1b
 ```
@@ -2301,13 +2331,14 @@ q).arrowkdb.sc.equalSchemas[schema;.arrowkdb.ipc.readArrowSchema["file.arrow"]]
 Where:
 
 -  `arrow_file` is a string containing the Arrow file name
-- `options` is a dictionary of symbol options to long values (pass :: to use defaults)
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the array data
 
 Supported options:
 
-- `USE_MMAP` - Flag indicating whether the Arrow file should be memory mapped in.  This can improve performance on systems which support mmap (long, default: 0)
+- `USE_MMAP` - Flag indicating whether the Parquet file should be memory mapped in.  This can improve performance on systems which support mmap.  Long, default: 0.
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
@@ -2315,7 +2346,7 @@ q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
-q).arrowkdb.ipc.writeArrow["file.arrow";schema;array_data]
+q).arrowkdb.ipc.writeArrow["file.arrow";schema;array_data;::]
 q)read_data:.arrowkdb.ipc.readArrowData["file.arrow";::]
 q)read_data~array_data
 1b
@@ -2332,7 +2363,7 @@ q)read_data~array_data
 Where:
 
 -  `arrow_file` is a string containing the Arrow file name
-- `options` is a dictionary of symbol options to long values (pass :: to use defaults)
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the kdb+ table
 
@@ -2340,11 +2371,12 @@ Each schema field name is used as the column name and the Arrow array data is us
 
 Supported options:
 
-- `USE_MMAP` - Flag indicating whether the Arrow file should be memory mapped in.  This can improve performance on systems which support mmap (long, default: 0)
+- `USE_MMAP` - Flag indicating whether the Parquet file should be memory mapped in.  This can improve performance on systems which support mmap.  Long, default: 0.
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)table:([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"))
-q).arrowkdb.ipc.writeArrowFromTable["file.arrow";table]
+q).arrowkdb.ipc.writeArrowFromTable["file.arrow";table;::]
 q)read_table:.arrowkdb.ipc.readArrowToTable["file.arrow";::]
 q)read_table~table
 1b
@@ -2357,17 +2389,22 @@ q)read_table~table
 *Convert a kdb+ mixed list of array data to an Arrow table and serialize to an Arrow stream*
 
 ```syntax
-.arrowkdb.ipc.serializeArrow[schema_id;array_data]
+.arrowkdb.ipc.serializeArrow[schema_id;array_data;options]
 ```
 
 Where:
 
 - `schema_id` is the schema identifier to use for the table
 - `array_data` is a mixed list of array data
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns a byte list containing the serialized stream data
 
 The mixed list of Arrow array data should be ordered in schema field number and each list item representing one of the arrays must be structured according to the field’s datatype.
+
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
@@ -2375,8 +2412,8 @@ q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
-q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data]
-q)read_data:.arrowkdb.ipc.parseArrowData[serialized]
+q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data;::]
+q)read_data:.arrowkdb.ipc.parseArrowData[serialized;::]
 q)read_data~array_data
 1b
 ```
@@ -2386,10 +2423,13 @@ q)read_data~array_data
 *Convert a kdb+ table to an Arrow table and serialize to an Arrow stream, inferring the schema from the kdb+ table structure*
 
 ```syntax
-.arrowkdb.ipc.serializeArrowFromTable[table]
+.arrowkdb.ipc.serializeArrowFromTable[table;options]
 ```
 
-Where `table` is a kdb+ table
+Where:
+
+- `table` is a kdb+ table
+- `options` is reserved for future use - specify generic null (::)
 
 returns a byte list containing the serialized stream data
 
@@ -2399,8 +2439,8 @@ returns a byte list containing the serialized stream data
 
 ```q
 q)table:([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"))
-q)serialized:.arrowkdb.ipc.serializeArrowFromTable[table]
-q)new_table:.arrowkdb.ipc.parseArrowToTable[serialized]
+q)serialized:.arrowkdb.ipc.serializeArrowFromTable[table;::]
+q)new_table:.arrowkdb.ipc.parseArrowToTable[serialized;::]
 q)new_table~table
 1b
 ```
@@ -2423,7 +2463,7 @@ q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
-q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data]
+q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data;::]
 q).arrowkdb.sc.equalSchemas[schema;.arrowkdb.ipc.parseArrowSchema[serialized]]
 1b
 ```
@@ -2433,12 +2473,19 @@ q).arrowkdb.sc.equalSchemas[schema;.arrowkdb.ipc.parseArrowSchema[serialized]]
 *Parse an Arrow table from an Arrow stream and convert to a kdb+ mixed list of array data*
 
 ```syntax
-.arrowkdb.ipc.parseArrowData[serialized]
+.arrowkdb.ipc.parseArrowData[serialized;options]
 ```
 
-Where `serialized` is a byte list containing the serialized stream data
+Where:
+
+- `serialized` is a byte list containing the serialized stream data
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the array data
+
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
 
 ```q
 q)f1:.arrowkdb.fd.field[`int_field;.arrowkdb.dt.int64[]]
@@ -2446,8 +2493,8 @@ q)f2:.arrowkdb.fd.field[`float_field;.arrowkdb.dt.float64[]]
 q)f3:.arrowkdb.fd.field[`str_field;.arrowkdb.dt.utf8[]]
 q)schema:.arrowkdb.sc.schema[(f1,f2,f3)]
 q)array_data:((1 2 3j);(4 5 6f);("aa";"bb";"cc"))
-q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data]
-q)read_data:.arrowkdb.ipc.parseArrowData[serialized]
+q)serialized:.arrowkdb.ipc.serializeArrow[schema;array_data;::]
+q)read_data:.arrowkdb.ipc.parseArrowData[serialized;::]
 q)read_data~array_data
 1b
 ```
@@ -2457,19 +2504,26 @@ q)read_data~array_data
 *Parse an Arrow table from an Arrow file and convert to a kdb+ table*
 
 ```syntax
-.arrowkdb.ipc.parseArrowToTable[serialized]
+.arrowkdb.ipc.parseArrowToTable[serialized;options]
 ```
 
-Where `serialized` is a byte list containing the serialized stream data
+Where:
+
+- `serialized` is a byte list containing the serialized stream data
+- `options` is a kdb+ dictionary of options or generic null (::) to use defaults.  Dictionary key must be a 11h list. Values list can be 7h, 11h or mixed list of -7|-11|4h.
 
 returns the kdb+ table
 
 Each schema field name is used as the column name and the Arrow array data is used as the column data.
 
+Supported options:
+
+- `DECIMAL128_AS_DOUBLE` - Flag indicating whether to override the default type mapping for the Arrow decimal128 datatype and instead represent it as a double (9h).  Long, default 0.
+
 ```q
 q)table:([] int_field:(1 2 3); float_field:(4 5 6f); str_field:("aa";"bb";"cc"))
-q)serialized:.arrowkdb.ipc.serializeArrowFromTable[table]
-q)new_table:.arrowkdb.ipc.parseArrowToTable[serialized]
+q)serialized:.arrowkdb.ipc.serializeArrowFromTable[table;::]
+q)new_table:.arrowkdb.ipc.parseArrowToTable[serialized;::]
 q)new_table~table
 1b
 ```
