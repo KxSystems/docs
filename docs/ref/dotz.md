@@ -945,8 +945,6 @@ Where `f` is a unary function, it is evaluated on a message arriving at a websoc
 
 Sending a websocket message is limited to async messages only (sync is `'nyi`). A string will be sent as a text message; a byte vector as a binary message.
 
-The default definition is to echo the message back to the client, i.e. `{neg[.z.w]x}`
-
 :fontawesome-solid-book-open:
 [Interprocess communication ](../basics/ipc.md)
 <br>
