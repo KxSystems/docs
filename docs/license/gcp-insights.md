@@ -1,74 +1,70 @@
 ---
-title: KX Insights™ license for Microsoft Azure Marketplace
-description: Software End User Agreement for KX Insights Microsoft Azure Marketplace
+title: KX Insights™ license for Google Cloud Platform
+description: Software End User Agreement for KX Insights Google Cloud Platform
 ---
-# :kx-brands-azure:<br>KX Insights™ end-user agreement
+# :kx-brands-google-cloud:<br>KX Insights™ end-user agreement
 
 !!! important "Carefully read the following terms and conditions"
 
     By clicking “I accept” or by accessing or otherwise using KX Insights™ in any manner
-    via the Azure Marketplace, you are agreeing to be bound by these terms
+    via Google Cloud Platform, you are agreeing to be bound by these terms
     and conditions (which may be updated from time to time) and to the
     extent you are acting on behalf of a permitted organization that you
     have authority to act on their behalf and bind them to these terms and
-    conditions. 
+    conditions.
 
     If you do not agree to these terms and conditions or do not
-    have the necessary authority, do not access or use the software. You
-    accept and agree that this agreement is enforceable like any written
-    agreement signed and is legally binding. You may not access KX Insights™
-    if you are a direct competitor of KX._
+    have the necessary authority, do not access or use the software.
+    You accept and agree that this agreement is enforceable like any written
+    agreement signed and is legally binding.
+    You may not access KX Insights™ if you are a direct competitor of Kx.
 
-## 1.  Scope of agreement
+## 1. Scope of agreement
 
 1.  This KX Insights™ End User Agreement (“Agreement”) is made
     between Kx Systems, Inc. (“Kx” or “We”) and you the person or
     entity which accesses KX Insights™ (“User” or “you”), with
     respect to KX Insights™ and/or any documentation made available
-    to you either by Kx or at the online Azure Marketplace at
-    https://azure.microsoft.com/marketplace/ (“Azure Marketplace”)
-    and available to be run at Microsoft Azure (“Microsoft Azure”).
-    Azure Marketplace and Microsoft Azure are owned and controlled
-    by Microsoft Corporation. You are required to have a Microsoft
-    Azure account in good standing prior to accessing KX Insights™.
-    Kx shall not in any way be liable for the services provided to
-    you by Microsoft Corporation.
+    to you either by Kx or at the online Google Cloud Platform at
+    <https://console.cloud.google.com/marketplace> (“GCP”). GCP is
+    owned and controlled by Google, Inc (“Google”). You are required
+    to have a Google cloud account in good standing prior to
+    accessing KX Insights™. Kx shall not in any way be liable for
+    the services provided to you by Google.
 
-2.  Kx has developed KX Insights™ 1.0.0, which includes a relational
+2.  Kx has developed Kx Insights™ 1.0.0, which includes a relational
     database system and Kx’s q programming language and enables
     applications to run natively on cloud architectures by providing
     deployment, storage and service integrations (“**KX
     Insights™**”). Kx has made KX Insights™ available for access
-    within Microsoft Azure. You are required to pay for access to KX
-    Insights™ for any usage. Payment by you for use of KX Insights™
-    shall be made directly by you via Microsoft Azure. Subject to
-    your Microsoft Azure account being in good standing, you will be
-    provided an instance of KX Insights™ to be used strictly by you
-    within the Microsoft Azure environment. KX Insights™ includes
-    any Updates (defined below) and/or any documentation provided to
-    you by Kx, accessed by you from code.kx.com, or otherwise made
-    available to you through Azure Marketplace.
+    within GCP. You are required to pay for access to Kx Insights™
+    for any usage. Payment by you for use of KX Insights™ shall be
+    made directly by you via GCP. Subject to your GCP account being
+    in good standing, you will be provided an instance of KX
+    Insights™ to be used strictly by you within the GCP environment.
+    KX Insights™ includes any Updates (defined below) and/or any
+    documentation provided to you by Kx, accessed by you from
+    code.kx.com, or otherwise made available to you through GCP.
 
 3.  This Agreement sets forth the terms on which Kx will permit you
-    to use KX Insights™ within Microsoft Azure. We do not sell or
-    license the KX Insights™ or any documentation to you. We remain
-    the owners of KX Insights™ and any documentation at all times.
-
+    to use KX Insights™ within GCP. We do not sell or license the KX
+    Insights™ or any documentation to you. We remain the owners of
+    KX Insights™ and any documentation at all times.
 
 ## 2. Permitted use
 
-Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and subject to your strict compliance with the terms and conditions of this Agreement, Kx hereby grants to the User a limited non-exclusive, non-transferable right, without the right to grant sublicenses, to permit you to access and use KX Insights™ via Microsoft Azure solely for the User’s (i) internal business operations and/or (ii) internal development and testing. Nothing in this Agreement shall be construed as the grant of any licence or other right to you, to or in respect of any Intellectual Property or Confidential Information of Kx except as expressly set forth herein. You may not use KX Insights™ from countries where such use is prohibited by Export Laws.
+Subject to the User purchasing access to KX Insights™ via GCP, and subject to your strict compliance with the terms and conditions of this Agreement, Kx hereby grants to the User a limited non-exclusive, non-transferable right, without the right to grant sublicenses, to permit you to access and use KX Insights™ via GCP solely for the User’s (i) internal business operations and/or (ii) internal development and testing. Nothing in this Agreement shall be construed as the grant of any licence or other right to you, to or in respect of any Intellectual Property or Confidential Information of Kx except as expressly set forth herein. You may not use KX Insights™ from countries where such use is prohibited by Export Laws.
 
 ## 3. Restrictions on KX Insights™ use
 
-1.  **Usage restrictions.**
-    You undertake that: (a) your access to KX Insights™ is solely for
+1.  **Usage restrictions.** You
+    undertake that: (a) your access to KX Insights™ is solely for
     you and you will not allow or permit another individual or
     entity to have any right to view, access or use KX Insights™ on
     your behalf; and, in the event of any such unauthorized access
     or use, you shall promptly notify Kx; and (b) you will not
     attempt to host KX Insights™ for any third party unless you have
-    a separate license directly with Kx for KX Insights™ which
+    a separate license directly with Kx for Kx Insights™ which
     permits software hosting services nor will you permit any third
     party to remotely access the functionality of KX Insights™; and
     (c) you shall not view, access or use KX Insights™ in any manner
@@ -77,8 +73,7 @@ Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and
     explicit written consent, exceed the maximum aggregate RAM limit
     of 2TB per node or cluster of nodes.
 
-2.  **Modifications to Kx Insights™.**
-    You undertake that you will not and shall
+2.  **Modifications to Kx Insights™.** You undertake that you will not and shall
     not permit another individual or entity to (a) attempt to
     de-compile, decode, reverse compile, disassemble, reverse
     engineer or otherwise reduce to human-perceivable form all or
@@ -96,29 +91,27 @@ Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and
     and liable for all actions and failures to take required actions
     with respect to KX Insights™ and documentation provided to you.
 
-3.  **Transfer of Kx Insights™.**
-    KX Insights™ is only permitted to be accessed by you via Microsoft Azure. You
-    will not attempt to transfer, sell, copy, duplicate, frame,
-    mirror, translate, republish, download, display, transmit, or
-    distribute all or any portion of KX Insights™ (in whole or in
-    part) and/or any Kx documentation (as applicable) in any form or
-    media or by any means.
+3.  **Transfer of Kx Insights™** KX Insights™
+    is only permitted to be accessed by you via GCP. You will not
+    attempt to transfer, sell, copy, duplicate, frame, mirror,
+    translate, republish, download, display, transmit, or distribute
+    all or any portion of KX Insights™ (in whole or in part) and/or
+    any Kx documentation (as applicable) in any form or media or by
+    any means.
 
 ## 4. Key files and updates
 
-1.  **Key files.**
-    Kx shall deliver a
-    key file that permits the User to access KX Insights™ in
-    Microsoft Azure only. The key file will stop functioning upon
-    the earlier of the following: (i) in the event you delay or are
-    delinquent in the payment of the fees to Microsoft Azure; or
-    (ii) upon termination of the Agreement; or (iii) in the event
-    you are no longer an authorized user of KX Insights™. The key
-    file for KX Insights™ permits you to access KX Insights™ solely
-    via Microsoft Azure only.
+1.  **Key Files.** Kx shall deliver a
+    key file that permits the User to access KX Insights™ in GCP
+    only. The key file will stop functioning upon the earlier of the
+    following: (i) in the event you delay or are delinquent in the
+    payment of the fees to Google; or (ii) upon termination of the
+    Agreement; or (iii) in the event you are no longer an authorized
+    user of KX Insights™. The key file for KX Insights™ permits you
+    to access KX Insights™ solely via GCP only.
 
-2.  **Access to KX Insights™.**
-    Prior to access being provided to KX Insights™, certain information
+2.  **Access to KX Insights.**™. Prior
+    to access being provided to KX Insights™, certain information
     will be reported to Kx as detailed in the Schedule to this
     Agreement, which confirms that you are licensed to use KX
     Insights™. You will not attempt to interfere, delay or in any
@@ -126,29 +119,27 @@ Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and
     manager software determines that you are not licensed to use KX
     Insights™, the license manager software will halt KX Insights™.
 
-3.  **Updates.**
-    Upon Kx’s commercial
+3.  **Updates.** Upon Kx’s commercial
     release of an update or a modified version of KX Insights™ which
     incorporates new features and other improvements in performance
     or functionality from the previous version (“**Update**”), Kx
     will make the Update available to you provided this Agreement is
     in force for the year in which the Update is commercially
     released. Updates will be made available at the Kx landing page
-    in Azure Marketplace.
+    in GCP.
 
 4.  **No support or maintenance.**
     Access to KX Insights™ is provided to you without any support
     (consulting services) or maintenance (error corrections).
 
-5.  **Audit.**
-    Kx shall be permitted
+5.  **Audit.** Kx shall be permitted
     to audit pertinent records and computers of User and where
     applicable attend User’s facilities or if applicable the
     premises of the organization which you represent for the purpose
     of conducting inspections of your records and computers in order
-        to confirm your compliance with the terms of this Agreement.
+    to confirm your compliance with the terms of this Agreement.
 
-## 5. Ownership of KX Insights™
+## 5. Ownership of Kx Insights™
 
 1.  User acknowledges and agrees that Kx owns all right, title and
     interest in KX Insights™ and documentation and any Intellectual
@@ -162,7 +153,7 @@ Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and
     competition, rights in designs, rights in computer software,
     database rights, rights to preserve the confidentiality of
     information (including know-how and trade secrets) and any other
-    intellectual property rights, including all applications for
+    intellectual-property rights, including all applications for
     (and rights to apply for and be granted), renewals or extensions
     of, and rights to claim priority from, such rights and all
     similar or equivalent rights or forms of protection which
@@ -179,7 +170,7 @@ Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and
 
 3.  For the avoidance of doubt, User disclaims all right, title and
     interest in KX Insights™ (whether in whole or in part),
-    regardless of whether such KX Insights™ is embedded in an
+    regardless of whether such Kx Insights™ is embedded in an
     application or program developed by you. User irrevocably
     waives, to the extent permitted by applicable law, any and all
     claims User may now or hereafter have in any jurisdiction to
@@ -195,7 +186,7 @@ Subject to the User purchasing access to KX Insights™ via Microsoft Azure, and
     reference to or any aspect of KX Insights™ (whether in whole or
     in part) or any Kx Confidential Information.
 
-## 6.  Limited warranty
+## 6. Limited warranty
 
 To the extent permitted by law KX
 Insights™ is provided “as is” and there are no express or
@@ -210,7 +201,7 @@ harmful components.
 ## 7. Indemnification
 
 1.  **By Kx.** Kx shall have the option but not the obligation to
-    indemnify defend, or at its option settle, at its own expense,
+    indemnify, defend, or at its option settle, at its own expense,
     any finally awarded damages (including User’s attorney fees) for
     a third-party claim, suit or proceeding brought against you
     alleging that KX Insights™ infringes any copyright, trademark or
@@ -218,10 +209,10 @@ harmful components.
     third party, subject to the limitations hereinafter set forth.
     Kx shall have sole control of any such action or settlement
     negotiations. You agree to notify Kx promptly in writing of such
-    claim, suit or proceeding and give Kx authority to proceed as
+    claim, suit, or proceeding and gives Kx authority to proceed as
     contemplated herein, and, at Kx’s expense, shall give Kx proper
     and full information and assistance to settle and/or defend any
-    such claim, suit or proceeding. You shall not be liable for any
+    such claim, suit, or proceeding. You shall not be liable for any
     costs or expenses or other obligations incurred as the result of
     a settlement (other than return of KX Insights™) without your
     prior written authorization. Kx shall not have any liability for
@@ -231,7 +222,7 @@ harmful components.
 2.  **Kx options.** In the event that (a) KX Insights™ is held to
     infringe the trademark, copyright, patent or trade secrets of a
     third party and the use of KX Insights™ is enjoined, (b) Kx
-    concludes that KX Insights™ infringes the trademark, copyright,
+    concludes that Kx Insights™ infringes the trademark, copyright,
     patent or trade secret s of a third party, or (c) in the case of
     settlement as referred to in section 7.1 above, Kx may, if
     possible on commercially reasonable terms, at its own expense
@@ -251,29 +242,29 @@ harmful components.
     hardware products, including any of User’s products, (b)
     modifications to KX Insights™ made by any party other than Kx or
     Kx’s authorized representative or made under Kx’s direction, (c)
-    use of a prior version of KX Insights™ to the extent such
+    use of a prior version of KX Insights ™ to the extent such
     infringement would have been avoided by the use of the current
     version of KX Insights™, provided that Kx has offered or
     provided such current version to User at no additional cost, or
     (d) trademark infringements involving any marking or branding
     not applied by Kx or involving any marking or branding applied
     at the request of User and not approved by Kx (e) any use of KX
-    Insights™ outside of the Microsoft Azure environment.
+    Insights™ outside of the GCP environment.
 
 4.  **By User.** User agrees to indemnify and hold Kx harmless
-    against any finally awarded cost, loss, liability or expense
-    (including reasonable attorneys’ fees) arising out of a claim
-    suit or action under or connection with (i) unauthorized use of
-    KX Insights™ pursuant to section 3 (ii) unauthorized use or
+    against any finally awarded cost, loss, liability, or expense
+    (including reasonable attorneys’ fees) arising out of a claim,
+    suit, or action under or connection with (i) unauthorized use of
+    Kx Insights™ pursuant to section 3 (ii) unauthorized use or
     access to KX Insights™ by a party or entity other than the User
     (iii) suits or actions as a result of User’s use of KX Insights™
     including to the extent that you use or attempt to use KX
-    Insights™ outside of the Microsoft Azure environment (iv) third
-    party infringement claims, suits or actions against Kx as a
-    result of the User’s use of KX Insights™.
+    Insights™ outside of the GCP environment (iv) third-party
+    infringement claims, suits, or actions against Kx as a result of
+    the User’s use of KX Insights™.
 
 5.  Notwithstanding the foregoing, Kx’s liability to indemnify User
-    shall not apply to the extent that such claims suits or actions
+    shall not apply to the exte0nt that such claims, suits, or actions
     are subject to User’s indemnification obligations under section
     7.4 above.
 
@@ -285,8 +276,7 @@ harmful components.
     our employees, agents or subcontractors or for fraud or
     fraudulent misrepresentation.
 
-2.  **Limitation of liability.**
-    Other than as expressly stated
+2.  **Limitation of Liability.** Other than as expressly stated
     herein, in no event shall either party be liable for any costs
     of procurement of substitute goods or services, loss of use,
     loss or corruption of data, loss of goodwill interruption of
@@ -299,7 +289,7 @@ harmful components.
     essential purpose of any limited remedy.
 
 3.  **Limitation of damages.** Except for the obligations under
-    section 7.4 above, breach of section 9, or a User’s
+    section 7.4 above, breach of section 9, or a user’s
     reproduction, use or distribution of KX Insights™ outside the
     scope of the licenses granted in section 2 above, fraud or
     fradulent misrepresentation each party its affiliates and their
@@ -335,7 +325,7 @@ harmful components.
     other party, will not use such Confidential Information except
     as expressly set forth herein or otherwise authorized in
     writing, will implement reasonable procedures to prohibit the
-    disclosure, duplication, misuse or removal of the other party's
+    disclosure, duplication, misuse or removal of the other party’s
     Confidential Information and will not disclose such Confidential
     Information to any third party except as may be necessary and
     required in connection with the rights and obligations of such
@@ -373,8 +363,8 @@ harmful components.
 ## 10. Term and termination
 
 1.  **Term and modified terms.** Except as provided in sections 10.2
-    and 10.3 below so long as User has paid its fees to Microsoft
-    Azure, this Agreement will remain in force.
+    and 10.3 below so long as User has paid its fees to Google, this
+    Agreement will remain in force.
 
 2.  **Termination for cause.** Either party may terminate this
     Agreement at any time upon written notice to the other party if
@@ -390,13 +380,12 @@ harmful components.
 3.  **Kx termination.** Kx shall terminate at any time if (a) User’s
     use of KX Insights™ is contrary to the terms of this Agreement,
     (b) User’s failure to pay the fee or any other amount that is
-    due to Microsoft Azure (c) Kx no longer provides KX Insights™
-    via Microsoft Azure. Termination of this Agreement by Kx for the
-    foregoing shall in no way relieve the User from its obligation
-    to pay any sums accrued or due prior to the date of such
-    termination.
+    due to Google (c) Kx no longer provides KX Insights™ via GCP.
+    Termination of this Agreement by Kx for the foregoing shall in
+    no way relieve the User form its obligation to pay any sums
+    accrued or due prior to the date of such termination.
 
-4.  **Amendments to the Agreement.** Kx may amend this Agreement at
+4.  **Amendments to the Agreement**. Kx may amend this Agreement at
     any time. This Agreement shall continue until the User downloads
     or is provided with a revised version of the Agreement. You
     acknowledge and agree that by continuing to use KX Insights™
@@ -406,7 +395,7 @@ harmful components.
     the obligation to monitor all changes to the Agreement, or of
     such modifications’ enforceability.
 
-5.  **Surviving provisions of Agreement.** The provisions of section
+5.  **Surviving provisions of Agreement**. The provisions of section
     5 (“Ownership of KX Insights™”), section 6 (“Limited Warranty”),
     section 7 (“Indemnification”), section 8 (“Limitation of
     Liability and Damages”), section 9 (“Confidential Information”),
@@ -427,10 +416,10 @@ harmful components.
 2.  **Third-Party Software.** KX Insights™ may contain or be
     provided with components which are subject to the terms and
     conditions of “open source” software licenses or where
-    applicable third-party software licenses (“Third-Party
+    applicable third party software licenses (“Third-Party
     Software”). Third-Party Software may be identified in the
     documentation relating to KX Insights™, which may include
-    reference to such Third Party Software, the terms of such
+    reference to such Third-Party Software, the terms of such
     license will apply in lieu of the terms of this Agreement with
     respect to such Third-Party Software, including, without
     limitation, any provisions governing access to source code,
@@ -442,29 +431,29 @@ harmful components.
     2010 and the US Foreign Corrupt Practices Act 1977.
 
 4.  **Export.** You acknowledge that KX Insights™ is subject to US
-    export control and economic-sanctions laws and regulations and
+    export control and economic sanctions laws and regulations and
     to import laws, regulations and requirements of certain foreign
     governments (“Export and Trade Laws”). You agree to fully comply
     with those Export and Trade Laws in connection with KX Insights™
     including where applicable assisting in obtaining any necessary
     governmental approvals, licenses and undertakings. Without
     prejudice to the generality of this section 11.4, you shall not,
-    and shall not allow any third-party, export or allow the
+    and shall not allow any third party, export or allow the
     re-export or re-transfer, directly or indirectly, of any part of
-    KX Insights™ in violation of any Export and Trade Laws. A
+    Kx Insights™ in violation of any Export and Trade Laws. A
     listing of U.S. Export Control Classification Numbers and U.S.
     license exceptions, each and to the extent applicable to KX
     Insights™, is available at the following website:
     https://kx.com/export-statement/. Without prejudice to the
     generality of this section 11.4, you undertake that you shall
-    not use KX Insights™ for any purpose other than the Permitted
+    not use Kx Insights™ for any purpose other than the Permitted
     Use, and represent and warrant that you shall ensure (i) Kx
     Insights™ will not be used for any purposes associated with
     chemical, biological or nuclear weapons or missiles capable of
     delivering such weapons, nor will it be resold (if reselling or
     sublicensing is permitted under the Agreement) if you know or
     suspect that it is intended or likely to be used for such a
-    purpose; and (ii) KX Insights™ will not be re-exported or
+    purpose; and (ii) Kx Insights™ will not be re-exported or
     otherwise re-sold or transferred to a destination subject to US,
     UN, EU or OSCE embargo where that act would be in breach of the
     terms of that embargo; and (iii) the Licensed Software or any
@@ -482,68 +471,76 @@ harmful components.
     or constitute the parties as partners or joint venturers.
     Neither party shall create or assume any obligation on behalf of
     the other party for any purpose whatsoever, unless such other
-    party expressly agrees to such an obligation in writing.The
+    party expressly agrees to such an obligation in writing. The
     parties to this Agreement do not intend that any term of this
     Agreement will be enforceable by any third party or person who
     is not a party to this Agreement. For the avoidance of doubt
     this Agreement is between you and Kx and is entirely separate to
-    any terms you may have agreed to within Microsoft Azure or Azure
-    Marketplace. This Agreement and all related documents and all
-    matters arising out of or relating to this Agreement whether in
-    contract, tort, or statute shall be governed by and construed in
-    accordance with the laws of the State of New York, United States
-    of America, except as to copyright matters covered by U.S.
-    Federal Law. This Agreement is deemed entered into at New York
-    by both parties. Each party irrevocably and unconditionally
-    agrees to the exclusive jurisdiction of the State of New York
-    and it will not commence any action, litigation, or proceeding
-    of any kind whatsoever against any other party in any way
-    arising from or relating to this Agreement and all contemplated
-    transactions, including, but not limited to, contract, equity,
-    tort, fraud, and statutory claims, in any forum other than the
-    State of New York (except as permitted by Kx as detailed below).
-    User hereby waives any objections to venue in those courts. Each
-    party agrees that a final judgment in any such action,
-    litigation, or proceeding is conclusive and may be enforced in
-    other jurisdictions by suit on the judgment or in any other
-    manner provided by law. Should any provision of this Agreement
-    be declared unenforceable in any jurisdiction, then such
-    provision shall be deemed to be severed from this Agreement and
-    shall not affect the remainder hereof. Furthermore, with respect
-    to a violation by you of the provisions of sections 2 and 5
-    and/or payment obligations relating to this Agreement, or for
-    actions for injunctive relief to protect Kx Confidential
-    Information, Kx will have the right at its discretion to seek
-    remedies in courts of competent jurisdiction within any
-    applicable territory. The United Nations Convention on Contracts
-    for the International Sale of Goods and the Uniform Computer
-    Information Transactions Act, as currently enacted by any
-    jurisdiction or as may be codified or amended from time to time
-    by any jurisdiction, do not apply to this Agreement. User and
-    the organization which you represent and have bound to the terms
-    of this Agreement shall be jointly and severally liable for
-    User’s obligations under this Agreement. This Agreement
-    supersedes all prior or contemporaneous representations,
-    negotiations, or other communications between the parties
-    relating to the subject matter of this Agreement. It replaces
-    and supersedes any previous oral or written agreements, in
-    relation to this Agreement including any previous versions of
+    any terms you may have agreed to within GCP. 
+
+    This Agreement and
+    all related documents and all matters arising out of or relating
+    to this Agreement whether in contract, tort, or statute shall be
+    governed by and construed in accordance with the laws of the
+    State of New York, United States of America, except as to
+    copyright matters covered by U.S. Federal Law. This Agreement is
+    deemed entered into at New York by both parties. Each party
+    irrevocably and unconditionally agrees to the exclusive
+    jurisdiction of the State of New York and it will not commence
+    any action, litigation, or proceeding of any kind whatsoever
+    against any other party in any way arising from or relating to
+    this Agreement and all contemplated transactions, including, but
+    not limited to, contract, equity, tort, fraud, and statutory
+    claims, in any forum other than the State of New York (except as
+    permitted by Kx as detailed below). User hereby waives any
+    objections to venue in those courts. Each party agrees that a
+    final judgment in any such action, litigation, or proceeding is
+    conclusive and may be enforced in other jurisdictions by suit on
+    the judgment or in any other manner provided by law. Should any
+    provision of this Agreement be declared unenforceable in any
+    jurisdiction, then such provision shall be deemed to be severed
+    from this Agreement and shall not affect the remainder hereof.
+    Furthermore, with respect to a violation by you of the
+    provisions of sections 2 and 5 and/or payment obligations
+    relating to this Agreement, or for actions for injunctive relief
+    to protect Kx Confidential Information, Kx will have the right
+    at its discretion to seek remedies in courts of competent
+    jurisdiction within any applicable territory. 
+
+    The United Nations
+    Convention on Contracts for the International Sale of Goods and
+    the Uniform Computer information Transactions Act, as currently
+    enacted by any jurisdiction or as may be codified or amended
+    from time to time by any jurisdiction, do not apply to this
+    Agreement. 
+
+    User and the organization which you represent and
+    have bound to the terms of this Agreement shall be jointly and
+    severally liable for User’s obligations under this Agreement.
+    This Agreement supersedes all prior or contemporaneous
+    representations, negotiations, or other communications between
+    the parties relating to the subject matter of this Agreement. It
+    replaces and supersedes any previous oral or written agreements,
+    in relation to this Agreement including any previous versions of
     the Agreement accessed by the User or any representative from
     the organization which you have bound under this Agreement, and
     any understandings or other communications between the parties
     in connection with this Agreement. The waiver by either party of
     a breach or right under this Agreement will not constitute a
     waiver of any other or subsequent breach or right.
+    
     Non-performance of either party shall be excused to the extent
     that performance is rendered impossible by strike, fire, flood,
     governmental acts, order or restrictions, failure of suppliers,
     or any other reason where failure to perform is beyond the
     control and not caused by the negligence of the non-performing
-    party. User agrees that KX Insights™ is “commercial computer
+    party. 
+
+    User agrees that Kx Insights™ is “commercial computer
     software” and/or “commercial computer software documentation”
     pursuant to DFAR Section 227.7202 and FAR Section 12.212, as
     applicable, and any use, modification, reproduction, release,
-    performance, display, or disclosure of KX Insights™ by a U.S.
+    performance, display, or disclosure of Kx Insights™ by a U.S.
     government agency shall be prohibited except as expressly
     permitted by this Agreement, which terms shall govern.
 
@@ -559,12 +556,12 @@ harmful components.
     ensure that they are compliant with the terms of the Agreement
     with the third party. Under no circumstances, is Kx liable for
     any third-party software operated or used by User or any failure
-    by User to install the correct version of such third party
+    by User to install the correct version of such third-party
     software. User shall indemnify and hold Kx harmless against all
-    third-party claims suits or proceedings against Kx in respect of
+    third-party claims, suits, or proceedings against Kx in respect of
     User’s use of third-party software or Dependencies.
 
-7.  **Interoperability.** User acknowledges that KX Insights™ may
+7.  **Interoperability**. User acknowledges that KX Insights™ may
     interoperate with third-party software or APIs may depend on
     the continuing availability of such third-party APIs or
     software. Kx may need to update, change or modify KX Insights™
