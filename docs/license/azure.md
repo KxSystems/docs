@@ -478,8 +478,8 @@ operation of the kdb+ software will be error-free or uninterrupted.
 
 ## Schedule
 
-**Information Reported to KX** 
-The following Kdb+ Software variables are reported by the to the license
+**Information reported to KX** 
+The following Kdb+ Software variables are reported to the license
 manager software (which are, upon notice, subject to change):
 
 -    UTC timestamp (`.z.p`)
