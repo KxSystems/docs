@@ -1,8 +1,8 @@
 ---
-title: ObjectiveFS – Appendix H of Migrating a kdb+ HDB to Amazon EC2 – Cloud – kdb+ and q documentation
-description: ObjectiveFS is a commercial Linux client/kernel package. It arbitrates between S3 storage (each S3 bucket is presented as a FS) and each AWS EC2 instance running ObjectiveFS. It presents a POSIX file system layer to kdb+. This is distinct from the EFS NFS service from AWS, which is defined independently from the S3 service. With this approach, you pay storage fees only for the S3 element, alongside a usage fee for ObjectiveFS.
+title: ObjectiveFS | Appendix H of Migrating a kdb+ HDB to Amazon EC2 | Cloud | kdb+ and q documentation
+description: ObjectiveFS is a commercial Linux client/kernel package. It arbitrates between S3 storage (each S3 bucket is presented as a FS) and each server running ObjectiveFS.
 author: Glenn Wright
-date: March 2018
+date: March 2018 (updated July 2021)
 keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, objectivefs
 ---
 # Appendix H - ObjectiveFS
@@ -12,7 +12,8 @@ keywords: Amazon, AWS, EC2, HDB, cloud, kdb+, objectivefs
 !!! info "ObjectiveFS is qualified with kdb+."
 
 ObjectiveFS is a commercial Linux client/kernel package.
-It arbitrates between S3 storage (each S3 bucket is presented as a FS) and each AWS EC2 instance running ObjectiveFS.
+It arbitrates between S3 storage (each S3 bucket is presented as a FS) and each server running ObjectiveFS.
+ObjectiveFS supports S3-compatible object stores (e.g. IBM COS, AWS S3, Google Cloud Storage, etc) and Microsoft Azure.
 
 It presents a POSIX file system layer to kdb+.
 This is distinct from the EFS NFS service from AWS, which is defined independently from the S3 service.
@@ -21,12 +22,19 @@ With this approach, you pay storage fees only for the S3 element, alongside a us
 ObjectiveFS contains a pluggable driver, which allows for multithreaded readers to be implemented in kernel mode.
 This gives an increase in the concurrency of the reading of S3 data.
 ObjectiveFS would be installed on each kdb+ node accessing the S3 bucket containing the HDB data.
+A kdb+ node can be a cloud instance or a local server.
 
-ObjectiveFS V5.3.1 is qualified with kdb+.
+ObjectiveFS is qualified with kdb+.
 ObjectiveFS achieves significantly better performance than EFS.
 It also has significantly better metadata operation latency than all of the EFS and open source S3 gateway products.
+It provides snapshots and client-side encryption.
+
 ObjectiveFS also scales aggregate bandwidth as more kdb+ nodes use the same S3 bucket.
 It scales up close to linearly for reads, as the number of reader nodes increase, since Amazon automatically partitions a bucket across service nodes, as needed to support higher request rates.
+
+??? detail "The results below were generated on ObjectiveFS V5.3.1 from December 2017." 
+
+	Results from the newest V6.8 will be published soon.
 
 ![ObjectiveFS](img/media/image39.png)
 
@@ -86,6 +94,4 @@ Reducing the size of the memory cache for ObjectiveFS and use of disk cache woul
 
 
 
-<div class="kx-nav" markdown="1">
-<div class="kx-nav-prev">[S3QL](s3ql.md)</div><div class="kx-nav-next">[WekaIO Matrix](wekaio-matrix.md)</div>
-</div>
+<style>.md-footer-nav {display: block; }</style>
