@@ -119,18 +119,23 @@ q)"Zürich"
 
 ### Temporal
 
-The valid date range for parsing is ​1709.01.01 to 2290.12.31.
-Date arithmetic is not checked, so you can go out of this range.
+The valid date range is `0001.01.01` to `9999.12.31`. (Since V3.6 2017.10.23.)
 
 ```q
-q)2290.12.31
-2290.12.31
-q)2291.01.01        / out of range
-'2291.01.01
-q)2290.12.31+0 1
-2290.12.31 2291.01.01
-q)2000.01.01+2000.01.01-1709.01.01
-2290.12.31
+q)"D"$"3001.01.01"
+3001.01.01
+```
+Date calculations assume the [proleptic Gregorian calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar "Wikipedia").
+
+Casting to timestamp from date or datetime outside of the timestamp supported year range results in ±`0Wp`.
+Out-of-range dates and datetimes display as `0000.00.00` and `0000.00.00T00:00:00:.000`.
+```q
+q)`timestamp$1666.09.02
+-0Wp
+q)0001.01.01-1
+0000.00.00
+q)"z"$0001.01.01-1 
+0000.00.00T00:00:00.000
 ```
 
 Valid ranges can be seen by incrementing or decrementing the infinities.
