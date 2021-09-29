@@ -379,7 +379,6 @@ nav:
       - Display: ref/display.md
       - Dict: ref/dict.md
       - Divide: ref/divide.md
-      - Display: ref/display.md
       - Dynamic Load: ref/dynamic-load.md
       - Drop: ref/drop.md
       - Enkey, Unkey: ref/enkey.md
