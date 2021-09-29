@@ -493,6 +493,11 @@ A left-atomic function `f` is a binary `f` that is atomic in its left, or first,
 See _Argument_
 
 
+## Left uniform
+
+The result of a left-uniform function has the same length as its left argument. 
+
+
 ## List
 
 An array, its items indexed by position.
@@ -670,6 +675,11 @@ A right-atomic function `f` is a binary that is atomic in its right, or second, 
 ## Right domain/s
 
 See _Argument_
+
+
+## Right uniform
+
+The result of a right-uniform function has the same length as its right argument. 
 
 
 ## Script
