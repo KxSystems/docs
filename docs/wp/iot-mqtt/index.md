@@ -524,13 +524,13 @@ The UI also needed more complex `value_template` logic in metadata to extract th
 
 From:
 
-```jinja
+```jinja2
 {{ value_json.pressure }}
 ```
 
 To:
 
-```jinja
+```jinja2
 {% if value_json.pressure %}
   {{ value_json.pressure }}
 {% else %}
