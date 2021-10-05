@@ -131,9 +131,9 @@ will get the previous value of the cell. This can be useful for conditional form
 To set the engine to handle a larger volume of updates, in Excel complete the following:
 
 1.  In Excel, go to the Visual Basic Editor, by pressing Alt+F11 or clicking _Tools > Macro > Visual Basic Editor_
-2. In the Immediate window (press Ctrl+G or click _View > Immediate Window_), type:
+2.  In the Immediate window (press Ctrl+G or click _View > Immediate Window_), type:
 
-```vbnet
+```vba
 Application.RTD.ThrottleInterval = 1000
 ? Application.RTD.ThrottleInterval
 ```

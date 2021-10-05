@@ -585,7 +585,7 @@ q)\t do[1000000; trade (cols trade)]
 
 However, for splayed tables, only indexing works:
 
-```dos
+```powershell
 C:\>.\q.exe dir
 KDB+ 2.4t 2006.07.27 Copyright (C) 1993-2006 Kx Systems
 w32/ 1cpu 384MB ...

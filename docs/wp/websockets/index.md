@@ -8,7 +8,7 @@ keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSocket
 White paper
 {: #wp-brand}
 
-# Kdb+ and WebSockets 
+# Kdb+ and WebSockets
 
 by [Chris Scott &amp; Michael Gracey](#authors)
 {: .wp-author}
@@ -134,9 +134,9 @@ include a TCP header, WebSockets only require this header to be sent
 during the initial handshake.
 
 
-## Connecting to kdb+ using WebSockets 
+## Connecting to kdb+ using WebSockets
 
-### The handshake 
+### The handshake
 
 In order to initialize a WebSocket connection, a WebSocket ‘handshake’
 must be successfully made between the client and server processes.
@@ -465,7 +465,7 @@ cases, it may be preferable to serialize the data into binary format
 before transmitting it across the connection.
 
 
-### Using `c.js` within JavaScript (client-side parsing) 
+### Using `c.js` within JavaScript (client-side parsing)
 
 Instead of parsing the data within the kdb+ server using `.j` functions,
 we could instead use `-8!` to serialize the data into kdb+ binary form
@@ -563,7 +563,7 @@ to note when sending serialized data we cannot view the message again
 until it has been received and deserialized.
 
 
-## WebSocket security 
+## WebSocket security
 
 Security is one of the biggest concerns in any system. It is of the
 utmost importance that, especially when dealing with sensitive financial
@@ -577,7 +577,7 @@ permissioning is beyond the scope of this white paper; instead, please
 refer to the [July 2013 white paper](../permissions/index.md).
 
 
-### Username and password 
+### Username and password
 
 Client authentication is not defined in the WebSocket protocol, and in
 most cases, it is up to the developer to implement an authentication
@@ -588,7 +588,7 @@ however.
 
 First, create our user/password file and start the server using the `–u`
 argument.
-```dos
+```powershell
 C:\Users\mgrac&gt;type users.txt chris:password
 michael:password2
 C:\Users\mgrac&gt;q -p 5001 –u users.txt
@@ -625,7 +625,7 @@ respectively.
 [Secure sockets stunnel](../../kb/websockets.md#secure-sockets-stunnel)
 
 
-## A simple example – real-time data 
+## A simple example – real-time data
 
 This section will present a simple example in which some tables will be
 updated in the browser in real-time.
@@ -731,7 +731,7 @@ intention is to help readers understand the basic concepts of kdb+ and
 WebSocket integration.
 
 
-## Conclusion 
+## Conclusion
 
 This white paper has shown how WebSockets can be used as part of a HTML5
 GUI to connect to a q process and allow persistent, real-time
@@ -773,7 +773,7 @@ All tests were run using kdb+ version 3.5 (2017.11.30)
 **Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the KX platform.
 
 
-## Appendixes 
+## Appendixes
 
 The following code is also available on GitHub at
 :fontawesome-brands-github: 
@@ -859,7 +859,7 @@ and saved with the respective names in the same directory. Start the q
 processes up first, and then open the HTML file in a web browser.
 
 
-#### B.1 `pubsub.q` 
+#### B.1 `pubsub.q`
 
 Start this process first. It will create the q interface for the
 WebSocket connections and contains a simple pubsub mechanism to push
@@ -908,7 +908,7 @@ pub:{
 ```
 
 
-#### B.2 `fh.q` 
+#### B.2 `fh.q`
 
 This will generate dummy trade and quote data and push it to the pubsub
 process. The script can be edited to change the number of symbols and
@@ -944,7 +944,7 @@ getask:{[s] prices[s]+getmovement[s]}; /* generate ask price */
 This code is from the August 2014 white paper [_Building Real-time Tick Subscribers_](../rt-tick/index.md).
 
 
-#### B.3 `websockets.html` 
+#### B.3 `websockets.html`
 
 Due to the length of code required for this example, the JavaScript and
 HTML code have been split into separate files
@@ -989,7 +989,7 @@ HTML code have been split into separate files
 ```
 
 
-#### B.4 `websockets.js` 
+#### B.4 `websockets.js`
 
 This script will be loaded into the web page by the HTML. Make sure this
 is saved as a JS file in the same directory as the above HTML file.

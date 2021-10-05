@@ -19,7 +19,7 @@ To set the scene (and hopefully experts will forgive the simplifications) CUDA i
 
 On to a simple example of a function that takes an array of reals and squares it. Here we use single-precision floating point, however double can be used as well on later-model cards. Here is the annotated code:
 
-```cuda
+```c
 // Include the cuda header and the k.h interface.
 #include <cuda.h>
 #include"k.h"

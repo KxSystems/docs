@@ -202,7 +202,7 @@ The _cosine similarity_ of two vectors is the dot product of two vectors over th
 
 _How much each term contributes to the cosine similarity_
 
-```synyax
+```syntax
 .nlp.explainSimilarity[keywords1;keywords2]
 ```
 

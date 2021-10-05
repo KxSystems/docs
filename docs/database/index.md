@@ -76,28 +76,28 @@ consider partitioning it.
 
 The records of a [partitioned table](../kb/partition.md) are divided in its root directory between multiple partition directories. The table is partitioned by the values of a single column. Each partition contains records that have the same value in the partitioning column. With timeseries data, this is most commonly a date or time.
 
-```tree
+```treeview
 db/
 ├── 2020.10.03/
-│   ├── quotes/
-│   │   ├── price
-│   │   ├── sym
-│   │   └── time
-│   └── trades/
-│       ├── price
-│       ├── sym
-│       ├── time
-│       └── vol
+│   ├── quotes/
+│   │   ├── price
+│   │   ├── sym
+│   │   └── time
+│   └── trades/
+│       ├── price
+│       ├── sym
+│       ├── time
+│       └── vol
 ├── 2020.10.05/
-│   ├── quotes/
-│   │   ├── price
-│   │   ├── sym
-│   │   └── time
-│   └── trades/
-│       ├── price
-│       ├── sym
-│       ├── time
-│       └── vol
+│   ├── quotes/
+│   │   ├── price
+│   │   ├── sym
+│   │   └── time
+│   └── trades/
+│       ├── price
+│       ├── sym
+│       ├── time
+│       └── vol
 └── sym
 ```
 

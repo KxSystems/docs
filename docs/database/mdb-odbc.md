@@ -9,7 +9,7 @@ date: November 2020
 
 From Windows, load `odbc.k` into your q session, and then load the MDB file.
 
-```dos
+```powershell
 C:>q w32\odbc.k
 ```
 

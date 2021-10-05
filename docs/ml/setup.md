@@ -38,7 +38,7 @@ At present, the packages work only from the base environment.
 
 Before starting q, run the following commands:
 
-```anaconda
+```bash
 source deactivate base
 source activate base
 ```

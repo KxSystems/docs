@@ -49,8 +49,8 @@ totalvolume2:{[stock;minvolume] select sum(volume) from trade where sec = stock,
 
 Then
 
-```dos
-> q tradedata.q -p 5001
+```powershell
+q tradedata.q -p 5001
 ```
 
 ```q

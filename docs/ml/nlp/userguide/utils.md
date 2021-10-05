@@ -55,7 +55,7 @@ This function uses Python’s [`langdetect`](#https://pypi.org/project/langdetec
 
 _Find dates in a string_
 
-```text
+```syntax
 .nlp.findDates text
 ```
 

@@ -90,7 +90,7 @@ $ psrset -e 2 bash
 
 Start q.exe with the OS command `start` with the `/affinity` flag set
 
-```dos
+```powershell
 C> start /affinity 3 c:\q\w64\q.exe 
 ```
 

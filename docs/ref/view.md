@@ -13,7 +13,7 @@ author: Stephen Taylor
 
 _Expression defining a view_
 
-```txtr
+```txt
 view x    view[x]
 ```
 

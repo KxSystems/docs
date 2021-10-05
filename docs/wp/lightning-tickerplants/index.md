@@ -668,8 +668,8 @@ can be found at [kdb-tick](https://github.com/KxSystems/kdb-tick), and can be st
 easily from the command line using
 
 
-```text
-$q tick.q tableSchemas . -p 5010
+```bash
+q tick.q tableSchemas . -p 5010
 ```
 
 For this example, the `tableSchemas.q` file, which should be present in the `tick` folder, will contain 

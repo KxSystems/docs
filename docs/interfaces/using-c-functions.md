@@ -47,7 +47,7 @@ In this article we explain how to write functions in C that can be used in this 
 
 ### Windows
 
-```shell
+```powershell
 cl /LD bar.c bar.def q.lib
 ```
 
@@ -142,7 +142,7 @@ An additional file (`add.def`) is required, unless you add `declspec`s to the co
 
 **add.def**
 
-```def
+```txt
 EXPORTS
 add
 ```
@@ -151,7 +151,7 @@ To ensure that the linker can find `kj()`, we link with :fontawesome-brands-gith
 
 Now, with k.h, add.c, add.def, q.lib we can build a C extension:
 
-```dos
+```powershell
 cl /LD  /DKXVER=3 add.c add.def q.lib
 ```
 
@@ -165,7 +165,7 @@ q)(`add 2:(`add;2))[3;4]
 
 ### Windows: MinGW-64
 
-```dos
+```powershell
 /c/q$ echo 'LIBRARY q.exe'>q.def;  echo EXPORTS>>q.def;  nm -p w32/q.lib |egrep 'T _' |sed 's/0* T _//' >>q.def
 /c/q$ dlltool -v -l libq.a -d q.def
 /c/q$ gcc -shared -DKXVER=3 add.c -L. -lq -o add.dll

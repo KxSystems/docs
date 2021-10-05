@@ -30,7 +30,7 @@ It is best to create a start-up batch file or script to do this, and there are e
 
 For example, the Windows `q.bat` is:
 
-```dos
+```powershell
 c:
 cd \q
 w32\q.exe %*

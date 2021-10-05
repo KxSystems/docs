@@ -570,7 +570,7 @@ date        | type | event
 
 Therefore the corresponding price adjustment is as follows:
 
-```tbl
+```q
 q)cd_padj[491.75;5.7065]
 0.9883955
 ```

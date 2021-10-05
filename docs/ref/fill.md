@@ -13,7 +13,7 @@ _Replace nulls_
 
 _Replace nulls_
 
-```txtr
+```txt
 x^y    ^[x;y]
 ```
 
