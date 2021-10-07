@@ -1,26 +1,26 @@
 # title: MkDocs configuration for code.kx.com/q
 # author: stephen@kx.com
-# date: 2021.03.16
+# date: 2021.10.07
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.'
 
-dev_addr: '0.0.0.0:9000'
+dev_addr: 0.0.0.0:9000
 
-docs_dir: 'docs'
+docs_dir: docs
 
 extra_css:
-  - 'stylesheets/2021.css'
-  - 'stylesheets/prism.css'
-  - 'stylesheets/q.css'
-  # - 'stylesheets/carousel-6.css'
+  - https://code.kx.com/stylesheets/2021.css
+  - https://code.kx.com/stylesheets/prism.css
+  - https://code.kx.com/stylesheets/extra.css
+  - stylesheets/q.css
 
 extra_javascript:
-  - scripts/prism.js
-  - scripts/jquery-3.5.1.min.js # jQuery for theme.js
-  - scripts/theme.js
+  - https://code.kx.com/scripts/prism.js
+  - https://code.kx.com/scripts/jquery-3.6.0.min.js # jQuery for scripts/qsearch.js
+  - https://code.kx.com/scripts/extra.js
   # MathJax scripts
-  - scripts/mathjax.js # configure MathJax object
-  - scripts/polyfill.min.js
-  - scripts/tex-mml-chtml.js
+  - https://code.kx.com/scripts/mathjax.js # configure MathJax object
+  - https://code.kx.com/scripts/polyfill.min.js
+  - https://code.kx.com/scripts/tex-mml-chtml.js
   - scripts/qsearch.js # client-side search engine
 
 google_analytics:
@@ -49,35 +49,28 @@ markdown_extensions:
   - toc:
       permalink: false
 
-# specifying a French search engine is a workaround for a missing file
-# /assets/javascripts/lunr/min/lunr..min.js
-plugins:
-  - search:
-      lang: fr
-  # - markdownextradata
-
-remote_branch: 'master'
+remote_branch: master
 # repo_name: 'GitHub'
 # repo_url: 'https://github.com/kxsystems/docs'
 
-site_dir: 'site'
+site_dir: site
 site_author: 'Kx Systems'
-site_description: "Kx documentation for kdb+ and the q programming language"
+site_description: 'Kx documentation for kdb+ and the q programming language'
 site_name: 'Kdb+ and q documentation'
-site_url: 'https://code.kx.com/q/'
+site_url: https://code.kx.com/q/
 
 theme:
   custom_dir: custom_theme/
-  favicon: 'favicon.ico'
+  favicon: https://code.kx.com/favicon.ico
   font: false
   features:
     - navigation.tabs
-  name: 'material'
+  name: material
   language: en
-  logo: 'img/kx.svg'
+  logo: https://code.kx.com/img/kx.svg
   palette:
-    accent: 'blue'
-    primary: 'black'
+    accent: blue
+    primary: black
     scheme: default
   static_templates:
     - 401.html
