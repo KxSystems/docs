@@ -14,7 +14,7 @@ author: Stephen Taylor
 [<span style="font-size: 3em">:fontawesome-solid-download:</span>
 <br/>
 Download<br/>
-:fontawesome-brands-linux: :fontawesome-brands-apple: :fontawesome-brands-windows: ](https://kx.com/connect-with-us/download/  "Download free kdb+ for non-commercial use")
+:fontawesome-brands-linux: :fontawesome-brands-apple: :fontawesome-brands-windows: ](https://kx.com/developers/download-licenses/  "Download free kdb+ for non-commercial use")
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-power-off:</span><br/>
@@ -88,7 +88,7 @@ section | content
 
 ![kdb+ Tutorial in Chinese](../img/kdbcn.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
 
-### kdb+中文教程 
+### kdb+中文教程
 
 **kdb+ Tutorial in Chinese**
 <br>
