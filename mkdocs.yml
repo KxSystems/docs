@@ -8,8 +8,7 @@ dev_addr: 0.0.0.0:9000
 docs_dir: docs
 
 extra_css:
-  - stylesheets/2021.css
-  # - https://code.kx.com/stylesheets/2021.css
+  - https://code.kx.com/stylesheets/2021.css
   - https://code.kx.com/stylesheets/prism.css
   - https://code.kx.com/stylesheets/extra.css
   - stylesheets/q.css
