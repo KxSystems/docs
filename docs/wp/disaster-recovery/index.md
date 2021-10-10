@@ -148,16 +148,16 @@ and used to construct or amend a database. The basic steps are:
 
 1.  Enumerate the table to be saved against the sym file (`.Q.en`)
 
-    <pre><code class="language-q">
+    ```q
     .Q.en[`:/kx/hdb] trade
-    </code></pre>
+    ```
 
 2.  Save enumerated table splayed to date partition. Parent directories
     are created by set if they do not yet exist.
 
-    <pre><code class="language-q">
-    \`:/kx/hdb/2017.01.01/trade/ set .Q.en[\`:/kx/hdb] trade
-    </code></pre>
+    ```q
+    `:/kx/hdb/2017.01.01/trade/ set .Q.en[`:/kx/hdb] trade
+    ```
 
 Note that as part of setting a splayed table, the column `.d` file is
 automatically written by kdb+. After these steps, the database can now
@@ -436,7 +436,7 @@ save these empty columns, but a manual example is given below:
 ```
 
 
-#### A length error 
+#### A length error
 
 This is usually due to a column vector being a different
 length from the rest of the table. The only method to fix it is to

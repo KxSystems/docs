@@ -10,11 +10,11 @@ keywords: amend, amend at, at, dot, kdb+, q
 
 _Modify one or more items in a list, dictionary or datafile._
 
-```txt
-Amend             Amend At         values (d . i) or (d @ i) become
+```syntax
+Amend            Amend At         values (d . i) or (d @ i)
 
-.[d; i; u]        @[d; i; u]       u[d . i]       u'[d @ i]
-.[d; i; v; vy]    @[d; i; v; vy]   v[d . i;vy]    v'[d @ i;vy]
+.[d; i; u]       @[d; i; u]       u[d . i]       u'[d @ i]
+.[d; i; v; vy]   @[d; i; v; vy]   v[d . i;vy]    v'[d @ i;vy]
 ```
 
 Where
@@ -53,7 +53,7 @@ See also binary and ternary forms of `.` and `@`
 
 ### Amend Entire
 
-If `i` is 
+If `i` is
 
 -   the empty list (for `.`)
 -   the general null (for `@`)
@@ -61,8 +61,8 @@ If `i` is
 the selection is the entire value in `d`.
 
 ```txt
-.[d;();u]     <=>   u[d]            @[d;::;u]     <=>   u'[d]      
-.[d;();v;y]   <=>   v[d;y]          @[d;::;v;y]   <=>   v'[d;y]    
+.[d;();u]     <=>   u[d]            @[d;::;u]     <=>   u'[d]
+.[d;();v;y]   <=>   v[d;y]          @[d;::;v;y]   <=>   v'[d;y]
 ```
 
 ```q
@@ -212,7 +212,7 @@ Note multiple applications of `neg` to some items-at-depth in `d`, corresponding
 ### On disk
 Certain vectors (types 1-19) can be updated directly on disk without the need to fully rewrite the file.
 (Since V3.4)
-Such vectors must 
+Such vectors must
 
 -   have no attribute
 -   be of a mappable type

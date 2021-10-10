@@ -434,7 +434,13 @@ Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain
 
     On Linux systems, administrators might prefer [cgroups](https://en.wikipedia.org/wiki/Cgroups) as a way of limiting resources.
 
-    On Unix systems, memory usage can be constrained using `ulimit`, e.g. <pre><code class="language-bash"> $ ulimit -v 262144 </code></pre>limits virtual address space to 256MB.
+    On Unix systems, memory usage can be constrained using `ulimit`, e.g. 
+
+    ```bash
+    ulimit -v 262144
+    ```
+
+    limits virtual address space to 256MB.
 
 
 ## `-W` (start week)

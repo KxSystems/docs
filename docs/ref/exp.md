@@ -14,16 +14,16 @@ _Raise to a power_
 
 _Raise e to a power_
 
-```txt
+```syntax
 exp x     exp[x]
 ```
 
 Where 
 
 -   `x` is numeric 
--   _e_ is the base of natural logarithms
+-   $e$ is the base of natural logarithms
 
-returns as a float _e_<sup>x</sup>, or null if `x` is null.
+returns as a float $e^x$, or null if `x` is null.
 
 ```q
 q)exp 1
@@ -87,7 +87,7 @@ Range: `fz`
 
 _Raise x to a power_
 
-```txt
+```syntax
 x xexp y    xexp[x;y]
 ```
 
@@ -112,7 +112,7 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
 
     If `y` is integer, this is not identical to `prd y#x`.
 
-    <pre><code class="language-q">
+   ```q
     q)\P 0
     q)prd 3#2
     8
@@ -120,7 +120,7 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
     7.9999999999999982
     q)exp 3 * log 2
     7.9999999999999982
-    </code></pre>
+    ```
 
 
 ### :fontawesome-solid-sitemap: Implicit iteration

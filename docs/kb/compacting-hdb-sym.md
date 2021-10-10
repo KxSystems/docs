@@ -134,18 +134,18 @@ Multi-threaded sym rewrite code](assets/multi-threaded-sym-rewrite-code.q)
 
     In the multi-threaded script, a `'cast` could happen if this line fails on a file:
 
-    <pre><code class="language-q">
+    ```q
     allsyms:distinct raze{[file] :distinct @[value get@;file;`symbol$()] } peach symFiles; 
     /symbol files we're dealing with - memory intensive
-    </code></pre>
+    ```
 
     So perhaps check the integrity of your HDB (perhaps change the above to help debug):
 
-    <pre><code class="language-q">
+    ```q
     allsyms:distinct raze{[file] 
       :distinct @[value get@; file; {0N!(x;y); `symbol$()}[file;]] 
       } peach symFiles; 
-    </code></pre>
+    ```
 
     would print the file and error.
 

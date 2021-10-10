@@ -108,35 +108,47 @@ Install the demo scripts.
 
 The demo displays each kdb+ process in its own window. 
 
--   :fontawesome-brands-windows: `start/tick/run.bat` 
--   :fontawesome-brands-linux: `start/tick/run.sh`
--   :fontawesome-brands-apple: Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
+=== ":fontawesome-brands-apple: macOS"
+
+    Run the `start/tick/run.app` application from Finder. (Consult the `README` as changes must be made to the default Terminal settings.)
+
+=== ":fontawesome-brands-linux: Linux"
+
+    ```bash
+    start/tick/run.sh
+    ```
+
+=== ":fontawesome-brands-windows: Windows"
+
+    ```bash
+    start/tick/run.bat
+    ```
 
 The calls starting each process are essentially:
 
 1. tickerplant – the `tick.q` script defines the tickerplant, and runs on port 5010
 
-    <pre><code class="language-bash">
-    ..$ q tick.q -p 5010
-    </code></pre>
+    ```bash
+    q tick.q -p 5010
+    ```
 
 2. feed – the `feed.q` script connects to the tickerplant and sends a new batch every 507 milliseconds
 
-    <pre><code class="language-bash">
-    ..$ q feed.q localhost:5010 -t 507
-    </code></pre>
+    ```bash
+    q feed.q localhost:5010 -t 507
+    ```
 
 3. rdb – the `r.q` script defines the real time database
 
-    <pre><code class="language-bash">
-    ..$ q tick/r.q -p 5011
-    </code></pre>
+    ```bash
+    q tick/r.q -p 5011
+    ```
 
 4. show – the `show` process, which does not need a port
 
-    <pre><code class="language-bash">
-    ..$ q cx.q show
-    </code></pre>
+    ```bash
+    q cx.q show
+    ```
 
 
 ## Running processes manually
@@ -146,9 +158,9 @@ If the run scripts are unsuitable for your system, then you can call each proces
 Kdb+tick uses paths relative to the local directory. To run correctly, you should change directory such that `tick.q` is in the local directory. For example on macOS, for each of the following commands, open a new terminal, change directory to `~/q/start/tick`, then:
 
 ```bash
-..$ ~/q/start/tick$ ~/q/m32/q tick.q -p 5010
-..$ ~/q/start/tick$ ~/q/m32/q feed.q localhost:5010 -t 107
-..$ ~/q/start/tick$ ~/q/m32/q tick/r.q -p 5011
+~/q/start/tick$ ~/q/m32/q tick.q -p 5010
+~/q/start/tick$ ~/q/m32/q feed.q localhost:5010 -t 107
+~/q/start/tick$ ~/q/m32/q tick/r.q -p 5011
 ```
 
 Refer to `run1.sh` for the remaining processes.
@@ -199,25 +211,25 @@ DOW  24.23159 705727
 The standard components of kdb+tick support various options. In the basic set-up outlined here, the tickerplant publishes all data immediately, and does not create a log file. Optional parameters of
 
 ```bash
-..$ ~/q/m32/q tick.q [schema] [destination directory] [-t N] -p 5010
+~/q/m32/q tick.q [schema] [destination directory] [-t N] -p 5010
 ```
 
 can be supplied. If the destination directory is set, then the schema must also be defined. To modify the supplied example to create a tickerplant log file and to publish data in 1-second batches rather than immediately, start the process with:
 
 ```bash
-..$ ~/q/m32/q tick.q sym ./hdb -t 1000 -p 5010
+~/q/m32/q tick.q sym ./hdb -t 1000 -p 5010
 ```
 
 Similarly the real-time database can be started with optional host:port:user:pass of the tickerplant and historic database to reload at end-of-day:
 
 ```bash
-..$ ~/q/m32/q tick/r.q [tickerplant host:port] [hdb host:port] -p 5011
+~/q/m32/q tick/r.q [tickerplant host:port] [hdb host:port] -p 5011
 ```
 
 e.g.
 
 ```bash
-..$ ~/q/m32/q tick/r.q :5010 :5012 -p 5011
+~/q/m32/q tick/r.q :5010 :5012 -p 5011
 ```
 
 

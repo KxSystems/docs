@@ -21,23 +21,23 @@ v1: value (rank 1)         v: value (rank 1-8)
 v2: value (rank 2)         i: vector of ints≥0
 </div>
 
-The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists. 
+The maps are iterators that derive [**uniform**](../basics/glossary.md#uniform-function) functions that apply their [values](../basics/glossary.md#applicable-value) once to each item of a dictionary, a list, or conforming lists.
 
 
 ## Each
 
 _Apply a value item-wise to a dictionary, list, or conforming lists and/or dictionaries._
 
-```txt
+```syntax
 (v1')x    v1'[x]       v1 each x
 x v2'y    v2'[x;y]
           v3'[x;y;z]
 ```
 
-Where `v` is an applicable value, `v'` applies `v` to each item of a list, dictionary or to corresponding items of conforming lists. The derived function has the same rank as `v`. 
+Where `v` is an applicable value, `v'` applies `v` to each item of a list, dictionary or to corresponding items of conforming lists. The derived function has the same rank as `v`.
 
 ```q
-q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary 
+q)(count')`a`b`c!(1 2 3;4 5;6 7 8 9)        / unary
 a| 3
 b| 2
 c| 4
@@ -52,7 +52,7 @@ c| 4
 Each applied to a binary value is sometimes called _each both_ and can be applied infix.
 
 ```q
-q)1 2 3 in'(1 0 1;til 100;5 6 7)  / in' is binary, infix 
+q)1 2 3 in'(1 0 1;til 100;5 6 7)  / in' is binary, infix
 110b
 ```
 
@@ -71,6 +71,10 @@ q){x+y*z}'[1000000;1 0 1;5000 6000 7000]    / ternary
 The mnemonic keyword [`each`](each.md) can be used to apply a unary value without parentheses or brackets.
 
 ```q
+q)(count')string `Clash`Fixx`The`Who
+5 4 3 3
+q)count'[string `Clash`Fixx`The`Who]
+5 4 3 3
 q)count each string `Clash`Fixx`The`Who
 5 4 3 3
 ```
@@ -80,7 +84,7 @@ q)count each string `Clash`Fixx`The`Who
 
 _Apply a binary value between one argument and each item of the other._
 
-```txt
+```syntax
 Each Left     x v2\: y    v2\:[x;y]   |->   v2[;y] each x
 Each Right    x v2/: y    v2/:[x;y]   |->   v2[x;] each y
 ```
@@ -146,14 +150,14 @@ q)raze[a] ~ b
 
 !!! warning "Atoms and lists in the domains of these iterators"
 
-    The domains of `\:` and `/:` extend beyond binary values to include certain atoms and lists. 
+    The domains of `\:` and `/:` extend beyond binary values to include certain atoms and lists.
 
-    <pre><code class="language-q">
-    q)(", "/:)("quick";"brown";"foxes") 
+    ```q
+    q)(", "/:)("quick";"brown";"foxes")
     "quick, brown, foxes"
     q)(0x0\:)3.14156
     0x400921ea35935fc4
-    </code></pre>
+    ```
 
     This is [exposed infrastructure](../basics/exposed-infrastructure.md).
     Use the keywords [`vs`](vs.md) and [`sv`](sv.md) instead.
@@ -166,14 +170,14 @@ q)raze[a] ~ b
 
 _Assign sublists of the argument list to secondary tasks, in which the unary value is applied to each item of the sublist._
 
-```txt
+```syntax
 (v1':)x   v1':[x]   v1 peach x
 ```
 
-The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available secondary tasks](../basics/cmdline.md#-s-secondary-threads). Each secondary task applies `v1` to each item of its sublist. 
+The Each Parallel map takes a **unary** value as argument and derives a unary function. The iteration `v1':` divides its list or dictionary argument `x` between [available secondary tasks](../basics/cmdline.md#-s-secondary-threads). Each secondary task applies `v1` to each item of its sublist.
 
-:fontawesome-solid-book-open: 
-[Command-line option `-s`](../basics/cmdline.md#-s-secondary-threads), 
+:fontawesome-solid-book-open:
+[Command-line option `-s`](../basics/cmdline.md#-s-secondary-threads),
 [Parallel processing](../basics/peach.md)
 
 ```bash
@@ -199,7 +203,7 @@ The following are equivalent.
 ```q
 v1':[list]
 (v1':)list
-v1 peach list
+v1 peach list
 ```
 
 !!! tip "Higher-rank values"
@@ -229,9 +233,9 @@ _Q for Mortals_
 
 _Apply a binary value between each item of a list and its preceding item._
 
-```txt
+```syntax
 (v2':)x    v2':[x]      (v2)prior x
-x v2':y    v2':[x;y]   
+x v2':y    v2':[x;y]
 ```
 
 The Each Prior map takes a **binary** value and derives a variadic function.
@@ -242,8 +246,8 @@ q)(-':)1 1 2 3 5 8 13
 1 0 1 1 2 3 5
 ```
 
-The first item of a list has, by definition, no prior item. 
-If the derived function is applied as a binary, its left argument is taken as the ‘seed’ – the value preceding the first item. 
+The first item of a list has, by definition, no prior item.
+If the derived function is applied as a binary, its left argument is taken as the ‘seed’ – the value preceding the first item.
 
 ```q
 q)1950 -': `S`J`C!1952 1954 1960
@@ -298,19 +302,21 @@ q)deltas 5 16 42 103
 
 _Pick successive items from multiple list arguments: the left argument of the iterator determines from which of the arguments each item is picked._
 
-Syntax: `int'[a;b;c;…]`  
+```syntax
+int'[a;b;c;…]
+```
 
-Where 
+Where
 
 -   `int` is an integer vector
 -   $args$ `[a;b;c;…]` are the arguments to the derived function
 
-the derived function `int'` returns $r$ such that 
+the derived function `int'` returns $r$ such that
 $r_i$ is ($args_{int_i})_i$
 
 ![case](../img/case.png)
 
-The derived function `int'` has rank `max[int]+1`. 
+The derived function `int'` has rank `max[int]+1`.
 
 Atom arguments are treated as infinitely-repeated values.
 
@@ -333,9 +339,9 @@ q)0 1 0'["a";"xyz"]  /atom "a" repeated as needed
 "aya"
 ```
 
-You can use Case to select between record fields according to a test on some other field. 
+You can use Case to select between record fields according to a test on some other field.
 
-Suppose we have lists `h` and `o` of home and office phone numbers, and a third list `p` indicating at which number the subject prefers to be called. 
+Suppose we have lists `h` and `o` of home and office phone numbers, and a third list `p` indicating at which number the subject prefers to be called.
 
 ```q
 q)([]pref: p;home: h; office: o; call: (`home`office?p)'[h;o])
@@ -348,7 +354,7 @@ home   "(677)-200-5231" "(546)-864-5636" "(677)-200-5231"
 home   "(463)-653-5120" "(636)-437-2336" "(463)-653-5120"
 ```
 
-Case is a map. 
+Case is a map.
 Consider the iteration’s arguments as a matrix, of which each row corresponds to an argument.
 
 ```q
@@ -362,7 +368,7 @@ cow   dog   cat   fish
 ```
 
 Case iterates the int vector as a mapping from column number to row number.
-It is a simple form of scattered indexing. 
+It is a simple form of scattered indexing.
 
 ```q
 q)i:0 1 0 2

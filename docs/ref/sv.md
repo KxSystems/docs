@@ -18,7 +18,7 @@ _“Scalar from vector”_
 -   _decode a vector to an atom_
 
 
-```txt
+```syntax
 x sv y    sv[x;y]
 ```
 
@@ -145,12 +145,12 @@ q)256 sv til 8                / same calculation
 
     Use [File Binary](file-binary.md) – e.g.:
 
-    <pre><code class="language-q">
+    ```q
     q)show a:0x0 vs 3.1415
     0x400921cac083126f
     q)(enlist 8;enlist "f")1: a   /float
     3.1415
-    </code></pre>
+    ```
 
 
 ### Bits to integer

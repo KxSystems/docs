@@ -187,8 +187,10 @@ symbol | `x->s`   | error
 
     The k struct changed with the release of V3.0, and if you are compiling using the C library (c.o/c.dll) stamped on or after 2012.06.25 you should ensure you use the correct k struct by defining KXVER accordingly, e.g. 
 
-    <pre><code class="language-bash">gcc -D KXVER=3 …</code></pre>
-    
+    ```bash
+    gcc -D KXVER=3 …
+    ```
+        
     If you need to link against earlier releases of the C library, you can obtain those files from :fontawesome-brands-github: [the earlier version](https://github.com/KxSystems/kdb/blob/6455fa25b0e1e5e403ded9bcec96728b4445ccac/c/c/k.h) of 2011.04.20. 
 
 

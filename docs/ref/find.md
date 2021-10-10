@@ -41,31 +41,41 @@ q)"abcde"?"d"
 
 ## Type-specific
 
-Find is type-specific relative to `x`. Where:
+Find is type-specific relative to `x`. Where `x` is a
 
-1.  `x` is a **simple list** and `y` a list whose atoms are all the same type as `x`, and whose first item is a list, the result corresponds to `x` item-by-item; i.e. Find is right-atomic. <pre><code class="language-q">q)rt:(10 5 -1;-8;3 17)
-q)i:w?rt
-q)i
-0 3 4
-7
-2 7
-q)w[i]
-10 5 -1
-0N
-3 0N
-</code></pre>
-(If the first item of `y` is an atom, a `type` error is signalled.)
+-   **simple list** and `y` a list whose atoms are all the same type as `x`, and whose first item is a list, the result corresponds to `y` item-by-item; i.e. Find is right-atomic.
 
-1.  `x` is a **list of lists** and `y` is a **simple list**, items of `x` are matched with the whole of `y`. <pre><code class="language-q">q)u:("abcde";10 2 -6;(2 3;`ab))
-q)u?10 2 -6
-1
-q)u?"abcde"
-0
-</code></pre>
+    ```q
+    q)rt:(10 5 -1;-8;3 17)
+    q)i:w?rt
+    q)i
+    0 3 4
+    7
+    2 7
+    q)w[i]
+    10 5 -1
+    0N
+    3 0N
+    ```
 
-1.  `x` is a **list of lists** and `y` is a **mixed list** then items of `x` are matched with items of `y`. <pre><code class="language-q">q)u?(2 3;`ab)
-3 3
-</code></pre>
+    (If the first item of `y` is an atom, a type error is signalled.)
+
+-   **list of lists** and `y` is a **simple list**, items of `x` are matched with the whole of `y`.
+
+    ```q
+    q)u:("abcde";10 2 -6;(2 3;`ab))
+    q)u?10 2 -6
+    1
+    q)u?"abcde"
+    0
+    ```
+
+-   **list of lists** and `y` is a **mixed list** then items of `x` are matched with items of `y`.
+
+    ```q
+    q)u?(2 3;`ab)
+    3 3
+    ```
 
     In this case Find matches items of `x` with `2` `3` and `` `ab `` , not ``(2 3;`ab) ``.
 

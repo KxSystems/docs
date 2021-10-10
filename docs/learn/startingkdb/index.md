@@ -72,9 +72,14 @@ Two sets of scripts are referenced in this guide:
 
     Move the `start` directory under your `QHOME` directory, e.g. `q/start`. For example, there should be a file:
 
-    <pre><code class="language-txt">c:\q\start\buildhdb.q         / Windows
-    ~/q/start/buildhdb.q          / Linux and macOS
-    </code></pre>
+    === ":fontawesome-brands-linux: Linux :fontawesome-brands-apple: macOS"
+
+            ~/q/start/buildhdb.q
+    
+    === ":fontawesome-brands-windows: Windows"
+
+            c:\q\start\buildhdb.q
+
 
 !!! tip "Text editor for :fontawesome-brands-windows: Windows"
 

@@ -157,14 +157,17 @@ We close a connection using the `close` function:
 !!! warning "Installation errors"
 
     If there is a problem with either the installation of the q integration, or the jar file is not found, we’ll get an error along the lines of:
-    <pre><code class="language-matlab">
+    
+    ```matlab
     ??? Undefined function or method 'c' for input arguments of type 'char'.
     
     Error in ==> kx.kx at 51
         w.handle = c(ip,p);
-    </code></pre>
+    ```
+
     Or if the socket is not currently connected then any future communications will result in an error like:
-    <pre><code class="language-matlab">
+
+    ```matlab
     ??? Java exception occurred:
     java.net.SocketException: Socket closed
 
@@ -180,7 +183,7 @@ We close a connection using the `close` function:
 
     Error in ==> kx.fetch at 65
         t = c.handle.k(varargin{1});
-    </code></pre>
+    ```
 
 
 ## Using the kdb+ process

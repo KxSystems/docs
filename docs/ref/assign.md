@@ -10,7 +10,9 @@ _Name a value; amend a named value_
 
 ## Simple assign
 
-Syntax: `x:y`
+```syntax
+x:y
+```
 
 Where `x` is a name and `y` is a value, the value of `y` is associated with the name `x`.
 
@@ -26,7 +28,9 @@ q)a:3.14159   / amend
 
 ## Indexed assign
 
-Syntax: `x[i]:y`
+```syntax
+x[i]:y
+```
 
 Where 
 
@@ -49,7 +53,9 @@ jane | 200
 
 ## Assign through operator
 
-Syntax: `x op:y`, `x[i]op:y`
+```syntax
+x op:y    x[i]op:y
+```
 
 Where 
 
@@ -72,14 +78,14 @@ q)s
 
 ??? tip "This is syntactic sugar for [Amend At](amend.md)."
 
-    <pre><code class="language-q">
+    ```q
     q)s:("the";"quick";"brown";"fox")
     q)@[s;1 2;,;("er";"ish")]
     "the"
     "quicker"
     "brownish"
     "fox"
-    </code></pre>
+    ```
 
     The functional form is more general, and extends assignment-through-operator to derived functions, keywords and lambdas.
 

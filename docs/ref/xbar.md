@@ -9,7 +9,7 @@ author: Stephen Taylor
 
 _Round down_
 
-```txt
+```syntax
 x xbar y    xbar[x;y]
 ```
 
@@ -56,7 +56,7 @@ close| sym
 
 ??? tip "You can use `bin` to group at irregular intervals."
 
-    <pre><code class="language-q">
+    ```q
     q)x:\`s#10:00+00:00 00:08 00:13 00:27 00:30 00:36 00:39 00:50
     q)select count i by x x bin time.minute from ([]time:\`s#10:00:00+asc 100?3600)
     minute| x
@@ -69,7 +69,7 @@ close| sym
     10:36 | 3
     10:39 | 19
     10:50 | 20
-    </code></pre>
+    ```
 
 A month is (internally) the count of months since 2000, so you can use `3 xbar` to calculate quarters.
 

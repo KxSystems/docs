@@ -31,12 +31,13 @@ StPetersburg Russia  5383890
     In q names are assigned values with the colon.
     The equals sign `=` is the Equals operator. It returns a boolean.
 
-    <pre><code class="language-q">q)a:5
+    ```q
+    q)a:5
     q)a+2   / a gets 5
     7
     q)a=2   / no, it is not
     0b
-    </code></pre>
+    ```
 
 Unlike classical relational databases, q tables are ordered. You can index them.
 A table is a list of dictionaries. Any single row is a dictionary.

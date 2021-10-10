@@ -87,7 +87,7 @@ ODBC Data Source Administrator. This is an alternative to steps
     a `.reg` extension. Here is an example of what the file might look
     like.
 
-    <pre><code class="language-txt">
+    ```txt
     Windows Registry Editor Version 5.00
     [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\DEV]
     "Driver"="P:\…\qodbc3\w64\qodbc3.dll"
@@ -97,7 +97,7 @@ ODBC Data Source Administrator. This is an alternative to steps
     "PWD"="password"
     [HKEY_CURRENT_USER\SOFTWARE\ODBC\ODBC.INI\ODBC Data Sources]
     "DEV"="KDB ODBC3 Driver"
-    </code></pre>
+    ```
 
 3.  Double-click on the file when saved. This will create the correct
     driver entries, which for this example will be a new kdb+ DSN called

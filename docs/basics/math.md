@@ -94,24 +94,25 @@ Individual function articles tabulate non-obvious domain and range datatypes.
 The domains and ranges also extend to:
 
 -   **dictionaries** where the [`value`](../ref/value.md) of the dictionary is in the domain
-    <pre><code class="language-q">
-    q)3+\`a\`b\`c!(42;2012.09.15;1b)
+    ```q
+    q)3+`a`b`c!(42;2012.09.15;1b)
     a| 45
     b| 2012.09.18
     c| 4
-    </code></pre>
+    ```
 -   **simple tables** where the [`value`](../ref/value.md) of the [`flip`](../ref/flip.md) of the table is in the domain
-<pre><code class="language-q">
+
+    ```q
     q)3%([]b:1 2 3;c:45 46 47)
     b   c
     --------------
     3   0.06666667
     1.5 0.06521739
     1   0.06382979
-    </code></pre>
+    ```
 -   **keyed tables** where the [`value`](../ref/value.md) of the table is in the domain
-    <pre><code class="language-q">
-    q)show v:([sym:\`ibm\`goog\`msoft]qty:1000 2000 3000;p:1550 375 98)
+    ```q
+    q)show v:([sym:`ibm`goog`msoft]qty:1000 2000 3000;p:1550 375 98)
     sym  | qty  p
     -----| ---------
     ibm  | 1000 1550
@@ -123,7 +124,7 @@ The domains and ranges also extend to:
     ibm  | 1005 1555
     goog | 2005 380
     msoft| 3005 103
-    </code></pre>
+    ```
 
 Exceptions to the above:
 ```txt
@@ -147,7 +148,7 @@ Mathematical functions on temporals are applied to the underlying numerics. See 
 
 !!! warning "Beyond addition and subtraction"
     Results for addition and subtraction are generally intuitive and useful; not always for other arithmetic functions.
-    <pre><code class="language-q">
+    ```q
     q)2017.12.31+0 1 2
     2017.12.31 2018.01.01 2018.01.02
     q)2017.12m-0 1 2
@@ -164,7 +165,7 @@ Mathematical functions on temporals are applied to the underlying numerics. See 
     300000f
     q)00:10:00.000000000%2
     3e+11
-    </code></pre>
+    ```
 
 
 ## Aggregating nulls

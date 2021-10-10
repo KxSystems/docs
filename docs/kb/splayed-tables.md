@@ -10,8 +10,8 @@ date: October 2020
 
 Medium-sized tables (up to 100 million rows) are best stored on disk [splayed](https://en.wiktionary.org/wiki/splay "Wiktionary"): each column is stored as a separate file, rather than using a single file for the whole table.
 
-```txt
-quotes
+```treeview
+quotes/
 ├── .d
 ├── price
 ├── sym
@@ -60,16 +60,16 @@ tim   occ ono      dcc dno
 q)`:calls/ set calls
 `:calls/
 ```
-```bash
-❯ tree calls
-calls
+```treeview
+calls/
 ├── dcc
 ├── dno
 ├── occ
-├── ono
+├── ano
 └── tim
 
-0 directories, 5 files
+```
+```bash
 ❯ ls -a calls
 .   ..  .d  dcc dno occ ono tim
 ```
@@ -190,11 +190,11 @@ q)`:dir/tr/ set .Q.en[`:dir] tr
 
 Notice that the sym list is stored separately from the table. If the symbols are common to several tables it may be convenient to write the sym list in their common parent directory.
 
-```q
-/db
-  sym
-  /quotes
-  /tr
+```treeview
+db/
+├── sym
+├── quotes/
+└── tr/
 ```
 
 Since table `tr` has a column `sym`, represented by file `db/tr/sym`, one place you _cannot_ write the sym list is in `db/tr`.
@@ -207,7 +207,11 @@ Since table `tr` has a column `sym`, represented by file `db/tr/sym`, one place 
 
     Since V3.0 2011.11.25 a splayed table column can hold nested sym vectors.
 
-    Prior to V3.4, `.Q.en` did not enumerate nested sym lists. It had to be done manually, e.g.<pre><code class="language-q">\`:/db/2013.01.10/tt/ set .Q.en[\`:/db] update c3:{\`:sym?raze x;\`sym$'x}c3 from t</code></pre>
+    Prior to V3.4, `.Q.en` did not enumerate nested sym lists. It had to be done manually, e.g.
+
+    ```q
+    `:/db/2013.01.10/tt/ set .Q.en[`:/db] update c3:{`:sym?raze x;`sym$'x}c3 from t
+    ```
 
 
 ## Loading splayed tables
@@ -217,7 +221,9 @@ There are various ways to load or read a splayed table.
 Start q with the directory:
 
 ```bash
-❯ q calls
+$ q calls
+```
+```q
 KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
 m64/ 12()core 65536MB sjt mackenzie.local 127.0.0.1 EXPIRE..
 ```
@@ -282,14 +288,14 @@ date       time  vol   sym  price
 
 When q loads a directory it loads everything in it that represents a kdb+ object. So it is convenient to store a shared sym list in the root directory of a database.
 
-```txt
-/db
-  sym
-  /quotes
-  /tr
+```treeview
+db/
+├── sym
+├── quotes/
+└── tr/
 ```
 ```bash
-> q db
+$ q db
 ```
 ```q
 KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
@@ -364,7 +370,7 @@ q).[`:trade/.d;();:;`date`open`high`low`close`sym]
 For the changes to take effect we need to reload the splayed table.
 
 ```bash
-> q dir
+$ q dir
 ```
 ```q
 KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems
@@ -403,7 +409,7 @@ q).[`:trade/.d;();,;`newcol]
 Verify the changes by loading the splayed table into a q session.
 
 ```bash
-> q dir
+$ q dir
 ```
 ```q
 KDB+ 4.0 2020.10.02 Copyright (C) 1993-2020 Kx Systems

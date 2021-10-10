@@ -1,6 +1,6 @@
 # title: MkDocs configuration for code.kx.com/q
 # author: stephen@kx.com
-# date: 2021.10.07
+# date: 2021.10.10
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.'
 
 dev_addr: 0.0.0.0:9000
@@ -8,7 +8,8 @@ dev_addr: 0.0.0.0:9000
 docs_dir: docs
 
 extra_css:
-  - https://code.kx.com/stylesheets/2021.css
+  - stylesheets/2021.css
+  # - https://code.kx.com/stylesheets/2021.css
   - https://code.kx.com/stylesheets/prism.css
   - https://code.kx.com/stylesheets/extra.css
   - stylesheets/q.css
@@ -30,7 +31,6 @@ google_analytics:
 markdown_extensions:
   - admonition
   - attr_list
-  - extra
   - meta
   - pymdownx.arithmatex:
       generic: true
@@ -42,6 +42,10 @@ markdown_extensions:
       options:
         custom_icons:
           - custom_theme/.icons
+  # - extra
+  - pymdownx.extra
+  - pymdownx.highlight:
+      use_pygments: false
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.tabbed

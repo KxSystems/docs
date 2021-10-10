@@ -143,7 +143,11 @@ While the first name is shorter, it is definitely harder to type than the unabbr
     -   a single syllable
     -   the first letter of each word that describes the object.
 
-    For example: <pre><code class="language-q">st.pos.Tab.New</code></pre>
+    For example: 
+
+    ```q
+    st.pos.Tab.New
+    ```
 
 Typing accuracy as well as typing speed is at stake here. Sometimes we are actually compelled to work together face-to-face, in which case we rely on speech rather than email to convey information. We should not spend a lot of time having to explain how things are spelled, or which letters in a name are upper-case, or which vowels didn’t get dropped and which consonants did. 
 

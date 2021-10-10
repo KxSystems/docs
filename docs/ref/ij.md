@@ -6,18 +6,14 @@ keywords: ij, ijf, inner join, join, kdb+, q
 ---
 # `ij`, `ijf`
 
-
-
-
-
-
 _Inner join_
 
 
-<div markdown="1" class="typewriter">
+
+```syntax
 x ij  y     ij [x;y]
 x ijf y     ijf[x;y]
-</div>
+```
 
 Where
 
@@ -67,28 +63,28 @@ k v   s
 
     Since V3.0, `ij` has changed behavior (similarly to `lj`): when there are nulls in `y`, `ij` uses the `y` null, where the earlier version left the corresponding value in `x` unchanged:
 
-    <pre><code class="language-q">
+    ```q
     q)show x:([]a:1 2;b:`x`y;c:10 20)
     a b c
-    \------
+    ------
     1 x 10
     2 y 20
     q)show y:([a:1 2]b:``z;c:1 0N)
     a| b c
-    \-| ---
+    -| ---
     1|   1
     2| z
     q)x ij y        /V3.0
     a b c
-    \-----
+    -----
     1   1
     2 z
     q)x ij y        /V2.8
     a b c
-    \------
+    ------
     1 x 1
     2 z 20
-    </code></pre>
+    ```
 
     Since 2016.02.17, the earlier version is available in all V3.4 and later versions as `ijf`.
 

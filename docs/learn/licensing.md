@@ -77,9 +77,8 @@ If both are found, the `kc.lic` file is used.
 
 License key files (`kc.lic`) are distributed by email. 
 
-<button style="background: #0088ff; padding: 10px;" type="button">
+<button class="material-button" type="button">
     <a href="https://ondemand.kx.com/" style="color: white">
-        :fontawesome-solid-certificate:
         Request an On-Demand license key file
     </a>
 </button>
@@ -92,9 +91,9 @@ The banner at the top of the aborted session contains machine-configuration info
 
 Your Designated Contact sends a copy of the banner to licadmin@kx.com to request a license file by return. 
 
-!!! info "Designated Contact"
+??? info "Designated Contact"
 
-    Each KX customer designates to licadmin@kx.com a couple of technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
+    Each KX customer designates to licadmin@kx.com two technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
 
 
 ## Install the license key file
@@ -121,13 +120,13 @@ If you are sharing use of a commercial license, you will probably want to set th
 
 The default location for the license key file is the `QHOME` folder. You do not have to keep the license key file there. You can use the environment variable `QLIC` to specify a different filepath.
 
-!!! tip "Folder not file"
+??? tip "Folder not file"
 
     Like `QHOME`, `QLIC` points to a folder, not a file. For example,
 
-    <pre><code class="language-bash">
-    $ QLIC='/Users/simon/q'
-    </code></pre>
+    ```bash
+    QLIC='/Users/simon/q'
+    ```
 
 
 ## Licensing server for kdb+ On Demand
@@ -166,7 +165,7 @@ The number of licensed cores is always 16 for the on-demand license.
 :fontawesome-regular-hand-point-right: [License errors](../basics/errors.md#license-errors)
 
 
-!!! warning "On the road"
+??? warning "On the road"
 
     The license key file binds the interpreter to your computer’s hostname.
     For example, for a Mac named `mymbp` the hostname might be `mymbp.local`.
@@ -174,7 +173,9 @@ The number of licensed cores is always 16 for the on-demand license.
 
     Linux and macOS users can restore their hostnames from the command shell, e.g. 
 
-    `scutil --set HostName "mymbp.local"`
+    ```bash
+    scutil --set HostName "mymbp.local"
+    ```
 
 
 ## License questions

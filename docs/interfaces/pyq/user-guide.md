@@ -275,11 +275,12 @@ k('9 7 5 3 1')
 
     The `s#` prefix that appears in the display of the output for the `asc()` function indicates that the resulting vector has a _sorted_ attribute set. An attribute can be queried by calling the `attr()` function or accessing the `attr` property of the result:
 
-    <pre><code class="language-python">
-    &gt;&gt;&gt; s = q.asc(a) >>> q.attr(s) k('s')
-    &gt;&gt;&gt; s.attr
+    ```python
+    >>> s = q.asc(a) 
+    >>> q.attr(s) k('s')
+    >>> s.attr
     k('s')
-    </code></pre>
+    ```
 
     When the`asc()` function gets a vector with the `s` attribute set, it skips sorting and immediately returns the same vector.
 

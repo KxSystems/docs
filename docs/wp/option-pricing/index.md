@@ -507,12 +507,14 @@ In this section we deploy all the aforementioned techniques and compare the resu
 
     The example below can be run from the terminal across multiple threads using the following commands:
 
-    <pre><code class="language-q">
-    \$ q -s 8
+    ```bash
+    q -s 8
+    ```
+    ```q
     q)\l op.q
     q)loadfile\`:init.q
     q)loadfile\`:code/q/run.q
-    </code></pre>
+    ```
 
 	 where we load in the functions contained within the Option Pricing library using the first two commands and run the example by loading in `run.q`.
 

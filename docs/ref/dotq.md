@@ -72,7 +72,7 @@ In non-partitioned databases the partitioned database state variables remain und
 ## `.Q.a` (lower-case alphabet)
 ## `.Q.an` (all alphanumerics)
 
-```txt
+```syntax
 .Q.A       / upper-case alphabet
 .Q.a       / lower-case alphabet
 .Q.an      / all alphanumerics
@@ -92,7 +92,7 @@ q).Q.an
 
 ## `.Q.addmonths`
 
-```txt
+```syntax
 .Q.addmonths[x;y]
 ```
 
@@ -119,7 +119,7 @@ q).Q.addmonths[2006.10.29;4]
 
 ## `.Q.addr` (IP address)
 
-```txt
+```syntax
 .Q.addr x
 ```
 
@@ -145,7 +145,7 @@ q)256 vs .Q.addr`localhost
 
 ## `.Q.b6` (bicameral-alphanums)
 
-```txt
+```syntax
 .Q.b6
 ```
 
@@ -161,7 +161,7 @@ Used for [binhex](#qj10-encode-binhex) encoding and decoding.
 
 ## `.Q.bt` (backtrace)
 
-```txt
+```syntax
 .Q.bt[]
 ```
 
@@ -196,7 +196,7 @@ The debugger itself occupies a stack frame, but its source is hidden. (Since V3.
 
 ## `.Q.btoa` (b64 encode)
 
-```txt
+```syntax
 .Q.btoa x
 ```
 
@@ -210,8 +210,8 @@ Since V3.6 2018.05.18.
 
 ## `.Q.bv` (build vp)
 
-Syntax:
-```txt
+
+```syntax
 .Q.bv[]
 .Q.bv[`]
 ```
@@ -245,7 +245,7 @@ q)@[get;"select from tt";-2@]; / no error
 
 ## `.Q.Cf` (create empty nested char file)
 
-```txt
+```syntax
 .Q.Cf x
 ```
 
@@ -254,7 +254,7 @@ A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
 
 ## `.Q.chk` (fill HDB)
 
-```txt
+```syntax
 .Q.chk x
 ```
 
@@ -272,9 +272,9 @@ q).Q.chk[`:hdb]
 
     If it signals an error similar to
 
-    <pre><code class="language-q">
+    ```q
     './2010.01.05/tablename/.d: No such file or directory
-    </code></pre>
+    ```
 
     check the process has write permissions for that filesystem.
 
@@ -285,7 +285,7 @@ _Q for Mortals_
 
 ## `.Q.cn` (count partitioned table)
 
-```txt
+```syntax
 .Q.cn x
 ```
 
@@ -294,7 +294,7 @@ Where `x` is a partitioned table, passed by value, returns its count. Populates 
 
 ## `.Q.D` (partitions)
 
-```txt
+```syntax
 .Q.D
 ```
 
@@ -320,7 +320,7 @@ q).Q.P!.Q.D
 
 ## `.Q.dd` (join symbols)
 
-```txt
+```syntax
 .Q.dd[x;y]
 ```
 
@@ -345,7 +345,7 @@ IBM  N  IBM.N
 
 _Default values for command-line arguments_
 
-```txt
+```syntax
 .Q.def[x;y]
 ```
 
@@ -360,8 +360,8 @@ Provides defaults and types for command-line arguments parsed with [``.Q.opt``](
 ## `.Q.dpt` (save table unsorted)
 ## `.Q.dpts` (save table unsorted with symtable)
 
-Syntax:
-```txt
+
+```syntax
 .Q.dpft[d;p;f;t]
 .Q.dpfts[d;p;f;t;s]
 .Q.dpt[d;p;t]
@@ -446,7 +446,7 @@ q)mysym
 
 ## `.Q.dsftg` (load process save)
 
-```txt
+```syntax
 .Q.dsftg[d;s;f;t;g]
 ```
 
@@ -479,7 +479,7 @@ q).Q.dsftg[d;s;f;t;g]
 ## `.Q.en` (enumerate varchar cols)
 ## `.Q.ens` (enumerate against domain)
 
-```txt
+```syntax
 .Q.en[dir;table]
 .Q.ens[dir;table;name]
 ```
@@ -535,7 +535,7 @@ _Q for Mortals_
 
 ## `.Q.f` (format)
 
-```txt
+```syntax
 .Q.f[x;y]
 ```
 
@@ -570,7 +570,7 @@ q)10 xlog 0Wj-1
 
 ## `.Q.fc` (parallel on cut)
 
-```txt
+```syntax
 .Q.fc[x;y]
 ```
 
@@ -601,7 +601,7 @@ q)\t f peach vec
 
 ## `.Q.ff` (append columns)
 
-```txt
+```syntax
 .Q.ff[x;y]
 ```
 
@@ -648,7 +648,7 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 
 ## `.Q.fk` (foreign key)
 
-```txt
+```syntax
 .Q.fk x
 ```
 
@@ -657,7 +657,7 @@ Where `x` is a table column, returns `` ` `` if the column is not a foreign key 
 
 ## `.Q.fmt` (format)
 
-```txt
+```syntax
 .q.fmt[x;y;z]
 ```
 
@@ -715,7 +715,7 @@ q)fmt[9] each 34.4 343434.358
 
 _`.Q.fs` for pipes_
 
-```txt
+```syntax
 .Q.fps[x;y]
 .Q.fpn[x;y;z]
 ```
@@ -733,7 +733,7 @@ Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and appli
 ## `.Q.fs` (streaming algorithm)
 ## `.Q.fsn` (streaming algorithm)
 
-```txt
+```syntax
 .Q.fs[x;y]
 .Q.fsn[x;y;z]
 ```
@@ -779,7 +779,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 
 ## `.Q.ft` (apply simple)
 
-```txt
+```syntax
 .Q.ft[x;y]
 ```
 
@@ -829,7 +829,7 @@ s4| clark 20     london
 
 ## `.Q.fu` (apply unique)
 
-```txt
+```syntax
 .Q.fu[x;y]
 ```
 
@@ -859,7 +859,7 @@ q)r1~r2
 
 ## `.Q.gc` (garbage collect)
 
-```txt
+```syntax
 .Q.gc[]
 ```
 
@@ -949,7 +949,7 @@ So if you have many nested data, e.g. columns of char vectors, or much grouping,
 
 ## `.Q.gz` (GZip)
 
-```txt
+```syntax
 .Q.gz[::]           / zlib loaded?
 .Q.gz cbv           / unzipped
 .Q.gz (cl;cbv)      / zipped
@@ -977,14 +977,16 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 
 ## `.Q.hdpf` (save tables)
 
-Syntax: ``.Q.hdpf[historicalport;directory;partition;`p#field]``
+```syntax
+.Q.hdpf[historicalport;directory;partition;`p#field]
+```
 
 Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message to HDB.
 
 
 ## `.Q.hg` (HTTP get)
 
-```txt
+```syntax
 .Q.hg x
 ```
 
@@ -1027,7 +1029,7 @@ Since V3.6 uses built-in btoa for Basic Authentication, e.g.
  -->
 ## `.Q.host` (hostname)
 
-```txt
+```syntax
 .Q.host x
 ```
 
@@ -1056,7 +1058,7 @@ q).Q.addr `netbox.com
 
 ## `.Q.hp` (HTTP post)
 
-```txt
+```syntax
 .Q.hp[x;y;z]
 ```
 
@@ -1077,7 +1079,7 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 
 ## `.Q.id` (sanitize)
 
-```txt
+```syntax
 .Q.id x
 ```
 
@@ -1085,26 +1087,26 @@ Where `x` is
 
 - a **symbol atom**, returns `x` with items sanitized to valid q names
 
-    <pre><code class="language-q">
-    q).Q.id each \`\$("ab";"a/b";"two words";"2drifters";"2+2")
-    \`ab\`ab\`twowords\`a2drifters\`a22
-    </code></pre>
+    ```q
+    q).Q.id each `$("ab";"a/b";"two words";"2drifters";"2+2")
+    `ab`ab`twowords`a2drifters`a22
+    ```
 
 - a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.)
 
-    <pre><code class="language-q">
+    ```q
     q).Q.id flip (5#.Q.res)!(5#())
     in1 within1 like1 bin1 binr1
-    \----------------------------
+    ----------------------------
     q).Q.id flip(\`\$("a";"a/b"))!2#()
     a ab
-    \----
-    </code></pre>
+    ----
+    ```
 
 
 ## `.Q.ind` (partitioned index)
 
-```txt
+```syntax
 .Q.ind[x;y]
 ```
 
@@ -1144,9 +1146,9 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
     If you are selecting a continuous row interval, for example if iterating over all rows in a partition, instead of using `.Q.ind` you might as well use
 
-    <pre><code class="language-q">
+    ```q
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
-    </code></pre>
+    ````
 
 
 ## `.Q.j10` (encode binhex)
@@ -1154,8 +1156,7 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 ## `.Q.j12` (encode base-36)
 ## `.Q.x12` (decode base-36)
 
-Syntax:
-```txt
+```syntax
 .Q.j10 s     .Q.j12 s
 .Q.x10 s     .Q.x12 s
 ```
@@ -1191,7 +1192,7 @@ q).Q.j12 .Q.x12 12345
 ## `.Q.K` (version date)
 ## `.Q.k` (version)
 
-```txt
+```syntax
 .Q.K      / version date
 .Q.k      / version
 ```
@@ -1209,7 +1210,7 @@ q).Q.k
 
 ## `.Q.l` (load)
 
-```txt
+```syntax
 .Q.l x
 ```
 
@@ -1221,7 +1222,7 @@ it recursively as in [`load`](load.md), but into the default namespace.
 
 ## `.Q.M` (long infinity)
 
-```txt
+```syntax
 .Q.M
 ```
 
@@ -1235,7 +1236,7 @@ q)0Wj~.Q.M
 
 ## `.Q.MAP` (maps partitions)
 
-```txt
+```syntax
 .Q.MAP[]
 ```
 
@@ -1266,7 +1267,7 @@ NOT recommended for use with compressed files, as the decompressed maps will be 
 ## `.Q.n` (nums)
 ## `.Q.nA` (alphanums)
 
-```txt
+```syntax
 .Q.n
 .Q.nA
 ```
@@ -1285,7 +1286,7 @@ q).Q.nA
 
 ## `.Q.opt` (command parameters)
 
-```txt
+```syntax
 .Q.opt .z.x
 ```
 
@@ -1297,7 +1298,7 @@ Returns a dictionary, so you can easily see if a key was defined (flag set or no
 
 ## `.Q.P` (segments)
 
-```txt
+```syntax
 Q.P
 ```
 
@@ -1311,7 +1312,7 @@ q).Q.P
 
 ## `.Q.par` (locate partition)
 
-```txt
+```syntax
 .Q.par[dir;part;table]
 ```
 
@@ -1337,7 +1338,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 
 ## `.Q.PD` (partition locations)
 
-```txt
+```syntax
 .Q.PD
 ```
 
@@ -1363,7 +1364,7 @@ q).Q.PV!.Q.PD
 
 ## `.Q.pd` (modified partition locations)
 
-```txt
+```syntax
 .Q.pd
 ```
 
@@ -1372,7 +1373,7 @@ In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
 
 ## `.Q.pf` (partition field)
 
-```txt
+```syntax
 .Q.pf
 ```
 
@@ -1382,7 +1383,7 @@ Possible values are `` `date`month`year`int``.
 
 ## `.Q.pn` (partition counts)
 
-```txt
+```syntax
 .Q.pn
 ```
 
@@ -1431,7 +1432,7 @@ q).Q.pv!flip .Q.pn
 
 ## `.Q.prf0` (code profiler)
 
-```txt
+```syntax
 .Q.prf0 pid
 ```
 
@@ -1455,7 +1456,7 @@ This process must be started from the same binary as the one running `.Q.prf0`, 
 
 ## `.Q.pt` (partitioned tables)
 
-```txt
+```syntax
 .Q.pt
 ```
 
@@ -1464,7 +1465,7 @@ Returns a list of partitioned tables.
 
 ## `.Q.pv` (modified partition values)
 
-```txt
+```syntax
 .Q.pv
 ```
 
@@ -1479,7 +1480,7 @@ _Q for Mortals_
 
 ## `.Q.PV` (partition values)
 
-```txt
+```syntax
 .Q.PV
 ```
 
@@ -1503,7 +1504,7 @@ q).Q.PV
 
 ## `.Q.qp` (is partitioned)
 
-```txt
+```syntax
 .Q.qp x
 ```
 
@@ -1531,7 +1532,7 @@ q).Q.qp C
 
 ## `.Q.qt` (is table)
 
-```txt
+```syntax
 .Q.qt x
 ```
 
@@ -1540,7 +1541,7 @@ Where `x` is a table, returns `1b`, else `0b`.
 
 ## `.Q.res` (keywords)
 
-```txt
+```syntax
 .Q.res
 ```
 
@@ -1557,7 +1558,7 @@ q).Q.res,key`.q
 
 ## `.Q.s` (plain text)
 
-```txt
+```syntax
 .Q.s x
 ```
 
@@ -1573,7 +1574,7 @@ Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
 
 ## `.Q.s1` (string representation)
 
-```txt
+```syntax
 .Q.s1 x
 ```
 
@@ -1586,7 +1587,7 @@ Returns a string representation of `x`.
 
 ## `.Q.sbt` (string backtrace)
 
-```txt
+```syntax
 .Q.sbt x
 ```
 
@@ -1600,7 +1601,7 @@ Since V3.5 2017.03.15.
 
 ## `.Q.sha1` (SHA-1 encode)
 
-```txt
+```syntax
 .Q.sha1 x
 ```
 
@@ -1616,7 +1617,7 @@ Since V3.6 2018.05.18.
 
 ## `.Q.t` (type letters)
 
-```txt
+```syntax
 .Q.t
 ```
 
@@ -1633,7 +1634,7 @@ q).Q.t?"j"  / longs have datatype 7
 
 ## `.Q.trp` (extend trap)
 
-```txt
+```syntax
 .Q.trp[f;x;g]
 ```
 
@@ -1705,7 +1706,7 @@ Since V3.5 2017.03.15.
 
 _Apply, with time and space_
 
-```txt
+```syntax
 .Q.ts[x;y]
 ```
 
@@ -1731,7 +1732,7 @@ Since V3.6 2018.05.18.
 
 ## `.Q.ty` (type)
 
-```txt
+```syntax
 .Q.ty x
 ```
 
@@ -1763,7 +1764,7 @@ q).Q.ty each t`a`b`c`d`e
 
 ## `.Q.u` (date based)
 
-```txt
+```syntax
 .Q.u
 ```
 
@@ -1773,7 +1774,7 @@ q).Q.ty each t`a`b`c`d`e
 
 ## `.Q.V` (table to dict)
 
-```txt
+```syntax
 .Q.V x
 ```
 
@@ -1788,7 +1789,7 @@ Where `x` is
 
 ## `.Q.v` (value)
 
-```txt
+```syntax
 .Q.v x
 ```
 
@@ -1801,7 +1802,7 @@ Where `x` is
 
 ## `.Q.view` (subview)
 
-```txt
+```syntax
 .Q.view x
 ```
 
@@ -1820,7 +1821,7 @@ _Q for Mortals_
 
 ## `.Q.vp` (missing partitions)
 
-```txt
+```syntax
 .Q.vp
 ```
 
@@ -1849,7 +1850,7 @@ q)@[get;"select from tt";-2@]; / no error
 
 ## `.Q.w` (memory stats)
 
-```txt
+```syntax
 .Q.w[]
 ```
 
@@ -1876,7 +1877,7 @@ symw| 25436
 
 ## `.Q.Xf` (create file)
 
-```txt
+```syntax
 .Q.Xf[x;y]
 ```
 
@@ -1896,7 +1897,7 @@ q)type get`:emptyNestedCharVector
 
 ## `.Q.x` (non-command parameters)
 
-```txt
+```syntax
 .Q.x
 ```
 

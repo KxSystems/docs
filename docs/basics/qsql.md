@@ -26,31 +26,31 @@ For many use cases involving ordered data it is significantly more expressive.
 Below, square brackets mark optional elements; a slash begins a trailing comment.
 
 <div markdown="1" class="typewriter">
-select [_L<sub>exp</sub>_]     [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-exec   [distinct] [_p<sub>s</sub>_] [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-update             _p<sub>s</sub>_  [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-delete                         from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]        / rows
-delete             _p<sub>s</sub>_          from _t<sub>exp</sub>_                   / columns
+select [_L~exp~_]     [_p~s~_] [by _p~b~_] from _t~exp~_ [where _p~w~_]
+exec   [distinct] [_p~s~_] [by _p~b~_] from _t~exp~_ [where _p~w~_]
+update             _p~s~_  [by _p~b~_] from _t~exp~_ [where _p~w~_]
+delete                         from _t~exp~_ [where _p~w~_]        / rows
+delete             _p~s~_          from _t~exp~_                   / columns
 </div>
 
 A template is evaluated in the following order.
 
 <div markdown="1" class="typewriter">
-[From phrase](#from-phrase)        _t<sub>exp</sub>_
-[Where phrase](#where-phrase)       _p<sub>w</sub>_
-[By phrase](#by-phrase)          _p<sub>b</sub>_
-[Select phrase](../ref/select.md#select-phrase)      _p<sub>s</sub>_
-[Limit expression](../ref/select.md#limit-expression)   _L<sub>exp</sub>_
+[From phrase](#from-phrase)        _t~exp~_
+[Where phrase](#where-phrase)       _p~w~_
+[By phrase](#by-phrase)          _p~b~_
+[Select phrase](../ref/select.md#select-phrase)      _p~s~_
+[Limit expression](../ref/select.md#limit-expression)   _L~exp~_
 </div>
 
 
 ### From phrase
 
 The From phrase 
-<code markdown="1">from _t<sub>exp</sub>_</code> 
+<code markdown="1">from _t~exp~_</code> 
 is required in all query templates. 
 
-The table expression _t<sub>exp</sub>_ is
+The table expression _t~exp~_ is
 
 -   a table or dictionary (call-by-value)
 -   the name of a table or dictionary, in memory or on disk, as a symbol atom (call-by-name)
@@ -103,24 +103,24 @@ q)t1~t2   / t1 changed
 
 ### Phrases and subphrases
 
-_p<sub>s</sub>_, _p<sub>b</sub>_, and _p<sub>w</sub>_ are 
+_p~s~_, _p~b~_, and _p~w~_ are 
 respectively the Select, By, and Where _phrases_.
 Each phrase is a comma-separated list of subphrases.
 
-A _subphrase_ is a q expression in which names are resolved with respect to _t<sub>exp</sub>_ and any table/s linked by foreign keys. Subphrases are evaluated in order from the left, but each subphrase expression is evaluated right-to-left in normal q syntax. 
+A _subphrase_ is a q expression in which names are resolved with respect to _t~exp~_ and any table/s linked by foreign keys. Subphrases are evaluated in order from the left, but each subphrase expression is evaluated right-to-left in normal q syntax. 
 
 ??? tip "To use the Join operator within a subphrase, parenthesize the subphrase."
 
-    <pre><code class="language-q">
+    ```q
     q)select (id,'4),val from tbl
     x   val
-    \-------
+    -------
     1 4 100
     1 4 200
     2 4 300
     2 4 400
     2 4 500
-    </code></pre>
+    ```
 
 
 ### Names in subphrases
@@ -164,9 +164,9 @@ smith 400
 
 ??? tip "You can refer explicitly to [namespaces](../basics/glossary.md#name-namespace)."
 
-    <pre><code class="language-q">
+    ```q
     select (\`. \`toplevel) x from t
-    </code></pre>
+    ```
 
 ??? detail "Duplicate names for columns or groups"
 
@@ -175,12 +175,12 @@ smith 400
     Such a collision throws a `'dup names for cols/groups a` error during parse, indicating the first column name which collides. 
     (Since V4.0 2020.03.17.)
 
-    <pre><code class="language-q">
+    ```q
     q)parse"select b by b from t"
     'dup names for cols/groups b
       [2]  select b by b from t
            ^
-    </code></pre>
+    ```
 
     The easiest way to resolve this conflict is to explicitly rename columns. e.g. `select a,b by c:a from t`.
 
@@ -382,7 +382,7 @@ s4 p5 100
 ```
 
 
-## Performance 
+## Performance
 
 -   Select only the columns you will use.
 -   Use the most restrictive constraint first.

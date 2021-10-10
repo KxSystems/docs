@@ -11,10 +11,12 @@ keywords: cut, drop, kdb+, list,q
 
 _Drop items from a list, entries from a dictionary or columns from a table._
 
-Syntax: `x _ y`, `_[x;y]`
+```syntax
+x _ y    _[x;y]
+```
 
 
-## Drop leading or trailing items 
+## Drop leading or trailing items
 
 Where
 
@@ -87,7 +89,7 @@ _Q for Mortals_: [§5. Dictionaries](/q4m3/5_Dictionaries/#522-extracting-a-sub-
 
         With dictionaries, distinguish the roles of integer arguments to _drop_.
 
-        <pre><code class="language-q">
+        ```q
         q)d:100 200!\`a\`b
         q)1 _ d            /drop the first entry
         200| b
@@ -102,7 +104,7 @@ _Q for Mortals_: [§5. Dictionaries](/q4m3/5_Dictionaries/#522-extracting-a-sub-
         q)enlist[100] _ d  /drop where key=100
         200| b
         q)100 _ d          /drop first 100 entries
-        </code></pre>
+        ```
 
 
 ## Drop columns from a table
@@ -132,19 +134,19 @@ q)t _ `a
 
 !!! tip "Drop in place"
 
-    Assign through _drop_ to delete in place. 
+    Assign through Drop to delete in place. 
 
-    <pre><code class="language-q">
-    q)show d:\`a\`b\`c\`x!(1;2 3;4;5)
+    ```q
+    q)show d:`a`b`c`x!(1;2 3;4;5)
     a| 1
     b| 2 3
     c| 4
     x| 5
-    q)d _:\`x
+    q)d _:`x
     q)d
     a| 1
     b| 2 3
     c| 4
-    </code></pre>
+    ```
 
 

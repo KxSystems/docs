@@ -468,14 +468,14 @@ q)1%3
 
 ??? tip "Use `.Q.fmt` and `.q.f` to format numbers to given width and precision"
 
-    <pre><code class="language-q">
+    ```q
     q).Q.fmt[8;6]a            / format to width 8, 6 decimal places
     "0.142857"
     q).Q.f[2;]each 9.996 34.3445 7817047037.90  / format to 2 decimal places
     "10.00"
     "34.34"
     "7817047037.90"
-    </code></pre>
+    ```
 
 :fontawesome-solid-book:
 [`.Q.f`](../ref/dotq.md#qf-format),

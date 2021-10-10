@@ -1,5 +1,5 @@
 ---
-title: PyQ reference – Interfaces – kdb+ and q documentation
+title: PyQ reference | Interfaces | kdb+ and q documentation
 description: A reference guide to the PyQ interface between kdb+ and Python
 author: Alex Belopolsky, Aleks Bunin
 keywords: interface, kdb+, library, pyq, python, q, reference
@@ -23,7 +23,7 @@ namespace `q`
 
 ## class K
 
-```python
+```{.python .language-python}
 >>> q('2005.01.01 2005.12.04')
 k('2005.01.01 2005.12.04')
 ```
@@ -156,147 +156,164 @@ K objects can be used in Python arithmetic expressions.
 Mixing K objects with Python numbers is allowed.
 
 ```python
-    >>> 1/q('1 2 4')
-    k('1 0.5 0.25')
-    >>> q.til(5)**2
-    k('0 1 4 9 16f')
+>>> 1/q('1 2 4')
+k('1 0.5 0.25')
+>>> q.til(5)**2
+k('0 1 4 9 16f')
 ```
 
+---
 
 `__call__`
 : Call self as a function
 
 `__contains__`(*item*)
 : membership test 
+
+    ```python
+    >>> 1 in q('1 2 3')
+    True
+    >>> 'abc' not in q('(1;2.0;`abc)')
+    False
+    ```
+
+<!-- 
 <pre><code class="language-python">
 &gt;&gt;&gt; 1 in q('1 2 3')
 True
 &gt;&gt;&gt; 'abc' not in q('(1;2.0;`abc)')
 False
 </code></pre>
+ -->
+
 
 `__eq__`(*other*)
 : Test equality
+    ```python
+    >>> K(1) == K(1)
+    True
+    >>> K(1) == None
+    False
+    ```
 <!-- Prism chokes on following code block when nested -->
-
-```python
->>> K(1) == K(1)
-True
->>> K(1) == None
-False
-```
 
 `__float__()`
 
 : Converts K scalars to Python float 
+    ```python
+    >> [float(q(x)) for x in '1b 2h 3 4e `5 6.0 2000.01.08'.split()]
+    [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
+    ```
+<!-- 
 <pre><code class="language-python">
 &gt;&gt;&gt; [float(q(x)) for x in '1b 2h 3 4e `5 6.0 2000.01.08'.split()]
 [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
 </code></pre>
-
+ -->
 `__get__`
 : Return an attribute of instance, which is of type owner.
 
 `__getattr__`(_a_)
 : Table columns can be accessed via dot notation 
-<pre><code class="language-python"> 
-&gt;&gt;&gt; q("([]a:1 2 3; b:10 20 30)").a
-k('1 2 3')
-</code></pre>
+    ```python
+    >>> q("([]a:1 2 3; b:10 20 30)").a
+    k('1 2 3')
+    ```
 
 `__getitem__`(_x_)
 : Item from a list 
-<pre><code class="language-python">
-&gt;&gt;&gt; k("10 20 30 40 50")[k("1 3")]
-k('20 40')
-&gt;&gt;&gt; k("\`a\`b\`c!1 2 3")['b']
-2
-</code></pre>
+    ```python
+    >>> k("10 20 30 40 50")[k("1 3")]
+    k('20 40')
+    >>> k("`a`b`c!1 2 3")['b']
+    2
+    ```
 
 `__int__()`
 : Converts K scalars to Python int
-<pre><code class="language-python">
-&gt;&gt;&gt; [int(q(x)) for x in '1b 2h 3 4e `5 6.0 2000.01.08'.split()]
-[1, 2, 3, 4, 5, 6, 7]
-</code></pre>
+    ```python
+    >>> [int(q(x)) for x in '1b 2h 3 4e `5 6.0 2000.01.08'.split()]
+    [1, 2, 3, 4, 5, 6, 7]
+    ```
 
 `exec`(*columns=()*, *by=()*, *where=()*, _\*\*kwds_*_)
 : `exec` from self 
-<pre><code class="language-python">
-&gt;&gt;&gt; t = q('([]a:1 2 3; b:10 20 30)')
-&gt;&gt;&gt; t.exec_('a', where='b > 10').show()
-2 3
-</code></pre>
+    ```python
+    >>> t = q('([]a:1 2 3; b:10 20 30)')
+    >>> t.exec_('a', where='b > 10').show()
+    2 3
+    ```
 
 `keys()`
-: Returns q(‘key’, self)
+: Returns q('key', self)
 
     Among other uses, enables interoperability between q and Python dicts. 
-    <pre><code class="language-python">
-    &gt;&gt;&gt; from collections import OrderedDict
-    &gt;&gt;&gt; OrderedDict(q('\`a\`b!1 2'))
-    OrderedDict([('a', 1), ('b', 2)])
-    &gt;&gt;&gt; d = {}; d.update(q('\`a\`b!1 2'))
-    &gt;&gt;&gt; list(sorted(d.items()))
-    [('a', 1), ('b', 2)]
-    </code></pre>
 
-`select`(*columns=()*, *by=()*, *where=()*, _\*\*kwds_)
+    ```python
+    >>> from collections import OrderedDict
+    >>> OrderedDict(q('`a`b!1 2'))
+    OrderedDict([('a', 1), ('b', 2)])
+    >>> d = {}; d.update(q('`a`b!1 2'))
+    >>> list(sorted(d.items()))
+    [('a', 1), ('b', 2)]
+    ```
+
+`select`(_columns=()_, _by=()_, _where=()_, _\*\*kwds_)
 : `select` from self 
-<pre><code class="language-python">
-&gt;&gt;&gt; t = q('([]a:1 2 3; b:10 20 30)')
-&gt;&gt;&gt; t.select('a', where='b > 20').show()
-a
--
-3
-</code></pre>
+    ```python
+    >>> t = q('([]a:1 2 3; b:10 20 30)')
+    >>> t.select('a', where='b > 20').show()
+    a
+    -
+    3
+    ```
 
 `show`(_start=0, geometry=None, output=None_)
 : Pretty-print data to the console
 
-    (similar to q.show, but uses Python stdout by default) 
-    <pre><code class="language-python">
-    &gt;&gt;&gt; x = q('([k:\`x\`y\`z]a:1 2 3;b:10 20 30)')
-    &gt;&gt;&gt; x.show()  
+    (similar to `q.show`, but uses Python stdout by default) 
+    ```python
+    >>> x = q('([k:`x`y`z]a:1 2 3;b:10 20 30)')
+    >>> x.show()  
     k| a b
     -| ----
     x| 1 10
     y| 2 20
     z| 3 30
-    </code></pre>
+    ```
     The first optional argument, `start` specifies the first row to be printed (negative means from the end) 
-    <pre><code class="language-python">
-    &gt;&gt;&gt; x.show(2) 
+    ```python
+    >>> x.show(2) 
     k| a b
     -| ----
     z| 3 30
-    &gt;&gt;&gt; x.show(-2)  
+    >>> x.show(-2)  
     k| a b
     -| ----
     y| 2 20
     z| 3 30
-    </code></pre>
+    ```
     The geometry is the height and width of the console
-    <pre><code class="language-python">
-    &gt;&gt;&gt; x.show(geometry=[4, 6])
+    ```python
+    >>> x.show(geometry=[4, 6])
     k| a..
     -| -..
     x| 1..
     ..
-    </code></pre>
+    ```
 
 `update`(_columns=(), by=(), where=(), \*\*kwds_)
 : `update` from self 
-<pre><code class="language-python">
-&gt;&gt;&gt; t = q('([]a:1 2 3; b:10 20 30)')
-&gt;&gt;&gt; t.update('a*2',
-...          where='b > 20').show()  
-a b
-----
-1 10
-2 20
-6 30
-</code></pre>
+    ```python
+    >>> t = q('([]a:1 2 3; b:10 20 30)')
+    >>> t.update('a*2',
+    ...          where='b > 20').show()  
+    a b
+    ----
+    1 10
+    2 20
+    6 30
+    ```
 
 
 ## namespace q
@@ -314,10 +331,10 @@ a b
 
     For example, the following passes a list and a number to the q `?` (find) function: 
 
-    <pre><code class="language-python">
-    &gt;&gt;&gt; q('?', [1, 2, 3], 2)
+    ```python
+    >>> q('?', [1, 2, 3], 2)
     k('1')
-    </code></pre>
+    ```
 
 
 

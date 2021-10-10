@@ -58,8 +58,31 @@ When activating NUMA, substitute parameter settings according to the [recommenda
 
 When NUMA is 
 
--   **not active**, use the `taskset` command, e.g.<pre><code class="language-bash">$ taskset -c 0,1,2 q</code></pre>will run q on cores 0, 1 and 2. Or<pre><code class="language-bash">$ taskset -c 0,1,2 bash</code></pre>and then all processes started from within that new shell will automatically be restricted to those cores.
--   **active**, use `numactl` instead of `taskset`<pre><code class="language-bash">$ numactl --interleave=all --physcpubind=0,1,2 q</code></pre> and set<pre><code class="language-bash">$ echo 0 > /proc/sys/vm/zone_reclaim_mode</code></pre>
+-   **not active**, use the `taskset` command, e.g.
+
+	```bash
+	taskset -c 0,1,2 q
+	```
+
+	will run q on cores 0, 1 and 2. Or
+
+	```bash
+	taskset -c 0,1,2 bash
+	```
+
+	and then all processes started from within that new shell will automatically be restricted to those cores.
+
+-   **active**, use `numactl` instead of `taskset`
+
+	```bash
+	numactl --interleave=all --physcpubind=0,1,2 q
+	```
+
+	and set
+
+	```bash
+	echo 0 > /proc/sys/vm/zone_reclaim_mode
+	```
 
 You can change `zone_reclaim_mode` without restarting q.
 
@@ -68,7 +91,13 @@ You can change `zone_reclaim_mode` without restarting q.
 
 On Linux systems, administrators might prefer [cgroups](https://en.wikipedia.org/wiki/Cgroups) as a way of limiting resources.
 
-On Unix systems, memory usage can be constrained using `ulimit`, e.g.<pre><code class="language-bash">$ ulimit -v 262144</code></pre>limits virtual address space to 256MB.
+On Unix systems, memory usage can be constrained using `ulimit`, e.g.
+
+```bash
+ulimit -v 262144
+```
+
+limits virtual address space to 256MB.
 
 
 ## Solaris
@@ -76,22 +105,22 @@ On Unix systems, memory usage can be constrained using `ulimit`, e.g.<pre><code 
 Use `psrset`
 
 ```bash
-$ psrset -e 2 q
+psrset -e 2 q
 ```
 
 which will run q using processor set 2. Or, to start a shell restricted to those cores:
 
 ```bash
-$ psrset -e 2 bash
+psrset -e 2 bash
 ```
 
 
 ## Windows
 
-Start q.exe with the OS command `start` with the `/affinity` flag set
+Start `q.exe` with the OS command `start` with the `/affinity` flag set
 
 ```powershell
-C> start /affinity 3 c:\q\w64\q.exe 
+start /affinity 3 c:\q\w64\q.exe 
 ```
 
 will run q on core 0 and 1.

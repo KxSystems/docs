@@ -6,7 +6,7 @@ keywords: add, kdb+, mathematics, plus, q, sum
 # `+` Add
 
 
-```txt
+```syntax
 x+y     +[x;y]
 ```
 

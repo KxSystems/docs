@@ -85,16 +85,18 @@ In kdb+ parallelism remains single-level, and for a given computation one has to
 
 1. No overhead of splitting and joining large vectors. For simple functions, direct execution can be much faster than [`.Q.fc`](../ref/dotq.md#qft-apply-simple):
 
-    <pre><code class="language-q">q)system"s 24";a:100000000?100;
+    ```q
+    q)system"s 24";a:100000000?100;
     q)\t a\*a
     28
     q)\t .Q.fc[{x*x};a]
     130
-    </code></pre>
+    ```
 
 2. Operating on one vector at a time can avoid inefficient scheduling of large, uneven chunks of work:
 
-    <pre><code class="language-q">q)system"s 3";n:100000000;t:([]n?0f;n?0x00;n?0x00);
+    ```q
+    q)system"s 3";n:100000000;t:([]n?0f;n?0x00;n?0x00);
     q)\t sum t            / within-column parallelism
     30
     q)\t sum peach flip t / column-by-column parallelism ..
@@ -103,6 +105,6 @@ In kdb+ parallelism remains single-level, and for a given computation one has to
     q)/ .. takes just as much time as the largest unit of work, 
     q)\t sum t`x          / .. i.e. widest column
     64
-    </code></pre>
+    ```
 
 However, one needs vectors large enough to take advantage. Nested structures and matrices still need hand-crafted `peach`. Well-optimized code already making use of `peach` is unlikely to benefit. 

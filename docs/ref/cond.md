@@ -12,7 +12,9 @@ keywords: cond, conditional, control, dollar, kdb+, q
 
 _Conditional evaluation_
 
-Syntax: `$[test;et;ef;…]`
+```syntax
+$[test;et;ef;…]
+```
 
 Control construct: `test`, `et`, `ef`, etc. are q expressions.
 
@@ -51,7 +53,7 @@ These two expressions are equivalent:
 
 ```q
 $[0;a;r;b;c]
-    $[r;b;c]
+    $[r;b;c]
 ```
 
 <!-- !!! warning "`$[q;$[r;a;b];c]` is not the same as `$[q;r;a;b;c]`." -->
@@ -70,10 +72,10 @@ $[q;a;  / if q, a
 
 !!! example "Cond in a [`signum`](signum.md)-like function"
 
-    <pre><code class="language-q">
-    q){$[x>0;1;x<0;-1;0]}'[0 3 -9]
-    0 1 -1
-    </code></pre>
+    ```q
+    q){$[x>0;1;x<0;-1;0]}'[0 3 -9]
+    0 1 -1
+    ```
 
 
 ## Even number of expressions

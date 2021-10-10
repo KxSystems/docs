@@ -196,14 +196,17 @@ q){a::1;a:1}
 
 -   Externally compressed (e.g. using gzip) **log files** can now be played back via a fifo to ``-11!`:logfifo``, e.g.
 
-    <pre><code class="language-q">q)system"mkfifo logfifo;gunzip log.gz > logfifo&";-11!`:logfifo
-    </code></pre>
+    ```q
+    q)system"mkfifo logfifo;gunzip log.gz > logfifo&";-11!`:logfifo
+    ```
 
 -   Further integrity checks have been added to **streaming execute** `-11!x` to avoid `wsfull` or `segfault` on corrupted/incomplete log files.
 
 -   `-u/U passwordfile` now supports **SHA1 password** entries. Passwords must all be plain, MD5, or SHA1; they cannot be mixed. e.g.
 
-    <pre><code class="language-q">q)raze string -33!"mypassword" / -33! calculates sha1</code></pre>
+    ```q
+    q)raze string -33!"mypassword" / -33! calculates sha1
+    ```
 
 
 -   [`.Q.cn`](../ref/dotq.md#qcn-count-partitioned-table) now uses [`peach`](../ref/each.md) to get the count of partitioned tables. This can improve the startup time for a partitioned database.
@@ -235,13 +238,13 @@ q)select a,b by c:a from t
 ```
 
 
-### [`reval`](../ref/eval.md#reval) 
+### [`reval`](../ref/eval.md#reval)
 
 Has been extended to behave as if command-line options `-u 1` and `-b` were active, and also block all system calls which change state.
 I.e. all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
 
 
-### [`lj`](../ref/lj.md) 
+### [`lj`](../ref/lj.md)
 
 Now checks that its right argument is a keyed table.
 
@@ -254,18 +257,18 @@ q)count .Q.hmb[`:http://www.google.com;`GET;()]
 ```
 -->
 
-### Command-line processing 
+### Command-line processing
 
 Now checks for duplicate or mutually exclusive flags. e.g.
 
 ```bash
-$q -U 1 -u 1
+q -U 1 -u 1
 ```
 
 throws `-u or -U`.
 
 
-### License-related errors 
+### License-related errors
 
 Now reported with the prefix `licence error:`, e.g. `'licence error: upd`.
 

@@ -55,7 +55,11 @@ The single argument of a unary function is sometimes referred to as its _right a
 
 ## Argument list
 
-A pair of square brackets enclosing zero or more items separated by semicolons. <pre><code class="language-q">%[10;4]  / % applied to argument list [10;4]</code></pre>
+A pair of square brackets enclosing zero or more items separated by semicolons.
+
+```q
+%[10;4]  / % applied to argument list [10;4]
+```
 
 
 ## Atom
@@ -450,7 +454,7 @@ All the iterators are unary operators. They are the only operators that can be a
 [What exactly are iterator, iterable, and iteration?](https://stackoverflow.com/questions/9884132/what-exactly-are-iterator-iterable-and-iteration)
 <br>
 :fontawesome-solid-globe:
-[Wiktionary](https://en.wiktionary.org/wiki/iterable), 
+[Wiktionary](https://en.wiktionary.org/wiki/iterable),
 [Lexico](https://www.lexico.com/en/definition/iterate)
 
 
@@ -495,7 +499,7 @@ See _Argument_
 
 ## Left uniform
 
-The result of a left-uniform function has the same length as its left argument. 
+The result of a left-uniform function has the same length as its left argument.
 
 
 ## List
@@ -679,7 +683,7 @@ See _Argument_
 
 ## Right uniform
 
-The result of a right-uniform function has the same length as its right argument. 
+The result of a right-uniform function has the same length as its right argument.
 
 
 ## Script

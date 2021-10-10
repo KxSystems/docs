@@ -5,18 +5,18 @@ author: Stephen taylor
 ---
 # `enlist`
 
-_Make a list._
+_Make a list_
 
 
 
-```txt
+```syntax
 enlist x    enlist[x]    enlist[x;y;z;…]
 ```
 
 Returns a list with its argument/s as items.
 
 The most common use is to make a 1-item list. 
-An atom is not a one-item list. `enlist` and `first` convert between the two.
+An atom is not a one-item list:  `enlist` and [`first`](first.md) convert between the two.
 
 ```q
 q)a:10
@@ -71,9 +71,9 @@ a b   c
 
     While `enlist` returns a 1-item list, if all you need to do is assign it to a name not presently defined, you can exploit the fact that `foo,:` does not require `foo` to be defined.
 
-    <pre><code class="language-q">
+    ```q
     q)a:enlist[3]
     q)b,:3
     q)a~b
     1b
-    </code></pre>
+    ```

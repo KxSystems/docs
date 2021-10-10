@@ -141,10 +141,10 @@ They return as a result the [generic null](../ref/identity.md#null).
 
 !!! warning "Common errors with control words"
 
-    <pre><code class="language-q">
+    ```q
     a:if[1b;42]43               / instead use Cond
     a:0b;if[a;0N!42]a:1b        / the sequence is not as intended!
-    </code></pre>
+    ```
 
 
 !!! tip "Control words are little used in practice for iteration. [Iterators](../ref/iterators.md) are more commonly used."

@@ -123,7 +123,7 @@ q)-10!20h
 
 ## `-11!` (streaming execute)
 
-```txt
+```syntax
 -11!x
 -11!(-1;x)
 -11!(-2;x)
@@ -279,24 +279,24 @@ Possible error scenarios:
 
 -   from trying to serialize data for a handle whose remote end does not support a type, or size of the data.
 
-    <pre><code class="language-q">
-    / connect to 2.8 and 3.4
-    q)h:hopen each 5000 5001
+    ```q
+    / connect to 2.8 and 3.4
+    q)h:hopen each 5000 5001
     q)h
-    5 6i 
-    q)(-5) 0Ng / 2.8 does not support guid
+    5 6i 
+    q)(-5) 0Ng / 2.8 does not support guid
     'type
-    q)(-6) 0Ng / 3.4 does support guid 
+    q)(-6) 0Ng / 3.4 does support guid 
     q)-25!(h;0Ng)
-    'type error serializing for handle 5
-    </code></pre>
+    'type error serializing for handle 5
+    ```
 
 -   an int is passed which is not a handle
 
-    <pre><code class="language-q">
-    q)-25!(7 8;0Ng)
-    '7 is not an ipc handle
-    </code></pre>
+    ```q
+    q)-25!(7 8;0Ng)
+    '7 is not an ipc handle
+    ```
 
 
 
@@ -342,8 +342,10 @@ You might want to apply a rounding before applying `-27!`.
 
 ## `-30!x` (deferred response)
 
-Syntax: `-30!(::)`<br>
-Syntax: `-30!(handle;isError;msg)`
+```syntax
+-30!(::)
+-30!(handle;isError;msg)
+```
 
 Where `handle` is an int, `isError` is a boolean, and `msg` is a string
 
@@ -358,7 +360,9 @@ Since V3.6 2018.05.18.
 
 ## `-33!x` (SHA-1 hash)
 
-Syntax: `-33!x`
+```syntax
+-33!x
+```
 
 where `x` is a string, returns its SHA-1 hash as a list of strings of hex codes.
 
@@ -373,7 +377,9 @@ Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-
 
 ## `-36!(x;y)` Load master key
 
-Syntax: `-36!(x;y)`
+```syntax
+-36!(x;y)
+```
 
 Where
 
@@ -400,8 +406,9 @@ Unrecognized key format         master key file format unrecognized
 
 
 ## `-38!x` (socket table)
-
-Syntax: `-38!x`
+```syntax
+-38!x
+```
 
 where `x` is a list of socket handles, returns a table with columns
 
@@ -422,7 +429,9 @@ h| p f
 [`.z.H`](../ref/dotz.md#zh-active-sockets)
 ## `-120!x` (memory domain)
 
-Syntax `-120!x`
+```syntax
+-120!x
+```
 
 returns `x`’s memory domain (currently 0 or 1), e.g.
 

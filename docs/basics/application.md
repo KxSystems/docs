@@ -399,22 +399,22 @@ q)g 5       / still triple
     When projecting a function onto an argument list, make the argument list full-length.
     This is not always necessary but it is good style, because it makes it clear the value is being projected, not applied. 
 
-    <pre><code class="language-q">
+    ```q
     q)foo:{x+y+z}
     q)goo:foo[2]    / discouraged
     q)goo:foo[2;;]  / recommended
-    </code></pre>
+    ```
 
     You could reasonably make an exception for operators and keywords, where the rank is well known.
 
-    <pre><code class="language-q">
+    ```q
     q)f:?["brown"]
     q)f "fox"
     5 2 5
     q)g:like["brown"]
     q)g "\*ow\*"
     1b
-    </code></pre>
+    ```
 
 When projecting a [variadic function](variadic.md) the argument list must always be full-length.
 

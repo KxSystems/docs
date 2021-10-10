@@ -82,14 +82,14 @@ Temporal constants
 
 : include timestamps, months, dates, datetimes, timespans, minutes, and seconds. 
 
-    <pre><code class="language-q">
+    ```q
     2017.01              / month   
     2017.01.18           / date    
     00:00:00.000000000   / timespan
     00:00                / minute  
     00:00:00             / second  
     00:00:00.000         / time    
-    </code></pre>
+    ```
 
 :fontawesome-solid-book-open: 
 [Datatypes](datatypes.md)
@@ -553,11 +553,11 @@ Names consist of the upper- and lower-case alphabetic characters, the numeric ch
 
     While q permits the use of underscores in names, this usage is **strongly deprecated** because it is easily confused with [Drop](../ref/drop.md).
 
-    <pre><code class="language-q">
+    ```q
     q)foo_bar:42
     q)foo:3
     q)bar:til 6
-    </code></pre>
+    ```
 
     Is `foo_bar` now `42` or `3 4 5`?
 
@@ -660,14 +660,14 @@ iterator symbol to its left.
 -   At least one space is required between neighboring numeric constants in vector notation.
 -   A minus sign (`-`) denotes both an operator and part of the format of negative constants. A minus sign is part of a negative constant if it is next to a positive constant and there are no spaces between, except that a minus sign is always considered to be the function if the token to the left is a name, a constant, a right parenthesis or a right bracket, and there is no space between that token and the minus sign. The following examples illustrate the various cases:
 
-<pre><code class="language-q">
+```q
 x-1            / x minus 1
 x -1           / x applied to -1
 3.5-1          / 3.5 minus 1
 3.5 -1         / numeric list with two elements 
 x[1]-1         / x[1] minus 1
 (a+b)- 1       / (a+b) minus 1
-</code></pre>
+```
 
 
 ## Comments

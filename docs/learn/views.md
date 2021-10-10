@@ -29,7 +29,7 @@ q)viewname::[expression;expression;…]expression
 
     The result returned by a view is the result of the last expression in the list, just as in a lambda.
 
-    <pre><code class="language-q">
+    ```q
     q)a: til 5
     q)uu:: a
     q)uu
@@ -40,7 +40,7 @@ q)viewname::[expression;expression;…]expression
     1b
     q)vv ~ {[];}[]
     1b
-    </code></pre>
+    ```
 
 The following defines a view called `myview` which depends on vars `a` and `b`.
 
@@ -59,11 +59,11 @@ A view should not have side-effects, i.e. should not update global variables. Al
 A view definition can be spread over multiple lines in a script as long as it is indented accordingly (e.g. exactly like a function definition). e.g.
 
 ```bash
-$cat v.q
+$ cat v.q
 t:([]a:til 10)
 myview::select from t
  where a<5 / note this line is indented by one space
-$q v.q
+$ q v.q
 KDB+ 3.2 2014.08.26 Copyright (C) 1993-2014 Kx Systems
 m64/...
 ```
@@ -252,7 +252,7 @@ q)t1.date
 Views must be evalulated on the main thread, otherwise the calculation will signal `'threadview`. E.g. with q using two secondary threads
 
 ```bash
-$q -s 2
+$ q -s 2
 KDB+ 3.2 2014.08.26 Copyright (C) 1993-2014 Kx Systems
 m64/...
 ```

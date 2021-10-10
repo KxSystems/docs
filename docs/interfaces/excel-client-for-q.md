@@ -43,15 +43,15 @@ This saves the result of the query to the file output.csv, which can be loaded i
 
     The result must be a table, so that it can be converted to a CSV file. For instance, the following is invalid:
 
-    <pre><code class="language-bash">
+    ```bash
     wget -O output.csv "http://localhost:5001/q.csv?first trade"
-    </code></pre>
+    ```
 
     because the result is a dictionary. We need `1 # trade`. Notice that the `#` symbol cannot be written literally in a URL.
 
-    <pre><code class="language-bash">
+    ```bash
     wget -O output.csv "http://localhost:5001/q.csv?1 %23 trade"
-    </code></pre>
+    ```
 
 
 ## Interfacing via CSV files

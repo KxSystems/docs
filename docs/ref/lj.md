@@ -3,17 +3,17 @@ title: lj – left join keyword | Reference | kdb+ and q documentation
 description: lj is a q keyword that performs a left join.
 keywords: join, kdb+, left, left join, lj, ljf, q
 ---
-# `lj`, `ljf` 
+# `lj`, `ljf`
 
 _Left join_
 
 
 
 
-<div markdown="1" class="typewriter">
+```syntax
 x lj  y     lj [x;y]
 x ljf y     ljf[x;y]
-</div>
+```
 
 Where 
 
@@ -101,7 +101,7 @@ q)t1 lj t2
 
     Prior to V3.0, `lj` had similar behavior, with one difference - when there are nulls in the right argument, `lj` in V3.0 uses the right-argument null, while the earlier version left the corresponding value in the left argument unchanged:
 
-    <pre><code class="language-q">
+    ```q
     q)show x:([]a:1 2;b:`x`y;c:10 20)
     a b c
     ------
@@ -122,7 +122,7 @@ q)t1 lj t2
     ------
     1 x 1
     2 z 20
-    </code></pre>
+    ```
 
     Since 2014.05.03, the earlier version is available in all V3.x versions as `ljf`.
 

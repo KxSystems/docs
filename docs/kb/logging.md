@@ -38,7 +38,7 @@ size | 1625
 Assume that the kdb+ server process dies. If we now restart it with logging on, the updates logged to disk are not lost:
 
 ```bash
-$ q logTest -l
+q logTest -l
 ```
 
 ```q
@@ -52,21 +52,15 @@ size | 1625
 
     The syntax for this uses `0` as the handle:
 
-    <pre><code class="language-q">
-    q) // in server
-    q)0 ("insert";\`trade; (10:30:01.000; \`intel; 88.5; 1625))
-    </code></pre>
+    ```q
+    // in server
+    0 ("insert";\`trade; (10:30:01.000; \`intel; 88.5; 1625))
+    ```
 
 
 ## Checkpointing
 
-A logging server uses a `.log` file and a `.qdb` data file. The command
-
-```q
-q)\l
-```
-
-checkpoints the `.qdb` file and empties the log file.
+A logging server uses a `.log` file and a `.qdb` data file. The command `\l` checkpoints the `.qdb` file and empties the log file.
 
 However, the checkpoint is path-dependent. Consider the following:
 
@@ -120,7 +114,7 @@ qtest.qdb
 The simplest solution is to provide a full path to the log file at invocation.
 
 ```bash
-$/tmp/qtest$ q /tmp/testlog -l
+/tmp/qtest$ q /tmp/testlog -l
 ```
 
 ```q
@@ -145,7 +139,7 @@ results in
 When you type
 
 ```bash
-$ q logTest -l
+q logTest -l
 ```
 
 this reads the data file (`.qdb`), log file, and the q script file `logTest.q`, if present. If any of the three files exists (`.q`, `.qdb`, and `.log`), they should all be in the same directory.
@@ -168,19 +162,19 @@ If either message handler (`.z.pg` or `.z.ps`) throws any error, and the state w
 Given a logging q process listening on port 5000, e.g. started with
 
 ```bash
-$ q test -l -p 5000
+q test -l -p 5000
 ```
 
 a single kdb+ process can replicate that logging process via
 
 ```bash
-$ q -r :localhost:5000:username:password
+q -r :localhost:5000:username:password
 ```
 
 if starting these processes from different directories, be sure to specify the absolute path for the logging process, e.g.
 
 ```bash
-$ q /mylogs/test -l -p 5000
+q /mylogs/test -l -p 5000
 ```
 
 the replicating process will receive this information when it connects. 

@@ -31,9 +31,11 @@ q)f["life";"."]
 0
 ```
 ??? success "Answer"
-    `{sum x=y}`
 
-    `{count group[x]y}`  / (AR)
+        {sum x=y}
+
+        {count group[x]y}  / (AR)
+
 
 
 ## Trapeze part
@@ -49,7 +51,8 @@ q)f "palindrome"
 0
 ```
 ??? success "Answer"
-    `{x~reverse x}`
+
+        {x~reverse x}
 
 ## Duplicity
 
@@ -64,7 +67,8 @@ q)f "baz"
 ""
 ```
 ??? success "Answer"
-    `{where 1<count each group x}`
+    
+    {where 1<count each group x}
 
 
 
@@ -81,7 +85,8 @@ q)f["listen";"silent"]
 1
 ```
 ??? success "Answer"
-    `{asc[x]~asc y}`
+
+        {asc[x]~asc y}
 
 
 ## Precious snowflakes
@@ -95,7 +100,8 @@ q)f "aaabccddefffgg"
 "be"
 ```
 ??? success "Answer"
-    `{where 1=count each group x}`
+    
+        {where 1=count each group x}
 
 
 
@@ -112,9 +118,10 @@ q)f["abcde";"deabc"]
 1
 ```
 ??? success "Answer"
-    `{x in (1 rotate)scan y}`
+    
+        {x in (1 rotate)scan y}
 
-    `{y in{raze reverse 0 1 _ x}scan x}`  / (AR)
+        {y in{raze reverse 0 1 _ x}scan x}  / (AR)
 
 
 ## Size matters
@@ -131,7 +138,8 @@ q)f ("books";"apple";"peanut";"aardvark";"melon";"pie")
 "aardvark"
 ```
 ??? success "Answer"
-    `{x iasc count each x}`
+    
+        {x iasc count each x}
 
 
 ## Popularity contest
@@ -147,7 +155,8 @@ q)f "CCCBBBBAA"
 "B"
 ```
 ??? success "Answer"
-    `{first desc count each group x}  / (AV)` 
+    
+        {first desc count each group x}  / (AV)
 
 
 ## esreveR a ecnetnes
@@ -163,7 +172,8 @@ q)f "one two three four"
 "eno owt eerht ruof"
 ```
 ??? success "Answer"
-    `{" "sv reverse each " "vs x}`
+
+        {" "sv reverse each " "vs x}
 
 
 ## Compression session
@@ -177,7 +187,8 @@ q)f["embiggener";0011110011b]
 "bigger"
 ```
 ??? success "Answer"
-    `{x where y}`
+    
+        {x where y}
 
 
 ## Expansion mansion
@@ -191,9 +202,10 @@ q)f["bigger";0011110011b]
 "__bigg__er"
 ```
 ??? success "Answer"
-    `{("_",x)y*sums y}`
+    
+        {("_",x)y*sums y}
 
-    `{"_"^x -1+y*sums y}`  / (AR)
+        {"_"^x -1+y*sums y}  / (AR)
 
 
 ## C_ns_n_nts
@@ -208,14 +220,13 @@ q)f "Several normal words"
 ```
 ??? success "Answer"
 
-    <pre><code class="language-q">C:"AEIOUYaeiouy"           / consonants
-    {?[x in C;"_";x]}           / Vector Conditional; in
-    {@[x;where x in C;:;"_"]}   / Amend At; in
-    {$["j";x in C]'[x;"_"]}     / Case
-    {(x;"_")x in C} each        / index
-    {@[x;;:;"_"]where 12>C?x}   / Amend At; Find (AR)
-    ssr/[;C;"_"]                / ssr (AV)
-    </code></pre>
+        C:"AEIOUYaeiouy"            / consonants
+        {?[x in C;"_";x]}           / Vector Conditional; in
+        {@[x;where x in C;:;"_"]}   / Amend At; in
+        {$["j";x in C]'[x;"_"]}     / Case
+        {(x;"_")x in C} each        / index
+        {@[x;;:;"_"]where 12>C?x}   / Amend At; Find (AR)
+        ssr/[;C;"_"]                / ssr (AV)
 
 
 ## Cnsnnts rdx
@@ -229,7 +240,8 @@ q)f "FLAPJACKS"
 "FLPJCKS"
 ```
 ??? success "Answer"
-    `except[;C]`
+    
+        except[;C]
 
 
 ## Title redacted
@@ -245,7 +257,8 @@ q)f["I don't give a care";"care"]
 "I don't give a XXXX"
 ```
 ??? success "Answer"
-    `{ssr[x;y;count[y]#"X"]}`
+    
+        {ssr[x;y;count[y]#"X"]}
 
 
 ## It’s more fun to permute
@@ -262,9 +275,10 @@ q)f "xyz"
 "zyx"
 ```
 ??? success "Answer"
-    `{x {flip[y]where x=sum y}[s;] s vs til"j"$s xexp s:count x}`
+    
+        {x {flip[y]where x=sum y}[s;] s vs til"j"$s xexp s:count x}
 
-    `{(1 0#x) {raze({raze reverse 0 1 _ x}\)each x,'y}/ x}` / (AR)
+        {(1 0#x) {raze({raze reverse 0 1 _ x}\)each x,'y}/ x} / (AR)
 
 See
 :fontawesome-brands-python:
@@ -280,9 +294,10 @@ q)f "   abc def  "
 "abc def"
 ```
 ??? success "Answer"
-    `{{y _ x}/[x;] 1 -1*?'[;0b]1 reverse\null x}`
+    
+        {{y _ x}/[x;] 1 -1*?'[;0b]1 reverse\null x}
 
-    The form `1 f\x` applies `f` to `x` 0 and 1 times.
+    The [Do](../../ref/accumulators.md#do) iterator form `1 f\x` applies `f` to `x` 0 and 1 times.
 
     :fontawesome-regular-comment:
     _How many Zen monks does it take to change a lightbulb?_
@@ -291,7 +306,7 @@ q)f "   abc def  "
 
     Note how `{y f x}/` applies `f` to successive _left_ arguments. (`{y f x}` is sometimes said to _commute_ `f`.)
 
-    `{(neg reverse[a]?0b)_(?[;0b]a:" "=x)_x}  / (AV)`
+        {(neg reverse[a]?0b)_(?[;0b]a:" "=x)_x}  / (AV)
 
 
 

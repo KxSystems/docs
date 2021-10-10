@@ -102,30 +102,35 @@ q)hopen(`:tcps://myhost:5000:username:password;30000)
 We have tried to make the process of upgrading seamless, however please pay attention to the following NUCs to consider whether they impact your particular installation
 
 - added `ujf` (new keyword) which mimics the behavior of `uj` from V2.x, i.e. that it fills from lhs, e.g.
-<pre><code class="language-q">
-q)([a:1 2 3]b:2 3 7;c:10 20 30;d:"WEC")~([a:1 2]b:2 3;c:5 7;d:"WE")ujf([a:1 2 3]b:2 3 7;c:10 20 30;d:"  C")
-</code></pre>
+
+    ```q
+    q)([a:1 2 3]b:2 3 7;c:10 20 30;d:"WEC")~([a:1 2]b:2 3;c:5 7;d:"WE")ujf([a:1 2 3]b:2 3 7;c:10 20 30;d:"  C")
+    ```
 
 - constants limit in lambdas reduced from 96 to 95; could cause existing user code to signal a `'constants` error, e.g.
-<pre><code class="language-q">
-q)value raze"{",(string[10+til 96],\:";"),"}"
-</code></pre>
+
+    ```q
+    q)value raze"{",(string[10+til 96],\:";"),"}"
+    ```
 
 - now uses abstract namespace for Unix domain sockets on Linux to avoid file permission issues in `/tmp`.
 N.B. hence V3.5 cannot connect to V3.4 using UDS. e.g.
-<pre><code class="language-q">
-q)hopen`:unix://5000
-</code></pre>
+
+    ```q
+    q)hopen`:unix://5000
+    ```
 
 - comments are no longer stripped from the function text by the tokenizer (`-4!x`); comments within functions can be stripped explicitly from the `-4!` result with
-<pre><code class="language-q">
-q){x where not(1&lt;count each x)&x[;0]in" \t\n"} -4!"{2+ 3; /comment\n3\n\t/ another comment\n \n/yet another\n /and one more\n}"
-</code></pre>
+
+    ```q
+    q){x where not(1&lt;count each x)&x[;0]in" \t\n"} -4!"{2+ 3; /comment\n3\n\t/ another comment\n \n/yet another\n /and one more\n}"
+    ```
 
 - the structure of the result of `value` on a lambda, e.g. `value {x+y}`, is:
-<pre><code class="language-q">
-(bytecode;parameters;locals;(namespace,globals);constants[0];…;constants[n];m;n;f;l;s)
-</code></pre>
+
+    ```q
+    (bytecode;parameters;locals;(namespace,globals);constants[0];…;constants[n];m;n;f;l;s)
+    ```
 
     where
 

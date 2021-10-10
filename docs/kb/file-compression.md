@@ -183,7 +183,7 @@ If you experience `wsfull` even with sufficient swap space configured, check whe
 A single thread with full use of a core can decompress approx 300MB/s, depending on data/algorithm and level.
 
 
-###  Benchmarking
+### Benchmarking
 
 It is difficult to estimate the impact of compression on performance.
 On the one hand, compression does trade CPU utilization for disk-space savings. And up to a point, if you’re willing to trade more CPU time, you can save more space. But by reducing the space used, you end up doing less disk I/O, which can improve overall performance if your workload is bandwidth-limited.
@@ -243,16 +243,16 @@ Installation is very straightforward: unpack and plug in the card, compile and l
 
     If you see the error message
 
-    <pre><code class="language-txt">
+    ```txt
     aha367 - ahagz\_api.c: open() call failed with error: 2 on device /dev/aha367\_board
-    </code></pre>
+    ```
 
     it likely means the kernel module has not been loaded. Remedy: go to the AHA install dir:
 
-    <pre><code class="language-bash">
+    ```bash
     aha_install_dir$ cd bin
     aha_install_dir$ sudo ./load_module
-    </code></pre>
+    ```
 
     and select the 367 card option.
 

@@ -352,7 +352,7 @@ In conclusion, between what appears to be an acceptable guaranteed cap on the la
     All tests ran with 16 alert engines at a time and were performed using the 64-bit kdb+ 3.6 2019.06.09 build on a Linux machine with an Intel Core i7-7700K, 4.2 GHz 4 core processor with 64GB RAM running Ubuntu 16.04.
 
 
-## Author 
+## Author
 
 ![Jason Quinn](../../img/faces/jasonquinn.jpg)
 {: .small-face}
@@ -417,31 +417,31 @@ We assume the reader is installing on a Linux platform.
 
 1.  Clone the repository :fontawesome-brands-github: [kxcontrib/kdbAlertTP](https://github.com/kxcontrib/kdbAlertTP) into your `HOME` directory.
 
-    <pre><code class="language-bash">
-    $ cd $HOME
-    $ git clone https://github.com/kxcontrib/kdbAlertTP.git
-    </code></pre>
+    ```bash
+    cd $HOME
+    git clone https://github.com/kxcontrib/kdbAlertTP.git
+    ```
 
 2.  Move the contents of `kdbAlertTP/q` and `kdbAlertTP/data`
     into `kdbAlertTP`.
 
-    <pre><code class="language-bash">
-    $ cd $HOME/kdbAlertTP
-    $ mv data/\* .
-    $ mv q/\* .
-    </code></pre>
+    ```bash
+    cd $HOME/kdbAlertTP
+    mv data/\* .
+    mv q/\* .
+    ```
 
 3.  Create the directory `OnDiskDB` within `kdbAlertTP`, and within that create the directory `sym`
 
-    <pre><code class="language-bash">
-    $ mkdir -p $HOME/kdbAlertTP/OnDiskDB/sym
-    </code></pre>
+    ```bash
+    mkdir -p $HOME/kdbAlertTP/OnDiskDB/sym
+    ```
 
 4.  Unzip the ZIP files in `kdbAlertTP` using `7zip`
 
-    <pre><code class="language-bash">
-    $ 7z x dxOrderPublic\_file.7z.001
-    </code></pre>
+    ```bash
+    7z x dxOrderPublic\_file.7z.001
+    ```
 
 
 ### Master startup script
@@ -449,7 +449,7 @@ We assume the reader is installing on a Linux platform.
 The system can be started by loading the `startUp.q` script in `kdbAlertTP`.
 
 ```bash
-$ q startUp.q
+q startUp.q
 ```
 
 This will start up the primary process with the default settings on. A table called `processStatus` will be available with process port numbers, PIDs and last heartbeat received time. The reader can query `dxOrderPublic` or `dxTradePublic` in the RDB. We can query any alerts in `dxAlert` in the alert monitor process. To shut down the test framework, from within the primary process, we can simply call
@@ -474,7 +474,7 @@ These options can be set when starting the master kdb+ process, for
 example:
 
 ```bash
-$ q startUp.q \
+q startUp.q \
     –createMemberIDs 1b \
     –replayFinishTime 04:00:00 \
     –removeLogFile 1b

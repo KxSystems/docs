@@ -67,7 +67,7 @@ a b| c  d
 
     As a result a change in the behavior of `lj` causes a change in the behavior of `uj`:
 
-    <pre><code class="language-q">
+    ```q
     q)show x:([a:1 2]b:`x`y;c:10 20)
     a| b c
     -| ----
@@ -88,7 +88,7 @@ a b| c  d
     -| ----
     1| x 1
     2| z 20
-    </code></pre>
+    ```
 
     Since 2017.04.10, the earlier version is available in all V3.5 and later versions as `ujf`.
 

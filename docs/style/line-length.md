@@ -17,9 +17,17 @@ An example of a line which contains several q statements, each of which encodes 
 a:x 0; b:x 1; c:x 2; d:x 3; e:x 4
 ```
 
-!!! note
+!!! note "Whitespace"
 
-    Observe how the blanks are used after each semicolon to achieve visual separation. This is legitimate, since whitespace should help us see computational structure. Not so in <pre><code class="language-q">v:m[a; b; ]</code></pre>where the spaces create a visual obstacle.
+    Observe how the blanks are used above after each semicolon to achieve visual separation. 
+    This is legitimate, since whitespace should help us see computational structure. 
+    Not so in 
+
+    ```q
+    v:m[a; b; ]
+    ```
+
+    where the spaces create a visual obstacle.
 
 Sometimes a thought consists of a simple operation on parts whose construction is complicated:
 

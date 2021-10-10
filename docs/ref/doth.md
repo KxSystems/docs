@@ -70,7 +70,7 @@ Color used by the web console (symbol), defaults to `` `958600``.
 
 ## `.h.cd` (CSV from data)
 
-```txt
+```syntax
 .h.cd x
 ```
 
@@ -95,7 +95,7 @@ Columns can be nested vectors, in which case [`.h.d`](#hd-delimiter) is used to 
 
 ## `.h.code` (code after Tab)
 
-```txt
+```syntax
 .h.code x
 ```
 
@@ -145,7 +145,7 @@ q).h.cd t
 
 ## `.h.ed` (Excel from data)
 
-```txt
+```syntax
 .h.ed x
 ```
 
@@ -160,7 +160,7 @@ q).h.ed ([]a:1 2 3;b:`x`y`z)
 
 ## `.h.edsn` (Excel from tables)
 
-```txt
+```syntax
 .h.edsn x!y
 ```
 
@@ -205,7 +205,7 @@ q)`:/Users/sjt/tmp/excel.xls 0: .h.edsn `test1`test2!(t1;t2)
 
 _HTML page with two frames_
 
-```txt
+```syntax
 .h.fram[t;s;(l;r)]
 ```
 
@@ -235,7 +235,7 @@ src=\"tmp.htm\"><frame name=v src=\"tmp.txt\"></frameset></head></html>"
 
 ## `.h.ha` (anchor)
 
-```txt
+```syntax
 .h.ha[x;y]
 ```
 
@@ -251,7 +251,7 @@ q).h.ha["http://www.example.com";"Example.com Main Page"]
 
 ## `.h.hb` (anchor target)
 
-```txt
+```syntax
 .h.hb[x;y]
 ```
 
@@ -265,7 +265,7 @@ q).h.hb["http://www.example.com";"Example.com Main Page"]
 
 ## `.h.hc` (escape lt)
 
-```txt
+```syntax
 .h.hc x
 ```
 
@@ -279,7 +279,7 @@ q).h.hc "<foo>"
 
 ## `.h.he` (HTTP 400)
 
-```txt
+```syntax
 .h.he x
 ```
 
@@ -293,7 +293,7 @@ q).h.he "<rubbish>"
 
 ## `.h.hn` (HTTP response)
 
-```txt
+```syntax
 .h.hn[x;y;z]
 ```
 
@@ -315,7 +315,7 @@ q).h.hn["404";`txt;"Not found: favicon.ico"]
 
 ## `.h.hp` (HTTP response pre)
 
-```txt
+```syntax
 .h.hp x
 ```
 
@@ -339,7 +339,7 @@ Content-Length: 257
 
 ## `.h.hr` (horizontal rule)
 
-```txt
+```syntax
 .h.hr x
 ```
 
@@ -352,7 +352,7 @@ q).h.hr "foo"
 
 ## `.h.ht` (Marqdown to HTML)
 
-```txt
+```syntax
 .h.ht x
 ```
 
@@ -376,7 +376,7 @@ Basic Marqdown formatting rules:
 
 ## `.h.hta` (start tag)
 
-```txt
+```syntax
 .h.hta[x;y]
 ```
 
@@ -390,7 +390,7 @@ q).h.hta[`a;(`href`target)!("http://www.example.com";"_blank")]
 
 ## `.h.htac` (element)
 
-```txt
+```syntax
 .h.htac[x;y;z]
 ```
 
@@ -404,7 +404,7 @@ q).h.htac[`a;(`href`target)!("http://www.example.com";"_blank");"Example.com Mai
 
 ## `.h.htc` (element)
 
-```txt
+```syntax
 .h.htc[x;y]
 ```
 
@@ -418,7 +418,7 @@ q).h.htc[`tag;"value"]
 
 ## `.h.html` (document)
 
-```txt
+```syntax
 .h.html x
 ```
 
@@ -445,7 +445,7 @@ q).h.html "<p>Hello world!</p>"
 
 ## `.h.http` (hyperlinks)
 
-```txt
+```syntax
 .h.http x
 ```
 
@@ -459,7 +459,7 @@ q).h.http "The main page is http://www.example.com"
 
 ## `.h.hu` (URI escape)
 
-```txt
+```syntax
 .h.hu x
 ```
 
@@ -473,7 +473,7 @@ q).h.hu "http://www.kx.com"
 
 ## `.h.hug` (URI map)
 
-```txt
+```syntax
 .h.hug x
 ```
 
@@ -482,7 +482,7 @@ Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape 
 
 ## `.h.hy` (HTTP response content)
 
-```txt
+```syntax
 .h.hy[x;y]
 ```
 
@@ -530,7 +530,7 @@ String: location of the webserver root.
 
 ## `.h.iso8601` (ISO timestamp)
 
-```txt
+```syntax
 .h.iso8601 x
 ```
 
@@ -544,7 +544,7 @@ q).h.iso8601 100
 
 ## `.h.jx` (table)
 
-```txt
+```syntax
 .h.jx[x;y]
 ```
 
@@ -595,7 +595,7 @@ String: defaults to the KX logo in HTML format.
 
 ## `.h.nbr` (no break)
 
-```txt
+```syntax
 .h.nbr x
 ```
 
@@ -609,7 +609,7 @@ q).h.nbr "foo bar"
 
 ## `.h.pre` (pre)
 
-```txt
+```syntax
 .h.pre x
 ```
 
@@ -656,7 +656,7 @@ q).h.sc
 
 ## `.h.td` (TSV from data)
 
-```txt
+```syntax
 .h.td x
 ```
 
@@ -673,7 +673,7 @@ q).h.td ([]a:1 2 3;b:`x`y`z)
 
 ## `.h.text` (paragraphs)
 
-```txt
+```syntax
 .h.text x
 ```
 
@@ -703,7 +703,7 @@ xls | k){ex eb es[`Sheet1]x}
 
     The result of ``.h.tx[`json]`` is designed for streaming as [JSON Lines](http://jsonlines.org/). For static JSON, enlist its argument:
 
-    <pre><code class="language-q">
+    ```q
     q).h.tx[`json] ([] 0 1)  / JSON Lines
     "{\"x\":0}"
     "{\"x\":1}"
@@ -723,7 +723,7 @@ xls | k){ex eb es[`Sheet1]x}
     "{\"items\":\"cog\",\"sales\":3,\"prices\":20}"
     q).h.tx[`json] enlist t // static JSON
     "[{\"items\":\"nut\",\"sales\":6,\"prices\":10},\n {\"items\":\"bolt\",\"sale..
-    </code></pre>
+    ```
 
 
 ## `.h.ty` (MIME types)
@@ -745,7 +745,7 @@ gif | "image/gif"
 
 ## `.h.uh` (URI unescape)
 
-```txt
+```syntax
 .h.uh x
 ```
 
@@ -759,7 +759,7 @@ q).h.uh "http%3a%2f%2fwww.kx.com"
 
 ## `.h.val` (value)
 
-```txt
+```syntax
 .h.val x
 ```
 
@@ -774,7 +774,7 @@ Since V3.6 and V3.5 2019.11.13.
 
 ## `.h.xd` (XML)
 
-```txt
+```syntax
 .h.xd x
 ```
 
@@ -792,7 +792,7 @@ q).h.xd ([]a:1 2 3;b:`x`y`z)
 
 ## `.h.xmp` (XMP)
 
-```txt
+```syntax
 .h.xmp x
 ```
 
@@ -806,7 +806,7 @@ q).h.xmp("foo";"bar")
 
 ## `.h.xs` (XML escape)
 
-```txt
+```syntax
 .h.xs x
 ```
 
@@ -820,7 +820,7 @@ q).h.xs "Arthur & Co."
 
 ## `.h.xt` (JSON)
 
-```txt
+```syntax
 .h.xt[x;y]
 ```
 

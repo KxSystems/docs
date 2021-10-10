@@ -17,25 +17,25 @@ Where `x` is:
 
 -   a **positive short, lower-case letter, or symbol** from the following table, returns `y` cast according to `x`
 
-    <pre><code class="txt">
-    1h  "b" \`boolean
-    2h  "g" \`guid
-    4h  "x" \`byte
-    5h  "h" \`short
-    6h  "i" \`int
-    7h  "j" \`long
-    8h  "e" \`real
-    9h  "f" \`float
-    10h "c" \`char
-    12h "p" \`timestamp
-    13h "m" \`month
-    14h "d" \`date
-    15h "z" \`datetime
-    16h "n" \`timespan
-    17h "u" \`minute
-    18h "v" \`second
-    19h "t" \`time
-    </code></pre>
+    ```txt
+    1h  "b" `boolean
+    2h  "g" `guid
+    4h  "x" `byte
+    5h  "h" `short
+    6h  "i" `int
+    7h  "j" `long
+    8h  "e" `real
+    9h  "f" `float
+    10h "c" `char
+    12h "p" `timestamp
+    13h "m" `month
+    14h "d" `date
+    15h "z" `datetime
+    16h "n" `timespan
+    17h "u" `minute
+    18h "v" `second
+    19h "t" `time
+    ```
 
 -   a symbol from the list **`` `year`dd`mm`hh`uu`ss``** and `y` is a temporal type, returns the year, day, month, hour, minute, or seconds value from `y` as [tabulated below](#temporal)
 
