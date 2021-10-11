@@ -11,11 +11,13 @@ keywords: column, group, kdb+, q, xgroup
 
 _Groups a table by values in selected columns_
 
-Syntax: `x xgroup y`,`xgroup[x;y]`
+```syntax
+x xgroup y    xgroup[x;y]
+```
 
-Where 
+Where
 
--   `y` is a table passed by value 
+-   `y` is a table passed by value
 -   `x` is a symbol atom or vector of column names in `y`
 
 returns `y` grouped by `x`.
@@ -23,12 +25,12 @@ It is equivalent to doing a `select … by` on `y`, except that all the remainin
 
 ```q
 q)`a`b xgroup ([]a:0 0 1 1 2;b:`a`a`c`d`e;c:til 5)
-a b| c  
+a b| c
 ---| ---
 0 a| 0 1
-1 c| ,2 
-1 d| ,3 
-2 e| ,4 
+1 c| ,2
+1 d| ,3
+2 e| ,4
 
 q)\l sp.q
 q)meta sp                        / s and p are both columns of sp
@@ -77,6 +79,8 @@ p3 s1 400
     Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results.
 
 
-:fontawesome-regular-hand-point-right:
-[`group`](group.md)  
-Basics: [Dictionaries & tables](../basics/dictsandtables.md)
+:fontawesome-solid-book:
+[`group`](group.md)
+<br>
+:fontawesome-solid-book-open:
+[Dictionaries & tables](../basics/dictsandtables.md)

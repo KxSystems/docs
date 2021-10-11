@@ -8,7 +8,7 @@ author: Stephen Taylor
 _Message Digest hash_
 
 
-```txt
+```syntax
 md5 x    md5[x]
 ```
 

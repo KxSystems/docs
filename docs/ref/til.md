@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _First x natural numbers_ 
 
-```txt
+```syntax
 til x    til[x]
 ```
 

@@ -12,7 +12,7 @@ keywords: file, filesystem, filehandle, handle, kdb+, lines, pipe, process, q, r
 
 _Read text from a file or process handle_
 
-```txt
+```syntax
 read0 f           read0[f]
 read0 (f;o;n)     read0[(f;o;n)]
 read0 h           read0[h]

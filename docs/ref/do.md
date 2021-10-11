@@ -11,7 +11,7 @@ keywords: control, evaluate, expression, kdb+, q
 
 _Evaluate expression/s some number of times_
 
-```txt
+```syntax
 do[count;e1;e2;e3;…;en]
 ```
 

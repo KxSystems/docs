@@ -14,7 +14,7 @@ _Recurse the interpreter_
 
 
 
-```txt
+```syntax
 value x     value[x]
 ```
 

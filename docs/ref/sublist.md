@@ -11,7 +11,7 @@ author: Stephen Taylor
 
 _Select a sublist of a list_
 
-```txt
+```syntax
 x sublist y    sublist[x;y]
 ```
 
@@ -23,7 +23,7 @@ Where
 returns a sublist of `y`. The result contains no more items than are available in `y`.
 
 
-## Head or tail 
+## Head or tail
 
 Where `x` is an **integer atom** returns up to `x` items from the beginning of `y` if positive, or from the end if negative
 

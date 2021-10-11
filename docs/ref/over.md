@@ -19,7 +19,7 @@ See the [Accumulators](accumulators.md) for a more detailed discussion.
 
 ## Converge
 
-```txt
+```syntax
  v1 over x    over[v1;x]        v1 scan x    scan[v1;x]
 (vv)over x    over[vv;x]       (vv)scan x    scan[vv;x]
 ```
@@ -51,7 +51,7 @@ and for the related forms Do and While.
 
 ## MapReduce, Fold
 
-```txt
+```syntax
 v2 over x   over[v2;x]        v2 scan x   scan[v2;x]
 ```
 
@@ -74,18 +74,18 @@ See the [Accumulators](accumulators.md) for a more detailed discussion.
 Q has keywords for common projections of `scan` and `over`.
 For example, `sums` is `scan[+;]` and `prd` is `over[*;]`.
 
-Good q style prefers these keywords;
+Efficiency and good q style prefers these keywords;
 i.e. `prd` rather than `over[*;]` or `*/`.
 
 ```txt
 keyword  equivalents
 ---------------------------------------
-all      over[and;]   &/  Minimum Over
-any      over[or;]    |/  Maximum Over
-max      over[|;]     |/  Maximum Over
-maxs     scan[|;]     |\  Maximum Scan
-min      over[&;]     &/  Minimum Over
-mins     scan[&;]     &\  Minimum Scan
+all      over[and;]   &/  Lesser Over
+any      over[or;]    |/  Greater Over
+max      over[|;]     |/  Greater Over
+maxs     scan[|;]     |\  Greater Scan
+min      over[&;]     &/  Lesser Over
+mins     scan[&;]     &\  Lesser Scan
 prd      over[*;]     */  Multiply Over
 prds     scan[*;]     *\  Multiply Scan
 raze     over[,;]     ,/  Join Over

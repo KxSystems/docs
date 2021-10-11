@@ -11,7 +11,7 @@ keywords: div, divide, division, in, integer, kdb+, math, mathematics, q
 
 _Integer division_
 
-```txt
+```syntax
 x div y    div[x;y]
 ```
 
@@ -52,7 +52,7 @@ q)"\023" div 8
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `div` is an [atomic function](../basics/atomic.md). 
 
@@ -64,7 +64,7 @@ q)(10;20 30)div(3 4; -5)
 
 It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables).
 
-```txt
+```q
 q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 -21 3;4 5 -6)
 
 q)d div 5

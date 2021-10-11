@@ -8,9 +8,9 @@ keywords: comparison, greater-than, greater-than-or-equal, kdb+, q
 
 
 
-```txt
-x > y    >[x;y]
-x >= y   >=[x;y]
+```syntax
+x>y    >[x;y]
+x>=y   >=[x;y]
 ```
 
 Returns `1b` where the underlying value of `x` is greater than (or at least) that of `y`.
@@ -36,7 +36,7 @@ q)0 1 >=/:\: 0 1
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 Greater Than and At Least are [atomic functions](../basics/atomic.md).
 

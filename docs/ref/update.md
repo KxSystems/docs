@@ -22,7 +22,7 @@ For the Update operator `!`, see
 ## Syntax
 
 <div markdown="1" class="typewriter">
-update _p<sub>s</sub>_ [by _p<sub>b</sub>_] from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
+update _p~s~_ [by _p~b~_] from _t~exp~_ [where _p~w~_]
 </div>
 
 :fontawesome-solid-book-open:

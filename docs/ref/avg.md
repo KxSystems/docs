@@ -10,11 +10,11 @@ _Averages_
 
 
 
-## `avg` 
+## `avg`
 
 _Arithmetic mean_
 
-```txt
+```syntax
 avg x     avg[x]
 ```
 
@@ -54,7 +54,7 @@ a  | 10.75
 
 _Running averages_
 
-```txt
+```syntax
 avgs x     avgs[x]
 ```
 
@@ -73,7 +73,7 @@ q)avgs 1 2 3 0n 4 -0w 0w
 
 _Moving averages_
 
-```txt
+```syntax
 x mavg y     mavg[x;y]
 ```
 
@@ -100,7 +100,7 @@ q)5 mavg 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
 
 _Weighted average_
 
-```txt
+```syntax
 x wavg y     wavg[x;y]
 ```
 

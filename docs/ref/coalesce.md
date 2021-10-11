@@ -11,7 +11,9 @@ keywords: coalesce, join, kdb+,q
 
 _Merge keyed tables ignoring nulls_
 
-Syntax: `x^y`, `^[x;y]`
+```syntax
+x^y    ^[x;y]
+```
 
 Where `x` and `y` are keyed tables, returns them merged.
 With no nulls in `y`, the result is the same as for [Join](join.md).

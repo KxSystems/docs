@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Lesser of two values; logical AND_
 
-```txt
+```syntax
 x & y         &[x;y]
 x and y       and[x;y]
 ```

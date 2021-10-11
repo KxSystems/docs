@@ -18,7 +18,7 @@ _“Vector from scalar”_
 -   _partition a list_
 -   _encode a vector from an atom_
 
-```txt
+```syntax
 x vs y    vs[x;y]
 ```
 
@@ -154,7 +154,7 @@ q)10 vs(1995;1996 1997)
 5 6 7
 ```
 
-
+---
 :fontawesome-solid-book:
 [`sv`](sv.md#decode) decode
 <br>

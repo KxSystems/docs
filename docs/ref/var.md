@@ -15,7 +15,7 @@ _Variance, sample variance_
 
 _Variance_
 
-```txt
+```syntax
 var x    var[x]
 ```
 
@@ -40,7 +40,7 @@ q)select var price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 
 _Sample variance_
 
-```txt
+```syntax
 svar x    svar[x]
 ```
 

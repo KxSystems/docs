@@ -10,7 +10,7 @@ _Round down_
 
 
 
-```txt
+```syntax
 floor x    floor[x]
 ```
 

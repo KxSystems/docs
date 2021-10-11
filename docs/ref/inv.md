@@ -9,7 +9,7 @@ _Matrix inverse_
 
 
 
-```txt
+```syntax
 inv x     inv[x]
 ```
 

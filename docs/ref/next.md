@@ -14,7 +14,7 @@ _Immediate or near neighbours_
 
 _Next item/s in a list_
 
-```txt
+```syntax
 next x      next[x]
 ```
 
@@ -45,7 +45,7 @@ q)update (next time)-time by sym from quote
 
 _Immediately preceding item/s in a list_
 
-```txt
+```syntax
 prev x     prev[x]
 ```
 
@@ -75,7 +75,7 @@ q)update time:prev time by sym from t
 
 _Nearby items in a list_
 
-```txt
+```syntax
 x xprev y     xprev[x;y]
 ```
 

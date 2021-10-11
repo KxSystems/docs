@@ -40,7 +40,7 @@ Where
 
 For the ternary and quaternary forms
 
-```txt
+```syntax
 .[d; i; u]      @[d; i; u]
 .[d; i; v; vy]  @[d; i; v; vy]
 ```

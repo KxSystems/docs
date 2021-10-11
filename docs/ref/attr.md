@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Attributes of an object_
 
-```txt
+```syntax
 attr x     attr[x]
 ```
 

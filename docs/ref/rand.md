@@ -4,7 +4,7 @@ description: rand is a q keyword that randomly picks a number, or an item from a
 author: Stephen Taylor
 keywords: deal, kdb+, q, rand, random, roll
 ---
-# `rand` 
+# `rand`
 
 _Pick randomly_
 

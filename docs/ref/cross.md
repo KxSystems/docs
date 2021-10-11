@@ -7,7 +7,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 x cross y    cross[x;y]
 ```
 

@@ -8,7 +8,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 x*y     *[x;y]
 ```
 

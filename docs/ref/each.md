@@ -8,7 +8,7 @@ author: Stephen Taylor
 
 _Iterate a unary_
 
-```txt
+```syntax
  v1 each x   each[v1;x]       v1 peach x   peach[v1;x]  
 (vv)each x   each[vv;x]      (vv)peach x   peach[vv;x]
 ```

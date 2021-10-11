@@ -13,7 +13,7 @@ author: Stephen Taylor
 
 _Position in the sorted list_
 
-```txt
+```syntax
 rank x    rank[x]
 ```
 

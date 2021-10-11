@@ -13,7 +13,7 @@ _Logarithms and natural logarithms_
 
 _Natural logarithm_
 
-```txt
+```syntax
 log x    log[x]
 ```
 
@@ -84,7 +84,7 @@ Range: `fz`
 
 _Logarithm_
 
-```txt
+```syntax
 x xlog y    xlog[x;y]
 ```
 

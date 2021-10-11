@@ -8,7 +8,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 signum x    signum[x]
 ```
 

@@ -3,14 +3,14 @@ title: median of a numeric list | Reference | kdb+ and q documentation
 description: med is a q keyword that returns the median of its argument.
 keywords: kdb+, median, q, statistics
 ---
-# `med` 
+# `med`
 
 
 
 
 _Median_
 
-```txt
+```syntax
 med x    med[x]
 ```
 
@@ -29,7 +29,7 @@ q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `med` applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
 
@@ -57,9 +57,10 @@ This is deliberate, as previously `med` was returning median of medians for such
 
 ```q
 select med price by sym from 
-  select price, sym from trade where 
+  select price, sym from trade 
+    where 
       date within 2001.10.10 2001.10.11, 
-      sym in `AAPL`LEH;
+      sym in `AAPL`LEH
 ```
 
 

@@ -10,7 +10,9 @@ keywords: bang, enumerate, enumeration, list, kdb+, q
 
 _Enumerated symbol list_
 
-Syntax: `x!y`, `![x;y]`
+```syntax
+x!y    ![x;y]
+```
 
 Where
 
@@ -26,7 +28,7 @@ q)`x!1 2 3
 `x$`b`c`d
 ```
 
-
+---
 :fontawesome-solid-book:
 [Enum Extend](enum-extend.md),
 [Enumerate](enumerate.md),

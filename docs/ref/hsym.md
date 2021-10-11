@@ -10,7 +10,7 @@ date: December 2019
 
 _Symbol/s to file or process symbol/s_
 
-```txt
+```syntax
 hsym x     hsym[x]
 ```
 

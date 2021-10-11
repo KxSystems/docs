@@ -10,7 +10,7 @@ author: Stephen Taylor
 _Tangent and arctangent_
 
 
-```txt
+```syntax
 tan x     tan[x]
 atan x    atan[x]
 ```

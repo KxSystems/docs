@@ -11,11 +11,13 @@ keywords: c, dynamic, kdb+, load, object, q, shared
 
 _Load C shared objects_
 
-Syntax: `file symbol 2: (cfn;rnk)`, `2:[file symbol;(cfn;rnk)]`
+```syntax
+fs 2: (cfn;rnk)    2:[fs;(cfn;rnk)]
+```
 
 Where
 
--   `file symbol` is a [file symbol](../basics/glossary.md#file-symbol)
+-   `fs` is a [file symbol](../basics/glossary.md#file-symbol)
 -   `cfn` is the name of a C function (symbol) 
 -   `rnk` its [rank](../basics/glossary.md#rank) (int)
 

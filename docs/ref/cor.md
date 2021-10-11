@@ -8,7 +8,7 @@ description: cor is a q keyword that calculates the correlation coefficient of t
 
 _Correlation_
 
-```txt
+```syntax
 x cor y    cor[x;y]
 ```
 

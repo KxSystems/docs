@@ -14,7 +14,7 @@ keywords: cut, kdb+, keyword, operator, q
 
 _Cut a list or table into sub-arrays_
 
-```txt
+```syntax
 x _ y     _[x;y]
 ```
 
@@ -69,7 +69,7 @@ s1 p5 400
 
 _Cut a list or table into a matrix of `x` columns_
 
-```txt
+```syntax
 x cut y     cut[x;y]
 ```
 

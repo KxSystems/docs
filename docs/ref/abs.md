@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Absolute value_
 
-```txt
+```syntax
 abs x    abs[x]
 ```
 

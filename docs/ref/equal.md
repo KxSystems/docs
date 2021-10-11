@@ -8,9 +8,11 @@ keywords: equal, kdb+, q
 
 
 
-Syntax: `x = y`, `=[x;y]`
+```syntax
+x=y    =[x;y]
+```
 
-Returns `1b` where (items of) `x` and `y` are equal.
+Returns `1b` where (atoms of) `x` and `y` are equal.
 
 ```q
 q)(3;"a")=(2 3 4;"abc")
@@ -20,6 +22,7 @@ q)(3;"a")=(2 3 4;"abc")
 
 Equal is an atomic function.
 
+---
 :fontawesome-solid-book: 
 [Not Equal `<>`](not-equal.md)
 <br>

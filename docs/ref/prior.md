@@ -8,7 +8,7 @@ date: March 2019
 
 
 
-```txt
+```syntax
  v2 prior x      prior[v2;x]
 (vv)prior x      prior[vv;x]
 ```

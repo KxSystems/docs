@@ -11,7 +11,7 @@ author: Stephen Taylor
 
 _Group by value_
 
-```txt
+```syntax
 x xrank y     xrank[x;y]
 ```
 

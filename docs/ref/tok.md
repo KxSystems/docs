@@ -47,7 +47,7 @@ second   | -18   V
 time     | -19   T
 ```
 
-A left argument of `0h` or "*" returns the `y` string unchanged.
+A left argument of `0h` or `"*"` returns the `y` string unchanged.
 
 Where `x` is a **positive or zero short**, a **lower-case char**, **`"*"`**, or a non-null **symbol**, see [Cast](cast.md).
 
@@ -181,8 +181,8 @@ q)"PZ"$\:"20191122-11:11:11.123"
 [yy]yymmdd
 ddMMM[yy]yy
 yyyy/[mm|MMM]/dd
-[mm|MMM]/dd/[yy]yy  / \z 0  
-dd/[mm|MMM]/[yy]yy  / \z 1
+[mm|MMM]/dd/[yy]yy  / \z 0  
+dd/[mm|MMM]/[yy]yy  / \z 1
 ```
 
 :fontawesome-solid-book-open:

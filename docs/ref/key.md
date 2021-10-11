@@ -13,7 +13,7 @@ keywords: dictionary, directory, enumeration, file, foreign key, handle, kdb+, k
 
 
 
-```txt
+```syntax
 key x     key[x]
 ```
 

@@ -13,7 +13,9 @@ keywords: bang, dict, dictionaries, dictionary, kdb+, q
 
 _Make a dictionary or keyed table; remove a key from a table_
 
-Syntax: `x!y`, `![x;y]` 
+```syntax
+x!y    ![x;y]
+```
 
 Where 
 

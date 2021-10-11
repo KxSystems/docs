@@ -14,7 +14,7 @@ _Get or set an environment variable_
 
 _Get the value of an environment variable_
 
-```txt
+```syntax
 getenv x     getenv[x]
 ```
 
@@ -32,7 +32,7 @@ q)getenv `UNKNOWN      / returns empty if variable not defined
 
 _Set the value of an environment variable_
 
-```txt
+```syntax
 x setenv y     setenv[x;y]
 ```
 

@@ -9,7 +9,7 @@ _Greater; logical OR_
 
 
 
-```txt
+```syntax
 x|y       |[x;y]
 x or y    or[x;y]
 ```

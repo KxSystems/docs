@@ -11,7 +11,7 @@ _Sine, arcsine_
 
 
 
-```txt
+```syntax
 sin x     sin[x]
 asin x    asin[x]
 ```

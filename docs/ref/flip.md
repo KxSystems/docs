@@ -7,7 +7,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 flip x     flip[x]
 ```
 

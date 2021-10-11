@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Signal an error_
 
-```txt
+```syntax
 'x
 ```
 

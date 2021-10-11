@@ -14,7 +14,8 @@ _Terminate kdb+_
 exit x    exit[x]
 ```
 
-where `x` is a positive integer, terminates the kdb+ process with `x` as the exit code.
+Control word. 
+Where `x` is a positive integer, terminates the kdb+ process with `x` as the exit code.
 
 ```q
 q)exit 0        / typical successful exit status

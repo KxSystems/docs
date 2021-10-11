@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Insert or append records to a table_
 
-```txt
+```syntax
 x insert y    insert[x;y]
 ```
 

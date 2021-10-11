@@ -14,7 +14,7 @@ _Totals – simple, running, moving, and weighted_
 
 _Total_
 
-```txt
+```syntax
 sum x    sum[x]
 ```
 
@@ -85,7 +85,7 @@ q)sum each flip(0n 8;8 0n) /do this to fall back to vector case
 
 _Running totals_
 
-```txt
+```syntax
 sums x    sums[x]
 ```
 
@@ -123,7 +123,7 @@ q)sums "abc"                    / type error if list is not numeric
 
 _Moving sums_
 
-```txt
+```syntax
 x msum y    msum[x;y]
 ```
 
@@ -148,7 +148,7 @@ q)3 msum 0N 2 3 5 0N 11     / nulls treated as zero
 
 _Weighted sum_
 
-```txt
+```syntax
 x wsum y    wsum[x;y]
 ```
 

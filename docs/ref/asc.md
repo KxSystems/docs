@@ -17,7 +17,7 @@ _Sort and grade: ascending_
 
 _Ascending sort_
 
-```txt
+```syntax
 asc x     asc[x]
 ```
 
@@ -133,7 +133,7 @@ c2 | j
 
 _Ascending grade_
 
-```txt
+```syntax
 iasc x    iasc[x]
 ```
 
@@ -170,7 +170,7 @@ _Sort a table in ascending order of specified columns._
 ![xasc](../img/xasc.png) 
 {: style="float: right; margin: 0 0 0 1em; padding: 0;"}
 
-```txt
+```syntax
 x xasc y     xasc[x;y]
 ```
 

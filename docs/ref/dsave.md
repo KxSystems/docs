@@ -11,7 +11,7 @@ _Write global tables to disk as splayed, enumerated, indexed kdb+ tables._
 
 
 
-```txt
+```syntax
 x dsave y     dsave[x;y]
 ```
 

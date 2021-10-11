@@ -13,7 +13,7 @@ author: Stephen Taylor
 _Everything is true_
 
 
-```txt
+```syntax
 all x    all[x]
 ```
 
@@ -61,7 +61,7 @@ q)if[all x in y;....]   / use in control structure
 
 _Something is true_
 
-```txt
+```syntax
 any x    any[x]
 ```
 

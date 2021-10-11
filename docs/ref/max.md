@@ -13,7 +13,7 @@ author: Stephen Taylor
 
 _Maximum_
 
-```txt
+```syntax
 max x    max[x]
 ```
 
@@ -42,7 +42,7 @@ q)select max price by sym from t   / use in a select statement
 
 _Maximums_
 
-```txt
+```syntax
 maxs x    maxs[x]
 ```
 
@@ -66,7 +66,7 @@ q)maxs 0N 5 0N 1 3         / initial nulls return negative infinity
 
 _Moving maximums_
 
-```txt
+```syntax
 x mmax y    mmax[x;y]
 ```
 

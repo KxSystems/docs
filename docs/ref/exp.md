@@ -111,8 +111,8 @@ q)1.5 xexp -4.2 0 0.1 0n 0w
 !!! warning "The calculation is performed as `exp y * log x`." 
 
     If `y` is integer, this is not identical to `prd y#x`.
-
-   ```q
+    
+    ```q
     q)\P 0
     q)prd 3#2
     8

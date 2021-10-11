@@ -12,7 +12,7 @@ keywords: kdb+, q, selection, where
 
 _Copies of indexes of a list or keys of a dictionary_
 
-```txt
+```syntax
 where x    where[x]
 ```
 

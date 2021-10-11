@@ -11,7 +11,7 @@ keywords: condition, control, evaluate, kdb+, q
 
 _Evaluate expression/s under some condition_
 
-```txt
+```syntax
 if[test;e1;e2;e3;…;en]
 ```
 

@@ -15,7 +15,7 @@ _Get or set key column/s of a table_
 
 _Key column/s of a table_
 
-```txt
+```syntax
 keys x    keys[x]
 ```
 
@@ -38,7 +38,7 @@ q)keys`trade
 
 _Set specified columns as primary keys of a table_
 
-```txt
+```syntax
 x xkey y    xkey[x;y]
 ```
 

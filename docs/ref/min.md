@@ -10,11 +10,11 @@ _Minimum/s_
 
 
 
-## `min` 
+## `min`
 
 _Minimum_
 
-```txt
+```syntax
 min x     min[x]
 ```
 
@@ -39,11 +39,11 @@ q)select min price by sym from t   / use in a select statement
 
 
 
-## `mins` 
+## `mins`
 
 _Minimums_
 
-```txt
+```syntax
 mins x     mins[x]
 ```
 
@@ -67,7 +67,7 @@ q)mins 0N 5 0N 1 3         / initial nulls return infinity
 
 _Moving minimums_
 
-```txt
+```syntax
 x mmin y     mmin[x;y]
 ```
 

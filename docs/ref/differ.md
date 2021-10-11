@@ -11,7 +11,9 @@ _Find where list items change value_
 
 
 
-Syntax: `differ x`, `differ[x]`
+```syntax
+differ x    differ[x]
+```
 
 Returns a boolean list indicating where consecutive pairs of items in `x` differ. 
 It applies to all data types. 

@@ -13,7 +13,7 @@ keywords: bytes, file, filehandle, filesystem, handle, kdb+, pipe, process, q, r
 
 _Read bytes from a file or named pipe_
 
-```txt
+```syntax
 read1 f           read1[f]
 read1 (f;o;n)     read1[(f;o;n)]
 read1 h           read1[h]

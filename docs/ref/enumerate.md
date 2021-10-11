@@ -7,7 +7,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 x$y    $[x;y]
 ```
 
@@ -21,7 +21,7 @@ returns `y` as an enumeration of `x`.
 Using built-in Enumerate:
 
 ```q
-q)show e:`x$y;
+q)show e:`x$y;
 `x$`a`b`c`b`a`b`c`c`c`c`c`c`c
 ```
 
@@ -29,7 +29,7 @@ Values are stored as indexes and so need less space.
 
 ```q
 q)"i"$e
-0 1 2 1 0 1 2 2 2 2 2 2 2i
+0 1 2 1 0 1 2 2 2 2 2 2 2i
 ```
 
 Changing one lookup value (in `x`) has the same effect as changing those values in the enumeration, while the indexes backing `e` are unchanged.
@@ -39,7 +39,7 @@ q)x[0]:`o
 q)e
 x$`o`b`c`b`o`b`c`c`c`c`c`c`c
 q)"i"$e
-0 1 2 1 0 1 2 2 2 2 2 2 2i
+0 1 2 1 0 1 2 2 2 2 2 2 2i
 ```
 
 To get `x` and `y` from `e`:

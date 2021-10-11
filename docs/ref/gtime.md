@@ -14,7 +14,7 @@ _Global and local time_
 
 _UTC equivalent of local timestamp_
 
-```txt
+```syntax
 gtime ts    gtime[ts]
 ```
 
@@ -33,7 +33,7 @@ q)gtime .z.P                      / same timezone as .z.p
 
 _Local equivalent of UTC timestamp_
 
-```txt
+```syntax
 ltime ts    ltime[ts]
 ```
 

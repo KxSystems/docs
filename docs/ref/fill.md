@@ -13,7 +13,7 @@ _Replace nulls_
 
 _Replace nulls_
 
-```txt
+```syntax
 x^y    ^[x;y]
 ```
 
@@ -64,7 +64,7 @@ Fill is an atomic function.
 
 _Replace nulls with preceding non-nulls_
 
-```txt
+```syntax
 fills x     fills[x]
 ```
 

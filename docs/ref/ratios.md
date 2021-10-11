@@ -12,7 +12,7 @@ author: Stephen Taylor
 
 _Ratios between items_
 
-```txt
+```syntax
 ratios y     ratios[y]
 ```
 

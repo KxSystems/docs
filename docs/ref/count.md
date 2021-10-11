@@ -15,7 +15,7 @@ _Count the items of a list or dictionary_
 
 _Number of items_
 
-```txt
+```syntax
 count x     count[x]
 ```
 
@@ -76,7 +76,7 @@ q)count sp
 
 _Moving counts_
 
-```txt
+```syntax
 x mcount y     mcount[x;y]
 ```
 

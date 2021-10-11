@@ -12,7 +12,9 @@ keywords: condition, control, iteration, kdb+, q, while
 
 _Evaluate expression/s while some condition remains true_
 
-Syntax: `while[test;e1;e2;e3;…;en]`
+```syntax
+while[test;e1;e2;e3;…;en]
+```
 
 Control construct. Where
 

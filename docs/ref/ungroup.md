@@ -7,7 +7,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 ungroup x    ungroup[x]
 ```
 

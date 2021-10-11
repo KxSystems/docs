@@ -12,7 +12,7 @@ author: Stephen Taylor
 _Select leading or trailing items from a list or dictionary, named entries from a dictionary, or named columns from a table_
 
 
-```txt
+```syntax
 x#y     #[x;y]
 ```
 

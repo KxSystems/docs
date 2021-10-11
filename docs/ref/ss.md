@@ -14,7 +14,7 @@ _String search – and replace_
 
 _String search_
 
-```txt
+```syntax
 x ss y     ss[x;y]
 ```
 
@@ -43,7 +43,7 @@ q)s ss "t?r"
 
 _String search and replace_
 
-```txt
+```syntax
 ssr[x;y;z]
 ```
 

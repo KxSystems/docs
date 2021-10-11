@@ -11,7 +11,7 @@ _Covariance_
 
 ## `cov`
 
-```txt
+```syntax
 x cov y    cov[x;y]
 ```
 
@@ -36,13 +36,13 @@ The function `cov` is equivalent to `{avg[x*y]-avg[x]*avg y}`.
 
 _Sample covariance_
 
-```txt
+```syntax
 x scov y    scov[x;y]
 ```
 
 Where `x` and `y` are conforming numeric lists returns their [sample covariance](https://en.wikipedia.org/wiki/Covariance#Calculating_the_sample_covariance "Wikipedia") as a float atom.
 
-$$scov(x,y)=\frac{n}{n-1}cov(x,y)$$
+$$scov(x,y)=\frac{n}{n-1} cov(x,y)$$
 
 Applies to all numeric data types and signals an error with temporal types, char and sym.
 

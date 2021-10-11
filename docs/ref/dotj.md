@@ -22,7 +22,7 @@ The `.j` [namespace](../basics/namespaces.md) contains functions for converting 
 
 ## `.j.j` (serialize)
 
-```txt
+```syntax
 .j.j x
 ```
 
@@ -31,7 +31,7 @@ Where `x` is a K object, returns a string representing it in JSON.
 
 ## `.j.jd` (serialize infinity)
 
-```txt
+```syntax
 .j.jd (x;d)
 ```
 
@@ -56,7 +56,7 @@ q).j.jd(-0w 0 1 2 3 0w;(!). 1#'`null0w,1b)
 
 ## `.j.k` (deserialize)
 
-```txt
+```syntax
 .j.k x
 ```
 

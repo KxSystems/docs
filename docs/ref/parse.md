@@ -3,7 +3,7 @@ title: parse | Reference | kdb+ and q documentation
 description: parse is a q keyword that returns a parse tree for a string expression.
 author: Stephen Taylor
 ---
-# parse 
+# parse
 
 
 
@@ -12,7 +12,7 @@ author: Stephen Taylor
 
 _Parse a string_
 
-```txt
+```syntax
 parse x     parse[x]
 ```
 

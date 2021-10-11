@@ -8,7 +8,7 @@ author: Stephen Taylor
 
 _Whether text matches a pattern_
 
-```txt
+```syntax
 x like y    like[x;y]
 ```
 
@@ -38,7 +38,7 @@ q)`quick like "quickish"
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `like` applies to lists of strings or symbols; and to dictionaries with them as values.
 

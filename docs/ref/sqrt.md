@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Square root_
 
-```txt
+```syntax
 sqrt x    sqrt[x]
 ```
 

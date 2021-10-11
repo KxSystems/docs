@@ -7,7 +7,7 @@ description: ceiling is a q keyword that returns the least integer greater than 
 
 _Round up_
 
-```txt
+```syntax
 ceiling x      ceiling[x]
 ```
 

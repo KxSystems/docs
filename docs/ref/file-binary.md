@@ -4,7 +4,7 @@ description: File Binary is a q operator that reads or writes a binary file.
 author: Stephen Taylor
 keywords: binary, file, kdb+, q, read, write
 ---
-# :fontawesome-solid-database: `1:` File Binary 
+# :fontawesome-solid-database: `1:` File Binary
 
 _Read and parse, or write bytes_
 
@@ -15,7 +15,7 @@ _Read and parse, or write bytes_
 
 ## Read Binary
 
-```txt
+```syntax
 x 1: y     1:[x;y]
 ```
 
@@ -88,7 +88,7 @@ _Q for Mortals_
 
 ## Save Binary
 
-```txt
+```syntax
 filesymbol 1: bytes     1:[filesymbol;bytes]
 ```
 
@@ -98,7 +98,7 @@ writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns 
 -   exists, it is overwritten
 
 ```q
-q)`:hello 1: 0x68656c6c6f776f726c64
+q)`:hello 1: 0x68656c6c6f776f726c64
 `:hello
 ```
 

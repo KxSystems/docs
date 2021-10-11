@@ -4,14 +4,14 @@ description: Vector Conditional is a q operator that replaces selected items of 
 author: Stephen Taylor
 keywords: condition, item, kdb+, q, vector
 ---
-# `?` Vector Conditional 
+# `?` Vector Conditional
 
 
 
 
 _Replace selected items of one list with corresponding items of another_
 
-```txt
+```syntax
 ?[x;y;z]
 ```
 

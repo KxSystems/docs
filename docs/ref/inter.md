@@ -11,7 +11,9 @@ keywords: inter, intersection, kdb+, q, select
 
 _Intersection of two lists or dictionaries_
 
-Syntax: `x inter y`, `inter[x;y]`
+```syntax
+x inter y    inter[x;y]
+```
 
 Where `x` and `y` are lists or dictionaries, uses the result of `x in y` to return items or entries from `x`.
 
@@ -60,6 +62,9 @@ x 10
 t 40
 ```
 
-:fontawesome-regular-hand-point-right: 
-[`in`](in.md), [`within`](within.md)  
-Basics: [Selection](../basics/by-topic.md#selection)
+---
+:fontawesome-solid-book:
+[`in`](in.md), [`within`](within.md)
+<br>
+:fontawesome-solid-book-open:
+[Selection](../basics/by-topic.md#selection)

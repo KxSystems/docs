@@ -10,7 +10,7 @@ keywords: asof, join, kdb+, q
 
 _As-of join_
 
-```txt
+```syntax
 t1 asof t2     asof[t1;t2]
 ```
 

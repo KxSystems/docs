@@ -10,7 +10,7 @@ _Modulus_
 
 
 
-```txt
+```syntax
 x mod y    mod[x;y]
 ```
 
@@ -29,7 +29,7 @@ q)-7 7 mod/:\:-2.5 -2 2 2.5
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `mod` is an [atomic function](../basics/atomic.md).
 

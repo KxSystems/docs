@@ -9,7 +9,7 @@ _Shift case_
 
 
 
-```txt
+```syntax
 lower x     lower[x]
 upper x     upper[x]
 ```
@@ -30,7 +30,7 @@ q)upper`ibm`msft
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `lower` and `upper` are [atomic functions](../basics/atomic.md).
 

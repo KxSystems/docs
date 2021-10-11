@@ -9,7 +9,7 @@ _Negate_
 
 
 
-```txt
+```syntax
 neg x    neg[x]
 ```
 

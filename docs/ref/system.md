@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Execute a system command_
 
-```txt
+```syntax
 system x     system[x]
 ```
 

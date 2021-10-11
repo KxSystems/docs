@@ -69,14 +69,13 @@ _Assign a value to a global variable
 <br>
 Persist an object as a file or directory_
 
-Syntax:
-```txt
-nam set y                  set[nam;y]                   / set global variable nam
-fil set y                  set[fil;y]                   / serialize y to fil
-dir set t                  set[dir;t]                   / splay t to dir
-(fil;lbs;alg;lvl) set y    set[(fil;lbs;alg;lvl);y]     / write y to fil, compressed
-(dir;lbs;alg;lvl) set t    set[(dir;lbs;alg;lvl);t]     / splay t to dir, compressed
-(dir;dic) set t            set[(dir;dic);t]             / splay t to dir, compressed
+```{.syntax style="font-size: .8em"}
+nam set y                set[nam;y]               /set global var nam
+fil set y                set[fil;y]               /serialize y to fil
+dir set t                set[dir;t]               /splay t to dir
+(fil;lbs;alg;lvl) set y  set[(fil;lbs;alg;lvl);y] /write y to fil, cmprssd
+(dir;lbs;alg;lvl) set t  set[(dir;lbs;alg;lvl);t] /splay t to dir, cmprssd
+(dir;dic) set t          set[(dir;dic);t]         /splay t to dir, cmprssd
 ```
 
 Where

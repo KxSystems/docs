@@ -11,7 +11,7 @@ author: Stephen Taylor
 
 _Add new records to a table_
 
-```txt
+```syntax
 x upsert y    upsert[x;y]
 ```
 

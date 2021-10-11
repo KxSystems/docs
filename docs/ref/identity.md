@@ -19,7 +19,7 @@ _Return a value unchanged_
 
 ### Applying null to a value
 
-```txt
+```syntax
 (::) x     ::[x]
 ```
   
@@ -41,7 +41,7 @@ q)(::;avg)@\:1 2 3
 
 ### Applying a value to null
 
-```txt
+```syntax
 x ::      x[::]
 ```
   

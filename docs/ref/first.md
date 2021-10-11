@@ -12,7 +12,7 @@ keywords: each, enlist, first, last kdb+, q, select
 
 _First item of a list_
 
-```txt
+```syntax
 first x    first[x]
 ```
 
@@ -65,7 +65,7 @@ q)a~first first enlist enlist 10
 
 _Last item of a list_
 
-```txt
+```syntax
 last x    last[x]
 ```
 

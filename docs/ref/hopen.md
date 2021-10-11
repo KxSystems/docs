@@ -24,7 +24,7 @@ Connections are opened and closed respectively by `hopen` and `hclose`.
 
 _Open a connection to a file or process_
 
-```txt
+```syntax
 hopen filehandle
 hopen processhandle
 hopen (communicationhandle;timeout)
@@ -63,7 +63,7 @@ hopen each(`:mysymbol;
 
 _Close a connection to a file or process_
 
-```txt
+```syntax
 hclose x     hclose[x]
 ```
 

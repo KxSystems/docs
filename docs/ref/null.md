@@ -11,7 +11,7 @@ author: Stephen Taylor
 
 _Is null_
 
-```txt
+```syntax
 null x     null[x]
 ```
 

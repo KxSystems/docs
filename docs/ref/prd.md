@@ -15,7 +15,7 @@ _Product/s_
 
 _Product_
 
-```txt
+```syntax
 prd x    prd[x]
 ```
 
@@ -45,7 +45,7 @@ q)prd "abc"
 
 _Products_
 
-```txt
+```syntax
 prds x    prds[x]
 ```
 

@@ -10,7 +10,7 @@ date: December 2019
 
 _Size of a file in bytes_
 
-```txt
+```syntax
 hcount x     hcount[x]
 ```
 

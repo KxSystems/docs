@@ -8,7 +8,7 @@ author: Stephen Taylor
 _Remove leading or trailing nulls from a list_
 
 
-```txt
+```syntax
  trim x     trim[x]
 ltrim x    ltrim[x]
 rtrim x    rtrim[x]
@@ -35,7 +35,7 @@ q)trim 42
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `trim`, `ltrim`, and `rtrim` are [string-atomic](../basics/atomic.md#string-atomic) and apply to dictionaries and tables.
 

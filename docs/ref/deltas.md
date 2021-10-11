@@ -11,7 +11,7 @@ _Differences between adjacent list items_
 
 
 
-```txt
+```syntax
 deltas x    deltas[x]
 ```
 

@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Unique items of a list_
 
-```txt
+```syntax
 distinct x    distinct[x]
 ```
 

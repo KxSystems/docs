@@ -10,7 +10,7 @@ description: reverse is a q keyword that reverses the order of items in a list o
 
 _Reverse the order of items of a list or dictionary_
 
-```txt
+```syntax
 reverse x    reverse[x]
 ```
 

@@ -9,7 +9,9 @@ keywords: compare, kdb+, q, value
 
 
 
-Syntax: `x ~ y` 
+```syntax
+x~y    ~[x;y]
+``` 
 
 Returns `0b` unless `x` and `y` are identical. [Comparison tolerance](../basics/precision.md#comparison-tolerance) is used when matching floats. 
 
@@ -66,6 +68,7 @@ q)t1~t2
 1b
 ```
 
+---
 :fontawesome-solid-book: 
 [Equal `=`](equal.md), [Not Equal `<>`](not-equal.md)
 <br>

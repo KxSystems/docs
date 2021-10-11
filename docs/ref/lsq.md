@@ -14,7 +14,7 @@ author: Stephen Taylor
 
 _Least squares, matrix divide_
 
-```txt
+```syntax
 x lsq y     lsq[x;y]
 ```
 

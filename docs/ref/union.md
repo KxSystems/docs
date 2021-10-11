@@ -11,7 +11,7 @@ author: Stephen Taylor
 
 _Union of two lists_
 
-```txt
+```syntax
 x union y    union[x;y]
 ```
 

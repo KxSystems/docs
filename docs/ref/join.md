@@ -8,7 +8,7 @@ author: Stephen Taylor
 _Join atoms, lists, dictionaries or tables_
 
 
-```txt
+```syntax
 x,y    ,[x;y]
 ```
 
@@ -60,7 +60,7 @@ d| 5
 ```
 
 
-## Tables 
+## Tables
 
 Tables can be joined row-wise. 
 

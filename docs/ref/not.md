@@ -10,7 +10,9 @@ keywords: false, kdb+, logic, not, q, true
 
 _Not zero_
 
-Syntax: `not x` 
+```syntax
+not x    not[x]
+```
 
 Returns `0b` where `x` **not** equal to zero, and `1b` otherwise.
 
@@ -44,7 +46,7 @@ q)not (0W;-0w;0N)
 
 An atomic function. 
 
-
+---
 :fontawesome-solid-book:
 [`neg`](neg.md) 
 <br>

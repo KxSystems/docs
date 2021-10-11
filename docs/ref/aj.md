@@ -10,22 +10,22 @@ keywords: as-of, join, kdb+, q
 
 _As-of join_
 
-<div markdown="1" class="typewriter">
-aj  [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
-aj0 [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
-ajf [c<sub>1</sub>…c<sub>n</sub>; t1; t2]
-ajf0[c<sub>1</sub>…c<sub>n</sub>; t1; t2]
-</div>
+```syntax
+aj  [c; t1; t2]
+aj0 [c; t1; t2]
+ajf [c; t1; t2]
+ajf0[c; t1; t2]
+```
 
 Where 
 
 -   `t1` is a table
 -   `t2` is a simple table 
--   <code>c<sub>1</sub>…c<sub>n</sub></code> is a symbol list of column names, common to `t1` and `t2`, and of matching type
--   column <code>c<sub>n</sub></code> is of a sortable type (typically time)
+-   `c` is a symbol list of `n` column names, common to `t1` and `t2`, and of matching type
+-   column `c[n]` is of a sortable type (typically time)
 
 returns a table with records from the left-join of `t1` and `t2`.
-In the join, columns <code>c<sub>1</sub>…c<sub>n-1</sub></code> are matched for equality, and the last value of <code>c<sub>n</sub></code> (most recent time) is taken.
+In the join, columns `c[til n-1]` are matched for equality, and the last value of `c[n]` (most recent time) is taken.
 For each record in `t1`, the result has one record with the items in `t1`, and
 
 -   if there are matching records in `t2`, the items of the last (in row order) matching record are appended to those of `t1`;

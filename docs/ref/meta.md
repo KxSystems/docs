@@ -10,7 +10,7 @@ author: Stephen Taylor
 
 _Metadata for a table_
 
-```txt
+```syntax
 meta x    meta[x]
 ```
 

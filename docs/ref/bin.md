@@ -11,7 +11,7 @@ keywords: bin, binr, kdb+, q, search_
 
 _Binary search_
 
-```txt
+```syntax
 x bin  y    bin[x;y]
 x binr y    binr[x;y]
 ```

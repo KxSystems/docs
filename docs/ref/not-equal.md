@@ -8,7 +8,9 @@ keywords: compare, equal, kdb+, q
 
 
 
-Syntax: `x <> y`
+```syntax
+x<>y    <>[x;y]
+```
 
 This atomic binary operator returns `1b` where (items of) `x` are less than `y`.
 
@@ -18,6 +20,7 @@ q)(3;"a")<>(2 3 4;"abc")
 011b
 ```
 
+---
 :fontawesome-solid-book: 
 [Equal `=`](equal.md)
 <br>

@@ -10,7 +10,7 @@ author: Stephen Taylor
 _Return the items of `x` joined, collapsing one level of nesting_
 
 
-```txt
+```syntax
 raze x    raze[x]
 ```
 

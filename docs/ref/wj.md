@@ -11,7 +11,7 @@ author: Stephen Taylor
 
 _Window join_
 
-```txt
+```syntax
 wj [w; c; t; (q; (f0;c0); (f1;c1))]
 wj1[w; c; t; (q; (f0;c0); (f1;c1))]
 ```

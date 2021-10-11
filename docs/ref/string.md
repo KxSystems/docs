@@ -10,7 +10,7 @@ _Cast to string_
 
 
 
-```txt
+```syntax
 string x    string[x]
 ```
 
@@ -28,7 +28,7 @@ q)string (+/)
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 `string` is an [atomic function](../basics/atomic.md) and iterates through dictionaries and tables.
 

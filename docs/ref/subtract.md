@@ -6,7 +6,7 @@ author: Stephen Taylor
 # `-` Subtract
 
 
-```txt
+```syntax
 x-y     -[x;y]
 ```
 

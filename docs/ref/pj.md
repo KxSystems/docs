@@ -3,7 +3,7 @@ title: pj – plus join | Reference | kdb+ and q documentation
 description: pj is a q keyword that performs a plus join.
 keywords: join, kdb+, pj,plus join, q
 ---
-# `pj` 
+# `pj`
 
 
 
@@ -11,7 +11,7 @@ keywords: join, kdb+, pj,plus join, q
 
 _Plus join_
 
-```txt
+```syntax
 x pj y     pj[x;y]
 ```
 

@@ -12,7 +12,7 @@ keywords: divide, division, divisor, kdb+, math, mathematics, numerator, q
 
 _Reciprocal of a number_
 
-```txt
+```syntax
 reciprocal x    reciprocal[x]
 ```
 

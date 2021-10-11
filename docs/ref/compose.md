@@ -11,7 +11,7 @@ keywords: adverb, compose, composition, function, kdb+, map, q, value
 
 _Compose a unary value with another_
 
-```txt
+```syntax
 '[f;ff][x;y;z;…]
 ```
 

@@ -3,13 +3,13 @@ title: ej – equi join | Reference | kdb+ and q documentation
 description: ej is a q keyword that performs an equi join on two tables.
 keywords: ej, equi join, join, kdb+, q
 ---
-# `ej` 
+# `ej`
 
 
 
 _Equi join_
 
-```txt
+```syntax
 ej[c;t1;t2]
 ```
 

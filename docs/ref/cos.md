@@ -12,7 +12,7 @@ _Cosine, arccosine_
 
 
 
-```txt
+```syntax
 cos x     cos[x]
 acos x    acos[x]
 ```

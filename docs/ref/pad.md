@@ -6,7 +6,7 @@ author: Stephen Taylor
 # `$` Pad
 
 
-```txt
+```syntax
 x$y    $[x;y]
 ```
 
@@ -25,7 +25,7 @@ q)-9$"foo"
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 Pad is [string-atomic](../basics/atomic.md#string-atomic) and applies to dictionaries and tables.
 

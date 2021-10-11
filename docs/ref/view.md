@@ -13,7 +13,7 @@ author: Stephen Taylor
 
 _Expression defining a view_
 
-```txt
+```syntax
 view x    view[x]
 ```
 
@@ -34,7 +34,7 @@ q)view `v                         / view the dependency expression
 
 _List views defined in the default namespace_
 
-```txt
+```syntax
 views[]
 ```
 

@@ -8,9 +8,9 @@ keywords: comparison, kdb+, less-than, less-than-or-equal, q, up to
 
 
 
-```txt
-x < y    <[x;y]
-x <= y   x<=[x;y]
+```syntax
+x<y    <[x;y]
+x<=y   <=[x;y]
 ```
 
 Returns `1b` where the underlying value of `x` is less than (or up to) that of `y`.
@@ -36,7 +36,7 @@ q)0 1 <=/:\: 0 1
 ```
 
 
-## Implicit iteration
+## :fontawesome-solid-sitemap: Implicit iteration
 
 Less Than and Up To are [atomic functions](../basics/atomic.md).
 
@@ -71,7 +71,7 @@ ghi| 1 1
 ```
 
 
-## Range and domain 
+## Range and domain
 
 ```txt
     b g x h i j e f c s p m d z n u v t

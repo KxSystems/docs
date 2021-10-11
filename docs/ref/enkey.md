@@ -15,7 +15,7 @@ _Simple to keyed table and vice-versa_
 
 _Make a keyed table from a simple table._
 
-```txt
+```syntax
 i!t    ![i;t]
 ```
 
@@ -40,7 +40,7 @@ a b | c
 
 _Remove the key/s from a table._
 
-```txt
+```syntax
 0!t    ![0;t]
 ```
 

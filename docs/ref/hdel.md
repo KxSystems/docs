@@ -9,7 +9,7 @@ date: December 2019
 
 _Delete a file or folder_
 
-```txt
+```syntax
 hdel x     hdel[x]
 ```
 

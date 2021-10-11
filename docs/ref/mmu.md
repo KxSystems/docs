@@ -14,7 +14,7 @@ author: Stephen Taylor
 
 _Matrix multiply, dot product_
 
-```txt
+```syntax
 x mmu y    mmu[x;y]
 x$y        $[x;y]
 ```

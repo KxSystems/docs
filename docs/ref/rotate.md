@@ -9,7 +9,7 @@ author: Stephen Taylor
 
 _Shift the items of a list to the left or right_
 
-```txt
+```syntax
 x rotate y    rotate[x;y]
 ```
 

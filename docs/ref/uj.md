@@ -13,10 +13,10 @@ keywords: join, kdb+, q, uj, ujf, union join
 
 _Union join_
 
-<div markdown="1" class="typewriter">
+```syntax
 x uj  y     uj [x;y]
 x ujf y     ujf[x;y]
-</div>
+```
 
 
 Where `x` and `y` are both keyed or both unkeyed tables, returns the union of the columns, filled with nulls where necessary:

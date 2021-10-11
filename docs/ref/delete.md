@@ -8,26 +8,31 @@ keywords: delete, functional kdb+, q, query, qsql, sql
 
 _Delete rows or columns from a table, entries from a dictionary, or objects from a namespace_
 
-<div markdown="1" class="typewriter">
-delete    from _t<sub>exp</sub>_ [where _p<sub>w</sub>_]
-delete _p<sub>s</sub>_ from _t<sub>exp</sub>_ 
-</div>
+```syntax
+delete    from x
+delete    from x where pw
+delete ps from x
+```
 
 !!! info "`delete` is a [qSQL query template](../basics/qsql.md) and varies from regular q syntax"
 
-For the Delete operator `!`, see 
+For the Delete operator `!`, see
 :fontawesome-solid-book-open:
 [Functional SQL](../basics/funsql.md#delete)
 
 
 ## Table rows
 
-Where 
+```syntax
+delete    from x
+delete    from x where pw
+```
+Where
 
--   _t~exp~_ is a table
--   _p~w~_ is a condition
+-   `x` is a table
+-   `pw` is a condition
 
-deletes from `t` rows matching _p~w~_.
+deletes from `x` rows matching `pw`, or all rows if `where pw` not specified.
 
 ```q
 q)show table: ([] a: `a`b`c; n: 1 2 3)
@@ -48,12 +53,16 @@ b 2
 
 ## Table columns
 
+```syntax
+delete    from x
+delete ps from x
+```
 Where
 
--   _t~exp~_ is a table
--   _p~s~_ a list of column names
+-   `x` is a table
+-   `ps` a list of column names
 
-deletes from `t` columns _p~s~_.
+deletes from `x` columns `ps` or all columns if `ps` not specified.
 
 ```q
 q)show delete n from table
@@ -67,12 +76,16 @@ c
 
 ## Dictionary entries
 
+```syntax
+delete    from x
+delete ps from x
+```
 Where
 
--   _t~exp~_ is a dictionary
--   _p~s~_ a list of keys to it
+-   `x` is a dictionary
+-   `ps` a list of keys to it
 
-deletes from _t~exp~_ entries for _p~s~_.
+deletes from `x` entries for `ps`.
 
 ```q
 q)show d:`a`b`c!til 3
@@ -97,10 +110,14 @@ c| 2
 
 ## Namespace objects
 
+```syntax
+delete    from x
+delete ps from x
+```
 Where
 
--   _t~exp~_ is a namespace
--   _p~s~_ a symbol atom or vector of name/s defined in it
+-   `x` is a namespace
+-   `ps` a symbol atom or vector of name/s defined in it
 
 deletes the named objects from the namespace.
 

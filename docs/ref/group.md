@@ -7,7 +7,7 @@ author: Stephen Taylor
 
 
 
-```txt
+```syntax
 group x     group[x]
 ```
 

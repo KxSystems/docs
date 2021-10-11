@@ -1089,7 +1089,7 @@ q)\x .z.zd            / clear zip defaults
 
 Shorthand forms:
 
-```txt
+```syntax
 .z.T  `time$.z.Z     .z.D  `date$.z.Z
 .z.t  `time$.z.z     .z.d  `date$.z.z
 ```

@@ -14,7 +14,7 @@ _Load binary data from a file or directory_
 
 _Load binary data from a file_
 
-```txt
+```syntax
 load x     load[x]
 ```
 
@@ -78,7 +78,7 @@ s5| adams 30     athens
 
 _Load a splayed table from a directory_
 
-```txt
+```syntax
 rload x     rload[x]
 ```
 

@@ -14,7 +14,7 @@ _Deviations_
 
 _Standard deviation_
 
-```txt
+```syntax
 dev x     dev[x]
 ```
 
@@ -33,7 +33,7 @@ q)dev 10 343 232 55
 
 _Moving deviations_
 
-```txt
+```syntax
 x mdev y     mdev[x;y]
 ```
 
@@ -100,7 +100,7 @@ ghi| 9   0.5
 
 _Sample standard deviation_
 
-```txt
+```syntax
 sdev x     sdev[x]
 ```
 

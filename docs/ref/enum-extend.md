@@ -11,7 +11,7 @@ author: Stephen Taylor
 _Extend an enumeration_
 
 
-```txt
+```syntax
 x?y    ?[x;y]
 ```
 

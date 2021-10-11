@@ -11,7 +11,9 @@ keywords: kdb+, metadata, q, table
 
 _List of tables in a namespace_
 
-Syntax: `tables x`, `tables[x]`
+```syntax
+tables x    tables[x]
+```
 
 Where `x` is a reference to a namespace, returns as a symbol vector a sorted list of the tables in `x`
 
@@ -26,6 +28,6 @@ q)tables `.work   / tables in work
 ,`tab
 ```
 
-
-:fontawesome-regular-hand-point-right:
-Basics: [Metadata](../basics/metadata.md)
+---
+:fontawesome-solid-book-open:
+[Metadata](../basics/metadata.md)

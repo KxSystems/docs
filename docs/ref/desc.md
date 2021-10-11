@@ -17,7 +17,7 @@ _Sort and grade: descending_
 
 _Descending sort_
 
-```txt
+```syntax
 desc x    desc[x]
 ```
 
@@ -57,7 +57,7 @@ a b
 
 _Descending grade_
 
-```txt
+```syntax
 idesc x    idesc[x]
 ```
 
@@ -82,7 +82,7 @@ q)idesc `a`c`b!1 2 3
 _Sorts a table in descending order of specified columns. 
 The sort is by the first column specified, then by the second column within the first, and so on._
 
-```txt
+```syntax
 x xdesc y    xdesc[x;y]
 ```
 
