@@ -80,8 +80,10 @@ Berlin| London
 
 ## Unary values
 
-Syntax: `(v1\)x`, `(v1/)x`  unary application<br>
-Syntax: `x v1\y`, `x v1/y`  binary application
+```syntax
+(v1\)x    (v1/)x   / unary application
+x v1\y    x v1/y   / binary application
+```
 
 The function an accumulator derives from a unary value is [variadic](../basics/variadic.md).
 The result of the first evaluation is the right argument for the second evaluation. And so on.
@@ -212,13 +214,16 @@ In the last example, both applicable values are dictionaries.
 
 ## Binary values
 
-Syntax: `x v\y`, `x v/y`
+```syntax
+x v\y    x v/y
+```
 
 The function an accumulator derived from a binary value is [variadic](../basics/variadic.md).
 Functions derived by Scan are uniform; functions derived by Over are aggregates.
 The number of evaluations is the count of the right argument.
 
 ![over](../img/over.png)
+<br>
 <small>_Unary and binary application of f/_</small>
 
 
@@ -314,7 +319,9 @@ q)m scan c                 / (m\)c
 
 ## Ternary values
 
-Syntax: `v\[x;y;z]`, `v/[x;y;z]`
+```syntax
+v\[x;y;z]    v/[x;y;z]
+```
 
 The function an accumulator derives from an value of rank >2 has the same rank as the value.
 Functions derived by Scan are uniform; functions derived by Over are aggregates.
