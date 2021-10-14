@@ -100,10 +100,10 @@ IDE: KX Developer](/developer/ "Download and install the free IDE, KX Developer"
 
     **Seamus Keating**
     <br>
-    CEO, First Derivatives plc
+    CEO, FD technologies plc
 
 :fontawesome-solid-globe:
-[Careers at KX and First Derivatives](http://www.firstderivatives.com/careers/)
+[Careers at KX and FD Technologies](http://www.firstderivatives.com/careers/)
 
 ---
 :fontawesome-solid-download:
