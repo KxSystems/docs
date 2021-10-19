@@ -25,6 +25,7 @@ Kdb+, from [KX](https://kx.com), is
 -   an expressive query and programming language called q
 </div>
 
+<style>#kx-whats-new p {white-space: nowrap}</style>
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
@@ -47,6 +48,7 @@ Kdb+, from [KX](https://kx.com), is
 
 <div id="kx-home-page-grid" markdown="1">
 
+<style>#kx-get-started a {color: white}</style>
 [Get started](learn/install.md)
 {: #kx-get-started .md-button}
 
