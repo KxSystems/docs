@@ -8,17 +8,21 @@ docs_dir: docs
 #     provider: google
 #     property: UA-180968370-1
 
+# To add a stylesheet specific to your code.kx.com subsite
+# uncomment the extra_css list in your mkdocs.yml config
+#  and substitute your own stylesheet name in the last item
 extra_css:
-  - https://code.kx.com/stylesheets/2021.css
-  - https://code.kx.com/stylesheets/prism.css
-  - https://code.kx.com/stylesheets/extra.css
-  - https://code.kx.com/stylesheets/hide-footer-nav.css
+  - https://code.kx.com/stylesheets/2021.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/prism.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/extra.css # MAY BE COMMENTED OUT
+  - https://code.kx.com/stylesheets/hide-footer-nav.css # MAY BE COMMENTED OUT
+  # - stylesheets/my-susbsite-styles.css
 
 extra_javascript:
-  - https://code.kx.com/scripts/prism.js
+  - https://code.kx.com/scripts/prism.js # DO NOT ALTER 
   - https://code.kx.com/scripts/jquery-3.6.0.min.js # jQuery for scripts/qsearch.js
-  - https://code.kx.com/scripts/extra.js
-  # MathJax scripts
+  - https://code.kx.com/scripts/extra.js # DO NOT ALTER 
+  # MathJax scripts # MAY BE COMMENTED OUT
   - https://code.kx.com/scripts/mathjax.js # configure MathJax object
   - https://code.kx.com/scripts/polyfill.min.js
   - https://code.kx.com/scripts/tex-mml-chtml.js
@@ -27,6 +31,7 @@ markdown_extensions:
   - abbr
   - admonition
   - attr_list
+  - def_list
   - meta
   - pymdownx.arithmatex:
       generic: true
@@ -42,17 +47,36 @@ markdown_extensions:
   - pymdownx.extra
   - pymdownx.highlight:
       use_pygments: false
-  - pymdownx.inlinehilite
   - pymdownx.keys
-  - pymdownx.magiclink
+  # - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tilde
+  - tables
   - toc:
       permalink: false
+
+# To modify the exclusions below
+# uncomment and edit this section in your subsite's config
+plugins:
+  - exclude:
+      glob:
+        # - exclude/this/path/*
+        - "*.tmp"
+        - "*.pdf"
+        - "*.gz"
+      regex:
+        - '.*\.(tmp|bin|tar)$'
+  - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
+  - search
 
 site_dir: site
 site_author: 'Kx Systems'
@@ -62,8 +86,9 @@ theme:
   favicon: https://code.kx.com/favicon.ico
   font: false
   features:
-    - header.autohide
+    - content.code.annotate # Insiders
     - content.tabs.link # Insiders
+    - header.autohide
     - navigation.tabs
   name: material
   language: en

@@ -3,14 +3,46 @@ INHERIT: ./base-config.yml
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.'
 
 extra_css:
-  - stylesheets/q.css
+  - https://code.kx.com/stylesheets/2021.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/prism.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/extra.css # MAY BE COMMENTED OUT
+  - https://code.kx.com/stylesheets/hide-footer-nav.css # MAY BE COMMENTED OUT
+  - stylesheets/q.css # site-specfic style
 
 extra_javascript:
-  - scripts/qsearch.js # client-side search engine
+  - https://code.kx.com/scripts/prism.js # DO NOT ALTER 
+  - https://code.kx.com/scripts/jquery-3.6.0.min.js # jQuery for scripts/qsearch.js
+  - https://code.kx.com/scripts/extra.js # DO NOT ALTER 
+  # MathJax scripts # MAY BE COMMENTED OUT
+  - https://code.kx.com/scripts/mathjax.js # configure MathJax object
+  - https://code.kx.com/scripts/polyfill.min.js
+  - https://code.kx.com/scripts/tex-mml-chtml.js
+  - scripts/qsearch.js # site-specific search engine
+
+# this config MAY NOT include the following sections
+# - extra_javascript
+# - markdown_extensions
+# - theme
+
+# To modify the exclusions below
+# uncomment and edit this section in your subsite's config
+plugins:
+  - exclude:
+      glob:
+        # - exclude/this/path/*
+        - "*.tmp"
+        - "*.pdf"
+        - "*.gz"
+      regex:
+        - '.*\.(tmp|bin|tar)$'
+  - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
+  - search
+
 
 remote_branch: master
 repo_name: 'GitHub'
 repo_url: 'https://github.com/kxsystems/docs'
+edit_uri: ""
 
 site_description: 'Documentation for kdb+ and the q programming language'
 site_name: 'Kdb+ and q documentation'
