@@ -552,13 +552,6 @@ nav:
         - Reference: interfaces/protobuf/reference.md
         - Examples: interfaces/protobuf/examples.md
       - Python (embedPy): interfaces/embedpy.md
-      - Python (PyQ):
-        - Quick start: interfaces/pyq/index.md
-        - Installation: interfaces/pyq/install.md
-        - User guide: interfaces/pyq/user-guide.md
-        - Reference: interfaces/pyq/reference.md
-        - What’s new: interfaces/pyq/whats-new.md
-        - Version history: interfaces/pyq/history.md
       - R:
         - About: interfaces/r/index.md
         - rkdb: interfaces/r/rkdb.md
@@ -581,6 +574,13 @@ nav:
       - ODBC/Simba: interfaces/odbc-simba.md
       - ODBC3: interfaces/q-server-for-odbc3.md
       # - Perl: interfaces/perl-client-for-q.md
+      - Python (PyQ):
+        - Quick start: interfaces/pyq/index.md
+        - Installation: interfaces/pyq/install.md
+        - User guide: interfaces/pyq/user-guide.md
+        - Reference: interfaces/pyq/reference.md
+        - What’s new: interfaces/pyq/whats-new.md
+        - Version history: interfaces/pyq/history.md
       - Scala: interfaces/scala-client-for-q.md
     - Q clients:
       - Bloomberg: interfaces/q-client-for-bloomberg.md
