@@ -103,3 +103,6 @@ theme:
       toggle: 
         icon: material/toggle-switch
         name: Switch to light mode
+  static_templates:
+    - 401.html
+    - 404.html
