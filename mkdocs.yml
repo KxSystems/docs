@@ -10,34 +10,28 @@ extra_css:
   - stylesheets/q.css # site-specfic style
 
 extra_javascript:
-  - https://code.kx.com/scripts/prism.js # DO NOT ALTER 
+  - https://code.kx.com/scripts/prism.js
   - https://code.kx.com/scripts/jquery-3.6.0.min.js # jQuery for scripts/qsearch.js
   - https://code.kx.com/scripts/extra.js # DO NOT ALTER 
   # MathJax scripts # MAY BE COMMENTED OUT
-  - https://code.kx.com/scripts/mathjax.js # configure MathJax object
+  - https://code.kx.com/scripts/mathjax.js
   - https://code.kx.com/scripts/polyfill.min.js
   - https://code.kx.com/scripts/tex-mml-chtml.js
   - scripts/qsearch.js # site-specific search engine
 
-# this config MAY NOT include the following sections
-# - extra_javascript
-# - markdown_extensions
-# - theme
-
 # To modify the exclusions below
 # uncomment and edit this section in your subsite's config
-plugins:
-  - exclude:
-      glob:
-        # - exclude/this/path/*
-        - "*.tmp"
-        - "*.pdf"
-        - "*.gz"
-      regex:
-        - '.*\.(tmp|bin|tar)$'
-  - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
-  - search
-
+# # plugins:
+#   - exclude:
+#       glob:
+#         # - exclude/this/path/*
+#         - "*.tmp"
+#         - "*.pdf"
+#         - "*.gz"
+#       regex:
+#         - '.*\.(tmp|bin|tar)$'
+#   - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
+#   - search
 
 remote_branch: master
 repo_name: 'GitHub'
