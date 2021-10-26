@@ -109,7 +109,7 @@ IDE: KX Developer](/developer/ "Download and install the free IDE, KX Developer"
 
 ---
 :fontawesome-solid-download:
-[Download](https://code.kx.com/download/site.zip "60MB") a copy of this site you can run from your filesystem
+[Download](https://code.kx.com/download/q.zip "60MB") a copy of this site you can run from an isolated webserver
 
 The source code for this site is on GitHub at
 :fontawesome-brands-github:
