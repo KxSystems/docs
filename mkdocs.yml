@@ -40,7 +40,7 @@ edit_uri: ""
 
 site_description: 'Documentation for kdb+ and the q programming language'
 site_name: 'Kdb+ and q documentation'
-site_url: https://code.kx.com/
+site_url: https://code.kx.com/q
 
 nav:
   - Home:

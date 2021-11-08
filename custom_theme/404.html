@@ -1,55 +1,21 @@
-{% extends "base.html" %}
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% extends "main.html" %}
 {% block content %}
-  <h1>404 - Not found</h1>
-  <p>
-  	Google Search indexed the old wiki for over 20 years:
-    perhaps you arrived here on an old URL.
-  	Here are answers to the most popular queries Google used to refer to the wiki.
-  </p>
-
-  <table>
-    <tr>
-      <td>
-        <ol>
-        	<li><a href="https://code.kx.com/q/ref/handles/"><code>hopen</code></a></li>
-        	<li><a href="https://code.kx.com/q/basics/datatypes/">datatype</a></li>
-        	<li><a href="https://code.kx.com/q/ref/type/"><code>type</code></a></li>
-        	<li><a href="https://code.kx.com/q/ref/dotq/#qdpft-save-table"><code>.q.dpft</code></a></li>
-        	<li><a href="https://code.kx.com/q/ref/file-text/#load-csv">read csv</a></li>
-        </ol>
-      </td>
-      <td>
-        <ol>
-          <li value="6"><a href="https://code.kx.com/q/ref/vs/"><code>vs</code></a></li>
-          <li><a href="https://code.kx.com/q/ref/if/"><code>if</code></a></li>
-          <li><a href="https://code.kx.com/q/ref/get/#set"><code>set</code></a></li>
-          <li><a href="https://code.kx.com/q/ref/sv/"><code>sv</code></a></li>
-          <li><a href="https://code.kx.com/developer/">Kx Developer</a></li>
-        </ol>
-      </td>
-      <td>
-        <ol>
-          <li value="11"><a href="https://code.kx.com/q/ref/asof/"><code>asof</code></a></li>
-          <li><a href="https://code.kx.com/q/basics/control/#conditional-evaluation">if else</a></li>
-          <li><a href="https://code.kx.com/q/ref/like/"><code>like</code></a></li>
-          <li><a href="https://code.kx.com/q/ref/maps/#each"><code>each</code></a></li>
-          <li><a href="https://code.kx.com/q/ref/dict/">dictionary</a></li>
-        </ol>
-      </td>
-      <td>
-        <ol>
-          <li value="16"><a href="https://code.kx.com/q/wp/java-api/#kdb-tickerplant-overview">tickerplant</a></li>
-          <li><a href="https://code.kx.com/q/ref/lj/">left join</a></li>
-          <li><a href="https://code.kx.com/q/basics/precision/">round</a></li>
-          <li><a href="https://code.kx.com/q/ref/wj/">window join</a></li>
-          <li><a href="https://github.com/CharlesSkelton/studio/">studio</a></li>
-        </ol>
-      </td>
-    </tr>
-  </table>
-
-  <p>
-    The Cookbook is now the <a href="https://code.kx.com/q/kb/">Knowledge Base</a>.
-  </p>
-
+  <h1>404 – Not found</h1>
+  <p>Sorry, that’s all we know. You might want:</p>
+  <h2><a href="https://code.kx.com/q/">q and kdb+</a></h2>
+  <ul>
+    <li><a href="https://code.kx.com/q/ref/">Reference</a> for the q language</li>
+    <li><a href="https://code.kx.com/q/basics/datatypes/">Datatypes</a> in q and kdb+</li>
+    <li><a href="https://code.kx.com/q4m3/"><cite>Q for Mortals</cite></a> Version 3</li>
+  </ul>
+  <h2><a href="https://code.kx.com/home/">Documentation for KX products</a></h2>
+  <ul>
+    <li><a href="https://code.kx.com/insights/">KX Insights</a></li>
+    <li><a href="https://code.kx.com/dashboards/">KX Dashboards</a></li>
+    <li><a href="https://code.kx.com/developer/">KX Developer</a></li>
+  </ul>
 {% endblock %}
+{% block disqus %}{% endblock %}
