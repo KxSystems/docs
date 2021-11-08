@@ -7,10 +7,10 @@ keywords: adverb, case, dictionary, each, each both, each left, each parallel, e
 ---
 # Map iterators
 
-<div markdown="1" class="typewriter">
+<div class="typewriter" markdown>
 map                        rank
  [Each](#each)           v'       same as v    [each](#each-keyword)
- [Each Left](#each-left-and-each-right)      v2\:         2
+ [Each Left](#each-left-and-each-right)      v2\\:        2
  [Each Right](#each-left-and-each-right)     v2/:        2
  [Each Parallel](#each-parallel)  v1':        1         [peach](#peach-keyword)
  [Each Prior](#each-prior)     v2':     variadic     [prior](#prior-keyword)
