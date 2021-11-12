@@ -124,7 +124,7 @@ _Interpret a field-delimited string, list of strings, or file as a list or matri
 Where 
 
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor), string, or a list of strings
--   `types` is a string of [column type codes](#column-types) in upper case
+-   `types` is a string of [column type codes](#column-types-and-formats) in upper case
 -   `delimiter` is a char atom or 1-item list
 -   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`
 
@@ -196,7 +196,7 @@ _Interpret a fixed-format list of strings or file as a list or matrix_
 Where 
 
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or a list of strings
--   `types` is a list of [column types](#column-types) in upper case
+-   `types` is a list of [column types](#column-types-and-formats) in upper case
 -   `widths` is an int vector of field widths
 
 returns a vector or matrix interpreted from the content of `y`.
