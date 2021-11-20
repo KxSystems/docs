@@ -14,6 +14,7 @@ localdir=local
 tempdir=docs/local
 site=https://code.kx.com
 user=$(whoami)
+# map local to remote user
 if [ $user == 'sjt' ]; then
 	user='stephen'
 fi
@@ -36,12 +37,13 @@ cat base-config.yml mkdocs.yml | sed \
 
 echo "### Building docs in $localdir/"
 # DOCKER_IMAGE='registry.gitlab.com/kxdev/documentation/framework/mkdocs-build'
-docker_image='kxmkdocs:0.6'
+docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
 work_dir="/docs"
 mnt="type=bind,source=$(pwd),target=$work_dir"
+cmd="build --clean -f local.yml --no-directory-urls --site-dir $localdir"
 
-docker run --rm --mount $mnt --workdir "$work_dir" "$docker_image" \
-	build --clean -f local.yml --no-directory-urls --site-dir $localdir
+docker run --rm --mount $mnt --workdir $work_dir $docker_image $cmd
+
 zip -r q.zip $localdir
 if ( $? ); then
 	echo "*** ERROR *** Failed to build $localdir/"
