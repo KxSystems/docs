@@ -9,7 +9,7 @@ date: November 2021
 <!-- Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
  -->
 
-_Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM) with storage_
+_Lift and shift your kdb+ plants to the cloud and exploit VMs (virtual machines) with storage_
 
 ??? tip "This classic approach relies on the existing license. To benefit more from the cloud technology, migrate to KX Insights."
 
@@ -423,12 +423,6 @@ within the same Availability Zone.
 A Lustre FS (placeholder) persistent filesystem allows you to choose from
 three deployment options.
 
-<!-- FIXME 
-Each of these deployment options comes with 
--MB/s, -MB/s, or -MB/s
-baseline disk throughput per TiB of file system storage.
---> 
-
 
 ## Memory
 
@@ -650,7 +644,7 @@ Adding a load balancer on top of an historical database (HDB) pool is
 quite simple, it only needs three steps. 
 
 1.   Create a Network Load Balancer with protocol TCP. Set the name, Availability Zone, Target Group name and Security group. The security group needs an inbound rule to the HDB port. 
-2.   Create a launch template. A key part here is the User Data window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the Load Balancer so you need to set up an inbound Firewall rule via a Security Group. You can also leverage an Image (AMI) that you already created from an existing EC2. 
+2.   Create a launch template. A key part here is the User Data window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the Load Balancer so you need to set up an inbound Firewall rule via a Security Group. You can also leverage a managed image that you’ve already created from an existing virtual machine.
 3.   Create an Azure Virtual Machine scale set (set of virtual machines) with autoscale rules to better handle peak loads. You can set the recently created instance group as a Target Group. All clients will access the HDB pool via the Load Balancer’s DNS name (together with the HDB port) and the load balancer will distribute the requests among the HDB servers seamlessly.
 
 General TCP load balancers with an HDB pool offer better performance
@@ -883,7 +877,7 @@ Function as a service (FaaS) is an interesting cloud technology that
 lets developers create an application without considering the complexity
 of building and maintaining the infrastructure that runs it. Cloud
 providers support only a handful of programming languages natively.
-Azure’s FaaS solution, <!--FIXME link [Functions](https://aws.amazon.com/lambda/) -->,
+Azure’s FaaS solution, <!--FIXME link [Functions](https://azure.microsoft.com/en-us/services/functions/) -->,
 supports Bash scripts that can start any executable including a q
 script.
 
@@ -941,9 +935,9 @@ compute, storage, memory, and networking options.
 
 service | Azure VM type | storage | CPU,&nbsp;memory,&nbsp;I/O
 --------|---------------|---------|-----------------
-tickerplant | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M<br>_HPC-optimized_: HBv3 | Azure Managed Premium SSD/Ultra Disk<br>Lustre FS? | High Perf<br>Medium<br>Medium
+tickerplant | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M<br>_HPC-optimized_: HBv3 | Azure Managed Premium SSD/Ultra Disk | High Perf<br>Medium<br>Medium
 realtime database | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M<br>_HPC-optimized_: HBv3 | – | High Perf<br>High&nbsp;Capacity<br>Medium
-historical database | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M | Azure Managed Premium SSD/Ultra Disk<br>Lustre FS? | Medium Perf<br>Medium&nbsp;Memory<br>High IO
+historical database | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M | Azure Managed Premium SSD/Ultra Disk | Medium Perf<br>Medium&nbsp;Memory<br>High IO
 complex event processing (CEP) | _Memory optimized_: Dv2/DSv2, Ev4/Esv4, M | – | Medium Perf<br>Medium&nbsp;Memory<br>High IO
 gateway | Memory optimized: Dv2/DSv2, Ev4/Esv4, M | – | Medium Perf<br>Medium&nbsp;Memory<br>High IO
 
@@ -973,11 +967,6 @@ GitHub [repository](https://github.com/KxSystems/kdb-tick) with standard tick.q 
 <br>
 :fontawesome-regular-map:
 [Kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
-
-<!-- FIXME :fontawesome-solid-cloud:
-[Deploy to EKS](https://code.kx.com/insights/kx-core-app-charts/)
-<br>
- -->
 :fontawesome-solid-cloud:
 [KX Cloud Edition](https://code.kx.com/insights/cloud-edition/)
 
