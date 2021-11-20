@@ -61,7 +61,8 @@ markdown_extensions:
   - pymdownx.tilde
   - tables
   - toc:
-      permalink: false
+      permalink: true
+      title: On this page
 
 # To modify the exclusions below
 # uncomment and edit this section in your subsite's config
