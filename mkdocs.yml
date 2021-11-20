@@ -622,8 +622,9 @@ nav:
     - About: cloud/index.md
     - KX Insights: 'https://code.kx.com/insights/'
     - Amazon Web Services:
-      - AWS Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
+      - Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
       - Reference architecture: cloud/aws/index.md
+      - License: license/aws.md
       - Amazon EC2 & Storage Services:
         - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/migration.md
         - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
@@ -632,11 +633,13 @@ nav:
         - FSx for Lustre: cloud/aws/lustre.md
       - AWS Lambda: cloud/aws-lambda/index.md
     - Microsoft Azure:
+      - Marketplace: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview'
       - Reference architecture: cloud/azure/architecture.md
-      - Azure Marketplace: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview
+      - License: license/azure.md
     - Google Cloud:
       - Marketplace: cloud/gcpm/index.md
       - Reference architecture: cloud/gcpm/architecture.md
+      - License: license/gcp.md
     - Auto Scaling (WP):
       - About: cloud/autoscale/index.md
       - Amazon Web Services: cloud/autoscale/aws.md
@@ -650,12 +653,7 @@ nav:
         - ObjectiveFS: cloud/otherfs/objectivefs.md
         - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
         - Quobyte: cloud/otherfs/quobyte.md
-
     - DigitalOcean: kb/digitalocean.md
-    - License agreements:
-      - AWS: license/aws.md
-      - Azure: license/azure.md
-      - GCP: license/gcp.md
   - Machine learning:
     - About: ml/index.md
     - Set up: ml/setup.md

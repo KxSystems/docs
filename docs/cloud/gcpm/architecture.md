@@ -4,7 +4,7 @@ description:
 date: June 2021
 author: Ferenc Bodon
 ---
-# :kx-brands-google-cloud:&nbsp; Reference architecture for Google Cloud
+# :kx-brands-google-cloud:<br>Reference architecture for Google Cloud
 
 Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
 
@@ -358,7 +358,7 @@ The network bandwidth needs to be considered if the tickerplant components are n
 You might want to use the premium network service tier for higher throughput and lower latencies. Premium tier delivers GCP traffic over Google’s well-provisioned, low-latency, highly reliable global network.
 
 
-###  Network load balancer
+### Network load balancer
 
 [Cloud Load Balancing](https://cloud.google.com/load-balancing/) is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, network load balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies. Standard network tier offers regional load balancing. The global load balancing is available as a premium tier feature.
 

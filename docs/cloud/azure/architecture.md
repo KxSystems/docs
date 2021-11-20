@@ -4,7 +4,7 @@ description: A reference architecture for Microsoft Azure. This classic approach
 author: Sam Tran
 date: November 2021
 ---
-# :kx-brands-azure: Reference architecture for Azure
+# :kx-brands-azure:<br>Reference architecture for Azure
 
 <!-- Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
  -->
@@ -37,7 +37,7 @@ _Lift and shift your kdb+ plants to the cloud and exploit VMs (virtual machines)
         Blob Storage
 
 
-## Kdb+ architecture patterns in Microsoft Azure
+## Architectural components
 
 Kdb+tick is an architecture which allows the capture, processing and
 querying of timeseries data against realtime, streaming and historical

@@ -4,7 +4,7 @@ description:
 date: June 2021
 authors: Eric Corcoran, Ferenc Bodon
 ---
-# :kx-brands-aws-cloud:&nbsp; Reference architecture for AWS
+# :kx-brands-aws-cloud:<br>Reference architecture for AWS
 
 
 
@@ -34,7 +34,7 @@ KX customers can lift and shift their kdb+ plants to the cloud and exploit virtu
     -   [Kdb+ Object Store](https://code.kx.com/insights/cloud-edition/objstor/quickstart/) – Native support for reading and querying cloud object storage
 
 
-## Kdb+ architecture patterns
+## Architectural components
 
 The core of a kdb+ tick-capture system is called kdb+tick.
 The [Kdb+tick](../../learn/startingkdb/tick.md) architecture allows the capture, processing, and querying of timeseries data against real-time, streaming and historical data.

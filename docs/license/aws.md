@@ -3,7 +3,7 @@ title: Kdb+ license for AWS | kdb+ and q documentation
 description: Software End User Agreement for Amazon Web Services
 date: Nov 2018
 ---
-# :fontawesome-brands-aws:<br>Kdb+ software end-user agreement
+# :kx-brands-aws-cloud:<br>Kdb+ software end-user agreement
 
 
 _Carefully read the following terms and conditions. By accessing the Kdb+
@@ -281,7 +281,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     their successors and assigns under or in connection with this
     agreement.
 
-## 9.  Confidential information 
+## 9.  Confidential information
 
 25. _Confidential Information_. As used in this Agreement, the
     term “Confidential Information” means 
