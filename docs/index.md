@@ -29,7 +29,7 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
-    :fontawesome-solid-cloud: [Azure architecture](cloud/azure/architecture.md)
+    <!-- :fontawesome-solid-cloud: [Azure architecture](cloud/azure/architecture.md) -->
 
     :fontawesome-brands-rust: [Rust interface](https://docs.rs/kdbplus/0.1.4/kdbplus/)
 
