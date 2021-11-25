@@ -1,5 +1,5 @@
 ---
-title: bin, binr – Reference – kdb+ and q documentation
+title: bin, binr | Reference | kdb+ and q documentation
 description: bin and binr are q keywords that perform binary searches.
 keywords: bin, binr, kdb+, q, search_
 ---
@@ -32,7 +32,8 @@ The result `r` can be interpreted as follows: for an atom `y`, `r` is an integer
 
 ```txt
 r[i]=-1            iff y[i]<x[0]
-r[i]=i             iff x[i]<=y[i]<x[i+1]
+r[i]=j             iff last j such that x[j]<=y[i]<=x[j+1]
+r[i]=n-1           iff x[n-1]<=y[i]
 ```
 
 and
