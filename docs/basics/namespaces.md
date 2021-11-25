@@ -25,7 +25,7 @@ namespace       | contents
 ----------------|------------------------------------------------
 [`.h`](../ref/doth.md) | Functions for converting files into various formats and for web-console display
 [`.j`](../ref/dotj.md) | Functions for converting between JSON and q dictionaries
-[`.m`](../ref/dotm.md) | Objects in memry domain 1
+[`.m`](../ref/dotm.md) | Objects in memory domain 1
 [`.Q`](../ref/dotq.md) | Utility functions
 [`.q`](../ref/dotq.md) | Definitions of q keywords
 [`.z`](../ref/dotz.md) | System variables and functions, and hooks for callbacks
