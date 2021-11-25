@@ -90,6 +90,7 @@ theme:
     - content.tabs.link # Insiders
     - header.autohide
     - navigation.tabs
+    - navigation.top
   name: material
   language: en
   logo: https://code.kx.com/img/kx.svg
