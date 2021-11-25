@@ -57,8 +57,8 @@ close| sym
 ??? tip "You can use `bin` to group at irregular intervals."
 
     ```q
-    q)x:\`s#10:00+00:00 00:08 00:13 00:27 00:30 00:36 00:39 00:50
-    q)select count i by x x bin time.minute from ([]time:\`s#10:00:00+asc 100?3600)
+    q)x:`s#10:00+00:00 00:08 00:13 00:27 00:30 00:36 00:39 00:50
+    q)select count i by x x bin time.minute from ([]time:`s#10:00:00+asc 100?3600)
     minute| x
     ------| --
     10:00 | 8
