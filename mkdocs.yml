@@ -1,87 +1,54 @@
-# title: MkDocs configuration for code.kx.com/q
-# author: stephen@kx.com
-# date: 2021.10.10
+INHERIT: ./base-config.yml
+
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.'
 
-dev_addr: 0.0.0.0:9000
-
-docs_dir: docs
-
 extra_css:
-  - https://code.kx.com/stylesheets/2021.css
-  - https://code.kx.com/stylesheets/prism.css
-  - https://code.kx.com/stylesheets/extra.css
-  - stylesheets/q.css
+  - https://code.kx.com/stylesheets/2021.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/prism.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/extra.css # MAY BE COMMENTED OUT
+  - https://code.kx.com/stylesheets/hide-footer-nav.css # MAY BE COMMENTED OUT
+  - stylesheets/q.css # site-specfic style
 
 extra_javascript:
   - https://code.kx.com/scripts/prism.js
   - https://code.kx.com/scripts/jquery-3.6.0.min.js # jQuery for scripts/qsearch.js
-  - https://code.kx.com/scripts/extra.js
-  # MathJax scripts
-  - https://code.kx.com/scripts/mathjax.js # configure MathJax object
+  - https://code.kx.com/scripts/extra.js # DO NOT ALTER 
+  # MathJax scripts # MAY BE COMMENTED OUT
+  - https://code.kx.com/scripts/mathjax.js
   - https://code.kx.com/scripts/polyfill.min.js
   - https://code.kx.com/scripts/tex-mml-chtml.js
-  - scripts/qsearch.js # client-side search engine
+  - scripts/qsearch.js # site-specific search engine
 
-google_analytics:
-  - UA-180968370-1
-  - auto
-
-markdown_extensions:
-  - admonition
-  - attr_list
-  - meta
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-      options:
-        custom_icons:
-          - custom_theme/.icons
-  # - extra
-  - pymdownx.extra
-  - pymdownx.highlight:
-      use_pygments: false
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.tabbed
-  - pymdownx.tilde
-  - toc:
-      permalink: false
+# To modify the exclusions below
+# uncomment and edit this section in your subsite's config
+# # plugins:
+#   - exclude:
+#       glob:
+#         # - exclude/this/path/*
+#         - "*.tmp"
+#         - "*.pdf"
+#         - "*.gz"
+#       regex:
+#         - '.*\.(tmp|bin|tar)$'
+#   - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
+#   - search
 
 remote_branch: master
-# repo_name: 'GitHub'
-# repo_url: 'https://github.com/kxsystems/docs'
+repo_name: 'GitHub'
+repo_url: 'https://github.com/kxsystems/docs'
+edit_uri: ""
 
-site_dir: site
-site_author: 'Kx Systems'
-site_description: 'Kx documentation for kdb+ and the q programming language'
+site_description: 'Documentation for kdb+ and the q programming language'
 site_name: 'Kdb+ and q documentation'
-site_url: https://code.kx.com/q/
+site_url: https://code.kx.com/q
 
 theme:
   features:
-    - navigation.top
-  custom_dir: custom_theme/
-  favicon: https://code.kx.com/favicon.ico
-  font: false
-  features:
+    - content.code.annotate # Insiders
+    - content.tabs.link # Insiders
+    - header.autohide
     - navigation.tabs
-  name: material
-  language: en
-  logo: https://code.kx.com/img/kx.svg
-  palette:
-    accent: blue
-    primary: black
-    scheme: default
-  static_templates:
-    - 401.html
-    - 404.html
-
-use_directory_urls: true
+    - navigation.top
 
 nav:
   - Home:
@@ -593,13 +560,6 @@ nav:
         - Reference: interfaces/protobuf/reference.md
         - Examples: interfaces/protobuf/examples.md
       - Python (embedPy): interfaces/embedpy.md
-      - Python (PyQ):
-        - Quick start: interfaces/pyq/index.md
-        - Installation: interfaces/pyq/install.md
-        - User guide: interfaces/pyq/user-guide.md
-        - Reference: interfaces/pyq/reference.md
-        - What’s new: interfaces/pyq/whats-new.md
-        - Version history: interfaces/pyq/history.md
       - R:
         - About: interfaces/r/index.md
         - rkdb: interfaces/r/rkdb.md
@@ -622,6 +582,13 @@ nav:
       - ODBC/Simba: interfaces/odbc-simba.md
       - ODBC3: interfaces/q-server-for-odbc3.md
       # - Perl: interfaces/perl-client-for-q.md
+      - Python (PyQ):
+        - Quick start: interfaces/pyq/index.md
+        - Installation: interfaces/pyq/install.md
+        - User guide: interfaces/pyq/user-guide.md
+        - Reference: interfaces/pyq/reference.md
+        - What’s new: interfaces/pyq/whats-new.md
+        - Version history: interfaces/pyq/history.md
       - Scala: interfaces/scala-client-for-q.md
     - Q clients:
       - Bloomberg: interfaces/q-client-for-bloomberg.md
@@ -663,8 +630,9 @@ nav:
     - About: cloud/index.md
     - KX Insights: 'https://code.kx.com/insights/'
     - Amazon Web Services:
-      - AWS Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
+      - Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
       - Reference architecture: cloud/aws/index.md
+      - License: license/aws.md
       - Amazon EC2 & Storage Services:
         - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/migration.md
         - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
@@ -672,10 +640,14 @@ nav:
         - Amazon Storage Gateway: cloud/aws/app-c-asg.md
         - FSx for Lustre: cloud/aws/lustre.md
       - AWS Lambda: cloud/aws-lambda/index.md
-    - Azure Marketplace: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview
+    - Microsoft Azure:
+      - Marketplace: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview'
+      # - Reference architecture: cloud/azure/architecture.md
+      - License: license/azure.md
     - Google Cloud:
       - Marketplace: cloud/gcpm/index.md
       - Reference architecture: cloud/gcpm/architecture.md
+      - License: license/gcp.md
     - Auto Scaling (WP):
       - About: cloud/autoscale/index.md
       - Amazon Web Services: cloud/autoscale/aws.md
@@ -689,12 +661,7 @@ nav:
         - ObjectiveFS: cloud/otherfs/objectivefs.md
         - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
         - Quobyte: cloud/otherfs/quobyte.md
-
     - DigitalOcean: kb/digitalocean.md
-    - License agreements:
-      - AWS: license/aws.md
-      - Azure: license/azure.md
-      - GCP: license/gcp.md
   - Machine learning:
     - About: ml/index.md
     - Set up: ml/setup.md

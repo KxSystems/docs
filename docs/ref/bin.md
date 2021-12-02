@@ -1,5 +1,5 @@
 ---
-title: bin, binr – Reference – kdb+ and q documentation
+title: bin, binr | Reference | kdb+ and q documentation
 description: bin and binr are q keywords that perform binary searches.
 keywords: bin, binr, kdb+, q, search_
 ---

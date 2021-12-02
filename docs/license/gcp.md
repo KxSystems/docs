@@ -3,7 +3,7 @@ title: Kdb+ license for Google Cloud – kdb+ and q documentation
 description: Kdb+ software end-user agreement for Google Cloud Platform Marketplace
 date: July 2018
 ---
-# :fontawesome-brands-google:<br>Kdb+ software end-user agreement
+# :kx-brands-google-cloud:<br>Kdb+ software end-user agreement
 
 
 
@@ -41,7 +41,7 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
     at all times.
 
 
-## 2.  Permitted use 
+## 2.  Permitted use
     
 4.  Subject to the User purchasing access to the Kdb+ Software via the Google Platform, and subject to the terms and conditions of this Agreement, KX hereby grants to the User limited non-exclusive, non-transferable right, without the right to grant sublicenses, to permit you to use the Kdb+ Software via the Google Platform solely for the User’s 
 
@@ -243,7 +243,7 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
 
 24. **Entire Financial Liability.** For the avoidance of doubt this section 8 sets out the entire financial liability of each party and their respective affiliates, officers, directors, employees, agents and representatives and their successors and assigns under or in connection with this Agreement.
 
-## 9.  Confidential information and publicity 
+## 9.  Confidential information and publicity
     
 25. **Confidential Information.** As used in this Agreement, the
     term “Confidential Information” means 

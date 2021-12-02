@@ -1,0 +1,1 @@
+registry.gitlab.com/kxdev/documentation/framework/mkdocs-build

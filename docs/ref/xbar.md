@@ -1,5 +1,5 @@
 ---
-title: xbar rounds one argument rounded down to the nearest multiple of the other | Reference | kdb+ and q documentation
+title: xbar | Reference | kdb+ and q documentation
 description: xbar is a q keyword that returns one argument rounded down to the nearest multiple of the other.
 author: Stephen Taylor
 ---

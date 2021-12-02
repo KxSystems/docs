@@ -7,11 +7,6 @@
 
 
 
-/* suppress nav footer
---------------------------------------------- */
-.md-footer-nav {
-	display: none;
-}
 
 /* front page
 --------------------------------------------- */
@@ -34,23 +29,6 @@
 
 
 
- .kx-tight td,
- .kx-tight th {
- 	padding: 0 .4em;
- }
- .kx-tight th {
- 	background-color: rgba(0,0,0,.54);
- 	color: white;
- 	text-align: left;
- }
- .kx-tight thead {
- 	border-bottom: 1px solid #aaa;
- }
-
-.kx-shrunk {
- 	font-size: 85%;
- }
-
 .kx-compact td,
 .kx-compact th {
 	font-size: .8em;
@@ -68,12 +46,6 @@
 	border-top: 0;
 }
 
-.kx-zero {
-	border: none;
-	margin: 0;
-	padding: 0;
-}
-
 .fusion {
     background-color: #c6c9ff; 
     border: 1px solid #0061ff; 
@@ -86,10 +58,11 @@
 	font-weight: bold;
 }
 
-.md-typeset .admonition pre,
+/*.md-typeset .admonition pre,
 .md-typeset details pre {
 	background-color: rgba(253,246,227,.3);
 }
+*/
 
 /* White Paper branding
 --------------------------------------------- */
@@ -118,23 +91,8 @@ p.publications {
 .publications li {
 	list-style: none;
 }
-p.small-face {
-	float: left;
-	margin: 0 1em 0 0;
-}
-.small-face img {
-	border-radius: 35px;
-	width: 70px;
-}
-.md-typeset h2 {
-	clear: both;
-}
 
-/* What’s New panel on front page */
-#kx-whats-new p {
-	white-space: nowrap;
-}
-
+/* Grids on Home and Learning landing pages */
 #kx-home-page-grid {
 	display: grid; 
 	grid:
@@ -162,8 +120,5 @@ p.small-face {
 	grid-area: get_started;
 	padding: 5px 0;
 	vertical-align: middle;
-}
-#kx-get-started a {
-	color: white;
 }
 
