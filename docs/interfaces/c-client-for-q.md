@@ -7,15 +7,15 @@ author: Charles Skelton
 
 
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 [API reference](capiref.md)
 
 There are three cases in which to to use the C API for kdb+:
 
-1.   Dynamically-loaded library called by q, e.g. OS, math, analytics.  
+1.   Dynamically-loaded library called by q, e.g. OS, math, analytics.
 :fontawesome-regular-hand-point-right: [Using C functions](using-c-functions.md)
 2.  Dynamically-loaded library doing callbacks into q, e.g. feedhandlers ([Bloomberg client](q-client-for-bloomberg.md))
-3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`. 
+3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`.
 
 
 
@@ -32,28 +32,28 @@ The `e` set of files, those with SSL/TLS support, contain all the functionality 
 
 ### :fontawesome-brands-linux: Linux
 
-capability | dependencies | 32-bit | 64-bit 
+capability | dependencies | 32-bit | 64-bit
 -----------|--------------|-----------|-----
-no SSL/TLS |              | [`l32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`l64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o) 
-SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`l64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)
+no SSL/TLS |              | [`l32/c.o`](https://github.com/KxSystems/kdb/blob/master/l32/c.o) | [`l64/c.o`](https://github.com/KxSystems/kdb/blob/master/l64/c.o)<br>[`l64arm/c.o`](https://github.com/KxSystems/kdb/blob/master/l64arm/c.o)
+SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/master/l32/e.o) | [`l64/e.o`](https://github.com/KxSystems/kdb/blob/master/l64/e.o)<br>[`l64arm/e.o`](https://github.com/KxSystems/kdb/blob/master/l64arm/e.o)
 
 
 ### :fontawesome-brands-apple: macOS
 
-capability | dependencies | 32-bit | 64-bit 
+capability | dependencies | 32-bit | 64-bit
 -----------|--------------|-----------|-----
-no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o) 
-SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)
+no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o)<br>[`m64arm/c.o`](https://github.com/KxSystems/kdb/blob/master/m64arm/c.o)
+SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)<br>[`m64arm/e.o`](https://github.com/KxSystems/kdb/blob/master/m64arm/e.o)
 
 
 ### :fontawesome-brands-windows: Windows
 
-capability | dependencies | 32-bit | 64-bit 
+capability | dependencies | 32-bit | 64-bit
 -----------|--------------|-----------|-----
 no SSL/TLS |              | [`w32/c.dll`](https://github.com/kxsystems/kdb/blob/master/w32/c.dll)<br>[`w32/c.lib`](https://github.com/kxsystems/kdb/blob/master/w32/c.lib)<br>[`w32/cst.dll`](https://github.com/kxsystems/kdb/blob/master/w32/cst.dll)<br>[`w32/cst.lib`](https://github.com/kxsystems/kdb/blob/master/w32/cst.lib)<br>[`w32/c_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/c_static.lib)<br>[`w32/cst_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/cst_static.lib) | [`w64/c.dll`](https://github.com/kxsystems/kdb/blob/master/w64/c.dll)<br>[`w64/c.lib`](https://github.com/kxsystems/kdb/blob/master/w64/c.lib)<br>[`w64/cst.dll`](https://github.com/kxsystems/kdb/blob/master/w64/cst.dll)<br>[`w64/cst.lib`](https://github.com/kxsystems/kdb/blob/master/w64/cst.lib)<br>[`w64/c_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/c_static.lib)<br>[`w64/cst_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/cst_static.lib)
 SSL/TLS    | OpenSSL      | [`w32/e.dll`](https://github.com/kxsystems/kdb/blob/master/w32/e.dll)<br>[`w32/e.lib`](https://github.com/kxsystems/kdb/blob/master/w32/e.lib)<br>[`w32/est.dll`](https://github.com/kxsystems/kdb/blob/master/w32/est.dll)<br>[`w32/est.lib`](https://github.com/kxsystems/kdb/blob/master/w32/est.lib)<br>[`w32/e_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/e_static.lib)<br>[`w32/est_static.lib`](https://github.com/kxsystems/kdb/blob/master/w32/est_static.lib) | [`w64/e.dll`](https://github.com/kxsystems/kdb/blob/master/w64/e.dll)<br>[`w64/e.lib`](https://github.com/kxsystems/kdb/blob/master/w64/e.lib)<br>[`w64/est.dll`](https://github.com/kxsystems/kdb/blob/master/w64/est.dll)<br>[`w64/est.lib`](https://github.com/kxsystems/kdb/blob/master/w64/est.lib)<br>[`w64/e_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/e_static.lib)<br>[`w64/est_static.lib`](https://github.com/kxsystems/kdb/blob/master/w64/est_static.lib)
 
-`c.lib` is a stub library which loads `c.dll` and resolves the functions dynamically; `e.lib` does the same for `e.dll`. 
+`c.lib` is a stub library which loads `c.dll` and resolves the functions dynamically; `e.lib` does the same for `e.dll`.
 
 We no longer ship `c.obj` or `cst.obj`; they have been replaced by `c_static.lib` and `cst_static.lib`, and are complemented by `e_static.lib` and `est_static.lib` – these static libraries have no dependency on the aforementioned DLLs.
 
@@ -62,7 +62,7 @@ We no longer ship `c.obj` or `cst.obj`; they have been replaced by `c_static.lib
 
 ## Overview
 
-The best way to understand the underpinnings of q, and to interact with it from C, is to start with the header file available from 
+The best way to understand the underpinnings of q, and to interact with it from C, is to start with the header file available from
 :fontawesome-brands-github: [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) .
 
 This is the file you will need to include in your C or C++ code to interact with q from a low level.
@@ -74,15 +74,15 @@ To provide succinct composable names, the q header defines synonyms for the comm
 
 type          | synonym
 --------------|--------
-16-bit int    | `H`    
-32-bit int    | `I`    
-64-bit int    | `J`    
-char\*        | `S`    
-unsigned char | `G`    
-char          | `C`    
-32-bit float  | `E`    
-64-bit double | `F`    
-void          | `V`    
+16-bit int    | `H`
+32-bit int    | `I`
+64-bit int    | `J`
+char\*        | `S`
+unsigned char | `G`
+char          | `C`
+32-bit float  | `E`
+64-bit double | `F`
+void          | `V`
 
 With this basic knowledge, we can now tackle the types available in q and their matching C types and accessor functions provided in the C interface. We will see shortly how the accessor functions are used in practice.
 
@@ -115,15 +115,15 @@ With this basic knowledge, we can now tackle the types available in q and their 
 
 </div>
 
-Note that the type numbers given are for vectors of that type. 
-For example, 9 for vectors of the q type float. 
+Note that the type numbers given are for vectors of that type.
+For example, 9 for vectors of the q type float.
 By convention, the negative value is an atom: -9 is the type of an atom float value.
 
 
 ## The K object structure
 
-The q types are all encapsulated at the C level as _K objects_. 
-(Recall that k is the low-level language underlying the q language.) 
+The q types are all encapsulated at the C level as _K objects_.
+(Recall that k is the low-level language underlying the q language.)
 K objects are all instances of the following structure (note this is technically defining K objects as pointers to the `k0` structure but we’ll conflate the terms and refer to K objects as the actual instance).
 
 - for V3.0 and later
@@ -168,43 +168,43 @@ typedef struct k0 {
 
 As an exercise, it is instructive to count the minimum and the maximum number of bytes a K object can use on your system, taking into account any padding or alignment constraints.
 
-Given a K object `x`, we can use the accessors noted in the table above to access elements of the object. 
-For example, given a K object containing a vector of floats, we can access `kF(x)[42]` to get the 42nd element of the vector. 
+Given a K object `x`, we can use the accessors noted in the table above to access elements of the object.
+For example, given a K object containing a vector of floats, we can access `kF(x)[42]` to get the 42nd element of the vector.
 For accessing atoms, use the following accessors:
 
 
-type   | accessor | additional types                 
+type   | accessor | additional types
 -------|----------|----------------------------------
-byte   | `x->g`   | boolean, char                    
-short  | `x->h`   |                                  
+byte   | `x->g`   | boolean, char
+short  | `x->h`   |
 int    | `x->i`   | month, date, minute, second, time
-long   | `x->j`   | timestamp, timespan              
-real   | `x->e`   |                                  
-float  | `x->f`   | datetime                         
-symbol | `x->s`   | error                            
+long   | `x->j`   | timestamp, timespan
+real   | `x->e`   |
+float  | `x->f`   | datetime
+symbol | `x->s`   | error
 
 !!! warning "Changes in V3.0"
 
-    The k struct changed with the release of V3.0, and if you are compiling using the C library (c.o/c.dll) stamped on or after 2012.06.25 you should ensure you use the correct k struct by defining KXVER accordingly, e.g. 
+    The k struct changed with the release of V3.0, and if you are compiling using the C library (c.o/c.dll) stamped on or after 2012.06.25 you should ensure you use the correct k struct by defining KXVER accordingly, e.g.
 
     ```bash
     gcc -D KXVER=3 …
     ```
-        
-    If you need to link against earlier releases of the C library, you can obtain those files from :fontawesome-brands-github: [the earlier version](https://github.com/KxSystems/kdb/blob/6455fa25b0e1e5e403ded9bcec96728b4445ccac/c/c/k.h) of 2011.04.20. 
+
+    If you need to link against earlier releases of the C library, you can obtain those files from :fontawesome-brands-github: [the earlier version](https://github.com/KxSystems/kdb/blob/6455fa25b0e1e5e403ded9bcec96728b4445ccac/c/c/k.h) of 2011.04.20.
 
 
 ## Examining K objects
 
 Whether you know beforehand the type of the K objects, or you are writing a function to work with different types, it is useful to dispatch based on the type flag `x->t` for a given K object `x`.
 
-Where `x->t` is: 
+Where `x->t` is:
 
--   negative, the object is an atom, and we should use the atom accessors noted above. 
+-   negative, the object is an atom, and we should use the atom accessors noted above.
 -   greater than zero, we use the vector accessors as all the elements are of the same type (eg. `x->t == KF` for a vector of q floats).
--   exactly zero, the K object contains a mixed list of other K objects. 
-Each item in the list is a pointer to another K object. 
-To access each item of `x` we use the `kK` object accessor. 
+-   exactly zero, the K object contains a mixed list of other K objects.
+Each item in the list is a pointer to another K object.
+To access each item of `x` we use the `kK` object accessor.
 For example: `kK(x)[42]` to access the 42nd element of the mixed list.
 
 
@@ -213,32 +213,32 @@ For example: `kK(x)[42]` to access the 42nd element of the mixed list.
 The next table provides the null and infinite immediate values for the q types. These are constants defined in k.h.
 
 
-type  | null                                          | infinity                                      
+type  | null                                          | infinity
 ------|-----------------------------------------------|-----------------------------------------------
-short | 0xFFFF8000 (nh)                               | 0x7FFF (wh)                                   
-int   | 0x80000000 (ni)                               | 0x7FFFFFFF (wi)                               
-long  | 0x8000000000000000 (nj)                       | 0x7FFFFFFFFFFFFFFF (wj)                       
-float | log(-1.0) on Windows or (0/0.0) on Linux (nf) | -log(0.0) in Windows or (1/0.0) on Linux (wf) 
+short | 0xFFFF8000 (nh)                               | 0x7FFF (wh)
+int   | 0x80000000 (ni)                               | 0x7FFFFFFF (wi)
+long  | 0x8000000000000000 (nj)                       | 0x7FFFFFFFFFFFFFFF (wj)
+float | log(-1.0) on Windows or (0/0.0) on Linux (nf) | -log(0.0) in Windows or (1/0.0) on Linux (wf)
 
 Null objects can be created using `ks(""),kh(nh),ki(ni),kj(nj),kc(" ")`, etc. A null guid can be created with `U g={0};ku(g);`
 
 
 ## Managing memory and reference counting
 
-Although memory in q is managed for the programmer implicitly, when interfacing from C or C++ we must (as is usual in those languages) manage memory explicitly. 
+Although memory in q is managed for the programmer implicitly, when interfacing from C or C++ we must (as is usual in those languages) manage memory explicitly.
 The following functions are provided to interface with the q memory manager.
 
 
-purpose                                        | function  
+purpose                                        | function
 -----------------------------------------------|-----------
-Increment the object‘s reference count         | `r1(K)`   
-Decrement the object‘s reference count         | `r0(K)`   
-Free up memory allocated for the thread‘s pool | `m9()`    
-Set whether interning symbols uses a lock      | `setm(I)` 
+Increment the object‘s reference count         | `r1(K)`
+Decrement the object‘s reference count         | `r0(K)`
+Free up memory allocated for the thread‘s pool | `m9()`
+Set whether interning symbols uses a lock      | `setm(I)`
 
 A reference count indicates the usage of an object, allowing the same object to be used by more than one piece of code.
 
-If you create a K object through one of the ‘generator’ functions (`ki`, `kj`, `knk`, etc), you automatically have a reference to that object. 
+If you create a K object through one of the ‘generator’ functions (`ki`, `kj`, `knk`, etc), you automatically have a reference to that object.
 Once you have finished using that object, you should call `r0`.
 ```c
 r0(ki(5));
@@ -271,12 +271,12 @@ K myfunc(K x)
 
 It is _vital_ to increment and decrement when adding or removing references to values that should be managed by the q runtime, to avoid memory leaks or access faults due to double frees.
 
-Note that K objects must be freed from the thread they are allocated within, and `m9()` should be called when the thread is about to complete, freeing up memory allocated for that thread's pool. 
+Note that K objects must be freed from the thread they are allocated within, and `m9()` should be called when the thread is about to complete, freeing up memory allocated for that thread's pool.
 Furthermore, to allow symbols to be created in other threads, `setm(1)` should be called from the main thread before any other threads are started.
 
-When a K object is created, it usually has a reference count of 0 – exceptions are common constants such as `(::)` which may vary in their current reference count, as they may be used by other areas of the C API library or q. 
-If `r0` happens to be passed a K object with a reference count of 0, that object’s memory is freed (returned to an internal pool). 
-Be aware that if a reference count is &gt;0, you should very likely _not_ change the data stored in that object as it is being referenced by another piece of code which may not expect the change. 
+When a K object is created, it usually has a reference count of 0 – exceptions are common constants such as `(::)` which may vary in their current reference count, as they may be used by other areas of the C API library or q.
+If `r0` happens to be passed a K object with a reference count of 0, that object’s memory is freed (returned to an internal pool).
+Be aware that if a reference count is &gt;0, you should very likely _not_ change the data stored in that object as it is being referenced by another piece of code which may not expect the change.
 In this case, create a new copy of the object, and change that.
 
 If in doubt, the current reference count can be seen in C with
@@ -299,13 +299,13 @@ K r=k(handle,"functionname",params,(K)0);
 
 requires a little more explanation.
 
-If the handle is 
+If the handle is
 
--   &ge;0, it is a generator function, and can return 0 (indicating a network error) or a pointer to a k object. 
+-   &ge;0, it is a generator function, and can return 0 (indicating a network error) or a pointer to a k object.
 If that object has type -128, it indicates an error, accessible as a null-terminated string in `r->s`. When you have finished using this object, it should be freed by calling `r0(r)`.
 -   &lt;0, this is for async messaging, and the return value can be either 0 (network error) or non-zero (success). This result should _not_ be passed to `r0`.
 
-K objects passed as parameters to the `k` function call have their reference counts decremented automatically on the return from that call. 
+K objects passed as parameters to the `k` function call have their reference counts decremented automatically on the return from that call.
 (To continue to use the object later in that C function, after the `k` call, increment the reference count before the call.)
 
 ```c
@@ -318,24 +318,24 @@ K r=k(handle,"functionname",r1(param),(K)0);
 To create atom values the following functions are available. Function `ka` creates an atom of the given type, and the rest create an atom with the given value:
 
 
-purpose                | call            
+purpose                | call
 -----------------------|-----------------
-Create an atom of type | `K ka(I);`      
-Create a boolean       | `K kb(I);`      
-Create a guid          | `K ku(U);`      
-Create a byte          | `K kg(I);`      
-Create a short         | `K kh(I);`      
-Create an int          | `K ki(I);`      
-Create a long          | `K kj(J);`      
-Create a real          | `K ke(F);`      
-Create a float         | `K kf(F);`      
-Create a char          | `K kc(I);`      
-Create a symbol        | `K ks(S);`      
-Create a timestamp     | `K ktj(-KP,J);` 
-Create a time          | `K kt(I);`      
-Create a date          | `K kd(I);`      
-Create a timespan      | `K ktj(-KN,J);` 
-Create a datetime      | `K kz(F);`      
+Create an atom of type | `K ka(I);`
+Create a boolean       | `K kb(I);`
+Create a guid          | `K ku(U);`
+Create a byte          | `K kg(I);`
+Create a short         | `K kh(I);`
+Create an int          | `K ki(I);`
+Create a long          | `K kj(J);`
+Create a real          | `K ke(F);`
+Create a float         | `K kf(F);`
+Create a char          | `K kc(I);`
+Create a symbol        | `K ks(S);`
+Create a timestamp     | `K ktj(-KP,J);`
+Create a time          | `K kt(I);`
+Create a date          | `K kd(I);`
+Create a timespan      | `K ktj(-KN,J);`
+Create a datetime      | `K kz(F);`
 
 An example of creating an atom:
 
@@ -355,28 +355,28 @@ K z = ki(42);
 
 To create
 
--   a simple list `K ktn(I type,J length);` 
--   a mixed list  `K knk(I n,...);` 
+-   a simple list `K ktn(I type,J length);`
+-   a mixed list  `K knk(I n,...);`
 
-where `length` is a non-negative, non-null integer. 
+where `length` is a non-negative, non-null integer.
 
 !!! warning "Limit of length"
 
     Before V3.0. `length` had to be in the range 0…2147483647, and was type I. See KXVER sections in k.h.
 
 
-For example, to create an integer list of 5 we say `ktn(KI,5)`. A mixed list of 5 items can be created with `ktn(0,5)` but note that each element _must_ be initialized before further usage. 
-A convenient shortcut to creating a mixed list when all items already exist at the creation of the list is to use `knk`, e.g. `knk(2,kf(2.3),ktn(KI,10))`. 
+For example, to create an integer list of 5 we say `ktn(KI,5)`. A mixed list of 5 items can be created with `ktn(0,5)` but note that each element _must_ be initialized before further usage.
+A convenient shortcut to creating a mixed list when all items already exist at the creation of the list is to use `knk`, e.g. `knk(2,kf(2.3),ktn(KI,10))`.
 As we've noted, the type of a mixed list is 0, and the elements are pointers to other K objects – hence it is mandatory to initialize those n elements either via `knk` params, or explicitly setting each item when created with `ktn(0,n)`.
 
 To join
 
--   an atom to a list: `K ja(K*,V*);` 
--   a string to a list: `K js(K*,S);` 
--   another K object to a list: `K jk(K*,K);` 
--   another K list to the first: `K jv(K*,K);` 
+-   an atom to a list: `K ja(K*,V*);`
+-   a string to a list: `K js(K*,S);`
+-   another K object to a list: `K jk(K*,K);`
+-   another K list to the first: `K jv(K*,K);`
 
-The join functions assume there are no other references to the list, as the list may need to be reallocated during the call. 
+The join functions assume there are no other references to the list, as the list may need to be reallocated during the call.
 In case of reallocation passed `K*` pointer will be updated to refer to new K object and returned from the function.
 
 ```c
@@ -406,12 +406,12 @@ Strings and datetimes are special cases and extra utility functions are provided
 
 purpose                            | function
 -----------------------------------|--------------------------
-Create a char array from string    | `K kp(string);`           
+Create a char array from string    | `K kp(string);`
 Create a char array from string of length n | `K kpn(string, n);`
-Intern a string                    | `S ss(string);`          
-Intern n chars from a string       | `S sn(string,n);`        
-Convert q date to yyyymmdd integer | `I dj(date);`            
-Encode a year/month/day as q date <br/>`0==ymd(2000,1,1)`| `I ymd(year,month,day);` 
+Intern a string                    | `S ss(string);`
+Intern n chars from a string       | `S sn(string,n);`
+Convert q date to yyyymmdd integer | `I dj(date);`
+Encode a year/month/day as q date <br/>`0==ymd(2000,1,1)`| `I ymd(year,month,day);`
 
 Recall that Unix time is the number of seconds since `1970.01.01D00:00:00` while q time types have an epoch of `2000.01.01D00:00:00`.
 
@@ -430,7 +430,7 @@ I uz(F f){return 86400*(f+10957);}  // unix from kdb+ datetime
 J pu(J u){return 1000000LL*(u-10957LL*86400000LL);} // kdb+ timestamp from unix, use ktj(Kj,n) to create timestamp from n
 I up(J f){return (f/8.64e13+10957)*8.64e4;}  // unix from kdb+ timestamp
 struct tm* lt(int kd) { time_t t = uz(kd); return localtime(&t); }
-struct tm* lt_r(int kd, struct tm* res) { time_t t = uz(kd); return localtime_r(&t, res); } 
+struct tm* lt_r(int kd, struct tm* res) { time_t t = uz(kd); return localtime_r(&t, res); }
 struct tm* gt(int kd) { time_t t = uz(kd); return gmtime(&t); }
 struct tm* gt_r(int kd, struct tm* res) { time_t t = uz(kd); return gmtime_r(&t, res); }
 char* fdt(struct tm* ptm, char* d) { strftime(d, 10, "%Y.%m.%d", ptm); return d; }
@@ -441,7 +441,7 @@ char* ftsms(unsigned ts, char* d){char h, m, s; short mmm; tsms(ts, &h, &m, &s, 
 
 ## What’s the difference between a symbol and a char vector?
 
-A symbol is a pointer to a location in an internal map of strings; that is, symbols are interned zero-terminated strings. 
+A symbol is a pointer to a location in an internal map of strings; that is, symbols are interned zero-terminated strings.
 In contrast, a char vector is similar to an int vector and is instead a counted K vector as usual.
 
 When symbol is created it is automatically interned and stored in internal map of strings.
@@ -461,9 +461,9 @@ kS(v)[i] = ss("some symbol");
 
 To create
 
--   a dict: `K xD(K,K);` 
--   a table from a dict: `K xT(K);` 
--   a simple table from a keyed table: `K ktd(K);` 
+-   a dict: `K xD(K,K);`
+-   a table from a dict: `K xT(K);`
+-   a simple table from a keyed table: `K ktd(K);`
 
 A dictionary is a K object of type 99. It contains a list of two K objects; the keys and the values. We can use `kK(x)[0]` and `kK(x)[1]` to get these contained data.
 
@@ -513,8 +513,8 @@ else
 
 ## Connecting to a q server
 
-We use the `int khpu(host, port,username)` function to connect to a q server. 
-Note you _must_ call `khpu` before generating any q data, and the very first call to `khpu` must not be concurrent to other `khpu` calls. 
+We use the `int khpu(host, port,username)` function to connect to a q server.
+Note you _must_ call `khpu` before generating any q data, and the very first call to `khpu` must not be concurrent to other `khpu` calls.
 To initialise memory without making a connection, use `khp("",-1);`
 
 It is highly recommended to use `khpu` and supply a meaningful username, as this will help server administrators identify a user’s connection.
@@ -542,7 +542,7 @@ The `k` function is used to send messages over the connection. If a positive han
 
 ```c
 // Connect to a q server on the localhost port 1234.
-int c = khpu("localhost", 1234,"myusername:mypassword"); 
+int c = khpu("localhost", 1234,"myusername:mypassword");
 if(c<=0) {perror("Connection error");return;}
 K r = k(-c,"a:2+2",(K)0);      // Asynchronously set a to be 4 on the server.
 r = k(c,"b:til 1000000",(K)0); // Synchronously set b to be a list up to 1000000.
@@ -570,7 +570,7 @@ To use this feature, you must link with one of [the `e` libs](#two-sets-of-files
 Encrypted connections may be requested via the capability parameter of the new `khpunc` function, e.g.
 
 ```c
-extern I khpunc(S hostname,I port,S usernamepassword,I timeout,I capability); 
+extern I khpunc(S hostname,I port,S usernamepassword,I timeout,I capability);
 // capability is a bit field (1 - 1TB limit, 2 - use TLS)
 int handle=khpunc("remote host",5000,"user:password",timeout,2);
 ```
@@ -595,10 +595,10 @@ int h=khpunc("",-1,"",0,2); // remember to test the return value for -3
 
 ## Socket timeouts
 
-There are a number of reasons not to specify or implement timeouts. 
-Typically these will be hit at the least convenient of times when under load from e.g. a sudden increase in trading volumes. 
-Cascading timeouts can rapidly bring systems down and/or waste server resources. 
-But if you are convinced they are the only solution for your problem scenario, the following code may help you. 
+There are a number of reasons not to specify or implement timeouts.
+Typically these will be hit at the least convenient of times when under load from e.g. a sudden increase in trading volumes.
+Cascading timeouts can rapidly bring systems down and/or waste server resources.
+But if you are convinced they are the only solution for your problem scenario, the following code may help you.
 (Note that in the event of a timeout, you must close the connection.)
 
 ```c
@@ -658,12 +658,12 @@ This example assumes rows with three fields: symbol, price and size.
 
 Note the two different directions of error flow below.
 
-1.  To signal an error from your C code to kdb+ use the function `krr(S)`. 
-A utility function `orr(S)` can be used to signal system errors. 
-It is similar to `krr(S)`, but it appends a system error message to the user-provided string before passing it to `krr`. 
+1.  To signal an error from your C code to kdb+ use the function `krr(S)`.
+A utility function `orr(S)` can be used to signal system errors.
+It is similar to `krr(S)`, but it appends a system error message to the user-provided string before passing it to `krr`.
 
-1.  To catch an error code from the results of a call to `r=k(h, …)`, check the return value and type. 
-If result is `NULL`, then a network error has occurred. 
+1.  To catch an error code from the results of a call to `r=k(h, …)`, check the return value and type.
+If result is `NULL`, then a network error has occurred.
 If it has type -128, then `r->s` will point to the error string. Note that K object with type -128 acts as a marker only and other uses are not supported(i.e. passing it to other C API or kdb+ functions).
 
 ```c
@@ -691,7 +691,7 @@ K doSomething(K x)
 }
 ```
 
-From a standalone C application, it can sometimes be convenient to return the identity function `(::)`. 
+From a standalone C application, it can sometimes be convenient to return the identity function `(::)`.
 This atom can be created with
 
 ```c
@@ -705,18 +705,18 @@ K identity(){
 
 ## Callbacks
 
-The `void sd0(I)` and `K sd1(I, K(*)(I))` functions are for use with callbacks and are available only within q itself, i.e. used from a shared library loaded into q. 
+The `void sd0(I)` and `K sd1(I, K(*)(I))` functions are for use with callbacks and are available only within q itself, i.e. used from a shared library loaded into q.
 The value of the file descriptor passed to `sd1` must be 0 &lt; `fd` &lt; 1024, and 1021 happens to be the maximum number of supported connections (recalling 0, 1, 2 used for stdin,stdout,stderr).
 
 ```c
 sd1(d,f);
 ```
 
-puts the function `K f(I d){…}` on the q main event loop given a socket `d` (or `-d` for non-blocking). 
+puts the function `K f(I d){…}` on the q main event loop given a socket `d` (or `-d` for non-blocking).
 The function `f` should return `(K)0` or a pointer to a K object, and its reference count will be decremented.
 
 ```c
-sd0(d); 
+sd0(d);
 sd0x(d,1);
 ```
 
@@ -754,8 +754,8 @@ q)onCallback:{0N!(x;y)}
 q)writeFd[fd;3] / increments the eventfd counter by 3, triggering the callback later
 ```
 
-This demonstrates the deferred invocation of `onCallback` until q has at least finished processing the current handle or script. 
-In situations where you can’t hook a feedhandler’s callbacks directly into `sd1`, on Linux `eventfd` may be a viable option for you. 
+This demonstrates the deferred invocation of `onCallback` until q has at least finished processing the current handle or script.
+In situations where you can’t hook a feedhandler’s callbacks directly into `sd1`, on Linux `eventfd` may be a viable option for you.
 Callbacks from `sd1` are executed on the main thread of q.
 
 !!! tip "Windows developers may be interested in :fontawesome-brands-github: [ncm/selectable-socketpair](https://github.com/ncm/selectable-socketpair)."
@@ -775,8 +775,8 @@ The `K b9(I,K)` and `K d9(K)` functions serialize and deserialize K objects.
 b9(mode,kObject);
 ```
 
-will generate a K byte vector that contains the serialized data for `kObject`. 
-Since V3.0, for shared libraries loaded into q the value for `mode` must be -1. 
+will generate a K byte vector that contains the serialized data for `kObject`.
+Since V3.0, for shared libraries loaded into q the value for `mode` must be -1.
 For standalone applications binding with c.o/c.dll, or shared libraries prior to V3.0, the values for `mode` can be
 
 value | effect
@@ -791,8 +791,8 @@ value | effect
 d9(kObject);
 ```
 
-will deserialize the byte stream in `kObject` returning a new `kObject`. 
-The byte stream passed to `d9` is not altered in any way. 
+will deserialize the byte stream in `kObject` returning a new `kObject`.
+The byte stream passed to `d9` is not altered in any way.
 If you are concerned that the byte vector that you wish to deserialize may be corrupted, call `okx` to verify it is well formed first.
 
 ```c
@@ -818,7 +818,7 @@ q).[{x+y};(1 2;3 4)]
 4 6
 ```
 
-The dynamic link, `K dl(V* f, I n)`, function takes a C function that would take _n_ K objects as arguments and return a new K object, and returns a q function. 
+The dynamic link, `K dl(V* f, I n)`, function takes a C function that would take _n_ K objects as arguments and return a new K object, and returns a q function.
 It is useful, for example, to expose more than one function from an extension module.
 
 ```c
@@ -853,7 +853,7 @@ It can be a struggle printing q values from a debugger, but you can call the han
 
 If your client is a shared library, you might get away with `p k(0,"show",r1(x),(K)0)`
 
-:fontawesome-regular-hand-point-right: 
+:fontawesome-regular-hand-point-right:
 _GDB Manual_: [§12. C Preprocessor Macros](https://sourceware.org/gdb/onlinedocs/gdb/Macros.html)
 
 Now, we compile the program using the GNU C compiler, `gcc`. We pass the `-gdwarf-21` and `-g3` flags to ensure the compiler includes information about preprocessor macros in the debugging information.
@@ -886,15 +886,15 @@ Thread 1 "sdl" received signal SIGSEGV, Segmentation fault.
 0x000000000040711b in nx ()
 (gdb) up
 #1  0x0000000000407411 in nx ()
-(gdb)  
+(gdb)
 #2  0x0000000000407411 in nx ()
- (gdb) 
+ (gdb)
 #3  0x0000000000408a15 in b9 ()
-(gdb) 
+(gdb)
 #4  0x0000000000409ac2 in ww ()
-(gdb) 
+(gdb)
 #5  0x0000000000409d33 in k ()
-(gdb) 
+(gdb)
 #6  0x000000000040410d in main (n=1, v=0x7fffffffdf68) at sdl.c:108
 108     }else if(e.type==SDL_USEREVENT){K x=e.user.data1;A(!xt);A(xn==2);k(-c,"{value[x]y}",xK[0]->s,xK[1],(K)0);}
 ```
@@ -935,18 +935,18 @@ $13 = {m = 0 '\000', a = 0 '\000', t = -7 '\371', u = 0 '\000',
 
 ## Windows and the LoadLibrary API
 
-The q multithreaded C library (`c.dll`) uses static thread-local storage (TLS), and is incompatible with the `LoadLibrary` Win32 API. 
-If you are writing an Excel plugin, this point is relevant to you, as loading of the plugin uses this mechanism. 
+The q multithreaded C library (`c.dll`) uses static thread-local storage (TLS), and is incompatible with the `LoadLibrary` Win32 API.
+If you are writing an Excel plugin, this point is relevant to you, as loading of the plugin uses this mechanism.
 
 :fontawesome-regular-hand-point-right:
 Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](http://support.microsoft.com/kb/118816)
 
 When trying to use the library, the problem manifests itself as a crash during the `khpu()` call.
 
-Hence KX also provides at :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) a single-threaded version of this library as `w32/cst.dll` and `w64/cst.dll`, which do _not_ use TLS. 
+Hence KX also provides at :fontawesome-brands-github: [KxSystems/kdb](https://github.com/KxSystems/kdb) a single-threaded version of this library as `w32/cst.dll` and `w64/cst.dll`, which do _not_ use TLS.
 To use this library:
 
--    download `cst.dll` and `cst.lib` 
+-    download `cst.dll` and `cst.lib`
 -    rename them to `c.dll`/`c.lib`
 -    relink and ensure that `c.dll` is in your path
 
@@ -956,7 +956,7 @@ If in doubt whether the `c.dll` you have uses TLS, run
 dumpbin /EXPORTS c.dll
 ```
 
-and look for a `.tls` entry under the summary section. 
+and look for a `.tls` entry under the summary section.
 If it is present it uses TLS and is the wrong library to link with use with Excel add-ins.
 
 ```bash
@@ -974,13 +974,13 @@ Summary
 
 ## Troubleshooting: loading a library
 
-In some cases [`2:`](../ref/dynamic-load.md) may fail because of missing dependencies. Sadly, OS error messages are not always helpful. 
+In some cases [`2:`](../ref/dynamic-load.md) may fail because of missing dependencies. Sadly, OS error messages are not always helpful.
 
 You can check dependencies using the methods described at [qt.io](https://wiki.qt.io/Show_library_dependencies).
 
 
 ## Example
 
-:fontawesome-brands-github: 
+:fontawesome-brands-github:
 [KxSystems/cookbook/c/csv.c](https://github.com/KxSystems/cookbook/blob/master/c/csv.c) – CSV export example in C
 
