@@ -44,7 +44,11 @@ Default values for all parameters are set in `sol_init.q`.
 
 ### Create a queue
 
-`q sol_endpoint_create.q -host -vpn -user -pass -name`
+```syntax
+q sol_endpoint_create.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -name`
 
 Creates a queue on a Solace PubSub+ broker, subject to permission.
 
@@ -55,7 +59,11 @@ q sol_endpoint_create.q -name "Q/test"
 
 ### Remove an endpoint
 
-`q sol_endpoint_destroy.q -host -vpn -user -pass -name`
+```syntax
+q sol_endpoint_destroy.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -name`
 
 Removes an existing endpoint on the Solace broker, subject to permission.
 
@@ -66,7 +74,11 @@ q sol_endpoint_destroy.q -name "Q/test"
 
 ### Add a topic subscription to a queue
 
-`q sol_topic_to_queue_mapping.q -host -vpn -user -pass -queue -topic`
+```syntax
+q sol_topic_to_queue_mapping.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -queue -topic`
 
 Adds a topic subscription to an existing endpoint queue, subject to permission.
 
@@ -80,7 +92,11 @@ q sol_topic_to_queue_mapping.q -queue "Q/test" -topic "Q/topic"
 
 ### Send a direct message via a topic
 
-`q sol_pub_direct.q -host -vpn -user -pass -topic -data`
+```syntax
+q sol_pub_direct.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -topic -data`
 
 This can be used in conjunction with `sol_sub_direct.q` or any Solace example program.
 
@@ -91,7 +107,11 @@ q sol_pub_direct.q -topic "Q/1" -data "hello world"
 
 ### Subscribe to a topic for direct messages
 
-`q sol_sub_direct.q -host -vpn -user -pass -topic`
+```syntax
+q sol_sub_direct.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -topic`
 
 ```bash
 q sol_sub_direct.q -host 192.168.65.2:55111 -topic "Q/>"
@@ -100,7 +120,11 @@ q sol_sub_direct.q -host 192.168.65.2:55111 -topic "Q/>"
 
 ### Send a direct message via a topic, request a reply
 
-`q sol_pub_directrequestor.q -host -vpn -user -pass -topic -data`
+```syntax
+q sol_pub_directrequestor.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -topic -data`
 
 Sends a direct message via a topic, and requests a reply as part of the published message.
 
@@ -112,7 +136,11 @@ q sol_pub_directrequestor.q -topic "Q/1" -data "hello world"
 
 ### Subscribe to a topic for direct messages, replying
 
-`q sol_sub_directrequestor.q -host -vpn -user -pass -topic`
+```syntax
+q sol_sub_directrequestor.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -topic`
 
 Subscribes to a topic for the consumption of direct messages, replying to any message received.
 
@@ -125,7 +153,11 @@ q sol_sub_directreplier.q -host 192.168.65.2:55111 -topic "Q/>"
 
 ### Send a persistent or guaranteed message
 
-`q sol_pub_persist.q -host -vpn -user -pass -data -dtype -dest -corr`
+```syntax
+q sol_pub_persist.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -data -dtype -dest -corr`
 
 Sends a persistent or guaranteed message to an existing endpoint.
 
@@ -137,7 +169,11 @@ q sol_pub_persist.q -dtype "queue" -dest "Q/1" -data "hello world" -corr 555
 
 ### Subscribe while printing and acknowledging each message
 
-`q sol_sub_persist.q -host -vpn -user -pass -dest`
+```syntax
+q sol_sub_persist.q <args>
+```
+
+Command-line arguments: `-host -vpn -user -pass -dest`
 
 ```bash
 q sol_sub_persist.q -dest "Q/1"

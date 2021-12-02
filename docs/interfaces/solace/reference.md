@@ -11,7 +11,7 @@ keywords: solace, interface, fusion , q
 [KxSystems/solace](https://github.com/KxSystems/solace)
 
 <div markdown="1" class="typewriter">
-.solace   **Solace interface**
+.solace.   **Solace interface**
 
 Event notifications
   [setSessionCallback](#solacesetsessioncallback)         Set a callback function for session events
@@ -32,8 +32,8 @@ Direct messaging
   [sendDirectRequest](#solacesenddirectrequest)          Send a direct message requiring a sync response
 
 Topic subscription
-  [setTopicMsgCallback](#solacesettopicmsgcallback)        Set callback for messages from topic subscriptions (provides binary payload)
-  [setTopicRawMsgCallback](#solacesettopicrawmsgcallback)        Set callback for messages from topic subscriptions (provides original msg)
+  [setTopicMsgCallback](#solacesettopicmsgcallback)        Set callback for messages from topic subscriptions
+  [setTopicRawMsgCallback](#solacesettopicrawmsgcallback)     Set callback for messages from topic subscriptions
   [subscribeTopic](#solacesubscribetopic)             Subscribe to a topic
   [unSubscribeTopic](#solaceunsubscribetopic)           Unsubscribe from a topic
 
@@ -42,79 +42,104 @@ Guaranteed/persistent messaging
   [sendPersistentRequest](#solacesendpersistentrequest)      Send a guaranteed message for a synchronous reply
 
 Flow bindings
-  [setQueueMsgCallback](#solacesetqueuemsgcallback)        Set callback for when message sent to an endpoint (provides binary payload)
-  [setQueueRawMsgCallback](#solacesetrawqueuemsgcallback)        Set callback for when message sent to an endpoint (provides original msg)
+  [setQueueMsgCallback](#solacesetqueuemsgcallback)        Set callback for when message sent to an endpoint
+  [setQueueRawMsgCallback](#solacesetqueuerawmsgcallback)     Set callback for when message sent to an endpoint
   [bindQueue](#solacebindqueue)                  Bind to a queue
   [sendAck](#solacesendack)                    Acknowledge processing of a message
   [unBindQueue](#solaceunbindqueue)                Remove subscription/binding created with bindQueue
 
 Message functions
-  .solace.getPayloadAsXML                Get the XML part of the Solace message
-  .solace.getPayloadAsString                Get the string part of the Solace message
-  .solace.getPayloadAsBinary                Get the binary part of the Solace message
+  [getPayloadAsXML](#solacegetpayloadasxml)            Get the XML part of the Solace message
+  [getPayloadAsString](#solacegetpayloadasstring)         Get the string part of the Solace message
+  [getPayloadAsBinary](#solacegetpayloadasbinary)         Get the binary part of the Solace message
 
 Utility functions
-  .solace.getCapability      Value of the specified capability for the session
-  .solace.version            Current version of the build/deployment
+  [getCapability](#solacegetcapability)              Value of the specified capability for the session
+  [version](#solaceversion)                    Current version of the build/deployment
 </div>
 
-Endpoint-management functions may be used to create or destroy endpoints from the kdb+ session. In some deployments, endpoints may already be created for you by an admin.
+Endpoint-management functions may be used to create or destroy endpoints from the kdb+ session.
+In some deployments, endpoints may already be created for you by an admin.
 
-!!! tip "Endpoint management must be enabled for the user in order to use this functionality."
+!!! tip "Endpoint management must be enabled for the user in order to use this functionality"
 
+
+## Destination types
+
+```txt
+-1  null
+0   topic
+1   queue
+2   temp topic
+3   temp queue
+```
 
 
 ## `.solace.bindQueue`
 
 _Bind to a queue_
 
-Syntax: `.solace.bindQueue[bindProps]`
+```syntax
+.solace.bindQueue bindProps
+```
 
 Where `bindProps` is a symbol-to-symbol dictionary mapping the [Solace bind properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#flowProps) to their values.
 
 
+
 ## `.solace.createEndpoint`
 
-_Provision an endpoint on the appliance from a session_
+```syntax
+.solace.createEndpoint[options;provFlags]
+```
 
-Syntax: `.solace.createEndpoint[options;provFlags]`
+_Create an endpoint_
 
 Where
 
 -   `options` is a symbol-to-symbol dictionary mapping Solace [endpoint properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps) to their values.
--  `provFlags` is an integer indicating the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace
+-   `provFlags` is the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace (integer)
 
+provisions an endpoint on the appliance from the session.
 
 ## `.solace.destroy`
 
-_Destroy a previously created session_
+_Destroy a session_
 
-Syntax: `.solace.destroy[]`
+```syntax
+.solace.destroy[]
+```
+Destroys the current session.
 
 
 ## `.solace.destroyEndpoint`
 
-_Destroys an endpoint from a session_
+_Destroy an endpoint_
 
-Syntax: `.solace.destroyEndpoint[options;provFlags]`
+```syntax
+.solace.destroyEndpoint[options;provFlags]
+```
 
 Where
 
--  `options` is a symbol-to-symbol dictionary mapping Solace [endpoint properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps) to their values
--  `provFlags` is an integer indicating the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace
+-   `options` is a symbol-to-symbol dictionary mapping Solace [endpoint properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps) to their values
+-   `provFlags` is the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace (integer)
 
+destroys an endpoint from the session.
 
 ## `.solace.endpointTopicSubscribe`
 
 _Add a topic subscription to an existing endpoint_
 
-Syntax: `.solace.endpointTopicSubscribe[options;provFlags;topic]`
+```syntax
+.solace.endpointTopicSubscribe[options;provFlags;topic]
+```
 
 Where
 
 -   `options` is a symbol-to-symbol dictionary mapping Solace [endpoint properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps) to their values
--   `provFlags` is an integer indicating the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace
--   `topic` is a symbol or string denoting a topic subscription
+-   `provFlags` is the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace (integer)
+-   `topic` is a topic subscription (symbol or string)
 
 !!! tip "Topic subscriptions can be added to queues or remote clients."
 
@@ -123,13 +148,15 @@ Where
 
 _Unsubscribe from a topic on an endpoint_
 
-Syntax: `.solace.endpointTopicUnsubscribe[options;provFlags;topic]`
+```syntax
+.solace.endpointTopicUnsubscribe[options;provFlags;topic]
+```
 
 Where
 
 -   `options` is a symbol-to-symbol dictionary mapping Solace [endpoint properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#endpointProps) to their values
--   `provFlags` is an integer indicating the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace
--   `topic` is a symbol or string denoting a topic subscription
+-   `provFlags` is the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace (integer)
+-   `topic` is a topic subscription (symbol or string)
 
 !!! tip "Unsubscriptions from topics may be from either queues or remote clients."
 
@@ -138,18 +165,76 @@ Where
 
 _Retrieve the value of the specified capability for the session_
 
-Syntax: `.solace.getCapability[capabilityName]`
+```syntax
+.solace.getCapability capabilityName
+```
 
 Where `capabilityName` is a symbol or string denoting a [capability](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#sessioncapabilities) returns the capability value for the session.
 
 The returned value type will vary depending on the capability requested.
 
 
+## `.solace.getPayloadAsBinary`
+
+_Get binary part of a Solace msg_
+
+```syntax
+.solace.getPayloadAsBinary msg
+```
+
+Where `msg` is a message provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`,
+returns either
+
+-   a string
+-   a long representing the Solace error code if the payload could be retrieved as binary
+
+This API defaults to sending messages as binary (of which string/XML/etc can be used.)
+
+
+## `.solace.getPayloadAsString`
+
+_Get string part of a Solace msg_
+
+```syntax
+.solace.getPayloadAsString msg
+```
+
+Where `msg` is a message provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`,
+returns either
+
+-   a string
+-   a long representing the Solace error code if the payload was not a string Solace type
+
+This corresponds to the Solace sender setting the payload using the Solace function to set the payload as a string.
+(There is no conversion to string by this API.)
+
+
+
+## `.solace.getPayloadAsXML`
+
+_Get XML part of a Solace msg_
+
+```syntax
+.solace.getPayloadAsXML msg
+```
+
+Where `msg` is a message provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`,
+returns either
+
+-   a byte vector
+-   a long representing the Solace error code if the payload was not an XML Ssolace type
+
+This corresponds to the Solace sender setting the payload using the Solace function to set the payload as XML.
+(There is no conversion to XML by this API.)
+
+
 ## `.solace.init`
 
 _Connect to and create a session_
 
-Syntax: `.solace.init[options]`
+```syntax
+.solace.init options
+```
 
 Where `options` is a symbol-to-symbol dictionary mapping Solace [properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/group___session_props.html) to their values.
 
@@ -162,28 +247,34 @@ Common properties are `SESSION_HOST`,  `SESSION_VPN_NAME`, `SESSION_USERNAME`, `
 
 _Acknowledge processing of a message_
 
-Syntax: `.solace.sendAck[endpointname;msgid]`
+```syntax
+.solace.sendAck[endpointname;msgid]
+```
 
 Where
 
-- `endpointname` is a string denoting the name of an endpoint
-- `msgid` is a long denoting the ID of a message
+- `endpointname` is the name of an endpoint (string)
+- `msgid` is the ID of a message (long)
 
-This function allows you to acknowledge messages. It should be called by the subscriptions `callbackFunction` to acknowledge that the message has been processed, in order to prevent the message from being consumed on a subsequent subscription.
+This function allows you to acknowledge messages.
+It should be called by the subscriptions `callbackFunction` to acknowledge that the message has been processed,
+in order to prevent the message from being consumed on a subsequent subscription.
 
 This is only required when you wish to take control and run with auto acks off (e.g. `FLOW_ACKMODE` disabled in the flow binding).
 
 
-##  `.solace.sendDirect`
+## `.solace.sendDirect`
 
 _Send a direct message_
 
-Syntax: `.solace.sendDirect[topic;data]`
+```syntax
+.solace.sendDirect[topic;data]
+```
 
 Where
 
--  `topic` is a string denoting the topic to which the message is sent
--  `data` is the message payload as either a string, symbol or byte array
+-  `topic` is the topic to which the message is sent (string)
+-  `data` is the message payload (string, symbol or byte array)
 
 :fontawesome-solid-globe:
 [Solace direct messages](https://docs.solace.com/PubSub-Basics/Direct-Messages.htm)
@@ -195,214 +286,226 @@ Each message will automatically be populated with message-eliding eligibility en
 
 _Send a direct message which requires a sync reply_
 
-Syntax: `.solace.sendDirectRequest[topic;data;timeout;replyType;replyDest]`
+```syntax
+.solace.sendDirectRequest[topic;data;timeout;replyType;replyDest]
+```
 
 Where
 
--   `topic` is a string denoting the topic to which a message is sent
--   `data` is the message payload as either a string, symbol or byte array
--   `timeout` is an integer indicating the milliseconds to block/wait (must be greater than zero).
--   `replyType` is an integer (see below)
--   `replyDest` is a symbol denoting the topic/queue that you wish a reply to this message to go to (empty for default session topic).
+argument   | type                           | value
+-----------|--------------------------------|--------------------------------
+topic      | string                         | topic to which message is sent
+data       | string, symbol, or byte vector | message payload
+timeout    | integer                        | milliseconds to block/wait (> zero)
+replyType  | integer                        | reply [destination type](#destination-types)
+replyDest  | symbol                         | topic or queue a reply to this message goes to<br>(empty for default session topic)
 
-returns a byte array containing the payload on successful execution; else an integer return code. For example, if the result is 7, the reply wasn’t received.
+returns either
 
-```txt
-replyType:
+-   the payload (byte array)
+-   an integer error code (integer)
 
--1  null
-0   topic
-1   queue
-2   temp topic
-3   temp queue
-```
+For example, if the result is 7, the reply wasn’t received.
+<!-- FIXME: list return codes -->
+
+<!-- FIXME Include example -->
+
 
 
 ## `.solace.sendPersistent`
 
 _Send a persistent message onto a queue or topic_
 
-Syntax: `.solace.sendPersistent[destType;dest;data;correlationId]`
+```syntax
+.solace.sendPersistent[destType;dest;data;correlationId]
+```
 
 Where
 
--   `destType` is an integer indicating the type of destination (see below)
--   `dest` is a symbol denoting the name of the queue/topic destination
--   `data` is a string/symbol/byte data which forms the message payload
--   `correlationId` is an optional parameter with default behavior accessed with null. Otherwise this is a symbol denoting e.g. a Correlation ID is carried in the Solace message headers unmodified which may be used for peer-to-peer message synchronization
+argument       | type                    | value
+---------------|-------------------------|-----------------------------------
+destType       | integer                 | [destination type](#destination-types)
+dest           | symbol                  | destination queue or topic
+data           | char/symbol/byte vector | message payload
+correlationId  | symbol                  | a Correlation ID to be carried in the Solace message headers unmodified – may be used for peer-to-peer message synchronization; null for default behavior
 
-```txt
-destType:
-
--1  null
-0   topic
-1   queue
-2   temp topic
-3   temp queue
-```
+<!-- FIXME Include example -->
 
 
 ## `.solace.sendPersistentRequest`
 
 _Send a guaranteed message requiring a synchronous reply_
 
-Syntax: `.solace.sendPersistentRequest[destType;dest;data;timeout;replyType;replydest]`
+```syntax
+.solace.sendPersistentRequest[destType;dest;data;timeout;replyType;replydest]
+```
 
 Where
 
--   `destType` is an integer denoting the type of destination
--   `dest` is a symbol denoting the name of the queue/topic destination
--   `data` is a string/symbol/byte data which forms the message payload
--   `timeout` is an integer indicating the milliseconds to block/wait (must be greater than zero).
--   `replyType` is an integer representing the reply destination type
--   `replyDest` is a symbol denoting the topic/queue that you wish a reply to this message to go to (empty for default session topic).
+argument   | type                    | value
+-----------|-------------------------|-----------------------------------
+destType   | integer                 | [destination type](#destination-types)
+dest       | symbol                  | destination queue or topic
+data       | char/symbol/byte vector | message payload
+timeout    | integer                 | milliseconds to block/wait (> zero)
+replyType  | integer                 | reply [destination type](#destination-types)
+replyDest  | symbol                  | topic/queue a reply to this message goes to<br>(empty for default session topic)
 
-returns a byte array containing the payload on successful execution; else an integer return code. For example, if the result is 7, the reply was not received.
+returns either
 
-```txt
-destType:               replyType:
+-   the payload (byte array)
+-   an error code (integer)
 
--1  null                -1  null
-0   topic               0   topic
-1   queue               1   queue
-2   temp topic          2   temp topic
-3   temp queue          3   temp queue
-```
-
+For example, if the result is 7, the reply was not received.
 
 ## `.solace.setFlowCallback`
 
 _Associate the provided function with flow events_
 
-Syntax: `.solace.setFlowCallback[callbackFunction]`
+```syntax
+.solace.setFlowCallback callbackFunction
+```
 
-Where `callbackFunction` is a symbol named for a function within your q session which takes five arguments:
+Where `callbackFunction` is a symbol denoting a function in your q session with arguments:
 
-1.  `eventType` is an [integer denoting the type of event](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#a992799734a2bbe3dd8506ef332e5991f)
-2.  `responseCode` is an integer denoting the response code returned for some events, otherwise zero.
-3.  `eventInfo` is a string providing further information about the event
-4.  `destType` is an integer denoting the [type of the destination](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#aa7d0b19a8c8e8fbec442272f3e05b485).
-5.  `destName` is the destination name as a string
+1.  [type of event](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#a992799734a2bbe3dd8506ef332e5991f) (integer)
+2.  response code returned for some events, otherwise zero (integer)
+3.  further information about the event (string)
+4.  [destination type](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#aa7d0b19a8c8e8fbec442272f3e05b485) (integer)
+5.  destination name (string)
 
 
 ## `.solace.setQueueMsgCallback`
 
 _Set a callback function for when a message is sent to an endpoint_
 
-Syntax: `.solace.setQueueMsgCallback[callbackFunction]`
+```syntax
+.solace.setQueueMsgCallback callbackFunction
+```
 
-Where `callbackFunction` is a q function taking three arguments:
+Where `callbackFunction` is <!-- FIXME name of? --> a q function with arguments:
 
-1.  `destination` is a symbol denoting the flow destination (queue from which the subscription originated)
-2.  `payload` is a byte array containing the message payload
-3.  `msg values` is a dictionary specifying message information as follows:
+1.  flow destination: the queue from which the subscription originated (symbol)
+2.  message payload (byte vector)
+3.  a dictionary:
 
-<div markdown="1" class="typewriter">
-destType       type of destination (integer)
-destName       destination name (string)
-replyType      reply destination type (integer)
-replyDest      topic/queue to reply to (string)
-correlationId  original message’s correlation ID (string)
-msgId          used for [sending acks](#solacesendack) (long)
-</div>
-:fontawesome-regular-hand-point-right:
-[Values for `destType` and `replyType`](#solacesendpersistentrequest) 
+    key            | type    | value
+    ---------------|---------|---------------------------------
+    destType       | integer | [destination type](#destination-types)
+    destName       | string  | destination name
+    replyType      | integer | reply [destination type](#destination-types)
+    replyDest      | string  | topic/queue to reply to
+    correlationId  | string  | original message’s correlation ID
+    msgId          | long    | used for [sending acks](#solacesendack)
+
 
 ## `.solace.setQueueRawMsgCallback`
 
-_Set a callback function for when a message is sent to an endpoint_. *This is an alternative to `.solace.setQueueMsgCallback`.*
+_Set a callback function for when a message is sent to an endpoint_
 
-Syntax: `.solace.setQueueRawMsgCallback[callbackFunction]`
+```syntax
+.solace.setQueueRawMsgCallback callbackFunction
+```
 
-Where `callbackFunction` is a q function taking three arguments:
+Where `callbackFunction` is <!-- FIXME name of? --> a q function with arguments:
 
-1.  `destination` is a symbol denoting the flow destination (queue from which the subscription originated)
-2.  `msg` as a long pointing to the underlying solace msg (can be used within the callback with the functions to get the payload based on the senders type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc).
-3.  `msg values` is a dictionary specifying message information as follows:
+1.  flow destination: the queue from which the subscription originated (symbol)
+2.  a pointer (long) to the underlying Solace message (can be used within the callback with the functions to get the payload based on the sender’s type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc.)
+3.  a dictionary:
 
-<div markdown="1" class="typewriter">
-destType       type of destination (integer)
-destName       destination name (string)
-replyType      reply destination type (integer)
-replyDest      topic/queue to reply to (string)
-correlationId  original message’s correlation ID (string)
-msgId          used for [sending acks](#solacesendack) (long)
-</div>
+    key            | type    | value
+    ---------------|---------|---------------------------------
+    destType       | integer | [destination type](#destination-types)
+    destName       | string  | destination name
+    replyType      | integer | reply [destination type](#destination-types)
+    replyDest      | string  | topic/queue to reply to
+    correlationId  | string  | original message’s correlation ID
+    msgId          | long    | used for [sending acks](#solacesendack)
 
-:fontawesome-regular-hand-point-right:
-[Values for `destType` and `replyType`](#solacesendpersistentrequest) 
+This is an alternative to `.solace.setQueueMsgCallback`.
 
 
 ## `.solace.setSessionCallback`
 
-_Associate the provided function with session events such as connection notifications or session errors_
+_Associate the provided function with session events_
 
-Syntax: `.solace.setSessionCallback[callbackFunction]`
+```syntax
+.solace.setSessionCallback callbackFunction
+```
 
-Where `callbackFunction` is a symbol denoting a function within your q session which takes three arguments:
+Where `callbackFunction` is a symbol denoting a function in your q session with arguments:
 
-1.  `eventType` is an integer denoting the [type of event](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#a992799734a2bbe3dd8506ef332e5991f)
-2.  `responseCode` is an integer denoting the response code that is returned for some event, otherwise zero
-3.  `eventInfo` is a string providing further information about the event
+1.  [event type of event](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#a992799734a2bbe3dd8506ef332e5991f) (integer)
+2.  response code returned for some event, otherwise zero (integer)
+3.  further information about the event (string)
+
+associates the named function with session events, such as connection notifications or session errors.
 
 
 ## `.solace.setTopicMsgCallback`
 
 _Set callback for messages received from topic subscriptions_
 
-Syntax: `.solace.setTopicMsgCallback[callbackFunction]`
-
-Where `callbackFunction` is a function taking three arguments:
-
-1.  `destination` as a symbol
-2.  `payload` as a byte array containing the message binary payload
-3.  `msg values` as a dictionary: see below
-
-```txt
-isRedeliv  whether redelivered (boolean)
-isDiscard  whether messages have been discarded prior to the current message (boolean)
-           (Indicates congestion discards only; not affected by message eliding.)
-isRequest  whether client expects a reply (boolean) 
-           (In this case the function should return a byte array.)
-sendTime   client’s send time, if populated (timestamp)
+```syntax
+.solace.setTopicMsgCallback callbackFunction
 ```
+Where `callbackFunction` is <!-- FIXME name of? --> a q function with arguments:
 
-registers a q function to be called on receipt of messages from topic subscriptions. If the `msg values` contains a value of `1b` for the key `isRequest`, the function should return with the response message contents (type byte list) as this indicate the sender requests a reply.
+1.  destination (symbol)
+2.  message binary payload (byte vector)
+3.  a dictionary:
+
+    key        | type      | value
+    -----------|-----------|----------------------------------------------
+    isRedeliv  | boolean   | whether redelivered (
+    isDiscard  | boolean   | whether messages  discarded prior to the current message<br>(Congestion discards only; not affected by message eliding.)
+    isRequest  | boolean   | whether client expects a reply<br>(In this case the function should return a byte array.)
+    sendTime   | timestamp | client’s send time, if populated
+
+registers a q function to be called on receipt of messages from topic subscriptions.
+If the dictionary value for `isRequest` is true, the function should return with the response message contents (a byte list) to indicate the sender requests a reply.
+
 
 ## `.solace.setTopicRawMsgCallback`
 
-_Set callback for messages received from topic subscriptions_. *This is an alternative to `.solace.setTopicMsgCallback`.*
+_Set callback for messages received from topic subscriptions_
 
-Syntax: `.solace.setTopicRawMsgCallback[callbackFunction]`
 
-Where `callbackFunction` is a function taking three arguments:
-
-1.  `destination` as a symbol
-2.  `msg` as a long pointing to the underlying solace msg (can be used within the callback with the functions to get the payload based on the senders type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc).
-3.  `msg values` as a dictionary: see below
-
-```txt
-isRedeliv  whether redelivered (boolean)
-isDiscard  whether messages have been discarded prior to the current message (boolean)
-           (Indicates congestion discards only; not affected by message eliding.)
-isRequest  whether client expects a reply (boolean) 
-           (In this case the function should return a byte array.)
-sendTime   client’s send time, if populated (timestamp)
+```syntax
+.solace.setTopicRawMsgCallback callbackFunction
 ```
 
-registers a q function to be called on receipt of messages from topic subscriptions. If the `msg values` contains a value of `1b` for the key `isRequest`, the function should return with the response message contents (type byte list) as this indicate the sender requests a reply.
+Where `callbackFunction` is a function with arguments:
+
+1.  destination (symbol)
+2.  a pointer (long) to the underlying Solace message (can be used within the callback with the functions to get the payload based on the sender’s type e.g. `getPayloadAsXML`, `getPayloadAsString`, etc)
+3.  a dictionary:
+
+    key        | type      | content
+    -----------|-----------|--------
+    isRedeliv  | boolean   | whether redelivered
+    isDiscard  | boolean   | whether messages discarded prior to the current message<br>(Congestion discards only; not affected by message eliding.)
+    isRequest  | boolean   | whether client expects a reply<br>(In this case the function should return a byte array.)
+    sendTime   | timestamp | client’s send time, if populated
+
+registers `callbackFunction` to be called on receipt of messages from topic subscriptions.
+If the dictionary value for `isRequest` is true, the function should return with the response message contents (a byte list) to indicate the sender requests a reply.
+
+This is an alternative to `.solace.setTopicMsgCallback`.
 
 
 ## `.solace.subscribeTopic`
 
 _Subscribe to a topic_
 
-Syntax: `.solace.subscribeTopic[topic;isBlocking]`
+```syntax
+.solace.subscribeTopic[topic;isBlocking]
+```
 
 Where
 
--   `topic` is a string denoting the topic to subscribe to
--   `isBlocking` is a boolean indicating if the subscription is blocking
+-   `topic` is the topic to subscribe to (string)
+-   `isBlocking` is whether the subscription is blocking (boolean)
 
 Solace format wildcards `(*, >)` can be used in the topic subscription value.
 
@@ -411,27 +514,32 @@ If `isBlocking` is true then block until confirm or true to get session event ca
 
 ## `.solace.unBindQueue`
 
-_Remove a subscription/binding created via `.solace.bindQueue`_
+_Remove a subscription/binding_
 
-Syntax: `.solace.unBindQueue[endpointname]`
+```syntax
+.solace.unBindQueue endpointname
+```
 
-Where `endpointname` is is a string denoting the name of an endpoint
+Where `endpointname` is is a string naming an endpoint,
+removes a subscription or binding created via `.solace.bindQueue`.
 
 ```q
-q).solace.unBindQueue["endpoint1"]
+.solace.unBindQueue "endpoint1"
 ```
 
 
 ## `.solace.unSubscribeTopic`
 
-_Unsubscribe from an existing topic subscription_
+_Unsubscribe from a topic_
 
-Syntax: `.solace.unSubscribeTopic[topic]`
+```syntax
+.solace.unSubscribeTopic topic
+```
 
-Where `topic` is a string denoting the topic to unsubscribe from.
+Where `topic` is a string denoting a topic, unsubscribes from it.
 
 ```q
-q).solace.unSubscribeTopic["topic1"]
+.solace.unSubscribeTopic "topic1"
 ```
 
 
@@ -440,54 +548,10 @@ q).solace.unSubscribeTopic["topic1"]
 
 _Current version of the build/deployment_
 
-Syntax: `.solace.version[]`
+```syntax
+.solace.version[]
+```
 
 Returns Solace API version info as a dictionary.
-
-## `.solace.getPayloadAsXML`
-
-_Get XML part of a Solace msg_
-
-Syntax: `.solace.getPayloadAsXML[msg]`
-
-Where `msg` is a msg provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`. This corresponds to the Solace sender setting the payload using the solace function to set the payload as XML (there is no conversion to XML by this API).
-
-Returns byte array (or long representing the solace error code if the payload wasnt an XML solace type)
-
-## `.solace.getPayloadAsString
-
-_Get string part of a Solace msg_
-
-Syntax: `.solace.getPayloadAsString[msg]`
-
-Where `msg` is a msg provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`. This corresponds to the Solace sender setting the payload using the solace function to set the payload as string (there is no conversion to string by this API).
-
-Returns char array (or long representing the solace error code if the payload wasnt an string solace type)
-
-## `.solace.getPayloadAsBinary
-
-_Get binary part of a Solace msg_
-
-Syntax: `.solace.getPayloadAsBinary[msg]`
-
-Where `msg` is a msg provided in the callback function registered with `setQueueRawMsgCallback` or `setTopicRawMsgCallback`.
-
-Returns char array (or long representing the solace error code if the payload could be retrieved as binary). This API defaults to sending msgs as binary (of which string/xml/etc can be used).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
