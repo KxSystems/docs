@@ -238,7 +238,7 @@ _Connect to and create a session_
 
 Where `options` is a symbol-to-symbol dictionary mapping Solace [properties](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/group___session_props.html) to their values.
 
-Common properties are `SESSION_HOST`,  `SESSION_VPN_NAME`, `SESSION_USERNAME`, `SESSION_PASSWORD`, and `SESSION_RECONNECT_RETRIES`.
+Common properties are `SESSION_HOST`,  `SESSION_VPN_NAME`, `SESSION_USERNAME`, `SESSION_PASSWORD`, `SESSION_RECONNECT_RETRIES` and `SESSION_SSL_TRUST_STORE_DIR`.
 
 !!! tip "You must be connected before running any subsequent Solace functions."
 
