@@ -86,6 +86,19 @@ section | content
 
 ## Books
 
+![kdb+ Tutorial in Japanese](../img/51MFB56Y0ZL.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+
+### q言語－ゼロから作るTick ArchitectureならびにC言語による拡張
+
+Q and kdb+ from installation to building the tick architecture and using the C API
+<br>
+by Mattew Kwon
+
+:fontawesome-brands-amazon:
+[Amazon](https://www.amazon.co.jp/-/en/Mattew-Kwon-ebook/dp/B09MZGSGVW/)
+
+<hr style="clear: both">
+
 ![kdb+ Tutorial in Chinese](../img/kdbcn.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
 
 ### kdb+中文教程
