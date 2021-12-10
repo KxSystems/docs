@@ -1,5 +1,5 @@
 ---
-title: Example usage | Solace | Interfaces | Docuemntation for q and kdb+
+title: Example usage | Solace | Interfaces | Documentation for q and kdb+
 author: Conor McCarthy
 description: Examples showing the use of the Solace kdb+ interface
 date: March 2020
@@ -41,7 +41,7 @@ Default values for all parameters are set in `sol_init.q`.
 -opt    session capability
 ```
 
-## General Utilities
+## General utilities
 
 ### API version
 
@@ -54,7 +54,9 @@ Prints the Solace API version currently in use
 ### Query broker capabilities
 
 ```syntax
-q sol_capabilities.q -opt SESSION_PEER_SOFTWARE_VERSION -host tcps://mr906gris.messaging.solace.cloud:55443 -user solace -pass ggut5 -vpn test -trust cert
+q sol_capabilities.q -opt SESSION_PEER_SOFTWARE_VERSION \
+    -host tcps://mr906gris.messaging.solace.cloud:55443 \
+    -user solace -pass ggut5 -vpn test -trust cert
 ```
 
 Command-line arguments: `-host -vpn -trust -user -pass -name -opt`
