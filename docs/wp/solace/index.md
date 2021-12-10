@@ -295,9 +295,10 @@ You can find connection details for your Solace Cloud service in the _Connect_ t
 
 ![](img/cloud_connection_settings.png)
 
-Create a directory called 'cert' within your examples directory. Download the 'PEM' file to that newly created 'cert' directory.
-Note that if you are trying to connect to a non secure SMF host, you do not need to download the PEM file or reference it.
-You will also need `Username`, `Password`, `Message VPN`, and `Secured SMF Host` information. Update the relevant values in `sol_init.q` with these details:
+Create a directory called `cert` within your examples directory and download the PEM file to it.
+Note that if you are trying to connect to a non-secure SMF host, you do not need to download the PEM file or reference it.
+You will also need username, password, Message VPN, and Secured SMF Host information. 
+Update values in `sol_init.q` with these details:
 
 ```txt
 default.host :"tcps://mr2ko4me0p6h2f.messaging.solace.cloud:20642"
@@ -380,7 +381,7 @@ Let’s publish `"Hello, world"` to the topic `data/generic/hello`.
 Similarly, we can publish a guaranteed message by calling the function `.solace.sendPersistent` as shown in the `sol_pub_persist.q` example.
 
 
-### Create a queue and map topics to it 
+### Create a queue and map topics to it
 
 Just as you can publish data to either topics or queues, you can also consume data by either subscribing to a topic or instead mapping one or more topics to a queue and binding to that queue. Subscribing directly to a topic corresponds to direct messaging and is used in high-throughput, low-latency use cases, since there is no additional overhead of persistence and acknowledgements. 
 
