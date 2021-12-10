@@ -295,13 +295,16 @@ You can find connection details for your Solace Cloud service in the _Connect_ t
 
 ![](img/cloud_connection_settings.png)
 
-You will need `Username`, `Password`, `Message VPN`, and `SMF Host information`. Update the relevant values in `sol_init` with these details:
+Create a directory called 'cert' within your examples directory. Download the 'PEM' file to that newly created 'cert' directory.
+Note that if you are trying to connect to a non secure SMF host, you do not need to download the PEM file or reference it.
+You will also need `Username`, `Password`, `Message VPN`, and `Secured SMF Host` information. Update the relevant values in `sol_init.q` with these details:
 
 ```txt
-default.host :"mr2ko4me0p6h2f.messaging.solace.cloud:20640"
+default.host :"tcps://mr2ko4me0p6h2f.messaging.solace.cloud:20642"
 default.vpn  :"msgvpn-oyppj81j1ov"
 default.user :"solace-cloud-client"
 default.pass :"v23cck5rca6p3n1eio2cquqgte"
+default.trust: "cert"
 ```
 
 Once we have done that, we can test our connection:
@@ -313,7 +316,7 @@ l64/ 2(16)core 7974MB ec2-user ip-172-31-70-197.ec2.internal 172.31.70.197 EXPIR
 ### Registering session event callback
 ### Registering flow event callback
 ### Initializing session
-SESSION_HOST    | mr2ko4me0p6h2f.messaging.solace.cloud:20640
+SESSION_HOST    | mr2ko4me0p6h2f.messaging.solace.cloud:20642
 SESSION_VPN_NAME| msgvpn-oyppj81j1ov
 SESSION_USERNAME| solace-cloud-client
 SESSION_PASSWORD| v23cck5rca6p3n1eio2cquqgte
@@ -451,7 +454,7 @@ Start a subscriber and have it subscribe to topic `data/generic/hello`.
 ### Session event
 eventType   | 0i
 responseCode| 0i
-eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20640', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20640' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
+eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20642', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20642' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
 ```
 
 Your q session is still running, and awaiting messages.
@@ -490,7 +493,7 @@ Use the example `sol_sub_persist.q` to bind to a queue. This example resembles `
 q### Session event
 eventType   | 0i
 responseCode| 0i
-eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20640', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20640' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
+eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20642', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20642' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
 ### Flow event
 eventType   | 0i
 responseCode| 200i
@@ -699,7 +702,7 @@ With market data simulator running and publishing data, we can run the code abov
 ### Session event
 eventType   | 0i
 responseCode| 0i
-eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20640', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20640' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
+eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20642', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20642' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
 ```
 
 We can see our `prices` table has been created and is capturing our market data updates.
@@ -908,7 +911,7 @@ We can see that by starting another process that subscribes to the `EQ/stats/>` 
 q)### Session event
 eventType   | 0i
 responseCode| 0i
-eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20640', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20640' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
+eventInfo   | "host 'mr2ko4me0p6h2f.messaging.solace.cloud:20642', hostname 'mr2ko4me0p6h2f.messaging.solace.cloud:20642' IP 3.88.1 (host 1 of 1) (host connection attempt 1 of 1) (total connection attempt 1 of 1)"
 ### Message received
 payload  | "[{\"date\":\"2020-09-15\",\"sym\":\"AAPL\",\"time\":\"15:36\",\"lowAskSize\":160,\"highAskSize\":720,\"lowBidPrice\":187.7551,\"highBidPrice\":193.4258,\"lowBidSize\":30,\"highBidSize\":740,\"lowTradePrice\":189.4145,\"highTradePrice\":194.8875,\"lowTradeSize\":60,\"highTradeSize\":480,\"lowAskPrice\":189.6513,\"highAskPrice\":196.3491,\"vwap\":308.9069}]"
 dest     | `EQ/stats/v1/AAPL
