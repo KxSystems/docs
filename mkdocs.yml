@@ -49,6 +49,9 @@ theme:
     - header.autohide
     - navigation.tabs
     - navigation.top
+  static_templates:
+    - 401.html # required by other subsites
+    - 404.html # required by other subsites
 
 nav:
   - Home:
