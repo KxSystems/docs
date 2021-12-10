@@ -1,6 +1,6 @@
 ---
-title: Technical articles at kx.com – Learn – q and kdb+ documentation
-description: Links to selected technical articles at kx.com of interest to developers
+title: Technical articles at kx.com | Learn | q and kdb+ documentation
+description: Links to selected technical articles of interest to developers
 keywords: amazon, anaconda, analytics, audit trail, benchmark, bitcoin, blockchain, cloud, cryptocurrency, decision tree, edge computing, embedpy, efx, feature extraction, fortnite, google, iiot, iot, json, jupyter, kafka, kdb+, lasso, machine learning, motor sports, nasa, natural language processing, neural network, notebook, parse, performance, predictive maintenance, pyq, python, q, qsql, query, r, regression, restful, scripting, signal processing, space weather, sql, table, taxi, telemetry, tick, visualization
 ---
 # Technical articles
@@ -12,7 +12,8 @@ _A selection of technical articles of interest to kdb+ developers_
 
 ## Programming in q
 
-- [Real-world examples of iterators](https://kx.com/blog/enhancing-your-kdb-q-toolkit-real-world-examples-of-iterators/) ==revised==
+-   [Finding primes with q](https://community.kx.com/t5/Blogs/Finding-primes-with-q/ba-p/11120), by Noah Attrup & Stephen Taylor
+-   [Real-world examples of iterators](https://kx.com/blog/enhancing-your-kdb-q-toolkit-real-world-examples-of-iterators/) ==revised==
 -   [Monte-Carlo methods with kdb+](https://armantee.github.io/sampling-with-kdb-p1/), by Arman Tadjrishi 
 -   [Memory mapping in kdb+](https://kx.com/blog/memory-mapping-in-kdb/), by Adam Bonham
 -   [Logging best practices](https://kx.com/blog/logging-best-practices/), by Jamie McKeown
