@@ -59,18 +59,18 @@ We can answer the first two questions by finding the first 1000+ abundant odd nu
 
 ```q
 Filter:{y where x peach y}
-A:Filter[abundant] 940+2*til 260000
+A:Filter[abundant] 945+2*til 260000
 ```
 
 Our naïve `s` is CPU-intensive, so `Filter` uses `peach` to distribute the work between any secondary threads q is [allowed to run](../../basics/cmdline.md#-s-secondary-threads).
 
-We know the first abundant odd number is 945, so we start our search at 940.
+We know the first abundant odd number is 945, so we start our search at 945.
 
 Did we find enough abundant numbers?
 
 ```q
-q)count a
-1054
+q)count A
+1057
 ```
 
 We did. Now we can answer the first two questions.
@@ -89,7 +89,7 @@ q)1 sd\A 999   / 1000th abundant odd number and the sum of its divisors
 
 What is that `\` doing, and how are we getting both the numbers and the sums of their divisors?
 
-Start with Q2, the thousandth abundant odd number. `A` is a list of the first 1054 abundant odd numbers, so `A 999` (or `A@999` or `A[999]`) is the number itself, and `sd` returns the sum of its divisors.
+Start with Q2, the thousandth abundant odd number. `A` is a list of the first 1057 abundant odd numbers, so `A 999` (or `A@999` or `A[999]`) is the number itself, and `sd` returns the sum of its divisors.
 
 ```q
 q)A 999
