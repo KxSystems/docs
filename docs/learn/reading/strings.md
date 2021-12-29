@@ -156,7 +156,7 @@ q)f "CCCBBBBAA"
 ```
 ??? success "Answer"
     
-        {first desc count each group x}  / (AV)
+        {first key desc count each group x}  / (AV)
 
 
 ## esreveR a ecnetnes
