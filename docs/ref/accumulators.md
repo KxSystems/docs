@@ -282,7 +282,7 @@ q)(m\)c               / c[0] is the first left argument
 4 3 1 0 6 9
 ```
 
-In this case, for `(v\)x` and `(v/)x)`
+In this case, for `(v\)x` and `(v/)x`
 
 -   `x[0]` is in the _left_ domain of `v`
 -   items `1_x` are in the _right_ domain of `v`
