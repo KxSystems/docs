@@ -37,13 +37,14 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr markdown><td markdown>Arrow</td><td markdown>[Using Apache Arrow/Parquet data with kdb+](arrow/index.md)</td></tr>
 <tr markdown><td markdown>FFI</td><td markdown>[Using foreign functions with kdb+](ffi/index.md)</td></tr>
 <tr markdown><td markdown>HDF5</td><td markdown>[Handling HDF5 data with kdb+](hdf5/index.md)</td></tr>
+<tr markdown><td markdown>Insights Assemblies</td><td markdown> [Deployment assemblies for KX Insights](https://github.com/KxSystems/insights-assemblies/) ==new==</td>
 <tr markdown><td markdown>Java</td><td markdown> [Java client for kdb+](java-client-for-q.md)</td>
-<tr markdown><td markdown>Jupyter</td><td markdown>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [:fontawesome-brands-superpowers:](../ml/index.md "Machine learning") ==new==</td>
+<tr markdown><td markdown>Jupyter</td><td markdown>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [:fontawesome-brands-superpowers:](../ml/index.md "Machine learning")</td>
 <tr markdown><td markdown>Kafka</td><td markdown>[Q client for Kafka](kafka/index.md)</td></tr>
 <tr markdown><td markdown>MQTT</td><td markdown>[Q client for MQTT](mqtt/index.md)</td></tr>
 <tr markdown><td markdown>Prometheus-Exporter</td><td markdown>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md)</td></tr>
-<tr markdown><td markdown>Protobuf</td><td markdown>[Protobuf](protobuf/index.md) ==new==</td></tr>
-<tr markdown><td markdown>LDAP</td><td markdown>[Q client for LDAP](ldap/index.md) ==new==</td></tr>
+<tr markdown><td markdown>Protobuf</td><td markdown>[Protobuf](protobuf/index.md)</td></tr>
+<tr markdown><td markdown>LDAP</td><td markdown>[Q client for LDAP](ldap/index.md)</td></tr>
 <tr markdown><td markdown>Python</td> <td markdown> [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [:fontawesome-brands-superpowers:](../ml/ "Machine learning") </td></tr> 
 <tr markdown><td markdown>R</td><td markdown>[Using R with kdb+](r/index.md)</td>
 <tr markdown><td markdown>Solace</td><td markdown>[Interface to Solace PubSub+ broker](solace/index.md)</td></tr>

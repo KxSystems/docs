@@ -53,6 +53,13 @@ The Fusion interface libraries are maintained and supported by KX.
 </td>
 </tr>
 <tr markdown>
+<td markdown class="nowrap">[insights-assemblies](https://github.com/KxSystems/kxsystems.github.io)</td>
+<td markdown>
+Deployment assemblies for KX Insights
+==new==
+</td>
+</tr>
+<tr markdown>
 <td markdown class="nowrap">[javakdb](https://github.com/KxSystems/javakdb)</td>
 <td markdown>
 [Java client for kdb+](interfaces/java-client-for-q.md)
@@ -75,7 +82,6 @@ kdb+ client for [Apache Kafka](https://kafka.apache.org)
 <td markdown class="nowrap">[ldap](https://github.com/KxSystems/ldap)</td>
 <td markdown>
 [Solace pub/sub brokers](interfaces/ldap/index.md)
-==new==
 </td>
 </tr>
 <tr markdown>
@@ -94,7 +100,6 @@ kdb+ client for [Apache Kafka](https://kafka.apache.org)
 <td markdown class="nowrap">[protobuf](https://github.com/KxSystems/protobufkdb)</td>
 <td markdown>
 [Protobuf](interfaces/protobuf/index.md)
-==new==
 </td>
 </tr>
 <tr markdown>

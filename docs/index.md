@@ -29,6 +29,8 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-brands-github: [KXI deployment assemblies](https://github.com/KxSystems/kxsystems.github.io)
+
     :fontawesome-solid-book: [q言語 – textbook](learn/index.md#books)
 
     :fontawesome-brands-rust: [Rust interface](https://docs.rs/kdbplus/0.1.4/kdbplus/)
@@ -37,8 +39,6 @@ Kdb+, from [KX](https://kx.com), is
     [q-memo](https://github.com/gitrj95/q-memo)
 
     :fontawesome-solid-cloud: [AWS architecture](cloud/aws/index.md)
-
-    :fontawesome-regular-map: [IoT with MQTT](wp/iot-mqtt/index.md)
 
 </div>
 
