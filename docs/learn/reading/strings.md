@@ -156,7 +156,7 @@ q)f "CCCBBBBAA"
 ```
 ??? success "Answer"
     
-        {first key desc count each group x}  / (AV)
+        {first key desc count each group x}  / (AV/DL)
 
 
 ## esreveR a ecnetnes
@@ -317,5 +317,6 @@ Tip of the trilby to
 ```txt
 AR   Ajay Rathore
 AV   Attila Vrabecz
+DL   David Lu
 ```
 
