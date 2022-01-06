@@ -77,6 +77,9 @@ openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem \
     -set_serial 01 -out client-crt.pem -extensions usr_cert
 ```
 
+:fontawesome-brands-github:
+[mkcert](https://github.com/FiloSottile/mkcert) is a simple tool for making locally-trusted development certificates.
+
 !!! warning "Secure your certificates"
 
     Store your certificates outside of the directories accessible from within kdb+, otherwise remote users can easily steal your server’s key file! 
