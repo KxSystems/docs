@@ -17,11 +17,22 @@ Ensure that your OS has the latest OpenSSL libraries installed, and that they ar
 
 Kdb+ loads the following files
 
--   Windows: `ssleay32.dll`, `libeay32.dll`
--   macOS: `libssl.dylib`
--   Linux, Solaris: `libssl.so`
+=== ":fontawesome-brands-linux: Linux, Solaris"
 
-The Windows build was tested with the precompiled libs (Win32 OpenSSL v1.0.2h Light, Win64 OpenSSL v1.0.2h Light) from <https://slproweb.com/products/Win32OpenSSL.html>
+    `libssl.so`
+
+=== ":fontawesome-brands-apple: macOS" 
+
+    `libssl.dylib`
+
+=== ":fontawesome-brands-windows: Windows"
+    
+    ```txt
+    libssl-1_1-x64.dll   libcrypto-1_1-x64.dll    w64 build
+    libssl-1_1.dll       libcrypto-1_1.dll        w32 build
+    ```
+
+The Windows build was tested with the precompiled libs [Win32 OpenSSL v1.1.1L Light, Win64 OpenSSL v1.1.1L Light](https://slproweb.com/products/Win32OpenSSL.html).
 
 
 ## Certificates
