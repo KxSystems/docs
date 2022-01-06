@@ -38,7 +38,7 @@ A template is evaluated in the following order.
 <div markdown="1" class="typewriter">
 [From phrase](#from-phrase)        _t~exp~_
 [Where phrase](#where-phrase)       _p~w~_
-[By phrase](#by-phrase)          _p~b~_
+[By phrase](../ref/select.md#by-phrase)          _p~b~_
 [Select phrase](../ref/select.md#select-phrase)      _p~s~_
 [Limit expression](../ref/select.md#limit-expression)   _L~exp~_
 </div>
