@@ -58,7 +58,7 @@ For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github
 
 ## :fontawesome-regular-handshake: Contribute
 
-> A finished work is exactly that, requires resurrection.
+> A finished work is exactly that, requires resurrection.<br>
 — _John Cage_, “Lecture on Nothing”, 1949
 
 The repository for this site is
