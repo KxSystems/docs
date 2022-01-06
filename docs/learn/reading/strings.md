@@ -156,7 +156,7 @@ q)f "CCCBBBBAA"
 ```
 ??? success "Answer"
     
-        {first desc count each group x}  / (AV)
+        {first key desc count each group x}  / (AV/DL)
 
 
 ## esreveR a ecnetnes
@@ -220,13 +220,13 @@ q)f "Several normal words"
 ```
 ??? success "Answer"
 
-        C:"AEIOUYaeiouy"            / consonants
-        {?[x in C;"_";x]}           / Vector Conditional; in
-        {@[x;where x in C;:;"_"]}   / Amend At; in
-        {$["j";x in C]'[x;"_"]}     / Case
-        {(x;"_")x in C} each        / index
-        {@[x;;:;"_"]where 12>C?x}   / Amend At; Find (AR)
-        ssr/[;C;"_"]                / ssr (AV)
+        V:"AEIOUYaeiouy"            / vowels
+        {?[x in V;"_";x]}           / Vector Conditional; in
+        {@[x;where x in V;:;"_"]}   / Amend At; in
+        {$["j";x in V]'[x;"_"]}     / Case
+        {(x;"_")x in V} each        / index
+        {@[x;;:;"_"]where 12>V?x}   / Amend At; Find (AR)
+        ssr/[;V;"_"]                / ssr (AV)
 
 
 ## Cnsnnts rdx
@@ -241,7 +241,7 @@ q)f "FLAPJACKS"
 ```
 ??? success "Answer"
     
-        except[;C]
+        except[;V]
 
 
 ## Title redacted
@@ -317,5 +317,6 @@ Tip of the trilby to
 ```txt
 AR   Ajay Rathore
 AV   Attila Vrabecz
+DL   David Lu
 ```
 
