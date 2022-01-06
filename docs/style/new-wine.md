@@ -75,7 +75,7 @@ The following rules appear in Kernighan & Plauger’s _The Elements of Programmi
 -   Make it right before you make it faster.
 -   Keep it right when you make it faster.
 -   Make it clear before you make it faster.
--   Don’t sacrifice clarity for amll gains in ‘efficiency’.
+-   Don’t sacrifice clarity for small gains in ‘efficiency’.
 -   Let your compiler do the simple optimizations.
 -   Don’t strain to re-use code; re-organize instead.
 -   Make sure special cases are truly special.
@@ -89,7 +89,7 @@ The following rules appear in Kernighan & Plauger’s _The Elements of Programmi
 -   Use variable names that mean something.
 -   Use statement labels that mean something.
 -   Format a program to help a reader understand it.
--   Indent to show the lgical structure of your program. 
+-   Indent to show the logical structure of your program. 
 -   Document your data layouts.
 -   Don’t over-comment.
 
