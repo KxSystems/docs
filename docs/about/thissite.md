@@ -82,12 +82,13 @@ Chris Shucksmith                ps288
 Cillian Reilly                  Sean Keevey
 Conor McCarthy                  Sean O’Hagan
 David Crossey                   Rian O’Cuinneagain
-David Z. Han                    Rikesh
-Deanna Morgan                   Thomas Smyth
-Diane O’Donoghue                Sergey Vidyuk
-Esperanza Lopez Aguilera        Simon Shanks
-Geo Carncross                   Vincent Bernardoff
-Ian O’Dwyer                     William Da Silva 
+David Lu                        Rikesh
+David Z. Han                    Thomas Smyth
+Deanna Morgan                   Sergey Vidyuk
+Diane O’Donoghue                Simon Shanks
+Esperanza Lopez Aguilera        Vincent Bernardoff
+Geo Carncross                   William Da Silva 
+Ian O’Dwyer                     
 ```
 
 ## :fontawesome-solid-balance-scale: License
