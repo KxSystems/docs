@@ -71,11 +71,11 @@ integer >0           til y                            Roll, Deal
 0Ng                  GUIDs                            Roll, Deal
 float, temporal ≥0   0 to y                           Roll
 0i                   ints                             Roll
-0                    longs                            Roll
+0                    longs                            Roll, Deal
 0b                   01b                              Roll
 " "                  .Q.a                             Roll
 0x0                  bytes                            Roll
-numeric symbol `n    symbols, each of n chars (n≤8)   Roll
+numeric symbol `n    symbols, each of n chars (n≤8)   Roll, Deal
                      from abcdefghijklmnop
 ```
 
