@@ -29,7 +29,7 @@ Typically, large tables in the HDB (such as daily tick data) are stored splayed,
 Knowledge Base: [Splayed tables](../../kb/splayed-tables.md)  
 _Q for Mortals_: [§11.3 Splayed Tables](/q4m3/11_IO/#113-splayed-tables)
 
-Typically also, large tables are stored [partitioned]/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables) by date. Very large databases may be further partitioned into segments, using [`par.txt`](../../kb/partition.md).
+Typically also, large tables are stored [partitioned](/q4m3/14_Introduction_to_Kdb+/#143-partitioned-tables) by date. Very large databases may be further partitioned into segments, using [`par.txt`](../../kb/partition.md).
 
 These storage strategies give best efficiency for searching and retrieval. For example, the database can be written over several drives. Also, partitions can be allocated to secondary threads so that queries over a range of dates can be run in parallel. The exact set-up would be customized for each installation.
 
