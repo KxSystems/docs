@@ -1,6 +1,6 @@
 ---
 title: vs – Reference – kdb+ and q documentation
-description: vs is a q keyword that performs variousn functions under the scheme vector-from-scalar (atom).
+description: vs is a q keyword that performs various functions under the scheme vector-from-scalar (atom).
 author: Stephen Taylor
 keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 ---
@@ -15,8 +15,8 @@ keywords: atom, decode, kdb+, keyword, q, scalar, vector, vs
 
 _“Vector from scalar”_
 
--   _partition a list_
--   _encode a vector from an atom_
+-   _partition a symbol, string, or bytestream_
+-   _encode a vector from an atom, or a matrix from a vector_
 
 ```syntax
 x vs y    vs[x;y]
@@ -48,12 +48,16 @@ q)"|" vs "red|green||blue"
 ```
 
 
-### String by linebreak
+### String or bytestream by linebreak
 
-Where `x` is the empty symbol `` ` ``, and `y` is a string, returns as a list of strings `y` partitioned on embedded line terminators into lines. (Recognizes both Unix `\n` and Windows `\r\n` terminators).
+Where `x` is the empty symbol `` ` ``, and `y` is a string or bytestream, returns as a list of strings `y` partitioned on embedded line terminators into lines. (Recognizes both Unix `\n` and Windows `\r\n` terminators).
 
 ```q
 q)` vs "abc\ndef\nghi"
+"abc"
+"def"
+"ghi"
+q)` vs "x"$"abc\ndef\nghi"
 "abc"
 "def"
 "ghi"
@@ -62,6 +66,22 @@ q)` vs "abc\r\ndef\r\nghi"
 "def"
 "ghi"
 ```
+
+??? detail "Elides trailing linebreaks"
+
+	The treatment of linebreaks varies usefully from a left argument of `\n`.
+
+	```q
+	q)"\n" vs "abc\ndef\nghi\n"
+	"abc"
+	"def"
+	"ghi"
+	""
+	q)` vs "abc\ndef\nghi\n"
+	"abc"
+	"def"
+	"ghi"
+	```
 
 
 ### Symbol by dot
