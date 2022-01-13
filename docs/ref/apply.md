@@ -101,9 +101,7 @@ _Q for Mortals_
 
 ## Nullaries
 
-Nullaries (functions of rank 0) are handled differently. The pattern above suggests that the empty list `()` would be the argument list to nullary `v`, but `v . ()` is a case of Index, where empty `vx` always selects `v`.
-
-Apply for nullary `v` is denoted by `v . enlist[::]`, i.e. the right argument is the enlisted null.
+Nullaries (functions of rank 0) are handled differently. The pattern above suggests that the empty list `()` would be the argument list to nullary `v`, but Apply for nullary `v` is denoted by `v . enlist[::]`, i.e. the right argument is the enlisted null.
 For example:
 
 ```q
@@ -121,15 +119,11 @@ The result is found in `d` at depth `count i` as follows.
 
 The list `i` is a list of successive indexes into `d`. `i[0]` must be in the domain of `d@`. It selects an item of `d`, which is then indexed by `i[1]`, and so on.
 
-
 `( (d@i[0]) @ i[1] ) @ i[2]` …
-
 
 ```q
 q)d
-(1 2 3;4 5 6 7)
-(8 9;10;11 12)
-(13 14;15 16 17 18;19 20)
+((1 2 3;4 5 6 7) ;(8 9;10;11 12) ;(13 14;15 16 17 18;19 20))
 q)d . enlist 1      / select item 1, i.e. d@1
 8 9
 10
@@ -138,6 +132,15 @@ q)d . 1 2           / select item 2 of item 1
 11 12
 q)d . 1 2 0         / select item 0 of item 2 of item 1
 11
+```
+
+A right argument of `enlist[::]` selects the entire left argument.  
+
+```q
+q)d . enlist[::]
+(1 2 3;4 5 6 7)
+(8 9;10;11 12)
+(13 14;15 16 17 18;19 20)
 ```
 
 
