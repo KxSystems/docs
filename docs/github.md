@@ -1043,14 +1043,21 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 					</a></span>
 </td>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/gitrj95/q-fmt">q-fmt</a> ==new==</td>
+<td markdown class="nowrap"><a href="https://github.com/gitrj95/q-fmt">q-fmt</a></td>
 <td markdown>Format strings in q style as s-expressions or m-expressions. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
 						(RJ)
 					</a></span>
 </td>
 </tr>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/gitrj95/q-memo">q-memo</a> ==new==</td>
+<td markdown class="nowrap"><a href="https://github.com/gitrj95/q-fn">q-fn</a> ==new==</td>
+<td markdown>Parsing and composition tools. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
+						(RJ)
+					</a></span>
+</td>
+</tr>
+<tr markdown>
+<td markdown class="nowrap"><a href="https://github.com/gitrj95/q-memo">q-memo</a></td>
 <td markdown>Memoization tooling for functions in the q programming language. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
 						(RJ)
 					</a></span>

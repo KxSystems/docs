@@ -29,6 +29,8 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-brands-github: [Parsing &amp; composition](https://github.com/gitrj95/q-fn)
+
     :fontawesome-brands-github: [KXI deployment assemblies](https://github.com/KxSystems/kxsystems.github.io)
 
     :fontawesome-solid-book: [q言語 – textbook](learn/index.md#books)
@@ -37,8 +39,6 @@ Kdb+, from [KX](https://kx.com), is
 
     :fontawesome-brands-github: [q-fmt](https://github.com/gitrj95/q-fmt),
     [q-memo](https://github.com/gitrj95/q-memo)
-
-    :fontawesome-solid-cloud: [AWS architecture](cloud/aws/index.md)
 
 </div>
 
