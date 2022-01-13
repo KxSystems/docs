@@ -368,7 +368,9 @@ If the call is instigated in a secondary thread â€“ i.e., not the main thread â€
     
     : Suppose that at some point q needed a 32MB allocation. It requested a new 64MB slab from the OS, split it in half, used and freed the object, and returned the two 32MB slabs to the freelist. Now if q needs to allocate 64MB, it will have to make another request to the OS. running `.Q.gc` would attempt to coalesce these two 32MB slabs together back into one 64MB, which would allow it to be returned to the OS (or reused for larger allocations, if the resulting slab is <64MB).
     
-    lefto
+    leftover objects
+
+    : If most of the objects allocated from a 64MB slab are freed but one remains, the slab still cannot be returned to the OS (or coalesced). In this case, `.Q.gc` notifies the OS that the physical memory backing the unused pages in the block can be reclaimed.
 
 
 :fontawesome-solid-book-open:
