@@ -293,6 +293,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr markdown><td markdown>IntelliJ IDEA</td>
 <td markdown>
 :fontawesome-brands-github: [a2ndrade/k-intellij-plugin](https://github.com/a2ndrade/q-intellij-plugin)<br/>
+:fontawesome-brands-github: [kdbinsidebrains/plugin](https://github.com/kdbinsidebrains/plugin) ==new==<br/>
 :fontawesome-brands-gitlab: [shupakabras/kdb-intellij-plugin](https://gitlab.com/shupakabras/kdb-intellij-plugin) 
 </td>
 </tr>
@@ -327,7 +328,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr markdown>
 <td markdown>Visual Studio Code</td>
 <td markdown>
-:fontawesome-brands-windows: [kdb+/q extension](https://marketplace.visualstudio.com/items?itemName=jshinonome.vscode-q) ==new==<br>
+:fontawesome-brands-windows: [kdb+/q extension](https://marketplace.visualstudio.com/items?itemName=jshinonome.vscode-q)<br>
 :fontawesome-brands-github: [lwshang/vscode-q](https://github.com/lwshang/vscode-q)
 </td>
 </tr>

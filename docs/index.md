@@ -29,6 +29,8 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-brands-github: [IntelliJ IDEA plugin](https://github.com/kdbinsidebrains/plugin)
+
     :fontawesome-brands-github: [Parsing &amp; composition](https://github.com/gitrj95/q-fn)
 
     :fontawesome-brands-github: [KXI deployment assemblies](https://github.com/KxSystems/kxsystems.github.io)
@@ -36,9 +38,6 @@ Kdb+, from [KX](https://kx.com), is
     :fontawesome-solid-book: [q言語 – textbook](learn/index.md#books)
 
     :fontawesome-brands-rust: [Rust interface](https://docs.rs/kdbplus/0.1.4/kdbplus/)
-
-    :fontawesome-brands-github: [q-fmt](https://github.com/gitrj95/q-fmt),
-    [q-memo](https://github.com/gitrj95/q-memo)
 
 </div>
 
