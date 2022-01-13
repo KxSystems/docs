@@ -1051,7 +1051,7 @@ demonstration notebook for [natural-language processing](ml/nlp/index.md)
 </tr>
 <tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/gitrj95/q-fn">q-fn</a> ==new==</td>
-<td markdown>Parsing and composition tools. <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
+<td markdown>General higher-order functions library <span class="author"><a href="https://github.com/gitrj95?tab=repositories">
 						(RJ)
 					</a></span>
 </td>

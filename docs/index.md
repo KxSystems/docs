@@ -31,7 +31,7 @@ Kdb+, from [KX](https://kx.com), is
 
     :fontawesome-brands-github: [IntelliJ IDEA plugin](https://github.com/kdbinsidebrains/plugin)
 
-    :fontawesome-brands-github: [Parsing &amp; composition](https://github.com/gitrj95/q-fn)
+    :fontawesome-brands-github: [Higher-order functions lib](https://github.com/gitrj95/q-fn)
 
     :fontawesome-brands-github: [KXI deployment assemblies](https://github.com/KxSystems/kxsystems.github.io)
 
