@@ -64,6 +64,9 @@ Tables are first-class objects in q.
 
 Load the [Suppliers and Parts](https://en.wikipedia.org/wiki/Suppliers_and_Parts_database "Wikipedia") database.
 
+:fontawesome-solid-download:
+[`sp.q`](https://raw.githubusercontent.com/KxSystems/kdb/master/sp.q)
+
 ```q
 q)\l sp.q
 +`p`city!(`p$`p1`p2`p3`p4`p5`p6`p1`p2;`london`london`london`london`london`lon..
