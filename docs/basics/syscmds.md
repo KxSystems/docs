@@ -322,10 +322,54 @@ q){x where x like"ht??"}system"f .h"
 Show or set garbage-collection mode.
 The default mode is 0.
 
-B | mode      | behavior
---|-----------|------------------------------------------------------
-0 | deferred  | returns memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
-1 | immediate | returns (certain types of) memory to the OS as soon as no longer referenced; has an associated performance overhead.
+0 (deferred)
+
+: returns memory to the OS when either `.Q.gc[]` is called or an allocation fails, hence has a performance advantage, but can be more difficult to dimension or manage memory requirements.
+
+1 (immediate)
+
+: returns (certain types of) memory to the OS as soon as no longer referenced; has an associated performance overhead.
+
+Q manages its own thread-local heap.
+
+Vectors always have a capacity and a used size (the count).
+
+There is no garbage since q uses reference counting. As soon as there are no references to an object, its memory is returned to the heap.
+
+During that return of memory, q checks if the capacity of the object is ≥64MB. If it is and `\g` is 1, the memory is returned immediately to the OS; otherwise, the memory is returned to the thread-local heap for reuse.
+
+Executing [`.Q.gc[]`](../ref/dotq/#qgc-garbage-collect) additionally attempts to coalesce pieces of the heap into their original allocation units and returns any units ≥64MB to the OS.
+
+Since V3.3 2015.08.23 (Linux only) unused pages in the heap are dropped from RSS during `.Q.gc[]`.
+
+When q is denied additional address space from the OS, it invokes `.Q.gc[]` and retries the request to the OS. 
+Should that fail, it will exit with `'wsfull`.
+
+When secondary threads are configured and `.Q.gc[]` is invoked in the main thread it will automatically invoke `.Q.gc[]` in each secondary thread. 
+If the call is instigated in a secondary thread – i.e., not the main thread – it will affect that thread’s local heap only.
+
+??? detail "Notes on the allocator"
+
+    Q’s allocator bins objects in power-of-two size categories, from 16b (e.g. an atom) to 64MB. 
+    If there is already a slab in the object category’s freelist, it is reused. 
+    If there are no available slabs, a larger slab is recursively split in two until the needed category size is reached. 
+    If there are no free slabs available, a new 64MB slab is requested from the system. 
+    When an object is deallocated, its memory slab is returned to the corresponding category’s freelist.
+    
+    Allocations larger than 64MB are requested from the OS directly, and this is what `-g 1` causes to be immediately returned.
+    
+    Note that larger allocations do not cause any fragmentation and in case of `-g 1` always immediately return.
+    
+    It is the smaller allocations (<64MB) that typically represent the bulk of a process allocation workload that can cause the heap to become fragmented.
+    
+    There are two primary cases of heap fragmentation:
+    
+    split slab
+    
+    : Suppose that at some point q needed a 32MB allocation. It requested a new 64MB slab from the OS, split it in half, used and freed the object, and returned the two 32MB slabs to the freelist. Now if q needs to allocate 64MB, it will have to make another request to the OS. running `.Q.gc` would attempt to coalesce these two 32MB slabs together back into one 64MB, which would allow it to be returned to the OS (or reused for larger allocations, if the resulting slab is <64MB).
+    
+    lefto
+
 
 :fontawesome-solid-book-open:
 [Command-line option `-g`](cmdline.md#-g-garbage-collection)
