@@ -192,6 +192,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </tr>
 <tr markdown><td markdown>Bloomberg</td><td markdown>[Q client for Bloomberg](q-client-for-bloomberg.md)</td></tr>
 <tr markdown><td markdown>[BosonNLP](https://bosonnlp.com)</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
+<tr markdown><td markdown>COMTRADE</td><td markdown>:fontawesome-brands-github: [diamondrod/q_comtrade](https://github.com/diamondrod/q_comtrade) ==new==</td></tr>
 <tr markdown><td markdown>CUDA</td><td markdown>[GPUs](gpus.md)</td></tr>
 <tr markdown><td markdown>Expat XML parser</td><td markdown>:fontawesome-brands-github: [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
 <tr markdown>
@@ -206,7 +207,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr markdown><td markdown>[IEX](https://iextrading.com)</td><td markdown>:fontawesome-brands-github: [himoacs/iex_q](https://github.com/himoacs/iex_q)</td></tr>
 <tr markdown><td markdown>J</td><td markdown>[Q client for J](q-client-for-j.md)</td></tr>
 <tr markdown><td markdown>JDBC</td><td markdown>:fontawesome-brands-github: [CharlesSkelton/babel](https://github.com/CharlesSkelton/babel)</td></tr>
-<tr markdown><td markdown>Kafka</td><td markdown>:fontawesome-brands-github: [ajayrathore/krak](https://github.com/ajayrathore/krak) ==new==</td></tr>
+<tr markdown><td markdown>Kafka</td><td markdown>:fontawesome-brands-github: [ajayrathore/krak](https://github.com/ajayrathore/krak)</td></tr>
 <tr markdown><td markdown>Lightning</td><td markdown>:fontawesome-brands-github: [jlucid/qlnd](https://github.com/jlucid/qlnd)</td></tr>
 <tr markdown><td markdown>MQTT</td><td markdown>:fontawesome-brands-github: [himoacs/mqtt-q](https://github.com/himoacs/mqtt-q)</td></tr>
 <tr markdown><td markdown>ODBC</td><td markdown>[Q client for ODBC](q-client-for-odbc.md)<br/>

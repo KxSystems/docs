@@ -29,6 +29,8 @@ Kdb+, from [KX](https://kx.com), is
 <div id="kx-whats-new" style="display: inline-flex; margin-left: 25px; width: 250px;" markdown="1">
 !!! tip "New"
 
+    :fontawesome-brands-github: [COMTRADE file parser](https://github.com/diamondrod/q_comtrade)
+
     :fontawesome-brands-github: [IntelliJ IDEA plugin](https://github.com/kdbinsidebrains/plugin)
 
     :fontawesome-brands-github: [Higher-order functions lib](https://github.com/gitrj95/q-fn)
@@ -36,8 +38,6 @@ Kdb+, from [KX](https://kx.com), is
     :fontawesome-brands-github: [KXI deployment assemblies](https://github.com/KxSystems/kxsystems.github.io)
 
     :fontawesome-solid-book: [q言語 – textbook](learn/index.md#books)
-
-    :fontawesome-brands-rust: [Rust interface](https://docs.rs/kdbplus/0.1.4/kdbplus/)
 
 </div>
 
