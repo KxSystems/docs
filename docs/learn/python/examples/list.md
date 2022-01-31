@@ -60,7 +60,7 @@ q)swapPositions[23 65 19 90;0;2]
 <big>:fontawesome-regular-comment:</big>
 Functional [Amend](../../../ref/amend.md) `@` lets us specify the list, the indexes to amend, the function to apply (in this case Assign `:`) and the replacement values. Functional Amend can modify a persisted list at selected indexes without reading the entire list into memory – very efficient for long lists.
 
-Functional Amend is used here to apply Assign (`:`) at selected indexes of the list. The effect is simply to replace selected items. Other operators – or functions – can be used instead of Assign. 
+Functional Amend is used here to apply Assign (`:`) at selected indexes of the list. The effect is simply to replace selected items. Other operators – or functions – can be used instead of Assign.
 
 
 ## [Remove Nth occurrence of the given word](https://www.geeksforgeeks.org/python-program-to-remove-nth-occurrence-of-the-given-word/)
@@ -149,8 +149,8 @@ q)
 ```
 
 <big>:fontawesome-regular-comment:</big>
-Clearing a list means removing all its items while retaining its datatype. 
-[`0#`](../../../ref/take.md) is perfect for this. 
+Clearing a list means removing all its items while retaining its datatype.
+[`0#`](../../../ref/take.md) is perfect for this.
 
 
 ## [Reverse a list](https://www.geeksforgeeks.org/python-reversing-list/)
@@ -178,9 +178,9 @@ q)sum 8 6 8 10 8 20 10 8 8 = 8
 ```
 
 <big>:fontawesome-regular-comment:</big>
-Just as you were taught in school, `=` tests equality. Like other q operators, iteration is implicit, so below `8 6 8 10 8 20 10 8 8 = 8` returns a list of flags: `101010011b`. 
+Just as you were taught in school, `=` tests equality. Like other q operators, iteration is implicit, so below `8 6 8 10 8 20 10 8 8 = 8` returns a list of flags: `101010011b`.
 
-Which we sum. 
+Which we sum.
 
 
 ## [Second-largest number in a list](https://www.geeksforgeeks.org/python-program-to-find-second-largest-number-in-a-list/)
@@ -268,7 +268,7 @@ q){x where x>0} 12 -7 5 64 -14
 
 ## [Remove multiple items from a list](https://www.geeksforgeeks.org/remove-multiple-elements-from-a-list-in-python/)
 
-The examples given in the linked page show two problems. 
+The examples given in the linked page show two problems.
 The first is to remove from one list all items that are also items of another.
 
 ```python
@@ -309,7 +309,7 @@ q)removeRange[11 5 17 18 23 50;1;5]
 ## [Remove empty tuples from a list](https://www.geeksforgeeks.org/python-remove-empty-tuples-list/)
 
 ```python
->>> tuples = [(), ('ram','15','8'), (), ('laxman', 'sita'), ('krishna', 'akbar', '45'), 
+>>> tuples = [(), ('ram','15','8'), (), ('laxman', 'sita'), ('krishna', 'akbar', '45'),
         ('', ''), ()]
 
 >>> [t for t in tuples if t]
@@ -357,7 +357,7 @@ q)group 10 20 30 20 20 30 40 50 -20 60 60 -20 -20
 60 | 9 10
 ```
 
-`count each` replaces the values with their lengths; then `1<` with flags. 
+`count each` replaces the values with their lengths; then `1<` with flags.
 
 ```q
 q)1<count each group 10 20 30 20 20 30 40 50 -20 60 60 -20 -20
@@ -426,7 +426,7 @@ q)l1 iasc l2
 ```
 
 <big>:fontawesome-regular-comment:</big>
-Keyword `iasc` grades a list, returning the indexes that would put it in ascending order. 
+Keyword `iasc` grades a list, returning the indexes that would put it in ascending order.
 
 But the list lengths must match:
 
@@ -495,7 +495,7 @@ is | 1 2!1 1
 ```
 
 <big>:fontawesome-regular-comment:</big>
-Flipping the list produces two lists: symbols and integers. 
+Flipping the list produces two lists: symbols and integers.
 
 ```q
 q)flip lst
@@ -503,7 +503,7 @@ Gfg Gfg Gfg Gfg Gfg is is
 1   2   3   1   2   1  2
 ```
 
-Passed by Apply (`.`), they appear in the lambda as `x` and `y` respectively. 
+Passed by Apply (`.`), they appear in the lambda as `x` and `y` respectively.
 Grouping the symbols returns a dictionary. Its values are lists of indexes into `lst`.
 
 ```q
@@ -645,7 +645,7 @@ q)lst where not(and)prior(count each lst)=0
 ```
 
 <big>:fontawesome-regular-comment:</big>
-`(count each lst)=0` flags the empty strings. 
+`(count each lst)=0` flags the empty strings.
 `(and)prior` flags empty strings preceded by another empty string.
 
 A more efficient Python solution would also count the string lengths once only.
@@ -657,6 +657,35 @@ A more efficient Python solution would also count the string lengths once only.
 ['Gfg', '', 'is', '', 'best']
 ```
 
+
+## [Flattening a list](https://www.geeksforgeeks.org/python-flatten-list-to-individual-elements/)
+
+```python
+from collections.abc import Iterable
+
+def flatten(param):
+    for item in param:
+        if isinstance(item, Iterable):
+            yield from flatten(item)
+        else:
+            yield item
+```
+
+```python
+>>> lst = [1, 2, 4, [5432, 34, 232, 345], [123, [543, 45]], 56]
+
+>>> list(flatten(lst))
+[1, 2, 4, 5432, 34, 232, 345, 123, 543, 45, 56]
+```
+
+In q, we can make use of [converge](https://code.kx.com/q/ref/over/#converge)
+
+```q
+q)lst:(1; 2; 4; (5432; 34; 232; 345); (123; (543; 45)); 56)
+
+q)raze over lst
+1 2 4 5432 34 232 345 123 543 45 56
+```
 
 ## [Numeric sort in mixed-pair string list](https://www.geeksforgeeks.org/python-numeric-sort-in-mixed-pair-string-list/)
 
@@ -677,7 +706,7 @@ q)lst idesc first(" I";" ")0: lst
 ```
 
 <big>:fontawesome-regular-comment:</big>
-This form of the [File Text](../../../ref/file-text.md#load-csv) operator `0:` interprets delimited character strings, most commonly from CSVs. 
+This form of the [File Text](../../../ref/file-text.md#load-csv) operator `0:` interprets delimited character strings, most commonly from CSVs.
 
 
 ## [First even number in list](https://www.geeksforgeeks.org/python-first-even-number-in-list/)
@@ -700,13 +729,13 @@ q)first lst where 0 = lst mod 2
 ```
 
 <big>:fontawesome-regular-comment:</big>
-The naïve q solution computes the modulo of each item in the list. 
+The naïve q solution computes the modulo of each item in the list.
 This may be all right for a short list, but a long list wants an algorithm that stops at an even number.
 
-Start with a lambda: `{lst[y],1+y}`. 
-The reference to `y` tells us it is a binary function, with default argument names `x` and `y`. 
+Start with a lambda: `{lst[y],1+y}`.
+The reference to `y` tells us it is a binary function, with default argument names `x` and `y`.
 There is no reference to `x` so we know its result depends only on its second argument, `y`.
-In fact, it returns another pair: the value of `lst` at `y`, and the next index, `y+1`. 
+In fact, it returns another pair: the value of `lst` at `y`, and the next index, `y+1`.
 Projecting [Apply](../../../ref/apply.md) onto the lambda gives us a unary function that takes a pair as its argument.
 
 ```q
@@ -725,7 +754,7 @@ q)2 .[{lst[y],1+y};]\1 0
 
 we see the initial state (`1 0`) followed by the first two items of `lst` paired with their (origin-1) indexes.
 
-The Do form of the iterator uses an integer to specify the number of iterations. In the [While form of the iterator](../../../ref/accumulators.md#while), we replace the integer with a test function. Iteration continues until the test function returns zero. 
+The Do form of the iterator uses an integer to specify the number of iterations. In the [While form of the iterator](../../../ref/accumulators.md#while), we replace the integer with a test function. Iteration continues until the test function returns zero.
 
 ```q
 q){first[x]mod 2} .[{lst[y],1+y};]\1 0
@@ -822,7 +851,7 @@ Gfg is
 ```
 
 <big>:fontawesome-regular-comment:</big>
-`(x?x)<>til count x` flags the duplicate items of `x`. 
+`(x?x)<>til count x` flags the duplicate items of `x`.
 The complete expression returns them.
 
 In q, a list of dictionaries with the same keys is a table.
@@ -891,9 +920,9 @@ q)" " sv {x iasc asc each x} " " vs s
 ```
 
 <big>:fontawesome-regular-comment:</big>
-In Python, `[y for x,y in sorted(zip(a, w))]` sorts the words by their alphabetized versions. In q, `{x iasc asc each x}` does it. In both solutions the rest of the code splits and reforms the input and output strings. 
+In Python, `[y for x,y in sorted(zip(a, w))]` sorts the words by their alphabetized versions. In q, `{x iasc asc each x}` does it. In both solutions the rest of the code splits and reforms the input and output strings.
 
-The Python sort returns the anagrams in alpha order in each group. 
+The Python sort returns the anagrams in alpha order in each group.
 To achieve the same in q, suffix each alphabetized word with the original:
 
 ```q
@@ -919,8 +948,8 @@ q)max count each group asc each words
 ```
 
 <big>:fontawesome-regular-comment:</big>
-The q solution implements the Python method. 
-Sort each string: anagrams match. 
+The q solution implements the Python method.
+Sort each string: anagrams match.
 
 ```q
 q)asc each words
