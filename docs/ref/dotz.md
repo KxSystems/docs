@@ -703,7 +703,7 @@ This allows a user to handle remote qcon connections (via `.z.pq`) without defin
 .z.ps:f
 ```
 
-Where `f` is a nary function, `.z.ps` is evaluated with the object that is passed to this kdb+ session via an asynchronous request. The return value is discarded.
+Where `f` is a unary function, `.z.ps` is evaluated with the object that is passed to this kdb+ session via an asynchronous request. The return value is discarded.
 
 `.z.ps` can be unset with `\x .z.ps`, which restores the default behavior.
 
