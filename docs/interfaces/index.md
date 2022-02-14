@@ -192,7 +192,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </tr>
 <tr markdown><td markdown>Bloomberg</td><td markdown>[Q client for Bloomberg](q-client-for-bloomberg.md)</td></tr>
 <tr markdown><td markdown>[BosonNLP](https://bosonnlp.com)</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
-<tr markdown><td markdown>COMTRADE</td><td markdown>:fontawesome-brands-github: [diamondrod/q_comtrade](https://github.com/diamondrod/q_comtrade) ==new==</td></tr>
+<tr markdown><td markdown>COMTRADE</td><td markdown>:fontawesome-brands-github: [diamondrod/q_comtrade](https://github.com/diamondrod/q_comtrade)</td></tr>
 <tr markdown><td markdown>CUDA</td><td markdown>[GPUs](gpus.md)</td></tr>
 <tr markdown><td markdown>Expat XML parser</td><td markdown>:fontawesome-brands-github: [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
 <tr markdown>
@@ -203,6 +203,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </td>
 </tr>
 <tr markdown><td markdown>ForexConnect</td><td markdown>:fontawesome-brands-github: [mortensorensen/qfxcm](https://github.com/mortensorensen/qfxcm)</td></tr>
+<tr markdown><td markdown>[gRPC](https://grpc.io)</td><td markdown>:fontawesome-brands-github: [diamondrod/qrpc](https://github.com/diamondrod/qrpc) ==new==</td></tr>
 <tr markdown><td markdown>Interactive Brokers</td><td markdown>:fontawesome-brands-github: [mortensorensen/QInteractiveBrokers](https://github.com/mortensorensen/QInteractiveBrokers)</td></tr>
 <tr markdown><td markdown>[IEX](https://iextrading.com)</td><td markdown>:fontawesome-brands-github: [himoacs/iex_q](https://github.com/himoacs/iex_q)</td></tr>
 <tr markdown><td markdown>J</td><td markdown>[Q client for J](q-client-for-j.md)</td></tr>
