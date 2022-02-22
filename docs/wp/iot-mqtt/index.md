@@ -180,7 +180,7 @@ The uploaded sketch gathers temperature, pressure, humidity, and light readings 
 
 ### Reading serial data with kdb+
 
-The originals of the serial communication protocol data back to 1960. It is still in use in devices due to its simplicity.
+The origins of the serial communication protocol data back to 1960. It is still in use in devices due to its simplicity.
 
 Reading the serial data in kdb+ is quick using [named pipe](../../kb/named-pipes.md) support:
 
