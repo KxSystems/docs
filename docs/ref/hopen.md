@@ -38,7 +38,7 @@ Where
 -   `timeout` is milliseconds as an integer
 -   `port` is a local port number as an integer atom
 
-conencts to a file object or a communication handle, and returns a connection handle as an int.
+connects to a file object or a communication handle, and returns a connection handle as an int.
 
 ```q
 hopen ":path/to/file.txt"                   / filehandle
