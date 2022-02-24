@@ -112,6 +112,27 @@ q)"b"$" ",.Q.an
 ```
 
 
+## Byte
+
+```q
+q)"x"$3 4 5
+0x030405
+q)"x"$"abc"
+0x616263
+```
+
+??? danger "Casting longs above int infinity"
+
+    Longs greater than `0wi` cast to `0xff`
+
+    ```q
+    q)"x"$-2 -1 0 1 2+0Wi
+    0xfdfeffffff
+    ```
+
+    This is considered an error and is planned to change to `0x00`.
+
+
 ## Temporal
 
 Find parts of time:
