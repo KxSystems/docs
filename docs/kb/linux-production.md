@@ -3,67 +3,34 @@ title: Linux production notes – Knowledge Base – kdb+ and q documentation
 description: Notes for deploying kdb+ processes on production Linux servers
 keywords: kdb+, linux, production, q
 ---
-# Linux production notes
+# :fontawesome-brands-linux: Linux production notes
 
+## Non-Uniform Memory Access (NUMA) hardware
 
+Typically, a server motherboard has several sockets, each housing a physical CPU, connected to its own subset of DIMM and PCIe slots. Since access to another socket's RAM has to be mediated by that socket's CPU, such an architecture is called Non-UniformMemory Access, or NUMA. From the kernel's perspective, physical sockets are referred to as nodes.
 
-!!! important "Linux kernels"
+You can see the kernel's view of your system's topology with `numactl -H`. When allocating memory, the kernel has to decide which node's free pages to use. This decision is governed by 'NUMA policies', which can be set by running q under numactl. Note that q itself is not aware of NUMA.
 
-    KX recommendations for NUMA hardware, Transparent Huge Pages and Huge Pages are different for different Linux kernels. 
-    Details below. Look for the :fontawesome-solid-code: icon. 
-
-
-
-## Non-Uniform Access Memory (NUMA) hardware
-
-Historically, there have been a number of situations where the choice of NUMA memory management settings in the kernel would adversely affect the performance of q on systems using NUMA memory architectures. This resulted in higher-than-expected system-process usage for q, and lower memory performance. For this reason we made certain recommendations for the settings for memory interleave and transparent huge pages. 
-
-One of the performance issues seen by q in this context is the same as the “swap insanity” issue, as linked below. Essentially, when the Linux kernel decides to swap out dirty pages, due to memory exhaustion, it was observed to affect performance of q, significantly more than expected. A relief for this situation was achieved via setting NUMA interleaving options in the kernel.
-
-However, with the introduction of new Linux distributions based on newer kernel versions we now recommend different NUMA settings, depending on the version of the distribution being used. The use of the interleave feature should still be considered for those cases where your code drives the q processes to write to memory pages in excess of the physical memory capacity of the node. For distributions based on kernels
-
--   **3.x or higher**, please disable `interleave`, and enable `zone_reclaim`; for all situations where memory page demand is constrained to the physical memory space of the node, this should return a better overall performance.  
--   **2.6 or earlier** (e.g RHEL 6.7 or CentoS 6.7 or earlier), we recommend to disable NUMA, and instead set an interleave memory policy, especially in the use-case described above.
-
-Linux kernel   | NUMA    | interleave memory | zone-reclaimed
----------------|---------|-------------------|---------------
-3.x or higher  | enable  | disable           | enable        
-2.6 or earlier | disable | enable            |
-
-In both cases, q is unaware of whether NUMA is enabled or not.
-
-If possible, you should change the NUMA settings via a BIOS setting, if that is supported by your system. Otherwise use the technique below.
-
-To fully disable NUMA and enable an interleave memory policy, start q with the `numactl` command as follows
+Since memory access is fastest within one node, if you know that your workload fits into one node's memory, you should just restrict the process to that node for maximum performance with the following to run q within node 0:
 
 ```bash
-$ numactl --interleave=all q
+numactl -N 0 -m 0 q ...
 ```
 
-_and_ disable zone-reclaim in the proc settings as follows
+By default, linux would try to allocate on the 'current' node (i.e. that on to which the CPU currently executing q belongs), however as the processes are moved by the scheduler freely across node boundaries, one ends up with pages allocated on multiple nodes, which leads to inconsistent performance.
+
+If, however, the working set routinely and significantly exceeds a single node, you might prefer to allocate round-robin on all (or a subset of) nodes, e.g. for all nodes:
 
 ```bash
-$ echo 0 > /proc/sys/vm/zone_reclaim_mode
+numactl -i all q ...
 ```
 
-!!! info "The MySQL “swap insanity” problem and the effects of NUMA"
-
-    Although [**this post**](https://blog.jcole.us/2010/09/28/mysql-swap-insanity-and-the-numa-architecture/) is about the impact on MySQL, the issues are the same for other databases such as q.
-
-To find out whether NUMA is enabled in your bios, use
-
-```bash
-$ dmesg | grep -i numa
-```
-
-And to see if NUMA is enabled on a process basis
-
-```bash
-$ numactl -s
-```
+This ensures that the memory is distributed evenly, which results in lower but very predictable performance.
 
 :fontawesome-regular-hand-point-right: 
 [CPU affinity – Linux](cpu-affinity.md#linux)
+
+See also the documentation for [set\_mempolicy(2)](https://man7.org/linux/man-pages/man2/set_mempolicy.2.html) for a discussion on the various policies.
 
 
 ## Huge Pages and Transparent Huge Pages (THP)
@@ -95,7 +62,7 @@ Some distributions may require a slightly different path, e.g:
 
 
 ```bash
-$ echo never >/sys/kernel/mm/redhat_transparent_hugepage/enabled
+echo never >/sys/kernel/mm/redhat_transparent_hugepage/enabled
 ```
 Another possibility to configure this is via `grub`
 
@@ -140,20 +107,20 @@ It is the key to the default enums.
 If you find that q is seg faulting (crashing) when accessing compressed files, try increasing the Linux kernel parameter `vm.max_map_count`. As root
 
 ```bash
-$ sysctl vm.max_map_count=16777216
+sysctl vm.max_map_count=16777216
 ```
 
 and/or make a suitable change for this parameter more permanent through `/etc/sysctl.conf`. As root
 
 ```bash
-$ echo "vm.max_map_count = 16777216" | tee -a /etc/sysctl.conf
-$ sysctl -p
+echo "vm.max_map_count = 16777216" | tee -a /etc/sysctl.conf
+sysctl -p
 ```
 
 You can check current settings with
 
 ```bash
-$ more /proc/sys/vm/max_map_count
+more /proc/sys/vm/max_map_count
 ```
 
 Assuming you are using 128-KB logical size blocks for your compressed files, a general guide is, at a minimum, set `max_map_count` to one map per 128&nbsp;KB of memory, or 65530, whichever is higher.
@@ -163,7 +130,7 @@ If you are encountering a SIGBUS error, please check that the size of `/dev/shm`
 Set `ulimit` to the higher of 4096 and 1024 plus the number of compressed columns which may be queried concurrently.
 
 ```bash
-$ ulimit -n 4096
+ulimit -n 4096
 ```
 
 !!! warning "`lz4` compression"
@@ -187,21 +154,21 @@ If you are using any of local time functions `.z.(TPNZD)` q will use the `localt
 Setting TZ environment helps this:
 
 ```bash
-$ export TZ=America/New_York
+export TZ=America/New_York
 ```
 
 or from q
 
 ```q
-q)setenv[`TZ;"Europe/London"]
+setenv[`TZ;"Europe/London"]
 ```
 
 One more way of getting excessive system calls when using `.z.(pt…)` is to have a slow clock source configured on your OS. Modern Linux distributions provide very low overhead functionality for getting current time. Use `tsc` clocksource to activate this.
 
 ```bash
-$ echo tsc >/sys/devices/system/clocksource/clocksource0/current_clocksource
+echo tsc >/sys/devices/system/clocksource/clocksource0/current_clocksource
 # list available clocksource on the system
-$ cat /sys/devices/system/clocksource/clocksource*/available_clocksource
+cat /sys/devices/system/clocksource/clocksource*/available_clocksource
 ```
 
 If you are using PTP for timekeeping, your PTP hardware vendor might provide their own implementation of time. Check that those utilize VDSO mechanism for exposing time to user space.
