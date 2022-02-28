@@ -418,7 +418,8 @@ Internal function [`-33!`](internal.md#-33x-sha-1-hash)
 -w N
 ```
 
-Workspace limit in MB for the heap per thread. Default is 0: no limit.
+Workspace limit in MB for the heap across threads for [memory domain](../ref/dotm.md) 0.
+Default is 0: no limit.
 
 :fontawesome-solid-book-open:
 [`\w` system command](syscmds.md#w-workspace) for detail
@@ -426,9 +427,7 @@ Workspace limit in MB for the heap per thread. Default is 0: no limit.
 :fontawesome-solid-book-open:
 [`.Q.w`](../ref/dotq.md#qw-memory-stats)
 
-**Domain-local**
-Since V4.0 2020.03.17 this command is no longer thread-local, but [memory domain-local](../ref/dotm.md): it sets the limit for domain 0.
-
+!!! detail "Before V4.0 2020.03.17 this command set the limit for the heap per thread."
 
 !!! tip "Other ways to limit resources"
 
