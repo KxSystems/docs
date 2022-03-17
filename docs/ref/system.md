@@ -14,7 +14,7 @@ _Execute a system command_
 system x     system[x]
 ```
 
-Where `x` is a string representing a [system command](../basics/syscmds.md) and any parameters to it, executes the command and returns any result.
+Where `x` is a string representing a system command and any parameters to it, executes the command and returns the result as a list of character vectors. 
 
 !!! note "The system command does not include a leading `\`."
 
@@ -38,6 +38,16 @@ q)system "pwd"
 "/home/guest/q"
 ```
 
+??? warning "Binary output"
+
+	The result is expected to be text, and is captured into a list of character vectors. 
+	As part of this capture, line feeds and associated carriage returns are removed. 
+	
+	This transformation makes it impractical to capture binary data from the result of the system call. 
+	Redirecting the output to a 
+	[file](https://code.kx.com/q/ref/read1/) or 
+	[fifo](https://code.kx.com/q/kb/named-pipes/) for explicit ingestion may be appropriate in such cases.
+
 
 ## :fontawesome-solid-database: Directing output to a file
 
@@ -50,32 +60,32 @@ q)system"cat x"
 is essentially the same as the shell command
 
 ```bash
-$ cat x > tmpout
+cat x > tmpout
 ```
 
 as kdb+ tries to capture the output.
 So if you do
 
 ```q
-q)system"cat x > y"
+system"cat x > y"
 ```
 
 under the covers that looks like
 
 ```bash
-$ cat x > y > tmpout
+cat x > y > tmpout
 ```
 
 Not good. So if you add the semicolon
 
 ```q
-q)system"cat x > y;"
+system"cat x > y;"
 ```
 
 the shell interpreter considers it as two statements
 
 ```bash
-$ cat x > y; > tmpout
+cat x > y; > tmpout
 ```
 
 ## :fontawesome-solid-exclamation-triangle: Capture stderr output
