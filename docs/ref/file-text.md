@@ -56,6 +56,22 @@ q)"|" 0: (`a`b`c;1 2 3;"xyz")
 "c|3|z"
 ```
 
+??? detail "Temporals are represented according to ISO 8601."
+
+    ```q
+    q)show q:.z.p
+    2022.03.14D16:12:57.427499000
+    q)show t:flip`d`t!flip"dt"$/:2#q
+    d          t
+    -----------------------
+    2022.03.14 16:12:57.427
+    2022.03.14 16:12:57.427
+    q)csv 0:t
+    "d,t"
+    "2022-03-14,16:12:57.427"
+    "2022-03-14,16:12:57.427"
+    ```
+
 Any cells containing `delimiter` will be embraced with `"` and any embedded `"` doubled.
 
 ```q
