@@ -45,8 +45,8 @@ author: Stephen Taylor
 <style>.kx-glyph{background-color: rgba(0,0,0,.05);font-size: 110%;text-align: center; white-space: nowrap;}</style>
 <table class="kx-tight" markdown>
 <tr markdown>
-<td markdown class="kx-glyph">[`.`](overloads.md#at)</td><td colspan="3" markdown>[Apply](apply.md), [Index](apply.md#index), [Trap](apply.md#trap), [Amend](amend.md)</td>
-<td markdown class="kx-glyph">[`@`](overloads.md#dot)</td><td colspan="3" markdown>[Apply At](apply.md#apply-at-index-at), [Index At](apply.md##apply-at-index-at), [Trap At](apply.md#trap-at), [Amend At](amend.md)</td>
+<td markdown class="kx-glyph">[`.`](overloads.md#dot)</td><td colspan="3" markdown>[Apply](apply.md), [Index](apply.md#index), [Trap](apply.md#trap), [Amend](amend.md)</td>
+<td markdown class="kx-glyph">[`@`](overloads.md#at)</td><td colspan="3" markdown>[Apply At](apply.md#apply-at-index-at), [Index At](apply.md##apply-at-index-at), [Trap At](apply.md#trap-at), [Amend At](amend.md)</td>
 </tr>
 <tr markdown>
 <td markdown class="kx-glyph">[`$`](overloads.md#dollar)</td><td colspan="7" markdown>[Cast](cast.md), [Tok](tok.md), [Enumerate](enumerate.md), [Pad](pad.md), [`mmu`](mmu.md)</td>
@@ -62,7 +62,7 @@ author: Stephen Taylor
 <tr markdown> <td markdown class="kx-glyph">`+ - * %`</td><td colspan="7" markdown>[Add](add.md), [Subtract](subtract.md), [Multiply](multiply.md), [Divide](divide.md)</td> </tr>
 <tr markdown> <td markdown class="kx-glyph">`= <> ~`</td><td colspan="7" markdown>[Equals](../basics/comparison/#six-comparison-operators), [Not Equals](../basics/comparison/#six-comparison-operators), [Match](../basics/comparison/#match)</td></tr>
 <tr markdown>
-<td markdown class="kx-glyph">`< <= >= >`</td><td colspan="7" markdown>[Less Than](../basics/comparison/#six-comparison-operators), [Up To](../basics/comparison/#six-comparison-operators), [At Least](../basics/comparison/#six-comparison-operators), [Greater Than](../basics/comparison/#six-comparison-operators)</td> 
+<td markdown class="kx-glyph">`< <= >= >`</td><td colspan="7" markdown>[Less Than](../basics/comparison/#six-comparison-operators), [Up To](../basics/comparison/#six-comparison-operators), [At Least](../basics/comparison/#six-comparison-operators), [Greater Than](../basics/comparison/#six-comparison-operators)</td>
 </tr>
 <tr markdown> <td markdown class="kx-glyph">`| &`</td><td colspan="3" markdown>[Greater (OR)](greater.md), [Lesser, AND](lesser.md)</td> </tr>
 <tr markdown>
