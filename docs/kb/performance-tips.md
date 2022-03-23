@@ -26,7 +26,7 @@ The scripts `throughput.q` and `io.q` are a useful starting point for users want
 
 This test measures the time to insert a million rows into a table, one at a time, and also as bulk inserts of 10, 100, 1000, and 10000 rows.
 
-To run the test, simply load it into a q session:
+To run the test, simply load :fontawesome-solid-download: [`throughput.q`](./throughput.q) into a q session:
 
 ```bash
 $ q throughput.q
@@ -42,7 +42,7 @@ On an AMD Opteron box with 4 GB of RAM, we get
 25 million inserts per second (bulk insert 10000)
 ```
 
-On an AMD Turion64 laptop with 0.5 GB of RAM,
+On an AMD Turion64 laptop with 0.5 GB of RAM
 
 ```txt
 0.928 million inserts per second (single insert)
@@ -52,41 +52,58 @@ On an AMD Turion64 laptop with 0.5 GB of RAM,
 16.129 million inserts per second (bulk insert 10000)
 ```
 
-The complete code of this benchmark is as follows:
+On a 12-core Mac mini with 64 GB of RAM
+```txt
+KDB+ 4.1t 2022.01.14 Copyright (C) 1993-2022 Kx Systems
+m64/ 12()core 65536MB ..
 
-```q
-\l trade.q
-STDOUT:-1
-tmp:STDOUT""
-show trade
-tmp:STDOUT""
-t1:trade 0
-t10:10#trade
-t100:100#trade
-t1000:1000#trade
-t10000:10000#trade
+2.639 million inserts per second (single insert)
+25 million inserts per second (bulk insert 10)
+166.667 million inserts per second (bulk insert 100)
+333.333 million inserts per second (bulk insert 1000)
+333.333 million inserts per second (bulk insert 10000)
+```
 
-tmp:value"\\t do[1000000;trade,:t1]" / prepare space
+`throughput.q`:
+<!-- Should be able to use Snippets extension here. :-( -->
+```q 
+STDOUT: -1
 
-trade:0#trade
-ms:value"\\t do[1000000;trade,:t1]"
-tmp:STDOUT(string 0.001*floor 0.5+(count trade)%ms)," million inserts per second (single insert)"
+SYMS: -1000?`3
+EXCHANGES: 10#.Q.A
+getRandomTrades: {[N] ([]sym: N?SYMS; time: N?.z.t; price: N?100e; size: N?1000i; stop:N?0b; cond:N?.Q.A; ex:N?EXCHANGES)}
 
-trade:0#trade
-ms:value"\\t do[100000;trade,:t10]"
-tmp:STDOUT(string 0.001*floor 0.5+(count trade)%ms)," million inserts per second (bulk insert 10)"
+t1: getRandomTrades 1
+t10: getRandomTrades 10
+t100: getRandomTrades 100
+t1000: getRandomTrades 1000
+t10000: getRandomTrades 10000
 
-trade:0#trade
-ms:value"\\t do[10000;trade,:t100]"
-tmp:STDOUT(string 0.001*floor 0.5+(count trade)%ms)," million inserts per second (bulk insert 100)"
+tradeNew: 0#t1;
 
-trade:0#trade
-ms:value"\\t do[1000;trade,:t1000]"
-tmp:STDOUT(string 0.001*floor 0.5+(count trade)%ms)," million inserts per second (bulk insert 1000)"
+tmp:value"\\t do[1000000;tradeNew,:t1]" / prepare space
 
-trade:0#trade
-ms:value"\\t do[100;trade,:t10000]"
-tmp:STDOUT(string 0.001*floor 0.5+(count trade)%ms)," million inserts per second (bulk insert 10000)"
+tradeNew:0#t1
+ms:value"\\t do[1000000;tradeNew,:t1]"
+tmp:STDOUT(string 0.001*floor 0.5+(count tradeNew)%ms)," million inserts per second (single insert)"
+
+tradeNew:0#t1
+ms:value"\\t do[100000;tradeNew,:t10]"
+tmp:STDOUT(string 0.001*floor 0.5+(count tradeNew)%ms)," million inserts per second (bulk insert 10)"
+
+tradeNew:0#t1
+ms:value"\\t do[10000;tradeNew,:t100]"
+tmp:STDOUT(string 0.001*floor 0.5+(count tradeNew)%ms)," million inserts per second (bulk insert 100)"
+
+tradeNew:0#t1
+ms:value"\\t do[1000;tradeNew,:t1000]"
+tmp:STDOUT(string 0.001*floor 0.5+(count tradeNew)%ms)," million inserts per second (bulk insert 1000)"
+
+tradeNew:0#t1
+ms:value"\\t do[100;tradeNew,:t10000]"
+tmp:STDOUT(string 0.001*floor 0.5+(count tradeNew)%ms)," million inserts per second (bulk insert 10000)"
+
+exit 0
 ```
 
 
