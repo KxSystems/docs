@@ -86,9 +86,9 @@ David Lu                        Rikesh
 David Z. Han                    Thomas Smyth
 Deanna Morgan                   Sergey Vidyuk
 Diane O’Donoghue                Simon Shanks
-Esperanza Lopez Aguilera        Vincent Bernardoff
-Geo Carncross                   William Da Silva 
-Ian O’Dwyer                     
+Esperanza Lopez Aguilera        Simon Watson
+Geo Carncross                   Vincent Bernardoff
+Ian O’Dwyer                     William Da Silva 
 ```
 
 ## :fontawesome-solid-balance-scale: License
