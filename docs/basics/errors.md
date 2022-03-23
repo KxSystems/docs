@@ -119,6 +119,10 @@ elim
 
     Too many enumerations (max: 57)
 
+empty
+
+: The paths listed in `par.txt` do not contain any partitions or are inaccessible.
+
 enable secondary threads via cmd line -s only
 
 :   E.g. `\s 4`
