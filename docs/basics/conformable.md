@@ -52,7 +52,7 @@ Add is applied to these arguments item-by-item, and therefore both `1 2 3+10` an
 The following function tests for conformability; its result is 1 if its arguments conform at every level, and 0 otherwise.
 
 ```q
-conform:{ $[ max 0>type each (x;y) ; 1
+conform:{ $[ max 0>type each (x;y) ; 1 ;
            count[x]=count[y] ; min x conform' y; 0]}
 ```
 
