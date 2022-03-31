@@ -540,6 +540,30 @@ q)d where all each d in\:tray
 "goal"
 ```
 
+## [Fetching substring using slice object](https://www.scaler.com/topics/python/string-slicing-in-python/)
+
+```python
+s = "Welcome to scaler docs"
+s1 = slice(6) # takes start as 0 automatically
+print("s1-obj:", s1)
+print("s1-res:", s[s1])
+s2 = slice(2,8) # using slice(start, end, step) without step
+print("s2-obj:", s2)
+print("s2-res:", s[s2])
+s3 = slice(1, 20, 2) # using slice(start, end, step) with step
+print("s3-obj:", s3)
+print("s3-res:", s[s3])
+```
+
+```q
+s1-obj: slice(None, 6, None)
+s1-res: Welcom
+s2-obj: slice(2, 8, None)
+s2-res: lcome
+s3-obj: slice(1, 20, 2)
+S3-res: ecm osae o
+```
+
 
 
 ---
