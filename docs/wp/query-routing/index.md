@@ -331,7 +331,7 @@ services:([handle:`int$()]
   address:`$();
   source:`$();
   gwHandle:`int$();
-  sq:`in t$();
+  sq:`int$();
   udt:`timestamp$() )
 
 serviceQueue:([gwHandle:`int$();sq:`int$()]
