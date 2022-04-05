@@ -187,7 +187,7 @@ $ export SSL_VERIFY_SERVER=NO
 To allow verification of certificates which were not issued by you, you can import the CA bundle from reputable sources, e.g.
 
 ```bash
-$ curl https://curl.haxx.se/ca/cacert.pem > $HOME/certs/cabundle.pem
+$ curl https://curl.se/ca/cacert.pem > $HOME/certs/cabundle.pem
 $ export SSL_CA_CERT_FILE=$HOME/certs/cabundle.pem
 ```
 
