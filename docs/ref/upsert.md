@@ -9,7 +9,7 @@ author: Stephen Taylor
 
 
 
-_Add new records to a table_
+_Overwrite or append records to a table_
 
 ```syntax
 x upsert y    upsert[x;y]
@@ -18,43 +18,53 @@ x upsert y    upsert[x;y]
 Where 
 
 -   `x` is a table, or the name of a table as a symbol atom, or the name of a splayed table as a directory handle
--   `y` is one or more records with types matching `x`, or a table with conforming columns
+-   `y` is zero or more records
+
+the records are upserted into the table.
+
+The record/s `y` may be either 
+
+-   lists with types that match `type each x cols x`
+-   a table with columns that are members of `cols x` and have corresponding types
 
 If `x` is the name of a table, it is updated in place. Otherwise the updated table is returned.
 
-If `x` is the name of a table as a symbol atom (or the name of a splayed table as a directory handle) that does not exits in the file system, it is written.
+If `x` is the name of a table as a symbol atom (or the name of a splayed table as a directory handle) that does not exist in the file system, it is written to file.
 
 
 ## Simple table
 
+If the table is simple, new records are appended.
+If the records are in a table, it must be simple.
+
 ```q
-q)t:([] name:`tom`dick`harry; age:28 29 30)
+q)t:([]name:`tom`dick`harry;age:28 29 30;sex:`M)
 
-q)t upsert (`dick;49)                           / single record
-name  age
----------
-tom   28
-dick  29
-harry 30
-dick  49
+q)t upsert (`dick;49;`M)
+name  age sex
+-------------
+tom   28  M
+dick  29  M
+harry 30  M
+dick  49  M
 
-q)t upsert ((`dick;49);(`jane;23))              / two records
-name  age
----------
-tom   28
-dick  29
-harry 30
-dick  49
-jane  23
+q)t upsert((`dick;49;`M);(`jane;23;`F))
+name  age sex
+-------------
+tom   28  M
+dick  29  M
+harry 30  M
+dick  49  M
+jane  23  F
 
-q)`t upsert ([] name:`dick`jane; age:49 23)     / table
+q)`t upsert ([]age:49 23;name:`dick`jane)
 `t
 q)t
-name  age
----------
-tom   28
-dick  29
-harry 30
+name  age sex
+-------------
+tom   28  M
+dick  29  M
+harry 30  M
 dick  49
 jane  23
 ```
@@ -64,23 +74,41 @@ jane  23
 
 If the table is keyed, any new records that match on key are updated. Otherwise, new records are inserted.
 
+If the right argument is a table it may be keyed or unkeyed.
+
 ```q
-q)show a:([s:`q`w`e]r:1 2 3;u:5 6 7)
+q)a upsert (`e;30;70)                         / single record
+s| r  u
+-| -----
+q| 1  5
+w| 2  6
+e| 30 70
+
+q)a upsert ((`e;30;70);(`r;40;80))            / multiple records
+s| r  u
+-| -----
+q| 1  5
+w| 2  6
+e| 30 70
+r| 40 80
+
+q)show a:([]s:`q`w`e;r:1 2 3;u:5 6 7)         / simple table
 s| r u
 -| ---
 q| 1 5
 w| 2 6
 e| 3 7
 
-q)a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)    / update `q and `e, insert new `r
-s| r  u                                       / returning new table
+q)/update `q and `e, insert new `r; return new table
+q)a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)    / keyed table
+s| r  u                                       
 -| -----
 q| 10 50
 w| 2  6
 e| 30 70
 r| 4  8
 
-q)`a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)   / same but updating table in place
+q)`a upsert ([s:`e`r`q]r:30 4 10;u:70 8 50)   / same but update table in place
 `a
 ```
 
