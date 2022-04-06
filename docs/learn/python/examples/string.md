@@ -555,7 +555,7 @@ print("s3-obj:", s3)
 print("s3-res:", s[s3])
 ```
 
-```q
+```txt
 s1-obj: slice(None, 6, None)
 s1-res: Welcom
 s2-obj: slice(2, 8, None)
