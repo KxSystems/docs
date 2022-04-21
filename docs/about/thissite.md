@@ -78,17 +78,18 @@ Aleks Bunin                     Jason Quinn
 Angus Wilson                    kylenarocroc
 Andrew in New York              Letian Wang
 Alex Shroyer                    Mohammad Noor
-Chris Shucksmith                ps288
-Cillian Reilly                  Sean Keevey
-Conor McCarthy                  Sean O’Hagan
-David Crossey                   Rian O’Cuinneagain
-David Lu                        Rikesh
-David Z. Han                    Thomas Smyth
-Deanna Morgan                   Sergey Vidyuk
-Diane O’Donoghue                Simon Shanks
-Esperanza Lopez Aguilera        Simon Watson
-Geo Carncross                   Vincent Bernardoff
-Ian O’Dwyer                     William Da Silva 
+Bob Herrmann                    ps288
+Chris Shucksmith                Sean Keevey
+Cillian Reilly                  Sean O’Hagan
+Conor McCarthy                  Rian O’Cuinneagain
+David Crossey                   Rikesh
+David Lu                        Thomas Smyth
+David Z. Han                    Sergey Vidyuk
+Deanna Morgan                   Simon Shanks
+Diane O’Donoghue                Simon Watson
+Esperanza Lopez Aguilera        Vincent Bernardoff
+Geo Carncross                   William Da Silva 
+Ian O’Dwyer                     
 ```
 
 ## :fontawesome-solid-balance-scale: License
