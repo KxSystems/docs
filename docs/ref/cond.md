@@ -65,7 +65,7 @@ Cond with many expressions can be translated to triads by repeatedly replacing t
 Equivalently
 ```q
 $[q;a;  / if q, a
-  r:b;  / else if r, b
+  r;b;  / else if r, b
   s;c;  / else if s, c
   d]    / else d
 ```
