@@ -85,12 +85,12 @@ a b
 
 q)(1!r)~(1!x)lj 1!y
 1b
-q)r~t1 lj 1!t2
+q)r~x lj 1!y
 1b
 
-q)t1 lj t2
+q)x lj y
 'type
-  [0]  t1 lj t2
+  [0]  x lj y
           ^
 ```
 
