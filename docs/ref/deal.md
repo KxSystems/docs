@@ -28,7 +28,7 @@ neg[x]?y    ?[neg[x];y]     / Deal
 
 Where
 
--   `x` is an int atom
+-   `x` is an integer atom
 -   `y` is a **list**
 
 returns `abs[x]` randomly selected items of `y`.
