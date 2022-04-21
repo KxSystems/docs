@@ -155,7 +155,8 @@ B   880.5
 All future inserts into `t2` must enumerate across `t1` as below to avoid an error:
 
 ```q
-q)`t2 insert (.z.T;`C;`NDQ;4.05;`t1$`C`NDQ) ,2
+q)`t2 insert (.z.T;`C;`NDQ;4.05;`t1$`C`NDQ) 
+,2
 q)t2
 time         sym exchange price    t1fkey 
 -----------------------------------------
