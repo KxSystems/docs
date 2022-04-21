@@ -87,7 +87,13 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 </td>
 </tr>
 <tr markdown><td markdown>F#</td><td markdown>:fontawesome-brands-github: [kimtang/c.fs](https://github.com/kimtang/c.fs)</td></tr>
-<tr markdown><td markdown>Go</td><td markdown>:fontawesome-brands-github: [sv/kdbgo](https://github.com/sv/kdbgo)</td></tr>
+<tr markdown>
+<td markdown>Go</td>
+<td markdown>
+:fontawesome-brands-github: [jshinonome/geek](https://github.com/jshinonome/geek) ==new==<br>
+:fontawesome-brands-github: [sv/kdbgo](https://github.com/sv/kdbgo)
+</td>
+</tr>
 <tr markdown>
 <td markdown>Haskell</td>
 <td markdown>
@@ -171,7 +177,7 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <td markdown>
 :fontawesome-brands-github: [adwhit/krust](https://github.com/adwhit/krust)<br/>
 :fontawesome-brands-github: [jnordwick/rik](https://github.com/jnordwick/rik)<br/>
-:fontawesome-brands-rust: [kdbplus](https://docs.rs/kdbplus/0.1.4/kdbplus/) ==new==
+:fontawesome-brands-rust: [kdbplus](https://docs.rs/kdbplus/0.1.4/kdbplus/)
 </td>
 </tr>
 <tr markdown><td markdown>Scala</td><td markdown>[Scala client for kdb+](scala-client-for-q.md)</td></tr>

@@ -8,9 +8,24 @@ description: Index to technical white papers (formerly published as q for Gods)
 White papers are flagged in the navigation menus.
 
 
+## :fontawesome-solid-desktop: Applications of kdb+
+
+-   ==new== [**Surveillance in the Cloud**](surv-cloud/index.md)<br>Luke Britton, 2022.04
+-   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>James Galligan, 2020.04
+-   [**Comparing option-pricing methods in q**](option-pricing/index.md)<br>Deanna Morgan, 2019.10
+-   [**Kdb+ in astronomy**](astronomy.md)<br>Andrew Magowan &amp; James Neill, 2019.09
+-   [**Storing and exploring the Bitcoin blockchain**](blockchain/index.md)<br>Jeremy Lucid &amp; Daniel Irwin, 2018.12
+-   [**Signal processing and q**](signal-processing/index.md)<br>Callum Biggs, 2018.08
+-   [**Streaming analytics**: detecting card counters in Blackjack](card-counters/index.md)<br>Caolan&nbsp;Rafferty &amp; Krishan&nbsp;Subherwal, 2017.05
+-   [**Surveillance techniques to effectively monitor algo and high-frequency trading**](surveillance/index.md)<br>Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan &amp; Rob Hodgkinson, 2014.03
+-   [**Sample aggregation engine for market depth**](market-depth/index.md)<br>Stephen Dempsey, 2014.01
+-   [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/index.md)<br>James Corcoran, 2013.01
+-   [**Transaction-cost analysis using kdb+**](transaction-cost.md)<br>Colm Earley, 2012.12
+
+
 ## :fontawesome-solid-handshake: Interfaces
 
--   ==new== [**Internet of Things with MQTT**](iot-mqtt/index.md)<br>Rian&nbsp;Ó&nbsp;Cuinneagáin, 2021.06
+-   [**Internet of Things with MQTT**](iot-mqtt/index.md)<br>Rian&nbsp;Ó&nbsp;Cuinneagáin, 2021.06
 -   [**Interprocess communication**](ipc/index.md)<br>Katrina&nbsp;McCormack, 2021.04
 -   [**Publish/subscribe with the Solace event broker**](solace/index.md)<br>Himanshu&nbsp;Gupta, 2020.11
 -   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
@@ -45,20 +60,6 @@ White papers are flagged in the navigation menus.
 -   [**Kdb+ data-management techniques**](data-management.md)<br>Simon Mescal, 2013.01
 -   [**Order Book:** a kdb+ intraday storage and access methodology](order-book.md)<br>Niall Coulter, 2012.04
 -   [**Disaster-recovery planning for kdb+ tick systems**](disaster-recovery/index.md)<br>Stewart Robinson
-
-
-## :fontawesome-solid-desktop: Applications of kdb+
-
--   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>James Galligan, 2020.04
--   [**Comparing option-pricing methods in q**](option-pricing/index.md)<br>Deanna Morgan, 2019.10
--   [**Kdb+ in astronomy**](astronomy.md)<br>Andrew Magowan &amp; James Neill, 2019.09
--   [**Storing and exploring the Bitcoin blockchain**](blockchain/index.md)<br>Jeremy Lucid &amp; Daniel Irwin, 2018.12
--   [**Signal processing and q**](signal-processing/index.md)<br>Callum Biggs, 2018.08
--   [**Streaming analytics**: detecting card counters in Blackjack](card-counters/index.md)<br>Caolan&nbsp;Rafferty &amp; Krishan&nbsp;Subherwal, 2017.05
--   [**Surveillance techniques to effectively monitor algo and high-frequency trading**](surveillance/index.md)<br>Sam Stanton-Cook, Ryan Sparks, Dan O’Riordan &amp; Rob Hodgkinson, 2014.03
--   [**Sample aggregation engine for market depth**](market-depth/index.md)<br>Stephen Dempsey, 2014.01
--   [**Market Fragmentation**: a kdb+ framework for multiple liquidity sources](market-fragmentation/index.md)<br>James Corcoran, 2013.01
--   [**Transaction-cost analysis using kdb+**](transaction-cost.md)<br>Colm Earley, 2012.12
 
 
 ## :fontawesome-solid-share-alt: Machine learning
