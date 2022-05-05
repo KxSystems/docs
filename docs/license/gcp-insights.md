@@ -2,9 +2,9 @@
 title: KX INSIGHTS™ End User Agreement (the “Agreement”)
 description: Software End User Agreement for KX Insights Google Cloud Platform
 ---
-# <h1 style="color:var(--md-typeset-a-color)">KX Insights™ end-user agreement :kx-brands-google-cloud:</h1>
+<h1 style="color:var(--md-typeset-a-color)">KX Insights™ end-user agreement :kx-brands-google-cloud:</h1>:kx-brands-google-cloud:
 
-!!! important "CAREFULLY READ THE FOLLOWING TERMS AND CONDITIONS."
+!!!warning "CAREFULLY READ THE FOLLOWING TERMS AND CONDITIONS."
 
     BY CLICKING “I ACCEPT” OR BY ACCESSING OR OTHERWISE USING KX INSIGHTS™ YOU ARE AGREEING TO BE BOUND BY THESE TERMS AND CONDITIONS (WHICH MAY BE UPDATED FROM TIME TO TIME). TO THE EXTENT YOU ARE ACTING ON BEHALF OF A PERMITTED ORGANISATION, YOU CONFIRM THAT YOU HAVE THE NECESSARY POWER AND AUTHORITY TO ACT ON THEIR BEHALF AND BIND THEM TO THIS AGREEMENT. YOU WARRANT THAT THE IDENTIFICATION DETAILS THAT YOU PROVIDE TO KX TO ACCESS THE KX INSIGHTS™ SOFTWARE AND DOCUMENTATION INCLUDING, BUT NOT LIMITED TO, YOUR NAME, EMAIL ADDRESS, LOCATION AND ORGANISATION, ARE TRUE AND CORRECT. YOU ACKNOWLEDGE AND AGREE THAT THIS AGREEMENT IS ENFORCEABLE AND LEGALLY BINDING. 
     
@@ -124,9 +124,12 @@ description: Software End User Agreement for KX Insights Google Cloud Platform
 11.7	**Third Party Dependencies.** You accept and agree that KXI may require you to have third party software and web services installed for KXI to operate which may be identified by us in the documentation as “Dependencies”.  Such Dependencies are made available by third parties and are subject to terms and conditions between you and those third parties. Dependencies licensed by you are not part of KXI and this Agreement does not apply to them (regardless if we recommend or reference such software in our documentation or if we facilitate the delivery to you). You will ensure that you are using the version of the Dependencies recommended by us in the documentation or otherwise noted by us as being the optimal version of the Dependencies to be used for or in connection with KXI. Under no circumstances, shall we be liable for any Dependencies operated or used by you or any failure by you to install or use the recommended version of the Dependencies.
 
 
+
 ## SCHEDULE 1:
 
-Information Reported to KX The following KXI variables are reported (which are upon notice, subject to change):
+**Information Reported to KX**
+
+The following KXI variables are reported (which are upon notice, subject to change):
 
 -  UTC timestamp (.z.p)
 -  IP address (.z.a)
