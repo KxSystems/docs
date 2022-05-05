@@ -152,7 +152,8 @@ cancelQtyThreshold,cancelCountThreshold,lookbackInterval
 
 As seen above, the `lookbackInterval` is set to 25 seconds. Therefore, only data that is less than 25 seconds old will be retained for analysis on each bucket, as can be seen from this line: 
 ```q
-delete from `.spoofing.orderCache where time<min[data`time]-thresholds`lookbackInterval;
+delete from `.spoofing.orderCache 
+  where time<min[data`time]-thresholds`lookbackInterval;
 ```
 
 There are also two other configurable parameters in the `spoofingThresholds.csv`: `cancelQtyThreshold` and `cancelCountThreshold`. The `cancelQtyThreshold` defines the minimum total order quantity for cancelled orders that an entity must exceed within the `lookbackInterval` in order to trigger an alert. The `cancelCountThreshold` defines the minimum number of cancelled orders that an entity must exceed within the `loobackInterval` in order to trigger an alert. If both thresholds are exceeded, an alert is triggered. Here an entity is defined as `sym+trader+side`, i.e. we are interested in trader activity on a particular side (buy or sell) for a particular instrument. 
@@ -524,6 +525,9 @@ And once more the surveillance application is deployed to the cloud, this time i
 ## Conclusion
 
 As alluded to at the start of the paper, trade surveillance systems are only going to become more complex and data intensive. A prime example is the explosion of cryptocurrency over the last few years, now with an average daily trading volume of over $91 billion, creating a web of new regulatory complexities. As a result, fast, robust, and scalable surveillance solutions are now a must. Building surveillance applications in kdb+ provides unrivalled computational speed on large datasets, and as shown, deploying them using Kubernetes offers the scalability and built-in fault-tolerance we crave without having to become surgically attached to a single cloud provider. This is the approach adopted by [KX Insights](https://code.kx.com/insights/index.html), where processes like the tickerplant, RDB and HDB are implemented as microservices that can be flexibly orchestrated into robust, scalable solutions.
+
+:fontawesome-solid-comment:
+You can [comment on this article](https://community.kx.com/t5/News/Surveillance-in-the-Cloud/ba-p/12361) on the KX Community.
 
 ## Author
 
