@@ -206,6 +206,7 @@ nav:
     - By topic: basics/by-topic.md
     - Iteration:
       - Overview: basics/iteration.md
+      - Implicit iteration: basics/implicit-iteration.md
       - Iterators: ref/iterators.md
       - Maps: ref/maps.md
       - Accumulators: ref/accumulators.md
