@@ -20,7 +20,7 @@ Where
 
 applies `v1` or `vv` as a unary to each item of `x` and returns a result of the same length.
 
-That is, the projections `each[v1;]`, `each[vv;]`, `each[v1;]`, and `peach[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
+That is, the projections `each[v1;]`, `each[vv;]`, `peach[v1;]`, and `peach[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
 
 ```q
 q)count each ("the";"quick";" brown";"fox")
