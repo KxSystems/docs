@@ -83,7 +83,7 @@ database | role
 rdb      | has all of today’s data 
 vwap     | has volume-weighted averages for selected stocks 
 hlcv     | has high, low, close, volume for selected stocks 
-tq       | has a trade and quote table for selected stocks; each row is a rade joined with the most recent quote
+tq       | has a trade and quote table for selected stocks; each row is a trade joined with the most recent quote
 last     | has the last entries for each stock in the trade and quote tables
 show     | counts the updates, and displays the counts periodically 
 
