@@ -118,7 +118,6 @@ q)sums "abc"                    / type error if list is not numeric
 `sums` is a uniform function, equivalent to `+\`.
 
 
-
 ## `msum`
 
 _Moving sums_
@@ -216,6 +215,70 @@ But for nested `x` these functions preserve the nulls.
 q)sum (1 2;0N 4)
 0N 6
 ```
+
+
+## Domains and ranges
+
+`sum` and `sums`
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  i . i i i j e f i . p m d z n u v t
+```
+
+`msum`
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | i . i i i j e f . . n i i f n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | i . i i i j e f . . n i i f n u v t
+h | i . i i i j e f . . n i i f n u v t
+i | i . i i i j e f . . n i i f n u v t
+j | i . i i i j e f . . n i i f n u v t
+e | . . . . . . . . . . . . . . . . . .
+f | . . . . . . . . . . . . . . . . . .
+c | . . . . . . . . . . . . . . . . . .
+s | . . . . . . . . . . . . . . . . . .
+p | . . . . . . . . . . . . . . . . . .
+m | . . . . . . . . . . . . . . . . . .
+d | . . . . . . . . . . . . . . . . . .
+z | . . . . . . . . . . . . . . . . . .
+n | . . . . . . . . . . . . . . . . . .
+u | . . . . . . . . . . . . . . . . . .
+v | . . . . . . . . . . . . . . . . . .
+t | . . . . . . . . . . . . . . . . . .
+```
+
+Range: `efijntuv`
+
+`wsum`
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | i . i i i j e f . . p m d z n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | i . i i i j e f . . p m d z n u v t
+h | i . i i i j e f . . p m d z n u v t
+i | i . i i i j e f . . p m d z n u v t
+j | j . j j j j e f . . p m d z n u v t
+e | e . e e e e e f . . p m d z n u v t
+f | f . f f f f f f f . f f z z f f f f
+c | . . . . . . . f . . p m d z n u v t
+s | . . . . . . . . . . . . . . . . . .
+p | p . p p p p p f p . . . . . . . . .
+m | m . m m m m m f m . . . . . . . . .
+d | d . d d d d d z d . . . . . . . . .
+z | z . z z z z z z z . . . . . . . . .
+n | n . n n n n n f n . . . . . . . . .
+u | u . u u u u u f u . . . . . . . . .
+v | v . v v v v v f v . . . . . . . . .
+t | t . t t t t t f t . . . . . . . . .
+```
+
+Range: `defijmnptuvz`
+
+
+
 
 ----
 :fontawesome-solid-book-open:
