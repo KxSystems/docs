@@ -2,19 +2,16 @@
 title: Installing kdb+ | Learn | kdb+ and q documentation
 description: How to install kdb+ on Linux, macOS, or Windows
 author: Stephen Taylor
-date: November 2020
+date: May 2022
 ---
 # :fontawesome-solid-power-off: Installing kdb+
 
 
 You can run kdb+ on Linux, macOS, or Windows.
-There are three installation scenarios.
+There are two installation scenarios.
 
 -   You are a commercial user, with a `k4.lic` file.
 -   You have the 64-bit On Demand Personal Edition for non-commercial use. This is enabled by a `kc.lic` license-key file and requires an always-on Internet connection. (This version of kdb+ is not licensed for use on cloud servers.)
--   You have the 32-bit Personal Edition for non-commercial use. It does not require a license-key file.
-
-    !!! warning "32-bit applications will not run in macOS 10.15+ (Catalina and later)"
 
 :fontawesome-regular-hand-point-right:
 [More about licensing](licensing.md)
@@ -96,20 +93,6 @@ Unzip the downloaded ZIP to produce a folder `q` in your install location.
     Install `rlwrap` using your [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia"). (Common package managers: `apt`, `dnf` and `yum` for Linux; [Homebrew](https://brew.sh/) and [MacPorts](https://www.macports.org/) for macOS.)
 
 
-??? note "How to run 32-bit kdb+ on 64-bit Linux"
-
-    Use the `uname -m` command to determine whether your machine is using the 32-bit or 64-bit Linux distribution.
-
-    If the result is
-
-    -   `i686` or `i386` or similar, you are running a **32-bit** Linux distribution
-    -   `x86_64`, you are running a **64-bit** Linux distribution
-
-    To install 32-bit kdb+ on a 64-bit Linux distribution, you need a 32-bit library. Use your usual [package manager](https://en.wikipedia.org/wiki/Package_manager "Wikipedia") to install i686 or i386: for example, `sudo apt-get install libc6-i386`.
-
-    :fontawesome-solid-globe: [How to run 32-bit app in Ubuntu 64-bit?](https://askubuntu.com/questions/454253/how-to-run-32-bit-app-in-ubuntu-64-bit)
-
-
 ## :fontawesome-solid-certificate: Step 3: Install the license file
 
 If you have a license file, `k4.lic` or `kc.lic`, put it in the `QHOME` directory.
@@ -142,8 +125,6 @@ Your `QHOME` directory will then contain:
     │   └── q
     └── q.k
     ```
-
-(32-bit versions have `32` in the folder name instead of `64`.)
 
 Kdb+ looks for a license file in `QHOME`. To keep your license file elsewhere, set its path in environment variable `QLIC`.
 
@@ -211,10 +192,6 @@ q)
 [License errors](../basics/errors.md#license-errors),
 [Licensing](licensing.md)
 
-??? warning "License files and 32-bit kdb+"
-
-    32-bit kdb+ does not require a license file to run, but if it finds one at launch it will signal a license error if the license is not valid.
-
 Try your first expression.
 
 ```q
@@ -259,8 +236,6 @@ The `QLIC` environment variable tells kdb+ where to find [a license key file](li
     1.  `setx QHOME "C:\q"`
     1.  `setx PATH "%PATH%;C:\q\w64"`
 
-(In the above, substitute `32` for `64` if you are installing 32-bit kdb+.)
-
 Test the new command. Open a new command shell and type `q`.
 
 ```q
@@ -274,9 +249,6 @@ q)
 
 :fontawesome-solid-laptop-code:
 [Installing multiple versions of kdb+](../kb/versions.md)
-<br>
-:fontawesome-solid-cloud:
-[Installing kdb+ on DigitalOcean](../kb/digitalocean.md)
 
 
 ## :fontawesome-solid-laptop-code: Interactive development environments
