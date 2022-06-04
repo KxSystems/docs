@@ -28,6 +28,11 @@ q)dev 10 343 232 55
 
 `dev` is an aggregate function, equivalent to `{sqrt var x}`.
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f f f f f f
+```
+
 
 ## `mdev`
 
@@ -67,6 +72,31 @@ b   c
 ```
 
 `mdev` is a uniform function.
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | f . f f f f f f f . f f f f f f f f
+g | . . . . . . . . . . . . . . . . . .
+x | f . f f f f f f f . f f f f f f f f
+h | f . f f f f f f f . f f f f f f f f
+i | f . f f f f f f f . f f f f f f f f
+j | f . f f f f f f f . f f f f f f f f
+e | . . . . . . . . . . . . . . . . . .
+f | . . . . . . . . . . . . . . . . . .
+c | . . . . . . . . . . . . . . . . . .
+s | . . . . . . . . . . . . . . . . . .
+p | . . . . . . . . . . . . . . . . . .
+m | . . . . . . . . . . . . . . . . . .
+d | . . . . . . . . . . . . . . . . . .
+z | . . . . . . . . . . . . . . . . . .
+n | . . . . . . . . . . . . . . . . . .
+u | . . . . . . . . . . . . . . . . . .
+v | . . . . . . . . . . . . . . . . . .
+t | . . . . . . . . . . . . . . . . . .
+```
+
+Range: `f`
 
 
 ### :fontawesome-solid-sitemap: Implicit iteration
@@ -114,6 +144,11 @@ q)sdev 10 343 232 55
 ```
 
 `sdev` is an aggregate function, equivalent to `{sqrt var[x]*count[x]%-1+count x}`.
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f f f f f f
+```
 
 
 ----

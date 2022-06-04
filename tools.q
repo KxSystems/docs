@@ -37,7 +37,7 @@ losicx:{[m;c;s]                               / Lay out strings s in c columns w
   rws:ceiling(count s)%c;                     /   # rows
   w:m+max count each s;                       /   column width
   p:w#" ";                                    /   pad
-  b:(w#'s,\:p),((c*rws)-count s)#enlist p;    /   uncut block
+  b:(w$'s),((c*rws)-count s)#enlist w#" ";    /   uncut block
   -1 raze each flip rws cut b; }
 
 losic:losicx[3]                               / Lay out strings s in c columns with minimum margin 3

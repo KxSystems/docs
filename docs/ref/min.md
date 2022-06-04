@@ -38,7 +38,6 @@ q)select min price by sym from t   / use in a select statement
 `min` is an aggregate function, equivalent to `&/`.
 
 
-
 ## `mins`
 
 _Minimums_
@@ -89,6 +88,41 @@ q)3 mmin 0N -3 -2 1 0N -0W    / null is the minimum value
 [Sliding windows](../kb/programming-idioms.md#how-do-i-apply-a-function-to-a-sequence-sliding-window)  
 
 
+## Domain and range
+
+`min` and `mins`
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b . x h i j e f c . p m d z n u v t
+```
+
+`mmin`
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b g x h i j e f c s p m d z n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | b g x h i j e f c s p m d z n u v t
+h | b g x h i j e f c s p m d z n u v t
+i | b g x h i j e f c s p m d z n u v t
+j | b g x h i j e f c s p m d z n u v t
+e | . . . . . . . . . . . . . . . . . .
+f | . . . . . . . . . . . . . . . . . .
+c | . . . . . . . . . . . . . . . . . .
+s | . . . . . . . . . . . . . . . . . .
+p | . . . . . . . . . . . . . . . . . .
+m | . . . . . . . . . . . . . . . . . .
+d | . . . . . . . . . . . . . . . . . .
+z | . . . . . . . . . . . . . . . . . .
+n | . . . . . . . . . . . . . . . . . .
+u | . . . . . . . . . . . . . . . . . .
+v | . . . . . . . . . . . . . . . . . .
+t | . . . . . . . . . . . . . . . . . .
+```
+
+Range: `bcdefghijmnpstuvxz`
+
+
 ## :fontawesome-solid-sitemap: Implicit iteration
 
 `min`, `mins`, and `mmin` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
@@ -119,7 +153,6 @@ abc| 10 4
 def| 10 4
 ghi| 3  5
 ```
-
 
 ## Aggregating nulls
 

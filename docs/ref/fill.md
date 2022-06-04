@@ -56,6 +56,33 @@ c| 30
 
 Fill is an atomic function.
 
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b . x h i j e f c . p m d z n u v t
+g | . g . . . . . . . . . . . . . . . .
+x | x . x h i j e f c . p m d z n u v t
+h | h . h h i j e f c . p m d z n u v t
+i | i . i i i j e f c . p m d z n u v t
+j | j . j j j j e f c . p m d z n u v t
+e | e . e e e e e f c . p m d z n u v t
+f | f . f f f f f f c . p m d z n u v t
+c | c . c c c c c c c . p m d z n u v t
+s | . . . . . . . . . s . . . . . . . .
+p | p . p p p p p p p . p p p p n u v t
+m | m . m m m m m m m . p m d . . . . .
+d | d . d d d d d d d . p d d z . . . .
+z | z . z z z z z z z . p . z z n u v t
+n | n . n n n n n n n . n . . n n n n n
+u | u . u u u u u u u . u . . u n u v t
+v | v . v v v v v v v . v . . v n v v t
+t | t . t t t t t t t . t . . t n t t t
+```
+
+Range: `bcdefghijmnpstuvxz`
+
+
 :fontawesome-solid-book: 
 [`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
 
@@ -118,3 +145,28 @@ q)0 ^\ 0N 0N 3 0N 5
 0 0 3 3 5
 ```
 
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b . x h i j e f c . p m d z n u v t
+g | . g . . . . . . . . . . . . . . . .
+x | x . x h i j e f c . p m d z n u v t
+h | h . h h i j e f c . p m d z n u v t
+i | i . i i i j e f c . p m d z n u v t
+j | j . j j j j e f c . p m d z n u v t
+e | e . e e e e e f c . p m d z n u v t
+f | f . f f f f f f c . p m d z n u v t
+c | c . c c c c c c c . p m d z n u v t
+s | . . . . . . . . . s . . . . . . . .
+p | p . p p p p p p p . p p p p n u v t
+m | m . m m m m m m m . p m d . . . . .
+d | d . d d d d d d d . p d d z . . . .
+z | z . z z z z z z z . p . z z n u v t
+n | n . n n n n n n n . n . . n n n n n
+u | u . u u u u u u u . u . . u n u v t
+v | v . v v v v v v v . v . . v n v v t
+t | t . t t t t t t t . t . . t n t t t
+```
+
+Range: `bcdefghijmnpstuvxz`

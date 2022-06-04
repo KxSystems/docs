@@ -35,7 +35,30 @@ q)1000101000b cor 0010011001b
 
 ## Domain and range
 
-Applies to all non-temporal numerics.
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | f . f f f f f f f . f f f f f f f f
+g | . . . . . . . . . . . . . . . . . .
+x | f . f f f f f f f . f f f f f f f f
+h | f . f f f f f f f . f f f f f f f f
+i | f . f f f f f f f . f f f f f f f f
+j | f . f f f f f f f . f f f f f f f f
+e | f . f f f f f f f . f f f f f f f f
+f | f . f f f f f f f . f f f f f f f f
+c | f . f f f f f f f . f f f f f f f f
+s | . . . . . . . . . . . . . . . . . .
+p | f . f f f f f f f . f f f f f f f f
+m | f . f f f f f f f . f f f f f f f f
+d | f . f f f f f f f . f f f f f f f f
+z | f . f f f f f f f . f f f f f f f f
+n | f . f f f f f f f . f f f f f f f f
+u | f . f f f f f f f . f f f f f f f f
+v | f . f f f f f f f . f f f f f f f f
+t | f . f f f f f f f . f f f f f f f f
+```
+
+Range: `f`
 
 
 ----

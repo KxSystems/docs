@@ -128,6 +128,10 @@ c1 | j   p
 c2 | j
 ```
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b g x h i j e f c s p m d z n u v t
+```
 
 ## `iasc`
 
@@ -161,6 +165,10 @@ q)b~c iasc iasc x
 1b
 ```
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  j j j j j j j j j j j j j j j j j j
+```
 
 ## `xasc`
 

@@ -28,6 +28,13 @@ q)select med price by sym from trade where date=2001.10.10,sym in`AAPL`LEH
 {avg x (iasc x)@floor .5*-1 0+count x,:()}
 ```
 
+## Domain and range
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f f f f f f
+```
+
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 

@@ -40,6 +40,7 @@ q)exp 00:00:00 00:00:12 12:00:00
 ```
 
 
+
 ### :fontawesome-solid-sitemap: Implicit iteration
 
 `exp` is an [atomic](../basics/atomic.md) function.

@@ -48,7 +48,10 @@ a  | 10.75
 
 `avg` is an aggregate function, equivalent to `{sum[x]%count x}`.
 
-
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f f f f f f
+```
 
 ## `avgs`
 
@@ -68,6 +71,10 @@ q)avgs 1 2 3 0n 4 -0w 0w
 
 `avgs` is a uniform function, equivalent to `(avg\)`.
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f . . f f f f f f f f
+```
 
 ## `mavg`
 
@@ -94,6 +101,30 @@ q)5 mavg 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
 ```
 
 `mavg` is a uniform function.
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | f . f f f f f f . . f f f f f f f f
+g | . . . . . . . . . . . . . . . . . .
+x | f . f f f f f f . . f f f f f f f f
+h | f . f f f f f f . . f f f f f f f f
+i | f . f f f f f f . . f f f f f f f f
+j | f . f f f f f f . . f f f f f f f f
+e | . . . . . . . . . . . . . . . . . .
+f | . . . . . . . . . . . . . . . . . .
+c | . . . . . . . . . . . . . . . . . .
+s | . . . . . . . . . . . . . . . . . .
+p | . . . . . . . . . . . . . . . . . .
+m | . . . . . . . . . . . . . . . . . .
+d | . . . . . . . . . . . . . . . . . .
+z | . . . . . . . . . . . . . . . . . .
+n | . . . . . . . . . . . . . . . . . .
+u | . . . . . . . . . . . . . . . . . .
+v | . . . . . . . . . . . . . . . . . .
+t | . . . . . . . . . . . . . . . . . .
+```
+Range: `f`
 
 
 ## `wavg`
@@ -135,6 +166,31 @@ a  | 10.75
 ```
 
 `wavg` is an aggregate function, equivalent to `{(sum x*y)%sum x}`.
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | f . f f f f f f f . f f f f f f f f
+g | . . . . . . . . . . . . . . . . . .
+x | f . f f f f f f f . f f f f f f f f
+h | f . f f f f f f f . f f f f f f f f
+i | f . f f f f f f f . f f f f f f f f
+j | f . f f f f f f f . f f f f f f f f
+e | f . f f f f f f f . f f f f f f f f
+f | f . f f f f f f f . f f f f f f f f
+c | f . f f f f f f f . f f f f f f f f
+s | . . . . . . . . . . . . . . . . . .
+p | f . f f f f f f f . f f f f f f f f
+m | f . f f f f f f f . f f f f f f f f
+d | f . f f f f f f f . f f f f f f f f
+z | f . f f f f f f f . f f f f f f f f
+n | f . f f f f f f f . f f f f f f f f
+u | f . f f f f f f f . f f f f f f f f
+v | f . f f f f f f f . f f f f f f f f
+t | f . f f f f f f f . f f f f f f f f
+```
+
+Range: `f`
 
 
 ## :fontawesome-solid-sitemap: Implicit iteration

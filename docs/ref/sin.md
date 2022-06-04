@@ -55,6 +55,12 @@ y| 0.3894183 0.4794255  0.5646425 0.6442177
 z| 0.7173561 0.7833269  0.841471  0.8912074
 ```
 
+## Domain and range
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f z f f f f
+```
 
 ----
 :fontawesome-solid-book:

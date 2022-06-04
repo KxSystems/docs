@@ -40,6 +40,12 @@ price| x
 ```
 
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  i . i i i j e f . . n i i f n u v t
+```
+
+
 ## First predecessor
 
 The predecessor of the first item is 0. 

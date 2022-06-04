@@ -55,6 +55,10 @@ q)all 2000.01.02 2010.01.02
 q)if[all x in y;....]   / use in control structure
 ```
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b . b b b b b b b . b b b b b b b b
+```
 
 
 ## `any`
@@ -91,7 +95,10 @@ q)any 2000.01.01 2000.01.02
 
 q)if[any x in y;....]   / use in control structure
 ```
-
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b . b b b b b b b . b b b b b b b b
+```
 ----
 
 :fontawesome-solid-book:

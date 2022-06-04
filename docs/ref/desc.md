@@ -51,7 +51,10 @@ a b
 3 a
 1 s
 ```
-
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b g x h i j e f c s p m d z n u v t
+```
 
 ## `idesc`
 
@@ -74,7 +77,10 @@ q)(desc L)~L idesc L
 q)idesc `a`c`b!1 2 3
 `b`c`a
 ```
-
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  j j j j j j j j j j j j j j j j j j
+```
 
 
 ## `xdesc`

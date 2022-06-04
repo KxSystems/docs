@@ -42,6 +42,15 @@ q)acos -0.4                     / arccosine
 ```
 
 
+## Domain and range
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f z f f f f
+```
+
+
+
 ## :fontawesome-solid-sitemap: Implicit iteration
 
 `cos` and `acos` are [atomic functions](../basics/atomic.md).

@@ -36,6 +36,11 @@ q)select max price by sym from t   / use in a select statement
 
 `max` is an aggregate function. It is equivalent to `|/`.
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b . x h i j e f c . p m d z n u v t
+```
+
 
 
 ## `maxs`
@@ -61,6 +66,11 @@ q)maxs 0N 5 0N 1 3         / initial nulls return negative infinity
 
 `maxs` is a uniform function. It is equivalent to `|\`.
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b . x h i j e f c . p m d z n u v t
+```
+
 
 ## `mmax`
 
@@ -85,6 +95,32 @@ q)3 mmax 0N -3 -2 0N 1 0  / initial null returns negative infinity
 ```
 
 `mmax` is a uniform function.
+
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b g x h i j e f c s p m d z n u v t
+g | . . . . . . . . . . . . . . . . . .
+x | b g x h i j e f c s p m d z n u v t
+h | b g x h i j e f c s p m d z n u v t
+i | b g x h i j e f c s p m d z n u v t
+j | b g x h i j e f c s p m d z n u v t
+e | . . . . . . . . . . . . . . . . . .
+f | . . . . . . . . . . . . . . . . . .
+c | . . . . . . . . . . . . . . . . . .
+s | . . . . . . . . . . . . . . . . . .
+p | . . . . . . . . . . . . . . . . . .
+m | . . . . . . . . . . . . . . . . . .
+d | . . . . . . . . . . . . . . . . . .
+z | . . . . . . . . . . . . . . . . . .
+n | . . . . . . . . . . . . . . . . . .
+u | . . . . . . . . . . . . . . . . . .
+v | . . . . . . . . . . . . . . . . . .
+t | . . . . . . . . . . . . . . . . . .
+```
+
+Range: `bcdefghijmnpstuvxz`
 
 
 ## :fontawesome-solid-sitemap: Implicit iteration

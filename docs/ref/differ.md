@@ -54,7 +54,12 @@ date       sym  price   size
 2009.10.02 CSCO 12.7531 760
 ```
 
-!!! warning "Binary use deprecated"
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b b b b b b b b b b b b b b b b b b
+```
+
+??? warning "Binary use deprecated"
 
     As of V3.6 the keyword is [variadic](../basics/variadic.md). 
     Binary application is deprecated and may disappear in future versions.
@@ -62,5 +67,6 @@ date       sym  price   size
 
     For a binary version, use Match Each Prior: `~:'`.
 
+---
 :fontawesome-regular-hand-point-right: 
 Basics: [Comparison](../basics/comparison.md)

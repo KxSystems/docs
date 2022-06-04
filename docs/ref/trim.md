@@ -55,6 +55,14 @@ a                b
 ("jumps";"over") "dog"
 ```
 
+
+## Domain and range
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b g x h i j e f c s p m d z n u v t
+```
+
 ----
 :fontawesome-solid-book:
 [Drop](drop.md)
