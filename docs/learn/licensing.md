@@ -2,7 +2,7 @@
 title: Licensing kdb+ – Learn – kdb+ and q documentation
 description: How to ensure your kdb+ processes have thelicenses they need.
 author: Stephen Taylor
-date: May 2022
+keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
 ---
 # :fontawesome-solid-certificate: Licensing
 
@@ -13,28 +13,28 @@ date: May 2022
 
 Everyone. All use of kdb+ is governed by a license. 
 
-Installations require a **license key file**: `k4.lic` or `kc.lic`.
+64-bit installations require a **license key file**: `k4.lic` or `kc.lic`.
 
-:fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com
-
-
-### Free, non-commercial, 64-bit kdb+ on demand
-
-Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use. 
-Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers. 
-It may not be used for any commercial purposes.
-See the [full terms and conditions](https://ondemand.kx.com/). 
-
-It requires a `kc.lic` license key file and an always-on internet connection to operate.
+<!-- :fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com -->
 
 
-### Commercial kdb+
+=== "Non-commercial use"
 
-Use of commercial kdb+ is covered by your license agreement with KX.
+    Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use. 
+    Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers. 
+    It may not be used for any commercial purposes.
+    See the [full terms and conditions](https://kx.com/developers/download-licenses/). 
 
-Your copy of kdb+ will need access to a valid license key file.
+    It requires a `kc.lic` license key file and an always-on internet connection to operate.
 
-If you wish to begin using kdb+ commercially, please contact sales@kx.com.
+
+=== "Commercial use"
+
+    Use of commercial kdb+ is covered by your license agreement with KX.
+
+    Your copy of kdb+ will need access to a valid license key file.
+
+    If you wish to begin using kdb+ commercially, please contact sales@kx.com.
 
 
 ## License key files
@@ -53,6 +53,8 @@ tom@mb13:~/q$
 The license key file is `k4.lic`, or `kc.lic` for kdb+ On Demand.
 If both are found, the `kc.lic` file is used.
 
+(The 32-bit kdb+ distribution does not require a license key file.)
+
 
 ## Obtain a license key file
 
@@ -60,10 +62,8 @@ If both are found, the `kc.lic` file is used.
 
 License key files (`kc.lic`) are distributed by email. 
 
-:fontawesome-solid-hand-point-right:
-<a href="https://kx.com/developers/download-licenses/">
-Request an On-Demand license key file
-</a>
+:fontawesome-solid-hand-point-right: [Request an On-Demand license key file](https://ondemand.kx.com/)
+
 
 ### Commercial
 

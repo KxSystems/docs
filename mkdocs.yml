@@ -665,6 +665,7 @@ nav:
         - ObjectiveFS: cloud/otherfs/objectivefs.md
         - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
         - Quobyte: cloud/otherfs/quobyte.md
+    - DigitalOcean: kb/digitalocean.md
   - Machine learning:
     - About: ml/index.md
     - Set up: ml/setup.md
