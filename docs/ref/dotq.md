@@ -1608,7 +1608,7 @@ Since V3.5 2017.03.15.
 Where `x` is a string, returns as a bytestream its SHA-1 hash.
 
 ```q
-q).Q..fc"Hello World!"
+q).Q.fc"Hello World!"
 0x2ef7bde608ce5404e97d5f042f95f89f1c232871
 ```
 
