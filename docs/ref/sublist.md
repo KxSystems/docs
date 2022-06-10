@@ -54,7 +54,7 @@ q)10#"take me"
 Instead, compose [Pad](pad.md) with `sublist`.
 
 ```q
-q){x$x sublist}[10;]"take me"
+q){x$x sublist y}[10;]"take me"
 "take me   "
 ```
 
