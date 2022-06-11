@@ -147,7 +147,7 @@ N.B. hence V3.5 cannot connect to V3.4 using UDS. e.g.
 
 ## Suggested upgrade process
 
-Even though we have run a wide range of tests on V3.5, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.5 should run their own tests on their own data and code/queries before promoting to production usage. In the event that you do discover a suspected bug, please email tech@kx.com
+Even though we have run a wide range of tests on V3.5, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.5 should run their own tests on their own data and code/queries before promoting to production usage. In the event that you do discover a suspected bug, please report it at [support.kx.com](https://support.kx.com).
 
 
 ## Detailed change list

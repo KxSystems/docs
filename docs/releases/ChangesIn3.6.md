@@ -112,7 +112,7 @@ q)a~ajf[`sym`time;b;c]
 
 ## Suggested upgrade process
 
-Even though we have run a wide range of tests on V3.6, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.6 should run their own tests on their own data and code/queries before promoting to production usage. Most importantly, be aware that rolling back to a previous version will be complicated by the fact that files written by v3.6 are not readable by prior versions, hence users should test thoroughly prior to committing to an upgrade. In the event that you do discover a suspected bug, please email tech@kx.com
+Even though we have run a wide range of tests on V3.6, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.6 should run their own tests on their own data and code/queries before promoting to production usage. Most importantly, be aware that rolling back to a previous version will be complicated by the fact that files written by v3.6 are not readable by prior versions, hence users should test thoroughly prior to committing to an upgrade. In the event that you do discover a suspected bug, please report it at [support.kx.com](https://support.kx.com).
 
 
 ## Detailed change list
