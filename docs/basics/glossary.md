@@ -243,6 +243,7 @@ ages | 42  39    51  44
 ## Domain
 
 The domain of a function is all the possible values of its argument.
+
 :fontawesome-solid-globe:
 [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php "intmath.com")
 
@@ -276,6 +277,7 @@ The left domain of a matrix is its row numbers. Its right domain is its column n
 The left domain of a table is its row numbers. Its right domain is its column names.
 
 All applicable values are mappings from their domains to their [ranges](#range).
+
 
 ## Empty list
 
@@ -633,8 +635,11 @@ The range of a function is the complete set of all its possible results.
 
 All [applicable values](#applicable-value) are mappings from their [domains](#domain) to their ranges.
 
-:fontawesome-regular-hand-point-right:
-intmath.com: [Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+:fontawesome-solid-globe:
+[Domain and range](https://www.intmath.com/functions-and-graphs/2a-domain-and-range.php)
+
+Some operators and keywords have obvious range types; e.g. Divide `%` always returns a float, and `sublist` a list of the same type as its right argument.
+Otherwise, each operator or keyword article tabulates the range datatypes for its domain/s.
 
 
 ## Rank
