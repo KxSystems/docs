@@ -78,7 +78,7 @@ Aleks Bunin                     Jason Quinn
 Angus Wilson                    kylenarocroc
 Andrew in New York              Letian Wang
 Alex Shroyer                    Mohammad Noor
-Bob Herrmann                    ps288
+Bob Herrmann                    Peter Storeng
 Chris Shucksmith                Sean Keevey
 Cillian Reilly                  Sean O’Hagan
 Conor McCarthy                  Rian O’Cuinneagain
