@@ -225,7 +225,7 @@ The performance gained by dropping the function `dist`, and converting
 
 ## K-Nearest Neighbors and prediction
 
-The classifier is almost complete. As the column `p` now holds the distance metric between the test instance and each training instance, to validate its behaviur we shall find if there are any instances of `tra` where `dst`&lt;590.
+The classifier is almost complete. As the column `p` now holds the distance metric between the test instance and each training instance, to validate its behavior we shall find if there are any instances of `tra` where `dst`&lt;590.
 
 
 ### Nearest Neighbor k=1

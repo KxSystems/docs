@@ -1,6 +1,6 @@
 ---
 title: Unicode – Knowledge Base – kdb+ and q documentation
-description: Howto handle Unicode-encoded data in kdb+
+description: How-to handle Unicode-encoded data in kdb+
 keywords: byte, character, kdb+, q, text, unicode
 ---
 # Unicode

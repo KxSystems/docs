@@ -629,7 +629,7 @@ handle| ip         user    status
 
 ## Application of IPC in a kdb+ tick system
 
-![Tick diagram](tick-diagram.png)
+![Tick diagram](img/tick-diagram.png)
 
 :fontawesome-solid-graduation-cap:
 [Realtime database](../../learn/startingkdb/tick.md)
@@ -825,7 +825,7 @@ TCP/IP sockets
 
 : The term _socket_ usually refers to a TCP socket. A socket is one end point of a two-way communication link. These network sockets allow communication between two different processes on the same or on different machines. These sockets are assumed to be associated with a specific socket address: the combination of an IP address and port number. The local process can communicate with another (foreign) process by sending data to or receiving data from the foreign socket address which will have its own associated socket.
 
-![TCP diagram](tcp-diagram.png)
+![TCP diagram](img/tcp-diagram.png)
 
 A process can refer to a socket using a file descriptor or handle, an abstract indicator used to access a file, or other resource.
 

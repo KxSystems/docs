@@ -20,7 +20,7 @@ views.
 All functions, and all 
 <!-- ~~dependencies~~  -->
 views expressed in terms of them are completely free of side effects. 
-All side effects in the core are explictly located in 
+All side effects in the core are explicitly located in 
 <!-- ~~triggers~~  -->
 views. 
 Changes in the state of the core happen only as the result of activity in the outer layer, which in turn is restricted to the form of

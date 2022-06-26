@@ -12,7 +12,7 @@ White paper
 by [James Galligan](#author)
 {: .wp-author}
 
-![Kraken Candle](krakencandlestick.png)
+![Kraken Candle](img/krakencandlestick.png)
 
 
 
@@ -107,7 +107,7 @@ candlestick : {
     from select from wpData where sym=`BTC_USD,exch=`KRAKEN]
 ```
 
-![Kraken Candle](krakencandlestick.png)
+![Kraken Candle](img/krakencandlestick.png)
 <br>
 <small>_Figure 1: Bitcoin Candlestick Chart using Kraken data_</small>
 
@@ -170,7 +170,7 @@ q)sma[update sma10:mavg[10;close], sma20:mavg[20;close]
     from select from wpData where sym=`BTC_USD,exch=`KRAKEN]
 ```
 
-![Kraken sma BTC](sma.png)
+![Kraken sma BTC](img/sma.png)
 <br>
 <small>_Figure 2: 10- and 20-day Simple Moving Averages for Bitcoin_</small>
 
@@ -219,7 +219,7 @@ BTC_USD 2019.05.18 KRAKEN 7266.8 7221.682 6822.54  399.1421 301.8835
 
 Figure 3 graphs the MACD for `ETH_USD` using data from HITBTC.
 
-![MACD ETH HITBT](macd.png)
+![MACD ETH HITBT](img/macd.png)
 <br>
 <small>_Figure 3: Moving Average Convergence Divergence for Ethereum using HITBTC data_</small>
 
@@ -228,7 +228,7 @@ From the above graph, you can see how the close price interacts with the short a
 
 ### Relative Strength Index
 
-![RSI ETH HITBTC](rsi.png)
+![RSI ETH HITBTC](img/rsi.png)
 <br>
 <small>_Figure 4: Relative Strength Index for Ethereum using HITBTC data_</small>
 
@@ -275,7 +275,7 @@ It is shrewd to use both RSI and MACD together as both measure momentum in a mar
 
 ### Money Flow Index
 
-![MFI ETH HITBTC](mfi.png)
+![MFI ETH HITBTC](img/mfi.png)
 <br>
 <small>_Figure 5: Money Flow Index for Ethereum where n=14_</small>
 
@@ -299,7 +299,7 @@ mfiMain:{[h;l;c;n;v]
 q)update mfi:mfiMain[high;low;close;14;vol] by sym,exch from wpData
 ```
 
-![MFI vs RSI](rsivsmfi.png)
+![MFI vs RSI](img/rsivsmfi.png)
 <br>
 <small>_Figure 6: MFI versus RSI_</small>
 
@@ -356,14 +356,14 @@ CCI:{[high;low;close;ndays]
 q)update cci:CCI[high;low;close;14] by sym,exch from wpData
 ```
 
-![CCI Graph](cci.png)
+![CCI Graph](img/cci.png)
 <br>
 <small>_Figure 7: Commodity Channel Index and close price for Bitcoin using Kraken data_</small>
 
 
 ### Bollinger Bands
 
-![Bollingard bands](bollingard.png)
+![Bollingard bands](img/bollingard.png)
 <br>
 <small>_Figure 8: Bollinger Bands for Bitcoin using Kraken data and n=20_</small>
 
@@ -390,7 +390,7 @@ q)bollB[wpData;20;`KRAKEN;`BTC_USD]
 
 The Force Index is a technical indicator that measures the amount of power behind a price move. It uses price and volume to assess the force behind a move or a possible turning point. The technical indicator is an unbounded oscillator that oscillates between a negative and positive value.  There are three essential elements to stock price movement-direction, extent and volume. The [Force Index](https://www.investopedia.com/terms/f/force-index.asp) combines all three in this oscillator.
 
-![Force Index Graph](forceindex.png)
+![Force Index Graph](img/forceindex.png)
 <br>
 <small>_Figure 9: Force Index and Close Price for Bitcoin using Kraken data_</small>
 
@@ -443,7 +443,7 @@ emv:{[h;l;v;s;n]
 q)update EMV:emv[high;low;vol;1000000;14] by sym,exch from wpData
 ```
 
-![emv](emv.png)
+![emv](img/emv.png)
 <br>
 <small>_Figure 10: Ease of Movement, Close and Volume for Ethereum using Kraken Data_</small>
 
@@ -469,14 +469,14 @@ q)update ROC:roc[close;10] from bitcoinKraken
 
 A positive move in the ROC indicates that there was a sharp price advance. This can be seen on the graph in Figure 11 between the 8th and 22nd of June. A downward drop indicates steep decline in the price. This oscillator is prone to whipsaw around the zero line as can be seen in the graph. For the graph  below `n` is set to 9, a value commonly used by short-term traders.
 
-![roc](roc.png)
+![roc](img/roc.png)
 <br>
 <small>_Figure 11: Rate of change for Bitcoin using Kraken data_</small>
 
 
 ### Stochastic Oscillator
 
-![stochastic](stochastic.png)
+![stochastic](img/stochastic.png)
 <br>
 <small>_Figure 12: Stochastic Oscillator with smoothing %K=1,%D=3 for Bitcoin using Kraken data_</small>
 
@@ -541,7 +541,7 @@ $$aroonUp=\frac{n-periodsSinceNPeriodHigh}{n}\times 100$$
 
 $$aroonDown=\frac{n-periodsSinceNPeriodLow}{n}\times 100$$
 
-![aroon](aroon.png)
+![aroon](img/aroon.png)
 <br>
 <small>_Figure 13: Aroon Oscillator and Aroon Indicator_</small>
 

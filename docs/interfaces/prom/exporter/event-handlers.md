@@ -3,7 +3,7 @@ title: Prometheus Exporter metric event handlers | Interfaces | Documentation fo
 author: Conor McCarthy
 description: List all functionality and options for the Prometheus Exporter for kdb+ metrics 
 date: April 2020
-keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
+keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualization, q
 ---
 # Prometheus metric event handlers 
 
@@ -21,8 +21,8 @@ The functions outlined below can be modified to allow a user to monitor events o
  [on_po](#promon_po)        IPC socket connection opening
  [on_wc](#promon_wc)        Websocket connection closing
  [on_wo](#promon_wo)        Websocket connection opening
- [afer_pg](#promafer_pg)      Syncronous IPC socket request handler, call after execution
- [before_pg](#prombefore_pg)    Syncronous IPC socket request handler, call before execution
+ [after_pg](#promafer_pg)      Synchronous IPC socket request handler, call after execution
+ [before_pg](#prombefore_pg)    Synchronous IPC socket request handler, call before execution
  [after_ps](#promafter_ps)     Asynchronous IPC socket request handler, call after execution
  [before_ps](#prombefore_ps)    Asynchronous IPC socket request handler, call before execution
  [after_ph](#promafter_ph)     HTTP GET request handler, call after execution

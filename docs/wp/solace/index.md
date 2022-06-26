@@ -125,7 +125,7 @@ With so many messaging patterns to choose from, why invest time and resources in
 
 Data is the lifeline of your kdb+ stack. It flows from feed handlers to tickerplants to downstream subscribers and then eventually to historical databases. However, kdb+ stacks do not operate in isolation. Depending on how the company is structured, there might be a central Market Data team responsible for managing connectivity with external data vendors and writing Java feed handlers to capture market data and then distributing it over an event broker for other teams to consume. 
 
-The Tick Data team can be just one of many downstream consumers interested in all or subset of the data published by the Market Data team. Similarily, the Tick Data team can enrich the raw data by generating stats and distributing it to other downstream consumers via the same event broker. 
+The Tick Data team can be just one of many downstream consumers interested in all or subset of the data published by the Market Data team. Similarly, the Tick Data team can enrich the raw data by generating stats and distributing it to other downstream consumers via the same event broker. 
 
 The key idea here is that the publisher only has to worry about publishing data to the event broker and not get bogged down in the details of how many downstream consumers there are, what their subscription interests are, what protocol they want to use and so forth. This is all responsibility of the event broker. Similarly, the subscribers do not need to worry about which publisher they need to connect to. They continue to connect to the same event broker and get access to real-time data. 
 
@@ -153,7 +153,7 @@ For example, your company might have IoT devices producing a lot of timeseries d
 
 ![](img/integration.png)
 
-Using an event broker puts the kdb+ estate at the center of your big data ecosystem and allows different teams to explit its capabilities by integrating with it. Don’t let your kdb+ estate sit in isolation!  
+Using an event broker puts the kdb+ estate at the center of your big data ecosystem and allows different teams to exploit its capabilities by integrating with it. Don’t let your kdb+ estate sit in isolation!  
 
 
 ### Zero message loss

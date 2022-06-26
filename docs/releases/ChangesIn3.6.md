@@ -58,7 +58,7 @@ q).Q.w[]`used`mmap / 336736 40432
 q)p:exec price from a[1]
 q).Q.w[]`used`mmap /336736 40432
 ```
-- Symbol vectors/atoms are automatically enumerated against `file##` and deenumerated (and therefore always copied) on access. e.g.
+- Symbol vectors/atoms are automatically enumerated against `file##` and de-enumerated (and therefore always copied) on access. e.g.
 ```q
 q)`:file set((`a`b;`b`c);0 1) / symbols cause a 3rd file to be created, file##, which contains the enumeration domain
 ```

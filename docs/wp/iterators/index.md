@@ -274,7 +274,7 @@ but better style would be to apply the unaries prefix and write:
 q)tertius secundus primus x
 ```
 
-Good q style minimises use of both brackets and parentheses. 
+Good q style minimizes use of both brackets and parentheses. 
 (Where they must be used, the less that appears between an opening bracket or parenthesis and its close, the better.) 
 So prefix application is usually better.
 
@@ -470,7 +470,7 @@ q)0 -': 4 8 3 2 2
 4 4 -5 -1 0
 ```
 
-The zero left argument is the ‘seed’ – the $y$ substracted from the first item, 4. We can use another ‘seed’ value.
+The zero left argument is the ‘seed’ – the $y$ subtracted from the first item, 4. We can use another ‘seed’ value.
 
 ```q
 q)1 -': 4 8 3 2 2

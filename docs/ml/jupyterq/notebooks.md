@@ -134,7 +134,7 @@ To set command-line arguments for these q processes, edit the Jupyter configurat
 
 !!! note "Restrict connections using passwords"
 
-    The command-line argument `-u` is not supported but `-U` is. See next section for how to restrict the access to the notebooks to authorised users.
+    The command-line argument `-u` is not supported but `-U` is. See next section for how to restrict the access to the notebooks to authorized users.
 
 
 Suppose you wanted to set the default timer interval to 1 second, and a workspace limit of 500 MB. You would change the `kernel.json` file from the default:

@@ -214,7 +214,7 @@ q){a::1;a:1}
 
 ## :fontawesome-solid-exclamation-triangle: NUCs
 
-We have sought to avoid introducing compatability issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
+We have sought to avoid introducing compatibility issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
 
 
 ### `select`

@@ -195,7 +195,7 @@ q)stats[`:skew]
 ```
 
 
-## Applying LASSO regression for analysing housing prices
+## Applying LASSO regression for analyzing housing prices
 
 This analysis uses LASSO regression to determine the prices of homes in
 Ames, Iowa. The dataset used in this demonstration is the Ames Housing
@@ -208,7 +208,7 @@ residential homes which influence their sale prices.
 
 The Least Absolute Shrinkage and Selection Operator (LASSO) method was
 used for the data analysis. LASSO is a method that improves the accuracy
-and interpretability of multiple linear regression models by adapting
+and interpret-ability of multiple linear regression models by adapting
 the model fitting process to use only a subset of _relevant_ features.
 
 It performs L1 regularization, adding a penalty equal to the absolute
@@ -638,7 +638,7 @@ qplt[`:axis]bounds;
 qplt[`:savefig]"lassopred.png";
 ```
 
-![lassopred.png](media/lassopred.png)
+![lassopred.png](img/lassopred.png)
 
 
 ## Conclusion

@@ -24,7 +24,7 @@ A new function, [`.Q.prf0`](../ref/dotq.md#qprf0-code-profiler), returns a table
 
     The process to be profiled must be started from the same binary as the one running `.Q.prf0`, otherwise `'binary mismatch` is signalled.
 
-`.Q.prf0` stops the target process for the duration of snapshotting.
+`.Q.prf0` stops the target process for the duration of snap-shotting.
 
 Time per call is mostly independent of call-stack depth. You should be able to do at least 100 samples per second with less than 5% impact on target process performance.
 
@@ -108,9 +108,9 @@ to generate `prof.txt` suitable for feeding into
 [FlameGraph](https://github.com/brendangregg/FlameGraph/blob/master/flamegraph.pl) or [speedscope](https://speedscope.app) for visualization.
 
 
-## Walkthrough
+## Walk-through
 
-Let’s apply the profiler to help us optimize an extemely naïve implementation of Monte-Carlo estimation of π. We'll use `record.q` and speedscope as described above.
+Let’s apply the profiler to help us optimize an extremely naïve implementation of Monte-Carlo estimation of π. We'll use `record.q` and speedscope as described above.
 
 Start with the following `/w/pi.q` consisting of purely scalar code:
 

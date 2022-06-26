@@ -503,7 +503,7 @@ This code saves 10 integers in kdb+ memory and makes a global variable `data` av
 k(':data')
 ```
 
-Note that the return value of the `pyq.q.save` function is a `K` symbol that is formed by prepending `:` to the file name. Such symbols are known as _file handles_ in q. Given a file handle, the kdb+ object stored in the file can be obtained by accessing the `value` property of the file handle.
+Note that the return value of the `pyq.q.save` function is a `K` symbol that is formed by pre-pending `:` to the file name. Such symbols are known as _file handles_ in q. Given a file handle, the kdb+ object stored in the file can be obtained by accessing the `value` property of the file handle.
 
 ```python
 >>> _.value

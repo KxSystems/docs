@@ -18,7 +18,7 @@ by [Kevin Smyth](#author)
 
 Tables in a database define a relationship between different types of data, whether that relationship is static, dynamic (i.e. fluctuating as part of a time series) or a mixture of both. In general, it is regularly the case that database queries will require data from multiple tables for enrichment and aggregation purposes and so a key aspect of database design is developing ways in which data from several tables is mapped together quickly and efficiently. Although kdb+ contains a very rich set of functions for joining tables in real time, if permanent and well-defined relationships between different tables can be established in advance then data-retrieval latency and related memory usage may be significantly reduced.
 
-This white paper will discuss foreign keys and linked columns in a kdb+ context, two ways whereby table structure and organisation can be optimized to successfully retrieve and store data in large-scale time-series databases.
+This white paper will discuss foreign keys and linked columns in a kdb+ context, two ways whereby table structure and organization can be optimized to successfully retrieve and store data in large-scale time-series databases.
 
 Tests performed using kdb+ 3.0 (2013.04.05).
 

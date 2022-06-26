@@ -1,11 +1,11 @@
 ---
-title: next, prev, xprev – immediate or near neighbours of the items of a list | Reference | kdb+ and q documentation
-description: next, prev, and xprev are q keywords that return the immediate or near neighbours of the items of a list.
+title: next, prev, xprev – immediate or near neighbors of the items of a list | Reference | kdb+ and q documentation
+description: next, prev, and xprev are q keywords that return the immediate or near neighbors of the items of a list.
 author: Stephen Taylor
 ---
 # `next`, `prev`, `xprev`
 
-_Immediate or near neighbours_
+_Immediate or near neighbors_
 
 
 

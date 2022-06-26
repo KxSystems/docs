@@ -501,7 +501,7 @@ Reference: [`reval`](../../ref/eval.md#reval) for read-only access
 
 The standard way to prevent clients from writing to a kdb+ process is to start the process with the [`–b` command-line option](../../basics/cmdline.md#-b-blocked). While this will successfully restrict clients to read-only queries, it affects all clients equally: write access will be revoked from every single client who connects to the process. If we want to be more selective in to whom we do and do not grant write access, we have to take a different approach.
 
-One such approach would be to parse every single incoming query and implement some logic that will determine if the query is attempting to write to the process. This is a very complex approach that would involve recursively stepping through the parse tree to analyse if a variable is being updated.
+One such approach would be to parse every single incoming query and implement some logic that will determine if the query is attempting to write to the process. This is a very complex approach that would involve recursively stepping through the parse tree to analyze if a variable is being updated.
 
 Instead, we will take advantage of a restriction that is built into kdb+ processes that are started with secondary threads: that is, only the main thread in a kdb+ process can update global variables. Secondary threads are restricted to updating local variables only. Thus, if we want to revoke write access from particular users, all we need to do is start our process with some secondary threads and then encapsulate their queries inside a function which then uses [`peach`](../../ref/each.md) to iterate over a list, forcing kdb+ to use secondary threads.
 

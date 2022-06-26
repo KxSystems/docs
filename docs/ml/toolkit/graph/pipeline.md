@@ -179,7 +179,7 @@ _Update debugging mode_
 .ml.updDebug[]
 ```
 
-Debugging is updated. The default value is `0b` which disables errors occuring within the graph to be debugged
+Debugging is updated. The default value is `0b` which disables errors occurring within the graph to be debugged
 
 ```q
 q).ml.graphDebug

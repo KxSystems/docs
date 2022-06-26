@@ -650,7 +650,7 @@ q).kfk.Assign[cid;`test`test1!0 1]
 
 ### `.kfk.AssignAdd`
 
-_Add additional topic paritions pairs to the current assignment_
+_Add additional topic partitions pairs to the current assignment_
 
 Syntax: `.kfk.Assign[clid;tpc_part]`
 
@@ -693,7 +693,7 @@ q).kfk.AssignAdd[cid;`test`test1!1 1]
 
 ### `.kfk.AssignDel`
 
-_Delete a set of topic parition pairs to the current assignment_
+_Delete a set of topic partition pairs to the current assignment_
 
 Syntax: `.kfk.AssignDel[clid;tpc_part]`
 
@@ -869,7 +869,7 @@ Where
 
 -   `topic` is the integer value assigned to the topic to be deleted
 
-returns a null if a topic is deleted sucessfully.
+returns a null if a topic is deleted successfully.
 
 ```q
 q).kfk.Topic[0i;`test;()!()]

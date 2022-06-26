@@ -71,7 +71,7 @@ NLP               | 0.1
 
 The data used for this work was sourced from the [Crisis NLP](https://crisisnlp.qcri.org) datasets. This datasource contains human-annotated tweets collected from Twitter and relating directly to a wide variety of crises. These crises range from earthquakes and virus outbreaks, to typhoons and war events. The data of interest within this use case, is that relating to floods. Flood data from the following events were chosen.
 
-1. 2012 Phillipines
+1. 2012 Philippines
 2. 2013 Alberta, Canada 
 3. 2013 Colorado, USA
 4. 2013 Queensland, Australia

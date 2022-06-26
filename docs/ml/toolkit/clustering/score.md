@@ -34,7 +34,7 @@ Unsupervised learning
 
 Supervised learning 
 
-: If the true and predicted labels of the dataset are known, clusters can be analysed in a supervised manner by comparing true and predicted labels.
+: If the true and predicted labels of the dataset are known, clusters can be analyzed in a supervised manner by comparing true and predicted labels.
 
 Optimum number of clusters 
 

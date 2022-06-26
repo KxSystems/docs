@@ -76,7 +76,7 @@ With Automation add-ins for Excel, you can use a C\# function in a cell formula.
 
 It is possible to have Excel display changing data dynamically using the RTD (real-time data) functionality. Charles Skelton has developed a RTD server for q. 
 
-This server is a .NET application, and it communicates directly with a q Ticker Plant, or a chained ticker plant. The RTD feature allows real-time data coming in from the ticker plant to be displayed in Excel. The schema can be customised according to whatever table names and column names are present in the ticker plant.
+This server is a .NET application, and it communicates directly with a q Ticker Plant, or a chained ticker plant. The RTD feature allows real-time data coming in from the ticker plant to be displayed in Excel. The schema can be customized according to whatever table names and column names are present in the ticker plant.
 
 
 ### Downloading

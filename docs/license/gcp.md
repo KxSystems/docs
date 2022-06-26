@@ -131,7 +131,7 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
     
 13. KX owns all right, title and interest in the Kdb+ Software and
     documentation and any Intellectual Property (whether
-    registerable or unregisterable) appurtenant thereto including in
+    registerable or un-registerable) appurtenant thereto including in
     any Updates, modifications, improvements, or developments to the
     Kdb+ Software arising during this Agreement. (“**Intellectual
     Property**” means patents, utility models, rights to inventions,
@@ -228,13 +228,13 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
     
 21. We do not exclude or limit in any way our liability to you where it would be unlawful to do so. This includes liability for death or personal injury caused by our negligence or the negligence of our employees, agents or subcontractors or for fraud or fraudulent misrepresentation.
 
-22. **Limitation of Liability.** Other than as expressly stated herein, in no event shall either party be liable for any costs of procurement of substitute goods or services, loss of use, loss or corruption of data, loss of goodwill interruption of business, lost profits , loss of revenue, loss of anticipated savings or any consequential, special, inci­dental, or indirect damages of any kind under any cause or action whether in contract or tort (including negli­gence), whether or not the party has been advised of the possibility of such damages. These limitations shall apply notwithstanding the failure of the essential purpose of any limited remedy.
+22. **Limitation of Liability.** Other than as expressly stated herein, in no event shall either party be liable for any costs of procurement of substitute goods or services, loss of use, loss or corruption of data, loss of goodwill interruption of business, lost profits , loss of revenue, loss of anticipated savings or any consequential, special, inci­dental, or indirect damages of any kind under any cause or action whether in contract or tort (including negligence), whether or not the party has been advised of the possibility of such damages. These limitations shall apply notwithstanding the failure of the essential purpose of any limited remedy.
 
 23. **Limitation of Damages.** Except for the parties’ obligations
     under section 7 (“Indemnification”) above or a User’s
     reproduction, use or distribution of the Kdb+ Software outside
     the scope of the Licenses granted in section 2 above, fraud or
-    fradulent misrepresentation, each party, its affiliates and their
+    fraudulent misrepresentation, each party, its affiliates and their
     respective officers, directors, employees, agents and
     representatives total liability for direct damages under or in
     connection with this Agreement, whether in an action in contract
@@ -403,7 +403,7 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
     by you of the provisions of sections 2 and 5 and/or payment
     obligations relating to this Agreement, KX will have the right
     at its discretion to seek remedies in courts within any
-    applicable territory. User and the organisation which you
+    applicable territory. User and the organization which you
     represent and have bound to the terms of this Agreement shall be
     jointly and severally liable for User’s obligations under this
     Agreement. 
@@ -414,7 +414,7 @@ _Carefully read the following terms and conditions. By accessing the Kdb+ Softwa
     matter of this Agreement. It replaces and supersedes any
     previous oral or written agreements, in relation to this
     Agreement including any previous versions of the Agreement
-    accessed by the User or any representative from the organisation
+    accessed by the User or any representative from the organization
     which you have bound under this Agreement, and any
     understandings or other communications between the parties in
     connection with this Agreement. 

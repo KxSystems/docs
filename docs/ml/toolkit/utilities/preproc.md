@@ -12,7 +12,7 @@ keywords: preprocessing, linear combinations, polynomial creation, infinite repl
   [applyLabelEncode](#mlapplylabelencode)           Transform integer data to label encode representation
   [dropConstant](#mldropconstant)               Constant columns removed
   [fillTab](#mlfilltab)                     Tailored filling of null values for a simple matrix
-  [freqEncode](#mlfreqencode)                 Numerically encode frequency of category occurance
+  [freqEncode](#mlfreqencode)                 Numerically encode frequency of category occurrence
   [infReplace](#mlinfreplace)                 Replace +/- infinities with max/min of column
 
   labelEncode       Encode list of symbols to integer values and produce mapping
@@ -203,7 +203,7 @@ B   23:10:44.297 0.6288875  0.5513535 0.2213819   1      0       0
 
 ## `.ml.freqEncode`
 
-_Encoded frequency of individual category occurences_
+_Encoded frequency of individual category occurrences_
 
 ```syntax
 .ml.freqEncode[tab;symCols]
@@ -214,7 +214,7 @@ Where
 -  `tab` is a simple table
 -  `symCols` is a list of columns to apply encoding to, setting as `::` encodes all sym columns.
 
-returns table with frequency of occurrance of individual symbols within a column.
+returns table with frequency of occurrence of individual symbols within a column.
 
 ```q
 q)show tab:([]10?`a`b`c;10?10f;10?3)
@@ -243,7 +243,7 @@ x1        x2 x_freq
 0.4821576 0  0.7   
 4.755664  0  0.1   
 8.35521   0  0.2   
-q).ml.freqEncode[tab;`x`x2] // customised encoding
+q).ml.freqEncode[tab;`x`x2] // customized encoding
 x1        x_freq x2_freq
 ------------------------
 4.429712  0.2    0.5    
@@ -491,7 +491,7 @@ x         x1 x2
 0.7424075 a  e 
 8.202035  b  g 
 6.618763  b  f 
-q).ml.lexiEncode.fitTransform[tab;::] / default behaviour
+q).ml.lexiEncode.fitTransform[tab;::] / default behavior
 x         x1_lexi x2_lexi
 -------------------------
 2.144001  0       0      
@@ -500,7 +500,7 @@ x         x1_lexi x2_lexi
 8.202035  1       2      
 6.618763  1       1      
 
-q).ml.lexiEncode.fitTransform[tab;`x1] /custom behaviour
+q).ml.lexiEncode.fitTransform[tab;`x1] /custom behavior
 x         x2 x1_lexi
 --------------------
 2.144001  e  0      

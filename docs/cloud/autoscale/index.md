@@ -1,6 +1,6 @@
 ---
 title: Auto Scaling for a kdb+ realtime database | Cloud | kdb+ and q documentation
-description: How to autoscale a cloud deployment of kdb+ realtime database
+description: How to auto-scale a cloud deployment of kdb+ realtime database
 author: Jack Stapleton
 date: September 2020
 ---
@@ -107,7 +107,7 @@ By dynamically acquiring resources we can ensure that the load on our system nev
 
 ![ASG Availability](img/exampleasgavailability.png)
 <br>
-_<small>Figure 1.4: Availablity of a scalable RDB under high load </small>_
+_<small>Figure 1.4: Availability of a scalable RDB under high load </small>_
 
 This will safeguard against unexpected spikes in data volumes crippling our systems and we can stop guessing our capacity needs.
 When developing a new application there is no need to estimate how much memory the RDB is going to need throughout its lifetime.

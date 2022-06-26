@@ -43,7 +43,7 @@ Clusters can be summarized by their centroids, which are the sum of the [feature
 
 !!! tip "`parsedTab`"
 
-    In the examples, the `parsedTab` arguments are tables as returne by the `.nlp.newParser` [example](#preproc/nlpnewparser) in the data-preprocessing section. 
+    In the examples, the `parsedTab` arguments are tables as returned by the `.nlp.newParser` [example](#preproc/nlpnewparser) in the data-preprocessing section. 
 
 
 Markox Cluster 

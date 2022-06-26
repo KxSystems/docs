@@ -136,7 +136,7 @@ Where
 
 -   `graph` is a graph originally generated using `.ml.createGraph`
 -   `nodeId` is a symbol unique to the graph denoting the name to be associated with the functional node
--   `config` is a [functional node](#funtional-node)
+-   `config` is a [functional node](#functional-node)
 
 returns a graph with the the new node added to the graph structure.
 

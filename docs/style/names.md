@@ -151,11 +151,11 @@ While the first name is shorter, it is definitely harder to type than the unabbr
 
 Typing accuracy as well as typing speed is at stake here. Sometimes we are actually compelled to work together face-to-face, in which case we rely on speech rather than email to convey information. We should not spend a lot of time having to explain how things are spelled, or which letters in a name are upper-case, or which vowels didn’t get dropped and which consonants did. 
 
-Practice the folowing typing instructions with a friend:
+Practice the following typing instructions with a friend:
 
 s l s t r k dot p o s n dot capital t bl dot capital n e w capital b lnc
 
-salestrack dot position dot capital t table dot new capital b balanace
+salestrack dot position dot capital t table dot new capital b balance
 
 s t dot pos dot capital t tab capital n new
 
