@@ -26,7 +26,7 @@ Where `x` is a:
 -   **vector**, returns its items in ascending order of value, with the [sorted attribute](set-attribute.md) set, indicating the list is sorted; where the argument vector is found to be in ascending order already, it is assigned the sorted attribute
 -   **mixed list**, returns the items sorted within datatype and with the sorted attribute set
 -   **dictionary**, returns it sorted by the values and with the sorted attribute set
--   **table**, returns it sorted by the first non-key column and with the partitioned attribute set on it
+-   **table**, returns it sorted by the first non-key column and with the sorted attribute set on it
 
 The function is uniform. 
 The sort is stable: it preserves order between equals.
