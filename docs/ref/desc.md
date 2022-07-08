@@ -29,7 +29,7 @@ Where `x` is a
 
 -   **vector**, it is returned sorted
 -   **mixed list**, the result is sorted within datatype
--   **dictionary** or **table**, the result is sorted by the first key value or column (respectively).
+-   **dictionary** or **table**, the result is sorted by values or the first non-key column, respectively.
 
 ```q
 q)desc 2 1 3 4 2 1 2                    / vector
