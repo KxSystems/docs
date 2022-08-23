@@ -70,8 +70,10 @@ alg  algorithm  level  since
 1    q IPC      0
 2    gzip       0-9
 3    snappy     0      V3.4
-4    lz4hc      0-16   V3.6 (level 0 for lz4hc "default" compression, level>16 behaves the same as 16)
+4    lz4hc      0-16†  V3.6 
 </pre>
+
+!!! detail "Level 0 for `lz4hc` default compression; level>16 behaves the same as 16"
 
 
 ### Selective compression
