@@ -2,7 +2,7 @@
 title: File compression | Database | kdb+ and q documentation
 description: How to work with compressed files in kdb+
 author: Stephen Taylor
-date: October 2020
+date: August 2022
 ---
 # File compression
 
@@ -70,7 +70,7 @@ alg  algorithm  level  since
 1    q IPC      0
 2    gzip       0-9
 3    snappy     0      V3.4
-4    lz4hc      1-12   V3.6
+4    lz4hc      0-16   V3.6 (level 0 for lz4hc "default" compression, level>16 behaves the same as 16)
 </pre>
 
 
