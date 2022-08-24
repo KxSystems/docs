@@ -31,7 +31,7 @@ Start kdb+ and load `odbc.k` – this populates the `.odbc` context.
 
 !!! tip "Unix systems"
 
-    Ensure you have [unixODBC](http://www.unixodbc.com) installed, 
+    Ensure you have [unixODBC](http://www.unixodbc.org) installed, 
     and that `LD_LIBRARY_PATH` includes the path to the odbc.so, e.g. for 64-bit Linux
     <pre><code class="language-bash">
     $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$QHOME/l64
