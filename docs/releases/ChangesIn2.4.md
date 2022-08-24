@@ -56,7 +56,7 @@ hopen 5001 / open port 5001 on local machine
 
 Previously userid and password were checked if a userid:password file had been specified with the `-u` or `-U` parameter. The checking happened outside of the user's session in the q executable. Only if that check was passed did the connect get created and a handle passed into the "user space" as a parameter to `.z.po`.
 
-Now after the `-u` or `-U` check has been done (if specified on the command line) the userid and password are passed to `.z.pw` allowing a function to be run to perform custom validation – for example to check aganst an LDAP server. If `.z.pw` returns a `1b` the login can proceed and the next stop will be `.z.po`, if it returns a `0b` the user attempting to open the connection will get an access error.
+Now after the `-u` or `-U` check has been done (if specified on the command line) the userid and password are passed to `.z.pw` allowing a function to be run to perform custom validation – for example to check against an LDAP server. If `.z.pw` returns a `1b` the login can proceed and the next stop will be `.z.po`, if it returns a `0b` the user attempting to open the connection will get an access error.
 
 ## `.z.pi`
 
@@ -81,7 +81,7 @@ By default, callbacks like `.z.po` are not defined in the session, which makes i
 
 ## `.Q` `.q` visibility
 
-In 2.3 the display of the definitions of functions in `.q` and `.Q` was supressed. People complained… so the display is back.
+In 2.3 the display of the definitions of functions in `.q` and `.Q` was suppressed. People complained… so the display is back.
 
 ## `.z.ts` delay
 -----------
@@ -140,7 +140,7 @@ q)
 
 Previously it would have crashed and exited on encountering corrupt records, now it will truncate the file to remove the invalid records and only process valid items.
 
-Rather than the individual cells being executed directly `.z.ps` is called on each allowing easier customisation of log loaders.
+Rather than the individual cells being executed directly `.z.ps` is called on each allowing easier customization of log loaders.
 
 ## `inetd`
 
@@ -247,7 +247,7 @@ Unfortunately that meant useful information like the client's browser or preferr
 
 With 2.4 the header information is passed back as a dictionary in addition to the body text as before.
 
-This is a change in behavior, but will only affect those who have customised `.z.ph` or `.z.pp` directly. The previous value is now the first item of a 2-item list, the new header dictionary is the second item.
+This is a change in behavior, but will only affect those who have customized `.z.ph` or `.z.pp` directly. The previous value is now the first item of a 2-item list, the new header dictionary is the second item.
 
 
 ## Scalars

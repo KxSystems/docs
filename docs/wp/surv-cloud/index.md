@@ -131,7 +131,7 @@ alert:{[args]
   //   the cancel count thresholds on an individual instrument
   alerts:select from data where 
     thresholds[`cancelQtyThreshold]<totalCancelQty,
-    hresholds[`cancelCountThreshold]<totalCancelCount;
+    thresholds[`cancelCountThreshold]<totalCancelCount;
 
   // Prepare alert data to be published to tp
   alerts:update 
@@ -505,7 +505,7 @@ To create a new Kubernetes cluster in GCP, we go to GKE on the GCP management co
 In the above picture we already have a cluster created called `surv-cloud-wp-gcp` that we will use to deploy the surveillance application. (See the GCP documentation for detailed information on creating clusters on the management console.) 
 
 The GCP CLI, `gcloud`, allows us to connect to the cluster we created from a local machine.  We connect by running the command `gcloud container clusters get-credentials`, which retrieves the cluster data and updates the Kubernetes context to point at it. See the command running here:
-![gcp-initalize-cluster](img/3-gke-initialize.png)
+![gcp-initialize-cluster](img/3-gke-initialize.png)
 
 Connected to the cluster, we can deploy the application, once again running the `deployK8sCluster.sh` script: 
 

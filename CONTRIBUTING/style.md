@@ -137,7 +137,7 @@ No fluff. Get straight to the point – visually and verbally.
 
 -   Could 30 words do the job of 300?
 -   It’s a longer read – could subheads help to make your document digestible?
--   Do I really need to use a third colour here?
+-   Do I really need to use a third color here?
 -   Is it essential in order to tell a compelling story?
 
 

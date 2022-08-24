@@ -16,7 +16,7 @@ Each such request is a burden.
 
 The nearer and sooner we use it, the sooner we unburden our reader, and more clearly she sees what’s going on. We should shorten our communication paths. But what is shorter than what?
 
-Let’s try to formalise our intuitions about distances within the workspace by ranking different instances of distance.
+Let’s try to formalize our intuitions about distances within the workspace by ranking different instances of distance.
 
 
 ## Distance within an expression

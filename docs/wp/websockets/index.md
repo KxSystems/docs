@@ -742,7 +742,7 @@ we have seen how to parse kdb+ data into JSON objects using both
 server-side and client-side methods. Both of these methods have their
 benefits and drawbacks so it is important to consider the application
 infrastructure when deciding which method will be most suitable.
-Serialising data across the connection is easy to achieve using the `-8!`
+Serializing data across the connection is easy to achieve using the `-8!`
 and `-9!` functions on the kdb+ server and the `c.js` code provided by KX
 on the JavaScript client. Alternatively, the kdb+ `.j.j` and `.j.k`
 functions can be used in conjunction with a browser’s native JSON parser
@@ -770,7 +770,7 @@ All tests were run using kdb+ version 3.5 (2017.11.30)
 **Chris Scott** worked for First Derivatives from 2013 as a kdb+ consultant at one of the world’s largest financial institutions, developing a range of kdb+ applications which use WebSockets as a form of communication.
 
 <!-- **Version 1.1 (March 2018)** -->
-**Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualising real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the KX platform.
+**Michael Gracey** also joined First Derivatives in 2013 and works as a front-end developer for one of the world’s largest financial institutions developing a performant Web interface for visualizing real-time data via the use of WebSocket connections. Michael is also involved in designing HTML5 training courses and building HTML5 mobile and desktop applications for the KX platform.
 
 
 ## Appendixes
@@ -994,7 +994,7 @@ HTML code have been split into separate files
 This script will be loaded into the web page by the HTML. Make sure this
 is saved as a JS file in the same directory as the above HTML file.
 ```js
-/* initialise variable */
+/* initialize variable */
 var ws, syms = document.getElementById("selectSyms"),
     quotes = document.getElementById("tblQuote"),
     trades = document.getElementById("tblTrade");

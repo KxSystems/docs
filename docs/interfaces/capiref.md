@@ -935,7 +935,7 @@ Returns an interned string and should be used to store the string in a symbol ve
 K sslInfo(K x)
 ```
 
-A dictionary of settings similar to [`-26!x`](../basics/internal.md#-26x-ssl), or an error if SSL initialisation failed.
+A dictionary of settings similar to [`-26!x`](../basics/internal.md#-26x-ssl), or an error if SSL initialization failed.
 
 ```c
 extern I khpunc(S hostname,I port,S usernamepassword,I timeout,I capability);

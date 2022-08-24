@@ -72,7 +72,7 @@ string                    string     10h
 bytes                     string     4h
 ```
 
-When parsing from Protobuf to kdb+, for any field which has not been explicity set in the encoded message, Protobuf will return the default value for that field type which is then populated as usual into the corresponding q element.
+When parsing from Protobuf to kdb+, for any field which has not been explicitly set in the encoded message, Protobuf will return the default value for that field type which is then populated as usual into the corresponding q element.
 
 Similarly when serializing from q to Protobuf, any q element set to its field-specific default value is equivalent to not explicitly setting that field in the encoded message. It is necessary to pad unspecified message fields with their default value or `::` in q in order to maintain the one-to-one positional mapping between any given message field and its corresponding q element.
 

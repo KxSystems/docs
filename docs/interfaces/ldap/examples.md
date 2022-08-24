@@ -1,5 +1,5 @@
 ---
-title: Example usage | LDAP | Interfaces | Docuemntation for q and kdb+
+title: Example usage | LDAP | Interfaces | Documentation for q and kdb+
 author: Simon Shanks
 description: Examples showing the use of the LDAP kdb+ interface
 date: March 2020

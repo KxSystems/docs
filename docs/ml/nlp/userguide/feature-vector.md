@@ -201,7 +201,7 @@ _TF-IDF scores for terms in each document of a corpus_
 
 Where `parsedTab` is a table of parsed documents (as returned by `.nlp.newParser`) returns for each document, a dictionary of tokens and their relevance.
 
-Extract a specific document and find the most significiant words in that document:
+Extract a specific document and find the most significant words in that document:
 
 ```q
 q)5#desc .nlp.TFIDF[parsedTab]100

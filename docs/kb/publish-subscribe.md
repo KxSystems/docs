@@ -16,7 +16,7 @@ To give the ability to publish data to any process, a few things need to be done
 
 -   load `u.q`
 -   declare the tables to be published in the top level namespace. Each table must contain a column called `sym`, which acts as the single key field to which subscribers subscribe
--   initialise by calling `.u.init[]`
+-   initialize by calling `.u.init[]`
 -   publish data by calling `.u.pub[table name; table data]`
 
 The list of tables that can be published and the processes currently subscribed are held in `.u.w`. When a client process closes a connection, it is removed from `.u.w`.

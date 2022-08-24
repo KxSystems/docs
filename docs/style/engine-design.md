@@ -22,7 +22,7 @@ For example, a simple calculator consists of
 -   a set of output, or result, variables; and
 -   a set of functional relationships between inputs and outputs.
 
-Decide on the proper data structures for inputs and outputs (atoms, or lists, integers or reals, etc.) and design and implement your functions accordingly. Now is also the right time decide on names for things, and on how variables and functions are to be ancapsulated. Some questions to ask are:
+Decide on the proper data structures for inputs and outputs (atoms, or lists, integers or reals, etc.) and design and implement your functions accordingly. Now is also the right time decide on names for things, and on how variables and functions are to be encapsulated. Some questions to ask are:
 
 -   Will I ever need more than one instance of X?
 -   Can X ever go to empty?

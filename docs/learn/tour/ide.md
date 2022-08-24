@@ -1,6 +1,6 @@
 ---
 title: Interactive Development Environments | Mountain tour | Learn | Documentation for kdb+ and q
-description: IDEs (interactive development environments) for kdb+ and the q programnming language
+description: IDEs (interactive development environments) for kdb+ and the q programming language
 author: Stephen Taylor
 date: June 2020
 ---

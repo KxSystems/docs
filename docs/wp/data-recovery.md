@@ -539,5 +539,5 @@ All tests were run using kdb+ V3.1 (2014.03.27).
 
 ## Author
 
-**Fionnbharr Gaston** is a kdb+ consultant currently based in Singapore. He has worked with a number of top-tier investment banks and exchanges in the UK, Asia, and Australia, on applications ranging from market-data capture to market surveillances.
+**Fionnbharr Gaston** is a kdb+ consultant currently based in Singapore. He has worked with a number of top-tier investment banks and exchanges in the UK, Asia, and Australia, on applications ranging from market-data capture to market surveillance.
 

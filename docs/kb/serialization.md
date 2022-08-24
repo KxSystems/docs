@@ -328,7 +328,7 @@ bytes | semantics
 0x01 | little endian
 000000 | 
 15000000 | message length
-64 | type (100 – lamda)
+64 | type (100 – lambda)
 00 | null terminated context (root)
 0a | type (10 – char vector)
 00 | attributes

@@ -194,7 +194,7 @@ Where
 -   `provFlags` is the [provision flag](https://docs.solace.com/API-Developer-Online-Ref-Documentation/c/sol_client_8h.html#provisionflags) used by Solace (integer)
 -   `topic` is a topic subscription (symbol or string)
 
-!!! tip "Unsubscriptions from topics may be from either queues or remote clients."
+!!! tip "Un-subscriptions from topics may be from either queues or remote clients."
 
 
 ## Direct messaging

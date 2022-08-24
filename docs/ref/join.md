@@ -28,7 +28,7 @@ The result is a vector if both arguments are vectors or atoms of the same type; 
 ```q
 q)1 2.4 5,-7.9 10               /float vectors
 1.00 2.40 5.00 -7.90 10.00
-q)1 2.4 5,-7.9                  /float vector and atomatom 
+q)1 2.4 5,-7.9                  /float vector and atom
 1.00 2.40 5.00 -7.90
 q)1 2.4 5, -7.9 10e             /float and real vectors
 (1.00;2.40;5.00;-7.90e;10.00e)

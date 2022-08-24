@@ -1,6 +1,6 @@
 ---
 title: Amazon Web Services | Auto Scaling for a kdb+ realtime database | Cloud | kdb+ and q documentation
-description: AWS resources used to autoscale a cloud deployment of kdb+ realtime database
+description: AWS resources used to auto-scale a cloud deployment of kdb+ realtime database
 author: Jack Stapleton
 date: September 2020
 ---

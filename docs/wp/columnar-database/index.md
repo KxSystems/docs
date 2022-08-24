@@ -311,7 +311,7 @@ As we can see in the table above, when we compare optimal to non-optimal query c
 When we look at the results of the parted-attribute and non-optimal constraint-order examples, we can see the benefits of both applying the attribute and using an optimal constraint order in the query. 
 
 Initially, both optimal and non-optimal requests against the database with the attribute set are faster than their counterparts without attributes. As the database grows, we can see that the optimally ordered request without the attribute starts to outperform the non-optimal request with the attribute set. The reason for this is that requests with optimal constraint order only
-have to search within the data for one date. While the parted attribute has optimized the search within each date for the non-optimal request, the data it has to search through is growing as the database grows, and before long the work being done surpasses the work being done in the database withour the attribute.
+have to search within the data for one date. While the parted attribute has optimized the search within each date for the non-optimal request, the data it has to search through is growing as the database grows, and before long the work being done surpasses the work being done in the database without the attribute.
 
 As the database grows it becomes clear that the best-performing version is with the parted attribute applied and optimal constraint order.
 
@@ -439,7 +439,7 @@ tbl:update `u#sym from mktbl 10000000
 100,000,000 | 233  134,218,240 |  96     528 |   0    1,040 |   0     528
 ```
 
-<small>_Table 6: Results from queries on data with unque attribute as table grows_</small>
+<small>_Table 6: Results from queries on data with unique attribute as table grows_</small>
 
 ![Figure 9](img/figure9.png)
 
@@ -650,7 +650,7 @@ q)raze{
 
 NB: omitted curve for ‘using = and each’ without attributes in order to examine more closely the faster-returning examples.
 
-As we can see from the chart above, there are points at which it has been more performant to use `=` for comparison and loop over the universe of securities being requested, then join the result sets using `raze`. This is because `select` preserves the order of records in the table, so has to coalesce the indices from the grpuped-attribute hash records for each security into a single ascending index when using in and a list, but this step is not necessary when using a function over a list of securities.
+As we can see from the chart above, there are points at which it has been more performant to use `=` for comparison and loop over the universe of securities being requested, then join the result sets using `raze`. This is because `select` preserves the order of records in the table, so has to coalesce the indices from the grouped-attribute hash records for each security into a single ascending index when using in and a list, but this step is not necessary when using a function over a list of securities.
 
 !!! warning "Aggregation results"
 

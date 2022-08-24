@@ -1,6 +1,6 @@
 ---
 title: Shifts & scans – Learn – kdb+ and q documentation
-description: Shifts are powerful expressions for finding where the items of a list change in specific ways. Boolean shifts are commonly used to find where in a list the result of a test expression on its elements has changed. Shifts compare each list item to its neighbour, but scan results relate to the entire list – and can terminate quickly.
+description: Shifts are powerful expressions for finding where the items of a list change in specific ways. Boolean shifts are commonly used to find where in a list the result of a test expression on its elements has changed. Shifts compare each list item to its neighbor, but scan results relate to the entire list – and can terminate quickly.
 author: Stephen Taylor
 keywords: idiom, kdb+, q, scan, shift
 ---
@@ -84,7 +84,7 @@ q)(x;not differ x)
 
 ## Scans
 
-Shifts compare each list item to its neighbour, but scan results relate to the entire list – and can terminate quickly.
+Shifts compare each list item to its neighbor, but scan results relate to the entire list – and can terminate quickly.
 
 
 ### All false from first false

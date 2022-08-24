@@ -129,7 +129,7 @@ Subject to the User purchasing access to the Kdb+ Software via Azure, and subjec
 
 1.  KX owns all right, title and interest in the Kdb+ Software and
     documentation and any Intellectual Property (whether
-    registerable or unregisterable) appurtenant thereto including in
+    registerable or un-registerable) appurtenant thereto including in
     any Updates, modifications, improvements, or developments to the
     Kdb+ Software arising during this Agreement. (“**Intellectual
     Property**” means patents, utility models, rights to inventions,
@@ -249,7 +249,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     business, lost profits , loss of revenue, loss of anticipated
     savings or any consequential, special, inci­dental, or indirect
     damages of any kind under any cause or action whether in
-    contract or tort(including negli­gence), whether or not the
+    contract or tort(including negligence), whether or not the
     party has been advised of the possibility of such damages. These
     limitations shall apply notwithstanding the failure of the
     essential purpose of any limited remedy.
@@ -258,7 +258,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     under Section 7 (“Indemnification”) above or a user’s
     reproduction, use or distribution of the Kdb+ Software outside
     the scope of the licenses granted in Section 2 above, fraud or
-    fradulent misrepresentation each party its affiliates and their
+    fraudulent misrepresentation each party its affiliates and their
     respective officers, directors, employees, agents and
     representatives total liability for direct damages under or in
     connection with this agreement, whether in an action in contract
@@ -447,7 +447,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     violation by you of the provisions of sections 2 and 5 and/or
     payment obligations relating to this Agreement, KX will have the
     right at its discretion to seek remedies in courts within any
-    applicable territory. User and the organisation which you
+    applicable territory. User and the organization which you
     represent and have bound to the terms of this Agreement shall be
     jointly and severally liable for User’s obligations under this
     Agreement. This Agreement supersedes all prior or
@@ -456,7 +456,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     matter of this Agreement. It replaces and supersedes any
     previous oral or written agreements, in relation to this
     Agreement including any previous versions of the Agreement
-    accessed by the User or any representative from the organisation
+    accessed by the User or any representative from the organization
     which you have bound under this Agreement, and any
     understandings or other communications between the parties in
     connection with this Agreement. The waiver by either party of a

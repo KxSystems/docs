@@ -48,7 +48,7 @@ K gpu_square(K x) {
  cudaMalloc((void **)&device_memory, size);
  cudaMemcpy(device_memory, host_memory, size, cudaMemcpyHostToDevice);
 
- // Do the computaton on the card
+ // Do the computation on the card
  int block_size = 4;
  int n_blocks = xn/block_size + (xn%block_size == 0 ? 0:1);
  square_array <<< n_blocks, block_size >>> (device_memory, xn);

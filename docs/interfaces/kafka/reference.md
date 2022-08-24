@@ -2,7 +2,7 @@
 title: Guide for using Kafka with kdb+
 author: Conor McCarthy
 description: Lists functions available for use within the Kafka API for kdb+ and gives limitations as well as examples of each being used 
-date: Augst 2022
+date: August 2022
 keywords: broker, consumer, kafka, producer, publish, subscribe, subscription, topic
 ---
 # ![Apache Kafka](../img/kafka.png) Kafka function reference 

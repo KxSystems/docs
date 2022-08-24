@@ -38,7 +38,7 @@ In numerical optimization, the Broyden-Fletcher-Goldfarb-Shanno (BFGS) algorithm
 
 ## `.ml.optimize.BFGS`
 
-_Optimize an objective function based on a provided intial guess using the BFGS algorithm_
+_Optimize an objective function based on a provided initial guess using the BFGS algorithm_
 
 
 ```syntax

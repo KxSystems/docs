@@ -579,7 +579,7 @@ visualization front-end to a kdb+ back end.
 {: .small-face}
 
 **Michaela Woods** is a KX Technical Evangelist and Training Manager. She pioneered combining kdb+ with Tableau, transforming the data-visualization platform for a Tier-1 Investment Bank.&nbsp;
-[:fontawesome-solid-envelope:](mailto:mwoods@kx.com?subject=White paper: Data visualiozation) &nbsp;
+[:fontawesome-solid-envelope:](mailto:mwoods@kx.com?subject=White paper: Data Visualization) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/michaela-woods-50502b60/)
 
 

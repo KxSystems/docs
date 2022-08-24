@@ -69,7 +69,7 @@ _Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interproce
 
 ### `saveorig.q`
 
-This script just saves original values of things like `.z.pg` so you can revert to original definitions without having to restart the task. This is made a little more complicated by the way some of the default definitions aren’t materialised in the user workspace. For example by default `.z.pg` is just `{value x}` but that’s run in the kdb+ executable. The default values are created explicitly if need be.
+This script just saves original values of things like `.z.pg` so you can revert to original definitions without having to restart the task. This is made a little more complicated by the way some of the default definitions aren’t materialized in the user workspace. For example by default `.z.pg` is just `{value x}` but that’s run in the kdb+ executable. The default values are created explicitly if need be.
 
 ```q
 .dotz.exit.ORIG:.z.exit:@[.:;`.z.exit;{;}];
@@ -229,7 +229,7 @@ There are so many ways to control access that this script is way too complicated
 
 It shows how to control access via
 
--   a user table – splitting users into superusers (who can do anything), powerusers (who can run ad-hoc queries, but can’t do things like shutdown the session) and defaultusers (who can only use a speciic list of pre-defined commands).
+-   a user table – splitting users into superusers (who can do anything), powerusers (who can run ad-hoc queries, but can’t do things like shutdown the session) and defaultusers (who can only use a specific list of pre-defined commands).
 -   the client’s server – with name matching a set of wildcards
 -   a list of valid commands
 -   a command validator which parses input

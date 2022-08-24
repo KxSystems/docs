@@ -249,7 +249,7 @@ q)t1.date
 
 ## Multithreading
 
-Views must be evalulated on the main thread, otherwise the calculation will signal `'threadview`. E.g. with q using two secondary threads
+Views must be evaluated on the main thread, otherwise the calculation will signal `'threadview`. E.g. with q using two secondary threads
 
 ```bash
 $ q -s 2

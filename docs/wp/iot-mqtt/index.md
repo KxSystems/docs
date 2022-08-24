@@ -6,7 +6,7 @@ date: May 2021
 ---
 # Internet of Things with MQTT
 
-![Internet of Things](iot.jpg)
+![Internet of Things](img/iot.jpg)
 
 by [Rian Ó Cuinneagáin ](#author)
 {: .wp-author}
@@ -163,7 +163,7 @@ The full project is available at
 :fontawesome-brands-github:
 [rianoc/environmentalmonitor](https://github.com/rianoc/EnvironmentalMonitor).
 
-![Dataflow layout](layout.jpg)
+![Dataflow layout](img/layout.jpg)
 
 
 ### Arduino microcontroller
@@ -175,7 +175,7 @@ To program an Arduino we upload a single [sketch](https://www.arduino.cc/en/tuto
 
 The uploaded sketch gathers temperature, pressure, humidity, and light readings from attached sensors and sends it back to the Raspberry Pi over a serial USB connection.
 
-![Arduino with sensors](environmentalmonitor.jpg)
+![Arduino with sensors](img/environmentalmonitor.jpg)
 
 
 ### Reading serial data with kdb+
@@ -560,11 +560,11 @@ show_icon: true
 
 An overview of all the sensors:
 
-![Sensors](livingroom.jpg)
+![Sensors](img/livingroom.jpg)
 
 Clicking on any one sensor allows a more detailed graph to be seen:
 
-![Sensor graph](graph.png)
+![Sensor graph](img/graph.png)
 
 
 ## Creating a sensor database
@@ -875,7 +875,7 @@ int    time                          name                           state
 
 Using [KX Dashboards](https://code.kx.com/dashboards/) the captured data can then be graphed:
 
-![Dashboard](dashboard.png)
+![Dashboard](img/dashboard.png)
 
 
 ## Conclusion

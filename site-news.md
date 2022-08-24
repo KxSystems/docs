@@ -37,7 +37,7 @@ If this causes you a problem, please contact the [Librarian](mailto:librarian@kx
 Version 1 – with URLs beginning `/q` – has been removed. 
 Most URLs beginning `code.kx.com/q` now return 404s. 
 URLs beginning `code.kx.com/wiki` do the same.
-We apologise for the undoubted inconvenience. 
+We apologize for the undoubted inconvenience. 
 
 We have taken this drastic step after a failed campaign to dissuade Google Search from returning wiki and V1 pages in its top results. 
 It appeared that its own history of referrals to the old material outweighed sitemaps and X-Robots metatags.

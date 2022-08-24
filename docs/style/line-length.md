@@ -9,7 +9,7 @@ keywords: kdb+, q, style
 
 Ideally, a physical line of code contains exactly one q statement, and a q statement encodes exactly one thought. 
 
-Some thoughts are too large or complex to represent in a single readble q statement. Some thoughts are too small or trivial to justify the expenditure of a whole physical line. 
+Some thoughts are too large or complex to represent in a single readable q statement. Some thoughts are too small or trivial to justify the expenditure of a whole physical line. 
 
 An example of a line which contains several q statements, each of which encodes a small piece of a single thought:
 

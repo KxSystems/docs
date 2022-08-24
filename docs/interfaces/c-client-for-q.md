@@ -245,9 +245,9 @@ r0(ki(5));
 ```
 creates and immediately destroys an integer object.
 
-!!! warning "Initialise the kdb+ memory system"
+!!! warning "Initialize the kdb+ memory system"
 
-    Before calling any 'generator' functions in a standalone application, you must initialise the kdb+ internal memory system. (It is done automatically when you open a connection to other kdb+ processes.) Without making a connection, use `khp("",-1);`
+    Before calling any 'generator' functions in a standalone application, you must initialize the kdb+ internal memory system. (It is done automatically when you open a connection to other kdb+ processes.) Without making a connection, use `khp("",-1);`
 
 In the case of a function being called from q
 
@@ -515,7 +515,7 @@ else
 
 We use the `int khpu(host, port,username)` function to connect to a q server.
 Note you _must_ call `khpu` before generating any q data, and the very first call to `khpu` must not be concurrent to other `khpu` calls.
-To initialise memory without making a connection, use `khp("",-1);`
+To initialize memory without making a connection, use `khp("",-1);`
 
 It is highly recommended to use `khpu` and supply a meaningful username, as this will help server administrators identify a user’s connection.
 

@@ -90,7 +90,7 @@ q)-1+`date$3+3 xbar `month$2019.11.19  / end of that quarter
 
 ## :fontawesome-solid-sitemap: Implicit iteration
 
-`xbar` is an [atomic functiom](../basics/atomic.md).
+`xbar` is an [atomic function](../basics/atomic.md).
 It applies to [dictionaries and keyed tables](../basics/math.md#dictionaries-and-tables)
 
 ```q

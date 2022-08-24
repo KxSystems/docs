@@ -19,11 +19,11 @@ by [Edward Cormack](#author)
 
 Parallel-processing techniques have become increasingly prevalent in mainstream computing as a result of developments in computer architecture. Multi-core processors are now widely used in all systems from mobile devices to high-performance servers.
 
-With this comes the need to develop applications that can make full use of parallel architecture to realise performance gains. Parallel computing techniques typically involve dividing large tasks into several parts, which can be executed simultaneously, taking less time than it would take to run all the parts sequentially. This concurrent operation shares the load, using the full resources of the system to optimize performance.
+With this comes the need to develop applications that can make full use of parallel architecture to realize performance gains. Parallel computing techniques typically involve dividing large tasks into several parts, which can be executed simultaneously, taking less time than it would take to run all the parts sequentially. This concurrent operation shares the load, using the full resources of the system to optimize performance.
 
 This white paper intends to introduce the methods available for parallel processing in kdb+. We will demonstrate a number of cases where parallel techniques can be employed and discuss the potential performance enhancements.
 
-In many cases, operations on large vector datasets, which are typical of those processed and analysed by kdb+, are easily parallelized. Where this is the case, complex operations on long lists can be broken up and executed on multiple threads.
+In many cases, operations on large vector datasets, which are typical of those processed and analyzed by kdb+, are easily parallelized. Where this is the case, complex operations on long lists can be broken up and executed on multiple threads.
 
 We will also address use cases where parallel processing may not be appropriate in kdb+ and some of the important factors to consider in each case.
 

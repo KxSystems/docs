@@ -147,7 +147,7 @@ Symbols are internalized from a single memory area common to all threads.
 
 Since V3.1, `peach` can use multiple processes instead of threads, configured through the startup [command-line option `-s`](cmdline.md#-s-secondary-threads) with a negative integer, e.g. `-s -4`. 
 
-Unlike multiple threads, the distribution of the workload is not precalculated, and is distributed to the secondary processes as soon as they complete their allocated items. All data required by the peached function must either already exist on all secondary processes, or be passed as an argument. Argument sizes should be minimised because of IPC costs. 
+Unlike multiple threads, the distribution of the workload is not precalculated, and is distributed to the secondary processes as soon as they complete their allocated items. All data required by the peached function must either already exist on all secondary processes, or be passed as an argument. Argument sizes should be minimized because of IPC costs. 
 
 The motivating use case for this mode is multiprocess HDBs, combined with non-compressed data and [`.Q.MAP[]`](../ref/dotq.md#qmap-maps-partitions).
 

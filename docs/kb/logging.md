@@ -58,7 +58,7 @@ size | 1625
     ```
 
 
-## Checkpointing
+## Check-pointing
 
 A logging server uses a `.log` file and a `.qdb` data file. The command `\l` checkpoints the `.qdb` file and empties the log file.
 

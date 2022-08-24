@@ -1,6 +1,6 @@
 ---
 title: attr – attributes of an object | Reference | kdb+ and q documentation
-description: attr is a q keyword that reurns the attributes of an object 
+description: attr is a q keyword that returns the attributes of an object 
 author: Stephen Taylor
 ---
 # `attr`

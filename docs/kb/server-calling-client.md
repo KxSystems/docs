@@ -21,7 +21,7 @@ Generally, async _set_ messages to the client are preferable because the server 
 
 -   only 32-bit or 64-bit libraries were available
 -   unreliable external code may stomp on kdb+
--   licencing issues
+-   licensing issues
 -   system calls in external code conflict with kdb+
 
 

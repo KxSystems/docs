@@ -124,7 +124,7 @@ It could also be written as
 (`goo`foo x>5)set x
 ```
 
-Suppose instead that `foo` and `goo` are lamdbdas that produce quite different side effects. We would use `if` to make it clear no result is being captured.
+Suppose instead that `foo` and `goo` are lambdas that produce quite different side effects. We would use `if` to make it clear no result is being captured.
 
 ```q
 if[b:x>5;foo x];

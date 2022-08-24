@@ -404,7 +404,7 @@ Knowledge Base: [Chained tickerplant](../kb/chained-tickerplant.md)
 This white paper examined some key factors which can influence the performance and throughput of a kdb+ tickerplant. We established a methodology to profile the performance of a kdb+ tickerplant and used it to focus on four key areas which can affect the tickerplant’s throughput:
 
 
--   **Number of rows per update** Feeds should read as many messages off the socket as possible and send bulk updates to the tickerplant if possible. Bulk updates will greatly increase the maximum throughput achievable. Forexample, we found processing a bulk update of 10 messages took only slightly longer than processing an update of 1 message, and hence the CPU usage was nearly 10 times lower for the same number of messages per second.
+-   **Number of rows per update** Feeds should read as many messages off the socket as possible and send bulk updates to the tickerplant if possible. Bulk updates will greatly increase the maximum throughput achievable. For example, we found processing a bulk update of 10 messages took only slightly longer than processing an update of 1 message, and hence the CPU usage was nearly 10 times lower for the same number of messages per second.
 
 -   **Size of each update in bytes** Reducing the size of the data can improve throughput, as writing to disk and sending the data will be faster. The improvement is more noticeable on bulk updates.
 
@@ -415,7 +415,7 @@ This white paper examined some key factors which can influence the performance a
 
 These are not the only factors that contribute to a tickerplant’s performance. A complete analysis would also examine the effects that network latency and bandwidth, disk write-speed and TCP/IP tuning have on tickerplant performance.
 
-The results shown here not representative of kdb+ systems as a whole. Results for each individual kdb+ system will vary due to various hardware and software considerations. However, the code and methodology used in this paper could serve as astarting point to any developers wishing to profile and optimize their own systems.
+The results shown here not representative of kdb+ systems as a whole. Results for each individual kdb+ system will vary due to various hardware and software considerations. However, the code and methodology used in this paper could serve as a starting point to any developers wishing to profile and optimize their own systems.
 
 All tests were run using kdb+ version 3.1 (2014.02.08)
 

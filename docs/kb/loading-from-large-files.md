@@ -452,7 +452,7 @@ openssl enc -aes-256-cbc -d –k password -in trades.csv.dat > named_pipe &
 
 ## Bulk Copy Program
 
-Microsoft’s [Bulk Copy Progam](https://docs.microsoft.com/en-us/sql/tools/bcp-utility?view=sql-server-2017) (bcp) is supported using the text format. 
+Microsoft’s [Bulk Copy Program](https://docs.microsoft.com/en-us/sql/tools/bcp-utility?view=sql-server-2017) (bcp) is supported using the text format. 
 
 Export:
 

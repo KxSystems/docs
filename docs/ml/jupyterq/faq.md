@@ -77,7 +77,7 @@ Further instructions for running headless and building the image are [available]
 
 ## Can I restrict the access to my notebook using passwords?
 
-Yes, you can initialise a notebook which requires other processes to provide a valid *username:password* pair when trying to open a connection with the notebook.
+Yes, you can initialize a notebook which requires other processes to provide a valid *username:password* pair when trying to open a connection with the notebook.
 
 :fontawesome-regular-hand-point-right:
 [Restrict access](../notebooks/#restrict-access-to-a-notebook-using-passwords)

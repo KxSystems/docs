@@ -468,7 +468,7 @@ We got a lot from seeing each verse as a subset of `stanza`. We avoided lots of 
 
 !!! tip "Iteration is free"
 
-    Not actually, of course. But the iteration implicit in the primitives generally evaluates faster than any iteration you specify explictly.
+    Not actually, of course. But the iteration implicit in the primitives generally evaluates faster than any iteration you specify explicitly.
 
     And it is certainly free in terms of code volume.
 

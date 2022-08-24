@@ -262,7 +262,7 @@ We could apply an attribute to this data for optimization, such as the sorted at
 
 ## Conclusion
 
-In this paper, we have taken one sample of astronomy data that came in a format which was initially unfamiliar to us, and subsequently analyzed it in kdb+ with relative ease. We made use of the flexibility that kdb+ has in extending to other languages; in this case C, which effectively only required using the Dyanamic Load operator. This approach can be replicated where C utilities have been created for interacting with data sources, or for other reasons.
+In this paper, we have taken one sample of astronomy data that came in a format which was initially unfamiliar to us, and subsequently analyzed it in kdb+ with relative ease. We made use of the flexibility that kdb+ has in extending to other languages; in this case C, which effectively only required using the Dynamic Load operator. This approach can be replicated where C utilities have been created for interacting with data sources, or for other reasons.
 
 We were then able to build functionality to calculate the recessional velocity of different object classes, which took less than a tenth of a second to run on a table of one million rows. In doing this we made use of kdb+’s efficient `fby` syntax to make use of an aggregate function as a filter criteria. It is apparent that kdb+ is extremely performant, both in storing and analyzing this data. The nature and expected volumes of data, and the way it will be used, go hand in hand with kdb+ and we have found it to be an ideal fit.
 

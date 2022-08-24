@@ -24,7 +24,7 @@ ESP software has been hugely impactful on the capital-markets industry, helping 
 
 Blackjack is the most widely played casino game in the world. It generally takes up more tables in the pit area, employs more dealers, attracts more players and generates more revenue than any other table game. Unlike most casino games where the only factor that determines a win or a loss is luck, Blackjack is a game where skill plays a big part.
 
-Card counting is a strategy used in Blackjack to determine whether the next hand is likely to give a probabilistic advantage to the player or to the dealer. It can be used to decrease the casino’s house edge and allows the player to bet more with less risk and minimize losses during unfavourable counts. In a typical hand of Blackjack, the house has between .5% and 3% advantage over the player. However by card counting a player can have a 1%, 2% or 3% advantage over the house.
+Card counting is a strategy used in Blackjack to determine whether the next hand is likely to give a probabilistic advantage to the player or to the dealer. It can be used to decrease the casino’s house edge and allows the player to bet more with less risk and minimize losses during unfavorable counts. In a typical hand of Blackjack, the house has between .5% and 3% advantage over the player. However by card counting a player can have a 1%, 2% or 3% advantage over the house.
 
 There are a number of measures used to protect casinos against card counters. These countermeasures constrain the card counters that may be playing in the casino at any given time but heavily tax the casino’s efficiency, costing the casino industry millions of dollars every year.
 
