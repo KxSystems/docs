@@ -847,7 +847,15 @@ q)h({.z.w".z.u"};::)    / client side returns null symbol
 .z.vs:f
 ```
 
-Where `f` is a binary function, `.z.vs` is evaluated _after_ a value is set globally in the default namespace (e.g. `a`, `a.b`): `x` is the symbol of the variable that is being modified and `y` is the index. This is not triggered for function-local variables, nor globals that are not in the default namespace (e.g. those prefixed with a dot such as .a.b) .
+Where `f` is a binary function, `.z.vs` is evaluated _after_ a value is set globally in the default namespace (e.g. `a`, `a.b`).
+
+For function `f[x;y]`, `x` is the symbol of the modified variable and `y` is the index. 
+
+??? detail "Applies only to globals in the default namespace"
+
+    This is not triggered for function-local variables, nor globals that are not in the default namespace, e.g. those prefixed with a dot such as `.a.b`.
+
+    This is the same restriction that applies to [logging](../kb/logging.md).
 
 The following example sets `.z.vs` to display the symbol, the index and the value of the variable.
 
