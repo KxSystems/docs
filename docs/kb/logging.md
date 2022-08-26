@@ -60,7 +60,7 @@ size | 1625
 
 ## Check-pointing
 
-A logging server uses a `.log` file and a `.qdb` data file. The command `\l` checkpoints the `.qdb` file and empties the log file.
+A logging server uses a `.log` file and a `.qdb` data file. The command [`\l`](../basics/syscmds.md#l-load-file-or-directory) checkpoints the `.qdb` file and empties the log file.
 
 However, the checkpoint is path-dependent. Consider the following:
 

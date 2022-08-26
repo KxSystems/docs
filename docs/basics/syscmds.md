@@ -412,15 +412,22 @@ q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
 
+If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/logging.md#check-pointing) the `.qdb` file and empties the log file.
+
+
 !!! danger "Operating systems may create hidden files, such as `DS_Store`, that block `\l` on a directory."
 
 :fontawesome-solid-book:
 [`load`](../ref/load.md),
 [`.Q.l`](../ref/dotq.md#ql-load) (load)
 <br>
+:fontawesome-solid-graduation-cap:
+[Logging](../kb/logging.md)
+<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§10.3 Scripts](/q4m3/10_Execution_Control/#103-scripts)
+[§10.3 Scripts](/q4m3/10_Execution_Control/#103-scripts),
+[§13.2.6 Logging `-l` and `-L`](/q4m3/13_Commands_and_System_Variables/#1326-logging-l-and-l)
 
 
 ## `\o` (offset from UTC)
