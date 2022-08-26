@@ -246,7 +246,7 @@ a  40
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12.1 Functional select](/q4m3/9_Queries_q-sql/#9121-functional-select)
+[§9.12.1 Functional select](https://code.kx.com/q4m3/9_Queries_q-sql/#9121-functional-select)
 
 
 ## `?` Exec
@@ -422,7 +422,7 @@ c   dog  | 30 3.3
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12.2 Functional exec](/q4m3/9_Queries_q-sql/#9122-functional-exec)
+[§9.12.2 Functional exec](https://code.kx.com/q4m3/9_Queries_q-sql/#9122-functional-exec)
 
 <!-- 
 In the simplest example of a single result column, the By specification is the empty list and the Aggregate specification is a symbol atom.
@@ -560,7 +560,7 @@ The degenerate cases are the same as in Select.
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12.3 Functional update](/q4m3/9_Queries_q-sql/#9123-functional-update)
+[§9.12.3 Functional update](https://code.kx.com/q4m3/9_Queries_q-sql/#9123-functional-update)
 
 
 
@@ -598,7 +598,7 @@ c  z
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12.4 Functional delete](/q4m3/9_Queries_q-sql/#9123-functional-delete)
+[§9.12.4 Functional delete](https://code.kx.com/q4m3/9_Queries_q-sql/#9124-functional-delete)
 
 
 ----
@@ -607,7 +607,7 @@ _Q for Mortals_
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.12 Functional Forms](/q4m3/9_Queries_q-sql/#912-functional-forms)
+[§9.12 Functional Forms](https://code.kx.com/q4m3/9_Queries_q-sql/#912-functional-forms)
 <br>
 :fontawesome-solid-globe:
 [Functional Query Functions](http://www.q-ist.com/2012/10/functional-query-functions.html "q-ist")
