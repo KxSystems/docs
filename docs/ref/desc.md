@@ -29,7 +29,10 @@ Where `x` is a
 
 -   **vector**, it is returned sorted
 -   **mixed list**, the result is sorted within datatype
--   **dictionary** or **table**, the result is sorted by values or the first non-key column, respectively.
+-   **dictionary**, returns it sorted by the values
+-   **table**, returns it sorted by the first non-key column and with the sorted attribute set on that column
+
+!!! detail "Unlike `asc`, which sets the parted attribute where there are other non-key columns, `desc` sets only the sorted attribute."
 
 ```q
 q)desc 2 1 3 4 2 1 2                    / vector
@@ -41,15 +44,23 @@ q)desc (1;1b;"b";2009.01.01;"a";0)      / mixed list
 "a"
 1
 0
-1b
 
-q)t:([]a:3 4 1;b:`a`d`s)                / table
-q)desc t
+q)desc `a`b`c!2 1 3 					/ dictionary
+c| 3
+a| 2
+b| 1
+
+q)desc([]a:3 4 1;b:`a`d`s)              / table
 a b
 ---
 4 d
 3 a
 1 s
+q)meta desc([]a:3 4 1;b:`a`d`s)
+c| t f a
+-| -----
+a| j
+b| s
 ```
 ```txt
 domain: b g x h i j e f c s p m d z n u v t
@@ -99,7 +110,7 @@ Where `x` is a symbol vector of column names defined in `y`, which is passed by
 
 `y` sorted in descending order by `x`. 
 
-The `` `s# `` attribute is not set.
+The sorted attribute is not set.
 The sort is stable, i.e. it preserves order amongst equals.
 
 ```q
@@ -145,8 +156,15 @@ city  | s
 ----
 
 :fontawesome-solid-book:
-[`asc`, `iasc`, `xasc`](asc.md)  
+[`asc`, `iasc`, `xasc`](asc.md),
+[`attr`](attr.md),
+[Set Attribute](set-attribute.md)
+<br>
 :fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md),
+[Metadata](../basics/metadata.md),
 [Sorting](../basics/by-topic.md#sort)
+<br>
+_Q for Mortals_
+[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
 

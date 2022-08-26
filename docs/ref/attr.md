@@ -44,3 +44,6 @@ q)attr ({x+y})
 <br>
 :fontawesome-solid-book-open:
 [Metadata](../basics/metadata.md)
+<br>
+_Q for Mortals_
+[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)

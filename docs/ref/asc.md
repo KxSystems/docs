@@ -25,8 +25,10 @@ Where `x` is a:
 
 -   **vector**, returns its items in ascending order of value, with the [sorted attribute](set-attribute.md) set, indicating the list is sorted; where the argument vector is found to be in ascending order already, it is assigned the sorted attribute
 -   **mixed list**, returns the items sorted within datatype and with the sorted attribute set
--   **dictionary**, returns it sorted by the values and with the sorted attribute set
--   **table**, returns it sorted by the first non-key column and with the partitioned attribute set on it
+-   **dictionary**, returns it sorted by the values
+-   **table**, returns it sorted by the first non-key column and with 
+	+ the sorted attribute set on that column if there is only one non-key column; otherwise
+	+ the parted attribute set
 
 The function is uniform. 
 The sort is stable: it preserves order between equals.
@@ -47,7 +49,6 @@ q)b      / argument was already in ascending order
 q)a      / b was a shallow copy of a
 `s#0 1
 ```
-
 
 ### Mixed list
 
@@ -79,53 +80,49 @@ q){(asc;x iasc abs t)fby t:type each x}(2f;3;4i;5h)  / compare asc
 ```
 
 
+### Dictionary
+
+```q
+q)asc `a`b`c!2 1 3
+b| 1
+a| 2
+c| 3
+```
+
+
 ### Table
 
 ```q
 q)/ simple table
-q)t:([]a:3 4 1;b:`a`d`s)  
-q)asc t
+q)asc ([]a:3 4 1;b:`a`d`s)
 a b
 ---
 1 s
 3 a
 4 d
-q)meta asc t
+q)meta asc ([]a:3 4 1;b:`a`d`s)  		/ sets parted attribute
 c| t f a
 -| -----
 a| j   p
 b| s
+q)meta asc([]a:3 4 1)            		/ sets sorted attribute
+c| t f a
+-| -----
+a| j   s
 
 q)/ keyed table
-q)show kt:([sym:5?`3];c1:5?10;c2:5?10)
-sym| c1 c2
----| -----
-enb| 6  3
-emo| 6  9
-ged| 4  5
-kkc| 7  9
-jma| 8  7
-q)asc kt
-sym| c1 c2
----| -----
-ged| 4  5
-enb| 6  3
-emo| 6  9
-kkc| 7  9
-jma| 8  7
+q)meta asc ([c1:`a`b] c2:2 1; c3:01b)	/ sets parted attribute
+c | t f a
+--| -----
+c1| s
+c2| j   p
+c3| b 
+q)meta asc ([c1:`a`b] c2:2 1)    		/ sets sorted attribute
+c | t f a
+--| -----
+c1| s 
+c2| j   s
 
-q)meta kt
-c  | t f a
----| -----
-sym| s
-c1 | j
-c2 | j
-q)meta asc kt
-c  | t f a
----| -----
-sym| s
-c1 | j   p
-c2 | j
 ```
 
 ```txt
@@ -293,11 +290,13 @@ a 43 2
 
 ----
 :fontawesome-solid-book:
+[`attr`](attr.md),
 [`desc`, `idesc`, `xdesc`](desc.md),
 [Set Attribute](set-attribute.md)
 <br>
 :fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md), 
+[Metadata](../basics/metadata.md),
 [Sorting](../basics/by-topic.md#sort)
 <br>
 :fontawesome-solid-street-view:
