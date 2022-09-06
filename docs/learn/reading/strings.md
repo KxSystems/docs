@@ -263,7 +263,7 @@ q)f["I don't give a care";"care"]
 
 ## It’s more fun to permute
 
-My ingenious histogram-based filing system has a tiny flaw: some people insist that the order of letters in their names is significant, and now I need to re-file everything. Given a string `x`, generate a list of all possible reorderings of the characters in `x`. Can you do this non-recursively?
+My ingenious histogram-based filing system has a tiny flaw: some people insist that the order of letters in their names is significant, and now I need to re-file everything. Given a string `x`, generate a list of all possible re-orderings of the characters in `x`. Can you do this non-recursively?
 
 ```q
 q)f "xyz"

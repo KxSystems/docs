@@ -23,7 +23,7 @@ The contents of the notebooks are as follows:
 
 4. **Dimensionality Reduction**: Principal Component Analysis (PCA) and t-distributed Stochastic Neighbor Embedding (t-SNE) are used to reduce the dimensionality of the original dataset. Several plots are used to visualize reduced features and infer differences between the distinct groups present in the data.
 
-5. **Feature Engineering**: Examples of data preprocessing that can highly affect the performance of a model are demonstrated. The first section of the notebook focuses on the robustness of different scalers against k-nearest neighbours, while the second section demonstrates the importance of one-hot encoding labels when training a neural network.
+5. **Feature Engineering**: Examples of data preprocessing that can highly affect the performance of a model are demonstrated. The first section of the notebook focuses on the robustness of different scalers against k-nearest neighbors, while the second section demonstrates the importance of one-hot encoding labels when training a neural network.
 
 6. **Feature Extraction and Selection**: The three examples provided explain how to effectively use the FRESH (FeatuRe Extraction and Scalable Hypothesis testing) algorithm to extract features and determine how significant each feature is in predicting a target vector. The examples make use of both random forest and gradient boosting models.
 
@@ -31,7 +31,7 @@ The contents of the notebooks are as follows:
 
 8. **Natural Language Processing**: Parsing, clustering, sentiment analysis and outlier detection are demonstrated on a range of corpora, including the novel Moby Dick, the emails of the Enron CEOs and the 2014 IEEE Vast Challenge articles.
 
-9. **K-Nearest Neighbours**: The notebook details the steps to follow in a machine learning problem, prior to model training. These include feature scaling, data splitting and parameter tuning - performed by measuring the accuracy of a k-nearest neighbours model for different values of parameter k.
+9. **K-Nearest Neighbors**: The notebook details the steps to follow in a machine learning problem, prior to model training. These include feature scaling, data splitting and parameter tuning - performed by measuring the accuracy of a k-nearest neighbors model for different values of parameter k.
 
 10. **Automated Machine Learning**: The notebook looks at predicting how likely a telecommunications customer is to churn based on behavior. The data and associated target is used throughout the notebook and is passed into the AutoML pipeline in both its default configuration and custom user-defined configuration, with the steps in the pipeline explained throughout.
 

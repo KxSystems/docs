@@ -527,12 +527,12 @@ returns a dictionary containing all information collected during the fitting of 
 	-   `pCoeff`         –  lag value coefficients
 	-   `qCoeff`         –  error coefficients
 	-   `PCoeff`         –  seasonal lag value coefficients
-	-   `QCoeff`         –  leasonal error coefficients
+	-   `QCoeff`         –  seasonal error coefficients
 	-   `lagVals`        –  lagged values from the training set
 	-   `residualVals`   –  q residual errors calculated from training set using the params
 	-   `residualCoeffs` –  coefficients used to estimate resid errors
 	-   `paramDict`      –  a dictionary containing information about the model used for fitting
-	-   `originalData`   –  original values of input values before being differenciated
+	-   `originalData`   –  original values of input values before being differentiated
 	-   `seasonData`     –  original values to transform seasonal differencing to original format
 
 	The predict functionality is contained within the `predict` key. The function takes arguments

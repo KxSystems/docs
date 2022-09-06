@@ -501,7 +501,7 @@ Object result = null;
 result = qConnection.k("{x+y}\[4;3\]");
 System.out.println(result.toString());
 
-//parameterised synchronous query
+//parameterized synchronous query
 result = qConnection.k("{x+y}",4,3); //Note autoboxing!
 System.out.println(result.toString());
 
@@ -846,7 +846,7 @@ responsibility is the management of subscription requests and the fast
 publication of data to subscribers. The following diagram illustrates a
 simple dataflow of a potential kdb+ tick system:
 
-![Simple dataflow of a potential kdb+ tick system](media/image2.png)
+![Simple dataflow of a potential kdb+ tick system](img/image2.png)
 
 :fontawesome-regular-hand-point-right: 
 [_Building Real-time Tick Subscribers_](../rt-tick/index.md) regarding the above vanilla setup

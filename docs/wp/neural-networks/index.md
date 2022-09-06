@@ -51,7 +51,7 @@ hidden units.
 This design of feedforward networks can be represented through
 operations on matrices and vectors. Array-programming languages such
 as q are well suited to computational implementations in this
-format due to the vectorised operations on lists.
+format due to the vectorized operations on lists.
 
 All tests were run using kdb+ version 3.2 (2015.05.07)
 
@@ -226,7 +226,7 @@ q)wInit[3;4]
 
 ![](img/image8.png)  
 <small>_Figure 5: Diagram showing 2 input neurons (green and blue neurons)
-connecting to 2 hidden neurons. The colours in the matrices correspond
+connecting to 2 hidden neurons. The colors in the matrices correspond
 to the area of the network those values are found during execution
 of a forward pass._</small>
 
@@ -581,7 +581,7 @@ We one-hot encode the different possible species of Iris, resulting in
 a neural network with 5 inputs (including the bias neuron), 7 hidden
 neurons (including the bias neuron) and 3 outputs. The data set is
 randomly shuffled to reduce the likelihood of a biased output. From
-this randomised selection of the data a random selection of 20 samples
+this randomized selection of the data a random selection of 20 samples
 is taken as the test set and the other 130 samples are used in
 training.
 
@@ -665,7 +665,7 @@ suited to developing a complex system.
 
 We have shown that multiple types of output functions can be easily
 applied to the network depending on the desired result. This
-generalisation demonstrates the adaptability of kdb+ to many problems
+generalization demonstrates the adaptability of kdb+ to many problems
 where numerical data can be arranged into lists, arrays or tables.
 
 In the event that there is not enough main memory to carry out the

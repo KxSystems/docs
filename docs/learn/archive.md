@@ -1,5 +1,5 @@
 ---
-title: Originss | Learn | kdb+ and q documentation
+title: Origins | Learn | kdb+ and q documentation
 description: About q and the k programming languages and their origins.
 ---
 # :fontawesome-solid-book-reader: Origins

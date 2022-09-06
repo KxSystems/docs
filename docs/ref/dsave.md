@@ -23,7 +23,7 @@ Where
 save the table/s and returns the list of table names.
 (Since V3.2 2014.05.07.)
 
-The first column of each table saved has the [partitioned attribute](set-attribute.md) applied to it. If the save path is a list, the first item is the HDB root (where the sym file, if any, will be stored), while the remaining items are a path within the HDB (e.g. a partition).
+The first column of each table saved has the [parted attribute](set-attribute.md) applied to it. If the save path is a list, the first item is the HDB root (where the sym file, if any, will be stored), while the remaining items are a path within the HDB (e.g. a partition).
 
 !!! tip "Roughly the same functionality as the combination of [`.Q.en`](dotq.md#qen-enumerate-varchar-cols) and [`set`](get.md#set) or [`.Q.dpft`](dotq.md#qdpft-save-table), but in a simpler form."
 

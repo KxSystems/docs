@@ -60,7 +60,7 @@ During the initial stages of pre-processing, the following steps were taken:
 ### CHAIN
 
 -   Only data with a lock-time of greater than 200 seconds was included to account for ‘loss of lock’ events, where receivers stop receiving satellite signals due to significant signal irregularities. [6]
--   Satellites travelling at low elevations experience ‘multi-path’ irregularities where signals have to travel longer distances through the ionosphere and are therefore reflected and follow multiple paths before reaching receivers. [7] To differentiate between multi-path and scintillation irregularities, data with an elevation of greater than 30 degrees was selected and the phase and amplitude scintillation indices (&sigma;<sub>&phi;</sub> and S4 respectively) were projected to the vertical.
+-   Satellites traveling at low elevations experience ‘multi-path’ irregularities where signals have to travel longer distances through the ionosphere and are therefore reflected and follow multiple paths before reaching receivers. [7] To differentiate between multi-path and scintillation irregularities, data with an elevation of greater than 30 degrees was selected and the phase and amplitude scintillation indices (&sigma;<sub>&phi;</sub> and S4 respectively) were projected to the vertical.
 -   Latitude and longitude for each station were also added to the data [2].
 -   The median value was calculated for each feature at each timestep.
 

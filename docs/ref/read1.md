@@ -70,5 +70,5 @@ q)system"mkfifo somefifo";h:hopen`fifo:somefifo; 0N!read1 h; hclose h
 ----
 :fontawesome-solid-book-open:
 [File system](../basics/files.md),
-[Interprocess communicaion](../basics/ipc.md)
+[Interprocess communication](../basics/ipc.md)
 

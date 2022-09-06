@@ -289,7 +289,7 @@ returns the coefficients and statistical values calculated during the fitting pr
 	mse        | Mean squared error
 	rse        | Residual squared error
 	pValue     | p Value
-	logLike    | log liklihood
+	logLike    | log likelihood
 
 ```q
 q)exog:til 10

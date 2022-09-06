@@ -119,7 +119,7 @@ The dates are referred to as _partitions_ and this on-disk structure contributes
 
     Attributes are key. Partition tables on disk on the most-queried column.
 
-    If the first two columns are `time` and `sym`, sorting on `time` within `sym` partions is assumed and provides a performance boost.
+    If the first two columns are `time` and `sym`, sorting on `time` within `sym` partitions is assumed and provides a performance boost.
 
     Can add grouping attribute for other highly-queried columns.
 

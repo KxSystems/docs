@@ -694,7 +694,7 @@ At end of day, the tickerplant sends a message to all real-time subscribers tell
   hclose LogfileHandle; /close the connection to the old log file 
   /create the new logfile
   logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D; 
-  .[logfile;();:;()]; /Initialise the new log file 
+  .[logfile;();:;()]; /Initialize the new log file 
   LogfileHandle::hopen logfile;
   {delete from x}each tables `. /clear out tables }
 ```
@@ -743,7 +743,7 @@ Upon startup, the process uses a try-catch to replay its custom daily logfile. I
   {[e]
     m:"failed to replay custom log file";
     show m," - assume it does not exist. Creating it now";
-    .[logfile;();:;()]; /Initialise the log file
+    .[logfile;();:;()]; /Initialize the log file
   } ]
 ```
 

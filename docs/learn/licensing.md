@@ -150,7 +150,7 @@ The number of licensed cores is always 16 for the on-demand license.
 
     The license key file binds the interpreter to your computer’s hostname.
     For example, for a Mac named `mymbp` the hostname might be `mymbp.local`.
-    When travelling you may find a network has changed the hostname, for example to `mymbp.lan` or `mymbp.fritz.box`. Kdb+ then signals a host error on launch. 
+    When traveling you may find a network has changed the hostname, for example to `mymbp.lan` or `mymbp.fritz.box`. Kdb+ then signals a host error on launch. 
 
     Linux and macOS users can restore their hostnames from the command shell, e.g. 
 

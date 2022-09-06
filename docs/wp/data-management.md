@@ -313,7 +313,7 @@ Typically, intra-day and historical data reside in separate kdb+ processes. Alth
 
 -   The data set may be too small to merit multiple processes
 -   Users might want to view all their data in one location
--   It may be desirable to minimise the number of components to manage
+-   It may be desirable to minimize the number of components to manage
 -   Performance of intra-day queries may not be a priority (by combining intra-day and historical data into a single process intra-day queries may have to wait for expensive I/O bound historical queries to complete)
 
 Moreover, by having separate processes for intra-day and historical data, it is often necessary to introduce a gateway as a single point of contact for querying intra-day and historical data, thereby running three processes for what is essentially a single data set.
@@ -331,10 +331,10 @@ eod:{
     /enumerate the table, ascend sort by sym and apply the parted attribute
     /save to a splayed table called <table>_hist
     hsym[`$string[d],"/",string[t],"_hist/"] set
-      update `p#optimisedColumn from `optimisedColumn xasc .Q.en[`:.;get t];
+      update `p#optimizedColumn from `optimizedColumn xasc .Q.en[`:.;get t];
     /delete the contents of the in-memory table,
     /and re-apply the grouped attribute
-    update `g#optimisedColumn from delete from t
+    update `g#optimizedColumn from delete from t
   }[x]each t;
   /re-memory map the splayed partitioned tables
   system"l ." }

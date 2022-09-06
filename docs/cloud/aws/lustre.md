@@ -30,7 +30,7 @@ Each of these deployment options comes with 50 MBs, 100 MBs, or 200 MBs baseline
 
 We present some output of the nano benchmark designed to measure storage performance from kdb+ perspective. In the test we used PERSISTENT-200 deployment type of size 60TB, 200 SSD as cache storage.
 
-Chart below displays streaming and random reads of block of different sizes. Streaming read performance is representative of e.g. `select` statements without `where` clause and optimizing readahead setting by `-23!`. Random reads happen when we extract only a subset of the vectors - e.g. due to using a restrictive `where` constraint.
+Chart below displays streaming and random reads of block of different sizes. Streaming read performance is representative of e.g. `select` statements without `where` clause and optimizing read-ahead setting by `-23!`. Random reads happen when we extract only a subset of the vectors - e.g. due to using a restrictive `where` constraint.
 
 ![](img/fsxl_singlenode.png)
 

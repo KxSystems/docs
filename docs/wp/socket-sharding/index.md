@@ -144,7 +144,7 @@ sendTime     receiveTime  timeTaken
 --------------------------------------
 19:34:10.514 19:34:12.517 00:00:02.003
 
-q)//Normalise data into 3 distinct 1 minute buckets by 
+q)//Normalize data into 3 distinct 1 minute buckets by 
 q)//subtracting 10.514 from sendTime column
 q)select `time$avg timeTaken by sendTime.minute 
     from update sendTime-00:00:10.514 from messages

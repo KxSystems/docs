@@ -32,7 +32,7 @@ Kdb+ loads the following files
     libssl-1_1.dll       libcrypto-1_1.dll        w32 build
     ```
 
-The Windows build was tested with the precompiled libs [Win32 OpenSSL v1.1.1L Light, Win64 OpenSSL v1.1.1L Light](https://slproweb.com/products/Win32OpenSSL.html).
+The Windows build was tested with the pre-compiled libs [Win32 OpenSSL v1.1.1L Light, Win64 OpenSSL v1.1.1L Light](https://slproweb.com/products/Win32OpenSSL.html).
 
 
 ## Certificates

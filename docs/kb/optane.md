@@ -145,14 +145,14 @@ For larger datasets, this increased memory space avoids the costs and complexity
 
 ??? detail "Vertical-vs-horizontal scaling"
 
-    A common solution for overly-large in-memory datasets, is to split the data across multiple machines. Data is usually split based on some inherent partition of the data (e.g. ticker symbol, sensor ID, region), to allow parallelization of calculations. Horizontal scaling allows users to add memory, but comes at a cost. Average perfomance (versus a single machine) is reduced due to the cost of IPC to move data between processes. There is also an increase in complexity as well as hardware, datacenter and operations costs.
+    A common solution for overly-large in-memory datasets, is to split the data across multiple machines. Data is usually split based on some inherent partition of the data (e.g. ticker symbol, sensor ID, region), to allow parallelization of calculations. Horizontal scaling allows users to add memory, but comes at a cost. Average performance (versus a single machine) is reduced due to the cost of IPC to move data between processes. There is also an increase in complexity as well as hardware, datacenter and operations costs.
 
     Intel Optane PMem, in Memory mode, creates a new opportunity to scale vertically. A significantly extended memory space enables calculations on a single machine, rather than a cluster. This removes or reduces the complexities and performance cost of IPC, allowing users to run simpler, more efficient analytics.
 
 
 ### App Direct Mode ​
 
-Kdb+ 4.0 contains support for App Direct Mode, in which the applicaitons and operating system are explicitly aware there are two types of direct load/store memory in the platform, and can direct whihch type of data read or write is suitable for DRAM or Intel® Optane™ persistent memory. Kdb+ sees Intel Optane PMem and DRAM as two separate pools, and gives users control over which entities reside in each. As a result, users can optimize their applications and schemas, keeping hot data in fast DRAM while still taking full advantage of the expanded memory capacity.
+Kdb+ 4.0 contains support for App Direct Mode, in which the applications and operating system are explicitly aware there are two types of direct load/store memory in the platform, and can direct which type of data read or write is suitable for DRAM or Intel® Optane™ persistent memory. Kdb+ sees Intel Optane PMem and DRAM as two separate pools, and gives users control over which entities reside in each. As a result, users can optimize their applications and schemas, keeping hot data in fast DRAM while still taking full advantage of the expanded memory capacity.
 ​
 Horizontal partitioning ​
 

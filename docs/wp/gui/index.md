@@ -36,7 +36,7 @@ code will be pointing to the same kdb+ process.
 
 C# is heavily integrated into Windows software. It allows for the
 implementation of the .NET environment into applications and can be
-utilised in the creation of websites using PHP and ASP.NET as well as
+utilized in the creation of websites using PHP and ASP.NET as well as
 stand-alone Windows applications.
 
 The paper makes use of the standard `c.cs` file offered by KX to enable
@@ -209,7 +209,7 @@ user2    | "password3"
 ```
 
 This involves changing the `c.cs` file provided by KX as this is not set
-up to accept customised usernames (it instead takes the username
+up to accept customized usernames (it instead takes the username
 stored in `Environment.UserName`) or any passwords at all. We will also
 need to modify the `OpenConnection` method and define `.z.pw`.
 
@@ -241,7 +241,7 @@ feeding user input as bytes to the handle.
 A byte stream is an open connection that sends a collection of bytes
 from sender to receiver in a bidirectional format. This connection is
 reliable and the use of bytes allows the C# query to be sent to a
-kdb+ process and the kdb+ response to be returned and deserialised.
+kdb+ process and the kdb+ response to be returned and de-serialized.
 
 As defined currently, along with the host `h` and port `p`, it will
 take a further parameter for the username `u`, but none for the
@@ -337,7 +337,7 @@ conn.k("select from tab");
  
 This is then fed into a method called `c`, which breaks it into bytes
 and passes it into kdb+. The result is then received by the C# client
-as a stream of bytes which is deserialised by the `c` method into C#
+as a stream of bytes which is de-serialized by the `c` method into C#
 compatible types. The result itself is a two-dimensional array when
 used with `select` or a one-dimensional array when used with `exec`. This
 can then be cast to the type `c.Flip`, which mimics a table with similar
@@ -431,7 +431,7 @@ conn.k(BuildQuery());
 The `BuildQuery` method takes the inputs of each textbox, checkbox and
 combo box seen above and combines them to build a query to
 send to kdb+. This allows those without much knowledge of kdb+ queries
-or optimisation of queries to view data stored on kdb+ processes
+or optimization of queries to view data stored on kdb+ processes
 without exposing them to the qSQL language.
 
 This is the `BuildQuery` method, which takes all the available inputs and
@@ -636,11 +636,11 @@ analysis on the product being traded. The analytics will include:
 We will also plot these on a line graph to allow users to better
 identify patterns and outliers throughout the day.
 
-To calculate these, we will create a new function called `analyseData`
+To calculate these, we will create a new function called `analyzeData`
 on the kdb+ side, which will then be called from C#.
 
 ```q
-q) analyseData:{[x] 
+q) analyzeData:{[x] 
     0!select 
     minPrice:min price, 
     maxPrice:max price, 
@@ -688,7 +688,7 @@ sym   minPrice maxPrice avgPrice vwap  total
 -------------------------------------------- 
 FDP.O 1.021    1.109    1.064    1.064 5082
 
-q)10#analyseData[`FDP.O]
+q)10#analyzeData[`FDP.O]
 minute minPrice maxPrice vwapPrice avgPrice totalTransactions 
 ------------------------------------------------------------- 
 00:00  1.022    1.108    1.063     1.063    93
@@ -703,7 +703,7 @@ minute minPrice maxPrice vwapPrice avgPrice totalTransactions
 02:15  1.022    1.108    1.067     1.067    129
 ```
 
-The methods to pull this data into a graph in the case of `analyseData`,
+The methods to pull this data into a graph in the case of `analyzeData`,
 and text boxes in the case of `getSummary`, are simple to implement,
 involving query calls to kdb+ to collect the data and then using loops
 to process it.
@@ -721,7 +721,7 @@ public Form3(String symbol, c conn)
     details = GetData("getSummary[`" + symbol + "]");
     GetDaily(details);
 
-    details = GetData("analyseData[`" + symbol + "]");
+    details = GetData("analyzeData[`" + symbol + "]");
     SetAxis(details);
     PopulateChart(details); //Populates Example Chart
     PopulateGrid(details);  //Populates Example Grid
@@ -843,7 +843,7 @@ currently exists, it would not be difficult to implement a timer to
 periodically query kdb+ (every minute, for example) and retain up-to-date figures and charts. By the same measure, adding the ability to
 compare different symbols or different time frames would not take much
 more effort, nor would giving the user the ability to choose what
-period time they analyse. Furthermore, WebSockets could be used to
+period time they analyze. Furthermore, WebSockets could be used to
 deliver streaming data from the kdb+ back end to the C# GUI.
 
 
@@ -866,7 +866,7 @@ just in the banking and financial sectors but in all sectors where C#
 is popular and a database is required for back-end data storage and
 management. These examples could be pushed out to analytical or
 performance-based sectors or markets inexperienced in kdb+ but
-requiring tools to help utilise the rapidly growing Big Data
+requiring tools to help utilize the rapidly growing Big Data
 environment.
 
 All examples of kdb+ were run using version 3.2 (2015.01.14). All

@@ -2,7 +2,7 @@
 title: Replay a logfile with kdb+ | Knowledge Base | kdb+ and q documentation
 description: How to replay a logfile in kdb+ with streaming execute
 author: Stephen Taylor
-date: Decemeber 2019
+date: December 2019
 ---
 # Replaying log files
 

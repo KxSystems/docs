@@ -469,7 +469,7 @@ ans =
 
 ## Async commands to q
 
-The `exec` function is used for sending asychronous commands to q; ones we do not expect a response to, and which may be performed in the background while we continue interacting with the Matlab process.
+The `exec` function is used for sending asynchronous commands to q; ones we do not expect a response to, and which may be performed in the background while we continue interacting with the Matlab process.
 
 Here we establish a large-ish data structure in the kdb+ process:
 

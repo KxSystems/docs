@@ -83,7 +83,7 @@ For example, using the [xts](http://r-forge.r-project.org/projects/xts) package:
 # create a vector of colours for the graph
 # based on the relative open and close prices
 > candlecolors <- ifelse(resxts[,'close'] > resxts[,'open'], 'GREEN', 'RED')
-# display the candle graph with approrpiate labels
+# display the candle graph with appropriate labels
 > plot.xts(resxts, type='candles', width=100, candle.col=candlecolors, bar.col='BLACK', xlab="time", ylab="price", main="GOOG HLOC")
 ```
 

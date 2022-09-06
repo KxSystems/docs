@@ -84,7 +84,7 @@ The orchestrator has internal tables and variables to track ingestion:
 -   Tables of files that are expected and the associated functions
 -   Variables to track server memory and amount which can be utilized for tasks
 
-The orchestrator will ping a staging area for relevant batches of files to ingest and once the orchestrator has recognised that a batch has all its expected files, it will begin to send tasks to its workers asynchronously. Tracking of when all files are available can be done in numerous ways, such as knowing number of files for each specific batch or via naming conventions of files e.g. 
+The orchestrator will ping a staging area for relevant batches of files to ingest and once the orchestrator has recognized that a batch has all its expected files, it will begin to send tasks to its workers asynchronously. Tracking of when all files are available can be done in numerous ways, such as knowing number of files for each specific batch or via naming conventions of files e.g. 
 
 ```txt
 batchNamefile1of10.csv
@@ -499,7 +499,7 @@ I:iasc $[srt;([]syms;sorts);syms]
   set .mi.minType[count I]$I
 ```
 
-To minimise redundancy, as the `sym` and `time` values are already in memory and sorted, these columns are now set to disk in a temporary filepath and the parted attribute applied to the sym column.
+To minimize redundancy, as the `sym` and `time` values are already in memory and sorted, these columns are now set to disk in a temporary filepath and the parted attribute applied to the sym column.
 
 ```q
 symPath:` sv(mdb:.mi.getMergeDB[x`t;first x[`typ]di;dt]),x`symCol

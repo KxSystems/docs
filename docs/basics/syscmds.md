@@ -354,7 +354,7 @@ If the call is instigated in a secondary thread – i.e., not the main thread �
     If there is already a slab in the object category’s freelist, it is reused. 
     If there are no available slabs, a larger slab is recursively split in two until the needed category size is reached. 
     If there are no free slabs available, a new 64MB slab is requested from the system. 
-    When an object is deallocated, its memory slab is returned to the corresponding category’s freelist.
+    When an object is de-allocated, its memory slab is returned to the corresponding category’s freelist.
     
     Allocations larger than 64MB are requested from the OS directly, and this is what `-g 1` causes to be immediately returned.
     
@@ -412,15 +412,22 @@ q)\a                 / with tables quote and trade
 `p`quote`s`sp`trade
 ```
 
+If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/logging.md#check-pointing) the `.qdb` file and empties the log file.
+
+
 !!! danger "Operating systems may create hidden files, such as `DS_Store`, that block `\l` on a directory."
 
 :fontawesome-solid-book:
 [`load`](../ref/load.md),
 [`.Q.l`](../ref/dotq.md#ql-load) (load)
 <br>
+:fontawesome-solid-graduation-cap:
+[Logging](../kb/logging.md)
+<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§10.3 Scripts](/q4m3/10_Execution_Control/#103-scripts)
+[§10.3 Scripts](/q4m3/10_Execution_Control/#103-scripts),
+[§13.2.6 Logging `-l` and `-L`](/q4m3/13_Commands_and_System_Variables/#1326-logging-l-and-l)
 
 
 ## `\o` (offset from UTC)

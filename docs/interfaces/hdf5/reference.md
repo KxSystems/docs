@@ -276,16 +276,16 @@ returns null on successful execution.
 q).hdf5.createFile["test.h5"]
 HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
   #000: H5F.c line 444 in H5Fcreate(): unable to create file
-    major: File accessibilty
+    major: File accessibility
     minor: Unable to open file
   #001: H5Fint.c line 1558 in H5F_open(): unable to open file
-    major: File accessibilty
+    major: File accessibility
     minor: Unable to open file
   #002: H5FD.c line 734 in H5FD_open(): open failed
     major: Virtual File Layer
     minor: Unable to initialize object
   #003: H5FDsec2.c line 346 in H5FD_sec2_open(): unable to open file:
-    major: File accessibilty
+    major: File accessibility
     minor: Unable to open file
 'error creating file
   [0]  .hdf5.createFile["test.h5"]
@@ -317,16 +317,16 @@ q).hdf5.errorOn[]
 q).hdf5.createFile["test.h5"]
 HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
   #000: H5F.c line 444 in H5Fcreate(): unable to create file
-    major: File accessibilty
+    major: File accessibility
     minor: Unable to open file
   #001: H5Fint.c line 1558 in H5F_open(): unable to open file
-    major: File accessibilty
+    major: File accessibility
     minor: Unable to open file
   #002: H5FD.c line 734 in H5FD_open(): open failed
     major: Virtual File Layer
     minor: Unable to initialize object
   #003: H5FDsec2.c line 346 in H5FD_sec2_open(): unable to open file:
-    major: File accessibilty
+    major: File accessibility
     minor: Unable to open file
 'error creating file
 ```

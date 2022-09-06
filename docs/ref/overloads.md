@@ -80,7 +80,7 @@ a:42   [assign](../basics/syntax.md)
 </div>
 
 
-## `:` colon colon
+## `::` colon colon
 
 <div markdown="1" class="typewriter">
 v::select from t where a in b     [define a view](../learn/views.md)

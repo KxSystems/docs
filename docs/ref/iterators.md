@@ -96,7 +96,7 @@ If the derived function is unary or [variadic](../basics/variadic.md), you can a
 ```q
 q)(count')txt          / unary function applied prefix
 3 5 5 4
-q)(+/)2 3 4            / variadic function appled prefix
+q)(+/)2 3 4            / variadic function applied prefix
 9
 ```
 

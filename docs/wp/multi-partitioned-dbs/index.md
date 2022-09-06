@@ -89,7 +89,7 @@ below.
 
 Sorting and indexing the options data is straightforward. If we have
 the data sorted by underlying security, option contract and finally
-timestamp we can apply the partitioned attribute to both underlying
+timestamp we can apply the parted attribute to both underlying
 security and option contract, allowing us to filter quickly on either
 column.
 

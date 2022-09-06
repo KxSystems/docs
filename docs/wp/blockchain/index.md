@@ -612,7 +612,7 @@ int txid                        height partition tag
 Since all tables in the mainDB are saved to disk with a common `height`
 column, whose value is naturally sorted in ascending order within each
 partition of 1000 blocks, it allows for a straight-forward application
-of a partitioned attribute to the column on-disk to optimize all lookups by
+of a parted attribute to the column on-disk to optimize all lookups by
 block height.
 
 This attribute is ideal for optimizing on-disk queries where the column

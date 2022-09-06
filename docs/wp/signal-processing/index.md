@@ -310,7 +310,7 @@ fftrad2:{[vec]
      // Bit-reversed the vector and define it into a namespace so lambdas can access it
     ind:bitreversal[indexOrig];
     .res.vec:`float$vec . (0 1;ind);
-    // Precomputing the indices required to immplement each temporal phase of the DIT
+    // Precomputing the indices required to implement each temporal phase of the DIT
          // Number of signals
          signalcount:`int$ {2 xexp x} 1+ til `int$2 xlog n;
          // Number of points in each signal
@@ -405,7 +405,7 @@ for a discrete transform, but it is simulated by operating with a
 circular topology, i.e., by assuming that the end of the sample connects
 to the start. This means that there can be discontinuities in the data
 if the sampled dataset doesn’t capture a full period (resulting in
-different start-end values). These discontinuities result in a phenomen
+different start-end values). These discontinuities result in a phenomenon
 known as a ‘spectral leakage’[8], where results in the frequency
 domain are spread over adjacent frequency bins
 

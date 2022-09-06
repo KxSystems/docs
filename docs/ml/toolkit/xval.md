@@ -54,7 +54,7 @@ As of toolkit version 0.1.3, the distribution of cross-validation functions is i
 
 ## Grid search
 
-The most common method of perfoming hyperparameter optimization in machine learning is through the use of a grid search. Grid search is an exhaustive searching method across all possible combinations of a hyperparameters provided by a user.
+The most common method of performing hyperparameter optimization in machine learning is through the use of a grid search. Grid search is an exhaustive searching method across all possible combinations of a hyperparameters provided by a user.
 
 ### Hyperparameter dictionary
 

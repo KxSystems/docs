@@ -314,7 +314,7 @@ q)f"xyzfz000"
 1b
 ```
 
-However, this does not return until all input chars have been processed, even if a match can be eliminated on the first char. This could be accomodated here:
+However, this does not return until all input chars have been processed, even if a match can be eliminated on the first char. This could be accommodated here:
 
 ```q
 q)f:{6~last{$[count x 1;((m x 0)[first x 1];1 _ x 1);(0;first x)]}/[{0<x 0};(1;x)]}

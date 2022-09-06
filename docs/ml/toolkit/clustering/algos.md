@@ -779,7 +779,7 @@ Where
 -   `k` is the number of clusters
 -   `config` is a dictionary allowing a user to change the following model parameters (for entirely default values use `(::)`)
 	- `iter` the number of iterations to be completed. Default = `100`
-	- `init` the algorithm used to initialise cluster centers. This is either random (`0b`) or uses [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`). Default = `1b`
+	- `init` the algorithm used to initialize cluster centers. This is either random (`0b`) or uses [k-means++](https://en.wikipedia.org/wiki/K-means%2B%2B) (`1b`). Default = `1b`
 	- `thresh` if a cluster center moves by more than this value along any axis continue algorithm, otherwise stop. Default = `1e-5`.
 
 returns a dictionary containing information collected during the fitting process (`modelInfo`), a projection of the prediction function to use on new data (`predict`) along with a projection of the update function (`update`)

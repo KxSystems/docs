@@ -351,7 +351,7 @@ Organizations should consider Intel Optane persistent memory where there is a ne
 4.  Higher is better. Factor of 1 = same performance. Factor of 2
     = 200% faster than comparator.
 
-5.  Maximum DRAM utilisation as measured by the operating system during
+5.  Maximum DRAM utilization as measured by the operating system during
     the process and is primarily a function of amount of data that
     needed to be maintained in RAM for query access. The faster the
     completion of the process the less RAM that is required on the

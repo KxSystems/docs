@@ -3,7 +3,7 @@ title: Function reference for the Prometheus Exporter | Interfaces | Documentati
 author: Conor McCarthy
 description: All functionality and options for the Prometheus Exporter for kdb+ metrics
 date: April 2020
-keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualisation, q
+keywords: prometheus, grafana, monitoring, metrics, interface, fusion, exporter, visualization, q
 ---
 # Prometheus function reference
 
