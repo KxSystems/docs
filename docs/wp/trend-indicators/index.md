@@ -569,7 +569,7 @@ Aroon Oscillator subtracts $aroonUp$ from $aroonDown$ making the range of the os
 
 $$aroonOsc= aroonUp - aroonDown$$
 
-The oscillator moves above the zero line when $aroonUp$ moves above the $aroonDown$. The oscillator drops below the zero line when the $aroonDown$ moves above the $aroonDown$.
+The oscillator moves above the zero line when $aroonUp$ moves above the $aroonDown$. The oscillator drops below the zero line when the $aroonDown$ moves above the $aroonUp$.
 
 
 ## Conclusion
