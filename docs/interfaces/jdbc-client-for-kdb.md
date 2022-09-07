@@ -1,5 +1,5 @@
 ---
-title: JDBC client for kdb+ – Interfaces – kdb+ and q documentation
+title: JDBC client for kdb+ | Interfaces | kdb+ and q documentation
 description: How to connect a Java client program to a kdb+server process using the JDBC driver
 keywords: api, interface, java, jdbc, kdb+, library, q
 ---
@@ -18,6 +18,14 @@ $ jar cf jdbc.jar *.class
 ```
 
 and use as normal.
+
+??? warning "Depends on Java interface"
+
+    Compilation depends on version 1 of the Java interface
+    :fontawesome-brands-github: 
+    [KxSystems/javakdb](https://github.com/KxSystems/javakdb/releases/tag/1.0).
+
+
 
 !!! note "Implementation"
 
