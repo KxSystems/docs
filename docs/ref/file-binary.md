@@ -2,7 +2,6 @@
 title: File Binary | Reference | kdb+ and q documentation
 description: File Binary is a q operator that reads or writes a binary file.
 author: Stephen Taylor
-keywords: binary, file, kdb+, q, read, write
 ---
 # :fontawesome-solid-database: `1:` File Binary
 
@@ -24,15 +23,17 @@ Where
 -   `x` is a 2-item list (a string of [types](#column-types-and-widths) and an int vector of widths) of which the order determines whether the data is parsed as little-endian or big-endian
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or string, or byte sequence
 
-returns the content of `y` as atom, list or matrix.
+returns the content of `y` as a matrix.
 
 ```q
-q)(enlist 4;enlist"i")1:0x01000000          / big endian
+q)(enlist 4;enlist"i")1:0x01000000                  / big endian
 16777216
-q)(enlist"i";enlist 4)1:0x01000000          / little endian
+q)(enlist"i";enlist 4)1:0x01000000                  / little endian
 1
-q)(enlist"f";enlist 8)1:0x7fbdc282fb210940  / pi as little endian 64bit float
+q)show pi:(enlist"f";enlist 8)1:0x7fbdc282fb210940  / pi as little endian 64-bit float
 3.141593
+q).Q.s1 pi                                          / 1×1 matrix
+",,3.141593"
 ```
 
 Read two records containing an integer, a character and a short from a byte sequence. Note the integer is read with a 4-byte width, the character with 1 byte and the short with 2 bytes. (When reading byte sequences, recall that a byte is 2 hex digits.)
