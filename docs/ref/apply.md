@@ -61,14 +61,14 @@ see [Amend and Amend At](amend.md).
 `v . vx` evaluates value `v` on the $n$ arguments listed in `vx`.
 
 ```q
-q)add
+q)add               / addition 'table'
 0 1 2 3
 1 2 3 4
 2 3 4 5
 3 4 5 6
-q)add . 2 3         / add[2;3] Index
+q)add . 2 3         / add[2;3] (Index)
 5
-q)(+) . 2 3         / +[2;3] Apply
+q)(+) . 2 3         / +[2;3] (Apply)
 5
 q).[+;2 3]
 5
@@ -82,13 +82,27 @@ If `v` has rank $n$, then `vx` has $n$ items and `v` is evaluated as:
 v[vx[0]; vx[1]; …; vx[-1+count vx]]
 ```
 
-If `v` has rank 2 then `vx` has 2 items and `v` is applied to the first argument `vx[0]` and the second argument `vx[1]`.
+If `v` has rank 2, then `vx` has 2 items and `v` is applied to the first argument `vx[0]` and the second argument `vx[1]`.
 
 ```q
 v[vx[0];vx[1]]
 ```
 
-If `v` has 1 argument then `vx` has 1 item and `v` is applied to the argument `vx[0]`.
+!!! warning "Variadic operators"
+
+    Most binary operators such as Add have [deprecated unary forms](../basics/exposed-infrastructure.md#unary-forms) 
+    and are thus actually [variadic](../basics/glossary.md#variadic). 
+
+    Where `v` is such a variadic operator, parenthesize it to provide it as the left argument of Apply.
+
+    ```q
+    q).[+;2 2]
+    4
+    q)(+) . 2 2
+    4
+    ```
+
+If `v` has rank 1, then `vx` has one item and `v` is applied to the argument `vx[0]`.
 
 ```q
 v[vx[0]]

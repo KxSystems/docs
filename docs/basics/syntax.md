@@ -384,6 +384,24 @@ q)"abcdef" 1 0 3
 [Iterators](../ref/iterators.md)
 
 
+### Infix and prefix notation have long right scope
+
+The right argument of a unary function, or a binary function applied infix,  is the result of evaluating (subject to parentheses) everything to its right.
+
+The left argument of a binary function applied infix is (subject to parentheses) the value immediately to its left. 
+
+```q
+q)count first (2 3 4;5 6)
+3
+```
+Above, the argument of `count` is `first (2 3 4;5 6)`; that is, `2 3 4`.
+```q
+q)2 3 * 4 5 - 6 7
+-4 -6
+```
+Above, the left argument of Multiply is `2 3` and its right argument is `4 5-6 7`; that is, `-2 -2`.
+
+
 ### Postfix yields infix
 
 An iterator applied to an [applicable value](glossary.md#applicable-value) derives a function. For example, Scan applied to Add derives the function Add Scan: `+\`.

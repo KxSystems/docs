@@ -121,10 +121,25 @@ q)"Zürich"
 
 The valid date range is `0001.01.01` to `9999.12.31`. (Since V3.6 2017.10.23.)
 
+!!! warning "The 4-byte datetime datatype (15) is deprecated in favour of the 8-byte timestamp datatype (12)."
+
 ```q
 q)"D"$"3001.01.01"
 3001.01.01
 ```
+
+Internally, dates, times and timestamps are represented by integers:
+```q
+q)show noon:`minutes`seconds`nanoseconds!(12:00;12:00:00;12:00:00.000000000)
+minutes    | 12:00
+seconds    | 12:00:00
+nanoseconds| 0D12:00:00.000000000
+q)"j"$noon
+minutes    | 720
+seconds    | 43200
+nanoseconds| 43200000000000
+```
+
 Date calculations assume the [proleptic Gregorian calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar "Wikipedia").
 
 Casting to timestamp from date or datetime outside of the timestamp supported year range results in ±`0Wp`.
@@ -149,6 +164,8 @@ q)0p+ -0W 0Wp+1 -1  / timespan offset of those from 0p
 
 q)-0W 0Wn+1 -1      / coincide with the min/max for timespan
 ```
+
+
 
 
 ### Symbols
