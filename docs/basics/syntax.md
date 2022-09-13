@@ -326,6 +326,39 @@ Bracket pairs with nothing between them also have meaning; `m[]` selects all ite
 !!! tip "The similarity of index and argument notation is not accidental."
 
 
+### Indexing tables
+
+Tables are indexed first by row; second by column.
+```q
+q)t:([]name:`Tom`Dick`Harry;age:34 42 17)
+q)t[1;`age]
+42
+```
+Eliding an index gets all its values.
+```q
+q)t[;`age]
+34 42 17
+
+q)t[1;]
+name| `Dick
+age | 42
+```
+You can elide trailing indexes. (As in projecting a function.)
+```q
+q)t[1] 
+name| `Dick
+age | 42
+```
+Table columns are always indexed as symbols; rows as integers. 
+This permits a shorthand:
+```q
+q)t[`age]  / shorthand for t[;`age]
+34 42 17
+q)t`age
+34 42 17
+```
+
+
 ## Conditional evaluation and control statements
 
 A sequence of expressions separated by semicolons and surrounded by left and right brackets (`[` and `]`), where the left bracket is preceded immediately by a `$`, denotes [conditional evaluation](../ref/cond.md). 
