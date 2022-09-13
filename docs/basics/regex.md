@@ -308,7 +308,7 @@ Itis also possible to create a regex matcher in q, using a state machine, e.g.
 
 ```q
 / want to match "x*fz*0*0"
-q)m:({0};{2*x="x"};{2+x="f"};{4*x="z"};{4+x="0"};{5+x="0"};{7-x="0"};{7-x="0"})
+q)m:({0};{2*x="x"};{2+x="f"};{2+/1 2*x="fz"};{4+x="0"};{5+x="0"};{7-x="0"};{7-x="0"})
 q)f:{6=1 m/x}
 q)f"xyzfz000"
 1b
