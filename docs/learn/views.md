@@ -290,4 +290,4 @@ Views are not parsable, e.g. `eval parse "a::b+c"`
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
-[§9.9.11 Views](/q4m3/9_Queries_q-sql/#9911-views)
+[§9.11 Views](https://code.kx.com//q4m3/9_Queries_q-sql/#911-views)
