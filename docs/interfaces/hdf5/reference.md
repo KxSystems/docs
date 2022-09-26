@@ -18,49 +18,51 @@ The following functions are exposed within the `.hdf5` namespace, allowing users
 .hdf5 - **HDF5 interface functionality**
 
 Create
-  [createFile](#hdf5createfile)        Create a named HDF5 file
-  [createGroup](#hdf5creategroup)       Create a single or multiple group levels
+  [createFile](#createfile)        Create a named HDF5 file
+  [createGroup](#creategroup)       Create a single or multiple group levels
  
 Write
-  [writeAttr](#hdf5writeattr)         Write a named attribute associated to a group or dataset
-  [writeData](#hdf5writedata)         Write data to a named dataset
+  [writeAttr](#writeattr)         Write a named attribute associated to a group or dataset
+  [writeData](#writedata)         Write data to a named dataset
   
 Read
-  [readAttr](#hdf5readattr)          Read data from named attribute
-  [readData](#hdf5readdata)          Read data from a named dataset
+  [readAttr](#readattr)          Read data from named attribute
+  [readData](#readdata)          Read data from a named dataset
   
 Link
-  [createExternal](#hdf5createexternal)    Create a hard external link between locations in two files
-  [createHard](#hdf5createhard)        Create a hard link between two locations in a file
-  [createSoft](#hdf5createsoft)        Create a soft link between two locations in a file
-  [delLink](#hdf5dellink)           Delete an existing soft or hard link
+  [createExternal](#createexternal)    Create a hard external link between locations in two files
+  [createHard](#createhard)        Create a hard link between two locations in a file
+  [createSoft](#createsoft)        Create a soft link between two locations in a file
+  [delLink](#dellink)           Delete an existing soft or hard link
 
 Utility 
-  [copyObject](#hdf5copyobject)        Copy a group or dataset to another file
-  [dataSize](#hdf5datasize)          Size of a HDF5 dataset in MB
-  [errorOn](#hdf5erroron)           Turn the HDF5 C API error signalling on
-  [errorOff](#hdf5erroroff)          Turn the HDF5 C API error signalling off (default)
-  [fileSize](#hdf5filesize)          Size of a HDF5 in MB
-  [getAttrShape](#hdf5getattrshape)      Dimensionality of an attribute
-  [getDataShape](#hdf5getdatashape)      Dimensionality of a dataset
-  [gc](#hdf5gc)                Run garbage collect on free HDF5 lists of all types
-  [isAttr](#hdf5isattr)            Whether this attribute exists
-  [ishdf5](#hdf5ishdf5)            Whether a file of HDF5 format
-  [isObject](#hdf5isobject)          Whether object exists
-  [isThreadsafe](#hdf5isthreadsafe)          Whether HDF5 lib is build with multithread support
-  [ls](#hdf5ls)                Representation of the structure of a HDF5 file
-  [version](#hdf5version)           Version of the HDF5 C API being used
+  [copyObject](#copyobject)        Copy a group or dataset to another file
+  [dataSize](#datasize)          Size of a HDF5 dataset in MB
+  [errorOn](#erroron)           Turn the HDF5 C API error signalling on
+  [errorOff](#erroroff)          Turn the HDF5 C API error signalling off (default)
+  [fileSize](#filesize)          Size of a HDF5 in MB
+  [getAttrShape](#getattrshape)      Dimensionality of an attribute
+  [getDataShape](#getdatashape)      Dimensionality of a dataset
+  [gc](#gc)                Run garbage collect on free HDF5 lists of all types
+  [isAttr](#isattr)            Whether this attribute exists
+  [ishdf5](#ishdf5)            Whether a file of HDF5 format
+  [isObject](#isobject)          Whether object exists
+  [isThreadsafe](#isthreadsafe)      Whether HDF5 lib is built with multithread support
+  [ls](#ls)                Representation of the structure of a HDF5 file
+  [version](#version)           Version of the HDF5 C API being used
 </div>
 
 For simplicity in each of the examples below it should be assumed that unless otherwise specified a file/group/dataset/attribute that is being manipulated exists and is valid and the results displayed coincide with correct execution in that example.
 
 
 
-## `.hdf5.copyObject`
+## `copyObject`
 
 _Copy a HDF5 dataset or group from one file to another_
 
-Syntax: `.hdf5.copyObject[fname;oname;fdest;odest]`
+```syntax
+.hdf5.copyObject[fname;oname;fdest;odest]
+```
 
 Where
 
@@ -81,11 +83,13 @@ q).hdf5.readData["testing.h5";"data"]
 ```
 
 
-## `.hdf5.createExternal`
+## `createExternal`
 
 _Creates an external link to an object in a different file_
 
-Syntax: `.hdf5.createExternal[lfile;lpath;tfile;tpath]`
+```syntax
+.hdf5.createExternal[lfile;lpath;tfile;tpath]
+```
 
 Where
 
@@ -99,7 +103,7 @@ returns null on successful execution and creates the external link.
 ```q
 // Produce a new .h5 file and link a path within this to a dataset in another h5 file
 // using the create external link functionality within the api
-q).hdf5.createFile["test_external.h5"]
+q).hdf5.createFile "test_external.h5"
 q).hdf5.createExternal["test_external.h5";"/dset";"test.h5";"/dset"]
 // Access the data from this new link
 q).hdf5.readData["test_external.h5";"/dset"]
@@ -111,29 +115,33 @@ q).hdf5.readData["test_external.h5";"/dset"]
 ```
 
 
-## `.hdf5.createFile`
+## `createFile`
 
 _Create a named HDF5 file_
 
-Syntax: `.hdf5.createFile[fname]`
+```syntax
+.hdf5.createFile fname
+```
 
 Where `fname` is the name of a HDF5 file as a string, returns null on successful creation of file. Attempting to create a file that already exists will result in an error
 
 ```q
 // Create named file
-q).hdf5.createFile["test.h5"]
+q).hdf5.createFile "test.h5"
 
 // Attempt to create this file again
-q).hdf5.createFile["test.h5"]
+q).hdf5.createFile "test.h5"
 'error creating file
 ```
 
 
-## `.hdf5.createGroup`
+## `createGroup`
 
 _Create a group or set of groups within a file_
 
-Syntax: `.hdf5.createGroup[fname;gname]`
+```syntax
+.hdf5.createGroup[fname;gname]
+```
 
 Where
 
@@ -149,14 +157,16 @@ q).hdf5.createGroup["test.h5";"SingleGroup"]
 q).hdf5.createGroup["test.h5";"Group1/SubGroup1/SubGroup2"]
 ```
 
-The following functions relate to writing of kdb+ data to HDF5 files as either attributes or datasets.
+<!-- The following functions relate to writing of kdb+ data to HDF5 files as either attributes or datasets.
+ -->
 
-
-## `.hdf5.createHard`
+## `createHard`
 
 _Create a hard link to a physical address in a file_ 
 
-Syntax: `.hdf5.createHard[lfile;lpath;tpath]`
+```syntax
+.hdf5.createHard[lfile;lpath;tpath]
+```
                     
 Where               
                     
@@ -181,11 +191,13 @@ q)5#.hdf5.readData["test.h5";"/G1/dset"]
 ```
 
 
-## `.hdf5.createSoft`
+## `createSoft`
 
 _Create a soft/symbolic link between two locations in a HDF5 file_
 
-Syntax: `.hdf5.createSoft[lfile;lpath;tpath]`
+```syntax
+.hdf5.createSoft[lfile;lpath;tpath]
+```
 
 Where      
 
@@ -212,7 +224,7 @@ q).hdf5.createSoft["test.h5";"/G1/dset1";"/G1/dset2"]
 .hdf5.writeData["test.h5";"G1/dset2";4 5#20?10]
 
 // Read the data from the location 'G1/dset1'
-q).hdf5.readData["tets.h5";"/G1/dset1"]
+q).hdf5.readData["test.h5";"/G1/dset1"]
 8 1 9 5 4 6
 6 1 8 5 4 9
 2 7 0 1 9 2
@@ -220,11 +232,13 @@ q).hdf5.readData["tets.h5";"/G1/dset1"]
 ```
 
 
-## `.hdf5.dataSize`
+## `dataSize`
 
 _Size of an uncompressed HDF5 dataset in MB_
 
-Syntax: `.hdf5.dataSize[fname;dname]`
+```syntax
+.hdf5.dataSize[fname;dname]
+```
 
 Where
 
@@ -239,11 +253,13 @@ q).hdf5.dataSize["test.h5";"dset"]
 ```
 
 
-## `.hdf5.delLink`
+## `delLink`
 
 _Delete an assigned external hard or soft link_
 
-Syntax: `.hdf5.delLink[lfile;lpath]`
+```syntax
+.hdf5.delLink[lfile;lpath]
+```
 
 Where
 
@@ -253,7 +269,7 @@ Where
 returns a message indicating successful deletion of a link.
 
 ```q
-// Create a delete a soft link
+// Delete a soft link
 q).hdf5.delLink["test.h5";"/G1/dset1"]
 "Successfully deleted the link"
 // Attempt to delete the link again
@@ -262,11 +278,13 @@ q).hdf5.delLink["test.h5";"/G1/dset1"]
 ```
 
 
-## `.hdf5.errorOff`
+## `errorOff`
 
 _Turn off printing of errors from HDF5 C API_
 
-Syntax: `.hdf5.errorOff[]`
+```syntax
+.hdf5.errorOff[]
+```
 
 returns null on successful execution.
 
@@ -274,7 +292,7 @@ returns null on successful execution.
 
 ```q
 // Failing function called with HDF5 error ons
-q).hdf5.createFile["test.h5"]
+q).hdf5.createFile "test.h5"
 HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
   #000: H5F.c line 444 in H5Fcreate(): unable to create file
     major: File accessibilty
@@ -289,20 +307,22 @@ HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
     major: File accessibilty
     minor: Unable to open file
 'error creating file
-  [0]  .hdf5.createFile["test.h5"]
+  [0]  .hdf5.createFile "test.h5"
 
 // Turn off errors and repeat the above function call
 q).hdf5.errorOff[]
-q).hdf5.createFile["test.h5"]
+q).hdf5.createFile "test.h5"
 'error creating file
 ```
 
 
-## `.hdf5.errorOn`
+## `errorOn`
 
 _Turns on printing of errors from HDF5 C API_
 
-Syntax: `.hdf5.errorOn[]`
+```syntax
+.hdf5.errorOn[]
+```
 
 returns null on successful execution.
 
@@ -310,12 +330,12 @@ returns null on successful execution.
 
 ```q
 // Execute an invalid command with error printing off
-q).hdf5.createFile["test.h5"]
+q).hdf5.createFile "test.h5"
 'error creating file
 
 // Turn error printing on and repeat command
 q).hdf5.errorOn[]
-q).hdf5.createFile["test.h5"]
+q).hdf5.createFile "test.h5"
 HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
   #000: H5F.c line 444 in H5Fcreate(): unable to create file
     major: File accessibilty
@@ -333,16 +353,18 @@ HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
 ```
 
 
-## `.hdf5.fileSize`
+## `fileSize`
 
 _Size of a HDF5 file in MB_
 
-Syntax: `.hdf5.fileSize[fname]`
+```syntax
+.hdf5.fileSize fname
+```
 
 Where `fname` is the name of a HDF5 file as a string returns the size of a HDF5 in MB.
 
 ```q
-q).hdf5.fileSize["test.h5"]
+q).hdf5.fileSize "test.h5"
 8.002048
 ```
 
@@ -360,11 +382,13 @@ q).hdf5.fileSize["test.h5"]
 
 
 
-## `.hdf5.gc`
+## `gc`
 
 _Garbage collect on free HDF5 lists of all types_
 
-Syntax: `.hdf5.gc[]`
+```syntax
+.hdf5.gc[]
+```
 
 returns `0i` on successful execution.
 
@@ -373,11 +397,13 @@ q).hdf5.gc[]
 0i
 ```
 
-## `.hdf5.getAttrShape`
+## `getAttrShape`
 
 _Get the shape of an attribute dataset_
 
-Syntax: `.hdf5.getAttrShape[fname;oname;aname]`
+```syntax
+.hdf5.getAttrShape[fname;oname;aname]
+```
 
 Where
 
@@ -392,11 +418,13 @@ q).hdf5.getAttrShape["test.h5";"dset";"Temperatures"]
 1 10
 ```
 
-## `.hdf5.getDataShape`
+## `getDataShape`
 
 _Get the shape of a dataset_
 
-Syntax: `.hdf5.getDataShape[fname;dname]`
+```syntax
+.hdf5.getDataShape[fname;dname]
+```
 
 Where
 
@@ -410,11 +438,13 @@ q).hdf5.getDataShape["test.h5";"dset"]
 2 4
 ```
 
-## `.hdf5.isAttr`
+## `isAttr`
 
 _Does the named attribute exist_
 
-Syntax: `.hdf5.isAttr[fname;oname;aname]`
+```syntax
+.hdf5.isAttr[fname;oname;aname]
+```
 
 -   `fname` is the name as a string of a HDF5 file 
 -   `oname` is the name as a string of an object (group/dataset) to which the attribute is associated 
@@ -429,26 +459,30 @@ q).hdf5.isAttr["test.h5";"dset";"Temps"]
 0b
 ```
 
-## `.hdf5.ishdf5`
+## `ishdf5`
 
 _Is the specified file a HDF5 file_
 
-Syntax: `.hdf5.ishdf5[fname]`
+```syntax
+.hdf5.ishdf5 fname
+```
 
 Where `fname` is the name of a HDF5 file as a string, returns a boolean indicating if the file is a HDF5 file or not.
 
 ```q
-q).hdf5.ishdf5["test.h5"]
+q).hdf5.ishdf5 "test.h5"
 1b
-q).hdf5.ishdf5["test.txt"]
+q).hdf5.ishdf5 "test.txt"
 0b
 ```
 
-## `.hdf5.isObject`
+## `isObject`
 
 _Whether an object is a group/dataset_
 
-Syntax: `.hdf5.isObject[fname;oname]`
+```syntax
+.hdf5.isObject[fname;oname]
+```
 
 Where
 
@@ -469,35 +503,41 @@ q).hdf5.isObject["test.h5";"not_obj"]
 0b
 ```
 
-## `.hdf5.isThreadsafe`
+## `isThreadsafe`
 
 _Whether HDF5 lib is build with multi thread support_
 
-Syntax: `.hdf5.isThreadsafe[]`
+```syntax
+.hdf5.isThreadsafe[]
+```
 
 Returns a boolean indicating whether the HDF5 library was build with multithread support.
  
-## `.hdf5.ls`
+## `ls`
 
 _Display the structure of a HDF5 file_
 
-Syntax: `.hdf5.ls[fname]`
+```syntax
+.hdf5.ls fname
+```
 
 Where `fname` is the name of a HDF5 file as a string, returns a dict of the overall structure of the HDF5 file.
 
 ```q
-q).hdf5.ls["test.h5"]
+q).hdf5.ls "test.h5"
 type | group
 name | `Group1
 value| `type`name`value!(`group`group;(`SG1;`SG2);((`symbol$())!();`type`name`value!(,`group;,`SG3;,(`symbol$())!())))
 ```
 
 
-## `.hdf5.readAttr`
+## `readAttr`
 
 _Read the data contained in a HDF5 attribute to kdb+_
 
-Syntax: `.hdf5.readAttr[fname;oname;aname]`
+```syntax
+.hdf5.readAttr[fname;oname;aname]
+```
 
 Where
 
@@ -523,11 +563,13 @@ q).hdf5.readAttr["test.h5";"dset";"Description"]
 ```
 
 
-## `.hdf5.readData`
+## `readData`
 
 _Read the data contained in a HDF5 dataset to kdb+_
 
-Syntax: `.hdf5.readAttr[fname;dname]`
+```syntax
+.hdf5.readAttr[fname;dname]
+```
 
 Where
 
@@ -568,17 +610,19 @@ x2| `nbmb`gbdn`ijca`khjj`gncf
 x3| 2003.01.16D01:51:45.083828416 2002.11.25D05:50:34.964843088 2000.09.19D10.
 ```
 
-The following functions allow you to link datasets/groups internally or externally to a HDF5 file. 
-
+<!-- The following functions allow you to link datasets/groups internally or externally to a HDF5 file. 
+ -->
 :fontawesome-solid-globe:
 [Definitions of external, hard and soft links](http://davis.lbl.gov/Manuals/HDF5-1.8.7/UG/09_Groups.html) as they pertain to the HDF5 data format
 
 
-## `.hdf5.version`
+## `version`
 
 _Display C API major/minor/release versions_
 
-Syntax: `.hdf5.version[]`
+```syntax
+.hdf5.version[]
+```
 
 Returns a dictionary with the major/minor and release versions of the HDF group’s C API.
 
@@ -590,11 +634,13 @@ Release| 5
 ```
 
 
-## `.hdf5.writeAttr`
+## `writeAttr`
 
 _Write a kdb+ dataset to a HDF5 attribute_
 
-Syntax: `.hdf5.writeAttr[fname;oname;aname;dset]`
+```syntax
+.hdf5.writeAttr[fname;oname;aname;dset]
+```
 
 Where
 
@@ -629,11 +675,13 @@ q).hdf5.writeAttr["test.h5";"dset";"temperature";10 2#20?1f]
 ```
 
 
-## `.hdf5.writeData`
+## `writeData`
 
 _Write a kdb+ dataset to a HDF5 dataset_
 
-Syntax: `.hdf5.writeData[fname;dname;dset]`
+```syntax
+.hdf5.writeData[fname;dname;dset]
+```
 
 Where
 
@@ -643,7 +691,7 @@ Where
 
 returns null on successful writing of data to dataset. Failure to write to the dataset will signal an appropriate error.
 
-!!! warning "To write a dataset to a file, the file must already exist.""
+!!! warning "To write a dataset to a file, the file must already exist."
 
 
 ```q
@@ -664,6 +712,6 @@ q).hdf5.writeData["test.h5";"table";([]100?1f;100?1f;100?0b;100?0t;100?`4)]
 q).hdf5.writeData["test.h5";"dict";`x1`x2`x3!(til 10;5?`4;100?0p)]
 ```
 
-The following functions relate to the reading of HDF5 datasets/attributes to an equivalent kdb+ representation.
+<!-- The following functions relate to the reading of HDF5 datasets/attributes to an equivalent kdb+ representation. -->
 
 

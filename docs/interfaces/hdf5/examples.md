@@ -21,10 +21,10 @@ Create a `.h5` file to house experimental datasets.
 ```q
 //create a file named appropriately
 q)fname:"experiments.h5"
-q).hdf5.createFile[fname]
+q).hdf5.createFile fname
 
 //Check that this file exists
-q).hdf5.ishdf5[fname]
+q).hdf5.ishdf5 fname
 1b
 ```
 
@@ -44,7 +44,7 @@ q)dset_name:"experiment1_data"
 q).hdf5.writeData[fname;dset_name;dset]
 
 // Inspect the content of the file to ensure the data has been written to file
-q).hdf5.ls[fname]
+q).hdf5.ls fname
 type | dataset
 name | `experiment1_data
 value| (`symbol$())!()
@@ -77,7 +77,7 @@ q)gname:"experiment2_tables"
 q).hdf5.createGroup[fname;gname]
 
 // Inspect the content of the file
-q).hdf5.ls[fname]
+q).hdf5.ls fname
 type | dataset           group
 name | `experiment1_data `experiment2_tables
 value| (`symbol$())!()   (`symbol$())!()
@@ -103,7 +103,7 @@ tstamp                        voltage   volume class on_off
 q).hdf5.writeData[fname;tname;dset_tab]
 
 // Inspect the content of the file
-q).hdf5.ls[fname]
+q).hdf5.ls fname
 type | dataset           group                                               ..
 name | `experiment1_data `experiment2_tables                                 ..
 value| (`symbol$())!()   `type`name`value!(,`group;,`tab_dset;,`type`name`val..
