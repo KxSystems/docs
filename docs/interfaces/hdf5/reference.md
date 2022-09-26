@@ -47,7 +47,8 @@ Utility
   [isAttr](#hdf5isattr)            Whether this attribute exists
   [ishdf5](#hdf5ishdf5)            Whether a file of HDF5 format
   [isObject](#hdf5isobject)          Whether object exists
-  [ls](#hdf5ls)                ls-like representation of the structure of a HDF5 file
+  [isThreadsafe](#hdf5isthreadsafe)          Whether HDF5 lib is build with multithread support
+  [ls](#hdf5ls)                Representation of the structure of a HDF5 file
   [version](#hdf5version)           Version of the HDF5 C API being used
 </div>
 
@@ -276,16 +277,16 @@ returns null on successful execution.
 q).hdf5.createFile["test.h5"]
 HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
   #000: H5F.c line 444 in H5Fcreate(): unable to create file
-    major: File accessibility
+    major: File accessibilty
     minor: Unable to open file
   #001: H5Fint.c line 1558 in H5F_open(): unable to open file
-    major: File accessibility
+    major: File accessibilty
     minor: Unable to open file
   #002: H5FD.c line 734 in H5FD_open(): open failed
     major: Virtual File Layer
     minor: Unable to initialize object
   #003: H5FDsec2.c line 346 in H5FD_sec2_open(): unable to open file:
-    major: File accessibility
+    major: File accessibilty
     minor: Unable to open file
 'error creating file
   [0]  .hdf5.createFile["test.h5"]
@@ -317,16 +318,16 @@ q).hdf5.errorOn[]
 q).hdf5.createFile["test.h5"]
 HDF5-DIAG: Error detected in HDF5 (1.10.5) thread 0:
   #000: H5F.c line 444 in H5Fcreate(): unable to create file
-    major: File accessibility
+    major: File accessibilty
     minor: Unable to open file
   #001: H5Fint.c line 1558 in H5F_open(): unable to open file
-    major: File accessibility
+    major: File accessibilty
     minor: Unable to open file
   #002: H5FD.c line 734 in H5FD_open(): open failed
     major: Virtual File Layer
     minor: Unable to initialize object
   #003: H5FDsec2.c line 346 in H5FD_sec2_open(): unable to open file:
-    major: File accessibility
+    major: File accessibilty
     minor: Unable to open file
 'error creating file
 ```
@@ -467,6 +468,14 @@ q).hdf5.isObject["test.h5";"G1"]
 q).hdf5.isObject["test.h5";"not_obj"]
 0b
 ```
+
+## `.hdf5.isThreadsafe`
+
+_Whether HDF5 lib is build with multi thread support_
+
+Syntax: `.hdf5.isThreadsafe[]`
+
+Returns a boolean indicating whether the HDF5 library was build with multithread support.
  
 ## `.hdf5.ls`
 
@@ -474,19 +483,13 @@ _Display the structure of a HDF5 file_
 
 Syntax: `.hdf5.ls[fname]`
 
-Where `fname` is the name of a HDF5 file as a string, displays the overall structure of the HDF5 file and returns a null.
+Where `fname` is the name of a HDF5 file as a string, returns a dict of the overall structure of the HDF5 file.
 
 ```q
 q).hdf5.ls["test.h5"]
-{
-  [Group](#hdf5group): G1 {
-    Group: G2 {
-      Dataset: group_dset
-    }
-    Dataset: dset1
-  }
-  [Dataset](#hdf5dataset): dset
-}
+type | group
+name | `Group1
+value| `type`name`value!(`group`group;(`SG1;`SG2);((`symbol$())!();`type`name`value!(,`group;,`SG3;,(`symbol$())!())))
 ```
 
 

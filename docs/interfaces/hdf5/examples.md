@@ -45,9 +45,9 @@ q).hdf5.writeData[fname;dset_name;dset]
 
 // Inspect the content of the file to ensure the data has been written to file
 q).hdf5.ls[fname]
-/ {
-  Dataset: experiment1_data
-}
+type | dataset
+name | `experiment1_data
+value| (`symbol$())!()
 ```
 
 
@@ -78,11 +78,9 @@ q).hdf5.createGroup[fname;gname]
 
 // Inspect the content of the file
 q).hdf5.ls[fname]
-/ {
-  Group: experiment2_tables {
-  }
-  Dataset: experiment_data
-}
+type | dataset           group
+name | `experiment1_data `experiment2_tables
+value| (`symbol$())!()   (`symbol$())!()
 ```
 
 
@@ -106,18 +104,9 @@ q).hdf5.writeData[fname;tname;dset_tab]
 
 // Inspect the content of the file
 q).hdf5.ls[fname]
-/ {
-  Group: experiment2_tables {
-    Group: tab_dset {
-      Dataset: class
-      Dataset: on_off
-      Dataset: tstamp
-      Dataset: voltage
-      Dataset: volume
-    }
-  }
-  Dataset: experiment1_data
-}
+type | dataset           group                                               ..
+name | `experiment1_data `experiment2_tables                                 ..
+value| (`symbol$())!()   `type`name`value!(,`group;,`tab_dset;,`type`name`val..
 ```
 
 
