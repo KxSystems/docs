@@ -105,7 +105,7 @@ CSVs are a common source of tables.
 
 There are two ways to work with tables and you can mix them to suit yourself. 
 
-QSLQ queries are very like SQL. (Perhaps a little less verbose.)
+QSQL queries are very like SQL. (Perhaps a little less verbose.)
 
 ```q
 q)select city,pop from ec2 upsert ec1
