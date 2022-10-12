@@ -20,7 +20,8 @@ Amend            Amend At         values (d . i) or (d @ i)
 Where
 
 -   `d` is an atom, list, or a dictionary (**value**); or a **handle** to a list, dictionary or datafile
--   `i` is a list of the indexes of `d` to be amended:
+-   `i` indexes where `d` is to be amended:
+    -   it must be a list for `.`
     -   if empty (for `.`) or the general null `::` (for `@`), or if `d` is a non-handle atom, the selection $S$ is `d` ([Amend Entire](#amend-entire))
     -   otherwise $S$ is [`.[d;i]` or `@[d;i]`](apply.md#index)
 -   `u` is a unary

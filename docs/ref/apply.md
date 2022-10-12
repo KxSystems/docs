@@ -1,6 +1,6 @@
 ---
 title: Apply (At), Index (At), Trap (At) | Reference | kdb+ and q documentation
-description: Operators Apply (At), Index (At), and Trap (At) apply a funcxtion to one or more arguments, get items at depth in a list, and trap errors.
+description: Operators Apply (At), Index (At), and Trap (At) apply a function to one or more arguments, get items at depth in a list, and trap errors.
 author: Stephen Taylor
 keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
 ---
@@ -48,9 +48,9 @@ For the ternary and quaternary forms
 where 
 
 -   `d` is a list or dictionary, or a handle to a list, dictionary or datafile
--   `i` indexes `d` as `d . i` or `d @ i`
+-   `i` indexes `d` as `d . i` or `d @ i` (must be a list for Amend)
 -   `u` is a unary with `d` in its domain
--   `v` is a binary with `d` and `vy` is in its left and right domains
+-   `v` is a binary with `d` and `vy` in its left and right domains
 
 see [Amend and Amend At](amend.md).
 
