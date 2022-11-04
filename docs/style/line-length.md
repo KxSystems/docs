@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
 keywords: kdb+, q, style
 ---
@@ -10,7 +9,7 @@ keywords: kdb+, q, style
 
 Ideally, a physical line of code contains exactly one q statement, and a q statement encodes exactly one thought. 
 
-Some thoughts are too large or complex to represent in a single readble q statement. Some thoughts are too small or trivial to justify the expenditure of a whole physical line. 
+Some thoughts are too large or complex to represent in a single readable q statement. Some thoughts are too small or trivial to justify the expenditure of a whole physical line. 
 
 An example of a line which contains several q statements, each of which encodes a small piece of a single thought:
 
@@ -18,9 +17,17 @@ An example of a line which contains several q statements, each of which encodes 
 a:x 0; b:x 1; c:x 2; d:x 3; e:x 4
 ```
 
-!!! note
+!!! note "Whitespace"
 
-    Observe how the blanks are used after each semicolon to achieve visual separation. This is legitimate, since whitespace should help us see computational structure. Not so in <pre><code class="language-q">v:m[a; b; ]</code></pre>where the spaces create a visual obstacle.
+    Observe how the blanks are used above after each semicolon to achieve visual separation. 
+    This is legitimate, since whitespace should help us see computational structure. 
+    Not so in 
+
+    ```q
+    v:m[a; b; ]
+    ```
+
+    where the spaces create a visual obstacle.
 
 Sometimes a thought consists of a simple operation on parts whose construction is complicated:
 

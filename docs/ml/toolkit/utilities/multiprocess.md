@@ -5,14 +5,14 @@ author: Diane O'Donoghue
 date: March 2020
 keywords: machine learning, ml, utilitites, multi-threading, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Multiprocess distribution framework
+# :fontawesome-solid-share-alt: Multiprocess distribution framework
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 
-The framework described below is designed to provide a user-friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized by default in both the FRESH and cross-validation procedures outlined within this toolkit, provided the process is located on a defined port and with a specified number of slave processes.
+The framework described below is designed to provide a user-friendly interface for the execution of both q and Python code across multiple processes. This is currently utilized by default in both the FRESH and cross-validation procedures outlined within this toolkit, provided the process is located on a defined port and with a specified number of secondary processes.
 
 The following workflow shows how FRESH can be initialized exclusively, without loading of the entire toolkit.
 
@@ -22,11 +22,11 @@ Initialize a q process with four workers on a user-defined central port.
 $ q ml/ml.q -s -4 -p 1234
 ```
 
-The above command sets four slave processes with the central process on port 1234. The below must be executed to load the relevant functionality contained in `util/mproc.q` and to load the appropriate functionality for the FRESH algorithm on each of the processes.
+The above command sets four secondary processes with the central process on port 1234. The below must be executed to load the relevant functionality contained in `util/mproc.q` and to load the appropriate functionality for the FRESH algorithm on each of the processes.
 
 ```q
 q).ml.loadfile`:util/mproc.q
-q).ml.mproc.init[abs system"s"]enlist".ml.loadfile`:fresh/init.q"
+q).ml.multiProc.init[abs system"s"]enlist".ml.loadfile`:fresh/init.q"
 ```
 
 This results in the following architecture.
@@ -42,18 +42,20 @@ The primary difficulty with Python distribution surrounds Python’s use of a Gl
 This method is not restricted to functions contained only within the ML library, and can be be used to distribute any function, q or otherwise, across worker processes. This can be seen in the example below.
 
 
-### `.ml.mproc.init`
+### `.ml.multiProc.init`
 
 _Distributes functions to worker processes_
 
-Syntax: `mproc.init[n;x]`
+```txt
+multiProc.init[n;func]
+```
 
 Where 
 
 - `n` is the number of processes open
-- `x` is a string of the function to be passed to the process
+- `func` is a string of the function to be passed to the process
 
-has each of the `n` worker processes evaluate `x`.
+has each of the `n` worker processes evaluate `func`.
 
 Example: create the following file as `$QHOME/ml/multip.q` or `%QHOME%\ml\multip.q`.
 
@@ -90,7 +92,7 @@ q)func peach 1+til 3
   [0]  fnc peach til 3
 
 q)// load this functionality on each process
-q).ml.mproc.init[abs system"s"]enlist".ml.loadfile`:multip.q"
+q).ml.multiProc.init[abs system"s"]enlist".ml.loadfile`:multip.q"
 
 q)// distribute execution
 q)func peach 1+til 3

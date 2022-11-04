@@ -1,16 +1,17 @@
 ---
-title: ema – Reference – kdb+ and q documentation
+title: Exponential moving average | Reference | kdb+ and q documentation
 description: ema is a q keyword that returns the exponential moving average of its arguments.
-keywords: average, ema, exponential, kdb+, mathematics, moving, q, statistics
 ---
 # `ema`
 
-
-
-
 _Exponential moving average_
 
-Syntax: `x ema y`, `ema[x;y]`
+
+
+
+```syntax
+x ema y    ema[x;y]
+```
 
 Where
 
@@ -19,7 +20,7 @@ Where
 
 returns the [exponentially-weighted moving averages](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average "Wikipedia") (EWMA, also known as _exponential moving average_ , EMA) of `y`, with `x` as the smoothing parameter.
 
-`ema` is a uniform function. 
+`ema` is a uniform function.
 
 Example: An impulse response with decay of &frac13;.
 
@@ -36,16 +37,10 @@ q)(2%1+10)ema p
 22.27 22.25545 22.22355 22.21382 22.20767 22.19355 22.20017 22.24196 22.2416 22.2504 22.23215 22.26085 22.28251 22.34206 22.52714 22.80402 22.97602 23.13129 23.28014 23.34375 23.43034 23.51028 23.53568 23.47283 23.40505 23.3914 23.26206 23.23259 23.08121 22.91554
 ```
 
-!!! tip "V3.1 to V3.3"
-
-    `ema` has been defined since V3.4. To use it in V3.1 to V3.3, define it in `.q`:
-
-    <pre><code class="language-q">
-    .q.ema:{first\[y\]("f"\$1-x)\x*y}
-    </code></pre>
-
-
-<i class="far fa-hand-point-right"></i>
-[`avg`, `avgs`, `mavg`, `wavg`](avg.md)  
-Basics: [Mathematics](../basics/math.md)
+----
+:fontawesome-solid-book:
+[`avg`, `avgs`, `mavg`, `wavg`](avg.md)
+<br>
+:fontawesome-solid-book:
+[Mathematics](../basics/math.md)
 

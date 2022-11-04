@@ -1,11 +1,17 @@
 ---
-title: Order Book, a kdb+ intraday storage and access methodology – White papers – q and kdb+ documentation
+title: "Order Book: a kdb+ intraday storage and access methodology | White papers | q and kdb+ documentation"
 description: Strategies for storing order-book data, and their implications for query performance
 author: Niall Coulter
 date: April 2012
 keywords: access, kdb+, latency, performance, q, storage
 ---
-# Order Book – a kdb+ intraday storage and access methodology
+White paper
+{: #wp-brand}
+
+# Order Book: a kdb+ intraday storage and access methodology
+
+by [Niall Coulter](#author)
+{: .wp-author}
 
 
 
@@ -369,8 +375,10 @@ How data is received and accessed can vary depending on each individual use case
 
 All tests performed with kdb+ 2.8 (2012.03.21).
 
+[:fontawesome-solid-print: PDF](/download/wp/order_book_a_kdb_intraday_storage_and_access_methodology.pdf)
+
 
 ## Author
 
-Niall Coulter has worked on many kdb+ algorithmic-trading systems related to both the equity and FX markets. Based in New York, Niall is a technical architect for [Kx Platform](/platform/index.html), a suite of high-performance data-management, event-processing and trading platforms.
+**Niall Coulter** has worked on many kdb+ algorithmic-trading systems related to both the equity and FX markets. Based in New York, Niall is a technical architect for [KX Platform](/platform/index.html), a suite of high-performance data-management, event-processing and trading platforms.
 

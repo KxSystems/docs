@@ -1,107 +1,102 @@
 ---
-title: The .Q namespace – Reference – kdb+ and q documentation
+title: The .Q namespace – tools | Reference | kdb+ and q documentation
 description: The .Q namespace contains utility objects for q programming
 author: Stephen Taylor
-keywords: database, decode, encode, kdb+, namespace, partitioned, q, segmented, utilities
 ---
-# The `.Q` namespace
+# :fontawesome-solid-wrench: The `.Q` namespace
 
 
+_Tools_
 
+<div markdown="1" class="typewriter">
+**General**                           **Datatype**
+ [addmonths](#qaddmonths)                         [btoa        b64 encode](#qbtoa-b64-encode)
+ [bt       backtrace](#qbt-backtrace)                [j10         encode binhex](#qj10-encode-binhex)
+ [dd       join symbols](#qdd-join-symbols)             [j12         encode base 36](#qj12-encode-base-36)
+ [def      parse options](#qdef-parse-options)            [M           long infinity](#qm-long-infinity)
+ [f        format](#qf-format)                   [ty          type](#qty-type)
+ [fc       parallel on cut](#qfc-parallel-on-cut)          [x10         decode binhex](#qx10-decode-binhex)
+ [ff       append columns](#qff-append-columns)           [x12         decode base 36](#qx12-decode-base-36)
+ [fmt      format](#qfmt-format)
+ [ft       apply simple](#qft-apply-simple)            **Database**
+ [fu       apply unique](#qfu-apply-unique)             [chk         fill HDB](#qchk-fill-hdb)
+ [gc       garbage collect](#qgc-garbage-collect)          [dpft dpfts  save table](#qdpft-save-table)
+ [gz       GZip](#qgz-gzip)                     [dpt  dpts   save table unsorted](#qdpt-save-table-unsorted)
+ [id       sanitize](#qid-sanitize)                 [dsftg       load process save](#qdsftg-load-process-save)
+ [qt       is table](#qqt-is-table)                 [en          enumerate varchar cols](#qen-enumerate-varchar-cols)
+ [res      keywords](#qres-keywords)                 [ens         enumerate against domain](#qens-enumerate-against-domain)
+ [s        plain text](#qs-plain-text)               [fk          foreign key](#qfk-foreign-key)
+ [s1       string representation](#qs1-string-representation)    [hdpf        save tables](#qhdpf-save-tables)
+ [sbt      string backtrace](#qsbt-string-backtrace)         [qt          is table](#qqt-is-table)
+ [sha1     SHA-1 encode](#qsha1-sha-1-encode)             [qp          is partitioned](#qqp-is-partitioned)
+ [trp      extend trap](#qtrp-extend-trap)
+ [ts       time and space](#qts-time-and-space)          **Partitioned database state**
+ [u        date based](#qu-date-based)               [bv          build vp](#qbv-build-vp)
+ [V        table to dict](#qv-table-to-dict)            [cn          count partitioned table](#qcn-count-partitioned-table)
+ [v        value](#qv-value)                    [D           partitions](#qd-partitions)
+ [view     subview](#qview-subview)                  [ind         partitioned index](#qind-partitioned-index)
+                                   [MAP         maps partitions](#qmap-maps-partitions)
+**Constants**                          [par         locate partition](#qpar-locate-partition)
+ [A a an   alphabets](#qa-upper-case-alphabet)                [PD          partition locations](#qpd-partition-locations)
+ [b6       bicameral alphanums](#qb6-bicameral-alphanums)      [pd          modified partition locns](#qpd-modified-partition-locations)
+ [n nA     nums & alphanums](#qn-nums)         [pf          partition field](#qpf-partition-field)
+                                   [pn          partition counts](#qpn-partition-counts)
+**Environment**                        [qp          is partitioned](#qqp-is-partitioned)
+ [K k      version](#qk-version-date)                  [pt          partitioned tables](#qpt-partitioned-tables)
+ [opt      command parameters](#qopt-command-parameters)       [PV          partition values](#qpv-partition-values)
+ [w        memory stats](#qw-memory-stats)             [pv          modified partition values](#qpv-modified-partition-values)
+ [x        non-command parameters](#qx-non-command-parameters)   [vp          missing partitions](#qvp-missing-partitions)
 
-<pre markdown="1" class="language-txt">
-General                              Datatype
- [.Q.a        lowercase alphabet](#qa-lower-case-alphabet)       [.Q.btoa   b64 encode](#qbtoa-b64-encode)
- [.Q.A        uppercase alphabet](#qa-upper-case-alphabet)       [.Q.j10    encode binhex](#qj10-encode-binhex)
- [.Q.addmonths](#qaddmonths)                         [.Q.j12    encode base64](#qj12-encode-base64)
- [.Q.bt       backtrace](#qbt-backtrace)                [.Q.M      long infinity](#qm-long-infinity)
- [.Q.dd       join symbols](#qdd-join-symbols)             [.Q.ty     type](#qty-type)
- [.Q.def](#qdef)                               [.Q.x10    decode binhex](#qx10-decode-binhex)
- [.Q.f        format](#qf-format)                   [.Q.x12    decode base64](#qx12-decode-base64)
- [.Q.fc       parallel on cut](#qfc-parallel-on-cut)
- [.Q.ff       append columns](#qff-append-columns)           Database
- [.Q.fmt      format](#qfmt-format)                   [.Q.chk    fill HDB](#qchk-fill-hdb)
- [.Q.ft       apply simple](#qft-apply-simple)             [.Q.dpft   save table](#qdpft-save-table)
- [.Q.fu       apply unique](#qfu-apply-unique)             [.Q.dpfts  save table with sym](#qdpfts-save-table-with-symtable)
- [.Q.gc       garbage collect](#qgc-garbage-collect)          [.Q.dsftg  load process save](#qdsftg-load-process-save)
- [.Q.id       sanitize](#qid-sanitize)                 [.Q.en     enumerate varchar cols](#qen-enumerate-varchar-cols)
- [.Q.prf0     code profiler](#qprf0-code-profiler)
- [.Q.qt       is table](#qqt-is-table)                 [.Q.ens    enumerate against domain](#qens-enumerate-against-domain)
- [.Q.res      keywords](#qres-keywords)                 [.Q.fk     foreign key](#qfk-foreign-key)
- [.Q.s        plain text](#qs-plain-text)               [.Q.hdpf   save tables](#qhdpf-save-tables)
- [.Q.s1       string representation](#qs1-string-representation)    [.Q.qt     is table](#qqt-is-table)
- [.Q.sbt      string backtrace](#qsbt-string-backtrace)         [.Q.qp     is partitioned](#qqp-is-partitioned)
- [.Q.sha1     SHA-1 encode](#qsha1-sha-1-encode)
- [.Q.trp      extend trap](#qtrp-extend-trap)              Partitioned database state
- [.Q.ts       time and space](#qts-time-and-space)           [.Q.bv     build vp](#qbv-build-vp)
- [.Q.u        date based](#qu-date-based)               [.Q.cn     count partitioned table](#qcn-count-partitioned-table)
- [.Q.V        table to dict](#qv-table-to-dict)            [.Q.D      partitions](#qd-partitions)
- [.Q.v        value](#qv-value)                    [.Q.ind    partitioned index](#qind-partitioned-index)
- [.Q.view     subview](#qview-subview)                  [.Q.MAP    maps partitions](#qmap-maps-partitions)
-                                      [.Q.par    locate partition](#qpar-locate-partition)
-Environment                           [.Q.PD     partition locations](#qpd-partition-locations)
- [.Q.k        version](#qk-version)                  [.Q.pd     modified partition locns](#qpd-modified-partition-locations)
- [.Q.opt      command parameters](#qopt-command-parameters)       [.Q.pf     partition field](#qpf-partition-field)
- [.Q.w        memory stats](#qw-memory-stats)             [.Q.pn     partition counts](#qpn-partition-counts)
- [.Q.x        non-command parameters](#qx-non-command-parameters)   [.Q.qp     is partitioned](#qqp-is-partitioned)
-                                      [.Q.pt     partitioned tables](#qpt-partitioned-tables)
-IPC                                   [.Q.PV     partition values](#qpv-partition-values)
- [.Q.addr     IP address](#qaddr-ip-address)               [.Q.pv     modified partition values](#qpv-modified-partition-values)
- [.Q.fps      streaming algorithm](#qfps-streaming-algorithm)      [.Q.vp     missing partitions](#qvp-missing-partitions)
- [.Q.fs       streaming algorithm](#qfs-streaming-algorithm)
- [.Q.fsn      streaming algorithm](#qfsn-streaming-algorithm)     Segmented database state
- [.Q.hg       HTTP get](#qhg-http-get)                [.Q.D      partitions](#qd-partitions)
- [.Q.host     hostname](#qhost-hostname)                [.Q.P      segments](#qp-segments)
- [.Q.hp       HTTP post](#qhp-http-post)               [.Q.u      date based](#qu-date-based)
- [.Q.l        load](#ql-load)
+**IPC**                               **Segmented database state**
+ [addr     IP address](#qaddr-ip-address)               [D           partitions](#qd-partitions)
+ [fps fpn  streaming algorithm](#qfpn-streaming-algorithm)      [P           segments](#qp-segments)
+ [fs  fsn  streaming algorithm](#qfs-streaming-algorithm)      [u           date based](#qu-date-based)
+ [hg       HTTP get](#qhg-http-get)
+ [host     hostname](#qhost-hostname)                **File I/O**
+ [hp       HTTP post](#qhp-http-post)                [Cf          create empty nested char file](#qcf-create-empty-nested-char-file)
+ [l        load](#ql-load)                     [Xf          create file](#qxf-create-file)
 
- File I/O
- [.Q.Cf       create empty nested char file](#qcf-create-empty-nested-char-file)
- [.Q.Xf       create file](#qxf-create-file)
-</pre>
+</div>
 
 
 Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. Some are exposed in the default namespace as the q language. Others are documented here as utility functions in the `.Q` [namespace](../basics/namespaces.md).
 
-!!! warning "Reserved"
-
-    The `.Q` namespace is reserved for use by Kx, as are all single-letter namespaces.
+??? warning "The `.Q` namespace is reserved for use by KX, as are all single-letter namespaces."
 
     Consider all undocumented functions in the namespace as [exposed infrastructure](../basics/exposed-infrastructure.md) – and do not use them.
 
 In non-partitioned databases the partitioned database state variables remain undefined.
 
 
-
+## `.Q.A` (upper-case alphabet)
 ## `.Q.a` (lower-case alphabet)
+## `.Q.an` (all alphanumerics)
 
-Syntax: `.Q.a`
-
-Lower-case Roman alphabet as a char vector.
-
-```q
-q).Q.a
-"abcdefghijklmnopqrstuvwxyz"
+```syntax
+.Q.A       / upper-case alphabet
+.Q.a       / lower-case alphabet
+.Q.an      / all alphanumerics
 ```
 
-
-## `.Q.A` (upper-case alphabet)
-
-Syntax: `.Q.A`
-
-Upper-case Roman alphabet as a char vector.
+Strings: upper-case Roman alphabet (`.Q.A`), lower-case Roman alphabet (`.Q.a`), and all alphanums (`.Q.an`).
 
 ```q
 q).Q.A
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+q).Q.a
+"abcdefghijklmnopqrstuvwxyz"
+q).Q.an
+"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789"
 ```
 
 
 ## `.Q.addmonths`
 
-Syntax: `.Q.addmonths[x;y]`
+```syntax
+.Q.addmonths[x;y]
+```
 
-Where `x` is a date and `y` is an int, returns `x` plus `y` months. (Since V2.4.)
+Where `x` is a date and `y` is an int, returns `x` plus `y` months.
 
 ```q
 q).Q.addmonths[2007.10.16;6 7]
@@ -115,10 +110,18 @@ q).Q.addmonths[2006.10.29;4]
 2007.03.01
 ```
 
+:fontawesome-solid-book-open:
+[Mathematics with temporals](../basics/math.md#mathematics-with-temporals)
+<br>
+:fontawesome-solid-graduation-cap:
+[How to handle temporal data in q](../kb/temporal-data.md)
+
 
 ## `.Q.addr` (IP address)
 
-Syntax: `.Q.addr x`
+```syntax
+.Q.addr x
+```
 
 Where `x` is a hostname or IP address as a symbol atom, returns the IP address as an integer (same format as [`.z.a`](dotz.md#za-ip-address))
 
@@ -133,16 +136,34 @@ q)256 vs .Q.addr`localhost
 127 0 0 1
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.host`](#qhost-hostname)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [`vs`](vs.md)
+
+
+## `.Q.b6` (bicameral-alphanums)
+
+```syntax
+.Q.b6
+```
+
+Returns upper- and lower-case alphabet and numerics.
+
+```q
+q).Q.b6
+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+```
+
+Used for [binhex](#qj10-encode-binhex) encoding and decoding.
 
 
 ## `.Q.bt` (backtrace)
 
-Syntax: `.Q.bt[]`
+```syntax
+.Q.bt[]
+```
 
 Dumps the backtrace to stdout at any point during execution or debug.
 
@@ -173,10 +194,11 @@ q)).Q.bt[]
 The debugger itself occupies a stack frame, but its source is hidden. (Since V3.5 2017.03.15.)
 
 
-
 ## `.Q.btoa` (b64 encode)
 
-Syntax: `.Q.btoa x`
+```syntax
+.Q.btoa x
+```
 
 ```q
 q).Q.btoa"Hello World!"
@@ -188,8 +210,8 @@ Since V3.6 2018.05.18.
 
 ## `.Q.bv` (build vp)
 
-Syntax: 
-```txt
+
+```syntax
 .Q.bv[]
 .Q.bv[`]
 ```
@@ -199,7 +221,7 @@ In partitioned DBs, construct the dictionary `.Q.vp` of table schemas for tables
 
 If your table exists at least in the latest partition (so there is a prototype for the schema), you could use `.Q.bv[]` to create empty tables on the fly at run-time without having to create those empties on disk. ``.Q.bv[`]`` (with argument) will use prototype from first partition instead of last. (Since V3.2 2014.08.22.)
 
-Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behaviour.
+Some admins prefer to see errors instead of auto-manufactured empties for missing data, which is why `.Q.bv` is not the default behavior.
 
 ```q
 q)n:100
@@ -221,42 +243,60 @@ q)@[get;"select from tt";-2@]; / no error
 ```
 
 
-## `.Q.chk` (fill HDB)
-
-Syntax: `.Q.chk x`
-
-Where `x` is a HDB as a filepath, fills missing tables.
-
-```q
-q).Q.chk[`:hdb]
-```
-
-Note that q must have write permission for the HDB area so that it can create missing tables. If it signals an error similar to
-
-```q
-'./2010.01.05/tablename/.d: No such file or directory
-```
-
-then check that the process has write permissions for that filesystem.
-
-
-## `.Q.cn` (count partitioned table)
-
-Syntax: `.Q.cn x`
-
-Where `x` is a partitioned table, passed by value, returns its count. Populates `.Q.pn` cache.
-
-
 ## `.Q.Cf` (create empty nested char file)
 
-Syntax: `.Q.Cf x`
+```syntax
+.Q.Cf x
+```
 
 A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
 
 
+## `.Q.chk` (fill HDB)
+
+```syntax
+.Q.chk x
+```
+
+Where `x` is a HDB as a filepath, fills tables missing from partitions using the most recent partition as a template, and reports which partitions (but not which tables) it is fixing.
+
+```q
+q).Q.chk[`:hdb]
+()
+()
+,`:/db/2009.01.04
+,`:/db/2009.01.03
+```
+
+??? tip "Q must have write permission for the HDB area to create missing tables"
+
+    If it signals an error similar to
+
+    ```q
+    './2010.01.05/tablename/.d: No such file or directory
+    ```
+
+    check the process has write permissions for that filesystem.
+
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§14.5.2 `.Q.chk`](/q4m3/14_Introduction_to_Kdb%2B/#1457-qchk)
+
+
+## `.Q.cn` (count partitioned table)
+
+```syntax
+.Q.cn x
+```
+
+Where `x` is a partitioned table, passed by value, returns its count. Populates `.Q.pn` cache.
+
+
 ## `.Q.D` (partitions)
 
-Syntax: `.Q.D`
+```syntax
+.Q.D
+```
 
 In segmented DBs, contains a list of the partitions – conformant to `.Q.P` – that are present in each segment.
 
@@ -280,7 +320,9 @@ q).Q.P!.Q.D
 
 ## `.Q.dd` (join symbols)
 
-Syntax: `.Q.dd[x;y]`
+```syntax
+.Q.dd[x;y]
+```
 
 Shorthand for `` ` sv x,`$string y``. Useful for creating filepaths, suffixed stock symbols, etc.
 
@@ -299,38 +341,46 @@ IBM  N  IBM.N
 ```
 
 
-## `.Q.def`
+## `.Q.def` (parse options)
 
-Syntax: `.Q.def[x;y]`
+_Default values for command-line arguments_
 
-Provides defaults and types for command line arguments parsed with [``.Q.opt``](#qopt-command-parameters).
+```syntax
+.Q.def[x;y]
+```
 
-<i class="fas fa-book"></i>
+Provides defaults and types for command-line arguments parsed with [``.Q.opt``](#qopt-command-parameters).
+
+:fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
 
 
 ## `.Q.dpft` (save table)
 ## `.Q.dpfts` (save table with symtable)
+## `.Q.dpt` (save table unsorted)
+## `.Q.dpts` (save table unsorted with symtable)
 
-Syntax: 
-```txt
+
+```syntax
 .Q.dpft[d;p;f;t]
 .Q.dpfts[d;p;f;t;s]
+.Q.dpt[d;p;t]
+.Q.dpts[d;p;t;s]
 ```
 
 Where
 
 -   `d` is a directory handle
--   `p` is a partition of a database sorted (``p#´``) on
+-   `p` is a partition of a database
 -   `f` a field of the table named by
--   `t`, a table handle
+-   `t`, the name (as a symbol) of a simple table whose columns are vectors or compound lists
 -   `s` is the handle of a symtable
 
 saves `t` splayed to partition `p`.
 
-!!! warning "Simple tables only"
+!!! warning "The table cannot be keyed."
 
-    The table cannot be keyed. This would signal an `'unmappable` error if there are columns which are not vectors or simple nested columns (e.g. char vectors for each row).
+    This would signal an `'unmappable` error if there are columns which are not vectors or simple nested columns (e.g. char vectors for each row).
 
 It also rearranges the columns of the table so that the column specified by `f` is second in the table (the first column in the table will be the virtual column determined by the partitioning e.g. date).
 
@@ -396,7 +446,9 @@ q)mysym
 
 ## `.Q.dsftg` (load process save)
 
-Syntax: `.Q.dsftg[d;s;f;t;g]`
+```syntax
+.Q.dsftg[d;s;f;t;g]
+```
 
 Where
 
@@ -425,48 +477,12 @@ q).Q.dsftg[d;s;f;t;g]
  -->
 
 ## `.Q.en` (enumerate varchar cols)
-
-Syntax: `.Q.en[dir;table]`
-
-Where
-
--   `dir` is a symbol handle to a folder
--   `table` is a table
-
-the function
-
--   assigns to variable `sym` the list of unique symbols in `table`
--   creates if necessary the folder `dir`
--   writes in `dir` a file `sym` with the same contents
--   returns `table` with columns enumerated.
-
-Tables that are splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
-
-!!! warning "Locking"
-
-    Enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage.
-
-<i class="fas fa-book""></i>
-[`dsave`](dsave.md),
-[Enum Extend](enum-extend.md),
-[`save`](save.md)
-<br>
-<i class="fas fa-graduation-cap""></i>
-[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
-<br>
-<i class="fas fa-graduation-cap""></i>
-[Splaying large files](../kb/splaying-large-files.md#enumerating-using-qen)
-<br>
-<i class="far fa-map""></i>
-[Data-management techniques](../wp/data-management.md#multiple-enumeration-files)
-<br>
-<i class="far fa-map""></i>
-[Working with sym files](../wp/symfiles.md#qen)
-
-
 ## `.Q.ens` (enumerate against domain)
 
-Syntax: `.Q.ens[dir;table;name]`
+```syntax
+.Q.en[dir;table]
+.Q.ens[dir;table;name]
+```
 
 Where
 
@@ -474,26 +490,54 @@ Where
 -   `table` is a table
 -   `name` is a symbol atom naming a sym file in `dir`
 
-returns `table` with columns enumerated against `name`.
+the function
 
-Allows enumeration against domains (and therefore filenames) other than `sym`.
+-   creates if necessary the folder `dir`
+-   gets `sym` from `dir` if it exists
+-   enumerates against `sym` the symbols in `table`
+-   writes `sym` in `dir`
+-   returns `table` with columns enumerated (for `.Q.ens`, against `name`)
 
-Enumerate against contents of `db/mysym`:
+`.Q.ens` allows enumeration against domains (and therefore filenames) other than `sym`.
 
 ```q
 q)([]sym:`mysym$`a`b`c)~.Q.ens[`:db;([]sym:`a`b`c);`mysym]
 ```
 
-<i class="far fa-hand-point-right"></i>
-[`.Q.en`](#qen-enumerate-varchar-columns)
+Tables splayed across a directory must be fully enumerated and not keyed. The solution is to enumerate columns of type varchar before saving the table splayed.
+
+??? warning "Locking ensures two processes do not write to the sym file at the same time"
+
+    Apart from that, it is up to you to manage.
+
+:fontawesome-solid-book:
+[`dsave`](dsave.md),
+[Enum Extend](enum-extend.md),
+[`save`](save.md)
 <br>
-<i class="far fa-map"></i>
-[Working with sym files](../wp/symfiles.md#qens)
+:fontawesome-solid-graduation-cap:
+[Enumerating varchar columns in a table](../kb/splayed-tables.md#enumerating-varchar-columns-in-a-table)
+<br>
+:fontawesome-solid-database:
+[Splayed tables](../kb/splayed-tables.md)
+<br>
+:fontawesome-regular-map:
+[Data-management techniques](../wp/data-management.md)
+<br>
+:fontawesome-regular-map:
+[Working with sym files](../wp/symfiles.md#qen)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§14.2.8 Working with sym files](/q4m3/14_Introduction_to_Kdb%2B/#1428-working-with-sym-files)
+
 
 
 ## `.Q.f` (format)
 
-Syntax: `.Q.f[x;y]`
+```syntax
+.Q.f[x;y]
+```
 
 Where
 
@@ -526,7 +570,9 @@ q)10 xlog 0Wj-1
 
 ## `.Q.fc` (parallel on cut)
 
-Syntax: `.Q.fc[x;y]`
+```syntax
+.Q.fc[x;y]
+```
 
 Where
 
@@ -555,7 +601,9 @@ q)\t f peach vec
 
 ## `.Q.ff` (append columns)
 
-Syntax: `.Q.ff[x;y]`
+```syntax
+.Q.ff[x;y]
+```
 
 Where
 
@@ -600,14 +648,18 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 
 ## `.Q.fk` (foreign key)
 
-Syntax: `.Q.fk x`
+```syntax
+.Q.fk x
+```
 
 Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.(Since V2.4t)
 
 
 ## `.Q.fmt` (format)
 
-Syntax: `.q.fmt[x;y;z]`
+```syntax
+.q.fmt[x;y;z]
+```
 
 Where
 
@@ -622,8 +674,7 @@ q).Q.fmt[6;2]each 1 234
 "234.00"
 ```
 
-Q) Is it possible to format the decimal data in a column to 2 decimal places?
-A) Yes, through changing it to string
+To format the decimal data in a column to 2 decimal places, change it to string.
 
 ```q
 q)fix:{.Q.fmt'[x+1+count each string floor y;x;y]}
@@ -634,7 +685,7 @@ q)fix[2]1.2 123 1.23445 -1234578.5522
 "-1234578.55"
 ```
 
-also handy for columns (view in a fixed-width font for proper effect):
+Also handy for columns:
 
 ```q
 q)align:{neg[max count each x]$x}
@@ -645,54 +696,59 @@ q)align fix[2]1.2 123 1.23445 -1234578.5522
 "-1234578.55"
 ```
 
-Q) I have a table with float values. Those values have to be persisted to a file as character strings of length 9, e.g. 34.3 to `"     34.3"`
-I would also like to keep as much precision as possible, i.e. 343434.3576 should be persisted as `"343434.36"`
-What is the best way of doing that?
-
-A)
+Example: persist a table with float values to file as character strings of length 9, e.g. 34.3 to 
+```q
+"     34.3"
+```
+Keep as much precision as possible, i.e. persist 343434.3576 as `"343434.36"`.
 
 ```q
 q)fmt:{.Q.fmt[x;(count 2_string y-i)&x-1+count string i:"i"$y]y}
 q)fmt[9] each 34.4 343434.358
-
 "     34.4"
 "343434.36"
 ```
 
 
-<!-- FIXME
-## `.Q.fpn` (streaming algorithm?)
-
-Syntax:
-
-Blah blah blah
-
-<i class="far fa-graduation-cap"></i>
-[Named Pipes](../kb/named-pipes.md)
- -->
-
+## `.Q.fpn` (streaming algorithm)
 ## `.Q.fps` (streaming algorithm)
 
-Syntax: `.Q.fps[x;y]`
+_`.Q.fs` for pipes_
 
-`.Q.fs` for pipes. (Since V3.4)
+```syntax
+.Q.fps[x;y]
+.Q.fpn[x;y;z]
+```
 
-Reads conveniently sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
+(Since V3.4)
 
-<i class="fas fa-graduation-cap"></i>
+Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk kdb+ database without holding the data in memory all at once.
+
+:fontawesome-solid-graduation-cap:
 [Named Pipes](../kb/named-pipes.md)
+
+!!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
 
 ## `.Q.fs` (streaming algorithm)
+## `.Q.fsn` (streaming algorithm)
 
-Syntax: `.Q.fs[x;y]`
+```syntax
+.Q.fs[x;y]
+.Q.fsn[x;y;z]
+```
 
 Where
 
 -   `x` is a unary value
 -   `y` is a filepath
+-   `z` is an integer
 
-loops through `y` (grabbing conveniently sized lumps of complete `"\n"`-delimited records) and applies `x` to each record. This enables you to implement a streaming algorithm to load a large CSV file into an on-disk database without holding the data in memory all at once.
+loops over file `y`, grabs `z`-sized lumps of complete `"\n"` delimited records, applies `x` to each record, and returns the size of the file as given by [`hcount`](hcount.md). This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk database without holding the data in memory all at once.
+
+`.Q.fsn` is almost identical to `.Q.fs` but takes an extra argument `z`, the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and RAM usage.
+
+!!! tip "`.Q.fs` is a projection of `.Q.fsn` with the chunk size set to 131000 bytes."
 
 For example, assume that the file `potamus.csv` contains the following:
 
@@ -717,22 +773,15 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 120
 ```
 
-<i class="fas fa-graduation-cap"></i>
-[Loading large CSV files](../kb/loading-from-large-files.md)
-
-
-## `.Q.fsn` (streaming algorithm)
-
-Syntax: `.Q.fsn[x;y;z]`
-
-Loops over a file and grabs `z`-sized lumps of complete `"\n"` delimited records and applies a function to each record. This enables you to implement a streaming algorithm to convert a large CSV file into an on-disk database without holding the data in memory all at once.
-
-`.Q.fsn` is almost identical to `.Q.fs` but it takes an extra argument: `z` is the size in bytes that chunks will be read in. This is particularly useful for balancing load speed and ram usage. `.Q.fs` is in fact a projection of `.Q.fsn` with the size set to 131000 bytes by default.
+:fontawesome-solid-graduation-cap:
+[Loading from large files](../kb/loading-from-large-files.md)
 
 
 ## `.Q.ft` (apply simple)
 
-Syntax: `.Q.ft[x;y]`
+```syntax
+.Q.ft[x;y]
+```
 
 Where
 
@@ -780,42 +829,44 @@ s4| clark 20     london
 
 ## `.Q.fu` (apply unique)
 
-Syntax: `.Q.fu[x;y]`
+```syntax
+.Q.fu[x;y]
+```
 
-Where
+Where `x` is a unary function and `y` is
 
--   `x` is a unary atomic function
--   `y` is a list
-
-returns `x[y]` after evaluating `x` only on distinct items of `y`.
+-   a list, returns `x[y]` after evaluating `x` only on distinct items of `y`
+-   not a list, returns `x[y]`
 
 ```q
-q)n: 100000; vec: n ? 30 / long vectors with few different values
-q)f:{[x] exp (x*x)} / e raised to x*x
-q)\t y: f each vec / returns 270 (milliseconds)
-q)\t y2: .Q.fu[f] vec / returns 10 (milliseconds)
-q)y ~ y2 / returns 1b, the outputs are equal
+q)vec:100000 ? 30     / long vector with few different values
+q)f:{exp x*x}         / e raised to x*x
+q)\t:1000 r1:f vec
+745
+q)\t:1000 r2:.Q.fu[f;vec]
+271
+q)r1~r2
+1b
 ```
+
+!!! warning "Not suitable for all unary functions"
+
+    `.Q.fu` applies `x` to the distinct items of `y`.
+    Where for any index `i`, the result of `x y i` depends on no other item of `y`, then `.Q.fu` works as intended. Where this is not so, the result is unlikely to be expected or useful.
+
+    To explore this, study `.Q.fu[avg;] (4 3#12?100)10?4`.
 
 
 ## `.Q.gc` (garbage collect)
 
-Syntax: `.Q.gc[]`
+```syntax
+.Q.gc[]
+```
 
 Returns the amount of memory that was returned to the OS.
-(Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in slave threads since V2.7 2011.09.21)
+<!-- (Since V2.7 2010.08.05, enhanced with coalesce in V2.7 2011.09.15, and executes in secondary threads since V2.7 2011.09.21) -->
 
-!!! detail "How it works"
-
-    Kdb+ uses reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation).
-    The chosen buddy algorithm dices bucket sizes according to powers of 2, and the heap expands in powers of 64MB.
-
-    Reference counting means there is never any garbage (so `.Q.gc` is not accurately named) and memory is returned to the heap as soon as it is no longer referenced; if that memory is a vector using >=64MB it may be returned immediately to the OS depending on the command-line option `-g`.
-    `.Q.gc` attempts to coalesce diced blocks into their original 64MB block, and then returns blocks >=64MB to the OS.
-
-    Coalescing is always deferred, i.e. can only be triggered by a call to `.Q.gc`.
-    When slave threads are used, `.Q.gc` in the main thread also executes `.Q.gc` in the slave threads.
-    `.Q.gc` can take several seconds to execute on large memory systems that have a fragmented heap, and hence is not recommended for frequent use in a time-critical path of code. Consider running with the command-line option `-g 1`, which will return larger blocks of memory to the OS without trying to coalesce the smaller blocks.
+!!! detail "How it works: reference counting and [buddy memory allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)"
 
 ```q
 q)a:til 10000000
@@ -893,19 +944,51 @@ syms| 570
 symw| 24964
 ```
 
-So if you have many nested data, e.g. columns of char vectors, or an awful lot of grouping you may be fragmenting memory quite heavily.
+So if you have many nested data, e.g. columns of char vectors, or much grouping, you may be fragmenting memory quite heavily.
+
+
+## `.Q.gz` (GZip)
+
+```syntax
+.Q.gz[::]           / zlib loaded?
+.Q.gz cbv           / unzipped
+.Q.gz (cl;cbv)      / zipped
+```
+
+Where
+
+-   `cbv` is a char or byte vector
+-   `cl` is compression level \[1-9\] as a long
+
+returns, for
+
+-   the [general null](identity.md#null), a boolean atom as whether Zlib is loaded
+-   `cbv`, the inflated (unzipped) vector
+-   a 2-list, the deflated (zipped) vector
+
+since V4.0 2020.04.16.
+
+```q
+q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
+66
+"helloworldhelloworldhelloworldhelloworldhelloworldhelloworldhelloworldhellow..
+```
 
 
 ## `.Q.hdpf` (save tables)
 
-Syntax: ``.Q.hdpf[historicalport;directory;partition;`p#field]``
+```syntax
+.Q.hdpf[historicalport;directory;partition;`p#field]
+```
 
 Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message to HDB.
 
 
 ## `.Q.hg` (HTTP get)
 
-Syntax: `.Q.hg x`
+```syntax
+.Q.hg x
+```
 
 Where `x` is a URL as a symbol atom or (since V3.6 2018.02.10) a string, returns as a list of strings the result of an HTTP[S] GET query.
 (Since V3.4)
@@ -946,7 +1029,9 @@ Since V3.6 uses built-in btoa for Basic Authentication, e.g.
  -->
 ## `.Q.host` (hostname)
 
-Syntax: `.Q.host x`
+```syntax
+.Q.host x
+```
 
 Where `x` is an IP address as an int atom, returns its hostname as a symbol atom.
 
@@ -964,16 +1049,18 @@ q).Q.addr `netbox.com
 1753385751i
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.addr`](#qaddr-ip-address)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Tok](tok.md)
 
 
 ## `.Q.hp` (HTTP post)
 
-Syntax: `.Q.hp[x;y;z]`
+```syntax
+.Q.hp[x;y;z]
+```
 
 Where
 
@@ -992,32 +1079,36 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 
 ## `.Q.id` (sanitize)
 
-Syntax: `.Q.id x`
+```syntax
+.Q.id x
+```
 
 Where `x` is
 
 - a **symbol atom**, returns `x` with items sanitized to valid q names
 
-    <pre><code class="language-q">
-    q).Q.id each \`\$("ab";"a/b";"two words";"2drifters";"2+2")
-    \`ab\`ab\`twowords\`a2drifters\`a22
-    </code></pre>
+    ```q
+    q).Q.id each `$("ab";"a/b";"two words";"2drifters";"2+2")
+    `ab`ab`twowords`a2drifters`a22
+    ```
 
 - a **table**, returns `x` with column names sanitized by removing characters that interfere with `select/exec/update` and adding `"1"` to column names which clash with commands in the `.q` namespace. (Updated in V3.2 to include `.Q.res` for checking collisions.)
 
-    <pre><code class="language-q">
+    ```q
     q).Q.id flip (5#.Q.res)!(5#())
     in1 within1 like1 bin1 binr1
-    \----------------------------
+    ----------------------------
     q).Q.id flip(\`\$("a";"a/b"))!2#()
     a ab
-    \----
-    </code></pre>
+    ----
+    ```
 
 
 ## `.Q.ind` (partitioned index)
 
-Syntax: `.Q.ind[x;y]`
+```syntax
+.Q.ind[x;y]
+```
 
 Where
 
@@ -1032,7 +1123,7 @@ When picking individual records from an in-memory table you can simply use the s
 select from table where i<100
 ```
 
-But you can’t do that directly for a partitioned table.
+But you cannot do that directly for a partitioned table.
 
 `.Q.ind` comes to the rescue here, it takes a table and indexes into the table – and returns the appropriate rows.
 
@@ -1055,9 +1146,9 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 
     If you are selecting a continuous row interval, for example if iterating over all rows in a partition, instead of using `.Q.ind` you might as well use
 
-    <pre><code class="language-q">
+    ```q
     q)select from trade where date=2010.01.07,i within(start;start+chunkSize)
-    </code></pre>
+    ````
 
 
 ## `.Q.j10` (encode binhex)
@@ -1065,16 +1156,15 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
 ## `.Q.j12` (encode base-36)
 ## `.Q.x12` (decode base-36)
 
-Syntax:
-<pre markdown="1" class="language-txt">
+```syntax
 .Q.j10 s     .Q.j12 s
 .Q.x10 s     .Q.x12 s
-</pre>
+```
 
 Where `s` is a string, these functions return `s` encoded (`j10`, `j12`) or decoded (`x10`, `x12`) against restricted alphabets:
 
--   `j10` encodes against the alphabet `.Q.b6`, this is a base-64 encoding - see [BinHex](https://en.wikipedia.org/wiki/BinHex) and [Base64](https://en.wikipedia.org/wiki/Base64) for more details than you ever want to know about which characters are where in the encoding. To keep the resulting number an integer the maximum length of `s` is 10.
--   `j12` encodes against `.Q.nA`, a base-36 encoding. As the alphabet is smaller `s` can be longer – maximum length 12.
+-   `…10` en/decodes against the alphabet `.Q.b6`, this is a base-64 encoding - see [BinHex](https://en.wikipedia.org/wiki/BinHex) and [Base64](https://en.wikipedia.org/wiki/Base64) for more details than you ever want to know about which characters are where in the encoding. To keep the resulting number an integer the maximum length of `s` is 10.
+-   `-12` en/decodes against `.Q.nA`, a base-36 encoding. As the alphabet is smaller `s` can be longer – maximum length 12.
 
 The main use of these functions is to encode long alphanumeric identifiers (CUSIP, ORDERID..) so they can be quickly searched – but without filling up the symbol table with vast numbers of single-use values.
 
@@ -1099,24 +1189,42 @@ q).Q.j12 .Q.x12 12345
 
 
 
+## `.Q.K` (version date)
 ## `.Q.k` (version)
 
-Syntax: `.Q.k`
+```syntax
+.Q.K      / version date
+.Q.k      / version
+```
 
-Returns the interpreter version number for which `q.k` has been written:
+Return the interpreter version date (`.Q.K`) and number (`.Q.k`) for which `q.k` has been written:
 checked against [`.z.K`](dotz.md#zk-version) at startup.
+
+```q
+q).Q.K
+2020.10.02
+q).Q.k
+4f
+```
 
 
 ## `.Q.l` (load)
 
-Syntax: ==FIXME==
+```syntax
+.Q.l x
+```
 
-Implements [`\l`](../basics/syscmds.md#l-load-file-or-directory).
+Where `x` is a symbol atom naming a directory in the current directory, loads
+it recursively as in [`load`](load.md), but into the default namespace.
+
+(Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
 
 
 ## `.Q.M` (long infinity)
 
-Syntax: `.Q.M`
+```syntax
+.Q.M
+```
 
 Returns long integer infinity.
 
@@ -1128,9 +1236,12 @@ q)0Wj~.Q.M
 
 ## `.Q.MAP` (maps partitions)
 
-Syntax: `.Q.MAP[]`
+```syntax
+.Q.MAP[]
+```
 
-Added in V3.1, keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
+Keeps partitions mapped to avoid the overhead of repeated file system calls during a `select`.
+(Since V3.1.)
 
 For use with partitioned HDBS, used in tandem with `\l dir`
 
@@ -1139,32 +1250,71 @@ q)\l .
 q).Q.MAP[]
 ```
 
+<!-- 
 When using `.Q.MAP[]` you can’t access the date column outside of the usual:
 
 ```q
 select … [by date,…] from … where [date …]
 ```
-
+ -->
 NOT recommended for use with compressed files, as the decompressed maps will be retained, using physical memory|swap.
 
-!!! note "File handles and maps"
+??? detail "You may need to increase the number of available file handles, and also the number of available file maps"
 
-    You may need to increase the number of available file handles, and also the number of available file maps. For Linux see `vm.max_map_count`.
+    For Linux see `vm.max_map_count`.
+
+
+## `.Q.n` (nums)
+## `.Q.nA` (alphanums)
+
+```syntax
+.Q.n
+.Q.nA
+```
+
+Strings: numerics (`.Q.n`) and upper-case alphabet and numerics (`.Q.nA`).
+
+```q
+q).Q.n
+"0123456789"
+q).Q.nA
+"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+```
+
+`.Q.nA` is used for [base-36](#qj12-encode-base-36) encoding and decoding.
 
 
 ## `.Q.opt` (command parameters)
 
-Syntax: `.Q.opt .z.x`
+```syntax
+.Q.opt .z.x
+```
 
 Returns a dictionary, so you can easily see if a key was defined (flag set or not) or, if a value is passed, to refer to it by its key.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
+
+
+## `.Q.P` (segments)
+
+```syntax
+Q.P
+```
+
+In segmented DBs, returns a list of the segments (i.e. the contents of `par.txt`).
+
+```q
+q).Q.P
+`:../segments/1`:../segments/2`:../segments/3`:../segments/4
+```
 
 
 ## `.Q.par` (locate partition)
 
-Syntax: `.Q.par[dir;part;table]`
+```syntax
+.Q.par[dir;part;table]
+```
 
 Where
 
@@ -1186,16 +1336,46 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 ```
 
 
+## `.Q.PD` (partition locations)
+
+```syntax
+.Q.PD
+```
+
+In partitioned DBs, a list of partition locations – conformant to `.Q.PV` – which represents the partition location for each partition.
+(In non-segmented DBs, this will be simply ``count[.Q.PV]#`:.``.)
+`.Q.PV!.Q.PD` can be used to create a dictionary of partition-to-location information.
+
+```q
+q).Q.PV
+2010.05.26 2010.05.27 2010.05.28 2010.05.29 2010.05.30 2010.05.30 2010.05.31
+q).Q.PD
+`:../segments/1`:../segments/2`:../segments/3`:../segments/4`:../segments/3`:../segments/4`:../segments/1
+q).Q.PV!.Q.PD
+2010.05.26| :../segments/1
+2010.05.27| :../segments/2
+2010.05.28| :../segments/3
+2010.05.29| :../segments/4
+2010.05.30| :../segments/3
+2010.05.30| :../segments/4
+2010.05.31| :../segments/1
+```
+
+
 ## `.Q.pd` (modified partition locations)
 
-Syntax: `.Q.pd`
+```syntax
+.Q.pd
+```
 
 In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
 
 
 ## `.Q.pf` (partition field)
 
-Syntax: `.Q.pf`
+```syntax
+.Q.pf
+```
 
 In partitioned DBs, the partition field.
 Possible values are `` `date`month`year`int``.
@@ -1203,7 +1383,9 @@ Possible values are `` `date`month`year`int``.
 
 ## `.Q.pn` (partition counts)
 
-Syntax: `.Q.pn`
+```syntax
+.Q.pn
+```
 
 In partitioned DBs, returns a dictionary of cached partition counts – conformant to `.Q.pt`, each conformant to `.Q.pv` – as populated by `.Q.cn`.
 Cleared by `.Q.view`.
@@ -1244,10 +1426,15 @@ q).Q.pv!flip .Q.pn
 2010.01.02| 100
 ```
 
+:fontawesome-solid-graduation-cap:
+[Table counts](../kb/partition.md#table-counts)
+
 
 ## `.Q.prf0` (code profiler)
 
-Syntax: `.Q.prf0 pid`
+```syntax
+.Q.prf0 pid
+```
 
 Where `pid` is a process ID, returns a table representing a snapshot of the call stack at the time of the call in another kdb+ process `pid`, with columns
 
@@ -1262,64 +1449,40 @@ pos    execution position (caret) within text
 
 This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Code profiler](../kb/profiler.md)
 
 
 
 ## `.Q.pt` (partitioned tables)
 
-Syntax: `.Q.pt`
+```syntax
+.Q.pt
+```
 
 Returns a list of partitioned tables.
 
 
 ## `.Q.pv` (modified partition values)
 
-Syntax: `.Q.pv`
+```syntax
+.Q.pv
+```
+
+A list of the values of the partition domain: the values corresponding to the slice directories actually found in the root.
 
 In partitioned DBs, `.Q.PV` as modified by `.Q.view`.
 
-
-## `.Q.P` (segments)
-
-Syntax: `Q.P`
-
-In segmented DBs, returns a list of the segments (i.e. the contents of `par.txt`).
-
-```q
-q).Q.P
-`:../segments/1`:../segments/2`:../segments/3`:../segments/4
-```
-
-
-## `.Q.PD` (partition locations)
-
-Syntax: `.Q.PD`
-
-In partitioned DBs, a list of partition locations – conformant to `.Q.PV` – which represents the partition location for each partition.
-(In non-segmented DBs, this will be simply ``count[.Q.PV]#`:.``.)
-`.Q.PV!.Q.PD` can be used to create a dictionary of partition-to-location information.
-
-```q
-q).Q.PV
-2010.05.26 2010.05.27 2010.05.28 2010.05.29 2010.05.30 2010.05.30 2010.05.31
-q).Q.PD
-`:../segments/1`:../segments/2`:../segments/3`:../segments/4`:../segments/3`:../segments/4`:../segments/1
-q).Q.PV!.Q.PD
-2010.05.26| :../segments/1
-2010.05.27| :../segments/2
-2010.05.28| :../segments/3
-2010.05.29| :../segments/4
-2010.05.30| :../segments/3
-2010.05.30| :../segments/4
-2010.05.31| :../segments/1
-```
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§14.5.3 `.Q.pv`](/q4m3/14_Introduction_to_Kdb%2B/#1453-qpv)
 
 
 ## `.Q.PV` (partition values)
 
-Syntax: `.Q.PV`
+```syntax
+.Q.PV
+```
 
 In partitioned DBs, returns a list of partition values – conformant to `.Q.PD` – which represents the partition value for each partition.
 (In a date-partitioned DB, unless the date has been modified by `.Q.view`, this will be simply date.)
@@ -1341,7 +1504,9 @@ q).Q.PV
 
 ## `.Q.qp` (is partitioned)
 
-Syntax: `.Q.qp x`
+```syntax
+.Q.qp x
+```
 
 Where `x`
 
@@ -1367,14 +1532,18 @@ q).Q.qp C
 
 ## `.Q.qt` (is table)
 
-Syntax: `.Q.qt x`
+```syntax
+.Q.qt x
+```
 
 Where `x` is a table, returns `1b`, else `0b`.
 
 
 ## `.Q.res` (keywords)
 
-Syntax: `.Q.res`
+```syntax
+.Q.res
+```
 
 Returns the control words and keywords as a symbol vector. ``key `.q`` returns the functions defined to extend k to the q language. Hence to get the full list of reserved words for the current version:
 
@@ -1383,13 +1552,15 @@ q).Q.res,key`.q
 `abs`acos`asin`atan`avg`bin`binr`cor`cos`cov`delete`dev`div`do`enlist`exec`ex..
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.id`](#qid-sanitize)
 
 
 ## `.Q.s` (plain text)
 
-Syntax: `.Q.s x`
+```syntax
+.Q.s x
+```
 
 Returns `x` formatted to plain text, as used by the console. Obeys console width and height set by [`\c`](../basics/syscmds.md#c-console-size).
 
@@ -1403,42 +1574,69 @@ Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
 
 ## `.Q.s1` (string representation)
 
-Syntax: `.Q.s1 x`
+```syntax
+.Q.s1 x
+```
 
 Returns a string representation of `x`.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`show`](show.md),
 [`string`](string.md)
 
 
 ## `.Q.sbt` (string backtrace)
 
-Syntax: `.Q.sbt x`
+```syntax
+.Q.sbt x
+```
 
 Where `x` is a [backtrace object](#qtrp-extend-trap) returns it as a string formatted for display.
 
 Since V3.5 2017.03.15.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
 
 
 ## `.Q.sha1` (SHA-1 encode)
 
-Syntax: `.Q.sha1 x`
+```syntax
+.Q.sha1 x
+```
+
+Where `x` is a string, returns as a bytestream its SHA-1 hash.
 
 ```q
-q).Q.sha1"Hello World!"
+q).Q.fc"Hello World!"
 0x2ef7bde608ce5404e97d5f042f95f89f1c232871
 ```
 
 Since V3.6 2018.05.18.
 
 
+## `.Q.t` (type letters)
+
+```syntax
+.Q.t
+```
+
+List of chars indexed by datatype numbers.
+
+```q
+q).Q.t
+" bg xhijefcspmdznuvts"
+q).Q.t?"j"  / longs have datatype 7
+7
+```
+
+
+
 ## `.Q.trp` (extend trap)
 
-Syntax: `.Q.trp[f;x;g]`
+```syntax
+.Q.trp[f;x;g]
+```
 
 Where
 
@@ -1500,7 +1698,7 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 
 Since V3.5 2017.03.15.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
 
 
@@ -1508,7 +1706,9 @@ Since V3.5 2017.03.15.
 
 _Apply, with time and space_
 
-Syntax: `.Q.ts[x;y]`
+```syntax
+.Q.ts[x;y]
+```
 
 Where `x` and `y` are valid arguments to [Apply](apply.md) returns a 2-item list:
 
@@ -1532,7 +1732,9 @@ Since V3.6 2018.05.18.
 
 ## `.Q.ty` (type)
 
-Syntax: `.Q.ty x`
+```syntax
+.Q.ty x
+```
 
 Where `x` is a list, returns the type of `x` as a character code:
 
@@ -1554,23 +1756,42 @@ q).Q.ty each t`a`b`c`d`e
 
 !!! tip "`.Q.ty` is a helper function for `meta`"
 
-    If the argument is a table column, returns upper case for mappable/uniform lists of vectors. 
+    If the argument is a table column, returns upper case for mappable/uniform lists of vectors.
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`meta`](meta.md)
 
 
 ## `.Q.u` (date based)
 
-Syntax: `.Q.u`
+```syntax
+.Q.u
+```
 
 -   In segmented DBs, returns `1b` if each partition is uniquely found in one segment. (E.g., true if segmenting is date-based, false if name-based.)
 -   In partitioned DBs, returns `1b`.
 
 
+## `.Q.V` (table to dict)
+
+```syntax
+.Q.V x
+```
+
+Where `x` is
+
+-   a table, returns a dictionary of its column values.
+-   a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
+
+:fontawesome-solid-book:
+[`meta`](meta.md)
+
+
 ## `.Q.v` (value)
 
-Syntax: `.Q.v x`
+```syntax
+.Q.v x
+```
 
 Where `x` is
 
@@ -1579,22 +1800,11 @@ Where `x` is
 -   anything else, returns `x`
 
 
-## `.Q.V` (table to dict)
-
-Syntax: `.Q.V x`
-
-Where `x` is
-
--   a table, returns a dictionary of its column values.
--   a partitioned table, returns only the last partition (N.B. the partition field values themselves are not restricted to the last partition but include the whole range).
-
-<i class="fas fa-book"></i>
-[`meta`](meta.md)
-
-
 ## `.Q.view` (subview)
 
-Syntax: `.Q.view x`
+```syntax
+.Q.view x
+```
 
 Where `x` is a list of partition values that serves as a filter for all queries against any partitioned table in the database, `x` is added as a constraint in the first sub-phrase of the where-clause of every query.
 
@@ -1604,13 +1814,16 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 .Q.view 2#date
 ```
 
-<i class="far fa-hand-point-right"></i>
-_Q for Mortals_: [§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
+:fontawesome-solid-hand-point-right:
+_Q for Mortals_
+[§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 
 ## `.Q.vp` (missing partitions)
 
-Syntax: `.Q.vp`
+```syntax
+.Q.vp
+```
 
 In partitioned DBs, returns a dictionary of table schemas for tables with missing partitions, as populated by `.Q.bv`.
 (Since V3.0 2012.01.26.)
@@ -1637,7 +1850,9 @@ q)@[get;"select from tt";-2@]; / no error
 
 ## `.Q.w` (memory stats)
 
-Syntax: `.Q.w[]`
+```syntax
+.Q.w[]
+```
 
 Returns the memory stats from [`\w`](../basics/syscmds.md#w-workspace) into a more readable dictionary.
 
@@ -1653,16 +1868,38 @@ syms| 577
 symw| 25436
 ```
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Command-line parameter `-w`](../basics/cmdline.md#-w-workspace)
 <br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [System command `\w`](../basics/syscmds.md#w-workspace)
+
+
+## `.Q.Xf` (create file)
+
+```syntax
+.Q.Xf[x;y]
+```
+
+Where
+
+-   `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``)
+-   `y` is a filepath
+
+creates an empty nested-vector file at `y`.
+
+```q
+q).Q.Xf["C";`:emptyNestedCharVector];
+q)type get`:emptyNestedCharVector
+87h
+```
 
 
 ## `.Q.x` (non-command parameters)
 
-Syntax: `.Q.x`
+```syntax
+.Q.x
+```
 
 Set by `.Q.opt`: a list of _non-command_ parameters from the command line, where _command parameters_ are prefixed by `-`.
 
@@ -1678,26 +1915,8 @@ q).Q.x
 "path/to/destn"
 ```
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv),
 [`.z.X`](dotz.md#zx-raw-command-line)
-
-
-## `.Q.Xf` (create file)
-
-Syntax: `.Q.Xf[x;y]`
-
-Where
-
--   `x` is a mapped nested datatype as either an upper-case char atom, or as a short symbol (e.g. `` `char``)
--   `y` is a filepath
-
-creates an empty nested-vector file at `y`.
-
-```q
-q).Q.Xf["C";`:emptyNestedCharVector];
-q)type get`:emptyNestedCharVector
-87h
-```
 
 

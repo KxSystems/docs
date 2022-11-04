@@ -1,5 +1,5 @@
 ---
-title: Match – Reference – kdb+ and q documentation
+title: Match | Reference | kdb+ and q documentation
 description: Match is a q operator that flags whether its arguments have the same value.
 author: Stephen Taylor
 keywords: compare, kdb+, q, value
@@ -9,7 +9,9 @@ keywords: compare, kdb+, q, value
 
 
 
-Syntax: `x ~ y` 
+```syntax
+x~y    ~[x;y]
+``` 
 
 Returns `0b` unless `x` and `y` are identical. [Comparison tolerance](../basics/precision.md#comparison-tolerance) is used when matching floats. 
 
@@ -66,4 +68,12 @@ q)t1~t2
 1b
 ```
 
-<i class="far fa-hand-point-right"></i> Basics: [Comparison](../basics/comparison.md)
+---
+:fontawesome-solid-book: 
+[Equal `=`](equal.md), [Not Equal `<>`](not-equal.md)
+<br>
+:fontawesome-solid-book-open: 
+[Comparison](../basics/comparison.md)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_: [§4.2 Match](/q4m3/4_Operators/#42-match)

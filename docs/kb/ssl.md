@@ -15,14 +15,47 @@ V3.4t 2016.05.12 can use Secure Sockets Layer (SSL)/Transport Layer Security (TL
 
 Ensure that your OS has the latest OpenSSL libraries installed, and that they are in your `LD_LIBRARY_PATH` (Unix), or `PATH` (Windows).
 
-Kdb+ loads the following files
+### Versioned libraries
 
--   Windows: `ssleay32.dll`, `libeay32.dll`
--   macOS: `libssl.dylib`
--   Linux, Solaris: `libssl.so`
+Beginning with v4.1t 2022.03.25, Kdb+ will try to load versioned shared libraries for OpenSSL.
+It will load the first library that it can locate from the lists below:
 
-The Windows build was tested with the precompiled libs (Win32 OpenSSL v1.0.2h Light, Win64 OpenSSL v1.0.2h Light) from <https://slproweb.com/products/Win32OpenSSL.html>
+=== ":fontawesome-brands-linux: Linux"
 
+    `libssl.so libssl.so.3 libssl.1.1 libssl.so.1.0 libssl.so.10 libssl.so.1.0.2 libssl.so.1.0.1 libssl.1.0.0`
+
+=== ":fontawesome-brands-apple: macOS"
+
+    `libssl.3.dylib libssl.1.1.dylib`
+
+=== ":fontawesome-brands-windows: Windows"
+
+    both `libssl` and `libcrypto` are loaded, the library names in priority order are
+
+    |  | libssl | libcrypto |
+    | ------- | ------ | ------ |
+    | `w64` | `libssl-3-x64.dll`<br>`libssl-1_1-x64.dll` | `libcrypto-3-x64.dll`<br>`libcrypto-1_1.dll` |
+    | `w32` | `libssl-3.dll`<br>`libssl-1_1.dll` | `libcrypto-3.dll`<br>`libcrypto-1_1.dll` |
+
+
+The Windows build was tested with the pre-compiled libs [Win32 OpenSSL v1.1.1L Light, Win64 OpenSSL v1.1.1L Light](https://slproweb.com/products/Win32OpenSSL.html).
+
+Prior to V4.1t 2022.03.25, kdb+ would load the following files:
+
+=== ":fontawesome-brands-linux: Linux, Solaris"
+
+    `libssl.so`
+
+=== ":fontawesome-brands-apple: macOS" 
+
+    `libssl.dylib`
+
+=== ":fontawesome-brands-windows: Windows"
+    
+    ```txt
+    libssl-1_1-x64.dll   libcrypto-1_1-x64.dll    w64 build
+    libssl-1_1.dll       libcrypto-1_1.dll        w32 build
+    ```
 
 ## Certificates
 
@@ -40,7 +73,7 @@ $ export SSL_CERT_FILE=$HOME/certs/server-crt.pem
 $ export SSL_KEY_FILE=$HOME/certs/server-key.pem
 ```
 
-!!! info "Kx first"
+!!! info "KX first"
 
     Since V3.6, kdb+ gives preference to the `KX_` prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products. 
 
@@ -76,6 +109,9 @@ openssl rsa -in client-key.pem -out client-key.pem
 openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem \
     -set_serial 01 -out client-crt.pem -extensions usr_cert
 ```
+
+:fontawesome-brands-github:
+[mkcert](https://github.com/FiloSottile/mkcert) is a simple tool for making locally-trusted development certificates.
 
 !!! warning "Secure your certificates"
 
@@ -173,7 +209,7 @@ $ export SSL_VERIFY_SERVER=NO
 To allow verification of certificates which were not issued by you, you can import the CA bundle from reputable sources, e.g.
 
 ```bash
-$ curl https://curl.haxx.se/ca/cacert.pem > $HOME/certs/cabundle.pem
+$ curl https://curl.se/ca/cacert.pem > $HOME/certs/cabundle.pem
 $ export SSL_CA_CERT_FILE=$HOME/certs/cabundle.pem
 ```
 
@@ -209,12 +245,12 @@ q)\open howsmyssl.html
 
 ## Suitability and restrictions
 
-Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is ~1.5× assuming your OpenSSL library can utilize AES-NI.
+Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is \~1.5× assuming your OpenSSL library can utilize AES-NI.
 
 The following associated features are not yet implemented for TLS:
 
 1.   multithreaded input mode
-1.   use within slave threads
+1.   use within secondary threads
 1.   `hopen` timeout (implemented in V3.5)
 
 OpenSSL 1.1 is supported since V4.0 2020.03.17.

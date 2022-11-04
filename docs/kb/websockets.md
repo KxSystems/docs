@@ -3,7 +3,7 @@ title: WebSockets – Knowledge Base – kdb+ and q documentation
 description: How to work with WebSockets in q
 keywords: browser, json, kdb+, q, websockets
 ---
-# WebSockets
+# :fontawesome-solid-handshake: WebSockets
 
 
 
@@ -12,14 +12,15 @@ keywords: browser, json, kdb+, q, websockets
 
 [V3.0](../releases/ChangesIn3.0.md) supports the WebSocket protocol.
 
-To get your browser and kdb+ talking on a WebSocket, start a q session listening on port 5000:
+To get your browser and kdb+ talking on a WebSocket, start a q session listening on port 5000, and set its WebSocket handler `.z.ws` to echo whatever it receives.
 
-```bash
-q -p 5000
+```q
+q)\p 5000
+q).z.ws:{neg[.z.w] x}
 ```
 
 Download 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/ws.htm](https://github.com/KxSystems/cookbook/blob/master/ws.htm), 
 a simple WebSocket client, and open it in a WebSocket-capable browser. You should see something like this:
 
@@ -32,7 +33,7 @@ Now click _connect_ and type e.g. `4+til 3` in the edit box. Hit Enter or click 
 
 ### How it works
 
-Kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The default behaviour is `{neg[.z.w]x}`, which echoes the message back to the client – so kdb+ is an echoing WebSocket server when you start it listening.
+Kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The handler `{neg[.z.w]x}` echoes the message back to the client.
 
 
 ## Doing something useful
@@ -54,7 +55,7 @@ To enable error reporting, try:
 ```
 
 
-## c.js (no AJAX required)
+## `c.js` (no AJAX required)
 
 `c.js` provides functions `serialize` and `deserialize` to simplify IPC between the browser and a kdb+ server. An example, `wslogin.htm` shows how to send a JavaScript dictionary to kdb+. It receives an echo of the dictionary and turns it back into a JavaScript dictionary.
 
@@ -74,16 +75,16 @@ Note that the above functions for `.z.ws` won't work when using serialize/deseri
 
 This example works, because the default `.z.ws` echoes the byte vector over the WebSocket.
 
-<i class="fas fa-download"></i> Downloads:
+:fontawesome-solid-download: Downloads:
 
--   <i class="fab fa-github"></i> [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
--   <i class="fab fa-github"></i> [KxSystems/cookbook/wslogin.htm](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm)
+-   :fontawesome-brands-github: [KxSystems/kdb/c/c.js](https://github.com/KxSystems/kdb/blob/master/c/c.js)
+-   :fontawesome-brands-github: [KxSystems/cookbook/wslogin.htm](https://github.com/KxSystems/cookbook/blob/master/wslogin.htm)
 
 
 ## JSON
 
 A small utility to parse and generate JSON is shipped in `q.k`. (Since V3.2 2014.08.22.) For prior releases, it can be found at:
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/e/json.k](https://github.com/KxSystems/kdb/blob/master/e/json.k)
 
 After loading `json.k`, example data is in `.j.x`
@@ -217,9 +218,9 @@ Both client and server support permessage-deflate compression.
 
 ## Secure sockets: stunnel
 
-[Stunnel](https://en.wikipedia.org/wiki/Stunnel) <i class="fab fa-wikipedia-w"></i> will provide secure sockets (TLS/SSL) using the OpenSSL library. Stunnel will take any WebSocket server, HTTP server, or similar and secure it – you get `https://` and `wss://` for free.
+[Stunnel](https://en.wikipedia.org/wiki/Stunnel) :fontawesome-brands-wikipedia-w: will provide secure sockets (TLS/SSL) using the OpenSSL library. Stunnel will take any WebSocket server, HTTP server, or similar and secure it – you get `https://` and `wss://` for free.
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [cesanta/ssl_wrapper](https://github.com/cesanta/ssl_wrapper)
 
 
@@ -227,6 +228,13 @@ Both client and server support permessage-deflate compression.
 
 The WebSocket requires that text is UTF-8 encoded. If you try to send invalidly encoded text it will signal `'utf8`.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-book: 
 [Namespace `.h`](../ref/doth.md)
 
+----
+:fontawesome-regular-map:
+[Kdb+ and WebSockets](../wp/websockets/index.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.7.2 Basic WebSockets](/q4m3/11_IO/#1172-basic-websockets)

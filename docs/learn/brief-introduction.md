@@ -3,7 +3,7 @@ title: A brief introduction to q and kdb+ – Learn – kdb+ and q documentation
 description: Kdb+ is a powerful database that can be used for streaming, real-time and historical data. Q is the SQL-like, general-purpose programming language built on top of kdb+. It offers high-performance, in-database analytic capabilities.
 keywords: introduction, kdb+, q, tutorial
 ---
-# A brief introduction to q and kdb+
+# A brief introduction to q and kdb+ for analysts
 
 
 
@@ -11,7 +11,7 @@ keywords: introduction, kdb+, q, tutorial
 
 Kdb+ is a powerful database that can be used for streaming, real-time and historical data. Q is the SQL-like, general-purpose programming language built on top of kdb+. It offers high-performance, in-database analytic capabilities.
 
-<i class="far fa-hand-point-right"></i> [Get started](install/index.md) to download and install kdb+.
+:fontawesome-regular-hand-point-right: [Get started](install.md) to download and install kdb+.
 
 
 ## Launch q
@@ -149,7 +149,7 @@ calls:([]
 computerlookup:([id:key startcpu] dept:n?depts; os:n?`win7`win8`osx`vista)
 ```
 
-<i class="fas fa-download"></i> Download [`calls.q`](assets/calls.q) into your `QHOME` folder, then [load it](../basics/syscmds.md#l-load-file-or-directory):
+:fontawesome-solid-download: Download [`calls.q`](assets/calls.q) into your `QHOME` folder, then [load it](../basics/syscmds.md#l-load-file-or-directory):
 
 ```q
 q)\l calls.q
@@ -438,7 +438,7 @@ time                          id  severity cpu cpu
 
 The linked scripts allow you to build an on-disk database and run some queries against it. The database is randomly-generated utility (smart-meter) data for different customers in different regions and industry sectors, along with some associated payment information. The idea is to allow you to see some of the q language and performance. There is more information in the `README` file. 
 
-<i class="fab fa-github"></i> [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial)
+:fontawesome-brands-github: [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial)
 
 
 ### Building the database
@@ -506,7 +506,7 @@ KDB+ 3.1 2014.05.03 Copyright (C) 1993-2014 Kx Systems
 DATABASE INFO
 -------------
 This database consists of 5 tables.
-It is using 0 slaves.
+It is using 0 secondary processes.
 There are 61 date partitions. 
 ```
 
@@ -578,7 +578,7 @@ Experiment! There are lots of things to try:
 
 -   Run each query several times – does the performance change? (Q doesn’t use explicit caching, it relies on the OS file-system caches.)
 -   Run the queries with different parameters.
--   If you have multiple cores available, restart the database with [slaves](../basics/cmdline.md#-s-slaves). See if some of the query performance changes.
+-   If you have multiple cores available, restart the database with [secondary processes](../basics/cmdline.md#-s-secondary-processes). See if some of the query performance changes.
 -   Rebuild the database and change the number of days of data in the database, and the number of records per day. How is the query performance affected?
 -   Rebuild the database with [compression](../kb/file-compression.md) turned on. How does the size vary? And the performance?
 

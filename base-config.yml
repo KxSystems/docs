@@ -1,0 +1,107 @@
+#################################################
+## Base configuration
+## You may UNCOMMENT lines but not otherwise edit
+#################################################
+copyright: "© 2021 Kx Systems, Inc. KX and kdb+ are registered trademarks of Kx Systems, Inc., a subsidiary of FD Technologies plc."
+
+docs_dir: docs
+
+# extra:
+#   version:
+#     provider: mike
+#   analytics:
+#     provider: google
+#     property: UA-180968370-1
+
+extra_css:
+  - https://code.kx.com/stylesheets/2021.css 
+  - https://code.kx.com/stylesheets/prism.css 
+  - https://code.kx.com/stylesheets/extra.css 
+  - https://code.kx.com/stylesheets/hide-footer-nav.css 
+
+extra_javascript:
+  - https://code.kx.com/scripts/prism.js 
+  - https://code.kx.com/scripts/extra.js
+  # MathJax scripts # MAY BE COMMENTED OUT
+  - https://code.kx.com/scripts/mathjax.js
+  - https://code.kx.com/scripts/polyfill.min.js
+  - https://code.kx.com/scripts/tex-mml-chtml.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - meta
+  # - mkdocs-click
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - custom_theme/.icons
+  - pymdownx.extra
+  - pymdownx.highlight:
+      use_pygments: false
+  - pymdownx.keys
+  # - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+
+plugins:
+  - exclude:
+      glob:
+        - "*.tmp"
+        - "*.pdf"
+        - "*.gz"
+      regex:
+        - '.*\.(tmp|bin|tar)$'
+  # - mkdocstrings
+  - render_swagger
+  - search
+
+site_dir: site
+site_author: 'Kx Systems, Inc., a division of FD Technologies plc.'
+
+theme:
+  custom_dir: custom_theme/
+  favicon: https://code.kx.com/favicon.ico
+  font: false
+  features:
+    - content.code.annotate # Insiders
+    - content.tabs.link # Insiders
+    - header.autohide
+    - navigation.top
+  name: material
+  language: en
+  logo: https://code.kx.com/img/kx.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: kx-light
+      toggle: 
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: 
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+use_directory_urls: true

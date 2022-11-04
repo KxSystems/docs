@@ -1,11 +1,17 @@
 ---
-title: Intraday writedown solutions – White papers – q and kdb+ documentation
+title: Intraday writedown solutions | White papers | q and kdb+ documentation
 description: Compares two methods for dealing with insufficient RAM on a server, when a full day’s worth of data cannot be held in memory. 
 author: Colm McCarthy
 date: March 2014
 keywords: end of day, eod, hdb, intraday, kdb+, partition, performance, q, query speed, rdb, save, tick, write
 ---
+White paper
+{: #wp-brand}
+
 # Intraday writedown solutions
+
+by [Colm McCarthy](#author)
+{: .wp-author}
 
 
 
@@ -27,14 +33,14 @@ Most kdb+ users will be familiar with a vanilla tick setup which has a tickerpla
 
 ![Figure 1](img/figure01.png)
 
-The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realise also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.
+The standard approach above can be limited by available RAM if daily data volumes grow too large. It is important to realize also that extra RAM is required to query the data, on top of what is required to keep it in memory. The extra amount required will vary depending on the different use cases and queries that are run on it. Consideration must also be given to other processes such as chained RDBs or HDBs which will need to share the resources on the server.
 
 One solution is to write down some of the data from the RDB to a temporary directory on disk at different points throughout the day and then delete the data from memory, thus freeing up RAM. Various methods to achieve this will be discussed. Initially, the TP is publishing data asynchronously to the RDB and calling a `upd` function equivalent to the `insert` function.
 
 
 ## `w.q`
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [simongarland/tick](https://github.com/simongarland/tick)
 
 This script can easily be modified to work with any standard kdb+ setup. The important changes begin with the callback function `upd` which no longer simply inserts data into the table.
@@ -133,12 +139,12 @@ Table 1:
 500,000,000   121.485  112.452
 ```
 
-As can be seen, the amount of time taken to sort a simple table like the above is quite large. This may be a serious problem as yesterday’s data may not be queriable for a significant period each morning.
+As can be seen, the amount of time taken to sort a simple table like the above is quite large. This may be a serious problem as yesterday’s data may not be queryable for a significant period each morning.
 
 
 ### Performance
 
-The `w.q` solution was intended more as an effective method to alleviate RAM problems during data capture than to be a queriable process. Since the most recent data will be in-memory and everything else is splayed on disk, any queries for intraday data will have to be run against both tables and be combined. The query against the on-disk splay with no attributes will have a significant impact on query performance.
+The `w.q` solution was intended more as an effective method to alleviate RAM problems during data capture than to be a queryable process. Since the most recent data will be in-memory and everything else is splayed on disk, any queries for intraday data will have to be run against both tables and be combined. The query against the on-disk splay with no attributes will have a significant impact on query performance.
 
 This problem may be somewhat mitigated as the most recent data is of most interest. For example, we could keep the last 5 minutes of data in memory. This could be achieved by amending the `append` function described above.
 
@@ -640,11 +646,11 @@ It is important to point out that any of these solutions come with their own dra
 
 Tests performed using kdb+ version 3.1 (2014.02.08)
 
+[:fontawesome-solid-print: PDF](/download/wp/intraday_writedown_solutions.pdf)
+
 
 ## Author
 
-Colm McCarthy is a kdb+ consultant who has developed data management
-systems for some the world's largest financial institutions. Colm is
-currently based in London, where he maintains an FX analytics
-application a major investment bank.
-
+**Colm McCarthy** is a senior kdb+ consultant who has worked for leading investment banks across a number of different asset classes. &nbsp;
+[:fontawesome-solid-envelope:](mailto:cmccarthy@kx.com?subject=White paper: Intraday writedowns) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/colm-mccarthy-11a60864/)

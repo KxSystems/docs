@@ -1,6 +1,6 @@
 ---
 title: or – Reference – kdb+ and q documentation
-description: or is a q keyord that performs a logical OR.
+description: or is a q keyword that performs a logical OR.
 author: Stephen Taylor
 keywords: and, greater, kdb+, logic, or, q
 ---
@@ -10,7 +10,7 @@ _Greater of two values, logical OR_
 
 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Greater](greater.md)
 
 

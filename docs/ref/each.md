@@ -2,15 +2,16 @@
 title: each, peach | Reference | kdb+ and q documentation
 description: each and peach are q keywords, wrappers for the map iterators Each and Each Parallel.
 author: Stephen Taylor
-keywords: each, iterator, kdb+, map, q
 ---
 # `each`, `peach`
 
 
+_Iterate a unary_
 
-
-Syntax: `v1 each x`, `each[v1;x]`, `v1 peach x`, `peach[v1;x]`  
-Syntax: `(vv)each x`, `each[vv;x]`, `(vv)peach x`, `peach[vv;x]`
+```syntax
+ v1 each x   each[v1;x]       v1 peach x   peach[v1;x]  
+(vv)each x   each[vv;x]      (vv)peach x   peach[vv;x]
+```
 
 Where 
 
@@ -19,7 +20,7 @@ Where
 
 applies `v1` or `vv` as a unary to each item of `x` and returns a result of the same length.
 
-That is, the projections `each[v1;]`, `each[vv;]`, `each[v1;]`, and `peach[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
+That is, the projections `each[v1;]`, `each[vv;]`, `peach[v1;]`, and `peach[vv;]` are [uniform](../basics/glossary.md#uniform-function) functions.
 
 ```q
 q)count each ("the";"quick";" brown";"fox")
@@ -31,19 +32,29 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 ```
 
 `each` and `peach` perform the same computation and return the same result. 
-`peach` will divide the work between available slave tasks. 
+`peach` will divide the work between available secondary tasks. 
 
 `each` is a wrapper for the [Each iterator](maps.md#each). 
 `peach` is a wrapper for the [Each Parallel iterator](maps.md#each-parallel). 
 It is good q style to use `each` and `peach` for unary values. 
 
-<i class="far fa-hand-point-right"></i>
-[Maps](maps.md) for uses of Each with binary and higher-rank values  
-[`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)<br>
-<i class="fas fa-book-reader"></i>
-[Parallel processing](../basics/peach.md)<br>
-<i class="fas fa-graduation-cap"></i>
+!!! warning "`each` is redundant with [atomic functions](../basics/atomic.md). (Common qbie mistake.)"
+
+:fontawesome-solid-book:
+[Maps](maps.md) for uses of Each with binary and higher-rank values
+<br>
+:fontawesome-solid-book:
+[`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)
+<br>
+:fontawesome-solid-book-open:
+[Parallel processing](../basics/peach.md)
+<br>
+:fontawesome-solid-graduation-cap:
 [Table counts in a partitioned database](../kb/partition.md#table-counts)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[A.68 `peach`](/q4m3/A_Built-in_Functions/#a68-peach)
 
 
 ## Higher-rank values
@@ -57,3 +68,20 @@ Alternatively, suppose `t` is a table in which columns `b`, `c`, and `a` are arg
 
 
 
+## :fontawesome-solid-exclamation-triangle: Blocked within `peach`
+
+```txt
+hopen socket
+websocket open
+socket broadcast (25!x)
+amending global variables
+load master decryption key (-36!)
+```
+
+And any **system command** which might cause a change of global state.
+
+Generally, do not use a **socket** within `peach`, unless it is encapsulated via one-shot or HTTP client request.
+
+If you are careful to manage your **file handles/file access** so that there is no parallel use of the same handle (or file) across threads, then you can open and close files within `peach`.
+
+**Streaming execute** ([`-11!`](../basics/internal.md#-11-streaming-execute)) should also be fine. However updates to global variables are not possible, so use cases might be quite restricted within `peach`.

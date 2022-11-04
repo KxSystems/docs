@@ -1,10 +1,16 @@
 ---
-title: Kdb+ in astronomy
+title: Kdb+ in astronomy | White papers | kdb+ and q documentation
 description: Imports FITS data to kdb+, loads C functions and calculates recessional velocity
-author: Andrew Magowan and James Neill
+author: [Andrew Magowan, James Neill]
 keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar objects, recessional velocity, red shift, telescope
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ in astronomy
+
+by [Andrew Magowan &amp; James Neill](#authors)
+{: .wp-author}
 
 
 
@@ -38,15 +44,15 @@ FITS files consist of segments called Header Data Units (HDUs). Every FITS file 
 
 ## Processing the data – linking FITS and kdb+ using C
 
-Kx provides a header file, `k.h`, for interacting with C from kdb+. It provides the link between kdb+ and C by converting the different data types and structures between the two languages. Using this header file, we created a shared object that could natively parse a FITS file and load the data into a kdb+ database. This C extension can read metadata in HDUs and extract columns from binary tables, converting the information into a format usable by kdb+. The C functions are loaded into kdb+ from the shared object by using the [Dynamic Load](../ref/dynamic-load.md) operator `2:`, which is described in more detail later.
+KX provides a header file, `k.h`, for interacting with C from kdb+. It provides the link between kdb+ and C by converting the different data types and structures between the two languages. Using this header file, we created a shared object that could natively parse a FITS file and load the data into a kdb+ database. This C extension can read metadata in HDUs and extract columns from binary tables, converting the information into a format usable by kdb+. The C functions are loaded into kdb+ from the shared object by using the [Dynamic Load](../ref/dynamic-load.md) operator `2:`, which is described in more detail later.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Interfaces: [C client for kdb+](../interfaces/c-client-for-q.md)<br>
 White paper: [“C API for kdb+”](capi/index.md)<br>
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb](https://github.com/kxsystems/kdb)<br>
 James Neill’s repository for kdb+ in astronomy:
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [jpneill/fitsToKdb](https://github.com/jpneill/fitsToKdb)
 
 
@@ -131,7 +137,7 @@ The other functions can then be loaded in in the same manner.
 
 The source file for these example analytics is the `specObj-dr12.fits` file from the SDSS database.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [www.sdss.org/dr12/spectro/spectro_access](http://www.sdss.org/dr12/spectro/spectro_access)
 
 This is a 2.9GB file containing the redshifts and classifications of all 4 million+ objects observed, including galaxy, quasar, and stellar spectra. We are able to use the functions defined above to create a kdb+ database from this FITS format file.
@@ -148,8 +154,8 @@ q)icols:lower[icols]!.astro.readIntCol[file;;n;2]each icols
 // repeat for each of the long, float and sym cols
 ```
 
-<i class="far fa-hand-point-right"></i>
-Interfaces: [Using foreign functions with kdb+](../interfaces/ffi.md)
+:fontawesome-regular-hand-point-right:
+Interfaces: [Using foreign functions with kdb+](../interfaces/ffi/index.md)
 
 
 ### Building tables in kdb+
@@ -256,11 +262,13 @@ We could apply an attribute to this data for optimization, such as the sorted at
 
 ## Conclusion
 
-In this paper, we have taken one sample of astronomy data that came in a format which was initially unfamiliar to us, and subsequently analyzed it in kdb+ with relative ease. We made use of the flexibility that kdb+ has in extending to other languages; in this case C, which effectively only required using the Dyanamic Load operator. This approach can be replicated where C utilities have been created for interacting with data sources, or for other reasons.
+In this paper, we have taken one sample of astronomy data that came in a format which was initially unfamiliar to us, and subsequently analyzed it in kdb+ with relative ease. We made use of the flexibility that kdb+ has in extending to other languages; in this case C, which effectively only required using the Dynamic Load operator. This approach can be replicated where C utilities have been created for interacting with data sources, or for other reasons.
 
 We were then able to build functionality to calculate the recessional velocity of different object classes, which took less than a tenth of a second to run on a table of one million rows. In doing this we made use of kdb+’s efficient `fby` syntax to make use of an aggregate function as a filter criteria. It is apparent that kdb+ is extremely performant, both in storing and analyzing this data. The nature and expected volumes of data, and the way it will be used, go hand in hand with kdb+ and we have found it to be an ideal fit.
 
 We believe this will be a very attractive solution to the field of astronomy going forward, coping with the predicted expansion of data volumes in the field due to the new projects that are scheduled to begin in the near future.
+
+[:fontawesome-solid-print: PDF](/download/wp/kdb_in_astronomy.pdf)
 
 
 ## Further reading
@@ -273,6 +281,6 @@ We believe this will be a very attractive solution to the field of astronomy goi
 
 ## Authors
 
-Andrew Magowan is a kdb+ consultant who has developed data and analytic systems for some of the world's largest financial institutions. Andrew is currently based in New York where he maintains a global tick capture application across a range of asset classes at a major investment bank.
+**Andrew Magowan** is a kdb+ consultant who has developed data and analytic systems for some of the world's largest financial institutions. Andrew is currently based in New York where he maintains a global tick capture application across a range of asset classes at a major investment bank.
 
-James Neill works as a kdb+ consultant for one of the world’s largest investment banks developing a range of applications. James has also been involved in the design of training courses in data science and machine learning as part of the First Derivatives Capital Markets Training Programme.
+**James Neill** works as a kdb+ consultant for one of the world’s largest investment banks developing a range of applications. James has also been involved in the design of training courses in data science and machine learning as part of the First Derivatives Capital Markets Training Programme.

@@ -11,7 +11,7 @@ This demo shows the basics of geospatial indexing with q.
 
 A 1-million-point random data set is queried from the HTML map client. Click on the map to see nearby points. 
 
-Download <i class="fab fa-github"></i> [KxSystems/kdb/e/geo.zip](https://github.com/KxSystems/kdb/blob/master/e/geo.zip) and run:
+Download :fontawesome-brands-github: [KxSystems/kdb/e/geo.zip](https://github.com/KxSystems/kdb/blob/master/e/geo.zip) and run:
 
 ```bash
 $ make -C s2

@@ -43,15 +43,15 @@ This saves the result of the query to the file output.csv, which can be loaded i
 
     The result must be a table, so that it can be converted to a CSV file. For instance, the following is invalid:
 
-    <pre><code class="language-bash">
+    ```bash
     wget -O output.csv "http://localhost:5001/q.csv?first trade"
-    </code></pre>
+    ```
 
     because the result is a dictionary. We need `1 # trade`. Notice that the `#` symbol cannot be written literally in a URL.
 
-    <pre><code class="language-bash">
+    ```bash
     wget -O output.csv "http://localhost:5001/q.csv?1 %23 trade"
-    </code></pre>
+    ```
 
 
 ## Interfacing via CSV files
@@ -68,7 +68,7 @@ q)save `:output.csv
 
 With Automation add-ins for Excel, you can use a C\# function in a cell formula. This function can communicate with a kdb+ server process.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Writing Custom Excel Worksheet Functions in C\#](https://blogs.msdn.microsoft.com/gabhan_berry/2008/04/07/writing-custom-excel-worksheet-functions-in-c/)
 
 
@@ -76,13 +76,13 @@ With Automation add-ins for Excel, you can use a C\# function in a cell formula.
 
 It is possible to have Excel display changing data dynamically using the RTD (real-time data) functionality. Charles Skelton has developed a RTD server for q. 
 
-This server is a .NET application, and it communicates directly with a q Ticker Plant, or a chained ticker plant. The RTD feature allows real-time data coming in from the ticker plant to be displayed in Excel. The schema can be customised according to whatever table names and column names are present in the ticker plant.
+This server is a .NET application, and it communicates directly with a q Ticker Plant, or a chained ticker plant. The RTD feature allows real-time data coming in from the ticker plant to be displayed in Excel. The schema can be customized according to whatever table names and column names are present in the ticker plant.
 
 
 ### Downloading
 
 The RTD server can be downloaded from 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [CharlesSkelton/excelrtd](https://github.com/CharlesSkelton/excelrtd)
 
 To install, run the `setup.exe` program and follow the instructions. You will need the Microsoft .NET Runtime installed.
@@ -131,9 +131,9 @@ will get the previous value of the cell. This can be useful for conditional form
 To set the engine to handle a larger volume of updates, in Excel complete the following:
 
 1.  In Excel, go to the Visual Basic Editor, by pressing Alt+F11 or clicking _Tools > Macro > Visual Basic Editor_
-2. In the Immediate window (press Ctrl+G or click _View > Immediate Window_), type:
+2.  In the Immediate window (press Ctrl+G or click _View > Immediate Window_), type:
 
-```vbnet
+```vba
 Application.RTD.ThrottleInterval = 1000
 ? Application.RTD.ThrottleInterval
 ```

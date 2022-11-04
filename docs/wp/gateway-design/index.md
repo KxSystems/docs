@@ -1,11 +1,16 @@
 ---
-title: Common design principles in kdb+ gateways – White paper – q and kdb+ documentation
+title: Common design principles in kdb+ gateways | White paper | q and kdb+ documentation
 description: The most common technical challenges associated with gateways and the reasoning behind various design options
 date: December 2012
 author: Michael McClintock
-keywords: architecture, gateway, interface, kdb+, load balance, q, resilience, service
 ---
+White paper
+{: #wp-brand}
+
 # Common design principles for kdb+ gateways
+
+by [Michael McClintock](#author)
+{: .wp-author}
 
 
 
@@ -46,7 +51,7 @@ Let’s consider a basic example where a user makes a request for trade data for
 
 As the gateway serves as the sole client interface it is the logical point for entitlement validation. Permissioning is commonly broken into two components; user level access using the `.z.pw` function, and execution access using either `.z.pg` or `.z.ps`. These functions can be customized to control access at several levels including by symbol, table, service or region.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference:
 [`.z.pg`](../../ref/dotz.md#zpg-get),
 [`.z.ps`](../../ref/dotz.md#zps-set),
@@ -99,7 +104,7 @@ In this setup the gateway sends each individual service request to the load-bala
 
 The `mserve` solution written by Arthur Whitney and Simon Garland provides a sample implementation of how a load-balancing process can allocate the query to the least busy service and return the result to the client, which in this case is the gateway.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [A load-balancing kdb+ server](../../kb/load-balancing.md)
 
 In this script the load balancer process determines which service to issue the request to according to which has the minimum number of outstanding requests queued at the time the request is received.
@@ -107,7 +112,7 @@ In this script the load balancer process determines which service to issue the r
 Nathan Perrem has also provided an extended version of this solution, which queues outstanding requests in the load-balancer process if all services are busy and processes the queue as services complete their request. This script ensures requests are processed in the order in which they are received and provides support for scenarios where services crash before completing a request. This solution makes it easier to track the status of all incoming queries as well as allowing clients to provide callback functions for results
 of queries.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [nperrem/mserve](https://github.com/nperrem/mserve)
 
 
@@ -265,8 +270,16 @@ As outlined in the initial overview, the implementation of any particular gatewa
 
 All code included is using kdb+ 3.0 (2012.11.12).
 
+[:fontawesome-solid-print: PDF](/download/wp/common_design_principles_for_kdb_gateways.pdf)
+
 
 ## Author
 
-Michael McClintock has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data capture and analytics platforms across a number of different asset classes.
+![Michael McClintock](../../img/faces/michaelmcclintock.png)
+{: .small-face}
 
+**Michael McClintock** has worked as consultant on a range of kdb+ applications for hedge funds and leading investment banks. Based in New York, Michael has designed and implemented data-capture and analytics platforms across a number of different asset classes.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:mmcclintock@kx.com?subject=White paper: Gateway design) 
+&nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/michael-mcclintock-93488841/)

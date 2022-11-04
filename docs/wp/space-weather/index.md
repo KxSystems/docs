@@ -1,11 +1,18 @@
 ---
-title: NASA Frontier Development Lab Space Weather Challenge – White Papers – kdb+ and q documentation
-description: In this paper, we examine the use of ML models to predict scintillation events, using historical GNSS data. Initially, a Support Vector Machine (SVM) was used to recreate the baseline model outlined in McGranaghan et al., 2018. We then implemented a neural network model in an attempt to improve upon the baseline results and accurately predict events as far as 24 hours ahead. Both methods used the strength of kdb+/q to deal with time-series data and embedPy to import the necessary python ML libraries.
+title: NASA Frontier Development Lab Space Weather Challenge | White Papers | kdb+ and q documentation
+description: Examines the use of ML models to predict scintillation events, using historical GNSS data
 author: Deanna Morgan
 date: November 2018
 keywords: kdb+, q, space, NASA, machine learning
 ---
+White paper
+{: #wp-brand}
+
 # NASA Frontier Development Lab Space Weather Challenge
+
+by [Deanna Morgan](#author)
+{: .wp-author}
+
 
 
 
@@ -53,7 +60,7 @@ During the initial stages of pre-processing, the following steps were taken:
 ### CHAIN
 
 -   Only data with a lock-time of greater than 200 seconds was included to account for ‘loss of lock’ events, where receivers stop receiving satellite signals due to significant signal irregularities. [6]
--   Satellites travelling at low elevations experience ‘multi-path’ irregularities where signals have to travel longer distances through the ionosphere and are therefore reflected and follow multiple paths before reaching receivers. [7] To differentiate between multi-path and scintillation irregularities, data with an elevation of greater than 30 degrees was selected and the phase and amplitude scintillation indices (&sigma;<sub>&phi;</sub> and S4 respectively) were projected to the vertical.
+-   Satellites traveling at low elevations experience ‘multi-path’ irregularities where signals have to travel longer distances through the ionosphere and are therefore reflected and follow multiple paths before reaching receivers. [7] To differentiate between multi-path and scintillation irregularities, data with an elevation of greater than 30 degrees was selected and the phase and amplitude scintillation indices (&sigma;<sub>&phi;</sub> and S4 respectively) were projected to the vertical.
 -   Latitude and longitude for each station were also added to the data [2].
 -   The median value was calculated for each feature at each timestep.
 
@@ -164,13 +171,8 @@ As only 3% of the data represented scintillation occurring, it would have been e
 
 In addition to accuracy, the True Skill Statistic (TSS) has been used throughout this paper to evaluate model performance. The TSS calculates the difference between recall and the false positive rate and produces values ranging from -1 to 1, with 1 being the perfect score. [8]
 
-<div style="text-align: center" markdown="1">
-_TSS_ = (_TP_ &divide; (_TP_+_FN_)) – (_FP_ &divide; (_FP_+_TN_))
-</div>
-
-<!--
 $$\begin{equation}TSS=\frac{TP}{TP+FN}-\frac{FP}{FP+TN}\end{equation}$$
--->
+
 where _TP_, _TN_, _FP_ and _FN_ are true positives, true negatives, false positives and false negatives respectively.
 
 
@@ -178,16 +180,6 @@ where _TP_, _TN_, _FP_ and _FN_ are true positives, true negatives, false positi
 
 Scintillation events are subject to diurnal and seasonal variations, caused by the inclination of the Earth in relation to the Sun. When either hemisphere of the Earth is tilted towards the Sun, increased solar radiation causes greater ionization in the upper atmosphere. This leads to higher scintillation indices and thus more scintillation events.[9] To account for such variations, the sine and cosine local time of day and day of year were added to the dataset. For the baseline, only the cosine day of year was added.
 
-<div style="text-align: center" markdown="1">
-_cosdoy_ = _cos_ ( (2&pi;_doy_) &div; _D<sub>tot</sub>_ )
-
-_sindoy_ = _sin_ ( (2&pi;_doy_) &div; _D<sub>tot</sub>_ )
-
-_costime_ = _cos_ ( (2&pi;_dt_) &div; _T<sub>tot</sub>_ )
-
-_sintime_ = _sin_ ( (2&pi;_dt_) &div; _T<sub>tot</sub>_ )
-</div>
-<!-- 
 $$cosdoy = cos{\frac{2 \pi doy}{D_{tot}}}$$
 
 $$sindoy = sin{\frac{2 \pi doy}{D_{tot}}}$$
@@ -195,9 +187,8 @@ $$sindoy = sin{\frac{2 \pi doy}{D_{tot}}}$$
 $$costime = cos{\frac{2 \pi dt}{T_{tot}}}$$
 
 $$sintime = sin{\frac{2 \pi dt}{T_{tot}}}$$
--->
 
-where _doy_ is the day of year,  _D<sub>tot</sub>_ is the number of days in the year (365 for the SVM model, 365.25 for the neural network model), _dt_ is the time in minutes and _T<sub>tot</sub>_ is the total number of minutes in a day.
+where $doy$ is the day of year,  $D_{tot}$ is the number of days in the year (365 for the SVM model, 365.25 for the neural network model), $dt$ is the time in minutes and $T_{tot}$ is the total number of minutes in a day.
 
 ```q
 q)completeSVM:update cosdoy:cos 2*pi*doy%365 from completeSVM
@@ -587,11 +578,19 @@ The neural network method vastly improved results compared to the baseline model
 
 For 24-hour prediction, both accuracy and TSS results increased by an average of 27% and 0.39 respectively. We were therefore able to create a machine-learning model, which reliably predicts phase scintillation events as far as 24 hours ahead. 
 
+[:fontawesome-solid-print: PDF](/download/wp/space-weather-a4.pdf)
+
 
 ## Author
 
-Deanna Morgan joined First Derivatives in June 2018 as a Data Scientist
-in the Capital Markets Training Program.
+**Deanna Morgan** joined First Derivatives in June 2018 as a Data Scientist in the Capital Markets Training Program.
+
+Other papers by Deanna Morgan
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Sobol’ option pricing in q](../option-pricing/index.md){: .publications}
+</ul>
 
 
 ## References and data sources

@@ -1,6 +1,6 @@
 ---
-title: Iteration – Basics – kdb+ and q documentation
-description: The primary means of iteration in q are atomic functions, the map iterators Each and its variants, and the accumulating iterators Scan and Over.
+title: Iteration | Basics | kdb+ and q documentation
+description: The primary means of iteration in q are its keywords and operators, the map iterators Each and its variants, and the accumulating iterators Scan and Over.
 author: Stephen Taylor
 keywords: accumulating, atomic, each, iteration, iterator, kdb+, q, over, scan
 ---
@@ -10,38 +10,18 @@ keywords: accumulating, atomic, each, iteration, iterator, kdb+, q, over, scan
 
 The primary means of iteration in q are 
 
--   atomic functions
--   the **map iterators**: Each and its variants
--   the **accumulating iterators** Scan and Over
+-   [implicit](implicit-iteration.md) in its operators and keywords
+-   the **map iterator** [Each](../ref/maps.md#each) and its variants distribute evaluation through data structures
+-   the **accumulating iterators** Scan and Over control successive iterations, where the result of one evaluation becomes an argument to the next
+-   the control words `do` and `while`
 
 
-## Atomic functions
+## Implicit iteration
 
-[Atomic functions](atomic.md) apply to atoms in their arguments, and preserve structure to arbitrary depth.
+Most operators and keywords have iteration [built into them](implicit-iteration.md).
 
-Many of the q operators that take numerical arguments are atomic. 
+!!! warning "A common beginner error is to specify iteration where it is already implicit"
 
-The arguments of an atomic function must _conform_: 
-they must be lists with the same count, or atoms.
-
-When an atom argument is applied to a list, it is applied to every item.
-
-```q
-q)2 3 4 + 5 6 7          / same-count lists
-7 9 11
-q)2 + 3 4 5              / atom and list
-5 6 7
-```
-
-This is called _scalar extension_. It applies at every level of nesting.
-
-```q
-q)2+(3 4;`a`b`c!5 6 7;(8 9;10;11 12 13);14)
-5 6
-`a`b`c!7 8 9
-(10 11;12;13 14 15)
-16
-```
 
 
 ## Iterators
@@ -51,7 +31,7 @@ They take values as arguments and derive functions that apply them repeatedly.
 
 !!! detail "Value"
 
-    A [applicable value](glossary.md#applicable-value) is a q object that can be indexed or applied to one or more arguments:
+    An [applicable value](glossary.md#applicable-value) is a q object that can be indexed or applied to one or more arguments:
 
     -   function: operator, keyword, lambda, or derived function
     -   list: vector, mixed list, matrix, or table
@@ -88,7 +68,22 @@ The [accumulators](../ref/accumulators.md) – Scan and Over – apply a value s
 
 ## Control words
 
-The control words [`if`, `do`, and `while`](control.md) also enable iteration, but are rarely required. 
+The control words [`do`, and `while`](control.md) also enable iteration, but are rarely required. 
+
+!!! tip "Do as little as possible"
+
+    First see if the iteration you want is already implicit in the operators and keywords.
+
+    If not, use the map and accumulator iterators to specify the iteration you need.
+
+    If you find yourself using the `do` or `while` control words, you probably missed something.
+
+    > “I’ll say no more than necessary. If that.”<br>
+    — ‘Chili’ Palmer in _Get Shorty_.
+
+---
+:fontawesome-solid-hand-point-right:
+[Implicit iteration](implicit-iteration.md)
 
 
 

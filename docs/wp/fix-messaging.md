@@ -1,11 +1,17 @@
 ---
-title: Kdb+ and FIX messaging
+title: Kdb+ and FIX messaging | White Papers | q and kdb+ documentation
 description: A guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an order-management system
 author: Damien Barker
 date: January 2014
 keywords: analytics, fix, kdb+, last order, order-management system, order processing, order status, 
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ and FIX messaging
+
+by [Damien Barker](#author)
+{: .wp-author}
 
 
 
@@ -94,7 +100,7 @@ A FIX message is comprised of a header, body and trailer. All messages must begi
 
 ### Feed handler
 
-A feed handler may be used to deliver the messages to kdb+. The feed handler should receive the flow of FIX messages from the OMS, parse the messages to extract the required fields and send them to the kdb+ tickerplant. Feed handlers are generally written in Java or C++ and are widely available, for example from Kx.
+A feed handler may be used to deliver the messages to kdb+. The feed handler should receive the flow of FIX messages from the OMS, parse the messages to extract the required fields and send them to the kdb+ tickerplant. Feed handlers are generally written in Java or C++ and are widely available, for example from KX.
 
 For the example provided in this white paper we load a file of FIX messages to a q feed handler. Our feed handler reads each FIX message from the file, extracts the tags and casts to the desired q type.
 
@@ -575,19 +581,20 @@ OrderID    SecurityID Side MsgType OrdStatus OrderQty CumQty AvgPx    CommValue
 ```
 
 
-### Conclusion
+## Conclusion
 
 This paper has provided a guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an OMS. We focused on some key FIX fields to provide an understanding of the valid entries and an insight into how they should be handled. 
 
-<i class="far fa-hand-point-right"></i>
-[fixwiki.org/fixwiki](http://fixwiki.org/fixwiki/FIXwiki)
+:fontawesome-solid-globe:
+[fixwiki.org/fixwiki](http://fixwiki.org/fixwiki/FIXwiki "fixwiki.org")
 for a comprehensive list of all fields for each FIX version
 
 It is an essential requirement to be able to view the current and final state of each order received from the OMS. We provided an example to show how to generate an order state. This process can be extended to also derive the latest execution state. Additional fields need to be extracted to identity the execution type, amendments, cancellations etc, similar to the order state. An execution state enables complex analytics, including risk benchmarking and transaction cost analysis to be computed efficiently on every execution.
 
 All tests were run using kdb+ version 3.1 (2013.12.27)
 
+[:fontawesome-solid-print: PDF](/download/wp/kdb_and_fix_messaging.pdf)
 
 ## Author
 
-Damien Barker is a financial engineer who has worked as a consultant for some of the world's largest financial institutions. Based in London, Damien is currently working on trading and analytics application at a US investment bank.
+**Damien Barker** is a financial engineer who has worked as a consultant for some of the world's largest financial institutions. Based in London, Damien is currently working on trading and analytics application at a US investment bank.

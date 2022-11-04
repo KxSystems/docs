@@ -32,7 +32,7 @@ V3.5 has an improved memory allocator which allows memory to be used across thre
 
 !!! note 
 
-    Kdb+ manages its own heap, using thread-local heaps to avoid contention. One complication of thread-local heaps is how to share allocations between threads, and avoid ballooning of allocated space due to the producer allocating in one arena and the consumer freeing that area in another arena. This was the primary reason for serialization/deserialization of the results from slave threads to the main thread when _peach_ completes. This serialization and associated overhead has now been removed.
+    Kdb+ manages its own heap, using thread-local heaps to avoid contention. One complication of thread-local heaps is how to share allocations between threads, and avoid ballooning of allocated space due to the producer allocating in one arena and the consumer freeing that area in another arena. This was the primary reason for serialization/deserialization of the results from secondary threads to the main thread when _peach_ completes. This serialization and associated overhead has now been removed.
 
 
 ## Socket sharding
@@ -55,16 +55,16 @@ Use cases include coarse load-balancing and HA/failover.
     When using socket sharding (e.g. `-p rp,5000`) the Unix domain socket (`uds`) is not active; this is deliberate and not expected to change.
 
 
-## Number of slaves
+## Number of secondary threads
 
-Slave threads can now be adjusted dynamically up to the maximum [specified on the command line](../basics/syscmds.md#s-number-of-slaves). A negative number indicates that processes should be used, instead of threads.
+Secondary threads can now be adjusted dynamically up to the maximum [specified on the command line](../basics/syscmds.md#s-number-of-secondary-threads). A negative number indicates that processes should be used, instead of threads.
 
 ```q
-q)0N!("current slave threads";system"s");system"s 4";0N!("current,max slave threads";system"s";system"s 0N"); / q -s 8
-("current slave threads";0i)
-("current,max slave threads";4i;8i)
-q)system"s 0" / disable slave threads
-q)system"s 0N" / show max slave threads
+q)0N!("current secondary threads";system"s");system"s 4";0N!("current,max secondary threads";system"s";system"s 0N"); / q -s 8
+("current secondary threads";0i)
+("current,max secondary threads";4i;8i)
+q)system"s 0" / disable secondary threads
+q)system"s 0N" / show max secondary threads
 8i
 ```
 
@@ -101,31 +101,36 @@ q)hopen(`:tcps://myhost:5000:username:password;30000)
 
 We have tried to make the process of upgrading seamless, however please pay attention to the following NUCs to consider whether they impact your particular installation
 
-- added `ujf` (new keyword) which mimics the behaviour of `uj` from V2.x, i.e. that it fills from lhs, e.g.
-<pre><code class="language-q">
-q)([a:1 2 3]b:2 3 7;c:10 20 30;d:"WEC")~([a:1 2]b:2 3;c:5 7;d:"WE")ujf([a:1 2 3]b:2 3 7;c:10 20 30;d:"  C")
-</code></pre>
+- added `ujf` (new keyword) which mimics the behavior of `uj` from V2.x, i.e. that it fills from lhs, e.g.
+
+    ```q
+    q)([a:1 2 3]b:2 3 7;c:10 20 30;d:"WEC")~([a:1 2]b:2 3;c:5 7;d:"WE")ujf([a:1 2 3]b:2 3 7;c:10 20 30;d:"  C")
+    ```
 
 - constants limit in lambdas reduced from 96 to 95; could cause existing user code to signal a `'constants` error, e.g.
-<pre><code class="language-q">
-q)value raze"{",(string[10+til 96],\:";"),"}"
-</code></pre>
+
+    ```q
+    q)value raze"{",(string[10+til 96],\:";"),"}"
+    ```
 
 - now uses abstract namespace for Unix domain sockets on Linux to avoid file permission issues in `/tmp`.
 N.B. hence V3.5 cannot connect to V3.4 using UDS. e.g.
-<pre><code class="language-q">
-q)hopen`:unix://5000
-</code></pre>
+
+    ```q
+    q)hopen`:unix://5000
+    ```
 
 - comments are no longer stripped from the function text by the tokenizer (`-4!x`); comments within functions can be stripped explicitly from the `-4!` result with
-<pre><code class="language-q">
-q){x where not(1&lt;count each x)&x[;0]in" \t\n"} -4!"{2+ 3; /comment\n3\n\t/ another comment\n \n/yet another\n /and one more\n}"
-</code></pre>
+
+    ```q
+    q){x where not(1&lt;count each x)&x[;0]in" \t\n"} -4!"{2+ 3; /comment\n3\n\t/ another comment\n \n/yet another\n /and one more\n}"
+    ```
 
 - the structure of the result of `value` on a lambda, e.g. `value {x+y}`, is:
-<pre><code class="language-q">
-(bytecode;parameters;locals;(namespace,globals);constants[0];…;constants[n];m;n;f;l;s)
-</code></pre>
+
+    ```q
+    (bytecode;parameters;locals;(namespace,globals);constants[0];…;constants[n];m;n;f;l;s)
+    ```
 
     where
 
@@ -142,7 +147,7 @@ q){x where not(1&lt;count each x)&x[;0]in" \t\n"} -4!"{2+ 3; /comment\n3\n\t/ an
 
 ## Suggested upgrade process
 
-Even though we have run a wide range of tests on V3.5, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.5 should run their own tests on their own data and code/queries before promoting to production usage. In the event that you do discover a suspected bug, please email tech@kx.com
+Even though we have run a wide range of tests on V3.5, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.5 should run their own tests on their own data and code/queries before promoting to production usage. In the event that you do discover a suspected bug, please report it at [support.kx.com](https://support.kx.com).
 
 
 ## Detailed change list

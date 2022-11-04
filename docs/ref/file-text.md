@@ -13,7 +13,7 @@ _Read or write text_
 
 The File Text operator `0:` has five forms:
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [Prepare Text](#prepare-text)     table as a list of delimited strings
 
 [Save Text](#save-text)        write a list of strings to file
@@ -25,13 +25,14 @@ The File Text operator `0:` has five forms:
                  as a list or matrix
 
 [Key-Value Pairs](#key-value-pairs)  delimited string as key-value pairs
-</pre>
+</div>
 
-## Prepare Text
+
+## :fontawesome-solid-align-left: Prepare Text
 
 _Represent a table as a list of delimited strings_
 
-```txt
+```syntax
 delimiter 0: t                          0:[delimiter;t]
 ```
 
@@ -55,6 +56,22 @@ q)"|" 0: (`a`b`c;1 2 3;"xyz")
 "c|3|z"
 ```
 
+??? detail "Temporals are represented according to ISO 8601."
+
+    ```q
+    q)show q:.z.p
+    2022.03.14D16:12:57.427499000
+    q)show t:flip`d`t!flip"dt"$/:2#q
+    d          t
+    -----------------------
+    2022.03.14 16:12:57.427
+    2022.03.14 16:12:57.427
+    q)csv 0:t
+    "d,t"
+    "2022-03-14,16:12:57.427"
+    "2022-03-14,16:12:57.427"
+    ```
+
 Any cells containing `delimiter` will be embraced with `"` and any embedded `"` doubled.
 
 ```q
@@ -74,13 +91,16 @@ qu"ux
 "fred"",barney"
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.4.3 Preparing Text](/q4m3/11_IO/#1143-preparing-text)
 
 
-## Save Text
+## :fontawesome-solid-database: Save Text
 
 _Write a list of strings to file_
 
-```txt
+```syntax
 filesymbol 0: strings                   0:[filesymbol;strings]
 ```
 
@@ -98,15 +118,21 @@ q)`:status.txt 0: string system "w"
 `:status.txt
 ```
 
-<i class="fas fa-book"></i>
+If `filesymbol`
+
+-   does not exist, it is created, with any missing containing directories
+-   exists, it is overwritten
+
+
+:fontawesome-solid-book:
 [`save`, `rsave`](save.md)
 
 
-## Load CSV
+## :fontawesome-solid-database: Load CSV
 
 _Interpret a field-delimited string, list of strings, or file as a list or matrix_
 
-```txt
+```syntax
 (types;delimiter     ) 0: y             0:[(types;delimiter);y]
 (types;delimiter;flag) 0: y             0:[(types;delimiter;flag);y]
 ```
@@ -114,11 +140,14 @@ _Interpret a field-delimited string, list of strings, or file as a list or matri
 Where 
 
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor), string, or a list of strings
--   `types` is a list of [types](../basics/datatypes.md#primitive-datatypes) in upper case,
--   `delimiter` is a char atom or 1-item list,
--   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`. 
+-   `types` is a string of [column type codes](#column-types-and-formats) in upper case
+-   `delimiter` is a char atom or 1-item list
+-   `flag` (optional, default `0`, since V3.4) is a long atom indicating whether line-returns may be embedded in strings: `0` or `1`
 
-returns a vector or matrix interpreted from the content of `y`.
+returns a vector, matrix, or table interpreted from the content of `y`.
+
+
+### With column names
 
 If `delimiter` is enlisted, the first row of the content of `y` is read as column names and the result is a table; otherwise the result is a list of values for each column.
 
@@ -144,18 +173,46 @@ q)("DT";",")0:"20130315,185540686"
 ```
 
 
-## Load Fixed
+### Without column names
+
+If the CSV file contains data but no column names:
+
+```csv
+0,hea,481
+10,dfi,579
+20,oil,77
+```
+
+We can read the columns:
+
+```q
+q)("ISI";",") 0:`data.csv
+0   10  20
+hea dfi oil
+481 579 77
+```
+
+Create a column dictionary and flip it:
+
+```q
+table: flip `a`b`c!("ISI";",") 0:`data.csv
+```
+
+!!! warning "Column names must not be the null symbol <code>&#96;</code>"
+
+
+## :fontawesome-solid-database: Load Fixed
 
 _Interpret a fixed-format list of strings or file as a list or matrix_
 
-```txt
+```syntax
 (types; widths) 0: y                    0:[(types;widths);y]
 ```
 
 Where 
 
 -   `y` is a [file descriptor](../basics/glossary.md#file-descriptor) or a list of strings
--   `types` is a list of [types](../basics/datatypes.md#primitive-datatypes) in upper case
+-   `types` is a list of [column types](#column-types-and-formats) in upper case
 -   `widths` is an int vector of field widths
 
 returns a vector or matrix interpreted from the content of `y`.
@@ -184,11 +241,11 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
     -   To omit a field from the load use `" "`.
 
 
-## Key-Value Pairs
+## :fontawesome-solid-book: Key-Value Pairs
 
 _Interpret a delimited string as key-value pairs_
 
-```txt
+```syntax
 x 0: string                             0:[x;string]
 ```
 
@@ -237,13 +294,48 @@ q)0N!"S=*,"0:"a=\"hello,world\",b=1";
 (`a`b;("hello,world";,"1"))
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.5.3 Key-Value Records](/q4m3/11_IO/#1153-key-value-records)
+
+
+## Column types and formats
+
+```txt
+B        boolean     /[01tfyn]/i
+G        guid        /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/i
+X        byte      
+H        short       [0-9][0-9]
+I        int    
+J        long   
+E        real   
+F        float  
+C        char   
+S        symbol     
+P        timestamp   date?timespan
+M        month       [yy]yy[?]mm
+D        date        [yy]yy[?]mm[?]dd or [m]m/[d]d/[yy]yy
+Z        datetime    date?time
+N        timespan    hh[:]mm[:]ss[[.]ddddddddd]
+U        minute      hh[:]mm
+V        second      hh[:]mm[:]ss
+T        time        hh[:]mm[:]ss[[.]ddd]
+(blank)  skip           
+*                    literal chars
+```
+
+
+----
+:fontawesome-solid-book: 
 [`.j` namespace](../ref/dotj.md) for JSON 
 <br>
-<i class="fas fa-book-open"></i> 
-[Casting](../basics/casting.md), 
+:fontawesome-solid-book-open: 
 [Datatypes](../basics/datatypes.md), 
-[File system](../basics/files.md)<br>
-<i class="fas fa-graduation-cap"></i>
+[File system](../basics/files.md)
+<br>
+:fontawesome-solid-graduation-cap:
 [How do I import a CSV file into a table?](../kb/faq.md#how-do-i-import-a-csv-file-into-a-table)
-
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§11.4.1 Reading and Writing Text Files](/q4m3/11_IO/#1141-reading-and-writing-text-files)

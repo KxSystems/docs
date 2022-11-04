@@ -1,5 +1,5 @@
 ---
-title: Syntax – Basics – kdb+ and q documentation
+title: Syntax | Basics | kdb+ and q documentation
 description: Syntax of the q programming language
 author: Stephen Taylor
 keywords: attribute, bracket, colon, comment, composition, compound, conditional, control, empty, function, infix, iterators, kdb+, multiline, name, namespace, operator, parenthesis, precedence, prefix, projection, postfix, q, space, syntax, token, vector
@@ -13,6 +13,8 @@ keywords: attribute, bracket, colon, comment, composition, compound, conditional
 > – _Marilyn Hacker_, “Learning Distances”
 
 
+
+!!! info "The q-SQL query templates `select`, `exec`, `update`, and `delete` have their [own syntax](qsql.md)."
 
 
 ## Elements
@@ -80,16 +82,16 @@ Temporal constants
 
 : include timestamps, months, dates, datetimes, timespans, minutes, and seconds. 
 
-    <pre><code class="language-q">
+    ```q
     2017.01              / month   
     2017.01.18           / date    
     00:00:00.000000000   / timespan
     00:00                / minute  
     00:00:00             / second  
     00:00:00.000         / time    
-    </code></pre>
+    ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-book-open: 
 [Datatypes](datatypes.md)
 
 Character constants
@@ -211,6 +213,39 @@ goog 300
 
 The names assigned become the column names. The values assigned must conform: be lists of the same count, or atoms. The empty brackets indicate that the table is _simple_: it has no key. 
 
+You if you specify the column values as variables without specifying column names, the names of the variables will be used.
+
+```q
+q)sym:`aapl`msft`goog
+q)price:100 200 300
+q)([] sym; price)
+sym  price
+----------
+aapl 100
+msft 200
+goog 300
+```
+
+Some columns can be specified as atoms.
+
+```q
+q)([] sym:`aapl`msft`goog; price: 300)
+sym  price
+----------
+aapl 300
+msft 300
+goog 300
+```
+
+But not all. To define a 1-row table, enlist at least one of the column values.
+
+```q
+q)([] sym:enlist`aapl; price:100)
+sym  price
+----------
+aapl 100
+```
+
 The initial expression list can declare one or more columns as a _key_. The values of the key column/s of a table should be unique. 
 
 ```q
@@ -223,8 +258,15 @@ bob   SFO | 51
 alice SFO | 44
 ```
 
-<i class="far fa-hand-point-right"></i>
-[`!` Key](dictsandtables.md#key)
+:fontawesome-solid-book: 
+[`!` Key](../ref/key.md)
+<br>
+:fontawesome-solid-book-open: 
+[Dictionaries and tables](dictsandtables.md)
+<br>
+:fontawesome-solid-street-view: 
+_Q for Mortals_
+[§8. Tables](/q4m3/8_Tables/)
 
 
 ## Attributes
@@ -232,8 +274,8 @@ alice SFO | 44
 Attributes are metadata that apply to lists of special form. 
 They are often used on a dictionary domain or a table column to reduce storage requirements or to speed retrieval.
 
-<i class="far fa-hand-point-right"></i> 
-Reference: [Set Attribute](../ref/set-attribute.md), 
+:fontawesome-solid-book: 
+[Set Attribute](../ref/set-attribute.md), 
 [Step dictionaries](../ref/apply.md#step-dictionaries)
 
 <!-- 
@@ -281,9 +323,40 @@ Operators can also be evaluated with bracket notation. For example, `+[a;b]`mean
 
 Bracket pairs with nothing between them also have meaning; `m[]` selects all items of a list `m` and `f[]` evaluates the no-argument function `f`. 
 
-!!! tip 
+!!! tip "The similarity of index and argument notation is not accidental."
 
-    The similarity of index and argument notation is not accidental.
+
+### Indexing tables
+
+Tables are indexed first by row; second by column.
+```q
+q)t:([]name:`Tom`Dick`Harry;age:34 42 17)
+q)t[1;`age]
+42
+```
+Eliding an index gets all its values.
+```q
+q)t[;`age]
+34 42 17
+
+q)t[1;]
+name| `Dick
+age | 42
+```
+You can elide trailing indexes. (As in projecting a function.)
+```q
+q)t[1] 
+name| `Dick
+age | 42
+```
+Table columns are always indexed as symbols; rows as integers. 
+This permits a shorthand:
+```q
+q)t[`age]  / shorthand for t[;`age]
+34 42 17
+q)t`age
+34 42 17
+```
 
 
 ## Conditional evaluation and control statements
@@ -312,7 +385,7 @@ The first expression in a function expression can be a _signature_: an argument 
 
 Within a script, a function may be defined across [multiple lines](#multi-line-expressions).
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-book-open: 
 [Function notation](function-notation.md)
 
 
@@ -337,9 +410,29 @@ q)"abcdef" 1 0 3
 "bad"
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[Application](application.md),
+:fontawesome-solid-book-open: 
+[Application](application.md)
+<br>
+:fontawesome-solid-book: 
 [Iterators](../ref/iterators.md)
+
+
+### Infix and prefix notation have long right scope
+
+The right argument of a unary function, or a binary function applied infix,  is the result of evaluating (subject to parentheses) everything to its right.
+
+The left argument of a binary function applied infix is (subject to parentheses) the value immediately to its left. 
+
+```q
+q)count first (2 3 4;5 6)
+3
+```
+Above, the argument of `count` is `first (2 3 4;5 6)`; that is, `2 3 4`.
+```q
+q)2 3 * 4 5 - 6 7
+-4 -6
+```
+Above, the left argument of Multiply is `2 3` and its right argument is `4 5-6 7`; that is, `-2 -2`.
 
 
 ### Postfix yields infix
@@ -348,10 +441,9 @@ An iterator applied to an [applicable value](glossary.md#applicable-value) deriv
 
 If the iterator is applied postfix, as it almost always is, the derived function has infix syntax.
 
-!!! warning "Holds for all ranks"
+!!! warning "This rule holds **regardless of the rank** of the derived function"
 
-    This rule holds **regardless of the rank** of the derived function.
-    For example, `count'` is unary but has infix syntax. 
+    For example, counterintuitively, `count'` is unary but has infix syntax. 
 
 A common consequence is that many derived functions must be parenthesized to be applied postfix. (See below.)
 
@@ -438,22 +530,39 @@ An empty expression occurs in a compound expression wherever the place of an ind
 
 ## Colon
 
-The colon has several uses. The principal use is denoting assignment. It can appear with a name to its left and a noun to its right, or a name followed by an index expression to its left and a noun to its right, as in `x:y` and x`[i]:y`. The former assigns the value of `y` to `x`; the latter to `x` at indexes `i`.
+### Assign
 
-The colon can also have a primitive operator immediately to its left, with a name (or name and index expression) to the left of that, as in `x+:y `and `x[i],:y`. This is known as assignment _through_ the operator. For operator `f`, the expressions `x f:y` and `x:x f y` are equivalent.
+The most common use of colon is to [name values](../ref/assign.md).
+
+
+### Explicit return
+
+Within a lambda (function definition) a colon followed by a value terminates evaluation of the function, and the value is returned as its result. 
+
+The [explicit return](function-notation.md#explicit-return) is a common form when detecting edge cases, e.g.
+
+```q
+...
+if[type[x]<0; :x];  / if atom, return it
+...
+```
+
+
+### Colons in names
+
+The functions associated with I/O and [interprocess communication](ipc.md) are denoted by a colon following a digit, as in `0:` and `1:`.
+
+The q operators are all binary functions.
+They inherit unary forms from k, denoted by a colon suffix, e.g. (`#:`).
+Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary-forms). 
+
+
+## Colon colon
 
 A pair of colons with a name to its left and an expression on the right
 
 -   within a function expression, denotes global assignment, that is, assignment to a global name (`{… ; x::3 ; …}`)
 -   outside a function expression, defines a [view](../learn/views.md)
-
-The functions associated with I/O and [interprocess communication](ipc.md) are denoted by a colon following a digit, as in `0:` and `1:`.
-
-A colon used as a unary in a function expression, as in `:r` , means return from the function with the result `r`.
-
-The q operators are all binary functions.
-They inherit unary forms from k, denoted by a colon suffix, e.g. (`#:`).
-Use of these forms in q programs is [deprecated](exposed-infrastructure.md#unary-forms). 
 
 
 ## Iterators
@@ -477,13 +586,13 @@ For example, `+` is Add and `+/` is _sum_.
 ```q
 q)(+/)1 2 3 4       / sum the list 1 2 3 4
 10
-q)16 + 1 2 3 4      / sum the list with starting value 16
+q)16 +/ 1 2 3 4     / sum the list with starting value 16
 26
 ```
 
 Any notation for a derived function without its arguments (e.g. `+/`) denotes a constant function atom. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-book-open: 
 [Application](application.md) for how to apply iterators
 
 
@@ -495,11 +604,11 @@ Names consist of the upper- and lower-case alphabetic characters, the numeric ch
 
     While q permits the use of underscores in names, this usage is **strongly deprecated** because it is easily confused with [Drop](../ref/drop.md).
 
-    <pre><code class="language-q">
+    ```q
     q)foo_bar:42
     q)foo:3
     q)bar:til 6
-    </code></pre>
+    ```
 
     Is `foo_bar` now `42` or `3 4 5`?
 
@@ -509,7 +618,7 @@ This hierarchy is known as the _K-tree_.
 Namespaces are identified by a leading dot in their names.
 
 Kdb+ includes namespaces `.h`, `.j`, `.q`, `.Q`, and `.z`. 
-(All namespaces with one-character names are reserved for use by Kx.)
+(All namespaces with one-character names are reserved for use by KX.)
 
 Names with dots are _compound_ names, and the segments between dots are _simple_ names. All simple names in a compound name have meaning relative to the K-tree, and the dots denote the K-tree relationships among them.
 Two dots cannot occur together in a name. Compound names beginning with a dot are called _absolute_ names, and all others are _relative_ names.
@@ -523,6 +632,9 @@ A derived function is _composed_ by any string of iterators with an applicable v
 ## Projecting the left argument of an operator
 
 If the left argument of an operator is present but the right argument is not, the argument and operator symbol together denote a _projection_. For example, `3 +` denotes the unary function “3 plus”, which in the expression `(3 +) 4` is applied to 4 to give 7.
+
+:fontawesome-solid-book-open:
+[Application and projection](application.md#projection)
 
 
 ## Precedence and order of evaluation
@@ -599,14 +711,14 @@ iterator symbol to its left.
 -   At least one space is required between neighboring numeric constants in vector notation.
 -   A minus sign (`-`) denotes both an operator and part of the format of negative constants. A minus sign is part of a negative constant if it is next to a positive constant and there are no spaces between, except that a minus sign is always considered to be the function if the token to the left is a name, a constant, a right parenthesis or a right bracket, and there is no space between that token and the minus sign. The following examples illustrate the various cases:
 
-<pre><code class="language-q">
+```q
 x-1            / x minus 1
 x -1           / x applied to -1
 3.5-1          / 3.5 minus 1
 3.5 -1         / numeric list with two elements 
 x[1]-1         / x[1] minus 1
 (a+b)- 1       / (a+b) minus 1
-</code></pre>
+```
 
 
 ## Comments

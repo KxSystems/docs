@@ -1,8 +1,7 @@
 ---
-title: prd, prds – Reference – kdb+ and q documentation
+title: prd, prds – product and running products | Reference | kdb+ and q documentation
 description: prd and prds are q keywords that return respectively the product and the cumulating products of their arguments.
 author: Stephen Taylor
-keywords: aggregate, kdb+, multiply, product, products, q, statistics, uniform
 ---
 # `prd`, `prds`
 
@@ -16,13 +15,11 @@ _Product/s_
 
 _Product_
 
-Syntax: `prd x`, `prd[x]` (aggregate)
+```syntax
+prd x    prd[x]
+```
 
-Product: where `x` is
-
--   a simple numeric list, returns the product of the items of `x`
--   an atom, returns `x`
--   a list of numeric lists, returns their products
+Where `x` is a numeric list, returns its product.
 
 Nulls are treated as 1s.
 
@@ -35,20 +32,24 @@ q)prd 2 3 0N 7             / 0N is treated as 1
 42
 q)prd (1 2 3 4;2 3 5 7)    / product of list of lists
 2 6 15 28
+q)prd 101b
+0b
 q)prd "abc"
 'type
 ```
 
-`prd` is an aggregate function.
+`prd` is an aggregate function, equivalent to `*/`.
 
 
 ## `prds`
 
 _Products_
 
-Syntax: `prds x`, `prds[x]`
+```syntax
+prds x    prds[x]
+```
 
-Where `x` is a numeric list, returns the cumulative products of its items. The product of an atom is itself. Nulls are treated as 1s.
+Where `x` is a numeric list, returns the cumulative products of its items. 
 
 ```q
 q)prds 7                     / atom is returned unchanged
@@ -64,7 +65,70 @@ q)prds "abc"                 / type error if list is not numeric
 'type
 ```
 
-`prds` is a uniform function. 
+`prds` is a uniform function, equivalent to `*\`.
 
-<i class="far fa-hand-point-right"></i> 
-Basics: [Mathematics](../basics/math.md)
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`prd` and `prds` apply to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
+```q
+q)k:`k xkey update k:`abc`def`ghi from t:flip d:`a`b!(10 21 3;4 5 6)
+
+q)d
+a| 10 21 3
+b| 4  5  6
+q)t
+a  b
+----
+10 4
+21 5
+3  6
+q)k
+k  | a  b
+---| ----
+abc| 10 4
+def| 21 5
+ghi| 3  6
+
+q)prd d
+40 105 18
+q)prds d
+a| 10 21  3
+b| 40 105 18
+
+q)prd t
+a| 630
+b| 120
+q)prds t
+a   b
+-------
+10  4
+210 20
+630 120
+
+q)prd k
+a| 630
+b| 120
+q)prds k
+k  | a   b
+---| -------
+abc| 10  4
+def| 210 20
+ghi| 630 120
+```
+
+
+## Domains and ranges
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  i . i i i j e f i . p m d z n u v t
+```
+
+----
+
+:fontawesome-solid-book:
+[Multiply](multiply.md)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)

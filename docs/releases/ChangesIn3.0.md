@@ -32,7 +32,7 @@ IPC messaging is similar to previous versions, and no single message can exceed 
 
 Shared libraries that are loaded into kdb+ must be recompiled using the new k header, and some function signatures have widened some of their types.
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h)
 
 When compiling for V3.0, define `KXVER=3`, e.g. `gcc -D KXVER=3 …`

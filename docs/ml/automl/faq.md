@@ -1,27 +1,30 @@
 ---
 title: Frequently-asked questions for the automated machine learning | Machine Learning | kdb+ and q documentation
 description: Frequently-asked questions about the automated machine learning interface/framework
+author: Diane O’Donoghue
+date: December 2020
 keywords: embedpy, machine learning, automation, distribution, cross validation, preprocessing, ml
 ---
-# <i class="fas fa-share-alt"></i> Frequently-asked questions
-
-
+# :fontawesome-solid-share-alt: Frequently-asked questions
 
 ## How can the automated machine-learning framework be configured for distributed execution?
 
-As outlined within the documentation for the [Machine-Learning Toolkit](../toolkit/index.md), procedures for the application of distributed multiprocessed cross-validation, grid-search and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
+As seen in the [Machine-Learning Toolkit](../toolkit/index.md), procedures for the application of distributed multiprocessed cross validation, hyperparameter search, and the application of the FRESH algorithm have been implemented in kdb+. These are accessible by default within this framework as follows
 
-```q
-// Initialize your process with multiple slave processes and an associated port
+Initialize your process with multiple secondary processes and an associated port.
+
+```bash
 $q -s -8 -p 4321
-// load the automl framework
+```
+```q
+q)// load the AutoML framework
 q)\l automl/automl.q
 q).automl.loadfile`:init.q
 ```
 
-The above will now automatically distribute grid-search, cross-validation and the FRESH algorithm to multiple processes.
+The above will now automatically distribute cross validation, hyperparameter search and the FRESH algorithm to multiple processes.
 
-The framework to achieve this for user-defined processes is generalizable. To do this within this AutoML framework, complete the following steps.
+The framework used to achieve this for user-defined processes is generalizable to other use cases. To do this within this AutoML framework, complete the following steps:
 
 1. Ensure the user-defined functions are placed within a q script accessible to your process.
 2. Load the relevant script into each of the open processes. This can be achieved as follows:
@@ -31,104 +34,269 @@ if[0>system"s";.ml.mproc.init[abs system"s"]enlist"system[\"l myscript.q\"]"]
 ```
 
 
-## How can my own models be evaluated using this framework?
+## How can my own models be evaluated in the framework?
 
-Within the current version of this framework it is possible for a user to add Sklearn models and define Keras models to be evaluated.
-
-
-### Sklearn Models
-
-The addition of Sklearn models can be completed through the modification of a number of files within the folder `code/models`. The steps to do so are as follows.
-
-1.  Open the file relevant to the problem type being solved, namely classification/regression i.e. `classmodels.txt`/`regmodels.txt` respectively.
-
-2.  Add a row to the defined tabular flat file using the same format as shown below. This is a sample of a number of rows from the regression file (table header added for convenience)
-
-    <pre><code class="language-q">Model name                | library   ; sub-module    ;  seeded? ; problem type
-    --------------------------|-----------;---------------;----------;-------------
-    AdaBoostRegressor         | sklearn   ;   ensemble    ;   seed   ; reg
-    RandomForestRegressor     | sklearn   ;   ensemble    ;   seed   ; reg
-    KNeighborsRegressor       | sklearn   ;   neighbors   ;    ::    ; reg
-    </code></pre>
-
-    To understand the above structure take for example the following embedPy code
-
-    <pre><code class="language-q">q)seed:42
-    q)mdl:.p.import[`sklearn.ensemble][`:AdaBoostRegressor][`random_state pykw seed]
-    </code></pre>
-
-    This defines a model from Python’s `sklearn` library, with the associated submodule `ensemble`, named `AdaBoostRegressor` which can be seeded with a random state `seed`, to ensure that runs of the model can be reproducible. If the model does not take a `random_state`, the input to this is set to `::`.
-
-    The following would be the table modified to include a Bayesian ridge regressor (not included by default).
-
-    <pre><code class="language-txt">Model name                | library   ;  sub-module    ;  seeded?  ; problem type
-    --------------------------|-----------;----------------;-----------;-------------
-    AdaBoostRegressor         | sklearn   ;   ensemble     ;   seed    ; reg
-    RandomForestRegressor     | sklearn   ;   ensemble     ;   seed    ; reg
-    KNeighborsRegressor       | sklearn   ;   neighbors    ;    ::     ; reg
-    BayesianRidge             | sklearn   ;  linear_model  ;    ::     ; reg
-    </code></pre>
-
-3.  If a grid search is to be performed on the model, a user must add the model associated hyperparameters over which to perform this to the file `code/models/hyperparams.txt`, if not then the model name must be added to `.automl.i.excludelist` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor
-
-    <pre><code class="language-q">BayesianRidge  |n_iter=100 200 300;tol=0.001 0.005 0.01</code></pre>
+Within the framework you can add Sklearn, Keras, PyTorch and Theano models to be evaluated.
 
 
-### Keras models
+### Sklearn models
 
-The addition of custom keras models is slightly more involved than that performed for scikit-learn models. The following steps show in their entirety the steps followed to add a custom regression model named `customreg` to the workflow.
+Sklearn models can be included by modifying the [`models.json`](ug/config.md#json-configuration-files) file:
 
-1.  Open the file `code/models/kerasmdls.q`
+**Step 1**
+Place the new model under the appropriate dictionary key depending on the problem type (i.e - `classification` or `regression`)
 
-2.  Follow the naming convention `[model-name]{mdl/fit/predict}` to create functions which define the model to be used, fit the model to the training data and predict the value of the target. Ensure the functions are defined in the root of the `.automl` namespace (this is already handled if within the `kerasmdls.q` file)
+**Step 2**
+Add the model display name as a dictionary key within the appropriate problem type and follow the format below (an extract from `regression` models).
 
-    <pre><code class="language-q">$vi kerasmdls.q
-    \d .automl
-    // Custom regression model
-    /* d = mixed list containing ((xtrn;ytrn);(ytrn;ytst))
-    /* s = random seed used to ensure reinitialisation consistent
-    /* mtype   = type of model being evaluated
-    /. return = a compiled keras model
-    customregmdl:{[d;s;mtype]
-      // seed the model appropriately
-      nps[s];if[not 1~checkimport[];tfs[s]];
-      m:seq[];
-      // define the model
-      layer1_nm :`input_dim`kernel_initializer`activation;
-      layer1_val:(count first d[0]0;`normal;`relu);
-      m[`:add]dns[13;pykwargs layer1_nm!layer1_val];
-      m[`:add]dns[1;`kernel_initializer pykw `normal];
-      m[`:compile][pykwargs `loss`optimizer!`mean_squared_error`adam];
-      // ensure that the model is returned separate to compilation
-      m
-     }
+```json
+"regression":{
+  "AdaBoostRegressor":{
+    "library":"sklearn",
+    "module":"ensemble",
+    "seed":true,
+    "type":"reg",
+    "apply":true
+  },
+  "RandomForestRegressor":{
+    "library":"sklearn",
+    "module":"ensemble",
+    "seed":true,
+    "type":"reg",
+    "apply":true
+   }
+  }
+```
 
-    // Custom fit function
-    /* m = model object from customregmdl
-    customregfit:{[d;m]m[`:fit][npa d[0]0;d[0]1;`batch_size pykw 16;`verbose pykw 0];m}
+To understand the above, take for example the following embedPy code:
 
-    // Custom predict function
-    customregpredict:{[d;m]raze m[`:predict][npa d[1]0]`}
-    </code></pre>
+```q
+seed:42
+model:.p.import[\`sklearn.ensemble][\`:AdaBoostRegressor][\`random_state pykw seed]
+```
 
-    To ensure the behavior of the system is consistent with the framework, it is vital to follows the above instructions, particularly ensuring that models take as arguments the defined parameters and returning an appropriate result, in particular at the model-definition phase, where explicit return of the model is required. Seeding of these models is not guaranteed unless a user has defined calls to functions such as `numpy.random.seed` to ensure that this is the case.
+This defines a model from Python’s `sklearn` library, with the associated submodule `ensemble`, named `AdaBoostRegressor`, which can be seeded with a random state `seed` to ensure runs of the model are reproducible. If the model does not take a `random_state`, the value is set to `::`.
 
-    For the fitting and prediction of Keras models through embedPy, it is important that the feature data is a NumPy array. Omission of this conversion can cause issues. As seen above within `kerasmdls.q` this is done through application of `` `npa:.p.import[`numpy]`:array`` to the data.
+The following changes to the JSON file would include a Bayesian ridge regressor (not included by default).
+
+```json
+"regression":{
+  "AdaBoostRegressor":{
+    "library":"sklearn",
+    "module":"ensemble",
+    "seed":true,
+    "type":"reg",
+    "apply":true
+  },
+  "RandomForestRegressor":{
+    "library":"sklearn",
+    "module":"ensemble",
+    "seed":true,
+    "type":"reg",
+    "apply":true
+   },
+    "BayesianRidge":{
+     "library":"sklearn",
+     "module":"linear_model",
+     "seed":true,
+     "type":"multi",
+     "apply":true
+ }
+}
+```
+
+**Step 3**
+To perform a hyperparameter search on the model, add the associated hyperparameters over which to perform the search to the [JSON](ug/config.md#json-configuration-files) files `gsHyperParameters.json` or `rsHyperParameters.json`.
+
+If a hyperparameter search is not required, then add the model name to `.automl.utils.excludeList` within `code/utils.q`. The following is an example of the hyperparameters which could be added for the Bayesian ridge regressor using gridsearch methods. Within `gsHyperParameters.json`, add the following to the dictionary:
+
+```json
+"BayesianRidge":{
+ "Parameters":{
+   "n_iter":[100,200,300],
+   "tol":[0.001,0.005,0.01]
+ },
+ "meta":{
+  "typeConvert":["int","float"]
+ }
+}
+```
+
+:fontawesome-solid-hand-point-right:
+[Structure of the JSON file](ug/config.md#grid-search-parameters)
 
 
-3.  Update the list `.automl.i.keraslist` defined at the top of the `code/models/keramdls.q` file. The name of the model here must coincide with the naming convention to be used for displays to console and that defined in the next step as the `display-name`. At present grid search procedures are _not_ completed on Keras models.
+### Keras, Torch, and Theano models
 
-    <pre><code class="language-q">\d .automl
-    i.keraslist:`regkeras`multikeras`binarykeras`customregkeras</code></pre>
+The addition of custom Keras, Torch and Theano models is slightly more involved than the procedure for scikit-learn models. The following steps demonstrate the entire procedure add a custom classification or regression model to the workflow. The examples below use a custom Torch model; follow the same structure to construct both Keras and Theano models.
 
-4.  Open the file `code/models/regmodels.txt` or `classmodels.txt` depending on use case and add a row associated with the new model.
+**Step 1**
+In folder `code/customization/models/libSupport/` are a pair of files for each model, with extensions
 
-    <pre><code class="language-txt">display-name    | model-type ; model-name ; seeded? ; problem-type
-    ----------------|------------;------------;---------;-------------
-    regkeras        | keras      ; reg        ; seed    ; reg
-    customregkeras  | keras      ; customreg  ; seed    ; reg
-    </code></pre>
+```txt
+.p  Python code
+.q  q functions for model, fit and prediction
+```
 
-    `display-name` is used for display and saving purposes. This is the name that should be added to the `.automl.i.keraslist` in order to be excluded from grid-search.
+**Step 2**
+Define in the `.p` file any Python code used in the model. If none needed, the file can be left empty. Example `torch.p`:
 
-    `model-name` should observe the naming convention used in step 1 for `[model-name]{fit/...}`.
+```python
+class classifier(nn.Module):
+
+    def __init__(self,input_dim, hidden_dim, dropout = 0.4):
+        super().__init__()
+
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+        self.fc3 = nn.Linear(hidden_dim, 1)
+        self.dropout = nn.Dropout(p = dropout)
+
+    def forward(self,x):
+        x = self.dropout(F.relu(self.fc1(x)))
+        x = self.dropout(F.relu(self.fc2(x)))
+        x = self.fc3(x)
+
+        return x
+
+def runmodel(model,optimizer,criterion,dataloader,n_epoch):
+    for epoch in range(n_epoch):
+        train_loss=0
+        for idx, data in enumerate(dataloader, 0):
+            inputs, labels = data
+            model.train()
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs,labels.view(-1,1))
+            loss.backward()
+            optimizer.step()
+            train_loss += loss.item()/len(dataloader)
+    return model
+```
+
+** Step 3**
+When constructing the `.q` file, follow this naming convention for model, fit and prediction functions:
+
+```txt
+models.[library].[module].{model/fit/predict}
+```
+
+where `library` and `module` are defined within `models.json` and 
+
+-   `library` is one of `keras`, `theano`, or `torch`
+-   `module`  is an arbitrary name for the model
+
+Any functions required by the Python script should also be loaded in. Ensure you define the functions in the `.automl` namespace. (This is already handled if within the `keras.q` file.) 
+An example of `torch.q`:
+
+```q
+\d .automl
+
+// @kind function
+// @category models
+// @fileoverview Fit a vanilla torch model to data
+// @param data {dict} Training and testing data according to keys
+//   `xtrn`ytrn`xtst`ytst
+// @param model {<} Model object being passed through the system (compiled)
+// @return {<} Vanilla fitted torch model
+models.torch.classifier.fit:{[data;model]
+  optimArg:enlist[`lr]!enlist .9;
+  optimizer:models.i.Adam[model[`:parameters][];pykwargs optimArg];
+  criterion:models.i.neuralNet[`:BCEWithLogitsLoss][];
+  dataX:models.i.numpy[models.i.npArray[data`xtrain]][`:float][];
+  dataY:models.i.numpy[models.i.npArray[data`ytrain]][`:float][];
+  tensorXY:models.i.tensorData[dataX;dataY];
+  modelArgs:`batch_size`shuffle`num_workers!(count first data`xtrain;1b;0);
+  dataLoader:models.i.dataLoader[tensorXY;pykwargs modelArgs];
+  nEpochs:10|`int$(count[data`xtrain]%1000);
+  models.torch.torchFit[model;optimizer;criterion;dataLoader;nEpochs] }
+
+// @kind function
+// @category models
+// @fileoverview Compile a keras model for binary problems
+// @param data {dict} Training and testing data according to keys
+//   `xtrn`ytrn`xtst`ytst
+// @param seed  {int} Seed used for initializing the same model
+// @return {<} Compiled torch models
+models.torch.classifier.model:{[data;seed]
+  models.torch.torchModel[count first data`xtrain;200] }
+
+// @kind function
+// @category models
+// @fileoverview Predict test data values using a compiled model
+//  for binary problem types
+// @param data {dict} Training and testing data according to keys
+//   `xtrn`ytrn`xtst`ytst
+// @param model {<} Model object being passed through the system (fitted)
+// @return {bool} Predicted values for a given model
+models.torch.classifier.predict:{[data;model]
+  dataX:models.i.numpy[models.i.npArray[data`xtest]][`:float][];
+  torchMax:last models.i.torch[`:max][model dataX;1]`;
+  (.p.wrap torchMax)[`:detach][][`:numpy][][`:squeeze][]` }
+
+// load required Python modules
+models.i.torch      :.p.import[`torch           ]
+models.i.npArray    :.p.import[`numpy           ]`:array
+models.i.Adam       :.p.import[`torch.optim     ]`:Adam
+models.i.numpy      :.p.import[`torch           ]`:from_numpy
+models.i.tensorData :.p.import[`torch.utils.data]`:TensorDataset
+models.i.dataLoader :.p.import[`torch.utils.data]`:DataLoader
+models.i.neuralNet  :.p.import[`torch.nn]
+// load in functions from torch.p
+models.torch.torchFit:.p.get[`runmodel]
+models.torch.torchModel:.p.get[`classifier]
+```
+
+For the fitting and predicting these models through embedPy, it is important that the feature data is a NumPy array. Omission of this conversion can cause issues. As seen above within `keras.q` this is done through applying `models.i.npArray` to the data.
+
+??? Warning "Consistency and reproducibility"
+
+    To ensure the behavior of the system is consistent with the framework, it is vital to follow the above instructions, particularly ensuring that models take the defined parameters as arguments and return an appropriate result. This is particularly important when defining the model, as an explicit result is required from the model.
+
+    Seeding of these models is not guaranteed unless you define calls to functions such as `numpy.random.seed` to ensure it.
+
+**Step 4**
+Define a function `.automl.models.[library].fitScore` in the `.q` file. It is used applying cross validation during the `runModels` processing stage of the pipeline. In this phase, the model is fitted to the training data and the predictions made on the testing data returned. Arguments and results must be consistent with this example.
+
+```q
+// @kind function
+// @category models
+// @fileoverview Fit model on training data and score using test data
+// @param data  {dict} Training and testing data according to keys
+//   `xtrn`ytrn`xtst`ytst
+// @param seed  {int} Seed used for initializing the same model
+// @param mname {sym} Name of the model being applied
+// @return {int;float;bool} Predicted values for a model applied to data
+models.torch.fitScore:{[data;seed;mname]
+  dataDict:\`xtrain\`ytrain\`xtest\`ytest!raze data;
+  model:get[".automl.models.torch.",string[mname],".model"][dataDict;seed];
+  model:get[".automl.models.torch.",string[mname],".fit"][dataDict;model];
+  get[".automl.models.torch.",string[mname],".predict"][dataDict;model] }
+```
+
+**Step 5**
+Go to [models.json](ug/config.md#json-configuration-files) and include the model under the problem type `classification` or `regression`. 
+
+Example for the classification section:
+
+```json
+"ClassTorch":{
+  "library":"torch",
+  "module":"classifier",
+  "seed":true,
+  "type":"multi",
+  "apply":true
+}
+```
+
+In the schema above, the values of the `library` and `module` dictionary keys define the prefix of the naming convention of the `models.torch.classifier.{model/fit/predict}` functions retrieved from `torch.q`.
+
+The key of the dictionary `ClassTorch` is used for display and model saving.
+
+---
+
+:fontawesome-brands-github:
+Model implementations at KxSystems/automl:
+[Keras](https://github.com/KxSystems/automl/tree/master/code/customization/models/libSupport/keras.q),
+[Torch](https://github.com/KxSystems/automl/tree/master/code/tests/files/torch),
+[Theano](https://github.com/KxSystems/automl/tree/master/code/tests/files/theano)

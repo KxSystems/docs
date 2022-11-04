@@ -1,12 +1,10 @@
 ---
-title: lsq – Reference – kdb+ and q documentation
+title: lsq – least-squares matrix equation solution |Reference | kdb+ and q documentation
 description: lsq is a q keyword that performs least squares fitting, matrix division.
 author: Stephen Taylor
-keywords: divide, division, fit, fitting, kdb+, least squares, lsq, matrix, mmu, polynomial, q
 ---
-<div markdown="1" style="float: right">
 ![Linear regression](../img/linear-regression.png)
-</div>
+{: style="float: right"}
 
 # `lsq`
 
@@ -16,10 +14,11 @@ keywords: divide, division, fit, fitting, kdb+, least squares, lsq, matrix, mmu,
 
 _Least squares, matrix divide_
 
-Syntax: `x lsq y`, `lsq[x;y]`
+```syntax
+x lsq y     lsq[x;y]
+```
 
-
-Where: 
+Where:
 
 -   `x` and `y` are float matrixes with the same number of columns
 -   the number of rows of `y` do not exceed the number of columns
@@ -60,7 +59,7 @@ q)a - (a lsq b) mmu b     / minimum squared difference
 
 `lsq` solves a normal equations matrix via Cholesky decomposition – solving systems is more robust than matrix inversion and multiplication.
 
-Since V3.6 2017.09.26 `inv` uses LU decomposition. 
+Since V3.6 2017.09.26 `inv` uses LU decomposition.
 Previously it used Cholesky decomposition as well.
 
 
@@ -79,13 +78,35 @@ lsfit[x;y] each 1 2 3     / linear,quadratic,cubic(=exact) fits
 1 5 -3 2
 ```
 
+Notice that `lsq` is very close to `{x mmu inv y}`.
+
+```q
+q)A:(1.1 2.2 3.3;4.4 5.5 6.6;7.7 8.8 9.9)
+q)B:(1.1 2.1 3.1; 2.3 3.4 4.5; 5.6 7.8 9.8)
+
+q)A lsq B
+1.211009  -0.1009174 2.993439e-12
+-2.119266 2.926606   -3.996803e-12
+-5.449541 5.954128   -1.758593e-11
+
+q)A mmu inv B
+1.211009  -0.1009174 7.105427e-15
+-2.119266 2.926606   0
+-5.449541 5.954128   7.105427e-15
+```
 
 
-<i class="far fa-hand-point-right"></i>
-[`inv`](inv.md), 
-[`mmu`](mmu.md)  
-Basics: [Mathematics](../basics/math.md)  
-Wikipedia: [LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition),
-[Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion)
+----
+
+:fontawesome-solid-book:
+[`inv`](inv.md),
+[`mmu`](mmu.md)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-brands-wikipedia-w:
+[LU decomposition](https://en.wikipedia.org/wiki/LU_decomposition "Wikipedia"),
+[Cholesky decomposition](https://en.wikipedia.org/wiki/Cholesky_decomposition#Matrix_inversion "Wikipedia")
 
 

@@ -1,8 +1,7 @@
 ---
-title: abs – Reference – kdb+ and q documentation
+title: abs – absolute value | Reference | kdb+ and q documentation
 description: abs is a q keyword that returns the absolute value of its argument
 author: Stephen Taylor
-keywords: abs, absolute, kdb+, math, mathematics, q
 ---
 # `abs`
 
@@ -11,9 +10,13 @@ keywords: abs, absolute, kdb+, math, mathematics, q
 
 _Absolute value_
 
-Syntax: `abs x`, `abs[x]`
+```syntax
+abs x    abs[x]
+```
 
-Returns the absolute value of boolean or numeric `x`. Null is returned if `x` is null.
+Where `x` is a numeric or temporal, returns 
+the absolute value of `x`. 
+Null is returned if `x` is null.
 
 ```q
 q)abs -1.0
@@ -22,7 +25,19 @@ q)abs 10 -43 0N
 10 43 0N
 ```
 
-`abs` is an atomic function.
+
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`abs` is an [atomic function](../basics/atomic.md).
+
+```q
+q)abs(10;20 -30)
+10
+20 30
+```
+
+It applies to [dictionaries and tables](../basics/math.md#dictionaries-and-tables).
+
 
 ## Domain and range
 
@@ -33,6 +48,9 @@ range  i . i h i j e f i . p m d z n u v t
 
 Range: `ihjefpmdznuvt`
 
-<i class="far fa-hand-point-right"></i> 
-[`signum`](signum.md)  
-Basics: [Mathematics](../basics/math.md)
+----
+:fontawesome-solid-book: 
+[`signum`](signum.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)

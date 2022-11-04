@@ -1,8 +1,7 @@
 ---
-title: Fill, fills – Reference – kdb+ and q documentation
+title: Fill operator, fills keyword – replace nulls in a vector | Reference | kdb+ and q documentation
 description: Fill is a q operator that replaces nulls in a vector. fills is a q keyword that replaces nulls in a vector with preceding non-nulls.
 author: Stephen Taylor
-keywords: fill, fills, kdb+, null, q, replace
 ---
 # `^` Fill, `fills`
 
@@ -10,14 +9,13 @@ _Replace nulls_
 
 
 
-
-
-
 ## `^` Fill
 
 _Replace nulls_
 
-Syntax: `x^y`, `^[x;y]`
+```syntax
+x^y    ^[x;y]
+```
 
 Where `x` and `y` are conforming lists or dictionaries
 returns `y` with any nulls replaced by the corresponding item of `x`.
@@ -58,13 +56,44 @@ c| 30
 
 Fill is an atomic function.
 
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b . x h i j e f c . p m d z n u v t
+g | . g . . . . . . . . . . . . . . . .
+x | x . x h i j e f c . p m d z n u v t
+h | h . h h i j e f c . p m d z n u v t
+i | i . i i i j e f c . p m d z n u v t
+j | j . j j j j e f c . p m d z n u v t
+e | e . e e e e e f c . p m d z n u v t
+f | f . f f f f f f c . p m d z n u v t
+c | c . c c c c c c c . p m d z n u v t
+s | . . . . . . . . . s . . . . . . . .
+p | p . p p p p p p p . p p p p n u v t
+m | m . m m m m m m m . p m d . . . . .
+d | d . d d d d d d d . p d d z . . . .
+z | z . z z z z z z z . p . z z n u v t
+n | n . n n n n n n n . n . . n n n n n
+u | u . u u u u u u u . u . . u n u v t
+v | v . v v v v v v v . v . . v n v v t
+t | t . t t t t t t t . t . . t n t t t
+```
+
+Range: `bcdefghijmnpstuvxz`
+
+
+:fontawesome-solid-book: 
+[`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
 
 
 ## `fills`
 
 _Replace nulls with preceding non-nulls_
 
-Syntax: `fills x`, `fills[x]` 
+```syntax
+fills x     fills[x]
+```
 
 Where `x` is a list, returns `x` with any null items replaced by their preceding non-null values, if any.
 
@@ -89,9 +118,55 @@ q)fills {(x where x=0W):0N;x} 0N 2 3 0W 0N 7 0W
 0N 2 3 3 3 7 7
 ```
 
+The keyword `fills` is defined as  `^\`, which fills forward, meaning that non-null items are filled over succeeding null items.
 
+```q
+q)fills 1 0N 3 0N 0N 5
+1 1 3 3 3 5
+q)fills `x``y```z
+`x`x`y`y`y`z
+q)update fills c2 from ([] `a`b`c`d`e`f; c2:1 0N 3 0N 0N 5)
+x c2
+----
+a 1
+b 1
+c 3
+d 3
+e 3
+f 5
+```
 
-<i class="far fa-hand-point-right"></i> 
-[`^` Coalesce](coalesce.md) where `x` and `y` are keyed tables 
+To fill initial nulls apply the derived function as a binary.
 
+```q
+q)fills 0N 0N 3 0N 5
+0N 0N 3 3 5
+q)0 ^\ 0N 0N 3 0N 5
+0 0 3 3 5
+```
 
+Domain and range:
+```txt
+    b g x h i j e f c s p m d z n u v t
+----------------------------------------
+b | b . x h i j e f c . p m d z n u v t
+g | . g . . . . . . . . . . . . . . . .
+x | x . x h i j e f c . p m d z n u v t
+h | h . h h i j e f c . p m d z n u v t
+i | i . i i i j e f c . p m d z n u v t
+j | j . j j j j e f c . p m d z n u v t
+e | e . e e e e e f c . p m d z n u v t
+f | f . f f f f f f c . p m d z n u v t
+c | c . c c c c c c c . p m d z n u v t
+s | . . . . . . . . . s . . . . . . . .
+p | p . p p p p p p p . p p p p n u v t
+m | m . m m m m m m m . p m d . . . . .
+d | d . d d d d d d d . p d d z . . . .
+z | z . z z z z z z z . p . z z n u v t
+n | n . n n n n n n n . n . . n n n n n
+u | u . u u u u u u u . u . . u n u v t
+v | v . v v v v v v v . v . . v n v v t
+t | t . t t t t t t t . t . . t n t t t
+```
+
+Range: `bcdefghijmnpstuvxz`

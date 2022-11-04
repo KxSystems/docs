@@ -2,12 +2,15 @@
 title: man.q help page | About | q and kdb+ documentation
 description: Help for man.q documentation script for q programmers
 author: Stephen Taylor
-date: February 2020
+date: November 2020
 ---
 # Help for `man.q`
 
 
-<i class="fab fa-github"></i>
+The `man.q` script mimics the Unix `man` command.
+
+
+:fontawesome-brands-github:
 [KxSystems/man](https://github.com/kxsystems/man)
 
 ## Examples
@@ -31,7 +34,8 @@ man "debug"
 man "interfaces"
 man "internal"
 man "iterators"
-man "kb"              / Knowledge Base
+man "db"              / database
+man "database"        / database
 man "syscmds"         / system commands
 man "wp"              / White Papers
 ```
@@ -42,16 +46,6 @@ man "--list"
 man "--help"
 ```
 
-
-<i class="fas fa-book"></i>
+---
+:fontawesome-solid-book:
 [Reference](../ref/index.md)
-<br>
-<i class="far fa-handshake"></i>
-[Interfaces](../interfaces/index.md)
-<br>
-<i class="fas fa-graduation-cap"></i>
-[Knowledge base](../kb/index.md)
-<br>
-<i class="far fa-map"></i>
-[White Papers](../wp/index.md)
-

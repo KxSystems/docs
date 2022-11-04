@@ -4,14 +4,14 @@ description:
 author: Oleg Finkelshteyn
 date: March 2020
 ---
-# <i class="fas fa-code"></i> Code profiler
+# :fontawesome-solid-code: Code profiler
 
 
 
 
-!!! info "Experimental feature <i class="fab fa-linux"></i>"
+??? info "Experimental feature :fontawesome-brands-linux:"
 
-    This is currently implemented for x86\_64 Linux (kdb+ `l64`).
+    Currently implemented for x86\_64 Linux (kdb+ `l64`).
 
 Kdb+ 4.0 includes an experimental built-in call-stack snapshot primitive that allows building a sampling profiler.
 
@@ -24,20 +24,20 @@ A new function, [`.Q.prf0`](../ref/dotq.md#qprf0-code-profiler), returns a table
 
     The process to be profiled must be started from the same binary as the one running `.Q.prf0`, otherwise `'binary mismatch` is signalled.
 
-`.Q.prf0` stops the target process for the duration of snapshotting.
+`.Q.prf0` stops the target process for the duration of snap-shotting.
 
 Time per call is mostly independent of call-stack depth. You should be able to do at least 100 samples per second with less than 5% impact on target process performance.
 
 The profiler has mostly the same view of the call stack as the debugger. `.Q.prf0` returns a table with the following columns:
 
-column  |description
---------|-
-**name**|assigned name of the function
-**file**|path to the file containing the definition
-**line**|line number of the definition
-**col** |column offset of the definition, 0-based
-**text**|function definition or source string
-**pos** |execution position (caret) within text
+```txt
+name    assigned name of the function
+file    path to the file containing the definition
+line    line number of the definition
+col     column offset of the definition, 0-based
+text    function definition or source string
+pos     execution position (caret) within text
+```
 
 For example, given the following `/w/p.q`:
 
@@ -65,8 +65,8 @@ name  file     line col text          pos
 
 By default on most Linux systems, a non-root process can only profile (using `ptrace`) its direct children. 
 
-<i class="far fa-hand-point-right"></i>
-[Yama documentation](https://www.kernel.org/doc/Documentation/security/Yama.txt) for details
+:fontawesome-solid-globe::
+[Yama documentation](https://www.kernel.org/doc/Documentation/security/Yama.txt"kernel.org")
 
 `\q` starts a child process, so you should be able to profile these with no system changes.
 
@@ -90,11 +90,11 @@ Typically a sampling profiler collects call-stack snapshots at regular intervals
 
 There are a few toys provided. Their usages follow the same pattern: they accept a single argument, either a script file name to run, or a process ID to which to attach. In the former case, a new q process is started with `\q` running the specified file. Exit with `\\`.
 
-<i class="fas fa-download"></i> [`top.q`](assets/top.q "Download")
+:fontawesome-solid-download: [`top.q`](assets/top.q "Download")
 
 : shows an automatically updated display of functions most heavily contributing to the running time (as measured by number of samples in which they appear). `self` is the percentage of time spent in the function itself; `total` includes all descendants.
 
-<i class="fas fa-download"></i> [`record.q`](assets/record.q "Download")
+:fontawesome-solid-download: [`record.q`](assets/record.q "Download")
 
 : writes the samples to disk in a splayed table `prof`, one sample per row.
 
@@ -108,9 +108,9 @@ to generate `prof.txt` suitable for feeding into
 [FlameGraph](https://github.com/brendangregg/FlameGraph/blob/master/flamegraph.pl) or [speedscope](https://speedscope.app) for visualization.
 
 
-## Walkthrough
+## Walk-through
 
-Let’s apply the profiler to help us optimize an extemely naïve implementation of Monte-Carlo estimation of π. We'll use `record.q` and speedscope as described above.
+Let’s apply the profiler to help us optimize an extremely naïve implementation of Monte-Carlo estimation of π. We'll use `record.q` and speedscope as described above.
 
 Start with the following `/w/pi.q` consisting of purely scalar code:
 

@@ -46,6 +46,7 @@ In this article we explain how to write functions in C that can be used in this 
 ## Compiling extension modules
 
 ### Windows
+
 ```powershell
 cl /LD bar.c bar.def q.lib
 ```
@@ -82,7 +83,7 @@ The resulting binary should be placed in the same directory as the q executable.
 
 Building an extension on multiple platforms with portable source.
 
-You will need <i class="fab fa-github"></i> [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) 
+You will need :fontawesome-brands-github: [KxSystems/kdb/c/c/k.h](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) 
 and familiarity with [C client for q](c-client-for-q.md).
 
 `add()` adds two q integers and returns the result. The code is portable across all platforms supported by q.
@@ -141,16 +142,16 @@ An additional file (`add.def`) is required, unless you add `declspec`s to the co
 
 **add.def**
 
-```def
+```txt
 EXPORTS
 add
 ```
 
-To ensure that the linker can find `kj()`, we link with <i class="fab fa-github"></i> [KxSystems/kdb/w32/q.lib](https://github.com/KxSystems/kdb/blob/master/w32/q.lib) or [KxSystems/kdb/w64/q.lib](https://github.com/KxSystems/kdb/blob/master/w64/q.lib) The `.lib` contains stub code that links to the `kj()` function in `q.exe`.
+To ensure that the linker can find `kj()`, we link with :fontawesome-brands-github: [KxSystems/kdb/w32/q.lib](https://github.com/KxSystems/kdb/blob/master/w32/q.lib) or [KxSystems/kdb/w64/q.lib](https://github.com/KxSystems/kdb/blob/master/w64/q.lib) The `.lib` contains stub code that links to the `kj()` function in `q.exe`.
 
 Now, with k.h, add.c, add.def, q.lib we can build a C extension:
 
-```dos
+```powershell
 cl /LD  /DKXVER=3 add.c add.def q.lib
 ```
 
@@ -164,7 +165,7 @@ q)(`add 2:(`add;2))[3;4]
 
 ### Windows: MinGW-64
 
-```dos
+```powershell
 /c/q$ echo 'LIBRARY q.exe'>q.def;  echo EXPORTS>>q.def;  nm -p w32/q.lib |egrep 'T _' |sed 's/0* T _//' >>q.def
 /c/q$ dlltool -v -l libq.a -d q.def
 /c/q$ gcc -shared -DKXVER=3 add.c -L. -lq -o add.dll
@@ -177,14 +178,14 @@ Tested using [MinGW-64](http://mingw-w64.org/doku.php) with `q/w32`.
 
 The purpose of this recipe is to explain how to access a low-level feature of an operating system and processor from q. This is illustrative of the type of operation that cannot be performed directly in q, and for which it makes sense to write a C function for use within q.
 
-Source code: <i class="fab fa-github"></i> [KxSystems/cookbook/cpu_extension](https://github.com/KxSystems/cookbook/tree/master/cpu_extension)
+Source code: :fontawesome-brands-github: [KxSystems/cookbook/cpu_extension](https://github.com/KxSystems/cookbook/tree/master/cpu_extension)
 
 
 ### Accessing the TSC
 
 Recent IA-32 processors, since the Intel Pentium Pro implementation, contain a high-resolution timestamp counter register. This register originally was increased at a fixed rapid rate, subject to 64-bit overflow. This made it useful as a high-resolution timer with a known relationship to wall-clock time. In IA-32 assembly language the RDTSC instruction (a mnemonic for Read Time Stamp Counter) with opcode `0f 32` is used to read the register.
 
-This has been brought forward in the AMD64/EM64T version of the IA-32 instruction set. However, several of the recent implementatons broke the never-guaranteed but often-assumed idea that the register would be incremented at a constant rate. With the introduction of performance- and frequency scaling for power usage adjustment and thermal control, the TSC register, though still monotonically increasing, began to behave in non-intuitive ways.
+This has been brought forward in the AMD64/EM64T version of the IA-32 instruction set. However, several of the recent implementations broke the never-guaranteed but often-assumed idea that the register would be incremented at a constant rate. With the introduction of performance- and frequency scaling for power usage adjustment and thermal control, the TSC register, though still monotonically increasing, began to behave in non-intuitive ways.
 
 Some implementations tied the rate of increase of the register to the operating frequency of the core. As this varied, for example due to [SpeedStep](https://en.wikipedia.org/wiki/SpeedStep), the rate of increase of the register varied. Even more bizarrely, some processors exhibited changes in the register (“drift”) due to changes in the operating temperature of the core. Furthermore, multi-processor and multi-core machines have more than one TSC register. Depending on the processor the instruction is executed on, different values could be returned. Most modern operating systems are aware of this and attempt to properly account for TSC drift between cores, as well as frequency modulations. Recent processor implementations have removed the more obvious changes, making life easier for the programmers again.
 
@@ -289,7 +290,7 @@ q)cpu_frequency[]
 
 ### Reading CPU frequency on macOS
 
-MacOS does not have `/proc` interface. One can create one in user space using [MacFUSE](http://osxbook.com/book/bonus/chapter11/procfs/), but it is easier to use `sysctl`:
+MacOS does not have `/proc` interface. One can create one in user space using [MacFUSE](https://osxfuse.github.io/), but it is easier to use `sysctl`:
 
 ```c
 #include <sys/types.h>

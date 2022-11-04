@@ -1,15 +1,22 @@
 ---
-title: Building real-time tick subscribers – White Papers – kdb+ and q documentation
-description: 
+title: Building real-time tick subscribers | White Papers | kdb+ and q documentation
+description: How to build a custom real-time tick subscriber
 author: Nathan Perrem
 date: August 2014
 keywords: kdb+, q, real-time, subscribe, tick
 ---
+White paper
+{: #wp-brand}
+
 # Building real-time tick subscribers
 
+by [Nathan Perrem](#author)
+{: .wp-author}
 
 
-The purpose of this white paper is to help q developers who wish to build their own custom real-time tick subscribers. Kx provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process (`tick.q`) and the vanilla real-time subscriber process (`r.q`), known as the real-time database. This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
+
+
+The purpose of this white paper is to help q developers who wish to build their own custom real-time tick subscribers. KX provides kdb+tick, a tick capture system which includes the core q code for the tickerplant process (`tick.q`) and the vanilla real-time subscriber process (`r.q`), known as the real-time database. This vanilla real-time process subscribes to all tables and to all symbols on the tickerplant. This process has very simple behavior upon incoming updates – it simply inserts these records to the end of the corresponding table. This may be perfectly useful to some clients, however what if the client requires more interesting functionality? For example, the client may need to build or maintain their queries or analytics in real time. How would one take `r.q` and modify it to achieve said behavior? This white paper attempts to help with this task. It breaks down into the following broad sections:
 
 1.  Explain the existing code and principles behind `r.q`.
 2.  Use `r.q` as a template to build some sample real-time analytic
@@ -20,7 +27,7 @@ It is hoped this white paper will help dispel any notion of tick being a black b
 All tests were run using kdb+ V3.1 (2013.09.19) on Windows.
 The tickerplant and real-time database scripts can be obtained from GitHub.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb+tick](https://github.com/KxSystems/kdb-tick)
 
 The tickerplant and real-time database scripts used are dated 2014.03.12 and 2008.09.09 respectively. These are the most up-to-date versions as of the writing of this white paper.
@@ -687,7 +694,7 @@ At end of day, the tickerplant sends a message to all real-time subscribers tell
   hclose LogfileHandle; /close the connection to the old log file 
   /create the new logfile
   logfile::hsym `$"RealTimeTradeWithAsofQuotes_",string .z.D; 
-  .[logfile;();:;()]; /Initialise the new log file 
+  .[logfile;();:;()]; /Initialize the new log file 
   LogfileHandle::hopen logfile;
   {delete from x}each tables `. /clear out tables }
 ```
@@ -736,7 +743,7 @@ Upon startup, the process uses a try-catch to replay its custom daily logfile. I
   {[e]
     m:"failed to replay custom log file";
     show m," - assume it does not exist. Creating it now";
-    .[logfile;();:;()]; /Initialise the log file
+    .[logfile;();:;()]; /Initialize the log file
   } ]
 ```
 
@@ -1075,8 +1082,10 @@ It is the aim of the author that the reader will now have the understanding of h
 
 All tests were run using kdb+ version V3.1 (2013.09.19) on Windows.
 
+[:fontawesome-solid-print: PDF](/download/wp/building_real_time_tick_subscribers.pdf)
+
 
 ## Author
 
-Nathan Perrem has worked onsite as a kdb+ developer at a range of investment banks and brokerage firms in New York and London. He has designed and delivered all client kdb+ training courses since 2009.
+**Nathan Perrem** has worked onsite as a kdb+ developer at a range of investment banks and brokerage firms in New York and London. He has designed and delivered all client kdb+ training courses since 2009.
 

@@ -1,5 +1,5 @@
 ---
-title: floor – Reference – kdb+ and q documentation
+title: floor | Reference | kdb+ and q documentation
 description: floor is a q keyword that returns the greatest integer smaller than its argument.
 author: Stephen taylor
 keywords: floor, kdb+, math, mathematics, maximum, q
@@ -10,33 +10,55 @@ _Round down_
 
 
 
-Syntax: `floor x`, `floor[x]` 
+```syntax
+floor x    floor[x]
+```
 
-Returns the greatest integer ≤ to numeric `x`. 
+Returns the greatest integer less than or equal to numeric `x`. 
+
 ```q
 q)floor -2.1 0 2.1
 -3 0 2
 ```
 
-`floor` is an atomic function.
 
+## :fontawesome-solid-sitemap: Implicit iteration
 
-## Comparison tolerance
+`floor` is an [atomic function](../basics/atomic.md).
 
-Prior to V3.0, `floor` used [comparison tolerance](../basics/precision.md#comparison-tolerance).
+```q
+q)floor(1.2;3.4 5.6)
+1
+3 5
+
+q)floor`a`b!(1.2;3.4 5.6)
+a| 1
+b| 3 5
+
+q)floor([]a:1.2 3.4;b:5.6 7.8)
+a b
+---
+1 5
+3 7
+```
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  . . . h i j j j c s . . . s . . . .
+```
+
+## :fontawesome-solid-exclamation-triangle: Prior to V3.0
+
+Prior to V3.0, `floor` 
+
+-   used [comparison tolerance](../basics/precision.md#comparison-tolerance)
+-   accepted datetime (Since V3.0, use `"d"$` instead.)
 
 ```q
 q)floor 2 - 10 xexp -12 -13
 1 2
-```
 
-
-## Datetime
-
-Prior to V3.0, `floor` accepted datetime. Since V3.0, use `"d"$` instead.
-
-```q
-q)floor 2009.10.03T13:08:00.222. /type error since V3.0
+q)floor 2009.10.03T13:08:00.222  /type error since V3.0
 2009.10.03
 q)"d"$2009.10.03T13:08:00.222
 2009.10.03
@@ -47,13 +69,15 @@ q)"d"$2009.10.03T13:08:00.222
 
 ```txt
 domain b g x h i j e f c s p m d z n u v t
-range  . . . . i j j j c s . . . . . . . .
+range  . . . h i j j j c s . . . . . . . .
 ```
 
-Range: `ijcs`
+Range: `hijcs`
 
 
-
-<i class="far fa-hand-point-right"></i> 
-[`ceiling`](ceiling.md)  
-Basics: [Mathematics](../basics/math.md)
+----
+:fontawesome-solid-book: 
+[`ceiling`](ceiling.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Mathematics](../basics/math.md)

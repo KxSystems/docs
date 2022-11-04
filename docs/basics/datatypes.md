@@ -6,73 +6,81 @@ keywords: atom, boolean, character, datatype, date, datetime, double, float, int
 ---
 # Datatypes
 
-<pre class="language-txt" style="font-size:80%">
+
+<div markdown="1" class="typewriter">
+**Basic datatypes**
 n   c   name      sz  literal            null inf SQL       Java      .Net
-----------------------------------------------------------------------------------
-0   *   list                         
+\------------------------------------------------------------------------------------
+0   *   list
 1   b   boolean   1   0b                                    Boolean   boolean
 2   g   guid      16                     0Ng                UUID      GUID
 4   x   byte      1   0x00                                  Byte      byte
 5   h   short     2   0h                 0Nh  0Wh smallint  Short     int16
 6   i   int       4   0i                 0Ni  0Wi int       Integer   int32
 7   j   long      8   0j                 0Nj  0Wj bigint    Long      int64
-                      0                  0N   0W   
+                      0                  0N   0W
 8   e   real      4   0e                 0Ne  0We real      Float     single
 9   f   float     8   0.0                0n   0w  float     Double    double
-                      0f            
+                      0f                 0Nf
 10  c   char      1   " "                " "                Character char
-11  s   symbol    .   `                  `        varchar   String    string
+11  s   symbol        \`                  \`        varchar
 12  p   timestamp 8   dateDtimespan      0Np  0Wp           Timestamp DateTime (RW)
-13  m   month     4   2000.01m           0Nm              
-14  d   date      4   2000.01.01         0Nd  0Wd date      Date    
+13  m   month     4   2000.01m           0Nm
+14  d   date      4   2000.01.01         0Nd  0Wd date      Date
 15  z   datetime  8   dateTtime          0Nz  0wz timestamp Timestamp DateTime (RO)
 16  n   timespan  8   00:00:00.000000000 0Nn  0Wn           Timespan  TimeSpan
-17  u   minute    4   00:00              0Nu  0Wu         
-18  v   second    4   00:00:00           0Nv  0Nv         
-19  t   time      4   00:00:00.000       0Nt  0Wt time      Time    TimeSpan
-20-76   enums                       
-77      anymap          
-78-96   77+t – mapped list of lists of type t           
-97      nested sym enum         
-98      table           
-99      dictionary          
-100     lambda          
-101     unary primitive         
-102     operator            
-103     iterator            
-104     projection          
-105     composition         
-106     f'          
-107     f/          
-108     f\          
-109     f':         
-110     f/:         
-111     f\:         
-112     dynamic load
-</pre>
+17  u   minute    4   00:00              0Nu  0Wu
+18  v   second    4   00:00:00           0Nv  0Wv
+19  t   time      4   00:00:00.000       0Nt  0Wt time      Time      TimeSpan
 
-_n_: short int returned by [`type`](../ref/type.md) and used for [casting](casting.md), e.g. `9h$3`  
-_c_: character used lower-case for [casting](casting.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)  
-_sz_: size in bytes  
-_inf_: infinity (no math on temporal types); `0Wh` is `32767h`  
+Columns:
+_n_    short int returned by [`type`](../ref/type.md) and used for [Cast](../ref/cast.md), e.g. `9h$3`
+_c_    character used lower-case for [Cast](../ref/cast.md) and upper-case for [Tok](../ref/tok.md) and [Load CSV](../ref/file-text.md#load-csv)
+_sz_   size in bytes
+_inf_  infinity (no math on temporal types); `0Wh` is `32767h`
+
 RO: read only; RW: read-write
 
-The datatype of an object is given as a short int: negative for atom, positive for a vector, zero for a general list. 
+**Other datatypes**
+20-76   enums
+77      anymap                                      104  [projection](application.md#projection)
+78-96   77+t – mapped list of lists of type t       105  [composition](../ref/compose.md)
+97      nested sym enum                             106  [f'](../ref/maps.md#each)
+98      table                                       107  [f/](../ref/accumulators.md)
+99      dictionary                                  108  [f\\](../ref/accumulators.md)
+100     [lambda](function-notation.md)                                      109  [f':](../ref/maps.md)
+101     unary primitive                             110  [f/:](../ref/maps.md#each-left-and-each-right)
+102     operator                                    111  [f\\:](../ref/maps.md#each-left-and-each-right)
+103     [iterator](../ref/iterators.md)                                    112  [dynamic load](../ref/dynamic-load.md)
+</div>
 
-<i class="fas fa-book"></i>
+Above, `f` is an [applicable value](glossary.md#applicable-value).
+
+Nested types are 77+t (e.g. 78 is boolean. 96 is time.)
+
+The type is a short int: 
+
+-    zero for a general list
+-    negative for atoms of basic datatypes
+-    positive for everything else
+
+
+:fontawesome-solid-book:
 [Cast](../ref/cast.md),
 [Tok](../ref/tok.md),
-[`type`](../ref/type.md), 
-[`.Q.ty`](../ref/dotq.md#qty-type) (type)<br>
-<i class="fas fa-book-open"></i> 
-[Casting](casting.md)
+[`type`](../ref/type.md),
+[`.Q.ty`](../ref/dotq.md#qty-type) (type)
+<br>
+:fontawesome-solid-book-open:
+:fontawesome-solid-graduation-cap:
+[Temporal data](../kb/temporal-data.md),
+[Timezones](../kb/timezones.md)
 
 
+## Basic types
 
+??? note "The default type for an integer is long (`7h` or `"j"`)."
 
-!!! note "Default integer type"
-
-    The default type for an integer is long (`7h` or `"j"`). 
     Before V3.0 it was int (`6h` or `"i"`).
 
 
@@ -91,7 +99,7 @@ q){(x;count x)}"日本"
 6
 ```
 
-Other encodings may give different results. 
+Other encodings may give different results.
 
 ```q
 q)\chcp
@@ -105,24 +113,44 @@ q)"Zürich"
 "Z\374rich"
 ```
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Unicode](../kb/unicode.md)
 
 
 ### Temporal
 
-The valid date range for parsing is ​1709.01.01 to 2290.12.31.
-Date arithmetic is not checked, so you can go out of this range.
+The valid date range is `0001.01.01` to `9999.12.31`. (Since V3.6 2017.10.23.)
+
+!!! warning "The 4-byte datetime datatype (15) is deprecated in favour of the 8-byte timestamp datatype (12)."
 
 ```q
-q)2290.12.31
-2290.12.31
-q)2291.01.01        / out of range
-'2291.01.01
-q)2290.12.31+0 1
-2290.12.31 2291.01.01
-q)2000.01.01+2000.01.01-1709.01.01
-2290.12.31
+q)"D"$"3001.01.01"
+3001.01.01
+```
+
+Internally, dates, times and timestamps are represented by integers:
+```q
+q)show noon:`minutes`seconds`nanoseconds!(12:00;12:00:00;12:00:00.000000000)
+minutes    | 12:00
+seconds    | 12:00:00
+nanoseconds| 0D12:00:00.000000000
+q)"j"$noon
+minutes    | 720
+seconds    | 43200
+nanoseconds| 43200000000000
+```
+
+Date calculations assume the [proleptic Gregorian calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar "Wikipedia").
+
+Casting to timestamp from date or datetime outside of the timestamp supported year range results in ±`0Wp`.
+Out-of-range dates and datetimes display as `0000.00.00` and `0000.00.00T00:00:00:.000`.
+```q
+q)`timestamp$1666.09.02
+-0Wp
+q)0001.01.01-1
+0000.00.00
+q)"z"$0001.01.01-1 
+0000.00.00T00:00:00.000
 ```
 
 Valid ranges can be seen by incrementing or decrementing the infinities.
@@ -138,35 +166,37 @@ q)-0W 0Wn+1 -1      / coincide with the min/max for timespan
 ```
 
 
+
+
 ### Symbols
 
-A back tick `` ` `` followed by a series of characters represents a _symbol_, which is not the same as a string. 
+A back tick `` ` `` followed by a series of characters represents a _symbol_, which is not the same as a string.
 
 ```q
 q)`symbol ~ "symbol"
 0b
 ```
 
-A back tick without characters after it represents the _empty symbol_: `` ` ``. 
+A back tick without characters after it represents the _empty symbol_: `` ` ``.
 
 !!! tip "Cast string to symbol"
 
-    The empty symbol can be used with [Cast](../ref/cast.md) to cast a string into a symbol, creating symbols whose names could not otherwise be written, such as symbols containing spaces. `` `$x`` is shorthand for `"S"$x`. 
+    The empty symbol can be used with [Cast](../ref/cast.md) to cast a string into a symbol, creating symbols whose names could not otherwise be written, such as symbols containing spaces. `` `$x`` is shorthand for `"S"$x`.
 
-    <pre><code class="language-q">q)s:\`hello world
+    ```q
     'world
-    q)s:\`$"hello world"
+    q)s:`$"hello world"
     q)s
-    \`hello world
-    </code></pre>
+    `hello world
+    ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-solid-street-view:
 _Q for Mortals_: [§2.4 Basic Data Types – Atoms](/q4m3/2_Basic_Data_Types_Atoms/#24-text-data)
 
 
 ### Filepaths
 
-Filepaths are a special form of symbol. 
+Filepaths are a special form of symbol.
 
 ```q
 q)count read0 `:path/to/myfile.txt  / count lines in myfile.txt
@@ -197,8 +227,51 @@ q)0w + 5
 0w
 ```
 
-<i class="fas fa-book"></i> 
+:fontawesome-solid-book:
 [`.Q.M`](../ref/dotq.md#qm-long-infinity) (long infinity)
+
+??? detail "To infinity and beyond"
+
+    [![Buzz Lightyear](../img/faces/buzzlightyear.jpg)](https://toystory.disney.com/buzz-lightyear)
+    {: .small-face style="margin-top:1em"}
+
+    Floating-point arithmetic follows [IEEE754](https://en.wikipedia.org/wiki/IEEE_754 "Wikipedia").
+
+    Integer arithmetic does no checks for infinities, just treats them as a signed integer.
+
+        q)vs[0b]@/:0N!0W+til 3
+        0W 0N -0W
+        0111111111111111111111111111111111111111111111111111111111111111b
+        1000000000000000000000000000000000000000000000000000000000000000b
+        1000000000000000000000000000000000000000000000000000000000000001b
+
+    but it does check for nulls.
+
+        q)10+0W+til 3
+        -9223372036854775799 0N -9223372036854775797
+
+    This can be **abused** to push infinities on nulls which then become sticky and can be filtered out altogether, e.g.
+
+        q)1+-1+-1+1+ -0W 0N 0W 1 2 3
+        0N 0N 0N 1 2 3
+
+    There is no display for short infinity.
+
+        q)0Wh
+        32767h
+        q)-0Wh
+        -32767h
+
+    Integer promotion is documented for [Add](../../ref/add/#range-and-domains).
+
+    Integer infinities 
+
+    -   do not promote, other than the signed bit; there is no special treatment over any other int value
+    -   map to int_min+1 and int_max, with `0N` as int_min; so there is no number smaller than `0N`
+
+    **Best practice is to view infinities as placeholders only, and not perform arithmetic on them.**
+
+    [![Infinity and beyond](../img/infinity-and-beyond.jpg)](https://toystory.disney.com/buzz-lightyear "Disney’s Toy Story")
 
 
 ### Guid
@@ -209,20 +282,23 @@ The guid type (since V3.0) is a 16-byte type, and can be used for storing arbitr
 
     Use [Deal](../ref/deal.md) to generate a guid (global unique: uses `.z.a .z.i .z.p`).
 
-    <pre><code class="language-q">q)-2?0Ng
+    ```q
+    q)-2?0Ng
     337714f8-3d76-f283-cdc1-33ca89be59e9 0a369037-75d3-b24d-6721-5a1d44d4bed5
-    </code></pre>
+    ```
 
     If necessary, manipulate the bytes to make the uuid a [Version-4 'standard' uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29).
-    
+
     Guids can also be created from strings or byte vectors, using `sv` or `"G"$`, e.g.
-    <pre><code class="language-q">q)0x0 sv 16?0xff
+    
+    ```q
+    q)0x0 sv 16?0xff
     8c680a01-5a49-5aab-5a65-d4bfddb6a661
     q)"G"$"8c680a01-5a49-5aab-5a65-d4bfddb6a661"
     8c680a01-5a49-5aab-5a65-d4bfddb6a661
-    </code></pre>
+    ```
 
-`0Ng` is null guid. 
+`0Ng` is null guid.
 
 ```q
 q)0Ng
@@ -250,11 +326,11 @@ q)type `city$10?city:`london`paris`rome
 
 (Since V3.0, type `20h` is reserved for `` `xxx$`` where `xxx` is the name of a variable.)
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [Enumerate](../ref/enumerate.md),
 [Enumeration](../ref/enumeration.md),
 [Enum Extend](../ref/enum-extend.md)<br>
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Enumerations](enumerations.md)
 
 

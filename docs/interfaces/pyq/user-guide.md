@@ -1,7 +1,6 @@
 ---
 title: PyQ user guide – Interfaces – kdb+ and q documentation
 description: PyQ lets you enjoy the power of kdb+ in a Python environment.
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+ / PyQ
 author: Alex Belopolsky, Aleks Bunin
 keywords: fusion, interface, kdb+, library, pyq, python, q
 ---
@@ -276,11 +275,12 @@ k('9 7 5 3 1')
 
     The `s#` prefix that appears in the display of the output for the `asc()` function indicates that the resulting vector has a _sorted_ attribute set. An attribute can be queried by calling the `attr()` function or accessing the `attr` property of the result:
 
-    <pre><code class="language-python">
-    &gt;&gt;&gt; s = q.asc(a) >>> q.attr(s) k('s')
-    &gt;&gt;&gt; s.attr
+    ```python
+    >>> s = q.asc(a) 
+    >>> q.attr(s) k('s')
+    >>> s.attr
     k('s')
-    </code></pre>
+    ```
 
     When the`asc()` function gets a vector with the `s` attribute set, it skips sorting and immediately returns the same vector.
 
@@ -503,7 +503,7 @@ This code saves 10 integers in kdb+ memory and makes a global variable `data` av
 k(':data')
 ```
 
-Note that the return value of the `pyq.q.save` function is a `K` symbol that is formed by prepending `:` to the file name. Such symbols are known as _file handles_ in q. Given a file handle, the kdb+ object stored in the file can be obtained by accessing the `value` property of the file handle.
+Note that the return value of the `pyq.q.save` function is a `K` symbol that is formed by pre-pending `:` to the file name. Such symbols are known as _file handles_ in q. Given a file handle, the kdb+ object stored in the file can be obtained by accessing the `value` property of the file handle.
 
 ```python
 >>> _.value
@@ -976,7 +976,7 @@ When the Each iterator is applied to an **integer vector**, it derives a n-ary f
 k('1 100 30')
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [Case](../../ref/maps.md#case) iterator
 
 Note that atoms passed to `v.each` are treated as infinitely repeated values. Vector arguments must all be of the same length.
@@ -1500,7 +1500,8 @@ $
 
 ## Calling Python from kdb+
 
-Kdb+ is designed as a platform for multiple programming languages. Out of the box, it comes with q, k, and a variant of ANSI SQL: the [s language](https://github.com/KxSystems/kdb/blob/master/s.k). Installing PyQ gives access to the p language, where "p" stands for "Python". In addition, PyQ provides a mechanism for exporting Python functions to q where they can be called as native q functions.
+Kdb+ is designed as a platform for multiple programming languages. 
+Installing PyQ gives access to the p language, where "p" stands for "Python". In addition, PyQ provides a mechanism for exporting Python functions to q where they can be called as native q functions.
 
 
 ### The p language

@@ -16,7 +16,7 @@ MathWorks provides functions overview, usage instructions and some examples on t
     As Matlab/datafeed toolbox evolves features or instruction below are subject to revisions. Please refer to toolbox documentation for latest version.
     Users have reported that this works with more recent versions (e.g. R2015b on RHEL 6.8/2016b and 2017a on macOS).
 
-    See also community-supported native connector <i class="fab fa-github"></i> [dmarienko/kdbml](https://github.com/dmarienko/kdbml)
+    See also community-supported native connector :fontawesome-brands-github: [dmarienko/kdbml](https://github.com/dmarienko/kdbml)
 
 
 First, we start up a kdb+ process that we wish to communicate with from Matlab and load some sample data into it.
@@ -49,8 +49,8 @@ totalvolume2:{[stock;minvolume] select sum(volume) from trade where sec = stock,
 
 Then
 
-```dos
-> q tradedata.q -p 5001
+```powershell
+q tradedata.q -p 5001
 ```
 
 ```q
@@ -84,9 +84,9 @@ q)
 The Matlab integration depends on the two Java files `c.jar` and `jdbc.jar`. 
 For the purposes of this recipe, we assume this is available on the machine Matlab is running on, at `C:\q\jdbc.jar`. 
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/c.jar](https://github.com/KxSystems/kdb/blob/master/c/c.jar)  
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/kdb/c/jdbc.jar](https://github.com/KxSystems/kdb/blob/master/c/jdbc.jar)
 
 We then start a new Matlab session. From here on, `>>` represents the Matlab prompt.
@@ -157,14 +157,17 @@ We close a connection using the `close` function:
 !!! warning "Installation errors"
 
     If there is a problem with either the installation of the q integration, or the jar file is not found, we’ll get an error along the lines of:
-    <pre><code class="language-matlab">
+    
+    ```matlab
     ??? Undefined function or method 'c' for input arguments of type 'char'.
     
     Error in ==> kx.kx at 51
         w.handle = c(ip,p);
-    </code></pre>
+    ```
+
     Or if the socket is not currently connected then any future communications will result in an error like:
-    <pre><code class="language-matlab">
+
+    ```matlab
     ??? Java exception occurred:
     java.net.SocketException: Socket closed
 
@@ -180,7 +183,7 @@ We close a connection using the `close` function:
 
     Error in ==> kx.fetch at 65
         t = c.handle.k(varargin{1});
-    </code></pre>
+    ```
 
 
 ## Using the kdb+ process
@@ -466,7 +469,7 @@ ans =
 
 ## Async commands to q
 
-The `exec` function is used for sending asychronous commands to q; ones we do not expect a response to, and which may be performed in the background while we continue interacting with the Matlab process.
+The `exec` function is used for sending asynchronous commands to q; ones we do not expect a response to, and which may be performed in the background while we continue interacting with the Matlab process.
 
 Here we establish a large-ish data structure in the kdb+ process:
 

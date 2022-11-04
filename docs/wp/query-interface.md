@@ -1,11 +1,17 @@
 ---
-title: A natural query interface for distributed systems
+title: A natural query interface for distributed systems | White papers | kdb+ and q documentation
 description: An interface similar to q for queries to kdb+ tables distributed across multiple systems, implemented in q, trading some q optimizations for convenience 
 author: Sean Keevey
 date: November 2014
 keywords: distributed systems, kdb+, natural, q, query
 ---
+White paper
+{: #wp-brand}
+
 # A natural query interface for distributed systems
+
+by [Sean Keevey](#author)
+{: .wp-author}
 
 
 
@@ -30,7 +36,7 @@ Implementing this idea in full generality would rely on being able to solve a di
 
 Before describing the implementation, it is worth noting two important caveats:
 
--   This implementation uses a single-letter namespace. Single-letter namespaces are reserved for use by Kx and should not be used in a production system.
+-   This implementation uses a single-letter namespace. Single-letter namespaces are reserved for use by KX and should not be used in a production system.
 
 -   The implementation uses an undocumented feature of kdb+ which allows a handler for a custom language to be defined. This feature is not guaranteed to be present in future kdb+ versions.
 
@@ -338,8 +344,17 @@ It could be integrated with a load balancer, a permissions arbiter, a logging fr
 
 All tests were run using kdb+ version 3.2 (2014.10.04).
 
+[:fontawesome-solid-print: PDF](/download/wp/a_natural_query_interface_for_distributed_systems.pdf)
+
 
 ## Author
 
-Sean Keevey is a kdb+ consultant and has developed data and analytic systems for some of the world’s largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
+**Sean Keevey** is a kdb+ consultant and has developed data and analytic systems for some of the world’s largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
+
+Other papers by Sean Keevey
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Dynamically shrinking big data using timeseries database kdb+](ts-shrink/index.md)
+</ul>
 

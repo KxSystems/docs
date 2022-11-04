@@ -1,17 +1,24 @@
 ---
-title: The application of foreign keys and linked columns in kdb+ – White papers – q and kdb+ documentation
+title: The application of foreign keys and linked columns in kdb+ | White papers | q and kdb+ documentation
 description: How foreign keys and linked columns may be established and applied in kdb+ databases, and a review of the advantages and penalties
 author: Kevin Smyth
 date: April 2013
 keywords: foreign key, kdb+, link, linked columns, q, sym file, symlink
 ---
+White paper
+{: #wp-brand}
+
 # The application of foreign keys and linked columns in kdb+
+
+by [Kevin Smyth](#author)
+{: .wp-author}
+
 
 
 
 Tables in a database define a relationship between different types of data, whether that relationship is static, dynamic (i.e. fluctuating as part of a time series) or a mixture of both. In general, it is regularly the case that database queries will require data from multiple tables for enrichment and aggregation purposes and so a key aspect of database design is developing ways in which data from several tables is mapped together quickly and efficiently. Although kdb+ contains a very rich set of functions for joining tables in real time, if permanent and well-defined relationships between different tables can be established in advance then data-retrieval latency and related memory usage may be significantly reduced.
 
-This white paper will discuss foreign keys and linked columns in a kdb+ context, two ways whereby table structure and organisation can be optimized to successfully retrieve and store data in large-scale time-series databases.
+This white paper will discuss foreign keys and linked columns in a kdb+ context, two ways whereby table structure and organization can be optimized to successfully retrieve and store data in large-scale time-series databases.
 
 Tests performed using kdb+ 3.0 (2013.04.05).
 
@@ -23,7 +30,7 @@ Tests performed using kdb+ 3.0 (2013.04.05).
 
 The concept behind a foreign key is analogous to that of an enumerated list. While enumerating a list involves separating it into its distinct elements and their associated indexes within the list, here we take an arbitrary table column and enumerate it across a keyed column, which may be either in the same table as itself or a different table in the same database. Behind the scenes, a pointer to the associated key column replaces the enumerated column’s values essentially creating a parent-child relationship if they are in the same table or a data link if they are in different tables.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [Enumerate `$`](../ref/enumerate.md), 
 [Enumeration `!`](../ref/enumeration.md), 
 [Enum Extend `?`](../ref/enum-extend.md)  
@@ -148,7 +155,8 @@ B   880.5
 All future inserts into `t2` must enumerate across `t1` as below to avoid an error:
 
 ```q
-q)`t2 insert (.z.T;`C;`NDQ;4.05;`t1$`C`NDQ) ,2
+q)`t2 insert (.z.T;`C;`NDQ;4.05;`t1$`C`NDQ) 
+,2
 q)t2
 time         sym exchange price    t1fkey 
 -----------------------------------------
@@ -607,8 +615,6 @@ A drawback to using foreign keys is that keyed tables cannot be splayed to disk.
 
 ## Author
 
-Kevin Smyth has worked as a consultant for some of the world's leading
-financial institutions. Based in London, Kevin has implemented data
-capture and high-frequency data analysis projects across a large
-number of mainstream and alternative asset classes.
+**Kevin Smyth** has worked as a consultant for some of the world's leading financial institutions. Based in London, Kevin has implemented data capture and high-frequency data analysis projects across a large number of mainstream and alternative asset classes.
 
+[:fontawesome-solid-print: PDF](/download/wp/the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)

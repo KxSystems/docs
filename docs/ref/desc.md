@@ -17,7 +17,9 @@ _Sort and grade: descending_
 
 _Descending sort_
 
-Syntax: `desc x`, `desc[x]`
+```syntax
+desc x    desc[x]
+```
 
 Returns `x` sorted into descending order. 
 The function is uniform.
@@ -27,7 +29,10 @@ Where `x` is a
 
 -   **vector**, it is returned sorted
 -   **mixed list**, the result is sorted within datatype
--   **dictionary** or **table**, the result is sorted by the first key value or column (respectively).
+-   **dictionary**, returns it sorted by the values
+-   **table**, returns it sorted by the first non-key column and with the sorted attribute set on that column
+
+!!! detail "Unlike `asc`, which sets the parted attribute where there are other non-key columns, `desc` sets only the sorted attribute."
 
 ```q
 q)desc 2 1 3 4 2 1 2                    / vector
@@ -39,23 +44,36 @@ q)desc (1;1b;"b";2009.01.01;"a";0)      / mixed list
 "a"
 1
 0
-1b
 
-q)t:([]a:3 4 1;b:`a`d`s)                / table
-q)desc t
+q)desc `a`b`c!2 1 3 					/ dictionary
+c| 3
+a| 2
+b| 1
+
+q)desc([]a:3 4 1;b:`a`d`s)              / table
 a b
 ---
 4 d
 3 a
 1 s
+q)meta desc([]a:3 4 1;b:`a`d`s)
+c| t f a
+-| -----
+a| j
+b| s
 ```
-
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  b g x h i j e f c s p m d z n u v t
+```
 
 ## `idesc`
 
 _Descending grade_
 
-Syntax: `idesc x`, `idesc[x]`
+```syntax
+idesc x    idesc[x]
+```
 
 Where `x` is a list or dictionary,  returns the indices needed to sort list it in descending order. 
 
@@ -70,7 +88,10 @@ q)(desc L)~L idesc L
 q)idesc `a`c`b!1 2 3
 `b`c`a
 ```
-
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  j j j j j j j j j j j j j j j j j j
+```
 
 
 ## `xdesc`
@@ -78,7 +99,9 @@ q)idesc `a`c`b!1 2 3
 _Sorts a table in descending order of specified columns. 
 The sort is by the first column specified, then by the second column within the first, and so on._
 
-Syntax: `x xdesc y`, `xdesc[x;y]`
+```syntax
+x xdesc y    xdesc[x;y]
+```
 
 Where `x` is a symbol vector of column names defined in `y`, which is passed by
 
@@ -87,7 +110,7 @@ Where `x` is a symbol vector of column names defined in `y`, which is passed by
 
 `y` sorted in descending order by `x`. 
 
-The `` `s# `` attribute is not set.
+The sorted attribute is not set.
 The sort is stable, i.e. it preserves order amongst equals.
 
 ```q
@@ -120,7 +143,7 @@ city  | s
 
 **Duplicate column names** `xdesc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
 
 
@@ -130,9 +153,18 @@ city  | s
 
 !!! warning "Duplicate keys in a dictionary or duplicate column names in a table will cause sorts and grades to return unpredictable results."
 
-<i class="fas fa-book"></i>
-[`asc`, `iasc`, `xasc`](asc.md)  
-<i class="fas fa-book-open"></i>
+----
+
+:fontawesome-solid-book:
+[`asc`, `iasc`, `xasc`](asc.md),
+[`attr`](attr.md),
+[Set Attribute](set-attribute.md)
+<br>
+:fontawesome-solid-book-open:
 [Dictionaries & tables](../basics/dictsandtables.md),
-[Sorting](../basics/sort.md)
+[Metadata](../basics/metadata.md),
+[Sorting](../basics/by-topic.md#sort)
+<br>
+_Q for Mortals_
+[§8.8 Attributes](/q4m3/8_Tables/#88-attributes)
 

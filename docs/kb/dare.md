@@ -4,7 +4,7 @@ description: Data-at-rest encryption with kdb+, including Transparent Disk Encry
 author: Charles Skelton
 date: March 2020
 ---
-# <i class="fas fa-lock"></i> Data At Rest Encryption (DARE)
+# :fontawesome-solid-lock: Data At Rest Encryption (DARE)
 
 ![Encryption](../img/encryption.jpg)
 <!-- GettyImages-1084312676 -->
@@ -133,7 +133,7 @@ Take precautions to restrict remote users from accessing this file directly. Thi
 ```
 Ensure all the other message handlers are initialized accordingly. See:
 
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 [Firewalling](firewalling.md)
 
 Then, load the key file using
@@ -233,7 +233,7 @@ The master key is encrypted with a symmetric cipher with a key produced from a p
 
 Choosing high-entropy passwords could significantly extend the amount of time required to crack the password. Remember high entropy is not enough – don’t reuse passwords, or passwords that are easily guessed by dictionary attacks. Human errors, such as choosing a weak password, or storing the key file and password in insecure areas, can leave encryption much weaker than desired, resulting in a false sense of security.
 
-<i class="fas fa-unlock"></i>
+:fontawesome-solid-unlock:
 [Password strength test](http://rumkin.com/tools/password/passchk.php)
 
 [Password entropy](https://en.wikipedia.org/wiki/Password_strength) is a measurement of how unpredictable a password is. Aim for an entropy of >80.
@@ -256,7 +256,7 @@ These are some of the points of research on our encryption roadmap.
 
 Kdb+ presently provides for confidentiality but not integrity beyond the meta block.
 
-<i class="fab fa-wikipedia-w"></i>
+:fontawesome-brands-wikipedia-w:
 [Authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption "Wikipedia")
 
 
@@ -275,18 +275,18 @@ One of the most profound challenges related to encryption is key management due 
 
 ## Further reading
 
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [_Understanding Cryptography: A Textbook for Students and Practitioners_](https://www.amazon.com/Understanding-Cryptography-Textbook-Students-Practitioners/dp/3642041000)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [_An Introduction to Mathematical Cryptography_](https://www.amazon.com/Introduction-Mathematical-Cryptography-Undergraduate-Mathematics/dp/1493917102)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [_Cryptography Made Simple_](https://www.amazon.com/Cryptography-Made-Simple-Information-Security/dp/3319219359)
 <br>
-<i class="fas fa-book"></i>
+:fontawesome-solid-book:
 [_Serious Cryptography: A Practical Introduction to Modern Encryption_](https://www.amazon.com/Serious-Cryptography-Practical-Introduction-Encryption/dp/1593278268)
 <br>
-<i class="fas fa-globe"></i>
+:fontawesome-solid-globe:
 [coursera.org](https://www.coursera.org/learn/crypto)
 

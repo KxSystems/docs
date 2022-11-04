@@ -13,10 +13,10 @@ Here’s a simple way to daemonize kdb+ on Linux. Supports redirecting stderr an
 
     Remember shell features, e.g.
 
-    <pre><code class="language-bash">
-    $ nohup q -p 5000 < /dev/null > /tmp/stdoe 2>&1&
-    $ echo $! > /tmp/pidfile
-    </code></pre>
+    ```bash
+    nohup q -p 5000 < /dev/null > /tmp/stdoe 2>&1&
+    echo $! > /tmp/pidfile
+    ```
 
 Sample use:
 

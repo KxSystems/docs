@@ -10,7 +10,9 @@ _Foreign-key columns of a table_
 
 
 
-Syntax: `fkeys x`, `fkeys[x]`
+```syntax
+fkeys x    fkeys[x]
+```
 
 Where `x` is a table, returns a dictionary that maps foreign-key columns to their tables.
 
@@ -28,6 +30,6 @@ a| f
 c| f
 ```
 
-
-<i class="far fa-hand-point-right"></i>
-Basics: [Metadata](../basics/metadata.md)
+---
+:fontawesome-solid-book-open:
+[Metadata](../basics/metadata.md)

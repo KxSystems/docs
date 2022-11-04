@@ -1,8 +1,7 @@
 ---
-title: lower, upper – Reference – kdb+ and q documentation
-description: lower and upper are q keywords that shift text to lower or upper case respectively. 
+title: Shift to lower or upper case | Reference | kdb+ and q documentation
+description: lower and upper are q keywords that shift text to lower or upper case respectively.
 author: Stephen Taylor
-keywords: case, kdb+, lower, q, string, text, upper
 ---
 # `lower`, `upper`
 
@@ -10,39 +9,43 @@ _Shift case_
 
 
 
+```syntax
+lower x     lower[x]
+upper x     upper[x]
+```
 
+Where `x` is a character or symbol atom or vector, returns it with any bicameral characters in the lower/upper case.
 
-## `lower`
-
-_Lower case_
-
-Syntax: `lower x`, `lower[x]`
-
-Returns symbol or string `x` with any bicameral characters in the lower case. 
 
 ```q
 q)lower"IBM"
 "ibm"
 q)lower`IBM
 `ibm
-```
 
-
-## `upper`
-
-_Upper case_
-
-Syntax: `upper x`, `upper[x]`
-
-Returns symbol or string `x` with any bicameral characters in the upper case. 
-
-```q
 q)upper"ibm"
 "IBM"
-q)upper`ibm
-`IBM
+q)upper`ibm`msft
+`IBM`MSFT
 ```
 
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  . . . . . . . . c s . . . . . . . .
+```
 
-<i class="far fa-hand-point-right"></i> 
-Basics: [Strings](../basics/strings.md)
+## :fontawesome-solid-sitemap: Implicit iteration
+
+`lower` and `upper` are [atomic functions](../basics/atomic.md).
+
+```q
+q)upper(`The;(`quick`brown;(`fox;`jumps`over));`a;`lazy`dog)
+`THE
+(`QUICK`BROWN;(`FOX;`JUMPS`OVER))
+`A
+`LAZY`DOG
+```
+
+----
+:fontawesome-solid-book-open:
+[Strings](../basics/by-topic.md#strings)

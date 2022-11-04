@@ -7,7 +7,7 @@ keywords: kdb+, q,view
 
 
 
-A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation. 
+A view is a calculation that is re-evaluated only if the values of the underlying dependencies have changed since its last evaluation.
 
 
 ## Why use a view?
@@ -29,7 +29,7 @@ q)viewname::[expression;expression;…]expression
 
     The result returned by a view is the result of the last expression in the list, just as in a lambda.
 
-    <pre><code class="language-q">
+    ```q
     q)a: til 5
     q)uu:: a
     q)uu
@@ -39,8 +39,8 @@ q)viewname::[expression;expression;…]expression
     q)vv ~ (::)
     1b
     q)vv ~ {[];}[]
-    1b 
-    </code></pre>
+    1b
+    ```
 
 The following defines a view called `myview` which depends on vars `a` and `b`.
 
@@ -59,11 +59,11 @@ A view should not have side-effects, i.e. should not update global variables. Al
 A view definition can be spread over multiple lines in a script as long as it is indented accordingly (e.g. exactly like a function definition). e.g.
 
 ```bash
-$cat v.q
+$ cat v.q
 t:([]a:til 10)
 myview::select from t
  where a<5 / note this line is indented by one space
-$q v.q
+$ q v.q
 KDB+ 3.2 2014.08.26 Copyright (C) 1993-2014 Kx Systems
 m64/...
 ```
@@ -111,9 +111,9 @@ q)views`
 ```
 
 
-## How to list invalidated views 
+## How to list invalidated views
 
-Invalidated (pending) views are awaiting recalculation. 
+Invalidated (pending) views are awaiting recalculation.
 
 Invoking `\B` will return a list of pending views.
 
@@ -153,7 +153,7 @@ q)`. `d
 b+a
 ```
 
-`value` on that reveals the underlying representation: 
+`value` on that reveals the underlying representation:
 
 - (last result|::)
 - parse-tree
@@ -249,10 +249,10 @@ q)t1.date
 
 ## Multithreading
 
-Views must be evalulated on the main thread, otherwise the calculation will signal `'threadview`. E.g. with q using 2 slave threads
+Views must be evaluated on the main thread, otherwise the calculation will signal `'threadview`. E.g. with q using two secondary threads
 
 ```bash
-$q -s 2
+$ q -s 2
 KDB+ 3.2 2014.08.26 Copyright (C) 1993-2014 Kx Systems
 m64/...
 ```
@@ -278,11 +278,16 @@ q){a}peach 0 1
 
 Views are not parsable, e.g. `eval parse "a::b+c"`
 
-<i class="far fa-hand-point-right"></i> 
-[`view`](../ref/view.md), [`views`](../ref/view.md)  
-System commands: [`\b`](../basics/syscmds.md#b-views "views"), 
-[`\B`](../basics/syscmds.md#b-pending-views "pending views")  
-Namespaces: [`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"), 
+---
+:fontawesome-solid-book:
+[`view`](../ref/view.md), [`views`](../ref/view.md),
+[`.z.b`](../ref/dotz.md#zb-dependencies "dependencies"),
 [`.z.vs`](../ref/dotz.md#zvs-value-set "value set")
-
-
+<br>
+:fontawesome-solid-book-open:
+[`\b`](../basics/syscmds.md#b-views "views"),
+[`\B`](../basics/syscmds.md#b-pending-views "pending views")
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.11 Views](https://code.kx.com//q4m3/9_Queries_q-sql/#911-views)

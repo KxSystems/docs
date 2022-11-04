@@ -1,7 +1,6 @@
 ---
 title: Tables – Starting kdb+ – Learn – kdb+ and q documentation
 description: How to work with tables in q
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 keywords: kdb+, q, start, table, tutorial
 ---
 # Tables
@@ -22,7 +21,8 @@ Tables are created in memory, and then written to disk if required. When written
 There are two ways of creating a table. One way explicitly associates lists of column names and data; the other uses a q expression that specifies the column names and initial values. The second method also permits each column’s datatype to be given, and so is particularly useful when a table is created with no data.
 
 -   create table by association:
-    <pre><code class="language-q">
+
+    ```q
     q)tab:flip \`items\`sales\`prices!(\`nut\`bolt\`cam\`cog;6 8 0 3;10 20 15 20)
     q)tab
     items sales prices
@@ -31,20 +31,22 @@ There are two ways of creating a table. One way explicitly associates lists of c
     bolt  8     20
     cam   0     15
     cog   3     20
-    </code></pre>
+    ```
 
 -   create table by specifying column names and initial values:
-    <pre><code class="language-q">
+
+    ```q
     q)tab2:([]items:\`nut\`bolt\`cam\`cog;sales:6 8 0 3;prices:10 20 15 20)
     q)tab~tab2              / tab and tab2 are identical
     1b
-    </code></pre>
+    ```
 
 The form for the second method, for a table with `j` primary keys and `n` columns in total, is:
+<div markdown="1" class="typewriter">
+t:([c~1~:v~1~; … ; c~j~:v~j~] c~j+1~:v~j+1~; … ;c~n~:v~n~)
+</div>
 
-`t:([c`<sub>`1`</sub>`:v`<sub>`1`</sub>`;...;c`<sub>`j`</sub>`:v`<sub>`j`</sub>`]c`<sub>`j+1`</sub>`:v`<sub>`j+1`</sub>`;...;c`<sub>`n`</sub>`:v`<sub>`n`</sub>`)`
-
-Here table `t` is defined with column names c<sub>i</sub>, and corresponding values v<sub>i</sub>. The square brackets are for primary keys, and are required even if there are no primary keys.
+Here table `t` is defined with column names $c_{1-n}$, and corresponding values $v_{1-n}. The square brackets are for primary keys, and are required even if there are no primary keys.
 
 
 ## 4.3 Suppliers and parts
@@ -167,7 +169,7 @@ The following is a typical layout populated with random data. Load the `trades.q
 q)\l start/trades.q
 ```
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/start/trades.q](https://github.com/KxSystems/cookbook/blob/master/start/trades.q) 
 
 A trade table might include: date, time, symbol, price, size, condition code.

@@ -83,10 +83,11 @@ Initialization counts towards billed execution time and timeout. When an executi
 ### Q/kdb+ bootstrap and code execution
 
 To deploy the q/kdb+ runtime to your Lambda environment follow the instructions at
-
+[_Deploy using Serverless Application Repository_](#deploy-using-serverless-application-repository).
+<!-- 
 -   [Deploy using Serverless Application Repository](#deploy-using-serverless-application-repository)
 -   [Deploy using Cloud Development Kit](#deploy-using-the-cloud-development-kit)
-
+ -->
 Once the q/kdb+ runtime is deployed to your Lambda environment, two files can be seen on the Lambda console.
 
 ```txt
@@ -192,6 +193,7 @@ The AWS Serverless Application Repository is a managed repository for serverless
 
 Following the instructions from the above link, you can deploy the latest version of q/kdb+ to your AWS Lambda environment. To register your q/kdb+ Lambda function, visit [serverless.kx.com](https://serverless.kx.com/).
 
+<!-- 
 ## Deploy using the Cloud Development Kit
 
 The AWS Cloud Development Kit (CDK) is a software-development framework to model and provision cloud applications using a range of programming languages. To install the CDK follow the instructions at [cdkworkshop.com](https://cdkworkshop.com/).
@@ -229,7 +231,7 @@ class​ ​LambdaKxStack​(core.Stack):
 
 The repository for the complete CDK code can be found at
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/kx-lambda](https://github.com/kxcontrib/kx-lambda)
 
 The `layers` directory contains the q/kdb+ runtime and the `code` directory contains the q/kdb+ code.
@@ -246,7 +248,7 @@ To remove the stack and all dependencies from your account, run:
 ```bash
 $ cdk destroy kx-lambda-cdk
 ```
-
+ -->
 ## Option pricing using Black-Scholes pricing model
 
 For many financial institutions, HPC grids are a key infrastructure component of their financial and risk modelling. These model computations are becoming increasingly more complex and a growing number of financial institutions are evolving to leverage serverless architectures to achieve high parallelization on AWS Lambda.
@@ -335,7 +337,7 @@ From the response payload we see the function was successful and calculated the 
 
 To demonstrate a q/kdb+ Lambda function processing multiple events, we detail how to stream data from AWS Simple Storage Service (S3). Using FIFO named pipes and [`.Q.fps`](../../ref/dotq.md#qfps-streaming-algorithm) within q, data can be streamed in for processing. To illustrate this example, we create 100 files each containing 1 million Black-Scholes input parameters. The files are placed in a S3 bucket. This S3 bucket is the trigger for the Lambda function.
 
-<i class="fab fa-aws"></i>
+:fontawesome-brands-aws:
 [Configuring Amazon S3 Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
 for how to add an S3 bucket event as a trigger to your Lambda function
 
@@ -351,7 +353,7 @@ Each parameter file is space-delimited and has a column for Spot, Strike, Time, 
 
 The Lambda function that is created has an associated AWS IAM role. To access the data in S3, the Lambda roles credentials are updated using IAM to allow permission to access the S3 bucket where you would like to place your parameter files.
 
-<i class="fab fa-aws"></i>
+:fontawesome-brands-aws:
 [Writing IAM Policies: How to Grant Access to an Amazon S3 Bucket](https://aws.amazon.com/blogs/security/writing-iam-policies-how-to-grant-access-to-an-amazon-s3-bucket/)
 
 Next we update the handler to use the q code `process_s3data.q`.
@@ -430,7 +432,7 @@ AWS_SECRET_ACCESS_KEY
 AWS_SESSION_TOKEN
 ```
 
-<i class="fab fa-aws"></i>
+:fontawesome-brands-aws:
 [Signing AWS API Requests](https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html)
 
 `Stream_Data`:

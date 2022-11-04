@@ -6,10 +6,10 @@ keywords: api, interface, kdb+, library, q, scala
 
 
 Download 
-<i class="fab fa-github"></i> [KxSystems/kdb/c/kx/c.java](https://github.com/KxSystems/kdb/blob/master/c/kx/c.java) to subfolder `kx` and compile it.
+:fontawesome-brands-github: [KxSystems/kdb/c/kx/c.java](https://github.com/KxSystems/kdb/blob/master/c/kx/c.java) to subfolder `kx` and compile it.
 
 ```bash
-$ javac kx/c.java
+javac kx/c.java
 ```
 
 Create a file `a.scala` containing
@@ -29,13 +29,13 @@ KxTest.main(null)
 Start a kdb+ process listening on port 5001, e.g.
 
 ```bash
-$ q -p 5001
+q -p 5001
 ```
 
 and execute the above program using
 
-```ash
-$ scala -cp . a.scala
+```bash
+scala -cp . a.scala
 ```
 
 and it should print `4`.

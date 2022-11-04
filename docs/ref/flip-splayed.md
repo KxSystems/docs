@@ -9,7 +9,9 @@ keywords: flip, flip splayed, kdb+, partitioned, q, splayed, table
 
 
 
-Syntax: `x!y`, `![x;y]`
+```syntax
+x!y    ![x;y]
+```
 
 Where `x` is a symbol list and `y` is
 
@@ -18,6 +20,6 @@ Where `x` is a symbol list and `y` is
 
 returns the flip of `y`.
 
-
-<i class="far fa-hand-point-right"></i>
-Basics: [Dictionaries & tables](../basics/dictsandtables.md)
+---
+:fontawesome-solid-book-open:
+[Dictionaries & tables](../basics/dictsandtables.md)
