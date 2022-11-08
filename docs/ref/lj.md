@@ -1,26 +1,26 @@
 ---
-title: lj – Reference – kdb+ and q documentation
+title: lj – left join keyword | Reference | kdb+ and q documentation
 description: lj is a q keyword that performs a left join.
 keywords: join, kdb+, left, left join, lj, ljf, q
 ---
-# `lj`, `ljf` 
+# `lj`, `ljf`
 
 _Left join_
 
 
 
 
-
-Syntax: `x lj y`, `lj[x;y]`  
-Syntax: `x ljf y`, `ljf[x;y]`
+```syntax
+x lj  y     lj [x;y]
+x ljf y     ljf[x;y]
+```
 
 Where 
 
--   `x` and `y` are tables
--   `y` is keyed
--   the key column/s of `y` are columns of `x`
-
-returns `x` and `y` joined on the key columns of `y`. 
+-   `x` is a table
+-   `y` is 
+    -   a keyed table whose key column/s are columns of `x`, returns `x` and `y` joined on the key columns of `y`
+    -   or the general empty list `()`, returns `x`
 
 For each record in `x`, the result has one record with the columns of `y` joined to columns of `y`:
 
@@ -34,11 +34,13 @@ a b c
 1 I 10
 2 J 20
 3 K 30
+
 q)show y:([a:1 3;b:`I`K]c:1 2;d:10 20)
 a b| c d
 ---| ----
 1 I| 1 10
 3 K| 2 20
+
 q)x lj y
 a b c  d
 ---------
@@ -83,48 +85,53 @@ a b
 
 q)(1!r)~(1!x)lj 1!y
 1b
-q)r~t1 lj 1!t2
+q)r~x lj 1!y
 1b
 
-q)t1 lj t2
+q)x lj y
 'type
-  [0]  t1 lj t2
+  [0]  x lj y
           ^
 ```
 
 
-## Changes in V3.0
+??? detail "Changes in V3.0"
 
-Since V3.0, the `lj` operator is a cover for `,\:` (Join Each Left) that allows the left argument to be a keyed table. `,\:` was introduced in V2.7 2011.01.24.
+    Since V3.0, the `lj` operator is a cover for `,\:` (Join Each Left) that allows the left argument to be a keyed table. `,\:` was introduced in V2.7 2011.01.24.
 
-Prior to V3.0, `lj` had similar behavior, with one difference - when there are nulls in the right argument, `lj` in V3.0 uses the right-argument null, while the earlier version left the corresponding value in the left argument unchanged:
+    Prior to V3.0, `lj` had similar behavior, with one difference - when there are nulls in the right argument, `lj` in V3.0 uses the right-argument null, while the earlier version left the corresponding value in the left argument unchanged:
 
-```q
-q)show x:([]a:1 2;b:`x`y;c:10 20)
-a b c
-------
-1 x 10
-2 y 20
-q)show y:([a:1 2]b:``z;c:1 0N)
-a| b c
--| ---
-1|   1
-2| z
-q)x lj y        / kdb+ 3.0
-a b c
------
-1   1
-2 z
-q)x lj y        / kdb+ 2.8 
-a b c
-------
-1 x 1
-2 z 20
-```
+    ```q
+    q)show x:([]a:1 2;b:`x`y;c:10 20)
+    a b c
+    ------
+    1 x 10
+    2 y 20
+    q)show y:([a:1 2]b:``z;c:1 0N)
+    a| b c
+    -| ---
+    1|   1
+    2| z
+    q)x lj y        / kdb+ 3.0
+    a b c
+    -----
+    1   1
+    2 z
+    q)x lj y        / kdb+ 2.8 
+    a b c
+    ------
+    1 x 1
+    2 z 20
+    ```
 
-Since 2014.05.03, the earlier version is available in all V3.x versions as `ljf`.
+    Since 2014.05.03, the earlier version is available in all V3.x versions as `ljf`.
 
 
-<i class="far fa-hand-point-right"></i> 
-Basics: [Joins](../basics/joins.md)
+----
+:fontawesome-solid-book-open: 
+[Joins](../basics/joins.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§9.9.2 Ad Hoc Left Join](/q4m3/9_Queries_q-sql/#992-ad-hoc-left-join-lj)
 

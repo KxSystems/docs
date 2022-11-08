@@ -5,11 +5,11 @@ author: Conor McCarthy
 date: October 2018
 keywords: machine learning, ml, feature extraction, feature selection, time series forecasting, utilities, interpolation, filling, statistics, kdb+, q
 ---
-# <i class="fas fa-share-alt"></i> Machine-learning toolkit
+# :fontawesome-solid-share-alt: Machine-learning toolkit
 
 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml/)
 
 
@@ -19,7 +19,9 @@ The toolkit contains:
 
 -   Utility functions relating to important aspects of machine-learning including [data preprocessing](utilities/preproc.md), [statistical metrics](utilities/metric.md), and various other functionality useful in many machine-learning applications contained under [utils](utilities/util.md). 
 -   An implementation of the [FRESH](fresh.md) (FeatuRe Extraction and Scalable Hypothesis testing) algorithm in q. This lets a kdb+/q user perform feature-extraction and feature-significance tests on structured time-series data for forecasting, regression and classification. 
--   Implementations of a number of [cross validation](xval.md) and grid search procedures. These allow kdb+/q users to validate the performance of machine learning models when exposed to new data, test the stability of models over time or find the best hyper-parameters for tuning their models.
+-   Implementations of a number of [cross validation](xval.md) and hyperparameter search procedures. These allow kdb+/q users to validate the performance of machine learning models when exposed to new data, test the stability of models over time or find the best hyper-parameters for tuning their models.
+- [Clustering algorithms](clustering/algos.md) used to group data points and to identify patterns in their distributions. The algorithms make use of a [k-dimensional tree](clustering/kdtree.md) to store points and [scoring functions](clustering/score.md) to analyze how well they performed.
+- [Graph and Pipeline](graph/index.md) library containing a framework to develop code following a structure similar to a directed mathematical graph. This is intended to provide a scalable development methodology for complex code bases in q/kdb+.
 
 Over time the machine-learning functionality in this library will be extended to include;
 
@@ -36,7 +38,7 @@ The following requirements cover all those needed to run the libraries in the cu
 A number of Python dependencies also exist for the running of embedPy functions within both the the machine-learning utilities and FRESH libraries. 
 These can be installed as outlined at
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/ml](https://github.com/kxsystems/ml) 
 using Pip
 

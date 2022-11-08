@@ -58,7 +58,7 @@ q).Q.w[]`used`mmap / 336736 40432
 q)p:exec price from a[1]
 q).Q.w[]`used`mmap /336736 40432
 ```
-- Symbol vectors/atoms are automatically enumerated against `file##` and deenumerated (and therefore always copied) on access. e.g.
+- Symbol vectors/atoms are automatically enumerated against `file##` and de-enumerated (and therefore always copied) on access. e.g.
 ```q
 q)`:file set((`a`b;`b`c);0 1) / symbols cause a 3rd file to be created, file##, which contains the enumeration domain
 ```
@@ -98,6 +98,7 @@ The following files use a new file format. They are therefore unreadable by the 
 - 64-bit enumerations use a new file format. 3.5 enum files are read-only.
 - Mapped list type (77h) deprecates old mapped nested types (77h+t). 77h+t files are read-only.
 - Guids with `u`, `p` or `g` attribute use a new file format. 
+- Accepts a websocket connection only if `.z.ws` is defined, otherwise returns HTTP 501 code
 
 Added `ajf` and `ajf0`, to behave as V2.8 `aj` and `aj0`, i.e. they fill from LHS if RHS is null. e.g.
 ```q
@@ -111,7 +112,7 @@ q)a~ajf[`sym`time;b;c]
 
 ## Suggested upgrade process
 
-Even though we have run a wide range of tests on V3.6, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.6 should run their own tests on their own data and code/queries before promoting to production usage. Most importantly, be aware that rolling back to a previous version will be complicated by the fact that files written by v3.6 are not readable by prior versions, hence users should test thoroughly prior to committing to an upgrade. In the event that you do discover a suspected bug, please email tech@kx.com
+Even though we have run a wide range of tests on V3.6, and various customers have been kind enough to repeatedly run their own tests during the last few months of development, customers who wish to upgrade to V3.6 should run their own tests on their own data and code/queries before promoting to production usage. Most importantly, be aware that rolling back to a previous version will be complicated by the fact that files written by v3.6 are not readable by prior versions, hence users should test thoroughly prior to committing to an upgrade. In the event that you do discover a suspected bug, please report it at [support.kx.com](https://support.kx.com).
 
 
 ## Detailed change list

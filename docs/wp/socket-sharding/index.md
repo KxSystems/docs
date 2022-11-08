@@ -1,11 +1,17 @@
 ---
-title: Socket sharding with kdb+ and Linux
+title: Socket sharding with kdb+ and Linux | White Papers | kdb+ and q documentation
 description: Set-up and use of socket sharding in kdb+, with several example scenarios
 author: Marcus Clarke
 date: January 2018
 keywords: gateway, linux, load balance, port, shard, socket, so_reuseport
 ---
+White paper
+{: #wp-brand}
+
 # Socket sharding with kdb+ and Linux
+
+by [Marcus Clarke](#author)
+{: .wp-author}
 
 
 
@@ -47,7 +53,7 @@ q)\p 5000
 
 In addition to this, the first process to open the port must use the `rp` option to allow future processes to also use this port.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Releases: [Changes in 3.5](../../releases/ChangesIn3.5.md#socket-sharding)
 
 
@@ -138,7 +144,7 @@ sendTime     receiveTime  timeTaken
 --------------------------------------
 19:34:10.514 19:34:12.517 00:00:02.003
 
-q)//Normalise data into 3 distinct 1 minute buckets by 
+q)//Normalize data into 3 distinct 1 minute buckets by 
 q)//subtracting 10.514 from sendTime column
 q)select `time$avg timeTaken by sendTime.minute 
     from update sendTime-00:00:10.514 from messages
@@ -338,8 +344,10 @@ This could be beneficial for gateway requests. If the response time slows (due t
 
 Finally, we explored easy rolling upgrades of existing processes while keeping downtime to a minimum. New versions of a system’s kdb+ processes can be started while current processes are still online. Once initialization is complete, with open ports, the processes from the older version are shut down and the disconnected client’s reconnect logic would then automatically re-establish a connection to the new process.
 
+[:fontawesome-solid-print: PDF](/download/wp/socket-sharding.pdf)
+
 
 ## Author
 
-Marcus Clarke is a kdb+ consultant for Kx and has worked at a number of leading financial institutions in both the UK and Asia. Currently based in New York, he is designing, developing and maintaining a kdb+ system for multiple asset classes at a top-tier investment bank.
+**Marcus Clarke** is a kdb+ consultant for KX and has worked at a number of leading financial institutions in both the UK and Asia. Currently based in New York, he is designing, developing and maintaining a kdb+ system for multiple asset classes at a top-tier investment bank.
 

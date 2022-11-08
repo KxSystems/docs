@@ -1,17 +1,23 @@
 ---
-title: Machine learning <br/>Using embedPy to apply LASSO regression – White Papers – kdb+ and q documentation
-description: From its deep roots in financial technology Kx is expanding into new fields. It is important for q to communicate seamlessly with other technologies. The embedPy interface allows this to be done with Python.
+title: "Machine learning: Using embedPy to apply LASSO regression | White Papers | kdb+ and q documentation"
+description: From its deep roots in financial technology KX is expanding into new fields. It is important for q to communicate seamlessly with other technologies. The embedPy interface allows this to be done with Python.
 author: Samantha Gallagher
 date: October 2018
 keywords: analysis, categorical, clean, coefficient, csv, data, embedpy, engineering, error, feature, foreign, house, install, jupyter, kdb+, lasso, learning, library, log, machine, matrix, mean, model, mse, notebook, numerical, polynomial, predict, price, python, q, regression, split, standardize, transform
 ---
+White paper
+{: #wp-brand}
+
 # Machine learning: <br/>Using embedPy to apply LASSO regression
 
+by [Samantha Gallagher](#author)
+{: .wp-author}
 
 
 
 
-From its deep roots in financial technology Kx is expanding into new fields.
+
+From its deep roots in financial technology KX is expanding into new fields.
 It is important for q to communicate seamlessly with other technologies. 
 The [embedPy interface](../../ml/embedpy/index.md) allows this to be done with Python.
 
@@ -37,7 +43,7 @@ directory of detailed examples.
 In this section, we introduce some core elements of embedPy that will be
 used in the LASSO regression problem that follows. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Full documentation for embedPy](../../ml/embedpy/index.md)
 
 
@@ -45,7 +51,7 @@ used in the LASSO regression problem that follows.
 
 Download the embedPy package from
 GitHub:
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/embedPy](https://github.com/kxsystems/embedpy)
 
 Follow the instructions in `README.md` for installing the interface. 
@@ -189,7 +195,7 @@ q)stats[`:skew]
 ```
 
 
-## Applying LASSO regression for analysing housing prices
+## Applying LASSO regression for analyzing housing prices
 
 This analysis uses LASSO regression to determine the prices of homes in
 Ames, Iowa. The dataset used in this demonstration is the Ames Housing
@@ -197,12 +203,12 @@ Dataset, compiled by Dean De Cock for use in data-science education. It
 contains 79 explanatory variables describing various aspects of
 residential homes which influence their sale prices. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [kaggle.com](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
 
 The Least Absolute Shrinkage and Selection Operator (LASSO) method was
 used for the data analysis. LASSO is a method that improves the accuracy
-and interpretability of multiple linear regression models by adapting
+and interpret-ability of multiple linear regression models by adapting
 the model fitting process to use only a subset of _relevant_ features.
 
 It performs L1 regularization, adding a penalty equal to the absolute
@@ -213,7 +219,7 @@ useful given the high dimensionality of this dataset.
 
 A kdb+ Jupyter notebook on GitHub accompanies this paper.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/embedpy-lasso](https://github.com/kxcontrib/embedpy-lasso)
 
 
@@ -632,7 +638,7 @@ qplt[`:axis]bounds;
 qplt[`:savefig]"lassopred.png";
 ```
 
-![lassopred.png](media/lassopred.png)
+![lassopred.png](img/lassopred.png)
 
 
 ## Conclusion
@@ -653,11 +659,26 @@ fuse into a powerful tool. Further machine-learning techniques powered
 by kdb+ can be found under _Featured Resources_ at 
 [kx.com/machine-learning](https://kx.com/discover/machine-learning/).
 
+[:fontawesome-solid-print: PDF](/download/wp/embedpy-lasso-a4.pdf)
+
 
 ## Author
 
-Samantha Gallagher is a kdb+ consultant for Kx and has worked in leading
-financial institutions for a range of asset classes. Currently based in
-London, she is designing, developing and maintaining a kdb+ system for
-corporate bonds at a top-tier investment bank.
+![Samantha (Gallagher) Devlin](../../img/faces/samanthagallagher.jpg)
+{: .small-face}
+
+**Samantha (Gallagher) Devlin** has worked on implementing kdb+ solutions for financial institutions globally. 
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:sgallagher1@kx.com?subject=White paper: embedPy and LASSO) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/samantha-gallagher-kdb) 
+
+Other papers by Samantha Gallagher
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-solid-globe: [kdb+ and Microsoft Azure](https://blog.neueda.com/kdb/kdb-and-microsoft-azure/)
+-   :fontawesome-solid-globe: [Free byte-sized kdb+ training](https://blog.neueda.com/kdb/free-byte-sized-kdb-training/)
+-   :fontawesome-solid-globe: [We DARE you to learn about kdb+ encryption](https://blog.neueda.com/kdb/we-dare-you-to-learn-about-kdb-encryption/)
+</ul>
+
 

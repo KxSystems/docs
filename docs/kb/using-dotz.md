@@ -10,7 +10,7 @@ keywords: control, debug, dotz, execution, kdb+, monitor, q, trace
 Every client interaction with a kdb+ server is handled by one of the `p`? functions you’ll find in the system namespace `.z`. These functions have reasonable, simple defaults that work fine right out of the box. What we’re doing here is taking advantage of the fact that they’re just functions, allowing you to overwrite them with your own custom code to show or modify what’s happening.
 
 The utility scripts in 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [github.com/simongarland/dotz](https://github.com/simongarland/dotz) 
 are _examples_ of how to do this, and these files are described in detail below.
 
@@ -63,13 +63,13 @@ The “tools” you have to work with are the `p`? functions from `.z`: [`.z.po`
 
 By default, execution is done using [`value`](../ref/value.md) so strings or symbol argument lists can be tested in a console. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 _Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 
 
 ### `saveorig.q`
 
-This script just saves original values of things like `.z.pg` so you can revert to original definitions without having to restart the task. This is made a little more complicated by the way some of the default definitions aren’t materialised in the user workspace. For example by default `.z.pg` is just `{value x}` but that’s run in the kdb+ executable. The default values are created explicitly if need be.
+This script just saves original values of things like `.z.pg` so you can revert to original definitions without having to restart the task. This is made a little more complicated by the way some of the default definitions aren’t materialized in the user workspace. For example by default `.z.pg` is just `{value x}` but that’s run in the kdb+ executable. The default values are created explicitly if need be.
 
 ```q
 .dotz.exit.ORIG:.z.exit:@[.:;`.z.exit;{;}];
@@ -229,7 +229,7 @@ There are so many ways to control access that this script is way too complicated
 
 It shows how to control access via
 
--   a user table – splitting users into superusers (who can do anything), powerusers (who can run ad-hoc queries, but can’t do things like shutdown the session) and defaultusers (who can only use a speciic list of pre-defined commands).
+-   a user table – splitting users into superusers (who can do anything), powerusers (who can run ad-hoc queries, but can’t do things like shutdown the session) and defaultusers (who can only use a specific list of pre-defined commands).
 -   the client’s server – with name matching a set of wildcards
 -   a list of valid commands
 -   a command validator which parses input
@@ -246,7 +246,7 @@ Q provides a a list of handles in use with the keys of `.z.W`. These clients pro
 
 Tracking of clients can be automated using this script, `.z.po` and `.z.pc` maintain the list automatically.
 
-By default, the table of clients just uses information provided by `.z.po` like `.z.u` and `.z.w`, but if `.clients.INTRUSIVE` is set, the server will ask the clients for more details like their q versions, number of slaves etc.
+By default, the table of clients just uses information provided by `.z.po` like `.z.u` and `.z.w`, but if `.clients.INTRUSIVE` is set, the server will ask the clients for more details like their q versions, number of secondary processes etc.
 
 Output from a session where a client did three `hopen 5001`s, and one `hclose`.
 
@@ -424,7 +424,7 @@ q)
 
     All these utility files should be treated as examples. For any particular case they probably have too many options and should be cut down to do just what you want. The access control script is the most obvious case - it probably has far too many options/checks going on.
 
-## <i class="far fa-hand-point-right"></i> Further reading
+## :fontawesome-regular-hand-point-right: Further reading
 
 -   [Namespace `.z`](../ref/dotz.md ".z namespace")
 -   [Changes in V2.4](../releases/ChangesIn2.4.md)

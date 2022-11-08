@@ -1,20 +1,24 @@
 ---
-title: Permissions with kdb+ – White papers – q and kdb+ documentation
+title: Permissions with kdb+ | White papers | q and kdb+ documentation
 description: An introduction to permissioning in kdb+ without using LDAP or any other external entitlements system
 author: Tom Martin
 date: May 2013
 keywords: access, authentication, code injection, database, entitlement, http, ipc, kdb+, kerberos, ldap, password, permission, poweruser, q, query, security, single sign-on, superuser, user
 ---
+White paper
+{: #wp-brand}
+
 # Permissions with kdb+
 
-
+by [Tom Martin](#author)
+{: .wp-author}
 
 
 Due to its efficiency in storing and retrieving large volumes of data, kdb+ is the data-storage technology of choice for many financial institutions. Kdb+ processes thus often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. Kdb+ offers a number of in-built access functions, though in a default kdb+ instance these are not activated. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
 
 !!! tip "Commercial-grade products"
 
-    Kx offers [commercial-grade products](../../devtools.md) to manage entitlements as well as other aspects of administration for kdb+. While this paper attempts to shed some light on the various approaches available to developers wishing to implement a permissioning system in kdb+, the approach presented here is merely intended as a starting point, and as such it should not be considered secure. Some workarounds to the system described here are discussed in the paper.
+    KX offers [commercial-grade products](../../devtools.md) to manage entitlements as well as other aspects of administration for kdb+. While this paper attempts to shed some light on the various approaches available to developers wishing to implement a permissioning system in kdb+, the approach presented here is merely intended as a starting point, and as such it should not be considered secure. Some workarounds to the system described here are discussed in the paper.
 
 Tests performed using kdb+ 3.0 (2013.04.05)
 
@@ -489,7 +493,7 @@ time         sym  price    size   ex   vwap
 09:00:05.878 GOOG 875.2613 190000 BATS 876.9627
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Reference: [`reval`](../../ref/eval.md#reval) for read-only access
 
 <!-- 
@@ -497,11 +501,11 @@ Reference: [`reval`](../../ref/eval.md#reval) for read-only access
 
 The standard way to prevent clients from writing to a kdb+ process is to start the process with the [`–b` command-line option](../../basics/cmdline.md#-b-blocked). While this will successfully restrict clients to read-only queries, it affects all clients equally: write access will be revoked from every single client who connects to the process. If we want to be more selective in to whom we do and do not grant write access, we have to take a different approach.
 
-One such approach would be to parse every single incoming query and implement some logic that will determine if the query is attempting to write to the process. This is a very complex approach that would involve recursively stepping through the parse tree to analyse if a variable is being updated.
+One such approach would be to parse every single incoming query and implement some logic that will determine if the query is attempting to write to the process. This is a very complex approach that would involve recursively stepping through the parse tree to analyze if a variable is being updated.
 
-Instead, we will take advantage of a restriction that is built into kdb+ processes that are started with slave threads: that is, only the main thread in a kdb+ process can update global variables. Slave threads are restricted to updating local variables only. Thus, if we want to revoke write access from particular users, all we need to do is start our process with some slave threads and then encapsulate their queries inside a function which then uses [`peach`](../../ref/each.md) to iterate over a list, forcing kdb+ to use slave threads.
+Instead, we will take advantage of a restriction that is built into kdb+ processes that are started with secondary threads: that is, only the main thread in a kdb+ process can update global variables. Secondary threads are restricted to updating local variables only. Thus, if we want to revoke write access from particular users, all we need to do is start our process with some secondary threads and then encapsulate their queries inside a function which then uses [`peach`](../../ref/each.md) to iterate over a list, forcing kdb+ to use secondary threads.
 
-If `peach` is used with a one-item list, by default it will use the main thread. To force kdb+ to use its slave threads, we have to iterate over at least two items, but we don’t want to have to execute each incoming query twice. To avoid this, we’ll iterate over a two-item boolean list where the first item is true and the second false. We use the items in this list to determine whether or not the query will be executed.
+If `peach` is used with a one-item list, by default it will use the main thread. To force kdb+ to use its secondary threads, we have to iterate over at least two items, but we don’t want to have to execute each incoming query twice. To avoid this, we’ll iterate over a two-item boolean list where the first item is true and the second false. We use the items in this list to determine whether or not the query will be executed.
 
 ```q
 .perm.readOnly:{[x]
@@ -533,7 +537,7 @@ And also to the function that verifies table operations:
   .perm.readOnly[(eval;query)] }
 ```
 
-Server – start with slave threads:
+Server – start with secondary threads:
 
 ```bash
 $ q permissions.q -p 5001 –s 1
@@ -1095,11 +1099,18 @@ This paper was an introduction to permissioning in kdb+ without using LDAP or an
 
 We have described a number of methods of securing a kdb+ process. We examined the concept of splitting clients into separate groups or classes, each with different permission levels. We examined how to block write access on a kdb+ process, and how to restrict certain users from viewing proprietary code. While the system described in the paper offers a broad coverage, including blocking some forms of code injection, it is not intended to be complete.
 
-While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firm’s authentication infrastructure. One should also consider out-of-the-box solutions like [Kx Control](../../devtools.md#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
+While the approach outlined in this paper solely used q code to implement a permissioning system, there is scope to extend this to incorporate external protocols such as LDAP, Kerberos or Single Sign-On, allowing kdb+ to be fully integrated with a firm’s authentication infrastructure. One should also consider out-of-the-box solutions like [KX Control](../../devtools.md#kx-control) which, as well as handling permissioning, also delivers a well-defined framework for process workflow, scheduling, audit trails and system alerts.
+
+[:fontawesome-solid-print: PDF](/download/wp/permissions_with_kdb.pdf)
 
 
 ## Author
 
-Tom Martin is a financial engineer who has developed data-management systems for some of the world’s leading financial institutions. Tom is currently based in London, where he maintains a firm-wide risk database at a top-tier investment bank.
-
+**Tom Martin** is a senior kdb+ consultant for KX who has built kdb+ systems for some of the world’s leading financial institutions. Tom is currently based in London, where he works on FX auto-hedging and client algos at a top-tier investment bank.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:tmartin@kx.com?subject=White paper: Permissions with kdb+) 
+&nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/tom-martin-9ba96438/)
+&nbsp;
+[:fontawesome-brands-github:](https://github.com/t-martin)
 

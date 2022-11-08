@@ -3,22 +3,21 @@ title: rkdb an interface giving R access to q/kdb+
 description: Enable R to connect to kdb+ and extract data; enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely.
 keywords: interface, kdb+, library, q, r
 ---
-# <i class="fab fa-r-project"></i> rkdb 
+# :fontawesome-brands-r-project: rkdb 
 
-<div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../fusion.md)
-</div>
+:fontawesome-brands-superpowers: [Fusion for kdb+](../fusion.md)
+{: .fusion}
 
 Connects R to a kdb+ database to extract partially analyzed data into R
 for further local manipulation, analysis and display.
 
 Operating systems: tested and available for
 
--   <i class="fab fa-linux"></i> Linux (64-bit)
--   <i class="fab fa-apple"></i> macOS
--   <i class="fab fa-windows"></i> Windows (32-bit and 64-bit)
+-   :fontawesome-brands-linux: Linux (64-bit)
+-   :fontawesome-brands-apple: macOS
+-   :fontawesome-brands-windows: Windows (32-bit and 64-bit)
 
-Download from <i class="fab fa-github"></i> [KxSystems/rkdb](https://github.com/KxSystems/rkdb) and follow the [installation instructions](https://github.com/KxSystems/rkdb#installation).
+Download from :fontawesome-brands-github: [KxSystems/rkdb](https://github.com/KxSystems/rkdb) and follow the [installation instructions](https://github.com/KxSystems/rkdb#installation).
 
 The interface allows R to connect to a kdb+ database and send it a request, which can optionally return a result.
 Three methods are available:
@@ -84,7 +83,7 @@ For example, using the [xts](http://r-forge.r-project.org/projects/xts) package:
 # create a vector of colours for the graph
 # based on the relative open and close prices
 > candlecolors <- ifelse(resxts[,'close'] > resxts[,'open'], 'GREEN', 'RED')
-# display the candle graph with approrpiate labels
+# display the candle graph with appropriate labels
 > plot.xts(resxts, type='candles', width=100, candle.col=candlecolors, bar.col='BLACK', xlab="time", ylab="price", main="GOOG HLOC")
 ```
 

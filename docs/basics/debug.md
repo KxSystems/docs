@@ -7,7 +7,7 @@ keywords: debug, errors, kdb+, q, trap
 # Debugging 
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 q))       extra right parens mark suspended execution/s
 'myerror  [Signal](../ref/signal.md) error, cut back stack
 :r        [exit suspended function](#resume) with r as result
@@ -16,7 +16,7 @@ q))       extra right parens mark suspended execution/s
 [&](#where)         current frame information
 [.Q.trp](../ref/dotq.md#qtrp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
 [-e](cmdline.md#-e-error-traps) [\e](syscmds.md#e-error-trap-clients)     error-trap mode
-</pre>
+</div>
 
 
 
@@ -308,11 +308,11 @@ q).Q.trp[parse;"2+2;+2";{1@.Q.sbt 2#y}];
 
 At any point during execution, the behavior of [Signal](../ref/signal.md) (`'`) is determined by the internal error-trap mode:
 
-mode | behavior
-:---:|------------------------------------------------
-0    | abort execution (set by Trap: `@` or `.`)
-1    | suspend execution and run the debugger
-2    | collect stack trace and abort (set by `.Q.trp`)
+```txt
+0    abort execution (set by Trap: @ or .)
+1    suspend execution and run the debugger
+2    collect stack trace and abort (set by .Q.trp)
+```
 
 Mode 2 (dump stack trace) is now default for loading scripts non-interactively (e.g. with [`-q`](cmdline.md#-q-quiet-mode)). 
 
@@ -342,11 +342,11 @@ q))                 / the server is suspended in a debug session
     Q is an embedded domain-specific language. Many of its keywords are defined as lambdas or projections, and can suspend as described. 
     
 
-## See also
 
-<i class="fas fa-book"></i> 
+----
+:fontawesome-solid-book: 
 [Display](../ref/display.md),
 [`show`](../ref/show.md)
 <br>
-<i class="fas fa-graduation-cap"></i>
+:fontawesome-solid-graduation-cap:
 _Q for Mortals 3:_ [§10.2 Debugging](/q4m3/10_Execution_Control/#102-debugging)

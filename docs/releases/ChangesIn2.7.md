@@ -29,7 +29,7 @@ Strings stored as a symbol type have always been internalized in kdb+; this mean
 
 Kdb+ V2.5 returned blocks of memory >32MB back to the operating system immediately when they were no longer referenced. This has now been extended to cache those blocks for reuse, allowing the user to explicitly request garbage collection via the command `.Q.gc[]`. This improves the performance of the allocator to levels seen prior to V2.5, and yet retains the convenience of returning unused memory to the operating system. Garbage collection will automatically be attempted if a memory request causes wsful or if the artificial memory limit (set via cmd line `-w` option) is hit.
 
-<div id="IPCMessageValidator" style="display:none"></div>
+
 ## IPC Message Validator
 
 Previous versions of kdb+ were sensitive to being fed malformed data structures, sometimes resulting in a crash. Kdb+ 2.7 validates incoming IPC messages to check that data structures are well formed, reporting `'badMsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
@@ -45,3 +45,7 @@ e.g. with the callback defined
 ```
 
 then after a bad msg has been received, the global var `msg` will contain the timestamp, the handle and the full message. Note that this check validates only the data structures, it cannot validate the data itself.
+
+_Malformed_ here means invalid encoding of the message, usually due to e.g. incorrect custom serialization code, or user code corrupting or overwriting the send buffer. 
+
+

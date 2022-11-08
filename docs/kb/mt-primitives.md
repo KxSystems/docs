@@ -4,7 +4,7 @@ description: Q primitives in V4.0 implicitly seek and use opportunities for para
 author: Pierre Kovalev
 date: March 2020
 ---
-# <i class="fas fa-bolt"></i> Multithreaded primitives
+# :fontawesome-solid-bolt: Multithreaded primitives
 
 
 ![Parallelism](../img/parallelism.jpg)
@@ -43,9 +43,9 @@ misc:      $(Cast) #(Take) _(Drop/Cut) ,(Join) deltas differ distinct
 
 ## Practicalities
 
-Multithreaded primitives execute in the same slave threads as `peach`, and similar limitations apply. System command [`\s`](../basics/syscmds.md#s-number-of-slaves) controls the maximum number of threads. 
+Multithreaded primitives execute in the same secondary threads as `peach`, and similar limitations apply. System command [`\s`](../basics/syscmds.md#s-number-of-secondary-threads) controls the maximum number of threads. 
 
-!!! tip "Launch q with the [`-s`](../basics/cmdline.md#s-slaves) command-line option to allow primitives to multithread."
+!!! tip "Launch q with the [`-s`](../basics/cmdline.md#s-secondary-threads) command-line option to allow primitives to multithread."
 
 For example, here we invoke `max` from outside `peach`, and from within `peach`:
 ```q
@@ -85,16 +85,18 @@ In kdb+ parallelism remains single-level, and for a given computation one has to
 
 1. No overhead of splitting and joining large vectors. For simple functions, direct execution can be much faster than [`.Q.fc`](../ref/dotq.md#qft-apply-simple):
 
-    <pre><code class="language-q">q)system"s 24";a:100000000?100;
+    ```q
+    q)system"s 24";a:100000000?100;
     q)\t a\*a
     28
     q)\t .Q.fc[{x*x};a]
     130
-    </code></pre>
+    ```
 
 2. Operating on one vector at a time can avoid inefficient scheduling of large, uneven chunks of work:
 
-    <pre><code class="language-q">q)system"s 3";n:100000000;t:([]n?0f;n?0x00;n?0x00);
+    ```q
+    q)system"s 3";n:100000000;t:([]n?0f;n?0x00;n?0x00);
     q)\t sum t            / within-column parallelism
     30
     q)\t sum peach flip t / column-by-column parallelism ..
@@ -103,6 +105,6 @@ In kdb+ parallelism remains single-level, and for a given computation one has to
     q)/ .. takes just as much time as the largest unit of work, 
     q)\t sum t`x          / .. i.e. widest column
     64
-    </code></pre>
+    ```
 
 However, one needs vectors large enough to take advantage. Nested structures and matrices still need hand-crafted `peach`. Well-optimized code already making use of `peach` is unlikely to benefit. 

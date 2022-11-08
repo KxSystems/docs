@@ -10,7 +10,9 @@ keywords: bang, console, debug, display, kdb+
 
 _Write to console and return_
 
-Syntax: `0N!x`, `![0N;x]`
+```syntax
+0N!x    ![0N;x]
+```
 
 Returns `x` after printing its unformatted text representation to the console. 
 
@@ -22,6 +24,9 @@ q)2+0N!3
 
 Useful for debugging, or avoiding formatting that obscures the data’s structure.
 
-<i class="far fa-hand-point-right"></i> 
-[`show`](show.md)  
-Basics: [Debugging](../basics/debug.md)
+---
+:fontawesome-solid-book: 
+[`show`](show.md) 
+<br>
+:fontawesome-solid-book-open: 
+[Debugging](../basics/debug.md)

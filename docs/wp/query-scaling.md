@@ -1,11 +1,17 @@
 ---
-title: Kdb+ query scaling
+title: Kdb+ query scaling | White papers | kdb+ and q documentation
 description: How to take advantage of multiple kdb+ query structures  to achieve optimal query performance for large volumes of data
 author: Ian Lester
-date: Jan 2014
+date: January 2014
 keywords: find, join, kdb+, optimize, performance, q, query, scale, select
 ---
+White paper
+{: #wp-brand}
+
 # Kdb+ query scaling
+
+by [Ian lester](#author)
+{: .wp-author}
 
 
 
@@ -353,7 +359,7 @@ item                           | role
 
 This pattern is the same as that used in the functional forms of `select` or `exec`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Functional q-SQL](../basics/funsql.md)  
 _Q for Mortals_: [§9.12 Functional Forms](/q4m3/9_Queries_q-sql/#912-functional-forms)
 
@@ -365,12 +371,12 @@ The key to this query working efficiently is ensuring that `date.month` is the f
 
 One of the most powerful aspects of kdb+ is that it comes equipped with a large variety of join operators for enriching datasets. These operators may be divided into two distinct types, timeseries joins and non-timeseries joins. In this section we will focus on optimal use of three of the most commonly-used timeseries join operators, `aj` and `wj`, and the non-timeseries join `lj`.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Joins](../basics/joins.md)
 
 The majority of joins in a kdb+ database should be performed implicitly by foreign keys and linked columns, permanent relationships defined between tables in a database. These provide a performance advantage over the standard joins and should be used where appropriate.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [The application of foreign keys and linked columns in kdb+](foreign-keys.md)
 
 
@@ -562,6 +568,7 @@ All tests were run using kdb+ 3.1 (2013.12.27)
 
 ## Author
 
-Ian Lester is a financial engineer who has worked as a consultant for some of the world’s largest financial institutions. Based in New York, Ian is currently working on a trading application at a US investment bank.
+**Ian Lester** is a financial engineer who has worked as a consultant for some of the world’s largest financial institutions. Based in New York, Ian is currently working on a trading application at a US investment bank.
 
 
+[:fontawesome-solid-print: PDF](/download/wp/kdb_query_scaling.pdf)

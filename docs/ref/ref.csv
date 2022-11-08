@@ -1,0 +1,170 @@
+abs,abs.md,absolute value,math,atomic
+acos,cos.md,arccosine,math,atomic
+aj aj0,aj.md,as-of join,join,
+ajf ajf0,aj.md,as-of join,join,
+all,all-any.md#all,all nonzero,logic,aggregate
+and,lesser.md,lesser,logic,aggregate
+any,all-any.md#any,any item is non-zero,logic,aggregate
+asc,asc.md,ascending sort,sort,uniform
+asin,sin.md,arcsine,math,atomic
+asof,asof.md,as-of join,join,
+atan,tan.md,arctangent,math,atomic
+attr,attr.md,attributes,meta,
+avg,avg.md#avg,arithmetic mean,math,aggregate
+avgs,avg.md#avgs,running averages,math,uniform
+bin binr,bin.md,binary search,sort,
+ceiling,ceiling.md,lowest integer above,math,atomic
+cols,cols.md#cols,column names of a table,table,
+cor,cor.md,correlation,math,
+cos,cos.md,cosine,math,atomic
+count,count.md,number of items,list,aggregate
+cov,cov.md,covariance,math,
+cross,cross.md,cross product,list,
+csv,csv.md,comma delimiter,table,
+cut,cut.md,cut array into pieces,list,
+delete,delete.md#delete-keyword,delete rows or columns from a table,query,
+deltas,deltas.md,differences between consecutive pairs,math,uniform
+desc,desc.md,descending sort,sort,uniform
+dev,dev.md,standard deviation,math,aggregate
+differ,differ.md,flag differences in consecutive pairs,sort,uniform
+distinct,distinct.md,unique items,sort,
+div,div.md,integer division,math,atomic
+do,do.md,repeat,control,
+dsave,dsave.md,save global tables to disk,io,
+each,each.md,apply to each item,iterate,
+ej,ej.md,equi-join,join,
+ema,ema.md,exponentially-weighted moving average,math,uniform
+enlist,enlist.md,arguments as a list,list,
+eval,eval.md,evaluate a parse tree,interpret,
+except,except.md,left argument without items in right argument,list,
+exec,exec.md,,query,
+exit,exit.md,terminate q,control,
+exp,exp.md,power of e,math,atomic
+fby,fby.md,filter-by,query,
+fills,fill.md#fills,forward-fill nulls,list,uniform
+first,first.md,first item,list,aggregate
+fkeys,fkeys.md,foreign-key columns mapped to their tables,table,
+flip,flip.md,transpose,list,
+floor,floor.md,greatest integer less than argument,math,atomic
+get,get.md,get a q data file,io,
+getenv,getenv.md,value of an environment variable,env,
+group,group.md,dictionary of distinct items,list,
+gtime,gtime.md,UTC timestamp,env,
+hclose,hopen.md#hclose,close a file or process,io,
+hcount,hcount.md,size of a file,io,
+hdel,hdel.md,delete a file,io,
+hopen,hopen.md,open a file,io,
+hsym,hsym.md,convert symbol to filename or IP address,io,
+iasc,asc.md#iasc,indices of ascending sort,sort,uniform
+idesc,desc.md#idesc,indices of descending sort,sort,uniform
+if,if.md,if,control,
+ij ijf,ij.md,inner join,join,
+in,in.md,membership,list,uniform
+insert,insert.md,append records to a table,table,
+inter,inter.md,items common to both arguments,list,
+inv,inv.md,matrix inverse,math,
+key,key.md,keys of a dictionary etc.,table,
+keys,keys.md,names of a table's columns,table,
+last,first.md#last,last item,list,aggregate
+like,like.md,pattern matching,text,uniform
+lj ljf,lj.md,left join,join,
+load,load.md,load binary data,io,
+log,log.md,natural logarithm,math,atomic
+lower,lower.md,lower case,text,uniform
+lsq,lsq.md,least squares – matrix divide,math,
+ltime,gtime.md#ltime,local timestamp,env,
+ltrim,trim.md#ltrim,function remove leading spaces,text,
+mavg,avg.md#mavg,moving average,math,uniform
+max,max.md,maximum,math,aggregate
+maxs,max.md#maxs,maxima of preceding items,math,uniform
+mcount,count.md#mcount,moving count,list,uniform
+md5,md5.md,MD5 hash,text,
+mdev,dev.md#mdev,moving deviation,math,uniform
+med,med.md,median,math,aggregate
+meta,meta.md,metadata of a table,table,
+min,min.md,minimum,math,aggregate
+mins,min.md#mins,minimum of preceding items,math,uniform
+mmax,max.md#mmax,moving maxima,math,uniform
+mmin,min.md#mmin,moving minima,math,uniform
+mmu,mmu.md,matrix multiplication,math,
+mod,mod.md,remainder,math,atomic
+msum,sum.md#msum,moving sum,math,uniform
+neg,neg.md,negate,math,atomic
+next,next.md,next items,list,uniform
+not,not.md,logical not,logic,atomic
+null,null.md,is argument a null,meta,atomic
+or,greater.md,greater,logic,atomic
+over,over.md,reduce an array with a value,iterate,
+parse,parse.md,parse a string,interpret,
+peach,each.md,parallel each,iterate,
+pj,pj.md,plus join,join,
+prd,prd.md,product,math,aggregate
+prds,prd.md,running products,math,uniform
+prev,next.md#prev,previous items,list,uniform
+prior,prior.md,apply function between each item and its predecessor,iterate,
+rand,rand.md,random number,math,
+rank,rank.md,grade up,sort,,uniform
+ratios,ratios.md,ratios of consecutive pairs,math,uniform
+raze,raze.md,join items,list,
+read0,read0.md,read file as lines,io,
+read1,read1.md,read file as bytes,io,
+reciprocal,reciprocal.md,reciprocal of a number,math,atomic
+reval,eval.md#reval,variation of eval,interpret,
+reverse,reverse.md,reverse the order of items,list,uniform
+rload,load.md#rload,load a splayed table,io,
+rotate,rotate.md,rotate items,list,uniform
+rsave,save.md#rsave,,io,
+rtrim,trim.md#rtrim,remove trailing spaces,text,
+save,save.md,save global data to file,io,
+scan,over.md,apply value to successive items,iterate,
+scov,cov.md#scov,statistical covariance,math,
+sdev,dev.md#sdev,statistical standard deviation,math,
+select,select.md,select columns from a table,query,
+set,get.md#set,assign a value to a name,io,
+setenv,getenv.md#setenv,set an environment variable,env,
+show,show.md,format to the console,interpret,
+signum,signum.md,sign of its argument/s,math,atomic
+sin,sin.md,sine,math,atomic
+sqrt,sqrt.md,square root,math,atomic
+ss,ss.md,string search,text,
+ssr,ss.md#ssr,string search and replace,text,
+string,string.md,cast to string,text,
+sublist,sublist.md,sublist of a list,list,
+sum,sum.md,sum of a list,math,aggregate
+sums,sum.md#sums,cumulative sums,math,aggregate
+sv,sv.md,decode/consolidate,list,
+svar,var.md#svar,statistical variance,math,aggregate
+system,system.md,execute system command,interpret,
+tables,tables.md,sorted list of tables,meta,
+tan,tan.md,tangent,math,atomic
+til,til.md,integers up to x,list,
+trim,trim.md,remove leading and trailing spaces,text,
+type,type.md,data type,meta,
+uj ujf,uj.md,union join,join,
+ungroup,ungroup.md,flattened table,table,
+union,union.md,distinct items of combination of two lists,list,
+update,update.md,insert or replace table records,query,
+upper,lower.md#upper,upper-case,text,uniform
+upsert,upsert.md,add table records,table,
+value,value.md,value of a variable or dictionary key; value of an executed sting,interpret,
+var,var.md,variance,math,aggregate
+view,view.md,definition of a dependency,meta,
+views,view.md#views,list of defined views,meta,
+vs,vs.md,encode,list,text,
+wavg,avg.md#wavg,weighted average,math,aggregate
+where,where.md,replicated items,list,
+while,while.md,repeat under condition,control,
+within,within.md,flag items within range,math,uniform
+wj wj1,wj.md,window join,join,
+wsum,sum.md#wsum,weighted sum,math,aggregate
+xasc,asc.md#xasc,table sorted ascending by columns,table,uniform
+xbar,xbar.md,interval bar,sort,
+xcol,cols.md#xcol,rename table columns,table,
+xcols,cols.md#xcols,re-order table columns,table,
+xdesc,desc.md#xdesc,table sorted descending by columns,table,uniform
+xexp,exp.md#xexp,raised to a power,math,atomic
+xgroup,xgroup.md,table grouped by keys,table,
+xkey,keys.md#xkey,set primary keys of a table,table,
+xlog,log.md#xlog,base-x logarithm,math,atomic
+xprev,next.md#xprev,previous items,list,uniform
+xrank,xrank.md,items assigned to buckets,sort,

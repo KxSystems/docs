@@ -1,864 +1,558 @@
 ---
-title: Migrating a kdb+ HDB to Amazon EC2  – Cloud – kdb+ and q documentation
-description: If you are assessing migrating a kdb+ historical database (HDB) and analytics workloads into the Amazon Elastic Compute Cloud (EC2) key considerations are performance and functionality attributes expected from using kdb+, and the associated HDB, in EC2; capabilities of several storage solutions working in the EC2 environment, as of March 2018; performance attributes of EC2 and benchmark results. You must weigh the pros and cons of each solution.
-author: Glenn Wright
-date: March 2018
-hero: <i class="fas fa-cloud"></i> Cloud
-keywords: Amazon, AWS, EC2, HDB, cloud
+title: Reference architecture | AWS | KX documentation
+description:
+date: June 2021
+authors: Eric Corcoran, Ferenc Bodon
 ---
-# Migrating a kdb+ HDB to Amazon EC2 
+# :kx-brands-aws-cloud:<br>Reference architecture for AWS
 
 
 
+Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
 
-![Amazon Elastic Compute Cloud](img/media/ec2.png)
+KX customers can lift and shift their kdb+ plants to the cloud and exploit virtual machines (VM) with storage. This is the classic approach that relies on the existing license. To benefit more from the cloud technology we recommend migrating to KX Insights.
 
-Kx has an ongoing project of evaluating different cloud technologies to see how they interact with kdb+. 
-If you are assessing migrating a kdb+ historical database (HDB) and analytics workloads into the 
-[Amazon Elastic Compute Cloud](https://aws.amazon.com/ec2/) 
-(EC2), here are key considerations:
+!!! summary "KX Insights"
 
--   performance and functionality attributes expected from using kdb+, and the associated HDB, in EC2
--   capabilities of several storage solutions working in the EC2
-environment, as of March 2018
--  performance attributes of EC2, and benchmark results
+    ![Microservices](../../img/microservice_icon.png){: style="float:left; margin:0 2em 2em 0; max-width:20%"}
 
-You must weigh the pros and cons of each solution.
-The key issues of each approach are discussed in the Appendices. 
-We highlight specific functional constraints of each solution. 
+    [KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
-We cover some of the in-house solutions supplied by Amazon Web Services (AWS), as well as a selection of some of the third-party solutions sold and supported for EC2, and a few open-source products. Most of these solutions are freely available for building and testing using Amazon Machine Images (AMI) found within the Amazon Marketplace.
+    Deployment:
 
+    -   [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/quickstart/) – A packaging utility that supports q, Python and C libraries
+    <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
+    -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
 
-## Why Amazon EC2?
+    Service integration:
 
-[Gartner](https://fortune.com/2017/06/15/gartner-cloud-rankings/),
-and other sources such as [Synergy
-Research](https://www.srgresearch.com/articles/microsoft-google-and-ibm-charge-public-cloud-expense-smaller-providers),
-rank cloud-services providers:
+    -   [QLog](https://code.kx.com/insights/cloud-edition/qlog/quickstart/) – Integrations with major cloud logging services
+    -   [Kurl](https://code.kx.com/insights/cloud-edition/kurl/quickstart/) – Native kdb+ REST client with authentication to cloud services
 
-1. Amazon Web Services
-1. Microsoft Azure 
-1. Google Cloud Platform
+    Storage:
+    
+    -   [Kdb+ Object Store](https://code.kx.com/insights/cloud-edition/objstor/quickstart/) – Native support for reading and querying cloud object storage
 
-This is partly due to the fact that Amazon was first to market, and
-partly because of their strong global data-center presence and rich
-sets of APIs and tools.
 
-Amazon EC2 is one of many services available to AWS users, and is managed via the AWS console. EC2 is typically used to host public estates of Web and mobile-based applications. Many of these are ubiquitous and familiar to the public. EC2 forms a significant part of the “Web 2.0/Semantic Web” applications available for mobile and desktop computing.
+## Architectural components
 
-Kdb+ is a high-performance technology. It is often assumed the Cloud cannot provide a level of performance, storage and memory access commensurate with dedicated or custom hardware implementations. Porting to EC2 requires careful assessment of the functional performance constraints both in EC2 compute and in the supporting storage layers.
+The core of a kdb+ tick-capture system is called kdb+tick.
+The [Kdb+tick](../../learn/startingkdb/tick.md) architecture allows the capture, processing, and querying of timeseries data against real-time, streaming and historical data.
 
-Kdb+ users are sensitive to database performance. Many have significant amounts of market data – sometimes hundreds of petabytes – hosted in data centers. Understanding the issues is critical to a successful migration.
+This reference architecture describes a full solution running kdb+tick within Amazon Web Services (AWS) which consists of these bare-minimum functional components:
 
-Consider the following scenarios:
+-   Datafeeds
+-   Feedhandlers
+-   Tickerplant
+-   Real-time database
+-   Historical database
+-   KX gateway
 
--   Your internal IT data services team is moving from an in-house data center to a cloud-services offering. This could be in order to move the IT costs of the internal data center from a capital expense line to an operating expense line.
+One architectural pattern for kdb+tick in Amazon Web Services is depicted below. The kdb+ historical database (HDB) can be stored in FSx Lustre and tiered to S3 or, with KX Insights, the HDB data can be directly accessed from a kdb+ process.
 
--   You need your data analytics processing and/or storage capacity to be scaled up _instantly_, _on-demand_, and without the need to provide extra hardware in your own data center.
+[![A simplified architecture diagram for kdb+tick in AWS](architecture.png)](architecture.png "Click to expand")
+<br>
+<small>_A simplified architecture diagram for kdb+tick in Amazon Web Services_</small>
 
--   You believe the Cloud may be ideal for burst processing of your compute load. For example, you may need to run 100s of cores for just 30 minutes in a day for a specific risk-calculation workload.
+Worthy of note in this reference architecture is the ability to place kdb+ processing functions either in one Elastic Compute Cloud (EC2) instance or distributed across many EC2 instances. Kdb+ processes can communicate with each other through built-in language primitives: this allows for flexibility in final design layouts. Data transportation between kdb+ processes, and overall external communication, is by low-level TCP/IP sockets. If two components are on the same EC2 instance, local Unix sockets can be used to reduce communication overhead.
 
--   Your quants and developers might want to work on kdb+, but only for a few hours in the day during the work week, a suitable model for an on-demand or a spot-pricing service.
+Many customers have tickerplants set up on their premises. The AWS reference architecture allows them to manage a hybrid infrastructure that communicates with tickerplants both on premises and in the cloud. However, the benefits of migrating on-premises solutions to the cloud are vast. These include flexibility, auto-scaling, improved transparency in cost management, access to management and infrastructure tools built by Amazon, quick hardware allocation and many more.
+<!-- 
+!!! tip "KX Insights"
 
--   You want to drive warm backups of data from in-house to EC2, or across instances/regions in EC2 – spun up for backups, then shut down.
+    This article focuses on kdb+tick deployment to EC2 virtual machines in AWS.
+    However, KX Insights provides another kdb+ architectural pattern for deploying to AWS Elastic Kubernetes Service (EKS).
 
--   Development/UAT/Prod life-cycles can be hosted on their own instances and then spun down after each phase finishes. Small memory/core instances can cost less and can be increased or decreased on demand.
+    :fontawesome-solid-hand-point-right:
+    [KX Core App Charts](https://code.kx.com/insights/kx-core-app-charts/)
+ -->
 
-Hosting both the compute workload and the historical market data on
-EC2 can achieve the best of both worlds: 
+### Datafeeds
 
--   reduce overall costs for hosting the market data pool
--   flex to the desired performance levels
+These are the sources of the data we aim to ingest into our system. For financial use cases, data may be ingested from B-pipe (Bloomberg), or Elektron (Refinitiv) data or any exchange that provides a data API. Often the streaming data is available on a pub-sub component like Kafka, Solace, etc. - all popular sources have an open-source interface to kdb+. The data feeds are in a proprietary format, but always one with which KX is familiar. Usually this means that a feedhandler just needs to be aware of the specific data format.
 
-As long as the speed of deployment and ease of use is coupled with similar or _good enough_ runtime performance, EC2 can be a serious contender for hosting your market data.
+Due to the flexible architecture of KX, most, if not all, the underlying kdb+ processes that constitute the system can be placed in any location of this architecture. For example, for latency, compliance or other reasons, the data feeds may be relayed through your existing on-premises data center. Or the connection from the feed handlers may be made directly from this Virtual Private Cloud (VPC) into the market data venue.
 
+The kdb+ infrastructure is often used also to store internally derived data. This can optimize internal data flow and help remove latency bottlenecks. The pricing of liquid products, for example on B2B markets, is often done by a complex distributed system. This system changes often due to new models, new markets or other internal system changes. Data in kdb+ that will be generated by these internal steps will also require processing and handling huge amounts of timeseries data. When all the internal components of these systems send data to kdb+, a comprehensive impact analysis captures any changes.
 
-## Author
 
-Glenn Wright, Systems Architect, Kx, has 30+ years of experience within the high-performance computing industry. He has worked for several software and systems vendors where he has focused on the architecture, design and implementation of extreme performance solutions. At Kx, Glenn supports partners and solutions vendors to further exploit the industry- leading performance and enterprise aspects of kdb+.
 
-## In-house vs EC2
+### Feedhandler
 
-Kdb+ is used to support 
+A feedhandler process captures external data and translates it into kdb+ messages. You can use multiple feed handlers to gather data from several sources and feed it to the kdb+ system for storage and analysis.
 
--   real-time data analytics
--   streaming data analytics
--   historical data analytics
+There are a number of open source (Apache 2 licensed) Fusion interfaces between KX and other third-party technologies. Feed handlers are typically written in Java, Python, C++, and&nbsp;q.
 
-The historical database in a kdb+ solution is typically kept on a non-volatile persistent storage medium (a.k.a. _disks_). 
-In financial services this data is kept for research (quant analytics or back-testing), algorithmic trading and for regulatory and compliance requirements.
+:fontawesome-brands-superpowers:
+[Fusion interfaces on kdb+](../../interfaces/fusion.md)
 
-!!! warning "Low latency and the Cloud"
 
-    In the current state of cloud infrastructure, Kx does not recommend keeping the high-performance, low-latency part of market data – or streaming data collection – applications in the Cloud.
+### Tickerplant
 
-    When speed translates to competitive advantage, using AWS (or cloud in general) needs to be considered carefully.
+The tickerplant (TP) is a specialized, single-threaded kdb+ process that operates as a link between your datafeed and a number of subscribers. It implements a pub-sub pattern: specifically, it receives data from the feedhandler, stores it locally in a table, then saves it to a log file. It publishes this data to a realtime database (RDB) and any clients who have subscribed to it. It then purges its local tables of data.
 
-Carefully-architected cloud solutions are acceptable for parts of the
-application that are removed from from the cutting-edge performance and
-data-capture requirements often imposed on kdb+. For example, using
-parallel transfers with a proven simple technology such as `rsync`, that can
-take advantage of the kdb+ data structures (distinct columns that
-can safely be transferred in parallel) and the innate compressibility of
-some of the data types to transfer data to historical storage in a cloud
-environment at end of day.
+Tickerplants can operate in two modes:
 
-Storage and management of historical data can be a non-trivial
-undertaking for many organizations: 
+Batch mode
 
--   capital and running costs 
--   overhead of maintaining security policies
--   roles and technologies required
--   planning for data growth and disaster recovery
+: Collects updates in its local tables. It batches up for a period of time and then forwards the update to realtime subscribers in a bulk update.
 
-AWS uses tried-and-tested infrastructure, which includes excellent policies and processes for handling such production issues.
+Real-time (zero latency) mode
 
-Before we get to the analysis of the storage options, it is important to
-take a quick look at the performance you might expect from compute and
-memory in your EC2 instances.
+: Forwards the input immediately. This requires smaller local tables but has higher CPU and network costs. Bear in mind that each message has a fixed network overhead.
 
+Supported API calls:
 
-### CPU cores 
+-   Subscribe: adds subscriber to message receipt list and sends subscriber table definitions
+-   Unsubscribe: removes subscriber from message receipt list
 
-We assume you require the same number of cores and
-memory quantities as you use on your in-house bare-metal servers. The
-chipset used by the instance of your choice will list the number of
-cores offered by that instance. The definition used by AWS to describe
-cores is vCPUs. It is important to note that with very few exceptions,
-the vCPU represents a hyper-threaded core, not a physical core. This is
-normally run at a ratio of 2 hyper-threaded cores to one physical core.
-There is no easy way to eliminate this setting. Some of the very large
-instances do deploy on two sockets. For example, `r4.16xlarge` uses two
-sockets.
+Events:
 
-If your sizing calculations depend on getting one q process to run
-only on one physical core and not share itself with other q processes,
-or threads, you need to either 
+-   End of Day: at midnight, the TP closes its log files, autocreates a new file, and notifies the realtime database (RDB) of the start of the new day
 
--   use CPU binding on q execution
--   invalidate the execution on even, or odd, core counts
 
-Or you can run on instances that have more vCPUs than there will be instances
-running. For the purposes of these benchmarks, we have focused our
-testing on single socket instances, with a limit of 16 vCPUs, meaning
-eight physical cores, thus:
-```bash
-[centos@nano-client1 ~]$ lscpu
-Architecture: x86_64
-CPU op-mode(s): 32-bit, 64-bit
-Byte Order: Little Endian
-CPU(s): 16
-On-line CPU(s) list: 0-15
-Thread(s) per core: 2
-Core(s) per socket: 8
-Socket(s): 1
-NUMA node(s): 1
-Vendor ID: GenuineIntel
-CPU family: 6
-Model: 79
-Model name: Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
-```
+### Realtime database
 
+The realtime database (RDB) holds all the intraday data in memory, to enable fast, powerful queries.
 
-### System memory
+For example, at the start of the business day, the RDB sends a message to the tickerplant and receives a reply containing the data schema, the location of the log file, and the number of lines to read from the log file. It then receives subsequent updates from the tickerplant as they are published. One of the key design choices for Amazon Web Services is the size of memory for this instance, as ideally we need to contain the entire business day/period of data in memory.
 
-Memory sizes vary by the instance chosen. 
+Purpose:
 
-!!! warning "Memory lost to hypervisor"
+-   Subscribed to the messages from the tickerplant
+-   Stores (in-memory) the messages received
+-   Allows this data to be queried intra-day
 
-    Memory is reduced from the nominal “power of two” RAM sizing, as some is set aside for the Xen hypervisor. For example, a nominal 128 GB of RAM gets sized to approximately 120 GB. 
+Actions:
 
-    Take account of this in your memory sizing exercises.
+-   On message receipt: inserts into local, in-memory tables
+-   End of Day receipt: usually writes intraday data down then sends a new End of Day message to the HDB. Optionally RDB sorts certain tables (e.g. by sym and time) to speed up queries.
 
+An RDB can operate in single- or multi-input mode. The default mode is single-input, in which user queries are served sequentially and queries are queued till an update from the TP is processed (inserted into the local table).
 
-### Compute and memory performance
+In standard tick scripts, the RDB tables are indexed, typically by the product identifier. An index is a hash table behind the scene. Indexing has a significant impact on the speed of the queries at the cost of slightly slower ingestion. The insert function takes care of the indexing, i.e. during an update it also updates the hash table.
 
-For CPU and memory, the EC2 performance matches that seen on physical systems, when correlated to the memory specifications. So the default HVM mode of an AMI under Xen seems to work efficiently when compared to a native/physical server.
+Performance of the CPU and memory in the chosen AWS instance will have some impact on the overall sustainable rates of ingest and queryable rate of this realtime kdb+ function.
 
-There is one caveat to this, in testing kdb+ list creation speeds we observe a degradation of memory list creation times when the number of q processes running exceeds the number of vCPUs in the virtual machine. This is because the vCPU in EC2 is actually a single hyperthreaded core, and not a physical core. In this example, we see competition on the physical cores. For a 16 vCPU instance we notice this only when running above 8 q processes:
 
-![](img/media/image4.png)
+### Historical database
 
-!!! info "Megabytes and mebibytes"
+The historical database (HDB) is a simple kdb+ process with a pointer to the persisted data directory. A kdb+ process can read this data and memory-maps it, allowing for fast queries across a large volume of data. Typically, the RDB is instructed by the tickerplant to save its data to the data directory at EOD from where the HDB can refresh its memory mappings.
 
-    Throughout this paper, MB and GB are used to refer to [MiBytes](https://en.wikipedia.org/wiki/Mebibyte "Wikipedia") and GiBytes respectively.
+HDB data is partitioned by date in the standard tickerplant. If multiple disks are attached to the box, then data can be segmented and kdb+ makes use of parallel IO operations. Segmented HDB requires a `par.txt` file that contains the locations of the individual segments.
 
+A HDB query is processed by multiple threads and map-reduce is applied if multiple partitions are involved in the query.
 
-### Network and storage performance
+Purpose:
 
-As expected, we see more noticeable performance variations with the aspects of the system that are virtualized and shared in EC2, especially those which in principle are shared amongst others on the platform. For kdb+ users, the storage (I/O) and the networking access are virtualized/shared, being separated from the bare metal by the Xen hypervisor. Most of the AMIs deployed into EC2 today are based on the Hardware Virtual Machine layer (HVM). It seems that in recent instantiations of HVM, the performance for I/O aspects of the guest have improved. For the best performance, AWS recommends current-generation instance types and HVM AMIs when you launch your instances.
-Any storage solution that hosts historical market data must:
+-   Provides a queryable data store of historical data
+-   In instances involving research and development or data analytics, you can create customer reports on order execution times
 
--   support the Linux-hosted [POSIX file system](https://en.wikipedia.org/wiki/POSIX) interfaces
--   offer suitable performance for streaming and random I/O mapped read
-rates
--   offer acceptable performance for random-region reads of a table (splayed) columns, constituting large record reads from random regions of the file
+Actions:
 
-These aspects, and inspection of metadata performance, are summarized in the tests. The term _metadata_ is used to refer to file operations such as listing files in a directory, gathering file size of a file, appending, finding modification dates, and so on.
+-   End of Day receipt: reloads the database to get the new days’ data from the RDB write-down
 
-!!! warning "Using Amazon S3 as a data store"
+HDBs are often expected to be mirrored locally. Some users, (e.g. quants) need a subset of the data for heavy analysis and backtesting where the performance is critical.
 
-    Because kdb+ does not directly support the use of an object store for its stored data, it cannot support direct use of an object-store model such as the Amazon S3. If you wish to use Amazon S3 as a data store, kdb+ historical data must be hosted on a POSIX-based file system layer fronting S3.
 
-    Several solutions offer a POSIX interface layered over an underlying S3 storage bucket. These can be included alongside native file-system support that can also be hosted on EC2.
+### KX gateway
 
-Although EC2 offers both physical systems and virtual systems within the Elastic Cloud, it is most likely customers will opt for a virtualized environment. There is also a choice in EC2 between spot pricing of an EC2, and deployed virtual instances. We focus here on the attribute and results achieved with the deployed virtual instance model. These are represented by instances that are tested in one availability zone and one placement group.
+In production, a kdb+ system may be accessing multiple timeseries datasets, usually each one representing a different market-data source, or using the same data, refactored for different schemas. All core components of a kdb+tick can handle multiple tables. However, you can introduce multiple TPs, RDBs and HDBs based on your fault-tolerance requirements. This can result in a large number of q components and a high infrastructure segregation. A KX gateway generally acts as a single point of contact for a client. A gateway collects data from the underlying services, combines datasets and may perform further data operations (e.g. aggregation, joins, pivoting, etc.) before it sends the result back to the user.
 
-A _placement group_ is a logical grouping of instances within a single availability zone. Nodes in a placement group should gain better network latency figures when compared to nodes scattered anywhere within an availability zone. Think of this as placement subnets or racks with a data center, as opposed to the datacenter itself. All of our tests use one placement group, unless otherwise stated.
+The specific design of a gateway can vary in several ways according to expected use cases. For example, in a hot-hot set up, the gateway can be used to query services across availability zones.
 
-Kdb+ is supported on most mainstream Linux distributions, and by extension we support standard Linux distributions deployed under the AWS model.
+The implementation of a gateway is largely determined by the following factors.
 
-Testing within this report was carried out typically on CentOS 7.3 or 7.4 distributions, but all other mainstream Linux distributions are expected to work equally well, with no noticeable performance differences seen in spot testing on RHEL, Ubuntu and SuSe running on EC2.
+-   Number of clients or users
+-   Number of services and sites
+-   Requirement of data aggregation
+-   Support of free-form queries
+-   Level of redundancy and failover
 
+The task of the gateway can be broken down into the following steps.
 
-### Does kdb+ work in the same way under EC2?
+-   Check user entitlements and data-access permissions
+-   Provide access to stored procedures, utility functions and business logic
+-   Gain access to data in the required services (TP, RDB, HDB)
+-   Provide the best possible service and query performance
 
-Yes – mostly.
+The KX gateway must be accessible through Amazon GC2 security rules from all clients of the kdb+ service. In addition, the location of the gateway service needs to be visibile to the remaining kdb+ processes constituting the full KX service.
 
-When porting or hosting the HDB data to EC2, we expect our customers to:
 
-1.  Use one of the many POSIX-based file systems solutions available under EC2.
+## Storage and filesystem
 
-1.  Use (partly or fully) the lower-cost object storage via a POSIX or POSIX-like access method.
+Kdb+tick architecture needs storage space for three types of data:
 
-1.  Not store the historical data on Hadoop HDFS file systems.
+TP log
 
-If kdb+ runs alongside one of the solutions reviewed here, your HDB will function identically to any internally-hosted, bare-metal system. You can use this report as input to determine the performance and the relative costs for an HDB solution on EC2.
+: If the tickerplant (TP) needs to handle many updates, then writing to TP needs to be fast since slow I/O may delay updates and can even cause data loss. Optionally, you can write updates to the TP log in batches (e.g. every second) as opposed to real time. You will suffer data loss if TP or instance is halted unexpectedly or stops/restarts, as the recently received updates are not persisted. Nevertheless, you already suffer data loss if a TP process or the AWS instance goes down or restarts. The extra second of data loss is probably marginal to the whole outage window.
 
-## Historical data layouts and performance testing
+: If the RDB process goes down, then it can replay data to recover from the TP log. The faster it can recover, the less data is waiting in the TP output queue to be processed by the restarted RDB. Hence, a fast read operation is critical to resilience. Amazon EBS io2 with block express or a subsection of an existing Amazon FSx for Lustre file system are good storage solutions to use for a TP log.
 
-The typical kdb+ database layout for a stock tick-based system is
-partitioned by date, although integer partitioning is also possible.
-Partitioning allows for quicker lookup and increases the ability to
-parallelize queries. Kdb+ splays in-memory table spaces into
-representative directories and files for long-term retention. Here is
-an example of an on-disk layout for quote and trade tables, with date
-partitions:
 
-<style type="text/css">
-  .foo {
-    float: right;
-    margin: 0 0 1em 1em;
-  }
-</style>
-![On-disk layout for quote and trade tables with date
-partitions](img/media/image5.jpg){.foo}
+sym file (and `par.txt` for segmented databases)
 
-Usually, updates to the HDB are made by writing today’s or the last
-day’s in-memory columns of data to a new HDB partition. Q programmers
-can use a utility built into q for this which creates the files and
-directories organized as in the table above. Kdb+ requires the support
-of a POSIX-compliant file system in order to access and process HDB
-data.
+: The sym file is written by the realtime database (RDB) after end-of-day, when new data is appended to the historical database (HDB). The HDB processes will then read the sym file to reload new data. Time to read and write the sym file is often marginal compared to other I/O operations. It is beneficial to write the sym file to a shared file system like Amazon FSx for Lustre or Amazon EFS. This provides flexibility in the AWS Virtual Private Cloud (VPC), as any AWS instance can assume this responsibility in a stateless fashion.
 
-Kdb+ maps the entire HDB into the runtime address space of kdb+. This
-means the Linux kernel is responsible for fetching HDB data. If,
-for example, you are expecting a query that scans an entire day’s trade
-price for a specific stock symbol range, the file system will load this
-data into the host memory as required. So, for porting this to EC2, if
-you expect it to match the performance you see on your in-house
-infrastructure you will need to look into the timing differences between
-this and EC2.
 
-Our testing measured the time to load and unload data from arrays,
-ignoring the details of structuring columns, partitions and segments –
-we focused on just the raw throughput measurements.
+HDB data
 
-All of these measurements will directly correlate to the final
-operational latencies for your full analytics use-case, written in q. In
-other words, if a solution reported here shows throughput of 100&nbsp;MB/sec
-for solution A, and shows 200&nbsp;MB/sec for solution B, this will reflect
-the difference in time to complete the data fetch from backing store. Of
-course, as with any solution, you get what you pay for, but the
-interesting question is: how much more could you get within the
-constraints of one solution?
+: Performance of the filesystem solution will determine the speed and operational latency for kdb+ to read its historical (at rest) data.
 
-To give an example: assuming a retrieval on solution A takes 50 ms for a
-query comprised of 10 ms to compute against the data, and 40 ms to fetch
-the data, with half the throughput rates, it might take 90 ms (10+80) to
-complete on solution B. Variations may be seen depending on metadata and
-random read values.
+: Both EBS (io2 Block Express) and FSx for Lustre can provide good query execution times for important business queries. Each EBS Block express volume supports up to 256K IOPS and 4GBps of throughput and a maximum volume size capacity of 64TiB with sub-millisecond, low-variance I/O latency. Amazon EBS io2 volumes support multi-attached instances, up to 16 Linux instances built on Nitro System in the same Availability Zone can be attached to EBS io2. For larger capacity requirements, FSx for Lustre is a good choice for the HDB. Amazon FSx for Lustre file systems scale to hundreds of GB/s of throughput and millions of IOPS. FSx for Lustre also supports concurrent access to the same file or directory from thousands of compute instances.
 
-This is especially important for solutions that use networked file
-systems to access a single namespace that contains your HDB. This may
-well exhibit a significantly different behavior when run at scale.
+One advantage of storing your HDB within the AWS ecosystem is the flexibility of storage. This is usually distinct from “on-prem” storage, whereby you may start at one level of storage capacity and grow the solution to allow for dynamic capacity growth. One huge advantage of most AWS storage solutions (e.g persistent disks) is that disks can grow dynamically without the need to halt instances, this allows you to change resources dynamically. For example, start with small disk capacity and grow capacity over time.
 
+Best practice is to replicate data. Data replication processes can use lower cost/lower performance object storage in AWS or data can replicate across availability zones. For example, you might have a service failover from Europe to North America, or vice-versa. Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX style filesystem stored in persistent storage (e.g. Amazon EBS or FSx for Lustre).
 
-## Data locality
+:fontawesome-solid-hand-point-right:
+[Migrating a kdb+ historical database to the Amazon Cloud](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
 
 
+### Simple Storage Service (S3)
 
-Data locality is the basic architectural decision.
+S3 is an object store that scales to exabytes of data. There are different storage classes (Standard, Standard IA, Intelligent Tiering, One Zone, Glacier, Glacier Deep Archive) for different availability. Infrequently used data can use cheaper but slower storage. The KX Insights native object store functionality allows users to read HDB data from S3 object storage.
 
-You will get the best storage performance in EC2 by localizing the data
-to be as close to the compute workload as is possible.
+The HDB `par.txt` file can have segment locations that are on AWS S3 object storage. In this pattern, the HDB can reside entirely on S3 storage or spread across EBS, EFS or S3 as required. There is a relatively high latency when using S3 cloud storage compared to storage services EBS Block Express or FSx for Lustre. The performance of kdb+ when working with S3 can be improved by taking advantage of the caching feature of the kdb+ native object store. The results of requests to S3 can be cached on a local high-performance disk thus increasing performance. The cache directory is continuously monitored and a size limit is maintained by deleting files according to a LRU (least recently used) algorithm.
 
-EC2 is divided into various zones. Compute, storage and support software
-can all be placed in pre-defined availability zones. Typically these
-reflect the timezone location of the data center, as well as a further
-subdivision into a physical instance of the data center within one
-region or time zone. Kdb+ will achieve the lowest latency and highest
-bandwidth in the network by using nodes and storage hosted in the same
-availability zone.
+Caching coupled with enabling secondary threads can increase the performance of queries against a HDB on S3 storage. The larger the number of secondary threads, irrespective of CPU core count, the better the performance of kdb+ object storage. Conversely the performance of cached data appears to be better if the secondary-thread count matches the CPU core count.
 
+We recommend using compression on the HDB data residing on S3. This can reduce the cost of object storage and possible egress costs and also counteract the relatively high-latency and low bandwidth associated with S3 object storage.
 
-## Getting your data into EC2 
+Furthermore, S3 is useful for archiving, tiering, and backup. The TP log file and the sym can be stored each day and archived for a period of time. The lifecycle management of the object store simplifies clean-up, whereby one can set expiration time on any file. The versioning feature of S3 is particularly useful when a sym file bloat happens due to feed misconfiguration or upstream change. Migrating back to a previous version restores the health of the whole database.
 
-Let’s suppose you already have a lot of data for your historical
-database (HDB). You will need to know the achievable bandwidth for data
-loading, and note that you will be charged by the amount of data
-ingested. The mechanics of loading a large data set from your data
-center which hosts the HDB into EC2 involves the use of at least one of
-the two methods described below.
+S3 provides strong read-after-write consistency. After a successful write or update of an object, any subsequent read request immediately receives the latest version of the object. S3 also provides strong consistency for list operations, so after a write, you can immediately perform a listing of the objects in a bucket with all changes reflected. This is especially useful when there are many kdb+ processes reading from S3 as it ensures consistency.
 
+A kdb+ feed can subscribe to a S3 file update where the upstream drops into a bucket and can start its processing immediately. The data is available earlier compared to the solution when the feed is started periodically (e.g. in every hour).
 
-### EC2 Virtual Private Cloud 
 
-We would expect kdb+ customers to use the EC2 Virtual Private Cloud
-(VPC) network structure. Within the VPC you can use either an anonymous
-IP address, using EC2 DHCP address ranges, or a permanently-allocated IP
-address range. The anonymous DHCP IP address range is free of charge.
-Typically you would deploy both the front and backend domains (subnets)
-within the same VPC, provisioned and associated with each new instance
-in EC2. Typically, an entire VPC allocates an entire class-C subnet. You
-may provision up to 200 class-C subnets in EC2, as one account. Public
-IP addresses are reachable from the internet and are either dynamically
-allocated on start, or use the same pre-defined elastic IP address on
-each start of the instance.
+### Elastic Block Store (EBS)
 
-Private IP addresses refer to the locally defined IP addresses only
-visible to your cluster (e.g. the front/backend in diagram below).
-Private IP addresses are retained by that instance until the instance is
-terminated. Public access may be direct to either of these domains, or
-you may prefer to set up a classic [‘demilitarized zone’](#security-of-your-data-and-secure-access) for kdb+ access.
+[EBS](app-a-ebs.md) is a good storage service to store HDB and Tickerplant data, and is fully compliant with kdb+. EBS supports all of the POSIX semantics required. With the introduction of io2 EBS volumes, users experienced increased performance of 500 I/OPS per GiB and more durability, reducing the possibility of a storage volume failure. With the introduction of io2 Block Express, users experienced even more performance - volumes will give you up to 256K IOPS & 4000 MBps of throughput and a maximum volume size of 64 TiB, all with sub-millisecond, low-variance I/O latency.
 
-An elastic IP address is usually your public IPv4 address, known to your
-quants/users/applications, and is reachable from the Internet and
-registered permanently in DNS, until you terminate the instance or
-elastic IP. AWS has added support for IPv6 in most of their regions. An
-elastic IP address can mask the failure of an instance or software by
-remapping the address to another instance in your estate. That is handy
-for things such as GUIs and dashboards, though you should be aware of
-this capability and use it. You are charged for the elastic IP address
-if you close down the instance associated with it, otherwise one IP
-address is free when associated. As of January 2018 the cost is, \$0.12
-per Elastic IP address/day when not associated with a running instance.
-Additional IP addresses per instance are charged.
+:fontawesome-solid-globe: AWS blog:
+<br>
+[New EBS Volume Type io2 – 100× Higher Durability and 10× More IOPS/GiB](https://aws.amazon.com/blogs/aws/new-ebs-volume-type-io2-more-iops-gib-higher-durability/)
+<br>
+[Now in Preview – Larger Faster io2 EBS Volumes with Higher Throughput](https://aws.amazon.com/blogs/aws/now-in-preview-larger-faster-io2-ebs-volumes-with-higher-throughput/)
 
-Ingesting data can be via the public/elastic IP address. In this case,
-routing to that connection is via undefined routers. The ingest rate to
-this instance using this elastic IP address would depend on the
-availability zone chosen. But in all cases, this would be a shared pubic
-routed IP model, so transfer rates may be outside your control.
 
-In theory this uses publicly routed connections, so you may wish to
-consider encryption of the data over the wire, prior to decryption.
+### Elastic File Store (EFS)
 
+[EFS](app-b-efs-nfs.md) is an NFS service by AWS that offers NFS service for nodes in the same availability zone, and can run across zones, or be exposed externally. EFS can be used to store HDB and tickerplant data, and is fully compliant with kdb+.
 
-### Direct Connect 
 
-Direct Connect is a dedicated network connection between an access point
-to your existing IP network and one of the AWS Direct Connect locations.
-This is a dedicated physical connection offered as a VLAN, using
-industry standard 802.1q VLAN protocol. You can use AWS Direct Connect
-instead of establishing your own VPN connection over the internet to
-VPC. Specifically, it can connect through to a VPC domain using a
-private IP space. It also gives a dedicated service level for bandwidth.
-There is an additional charge for this service.
+### FSx for Lustre
 
-## Security of your data and secure access
+Amazon FSx for Lustre is POSIX-compliant and is built on Lustre, a popular open-source parallel filesystem that provides scale-out performance that increases linearly with a filesystem’s size. FSx filesystems scale to hundreds of GBs of throughput and millions of IOPS. It also supports concurrent access to the same file or directory from thousands of compute instances and provides consistent, sub-millisecond latencies for file operations, which makes it especially suitable for storing and retrieving HDB data.
 
-The EC2 application machine image model (AMI) has tight security models in place. 
-You would have to work very hard to remove these.
+FSx for Lustre persistent filesystem provides highly available and durable storage for kdb+ workloads. The fileservers in a persistent filesystem are highly available and data is automatically replicated within the same availability zone.
 
-The following diagram is a typical scenario for authenticating access to
-kdb+ and restricting networking access. The frontend and backend private
-subnets are provisioned by default with one Virtual Private Cloud (VPC)
-managed by EC2. Typically, this allocates an entire class-C subnet. You
-may provision up to 200 class-C subnets in EC2. The public access may be
-direct to either of these domains, or you may prefer to setup a classic
-‘demilitarized zone’:
+FSx for Lustre persistent filesystem allows you to choose from three deployment options.
 
-![Typical scenario for authenticating access](img/media/image6.png)
+-   PERSISTENT-50
+-   PERSISTENT-100
+-   PERSISTENT-200
 
-Amazon has spent a lot of time developing [security features for EC2](https://aws.amazon.com/security/).
-Key issues:
+Each of these deployment options comes with 50 MB/s, 100 MB/s, or 200 MB/s baseline disk throughput per TiB of filesystem storage.
 
--   A newly-provisioned node comes from a trusted build image, for example, one found in the AWS Marketplace.
--   The Amazon Linux AMI Security Center provides patch and fix lists, and these can be automatically inlaid by the AMI. The Amazon Linux AMI is a supported and maintained Linux image provided by AWS for use on EC2.
--   Encryption at rest is offered by many of the storage interfaces covered in this report.
+:fontawesome-brands-aws:
+[Performance-tuning options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/performance.html)
 
-<i class="far fa-hand-point-right"></i> [Amazon Security](https://aws.amazon.com/blogs/security/)
+### Other storage solutions
 
+This document contains the storage solution provided by Amazon. There are other vendors who offer kdb+-compliant storage options - these are described in more details under _Other File Systems_ at https://code.kx.com/q/cloud.
 
-## Getting your data out of EC2
+## Memory
 
+The tickerplant (TP) uses very little memory during normal operation in realtime mode, while a full record of intraday data is maintained in the realtime database. Abnormal operation occurs if a realtime subscriber (including RDB) is unable to process the updates. TP stores these updates in the output queue associated with the subscriber. A large output queue needs a large memory. TP may even hit memory limits and exit in extreme cases. Also, TP in batch mode needs to store data (e.g. for a second). This also increases the memory needed. Consequently, the memory requirement of the TP box depends on the setup of the subscribers and the availability requirements of the tick system.
 
-Storing billions and billions of records under kdb+ in EC2 is easily achievable. Pushing the data into EC2 can be easily done and in doing so incurs no data transfer charges from AWS. But AWS will charge you to extract this information from EC2. For example, network charges may apply if you wish to extract data to place into other visualization tools/GUIs, outside the domain of kdb+ toolsets.
+The main consideration for an instance hosting the RDB is to use a memory-optimized VM instance such as the `m5.8xlarge` (with 128 GB memory), `m5.16xlarge` (256 GB memory), etc. AWS also offers VM with extremely large memory, `u-24tb1.metal`, with 24 TiB of memory, for clients who need to store large amounts of high-frequency data in memory, in the RDB, or even to keep more than one partition of data in the RDB form.
 
+Bear in mind, the trade-off of large memory and RDB recovery time. The larger the tables, the longer it takes for the RDB to start from the TP log. To alleviate this problem, clients may split a large RDB into two. The driving rule for separating the tables into two clusters is the join operation between them. If two tables are never joined, then they can be placed into separate RDBs.
 
-### Replication
+We recommend large memories for HDB boxes. User queries may require large temporal space for complex queries. Query execution times are often dominated by IO cost to get the raw data. OS-level caching stores frequently used data. The larger the memory, the less cache miss will happen and the faster the queries will run.
 
-Or you may be replicating data from one region or availability zone, to another. For this, there is a cost involved. At time of writing, the charges are \$.09/GB (\$92/TB), or \$94,200 for 1&nbsp;PB transferred out to the Internet via EC2 public IP addresses. That is raw throughput measurements, not the raw GBs of kdb+ columnar data itself. This is billed by AWS at a pro-rated monthly rate. The rate declines as the amount of data transferred increases. This rate also applies for all general traffic over a VPN to your own data center. Note that normal Internet connections carry no specific service-level agreements for bandwidth.
 
+## CPU
 
-### Network Direct
+The CPU load generated by the tickerplant (TP) depends on the number of publishers and their verbosity (number of updates per second) and the number of subscribers. Subscribers may subscribe to partial data, but any filtering applied will consume further CPU cycles.
 
-If you use the Network Direct option from EC2, you get a dedicated network with guaranteed bandwidth. You then pay for the dedicated link, plus the same outbound data transfer rates. For example, as of January 2018 the standard charge for a dedicated 1&nbsp;GB/sec link to EC2 would cost \$220/month plus \$90/month for a transfer fee per TB.
+The CPU requirement of the real-time database (RDB) comes from
 
-Consider these costs when planning to replicate HDB data between regions, and when exporting your data continually back to your own data center for visualization or other purposes. Consider the migration of these tools to coexist with kdb+ in the AWS estate, and if you do not, consider the time to export the data. 
+-   appending updates to local tables
+-   user queries
 
+Local table updates are very efficient especially if TP sends batch updates. Nevertheless, faster CPU results in faster ingestion and lower latency. User queries are often CPU-intensive. They perform aggregation and joins, and call expensive functions. If the RDB is set up in [multithreaded input mode](../../kb/multithreaded-input.md) then user queries are executed in parallel. Furthermore, kdb+ 4.0 supports multithreading in most primitives, including `sum`, `avg`, `dev`, etc. If the RDB process is heavily used and hit by many queries, then it is recommended to start with [secondary threads](../../basics/cmdline.md#-s-secondary-threads). VMs with plenty of cores are recommended for RDB processes with large numbers of user queries.
 
-## Storing your HDB in S3
+If the infrastructure is sensitive to the RDB EOD work, then powerful CPUs are recommended. Sorting tables before splaying is a CPU-intensive task.
 
+Historical databases (HDB) are used for user queries. In many cases the IO dominates execution times. If the box has large memory and OS level caching reduces IO operations efficiently then CPU performance will directly impact execution times.
 
+## Locality, latency, and resilience
 
-S3 might be something you are seriously considering for storage of some,
-or all, of your HDB data in EC2. Here is how S3 fits into the landscape
-of all of the storage options in EC2.
+The standard  on-premise tick setup has the components on the same server. The tickerplant (TP) and realtime database (RDB) are linked via the TP log file and the RDB and historical database (HDB) are bound due to RDB EOD splaying.
 
+Customized tickerplants relax this constraint to improve resilience. One motivation might be to avoid HDB queries impacting data capture in TP. You can set up an HDB writer on the HDB box and the RDB can send its tables via IPC at midnight and delegate the IO work together with the sorting and attribute handling.
 
-### Locally-attached drives
+We recommend placing the feed handlers outside the TP box on another VM between TP and data feed. This way any malfunction of the feed handler has a smaller impact on TP stability.
 
-You can store your HDB on locally-attached drives, as you might do today on your own physical hardware on your own premises. 
+The kdb+tick architecture can also be set up with [placement groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html) in mind, depending on the use case. A placement group is a configuration option AWS offers which lets you place a group of interdependent instances in a certain way across the underlying hardware on which those instances reside. The instances could be placed close together, spread through different racks, or spread through different availability zones.
 
-EC2 offers the capability of bringing up an instance with internal NVMe or SAS/SATA disk drives, although this is not expected to be used for anything other than caching data, as this storage is referred to as ephemeral data by AWS, and might not persist after system shutdowns. This is due to the on-demand nature of the compute instances: they could be instantiated on any available hardware within the availability zone selected by your instance configuration.
 
+Cluster placement group
 
-### EBS volumes
+: The cluster placement group configuration allows you to place your group of interrelated instances close together in order to achieve the best throughput and low latency results. This option lets you pack the instances together oly inside the same availability zone, either in the same Virtual Private Cloud (VPC) or between peered VPCs.
 
-You can store your HDB on [EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html). These appear like persistent block-level storage. Because the EC2 instances are virtualized, the storage is separated at birth from all compute instances. 
 
-By doing this, it allows you to start instances on demand, without the need to co-locate the HDB data alongside those nodes. This separation is always via the networking infrastructure built into EC2. In other words, your virtualized compute instance can be attached to a real physical instance of the storage via the EC2 network, and thereafter appears as block storage. This is referred to as _network attached storage_ (Elastic Block Storage). 
+Spread placement groups
 
-Alternatively, you can place the files on a remote independent file system, which in turn is typically supported by EC2 instances stored on EBS or S3.
-
-
-### Amazon S3 object store
-
-Finally, there is the ubiquitous Amazon S3 object store, available in all regions and zones of EC2. Amazon uses S3 to run its own global network of websites, and many high-visibility web-based services store their key data under S3. With S3 you can create and deploy your HDB data in buckets of S3 objects. 
-
--   **Storage prices** are lower (as of January 2018): typically 10% of the costs of the Amazon EBS model.
--   S3 can be configured to offer **redundancy and replication** of object data, regionally and globally.
-
-Amazon can  be configured to duplicate your uploaded data across multiple geographically diverse repositories, according to the replication service selected at bucket-creation time. S3 promises [99.999999999%](https://aws.amazon.com/s3/faqs/) durability. 
-
-<i class="far fa-hand-point-right"></i> [AWS S3 replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
-
-However, there are severe limitations on using S3 when it comes to kdb+.
-The main limitation is the API. 
-
-
-#### API limitations
-
-An S3 object store is organized differently from a POSIX file system. 
-
-[![S3 object store](img/media/image7.png)](img/media/image7.png "Click to expand")
-
-S3 uses a web-style [RESTful interface](https://en.m.wikipedia.org/wiki/Representational_state_transfer "Wikipedia") HTTP-style interface with [eventual-&#8203;consistency](https://en.wikipedia.org/wiki/Eventual_consistency "Wikipedia") semantics of put and change. 
-This will always represent an additional level of abstraction for an application like kdb+ that directly manages its virtual memory. 
-S3 therefore exhibits slower per–process/thread performance than is usual for kdb+. The lack of POSIX interface and the semantics of RESTful interfaces prevents kdb+ and other high-performance databases from using S3 directly. 
-
-However, S3’s low cost, and its ability to scale performance horizontally when additional kdb+ instances use the same S3 buckets, make it a candidate for some customers.
-
-
-#### Performance limitations
-
-The second limitation is S3’s performance, as measured by the time taken to populate vectors in memory. 
-
-Kdb+ uses POSIX file-system semantics to manage HDB structure directly on disk. It exploits this feature to gain very high-performance memory management through Linux-based memory mapping functions built into the kernel, from the very inception of Linux.
-
-S3 uses none of this.
-
-On EC2, kdb+ performance stacks up in this order (from slowest to faster):
-
-1.  S3
-2.  EBS
-3.  Third-party distributed or managed file system
-4.  Local drives to the instance (typically cache only)
-
-Although the performance of S3 as measured from one node is not fast, S3 retains comparative performance for each new instance added to an HDB workload in each availability zone. Because of this, S3 can scale up its throughput when used across multiple nodes within one availability zone. This is useful if you are positioning large numbers of business functions against common sets of market data, or if you are widely distributing the workload of a single set of business queries. This is not so for EBS as, when deployed, the storage becomes owned by one, and only one, instance at a time.
-
-
-#### Replication limitations
-
-A nice feature of S3 is its built-in replication model between regions
-and/or time zones. 
-
-Note you have to choose a replication option; none is chosen by default.
-
-The replication process may well duplicate incorrect behavior from one region to another. In other words, this is not a backup.
-
-However, the data at the replica site can be used for production
-purposes, if required. Replication is only for cross-region propagation
-(e.g. US-East to US-West). But, given that the kdb+ user can design this
-into the solution (i.e. end-of-day copies to replica sites, or multiple
-pub-sub systems), you may choose to deploy a custom solution within
-kdb+, across region, rather than relying on S3 or the file system
-itself.
-
-
-#### Summary
-
--   The **POSIX file system interface** allows the Linux kernel to move data
-    from the blocks of the underlying physical hardware, directly into
-    memory mapped space of the user process. This concept has been tuned
-    and honed by over 20 years of Linux kernel refinement. In our case,
-    the recipient user process is kdb+. S3, by comparison, requires the
-    application to bind to an HTTP-based RESTful (get, wait, receive)
-    protocol, which is typically transferred over TCP/IP LAN or WAN
-    connection. Clearly, this is not directly suitable for a
-    high-performance in-memory analytics engine such as kdb+. However,
-    all of the file-system plug-ins and middleware packages reviewed in
-    this paper help mitigate this issue. The appendices list the main
-    comparisons of all of the reviewed solutions.
-
--   Neither Kdb+, nor any other high-performance database, makes use of the **RESTful object-store interface**.
-
--   There is no notion of **vectors, lists, memory mapping** or optimized placement of objects in memory regions.
-
--   S3 employs an **eventual-consistency** model, meaning there is no guaranteed service time for placement of the object, or replication of the object, for access by other processes or threads.
-
--   S3 exhibits relatively low **streaming-read performance**. A RESTful, single S3 reader process is limited to a [read throughput](http://blog.zachbjornson.com/2015/12/29/cloud-storage-performance.html) of circa 0.07&nbsp;GB/sec. Some of the solutions reviewed in this paper use strategies to improve these numbers within one instance (e.g. raising that figure to the 100s&nbsp;MB/sec – GB/sec range). There is also throughput scalability gained by reading the same bucket across multiple nodes. There is no theoretical limit on this bandwidth, but this has not been exhaustively tested by Kx.
-
--   Certain **metadata operations**, such as kdb+’s append function, cause significant latency vs that observed on EBS or local attached storage, and your mileage depends on the file system under review.
-
-Performance enhancements, some of which are bundled into **third-party
-solutions** that layer between S3 and the POSIX file system layer, are
-based around a combination of: multithreading read requests to the S3
-bucket; separation of large sequential regions of a file into individual
-objects within the bucket and read-ahead and caching strategies.
-
-There are some areas of synergy. Kdb+ HDB data typically stores billions
-and billions of time-series entries in an immutable read-only mode. Only
-updated new data that lands in the HDB needs to be written. S3 is a
-[shared nothing](https://en.wikipedia.org/wiki/Shared-nothing_architecture "Wikipedia") model. Therefore, splitting a single segment or
-partitioned column of data into one file, which in turn is segmented
-into a few objects of say 1&nbsp;MB, should be a lightweight operation, as
-there is no shared/locking required for previously written HDB data. So
-the HDB can easily tolerate this eventual consistency model. This does
-not apply to all use-cases for kdb+. For example, S3, with or without a
-file system layer, cannot be used to store a reliable ticker-plant log.
-
-Where S3 definitely plays to its strengths, is that it can
-be considered for an **off-line deep archive** of your kdb+ formatted market
-data.
-
-Kx does not make recommendations with respect to
-the merits, or otherwise, of storing kdb+ HDB market data in a data
-retention type “WORM” model, as required by the regulations [SEC 17-a4](https://en.wikipedia.org/wiki/SEC_Rule_17a-4 "Wikipedia").
+: With spread placement groups, each single instance runs on separate physical hardware racks. So, if you deploy five instances and put them into this type of placement group, each one of those five instances will reside on a different rack with its own network access and power, either within a single availability zone or in a multi-availability-zone architecture.
 
 
 ## Disaster recovery
 
-In addition to EC2’s built-in disaster-recovery features, when you use
-kdb+ on EC2, your disaster recovery process is eased by kdb+’s simple,
-elegant design.
+A disaster recovery plan is usually based on requirements from both the Recovery Time Objective (RTO) and Recovery Point Objective (RPO) specifications, which can guide the design of a cost-effective solution. However, every system has its own unique requirements and challenges. Here we suggest best-practice methods for dealing with the various possible failures one needs to be plan.
 
-Kdb+ databases are stored as a series of files and directories on disk.
-This makes administering databases extremely easy because database files
-can be manipulated as operating-system files. Backing up a kdb+ database
-can be implemented using any standard file-system backup utility. This
-is a key difference from traditional databases, which have to have their
-own cumbersome backup utilities and do not allow direct access to the
-database files and structure.
+In all the various combinations of failover operations that can be designed, the end goal is always to maintain availability of the application and minimize any disruption to the business.
 
-Kdb+’s use of the native file system is also reflected in the way it
-uses standard operating-system features for accessing data
-(memory-mapped files), whereas traditional databases use proprietary
-techniques in an effort to speed up the reading and writing processes.
-The typical kdb+ database layout for time-series data is to partition by
-date.
+In a production environment, some level of redundancy is always required. Requirements may vary depending on the use case, but in nearly all instances requiring high availability, the best option is to have a hot-hot (or ‘active-active’) configuration. Four main configurations are found in production.
 
 
-## Licensing kdb+ in the Cloud
+Hot-hot
 
+: is the term for an identical mirrored secondary system running, separate to the primary system, capturing and storing data but also serving client queries. In a system with a secondary server available, hot-hot is the typical configuration as it is sensible to use all available hardware to maximize operational performance. The KX gateway handles client requests across availability zones and collects data from several underlying services, combining data sets and if necessary, performing an aggregation operation before returning the result to the client.
 
-Existing kdb+ users have a couple of options for supporting their kdb+
-licenses in the Cloud:
 
+Hot-warm
 
-### Existing license
+: The secondary system captures data but does not serve queries. In the event of a failover, the KX gateway will reroute client queries to the secondary (warm) system.
 
-You can use your existing license entitlement but must transfer or register coverage in the Cloud service. This would consume the specified number of cores from your license pool. An enterprise license can be freely used in EC2 instance(s). This might apply in the situation where the Cloud environment is intended to be a permanent static instance. Typically, this will be associated with a virtual private cloud (VPC) service. For example, AWS lets you provision a logically isolated section of the Cloud where you can launch AWS resources in a virtual network. The virtual network is controlled by your business, including the choice of IP, subnet, DNS, names, security, access, etc.
+Hot-cold
 
+: The secondary system has a complete backup or copy of the primary system at some previous point in time (recall that kdb+ databases are just a series of operating system files and directories) with no live processes running. A failover in this scenario involves restoring from this latest backup, with the understanding that there may be some data loss between the time of failover to the time the latest backup was made.
 
-### On-demand licensing
 
-You can sign up for an on-demand license, and use it to enable kdb+ on each of the on-demand EC2 nodes. Kdb+ on-demand usage registers by core and by minutes of execution.
+Pilot Light (or cold hot-warm)
 
+: The secondary is on standby and the entire system can quickly be started to allow recovery in a shorter time period than a hot-cold configuration.
 
-## Encryption
+Typically, kdb+ is deployed in a high-value system. Hence, downtime can impact business which justifies the hot-hot setup to ensure high availability.
 
-Consider the need for access to any keys used to encrypt and store data.
-Although this is not specific to AWS, do not assume you have automatic rights to private keys employed to encrypt the data.
+Usually, the secondary will run on completely separate infrastructure, with a separate filesystem, and save the data to a secondary database directory, separate from the primary. In this way, if the primary system or underlying infrastructure goes offline, the secondary would be able to take over completely.
 
-Where a third-party provider supplies or uses encryption or compression to store the market data on S3, you will need to check the public and private keys are either made available to you, or held by some form of external service.
+The usual strategy for failover is to have a complete mirror of the production system (feedhandler, tickerplant, and realtime subscriber), and when any critical process goes down, the secondary takes over. Switching from production to disaster recovery systems can be implemented seamlessly using kdb+ interprocess communication.
 
+:fontawesome-regular-map:
+[Disaster-recovery planning for kdb+tick systems](../../wp/disaster-recovery/index.md)
+<br>
+:fontawesome-regular-map:
+[Data recovery for kdb+ tick](../..//wp/data-recovery.md)
 
-## Benchmarking methodology
 
+## Network
 
+The network bandwidth needs to be considered if the tickerplant components are not located on the same VM. The network bandwidth between AWS VMs depends on the type of the VMs. For example, a VM of type `m5.2xlarge` has a maximum network bandwidth 10 Gbps and a larger instance `m5.16xlarge` can sustain between 10–25 Gbps. The [C5n](https://aws.amazon.com/blogs/aws/new-c5n-instances-with-100-gbps-networking/) instances, built on the AWS Nitro system, have up to 100 Gbps network bandwidth. For a given update frequency you can calculate the required bandwidth by employing the [`-22!` internal function](../../basics/internal.md#-22x-uncompressed-length) that returns the length of the IPC byte representation of its argument. The tickerplant copes with large amounts of data if batch updates are sent.
 
-For testing raw storage performance, we used a
-lightweight test script developed by Kx, called `nano`, based on
-the script `io.q` written by Kx’s Chief Customer Officer, Simon Garland. 
-The scripts used for this benchmarking are freely available
-for use and are published on Github at
-<i class="fab fa-github"></i> [KxSystems/nano](https://github.com/KxSystems/nano)
+You might want to consider [Enhanced networking](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) that provides high-performance networking capabilities on certain instances. The employed virtualization technique has higher I/O performance and lower CPU utilization when compared to traditional virtualized network interfaces. Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies.
 
-These sets of scripts are designed to focus on the relative performance of distinct I/O functions typically expected by a HDB. The measurements are taken from the perspective of the primitive IO operations, namely:
+An [Elastic Fabric Adapter](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) (EFA) is a network device that you can attach to your Amazon EC2 instance to accelerate High Performance Computing (HPC) and machine learning applications. EFA enables customers to run applications requiring high levels of inter-node communications at scale on AWS. Its custom-built operating system (OS) bypass hardware interface enhances the performance of inter-instance communications, which is critical to scaling these applications.
 
-test | what happens
------|-------------------------------------------------------------------
-Streaming reads | One list (e.g. one column) is read sequentially into memory. We read the entire space of the list into RAM, and the list is memory-mapped into the address space of kdb+.                                                
-Large&nbsp;Random&nbsp;Reads<br/>(one mapped read and map/unmapped) | 100 random-region reads of 1&nbsp;MB of a single column of data are indexed and fetched into memory. Both single mappings into memory, and individual map/fetch/unmap sequences. Mapped reads are triggered by a page fault from the kernel into `mmap`’d user space of kdb+. This is representative of a query that requires to read through 100 large regions of a column of data for one or more dates (partitions). 
-Small Random Reads<br/>(mapped/unmapped sequences) | 1600 random-region reads of 64&nbsp;KB of a single column of data are indexed and fetched into memory. Both single mappings into memory, and individual map/fetch/unmap sequences. Reads are triggered by a page fault from the kernel into `mmap`’d user space of kdb+. We run both fully-mapped tests and tests with map/unmap sequences for each read.
-Write | Write rate is of less interest for this testing, but is reported nonetheless.
-Metadata:<br/>(`hclose` `hopen`) | Average time for a typical open/seek to end/close loop. Used by TP log as an “append to” and whenever the database is being checked. Can be used to append data to an existing HDB column.
-Metadata:<br/>`(();,;2 3)` | Append data to a modest list of 128&nbsp;KB, will open/stat/seek/write/close. Similar to ticker plant write down.
-Metadata:<br/>`(();:;2 3)` | Assign bytes to a list of 128&nbsp;KB, stat/seek/write/link. Similar to initial creation of a column.
-Metadata:<br/>(`hcount`) | Typical open/stat/close sequence on a modest list of 128&nbsp;KB. Determine size. e.g. included in `read1`.
-Metadata:<br/>(`read1`) | An atomic mapped map/read/unmap sequence open/stat/seek/read/close sequence. Test on a modest list of 128&nbsp;KB.
+EFA provides lower and more consistent latency and higher throughput than the TCP transport traditionally used in cloud-based HPC systems
 
-This test suite ensures we cover several of the operational tasks undertaken during an HDB lifecycle.
+!!! tip "Make sure the network is not your bottleneck in processing the updates."
 
-For example, one broad comparison between direct-attached storage
-and a networked/shared file system is that the networked file-system
-timings might reflect higher operational overheads vs. a Linux kernel
-block-based direct file system. Note that a shared file system will
-scale up in-line with the implementation of horizontally distributed
-compute, which the block file systems will not easily do, if at all.
-Also note the networked file system may be able to leverage 100s or
-1000s of storage targets, meaning it can sustain high levels of
-throughput even for a single reader thread.
+A network load balancer is a type of [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) by Amazon. It is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, Network Load Balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
 
+Load balancers can distribute load among applications that offer the same service. Kdb+ is single-threaded by default. You can set [multithreaded input mode](../../kb/multithreaded-input.md) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
 
-### Baseline result – using a physical server
+A better approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway via async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then we recommend a gateway load balancer to avoid query contention in the gateway. Furthermore, there are other tickerplant components that enjoy the benefit of load balancers to handle simultaneous requests better.
 
-All the appendices refer to tests on AWS.
+Adding a load balancer on top of an historical database (HDB) pool is quite simple, it needs only three steps.
 
-To see how EC2 nodes compare to a physical server, we show the results of running the same set of benchmarks on a server running natively, bare metal, instead of on a virtualized server on the Cloud.
+1.  Create a network load balancer with protocol TCP. Set the name, availability zone, target group and security group. The security group needs to have an inbound rule to the HDB port.
+2.  Create a launch template. A key part here is the _User Data_ window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the load balancer so you need to set up an inbound firewall rule via a security group. You can also use an image (AMI) that you created earlier from an existing EC2.
+3.  Create an Auto Scale instance group (set of virtual machines) with autoscaling to better handle peak loads. Set the recently created instance group as a target group. All clients will access the HDB pool via the load balancer’s DNS name (together with the HDB port) and the load balancer will distribute the requests among the HDB servers seamlessly.
 
-For the physical server, we benchmarked a two-socket Broadwell E5-2620 v4 @ 2.10&nbsp;GHz; 128&nbsp;GB DDR4 2133&nbsp;MHz. This used one Micron PCIe NVMe drive, with CentOS 7.3. For the block device settings, we set the device read-ahead settings to 32&nbsp;KB and the queue depths to 64. It is important to note this is just a reference point and not a full solution for a typical HDB. This is because the number of target drives at your disposal here will limited by the number of slots in the server.
+General TCP load balancers with an HDB pool offer better performance than a stand-alone HDB. However, utilizing the underlying HDBs is not optimal. Consider three clients C1, C2, C3, and two servers HDB1 and HDB2. C1 is directed to HDB1 when establishing the TCP connection, C2 to HDB2 and C3 to HDB1 again. If C1 and C3 send heavy queries and C2 sends a few lightweight queries, then HDB1 is overloaded and HDB2 is idle. To improve the load distribution the load balancer needs to go under the TCP layer and needs to understand the kdb+ protocol.
 
-Highlights:
 
+## Logging
 
-#### Creating a memory list
+AWS provides a fully managed logging service that performs at scale and can ingest application and system log data. AWS CloudWatch allows you to view, search and analyze system logs. It provides an easy-to-use and customizable interface so that e.g. DevOps can quickly troubleshoot applications.
 
-The MB/sec that can be laid out in a simple
-list allocation/creation in kdb+. Here we create a list of longs of
-approximately half the size of available RAM in the server.
+[CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) enables you to see all of your logs, regardless of their source, as a single and consistent flow of events ordered by time. Events are organized into log streams and each stream is part of a log group. Related applications typically belong to the same log group.
 
-![Creating a memory list](img/media/image8.png)
+You don’t need to modify your tick scripts to enjoy the benefits of CloudWatch. A log agent can be installed and configured to forward your application log to CloudWatch. The EC2 machine of the agent needs proper entitlements by having the appropriate WatchLog policy in its IAM rule. In the host configuration file you need to provide the log file to watch and to which log stream the new entries should be sent.
 
-Shows the capability of the server when laying out
-lists in memory; reflects the combination of memory speeds
-alongside the CPU. 
+Almost all kdb+ tick components can benefit from cloud logging. Feed handlers log new data arrival, data and connection issues. The TP logs new or disappearing publishers and subscribers. It can log if the output queue is above a threshold. The RDB logs all steps of the EOD process which includes sorting and splaying of all tables. The HDB and gateway can log every user query.
 
+Kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tick plans and these Ops tables are separated from the tables required for the business.
 
-#### Re-read from cache
+One benefit of storing log messages is the ability to process log messages in qSQL. Timeseries join functions include as-of and window joins. For example, gateway functions are executed hundreds of times during the day. The gateway query executes RDB and HDB queries, often via a load balancer. All these components have their own log entries. You can simply employ a window join to find relevant entries and perform aggregation to get an insight of the performance characteristics of the execution chain. Note that nothing prevents you from logging both to kdb+ and to CloudWatch.
 
-The MB/sec that can be re-read when the data
-is already held by the kernel buffer cache (or file-system cache, if
-kernel buffer not used). It includes the time to map the pages back into
-the memory space of kdb+ as we effectively restart the instance here
-without flushing the buffer cache or file system cache.
+<!-- FIXME link -->
+KX Insights QLog provides kdb+ cloud logging functionality. QLog supports multiple endpoint types through a simple interface and provides the ability to write to them concurrently. The logging endpoints in QLog are encoded as URLs with two main types: file descriptors and REST endpoints. The file descriptor endpoints supported are
 
-![Re-read from cache](img/media/image9.png)
+```txt
+:fd://stdout
+:fd://stderr
+:fd:///path/to/file.log
+```
 
-Shows if there are any unexpected glitches with the file-system caching subsystem. This may not affect your product kdb+ code per-se, but may be of interest in your research.
+REST endpoints are encoded as standard HTTP/S URLs such as: `https://logs.${region}.amazonaws.com`. QLog generates structured, formatted log messages tagged with a severity level and component name. Routing rules can also be configured to suppress or route based on these tags.
 
+Existing q libraries that implement their own formatting can still use QLog via the base APIs. This enables them to do their own formatting but still take advantage of the QLog-supported endpoints. Integration with cloud logging applications providers can easily be achieved using logging agents. These can be set up alongside running containers/virtual machines to capture their output and forward to logging endpoints, such as CloudWatch.
 
-#### Streaming reads
+CloudWatch supports monitoring, alarming and creating dashboards. It is simple to create a metric filter based on a pattern and set an alarm (e.g. sending email) if a certain criterion holds. You may also wish to integrate your KX monitoring for kdb+ components into this cloud logging and monitoring framework. The purpose is the same: to get insights into performance, uptime and overall health of the applications and the servers pool. You can visualize trends via dashboards.
 
-Where complex queries demand wide time periods or symbol ranges. An
-example of this might be a VWAP trading calculation. These types of
-queries are most impacted by the throughput rate i.e., the slower the
-rate, the higher the query wait time.
 
-![Streaming reads](img/media/image10.png)
+## Interacting with AWS services
 
-Shows that a single q process can ingest at 1900&nbsp;MB/sec with data
-hosted on a single drive, into kdb+’s memory space, mapped.
-Theoretical maximum for the device is approximately 2800&nbsp;MB/sec and we
-achieve 2689&nbsp;MB/sec. Note that with 16 reader processes, this
-throughput continues to scale up to the device limit, meaning kdb+ can
-drive the device harder, as more processes are added. 
+People interact with AWS services manually via the console web interface. You may also need to interact from a q process. There are three easy ways to do this. For demonstration we will invoke a lambda function called `myLambda` from a q process. The lambda requires a payload JSON with two name-value pairs as input. JSON serialization and deserialization is supported by q functions `.j.j` and `.j.k`, respectively. In our use case, the payload needs to be base64-encoded. This is also supported natively in q by function `.Q.btoa`.
 
 
-#### Random reads
+### Via AWS CLI
 
-We compare the throughputs for random 1&nbsp;MB-sized reads. This simulates
-more precise data queries spanning smaller periods of time or symbol
-ranges.
+A q process can run shell commands using the `system` keyword. We assume that AWS CLI is installed on the script-runner machine.
 
-In all random-read benchmarks, the term _full map_ refers to reading
-pages from the storage target straight into regions of memory that are
-pre-mapped.
+```q
+q) fn: "myLambda"
+q) payload: .j.j `name1`name2!("value 1"; "value 2")
+q) command: "aws lambda invoke --function-name ", fn, " --payload ", .Q.btoa[payload], " response.txt"
+q) .j.k raze system command
+StatusCode     | 200f
+ExecutedVersion| "$LATEST"
+```
 
-![Random 1 MB read](img/media/image11.png)
+Unfortunately, this approach needs string manipulation, so it is not always convenient.
 
-![Random 64 KB reads](img/media/image12.png)
 
-Simulates queries that are searching around broadly different times or symbol regions. This shows that a typical NVMe device under kdb+ trends very well when we are reading smaller/random regions one or more columns at the same time. This shows that the device actually gets similar throughput when under high parallel load as threads increase, meaning more requests are queuing to the device and the latency per request sustains. 
+### Via EmbedPy
 
+Amazon provides a Python client library to interact with AWS services. Using [embedPy](../../interfaces/embedpy.md), a q process can load a Python environment and easily transfer data between the two environments.
 
-#### Metadata function response times
+```q
+q) system "l p.q"
+q)p)import json         # to create payload easily
+q)p)import boto3        # to invoke a lambda
 
-We also look at metadata function response times for the file system. In the baseline results below, you can see what a theoretical lowest figure might be. 
+q)p)client = boto3.client('lambda')
 
-We deliberately did not run metadata tests using very large data sets/files, so that they better represent just the overhead of the file system, the Linux kernel and target device.
+q)p)response= client.invoke(FunctionName='myLambda', Payload=json.dumps({'name1': 'value 1', 'name2': 'value 2'}))
 
+q)p)result= response['Payload'].read()
+```
 
-function       | latency (mSec) | function   | latency (mSec) 
----------------|----------------|------------|---------------
-`hclose hopen` | 0.006          | `();,;2 3` | 0.01
-`hcount`       | 0.003          | `read1`    | 0.022
 
-<small>_Physical server, metadata operational latencies - mSecs (headlines)_</small>
+### Natively via Kurl REST API
 
-![Metadata latency](img/media/image13.png)
+Finally, you can send HTTP requests to the AWS REST API endpoints. KX Insights provides a native q REST API called Kurl. Kurl provides ease-of-use cloud integration by registering AWS authentication information. When running on a cloud instance, and a role is available, Kurl will discover and register the instance metadata credentials. When running outside the cloud, OAuth2, ENV, and file-based credential methods are supported. Kurl takes care of your credentials and properly formats the requests. In the code below the variables `fn` and `payload` are as in the previous example.
 
-This appears to be sustained for multiple q processes, and on the
-whole is below the multiple μSecs range. Kdb+ sustains good metrics. 
+```q
+q) system "l kurl.q";
 
+q) resp: .kurl.sync (`$"https://lambda.us-east-1.amazonaws.com/2015-03-31/functions/", fn, "/invocations";`POST; enlist[`body]!enlist payload);
 
-### AWS instance local SSD/NVMe
+q) if[not 200 = first resp; '("Error invoking function ", last resp)];
+```
 
-We separate this specific test from other storage tests,
-as these devices are contained within the EC2 instance itself, unlike
-every other solution reviewed in [Appendix A](app-a-ebs.md). Note that some of the
-solutions reviewed in the appendixes do actually leverage instances
-containing these devices.
+## Package, manage, and deploy
 
-An instance-local store provides temporary block-level storage for your
-instance. This storage is located on disks that are physically attached
-to the host computer.
+QPacker is a tool to help developers package, manage and deploy q/kdb+ applications to the cloud. It automates the creation of containers and virtual machines using a simple configuration file `qp.json`. It packages q/kdb+ applications with common shared-code dependencies, such as Python and C. QPacker can build and run containers locally as well as push to container registries (DockerHub, AWS Elastic Container Registry etc.).
 
-This is available in a few predefined regions (e.g. US-East-1), and for
-a selected list of specific instances. In each case, the instance local
-storage is provisioned for you when created and started. The size and
-quantity of drives is preordained and fixed in both size and quantity.
-This differs from EBS, where you can select your own.
+Software is often built by disparate teams, who may individually have remit over a particular component, and package that component for consumption by others. QPacker will store all artefacts for a project in a QPK file. While this file is intended for binary dependencies, it is also intended to be portable across environments.
 
-For this test we selected the `i3.8xlarge` as the instance under test<!--  (==see References FIXME Specifically?== ) -->. 
-`i3` instance definitions will provision local NVMe or SATA
-SSD drives for local attached storage, without the need for networked
-EBS.
+QPacker can interface with Hashicorp Packer to generate virtual machine (VM) images for AWS. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -aws`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with systemd to allow the `startq.sh` launch script to start the application on boot.
 
-Locally provisioned SSD and NVMe are supported by kdb+. The results from
-these two represent the highest performance per device available for
-read rates from any non-volatile storage in EC2.
 
-However, note that this data is ephemeral. That is,
-whenever you stop an instance, EC2 is at liberty to reassign that space
-to another instance and it will scrub the original data. When the
-instance is restarted, the storage will be available but scrubbed. This
-is because the instance is physically associated with the drives, and
-you do not know where the physical instance will be assigned at start
-time. The only exception to this is if the instance crashes or reboots
-without an operational stop of the instance, then the same storage will
-recur on the same instance.
+## Amazon Lambda Functions
 
-The cost of instance-local SSD is embedded in the fixed price of the
-instance, so this pricing model needs to be considered. By contrast, the
-cost of EBS is fixed per GB per month, pro-rated. The data held on
-instance local SSD is not natively sharable. If this needs to be shared,
-this will require a shared file-system to be layered on top, i.e.
-demoting this node to be a file system server node. For the above
-reasons, these storage types have been used by solutions such as [WekaIO](#appendix-i-wekaio-matrix), for their local instance of the erasure coded data cache.
+Function as a Service (FaaS) is an interesting cloud technology that lets developers create an application without considering the complexity of building and maintaining the infrastructure that runs it. Cloud providers support only a handful of programming languages natively. AWS’ FaaS solution, [Lambda](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Lambda.html), supports Bash scripts that can start any executable, including a q script.
 
-function                     | instance-local NVMe<br/>(4 × 1.9 TB) | physical node<br/>(1 NVMe)
------------------------------|:---------------------------:|:------------:
-streaming read (MB/sec)      | 7006                        | 2624
-random 1-MB read (MB/sec)    | 6422                        | 2750
-random 64-KB read (MB/sec)   | 1493                        | 1182
-metadata (`hclose`, `hopen`) | 0.0038 mSec                 | 0.0068 mSec
+Kdb+ on AWS Lambda is serverless as there are no servers to manage or maintain. When your lambda service is not used then you don’t have infrastructure costs. The cost is transparent and you can charge those who actually use your service. Also, the infrastructure scales well and parallel execution of your lambda is not limited by your hardware that is typically fixed with an on-premise solution. Furthermore, your lambda is executed in its own environment, so you can worry less about the protection against side effects compared to a static solution.
 
-The variation of absolute streaming rates is reflective of the device itself. These results are equivalent to the results seen on physical servers. What is interesting is that at high parallelism, the targets work quicker with random reads and for metadata service times than the physical server. These instances can be deployed as a high-performance persistent cache for some of the AWS-based file system solutions, such as used in ObjectiveFS and WekaIO Matrix and Quobyte.
+There are many use cases for employing lambdas in kdb+tick. First, the batch feed handlers that run when new data is dropped can run by lambda. This integrates well with S3. For example a new CSV file in an S3 bucket can immediately trigger a lambda that runs the feed handler. Developers only need to estimate the total amount of memory that will be used by the feed handler. All the backend infrastructure is managed by AWS. The scalability has real business value compared to on-premise solutions, where typically a set of feed handlers need to be allocated on a set of machines. The DevOps team needs to manually arrange the placements, which is prone to error especially due to the dynamic nature of load.
 
+Another use case is to start a gateway by lambda to execute a client query. This provides cost transparency, zero cost when service is not used, and full client query isolation.
 
-## Observations from kdb+ testing 
+:fontawesome-solid-hand-point-right:
+[Serverless kdb+ on AWS Lambda](../aws-lambda/index.md)
 
 
+## Cloud Map: service discovery
 
-### CPU and memory speed
+Feeds and the RDB need to know the address of the tickerplant. The gateway and the RDB need to know the address of the HDB. In a microservice infrastructure like kdb+tick, these configuration details are best stored in a configuration-management service. This is especially true if the addresses are constantly changing and new services are added dynamically.
 
-For CPU and memory speed/latencies with kdb+, EC2 compute nodes performance for CPU/memory mirrors the capability of logically equivalent bare-metal servers. At time of writing, your main decision here is the selection of system instance. CPUs range from older generation Intel up to Haswell and Broadwell, and from 1 core up to 128 vcores (vCPU). Memory ranges from 1&nbsp;GB up to 1952&nbsp;GB RAM.
+Service discovery can be managed from within kdb+ or by using a service such as [AWS Cloud Map](https://aws.amazon.com/cloud-map/). This service keeps track of all your application components, their locations, attributes and health status. Cloud Map organizes services into namespaces. A service must have an address and can have multiple attributes. You can add a health check to any service. A service is unhealthy if the number of times the health check failed is above a threshold. Set a higher threshold for HDBs if you allow long-running queries.
 
+Kdb+ can easily interact with the AWS Cloud Map REST API using Kurl. Kurl can be extended to create/query namespaces, discover or register/deregister instances to facilitate service discovery of your kdb+ processes running in your tick environment. For example, a kdb+ gateway can fetch from Cloud Map the addresses of healthy RDBs and HDBs. The aws console also comes with a simple web interface to visualize the status of your kdb+ processes/instances.
 
-### Storage performance
 
-The best storage performance was, as expected, achieved with locally-attached ephemeral NVMe storage. This matched, or exceeded, EBS as that storage is virtualized and will have higher latency figures. As data kept on this device cannot be easily shared, we anticipate this being considered for a super cache for hot data (recent dates). Data stored here would have to be replicated at some point as this data could be lost if the instance is shut down by the operator.
+## Access management
 
+We distinguish application- and infrastructure-level access control. Application-level access management controls who can access kdb+ components and run commands. Tickerplant (TP), realtime database (RDB) and historical database (HDB) are generally restricted to kdb+ infra admins only and the gateway is the access point for the users. One responsibility of the gateway is to check if the user can access the tables (columns and rows) s/he is querying. This generally requires checking user ID (returned by `.z.u`) against some organizational entitlement database, cached locally in the gateway and refreshed periodically.
 
-### Wire speeds
+!!! detail "AWS Systems Manager Session Manager"
 
-Kdb+ reaches wire speeds on most streaming read tests to networked/shared storage, under kdb+, and in several cases we can reach wire speeds for random 1-MB reads using standard mapped reads into standard q abstractions, such as lists.
+    [Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) is a fully managed AWS Systems Manager capability that lets you manage your kdb+ Amazon EC2 instances through an interactive one-click browser-based shell or through the AWS Command Line Interface (CLI). Session Manager provides secure and auditable instance management for your kdb+ tick deployment without the need to open inbound ports, maintain bastion hosts, or manage SSH keys.
 
+    We would use this for permissioning access to the KX gateway. This is a key task for the administrators of the KX system and both user and API access to the entire system is controlled entirely through the KX gateway process.
 
-### `gp2` vs `io1`
 
-EBS was tested for both `gp2` and its brethren the `io1` flash variation. Kdb+ achieved wire speed bandwidth for both of these. When used for larger capacities, we saw no significant advantages of `io1` for the HDB store use case, so the additional charges applied there need to be considered.
+## Hardware
 
+It’s worth noting several EC2 instance types that are especially performant for kdb+ workloads. The `R5` family of EC2 instance types are memory-optimized. Although the `R5b` and `R5` CPU-to-memory ratio and network performance are the same, `R5b` instances support bandwidth up to 60 Gbps and EBS performance of 260K IOPS, providing 3× higher EBS-Optimized performance compared to `R5` instances.
 
-### `st1`
+The [Nitro system](https://aws.amazon.com/ec2/nitro/) is a collection of building blocks that can be assembled in different ways, providing the flexibility to design and rapidly deliver EC2 instance types with a selection of compute, storage, memory, and networking options.
 
-EBS results for the `st1` devices (low cost traditional disk drives, lower cost per GB) show good (90th-percentile) results for streaming and random 1-MB reads, but, as expected, significantly slower results for random 64-KB and 1-MB reads, and 4× the latencies for metadata ops. Consider these as a good candidate for storing longer term, older HDB data to reduce costs for owned EBS storage.
 
+service | EC2 instance type | storage | CPU, memory, I/O
+--------|------------------|---------|-----------------
+Tickerplant | Memory Optimized<br>R4, R5, R5b, X1 | Io2 EBS<br>FSx Lustre | High-Perf<br>Medium<br>Medium
+Realtime database | Memory Optimized<br>R4, R5, R5b, X1 | | High-Perf<br>High-Capacity<br>Medium
+Historical database | Memory Optimized<br>R4, R5, R5b, X1 | Io2 EBS<br>FSx Lustre<br>ObjectiveFS<br>WekaIO | Medium Perf<br>Medium<br>High
+Complex event processing (CEP) | Memory Optimized<br>R4, R5, R5b, X1 | | Medium Perf<br>Medium<br>High
+Gateway | Memory Optimized<br>R4, R5, R5b, X1 | | Medium-Perf<br>Medium<br>High
 
-### ObjectiveFS and WekaIO Matrix
 
-ObjectiveFS and WekaIO Matrix are commercial products that offer full operational functionality for the POSIX interface, when compared to open-source S3 gateway products. These can be used to store and read your data from/to S3 buckets. 
+## Further reading
 
-WekaIO Matrix offers an erasure-encoded clustered file-system, which works by sharing out pieces of the data around each of the members of the Matrix cluster. 
+:fontawesome-brands-github:
+[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick):
+standard `tick.q` scripts
+<br>
+:fontawesome-regular-map:
+[Building real-time tick subscribers](../../wp/rt-tick/index.md)
+<br>
+:fontawesome-regular-map:
+[Data recovery for kdb+ tick](../../wp/data-recovery.md)
+<br>
+:fontawesome-regular-map:
+[Disaster-recovery planning for kdb+tick systems](../../wp/disaster-recovery/index.md)
+<br>
+:fontawesome-regular-map:
+[Intraday writedown solutions](../../wp/intraday-writedown/index.md)
+<br>
+:fontawesome-regular-map:
+[Query Router: a kdb+ framework for a scalable load-balanced system](../../wp/query-routing/index.md)
+<br>
+:fontawesome-regular-map:
+[Order Book: a kdb+ intraday storage and access methodology](../../wp/order-book.md)
+<br>
+:fontawesome-regular-map:
+[Kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
+<br>
+:fontawesome-solid-hand-point-right:
+[Migrating a kdb historical database to AWS](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
+<br>
+:fontawesome-solid-cloud:
+[Serverless kdb+ on AWS Lambda](../aws-lambda/index.md)
+<br>
+:fontawesome-solid-hand-point-right:
+[Deploy to EKS](https://code.kx.com/insights/kx-core-app-charts/)
+<br>
+:fontawesome-solid-hand-point-right:
+[Kdb+ Cloud Edition](https://code.kx.com/insights/cloud-edition/)
 
-ObjectiveFS works between kdb+ and S3 with a per-instance buffer cache plus distributed eventual consistency. It also allows you to cache files locally in RAM cache and/or on ephemeral drives within the instance. Caching to locally provisioned drives is likely to be more attractive vs. caching to another RAM cache.
 
-
-### POSIX file systems
-
-Standalone file systems such as MapR-FS and Quobyte support POSIX fully. Other distributed file systems designed from the offset to support POSIX should fare equally well, as to some degree, the networking infrastructure is consistent when measured within one availability zone or placement group. Although these file system services are encapsulated in the AWS marketplace as AMI’s, you are obliged to run this estate alongside your HDB compute estate, as you would own and manage the HDB just the same as if it were in-house. Although the vendors supply AWS marketplace instances, you would own and running your own instances required for the file system.
-
-
-### WekaIO and Quobyte
-
-WekaIO and Quobyte use a distributed file-system based on erasure-coding distribution of data amongst their quorum of nodes in the cluster. This may be appealing to customers wanting to provision the HDB data alongside the compute nodes. If, for example, you anticipate using eight or nine nodes in production these nodes could also be configured to fully own and manage the file system in a reliable way, and would not mandate the creation of distinct file-system services to be created in other AWS instances in the VPC. 
-
-What might not be immediately apparent is that for this style of product, they will scavenge at least one core on every participating node in order to run their erasure-coding algorithm most efficiently. This core will load at 100% CPU.
-
-
-### EFS and AWS Gateway
-
-Avoid [EFS](https://docs.aws.amazon.com/efs/latest/ug/performance.html) and AWS Gateway for HDB storage. They both exhibit very high latencies of operation in addition to the network-bandwidth constraints. They appear to impact further on the overall performance degradations seen in generic NFS builds in Linux. This stems from the latency between a customer-owned S3 bucket (AWS Gateway), and an availability zone wide distribution of S3 buckets managed privately by AWS.
-
-
-### Open-source products
-
-Although the open source products that front an S3 store (S3FS, S3QL and Goofys) do offer POSIX, they all fail to offer full POSIX semantics such as symbolic linking, hard linking and file locking. Although these may not be crucial for your use case, it needs consideration. 
-
-You might also want to avoid these, as performance of them is at best average, partly because they both employ user-level FUSE code for POSIX support.
-
-
-
-## Network configuration
-
-
-
-The network configuration used in the tests:
-
-The host build was CentOS 7.4, with Kernel 3.10.0-693.el7.x86\_64. The ENS module was installed but not configured. The default instance used in these test reports was `r4.4xlarge`. 
-
-Total network bandwidth on this model is “up-to” 10&nbsp;Gbps. 
-
-For storage, this is documented by AWS as provisioning up to 3,500&nbsp;Mbps, equivalent to 437&nbsp;MB/sec of EBS bandwidth, per node, bi-directional. We met these discrete values as seen in most of our individual kdb+ tests.
-
-
-
-
-<div class="kx-nav" markdown="1">
-<div class="kx-nav-next">[A. Elastic Block Store (EBS)](app-a-ebs.md)</div>
-</div>

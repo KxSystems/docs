@@ -129,7 +129,7 @@ q)ttz:{[d;s;z]lg[d;gl[s;z]]}
 
 Note that the most recent version of Java should be used to ensure that the latest timezone database is being used.
 
-<i class="fab fa-github"></i> 
+:fontawesome-brands-github: 
 [KxSystems/cookbook/timezones/tzinfo.zip](https://github.com/KxSystems/cookbook/blob/master/timezones/tzinfo.zip) 
 – zipped `tzinfo.csv` 
 

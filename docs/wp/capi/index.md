@@ -1,24 +1,30 @@
 ---
-title: C API for kdb+ – White Papers – kdb+ and q documentation
+title: C API for kdb+ | White Papers | kdb+ and q documentation
 description: How to connect a C program to a kdb+ database
 author: Jeremy Lucid
 date: December 2018
 keywords: kdb+, q, real-time, streaming, subscribe, tick
 ---
+White paper
+{: #wp-brand}
+
 # C API for kdb+
+
+by [Jeremy Lucid](#author)
+{: .wp-author}
 
  
 
 
-In its traditional ﬁnancial domain, and across an increasingly broad range of industries, one of the main strengths of kdb+ is its ﬂexibility in integrating and communicating with external systems. This adoption-enhancing feature is facilitated through a number of interfaces, including C and Java APIs, ODBC support, HTTP and WebSockets. 
+In its traditional financial domain, and across an increasingly broad range of industries, one of the main strengths of kdb+ is its flexibility in integrating and communicating with external systems. This adoption-enhancing feature is facilitated through a number of interfaces, including C and Java APIs, ODBC support, HTTP and WebSockets. 
 
-This paper will illustrate how the C API can be used to enable a C program to interact with a kdb+ process, and so leverage the real-time streaming and processing strengths of kdb+. Particular consideration will be given to how the API can facilitate subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system. Just as trade and quote data can be piped into a ﬁnancial kdb+ application through a C feedhandler, interesting new datasets in non-ﬁnancial industries can readily be consumed and processed with minimal setup work in C.
+This paper will illustrate how the C API can be used to enable a C program to interact with a kdb+ process, and so leverage the real-time streaming and processing strengths of kdb+. Particular consideration will be given to how the API can facilitate subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system. Just as trade and quote data can be piped into a financial kdb+ application through a C feedhandler, interesting new datasets in non-financial industries can readily be consumed and processed with minimal setup work in C.
 
-For example, in a recent white paper “[Kdb+ in astronomy](../astronomy.md)” a standard scientiﬁc ﬁle format is loaded into kdb+ for fast calculation of the recessional velocities of celestial bodies.
+For example, in a recent white paper “[Kdb+ in astronomy](../astronomy.md)” a standard scientific file format is loaded into kdb+ for fast calculation of the recessional velocities of celestial bodies.
 
 While [Interfaces: C](../../interfaces/c-client-for-q.md) remains the primary source for up-to-date information on the C API, the examples presented here provide a complementary set of practical templates. These templates can be combined and used to apply kdb+ across a broad range of problem domains. 
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/capi](https://github.com/kxcontrib/capi)
 
 
@@ -91,7 +97,7 @@ q)\p 0          // Close previously opened port
 
 ### Opening a socket connection
 
-The [`k.h`](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) header ﬁle deﬁnes the `khpu` function prototype, shown below, which can be used to open a network socket connection to a listening kdb+ process.
+The [`k.h`](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) header file defnes the `khpu` function prototype, shown below, which can be used to open a network socket connection to a listening kdb+ process.
 
 ```c
 typedef int  I;          // Already defined within k.h
@@ -99,7 +105,7 @@ typedef char *S;         // Already defined within k.h
 I khpu(S hostname, I portNumber, S usernamePassword)
 ```
 
-The function takes three parameters and returns the integer value associated with the connection handle. This integer value returned is the OS ﬁle descriptor. The ﬁrst and second parameters expect the hostname and port number of the listening kdb+ process, respectively. The third parameter, `usernamePassword`, expects a string argument containing the username and password credentials required for authentication. The username and password in this string argument should be separated by a single colon. If the listening kdb+ process is not using authentication for incoming connections then the username and password values will be ignored.
+The function takes three parameters and returns the integer value associated with the connection handle. This integer value returned is the OS file descriptor. The first and second parameters expect the hostname and port number of the listening kdb+ process, respectively. The third parameter, `usernamePassword`, expects a string argument containing the username and password credentials required for authentication. The username and password in this string argument should be separated by a single colon. If the listening kdb+ process is not using authentication for incoming connections then the username and password values will be ignored.
 
 ```c
 khpu ("localhost", 12345, "username:password");
@@ -180,7 +186,7 @@ I khpun(S hostname, I portnumber, S usernamePassword, I timeout)
 
 ### Running queries using the `k` function
 
-The `k` function is used to send a message over a socket connection to a kdb+ process. Valid message instructions can be used to perform multiple actions, which include, but are not limited to, requests for data, table inserts, variable initialization and function execution. The response is encapsulated on the C level as a `K` object and returned by the `k` function. Within the [`k.h`](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) header ﬁle the function is deﬁned as follows.
+The `k` function is used to send a message over a socket connection to a kdb+ process. Valid message instructions can be used to perform multiple actions, which include, but are not limited to, requests for data, table inserts, variable initialization and function execution. The response is encapsulated on the C level as a `K` object and returned by the `k` function. Within the [`k.h`](https://github.com/KxSystems/kdb/blob/master/c/c/k.h) header file the function is defined as follows.
 
 ```c
 typedef int  I;
@@ -189,7 +195,7 @@ typedef char *S;
 K k(I handle, const, S query, ...)
 ```
 
-The ﬁrst parameter to the `k` function is the handle value returned by the `khpu` function call. The second is the message string containing the instructions to be executed by the receiving kdb+ process. By deﬁnition, the ellipsis indicates the function can take an indeterminate number of arguments following the message string. These additional arguments would be the required inputs associated with execute instructions. For example, if the instruction is to execute the kdb+ `insert` function, the additional arguments required would be the table name and data object to be inserted; see [_Creating a simple list object_](#creating-a-simple-list-object) for an example.
+The first parameter to the `k` function is the handle value returned by the `khpu` function call. The second is the message string containing the instructions to be executed by the receiving kdb+ process. By definition, the ellipsis indicates the function can take an indeterminate number of arguments following the message string. These additional arguments would be the required inputs associated with execute instructions. For example, if the instruction is to execute the kdb+ `insert` function, the additional arguments required would be the table name and data object to be inserted; see [_Creating a simple list object_](#creating-a-simple-list-object) for an example.
 
 Note that the `k` function requires the user always to supply a sentinel
 value, `(K)0`, following the additional argument list. The presence of this sentinel is used as a control variable enabling the function to detect the end of the additional argument list. This value should also be present in the case where no additional arguments are required, see below.
@@ -204,7 +210,7 @@ K k(handle, "query", (K)0)
 K k(handle, "query", param1, ..., paramN, (K)0)
 ```
 
-The `k` function returns an instance of a `K` object, from which an accessor function/macro can be used to access the data. Below is a simple example demonstrating how the `k` function can be used to conﬁrm that a kdb+ process is alive, where ‘alive’ means that the socket connection can be established and that the server can respond to a trivial request. Such a test could be performed periodically to determine the q server state.
+The `k` function returns an instance of a `K` object, from which an accessor function/macro can be used to access the data. Below is a simple example demonstrating how the `k` function can be used to confirm that a kdb+ process is alive, where ‘alive’ means that the socket connection can be established and that the server can respond to a trivial request. Such a test could be performed periodically to determine the q server state.
 
 ```c
 /* Filename: alivecheck.c */
@@ -268,14 +274,14 @@ In general, there are two common types of errors; those generated during the soc
 
 As an example of an initialization error, the ”Authentication Error” will occur when the user name or password credentials passed to `khpu` are invalid. In kdb+, a process can be started in a restricted access mode where only users with valid credentials can connect.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 White paper: [WebSockets](../websockets/index.md)
 
 Similarly, the ”Connection error” can result for incorrect hostname or port numbers being passed to `khpu`.
 
 Evaluation errors occur from invalid queries being passed to the kdb+ process using `k`. In this case, the type element (`x->t`) of the `K` object, `x`, returned by `k` should be checked, see [_Object type element t_](#object-type-element-t). If the type value is 0 (null), then a network error has occurred. If the type value is `-128`, then `x->s` will give the error message resulting from the invalid query. In `error.c`, below, three invalid queries are passed to a kdb+ process and their associated error messages printed. For all subsequent examples in this paper, the function `isRemoteErr` will be used to capture such errors. 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Basics: [Errors](../../basics/errors.md) for the complete list of error codes 
 
 ```c
@@ -348,7 +354,7 @@ Error message returned: from
 
 ### Synchronous vs asynchronous communication
 
-If a C process is using the API to publish messages to a kdb+ process, such as a tickerplant, then either a synchronous or asynchronous call can be used. The sign of the ﬁrst parameter to the `k` function determines if the function call will execute synchronously or asynchronously. In the example above, `k` executed synchronously because the handle value passed to the function was a positive value. The synchronous call will block until a response is received, which is appropriate if the sending process requires an acknowledgement, however, it will reduce the potential message rate. In order to send an asynchronous message, the `k` function should be passed the negative
+If a C process is using the API to publish messages to a kdb+ process, such as a tickerplant, then either a synchronous or asynchronous call can be used. The sign of the first parameter to the `k` function determines if the function call will execute synchronously or asynchronously. In the example above, `k` executed synchronously because the handle value passed to the function was a positive value. The synchronous call will block until a response is received, which is appropriate if the sending process requires an acknowledgement, however, it will reduce the potential message rate. In order to send an asynchronous message, the `k` function should be passed the negative
 handle value.
 
 ```c
@@ -357,7 +363,7 @@ k(-handle, "1.0 + 2.0", (K)0);
 
 The asynchronous option is recommended when maximum data throughput is desired and the sender does not require an acknowledgment. Greater technical details on synchronous vs asynchronous requests can be found in the following white papers.
 
-<i class="far fa-hand-point-right"></i> White papers:  
+:fontawesome-regular-hand-point-right: White papers:  
 [Common design principles for kdb+ gateways](../gateway-design/index.md)  
 [Query Routing: A kdb+ framework for a scalable, load balanced system](../query-routing/index.md)
 
@@ -371,7 +377,7 @@ As demonstrated in the previous chapter, the `k` function can be used to send me
 
 ### Object type element `t`
 
-Given a `K` object `x`, the member element `x->t` identiﬁes the object’s data type. This element can also be accessed using the equivalent macro provided, `xt`.
+Given a `K` object `x`, the member element `x->t` identifies the object’s data type. This element can also be accessed using the equivalent macro provided, `xt`.
 
 ```c
 # define xt x->t
@@ -438,7 +444,7 @@ For more complex data structures such as dictionaries, `n` indicates the number 
 
 ### Extracting atoms
 
-From the reference table above, when the value of `t` is less than 0 and not equal to `-128` then the object is an atom (or scalar). In which case, the value of `t` identiﬁes the q data type, using the lookup table below. Corresponding to each data type is the associated accessor function used to extract the scalar value from the `K` object. The accessor functions access the union member elements of the structure.
+From the reference table above, when the value of `t` is less than 0 and not equal to `-128` then the object is an atom (or scalar). In which case, the value of `t` identifies the q data type, using the lookup table below. Corresponding to each data type is the associated accessor function used to extract the scalar value from the `K` object. The accessor functions access the union member elements of the structure.
 
 Note that the type numbers below are given for vectors (positive values). By convention, for atoms (single elements) the type number is negative. For example, `-6` is the type number of an atom int value. 
 
@@ -472,7 +478,7 @@ primary key      kK(x)[1] (values)
 
 ### Extracting simple lists
 
-When the value of `t` is within the range 0 to 19 the object is a simple list. A simple list is analogous to a C array in which each element in the structure has the same data type. As is the case with atoms, the value of `t` identiﬁes the data type of the simple list elements. To access the list values, the following accessors are provided.
+When the value of `t` is within the range 0 to 19 the object is a simple list. A simple list is analogous to a C array in which each element in the structure has the same data type. As is the case with atoms, the value of `t` identifies the data type of the simple list elements. To access the list values, the following accessors are provided.
 
 ```c
 #define kG(x)  ((x)->G0)
@@ -486,7 +492,7 @@ When the value of `t` is within the range 0 to 19 the object is a simple list. A
 #define kK(x)  ((K*)kG(x))
 ```
 
-The following example demonstrates use of these functions for the case of a simple list containing ints, ﬂoats and symbols.
+The following example demonstrates use of these functions for the case of a simple list containing ints, floats and symbols.
 
 ```c
 /* File name: lists.c */
@@ -546,7 +552,7 @@ Floats: 3.000000 2.000000 1.000000
 
 ### Extracting mixed lists
 
-In the case where `x->t` is exactly zero, the `K` object contains a mixed list of other `K` objects. Each element in the list is a pointer to another `K` object. In the example below, a mixed list containing two elements is returned from the kdb+ process. Element 1 is a list of five integers and element 2 is a list of three ﬂoats. The example demonstrates how the length and type of each list element can be determined along with how the values can be extracted.
+In the case where `x->t` is exactly zero, the `K` object contains a mixed list of other `K` objects. Each element in the list is a pointer to another `K` object. In the example below, a mixed list containing two elements is returned from the kdb+ process. Element 1 is a list of five integers and element 2 is a list of three floats. The example demonstrates how the length and type of each list element can be determined along with how the values can be extracted.
 
 ```c
 /* File name: mixedList.c */
@@ -616,7 +622,7 @@ elementTwo [2]=40.000000
 
 ### GUID
 
-Since kdb+ V3.0, the globally unique identiﬁer (GUID) data type is supported. This is a 16-byte data type which can be used for storing arbitrary 16-byte values, typically transaction IDs. In general, since V3.0, there should be no need to use char vectors for IDs. Instead IDs should be int, sym or GUID. For table lookups, GUIDs are also much faster when performing equality comparisons in the Where clause relative to the string representation, which also takes up 2½ times more space. The memory saving can be easily illustrated by comparing the byte size of a table containing a single column of GUIDs with that of a table containing a single column string equivalent. The internal q function,
+Since kdb+ V3.0, the globally unique identifier (GUID) data type is supported. This is a 16-byte data type which can be used for storing arbitrary 16-byte values, typically transaction IDs. In general, since V3.0, there should be no need to use char vectors for IDs. Instead IDs should be int, sym or GUID. For table lookups, GUIDs are also much faster when performing equality comparisons in the Where clause relative to the string representation, which also takes up 2½ times more space. The memory saving can be easily illustrated by comparing the byte size of a table containing a single column of GUIDs with that of a table containing a single column string equivalent. The internal q function,
 `-22!`, conveniently returns the table byte size. 
 
 Compute ratio:
@@ -698,7 +704,7 @@ Multi guid: length 2
 
 ### Dictionaries
 
-In kdb+, a dictionary is a data type which creates an association between a list of keys and a list of values. From the lookup table in [_Object type element t_](#object-type-element-t), its numerical type, `x->t`, has value 99 (type name XD). In the next example, the `k` function is used to return a simple dictionary object, `x`. As expected, `x` contains a list of length two, where the ﬁrst element corresponds to the dictionary keys, and the second corresponds to the dictionary values. In particular, the keys element has value 11 (type name `KS`), indicating that the keys are a symbol list. (See [_Extracting atoms_](#extracting-atoms).) The second element has type 0, indicating that the values of the dictionary are contained in a mixed list. Therefore, not all keys have an associated value of the same data type. Below, the mixed list `values` is iterated through to extract and display the individual elements of each simple list element.
+In kdb+, a dictionary is a data type which creates an association between a list of keys and a list of values. From the lookup table in [_Object type element t_](#object-type-element-t), its numerical type, `x->t`, has value 99 (type name XD). In the next example, the `k` function is used to return a simple dictionary object, `x`. As expected, `x` contains a list of length two, where the first element corresponds to the dictionary keys, and the second corresponds to the dictionary values. In particular, the keys element has value 11 (type name `KS`), indicating that the keys are a symbol list. (See [_Extracting atoms_](#extracting-atoms).) The second element has type 0, indicating that the values of the dictionary are contained in a mixed list. Therefore, not all keys have an associated value of the same data type. Below, the mixed list `values` is iterated through to extract and display the individual elements of each simple list element.
 
 ```c
 /* File name: dict.c */
@@ -783,7 +789,7 @@ values[2;] = ABC DEF GHI JKL
 
 ### Tables
 
-Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x-k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
+Extracting data from a `K` object containing a table is similar to that for a dictionary. The element `x->k` will contain a two-element list, representing a dictionary of columns to values. The first element, `kK(x->k)[0]`, corresponds to the column names, with the second, `kK(x->k)[1]`, corresponding to the values. Table keys are always symbol vectors (`KS`). The number of columns present in the table is easily determined using the `n` element (see `columns->n` below). The values object is a mixed list, where each element in the list is another `K` object containing a simple or mixed list. The example below shows how the column names and values of a kdb+ table can be
 extracted.
 
 ```c
@@ -861,7 +867,7 @@ c 6.000000
 ## Creating `K` objects
 
 In the code example `alivecheck.c`, the query evaluated on the kdb+ process was very simple, `"2.0 + 3.0"`, and didn’t require additional arguments. However, if the query were of a functional form, requiring a single
-scalar parameter argument, for example `func:{[x] 1.0 + x}`, the scalar argument should be input immediately after the query. For the argument to be passed successfully, it is necessary that the C variable be converted to its corresponding `K` object. The examples below show how single or multiple arguments of diﬀerent data types can be passed to the functional query using such conversion functions.
+scalar parameter argument, for example `func:{[x] 1.0 + x}`, the scalar argument should be input immediately after the query. For the argument to be passed successfully, it is necessary that the C variable be converted to its corresponding `K` object. The examples below show how single or multiple arguments of different data types can be passed to the functional query using such conversion functions.
 
 ```c
 // Pass a single integer argument
@@ -904,7 +910,7 @@ K kz(F)        datetime
 
 ### Creating and passing vector arguments
 
-It is common that a function call or query require a vector as opposed to a scalar argument. An example of a vector argument in q would be a simple or mixed list. To create a list object, be it simple or mixed, using the API library, the following functions are available in the `k.h` header ﬁle.
+It is common that a function call or query require a vector as opposed to a scalar argument. An example of a vector argument in q would be a simple or mixed list. To create a list object, be it simple or mixed, using the API library, the following functions are available in the `k.h` header file.
 
 ```c
 // Create a simple list, where the type does not take value zero
@@ -920,7 +926,7 @@ Both of these functions will be described in greater detail below.
 
 ### Creating a simple list object
 
-A simple list in kdb+ is a collection of elements each with the same data type, analogous to a C array. To create a list object, using the API, the function `ktn` is used. The ﬁrst parameter to this function speciﬁes the data type of the list elements. From the [reference table](../../interfaces/c-client-for-q.md) either the q type number or encoded type name values can be used to specify the data type. The second parameter speciﬁes the length of the list. The example below shows how to create an integer list object of length 2.
+A simple list in kdb+ is a collection of elements each with the same data type, analogous to a C array. To create a list object, using the API, the function `ktn` is used. The first parameter to this function specifies the data type of the list elements. From the [reference table](../../interfaces/c-client-for-q.md) either the q type number or encoded type name values can be used to specify the data type. The second parameter specifies the length of the list. The example below shows how to create an integer list object of length 2.
 
 ```c
 // Encoded type name is used to specify the type
@@ -953,7 +959,7 @@ K jk(K*,K);        // Join another K object to a list
 K jv(K*,K);        // Join another K list to the first
 ```
 
-The example below shows how an integer list of size zero can be initialized and later appended to using the `ja` function. Note that because the ﬁrst and second parameters to this function are of type pointer (`*`), the value passed needs to be the memory address of the given object.
+The example below shows how an integer list of size zero can be initialized and later appended to using the `ja` function. Note that because the first and second parameters to this function are of type pointer (`*`), the value passed needs to be the memory address of the given object.
 
 ```c
 I i = 1; 
@@ -970,15 +976,15 @@ k(handle, "insert", ks((S) "t"), integerList, (K)0);
 
 ### Creating a mixed-list object
 
-A mixed list in q is a collection of elements where each element may be of a diﬀerent data type, analogous to a C struct. To create a mixed-list object, using the API, the function `knk` is used. From the deﬁnition above, the `knk` function is deﬁned as a variable-argument function meaning the number of parameters is not ﬁxed, as shown below.
+A mixed list in q is a collection of elements where each element may be of a different data type, analogous to a C struct. To create a mixed-list object, using the API, the function `knk` is used. From the definition above, the `knk` function is defined as a variable-argument function meaning the number of parameters is not fixed, as shown below.
 
 ```c
-// Create a mixed list, where n is the numbner of elements
+// Create a mixed list, where n is the number of elements
 typedef int I;
 K knk(I n, ...);
 ```
 
-Above, `n` deﬁnes the number of elements in the list, where each list element, 1 to `n`, may be of a diﬀerent data type. In the example below, a mixed list object of length 3 is created and initialized with elements of a diﬀerent data type; symbol, ﬂoat and integer. This example demonstrates how a mixed list can be passed to the `k` function for insertion into a table. In this case, the mixed list is inserted as a single row into the table `trade`.
+Above, `n` defines the number of elements in the list, where each list element, 1 to `n`, may be of a different data type. In the example below, a mixed list object of length 3 is created and initialized with elements of a different data type; symbol, float and integer. This example demonstrates how a mixed list can be passed to the `k` function for insertion into a table. In this case, the mixed list is inserted as a single row into the table `trade`.
 
 ```c
 K mixedList;
@@ -1022,7 +1028,7 @@ multipleRow = knk(3, symList, floatList, integerList);
 
 ## Memory management
 
-Whereas kdb+ manages a program’s memory requirements automatically, C provides several functions for manual memory allocation and management. These functions include `malloc`, `calloc`, and `free`, and allow for ﬁne-tuned memory management: an important requirement for software destined for mobile or miniature devices. In the case where a C program is required to handle `K` objects, the C API provides a few simple functions, detailed below, to manage memory through the process of incrementing or decrementing a `K` objects reference count.
+Whereas kdb+ manages a program’s memory requirements automatically, C provides several functions for manual memory allocation and management. These functions include `malloc`, `calloc`, and `free`, and allow for fine-tuned memory management: an important requirement for software destined for mobile or miniature devices. In the case where a C program is required to handle `K` objects, the C API provides a few simple functions, detailed below, to manage memory through the process of incrementing or decrementing a `K` objects reference count.
 
 
 ### Reference counting
@@ -1152,7 +1158,7 @@ In addition to the before-mentioned memory-management functions, there are also 
 
 In kdb+, it is possible to dynamically load shared libraries to extend functionality at run time. Being able to create libraries and taking advantage of pre-existing libraries is a good way to accelerate development and enable multiple applications to share common modules. 
 
-To create user-deﬁned functions in C which can be loaded and used by a kdb+ process, the function should be deﬁned such that the input parameters and return value are `K` objects.
+To create user-defined functions in C which can be loaded and used by a kdb+ process, the function should be defined such that the input parameters and return value are `K` objects.
 
 ```c
 K myfunc (K param1, ..., K paramN)
@@ -1165,14 +1171,14 @@ K myfunc (K param1, ..., K paramN)
 
 ### Loading a shared library using Dynamic Load
 
-The Dynamic Load operator `2:` is used to import C functions dynamically from a shared library into a kdb+ process. It is a binary operator which can be applied with either prefix or inﬁx notation.
+The Dynamic Load operator `2:` is used to import C functions dynamically from a shared library into a kdb+ process. It is a binary operator which can be applied with either prefix or infix notation.
 
 ```q
 2:[argumentOne;argumentTwo]  // prefix notation
 argumentOne 2: argumentTwo   // infix notation
 ```
 
-`argumentOneis` a symbol representing the name of the shared dynamic library (excluding `.so` extension) which should be in the same location as your q executable. `argumentTwo` is a list containing two elements. The ﬁrst of these elements is a symbol corresponding to the function name, and the second is the integer number of arguments that function accepts. For a shared library, `myLib.so`, and single argument library function, `myfunc`, loading would look as follows.
+`argumentOneis` a symbol representing the name of the shared dynamic library (excluding `.so` extension) which should be in the same location as your q executable. `argumentTwo` is a list containing two elements. The first of these elements is a symbol corresponding to the function name, and the second is the integer number of arguments that function accepts. For a shared library, `myLib.so`, and single argument library function, `myfunc`, loading would look as follows.
 
 ```q
 q)f:`myLib 2: (`myfunc;1)
@@ -1185,9 +1191,9 @@ q)f:`path/to/myLib 2:(`myfunc;1)
 ```
 
 
-### User-deﬁned function – Dot product
+### User-defined function – Dot product
 
-Below is an example of a user-deﬁned function to compute the dot product of two vectors. The function ﬁrst performs data type and length checks on the arguments passed before continuing to the calculation. If these checks fail, the `krr` function can be used to return the error to the calling kdb+ process.
+Below is an example of a user-defined function to compute the dot product of two vectors. The function first performs data type and length checks on the arguments passed before continuing to the calculation. If these checks fail, the `krr` function can be used to return the error to the calling kdb+ process.
 
 ```c
 /* File name: mathLib.c */
@@ -1215,7 +1221,7 @@ K dotProduct(K x, K y) {
 }
 ```
 
-Below, the `mathLib.c` ﬁle is compiled into a shared library and subsequently loaded into a kdb+ session. Two simple lists, `a` and `b`, of type ﬂoat are created and the dot product computed using the loaded function. The result can be veriﬁed using the built-in q dot-product operator, `$`.
+Below, the `mathLib.c` file is compiled into a shared library and subsequently loaded into a kdb+ session. Two simple lists, `a` and `b`, of type float are created and the dot product computed using the loaded function. The result can be verified using the built-in q dot-product operator, `$`.
 
 ```bash
 $ gcc -DKXVER=3 -c -Wall -Werror -fpic mathLib.c -lpthread
@@ -1249,7 +1255,7 @@ q)dotProduct[a;b]
 
 ### Hashing algorithms: MD5 and SHA-256
 
-The following example demonstrates how to create a shared library, `cryptoLib.so`, which makes use of the open-source OpenSSL library. OpenSSL is an open-source project which contains general-purpose cryptographic tools, shown below. The ﬁrst user-deﬁned C function, `md5`, uses the library to compute the [MD5 hash](https://en.wikipedia.org/wiki/MD5) of a given string input. This function is already implemented natively in q and so can be used to validate the function’s operation. The second C function, `sha256`, uses the library to compute the more secure [SHA-2 hashing algorithm](https://en.wikipedia.org/wiki/SHA-2) which is not built into q.
+The following example demonstrates how to create a shared library, `cryptoLib.so`, which makes use of the open-source OpenSSL library. OpenSSL is an open-source project which contains general-purpose cryptographic tools, shown below. The first user-defined C function, `md5`, uses the library to compute the [MD5 hash](https://en.wikipedia.org/wiki/MD5) of a given string input. This function is already implemented natively in q and so can be used to validate the function’s operation. The second C function, `sha256`, uses the library to compute the more secure [SHA-2 hashing algorithm](https://en.wikipedia.org/wiki/SHA-2) which is not built into q.
 
 ```c
 /* File name: cryptoLib.c */
@@ -1308,11 +1314,11 @@ q)csha256"kx tech"
 
 ### Subscribing to a kdb+ tickerplant
 
-A kdb+ tickerplant is a kdb+ process speciﬁcally designed to handle incoming, high-frequency, data feeds from publishing processes. The primary responsibility of the tickerplant is to manage subscription requests and publish data quickly to its subscribers. In the vanilla kdb+ setup, illustrated below, the real-time database (RDB) and chained tickerplant kdb+ processes are the most common type of subscriber. However, C applications are also possible using the API.
+A kdb+ tickerplant is a kdb+ process specifically designed to handle incoming, high-frequency, data feeds from publishing processes. The primary responsibility of the tickerplant is to manage subscription requests and publish data quickly to its subscribers. In the vanilla kdb+ setup, illustrated below, the real-time database (RDB) and chained tickerplant kdb+ processes are the most common type of subscriber. However, C applications are also possible using the API.
 
 ![Architecture](img/architecture.png)
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Building real-time tick subscribers](../rt-tick/index.md)
 
 
@@ -1320,10 +1326,10 @@ White paper: [Building real-time tick subscribers](../rt-tick/index.md)
 
 To facilitate testing of a C subscriber process, the following kdb+ tickerplant will be used.
 
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick/blob/master/tick.q)
 
-For the sake of demonstration, the publisher will be conﬁgured to send a mock market-data feed in the form of trade records to the tickerplant. The trade table schema to be used is deﬁned below.
+For the sake of demonstration, the publisher will be configured to send a mock market-data feed in the form of trade records to the tickerplant. The trade table schema to be used is defined below.
 
 ```q
 /* File name: trade.q */
@@ -1342,7 +1348,7 @@ The tickerplant process is started from the command line as follows.
 $ q tick.q trade /logs/tickerplant/ -p 5010
 ```
 
-Above, the ﬁrst argument following `tick.q` is the name of the table schema ﬁle to use. The second argument is the location where the tickerplant log ﬁle will be created and the value following the `-p` option is the port the tickerplant will listen on. The C process will use this port number when initializing the connection. The ﬁnal step in this setup is to create a kdb+ mock feedhandler process which will act as the trade data source for the tickerplant. Below is a simple publishing process which is suﬃcient for the demonstration.
+Above, the first argument following `tick.q` is the name of the table schema file to use. The second argument is the location where the tickerplant log file will be created and the value following the `-p` option is the port the tickerplant will listen on. The C process will use this port number when initializing the connection. The final step in this setup is to create a kdb+ mock feedhandler process which will act as the trade data source for the tickerplant. Below is a simple publishing process which is suﬃcient for the demonstration.
 
 ```q
 /* File name: feed.q */
@@ -1369,10 +1375,10 @@ Once the tickerplant and feedhandler processes are up and running the C subscrib
 
 Subscriber processes are required to make an initial subscribe request to the tickerplant in order to receive data.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Publish and subscribe](../../kb/publish-subscribe.md)
 
-This request involves calling the `.u.sub` function with two parameter arguments. The ﬁrst argument is the table name, and the second is the list of symbols to subscribe to.
+This request involves calling the `.u.sub` function with two parameter arguments. The first argument is the table name, and the second is the list of symbols to subscribe to.
 
 Specifying a backtick character for either parameter of `.u.sub` means _all_, as in, all tables and/or all symbols. If the `.u.sub` function is called synchronously the tickerplant will return the table schema. The following program demonstrates how the initial subscribe request can be made and the column names of table schema extracted. In the case below, a request is made for all trade records.
 
@@ -1589,7 +1595,7 @@ k(handle,".u.upd",r1(tableName),mixedList,(K)0)
 
 ### Publishing a single row using a mixed-list object
 
-The next example shows how a `K` object, containing a mixed list corresponding to one row of data, can be passed to the `.u.upd` function. Below the `knk` function is used to create the mixed list containing a symbol, ﬂoat and integer, constituting a single row. The function `.u.upd` is called in the `k` function with two parameters being passed, a symbol object corresponding to the table name and the singleRow object.
+The next example shows how a `K` object, containing a mixed list corresponding to one row of data, can be passed to the `.u.upd` function. Below the `knk` function is used to create the mixed list containing a symbol, float and integer, constituting a single row. The function `.u.upd` is called in the `k` function with two parameters being passed, a symbol object corresponding to the table name and the singleRow object.
 
 ```c
 /* File name: singleRow.c */
@@ -1624,7 +1630,7 @@ int main() {
 
 For performance-related reasons, discussed in the white paper, [Kdb+tick profiling for throughput optimization](../tick-profiling.md) it is recommended to publish multiple rows at once so that bulk inserts can be performed on the tickerplant, maximizing tickerplant eﬃciency.
 
-> Feeds should read as many messages oﬀ the socket as possible and send bulk updates to the tickerplant if possible. Bulk updates will greatly increase the maximum throughput achievable.
+> Feeds should read as many messages off the socket as possible and send bulk updates to the tickerplant if possible. Bulk updates will greatly increase the maximum throughput achievable.
 
 The next example demonstrates how such bulk inserts can be performed using a single `k` function call. Again the `knk` function is used to create a mixed-list object, however this time each element in the list is itself a simple list object.
 
@@ -1721,7 +1727,20 @@ int main() {
 
 This document covered multiple aspects of the C API interface for connecting with the kdb+  database. Topics covered included the creation of socket connections, execution of queries, error handling, memory management, and the creation and extraction of data from `K` objects such as lists, dictionaries and tables. Practical examples formed the basis for the construction of a C subscriber process, capable of consuming a kdb+ data feed, and a feedhandler process designed to publish data to a kdb+ tickerplant. Finally, the use of shared C libraries to extend the functionality of kdb+ was also demonstrated.
 
+[:fontawesome-solid-print: PDF](/download/wp/c_api_for_kdb.pdf)
+
 
 ## Author
 
-Jeremy Lucid, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
+![Jeremy Lucid](../../img/faces/jeremylucid.jpg)
+{: .small-face}
+
+**Jeremy Lucid**, who joined First Derivatives in 2013, is a kdb+ consultant based in London. He works for a global investment bank, specializing in real-time best execution analytics.
+
+Other papers by Jeremy Lucid
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Storing and exploring the Bitcoin blockchain](../blockchain/index.md)
+-   :fontawesome-regular-map: [Lightning tickerplants: Pay-per-ticker with micropayments on the Lightning network](../lightning-tickerplants/index.md)
+</ul>

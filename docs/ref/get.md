@@ -4,7 +4,7 @@ description: get and set are q keywords that read or set value of a variable or 
 author: Stephen Taylor
 keywords: get, kdb+, q, set
 ---
-# `get`, `set`
+# :fontawesome-solid-database: `get`, `set`
 
 _Read or set the value of a variable or a kdb+ data file_
 
@@ -15,10 +15,18 @@ _Read or set the value of a variable or a kdb+ data file_
 
 _Read or memory-map a variable or kdb+ data file_
 
-Syntax: `get x`, `get[x]`
+```syntax
+get x     get[x]
+```
 
-Reads or memory maps kdb+ data file `x`. 
-A type error is signalled if the file is not a kdb+ data file.
+Where `x` is
+
+-   the name of a global variable as a symbol atom
+-   a [file or folder](../basics/glossary.md#file-symbol) named as a symbol atom or vector
+
+returns its value.
+
+Signals a `type` error if the file is not a kdb+ data file.
 
 Used to map columns of databases in and out of memory when querying splayed databases, and can be used to read q log files, etc.
 
@@ -36,93 +44,107 @@ q)`:SNewTrade/ set .Q.en[`:.;trade]     / save splayed table
 q)s:get`:SNewTrade/                     / s has columns mapped on demand
 ```
 
-!!! Note "`get` and `value`"
+??? note "`value` is a synonym for `get`"
 
-    `get` has several other uses. The function [`value`](value.md) is a synonym for `get`. By convention, it is used for other purposes. But the two are completely interchangeable.
+    By convention, [`value`](value.md) is used for other purposes. But the two are completely interchangeable.
 
-    <pre><code class="language-q">
+    ```q
     q)value "2+3"
     5
     q)get "2+3"
     5
-    </code></pre>
+    ```
 
-<!-- FIXME: describe other uses. -->
+    <!-- FIXME: describe other uses. -->
 
+:fontawesome-solid-book:
+[`eval`](eval.md),
+[`value`](value.md)
 
 
 
 ## `set`
 
-_Assign a value to a variable or file_
+_Assign a value to a global variable
+<br>
+Persist an object as a file or directory_
 
-Syntax: `x set y`, `set[x;y]`
+```{.syntax style="font-size: .8em"}
+nam set y                set[nam;y]               /set global var nam
+fil set y                set[fil;y]               /serialize y to fil
+dir set t                set[dir;t]               /splay t to dir
+(fil;lbs;alg;lvl) set y  set[(fil;lbs;alg;lvl);y] /write y to fil, cmprssd
+(dir;lbs;alg;lvl) set t  set[(dir;lbs;alg;lvl);t] /splay t to dir, cmprssd
+(dir;dic) set t          set[(dir;dic);t]         /splay t to dir, cmprssd
+```
 
-Where `x` is 
+Where
 
--   a [file symbol](../basics/glossary.md#file-symbol) 
--   a symbol naming a variable
+```txt
+alg   integer atom     compression algorithm
+dic   dictionary       compression specifications
+dir   filesymbol       directory in the filesystem
+fil   filesymbol       file in the filesystem
+lbs   integer atom     logical block size
+lvl   integer atom     compression level
+nam   symbol atom      valid q name
+t     table
+y     (any)            any q object
+```
 
-assigns the value of `y` to variable name or filename `x`.
+:fontawesome-solid-database:
+[Compression parameters `alg`, `lbs`, and `lvl`](../kb/file-compression.md#parameters)
+<br>
+[Compression specification dictionary](#compression)
 
+Examples:
 ```q
-q)`a set 1 2 3            / set name a
+q)`a set 42                         / set global variable
 `a
 q)a
-1 2 3
+42
 
-q)a:`t
-q)a set 1 2 3             / set name t (indirect assignment)
-`t
-q)t
-1 2 3
+q)`:a set 42                        / serialize object to file
+`:a
 
-q)a:"t"
-q)a set 1 2 3             / fails, as name must be a symbol
-:["type"]
+q)t:([]tim:100?23:59;qty:100?1000)  / splay table
+q)`:tbl/ set t
+`:tbl/
+
+q)(`:ztbl;17;2;6) set t             / serialize compressed
+`:ztbl
+
+q)(`:ztbl/;17;2;6) set t            / splay table compressed
+`:ztbl/
 ```
 
-If `x` is a file symbol, the values are written to file.
+Anymap write detects consecutive deduplicated (address matching) top-level objects, skipping them to save space; since V4.1t 2021.06.12.
 
 ```q
-q)`:work.dat set 1 2 3    / write values to file
-`:work.dat
-q)get `:work.dat
-1 2 3
+q)a:("hi";"there";"world")
+q)`:a0 set a
+`:a0
+q)`:a1 set a@where 1000 2000 3000
+`:a1
+q)(hcount`$":a0#")=hcount`$":a1#"
+0b
 ```
 
-Write a table to a single file:
 
-```q
-q)\l sp.q
-q)`:mytable.dat set sp
-`:mytable.dat
-q)get `:mytable.dat
-s  p  qty
----------
-s1 p1 300
-s1 p2 200
-s1 p3 400
-..
-```
+### Splayed table
 
-To save a table splayed across a directory, `x` must be a path (i.e. ends with a `/`), and the table must be fully enumerated, with no primary keys:
+To splay a table `t` to directory `dir`
 
-```q
-q)`:mydata/ set sp
-`:mydata/
-q)\ls mydata
-,"p"
-"qty"
-,"s"
-q)get `:mydata
-s  p  qty
----------
-s1 p1 300
-s1 p2 200
-s1 p3 400
-..
-```
+-   `dir` must be a filesymbol that ends with a `/`
+-   `t` must have no primary keys
+-   columns of `t` must be vectors or [compound lists](../basics/glossary.md#compound-list)
+-   symbol columns in `t` must be fully enumerated
+
+:fontawesome-solid-database:
+[Splayed tables](../kb/splayed-tables.md)
+
+
+### Format
 
 `set` saves the data in a binary format akin to tag+value, retaining the structure of the data in addition to its value.
 
@@ -134,15 +156,62 @@ q)read0 `:data/foo
 "\000\000\000\000\000\000\000\024\000\000\000\000\000\000\000\036\000..
 ```
 
-
-!!! warning "Avoid Kx namespaces"
-
-    Avoid setting variables in the Kx namespaces, as undesired and confusing behavior can result.
+??? danger "Setting variables in the KX namespaces can result in undesired and confusing behavior."
 
     These are `.h`, `.j`, `.Q`, `.q`, `.z`, and any other namespaces with single-character names.
 
 
-<i class="fas fa-book"></i>
-[`value`](value.md)<br>
-<i class="fas fa-book-open"></i>
+### Compression
+
+For
+
+```q
+(fil;lbs;alg;lvl) set y   / write y to fil, compressed
+(dir;lbs;alg;lvl) set t   / splay t to dir, compressed
+```
+
+Arguments `lbs`, `alg`, and `lvl` are [compression parameters](../kb/file-compression.md#compression-parametrers).
+
+Splay table `t` to directory `ztbl/` with gzip compression:
+
+```q
+q)(`:ztbl/;17;2;6) set t
+`:ztbl/
+```
+
+For
+
+```q
+(dir;dic) set t            / splay t to dir, compressed
+```
+
+the keys of `dic` are either column names of `t` or the null symbol `` `  ``. The value of each entry is an integer vector: `lbs`, `alg`, and `lvl`.
+
+Compression for unspecified columns is specified either by an entry for the null symbol (as below) or by [`.z.zd`](dotz.md#zzd-zip-defaults).
+
+```q
+q)m1:1000000
+q)t:([]a:m1?10;b:m1?10;c:m1?10;d:m1?10)
+
+q)/specify compression for cols a, b and defaults for others
+q)show dic:``a`b!(17 2 9;17 2 6;17 2 6)
+ | 17 2 9
+a| 17 2 6
+b| 17 2 6
+q)(`:ztbl/;dic) set t               / splay table compressed
+`:ztbl/
+```
+
+
+----
+:fontawesome-solid-database:
+[Database: tables in the filesystem](../database/index.md)
+<br>
+:fontawesome-solid-book-open:
 [File system](../basics/files.md)
+<br>
+:fontawesome-solid-database:
+[File compression](../kb/file-compression.md)
+<br>
+:fontawesome-regular-map:
+[Compression in kdb+](../wp/compress/index.md)

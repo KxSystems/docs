@@ -1,23 +1,25 @@
 ---
-title: bin, binr – Reference – kdb+ and q documentation
+title: bin, binr | Reference | kdb+ and q documentation
 description: bin and binr are q keywords that perform binary searches.
 keywords: bin, binr, kdb+, q, search_
 ---
-## `bin`, `binr`
+# `bin`, `binr`
 
 
 
 
 
-_Binary search_ 
+_Binary search_
 
-Syntax: `x bin  y`, `bin[x;y]`  
-Syntax: `x binr y`, `binr[x;y]` 
+```syntax
+x bin  y    bin[x;y]
+x binr y    binr[x;y]
+```
 
-Where 
+Where
 
 -   `x` is a sorted list
--   `y` is a list or atom of the same type
+-   `y` is a list or atom of exactly the same type (no type promotion)
 
 returns the index of the _last_ item in `x` which is ≤`y`. The result is `-1` for `y` less than the first item of `x`.
 `binr` _binary search right_, introduced in V3.0 2012.07.26, gives the index of the _first_ item in `x` which is ≥`y`.
@@ -30,7 +32,8 @@ The result `r` can be interpreted as follows: for an atom `y`, `r` is an integer
 
 ```txt
 r[i]=-1            iff y[i]<x[0]
-r[i]=i             iff x[i]<=y[i]<x[i+1]
+r[i]=j             iff last j such that x[j]<=y[i]<=x[j+1]
+r[i]=n-1           iff x[n-1]<=y[i]
 ```
 
 and
@@ -39,11 +42,13 @@ and
 r[j]=x bin y[j]    for all j in index of y
 ```
 
-Essentially `bin` gives a half-open interval on the left. 
+Essentially `bin` gives a half-open interval on the left.
 
 `bin` and `binr` are right-atomic: their results have the same count as `y`.
 
 `bin` also operates on tuples and table columns and is the function used in [`aj`](aj.md) and [`lj`](lj.md).
+
+!!! danger "If `x` is not sorted the result is undefined."
 
 
 ## Three-column argument
@@ -81,7 +86,11 @@ q)\t t bin t
 ```
 
 
-<i class="far fa-hand-point-right"></i>
-[`aj`](aj.md), [`lj`](lj.md)  
-Basics: [Search](../basics/search.md)
+----
+
+:fontawesome-solid-book:
+[`aj`](aj.md), [`lj`](lj.md)
+<br>
+:fontawesome-solid-book-open:
+[Search](../basics/by-topic.md#search)
 

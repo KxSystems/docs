@@ -4,7 +4,7 @@ description: How to ensure your kdb+ processes have thelicenses they need.
 author: Stephen Taylor
 keywords: commercial, free, kdb+, key file, license, license key file, licensing, non-commercial, on-demand, q, qhome, qlic
 ---
-# <i class="fas fa-certificate"></i> Licensing
+# :fontawesome-solid-certificate: Licensing
 
 
 
@@ -15,41 +15,26 @@ Everyone. All use of kdb+ is governed by a license.
 
 64-bit installations require a **license key file**: `k4.lic` or `kc.lic`.
 
-<i class="far fa-hand-point-right"></i> [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com
+<!-- :fontawesome-regular-hand-point-right: [Licenses](https://kx.com/connect-with-us/licenses/) at kx.com -->
 
 
-### Free, non-commercial, 64-bit kdb+ on demand
+=== "Non-commercial use"
 
-Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use. 
-Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers. 
-It may not be used for any commercial purposes.
-See the [full terms and conditions](https://ondemand.kx.com/). 
+    Free 64-bit kdb+ On-Demand Personal Edition is for personal, non-commercial use. 
+    Currently, it may be used on up to 2 computers, and up to a maximum of 16 cores per computer, but is not licensed for use on any cloud – only on personal computers. 
+    It may not be used for any commercial purposes.
+    See the [full terms and conditions](https://kx.com/developers/download-licenses/). 
 
-It requires a `kc.lic` license key file and an always-on internet connection to operate.
-
-
-### Free, non-commercial, 32-bit kdb+
-
-Use of the free, non-commercial, 32-bit kdb+ distribution, is governed by the [32-bit terms and conditions](https://kx.com/download/). 
-
-No license key file is required.
-When you start kdb+ the banner shows your license has no expiry date.
-
-```q
-KDB+ 3.6 2018.07.30 Copyright (C) 1993-2018 Kx Systems
-m32/ 4()core 8192MB sjt mint.local 192.168.0.39 NONEXPIRE
-
-Welcome to kdb+ 32bit edition
-```
+    It requires a `kc.lic` license key file and an always-on internet connection to operate.
 
 
-### Commercial kdb+
+=== "Commercial use"
 
-Use of commercial kdb+ is covered by your license agreement with Kx.
+    Use of commercial kdb+ is covered by your license agreement with KX.
 
-Your copy of kdb+ will need access to a valid license key file.
+    Your copy of kdb+ will need access to a valid license key file.
 
-If you wish to begin using kdb+ commercially, please contact sales@kx.com.
+    If you wish to begin using kdb+ commercially, please contact sales@kx.com.
 
 
 ## License key files
@@ -77,12 +62,7 @@ If both are found, the `kc.lic` file is used.
 
 License key files (`kc.lic`) are distributed by email. 
 
-<button style="background: #0088ff; padding: 10px;" type="button">
-    <a href="https://ondemand.kx.com/" style="color: white">
-        <i class="fas fa-certificate"></i>
-        Request an On-Demand license key file
-    </a>
-</button>
+:fontawesome-solid-hand-point-right: [Request an On-Demand license key file](https://ondemand.kx.com/)
 
 
 ### Commercial
@@ -92,15 +72,15 @@ The banner at the top of the aborted session contains machine-configuration info
 
 Your Designated Contact sends a copy of the banner to licadmin@kx.com to request a license file by return. 
 
-!!! info "Designated Contact"
+??? info "Designated Contact"
 
-    Each Kx customer designates to licadmin@kx.com a couple of technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
+    Each KX customer designates to licadmin@kx.com two technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
 
 
 ## Install the license key file
 
 Save a copy of the license key file (`k4.lic` or `kc.lic`) in the `QHOME` folder. 
-(See [installation instructions](install/index.md#install) for your operating system.) 
+(See [installation instructions](install.md#install) for your operating system.) 
 Restart your kdb+ session and note the change in the banner. 
 
 ```txt
@@ -121,21 +101,21 @@ If you are sharing use of a commercial license, you will probably want to set th
 
 The default location for the license key file is the `QHOME` folder. You do not have to keep the license key file there. You can use the environment variable `QLIC` to specify a different filepath.
 
-!!! tip "Folder not file"
+??? tip "Folder not file"
 
     Like `QHOME`, `QLIC` points to a folder, not a file. For example,
 
-    <pre><code class="language-bash">
-    $ QLIC='/Users/simon/q'
-    </code></pre>
+    ```bash
+    QLIC='/Users/simon/q'
+    ```
 
 
 ## Licensing server for kdb+ On Demand
 
-As well as a license key file, kdb+ On Demand also requires frequent contact with the Kx licensing server. 
+As well as a license key file, kdb+ On Demand also requires frequent contact with the KX licensing server. 
 For this you need an always-on Net connection.
 
-If kdb+ cannot contact the Kx server it will abort with a timestamped message.
+If kdb+ cannot contact the KX server it will abort with a timestamped message.
 
 ```q
 '2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting
@@ -163,18 +143,20 @@ You can see the number of cores entitled to a q process:
 
 The number of licensed cores is always 16 for the on-demand license. 
 
-<i class="far fa-hand-point-right"></i> [License errors](../basics/errors.md#license-errors)
+:fontawesome-regular-hand-point-right: [License errors](../basics/errors.md#license-errors)
 
 
-!!! warning "On the road"
+??? warning "On the road"
 
     The license key file binds the interpreter to your computer’s hostname.
     For example, for a Mac named `mymbp` the hostname might be `mymbp.local`.
-    When travelling you may find a network has changed the hostname, for example to `mymbp.lan` or `mymbp.fritz.box`. Kdb+ then signals a host error on launch. 
+    When traveling you may find a network has changed the hostname, for example to `mymbp.lan` or `mymbp.fritz.box`. Kdb+ then signals a host error on launch. 
 
     Linux and macOS users can restore their hostnames from the command shell, e.g. 
 
-    `scutil --set HostName "mymbp.local"`
+    ```bash
+    scutil --set HostName "mymbp.local"
+    ```
 
 
 ## License questions

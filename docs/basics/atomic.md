@@ -1,16 +1,52 @@
 ---
-title: Atomic functions – Basics – kdb+ and q documentation
-description: There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
+title: Atomic functions and implicit iteration | Basics | kdb+ and q documentation
+description: Many q functions iterate recursively through list or dictionary arguments down to items of some depth
 author: Stephen Taylor
-keywords: atomic, function, kdb+, q, scalar extension
 ---
-# Atomic functions
+# :fontawesome-solid-sitemap: Atomic functions
 
 
 
 
 
-There are several recursively-defined primitive functions, which for at least one argument apply to lists by working their way down to items of some depth, or all the way down to atoms. Where the recursion goes all the way down to atoms the functions are called atom functions, or atomic functions.
+_Many q functions iterate recursively through list or dictionary arguments down to items of some depth._
+
+Where a function recurses to the atoms of an argument, it is _atomic_ in that domain: typically, _left-atomic_, _right-atomic_; or simply _atomic_ for all its arguments. 
+
+A function that recurses to strings is _string-atomic_.
+
+
+## Formal definition
+
+Where `f` is a function, and `x` is a list of its arguments, `.[f;x]~.[f';x]`.
+
+```q
+q).[+;(2;(3 4;5))]
+5 6
+7
+q).[+';(2;(3 4;5))]   / the iterator is unnecessary
+5 6
+7
+```
+
+:fontawesome-solid-book-open:
+[Application, projection, and indexing](application.md)
+
+By extension, for a unary function, `f` is atomic if `f[x]~f'[x]`.
+
+```q
+q)neg (5 2; 3; -8 0 2)
+-5 -2
+-3
+8 0 -2
+q)neg each (5 2; 3; -8 0 2)   / the iterator is unnecessary
+-5 -2
+-3
+8 0 -2
+```
+
+
+## Informal definition
 
 A unary is atomic if it applies to both atoms and lists, and in the case of a list, applies independently to every atom in the list. For example, the unary `neg` is atomic. A result of `neg` is just like its argument, except that each atom in an argument is replaced by its negation. 
 
@@ -67,7 +103,34 @@ Add can be defined recursively in terms of Add for atoms as follows:
 q)Add:{$[(0>type x) & 0>type y; x + y; Add'[x;y]]}
 ```
 
-The arguments of an atomic function must be conformable, or else a Length error is signalled. The evaluation will also fail if the function is applied to atoms that are not in its domain. For example, `1 2 3 + (4;"a";5)` will fail because `2 + "a"` fails with a Type error. Atomic functions are not restricted to ranks 1 and 2. For example, the rank-3 function `{x+y xexp z}` is an atomic function (“x plus y to the power z”).
+
+## Length and type
+
+The arguments of an atomic function must be [conformable](conformable.md).
+
+```q
+q)1 2 3 + 4 5
+'length
+  [0]  1 2 3 + 4 5
+             ^
+```
+
+Type errors can arise at depth. 
+
+```q
+q)1 2 3 + (4;"a";5)
+'type
+  [0]  1 2 3 + (4;"a";5)
+             ^
+```
+
+
+## Rank
+
+Atomic functions are not restricted to ranks 1 and 2. For example, the ternary `{x+y xexp z}` (“x plus y to the power z”) is atomic.
+
+
+## Left- and right-atomic
 
 A function can be atomic relative to some of its arguments but not all. For example, the Index At operator `@[x;y]` is an atomic function of its right argument but not its left, and is said to be _right-atomic_, or atomic in its second argument. That is, for every left argument `x` the projected unary function `x@` is atomic. This primitive function, like `x[y]`, selects items from `x` according to the atoms in `y`, and the result is structurally like `y`, except that every atom in `y` is replaced by the item of `x` that it selects. 
 
@@ -77,10 +140,30 @@ q)2 4 -23 8 7 @ (0 4 ; 2)
 -23
 ```
 
-Index 0 selects 2, index 4 selects 7, and index 2 selects -23. 
+Index 0 selects 2; index 4 selects 7; and index 2 selects -23. 
 
-!!! warning "The items of `x` do not have to be atoms."
+<!-- 
+!!! tip "Items of `x` do not have to be atoms"
 
-    It is common in descriptions of atomic functions to restrict attention to atom arguments and assume that the reader understands how the descriptions extend to list arguments.
+    It is common in definitions of atomic functions to describe application to atom arguments and assume the reader understands how the description extends to list arguments.
+-->
 
 
+## String-atomic
+
+Q does not have a string datatype. What we call _strings_ are char vectors.
+
+Some functions that apply to strings recurse until they find either strings or char atoms. 
+They are _string-atomic_.
+
+```q
+q)upper ("quick";("brown";"fox");"x")
+"QUICK"
+("BROWN";"FOX")
+"X"
+```
+
+----
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.6 Atomic Functions](/q4m3/6_Functions/#66-atomic-functions)

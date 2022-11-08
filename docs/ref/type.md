@@ -1,8 +1,7 @@
 ---
-title: type – Reference – kdb+ and q documentation
-description: type is a q keyword that returns as a short int the datatype of its argument. 
+title: type – datatype of an object | Reference | kdb+ and q documentation
+description: type is a q keyword that returns as a short int the datatype of an object
 author: Stephen Taylor
-keywords: cast, datatype, kdb+, metadata, q, type
 ---
 # `type`
 
@@ -10,30 +9,44 @@ keywords: cast, datatype, kdb+, metadata, q, type
 
 
 
-_Datatype of an object_
+_Type of an object_
 
-Syntax: `type x`, `type[x]` 
-
-Where `x` is any object, returns its [datatype](../basics/datatypes.md).
-
-The datatype is a short int: negative for atoms, positive for vectors, `0h` for a general list.
-
-```q
-q)type 5                         / integer atom
--6h   
-q)type 2 3 5                     / integer vector
-6h   
-q)type (2;3 5;"hello")           / mixed list
-0h
-q)type each (2;3 5;"hello")      / mixed list
--6 9 10h
-q)type (+)                       / function atom
-102h
+```syntax
+type x    type[x]
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[.Q.ty](dotq.md#qty-type)  
-Basics: [Casting and encoding](../basics/casting.md),
+Where `x` is any object, returns its [type](../basics/datatypes.md).
+
+The type is a short int: 
+
+-    zero for a general list
+-    negative for atoms of basic datatypes
+-    positive for everything else
+
+```q
+q)type 5                        / integer atom
+-7h
+q)type 2 3 5                    / integer vector
+7h
+q)type (2 3 5;"hello")          / general list
+0h
+q)type ()                       / general list
+0h
+q)type each (2;3 5;"hello")     / int atom; int vector; string
+-7 7 10h
+q)type (+)                      / function
+102h
+q)type (0|+)                    / composition
+105h
+```
+
+----
+
+:fontawesome-solid-book:
+[.Q.ty](dotq.md#qty-type)
+<br>
+:fontawesome-solid-book-open:
+[Casting and encoding](../basics/by-topic.md#casting),
 [Datatypes](../basics/datatypes.md)
 
 

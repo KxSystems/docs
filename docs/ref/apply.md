@@ -1,23 +1,18 @@
 ---
-title: Apply (At), Index (At), Trap (At) – Reference – kdb+ and q documentation
-description: Operators Apply (At), Index (At), and Trap (At) apply a funcxtion to one ormore arguments, get items at depth in a list, and trap errors.
+title: Apply (At), Index (At), Trap (At) | Reference | kdb+ and q documentation
+description: Operators Apply (At), Index (At), and Trap (At) apply a function to one or more arguments, get items at depth in a list, and trap errors.
 author: Stephen Taylor
 keywords: apply, apply at, index, index at, kdb+, q, trap, trap at
 ---
 
-<div markdown="1" style="float: right; max-width: 200px">
 [![Kandinsky: circles in a circle](../img/kandinsky-circles-in-a-circle.jpg)](https://en.wikipedia.org/wiki/Wassily_Kandinsky "Wikipedia")
 <br>
-<small>
-_Circles in a Circle, 1923_
-
-Everything begins with a dot.<br>— W.W. Kandinsky
-</small>
-</div>
+<small>_Circles in a Circle, 1923_<br><br>Everything begins with a dot.<br>— W.W. Kandinsky</small>
+{: style="float: right; max-width: 200px"}
 
 # `.` Apply, Index, Trap<br>`@` Apply At, Index At, Trap At
 
--   _Apply a function to a list of arguments_ 
+-   _Apply a function to a list of arguments_
 -   _Get items at depth in a list_
 -   _Trap errors_
 
@@ -35,13 +30,29 @@ rank | syntax               | function semantics                  | list semanti
 Where
 
 -   `e` is an expression, typically a function
--   `f` is a unary function and `fx` in its domain 
+-   `f` is a unary function and `fx` in its domain
 -   `g` is a function of rank $n$ and `gx` an atom or list of count $n$ with items in the domains of `g`
 -   `v` is a value of rank $n$ (or a handle to one) and `vx` a list of count $n$ with items in the domains of `v`
 -   `u` is a unary value (or a handle to one) and `ux` in its domain
 
-<i class="far fa-hand-point-right"></i>
-[Amend, Amend At](amend.md)
+
+## Amend, Amend At
+
+For the ternary and quaternary forms
+
+```syntax
+.[d; i; u]      @[d; i; u]
+.[d; i; v; vy]  @[d; i; v; vy]
+```
+
+where 
+
+-   `d` is a list or dictionary, or a handle to a list, dictionary or datafile
+-   `i` indexes `d` as `d . i` or `d @ i` (must be a list for Amend)
+-   `u` is a unary with `d` in its domain
+-   `v` is a binary with `d` and `vy` in its left and right domains
+
+see [Amend and Amend At](amend.md).
 
 
 
@@ -50,14 +61,14 @@ Where
 `v . vx` evaluates value `v` on the $n$ arguments listed in `vx`.
 
 ```q
-q)add
+q)add               / addition 'table'
 0 1 2 3
 1 2 3 4
 2 3 4 5
 3 4 5 6
-q)add . 2 3         / add[2;3] Index
+q)add . 2 3         / add[2;3] (Index)
 5
-q)(+) . 2 3         / +[2;3] Apply
+q)(+) . 2 3         / +[2;3] (Apply)
 5
 q).[+;2 3]
 5
@@ -71,24 +82,40 @@ If `v` has rank $n$, then `vx` has $n$ items and `v` is evaluated as:
 v[vx[0]; vx[1]; …; vx[-1+count vx]]
 ```
 
-If `v` has rank 2 then `vx` has 2 items and `v` is applied to the first argument `vx[0]` and the second argument `vx[1]`.
+If `v` has rank 2, then `vx` has 2 items and `v` is applied to the first argument `vx[0]` and the second argument `vx[1]`.
 
 ```q
 v[vx[0];vx[1]]
 ```
 
-If `v` has 1 argument then `vx` has 1 item and `v` is applied to the argument `vx[0]`. 
+!!! warning "Variadic operators"
+
+    Most binary operators such as Add have [deprecated unary forms](../basics/exposed-infrastructure.md#unary-forms) 
+    and are thus actually [variadic](../basics/glossary.md#variadic). 
+
+    Where `v` is such a variadic operator, parenthesize it to provide it as the left argument of Apply.
+
+    ```q
+    q).[+;2 2]
+    4
+    q)(+) . 2 2
+    4
+    ```
+
+If `v` has rank 1, then `vx` has one item and `v` is applied to the argument `vx[0]`.
 
 ```q
 v[vx[0]]
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.5.3 Indexing at Depth](/q4m3/6_Functions/#653-indexing-at-depth)
+
 
 ## Nullaries
 
-Nullaries (functions of rank 0) are handled differently. The pattern above suggests that the empty list `()` would be the argument list to nullary `v`, but `v . ()` is a case of Index, where empty `vx` always selects `v`. 
-
-Apply for nullary `v` is denoted by `v . enlist[::]`, i.e. the right argument is the enlisted null. 
+Nullaries (functions of rank 0) are handled differently. The pattern above suggests that the empty list `()` would be the argument list to nullary `v`, but Apply for nullary `v` is denoted by `v . enlist[::]`, i.e. the right argument is the enlisted null.
 For example:
 
 ```q
@@ -102,19 +129,15 @@ q){a + b} . enlist[::]
 ## Index
 
 `d . i` returns an item from list or dictionary `d` as specified by successive items in list `i`.
-The result is found in `d` at depth `count i` as follows. 
+The result is found in `d` at depth `count i` as follows.
 
 The list `i` is a list of successive indexes into `d`. `i[0]` must be in the domain of `d@`. It selects an item of `d`, which is then indexed by `i[1]`, and so on.
 
-
 `( (d@i[0]) @ i[1] ) @ i[2]` …
-
 
 ```q
 q)d
-(1 2 3;4 5 6 7)
-(8 9;10;11 12)
-(13 14;15 16 17 18;19 20)
+((1 2 3;4 5 6 7) ;(8 9;10;11 12) ;(13 14;15 16 17 18;19 20))
 q)d . enlist 1      / select item 1, i.e. d@1
 8 9
 10
@@ -125,14 +148,23 @@ q)d . 1 2 0         / select item 0 of item 2 of item 1
 11
 ```
 
+A right argument of `enlist[::]` selects the entire left argument.  
+
+```q
+q)d . enlist[::]
+(1 2 3;4 5 6 7)
+(8 9;10;11 12)
+(13 14;15 16 17 18;19 20)
+```
+
 
 ### Index At
 
-The selections at each level are individual applications of Index At: first, item `d@i[0]` is selected, then `(d@i[0])@i[1]`, then `((d@i[0])@ i[1])@ i[2]`, and so on. 
+The selections at each level are individual applications of Index At: first, item `d@i[0]` is selected, then `(d@i[0])@i[1]`, then `((d@i[0])@ i[1])@ i[2]`, and so on.
 
-These expressions can be rewritten using [Over](accumulators.md) applied to Index At; the first is `d@/i[0]`, the second is `d@/i[0 1]`, and the third is `d@/i[0 1 2]`. 
+These expressions can be rewritten using [Over](accumulators.md) applied to Index At; the first is `d@/i[0]`, the second is `d@/i[0 1]`, and the third is `d@/i[0 1 2]`.
 
-In general, for a vector `i` of any count, `d . i` is identical to `d@/i`. 
+In general, for a vector `i` of any count, `d . i` is identical to `d@/i`.
 
 ```q
 q)((d @ 1) @ 2) @ 0         / selection in terms of a series of @s
@@ -144,7 +176,7 @@ q)d @/ 1 2 0                / selection in terms of @-Over
 
 ### Cross sections
 
-Index is cross-sectional when the items of `i` are lists. That is, items-at-depth in `d` are indexed for paths made up of all combinations of atoms of `i[0]` and atoms of `i[1]` and atoms of `i[2]`, and so on to the last item of `i`. 
+Index is cross-sectional when the items of `i` are lists. That is, items-at-depth in `d` are indexed for paths made up of all combinations of atoms of `i[0]` and atoms of `i[1]` and atoms of `i[2]`, and so on to the last item of `i`.
 
 The simplest case of cross-sectional index occurs when the items of `i` are vectors. For example, `d .(2 0;0 1)` selects items 0 and 1 from both items 2 and 0:
 
@@ -158,12 +190,12 @@ q)count each d . (2 0; 0 1)
 
 Note that items appear in the result in the same order as the indexes appear in `i`.
 
-The first item of `i` selects two items of `d`, as in `d@i[0]`. The second item of `i` selects two items from each of the two items just selected, as in `(d@i[0])@'i[1]`. Had there been a third vector item in `i`, say of count 5, then that item would select five items from each of the four items-at-depth 1 just selected, as in `((d@i[0])@'i[1])@''i[2]`, and so on. 
+The first item of `i` selects two items of `d`, as in `d@i[0]`. The second item of `i` selects two items from each of the two items just selected, as in `(d@i[0])@'i[1]`. Had there been a third vector item in `i`, say of count 5, then that item would select five items from each of the four items-at-depth 1 just selected, as in `((d@i[0])@'i[1])@''i[2]`, and so on.
 
 When the items of `i` are vectors the result is rectangular to at least depth `count i`, depending on the regularity of `d`, and the `k`th item of its shape vector is `(count i)[k]` for every `k` less than `count i`. That is, the first `count i` items of the shape of the result are `count each i`.
 
 
-More general cross-sectional indexing occurs when the items of `i` are rectangular lists, not just vectors, but the situation is much like the simpler case of vector items. 
+More general cross-sectional indexing occurs when the items of `i` are rectangular lists, not just vectors, but the situation is much like the simpler case of vector items.
 
 <!-- In particular, the shape of the result is ,/^:'i. FIXME -->
 
@@ -196,25 +228,25 @@ Note that `d .(::;0)` is the same as `d .(0 1 2;0)`, but in the last example, th
 
 ### The general case of a non-negative integer list `i`
 
-In the general case, when the items of `i` are non-negative integer atoms or lists, or null, the structure of the result can be thought of as cascading structures of the items of `i`. That is, with nulls aside, the result is structurally like `i[0]`, except that wherever there is an atom in `i[0]`, the result is structurally like `i[1]`, except that wherever there is an atom in `i[1]`, the result is structurally like `i[2]`, and so on. 
+In the general case, when the items of `i` are non-negative integer atoms or lists, or null, the structure of the result can be thought of as cascading structures of the items of `i`. That is, with nulls aside, the result is structurally like `i[0]`, except that wherever there is an atom in `i[0]`, the result is structurally like `i[1]`, except that wherever there is an atom in `i[1]`, the result is structurally like `i[2]`, and so on.
 
 The general case of Index can be defined recursively in terms of [**Index At**](#index-at) by partitioning the list `i` into its first item and the rest:
 
 ```q
-Index:{[d;F;R] 
+Index:{[d;F;R]
   $[ F~::; Index[d; first R; 1 _ R];
      0 =count R; d @ F;
      0>type F; Index[d @ F; first R; 1 _ R]
      Index[d;; R]'F ]}
 ```
 
-That is, `d . i` is `Index[d;first i;1_i]`. 
+That is, `d . i` is `Index[d;first i;1_i]`.
 
-To work through the definition, start with `F` as the first item of `i` and `R` as the remainder. At each step in the recursion: 
+To work through the definition, start with `F` as the first item of `i` and `R` as the remainder. At each step in the recursion:
 
--   if `F` is null then select all of `d` and continue on, with the first item of the remainder `R` as the new `F` and the remainder of `R` as the new remainder; 
--   otherwise, if the remainder is the empty vector apply Index At (the right argument `F` is now the last item of `i`), and we are done; 
--   otherwise, if `F` is an atom, apply Index At to select that item of `d` and continue on in the same way as when `F` is null; 
+-   if `F` is null then select all of `d` and continue on, with the first item of the remainder `R` as the new `F` and the remainder of `R` as the new remainder;
+-   otherwise, if the remainder is the empty vector apply Index At (the right argument `F` is now the last item of `i`), and we are done;
+-   otherwise, if `F` is an atom, apply Index At to select that item of `d` and continue on in the same way as when `F` is null;
 -   otherwise, apply Index with fixed arguments `d` and `R`, but independently to the items of the list `F`.
 
 
@@ -235,7 +267,7 @@ q)(1;`a`b!(2 3 4;10 20 30 40)) . (1; `b; 2)
 30
 ```
 
-As we have seen above for the general case, every atom in the `k`th item of `i` must be a valid index of all items at depth `k` selected by `d . k # i`. Moreover, symbols can only select from dictionaries and directories, and integers cannot. 
+As we have seen above for the general case, every atom in the `k`th item of `i` must be a valid index of all items at depth `k` selected by `d . k # i`. Moreover, symbols can only select from dictionaries and directories, and integers cannot.
 Consequently, if the `k`th item of `i` contains a symbol atom, then all items selected by `d . k # i` must be dictionaries or handles of directories, and therefore all atoms in the `k`th item of `i` must be symbols.
 
 It follows that each item of `i` must be made up entirely of non-negative integer atoms, or entirely of symbol atoms, and if the `k`th item of `i` is made up of symbols, then all items at depth `k` in `d` selected by the first `k` items of `i` must be dictionaries.
@@ -245,7 +277,7 @@ Note that if `d` is either a dictionary or handle to a directory then `d . enlis
 
 ### Step dictionaries
 
-Where `d` is a dictionary, `d@i` or `d[i]` or `d i` returns for each item of `i` that is _outside_ the domain of `d` a null of the same type as the keys. 
+Where `d` is a dictionary, `d@i` or `d[i]` or `d i` returns for each item of `i` that is _outside_ the domain of `d` a null of the same type as the keys.
 
 ```q
 q)d:`cat`cow`dog`sheep!`chat`vache`chien`mouton
@@ -273,7 +305,7 @@ q)e 80 35 20 -10
 8 0N 2 0N
 ```
 
-A _step dictionary_ has the _sorted_ attribute set. 
+A _step dictionary_ has the _sorted_ attribute set.
 Its keys are a sorted vector.
 Where `s` is a step dictionary, and `i[k]` are the items of `i` that are _outside_ the domain of `d`, the value/s for `d@i@k` are the values for the highest keys that are lower than `i k`.
 
@@ -292,21 +324,23 @@ q)es 80 35 20 -10
 8 3 2 0N
 ```
 
-<i class="far fa-hand-point-right"></i>
-[Set Attribute](set-attribute.md)  
+:fontawesome-solid-book:
+[Set Attribute](set-attribute.md)
+<br>
+:fontawesome-solid-globe:
 q-rious kdb+: [Step Dictionaries](https://qriouskdb.wordpress.com/2019/01/01/step-dictionaries/)
 
 
 ## Apply At, Index At
 
-`@` is [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar "Wikipedia") for the case where `u` is a unary and `ux` a 1-item list. 
+`@` is [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar "Wikipedia") for the case where `u` is a unary and `ux` a 1-item list.
 `u@ux` is always equivalent to `u . enlist ux`.
 
 !!! note "Brackets are syntactic sugar"
 
     The brackets of an argument list are also syntactic sugar. Nothing can be expressed with brackets that cannot also be expressed using `.`.
 
-You can use the derived function `@\:` to apply a list of unary values to the same argument. 
+You can use the derived function `@\:` to apply a list of unary values to the same argument.
 
 ```q
 q){`o`h`l`c!(first;max;min;last)@\:x}1 2 3 4 22  / open, high, low, close
@@ -317,9 +351,31 @@ c| 22
 ```
 
 
+## Composition
+
+A sequence of unaries `u`, `v`, `w`… can be composed with Apply At as `u@v@w@`.
+All but the last `@` may be elided: `u v w@`. 
+
+```q
+q)tc:til count@  / indexes of a list
+q)tc "abc"
+"0 1 2"
+```
+
+The last value in the sequence can have higher rank if projected as a unary by Apply.
+
+```q
+q)di:reciprocal(%).  / divide into
+q)di 2 3             / divide 2 into 3
+1.5
+```
+
+:fontawesome-solid-book:
+[Compose](compose.md)
+
 ## Trap
 
-In the ternary, if evaluation of the function fails, the expression is evaluated. 
+In the ternary, if evaluation of the function fails, the expression is evaluated.
 (Compare try/catch in some other languages.)
 
 ```q
@@ -344,7 +400,7 @@ q).[+;2 3;{"Wrong ",x}]
 
 ### Trap At
 
-`@[f;fx;e]` is equivalent to `.[f;enlist fx;e]`. 
+`@[f;fx;e]` is equivalent to `.[f;enlist fx;e]`.
 
 Use Trap At as a simpler form of Trap, for unary values.
 
@@ -353,7 +409,7 @@ Use Trap At as a simpler form of Trap, for unary values.
 
 Trap catches only errors signalled in the applications of `f` or `g`. Errors in the evaluation of `fx` or `gg` themselves are not caught.
 
-```a
+```q
 q)@[2+;"42";`err]
 `err
 q)@[2+;"42"+3;`err]
@@ -374,7 +430,7 @@ q)@[2+;"42";{)}]
                   ^
 ```
 
-If `e` is any _other_ kind of expression it will _always_ be evaluated – and _first_, in the usual right-to-left sequence. In this respect Trap and Trap At are unlike try/catch in other languages. 
+If `e` is any _other_ kind of expression it will _always_ be evaluated – and _first_, in the usual right-to-left sequence. In this respect Trap and Trap At are unlike try/catch in other languages.
 
 ```q
 q)@[string;42;a:100] / expression not a function
@@ -391,15 +447,21 @@ q)b // not evaluated
 
 For most purposes, you will want `e` to be a function.
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§10.1.8 Protected Evaluation](/q4m3/10_Execution_Control/#1018-protected-evaluation)
+
 
 ## Errors signalled
 
-error  | cause
--------|-----------------------------------------------------------------------
-domain | the symbol `d` is not a handle
-index  | an atom in `vx` or `ux` is not an index to an item-at-depth in `d`
-rank   | the count of `vx` is greater than the rank of `v`
-type   | `v` or `u` is a symbol atom, but not a handle to an value
-type   | an atom of `vx` or `ux` is not an integer, symbol or null
+```txt
+index    an atom in vx or ux is not an index to an item-at-depth in d
+rank     the count of vx is greater than the rank of v
+type     v or u is a symbol atom, but not a handle to an value
+type     an atom of vx or ux is not an integer, symbol or null
+```
 
 
+----
+:fontawesome-solid-book:
+[Amend, Amend At](amend.md)

@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
 keywords: kdb+, q, style
 ---
@@ -21,4 +20,7 @@ a*(b+c)
 
 **Redundant parentheses are visual red herrings.**
 
-Although extra parentheses are useful as training wheels, most q programmers eventually internalize the preferred method of reading q, which is _left to right_. To encounter a parenthesized expression is to assume that the parentheses are necessary.
+Although extra parentheses are useful as training wheels, most q programmers eventually internalize q syntax. 
+
+On encountering a parenthesized expression one assumes the parentheses are necessary.
+Do not burden your reader with the task of discovering that they are not. 

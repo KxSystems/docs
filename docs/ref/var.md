@@ -1,22 +1,23 @@
 ---
-title: var, svar – Reference – kdb+ and q documentation
-description: var and svar are q keywords that reurn (respectively) the variance and sample variance of their argument. 
+title: var, svar – variance and sample variance | Reference | kdb+ and q documentation
+description: var and svar are q keywords that reurn (respectively) the variance and sample variance of their argument.
 author: Stephen Taylor
-keywords: kdb+, math, mathematics, q, statistics, statistical variance, variance
 ---
 # `var`, `svar`
 
-_Variance, Sample variance_
+_Variance, sample variance_
 
 
 
 
 
-## `var` 
+## `var`
 
 _Variance_
 
-Syntax: `var x`, `var[x]`
+```syntax
+var x    var[x]
+```
 
 Where `x` is a numeric list, returns its variance as a float atom. Nulls are ignored.
 
@@ -28,14 +29,20 @@ q)var 2 3 5 0n 7
 q)select var price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 ```
 
-`var` is an aggregate function.
+`var` is an aggregate function, equivalent, where `sqr:{x*x}` to 
+```q
+{avg[sqr x]-sqr[avg x]}
+```
 
 
-## `svar` 
+
+## `svar`
 
 _Sample variance_
 
-Syntax: `svar x`, `svar[x]`
+```syntax
+svar x    svar[x]
+```
 
 Where `x` is a numeric list, returns its [sample variance](https://en.wikipedia.org/wiki/Variance#Sample_variance "Wikipedia") as a float atom.
 
@@ -49,13 +56,29 @@ q)svar 2 3 5 7
 q)select svar price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 ```
 
-`svar` is an aggregate function.
+`svar` is an aggregate function, equivalent to `{var[x]*count[x]%-1+count x}`.
 
 
-<i class="far fa-hand-point-right"></i> 
-[`cov, scov`](cov.md)  
-Wikipedia: [Covariance](https://en.wikipedia.org/wiki/Covariance),
-[Variance](https://en.wikipedia.org/wiki/Variance)  
-financereference.com: [Variance](http://financereference.com/learn/variance)  
-Basics: [Mathematics](../basics/math.md)
+## Domain and range
+
+```txt
+domain: b g x h i j e f c s p m d z n u v t
+range:  f . f f f f f f f . f f f f f f f f
+```
+
+
+
+----
+:fontawesome-solid-book:
+[`cov, scov`](cov.md)
+<br>
+:fontawesome-solid-book-open:
+[Mathematics](../basics/math.md)
+<br>
+:fontawesome-brands-wikipedia-w:
+[Covariance](https://en.wikipedia.org/wiki/Covariance "Wikipedia"),
+[Variance](https://en.wikipedia.org/wiki/Variance "Wikipedia")
+<br>
+:fontawesome-solid-globe:
+[Variance](http://financereference.com/learn/variance "financereference.com")
 

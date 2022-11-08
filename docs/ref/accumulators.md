@@ -6,7 +6,7 @@ keywords: adverb, converge, dictionary, do, iterator, fold, kdb+, keyword, map, 
 ---
 # Accumulators
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 [Converge  (v1\\)x    v1\\[x]](#converge)       [v1 scan x](#keywords-scan-and-over)
           [(v1/)x    v1/[x]](#converge)       [v1 over x](#keywords-scan-and-over)
 
@@ -30,7 +30,7 @@ v1, v2, v3: applicable value (rank 1-3)
 n:          integer≥0
 t:          unary truth map
 x, y:       arguments/indexes of v
-</pre>
+</div>
 
 An accumulator is an [iterator](iterators.md) that takes an [applicable value](../basics/glossary.md#applicable-value) as argument and derives a function that evaluates the value, first on its entire (first) argument, then on the results of **successive** evaluations.
 
@@ -80,8 +80,10 @@ Berlin| London
 
 ## Unary values
 
-Syntax: `(v1\)x`, `(v1/)x`  unary application<br>
-Syntax: `x v1\y`, `x v1/y`  binary application
+```syntax
+(v1\)x    (v1/)x   / unary application
+x v1\y    x v1/y   / binary application
+```
 
 The function an accumulator derives from a unary value is [variadic](../basics/variadic.md).
 The result of the first evaluation is the right argument for the second evaluation. And so on.
@@ -212,13 +214,16 @@ In the last example, both applicable values are dictionaries.
 
 ## Binary values
 
-Syntax: `x v\y`, `x v/y`
+```syntax
+x v\y    x v/y
+```
 
 The function an accumulator derived from a binary value is [variadic](../basics/variadic.md).
 Functions derived by Scan are uniform; functions derived by Over are aggregates.
 The number of evaluations is the count of the right argument.
 
 ![over](../img/over.png)
+<br>
 <small>_Unary and binary application of f/_</small>
 
 
@@ -277,7 +282,7 @@ q)(m\)c               / c[0] is the first left argument
 4 3 1 0 6 9
 ```
 
-In this case, for `(v\)x` and `(v/)x)`
+In this case, for `(v\)x` and `(v/)x`
 
 -   `x[0]` is in the _left_ domain of `v`
 -   items `1_x` are in the _right_ domain of `v`
@@ -308,13 +313,15 @@ q)m scan c                 / (m\)c
 4 3 1 0 6 9
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [`over`, `scan`](over.md)
 
 
 ## Ternary values
 
-Syntax: `v\[x;y;z]`, `v/[x;y;z]`
+```syntax
+v\[x;y;z]    v/[x;y;z]
+```
 
 The function an accumulator derives from an value of rank >2 has the same rank as the value.
 Functions derived by Scan are uniform; functions derived by Over are aggregates.
@@ -404,7 +411,7 @@ q)()~{x+y*z}\[`foo;mt;mt]           / lambda is not evaluated
 
 ### Over
 
-The function Over derives from a non-unary value is an aggregate: it reduces lists and dictionaries to atoms.
+The function that Over derives from a non-unary value is an aggregate: it reduces lists and dictionaries to atoms.
 
 For empty right argument/s the atom result depends on the value and, if the derived function is variadic, on how it is applied.
 
@@ -453,3 +460,6 @@ q){x+y*z}/[`foo;mt;mt]
 `foo
 ```
 
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§6.7.6 Over (/) for Accumulation](/q4m3/6_Functions/#676-over-for-accumulation)

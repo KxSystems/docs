@@ -1,89 +1,156 @@
 ---
-title: About this site – About – kdb+ and q documentation
-description: Origin and content of the Kx documentation site
+title: About this site | kdb+ and q documentation
+description: Origin and content of the KX documentation site
 author: Stephen Taylor
-keywords: blog, kdb+, news, q, site
 ---
 # About this site
 
 
-This site is the successor to the Mediawiki site. 
+This site is the official documentation for [kdb+](../database/index.md) and the [q programming language](../ref/index.md).
 
-It reflects the work of the Kx community since 1993, has many authors, 
-and continues to evolve.  
+It reflects the work of the KX community since 1993, has many authors,
+and continues to evolve.
 
+This site is a project of the KX Librarian: librarian@kx.com.
 
-
-## <i class="fab fa-github"></i> GitHub
-
-Truncated GitHub URLs are prefixed with the GitHub icon <i class="fab fa-github"></i> and omit the `https://github.com/` prefix. 
-
-For example, read <i class="fab fa-github"></i> `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
+> A librarian’s job is to put information where people can find it.
 
 
-## <i class="far fa-life-ring"></i> Reference
+## :fontawesome-solid-search: Search
 
-The wiki’s Reference section, organised by glyphs, was a good tool for _reading_ q. It was easy to find, for example, all the possible meanings of `$`. On the other hand, a writer looking for tools to convert between datatypes and representations would have to explore most of the Reference section to be confident she had found them all. 
+The Search Box on this site is customized for the q language.
+Some examples:
 
-The new site reference has three aims:
+```txt
+Operator glyphs            $  ^  .  <>  /:  ':
+ and their names           dollar  bang  at
+Operator names             Drop  roll  Enum Extend
+Keywords                   xbar  like  ajf0  uj
+Namespace objects          .z.pd  .Q.dpfts
+System commands            \d  \ts  \_  \\
+Command-line options       -b  -p
+Internal functions         -11!
+Popular queries            types  datatypes
+```
 
-- to be a _fast prompt_ for things already learned 
-- to help _reading_ by showing what terms mean
-- to help _writing_ by categorising the tools by semantic topic 
+Queries not matched by the Search Box are handled by Google Search.
+
+!!! tip "Install `man.q` to open the Reference direct from the q session."
+
+:fontawesome-brands-github:
+[KxSystems/man](https://github.com/KxSystems/man)
+
+:fontawesome-solid-question:
+[`man.q`](man.md)
 
 
-## <i class="far fa-handshake"></i> Contribute
+## :fontawesome-brands-github: GitHub
 
-> A finished work is exactly that, requires resurrection.  
+Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-github: and omit the `https://github.com/` prefix.
+
+For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
+
+
+## :fontawesome-solid-download: Download
+
+[`site.zip`](https://code.kx.com/download/site.zip "Download 60MB") is a copy of the site you can run from your filesystem.
+
+
+## :fontawesome-regular-handshake: Contribute
+
+> A finished work is exactly that, requires resurrection.<br>
 — _John Cage_, “Lecture on Nothing”, 1949
 
-The repository for this site is <i class="fab fa-github"></i> [KxSystems/docs](https://github.com/KxSystems/docs). 
-The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow). 
+The repository for this site is
+:fontawesome-brands-github:
+[KxSystems/docs](https://github.com/KxSystems/docs).
+The contribution model is GitHub and [Forking Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows#forking-workflow).
+To contribute, submit a pull request.
 
-To contribute, submit a pull request. 
-
-### Honor roll
-
-We gratefully acknowledge contributions by pull requests from
-
--   Alexander Belopolsky
--   Aleks Bunin
--   Angus Wilson
--   Andrew in New York
--   Chris Shucksmith
--   Conor McCarthy
--   David Z. Han
--   Esperanza Lopez Aguilera
--   Geo Carncross
--   James Hanna
--   kylenarocroc
--   Sean Keevey
--   Sean O’Hagan
--   Rian O’Cuinneagain
--   Rikesh
--   Thomas Smyth
--   Sergey Vidyuk
--   William Da Silva
+The repo includes a style guide for contributors.
 
 
-## <i class="fas fa-balance-scale"></i> License 
+We gratefully acknowledge pull requests from
+
+```txt
+Alexander Belopolsky            James Hanna
+Aleks Bunin                     Jason Quinn
+Angus Wilson                    kylenarocroc
+Andrew in New York              Letian Wang
+Alex Shroyer                    Mohammad Noor
+Bob Herrmann                    Peter Storeng
+Chris Shucksmith                Sean Keevey
+Cillian Reilly                  Sean O’Hagan
+Conor McCarthy                  Rian O’Cuinneagain
+David Crossey                   Rikesh
+David Lu                        Thomas Smyth
+David Z. Han                    Sergey Vidyuk
+Deanna Morgan                   Simon Shanks
+Diane O’Donoghue                Simon Watson
+Esperanza Lopez Aguilera        Vincent Bernardoff
+Geo Carncross                   William Da Silva 
+Ian O’Dwyer                     
+```
+
+## :fontawesome-solid-balance-scale: License
 This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
-<div style="text-align: center;"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a></div>
 
 
-## <i class="fas fa-camera-retro"></i> Images
+## :fontawesome-solid-camera-retro: Images
 
-This site includes images for which Kx holds neither copyright nor permission. 
-These images serve as links to their original sites. 
-We understand this to be fair use. 
+This site includes images for which KX holds neither copyright nor permission.
+These images serve as links to their original sites.
+We understand this to be fair use.
 
-If you are a copyright holder and object to this use, please write to librarian@kx.com. 
+If you are a copyright holder and object to this use, please write to librarian@kx.com.
 
 
-## <i class="fas fa-envelope"></i> Contact
+## :fontawesome-solid-book-dead: Terminology
 
-This site is a project of the [Librarian](mailto:librarian@kx.com).
+In 2018 and 2019 we made changes to the [terminology](terminology.md) used to describe the q language.
 
-> A librarian’s job is to put information where people can find it. 
 
+## :fontawesome-solid-pen-nib: Citations
+
+How to cite the q programming language:
+
+Bibtex format
+
+```txt
+@misc{OMS,
+    author= {{Kx Systems, Inc.}},
+    year  = {2020},
+    title = {Documentation for kdb+ and q},
+    note  = {\url{https://code.kx.com/q/ref/},
+             Last accessed on 2020-04-15},
+}
+```
+
+
+Chicago style
+
+: “Reference Card.” Documentation for kdb and q . Kx Systems, Inc. Accessed April 15, 2020. https://code.kx.com/q/ref/.
+
+
+Harvard style
+
+: _Documentation for kdb+ and q._ 2020. Reference Card. [online] Available at: <https://code.kx.com/q/ref/> [Accessed 15 April 2020].
+
+
+Vancouver style
+
+: Reference Card [Internet]. Documentation for kdb and q. Kx Systems, Inc.; 2020 [cited 2020Apr15]. Available from: https://code.kx.com/q/ref/
+
+
+:fontawesome-solid-globe:
+[Citation Machine](https://www.citationmachine.net/) for other citation styles
+
+
+## :fontawesome-solid-users: Wiki
+
+The KX wiki was the primary documentation for q and kdb+ until January 2017.
+
+The content, which runs on [Mediawiki](http://mediawiki.org),
+has
+been [archived on GitHub](https://github.com/kxsystems/wiki).

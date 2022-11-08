@@ -1,8 +1,7 @@
 ---
-title: view, views – Reference – kdb+ and q documentation
+title: view, views | Reference | kdb+ and q documentation
 description: view and views are q keywords. view returns the expression defining a view. views lists views defined in the default namespace. 
 author: Stephen Taylor
-keywords: kdb+, metadata, q, view, views
 ---
 # `view`, `views`
 
@@ -14,7 +13,9 @@ keywords: kdb+, metadata, q, view, views
 
 _Expression defining a view_
 
-Syntax: `view x`, `view[x]`
+```syntax
+view x    view[x]
+```
 
 Where `x` is a view (by reference), returns the expression defining `x`.
 
@@ -33,7 +34,9 @@ q)view `v                         / view the dependency expression
 
 _List views defined in the default namespace_
 
-Syntax: `views[]`
+```syntax
+views[]
+```
 
 Returns a sorted list of the views currently defined in the default namespace.
 
@@ -44,7 +47,13 @@ q)views[]
 `s#`v`w
 ```
 
-
-<i class="far fa-hand-point-right"></i> 
-Basics: [Metadata](../basics/metadata.md)  
-Tutorials: [Views](../learn/views.md)
+---
+:fontawesome-solid-book-open:
+[Metadata](../basics/metadata.md) 
+<br>
+:fontawesome-solid-graduation-cap:
+[Views](../learn/views.md)
+<br>
+:fontawesome-solid-street-view:
+_Q for Mortals_
+[§4.11 Alias](/q4m3/4_Operators/#411-alias)

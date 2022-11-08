@@ -1,30 +1,29 @@
 ---
-title: Iterators – Reference – kdb+ and q documentation
+title: Iterators | Reference | kdb+ and q documentation
 description: The iterators (earlier known as adverbs) are native higher-order operators. They take applicable values as arguments and return derived functions.
-keywords: adverb, iterator, infix, iterate, iteration, kdb+, operator, postfix, unary, value, variadic
 date: March 2019
 author: Stephen Taylor
 ---
 # Iterators
 
 
-<pre markdown="1" class="language-txt">
+<div markdown="1" class="typewriter">
 --------- [maps](maps.md) --------     --------- [accumulators](accumulators.md) ----------
 ['  Each](maps.md#each)           [each](maps.md#each-keyword)      / [Over](accumulators.md#binary-application)  [over](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
 [': Each Parallel](maps.md#each-parallel)  [peach](maps.md#peach-keyword)     \\ [Scan](accumulators.md#binary-application)  [scan](over.md)  [Converge](accumulators.md#converge), [Do](accumulators.md#do), [While](accumulators.md#while)
 [': Each Prior](maps.md#each-prior)     [prior](maps.md#prior-keyword)
-[\: Each Left](maps.md#each-left-and-each-right)
+[\\: Each Left](maps.md#each-left-and-each-right)
 [/: Each Right](maps.md#each-left-and-each-right)
 ['  Case](maps.md#case)
-</pre>
+</div>
 
 The iterators (once known as _adverbs_) are native higher-order operators: they take [applicable values](../basics/glossary.md#applicable-value) as arguments and return derived functions.
 They are the primary means of iterating in q.
 
-<i class="fas fa-book-open"></i>
+:fontawesome-solid-book-open:
 [Iteration](../basics/iteration.md) in q
 <br>
-<i class="far fa-map"></i>
+:fontawesome-regular-map:
 White paper: [Iterators](../wp/iterators/index.md)
 
 !!! detail "Applicable value"
@@ -57,7 +56,7 @@ q)+/[1000000;2 3 4]   / binary
 1000009
 ```
 
-<i class="fas fa-book-open"></i> 
+:fontawesome-solid-book-open: 
 [Variadic syntax](../basics/variadic.md)
 
 
@@ -76,10 +75,7 @@ q)count'[("The";"quick";"brown";"fox")]     / ' applied postfix
 Only iterators can be applied postfix.
 
 
-!!! important "Postfix returns an infix"
-
-    Regardless of its rank,
-    **a function derived by postfix application is always an infix**. 
+!!! important "Regardless of its rank, **a function derived by postfix application is always an infix**."
 
 To apply an infix derived function in any way besides infix, you can use bracket notation, as you can with any function.
 
@@ -100,7 +96,7 @@ If the derived function is unary or [variadic](../basics/variadic.md), you can a
 ```q
 q)(count')txt          / unary function applied prefix
 3 5 5 4
-q)(+/)2 3 4            / variadic function appled prefix
+q)(+/)2 3 4            / variadic function applied prefix
 9
 ```
 

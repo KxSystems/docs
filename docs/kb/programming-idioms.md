@@ -273,7 +273,7 @@ minute| vwap
 ..
 ```
 
-<i class="far fa-hand-point-right"></i> _Q for Mortals_ [§9.13.4 Meaty Queries](/q4m3/9_Queries_q-sql/#9134-meaty-queries)
+:fontawesome-regular-hand-point-right: _Q for Mortals_ [§9.13.4 Meaty Queries](/q4m3/9_Queries_q-sql/#9134-meaty-queries)
 
 
 ## How do I extract regular-size vwap series?
@@ -585,7 +585,7 @@ q)\t do[1000000; trade (cols trade)]
 
 However, for splayed tables, only indexing works:
 
-```dos
+```powershell
 C:\>.\q.exe dir
 KDB+ 2.4t 2006.07.27 Copyright (C) 1993-2006 Kx Systems
 w32/ 1cpu 384MB ...
@@ -666,4 +666,4 @@ q)\t do[100000; ?[trade; enlist (>;`volume;10000); 0b; ()]]
     -   strings, `tbl` is passed by reference, e.g. `` `trade``
     -   parse trees, `tbl` is passed by value, e.g. `trade`
 
-    <i class="far fa-hand-point-right"></i> [Glossary](../basics/glossary.md#reference-pass-by) for passing by reference and value
+    :fontawesome-regular-hand-point-right: [Glossary](../basics/glossary.md#reference-pass-by) for passing by reference and value

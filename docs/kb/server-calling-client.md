@@ -21,7 +21,7 @@ Generally, async _set_ messages to the client are preferable because the server 
 
 -   only 32-bit or 64-bit libraries were available
 -   unreliable external code may stomp on kdb+
--   licencing issues
+-   licensing issues
 -   system calls in external code conflict with kdb+
 
 
@@ -113,6 +113,6 @@ $ cat t.c
 TODO...
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Interprocess communication](../basics/ipc.md)
 

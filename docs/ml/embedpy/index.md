@@ -3,13 +3,12 @@ title: embedPy – Machine Learning – kdb+ and q documentation
 description: embedPy allows the kdb+ interpreter to manipulate Python objects and call Python functions.
 keywords: embedpy, interface, kdb+, python
 ---
-# <i class="fab fa-python"></i> embedPy
+# :fontawesome-brands-python: embedPy
 
 
 
-<div class="fusion" markdown="1">
-<i class="fab fa-superpowers"></i> [Fusion for kdb+](../../interfaces/fusion.md)
-</div>
+:fontawesome-brands-superpowers: [Fusion for kdb+](../../interfaces/fusion.md)
+{: .fusion}
 
 
 
@@ -21,9 +20,9 @@ keywords: embedpy, interface, kdb+, python
 
 ## Build and install
 
-<i class="fas fa-download"></i>
+:fontawesome-solid-download:
 Download the code from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/embedPy](https://github.com/kxsystems/embedpy) and follow installation instructions there.
 
 EmbedPy can also be downloaded through a Conda install as follows
@@ -40,15 +39,16 @@ This download will install kdb+ if not previously installed within the Conda env
 ### V0.2-beta -> V1.0
 
 -   Attribute access from embedPy object
-    <pre><code class="language-q">
+
+    ```q
     q)obj\`ATTRNAME     / old
     q)obj\`:ATTRNAME    / new
-    </code></pre>
+    ```
 
 -   embedPy objects can be called directly without explicitly specifying the call return type, the default return type is an embedPy object
 
 
-### V0.1-beta -> V0.2beta in V0.2-beta
+### V0.1-beta => V0.2beta in V0.2-beta
 
 V0.2-beta features a number of changes back-incompatible with the previous release, V0.1-beta.
 

@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
 keywords: kdb+, q, style
 ---
@@ -8,9 +7,8 @@ keywords: kdb+, q, style
 
 ![Remarks on Style](img/qros.png)
 
-<div style="font-size: .9em; margin-bottom: 5em" markdown="1">
 _Stevan Apter’s classic [“K: Remarks on Style”](http://www.nsl.com/papers/style.pdf), adapted for q._ 
-</div>
+{: style="font-size: .9em; margin-bottom: 5em" markdown="1"}
 
 
 
@@ -23,7 +21,7 @@ The care taken to make code stylish is one aspect of writing ‘good code’: pr
 This document – a collection of remarks , observations, advice, rules, and models – is intended to be the nucleus for a proper manual of q style. 
 The hope is that q programmers will find the project sufficiently interesting to think through the consequences of their current practices and try to articulate the principles on which those practices are based. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 [“Three Principles of Coding Clarity”](http://archive.vector.org.uk/art10009750)
 
 We have not sought to group the material under fixed chapter headings: that would be premature. Instead, it is just one remark after another. 

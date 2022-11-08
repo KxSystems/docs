@@ -1,5 +1,4 @@
 ---
-hero: <i class="fas fa-pen-nib"></i> Remarks on Style
 author: Stevan Apter
 keywords: kdb+, q, style, whitespace
 ---
@@ -9,7 +8,7 @@ keywords: kdb+, q, style, whitespace
 
 Q requires spaces in certain contexts and disallows them in others. The rules are simple and are spelled out in the Syntax article below. Otherwise you are free to deploy whitespace in the service of readability. 
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Basics: [Syntax](../basics/syntax.md)
 
 Some programmers favor whitespace around all primitives and punctuation.

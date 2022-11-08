@@ -1,7 +1,6 @@
 ---
 title: Q language – Starting kdb+ – Learn – kdb+ and q documentation
 description: Introduction to the q programming language
-hero: <i class="fas fa-graduation-cap"></i> Starting kdb+
 keywords: kdb+, language, q, tutorial
 ---
 # The q language
@@ -31,7 +30,7 @@ It is best to create a start-up batch file or script to do this, and there are e
 
 For example, the Windows `q.bat` is:
 
-```dos
+```powershell
 c:
 cd \q
 w32\q.exe %*
@@ -59,27 +58,29 @@ q)2 + 3 4 7
 
 You can confirm that you are in the `QHOME` directory by calling a directory list command, e.g.
 
-- in Windows:
+=== ":fontawesome-brands-linux: Linux :fontawesome-brands-apple: macOS"
 
-```q
-q)\dir *.q
-...
-"sp.q"
-"trade.q"
-...
-```
-
-- in Linux/macOS:
-    <pre><code class="language-q">
+    ```q
     q)\ls *.q
     ...
     "sp.q"
     "trade.q"
     ...
-    </code></pre>
+    ```
 
-    <i class="far fa-hand-point-right"></i> [Command-line parameters](../../basics/cmdline.md) e.g.
-    `$ q profile.q -p 5001`
+=== ":fontawesome-brands-windows: Windows"
+
+    ```q
+    q)\dir *.q
+    ...
+    "sp.q"
+    "trade.q"
+    ...
+    ```
+
+??? tip "Command-line options"
+
+    [Command-line options](../../basics/cmdline.md) e.g. `q profile.q -p 5001`
 
     + loads script `profile.q` at startup. This can in turn load other scripts.
     + sets listening port to 5001
@@ -93,7 +94,7 @@ The usual prompt is `q)`. Sometimes a different prompt is given; you need to und
 
 1.  If a function is suspended, then the prompt has two or more `)`. In this case, enter a single `\` to remove one level of suspension, and repeat until the prompt becomes `q)`. For example:
 
-    <pre><code class="language-q">
+    ```q
     q)f:{2+x}        / define function f
     q)f \`sym         / function call fails with symbol argument
     {2+x}            / and is left suspended
@@ -103,11 +104,11 @@ The usual prompt is `q)`. Sometimes a different prompt is given; you need to und
     \`sym
     q))\             / prompt becomes q)). Enter \ to return to usual prompt
     q)
-    </code></pre>
+    ```
 
 2.  If there is no suspension, then a single `\` will toggle between q and k modes:
 
-    <pre><code class="language-q">
+    ```q
     q)count each (1 2;"abc")    / q expression for length of each list item
     2 3
     q)\                         / toggle to k mode
@@ -115,17 +116,17 @@ The usual prompt is `q)`. Sometimes a different prompt is given; you need to und
     2 3
       \                         / toggle back to q mode
     q)
-    </code></pre>
+    ```
 
-3.  If you change namespace, then the prompt includes the namespace.  
+3.  If you change namespace, then the prompt includes the namespace.
 
-    <pre><code class="language-q">
+    ```q
     q)\d .h                     / change to .h namespace
     q.h)\d .                    / change back to default namespace
     q)
-    </code></pre>
+    ```
 
-    <i class="far fa-hand-point-right"></i> 
+    :fontawesome-regular-hand-point-right:
     Basics: [System command `\d`](../../basics/syscmds.md#d-directory)
 
 
@@ -140,7 +141,7 @@ q)2 + "hello"                / cannot add number to character
 'type
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right:
 Basics: [Errors](../../basics/errors.md)
 
 
@@ -307,7 +308,7 @@ cog  | 3     20
 
 ## Functions, operators, keywords, iterators
 
-All functions take arguments on their right in brackets. Operators can also take arguments on left and right, as in `2+2` (infix syntax). [Iterators](../../ref/iterators.md) take [value](../../basics/glossary.md#applicable-value) arguments on their left (postfix syntax) and return derived functions. 
+All functions take arguments on their right in brackets. Operators can also take arguments on left and right, as in `2+2` (infix syntax). [Iterators](../../ref/iterators.md) take [value](../../basics/glossary.md#applicable-value) arguments on their left (postfix syntax) and return derived functions.
 
 ```q
 q)sales * prices                 / operator: *
@@ -400,14 +401,14 @@ q)b
 
 !!! warning "Multi-line function definitions"
 
-    In scripts, indentation allows function definitions to span multiple lines. 
+    In scripts, indentation allows function definitions to span multiple lines.
 
-    <pre><code class="language-q">
+    ```q
     fn:{[x,y]
       a:x*2.5;
       b:x+til floor y;
-      a & b}
-    </code></pre>
+      a & b }
+    ```
 
     The convention entails that in a multi-line definition **the closing brace must also be indented**.
     It is less likely to get misplaced if suffixed to the last line.

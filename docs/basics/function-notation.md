@@ -11,7 +11,7 @@ keywords: abort, control, expression, function, kdb+, lambda, multiline, notatio
 
 
 Function notation enables the definition of functions.
-Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_. 
+Function notation is also known as the _lambda notation_ and the defined functions as _lambdas_.
 
 !!! note "Anonymity"
 
@@ -20,10 +20,10 @@ Function notation is also known as the _lambda notation_ and the defined functio
     In this usage a lambda assigned a name is still a lambda.
     For example, if `plus:{x+y}`, then `plus` is a lambda.
 
-    Lambdas have datatype 100. 
+    Lambdas have datatype 100.
 
 
-A lambda is defined as a pair of braces (curly brackets) enclosing an optional _signature_ (a list of up to 8 argument names) followed by a zero or more expressions separated by semicolons. 
+A lambda is defined as a pair of braces (curly brackets) enclosing an optional _signature_ (a list of up to 8 argument names) followed by a zero or more expressions separated by semicolons.
 
 
 ## Signature
@@ -33,7 +33,7 @@ q){[a;b] a2:a*a; b2:b*b; a2+b2+2*a*b}[20;4]  / binary function
 576
 ```
 
-Functions with 3 or fewer arguments may omit the signature and instead use default argument names `x`, `y` and `z`. 
+Functions with 3 or fewer arguments may omit the signature and instead use default argument names `x`, `y` and `z`.
 
 A lambda with a signature is _signed_; without, _unsigned_.
 
@@ -44,10 +44,14 @@ q){(x*x)+(y*y)+2*x*y}[20;4]       / unsigned lambda
 576
 ```
 
+!!! tip "Use `x`, `y`, and `z` only as names of the first three arguments"
+
+    Using other names for the first arguments of a lambda often helps the reader. But using `x`, `y`, or `z` for any other argument sows confusion.
+
 
 ## Rank
 
-The [rank](glossary.md#rank) of a function is the number of arguments it takes. 
+The [rank](glossary.md#rank) of a function is the number of arguments it takes.
 
 The rank of a signed lambda is the number of names in its signature.
 
@@ -85,7 +89,7 @@ q)c
 0
 ```
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right:
 [Evaluation control](control.md)
 
 
@@ -103,13 +107,16 @@ q)c
 0
 ```
 
-<i class="far fa-hand-point-right"></i> 
-[Error handling](errors.md) 
+:fontawesome-regular-hand-point-right:
+[Error handling](errors.md)
 
 
 ## Name scope
 
-Within the context of a function, name assignments with `:` are _local_ to it and end after evaluation. Assignments with `::` are _global_ (in the session root) and persist after evaluation.
+Within the context of a function,
+
+-   name assignments with `:` are _local_ to it and end after evaluation
+-   assignments with `::` are _global_ (in the session root) and persist after evaluation _unless_ the name assigned is an argument or already defined as a local
 
 ```q
 q)a:b:0                      / set globals a and b to 0
@@ -119,9 +126,19 @@ q)a                          / global a is unchanged
 0
 q)b                          / global b is updated
 113 116 119
+
+q)b:42
+q){[a;b]b::99;a+b}[10;20]    / assignment is local
+109
+q)b
+42
+q){b:x=y;b::99;x+b}[10;20]   / assignment is local
+109
+q)b
+42
 ```
 
-References to names _not_ assigned locally are resolved in the session root. Local assignments are _strictly local_: invisible to other functions applied during evaluation. 
+References to names _not_ assigned locally are resolved in the session root. Local assignments are _strictly local_: invisible to other functions applied during evaluation.
 
 ```q
 q)a:42           / assigned in root
@@ -132,7 +149,7 @@ q){a:1000;f x}1  / f reads a in root
 43
 ```
 
-Local variables are identified on parsing and initialized as `()` (empty list). Assignments within code branches (never recommended) can produce unexpected results. 
+Local variables are identified on parsing and initialized as `()` (empty list). Assignments within code branches (never recommended) can produce unexpected results.
 
 ```q
 q)t:([]0 1)
@@ -152,6 +169,12 @@ q) {if[x;t:([]`a`b)];select from t} 0b     / local t is ()
                          ^
 ```
 
+!!! tip "Within lambdas, read and set global variables with `get` and `set`"
+
+:fontawesome-solid-book:
+[`get`, `set`](../ref/get.md)
+
+
 ## Multiline definition
 
 In scripts function definitions can straddle multiple lines.
@@ -165,21 +188,21 @@ sqsum:{[a;b]   / square of sum
 ```
 
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-solid-book-open:
 [Multiline expressions](syntax.md#multiline-expressions)
 
 
 ## Variables and constants
 
-A lambda definition can include up to: 
+A lambda definition can include up to:
 
-&nbsp;    | in use | current     | <V3.6 2017.09.26
-----------|--------|-------------|------------------
-arguments |        | 8           | 8
-locals    | $m$    | 110         | 23
-globals   | $n$    | 110         | 31
-constants |        | $240-(m+n)$ | $95-(m+n)$
+&nbsp;    | in use | current     | V3.5  | <V3.5
+----------|--------|-------------|-------|------
+arguments |        | 8           | 8     | 8
+locals    | $m$    | 110         | 23    | 23
+globals   | $n$    | 110         | 31    | 31
+constants |        | $239-(m+n)$ | 95    | 96
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-solid-book-open:
 [Parse errors](errors.md#parse-errors)
 

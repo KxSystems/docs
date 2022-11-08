@@ -1,15 +1,23 @@
 ---
-title: Predicting floods | White paper | kdb+ and q documentation
+title: Predicting floods with q and machine learning | White paper | kdb+ and q documentation
 description: Machine-learning methods in q to predict flood susceptibility in an area and the time for a river to reach its peak height after a rainfall event.
 author: Diane O’Donoghue
 date: October 2019
 keywords: embedpy, flash, flood, kdb+, machine learning, model, nasa, nhdplus, nlcd, noaa, prism, q, random forest, space, usgs, xgboost
 ---
+White paper
+{: #wp-brand}
+
 # Predicting floods with q and machine learning
 
+by [Diane O’Donoghue](#author)
+{: .wp-author}
 
 
-The Frontier Development Lab (FDL) is a public-private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration (NASA). The objective of FDL is to bring together researchers from the Artificial Intelligence (AI) and space science sectors to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention, Progress and Response (Floods) challenge, for which Kx was a partner.
+
+
+
+The Frontier Development Lab (FDL) is a public-private partnership run annually with both the European Space Agency (ESA) and National Aeronautics and Space Administration (NASA). The objective of FDL is to bring together researchers from the Artificial Intelligence (AI) and space science sectors to tackle a broad spectrum of challenges in the space industry. The projects this year include challenges in lunar and heliophysics research, astronaut health and disaster prevention. This paper will focus on the Disaster Prevention, Progress and Response (Floods) challenge, for which KX was a partner.
 
 
 ## The need for AI in disaster prevention
@@ -68,7 +76,7 @@ ML toolkit      0.3.2
 
 This project focuses on six states within the US, over a period of 10 years. Data was taken from ~800 gauge sites, between July 2009 and June 2019. Not all gauge sites had continuous historical data over the period, but all the available data for each site was used.
 
-The six states were: New Jersey, Nebraska, South Carolina, New York, South Dakota, and Virginia. The primary reason for choosing these states, was that they exhibit similar climate and landscape to one another. Climate and landscape play a major role in predicting floods, meaning that building a model to predict flood forcasting for the entire US would be extremely difficult as the climates and landscapes vary dramatically between locations. After discussions with hydrologists at USGS, it was decided that focusing on a subset of areas with similar geographies would help to ensure that the models being produced created meaningful results that could be used in a real world scenario.
+The six states were: New Jersey, Nebraska, South Carolina, New York, South Dakota, and Virginia. The primary reason for choosing these states, was that they exhibit similar climate and landscape to one another. Climate and landscape play a major role in predicting floods, meaning that building a model to predict flood forecasting for the entire US would be extremely difficult as the climates and landscapes vary dramatically between locations. After discussions with hydrologists at USGS, it was decided that focusing on a subset of areas with similar geographies would help to ensure that the models being produced created meaningful results that could be used in a real world scenario.
 
 Required datasets and providers:
 
@@ -141,7 +149,7 @@ Sand           Mean of all sand values
 Runoff         Mean of all runoff values 
 WetIndex       Mean wetness index
 BFI            Ratio of base flow to total flow as a percentage
-DamNrmStor     Volume of all resevoirs per unit area
+DamNrmStor     Volume of all reservoirs per unit area
 ```
 
 ```q
@@ -231,13 +239,13 @@ Perfect Forecasts
 
 The reason that these three datasets were chosen, was to reflect how this model could be used in a real-world scenario. For the `Perfect Forecasts` dataset, we assume that future forecasted rainfall is available for the location, however in some applications, this future rainfall prediction cannot always be given with certainty, which is when the `Gauged basin` or `Ungauged basin` datasets could be used. The `Gauged basin` dataset is suitable for stream sites that have historical stream height data recorded over a period of time. When predicting on new sites that do not have this historical data or future rainfall predictions available, the `Gauged basin` dataset is applicable.
 
-To obtain these features, the `addFeat` function was used. This enabled features pertaining to previous information to be extracted. This previous information included the past rainfall and stream height values during a set period of time before an event. Windowed features were also added using this function. These window features provided a summary of how certain values changed, such as rainfall or stream height, over a fixed window of time. Windowed features were included, as knowing how fast the rainfall is accumulating in an area along with how the stream height is changing before an event can have a major inpact on predicting if a flood will occur. `addFeat` takes the following arguments as inputs:
+To obtain these features, the `addFeat` function was used. This enabled features pertaining to previous information to be extracted. This previous information included the past rainfall and stream height values during a set period of time before an event. Windowed features were also added using this function. These window features provided a summary of how certain values changed, such as rainfall or stream height, over a fixed window of time. Windowed features were included, as knowing how fast the rainfall is accumulating in an area along with how the stream height is changing before an event can have a major impact on predicting if a flood will occur. `addFeat` takes the following arguments as inputs:
 
 1.  table that is being updated
 2.  how many values to calculate (integer list)
 3.  column to apply the function to (symbol)
 4.  new column name (symbol)
-5.  dictionary of where, groupby and what type of functional statement is used
+5.  dictionary of where, group-by and what type of functional statement is used
 6.  function that is applied to the grouped columns
 
 ```q
@@ -279,7 +287,7 @@ catch_id| site_no                                                     ..
 "05"    | `05050000`05290000`05291000                                 ..
 "06"    | `06334500`06354881`06355500`06356500`06357800`06359500`06360..
 ```
-This characteristic of the site ID numbering is then applied in order to extract the upstream features. Only the first upstream value of each stream site was obtained as this is the most influencial upstream information affecting the results.
+This characteristic of the site ID numbering is then applied in order to extract the upstream features. Only the first upstream value of each stream site was obtained as this is the most influential upstream information affecting the results.
 
 ```q
 // Calculate value of lagged features
@@ -498,7 +506,7 @@ tabw:kd.buildtree[latl;2]
 // Will be used for indexing in the kd tree
 gauge_val:count[warning]+til count gauges
 
-// Calculate the threshold nearest neighbour of each stream-gauge
+// Calculate the threshold nearest neighbor of each stream-gauge
 // location using the kdtree 
 nnwarn:kd.nns[
   ;
@@ -507,7 +515,7 @@ nnwarn:kd.nns[
   flip wlatl;
   `edist] each gauge_val
 
-// Make a table indicating the index of the nearest neighbour
+// Make a table indicating the index of the nearest neighbor
 // to each gauge site along with the corresponding distance
 joins:([site_no:gauges`site_no]nn:nnwarn[;0];ndw:nnwarn[;1])
 ```
@@ -543,7 +551,7 @@ site_no  date       height nn   ndw       GaugeLID Status        Loca..
 
 This dataset was then joined onto the stream-gauge data, adding columns counting the number of times a given stream gauge reached each warning level per month.
 
-For the sake of this project, we only wanted to focus on the Flood stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data was a binary label denoting whether the flood warning level was reached in a given month. Any site that claimed to flood more than 28 days per month were omitted from the dataset as we only wanted to focus on events that occured infrequently and were more difficult to predict.
+For the sake of this project, we only wanted to focus on the Flood stage. This level was chosen in an attempt to achieve a more balanced dataset while still predicting a meaningful target. Choosing either of the more severe levels would result in a very low number of targets making it more difficult to discern events of interest.  Our target data was a binary label denoting whether the flood warning level was reached in a given month. Any site that claimed to flood more than 28 days per month were omitted from the dataset as we only wanted to focus on events that occurred infrequently and were more difficult to predict.
 
 ```q
 threshold:0!select
@@ -598,7 +606,7 @@ q)10#peak_data[`target]:peak_data[`delta_peak]<3.5
 
 _Monthly model_
 
-After joining the stream-height and precipitation tables from USGS and PRISM, the dataset was then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for different window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consisted of the basin and landcover characteristcs, and the “threshold” dataset, based on month and site number.
+After joining the stream-height and precipitation tables from USGS and PRISM, the dataset was then broken up into monthly values. By taking the first day of each month at a site, it was possible to obtain the maximum moving averages of precipitation for different window sizes for a given month, along with the precipitation and height values for the last few days of the month prior. This data was then joined to the `stream_char` dataset, which consisted of the basin and land-cover characteristics, and the “threshold” dataset, based on month and site number.
 
 Lagged features were then added to this dataset, which included information such as did a flood occur in the month prior, the year prior and also how often on average did the given location flood.
 
@@ -1233,13 +1241,25 @@ The best results from the models above were obtained by continuously adjusting t
 
 ## Author
 
-Diane O’Donoghue joined First Derivatives in June 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London.
+![Diane O’Donoghue](../../img/faces/dianeodonoghue.jpg)
+{: .small-face}
+
+**Diane O’Donoghue** joined First Derivatives in 2018 as a data scientist in the Capital Markets Training Program and is currently on the Machine Learning team based in London. Within the team, Diane has been involved with expanding the Machine Learning Toolkit and the automated machine-learning platform.&nbsp;
+[:fontawesome-solid-envelope:](mailto:dodonoghue@kx.com?subject=White paper: Predicting floods with q and machine learning) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/diane-o-donoghue-699230144/) 
+
+Other papers by Diane O’Donoghue
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-solid-globe: [Machine Learning for Generalizable Prediction of Flood Susceptibility](https://arxiv.org/abs/1910.06521 "Cornell University")
+</ul>
 
 
 ## Code
 
 The code presented in this paper is available from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [kxcontrib/fdl2019](https://github.com/kxcontrib/fdl2019).
 
 

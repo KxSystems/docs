@@ -1,11 +1,17 @@
 ---
-title: NASA Frontier Development Lab Exoplanets Challenge – White Papers – kdb+ and q documentation
-description: The NASA Frontier Development Lab (FDL) is an applied artificial intelligence (AI) research accelerator, hosted by the SETI Institute in partnership with NASA Ames Research Centre. The programme brings commercial and private partners together with researchers to solve challenges in the space science community using new AI technologies. NASA FDL 2018 focused on four areas of research – Space Resources, Exoplanets, Space Weather and Astrobiology – each with their own separate challenges. This paper will focus on the Exoplanets challenge, which aimed to improve accuracy in finding new exoplanets.
+title: NASA Frontier Development Lab Exoplanets Challenge | White Papers | kdb+ and q documentation
+description: The Transiting Exoplanet Survey Satellite (TESS) was launched in April 2018, with the objective of discovering new exoplanets in orbit around the brightest stars in the solar neighborhood
 keywords: kdb+, q, space, NASA, machine learning
 author: Esperanza López Aguilera
 date: December 2018
 ---
+White paper
+{: #wp-brand}
+
 # NASA Frontier Development Lab Exoplanets Challenge
+
+by [Esperanza López Aguilera](#author)
+{: .wp-author}
 
 
 
@@ -611,10 +617,12 @@ Data can be loaded and managed using q, which allows us to easily explore it and
 
 To sum up, the proposed solution achieves our main goal, detecting a high proportion of real planets in the set of planet candidates. Also, and more importantly, it achieves a high precision too, which would save a lot of money and time since further analysis of false detections is avoided. In addition, since confidence in predictions is also provided, some other criteria based on this confidence can be taken into account to decide when a planet candidate is worth further analysis. This possibility together with extra data preprocessing could be considered in future works to try and improve results. 
 
+[:fontawesome-solid-print: PDF](/download/wp/exoplanets-a4.pdf)
+
 
 ## Author
 
-Esperanza López Aguilera joined First Derivatives in October 2017 as a Data Scientist in the Capital Markets Training Program.
+**Esperanza López Aguilera** joined First Derivatives in October 2017 as a Data Scientist in the Capital Markets Training Program.
 
 
 ##  Acknowledgements

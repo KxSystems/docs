@@ -1,12 +1,18 @@
 ---
-title: An introduction to graphical interfaces for kdb+ using C# – White Papers – kdb+ and q documentation
-description: Over the course of fifteen years, C# has become one of the most common programming languages in the world. It has been used in applications ranging from computer games to medical systems to storage systems. When deployed in an environment which requires database connections, it is traditional for C# to use a form of SQL for the back end, be it MySQL or SQLite to provide data storage and the ability to execute queries. Though functional, kdb+ offers substantial improvements in performance and processing power over this standard method of operation.
+title: An introduction to graphical interfaces for kdb+ using C# | White Papers | kdb+ and q documentation
+description: Basics of using C# to open connections to kdb+ processes running on remote servers as well as setting up a basic API that will allow for authentication, error recovery and basic queries through an interface
 author: Michael Reynolds
 date: May 2013
-hero: Interfaces
 keywords: analytics, connections, csharp, gui, kdb+, queries, validation
 ---
+White paper
+{: #wp-brand}
+
 # An introduction to graphical interfaces for kdb+ using C&#35;
+
+by [Michael Reynolds](#author)
+{: .wp-author}
+
 
 
 
@@ -30,11 +36,11 @@ code will be pointing to the same kdb+ process.
 
 C# is heavily integrated into Windows software. It allows for the
 implementation of the .NET environment into applications and can be
-utilised in the creation of websites using PHP and ASP.NET as well as
+utilized in the creation of websites using PHP and ASP.NET as well as
 stand-alone Windows applications.
 
-The paper makes use of the standard `c.cs` file offered by Kx to enable
-connections to C#. This can be found at <i class="fab fa-github"></i>
+The paper makes use of the standard `c.cs` file offered by KX to enable
+connections to C#. This can be found at :fontawesome-brands-github:
 [KxSystems/kdb](https://github.com/KxSystems/kdb/blob/master/c/c.cs).
 
 It is important to note that this paper does not aim to provide a full
@@ -42,7 +48,7 @@ C# library, but instead give guidance on how to quickly and easily
 allow a C# application to connect to and run queries against a kdb+
 process.
 
-The C# source code for this paper can be found at <i class="fab fa-github"></i> [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
+The C# source code for this paper can be found at :fontawesome-brands-github: [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
 
 
 ## Connecting kdb+ and C#
@@ -54,7 +60,7 @@ To connect from C# to a running kdb+ process, it is first necessary
 to import the `c.cs` file mentioned in the introduction. While it is
 possible to construct a bespoke plugin for use between kdb+ and C#,
 and may be required depending on the requirements of the project, for
-basic connections and queries, the default Kx plug-in will be
+basic connections and queries, the default KX plug-in will be
 satisfactory. This must then be called by referencing the namespace
 provided (in this case, it is `kx`). After importing `c.cs` into a C#
 project, it can then be called via the `using` directive:
@@ -70,7 +76,7 @@ will also permit querying and updates to be performed on the same kdb+
 process.
 
 To open a connection between C# and the kdb+ process, an object of
-class `c` needs to be called and instantiated. This is a Kx-provided
+class `c` needs to be called and instantiated. This is a KX-provided
 class that will act as an interface between kdb+ and C#. This will be
 used in a method called `OpenConnection`. In the below example, a
 server and process will be hard-coded to private variables though these
@@ -202,8 +208,8 @@ user1    | "password2"
 user2    | "password3"
 ```
 
-This involves changing the `c.cs` file provided by Kx as this is not set
-up to accept customised usernames (it instead takes the username
+This involves changing the `c.cs` file provided by KX as this is not set
+up to accept customized usernames (it instead takes the username
 stored in `Environment.UserName`) or any passwords at all. We will also
 need to modify the `OpenConnection` method and define `.z.pw`.
 
@@ -235,7 +241,7 @@ feeding user input as bytes to the handle.
 A byte stream is an open connection that sends a collection of bytes
 from sender to receiver in a bidirectional format. This connection is
 reliable and the use of bytes allows the C# query to be sent to a
-kdb+ process and the kdb+ response to be returned and deserialised.
+kdb+ process and the kdb+ response to be returned and de-serialized.
 
 As defined currently, along with the host `h` and port `p`, it will
 take a further parameter for the username `u`, but none for the
@@ -270,7 +276,7 @@ process. Within C#, this will throw a KException with the message
 `access`. This can be used to track if the user has been refused
 access in the C# API.
 
-<i class="far fa-hand-point-right"></i> 
+:fontawesome-regular-hand-point-right: 
 Tom Martin’s white paper [“Permissions with kdb+”](../permissions/index.md)
 for more detailed information on validation and authentication
 
@@ -331,7 +337,7 @@ conn.k("select from tab");
  
 This is then fed into a method called `c`, which breaks it into bytes
 and passes it into kdb+. The result is then received by the C# client
-as a stream of bytes which is deserialised by the `c` method into C#
+as a stream of bytes which is de-serialized by the `c` method into C#
 compatible types. The result itself is a two-dimensional array when
 used with `select` or a one-dimensional array when used with `exec`. This
 can then be cast to the type `c.Flip`, which mimics a table with similar
@@ -425,7 +431,7 @@ conn.k(BuildQuery());
 The `BuildQuery` method takes the inputs of each textbox, checkbox and
 combo box seen above and combines them to build a query to
 send to kdb+. This allows those without much knowledge of kdb+ queries
-or optimisation of queries to view data stored on kdb+ processes
+or optimization of queries to view data stored on kdb+ processes
 without exposing them to the qSQL language.
 
 This is the `BuildQuery` method, which takes all the available inputs and
@@ -630,11 +636,11 @@ analysis on the product being traded. The analytics will include:
 We will also plot these on a line graph to allow users to better
 identify patterns and outliers throughout the day.
 
-To calculate these, we will create a new function called `analyseData`
+To calculate these, we will create a new function called `analyzeData`
 on the kdb+ side, which will then be called from C#.
 
 ```q
-q) analyseData:{[x] 
+q) analyzeData:{[x] 
     0!select 
     minPrice:min price, 
     maxPrice:max price, 
@@ -682,7 +688,7 @@ sym   minPrice maxPrice avgPrice vwap  total
 -------------------------------------------- 
 FDP.O 1.021    1.109    1.064    1.064 5082
 
-q)10#analyseData[`FDP.O]
+q)10#analyzeData[`FDP.O]
 minute minPrice maxPrice vwapPrice avgPrice totalTransactions 
 ------------------------------------------------------------- 
 00:00  1.022    1.108    1.063     1.063    93
@@ -697,7 +703,7 @@ minute minPrice maxPrice vwapPrice avgPrice totalTransactions
 02:15  1.022    1.108    1.067     1.067    129
 ```
 
-The methods to pull this data into a graph in the case of `analyseData`,
+The methods to pull this data into a graph in the case of `analyzeData`,
 and text boxes in the case of `getSummary`, are simple to implement,
 involving query calls to kdb+ to collect the data and then using loops
 to process it.
@@ -715,7 +721,7 @@ public Form3(String symbol, c conn)
     details = GetData("getSummary[`" + symbol + "]");
     GetDaily(details);
 
-    details = GetData("analyseData[`" + symbol + "]");
+    details = GetData("analyzeData[`" + symbol + "]");
     SetAxis(details);
     PopulateChart(details); //Populates Example Chart
     PopulateGrid(details);  //Populates Example Grid
@@ -837,7 +843,7 @@ currently exists, it would not be difficult to implement a timer to
 periodically query kdb+ (every minute, for example) and retain up-to-date figures and charts. By the same measure, adding the ability to
 compare different symbols or different time frames would not take much
 more effort, nor would giving the user the ability to choose what
-period time they analyse. Furthermore, WebSockets could be used to
+period time they analyze. Furthermore, WebSockets could be used to
 deliver streaming data from the kdb+ back end to the C# GUI.
 
 
@@ -860,7 +866,7 @@ just in the banking and financial sectors but in all sectors where C#
 is popular and a database is required for back-end data storage and
 management. These examples could be pushed out to analytical or
 performance-based sectors or markets inexperienced in kdb+ but
-requiring tools to help utilise the rapidly growing Big Data
+requiring tools to help utilize the rapidly growing Big Data
 environment.
 
 All examples of kdb+ were run using version 3.2 (2015.01.14). All
@@ -868,12 +874,14 @@ tests of C# were run using .NET version 4.0. The example applications
 were built with Visual Studio 2010. 
 
 The C# source code for this paper
-can be found on GitHub at <i class="fab fa-github"></i>
+can be found on GitHub at :fontawesome-brands-github:
 [kxcontrib/csharpgui](https://github.com/kxcontrib/csharpgui).
+
+[:fontawesome-solid-print: PDF](/download/wp/csharp-gui-a4.pdf)
 
 
 ## Author
 
-Michael Reynolds works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
+**Michael Reynolds** works as a kdb+ consultant for one of the largest investment banks in the world. As part of his daily job, Michael is responsible for maintaining kdb+ databases as well as a C# APIs and plug-ins.
 
 

@@ -10,7 +10,9 @@ keywords: console, debug, develop, display, kdb+, q, tool
 
 _Format and display at the console._
 
-Syntax: `show x`, `show[x]` 
+```syntax
+show x    show[x]
+```
 
 Formats `x` and writes it to the console; returns the identity function `(::)`.
 
@@ -23,7 +25,7 @@ q)a~(::)
 
 !!! tip "Display intermediate values"
 
-    <pre><code class="language-q">
+    ```q
     q)f:{a:x<5;sum a}
     q)f 2 3 5 7 3
     3
@@ -31,9 +33,11 @@ q)a~(::)
     q)f 2 3 5 7 3
     11001b
     3
-    </code></pre>
+    ```
 
 
-<i class="far fa-hand-point-right"></i> 
-[Display](display.md)  
-Basics: [Debugging](../basics/debug.md)
+:fontawesome-solid-book:
+[Display](display.md)
+<br>
+:fontawesome-solid-book-open:
+[Debugging](../basics/debug.md)

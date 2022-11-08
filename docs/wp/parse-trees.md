@@ -1,10 +1,16 @@
 ---
-title: Parse trees and functional forms – White Paper – code.kx.com
+title: Parse trees and functional forms | White Paper | kdb+ and q documentation
 description: How to understand parse trees and use functional forms in q queries; how to convert qSQL expressions to functional form.
-author: Peter Storeng and Stephen Taylor
+author: [Peter Storeng, Stephen Taylor]
 keywords: functional, kdb+, parse, parse tree, q, qSQL, query, SQL
 ---
+White paper
+{: #wp-brand}
+
 # Parse trees and functional forms
+
+by [Peter Storeng &amp; Stephen Taylor](#authors)
+{: .wp-author}
 
 
 
@@ -23,8 +29,8 @@ All tests were run using kdb+ version 3.2 (2015.01.14).
 
 Kdb+ is a database management system which ships with the general-purpose and database language q. Q is an embedded domain-specific language implemented in the k programming language, sometimes known as k4. The q interpreter can switch between q and k modes and evaluate expressions written in k as well as q.
 
-The k language is for Kx implementors. 
-It is not documented or supported for use outside Kx. 
+The k language is for KX implementors. 
+It is not documented or supported for use outside KX. 
 All the same functionality is available in the much more readable q language. However in certain cases, such as debugging, a basic understanding of some k syntax can be useful.
 
 The `q.k` file is part of the standard installation of q and loads into each q session on startup. It defines many of the q keywords in terms of k. To see how a q keyword is defined in terms of k we could check the `q.k` file or simply enter it into the q prompt:
@@ -98,7 +104,7 @@ where every item could itself be a parse tree. In this way we see that every act
 
 ### `eval` and `value`
 
-`eval` can be thought of as the dual to `parse`. The following holds for all valid q statements put into a string. (Recall that `value` executes the command inside a string.)
+`eval` can be thought of as the dual to `parse`. The following holds for all valid q statements (without side effects) put into a string. (Recall that `value` executes the command inside a string.)
 
 ```q
 //a tautology (for all valid q expressions str)
@@ -130,7 +136,7 @@ q)value(+;7;(+;2;1))
 ```q
 q)value(,;`a;`b)
 `a`b
-q)eval(,;`a;`b)          //no variable b defined
+q)eval(,;`a;`b)                 //no variable b defined
 'b
 q)eval(,;enlist `a;enlist `b)
 `a`b
@@ -283,7 +289,7 @@ tree. We know the first item of a parse tree is to be applied to the
 remaining items. Here `/` (the Over iterator) is applied to `+` to
 produce a new function which sums the items of a list.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 White paper: [Iterators](iterators/index.md)
 
 
@@ -305,7 +311,7 @@ Here
 -   `b` is a dictionary of group-bys
 -   `a` is a dictionary of aggregates
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§9.12 Functional forms of queries](/q4m3/9_Queries_q-sql/#912-functional-forms)
 
 The q interpreter parses the syntactic forms of `select`, `exec`, `update`
@@ -581,7 +587,7 @@ These instances are rare and a developer should be able to spot when they occur.
 
 Functional select also has ranks 5 and 6; i.e. fifth and sixth arguments.
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 _Q for Mortals_: [§9.12.1 Functional queries](/q4m3/9_Queries_q-sql/#9121-functional-select)
 
 We also cover these with the `buildQuery` function.
@@ -645,12 +651,43 @@ To further help those learning how to construct functional statements, and also 
 
 All tests were run using kdb+ version 3.2 (2015.01.14).
 
+:fontawesome-solid-print:
+[An earlier version of this paper](/download/wp/parse_trees_and_functional_forms.pdf)
+by Peter Storeng
+
 
 ## Authors
 
-Peter Storeng is a kdb+ developer who has worked as a consultant for some of the world’s largest financial institutions. He is currently based in London where he divides his time between maintaining a firm-wide risk system and implementing algorithmic trading strategies for a tier-one investment bank.
+**Peter Storeng** is a mathematician and software developer who has been using kdb+ since&nbsp;2012.
 
-Stephen Taylor is the Kx Librarian. He revised this paper in 2019 to use the revised terminology for q. 
+Other papers by Peter Storeng
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-solid-file-pdf: [Implementing Marked Nulls in PostgreSQL](https://project-archive.inf.ed.ac.uk/msc/20161877/msc_proj.pdf)
+</ul>
+
+&nbsp;
+{: style="clear: both"}
+
+
+![Stephen Taylor](../img/faces/stephentaylor.png)
+{: .small-face}
+
+**Stephen Taylor** FRSA is the KX Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
+&nbsp;
+[:fontawesome-solid-envelope:](mailto:stephen@kx.com?subject=White paper: Parse trees and functional forms) &nbsp;
+[:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
+[:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)
+
+Other papers by Stephen Taylor
+{: .publications}
+
+<ul markdown="1" class="publications">
+-   :fontawesome-regular-map: [Iterators](iterators/index.md)
+-   :fontawesome-solid-globe: [Pair programming with the users](http://archive.vector.org.uk/art10009900)
+-   :fontawesome-solid-globe: [Three principles of coding clarity](http://archive.vector.org.uk/art10009750)
+</ul>
 
 
 ## Appendix

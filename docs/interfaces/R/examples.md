@@ -2,9 +2,8 @@
 title: Examples of using R from q
 description: Examples showing the use of the Fusion interfaces between R and q
 keywords: interface, kdb+, library, q, r
-hero: <i class="fab fa-superpowers"></i> Fusion for Kdb+
 ---
-# <i class="fab fa-r-project"></i> Examples using rkdb/embedR
+# :fontawesome-brands-r-project: Examples using rkdb/embedR
 
 
 The following examples make use of the Fusion interfaces between q/kdb+ and R and show their versatility.
@@ -19,10 +18,10 @@ The following q function extracts time-bucketed data:
 ```q
 timebucketedstocks:{[startdate; enddate; symbols; timebucket]
   / extract the time-bucketed data
-  data:select last price by date,sym,time:timebucket xbar date+time 
-    from trade 
-    where date within (startdate;enddate),sym in symbols;  
-  / calculate returns between prices in consecutive buckets 
+  data:select last price by date,sym,time:timebucket xbar date+time
+    from trade
+    where date within (startdate;enddate),sym in symbols;
+  / calculate returns between prices in consecutive buckets
   / and return the results unkeyed
   () xkey update return:1^price%prev price by sym from data }
 ```
@@ -61,7 +60,7 @@ To align the data we will use a pivot function defined in the reshape package.
 > library(reshape)
 # Pivot the data using the re-shape package
 > p <- cast(res, time~sym)
-# Using return as value column. 
+# Using return as value column.
 # Use the value argument to cast to override this choice
 > head(p)
                  time      GOOG       IBM      MSFT
@@ -97,11 +96,11 @@ We can see that
 
 -   the data extract to R takes 145 ms. Much of this time is taken up by q producing the dataset. There is minimal transport cost (as the processes are on the same host);
 
-    <pre><code class="language-q">
-    q)\t select time,sym,return 
+    ```q
+    q)\t select time,sym,return
       from timebucketedstocks[2014.01.09; 2014.01.15; \`GOOG\`IBM\`MSFT; 0D00:05]
     134
-    </code></pre>
+    ```
 
 -   the pivot takes approximately 36 ms
 -   the correlation time is negligible
@@ -124,16 +123,16 @@ Using return as value column. Use the value argument to cast to override this ch
   0.950   0.048   0.998
 ```
 
-We can see that the time to extract the data increases by ~90 ms.
+We can see that the time to extract the data increases by \~90 ms.
 The q query time increases by 4 ms, so the majority of the increase is due to shipping the larger dataset from q to R.
 
 ```q
-q)\t select time,sym,return 
+q)\t select time,sym,return
   from timebucketedstocks[2014.01.09; 2014.01.15; `GOOG`IBM`MSFT; 0D00:00:10]
 138
 ```
 
-The pivot time on the larger data set grows from 40 ms to ~1000 ms giving a total time to do the analysis of approximately 2300 ms. 
+The pivot time on the larger data set grows from 40 ms to \~1000 ms giving a total time to do the analysis of approximately 2300 ms.
 As the dataset grows, the time to pivot the data in R starts to dominate the overall time.
 
 
@@ -151,12 +150,12 @@ timebucketedpivot:{[startdate; enddate; symbols; timebucket]
   data:timebucketedstocks[startdate;enddate;symbols;timebucket];
   / Get the distinct list of column names (the instruments)
   colheaders:value asc exec distinct sym from data;
-  / Pivot the table, filling with 1 because if no value, 
+  / Pivot the table, filling with 1 because if no value,
   / the price has stayed the same and return the results unkeyed
   () xkey 1^exec colheaders#(sym!return) by time:time from data }
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 [Pivoting tables](../../kb/pivoting-tables.md)
 
 An example is:
@@ -237,7 +236,7 @@ This solution executes quickest and with the least network usage, as the resulta
 
 To demonstrate the power of q, an example using randomly-generated smart-meter data has been developed.
 This can be downloaded from
-<i class="fab fa-github"></i>
+:fontawesome-brands-github:
 [KxSystems/cookbook/tutorial](https://github.com/KxSystems/cookbook/tree/master/tutorial).
 By following the instructions in the README, an example database can be built.
 The default database contains information on 100,000 smart-meter customers from different sectors and regions over 61 days.
@@ -245,7 +244,7 @@ The default database contains 9.6M records per day, 586M rows in total.
 A set of example queries are provided, and a tutorial to step through the queries and test the performance of q.
 Users are encouraged to experiment with:
 
--   using slaves to boost performance
+-   using secondary processes to boost performance
 -   running queries with different parameters
 -   modifying or writing their own queries
 -   compression to reduce the size of on-disk data
@@ -299,5 +298,5 @@ q)Rget "date()"
 "Fri Feb  3 01:33:57 2012"
 ```
 
-<i class="far fa-hand-point-right"></i>
+:fontawesome-regular-hand-point-right:
 Knowledge Base: [Timezones and Daylight Saving Time](../../kb/timezones.md)
