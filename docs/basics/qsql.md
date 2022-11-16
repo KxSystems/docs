@@ -341,7 +341,7 @@ usb  | 815
 The column `stock` is a key in the result table.
 
 :fontawesome-solid-book-open:
-[Mathematics](../basics/math.md) for more aggregate functions
+[Mathematics](../basics/math.md) for more [aggregate functions](https://www.scaler.com/topics/sql/aggregate-function-in-sql/)
 
 
 ## Sorting
