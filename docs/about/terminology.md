@@ -46,7 +46,7 @@ The isomorphism between functions, lists and dictionaries is a foundational insi
 -   the indexing of arrays
 -   the syntax and semantics of iterators
 
-requires a portmanteau term for the valence of a function or the dimensions of an array. We follow the usage of J in denoting this as _rank_, despite the `rank` keyword having a quite different meaning.
+requires an umbrella term for the valence of a function or the dimensions of an array. We follow the usage of J in denoting this as _rank_, despite the `rank` keyword having a quite different meaning.
 
 
 ## Changes
