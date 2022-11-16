@@ -154,7 +154,7 @@ To detect when a connection is closed from the remote end, override the port clo
 
 ## Block, queue, flush
 
-To block until any message is received on handle `h`
+To block until any async message is received on handle `h`
 
 ```q
 r:h[] / store message in r
