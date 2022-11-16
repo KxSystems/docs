@@ -15,12 +15,6 @@ This site is generated with the [MkDocs](https://mkdocs.org/) static-site genera
 See [`install.md`](CONTRIBUTING/install.md) for how to compile the site. 
 
 
-Local copy
-----------
-
-If your Net connection is slow, you might prefer to download the site for local use from [code.kx.com/site.zip](http://code.kx.com/site.zip). 
-
-
 Not upwardly compatible
 -----------------------
 
