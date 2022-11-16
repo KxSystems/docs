@@ -79,6 +79,14 @@ If you wish to profile unrelated processes, you have a few options:
 
 -   run the profiling q as root
 
+!!! tip "Docker"
+
+    To avoid the limitation to direct child processes:
+
+    ```docker
+    docker run … --cap-add=SYS_PTRACE
+    ```
+
 
 ## Usage
 
