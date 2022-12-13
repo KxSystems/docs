@@ -35,7 +35,7 @@ q)"the brown duck drowned" ss "?rown"
 A list of alternatives is embraced by square brackets and consists of:
 
 ```txt
-[^] + [char|range]{1,} 
+[^] + [char|range]
 ```
 where
 
