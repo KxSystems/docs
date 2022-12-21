@@ -39,7 +39,7 @@ delimiter 0: t                          0:[delimiter;t]
 Where 
 
 -   `delimiter` is a char atom 
--   `t` is a table
+-   `t` is a table in which the columns are either vectors or lists of strings
 
 returns a list of character strings containing text representations of the rows of `t` separated by `delimiter`. 
 
@@ -90,6 +90,42 @@ foo
 qu"ux
 "fred"",barney"
 ```
+
+??? danger "Columns that are neither vectors nor lists of strings"
+
+    Prepare Text signals a type error if a column of its right argument is neither a vector nor a list of strings.
+
+    ```q
+    q)t:([]Actual:1.47 0.03 300;FiscalTag:("FY2022Q2";"FY2022Q2";enlist"FY2022H1"))
+
+    q)t
+    Actual FiscalTag
+    ------------------
+    1.47   "FY2022Q2"
+    0.03   "FY2022Q2"
+    300    ,"FY2022H1"
+    q)csv 0:t
+    'type
+      [0]  csv 0:t
+               ^
+    ```
+    
+    You cannot diagnose this condition with [`meta`](meta.md), which examines only the first row of its argument
+    
+    ```q
+    q)meta t
+    c        | t f a
+    ---------| -----
+    Actual   | f
+    FiscalTag| C
+    ```
+    
+    but `type each` is your friend.
+    
+    ```q
+    q)cols[t] where 1<(count distinct type each)each t cols t
+    ,`FiscalTag
+    ```
 
 :fontawesome-solid-street-view:
 _Q for Mortals_
