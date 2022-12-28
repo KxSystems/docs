@@ -57,6 +57,37 @@ q)h  /h is the socket (an OS file descriptor)
 3i
 ```
 
+## Message format
+
+Where `h` is the socket the message may be a string or parse tree.
+
+```q
+q)h "2+2"   /string
+4
+
+q)h (+;2;2) /parse tree
+4
+```
+
+Use the parse tree format to pass local functions and data to the receiver.
+
+```q
+q)h"f:{2+x}" /Set function f on receiver
+q)f:{4+x} /Set local function f
+
+q)h(`f;2) /Receiver definition of f called
+4
+
+q)h(f;2) /Local f passed to receiver for evaluation
+6
+
+q)v:10
+q)h(`f;v) /Passing variable as argument
+12
+
+q)h({x+y};2;3) /Extend the list to pass more variables
+5
+```
 
 ## Send messages
 
