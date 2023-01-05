@@ -786,6 +786,9 @@ value | effect
 1     | retain enumerations, allow serialization of timespan and timestamp. (Useful for passing data between threads).
 2     | unenumerate, allow serialization of timespan and timestamp
 3     | unenumerate, compress, allow serialization of timespan and timestamp
+4     | (reserved)
+5     | allow 1TB msgs, but no single vector may exceed 2 billion items
+6     | allow 1TB msgs, and individual vectors may exceed 2 billion items
 
 ```c
 d9(kObject);
