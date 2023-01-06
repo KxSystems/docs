@@ -2,17 +2,23 @@
 title: Installing kdb+ | Learn | kdb+ and q documentation
 description: How to install kdb+ on Linux, macOS, or Windows
 author: Stephen Taylor
-date: November 2020
+date: January 2023
 ---
 # :fontawesome-solid-power-off: Installing kdb+
 
 
-You can run kdb+ on Linux, macOS, or Windows.
+_You can run kdb+ on Linux, macOS, or Windows_
+
+!!! info "kdb+ Personal Edition"
+
+    If you have downloaded the **kdb+ Personal Edition** simply follow the installation instructions that came with it.
+
+    Installation instructions on this page are for reference and cover a variety of use cases.
 
 
 === "Non-commercial users"
 
-    You have the 64-bit On Demand Personal Edition interpreter, licensed for non-commercial use. 
+    You have the 64-bit kdb+ Personal Edition interpreter, licensed for non-commercial use. 
     (32-bit interpreters are licensed only for commercial use.)
     
     The interpreter is enabled by a `kc.lic` license-key file and requires an always-on Internet connection. 
@@ -58,7 +64,7 @@ Commercial versions of kdb+ are available to customers from [downloads.kx.com](h
 
 ??? info "Platforms and versions"
 
-    The names of the ZIPs denote the platform (`l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc.).
+    The names of the ZIPs denote the platform: `l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc.
 
     Numerical release versions of the form 3.5, or 4.0 are production code. Versions of kdb+ with a trailing `t` in the name such as `3.7t` are test versions and are neither intended nor supported for production use.
 
@@ -178,14 +184,7 @@ Confirm kdb+ is working: launch your first q session.
     q/l64/q
     ```
 
-=== ":fontawesome-brands-apple: macOS Mojave or earlier"
-
-    ```bash
-    cd
-    q/m64/q
-    ```
-
-=== ":fontawesome-brands-apple: macOS Catalina + (10.15)"
+=== ":fontawesome-brands-apple: macOS"
 
     ```bash
     cd
@@ -200,10 +199,10 @@ Confirm kdb+ is working: launch your first q session.
     c:\q\w64\q
     ```
 
-??? warning ":fontawesome-brands-apple: Authorizing macOS Catalina to run kdb+"
+??? warning ":fontawesome-brands-apple: Authorizing macOS to run kdb+"
 
     MacOS Catalina (10.15) introduced tighter security.
-    At this point it may display a warning that it does not recognize the software.
+    It may display a warning that it does not recognize the software.
 
     ![Catalina warning](../img/catalina-warning.png)
 
@@ -264,7 +263,7 @@ The `QLIC` environment variable tells kdb+ where to find [a license key file](li
 
 === ":fontawesome-brands-apple: macOS"
 
-    1.  Open `~/.zshrc` in a text editor, append the following lines, and save the file. (In macOS Mojave and earlier the profile is `~/.bash_profile`.)
+    1.  Open `~/.zshrc` in a text editor, append the following lines, and save the file. 
     1.   `alias q='QHOME=~/q rlwrap -r ~/q/m64/q'`
     1.   In the command shell, use the revised profile: `source ~/.zshrc`
 
