@@ -48,6 +48,9 @@ q)\p
 Optional parameter `rp` enables the use of the `SO_REUSEPORT` socket option, which is available in newer versions of many operating systems, including Linux (kernel version 3.9 and later). This socket option allows multiple sockets (kdb+ processes) to listen on the same IP address and port combination. The kernel then load-balances incoming connections across the processes. (Since V3.5.)
 
 :fontawesome-solid-graduation-cap:
+[Socket sharding with kdb+ and Linux](../wp/socket-sharding/index.md)
+
+:fontawesome-solid-graduation-cap:
 [A load-balancing kdb+ server](../kb/load-balancing.md)
 
 
@@ -68,7 +71,7 @@ q)\p 0        / turn off listening port
 
 ## Multi-threaded port
 
-A negative port sets a [multi-threaded](../basics/peach.md) port and if used it must be the initial and only mode of operation, i.e. do not dynamically switch between positive port and negative port.
+A negative port sets a [multi-threaded](../kb/multithreaded-input.md) port and if used it must be the initial and only mode of operation, i.e. do not dynamically switch between positive port and negative port.
 
 
 ## Unix domain socket
