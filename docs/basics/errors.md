@@ -47,6 +47,10 @@ bad lambda
 
     lambda from an older version of kdb+ over IPC that no longer parses
 
+badmsg
+
+:   Failure in [IPC validator](../releases/ChangesIn2.7/#ipc-message-validator)
+
 badtail
 
 :   Incomplete transaction at end of file, get good (count;length) with ``-11!(-2;`:file)``
