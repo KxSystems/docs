@@ -458,7 +458,11 @@ Where
 - `t` is `(types;widths)`
 - `g` is a unary post-processing function
 
-loops `M&1000000` rows at a time.
+loops `.Q.M&1000000` rows at a time.
+
+:fontawesome-solid-hand-point-right:
+[`.Q.M`](#qm-chunk-size)
+
 For example, loading TAQ DVD:
 
 ```q
@@ -1220,16 +1224,15 @@ it recursively as in [`load`](load.md), but into the default namespace.
 (Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
 
 
-## `.Q.M` (long infinity)
+## `.Q.M` (chunk size)
 
-```syntax
-.Q.M
-```
+_Chunk size for load-process-save_
 
-Returns long integer infinity.
+As used by [`.Q.dsftg`](#qdsftg-load-process-save).
+
 
 ```q
-q)0Wj~.Q.M
+q)0W~.Q.M  / defaults to long infinity
 1b
 ```
 
