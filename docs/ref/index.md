@@ -257,7 +257,7 @@ milliseconds: time mod 1000
 
 ## Namespaces
 
-### `.h`
+### [`.h`](doth.md)
 
 Markup output for HTTP
 
@@ -290,7 +290,7 @@ Markup output for HTTP
 </div>
 
 
-### `.j`
+### [`.j`](dotj.md)
 
 De/serialize as JSON
 
@@ -306,7 +306,7 @@ De/serialize as JSON
 [Memory backed by files](dotm.md)
 
 
-### `.Q`
+### [`.Q`](dotq.md)
 
 Utilities: general, environment, IPC, datatype, database, partitioned database state, segmented database state, file I/O
 
@@ -363,7 +363,7 @@ IPC                                [vp     missing partitions](dotq.md#qvp-missi
 </div>
 
 
-### `.z`
+### [`.z`](dotz.md)
 
 System variables, callbacks
 

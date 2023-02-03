@@ -10,51 +10,51 @@ _Tools_
 
 <div markdown="1" class="typewriter">
 **General**                           **Datatype**
- [addmonths](#qaddmonths)                         [btoa        b64 encode](#qbtoa-b64-encode)
- [bt       backtrace](#qbt-backtrace)                [j10         encode binhex](#qj10-encode-binhex)
- [dd       join symbols](#qdd-join-symbols)             [j12         encode base 36](#qj12-encode-base-36)
- [def      parse options](#qdef-parse-options)            [M           long infinity](#qm-long-infinity)
- [f        format](#qf-format)                   [ty          type](#qty-type)
- [fc       parallel on cut](#qfc-parallel-on-cut)          [x10         decode binhex](#qx10-decode-binhex)
- [ff       append columns](#qff-append-columns)           [x12         decode base 36](#qx12-decode-base-36)
- [fmt      format](#qfmt-format)
- [ft       apply simple](#qft-apply-simple)            **Database**
- [fu       apply unique](#qfu-apply-unique)             [chk         fill HDB](#qchk-fill-hdb)
- [gc       garbage collect](#qgc-garbage-collect)          [dpft dpfts  save table](#qdpft-save-table)
- [gz       GZip](#qgz-gzip)                     [dpt  dpts   save table unsorted](#qdpt-save-table-unsorted)
- [id       sanitize](#qid-sanitize)                 [dsftg       load process save](#qdsftg-load-process-save)
- [qt       is table](#qqt-is-table)                 [en          enumerate varchar cols](#qen-enumerate-varchar-cols)
- [res      keywords](#qres-keywords)                 [ens         enumerate against domain](#qens-enumerate-against-domain)
- [s        plain text](#qs-plain-text)               [fk          foreign key](#qfk-foreign-key)
- [s1       string representation](#qs1-string-representation)    [hdpf        save tables](#qhdpf-save-tables)
- [sbt      string backtrace](#qsbt-string-backtrace)         [qt          is table](#qqt-is-table)
- [sha1     SHA-1 encode](#qsha1-sha-1-encode)             [qp          is partitioned](#qqp-is-partitioned)
- [trp      extend trap](#qtrp-extend-trap)
- [ts       time and space](#qts-time-and-space)          **Partitioned database state**
- [u        date based](#qu-date-based)               [bv          build vp](#qbv-build-vp)
- [V        table to dict](#qv-table-to-dict)            [cn          count partitioned table](#qcn-count-partitioned-table)
- [v        value](#qv-value)                    [D           partitions](#qd-partitions)
- [view     subview](#qview-subview)                  [ind         partitioned index](#qind-partitioned-index)
-                                   [MAP         maps partitions](#qmap-maps-partitions)
-**Constants**                          [par         locate partition](#qpar-locate-partition)
- [A a an   alphabets](#qa-upper-case-alphabet)                [PD          partition locations](#qpd-partition-locations)
- [b6       bicameral alphanums](#qb6-bicameral-alphanums)      [pd          modified partition locns](#qpd-modified-partition-locations)
- [n nA     nums & alphanums](#qn-nums)         [pf          partition field](#qpf-partition-field)
-                                   [pn          partition counts](#qpn-partition-counts)
-**Environment**                        [qp          is partitioned](#qqp-is-partitioned)
- [K k      version](#qk-version-date)                  [pt          partitioned tables](#qpt-partitioned-tables)
- [opt      command parameters](#qopt-command-parameters)       [PV          partition values](#qpv-partition-values)
- [w        memory stats](#qw-memory-stats)             [pv          modified partition values](#qpv-modified-partition-values)
- [x        non-command parameters](#qx-non-command-parameters)   [vp          missing partitions](#qvp-missing-partitions)
+ [addmonths](#addmonths)                         [btoa        b64 encode](#btoa-b64-encode)
+ [bt       backtrace](#bt-backtrace)                [j10         encode binhex](#j10-encode-binhex)
+ [dd       join symbols](#dd-join-symbols)             [j12         encode base 36](#j12-encode-base-36)
+ [def      parse options](#def-parse-options)            [ty          type](#ty-type)
+ [f        format](#f-format)                   [x10         decode binhex](#x10-decode-binhex)
+ [fc       parallel on cut](#fc-parallel-on-cut)          [x12         decode base 36](#x12-decode-base-36)
+ [ff       append columns](#ff-append-columns)
+ [fmt      format](#fmt-format)                  **Database**
+ [ft       apply simple](#ft-apply-simple)             [chk         fill HDB](#chk-fill-hdb)
+ [fu       apply unique](#fu-apply-unique)             [dpft dpfts  save table](#dpft-save-table)
+ [gc       garbage collect](#gc-garbage-collect)          [dpt  dpts   save table unsorted](#dpt-save-table-unsorted)
+ [gz       GZip](#gz-gzip)                     [dsftg       load process save](#dsftg-load-process-save)
+ [id       sanitize](#id-sanitize)                 [en          enumerate varchar cols](#en-enumerate-varchar-cols)
+ [qt       is table](#qt-is-table)                 [ens         enumerate against domain](#ens-enumerate-against-domain)
+ [res      keywords](#res-keywords)                 [fk          foreign key](#fk-foreign-key)
+ [s        plain text](#s-plain-text)               [hdpf        save tables](#hdpf-save-tables)
+ [s1       string representation](#s1-string-representation)    [M           chunk size](#m-chunk-size)
+ [sbt      string backtrace](#sbt-string-backtrace)         [qp          is partitioned](#qp-is-partitioned)
+ [sha1     SHA-1 encode](#sha1-sha-1-encode)             [qt          is table](#qt-is-table)
+ [trp      extend trap](#trp-extend-trap)
+ [ts       time and space](#ts-time-and-space)          **Partitioned database state**
+ [u        date based](#u-date-based)               [bv          build vp](#bv-build-vp)
+ [V        table to dict](#v-table-to-dict)            [cn          count partitioned table](#cn-count-partitioned-table)
+ [v        value](#v-value)                    [D           partitions](#d-partitions)
+ [view     subview](#view-subview)                  [ind         partitioned index](#ind-partitioned-index)
+                                   [MAP         maps partitions](#map-maps-partitions)
+**Constants**                          [par         locate partition](#par-locate-partition)
+ [A a an   alphabets](#a-upper-case-alphabet)                [PD          partition locations](#pd-partition-locations)
+ [b6       bicameral alphanums](#b6-bicameral-alphanums)      [pd          modified partition locns](#pd-modified-partition-locations)
+ [n nA     nums & alphanums](#n-nums)         [pf          partition field](#pf-partition-field)
+                                   [pn          partition counts](#pn-partition-counts)
+**Environment**                        [qp          is partitioned](#qp-is-partitioned)
+ [K k      version](#k-version-date)                  [pt          partitioned tables](#pt-partitioned-tables)
+ [opt      command parameters](#opt-command-parameters)       [PV          partition values](#pv-partition-values)
+ [w        memory stats](#w-memory-stats)             [pv          modified partition values](#pv-modified-partition-values)
+ [x        non-command parameters](#x-non-command-parameters)   [vp          missing partitions](#vp-missing-partitions)
 
 **IPC**                               **Segmented database state**
- [addr     IP address](#qaddr-ip-address)               [D           partitions](#qd-partitions)
- [fps fpn  streaming algorithm](#qfpn-streaming-algorithm)      [P           segments](#qp-segments)
- [fs  fsn  streaming algorithm](#qfs-streaming-algorithm)      [u           date based](#qu-date-based)
- [hg       HTTP get](#qhg-http-get)
- [host     hostname](#qhost-hostname)                **File I/O**
- [hp       HTTP post](#qhp-http-post)                [Cf          create empty nested char file](#qcf-create-empty-nested-char-file)
- [l        load](#ql-load)                     [Xf          create file](#qxf-create-file)
+ [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
+ [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [u           date based](#u-date-based)
+ [fs  fsn  streaming algorithm](#fs-streaming-algorithm)
+ [hg       HTTP get](#hg-http-get)                **File I/O**
+ [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+ [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
+ [l        load](#l-load)
 
 </div>
 
@@ -68,9 +68,9 @@ Functions defined in `q.k` are loaded as part of the ‘bootstrap’ of kdb+. So
 In non-partitioned databases the partitioned database state variables remain undefined.
 
 
-## `.Q.A` (upper-case alphabet)
-## `.Q.a` (lower-case alphabet)
-## `.Q.an` (all alphanumerics)
+## `A` (upper-case alphabet)
+## `a` (lower-case alphabet)
+## `an` (all alphanumerics)
 
 ```syntax
 .Q.A       / upper-case alphabet
@@ -90,7 +90,7 @@ q).Q.an
 ```
 
 
-## `.Q.addmonths`
+## `addmonths`
 
 ```syntax
 .Q.addmonths[x;y]
@@ -117,7 +117,7 @@ q).Q.addmonths[2006.10.29;4]
 [How to handle temporal data in q](../kb/temporal-data.md)
 
 
-## `.Q.addr` (IP address)
+## `addr` (IP address)
 
 ```syntax
 .Q.addr x
@@ -137,13 +137,13 @@ q)256 vs .Q.addr`localhost
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.host`](#qhost-hostname)
+[`.Q.host`](#host-hostname)
 <br>
 :fontawesome-solid-book-open:
 [`vs`](vs.md)
 
 
-## `.Q.b6` (bicameral-alphanums)
+## `b6` (bicameral-alphanums)
 
 ```syntax
 .Q.b6
@@ -156,10 +156,10 @@ q).Q.b6
 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 ```
 
-Used for [binhex](#qj10-encode-binhex) encoding and decoding.
+Used for [binhex](#j10-encode-binhex) encoding and decoding.
 
 
-## `.Q.bt` (backtrace)
+## `bt` (backtrace)
 
 ```syntax
 .Q.bt[]
@@ -194,7 +194,7 @@ q)).Q.bt[]
 The debugger itself occupies a stack frame, but its source is hidden. (Since V3.5 2017.03.15.)
 
 
-## `.Q.btoa` (b64 encode)
+## `btoa` (b64 encode)
 
 ```syntax
 .Q.btoa x
@@ -208,7 +208,7 @@ q).Q.btoa"Hello World!"
 Since V3.6 2018.05.18.
 
 
-## `.Q.bv` (build vp)
+## `bv` (build vp)
 
 
 ```syntax
@@ -243,7 +243,7 @@ q)@[get;"select from tt";-2@]; / no error
 ```
 
 
-## `.Q.Cf` (create empty nested char file)
+## `Cf` (create empty nested char file)
 
 ```syntax
 .Q.Cf x
@@ -252,7 +252,7 @@ q)@[get;"select from tt";-2@]; / no error
 A projection of `.Q.Xf`: i.e. ``.Q.Xf[`char;]``
 
 
-## `.Q.chk` (fill HDB)
+## `chk` (fill HDB)
 
 ```syntax
 .Q.chk x
@@ -283,7 +283,7 @@ _Q for Mortals_
 [§14.5.2 `.Q.chk`](/q4m3/14_Introduction_to_Kdb%2B/#1457-qchk)
 
 
-## `.Q.cn` (count partitioned table)
+## `cn` (count partitioned table)
 
 ```syntax
 .Q.cn x
@@ -292,7 +292,7 @@ _Q for Mortals_
 Where `x` is a partitioned table, passed by value, returns its count. Populates `.Q.pn` cache.
 
 
-## `.Q.D` (partitions)
+## `D` (partitions)
 
 ```syntax
 .Q.D
@@ -318,7 +318,7 @@ q).Q.P!.Q.D
 ```
 
 
-## `.Q.dd` (join symbols)
+## `dd` (join symbols)
 
 ```syntax
 .Q.dd[x;y]
@@ -341,7 +341,7 @@ IBM  N  IBM.N
 ```
 
 
-## `.Q.def` (parse options)
+## `def` (parse options)
 
 _Default values for command-line arguments_
 
@@ -349,16 +349,16 @@ _Default values for command-line arguments_
 .Q.def[x;y]
 ```
 
-Provides defaults and types for command-line arguments parsed with [``.Q.opt``](#qopt-command-parameters).
+Provides defaults and types for command-line arguments parsed with [``.Q.opt``](#opt-command-parameters).
 
 :fontawesome-solid-book:
 [`.z.x`](dotz.md#zx-argv)
 
 
-## `.Q.dpft` (save table)
-## `.Q.dpfts` (save table with symtable)
-## `.Q.dpt` (save table unsorted)
-## `.Q.dpts` (save table unsorted with symtable)
+## `dpft` (save table)
+## `dpfts` (save table with symtable)
+## `dpt` (save table unsorted)
+## `dpts` (save table unsorted with symtable)
 
 
 ```syntax
@@ -444,7 +444,7 @@ q)mysym
 ```
 
 
-## `.Q.dsftg` (load process save)
+## `dsftg` (load process save)
 
 ```syntax
 .Q.dsftg[d;s;f;t;g]
@@ -461,7 +461,7 @@ Where
 loops `.Q.M&1000000` rows at a time.
 
 :fontawesome-solid-hand-point-right:
-[`.Q.M`](#qm-chunk-size)
+[`.Q.M`](#m-chunk-size)
 
 For example, loading TAQ DVD:
 
@@ -475,13 +475,13 @@ q).Q.dsftg[d;s;f;t;g]
 ```
 
 <!--
-## `.Q.dtps`
+## `dtps`
 
 ==FIXME==
  -->
 
-## `.Q.en` (enumerate varchar cols)
-## `.Q.ens` (enumerate against domain)
+## `en` (enumerate varchar cols)
+## `ens` (enumerate against domain)
 
 ```syntax
 .Q.en[dir;table]
@@ -537,7 +537,7 @@ _Q for Mortals_
 
 
 
-## `.Q.f` (format)
+## `f` (format)
 
 ```syntax
 .Q.f[x;y]
@@ -572,7 +572,7 @@ q)10 xlog 0Wj-1
 ```
 
 
-## `.Q.fc` (parallel on cut)
+## `fc` (parallel on cut)
 
 ```syntax
 .Q.fc[x;y]
@@ -603,7 +603,7 @@ q)\t f peach vec
 ```
 
 
-## `.Q.ff` (append columns)
+## `ff` (append columns)
 
 ```syntax
 .Q.ff[x;y]
@@ -650,7 +650,7 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 
 
 
-## `.Q.fk` (foreign key)
+## `fk` (foreign key)
 
 ```syntax
 .Q.fk x
@@ -659,7 +659,7 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.(Since V2.4t)
 
 
-## `.Q.fmt` (format)
+## `fmt` (format)
 
 ```syntax
 .q.fmt[x;y;z]
@@ -714,8 +714,8 @@ q)fmt[9] each 34.4 343434.358
 ```
 
 
-## `.Q.fpn` (streaming algorithm)
-## `.Q.fps` (streaming algorithm)
+## `fpn` (streaming algorithm)
+## `fps` (streaming algorithm)
 
 _`.Q.fs` for pipes_
 
@@ -734,8 +734,8 @@ Reads `z`-sized lumps of complete `"\n"` delimited records from a pipe and appli
 !!! tip "`.Q.fps` is a projection of `.Q.fpn` with the chunk size set to 131000 bytes."
 
 
-## `.Q.fs` (streaming algorithm)
-## `.Q.fsn` (streaming algorithm)
+## `fs` (streaming algorithm)
+## `fsn` (streaming algorithm)
 
 ```syntax
 .Q.fs[x;y]
@@ -781,7 +781,7 @@ q).Q.fs[{0N!("SSSSSSID";",")0:x}]`:potamus.csv
 [Loading from large files](../kb/loading-from-large-files.md)
 
 
-## `.Q.ft` (apply simple)
+## `ft` (apply simple)
 
 ```syntax
 .Q.ft[x;y]
@@ -831,7 +831,7 @@ s4| clark 20     london
 ```
 
 
-## `.Q.fu` (apply unique)
+## `fu` (apply unique)
 
 ```syntax
 .Q.fu[x;y]
@@ -861,7 +861,7 @@ q)r1~r2
     To explore this, study `.Q.fu[avg;] (4 3#12?100)10?4`.
 
 
-## `.Q.gc` (garbage collect)
+## `gc` (garbage collect)
 
 ```syntax
 .Q.gc[]
@@ -951,7 +951,7 @@ symw| 24964
 So if you have many nested data, e.g. columns of char vectors, or much grouping, you may be fragmenting memory quite heavily.
 
 
-## `.Q.gz` (GZip)
+## `gz` (GZip)
 
 ```syntax
 .Q.gz[::]           / zlib loaded?
@@ -979,7 +979,7 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 ```
 
 
-## `.Q.hdpf` (save tables)
+## `hdpf` (save tables)
 
 ```syntax
 .Q.hdpf[historicalport;directory;partition;`p#field]
@@ -988,7 +988,7 @@ q).Q.gz{0N!count x;x}[.Q.gz(9;10000#"helloworld")]
 Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message to HDB.
 
 
-## `.Q.hg` (HTTP get)
+## `hg` (HTTP get)
 
 ```syntax
 .Q.hg x
@@ -1023,7 +1023,7 @@ N.B. HTTPS is not supported across proxies which require `CONNECT`.
 
 
 <!--
-## `.Q.hmb` (FIXME)
+## `hmb` (FIXME)
 
 Since V3.6 uses built-in btoa for Basic Authentication, e.g.
 ```q
@@ -1031,7 +1031,7 @@ Since V3.6 uses built-in btoa for Basic Authentication, e.g.
 ```
 
  -->
-## `.Q.host` (hostname)
+## `host` (hostname)
 
 ```syntax
 .Q.host x
@@ -1054,13 +1054,13 @@ q).Q.addr `netbox.com
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.addr`](#qaddr-ip-address)
+[`.Q.addr`](#addr-ip-address)
 <br>
 :fontawesome-solid-book:
 [Tok](tok.md)
 
 
-## `.Q.hp` (HTTP post)
+## `hp` (HTTP post)
 
 ```syntax
 .Q.hp[x;y;z]
@@ -1081,7 +1081,7 @@ q).Q.hp["http://google.com";.h.ty`json]"my question"
 ```
 
 
-## `.Q.id` (sanitize)
+## `id` (sanitize)
 
 ```syntax
 .Q.id x
@@ -1108,7 +1108,7 @@ Where `x` is
     ```
 
 
-## `.Q.ind` (partitioned index)
+## `ind` (partitioned index)
 
 ```syntax
 .Q.ind[x;y]
@@ -1155,10 +1155,10 @@ q)(select from trade where date=2010.01.07)~.Q.ind[trade;(exec first sum x from 
     ````
 
 
-## `.Q.j10` (encode binhex)
-## `.Q.x10` (decode binhex)
-## `.Q.j12` (encode base-36)
-## `.Q.x12` (decode base-36)
+## `j10` (encode binhex)
+## `x10` (decode binhex)
+## `j12` (encode base-36)
+## `x12` (decode base-36)
 
 ```syntax
 .Q.j10 s     .Q.j12 s
@@ -1193,8 +1193,8 @@ q).Q.j12 .Q.x12 12345
 
 
 
-## `.Q.K` (version date)
-## `.Q.k` (version)
+## `K` (version date)
+## `k` (version)
 
 ```syntax
 .Q.K      / version date
@@ -1212,7 +1212,7 @@ q).Q.k
 ```
 
 
-## `.Q.l` (load)
+## `l` (load)
 
 ```syntax
 .Q.l x
@@ -1224,11 +1224,13 @@ it recursively as in [`load`](load.md), but into the default namespace.
 (Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
 
 
-## `.Q.M` (chunk size)
+## `M` (chunk size)
 
-_Chunk size for load-process-save_
+```syntax
+.Q.M
+```
 
-As used by [`.Q.dsftg`](#qdsftg-load-process-save).
+Chunk size for [`dsftg`](#dsftg-load-process-save) (load-process-save).
 
 
 ```q
@@ -1237,7 +1239,7 @@ q)0W~.Q.M  / defaults to long infinity
 ```
 
 
-## `.Q.MAP` (maps partitions)
+## `MAP` (maps partitions)
 
 ```syntax
 .Q.MAP[]
@@ -1267,8 +1269,8 @@ NOT recommended for use with compressed files, as the decompressed maps will be 
     For Linux see `vm.max_map_count`.
 
 
-## `.Q.n` (nums)
-## `.Q.nA` (alphanums)
+## `n` (nums)
+## `nA` (alphanums)
 
 ```syntax
 .Q.n
@@ -1284,10 +1286,10 @@ q).Q.nA
 "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ```
 
-`.Q.nA` is used for [base-36](#qj12-encode-base-36) encoding and decoding.
+`.Q.nA` is used for [base-36](#j12-encode-base-36) encoding and decoding.
 
 
-## `.Q.opt` (command parameters)
+## `opt` (command parameters)
 
 ```syntax
 .Q.opt .z.x
@@ -1299,10 +1301,10 @@ Returns a dictionary, so you can easily see if a key was defined (flag set or no
 [`.z.x`](dotz.md#zx-argv)
 
 
-## `.Q.P` (segments)
+## `P` (segments)
 
 ```syntax
-Q.P
+.Q.P
 ```
 
 In segmented DBs, returns a list of the segments (i.e. the contents of `par.txt`).
@@ -1313,7 +1315,7 @@ q).Q.P
 ```
 
 
-## `.Q.par` (locate partition)
+## `par` (locate partition)
 
 ```syntax
 .Q.par[dir;part;table]
@@ -1339,7 +1341,7 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 ```
 
 
-## `.Q.PD` (partition locations)
+## `PD` (partition locations)
 
 ```syntax
 .Q.PD
@@ -1365,7 +1367,7 @@ q).Q.PV!.Q.PD
 ```
 
 
-## `.Q.pd` (modified partition locations)
+## `pd` (modified partition locations)
 
 ```syntax
 .Q.pd
@@ -1374,7 +1376,7 @@ q).Q.PV!.Q.PD
 In partitioned DBs, `.Q.PD` as modified by `.Q.view`.
 
 
-## `.Q.pf` (partition field)
+## `pf` (partition field)
 
 ```syntax
 .Q.pf
@@ -1384,7 +1386,7 @@ In partitioned DBs, the partition field.
 Possible values are `` `date`month`year`int``.
 
 
-## `.Q.pn` (partition counts)
+## `pn` (partition counts)
 
 ```syntax
 .Q.pn
@@ -1433,7 +1435,7 @@ q).Q.pv!flip .Q.pn
 [Table counts](../kb/partition.md#table-counts)
 
 
-## `.Q.prf0` (code profiler)
+## `prf0` (code profiler)
 
 ```syntax
 .Q.prf0 pid
@@ -1457,7 +1459,7 @@ This process must be started from the same binary as the one running `.Q.prf0`, 
 
 
 
-## `.Q.pt` (partitioned tables)
+## `pt` (partitioned tables)
 
 ```syntax
 .Q.pt
@@ -1466,7 +1468,7 @@ This process must be started from the same binary as the one running `.Q.prf0`, 
 Returns a list of partitioned tables.
 
 
-## `.Q.pv` (modified partition values)
+## `pv` (modified partition values)
 
 ```syntax
 .Q.pv
@@ -1481,7 +1483,7 @@ _Q for Mortals_
 [§14.5.3 `.Q.pv`](/q4m3/14_Introduction_to_Kdb%2B/#1453-qpv)
 
 
-## `.Q.PV` (partition values)
+## `PV` (partition values)
 
 ```syntax
 .Q.PV
@@ -1505,7 +1507,7 @@ q).Q.PV
 ```
 
 
-## `.Q.qp` (is partitioned)
+## `qp` (is partitioned)
 
 ```syntax
 .Q.qp x
@@ -1533,7 +1535,7 @@ q).Q.qp C
 ```
 
 
-## `.Q.qt` (is table)
+## `qt` (is table)
 
 ```syntax
 .Q.qt x
@@ -1542,7 +1544,7 @@ q).Q.qp C
 Where `x` is a table, returns `1b`, else `0b`.
 
 
-## `.Q.res` (keywords)
+## `res` (keywords)
 
 ```syntax
 .Q.res
@@ -1556,10 +1558,10 @@ q).Q.res,key`.q
 ```
 
 :fontawesome-regular-hand-point-right:
-[`.Q.id`](#qid-sanitize)
+[`.Q.id`](#id-sanitize)
 
 
-## `.Q.s` (plain text)
+## `s` (plain text)
 
 ```syntax
 .Q.s x
@@ -1575,7 +1577,7 @@ q).Q.s ([h:1 2 3] m: 4 5 6)
 Occasionally useful for undoing _Studio for kdb+_ tabular formatting.
 
 
-## `.Q.s1` (string representation)
+## `s1` (string representation)
 
 ```syntax
 .Q.s1 x
@@ -1588,13 +1590,13 @@ Returns a string representation of `x`.
 [`string`](string.md)
 
 
-## `.Q.sbt` (string backtrace)
+## `sbt` (string backtrace)
 
 ```syntax
 .Q.sbt x
 ```
 
-Where `x` is a [backtrace object](#qtrp-extend-trap) returns it as a string formatted for display.
+Where `x` is a [backtrace object](#trp-extend-trap) returns it as a string formatted for display.
 
 Since V3.5 2017.03.15.
 
@@ -1602,7 +1604,7 @@ Since V3.5 2017.03.15.
 [Debugging](../basics/debug.md)
 
 
-## `.Q.sha1` (SHA-1 encode)
+## `sha1` (SHA-1 encode)
 
 ```syntax
 .Q.sha1 x
@@ -1618,7 +1620,7 @@ q).Q.fc"Hello World!"
 Since V3.6 2018.05.18.
 
 
-## `.Q.t` (type letters)
+## `t` (type letters)
 
 ```syntax
 .Q.t
@@ -1635,7 +1637,7 @@ q).Q.t?"j"  / longs have datatype 7
 
 
 
-## `.Q.trp` (extend trap)
+## `trp` (extend trap)
 
 ```syntax
 .Q.trp[f;x;g]
@@ -1705,7 +1707,7 @@ Since V3.5 2017.03.15.
 [Debugging](../basics/debug.md)
 
 
-## `.Q.ts` (time and space)
+## `ts` (time and space)
 
 _Apply, with time and space_
 
@@ -1733,7 +1735,7 @@ q).Q.ts[+;2 3]
 Since V3.6 2018.05.18.
 
 
-## `.Q.ty` (type)
+## `ty` (type)
 
 ```syntax
 .Q.ty x
@@ -1765,7 +1767,7 @@ q).Q.ty each t`a`b`c`d`e
 [`meta`](meta.md)
 
 
-## `.Q.u` (date based)
+## `u` (date based)
 
 ```syntax
 .Q.u
@@ -1775,7 +1777,7 @@ q).Q.ty each t`a`b`c`d`e
 -   In partitioned DBs, returns `1b`.
 
 
-## `.Q.V` (table to dict)
+## `V` (table to dict)
 
 ```syntax
 .Q.V x
@@ -1790,7 +1792,7 @@ Where `x` is
 [`meta`](meta.md)
 
 
-## `.Q.v` (value)
+## `v` (value)
 
 ```syntax
 .Q.v x
@@ -1803,7 +1805,7 @@ Where `x` is
 -   anything else, returns `x`
 
 
-## `.Q.view` (subview)
+## `view` (subview)
 
 ```syntax
 .Q.view x
@@ -1822,7 +1824,7 @@ _Q for Mortals_
 [§14.5.8 `Q.view`](/q4m3/14_Introduction_to_Kdb+/#1458-qview)
 
 
-## `.Q.vp` (missing partitions)
+## `vp` (missing partitions)
 
 ```syntax
 .Q.vp
@@ -1851,7 +1853,7 @@ q)@[get;"select from tt";-2@]; / no error
 ```
 
 
-## `.Q.w` (memory stats)
+## `w` (memory stats)
 
 ```syntax
 .Q.w[]
@@ -1878,7 +1880,7 @@ symw| 25436
 [System command `\w`](../basics/syscmds.md#w-workspace)
 
 
-## `.Q.Xf` (create file)
+## `Xf` (create file)
 
 ```syntax
 .Q.Xf[x;y]
@@ -1898,7 +1900,7 @@ q)type get`:emptyNestedCharVector
 ```
 
 
-## `.Q.x` (non-command parameters)
+## `x` (non-command parameters)
 
 ```syntax
 .Q.x
