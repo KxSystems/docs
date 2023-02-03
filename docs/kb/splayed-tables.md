@@ -114,7 +114,7 @@ q)`:tr/ set tr
 
 !!! important "Tables splayed across a directory must be fully enumerated and not keyed."
 
-The solution is to enumerate symbol columns before saving the table splayed. This is done with the function [`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols).
+The solution is to enumerate symbol columns before saving the table splayed. This is done with the function [`.Q.en`](../ref/dotq.md#en-enumerate-varchar-cols).
 
 ```q
 q).Q.en[`:dir] tr

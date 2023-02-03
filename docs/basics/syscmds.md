@@ -419,7 +419,7 @@ If [logging](../kb/logging.md) is enabled, the command [checkpoints](../kb/loggi
 
 :fontawesome-solid-book:
 [`load`](../ref/load.md),
-[`.Q.l`](../ref/dotq.md#ql-load) (load)
+[`.Q.l`](../ref/dotq.md#l-load) (load)
 <br>
 :fontawesome-solid-graduation-cap:
 [Logging](../kb/logging.md)
@@ -531,8 +531,8 @@ q)1%3
     ```
 
 :fontawesome-solid-book:
-[`.Q.f`](../ref/dotq.md#qf-format),
-[`.Q.fmt`](../ref/dotq.md#qfmt-format)
+[`.Q.f`](../ref/dotq.md#f-format),
+[`.Q.fmt`](../ref/dotq.md#fmt-format)
 <br>
 :fontawesome-solid-book-open:
 [Precision](precision.md),
@@ -815,7 +815,7 @@ q)\w 0
 577 25436
 ```
 
-The utility [`.Q.w`](../ref/dotq.md#qw-memory-stats) formats all this information.
+The utility [`.Q.w`](../ref/dotq.md#w-memory-stats) formats all this information.
 
 
 **Run-time increase**

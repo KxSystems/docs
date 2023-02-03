@@ -177,10 +177,10 @@ q)0b sv 8#1b
 [`vs`](vs.md#encode) encode
 <br>
 :fontawesome-solid-book:
-[`.Q.j10`](dotq.md#qj10-encode-binhex) (encode binhex), 
-[`.Q.x10`](dotq.md#qx10-decode-binhex) (decode binhex)
+[`.Q.j10`](dotq.md#j10-encode-binhex) (encode binhex), 
+[`.Q.x10`](dotq.md#x10-decode-binhex) (decode binhex)
 <br>
 :fontawesome-solid-book:
-[`.Q.j12`](dotq.md#qj12-encode-base64) (encode base64), 
-[`.Q.x12`](dotq.md#qx12-decode-base64) (decode base64)
+[`.Q.j12`](dotq.md#j12-encode-base64) (encode base64), 
+[`.Q.x12`](dotq.md#x12-decode-base64) (decode base64)
 

@@ -112,7 +112,7 @@ The dataset is from a fictional computer-monitoring application. A company owns 
 
 !!! tip "Limited memory"
 
-    If your computer has limited memory, it’s advisable to start q with the [`-g 1` command line flag](../basics/cmdline.md#-g-garbage-collection "garbage collection") to minimize memory use. You can also periodically invoke garbage collection with [`.Q.gc`](../ref/dotq.md#qgc-garbage-collect "garbage collect").
+    If your computer has limited memory, it’s advisable to start q with the [`-g 1` command line flag](../basics/cmdline.md#-g-garbage-collection "garbage collection") to minimize memory use. You can also periodically invoke garbage collection with [`.Q.gc`](../ref/dotq.md#gc-garbage-collect "garbage collect").
 
 
 ### Random data generation

@@ -69,7 +69,7 @@ The type is a short int:
 [Cast](../ref/cast.md),
 [Tok](../ref/tok.md),
 [`type`](../ref/type.md),
-[`.Q.ty`](../ref/dotq.md#qty-type) (type)
+[`.Q.ty`](../ref/dotq.md#ty-type) (type)
 <br>
 :fontawesome-solid-book-open:
 :fontawesome-solid-graduation-cap:
@@ -228,7 +228,7 @@ q)0w + 5
 ```
 
 :fontawesome-solid-book:
-[`.Q.M`](../ref/dotq.md#qm-long-infinity) (long infinity)
+[`.Q.M`](../ref/dotq.md#m-long-infinity) (long infinity)
 
 ??? detail "To infinity and beyond"
 

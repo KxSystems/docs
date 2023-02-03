@@ -425,7 +425,7 @@ Default is 0: no limit.
 [`\w` system command](syscmds.md#w-workspace) for detail
 <br>
 :fontawesome-solid-book-open:
-[`.Q.w`](../ref/dotq.md#qw-memory-stats)
+[`.Q.w`](../ref/dotq.md#w-memory-stats)
 
 !!! detail "Before V4.0 2020.03.17 this command set the limit for the heap per thread."
 

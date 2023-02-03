@@ -136,7 +136,7 @@ This would execute a query for each date in parallel. The multithreaded HDB with
 
 Each secondary thread has its own heap, a minimum of 64MB.
 
-Since V2.7 2011.09.21, [`.Q.gc[]`](../ref/dotq.md#qgc-garbage-collect) in the main thread collects garbage in the secondary threads too.
+Since V2.7 2011.09.21, [`.Q.gc[]`](../ref/dotq.md#gc-garbage-collect) in the main thread collects garbage in the secondary threads too.
 
 Automatic garbage collection within each thread (triggered by a wsfull, or hitting the artificial heap limit as specified with [`-w`](cmdline.md#-w-workspace) on the command line) is executed only for that particular thread, not across all threads.
 
@@ -149,7 +149,7 @@ Since V3.1, `peach` can use multiple processes instead of threads, configured th
 
 Unlike multiple threads, the distribution of the workload is not precalculated, and is distributed to the secondary processes as soon as they complete their allocated items. All data required by the peached function must either already exist on all secondary processes, or be passed as an argument. Argument sizes should be minimized because of IPC costs. 
 
-The motivating use case for this mode is multiprocess HDBs, combined with non-compressed data and [`.Q.MAP[]`](../ref/dotq.md#qmap-maps-partitions).
+The motivating use case for this mode is multiprocess HDBs, combined with non-compressed data and [`.Q.MAP[]`](../ref/dotq.md#map-maps-partitions).
 
 Secondary processes must be started explicitly and [`.z.pd`](../ref/dotz.md#zpd-peach-handles) set to a vector of their connection handles, or a function that returns it.
 
@@ -163,7 +163,7 @@ q)handles:`u#`int$();
 
 ----
 :fontawesome-solid-book: 
-[`.Q.fc`](../ref/dotq.md#qfc-parallel-on-cut) (parallel on cut)
+[`.Q.fc`](../ref/dotq.md#fc-parallel-on-cut) (parallel on cut)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

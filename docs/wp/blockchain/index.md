@@ -347,7 +347,7 @@ complex requests.
 Instead, with the [qbitcoind](https://github.com/jlucid/qbitcoind)
 library, we can communicate directly with the node and wallet software
 inside a q session by interfacing with the JSON-RPC server using
-[`.Q.hp`](../../ref/dotq.md#qhp-http-post) to generate valid
+[`.Q.hp`](../../ref/dotq.md#hp-http-post) to generate valid
 HTTP POST requests. 
 See the [install instructions](https://github.com/jlucid/qbitcoind/blob/master/README.md).
 
@@ -698,7 +698,7 @@ White paper: [Intraday Writedown Solutions](../intraday-writedown/index.md)
 #### Garbage collection
 
 As part of the download process, the
-[`.Q.gc`](../../ref/dotq.md#qgc-garbage-collect)
+[`.Q.gc`](../../ref/dotq.md#gc-garbage-collect)
 function is called periodically to return unreferenced memory to the
 heap.
 
@@ -709,7 +709,7 @@ Even after executing `.Q.gc` at the end of each table write-down
 event, it was noticed that there still persisted a build-up of heap
 memory over time. This was caused by the complex columns `scriptSig` and
 `scriptPubKey` which were nested tables, causing the memory to become
-fragmented and difficult to [release back to the OS](../../ref/dotq.md#qgc-garbage-collect).
+fragmented and difficult to [release back to the OS](../../ref/dotq.md#gc-garbage-collect).
 A simple workaround for this was to serialize the values using
 [`-8!`](../../basics/internal.md) before inserting into the
 tables.

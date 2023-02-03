@@ -70,7 +70,7 @@ q)keys trade         / sym is now primary key of trade
 [Enkey, Unkey](enkey.md)
 <br>
 :fontawesome-solid-book:
-[`.Q.ff`](dotq.md#qff-append-columns) (append columns)
+[`.Q.ff`](dotq.md#ff-append-columns) (append columns)
 <br>
 :fontawesome-solid-book-open:
 [Dictionaries](../basics/dictsandtables.md),

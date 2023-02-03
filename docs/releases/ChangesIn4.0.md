@@ -127,7 +127,7 @@ which allows a timeout to be specified.
 
 There are various Debugger improvements:
 
-The [`.Q.bt`](../ref/dotq.md#qbt-backtrace) display highlights the current frame with `>>`.
+The [`.Q.bt`](../ref/dotq.md#bt-backtrace) display highlights the current frame with `>>`.
 
 ```q
 q)).Q.bt`
@@ -163,7 +163,7 @@ View calculations and `\` system commands, including `\l`, correspond to individ
          ^
 ```
 
-Errors thrown by [`parse`](../ref/parse.md) show up in [`.Q.trp`](../ref/dotq.md#qtrp-extend-trap) with location information.
+Errors thrown by [`parse`](../ref/parse.md) show up in [`.Q.trp`](../ref/dotq.md#trp-extend-trap) with location information.
 
 ```q
 q).Q.trp[parse;"2+2;+2";{1@.Q.sbt 2#y}];
@@ -192,7 +192,7 @@ q){a::1;a:1}
 
 -   **Stdout and stderr** may now be redirected to the same file, sharing the same file table entry underneath. This mimics the redirection of stdout and stderr at a Unix shell: `cmd > log.txt 2>&1`.
 
--   Both HTTP client and server now support **gzip compression** via `"Content-Encoding: gzip"` for responses to `form?...`-style requests. The response payload must be >2000 chars and the client must indicate support via `"Accept-Encoding: gzip"` HTTP header, as is automatically done in [`.Q.hg`](../ref/dotq.md#qhg-http-get) and [`.Q.hp`](../ref/dotq.md#qhp-http-post).
+-   Both HTTP client and server now support **gzip compression** via `"Content-Encoding: gzip"` for responses to `form?...`-style requests. The response payload must be >2000 chars and the client must indicate support via `"Accept-Encoding: gzip"` HTTP header, as is automatically done in [`.Q.hg`](../ref/dotq.md#hg-http-get) and [`.Q.hp`](../ref/dotq.md#hp-http-post).
 
 -   Externally compressed (e.g. using gzip) **log files** can now be played back via a fifo to ``-11!`:logfifo``, e.g.
 
@@ -209,7 +209,7 @@ q){a::1;a:1}
     ```
 
 
--   [`.Q.cn`](../ref/dotq.md#qcn-count-partitioned-table) now uses [`peach`](../ref/each.md) to get the count of partitioned tables. This can improve the startup time for a partitioned database.
+-   [`.Q.cn`](../ref/dotq.md#cn-count-partitioned-table) now uses [`peach`](../ref/each.md) to get the count of partitioned tables. This can improve the startup time for a partitioned database.
 
 
 ## :fontawesome-solid-exclamation-triangle: NUCs

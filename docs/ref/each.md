@@ -44,7 +44,7 @@ It is good q style to use `each` and `peach` for unary values.
 [Maps](maps.md) for uses of Each with binary and higher-rank values
 <br>
 :fontawesome-solid-book:
-[`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)
+[`.Q.fc` parallel on cut](dotq.md#fc-parallel-on-cut)
 <br>
 :fontawesome-solid-book-open:
 [Parallel processing](../basics/peach.md)

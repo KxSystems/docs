@@ -103,7 +103,7 @@ _Q for Mortals_
 ----
 :fontawesome-solid-book: 
 [`meta`](meta.md), 
-[`.Q.V`](dotq.md#qv-table-to-dict) (table to dictionary)
+[`.Q.V`](dotq.md#v-table-to-dict) (table to dictionary)
 <br>
 :fontawesome-solid-book-open:
 [Dictionaries](../basics/dictsandtables.md), 

@@ -112,7 +112,7 @@ Range: `defijmnptuvz`
 :fontawesome-solid-book:
 [Divide](divide.md),
 [`prd`, `prds`](prd.md),
-[`.Q.addmonths`](dotq.md#qaddmonths)
+[`.Q.addmonths`](dotq.md#addmonths)
 <br>
 :fontawesome-solid-book-open:
 [Datatypes](../basics/datatypes.md),

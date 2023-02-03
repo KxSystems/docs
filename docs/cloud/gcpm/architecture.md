@@ -415,7 +415,7 @@ m: `message`val!("another structured message"; 42)
 qlogger[`:log_struct; m; `severity pykw `ERROR]
 ```
 
-Another way to interact with the Cloud Logging API is through the REST API. Kdb+ supports HTTP get and post requests by utilities [`.Q.hg`](../../ref/dotq.md#qhg-http-get) and [`.Q.hp`](../../ref/dotq.md#qhp-http-post). The advantage of this approach is that you don’t need to install embedPy. Instead you have a portable pure-q solution. There is a long journey from `.Q.hp` till you have a fully featured cloud-logging library. The QLog library of KX Insights spares you the trip. Call unary function `msg` in namespace `.qlog` to log a message. The argument is a string or a dictionary, depending on the type (structured or unstructured) of the message.
+Another way to interact with the Cloud Logging API is through the REST API. Kdb+ supports HTTP get and post requests by utilities [`.Q.hg`](../../ref/dotq.md#hg-http-get) and [`.Q.hp`](../../ref/dotq.md#hp-http-post). The advantage of this approach is that you don’t need to install embedPy. Instead you have a portable pure-q solution. There is a long journey from `.Q.hp` till you have a fully featured cloud-logging library. The QLog library of KX Insights spares you the trip. Call unary function `msg` in namespace `.qlog` to log a message. The argument is a string or a dictionary, depending on the type (structured or unstructured) of the message.
 
 ```q
 .log.msg "unstructured message via QLog"

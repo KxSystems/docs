@@ -14,7 +14,7 @@ This may be suitable in low data-rate settings.
 
 ## REST publishing to Solace
 
-To publish from q to a Solace broker via REST, use [`.Q.hp`](../../ref/dotq.md#qhp-http-post) to create a POST request.
+To publish from q to a Solace broker via REST, use [`.Q.hp`](../../ref/dotq.md#hp-http-post) to create a POST request.
 
 Use the Solace [documentation](https://docs.solace.com/Open-APIs-Protocols/REST-get-start.htm) as a guide to configure HTTP parameters for your use case. Use it also to test the API before running from a kdb+ session.
 

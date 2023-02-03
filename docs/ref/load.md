@@ -108,11 +108,11 @@ q)sp:get `:sp/        / equivalent to rload `sp
 ----
 :fontawesome-solid-book: 
 [`save`, `rsave`](save.md)  
-[`.Q.dsftg`](dotq.md#qdsftg-load-process-save) (load process save), 
-[`.Q.fps`](dotq.md#qfps-streaming-algorithm) (streaming algorithm), 
-[`.Q.fs`](dotq.md#qfs-streaming-algorithm) (streaming algorithm), 
-[`.Q.fsn`](dotq.md#qfsn-streaming-algorithm) (streaming algorithm), 
-[`.Q.v`](dotq.md#qv-value) (get splayed table)
+[`.Q.dsftg`](dotq.md#dsftg-load-process-save) (load process save), 
+[`.Q.fps`](dotq.md#fps-streaming-algorithm) (streaming algorithm), 
+[`.Q.fs`](dotq.md#fs-streaming-algorithm) (streaming algorithm), 
+[`.Q.fsn`](dotq.md#fsn-streaming-algorithm) (streaming algorithm), 
+[`.Q.v`](dotq.md#v-value) (get splayed table)
 <br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)

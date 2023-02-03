@@ -94,7 +94,7 @@ q)((`abc,;string;::) `v1`v2?v)@'v
 `abc`v1
 ```
 
-and optimized with [`.Q.fu`](../ref/dotq.md#qfu-apply-unique).
+and optimized with [`.Q.fu`](../ref/dotq.md#fu-apply-unique).
 
 See also the [Case](../ref/maps.md#case) iterator.
 

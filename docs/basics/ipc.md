@@ -262,10 +262,10 @@ The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indica
 [`.h` namespace](../ref/doth.md) for markup  
 [`.z` namespace](../ref/dotz.md) for callback functions
 <br> 
-[`.Q.addr`](../ref/dotq.md#qaddr-ip-address) (IP address), 
-[`.Q.hg`](../ref/dotq.md#qhg-http-get) (HTTP get), 
-[`.Q.host`](../ref/dotq.md#qhost-hostname) (hostname), 
-[`.Q.hp`](../ref/dotq.md#qhp-http-post) (HTTP post)
+[`.Q.addr`](../ref/dotq.md#addr-ip-address) (IP address), 
+[`.Q.hg`](../ref/dotq.md#hg-http-get) (HTTP get), 
+[`.Q.host`](../ref/dotq.md#host-hostname) (hostname), 
+[`.Q.hp`](../ref/dotq.md#hp-http-post) (HTTP post)
 <br>
 :fontawesome-solid-book-open:
 [Connection handles](handles.md)

@@ -99,7 +99,7 @@ Enum Extend is a uniform function.
 :fontawesome-solid-book: 
 [Enumerate](enumerate.md),
 [Enumeration](enumeration.md),
-[`.Q.en` (enumerate varchar cols)](dotq.md#qen-enumerate-varchar-cols),
+[`.Q.en` (enumerate varchar cols)](dotq.md#en-enumerate-varchar-cols),
 [`?` query overloads](overloads.md#query)
 <br>
 :fontawesome-solid-book-open:

@@ -46,7 +46,7 @@ Basics: [Enumerations](../basics/enumerations.md)<br>
 _Q for Mortals_: [§7.2 Cast](/q4m3/7_Transforming_Data/#72-cast),
 [§7.5 Enumerations](/q4m3/7_Transforming_Data/#75-enumerations)
 
-This scenario is not always desirable in databases containing multiple tables and numerous columns of type symbol, which may represent for instance different types of security identifier, country codes, and exchange codes. If the sym file becomes corrupt then all the symbol columns will be lost. By decoupling the columns of type symbol – maintaining separate enumeration files for each symbol column – corruption or loss of data in one enumeration file will not impact on all columns of type symbol. The q function which enumerates a table is [`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols). It takes a directory path and a table and enumerates the table using a file called `sym` in the directory. (If there is no such file it creates it.) The `enumerate` function below takes the same arguments but, rather than enumerating against the sym file, it enumerates against a different file for each column, with the file name matching the column name.
+This scenario is not always desirable in databases containing multiple tables and numerous columns of type symbol, which may represent for instance different types of security identifier, country codes, and exchange codes. If the sym file becomes corrupt then all the symbol columns will be lost. By decoupling the columns of type symbol – maintaining separate enumeration files for each symbol column – corruption or loss of data in one enumeration file will not impact on all columns of type symbol. The q function which enumerates a table is [`.Q.en`](../ref/dotq.md#en-enumerate-varchar-cols). It takes a directory path and a table and enumerates the table using a file called `sym` in the directory. (If there is no such file it creates it.) The `enumerate` function below takes the same arguments but, rather than enumerating against the sym file, it enumerates against a different file for each column, with the file name matching the column name.
 
 ```q
 enumerate:{[d;t] /directory,table
@@ -380,10 +380,10 @@ In some cases, only prior-day data is needed and there is no requirement to run 
 
 function                                              | brief description
 ------------------------------------------------------|--------------------------------------------------------------------
-[`.Q.dsftg`](../ref/dotq.md#qdsftg-load-process-save) | Load and save file in chunks
-[`.Q.hdpf`](../ref/dotq.md#qhdpf-save-tables)         | Save in-memory table in splayed partitioned format
-[`.Q.dpft`](../ref/dotq.md#qdpft-save-table)          | Same as above, but no splayed partitioned process specified
-[`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols)  | Returns a copy of an in-memory table with symbol columns enumerated
+[`.Q.dsftg`](../ref/dotq.md#dsftg-load-process-save) | Load and save file in chunks
+[`.Q.hdpf`](../ref/dotq.md#hdpf-save-tables)         | Save in-memory table in splayed partitioned format
+[`.Q.dpft`](../ref/dotq.md#dpft-save-table)          | Same as above, but no splayed partitioned process specified
+[`.Q.en`](../ref/dotq.md#en-enumerate-varchar-cols)  | Returns a copy of an in-memory table with symbol columns enumerated
 [`0:`](../ref/file-text.md)                           | Load text file into an in-memory table or dictionary
 [`set` ](../ref/get.md#set)                           | Writes a table in splayed format
 [`upsert`](../ref/upsert.md)                          | Appends to a splayed table

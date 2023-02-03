@@ -383,7 +383,7 @@ A mapping from input/s to result defined by an algorithm.
 Operators, keywords, compositions, projections and lambdas are all functions.
 
 :fontawesome-regular-hand-point-right:
-[`.Q.res`](../ref/dotq.md#qres-keywords) returns a list of keywords
+[`.Q.res`](../ref/dotq.md#res-keywords) returns a list of keywords
 
 
 
@@ -898,7 +898,7 @@ A view should not have side effects, i.e. should not update global variables.
 
 :fontawesome-regular-hand-point-right:
 [`view`, `views`](../ref/view.md)
-[`.Q.view`](../ref/dotq.md#qview-subview) (subview)
+[`.Q.view`](../ref/dotq.md#view-subview) (subview)
 Tutorial: [Views](../learn/views.md)
 
 

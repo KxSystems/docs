@@ -25,7 +25,7 @@ save the table/s and returns the list of table names.
 
 The first column of each table saved has the [parted attribute](set-attribute.md) applied to it. If the save path is a list, the first item is the HDB root (where the sym file, if any, will be stored), while the remaining items are a path within the HDB (e.g. a partition).
 
-!!! tip "Roughly the same functionality as the combination of [`.Q.en`](dotq.md#qen-enumerate-varchar-cols) and [`set`](get.md#set) or [`.Q.dpft`](dotq.md#qdpft-save-table), but in a simpler form."
+!!! tip "Roughly the same functionality as the combination of [`.Q.en`](dotq.md#en-enumerate-varchar-cols) and [`set`](get.md#set) or [`.Q.dpft`](dotq.md#dpft-save-table), but in a simpler form."
 
 ```q
 q)t:flip`sym`price`size!100?'(-10?`3;1.0;10)
@@ -145,9 +145,9 @@ asize| j
 ----
 :fontawesome-solid-book: 
 [`set`](get.md#set), 
-[`.Q.en`](dotq.md#qen-enumerate-varchar-cols), 
-[`.Q.dpft`](dotq.md#qdpft-save-table), 
-[`.Q.hdpf`](dotq.md#qhdpf-save-tables) 
+[`.Q.en`](dotq.md#en-enumerate-varchar-cols), 
+[`.Q.dpft`](dotq.md#dpft-save-table), 
+[`.Q.hdpf`](dotq.md#hdpf-save-tables) 
 <br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)

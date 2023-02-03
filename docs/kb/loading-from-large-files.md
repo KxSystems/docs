@@ -13,7 +13,7 @@ The [Load CSV](../ref/file-text.md#load-csv) form of the File Text operator load
 
 If the data in the CSV file is too large to fit into memory, we need to break the large CSV file into manageable chunks and process them in sequence. 
 
-Function [`.Q.fs`](../ref/dotq.md#qfs-streaming-algorithm) and its variants help automate this process. `.Q.fs` loops over a file in conveniently-sized chunks of complete records, and applies a function to each chunk. This lets you implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding all the data in memory at once.
+Function [`.Q.fs`](../ref/dotq.md#fs-streaming-algorithm) and its variants help automate this process. `.Q.fs` loops over a file in conveniently-sized chunks of complete records, and applies a function to each chunk. This lets you implement a _streaming algorithm_ to convert a large CSV file into an on-disk database without holding all the data in memory at once.
 
 
 ## Using `.Q.fs`
@@ -96,14 +96,14 @@ date       open  high  low   close volume   sym
 Variants of `.Q.fs` extend it to [named pipes](named-pipes.md) and control chunk size.
 
 :fontawesome-solid-book:
-[`.Q.fsn`](../ref/dotq.md#qfsn-streaming-algorithm) for chunk size
+[`.Q.fsn`](../ref/dotq.md#fsn-streaming-algorithm) for chunk size
 <br>
 :fontawesome-solid-book:
-[`.Q.fps`](../ref/dotq.md#qfps-streaming-algorithm),
-[`.Q.fpn`](../ref/dotq.md#qfpn-streaming-algorithm) for named pipes
+[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm),
+[`.Q.fpn`](../ref/dotq.md#fpn-streaming-algorithm) for named pipes
 
 <!-- 
-To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](../ref/dotq.md#qdpft-save-table) are useful.
+To write to a partitioned database, some utility functions generalizing [`.Q.dpft`](../ref/dotq.md#dpft-save-table) are useful.
 
 ```q
 $ cat fs.q
@@ -286,7 +286,7 @@ An example approach to removing duplicates can be seen in the `builddailystats` 
 
 ## Parallel loading
 
-The key consideration when doing parallel loading is to ensure separate processes do not touch the same table structures at the same time. The enumeration operation [`.Q.en`](../ref/dotq.md#qen-enumerate-varchar-cols) enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage. 
+The key consideration when doing parallel loading is to ensure separate processes do not touch the same table structures at the same time. The enumeration operation [`.Q.en`](../ref/dotq.md#en-enumerate-varchar-cols) enforces a locking mechanism to ensure that two processes do not write to the sym file at the same time. Apart from that, it is up to the programmer to manage. 
 
 In this example we can load different files in parallel as we know that the files do not overlap in terms of the partitioned tables that they will write to, provided that we set the `builddaily` flag in the `loadallfiles` function to false. This will ensure parallel loaders do not write to the daily table concurrently. (The daily table would then have to be built in a separate step). Loaders which may write data to the same tables (in the same partitions) at the same time cannot be run safely in parallel.
 
@@ -444,7 +444,7 @@ openssl enc -aes-256-cbc -d –k password -in trades.csv.dat > named_pipe &
 
 :fontawesome-solid-book:
 [`set`](../ref/get.md#set), 
-[`.Q.fps`](../ref/dotq.md#qfps-streaming-algorithm)
+[`.Q.fps`](../ref/dotq.md#fps-streaming-algorithm)
 <br>
 :fontawesome-solid-laptop:
 [Named pipes](../kb/named-pipes.md)

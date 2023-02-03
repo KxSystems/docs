@@ -320,7 +320,7 @@ The `peach` keyword can be used to parallelize evaluation.
 bridgep: {x & {min each x +\: y}[flip x;] peach x}
 ```
 
-The [`.Q.fc` utility](../ref/dotq.md#qfc-parallel-on-cut) uses multi-threading where possible.
+The [`.Q.fc` utility](../ref/dotq.md#fc-parallel-on-cut) uses multi-threading where possible.
 
 ```q
 / .Q.fc version

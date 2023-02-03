@@ -83,7 +83,7 @@ In a multiple-socket system, under NUMA, non-local memory access is much slower.
 
 In kdb+ parallelism remains single-level, and for a given computation one has to choose a single axis to apply it over, whether implicitly with multithreaded primitives, or explicitly with peach. Within-primitive parallelism has several advantages: 
 
-1. No overhead of splitting and joining large vectors. For simple functions, direct execution can be much faster than [`.Q.fc`](../ref/dotq.md#qft-apply-simple):
+1. No overhead of splitting and joining large vectors. For simple functions, direct execution can be much faster than [`.Q.fc`](../ref/dotq.md#ft-apply-simple):
 
     ```q
     q)system"s 24";a:100000000?100;

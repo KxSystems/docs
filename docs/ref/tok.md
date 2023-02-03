@@ -144,8 +144,8 @@ q)"NT"$\:"123456123987654"  / since V3.4
 ```
 
 :fontawesome-solid-book:
-[`.Q.addr`](dotq.md#qaddr-ip-address),
-[`.Q.host`](dotq.md#qhost-hostname)
+[`.Q.addr`](dotq.md#addr-ip-address),
+[`.Q.host`](dotq.md#host-hostname)
 
 
 ## Unix timestamps

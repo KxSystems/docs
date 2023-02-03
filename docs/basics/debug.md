@@ -12,9 +12,9 @@ q))       extra right parens mark suspended execution/s
 'myerror  [Signal](../ref/signal.md) error, cut back stack
 :r        [exit suspended function](#resume) with r as result
 \\         abort execution and exit debugger
-[.Q.bt](../ref/dotq.md#qbt-backtrace)     dump backtrace
+[.Q.bt](../ref/dotq.md#bt-backtrace)     dump backtrace
 [&](#where)         current frame information
-[.Q.trp](../ref/dotq.md#qtrp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
+[.Q.trp](../ref/dotq.md#trp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
 [-e](cmdline.md#-e-error-traps) [\e](syscmds.md#e-error-trap-clients)     error-trap mode
 </div>
 
@@ -185,7 +185,7 @@ q)
 
 ### Backtrace
 
-[`.Q.bt[]`](../ref/dotq.md#qbt-backtrace) will dump the backtrace to stdout at any point during execution or debug.
+[`.Q.bt[]`](../ref/dotq.md#bt-backtrace) will dump the backtrace to stdout at any point during execution or debug.
 It will highlight the curent stack frame with `>>`. (Since V4.0 2020.03.17.)
 
 ```q
@@ -247,7 +247,7 @@ View calculations and system commands, including [`\l`](syscmds.md#l-load), corr
 
 ### Trap
 
-[`.Q.trp[f;x;g]`](../ref/dotq.md#qtrp-extend-trap) extends trap (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
+[`.Q.trp[f;x;g]`](../ref/dotq.md#trp-extend-trap) extends trap (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
 
 ```q
 q)f:{`hello+x}

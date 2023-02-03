@@ -89,7 +89,7 @@ with directories :
 Partition data correctly: data for a particular date must reside in the partition for that date.
 
 :fontawesome-solid-book: 
-[`.Q.par`](../ref/dotq.md#qpar-locate-partition)
+[`.Q.par`](../ref/dotq.md#par-locate-partition)
 
 The secondary/directory partitioning is for both read and write.
 

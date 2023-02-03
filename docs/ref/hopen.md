@@ -186,7 +186,7 @@ One-shot sync queries can now execute via `` `::[(":host:port";timeout);query]``
 
 ----
 :fontawesome-solid-book:
-[`.Q.Xf`](dotq.md#qxf-create-file) (create file)
+[`.Q.Xf`](dotq.md#xf-create-file) (create file)
 <br>
 :fontawesome-solid-book-open:
 [Communication handle](../basics/glossary.md#communication-handle),

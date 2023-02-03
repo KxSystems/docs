@@ -247,7 +247,7 @@ city  | s
 **Duplicate column names** `xasc` signals `dup` if it finds duplicate columns in the right argument. (Since V3.6 2019.02.19.)
 
 :fontawesome-regular-hand-point-right:
-[`.Q.id` (sanitize)](dotq.md#qid-sanitize) 
+[`.Q.id` (sanitize)](dotq.md#id-sanitize) 
 
 
 ### Sorting data on disk

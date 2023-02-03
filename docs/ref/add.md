@@ -108,7 +108,7 @@ Range: `defijmnptuvz`
 :fontawesome-solid-book:
 [Subtract](subtract.md),
 [`sum`](sum.md),
-[`.Q.addmonths`](dotq.md#qaddmonths)
+[`.Q.addmonths`](dotq.md#addmonths)
 <br>
 :fontawesome-solid-book-open:
 [Datatypes](../basics/datatypes.md),

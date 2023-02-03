@@ -57,7 +57,7 @@ Operators and keywords that get or set metadata.
 
 : [Datatype](datatypes.md) of an object
 
-[`.Q.ty`](../ref/dotq.md#qty-type)
+[`.Q.ty`](../ref/dotq.md#ty-type)
 
 : Datatype as a character code
 

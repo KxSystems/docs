@@ -97,7 +97,7 @@ Range: `defijmnptuvz`
 [Add](add.md),
 [`deltas`](deltas.md),
 [`differ`](differ.md),
-[`.Q.addmonths`](dotq.md#qaddmonths)
+[`.Q.addmonths`](dotq.md#addmonths)
 <br>
 :fontawesome-solid-book-open:
 [Datatypes](../basics/datatypes.md),

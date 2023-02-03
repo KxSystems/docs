@@ -335,7 +335,7 @@ From the response payload we see the function was successful and calculated the 
 
 ## Stream data from Amazon S3
 
-To demonstrate a q/kdb+ Lambda function processing multiple events, we detail how to stream data from AWS Simple Storage Service (S3). Using FIFO named pipes and [`.Q.fps`](../../ref/dotq.md#qfps-streaming-algorithm) within q, data can be streamed in for processing. To illustrate this example, we create 100 files each containing 1 million Black-Scholes input parameters. The files are placed in a S3 bucket. This S3 bucket is the trigger for the Lambda function.
+To demonstrate a q/kdb+ Lambda function processing multiple events, we detail how to stream data from AWS Simple Storage Service (S3). Using FIFO named pipes and [`.Q.fps`](../../ref/dotq.md#fps-streaming-algorithm) within q, data can be streamed in for processing. To illustrate this example, we create 100 files each containing 1 million Black-Scholes input parameters. The files are placed in a S3 bucket. This S3 bucket is the trigger for the Lambda function.
 
 :fontawesome-brands-aws:
 [Configuring Amazon S3 Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
@@ -365,8 +365,8 @@ The steps in the `process_s3data.q` code are as follows.
 1.  Call S3 function from `Stream_Data` script, initiate FIFO pipe and stream in S3 data.
 1.  Load `blackScholes.q`.
 1.  Create inputs table to store input parameters.
-1.  Use [`.Q.fps`](../../ref/dotq.md#qfps-streaming-algorithm) to stream in the S3 data from the FIFO `pipe_stream` to inputs table.
-1.  Use [`.Q.fu`](../../ref/dotq.md#qfu-apply-unique) to run the inputs through the `blackScholes` formula.
+1.  Use [`.Q.fps`](../../ref/dotq.md#fps-streaming-algorithm) to stream in the S3 data from the FIFO `pipe_stream` to inputs table.
+1.  Use [`.Q.fu`](../../ref/dotq.md#fu-apply-unique) to run the inputs through the `blackScholes` formula.
 1.  `black_scholes_data` contains the input parameters and the calculated option prices.
 
 `process_s3data.q`:

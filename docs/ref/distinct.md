@@ -51,7 +51,7 @@ type  | `x` is an atom
 ----
 
 :fontawesome-solid-book:
-[`.Q.fu`](dotq.md#qfu-apply-unique) (apply unique)
+[`.Q.fu`](dotq.md#fu-apply-unique) (apply unique)
 <br>
 :fontawesome-solid-book-open:
 [Precision](../basics/precision.md), 

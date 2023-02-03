@@ -213,7 +213,7 @@ v1 peach list
     Alternatively, define the value as a function that takes a parameter dictionary as argument, and pass the derived function a table of parameters to evaluate.
 
 :fontawesome-solid-book:
-[`.Q.fc` parallel on cut](dotq.md#qfc-parallel-on-cut)
+[`.Q.fc` parallel on cut](dotq.md#fc-parallel-on-cut)
 <br>
 :fontawesome-solid-book-open:
 [Parallel processing](../basics/peach.md)

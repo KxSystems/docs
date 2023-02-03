@@ -43,7 +43,7 @@ q)type (0|+)                    / composition
 ----
 
 :fontawesome-solid-book:
-[.Q.ty](dotq.md#qty-type)
+[.Q.ty](dotq.md#ty-type)
 <br>
 :fontawesome-solid-book-open:
 [Casting and encoding](../basics/by-topic.md#casting),

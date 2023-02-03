@@ -37,8 +37,8 @@ author: Stephen Taylor
 </tbody></table>
 
 :fontawesome-solid-book:
-[`.Q.id`](dotq.md#qid-sanitize) (sanitize),
-[`.Q.res`](dotq.md#qres-keywords) (reserved words)
+[`.Q.id`](dotq.md#id-sanitize) (sanitize),
+[`.Q.res`](dotq.md#res-keywords) (reserved words)
 
 
 ## Operators
@@ -312,54 +312,54 @@ Utilities: general, environment, IPC, datatype, database, partitioned database s
 
 <div markdown class="typewriter">
 General                           Datatype
- [addmonths](dotq.md#qaddmonths)                         [btoa   b64 encode](dotq.md#qbtoa-b64-encode)
- [bt       backtrace](dotq.md#qbt-backtrace)                [j10    encode binhex](dotq.md#qj10-encode-binhex)
- [dd       join symbols](dotq.md#qdd-join-symbols)             [j12    encode base 36](dotq.md#qj12-encode-base-36)
- [def](dotq.md#qdef)                               [M      long infinity](dotq.md#qm-long-infinity)
- [f        format](dotq.md#qf-format)                   [ty     type](dotq.md#qty-type)
- [ff       append columns](dotq.md#qff-append-columns)           [x10    decode binhex](dotq.md#qx10-decode-binhex)
- [fmt      format](dotq.md#qfmt-format)                   [x12    decode base 36](dotq.md#qx12-decode-base-36)
- [ft       apply simple](dotq.md#qft-apply-simple)
- [fu       apply unique](dotq.md#qfu-apply-unique)            Database
- [gc       garbage collect](dotq.md#qgc-garbage-collect)          [chk    fill HDB](dotq.md#qchk-fill-hdb)
- [gz       GZip](dotq.md#qgz-gzip)                     [dpft   save table](dotq.md#qdpft-save-table)
- [id       sanitize](dotq.md#qid-sanitize)                 [dpfts  save table with sym](dotq.md#qdpfts-save-table-with-symtable)
- [qt       is table](dotq.md#qqt-is-table)                 [dsftg  load process save](dotq.md#qdsftg-load-process-save)
- [res      keywords](dotq.md#qres-keywords)                 [en     enumerate varchar cols](dotq.md#qen-enumerate-varchar-cols)
- [s        plain text](dotq.md#qs-plain-text)               [ens    enumerate against domain](dotq.md#qens-enumerate-against-domain)
- [s1       string representation](dotq.md#qs1-string-representation)    [fk     foreign key](dotq.md#qfk-foreign-key)
- [sbt      string backtrace](dotq.md#qsbt-string-backtrace)         [hdpf   save tables](dotq.md#qhdpf-save-tables)
- [trp      extend trap](dotq.md#qtrp-extend-trap)              [qt     is table](dotq.md#qqt-is-table)
- [ts       time and space](dotq.md#qts-time-and-space)           [qp     is partitioned](dotq.md#qqp-is-partitioned)
- [u        date based](dotq.md#qu-date-based)
- [V        table to dict](dotq.md#qv-table-to-dict)
- [v        value](dotq.md#qv-value)                   Partitioned database state
- [view     subview](dotq.md#qview-subview)                  [bv     build vp](dotq.md#qbv-build-vp)
-                                   [ind    partitioned index](dotq.md#qind-partitioned-index)
-Constants                          [cn     count partitioned table](dotq.md#qcn-count-partitioned-table)
- [A        uppercase alphabet](dotq.md#qa-upper-case-alphabet)       [MAP    maps partitions](dotq.md#qmap-maps-partitions)
- [a        lowercase alphabet](dotq.md#qa-lower-case-alphabet)       [D      partitions](dotq.md#qd-partitions)
- [b6       bicameral alphanums](dotq.md#qb6-bicameral-alphanums)      [par    locate partition](dotq.md#qpar-locate-partition)
- [nA       alphanums](dotq.md#qna-alphanums)                [PD     partition locations](dotq.md#qpd-partition-locations)
-                                   [pd     modified partition locns](dotq.md#qpd-modified-partition-locations)
-Environment                        [pf     partition field](dotq.md#qpf-partition-field)
- [k        version](dotq.md#qk-version)                  [pn     partition counts](dotq.md#qpn-partition-counts)
- [opt      command parameters](dotq.md#qopt-command-parameters)       [qp     is partitioned](dotq.md#qqp-is-partitioned)
- [w        memory stats](dotq.md#qw-memory-stats)             [pt     partitioned tables](dotq.md#qpt-partitioned-tables)
- [x        non-command parameters](dotq.md#qx-non-command-parameters)   [PV     partition values](dotq.md#qpv-partition-values)
-                                   [pv     modified partition values](dotq.md#qpv-modified-partition-values)
-IPC                                [vp     missing partitions](dotq.md#qvp-missing-partitions)
- [addr     IP address](dotq.md#qaddr-ip-address)
- [fps fpn  streaming algorithm](dotq.md#qfps-streaming-algorithm)     Segmented database state
- [fs  fsn  streaming algorithm](dotq.md#qfsn-streaming-algorithm)      [D      partitions](dotq.md#qd-partitions)
- [hg       HTTP get](dotq.md#qhg-http-get)                 [P      segments](dotq.md#qp-segments)
- [host     hostname](dotq.md#qhost-hostname)                 [u      date based](dotq.md#qu-date-based)
- [hp       HTTP post](dotq.md#qhp-http-post)
- [l        load](dotq.md#ql-load)
+ [addmonths](dotq.md#addmonths)                         [btoa   b64 encode](dotq.md#btoa-b64-encode)
+ [bt       backtrace](dotq.md#bt-backtrace)                [j10    encode binhex](dotq.md#j10-encode-binhex)
+ [dd       join symbols](dotq.md#dd-join-symbols)             [j12    encode base 36](dotq.md#j12-encode-base-36)
+ [def](dotq.md#def)                               [M      long infinity](dotq.md#m-long-infinity)
+ [f        format](dotq.md#f-format)                   [ty     type](dotq.md#ty-type)
+ [ff       append columns](dotq.md#ff-append-columns)           [x10    decode binhex](dotq.md#x10-decode-binhex)
+ [fmt      format](dotq.md#fmt-format)                   [x12    decode base 36](dotq.md#x12-decode-base-36)
+ [ft       apply simple](dotq.md#ft-apply-simple)
+ [fu       apply unique](dotq.md#fu-apply-unique)            Database
+ [gc       garbage collect](dotq.md#gc-garbage-collect)          [chk    fill HDB](dotq.md#chk-fill-hdb)
+ [gz       GZip](dotq.md#gz-gzip)                     [dpft   save table](dotq.md#dpft-save-table)
+ [id       sanitize](dotq.md#id-sanitize)                 [dpfts  save table with sym](dotq.md#dpfts-save-table-with-symtable)
+ [qt       is table](dotq.md#qt-is-table)                 [dsftg  load process save](dotq.md#dsftg-load-process-save)
+ [res      keywords](dotq.md#res-keywords)                 [en     enumerate varchar cols](dotq.md#en-enumerate-varchar-cols)
+ [s        plain text](dotq.md#s-plain-text)               [ens    enumerate against domain](dotq.md#ens-enumerate-against-domain)
+ [s1       string representation](dotq.md#s1-string-representation)    [fk     foreign key](dotq.md#fk-foreign-key)
+ [sbt      string backtrace](dotq.md#sbt-string-backtrace)         [hdpf   save tables](dotq.md#hdpf-save-tables)
+ [trp      extend trap](dotq.md#trp-extend-trap)              [qt     is table](dotq.md#qt-is-table)
+ [ts       time and space](dotq.md#ts-time-and-space)           [qp     is partitioned](dotq.md#qp-is-partitioned)
+ [u        date based](dotq.md#u-date-based)
+ [V        table to dict](dotq.md#v-table-to-dict)
+ [v        value](dotq.md#v-value)                   Partitioned database state
+ [view     subview](dotq.md#view-subview)                  [bv     build vp](dotq.md#bv-build-vp)
+                                   [ind    partitioned index](dotq.md#ind-partitioned-index)
+Constants                          [cn     count partitioned table](dotq.md#cn-count-partitioned-table)
+ [A        uppercase alphabet](dotq.md#a-upper-case-alphabet)       [MAP    maps partitions](dotq.md#map-maps-partitions)
+ [a        lowercase alphabet](dotq.md#a-lower-case-alphabet)       [D      partitions](dotq.md#d-partitions)
+ [b6       bicameral alphanums](dotq.md#b6-bicameral-alphanums)      [par    locate partition](dotq.md#par-locate-partition)
+ [nA       alphanums](dotq.md#na-alphanums)                [PD     partition locations](dotq.md#pd-partition-locations)
+                                   [pd     modified partition locns](dotq.md#pd-modified-partition-locations)
+Environment                        [pf     partition field](dotq.md#pf-partition-field)
+ [k        version](dotq.md#k-version)                  [pn     partition counts](dotq.md#pn-partition-counts)
+ [opt      command parameters](dotq.md#opt-command-parameters)       [qp     is partitioned](dotq.md#qp-is-partitioned)
+ [w        memory stats](dotq.md#w-memory-stats)             [pt     partitioned tables](dotq.md#pt-partitioned-tables)
+ [x        non-command parameters](dotq.md#x-non-command-parameters)   [PV     partition values](dotq.md#pv-partition-values)
+                                   [pv     modified partition values](dotq.md#pv-modified-partition-values)
+IPC                                [vp     missing partitions](dotq.md#vp-missing-partitions)
+ [addr     IP address](dotq.md#addr-ip-address)
+ [fps fpn  streaming algorithm](dotq.md#fps-streaming-algorithm)     Segmented database state
+ [fs  fsn  streaming algorithm](dotq.md#fsn-streaming-algorithm)      [D      partitions](dotq.md#d-partitions)
+ [hg       HTTP get](dotq.md#hg-http-get)                 [P      segments](dotq.md#p-segments)
+ [host     hostname](dotq.md#host-hostname)                 [u      date based](dotq.md#u-date-based)
+ [hp       HTTP post](dotq.md#hp-http-post)
+ [l        load](dotq.md#l-load)
 
  File I/O
- [Cf       create empty nested char file](dotq.md#qcf-create-empty-nested-char-file)
- [Xf       create file](dotq.md#qxf-create-file)
+ [Cf       create empty nested char file](dotq.md#cf-create-empty-nested-char-file)
+ [Xf       create file](dotq.md#xf-create-file)
 </div>
 
 

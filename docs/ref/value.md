@@ -205,5 +205,5 @@ q)value each (get;value)   / same internal code
 [`eval`](eval.md),
 [`get`](get.md),
 [`parse`](parse.md),
-[`.Q.v`](dotq.md#qv-value)
+[`.Q.v`](dotq.md#v-value)
 

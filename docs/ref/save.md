@@ -161,8 +161,8 @@ q)`:sp/ set sp        / equivalent to rsave `sp
 :fontawesome-solid-book: 
 [`set`](get.md#set), 
 [`.h.tx`](doth.md#htx-filetypes),
-[`.Q.dpft`](dotq.md#qchk-fill-hdb) (save table), 
-[`.Q.Xf`](dotq.md#qxf-create-file) (create file)
+[`.Q.dpft`](dotq.md#chk-fill-hdb) (save table), 
+[`.Q.Xf`](dotq.md#xf-create-file) (create file)
 <br>
 :fontawesome-solid-book-open:
 [File system](../basics/files.md)
