@@ -1,8 +1,8 @@
 ---
 title: Changes in 4.0 | Releases | Documentation for kdb+ and the q programming language
 description: Changes to V4.0 of kdb+ from the previous version
-author: Charles Skelton
-date: March 2020
+authors: [Charles Skelton, Stephen Taylor]
+date: [March 2020, February 2023]
 ---
 # Changes in 4.0
 
@@ -11,6 +11,165 @@ date: March 2020
 
 2020.03.17
 
+## Updates
+
+### 2023.01.20
+
+Anymap write now detects consecutive deduplicated (address matching) top-level objects, skipping them to save space.
+
+```q
+q)a:("hi";"there";"world");
+q)`:a0 set a;`:a1 set a@where 1000 2000 3000;
+q)(hcount`$":a0#")=hcount`$":a1#"
+```
+
+Improved memory efficiency of writing nested data sourced from a type 77 file, commonly encountered during compression of files, e.g.
+
+```q 
+q)`:a set 500000 100#"abc"
+q)system"ts `:b set get`:a" / was 76584400 bytes, now 8390208
+```
+
+### 2022.10.26
+
+`l64arm` build available.
+
+`m64` is now a universal binary, containing both Intel and ARM builds for macOS.
+Use `lipo` to extract the individual architecture binaries. e.g.
+
+```bash
+lipo -thin x86_64 -output q/m64/q.x64 q/m64/q
+lipo -thin arm64  -output q/m64/q.arm q/m64/q
+```
+
+Support for OpenSSL v3: 
+on Linux, q will now try to load versioned shared libraries for OpenSSL if `libssl-dev[el]` is not installed.
+
+the `-p` command-line option (or `\p` system command) can now listen on a port within a specified range e.g.
+
+```q
+q)\p 80/85
+q)\p
+81
+```
+
+The range of ports is inclusive and tried in a random order. 
+A service name can be used instead of a port number. 
+The existing option of using `0W` to choose a free ephemeral port can be more efficient (where suitable).
+
+A range can be used in place of port number, when setting using existing rules e.g. for hostname
+
+```q
+q)\p myhost:2000/2010
+```
+
+or for multithreaded port
+
+```q
+q)\p -2000/2010
+```
+
+### 2021.07.12
+
+Extended the range of `.z.ac` to `(4;"")` to indicate fallback to try authentication via [`.z.pw`](../ref/dotz.md#zpw-validate-user).
+
+### 2021.03.25
+
+On Windows builds, TCP send and receive buffers are no longer set to fixed sizes, allowing autotuning by the OS.
+
+### 2021.01.20
+
+The result of `dlerror` is appended to the error message if there is an error loading compression or encryption libraries e.g. (without Snappy installed)
+
+```q
+q).z.zd:17 3 6
+q)`:a set til 1000000
+'snappy libs required to compress a$. dlopen(libsnappy.dylib, 0x0002): tried: 'libsnappy.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OSlibsnappy.dylib' (no such file), '/usr/lib/libsnappy.dylib' (no such file, not in dyld cache), 'libsnappy.d
+  [0]  `:a set til 1000000
+           ^
+```
+
+### 2020.11.02
+
+Path-length limit is now 4095 bytes, instead of 255.
+
+OS errors are now truncated (indicated by `..`) on the left to retain the more important tail, e.g.
+
+```q
+q)get`$":root/",(250#"path/"),"file"
+'..path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/path/file. OS reports: No such file or directory
+  [0]  get`$":root/",(250#"path/"),"file"
+       ^
+```
+
+
+### 2020.08.10
+
+Serialize and deserialize now use multithreaded memory, e.g.
+
+```q
+q)\t system"s 10";-9!-8!100#enlist a:1000000#0
+```
+
+Uncompressed file writes to shared memory/cache are now up to 2x faster, e.g.
+
+```q
+q)\t a:100 100000#"abc";do[100;`:/dev/shm/a set a]
+```
+
+### 2020.08.03
+
+One-shot request now checks that it has received a response message, otherwise signals `expected response msg`, e.g.
+
+```q
+q)`::5001"neg[.z.w]`"
+'expected response msg
+```
+
+### 2020.07.15
+
+Errors raised by the underlying decompression routines are now reported as `decompression error at block <b> in <f>`.
+
+
+### 2020.06.18
+
+Allow more than one scalar to be extended in Group-by clause. e.g.
+
+```q
+q)select sum x by a:`,b:` from([]x:1 2 3)
+a b| x
+---| -
+   | 6
+```
+
+### 2020.06.01
+Added [`.z.H`](../ref/dotz.md#zh-active-sockets), a low-cost method to obtain the list of active sockets.
+
+```q
+.z.H~key .z.W
+```
+
+Added [`-38!x`](../basics/internal.md#-38x-socket-table): where `x` is a list of socket handles, returns a table of `([]p:protocol;f:socketFamily)` where 
+
+-   `protocol` is `q` (IPC) or `w` (WebSocket)
+-   `socketFamily` is `t` (TCP) or `u` (Unix domain socket)
+
+```q
+q){([]h)!-38!h:.z.H}[]
+h| p f
+-| ---
+8| q u
+9| q t
+```
+
+
+### 2020.05.20
+
+Access-controlled file paths are now allowed to be canonical in addition to relative for remote handles under `reval` or `-u` in the command line. e.g.
+
+```q
+h(reval(value;)enlist@;(key;`$":/home/charlie/db"))
+```
 
 ## :fontawesome-solid-bolt: Multithreaded primitives
 
