@@ -66,7 +66,7 @@ accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$()
 
 ### Tick scripts
 
-Kdb+tick is freely available  and contains a few short, yet powerful scripts.
+Kdb+tick is freely available and contains a few short, yet powerful scripts.
 
 :fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
@@ -217,7 +217,7 @@ q)-11!(-2;`:sym2013.10.29)
 46756601608
 ```
 
-This means that there are 46,333,621 valid chunks in the tplog, and 467,56,601,608 valid bytes. Anything after this point is considered corrupt and not replayable.
+This means that there are 46,333,621 valid chunks in the tplog, and 46,756,601,608 valid bytes. Anything after this point is considered corrupt and not replayable.
 
 
 #### ``-11!(n;`:tplog)``
@@ -293,7 +293,6 @@ The `upd` function (as defined in this process) is being called in each one of t
 
 ```q
 q)enlist first get`:sym2014.05.07
-q)get`:sym2014.05.03
 `upd `trade (0D14:56:01.113310000;`AUDUSD;"S";1000;96.96) 
 q)h enlist first get`:sym2014.05.07
 392i
