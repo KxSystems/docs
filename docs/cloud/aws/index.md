@@ -550,9 +550,6 @@ standard `tick.q` scripts
 [Serverless kdb+ on AWS Lambda](../aws-lambda/index.md)
 <br>
 :fontawesome-solid-hand-point-right:
-[Deploy to EKS](https://code.kx.com/insights/kx-core-app-charts/)
-<br>
-:fontawesome-solid-hand-point-right:
 [Kdb+ Cloud Edition](https://code.kx.com/insights/cloud-edition/)
 
 
