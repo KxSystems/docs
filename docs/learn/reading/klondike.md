@@ -686,7 +686,7 @@ There is a good deal of mapping between lists, done very readably with indexing,
 (NUMBER[cards]=1) and SUIT[cards]=SUITS FOUNDATION?m[;2]
 ```
 
-Many choices are made, but `if` is used only to [validate arguments and signal errors](../../style/conditionals.md "Remarks on Style"). [Cond](../../ref/cond.md) appears a few times; many more choices are represented with boolean indexes or arguments to non-logical primitives, such as 
+Many choices are made, but `if` is used only to [validate arguments and signal errors](https://github.com/qbists/style/blob/main/conditionals.md "Remarks on Style"). [Cond](../../ref/cond.md) appears a few times; many more choices are represented with boolean indexes or arguments to non-logical primitives, such as 
 
 ```q
 "RB" SUIT in "SC"
@@ -701,5 +701,5 @@ Many choices are made, but `if` is used only to [validate arguments and signal e
 2.  :fontawesome-brands-html5: Write an HTML5 interface for the game engine. 
 3.  :fontawesome-solid-share-alt: Use the [Machine Learning Toolkit](../../ml/toolkit/index.md) to train a champion Klondike player.
 4.  :fontawesome-solid-book-reader: [“Three Principles of Coding Clarity”](http://archive.vector.org.uk/art10009750 "The Journal of the British APL Association"), _Vector_ **26**:4
-5.  :fontawesome-solid-pen-nib: [Remarks on Style](../../style/index.md)
+5.  :fontawesome-solid-pen-nib: [Remarks on Style](https://github.com/qbists/style)
 
