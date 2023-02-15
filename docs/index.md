@@ -47,17 +47,15 @@ Database](database/index.md "Roughly speaking, kdb+ is what happens when q table
 {: .md-button}
 
 [<span style="font-size: 3em">:fontawesome-solid-laptop-code:</span><br/>
-IDE: KX Developer](/developer/ "Download and install the free IDE, KX Developer")
+IDE: KX Developer](https://code.kx.com/developer/ "Download and install the free IDE, KX Developer")
 {: .md-button}
 
 </div>
 
+:fontawesome-solid-cloud:
+For cloud deployment, see [kdb Insights Core](https://code.kx.com/insights/core).
+
 
 :fontawesome-solid-globe:
 [Careers at KX and FD Technologies](http://www.firstderivatives.com/careers/)
-
----
-The source code for this site is on GitHub at
-:fontawesome-brands-github:
-[KxSystems/docs](https://github.com/kxsystems/docs/)
 

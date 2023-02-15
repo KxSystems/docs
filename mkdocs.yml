@@ -34,8 +34,8 @@ extra_javascript:
 #   - search
 
 remote_branch: master
-repo_name: 'GitHub'
-repo_url: 'https://github.com/kxsystems/docs'
+repo_name: ''
+repo_url: ''
 edit_uri: ""
 
 site_description: 'Documentation for kdb+ and the q programming language'
@@ -54,8 +54,8 @@ theme:
     - 404.html # required by other subsites
 
 nav:
-  - Home:
-    - kdb+ and q: index.md
+  - kdb+ and q: 
+    - About: index.md
     - Reference card: ref/index.md
     - Developer tools: devtools.md
     - Open source: github.md
@@ -65,6 +65,8 @@ nav:
     - kdb+ and q forum: https://community.kx.com/t5/kdb-and-q/bd-p/kdb-q-questions
     - White papers: wp/index.md
     - About this site: about/thissite.md
+  - kdb Insights: https://code.kx.com/insights/insights
+  - kdb Insights Enterprise: https://code.kx.com/insights/platform
   - Learn:
     - Get started: learn/index.md
     - Install: learn/install.md
