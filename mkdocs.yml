@@ -425,6 +425,7 @@ nav:
       - Geospatial indexing: kb/geospatial.md
       - GPUs: kb/gpus.md
       - Linear programming: kb/lp.md
+      - MatLab: kb/matlab.md
       - Multithreaded input: kb/multithreaded-input.md
       - Multithreaded primitives: kb/mt-primitives.md
       - Pivoting tables: kb/pivoting-tables.md
