@@ -54,6 +54,7 @@ theme:
     - 404.html # required by other subsites
 
 nav:
+  - Home: https://code.kx.com/home
   - kdb+ and q: 
     - About: index.md
     - Reference card: ref/index.md
@@ -420,7 +421,9 @@ nav:
     - Coding:
       - Data visualization (WP): wp/data-visualization/index.md
       - Deferred response: kb/deferred-response.md
+      - Excel: kb/excel.md
       - Geospatial indexing: kb/geospatial.md
+      - GPUs: kb/gpus.md
       - Linear programming: kb/lp.md
       - Multithreaded input: kb/multithreaded-input.md
       - Multithreaded primitives: kb/mt-primitives.md
@@ -504,7 +507,10 @@ nav:
         # FIXME: combine articles?
         - Java API (WP): wp/java-api/index.md
         - Quick guide: interfaces/java-client-for-q.md
-      - Jupyter: interfaces/jupyterq.md
+      - Jupyter: 
+        - About: interfaces/jupyterq/index.md
+        - User guide: interfaces/jupyterq/notebooks.md
+        - FAQ: interfaces/jupyterq/faq.md
       - Kafka:
         - About: interfaces/kafka/index.md
         - Reference: interfaces/kafka/reference.md
@@ -562,7 +568,6 @@ nav:
     - Q clients:
       - Bloomberg: interfaces/q-client-for-bloomberg.md
       - C/C++ functions: interfaces/using-c-functions.md
-      - GPUs: interfaces/gpus.md
       - J: interfaces/q-client-for-j.md
       - ODBC: interfaces/q-client-for-odbc.md
     - FIX messaging (WP): wp/fix-messaging.md
@@ -604,10 +609,6 @@ nav:
       - FAQ: ml/embedpy/faq.md
       - Reference: ml/embedpy/reference.md
       - embedPy and LASSO:  wp/embedpy-lasso/index.md
-    - JupyterQ:
-      - About: ml/jupyterq/index.md
-      - User guide: ml/jupyterq/notebooks.md
-      - FAQ: ml/jupyterq/faq.md
     - Demonstration notebooks: ml/notebooks.md
     - Toolkit:
       - About: ml/toolkit/index.md
