@@ -301,7 +301,7 @@ The examples on this site are produced that way; visual fidelity should help you
 
 [Jupyter notebooks](https://jupyter.org/) are an interactive publishing format.
 We are producing lessons in this form and the library  is growing.
-The [JupyterQ interface](../ml/jupyterq/index.md) lets you run q code in notebooks.
+The [JupyterQ interface](../interfaces/jupyterq/index.md) lets you run q code in notebooks.
 
 Notebooks are not, however, an IDE, and are unsuitable for studying features such as event handlers.
 

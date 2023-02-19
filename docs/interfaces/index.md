@@ -1,7 +1,6 @@
 ---
 title: Interfaces and editor integrations | Interfaces | kdb+ and q documentation
 description: Interfaces between kdb+ and other languages and services; also extensions to text editors for writing q code
-keywords: editor, github, integration, interface, kdb+, q, repository
 ---
 <span style="color: #009BAB; font-size: 2em">121</span><br><span style="font-size: .7em">interfaces &<br>connectors
 {: style="border: 1px solid #009BAB; border-radius: 10px; float: right; line-height: 1.2em; margin: 0 1em 0 0; padding: 1em 1em .5em; text-align: center"}
@@ -39,13 +38,13 @@ The [Fusion interfaces](fusion.md) to kdb+ are
 <tr markdown><td markdown>HDF5</td><td markdown>[Handling HDF5 data with kdb+](hdf5/index.md)</td></tr>
 <tr markdown><td markdown>Insights Assemblies</td><td markdown> [Deployment assemblies for KX Insights](https://github.com/KxSystems/insights-assemblies/) ==new==</td>
 <tr markdown><td markdown>Java</td><td markdown> [Java client for kdb+](java-client-for-q.md)</td>
-<tr markdown><td markdown>Jupyter</td><td markdown>[Jupyter kernel for kdb+](../ml/jupyterq/index.md) [:fontawesome-brands-superpowers:](../ml/index.md "Machine learning")</td>
+<tr markdown><td markdown>Jupyter</td><td markdown>[Jupyter kernel for kdb+](jupyterq/index.md)</td>
 <tr markdown><td markdown>Kafka</td><td markdown>[Q client for Kafka](kafka/index.md)</td></tr>
 <tr markdown><td markdown>MQTT</td><td markdown>[Q client for MQTT](mqtt/index.md)</td></tr>
 <tr markdown><td markdown>Prometheus-Exporter</td><td markdown>[Exporter of kdb+ metrics to Prometheus](prom/exporter/index.md)</td></tr>
 <tr markdown><td markdown>Protobuf</td><td markdown>[Protobuf](protobuf/index.md)</td></tr>
 <tr markdown><td markdown>LDAP</td><td markdown>[Q client for LDAP](ldap/index.md)</td></tr>
-<tr markdown><td markdown>Python</td> <td markdown> [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md) [:fontawesome-brands-superpowers:](../ml/ "Machine learning") </td></tr> 
+<tr markdown><td markdown>Python</td> <td markdown> [Using Python within kdb+ (embedPy)](../ml/embedpy/index.md)</td></tr> 
 <tr markdown><td markdown>R</td><td markdown>[Using R with kdb+](r/index.md)</td>
 <tr markdown><td markdown>Solace</td><td markdown>[Interface to Solace PubSub+ broker](solace/index.md)</td></tr>
 </tr>

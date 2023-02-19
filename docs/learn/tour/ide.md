@@ -43,7 +43,7 @@ Free for all use.
 
 ## Jupyter notebooks
 
-[**JupyterQ**](../../ml/jupyterq/index.md), from KX, lets you run q inside a [Jupyter](https://jupyter.org) notebook.
+[**JupyterQ**](../../interfaces/jupyterq/index.md), from KX, lets you run q inside a [Jupyter](https://jupyter.org) notebook.
 
 
 ## Third-party IDEs

@@ -68,8 +68,8 @@ Deployment assemblies for KX Insights
 <tr markdown>
 <td markdown class="nowrap">[jupyterq](https://github.com/kxsystems/jupyterq)</td>
 <td markdown>
-[Jupyter kernel for kdb+](ml/jupyterq/index.md)
-[:fontawesome-solid-share-alt:](ml/index.md "Machine learning")
+[Jupyter kernel for kdb+](interfaces/jupyterq/index.md)
+[:fontawesome-solid-share-alt:](interfaces.md#fusion "Machine learning")
 </td>
 </tr>
 <tr markdown>

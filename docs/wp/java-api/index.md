@@ -177,7 +177,6 @@ to standard Java objects. This is best seen in the method
 [`c.r()`](https://github.com/KxSystems/javakdb/blob/master/src/main/java/kx/c.java#L709),
 which reads bytes from an incoming message and converts those bytes into
 representative Java types.
-../../interfaces/java-client-for-q.md#type-mapping) is on code.kx.com.
 
 
 ### Basic types  
