@@ -91,13 +91,13 @@ JupyterQ supports Jupyter notebooks for q, providing
 
 ## Technical papers
 
--   [NASA FDL: Analyzing social media data for disaster management](disaster-management/index.md)<br>Conor McCarthy, 2019.10
--   [NASA FDL: Predicting floods with q and machine learning](disaster-floods/index.md)<br>Diane O’Donoghue, 2019.10
--   [An introduction to neural networks with kdb+](neural-networks/index.md)<br>James Neill, 2019.07
--   [NASA FDL: Exoplanets Challenge](exoplanets/index.md)<br>Esperanza López Aguilera, 2018.12
--   [NASA FDL: Space Weather Challenge](space-weather/index.md)<br>Deanna Morgan, 2018.11
--   [Using embedPy to apply LASSO regression](embedpy-lasso/index.md)<br>Samantha Gallagher, 2018.10
--   [K-Nearest Neighbor classification and pattern recognition with q](machine-learning/index.md)<br>Emanuele Melis, 2017.07
+-   [NASA FDL: Analyzing social media data for disaster management](wp/disaster-management/index.md)<br>Conor McCarthy, 2019.10
+-   [NASA FDL: Predicting floods with q and machine learning](wp/disaster-floods/index.md)<br>Diane O’Donoghue, 2019.10
+-   [An introduction to neural networks with kdb+](wp/neural-networks/index.md)<br>James Neill, 2019.07
+-   [NASA FDL: Exoplanets Challenge](wp/exoplanets/index.md)<br>Esperanza López Aguilera, 2018.12
+-   [NASA FDL: Space Weather Challenge](wp/space-weather/index.md)<br>Deanna Morgan, 2018.11
+-   [Using embedPy to apply LASSO regression](wp/embedpy-lasso/index.md)<br>Samantha Gallagher, 2018.10
+-   [K-Nearest Neighbor classification and pattern recognition with q](wp/machine-learning/index.md)<br>Emanuele Melis, 2017.07
 
 
 ---

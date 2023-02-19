@@ -1,6 +1,6 @@
 ---
 title: Internet of Things with MQTT | White papers
-description:
+description: MQTT is a messaging protocol for the Internet of Things (IoT). It was designed as an extremely lightweight publish/subscribe messaging transport. KX has released a MQTT interface with source code available on GitHub. The interface supports Linux, macOS, and Windows platforms.
 author: Rian Ó Cuinneagáin
 date: May 2021
 ---
@@ -17,7 +17,7 @@ by [Rian Ó Cuinneagáin ](#author)
 
     _Internet of Things_ denotes the network of things embedded with sensors, software, and other technologies that connect and exchange data with other devices and systems over the internet.
 
-KX has released an [MQTT interface](../../interfaces/mqtt/index.md) with source code available on [GitHub](https://github.com/KXSystems/mqtt). The interface supports Linux, macOS, and Windows platforms.
+KX has released an MQTT interface with source code available on [GitHub](https://github.com/KXSystems/mqtt). The interface supports Linux, macOS, and Windows platforms.
 
 This interface can be used with the enterprise [KX Streaming Analytics](https://kx.com/platform/) platform. For this paper the underlying [kdb+](../../) language will be used to explore the core functionality available.
 
@@ -135,8 +135,8 @@ cmake --build . --target install
 Start a q process then:
 
 1. Load the MQTT interface using [`\l`](../../basics/syscmds.md#l-load-file-or-directory)
-2. Connect to the broker using [`.mqtt.conn`](../../interfaces/mqtt/reference.md#mqttconn)
-3. Subscribe to the `test` topic using [`.mqtt.sub`](../../interfaces/mqtt/reference.md#mqttsub)
+2. Connect to the broker using [`.mqtt.conn`](https://github.com/KXSystems/mqtt/tree/master/docs/reference.md#mqttconn)
+3. Subscribe to the `test` topic using [`.mqtt.sub`](https://github.com/KXSystems/mqtt/tree/master/docs/reference.md#mqttsub)
 
 ```q
 \l mqtt.q
@@ -144,7 +144,7 @@ Start a q process then:
 .mqtt.sub[`test]
 ```
 
-Publish a message using [`.mqtt.pub`](../../interfaces/mqtt/reference.md#mqttpub). The default message receive [function](../../interfaces/mqtt/reference.md#mqttmsgrcvd) will print the incoming message:
+Publish a message using [`.mqtt.pub`](https://github.com/KXSystems/mqtt/tree/master/docs/reference.md#mqttpub). The default message receive [function](https://github.com/KXSystems/mqtt/tree/master/docs//reference.md#mqttmsgrcvd) will print the incoming message:
 
 ```q
 q).mqtt.pub[`test;"hello"] /Publish to the test topic
@@ -153,7 +153,7 @@ q)(`msgsent;2)
 (`msgrecvd;"test";"hello")
 ```
 
-[More examples](../../interfaces/mqtt/examples.md)
+[More examples](https://github.com/KXSystems/mqtt/tree/master/docs/examples.md)
 
 
 ## Reading sensor data in kdb+
@@ -318,7 +318,7 @@ configure:{[s]
 configure each sensors
 ```
 
-Note that [`.mqtt.pubx`](../../interfaces/mqtt/reference.md#mqttpubx) rather than the default `.mqtt.pub` is used to set [Quality of Service](#quality-of-service) to `1` and [Retain](#birth-and-last-will) to true (`1b`) for these configuration messages.
+Note that [`.mqtt.pubx`](https://github.com/KXSystems/mqtt/tree/master/docs/reference.md#mqttpubx) rather than the default `.mqtt.pub` is used to set [Quality of Service](#quality-of-service) to `1` and [Retain](#birth-and-last-will) to true (`1b`) for these configuration messages.
 
 ```q
 .mqtt.pubx[topic;;1;1b]
@@ -340,7 +340,7 @@ To be a lightweight system, MQTT will default to QoS 0, a fire-and-forget approa
 
 ### Retained messages
 
-Unlike other messaging systems such as a kdb+ [tickerplant](../../learn/startingkdb/tick.md#tickerplant), [Kafka](../../interfaces/kafka/index.md), or [Solace](../../interfaces/solace/index.md) MQTT does not retain logs of all data that flows through the broker. This makes sense as the MQTT broker should be lightweight and able to run on an edge device with slow and limited storage. Also in a bandwidth limited environment attempting to replay large logs could interfere with the publishing of the more important real-time data.
+Unlike other messaging systems such as a kdb+ [tickerplant](../../learn/startingkdb/tick.md#tickerplant), [Kafka](https://github.com/KXSystems/kafka), or [Solace](https://github.com/KXSystems/solace) MQTT does not retain logs of all data that flows through the broker. This makes sense as the MQTT broker should be lightweight and able to run on an edge device with slow and limited storage. Also in a bandwidth limited environment attempting to replay large logs could interfere with the publishing of the more important real-time data.
 The MQTT spec does however allow for a single message to be retained per topic. Importantly, what this allows for is that our downstream clients no matter when they connect will receive the configuration metadata of our sensors.
 
 ### Birth and Last Will
@@ -647,7 +647,7 @@ A new `if` block can then be added to check if the incoming `topic` matches a co
 #### Extracting data from JSON templates using Jinja
 
 The `value_template` system used by Home Assistant is a Python templating language called [Jinja](https://jinja.palletsprojects.com/).
-To use this in kdb+ we can use [embedPy](../../ml/embedpy/index.md) to expose Python functions.
+To use this in kdb+ we can use [embedPy](https://github.com/KXSystems/embedpy) to expose Python functions.
 
 We can write a short `qjinja.py` script to expose the exact function we need:
 

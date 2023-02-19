@@ -7,7 +7,7 @@ keywords: client, kdb+, q, server
 
 
 
-This demonstrates how to _simulate_ a C client handling a _get_ call from a kdb+ server. The [Java interface](../interfaces/java-client-for-q.md) allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses ([message type 0](../basics/ipc.md)) can be sent using `k(-c,...)`.
+This demonstrates how to _simulate_ a C client handling a _get_ call from a kdb+ server. The [Java interface](https://github.com/KxSystems/javakdb) allows the programmer to emulate a kdb+ server. The C interface does not provide a means to respond to a sync call from the server but async responses ([message type 0](../basics/ipc.md)) can be sent using `k(-c,...)`.
 
 A _get_ call may be desirable when client functions need to be called by the server – as though the client were an [extension](../interfaces/using-c-functions.md#portable-example). This q code shows how a listening kdb+ server can call a kdb+ client (with handle `h`) using async messaging only:
 

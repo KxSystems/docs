@@ -39,7 +39,7 @@ be included in a development project.
 Examples are then provided for core use cases for the API in a standard setup. 
 Particular consideration is given to how the API facilitates subscription and publication to a kdb+ tickerplant process, a core component of any kdb+ tick-capture system.
 
-The examples presented here form a set of practical templates complementary to the [primary source of information](../../interfaces/java-client-for-q.md) on code.kx.com.
+The examples presented here form a set of practical templates.
 These templates can be combined and adapted to apply kdb+ across a
 broad range of problem domains. They are available on 
 :fontawesome-brands-github: 

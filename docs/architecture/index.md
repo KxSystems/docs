@@ -1,8 +1,6 @@
 ---
 title: Architecture | Documentation for q and kdb+
 description: How to construct systems from kdb+ processes
-author: Stephen Taylor
-date: November 2020
 ---
 # Architecture of kdb+ systems
 
@@ -28,7 +26,7 @@ This is a source of real-time data; for example, financial quotes and trades fro
 
 Parses data from the data feed to a format that can be ingested by kdb+.
 
-KX’s [Fusion interfaces](../interfaces/fusion.md) connect kdb+ to a range of other technologies, such as [R](../interfaces/r/index.md), [Apache Kafka](../interfaces/kafka/index.md), [Java](../interfaces/java-client-for-q.md), [Python](../interfaces/embedpy.md) and [C](../interfaces/c-client-for-q.md).
+KX’s [Fusion interfaces](../interfaces/index.md#fusion-interfaces) connect kdb+ to a range of other technologies, such as [R](../interfaces/r.md), Apache Kafka, Java, Python and [C](../interfaces/c-client-for-q.md).
 
 
 ## Tickerplant

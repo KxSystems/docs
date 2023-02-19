@@ -1,10 +1,62 @@
 ---
-title: Examples of using R from q
-description: Examples showing the use of the Fusion interfaces between R and q
-keywords: interface, kdb+, library, q, r
+title: Using R with kdb+ | kdb+ and q documentation
+description: How to enable R to connect to kdb+ and extract data; embed R inside q and invoke R routines; enable q to connect to a remote instance of R via TCP/IP and invoke R routines remotely; and enable q to load the R maths library and invoke R math routines locally.
 ---
-# :fontawesome-brands-r-project: Examples using rkdb/embedR
+# :fontawesome-brands-r-project: Using R with kdb+
 
+
+Kdb+ and R are complementary technologies. Kdb+ is the world’s leading timeseries database and incorporates a programming language called q. [R](https://www.r-project.org/) is a programming language and environment for statistical computing and graphics. Both are tools used by data scientists to interrogate and analyze data. Their features sets overlap in that they both:
+
+-   are interactive development environments
+-   incorporate vector languages
+-   have a built-in set of statistical operations
+-   can be extended by the user
+-   are well suited for both structured and ad-hoc analysis
+
+They do however have several differences:
+
+-   q can store and analyze petabytes of data directly from disk whereas R is limited to reading data into memory for analysis
+-   q has a larger set of datatypes including extensive temporal times (timestamp, timespan, time, second, minute, date, month) which make temporal arithmetic straightforward
+-   R contains advanced graphing capabilities whereas q does not
+-   built-in routines in q are generally faster than R
+-   R has a more comprehensive set of pre-built statistical routines
+
+When used together, q and R provide an excellent platform for easily performing advanced statistical analysis and visualization on large volumes of data.
+
+R can be called as a server from q, and vice-versa.
+
+
+## Q and R working together
+
+Given the complementary characteristics of the two languages, it is important to utilize their respective strengths.
+All the analysis could be done in q; the q language is sufficiently flexible and powerful to replicate any of the pre-built R functions.
+Below are some best practice guidelines, although where the line is drawn between q and R will depend on both the system architecture and the strengths of the data scientists using the system.
+
+-   Do as much of the analysis as possible in q. Q analyzes the data directly from the disk and it is always most efficient to do as much work as possible as close to the data as possible. Whenever possible avoid extracting large raw datasets from q. When extractions are required, use q to create smaller aggregated datasets
+-   Do not re-implement tried and tested R routines in q unless they either
+    -   can be written more efficiently in q and are going to be called often
+    -   require more data than is feasible to ship to the R installation
+-   Use R for data visualization
+
+There are four ways to interface q with R:
+
+1.  **R can connect to kdb+ and extract data** – loads a shared library into R, connects to kdb+ via TCP/IP
+2.  **Embed R inside q and invoke R routines** – loads the R library into q, instantiates R
+3.  **Q can connect to a remote instance of R** via TCP/IP and invoke R routines remotely
+4.  **Q can load the R maths library** and invoke the R math routines locally
+
+The first and second methods on interfacing between q and R are covered by the Fusion interfaces [rkdb](https://github.com/KxSystems/rkdb) and [embedR](https://github.com/KxSystems/embedr). The remaining methods are not supported or owned by KX but are described [below](#q-in-r): the packages and methods outlined are kdb-Rmath, RServe and RODBC.
+
+A number of considerations will affect which of the above interfaces are used.
+
+Considering the potential size of the data, it is probably more likely that the kdb+ installation containing the data will be hosted remotely from the user. Points to consider when selecting the integration method are:
+
+-   if interactive graphing is required, either interface (1) or (2) must be used
+-   interface (2) can only be used if the q and R installations are installed on the same server
+-   interfaces (2) and (4) require less data transfer between (possibly remote) processes
+-   interfaces (2) and (3) both require variables to be copied from kdb+ to R for processing, meaning that at some point in time two copies of the variable will exist, increasing total memory requirements
+
+## Examples
 
 The following examples make use of the Fusion interfaces between q/kdb+ and R and show their versatility.
 
@@ -156,7 +208,7 @@ timebucketedpivot:{[startdate; enddate; symbols; timebucket]
 ```
 
 :fontawesome-regular-hand-point-right:
-[Pivoting tables](../../kb/pivoting-tables.md)
+[Pivoting tables](../kb/pivoting-tables.md)
 
 An example is:
 
@@ -274,7 +326,7 @@ for each customer type (`res` = residential, `com` = commercial, `ind` = industr
 
 which produces the plot in Figure 5:
 
-![Customer usage profiles generated in q and drawn in R](../../img/r/figure5.png)<br>
+![Customer usage profiles generated in q and drawn in R](img/r/figure5.png)<br>
 _Figure 5: Customer usage profiles generated in q and drawn in R_
 
 
@@ -299,4 +351,69 @@ q)Rget "date()"
 ```
 
 :fontawesome-regular-hand-point-right:
-Knowledge Base: [Timezones and Daylight Saving Time](../../kb/timezones.md)
+Knowledge Base: [Timezones and Daylight Saving Time](../kb/timezones.md)
+
+## Other methods
+
+Outside the Fusion interfaces to R, a number of interfaces provide extremely useful functionality to a q instance from R and vice-versa.
+
+### Q in R
+
+#### RODBC with kdb+
+
+Although it is not the recommended method, if R is running on Windows, the q ODBC3 driver can be used to connect to kdb+ from R.
+
+:fontawesome-regular-hand-point-right:
+[Kdb+ server for ODBC3](q-server-for-odbc3.md)
+
+The RODBC package should be installed in R. An example is given below.
+
+```r
+# install RODBC
+> install.packages("RODBC")
+# load it
+> library(RODBC)
+# create a connection to a predefined DSN
+> ch <- odbcConnect("localhost:5000") # run a query
+# s.k should be installed on the q server to enable standard SQL
+# However, all statements can be prefixed with q) to run standard q.
+> res <- sqlQuery(ch, paste('q)select count i by date from trade'))
+```
+
+
+### R in q
+
+#### Embedded R maths library
+
+R contains a maths library which can be compiled standalone.
+The functions can then be exposed to q by wrapping them in C code which handles the mapping between R datatypes and q datatypes (K objects).
+See :fontawesome-brands-github: [rwinston/kdb-rmathlib](https://github.com/rwinston/kdb-rmathlib)
+for an example of integrating q with the R API (i.e. making use of some statistical functions from q).
+
+```q
+q)\l rmath.q
+q)x:rnorm 1000     / create 1000 normal variates
+q)summary x        / simple statistical summary of x
+q)hist[x;10]       / show histogram (bin count) with 10 bins
+q)y:scale x        / x = (x - mean(x))/sd(x)
+q)quantile[x;.5]   / calculate the 50% quantile
+q)pnorm[0;1.5;1.5] / cdf value for 0 for a N(1.5,1.5) distribution
+q)dnorm[0;1.5;1.5] / normal density at 0 for N(1.5;1.5) distribution
+```
+
+:fontawesome-regular-hand-point-right:
+Andrey’s [althenia.net/qml](http://althenia.net/qml)
+for an embedded math lib
+
+
+#### Remote R: Rserve
+
+Rserve allows applications to connect remotely to an R instance over TCP/IP.
+The methods are the same as those outlined above,
+the difference being that all data is passed over TCP/IP rather than existing in the same memory space.
+
+Every connection to Rserve has a separate workspace and working directory,
+which means user-defined variables and functions with name clashes will not overwrite each other.
+This differs from the previous method where, if two users are using the same q process,
+they can overwrite each other’s variables in both the q and R workspaces.
+

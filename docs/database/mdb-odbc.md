@@ -32,4 +32,4 @@ q).odbc.eval[h;"select * from aa"]
 
 ---
 :fontawesome-solid-handshake:
-[Q client for ODBC](../interfaces/q-client-for-odbc.md)
+[Q driver for ODBC3](../interfaces/q-server-for-odbc3.md)

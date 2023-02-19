@@ -1,5 +1,6 @@
 ---
-keywords: api, interface, kdb+, library, q, scala
+title: Scala client for kdb+ | Interfaces | kdb+ and q documentation
+description: How to call kdb+ from Scala
 ---
 
 # ![Scala](img/scala.png) Scala client for kdb+

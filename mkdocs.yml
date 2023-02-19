@@ -59,6 +59,19 @@ nav:
     - About: index.md
     - Reference card: ref/index.md
     - Developer tools: devtools.md
+    - Interfaces: 
+      - KX libraries: interfaces/index.md
+      - C/C++:
+        - Quick guide: interfaces/c-client-for-q.md
+        - API reference: interfaces/capiref.md
+        - C API for kdb+ (WP): wp/capi/index.md
+        - Using C/C++ functions: interfaces/using-c-functions.md
+      - Excel: interfaces/excel-client-for-q.md
+      - GPUs: interfaces/gpus.md
+      - ODBC3: interfaces/q-server-for-odbc3.md
+      - ODBC/Simba: interfaces/odbc-simba.md
+      - R: interfaces/r.md
+      - Scala: interfaces/scala-client-for-q.md
     - Open source: github.md
     - Machine learning: ml.md
     - Cloud: https://code.kx.com/insights/core/
@@ -421,11 +434,8 @@ nav:
     - Coding:
       - Data visualization (WP): wp/data-visualization/index.md
       - Deferred response: kb/deferred-response.md
-      - Excel: kb/excel.md
       - Geospatial indexing: kb/geospatial.md
-      - GPUs: kb/gpus.md
       - Linear programming: kb/lp.md
-      - MatLab: kb/matlab.md
       - Multithreaded input: kb/multithreaded-input.md
       - Multithreaded primitives: kb/mt-primitives.md
       - Pivoting tables: kb/pivoting-tables.md
@@ -471,108 +481,6 @@ nav:
       - Withdrawn: releases/withdrawn.md
     # - Environment: basics/environment.md
     - FAQ: kb/faq-listbox.md
-  - Interfaces:
-    - About: interfaces/index.md
-    - IPC:
-      - Introduction: basics/ipc.md
-      - Callbacks: kb/callbacks.md
-      - Listening port: basics/listening-port.md
-      - Named pipes: kb/named-pipes.md
-      - Serialization examples: kb/serialization.md
-      - Server calling client: kb/server-calling-client.md
-      - Socket sharding (WP): wp/socket-sharding/index.md
-      - SSL/TLS: kb/ssl.md
-      - WebSockets: kb/websockets.md
-      - Interprocess communication (WP): wp/ipc/index.md
-    - C/C++:
-      - Quick guide: interfaces/c-client-for-q.md
-      - White paper (WP): wp/capi/index.md
-      - API reference: interfaces/capiref.md
-    - Fusion for kdb+:
-      - About: interfaces/fusion.md
-      - Arrow:
-        - About: interfaces/arrow/index.md
-        - Type mapping: interfaces/arrow/arrow-types.md
-        - Reference: interfaces/arrow/reference.md
-        - Examples: interfaces/arrow/examples.md
-      - FFI:
-        - About: interfaces/ffi/index.md
-        - Reference: interfaces/ffi/reference.md
-        - Examples: interfaces/ffi/examples.md
-      - HDF5:
-        - About: interfaces/hdf5/index.md
-        - Type mapping: interfaces/hdf5/hdf5-types.md
-        - Reference: interfaces/hdf5/reference.md
-        - Examples: interfaces/hdf5/examples.md
-      - Java:
-        # FIXME: combine articles?
-        - Java API (WP): wp/java-api/index.md
-        - Quick guide: interfaces/java-client-for-q.md
-      - Jupyter: 
-        - About: interfaces/jupyterq/index.md
-        - User guide: interfaces/jupyterq/notebooks.md
-        - FAQ: interfaces/jupyterq/faq.md
-      - Kafka:
-        - About: interfaces/kafka/index.md
-        - Reference: interfaces/kafka/reference.md
-      - LDAP:
-        - About: interfaces/ldap/index.md
-        - Reference: interfaces/ldap/reference.md
-        - Examples: interfaces/ldap/examples.md
-      - MQTT:
-        - About: interfaces/mqtt/index.md
-        - Reference: interfaces/mqtt/reference.md
-        - Examples: interfaces/mqtt/examples.md
-        - IoT with MQTT (WP): wp/iot-mqtt/index.md
-      - Prometheus:
-        - Exporter:
-          - About: interfaces/prom/exporter/index.md
-          - Reference: interfaces/prom/exporter/reference.md
-          - Event handlers: interfaces/prom/exporter/event-handlers.md
-          - Examples: interfaces/prom/exporter/examples.md
-      - Protobuf:
-        - About: interfaces/protobuf/index.md
-        - Type mapping: interfaces/protobuf/protobuf-types.md
-        - Reference: interfaces/protobuf/reference.md
-        - Examples: interfaces/protobuf/examples.md
-      - Python (embedPy): interfaces/embedpy.md
-      - R:
-        - About: interfaces/r/index.md
-        - rkdb: interfaces/r/rkdb.md
-        - embedR: interfaces/r/embedr.md
-        - Examples: interfaces/r/examples.md
-        - Complementary interfaces: interfaces/r/r-and-q.md
-      - Solace:
-        - About: interfaces/solace/index.md
-        - Reference: interfaces/solace/reference.md
-        - RESTful API: interfaces/solace/solacerest.md
-        - Examples: interfaces/solace/examples.md
-    - Clients for kdb+:
-      - C#:
-        - API: interfaces/csharp-client-for-q.md
-        - GUIs (WP): wp/gui/index.md
-      - Excel: interfaces/excel-client-for-q.md
-      - J: interfaces/j-client-for-q.md
-      - JDBC: interfaces/jdbc-client-for-kdb.md
-      - Matlab: interfaces/matlab-client-for-q.md
-      - ODBC/Simba: interfaces/odbc-simba.md
-      - ODBC3: interfaces/q-server-for-odbc3.md
-      # - Perl: interfaces/perl-client-for-q.md
-      - Python (PyQ):
-        - Quick start: interfaces/pyq/index.md
-        - Installation: interfaces/pyq/install.md
-        - User guide: interfaces/pyq/user-guide.md
-        - Reference: interfaces/pyq/reference.md
-        - What’s new: interfaces/pyq/whats-new.md
-        - Version history: interfaces/pyq/history.md
-      - Scala: interfaces/scala-client-for-q.md
-    - Q clients:
-      - Bloomberg: interfaces/q-client-for-bloomberg.md
-      - C/C++ functions: interfaces/using-c-functions.md
-      - J: interfaces/q-client-for-j.md
-      - ODBC: interfaces/q-client-for-odbc.md
-    - FIX messaging (WP): wp/fix-messaging.md
-    - Lightning tickerplants (WP): wp/lightning-tickerplants/index.md
   - Architecture:
     - About: architecture/index.md
     - Examples: architecture/examples.md

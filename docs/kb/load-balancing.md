@@ -50,8 +50,7 @@ q)(neg h) "select sym,price from trade where size > 50000" ; h[]
 
 Deferred synchronous requests can also be made from non-q clients. 
 For example, the 
-<!-- FIXME -->
-[example grid viewer](../interfaces/java-client-for-q.md#example-grid-viewer-using-swing) 
+[example grid viewer](https://github.com/KxSystems/javakdb/blob/master/javakdb-examples/src/main/java/com/kx/examples/GridViewer.java) 
 code can be modified to issue a deferred synchronous request rather than a synchronous request by sending an async request and blocking on the handle in exactly the same way. The line
 
 ```java

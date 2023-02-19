@@ -341,7 +341,7 @@ use of the powerful embedPy interface, recently released by KX, which allows the
 ### EmbedPy setup
 
 EmbedPy is available on [GitHub](https://github.com/kxsystems/embedpy) to use with kdb+ V3.5+ and Python 3.5 or higher, for macOS or Linux operating systems and Python 3.6 or higher on the Windows operating system. The installation directory also contains a `README` about embedPy, and an example directory containing thorough examples.
-The reader is encouraged to follow the [online documentation](../../ml/embedpy/index.md) to become familiar with the functionality.
+You are encouraged to follow the [online documentation](https://github.com/KXSystems/embedpy) to become familiar with the functionality.
 
 
 ### Running `qlnd`

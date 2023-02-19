@@ -18,7 +18,7 @@ _Simple, powerful, fast_
 A kdb+ process can communicate with other processes through TCP/IP, which is baked in to the q language. 
 
 :fontawesome-brands-superpowers: 
-[Fusion interfaces](../interfaces/fusion.md)
+[Fusion interfaces](../interfaces/index.md#fusion-interfaces)
 <br>
 :fontawesome-solid-handshake: 
 [Clients for kdb+](../interfaces/c-client-for-q.md) 
