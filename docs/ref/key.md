@@ -124,7 +124,7 @@ q)key`:foo
 
 ## Whether a name is defined
 
-Where `x` is a symbol atom that is not a file or directory descriptor, nor the name of a dictionary or table, returns the original symbol if a variable of that name exists, otherwise an empty list. The name is interpreted relative to the current context if not fully qualified.
+Where `x` is a symbol atom that is not a file or directory descriptor, nor the name of a dictionary or keyed table, returns the original symbol if a variable of that name exists, otherwise an empty list. The name is interpreted relative to the current context if not fully qualified.
 
 ```q
 q)()~key`a        /now you don't see it
