@@ -61,13 +61,17 @@ nav:
     - Developer tools: devtools.md
     - Interfaces: 
       - KX libraries: interfaces/index.md
+      - Bloomberg: interfaces/q-client-for-bloomberg.md
       - C/C++:
         - Quick guide: interfaces/c-client-for-q.md
         - API reference: interfaces/capiref.md
         - C API for kdb+ (WP): wp/capi/index.md
         - Using C/C++ functions: interfaces/using-c-functions.md
       - Excel: interfaces/excel-client-for-q.md
+      - FIX messaging (WP): wp/fix-messaging.md
       - GPUs: interfaces/gpus.md
+      - Lightning tickerplants (WP): wp/lightning-tickerplants/index.md
+      - Matlab: interfaces/matlab-client-for-q.md
       - ODBC3: interfaces/q-server-for-odbc3.md
       - ODBC/Simba: interfaces/odbc-simba.md
       - R: interfaces/r.md
@@ -423,6 +427,17 @@ nav:
       - Compacting HDB sym: kb/compacting-hdb-sym.md
       - Working with sym files (WP): wp/symfiles.md
   - Developing:
+    - IPC:
+      - Overview: basics/ipc.md
+      - Callbacks: kb/callbacks.md
+      - Listening port: basics/listening-port.md
+      - Named pipes: kb/named-pipes.md
+      - Serialization examples: kb/serialization.md
+      - Server calling client: kb/server-calling-client.md
+      - Socket sharding (WP): wp/socket-sharding/index.md
+      - SSL/TLS: kb/ssl.md
+      - WebSockets: kb/websockets.md
+      - Interprocess communication (WP): wp/ipc/index.md
     - Tools:
       - Code profiler: kb/profiler.md
       - Debugging: basics/debug.md
