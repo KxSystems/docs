@@ -287,9 +287,6 @@ q)
 
 :fontawesome-solid-laptop-code:
 [Installing multiple versions of kdb+](../kb/versions.md)
-<br>
-:fontawesome-solid-cloud:
-[Installing kdb+ on DigitalOcean](../kb/digitalocean.md)
 
 
 ## :fontawesome-solid-laptop-code: Interactive development environments

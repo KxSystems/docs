@@ -17,6 +17,8 @@ Requirements: V3.2 or later.
 
     When reporting a problem (e.g. SQL error, wrong results, slowness, segfault etc.) make sure to include steps to reproduce along with your ODBC trace.
 
+:fontawesome-regular-map: [**Data visualization with kdb+ using ODBC**: a Tableau case study](../wp/data-visualization/index.md "White paper")
+
 
 ## Installation
 

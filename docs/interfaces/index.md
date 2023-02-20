@@ -18,11 +18,11 @@ Our Fusion interfaces are
 ### Languages
 
 <table class="kx-compact" markdown>
-<tr markdown><td markdown>[csharpkdb](https://github.com/KxSystems/csharpkdb)</td><td markdown>Call kdb+ from **C#** and **.NET**</td></tr>
+<tr markdown><td markdown>[csharpkdb](https://github.com/KxSystems/csharpkdb)</td><td markdown>Call kdb+ from **C#** and **.NET** [:fontawesome-regular-map:](../wp/gui/index.md "White paper: An introduction to graphical interfaces for kdb+ using C#")</td></tr>
 <tr markdown><td markdown>[embedPy](https://github.com/KxSystems/embedPy)</td><td markdown>Call **Python** from q</td></tr>
 <tr markdown><td markdown>[embedR](https://github.com/KxSystems/embedR)</td><td markdown>[Call **R** from q](r.md)</td></tr>
-<tr markdown><td markdown>[ffi](https://github.com/KxSystems/ffi)</td><td markdown>Call **C/C++** from q</td></tr>
-<tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+</td>
+<tr markdown><td markdown>[ffi](https://github.com/KxSystems/ffi)</td><td markdown>[Call **C/C++** from q](using-c-functions.md)</td></tr>
+<tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+ [:fontawesome-regular-map:](../wp/java-api/index.md "White paper: Java API for kdb+")</td>
 <tr markdown><td markdown>[pyq](https://github.com/KxSystems/pyq)</td><td markdown>Integrate **Python** and q code</td></tr>
 <tr markdown><td markdown>[rkdb](https://github.com/KxSystems/rkdb)</td><td markdown>[Query kdb+ from **R**](r.md)</td></tr>
 <tr markdown><td markdown>[rustkdb](https://github.com/KxSystems/rustkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
@@ -38,10 +38,10 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[jdbc](https://github.com/KxSystems/jdbc)</td><td markdown>**JDBC** driver for kdb+</td>
 <tr markdown><td markdown>[kafka](https://github.com/KxSystems/kafka)</td><td markdown>Q client for **Apache Kafka**</td></tr>
 <tr markdown><td markdown>[ldap](https://github.com/KxSystems/ldap)</td><td markdown>Q client for **LDAP**</td></tr>
-<tr markdown><td markdown>[mqtt](https://github.com/KxSystems/mqtt)</td><td markdown>Q client for **MQTT**</td></tr>
+<tr markdown><td markdown>[mqtt](https://github.com/KxSystems/mqtt)</td><td markdown>Q client for **MQTT** [:fontawesome-regular-map:](../wp/iot-mqtt/index.md "White paper: Internet of Things with MQTT")</td></tr>
 <tr markdown><td markdown>[prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)</td><td markdown>Export kdb+ metrics to **Prometheus**</td></tr>
 <tr markdown><td markdown>[protobufkdb](https://github.com/KxSystems/protobufkdb)</td><td markdown>Read and write **Protocol Buffers** data</td></tr>
-<tr markdown><td markdown>[solace](https://github.com/KxSystems/solace)</td><td markdown>Query kdb+ from a **Solace** event broker</td></tr>
+<tr markdown><td markdown>[solace](https://github.com/KxSystems/solace)</td><td markdown>Query kdb+ from a **Solace** event broker [:fontawesome-regular-map:](../wp/solace/index.md "White paper: Publish/subscribe with the Solace event broker")</td></tr>
 <tr markdown><td markdown>[telegraf_kdb_handler](https://github.com/KxSystems/telegraf_kdb_handler)</td><td markdown>Read **Telegraf** line-protocol messages</td></tr>
 </tr>
 </table>
@@ -50,20 +50,19 @@ Our Fusion interfaces are
 ## Other repos maintained by KX
 
 <table class="kx-compact" markdown>
-<tr markdown><td markdown>[analyst-training](https://github.com/kxsystems/analyst-training)</td><td markdown>Learn [KX Analyst](https://code/kx.com//analyst) and [KX Developer](https://code/kx.com/developer)</td> </tr>
+<tr markdown><td markdown>[analyst-training](https://github.com/kxsystems/analyst-training)</td><td markdown>Learn [**KX Analyst**](https://code/kx.com//analyst) and [**KX Developer**](https://code/kx.com/developer)</td> </tr>
 <tr markdown><td markdown>[automl](https://github.com/KxSystems/automl)</td><td markdown>[Automate machine learning in kdb+](../ml.md)</td></tr>
-<tr markdown><td markdown>[bloomberg](https://github.com/KxSystems/cookbook/tree/master/bloomberg)</td><td markdown>Linux-based Bloomberg feed handler</td></tr>
 <tr markdown><td markdown>[cookbook](https://github.com/KxSystems/cookbook)</td><td markdown>Companion files to the Knowledge Base</td></tr>
-<tr markdown><td markdown>[help](https://github.com/KxSystems/help)</td><td markdown>Online help for q</td></tr>
+<tr markdown><td markdown>[help](https://github.com/KxSystems/help)</td><td markdown>Online **help** for q</td></tr>
 <tr markdown><td markdown>[insights-assemblies](https://github.com/KxSystems/insights-assemblies)</td><td markdown> Deploy assemblies for **KX Insights** ==new==</td></tr>
-<tr markdown><td markdown>[jupyterq](https://github.com/KxSystems/jupyterq)</td><td markdown>Jupyter kernel for kdb+</td>
+<tr markdown><td markdown>[jupyterq](https://github.com/KxSystems/jupyterq)</td><td markdown>**Jupyter** kernel for kdb+</td>
 <tr markdown><td markdown>[kdb](https://github.com/KxSystems/kdb)</td><td markdown>Companion files to the kdb+ product</td></tr>
 <tr markdown><td markdown>[kdb-taq](https://github.com/KxSystems/kdb-taq)</td><td markdown>Processing trade-and-quote data</td></tr>
 <tr markdown><td markdown>[kdb-tick](https://github.com/KxSystems/kdb-tick)</td><td markdown>[Tickerplant](../kb/kdb-tick.md)</td></tr>
 <tr markdown><td markdown>[man](https://github.com/KxSystems/man)</td><td markdown>[man-style reference](../about/man.md)</td></tr>
-<tr markdown><td markdown>[ml](https://github.com/KxSystems/ml)</td><td markdown>[Machine Learning Toolkit](../ml.md)</td></tr>
+<tr markdown><td markdown>[ml](https://github.com/KxSystems/ml)</td><td markdown>[**Machine Learning** Toolkit](../ml.md)</td></tr>
 <tr markdown><td markdown>[mlnotebooks](https://github.com/KxSystems/mlnotebooks)</td><td markdown>Jupyter notebooks with ML examples</td></tr>
-<tr markdown><td markdown>[nlp](https://github.com/KxSystems/nlp)</td><td markdown>[Natural Language Processing in q](../ml.md)</td></tr>
+<tr markdown><td markdown>[nlp](https://github.com/KxSystems/nlp)</td><td markdown>[**Natural Language Processing** in q](../ml.md)</td></tr>
 </tr>
 </table>
 
