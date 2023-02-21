@@ -25,7 +25,6 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+ [:fontawesome-regular-map:](../wp/java-api/index.md "White paper: Java API for kdb+")</td>
 <tr markdown><td markdown>[pyq](https://github.com/KxSystems/pyq)</td><td markdown>Integrate **Python** and q code</td></tr>
 <tr markdown><td markdown>[rkdb](https://github.com/KxSystems/rkdb)</td><td markdown>[Query kdb+ from **R**](r.md)</td></tr>
-<tr markdown><td markdown>[rustkdb](https://github.com/KxSystems/rustkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
 </tr>
 </table>
 
@@ -56,9 +55,10 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[help](https://github.com/KxSystems/help)</td><td markdown>Online **help** for q</td></tr>
 <tr markdown><td markdown>[insights-assemblies](https://github.com/KxSystems/insights-assemblies)</td><td markdown> Deploy assemblies for **KX Insights** ==new==</td></tr>
 <tr markdown><td markdown>[jupyterq](https://github.com/KxSystems/jupyterq)</td><td markdown>**Jupyter** kernel for kdb+</td>
-<tr markdown><td markdown>[kdb](https://github.com/KxSystems/kdb)</td><td markdown>Companion files to the kdb+ product</td></tr>
-<tr markdown><td markdown>[kdb-taq](https://github.com/KxSystems/kdb-taq)</td><td markdown>Processing trade-and-quote data</td></tr>
-<tr markdown><td markdown>[kdb-tick](https://github.com/KxSystems/kdb-tick)</td><td markdown>[Tickerplant](../kb/kdb-tick.md)</td></tr>
+<tr markdown><td markdown>[kdb](https://github.com/KxSystems/kdb)</td><td markdown>Companion files to **kdb+**</td></tr>
+<tr markdown><td markdown>[kdb-taq](https://github.com/KxSystems/kdb-taq)</td><td markdown>Processing **trade-and-quote** data</td></tr>
+<tr markdown><td markdown>[kdb-tick](https://github.com/KxSystems/kdb-tick)</td><td markdown>[**Ticker**plant](../kb/kdb-tick.md)</td></tr>
+<tr markdown><td markdown>[kxkdb](https://github.com/KxSystems/rustkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
 <tr markdown><td markdown>[man](https://github.com/KxSystems/man)</td><td markdown>[man-style reference](../about/man.md)</td></tr>
 <tr markdown><td markdown>[ml](https://github.com/KxSystems/ml)</td><td markdown>[**Machine Learning** Toolkit](../ml.md)</td></tr>
 <tr markdown><td markdown>[mlnotebooks](https://github.com/KxSystems/mlnotebooks)</td><td markdown>Jupyter notebooks with ML examples</td></tr>
