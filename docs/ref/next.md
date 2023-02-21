@@ -7,6 +7,14 @@ author: Stephen Taylor
 
 _Immediate or near neighbors_
 
+<style>.epigraph{float: right; font-size: .985`; margin-left: 2em;}</style>
+
+What if just under this layer of life you could<br>
+find the old one, moving forward just the same,<br>
+and just above, what’s yet to come<br>
+— Emily Berry, _Unexhausted Time_
+{: .epigraph}
+
 
 
 
@@ -99,8 +107,8 @@ q)1 xprev "abcde"
 
 `xprev` is a right-uniform function.
 
-----
 
+----
 :fontawesome-solid-book:
 [Each Prior](../ref/maps.md#each-prior)
 <br>
