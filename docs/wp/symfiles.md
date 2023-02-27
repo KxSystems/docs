@@ -103,7 +103,7 @@ q)e:`x?p /fills in the missing value
 q)e
 `x$`AAPL`AAPL`GE`IBM`GE`IBM`GE`GOOG`GE`IBM`AAPL`FB
 q)x
-`u\#`AAPL`GE`IBM`GOOG`FB
+`u#`AAPL`GE`IBM`GOOG`FB
 ```
 
 Enums and linked columns now use 64-bit indexes, and because of this,
@@ -248,8 +248,8 @@ Using `.Q.ens`:
 
 ```q
 q)t:([]col1:`AAPL`IBM`GE`GOOG;col2:4?100.;col3:(string 4?`2))
-q){hsym[`$string[.z.D],"/",string[x],"/"] set .Q.ens\[`:.;value x;`$"sym",string x]}each tables`
-,\`:2018.10.23/t/
+q){hsym[`$string[.z.D],"/",string[x],"/"] set .Q.ens[`:.;value x;`$"sym",string x]}each tables`
+,`:2018.10.23/t/
 ```
 
 Or using `.Q.dpfts`:
@@ -257,7 +257,7 @@ Or using `.Q.dpfts`:
 ```q
 q)t:([]col1:`AAPL`IBM`GE`GOOG;col2:4?100.;col3:(string 4?`2))
 q){.Q.dpfts[`:.;.z.D;`col1;x;`$"sym",string x]} each tables`
-,\`t
+,`t
 ```
 
 In both cases, the new sym file `symt` is created for table `t`.
@@ -372,7 +372,7 @@ sym file, you will not be able to write to the sym file. A _no append
 to zipped enums_ error is displayed if this occurs.
 
 ```q
-q)-19\!(`:db/sym;`:db/sym;17;2;6)
+q)-19!(`:db/sym;`:db/sym;17;2;6)
 `:db/sym
 q)t:([]col1:`FB`MSFT`AMZN`WFC;col2:4?100.;col3:(string 4?`2))
 q)get `:db/sym
@@ -740,7 +740,7 @@ system"mv sym zym" /make backup of sym file
   s:get file; /file contents
   //attributes - due to no`g# error in threads
   //this can be just a:attr s
-  //if your version of kdb+ does support setting `g\# in threads
+  //if your version of kdb+ does support setting `g# in threads
   a:first `p`s inter attr s;
   s:oldSym`int$s; /unenumerate against old sym file
   file set a#`sym$s; /enumerate against new sym file & add attrib &

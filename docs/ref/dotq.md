@@ -1102,7 +1102,7 @@ Where `x` is
     q).Q.id flip (5#.Q.res)!(5#())
     in1 within1 like1 bin1 binr1
     ----------------------------
-    q).Q.id flip(\`\$("a";"a/b"))!2#()
+    q).Q.id flip(`$("a";"a/b"))!2#()
     a ab
     ----
     ```

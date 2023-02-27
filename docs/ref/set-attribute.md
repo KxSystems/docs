@@ -100,9 +100,9 @@ q)2,`p#2 2 2 1 1 4 4 4 4 3 3
 ??? warning "The _grouped_ attribute is presently unsuitable for cycling through a small window of a domain, due to the retention of keys backing the attribute."
 
     ```q
-    q)v:\`g#1#0
+    q)v:`g#1#0
     q)do[1000000;v[0]+:1];
-    q)0N!.Q.w[]\`used; v:\`g#\`#v; .Q.w[]\`used
+    q)0N!.Q.w[]`used; v:`g#`#v; .Q.w[]`used
     74275344
     332368
     ```

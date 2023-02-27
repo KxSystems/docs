@@ -96,12 +96,12 @@ The usual prompt is `q)`. Sometimes a different prompt is given; you need to und
 
     ```q
     q)f:{2+x}        / define function f
-    q)f \`sym         / function call fails with symbol argument
+    q)f `sym         / function call fails with symbol argument
     {2+x}            / and is left suspended
     'type
     +
     2
-    \`sym
+    `sym
     q))\             / prompt becomes q)). Enter \ to return to usual prompt
     q)
     ```

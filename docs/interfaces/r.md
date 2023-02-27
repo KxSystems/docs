@@ -150,7 +150,7 @@ We can see that
 
     ```q
     q)\t select time,sym,return
-      from timebucketedstocks[2014.01.09; 2014.01.15; \`GOOG\`IBM\`MSFT; 0D00:05]
+      from timebucketedstocks[2014.01.09; 2014.01.15; `GOOG`IBM`MSFT; 0D00:05]
     134
     ```
 

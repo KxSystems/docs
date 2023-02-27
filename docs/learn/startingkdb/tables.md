@@ -23,7 +23,7 @@ There are two ways of creating a table. One way explicitly associates lists of c
 -   create table by association:
 
     ```q
-    q)tab:flip \`items\`sales\`prices!(\`nut\`bolt\`cam\`cog;6 8 0 3;10 20 15 20)
+    q)tab:flip `items`sales`prices!(`nut`bolt`cam`cog;6 8 0 3;10 20 15 20)
     q)tab
     items sales prices
     ------------------
@@ -36,7 +36,7 @@ There are two ways of creating a table. One way explicitly associates lists of c
 -   create table by specifying column names and initial values:
 
     ```q
-    q)tab2:([]items:\`nut\`bolt\`cam\`cog;sales:6 8 0 3;prices:10 20 15 20)
+    q)tab2:([]items:`nut`bolt`cam`cog;sales:6 8 0 3;prices:10 20 15 20)
     q)tab~tab2              / tab and tab2 are identical
     1b
     ```

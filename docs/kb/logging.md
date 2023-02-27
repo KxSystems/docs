@@ -60,7 +60,7 @@ size | 1625
 
     ```q
     // in server
-    0 ("insert";\`trade; (10:30:01.000; \`intel; 88.5; 1625))
+    0 ("insert";`trade; (10:30:01.000; `intel; 88.5; 1625))
     ```
 
 
