@@ -1,9 +1,8 @@
 ---
-title: Matlab client for kdb+ – Interfaces – kdb+ and q documentation
-description: How connect a Matlab client program toa kdb+ server process
-keywords: api, interface, kdb+, library, matlab, q
+title: Working with Matlab | Interfaces | kdb+ and q documentation
+description: How connect a Matlab client program to a kdb+ server process
 ---
-# ![Matlab](img/matlab.png) Matlab client for kdb+
+# ![Matlab](img/matlab.png) Working with Matlab 
 
 
 

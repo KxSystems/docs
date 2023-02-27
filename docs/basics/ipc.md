@@ -1,7 +1,6 @@
 ---
-title: Interprocess communication | Basics | kdb+ and q documentation
+title: Interprocess communication | Developing | kdb+ and q documentation
 description: TCP/IP is used for communicating between processes. The protocol is extremely simple, as is the message format.
-keywords: async, block, buffer, communication, flush, hopen, interprocess, ip, ipc, kdb+, message, port, process, protocol, q, queue, socket, sync, tcp
 ---
 # :fontawesome-solid-handshake: Interprocess communication
 
@@ -15,10 +14,10 @@ _Simple, powerful, fast_
 [.z](../ref/dotz.md)              handle message (callbacks)
 </div>
 
-A kdb+ process can communicate with other processes through TCP/IP, which is baked in to the q language. 
+A kdb+ process can communicate with other processes through TCP/IP, which is baked into the q language. 
 
 :fontawesome-brands-superpowers: 
-[Fusion interfaces](../interfaces/fusion.md)
+[Fusion interfaces](../interfaces/index.md#fusion-interfaces)
 <br>
 :fontawesome-solid-handshake: 
 [Clients for kdb+](../interfaces/c-client-for-q.md) 

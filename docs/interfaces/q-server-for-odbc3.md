@@ -1,7 +1,6 @@
 ---
 title: Kdb+ server for ODBC3 – Interfaces – kdb+ and q documentation
 description: The ODBC3 server allows applications to query kdb+ via the ODBC interface.  
-keywords: api, interface, kdb+, library, odbc, odbc3, q, SQL
 ---
 # :fontawesome-solid-database: Kdb+ server for ODBC3
 
@@ -17,6 +16,8 @@ Requirements: V3.2 or later.
 !!! tip "Reporting problems"
 
     When reporting a problem (e.g. SQL error, wrong results, slowness, segfault etc.) make sure to include steps to reproduce along with your ODBC trace.
+
+:fontawesome-regular-map: [**Data visualization with kdb+ using ODBC**: a Tableau case study](../wp/data-visualization/index.md "White paper")
 
 
 ## Installation

@@ -269,7 +269,7 @@ output | Controls how the cell value is used to compute the activation of an LST
 
 ### Model structure
 
-Producing an LSTM model was done in [embedPy](../../interfaces/embedpy.md) using Keras. The following is the model used for the multi-class use case in this paper,
+Producing an LSTM model was done in [embedPy](https://github.com/KxSystems/embedpy) using Keras. The following is the model used for the multi-class use case in this paper,
 
 ```q
 // Define python functionality to produce the model

@@ -1,7 +1,6 @@
 ---
-title: GPUs – calling CUDA code from q – Interfaces – kdb+ and q documentation
-description: This is a quick example of calling CUDA code from q. CUDA is a variant on C that is used to write general-purpose programs that execute on NVIDIA graphics cards. Data is copied to the card, the computation executed, and the results copied back. It is important that there is significant computation work to be performed on the card (ideally this entirely dominates the execution time); there is enough parallelism in the computation to keep the hardware resources of the card/s busy; and that the data set fit in the limited memory of the cards.
-keywords: api, cuda, gpu, graphical, kdb+, library, processing, q, unit
+title: GPUs | Interfaces | kdb+ and q documentation
+description: An example showing how to call CUDA code from q. CUDA is a variant on C used to write general-purpose programs that execute on NVIDIA graphics cards. Data is copied to the card, the computation executed, and the results copied back. 
 ---
 # GPUs
 
@@ -15,7 +14,8 @@ To set the scene (and hopefully experts will forgive the simplifications) CUDA i
 -   there is enough parallelism in the computation to keep the hardware resources of the card/s busy
 -   that the data set fit in the limited memory of the cards
 
-:fontawesome-regular-hand-point-right: [Documentation on CUDA](https://developer.nvidia.com/cuda-downloads)
+:fontawesome-solid-globe: 
+[CUDA documentation](https://developer.nvidia.com/cuda-downloads)
 
 On to a simple example of a function that takes an array of reals and squares it. Here we use single-precision floating point, however double can be used as well on later-model cards. Here is the annotated code:
 
@@ -59,16 +59,21 @@ K gpu_square(K x) {
  cudaFree(device_memory);
  return 0;
 }
+```
 
-// Then we use the function from kdb+ like this:
-$ cat test.q
+Then we write `test.q`.
+
+```q
 square:`cudalib 2:(`gpu_square;1)
 numbers: "e"$til 10
 square[numbers]
 numbers
 \\
+```
 
-// And here's a sample execution 64-bit Linux with an NVIDIA GTX 8800:
+Here’s a sample execution 64-bit Linux with an NVIDIA GTX 8800.
+
+```txt
 $ q test.q
 KDB+ 2.4 2008.09.02 Copyright (C) 1993-2008 Kx Systems
 l64/ ...
@@ -76,9 +81,10 @@ l64/ ...
 0 1 4 9 16 25 36 49 64 81e
 ```
 
-To give a feel for real use-cases, a Libor Monte-Carlo portfolio computation runs in about 26 seconds on a single core of an x86 machine, and in 0.2 seconds on the graphics card. Some companies are releasing commercial code, such as swaption volatility calculations, as libraries that use GPUs under the covers.
+To give a feel for real use cases, a Libor Monte-Carlo portfolio computation runs in about 26 seconds on a single core of an x86 machine, and in 0.2 seconds on the graphics card. Some companies are releasing commercial code, such as swaption volatility calculations, as libraries that use GPUs under the covers.
 
-:fontawesome-regular-hand-point-right: [nvidia.com/object/cuda_home.html](https://developer.nvidia.com/cuda-zone) 
+:fontawesome-solid-globe: 
+[nVidia Developer Center CUDA Zone](https://developer.nvidia.com/cuda-zone) 
 
-(Based on a k4 post by Niall 2008.09.13)
+<!-- Based on a k4 post by Niall 2008.09.13 -->
 

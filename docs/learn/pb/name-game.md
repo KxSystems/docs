@@ -6,10 +6,7 @@ date: December 2020
 ---
 # The Name Game
 
-[![Shirley Ellis and the Name Game](../../img/name-game.jpg)](https://www.youtube.com/watch?v=-iEkgVL43yU "YouTube")
-<br>
-:fontawesome-brands-youtube:
-[Shirley Ellis The Name Game](https://www.youtube.com/watch?v=-iEkgVL43yU)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5MJLi5_dyn0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ??? summary "Make substitutions in a string or list of strings"
 

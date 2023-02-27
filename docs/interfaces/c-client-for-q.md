@@ -1,20 +1,17 @@
 ---
-title: C client for kdb+ | Interfaces | kdb+ and q documentation
+title: C/C++ | Interfaces | kdb+ and q documentation
 description: How to connect a C client program to a kdb+ server process
 author: Charles Skelton
 ---
-# C client for kdb+
+# C/C++ quick guide
 
 
 
-:fontawesome-regular-hand-point-right:
-[API reference](capiref.md)
-
-There are three cases in which to to use the C API for kdb+:
+There are three cases in which to to use the [C API](capiref.md) for kdb+:
 
 1.   Dynamically-loaded library called by q, e.g. OS, math, analytics.
 :fontawesome-regular-hand-point-right: [Using C functions](using-c-functions.md)
-2.  Dynamically-loaded library doing callbacks into q, e.g. feedhandlers ([Bloomberg client](q-client-for-bloomberg.md))
+2.  Dynamically-loaded library doing callbacks into q, e.g. feedhandlers (e.g. [Bloomberg client](https://github.com/KxSystems/cookbook/tree/master/bloomberg))
 3.  C/C++ clients talking to kdb+ servers (standalone applications), e.g. feedhandlers and clients. Links with `c.o`/`c.dll`.
 
 

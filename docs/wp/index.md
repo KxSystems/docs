@@ -41,7 +41,7 @@ White papers are flagged in the navigation menus.
 
 ## :fontawesome-solid-database: Managing data and systems
 
--   [**Auto Scaling for a kdb+ realtime database**](../cloud/autoscale/index.md) :fontawesome-solid-cloud:<br>Jack Stapleton, 2020.09
+<!-- -   [**Auto Scaling for a kdb+ realtime database**](../cloud/autoscale/index.md) :fontawesome-solid-cloud:<br>Jack Stapleton, 2020.09 -->
 -   [**Mass ingestion through data loaders**](data-loaders/index.md)<br>Enda Gildea, 2020.08
 -   [**Latency and efficiency considerations for a real-time surveillance system**](surveillance-latency/index.md)<br>Jason Quinn, 2019.11
 -   [**Working with sym files**](symfiles.md)<br>Paula Clarke, 2019.03

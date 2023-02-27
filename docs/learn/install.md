@@ -1,8 +1,6 @@
 ---
 title: Installing kdb+ | Learn | kdb+ and q documentation
 description: How to install kdb+ on Linux, macOS, or Windows
-author: Stephen Taylor
-date: January 2023
 ---
 # :fontawesome-solid-power-off: Installing kdb+
 
@@ -289,9 +287,6 @@ q)
 
 :fontawesome-solid-laptop-code:
 [Installing multiple versions of kdb+](../kb/versions.md)
-<br>
-:fontawesome-solid-cloud:
-[Installing kdb+ on DigitalOcean](../kb/digitalocean.md)
 
 
 ## :fontawesome-solid-laptop-code: Interactive development environments
@@ -301,7 +296,7 @@ The examples on this site are produced that way; visual fidelity should help you
 
 [Jupyter notebooks](https://jupyter.org/) are an interactive publishing format.
 We are producing lessons in this form and the library  is growing.
-The [JupyterQ interface](../ml/jupyterq/index.md) lets you run q code in notebooks.
+The [JupyterQ interface](https://github.com/KxSystems/jupyterq) lets you run q code in notebooks.
 
 Notebooks are not, however, an IDE, and are unsuitable for studying features such as event handlers.
 

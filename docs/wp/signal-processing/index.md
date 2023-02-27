@@ -823,7 +823,7 @@ Fast Fourier Transform, written
 natively in Python 3.6, and also against a well refined, and highly-optimized C based library. The library in question will be the
 [NumPy](https://numpy.org) library, called via the q fusion with
 Python – embedPy (details on setting up this environment are available
-from [Machine Learning section](../../ml/embedpy/index.md) on
+from [Machine Learning section](https://github.com/KXSystems/mqtt/tree/master/docs/) on
 code.kx.com.
 
 In order to get an accurate comparison, each method should be tested on

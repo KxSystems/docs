@@ -34,8 +34,8 @@ extra_javascript:
 #   - search
 
 remote_branch: master
-repo_name: 'GitHub'
-repo_url: 'https://github.com/kxsystems/docs'
+repo_name: ''
+repo_url: ''
 edit_uri: ""
 
 site_description: 'Documentation for kdb+ and the q programming language'
@@ -54,19 +54,37 @@ theme:
     - 404.html # required by other subsites
 
 nav:
-  - Home:
-    - kdb+ and q: index.md
+  - Home: https://code.kx.com/home
+  - kdb+ and q: 
+    - About: index.md
     - Reference card: ref/index.md
     - Developer tools: devtools.md
+    - Interfaces: 
+      - KX libraries: interfaces/index.md
+      - Bloomberg: interfaces/q-client-for-bloomberg.md
+      - C/C++:
+        - Quick guide: interfaces/c-client-for-q.md
+        - API reference: interfaces/capiref.md
+        - C API for kdb+ (WP): wp/capi/index.md
+        - Using C/C++ functions: interfaces/using-c-functions.md
+      - Excel: interfaces/excel-client-for-q.md
+      - FIX messaging (WP): wp/fix-messaging.md
+      - GPUs: interfaces/gpus.md
+      - Lightning tickerplants (WP): wp/lightning-tickerplants/index.md
+      - Matlab: interfaces/matlab-client-for-q.md
+      - ODBC3: interfaces/q-server-for-odbc3.md
+      - ODBC/Simba: interfaces/odbc-simba.md
+      - R: interfaces/r.md
+      - Scala: interfaces/scala-client-for-q.md
     - Open source: github.md
-    - Support: https://code.kx.com/home/support/
+    - Machine learning: ml.md
+    - Cloud: https://code.kx.com/insights/core/
     - Community: https://code.kx.com/home/community/
     - kdb+ and q forum: https://community.kx.com/t5/kdb-and-q/bd-p/kdb-q-questions
     - White papers: wp/index.md
-    # - Site news: about/site-news.md
     - About this site: about/thissite.md
-    # - Citations: about/citations.md
-    - Kx Systems: https://kx.com
+  - kdb Insights: https://code.kx.com/insights/insights
+  - kdb Insights Enterprise: https://code.kx.com/insights/platform
   - Learn:
     - Get started: learn/index.md
     - Install: learn/install.md
@@ -409,6 +427,17 @@ nav:
       - Compacting HDB sym: kb/compacting-hdb-sym.md
       - Working with sym files (WP): wp/symfiles.md
   - Developing:
+    - IPC:
+      - Overview: basics/ipc.md
+      - Callbacks: kb/callbacks.md
+      - Listening port: basics/listening-port.md
+      - Named pipes: kb/named-pipes.md
+      - Serialization examples: kb/serialization.md
+      - Server calling client: kb/server-calling-client.md
+      - Socket sharding (WP): wp/socket-sharding/index.md
+      - SSL/TLS: kb/ssl.md
+      - WebSockets: kb/websockets.md
+      - Interprocess communication (WP): wp/ipc/index.md
     - Tools:
       - Code profiler: kb/profiler.md
       - Debugging: basics/debug.md
@@ -467,106 +496,6 @@ nav:
       - Withdrawn: releases/withdrawn.md
     # - Environment: basics/environment.md
     - FAQ: kb/faq-listbox.md
-  - Interfaces:
-    - About: interfaces/index.md
-    - IPC:
-      - Introduction: basics/ipc.md
-      - Callbacks: kb/callbacks.md
-      - Listening port: basics/listening-port.md
-      - Named pipes: kb/named-pipes.md
-      - Serialization examples: kb/serialization.md
-      - Server calling client: kb/server-calling-client.md
-      - Socket sharding (WP): wp/socket-sharding/index.md
-      - SSL/TLS: kb/ssl.md
-      - WebSockets: kb/websockets.md
-      - Interprocess communication (WP): wp/ipc/index.md
-    - C/C++:
-      - Quick guide: interfaces/c-client-for-q.md
-      - White paper (WP): wp/capi/index.md
-      - API reference: interfaces/capiref.md
-    - Fusion for kdb+:
-      - About: interfaces/fusion.md
-      - Arrow:
-        - About: interfaces/arrow/index.md
-        - Type mapping: interfaces/arrow/arrow-types.md
-        - Reference: interfaces/arrow/reference.md
-        - Examples: interfaces/arrow/examples.md
-      - FFI:
-        - About: interfaces/ffi/index.md
-        - Reference: interfaces/ffi/reference.md
-        - Examples: interfaces/ffi/examples.md
-      - HDF5:
-        - About: interfaces/hdf5/index.md
-        - Type mapping: interfaces/hdf5/hdf5-types.md
-        - Reference: interfaces/hdf5/reference.md
-        - Examples: interfaces/hdf5/examples.md
-      - Java:
-        # FIXME: combine articles?
-        - Java API (WP): wp/java-api/index.md
-        - Quick guide: interfaces/java-client-for-q.md
-      - Jupyter: interfaces/jupyterq.md
-      - Kafka:
-        - About: interfaces/kafka/index.md
-        - Reference: interfaces/kafka/reference.md
-      - LDAP:
-        - About: interfaces/ldap/index.md
-        - Reference: interfaces/ldap/reference.md
-        - Examples: interfaces/ldap/examples.md
-      - MQTT:
-        - About: interfaces/mqtt/index.md
-        - Reference: interfaces/mqtt/reference.md
-        - Examples: interfaces/mqtt/examples.md
-        - IoT with MQTT (WP): wp/iot-mqtt/index.md
-      - Prometheus:
-        - Exporter:
-          - About: interfaces/prom/exporter/index.md
-          - Reference: interfaces/prom/exporter/reference.md
-          - Event handlers: interfaces/prom/exporter/event-handlers.md
-          - Examples: interfaces/prom/exporter/examples.md
-      - Protobuf:
-        - About: interfaces/protobuf/index.md
-        - Type mapping: interfaces/protobuf/protobuf-types.md
-        - Reference: interfaces/protobuf/reference.md
-        - Examples: interfaces/protobuf/examples.md
-      - Python (embedPy): interfaces/embedpy.md
-      - R:
-        - About: interfaces/r/index.md
-        - rkdb: interfaces/r/rkdb.md
-        - embedR: interfaces/r/embedr.md
-        - Examples: interfaces/r/examples.md
-        - Complementary interfaces: interfaces/r/r-and-q.md
-      - Solace:
-        - About: interfaces/solace/index.md
-        - Reference: interfaces/solace/reference.md
-        - RESTful API: interfaces/solace/solacerest.md
-        - Examples: interfaces/solace/examples.md
-    - Clients for kdb+:
-      - C#:
-        - API: interfaces/csharp-client-for-q.md
-        - GUIs (WP): wp/gui/index.md
-      - Excel: interfaces/excel-client-for-q.md
-      - J: interfaces/j-client-for-q.md
-      - JDBC: interfaces/jdbc-client-for-kdb.md
-      - Matlab: interfaces/matlab-client-for-q.md
-      - ODBC/Simba: interfaces/odbc-simba.md
-      - ODBC3: interfaces/q-server-for-odbc3.md
-      # - Perl: interfaces/perl-client-for-q.md
-      - Python (PyQ):
-        - Quick start: interfaces/pyq/index.md
-        - Installation: interfaces/pyq/install.md
-        - User guide: interfaces/pyq/user-guide.md
-        - Reference: interfaces/pyq/reference.md
-        - What’s new: interfaces/pyq/whats-new.md
-        - Version history: interfaces/pyq/history.md
-      - Scala: interfaces/scala-client-for-q.md
-    - Q clients:
-      - Bloomberg: interfaces/q-client-for-bloomberg.md
-      - C/C++ functions: interfaces/using-c-functions.md
-      - GPUs: interfaces/gpus.md
-      - J: interfaces/q-client-for-j.md
-      - ODBC: interfaces/q-client-for-odbc.md
-    - FIX messaging (WP): wp/fix-messaging.md
-    - Lightning tickerplants (WP): wp/lightning-tickerplants/index.md
   - Architecture:
     - About: architecture/index.md
     - Examples: architecture/examples.md
@@ -595,100 +524,4 @@ nav:
     - Advanced:
       - Distributed systems (WP): wp/query-interface.md
       - Intraday writedown (WP): wp/intraday-writedown/index.md
-  - Cloud:
-    - About: cloud/index.md
-    - KX Insights: 'https://code.kx.com/insights/'
-    - Amazon Web Services:
-      - Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
-      - Reference architecture: cloud/aws/index.md
-      - License: license/aws.md
-      - Amazon EC2 & Storage Services:
-        - Migrating a kdb+ HDB to Amazon EC2: cloud/aws/migration.md
-        - Elastic Block Store (EBS): cloud/aws/app-a-ebs.md
-        - EFS (NFS): cloud/aws/app-b-efs-nfs.md
-        - Amazon Storage Gateway: cloud/aws/app-c-asg.md
-        - FSx for Lustre: cloud/aws/lustre.md
-      - AWS Lambda: cloud/aws-lambda/index.md
-    - Microsoft Azure:
-      - Marketplace: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/firstderivativesplc1596469572732.kx-insights?tab=Overview'
-      # - Reference architecture: cloud/azure/architecture.md
-      - License: license/azure.md
-    - Google Cloud:
-      - Marketplace: cloud/gcpm/index.md
-      - Reference architecture: cloud/gcpm/architecture.md
-      - License: license/gcp.md
-    - Auto Scaling (WP):
-      - About: cloud/autoscale/index.md
-      - Amazon Web Services: cloud/autoscale/aws.md
-      - Realtime data cluster: cloud/autoscale/rdc.md
-      - Costs and risks: cloud/autoscale/cost-risk.md
-    - Surveillance in the Cloud (WP): wp/surv-cloud/index.md
-    - Other file systems:
-        - MapR-FS: cloud/otherfs/mapr.md
-        - Goofys: cloud/otherfs/goofys.md
-        - S3FS: cloud/otherfs/s3fs.md
-        - S3QL: cloud/otherfs/s3ql.md
-        - ObjectiveFS: cloud/otherfs/objectivefs.md
-        - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
-        - Quobyte: cloud/otherfs/quobyte.md
-    - DigitalOcean: kb/digitalocean.md
-  - Machine learning:
-    - About: ml/index.md
-    - Set up: ml/setup.md
-    - embedPy:
-      - About: ml/embedpy/index.md
-      - User guide: ml/embedpy/userguide.md
-      - FAQ: ml/embedpy/faq.md
-      - Reference: ml/embedpy/reference.md
-      - embedPy and LASSO:  wp/embedpy-lasso/index.md
-    - JupyterQ:
-      - About: ml/jupyterq/index.md
-      - User guide: ml/jupyterq/notebooks.md
-      - FAQ: ml/jupyterq/faq.md
-    - Demonstration notebooks: ml/notebooks.md
-    - Toolkit:
-      - About: ml/toolkit/index.md
-      - Utilities:
-        - Metrics: ml/toolkit/utilities/metric.md
-        - Preprocessing: ml/toolkit/utilities/preproc.md
-        - Utils: ml/toolkit/utilities/util.md
-        - Multiprocessing: ml/toolkit/utilities/multiprocess.md
-      - FRESH: ml/toolkit/fresh.md
-      - Cross validation: ml/toolkit/xval.md
-      - Clustering:
-        - About: ml/toolkit/clustering/index.md
-        - Algorithms: ml/toolkit/clustering/algos.md
-        - K-Dimensional tree: ml/toolkit/clustering/kdtree.md
-        - Scoring metrics: ml/toolkit/clustering/score.md
-      - Timeseries:
-        - About: ml/toolkit/timeseries/index.md
-        - Models: ml/toolkit/timeseries/models.md
-        - Miscellaneous: ml/toolkit/timeseries/misc.md
-      - Optimization: ml/toolkit/optimize.md
-      - Statistics: ml/toolkit/stats.md
-      - Graph and Pipeline:
-        - About: ml/toolkit/graph/index.md
-        - Graph: ml/toolkit/graph/graph.md
-        - Pipeline: ml/toolkit/graph/pipeline.md
-    - Natural language processing:
-      - About: ml/nlp/index.md
-      - User guide:
-        - Data preparation: ml/nlp/userguide/preproc.md
-        - Text comparison: ml/nlp/userguide/comparisons.md
-        - Clustering: ml/nlp/userguide/clustering.md
-        - Feature vectors: ml/nlp/userguide/feature-vector.md
-        - Utilities: ml/nlp/userguide/utils.md
-        - Emails: ml/nlp/userguide/emails.md
-    - AutoML:
-      - About: ml/automl/index.md
-      - User guide:
-        - About: ml/automl/ug/index.md
-        - Configuration: ml/automl/ug/config.md
-        - Framework interaction: ml/automl/ug/functions.md
-        - Data pre-processing: ml/automl/ug/preproc.md
-        - Data processing: ml/automl/ug/proc.md
-        - Data post-processing: ml/automl/ug/postproc.md
-        - Advanced parameter modifications: ml/automl/ug/advanced.md
-      - FAQ: ml/automl/faq.md
-    - Neural networks (WP): wp/neural-networks/index.md
-    - Pattern recognition (WP): wp/machine-learning/index.md
+  - Help: https://code.kx.com/home/support/

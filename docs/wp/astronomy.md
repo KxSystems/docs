@@ -155,7 +155,7 @@ q)icols:lower[icols]!.astro.readIntCol[file;;n;2]each icols
 ```
 
 :fontawesome-regular-hand-point-right:
-Interfaces: [Using foreign functions with kdb+](../interfaces/ffi/index.md)
+Interfaces: [Using foreign functions with kdb+](https://github.com/KxSystems/ffi)
 
 
 ### Building tables in kdb+

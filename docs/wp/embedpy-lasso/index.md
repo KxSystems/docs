@@ -3,7 +3,6 @@ title: "Machine learning: Using embedPy to apply LASSO regression | White Papers
 description: From its deep roots in financial technology KX is expanding into new fields. It is important for q to communicate seamlessly with other technologies. The embedPy interface allows this to be done with Python.
 author: Samantha Gallagher
 date: October 2018
-keywords: analysis, categorical, clean, coefficient, csv, data, embedpy, engineering, error, feature, foreign, house, install, jupyter, kdb+, lasso, learning, library, log, machine, matrix, mean, model, mse, notebook, numerical, polynomial, predict, price, python, q, regression, split, standardize, transform
 ---
 White paper
 {: #wp-brand}
@@ -19,7 +18,7 @@ by [Samantha Gallagher](#author)
 
 From its deep roots in financial technology KX is expanding into new fields.
 It is important for q to communicate seamlessly with other technologies. 
-The [embedPy interface](../../ml/embedpy/index.md) allows this to be done with Python.
+The [embedPy interface](https://github.com/KxSystems/embedpy) allows this to be done with Python.
 
 The interface allows the kdb+ interpreter to manipulate
 Python objects, call Python functions, and load Python libraries. 
@@ -42,9 +41,6 @@ directory of detailed examples.
 
 In this section, we introduce some core elements of embedPy that will be
 used in the LASSO regression problem that follows. 
-
-:fontawesome-regular-hand-point-right:
-[Full documentation for embedPy](../../ml/embedpy/index.md)
 
 
 ### Installing embedPy in kdb+

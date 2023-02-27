@@ -1,7 +1,6 @@
 ---
-title: Basic client-server computing  – Knowledge Base – kdb+ and q documentation
+title: Basic client-server computing | Knowledge Base | kdb+ and q documentation
 description: A kdb+ server can listen for connections on a port. Clients can then send requests to the server via that port. A kdb+ process starts listening to a port either at start-up, via a command-line argument.
-keywords: client, kdb+, q, server
 ---
 # Basic client-server computing
 
@@ -78,8 +77,8 @@ public class KDBClient {
 
 This client does not need a reply after the insert, so it sends an asynchronous message using method `ks`. For the select, it expects a table as a result, and sends a synchronous message using method `k`. 
 
-:fontawesome-regular-hand-point-right: 
-[Java client for q](../interfaces/java-client-for-q.md)
+:fontawesome-bands-github: 
+[Java client for q](https://github.com/KxSystems/javakdb)
 
 A q client process connects to a server using `hopen`:
 
