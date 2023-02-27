@@ -51,6 +51,10 @@ badmsg
 
 :   Failure in [IPC validator](../releases/ChangesIn2.7/#ipc-message-validator)
 
+bad meta data in file
+
+:   The compressed file contains corrupt meta data. This can happen if the file was incomplete at the time of reading.
+
 badtail
 
 :   Incomplete transaction at end of file, get good (count;length) with ``-11!(-2;`:file)``
