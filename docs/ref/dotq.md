@@ -662,7 +662,7 @@ Where `x` is a table column, returns `` ` `` if the column is not a foreign key 
 ## `fmt` (format)
 
 ```syntax
-.q.fmt[x;y;z]
+.Q.fmt[x;y;z]
 ```
 
 Where
