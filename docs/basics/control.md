@@ -1,8 +1,6 @@
 ---
 title: Controlling evaluation | Basics | kdb+ and q documentation
 description: Evaluation in q is controlled by [iterators](../ref/iterators.md) for iteration ; conditional evaluation; explicit return from a lambda; signalling and trapping errors; and control words.
-author: Stephen Taylor
-keywords: control, control words, distributive, evaluation, iterate, kdb+, operator, progressive, q, unary, word
 ---
 # Controlling evaluation
 
@@ -149,12 +147,6 @@ They return as a result the [generic null](../ref/identity.md#null).
 
 !!! tip "Control words are little used in practice for iteration. [Iterators](../ref/iterators.md) are more commonly used."
 
-<!-- :fontawesome-solid-book: Iterators:
-<br>
-[Maps](../ref/maps.md) – Case, Each, Each Left, Each Right, Each Parallel, Each Prior<br>
-[Accumulators](../ref/accumulators.md) – Converge, Do, While, Scan, Over
-
- -->
 ## Explicit return
 
 `:x` has a lambda terminate and return `x`.
@@ -168,26 +160,9 @@ They return as a result the [generic null](../ref/identity.md#null).
 
 [Signal](../ref/signal.md) will exit the lambda under evaluation and signal an error to the expression that invoked it.
 
-<!-- ```q
-q)goo:{if[0>type x;'`type]; x cross x}
-q)goo 2 3
-2 2
-2 3
-3 2
-3 3
-q)goo 3
-'type
-  [0]  goo 3
-       ^
-```
- -->
 [Trap and Trap At](../ref/apply.md#trap) set traps to catch errors.
 
 
-<!-- ### Common errors
-
-A common error is forgetting to terminate with a semi-colon.
- -->
 ## `exit`
 
 The [`exit`](../ref/exit.md) keyword terminates kdb+ with the specified return code.

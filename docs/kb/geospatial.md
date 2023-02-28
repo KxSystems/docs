@@ -34,7 +34,7 @@ There are five text fields in the top row:
 
 Those marked with * are editable filters.
 
-When the mouse is clicked on the map, the underlying lat-lon coordinates are sent to the kdb+ process along with the filters over a websocket connection, and the points in the response are then plotted on the map. In addition to coordinates, kdb+ returns a `trk` column, which the client interprets as point colour.
+When the mouse is clicked on the map, the underlying lat-lon coordinates are sent to the kdb+ process along with the filters over a websocket connection, and the points in the response are then plotted on the map. In addition to coordinates, kdb+ returns a `trk` column, which the client interprets as point color.
 
 This uses the [Google S2 library](http://blog.christianperone.com/2015/08/googles-s2-geometry-on-the-sphere-cells-and-hilbert-curve/) as a kdb+ shared object.
 

@@ -1,5 +1,6 @@
 ---
 title: Scripting in q | A tour of the q programming language | kdb+ and q documentation
+description: How to write scripts in the q programming language: syntax, indentation, comments and return codes
 author: Stephen Taylor
 date: February 2020
 ---

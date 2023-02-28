@@ -493,7 +493,7 @@ xTest:flip value flip X_test
 
 ## Analysis using embedPy
 
-This section analyses the data using several Python libraries from
+This section analyzes the data using several Python libraries from
 inside the q process: pandas, NumPy, sklearn and Matplotlib.
 
 

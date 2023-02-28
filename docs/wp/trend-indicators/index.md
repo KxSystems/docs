@@ -1,4 +1,4 @@
-﻿---
+---
 title: Implementing trend indicators in kdb+  | White papers | Documentation for kdb+ and q
 author: James Galligan
 date: April 2020

@@ -109,7 +109,7 @@ Range: `dfijmnptuvz`
 
 ----
 :fontawesome-solid-book: 
-[`%` Divide](divide.md), [`div`](div.md), [`reciprocal`](reciprocal.md) 
+[`%` Divide](divide.md), [`reciprocal`](reciprocal.md) 
 <br>
 :fontawesome-solid-book-open: 
 [Mathematics](../basics/math.md)

@@ -1,3 +1,7 @@
+---
+title: 'Q client for Bloomberg | Interfaces | kdb+ and q documentation'
+description: A Linux-based feed handler for Bloomberg. Use the C code in the kdb Cookbook repo on GitHub to connect to a Bloomberg appliance hosted on your site. Tested with Bloomberg Open API. Courtesy of Marshall Wace.
+---
 # Q client for Bloomberg
 
 

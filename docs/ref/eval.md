@@ -46,7 +46,7 @@ _Restricted evaluation of a parse tree_
 reval x     reval[x]
 ```
 
-The `reval` function is similar to [`eval`](eval.md), and behaves as if the [command-line option `-b`](../basics/cmdline.md#-b-blocked) were active during evaluation.
+The `reval` function is similar to `eval`, and behaves as if the [command-line option `-b`](../basics/cmdline.md#-b-blocked) were active during evaluation.
 
 An example usage is inside the message handler [`.z.pg`,](dotz.md#zpg-get) useful for access control, here blocking sync messages from updating:
 

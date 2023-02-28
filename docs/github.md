@@ -1195,7 +1195,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </tr>
 <tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/lmartinking/qrapidjson">qrapidjson</a></td>
-<td markdown>Rapid [JSON](http://www.json.org/) serialiser. <span class="author"><a href="https://github.com/lmartinking?tab=repositories">
+<td markdown>Rapid [JSON](http://www.json.org/) serializer. <span class="author"><a href="https://github.com/lmartinking?tab=repositories">
 						(Lucas Martin-King)
 					</a></span>
 </td>

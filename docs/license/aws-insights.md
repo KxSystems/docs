@@ -2,7 +2,7 @@
 title: KX INSIGHTS™ End User Agreement (the “Agreement”)
 description: Software End User Agreement for KX Insights Amazon Marketplace
 ---
-<h1 style="color:var(--md-typeset-a-color)">KX Insights™ end-user agreement :fontawesome-brands-aws:</h1>
+# KX Insights™ end-user agreement :fontawesome-brands-aws:
 
 !!!warning "Carefully read the following terms and conditions"
 

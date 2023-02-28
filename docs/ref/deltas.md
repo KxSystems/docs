@@ -74,7 +74,6 @@ q)deltas0 2000 2005 2007 2012 2020
 
 ----
 :fontawesome-solid-book:
-[`deltas`](deltas.md), 
 [`differ`](differ.md), 
 [Each Prior](maps.md#each-prior), 
 [`ratios`](ratios.md)

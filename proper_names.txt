@@ -1,0 +1,302 @@
+.NET
+Abundant Odds
+AE
+AI
+AJAX
+Amazon
+Amend
+Amend At
+Amend Entire
+API
+APIs
+App Direct
+App Direct Mode
+Apple
+Apply
+Apply At
+Armstrong
+Aroon Oscillator
+At Least
+Authenticated Encryption
+Automated Machine Learning
+AWS
+Azure
+Birth and Last Will
+Bitcoin
+Bloomberg
+Boggle
+Bollinger
+Bollinger Bands
+Bulk Copy Program
+C
+C#
+C&#35;
+C++
+Christmas
+CLI
+Cloud
+Commodity Channel Index
+CPU
+CSV
+DARE
+Data At Rest Encryption
+Daylight Savings Time
+Deal
+Delta Control
+Dict
+Do
+Docker
+Drop
+DST
+Dynamic Load
+Each
+Each Left
+Each Parallel
+Each Prior
+Each Right
+Ease of Movement Value
+Enkey
+Enum Extend
+EOD
+Euclidean
+Excel
+Feedhandler
+FFT
+FH
+Fibonacci
+File Binary
+File Text
+Find
+FITS
+FIX
+FLASH
+Flip Splayed
+Flooded Locations And Simulated Hydrographs Project
+Fold
+Force Index
+Fort McMurray
+Fourier
+Full Disk Encryption?
+Full Node
+Fun Q
+Functional Amend
+Gaussian
+Gdb
+Git
+GitHub
+Google
+Greater Than
+GUI
+GUID
+GUIDs
+GZip
+HDB
+HFT
+Home Assistant
+Home Assistant UI
+HTML
+HTTP
+HTTPS
+Huge Pages
+I
+I/O
+ID
+IDE
+Identity
+II
+III
+Inc.
+Index
+Index At
+Internet of Things
+IoT
+IP
+IPC
+IPC Message Validator
+ISO
+Java
+Java Runtime Environment
+Java Virtual Machine
+JavaScript
+Jinja
+Join
+Join Each
+JRE
+JRXML
+JRXMLs
+JS
+JSON
+JVM
+K
+k-Nearest Neighbor
+Kafka
+Key-Value Pairs
+Klondike
+Kth
+Kubernetes
+KX
+KX Analyst
+KX Analytics
+KX Connect
+KX Control
+KX Dashboards
+KX Data Refinery
+KX Developer
+KX for Surveillance
+KX Insights
+KX Microservices
+KX Monitoring
+KX Platform
+KX Refinery
+KX Stream
+LASSO
+LDAP
+LED
+Less Than
+Lightning
+Linux
+Load Balancer
+Load Fixed
+LoadLibrary
+Machine Learning and Big Data with kdb+/q
+Machine Learning Toolkit
+Manhattan
+MapReduce
+Market Fragmentation
+Marqdown to HTML
+Matlab
+Matrix Multiply
+MD5
+MDB
+Microsoft
+Microsoft Compiler
+MIME
+MinGW-64
+MMU
+Money Flow Index
+Monte Carlo
+Moving Average Convergence Divergence
+MQTT
+MSE
+N
+Name Game
+Named Service Support
+NASA
+NASA Frontier Development Lab
+NASA Frontier Development Lab Exoplanets Challenge
+National Hydrology Dataset Plus
+National Land Cover Database
+Natural Language Processing
+NHDPlus
+NLCD
+Non-Uniform Memory Access
+Not Equal
+Null
+NUMA
+ODBC
+OK
+On Demand
+OpenSSL
+Optane
+Order Book
+OS
+OSX
+OTR
+Partitioned
+PDF
+Perfect Forecast
+Permute
+Persistent Memory
+PID
+PMem
+Prepare Text
+PubSub
+Python
+Q for Mortals
+Q Tips
+QPacker
+Quality of Service
+Quasi-Monte Carlo
+Query Routing
+q言語－ゼロから作るTick ArchitectureならびにC言語による拡張
+R
+RAM
+Raspberry Pi
+Rate of Change
+RDB
+Read Binary
+Red Hat
+Relative Strength Index
+Research In Motion
+REST
+RMSE
+Roll
+RTD
+RTE
+SAML
+Save Binary
+Save Text
+Scala
+Scrabble
+SDSS
+Set Attribute
+SFTP
+SHA
+SIMD
+Simple Exec
+Simple Moving Averages
+Sloan Digital Sky Survey
+SNMP
+Solace
+Space Weather Challenge
+SQL
+SQL Server
+SSL
+SSO
+Stochastic Oscillator
+Tab
+Tableau
+Tableau Desktop
+Tableau Server
+Take
+TDE
+TESS
+THP
+Tickerplant
+TLS
+TLS Client Mode
+TLS Server Mode
+Tomcat
+TP
+Transparent Disk Encryption
+Transparent Huge Pages
+Trap
+Trap At
+TSC
+TSV
+TUI
+TZ
+UI
+Unix Domain Socket
+Unkey
+Up To
+URI
+URI map
+URL
+UTC
+UTXO
+V3.0
+V3.3
+V4.0
+Vector Conditional
+Visual Studio
+VWAP
+Web
+WebSocket
+While
+Wiener-path
+Windows
+XML
+XMP
+Zigbee
+ZIP

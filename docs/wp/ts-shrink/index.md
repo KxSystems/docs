@@ -292,13 +292,6 @@ While for many utilities simple bucket-based summaries are more than adequate an
 
 **Sean Keevey** is a kdb+ consultant and has developed data and analytic systems for some of the world's largest financial institutions. Sean is currently based in London developing a wide range of tailored analytic, reporting and data solutions in a major investment bank.
 
-Other papers by Sean Keevey
-{: .publications}
-
-<ul markdown="1" class="publications">
--   :fontawesome-regular-map: [Dynamically shrinking big data using timeseries database kdb+](../ts-shrink/index.md)
-</ul>
-
 **Kevin Smyth** has worked as a kdb+ consultant for some of the world’s leading exchanges and financial institutions. Based in London, Kevin has experience with data capture and high-frequency data-analysis projects across a range of asset classes.
 
 

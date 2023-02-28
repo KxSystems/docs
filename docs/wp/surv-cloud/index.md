@@ -1,4 +1,4 @@
-﻿---
+---
 author: Luke Britton
 title: Surveillance in the Cloud
 description: Trade surveillance systems analyze up to terabytes of order and trade data daily, in an effort to detect potential market abuses. 

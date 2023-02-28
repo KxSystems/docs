@@ -82,7 +82,7 @@ Other functions and variables shared between multiple scripts (such as debug out
 
 !!! note
 
-    After the various state variables have been defined the script `saveorig.custom.q` is loaded, if found, allowing you to customise the setup without needing to have a modified version of the saveorig script.
+    After the various state variables have been defined the script `saveorig.custom.q` is loaded, if found, allowing you to customize the setup without needing to have a modified version of the saveorig script.
 
 Again, for production use you should rip out the unneeded definitions.
 
@@ -163,7 +163,7 @@ q)value .last.pg.y
 
 ### `monitorusage.q`
 
-If the monitoring is to be left running for a long time scrolling back through the console is not a sensible way to look for problems. This script logs all requests to a local table `USAGE`, allowing you to analyse the data. As the data is stored in an in-memory table it’s of course lost when you exit unless you choose to do something with `.z.exit`.
+If the monitoring is to be left running for a long time scrolling back through the console is not a sensible way to look for problems. This script logs all requests to a local table `USAGE`, allowing you to analyze the data. As the data is stored in an in-memory table it’s of course lost when you exit unless you choose to do something with `.z.exit`.
 
 ```q
 dotz$ q monitorusage.q -p 5001
