@@ -834,15 +834,15 @@ A process can refer to a socket using a file descriptor or handle, an abstract i
 
 version | date       | feature
 --------|------------|--------
-2.4     | 2012.03.31 | Added [Multi-threaded input](../../releases/ChangesIn2.4.md#multi-threaded-input) using a negative port number
-| | [`.z.pw`](../../releases/ChangesIn2.4.md#zpw): username and password passed to `.z.pw` to enable option for custom validation
-2.5	    | 2012.03.31 | Added [`.z.W`](../../releases/ChangesIn2.5.md#zw) to return a dictionary of IPC handles with the total number of bytes in each output queue
-2.6     | 2012.08.03 | Added [IPC compression](../../releases/ChangesIn2.6.md#ipc-compression)
-| | [`.z.W`](../../releases/ChangesIn2.6.md#zw) updated to return the size in bytes of each messages in the input queue
-2.7	    | 2013.06.28 | Added an [IPC message validator](../../releases/ChangesIn2.7.md#ipc-message-validator)
-[3.4](../../releases/ChangesIn3.4/)	| 2019.06.03 | IPC message size limit raised from 2GB to 1TB
+2.4     | 2012.03.31 | Added [Multi-threaded input](../../releases/changesin2.4.md#multi-threaded-input) using a negative port number
+| | [`.z.pw`](../../releases/changesin2.4.md#zpw): username and password passed to `.z.pw` to enable option for custom validation
+2.5	    | 2012.03.31 | Added [`.z.W`](../../releases/changesin2.5.md#zw) to return a dictionary of IPC handles with the total number of bytes in each output queue
+2.6     | 2012.08.03 | Added [IPC compression](../../releases/changesin2.6.md#ipc-compression)
+| | [`.z.W`](../../releases/changesin2.6.md#zw) updated to return the size in bytes of each messages in the input queue
+2.7	    | 2013.06.28 | Added an [IPC message validator](../../releases/changesin2.7.md#ipc-message-validator)
+[3.4](../../releases/changesin3.4/)	| 2019.06.03 | IPC message size limit raised from 2GB to 1TB
 | | Added support for IPC via Unix Domain Sockets
 | | Secure Sockets Layer(SSL)/Transport Layer Security (TLS)
 | | Added async broadcast as `-25!(handles;msg)`
-3.5	    | 2020.02.13 | Added `hopen` timeout for [TLS](../../releases/ChangesIn3.5.md#ssltls)
-3.6	    | 2020.02.24 | [Deferred response](../../releases/ChangesIn3.6.md#deferred-response): a server process can now use `-30!x` to defer responding to a sync query
+3.5	    | 2020.02.13 | Added `hopen` timeout for [TLS](../../releases/changesin3.5.md#ssltls)
+3.6	    | 2020.02.24 | [Deferred response](../../releases/changesin3.6.md#deferred-response): a server process can now use `-30!x` to defer responding to a sync query

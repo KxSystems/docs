@@ -6,7 +6,7 @@ date: December 2020
 ---
 # Summarize and say
 
-![Pebbles](../../img/alamy/PHPHX0.jpg)
+![Pebbles](../../img/alamy/phphx0.jpg)
 
 ??? summary "Analyze a dictionary of results; map between dictionaries"
 

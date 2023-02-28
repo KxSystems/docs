@@ -170,7 +170,7 @@ q)-16!a
 
 ## `-18!x` (compress byte)
 
-Returns compressed IPC byte representation of `x`, see notes about network compression in [Changes in V2.6](../releases/ChangesIn2.6.md)
+Returns compressed IPC byte representation of `x`, see notes about network compression in [Changes in V2.6](../releases/changesin2.6.md)
 
 <!-- 
 ## `-19!` (compress file)

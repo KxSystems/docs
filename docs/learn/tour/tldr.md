@@ -7,7 +7,7 @@ description: A mountain tour of kdb+ and the q programming language, with links 
 # A mountain tour of kdb+ and the q programming language
 
 
-![Mountain walk](img/GettyImages-914651812.jpg)
+![Mountain walk](img/gettyimages-914651812.jpg)
 
 
 ## `TL;DR`

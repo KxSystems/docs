@@ -6,7 +6,7 @@ date: December 2020
 ---
 # Q by Puzzles
 
-![Play chess](../../img/alamy/2C9PF21.jpg)
+![Play chess](../../img/alamy/2c9pf21.jpg)
 
 The q language favors terse code that exploits the iteration implicit in the primitives. 
 

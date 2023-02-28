@@ -867,7 +867,7 @@ class    | precision recall    f1_score  support
 1        | 0.4300823 0.3613031 0.3927039 1013
 avg/total| 0.69065   0.6621415 0.6748833 14114
 ```
-![Figure_3](imgs/pr_U1.png)
+![Figure_3](imgs/pr_u1.png)
 
 _Time-to-peak_
 
@@ -903,7 +903,7 @@ class    | precision recall    f1_score  support
 1        | 0.6953125 0.5144509 0.5913621 173
 avg/total| 0.7474176 0.7050864 0.7181275 547
 ```
-![Figure_4](imgs/pr_U2.png)
+![Figure_4](imgs/pr_u2.png)
 
 
 #### Gauged models
@@ -946,7 +946,7 @@ class    | precision recall    f1_score  support
 1        | 0.5455712 0.4195459 0.4743304 1013
 avg/total| 0.7507384 0.6962625 0.7193486 14114
 ```
-![Figure_5](imgs/pr_G1.png)
+![Figure_5](imgs/pr_g1.png)
 
 _Time-to-peak_
 
@@ -982,7 +982,7 @@ class    | precision recall    f1_score  support
 1        | 0.7310924 0.5028902 0.5958904 173
 avg/total| 0.7650789 0.7086643 0.7243791 547
 ```
-![Figure_6](imgs/pr_G2.png)
+![Figure_6](imgs/pr_g2.png)
 
 
 #### Perfect Forecasts models
@@ -1022,7 +1022,7 @@ class    | precision recall    f1_score  support
 1        | 0.6394984 0.6041461 0.6213198 1013
 avg/total| 0.8045102 0.7889061 0.7964547 14114
 ```
-![Figure_7](imgs/pr_P1.png)
+![Figure_7](imgs/pr_p1.png)
 
 _Time-to-peak_
 
@@ -1058,7 +1058,7 @@ class    | precision recall    f1_score  support
 1        | 0.6024845 0.5606936 0.5808383 173
 avg/total| 0.7027966 0.6947853 0.6983139 547
 ```
-![Figure_8](imgs/pr_P2.png)
+![Figure_8](imgs/pr_p2.png)
 
 
 ### Scoring summary
@@ -1277,7 +1277,7 @@ A kd-tree is used in k-dimensional space to create a tree structure. In the tree
 The tree is used to efficiently find a datapoint’s nearest neighbor, by potentially eleminating a large portion of the dataset using the kd-tree’s properties. This is done by starting at the root and moving down the tree recursively, calculating the distance between each node and the datapoint in question, allowing branches of the dataset to be eliminated based on whether this node-point distance is less than or greater than the curent nearest neighbor distance. This enables rapid lookups for each point in a dataset.
 
 
-![Figure_10](imgs/KDtree.png)<br/>
+![Figure_10](imgs/kdtree.png)<br/>
 <small>_[Visual representation of a kd-tree](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/KDtree.html)_</small>
 
 

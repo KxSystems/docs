@@ -161,7 +161,7 @@ scintillation| num     pcnt
 
 Ideally, data would have been recorded for each CHAIN station, at every minute throughout 2015. However, GNSS receivers are often prone to hardware failures, which lead to gaps in the data. 
 
-![Figure 1](img/sigPhiVer.png)  
+![Figure 1](img/sigphiver.png)  
 <small>_Figure 1: Values for the phase scintillation index projected to the vertical, recorded by each CHAIN receiver throughout 2015._</small>
 
 
@@ -343,7 +343,7 @@ rep   80.61    19.39     12.53     41.67  82.9        0.2457
 
 Plotting the TSS for all three methods allowed the performance of each model to be compared.
  
-![Figure 2](img/svmTSS1hr.png)  
+![Figure 2](img/svmtss1hr.png)  
 <small>_Figure 2: True Skill Statistic results produced by the Support Vector Machine models (individual models – left, Fort McMurray model – right). The combined and Fort McMurray models are plotted in black._</small>
 
 The SVM baseline model, which combined data from all the receiver stations, gave an accuracy of 73.04% and a TSS of 0.56 (precision = 9.51%, recall = 83.15%). The top plot shows how the performance of the model varied depending on which station was used to train and test the SVM.
@@ -354,12 +354,12 @@ From these results we can infer that scintillation events must be localized and 
 
 Until this point, the SVM trained and tested on combined/individual data had been used to make predictions 1 hour ahead. However, it was possible to predict at any chosen prediction time. In this paper, we look at predictions for 0.5, 1, 3, 6, 9, 12 and 24 hours ahead. Using the same model as before, random samples of 40,000 timesteps from 2015 were selected for each station to train and test the SVM at each prediction time. 
 
-![Figure 3](img/svmTSSmulti.png)  
+![Figure 3](img/svmtssmulti.png)  
 <small>_Figure 3: True Skill Statistic results for the Support Vector Machine model, trained on combined and individual data at multiple prediction times._</small>
 
 As expected, the model tends to perform better at 0.5 and 1 hour prediction times, with results getting worse as the prediction time increases. Accuracy follows the same trend, decreasing as prediction time increases. The Fort McMurray station gives the highest TSS throughout, allowing the model to predict 24 hours ahead with a TSS score of 0.61 and an accuracy of 73%.
 
-![Figure 4](img/svmACCmulti.png)  
+![Figure 4](img/svmaccmulti.png)  
 <small>_Figure 4: Accuracy results for the Support Vector Machine model, trained on combined and individual data at multiple prediction times._</small>
 
 
@@ -406,7 +406,7 @@ To improve performance metrics, data from 2015-2017 was used to train a neural-n
 
 As results showed that scintillation events are specific to the location of each station, localized features were added to the dataset. These included the magnetometer dataset, sindoy, sintime, cosdoy and costime. As previously stated, 365.25 is used for Dtot in this model to account for the extra day present in a leap year.
 
-![Figure 5](img/featVariation.png)  
+![Figure 5](img/featvariation.png)  
 <small>_Figure 5: The variation in the phase scintillation index (sigPhiVer), the differential Total Electron Content (dtec) and the X component of the Earth’s magnetic field during a scintillation event, where sigPhiVer is greater than 0.1 radians._</small>
 
 When a scintillation event occurs, geomagnetic features such as `x`, `y`, `z` and `dtec` will fluctuate drastically. It was therefore useful to give more importance to these features by adding columns which contained their absolute values with the mean removed.
@@ -510,7 +510,7 @@ ybin | 0       0       0       1      0       0       0       0       0      ..
 
 The model was trained and tested using combined data from the Fort Churchill (`chu`), Fort McMurray (`mcm`) and Fort Simpson (`fsi`) stations, each co-located magnetometer data. The true and false positives and negatives predicted by the model were represented in a confusion matrix.
 
-![Figure 6](img/nnCFM.png)  
+![Figure 6](img/nncfm.png)  
 <small>_Figure 6: Confusion matrix produced by the neural network model at 1 hour prediction time. Scintillation represents the positive class._</small>
 
 The model correctly identified 134,586 scintillation events at 1 hour prediction time. From these results, performance metrics were calculated to allow comparison between the SVM and neural network.
@@ -541,24 +541,24 @@ Accuracy for all three models has increased to over 98%, while TSS has increased
 
 Another means of determining how well the models performed was to plot true and predicted values together. In the below plot, the first 300 values for at 1-hour prediction time have been plotted for the combined model. This plot shows how well predicted values compare with the test set.
 
-![Figure 7](img/nnTruevsPred.png)  
+![Figure 7](img/nntruevspred.png)  
 <small>_Figure 7: True (blue) and predicted values (orange) for the phase scintillation index at 1 hour prediction time (sigPhiVer1hr) produced by the neural network model using the combined dataset._</small>
 
 The performance of the model is also apparent in the Receiver Operating Characteristics (ROC) curve plot, which compares the True Positive Rate (Sensitivity) and False Positive Rate (1-Specificity). This produces an area under the curve of 0.9972.
 
-![Figure 8](img/nnROC.png)  
+![Figure 8](img/nnroc.png)  
 <small>_Figure 8: Receiver Operating Characteristic curve for 1-hour prediction values produced in the neural network model using combined data._</small>
 
 Similarly to the SVM model, the neural network method was used to predict at a range of prediction times, from 0.5-24 hours ahead.
 
-![Figure 9](img/nnTSSmulti.png)  
+![Figure 9](img/nntssmulti.png)  
 <small>_Figure 9: True Skill Statistic results for the neural network model, predicting 30 minutes – 24 hours ahead for the combined (ALL), Fort Churchill (chu), Fort Simpson (fsi) and Fort McMurray (mcm) models._</small>
 
 Unlike the SVM model, predictions made using the neural network model produced high values for TSS regardless of prediction time, with all values sitting above 0.67. The combined model produced the highest TSS throughout, with a value of 0.94.
 
 For prediction time 24 hours, TSS results have increased by an average of 0.39 in comparison to the SVM model, with all values now sitting above 0.73. This is impressive compared to the baseline model where results became less reliable as the prediction time increased.
 
-![Figure 10](img/nnACCmulti.png)  
+![Figure 10](img/nnaccmulti.png)  
 <small>_Figure 10: Accuracy results for the neural network model, predicting 30 minutes – 24 hours ahead for the combined (ALL), Fort Churchill (chu), Fort Simpson (fsi) and Fort McMurray (mcm) models._</small>
 
 The accuracy results for each of the neural-network models were also improved. Each model produces an accuracy of greater than 98% regardless of the prediction time. This is a vast improvement on the baseline model.

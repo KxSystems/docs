@@ -7,7 +7,7 @@ date: December 2020
 # The Twelve Days of Christmas
 
 
-![Carol singers](../../img/alamy/CN6580.jpg)
+![Carol singers](../../img/alamy/cn6580.jpg)
 
 ??? summary "Map a simple data structure to a complex one"
 

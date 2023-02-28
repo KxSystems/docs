@@ -68,7 +68,7 @@ The Kx wiki, frozen in 2016, has been retired to code.kx.com/oldwiki.
 Announcements to mark our 25th birthday:
 
 -   [Kdb+ on Google Cloud Platform](../cloud/gcpm/index.md)
--   [Version 3.6](../releases/ChangesIn3.6.md)
+-   [Version 3.6](../releases/changesin3.6.md)
 -   [Anaconda](../ml/index.md)
 -   [Natural Language Processing toolkit](../ml/nlp/index.md)
 -   [Docker and Notebooks](../ml/setup.md#docker-command)

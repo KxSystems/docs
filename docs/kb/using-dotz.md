@@ -427,6 +427,6 @@ q)
 ## :fontawesome-regular-hand-point-right: Further reading
 
 -   [Namespace `.z`](../ref/dotz.md ".z namespace")
--   [Changes in V2.4](../releases/ChangesIn2.4.md)
+-   [Changes in V2.4](../releases/changesin2.4.md)
 -   _Q for Mortals_: [§11.6 Interprocess Communication](/q4m3/11_IO/#116-interprocess-communication)
 -   [Authentication and access](authentication.md)

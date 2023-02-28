@@ -218,11 +218,11 @@ q)wordcloudfn[data_m;`affected_individuals]
 
 This produces the following output.
 
-![Figure 3](imgs/Affected_individuals.png)
+![Figure 3](imgs/affected_individuals.png)
 
 In the above example, surrounding the affected individuals class, it is clear that tweets in this category contain some distinguishing characteristics. For example, words such as death, killed, missing and rescue all are associated with people who have had their lives disrupted by flooding. Meanwhile words contained in the sympathy and prayers class, use language strongly relating to religion as seen below.
 
-![Figure 4](imgs/Sympathy_prayers.png)  
+![Figure 4](imgs/sympathy_prayers.png)  
 
 This indicates that while words such as _flood_ and _kashmir_ are prominent in tweets associated with each class, there are words that seem to be indicative of the base class of the tweets themselves.
 
@@ -295,7 +295,7 @@ print mdl_m[`:summary][]
 
 The summary of this model is as follows:
 
-![Figure 6](imgs/LSTM_model.png)
+![Figure 6](imgs/lstm_model.png)
 
 A few points of note on this model:
 

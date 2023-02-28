@@ -6,7 +6,7 @@ date: December 2020
 ---
 # Four is magic
 
-![Four block](../../img/alamy/2ADY7DK.jpg)
+![Four block](../../img/alamy/2ady7dk.jpg)
 
 ??? summary "Convergence and finite-state machines"
 

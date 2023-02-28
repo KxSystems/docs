@@ -7,7 +7,7 @@ date: December 2020
 # Abundant Odds
 
 
-![Number series](../../img/alamy/G36AKX.jpg)
+![Number series](../../img/alamy/g36akx.jpg)
 
 ??? summary "Use iterators to find values in a series that pass a test"
 

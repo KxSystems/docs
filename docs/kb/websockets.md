@@ -10,7 +10,7 @@ keywords: browser, json, kdb+, q, websockets
 
 ## Simple WebSocket server example
 
-[V3.0](../releases/ChangesIn3.0.md) supports the WebSocket protocol.
+[V3.0](../releases/changesin3.0.md) supports the WebSocket protocol.
 
 To get your browser and kdb+ talking on a WebSocket, start a q session listening on port 5000, and set its WebSocket handler `.z.ws` to echo whatever it receives.
 

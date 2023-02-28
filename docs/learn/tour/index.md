@@ -7,7 +7,7 @@ description: A whirlwind tour of kdb+ and the q programming language, with links
 # :fontawesome-solid-binoculars: A mountain tour of kdb+ and q
 
 
-![Mountain walk](img/GettyImages-914651812.jpg)
+![Mountain walk](img/gettyimages-914651812.jpg)
 
 
 This is a mountain tour of q, the programming language built into kdb+.

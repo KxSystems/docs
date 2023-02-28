@@ -605,7 +605,7 @@ _Q for Mortals_
 
 Where `f` is a unary function, it is evaluated as the default handler for input.
 
-As this is called on every line of input it can be used to log all console input, or even to modify the output. For example, if you prefer the more compact [V2.3 way of formatting tables](../releases/ChangesIn2.4.md#zpi), you can reset the output handler.
+As this is called on every line of input it can be used to log all console input, or even to modify the output. For example, if you prefer the more compact [V2.3 way of formatting tables](../releases/changesin2.4.md#zpi), you can reset the output handler.
 
 ```q
 q)aa:([]a:1 2 3;b:11 22 33)
@@ -743,7 +743,7 @@ The default definition is `{[user;pswd]1b}`
 [`.z.po` port open](#zpo-open)
 <br>
 :fontawesome-solid-book:
-[Changes in 2.4](../releases/ChangesIn2.4.md#zpw)
+[Changes in 2.4](../releases/changesin2.4.md#zpw)
 
 
 ## `.z.q` (quiet mode)
@@ -871,7 +871,7 @@ q)m[1;1]:0
 ## `.z.W` (handles)
 
 Dictionary of IPC handles with the number of bytes waiting in their output queues.
-<!-- (Since V2.5 2008.12.31.) In V2.6 this was changed to a list of bytes per handle, see [Changes in V2.6](../releases/ChangesIn2.6.md#zw) -->
+<!-- (Since V2.5 2008.12.31.) In V2.6 this was changed to a list of bytes per handle, see [Changes in V2.6](../releases/changesin2.6.md#zw) -->
 
 ```q
 q)h:hopen ...

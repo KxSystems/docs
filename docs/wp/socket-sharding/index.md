@@ -54,7 +54,7 @@ q)\p 5000
 In addition to this, the first process to open the port must use the `rp` option to allow future processes to also use this port.
 
 :fontawesome-regular-hand-point-right:
-Releases: [Changes in 3.5](../../releases/ChangesIn3.5.md#socket-sharding)
+Releases: [Changes in 3.5](../../releases/changesin3.5.md#socket-sharding)
 
 
 ## Basic sharding implementation in kdb+

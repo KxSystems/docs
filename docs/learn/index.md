@@ -86,7 +86,7 @@ section | content
 
 ## Books
 
-![kdb+ Tutorial in Japanese](../img/51MFB56Y0ZL.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
+![kdb+ Tutorial in Japanese](../img/51mfb56y0zl.jpg){: style="box-shadow: 10px 10px 5px #888888; display: block; float: left; margin: 0 3em 2em 0; width: 200px;"}
 
 ### q言語－ゼロから作るTick ArchitectureならびにC言語による拡張
 

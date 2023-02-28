@@ -31,7 +31,7 @@ In this paper we will build a mini surveillance kdb+ application and deploy it l
 
 The first step is to construct a mini surveillance application. The application will run one alert called Spoofing. Spoofing is a form of market manipulation where a market participant or group of market participants try to move the price of a financial instrument by placing non bona-fide orders on one side of the book, feigning an interest in the instrument, and causing the price to shift. Once the price has shifted, the orders are cancelled and new orders are placed on the other side of the book, taking advantage of the price change.
 
-![Architecture](img/16-wpArchitecture.png)
+![Architecture](img/16-wparchitecture.png)
 
 The application will detect in real time participants who are attempting to spoof the market, and publish them to a data store. It will have a simple [realtime tickerplant](https://code.kx.com/q/wp/rt-tick/) architecture consisting of five processes, as can be seen in the graphic above. Let’s discuss each process in detail: 
 
@@ -411,7 +411,7 @@ containers:
 An `initContainer` allows us to initialize a pod before it starts up any containers. In this case, the `initContainer` is cloning a Git repository that contains the Spoofing dashboard files and moving those files to a directory mounted by a volume. When the `gui-gateway` container starts up, it will pick up these files, as it mounts the same volume.
 
 This is what the Spoofing dashboard looks like:
-![Spoofing Dashboard](img/15-SpoofingDashSnip.PNG)
+![Spoofing Dashboard](img/15-spoofingdashsnip.png)
 
 The bottom data grid shows the test order data set. We can push this data into the application by clicking *Push Data*. Any alerts raised from the data are displayed in the top data grid.
 
@@ -443,7 +443,7 @@ We will use this script to deploy the application across the local, AWS and GCP 
 
 We can set up a Kubernetes cluster on a local machine using Minikube. Once installed, we simply run `minikube start` to kick off a single node cluster.
 
-![minkube start](img/14-minikubestartsnip.PNG)
+![minkube start](img/14-minikubestartsnip.png)
 
 Now that there’s a Kubernetes cluster running on the machine, the surveillance application can be deployed to it. We do this by cloning the application repository and running the `deployK8sCluster.sh` script. See below:
 

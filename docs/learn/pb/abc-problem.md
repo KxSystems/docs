@@ -6,7 +6,7 @@ date: December 2020
 ---
 # ABC problem
 
-![Letter blocks](../../img/alamy/WJEGGB.jpg)
+![Letter blocks](../../img/alamy/wjeggb.jpg)
 
 
 
