@@ -2,7 +2,7 @@
 title: Changes in 4.0 | Releases | Documentation for kdb+ and the q programming language
 description: Changes to V4.0 of kdb+ from the previous version
 authors: [Charles Skelton, Stephen Taylor]
-date: [March 2020, February 2023]
+date: [March 2020, February 2023, March 2023]
 ---
 # Changes in 4.0
 
@@ -12,6 +12,15 @@ date: [March 2020, February 2023]
 2020.03.17
 
 ## Updates
+
+### 2023.03.01
+
+Concurrent anymap writes could result in broken files since kdb+4.0 2023.01.20, e.g.
+
+```q
+q)v:(3?4000)#'"a";n:`$":a",/:string til system"s";{x set 100000?v}peach n;all{all (distinct get x)in v} peach n
+```
+This has been fixed.
 
 ### 2023.01.20
 
