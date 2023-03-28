@@ -789,6 +789,23 @@ The fractional part is the time.
 Null: `kz(nf)`
 
 
+### `m4` (stats)
+
+```syntax
+K m4(I)
+```
+
+Provides memory statistics. Standalone apps only.
+
+With parameter value 0, returns current memory usage for the current thread, as a list of 3 long integers:
+0   number of bytes allocated
+1   bytes available in heap
+2   maximum heap size so far
+With parameter value 1, returns symbol stats as a pair of longs:
+0   number of internalized symbols (or null value if not main thread)
+1   corresponding memory usage (or null value if not main thread)
+
+
 ### `m9` (release memory)
 
 ```syntax
