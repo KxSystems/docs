@@ -78,7 +78,7 @@ nav:
       - Scala: interfaces/scala-client-for-q.md
     - Open source: github.md
     - Machine learning: ml.md
-    - Cloud:
+    - Cloud: 
       - About: cloud/index.md
       - KX Insights: 'https://code.kx.com/insights/'
       - Amazon Web Services:
