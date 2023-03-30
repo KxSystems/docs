@@ -10,7 +10,7 @@ author: Stephen Taylor
 !!! warning "Only commercial licenses allow installing kdb+ on a cloud server."
 
 In this scenario you [install](../learn/install.md) kdb+ on a [DigitalOcean](https://www.digitalocean.com/) ‘droplet’ (cloud server) running Ubuntu. 
-Kdb+ tasks on the droplet will be able to offer services over the Net.
+kdb+ tasks on the droplet will be able to offer services over the Net.
 
 You access and control the droplet via SSH and Bash.
 
