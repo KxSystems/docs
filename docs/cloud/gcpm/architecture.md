@@ -4,39 +4,39 @@ description:
 date: June 2021
 author: Ferenc Bodon
 ---
-# :kx-brands-google-cloud:<br>Reference architecture for Google Cloud
+# Reference architecture for Google Cloud
 
-Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
+kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
 
-KX clients can lift and shift their kdb+ plants to the cloud and make use of virtual machines (VM) and storage solutions. This is the classic approach that relies on the existing license. To benefit more from the cloud technology it is recommended to migrate to KX Insights.
+KX clients can lift and shift their kdb+ plants to the cloud and make use of virtual machines (VM) and storage solutions. This is the classic approach that relies on the existing license. To benefit more from the cloud technology it is recommended to migrate to kdb Insights.
 
-!!! summary "KX Insights"
+!!! summary "kdb Insights"
 
     ![Microservices](../../img/microservice_icon.png){: style="float:left; margin:0 2em 2em 0; max-width:20%"}
 
-    [KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
+    [kdb Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of kdb Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
     Deployment:
 
-    -   [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/quickstart/) – A packaging utility that supports q, Python and C libraries
+    -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
     -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
 
-    -   [QLog](https://code.kx.com/insights/cloud-edition/qlog/quickstart/) – Integrations with major cloud logging services
-    -   [Kurl](https://code.kx.com/insights/cloud-edition/kurl/quickstart/) – Native kdb+ REST client with authentication to cloud services
+    -   [QLog](https://code.kx.com/insights/core/qlog/overview.html) – Integrations with major cloud logging services
+    -   [Kurl](https://code.kx.com/insights/core/kurl/kurl.html) – Native kdb+ REST client with authentication to cloud services
 
     Storage:
     
-    -   [Kdb+ Object Store](https://code.kx.com/insights/cloud-edition/objstor/quickstart/) – Native support for reading and querying cloud object storage
+    -   [kdb+ Object Store](https://code.kx.com/insights/core/objstor/main.html) – Native support for reading and querying cloud object storage
 
 
 ## Architectural components
 
 The core of a kdb+ tick-capture system is called kdb+tick.
 
-[Kdb+tick](../../learn/startingkdb/tick.md) is an architecture which allows the capture, processing and querying of timeseries data against realtime, streaming and historical data. This reference architecture describes a full solution running kdb+tick within Google Cloud which consists of these bare-minimum functional components:
+[kdb+tick](../../learn/startingkdb/tick.md) is an architecture which allows the capture, processing and querying of timeseries data against realtime, streaming and historical data. This reference architecture describes a full solution running kdb+tick within Google Cloud which consists of these bare-minimum functional components:
 
 -   datafeeds
 -   feed handlers
@@ -77,7 +77,7 @@ A feed handler is a process that captures external data and translates it into k
 There are a number of open-source (Apache 2 licensed) Fusion interfaces between KX and third-party technologies. Feed handlers are typically written in Java, Python, C++ and q.
 
 :fontawesome-brands-superpowers:
-[Fusion interfaces on kdb+](../../interfaces/fusion.md)
+[Fusion interfaces on kdb+](../../interfaces/index.md)
 
 
 ### Tickerplant
@@ -176,12 +176,12 @@ The task of the gateway can be broken down into the following steps.
 -   Gain access to data in the required services (TP, RDB, HDB)
 -   Provide the best possible service and query performance
 
-Google BigQuery is a fully managed, serverless data warehouse that enables scalable analysis over petabytes of data. The KX Insights [BigQuery API](https://code.kx.com/insights/cloud-edition/big-query/api/) lets you easily interact with the REST API that Google exposes for BigQuery. This is particularly useful for the gateway. Data may reside in BigQuery that can be fetched by the gateway and users can enjoy the expressiveness of the q language to further analyze the data or join it with other data sources.
+Google BigQuery is a fully managed, serverless data warehouse that enables scalable analysis over petabytes of data. The kdb Insights [BigQuery API](https://code.kx.com/insights/core/big-query/intro.html) lets you easily interact with the REST API that Google exposes for BigQuery. This is particularly useful for the gateway. Data may reside in BigQuery that can be fetched by the gateway and users can enjoy the expressiveness of the q language to further analyze the data or join it with other data sources.
 
 
 ## Storage and filesystem
 
-Kdb+tick architecture needs storage space for three types of data:
+kdb+tick architecture needs storage space for three types of data:
 
 Tickerplant log
 
@@ -197,11 +197,11 @@ Historical data
 
 : Performance of the file system solution will determine the speed and operational latency for kdb+ to read its historical (at rest) data. The solution needs to be designed to cater for good query execution times for the most important business queries. These may splay across many partitions or segments of data or may deeply query on few/single partitions of data. The time to write a new partition impacts RDB EOD work. For systems that are queried around the clock the RDB write time needs to be very short.
 
-Kdb+ supports tiering via `par.txt`. The file may contain multiple lines; each represents a location of the data. Hot, warm, and cold data may reside in storage solutions of different characteristics. Hot data probably requires low latency and high throughput, while the cost may be the primary goal for cold data.
+kdb+ supports tiering via `par.txt`. The file may contain multiple lines; each represents a location of the data. Hot, warm, and cold data may reside in storage solutions of different characteristics. Hot data probably requires low latency and high throughput, while the cost may be the primary goal for cold data.
 
 One real great value of storing your HDB within the Google Cloud ecosystem is the flexibility of storage. This is usually distinct from ‘on-prem’ storage, whereby you may start at one level of storage capacity and grow the solution to allow for dynamic capacity growth. One huge advantage of most Google Cloud storage solutions (e.g. Persistent Disks) is that disks can grow dynamically without the need to halt instances, this allows you to dynamically change resources. For example, start with small disk capacity and grow capacity over time.
 
-The reference architecture recommends replicating data. Either this can be tiered out to lower cost/lower performance object storage in Google Cloud or the data can be replicated across availability zones. The latter may be useful if there is client-side disconnection from other time zones. You may consider failover of service from Europe to North America, or vice-versa. Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX-style filesystem stored in persistent storage (Google Cloud’s Persistent Disk _et al._)
+The reference architecture recommends replicating data. Either this can be tiered out to lower cost/lower performance object storage in Google Cloud or the data can be replicated across availability zones. The latter may be useful if there is client-side disconnection from other time zones. You may consider failover of service from Europe to North America, or vice-versa. kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX-style filesystem stored in persistent storage (Google Cloud’s Persistent Disk _et al._)
 There are many solutions that offer full operational functionality for the POSIX interface.
 
 
@@ -227,7 +227,7 @@ When considering selecting the right Persistent Disk, one needs to be aware of t
 
 [Filestore](https://cloud.google.com/filestore) is a set of services from Google Cloud allowing you to load your HDB store into a fully managed service. All Filestore tiers use network-attached storage (NAS) for Google Compute Engine (GCE) instances to access the HDB data. Depending on which tier you choose, it can scale to a few 100s of TBs for high-performance workloads. Along with predictable performance, it is simple to provision and easy to mount on GCE VM instances. NFSv3 is fully supported.
 
-Filestore includes some other storage features such as: Deduplication, Compression, Snapshots, Cross-region replication, and Quotas. Kdb+ is qualified with any tier of Filestore. In using Filestore, you can take advantage of these built-in features when using it for all or some of your HDB segments and partitions. As well as performance, it allows for consolidation of RDB write down and HDB reads, due to its simultaneous read and write support within a single filesystem namespace.
+Filestore includes some other storage features such as: Deduplication, Compression, Snapshots, Cross-region replication, and Quotas. kdb+ is qualified with any tier of Filestore. In using Filestore, you can take advantage of these built-in features when using it for all or some of your HDB segments and partitions. As well as performance, it allows for consolidation of RDB write down and HDB reads, due to its simultaneous read and write support within a single filesystem namespace.
 
 This makes it more convenient than Google Cloud Persistent Disks. You can simply add HDB capacity by setting up a new VM, mounting Filestore tier as if an NFS client to that service, and if needed, register the HDB to the HDB load balancer. RDB or any other data-writer processes can write HDB anytime, it just needs to notify the HDB processes to remap the HDB files to the backing store. Note that the VMs of your RDB and HDB instances need to be in the same zone as your Filestore.
 
@@ -362,7 +362,7 @@ You might want to use the premium network service tier for higher throughput and
 
 [Cloud Load Balancing](https://cloud.google.com/load-balancing/) is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, network load balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies. Standard network tier offers regional load balancing. The global load balancing is available as a premium tier feature.
 
-Load balancers can distribute load among applications that offer the same service. Kdb+ is single threaded by default. With a negative [`-p` command-line option](../../basics/cmdline.md#-p-listening-port) you can set multithreaded input mode, in which requests are processed in parallel. This however, is not recommended for gateways (due to socket-usage limitation) and for kdb+ servers that process data from disk, like HDBs.
+Load balancers can distribute load among applications that offer the same service. kdb+ is single threaded by default. With a negative [`-p` command-line option](../../basics/cmdline.md#-p-listening-port) you can set multithreaded input mode, in which requests are processed in parallel. This however, is not recommended for gateways (due to socket-usage limitation) and for kdb+ servers that process data from disk, like HDBs.
 
 A better approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway via async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then a gateway load balancer is recommended to avoid query contention in the gateway. Furthermore, there are other kdb+tick components that enjoy the benefit of load balancers to better handle simultaneous requests.
 
@@ -398,7 +398,7 @@ m: `message`val!("a structured message"; 42)
 system "gcloud logging write --severity=INFO --payload-type=json kdb-log '", .j.j[m], "'"
 ```
 
-Using system commands for logging is not convenient. A better approach is to use client libraries. There is no client library for the q programming language but you can use [embedPy](../..//ml/embedpy/index.md) and the Python API as a workaround.
+Using system commands for logging is not convenient. A better approach is to use client libraries. There is no client library for the q programming language but you can use embedPy and the Python API as a workaround.
 
 ```q
 \l p.q
@@ -415,7 +415,7 @@ m: `message`val!("another structured message"; 42)
 qlogger[`:log_struct; m; `severity pykw `ERROR]
 ```
 
-Another way to interact with the Cloud Logging API is through the REST API. Kdb+ supports HTTP get and post requests by utilities [`.Q.hg`](../../ref/dotq.md#hg-http-get) and [`.Q.hp`](../../ref/dotq.md#hp-http-post). The advantage of this approach is that you don’t need to install embedPy. Instead you have a portable pure-q solution. There is a long journey from `.Q.hp` till you have a fully featured cloud-logging library. The QLog library of KX Insights spares you the trip. Call unary function `msg` in namespace `.qlog` to log a message. The argument is a string or a dictionary, depending on the type (structured or unstructured) of the message.
+Another way to interact with the Cloud Logging API is through the REST API. kdb+ supports HTTP get and post requests by utilities [`.Q.hg`](../../ref/dotq.md#hg-http-get) and [`.Q.hp`](../../ref/dotq.md#hp-http-post). The advantage of this approach is that you don’t need to install embedPy. Instead you have a portable pure-q solution. There is a long journey from `.Q.hp` till you have a fully featured cloud-logging library. The QLog library of kdb Insights spares you the trip. Call unary function `msg` in namespace `.qlog` to log a message. The argument is a string or a dictionary, depending on the type (structured or unstructured) of the message.
 
 ```q
 .log.msg "unstructured message via QLog"
@@ -448,7 +448,7 @@ Key benefits of Cloud Logging:
 
 -   Almost all kdb+tick components can benefit from Cloud Logging. Feed handlers log new data arrival, data and connection issues. The TP logs new or disappearing publishers and subscribers. It can log if the output queue is above a threshold. The RDB logs all steps of the EOD process which includes sorting and splaying of all tables. HDB and gateway can log every single user query.
 
--   Kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tickerplants and these Ops tables are separated from the tables required for the business.
+-   kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tickerplants and these Ops tables are separated from the tables required for the business.
 
 -   One benefit of storing log messages is the ability to process log messages in [qSQL](../../basics/qsql.md). Timeseries [join functions](../../basics/joins.md) include as-of and window joins. Consider how it investigates gateway functions that are executed hundreds of times during the day. The gateway query executes RDB and HDB queries and via load balancers. All these components have their own log entries. You can simply employ window join to find relevant entries and perform aggregation to get an insight of the performance characteristics of the execution chain.
 
@@ -484,7 +484,7 @@ Feeds and the RDB need to know the address of the tickerplant. The gateway and t
 Google offers [Service Directory](https://cloud.google.com/service-directory), a managed service, to reduce the complexity of management and operations by providing a single place to publish, discover, and connect services. Service Directory organizes services into namespaces. A service can have multiple attributes, called annotations, as key-value pairs. You can add several endpoints to
 a service. The IP address and a port is mandatory for each end point. Unfortunately Service Directory neither validates addresses nor performs health checks.
 
-Kdb+ can easily interact with the Service Directory using Kurl. Kurl can be extended to create or query namespaces, discover or add and remove endpoints to facilitate service discovery of your kdb+ processes running in your tick environment. For example a kdb+ gateway can fetch from Service Directory the addresses of RDBs and HDBs. The cloud console also comes with a simple web interface to e.g. list the endpoints and their addresses of any service.
+kdb+ can easily interact with the Service Directory using Kurl. Kurl can be extended to create or query namespaces, discover or add and remove endpoints to facilitate service discovery of your kdb+ processes running in your tick environment. For example a kdb+ gateway can fetch from Service Directory the addresses of RDBs and HDBs. The cloud console also comes with a simple web interface to e.g. list the endpoints and their addresses of any service.
 
 
 ## Access management
@@ -528,5 +528,5 @@ Disaster-recovery planning for kdb+ tick systems
 [Order Book: a kdb+ intraday storage and access methodology](../../wp/order-book.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
+[kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
 

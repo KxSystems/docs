@@ -46,9 +46,9 @@ sets of APIs and tools.
 
 Amazon EC2 is one of many services available to AWS users, and is managed via the AWS console. EC2 is typically used to host public estates of Web and mobile-based applications. Many of these are ubiquitous and familiar to the public. EC2 forms a significant part of the “Web 2.0/Semantic Web” applications available for mobile and desktop computing.
 
-Kdb+ is a high-performance technology. It is often assumed the Cloud cannot provide a level of performance, storage and memory access commensurate with dedicated or custom hardware implementations. Porting to EC2 requires careful assessment of the functional performance constraints both in EC2 compute and in the supporting storage layers.
+kdb+ is a high-performance technology. It is often assumed the Cloud cannot provide a level of performance, storage and memory access commensurate with dedicated or custom hardware implementations. Porting to EC2 requires careful assessment of the functional performance constraints both in EC2 compute and in the supporting storage layers.
 
-Kdb+ users are sensitive to database performance. Many have significant amounts of market data – sometimes hundreds of petabytes – hosted in data centers. Understanding the issues is critical to a successful migration.
+kdb+ users are sensitive to database performance. Many have significant amounts of market data – sometimes hundreds of petabytes – hosted in data centers. Understanding the issues is critical to a successful migration.
 
 Consider the following scenarios:
 
@@ -75,7 +75,7 @@ As long as the speed of deployment and ease of use is coupled with similar or _g
 
 ## In-house vs EC2
 
-Kdb+ is used to support 
+kdb+ is used to support 
 
 -   real-time data analytics
 -   streaming data analytics
@@ -202,7 +202,7 @@ Although EC2 offers both physical systems and virtual systems within the Elastic
 
 A _placement group_ is a logical grouping of instances within a single availability zone. Nodes in a placement group should gain better network latency figures when compared to nodes scattered anywhere within an availability zone. Think of this as placement subnets or racks with a data center, as opposed to the data-center itself. All of our tests use one placement group, unless otherwise stated.
 
-Kdb+ is supported on most mainstream Linux distributions, and by extension we support standard Linux distributions deployed under the AWS model.
+kdb+ is supported on most mainstream Linux distributions, and by extension we support standard Linux distributions deployed under the AWS model.
 
 Testing within this report was carried out typically on CentOS 7.3 or 7.4 distributions, but all other mainstream Linux distributions are expected to work equally well, with no noticeable performance differences seen in spot testing on RHEL, Ubuntu and SuSe running on EC2.
 
@@ -226,7 +226,7 @@ If kdb+ runs alongside one of the solutions reviewed here, your HDB will functio
 The typical kdb+ database layout for a stock tick-based system is
 partitioned by date, although integer partitioning is also possible.
 Partitioning allows for quicker lookup and increases the ability to
-parallelize queries. Kdb+ splays in-memory table spaces into
+parallelize queries. kdb+ splays in-memory table spaces into
 representative directories and files for long-term retention. Here is
 an example of an on-disk layout for quote and trade tables, with date
 partitions:
@@ -243,11 +243,11 @@ partitions](img/media/image5.jpg){.foo}
 Usually, updates to the HDB are made by writing today’s or the last
 day’s in-memory columns of data to a new HDB partition. Q programmers
 can use a utility built into q for this which creates the files and
-directories organized as in the table above. Kdb+ requires the support
+directories organized as in the table above. kdb+ requires the support
 of a POSIX-compliant filesystem in order to access and process HDB
 data.
 
-Kdb+ maps the entire HDB into the runtime address space of kdb+. This
+kdb+ maps the entire HDB into the runtime address space of kdb+. This
 means the Linux kernel is responsible for fetching HDB data. If,
 for example, you are expecting a query that scans an entire day’s trade
 price for a specific stock symbol range, the filesystem will load this
@@ -293,7 +293,7 @@ EC2 is divided into various zones. Compute, storage and support software
 can all be placed in pre-defined availability zones. Typically these
 reflect the timezone location of the data center, as well as a further
 subdivision into a physical instance of the data center within one
-region or time zone. Kdb+ will achieve the lowest latency and highest
+region or time zone. kdb+ will achieve the lowest latency and highest
 bandwidth in the network by using nodes and storage hosted in the same
 availability zone.
 
@@ -462,7 +462,7 @@ However, S3’s low cost, and its ability to scale performance horizontally when
 
 The second limitation is S3’s performance, as measured by the time taken to populate vectors in memory. 
 
-Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on disk. It exploits this feature to gain very high-performance memory management through Linux-based memory mapping functions built into the kernel, from the very inception of Linux.
+kdb+ uses POSIX filesystem semantics to manage HDB structure directly on disk. It exploits this feature to gain very high-performance memory management through Linux-based memory mapping functions built into the kernel, from the very inception of Linux.
 
 S3 uses none of this.
 
@@ -509,7 +509,7 @@ itself.
     this paper help mitigate this issue. The appendices list the main
     comparisons of all of the reviewed solutions.
 
--   Neither Kdb+, nor any other high-performance database, makes use of the **RESTful object-store interface**.
+-   Neither kdb+, nor any other high-performance database, makes use of the **RESTful object-store interface**.
 
 -   There is no notion of **vectors, lists, memory mapping** or optimized placement of objects in memory regions.
 
@@ -764,7 +764,7 @@ cost of EBS is fixed per GB per month, pro-rated. The data held on
 instance local SSD is not natively sharable. If this needs to be shared,
 this will require a shared filesystem to be layered on top, i.e.
 demoting this node to be a filesystem server node. For the above
-reasons, these storage types have been used by solutions such as [WekaIO](#appendix-i-wekaio-matrix), for their local instance of the erasure coded data cache.
+reasons, these storage types have been used by solutions such as WekaIO, for their local instance of the erasure coded data cache.
 
 function                     | instance-local NVMe<br/>(4 × 1.9 TB) | physical node<br/>(1 NVMe)
 -----------------------------|:---------------------------:|:------------:

@@ -50,7 +50,7 @@ Each service that integrates with Lambda sends data to the lambda function as an
 ![AWS Lambda Processflow](aws-lambda-flow.png)
 
 
-## Q/kdb+ Lambda runtime
+## q/kdb+ Lambda runtime
 
 The AWS Lambda execution environment provisions and runs secure sandboxed micro virtual machines in order to execute functions. These secure sandboxes can be rapidly provisioned with minimal footprint, enabling performance and security. The q/kdb+ runtime runs in this standard Lambda execution environment.
 
@@ -80,10 +80,10 @@ The runtime code is responsible for completing some initialization tasks. Then i
 Initialization counts towards billed execution time and timeout. When an execution triggers the initialization of a new instance of your function, you can monitor the behavior of the function in CloudWatch logs and AWS X-Ray Trace. X-Ray traces allow the user to analyze and debug distributed applications and troubleshoot the root cause of performance issues and errors.
 
 
-### Q/kdb+ bootstrap and code execution
+### q/kdb+ bootstrap and code execution
 
 To deploy the q/kdb+ runtime to your Lambda environment follow the instructions at
-[_Deploy using Serverless Application Repository_](#deploy-using-serverless-application-repository).
+[Deploy using Serverless Application Repository](#deploy-using-serverless-application-repository).
 <!-- 
 -   [Deploy using Serverless Application Repository](#deploy-using-serverless-application-repository)
 -   [Deploy using Cloud Development Kit](#deploy-using-the-cloud-development-kit)
@@ -502,7 +502,7 @@ exit​ 0
 
 Using q/kdb+ on Lambda, we can send data between the AWS Kinesis Service and a remote q/kdb+ process using IPC.
 
-For a simple test, set up a running q process on an Elastic Compute Cloud (EC2) server and note the IP address. Kdb+ is available on EC2 from the [AWS
+For a simple test, set up a running q process on an Elastic Compute Cloud (EC2) server and note the IP address. kdb+ is available on EC2 from the [AWS
 Marketplace](https://aws.amazon.com/marketplace/pp/B07KX973GH?ref_=beagle)
 or can be manually installed on a machine of your choosing.
 
