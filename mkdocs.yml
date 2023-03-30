@@ -78,7 +78,7 @@ nav:
       - Scala: interfaces/scala-client-for-q.md
     - Open source: github.md
     - Machine learning: ml.md
-    - Cloud: 
+    - Using kdb+ in the cloud: 
       - About: cloud/index.md
       - kdb Insights: 'https://code.kx.com/insights/'
       - Amazon Web Services:
