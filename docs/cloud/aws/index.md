@@ -10,7 +10,7 @@ authors: Eric Corcoran, Ferenc Bodon
 
 kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
 
-KX customers can lift and shift their kdb+ plants to the cloud and exploit virtual machines (VM) with storage. This is the classic approach that relies on the existing license. To benefit more from the cloud technology we recommend migrating to KX Insights.
+KX customers can lift and shift their kdb+ plants to the cloud and exploit virtual machines (VM) with storage. This is the classic approach that relies on the existing license. To benefit more from the cloud technology we recommend migrating to kdb Insights.
 
 !!! summary "kdb Insights"
 
@@ -20,18 +20,18 @@ KX customers can lift and shift their kdb+ plants to the cloud and exploit virtu
 
     Deployment:
 
-    -   [QPacker]([https://code.kx.com/insights/cloud-edition/qpacker/quickstart/](https://code.kx.com/insights/1.4/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries
+    -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
     -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
 
-    -   [QLog]([https://code.kx.com/insights/cloud-edition/qlog/quickstart/](https://code.kx.com/insights/1.4/core/qlog/overview.html) – Integrations with major cloud logging services
-    -   [Kurl]([https://code.kx.com/insights/cloud-edition/kurl/quickstart/](https://code.kx.com/insights/1.4/core/kurl/kurl.html) – Native kdb+ REST client with authentication to cloud services
+    -   [QLog](https://code.kx.com/insights/core/qlog/overview.html) – Integrations with major cloud logging services
+    -   [Kurl](https://code.kx.com/insights/core/kurl/kurl.html) – Native kdb+ REST client with authentication to cloud services
 
     Storage:
     
-    -   [kdb+ Object Store]([https://code.kx.com/insights/cloud-edition/objstor/quickstart/](https://code.kx.com/insights/1.4/core/objstor/main.html) – Native support for reading and querying cloud object storage
+    -   [kdb+ Object Store](https://code.kx.com/insights/core/objstor/main.html) – Native support for reading and querying cloud object storage
 
 
 ## Architectural components
@@ -48,7 +48,7 @@ This reference architecture describes a full solution running kdb+tick within Am
 -   Historical database
 -   KX gateway
 
-One architectural pattern for kdb+tick in Amazon Web Services is depicted below. The kdb+ historical database (HDB) can be stored in FSx Lustre and tiered to S3 or, with KX Insights, the HDB data can be directly accessed from a kdb+ process.
+One architectural pattern for kdb+tick in Amazon Web Services is depicted below. The kdb+ historical database (HDB) can be stored in FSx Lustre and tiered to S3 or, with kdb Insights, the HDB data can be directly accessed from a kdb+ process.
 
 [![A simplified architecture diagram for kdb+tick in AWS](architecture.png)](architecture.png "Click to expand")
 <br>
@@ -58,10 +58,10 @@ Worthy of note in this reference architecture is the ability to place kdb+ proce
 
 Many customers have tickerplants set up on their premises. The AWS reference architecture allows them to manage a hybrid infrastructure that communicates with tickerplants both on premises and in the cloud. However, the benefits of migrating on-premises solutions to the cloud are vast. These include flexibility, auto-scaling, improved transparency in cost management, access to management and infrastructure tools built by Amazon, quick hardware allocation and many more.
 <!-- 
-!!! tip "KX Insights"
+!!! tip "kdb Insights"
 
     This article focuses on kdb+tick deployment to EC2 virtual machines in AWS.
-    However, KX Insights provides another kdb+ architectural pattern for deploying to AWS Elastic Kubernetes Service (EKS).
+    However, kdb Insights provides another kdb+ architectural pattern for deploying to AWS Elastic Kubernetes Service (EKS).
 
     :fontawesome-solid-hand-point-right:
     [KX Core App Charts](https://code.kx.com/insights/kx-core-app-charts/)
@@ -211,7 +211,7 @@ Best practice is to replicate data. Data replication processes can use lower cos
 
 ### Simple Storage Service (S3)
 
-S3 is an object store that scales to exabytes of data. There are different storage classes (Standard, Standard IA, Intelligent Tiering, One Zone, Glacier, Glacier Deep Archive) for different availability. Infrequently used data can use cheaper but slower storage. The KX Insights native object store functionality allows users to read HDB data from S3 object storage.
+S3 is an object store that scales to exabytes of data. There are different storage classes (Standard, Standard IA, Intelligent Tiering, One Zone, Glacier, Glacier Deep Archive) for different availability. Infrequently used data can use cheaper but slower storage. The kdb Insights native object store functionality allows users to read HDB data from S3 object storage.
 
 The HDB `par.txt` file can have segment locations that are on AWS S3 object storage. In this pattern, the HDB can reside entirely on S3 storage or spread across EBS, EFS or S3 as required. There is a relatively high latency when using S3 cloud storage compared to storage services EBS Block Express or FSx for Lustre. The performance of kdb+ when working with S3 can be improved by taking advantage of the caching feature of the kdb+ native object store. The results of requests to S3 can be cached on a local high-performance disk thus increasing performance. The cache directory is continuously monitored and a size limit is maintained by deleting files according to a LRU (least recently used) algorithm.
 
@@ -392,7 +392,7 @@ kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unl
 One benefit of storing log messages is the ability to process log messages in qSQL. Timeseries join functions include as-of and window joins. For example, gateway functions are executed hundreds of times during the day. The gateway query executes RDB and HDB queries, often via a load balancer. All these components have their own log entries. You can simply employ a window join to find relevant entries and perform aggregation to get an insight of the performance characteristics of the execution chain. Note that nothing prevents you from logging both to kdb+ and to CloudWatch.
 
 <!-- FIXME link -->
-KX Insights QLog provides kdb+ cloud logging functionality. QLog supports multiple endpoint types through a simple interface and provides the ability to write to them concurrently. The logging endpoints in QLog are encoded as URLs with two main types: file descriptors and REST endpoints. The file descriptor endpoints supported are
+kdb Insights QLog provides kdb+ cloud logging functionality. QLog supports multiple endpoint types through a simple interface and provides the ability to write to them concurrently. The logging endpoints in QLog are encoded as URLs with two main types: file descriptors and REST endpoints. The file descriptor endpoints supported are
 
 ```txt
 :fd://stdout
@@ -447,7 +447,7 @@ q)p)result= response['Payload'].read()
 
 ### Natively via Kurl REST API
 
-Finally, you can send HTTP requests to the AWS REST API endpoints. KX Insights provides a native q REST API called Kurl. Kurl provides ease-of-use cloud integration by registering AWS authentication information. When running on a cloud instance, and a role is available, Kurl will discover and register the instance metadata credentials. When running outside the cloud, OAuth2, ENV, and file-based credential methods are supported. Kurl takes care of your credentials and properly formats the requests. In the code below the variables `fn` and `payload` are as in the previous example.
+Finally, you can send HTTP requests to the AWS REST API endpoints. kdb Insights provides a native q REST API called Kurl. Kurl provides ease-of-use cloud integration by registering AWS authentication information. When running on a cloud instance, and a role is available, Kurl will discover and register the instance metadata credentials. When running outside the cloud, OAuth2, ENV, and file-based credential methods are supported. Kurl takes care of your credentials and properly formats the requests. In the code below the variables `fn` and `payload` are as in the previous example.
 
 ```q
 q) system "l kurl.q";
