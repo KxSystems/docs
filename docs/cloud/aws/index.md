@@ -4,40 +4,40 @@ description:
 date: June 2021
 authors: Eric Corcoran, Ferenc Bodon
 ---
-# :kx-brands-aws-cloud:<br>Reference architecture for AWS
+# Reference architecture for AWS
 
 
 
-Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
+kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
 
 KX customers can lift and shift their kdb+ plants to the cloud and exploit virtual machines (VM) with storage. This is the classic approach that relies on the existing license. To benefit more from the cloud technology we recommend migrating to KX Insights.
 
-!!! summary "KX Insights"
+!!! summary "kdb Insights"
 
     ![Microservices](../../img/microservice_icon.png){: style="float:left; margin:0 2em 2em 0; max-width:20%"}
 
-    [KX Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
+    [kdb Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of the kdb Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
     Deployment:
 
-    -   [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/quickstart/) – A packaging utility that supports q, Python and C libraries
+    -   [QPacker]([https://code.kx.com/insights/cloud-edition/qpacker/quickstart/](https://code.kx.com/insights/1.4/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
     -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
 
-    -   [QLog](https://code.kx.com/insights/cloud-edition/qlog/quickstart/) – Integrations with major cloud logging services
-    -   [Kurl](https://code.kx.com/insights/cloud-edition/kurl/quickstart/) – Native kdb+ REST client with authentication to cloud services
+    -   [QLog]([https://code.kx.com/insights/cloud-edition/qlog/quickstart/](https://code.kx.com/insights/1.4/core/qlog/overview.html) – Integrations with major cloud logging services
+    -   [Kurl]([https://code.kx.com/insights/cloud-edition/kurl/quickstart/](https://code.kx.com/insights/1.4/core/kurl/kurl.html) – Native kdb+ REST client with authentication to cloud services
 
     Storage:
     
-    -   [Kdb+ Object Store](https://code.kx.com/insights/cloud-edition/objstor/quickstart/) – Native support for reading and querying cloud object storage
+    -   [kdb+ Object Store]([https://code.kx.com/insights/cloud-edition/objstor/quickstart/](https://code.kx.com/insights/1.4/core/objstor/main.html) – Native support for reading and querying cloud object storage
 
 
 ## Architectural components
 
 The core of a kdb+ tick-capture system is called kdb+tick.
-The [Kdb+tick](../../learn/startingkdb/tick.md) architecture allows the capture, processing, and querying of timeseries data against real-time, streaming and historical data.
+The [kdb+tick](../../learn/startingkdb/tick.md) architecture allows the capture, processing, and querying of timeseries data against real-time, streaming and historical data.
 
 This reference architecture describes a full solution running kdb+tick within Amazon Web Services (AWS) which consists of these bare-minimum functional components:
 
@@ -54,7 +54,7 @@ One architectural pattern for kdb+tick in Amazon Web Services is depicted below.
 <br>
 <small>_A simplified architecture diagram for kdb+tick in Amazon Web Services_</small>
 
-Worthy of note in this reference architecture is the ability to place kdb+ processing functions either in one Elastic Compute Cloud (EC2) instance or distributed across many EC2 instances. Kdb+ processes can communicate with each other through built-in language primitives: this allows for flexibility in final design layouts. Data transportation between kdb+ processes, and overall external communication, is by low-level TCP/IP sockets. If two components are on the same EC2 instance, local Unix sockets can be used to reduce communication overhead.
+Worthy of note in this reference architecture is the ability to place kdb+ processing functions either in one Elastic Compute Cloud (EC2) instance or distributed across many EC2 instances. kdb+ processes can communicate with each other through built-in language primitives: this allows for flexibility in final design layouts. Data transportation between kdb+ processes, and overall external communication, is by low-level TCP/IP sockets. If two components are on the same EC2 instance, local Unix sockets can be used to reduce communication overhead.
 
 Many customers have tickerplants set up on their premises. The AWS reference architecture allows them to manage a hybrid infrastructure that communicates with tickerplants both on premises and in the cloud. However, the benefits of migrating on-premises solutions to the cloud are vast. These include flexibility, auto-scaling, improved transparency in cost management, access to management and infrastructure tools built by Amazon, quick hardware allocation and many more.
 <!-- 
@@ -84,7 +84,7 @@ A feedhandler process captures external data and translates it into kdb+ message
 There are a number of open source (Apache 2 licensed) Fusion interfaces between KX and other third-party technologies. Feed handlers are typically written in Java, Python, C++, and&nbsp;q.
 
 :fontawesome-brands-superpowers:
-[Fusion interfaces on kdb+](../../interfaces/fusion.md)
+[Fusion interfaces on kdb+](../../interfaces/index.md)
 
 
 ### Tickerplant
@@ -181,7 +181,7 @@ The KX gateway must be accessible through Amazon GC2 security rules from all cli
 
 ## Storage and filesystem
 
-Kdb+tick architecture needs storage space for three types of data:
+kdb+tick architecture needs storage space for three types of data:
 
 TP log
 
@@ -203,7 +203,7 @@ HDB data
 
 One advantage of storing your HDB within the AWS ecosystem is the flexibility of storage. This is usually distinct from “on-prem” storage, whereby you may start at one level of storage capacity and grow the solution to allow for dynamic capacity growth. One huge advantage of most AWS storage solutions (e.g persistent disks) is that disks can grow dynamically without the need to halt instances, this allows you to change resources dynamically. For example, start with small disk capacity and grow capacity over time.
 
-Best practice is to replicate data. Data replication processes can use lower cost/lower performance object storage in AWS or data can replicate across availability zones. For example, you might have a service failover from Europe to North America, or vice-versa. Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX style filesystem stored in persistent storage (e.g. Amazon EBS or FSx for Lustre).
+Best practice is to replicate data. Data replication processes can use lower cost/lower performance object storage in AWS or data can replicate across availability zones. For example, you might have a service failover from Europe to North America, or vice-versa. kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX style filesystem stored in persistent storage (e.g. Amazon EBS or FSx for Lustre).
 
 :fontawesome-solid-hand-point-right:
 [Migrating a kdb+ historical database to the Amazon Cloud](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
@@ -364,7 +364,7 @@ EFA provides lower and more consistent latency and higher throughput than the TC
 
 A network load balancer is a type of [Elastic Load Balancer](https://aws.amazon.com/elasticloadbalancing/) by Amazon. It is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, Network Load Balancers are capable of handling millions of requests per second securely while maintaining ultra-low latencies.
 
-Load balancers can distribute load among applications that offer the same service. Kdb+ is single-threaded by default. You can set [multithreaded input mode](../../kb/multithreaded-input.md) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
+Load balancers can distribute load among applications that offer the same service. kdb+ is single-threaded by default. You can set [multithreaded input mode](../../kb/multithreaded-input.md) in which requests are processed in parallel. This however, is not recommended for gateways (due to socket usage limitation) and for q servers that process data from disk, like HDBs.
 
 A better approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway via async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then we recommend a gateway load balancer to avoid query contention in the gateway. Furthermore, there are other tickerplant components that enjoy the benefit of load balancers to handle simultaneous requests better.
 
@@ -387,7 +387,7 @@ You don’t need to modify your tick scripts to enjoy the benefits of CloudWatch
 
 Almost all kdb+ tick components can benefit from cloud logging. Feed handlers log new data arrival, data and connection issues. The TP logs new or disappearing publishers and subscribers. It can log if the output queue is above a threshold. The RDB logs all steps of the EOD process which includes sorting and splaying of all tables. The HDB and gateway can log every user query.
 
-Kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tick plans and these Ops tables are separated from the tables required for the business.
+kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tick plans and these Ops tables are separated from the tables required for the business.
 
 One benefit of storing log messages is the ability to process log messages in qSQL. Timeseries join functions include as-of and window joins. For example, gateway functions are executed hundreds of times during the day. The gateway query executes RDB and HDB queries, often via a load balancer. All these components have their own log entries. You can simply employ a window join to find relevant entries and perform aggregation to get an insight of the performance characteristics of the execution chain. Note that nothing prevents you from logging both to kdb+ and to CloudWatch.
 
@@ -430,7 +430,7 @@ Unfortunately, this approach needs string manipulation, so it is not always conv
 
 ### Via EmbedPy
 
-Amazon provides a Python client library to interact with AWS services. Using [embedPy](../../interfaces/embedpy.md), a q process can load a Python environment and easily transfer data between the two environments.
+Amazon provides a Python client library to interact with AWS services. Using embedPy, a q process can load a Python environment and easily transfer data between the two environments.
 
 ```q
 q) system "l p.q"
@@ -470,7 +470,7 @@ QPacker can interface with Hashicorp Packer to generate virtual machine (VM) ima
 
 Function as a Service (FaaS) is an interesting cloud technology that lets developers create an application without considering the complexity of building and maintaining the infrastructure that runs it. Cloud providers support only a handful of programming languages natively. AWS’ FaaS solution, [Lambda](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_Lambda.html), supports Bash scripts that can start any executable, including a q script.
 
-Kdb+ on AWS Lambda is serverless as there are no servers to manage or maintain. When your lambda service is not used then you don’t have infrastructure costs. The cost is transparent and you can charge those who actually use your service. Also, the infrastructure scales well and parallel execution of your lambda is not limited by your hardware that is typically fixed with an on-premise solution. Furthermore, your lambda is executed in its own environment, so you can worry less about the protection against side effects compared to a static solution.
+kdb+ on AWS Lambda is serverless as there are no servers to manage or maintain. When your lambda service is not used then you don’t have infrastructure costs. The cost is transparent and you can charge those who actually use your service. Also, the infrastructure scales well and parallel execution of your lambda is not limited by your hardware that is typically fixed with an on-premise solution. Furthermore, your lambda is executed in its own environment, so you can worry less about the protection against side effects compared to a static solution.
 
 There are many use cases for employing lambdas in kdb+tick. First, the batch feed handlers that run when new data is dropped can run by lambda. This integrates well with S3. For example a new CSV file in an S3 bucket can immediately trigger a lambda that runs the feed handler. Developers only need to estimate the total amount of memory that will be used by the feed handler. All the backend infrastructure is managed by AWS. The scalability has real business value compared to on-premise solutions, where typically a set of feed handlers need to be allocated on a set of machines. The DevOps team needs to manually arrange the placements, which is prone to error especially due to the dynamic nature of load.
 
@@ -486,7 +486,7 @@ Feeds and the RDB need to know the address of the tickerplant. The gateway and t
 
 Service discovery can be managed from within kdb+ or by using a service such as [AWS Cloud Map](https://aws.amazon.com/cloud-map/). This service keeps track of all your application components, their locations, attributes and health status. Cloud Map organizes services into namespaces. A service must have an address and can have multiple attributes. You can add a health check to any service. A service is unhealthy if the number of times the health check failed is above a threshold. Set a higher threshold for HDBs if you allow long-running queries.
 
-Kdb+ can easily interact with the AWS Cloud Map REST API using Kurl. Kurl can be extended to create/query namespaces, discover or register/deregister instances to facilitate service discovery of your kdb+ processes running in your tick environment. For example, a kdb+ gateway can fetch from Cloud Map the addresses of healthy RDBs and HDBs. The aws console also comes with a simple web interface to visualize the status of your kdb+ processes/instances.
+kdb+ can easily interact with the AWS Cloud Map REST API using Kurl. Kurl can be extended to create/query namespaces, discover or register/deregister instances to facilitate service discovery of your kdb+ processes running in your tick environment. For example, a kdb+ gateway can fetch from Cloud Map the addresses of healthy RDBs and HDBs. The aws console also comes with a simple web interface to visualize the status of your kdb+ processes/instances.
 
 
 ## Access management
@@ -519,7 +519,7 @@ Gateway | Memory Optimized<br>R4, R5, R5b, X1 | | Medium-Perf<br>Medium<br>High
 ## Further reading
 
 :fontawesome-brands-github:
-[KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick):
+[kdb tick](https://github.com/KxSystems/kdb-tick):
 standard `tick.q` scripts
 <br>
 :fontawesome-regular-map:
@@ -541,7 +541,7 @@ standard `tick.q` scripts
 [Order Book: a kdb+ intraday storage and access methodology](../../wp/order-book.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
+[kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
 <br>
 :fontawesome-solid-hand-point-right:
 [Migrating a kdb historical database to AWS](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
@@ -549,7 +549,4 @@ standard `tick.q` scripts
 :fontawesome-solid-cloud:
 [Serverless kdb+ on AWS Lambda](../aws-lambda/index.md)
 <br>
-:fontawesome-solid-hand-point-right:
-[Kdb+ Cloud Edition](https://code.kx.com/insights/cloud-edition/)
-
 
