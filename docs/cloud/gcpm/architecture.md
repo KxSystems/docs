@@ -20,6 +20,7 @@ KX clients can lift and shift their kdb+ plants to the cloud and make use of vir
 
     <!-- -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries -->
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
+    
     -   Use Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
