@@ -16,13 +16,14 @@ KX customers can lift and shift their kdb+ plants to the cloud and exploit virtu
 
     ![Microservices](../../img/microservice_icon.png){: style="float:left; margin:0 2em 2em 0; max-width:20%"}
 
-    [kdb Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of the kdb Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
+    [kdb Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from cloud storage. By taking advantage of the kdb Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
     Deployment:
 
-    -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries
+    <!-- -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries -->
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
-    -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
+    
+    -   Use Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
 
@@ -457,13 +458,13 @@ q) resp: .kurl.sync (`$"https://lambda.us-east-1.amazonaws.com/2015-03-31/functi
 q) if[not 200 = first resp; '("Error invoking function ", last resp)];
 ```
 
-## Package, manage, and deploy
+<!--- ## Package, manage, and deploy
 
 QPacker is a tool to help developers package, manage and deploy q/kdb+ applications to the cloud. It automates the creation of containers and virtual machines using a simple configuration file `qp.json`. It packages q/kdb+ applications with common shared-code dependencies, such as Python and C. QPacker can build and run containers locally as well as push to container registries (DockerHub, AWS Elastic Container Registry etc.).
 
 Software is often built by disparate teams, who may individually have remit over a particular component, and package that component for consumption by others. QPacker will store all artefacts for a project in a QPK file. While this file is intended for binary dependencies, it is also intended to be portable across environments.
 
-QPacker can interface with Hashicorp Packer to generate virtual machine (VM) images for AWS. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -aws`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with systemd to allow the `startq.sh` launch script to start the application on boot.
+QPacker can interface with Hashicorp Packer to generate virtual machine (VM) images for AWS. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -aws`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with systemd to allow the `startq.sh` launch script to start the application on boot. --->
 
 
 ## Amazon Lambda Functions

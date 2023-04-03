@@ -14,13 +14,14 @@ KX clients can lift and shift their kdb+ plants to the cloud and make use of vir
 
     ![Microservices](../../img/microservice_icon.png){: style="float:left; margin:0 2em 2em 0; max-width:20%"}
 
-    [kdb Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from cloud storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of kdb Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
+    [kdb Insights](https://code.kx.com/insights/) provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops‘ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from cloud storage. By taking advantage of kdb Insights suite of tools, developers can quickly and easily create new and integrate existing kdb+ applications on Google Cloud.
 
     Deployment:
 
-    -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries
+    <!-- -   [QPacker](https://code.kx.com/insights/core/qpacker/qpacker.html) – A packaging utility that supports q, Python and C libraries -->
     <!-- -   [Detailed guide](https://code.kx.com/insights/cloud-edition/kx-core-app-charts/helloworld/) to using Helm and Kubernetes to deploy kdb+ applications to the cloud. -->
-    -   Detailed examples of using Helm and Kubernetes to deploy kdb+ applications to the cloud
+    
+    -   Use Helm and Kubernetes to deploy kdb+ applications to the cloud
 
     Service integration:
 
@@ -458,13 +459,13 @@ Key benefits of Cloud Logging:
 
 Cloud Monitoring supports monitoring, alarming and creating dashboards. It is simple to create a Metric Filter based on a pattern and set an alarm (e.g. sending email) if a certain criterion holds. You may also wish to integrate your KX Monitoring for kdb+ components into this cloud logging and monitoring framework. The purpose is the same, to get insights into performance, uptime and overall health of the applications and the servers pool. You can visualize trends via dashboards.
 
-## Package, manage and deploy
+<!-- ## Package, manage and deploy
 
 QPacker (`qp`) is a tool to help developers package, manage and deploy q/kdb+ applications to the cloud. It automates the creation of containers and virtual machines using a simple configuration file `qp.json`. It packages q/kdb+ applications with common shared code dependencies, such as Python and C. QPacker can build and run containers locally as well as push to container registries (DockerHub, GCP Container Registry etc.).
 
 Software is often built by disparate teams, who may individually have remit over a particular component, and package that component for consumption by others. QPacker will store all artifacts for a project in a QPK file. While this file is intended for binary dependencies, it is also designed to be portable across environments.
 
-QPacker can interface with Hashicorp Packer to generate virtual-machine (VM) images for Google Cloud. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -gcp`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with `systemd` to allow the `startq.sh` launch script to start the application on boot.
+QPacker can interface with Hashicorp Packer to generate virtual-machine (VM) images for Google Cloud. These VM images can then be used as templates for a VM instance running in the cloud. When a cloud target is passed to QPacker (`qp build -gcp`), an image is generated for each application defined in the top-level `qp.json` file. The QPK file resulting from each application is installed into the image and integrated with `systemd` to allow the `startq.sh` launch script to start the application on boot. -->
 
 
 ## Google Cloud Functions
@@ -475,7 +476,7 @@ The function’s platform only supports Node.js, Java, Go, and Python programmin
 
 One use case for Cloud Functions is implementing feed handlers. An upstream can drop, for instance, a CSV file to a Google Filestore bucket. This event can trigger a Java or Go cloud function that reads the file, applies some filtering or other data transformation, then sends the data to a tickerplant (TP). The real benefit of not caring about the backend infrastructure becomes obvious when the number of kdb+ tables, hence the number of feed handlers, increases, and distributing the feed handler on available servers needs constant human supervision.
 
-A similar service, called [Cloud Run](https://cloud.google.com/run), can be leveraged to run kdb+ in a serverless architecture. The kdb+ binary and code can be containerized and deployed to Cloud Run. QPacker helps you create images. Cloud Run then provisions the containers and manages the underlying infrastructure.
+A similar service, called [Cloud Run](https://cloud.google.com/run), can be leveraged to run kdb+ in a serverless architecture. The kdb+ binary and code can be containerized and deployed to Cloud Run. <!-- QPacker helps you create images. Cloud Run then provisions the containers and manages the underlying infrastructure. -->
 
 ## Service discovery
 
