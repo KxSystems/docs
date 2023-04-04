@@ -165,14 +165,14 @@ To detect when a connection opens, simply override the port open handler, `.z.po
 
 ```q
 / dump the port open handle to stdout
-.z.po:{0N!(`` `portOpen;x``);} 
+.z.po:{0N!(`portOpen;x);} 
 ```
 
 To detect when a connection is closed from the remote end, override the port close handler, `.z.pc`:
 
 ```q
 / dump the handle that has just been closed to stdout
-.z.pc:{0N!(`` `portClosed;x``);} 
+.z.pc:{0N!(`portClosed;x);} 
 ```
 
 :fontawesome-solid-book: 
