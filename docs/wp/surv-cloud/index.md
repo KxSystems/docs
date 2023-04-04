@@ -193,7 +193,7 @@ The Realtime Database and Historical Database  make up the data store. The RDB r
 
 ## Containerization
 
-So far we have discussed the inner workings of the processes that make up the surveillance application. Now we need to containerize it and push it to an image repository so that it can be retrieved in a Kubernetes setup. To do this we can use [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/qpacker.html), a convenient containerization tool built especially for packaging kdb+ applications. 
+So far we have discussed the inner workings of the processes that make up the surveillance application. Now we need to containerize it and push it to an image repository so that it can be retrieved in a Kubernetes setup. In this example, we show you how it can be done using [QPacker](https://code.kx.com/insights/cloud-edition/qpacker/qpacker.html), available as part of our kdb Insights product. 
 
 
 ### Configuring QPacker
