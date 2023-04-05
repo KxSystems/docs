@@ -80,7 +80,6 @@ nav:
     - Machine learning: ml.md
     - Using kdb+ in the cloud: 
       - About: cloud/index.md
-      - kdb Insights: 'https://code.kx.com/insights/'
       - Amazon Web Services:
         #- Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'
         - Reference architecture: cloud/aws/index.md
