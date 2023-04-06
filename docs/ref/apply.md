@@ -327,8 +327,9 @@ q)es 80 35 20 -10
 :fontawesome-solid-book:
 [Set Attribute](set-attribute.md)
 <br>
+<!--- This page from qriouskdb no longer maintained
 :fontawesome-solid-globe:
-q-rious kdb+: [Step Dictionaries](https://qriouskdb.wordpress.com/2019/01/01/step-dictionaries/)
+q-rious kdb+: [Step Dictionaries](https://qriouskdb.wordpress.com/2019/01/01/step-dictionaries/) --->
 
 
 ## Apply At, Index At
