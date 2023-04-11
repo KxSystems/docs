@@ -72,6 +72,7 @@ nav:
       - GPUs: interfaces/gpus.md
       - Lightning tickerplants (WP): wp/lightning-tickerplants/index.md
       - Matlab: interfaces/matlab-client-for-q.md
+      - ODBC: interfaces/q-client-for-odbc.md
       - ODBC3: interfaces/q-server-for-odbc3.md
       - ODBC/Simba: interfaces/odbc-simba.md
       - R: interfaces/r.md
