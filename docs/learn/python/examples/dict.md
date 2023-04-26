@@ -40,7 +40,7 @@ Above, dictionary `kv` is formed from two vectors by the [Dict](../../../ref/dic
 A list of key-value pairs can be flipped into two lists, and passed to `(!).` to form a dictionary. 
 
 ```q
-q)(!).flip(2 56;1 2;5 12;4 24;6 18;3 323)
+q)(!). flip(2 56;1 2;5 12;4 24;6 18;3 323)
 2| 56
 1| 2
 5| 12
