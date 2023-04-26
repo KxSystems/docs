@@ -242,6 +242,14 @@ And then open the resulting file with your browser, e.g. on macOS use the `open`
 q)\open howsmyssl.html
 ```
 
+## Unix Domain Socket
+
+When TLS mode enabled, any Unix Domain Socket ([UDS](../basics/listening-port.md#unix-domain-socket)) connection wishing to use TLS must use the handle :unixs:// (rather than :unix://) to encrypt its communication
+
+```q
+q)h:hopen`:unixs://12345
+```
+
 
 ## Suitability and restrictions
 
