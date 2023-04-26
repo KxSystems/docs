@@ -79,7 +79,7 @@ numeric symbol `n    symbols, each of n chars (n≤8)   Roll, Deal
                      from abcdefghijklmnop
 ```
 
-!!! detail "Where `x` is negative (Deal), `y` must have integer or GUID type"
+!!! detail "Where `x` is negative (Deal), `y` must have a positive long or null GUID"
 
 ```q
 q)10?5                                        / roll 10 (5-sided dice)
