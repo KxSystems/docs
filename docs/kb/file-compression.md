@@ -71,6 +71,7 @@ alg  algorithm  level  since
 2    gzip       0-9
 3    snappy     0      V3.4
 4    lz4hc      0-16†  V3.6 
+5    zstd       -7-22  V4.1
 </pre>
 
 !!! detail "Level 0 for `lz4hc` default compression; level>16 behaves the same as 16"
@@ -288,6 +289,7 @@ algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-appl
 2 (Gzip) | [Zlib](http://zlib.net) | `zlib` | (pre-installed) | [WinImage](http://www.winimage.com/zLibDll/index.html "winimage.com")
 3 (Snappy) | [GitHub](http://google.github.io/snappy/) | `libsnappy.so.1` | `libsnappy.dylib` | `snappy.dll`
 4 (Lz4hc) | [GitHub](https://github.com/lz4/lz4) | `liblz4.so.1` | `liblz4.dylib` | `liblz4.dll`
+5 (zstd) | [GitHub](https://github.com/facebook/zstd) | `libzstd.so.1` | `libzstd.1.dylib` | `libzstd.dll`
 
 === ":fontawesome-brands-apple: macOS"
 
