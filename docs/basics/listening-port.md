@@ -68,6 +68,15 @@ q)\p
 q)\p 0        / turn off listening port
 ```
 
+## Port range
+
+An inclusive range of ports can be used in place of a `portnumber`, to randomly use an available port within the given range (since V3.5/3.6 2023.03.13,V4.0 2022.10.26,V4.1 2022.11.01). A service name can be used instead of a port number within the range. Note that the ephemeral port option also provides the ability to choose from a range of ports.
+
+```q
+q)\p 2000/2010            / use a free port between 2000 and 2010
+q)\p -2000/2010           / use a free port between 2000 and 2010 in multithreaded mode
+q)\p myhost:2000/2010     / use a free port between 2000 and 2010, using given hostname
+```
 
 ## Multi-threaded port
 
