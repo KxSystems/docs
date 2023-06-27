@@ -26,7 +26,9 @@ symbol atom          value of the variable it names
 enumeration          corresponding symbol vector
 
 string               result of evaluating it in current context
-list                 result of calling or indexing the first element with the remaining elements <br>(if the first element is a string or symbol, it is evaluated first) <br>note that this is different from a parse tree that is handled by [`eval`](eval.md).
+list                 result of calling or indexing the first element with the remaining elements
+                 (if the first element is a string or symbol, it is evaluated first)
+                 note that this is different from a parse tree that is handled by [`eval`](eval.md).
 
 projection           list: function followed by argument/s
 composition          list of composed values
