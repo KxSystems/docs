@@ -13,31 +13,34 @@ x$y    $[x;y]
 
 Where
 
--   `x` and `y` are lists
--   `x~distinct x`
--   items of `y` are all items of `x`
+-   `x` is a symbol containing the name of a variable, and that variable must be a list, we'll call this list `d` on this page
+-   `y` is a list
+-   `d~distinct d`
+-   items of `y` are all items of `d`
 
-returns `y` as an enumeration of `x`.
+returns `y` as an enumeration of `d`, using `x` as the name of the enumeration domain.
 Using built-in Enumerate:
 
 ```q
-q)show e:`x$y;
-`x$`a`b`c`b`a`b`c`c`c`c`c`c`c
+q)d:`a`b`c
+q)y:`a`b`c`b`a`b`c`c`c`c`c`c`c
+q)show e:`d$y;
+`d$`a`b`c`b`a`b`c`c`c`c`c`c`c
 ```
 
-Values are stored as indexes and so need less space.
+Values are stored as indices and so need less space.
 
 ```q
 q)"i"$e
 0 1 2 1 0 1 2 2 2 2 2 2 2i
 ```
 
-Changing one lookup value (in `x`) has the same effect as changing those values in the enumeration, while the indexes backing `e` are unchanged.
+Changing one lookup value (in `d`) has the same effect as changing those values in the enumeration, while the indices backing `e` are unchanged.
 
 ```q
-q)x[0]:`o
+q)d[0]:`o
 q)e
-x$`o`b`c`b`o`b`c`c`c`c`c`c`c
+`d$`o`b`c`b`o`b`c`c`c`c`c`c`c
 q)"i"$e
 0 1 2 1 0 1 2 2 2 2 2 2 2i
 ```
@@ -45,14 +48,15 @@ q)"i"$e
 To get `x` and `y` from `e`:
 
 ```q
-q)(key;value)@\:e
-`x
+q)key e
+`d
+q)value e
 `o`b`c`b`o`b`c`c`c`c`c`c`c
 ```
 
-!!! tip "Ensure all items of `y` are in `x`"
+!!! tip "Ensure all items of `y` are in `d`"
 
-When creating an enumeration using `$`, the domain of the enumeration must be in `x`, otherwise a cast error will be signalled.
+When creating an enumeration using `$`, the domain of the enumeration must be in `d`, otherwise a cast error is signalled. In this example ``c` is not in the domain:
 
 ```q
 q)y:`a`b`c`b`a`b`c`c`c`c`c`c`c
@@ -68,7 +72,7 @@ To expand the domain, use [`?` (Enum Extend)](enum-extend.md) instead of `$`.
 
 error | cause
 ------|--------------------------
-cast  | item/s of `y` not in `x`
+cast  | item/s of `y` not in `d`
 
 
 ---
