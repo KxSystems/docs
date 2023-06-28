@@ -139,40 +139,6 @@ the frequency distribution of this signal, produced through the
 application of an un-windowed Fourier Transform, a technique that will
 be covered in detail below.
 
-```q
-\d .signal
-mult:{[vec1;vec2]
-  // Performs the dot product of two vectors
-  realOut:((vec1 0) * vec2 0) - ((vec1 1) * vec2 1);
-  imagOut:((vec1 1) * vec2 0) + ((vec1 0) * vec2 1);
-  (realOut;imagOut)};
-
-division:{[vec1;vec2] 
-
-  denom:1%((vec1 1) xexp 2) + ((vec2 1) xexp 2); 
-  mul:mult[vec1 0;vec1 1;vec2 0;neg vec2 1];
-  realOut:(mul 0)*denom;
-  imagOut:(mul 1)*denom;
-  (realOut;imagOut)};
-
-conj:{[vec]
-  (vec 0;neg vec 1)};
-
-mag:{[vec]
-  sqrvec:vec xexp 2; 
-  sqrt (sqrvec 0)+sqrvec 1};
-
-\d .
-```
-
-```q
-q).signal.mult[5 -3;9 2]
-51 -17
-q).signal.mult[(5 2 1;-3 -8 10);(9 8 -4;2 3 6)]
-51  40  -64 / Reals
--17 -58 -34 / Imaginary
-```
-<small>_Fast Fourier Transform_</small>
 
 ![Figure 3](img/image4.jpeg)  
 <small>_Figure 3: The frequency distribution of the simulated signal shown in Figure 2_</small>
