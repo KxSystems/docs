@@ -13,7 +13,8 @@ x$y    $[x;y]
 
 Where
 
--   `x` is a symbol containing the name of a variable, and that variable must be a list, we'll call this list `d` on this page
+-   `x` is a symbol containing the name of a global variable `d`
+-   `d` is a list
 -   `y` is a list
 -   `d~distinct d`
 -   items of `y` are all items of `d`
