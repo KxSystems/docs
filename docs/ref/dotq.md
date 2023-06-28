@@ -1315,7 +1315,7 @@ q).Q.P
 ```
 
 
-## `par` (locate partition)
+## `par` (get expected partition location)
 
 ```syntax
 .Q.par[dir;part;table]
@@ -1326,7 +1326,7 @@ Where
 -   `dir` is a directory filepath
 -   `part` is a date
 
-returns the location of `table`. (Sensitive to `par.txt`.)
+returns the expected location of `table`. (Sensitive to `par.txt`.)
 
 ```q
 q).Q.par[`:.;2010.02.02;`quote]
@@ -1340,6 +1340,9 @@ q)all{`p=attr .Q.par[`:.;x;`quote]`sym}each  date
 1b
 ```
 
+!!! warning "Does not look into the segment directories."
+
+    The function calculates only the path, based on the partition and the contents of `par.txt` in a round-robin fashion. It does not check the contents of the segments to see if the partition is there. See [Segmented databases](..database/segment/#considerations) for details.
 
 ## `PD` (partition locations)
 
