@@ -3,10 +3,6 @@ title: value | Reference | kdb+ and q documentation
 description: value is a q keyword that returns the value of a named variable, or metadata.
 author: Stephen Taylor
 ---
-[![Swiss army knife](../img/swiss-army-knife.jpg)](https://www.victorinox.com/ "victorinox.com")
-{: style="float: right; max-width: 200px"}
-
-
 # `value`
 
 
@@ -26,7 +22,9 @@ symbol atom          value of the variable it names
 enumeration          corresponding symbol vector
 
 string               result of evaluating it in current context
-list                 result of evaluating list as a [parse tree](../basics/parsetrees.md)
+list                 result of calling or indexing the first element with the remaining elements
+                 (if the first element is a string or symbol, it is evaluated first)
+                 note that this is different from a parse tree that is handled by [`eval`](eval.md).
 
 projection           list: function followed by argument/s
 composition          list of composed values
@@ -76,7 +74,7 @@ q)b
 q).a.b
 2
 
-q)value(+;1;2)                      / list - evaluated as parse tree
+q)value(+;1;2)                      / list - apply a function or index a list
 3
 q)/ if the first item is a string or symbol, it is evaluated first
 q)value(`.q.neg;2)

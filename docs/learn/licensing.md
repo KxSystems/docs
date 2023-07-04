@@ -53,8 +53,6 @@ tom@mb13:~/q$
 The license key file is `k4.lic`, or `kc.lic` for kdb+ On Demand.
 If both are found, the `kc.lic` file is used.
 
-(The 32-bit kdb+ distribution does not require a license key file.)
-
 
 ## Obtain a license key file
 
