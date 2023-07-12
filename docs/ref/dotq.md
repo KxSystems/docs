@@ -1264,8 +1264,11 @@ select … [by date,…] from … where [date …]
  -->
 
 .Q.MAP currently has the following limitations:
+
 - .Q.MAP does not work with linked columns
+
 - .Q.MAP does not work with virtual partition columns
+
 - Use of .Q.MAP with compressed files is not recommended, as the uncompressed maps will be retained in memory
 
 ??? detail "You may need to increase the number of available file handles, and also the number of available file maps"
