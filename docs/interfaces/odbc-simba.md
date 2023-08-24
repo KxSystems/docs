@@ -7,9 +7,7 @@ date: March 2019
 # :fontawesome-solid-database: Simba/Magnitude ODBC
 
 
-
 !!! info "The latest version of Simba/Magnitude ODBC is 1.1.1, released 2020.02.14."
-
 
 The Simba Kdb+ ODBC Driver enables Business Intelligence (BI), analytics, and reporting on kdb+ data. The driver complies with the ODBC 3.80 data standard and adds important functionality such as Unicode, as well as 32- and 64-bit support for high-performance computing environments on all platforms.
 
@@ -78,8 +76,27 @@ Windows
 ## License
 
 The license for the driver itself is presented during installation.
-One can then choose to accept the license or abort the installation.
+You can then choose to accept the license or abort the installation.
 The driver is sponsored by KX, at no cost to the end user.
+
+## Notes
+
+To use q from Tableau’s Custom SQL you require this native syntax: :fontawesome-regular-hand-point-right: [SQL_NOSCAN](https://github.com/Microsoft/ODBC-Specification/blob/master/ODBC%204.0.md#3354-native-syntax).
+
+For table t:
+```q t:([]c1:10?100;c2:10?`AA`BB`CC`DD)```
+
+To run a simple q-sql call, use:
+```q { native 'select from t where c2=`DD' COLUMNS()}```
+
+For process defined functions such as:
+```q foo:{([]c1:enl x;c2:enl y)} ```
+
+You can call this through the SIMBA driver using:
+```q { native 'foo' PASSING('{a}':symbol,'{1}':long) COLUMNS() }```
+
+Lambda can be used, as long as the return is in the form of a table:
+```q { native '{([]c1:enl x;c2:enl y)}' PASSING('{a}':symbol,'{1}':long) COLUMNS() }```
 
 <!--
 ## Prior releases
