@@ -8,7 +8,7 @@ author: Stephen Taylor
 <div style="display: flex"  flex-direction: row; flex-wrap: wrap; markdown="1">
 
 <div style="display: inline-flex;" markdown="1">
-Kdb+ is
+kdb+ is
 
 -   a high-performance cross-platform historical timeseries columnar database 
 -   an in-memory compute engine
