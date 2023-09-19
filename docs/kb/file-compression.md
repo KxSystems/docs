@@ -209,56 +209,6 @@ The `logicalBlockSize` represents how much data is taken as a compression unit, 
 Experiment to discover what suits your data, hardware and access patterns best. A good balance for TAQ data and typical TAQ queries is to use algorithm 1 (the same algorithm as used for IPC compression) with 128kB `logicalBlockSize`. To trade performance for better compression, choose gzip with compression level 6.
 
 
-### Hardware acceleration
-
-A hardware accelerator card can improve compression performance.
-
-If it uses Zlib, then kdb+ should be able to use it. You will need to export the Zlib driver provided by AHA, e.g.
-
-```bash
-export LD_LIBRARY_PATH=/home/AHA3x/zlib
-```
-
-The library can be run in three modes:
-
--   compression and decompression
--   compression only
--   decompression only
-
-We have tested some [AHA](http://www.aha.com) compression/decompression accelerator cards:
-
--   AHA372 (C01) 20 GBIT/SEC GZIP BOARD
--   AHA378 (B01) 80 GBIT/SEC GZIP BOARD
--   AHA367-PCIe 10 GBIT/SEC GZIP BOARD
-
-??? detail "Test results"
-
-    The AHA367 was observed to be compatible with V2.7 2010.08.24 on Linux 2.6.32-22-generic SMP Intel i5 750 @ 2.67&nbsp;GHz 8&nbsp;GB RAM. Using sample NYSE quote data from 2010.08.05, 482 million rows, compression ratios and timings were observed as below.
-
-    The uncompressed size of the data was 12GB, which compressed to 1.7&nbsp;GB, yielding a compression ratio 7:1 (the card currently has a fixed compression level). The time taken to compress the data was 65077 mS with the AHA card enabled versus 552506 mS using zlib compression in pure software. i.e. using the AHA card took 12% of the time to compress the same amount of data to the same level, achieving approximately a 10× speed-up, using just one channel only. For those wishing to execute file compression in parallel using the `peach` command, all four channels on the card can be used.
-
-    With kdb+ using just a single channel of the card, the decompression performance of the card was slightly slower than as in software, although when q was used in a multi-threaded mode, increased overall performance was observed due to all 4 channels being used thereby freeing up the main CPU.
-
-Installation is very straightforward: unpack and plug in the card, compile and load the driver, compile and install the Zlib shared library. As an indication, it took less than 30 minutes from opening the box to having kdb+ use it for compression. A very smooth installation.
-
-??? tip "Runtime troubleshooting for the AHA 367 card"
-
-    If you see the error message
-
-    ```txt
-    aha367 - ahagz\_api.c: open() call failed with error: 2 on device /dev/aha367\_board
-    ```
-
-    it likely means the kernel module has not been loaded. Remedy: go to the AHA install dir:
-
-    ```bash
-    aha_install_dir$ cd bin
-    aha_install_dir$ sudo ./load_module
-    ```
-
-    and select the 367 card option.
-
-
 ### Kernel settings
 
 Tweaking the kernel settings on Linux may help – it really depends on the size and number of compressed files you have open at any time, and the access patterns used. For example, random access to a compressed file will use many more kernel resources than sequential access.
