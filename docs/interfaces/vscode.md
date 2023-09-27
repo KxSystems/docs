@@ -2,34 +2,6 @@
 
 This is a companion extension for kdb developers to edit q files, connect to kdb processes, and run queries.  This VS Code extension can be used alongside [kdb Insights Enterprise](https://code.kx.com/insights/enterprise/index.html) when using a shared kdb process. 
 
-Please use vscode-questions@kx.com to raise any questions, issues or feedback. 
-
-[![KX VS Code CI Testing](https://github.com/KxSystems/kx-vscode/actions/workflows/ci.yml/badge.svg)](https://github.com/KxSystems/kx-vscode/actions/workflows/ci.yml)
-
-[![KX VS Code Release](https://github.com/KxSystems/kx-vscode/actions/workflows/release.yml/badge.svg)](https://github.com/KxSystems/kx-vscode/actions/workflows/release.yml)
-
-## Contents
-
-- [kdb Visual Studio Code extension](#kdb-visual-studio-code-extension)
-  - [Contents](#contents)
-  - [Why q for VS Code?](#why-q-for-vs-code)
-  - [Get started](#get-started)
-  - [Connections](#connections)
-  - [kdb language server](#kdb-language-server)
-    - [Syntax highlighting](#syntax-highlighting)
-    - [Code navigation](#code-navigation)
-    - [Code Completion](#code-completion)
-  - [Execute code](#execute-code)
-    - [kdb process executing code](#kdb-process-executing-code)
-    - [Insights query execution](#insights-query-execution)
-      - [Data sources](#data-sources)
-      - [Populate scratchpad](#populate-scratchpad)
-  - [View results](#view-results)
-  - [Settings](#settings)
-    - [Insights Enterprise Connections for Explorer](#insights-enterprise-connections-for-explorer)
-    - [Servers](#servers)
-  - [Shortcuts](#shortcuts)
-
 
 ## Why q for VS Code?
 
