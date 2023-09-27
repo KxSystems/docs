@@ -77,7 +77,7 @@ nav:
       - ODBC/Simba: interfaces/odbc-simba.md
       - R: interfaces/r.md
       - Scala: interfaces/scala-client-for-q.md
-      - VS Code: interfaces/vscpde.md
+      - VS Code: interfaces/vscode.md
     - Open source: github.md
     - Machine learning: ml.md
     - Using kdb+ in the cloud: 
