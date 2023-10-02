@@ -1669,14 +1669,14 @@ You can format the backtrace object with `.Q.sbt`.
 ```q
 q)f:{`hello+x}
 q)           / print the formatted backtrace and error string to stderr
-q).Q.trp[f;2;{2@"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+q).Q.trp[f;2;{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
 error: type
 backtrace:
   [2]  f:{`hello+x}
                 ^
   [1]  (.Q.trp)
 
-  [0]  .Q.trp[f;2;{2@"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+  [0]  .Q.trp[f;2;{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
        ^
 -1
 q)
