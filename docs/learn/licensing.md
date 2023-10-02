@@ -6,7 +6,7 @@ keywords: commercial, free, kdb+, key file, license, license key file, licensing
 ---
 # :fontawesome-solid-certificate: Licensing
 
-
+<!-- create PR for George-->
 
 
 ## Who needs a license for kdb+?
