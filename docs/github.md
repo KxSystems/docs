@@ -427,13 +427,6 @@ GitHub topic queries:&nbsp;&nbsp;
 </td>
 </tr>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/ktsr42/qtb">qtb</a></td>
-<td markdown>Unit testing framework. <span class="author"><a href="https://github.com/ktsr42?tab=repositories">
-						(Klaas Teschauer)
-					</a></span>
-</td>
-</tr>
-<tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/timeseries/kdb/tree/master/qunit">QUnit</a></td>
 <td markdown>Unit testing framework. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
 						(TimeStored)
