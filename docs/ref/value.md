@@ -20,9 +20,9 @@ Returns the value of `x`:
 dictionary           value of the dictionary
 symbol atom          value of the variable it names
 enumeration          corresponding symbol vector
-
 string               result of evaluating it in current context
-list                 result of calling or indexing the first element
+list                 result of calling or indexing
+                     the first element
                      with the remaining elements
                      (if the first element is a string or symbol, 
                      it is evaluated first)
