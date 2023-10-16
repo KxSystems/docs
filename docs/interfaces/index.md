@@ -42,8 +42,6 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[prometheus-kdb-exporter](https://github.com/KxSystems/prometheus-kdb-exporter)</td><td markdown>Export kdb+ metrics to **Prometheus**</td></tr>
 <tr markdown><td markdown>[protobufkdb](https://github.com/KxSystems/protobufkdb)</td><td markdown>Read and write **Protocol Buffers** data</td></tr>
 <tr markdown><td markdown>[solace](https://github.com/KxSystems/solace)</td><td markdown>Query kdb+ from a **Solace** event broker [:fontawesome-regular-map:](../wp/solace/index.md "White paper: Publish/subscribe with the Solace event broker")</td></tr>
-<tr markdown><td markdown>[telegraf_kdb_handler](https://github.com/KxSystems/telegraf_kdb_handler)</td><td markdown>Read **Telegraf** line-protocol messages</td></tr>
-</tr>
 </table>
 
 
