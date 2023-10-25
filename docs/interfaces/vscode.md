@@ -141,7 +141,9 @@ Only one connection can be active at any given time. Also, it may be necessary t
 
     **Step 6**: Right-click the managed q process listed under *KX:CONNECTIONS*, and click *Start q process*.
 
-    ![setendpoint](https://code.kx.com/img/vscode/managedqprocess.jpg)    
+    ![setendpoint](https://code.kx.com/img/vscode/managedqprocess.jpg) 
+
+    **Step 7**: From the same right-click menu, click *Connect kdb server*.  This connects to the child q process running inside the kdb VS Code extension.   
 
     If you close the extension, the connection to the child q process also closes. 
 
