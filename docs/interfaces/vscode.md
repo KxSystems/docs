@@ -268,7 +268,7 @@ To create a data source:
 
 To run a data source, click 'Run' and the results populate the output and kdb results windows.
 
-In addition to API queries, if the query environment is enabled on the deployed instance of kdb Insights Enterprise, qSQL and SQL queries can be used within a data source with the appropriate parameterization.
+In addition to [API queries](https://code.kx.com/insights/api/database/query/get-data.html), if the query environment is enabled on the deployed instance of kdb Insights Enterprise, qSQL and SQL queries can be used within a data source with the appropriate parameterization.
 
 #### Populate scratchpad
 
