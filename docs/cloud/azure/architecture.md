@@ -5,9 +5,9 @@
 
 _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM) with storage_
 
-??? tip "This classic approach relies on the existing license. To benefit more from the cloud technology, migrate to KX Insights."
+??? tip "This classic approach relies on the existing license. To benefit more from the cloud technology, migrate to kdb Insights."
 
-    KX Insights provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops’ orchestration tools such as Docker, Kubernetes, Helm, etc. It supports integrations with major cloud logging services. It provides a kdb+ native REST client, Kurl, to authenticate and interface with other cloud services. KX Insights also provides kdb+ native support for reading from Azure Blog Storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of KX Insights’ suite of tools, developers can quickly and easily create new
+    kdb Insights provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops’ orchestration tools such as Docker, Kubernetes, Helm, and others. It supports integrations with major cloud logging services. It provides a kdb+ native REST client; Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from Azure Blog Storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of kdb Insights’ suite of tools, developers can quickly and easily create new
     and integrate existing kdb+ applications on Microsoft Azure.
 
     **Deployment**
@@ -15,8 +15,7 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
     -   QPacker – A packaging utility that supports q, Python and C
         libraries
 
-    -   Detailed guide to using Helm and Kubernetes to deploy kdb+
-        applications to the cloud
+    -   Detailed guide to deploy kdb+ applications to the cloud
 
     **Service Integration**
 
@@ -49,28 +48,27 @@ An architectural pattern for kdb+tick in Microsoft Azure:
 
 ![architecture diagram](img/architecture.png)
 
-Note the ability to place
-kdb+ processing functions either in one Azure Virtual Machine (VM)
+Note the ability to place kdb+ processing functions either in one Azure Virtual Machine (VM)
 instance or distributed across many Azure VM instances. The ability for
 kdb+ processes to communicate with each other through kdb+’s built-in
 language primitives, allows for this flexibility in final design
 layouts. The transport method between kdb+ processes and overall
-external communication is done through low-level TCP/IP sockets. If two
+external communication is achieved through low-level TCP/IP sockets. If two
 components are on the same VM instance, then local Unix sockets can be
 used to reduce communication overhead.
 
 Many customers have tickerplants set up on their premises. The Microsoft Azure
-reference architecture allows you to manage a hybrid
-infrastructure that communicates with both tickerplants on-premises and
-in the cloud. However, the benefits of migrating them to
-cloud infrastructure are vast, and include
+reference architecture allows you to manage a hybrid infrastructure that communicates with both tickerplants on-premises and
+in the cloud. However, the benefits of migrating them tocloud infrastructure are vast, and include
 flexibility, auto-scaling, improved transparency in cost management,
 access to management and infrastructure tools built by Microsoft, quick
 hardware allocation and many more.
 
 This document focuses on kdb+tick deployment to virtual machines in
-Azure; however, KX Insights provides another kdb+ architectural pattern
+Azure; however, kdb Insights provides another kdb+ architectural pattern
 for deploying to Microsoft Azure Kubernetes Service (AKS).
+
+Refer to [managed app](https://code.kx.com/insights/enterprise/azure-marketplace/kx-managed-app.html) for more details.
 
 ### Datafeeds
 
@@ -173,8 +171,7 @@ has a significant impact on the speed of the queries at the cost of a
 bit slower ingestion. The insert function takes care of the indexing,
 i.e. during an update it also updates the hash table.
 
-Performance of the CPU and memory in the chosen Azure VM instance will
-have some impact on the overall sustainable rates of ingest and
+Performance of the CPU and memory in the chosen Azure VM instance impacts on the overall sustainable rates of ingest and
 queryable rate of this realtime kdb+ function.
 
 ### Historical database
@@ -272,6 +269,8 @@ Kdb+ tick architecture needs storage space for three types of data:
     SSD Managed Disk or Ultra disk, or a subsection of an existing Lustre
     filesystem on Azure is likely a good solution.
 
+!!! note "Managed disks are more resilient and would still contain the data despite any Azure VM restart or loss."
+
 *Sym file (and `par.txt` for segmented databases)*
 
 :   The sym file is
@@ -319,7 +318,7 @@ full operational functionality for the POSIX interface.
 Azure Blob Storage is an object store that scales to exabytes of data.
 There are different storage classes (Premium, Hot, Cool, Archive) for
 different availability. Infrequently used data can use cheaper but
-slower storage. The KX Insights native object store functionality allows
+slower storage. The kdb Insights native object store functionality allows
 users to read HDB data from Azure Blob object storage.
 
 The HDB `par.txt` file can have segment locations that are on Azure Blob
@@ -383,13 +382,12 @@ failure.
 Azure Files over NFS offers NFS service for nodes in the same
 availability zone, and can run across zones, or can be exposed
 externally. Azure Files can be used to store HDB and tickerplant data
-and is fully compliant with kdb+. NFS support for Azure Files is
-currently in preview. Microsoft are planning on getting it to General
+and is fully compliant with kdb+. Microsoft plan to release to General
 Availability shortly.
 
-### Lustre FS (placeholder)
+### Lustre FS 
 
-Lustre FS (placeholder) is POSIX compliant and built on Lustre, a
+[Lustre](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/) FS is POSIX compliant and built on Lustre, a
 popular open-source parallel filesystem which provides scale-out
 performance that increases linearly with a filesystem’s size. Lustre
 filesystems scale to hundreds of GB/s of throughput and millions of
@@ -398,12 +396,12 @@ from thousands of compute instances and provides consistent,
 sub-millisecond latencies for file operations, which makes it especially
 suitable for storing and retrieving HDB data.
 
-A Lustre FS (placeholder) persistent file system provides highly available
+A Lustre FS persistent file system provides highly available
 and durable storage for kdb+ workloads. The file servers in a persistent
 file system are highly available and data is automatically replicated
 within the same Availability Zone.
 
-A Lustre FS (placeholder) persistent filesystem allows you to choose from
+A Lustre FS persistent filesystem allows you to choose from
 three deployment options.
 
 ## Memory
@@ -420,8 +418,8 @@ requirement of the TP box depends on the setup of the subscribers and
 the availability requirements of the tick system.
 
 The main consideration for an instance hosting the RDB is to use a
-memory optimized VM instance such as the `Standard_E16s_v4` (with 128 GB
-memory), `Standard_E32s_v4` (256 GB memory), etc. Azure also offers VM
+memory optimized VM instance such as the `Standard_E16s_v5` (with 128 GB
+memory), `Standard_E32s_v5` (256 GB memory), etc. Azure also offers VM
 with extremely large memory, `S896oom (BareMetal)`, with 36TiB of memory,
 for clients who need to store large amounts of high-frequency data in
 memory, in the RDB, or even to keep more than one partition of data in
@@ -437,15 +435,15 @@ placed into separate RDBs.
 HDB boxes are recommended to have large memories. User queries may
 require large temporal space for complex queries. Query execution times
 are often dominated by IO cost to get the raw data. OS-level caching
-stores frequently used data. The larger the memory the less cache miss
-will happen and the faster the queries will run.
+stores frequently used data. The larger the memory, the less cache miss
+and the faster the queries run.
 
 ## CPU
 
 The CPU load generated by the tickerplant depends on the number of
 publishers and their verbosity (number of updates per second) and the
 number of subscribers. Subscribers may subscribe to partial data, but
-any filtering applied will consume further CPU cycles.
+any filtering applied consumes further CPU cycles.
 
 The CPU requirement of the realtime database comes from
 
@@ -469,12 +467,12 @@ task.
 
 Historical databases are used for user queries. In many cases the
 IO dominates execution times. If the box has large memory and OS-level
-caching reduces IO operations efficiently, then CPU performance will
-directly impact execution times.
+caching reduces IO operations efficiently, then CPU performance
+directly impacts execution times.
 
 Azure VM instances optimized for HPC applications, such as the
-HBv3-series (e.g. `Standard_HB120rs_v3` with 120 AMD EPYC vCPUs), are
-recommended for CPU-bound services as described in the use cases above.
+[HBv4-series](https://learn.microsoft.com/en-us/azure/virtual-machines/hbv4-series) 
+(`Standard_HB120rs_v4` with 120 AMD EPYC vCPUs), are recommended for CPU-bound services as described in the use cases above.
 
 
 ## Locality, latency and resiliency
@@ -610,8 +608,8 @@ Adding a load balancer on top of an historical database (HDB) pool is
 quite simple, it only needs three steps. 
 
 1.   Create a Network Load Balancer with protocol TCP. Set the name, Availability Zone, Target Group name and Security group. The security group needs an inbound rule to the HDB port. 
-2.   Create a launch template. A key part here is the User Data window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the Load Balancer so you need to set up an inbound Firewall rule via a Security Group. You can also leverage an Image (AMI) that you already created from an existing EC2. 
-3.   Create an Azure Virtual Machine scale set (set of virtual machines) with autoscale rules to better handle peak loads. You can set the recently created instance group as a Target Group. All clients will access the HDB pool via the Load Balancer’s DNS name (together with the HDB port) and the load balancer will distribute the requests among the HDB servers seamlessly.
+2.   Create a launch template. A key part is the User Data window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the Load Balancer, so you must set up an inbound Firewall rule using a Security Group. You can also leverage a Custom Image  that you already created from an existing Azure VM. 
+3.   Create an Azure Virtual Machine scale set (set of virtual machines) with autoscale rules to better handle peak loads. You can set the recently created instance group as a Target Group. All clients access the HDB pool using the Load Balancer’s DNS name (together with the HDB port) and the load balancer distributes the requests among the HDB servers seamlessly.
 
 General TCP load balancers with an HDB pool offer better performance
 than a stand-alone HDB, however, utilizing the underlying HDBs is not
@@ -837,7 +835,7 @@ Function as a service (FaaS) is an interesting cloud technology that
 lets developers create an application without considering the complexity
 of building and maintaining the infrastructure that runs it. Cloud
 providers support only a handful of programming languages natively.
-Azure’s FaaS solution, <!--FIXME link [Functions](https://azure.microsoft.com/en-us/services/functions/) -->,
+Azure’s FaaS solution, [Functions](https://azure.microsoft.com/en-us/products/functions/),
 supports Bash scripts that can start any executable including a q
 script.
 
@@ -895,11 +893,11 @@ compute, storage, memory, and networking options.
 
 service | Azure VM type | storage | CPU,&nbsp;memory,&nbsp;I/O
 --------|---------------|---------|-----------------
-tickerplant | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M<br>_HPC-optimized_: HBv3 | Azure Managed Premium SSD/Ultra Disk<br>Lustre FS? | High Perf<br>Medium<br>Medium
-realtime database | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M<br>_HPC-optimized_: HBv3 | – | High Perf<br>High&nbsp;Capacity<br>Medium
-historical database | _Memory optimized_: Dv2/DSv2, Ev3/Esv3, Ev4/Esv4, M | Azure Managed Premium SSD/Ultra Disk<br>Lustre FS? | Medium Perf<br>Medium&nbsp;Memory<br>High IO
-complex event processing (CEP) | _Memory optimized_: Dv2/DSv2, Ev4/Esv4, M | – | Medium Perf<br>Medium&nbsp;Memory<br>High IO
-gateway | Memory optimized: Dv2/DSv2, Ev4/Esv4, M | – | Medium Perf<br>Medium&nbsp;Memory<br>High IO
+tickerplant | _Memory optimized_: Dv4/DSv4, Ev4/Esv4, Ev5/Esv5, M<br>_HPC-optimized_: HBv3 | Azure Managed Premium SSD/Ultra Disk<br>Lustre FS? | High Perf<br>Medium<br>Medium
+realtime database | _Memory optimized_: Dv4/DSv4, Ev4/Esv4, Ev5/Esv5, M<br>_HPC-optimized_: HBv3 | – | High Perf<br>High&nbsp;Capacity<br>Medium
+historical database | _Memory optimized_: Dv4/DSv4, Ev4/Esv4, Ev5/Esv5, M | Azure Managed Premium SSD/Ultra Disk<br>Lustre FS? | Medium Perf<br>Medium&nbsp;Memory<br>High IO
+complex event processing (CEP) | _Memory optimized_: Dv4/DSv4, Ev4/Esv4, Ev5/Esv5, M | – | Medium Perf<br>Medium&nbsp;Memory<br>High IO
+gateway | Memory optimized: Dv4/DSv4, Ev4/Esv4, Ev5/Esv5, M | – | Medium Perf<br>Medium&nbsp;Memory<br>High IO
 
 
 ## Resources
