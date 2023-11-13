@@ -122,6 +122,7 @@ nav:
     - About this site: about/thissite.md
   - kdb Insights: https://code.kx.com/insights
   - kdb Insights Enterprise: https://code.kx.com/insights/platform
+  - KDB.AI: https://kdb.ai
   - Learn:
     - Get started: learn/index.md
     - Install: learn/install.md
