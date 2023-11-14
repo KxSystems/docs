@@ -129,7 +129,7 @@ public class WriteTzInfo {
 }
 ```
 
-(note: above java code creates times between years 1900 and 2100, and can be edited for different date periods).
+(note: above Java code creates times between years 1900 and 2100, and can be edited for different date periods).
 Import into kdb+ and save to a binary file using
 
 ```q
