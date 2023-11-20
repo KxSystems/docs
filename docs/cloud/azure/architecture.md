@@ -169,8 +169,7 @@ local table).
 In standard tick scripts, the RDB tables are indexed (using hash tables), typically by the
 product identifier. Indexing has a significant impact on query speed, resulting in slower data ingestion. The insert function takes care of the indexing; during an update it also updates the hash table.
 
-Performance of the CPU and memory in the chosen Azure VM instance impacts on the overall sustainable rates of ingest and
-queryable rate of this realtime kdb+ function.
+The performance of the CPU and memory in the chosen Azure VM instance impacts the rate at which data is ingested and the time taken to execute data queries.
 
 ### Historical database
 
