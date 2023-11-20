@@ -240,7 +240,7 @@ The task of the gateway is to:
 
 The KX Gateway must be accessible through Azure security rules from all
 clients of the kdb+ service. In addition, the location of the gateway
-service also needs to have visibility to the remaining kdb+ processes
+service also needs to have visibility of the remaining kdb+ processes
 constituting the full KX service.
 
 ## Storage and filesystem
