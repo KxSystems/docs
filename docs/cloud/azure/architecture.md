@@ -844,7 +844,7 @@ We distinguish application- and infrastructure-level access control.
 Application-level access management controls who can access kdb+
 components and run commands. Tickerplant, realtime database,
 and historical database are generally restricted to kdb+ infrastructure
-admins only and the gateway is the access point for the users. One
+administrators only and the gateway is the access point for the users. One
 responsibility of the gateway is to check if the user can access the
 tables (columns and rows) s/he is querying. This generally requires
 checking user ID (returned by `.z.u`) against some organizational
