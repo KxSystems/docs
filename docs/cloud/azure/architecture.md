@@ -484,8 +484,8 @@ writer on the HDB box and RDB can send its tables via IPC at midnight
 and delegate the IO work together with the sorting and attribute
 handling.
 
-The feedhandlers are recommended to be placed outside the TP box on
-another VM between TP and data feed. This way malfunctioning of the feedhandler 
+It is recommended that the feedhandlers are placed outside the TP box on
+another VM between the TP and data feed. This way, malfunctioning of the feedhandler 
 has a smaller impact on TP stability.
 
 ### Placement groups
