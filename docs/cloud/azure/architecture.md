@@ -416,10 +416,10 @@ the availability requirements of the tick system.
 
 The main consideration for an instance hosting the RDB is to use a
 memory optimized VM instance such as the `Standard_E16s_v5` (with 128 GB
-memory), `Standard_E32s_v5` (256 GB memory), etc. Azure also offers VM
+memory), or `Standard_E32s_v5` (256 GB memory). Azure also offers VM
 with extremely large memory, `S896oom (BareMetal)`, with 36TiB of memory,
 for clients who need to store large amounts of high-frequency data in
-memory, in the RDB, or even to keep more than one partition of data in
+memory, in the RDB, or to keep more than one partition of data in
 the RDB form.
 
 Keep in mind the tradeoff of large memory and RDB recovery time. The
