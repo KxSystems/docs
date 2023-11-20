@@ -17,7 +17,7 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
 
     -   Detailed guide to deploy kdb+ applications to the cloud
 
-    **Service Integration**
+    **Service integration**
 
     -   QLog – Integrations with major cloud logging services
 
