@@ -529,7 +529,7 @@ application and minimize any disruption to the business.
 In a production environment, some level of redundancy is always
 required. Depending on the use case, requirements may vary but in nearly
 all instances requiring high availability, the best option is to have a
-hot-hot (or ‘active-active’) configuration. There are four main
+hot-hot (or active-active) configuration. There are four main
 configurations found in production hot-hot, hot-warm, hot-cold,
 and pilot-light (or cold hot-warm). 
 
