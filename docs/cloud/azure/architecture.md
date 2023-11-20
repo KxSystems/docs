@@ -701,8 +701,8 @@ servers pool. You can visualize trends via dashboards.
 
 People interact with Azure services manually via the console web
 interface. You may also need to interact from a q process. There are
-three easy ways to do this. To demonstrate, we will get the list of
-Virtual Machines for a specific Azure Tenant from a q process using
+three easy ways to do this.  The following demonstration shows how to get a list of
+Virtual Machines for a specific Azure Tenant from a q process using:
 
 -   a system call to the Azure CLI
 -   embedPy via the Azure SDK for Python
