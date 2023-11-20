@@ -632,7 +632,7 @@ You don’t need to modify your tick scripts to enjoy the benefits of
 Azure Monitor. The Azure Monitor agent can be installed and configured
 to forward your application log to Azure Monitor. You should use the
 policies and policy initiatives below to automatically install the agent
-and associate it to a data-collection rule, every time you create a
+and associate it with a data-collection rule, every time you create a
 virtual machine. In the host configuration file you need to provide the
 log file to watch and to which log stream the new entries should be
 sent.
