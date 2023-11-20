@@ -728,7 +728,7 @@ q) system "az vm list --output table"
 "tempVM          STAGING-RESOURCE-GROUP westeurope"
 "windowsvm       WINDOWSVM_GROUP        westeurope"
 ```
-This example shows how the Azure CLI form q using the system function.
+This example shows how the Azure CLI forms q using the system function.
 
 Unfortunately, this approach needs string manipulation, and it is not
 always convenient.
