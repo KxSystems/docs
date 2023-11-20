@@ -138,8 +138,8 @@ End of Day event: at midnight, the TP closes its log files, auto creates a new f
 
 ### Realtime database
 
-The realtime database holds all the intraday data in memory, to
-allow for fast powerful queries. For example, at the start of business
+The realtime database holds all the intraday data in memory to
+allow for fast powerful queries. For example, at the start of the business
 day, the RDB sends a message to the tickerplant and receives a reply
 containing the data schema, the location of the log file, and the number
 of lines to read from the log file. It then receives subsequent updates
