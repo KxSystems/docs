@@ -862,7 +862,7 @@ and auditable instance management for your kdb+ tick deployment without
 the need to open inbound ports, maintain bastion hosts, or manage SSH
 keys.
 
-We would use this for permissioning access to the KX gateway. This is a
+Use this to permission access to the KX gateway. This is a
 key task for the administrators of the KX system, and both user and API
 access to the entire system is controlled entirely through the KX
 gateway process.
