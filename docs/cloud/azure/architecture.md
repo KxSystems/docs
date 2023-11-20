@@ -231,7 +231,7 @@ factors:
 -   Support of free-form queries
 -   Level of redundancy and failover
 
-The task of the gateway is
+The task of the gateway is to:
 
 -   Check user entitlements and data-access permissions
 -   Provide access to stored procedures, utility functions and business logic
