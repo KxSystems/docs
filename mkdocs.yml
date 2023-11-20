@@ -116,13 +116,14 @@ nav:
           - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
           - Quobyte: cloud/otherfs/quobyte.md
       - DigitalOcean: kb/digitalocean.md
-    - Community: https://code.kx.com/home/community.html
+    - Community: https://code.kx.com/home/community
     - kdb+ and q forum: https://community.kx.com/t5/kdb-and-q/bd-p/kdb-q-questions
     - White papers: wp/index.md
     - About this site: about/thissite.md
   - kdb Insights: https://code.kx.com/insights
-  - kdb Insights Enterprise: https://code.kx.com/insights/platform
-  - KDB.AI: https://kdb.ai
+  - kdb Insights Enterprise: https://code.kx.com/insights/enterprise
+  - KDB.AI: https://code.kx.com/kdbai
+  - PyKX: https://code.kx.com/pykx
   - Learn:
     - Get started: learn/index.md
     - Install: learn/install.md
@@ -562,4 +563,4 @@ nav:
     - Advanced:
       - Distributed systems (WP): wp/query-interface.md
       - Intraday writedown (WP): wp/intraday-writedown/index.md
-  - Help: https://code.kx.com/home/support.html
+  - Help: https://code.kx.com/home/support
