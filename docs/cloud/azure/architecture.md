@@ -499,7 +499,7 @@ Availability Zones.
 ### Cluster placement group
 
 The cluster placement group configuration allows you to place your group
-of interrelated instances close together in order to achieve the best
+of interrelated instances close together to achieve the best
 throughput and low latency results possible. This option only lets you
 pack the instances together inside the same Availability Zone, either in
 the same Virtual Network (VNet) or between peered VNets.
