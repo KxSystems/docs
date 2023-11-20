@@ -26,7 +26,7 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
 
     **Storage**
 
-    -   Kdb+ Object Store – Native support for reading and querying Azure
+    -   kdb+ Object Store – Native support for reading and querying Azure
         Blob Storage
 
 ## Kdb+ architecture patterns in Microsoft Azure
