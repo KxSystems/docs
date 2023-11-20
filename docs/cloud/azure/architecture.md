@@ -488,8 +488,7 @@ has a smaller impact on TP stability.
 
 ### Placement groups
 
-The kdb+ tick architecture can also be set up with placement groups in
-mind depending on the use case. A Proximity Placement Group is a
+The kdb+ tick architecture can be set up with placement groups, depending on the use case. A Proximity Placement Group is a
 configuration option that Azure offers which lets you place a group of
 interdependent instances in a certain way across the underlying hardware
 on which those instances reside. The instances could be placed close
