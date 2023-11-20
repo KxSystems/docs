@@ -404,7 +404,7 @@ three deployment options.
 ## Memory
 
 The tickerplant uses very little memory during normal operation in
-realtime mode, whilst a full record of intraday data is maintained in
+realtime mode, while a full record of intraday data is maintained in
 the realtime database. Abnormal operation occurs if a realtime
 subscriber (including RDB) is unable to process the updates. TP stores
 these updates in the output queue associated with the subscriber. Large
