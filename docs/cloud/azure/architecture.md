@@ -583,8 +583,8 @@ An Azure Load Balancer is a type of load balancing service by Azure. It
 is used for ultra-high performance, TLS offloading at scale, centralized
 certificate deployment, support for UDP, and static IP addresses for
 your application. Operating at the connection level, network load
-balancers are capable of handling millions of requests per second
-securely while maintaining ultra-low latencies.
+balancers are capable of securely handling millions of requests per second
+while maintaining ultra-low latencies.
 
 Load balancers can distribute load among applications that offer the
 same service. Kdb+ is single threaded by default. With a negative -p
