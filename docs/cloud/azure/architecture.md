@@ -769,7 +769,7 @@ Finally, you can send HTTP requests to the Azure REST API endpoints. KX
 Insights provides a native q REST API called Kurl. Kurl provides
 ease-of-use cloud integration by registering Azure authentication
 information. When running on a cloud instance, and a role is available,
-Kurl will discover and register the instance metadata credentials. When
+Kurl discovers and registers the instance metadata credentials. When
 running outside the cloud, OAuth2, ENV, and file-based credential
 methods are supported. Kurl takes care of your credentials and properly
 formats the requests. In the code lines below, we are calling the Azure
