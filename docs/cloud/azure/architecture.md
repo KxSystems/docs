@@ -771,7 +771,7 @@ information. When running on a cloud instance, and a role is available,
 Kurl discovers and registers the instance metadata credentials. When
 running outside the cloud, OAuth2, ENV, and file-based credential
 methods are supported. Kurl takes care of your credentials and properly
-formats the requests. In the code lines below, we are calling the Azure
+formats the requests. In the code lines below, we call the Azure
 Resource Manager REST API to pull the list of VMs for a specific tenant.
 Here we are using a simple Bearer token for authorization.
 
