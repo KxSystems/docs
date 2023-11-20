@@ -33,7 +33,9 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
 
 kdb+tick is an architecture that allows the capture, processing and
 querying of timeseries data against realtime, streaming and historical
-data. This reference architecture describes a full solution running
+data. 
+
+This reference architecture describes a full solution running
 kdb+tick within Microsoft Azure which consists of these functional
 components:
 
