@@ -123,8 +123,8 @@ Tickerplants can operate in two modes:
 
 mode | operation
 -----|----------
-batch | collects updates in its local tables; batches up for a period of time and then forwards the update to realtime subscribers in a bulk update
-realtime (zero&nbsp;latency) | forwards the input immediately: requires smaller local tables but has higher CPU and network costs – each message has a fixed network overhead
+batch | Collects updates in its local tables, batches up for a period of time and then forwards the update to realtime subscribers in a bulk update.
+realtime (zero&nbsp;latency) | Forwards the input immediately. This requires smaller local tables but has higher CPU and network costs. Each message has a fixed network overhead.
 
 API calls:
 
