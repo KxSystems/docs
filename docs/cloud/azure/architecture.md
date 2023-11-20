@@ -243,7 +243,7 @@ constituting the full KX service.
 
 ## Storage and filesystem
 
-Kdb+ tick architecture needs storage space for three types of data:
+kdb+tick architecture needs storage space for three types of data:
 
 *TP log*
 
