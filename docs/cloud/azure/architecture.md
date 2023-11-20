@@ -429,7 +429,7 @@ driving rule for separating the tables into two clusters is the join
 operation between them. If two tables are never joined, then they can be
 placed into separate RDBs.
 
-HDB boxes are recommended to have large memories. User queries may
+It is recommended that HDB boxes have large memories. User queries may
 require large temporal space for complex queries. Query execution times
 are often dominated by IO cost to get the raw data. OS-level caching
 stores frequently used data. The larger the memory, the less cache miss
