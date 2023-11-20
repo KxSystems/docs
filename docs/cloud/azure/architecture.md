@@ -166,11 +166,8 @@ single input, in which user queries are served sequentially and queries
 are queued until an update from the TP is processed (inserted into the
 local table).
 
-In standard tick scripts, the RDB tables are indexed, typically by the
-product identifier. An index is a hash table behind the scene. Indexing
-has a significant impact on the speed of the queries at the cost of a
-bit slower ingestion. The insert function takes care of the indexing,
-i.e. during an update it also updates the hash table.
+In standard tick scripts, the RDB tables are indexed (using hash tables), typically by the
+product identifier. Indexing has a significant impact on query speed, resulting in slower data ingestion. The insert function takes care of the indexing; during an update it also updates the hash table.
 
 Performance of the CPU and memory in the chosen Azure VM instance impacts on the overall sustainable rates of ingest and
 queryable rate of this realtime kdb+ function.
