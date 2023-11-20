@@ -84,7 +84,7 @@ be aware of the specific data format. Due to the flexible architecture
 of KX, most underlying kdb+ processes that constitute the
 system can be placed anywhere in this architecture. For example,
 for latency, compliance or other reasons, the datafeeds might be relayed
-through your on-premises data center. Or the connection
+through your on-premises data center. Alternatively, the connection
 from the feedhandlers might be made directly from the Azure Virtual
 Network (VNet) into the market-data source.
 
