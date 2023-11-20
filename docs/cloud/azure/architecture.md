@@ -223,7 +223,7 @@ expected use cases. For example, in a hot-hot setup, the gateway can be
 used to query services across availability zones.
 
 The implementation of a gateway is largely determined by the following
-factors.
+factors:
 
 -   Number of clients or users
 -   Number of services and sites
