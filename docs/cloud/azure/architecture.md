@@ -61,7 +61,7 @@ used to reduce communication overhead.
 
 Many customers have tickerplants set up on their premises. The Microsoft Azure
 reference architecture allows you to manage a hybrid infrastructure that communicates with both tickerplants on-premises and
-in the cloud. However, the benefits of migrating them tocloud infrastructure are vast, and include
+in the cloud. The benefits of migrating tickerplants to a cloud infrastructure are vast, and include
 flexibility, auto-scaling, improved transparency in cost management,
 access to management and infrastructure tools built by Microsoft, quick
 hardware allocation and many more.
