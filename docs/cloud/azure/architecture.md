@@ -88,7 +88,7 @@ through your on-premises data center. Alternatively, the connection
 from the feedhandlers might be made directly from the Azure Virtual
 Network (VNet) into the market-data source.
 
-The kdb+ infrastructure is often used to also store internally derived
+The kdb+ infrastructure is often used to store internally derived
 data. This can optimize internal data flow and help remove latency
 bottlenecks. The pricing of liquid products, for example on B2B markets,
 is often done by a complex distributed system. This system often changes
