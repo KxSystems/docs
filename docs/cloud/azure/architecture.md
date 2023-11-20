@@ -545,10 +545,10 @@ Typically, kdb+ is deployed in a high-value system. Hence, downtime can
 impact business which justifies the hot-hot setup to ensure high
 availability.
 
-Usually, the secondary will run on completely separate infrastructure,
-with a separate filesystem, and save the data to a secondary database
-directory, separate from the primary. In this way, if the primary system
-or underlying infrastructure goes offline, the secondary would be able
+Usually, the secondary system runs on completely separate infrastructure,
+with a separate filesystem, and saves the data to a secondary database
+directory, separate from the primary system. In this way, if the primary system
+or underlying infrastructure goes offline, the secondary system is able
 to take over completely.
 
 The usual strategy for failover is to have a complete mirror of the
