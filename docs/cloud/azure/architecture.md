@@ -29,7 +29,7 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
     -   kdb+ Object Store – Native support for reading and querying Azure
         Blob Storage
 
-## Kdb+ architecture patterns in Microsoft Azure
+## kdb+ architecture patterns in Microsoft Azure
 
 Kdb+tick is an architecture which allows the capture, processing and
 querying of timeseries data against realtime, streaming and historical
