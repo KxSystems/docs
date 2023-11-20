@@ -186,7 +186,7 @@ disks are attached to the box, then data can be segmented and kdb+ makes
 use of parallel I/O operations. Segmented HDB requires a `par.txt` file
 that contains the locations of the individual segments.
 
-A HDB query is processed by multiple threads, and map-reduce is applied
+An HDB query is processed by multiple threads, and map-reduce is applied
 if multiple partitions are involved in the query.
 
 Purpose:
