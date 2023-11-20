@@ -200,9 +200,7 @@ Actions:
 -   End of Day receipt - Reload the database to get the new day’s worth
     of data from the RDB write down.
 
-HDBs are often expected to be mirrored locally. Some users, (e.g.
-quants) need a subset of the data for heavy analysis and backtesting
-where the performance is critical.
+HDBs are often expected to be mirrored locally. If performance is critical, some users, (for example, quants) need a subset of the data for heavy analysis and backtesting.
 
 ### KX Gateway
 
