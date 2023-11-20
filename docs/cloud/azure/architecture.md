@@ -422,7 +422,7 @@ for clients who need to store large amounts of high-frequency data in
 memory, in the RDB, or even to keep more than one partition of data in
 the RDB form.
 
-Bear in mind the tradeoff of large memory and RDB recovery time. The
+Keep in mind the tradeoff of large memory and RDB recovery time. The
 larger the tables, the longer it takes for the RDB to start from TP log.
 To alleviate this problem, clients may split a large RDB into two. The
 driving rule for separating the tables into two clusters is the join
