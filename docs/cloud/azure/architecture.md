@@ -379,8 +379,8 @@ failure.
 Azure Files over NFS offers NFS service for nodes in the same
 availability zone, and can run across zones, or can be exposed
 externally. Azure Files can be used to store HDB and tickerplant data
-and is fully compliant with kdb+. Microsoft plan to release to General
-Availability shortly.
+and is fully compliant with kdb+. Microsoft plan to release to general
+availability shortly.
 
 ### Lustre FS 
 
