@@ -77,8 +77,7 @@ Refer to [managed app](https://code.kx.com/insights/enterprise/azure-marketplace
 These are the source data we ingest into our system. For
 financial use cases, data may be ingested from B-pipe (Bloomberg), or
 Elektron (Refinitiv) or any exchange that provides a data API.
-Often the streaming data is available on a pub-sub component like Kafka,
-Solace, etc., all popular for having an open-source interface to kdb+. The
+Often the streaming data is available on a pub-sub component such as Kafka, or Solace, which are popular for having an open-source interface to kdb+. The
 datafeeds are in a proprietary format, but always one KX has
 familiarity with. Usually this means a feed handler just needs to
 be aware of the specific data format. Due to the flexible architecture
