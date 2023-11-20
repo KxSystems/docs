@@ -7,7 +7,7 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
 
 ??? tip "This classic approach relies on the existing license. To benefit more from cloud technology, migrate to kdb Insights."
 
-    kdb Insights provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops’ orchestration tools such as Docker, Kubernetes, Helm, and others. It supports integrations with major cloud logging services. It provides a kdb+ native REST client; Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from Azure Blog Storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of kdb Insights’ suite of tools, developers can quickly and easily create new
+    kdb Insights provides a range of tools to build, manage and deploy kdb+ applications in the cloud. It supports interfaces for deployment and common ‘Devops’ orchestration tools such as Docker, Kubernetes, Helm, and others. It supports integrations with major cloud logging services. It provides a kdb+ native REST client; Kurl, to authenticate and interface with other cloud services. kdb Insights also provides kdb+ native support for reading from Azure Blog Storage, and a packaging utility, QPacker to build and deploy kdb+ applications to the cloud. By taking advantage of the kdb Insights suite of tools, developers can quickly and easily create new
     and integrate existing kdb+ applications on Microsoft Azure.
 
     **Deployment**
