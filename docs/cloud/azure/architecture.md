@@ -162,7 +162,7 @@ Actions:
 
 An RDB can operate in single or multi-input mode. The default mode is
 single input, in which user queries are served sequentially and queries
-are queued till an update from the TP is processed (inserted into the
+are queued until an update from the TP is processed (inserted into the
 local table).
 
 In standard tick scripts, the RDB tables are indexed, typically by the
