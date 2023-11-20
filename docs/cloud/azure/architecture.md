@@ -130,8 +130,8 @@ API calls:
 
 call | operation
 -----|----------
-subscribe | add subscriber to message receipt list and send subscriber table definitions
-unsubscribe | remove subscriber from message receipt list
+subscribe | Add subscriber to message receipt list and send subscriber table definitions.
+unsubscribe | Remove subscriber from message receipt list.
 
 End of Day event: at midnight, the TP closes its log files, auto creates a new file, and notifies the realtime database about the start of the new day.
     
