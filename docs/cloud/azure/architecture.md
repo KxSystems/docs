@@ -656,7 +656,7 @@ during the day. The gateway query executes RDB and HDB queries, often
 via a load balancer. All these components have their own log entries.
 You can simply employ Window Join to find relevant entries and perform
 aggregation to get insight into the performance characteristics of the
-execution chain. Note nothing prevents you from logging both to
+execution chain. Please note that you can log both to
 kdb+ and to Azure Monitor.
 
 KX Insights QLog provides kdb+ cloud-logging functionality. QLog
