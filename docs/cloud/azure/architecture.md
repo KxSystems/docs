@@ -599,8 +599,7 @@ recommended to avoid query contention in the gateway. Furthermore, there
 are other tickerplant components that enjoy the benefit of load
 balancers to better handle simultaneous requests.
 
-Adding a load balancer on top of an historical database (HDB) pool is
-quite simple, it only needs three steps. 
+Adding a load balancer on top of an historical database (HDB) pool requires only three steps:
 
 1.   Create a Network Load Balancer with protocol TCP. Set the name, Availability Zone, Target Group name and Security group. The security group needs an inbound rule to the HDB port. 
 2.   Create a launch template. A key part is the User Data window where you can type a startup-script. It mounts the volume that contains the HDB data and the q interpreter, sets environment variables (e.g. `QHOME`) and starts the HDB. The HDB accepts incoming TCP connections from the Load Balancer, so you must set up an inbound Firewall rule using a Security Group. You can also leverage a Custom Image  that you already created from an existing Azure VM. 
