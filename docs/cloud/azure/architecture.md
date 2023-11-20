@@ -508,8 +508,8 @@ the same Virtual Network (VNet) or between peered VNets.
 
 With spread placement groups, each single instance runs on separate
 physical hardware racks. So, if you deploy five instances and put them
-into this type of placement group, each one of those five instances will
-reside on a different rack with its own network access and power, either
+into this type of placement group, each one of those five instances 
+resides on a different rack with its own network access and power, either
 within a single AZ or in multi-AZ architecture.
 
 ## Recovery-time and recovery-point objectives
