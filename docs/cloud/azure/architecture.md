@@ -158,7 +158,7 @@ Actions:
 -   On message receipt: insert into local, in-memory tables.
 -   End of Day receipt: usually writes intraday data down then sends a
     new End-of-Day message to the HDB. Optionally RDB sorts certain
-    tables (e.g. by sym and time) to speed up queries.
+    tables (for example, by sym and time) to speed up queries.
 
 An RDB can operate in single or multi-input mode. The default mode is
 single input in which user queries are served sequentially and queries
