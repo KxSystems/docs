@@ -31,7 +31,7 @@ _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM)
 
 ## kdb+ architecture patterns in Microsoft Azure
 
-Kdb+tick is an architecture which allows the capture, processing and
+kdb+tick is an architecture that allows the capture, processing and
 querying of timeseries data against realtime, streaming and historical
 data. This reference architecture describes a full solution running
 kdb+tick within Microsoft Azure which consists of these functional
