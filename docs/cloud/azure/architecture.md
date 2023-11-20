@@ -81,7 +81,7 @@ Often the streaming data is available on a pub-sub component such as Kafka, or S
 datafeeds are in a proprietary format, but always one with which KX has
 familiarity. Usually this means a feed handler just needs to
 be aware of the specific data format. Due to the flexible architecture
-of KX most, if not all, underlying kdb+ processes that constitute the
+of KX, most underlying kdb+ processes that constitute the
 system can be placed anywhere in this architecture. For example,
 for latency, compliance or other reasons, the datafeeds might be relayed
 through your on-premises data center. Or the connection
