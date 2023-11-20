@@ -516,9 +516,9 @@ within a single AZ or in multi-AZ architecture.
 
 A disaster-recovery plan is usually based on requirements from both the
 Recovery Time Objective and Recovery Point Objective
-specifications which can guide the design of a cost-effective solution.
+specifications, which can guide the design of a cost-effective solution.
 However, every system has its own unique requirements and challenges.
-Here we suggest the best-practice methods for dealing with the various
+Here, we suggest the best-practice methods for dealing with the various
 possible failures one needs to be aware of and plan for when building a
 kdb+ tick-based system.
 
