@@ -178,7 +178,7 @@ The historical database (HDB) is a simple kdb+ process with a pointer to
 the persisted data directory. A kdb+ process can read this data and
 memory map it, allowing for fast queries across a large volume of data.
 Typically, the RDB is instructed by the tickerplant to save its data to
-the data directory at EOD from where the HDB can refresh its memory
+the data directory at EOD. The HDB can then refresh its memory from the data directory.
 mappings. 
 
 HDB data is partitioned by date in the standard tickerplant. If multiple
