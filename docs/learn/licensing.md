@@ -58,22 +58,11 @@ If both are found, the `kc.lic` file is used.
 
 ### On-Demand
 
-License key files (`kc.lic`) are distributed by email. 
-
-:fontawesome-solid-hand-point-right: [Request an On-Demand license key file](https://ondemand.kx.com/)
-
+Follow the [download instructions](https://kx.com/kdb-personal-edition-download/) to get your kc.lic.
 
 ### Commercial
 
-An unlicensed kdb+ session aborts: see above.
-The banner at the top of the aborted session contains machine-configuration information but no license information. 
-
-Your Designated Contact sends a copy of the banner to licadmin@kx.com to request a license file by return. 
-
-??? info "Designated Contact"
-
-    Each KX customer designates to licadmin@kx.com two technical people as the Designated Contacts for issues with kdb+, managing licenses and downloading software. 
-
+To begin using kdb+ commercially, contact sales@kx.com.
 
 ## Install the license key file
 
