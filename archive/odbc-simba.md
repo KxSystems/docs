@@ -1,3 +1,4 @@
+:no-index:
 ---
 title: Simba/Magnitude ODBC – Interfaces – kdb+ and q documentation
 description: How to use a the Simba ODBC Driver to connect to a kdb+ server process
@@ -5,7 +6,6 @@ author: Glenn Wright
 date: March 2019
 ---
 # :fontawesome-solid-database: Simba/Magnitude ODBC
-
 
 !!! info "The latest version of Simba/Magnitude ODBC is 1.1.1, released 2020.02.14."
 

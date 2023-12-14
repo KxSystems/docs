@@ -21,17 +21,23 @@ extra_javascript:
 
 # To modify the exclusions below
 # uncomment and edit this section in your subsite's config
-# # plugins:
-#   - exclude:
-#       glob:
-#         # - exclude/this/path/*
-#         - "*.tmp"
-#         - "*.pdf"
-#         - "*.gz"
-#       regex:
-#         - '.*\.(tmp|bin|tar)$'
-#   - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
-#   - search
+plugins:
+  - tags:
+
+  - redirects:
+      redirect_maps:
+#       'odbc-simba.md': 'example.md'
+
+  - exclude:
+      glob:
+         # - exclude/this/path/*
+         - "*.tmp"
+         - "*.pdf"
+         - "*.gz"
+      regex:
+         - '.*\.(tmp|bin|tar)$'
+  - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
+  - search
 
 remote_branch: master
 repo_name: ''
@@ -74,7 +80,7 @@ nav:
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC: interfaces/q-client-for-odbc.md
       - ODBC3: interfaces/q-server-for-odbc3.md
-      - ODBC/Simba: interfaces/odbc-simba.md
+    #  - ODBC/Simba: interfaces/odbc-simba.md 
       - R: interfaces/r.md
       - Scala: interfaces/scala-client-for-q.md
       - VS Code: interfaces/vscode.md
