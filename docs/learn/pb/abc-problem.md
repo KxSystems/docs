@@ -19,7 +19,7 @@ date: December 2020
 
     A global variable is used to **end the search** after a solution is found.
 
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     Core solution has three code lines: no loops, no counters.
 
 !!! question "Determine whether a string can be composed from a set of blocks"
@@ -213,7 +213,7 @@ q)\ts:100 WORDS cmws\:BLOCKS
 
 ## Test your understanding
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 Can you test `.cmw.done` outside the [Cond](../../ref/cond.md) with `or` as e.g.
 
 ```q

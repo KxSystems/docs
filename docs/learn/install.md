@@ -67,7 +67,7 @@ Commercial versions of kdb+ are available to customers from [downloads.kx.com](h
     Numerical release versions of the form 3.5, or 4.0 are production code. Versions of kdb+ with a trailing `t` in the name such as `3.7t` are test versions and are neither intended nor supported for production use.
 
 
-## :fontawesome-solid-file-archive: Step 2: Unzip your download
+## :fontawesome-solid-file-zipper: Step 2: Unzip your download
 
 Here we assume you install kdb+ in your `HOME` directory on Linux or macOS; or in `C:\` on Windows, and set the environment variable `QHOME` accordingly.
 

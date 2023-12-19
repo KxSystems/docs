@@ -1,10 +1,8 @@
-INHERIT: ./base-config.yml
-
 copyright: 'This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br/>Kx and kdb+ are registered trademarks of <a href="https://kx.com">Kx Systems, Inc.</a>, a subsidiary of <a href="https://www.fdtechnologies.com/">FD Technologies plc</a>.'
 
 extra_css:
-  - https://code.kx.com/stylesheets/2021.css # DO NOT ALTER 
-  - https://code.kx.com/stylesheets/prism.css # DO NOT ALTER 
+  - https://code.kx.com/stylesheets/2021.css # DO NOT ALTER
+  - https://code.kx.com/stylesheets/prism.css # DO NOT ALTER
   - https://code.kx.com/stylesheets/extra.css # MAY BE COMMENTED OUT
   - https://code.kx.com/stylesheets/hide-footer-nav.css # MAY BE COMMENTED OUT
   - stylesheets/q.css # site-specific style
@@ -12,31 +10,60 @@ extra_css:
 extra_javascript:
   - https://code.kx.com/scripts/prism.js
   - https://code.kx.com/scripts/jquery-3.6.0.min.js # jQuery for scripts/qsearch.js
-  - https://code.kx.com/scripts/extra.js # DO NOT ALTER 
+  - https://code.kx.com/scripts/extra.js # DO NOT ALTER
   # MathJax scripts # MAY BE COMMENTED OUT
   - https://code.kx.com/scripts/mathjax.js
   - https://code.kx.com/scripts/polyfill.min.js
   - https://code.kx.com/scripts/tex-mml-chtml.js
   - scripts/qsearch.js # site-specific search engine
 
-# To modify the exclusions below
-# uncomment and edit this section in your subsite's config
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - meta
+  # - mkdocs-click
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        custom_icons:
+          - custom_theme/.icons
+  - pymdownx.extra
+  - pymdownx.highlight:
+      use_pygments: false
+  - pymdownx.keys
+  # - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+
 plugins:
-  - tags:
-
-  - redirects:
-      redirect_maps:
-#       'odbc-simba.md': 'example.md'
-
   - exclude:
       glob:
-         # - exclude/this/path/*
-         - "*.tmp"
-         - "*.pdf"
-         - "*.gz"
+        - "*.tmp"
+        - "*.pdf"
+        - "*.gz"
       regex:
-         - '.*\.(tmp|bin|tar)$'
-  - render_swagger # https://pypi.org/project/mkdocs-render-swagger-plugin/
+        - '.*\.(tmp|bin|tar)$'
+  - render_swagger
   - search
 
 remote_branch: master
@@ -47,25 +74,44 @@ edit_uri: ""
 site_description: 'Documentation for kdb+ and the q programming language'
 site_name: 'Kdb+ and q documentation'
 site_url: https://code.kx.com/q
+use_directory_urls: true
 
 theme:
+  custom_dir: custom_theme/
+  name: material
+  language: en
+  favicon: https://code.kx.com/favicon.ico
+  logo: https://code.kx.com/img/kx.svg
+  font: false
   features:
     - content.code.annotate # Insiders
     - content.tabs.link # Insiders
+    - content.code.copy
     - header.autohide
     - navigation.tabs
     - navigation.top
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: kx-light
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   static_templates:
     - 401.html # required by other subsites
     - 404.html # required by other subsites
 
 nav:
   - Home: 'https://code.kx.com/home'
-  - kdb+ and q: 
+  - kdb+ and q:
     - About: index.md
     - Reference card: ref/index.md
     - Developer tools: devtools.md
-    - Interfaces: 
+    - Interfaces:
       - KX libraries: interfaces/index.md
       - Bloomberg: interfaces/q-client-for-bloomberg.md
       - C/C++:
@@ -80,13 +126,13 @@ nav:
       - Matlab: interfaces/matlab-client-for-q.md
       - ODBC: interfaces/q-client-for-odbc.md
       - ODBC3: interfaces/q-server-for-odbc3.md
-    #  - ODBC/Simba: interfaces/odbc-simba.md 
+    #  - ODBC/Simba: interfaces/odbc-simba.md
       - R: interfaces/r.md
       - Scala: interfaces/scala-client-for-q.md
       - VS Code: interfaces/vscode.md
     - Open source: github.md
     - Machine learning: ml.md
-    - Using kdb+ in the cloud: 
+    - Using kdb+ in the cloud:
       - About: cloud/index.md
       - Amazon Web Services:
         #- Marketplace: 'https://aws.amazon.com/marketplace/seller-profile?id=a6a31dc0-c1ef-470e-b605-db38316e057e'

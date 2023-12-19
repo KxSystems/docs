@@ -15,7 +15,7 @@ date: December 2020
 
     **Amend** and **Amend At** let us change items at depth in the result structure.
 
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     Two code lines: no loops, no counters, no control structures.
 
 !!! question "Write a program that prints the [lyrics](http://www.lyricsmode.com/lyrics/c/christmas_carols/the_twelve_days_of_christmas.html "lyricsmode.com") of the Christmas carol “The Twelve Days of Christmas”"
@@ -415,7 +415,7 @@ And a partridge in a pear tree.
 
 ### Test your understanding
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 Using string-search-and-replace to change the days looks like a sledgehammer to crack a nut. Can you find an alternative?
 
 ??? success "Answer"
@@ -424,7 +424,7 @@ Using string-search-and-replace to change the days looks like a sledgehammer to 
     
     Notice how projecting `{(7#x),y,14_x}` onto `[;y]` maps the `y` of the outer lambda to the `y` of the inner lambda. 
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 If you `raze` the verses before fixing the last line of the first verse, how else must you change the definition of `lyric`?
 
 ??? success "Answer"
@@ -434,7 +434,7 @@ If you `raze` the verses before fixing the last line of the first verse, how els
     You are now no longer amending at depth but amending an entire item.
     So you use Amend At rather than Amend.
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 Write an expression to generate all the first lines.
 
 ??? success "Answer"

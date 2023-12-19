@@ -2,7 +2,7 @@
 title: Machine learning | kdb+ and q documentation
 description: Machine-learning capabilities are at the heart of future technology development at KX. Libraries are added here as they are released. Libraries are released under the Apache 2 license, and are free for all use cases, including 64-bit and commercial use.
 ---
-# :fontawesome-solid-share-alt: Machine learning
+# :fontawesome-solid-share: Machine learning
 
 
 ![Machine learning](img/ml.png)

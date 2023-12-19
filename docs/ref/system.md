@@ -88,7 +88,7 @@ the shell interpreter considers it as two statements
 cat x > y; > tmpout
 ```
 
-## :fontawesome-solid-exclamation-triangle: Capture stderr output
+## :fontawesome-solid-triangle-exclamation: Capture stderr output
 
 You cannot capture the stderr output from the system call directly, but a workaround is
 

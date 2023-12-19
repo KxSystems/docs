@@ -699,7 +699,7 @@ Many choices are made, but `if` is used only to [validate arguments and signal e
 
 1.  Write an `autoplay` function that stops when the game is won or no more useful moves are possible.
 2.  :fontawesome-brands-html5: Write an HTML5 interface for the game engine. 
-3.  :fontawesome-solid-share-alt: Use the [Machine Learning Toolkit](https://github.com/KxSystems/ml) to train a champion Klondike player.
-4.  :fontawesome-solid-book-reader: [“Three Principles of Coding Clarity”](http://archive.vector.org.uk/art10009750 "The Journal of the British APL Association"), _Vector_ **26**:4
+3.  :fontawesome-solid-share: Use the [Machine Learning Toolkit](https://github.com/KxSystems/ml) to train a champion Klondike player.
+4.  :fontawesome-solid-book-open-reader: [“Three Principles of Coding Clarity”](http://archive.vector.org.uk/art10009750 "The Journal of the British APL Association"), _Vector_ **26**:4
 5.  :fontawesome-solid-pen-nib: [Remarks on Style](https://github.com/qbists/style)
 

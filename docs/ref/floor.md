@@ -47,7 +47,7 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  . . . h i j j j c s . . . s . . . .
 ```
 
-## :fontawesome-solid-exclamation-triangle: Prior to V3.0
+## :fontawesome-solid-triangle-exclamation: Prior to V3.0
 
 Prior to V3.0, `floor` 
 

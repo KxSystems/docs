@@ -62,7 +62,7 @@ White papers are flagged in the navigation menus.
 -   [**Disaster-recovery planning for kdb+ tick systems**](disaster-recovery/index.md)<br>Stewart Robinson
 
 
-## :fontawesome-solid-share-alt: Machine learning
+## :fontawesome-solid-share: Machine learning
 
 -   [**NASA FDL: Analyzing social media data for disaster management**](disaster-management/index.md)<br>Conor McCarthy, 2019.10
 -   [**NASA FDL: Predicting floods with q and machine learning**](disaster-floods/index.md)<br>Diane O’Donoghue, 2019.10

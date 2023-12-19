@@ -2,7 +2,7 @@
 title: Origins | Learn | kdb+ and q documentation
 description: About q and the k programming languages and their origins.
 ---
-# :fontawesome-solid-book-reader: Origins
+# :fontawesome-solid-book-open-reader: Origins
 [![hieroglyphics By Anonymous - Clio20, CC BY-SA 3.0](../img/hieroglyphics.jpg)](https://commons.wikimedia.org/w/index.php?curid=592581 "Wikipedia")
 
 
@@ -39,7 +39,7 @@ Many powerful techniques for programming in q originally appeared in earlier Ive
 -   [An interview with Arthur Whitney](https://kx.com/blog/arthur-whitney-talks/), KX, 2004
 
 
-## :fontawesome-solid-archive: Archive
+## :fontawesome-solid-box-archive: Archive
 
 -   [Abridged q language manual](https://legaldocumentation.kx.com/q/d/q.htm), Arthur Whitney, 2009
 -   [Abridged kdb+ database manual](https://legaldocumentation.kx.com/q/d/kdb+.htm), Arthur Whitney, 2006

@@ -736,7 +736,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </table>
 
 
-## :fontawesome-solid-map-signs: Foreign functions
+## :fontawesome-solid-signs-post: Foreign functions
 
 <table class="kx-compact" markdown>
 <tr markdown><td markdown>[Boost](https://www.boost.org) math library</td><td markdown>:fontawesome-brands-github: [kimtang/bml](https://github.com/kimtang/bml)</td></tr>
@@ -940,7 +940,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </table>
 
 
-## :fontawesome-solid-share-alt: Machine learning
+## :fontawesome-solid-share: Machine learning
 
 <small>
 	:fontawesome-regular-hand-point-right:
@@ -1050,7 +1050,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </table>
 
 
-## :fontawesome-solid-cogs: Utilities
+## :fontawesome-solid-gears: Utilities
 
 <table class="kx-compact" markdown>
 </tr>
@@ -1290,7 +1290,7 @@ GitHub topic queries:&nbsp;&nbsp;
 
     :fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 
 
-## :fontawesome-solid-share-alt-square: kxcontrib
+## :fontawesome-solid-share-square: kxcontrib
 
 !!! warning "Salvaged repositories"
 	:fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained.

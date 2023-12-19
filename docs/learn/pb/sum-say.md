@@ -19,7 +19,7 @@ date: December 2020
 
     **Reverse lookup** on a dictionary finds their unique seeds; indexing the  sequence and seed dictionaries with them finds the slowest sequences and all the seeds that produce them.
 
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     Seven code lines, no loops, no counters, no control structures.
 
 

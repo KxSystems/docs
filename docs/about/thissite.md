@@ -16,7 +16,7 @@ This site is a project of the KX Librarian: librarian@kx.com.
 > A librarian’s job is to put information where people can find it.
 
 
-## :fontawesome-solid-search: Search
+## :fontawesome-solid-magnifying-glass: Search
 
 The Search Box on this site is customized for the q language.
 Some examples:
@@ -92,7 +92,7 @@ Geo Carncross                   William Da Silva
 Ian O’Dwyer                     
 ```
 
-## :fontawesome-solid-balance-scale: License
+## :fontawesome-solid-scale-balanced: License
 This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 
@@ -106,7 +106,7 @@ We understand this to be fair use.
 If you are a copyright holder and object to this use, please write to librarian@kx.com.
 
 
-## :fontawesome-solid-book-dead: Terminology
+## :fontawesome-solid-book: Terminology
 
 In 2018 and 2019 we made changes to the [terminology](terminology.md) used to describe the q language.
 

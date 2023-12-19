@@ -42,7 +42,7 @@ a b
 ```
 
 
-## :fontawesome-solid-exclamation-triangle: Prior to V3.0
+## :fontawesome-solid-triangle-exclamation: Prior to V3.0
 
 Prior to V3.0, `ceiling` 
 

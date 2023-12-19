@@ -16,7 +16,7 @@ date: December 2020
     Both use the **Do iterator** to both apply and not-apply a function.
     One uses the **Over iterator** to consolidate successive operations.
 
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     Both solutions have five code lines, no loops, no control structures.
 
 !!! question "Write a function that takes a name and returns the lyrics to the Shirley Ellis song ”The Name Game”."
@@ -230,7 +230,7 @@ game_amend:{[Name]
   @[;0;pfx,] @[;3;Name,] @[;0 1 2;,[;sfx]] @[;where n[0]=last each s;-1_] s }
 ```
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 Test your understanding:
 `@[;0 1 2;,[;sfx]]` uses the ternary form of Amend At.
 Rewrite it using the quaternary form.
