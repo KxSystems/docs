@@ -1,0 +1,7 @@
+.*
+!.gitignore
+!.gitkeep
+
+local
+local.zip
+local.yml

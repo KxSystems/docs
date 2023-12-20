@@ -25,10 +25,10 @@ Find all the words containing K that can be composed from the letters in the gri
 
     Use simple syntactic substitution to parallelize the key computation. 
 
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     Six code lines for Part 1; twelve for Part 2
     <br>
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     No loops, no counters, no control structures.
 
 ???+ question "Write a program to solve the word-wheel puzzle"

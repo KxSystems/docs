@@ -389,7 +389,7 @@ q)p 3
 0 2 1
 ```
 
-:fontawesome-solid-book-reader:
+:fontawesome-solid-book-open-reader:
 Reading Room: [It’s more fun to permute](../../reading/strings.md#its-more-fun-to-permute) for a non-recursive algorithm
 
 ## [URLs from string](https://www.geeksforgeeks.org/python-check-url-string/)

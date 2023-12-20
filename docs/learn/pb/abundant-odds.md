@@ -295,7 +295,7 @@ q)flip{x 1}r:{25>count x 1}({(x;y,(x<sm)#enlist x,sm:sd x)}. 2 0+)/(1;())
 975 1649 2241 2973 4023 4641 5195 5877 6129 6495 6669 7065 7063 7731 7455 834..
 ```
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 Test your understanding:
 What is `r 0` above?
 

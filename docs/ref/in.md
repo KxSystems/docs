@@ -78,7 +78,7 @@ p5| cam   blue  12     paris
 ```
 
 
-## :fontawesome-solid-exclamation-triangle:{: style="color:red"} Mixed argument types
+## :fontawesome-solid-triangle-exclamation:{: style="color:red"} Mixed argument types
 
 Optimized support for atom or 1-list `y` allows a wider input type mix.
 

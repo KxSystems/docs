@@ -21,7 +21,7 @@ Download<br/>
 Install](install.md "How to install kdb+")
 {: .md-button}
 
-[<span style="font-size: 3em">:fontawesome-solid-hiking:</span><br/>
+[<span style="font-size: 3em">:fontawesome-solid-person-hiking:</span><br/>
 Mountain tour](tour/index.md "A one-page rapid tour of the q language")
 {: .md-button}
 
@@ -49,7 +49,7 @@ Q by examples](q-by-examples.md "An introduction to q through examples")
 Starting kdb+](startingkdb/index.md "Getting started on real-time and historical database")
 {: .md-button}
 
-[<span style="font-size: 3em">:fontawesome-solid-book-reader:</span><br/>
+[<span style="font-size: 3em">:fontawesome-solid-book-open-reader:</span><br/>
 Reading room](reading/index.md "Example programs for study")
 {: .md-button}
 
@@ -80,7 +80,7 @@ section | content
 --------|--------
 :fontawesome-solid-book: [Language](../ref/index.md) | formal definition of  language elements
 :fontawesome-solid-database:  [Database](../database/index.md)  | persisting tables in the filesystem 
-:fontawesome-solid-university: [Architecture](../architecture/index.md) | topics in building systems using kdb+ processes 
+:fontawesome-solid-building-columns: [Architecture](../architecture/index.md) | topics in building systems using kdb+ processes 
 :fontawesome-regular-map: [White papers](../wp/index.md) | extended treatments of topics in q programming and in building kdb+ systems
 
 

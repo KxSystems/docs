@@ -68,7 +68,7 @@ Alternatively, suppose `t` is a table in which columns `b`, `c`, and `a` are arg
 
 
 
-## :fontawesome-solid-exclamation-triangle: Blocked within `peach`
+## :fontawesome-solid-triangle-exclamation: Blocked within `peach`
 
 ```txt
 hopen socket

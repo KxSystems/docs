@@ -16,7 +16,7 @@ date: December 2020
 
     A vector of pre-calculated string lengths constitutes a **finite-state machine** that generates the sequence three orders of magnitude faster than stringifying the integers as required. 
 
-    :fontawesome-solid-check-circle:
+    :fontawesome-solid-circle-check:
     7 code lines: no loops, counters, or control structures.
 
 
@@ -215,7 +215,7 @@ Forty billion one is seventeen, seventeen is nine, nine is four, four is magic.
 All those integers got stringified by `(count s@)\` but we did not keep the strings.
 Instead we stringified the numbers a second time.
 
-:fontawesome-solid-question-circle:
+:fontawesome-solid-circle-question:
 Replace `s each(count s@)\` with an expression that applies `s` once only to each number.
 
 ??? success "Answer"

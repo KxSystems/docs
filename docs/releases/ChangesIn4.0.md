@@ -371,7 +371,7 @@ q){a::1;a:1}
 -   [`.Q.cn`](../ref/dotq.md#cn-count-partitioned-table) now uses [`peach`](../ref/each.md) to get the count of partitioned tables. This can improve the startup time for a partitioned database.
 
 
-## :fontawesome-solid-exclamation-triangle: NUCs
+## :fontawesome-solid-triangle-exclamation: NUCs
 
 We have sought to avoid introducing compatibility issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
 

@@ -94,7 +94,7 @@ Kdb+ uses files and directories to persist database tables.
 [Splaying a table](../kb/splayed-tables.md) stores each column as a separate file.
 
 
-## :fontawesome-solid-hands-helping: Connections
+## :fontawesome-solid-handshake-angle: Connections
 
 A persistent connection enables multiple operations on a file without repeatedly opening and closing it. 
 

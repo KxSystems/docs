@@ -2,7 +2,7 @@
 title: Internal functions | Language | kdb+ and q documentation
 description: The operator ! with a negative integer as left-argument calls an internal function.
 ---
-# :fontawesome-solid-exclamation-triangle: Internal functions
+# :fontawesome-solid-triangle-exclamation: Internal functions
 
 
 

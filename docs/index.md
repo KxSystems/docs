@@ -26,11 +26,11 @@ kdb+ is
 [Get started](learn/install.md)
 {: #kx-get-started .md-button}
 
-[<span style="font-size: 3em">:fontawesome-solid-hiking:</span><br/>
+[<span style="font-size: 3em">:fontawesome-solid-person-hiking:</span><br/>
 Intro tour](learn/tour/index.md "A one-page rapid tour of the q language")
 {: .md-button}
 
-[<span style="font-size: 3em">:fontawesome-solid-book-reader:</span><br/>
+[<span style="font-size: 3em">:fontawesome-solid-book-open-reader:</span><br/>
 Learn q](learn/index.md)
 {: .md-button}
 
