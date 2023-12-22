@@ -22,6 +22,14 @@ Where
 kdb+ will listen to `portnumber` or the port number of `servicename` on all interfaces, or on `hostname` only if specified.
 The port must be available and the process must have permission for the port.
 
+As of 4.1t 2022.11.01 (or 4.0 2022.10.26) a port range can be specified in place of a portnumber. The range of ports is inclusive & tried in a random order. A service name can be used instead of each port number. Using 0W to choose a free ephemeral port can be more efficient (where suitable).
+
+```q
+q)\p 80/85
+q)\p
+81
+```
+
 Where no parameter is specified in the system command, the listening port is reported.
 The default is 0 (no listening port).
 
