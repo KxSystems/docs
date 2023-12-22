@@ -91,6 +91,15 @@ qu"ux
 "fred"",barney"
 ```
 
+Since 4.1t 2023.08.18, csv export of symbol or character vector values containing newlines "\n" are now enclosed in double quotes
+
+```q
+q)csv 0:([]("foo\nbar";"baz"))
+,"x"
+"\"foo\nbar\""
+"baz"
+```
+
 ??? danger "Columns that are neither vectors nor lists of strings"
 
     Prepare Text signals a type error if a column of its right argument is neither a vector nor a list of strings.
