@@ -26,35 +26,36 @@ _Tools_
  [qt       is table](#qt-is-table)                 [ens         enumerate against domain](#ens-enumerate-against-domain)
  [res      keywords](#res-keywords)                 [fk          foreign key](#fk-foreign-key)
  [s        plain text](#s-plain-text)               [hdpf        save tables](#hdpf-save-tables)
- [s1       string representation](#s1-string-representation)    [M           chunk size](#m-chunk-size)
- [sbt      string backtrace](#sbt-string-backtrace)         [qp          is partitioned](#qp-is-partitioned)
- [sha1     SHA-1 encode](#sha1-sha-1-encode)             [qt          is table](#qt-is-table)
- [trp      extend trap](#trp-extend-trap)
- [ts       time and space](#ts-time-and-space)          **Partitioned database state**
- [u        date based](#u-date-based)               [bv          build vp](#bv-build-vp)
- [V        table to dict](#v-table-to-dict)            [cn          count partitioned table](#cn-count-partitioned-table)
- [v        value](#v-value)                    [D           partitions](#d-partitions)
- [view     subview](#view-subview)                  [ind         partitioned index](#ind-partitioned-index)
-                                   [MAP         maps partitions](#map-maps-partitions)
-**Constants**                          [par         locate partition](#par-locate-partition)
- [A a an   alphabets](#a-upper-case-alphabet)                [PD          partition locations](#pd-partition-locations)
- [b6       bicameral alphanums](#b6-bicameral-alphanums)      [pd          modified partition locns](#pd-modified-partition-locations)
- [n nA     nums & alphanums](#n-nums)         [pf          partition field](#pf-partition-field)
-                                   [pn          partition counts](#pn-partition-counts)
-**Environment**                        [qp          is partitioned](#qp-is-partitioned)
- [K k      version](#k-version-date)                  [pt          partitioned tables](#pt-partitioned-tables)
- [opt      command parameters](#opt-command-parameters)       [PV          partition values](#pv-partition-values)
- [w        memory stats](#w-memory-stats)             [pv          modified partition values](#pv-modified-partition-values)
- [x        non-command parameters](#x-non-command-parameters)   [vp          missing partitions](#vp-missing-partitions)
-
-**IPC**                               **Segmented database state**
- [addr     IP address](#addr-ip-address)               [P           segments](#p-segments)
- [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [u           date based](#u-date-based)
- [fs  fsn  streaming algorithm](#fs-streaming-algorithm)
- [hg       HTTP get](#hg-http-get)                **File I/O**
- [host     hostname](#host-hostname)                 [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
- [hp       HTTP post](#hp-http-post)                [Xf          create file](#xf-create-file)
- [l        load](#l-load)
+ [s1       string representation](#s1-string-representation)    [l        load](#l-load)
+ [sbt      string backtrace](#sbt-string-backtrace)         [lo       load without](#l-load-without)
+ [sha1     SHA-1 encode](#sha1-sha-1-encode)             [M           chunk size](#m-chunk-size)
+ [trp      extend trap](#trp-extend-trap)             [qp          is partitioned](#qp-is-partitioned)
+ [ts       time and space](#ts-time-and-space)          [qt          is table](#qt-is-table)
+ [u        date based](#u-date-based)               
+ [V        table to dict](#v-table-to-dict)            **Partitioned database state**
+ [v        value](#v-value)                    [bv          build vp](#bv-build-vp)
+ [view     subview](#view-subview)                  [cn          count partitioned table](#cn-count-partitioned-table)
+                                   [D           partitions](#d-partitions)
+**Constants**                          [ind         partitioned index](#ind-partitioned-index)
+ [A a an   alphabets](#a-upper-case-alphabet)                [MAP         maps partitions](#map-maps-partitions)
+ [b6       bicameral alphanums](#b6-bicameral-alphanums)      [par         locate partition](#par-locate-partition)
+ [n nA     nums & alphanums](#n-nums)         [PD          partition locations](#pd-partition-locations)
+                                   [pd          modified partition locns](#pd-modified-partition-locations)
+**Environment**                        [pf          partition field](#pf-partition-field)
+ [K k      version](#k-version-date)                  [pn          partition counts](#pn-partition-counts)
+ [opt      command parameters](#opt-command-parameters)       [qp          is partitioned](#qp-is-partitioned)
+ [w        memory stats](#w-memory-stats)             [pt          partitioned tables](#pt-partitioned-tables)
+ [x        non-command parameters](#x-non-command-parameters)   [PV          partition values](#pv-partition-values)
+                                   [pv          modified partition values](#pv-modified-partition-values)
+**IPC**                               [vp          missing partitions](#vp-missing-partitions)
+ [addr     IP address](#addr-ip-address)               
+ [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      **Segmented database state**
+ [fs  fsn  streaming algorithm](#fs-streaming-algorithm)      [P           segments](#p-segments)
+ [hg       HTTP get](#hg-http-get)                [u           date based](#u-date-based)
+ [host     hostname](#host-hostname)                 
+ [hp       HTTP post](#hp-http-post)                **File I/O**
+                                   [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+                                   [Xf          create file](#xf-create-file)
 
 </div>
 
@@ -1222,6 +1223,33 @@ Where `x` is a symbol atom naming a directory in the current directory, loads
 it recursively as in [`load`](load.md), but into the default namespace.
 
 (Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
+
+
+## `lo` (load without)
+
+```syntax
+.Q.lo[`database;cd;scripts]
+```
+
+load a database without changing directory and/or loading scripts in the database (since 4.1t 2023.03.01)
+
+```q
+q)\cd
+"/tmp"
+q)key`:db/2023.02.01
+`s#,`trade
+q).Q.lo[`db;0;0]
+q)trade
+date       sym time         price
+------------------------------------
+2023.02.01 C   10:15:18.957 6.346716
+2023.02.01 B   10:15:18.958 9.672398
+2023.02.01 C   10:15:18.959 2.306385
+2023.02.01 B   10:15:18.960 9.49975
+2023.02.01 A   10:15:18.961 4.39081
+q)\cd
+"/tmp"
+```
 
 
 ## `M` (chunk size)
