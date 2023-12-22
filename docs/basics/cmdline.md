@@ -61,6 +61,7 @@ q)
 ```
 
 Block write-access to a kdb+ database, for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0.
+Also blocks [`hdel`](../ref/hdel.md) keyword (since V4.1t 2021.10.13, V4.0 2023.08.11).
 
 ```bash
 ~/q$ q -b
@@ -373,8 +374,8 @@ Timeout in seconds for client queries, i.e. maximum time a client call will exec
 
 -   system commands from a remote (signals `'access`), including exit via `"\\"` 
 -   access to files outside the current directory for any handle context ([`.z.w`](../ref/dotz.md#zw-handle)) other than 0
-
--   the [`exit`](../ref/exit.md) keyword (since V4.1.t 2021-07-12)
+-   the [`exit`](../ref/exit.md) keyword (since V4.1t 2021.07.12)
+-   the [`hdel`](../ref/hdel.md) keyword (since V4.1t 2021.10.13, V4.0 2023.08.11)
 
 ??? danger "Only a simple protection against “wrong” queries"
 
