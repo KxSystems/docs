@@ -1464,6 +1464,8 @@ pos    execution position (caret) within text
 
 This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
 
+Since 4.1t 2022.03.25, .Q.prf0 will not try to stop the process if passed a negative `pid`. Useful for calls in the middle of debugging, etc.
+
 :fontawesome-solid-graduation-cap:
 [Code profiler](../kb/profiler.md)
 
