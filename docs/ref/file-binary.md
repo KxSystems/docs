@@ -97,8 +97,13 @@ _Q for Mortals_
 ## Save Binary
 
 ```syntax
-filesymbol 1: bytes     1:[filesymbol;bytes]
+x 1: y     1:[x;y]
 ```
+
+Where
+
+-   `x` is a [`filesymbol`](../basics/glossary.md#file-symbol) or (since 4.1t 2023.04.17) a 4 item list ([`filesymbol`](../basics/glossary.md#file-symbol), logical block size, compression algorithm and compression level) to write compressed data
+-   `y` is data to write
 
 writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns it. If `filesymbol`
 
@@ -108,6 +113,15 @@ writes `bytes` to [`filesymbol`](../basics/glossary.md#file-symbol) and returns 
 ```q
 q)`:hello 1: 0x68656c6c6f776f726c64
 `:hello
+```
+
+### Compression
+
+Since 4.1t 2023.04.17 data can be compressed while writing, by including [`compression parameters`](../kb/file-compression.md#compression-parameters)
+
+```q
+q)(`:file;17;2;9)1:100#0x0
+`:file
 ```
 
 ----
