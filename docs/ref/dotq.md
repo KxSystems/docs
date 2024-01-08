@@ -1477,7 +1477,6 @@ This process must be started from the same binary as the one running `.Q.prf0`, 
 
 Returns a list of partitioned tables.
 
-
 ## `pv` (modified partition values)
 
 ```syntax
@@ -1828,6 +1827,8 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 ```q
 .Q.view 2#date
 ```
+
+Since 4.1 2022.03.25,4.0 2023.05.26 this would signal an `invalid partition filter` error if partition value(s) resulted in no matches with [.Q.PV](#pv-partition-values)
 
 :fontawesome-solid-hand-point-right:
 _Q for Mortals_
