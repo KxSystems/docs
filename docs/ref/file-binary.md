@@ -57,6 +57,13 @@ With `offset` and `length`:
 q)d:raze{("ii";4 4)1:(`:/tmp/data;x;100000)}each 100000*til 5
 ```
 
+Since 4.1t 2022.11.01,4.0 2022.12.02 quotes are no longer stripped from `y`
+
+```q
+q)("**";4 4)1:"abcd\"ef\""
+"abcd"
+"\"ef\""
+```
 
 ### Column types and widths
 
