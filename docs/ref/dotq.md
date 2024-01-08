@@ -1231,7 +1231,7 @@ it recursively as in [`load`](load.md), but into the default namespace.
 .Q.lo[`database;cd;scripts]
 ```
 
-load a database without changing directory and/or loading scripts in the database (since 4.1t 2023.03.01)
+Load a database without changing directory and/or loading scripts in the database (since 4.1t 2023.03.01)
 
 ```q
 q)\cd
