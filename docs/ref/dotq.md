@@ -246,6 +246,10 @@ q)@[get;"select from tt";-2@]; / no error
 
 ## `Cf` (create empty nested char file)
 
+!!! warning "Deprecated"
+
+    Deprecated since 4.1t 2022.03.25. Using resulting files could return file format errors since 3.6.
+
 ```syntax
 .Q.Cf x
 ```
@@ -1922,6 +1926,10 @@ symw| 25436
 
 
 ## `Xf` (create file)
+
+!!! warning "Deprecated"
+
+    Deprecated since 4.1t 2022.03.25. Using resulting files could return file format errors since 3.6.
 
 ```syntax
 .Q.Xf[x;y]
