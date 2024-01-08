@@ -110,7 +110,7 @@ q)`:hello 1: 0x68656c6c6f776f726c64
 
 ### Compression
 
-Since 4.1t 2023.04.17 data can be compressed while writting, by including [`compression parameters`](../kb/file-compression.md#compression-parameters)
+Since 4.1t 2023.04.17 data can be compressed while writing, by including [`compression parameters`](../kb/file-compression.md#compression-parameters)
 
 ```q
 q)(`:file;17;2;9)1:100#0x0
