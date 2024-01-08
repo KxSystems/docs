@@ -325,6 +325,11 @@ pwuid
 :   OS is missing libraries for `getpwuid`.
     (Most likely 32-bit app on 64-bit OS. Try to [install ia32-libs](../learn/install.md#step-2-put-kdb-in-qhome).)
 
+:   or
+
+:   UID (user id) not found in system database of users (e.g. running on container with randomized UID).
+    To prevent this issue (since 4.1t 2023.05.26,4.0 2023.11.03) system environment variable HOME or USER can be set to home directory for the user.
+
 Q7
 
 :   nyi op on file nested array
