@@ -417,7 +417,7 @@ Values for V3.5+ are shown below in bold type.
 os               | 32-bit  | 64-bit
 -----------------|---------|--------
 Linux            | **l32** | **l64**
-Linux on Arm     |         | l64 (reports l64arm since 4.1t 2022.09.02)
+Linux on ARM     |         | l64 (reports l64arm since 4.1t 2022.09.02)
 macOS            | **m32** | **m64**
 Solaris          | s32     | s64
 Solaris on Intel | **v32** | **v64**
