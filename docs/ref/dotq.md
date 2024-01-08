@@ -961,7 +961,7 @@ So if you have many nested data, e.g. columns of char vectors, or much grouping,
 
 Where
 
--   `cbv` is a char or byte vector
+-   `cbv` is a char vector (or byte vector since 4.1t 2021.09.03,4.0 2021.10.01)
 -   `cl` is compression level \[1-9\] as a long
 
 returns, for
