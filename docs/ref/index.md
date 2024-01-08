@@ -329,9 +329,9 @@ General                           Datatype
  [s        plain text](dotq.md#s-plain-text)               [ens    enumerate against domain](dotq.md#ens-enumerate-against-domain)
  [s1       string representation](dotq.md#s1-string-representation)    [fk     foreign key](dotq.md#fk-foreign-key)
  [sbt      string backtrace](dotq.md#sbt-string-backtrace)         [hdpf   save tables](dotq.md#hdpf-save-tables)
- [trp      extend trap](dotq.md#trp-extend-trap)              [qt     is table](dotq.md#qt-is-table)
- [ts       time and space](dotq.md#ts-time-and-space)           [qp     is partitioned](dotq.md#qp-is-partitioned)
- [u        date based](dotq.md#u-date-based)
+ [trp      extend trap](dotq.md#trp-extend-trap)              [lo     load without](dotq.md#l-load-without)
+ [ts       time and space](dotq.md#ts-time-and-space)           [qt     is table](dotq.md#qt-is-table)
+ [u        date based](dotq.md#u-date-based)               [qp     is partitioned](dotq.md#qp-is-partitioned)           
  [V        table to dict](dotq.md#v-table-to-dict)
  [v        value](dotq.md#v-value)                   Partitioned database state
  [view     subview](dotq.md#view-subview)                  [bv     build vp](dotq.md#bv-build-vp)
