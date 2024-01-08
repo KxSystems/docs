@@ -237,6 +237,8 @@ For releases since 2012.05.29, kdb+ and the C-API will compress an outgoing mess
 
 -   Uncompressed serialized data has a length greater than 2000 bytes
 -   Connection is not `localhost`
+-   Connection is not 127.0.0.1
+-   Connection does not resolve to being localhost (since 4.1t 2021.06.04)
 -   Size of compressed data is less than &frac12; the size of uncompressed data
 
 The compression/decompression algorithms are proprietary and implemented as the `compress` and `uncompress` methods in `c.java`. The message validator does not validate the integrity of compressed messages.
