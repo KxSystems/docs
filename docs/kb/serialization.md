@@ -9,7 +9,7 @@ description: TCP/IP is used for communicating between processes. The protocol is
 ## Integer of value 1
 
 ```q
-q)-8!1
+q)-8!1i
 0x010000000d000000fa01000000
 ```
 
@@ -26,7 +26,7 @@ fa | type of item following (-6, meaning a 4-byte integer follows)
 ## Integer vector
 
 ```q
-q)-8!enlist 1
+q)-8!enlist 1i
 0x010000001200000006000100000001000000
 ```
 
@@ -82,7 +82,7 @@ bytes | semantics
 ## Dictionary with atom values
 
 ```q
-q)-8!`a`b!2 3
+q)-8!`a`b!2 3i
 0x0100000021000000630b0002000000610062000600020000000200000003000000
 ```
 
@@ -106,7 +106,7 @@ bytes | semantics
 ## Sorted dictionary with atom values
 
 ```q
-q)-8!`s#`a`b!2 3
+q)-8!`s#`a`b!2 3i
 0x01000000210000007f0b0102000000610062000600020000000200000003000000
 ```
 
@@ -131,7 +131,7 @@ bytes | semantics
 ## Dictionary with vector values
 
 ```q
-q)-8!`a`b!enlist each 2 3
+q)-8!`a`b!enlist each 2 3i
 0x010000002d000000630b0002000000610062000000020000000600010000000200000006000100000003000000
 ```
 
@@ -163,7 +163,7 @@ bytes | semantics
 Note the relation to the previous example.
 
 ```q
-q)-8!'(flip`a`b!enlist each 2 3;([]a:enlist 2;b:enlist 3))
+q)-8!'(flip`a`b!enlist each 2 3i;([]a:enlist 2i;b:enlist 3i))
 0x010000002f0000006200630b0002000000610062000000020000000600010000000200000006000100000003000000
 0x010000002f0000006200630b0002000000610062000000020000000600010000000200000006000100000003000000
 ```
@@ -198,7 +198,7 @@ bytes | semantics
 Note the relation to the previous example.
 
 ```q
-q)-8!`s#([]a:enlist 2;b:enlist 3)
+q)-8!`s#([]a:enlist 2i;b:enlist 3i)
 0x010000002f0000006201630b0002000000610062000000020000000603010000000200000006000100000003000000
 ```
 
@@ -231,7 +231,7 @@ bytes | semantics
 ## Keyed table
 
 ```q
-q)-8!([a:enlist 2]b:enlist 3)
+q)-8!([a:enlist 2i]b:enlist 3i)
 0x010000003f000000636200630b00010000006100000001000000060001000000020000006200630b0001000000620000000100000006000100000003000000
 ```
 
@@ -276,7 +276,7 @@ bytes | semantics
 Note the relation to the previous example.
 
 ```q
-q)-8!`s#([a:enlist 2]b:enlist 3)
+q)-8!`s#([a:enlist 2i]b:enlist 3i)
 0x010000003f0000007f6201630b00010000006100000001000000060001000000020000006200630b0001000000620000000100000006000100000003000000
 ```
 

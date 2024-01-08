@@ -402,6 +402,7 @@ q).z.n
 0D23:30:10.827156000
 ```
 
+!!! note Linux clock source returns a nanosecond precision timespan since 4.1t 2021.03.30,4.0 2022.07.01.
 
 ## `.z.o` (OS version)
 
@@ -446,6 +447,8 @@ UTC timestamp in nanoseconds.
 q).z.p
 2018.04.30D09:18:38.117667000
 ```
+
+!!! note Linux clock source returns a nanosecond precision timestamp since 4.1t 2021.03.30,4.0 2022.07.01.
 
 
 ## `.z.pc` (close)
@@ -763,6 +766,8 @@ Returns `1b`
 -   in `reval`
 -   where the [`-b` command-line option](../basics/cmdline.md#-b-blocked) has been set
 -   in a thread other than the main event thread
+
+Since V4.1t 2021.04.16.
 
 
 ## `.z.s` (self)

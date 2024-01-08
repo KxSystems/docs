@@ -961,7 +961,7 @@ So if you have many nested data, e.g. columns of char vectors, or much grouping,
 
 Where
 
--   `cbv` is a char or byte vector
+-   `cbv` is a char vector (or byte vector since 4.1t 2021.09.03,4.0 2021.10.01)
 -   `cl` is compression level \[1-9\] as a long
 
 returns, for
@@ -1464,6 +1464,8 @@ pos    execution position (caret) within text
 
 This process must be started from the same binary as the one running `.Q.prf0`, otherwise `binary mismatch` is signalled.
 
+Since 4.1t 2022.03.25, .Q.prf0 will not try to stop the process if passed a negative `pid`. Useful for calls in the middle of debugging, etc.
+
 :fontawesome-solid-graduation-cap:
 [Code profiler](../kb/profiler.md)
 
@@ -1476,7 +1478,6 @@ This process must be started from the same binary as the one running `.Q.prf0`, 
 ```
 
 Returns a list of partitioned tables.
-
 
 ## `pv` (modified partition values)
 
@@ -1828,6 +1829,8 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 ```q
 .Q.view 2#date
 ```
+
+Since 4.1 2022.03.25,4.0 2023.05.26 this would signal an `invalid partition filter` error if partition value(s) resulted in no matches with [.Q.PV](#pv-partition-values)
 
 :fontawesome-solid-hand-point-right:
 _Q for Mortals_

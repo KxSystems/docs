@@ -128,7 +128,7 @@ q){a + b} . enlist[::]
 
 ## Index
 
-`d . i` returns an item from list or dictionary `d` as specified by successive items in list `i`.
+`d . i` returns an item from list or dictionary `d` as specified by successive items in list `i`. Since 4.1t 2022.03.25, `d` can be a persisted table.
 The result is found in `d` at depth `count i` as follows.
 
 The list `i` is a list of successive indexes into `d`. `i[0]` must be in the domain of `d@`. It selects an item of `d`, which is then indexed by `i[1]`, and so on.
