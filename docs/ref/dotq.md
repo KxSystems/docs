@@ -1896,9 +1896,9 @@ symw| 25436
 
 ## `Xf` (create file)
 
-!!! warning "Depreciated"
+!!! warning "Deprecated"
 
-    Depreciated since 4.1t 2022.03.25. Using resulting files could return file format errors since 3.6.
+    Deprecated since 4.1t 2022.03.25. Using resulting files could return file format errors since 3.6.
 
 ```syntax
 .Q.Xf[x;y]
