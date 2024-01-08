@@ -27,33 +27,34 @@ _Tools_
  [res      keywords](#res-keywords)                 [fk          foreign key](#fk-foreign-key)
  [s        plain text](#s-plain-text)               [hdpf        save tables](#hdpf-save-tables)
  [s1       string representation](#s1-string-representation)    [l        load](#l-load)
- [sbt      string backtrace](#sbt-string-backtrace)         [lo       load without](#l-load-without)
- [sha1     SHA-1 encode](#sha1-sha-1-encode)             [M           chunk size](#m-chunk-size)
- [trp      extend trap](#trp-extend-trap)             [qp          is partitioned](#qp-is-partitioned)
- [ts       time and space](#ts-time-and-space)          [qt          is table](#qt-is-table)
- [u        date based](#u-date-based)               
- [V        table to dict](#v-table-to-dict)            **Partitioned database state**
- [v        value](#v-value)                    [bv          build vp](#bv-build-vp)
- [view     subview](#view-subview)                  [cn          count partitioned table](#cn-count-partitioned-table)
-                                   [D           partitions](#d-partitions)
-**Constants**                          [ind         partitioned index](#ind-partitioned-index)
- [A a an   alphabets](#a-upper-case-alphabet)                [MAP         maps partitions](#map-maps-partitions)
- [b6       bicameral alphanums](#b6-bicameral-alphanums)      [par         locate partition](#par-locate-partition)
- [n nA     nums & alphanums](#n-nums)         [PD          partition locations](#pd-partition-locations)
-                                   [pd          modified partition locns](#pd-modified-partition-locations)
-**Environment**                        [pf          partition field](#pf-partition-field)
- [K k      version](#k-version-date)                  [pn          partition counts](#pn-partition-counts)
- [opt      command parameters](#opt-command-parameters)       [qp          is partitioned](#qp-is-partitioned)
- [w        memory stats](#w-memory-stats)             [pt          partitioned tables](#pt-partitioned-tables)
- [x        non-command parameters](#x-non-command-parameters)   [PV          partition values](#pv-partition-values)
-                                   [pv          modified partition values](#pv-modified-partition-values)
-**IPC**                               [vp          missing partitions](#vp-missing-partitions)
- [addr     IP address](#addr-ip-address)               
- [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      **Segmented database state**
- [fs  fsn  streaming algorithm](#fs-streaming-algorithm)      [P           segments](#p-segments)
- [hg       HTTP get](#hg-http-get)                [u           date based](#u-date-based)
- [host     hostname](#host-hostname)                 
- [hp       HTTP post](#hp-http-post)                **File I/O**
+ [sbt      string backtrace](#sbt-string-backtrace)         [ld       load and group](#ld-load-and-group)
+ [sha1     SHA-1 encode](#sha1-sha-1-encode)             [lo       load without](#lo-load-without)
+ [trp      extend trap](#trp-extend-trap)             [M           chunk size](#m-chunk-size)
+ [ts       time and space](#ts-time-and-space)          [qp          is partitioned](#qp-is-partitioned)
+ [u        date based](#u-date-based)          [qt          is table](#qt-is-table)
+ [V        table to dict](#v-table-to-dict) 
+ [v        value](#v-value)                    **Partitioned database state**
+ [view     subview](#view-subview)                  [bv          build vp](#bv-build-vp)
+                                   [cn          count partitioned table](#cn-count-partitioned-table)
+**Constants**                          [D           partitions](#d-partitions)
+ [A a an   alphabets](#a-upper-case-alphabet)                [ind         partitioned index](#ind-partitioned-index)
+ [b6       bicameral alphanums](#b6-bicameral-alphanums)      [MAP         maps partitions](#map-maps-partitions)
+ [n nA     nums & alphanums](#n-nums)         [par         locate partition](#par-locate-partition)
+                                   [PD          partition locations](#pd-partition-locations)
+**Environment**                        [pd          modified partition locns](#pd-modified-partition-locations)
+ [K k      version](#k-version-date)                  [pf          partition field](#pf-partition-field)
+ [opt      command parameters](#opt-command-parameters)       [pn          partition counts](#pn-partition-counts)
+ [w        memory stats](#w-memory-stats)             [qp          is partitioned](#qp-is-partitioned)
+ [x        non-command parameters](#x-non-command-parameters)   [pt          partitioned tables](#pt-partitioned-tables)
+                                   [PV          partition values](#pv-partition-values)
+**IPC**                               [pv          modified partition values](#pv-modified-partition-values)
+ [addr     IP address](#addr-ip-address)                [vp          missing partitions](#vp-missing-partitions)
+ [fps fpn  streaming algorithm](#fpn-streaming-algorithm)
+ [fs  fsn  streaming algorithm](#fs-streaming-algorithm)      **Segmented database state**
+ [hg       HTTP get](#hg-http-get)                [P           segments](#p-segments)
+ [host     hostname](#host-hostname)                [u           date based](#u-date-based)
+ [hp       HTTP post](#hp-http-post) 
+                                   **File I/O**
                                    [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
                                    [Xf          create file](#xf-create-file)
 
@@ -1227,6 +1228,22 @@ Where `x` is a symbol atom naming a directory in the current directory, loads
 it recursively as in [`load`](load.md), but into the default namespace.
 
 (Implements system command [`\l`](../basics/syscmds.md#l-load-file-or-directory).)
+
+
+## `ld` (load and group)
+
+```syntax
+.Q.ld x
+```
+
+Exposes logic used by [`\l`](../basics/syscmds.md#l-load-file-or-directory) to group script lines for evaluation.
+Since 4.1t 2022.11.01,4.0 2023.03.28.
+
+```q
+q).Q.ld read0`:funcs.q
+1                   2                5                    6
+"/ multi line func" "f:{\n  x+y\n }" "/ single line func" "g:{x*y}"
+```
 
 
 ## `lo` (load without)
