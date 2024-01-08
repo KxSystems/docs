@@ -91,7 +91,7 @@ qu"ux
 "fred"",barney"
 ```
 
-Since 4.1t 2023.08.18, csv export of symbol or character vector values containing newlines "\n" are now enclosed in double quotes
+Since 4.1t 2023.08.18, csv export of symbol or character vector values containing newlines "\n" are enclosed in double quotes.
 
 ```q
 q)csv 0:([]("foo\nbar";"baz"))
