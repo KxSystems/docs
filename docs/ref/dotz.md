@@ -767,6 +767,8 @@ Returns `1b`
 -   where the [`-b` command-line option](../basics/cmdline.md#-b-blocked) has been set
 -   in a thread other than the main event thread
 
+Since V4.1t 2021.04.16.
+
 
 ## `.z.s` (self)
 
