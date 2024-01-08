@@ -54,7 +54,7 @@ Logical block size
 
 : A power of 2 between 12 and 20: pageSize or allocation granularity to 1MB.
 
-: PageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB.
+: PageSize for AMD64 is 4kB, SPARC is 8kB. Windows seems to have a default allocation granularity of 64kB. Apple Silicon is 16kB.
 
 : When choosing the logical block size, consider the minimum of all the platforms that will access the files directly – otherwise you may encounter `disk compression - bad logicalBlockSize`.
 
