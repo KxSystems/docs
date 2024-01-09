@@ -67,7 +67,7 @@ q)"P"$"2015-10-28D03:55:58.6542"
 2015.10.28D03:55:58.654200000
 ```
 
-## Outside of Domain
+## Outside of domain
 
 Parsing values outside of the types domain will return null
 
