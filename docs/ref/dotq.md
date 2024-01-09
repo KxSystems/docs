@@ -1862,7 +1862,9 @@ Where `x` is a list of partition values that serves as a filter for all queries 
 .Q.view 2#date
 ```
 
-Since 4.1 2022.03.25,4.0 2023.05.26 this would signal an `invalid partition filter` error if partition value(s) resulted in no matches with [.Q.PV](#pv-partition-values)
+Since 4.1t 2022.03.25,4.0 2023.05.26 this would signal an `invalid partition filter` error if partition value(s) resulted in no matches with [.Q.PV](#pv-partition-values).
+
+`.Q.view`, also used when loading an hdb, now utilizes threads to load .d files (column names) since 4.1t 2023.04.17. 
 
 :fontawesome-solid-hand-point-right:
 _Q for Mortals_
