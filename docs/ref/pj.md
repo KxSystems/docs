@@ -17,7 +17,7 @@ x pj y     pj[x;y]
 
 Where
 
--   `x` and `y` are tables
+-   `x` and `y` are tables. Since 4.1t 2023.08.04 if `x` is the name of a table, it is updated in place.
 -   `y` is keyed
 -   the key column/s of `y` are columns of `x`
 

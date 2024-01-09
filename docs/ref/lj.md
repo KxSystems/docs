@@ -17,7 +17,7 @@ x ljf y     ljf[x;y]
 
 Where 
 
--   `x` is a table
+-   `x` is a table. Since 4.1t 2023.08.04 if `x` is the name of a table, it is updated in place.
 -   `y` is 
     -   a keyed table whose key column/s are columns of `x`, returns `x` and `y` joined on the key columns of `y`
     -   or the general empty list `()`, returns `x`

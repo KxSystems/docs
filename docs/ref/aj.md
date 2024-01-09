@@ -19,7 +19,7 @@ ajf0[c; t1; t2]
 
 Where 
 
--   `t1` is a table
+-   `t1` is a table. Since 4.1t 2023.08.04 if `t1` is the name of a table, it is updated in place.
 -   `t2` is a simple table 
 -   `c` is a symbol list of `n` column names, common to `t1` and `t2`, and of matching type
 -   column `c[n]` is of a sortable type (typically time)
