@@ -218,7 +218,7 @@ The validation logic is thus reduced to checking whether or not the user is call
 .perm.pg.user:{[user;query]
     em:"You only have permission to execute stored procedures: ";
     em,:".perm.executeSproc[sprocName;(list;of;params)]";
-  if[not ".perm.executeSproc"~.perm.toString first .perm.parse query;'em;value query}
+  if[not ".perm.executeSproc"~.perm.toString first .perm.parse query;'em];value query}
 ```
 
 As a demonstration, we will define and register a stored procedure on a server and try to execute it from a client process.
