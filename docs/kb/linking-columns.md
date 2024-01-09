@@ -331,6 +331,17 @@ a  50 6
 d  40 7
 ```
 
+A link column with domain of a partitioned table requires the encompassing table to be partitioned too.
+Signals a `par` error since 4.1t 2022.04.15.
+
+```q
+q).Q.dd[`:/tmp/db1;`2022.01.01`ecfmapping`] set .Q.en[`:/tmp/db1] ([]firmName:enlist "DUMMY")
+q)\l /tmp/db1
+q)select ecfmap.firmName from ([id:1 2];ecfmap:`ecfmapping!1 1)
+'par
+  [0]  select ecfmap.firmName from ([id:1 2];ecfmap:`ecfmapping!1 1)
+```
+
 
 ---
 :fontawesome-regular-map:
