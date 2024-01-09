@@ -235,6 +235,13 @@ q)@[`:test;0 1;:;`sym?`a`b]
        ^
 ```
 
+On-disk amend to apply `p` or `g` attributes now avoids in-memory copying since 4.1t 2023.01.20.
+
+```q
+q)`:tab/ set ([]where 10000#100);
+q)@[`:tab/;`x;`p#]
+```
+
 <!--
 ## The general case
 
