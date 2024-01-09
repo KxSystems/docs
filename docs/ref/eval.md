@@ -60,9 +60,13 @@ q)h"a:4"
 Behaves as if command-line options [`-u 1`](../basics/cmdline.md#-u-usr-pwd) and [`-b`](../basics/cmdline.md#-b-blocked) were active; also blocks all system calls which change state.
 That is, all writes to file system are blocked; allows read access to files in working directory and below only; and prevents amendment of globals.
 (Since V4.0 2020.03.17.)
-The [`exit`](exit.md) keyword is also blocked. (Since V4.1t 2021-07-12.)
+The [`exit`](exit.md) keyword is also blocked (since V4.1t 2021-07-12). Blocks hopen of a file (since 4.1t 2021.10.13, 4.0 2023.08.11)
 
-
+```q
+q)h:hopen 4000 / to a server started with -u 1 -p 4000
+q)h"reval(hopen;enlist`:somefile)"
+'access: somefile
+```
 
 ----
 :fontawesome-solid-book-open:
