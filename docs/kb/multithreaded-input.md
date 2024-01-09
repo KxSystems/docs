@@ -24,8 +24,7 @@ Multithreaded input queue mode is active when the port for incoming connections 
 $ q -p -5000
 ```
 
-Multithreaded input mode supports WebSockets and HTTP (but not TLS).
-(Since V4.1t 2021.03.30.)
+Multithreaded input mode supports WebSockets and HTTP (but not TLS) since 4.1t 2021.03.30. TLS support available since 4.1t 2023.12.14.
 A custom `.z.ph` which does not update global state should be used with HTTP. 
 
 
@@ -37,8 +36,7 @@ Some of the restrictions are:
 2.  `.z.pc` is not called on disconnect
 3.  `.z.W` has a view on main thread sockets only
 4.  cannot send async messages
-5.  cannot serve HTTP requests
-6.  views can be recalculated from the main thread only
+5.  views can be recalculated from the main thread only
 
 The use of sockets from within those threads is not allowed for anything other than the [one-shot sync request](../ref/hopen.md), which is the only socket opening supported in multithreaded mode. (Inefficient, as it opens, queries and closes each time).
 
