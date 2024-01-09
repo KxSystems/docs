@@ -393,10 +393,10 @@ Takes ownership of references to its arguments.
 
 Behavior depends on the value of `handle`.
 
--    `handle>0`, sends sync message to handle, to evaluate a string or function with parameters, and then blocks until a message of any type is received on handle. It can return `NULL` (indicating a network error) or a pointer to a K object. `k(handle,(S)NULL)` does not send a message, and blocks until a message of any type is received on handle.
+-    `handle>0`, sends sync message to handle, to evaluate a string or function with parameters, and then blocks until a message of any type is received on handle. It can return `NULL` (indicating a network error) or a pointer to a K object. `k(handle,(S)NULL)` does not send a message, and blocks until a message of any type is received on handle. The handle should have been previously returned from this APIs family of connect functions e.g. `khp`.
     If that object has type -128, it indicates an error, accessible as a null-terminated string in `r->s`. When you have finished using this object, it should be freed by calling `r0(r)`.
 
--    `handle<0`, this is for async messaging, and the return value can be either 0 (network error) or non-zero (success). This result should _not_ be passed to `r0`.
+-    `handle<0`, this is for async messaging, and the return value can be either 0 (network error) or non-zero (success). This result should _not_ be passed to `r0`. The handle should have been previously returned from this APIs family of connect functions e.g. `khp`.
 
 <!-- -   `handle=0`, this function is equivalent of [_apply_](../ref/unclassified/#apply) (`.`). -->
 -   `handle==0` is valid only for a plugin, and executes against the kdb+ process in which it is loaded.
