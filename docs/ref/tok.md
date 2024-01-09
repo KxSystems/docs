@@ -67,6 +67,20 @@ q)"P"$"2015-10-28D03:55:58.6542"
 2015.10.28D03:55:58.654200000
 ```
 
+## Outside of Domain
+
+Parsing values outside of the types domain will return null
+
+```q
+q)"H"$"32768"
+0Nh
+q)"I"$"2147483648"
+0Ni
+q)"D"$"2147483648"
+0Nd
+```
+
+!!! note short converting to 0Nh instead of +/-0Wh since 4.1t 2021.09.03,4.0 2021.10.01
 
 ## :fontawesome-solid-sitemap: Iteration
 
