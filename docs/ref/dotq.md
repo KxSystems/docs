@@ -378,7 +378,7 @@ Where
 
 -   `d` is a directory handle
 -   `p` is a partition of a database
--   `f` a field of the table named by
+-   `f` a field of the table (required to be present in table since 4.1t 2021.09.03) named by `t` below
 -   `t`, the name (as a symbol) of a simple table whose columns are vectors or compound lists
 -   `s` is the handle of a symtable
 
