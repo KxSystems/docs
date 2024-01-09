@@ -18,7 +18,7 @@ wj1[w; c; t; (q; (f0;c0); (f1;c1))]
 
 Where
 
--   `t` and `q` are simple tables to be joined (`q` should be sorted `` `sym`time `` with `` `p# `` on sym)
+-   `t` and `q` are simple tables to be joined (`q` should be sorted `` `sym`time `` with `` `p# `` on sym). Since 4.1t 2023.08.04 if `t` is the name of a table, it is updated in place.
 -   `w` is a pair of lists of times/timestamps, begin and end
 -   `c` are the names of the common columns, syms and times, which must have integral types
 -   `f0`, `f1` are aggregation functions applied to values in q columns `c0`,`c1` over the intervals
