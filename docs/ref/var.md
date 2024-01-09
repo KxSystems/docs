@@ -34,6 +34,22 @@ q)select var price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 {avg[sqr x]-sqr[avg x]}
 ```
 
+Since 4.1t 2022.04.15, can also traverse columns of tables and general/anymap/nested lists.
+
+```q
+q)M:get`:m77 set m:(2 3;4 0N;1 7)
+q)var m
+1.555556 4
+q)var M
+1.555556 4
+q)T:get`:tab/ set t:flip`a`b!flip m
+q)var t
+a| 1.555556
+b| 4
+q)var T
+a| 1.555556
+b| 4
+```
 
 
 ## `svar`
@@ -57,6 +73,23 @@ q)select svar price by sym from trade where date=2010.10.10,sym in`IBM`MSFT
 ```
 
 `svar` is an aggregate function, equivalent to `{var[x]*count[x]%-1+count x}`.
+
+Since 4.1t 2022.04.15, can also traverse columns of tables and general/anymap/nested lists.
+
+```q
+q)M:get`:m77 set m:(2 3;4 0N;1 7)
+q)svar m
+2.333333 8
+q)svar M
+2.333333 8
+q)T:get`:tab/ set t:flip`a`b!flip m
+q)svar t
+a| 2.333333
+b| 8
+q)svar T
+a| 2.333333
+b| 8
+```
 
 
 ## Domain and range

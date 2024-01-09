@@ -33,6 +33,23 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  f . f f f f f f f . f f f f f f f f
 ```
 
+Since 4.1t 2022.04.15, can also traverse columns of tables and general/anymap/nested lists.
+
+```q
+q)M:get`:m77 set m:(2 3;4 0N;1 7)
+q)dev m
+1.247219 2
+q)dev M
+1.247219 2
+q)T:get`:tab/ set t:flip`a`b!flip m
+q)dev t
+a| 1.247219
+b| 2
+q)dev T
+a| 1.247219
+b| 2
+```
+
 
 ## `mdev`
 
@@ -150,6 +167,22 @@ domain: b g x h i j e f c s p m d z n u v t
 range:  f . f f f f f f f . f f f f f f f f
 ```
 
+Since 4.1t 2022.04.15, can also traverse columns of tables and general/anymap/nested lists.
+
+```q
+q)M:get`:m77 set m:(2 3;4 0N;1 7)
+q)sdev m
+1.527525 2.828427
+q)sdev M
+1.527525 2.828427
+q)T:get`:tab/ set t:flip`a`b!flip m
+q)sdev t
+a| 1.527525
+b| 2.828427
+q)sdev T
+a| 1.527525
+b| 2.828427
+```
 
 ----
 :fontawesome-solid-book:
