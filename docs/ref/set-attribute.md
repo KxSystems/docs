@@ -36,6 +36,7 @@ q)t:([1 2 4]y:7 8 9);`s#t;attr each (t;key t)
 ``s
 ```
 
+Applying `p` attribute is faster and uses less memory since 4.1t 2023.01.20.
 
 ## Sorted
 
