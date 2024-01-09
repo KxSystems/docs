@@ -245,6 +245,17 @@ table: flip `a`b`c!("ISI";",") 0:`data.csv
 
 !!! warning "Column names must not be the null symbol <code>&#96;</code>"
 
+### Multithreaded Load
+
+CSV load (excluding embedded line return mode) can use multiple threads when kdb+ is running in [multithreaded mode](https://code.kx.com/q/basics/syscmds/#s-number-of-secondary-threads).
+
+```q
+q)v:` sv 10000000#","0:10 10#til 100
+q)system"s 10";(10#"J";",")0:v
+```
+
+Since 4.1t 2021.09.28.
+
 
 ## :fontawesome-solid-database: Load Fixed
 
@@ -284,6 +295,12 @@ q)t:("IFC D";4 8 10 6 4) 0: `:/q/Fixed.txt
 
     -   To load a field as a nested character column or list rather than symbol use `"*"` as the identifier
     -   To omit a field from the load use `" "`.
+
+### Multithreaded Load
+
+Fixed width load can use multiple threads when kdb+ is running in [multithreaded mode](https://code.kx.com/q/basics/syscmds/#s-number-of-secondary-threads)
+
+Since 4.1t 2021.09.28.
 
 
 ## :fontawesome-solid-book: Key-Value Pairs

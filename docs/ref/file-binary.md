@@ -93,6 +93,12 @@ t        time            4
 _Q for Mortals_
 [§11.5.1 Fixed-Width Records](/q4m3/11_IO/#1151-fixed-width-records)
 
+### Multithreaded Load
+
+Binary load can use multiple threads when kdb+ is running in [multithreaded mode](https://code.kx.com/q/basics/syscmds/#s-number-of-secondary-threads)
+
+Since 4.1t 2021.09.28.
+
 
 ## Save Binary
 
