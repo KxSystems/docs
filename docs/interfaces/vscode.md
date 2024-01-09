@@ -101,19 +101,22 @@ Only one connection can be active at any given time. Also, it may be necessary t
 
     :fontawesome-solid-hand-point-right: I want to learn more about [setting a q port](https://code.kx.com/q/basics/ipc/)
 
-    **Step 7**: If authentication is required, define the *username*, then the *password*; clicking Enter with these inputs blank skips these steps.
-
-    **Step 8**: An option to enable TLS encryption is offered; the default is *false*.
-
-    :fontawesome-solid-hand-point-right: I want to learn more [about TLS encryption](https://code.kx.com/q/kb/ssl/).
-
     Upon completion, the localhost connection appears under *KX:CONNECTIONS* in the left hand panel.
 
     ![localkdbconnection](https://code.kx.com/img/vscode/localkdbconnection.jpg)
+    
 
-    **Step 9**: Right-click the connection to *connect kdb server*.  Ensure the q process is running.
+    **Step 7**: Right-click the connection to *connect kdb server*.  Ensure the q process is running.
 
     ![localkdbconnection](https://code.kx.com/img/vscode/connectserver.jpg)
+
+    If the connection requires authentication, define user and password access from *Add Authentication* in the dropdown menu; click Enter for each input.
+
+    ![authenticate](https://code.kx.com/img/vscode/connectionauthenticate.jpg)
+
+    Enable TLS encryption from the dropdown menu if required; default is *false*. 
+
+    :fontawesome-solid-hand-point-right: I want to learn more [about TLS encryption](https://code.kx.com/q/kb/ssl/).
 
 
 === "Managed q session"
@@ -138,9 +141,9 @@ Only one connection can be active at any given time. Also, it may be necessary t
 
     **Step 6**: Right-click the managed q process listed under *KX:CONNECTIONS*, and click *Start q process*.
 
-    ![setendpoint](https://code.kx.com/img/vscode/managedqprocess.jpg)
+    ![setendpoint](https://code.kx.com/img/vscode/managedqprocess.jpg) 
 
-    **Step 7**: From the same right-click menu, click *Connect kdb server*.  This connects to the child q process running inside the kdb VS Code extension. 
+    **Step 7**: From the same right-click menu, click *Connect kdb server*.  This connects to the child q process running inside the kdb VS Code extension.   
 
     If you close the extension, the connection to the child q process also closes. 
 
@@ -265,7 +268,7 @@ To create a data source:
 
 To run a data source, click 'Run' and the results populate the output and kdb results windows.
 
-In addition to API queries, if the query environment is enabled on the deployed instance of kdb Insights Enterprise, qSQL and SQL queries can be used within a data source with the appropriate parameterization.
+In addition to [API queries](https://code.kx.com/insights/api/database/query/get-data.html), if the query environment is enabled on the deployed instance of kdb Insights Enterprise, qSQL and SQL queries can be used within a data source with the appropriate parameterization.
 
 #### Populate scratchpad
 
