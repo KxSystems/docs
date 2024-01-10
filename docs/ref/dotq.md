@@ -1113,6 +1113,32 @@ Where `x` is
     ----
     ```
 
+Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains single character that is not in [.Q.an](#all-alphanumerics) (previously produced an empty sym) e.g
+
+```q
+q).Q.id`$"+"
+a  / previous version returned `
+```
+
+Table processing also has additional logic to cater for duplicate column names (names now appended with 1,2,etc when matched against previous columns) after applying previously defined rules e.g.
+
+```q
+q)cols .Q.id(`$("count+";"count*";"count1"))xcol([]1 2;3 4;5 6)
+`count1`count11`count12  / previous version returned `count1`count1`count1
+q)cols .Q.id(`$("aa";"=";"+"))xcol([]1 2;3 4;5 6)
+`aa`a`a1                / previous version returned `aa`1`1
+```
+
+Since 4.1t 2022.11.01,4.0 2022.10.26 applies the same rule when provided name begins with an underscore as it does when it begins
+with a numerical character. Previously could produce an invalid column name.
+
+```q
+q).Q.id`$"_"
+`a_
+q)cols .Q.id(`$("3aa";"_aa";"_aa"))xcol([]1 2;3 4;5 6)
+`a3aa`a_aa`a_aa1
+```
+
 
 ## `ind` (partitioned index)
 
