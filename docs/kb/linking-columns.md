@@ -342,6 +342,7 @@ q)select ecfmap.firmName from ([id:1 2];ecfmap:`ecfmapping!1 1)
   [0]  select ecfmap.firmName from ([id:1 2];ecfmap:`ecfmapping!1 1)
 ```
 
+Since 4.1t 2023.08.04,4.0 2023.08.11 references to linked columns under `group by` no longer require remapping the foreign column for every group.
 
 ---
 :fontawesome-regular-map:
