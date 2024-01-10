@@ -679,6 +679,8 @@ There is no default implementation, but an example would be that it calls [`valu
 
 See `.z.ph` for details of the argument.
 
+Allows empty requests since 4.1t 2021.03.30 (previously signalled `length` error).
+
 :fontawesome-solid-book:
 [`.h` namespace](doth.md)
 <br>
