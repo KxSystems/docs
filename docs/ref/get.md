@@ -130,6 +130,8 @@ q)(hcount`$":a0#")=hcount`$":a1#"
 0b
 ```
 
+Since 4.1t 2023.09.29,4.0 2023.11.03 when writing anymap, empty vectors without attributes get deduplicated automatically (including enum vectors when enum name is 'sym').
+
 
 ### Splayed table
 
