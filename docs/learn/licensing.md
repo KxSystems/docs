@@ -108,6 +108,9 @@ If kdb+ cannot contact the KX server it will abort with a timestamped message.
 '2018.03.28T11:20:03.831 couldn't connect to license daemon -- exiting
 ```
 
+If a HTTP proxy is required, the environment variables `http_proxy` or `HTTP_PROXY` define the URL of the HTTP proxy to use.
+Since 4.1t 2022.11.01,4.0 2022.10.26,4.0ce 2022.09.16 the on-demand system now honours the NO_PROXY/no_proxy environment variables, with the lowercase version taking precedence.
+
 
 ## Core restrictions
 
