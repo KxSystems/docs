@@ -531,7 +531,7 @@ error | explanation
 cores | The license is for [fewer cores than available](../kb/cpu-affinity.md)
 cpu | The license is for fewer CPUs than available
 exp | License expiry date is prior to system date
-host | The hostname reported by the OS does not match the hostname or hostname-pattern in the license.<br><br>If you see `255.255.255.255` in the kdb+ banner, the machine almost certainly cannot resolve its hostname to an IP address, which will cause a `host` error.
+host | The hostname reported by the OS does not match the hostname or hostname-pattern in the license.<br><br>If you see `255.255.255.255` in the kdb+ banner, the machine almost certainly cannot resolve its hostname to an IP address, which will cause a `host` error.<br><br>Since 4.1t 2022.07.01 the detected hostname will also be printed, which can be used to compare with the hostname used within the license.
 k4.lic | `k4.lic` file not found, check contents of environment variables [`QHOME`](../learn/install.md#step-2-put-kdb-in-qhome) and [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
 os | Wrong OS or operating-system error (if runtime error)
 srv | Client-only license in server mode
