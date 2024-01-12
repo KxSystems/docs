@@ -17,6 +17,10 @@ For the Update operator `!`, see
 :fontawesome-solid-book-open:
 [Functional SQL](../basics/funsql.md)
 
+Since 4.1t 2021.06.04 update from splayed table and path@tablename now leverage [peach](each.md) to load columns (when running with [secondary threads](../q/basics/syscmds.md#s-number-of-secondary-threads)).
+```q
+q)update x:0 from get`:mysplay
+```
 
 
 ## Syntax
