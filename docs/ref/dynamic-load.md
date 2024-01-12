@@ -39,6 +39,10 @@ If the shared library, as passed, does not exist, kdb+ will try to load it from 
 
 If using a relative path which does not resolve to reside under `$QHOME/os`, ensure that `LD_LIBRARY_PATH` contains the required absolute search path for that library. (On Windows, use `PATH` instead of `LD_LIBRARY_PATH`.)
 
+Since 3.6 2018.08.24 loading shared libraries via 2: was resolving to a canonical path prior to load via the OS.
+This caused issues for libs whose run-time path was relative to a sym-link.
+From 4.1t 2024.01.11 it resolves to an absolute path only, without resolving sym-links.
+
 :fontawesome-solid-book-open: 
 [File system](../basics/files.md)<br>
 :fontawesome-brands-superpowers:
