@@ -62,7 +62,7 @@ Commercial versions of kdb+ are available to customers from [downloads.kx.com](h
 
 ??? info "Platforms and versions"
 
-    The names of the ZIPs denote the platform: `l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc.
+    The names of the ZIPs denote the platform: `l64.zip` – 64-bit Linux; `w32.zip` – 32-bit Windows, etc. m64 contains a universal binary suitable for both intel and apple silicon macs. l64 contains the linux x86 build, with l64arm containing the linux build suitable for arm processors.
 
     Numerical release versions of the form 3.5, or 4.0 are production code. Versions of kdb+ with a trailing `t` in the name such as `3.7t` are test versions and are neither intended nor supported for production use.
 
