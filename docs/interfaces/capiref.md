@@ -918,7 +918,7 @@ Shared library only.
 
 On success, returns int K object containing `d`. On error, `NULL` is returned, `d` is closed.
 
-Since version 2023.09.15, sd1 no longer imposes a limit of 1023 on the value of the descriptor submitted.
+Since 4.1t 2023.09.15, sd1 no longer imposes a limit of 1023 on the value of the descriptor submitted.
 
 :fontawesome-regular-hand-point-right:
 [Callbacks](c-client-for-q.md#callbacks)
