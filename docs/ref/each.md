@@ -32,7 +32,10 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 ```
 
 `each` and `peach` perform the same computation and return the same result. 
+
 `peach` will divide the work between available secondary tasks. 
+
+!!! note Since 4.1t 2024.01.04 peach workload distribution methodology changed to dynamically redistributes workload and allows nested invocation
 
 `each` is a wrapper for the [Each iterator](maps.md#each). 
 `peach` is a wrapper for the [Each Parallel iterator](maps.md#each-parallel). 
