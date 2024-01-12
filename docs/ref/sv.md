@@ -68,6 +68,20 @@ q)`$"."sv string `quick`brown`fox
 ```
 
 
+### Bytes
+
+Since 4.1t 2024.01.11, `y` can be a list of byte vectors, which can be joined by byte(s) `x`.
+
+```q
+q)0x03 sv 0x02 vs 0x0102010201
+0x0103010301
+q)0x0203 sv 0x0203 vs "x"$til 6
+0x0001020304
+q)0x02 sv (enlist 0x01;enlist 0x01;enlist 0x01)
+0x0102010201
+```
+
+
 ### Filepath components
 
 Where
