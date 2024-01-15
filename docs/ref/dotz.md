@@ -29,7 +29,7 @@ Environment                        Callbacks
  [.z.N/n  local/UTC timespan](#zn-local-timespan)         [.z.ts    timer](#zts-timer)
  [.z.o    OS version](#zo-os-version)                 [.z.vs    value set](#zvs-value-set)
  [.z.P/p  local/UTC timestamp](#zp-local-timestamp)        [.z.wc    WebSocket close](#zwc-websocket-close)
- [.z.pm   HTTP options](#zpm-http-options)               [.z.wo    WebSocket open](#zwo-websocket-open)
+ [.z.pm   HTTP methods](#zpm-http-methods)               [.z.wo    WebSocket open](#zwo-websocket-open)
  [.z.q    quiet mode](#zq-quiet-mode)                 [.z.ws    WebSockets](#zws-websockets)
  [.z.s    self](#zs-self)
  [.z.T/t  time shortcuts](#zt-zt-zd-zd-timedate-shortcuts)
@@ -633,19 +633,26 @@ q)\x .z.pi
 
 
 
-## `.z.pm` (HTTP options)
+## `.z.pm` (HTTP methods)
 
 ```syntax
 .z.pm:f
 ```
 
-HTTP OPTIONS method are passed to `f` as a 3-list:
+Where f is a unary function, .z.pm is evaluated when the following HTTP request methods are received in the kdb+ session.
+
+-   OPTIONS
+-   PATCH (since V4.1t 2021.03.30)
+-   PUT (since V4.1t 2021.03.30)
+-   DELETE (since V4.1t 2021.03.30)
+
+Each method is passed to `f` as a 3-item list e.g.
 
 ```q
-(OPTIONS;requestText;requestHeaderDict)
+(`OPTIONS;requestText;requestHeaderDict)
 ```
 
-Supports HTTP methods PATCH, PUT and DELETE since V4.1t 2021.03.30.
+For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-http-get).
 
 
 ## `.z.po` (open)
