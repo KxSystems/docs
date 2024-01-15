@@ -140,7 +140,8 @@ q)`::[(`::4567;100);"1+1"]
 
 It is possible for a kdb+ process to have too many open connections. 
 The max is defined by the system limit for protocol (operating system configurable). Prior to 4.1t 2023.09.15, the limit was hardcoded to 1022.
-After the limit is reached, you will see the error `'conn` on the server process. (All successfully opened connections remain open).
+After the limit is reached, you see the error `'conn` on the server process. (All successfully opened connections remain open.)
+
 
 ```q
 q)\p 5678
