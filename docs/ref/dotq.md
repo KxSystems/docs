@@ -1324,6 +1324,7 @@ select … [by date,…] from … where [date …]
 
     For Linux see `vm.max_map_count`.
 
+Since 4.1t 2024.01.11 parallelized over tables and partitions with [peach](each.md) when kdb+ running with secondary threads.
 
 ## `n` (nums)
 ## `nA` (alphanums)
