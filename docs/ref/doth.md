@@ -32,10 +32,11 @@ _Markup tools_
 [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.c1`](#hc1-web-color)    web color
 [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](#hhome-webserver-root)  webserver root
 [`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  KX logo
-                                    [`.h.sa`](#hsa-anchor-style)    anchor style
-[`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.sb`](#hsb-body-style)    body style
-[`.h.hug`](#hhug-uri-map)     URI map                  [`.h.ty`](#hty-mime-types)    MIME types
-[`.h.sc`](#hsc-uri-safe)      URI-safe                 [`.h.val`](#hval-value)   value
+[`.h.ka`](#hka-http-keepalive)      HTTP keep-alive            [`.h.sa`](#hsa-anchor-style)    anchor style
+                                    [`.h.sb`](#hsb-body-style)    body style
+[`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.ty`](#hty-mime-types)    MIME types
+[`.h.hug`](#hhug-uri-map)     URI map                  [`.h.val`](#hval-value)   value
+[`.h.sc`](#hsc-uri-safe)      URI-safe 
 [`.h.uh`](#huh-uri-unescape)      URI unescape
 </div>
 
@@ -586,6 +587,18 @@ q)1_.h.jx[5;`a]
 "2300 794 637"
 ..
 ```
+
+
+## `.h.ka` (http keepalive)
+
+```syntax
+.h.ka x
+```
+
+Where `x` is an integer representing the idle timeout in units of milliseconds. A value of 0i disables keepalive (i.e. .h.ka then returns "close").
+Returns a string of value `close` or `keep-alive` which can be used for the `Connection` HTTP header field value in the HTTP response.
+
+Can be used during the processing of an HTTP request to enable persistent connections i.e. should be called within an HTTP callback such as [.z.ph]((dotz.md#zph-http-get), [.z.pp](dotz.md#zpp-http-post), etc.
 
 
 ## `.h.logo` (KX logo)
