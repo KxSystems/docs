@@ -1120,7 +1120,7 @@ q).Q.id`$"+"
 a  / previous version returned `
 ```
 
-Table processing also has additional logic to cater for duplicate column names (names now appended with 1,2,etc when matched against previous columns) after applying previously defined rules e.g.
+Table processing also has additional logic to cater for duplicate column names (names are now appended with 1,2,etc. when matched against previous columns) after applying previously defined rules e.g.
 
 ```q
 q)cols .Q.id(`$("count+";"count*";"count1"))xcol([]1 2;3 4;5 6)
