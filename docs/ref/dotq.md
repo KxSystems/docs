@@ -1113,7 +1113,7 @@ Where `x` is
     ----
     ```
 
-Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains single character that is not in [.Q.an](#all-alphanumerics) (previously produced an empty sym) e.g
+Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#all-alphanumerics) (it previously produced an empty sym) e.g.
 
 ```q
 q).Q.id`$"+"
