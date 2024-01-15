@@ -418,7 +418,7 @@ q)g 5       / still triple
 
 When projecting a [variadic function](variadic.md) the argument list must always be full-length.
 
-Since 4.1t 2021.12.07 projection creation from a lambda/foreign will result in a rank error if too many parameters defined, e.g.
+Since 4.1t 2021.12.07 projection creation from a lambda/foreign results in a rank error if too many parameters are defined, e.g.
 ```q
 q){x}[;1]
 'rank
