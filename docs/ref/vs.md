@@ -107,6 +107,24 @@ q)` vs `:/home/kdb/data/mywork.dat
 [sv](sv.md#join) join
 
 
+### Byte Vectors
+
+Since 4.1t 2024.01.11, `y` can be a byte vector: y cut using x as the delimiter.
+
+```q
+q)0x02 vs 0x0102010201
+,0x01
+,0x01
+,0x01
+q)0x0203 vs 0x000102030405
+0x0001
+0x0405
+q)" "vs"x"$"a b"    / type inferred from left hand side
+,"a"
+,"b"
+```
+
+
 ## Encode
 
 

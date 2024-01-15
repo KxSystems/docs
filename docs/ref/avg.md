@@ -98,6 +98,8 @@ q)5 mavg 1 2 3 5 7 10
 1 1.5 2 2.75 3.6 5.4
 q)5 mavg 0N 2 0N 5 7 0N    / nulls after the first are replaced by 0
 0n 2 2 3.5 4.666667 4.666667
+q)0 mavg 2 3
+0n 0n
 ```
 
 `mavg` is a uniform function.
@@ -147,6 +149,8 @@ q)2 3 4 wavg 1 2 4
 2.666667
 q)2 0N 4 5 wavg 1 2 0N 8  / nulls in either argument ignored
 6f
+q)0 wavg 2 3
+0n                        / since 4.1t 2021.09.03,4.0 2021.10.01, previously returned 2.5
 ```
 
 Where `x` and `y` conform, the result has an atom for each sublist.

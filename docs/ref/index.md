@@ -385,7 +385,7 @@ System information                 Callbacks
 [.z.N/n  local/UTC timespan](dotz.md#zn-local-timespan)         [.z.pw    validate user](dotz.md#zpw-validate-user)
 [.z.o    OS version](dotz.md#zo-os-version)                 [.z.ts    timer](dotz.md#zts-timer)
 [.z.P/p  local/UTC timestamp](dotz.md#zp-local-timestamp)        [.z.vs    value set](dotz.md#zvs-value-set)
-[.z.pm   HTTP options](dotz.md#zpm-http-options)               [.z.wc    WebSocket close](dotz.md#zwc-websocket-close)
+[.z.pm   HTTP methods](dotz.md#zpm-http-methods)               [.z.wc    WebSocket close](dotz.md#zwc-websocket-close)
 [.z.q    quiet mode](dotz.md#zq-quiet-mode)                 [.z.wo    WebSocket open](dotz.md#zwo-websocket-open)
 [.z.s    self](dotz.md#zs-self)                 [.z.ws    WebSockets](dotz.md#zws-websockets)
 [.z.T/t  time shortcuts](dotz.md#zt-zt-zd-zd-timedate-shortcuts)

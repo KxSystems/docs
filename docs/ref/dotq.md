@@ -956,6 +956,9 @@ symw| 24964
 
 So if you have many nested data, e.g. columns of char vectors, or much grouping, you may be fragmenting memory quite heavily.
 
+Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os). 
+This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
+
 
 ## `gz` (GZip)
 
@@ -1112,6 +1115,31 @@ Where `x` is
     a ab
     ----
     ```
+
+Since 4.1t 2022.03.25,4.0 2022.10.26 produces a symbol `a` when the input contains a single character that is not in [.Q.an](#all-alphanumerics) (it previously produced an empty sym) e.g.
+
+```q
+q).Q.id`$"+"
+a  / previous version returned `
+```
+
+Table processing also has additional logic to cater for duplicate column names (names are now appended with 1,2,etc. when matched against previous columns) after applying previously defined rules e.g.
+
+```q
+q)cols .Q.id(`$("count+";"count*";"count1"))xcol([]1 2;3 4;5 6)
+`count1`count11`count12  / previous version returned `count1`count1`count1
+q)cols .Q.id(`$("aa";"=";"+"))xcol([]1 2;3 4;5 6)
+`aa`a`a1                / previous version returned `aa`1`1
+```
+
+Since 4.1t 2022.11.01,4.0 2022.10.26, the same rule is applied when the provided name begins with either an underscore or a numerical character. Previously, it could produce an invalid column name.
+
+```q
+q).Q.id`$"_"
+`a_
+q)cols .Q.id(`$("3aa";"_aa";"_aa"))xcol([]1 2;3 4;5 6)
+`a3aa`a_aa`a_aa1
+```
 
 
 ## `ind` (partitioned index)
@@ -1324,6 +1352,7 @@ select … [by date,…] from … where [date …]
 
     For Linux see `vm.max_map_count`.
 
+Since 4.1t 2024.01.11 parallelized over tables and partitions with [peach](each.md) when kdb+ running with secondary threads.
 
 ## `n` (nums)
 ## `nA` (alphanums)
