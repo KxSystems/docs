@@ -957,7 +957,7 @@ symw| 24964
 So if you have many nested data, e.g. columns of char vectors, or much grouping, you may be fragmenting memory quite heavily.
 
 Since 4.1t 2022.07.01, `.Q.gc[0]` can be used to perform a subset of operations performed by `.Q.gc[]` (i.e. only return unused blocks >= 64MB to os). 
-This has the advantage of running return faster than `.Q.gc[]`, but with the disdvantage of not defragging unused memory blocks of a smaller size (therefore may not free as much unused memory).
+This has the advantage of running return faster than `.Q.gc[]`, but with the disadvantage of not defragmenting unused memory blocks of a smaller size (therefore may not free as much unused memory).
 
 
 ## `gz` (GZip)
