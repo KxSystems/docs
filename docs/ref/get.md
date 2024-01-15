@@ -130,6 +130,11 @@ q)(hcount`$":a0#")=hcount`$":a1#"
 0b
 ```
 
+4.1t 2021.06.04,4.0 2023.01.20 improved memory efficiency of writing nested data sourced from a type 77 (anymap) file, commonly encountered during compression of files. e.g.
+```q
+q)`:a set 500000 100#"abc";system"ts `:b set get`:a" / was 76584400 bytes, now 8390208.
+```
+
 
 ### Splayed table
 
