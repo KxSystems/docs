@@ -1129,8 +1129,8 @@ q)cols .Q.id(`$("aa";"=";"+"))xcol([]1 2;3 4;5 6)
 `aa`a`a1                / previous version returned `aa`1`1
 ```
 
-Since 4.1t 2022.11.01,4.0 2022.10.26 applies the same rule when provided name begins with an underscore as it does when it begins
-with a numerical character. Previously could produce an invalid column name.
+Since 4.1t 2022.11.01,4.0 2022.10.26, the same rule is applied when the provided name begins with an underscore as it does when it begins
+with a numerical character. Previously, it could produce an invalid column name.
 
 ```q
 q).Q.id`$"_"
