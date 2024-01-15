@@ -89,7 +89,7 @@ cond
 
 conn
 
-:   Too many connections (1022 max)
+:   Too many connections. Max connections was 1022 prior to 4.1t 2023.09.15, otherwise the limit imposed by the operating system (operating system configurable for system/protocol).
 
 Could not initialize ssl
 
