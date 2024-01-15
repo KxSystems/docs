@@ -38,7 +38,7 @@ q)(+\)peach(2 3 4;(5 6;7 8);9 10 11 12)
 !!! note Since 4.1t 2024.01.04 peach workload distribution methodology changed to dynamically redistribute workload and allow nested invocation. 
 The limitations on nesting have been removed, so peach (and multi-threaded primitives) can be used inside peach.
 To facilitate this, round-robin scheduling has been removed. Even though the initial work is still distributed in the same manner as before for compatibility, 
-the workload will be dynamically redistributed if a thread finishes its share before the others.
+the workload is dynamically redistributed if a thread finishes its share before the others.
 
 `each` is a wrapper for the [Each iterator](maps.md#each). 
 `peach` is a wrapper for the [Each Parallel iterator](maps.md#each-parallel). 
