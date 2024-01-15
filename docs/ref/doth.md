@@ -489,7 +489,7 @@ Where `x` is a char vector, returns a mapping from characters to `%`*xx* escape 
 
 Where
 
--   `x` is n HTTP content type as a symbol atom
+-   `x` is an HTTP content type as a symbol atom
 -   `y` is a string 
 
 returns as a string an HTTP response for `y` as content-type `x`.
