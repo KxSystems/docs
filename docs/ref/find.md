@@ -80,7 +80,7 @@ Find is type-specific relative to `x`. Where `x` is a
     In this case Find matches items of `x` with `2` `3` and `` `ab `` , not ``(2 3;`ab) ``.
 
 
-The rank of y should match the rank of x list's element.
+The rank of `y` should match the rank of the list element for `x`.
 
 
 ## Rank-sensitive
