@@ -42,7 +42,7 @@ _p~w~_    Where phrase
 
 The `select` query returns a table for both [call-by-name and call-by-value](../basics/qsql.md#from-phrase).
 
-Since 4.1t 2021.03.30, select from [partitioned tables](../kb/partition.md) maps relevant columns within each partition in parallel (when running with [secondary threads](../q/basics/syscmds.md#s-number-of-secondary-threads)).
+Since 4.1t 2021.03.30, select from [partitioned tables](../kb/partition.md) maps relevant columns within each partition in parallel (when running with [secondary threads](../basics/syscmds.md#s-number-of-secondary-threads)).
 
 
 ## Minimal form

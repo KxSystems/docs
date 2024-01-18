@@ -68,7 +68,7 @@ The kdb+ infrastructure is often used to store internally derived data. This can
 
 A feedhandler is a process that captures external data and translates it into kdb+ messages. Multiple feedhandlers can be used to gather data from several different sources and feed it to the kdb+ system for storage and analysis.
 
-There are a number of open-source (Apache 2 licensed) [Fusion interfaces](../../interfaces/fusion.md) between KX and other third-party technologies. Feedhandlers are typically written in Java, Python, C++ and q.
+There are a number of open-source (Apache 2 licensed) [Fusion interfaces](../../interfaces/index.md) between KX and other third-party technologies. Feedhandlers are typically written in Java, Python, C++ and q.
 
 ### Tickerplant
 
