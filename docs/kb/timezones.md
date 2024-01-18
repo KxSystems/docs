@@ -115,3 +115,20 @@ q)system"zdump -v Africa/Cairo"
 ...
 ```
 
+for example, to load a table based on info from `Africa/Cairo`:
+
+```q
+t:([] timezoneID:(); gmtDateTime:(); gmtOffset:(); localDateTime:(); abbr:(); dst:());
+mon:`Jan`Feb`Mar`Apr`May`Jun`Jul`Aug`Sep`Oct`Nov`Dec!("01";"02";"03";"04";"05";"06";"07";"08";"09";"10";"11";"12")
+uptz:{[x;y]
+  prepend:{if[1=count x;:"0",x];x};
+  x:" " vs ssr[x;"  ";" "];
+  t1:12h$value "" sv (x[5];enlist".";mon`$x[2];enlist".";prepend[x[3]];enlist"D";x[4];".000000000");
+  t2:12h$value "" sv (x[12];enlist".";mon`$x[9];enlist".";prepend[x[10]];enlist"D";x[11];".000000000");
+  y upsert (`$x[0];t1;t2-t1;t2;`$x[13];1h$parse @["=" vs x[14];1]);
+  };
+poptz:{[x;y]uptz[;`t] each system "zdump -v ",x;};
+
+poptz["Africa/Cairo";`t];
+```
+
