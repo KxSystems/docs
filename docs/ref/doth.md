@@ -32,8 +32,8 @@ _Markup tools_
 [`.h.hn`](#hhn-http-response)      HTTP response            [`.h.c1`](#hc1-web-color)    web color
 [`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](#hhome-webserver-root)  webserver root
 [`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  KX logo
-[`.h.ka`](#hka-http-keepalive)      HTTP keep-alive            [`.h.sa`](#hsa-anchor-style)    anchor style
-                                    [`.h.sb`](#hsb-body-style)    body style
+[`.h.ka`](#hka-http-keepalive)      HTTP keep-alive          [`.h.sa`](#hsa-anchor-style)    anchor style
+                                     [`.h.sb`](#hsb-body-style)    body style
 [`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.ty`](#hty-mime-types)    MIME types
 [`.h.hug`](#hhug-uri-map)     URI map                  [`.h.val`](#hval-value)   value
 [`.h.sc`](#hsc-uri-safe)      URI-safe 
