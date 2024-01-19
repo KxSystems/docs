@@ -227,9 +227,6 @@ q).Q.hg`$":https://www.kx.com"
 'conn. OS reports: Protocol not available
 ```
 
-Since 4.1t 2023.11.10 TLS messaging can be created on secondary threads for one-shot synchronous requests.
-
-
 ### Testing your client configuration
 
 You can test your client configuration with
@@ -257,10 +254,20 @@ q)h:hopen`:unixs://12345
 
 Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is \~1.5× assuming your OpenSSL library can utilize AES-NI.
 
-The following associated features are not yet implemented for TLS:
-
-1.   multithreaded input mode
-1.   use within secondary threads
-1.   `hopen` timeout (implemented in V3.5)
-
 OpenSSL 1.1 is supported since V4.0 2020.03.17.
+
+### Thread Support
+
+The following associated features are not implemented for TLS
+
+-   multithreaded input mode
+-   use within secondary threads
+-   `hopen` timeout (implemented in V3.5)
+
+Since 4.1t 2023.11.10 this was altered to allow use on any thread where messaging was previously supported: i.e.
+
+-   incoming connections in multithreaded input queue mode (mtiqm)
+-   one-shot sync requests within peach or mtiqm socket thread
+-   https client requests within peach or mtiqm socket thread
+
+
