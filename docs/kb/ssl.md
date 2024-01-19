@@ -227,7 +227,7 @@ q).Q.hg`$":https://www.kx.com"
 'conn. OS reports: Protocol not available
 ```
 
-Since 4.1t 2023.11.10 TLS messaging can be created on secondary threads.
+Since 4.1t 2023.11.10 TLS messaging can be created on secondary threads for one-shot synchronous requests.
 
 
 ### Testing your client configuration
