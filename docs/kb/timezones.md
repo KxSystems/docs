@@ -57,7 +57,7 @@ q)show ttz[enlist `$"America/New_York";enlist `$"Europe/Zurich";enlist .z.P]
 
 ### Via TimeZoneDB
 
-TimeZoneDB provides a csv generated from [IANA tz database](https://data.iana.org/time-zones/tz-link.html) which can be downloaded from [here](https://timezonedb.com/download). 
+TimeZoneDB provides a CSV generated from [IANA tz database](https://data.iana.org/time-zones/tz-link.html) which can be downloaded from [here](https://timezonedb.com/download). 
 Please check any current license details [here](https://timezonedb.com);
 
 The `time_zone.csv` can be loaded as follows:
