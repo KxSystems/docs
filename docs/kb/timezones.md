@@ -5,7 +5,7 @@ keywords: daylight, kdb+, q, savings, time
 ---
 # Timezones (TZ) and Daylight Savings Time (DST)
 
-Q has two built-in functions [ltime](../ref/gtime.md#ltime) and [gtime](../ref/gtime.md#gtime) which can be used to get the UTC time or local time according to the TZ shell environment setting.
+Q has two built-in functions [`ltime`](../ref/gtime.md#ltime) and [`gtime`](../ref/gtime.md#gtime) which can be used to get the UTC time or local time according to the TZ shell environment setting.
 
 One solution for more comprehensive timezone calculations is to have a table that contains the timezones, their UTC offsets, and the datetime of any DST changes. e.g.
 
