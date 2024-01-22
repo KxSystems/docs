@@ -94,7 +94,7 @@ q)update `g#timezoneID from `t;
 q)`:tzinfo set t; / save file for easy distribution
 ```
 
-A previously generated csv can be found at:
+A previously generated CSV can be found at:
 
 :fontawesome-brands-github: 
 [KxSystems/cookbook/timezones/tzinfo.zip](https://github.com/KxSystems/cookbook/blob/master/timezones/tzinfo.zip) 
