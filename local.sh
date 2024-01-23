@@ -33,7 +33,7 @@ cat mkdocs.yml | sed \
 echo "### Building docs in $localdir/"
 docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
 work_dir="/docs"
-cmd="build --clean -f local.yml --no-directory-urls --site-dir $localdir"
+cmd="build --clean -f local.yml --site-dir $localdir"
 docker run --rm -v $(pwd):$work_dir --workdir $work_dir $docker_image $cmd
 
 echo "### Zipping $localdir"
