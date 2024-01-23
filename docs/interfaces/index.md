@@ -34,7 +34,7 @@ Our Fusion interfaces are
 
 <table class="kx-compact" markdown>
 <tr markdown><td markdown>[arrowkdb](https://github.com/KxSystems/arrowkdb)</td><td markdown>Read and write **Arrow** and **Parquet** data</td></tr>
-<tr markdown><td markdown>[avrokdb](https://github.com/KxSystems/avrokdb)</td><td markdown>Q client for **Avro**</td></tr>
+<tr markdown><td markdown>[avrokdb](https://github.com/KxSystems/avrokdb)</td><td markdown>Read and write **Avro** data</td></tr>
 <tr markdown><td markdown>[hdf5](https://github.com/KxSystems/hdf5)</td><td markdown>Read and write **HDF5** data</td></tr>
 <tr markdown><td markdown>[jdbc](https://github.com/KxSystems/jdbc)</td><td markdown>**JDBC** driver for kdb+</td>
 <tr markdown><td markdown>[kafka](https://github.com/KxSystems/kafka)</td><td markdown>Q client for **Apache Kafka**</td></tr>
