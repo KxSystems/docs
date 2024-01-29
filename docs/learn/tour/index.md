@@ -16,7 +16,7 @@ It takes the form of a one-page ‘ridge walk’ along the tops, with optional s
 Use it as a very fast start with kdb+, or for a quick overview of what it is like to work in q.
 
 :fontawesome-regular-hand-point-left:
-[`TL;DR`](tldr.md)
+[`Overview`](overview.md)
 
 !!! tip "Before you start"
 

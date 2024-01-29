@@ -57,10 +57,6 @@ Reading room](reading/index.md "Example programs for study")
 KX Developer](/developer/ "Download and install the free IDE, KX Developer")
 {: .md-button}
 
-[<span style="font-size: 3em">:fontawesome-solid-graduation-cap:</span><br/>
-Advanced q](advanced.md "Advanced topics in q")
-{: .md-button}
-
 </div>
 
 Kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](https://code.kx.com/pykx), but its power and performance are best accessed through its own language, q.
