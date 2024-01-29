@@ -32,7 +32,6 @@ _A selection of technical articles of interest to kdb+ developers_
 
 ## Machine learning
 
--   [Kdb+ and Python](https://kx.com/blog/kdb-python-embedpy-pyq/)
 -   [A comparison of Python and q for data analysis](https://kx.com/blog/a-comparison-of-python-and-q-for-data-analysis/)
 -   [Natural Language Processing](https://kx.com/blog/natural-language-processing-in-kx/)
 -   [A comparison of Python and q for handling lists](https://kx.com/blog/a-comparison-of-python-and-q-for-handling-lists/)
