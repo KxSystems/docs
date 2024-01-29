@@ -182,7 +182,7 @@ nav:
     - Install: learn/install.md
     - Licenses: learn/licensing.md
     - Mountain tour:
-      - TLDR: learn/tour/tldr.md
+      - Overview: learn/tour/overview.md
       - Begin here: learn/tour/index.md
       - The q session: learn/tour/session.md
       # - Databases: learn/tour/databases.md

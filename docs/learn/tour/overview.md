@@ -10,7 +10,7 @@ description: A mountain tour of kdb+ and the q programming language, with links 
 ![Mountain walk](img/GettyImages-914651812.jpg)
 
 
-## `TL;DR`
+## `Overview`
 
 -   Kdb+ is an in-memory, column-store database optimized for time series. It has a tiny footprint and is seriously quick.
 -   The q vector-programming language is built into kdb+. It supports SQL-style queries.
