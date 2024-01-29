@@ -31,7 +31,6 @@ White papers are flagged in the navigation menus.
 -   [**Lightning tickerplants**: pay-per-ticker with micropayments on the Lightning network](lightning-tickerplants/index.md)<br>Jeremy&nbsp;Lucid, 2019.05
 -   [**C API for kdb+**](capi/index.md)<br>Jeremy&nbsp;Lucid, 2018.12
 -   [**Data visualization with kdb+ using ODBC:** a Tableau case study](data-visualization/index.md)<br>Michaela&nbsp;Woods, 2018.07
--   [**Java API for kdb+**](java-api/index.md)<br>Peter&nbsp;Lyness, 2018.05
 -   [**Kdb+ and WebSockets**](websockets/index.md)<br>Chris&nbsp;Scott &amp; Michael&nbsp;Gracey, 2018.03
 -   [**Building real-time tick subscribers**](rt-tick/index.md)<br>Nathan&nbsp;Perrem, 2014.08
 -   [**Kdb+ and FIX messaging**](fix-messaging.md)<br>Damien&nbsp;Barker, 2014.01
