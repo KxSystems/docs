@@ -63,7 +63,7 @@ Advanced q](advanced.md "Advanced topics in q")
 
 </div>
 
-Kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](https://github.com/KxSystems/pyq). But its power and performance are best accessed through its own language, q.
+Kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](https://code.kx.com/pykx). But its power and performance are best accessed through its own language, q.
 
 Q is a general-purpose programming language. You can write programs for anything in q. 
 

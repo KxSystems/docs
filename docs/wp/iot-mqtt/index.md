@@ -647,7 +647,7 @@ A new `if` block can then be added to check if the incoming `topic` matches a co
 #### Extracting data from JSON templates using Jinja
 
 The `value_template` system used by Home Assistant is a Python templating language called [Jinja](https://jinja.palletsprojects.com/).
-To use this in kdb+ we can use [embedPy](https://github.com/KXSystems/embedpy) to expose Python functions.
+To use this in kdb+ we can use [PyKX](https://code.kx.com/pykx) to expose Python functions.
 
 We can write a short `qjinja.py` script to expose the exact function we need:
 
