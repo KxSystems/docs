@@ -262,7 +262,6 @@ nav:
       - Transaction-cost analysis (WP): wp/transaction-cost.md
       - Trend indicators (WP): wp/trend-indicators/index.md
     - Advanced q:
-      # - Overview: learn/advanced.md
       - Remarks on Style: https://github.com/qbists/style
       - Shifts & scans: learn/shifts-scans.md
       - Technical articles: learn/blogs.md
