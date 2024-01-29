@@ -22,7 +22,7 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[embedPy](https://github.com/KxSystems/embedPy)</td><td markdown>Call **Python** from q</td></tr>
 <tr markdown><td markdown>[embedR](https://github.com/KxSystems/embedR)</td><td markdown>[Call **R** from q](r.md)</td></tr>
 <tr markdown><td markdown>[ffi](https://github.com/KxSystems/ffi)</td><td markdown>[Call **C/C++** from q](using-c-functions.md)</td></tr>
-<tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+ [:fontawesome-regular-map:](../wp/java-api/index.md "White paper: Java API for kdb+")</td>
+<tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+</td></tr>
 <tr markdown><td markdown>[pyq](https://github.com/KxSystems/pyq)</td><td markdown>Integrate **Python** and q code</td></tr>
 <tr markdown><td markdown>[rkdb](https://github.com/KxSystems/rkdb)</td><td markdown>[Query kdb+ from **R**](r.md)</td></tr>
 <tr markdown><td markdown>[rustkdb](https://github.com/KxSystems/rustkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
