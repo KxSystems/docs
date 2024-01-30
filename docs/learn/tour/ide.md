@@ -49,7 +49,6 @@ Free for all use.
 ## Third-party IDEs
 
 -   [qStudio](http://www.timestored.com/qstudio/), a cross-platform IDE with charting and autocompletion by TimeStored 
--   [Q and K Development Tools](http://www.qkdt.org) has an Eclipse plugin
 -   [Q Insight Pad](http://www.qinsightpad.com) is an IDE for Windows
 -   :fontawesome-brands-github: [kxcontrib/cburke/qconsole](https://github.com/kxcontrib/cburke/tree/master/qconsole) is an IDE using GTK
 
