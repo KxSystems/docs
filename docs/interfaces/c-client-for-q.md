@@ -939,7 +939,7 @@ The q multithreaded C library (`c.dll`) uses static thread-local storage (TLS), 
 If you are writing an Excel plugin, this point is relevant to you, as loading of the plugin uses this mechanism.
 
 :fontawesome-regular-hand-point-right:
-Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](http://support.microsoft.com/kb/118816)
+Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/118816)
 
 When trying to use the library, the problem manifests itself as a crash during the `khpu()` call.
 
