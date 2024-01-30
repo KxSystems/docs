@@ -289,7 +289,7 @@ Our objective is to train a Bayesian neural network to identify dips in the ligh
 
 ### Model
 
-The model chosen as a benchmark is a linear classifier, which considers a linear combination of the features to make the predictions. The model tries to linearly separate classes and [base its decisions](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.1226&rep=rep1&type=pdf "Prediction with Gaussian processes: from linear regression and beyond, accessed 26 November 2018") on that. 
+The model chosen as a benchmark is a linear classifier, which considers a linear combination of the features to make the predictions. The model tries to linearly separate classes and [base its decisions](https://citeseerx.ist.psu.edu/doc_view/pid/dcd0a9b1921a34c37f082d03a4d240c9085351c7 "Prediction with Gaussian processes: from linear regression and beyond") on that. 
 
 SGDClassifier is imported from sklearn using embedPy, and trained on the training dataset in order to find the weights of the linear combination that better separate classes:
 
