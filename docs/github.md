@@ -618,8 +618,8 @@ GitHub topic queries:&nbsp;&nbsp;
 </td>
 </tr>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/StephenTaylor-KX/klondike">klondike </a></td>
-<td markdown>Klondike solitaire <span class="author"><a href="https://github.com/StephenTaylor-KX?tab=repositories">
+<td markdown class="nowrap"><a href="https://github.com/5jt/klondike">klondike </a></td>
+<td markdown>Klondike solitaire <span class="author"><a href="https://github.com/5jt?tab=repositories">
 						(Stephen Taylor)
 					</a></span>
 </td>
