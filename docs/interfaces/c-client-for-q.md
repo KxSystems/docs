@@ -39,8 +39,8 @@ SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/ma
 
 capability | dependencies | 32-bit | 64-bit
 -----------|--------------|-----------|-----
-no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o)<br>[`m64arm/c.o`](https://github.com/KxSystems/kdb/blob/master/m64arm/c.o)
-SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)<br>[`m64arm/e.o`](https://github.com/KxSystems/kdb/blob/master/m64arm/e.o)
+no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) (Intel) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o) (Intel and ARM)
+SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) (Intel) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o) (Intel and ARM)
 
 
 ### :fontawesome-brands-windows: Windows
