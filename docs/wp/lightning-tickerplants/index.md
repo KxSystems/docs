@@ -24,7 +24,7 @@ is monetized by facilitating a micro fee pay-per-view model, as opposed to an ad
 Lightning payments are also highly applicable to the **IoT space**, as the network can be used to implement a decentralized peer-to-peer payment layer for transactions between IoT devices, utilizing all of the networks key features, see [IoT and Lightning](https://medium.com/meetbitfury/the-internet-of-things-and-the-lightning-network-41b93dbb8456), [Bitcoin Payment-Channels for Resource Limited IoT Devices](https://arxiv.org/pdf/1812.10345.pdf) and [Micropayments between IoT devices](http://www.diva-portal.org/smash/get/diva2:1272048/FULLTEXT01.pdf).
 
 For cryptocurrency exchanges,
-integrating Lightning has the advantage of allowing clients to more rapidly deposit and withdraw funds, or move funds seamlessly between exchanges. Increasing the velocity of value transfer should, in turn, lead to greater market efficiency and reduce arbitrage opportunities. The exchange [ZebPay](https://zebpay.com/lightning/) has become the first to begin integrating the payment system. Lightning can also enable exchanges to monetize market data in a completely new way, as showcased in a recent [Suredbits](https://suredbits.com/) POC application, where streaming futures data from the BitMEX and Kraken exchanges was made available to users on-the-fly with Lightning micropayments.
+integrating Lightning has the advantage of allowing clients to more rapidly deposit and withdraw funds, or move funds seamlessly between exchanges. Increasing the velocity of value transfer should, in turn, lead to greater market efficiency and reduce arbitrage opportunities. The exchange [ZebPay](https://zebpay.com/) (link restricted to certain countries) has become the first to begin integrating the payment system. Lightning can also enable exchanges to monetize market data in a completely new way, as showcased in a recent [Suredbits](https://suredbits.com/) POC application, where streaming futures data from the BitMEX and Kraken exchanges was made available to users on-the-fly with Lightning micropayments.
 
 This paper will explore Lightning network technology in the context of its application to the monetization of streaming data. 
 As an example of how Lightning can be integrated into kdb+ based applications, this paper will illustrate how a kdb+ tickerplant can be easily modified to communicate with a Lightning node to accept payments for market, or sensor data, on a per request (ticker) basis, with a fast settlement. In particular, the paper will describe how the [kdb+ qlnd](https://github.com/jlucid/qlnd) library can be used to communicate with a Lightning node to 
@@ -465,7 +465,7 @@ BitMEX Research     0395033b252c6f40e3756984162d68174e2bd8060a1…@86.162.11.249
 Nodes can be found by browsing the node directory available at the various explorer services listed below. These explorers are akin to phone books for public Lightning nodes.
 
 -   [1ml.com](https://1ml.com/)
--   [explorer.acinq.co](https://explorer.acinq.co/)
+-   [lightningnetwork.plus](https://lightningnetwork.plus/nodes)
 
 For the purposes of this paper, a connection will be made with the node whose alias is [`TICKERPLANT`](https://1ml.com/node/023bc00c30acc34a5c9cbf78f84aa775cb63f578a69a6f8ec9a7600753d4f9067c), and
 whose details are as follows.
