@@ -274,7 +274,6 @@ We believe this will be a very attractive solution to the field of astronomy goi
 ## Further reading
 
 -   _The Atlantic_: [“How big data is changing astronomy (again)”](https://www.theatlantic.com/technology/archive/2012/04/how-big-data-is-changing-astronomy-again/255917/)
--   [www.research.ibm.com/news](http://www.research.ibm.com/news.shtml)
 -   [Cloud Computing and the Square Kilometre Array](http://www.skatelescope.org/uploaded/8762_134_Memo_Newman.pdf)
 
 
