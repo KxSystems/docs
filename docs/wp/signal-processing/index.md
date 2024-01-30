@@ -681,7 +681,7 @@ of sensors based signal information.
 I would like to acknowledge the Machine Learning Repository 
 hosted by the University of California, Irvine, for providing the
 real-world data sets used as sample input data sets for the
-methods presented in this paper. This [repository](http://archive.ics.uci.edu/ml/datasets.php) has an enormous number of freely-available datasets.
+methods presented in this paper. This [repository](https://archive.ics.uci.edu) has an enormous number of freely-available datasets.
 
 
 ## Notes
