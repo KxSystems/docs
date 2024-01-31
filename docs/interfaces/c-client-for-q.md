@@ -39,8 +39,8 @@ SSL/TLS    | OpenSSL      | [`l32/e.o`](https://github.com/KxSystems/kdb/blob/ma
 
 capability | dependencies | 32-bit | 64-bit
 -----------|--------------|-----------|-----
-no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o)<br>[`m64arm/c.o`](https://github.com/KxSystems/kdb/blob/master/m64arm/c.o)
-SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o)<br>[`m64arm/e.o`](https://github.com/KxSystems/kdb/blob/master/m64arm/e.o)
+no SSL/TLS |              | [`m32/c.o`](https://github.com/KxSystems/kdb/blob/master/m32/c.o) (Intel) | [`m64/c.o`](https://github.com/KxSystems/kdb/blob/master/m64/c.o) (Intel and ARM)
+SSL/TLS    | OpenSSL      | [`m32/e.o`](https://github.com/KxSystems/kdb/blob/master/m32/e.o) (Intel) | [`m64/e.o`](https://github.com/KxSystems/kdb/blob/master/m64/e.o) (Intel and ARM)
 
 
 ### :fontawesome-brands-windows: Windows
@@ -939,7 +939,7 @@ The q multithreaded C library (`c.dll`) uses static thread-local storage (TLS), 
 If you are writing an Excel plugin, this point is relevant to you, as loading of the plugin uses this mechanism.
 
 :fontawesome-regular-hand-point-right:
-Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](http://support.microsoft.com/kb/118816)
+Microsoft Knowledge Base: [PRB: Calling LoadLibrary() to Load a DLL That Has Static TLS](https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/118816)
 
 When trying to use the library, the problem manifests itself as a crash during the `khpu()` call.
 
