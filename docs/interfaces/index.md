@@ -50,7 +50,7 @@ Our Fusion interfaces are
 ## Other repos maintained by KX
 
 <table class="kx-compact" markdown>
-<tr markdown><td markdown>[analyst-training](https://github.com/kxsystems/analyst-training)</td><td markdown>Learn [**KX Analyst**](https://code/kx.com//analyst) and [**KX Developer**](https://code/kx.com/developer)</td> </tr>
+<tr markdown><td markdown>[analyst-training](https://github.com/kxsystems/analyst-training)</td><td markdown>Learn [**KX Analyst**](https://code.kx.com/analyst/) and [**KX Developer**](https://code.kx.com/developer/)</td> </tr>
 <tr markdown><td markdown>[automl](https://github.com/KxSystems/automl)</td><td markdown>[Automate machine learning in kdb+](../ml.md)</td></tr>
 <tr markdown><td markdown>[cookbook](https://github.com/KxSystems/cookbook)</td><td markdown>Companion files to the Knowledge Base</td></tr>
 <tr markdown><td markdown>[help](https://github.com/KxSystems/help)</td><td markdown>Online **help** for q</td></tr>
