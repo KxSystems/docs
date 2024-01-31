@@ -113,7 +113,7 @@ ppt    | f
 
 ### National Land Cover Database (NLCD)
 
-The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://www.nasa.gov/mission_pages/landsat/main/index.html). The Landsat satellite program is a NASA/USGS collaboration which provides [the longest continuous space-based record of Earth’s landscape](https://landsat.gsfc.nasa.gov/). Landsat’s ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This provides information such as land-use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every five years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
+The [NLCD database](https://www.usgs.gov/centers/eros/science/national-land-cover-database) was collected using [Landsat](https://landsat.gsfc.nasa.gov). The Landsat satellite program is a NASA/USGS collaboration which provides [the longest continuous space-based record of Earth’s landscape](https://landsat.gsfc.nasa.gov/). Landsat’s ground resolution and observation wavelengths allow the current use of land and its change over time to be detected and documented. This provides information such as land-use classification (urban, agriculture, forest, etc.), how well the land allows water to pass through it (impervious surface information) and tree cover. This dataset has updated records every five years from 2006. The granularity of this dataset is related to how quickly land use changes over time.
 
 ```q
 q)meta nlcd
