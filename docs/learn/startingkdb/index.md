@@ -36,7 +36,7 @@ The best resource for learning q. It includes:
 ### :fontawesome-brands-github: GitHub
 
 - the [KxSystems](https://github.com/KxSystems) repositories
-- [user-contributed repositories](https://kxsystems.github.io)
+- [user-contributed repositories](https://github.com/kxcontrib)
 
 <!--
 ### Other material
