@@ -171,7 +171,7 @@ q)(`add 2:(`add;2))[3;4]
 /c/q$ gcc -shared -DKXVER=3 add.c -L. -lq -o add.dll
 ```
 
-Tested using [MinGW-64](http://mingw-w64.org/doku.php) with `q/w32`.
+Tested using [MinGW-64](http://mingw-w64.org/) with `q/w32`.
 
 
 ## High-resolution timing
