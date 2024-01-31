@@ -402,7 +402,9 @@ q).z.n
 0D23:30:10.827156000
 ```
 
-!!! note Linux clock source returns a nanosecond precision timespan since 4.1t 2021.03.30,4.0 2022.07.01.
+!!! note "Changes since 4.1t 2021.03.30,4.0 2022.07.01"
+
+    Linux clock source returns a nanosecond precision timespan
 
 ## `.z.o` (OS version)
 
@@ -449,7 +451,9 @@ q).z.p
 2018.04.30D09:18:38.117667000
 ```
 
-!!! note Linux clock source returns a nanosecond precision timestamp since 4.1t 2021.03.30,4.0 2022.07.01.
+!!! note "Changes since 4.1t 2021.03.30,4.0 2022.07.01"
+
+    Linux clock source returns a nanosecond precision timestamp
 
 
 ## `.z.pc` (close)
