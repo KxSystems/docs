@@ -112,8 +112,6 @@ Only one connection can be active at any given time. Also, it may be necessary t
 
     If the connection requires authentication, define user and password access from *Add Authentication* in the dropdown menu; click Enter for each input.
 
-    ![authenticate](https://code.kx.com/img/vscode/connectionauthenticate.jpg)
-
     Enable TLS encryption from the dropdown menu if required; default is *false*. 
 
     :fontawesome-solid-hand-point-right: I want to learn more [about TLS encryption](https://code.kx.com/q/kb/ssl/).
