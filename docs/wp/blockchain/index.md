@@ -129,7 +129,7 @@ individual Bitcoin users, miners, cryptocurrency exchanges, wallet
 providers, payment processors and blockchain analytics providers. Nodes
 help the network become more secure and better able to relay
 transactions globally. Currently, the Bitcoin network is made up of
-[about 10,000 reachable nodes](https://bitnodes.earn.com/nodes/live-map/ "Bitcoin live map of reachable nodes").
+[about 10,000 reachable nodes](https://bitnodes.io/nodes/live-map/ "Bitcoin live map of reachable nodes").
 
 For the construction of the kdb+-based blockchain explorer described in
 this paper, a full node will be required to provide both historical and
@@ -198,10 +198,9 @@ how they can be generated, see
 
 A Bitcoin transaction is the transfer of value from one address to
 another, where a single transaction can contain multiple inputs and
-outputs. For example, the following [tree
-chart](https://www.blockchain.com/btc/tree/384914557) illustrates this
-well, where a single input of 14.34 BTC is spent to over 50 output
-addresses.
+outputs. For example, the following [Bitcoin transaction]
+(https://chain.so/tx/BTC/521fd2d5396b098d40f5d45cfda946128f9b523d0dd5dca43917d5bc3d9e2765) illustrates this
+well, where a single input results in many output addresses.
 
 A Bitcoin transaction identifier (TXID) is simply a number associated
 with a transaction and is a 32-byte hexadecimal (Base16). The diagram
