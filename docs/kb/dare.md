@@ -180,7 +180,9 @@ Encrypted enumeration domain files are locked for writing during an append, e.g.
 q)`:sym?`new`symbols`here
 ```
 
-!!! warning They must not be read from during the append.
+!!! warning 
+
+    They must not be read from during the append.
 
 ## Decryption
 

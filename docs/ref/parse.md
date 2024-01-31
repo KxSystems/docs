@@ -31,7 +31,9 @@ q)parse "{x*x}"
 {x*x}
 ```
 
-!!! warning Should not be used with input data over 2GB in length (0Wi). Returns domain error with this condition since 4.1 2022.04.15.
+!!! warning 
+
+    Should not be used with input data over 2GB in length (0Wi). Returns domain error with this condition since 4.1 2022.04.15.
 
 !!! tip "A parse tree can clarify order of execution."
 

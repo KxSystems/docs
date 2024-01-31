@@ -85,7 +85,9 @@ q)-4!"a variable named aa_bb"
 q)
 ```
 
-!!! warning Should not be used with input data over 2GB in length (0Wi). Returns domain error with this condition since 4.1 2022.04.15.
+!!! warning 
+
+    Should not be used with input data over 2GB in length (0Wi). Returns domain error with this condition since 4.1 2022.04.15.
 
 ## `-8!x` (to bytes)
 
