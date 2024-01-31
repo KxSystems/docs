@@ -505,7 +505,6 @@ GitHub topic queries:&nbsp;&nbsp;
 :fontawesome-brands-github: [quintanar401/connect-kdb-q](https://github.com/quintanar401/connect-kdb-q)
 </td>
 </tr>
-<tr markdown><td markdown>Eclipse</td><td markdown>[qkdt.org](http://www.qkdt.org/features.html)</td></tr>
 <tr markdown><td markdown>Emacs</td>
 <td markdown>
 :fontawesome-brands-github: [eepgwde/kdbp-mode](https://github.com/eepgwde/kdbp-mode)<br/>
@@ -618,8 +617,8 @@ GitHub topic queries:&nbsp;&nbsp;
 </td>
 </tr>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/StephenTaylor-KX/klondike">klondike </a></td>
-<td markdown>Klondike solitaire <span class="author"><a href="https://github.com/StephenTaylor-KX?tab=repositories">
+<td markdown class="nowrap"><a href="https://github.com/5jt/klondike">klondike </a></td>
+<td markdown>Klondike solitaire <span class="author"><a href="https://github.com/5jt?tab=repositories">
 						(Stephen Taylor)
 					</a></span>
 </td>
@@ -779,11 +778,11 @@ GitHub topic queries:&nbsp;&nbsp;
 :fontawesome-brands-github: [jlucid/qexplorer](https://github.com/jlucid/qexplorer)
 </td>
 </tr>
-<tr markdown><td markdown>[BosonNLP](https://bosonnlp.com)</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
+<tr markdown><td markdown>BosonNLP</td><td markdown>:fontawesome-brands-github: [FlyingOE/q_BosonNLP](https://github.com/FlyingOE/q_BosonNLP)</td></tr>
 <tr markdown><td markdown>COMTRADE</td><td markdown>:fontawesome-brands-github: [diamondrod/q_comtrade](https://github.com/diamondrod/q_comtrade)</td></tr>
 <tr markdown><td markdown>Expat XML parser</td><td markdown>:fontawesome-brands-github: [felixlungu/qexpat](https://github.com/felixlungu/qexpat)</td></tr>
 <tr markdown>
-<td markdown>[Factom](https://www.factom.com/) blockchain</td>
+<td markdown>Factom blockchain</td>
 <td markdown>
 :fontawesome-brands-github: [jlucid/qfactom](https://github.com/jlucid/qfactom)<br/>
 :fontawesome-brands-github: [jlucid/qfactomconnect](https://github.com/jlucid/qfactomconnect)
