@@ -14,12 +14,12 @@ localdir=local
 tempdir=docs/local
 site=https://code.kx.com
 
-echo "### Copying resources from $site"
+echo "### Copying resources from $site (stylesheets,images,javascript,etc)"
 rm -rf $localdir $tempdir local.yml
 mkdir $tempdir
 wget -q -r -np -nH -P $tempdir $site/favicon.ico $site/img/ $site/scripts/ $site/stylesheets/
 
-echo '### Deriving temporary config'
+echo '### Deriving temporary config (converting mkdocs.yml to local.yml)'
 rm -f local.yml
 cat mkdocs.yml | sed \
 	-e 's#^INHERIT.*##' \
@@ -30,13 +30,14 @@ cat mkdocs.yml | sed \
 	-e 's#- scripts/qsearch\.js##' \
 	> local.yml
 
-echo "### Building docs in $localdir/"
 docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
+echo "### Using docker image $docker_image"
 work_dir="/docs"
 cmd="build --clean -f local.yml --site-dir $localdir"
+echo "### Building docs in $localdir/ using mkdocs"
 docker run --rm -v $(pwd):$work_dir --workdir $work_dir $docker_image $cmd
 
-echo "### Zipping $localdir"
+echo "### Zipping $localdir directory"
 if ! zip -qr local.zip $localdir; then
     echo "*** ERROR *** Failed to zip $localdir/"
     exit 1
