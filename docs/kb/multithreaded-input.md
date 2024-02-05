@@ -33,10 +33,11 @@ A custom `.z.ph` which does not update global state should be used with HTTP.
 Some of the restrictions are:
 
 1.  queries are unable to update globals
-2.  `.z.pc` is not called on disconnect
-3.  `.z.W` has a view on main thread sockets only
-4.  cannot send async messages
-5.  views can be recalculated from the main thread only
+2.  `.z.po` is not called on connect
+3.  `.z.pc` is not called on disconnect
+4.  `.z.W` has a view on main thread sockets only
+5.  cannot send async messages
+6.  views can be recalculated from the main thread only
 
 The use of sockets from within those threads is not allowed for anything other than the [one-shot sync request](../ref/hopen.md), which is the only socket opening supported in multithreaded mode. (Inefficient, as it opens, queries and closes each time).
 
