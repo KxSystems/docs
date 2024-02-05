@@ -22,7 +22,7 @@ q)flip (1 2 3;4 5 6)
 3 6
 ```
 
-The flip of a dictionary is a table, and vice versa. If `x` is a dictionary where the keys are a list of symbols, and the values are lists of the same count (or atoms), then `flip x` will return a table.
+The flip of a dictionary is a table, and vice versa. If `x` is a dictionary where the keys are a list of symbols, and the values are lists of the same count (or atoms), then `flip x` returns a table.
 
 The flip of a table is a dictionary.
 
