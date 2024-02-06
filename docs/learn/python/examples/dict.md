@@ -99,7 +99,7 @@ So an ascending sort of the dictionary returns it in ascending order of values.
 ```python
 >>> d = {'a': 100, 'b':200, 'c':300}
 
->>> sum([v for k, v in d.items()])
+>>> sum(d.values())
 600
 ```
 
@@ -123,9 +123,10 @@ q)sum d
 {'Arushi': 22, 'Anuradha': 21, 'Haritha': 21}
 
 >>> # removal in place
->>> del d['Mani']
+>>> d.pop('Mani')
+21
 >>> d
-{'Arushi': 22, 'Anuradha': 21, 'Haritha': 21}
+{'Anuradha': 21, 'Haritha': 21, 'Arushi': 22}
 ```
 ```q
 q)d:`Anuradha`Haritha`Arushi`Mani!21 21 22 21
@@ -192,6 +193,8 @@ Nandini 20
 
 ## [Merge two dictionaries](https://www.geeksforgeeks.org/python-merging-two-dictionaries/)
 
+Using Python 2
+
 ```python
 def merge(dict1, dict2):
     d = {}
@@ -204,6 +207,14 @@ def merge(dict1, dict2):
 >>> d2 = {'d': 6, 'c': 4}
 
 >>> merge(d1, d2)
+{'a': 10, 'b': 8, 'c': 4, 'd': 6}
+```
+or in Python 3
+
+```python
+>>> d1 = {'a': 10, 'b': 8, 'c': 42}
+>>> d2 = {'d': 6, 'c': 4}
+>>> {**d1, **d2}
 {'a': 10, 'b': 8, 'c': 4, 'd': 6}
 ```
 
