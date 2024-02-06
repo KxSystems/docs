@@ -25,7 +25,7 @@ Our Fusion interfaces are
 <tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+</td></tr>
 <tr markdown><td markdown>[pykx](https://code.kx.com/pykx)</td><td markdown>Integrate **Python** and q code</td></tr>
 <tr markdown><td markdown>[rkdb](https://github.com/KxSystems/rkdb)</td><td markdown>[Query kdb+ from **R**](r.md)</td></tr>
-<tr markdown><td markdown>[rustkdb](https://github.com/KxSystems/rustkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
+<tr markdown><td markdown>[kxkdb](https://github.com/KxSystems/kxkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
 </tr>
 </table>
 
