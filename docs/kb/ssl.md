@@ -173,15 +173,14 @@ SSL_VERIFY_SERVER| YES
 
 All keys except `SSLEAY_VERSION` in the result from `(-26!)[]` are initialized from environment variables.
 
-By default, kdb+ does not request nor validate the certificate from a client. If the environment variable `SSL_VERIFY_CLIENT` is set to `YES`, it will try to use the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the client’s certificate.
+The environment variable `SSL_VERIFY_CLIENT` controls the processing of certificates from a client, and uses the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the client’s certificate. Can be set to one of the following values
 
-Extra protocol details for a handle `h` are available via `.z.e`
+-   `NO` (default) kdb+ does not request nor validate the certificate from a client
+-   `YES` server requests a client certificate and disconnect client if provided certificate is missing or invalid
+-   `REQUESTONLY` (since 4.1t 2024.02.07) server requests a client certificate but allows the connection if the client certificate is missing or invalid
+-   `IFPRESENT` (since 4.1t 2024.02.07) server requests a client certificate and terminates the connection if an invalid certificate is provided, continues if it is missing or valid
 
-```q
-q)h".z.e"
-CURRENT_CIPHER   | AES128-GCM-SHA256
-CURRENT_PROTOCOL | TLSv1.2
-```
+Extra protocol details for a handle `h` are available via [`.z.e`]((../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
 
 
 ## TLS Client Mode
