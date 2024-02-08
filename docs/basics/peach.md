@@ -117,7 +117,7 @@ A vector with _n_ items peached with function `f` with _s_ secondary processes o
 
     A handle must not be used concurrently between threads as there is no locking around a socket descriptor, and the bytes being read/written from/to the socket will be garbage (due to message interleaving) and most likely result in a crash. 
 
-Since V3.0, a socket can be used from the main thread only, or if you use the one-shot sync request syntax as
+Since V3.0, a socket can be used from the main thread only, or if you use the [one-shot sync request](../ref/hopen.md#one-shot-request) syntax as
 
 ```q
 q)`:localhost:5000 "2+2"

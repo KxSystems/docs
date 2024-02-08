@@ -85,7 +85,7 @@ load master decryption key (-36!)
 
 And any **system command** which might cause a change of global state.
 
-Generally, do not use a **socket** within `peach`, unless it is encapsulated via one-shot or HTTP client request.
+Generally, do not use a **socket** within `peach`, unless it is encapsulated via [one-shot sync request](../ref/hopen.md#one-shot-request) or HTTP client request (TLS/SSL support added in 4.1t 2023.11.10). Erroneous socket usage is blocked and signals a `nosocket` error.
 
 If you are careful to manage your **file handles/file access** so that there is no parallel use of the same handle (or file) across threads, then you can open and close files within `peach`.
 
