@@ -598,7 +598,7 @@ q)1_.h.jx[5;`a]
 Where `x` is an integer representing the idle timeout in units of milliseconds. A value of 0i disables keepalive (i.e. .h.ka then returns "close").
 Returns a string of value `close` or `keep-alive` which can be used for the `Connection` HTTP header field value in the HTTP response.
 
-Can be used during the processing of an HTTP request to enable persistent connections i.e. should be called within an HTTP callback such as [.z.ph]((dotz.md#zph-http-get), [.z.pp](dotz.md#zpp-http-post), etc.
+Can be used during the processing of an HTTP request to enable persistent connections i.e. should be called within an HTTP callback such as [.z.ph](dotz.md#zph-http-get), [.z.pp](dotz.md#zpp-http-post), etc.
 
 
 ## `.h.logo` (KX logo)
