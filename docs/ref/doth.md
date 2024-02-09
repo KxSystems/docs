@@ -589,7 +589,7 @@ q)1_.h.jx[5;`a]
 ```
 
 
-## `.h.ka` (http keepalive)
+## `.h.ka` (HTTP keepalive)
 
 ```syntax
 .h.ka x
