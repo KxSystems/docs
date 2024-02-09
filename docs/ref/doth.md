@@ -596,9 +596,21 @@ q)1_.h.jx[5;`a]
 ```
 
 Where `x` is an integer representing the idle timeout in units of milliseconds. A value of 0i disables keepalive (i.e. .h.ka then returns "close").
+
 Returns a string of value `close` or `keep-alive` which can be used for the `Connection` HTTP header field value in the HTTP response.
 
-Can be used during the processing of an HTTP request to enable persistent connections i.e. should be called within an HTTP callback such as [.z.ph]((dotz.md#zph-http-get), [.z.pp](dotz.md#zpp-http-post), etc.
+Can be used during the processing of an HTTP request to enable [persistent connections](https://en.wikipedia.org/wiki/HTTP_persistent_connection) i.e. should be called within an HTTP callback such as [.z.ph](dotz.md#zph-http-get), [.z.pp](dotz.md#zpp-http-post), etc.
+
+A basic example of showing keep-alive in action for a simple response:
+```q
+\p 1234
+q)f:{[x;y]"HTTP/1.1 200 OK\r\nConnection : ",.h.ka[x*1000i],"\r\nContent-Type: ",(.h.ty`txt),"\r\nContent-Length: ",(string count y),"\r\n\r\n",y}
+q).z.ph:{f[2i;"test response\n"]}
+```
+Running a HTTP client such as curl from the same machine will show the connection being reused for two requests
+```shell
+curl -v -v http://localhost:1234 http://localhost:1234
+```
 
 
 ## `.h.logo` (KX logo)
