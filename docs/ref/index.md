@@ -278,15 +278,16 @@ Markup output for HTTP
 [.h.text](doth.md#htext-paragraphs)    paragraphs
 [.h.xmp](doth.md#hxmp-xmp)     XMP
 
-[.h.he](doth.md#hhe-http-400)      HTTP 400                 [.h.c0](doth.md#hc0-web-color)    web color
-[.h.hn](doth.md#hhn-http-response)      HTTP response            [.h.c1](doth.md#hc1-web-color)    web color
-[.h.hp](doth.md#hhp-http-response-pre)      HTTP response pre        [.h.HOME](doth.md#hhome-webserver-root)  webserver root
-[.h.hy](doth.md#hhy-http-response-content)      HTTP response content    [.h.logo](doth.md#hlogo-kx-logo)  KX logo
-                                    [.h.sa](doth.md#hsa-anchor-style)    anchor style
-[.h.hu](doth.md#hhu-uri-escape)      URI escape               [.h.sb](doth.md#hsb-body-style)    body style
-[.h.hug](doth.md#hhug-uri-map)     URI map                  [.h.ty](doth.md#hty-mime-types)    MIME types
-[.h.sc](doth.md#hsc-uri-safe)      URI-safe                 [.h.val](doth.md#hval-value)   value
-[.h.uh](doth.md#huh-uri-unescape)      URI unescape
+[`.h.he`](#hhe-http-400)      HTTP 400                 [`.h.c0`](#hc0-web-color)    web color
+[`.h.hn`](#hhn-http-response)      HTTP response            [`.h.c1`](#hc1-web-color)    web color
+[`.h.hp`](#hhp-http-response-pre)      HTTP response pre        [`.h.HOME`](#hhome-webserver-root)  webserver root
+[`.h.hy`](#hhy-http-response-content)      HTTP response content    [`.h.logo`](#hlogo-kx-logo)  KX logo
+[`.h.ka`](#hka-http-keepalive)      HTTP keep-alive          [`.h.sa`](#hsa-anchor-style)    anchor style
+                                     [`.h.sb`](#hsb-body-style)    body style
+[`.h.hu`](#hhu-uri-escape)      URI escape               [`.h.ty`](#hty-mime-types)    MIME types
+[`.h.hug`](#hhug-uri-map)     URI map                  [`.h.val`](#hval-value)   value
+[`.h.sc`](#hsc-uri-safe)      URI-safe 
+[`.h.uh`](#huh-uri-unescape)      URI unescape
 </div>
 
 
