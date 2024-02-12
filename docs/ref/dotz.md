@@ -564,35 +564,12 @@ Where `f` is a unary function, it is evaluated when a synchronous HTTP request i
 
 `.z.ph` is passed a single argument, a 2-item list `(requestText;requestHeaderAsDictionary)`:
 
-- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task. Since V3.6 and V3.5 2019.11.13 [`.h.val`](doth.md#hval-value) is called instead of `value`, allowing users to interpose their own valuation code.
-- `requestHeaderAsDictionary` contains information such as the user agent and can be used to return content optimized for particular browsers.
+- `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task.
+- `requestHeaderAsDictionary` contains a dictionary of [HTTP header](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) names and values as sent by the client. This can be used to return content optimized for particular browsers.
 
-```q
-q)\c 43 75
-q).last.ph
-    | ::
-when| 2007.08.16T12:20:32.681
-u   | `
-w   | 5
-a   | 2130706433
-x   | k){$[~#x:uh x:$[@x;x;*x];fram[$.z.f;x]("?";"?",*x:$."\\v");"?"=*x;..
-y   | (,"?";`Accept-Language`Accept-Encoding`Cookie`Referer`User-Agent`A..
-r   | "<html><head><style>a{text-decoration:none}a:link{color:024C7E}a:v..
-q).last.ph.y
-,"?"
-`Accept-Language`Accept-Encoding`Cookie`Referer`User-Agent`Accept`Connec..
-q).last.ph.y 0
-,"?"
-q).last.ph.y 1
-Accept-Language| "en-us"
-Accept-Encoding| "gzip, deflate"
-Cookie         | "defaultsymbol=AAPL"
-Referer        | "http://localhost:5001/"
-User-Agent     | "Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en-us) Appl..
-Accept         | "text/xml,application/xml,application/xhtml+xml,text/ht..
-Connection     | "keep-alive"
-Host           | "localhost:5001"
-```
+The function returns a string representation of an HTTP response message e.g. [HTTP/1.1 response message format](https://en.wikipedia.org/wiki/HTTP#HTTP/1.1_response_messages).
+
+Since V3.6 and V3.5 2019.11.13, the default implementation calls [`.h.val`](doth.md#hval-value) instead of [`value`](value.md), allowing users to interpose their own valuation code. It is called with `requestText` as the argument.
 
 :fontawesome-solid-hand-point-right:
 [`.z.pp` port post](#zpp-http-post)
@@ -688,7 +665,7 @@ Where `f` is a unary function, `.z.pp` is evaluated when an HTTP POST request is
 
 There is no default implementation, but an example would be that it calls [`value`](value.md) on the first item of its argument and returns the result to the calling task.
 
-See `.z.ph` for details of the argument.
+See [`.z.ph`](#zph-http-get) for details of the argument and return value.
 
 Allows empty requests since 4.1t 2021.03.30 (previously signalled `length` error).
 
