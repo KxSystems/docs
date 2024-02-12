@@ -48,7 +48,7 @@ Next, ensure that the “remote” function on the server is expecting the name 
 q)proc:{[arg1;  ;argn ; callname]  }
 ```
 
-Finally, in the remote function obtain the open handle of the calling process from the system variable `.z.w`. Use this link back to the caller to invoke the callback function.
+Finally, in the remote function, obtain the open handle of the calling process from the system variable [`.z.w`](../ref/dotz.md#zw-handle). Use this link back to the caller to invoke the callback function.
 
 
 ## Example 1
