@@ -23,7 +23,7 @@ _Tools_
  [gc       garbage collect](#gc-garbage-collect)          [dpt  dpts   save table unsorted](#dpt-save-table-unsorted)
  [gz       GZip](#gz-gzip)                     [dsftg       load process save](#dsftg-load-process-save)
  [id       sanitize](#id-sanitize)                 [en          enumerate varchar cols](#en-enumerate-varchar-cols)
- [prf0     FIXME](#prf0-FIXME)                 [ens         enumerate against domain](#ens-enumerate-against-domain)
+ [prf0     code profiler](#prf0-code-profiler)                 [ens         enumerate against domain](#ens-enumerate-against-domain)
  [qt       is table](#qt-is-table)                 [fk          foreign key](#fk-foreign-key)
  [res      keywords](#res-keywords)                 [hdpf        save tables](#hdpf-save-tables)
  [s        plain text](#s-plain-text)               [l           load](#l-load)
