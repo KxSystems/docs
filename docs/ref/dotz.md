@@ -569,7 +569,7 @@ Where `f` is a unary function, it is evaluated when a synchronous HTTP request i
 
 The function returns a string representation of an HTTP response message e.g. [HTTP/1.1 response message format](https://en.wikipedia.org/wiki/HTTP#HTTP/1.1_response_messages).
 
-Since V3.6 and V3.5 2019.11.13 the default implementation will call [`.h.val`](doth.md#hval-value) instead of [`value`](value.md), allowing users to interpose their own valuation code. It is called with `requestText` as the argument.
+Since V3.6 and V3.5 2019.11.13, the default implementation calls [`.h.val`](doth.md#hval-value) instead of [`value`](value.md), allowing users to interpose their own valuation code. It is called with `requestText` as the argument.
 
 :fontawesome-solid-hand-point-right:
 [`.z.pp` port post](#zpp-http-post)
