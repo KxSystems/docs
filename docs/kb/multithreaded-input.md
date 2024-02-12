@@ -39,6 +39,6 @@ Some of the restrictions are:
 5.  cannot send async messages
 6.  views can be recalculated from the main thread only
 
-The use of sockets from within those threads is not allowed for anything other than the [one-shot sync request](../ref/hopen.md#one-shot-request) and http client request only (TLS/SSL support added in 4.1t 2023.11.10). These can be inefficient, as it opens, queries and closes each time. Erroneous socket usage is blocked and signals a `nosocket` error.
+The use of sockets from within those threads is allowed only for the [one-shot sync request](../ref/hopen.md#one-shot-request) and HTTP client request (TLS/SSL support added in 4.1t 2023.11.10). These can be inefficient, as it opens, queries and closes each time. Erroneous socket usage is blocked and signals a `nosocket` error.
 
 In multithreaded input mode, the seed for the random-number generator used for threads other than the main thread is based on the socket descriptor for that connection; these threads are transient – destroyed when the socket is closed, and no context is carried over for new threads/connections.
