@@ -607,7 +607,7 @@ A basic example of showing keep-alive in action for a simple response:
 q)f:{[x;y]"HTTP/1.1 200 OK\r\nConnection : ",.h.ka[x*1000i],"\r\nContent-Type: ",(.h.ty`txt),"\r\nContent-Length: ",(string count y),"\r\n\r\n",y}
 q).z.ph:{f[2i;"test response\n"]}
 ```
-Running a HTTP client such as curl from the same machine will show the connection being reused for two requests
+Running an HTTP client such as cURL, from the same machine, shows the connection being reused for two requests.
 ```shell
 curl -v -v http://localhost:1234 http://localhost:1234
 ```
