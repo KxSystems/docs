@@ -567,7 +567,7 @@ Where `f` is a unary function, it is evaluated when a synchronous HTTP request i
 - `requestText` is parsed in `.z.ph` – detecting special cases like requests for CSV, XLS output – and the result is returned to the calling task.
 - `requestHeaderAsDictionary` contains a dictionary of [HTTP header](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields) names and values as sent by the client. This can be used to return content optimized for particular browsers.
 
-The function should return a string representation of a HTTP response message e.g. [HTTP/1.1 response message format](https://en.wikipedia.org/wiki/HTTP#HTTP/1.1_response_messages).
+The function returns a string representation of an HTTP response message e.g. [HTTP/1.1 response message format](https://en.wikipedia.org/wiki/HTTP#HTTP/1.1_response_messages).
 
 Since V3.6 and V3.5 2019.11.13 the default implementation will call [`.h.val`](doth.md#hval-value) instead of [`value`](value.md), allowing users to interpose their own valuation code. It is called with `requestText` as the argument.
 
