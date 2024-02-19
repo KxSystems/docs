@@ -1281,7 +1281,13 @@ q).Q.ld read0`:funcs.q
 .Q.lo[`database;cd;scripts]
 ```
 
-Load a database without changing directory and/or loading scripts in the database (since 4.1t 2023.03.01)
+Where
+
+-   `database` is a symbol atom (as per parameter to [.Q.l](#l-load))
+-   `cd` is a boolean flag indicating whether to cd to the database dir
+-   `scripts` is a boolean flag indicating whether to execute any scripts in the database dir
+
+Load a database without changing directory and/or loading scripts in the database (since 4.1t 2023.03.01).
 
 ```q
 q)\cd
