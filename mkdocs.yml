@@ -571,6 +571,7 @@ nav:
       - Windows service: kb/windows-service/index.md
     - Release notes:
       - History: releases/index.md
+      - Changes in 4.1: releases/ChangesIn4.1.md
       - Changes in 4.0: releases/ChangesIn4.0.md
       - Changes in 3.6: releases/ChangesIn3.6.md
       - Changes in 3.5: releases/ChangesIn3.5.md

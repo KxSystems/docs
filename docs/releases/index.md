@@ -1,7 +1,7 @@
 ---
 title: Release history of kdb+ | kdb+ and q documentation
 author: Stephen Taylor
-date: February 2020
+date: February 2024
 description: List of releases of kdb+
 ---
 # Release history
@@ -9,6 +9,7 @@ description: List of releases of kdb+
 
 version | date*      | release note
 --------|------------|-------------------
+4.1     | 2024.02.12 | [Changes in 4.1](ChangesIn4.1.md)
 4.0     | 2020.03.17 | [Changes in 4.0](ChangesIn4.0.md)
 3.6     | 2020.02.24 | [Changes in 3.6](ChangesIn3.6.md)
 3.5     | 2020.02.13 | [Changes in 3.5](ChangesIn3.5.md)
