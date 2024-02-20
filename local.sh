@@ -31,11 +31,22 @@ cat mkdocs.yml | sed \
 	> local.yml
 
 docker_image="$(cat docker-image-name.txt):$(cat docker-image-version.txt)"
-echo "### Using docker image $docker_image"
 work_dir="/docs"
-cmd="build --clean -f local.yml --site-dir $localdir"
+cmd="build --clean -s -f local.yml --site-dir $localdir"
 echo "### Building docs in $localdir/ using mkdocs"
-docker run --rm -v $(pwd):$work_dir --workdir $work_dir $docker_image $cmd
+
+if [ $# -eq 0 ]; then
+    echo "### Using docker image $docker_image"
+    docker run --rm -v $(pwd):$work_dir --workdir $work_dir $docker_image $cmd
+else
+    mkdocs $cmd
+fi
+
+retval=$?
+if [ $retval -ne 0 ]; then
+    echo "mkdocs build failed - check warnings above, fix and try again" >&2
+    exit $retval
+fi
 
 echo "### Zipping $localdir directory"
 if ! zip -qr local.zip $localdir; then
