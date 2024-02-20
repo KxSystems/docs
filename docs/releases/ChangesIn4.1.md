@@ -237,7 +237,7 @@ macOS/Microsoft Windows performance has been improved when using floating point 
 
 ### .Q.gc 
 
-added optional param (type long) to [.Q.gc](../ref/dotq.md#gc-garbage-collect) indicating how aggressively it should try to return memory to the OS
+Added optional param (type long) to [.Q.gc](../ref/dotq.md#gc-garbage-collect) indicating how aggressively it should try to return memory to the OS.
 ```q
  q).Q.gc 0 / least aggressive
  q).Q.gc[] / most aggressive (continue to use this in the general case; currently matches level 2)
