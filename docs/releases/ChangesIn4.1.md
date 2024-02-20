@@ -245,7 +245,7 @@ Added optional param (type long) to [.Q.gc](../ref/dotq.md#gc-garbage-collect) i
 
 ### .Q.xf and Q.Cf
 
-deprecated functions [.Q.Xf](../ref/dotq.md#xf-create-file) and [.Q.Cf](../ref/dotq.md#cf-create-empty-nested-char-file) removed (using resulting files could return file format errors since 3.6)
+Deprecated functions [.Q.Xf](../ref/dotq.md#xf-create-file) and [.Q.Cf](../ref/dotq.md#cf-create-empty-nested-char-file) have been removed. (Using resulting files could return file format errors since 3.6.)
 
 ### .Q.id
 
