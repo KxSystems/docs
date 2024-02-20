@@ -273,7 +273,7 @@ block [exit](../ref/exit.md) during [reval](../ref/eval.md#reval) or [-u](../bas
 
 ### Handles within peach
 
-using handles within [peach](../ref/each.md) is not supported, e.g.
+Using handles within [peach](../ref/each.md) is not supported, e.g.
 ```q
  q)H:hopen each 4#4000;{x""}peach H
  3 4 5 6i
