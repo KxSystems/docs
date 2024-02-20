@@ -142,7 +142,7 @@ q)sumVals "8,4,2,1,0.5"
 
 3. Use of a work-stealing algorithm. Work-stealing is an innovative technique in parallel computing, where idle processors intelligently acquire tasks from busy ones. This dynamic approach ensures a balanced distribution of tasks, leading to improved overall efficiency. This marks a departure from the previous method of pre-allocating chunks of work to each thread. The incorporation of a work-stealing algorithm translates to better utilization of CPU cores, enhancing overall computational efficiency.
 
-On our own tests, we have seen these improvements lead to a significant reduction in processing times e.g.
+In our own tests, we have seen these improvements lead to a significant reduction in processing times e.g.
 ```q
 q)\s
 8i
