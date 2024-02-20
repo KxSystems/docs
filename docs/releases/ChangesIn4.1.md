@@ -76,7 +76,7 @@ q)y
 
 ### :fontawesome-solid-code: Type Checking
 
-While we're checking patterns, we could also check types.
+While we're checking patterns, we can also check types.
 ```q
 q)(surname:`s):`simpson
 q)(name:`s;age:`h):(`homer;38h)
