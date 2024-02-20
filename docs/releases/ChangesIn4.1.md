@@ -278,4 +278,4 @@ Using handles within [peach](../ref/each.md) is not supported, e.g.
  q)H:hopen each 4#4000;{x""}peach H
  3 4 5 6i
 ```
-[one-shot ipc requests](../ref/hopen.md#one-shot-request) can be used within peach instead.
+[One-shot IPC requests](../ref/hopen.md#one-shot-request) can be used within peach instead.
