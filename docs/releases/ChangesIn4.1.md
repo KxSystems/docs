@@ -251,8 +251,7 @@ q).Q.id`$"+"
 `a  (previous version returned `)
 ```
 .Q.id for atom changes are reflected in .Q.id for tables (as before, it was applied to each column name).
-.Q.id for tables also has additional logic to cater for duplicate col names (names now appended with 1,2,etc when matched against
-previous cols) after applying previously defined rules e.g.
+.Q.id for tables has additional logic to cater for duplicate col names after applying previously defined rules. Names are now appended with 1, 2, and so on, when matched against previous cols, e.g.
 ```q
 q)cols .Q.id(`$("count+";"count*";"count1"))xcol([]1 2;3 4;5 6)
 `count1`count11`count12  (previous version returned `count1`count1`count1)
