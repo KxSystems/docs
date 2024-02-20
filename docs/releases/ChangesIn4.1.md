@@ -66,7 +66,7 @@ q)(1b;;x):(1b;`anything;1 2 3) / empty patterns match anything
 q)x 
 1 2 3 
 ```
-Failure to match will throw an error without assigning. 
+Failure to match throws an error without assigning. 
 ```q
 q)(1b;y):(0b;3 2 1) 
 'match 
