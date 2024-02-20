@@ -249,7 +249,7 @@ Deprecated functions [.Q.Xf](../ref/dotq.md#xf-create-file) and [.Q.Cf](../ref/d
 
 ### .Q.id
 
-[.Q.id](../ref/dotq.md#id-sanitize) for atom now produces `a` when contains single character that is not in [.Q.an](../ref/dotq.md#an-all-alphanumerics) (instead of empty sym) e.g
+[.Q.id](../ref/dotq.md#id-sanitize) for atom now produces `a` when it contains single character that is not in [.Q.an](../ref/dotq.md#an-all-alphanumerics) (instead of empty sym) e.g
 ```q
 q).Q.id`$"+"
 `a  (previous version returned `)
