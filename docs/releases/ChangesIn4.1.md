@@ -115,7 +115,7 @@ q)(a;b:10+;c:100+):1 2 3
 q)a,b,c
 1 12 103
 ```
-Amend values at depth without assignment
+amend values at depth without assignment,
 ```q
 q)addv:{([v:(;:x+;:(x*10)+)]):y}
 q)addv[10;([k:`hello;v:1 2 3])]
