@@ -228,7 +228,7 @@ Loading shared libraries via [2:](../ref/dynamic-load.md) resolved to a canonica
 
 ### Threads using denormals
 
-osx/windows performance improvement when using floating point calculations with denormal numbers on threads created via multi-threaded input mode or secondary threads (rounds to zero)
+macOS/Microsoft Windows performance has been improved when using floating point calculations with denormal numbers on threads created via multi-threaded input mode or secondary threads (rounds to zero).
 
 ### .z.o
 
