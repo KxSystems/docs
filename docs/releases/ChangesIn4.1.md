@@ -160,7 +160,7 @@ q)\t (inv peach)peach 2 4 1000 1000#8000000?1.
 
 ## :fontawesome-solid-bolt: Unlimited IPC/Websocket Connections
 
-The number of connections if now limited only by the operating system and protocol settings (system configurable).
+The number of connections is now limited only by the operating system and protocol settings (system configurable).
 
 In addition, the c-api function [sd1](../interfaces/capiref.md#sd1-set-function-on-loop) no longer imposes a limit of 1023 on the value of the descriptor submitted.
 
