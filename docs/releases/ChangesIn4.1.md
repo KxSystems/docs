@@ -85,7 +85,7 @@ q)(name:`s;age:`h):(`marge;36.5) / d'oh
 q)name,surname / woohoo!
 `homer`simpson
 ```
-And check function parameters too.
+kdb+ can check function parameters too.
 ```q
 q)fluxCapacitor:{[(src:`j;dst:`j);speed:`f]$[speed<88;src;dst]}
 q)fluxCapacitor[1955 1985]87.9
