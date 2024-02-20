@@ -6,7 +6,7 @@ date: [February 2024]
 ---
 # Changes in 4.1
 
-A full list of changes can be found in the README.txt of the current 4.1 release. Some of the highlights are listed here.
+The README.txt of the current 4.1 release contains a full list of changes. Some of the highlights are listed below.
 
 ## Production release date
 
