@@ -228,9 +228,9 @@ We try to avoid introducing compatibility issues, and most of those that follow 
 
 Loading shared libraries via [2:](../ref/dynamic-load.md) resolved to a canonical path prior to load via the OS, since v3.6 2018.08.24. This caused issues for libs whose run-time path was relative to a sym-link. It now resolves to an absolute path only, without resolving sym-links.
 
-### Threads using denormals
+### Threads using subnormals
 
-macOS/Microsoft Windows performance has been improved when using floating point calculations with denormal numbers on threads created via multi-threaded input mode or secondary threads (rounds to zero).
+macOS/Microsoft Windows performance has been improved when using floating point calculations with subnormal numbers on threads created via multi-threaded input mode or secondary threads (rounds to zero).
 
 ### .z.o
 
