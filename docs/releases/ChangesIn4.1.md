@@ -172,7 +172,7 @@ HTTP Persistent Connections enables multiple requests and responses to traverse 
 
 ## :fontawesome-solid-bolt: Multithreaded Data Loading
 
-The CSV load, fixed-width load ([0:](../ref/file-text.md)), and binary load ([1:](../ref/file-binary.md)) functionalities are now multithreaded. This enhancement improves performance and efficiency, particularly beneficial for handling large datasets across various data loading scenarios.
+The CSV load, fixed-width load ([0:](../ref/file-text.md)), and binary load ([1:](../ref/file-binary.md)) functionalities are now multithreaded. This enhancement improves performance and efficiency; it is particularly beneficial for handling large datasets across various data loading scenarios.
 
 ## :fontawesome-solid-bolt: Socket Performance
 
