@@ -222,6 +222,8 @@ We try to avoid introducing compatibility issues, and most of those that follow 
  0
 ```
 
+(This fixes a bug since 2.6.) 
+
 ### Dynamic Load
 
 Loading shared libraries via [2:](../ref/dynamic-load.md) resolved to a canonical path prior to load via the OS, since v3.6 2018.08.24. This caused issues for libs whose run-time path was relative to a sym-link. It now resolves to an absolute path only, without resolving sym-links.
