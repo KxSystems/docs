@@ -109,7 +109,7 @@ q)c2f 42.8
 q)c2f 20 / just right
 68f
 ```
-We can use filter functions to change the values that we are assigning.
+We can use filter functions to change the values that we are assigning,
 ```q
 q)(a;b:10+;c:100+):1 2 3
 q)a,b,c
