@@ -216,7 +216,7 @@ We try to avoid introducing compatibility issues, and most of those that follow 
 
 ### Value inside select/exec
 
-(actually a fix for a bug since 2.6) [value"..."](../ref/value.md) inside select/exec on the main thread previously used lambda's scope for locals, now always uses the global scope, e.g.
+[value"..."](../ref/value.md) inside select/exec on the main thread previously used lambda's scope for locals; it now always uses the global scope, e.g.
 ```q
  q)a:0;{a:1;exec value"2*a"from([]``)}[]
  0
