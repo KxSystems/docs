@@ -166,7 +166,7 @@ In addition, the c-api function [sd1](../interfaces/capiref.md#sd1-set-function-
 
 ## :fontawesome-solid-bolt: HTTP Persistent Connections
 
-kdb+ now has support for HTTP Persistent Connections via [.h.ka](../ref/doth.md#hka-http-keepalive) – a feature designed to elevate the efficiency and responsiveness of your data interactions.
+kdb+ now has support for HTTP Persistent Connections via [.h.ka](../ref/doth.md#hka-http-keepalive), a feature designed to elevate the efficiency and responsiveness of your data interactions.
 
 HTTP Persistent Connections enables multiple requests and responses to traverse over the same connection. This translates to reduced latency, optimized resource utilization, and an overall improvement in performance.
 
