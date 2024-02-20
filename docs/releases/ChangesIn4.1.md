@@ -208,7 +208,7 @@ HTTP client requests and [one-shot sync](../ref/hopen.md#one-shot-request) messa
 
 ## :fontawesome-solid-triangle-exclamation: NUCs
 
-We have sought to avoid introducing compatibility issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
+We try to avoid introducing compatibility issues, and most of those that follow are a result of unifying behavior or tightening up loose cases.
 
 ### []a::e
 
