@@ -196,9 +196,11 @@ q)\ts:10000 h”2+2"
 
 Enhanced TLS Support and Updated OpenSSL Support [feature](../kb/ssl.md) in our latest release.
 
-The support for OpenSSL 1.0, 1.1.x, and 3.x, coupled with dynamic searching for OpenSSL libraries and TCP and UDS encryption, positions this feature as a robust solution for industries where data integrity and confidentiality are non-negotiable.
+Support for OpenSSL 1.0, 1.1.x, and 3.x, coupled with dynamic searching for OpenSSL libraries and TCP and UDS encryption, provides a robust solution for industries where data integrity and confidentiality are non-negotiable.
 
-Furthermore, TLS messaging can now be utilized on threads other than the main thread. This allows for secure Inter-Process Communication (IPC) and HTTP operations in multithreaded input queue mode. Additionally, HTTP client requests and [one-shot sync](../ref/hopen.md#one-shot-request) messages within secondary threads are facilitated through [peach](../ref/each.md).
+TLS messaging can now be utilized on threads other than the main thread. This allows for secure Inter-Process Communication (IPC) and HTTP operations in multithreaded input queue mode. 
+
+HTTP client requests and [one-shot sync](../ref/hopen.md#one-shot-request) messages within secondary threads are facilitated through [peach](../ref/each.md).
 
 ## :fontawesome-solid-lock: More Algorithms for At-rest Compression
 
