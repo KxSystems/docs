@@ -204,7 +204,7 @@ HTTP client requests and [one-shot sync](../ref/hopen.md#one-shot-request) messa
 
 ## :fontawesome-solid-lock: More Algorithms for At-rest Compression
 
-[Zstd](https://github.com/facebook/zstd) has been added to our [list](../kb/file-compression.md) of supported compression algorithms. The compression algorithms can also be used when [writting binary data](../ref/file-binary.md#compression) directly.
+[Zstd](https://github.com/facebook/zstd) has been added to our [list](../kb/file-compression.md) of supported compression algorithms. The compression algorithms can also be used when [writing binary data](../ref/file-binary.md#compression) directly.
 
 ## :fontawesome-solid-triangle-exclamation: NUCs
 
