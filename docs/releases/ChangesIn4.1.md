@@ -269,7 +269,7 @@ q)cols .Q.id(`$("3aa";"_aa";"_aa"))xcol([]1 2;3 4;5 6)
 
 ### Block exit
 
-block [exit](../ref/exit.md) during [reval](../ref/eval.md#reval) or [-u](../basics/cmdline.md#-u-disable-syscmds) cmd line, when handle is a remote. `\\` was already blocked.
+kdb+ now blocks the ability to call the [exit](../ref/exit.md) command during [reval](../ref/eval.md#reval) or [-u](../basics/cmdline.md#-u-disable-syscmds) when the handle is a remote. `\\` was already blocked.
 
 ### Handles within peach
 
