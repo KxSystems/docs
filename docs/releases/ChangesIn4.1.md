@@ -258,8 +258,8 @@ q)cols .Q.id(`$("count+";"count*";"count1"))xcol([]1 2;3 4;5 6)
 q)cols .Q.id(`$("aa";"=";"+"))xcol([]1 2;3 4;5 6)
 `aa`a`a1  (previous version returned `aa`1`1)
 ```
-.Q.id now follows the same rule when provided name begins with an underscore as it does when it begins
-with a numerical character. Previously could produce an invalid column name.
+.Q.id now follows the same rule when the provided name begins with an underscore, as it does when it begins
+with a numerical character. Previously this could produce an invalid column name.
 ```q
 q).Q.id`$"_"
 `a_
