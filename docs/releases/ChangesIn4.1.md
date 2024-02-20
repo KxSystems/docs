@@ -137,8 +137,10 @@ q)sumVals "8,4,2,1,0.5"
 [peach](../ref/each.md) enables the parallel execution of a function on multiple arguments. Significant enhancements have been made to augment its functionality:
 
 1. Ability to nest peach statements. This means you can now apply peach within another peach, allowing for the implementation of more sophisticated and intricate parallelization strategies.
+
 2. In previous versions, peach had certain limitations, particularly with other multithreaded primitives. The latest release eliminates these constraints, providing greater flexibility in designing parallel computations. Now, you can seamlessly integrate peach with other multithreaded operations, unlocking new possibilities for concurrent processing.
-3. Use of a work-stealing algorithm. Work-stealing is an innovative technique in parallel computing where idle processors intelligently acquire tasks from busy ones. This dynamic approach ensures a balanced distribution of tasks, leading to improved overall efficiency. This marks a departure from the previous method of pre-allocating chunks of work to each thread. The incorporation of a work-stealing algorithm translates to better utilization of CPU cores, enhancing overall computational efficiency.
+
+3. Use of a work-stealing algorithm. Work-stealing is an innovative technique in parallel computing, where idle processors intelligently acquire tasks from busy ones. This dynamic approach ensures a balanced distribution of tasks, leading to improved overall efficiency. This marks a departure from the previous method of pre-allocating chunks of work to each thread. The incorporation of a work-stealing algorithm translates to better utilization of CPU cores, enhancing overall computational efficiency.
 
 On our own tests, we have seen these improvements lead to a significant reduction in processing times e.g.
 ```q
