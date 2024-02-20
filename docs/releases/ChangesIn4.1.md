@@ -60,7 +60,7 @@ q)([]x2:e):([]1 2;3 4;5 6) / table (what?!)
 q)a,b,c,d,e 
 1 2 3 4 5 6 
 ```
-Before assigning any variables, q will ensure left and right values match. 
+Before assigning any variables, q ensures that left and right values match. 
 ```q
 q)(1b;;x):(1b;`anything;1 2 3) / empty patterns match anything 
 q)x 
