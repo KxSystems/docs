@@ -122,7 +122,7 @@ q)addv[10;([k:`hello;v:1 2 3])]
 k| `hello
 v| 1 12 103
 ```
-Or even change the types
+or even change the types,
 ```q
 q)chkVals:{$[any null x:"J"$","vs x;'`badData;x]}
 q)sumVals:{[x:chkVals]sum x}
