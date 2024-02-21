@@ -281,7 +281,12 @@ kdb+ now blocks the ability to call the [exit](../ref/exit.md) command during [r
 
 Using handles within [peach](../ref/each.md) is not supported, e.g.
 ```q
- q)H:hopen each 4#4000;{x""}peach H
- 3 4 5 6i
+q)H:hopen each 4#4000;{x""}peach H
+'nosocket
+  [2]  {x""}
+        ^
+  [0]  H:hopen each 4#4000;{x""}peach H
+                                ^
+q))
 ```
 [One-shot IPC requests](../ref/hopen.md#one-shot-request) can be used within peach instead.
