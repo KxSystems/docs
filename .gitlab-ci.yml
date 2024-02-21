@@ -22,7 +22,7 @@ build-job:
   image: "$MKDOCS_IMAGE_URL:$MKDOCS_IMAGE_VERSION"
   stage: build
   rules:
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
       when: never
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
       when: never
@@ -64,7 +64,7 @@ build-job:
 deploy-draft-job:
   stage: deploy
   rules:
-    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
       when: never
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
       when: never
