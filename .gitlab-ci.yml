@@ -1,0 +1,143 @@
+default:
+    tags:
+      - k8s-aws-tools
+    interruptible: true
+
+stages:
+  - build
+  - deploy
+  - release
+
+variables:
+  MKDOCS_IMAGE_VERSION: "0.3.8"
+  MKDOCS_IMAGE_URL: "registry.gitlab.com/kxdev/documentation/framework/mkdocs-build"
+  KUBERNETES_MEMORY_REQUEST: "512Mi"
+  KUBERNETES_MEMORY_LIMIT: "1024Mi"
+  BACKUP_DRAFT_DIR: "/home/seedy/qbackup/q_draft"
+  BACKUP_LIVE_DIR: "/home/seedy/qbackup/q_live"
+  DRAFT_DIR: "/var/www/draft"
+  LIVE_DIR: "/var/www"
+  
+build-job:
+  image: "$MKDOCS_IMAGE_URL:$MKDOCS_IMAGE_VERSION"
+  stage: build
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+      when: never
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: never
+    - when: always
+  before_script:
+    - apt-get install -y zip wget
+  script:
+    - echo "######## build-job"
+    - ./local.sh build
+  artifacts:
+    name: "local"
+    paths:
+      - local.zip
+    expire_in: 3 days
+
+.setup-ssh:
+  image:
+    name: "$MKDOCS_IMAGE_URL:$MKDOCS_IMAGE_VERSION"
+    entrypoint: [""]
+  before_script:
+    - |
+      # Write key into container
+      mkdir -p ~/.ssh
+      chmod 700 ~/.ssh
+      eval $(ssh-agent -s)
+      echo $SEEDY_B64_KEY | base64 -d | tr -d '\r' > ~/.ssh/id_rsa
+      chmod 0600 ~/.ssh/id_rsa
+    - |
+      # ssh-add
+      echo 'echo -n $(echo $SEEDY_B64_PASS | base64 -d)' > ~/.ssh-pass
+      chmod +x ~/.ssh-pass
+      SSH_ASKPASS=~/.ssh-pass ssh-add ~/.ssh/id_rsa
+    - |
+      # known_hosts
+      ssh-keyscan -t rsa -H code.kx.com >> ~/.ssh/known_hosts
+      chmod 644 ~/.ssh/known_hosts
+      cat ~/.ssh/known_hosts
+
+deploy-draft-job:
+  stage: deploy
+  rules:
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"
+      when: never
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: never
+    - when: on_success
+  dependencies:
+    - build-job
+  when: on_success
+  extends: .setup-ssh
+  variables:
+    DISPLAY: "1"
+    GIT_STRATEGY: none
+    UNZIP_DIR: "/tmp/seedy/unzip"
+  script:
+    - echo "######## Available files in runner"
+    - ls -al
+    - |
+      ssh seedy@code.kx.com << EOF
+        echo "######## Removing dir used to unzip i.e. ${UNZIP_DIR}"
+        rm -rf ${UNZIP_DIR}
+        mkdir -p ${UNZIP_DIR}
+      EOF
+    - scp local.zip seedy@code.kx.com:${UNZIP_DIR}/
+    - |
+      ssh seedy@code.kx.com << EOF
+        if [ ! -d ${DRAFT_DIR} ]; then mkdir -p ${DRAFT_DIR}; fi
+        echo "######## Current contents of ${DRAFT_DIR}"
+        ls -l ${DRAFT_DIR}
+        echo "######## Unzip new site to ${UNZIP_DIR}/local"
+        cd ${UNZIP_DIR}
+        unzip local.zip 
+        echo "######## Backing up ${DRAFT_DIR}/q (previous draft site) to ${BACKUP_DRAFT_DIR}"
+        rm -rf ${BACKUP_DRAFT_DIR}
+        mkdir -p ${BACKUP_DRAFT_DIR}
+        cd ${DRAFT_DIR}
+        if [ -d q ]; then mv q ${BACKUP_DRAFT_DIR};echo "######## Old draft site backed up to ${BACKUP_DRAFT_DIR}"; fi
+        echo "######## Contents of backup dir ${BACKUP_DRAFT_DIR}"
+        ls -l ${BACKUP_DRAFT_DIR}
+        echo "######## Moving new draft site from ${UNZIP_DIR}/local to ${DRAFT_DIR}/q"
+        mv ${UNZIP_DIR}/local ${DRAFT_DIR}/q
+        echo "######## Contents of draft dir ${DRAFT_DIR}"
+        ls -l ${DRAFT_DIR}
+        echo "######## Contents of draft q dir ${DRAFT_DIR}/q"
+        ls -l ${DRAFT_DIR}/q
+      EOF
+
+release_job:
+  image: "$MKDOCS_IMAGE_URL:$MKDOCS_IMAGE_VERSION"
+  stage: release
+  interruptible: false
+  rules:
+    - if: $CI_COMMIT_TAG
+  extends: .setup-ssh
+  variables:
+    DISPLAY: "1"
+    GIT_STRATEGY: none
+  script:
+    - echo "######## release_job"
+    - |
+      ssh seedy@code.kx.com << EOF
+        if [ ! -d ${LIVE_DIR} ]; then mkdir -p ${LIVE_DIR}; fi
+        echo "######## Current contents of ${LIVE_DIR}"
+        ls -l ${LIVE_DIR}
+        echo "######## Backing up ${LIVE_DIR}/q (previous live site) to ${BACKUP_LIVE_DIR}"
+        rm -rf ${BACKUP_LIVE_DIR}
+        mkdir -p ${BACKUP_LIVE_DIR}
+        cd ${LIVE_DIR}
+        if [ -d q ]; then mv q ${BACKUP_LIVE_DIR};echo "######## Old live site backed up to ${BACKUP_LIVE_DIR}"; fi
+        echo "######## Contents of backup dir ${BACKUP_LIVE_DIR}"
+        ls -l ${BACKUP_LIVE_DIR}
+        echo "######## Copy new site from ${DRAFT_DIR}/q to ${LIVE_DIR}/q"
+        cp -r ${DRAFT_DIR}/q ${LIVE_DIR}/q
+        echo "######## Contents of live dir ${LIVE_DIR}"
+        ls -l ${LIVE_DIR}
+        echo "######## Contents of live dir ${LIVE_DIR}/q"
+        ls -l ${LIVE_DIR}/q
+      EOF
