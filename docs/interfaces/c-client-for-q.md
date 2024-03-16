@@ -228,10 +228,10 @@ The following functions are provided to interface with the q memory manager.
 
 purpose                                        | function
 -----------------------------------------------|-----------
-Increment the object‘s reference count         | `r1(K)`
-Decrement the object‘s reference count         | `r0(K)`
-Free up memory allocated for the thread‘s pool | `m9()`
-Set whether interning symbols uses a lock      | `setm(I)`
+Increment the object‘s reference count         | [`r1(K)`](capiref.md#r1-increment-refcount)
+Decrement the object‘s reference count         | [`r0(K)`](capiref.md#r0-decrement-refcount)
+Free up memory allocated for the thread‘s pool | [`m9()`](capiref.md#m9-release-memory)
+Set whether interning symbols uses a lock      | [`setm(I)`](capiref.md#setm-toggle-symbol-lock)
 
 A reference count indicates the usage of an object, allowing the same object to be used by more than one piece of code.
 
@@ -288,7 +288,7 @@ and in q with
 -16!x
 ```
 
-The function `k`, as in
+The function [`k`](capiref.md#k-evaluate), as in
 
 ```c
 K r=k(handle,"functionname",params,(K)0);
@@ -352,8 +352,8 @@ K z = ki(42);
 
 To create
 
--   a simple list `K ktn(I type,J length);`
--   a mixed list  `K knk(I n,...);`
+-   a simple list [`K ktn(I type,J length);`](capiref.md#ktn-create-vector)
+-   a mixed list  [`K knk(I n,...);`](capiref.md#knk-create-list)
 
 where `length` is a non-negative, non-null integer.
 
@@ -368,10 +368,10 @@ As we've noted, the type of a mixed list is 0, and the elements are pointers to 
 
 To join
 
--   an atom to a list: `K ja(K*,V*);`
--   a string to a list: `K js(K*,S);`
--   another K object to a list: `K jk(K*,K);`
--   another K list to the first: `K jv(K*,K);`
+-   an atom to a list: [`K ja(K*,V*);`](capiref.md#ja-join-value)
+-   a string to a list: [`K js(K*,S);`](capiref.md#js-join-string)
+-   another K object to a list: [`K jk(K*,K);`](capiref.md#jk-join-k-object)
+-   another K list to the first: [`K jv(K*,K);`](capiref.md#jv-join-k-lists)
 
 The join functions assume there are no other references to the list, as the list may need to be reallocated during the call.
 In case of reallocation passed `K*` pointer will be updated to refer to new K object and returned from the function.
@@ -403,12 +403,12 @@ Strings and datetimes are special cases and extra utility functions are provided
 
 purpose                            | function
 -----------------------------------|--------------------------
-Create a char array from string    | `K kp(string);`
-Create a char array from string of length n | `K kpn(string, n);`
-Intern a string                    | `S ss(string);`
-Intern n chars from a string       | `S sn(string,n);`
-Convert q date to yyyymmdd integer | `I dj(date);`
-Encode a year/month/day as q date <br/>`0==ymd(2000,1,1)`| `I ymd(year,month,day);`
+Create a char array from string    | [`K kp(string);`](capiref.md#kp-create-string)
+Create a char array from string of length n | [`K kpn(string, n);`](capiref.md#kpn-create-fixed-length-string)
+Intern a string                    | [`S ss(string);`](capiref.md#ss-intern-string)
+Intern n chars from a string       | [`S sn(string,n);`](capiref.md#sn-intern-chars)
+Convert q date to yyyymmdd integer | [`I dj(date);`](capiref.md#dj-date-to-number)
+Encode a year/month/day as q date <br/>`0==ymd(2000,1,1)`| [`I ymd(year,month,day);`](capiref.md#ymd-numbers-to-date)
 
 Recall that Unix time is the number of seconds since `1970.01.01D00:00:00` while q time types have an epoch of `2000.01.01D00:00:00`.
 
@@ -458,9 +458,10 @@ kS(v)[i] = ss("some symbol");
 
 To create
 
--   a dict: `K xD(K,K);`
--   a table from a dict: `K xT(K);`
--   a simple table from a keyed table: `K ktd(K);`
+-   a dict: [`K xD(K,K);`](capiref.md#xd-create-dictionary)
+-   a table from a dict: [`K xT(K);`](capiref.md#xt-table-from-dictionary)
+-   a simple table from a keyed table: [`K ktd(K);`](capiref.md#ktd-create-simple-table)
+-   a keyed table: [`K knt(J,K);`](capiref.md#knt-create-keyed-table)
 
 A dictionary is a K object of type 99. It contains a list of two K objects; the keys and the values. We can use `kK(x)[0]` and `kK(x)[1]` to get these contained data.
 
@@ -516,7 +517,7 @@ To initialize memory without making a connection, use `khp("",-1);`
 
 It is highly recommended to use `khpu` and supply a meaningful username, as this will help server administrators identify a user’s connection.
 
-The `khp`,`khpu` and `khpun` functions are for use in stand-alone applications only; they are not for use within a q server via a shared library. Hence, to avoid potential confusion, these functions have been removed from more recent releases of q.
+The `khp`,`khpu`, `khpun` and `khpunc` functions are for use in stand-alone applications only; they are not for use within a q server via a shared library. Hence, to avoid potential confusion, these functions have been removed from more recent releases of q.
 
 A timeout can be specified with function `khpun`.
 
@@ -533,7 +534,7 @@ Return values for `khp`/`khpu`/`khpun` are:
 -2 - timeout(khpun case)
 ```
 
-Note that with the release of `c.o` with V2.6, `c.o` now tracks the connection type (pre-V2.6, or V2.6+). Hence to close the connection you must call `kclose` (instead of `close` or `closeSocket`) – this will clean up the connection tracking and close the socket.
+Note that with the release of `c.o` with V2.6, `c.o` now tracks the connection type (pre-V2.6, or V2.6+). Hence to close the connection you must call [`kclose`](capiref.md#kclose-disconnect) (instead of `close` or `closeSocket`) – this will clean up the connection tracking and close the socket.
 
 The `k` function is used to send messages over the connection. If a positive handle is used then the call is synchronous, otherwise it is an asynchronous call.
 
@@ -551,7 +552,7 @@ Note that the object returned from an async set call must not be passed to `r0`.
 There is no timeout argument for the `k(handle,…,(K)0)` call, but you can use socket timeouts as described below.
 
 
-## Unix domain sockets
+### Unix domain sockets
 
 A Unix domain socket may be requested via the IP address `0.0.0.0`, e.g.
 
@@ -560,7 +561,7 @@ int handle=khpu("0.0.0.0",5000,"user:password");
 ```
 
 
-## SSL/TLS
+### SSL/TLS
 
 To use this feature, you must link with one of [the `e` libs](#two-sets-of-files).
 
@@ -590,7 +591,7 @@ int h=khpunc("",-1,"",0,2); // remember to test the return value for -3
 ```
 
 
-## Socket timeouts
+### Socket timeouts
 
 There are a number of reasons not to specify or implement timeouts.
 Typically these will be hit at the least convenient of times when under load from e.g. a sudden increase in trading volumes.
@@ -655,8 +656,8 @@ This example assumes rows with three fields: symbol, price and size.
 
 Note the two different directions of error flow below.
 
-1.  To signal an error from your C code to kdb+ use the function `krr(S)`.
-A utility function `orr(S)` can be used to signal system errors.
+1.  To signal an error from your C code to kdb+ use the function [`krr(S)`](capiref.md#krr-signal-c-error).
+A utility function [`orr(S)`](capiref.md#orr-signal-system-error) can be used to signal system errors.
 It is similar to `krr(S)`, but it appends a system error message to the user-provided string before passing it to `krr`.
 
 1.  To catch an error code from the results of a call to `r=k(h, …)`, check the return value and type.
@@ -671,9 +672,6 @@ if(r && -128==r->t)
 
 Under some network-error scenarios, `errno` can be used to obtain the details of the error,
 e.g. `perror(“network”);`
-
-:fontawesome-regular-hand-point-right:
-[`krr`](capiref.md#krr-signal-c-error)
 
 
 ## Return values
@@ -702,7 +700,7 @@ K identity(){
 
 ## Callbacks
 
-The `void sd0(I)` and `K sd1(I, K(*)(I))` functions are for use with callbacks and are available only within q itself, i.e. used from a shared library loaded into q.
+The [`void sd0(I)`](capiref.md#sd0-remove-callback) and [`K sd1(I, K(*)(I))`](capiref.md#sd1-set-function-on-loop) functions are for use with callbacks and are available only within q itself, i.e. used from a shared library loaded into q.
 The value of the file descriptor passed to `sd1` must be 0 &lt; `fd` &lt; 1024, and 1021 happens to be the maximum number of supported connections (recalling 0, 1, 2 used for stdin,stdout,stderr).
 
 ```c
@@ -766,32 +764,13 @@ Callbacks from `sd1` are executed on the main thread of q, in the handle context
 
 ## Serialization and deserialization
 
-The `K b9(I,K)` and `K d9(K)` functions serialize and deserialize K objects.
+The [`K b9(I,K)`](capiref.md#b9-serialize) and [`K d9(K)`](capiref.md#d9-deserialize) functions serialize and deserialize K objects.
 
-```c
-b9(mode,kObject);
-```
-
-will generate a K byte vector that contains the serialized data for `kObject`.
+`b9` will generate a K byte vector that contains the serialized data.
 Since V3.0, for shared libraries loaded into q the value for `mode` must be -1.
-For standalone applications binding with c.o/c.dll, or shared libraries prior to V3.0, the values for `mode` can be
+For standalone applications binding with c.o/c.dll, or shared libraries prior to V3.0, the values for `mode` can be viewed [here](capiref.md#b9-serialize).
 
-value | effect
-------|------
--1    | valid for V3.0+ for serializing/deserializing within the same process
-0     | unenumerate, block serialization of timespan and timestamp (For working with versions prior to 2.6).
-1     | retain enumerations, allow serialization of timespan and timestamp. (Useful for passing data between threads).
-2     | unenumerate, allow serialization of timespan and timestamp
-3     | unenumerate, compress, allow serialization of timespan and timestamp
-4     | (reserved)
-5     | allow 1TB msgs, but no single vector may exceed 2 billion items
-6     | allow 1TB msgs, and individual vectors may exceed 2 billion items
-
-```c
-d9(kObject);
-```
-
-will deserialize the byte stream in `kObject` returning a new `kObject`.
+`d9` will deserialize the provided byte stream returning a new `kObject`.
 The byte stream passed to `d9` is not altered in any way.
 If you are concerned that the byte vector that you wish to deserialize may be corrupted, call `okx` to verify it is well formed first.
 
@@ -811,7 +790,7 @@ else
 
 ## Miscellaneous
 
-The `K dot(K x, K y)` function is the same as the q function `.[x;y]`.
+The [`K dot(K x, K y)`](capiref.md#dot-apply) function is the same as the q function `.[x;y]`.
 
 ```q
 q).[{x+y};(1 2;3 4)]
