@@ -317,22 +317,22 @@ To create atom values the following functions are available. Function `ka` creat
 
 purpose                | call
 -----------------------|-----------------
-Create an atom of type | `K ka(I);`
-Create a boolean       | `K kb(I);`
-Create a guid          | `K ku(U);`
-Create a byte          | `K kg(I);`
-Create a short         | `K kh(I);`
-Create an int          | `K ki(I);`
-Create a long          | `K kj(J);`
-Create a real          | `K ke(F);`
-Create a float         | `K kf(F);`
-Create a char          | `K kc(I);`
-Create a symbol        | `K ks(S);`
-Create a timestamp     | `K ktj(-KP,J);`
-Create a time          | `K kt(I);`
-Create a date          | `K kd(I);`
-Create a timespan      | `K ktj(-KN,J);`
-Create a datetime      | `K kz(F);`
+Create an atom of type | [`K ka(I);`](capiref.md#ka-create-atom)
+Create a boolean       | [`K kb(I);`](capiref.md#kb-create-boolean)
+Create a guid          | [`K ku(U);`](capiref.md#ku-create-guid)
+Create a byte          | [`K kg(I);`](capiref.md#kg-create-byte)
+Create a short         | [`K kh(I);`](capiref.md#kh-create-short)
+Create an int          | [`K ki(I);`](capiref.md#ki-create-int)
+Create a long          | [`K kj(J);`](capiref.md#kj-create-long)
+Create a real          | [`K ke(F);`](capiref.md#ke-create-real)
+Create a float         | [`K kf(F);`](capiref.md#kf-create-float)
+Create a char          | [`K kc(I);`](capiref.md#kc-create-char)
+Create a symbol        | [`K ks(S);`](capiref.md#ks-create-symbol)
+Create a timestamp     | [`K ktj(-KP,J);`](capiref.md#ktj-create-timestamp)
+Create a time          | [`K kt(I);`](capiref.md#kt-create-time)
+Create a date          | [`K kd(I);`](capiref.md#kd-create-date)
+Create a timespan      | [`K ktj(-KN,J);`](capiref.md#ktj-create-timespan)
+Create a datetime      | [`K kz(F);`](capiref.md#kz-create-datetime)
 
 An example of creating an atom:
 
@@ -474,12 +474,12 @@ The following example shows the steps to create a keyed table:
 ```c
 K maketable(){
   K c,d,e,v,key,val;
-/* table of primary keys */
+  /* table of primary keys */
   c=ktn(KS,1);kS(c)[0]=ss("sid");
   d=ktn(KS,3);kS(d)[0]=ss("ibm");kS(d)[1]=ss("gte");kS(d)[2]=ss("kvm");
   v=knk(1,d);
   key=xT(xD(c,v));
-/* table of values */
+  /* table of values */
   c=ktn(KS,2);kS(c)[0]=ss("amt");kS(c)[1]=ss("date");
   d=ktn(KI,3);kI(d)[0]=100;kI(d)[1]=300;kI(d)[2]=200;
   e=ktn(KD,3);kI(e)[0]=2;kI(e)[1]=3;kI(e)[2]=5;
@@ -511,7 +511,7 @@ else
 
 ## Connecting to a q server
 
-We use the `int khpu(host, port,username)` function to connect to a q server.
+We use the [`int khpu(host, port,username)`](capiref.md#khpu-connect-no-timeout) function to connect to a q server.
 Note you _must_ call `khpu` before generating any q data, and the very first call to `khpu` must not be concurrent to other `khpu` calls.
 To initialize memory without making a connection, use `khp("",-1);`
 
@@ -536,7 +536,7 @@ Return values for `khp`/`khpu`/`khpun` are:
 
 Note that with the release of `c.o` with V2.6, `c.o` now tracks the connection type (pre-V2.6, or V2.6+). Hence to close the connection you must call [`kclose`](capiref.md#kclose-disconnect) (instead of `close` or `closeSocket`) – this will clean up the connection tracking and close the socket.
 
-The `k` function is used to send messages over the connection. If a positive handle is used then the call is synchronous, otherwise it is an asynchronous call.
+The [`k`](capiref.md#k-evaluate) function is used to send messages over the connection. If a positive handle is used then the call is synchronous, otherwise it is an asynchronous call.
 
 ```c
 // Connect to a q server on the localhost port 1234.
@@ -577,7 +577,11 @@ There’s an additional return value for TLS connections, `-3`, which indicates 
 
 ```c
 extern K sslInfo(K x); // returns an error if init fails, or a dict of settings similar to -26!x
-if(handle==-3){K x=ee(sslInfo((K)0));printf("Init error %s\n",xt==-128?x->s:"unknown");r0(x);}
+if(handle==-3){
+  K x=ee(sslInfo((K)0));
+  printf("Init error %s\n",xt==-128?x->s:"unknown");
+  r0(x);
+}
 ```
 
 Prior to 4.1t 2023.11.10, SSL/TLS connections can be used from the initialization thread only, i.e. the thread which first calls any `khp` function since the start of the application. It can now be used for one-shot synchronous requests.
@@ -616,7 +620,6 @@ V sst(I d,I sendTimeout,I recvTimeout){
 int c=khpun("localhost",1234,"myname:mypassword",1000); // connect timeout 1000mS
 if(c>0) sst(c,30000,45000); // timeout sends with 30s, receives with 45s
 ```
-
 
 
 ## Bulk transfers
@@ -715,7 +718,7 @@ sd0(d);
 sd0x(d,1);
 ```
 
-Each of the above calls removes the callback on `d` and calls `kclose(d)`.  `sd0x(I d,I f)` was introduced in V3.0 2013.04.04: its second argument indicates whether to call `kclose(d)`.
+Each of the above calls removes the callback on `d` and calls `kclose(d)`.  [`sd0x(I d,I f)`](capiref.md#sd0x-remove-callback-conditional) was introduced in V3.0 2013.04.04: its second argument indicates whether to call `kclose(d)`.
 
 On Linux, `eventfd` can be used with `sd1` and `sd0`. Given a file efd.c
 
@@ -797,22 +800,35 @@ q).[{x+y};(1 2;3 4)]
 4 6
 ```
 
-The dynamic link, `K dl(V* f, I n)`, function takes a C function that would take _n_ K objects as arguments and return a new K object, and returns a q function.
+The dynamic link, [`K dl(V* f, I n)`](capiref.md#dl-dynamic-link), function takes a C function that would take _n_ K objects as arguments and return a new K object, and returns a q function.
 It is useful, for example, to expose more than one function from an extension module.
 
 ```c
 #include "k.h"
 Z K1(f1){R r1(x);}
 Z K2(f2){R r1(y);}
-K1(lib){K y=ktn(0,2);x=ktn(KS,2);xS[0]=ss("f1");xS[1]=ss("f2");
-  kK(y)[0]=dl(f1,1);kK(y)[1]=dl(f2,2);R xD(x,y);}
+K1(lib){
+  K y=ktn(0,2);
+  x=ktn(KS,2);
+  xS[0]=ss("f1");
+  xS[1]=ss("f2");
+  kK(y)[0]=dl(f1,1);
+  kK(y)[1]=dl(f2,2);
+  R xD(x,y);
+}
 ```
 
 Alternatively, for simpler editing of your lib API:
 
 ```c
 #define sdl(f,n) (js(&x,ss(#f)),jk(&y,dl(f,n)))
-K1(lib){K y=ktn(0,0);x=ktn(KS,0);sdl(f1,1);sdl(f2,2);R xD(x,y);}
+K1(lib){
+  K y=ktn(0,0);
+  x=ktn(KS,0);
+  sdl(f1,1);
+  sdl(f2,2);
+  R xD(x,y);
+}
 ```
 
 With the above compiled into `lib.so`:
