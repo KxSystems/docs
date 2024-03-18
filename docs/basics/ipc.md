@@ -238,6 +238,7 @@ For releases since 2012.05.29, kdb+ and the C-API will compress an outgoing mess
 -   Uncompressed serialized data has a length greater than 2000 bytes
 -   Connection is not `localhost`
 -   Connection is not 127.0.0.1
+-   Connection is not using UDS (Unix Domain Socket)
 -   Connection does not resolve to being localhost (since 4.1t 2021.06.04)
 -   Size of compressed data is less than &frac12; the size of uncompressed data
 
