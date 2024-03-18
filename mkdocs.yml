@@ -198,7 +198,6 @@ nav:
       - Scripts: learn/tour/scripts.md
       - IDE: learn/tour/ide.md
     - Q for quants: learn/brief-introduction.md
-    # - Dictionaries & tables: learn/dicts-tables.md
     - Q by Examples: learn/q-by-examples.md
     - Q for All: learn/q-for-all.md
     # - Q for Pythons:
