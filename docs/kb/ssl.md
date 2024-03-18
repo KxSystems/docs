@@ -180,7 +180,7 @@ The environment variable `SSL_VERIFY_CLIENT` controls the processing of certific
 -   `REQUESTONLY` (since 4.1t 2024.02.07) server requests a client certificate but allows the connection if the client certificate is missing or invalid
 -   `IFPRESENT` (since 4.1t 2024.02.07) server requests a client certificate and terminates the connection if an invalid certificate is provided; the server continues if the certificate is missing or valid
 
-Extra protocol details for a handle `h` are available via [`.z.e`]((../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
+Extra protocol details for a handle `h` are available via [`.z.e`](../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
 
 
 ## TLS Client Mode
