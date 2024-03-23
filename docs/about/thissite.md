@@ -51,11 +51,6 @@ Truncated GitHub URLs are prefixed with the GitHub icon :fontawesome-brands-gith
 For example, read :fontawesome-brands-github: `KxSystems/kdb` as `https://github.com/KxSystems/kdb`.
 
 
-## :fontawesome-solid-download: Download
-
-[`site.zip`](https://code.kx.com/download/site.zip "Download 60MB") is a copy of the site you can run from your filesystem.
-
-
 ## :fontawesome-regular-handshake: Contribute
 
 > A finished work is exactly that, requires resurrection.<br>
