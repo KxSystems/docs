@@ -59,7 +59,7 @@ KX Developer](/developer/ "Download and install the free IDE, KX Developer")
 
 </div>
 
-Kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](https://code.kx.com/pykx), but its power and performance are best accessed through its own language, q.
+kdb+ is a database. You can use it through [interfaces](../interfaces/index.md) such as ODBC, or from [Python](https://code.kx.com/pykx), but its power and performance are best accessed through its own language, q.
 
 Q is a general-purpose programming language. You can write programs for anything in q. 
 
