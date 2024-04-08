@@ -789,7 +789,7 @@ Note this is purely an example; there are other ways to achieve the same result.
 .z.ts:f
 ```
 
-Where `f` is a unary function, `.z.ts` is evaluated on intervals of the timer variable set by system command `\t`.
+Where `f` is a unary function, `.z.ts` is evaluated on intervals of the timer variable set by system command `\t`. The timestamp is returned as Greenwich Mean Time (GMT).
 
 ```q
 q)/ set the timer to 1000 milliseconds
