@@ -40,7 +40,7 @@ Where
 -   `x` is a K object
 -   `d` is a dictionary
 
-returns the result of `.j.j` unless ``d`null0w``, in which case `0w` and `-0w` are mapped to `"null"`.
+returns the result of `.j.j` unless d[`null0w] is 1b, in which case `0w` and `-0w` are mapped to `"null"`.
 (Since V3.6 2018.12.06.)
 
 ```q
@@ -48,7 +48,7 @@ q).j.j -0w 0 1 2 3 0w
 "[-inf,0,1,2,3,inf]"
 q).j.jd(-0w 0 1 2 3 0w;()!())
 "[-inf,0,1,2,3,inf]"
-q).j.jd(-0w 0 1 2 3 0w;(!). 1#'`null0w,1b)
+q).j.jd(-0w 0 1 2 3 0w;([null0w:1b]))
 "[null,0,1,2,3,null]"
 ```
 
