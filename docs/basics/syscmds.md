@@ -206,7 +206,7 @@ _Current directory_
 \cd fp
 ```
 
-Where `fp` is a filepath, sets the current directory
+Where `fp` is a filepath, sets the current directory. Creates the directory if it does not exist.
 
 ```q
 q)\cd
