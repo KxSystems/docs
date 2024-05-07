@@ -40,7 +40,7 @@ description: An index of q and kdb+ repositories on GitHub.
 
 [Awesome Q](https://awesome-q.org) A collection of useful or interesting repositories curated by q devs.
 
-<div style="background-color: #efefef; border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.2);  display: inline-block; padding: 0 1em;" markdown>Please tell [KX documentation team](mailto:docs@kx.com)
+<div style="background-color: #efefef; border-radius: 10px; box-shadow: 2px 2px rgba(0,0,0,0.2);  display: inline-block; padding: 0 1em;" markdown>Please tell the [KX documentation team](mailto:docs@kx.com)
 about new repositories.</div>
 
 :fontawesome-brands-github:
