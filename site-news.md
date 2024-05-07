@@ -27,8 +27,6 @@ White papers now appear with their LHS nav showing related articles.
 The old wiki has now been taken off life support at /oldwiki. 
 _Requiescat in pacem_. 
 
-If this causes you a problem, please contact the [Librarian](mailto:librarian@kx.com).
-
 
 ## V1
 
