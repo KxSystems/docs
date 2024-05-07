@@ -674,9 +674,8 @@ Other papers by Peter Storeng
 ![Stephen Taylor](../img/faces/stephentaylor.png)
 {: .small-face}
 
-**Stephen Taylor** FRSA is the KX Librarian. He has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
+**Stephen Taylor** FRSA has followed the evolution of the Iversonian languages through APL, J, k, and q, and is a former editor of [_Vector_](https://vector.org.uk), the journal of the British APL Association.
 &nbsp;
-[:fontawesome-solid-envelope:](mailto:stephen@kx.com?subject=White paper: Parse trees and functional forms) &nbsp;
 [:fontawesome-brands-linkedin:](https://www.linkedin.com/in/stephen-taylor-b5ba78/) &nbsp;
 [:fontawesome-brands-twitter:](https://twitter.com/sjt5jt)
 

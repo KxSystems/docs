@@ -29,10 +29,3 @@ The terminology revision begun in Version 1.0 is complete: _adverbs_ are now _it
 The Cookbook articles are now in the [Knowledge Base](https://code.kx.com/q/kb/).
 
 
-
-## Contact
-
-This is a project of the [Kx Librarian](mailto:librarian@kx.com)
-
-> A librarian’s job is to put information where people can find it. 
-

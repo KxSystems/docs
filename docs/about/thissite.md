@@ -11,11 +11,6 @@ This site is the official documentation for [kdb+](../database/index.md) and the
 It reflects the work of the KX community since 1993, has many authors,
 and continues to evolve.
 
-This site is a project of the KX Librarian: librarian@kx.com.
-
-> A librarian’s job is to put information where people can find it.
-
-
 ## :fontawesome-solid-magnifying-glass: Search
 
 The Search Box on this site is customized for the q language.
@@ -98,7 +93,7 @@ This site includes images for which KX holds neither copyright nor permission.
 These images serve as links to their original sites.
 We understand this to be fair use.
 
-If you are a copyright holder and object to this use, please write to librarian@kx.com.
+If you are a copyright holder and object to this use, please write to docs@kx.com.
 
 
 ## :fontawesome-solid-book: Terminology

@@ -27,8 +27,6 @@ White papers now appear with their LHS nav showing related articles.
 The old wiki has now been taken off life support at /oldwiki. 
 _Requiescat in pacem_. 
 
-If this causes you a problem, please contact the [Librarian](mailto:librarian@kx.com).
-
 
 ## V1
 
@@ -115,7 +113,6 @@ We have replaced the native MkDocs client-side search engine with a custom searc
 The large majority of visits to this site are from laptops and desktops, so the new search engine displays results as a page, rather than a popup list. 
 
 The engine is still being developed. 
-Please send your comments, suggestions and requests to librarian@kx.com. 
 
 
 ## Fusion interfaces

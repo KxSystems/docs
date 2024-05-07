@@ -68,7 +68,6 @@ If you have some experience with mathematics, functional programming or SQL, you
 
 In this section we offer different routes into the language.
 Find one that suits your experience and learning style.
-(Or ask the [Librarian](mailto:librarian@code.kx.com) for what you need.)
 
 Other sections:
 
@@ -184,5 +183,3 @@ There is information that if you were learning by yourself, would take years to 
 
 
 See the [Archive](archive.md) for older documents.
-
-Please send comments on tutorials to <librarian@kx.com>.
