@@ -130,7 +130,7 @@ within the `.Q` namespace that will do the enumeration for us: `.Q.en` and
 
 ### `.Q.en`
 
-`.Q.en` will enumerate to the sym domain by default. The arguments for
+[`.Q.en`](../ref/dotq.md#en-enumerate-varchar-cols) will enumerate to the sym domain by default. The arguments for
 `.Q.en` are the directory path that the sym file will be stored in and the
 table itself.
 
@@ -141,7 +141,7 @@ variable in memory are created.
 q)t:([]col1:`AAPL`IBM`GE`GOOG;col2:4?100.;col3:(string 4?`2))
 q)`:db/t/ set .Q.en[`:db] t
 `:db/t/
-q)system"ls ~/db"
+q)system"ls db"
 "sym"
 ,"t"
 ```
@@ -181,7 +181,7 @@ Modifying the example in `.Q.en`:
 ```q
 q)t:([]col1:`AAPL`IBM`GE`GOOG;col2:4?100.;col3:(string 4?`2))
 //Splay table, rsync sym to backup dir, output same as .Q.en
-q)qenBackup:{[backupdir]`:db/t/ set .Q.en[`:db;t];system”rsync db/sym ”,backupdir;(),`t}
+q)qenBackup:{[backupdir]`:db/t/ set .Q.en[`:db;t];system"rsync db/sym ",backupdir;(),`t}
 // Backup to a tmp dir for example
 q)qenBackup”/tmp/bkup/”
 ,`t
@@ -197,7 +197,7 @@ q)get`:/tmp/bkup/sym
 Updating the table and splaying again:
 
 ```q
-q)`t upsert `col1`col2`col3!(`FB;23.1;”xq”) 
+q)`t upsert `col1`col2`col3!(`FB;23.1;"xq") 
 q)qenBackup”/tmp/bkup/”
 ,`t
 ```
@@ -212,13 +212,13 @@ q)get`:/tmp/bkup/sym
 
 ## `.Q.ens`
 
-`.Q.ens` allows enumeration against a domain other than sym. It takes the
+[`.Q.ens`](../ref/dotq.md#ens-enumerate-against-domain) allows enumeration against a domain other than sym. It takes the
 same arguments as `.Q.en` as well as the name of the domain to enumerate
 to, i.e. `.Q.ens[dir;table;enum]`.
 
 ```q
 q)`:db/t/ set .Q.ens[`:db;t;`symt]
-q)system"ls ~/db"
+q)system"ls db"
 "symt"
 ,"t"
 q)get `:db/symt
@@ -232,8 +232,8 @@ Depending on the system setup, it could be beneficial to enumerate data
 against multiple sym files within the one process, i.e. within one
 database there could be two tables, each with their own sym files.
 
-This functionality is provided using the aforementioned `.Q.ens` and
-`.Q.dpfts`. `.Q.dpfts` functions the same as `.Q.dpft`, except we can specify
+This functionality is provided using the aforementioned [`.Q.ens`](../ref/dotq.md#ens-enumerate-against-domain) and
+[`.Q.dpfts`](../ref/dotq.md#dpfts-save-table-with-symtable). `.Q.dpfts` functions the same as [`.Q.dpft`](../ref/dotq.md#dpft-save-table), except we can specify
 the domain we want to enumerate to.
 
 ```q
@@ -331,7 +331,7 @@ q)count get`:db1/sym
 ### Updating data and enumerations on disk
 
 When adding a column of type symbol to a database we must enumerate this
-column to prevent a type error when writing to disk. The `dbmaint.q`
+column to prevent a type error when writing to disk. The [`dbmaint.q`](https://github.com/KxSystems/kdb/tree/master/utils)
 script makes this very easy for developers, as it already has predefined
 functions that consider the type of the column being added.
 
@@ -372,7 +372,7 @@ sym file, you will not be able to write to the sym file. A _no append
 to zipped enums_ error is displayed if this occurs.
 
 ```q
-q)-19!(`:db/sym;`:db/sym;17;2;6)
+q)set[(`:db/sym;17;2;6);`:db/sym]
 `:db/sym
 q)t:([]col1:`FB`MSFT`AMZN`WFC;col2:4?100.;col3:(string 4?`2))
 q)get `:db/sym
@@ -428,7 +428,7 @@ vectors and take 2.5 times less storage (16 per instead of 40 per).
 
 ### Encoding/decoding
 
-The functions `.Q.j10` and `.Q.x10` (encode/decode binhex) and `.Q.j12` and `.Q.x12`
+The functions [`.Q.j10`](../ref/dotq.md#j10-encode-binhex) and [`.Q.x10`](../ref/dotq.md#x10-decode-binhex) (encode/decode binhex) and [`.Q.j12`](../ref/dotq.md#j12-encode-base-36) and [`.Q.x12`](../ref/dotq.md#x12-decode-base-36)
 (encode/decode base64) return a string encoded or decoded against
 restricted alphabets. The main use of these functions is to encode long
 alphanumeric identifiers (CUSIP, ORDERID, etc.) so they can be quickly
