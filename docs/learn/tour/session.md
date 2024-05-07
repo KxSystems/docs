@@ -131,13 +131,13 @@ q)
 ## Command-line options
 
 The q session can be launched with parameters.
-The most important is a filename. Q will run it as a [script](scripts.md).
+The most important is a filename. Q runs it as a [script](scripts.md).
 
 ```bash
 $ cat hello.q
 /
  title: hello-world script in q
- author: librarian@kx.com
+ author: docs@kx.com
  date: February 2020
 \
 1 "hello world";
