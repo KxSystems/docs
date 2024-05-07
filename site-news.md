@@ -113,7 +113,6 @@ We have replaced the native MkDocs client-side search engine with a custom searc
 The large majority of visits to this site are from laptops and desktops, so the new search engine displays results as a page, rather than a popup list. 
 
 The engine is still being developed. 
-Please send your comments, suggestions and requests to librarian@kx.com. 
 
 
 ## Fusion interfaces
