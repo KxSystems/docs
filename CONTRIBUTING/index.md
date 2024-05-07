@@ -22,7 +22,7 @@ Image files should be ≤800px wide.
 
 Use the source files for published papers as models.
 
-Send the draft as a single Markdown file with any accompanying image files to librarian@kx.com. 
+Send the draft as a single Markdown file with any accompanying image files to docs@kx.com. 
 
 
 Larger changes
