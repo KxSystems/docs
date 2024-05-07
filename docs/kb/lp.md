@@ -7,7 +7,7 @@ keywords: apl, iverson, kdb+, linear programming, q
 # Linear programming
 
 
-_Linear Programming is a large topic, of which this article reviews just a few applications. More articles on it would be very welcome: please contact librarian@kx.com._
+_Linear Programming is a large topic, of which this article reviews just a few applications. More articles on it would be very welcome: please contact docs@kx.com._
 
 !!! note "Iverson Notation and linear algebra"
     [![Ken Iverson](../img/kei01.jpg)](https://en.wikipedia.org/wiki/Kenneth_E._Iverson "Wikipedia: Kenneth E. Iverson")
