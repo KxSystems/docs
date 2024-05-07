@@ -528,7 +528,7 @@ Note that (since V3.1) the worker processes are not started automatically by kdb
 
 !!! warning "Disabled in V4.1t"
 
-    Using handles within peach is temporarily not supported, to be reviewed in the near future e.g.
+    Using handles within peach is not supported e.g.
 
         q)H:hopen each 4#4000;{x""}peach H
         3 4 5 6i
