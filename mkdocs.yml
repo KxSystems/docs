@@ -167,8 +167,8 @@ nav:
           - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
           - Quobyte: cloud/otherfs/quobyte.md
       - DigitalOcean: kb/digitalocean.md
-    - Community: https://code.kx.com/home/community
-    - kdb+ and q forum: https://community.kx.com/t5/kdb-and-q/bd-p/kdb-q-questions
+    - Community: https://learninghub.kx.com
+    - kdb+ and q forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md
     - About this site: about/thissite.md
   - kdb Insights: 'https://code.kx.com/insights'
