@@ -27,7 +27,7 @@ The operator `!` with a negative integer as left argument calls an internal func
 [-27!(x;y)](#-27xy-format)   format                   -31!  [.j.jd](../ref/dotj.md#jjd-serialize-infinity)
 [-30!x](#-30x-deferred-response)       deferred response        -32!  [.Q.btoa](../ref/dotq.md#btoa-b64-encode)
 [-33!x](#-33x-sha-1-hash)       SHA-1 hash               -34!  [.Q.ts](../ref/dotq.md#ts-time-and-space)
-[-36!(x;y)](#-36xy-load-master-key)   load master key          -35!  [.Q.gz](../ref/dotq.md#gz-gzip)
+[-36!](#-36-load-master-key)        load master key          -35!  [.Q.gz](../ref/dotq.md#gz-gzip)
 [-38!x](#-38x-socket-table)       socket table             -37!  [.Q.prf0](../ref/dotq.md#prf0-code-profiler)
 [-120!x](#-120x-memory-domain)      memory domain
 </div>
@@ -378,16 +378,25 @@ q)raze string -33!"mypassword"
 Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-u-usr-pwd)
 
 
-## `-36!(x;y)` Load master key
+## `-36!` Load master key
 
 ```syntax
+-36!(::)    / since 4.1 2024.03.12
 -36!(x;y)
+-36!(x;y;z) / since 4.1 2024.03.12
 ```
 
 Where
 
 -   `x` is a master-key file as a [file symbol](glossary.md#file-symbol)
 -   `y` is a password as a string
+-   `z` is whether to unlock/lock as a bool
+
+`-36!(::)`
+
+Expose whether a key has already been loaded, returning 0b or 1b accordingly.
+
+`-36!(x;y) and -36!(x;y;z)`
 
 loads and validates the master key into memory as the key to use when decrypting or encrypting data on disk.
 
@@ -406,6 +415,9 @@ PKCS5_PBKDF2_HMAC               library invocation failed
 Restricted                      must be executed under handle 0
 Unrecognized key format         master key file format unrecognized
 ```
+
+`z` indicates unlock/lock. To reload using a new key, unlock using current key and then proceed with the new key. 
+If load is attempted whilst locked, it throws `'DARE key locked`.
 
 
 ## `-38!x` (socket table)
