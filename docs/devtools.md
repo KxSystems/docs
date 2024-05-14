@@ -1,7 +1,7 @@
 ---
 title: Developer tools – kdb+ and q documentation
 description: KX offers developers a variety of tools, some free, others only to commercially-licensed customers. 
-keywords: analyst, control, dashboards, developer, kdb+, monitoring, platform, product, q, stream
+keywords: analyst, control, dashboards, developer, kdb+, monitoring, delta platform, product, q, stream
 ---
 # Developer tools
 
@@ -39,9 +39,9 @@ offers an easy-to-use, yet powerful drag-and-drop interface to allow creators to
 
 
 
-## KX Platform 
+## KX Delta Platform 
 
-[KX Platform](/platform/) is a suite of products for building kdb+ user interfaces in HTML5/JS. It has three modules.
+[KX Delta Platform](/platform/) is a suite of products for building kdb+ user interfaces in HTML5/JS. It has three modules.
 
 
 
