@@ -18,8 +18,8 @@ You can use `-30!(::)` at any place in the execution path of [`.z.pg`](../ref/do
 Kdb+ tracks which handles are expecting a response. If you try to send a response to a handle that is not expecting one, you’ll see
 
 ```q
-q).z.W / list of socket handles being monitored by kdb+ main thread
-8i 
+q)key .z.W / list of socket handles being monitored by kdb+ main thread
+, 8i 
 q)-30!(8i;0b;`hello`world) / try to send a response of (0b;`hello`world)
 'Handle 8 was not expecting a response msg
   [0]  -30!(8i;0b;`hello`world)
