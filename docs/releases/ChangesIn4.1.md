@@ -290,3 +290,7 @@ q)H:hopen each 4#4000;{x""}peach H
 q))
 ```
 [One-shot IPC requests](../ref/hopen.md#one-shot-request) can be used within peach instead.
+
+### .z.W
+
+[.z.W](../ref/dotz.md#zw-handles) now returns `handles!bytes` as `I!J`, instead of the former `handles!list` of individual msg sizes. Use `sum each .z.W` if writing code targetting 4.0 and 4.1.

@@ -876,9 +876,21 @@ q)h:hopen ...
 q)h
 3
 q)neg[h]({};til 1000000); neg[h]({};til 10); .z.W
-3| 4000030 70
-q)sum each .z.W
-3| 0
+3| 8000030 110
+q)neg[h]({};til 1000000); neg[h]({};til 10); sum each .z.W 
+3| 8000140
+```
+
+Since 4.1 2023.09.15, this returns `handles!bytes` as `I!J`, instead of the former `handles!list` of individual msg sizes. Use `sum each .z.W` if writing code targetting 4.0 and 4.1
+
+```q
+q)h:hopen ...
+q)h
+6i
+q)neg[h]({};til 1000000); neg[h]({};til 10); .z.W
+6| 8000140
+q)neg[h]({};til 1000000); neg[h]({};til 10); sum each .z.W
+6| 8000140
 ```
 
 
