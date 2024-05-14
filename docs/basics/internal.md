@@ -381,9 +381,9 @@ Command-line options [`-u`](cmdline.md#-u-usr-pwd-local) and [`-U`](cmdline.md#-
 ## `-36!` Load master key
 
 ```syntax
--36!(::)    / since 4.1 2024.03.12
+-36!(::)    / since 4.1 2024.03.12 and 4.0 2024.03.02
 -36!(x;y)
--36!(x;y;z) / since 4.1 2024.03.12
+-36!(x;y;z) / since 4.1 2024.03.12 and 4.0 2024.03.02
 ```
 
 Where
