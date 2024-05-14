@@ -294,3 +294,16 @@ q))
 ### .z.W
 
 [.z.W](../ref/dotz.md#zw-handles) now returns `handles!bytes` as `I!J`, instead of the former `handles!list` of individual msg sizes. Use `sum each .z.W` if writing code targetting 4.0 and 4.1.
+
+### Dictionary update contains by clause
+
+Since 4.1 2024.04.29, error if dictionary update contains by clause (previously ignored)
+
+```q
+q)d:(`a`b!1 2)
+q)update a by b from d / 4.0
+a| 1
+b| 2
+q)update a by b from d / 4.1
+'type
+```
