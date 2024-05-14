@@ -14,7 +14,7 @@ q))       extra right parens mark suspended execution/s
 \\         abort execution and exit debugger
 [.Q.bt](../ref/dotq.md#bt-backtrace)     dump backtrace
 [&](#where)         current frame information
-[.Q.trp](../ref/dotq.md#trp-extend-trap)    extends [Trap](../ref/apply.md#trap) to collect backtrace
+[.Q.trp](../ref/dotq.md#trp-extend-trap-at)    extends [Trap At](../ref/apply.md#trap-at) to collect backtrace
 [-e](cmdline.md#-e-error-traps) [\e](syscmds.md#e-error-trap-clients)     error-trap mode
 </div>
 
@@ -247,7 +247,7 @@ View calculations and system commands, including [`\l`](syscmds.md#l-load), corr
 
 ### Trap
 
-[`.Q.trp[f;x;g]`](../ref/dotq.md#trp-extend-trap) extends trap (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
+[`.Q.trp[f;x;g]`](../ref/dotq.md#trp-extend-trap-at) extends `trap at` (`@[f;x;g]`) to collect backtrace. Along with the error string, `g` gets called with the backtrace object as a second argument. You can format it with `.Q.sbt` to make it legible.
 
 ```q
 q)f:{`hello+x}

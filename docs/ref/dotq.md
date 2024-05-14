@@ -30,7 +30,7 @@ _Tools_
  [s1       string representation](#s1-string-representation)    [ld          load and group](#ld-load-and-group)
  [sbt      string backtrace](#sbt-string-backtrace)         [lo          load without](#lo-load-without)
  [sha1     SHA-1 encode](#sha1-sha-1-encode)             [M           chunk size](#m-chunk-size)
- [trp      extend trap](#trp-extend-trap)              [qp          is partitioned](#qp-is-partitioned)
+ [trp      extend trap at](#trp-extend-trap-at)           [qp          is partitioned](#qp-is-partitioned)
  [ts       time and space](#ts-time-and-space)           [qt          is table](#qt-is-table)
  [u        date based](#u-date-based)
  [V        table to dict](#v-table-to-dict) 
@@ -1692,7 +1692,7 @@ Returns a string representation of `x`.
 .Q.sbt x
 ```
 
-Where `x` is a [backtrace object](#trp-extend-trap) returns it as a string formatted for display.
+Where `x` is a [backtrace object](#trp-extend-trap-at) returns it as a string formatted for display.
 
 Since V3.5 2017.03.15.
 
@@ -1733,7 +1733,7 @@ q).Q.t?"j"  / longs have datatype 7
 
 
 
-## `trp` (extend trap)
+## `trp` (extend trap at)
 
 ```syntax
 .Q.trp[f;x;g]
@@ -1745,7 +1745,7 @@ Where
 -   `x` is its argument
 -   `g` is a binary function
 
-extends [Trap](apply.md#trap) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
+extends [Trap At](apply.md#trap-at) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
 
 1.   the error string
 2.   the backtrace object
