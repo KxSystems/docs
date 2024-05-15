@@ -12,7 +12,6 @@ _A selection of technical articles of interest to kdb+ developers_
 
 ## Programming in q
 
--   [Finding primes with q](https://community.kx.com/t5/Blogs/Finding-primes-with-q/ba-p/11120), by Noah Attrup & Stephen Taylor
 -   [Real-world examples of iterators](https://kx.com/blog/enhancing-your-kdb-q-toolkit-real-world-examples-of-iterators/) ==revised==
 -   [Monte-Carlo methods with kdb+](https://armantee.github.io/sampling-with-kdb-p1/), by Arman Tadjrishi 
 -   [Memory mapping in kdb+](https://kx.com/blog/memory-mapping-in-kdb/), by Adam Bonham

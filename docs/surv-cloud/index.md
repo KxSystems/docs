@@ -526,9 +526,6 @@ And once more the surveillance application is deployed to the cloud, this time i
 
 As alluded to at the start of the paper, trade surveillance systems are only going to become more complex and data intensive. A prime example is the explosion of cryptocurrency over the last few years, now with an average daily trading volume of over $91 billion, creating a web of new regulatory complexities. As a result, fast, robust, and scalable surveillance solutions are now a must. Building surveillance applications in kdb+ provides unrivalled computational speed on large datasets, and as shown, deploying them using Kubernetes offers the scalability and built-in fault-tolerance we crave without having to become surgically attached to a single cloud provider. This is the approach adopted by [kdb Insights](https://code.kx.com/insights/index.html), where processes like the tickerplant, RDB and HDB are implemented as microservices that can be flexibly orchestrated into robust, scalable solutions.
 
-:fontawesome-solid-comment:
-You can [comment on this article](https://community.kx.com/t5/News/Surveillance-in-the-Cloud/ba-p/12361) on the KX Community.
-
 ## Author
 
 ![Luke Britton](../img/faces/lukebritton.jpg)
