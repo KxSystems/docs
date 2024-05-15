@@ -297,7 +297,7 @@ q))
 
 ### Dictionary update contains by clause
 
-Since 4.1 2024.04.29, error if dictionary update contains by clause (previously ignored)
+Since 4.1 2024.04.29, error if dictionary update contains by clause (previously ignored).
 
 ```q
 q)d:(`a`b!1 2)
