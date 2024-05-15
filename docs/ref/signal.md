@@ -72,7 +72,7 @@ At any point during execution, the behavior of _signal_ (`'`) is determined by t
 2   collect stack trace and abort (set by [.Q.trp](dotq.md#trp-extend-trap-at))
 </div>
 
-During abort, the stack is unwound up to the nearest [trap at](apply.md#trap-at) (`@` or `.` or [`.Q.trp`](dotq.md#trp-extend-trap-at)). The error-trap mode is always initially set to 
+During abort, the stack is unwound as far as the nearest [trap at](apply.md#trap-at) (`@` or `.` or [`.Q.trp`](dotq.md#trp-extend-trap-at)). The error-trap mode is always initially set to 
 
 ```txt
 1  for console input
