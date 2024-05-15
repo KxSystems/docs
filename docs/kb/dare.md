@@ -147,7 +147,7 @@ Then, load the key file using
 
 Files can be encrypted using the same command as for file compression, with [AES256CBC](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard "Wikipedia") encryption as algo 16.
 
-The master key must already be loaded, via internal function [`-36!`](../basics/internal.md#-36xy-load-master-key).
+The master key must already be loaded, via internal function [`-36!`](../basics/internal.md#-36-load-master-key).
 
 Recalling that the left-hand arguments for encoded `set` are
 (target filename; logical block size; compression/encryption algorithm; compression level)

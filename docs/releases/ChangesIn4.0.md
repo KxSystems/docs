@@ -198,7 +198,7 @@ Kdb+4.0 supports Data-At-Rest Encryption (DARE), using AES256CBC. As with the bu
 openssl rand 32 | openssl aes-256-cbc -salt -pbkdf2 -iter 50000 -out testkek.key
 ```
 
-the key can then be [loaded into kdb+](../basics/internal.md#-36xy-load-master-key) using 
+the key can then be [loaded into kdb+](../basics/internal.md#-36-load-master-key) using 
 
 ```q
 -36!(`:testkek.key;"mypassword")
