@@ -1813,7 +1813,7 @@ Where
 -   `f` is a function of rank and `x` an atom or list of count with items in the domains of f
 -   `g` is a binary function
 
-extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` gets called with arguments:
+extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` is called with arguments:
 
 1.   the error string
 2.   the backtrace object
