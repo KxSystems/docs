@@ -119,6 +119,8 @@ s p  qty cumqty
 0 p5 400 1600
 ```
 
+Since 4.1 2024.04.29 throws `type` error if dictionary update contains by clause (previously ignored).
+
 
 ## Cond
 
