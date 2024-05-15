@@ -417,7 +417,7 @@ Unrecognized key format         master key file format unrecognized
 ```
 
 `z` indicates unlock/lock. To reload using a new key, unlock using current key and then proceed with the new key. 
-If load is attempted whilst locked, it throws `'DARE key locked`.
+If load is attempted while locked, it throws `'DARE key locked`.
 
 
 ## `-38!x` (socket table)
