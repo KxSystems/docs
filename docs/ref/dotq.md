@@ -1810,7 +1810,9 @@ Since V3.5 2017.03.15.
 
 Where
 
--   `f` is a function of rank and `x` an atom or list of count with items in the domains of f
+-   `f` is a function of rank
+-   `x` is an atom or list of count with items in the domains of f
+
 -   `g` is a binary function
 
 extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` is called with arguments:
