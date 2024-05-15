@@ -30,33 +30,32 @@ _Tools_
  [s1       string representation](#s1-string-representation)    [ld          load and group](#ld-load-and-group)
  [sbt      string backtrace](#sbt-string-backtrace)         [lo          load without](#lo-load-without)
  [sha1     SHA-1 encode](#sha1-sha-1-encode)             [M           chunk size](#m-chunk-size)
- [trp      extend trap](#trp-extend-trap)              [qp          is partitioned](#qp-is-partitioned)
- [ts       time and space](#ts-time-and-space)           [qt          is table](#qt-is-table)
- [u        date based](#u-date-based)
- [V        table to dict](#v-table-to-dict) 
- [v        value](#v-value)                    **Partitioned database state**
- [view     subview](#view-subview)                  [bv          build vp](#bv-build-vp)
-                                   [cn          count partitioned table](#cn-count-partitioned-table)
-**Constants**                          [D           partitions](#d-partitions)
- [A a an   alphabets](#a-upper-case-alphabet)                [ind         partitioned index](#ind-partitioned-index)
- [b6       bicameral alphanums](#b6-bicameral-alphanums)      [MAP         maps partitions](#map-maps-partitions)
- [n nA     nums & alphanums](#n-nums)         [par         locate partition](#par-locate-partition)
-                                   [PD          partition locations](#pd-partition-locations)
-**Environment**                        [pd          modified partition locns](#pd-modified-partition-locations)
- [K k      version](#k-version-date)                  [pf          partition field](#pf-partition-field)
- [opt      command parameters](#opt-command-parameters)       [pn          partition counts](#pn-partition-counts)
- [w        memory stats](#w-memory-stats)             [pt          partitioned tables](#pt-partitioned-tables)
- [x        non-command parameters](#x-non-command-parameters)   [PV          partition values](#pv-partition-values)
-                                   [pv          modified partition values](#pv-modified-partition-values)
-**IPC**                                [qp          is partitioned](#qp-is-partitioned)
- [addr     IP address](#addr-ip-address)               [vp          missing partitions](#vp-missing-partitions)
- [fps fpn  streaming algorithm](#fpn-streaming-algorithm)
- [fs  fsn  streaming algorithm](#fs-streaming-algorithm)      **Segmented database state**
- [hg       HTTP get](#hg-http-get)                 [P           segments](#p-segments)
- [host     hostname](#host-hostname)                 [u           date based](#u-date-based)
- [hp       HTTP post](#hp-http-post) 
-                                   **File I/O**
-                                   [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
+ [trp      extend trap at](#trp-extend-trap-at)           [qp          is partitioned](#qp-is-partitioned)
+ [trpd     extend trap](#trpd-extend-trap)              [qt          is table](#qt-is-table)
+ [ts       time and space](#ts-time-and-space)
+ [u        date based](#u-date-based)              **Partitioned database state**
+ [V        table to dict](#v-table-to-dict)            [bv          build vp](#bv-build-vp)
+ [v        value](#v-value)                    [cn          count partitioned table](#cn-count-partitioned-table)
+ [view     subview](#view-subview)                  [D           partitions](#d-partitions)
+                                   [ind         partitioned index](#ind-partitioned-index)
+**Constants**                          [MAP         maps partitions](#map-maps-partitions)
+ [A a an   alphabets](#a-upper-case-alphabet)                [par         locate partition](#par-locate-partition)
+ [b6       bicameral alphanums](#b6-bicameral-alphanums)      [PD          partition locations](#pd-partition-locations)
+ [n nA     nums & alphanums](#n-nums)         [pd          modified partition locns](#pd-modified-partition-locations)
+                                   [pf          partition field](#pf-partition-field)
+**Environment**                        [pn          partition counts](#pn-partition-counts)
+ [K k      version](#k-version-date)                  [pt          partitioned tables](#pt-partitioned-tables) 
+ [opt      command parameters](#opt-command-parameters)       [PV          partition values](#pv-partition-values)
+ [w        memory stats](#w-memory-stats)             [pv          modified partition values](#pv-modified-partition-values) 
+ [x        non-command parameters](#x-non-command-parameters)   [qp          is partitioned](#qp-is-partitioned)
+                                   [vp          missing partitions](#vp-missing-partitions) 
+**IPC**
+ [addr     IP address](#addr-ip-address)              **Segmented database state**
+ [fps fpn  streaming algorithm](#fpn-streaming-algorithm)      [P           segments](#p-segments)
+ [fs  fsn  streaming algorithm](#fs-streaming-algorithm)      [u           date based](#u-date-based) 
+ [hg       HTTP get](#hg-http-get) 
+ [host     hostname](#host-hostname)                **File I/O**
+ [hp       HTTP post](#hp-http-post)                [Cf          create empty nested char file](#cf-create-empty-nested-char-file)
                                    [Xf          create file](#xf-create-file)
 
 </div>
@@ -1692,7 +1691,7 @@ Returns a string representation of `x`.
 .Q.sbt x
 ```
 
-Where `x` is a [backtrace object](#trp-extend-trap) returns it as a string formatted for display.
+Where `x` is a [backtrace object](#trp-extend-trap-at) returns it as a string formatted for display.
 
 Since V3.5 2017.03.15.
 
@@ -1733,7 +1732,7 @@ q).Q.t?"j"  / longs have datatype 7
 
 
 
-## `trp` (extend trap)
+## `trp` (extend trap at)
 
 ```syntax
 .Q.trp[f;x;g]
@@ -1745,7 +1744,7 @@ Where
 -   `x` is its argument
 -   `g` is a binary function
 
-extends [Trap](apply.md#trap) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
+extends [Trap At](apply.md#trap-at) (`@[f;x;g]`) to collect backtrace: `g` gets called with arguments:
 
 1.   the error string
 2.   the backtrace object
@@ -1798,6 +1797,49 @@ q)1@(h"f `a")1;    / output the backtrace string to stdout
 ```
 
 Since V3.5 2017.03.15.
+
+:fontawesome-solid-book-open:
+[Debugging](../basics/debug.md)
+
+
+## `trpd` (extend trap)
+
+```syntax
+.Q.trpd[f;x;g]
+```
+
+Where
+
+-   `f` is a function of rank
+-   `x` is an atom or list of count with items in the domains of f
+
+-   `g` is a binary function
+
+extends [Trap](apply.md#trap) (`.[f;x;g]`) to collect backtrace: `g` is called with arguments:
+
+1.   the error string
+2.   the backtrace object
+
+You can format the backtrace object with `.Q.sbt`.
+
+```q
+q).Q.trpd[{x+y};(1;2);{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+ 3
+q).Q.trpd[{x+y};(1;`2);{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+ error: type
+ backtrace:
+   [2]  {x+y}
+          ^
+   [1]  (.Q.trpd)
+
+   [0]  .Q.trpd[{x+y};(1;`2);{2"error: ",x,"\nbacktrace:\n",.Q.sbt y;-1}]
+        ^
+ -1
+```
+
+Use .Q.trp as a simpler form of .Q.trpd, for unary values.
+
+Since 4.1 2024.03.12.
 
 :fontawesome-solid-book-open:
 [Debugging](../basics/debug.md)
