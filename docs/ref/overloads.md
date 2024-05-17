@@ -30,7 +30,7 @@ rank | syntax          | semantics
 rank | syntax                 | semantics
 :---:|------------------------|---------------------------------------
 n/a  | `\`                    | ends multiline comment
-n/a  | `\`                    | abort
+n/a  | `\`                    | [Abort](../basics/syscmds.md#terminate), [Toggle](../basics/syscmds.md#toggle-qk)
 1    | `(u\)`, `u\[d]`        | [Converge](accumulators.md#converge)
 2    | `n u\d`, `u\[n;d]`     | [Do](accumulators.md#do)
 2    | `t u\d`, `u\[t;d]`     | [While](accumulators.md#while)
