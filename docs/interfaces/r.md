@@ -5,7 +5,7 @@ description: How to enable R to connect to kdb+ and extract data; embed R inside
 # :fontawesome-brands-r-project: Using R with kdb+
 
 
-Kdb+ and R are complementary technologies. Kdb+ is the world’s leading timeseries database and incorporates a programming language called q. [R](https://www.r-project.org/) is a programming language and environment for statistical computing and graphics. Both are tools used by data scientists to interrogate and analyze data. Their features sets overlap in that they both:
+kdb+ and R are complementary technologies. kdb+ is the world’s leading timeseries database and incorporates a programming language called q. [R](https://www.r-project.org/) is a programming language and environment for statistical computing and graphics. Both are tools used by data scientists to interrogate and analyze data. Their features sets overlap in that they both:
 
 -   are interactive development environments
 -   incorporate vector languages
@@ -364,7 +364,7 @@ Outside the Fusion interfaces to R, a number of interfaces provide extremely use
 Although it is not the recommended method, if R is running on Windows, the q ODBC3 driver can be used to connect to kdb+ from R.
 
 :fontawesome-regular-hand-point-right:
-[Kdb+ server for ODBC3](q-server-for-odbc3.md)
+[kdb+ server for ODBC3](q-server-for-odbc3.md)
 
 The RODBC package should be installed in R. An example is given below.
 

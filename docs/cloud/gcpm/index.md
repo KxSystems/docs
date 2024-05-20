@@ -1,10 +1,10 @@
 ---
-title: Kdb+ on Google Cloud Platform Marketplace – Cloud – kdb+ and q documentation
+title: kdb+ on Google Cloud Platform Marketplace – Cloud – kdb+ and q documentation
 description: How-to deploy kdb+ on Google Cloud Platform Marketplace
 author: Glenn Wright
 keywords: cloud, gcpm, google, google cloud platform marketplace, kdb+
 ---
-# Kdb+ on Google Cloud Platform Marketplace
+# kdb+ on Google Cloud Platform Marketplace
 
 
 

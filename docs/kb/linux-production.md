@@ -139,7 +139,7 @@ ulimit -n 4096
 
     Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process. 
 
-    Kdb+ requires at least `lz4-r129`.
+    kdb+ requires at least `lz4-r129`.
     `lz4-1.8.3` works. 
     We recommend using the latest `lz4` release available.
 

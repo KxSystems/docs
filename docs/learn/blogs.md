@@ -53,7 +53,7 @@ _A selection of technical articles of interest to kdb+ developers_
 
 -   [Data visualization with kdb+ using ODBC: A Tableau case study](https://kx.com/blog/data-visualization-with-kdb-using-odbc-a-tableau-case-study/)
 -   [KX 1.1 billion taxi ride benchmark highlights advantages of kdb+ architecture](https://kx.com/blog/kx-1-1-billion-taxi-ride-benchmark-highlights-advantages-kdb-architecture/)
--   [Kdb+ integral to BitMEX Bitcoin derivatives exchange growth strategy](https://kx.com/blog/use-case-kdb-integral-bitmex-bitcoin-derivatives-exchange-growth-strategy/)
+-   [kdb+ integral to BitMEX Bitcoin derivatives exchange growth strategy](https://kx.com/blog/use-case-kdb-integral-bitmex-bitcoin-derivatives-exchange-growth-strategy/)
 -   [Combining high-frequency cryptocurrency venue data using kdb+](https://kx.com/blog/combining-high-frequency-cryptocurrency-venue-data-using-kdb/)
 -   [Template of Fortnite gamer visualizations using Dashboards](https://kx.com/blog/kx-product-insights-template-of-fortnite-visualizations-in-destruction-using-dashboards/)
 -   [KX for Love!!](https://kx.com/blog/kx-for-love/)
@@ -75,7 +75,7 @@ _A selection of technical articles of interest to kdb+ developers_
 ## Interfaces, tools, and platforms
 
 -   [Kafka](https://kx.com/blog/kdb-interface-kafka/)
--   [Kdb+ on Anaconda and Google Cloud](https://kx.com/blog/kdb-on-anaconda-and-google-cloud/)
+-   [kdb+ on Anaconda and Google Cloud](https://kx.com/blog/kdb-on-anaconda-and-google-cloud/)
 -   [Migrating a kdb+ historical database to the Amazon Cloud](https://kx.com/blog/migrating-a-kdb-historical-database-to-the-amazon-cloud/)
 -   [Interface to R](https://kx.com/blog/kdb-interface-r/)
 -   [KX Analyst IDE](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)

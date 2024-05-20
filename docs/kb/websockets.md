@@ -33,7 +33,7 @@ Now click _connect_ and type e.g. `4+til 3` in the edit box. Hit Enter or click 
 
 ### How it works
 
-Kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The handler `{neg[.z.w]x}` echoes the message back to the client.
+kdb+ serves all protocols on the same port and the WebSocket protocol is no exception. [`.z.ws`](../ref/dotz.md#zws-websockets) is called for every message sent from the client (browser). The handler `{neg[.z.w]x}` echoes the message back to the client.
 
 
 ## Doing something useful
@@ -239,7 +239,7 @@ The WebSocket requires that text is UTF-8 encoded. If you try to send invalidly 
 
 ----
 :fontawesome-regular-map:
-[Kdb+ and WebSockets](../wp/websockets/index.md)
+[kdb+ and WebSockets](../wp/websockets/index.md)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

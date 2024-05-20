@@ -76,7 +76,7 @@ both `+` and `*` would read and write from/to slow main memory, effectively maki
 
 It is therefore important to make sure your memory setup is optimal. A tool like [Intel MLC](https://software.intel.com/en-us/articles/intelr-memory-latency-checker) can help with comparing different RAM configurations.
 
-In a multiple-socket system, under NUMA, non-local memory access is much slower. Kdb+ 4.0 is not NUMA-aware, and decisions of memory placement and scheduling across sockets are left to the operating system. That prevents scaling out to multiple sockets, and performance can fluctuate unpredictably. We recommend restricting the working set to a single socket, if possible, by running q under `numactl --preferred=` or even `--membind=`.
+In a multiple-socket system, under NUMA, non-local memory access is much slower. kdb+ 4.0 is not NUMA-aware, and decisions of memory placement and scheduling across sockets are left to the operating system. That prevents scaling out to multiple sockets, and performance can fluctuate unpredictably. We recommend restricting the working set to a single socket, if possible, by running q under `numactl --preferred=` or even `--membind=`.
 
 
 ## Peach vs implicit parallelism

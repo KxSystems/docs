@@ -43,11 +43,11 @@ Many powerful techniques for programming in q originally appeared in earlier Ive
 
 -   [Abridged q language manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/q.htm), Arthur Whitney, 2009
 -   [Abridged kdb+ database manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/kdb+.htm), Arthur Whitney, 2006
--   [Kdb+ database reference manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/kdb+1.htm), Don Orth, 2006
+-   [kdb+ database reference manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/kdb+1.htm), Don Orth, 2006
 -   [Q language reference manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/q1.htm), Don Orth, 2006
 -   [Abridged kdb+tick manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/tick.htm), Arthur Whitney, 2005
 -   [Abridged kdb+taq manual](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/taq.htm), Arthur Whitney, 2005
--   [Kdb+ database and language primer](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/primer.htm), Dennis Sasha, 2005
+-   [kdb+ database and language primer](https://htmlpreview.github.io/?https://github.com/KxSystems/kdb/blob/master/d/a/primer.htm), Dennis Sasha, 2005
 
 
 

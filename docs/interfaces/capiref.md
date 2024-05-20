@@ -663,7 +663,7 @@ K krr(const S)
 ```
 Tags: `c.o`
 
-Kdb+ recognizes an error returned from a C function via the function’s return value being 0, combined with the value of a global error indicator that can be set by calling `krr` with a null-terminated string. As `krr` records only the passed pointer, you should ensure that the string remains valid after the return from your code into kdb+ – typically you should use static storage for the string. (Thread-local if you expect to amend the error string from multiple threads.) The strings `"stop"`, `"abort"` and `"stack"` are reserved values and `krr` must not be called with those.
+kdb+ recognizes an error returned from a C function via the function’s return value being 0, combined with the value of a global error indicator that can be set by calling `krr` with a null-terminated string. As `krr` records only the passed pointer, you should ensure that the string remains valid after the return from your code into kdb+ – typically you should use static storage for the string. (Thread-local if you expect to amend the error string from multiple threads.) The strings `"stop"`, `"abort"` and `"stack"` are reserved values and `krr` must not be called with those.
 
 Do **not** call `krr()` and then return a valid pointer!
 For convenience, `krr` returns 0, so it can be used directly as 

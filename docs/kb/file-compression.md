@@ -9,7 +9,7 @@ date: August 2022
 
 
 
-Kdb+ can compress data as it is written to disk.
+kdb+ can compress data as it is written to disk.
 Q operators and keywords read both compressed and uncompressed files.
 
 
@@ -94,7 +94,7 @@ The [`-21!` internal function](../basics/internal.md#-21x-compression-stats) ret
 
 ### Compression by default
 
-Kdb+ can write compressed files by default.
+kdb+ can write compressed files by default.
 
 This is governed by the [zip defaults `.z.zd`](../ref/dotz.md#zzd-zip-defaults).
 Set this as an integer vector, e.g.
@@ -170,7 +170,7 @@ There is no practical internal limit on the number of uncompressed files.
 
 ### Memory allocation
 
-Kdb+ allocates enough memory to decompress the whole vector, regardless of how much it finally uses. This reservation is required as there is no backing store for the decompressed data, unlike with mapped files of uncompressed data, which can always read the pages from file again should they have been dropped.
+kdb+ allocates enough memory to decompress the whole vector, regardless of how much it finally uses. This reservation is required as there is no backing store for the decompressed data, unlike with mapped files of uncompressed data, which can always read the pages from file again should they have been dropped.
 
 This is reservation only, and can be accommodated by increasing the swap space available: even though the swap should never actually be written to, the OS has to be assured that in the worst-case scenario of decompressing the data in full, it could swap it out if needed.
 
@@ -228,7 +228,7 @@ However, multiple files can be read or written from their own threads concurrent
 ## Requirements
 
 Libraries for Gzip and Snappy may already be installed on your system.
-Kdb+ binds dynamically to [Zlib](http://zlib.net) and looks for certain files for Snappy.
+kdb+ binds dynamically to [Zlib](http://zlib.net) and looks for certain files for Snappy.
 
 !!! detail "64-bit and 32-bit kdb+ require corresponding 64-bit and 32-bit libs"
 
@@ -258,7 +258,7 @@ algorithm | source | :fontawesome-brands-linux: Linux | :fontawesome-brands-appl
 
     Notably, `lz4-1.7.5` does not compress, and `lz4-1.8.0` appears to hang the process.
 
-    Kdb+ requires at least `lz4-r129`.
+    kdb+ requires at least `lz4-r129`.
     `lz4-1.8.3` works.
     We recommend using the latest `lz4` [release](https://github.com/lz4/lz4/releases) available.
 

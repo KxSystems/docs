@@ -15,7 +15,7 @@ How it works: `-30!(::)` indicates the response for the currently-executing sync
 
 You can use `-30!(::)` at any place in the execution path of [`.z.pg`](../ref/dotz.md#zpg-get), start up some work, allow `.z.pg` to complete without sending a response, and then when the workers complete the task, send the response explicitly.
 
-Kdb+ tracks which handles are expecting a response. If you try to send a response to a handle that is not expecting one, you’ll see
+kdb+ tracks which handles are expecting a response. If you try to send a response to a handle that is not expecting one, you’ll see
 
 ```q
 q)key .z.W / list of socket handles being monitored by kdb+ main thread

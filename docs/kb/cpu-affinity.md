@@ -1,6 +1,6 @@
 ---
 title: CPU affinity | Knowledge Base | kdb+ and q documentation
-description: Kdb+ can be constrained to run on specific cores through the setting of CPU affinity. Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
+description: kdb+ can be constrained to run on specific cores through the setting of CPU affinity. Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
 keywords: affinity, cpu, kdb+, kernel, linux, numa, q, solaris, unix, windows, zone_reclaim_mode
 ---
 # CPU affinity
@@ -8,7 +8,7 @@ keywords: affinity, cpu, kdb+, kernel, linux, numa, q, solaris, unix, windows, z
 
 
 
-Kdb+ can be constrained to run on specific cores through the setting of CPU affinity.
+kdb+ can be constrained to run on specific cores through the setting of CPU affinity.
 
 Typically, you can set the CPU affinity for the shell you are in, and then processes started within that shell will inherit the affinity.
 

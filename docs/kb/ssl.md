@@ -17,7 +17,7 @@ Ensure that your OS has the latest OpenSSL libraries installed, and that they ar
 
 ### Versioned libraries
 
-Beginning with v4.1t 2022.03.25, Kdb+ will try to load versioned shared libraries for OpenSSL.
+Beginning with v4.1t 2022.03.25, kdb+ will try to load versioned shared libraries for OpenSSL.
 It will load the first library that it can locate from the lists below:
 
 === ":fontawesome-brands-linux: Linux"
