@@ -406,7 +406,7 @@ TLS not enabled
 
 too many syms
 
-:   Kdb+ currently allows for about 1.4B interned symbols in the pool
+:   kdb+ currently allows for about 1.4B interned symbols in the pool
     and will exit with this error when this threshold is reached
 
 

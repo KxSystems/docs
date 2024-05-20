@@ -72,7 +72,7 @@ repo_url: ''
 edit_uri: ""
 
 site_description: 'Documentation for kdb+ and the q programming language'
-site_name: 'Kdb+ and q documentation'
+site_name: 'kdb+ and q documentation'
 site_url: https://code.kx.com/q
 use_directory_urls: true
 
@@ -596,8 +596,8 @@ nav:
     - Data recovery for kdb+tick (WP): wp/data-recovery.md
     - Disaster recovery (WP): wp/disaster-recovery/index.md
     - Gateway design (WP): wp/gateway-design/index.md
-    - Kdb+tick configuration: kb/kdb-tick.md
-    - Kdb+tick profiling (WP): wp/tick-profiling.md
+    - kdb+tick configuration: kb/kdb-tick.md
+    - kdb+tick profiling (WP): wp/tick-profiling.md
     - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
     - Load balancing: kb/load-balancing.md
     - Memory backed by files: basics/memory-backed.md

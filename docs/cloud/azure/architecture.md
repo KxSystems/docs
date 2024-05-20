@@ -1,6 +1,6 @@
 # Reference architecture for Azure
 
-<!-- Kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
+<!-- kdb+ is the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system for timeseries analysis. kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data.
  -->
 
 _Lift and shift your kdb+ plants to the cloud and leverage virtual machines (VM) with storage_
@@ -177,7 +177,7 @@ Network (VNet). Any other Azure VM instance can assume this responsibility in a 
 
 One advantage of storing your HDB within the Azure ecosystem is the flexibility of storage. This is usually distinct from “on-prem” storage, whereby you may start at one level of storage capacity and grow the solution to allow for dynamic capacity growth. One huge advantage of most Azure storage solutions is that permanent disks can grow dynamically without the need to halt instances, this allows you to dynamically change resources. For example, start with small disk capacity and grow capacity over time.
 
-The reference architecture recommends replicating data. This can either be tiered out to lower cost or lower performance object storage in Azure or the data can be replicated across availability zones. The latter may be useful if there is client-side disconnection from other time zones. You may consider failover of service from Europe to North America, or vice-versa. Kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX-style file system stored in persistent storage, for example Azure Disk Storage. There are many solutions that offer
+The reference architecture recommends replicating data. This can either be tiered out to lower cost or lower performance object storage in Azure or the data can be replicated across availability zones. The latter may be useful if there is client-side disconnection from other time zones. You may consider failover of service from Europe to North America, or vice-versa. kdb+ uses POSIX filesystem semantics to manage HDB structure directly on a POSIX-style file system stored in persistent storage, for example Azure Disk Storage. There are many solutions that offer
 full operational functionality for the POSIX interface.
 
 ### Azure Blob Storage
@@ -297,7 +297,7 @@ Network bandwidth needs to be considered if the TP components are not located on
 
 An Azure Load Balancer is a type of load balancing service by Azure. It is used for ultra-high performance, TLS offloading at scale, centralized certificate deployment, support for UDP, and static IP addresses for your application. Operating at the connection level, network load balancers are capable of securely handling millions of requests per second while maintaining ultra-low latencies.
 
-Load balancers can distribute load among applications that offer the same service. Kdb+ is single threaded by default. The recommended approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway using async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then a gateway load balancer is recommended to avoid query contention in the gateway. Furthermore, there are other TP components that enjoy the benefit of load balancers to better handle simultaneous requests.
+Load balancers can distribute load among applications that offer the same service. kdb+ is single threaded by default. The recommended approach is to use a pool of HDB processes. Distributing the queries can either be done by the gateway using async calls or by a load balancer. If the gateways are sending sync queries to the HDB load balancer, then a gateway load balancer is recommended to avoid query contention in the gateway. Furthermore, there are other TP components that enjoy the benefit of load balancers to better handle simultaneous requests.
 
 Adding a load balancer on top of an historical database (HDB) pool requires only three steps:
 
@@ -317,7 +317,7 @@ You don’t need to modify your tick scripts to enjoy the benefits of Azure Moni
 
 Almost all kdb+ tick components can benefit from cloud logging.  Feedhandlers log new data arrival, data and connection issues. The TP logs new or disappearing publishers and subscribers. It can log if the output queue is above a threshold. The RDB logs all steps of the EOD process which includes sorting and splaying of all tables. The HDB and gateway can log every user query.
 
-Kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tick plans and these Ops tables are separated from the tables required for the business.
+kdb+ users often prefer to save log messages in kdb+ tables. Tables that are unlikely to change are specified by a schema, while entries that require more flexibility use key-value columns. Log tables are ingested by log tick plans and these Ops tables are separated from the tables required for the business.
 
 One benefit of storing log messages is the ability to process log messages in qSQL. Timeseries join functions include as-of and window joins. For example, gateway functions are executed hundreds of times during the day. The gateway query executes RDB and HDB queries, often using a load balancer. All these components have their own log entries. You can simply employ Window Join to find relevant entries and perform aggregation to get insight into the performance characteristics of the execution chain. Please note that you can log both to kdb+ and to Azure Monitor.
 
@@ -496,7 +496,7 @@ GitHub [repository](https://github.com/KxSystems/kdb-tick) with standard tick.q 
 [Order Book: a kdb+ intraday storage and access methodology](../../wp/order-book.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
+[kdb+tick profiling for throughput optimization](../../wp/tick-profiling.md)
 :fontawesome-solid-cloud:
 [KX Cloud Edition](https://code.kx.com/insights/cloud-edition/)
 

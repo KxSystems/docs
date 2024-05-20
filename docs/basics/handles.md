@@ -1,13 +1,13 @@
 ---
 title: Handles to files and processes | Basics | q and kdb+ documentation
-description: Kdb+ communicates with the console, stdout, stderr, filesystem, and other processes through handles
+description: kdb+ communicates with the console, stdout, stderr, filesystem, and other processes through handles
 author: Stephen Taylor
 date: April 2020
 ---
 # Connection handles
 
 
-Kdb+ communicates with the console, stdout, stderr, file system, and other processes through connection _handles_. 
+kdb+ communicates with the console, stdout, stderr, file system, and other processes through connection _handles_. 
 
 There are three permanent _system handles_:
 

@@ -190,7 +190,7 @@ To block until any async message is received on handle `h`
 r:h[] / store message in r
 ```
 
-Messages can be queued for sending to a remote process through using async messaging. Kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
+Messages can be queued for sending to a remote process through using async messaging. kdb+ will queue the serialized message in user space, later writing it to the socket as the remote end drains the message queue. One can see how many messages are queued on a handle and their sizes as a dictionary through the command variable [`.z.W`](../ref/dotz.md#zw-handles "handles").
 
 Sometimes it is useful to send a large number of aysnc messages, but then to block until they have all been sent. This can be achieved through using async flush – invoked as `neg[h][]` or `neg[h](::)`. If you need confirmation that the remote end has received and processed the async messages, chase them with a sync request, e.g. `h""` – the remote end will process the messages on a socket in the order that they are sent.
 
@@ -217,7 +217,7 @@ After a client has opened a socket to the server, it sends a null-terminated ASC
 - If the server rejects the credentials, it closes the connection immediately. 
 - If the server accepts the credentials, it sends a single-byte response which represents the common capability. 
 
-Kdb+ recognizes these capability bytes:
+kdb+ recognizes these capability bytes:
 
 byte | effect
 :---:|------------------------------------------------------
@@ -279,7 +279,7 @@ The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indica
 [WebSockets](../kb/websockets.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+ and WebSockets](../wp/websockets/index.md)
+[kdb+ and WebSockets](../wp/websockets/index.md)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_

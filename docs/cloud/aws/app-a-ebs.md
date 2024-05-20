@@ -75,7 +75,7 @@ There are constraints on calculating the throughput gained from EBS (performance
     across distinct instances. e.g. 10 nodes of `r4.4xlarge` is capable of
     reading 4300&nbsp;MB/sec.
 
-Kdb+ achieves or meets all of these advertised figures. So the EBS
+kdb+ achieves or meets all of these advertised figures. So the EBS
 network bandwidth algorithms become the dominating factor in any final
 
 
@@ -139,7 +139,7 @@ function       | latency (mSec) | function   | latency (mSec)
 
 ## Summary
 
-Kdb+ matches the expected throughput of the EBS configurations tested
+kdb+ matches the expected throughput of the EBS configurations tested
 with no major deviations across all classes of read patterns required.
 At the time these tests were conducted, EBS-IO1 achieves slightly higher throughput metrics over GP2, but
 achieves this at a guaranteed IOPS rate. Its operational latency is
@@ -152,7 +152,7 @@ EBS for kdb+, take the following into consideration:
     throughput gained with the larger `r4.16xlarge` instance. Use this
     precept in your calculations.
 
--   There is a fixed throughput per GP2 volume, but multiple volumes will increment that value up until the peak achievable in the instance definition. Kdb+ achieves that instance peak throughput.
+-   There is a fixed throughput per GP2 volume, but multiple volumes will increment that value up until the peak achievable in the instance definition. kdb+ achieves that instance peak throughput.
 
 -   Server-side kdb+ in-line compression works very well for streaming
     and random 1-MB read throughputs, whereby the CPU essentially keeps

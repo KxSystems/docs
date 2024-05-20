@@ -179,8 +179,8 @@ Can connect both the real-time and historical data to allow users to query acros
 [Order book: a kdb+ intraday storage and access methodology](../wp/order-book.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+tick profiling for throughput optimization](../wp/tick-profiling.md)
+[kdb+tick profiling for throughput optimization](../wp/tick-profiling.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+ and WebSockets](../wp/websockets/index.md)
+[kdb+ and WebSockets](../wp/websockets/index.md)
 

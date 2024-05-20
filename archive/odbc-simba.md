@@ -9,7 +9,7 @@ date: March 2019
 
 !!! info "The latest version of Simba/Magnitude ODBC is 1.1.1, released 2020.02.14."
 
-The Simba Kdb+ ODBC Driver enables Business Intelligence (BI), analytics, and reporting on kdb+ data. The driver complies with the ODBC 3.80 data standard and adds important functionality such as Unicode, as well as 32- and 64-bit support for high-performance computing environments on all platforms.
+The Simba kdb+ ODBC Driver enables Business Intelligence (BI), analytics, and reporting on kdb+ data. The driver complies with the ODBC 3.80 data standard and adds important functionality such as Unicode, as well as 32- and 64-bit support for high-performance computing environments on all platforms.
 
 ODBC is one of the best established and widely supported APIs for connecting to and working with databases. At the heart of the technology is the ODBC driver, which connects an application to the database.
 
@@ -20,7 +20,7 @@ microsoft.com: [ODBC API Reference](https://docs.microsoft.com/en-us/sql/odbc/re
 
 ## Clients
 
-The Simba Kdb+ ODBC Driver is available for these clients:
+The Simba kdb+ ODBC Driver is available for these clients:
 
 -   :fontawesome-brands-linux: Linux
     +   RedHat®EnterpriseLinux®(RHEL) 6 or 7

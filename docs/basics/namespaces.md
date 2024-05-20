@@ -19,7 +19,7 @@ Namespaces are identified by a leading dot in their names.
 
 ## System namespaces
 
-Kdb+ includes the following namespaces.
+kdb+ includes the following namespaces.
 
 namespace       | contents
 ----------------|------------------------------------------------
