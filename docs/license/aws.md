@@ -486,7 +486,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
 ## Schedule
 
 _Information Reported to Kx_. 
-The following Kdb+ Software variables are reported by the license-manager software (which are upon notice, subject to change):
+The following kdb+ Software variables are reported by the license-manager software (which are upon notice, subject to change):
 
 -    UTC timestamp (`.z.p`)
 -    IP address (`.z.a`)

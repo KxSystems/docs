@@ -1,5 +1,5 @@
 ---
-title: Kdb+ data-management techniques | White papers | q and kdb+ documentation
+title: kdb+ data-management techniques | White papers | q and kdb+ documentation
 description: Examines implementation options and data-management techniques in seven scenarios
 author: Simon Mescal
 date: January 2013
@@ -8,7 +8,7 @@ keywords: attribute, data management, grouped, intra-day, historical, kdb+, part
 White paper
 {: #wp-brand}
 
-# Kdb+ data-management techniques
+# kdb+ data-management techniques
 
 by [Simon Mescal](#author)
 {: .wp-author}
@@ -105,7 +105,7 @@ In some kdb+ installations, table schemas change frequently. This can be difficu
 
 To reduce the administrative overhead, the historical database schema can be updated programmatically as intra-day data is persisted. This can be achieved by invoking function `updateHistoricalSchema` (below), which connects to the historical database and runs locally-defined functions to add and remove tables, add and remove columns, reorder columns and change their types. It does this by comparing the table schemas in the last partition with those of the other partitions, and making the necessary adjustments to the other partitions.
 
-!!! warning "Kdb+ versions before V2.6"
+!!! warning "kdb+ versions before V2.6"
 
     In previous versions the meta data is read from the first, rather than the last, partition therefore minor changes are necessary to get this to work.
 

@@ -1,5 +1,5 @@
 ---
-title: Kdb+ in astronomy | White papers | kdb+ and q documentation
+title: kdb+ in astronomy | White papers | kdb+ and q documentation
 description: Imports FITS data to kdb+, loads C functions and calculates recessional velocity
 author: [Andrew Magowan, James Neill]
 keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar objects, recessional velocity, red shift, telescope
@@ -7,7 +7,7 @@ keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar obj
 White paper
 {: #wp-brand}
 
-# Kdb+ in astronomy
+# kdb+ in astronomy
 
 by [Andrew Magowan &amp; James Neill](#authors)
 {: .wp-author}
@@ -21,7 +21,7 @@ The field of observational astronomy has always been data-driven, but like many 
 
 The LSST is expected to be fully operational and start recording data in 2021, producing 15TB every night. It will take [an image of half the sky every three nights](http://www.lsst.org/), and so the same objects will be photographed again and again. This gives the data from the LSST a time dimension – how an object moves over time is something that will be studied from this data. In the 2020s, the SKA will produce [160TB of data per second](https://www.skatelescope.org/news/raeng-grant-to-engage-with-ska-engineering). This is in the region of [exabytes per night, and zettabytes per year](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002195). If this data were processed in real time, any large differences in objects (e.g. brightness/position) could then be investigated immediately. Use cases of the data on a non-real-time basis include discovering the formation and structure of our solar system, investigating distant galaxies, and the evolution of the universe.
 
-There is no single choice of programming language in astronomy, but C is used for many astronomical applications. C is one of the most popular and commonly-used programming languages in the world with a wide range of uses varying from powering operating systems to building application software. Kdb+ has the ability to extend its functionality through dynamically-loaded C/C++ modules, so we have the ability both to make use of existing utilities, and to create our own.
+There is no single choice of programming language in astronomy, but C is used for many astronomical applications. C is one of the most popular and commonly-used programming languages in the world with a wide range of uses varying from powering operating systems to building application software. kdb+ has the ability to extend its functionality through dynamically-loaded C/C++ modules, so we have the ability both to make use of existing utilities, and to create our own.
 
 We believe that due to the amount of data collected, its time-series nature, and the potential need for both real-time and historical-based analysis, kdb+ would be very well suited to the data collected in the astronomy industry, and would be an ideal fit for many future astronomy projects.
 
