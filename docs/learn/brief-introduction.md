@@ -443,13 +443,7 @@ The linked scripts allow you to build an on-disk database and run some queries a
 
 ### Building the database
 
-The database is built by running the `buildsmartmeterdb.q` script. You can vary the number of days of data to build, and the number of customer records per day. When you run the script, some information will be printed. Type
-
-```q
-go[]
-```
-
-to proceed.
+The database is built by running the `buildsmartmeterdb.q` script. You can vary the number of days of data to build, and the number of customer records per day. When you run the script, some information is printed.
 
 ```bash
 $ q buildsmartmeterdb.q 
