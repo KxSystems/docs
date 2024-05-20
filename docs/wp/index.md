@@ -10,7 +10,7 @@ White papers are flagged in the navigation menus.
 
 ## :fontawesome-solid-desktop: Applications of kdb+
 
--   ==new== [**Surveillance in the Cloud**](surv-cloud/index.md)<br>Luke Britton, 2022.04
+-   [**Surveillance in the Cloud**](surv-cloud/index.md)<br>Luke Britton, 2022.04
 -   [**Implementing trend indicators in kdb+**](trend-indicators/index.md)<br>James Galligan, 2020.04
 -   [**Comparing option-pricing methods in q**](option-pricing/index.md)<br>Deanna Morgan, 2019.10
 -   [**Kdb+ in astronomy**](astronomy.md)<br>Andrew Magowan &amp; James Neill, 2019.09
