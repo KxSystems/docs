@@ -41,13 +41,13 @@ The best resource for learning q. It includes:
 <!--
 ### Other material
 
-Several background articles and links can be found in the [Archive](../archive.md). For example, the Thalesians’ [Knowledge Base Kdb](http://www.thalesians.com/finance/index.php/Knowledge_Base/Databases/Kdb) has a good overview.
+Several background articles and links can be found in the [Archive](../archive.md). For example, the Thalesians’ [Knowledge Base kdb](http://www.thalesians.com/finance/index.php/Knowledge_Base/Databases/Kdb) has a good overview.
 -->
 
 ### Discussion groups
 
 -   The main discussion forum is the [k4 Topicbox](https://k4.topicbox.com/groups/k4). This is available only to licensed customers – please use a work email address to [apply for access](https://k4.topicbox.com/groups/k4?subscription_form=e1ca20f8-95f6-11e8-8090-9973fa3f0106).
--   The [Kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
+-   The [kdb+ Personal Developers](https://groups.google.com/forum/#!forum/personal-kdbplus) forum is an open Google discussion group for users of the free system.
 
 
 ## :fontawesome-solid-download: Install free system
