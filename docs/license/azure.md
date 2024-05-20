@@ -1,9 +1,9 @@
 ---
-title: Kdb+ license for Microsoft Azure Marketplace | kdb+ and q documentation
+title: kdb+ license for Microsoft Azure Marketplace | kdb+ and q documentation
 description: Software End User Agreement for Microsoft Azure Marketplace
 date: Oct 2020
 ---
-# :kx-brands-azure:<br>Kdb+ software end-user agreement
+# :kx-brands-azure:<br>kdb+ software end-user agreement
 
 _Carefully read the following terms and conditions.
 By accessing the kdb+ software via the Microsoft Azure Marketplace, you are agreeing to be bound by these terms and conditions (which may be updated from time to time) and to the extent you are acting on behalf of a permitted organization that you have authority to act on their behalf and bind them to these terms and conditions.
@@ -12,10 +12,10 @@ You may not access the kdb+ software if you are a direct competitor of KX._
 
 ## 1.  Scope of agreement
 
-1.  This Kdb+ Software End User Agreement (“Agreement”) is made
+1.  This kdb+ Software End User Agreement (“Agreement”) is made
     between Kx Systems, Inc. (“KX” or “We”) and you the person or
     entity which accesses the kdb+ Software (“User” or “you”), with
-    respect to KX’s Kdb+ Software made available at the online
+    respect to KX’s kdb+ Software made available at the online
     Microsoft Azure Marketplace at
     <https://azuremarketplace.microsoft.com/> (“Azure Marketplace”)
     and available to be run at Microsoft Azure (“Azure”). Azure
@@ -26,13 +26,13 @@ You may not access the kdb+ software if you are a direct competitor of KX._
 
 2.  KX has developed a 64-bit software program that includes a
     relational database system and KX’s q programming language
-    (“**Kdb+ Software**”). KX has made this Kdb+ Software
+    (“**kdb+ Software**”). KX has made this kdb+ Software
     available for access within Azure. You are required to pay for
     access to the kdb+ Software for any usage. Payment by you for
     use of the kdb+ Software shall be made directly by you via
     Azure. Subject to your Azure account being in good standing, you
     will be provided an instance of the kdb+ Software to be used
-    strictly by you within the Azure environment. The Kdb+ Software
+    strictly by you within the Azure environment. The kdb+ Software
     includes any Updates (defined below) and/or any documentation
     provided to you by KX.
 
@@ -55,12 +55,12 @@ Subject to the User purchasing access to the kdb+ Software via Azure, and subjec
     You undertake that:
 
     1.  your access to the kdb+ Software is solely for you. You will not allow or permit another individual or entity to have any right to access or use the kdb+ Software on your behalf; and, in the event of any such unauthorized access or use, you shall promptly notify KX.
-    1.  In the event that you develop an application or program, utilizing Kdb+ Software, you will not
+    1.  In the event that you develop an application or program, utilizing kdb+ Software, you will not
         1.  attempt to host that application or program for any third party unless you have a separate license directly with KX for the kdb+ Software which permits software hosting services
         2.  attempt to host that application or program on Azure for any third party or permit that third party to remotely access the functionality of the application or program
-        3.  the kdb+ Software may only be used for User’s internal business purposes. You may not grant third parties direct access to the Kdb+Software.
+        3.  the kdb+ Software may only be used for User’s internal business purposes. You may not grant third parties direct access to the kdb+Software.
 
-2.  **Modifications to Kdb+ Software.**
+2.  **Modifications to kdb+ Software.**
     You will not attempt to de-compile, reverse compile,
     disassemble, reverse engineer or otherwise reduce to
     human-perceivable form all or any part of the kdb+ Software. You
@@ -70,7 +70,7 @@ Subject to the User purchasing access to the kdb+ Software via Azure, and subjec
     Confidential Information, below.
 
 3.  **Transfer of the kdb+ Software.**
-    The Kdb+ Software is only permitted to be accessed by you via
+    The kdb+ Software is only permitted to be accessed by you via
     Azure. You will not attempt to transfer, copy, modify,
     duplicate, create derivative works from, frame, mirror,
     republish, download, display, transmit, or distribute all or any
@@ -95,10 +95,10 @@ Subject to the User purchasing access to the kdb+ Software via Azure, and subjec
     Prior to access being provided to the kdb+ Software, certain
     information will be reported to KX as detailed in the Schedule
     to this Agreement this confirms that you are licensed to use the
-    Kdb+ Software. You will not attempt to interfere, delay or in
+    kdb+ Software. You will not attempt to interfere, delay or in
     any way restrict the reporting to the KX server. If the license
     manager software determines that the kdb+ Software is not
-    authorized the license manager software will halt the Kdb+
+    authorized the license manager software will halt the kdb+
     Software.
 
 3.  **Updates.**
@@ -131,7 +131,7 @@ Subject to the User purchasing access to the kdb+ Software via Azure, and subjec
     documentation and any Intellectual Property (whether
     registerable or un-registerable) appurtenant thereto including in
     any Updates, modifications, improvements, or developments to the
-    Kdb+ Software arising during this Agreement. (“**Intellectual
+    kdb+ Software arising during this Agreement. (“**Intellectual
     Property**” means patents, utility models, rights to inventions,
     copyright and related rights, trademarks and service marks,
     trade names and domain names, rights in get-up, goodwill and the
@@ -152,8 +152,8 @@ Subject to the User purchasing access to the kdb+ Software via Azure, and subjec
 
 3.  For the avoidance of doubt, User disclaims all right, title and
     interest in the kdb+ Software (whether in whole or in part),
-    regardless of whether such Kdb+ Software is embedded in an
-    application or program developed by you. Such Kdb+ Software
+    regardless of whether such kdb+ Software is embedded in an
+    application or program developed by you. Such kdb+ Software
     (including if the kdb+ Software is embedded in an application or
     program developed by you) shall vest in and be owned by KX
     absolutely pursuant to section 5.1 of this Agreement. You shall
@@ -192,7 +192,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     and/or defend any such claim, suit or proceeding. You shall not
     be liable for any costs or expenses or other obligations
     incurred as the result of a settlement (other than return of the
-    Kdb+ Software) without your prior written authorization. KX
+    kdb+ Software) without your prior written authorization. KX
     shall not have any liability for any settlement entered into by
     you unless KX has consented to such settlement in writing.
 
@@ -313,7 +313,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     1.  is required by law to be disclosed; provided that if a party is required to disclose the other party’s Confidential Information pursuant to an order under law, the disclosing party shall give the party owning the Confidential Information sufficient notice of such disclosure to allow the owning party reasonable opportunity to object to and take necessary legal action to prevent such disclosure.
 
 4.  **Benchmark Test Results.** User agrees not to disclose
-    benchmark, test or performance information regarding the Kdb+
+    benchmark, test or performance information regarding the kdb+
     Software to any third party except as explicitly authorized by
     KX in writing.
 
@@ -345,7 +345,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
 4.  **Amendments to the Agreement**. KX may amend this Agreement at
     any time. This Agreement shall continue until the User downloads
     or is provided with a revised version of the Agreement. You
-    acknowledge and agree that by continuing to use the Kdb+
+    acknowledge and agree that by continuing to use the kdb+
     Software from the date of revision, you agree to be bound by the
     revised terms. You are solely responsible for monitoring any
     changes to this Agreement. Absence of notification does not
@@ -353,7 +353,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     Agreement, or of such modifications’ enforceability.
 
 5.  **Surviving Provisions of Agreement**. The provisions of section
-    5 (“Ownership of Kdb+ Software”), section 6 (“Limited
+    5 (“Ownership of kdb+ Software”), section 6 (“Limited
     Warranty”), section 7 (“Indemnification”), section 8
     (“Limitation of Liability and Damages”), section 9
     (“Confidential Information and Publicity”), section 10 (“Term
@@ -371,7 +371,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     of User or the sale of User’s business or its assets to a third
     party.
 
-2.  **Open Source.** The Kdb+ Software may contain or be provided
+2.  **Open Source.** The kdb+ Software may contain or be provided
     with components which are subject to the terms and conditions of
     “open source” software licenses (“**Open Source Software**”).
     Open Source Software may be identified in the documentation
@@ -389,10 +389,10 @@ operation of the kdb+ software will be error-free or uninterrupted.
     anti-corruption including but not limited to the Bribery Act
     2010 and the US Foreign Corrupt Practices Act 1977.
 
-4.  **Export.** The Kdb+ Software including any software,
+4.  **Export.** The kdb+ Software including any software,
     documentation, and any related technical data included with, or
-    contained in, such Kdb+ Software and any products utilizing any
-    such Kdb+ Software, documentation, or technical data
+    contained in, such kdb+ Software and any products utilizing any
+    such kdb+ Software, documentation, or technical data
     (collectively, æ**Regulated Software**”) may be subject to
     export control and economic sanctions laws, regulations and
     requirements and to import laws, regulations and requirements of
@@ -471,7 +471,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
     computer software” and/or “commercial computer software
     documentation” pursuant to DFAR Section 227.7202 and FAR Section
     12.212, as applicable, and any use, modification, reproduction,
-    release, performance, display, or disclosure of the Kdb+
+    release, performance, display, or disclosure of the kdb+
     Software by a U.S. government agency shall be prohibited except
     as expressly permitted by this Agreement, which terms shall
     govern.
@@ -479,7 +479,7 @@ operation of the kdb+ software will be error-free or uninterrupted.
 ## Schedule
 
 **Information reported to KX** 
-The following Kdb+ Software variables are reported to the license
+The following kdb+ Software variables are reported to the license
 manager software (which are, upon notice, subject to change):
 
 -    UTC timestamp (`.z.p`)

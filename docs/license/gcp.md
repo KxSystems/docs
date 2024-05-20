@@ -1,9 +1,9 @@
 ---
-title: Kdb+ license for Google Cloud – kdb+ and q documentation
-description: Kdb+ software end-user agreement for Google Cloud Platform Marketplace
+title: kdb+ license for Google Cloud – kdb+ and q documentation
+description: kdb+ software end-user agreement for Google Cloud Platform Marketplace
 date: July 2018
 ---
-# :kx-brands-google-cloud:<br>Kdb+ software end-user agreement
+# :kx-brands-google-cloud:<br>kdb+ software end-user agreement
 
 
 
@@ -11,10 +11,10 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
 
 ## 1.  Scope of agreement
     
-1.  This Kdb+ Software End User Agreement (“Agreement’) is made
+1.  This kdb+ Software End User Agreement (“Agreement’) is made
     between Kx Systems, Inc. (“KX” or “We”) and you the person or
     entity which accesses the kdb+ Software (“User” or “you”), with
-    respect to KX’s Kdb+ Software made available at the online
+    respect to KX’s kdb+ Software made available at the online
     GCP Marketplace at
     https://console.cloud.google.com/marketplace (“Google Platform”) owned and
     controlled by Google Inc. You are required to have a Google
@@ -24,14 +24,14 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
 
 2.  KX has developed a 64-bit software program that includes a
     relational database system and KX’s q programming language
-    (“**Kdb+ Software**”). KX has made this Kdb+ Software
+    (“**kdb+ Software**”). KX has made this kdb+ Software
     available for usage within the Google Platform. You are required
     to pay for access to the kdb+ Software for any usage. Payment by
     you for use of the kdb+ Software shall be made directly by you
     via the Google Platform. Subject to your Google account being in
-    good standing, you will be provided an instance of the Kdb+
+    good standing, you will be provided an instance of the kdb+
     Software to be used strictly by you within the Google Platform
-    environment. The Kdb+ Software includes any Updates (defined
+    environment. The kdb+ Software includes any Updates (defined
     below) and/or any documentation provided to you by KX.
 
 3.  This Agreement sets forth the terms on which KX will permit you
@@ -59,15 +59,15 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     your behalf; and, in the event of any such unauthorized access
     or use, you shall promptly notify KX. 
 
-    1.  In the event that you develop an application or program, utilizing Kdb+ Software, you will not
+    1.  In the event that you develop an application or program, utilizing kdb+ Software, you will not
 
         1. attempt to host that application or program for any third party unless you have a separate license directly with KX for the kdb+ Software which permits software hosting services
     
         1. attempt to host that application or program on the Google Platform for any third party or permit that third party to remotely access the functionality of the application or program
 
-    1. The Kdb+ Software may only be used for User’s internal business purposes. You may not grant third parties direct access to the Kdb+Software.
+    1. The kdb+ Software may only be used for User’s internal business purposes. You may not grant third parties direct access to the kdb+Software.
 
-6.  _Modifications to Kdb+ Software_.
+6.  _Modifications to kdb+ Software_.
     You will not attempt to de-compile, reverse compile,
     disassemble, reverse engineer or otherwise reduce to
     human-perceivable form all or any part of the kdb+ Software. You
@@ -77,7 +77,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     Confidential Information, below.
 
 7.  _Transfer of the kdb+ Software_.
-    The Kdb+ Software is only permitted to be accessed by you via
+    The kdb+ Software is only permitted to be accessed by you via
     the Google Platform. You will not attempt to transfer, copy,
     modify, duplicate, create derivative works from, frame, mirror,
     republish, download, display, transmit, or distribute all or any
@@ -100,10 +100,10 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     Prior to access being provided to the kdb+ Software, certain
     information will be reported to KX as detailed in the Schedule
     to this Agreement this confirms that you are licensed to use the
-    Kdb+ Software. You will not attempt to interfere, delay or in
+    kdb+ Software. You will not attempt to interfere, delay or in
     any way restrict the reporting to the KX server. If the license
     manager software determines that the kdb+ Software is not
-    authorized the license manager software will halt the Kdb+
+    authorized the license manager software will halt the kdb+
     Software.
 
 10. _Updates._ Upon KX’s commercial
@@ -133,7 +133,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     documentation and any Intellectual Property (whether
     registerable or un-registerable) appurtenant thereto including in
     any Updates, modifications, improvements, or developments to the
-    Kdb+ Software arising during this Agreement. (“**Intellectual
+    kdb+ Software arising during this Agreement. (“**Intellectual
     Property**” means patents, utility models, rights to inventions,
     copyright and related rights, trademarks and service marks,
     trade names and domain names, rights in get-up, goodwill and the
@@ -154,8 +154,8 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
 
 15. For the avoidance of doubt, User disclaims all right, title and
     interest in the kdb+ Software (whether in whole or in part),
-    regardless of whether such Kdb+ Software is embedded in an
-    application or program developed by you. Such Kdb+ Software
+    regardless of whether such kdb+ Software is embedded in an
+    application or program developed by you. Such kdb+ Software
     (including if the kdb+ Software is embedded in an application or
     program developed by you) shall vest in and be owned by KX
     absolutely pursuant to section 5.1 of this Agreement. You shall
@@ -187,7 +187,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     and/or defend any such claim, suit or proceeding. You shall not
     be liable for any costs or expenses or other obligations
     incurred as the result of a settlement (other than return of the
-    Kdb+ Software) without your prior written authorization. KX
+    kdb+ Software) without your prior written authorization. KX
     shall not have any liability for any settlement entered into by
     you unless KX has consented to such settlement in writing.
 
@@ -281,7 +281,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     6. is required by law to be disclosed; provided that if a party is required to disclose the other party’s Confidential Information pursuant to an order under law, the disclosing party shall give the party owning the Confidential Information sufficient notice of such disclosure to allow the owning party reasonable opportunity to object to and take necessary legal action to prevent such disclosure.
 
 29. **Benchmark Test Results.** User agrees not to disclose
-    benchmark, test or performance information regarding the Kdb+
+    benchmark, test or performance information regarding the kdb+
     Software to any third party except as explicitly authorized by
     KX in writing.
 
@@ -309,7 +309,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
 33. **Amendments to the Agreement**. KX may amend this Agreement at
     any time. This Agreement shall continue until the User downloads
     or is provided with a revised version of the Agreement. You
-    acknowledge and agree that by continuing to use the Kdb+
+    acknowledge and agree that by continuing to use the kdb+
     Software from the date of revision, you agree to be bound by the
     revised terms. You are solely responsible for monitoring any
     changes to this Agreement. Absence of notification does not
@@ -317,7 +317,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     Agreement, or of such modifications’ enforceability.
 
 34. **Surviving Provisions of Agreement**. The provisions of section
-    5 (“Ownership of Kdb+ Software”), section 6 (“Limited
+    5 (“Ownership of kdb+ Software”), section 6 (“Limited
     Warranty”), section 7 (“Indemnification”), section 8
     (“Limitation of Liability and Damages”), section 9
     (“Confidential Information and Publicity”), section 10 (“Term
@@ -335,7 +335,7 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     of User or the sale of User’s business or its assets to a third
     party.
 
-36. **Open Source.** The Kdb+ Software may contain or be provided
+36. **Open Source.** The kdb+ Software may contain or be provided
     with components which are subject to the terms and conditions of
     “open source” software licenses (“**Open Source Software**”).
     Open Source Software may be identified in the documentation
@@ -353,10 +353,10 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     anti-corruption including but not limited to the Bribery Act
     2010 and the US Foreign Corrupt Practices Act 1977.
 
-38. **Export.** The Kdb+ Software including any software,
+38. **Export.** The kdb+ Software including any software,
     documentation, and any related technical data included with, or
-    contained in, such Kdb+ Software and any products utilizing any
-    such Kdb+ Software, documentation, or technical data
+    contained in, such kdb+ Software and any products utilizing any
+    such kdb+ Software, documentation, or technical data
     (collectively, “Regulated Software”) may be subject to export
     control and economic sanctions laws, regulations and
     requirements and to import laws, regulations and requirements of
@@ -433,14 +433,14 @@ _Carefully read the following terms and conditions. By accessing the kdb+ Softwa
     computer software” and/or “commercial computer software
     documentation” pursuant to DFAR Section 227.7202 and FAR Section
     12.212, as applicable, and any use, modification, reproduction,
-    release, performance, display, or disclosure of the Kdb+
+    release, performance, display, or disclosure of the kdb+
     Software by a U.S. government agency shall be prohibited except
     as expressly permitted by this Agreement, which terms shall
     govern.
 
 ## Schedule
 
-**Information Reported to KX** The following Kdb+ Software variables are reported by the license manager software (and are, upon notice, subject to change):
+**Information Reported to KX** The following kdb+ Software variables are reported by the license manager software (and are, upon notice, subject to change):
 
 content | as in
 --------|---------

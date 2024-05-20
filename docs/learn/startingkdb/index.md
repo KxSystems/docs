@@ -14,7 +14,7 @@ This is a quick-start guide to kdb+, aimed primarily at those learning independe
 One caution: you can learn kdb+ reasonably well by independent study, but for serious deployment of the product you need the help of a consultant. This is because kdb+ is typically used for very demanding applications that require experience to set up properly. Contact KX for help with such evaluations.
 
 
-## Kdb+
+## kdb+
 
 The kdb+ system is both a database and a programming language.
   
