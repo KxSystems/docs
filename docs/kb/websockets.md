@@ -162,6 +162,12 @@ Here we can see the uncompressed data was quicker to add to the queue, and consu
 
 In Chrome you can also observe the network handshake in _View&gt;Developer&gt;Developer tools_; a successful negotiation will have `“Sec-WebSocket-Extensions:permessage-deflate”` in the HTTP response header.
 
+Since 4.1 2024.03.12, 4.0 2024.03.04 websocket compression is disabled if kdb+ receives the `sec-websocket-protocol` http header with value `kxnodeflate`, for example client javascript:
+
+```js
+ws=new WebSocket(url),"kxnodeflate");
+```
+
 
 ## Simple WebSocket client example
 
