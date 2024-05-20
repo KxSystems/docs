@@ -18,7 +18,7 @@ by [Ciáran Gorman](#author)
 
 The purpose of this white paper is to give an overview of some of the methods that are available to a kdb+ developer when trying to optimize the performance of a kdb+ database when queried.
 
-Kdb+ has a well deserved reputation as a high-performance database, appropriate for capturing, storing and analyzing massive amounts of data. Developers using kdb+ can use some of the techniques outlined in this white paper to optimize the performance of their installations. These techniques encompass variations in the structure of queries, how data is stored, and approaches to aggregation.
+kdb+ has a well deserved reputation as a high-performance database, appropriate for capturing, storing and analyzing massive amounts of data. Developers using kdb+ can use some of the techniques outlined in this white paper to optimize the performance of their installations. These techniques encompass variations in the structure of queries, how data is stored, and approaches to aggregation.
 
 Adjustments to column attributes are made using the `dbmaint.q` library.
 
@@ -387,7 +387,7 @@ We can see in the chart above the benefits from setting the attribute on the tim
 
 <small>_Figure 8: Effect of sorted attribute on workspace used_</small>
 
-We observe similar results here for the amount of space used for the request. Kdb+ is able to perform the calculation with a much smaller subset of the data. We can see that the curve representing space used for requests without an attribute set has a series of steps. These steps reflect the fact that kdb+’s buddy-memory algorithm allocates according to powers of 2.
+We observe similar results here for the amount of space used for the request. kdb+ is able to perform the calculation with a much smaller subset of the data. We can see that the curve representing space used for requests without an attribute set has a series of steps. These steps reflect the fact that kdb+’s buddy-memory algorithm allocates according to powers of 2.
 
 
 ### Unique attribute
@@ -603,7 +603,7 @@ As we can see in the results above, using the same form of query with the attrib
 
 #### Grouped attribute as query grows
 
-This example will examine the behavior of the grouped attribute as the requested universe grows. We will use more than one query format, and observe whether the format of the request impacts performance. The data used for the example is quote data drawn from our example database, and sorted on time to simulate real-time data. Kdb+ will be restarted between tests.
+This example will examine the behavior of the grouped attribute as the requested universe grows. We will use more than one query format, and observe whether the format of the request impacts performance. The data used for the example is quote data drawn from our example database, and sorted on time to simulate real-time data. kdb+ will be restarted between tests.
 
 ```q
 //make dictionary containing groups of distinct syms 

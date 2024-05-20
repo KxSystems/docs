@@ -16,7 +16,7 @@ by [James Hanna](#author)
 
 
 
-Kdb+ is well suited to managing massive datasets and offers an
+kdb+ is well suited to managing massive datasets and offers an
 unrivalled performance advantage when it comes to processing and
 analyzing data. This is a case study highlighting some of the key
 points we have found with regard to the storage and maintenance of
@@ -77,7 +77,7 @@ advantage related to database maintenance is that since the size of
 the individual column data files is reduced, the memory required to
 apply a sort to the data on disk will be reduced.
 
-Kdb+ provides a simple method to store the data in multiple partitions
+kdb+ provides a simple method to store the data in multiple partitions
 for each date by using the `par.txt` file. When attempting to read data
 from a database like this a large number of queries will behave
 exactly as they would in a database with only one partition per date.

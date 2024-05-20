@@ -30,7 +30,7 @@ There are a number of measures used to protect casinos against card counters. Th
 
 Examples of these countermeasures are shuffling more frequently, reducing the number of hands played, and not permitting mid-game entry.
 
-The purpose of this paper is to highlight a use case of kdb+ with ESPs to detect card counters in the game of Blackjack in real-time. Kdb+ offers an unrivalled performance advantage when it comes to capturing, analyzing and storing massive amounts of data in a very short space of time, making it the data-storage technology of choice for many financial institutions across the globe, and more recently other industries such as telecommunications and pharma.
+The purpose of this paper is to highlight a use case of kdb+ with ESPs to detect card counters in the game of Blackjack in real-time. kdb+ offers an unrivalled performance advantage when it comes to capturing, analyzing and storing massive amounts of data in a very short space of time, making it the data-storage technology of choice for many financial institutions across the globe, and more recently other industries such as telecommunications and pharma.
 
 All tests were run using kdb+ version 3.5 (2017.04.10)
 
@@ -290,7 +290,7 @@ Once all algorithms had been created, three card-counting algorithms with varyin
 
 Any card counter must use a sufficient minimum-to-maximum bet spread to ensure they win enough money to make their time at the Blackjack table worthwhile. As the count increases so should the players bet, as this is reducing the houses edge. Therefore, the detection algorithm will be checking the bet spreads of every player at the table against each of the card-counting strategies.
 
-Kdb+ has an inbuilt covariance function which can be used to measure the strength of correlation between two or more sets of random variables. The algorithm will keep the true count for all of the counting strategies defined within it and compare each strategy to each player by plotting the pairs of covariances against each other, calculating the correlation and their r-squared values.
+kdb+ has an inbuilt covariance function which can be used to measure the strength of correlation between two or more sets of random variables. The algorithm will keep the true count for all of the counting strategies defined within it and compare each strategy to each player by plotting the pairs of covariances against each other, calculating the correlation and their r-squared values.
 
 
 ### Card counter vs random players

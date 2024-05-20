@@ -63,7 +63,7 @@ aware of and plan for when building a kdb+ tick-based system. This
 paper does not deal with many failure conditions of a kdb+ system
 outside of the ticker plant model used in capital markets.
 
-Kdb+ tick is an architecture which allows the capturing, processing
+kdb+ tick is an architecture which allows the capturing, processing
 and querying of data in real time and historically. It typically
 consists of:
 
@@ -101,7 +101,7 @@ data. The RDB is instructed to save its data to the HDB at EOD (end of day).
 ## What does a kdb+ database look like on disk?
 
 Before we consider creating a disaster-recovery plan, we first must
-understand the layout of a typical kdb+ database on-disk. Kdb+
+understand the layout of a typical kdb+ database on-disk. kdb+
 databases are stored as a series of files and directories on disk.
 This makes handling databases extremely easy because database files
 can be manipulated as operating system files. Backing up a kdb+
@@ -110,7 +110,7 @@ backup utility. This is a key difference from traditional
 databases, which have their own backup utilities and do not allow
 direct access to the database files.
 
-Kdb+’s use of the native file system is also reflected in the way it
+kdb+’s use of the native file system is also reflected in the way it
 uses standard operating-system features for accessing data
 (memory-mapped files), whereas traditional databases use proprietary
 techniques in an effort to speed up the reading and writing processes.

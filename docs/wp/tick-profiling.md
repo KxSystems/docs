@@ -1,5 +1,5 @@
 ---
-title: Kdb+tick profiling for throughput optimization | White Papers | kdb+ and q documentation
+title: kdb+tick profiling for throughput optimization | White Papers | kdb+ and q documentation
 description: Key factors that influence the performance and throughput of a kdb+ tickerplant, a methodology to profile its performance, and four key areas to control.
 author: Ian Kilpatrick
 date: March 2014
@@ -8,7 +8,7 @@ keywords: chained tickerplant, frequency, kdb+, performance, publish, q, rdb, su
 White paper
 {: #wp-brand}
 
-# Kdb+tick profiling for throughput optimization
+# kdb+tick profiling for throughput optimization
 
 by [Ian Kilpatrick](#author)
 {: .wp-author}
@@ -16,7 +16,7 @@ by [Ian Kilpatrick](#author)
 
 
 
-Kdb+ is seen as the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. Kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data. The core of a kdb+ tick capture system is the tickerplant. 
+kdb+ is seen as the technology of choice for many of the world’s top financial institutions when implementing a tick-capture system. kdb+ is capable of processing large amounts of data in a very short space of time, making it the ideal technology for dealing with the ever-increasing volumes of financial tick data. The core of a kdb+ tick capture system is the tickerplant. 
 
 KX’s source code for kdb+tick will form the basis of this paper. The purpose of this white paper is to discuss factors which influence messaging and throughput performance for a kdb+-based tick-capture system and to present a methodology with which this performance can be profiled to assist in optimizing the tick system configuration.
 

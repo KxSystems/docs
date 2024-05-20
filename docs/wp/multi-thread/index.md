@@ -37,7 +37,7 @@ All tests performed using kdb+ version 3.1 (2013.06.25)
 
 ## Setting up kdb+ for parallel processing
 
-Kdb+ starts in single-threaded mode by default. This ensures data consistency and that there are no race conditions, as all commands are executed in the order they are received. Multi-threading in kdb+ is achieved by spawning multiple secondary threads.
+kdb+ starts in single-threaded mode by default. This ensures data consistency and that there are no race conditions, as all commands are executed in the order they are received. Multi-threading in kdb+ is achieved by spawning multiple secondary threads.
 
 To perform parallel operations in kdb+, the process is started up using the [`–s n` command-line option](../../basics/cmdline.md#-s-secondary-processes). When called with a value of `n`>1, kdb+ will start `n` secondary threads. For optimal performance when using multi-threading, the number of secondary processes should be equal to or greater than the number of available cores. One should take into consideration the overall usage of the host when determining the number of secondary processes to allocate.
 
@@ -362,7 +362,7 @@ It is notable that there is little increase in performance from using 12 seconda
 
 ### Parallel access and segmentation
 
-Kdb+ supports parallel I/O to address the disk-contention issue outlined earlier. This requires a specific hardware arrangement, usually direct-attached storage, with multiple disks residing on separate I/O channels.
+kdb+ supports parallel I/O to address the disk-contention issue outlined earlier. This requires a specific hardware arrangement, usually direct-attached storage, with multiple disks residing on separate I/O channels.
 
 To allow simultaneous access across partitions, the database structure is modified to use segments. Segmentation adds an additional layer above the partitioned structure. A simple example of this structure would be to split a date-partitioned database across two disks, by saving alternating days on each segment.
 

@@ -16,7 +16,7 @@ by [James Galligan](#author)
 
 
 
-The compactness of kdb+ and the terseness of q focus code on a small number of high-performing native built-in functions rather than extensive libraries. Kdb+ users often develop libraries of their own domain-specific algorithms and functions, for convenience and to support reuse. 
+The compactness of kdb+ and the terseness of q focus code on a small number of high-performing native built-in functions rather than extensive libraries. kdb+ users often develop libraries of their own domain-specific algorithms and functions, for convenience and to support reuse. 
 
 In this paper, we show examples of functions commonly used in finance, built on native q functions.
 
@@ -46,7 +46,7 @@ A Python script connected to exchange feeds and extracted the relevant data, whi
 
 For help with tick capture:
 
-* :fontawesome-regular-map: [Kdb+tick profiling for throughput optimization](../tick-profiling.md)
+* :fontawesome-regular-map: [kdb+tick profiling for throughput optimization](../tick-profiling.md)
 * :fontawesome-regular-map: [Disaster-recovery planning for kdb+ tick systems](../disaster-recovery/index.md)
 * :fontawesome-regular-map: [Query Routing: A kdb+ framework for a scalable, load balanced system](../query-routing/index.md)
 
