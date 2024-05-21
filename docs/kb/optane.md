@@ -1,6 +1,6 @@
 ---
 title: Intel Optane Persistent Memory and kdb+ | Knowledge Base | Documentation for kdb+ and q
-description: Kdb+ 4.0 can exploit Optane persistent memory, a new hardware technology from Intel, in App Direct Memory mode and substantially reduce execution times.
+description: kdb+ 4.0 can exploit Optane persistent memory, a new hardware technology from Intel, in App Direct Memory mode and substantially reduce execution times.
 author: Glenn Wright
 date: January 2021
 ---
@@ -79,7 +79,7 @@ Some advantages that Intel Optane PMem provides to databases are:
 -   In-memory databases will scale using Intel Optane PMem as a larger memory space
 
 A typical kdb+ application uses a combination of memory and storage to
-gather, persist and analyze enormous datasets. Kdb+’s structured use of
+gather, persist and analyze enormous datasets. kdb+’s structured use of
 on-disk data allows efficient access to databases up to petabyte scale.
 The size of in-memory datasets, however, is primarily restricted by the
 size of the accessible memory space.
@@ -94,7 +94,7 @@ three main options:
 ​
 ### Read/write data from storage
 ​
-Kdb+ on-disk databases are partitioned, most commonly by date, with
+kdb+ on-disk databases are partitioned, most commonly by date, with
 individual columns stored as binary objects within a file system. The
 result is a self-describing database on disk, mapped into memory by a
 kdb+ process and presented to users as if it resides in memory. The
@@ -152,7 +152,7 @@ For larger datasets, this increased memory space avoids the costs and complexity
 
 ### App Direct Mode ​
 
-Kdb+ 4.0 contains support for App Direct Mode, in which the applications and operating system are explicitly aware there are two types of direct load/store memory in the platform, and can direct which type of data read or write is suitable for DRAM or Intel® Optane™ persistent memory. Kdb+ sees Intel Optane PMem and DRAM as two separate pools, and gives users control over which entities reside in each. As a result, users can optimize their applications and schemas, keeping hot data in fast DRAM while still taking full advantage of the expanded memory capacity.
+kdb+ 4.0 contains support for App Direct Mode, in which the applications and operating system are explicitly aware there are two types of direct load/store memory in the platform, and can direct which type of data read or write is suitable for DRAM or Intel® Optane™ persistent memory. kdb+ sees Intel Optane PMem and DRAM as two separate pools, and gives users control over which entities reside in each. As a result, users can optimize their applications and schemas, keeping hot data in fast DRAM while still taking full advantage of the expanded memory capacity.
 ​
 Horizontal partitioning ​
 

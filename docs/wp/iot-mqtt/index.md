@@ -917,8 +917,8 @@ Other papers by Rian Ó Cuinneagáin
 {: .publications}
 
 <ul markdown="1" class="publications">
--   [Kdb+/q Insights: Parsing data in kdb+](https://kx.com/blog/kx-product-insights-parsing-data-in-kdb/)
--   [Kdb+/q Insights: Parsing JSON files](https://kx.com/blog/kdb-q-insights-parsing-json-files/)
+-   [kdb+/q Insights: Parsing data in kdb+](https://kx.com/blog/kx-product-insights-parsing-data-in-kdb/)
+-   [kdb+/q Insights: Parsing JSON files](https://kx.com/blog/kdb-q-insights-parsing-json-files/)
 -   [Partitioning data in kdb+](https://kx.com/blog/partitioning-data-in-kdb/)
 -   [How to Avoid a Goat in Monte Carlo – Elegantly](https://kx.com/blog/how-to-avoid-a-goat-in-monte-carlo-elegantly/)
 </ul>

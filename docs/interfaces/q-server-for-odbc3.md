@@ -1,8 +1,8 @@
 ---
-title: Kdb+ server for ODBC3 – Interfaces – kdb+ and q documentation
+title: kdb+ server for ODBC3 – Interfaces – kdb+ and q documentation
 description: The ODBC3 server allows applications to query kdb+ via the ODBC interface.  
 ---
-# :fontawesome-solid-database: Kdb+ server for ODBC3
+# :fontawesome-solid-database: kdb+ server for ODBC3
 
 
 

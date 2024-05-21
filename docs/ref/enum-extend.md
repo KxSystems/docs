@@ -91,7 +91,7 @@ fcntl(1024, F_SETLKW, {type=F_WRLCK, whence=SEEK_CUR, start=0, len=0}) = 0
 ```
 
 If that return value is not 0, then the lock failed and may not be supported by the chosen filesystem.
-Kdb+ does not report an error if that lock call fails.
+kdb+ does not report an error if that lock call fails.
 
 Enum Extend is a uniform function. 
 

@@ -64,7 +64,7 @@ All tests were run using kdb+ version 3.5 and Tableau 10.3.
 ## Connecting to kdb+ using ODBC
 
 Instructions on how to connect kdb+ from Tableau Desktop for both
-Windows and Linux can be found at [Interfaces: Kdb+ server for ODBC3](../../interfaces/q-server-for-odbc3.md).
+Windows and Linux can be found at [Interfaces: kdb+ server for ODBC3](../../interfaces/q-server-for-odbc3.md).
 
 For an ODBC driver to connect to an application, it needs a DSN
 (Data Source Name). 
@@ -432,7 +432,7 @@ divided by 50.
 
 ### Multiple data sources
 
-Kdb+ is efficient at joining data sets,
+kdb+ is efficient at joining data sets,
 and can easily do so in memory at the gateway level. However,
 it is also worth noting that it is possible to join two or more
 different datasets in Tableau if they share a common dimension or key.
@@ -545,7 +545,7 @@ multiple environments and DSNs.
 
 ## Conclusion
 
-Kdb+ is well known as the world’s fastest time-series database. KX’s
+kdb+ is well known as the world’s fastest time-series database. KX’s
 own visualization tool, _Dashboards for KX_, is optimized for this
 technology. However, kdb+ is flexible enough to connect with a
 range of different visualization tools. This white paper demonstrates how to connect to one such visualization tool,

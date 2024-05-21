@@ -49,7 +49,7 @@ Lightning daemon (`lnd`) | 0.6.0-beta (`commit=v0.6.0-beta-41-g1c22474ad31b5f7fe
 
 [qbitcoind](https://github.com/jlucid/qbitcoind) is a q library designed to interact with a Bitcoin core full node.
 
-This library is used herein to transfer funds from a Bitcoin core wallet to a Lightning wallet. For more information on running a node, and using qbitcoind, see [Kdb+ Securing Digital Assets](https://kx.com/blog/securing-digital-assets-a-bitcoin-full-node-api-for-kdb/) and [Storing and exploring the Bitcoin blockchain](../blockchain/index.md).
+This library is used herein to transfer funds from a Bitcoin core wallet to a Lightning wallet. For more information on running a node, and using qbitcoind, see [kdb+ Securing Digital Assets](https://kx.com/blog/securing-digital-assets-a-bitcoin-full-node-api-for-kdb/) and [Storing and exploring the Bitcoin blockchain](../blockchain/index.md).
 
 The reader should be aware that the above software is a beta version and the technology is still relatively new and experimental. 
 Keep funds held on Lightning to a minimum.
@@ -658,7 +658,7 @@ channel participants.
 To demonstrate how Lightning payments could be integrated into kdb+ based applications, below
 is an example which modifies a vanilla tickerplant, an application most kdb+ developers are familiar with.
 
-Kdb+ tickerplants are high-performance processes designed for the consumption 
+kdb+ tickerplants are high-performance processes designed for the consumption 
 of real-time streaming data and the publishing of that data to multiple downstream
 subscribers. Tickerplants operate within a pub/sub messaging model where subscriber processes request
 data from the tickerplant on a per topic basis and receive all messages relating to that topic, enabling event-driven architectures.

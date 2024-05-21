@@ -525,7 +525,7 @@ based around a combination of: multithreading read requests to the S3
 bucket; separation of large sequential regions of a file into individual
 objects within the bucket and read-ahead and caching strategies.
 
-There are some areas of synergy. Kdb+ HDB data typically stores billions
+There are some areas of synergy. kdb+ HDB data typically stores billions
 and billions of time-series entries in an immutable read-only mode. Only
 updated new data that lands in the HDB needs to be written. S3 is a
 [shared nothing](https://en.wikipedia.org/wiki/Shared-nothing_architecture "Wikipedia") model. Therefore, splitting a single segment or
@@ -551,7 +551,7 @@ In addition to EC2’s built-in disaster-recovery features, when you use
 kdb+ on EC2, your disaster recovery process is eased by kdb+’s simple,
 elegant design.
 
-Kdb+ databases are stored as a series of files and directories on disk.
+kdb+ databases are stored as a series of files and directories on disk.
 This makes administering databases extremely easy because database files
 can be manipulated as operating-system files. Backing up a kdb+ database
 can be implemented using any standard filesystem backup utility. This
@@ -559,7 +559,7 @@ is a key difference from traditional databases, which have to have their
 own cumbersome backup utilities and do not allow direct access to the
 database files and structure.
 
-Kdb+’s use of the native filesystem is also reflected in the way it
+kdb+’s use of the native filesystem is also reflected in the way it
 uses standard operating-system features for accessing data
 (memory-mapped files), whereas traditional databases use proprietary
 techniques in an effort to speed up the reading and writing processes.
@@ -581,7 +581,7 @@ You can use your existing license entitlement but must transfer or register cove
 
 ### On-demand licensing
 
-You can sign up for an on-demand license, and use it to enable kdb+ on each of the on-demand EC2 nodes. Kdb+ on-demand usage registers by core and by minutes of execution.
+You can sign up for an on-demand license, and use it to enable kdb+ on each of the on-demand EC2 nodes. kdb+ on-demand usage registers by core and by minutes of execution.
 
 
 ## Encryption
@@ -718,7 +718,7 @@ function       | latency (mSec) | function   | latency (mSec)
 ![Metadata latency](img/media/image13.png)
 
 This appears to be sustained for multiple q processes, and on the
-whole is below the multiple μSecs range. Kdb+ sustains good metrics. 
+whole is below the multiple μSecs range. kdb+ sustains good metrics. 
 
 
 ### AWS instance local SSD/NVMe
@@ -792,12 +792,12 @@ The best storage performance was, as expected, achieved with locally-attached e
 
 ### Wire speeds
 
-Kdb+ reaches wire speeds on most streaming read tests to networked/shared storage, under kdb+, and in several cases we can reach wire speeds for random 1-MB reads using standard mapped reads into standard q abstractions, such as lists.
+kdb+ reaches wire speeds on most streaming read tests to networked/shared storage, under kdb+, and in several cases we can reach wire speeds for random 1-MB reads using standard mapped reads into standard q abstractions, such as lists.
 
 
 ### `gp2` vs `io1`
 
-EBS was tested for both `gp2` and its brethren the `io1` flash variation. Kdb+ achieved wire speed bandwidth for both of these. When used for larger capacities, we saw no significant advantages of `io1` for the HDB store use case, so the additional charges applied there need to be considered.
+EBS was tested for both `gp2` and its brethren the `io1` flash variation. kdb+ achieved wire speed bandwidth for both of these. When used for larger capacities, we saw no significant advantages of `io1` for the HDB store use case, so the additional charges applied there need to be considered.
 
 
 ### `st1`

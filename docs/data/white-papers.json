@@ -1,6 +1,6 @@
 [
 {
-    "title": "Kdb+ in astronomy",
+    "title": "kdb+ in astronomy",
     "slug": "astronomy",
     "authors": ["Andrew Magowan", "James Neill"]
 },
@@ -46,7 +46,7 @@
     "authors": ["Enda Gildea"]
 },
 {
-    "title": "Kdb+ data-management techniques",
+    "title": "kdb+ data-management techniques",
     "slug": "Simon Mescal",
     "date": "January 2013",
     "authors": ["Simon Mescal"]
@@ -88,7 +88,7 @@
     "authors": ["Esperanza López Aguilera"]
 },
 {
-    "title": "Kdb+ and FIX messaging",
+    "title": "kdb+ and FIX messaging",
     "slug": "fix-messaging",
     "date": "January 2014",
     "authors": ["Damien Barker"]
@@ -235,7 +235,7 @@
     "authors": ["Sean Keevey", "Kevin Smyth"]
 },
 {
-    "title": "Kdb+ and WebSockets ",
+    "title": "kdb+ and WebSockets ",
     "slug": "websockets",
     "date": "March 2018",
     "authors": ["Chris Scott", "Michael Gracey"]
@@ -259,7 +259,7 @@
     "authors": ["Sean Keevey"]
 },
 {
-    "title": "Kdb+ query scaling",
+    "title": "kdb+ query scaling",
     "slug": "query-scaling",
     "date": "January 2014",
     "authors": ["Ian Lester"]
@@ -271,7 +271,7 @@
     "authors": ["Paula Clarke"]
 },
 {
-    "title": "Kdb+tick profiling for throughput optimization",
+    "title": "kdb+tick profiling for throughput optimization",
     "slug": "tick-profiling",
     "date": "March 2014",
     "authors": ["Ian Kilpatrick"]

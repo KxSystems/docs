@@ -165,7 +165,7 @@ Your `QHOME` directory will then contain:
 
 (32-bit versions have `32` in the folder name instead of `64`.)
 
-Kdb+ looks for a license file in `QHOME`. To keep your license file elsewhere, set its path in environment variable `QLIC`.
+kdb+ looks for a license file in `QHOME`. To keep your license file elsewhere, set its path in environment variable `QLIC`.
 
 :fontawesome-solid-laptop-code:
 [Working with multiple versions of kdb+](../kb/versions.md)

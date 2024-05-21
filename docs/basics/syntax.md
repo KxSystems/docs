@@ -617,7 +617,7 @@ A kdb+ session has a default namespace, and child namespaces, nested arbitrarily
 This hierarchy is known as the _K-tree_. 
 Namespaces are identified by a leading dot in their names.
 
-Kdb+ includes namespaces `.h`, `.j`, `.q`, `.Q`, and `.z`. 
+kdb+ includes namespaces `.h`, `.j`, `.q`, `.Q`, and `.z`. 
 (All namespaces with one-character names are reserved for use by KX.)
 
 Names with dots are _compound_ names, and the segments between dots are _simple_ names. All simple names in a compound name have meaning relative to the K-tree, and the dots denote the K-tree relationships among them.

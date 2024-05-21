@@ -33,7 +33,7 @@ These challenges will be outlined and a simplified framework, which has been dep
 
 ### What is it?
 
-Data ingestion is the process of moving, loading and processing data into a database. Kdb+ is a well-known market leader in real-time capturing of data, but this is only one form of data ingestion.
+Data ingestion is the process of moving, loading and processing data into a database. kdb+ is a well-known market leader in real-time capturing of data, but this is only one form of data ingestion.
 
 Batch data processing can also be an efficient (and cheaper) way of processing high volumes of data. In batch processing, data is collected/stored by the upstream source system and a full intraday file is ingested and processed downstream. One example of batch data files are end-of-day financial-market data provided by financial data vendors.
 

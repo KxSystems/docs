@@ -16,7 +16,7 @@ by [Sean Rodgers](#author)
 
 
 
-Kdb+ is leveraged in many financial institutions across the globe and has built a well-earned reputation as a high-performance database, appropriate for capturing, storing and analyzing enormous amounts of data. It is essential that any large-scale kdb+ system has an efficient design so that time to value is kept to a minimum and the end users are provided with useful functionality.
+kdb+ is leveraged in many financial institutions across the globe and has built a well-earned reputation as a high-performance database, appropriate for capturing, storing and analyzing enormous amounts of data. It is essential that any large-scale kdb+ system has an efficient design so that time to value is kept to a minimum and the end users are provided with useful functionality.
 
 This white paper examines a framework which can be used to apply corporate-action adjustments on the fly to equity tick data.
 

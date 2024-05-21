@@ -389,7 +389,7 @@ q)h"a"
 
     [Deferred reponse](../../kb/deferred-response.md) with `-30!` allows a server to defer the response to a synchronous query, allowing other messages to be processed before responding. This is useful where synchronous messaging is necessary on the client side. 
 
-    An example implementation of deferred sync message handling is discussed in the blog [Kdb+/q Insights: Deferred Response](https://kx.com/blog/kdb-q-insights-deferred-response/).
+    An example implementation of deferred sync message handling is discussed in the blog [kdb+/q Insights: Deferred Response](https://kx.com/blog/kdb-q-insights-deferred-response/).
 
 
 ### Asynchronous queries

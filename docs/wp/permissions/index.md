@@ -14,7 +14,7 @@ by [Tom Martin](#author)
 {: .wp-author}
 
 
-Due to its efficiency in storing and retrieving large volumes of data, kdb+ is the data-storage technology of choice for many financial institutions. Kdb+ processes thus often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. Kdb+ offers a number of in-built access functions, though in a default kdb+ instance these are not activated. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
+Due to its efficiency in storing and retrieving large volumes of data, kdb+ is the data-storage technology of choice for many financial institutions. kdb+ processes thus often contain sensitive, proprietary information in the form of data or proprietary code and so it is important to restrict who can and cannot access this information. kdb+ offers a number of in-built access functions, though in a default kdb+ instance these are not activated. This paper discusses various methods in which a permissioning and entitlements system can be implemented in kdb+ by extending these in-built functions, allowing access to sensitive information to be controlled and restricted, exposing data to some clients but not to others.
 
 !!! tip "Commercial-grade products"
 
@@ -100,7 +100,7 @@ q)h(system;”l ../file1.q”)
 
 ### `.z.pw`
 
-The [`.z.pw` callback](../../ref/dotz.md#zpw-validate-user) is called immediately after successful `–u`/`-U` authentication (if specified at startup – otherwise `.z.pw` is the first authentication check done by a kdb+ process). It allows for further customizations of the authentication process. For instance, this callback could be used to call out to an external LDAP server against which a connecting user could be validated. Kdb+ can also be integrated with Kerberos, but this is outside the scope of this paper. The `.z.pw` callback takes two arguments – a username and a password. If the validation check passes, `1b` is returned and the user is granted access. Otherwise, `0b` is returned and access to the server is denied.
+The [`.z.pw` callback](../../ref/dotz.md#zpw-validate-user) is called immediately after successful `–u`/`-U` authentication (if specified at startup – otherwise `.z.pw` is the first authentication check done by a kdb+ process). It allows for further customizations of the authentication process. For instance, this callback could be used to call out to an external LDAP server against which a connecting user could be validated. kdb+ can also be integrated with Kerberos, but this is outside the scope of this paper. The `.z.pw` callback takes two arguments – a username and a password. If the validation check passes, `1b` is returned and the user is granted access. Otherwise, `0b` is returned and access to the server is denied.
 
 In an unrestricted process, this callback will always return `1b`.
 
@@ -561,7 +561,7 @@ q)h"{`a set 1}[`]"
 
 ## Protecting proprietary code
 
-Kdb+ processes often contain a large amount of proprietary code that is exposed to all users that connect to it. Simply typing the name of a function will display its definition. Q scripts can be compiled into binary objects using the [`\_ scriptname.q` system command](../../basics/syscmds.md#_-hide-q-code). This creates the file `scriptname.q_`. When this file is loaded into a q session, all code contained in the script is obscured. However like using the `–b` option to enforce write-only access, this solution hides the function definitions from every single user. Instead, we might prefer to be selective in who can and cannot see the definition of particular functions.
+kdb+ processes often contain a large amount of proprietary code that is exposed to all users that connect to it. Simply typing the name of a function will display its definition. Q scripts can be compiled into binary objects using the [`\_ scriptname.q` system command](../../basics/syscmds.md#_-hide-q-code). This creates the file `scriptname.q_`. When this file is loaded into a q session, all code contained in the script is obscured. However like using the `–b` option to enforce write-only access, this solution hides the function definitions from every single user. Instead, we might prefer to be selective in who can and cannot see the definition of particular functions.
 
 On the kdb+ server, we maintain a list of functions/variables which we wish to obscure. To prevent users from seeing their definition, we must first analyze the various ways in which the definition of a function can be displayed in a kdb+ process.
 

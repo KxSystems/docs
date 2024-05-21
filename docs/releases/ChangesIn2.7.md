@@ -16,7 +16,7 @@ Below is a summary of changes from V2.6. Commercially licensed users may obtain 
 
 ## File compression
 
-Previous versions of kdb+ were already able to exploit file systems such as ZFS and NTFS that feature compression. Kdb+ V2.7 extends this with built-in file compression with a choice of algorithms and compression levels using a common file format across all supported operating systems.
+Previous versions of kdb+ were already able to exploit file systems such as ZFS and NTFS that feature compression. kdb+ V2.7 extends this with built-in file compression with a choice of algorithms and compression levels using a common file format across all supported operating systems.
 
 For further details, please see the [file compression FAQ](../kb/file-compression.md)
 
@@ -27,12 +27,12 @@ Strings stored as a symbol type have always been internalized in kdb+; this mean
 
 ## Memory allocator – garbage collection
 
-Kdb+ V2.5 returned blocks of memory >32MB back to the operating system immediately when they were no longer referenced. This has now been extended to cache those blocks for reuse, allowing the user to explicitly request garbage collection via the command `.Q.gc[]`. This improves the performance of the allocator to levels seen prior to V2.5, and yet retains the convenience of returning unused memory to the operating system. Garbage collection will automatically be attempted if a memory request causes wsful or if the artificial memory limit (set via cmd line `-w` option) is hit.
+kdb+ V2.5 returned blocks of memory >32MB back to the operating system immediately when they were no longer referenced. This has now been extended to cache those blocks for reuse, allowing the user to explicitly request garbage collection via the command `.Q.gc[]`. This improves the performance of the allocator to levels seen prior to V2.5, and yet retains the convenience of returning unused memory to the operating system. Garbage collection will automatically be attempted if a memory request causes wsful or if the artificial memory limit (set via cmd line `-w` option) is hit.
 
 
 ## IPC Message Validator
 
-Previous versions of kdb+ were sensitive to being fed malformed data structures, sometimes resulting in a crash. Kdb+ 2.7 validates incoming IPC messages to check that data structures are well formed, reporting `'badMsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
+Previous versions of kdb+ were sensitive to being fed malformed data structures, sometimes resulting in a crash. kdb+ 2.7 validates incoming IPC messages to check that data structures are well formed, reporting `'badMsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
 
 1. calls `.z.bm` with a single arg, a list of `(handle;msgBytes)`
 2. close the handle and call `.z.pc`

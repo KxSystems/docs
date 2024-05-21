@@ -6,7 +6,7 @@ keywords: file, kdb+, q
 # :fontawesome-solid-database: File system
 
 
-Kdb+ communicates with the filesystem through
+kdb+ communicates with the filesystem through
 
 -   one-shot operations
 -   handles to persistent connections
@@ -89,7 +89,7 @@ Text-file primitives handle text files.
 [?  Enum Extend](../ref/enum-extend.md#filepath)
 </div>
 
-Kdb+ uses files and directories to persist database tables.
+kdb+ uses files and directories to persist database tables.
 [Partitioning a table](../kb/partition.md) divides its rows across multiple directories.
 [Splaying a table](../kb/splayed-tables.md) stores each column as a separate file.
 

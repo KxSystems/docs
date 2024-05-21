@@ -27,7 +27,7 @@ All tests were run using kdb+ version 3.2 (2015.01.14).
 
 ## k4, q and `q.k`
 
-Kdb+ is a database management system which ships with the general-purpose and database language q. Q is an embedded domain-specific language implemented in the k programming language, sometimes known as k4. The q interpreter can switch between q and k modes and evaluate expressions written in k as well as q.
+kdb+ is a database management system which ships with the general-purpose and database language q. Q is an embedded domain-specific language implemented in the k programming language, sometimes known as k4. The q interpreter can switch between q and k modes and evaluate expressions written in k as well as q.
 
 The k language is for KX implementors. 
 It is not documented or supported for use outside KX. 

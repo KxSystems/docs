@@ -1,5 +1,5 @@
 ---
-title: Kdb+ in astronomy | White papers | kdb+ and q documentation
+title: kdb+ in astronomy | White papers | kdb+ and q documentation
 description: Imports FITS data to kdb+, loads C functions and calculates recessional velocity
 author: [Andrew Magowan, James Neill]
 keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar objects, recessional velocity, red shift, telescope
@@ -7,7 +7,7 @@ keywords: api, astronomy, dynamic load, fits, galaxy, kdb+, q, quasi-stellar obj
 White paper
 {: #wp-brand}
 
-# Kdb+ in astronomy
+# kdb+ in astronomy
 
 by [Andrew Magowan &amp; James Neill](#authors)
 {: .wp-author}
@@ -21,7 +21,7 @@ The field of observational astronomy has always been data-driven, but like many 
 
 The LSST is expected to be fully operational and start recording data in 2021, producing 15TB every night. It will take [an image of half the sky every three nights](http://www.lsst.org/), and so the same objects will be photographed again and again. This gives the data from the LSST a time dimension – how an object moves over time is something that will be studied from this data. In the 2020s, the SKA will produce [160TB of data per second](https://www.skatelescope.org/news/raeng-grant-to-engage-with-ska-engineering). This is in the region of [exabytes per night, and zettabytes per year](http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002195). If this data were processed in real time, any large differences in objects (e.g. brightness/position) could then be investigated immediately. Use cases of the data on a non-real-time basis include discovering the formation and structure of our solar system, investigating distant galaxies, and the evolution of the universe.
 
-There is no single choice of programming language in astronomy, but C is used for many astronomical applications. C is one of the most popular and commonly-used programming languages in the world with a wide range of uses varying from powering operating systems to building application software. Kdb+ has the ability to extend its functionality through dynamically-loaded C/C++ modules, so we have the ability both to make use of existing utilities, and to create our own.
+There is no single choice of programming language in astronomy, but C is used for many astronomical applications. C is one of the most popular and commonly-used programming languages in the world with a wide range of uses varying from powering operating systems to building application software. kdb+ has the ability to extend its functionality through dynamically-loaded C/C++ modules, so we have the ability both to make use of existing utilities, and to create our own.
 
 We believe that due to the amount of data collected, its time-series nature, and the potential need for both real-time and historical-based analysis, kdb+ would be very well suited to the data collected in the astronomy industry, and would be an ideal fit for many future astronomy projects.
 
@@ -252,7 +252,7 @@ We can infer from these results that quasi-stellar objects (QSOs) have the great
 
 As previously mentioned, the positive impact of having the SDSS data available to the public has been massive. Since it was released, over 3,000 papers have been written on a range of different topics in the field, based on [data from the SDSS](http://onlinelibrary.wiley.com/doi/10.1111/j.1740-9713.2012.00587.x/pdf). 
 
-The SDSS is just one example of several projects, but it shows the benefit of making the data accessible to all interested parties, both professional and amateur. This impact throughout the wider astronomical community has pushed leaders in the field to continue this development – to further promote sky surveys by building bigger, more powerful telescopes. However, this doesn’t come without its problems, with data storage and computational processing power being pushed to the limits. Kdb+ has the ability to scale to these extremes. Sean Keevey’s white paper [“A natural query interface for distributed systems”](query-interface.md) discusses how data distributed over several processes and machines can be seamlessly accessed from a single
+The SDSS is just one example of several projects, but it shows the benefit of making the data accessible to all interested parties, both professional and amateur. This impact throughout the wider astronomical community has pushed leaders in the field to continue this development – to further promote sky surveys by building bigger, more powerful telescopes. However, this doesn’t come without its problems, with data storage and computational processing power being pushed to the limits. kdb+ has the ability to scale to these extremes. Sean Keevey’s white paper [“A natural query interface for distributed systems”](query-interface.md) discusses how data distributed over several processes and machines can be seamlessly accessed from a single
 starting point by the end user. 
 
 We previously mentioned how astronomy data can often come with a time domain, which would be well suited to kdb+ and how the data would be stored on disk. The data set in this example does not have a time domain, as it just provides information on given objects recorded once, but this certainly does not mean that it is not suited to kdb+. 

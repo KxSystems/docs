@@ -34,7 +34,7 @@ Encryption is selective – encrypt only the files that need encrypting.
 
 Files can be archived, or copied, across environments without going through a decryption and encryption cycle.
 
-Kdb+ is multi-platform, and as the file format is platform-agnostic, the same encrypted files can be accessed from multiple platforms.
+kdb+ is multi-platform, and as the file format is platform-agnostic, the same encrypted files can be accessed from multiple platforms.
 
 Maintain key and process ownership and separation of responsibilities: the DBA holds TDE keys, the server admin holds FDE keys.
 
@@ -225,7 +225,7 @@ The schema in kdb+ is not encrypted, as this is visible in the directory and fil
 
 Compressed files have the 8-byte header "kxzipped"; encrypted files, which may also be compressed, have the header "kxzippEd".
 
-Kdb+ uses a symmetric cipher, AES256CBC – Advanced Encryption Standard (AES), with a 256-bit key size, in Cipher-Block-Chaining (CBC) mode.
+kdb+ uses a symmetric cipher, AES256CBC – Advanced Encryption Standard (AES), with a 256-bit key size, in Cipher-Block-Chaining (CBC) mode.
 
 The meta data of a file is encrypted using the master key, contains the encrypted data encryption key, and is authenticated via HMAC-SHA256. It uses [Encrypt then MAC (EtM)](https://en.wikipedia.org/wiki/Authenticated_encryption#Encrypt-then-MAC_(EtM) "Wikipedia").
 
@@ -256,7 +256,7 @@ These are some of the points of research on our encryption roadmap.
 
 ### Authenticated Encryption (AE) Ciphers
 
-Kdb+ presently provides for confidentiality but not integrity beyond the meta block.
+kdb+ presently provides for confidentiality but not integrity beyond the meta block.
 
 :fontawesome-brands-wikipedia-w:
 [Authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption "Wikipedia")

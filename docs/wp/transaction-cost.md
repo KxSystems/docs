@@ -20,7 +20,7 @@ by [Colm Earley](#author)
 
 With the ever-increasing volatility of financial markets and multitude of trading venues as a result of market fragmentation, transaction-cost analysis (TCA) has become one of the expected functions provided to a client by their broker dealer. The buy side has also become more sophisticated in recent years in acquiring their own TCA tools as they seek more transparency around their trading. These firms now strive to measure their real execution performance, feeding statistics into their portfolio strategies, market-impact models and, of course, relaying their level of service satisfaction back to their brokers.
 
-One attribute that is common across many TCA functions is the need to align market data with trade execution data and summarize the differences between perceived versus actual trade prices. Kdb+ enables users to run joins and update benchmarks on a tick-by-tick basis intra day and scan hundreds of billions of records on disk in seconds. The two use cases synonymous with TCA are:
+One attribute that is common across many TCA functions is the need to align market data with trade execution data and summarize the differences between perceived versus actual trade prices. kdb+ enables users to run joins and update benchmarks on a tick-by-tick basis intra day and scan hundreds of billions of records on disk in seconds. The two use cases synonymous with TCA are:
 
   - Real-time and historical slippage calculations
   - Market impact profiling
@@ -29,14 +29,14 @@ Slippage, at its most basic, is a measure of the difference between the price at
 
 Market-impact testing not only enables traders and brokers to refine their execution strategies to ensure they get as good a price as possible, it is also an area where the business can develop algorithms that use backtested leading indicators to predict when a market-impact event is going to take place, which in turn provides trading opportunities.
 
-Kdb+ has been deployed in both sell-side and buy-side firms to serve as the data and analysis backbone of TCA environments. These systems capture, process and store increasing amounts of tick and transaction data in intra-day processes and historical partitions on disk. Kdb+ as a technology has several characteristics including a rich set of time-series primitives, which make data retrieval extremely fast and efficient.
+kdb+ has been deployed in both sell-side and buy-side firms to serve as the data and analysis backbone of TCA environments. These systems capture, process and store increasing amounts of tick and transaction data in intra-day processes and historical partitions on disk. kdb+ as a technology has several characteristics including a rich set of time-series primitives, which make data retrieval extremely fast and efficient.
 
 This white paper, focusing primarily on post-trade analysis, details a number of the most commonly-used queries and the q language functions that relate to them. Methods are described for performing analysis efficiently across many terabytes of data. This is followed by an overview of a database design and tips on data access with query performance in mind. Reference is made on how to apply the key points learned to common use cases. The paper concludes with a brief overview of some general optimization techniques.
 
 
 ## Post-trade analysis
 
-One of the most powerful use cases for kdb+ is transaction-cost analysis. Kdb+ makes it both simple and efficient to sift through tens of terabytes of data. For this discussion, I am going to categorize queries into one of the following two types:
+One of the most powerful use cases for kdb+ is transaction-cost analysis. kdb+ makes it both simple and efficient to sift through tens of terabytes of data. For this discussion, I am going to categorize queries into one of the following two types:
 
 -   point-in-time
 -   interval
@@ -123,7 +123,7 @@ Reference: [`aj`](../ref/aj.md#performance)
 
 ### Interval
 
-During a trading day, a common need is to analyze the market behavior over a set time interval. Interval use cases include comparing our execution price to the market price range during the interval, our vwap (volume-weighted average price) to the market vwap, our trading volume as a percentage of market participation. Kdb+ provides another tool in its arsenal to retrieve these types of data both effectively and efficiently – the `wj` or [window join](../ref/wj.md). It allows the user to perform an arbitrary number of functions across a time interval.
+During a trading day, a common need is to analyze the market behavior over a set time interval. Interval use cases include comparing our execution price to the market price range during the interval, our vwap (volume-weighted average price) to the market vwap, our trading volume as a percentage of market participation. kdb+ provides another tool in its arsenal to retrieve these types of data both effectively and efficiently – the `wj` or [window join](../ref/wj.md). It allows the user to perform an arbitrary number of functions across a time interval.
 
 The following example details two 5,000-share orders. For each, they have both been worked over five-minute periods, in five batches of 1,000 share executions. The difference between them is the time of day at which they traded. The objective is to return volatility metrics, such as market trade price range, over each order.
 

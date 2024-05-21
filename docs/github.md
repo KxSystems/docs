@@ -291,7 +291,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </td>
 </tr>
 <tr markdown>
-<td markdown class="nowrap"><a href="https://github.com/MdSalih/Kdb-stuff">Kdb-stuff</a></td>
+<td markdown class="nowrap"><a href="https://github.com/MdSalih/Kdb-stuff">kdb-stuff</a></td>
 <td markdown>ServerChecker: how to execute commands on a remote box via SSH from within a q process and parse Linux system info (cpuinfo/meminfo/df). <span class="author"><a href="https://github.com/MdSalih?tab=repositories">
 						(Mohammad Noor)
 					</a>
@@ -301,7 +301,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </tr>
 <tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/srpeck/kwsrepl">kwsrepl</a></td>
-<td markdown>Kdb+/k/q live REPL over web sockets. <span class="author"><a href="https://github.com/srpeck?tab=repositories">
+<td markdown>kdb+/k/q live REPL over web sockets. <span class="author"><a href="https://github.com/srpeck?tab=repositories">
 						(Stephen Peck)
 					</a></span>
 </td>
@@ -597,7 +597,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </tr>
 <tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/timeseries/kdb">kdb</a></td>
-<td markdown>Kdb+ database examples. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
+<td markdown>kdb+ database examples. <span class="author"><a href="https://github.com/timeseries?tab=repositories">
 						(TimeStored)
 					</a></span>
 </td>
@@ -682,7 +682,7 @@ GitHub topic queries:&nbsp;&nbsp;
 </tr>
 <tr markdown>
 <td markdown class="nowrap"><a href="https://github.com/psaris/qtips">qtips</a></td>
-<td markdown>Source files for “Q Tips: Fast, Scalable and Maintainable Kdb+”. <span class="author"><a href="https://github.com/psaris?tab=repositories">
+<td markdown>Source files for “Q Tips: Fast, Scalable and Maintainable kdb+”. <span class="author"><a href="https://github.com/psaris?tab=repositories">
 						(Nick Psaris)
 					</a></span>
 </td>

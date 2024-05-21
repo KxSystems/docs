@@ -9,7 +9,7 @@ keywords: attribute, group, kdb+, memory, nyse, q, taq
 
 
 
-Prior to kdb+, as veterans will remember, some schemas used nested data per symbol. The `` `g#`` attribute allowed us to move away from those more complicated designs and queries to long flat tables with fast access via the group attribute. 
+Prior to kdb+, as veterans will remember, some schemas used nested data per symbol. The `` `g#`` attribute allowed us to move away from those more complicated designs and queries to long flat tables with fast access via the group attribute.
 
 There is however a third layout for in-memory data, using a dictionary of symbols!tables, which might be relevant to your particular use case.
 

@@ -27,7 +27,7 @@ Tables are first-class objects in q.
 
     Relations in SQL are sets. There are no duplicate rows, and rows are not ordered. It is possible to define a cursor on a result set and then manipulate the cursor rows in order. (Not in ANSI SQL.)
 
-    Kdb+ tables are ordered and may contain duplicates. The order allows a class of very useful [aggregates](../basics/glossary.md#aggregate-function) that are unavailable to the relational database programmer without the cumbersome and poorly-performing temporal extensions.
+    kdb+ tables are ordered and may contain duplicates. The order allows a class of very useful [aggregates](../basics/glossary.md#aggregate-function) that are unavailable to the relational database programmer without the cumbersome and poorly-performing temporal extensions.
 
 Because kdb+ tables are ordered, for a table `trade` in timestamp order, the functions `first` and `last` give open and close prices:
 

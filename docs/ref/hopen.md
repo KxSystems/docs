@@ -12,7 +12,7 @@ author: Stephen Taylor
 </div>
 
 
-Kdb+ communicates with the [file system](../basics/files.md) and other processes through
+kdb+ communicates with the [file system](../basics/files.md) and other processes through
 
 -   one-shot functions
 -   [handles](../basics/handles.md) to persistent connections

@@ -173,9 +173,9 @@ h(reval(value;)enlist@;(key;`$":/home/charlie/db"))
 
 ## :fontawesome-solid-bolt: Multithreaded primitives
 
-Kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../kb/multithreaded-input.md).
+kdb+ has been multithreaded for more than 15 years, and users could leverage this explicitly through [`peach`](../ref/each.md), or via the [multithreaded input mode](../kb/multithreaded-input.md).
 
-Kdb+ 4.0 adds an additional level of multithreading via primitives.
+kdb+ 4.0 adds an additional level of multithreading via primitives.
 It is fully transparent to the user, requiring no code change by the user to exploit it. The underlying framework currently uses the number of threads configured as secondary threads on the command line.
    
 As most kdb+ primitives are memory-bound, within-primitive parallelism is intended to exploit all-core memory bandwidth available on modern server hardware with multi-channel memory. 
@@ -192,7 +192,7 @@ Multi-threaded primitives are not NUMA-aware and should not be expected to scale
 
 ## :fontawesome-solid-lock: Data-At-Rest Encryption (DARE)
 
-Kdb+4.0 supports Data-At-Rest Encryption (DARE), using AES256CBC. As with the built-in file compression, encryption is transparent and requires no changes to a query to utilize it. Once a master key has been created via a third-party tool such as OpenSSL:
+kdb+4.0 supports Data-At-Rest Encryption (DARE), using AES256CBC. As with the built-in file compression, encryption is transparent and requires no changes to a query to utilize it. Once a master key has been created via a third-party tool such as OpenSSL:
 
 ```bash
 openssl rand 32 | openssl aes-256-cbc -salt -pbkdf2 -iter 50000 -out testkek.key
@@ -216,7 +216,7 @@ or use [`.z.zd`](../ref/dotz.md#zzd-zip-defaults) for process-wide default setti
 .z.zd:(17;2+16;6) / zlib compression, with aes256cbc encryption
 ```
 
-!!! info "Kdb+ DARE requires OpenSSL 1.1.1"
+!!! info "kdb+ DARE requires OpenSSL 1.1.1"
 
 :fontawesome-solid-graduation-cap:
 [Data-At-Rest Encryption (DARE)](../kb/dare.md)
@@ -268,7 +268,7 @@ The [-w limit](../basics/cmdline.md#-w-workspace) (M1/m2) is no longer thread-lo
 
 ## :fontawesome-solid-code: Profiler
 
-Kdb+ 4.0 (for Linux only) includes an experimental built-in call-stack snapshot primitive that allows building a sampling [profiler](../kb/profiler.md).
+kdb+ 4.0 (for Linux only) includes an experimental built-in call-stack snapshot primitive that allows building a sampling [profiler](../kb/profiler.md).
 
 
 ## :fontawesome-solid-lock: Added support for OpenSSL 1.1.x

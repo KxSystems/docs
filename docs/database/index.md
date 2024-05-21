@@ -1,6 +1,6 @@
 ---
 title: Database – tables in the filesystem | Documentation for q and kdb+
-description: Kdb+ is what happens when q tables are persisted to the filesystem
+description: kdb+ is what happens when q tables are persisted to the filesystem
 author: Stephen Taylor
 date: October 2020
 ---

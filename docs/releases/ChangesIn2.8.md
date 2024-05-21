@@ -24,7 +24,7 @@ Built-in file compression was added in V2.7, however the compression required th
 (`:zsplay/;17;2;6) set .Q.en[`:.;([]sym:asc 10000?`3;time:.z.p+til 10000;price:10000?1000.;size:10000?100)]
 ```
 
-Kdb+ compressed files/splays can also be appended to. e.g.
+kdb+ compressed files/splays can also be appended to. e.g.
 
 ```q
 q)(`:zippedTest;17;2;6) set 100000?10;`:zippedTest upsert 100000?10;-21!`:zippedTest

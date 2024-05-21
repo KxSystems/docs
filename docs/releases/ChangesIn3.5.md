@@ -32,7 +32,7 @@ V3.5 has an improved memory allocator which allows memory to be used across thre
 
 !!! note 
 
-    Kdb+ manages its own heap, using thread-local heaps to avoid contention. One complication of thread-local heaps is how to share allocations between threads, and avoid ballooning of allocated space due to the producer allocating in one arena and the consumer freeing that area in another arena. This was the primary reason for serialization/deserialization of the results from secondary threads to the main thread when _peach_ completes. This serialization and associated overhead has now been removed.
+    kdb+ manages its own heap, using thread-local heaps to avoid contention. One complication of thread-local heaps is how to share allocations between threads, and avoid ballooning of allocated space due to the producer allocating in one arena and the consumer freeing that area in another arena. This was the primary reason for serialization/deserialization of the results from secondary threads to the main thread when _peach_ completes. This serialization and associated overhead has now been removed.
 
 
 ## Socket sharding
@@ -71,7 +71,7 @@ q)system"s 0N" / show max secondary threads
 
 ## Improved sort performance
 
-Kdb+ uses a hybrid sort, selecting the algorithm it deems best for the data type, size and domain of the input. With V3.5, this has been tweaked to improve significantly the sort performance of certain distributions, typically those including a null. e.g.
+kdb+ uses a hybrid sort, selecting the algorithm it deems best for the data type, size and domain of the input. With V3.5, this has been tweaked to improve significantly the sort performance of certain distributions, typically those including a null. e.g.
 
 ```q
  q)a:@[10000001?100000;0;:;0N];system"t iasc a" / 5x faster than V3.4

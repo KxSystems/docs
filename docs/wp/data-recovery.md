@@ -27,9 +27,9 @@ This paper will explore the nature of tickerplant log files and their importance
 All tests were run using kdb+ version 3.1 (2014.03.27).
 
 
-## Kdb+tick
+## kdb+tick
 
-Kdb+tick is an architecture which allows the capture, processing and querying of data in real time and historically. It typically consists of:
+kdb+tick is an architecture which allows the capture, processing and querying of data in real time and historically. It typically consists of:
 
 The feedhandler
 
@@ -49,7 +49,7 @@ Historical database
 
 :fontawesome-regular-hand-point-right:
 White paper: 
-[Kdb+ tick profiling for throughput optimization](tick-profiling.md)
+[kdb+ tick profiling for throughput optimization](tick-profiling.md)
 
 This paper will primarily consider the relationship between the TP and RDB and in particular the use of tickerplant logs when recovering lost data in an RDB.
 
@@ -66,7 +66,7 @@ accounts:([] time:`timespan$(); sym:`$(); curr:`$(); action:`$(); limit:`long$()
 
 ### Tick scripts
 
-Kdb+tick is freely available and contains a few short, yet powerful scripts.
+kdb+tick is freely available and contains a few short, yet powerful scripts.
 
 :fontawesome-brands-github:
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick)
@@ -81,7 +81,7 @@ script     | purpose
 Starting kdb+: [Realtime database](../learn/startingkdb/tick.md)
 
 
-### Kdb+ messages and `upd` function
+### kdb+ messages and `upd` function
 
 A kdb+ message takes the form of a list.
 
@@ -153,7 +153,7 @@ It will then replay this tplog to recover all the data that has passed through t
 .u.rep:{...;-11!y;...};
 ```
 
-Kdb+ messages were described above in [_Kdb+ messages and upd function_](#kdb-messages-and-upd-function). In a typical RDB, `functionname` will be `` `upd``, which will perform an insert. Therefore, executing a single line in the logfile will be equivalent to ``insert[`tablename;tabledata]``.
+kdb+ messages were described above in [_kdb+ messages and upd function_](#kdb-messages-and-upd-function). In a typical RDB, `functionname` will be `` `upd``, which will perform an insert. Therefore, executing a single line in the logfile will be equivalent to ``insert[`tablename;tabledata]``.
 
 
 ### `-11!` functionality

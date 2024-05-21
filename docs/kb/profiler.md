@@ -13,7 +13,7 @@ date: March 2020
 
     Currently implemented for x86\_64 Linux (kdb+ `l64`).
 
-Kdb+ 4.0 includes an experimental built-in call-stack snapshot primitive that allows building a sampling profiler.
+kdb+ 4.0 includes an experimental built-in call-stack snapshot primitive that allows building a sampling profiler.
 
 
 A sampling profiler is a useful tool for low-overhead instrumentation of code performance characteristics. For inspiration, we have looked at tools like Linux [`perf`](http://www.brendangregg.com/perf.html).

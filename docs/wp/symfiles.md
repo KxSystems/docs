@@ -118,7 +118,7 @@ an earlier version of kdb+:
 
 ## Persisting tables on disk and the sym file
 
-Kdb+ enforces enumeration on a table being splayed to disk if it has a
+kdb+ enforces enumeration on a table being splayed to disk if it has a
 column of type symbol. Attempting to splay a table with columns of type
 symbol without enumerating first will result in a type error.
 
@@ -423,7 +423,7 @@ char vectors. Guids are faster (much faster for `=`) than the 16-byte char
 vectors and take 2.5 times less storage (16 per instead of 40 per).
 
 :fontawesome-regular-map:
-[Kdb+ data-management techniques](data-management.md#id-fields-the-guid-datatype)
+[kdb+ data-management techniques](data-management.md#id-fields-the-guid-datatype)
 
 
 ### Encoding/decoding
@@ -789,7 +789,7 @@ All tests performed using kdb+ version 3.6 (2018.05.17).
 ## Related articles
 
 :fontawesome-regular-map:
-[Kdb+ data-management techniques](data-management.md)
+[kdb+ data-management techniques](data-management.md)
 
 
 ## Appendix – for versions of kdb+ earlier than 3.6

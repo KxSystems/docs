@@ -137,7 +137,7 @@ y| ,`a
 
 Where `x` is a unary function.
 
-Kdb+ before V2.7 was sensitive to being fed malformed data structures, sometimes resulting in a crash, but now validates incoming IPC messages to check that data structures are well formed, reporting `'badmsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
+kdb+ before V2.7 was sensitive to being fed malformed data structures, sometimes resulting in a crash, but now validates incoming IPC messages to check that data structures are well formed, reporting `'badmsg` and disconnecting senders of malformed data structures. The raw message is captured for analysis via the callback `.z.bm`. The sequence upon receiving such a message is
 
 1.  calls `.z.bm` with a 2-item list: `(handle;msgBytes)`
 2.  close the handle and call `.z.pc`
@@ -410,7 +410,7 @@ q).z.n
 
 ## `.z.o` (OS version)
 
-Kdb+ operating system version as a symbol.
+kdb+ operating system version as a symbol.
 
 ```q
 q).z.o
@@ -970,7 +970,7 @@ Sending a websocket message is limited to async messages only (sync is `'nyi`). 
 [WebSockets](../kb/websockets.md)
 <br>
 :fontawesome-regular-map:
-[Kdb+ and WebSockets](../wp/websockets/index.md)
+[kdb+ and WebSockets](../wp/websockets/index.md)
 
 
 ## `.z.X` (raw command line)

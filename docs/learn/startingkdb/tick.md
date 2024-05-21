@@ -7,7 +7,7 @@ keywords: kdb+, q, rdb, realtime database start, tutorial
 
 
 
-Kdb+tick is used to capture, store and analyze massive volumes of data in real time. 
+kdb+tick is used to capture, store and analyze massive volumes of data in real time. 
 
 :fontawesome-brands-github: 
 [KxSystems/kdb-tick](https://github.com/KxSystems/kdb-tick) 
@@ -155,7 +155,7 @@ The calls starting each process are essentially:
 
 If the run scripts are unsuitable for your system, then you can call each process manually. In each case, open up a new terminal window, change to the `QHOME` directory and enter the appropriate command. The tickerplant should be started first.
 
-Kdb+tick uses paths relative to the local directory. To run correctly, you should change directory such that `tick.q` is in the local directory. For example on macOS, for each of the following commands, open a new terminal, change directory to `~/q/start/tick`, then:
+kdb+tick uses paths relative to the local directory. To run correctly, you should change directory such that `tick.q` is in the local directory. For example on macOS, for each of the following commands, open a new terminal, change directory to `~/q/start/tick`, then:
 
 ```bash
 ~/q/start/tick$ ~/q/m32/q tick.q -p 5010
@@ -206,7 +206,7 @@ DOW  24.23159 705727
 ```
 
 
-## Kdb+tick modifications
+## kdb+tick modifications
 
 The standard components of kdb+tick support various options. In the basic set-up outlined here, the tickerplant publishes all data immediately, and does not create a log file. Optional parameters of
 

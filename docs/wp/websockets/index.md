@@ -1,5 +1,5 @@
 ---
-title: Kdb+ and WebSockets | White Papers | kdb+ and q documentation
+title: kdb+ and WebSockets | White Papers | kdb+ and q documentation
 description: What WebSockets are, what benefits they hold over standard HTTP; how to set up a simple web page that uses WebSockets to connect to a kdb+ process
 author: [Chris Scott, Michael Gracey]
 date: March 2018
@@ -8,7 +8,7 @@ keywords: AJAX, asynchronous, connection, HTML5, JavaScript, security, WebSocket
 White paper
 {: #wp-brand}
 
-# Kdb+ and WebSockets
+# kdb+ and WebSockets
 
 by [Chris Scott &amp; Michael Gracey](#authors)
 {: .wp-author}
@@ -40,7 +40,7 @@ web page that uses WebSockets to connect to a kdb+ process, the steps
 involved in passing data through the connection, and the various methods
 for converting data between kdb+ and JavaScript.
 
-An earlier version of this paper was published in October 2014. Kdb+ has been enhanced since then to support the growing popularity of WebSockets and JSON. As part of
+An earlier version of this paper was published in October 2014. kdb+ has been enhanced since then to support the growing popularity of WebSockets and JSON. As part of
 this revision, the paper now also documents new message handlers for
 opening and closing WebSocket connections, and debugging
 techniques that can be used to view traffic over these connections.
@@ -344,7 +344,7 @@ to show both in action.
 
 ### Using `.j` functions within a q process (server-side parsing)
 
-Kdb+ 3.3 introduced native functions for translating between kdb+ and
+kdb+ 3.3 introduced native functions for translating between kdb+ and
 JSON format. This resulted in a 50-100× speedup compared to previous
 functionality, and the new versions can also process Unicode.
 

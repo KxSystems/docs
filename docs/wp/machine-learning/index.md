@@ -34,7 +34,7 @@ This dataset contains two disjointed collections:
 
 Class features for each instance are represented via one-dimensional arrays of 16 integers, representing X-Y coordinate pairs in a 100×100 space, of the digital sampling of the handwritten digits. The average number of instances per class in the training set is 749.4 with a standard deviation of 30.00.
 
-Due to its compute-heavy features, k-NN has limited industry application compared to other machine-learning methods. In this paper, we will analyze an alternative implementation of the k-NN, using the array-processing power of kdb+. Kdb+ has powerful built-in functions designed and optimized for tables and lists. Together with qSQL, these functions can be used to great effect for machine-learning purposes, especially with compute-heavy implementations like k-NN.
+Due to its compute-heavy features, k-NN has limited industry application compared to other machine-learning methods. In this paper, we will analyze an alternative implementation of the k-NN, using the array-processing power of kdb+. kdb+ has powerful built-in functions designed and optimized for tables and lists. Together with qSQL, these functions can be used to great effect for machine-learning purposes, especially with compute-heavy implementations like k-NN.
 
 All tests were run using kdb+ version 3.5 2017.06.15, on a Virtual Machine with four allocated 4.2GHz cores. Code used can be found at :fontawesome-brands-github: [kxcontrib/wp-knn](https://github.com/kxcontrib/wp-knn).
 

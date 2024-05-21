@@ -1,5 +1,5 @@
 ---
-title: Kdb+ and FIX messaging | White Papers | q and kdb+ documentation
+title: kdb+ and FIX messaging | White Papers | q and kdb+ documentation
 description: A guide to working with FIX messages in kdb+, focusing primarily on capturing messages from an order-management system
 author: Damien Barker
 date: January 2014
@@ -8,7 +8,7 @@ keywords: analytics, fix, kdb+, last order, order-management system, order proce
 White paper
 {: #wp-brand}
 
-# Kdb+ and FIX messaging
+# kdb+ and FIX messaging
 
 by [Damien Barker](#author)
 {: .wp-author}
