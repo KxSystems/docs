@@ -1081,8 +1081,10 @@ Where
 -   `y` is a MIME type as a string
 -   `z` is the POST query as a string
 
-returns a string for the result of an HTTP[S] POST query.
+Returns a string for the result of an HTTP[S] POST query.
 (Since V3.4)
+
+Will utilize proxy settings if defined, as described in [hg (HTTP get)](#hp-http-get)
 
 ```q
 q).Q.hp["http://google.com";.h.ty`json]"my question"
