@@ -1084,7 +1084,7 @@ Where
 Returns a string for the result of an HTTP[S] POST query.
 (Since V3.4)
 
-Will utilize proxy settings if defined, as described in [hg (HTTP get)](#hp-http-get)
+Uses proxy settings if defined, as described in [hg (HTTP get)](#hp-http-get).
 
 ```q
 q).Q.hp["http://google.com";.h.ty`json]"my question"
