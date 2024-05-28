@@ -1003,7 +1003,7 @@ Saves all tables by calling `.Q.dpft`, clears tables, and sends reload message t
 .Q.hg x
 ```
 
-Where `x` is a URL as a symbol atom or (since V3.6 2018.02.10) a string, returns as a list of strings the result of an HTTP[S] GET query.
+Where `x` is a URL as a symbol atom or (since V3.6 2018.02.10) a string, returns a string for the result of an HTTP[S] GET query.
 (Since V3.4)
 
 ```q
@@ -1081,8 +1081,10 @@ Where
 -   `y` is a MIME type as a string
 -   `z` is the POST query as a string
 
-returns as a list of strings the result of an HTTP[S] POST query.
+Returns a string for the result of an HTTP[S] POST query.
 (Since V3.4)
+
+Uses proxy settings if defined, as described in [hg (HTTP get)](#hp-http-get).
 
 ```q
 q).Q.hp["http://google.com";.h.ty`json]"my question"
