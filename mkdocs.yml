@@ -525,6 +525,7 @@ nav:
       - Server calling client: kb/server-calling-client.md
       - Socket sharding (WP): wp/socket-sharding/index.md
       - SSL/TLS: kb/ssl.md
+      - HTTP: kb/http.md
       - WebSockets: kb/websockets.md
       - Interprocess communication (WP): wp/ipc/index.md
     - Tools:
