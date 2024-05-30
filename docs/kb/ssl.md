@@ -13,7 +13,7 @@ V3.4t 2016.05.12 can use Secure Sockets Layer (SSL)/Transport Layer Security (TL
 
 ## Prerequisites
 
-Ensure that your OS has the latest OpenSSL libraries installed, and that they are in your `LD_LIBRARY_PATH` (Unix), or `PATH` (Windows).
+Ensure that your OS has the latest OpenSSL libraries installed, and that they are in your `LD_LIBRARY_PATH` (Unix), `DYLD_LIBRARY_PATH` (MacOS), or `PATH` (Windows).
 
 ### Versioned libraries
 
