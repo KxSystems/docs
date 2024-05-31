@@ -12,7 +12,7 @@ _Environment and callbacks_
 
 <div markdown="1" class="typewriter">
 Environment                        Callbacks
- [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth from cookie](#zac-http-auth-from-cookie)
+ [.z.a    IP address](#za-ip-address)                 [.z.ac    HTTP auth](#zac-http-auth)
  [.z.b    dependencies](#zb-dependencies)               [.z.bm    msg validator](#zbm-msg-validator)
  [.z.c    cores](#zc-cores)                      [.z.exit  action on exit](#zexit-action-on-exit)
  [.z.D/d  date shortcuts](#zt-zt-zd-zd-timedate-shortcuts)             [.z.pc    close](#zpc-close)
@@ -83,33 +83,46 @@ q)"i"$0x0 vs .z.a
     When invoked via a Unix Domain Socket, it is 0.
 
 
-## `.z.ac` (HTTP auth from cookie)
+## `.z.ac` (HTTP auth)
 
 ```syntax
 .z.ac:(requestText;requestHeaderAsDictionary)
 ```
 
-Lets you define custom code to extract Single Sign On (SSO) token cookies from the HTTP header and verify it, decoding and returning the username, or instructing what action to take.
+Lets you define custom code to authorize/authenticate a HTTP request 
+e.g. inspect HTTP headers representing  oauth tokens, cookies, etc. 
+Your custom code can then return different values based on what is discovered.
 
+The function should return a 2 element list. The list of possible return values are:
+
+* User not authorized/authenticated
 ```q
-q).z.ac:{mySSOAuthenticator x[1]`Authorization}
+(0;"")
 ```
-
-where allowed return values are
-
+User not authorized. Client is sent default 401 HTTP unauthorized response.
+A HTTP callback to handle the request will not be called.
+* User authorized/authenticated
 ```q
-(0;"")              / return default 401
-(1;"username")      / authenticated username (.z.u becomes this)
-(2;"response text") / send raw response text to client
-(4;"")              / fallback to try authentication via .z.pw (V4.0 2021.07.12)
+(1;"username")
 ```
+The provided username will be used to set [`.z.u`](#zu-user-id). 
+The relevant HTTP callback to handle this request will be allowed.
+* User not authorized/authenticated (custom response)
+```q
+(2;"response text")
+```
+Customised reponse to be sent should be provided in the "response text" section.
+The "response text" should comprised of a valid HTTP response message e.g. can be used to provide a 
+401 response with a customised message.
+A HTTP callback to handle the original request will not be called.
+* Fallback to basic authentication
+```q
+(4;"")
+```
+Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined). 
+If the user is not permitted, the client will be sent a default 401 HTTP unauthorized response. Since V4.0 2021.07.12.
 
-and `mySSOAuthenticator` is your custom code that authenticates against your SSO library.
-
-If `.z.ac` returns `(4;"")` then `.z.pw` will be called with the b64-decoded credentials from the http header when .z.ac returns (4;"").
-
-:fontawesome-solid-hand-point-right:
-[`.z.pw` password check](#zpw-validate-user)
+!!! note "If .z.ac is not defined, it uses basic access authentication as per `(4;"")` above"
 
 
 ## `.z.b` (dependencies)
@@ -643,7 +656,7 @@ For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-ht
 .z.po:f
 ```
 
-Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ session has been initialized, i.e. after it’s been validated against any `-u/-U` file and `.z.pw` checks.
+Where `f` is a unary function, `.z.po` is evaluated when a connection to a kdb+ session has been initialized, i.e. after it’s been validated against any [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and `.z.pw` checks.
 
 Its argument is the handle and is typically used to build a dictionary of handles to session information like the value of `.z.a`, `.z.u`
 
@@ -724,7 +737,7 @@ q)0 "2+2"
 .z.pw:f
 ```
 
-Where `f` is a binary function, `.z.pw` is evaluated _after_ the `-u/-U` checks, and _before_ `.z.po` when opening a new connection to a kdb+ session.
+Where `f` is a binary function, `.z.pw` is evaluated _after_ the [`-u`](../basics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) checks, and _before_ `.z.po` when opening a new connection to a kdb+ session.
 
 The arguments are the user ID (as a symbol) and password (as a string) to be verified; the result is a boolean atom.
 
