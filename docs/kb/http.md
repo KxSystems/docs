@@ -73,6 +73,9 @@ q)@["\r\n\r\n" vs x;1]
 
 !!! note "If a server uses chunked transfer encoding, the response will be constructed from the chunks prior to returning (since V3.3 2014.07.31)"
 
+:fontawesome-regular-map:
+[HTTP](https://en.wikipedia.org/wiki/HTTP)
+
 
 ### SSL/TLS
 
@@ -89,6 +92,11 @@ When kdb+ is [configured](../basics/listening-port.md) to listen on a port, it u
 ### SSL/TLS
 
 HTTPS can be handled once kdb+ has been [configured to use SSL/TLS](ssl.md).
+
+### Authentication / Authorization
+
+Client requests can be authenticated/authorized using [.z.ac](../ref/dotz.md#zac-http-auth). 
+This allows kdb+ to be customised with a variety of mechanisms for securing HTTP requests  e.g. LDAP, OAuth2, OpenID Connect, etc.
 
 ### Request Handling
 
@@ -129,9 +137,6 @@ The response payload must be 2,000+ chars and the client must indicate support v
 The [.h namespace](../ref/doth.md) provides a range of markup and HTTP protocol formatting tools.
 
 ----
-:fontawesome-regular-map:
-[HTTP](https://en.wikipedia.org/wiki/HTTP)
-<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.7.1 HTTP Connections](/q4m3/q4m3/11_IO/#1171-http-connections)
