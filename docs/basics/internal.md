@@ -429,15 +429,18 @@ where `x` is a list of socket handles, returns a table with columns
 
 -   `p` (protocol): `q` (IPC) or `w` (WebSocket)
 -   `f` (family): `t` (TCP) or `u` (Unix domain socket)
+-   `z` (compression enabled flag): since v4.1 2024.05.31
+-   `n` (count unsent msgs): since v4.1 2024.05.31
+-   `m` (total unsent bytes, like [.z.W](../ref/dotz.md#zw-handles)): since v4.1 2024.05.31
 
 Since v4.0 2020.06.01.
 
 ```q
 q){([]h)!-38!h:.z.H}[]
-h| p f
--| ---
-8| q u
-9| q t
+h| p f z n m
+-| ---------
+8| q u 0 0 0
+9| q t 0 0 0
 ```
 
 :fontawesome-solid-book:
