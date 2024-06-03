@@ -98,7 +98,7 @@ HTTPS can be handled once kdb+ has been [configured to use SSL/TLS](ssl.md).
 Client requests can be authenticated/authorized using [.z.ac](../ref/dotz.md#zac-http-auth). 
 This allows kdb+ to be customized with a variety of mechanisms for securing HTTP requests  e.g. LDAP, OAuth2, OpenID Connect, etc.
 
-### Request Handling
+### Request handling
 
 HTTP request handling is customized by using the following callbacks:
 
