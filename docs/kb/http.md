@@ -81,7 +81,7 @@ q)@["\r\n\r\n" vs x;1]
 
 To use SSL/TLS, kdb+ should first be [configured to use SSL/TLS](ssl.md). For any request requiring SSL/TLS, replace `http` with `https`.
 
-## HTTP Server
+## HTTP server
 
 kdb+ has an in-built service capable of handling HTTP/HTTPS requests.
 
