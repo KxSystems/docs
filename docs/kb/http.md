@@ -27,7 +27,7 @@ method | "GET"
 origin | "78.147.173.108"
 ```
 
-In addition, kdb+ provides a low level HTTP request mechanism
+In addition, kdb+ provides a low level HTTP request mechanism:
 
 ```q
 `:http://host:port "string to send as HTTP request"
