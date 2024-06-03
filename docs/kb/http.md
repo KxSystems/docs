@@ -71,7 +71,7 @@ q)@["\r\n\r\n" vs x;1]
 "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Host\": \"httpbin.org\", \n    \"X-Amzn-Trace-Id\": \"Root=1-66572924-7396cee34f268fcd406e94d5\"\n  }, \n  \"json\": null, \n  \"origin\": \"78.147.173.108\", \n  \"url\": \"http://httpbin.org/delete\"\n}\n"
 ```
 
-!!! note "If a server uses chunked transfer encoding, the response will be constructed from the chunks prior to returning (since V3.3 2014.07.31)"
+!!! note "If a server uses chunked transfer encoding, the response is constructed from the chunks prior to returning (since V3.3 2014.07.31)."
 
 :fontawesome-regular-map:
 [HTTP](https://en.wikipedia.org/wiki/HTTP)
