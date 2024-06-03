@@ -9,7 +9,7 @@ keywords: browser, http, https, kdb+, q, web
 
 ### Creating HTTP requests
 
-kdb+ has helper methods, which provide functionality as described in the linked reference material:
+kdb+ has helper methods that provide functionality as described in the linked reference material:
 
 * [.Q.hg](../ref/dotq.md#hg-http-get) for performing a HTTP GET, where a query string can be sent in the URL
 * [.Q.hp](../ref/dotq.md#hp-http-post) for performing a HTTP POST, where data transmitted is sent in the request body
