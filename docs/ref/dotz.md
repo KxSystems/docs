@@ -100,7 +100,7 @@ The function should return a two-element list. The list of possible return value
 (0;"")
 ```
 User not authorized. Client is sent default 401 HTTP unauthorized response.
-A HTTP callback to handle the request will not be called.
+An HTTP callback to handle the request will not be called.
 * User authorized/authenticated
 ```q
 (1;"username")
