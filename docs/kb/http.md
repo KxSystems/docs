@@ -35,9 +35,9 @@ In addition, kdb+ provides a low level HTTP request mechanism:
 
 which returns the HTTP response as a string. 
 
-A HTTP request generally consists of 
+An HTTP request generally consists of:
 
-* a request line (URL,method,protocol version), terminated by a carriage return and line feed, 
+* a request line (URL, method, protocol version), terminated by a carriage return and line feed, 
 * zero or more header fields (field name, colon, field value), terminated by a carriage return and line feed
 * an empty line (consisting of a carriage return and a line feed) 
 * an optional message body
