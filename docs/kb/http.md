@@ -54,7 +54,7 @@ q)`:http://httpbin.org "POST /anything HTTP/1.1\r\nConnection: close\r\nHost: ht
 "HTTP/1.1 200 OK\r\ndate: Wed, 29 May 2024 13:08:41 GMT\r\ncontent-type: application/json\r\ncontent-length: 321\r\nconnection: close\r\nserver: gunicorn/19.9.0\r\naccess-control-allow-origin: *\r\naccess-control-allow-credentials: true\r\n\r\n{\n  \"args\": {}, \n  \"data\": \"hello\"...
 ```
 
-A HTTP response typically consists of
+An HTTP response typically consists of:
 
 * a status line (protocol version, status code, reason), terminated by a carriage return and line feed
 * zero or more header fields (field name, colon, field value), terminated by a carriage return and line feed
