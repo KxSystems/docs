@@ -1030,6 +1030,8 @@ environment variable       | use
 
 N.B. HTTPS is not supported across proxies which require `CONNECT`.
 
+Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip". 
+The server then decides whether to gzip the returned payload, which is uncompressed prior to .Q.hg returning.
 
 <!--
 ## `hmb` (FIXME)
@@ -1084,7 +1086,7 @@ Where
 Returns a string for the result of an HTTP[S] POST query.
 (Since V3.4)
 
-Uses proxy settings if defined, as described in [hg (HTTP get)](#hp-http-get).
+Uses proxy settings (if defined) and compression handling, as described in [hg (HTTP get)](#hp-http-get).
 
 ```q
 q).Q.hp["http://google.com";.h.ty`json]"my question"
