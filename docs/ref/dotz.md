@@ -93,7 +93,7 @@ Lets you define custom code to authorize/authenticate an HTTP request.
 e.g. inspect HTTP headers representing oauth tokens, cookies, etc. 
 Your custom code can then return different values based on what is discovered.
 
-The function should return a 2 element list. The list of possible return values are:
+The function should return a two-element list. The list of possible return values is:
 
 * User not authorized/authenticated
 ```q
