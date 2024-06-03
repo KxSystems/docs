@@ -5,7 +5,7 @@ keywords: browser, http, https, kdb+, q, web
 ---
 # :fontawesome-solid-handshake: HTTP
 
-## HTTP Client
+## HTTP client
 
 ### Creating HTTP requests
 
