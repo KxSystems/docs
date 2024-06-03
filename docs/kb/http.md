@@ -106,7 +106,7 @@ HTTP request handling is customized by using the following callbacks:
 * [.z.pp](../ref/dotz.md##zpp-http-post) for HTTP POST
 * [.z.pm](../ref/dotz.md##zpp-http-post) for HTTP OPTIONS/PATCH/PUT/DELETE
 
-#### Default .z.ph Handling
+#### Default .z.ph handling
 
 The default implementation of .z.ph displays all variables and views. For example, starting kdb+ listening on port (`q -p 8080`) and visiting `http://localhost:8080` from a web browser on the same machine, displays all created variables/views).
 
