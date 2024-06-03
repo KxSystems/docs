@@ -100,7 +100,7 @@ This allows kdb+ to be customised with a variety of mechanisms for securing HTTP
 
 ### Request Handling
 
-HTTP request handling can customized by using the following callbacks:
+HTTP request handling is customized by using the following callbacks:
 
 * [.z.ph](../ref/dotz.md#zph-http-get) for HTTP GET
 * [.z.pp](../ref/dotz.md##zpp-http-post) for HTTP POST
