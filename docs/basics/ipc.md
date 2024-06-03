@@ -244,15 +244,6 @@ For releases since 2012.05.29, kdb+ and the C-API will compress an outgoing mess
 
 The compression/decompression algorithms are proprietary and implemented as the `compress` and `uncompress` methods in `c.java`. The message validator does not validate the integrity of compressed messages.
 
-HTTP server supports gzip compression via `Content-Encoding: gzip` for responses to `form?…`-style requests.
-The response payload must be 2,000+ chars and the client must indicate support via `Accept-Encoding: gzip` in the HTTP header.
-(Since V4.0 2020.03.17.)
-
-The HTTP client supports gzip content, and `.Q.hg`, `.Q.hp`, and `.Q.hmb` indicate this in the request via the HTTP header `Accept-Encoding: gzip`.
-(Since V4.0 2020.03.17.)
-
-
-
 !!! note "Enumerations are automatically converted to values before sending through IPC."
 
 ----
