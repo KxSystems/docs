@@ -121,7 +121,7 @@ creating an HTML file index.html in directory `/webserver/` and setting `.h.HOME
 :fontawesome-regular-map:
 [Custom web server](custom-web.md)
 
-### Keep-Alive
+### Keep-alive
 
 Persistent connections to supported clients can be enabled via [.h.ka](../ref/doth.md#hka-http-keepalive)
 
