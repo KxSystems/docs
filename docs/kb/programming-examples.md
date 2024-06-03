@@ -19,7 +19,7 @@ Q has a built-in HTTP request command, which follows the syntax
 The string-to-send can be anything within the HTTP protocol the HTTP server will understand.  
 :fontawesome-regular-hand-point-right: [jmarshall.com/easy/http](https://www.jmarshall.com/easy/http/)
 
-kdb+ does not add to nor encode the string to send, nor does it decode the response – it just returns the raw data.
+kdb+ does not add to nor encode the string to send, nor does it decode the response; it just returns the raw data.
 
 ```q
 q)/ string to send
