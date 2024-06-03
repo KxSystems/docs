@@ -1030,8 +1030,8 @@ environment variable       | use
 
 N.B. HTTPS is not supported across proxies which require `CONNECT`.
 
-Since 4.0 2019.10.22, gzip compresson is supported. Requests will include the HTTP header "Accept-Encoding: gzip". 
-The server can then choose whether to gzip the returned payload, which will uncompressed prior to .Q.hg returning.
+Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip". 
+The server then decides whether to gzip the returned payload, which is uncompressed prior to .Q.hg returning.
 
 <!--
 ## `hmb` (FIXME)
