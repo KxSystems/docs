@@ -85,7 +85,7 @@ To use SSL/TLS, kdb+ should first be [configured to use SSL/TLS](ssl.md). For an
 
 kdb+ has an in-built service capable of handling HTTP/HTTPS requests.
 
-### Listening Port
+### Listening port
 
 When kdb+ is [configured](../basics/listening-port.md) to listen on a port, it uses the same port as that serving kdb+ IPC and websocket connections.
 
