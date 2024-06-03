@@ -108,13 +108,12 @@ HTTP request handling is customized by using the following callbacks:
 
 #### Default .z.ph Handling
 
-The default implementation of .z.ph will display all variables and views e.g. starting kdb+ listening on port (`q -p 8080`)
-and visiting `http://localhost:8080` from a web browser on the same machine will display all created variables/views).
+The default implementation of .z.ph displays all variables and views. For example, starting kdb+ listening on port (`q -p 8080`) and visiting `http://localhost:8080` from a web browser on the same machine, displays all created variables/views).
 
-Providing q code as a GET param will cause it be evaluated eg. `http://localhost:8080?1+1` will return `2`. 
+Providing q code as a GET param causes it to be evaluated eg. `http://localhost:8080?1+1` returns `2`. 
 
 [.h.HOME](../ref/doth.md#hhome-webserver-root) can be set to be the webserver root in order to serve files contained in the directory e.g.
-creating a html file index.html in directory `/webserver/` and setting `.h.HOME="/webserver"` will allow the file to be viewed via  `http://localhost:8080/index.html'.
+creating an HTML file index.html in directory `/webserver/` and setting `.h.HOME="/webserver"` allows the file to be viewed via  `http://localhost:8080/index.html'.
 
 :fontawesome-regular-map:
 [Restricting HTTP queries](../wp/permissions/index.md#restricting-http-queries)
