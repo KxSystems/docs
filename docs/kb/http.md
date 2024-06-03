@@ -131,7 +131,7 @@ HTTP server supports gzip compression via `Content-Encoding: gzip` for responses
 The response payload must be 2,000+ chars and the client must indicate support via `Accept-Encoding: gzip` in the HTTP header.
 (Since V4.0 2020.03.17.)
 
-## HTTP Markup
+## HTTP markup
 
 The [.h namespace](../ref/doth.md) provides a range of markup and HTTP protocol formatting tools.
 
