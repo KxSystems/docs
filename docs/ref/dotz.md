@@ -89,7 +89,7 @@ q)"i"$0x0 vs .z.a
 .z.ac:(requestText;requestHeaderAsDictionary)
 ```
 
-Lets you define custom code to authorize/authenticate a HTTP request 
+Lets you define custom code to authorize/authenticate an HTTP request.
 e.g. inspect HTTP headers representing  oauth tokens, cookies, etc. 
 Your custom code can then return different values based on what is discovered.
 
