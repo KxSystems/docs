@@ -111,7 +111,7 @@ The relevant HTTP callback to handle this request will be allowed.
 ```q
 (2;"response text")
 ```
-The custom reponse to be sent should be provided in the "response text" section.
+The custom response to be sent should be provided in the "response text" section.
 The response text should be comprised of a valid HTTP response message, for example a 401 response with a customised message.
 An HTTP callback to handle the original request is not called.
 * Fallback to basic authentication
