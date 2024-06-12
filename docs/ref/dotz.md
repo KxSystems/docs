@@ -120,7 +120,7 @@ An HTTP callback to handle the original request is not called.
 ```
 Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](../ba
 sics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined).
-If the user is not permitted, the client will be sent a default 401 HTTP unauthorized response. Since V4.0 2021.07.12.
+If the user is not permitted, the client is sent a default 401 HTTP unauthorized response. Since V4.0 2021.07.12.
 
 !!! note "If .z.ac is not defined, it uses basic access authentication as per `(4;"")` above"
 
