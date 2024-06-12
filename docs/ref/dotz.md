@@ -110,6 +110,18 @@ The relevant HTTP callback to handle this request will be allowed.
 * User not authorized/authenticated (custom response)
 ```q
 (2;"response text")
+```
+The custom reponse to be sent should be provided in the "response text" section.
+The "response text" should be comprised of a valid HTTP response message e.g. can be used to provide a
+401 response with a customised message.
+An HTTP callback to handle the original request will not be called.
+* Fallback to basic authentication
+```q
+(4;"")
+```
+Fallback to [basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side), where the username/password are base64 decoded and processed via the [`-u`](../ba
+sics/cmdline.md#-u-usr-pwd-local)/[`-U`](../basics/cmdline.md#-u-usr-pwd) file and [`.z.pw`](#zpw-validate-user) (if defined).
+If the user is not permitted, the client will be sent a default 401 HTTP unauthorized response. Since V4.0 2021.07.12.
 
 !!! note "If .z.ac is not defined, it uses basic access authentication as per `(4;"")` above"
 
