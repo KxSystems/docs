@@ -109,6 +109,104 @@ nav:
   - Home: 'https://code.kx.com/home'
   - kdb+ and q:
     - About: index.md
+    - Learn:
+      - Get started: learn/index.md
+      - Install: learn/install.md
+      - Licenses: learn/licensing.md
+      - Mountain tour:
+        - Overview: learn/tour/overview.md
+        - Begin here: learn/tour/index.md
+        - The q session: learn/tour/session.md
+        # - Databases: learn/tour/databases.md
+        - Tables: learn/tour/tables.md
+        - CSVs: learn/tour/csvs.md
+        - Datatypes: learn/tour/datatypes.md
+        # - Dictionaries: learn/tour/dictionaries.md
+        # - Queries: learn/tour/queries.md
+        # - Functions: learn/tour/functions.md
+        # - Iteration: learn/tour/iteration.md
+        # - Files: learn/tour/files.md
+        # - TCP/IP: learn/tour/tcp-ip.md
+        # - HTTP, HTTPS: learn/tour/http.md
+        - Scripts: learn/tour/scripts.md
+        - IDE: learn/tour/ide.md
+      - Q for quants: learn/brief-introduction.md
+      - Q by Examples: learn/q-by-examples.md
+      - Q for All: learn/q-for-all.md
+      # - Q for Pythons:
+      #   - Introduction: learn/python/index.md
+      #   - Primer:
+      #     - Datatypes: learn/python/primer/datatypes.md
+      #     - Dictionaries: learn/python/primer/dictionaries.md
+      #     - Tables: learn/python/primer/tables.md
+      #     - Operations: learn/python/primer/operations.md
+      #     - Operations on dictionaries: learn/python/primer/operations-dict.md
+      #     - Iterators: learn/python/primer/iterators.md
+      #     - Table operations (qSQL): learn/python/primer/table-operations.md
+      #     - Semantic extensions to SQL: learn/python/primer/extensions-to-sql.md
+      #     - Modifying tables: learn/python/primer/modify-tables.md
+      #     - Temporal primitives: learn/python/primer/temporal-primitives.md
+      #     - Execution control: learn/python/primer/control.md
+      #     - Input/output to files: learn/python/primer/file-io.md
+      #     - Interprocess communication: learn/python/primer/ipc.md
+      #     - Type and cast: learn/python/primer/type-cast.md
+      #     - Debugging: learn/python/primer/debug.md
+      #     - Namespaces: learn/python/primer/namespace.md
+      - Examples from Python:
+        - Basic: learn/python/examples/index.md
+        - Array: learn/python/examples/array.md
+        - List: learn/python/examples/list.md
+        - Strings: learn/python/examples/string.md
+        - Dictionaries: learn/python/examples/dict.md
+      - Q for Mortals 3: https://code.kx.com/q4m3/
+      - Q by Puzzles:
+        - About: learn/pb/index.md
+        - 12 Days of Xmas: learn/pb/xmas-days.md
+        - ABC problem: learn/pb/abc-problem.md
+        - Abundant odds: learn/pb/abundant-odds.md
+        - Four is magic: learn/pb/four-magic.md
+        - Name Game: learn/pb/name-game.md
+        - Summarize and Say: learn/pb/sum-say.md
+        - Word wheel: learn/pb/word-wheel.md
+      - Reading room:
+        - Information desk: learn/reading/index.md
+        - Boggle: learn/reading/boggle.md
+        - Cats cradle: learn/reading/strings.md
+        - Fizz buzz: learn/reading/fizzbuzz.md
+        - Klondike: learn/reading/klondike.md
+        - Phrasebook: https://code.kx.com/phrases/
+        - Scrabble: learn/reading/scrabble.md
+      - Application examples:
+        - Astronomy (WP): wp/astronomy.md
+        - Bitcoin blockchains (WP): wp/blockchain/index.md
+        - Card counters (WP): wp/card-counters/index.md
+        - Corporate actions (WP): wp/corporate-actions.md
+        - Disaster management (WP): wp/disaster-management/index.md
+        - Exoplanets (WP): wp/exoplanets/index.md
+        - Market depth (WP): wp/market-depth/index.md
+        - Market fragmentation (WP): wp/market-fragmentation/index.md
+        - Option pricing (WP): wp/option-pricing/index.md
+        - Predicting floods (WP): wp/disaster-floods/index.md
+        - Signal processing (WP): wp/signal-processing/index.md
+        - Space weather (WP): wp/space-weather/index.md
+        - Trading surveillance (WP): wp/surveillance/index.md
+        - Transaction-cost analysis (WP): wp/transaction-cost.md
+        - Trend indicators (WP): wp/trend-indicators/index.md
+      - Advanced q:
+        - Remarks on Style: https://github.com/qbists/style
+        - Shifts & scans: learn/shifts-scans.md
+        - Technical articles: learn/blogs.md
+        - Views: learn/views.md
+        - Origins: learn/archive.md
+        # - Kx technology: about/kxtechnology.md
+        - Terminology: about/terminology.md
+      - Starting kdb+:
+        - Overview: learn/startingkdb/index.md
+        - The q language: learn/startingkdb/language.md
+        - IPC: learn/startingkdb/ipc.md
+        - Tables: learn/startingkdb/tables.md
+        - Historical database: learn/startingkdb/hdb.md
+        - Realtime database: learn/startingkdb/tick.md
     - Reference card: ref/index.md
     - Developer tools: devtools.md
     - Interfaces:
@@ -176,104 +274,6 @@ nav:
   - KDB.AI: 'https://code.kx.com/kdbai'
   - PyKX: 'https://code.kx.com/pykx'
   - APIs: 'https://code.kx.com/insights/api'
-  - Learn:
-    - Get started: learn/index.md
-    - Install: learn/install.md
-    - Licenses: learn/licensing.md
-    - Mountain tour:
-      - Overview: learn/tour/overview.md
-      - Begin here: learn/tour/index.md
-      - The q session: learn/tour/session.md
-      # - Databases: learn/tour/databases.md
-      - Tables: learn/tour/tables.md
-      - CSVs: learn/tour/csvs.md
-      - Datatypes: learn/tour/datatypes.md
-      # - Dictionaries: learn/tour/dictionaries.md
-      # - Queries: learn/tour/queries.md
-      # - Functions: learn/tour/functions.md
-      # - Iteration: learn/tour/iteration.md
-      # - Files: learn/tour/files.md
-      # - TCP/IP: learn/tour/tcp-ip.md
-      # - HTTP, HTTPS: learn/tour/http.md
-      - Scripts: learn/tour/scripts.md
-      - IDE: learn/tour/ide.md
-    - Q for quants: learn/brief-introduction.md
-    - Q by Examples: learn/q-by-examples.md
-    - Q for All: learn/q-for-all.md
-    # - Q for Pythons:
-    #   - Introduction: learn/python/index.md
-    #   - Primer:
-    #     - Datatypes: learn/python/primer/datatypes.md
-    #     - Dictionaries: learn/python/primer/dictionaries.md
-    #     - Tables: learn/python/primer/tables.md
-    #     - Operations: learn/python/primer/operations.md
-    #     - Operations on dictionaries: learn/python/primer/operations-dict.md
-    #     - Iterators: learn/python/primer/iterators.md
-    #     - Table operations (qSQL): learn/python/primer/table-operations.md
-    #     - Semantic extensions to SQL: learn/python/primer/extensions-to-sql.md
-    #     - Modifying tables: learn/python/primer/modify-tables.md
-    #     - Temporal primitives: learn/python/primer/temporal-primitives.md
-    #     - Execution control: learn/python/primer/control.md
-    #     - Input/output to files: learn/python/primer/file-io.md
-    #     - Interprocess communication: learn/python/primer/ipc.md
-    #     - Type and cast: learn/python/primer/type-cast.md
-    #     - Debugging: learn/python/primer/debug.md
-    #     - Namespaces: learn/python/primer/namespace.md
-    - Examples from Python:
-      - Basic: learn/python/examples/index.md
-      - Array: learn/python/examples/array.md
-      - List: learn/python/examples/list.md
-      - Strings: learn/python/examples/string.md
-      - Dictionaries: learn/python/examples/dict.md
-    - Q for Mortals 3: https://code.kx.com/q4m3/
-    - Q by Puzzles:
-      - About: learn/pb/index.md
-      - 12 Days of Xmas: learn/pb/xmas-days.md
-      - ABC problem: learn/pb/abc-problem.md
-      - Abundant odds: learn/pb/abundant-odds.md
-      - Four is magic: learn/pb/four-magic.md
-      - Name Game: learn/pb/name-game.md
-      - Summarize and Say: learn/pb/sum-say.md
-      - Word wheel: learn/pb/word-wheel.md
-    - Reading room:
-      - Information desk: learn/reading/index.md
-      - Boggle: learn/reading/boggle.md
-      - Cats cradle: learn/reading/strings.md
-      - Fizz buzz: learn/reading/fizzbuzz.md
-      - Klondike: learn/reading/klondike.md
-      - Phrasebook: https://code.kx.com/phrases/
-      - Scrabble: learn/reading/scrabble.md
-    - Application examples:
-      - Astronomy (WP): wp/astronomy.md
-      - Bitcoin blockchains (WP): wp/blockchain/index.md
-      - Card counters (WP): wp/card-counters/index.md
-      - Corporate actions (WP): wp/corporate-actions.md
-      - Disaster management (WP): wp/disaster-management/index.md
-      - Exoplanets (WP): wp/exoplanets/index.md
-      - Market depth (WP): wp/market-depth/index.md
-      - Market fragmentation (WP): wp/market-fragmentation/index.md
-      - Option pricing (WP): wp/option-pricing/index.md
-      - Predicting floods (WP): wp/disaster-floods/index.md
-      - Signal processing (WP): wp/signal-processing/index.md
-      - Space weather (WP): wp/space-weather/index.md
-      - Trading surveillance (WP): wp/surveillance/index.md
-      - Transaction-cost analysis (WP): wp/transaction-cost.md
-      - Trend indicators (WP): wp/trend-indicators/index.md
-    - Advanced q:
-      - Remarks on Style: https://github.com/qbists/style
-      - Shifts & scans: learn/shifts-scans.md
-      - Technical articles: learn/blogs.md
-      - Views: learn/views.md
-      - Origins: learn/archive.md
-      # - Kx technology: about/kxtechnology.md
-      - Terminology: about/terminology.md
-    - Starting kdb+:
-      - Overview: learn/startingkdb/index.md
-      - The q language: learn/startingkdb/language.md
-      - IPC: learn/startingkdb/ipc.md
-      - Tables: learn/startingkdb/tables.md
-      - Historical database: learn/startingkdb/hdb.md
-      - Realtime database: learn/startingkdb/tick.md
   - Language:
     - Reference card: ref/index.md
     - By topic: basics/by-topic.md
