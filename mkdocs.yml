@@ -520,6 +520,34 @@ nav:
         - Withdrawn: releases/withdrawn.md
       # - Environment: basics/environment.md
       - FAQ: kb/faq-listbox.md
+    - Architecture:
+      - About: architecture/index.md
+      - Examples: architecture/examples.md
+      - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
+      - Chained tickerplant: kb/chained-tickerplant.md
+      - Client-server: kb/client-server.md
+      - Corporate actions: kb/corporate-actions.md
+      - Data recovery for kdb+tick (WP): wp/data-recovery.md
+      - Disaster recovery (WP): wp/disaster-recovery/index.md
+      - Gateway design (WP): wp/gateway-design/index.md
+      - kdb+tick configuration: kb/kdb-tick.md
+      - kdb+tick profiling (WP): wp/tick-profiling.md
+      - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
+      - Load balancing: kb/load-balancing.md
+      - Memory backed by files: basics/memory-backed.md
+      - Optane Memory:
+        - Optane Memory and kdb+: kb/optane.md
+        - Performance tests: architecture/optane-tests.md
+      - Order Book (WP): wp/order-book.md
+      - Publish and subscribe: kb/publish-subscribe.md
+      - Pub/sub with Solace (WP): wp/solace/index.md
+      - Query Routing (WP): wp/query-routing/index.md
+      - Real-time tick subscribers (WP): wp/rt-tick/index.md
+      - WebSockets (WP): wp/websockets/index.md
+      - Write-only RDB: kb/w-q.md
+      - Advanced:
+        - Distributed systems (WP): wp/query-interface.md
+        - Intraday writedown (WP): wp/intraday-writedown/index.md
     - Interfaces:
       - KX libraries: interfaces/index.md
       - Bloomberg: interfaces/q-client-for-bloomberg.md
@@ -586,32 +614,4 @@ nav:
   - KDB.AI: 'https://code.kx.com/kdbai'
   - PyKX: 'https://code.kx.com/pykx'
   - APIs: 'https://code.kx.com/insights/api'
-  - Architecture:
-    - About: architecture/index.md
-    - Examples: architecture/examples.md
-    - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
-    - Chained tickerplant: kb/chained-tickerplant.md
-    - Client-server: kb/client-server.md
-    - Corporate actions: kb/corporate-actions.md
-    - Data recovery for kdb+tick (WP): wp/data-recovery.md
-    - Disaster recovery (WP): wp/disaster-recovery/index.md
-    - Gateway design (WP): wp/gateway-design/index.md
-    - kdb+tick configuration: kb/kdb-tick.md
-    - kdb+tick profiling (WP): wp/tick-profiling.md
-    - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
-    - Load balancing: kb/load-balancing.md
-    - Memory backed by files: basics/memory-backed.md
-    - Optane Memory:
-      - Optane Memory and kdb+: kb/optane.md
-      - Performance tests: architecture/optane-tests.md
-    - Order Book (WP): wp/order-book.md
-    - Publish and subscribe: kb/publish-subscribe.md
-    - Pub/sub with Solace (WP): wp/solace/index.md
-    - Query Routing (WP): wp/query-routing/index.md
-    - Real-time tick subscribers (WP): wp/rt-tick/index.md
-    - WebSockets (WP): wp/websockets/index.md
-    - Write-only RDB: kb/w-q.md
-    - Advanced:
-      - Distributed systems (WP): wp/query-interface.md
-      - Intraday writedown (WP): wp/intraday-writedown/index.md
   - Help: 'https://code.kx.com/home/support'
