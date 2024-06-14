@@ -617,4 +617,3 @@ A drawback to using foreign keys is that keyed tables cannot be splayed to disk.
 
 **Kevin Smyth** has worked as a consultant for some of the world's leading financial institutions. Based in London, Kevin has implemented data capture and high-frequency data analysis projects across a large number of mainstream and alternative asset classes.
 
-[:fontawesome-solid-print: PDF](/download/wp/the_application_of_foreign_keys_and_linked_columns_in_kdb.pdf)

@@ -677,8 +677,6 @@ We also briefly saw how to use iterators to optimize the classification time, an
 
 Benchmarking this lazy implementation, with a random dataset available on the UCI website and using the Euclidean distance metric showed an average prediction accuracy of ~97.7%. The classification time can vary greatly, based on the number of cores and secondary threads used. With 2 cores and 4 secondary threads (`-s 4`) the classification time of a single instance after optimization of the code was ~1.9ms per instance and the total validation time decreased significantly when using 4 cores and 8 secondary threads (`-s 8`), showing how kdb+ can be used to great effect for machine-learning purposes, even with heavy-compute implementations such as the k-NN.
 
-[:fontawesome-solid-print: PDF](/download/wp/machine_learning_in_kdb.pdf)
-
 
 ## Author
 

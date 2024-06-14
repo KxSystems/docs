@@ -652,8 +652,6 @@ natively integrated into q/kdb+ data systems. This allows for q/kdb+ to
 be used as a platform for the capture, processing, storage and querying
 of sensors based signal information.
 
-[:fontawesome-solid-print: PDF](/download/wp/signal-processing-a4.pdf)
-
 
 ## References
 

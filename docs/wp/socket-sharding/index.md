@@ -344,8 +344,6 @@ This could be beneficial for gateway requests. If the response time slows (due t
 
 Finally, we explored easy rolling upgrades of existing processes while keeping downtime to a minimum. New versions of a system’s kdb+ processes can be started while current processes are still online. Once initialization is complete, with open ports, the processes from the older version are shut down and the disconnected client’s reconnect logic would then automatically re-establish a connection to the new process.
 
-[:fontawesome-solid-print: PDF](/download/wp/socket-sharding.pdf)
-
 
 ## Author
 

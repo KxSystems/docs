@@ -310,8 +310,6 @@ A script is provided in the Appendix below so that users can work through the im
 
 All tests were performed with kdb+ 3.0 (2012.09.26)
 
-[:fontawesome-solid-print: PDF](/download/wp/market-fragmentation-a4.pdf)
-
 
 ## Author
 

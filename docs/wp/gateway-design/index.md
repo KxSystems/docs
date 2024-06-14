@@ -270,8 +270,6 @@ As outlined in the initial overview, the implementation of any particular gatewa
 
 All code included is using kdb+ 3.0 (2012.11.12).
 
-[:fontawesome-solid-print: PDF](/download/wp/common_design_principles_for_kdb_gateways.pdf)
-
 
 ## Author
 

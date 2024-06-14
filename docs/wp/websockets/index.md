@@ -761,8 +761,6 @@ underlying data stored within KX and other databases.
 
 All tests were run using kdb+ version 3.5 (2017.11.30)
 
-[:fontawesome-solid-print: PDF](/download/wp/websockets-us.pdf)
-
 
 ## Authors
 

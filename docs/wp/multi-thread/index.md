@@ -489,8 +489,6 @@ System-management solutions are available to assist with administering multi-pro
 
 All tests performed using kdb+ version 3.1 (2013.06.25)
 
-[:fontawesome-solid-print: PDF](/download/wp/multi_threading_in_kdb_performance_optimisations_and_use_cases.pdf)
-
 
 ## Author
 

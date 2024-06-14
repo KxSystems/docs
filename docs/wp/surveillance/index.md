@@ -448,8 +448,6 @@ In September of 2013 the Australian market regulator ASIC upgraded their market-
 
 All tests performed using kdb+ version 3.1 (2014.02.08)
 
-[:fontawesome-solid-print: PDF](/download/wp/surveillance_techniques_to_effectively_monitor_algo_and_high_frequency_trading.pdf)
-
 
 ## Bibliography
 
