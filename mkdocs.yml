@@ -423,7 +423,31 @@ nav:
       - Syntax: basics/syntax.md
       - Tables: kb/faq.md
       - Variadic syntax: basics/variadic.md
-    - Developer tools: devtools.md
+    - Database:
+      - Tables in the filesystem: database/index.md
+      - Populating tables:
+        - Loading from large files: kb/loading-from-large-files.md
+        - Foreign keys (WP): wp/foreign-keys.md
+        - Linking columns: kb/linking-columns.md
+        - Data loaders (WP): wp/data-loaders/index.md
+        - From MDB via ODBC: database/mdb-odbc.md
+      - Persisting tables:
+        - Serializing an object: database/object.md
+        - Splayed tables: kb/splayed-tables.md
+        - Partitioned tables: kb/partition.md
+        - Segmented databases: database/segment.md
+        - Multiple partitions (WP): wp/multi-partitioned-dbs/index.md
+      - Maintenance:
+        - Data management (WP): wp/data-management.md
+        - Data-At-Rest Encryption: kb/dare.md
+        - File compression: kb/file-compression.md
+        - Compression (WP): wp/compress/index.md
+        - Permissions (WP): wp/permissions/index.md
+        - Query optimization (WP): wp/columnar-database/index.md
+        - Query scaling (WP): wp/query-scaling.md
+        - Time-series simplification (WP): wp/ts-shrink/index.md
+        - Compacting HDB sym: kb/compacting-hdb-sym.md
+        - Working with sym files (WP): wp/symfiles.md
     - Interfaces:
       - KX libraries: interfaces/index.md
       - Bloomberg: interfaces/q-client-for-bloomberg.md
@@ -443,7 +467,6 @@ nav:
       - R: interfaces/r.md
       - Scala: interfaces/scala-client-for-q.md
     - Open source: github.md
-    - Machine learning: ml.md
     - Using kdb+ in the cloud:
       - About: cloud/index.md
       - Amazon Web Services:
@@ -483,37 +506,14 @@ nav:
     - Academy: https://learninghub.kx.com
     - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md
+    - Developer tools: devtools.md
+    - Machine learning: ml.md
     - About this site: about/thissite.md
   - kdb Insights: 'https://code.kx.com/insights'
   - kdb Insights Enterprise: 'https://code.kx.com/insights/enterprise'
   - KDB.AI: 'https://code.kx.com/kdbai'
   - PyKX: 'https://code.kx.com/pykx'
   - APIs: 'https://code.kx.com/insights/api'
-  - Database:
-    - Tables in the filesystem: database/index.md
-    - Populating tables:
-      - Loading from large files: kb/loading-from-large-files.md
-      - Foreign keys (WP): wp/foreign-keys.md
-      - Linking columns: kb/linking-columns.md
-      - Data loaders (WP): wp/data-loaders/index.md
-      - From MDB via ODBC: database/mdb-odbc.md
-    - Persisting tables:
-      - Serializing an object: database/object.md
-      - Splayed tables: kb/splayed-tables.md
-      - Partitioned tables: kb/partition.md
-      - Segmented databases: database/segment.md
-      - Multiple partitions (WP): wp/multi-partitioned-dbs/index.md
-    - Maintenance:
-      - Data management (WP): wp/data-management.md
-      - Data-At-Rest Encryption: kb/dare.md
-      - File compression: kb/file-compression.md
-      - Compression (WP): wp/compress/index.md
-      - Permissions (WP): wp/permissions/index.md
-      - Query optimization (WP): wp/columnar-database/index.md
-      - Query scaling (WP): wp/query-scaling.md
-      - Time-series simplification (WP): wp/ts-shrink/index.md
-      - Compacting HDB sym: kb/compacting-hdb-sym.md
-      - Working with sym files (WP): wp/symfiles.md
   - Developing:
     - IPC:
       - Overview: basics/ipc.md
