@@ -881,7 +881,6 @@ q)m[1;1]:0
 ## `.z.W` (handles)
 
 Dictionary of IPC handles with the number of bytes waiting in their output queues.
-<!-- (Since V2.5 2008.12.31.) In V2.6 this was changed to a list of bytes per handle, see [Changes in V2.6](../releases/ChangesIn2.6.md#zw) -->
 
 ```q
 q)h:hopen ...
