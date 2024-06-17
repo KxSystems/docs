@@ -1033,15 +1033,9 @@ N.B. HTTPS is not supported across proxies which require `CONNECT`.
 Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip". 
 The server then decides whether to gzip the returned payload, which is uncompressed prior to .Q.hg returning.
 
-<!--
-## `hmb` (FIXME)
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
-Since V3.6 uses built-in btoa for Basic Authentication, e.g.
-```q
- q).Q.hg`$":http://username:password@www.google.com"
-```
 
- -->
 ## `host` (hostname)
 
 ```syntax
@@ -1092,6 +1086,8 @@ Uses proxy settings (if defined) and compression handling, as described in [hg (
 q).Q.hp["http://google.com";.h.ty`json]"my question"
 "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewpo..
 ```
+
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
 
 ## `id` (sanitize)

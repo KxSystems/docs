@@ -612,6 +612,8 @@ Running an HTTP client such as cURL, from the same machine, shows the connection
 curl -v -v http://localhost:1234 http://localhost:1234
 ```
 
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
+
 
 ## `.h.logo` (KX logo)
 
