@@ -124,6 +124,8 @@ If the user is not permitted, the client is sent a default 401 HTTP unauthorized
 
 !!! note "If .z.ac is not defined, it uses basic access authentication as per `(4;"")` above"
 
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
+
 
 ## `.z.b` (dependencies)
 
@@ -591,6 +593,9 @@ Since V3.6 and V3.5 2019.11.13, the default implementation calls [`.h.val`](doth
 :fontawesome-solid-book:
 [`.h` namespace](doth.md)
 <br>
+:fontawesome-solid-graduation-cap:
+[HTTP](../kb/http.md)
+<br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.7.1 HTTP Connections](/q4m3/11_IO/#1171-http-connections)
@@ -649,6 +654,8 @@ Each method is passed to `f` as a 3-item list e.g.
 
 For the POST method use [.z.pp](#zpp-http-post), and for GET use [.z.ph](#zph-http-get).
 
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
+
 
 ## `.z.po` (open)
 
@@ -685,6 +692,9 @@ Allows empty requests since 4.1t 2021.03.30 (previously signalled `length` error
 
 :fontawesome-solid-book:
 [`.h` namespace](doth.md)
+<br>
+:fontawesome-solid-graduation-cap:
+[HTTP](../kb/http.md)
 <br>
 :fontawesome-solid-street-view:
 _Q for Mortals_
@@ -881,7 +891,6 @@ q)m[1;1]:0
 ## `.z.W` (handles)
 
 Dictionary of IPC handles with the number of bytes waiting in their output queues.
-<!-- (Since V2.5 2008.12.31.) In V2.6 this was changed to a list of bytes per handle, see [Changes in V2.6](../releases/ChangesIn2.6.md#zw) -->
 
 ```q
 q)h:hopen ...

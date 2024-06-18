@@ -1282,7 +1282,7 @@ GitHub topic queries:&nbsp;&nbsp;
 
     :fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained. 
 
-## :fontawesome-solid-share-square: kxcontrib
+## :fontawesome-brands-github: kxcontrib
 
 !!! warning "Salvaged repositories"
 	:fontawesome-brands-github: [kxcontrib](https://github.com/kxcontrib) contains repositories salvaged from the former Subversion server for which we have been unable to identify current versions on GitHub. These repositories are not maintained.

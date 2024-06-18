@@ -109,8 +109,445 @@ nav:
   - Home: 'https://code.kx.com/home'
   - kdb+ and q:
     - About: index.md
-    - Reference card: ref/index.md
-    - Developer tools: devtools.md
+    - Learn:
+      - Get started: learn/index.md
+      - Install: learn/install.md
+      - Licenses: learn/licensing.md
+      - Mountain tour:
+        - Overview: learn/tour/overview.md
+        - Begin here: learn/tour/index.md
+        - The q session: learn/tour/session.md
+        # - Databases: learn/tour/databases.md
+        - Tables: learn/tour/tables.md
+        - CSVs: learn/tour/csvs.md
+        - Datatypes: learn/tour/datatypes.md
+        # - Dictionaries: learn/tour/dictionaries.md
+        # - Queries: learn/tour/queries.md
+        # - Functions: learn/tour/functions.md
+        # - Iteration: learn/tour/iteration.md
+        # - Files: learn/tour/files.md
+        # - TCP/IP: learn/tour/tcp-ip.md
+        # - HTTP, HTTPS: learn/tour/http.md
+        - Scripts: learn/tour/scripts.md
+        - IDE: learn/tour/ide.md
+      - Q for quants: learn/brief-introduction.md
+      - Q by Examples: learn/q-by-examples.md
+      - Q for All: learn/q-for-all.md
+      # - Q for Pythons:
+      #   - Introduction: learn/python/index.md
+      #   - Primer:
+      #     - Datatypes: learn/python/primer/datatypes.md
+      #     - Dictionaries: learn/python/primer/dictionaries.md
+      #     - Tables: learn/python/primer/tables.md
+      #     - Operations: learn/python/primer/operations.md
+      #     - Operations on dictionaries: learn/python/primer/operations-dict.md
+      #     - Iterators: learn/python/primer/iterators.md
+      #     - Table operations (qSQL): learn/python/primer/table-operations.md
+      #     - Semantic extensions to SQL: learn/python/primer/extensions-to-sql.md
+      #     - Modifying tables: learn/python/primer/modify-tables.md
+      #     - Temporal primitives: learn/python/primer/temporal-primitives.md
+      #     - Execution control: learn/python/primer/control.md
+      #     - Input/output to files: learn/python/primer/file-io.md
+      #     - Interprocess communication: learn/python/primer/ipc.md
+      #     - Type and cast: learn/python/primer/type-cast.md
+      #     - Debugging: learn/python/primer/debug.md
+      #     - Namespaces: learn/python/primer/namespace.md
+      - Examples from Python:
+        - Basic: learn/python/examples/index.md
+        - Array: learn/python/examples/array.md
+        - List: learn/python/examples/list.md
+        - Strings: learn/python/examples/string.md
+        - Dictionaries: learn/python/examples/dict.md
+      - Q for Mortals 3: https://code.kx.com/q4m3/
+      - Q by Puzzles:
+        - About: learn/pb/index.md
+        - 12 Days of Xmas: learn/pb/xmas-days.md
+        - ABC problem: learn/pb/abc-problem.md
+        - Abundant odds: learn/pb/abundant-odds.md
+        - Four is magic: learn/pb/four-magic.md
+        - Name Game: learn/pb/name-game.md
+        - Summarize and Say: learn/pb/sum-say.md
+        - Word wheel: learn/pb/word-wheel.md
+      - Reading room:
+        - Information desk: learn/reading/index.md
+        - Boggle: learn/reading/boggle.md
+        - Cats cradle: learn/reading/strings.md
+        - Fizz buzz: learn/reading/fizzbuzz.md
+        - Klondike: learn/reading/klondike.md
+        - Phrasebook: https://code.kx.com/phrases/
+        - Scrabble: learn/reading/scrabble.md
+      - Application examples:
+        - Astronomy (WP): wp/astronomy.md
+        - Bitcoin blockchains (WP): wp/blockchain/index.md
+        - Card counters (WP): wp/card-counters/index.md
+        - Corporate actions (WP): wp/corporate-actions.md
+        - Disaster management (WP): wp/disaster-management/index.md
+        - Exoplanets (WP): wp/exoplanets/index.md
+        - Market depth (WP): wp/market-depth/index.md
+        - Market fragmentation (WP): wp/market-fragmentation/index.md
+        - Option pricing (WP): wp/option-pricing/index.md
+        - Predicting floods (WP): wp/disaster-floods/index.md
+        - Signal processing (WP): wp/signal-processing/index.md
+        - Space weather (WP): wp/space-weather/index.md
+        - Trading surveillance (WP): wp/surveillance/index.md
+        - Transaction-cost analysis (WP): wp/transaction-cost.md
+        - Trend indicators (WP): wp/trend-indicators/index.md
+      - Advanced q:
+        - Remarks on Style: https://github.com/qbists/style
+        - Shifts & scans: learn/shifts-scans.md
+        - Technical articles: learn/blogs.md
+        - Views: learn/views.md
+        - Origins: learn/archive.md
+        # - Kx technology: about/kxtechnology.md
+        - Terminology: about/terminology.md
+      - Starting kdb+:
+        - Overview: learn/startingkdb/index.md
+        - The q language: learn/startingkdb/language.md
+        - IPC: learn/startingkdb/ipc.md
+        - Tables: learn/startingkdb/tables.md
+        - Historical database: learn/startingkdb/hdb.md
+        - Realtime database: learn/startingkdb/tick.md
+    - Language:
+      - Reference card: ref/index.md
+      - By topic: basics/by-topic.md
+      - Iteration:
+        - Overview: basics/iteration.md
+        - Implicit iteration: basics/implicit-iteration.md
+        - Iterators: ref/iterators.md
+        - Maps: ref/maps.md
+        - Accumulators: ref/accumulators.md
+        - Guide to iterators (WP): wp/iterators/index.md
+      - Keywords:
+        - abs: ref/abs.md
+        - aj, aj0, ajf, ajf0: ref/aj.md
+        - all, any: ref/all-any.md
+        - and: ref/and.md
+        - asc, iasc, xasc: ref/asc.md
+        - asof: ref/asof.md
+        - attr: ref/attr.md
+        - avg, avgs, mavg, wavg: ref/avg.md
+        - bin, binr: ref/bin.md
+        - ceiling: ref/ceiling.md
+        - count, mcount: ref/count.md
+        - cols, xcol, xcols: ref/cols.md
+        - cor: ref/cor.md
+        - cos, acos: ref/cos.md
+        - cov, scov: ref/cov.md
+        - cross: ref/cross.md
+        - csv: ref/csv.md
+        - cut: ref/cut.md
+        - delete: ref/delete.md
+        - deltas: ref/deltas.md
+        - desc, idesc, xdesc: ref/desc.md
+        - dev, mdev, sdev: ref/dev.md
+        - differ: ref/differ.md
+        - distinct: ref/distinct.md
+        - div: ref/div.md
+        - dsave: ref/dsave.md
+        - each, peach: ref/each.md
+        - ej: ref/ej.md
+        - ema: ref/ema.md
+        - enlist: ref/enlist.md
+        - eval, reval: ref/eval.md
+        - except: ref/except.md
+        - exec: ref/exec.md
+        - exit: ref/exit.md
+        - exp, xexp: ref/exp.md
+        - fby: ref/fby.md
+        - fills: ref/fill.md
+        - first, last: ref/first.md
+        - fkeys: ref/fkeys.md
+        - flip: ref/flip.md
+        - floor: ref/floor.md
+        - get, set: ref/get.md
+        - getenv, setenv: ref/getenv.md
+        - group: ref/group.md
+        - gtime, ltime: ref/gtime.md
+        - hcount: ref/hcount.md
+        - hdel: ref/hdel.md
+        - hopen, hclose: ref/hopen.md
+        - hsym: ref/hsym.md
+        - ij, ijf: ref/ij.md
+        - in: ref/in.md
+        - insert: ref/insert.md
+        - inter: ref/inter.md
+        - inv: ref/inv.md
+        - key: ref/key.md
+        - keys, xkey: ref/keys.md
+        - like: ref/like.md
+        - lj, ljf: ref/lj.md
+        - load, rload: ref/load.md
+        - log, xlog: ref/log.md
+        - lower: ref/lower.md
+        - lsq: ref/lsq.md
+        - max, maxs, mmax: ref/max.md
+        - md5: ref/md5.md
+        - med: ref/med.md
+        - meta: ref/meta.md
+        - min, mins, mmin: ref/min.md
+        - mmu: ref/mmu.md
+        - mod: ref/mod.md
+        - neg: ref/neg.md
+        - next, prev, xprev: ref/next.md
+        - not: ref/not.md
+        - 'null': ref/null.md
+        - or: ref/or.md
+        - over, scan: ref/over.md
+        - parse: ref/parse.md
+        - pj: ref/pj.md
+        - prd, prds: ref/prd.md
+        - prior: ref/prior.md
+        - rand: ref/rand.md
+        - rank: ref/rank.md
+        - ratios: ref/ratios.md
+        - raze: ref/raze.md
+        - read0: ref/read0.md
+        - read1: ref/read1.md
+        - reciprocal: ref/reciprocal.md
+        - reverse: ref/reverse.md
+        - rotate: ref/rotate.md
+        - save, rsave: ref/save.md
+        - select: ref/select.md
+        - show: ref/show.md
+        - signum: ref/signum.md
+        - sin, asin: ref/sin.md
+        - sqrt: ref/sqrt.md
+        - ss, ssr: ref/ss.md
+        - string: ref/string.md
+        - sublist: ref/sublist.md
+        - sum, sums, msum, wsum: ref/sum.md
+        - sv: ref/sv.md
+        - system: ref/system.md
+        - tables: ref/tables.md
+        - tan, atan: ref/tan.md
+        - til: ref/til.md
+        - trim, ltrim, rtrim: ref/trim.md
+        - type: ref/type.md
+        - uj, ujf: ref/uj.md
+        - union: ref/union.md
+        - ungroup: ref/ungroup.md
+        - update: ref/update.md
+        - upsert: ref/upsert.md
+        - value: ref/value.md
+        - var, svar: ref/var.md
+        - view, views: ref/view.md
+        - vs: ref/vs.md
+        - where: ref/where.md
+        - within: ref/within.md
+        - wj, wj1: ref/wj.md
+        - xbar: ref/xbar.md
+        - xgroup: ref/xgroup.md
+        - xrank: ref/xrank.md
+      - Overloaded glyphs: ref/overloads.md
+      - Operators:
+        - Add: ref/add.md
+        - Amend: ref/amend.md
+        - Apply, Index, Trap: ref/apply.md
+        - Assign: ref/assign.md
+        - Cast: ref/cast.md
+        - Coalesce: ref/coalesce.md
+        - Compose: ref/compose.md
+        - Cut: ref/cut.md
+        - Deal, Roll, Permute: ref/deal.md
+        - Delete: ref/delete.md
+        - Display: ref/display.md
+        - Dict: ref/dict.md
+        - Divide: ref/divide.md
+        - Dynamic Load: ref/dynamic-load.md
+        - Drop: ref/drop.md
+        - Enkey, Unkey: ref/enkey.md
+        - Enumerate: ref/enumerate.md
+        - Enumeration: ref/enumeration.md
+        - Enum Extend: ref/enum-extend.md
+        - Equal: ref/equal.md
+        - Exec: ref/exec.md
+        - File Binary: ref/file-binary.md
+        - File Text: ref/file-text.md
+        - Fill: ref/fill.md
+        - Find: ref/find.md
+        - Flip Splayed: ref/flip-splayed.md
+        - Greater: ref/greater.md
+        - Greater Than: ref/greater-than.md
+        - Identity, Null: ref/identity.md
+        - Join: ref/join.md
+        - Less Than: ref/less-than.md
+        - Lesser: ref/lesser.md
+        - Match: ref/match.md
+        - Matrix Multiply: ref/mmu.md
+        - Multiply: ref/multiply.md
+        - Not Equal: ref/not-equal.md
+        - Pad: ref/pad.md
+        - Select: ref/select.md
+        - Set Attribute: ref/set-attribute.md
+        - Simple Exec: ref/simple-exec.md
+        - Signal: ref/signal.md
+        - Subtract: ref/subtract.md
+        - Take: ref/take.md
+        - Tok: ref/tok.md
+        - Update: ref/update.md
+        - Vector Conditional: ref/vector-conditional.md
+      - Control constructs:
+        - Cond: ref/cond.md
+        - do: ref/do.md
+        - if: ref/if.md
+        - while: ref/while.md
+      - Namespaces:
+        - .h: ref/doth.md
+        - .j: ref/dotj.md
+        - .m: ref/dotm.md
+        - .Q: ref/dotq.md
+        - .z: ref/dotz.md
+      - Application: basics/application.md
+      - Atomic functions: basics/atomic.md
+      - Comparison: basics/comparison.md
+      - Conformability: basics/conformable.md
+      - Connection handles: basics/handles.md
+      - Datatypes: basics/datatypes.md
+      - Dictionaries: basics/dictsandtables.md
+      - Enumerations: basics/enumerations.md
+      - Evaluation control: basics/control.md
+      - Exposed infrastructure: basics/exposed-infrastructure.md
+      - File system: basics/files.md
+      - Function notation: basics/function-notation.md
+      - Functional qSQL: basics/funsql.md
+      - Glossary: basics/glossary.md
+      - Internal functions: basics/internal.md
+      - Joins: basics/joins.md
+      - Mathematics: basics/math.md
+      - Metadata: basics/metadata.md
+      - Namespaces: basics/namespaces.md
+      - Parse trees: basics/parsetrees.md
+      - Parse trees, functional SQL (WP): wp/parse-trees.md
+      - QSQL queries: basics/qsql.md
+      - Regular Expressions: basics/regex.md
+      - Syntax: basics/syntax.md
+      - Tables: kb/faq.md
+      - Variadic syntax: basics/variadic.md
+    - Database:
+      - Tables in the filesystem: database/index.md
+      - Populating tables:
+        - Loading from large files: kb/loading-from-large-files.md
+        - Foreign keys (WP): wp/foreign-keys.md
+        - Linking columns: kb/linking-columns.md
+        - Data loaders (WP): wp/data-loaders/index.md
+        - From MDB via ODBC: database/mdb-odbc.md
+      - Persisting tables:
+        - Serializing an object: database/object.md
+        - Splayed tables: kb/splayed-tables.md
+        - Partitioned tables: kb/partition.md
+        - Segmented databases: database/segment.md
+        - Multiple partitions (WP): wp/multi-partitioned-dbs/index.md
+      - Maintenance:
+        - Data management (WP): wp/data-management.md
+        - Data-At-Rest Encryption: kb/dare.md
+        - File compression: kb/file-compression.md
+        - Compression (WP): wp/compress/index.md
+        - Permissions (WP): wp/permissions/index.md
+        - Query optimization (WP): wp/columnar-database/index.md
+        - Query scaling (WP): wp/query-scaling.md
+        - Time-series simplification (WP): wp/ts-shrink/index.md
+        - Compacting HDB sym: kb/compacting-hdb-sym.md
+        - Working with sym files (WP): wp/symfiles.md
+    - Developing:
+      - IPC:
+        - Overview: basics/ipc.md
+        - Callbacks: kb/callbacks.md
+        - Listening port: basics/listening-port.md
+        - Named pipes: kb/named-pipes.md
+        - Serialization examples: kb/serialization.md
+        - Server calling client: kb/server-calling-client.md
+        - Socket sharding (WP): wp/socket-sharding/index.md
+        - SSL/TLS: kb/ssl.md
+        - HTTP: kb/http.md
+        - WebSockets: kb/websockets.md
+        - Interprocess communication (WP): wp/ipc/index.md
+      - Tools:
+        - Code profiler: kb/profiler.md
+        - Debugging: basics/debug.md
+        - Errors: basics/errors.md
+        - man.q: about/man.md
+        - System commands: basics/syscmds.md
+        - Unit tests: kb/unit-tests.md
+        - Using .z: kb/using-dotz.md
+      - Coding:
+        - Data visualization (WP): wp/data-visualization/index.md
+        - Deferred response: kb/deferred-response.md
+        - Geospatial indexing: kb/geospatial.md
+        - Linear programming: kb/lp.md
+        - Multithreaded input: kb/multithreaded-input.md
+        - Multithreaded primitives: kb/mt-primitives.md
+        - Pivoting tables: kb/pivoting-tables.md
+        - Precision: basics/precision.md
+        - Programming examples: kb/programming-examples.md
+        - Programming idioms: kb/programming-idioms.md
+        - Temporal data: kb/temporal-data.md
+        - Timezones: kb/timezones.md
+        - Unicode: kb/unicode.md
+      - DevOps:
+        - Authentication and access: kb/authentication.md
+        - Command-line options: basics/cmdline.md
+        - CPU affinity: kb/cpu-affinity.md
+        - Custom web server: kb/custom-web.md
+        - Daemon: kb/daemon.md
+        - Firewalling: kb/firewalling.md
+        - inetd, xinetd: kb/inetd.md
+        - Linux production notes: kb/linux-production.md
+        - Logging: kb/logging.md
+        - Multi-threading (WP): wp/multi-thread/index.md
+        - Multiple versions: kb/versions.md
+        - Parallel processing: basics/peach.md
+        - Performance tips: kb/performance-tips.md
+        - Replay logfile: kb/replay-log.md
+        - Shebang script: develop/shebang.md
+        - Surveillance latency (WP): wp/surveillance-latency/index.md
+        - Windows service: kb/windows-service/index.md
+      - Release notes:
+        - History: releases/index.md
+        - Changes in 4.1: releases/ChangesIn4.1.md
+        - Changes in 4.0: releases/ChangesIn4.0.md
+        - Changes in 3.6: releases/ChangesIn3.6.md
+        - Changes in 3.5: releases/ChangesIn3.5.md
+        - Changes in 3.4: releases/ChangesIn3.4.md
+        - Changes in 3.3: releases/ChangesIn3.3.md
+        - Changes in 3.2: releases/ChangesIn3.2.md
+        - Changes in 3.1: releases/ChangesIn3.1.md
+        - Changes in 3.0: releases/ChangesIn3.0.md
+        - Changes in 2.8: releases/ChangesIn2.8.md
+        - Changes in 2.7: releases/ChangesIn2.7.md
+        - Changes in 2.6: releases/ChangesIn2.6.md
+        - Changes in 2.5: releases/ChangesIn2.5.md
+        - Changes in 2.4: releases/ChangesIn2.4.md
+        - Withdrawn: releases/withdrawn.md
+      # - Environment: basics/environment.md
+      - FAQ: kb/faq-listbox.md
+    - Architecture:
+      - About: architecture/index.md
+      - Examples: architecture/examples.md
+      - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
+      - Chained tickerplant: kb/chained-tickerplant.md
+      - Client-server: kb/client-server.md
+      - Corporate actions: kb/corporate-actions.md
+      - Data recovery for kdb+tick (WP): wp/data-recovery.md
+      - Disaster recovery (WP): wp/disaster-recovery/index.md
+      - Gateway design (WP): wp/gateway-design/index.md
+      - kdb+tick configuration: kb/kdb-tick.md
+      - kdb+tick profiling (WP): wp/tick-profiling.md
+      - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
+      - Load balancing: kb/load-balancing.md
+      - Memory backed by files: basics/memory-backed.md
+      - Optane Memory:
+        - Optane Memory and kdb+: kb/optane.md
+        - Performance tests: architecture/optane-tests.md
+      - Order Book (WP): wp/order-book.md
+      - Publish and subscribe: kb/publish-subscribe.md
+      - Pub/sub with Solace (WP): wp/solace/index.md
+      - Query Routing (WP): wp/query-routing/index.md
+      - Real-time tick subscribers (WP): wp/rt-tick/index.md
+      - WebSockets (WP): wp/websockets/index.md
+      - Write-only RDB: kb/w-q.md
+      - Advanced:
+        - Distributed systems (WP): wp/query-interface.md
+        - Intraday writedown (WP): wp/intraday-writedown/index.md
     - Interfaces:
       - KX libraries: interfaces/index.md
       - Bloomberg: interfaces/q-client-for-bloomberg.md
@@ -130,7 +567,6 @@ nav:
       - R: interfaces/r.md
       - Scala: interfaces/scala-client-for-q.md
     - Open source: github.md
-    - Machine learning: ml.md
     - Using kdb+ in the cloud:
       - About: cloud/index.md
       - Amazon Web Services:
@@ -167,452 +603,15 @@ nav:
           - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
           - Quobyte: cloud/otherfs/quobyte.md
       - DigitalOcean: kb/digitalocean.md
-    - Community: https://learninghub.kx.com
-    - kdb+ and q forum: https://learninghub.kx.com/forums/forum/kdb
+    - Academy: https://learninghub.kx.com
+    - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md
+    - Developer tools: devtools.md
+    - Machine learning: ml.md
     - About this site: about/thissite.md
   - kdb Insights: 'https://code.kx.com/insights'
   - kdb Insights Enterprise: 'https://code.kx.com/insights/enterprise'
   - KDB.AI: 'https://code.kx.com/kdbai'
   - PyKX: 'https://code.kx.com/pykx'
   - APIs: 'https://code.kx.com/insights/api'
-  - Learn:
-    - Get started: learn/index.md
-    - Install: learn/install.md
-    - Licenses: learn/licensing.md
-    - Mountain tour:
-      - Overview: learn/tour/overview.md
-      - Begin here: learn/tour/index.md
-      - The q session: learn/tour/session.md
-      # - Databases: learn/tour/databases.md
-      - Tables: learn/tour/tables.md
-      - CSVs: learn/tour/csvs.md
-      - Datatypes: learn/tour/datatypes.md
-      # - Dictionaries: learn/tour/dictionaries.md
-      # - Queries: learn/tour/queries.md
-      # - Functions: learn/tour/functions.md
-      # - Iteration: learn/tour/iteration.md
-      # - Files: learn/tour/files.md
-      # - TCP/IP: learn/tour/tcp-ip.md
-      # - HTTP, HTTPS: learn/tour/http.md
-      - Scripts: learn/tour/scripts.md
-      - IDE: learn/tour/ide.md
-    - Q for quants: learn/brief-introduction.md
-    - Q by Examples: learn/q-by-examples.md
-    - Q for All: learn/q-for-all.md
-    # - Q for Pythons:
-    #   - Introduction: learn/python/index.md
-    #   - Primer:
-    #     - Datatypes: learn/python/primer/datatypes.md
-    #     - Dictionaries: learn/python/primer/dictionaries.md
-    #     - Tables: learn/python/primer/tables.md
-    #     - Operations: learn/python/primer/operations.md
-    #     - Operations on dictionaries: learn/python/primer/operations-dict.md
-    #     - Iterators: learn/python/primer/iterators.md
-    #     - Table operations (qSQL): learn/python/primer/table-operations.md
-    #     - Semantic extensions to SQL: learn/python/primer/extensions-to-sql.md
-    #     - Modifying tables: learn/python/primer/modify-tables.md
-    #     - Temporal primitives: learn/python/primer/temporal-primitives.md
-    #     - Execution control: learn/python/primer/control.md
-    #     - Input/output to files: learn/python/primer/file-io.md
-    #     - Interprocess communication: learn/python/primer/ipc.md
-    #     - Type and cast: learn/python/primer/type-cast.md
-    #     - Debugging: learn/python/primer/debug.md
-    #     - Namespaces: learn/python/primer/namespace.md
-    - Examples from Python:
-      - Basic: learn/python/examples/index.md
-      - Array: learn/python/examples/array.md
-      - List: learn/python/examples/list.md
-      - Strings: learn/python/examples/string.md
-      - Dictionaries: learn/python/examples/dict.md
-    - Q for Mortals 3: https://code.kx.com/q4m3/
-    - Q by Puzzles:
-      - About: learn/pb/index.md
-      - 12 Days of Xmas: learn/pb/xmas-days.md
-      - ABC problem: learn/pb/abc-problem.md
-      - Abundant odds: learn/pb/abundant-odds.md
-      - Four is magic: learn/pb/four-magic.md
-      - Name Game: learn/pb/name-game.md
-      - Summarize and Say: learn/pb/sum-say.md
-      - Word wheel: learn/pb/word-wheel.md
-    - Reading room:
-      - Information desk: learn/reading/index.md
-      - Boggle: learn/reading/boggle.md
-      - Cats cradle: learn/reading/strings.md
-      - Fizz buzz: learn/reading/fizzbuzz.md
-      - Klondike: learn/reading/klondike.md
-      - Phrasebook: https://code.kx.com/phrases/
-      - Scrabble: learn/reading/scrabble.md
-    - Application examples:
-      - Astronomy (WP): wp/astronomy.md
-      - Bitcoin blockchains (WP): wp/blockchain/index.md
-      - Card counters (WP): wp/card-counters/index.md
-      - Corporate actions (WP): wp/corporate-actions.md
-      - Disaster management (WP): wp/disaster-management/index.md
-      - Exoplanets (WP): wp/exoplanets/index.md
-      - Market depth (WP): wp/market-depth/index.md
-      - Market fragmentation (WP): wp/market-fragmentation/index.md
-      - Option pricing (WP): wp/option-pricing/index.md
-      - Predicting floods (WP): wp/disaster-floods/index.md
-      - Signal processing (WP): wp/signal-processing/index.md
-      - Space weather (WP): wp/space-weather/index.md
-      - Trading surveillance (WP): wp/surveillance/index.md
-      - Transaction-cost analysis (WP): wp/transaction-cost.md
-      - Trend indicators (WP): wp/trend-indicators/index.md
-    - Advanced q:
-      - Remarks on Style: https://github.com/qbists/style
-      - Shifts & scans: learn/shifts-scans.md
-      - Technical articles: learn/blogs.md
-      - Views: learn/views.md
-      - Origins: learn/archive.md
-      # - Kx technology: about/kxtechnology.md
-      - Terminology: about/terminology.md
-    - Starting kdb+:
-      - Overview: learn/startingkdb/index.md
-      - The q language: learn/startingkdb/language.md
-      - IPC: learn/startingkdb/ipc.md
-      - Tables: learn/startingkdb/tables.md
-      - Historical database: learn/startingkdb/hdb.md
-      - Realtime database: learn/startingkdb/tick.md
-  - Language:
-    - Reference card: ref/index.md
-    - By topic: basics/by-topic.md
-    - Iteration:
-      - Overview: basics/iteration.md
-      - Implicit iteration: basics/implicit-iteration.md
-      - Iterators: ref/iterators.md
-      - Maps: ref/maps.md
-      - Accumulators: ref/accumulators.md
-      - Guide to iterators (WP): wp/iterators/index.md
-    - Keywords:
-      - abs: ref/abs.md
-      - aj, aj0, ajf, ajf0: ref/aj.md
-      - all, any: ref/all-any.md
-      - and: ref/and.md
-      - asc, iasc, xasc: ref/asc.md
-      - asof: ref/asof.md
-      - attr: ref/attr.md
-      - avg, avgs, mavg, wavg: ref/avg.md
-      - bin, binr: ref/bin.md
-      - ceiling: ref/ceiling.md
-      - count, mcount: ref/count.md
-      - cols, xcol, xcols: ref/cols.md
-      - cor: ref/cor.md
-      - cos, acos: ref/cos.md
-      - cov, scov: ref/cov.md
-      - cross: ref/cross.md
-      - csv: ref/csv.md
-      - cut: ref/cut.md
-      - delete: ref/delete.md
-      - deltas: ref/deltas.md
-      - desc, idesc, xdesc: ref/desc.md
-      - dev, mdev, sdev: ref/dev.md
-      - differ: ref/differ.md
-      - distinct: ref/distinct.md
-      - div: ref/div.md
-      - dsave: ref/dsave.md
-      - each, peach: ref/each.md
-      - ej: ref/ej.md
-      - ema: ref/ema.md
-      - enlist: ref/enlist.md
-      - eval, reval: ref/eval.md
-      - except: ref/except.md
-      - exec: ref/exec.md
-      - exit: ref/exit.md
-      - exp, xexp: ref/exp.md
-      - fby: ref/fby.md
-      - fills: ref/fill.md
-      - first, last: ref/first.md
-      - fkeys: ref/fkeys.md
-      - flip: ref/flip.md
-      - floor: ref/floor.md
-      - get, set: ref/get.md
-      - getenv, setenv: ref/getenv.md
-      - group: ref/group.md
-      - gtime, ltime: ref/gtime.md
-      - hcount: ref/hcount.md
-      - hdel: ref/hdel.md
-      - hopen, hclose: ref/hopen.md
-      - hsym: ref/hsym.md
-      - ij, ijf: ref/ij.md
-      - in: ref/in.md
-      - insert: ref/insert.md
-      - inter: ref/inter.md
-      - inv: ref/inv.md
-      - key: ref/key.md
-      - keys, xkey: ref/keys.md
-      - like: ref/like.md
-      - lj, ljf: ref/lj.md
-      - load, rload: ref/load.md
-      - log, xlog: ref/log.md
-      - lower: ref/lower.md
-      - lsq: ref/lsq.md
-      - max, maxs, mmax: ref/max.md
-      - md5: ref/md5.md
-      - med: ref/med.md
-      - meta: ref/meta.md
-      - min, mins, mmin: ref/min.md
-      - mmu: ref/mmu.md
-      - mod: ref/mod.md
-      - neg: ref/neg.md
-      - next, prev, xprev: ref/next.md
-      - not: ref/not.md
-      - 'null': ref/null.md
-      - or: ref/or.md
-      - over, scan: ref/over.md
-      - parse: ref/parse.md
-      - pj: ref/pj.md
-      - prd, prds: ref/prd.md
-      - prior: ref/prior.md
-      - rand: ref/rand.md
-      - rank: ref/rank.md
-      - ratios: ref/ratios.md
-      - raze: ref/raze.md
-      - read0: ref/read0.md
-      - read1: ref/read1.md
-      - reciprocal: ref/reciprocal.md
-      - reverse: ref/reverse.md
-      - rotate: ref/rotate.md
-      - save, rsave: ref/save.md
-      - select: ref/select.md
-      - show: ref/show.md
-      - signum: ref/signum.md
-      - sin, asin: ref/sin.md
-      - sqrt: ref/sqrt.md
-      - ss, ssr: ref/ss.md
-      - string: ref/string.md
-      - sublist: ref/sublist.md
-      - sum, sums, msum, wsum: ref/sum.md
-      - sv: ref/sv.md
-      - system: ref/system.md
-      - tables: ref/tables.md
-      - tan, atan: ref/tan.md
-      - til: ref/til.md
-      - trim, ltrim, rtrim: ref/trim.md
-      - type: ref/type.md
-      - uj, ujf: ref/uj.md
-      - union: ref/union.md
-      - ungroup: ref/ungroup.md
-      - update: ref/update.md
-      - upsert: ref/upsert.md
-      - value: ref/value.md
-      - var, svar: ref/var.md
-      - view, views: ref/view.md
-      - vs: ref/vs.md
-      - where: ref/where.md
-      - within: ref/within.md
-      - wj, wj1: ref/wj.md
-      - xbar: ref/xbar.md
-      - xgroup: ref/xgroup.md
-      - xrank: ref/xrank.md
-    - Overloaded glyphs: ref/overloads.md
-    - Operators:
-      - Add: ref/add.md
-      - Amend: ref/amend.md
-      - Apply, Index, Trap: ref/apply.md
-      - Assign: ref/assign.md
-      - Cast: ref/cast.md
-      - Coalesce: ref/coalesce.md
-      - Compose: ref/compose.md
-      - Cut: ref/cut.md
-      - Deal, Roll, Permute: ref/deal.md
-      - Delete: ref/delete.md
-      - Display: ref/display.md
-      - Dict: ref/dict.md
-      - Divide: ref/divide.md
-      - Dynamic Load: ref/dynamic-load.md
-      - Drop: ref/drop.md
-      - Enkey, Unkey: ref/enkey.md
-      - Enumerate: ref/enumerate.md
-      - Enumeration: ref/enumeration.md
-      - Enum Extend: ref/enum-extend.md
-      - Equal: ref/equal.md
-      - Exec: ref/exec.md
-      - File Binary: ref/file-binary.md
-      - File Text: ref/file-text.md
-      - Fill: ref/fill.md
-      - Find: ref/find.md
-      - Flip Splayed: ref/flip-splayed.md
-      - Greater: ref/greater.md
-      - Greater Than: ref/greater-than.md
-      - Identity, Null: ref/identity.md
-      - Join: ref/join.md
-      - Less Than: ref/less-than.md
-      - Lesser: ref/lesser.md
-      - Match: ref/match.md
-      - Matrix Multiply: ref/mmu.md
-      - Multiply: ref/multiply.md
-      - Not Equal: ref/not-equal.md
-      - Pad: ref/pad.md
-      - Select: ref/select.md
-      - Set Attribute: ref/set-attribute.md
-      - Simple Exec: ref/simple-exec.md
-      - Signal: ref/signal.md
-      - Subtract: ref/subtract.md
-      - Take: ref/take.md
-      - Tok: ref/tok.md
-      - Update: ref/update.md
-      - Vector Conditional: ref/vector-conditional.md
-    - Control constructs:
-      - Cond: ref/cond.md
-      - do: ref/do.md
-      - if: ref/if.md
-      - while: ref/while.md
-    - Namespaces:
-      - .h: ref/doth.md
-      - .j: ref/dotj.md
-      - .m: ref/dotm.md
-      - .Q: ref/dotq.md
-      - .z: ref/dotz.md
-    - Application: basics/application.md
-    - Atomic functions: basics/atomic.md
-    - Comparison: basics/comparison.md
-    - Conformability: basics/conformable.md
-    - Connection handles: basics/handles.md
-    - Datatypes: basics/datatypes.md
-    - Dictionaries: basics/dictsandtables.md
-    - Enumerations: basics/enumerations.md
-    - Evaluation control: basics/control.md
-    - Exposed infrastructure: basics/exposed-infrastructure.md
-    - File system: basics/files.md
-    - Function notation: basics/function-notation.md
-    - Functional qSQL: basics/funsql.md
-    - Glossary: basics/glossary.md
-    - Internal functions: basics/internal.md
-    - Joins: basics/joins.md
-    - Mathematics: basics/math.md
-    - Metadata: basics/metadata.md
-    - Namespaces: basics/namespaces.md
-    - Parse trees: basics/parsetrees.md
-    - Parse trees, functional SQL (WP): wp/parse-trees.md
-    - QSQL queries: basics/qsql.md
-    - Regular Expressions: basics/regex.md
-    - Syntax: basics/syntax.md
-    - Tables: kb/faq.md
-    - Variadic syntax: basics/variadic.md
-  - Database:
-    - Tables in the filesystem: database/index.md
-    - Populating tables:
-      - Loading from large files: kb/loading-from-large-files.md
-      - Foreign keys (WP): wp/foreign-keys.md
-      - Linking columns: kb/linking-columns.md
-      - Data loaders (WP): wp/data-loaders/index.md
-      - From MDB via ODBC: database/mdb-odbc.md
-    - Persisting tables:
-      - Serializing an object: database/object.md
-      - Splayed tables: kb/splayed-tables.md
-      - Partitioned tables: kb/partition.md
-      - Segmented databases: database/segment.md
-      - Multiple partitions (WP): wp/multi-partitioned-dbs/index.md
-    - Maintenance:
-      - Data management (WP): wp/data-management.md
-      - Data-At-Rest Encryption: kb/dare.md
-      - File compression: kb/file-compression.md
-      - Compression (WP): wp/compress/index.md
-      - Permissions (WP): wp/permissions/index.md
-      - Query optimization (WP): wp/columnar-database/index.md
-      - Query scaling (WP): wp/query-scaling.md
-      - Time-series simplification (WP): wp/ts-shrink/index.md
-      - Compacting HDB sym: kb/compacting-hdb-sym.md
-      - Working with sym files (WP): wp/symfiles.md
-  - Developing:
-    - IPC:
-      - Overview: basics/ipc.md
-      - Callbacks: kb/callbacks.md
-      - Listening port: basics/listening-port.md
-      - Named pipes: kb/named-pipes.md
-      - Serialization examples: kb/serialization.md
-      - Server calling client: kb/server-calling-client.md
-      - Socket sharding (WP): wp/socket-sharding/index.md
-      - SSL/TLS: kb/ssl.md
-      - HTTP: kb/http.md
-      - WebSockets: kb/websockets.md
-      - Interprocess communication (WP): wp/ipc/index.md
-    - Tools:
-      - Code profiler: kb/profiler.md
-      - Debugging: basics/debug.md
-      - Errors: basics/errors.md
-      - man.q: about/man.md
-      - System commands: basics/syscmds.md
-      - Unit tests: kb/unit-tests.md
-      - Using .z: kb/using-dotz.md
-    - Coding:
-      - Data visualization (WP): wp/data-visualization/index.md
-      - Deferred response: kb/deferred-response.md
-      - Geospatial indexing: kb/geospatial.md
-      - Linear programming: kb/lp.md
-      - Multithreaded input: kb/multithreaded-input.md
-      - Multithreaded primitives: kb/mt-primitives.md
-      - Pivoting tables: kb/pivoting-tables.md
-      - Precision: basics/precision.md
-      - Programming examples: kb/programming-examples.md
-      - Programming idioms: kb/programming-idioms.md
-      - Temporal data: kb/temporal-data.md
-      - Timezones: kb/timezones.md
-      - Unicode: kb/unicode.md
-    - DevOps:
-      - Authentication and access: kb/authentication.md
-      - Command-line options: basics/cmdline.md
-      - CPU affinity: kb/cpu-affinity.md
-      - Custom web server: kb/custom-web.md
-      - Daemon: kb/daemon.md
-      - Firewalling: kb/firewalling.md
-      - inetd, xinetd: kb/inetd.md
-      - Linux production notes: kb/linux-production.md
-      - Logging: kb/logging.md
-      - Multi-threading (WP): wp/multi-thread/index.md
-      - Multiple versions: kb/versions.md
-      - Parallel processing: basics/peach.md
-      - Performance tips: kb/performance-tips.md
-      - Replay logfile: kb/replay-log.md
-      - Shebang script: develop/shebang.md
-      - Surveillance latency (WP): wp/surveillance-latency/index.md
-      - Windows service: kb/windows-service/index.md
-    - Release notes:
-      - History: releases/index.md
-      - Changes in 4.1: releases/ChangesIn4.1.md
-      - Changes in 4.0: releases/ChangesIn4.0.md
-      - Changes in 3.6: releases/ChangesIn3.6.md
-      - Changes in 3.5: releases/ChangesIn3.5.md
-      - Changes in 3.4: releases/ChangesIn3.4.md
-      - Changes in 3.3: releases/ChangesIn3.3.md
-      - Changes in 3.2: releases/ChangesIn3.2.md
-      - Changes in 3.1: releases/ChangesIn3.1.md
-      - Changes in 3.0: releases/ChangesIn3.0.md
-      - Changes in 2.8: releases/ChangesIn2.8.md
-      - Changes in 2.7: releases/ChangesIn2.7.md
-      - Changes in 2.6: releases/ChangesIn2.6.md
-      - Changes in 2.5: releases/ChangesIn2.5.md
-      - Changes in 2.4: releases/ChangesIn2.4.md
-      - Withdrawn: releases/withdrawn.md
-    # - Environment: basics/environment.md
-    - FAQ: kb/faq-listbox.md
-  - Architecture:
-    - About: architecture/index.md
-    - Examples: architecture/examples.md
-    - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
-    - Chained tickerplant: kb/chained-tickerplant.md
-    - Client-server: kb/client-server.md
-    - Corporate actions: kb/corporate-actions.md
-    - Data recovery for kdb+tick (WP): wp/data-recovery.md
-    - Disaster recovery (WP): wp/disaster-recovery/index.md
-    - Gateway design (WP): wp/gateway-design/index.md
-    - kdb+tick configuration: kb/kdb-tick.md
-    - kdb+tick profiling (WP): wp/tick-profiling.md
-    - Kubernetes: 'https://youtu.be/jqtkkCqBvr4'
-    - Load balancing: kb/load-balancing.md
-    - Memory backed by files: basics/memory-backed.md
-    - Optane Memory:
-      - Optane Memory and kdb+: kb/optane.md
-      - Performance tests: architecture/optane-tests.md
-    - Order Book (WP): wp/order-book.md
-    - Publish and subscribe: kb/publish-subscribe.md
-    - Pub/sub with Solace (WP): wp/solace/index.md
-    - Query Routing (WP): wp/query-routing/index.md
-    - Real-time tick subscribers (WP): wp/rt-tick/index.md
-    - WebSockets (WP): wp/websockets/index.md
-    - Write-only RDB: kb/w-q.md
-    - Advanced:
-      - Distributed systems (WP): wp/query-interface.md
-      - Intraday writedown (WP): wp/intraday-writedown/index.md
   - Help: 'https://code.kx.com/home/support'

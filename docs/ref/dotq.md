@@ -662,7 +662,7 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 .Q.fk x
 ```
 
-Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.(Since V2.4t)
+Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.
 
 
 ## `fmt` (format)
@@ -676,7 +676,7 @@ Where
 -   `x` and `y` are integer atoms
 -   `z` is a numeric atom
 
-returns `z` as a string of length `x`, formatted to `y` decimal places. (Since V2.4)
+returns `z` as a string of length `x`, formatted to `y` decimal places.
 
 ```q
 q).Q.fmt[6;2]each 1 234
@@ -1033,15 +1033,9 @@ N.B. HTTPS is not supported across proxies which require `CONNECT`.
 Since 4.0 2019.10.22, gzip compression is supported. Requests include the HTTP header "Accept-Encoding: gzip". 
 The server then decides whether to gzip the returned payload, which is uncompressed prior to .Q.hg returning.
 
-<!--
-## `hmb` (FIXME)
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
-Since V3.6 uses built-in btoa for Basic Authentication, e.g.
-```q
- q).Q.hg`$":http://username:password@www.google.com"
-```
 
- -->
 ## `host` (hostname)
 
 ```syntax
@@ -1092,6 +1086,8 @@ Uses proxy settings (if defined) and compression handling, as described in [hg (
 q).Q.hp["http://google.com";.h.ty`json]"my question"
 "<!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewpo..
 ```
+
+:fontawesome-solid-graduation-cap:[HTTP](../kb/http.md)
 
 
 ## `id` (sanitize)
