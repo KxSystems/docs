@@ -528,7 +528,7 @@ On launch
 error | explanation
 ------|------------
 {timestamp} couldn't connect to license daemon | Could not connect to KX license server ([kdb+ On Demand](../learn/licensing.md#licensing-server-for-kdb-on-demand))
-cores | The license is for [fewer cores than available](../kb/cpu-affinity.md)
+cores | The license is for [fewer cores than available](../learn/licensing.md#core-restrictions)
 cpu | The license is for fewer CPUs than available
 exp | License expiry date is prior to system date
 host | The hostname reported by the OS does not match the hostname or hostname-pattern in the license.<br><br>If you see `255.255.255.255` in the kdb+ banner, the machine likely cannot resolve its hostname to an IP address, which will cause a `host` error.<br><br>Since 4.1t 2022.07.01,4.0 2022.07.01 the detected hostname is printed. It can be used to compare with the hostname used within the license.
