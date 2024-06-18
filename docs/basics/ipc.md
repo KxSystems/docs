@@ -58,33 +58,36 @@ q)h  /h is the socket (an OS file descriptor)
 
 ## Message format
 
-Where `h` is the socket the message may be a string or parse tree.
+Where `h` is the socket, the message may be a string or list.
 
 ```q
-q)h "2+2"   /string
+q)h"2+2"   /string
 4
 
-q)h (+;2;2) /parse tree
+q)h(+;2;2) /list
 4
 ```
 
-Use the parse tree format to pass local functions and data to the receiver.
+Use the list format to pass local functions and data to the receiver.
 
 ```q
-q)h"f:{2+x}" /Set function f on receiver
-q)f:{4+x} /Set local function f
+q)h"fn:{2+x}" /Set function fn on receiver
+q)fn:{4+x} /Set local function fn
 
-q)h(`f;2) /Receiver definition of f called
+q)h(`fn;2) /Receiver definition of fn called
 4
 
-q)h(f;2) /Local f passed to receiver for evaluation
+q)h("fn";2) /Receiver definition of fn called
+4
+
+q)h(fn;2) /Local fn passed to receiver for evaluation
 6
 
 q)v:10
-q)h(`f;v) /Passing variable as argument
+q)h(`fn;v) /Passing variable as argument
 12
 
-q)h({x+y};2;3) /Extend the list to pass more variables
+q)h({x+y};2;3) /Extend the list to pass more arguments
 5
 ```
 
