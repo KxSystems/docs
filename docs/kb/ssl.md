@@ -6,16 +6,16 @@ keywords: kdb+, openssl, q, ssl, tls
 # SSL/TLS
 
 
+Since V3.4t 2016.05.12, kdb+ can use Secure Sockets Layer (SSL)/Transport Layer Security (TLS) to encrypt connections using the OpenSSL libraries.
 
 
-V3.4t 2016.05.12 can use Secure Sockets Layer (SSL)/Transport Layer Security (TLS) to encrypt connections using the OpenSSL libraries.
+## Configuration
 
-
-## Prerequisites
+### OpenSSL library
 
 Ensure that your OS has the latest OpenSSL libraries installed, and that they are in your `LD_LIBRARY_PATH` (Unix), `DYLD_LIBRARY_PATH` (MacOS), or `PATH` (Windows).
 
-### Versioned libraries
+#### OpenSSL version
 
 Beginning with v4.1t 2022.03.25, kdb+ will try to load versioned shared libraries for OpenSSL.
 It will load the first library that it can locate from the lists below:
@@ -57,27 +57,114 @@ Prior to V4.1t 2022.03.25, kdb+ would load the following files:
     libssl-1_1.dll       libcrypto-1_1.dll        w32 build
     ```
 
-## Certificates
+### Keys/Certificates
 
-Since TLS uses certificates, prior to enabling TLS in a kdb+ server, ensure that you have the necessary certificates in place. The minimum for a TLS-enabled server is to provide a certificate and its associated key, both in PEM format. To locate these files, q will use the default path as reported by the `openssl version -d` command as a base, e.g.
+Since TLS uses certificates, prior to enabling TLS in a kdb+ server, ensure that you have the necessary certificates in place. 
+
+The minimum for a TLS-enabled server is to provide a certificate and its associated key, both in PEM format. 
+
+To locate these files, q will use the default path as reported by the `openssl version -d` command as a base, e.g.
 
 ```bash
 $ openssl version -d
 OPENSSLDIR: "/opt/local/etc/openssl"
 ```
 
-This default can be overridden by setting the environment variables `SSL_CERT_FILE` and `SSL_KEY_FILE` to the full path to your certificate and key files. e.g.
-
-```bash
-$ export SSL_CERT_FILE=$HOME/certs/server-crt.pem
-$ export SSL_KEY_FILE=$HOME/certs/server-key.pem
-```
+Configuration of keys/certificates and checks performed are controlled by the following [environment variables](https://en.wikipedia.org/wiki/Environment_variable)
 
 !!! info "KX first"
 
-    Since V3.6, kdb+ gives preference to the `KX_` prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products. 
+    Since V3.6, kdb+ gives preference to the `KX_` prefix for the `SSL_*` environment variables to avoid clashes with other OpenSSL based products.
 
     For example, the value for `` getenv`KX_SSL_CERT_FILE`` has a higher precedence than `` getenv`SSL_CERT_FILE`` for determining config.
+
+#### SSL_CERT_FILE
+
+The certificate file. This must be in PEM format and must be sorted starting with the subject's certificate (actual client or server certificate), followed by intermediate CA certificates if applicable, and ending at the highest level (root).
+
+Default value is `<OPENSSLDIR>/server-crt.pem`
+
+#### SSL_CA_CERT_FILE
+
+A file of certificate authority (CA) certificates in PEM format. The file can contain several CA certificates identified by
+
+```
+-----BEGIN CERTIFICATE-----
+... (CA certificate in base64 encoding) ...
+-----END CERTIFICATE-----
+```
+sequences. Before, between, and after the certificates text is allowed which can be used e.g. for descriptions of the certificates.
+
+Default value is `<OPENSSLDIR>/cacert.pem`
+
+#### SSL_CA_CERT_PATH
+
+A directory containing certificate authority (CA) certificates in PEM format.
+
+Default value is `<OPENSSLDIR>`
+
+#### SSL_KEY_FILE
+
+Private key in PEM format.
+
+Default value is `<OPENSSLDIR>/server-key.pem`
+
+#### SSL_CIPHER_LIST
+
+The default cipher list is set to the `Intermediate compatibility (default)`
+[as recommended by Mozilla.org](https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29),
+and you may override this, to reduce the list to whatever your IT security policy requires.
+
+Default value is 
+```
+ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-
+AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-
+SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-
+AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:
+ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:
+ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:
+DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-
+RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-
+RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:
+AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS
+```
+
+A good source for what is generally recommended can be found at [Ciphersuites](https://wiki.mozilla.org/Security/Server_Side_TLS).
+
+If you select a set which is not compatible with the peer process, you’ll observe a message at the q console similar to the following.
+
+```txt
+140735201689680:error:1408A0C1:SSL routines:ssl3_get_client_hello:no
+shared cipher:s3_srvr.c:1417:
+```
+
+#### SSL_VERIFY_CLIENT
+
+Controls the processing of certificates from a client. Uses the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the client’s certificate.
+
+Can be set to one of the following values:
+
+-   `NO` (default) kdb+ does not request nor validate the certificate from a client
+-   `YES` server requests a client certificate and disconnects the client if the provided certificate is missing or invalid
+-   `REQUESTONLY` (since 4.1t 2024.02.07) server requests a client certificate but allows the connection if the client certificate is missing or invalid
+-   `IFPRESENT` (since 4.1t 2024.02.07) server requests a client certificate and terminates the connection if an invalid certificate is provided; the server continues if the certificate is missing or valid
+
+#### SSL_VERIFY_SERVER
+
+Controls the processing of certificates from a server. Checks the X509 certificate the peer presented by verifying the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate.
+In the interests of not interrupting service, verification of certificates accepts expired certificates.
+
+If the verification process fails, the TLS/SSL handshake is immediately terminated with an alert message containing the reason for the verification failure. 
+If no server certificate is sent, because an anonymous cipher is used, processing is ignored.
+
+Default value is `YES`.
+
+### Checking Configuration
+
+Configured TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../basics/internal.md#-26x-ssl).
+
+
+## Certificates
 
 If you don’t have a certificate, you can create a self-signed certificate using the `openssl` program. An example script to do so follows, which you should customize as necessary
 
@@ -107,41 +194,25 @@ openssl req -new -sha256 -key client-private-key.pem -subj /C=US/ST=CA/L=Somewhe
 openssl x509 -req -in client.csr -CA ca-cert.pem -CAkey ca-private-key.pem -CAcreateserial -out client-cert.pem -days 365 -sha256
 ```
 
+using this script the server settings can be configured as:
+```bash
+$ export SSL_CERT_FILE=$HOME/certs/server-cert.pem
+$ export SSL_KEY_FILE=$HOME/certs/server-private-key.pem
+$ export KX_SSL_CA_CERT_FILE=$HOME/certs/ca-cert.pem 
+```
+with the client as:
+```bash
+$ export SSL_CERT_FILE=$HOME/certs/client-cert.pem 
+$ export SSL_KEY_FILE=$HOME/certs/client-private-key.pep
+$ export KX_SSL_CA_CERT_FILE=/tmp/new/ca-cert.pem
+```
+
 :fontawesome-brands-github:
 [mkcert](https://github.com/FiloSottile/mkcert) is a simple tool for making locally-trusted development certificates.
 
 !!! warning "Secure your certificates"
 
     Store your certificates outside of the directories accessible from within kdb+, otherwise remote users can easily steal your server’s key file! 
-
-
-## TLS cipher List
-
-The default cipher list is set to the `Intermediate compatibility (default)` 
-[as recommended by Mozilla.org](https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29), 
-and you may override this via the environment variable `SSL_CIPHER_LIST`, to reduce the list to whatever your IT security policy requires. A good source for what is generally recommended can be found at 
-[Ciphersuites](https://wiki.mozilla.org/Security/Server_Side_TLS).
-
-e.g.
-
-```bash
-$ export SSL_CIPHER_LIST='ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY
-1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES2
-56-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES
-256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AE
-S128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384
-:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES1
-28-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-
-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES12
-8-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS'
-```
-
-If you select a set which is not compatible with the peer process, you’ll observe a message at the q console similar to the following.
-
-```txt
-140735201689680:error:1408A0C1:SSL routines:ssl3_get_client_hello:no 
-shared cipher:s3_srvr.c:1417:
-```
 
 
 ## TLS Server Mode
@@ -154,21 +225,12 @@ $ q -u 1 -E 1 -p 5000
 
 starts a server which will listen for plain and TLS connections on port 5000, restricting remote access to the pwd and below.
 
-General TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../basics/internal.md#-26x-ssl).
-
-The environment variable `SSL_VERIFY_CLIENT` controls the processing of certificates from a client, and uses the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the client’s certificate. Can be set to one of the following values:
-
--   `NO` (default) kdb+ does not request nor validate the certificate from a client
--   `YES` server requests a client certificate and disconnects the client if the provided certificate is missing or invalid
--   `REQUESTONLY` (since 4.1t 2024.02.07) server requests a client certificate but allows the connection if the client certificate is missing or invalid
--   `IFPRESENT` (since 4.1t 2024.02.07) server requests a client certificate and terminates the connection if an invalid certificate is provided; the server continues if the certificate is missing or valid
-
 Extra protocol details for a handle `h` are available via [`.z.e`](../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
 
 
 ## TLS Client Mode
 
-TLS client mode is always enabled, and TLS Connections can be opened to TLS-enabled servers with
+TLS Connections can be opened to TLS-enabled servers with
 
 ```q
 q)h:hopen`:tcps://hostname:port[:username:password]
@@ -182,7 +244,7 @@ and for websockets
 q) r:(`$":wss://127.0.0.1:5000")"GET / HTTP/1.1\r\nHost: 127.0.0.1:5000\r\n\r\n"
 ```
 
-By default, kdb+ will try to verify the server’s certificate against a trusted source, using the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the server’s certificate. If you don't wish to verify a server’s certificate, set
+If you don't wish to verify a server’s certificate, set
 
 ```bash
 $ export SSL_VERIFY_SERVER=NO
@@ -197,8 +259,6 @@ $ export SSL_CA_CERT_FILE=$HOME/certs/cabundle.pem
 
 If you open the downloaded `cabundle.pem` with a text editor you’ll see a list of certificates, and you can append your own self-signed `ca.pem` to this file if you wish.
 
-In the interests of not interrupting service, verification of certificates accepts expired certificates.
-
 If there is an issue in loading the CA certificate, an error similar to the following will be printed at the q console
 
 ```q
@@ -209,19 +269,6 @@ q).Q.hg`$":https://www.kx.com"
 'conn. OS reports: Protocol not available
 ```
 
-### Testing your client configuration
-
-You can test your client configuration with
-
-```q
-q)(`$":howsmyssl.html")0:enlist .Q.hg`$":https://www.howsmyssl.com";
-```
-
-And then open the resulting file with your browser, e.g. on macOS use the `open` command
-
-```q
-q)\open howsmyssl.html
-```
 
 ## Unix Domain Socket
 
@@ -237,6 +284,7 @@ q)h:hopen`:unixs://12345
 Currently we would recommend TLS be considered only for long-standing, latency-insensitive, low-throughput connections. The overhead of `hopen` on localhost appears to be 40-50× that of a plain connection, and once handshaking is complete, the overhead is \~1.5× assuming your OpenSSL library can utilize AES-NI.
 
 OpenSSL 1.1 is supported since V4.0 2020.03.17.
+
 
 ### Thread Support
 
