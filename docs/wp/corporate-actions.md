@@ -739,8 +739,6 @@ Overall, this paper provides an insight into the capabilities of kdb+ regarding 
 
 All tests were run using kdb+ version 3.1 (2014.02.08)
 
-[:fontawesome-solid-print: PDF](/download/wp/temporal_data_a_kdb_framework_for_corporate_actions.pdf)
-
 
 ## Author
 

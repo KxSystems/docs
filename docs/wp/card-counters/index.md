@@ -330,8 +330,6 @@ Firstly we showed how an ESP could be implemented in a real-world scenario using
 
 ESP has evolved from an emerging technology to an essential platform of various industry verticals. The technology's most consistent growth has been in banking, serving fraud detection, algorithmic trading and surveillance. There has also been considerable growth in other industries including healthcare, telecommunications, manufacturing, utilities and aerospace.
 
-[:fontawesome-solid-print: PDF](/download/wp/card-counters-in-blackjack.pdf)
-
 
 ## Authors
 

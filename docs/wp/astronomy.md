@@ -268,8 +268,6 @@ We were then able to build functionality to calculate the recessional velocity o
 
 We believe this will be a very attractive solution to the field of astronomy going forward, coping with the predicted expansion of data volumes in the field due to the new projects that are scheduled to begin in the near future.
 
-[:fontawesome-solid-print: PDF](/download/wp/kdb_in_astronomy.pdf)
-
 
 ## Further reading
 

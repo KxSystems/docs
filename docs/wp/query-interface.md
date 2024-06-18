@@ -344,8 +344,6 @@ It could be integrated with a load balancer, a permissions arbiter, a logging fr
 
 All tests were run using kdb+ version 3.2 (2014.10.04).
 
-[:fontawesome-solid-print: PDF](/download/wp/a_natural_query_interface_for_distributed_systems.pdf)
-
 
 ## Author
 

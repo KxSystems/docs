@@ -285,8 +285,6 @@ This type of data-reduction trades off an increased runtime cost on the server a
 
 While for many utilities simple bucket-based summaries are more than adequate and undeniably more performant, we propose that for some uses a more discerning simplification as discussed above can prove invaluable. This is particularly the case with certain time-series and combinations thereof where complex and volatile behaviors must be studied.
 
-[:fontawesome-solid-print: PDF](/download/wp/time_series_simplification_in_kdb_a_method_for_dynamically_shrinking_big_data.pdf)
-
 
 ## Authors
 

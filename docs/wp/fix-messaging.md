@@ -593,8 +593,6 @@ It is an essential requirement to be able to view the current and final state of
 
 All tests were run using kdb+ version 3.1 (2013.12.27)
 
-[:fontawesome-solid-print: PDF](/download/wp/kdb_and_fix_messaging.pdf)
-
 ## Author
 
 **Damien Barker** is a financial engineer who has worked as a consultant for some of the world's largest financial institutions. Based in London, Damien is currently working on trading and analytics application at a US investment bank.

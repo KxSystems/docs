@@ -646,8 +646,6 @@ It is important to point out that any of these solutions come with their own dra
 
 Tests performed using kdb+ version 3.1 (2014.02.08)
 
-[:fontawesome-solid-print: PDF](/download/wp/intraday_writedown_solutions.pdf)
-
 
 ## Author
 

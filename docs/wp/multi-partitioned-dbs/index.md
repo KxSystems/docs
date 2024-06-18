@@ -536,8 +536,6 @@ impact the storage space required for the data and queries against the
 database. Here we have presented several different schema choices and
 examples of several simple queries implemented for each schema.
 
-[:fontawesome-solid-print: PDF](/download/wp/multi-partitioned-dbs-a4.pdf)
-
 
 ## Author
 

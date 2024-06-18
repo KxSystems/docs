@@ -1727,8 +1727,6 @@ int main() {
 
 This document covered multiple aspects of the C API interface for connecting with the kdb+  database. Topics covered included the creation of socket connections, execution of queries, error handling, memory management, and the creation and extraction of data from `K` objects such as lists, dictionaries and tables. Practical examples formed the basis for the construction of a C subscriber process, capable of consuming a kdb+ data feed, and a feedhandler process designed to publish data to a kdb+ tickerplant. Finally, the use of shared C libraries to extend the functionality of kdb+ was also demonstrated.
 
-[:fontawesome-solid-print: PDF](/download/wp/c_api_for_kdb.pdf)
-
 
 ## Author
 

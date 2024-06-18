@@ -770,8 +770,6 @@ methods to reduce the size of the sym file.
 
 All tests performed using kdb+ version 3.6 (2018.05.17).
 
-[:fontawesome-solid-print: PDF](/download/wp/symfiles-a4.pdf)
-
 
 ## Author
 

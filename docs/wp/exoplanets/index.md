@@ -617,8 +617,6 @@ Data can be loaded and managed using q, which allows us to easily explore it and
 
 To sum up, the proposed solution achieves our main goal, detecting a high proportion of real planets in the set of planet candidates. Also, and more importantly, it achieves a high precision too, which would save a lot of money and time since further analysis of false detections is avoided. In addition, since confidence in predictions is also provided, some other criteria based on this confidence can be taken into account to decide when a planet candidate is worth further analysis. This possibility together with extra data preprocessing could be considered in future works to try and improve results. 
 
-[:fontawesome-solid-print: PDF](/download/wp/exoplanets-a4.pdf)
-
 
 ## Author
 
