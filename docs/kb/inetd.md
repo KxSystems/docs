@@ -14,7 +14,7 @@ When a client attempts to connect to one of the service, `inetd` will start a pr
 
 This way, `inetd` will run the server programs as they are needed by spawning multiple processes to service multiple network connections.
 
-A kdb+ server can work under `inetd` to provide a private server for each connection established on a designated port. (Since V2.4.)
+A kdb+ server can work under `inetd` to provide a private server for each connection established on a designated port.
 
 For Windows you might be able to have kdb+ run under `inetd` using Cygwin.
 

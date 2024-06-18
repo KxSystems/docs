@@ -60,7 +60,7 @@ q)trade
 +`time`sym`price`size!(`time$();`symbol$();`float$();`int$())
 ```
 
-Where `x` is a vector, returns a matrix or higher-dimensional array; `count x` gives the number of dimensions. (Since V2.3)
+Where `x` is a vector, returns a matrix or higher-dimensional array; `count x` gives the number of dimensions.
 
 ```q 
 q)2 5#"!"

@@ -662,7 +662,7 @@ q).Q.ff[src] enlist `sym`ratioA`ratioB!3#1
 .Q.fk x
 ```
 
-Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.(Since V2.4t)
+Where `x` is a table column, returns `` ` `` if the column is not a foreign key or `` `tab`` if the column is a foreign key into `tab`.
 
 
 ## `fmt` (format)
@@ -676,7 +676,7 @@ Where
 -   `x` and `y` are integer atoms
 -   `z` is a numeric atom
 
-returns `z` as a string of length `x`, formatted to `y` decimal places. (Since V2.4)
+returns `z` as a string of length `x`, formatted to `y` decimal places.
 
 ```q
 q).Q.fmt[6;2]each 1 234
