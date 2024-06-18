@@ -85,29 +85,26 @@ If you don’t have a certificate, you can create a self-signed certificate usin
 $ more makeCerts.sh
 mkdir -f $HOME/certs && cd $HOME/certs
 
-# Create CA certificate
-openssl genrsa 2048 > ca-key.pem
-openssl req -new -x509 -nodes -days 3600 \
-    -key ca-key.pem -out ca.pem -extensions usr_cert \
-    -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=examplebrooklyn.com'
+# create private key for CA (certificate authority)
+openssl genrsa -out ca-private-key.pem 2048
+# create X509 certificate for CA (certificate authority)
+openssl req -x509 -new -nodes -key ca-private-key.pem -sha256 -days 365 -out ca-cert.pem -subj /C=US/ST=CA/L=Somewhere/O=Someone/CN=FoobarCA
 
-# Create server certificate, remove passphrase, and sign it
-# server-crt.pem = public key, server-key.pem = private key
-openssl req -newkey rsa:2048 -days 3600 -nodes \
-    -keyout server-key.pem -out server-req.pem -extensions usr_cert \
-    -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com'
-openssl rsa -in server-key.pem -out server-key.pem
-openssl x509 -req -in server-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem \
-    -set_serial 01 -out server-crt.pem -extensions usr_cert
+# create server private key
+openssl genrsa -out server-private-key.pem 2048
+# create servers certificate signing request (CSR)
+# CSR contains the common name(s) you want your certificate to secure, information about your company, and your public key (taken from provided private key)
+openssl req -new -sha256 -key server-private-key.pem -subj /C=US/ST=CA/L=Somewhere/O=Someone/CN=Foobar -out server.csr
+# create X509 certificate for the server (signed by CA)
+openssl x509 -req -in server.csr -CA ca-cert.pem -CAkey ca-private-key.pem -CAcreateserial -out server-cert.pem -days 365 -sha256
 
-# Create client certificate, remove passphrase, and sign it
-# client-crt.pem = public key, client-key.pem = private key
-openssl req -newkey rsa:2048 -days 3600  -nodes \
-    -keyout client-key.pem -out client-req.pem -extensions usr_cert \
-    -subj '/C=US/ST=New York/L=Brooklyn/O=Example Brooklyn Company/CN=myname.com'
-openssl rsa -in client-key.pem -out client-key.pem
-openssl x509 -req -in client-req.pem -days 3600 -CA ca.pem -CAkey ca-key.pem \
-    -set_serial 01 -out client-crt.pem -extensions usr_cert
+# create client private key
+openssl genrsa -out client-private-key.pem 2048
+# create clients certificate signing request (CSR)
+# CSR contains the common name(s) you want your certificate to secure, information about your company, and your public key (taken from provided private key)
+openssl req -new -sha256 -key client-private-key.pem -subj /C=US/ST=CA/L=Somewhere/O=Someone/CN=Foobar -out client.csr
+# create X509 certificate for the client (signed by CA)
+openssl x509 -req -in client.csr -CA ca-cert.pem -CAkey ca-private-key.pem -CAcreateserial -out client-cert.pem -days 365 -sha256
 ```
 
 :fontawesome-brands-github:
