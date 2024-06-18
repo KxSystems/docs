@@ -149,7 +149,7 @@ shared cipher:s3_srvr.c:1417:
 
 ## TLS Server Mode
 
-Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option](../basics/cmdline.md#-e-tls-server-mode) `-E 0` (plain), `1` (plain & TLS), `2` (TLS only). e.g.
+Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option -E](../basics/cmdline.md#-e-tls-server-mode) . e.g.
 
 ```bash
 $ q -u 1 -E 1 -p 5000
@@ -157,21 +157,7 @@ $ q -u 1 -E 1 -p 5000
 
 starts a server which will listen for plain and TLS connections on port 5000, restricting remote access to the pwd and below.
 
-General TLS settings for a kdb+ process can be viewed with `(-26!)[]`.
-
-```q
-q)(-26!)[]
-SSLEAY_VERSION   | OpenSSL 1.0.2g  1 Mar 2016
-SSL_CERT_FILE    | /Users/kdb/certs/server-crt.pem
-SSL_CA_CERT_FILE | /Users/kdb/certs/ca.pem
-SSL_CA_CERT_PATH | /Users/kdb/certs/
-SSL_KEY_FILE     | /Users/kdb/certs/server-key.pem
-SSL_CIPHER_LIST  | ALL
-SSL_VERIFY_CLIENT| NO
-SSL_VERIFY_SERVER| YES
-```
-
-All keys except `SSLEAY_VERSION` in the result from `(-26!)[]` are initialized from environment variables.
+General TLS settings for a kdb+ process can be viewed with [`(-26!)[]`](../basics/internal.md#-26x-ssl).
 
 The environment variable `SSL_VERIFY_CLIENT` controls the processing of certificates from a client, and uses the certificates from `SSL_CA_CERT_FILE` or `SSL_CA_CERT_PATH` to verify the client’s certificate. Can be set to one of the following values:
 
