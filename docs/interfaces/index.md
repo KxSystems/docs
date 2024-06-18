@@ -15,22 +15,36 @@ Our Fusion interfaces are
 -   released under the [Apache 2 license](https://www.apache.org/licenses/LICENSE-2.0)
 -   free for all use cases, including 64-bit and commercial use
 
-### Languages
+## Languages
 
-<table class="kx-compact" markdown>
-<tr markdown><td markdown>[csharpkdb](https://github.com/KxSystems/csharpkdb)</td><td markdown>Call kdb+ from **C#** and **.NET** [:fontawesome-regular-map:](../wp/gui/index.md "White paper: An introduction to graphical interfaces for kdb+ using C#")</td></tr>
-<tr markdown><td markdown>[embedPy](https://github.com/KxSystems/embedPy)</td><td markdown>Call **Python** from q</td></tr>
-<tr markdown><td markdown>[embedR](https://github.com/KxSystems/embedR)</td><td markdown>[Call **R** from q](r.md)</td></tr>
-<tr markdown><td markdown>[ffi](https://github.com/KxSystems/ffi)</td><td markdown>[Call **C/C++** from q](using-c-functions.md)</td></tr>
-<tr markdown><td markdown>[javakdb](https://github.com/KxSystems/javakdb)</td><td markdown>**Java** client for kdb+</td></tr>
-<tr markdown><td markdown>[pykx](https://code.kx.com/pykx)</td><td markdown>Integrate **Python** and q code</td></tr>
-<tr markdown><td markdown>[rkdb](https://github.com/KxSystems/rkdb)</td><td markdown>[Query kdb+ from **R**](r.md)</td></tr>
-<tr markdown><td markdown>[kxkdb](https://github.com/KxSystems/kxkdb)</td><td markdown>Query kdb+ from **Rust**</td></tr>
-</tr>
-</table>
+### C/C++
 
+[c.o](c-client-for-q.md) Call C/C++ from q, call q from C/C++, IPC communication with kdb+ (dynamic libraries and standalone applications)<br>
+[ffi](https://github.com/KxSystems/ffi) An extension to kdb+ for loading and calling dynamic libraries using pure q [:fontawesome-regular-map:](using-c-functions.md)
 
-### Message and data formats
+### C# #
+
+[csharpkdb](https://github.com/KxSystems/csharpkdb) Call kdb+ from C# and .NET [:fontawesome-regular-map:](../wp/gui/index.md "White paper: An introduction to graphical interfaces for kdb+ using C#")
+
+### Java
+
+[javakdb](https://github.com/KxSystems/javakdb) Java client for kdb+
+
+### Python
+
+[pykx](https://code.kx.com/pykx) Integrate Python and q code<br>
+[embedPy](https://github.com/KxSystems/embedPy) Call Python from q
+
+### R
+
+[rkdb](https://github.com/KxSystems/rkdb) Query kdb+ from R [:fontawesome-regular-map:](r.md)<br>
+[embedR](https://github.com/KxSystems/embedR) Call R from q [:fontawesome-regular-map:](r.md)
+
+### Rust
+
+[kxkdb](https://github.com/KxSystems/kxkdb) Query kdb+ from Rust
+
+## Message and data formats
 
 <table class="kx-compact" markdown>
 <tr markdown><td markdown>[arrowkdb](https://github.com/KxSystems/arrowkdb)</td><td markdown>Read and write **Arrow** and **Parquet** data</td></tr>
