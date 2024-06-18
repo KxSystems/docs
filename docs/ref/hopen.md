@@ -43,6 +43,7 @@ connects to a file object or a communication handle, and returns a connection ha
 ```q
 hopen ":path/to/file.txt"                   / filehandle
 hopen `:unix://5010                         / localhost, Unix domain socket
+hopen `:tcps://mydb.us.com:5010             / SSL/TLS with hostname
 hopen(":10.43.23.198:5010";10000)           / IP address and timeout
 hopen 5010                                  / local port number
 ```
@@ -132,7 +133,10 @@ Unix domain socket
 : (Since V3.4.) Unix domain sockets can have significantly lower latency and higher throughput than a localhost TCP connection
 
 SSL/TLS
-: `` `:tcps://host:port[:user:password] ``
+: `` `:tcps://host:port[:user:password] `` 
+: tcp with SSL/TLS encryption
+: `` `:unixs://port ``
+: unix domain socket with SSL/TLS encryption
 : :fontawesome-solid-graduation-cap: [SSL/TLS](../kb/ssl.md)
 
 Fifo/named pipe

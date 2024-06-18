@@ -217,32 +217,18 @@ $ export KX_SSL_CA_CERT_FILE=/tmp/new/ca-cert.pem
 
 ## TLS Server Mode
 
-Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option -E](../basics/cmdline.md#-e-tls-server-mode) . e.g.
-
-```bash
-$ q -u 1 -E 1 -p 5000
-```
-
-starts a server which will listen for plain and TLS connections on port 5000, restricting remote access to the pwd and below.
-
-Extra protocol details for a handle `h` are available via [`.z.e`](../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
+Once the certificates are in place, and the environment variables set, TLS Server Mode can be enabled through the [command-line option -E](../basics/cmdline.md#-e-tls-server-mode).
 
 
 ## TLS Client Mode
 
-TLS Connections can be opened to TLS-enabled servers with
+TLS connections can be [opened](../ref/hopen.md) to TLS-enabled servers with
 
 ```q
 q)h:hopen`:tcps://hostname:port[:username:password]
 ```
 
-Clients can also request secure HTTP (HTTPS) and WebSockets (WSS) connections via
-
-```q
-q)(`$":https://127.0.0.1:5000")"GET /login.html http/1.1\r\nhost:www.kx.com\r\n\r\n"
-and for websockets
-q) r:(`$":wss://127.0.0.1:5000")"GET / HTTP/1.1\r\nHost: 127.0.0.1:5000\r\n\r\n"
-```
+Clients can also request [secure HTTP (HTTPS)](http.md) and [WebSockets (WSS)](websockets.md) connections.
 
 If you don't wish to verify a server’s certificate, set
 
@@ -269,14 +255,9 @@ q).Q.hg`$":https://www.kx.com"
 'conn. OS reports: Protocol not available
 ```
 
+## Connection Info
 
-## Unix Domain Socket
-
-When TLS mode enabled, any Unix Domain Socket ([UDS](../basics/listening-port.md#unix-domain-socket)) connection wishing to use TLS must use the handle :unixs:// (rather than :unix://) to encrypt its communication
-
-```q
-q)h:hopen`:unixs://12345
-```
+Extra protocol details for a connection handle are available via [`.z.e`](../ref/dotz.md#ze-tls-connection-status), including information about whether the current handle's TLS certificate was successfully verified.
 
 
 ## Suitability and restrictions
