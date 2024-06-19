@@ -594,8 +594,8 @@ From file ops and [IPC](ipc.md)
 
 error        | explanation
 -------------|------------
-Bad CPU Type | Tried to run 32-bit interpreter in macOS 10.15+
-`XXX:YYY`    | `XXX` is from kdb+, `YYY` from the OS
+[](){#Bad-CPU-Type}Bad CPU Type | Tried to run 32-bit interpreter in macOS 10.15+
+[](){#XXX:YYY}`XXX:YYY`    | `XXX` is from kdb+, `YYY` from the OS
 
 `XXX` from addr, close, conn, p(from `-p`), snd, rcv or (invalid) filename, e.g. ``read0`:invalidname.txt``
 
@@ -607,12 +607,12 @@ On execute or load
 error | example / explanation
 ------|----------------------
 `[({])}"` | `"hello`<br><br>Open `([{` or `"`
-branch | `a:"1;",65024#"0;"`<br/>`value "{if[",a,"]}"`<br><br>A branch (`if`;`do`;`while`;`$[.;.;.]`) more than 65025 byte codes away<br>(255 before V3.6 2017.09.26)
-char | `value "\000"`<br><br>Invalid character (watch out for non-breaking spaces in copied expressions)
-globals | `a:"::a"sv string til 111;`<br/>`value"{a",a,"::0}"`<br><br>Too many [global variables](function-notation.md#variables-and-constants)
+[](){#branch}branch | `a:"1;",65024#"0;"`<br/>`value "{if[",a,"]}"`<br><br>A branch (`if`;`do`;`while`;`$[.;.;.]`) more than 65025 byte codes away<br>(255 before V3.6 2017.09.26)
+[](){#char}char | `value "\000"`<br><br>Invalid character (watch out for non-breaking spaces in copied expressions)
+[](){#globals}globals | `a:"::a"sv string til 111;`<br/>`value"{a",a,"::0}"`<br><br>Too many [global variables](function-notation.md#variables-and-constants)
 limit | `a:";"sv string 2+til 241;`<br/>`value"{",a,"}"`<br><br>Too many [constants](function-notation.md#variables-and-constants), or :fontawesome-regular-hand-point-right: [limit error](#runtime-errors)
-locals | `a:":a"sv string til 111;`<br/>`value"{a",a,":0}"`<br><br>Too many [local variables](function-notation.md#variables-and-constants)
-params | `f:{[a;b;c;d;e;f;g;h;e]}`<br><br>Too many parameters (8 max)
+[](){#locals}locals | `a:":a"sv string til 111;`<br/>`value"{a",a,":0}"`<br><br>Too many [local variables](function-notation.md#variables-and-constants)
+[](){#params}params | `f:{[a;b;c;d;e;f;g;h;e]}`<br><br>Too many parameters (8 max)
 
 
 ## License errors
@@ -621,17 +621,17 @@ On launch
 error | explanation
 ------|------------
 {timestamp} couldn't connect to license daemon | Could not connect to KX license server ([kdb+ On Demand](../learn/licensing.md#licensing-server-for-kdb-on-demand))
-cores | The license is for [fewer cores than available](../kb/cpu-affinity.md)
-cpu | The license is for fewer CPUs than available
-exp | License expiry date is prior to system date
-host | The hostname reported by the OS does not match the hostname or hostname-pattern in the license.<br><br>If you see `255.255.255.255` in the kdb+ banner, the machine likely cannot resolve its hostname to an IP address, which will cause a `host` error.<br><br>Since 4.1t 2022.07.01,4.0 2022.07.01 the detected hostname is printed. It can be used to compare with the hostname used within the license.
-k4.lic | `k4.lic` file not found, check contents of environment variables [`QHOME`](../learn/install.md#step-2-put-kdb-in-qhome) and [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
-os | Wrong OS or operating-system error (if runtime error)
-srv | Client-only license in server mode
-upd | Version of kdb+ more recent than update date, _or_ the function `upd` is undefined (sometimes encountered during ``-11!`:logfile``)
-user | Unlicensed user
-wha | System date is prior to kdb+ version date
-wrong q.k version | `q` and `q.k` versions do not match
+[](){#cores}cores | The license is for [fewer cores than available](../kb/cpu-affinity.md)
+[](){#cpu}cpu | The license is for fewer CPUs than available
+[](){#exp}exp | License expiry date is prior to system date
+[](){#host}host | The hostname reported by the OS does not match the hostname or hostname-pattern in the license.<br><br>If you see `255.255.255.255` in the kdb+ banner, the machine likely cannot resolve its hostname to an IP address, which will cause a `host` error.<br><br>Since 4.1t 2022.07.01,4.0 2022.07.01 the detected hostname is printed. It can be used to compare with the hostname used within the license.
+[](){#k4.lic}k4.lic | `k4.lic` file not found, check contents of environment variables [`QHOME`](../learn/install.md#step-2-put-kdb-in-qhome) and [`QLIC`](../learn/licensing.md#keeping-the-license-key-file-elsewhere)
+[](){#os}os | Wrong OS or operating-system error (if runtime error)
+[](){#srv}srv | Client-only license in server mode
+[](){#upd}upd | Version of kdb+ more recent than update date, _or_ the function `upd` is undefined (sometimes encountered during ``-11!`:logfile``)
+[](){#user}user | Unlicensed user
+[](){#wha}wha | System date is prior to kdb+ version date
+[](){#wrong-q.k-version}wrong q.k version | `q` and `q.k` versions do not match
 
 
 License-related errors are reported with the prefix `licence error: ` since V4.0 2019.10.22.
