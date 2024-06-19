@@ -14,7 +14,9 @@ Keyed:                As of:
  [lj ljf](../ref/lj.md)    left        [asof](../ref/asof.md)        simple as-of
  [pj](../ref/pj.md)        plus        [wj wj1](../ref/wj.md)      window
  [uj ujf](../ref/uj.md)    union
- [upsert](../ref/upsert.md)                [, Join](../ref/join.md)               [^ Coalesce](../ref/coalesce.md)
+ [upsert](../ref/upsert.md)
+ [,         join](../ref/join.md)
+ [\^         coalesce](../ref/coalesce.md)
 </div>
 
 
