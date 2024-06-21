@@ -5,6 +5,57 @@ keywords: browser, http, https, kdb+, q, web
 ---
 # :fontawesome-solid-handshake: HTTP
 
+## HTTP server
+
+kdb+ has an in-built service capable of handling HTTP/HTTPS requests.
+
+### Listening port
+
+When kdb+ is [configured](../basics/listening-port.md) to listen on a port, it uses the same port as that serving kdb+ IPC and websocket connections.
+
+### SSL/TLS
+
+HTTPS can be handled once kdb+ has been [configured to use SSL/TLS](ssl.md).
+
+### Authentication / Authorization
+
+Client requests can be authenticated/authorized using [.z.ac](../ref/dotz.md#zac-http-auth). 
+This allows kdb+ to be customized with a variety of mechanisms for securing HTTP requests  e.g. LDAP, OAuth2, OpenID Connect, etc.
+
+### Request handling
+
+HTTP request handling is customized by using the following callbacks:
+
+* [.z.ph](../ref/dotz.md#zph-http-get) for HTTP GET
+* [.z.pp](../ref/dotz.md##zpp-http-post) for HTTP POST
+* [.z.pm](../ref/dotz.md##zpp-http-post) for HTTP OPTIONS/PATCH/PUT/DELETE
+
+#### Default .z.ph handling
+
+The default implementation of .z.ph displays all variables and views. For example, starting kdb+ listening on port (`q -p 8080`) and visiting `http://localhost:8080` from a web browser on the same machine, displays all created variables/views).
+
+Providing q code as a GET param causes it to be evaluated eg. `http://localhost:8080?1+1` returns `2`. 
+
+[.h.HOME](../ref/doth.md#hhome-webserver-root) can be set to be the webserver root in order to serve files contained in the directory e.g.
+creating an HTML file index.html in directory `/webserver/` and setting `.h.HOME="/webserver"` allows the file to be viewed via  `http://localhost:8080/index.html'.
+
+:fontawesome-regular-map:
+[Restricting HTTP queries](../wp/permissions/index.md#restricting-http-queries)
+<br>
+:fontawesome-regular-map:
+[Custom web server](custom-web.md)
+
+### Keep-alive
+
+Persistent connections to supported clients can be enabled via [.h.ka](../ref/doth.md#hka-http-keepalive)
+
+### Compression
+
+HTTP server supports gzip compression via `Content-Encoding: gzip` for responses to `form?…`-style requests.
+The response payload must be 2,000+ chars and the client must indicate support via `Accept-Encoding: gzip` in the HTTP header.
+(Since V4.0 2020.03.17.)
+
+
 ## HTTP client
 
 ### Creating HTTP requests
@@ -81,57 +132,8 @@ q)@["\r\n\r\n" vs x;1]
 
 To use SSL/TLS, kdb+ should first be [configured to use SSL/TLS](ssl.md). For any request requiring SSL/TLS, replace `http` with `https`.
 
-## HTTP server
 
-kdb+ has an in-built service capable of handling HTTP/HTTPS requests.
-
-### Listening port
-
-When kdb+ is [configured](../basics/listening-port.md) to listen on a port, it uses the same port as that serving kdb+ IPC and websocket connections.
-
-### SSL/TLS
-
-HTTPS can be handled once kdb+ has been [configured to use SSL/TLS](ssl.md).
-
-### Authentication / Authorization
-
-Client requests can be authenticated/authorized using [.z.ac](../ref/dotz.md#zac-http-auth). 
-This allows kdb+ to be customized with a variety of mechanisms for securing HTTP requests  e.g. LDAP, OAuth2, OpenID Connect, etc.
-
-### Request handling
-
-HTTP request handling is customized by using the following callbacks:
-
-* [.z.ph](../ref/dotz.md#zph-http-get) for HTTP GET
-* [.z.pp](../ref/dotz.md##zpp-http-post) for HTTP POST
-* [.z.pm](../ref/dotz.md##zpp-http-post) for HTTP OPTIONS/PATCH/PUT/DELETE
-
-#### Default .z.ph handling
-
-The default implementation of .z.ph displays all variables and views. For example, starting kdb+ listening on port (`q -p 8080`) and visiting `http://localhost:8080` from a web browser on the same machine, displays all created variables/views).
-
-Providing q code as a GET param causes it to be evaluated eg. `http://localhost:8080?1+1` returns `2`. 
-
-[.h.HOME](../ref/doth.md#hhome-webserver-root) can be set to be the webserver root in order to serve files contained in the directory e.g.
-creating an HTML file index.html in directory `/webserver/` and setting `.h.HOME="/webserver"` allows the file to be viewed via  `http://localhost:8080/index.html'.
-
-:fontawesome-regular-map:
-[Restricting HTTP queries](../wp/permissions/index.md#restricting-http-queries)
-<br>
-:fontawesome-regular-map:
-[Custom web server](custom-web.md)
-
-### Keep-alive
-
-Persistent connections to supported clients can be enabled via [.h.ka](../ref/doth.md#hka-http-keepalive)
-
-### Compression
-
-HTTP server supports gzip compression via `Content-Encoding: gzip` for responses to `form?…`-style requests.
-The response payload must be 2,000+ chars and the client must indicate support via `Accept-Encoding: gzip` in the HTTP header.
-(Since V4.0 2020.03.17.)
-
-## HTTP markup
+## HTTP/HTML markup
 
 The [.h namespace](../ref/doth.md) provides a range of markup and HTTP protocol formatting tools.
 
@@ -139,3 +141,5 @@ The [.h namespace](../ref/doth.md) provides a range of markup and HTTP protocol 
 :fontawesome-solid-street-view:
 _Q for Mortals_
 [§11.7.1 HTTP Connections](/q4m3/q4m3/11_IO/#1171-http-connections)
+
+
