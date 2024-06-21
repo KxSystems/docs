@@ -7,7 +7,7 @@ keywords: ephemeral, kdb+, listen, multi-threaded, port, q, socket, unix
 
 
 
-Use the `-p` [command-line option](cmdline.md) or the `\p` [system command](syscmds.md) to tell kdb+ to listen to a port. The command-line option and the system command take the same parameters.
+Use the [`-p` command-line option](cmdline.md#-p-listening-port) or the [`\p` system command](syscmds.md#p-listening-port) to tell kdb+ to listen to a port. The command-line option and the system command take the same parameters.
 
 ```txt
 \p [rp,][hostname:][portnumber|servicename]
@@ -37,8 +37,6 @@ The default is 0 (no listening port).
 q)\p
 0i
 ```
-
-Use for [client/server](../kb/client-server.md), e.g. kdbc(JDBC ODBC), HTTP (HTML XML TXT CSV).
 
 Given a servicename, q will look up its port number in `/etc/services`.
 

@@ -525,7 +525,6 @@ nav:
       - Examples: architecture/examples.md
       - Alternative in-memory layouts: kb/alternative-in-memory-layouts.md
       - Chained tickerplant: kb/chained-tickerplant.md
-      - Client-server: kb/client-server.md
       - Corporate actions: kb/corporate-actions.md
       - Data recovery for kdb+tick (WP): wp/data-recovery.md
       - Disaster recovery (WP): wp/disaster-recovery/index.md
@@ -602,7 +601,6 @@ nav:
           - ObjectiveFS: cloud/otherfs/objectivefs.md
           - WekaIO Matrix: cloud/otherfs/wekaio-matrix.md
           - Quobyte: cloud/otherfs/quobyte.md
-      - DigitalOcean: kb/digitalocean.md
     - Academy: https://learninghub.kx.com
     - Discussion Forum: https://learninghub.kx.com/forums/forum/kdb
     - White papers: wp/index.md
