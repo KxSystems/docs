@@ -109,10 +109,11 @@ nav:
   - Home: 'https://code.kx.com/home'
   - kdb+ and q:
     - About: index.md
-    - Learn:
-      - Get started: learn/index.md
+    - Getting Started:
       - Install: learn/install.md
       - Licenses: learn/licensing.md
+    - Learn:
+      - Overview: learn/index.md
       - Mountain tour:
         - Overview: learn/tour/overview.md
         - Begin here: learn/tour/index.md
