@@ -112,10 +112,9 @@ Default value is `<OPENSSLDIR>/server-key.pem`
 #### SSL_CIPHER_LIST
 
 The default cipher list is set to the `Intermediate compatibility (default)`
-[as recommended by Mozilla.org](https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29),
-and you may override this, to reduce the list to whatever your IT security policy requires.
+[as recommended by Mozilla.org](https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29). You may override this, to reduce the list to whatever your IT security policy requires.
 
-Default value is 
+Default value is
 ```
 ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-
 AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-
