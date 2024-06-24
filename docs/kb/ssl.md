@@ -63,7 +63,7 @@ Since TLS uses certificates, prior to enabling TLS in a kdb+ server, ensure that
 
 The minimum for a TLS-enabled server is to provide a certificate and its associated key, both in PEM format. 
 
-To locate these files, q will use the default path as reported by the `openssl version -d` command as a base, e.g.
+To locate these files, q uses the default path as reported by the `openssl version -d` command as a base, e.g.
 
 ```bash
 $ openssl version -d
