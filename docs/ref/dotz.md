@@ -171,7 +171,7 @@ The number of physical cores.
 
 ## `.z.e` (TLS connection status)
 
-TLS details used with a connection handle. Returns an empty dictionary if the connection is not TLS enabled. E.g. where `h` is a connection handle
+TLS details used with a connection handle. Returns an empty dictionary if the connection is not TLS enabled. E.g. where `h` is a connection handle.
 
 ```q
 q)h".z.e"
