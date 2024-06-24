@@ -308,6 +308,20 @@ Possible error scenarios:
 View TLS settings on a handle or current process `-26!handle` or `-26!()`.
 Since V3.4 2016.05.12.
 
+```q
+q)(-26!)[]
+SSLEAY_VERSION   | OpenSSL 1.0.2g  1 Mar 2016
+SSL_CERT_FILE    | /Users/kdb/certs/server-crt.pem
+SSL_CA_CERT_FILE | /Users/kdb/certs/ca.pem
+SSL_CA_CERT_PATH | /Users/kdb/certs/
+SSL_KEY_FILE     | /Users/kdb/certs/server-key.pem
+SSL_CIPHER_LIST  | ALL
+SSL_VERIFY_CLIENT| NO
+SSL_VERIFY_SERVER| YES
+```
+
+In the result, all keys except `SSLEAY_VERSION` are initialized from their corresponding environment variables.
+
 :fontawesome-solid-graduation-cap:
 [SSL](../kb/ssl.md)
 
