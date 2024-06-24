@@ -70,7 +70,7 @@ $ openssl version -d
 OPENSSLDIR: "/opt/local/etc/openssl"
 ```
 
-Configuration of keys/certificates and checks performed are controlled by the following [environment variables](https://en.wikipedia.org/wiki/Environment_variable)
+Configuration of keys/certificates and checks performed is controlled by the following [environment variables](https://en.wikipedia.org/wiki/Environment_variable)
 
 !!! info "KX first"
 
