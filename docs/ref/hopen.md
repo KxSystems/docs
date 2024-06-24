@@ -199,7 +199,6 @@ One-shot sync queries can now execute via `` `::[(":host:port";timeout);query]``
 [Interprocess communication](../basics/ipc.md)
 <br>
 :fontawesome-solid-graduation-cap:
-[Client-server](../kb/client-server.md),
 [Named pipes](../kb/named-pipes.md),
 [SSL/TLS](../kb/ssl.md)
 <br>

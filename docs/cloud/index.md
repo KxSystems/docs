@@ -53,7 +53,7 @@ Some motivations for cloud deployments:
 KX customers have deployed kdb+ and other KX solutions successfully in the cloud, including the three main cloud vendors: 
 
 -   [kdb+ on Amazon Web Services](aws/index.md) :fontawesome-brands-aws: 
--   [kdb+ on Google Cloud Platform](gcpm/index.md) 
--   Microsoft Azure
+-   [kdb+ on Google Cloud Platform](gcpm/architecture.md) 
+-   [kdb+ on Microsoft Azure](azure/architecture.md)
 
 
